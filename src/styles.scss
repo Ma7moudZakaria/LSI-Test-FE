@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'src/assets/scss/_typography.scss';
+
+html {
+  font-size: 15px;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 13px;
+  }
+}

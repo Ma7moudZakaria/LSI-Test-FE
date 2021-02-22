@@ -1,0 +1,21 @@
+@import 'src/assets/scss/_variables.scss';
+
+// in this scss file you can add Typography styles for fonts and import Font Families like Example below :
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+/*
+body {
+    font-family: 'English Font';
+  }
+  
+  body:lang(ar) {
+    font-family: 'Arabic Font';
+  }
+*/

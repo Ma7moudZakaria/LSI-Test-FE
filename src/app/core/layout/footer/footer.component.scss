@@ -1,0 +1,13 @@
+@import 'src/assets/scss/_variables.scss';
+
+.footer {
+  padding: 1.5rem 0;
+  text-align: left;
+  background-color: $gray-100;
+}
+
+@media (min-width:575px) and (max-width: 768px) {
+  .footer {
+    text-align: center;
+  }
+}
