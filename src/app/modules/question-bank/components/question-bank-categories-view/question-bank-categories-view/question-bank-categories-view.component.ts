@@ -1,3 +1,4 @@
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -18,8 +19,10 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
   filterErrorMessage?:string;
   QuestionBankCategoryList: IquestionBankCategoriesModel[] = []; ;
   QuestionBankCategoryFilter: IquestionBankCategoriesFilter = {};
+  position: string="";
+  msgs: Message[] = [];
  
-  constructor(private questionBankCategoryService: QuestionBankCategoryService,private activeroute: ActivatedRoute, private router: Router, public translate: TranslateService,public nav: NavBarService) { }
+  constructor(private questionBankCategoryService: QuestionBankCategoryService,private activeroute: ActivatedRoute, private router: Router, public translate: TranslateService, private confirmationService: ConfirmationService,public nav: NavBarService) { }
 
   ngOnInit(): void {
     this.currentWindowWidth = window.innerWidth;
@@ -59,6 +62,63 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+  clearFilter(){
+    this.QuestionBankCategoryFilter = {};
+    this.QuestionBankCategoryFilter.pageSize =0 ;
+    this.QuestionBankCategoryFilter.pageNumber = 10;
+    this.getQuestionBankCategories(true);
+  }
+
+  confirm(id:string) {
+    this.confirmationService.confirm({
+      key: 'account',
+      message: this.translate.currentLang == 'en-US' ?
+      'Are You sure to delete the Third-Party Notice?' :"هل انت متاكد انك تريد الاستمرار؟",
+      header: this.translate.currentLang == 'en-US' ? 'Alert' : "تنبيه",
+      icon: 'pi pi-exclamation-triangle',
+      acceptLabel: this.translate.currentLang == 'en-US' ? "Ok" : "موافق",
+      rejectVisible: false,
+
+      accept: () => {
+        this.questionBankCategoryService.deleteQuestionBankCategory(id).subscribe(
+          res => {
+
+            
+            this.getQuestionBankCategories(true);
+          }, error => {
+
+          }
+        )
+
+          this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' }];
+
+
+      },
+      reject: () => {
+
+        this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
+        // this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
+      }
+    });
+  
+  }
+
+  confirmPosition(position: string) {
+    this.position = position;
+
+    this.confirmationService.confirm({
+      message: this.translate.currentLang == Languages.English ?'Do you want to delete this record?':'هل تريد حذف هذا السجل؟',
+      header:this.translate.currentLang == Languages.English ? 'Delete Confirmation':'تأكيد الحذف',
+      icon: 'pi pi-info-circle',
+      accept: () => {
+        this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'Record deleted' }];
+      },
+      reject: () => {
+        this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
+      },
+      key: "positionDialog"
+    });
   }
 
 }
