@@ -1,0 +1,2 @@
+export interface IquestionBankCategoryUpdateModel {
+}
