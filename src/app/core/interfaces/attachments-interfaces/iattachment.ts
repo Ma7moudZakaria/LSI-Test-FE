@@ -1,5 +1,7 @@
 export interface IAttachment {
-    containerNameIndex:number,
-    file:File,
-
+    id:string;
+    fileName:string;
+    url:string;
+    contentType:string;
+    content:string;    
 }

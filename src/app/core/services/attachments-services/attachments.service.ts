@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { IAttachment } from '../../interfaces/attachments-interfaces/iattachment';
+import { FileUpload } from '../../interfaces/attachments-interfaces/file-upload';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class AttachmentsService {
   getAttachmentId=environment.BaseURL+"Attachments/download-file/";
   deleteAttachmentId=environment.BaseURL+"Attachments/delete-file/";
   
-  upload(files:IAttachment[]) {
+  upload(files:FileUpload[]) {
 
     const fd = new FormData();
     Array.from(files).forEach((file) => {
