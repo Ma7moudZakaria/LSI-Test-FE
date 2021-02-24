@@ -30,6 +30,7 @@ export class AddQuestionBankCategoryComponent implements OnInit {
   errorMessage?:string;
   successMessage?:string;
   isSubmit = false;
+ 
   constructor(private questionBankCategoryService: QuestionBankCategoryService,private activeroute: ActivatedRoute, private router: Router, public translate: TranslateService,private confirmationService: ConfirmationService,private fb: FormBuilder) { }
 
   ngOnInit(): void {

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IquestionBankCategoriesFilter } from '../../interfaces/questionBankCategories-interfaces/iquestion-bank-categories-filter-.request';
 import { IquestionBankCategoriesModel } from '../../interfaces/questionBankCategories-interfaces/iquestion-bank-categories-model';
+import { IquestionBankCategoryCreatModel } from '../../interfaces/questionBankCategories-interfaces/iquestion-bank-category-creat-model';
 import { IquestionBankCategoryUpdateModel } from '../../interfaces/questionBankCategories-interfaces/iquestion-bank-category-update-model';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 
@@ -18,7 +19,7 @@ export class QuestionBankCategoryService {
   DeleteQuestionBankCategoryURL=environment.BaseURL+'QuestionBankCategories/delete-question-bank-category/';
 
   constructor(private http:HttpClient) { }
-  addQuestionBankCategory(model:IquestionBankCategoriesModel):Observable<BaseResponseModel>{
+  addQuestionBankCategory(model:IquestionBankCategoryCreatModel):Observable<BaseResponseModel>{
     return this.http.post<BaseResponseModel>(this.AddQuestionBankCategoryURL,model);
   }
   UpdateQuestionBankCategory(model:IquestionBankCategoryUpdateModel):Observable<BaseResponseModel>{
