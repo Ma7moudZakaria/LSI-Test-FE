@@ -32,7 +32,7 @@ export class QuestionBankCategoryService {
   getQuestionBankCategoryDetails(id:string):Observable<BaseResponseModel>{
     return this.http.get<BaseResponseModel>(this.GetQuestionBankCategoryDetailsURL+id)
   }
-  deleteQuestionBankCategory(id:number):Observable<BaseResponseModel>{
+  deleteQuestionBankCategory(id:string):Observable<BaseResponseModel>{
     return this.http.delete<BaseResponseModel>(this.DeleteQuestionBankCategoryURL+id);
   }
 

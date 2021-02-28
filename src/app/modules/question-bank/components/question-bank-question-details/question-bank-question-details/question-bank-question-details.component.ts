@@ -19,11 +19,13 @@ export class QuestionBankQuestionDetailsComponent implements OnInit {
   currentWindowWidth?: number;
   errorMessage?:string;
   msgs: Message[] = [];
-  constructor(private questionBankQuestionService: QuestionBankQuestionService,private activeroute: ActivatedRoute, private router: Router, public translate: TranslateService, private authService: AuthService,public nav: NavBarService,private confirmationService: ConfirmationService) { }
+  QuestionBankQuestionId:string="";
+  
+  constructor(private questionBankQuestionService: QuestionBankQuestionService,private activeroute: ActivatedRoute, private router: Router, public translate: TranslateService, private authService: AuthService) { }
   ngOnInit(): void {
 
-    this.nav.show();
-    this.QuestionBankQuestionId = this.activeroute.snapshot.paramMap.get('id');
+    // this.nav.show();
+    // this.QuestionBankQuestionId = this.activeroute.snapshot.paramMap.get('id');
     this.currentWindowWidth = window.innerWidth;
   }
   @HostListener('window:resize')
@@ -51,39 +53,39 @@ export class QuestionBankQuestionDetailsComponent implements OnInit {
 
   
 
-  confirmDelete() {
+  // confirmDelete() {
    
   
-      this.confirmationService.confirm({
-        key: 'confirm',
-        message: this.translate.currentLang == 'en-US' ?
-          'Are You sure to delete the Third-Party Notice?' : "هل انت متاكد انك تريد الاستمرار؟",
-        header: this.translate.currentLang == 'en-US' ? 'Confirmation' : "تأكيد",
-        icon: 'pi pi-exclamation-triangle',
-        acceptButtonStyleClass: "red",
-        acceptLabel: this.translate.currentLang == 'en-US' ? "Ok" : "موافق",
-        rejectLabel: this.translate.currentLang == 'en-US' ? "No" : "لا",
-        accept: () => {
-          this.questionBankQuestionService.deleteQuestionBankQuestion(this.QuestionBankQuestionId).subscribe(
-            res => {
+  //     this.confirmationService.confirm({
+  //       key: 'confirm',
+  //       message: this.translate.currentLang == 'en-US' ?
+  //         'Are You sure to delete the Third-Party Notice?' : "هل انت متاكد انك تريد الاستمرار؟",
+  //       header: this.translate.currentLang == 'en-US' ? 'Confirmation' : "تأكيد",
+  //       icon: 'pi pi-exclamation-triangle',
+  //       acceptButtonStyleClass: "red",
+  //       acceptLabel: this.translate.currentLang == 'en-US' ? "Ok" : "موافق",
+  //       rejectLabel: this.translate.currentLang == 'en-US' ? "No" : "لا",
+  //       accept: () => {
+  //         this.questionBankQuestionService.deleteQuestionBankQuestion(this.QuestionBankQuestionId).subscribe(
+  //           res => {
 
 
-              this.router.navigateByUrl('/question-bank-questions-view/question-bank-questions-view');
+  //             this.router.navigateByUrl('/question-bank-questions-view/question-bank-questions-view');
 
-            }, error => {
+  //           }, error => {
 
-            }
-          )
-          this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' }];
+  //           }
+  //         )
+  //         // this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' }];
 
-        },
-        reject: () => {
-          this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
-        }
-      });
+  //       },
+  //       reject: () => {
+  //         // this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
+  //       }
+  //     });
     
 
-  }
+  // }
 
 
 }

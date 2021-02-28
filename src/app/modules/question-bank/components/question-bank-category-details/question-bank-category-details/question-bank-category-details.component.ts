@@ -19,7 +19,7 @@ export class QuestionBankCategoryDetailsComponent implements OnInit {
   currentWindowWidth?: number;
   errorMessage?:string;
   msgs: Message[] = [];
-  constructor(private questionBankCategoryService: QuestionBankCategoryService,private activeroute: ActivatedRoute, private router: Router, public translate: TranslateService, private authService: AuthService,public nav: NavBarService,private confirmationService: ConfirmationService) { }
+  constructor(private questionBankCategoryService: QuestionBankCategoryService,private activeroute: ActivatedRoute, private router: Router, public translate: TranslateService, private authService: AuthService) { }
 
   ngOnInit(): void {
     // this.authService.currentLanguageEvent.subscribe(
@@ -29,8 +29,8 @@ export class QuestionBankCategoryDetailsComponent implements OnInit {
 
     //   }
     // )
-    this.nav.show();
-    this.QuestionBankCategoryId = this.activeroute.snapshot.paramMap.get('id');
+    // this.nav.show();
+    // this.QuestionBankCategoryId = this.activeroute.snapshot.paramMap.get('id');
     this.currentWindowWidth = window.innerWidth;
 
   }
@@ -59,38 +59,38 @@ export class QuestionBankCategoryDetailsComponent implements OnInit {
 
   
 
-  confirmDelete() {
+  // confirmDelete() {
    
   
-      this.confirmationService.confirm({
-        key: 'confirm',
-        message: this.translate.currentLang == 'en-US' ?
-          'Are You sure to delete the Third-Party Notice?' : "هل انت متاكد انك تريد الاستمرار؟",
-        header: this.translate.currentLang == 'en-US' ? 'Confirmation' : "تأكيد",
-        icon: 'pi pi-exclamation-triangle',
-        acceptButtonStyleClass: "red",
-        acceptLabel: this.translate.currentLang == 'en-US' ? "Ok" : "موافق",
-        rejectLabel: this.translate.currentLang == 'en-US' ? "No" : "لا",
-        accept: () => {
-          this.questionBankCategoryService.deleteQuestionBankCategory(this.QuestionBankCategoryId).subscribe(
-            res => {
+  //     this.confirmationService.confirm({
+  //       key: 'confirm',
+  //       message: this.translate.currentLang == 'en-US' ?
+  //         'Are You sure to delete the Third-Party Notice?' : "هل انت متاكد انك تريد الاستمرار؟",
+  //       header: this.translate.currentLang == 'en-US' ? 'Confirmation' : "تأكيد",
+  //       icon: 'pi pi-exclamation-triangle',
+  //       acceptButtonStyleClass: "red",
+  //       acceptLabel: this.translate.currentLang == 'en-US' ? "Ok" : "موافق",
+  //       rejectLabel: this.translate.currentLang == 'en-US' ? "No" : "لا",
+  //       accept: () => {
+  //         this.questionBankCategoryService.deleteQuestionBankCategory(this.QuestionBankCategoryId).subscribe(
+  //           res => {
 
 
-              this.router.navigateByUrl('/question-bank-categories-view/question-bank-categories-view');
+  //             this.router.navigateByUrl('/question-bank-categories-view/question-bank-categories-view');
 
-            }, error => {
+  //           }, error => {
 
-            }
-          )
-          this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' }];
+  //           }
+  //         )
+  //         // this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' }];
 
-        },
-        reject: () => {
-          this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
-        }
-      });
+  //       },
+  //       reject: () => {
+  //         // this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
+  //       }
+  //     });
     
 
-  }
+  // }
 
 }

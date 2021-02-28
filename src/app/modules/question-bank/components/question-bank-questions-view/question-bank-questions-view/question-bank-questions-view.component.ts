@@ -17,17 +17,17 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   smallScreen: number = 426;
   valueLang = "nameAr";
   filterErrorMessage?:string;
-  QuestionBankQuestionList: IquestionBankQuestionsModel[] = []; ;
+  QuestionBankQuestionList: IquestionBankQuestionsModel[] = [];
   QuestionBankQuestionFilter: IquestionBankQuestionsFilterRequest = {};
   position: string="";
   msgs: Message[] = [];
  
-  constructor(private questionBankQuestionService: QuestionBankQuestionService,private activeroute: ActivatedRoute, private router: Router, public translate: TranslateService, private confirmationService: ConfirmationService,public nav: NavBarService) { }
+  constructor(private questionBankQuestionService: QuestionBankQuestionService,private activeroute: ActivatedRoute, private router: Router, public translate: TranslateService) { }
 
   ngOnInit(): void {
     this.currentWindowWidth = window.innerWidth;
     this.valueLang= this.translate.currentLang=='en-US'?'nameEn':'nameAr';
-    this.nav.show();
+    // this.nav.show();
     this.getQuestionBankQuestions(true)
   }
   getQuestionBankQuestions(isLazyLoading = false) {
@@ -70,54 +70,54 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   }
 
   confirm(id:string) {
-    this.confirmationService.confirm({
-      key: 'account',
-      message: this.translate.currentLang == 'en-US' ?
-      'Are You sure to delete the Third-Party Notice?' :"هل انت متاكد انك تريد الاستمرار؟",
-      header: this.translate.currentLang == 'en-US' ? 'Alert' : "تنبيه",
-      icon: 'pi pi-exclamation-triangle',
-      acceptLabel: this.translate.currentLang == 'en-US' ? "Ok" : "موافق",
-      rejectVisible: false,
+    // this.confirmationService.confirm({
+    //   key: 'account',
+    //   message: this.translate.currentLang == 'en-US' ?
+    //   'Are You sure to delete the Third-Party Notice?' :"هل انت متاكد انك تريد الاستمرار؟",
+    //   header: this.translate.currentLang == 'en-US' ? 'Alert' : "تنبيه",
+    //   icon: 'pi pi-exclamation-triangle',
+    //   acceptLabel: this.translate.currentLang == 'en-US' ? "Ok" : "موافق",
+    //   rejectVisible: false,
 
-      accept: () => {
-        this.questionBankQuestionService.deleteQuestionBankQuestion(id).subscribe(
-          res => {
+    //   accept: () => {
+    //     this.questionBankQuestionService.deleteQuestionBankQuestion(id).subscribe(
+    //       res => {
 
             
-            this.getQuestionBankQuestions(true);
-          }, error => {
+    //         this.getQuestionBankQuestions(true);
+    //       }, error => {
 
-          }
-        )
+    //       }
+    //     )
 
-          this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' }];
+    //       // this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' }];
 
 
-      },
-      reject: () => {
+    //   },
+    //   reject: () => {
 
-        this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
-        // this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
-      }
-    });
+    //     // this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
+    //     // this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
+    //   }
+    // });
   
   }
 
   confirmPosition(position: string) {
     this.position = position;
 
-    this.confirmationService.confirm({
-      message: this.translate.currentLang == Languages.English ?'Do you want to delete this record?':'هل تريد حذف هذا السجل؟',
-      header:this.translate.currentLang == Languages.English ? 'Delete Confirmation':'تأكيد الحذف',
-      icon: 'pi pi-info-circle',
-      accept: () => {
-        this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'Record deleted' }];
-      },
-      reject: () => {
-        this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
-      },
-      key: "positionDialog"
-    });
+    // this.confirmationService.confirm({
+    //   message: this.translate.currentLang == Languages.English ?'Do you want to delete this record?':'هل تريد حذف هذا السجل؟',
+    //   header:this.translate.currentLang == Languages.English ? 'Delete Confirmation':'تأكيد الحذف',
+    //   icon: 'pi pi-info-circle',
+    //   accept: () => {
+    //     this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'Record deleted' }];
+    //   },
+    //   reject: () => {
+    //     this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
+    //   },
+    //   key: "positionDialog"
+    // });
   }
 
 }

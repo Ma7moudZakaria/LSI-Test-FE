@@ -1,5 +1,5 @@
 export interface IquestionBankCategoryCreatModel {
-    arabCatgName:string
-    engCatgName:string
+    arabCatgName?:string
+    engCatgName?:string
 }
 

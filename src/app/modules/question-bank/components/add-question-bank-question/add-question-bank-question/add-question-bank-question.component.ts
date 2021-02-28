@@ -19,19 +19,19 @@ export class AddQuestionBankQuestionComponent implements OnInit {
   Title?: string;
   QuestionBankQuestionId:string='';
   QuestionBankQuestions?: IquestionBankQuestionsModel ;
-  QuestionBankQuestionCreat: IquestionBankQuestionCreatModel ;
-  QuestionBankQuestionUpdate: IquestionBankQuestionUpdateModel ;
+  QuestionBankQuestionCreat: IquestionBankQuestionCreatModel = {};
+  QuestionBankQuestionUpdate: IquestionBankQuestionUpdateModel = {};
   isAdd:boolean=true;
   currentWindowWidth?: number;
   errorMessage?:string;
   maxDate: any;
   msgs: Message[] = [];
-  CurrentForm: FormGroup;
-  errorMessage?:string;
+  // CurrentForm: FormGroup;
+  // errorMessage?:string;
   successMessage?:string;
   isSubmit = false;
  
-  constructor(private questionBankQuestionService: QuestionBankQuestionService,private activeroute: ActivatedRoute, private router: Router, public translate: TranslateService,private confirmationService: ConfirmationService,private fb: FormBuilder) { }
+  constructor(private questionBankQuestionService: QuestionBankQuestionService,private activeroute: ActivatedRoute, private router: Router, public translate: TranslateService) { }
   ngOnInit(): void {
     if (this.activeroute.snapshot.paramMap.get('id') != null) {
       this.Title = "Edit QuestionBankQuestion";
@@ -55,17 +55,17 @@ export class AddQuestionBankQuestionComponent implements OnInit {
     this.maxDate = new Date().toISOString().split("T")[0];
   }
 
-  get f() {
-    return this.CurrentForm.controls;
-  }
-  buildForm() {
+  // get f() {
+  //   return this.CurrentForm.controls;
+  // }
+  // buildForm() {
 
-    this.CurrentForm = this.fb.group(
-      {
-        catogryName: [50, Validators.required],
-      })
+  //   this.CurrentForm = this.fb.group(
+  //     {
+  //       catogryName: [50, Validators.required],
+  //     })
 
-  }
+  // }
   loadQuestionBankQuestionDetails() {
     this.questionBankQuestionService.getQuestionBankQuestionDetails(this.QuestionBankQuestionId).subscribe(
       res => {
@@ -99,7 +99,7 @@ export class AddQuestionBankQuestionComponent implements OnInit {
     this.isSubmit = true;
     this.errorMessage = '';
     this.successMessage = '';
-    this.QuestionBankQuestionId == null ? this.f.paymentStatus.setValue("8442b75d-0f49-4a86-a630-78e75d48c4b9") : null;
+    // this.QuestionBankQuestionId == null ? this.f.paymentStatus.setValue("8442b75d-0f49-4a86-a630-78e75d48c4b9") : null;
     // this.QuestionBankCategory.paymentStatus = this.f.paymentStatus.value;
 
     if (this.QuestionBankQuestionId) {
@@ -149,38 +149,38 @@ export class AddQuestionBankQuestionComponent implements OnInit {
   }
   cancelConfirm() {
 
-    this.confirmationService.confirm({
-      key: 'confirm',
-      message: this.translate.currentLang == 'en-US' ?
-        'Are you sure that you want to cancel?' : "هل انت متاكد انك تريد الالغاء؟",
-      header: this.translate.currentLang == 'en-US' ? 'Confirmation' : 'تاكيد',
-      icon: 'pi pi-exclamation-triangle',
-      acceptLabel: this.translate.currentLang == 'en-US' ? "Yes" : "نعم",
-      rejectLabel: this.translate.currentLang == 'en-US' ? "No" : "لا",
-      accept: () => {
-        setTimeout(() => {
-          this.router.navigateByUrl('/question-bank-categories-view/question-bank-categories-view');
-        }, 1500);
-        this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' }];
-      },
-      reject: () => {
-        this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
-      }
-    });
+    // this.confirmationService.confirm({
+    //   key: 'confirm',
+    //   message: this.translate.currentLang == 'en-US' ?
+    //     'Are you sure that you want to cancel?' : "هل انت متاكد انك تريد الالغاء؟",
+    //   header: this.translate.currentLang == 'en-US' ? 'Confirmation' : 'تاكيد',
+    //   icon: 'pi pi-exclamation-triangle',
+    //   acceptLabel: this.translate.currentLang == 'en-US' ? "Yes" : "نعم",
+    //   rejectLabel: this.translate.currentLang == 'en-US' ? "No" : "لا",
+    //   accept: () => {
+    //     setTimeout(() => {
+    //       this.router.navigateByUrl('/question-bank-categories-view/question-bank-categories-view');
+    //     }, 1500);
+    //     // this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' }];
+    //   },
+    //   reject: () => {
+    //     // this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
+    //   }
+    // });
   }
   confirm() {
-    this.confirmationService.confirm({
-      key: 'account',
-      message: 'Are you sure that you want to proceed?',
-      header: 'Confirmation',
-      icon: 'pi pi-exclamation-triangle',
-      accept: () => {
-        this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' }];
-      },
-      reject: () => {
-        this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
-      }
-    });
+    // this.confirmationService.confirm({
+    //   key: 'account',
+    //   message: 'Are you sure that you want to proceed?',
+    //   header: 'Confirmation',
+    //   icon: 'pi pi-exclamation-triangle',
+    //   accept: () => {
+    //     // this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' }];
+    //   },
+    //   reject: () => {
+    //     // this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
+    //   }
+    // });
   }
   checkPageAvaialbility() {
     // let scopes = this.permissionService.getUserScopes();

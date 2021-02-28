@@ -22,12 +22,12 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
   position: string="";
   msgs: Message[] = [];
  
-  constructor(private questionBankCategoryService: QuestionBankCategoryService,private activeroute: ActivatedRoute, private router: Router, public translate: TranslateService, private confirmationService: ConfirmationService,public nav: NavBarService) { }
+  constructor(private questionBankCategoryService: QuestionBankCategoryService,private activeroute: ActivatedRoute, private router: Router, public translate: TranslateService) { }
 
   ngOnInit(): void {
     this.currentWindowWidth = window.innerWidth;
     this.valueLang= this.translate.currentLang=='en-US'?'nameEn':'nameAr';
-    this.nav.show();
+    // this.nav.show();
     this.getQuestionBankCategories(true)
 
   }
@@ -70,55 +70,55 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
     this.getQuestionBankCategories(true);
   }
 
-  confirm(id:string) {
-    this.confirmationService.confirm({
-      key: 'account',
-      message: this.translate.currentLang == 'en-US' ?
-      'Are You sure to delete the Third-Party Notice?' :"هل انت متاكد انك تريد الاستمرار؟",
-      header: this.translate.currentLang == 'en-US' ? 'Alert' : "تنبيه",
-      icon: 'pi pi-exclamation-triangle',
-      acceptLabel: this.translate.currentLang == 'en-US' ? "Ok" : "موافق",
-      rejectVisible: false,
+  // confirm(id:string) {
+  //   this.confirmationService.confirm({
+  //     key: 'account',
+  //     message: this.translate.currentLang == 'en-US' ?
+  //     'Are You sure to delete the Third-Party Notice?' :"هل انت متاكد انك تريد الاستمرار؟",
+  //     header: this.translate.currentLang == 'en-US' ? 'Alert' : "تنبيه",
+  //     icon: 'pi pi-exclamation-triangle',
+  //     acceptLabel: this.translate.currentLang == 'en-US' ? "Ok" : "موافق",
+  //     rejectVisible: false,
 
-      accept: () => {
-        this.questionBankCategoryService.deleteQuestionBankCategory(id).subscribe(
-          res => {
+  //     accept: () => {
+  //       this.questionBankCategoryService.deleteQuestionBankCategory(id).subscribe(
+  //         res => {
 
             
-            this.getQuestionBankCategories(true);
-          }, error => {
+  //           this.getQuestionBankCategories(true);
+  //         }, error => {
 
-          }
-        )
+  //         }
+  //       )
 
-          this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' }];
+  //         // this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' }];
 
 
-      },
-      reject: () => {
+  //     },
+  //     reject: () => {
 
-        this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
-        // this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
-      }
-    });
+  //       // this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
+  //       // this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
+  //     }
+  //   });
   
-  }
+  // }
 
   confirmPosition(position: string) {
     this.position = position;
 
-    this.confirmationService.confirm({
-      message: this.translate.currentLang == Languages.English ?'Do you want to delete this record?':'هل تريد حذف هذا السجل؟',
-      header:this.translate.currentLang == Languages.English ? 'Delete Confirmation':'تأكيد الحذف',
-      icon: 'pi pi-info-circle',
-      accept: () => {
-        this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'Record deleted' }];
-      },
-      reject: () => {
-        this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
-      },
-      key: "positionDialog"
-    });
+    // this.confirmationService.confirm({
+    //   message: this.translate.currentLang == Languages.English ?'Do you want to delete this record?':'هل تريد حذف هذا السجل؟',
+    //   header:this.translate.currentLang == Languages.English ? 'Delete Confirmation':'تأكيد الحذف',
+    //   icon: 'pi pi-info-circle',
+    //   accept: () => {
+    //     // this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'Record deleted' }];
+    //   },
+    //   reject: () => {
+    //     // this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
+    //   },
+    //   key: "positionDialog"
+    // });
   }
 
 }

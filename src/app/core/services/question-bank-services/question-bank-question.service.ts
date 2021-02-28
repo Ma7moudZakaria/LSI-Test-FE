@@ -31,7 +31,7 @@ export class QuestionBankQuestionService {
   getQuestionBankQuestionDetails(id:string):Observable<BaseResponseModel>{
     return this.http.get<BaseResponseModel>(this.GetQuestionBankQuestionDetailsURL+id)
   }
-  deleteQuestionBankQuestion(id:number):Observable<BaseResponseModel>{
+  deleteQuestionBankQuestion(id:string):Observable<BaseResponseModel>{
     return this.http.delete<BaseResponseModel>(this.DeleteQuestionBankQuestionURL+id);
   }
 

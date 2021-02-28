@@ -1,7 +1,7 @@
 export interface IquestionBankQuestionsFilterRequest {
-    question:string;
-    catgyId:string;
-    PageNumber:number;
-    PageSize:number;
+    question?:string;
+    catgyId?:string;
+    PageNumber?:number;
+    PageSize?:number;
 
 }
