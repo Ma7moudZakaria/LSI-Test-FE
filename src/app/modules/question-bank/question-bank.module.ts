@@ -8,13 +8,14 @@ import { QuestionBankCategoryDetailsComponent } from './components/question-bank
 import { AddQuestionBankQuestionComponent } from './components/add-question-bank-question/add-question-bank-question/add-question-bank-question.component';
 import { QuestionBankQuestionsViewComponent } from './components/question-bank-questions-view/question-bank-questions-view/question-bank-questions-view.component';
 import { QuestionBankQuestionDetailsComponent } from './components/question-bank-question-details/question-bank-question-details/question-bank-question-details.component';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 
 @NgModule({
   declarations: [AddQuestionBankCategoryComponent, QuestionBankCategoriesViewComponent, QuestionBankCategoryDetailsComponent, AddQuestionBankQuestionComponent, QuestionBankQuestionsViewComponent, QuestionBankQuestionDetailsComponent],
   imports: [
     CommonModule,
-    QuestionBankRoutingModule
+    QuestionBankRoutingModule, TranslateModule
   ]
 })
 export class QuestionBankModule { }

@@ -22,7 +22,9 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
   position: string="";
   msgs: Message[] = [];
  
-  constructor(private questionBankCategoryService: QuestionBankCategoryService,private activeroute: ActivatedRoute, private router: Router, public translate: TranslateService) { }
+  constructor(private questionBankCategoryService: QuestionBankCategoryService,
+    private activeroute: ActivatedRoute, 
+    private router: Router, public translate: TranslateService) { }
 
   ngOnInit(): void {
     this.currentWindowWidth = window.innerWidth;
