@@ -15,23 +15,27 @@ import { QuestionBankQuestionService } from 'src/app/core/services/question-bank
   styleUrls: ['./add-question-bank-question.component.scss']
 })
 export class AddQuestionBankQuestionComponent implements OnInit {
-  @Input() user: any;
+  //@Input() user: any;
   Title?: string;
   QuestionBankQuestionId:string='';
   QuestionBankQuestions?: IquestionBankQuestionsModel ;
   QuestionBankQuestionCreat: IquestionBankQuestionCreatModel = {};
   QuestionBankQuestionUpdate: IquestionBankQuestionUpdateModel = {};
   isAdd:boolean=true;
-  currentWindowWidth?: number;
+  // currentWindowWidth?: number;
   errorMessage?:string;
-  maxDate: any;
-  msgs: Message[] = [];
+  //maxDate: any;
+  // msgs: Message[] = [];
   // CurrentForm: FormGroup;
   // errorMessage?:string;
   successMessage?:string;
   isSubmit = false;
  
-  constructor(private questionBankQuestionService: QuestionBankQuestionService,private activeroute: ActivatedRoute, private router: Router, public translate: TranslateService) { }
+  constructor(private questionBankQuestionService: QuestionBankQuestionService,
+    private activeroute: ActivatedRoute, 
+    private router: Router,
+     public translate: TranslateService) { }
+
   ngOnInit(): void {
     if (this.activeroute.snapshot.paramMap.get('id') != null) {
       this.Title = "Edit QuestionBankQuestion";
@@ -45,15 +49,15 @@ export class AddQuestionBankQuestionComponent implements OnInit {
     }
 
   }
-  @HostListener('window:resize')
+  // @HostListener('window:resize')
 
-  onResize() {
-    this.currentWindowWidth = window.innerWidth
-  }
+  // onResize() {
+  //   this.currentWindowWidth = window.innerWidth
+  // }
 
-  setMaxDate() {
-    this.maxDate = new Date().toISOString().split("T")[0];
-  }
+  // setMaxDate() {
+  //   this.maxDate = new Date().toISOString().split("T")[0];
+  // }
 
   // get f() {
   //   return this.CurrentForm.controls;
@@ -69,15 +73,9 @@ export class AddQuestionBankQuestionComponent implements OnInit {
   loadQuestionBankQuestionDetails() {
     this.questionBankQuestionService.getQuestionBankQuestionDetails(this.QuestionBankQuestionId).subscribe(
       res => {
-        // var response = Mapper.responseMapper(res);
         var response =<BaseResponseModel>res;
         if (response.isSuccess) {
           this.QuestionBankQuestions = response.data;
-          // if (!this.checkPageAvaialbility()) {
-          //   this.router.navigateByUrl('/notAuth/not-auth');
-          // }
-          
-
         }
         else {
           this.errorMessage = response.message;
@@ -87,26 +85,15 @@ export class AddQuestionBankQuestionComponent implements OnInit {
       })
   }
   PopulateForm() {
-   
-    
-    // this.f.RMSBranch.setValue(this.ThirdPartyNotice.branchRms);
-  
-
-   
-
   }
+
   Submit() {
     this.isSubmit = true;
     this.errorMessage = '';
     this.successMessage = '';
-    // this.QuestionBankQuestionId == null ? this.f.paymentStatus.setValue("8442b75d-0f49-4a86-a630-78e75d48c4b9") : null;
-    // this.QuestionBankCategory.paymentStatus = this.f.paymentStatus.value;
 
-    if (this.QuestionBankQuestionId) {
-      // this.QuestionBankCategoryCreat.updatedBy = this.user.userId;
-    
+    if (this.QuestionBankQuestionId) {    
       this.questionBankQuestionService.UpdateQuestionBankQuestion(this.QuestionBankQuestionUpdate).subscribe(res => {
-        //var response = Mapper.responseMapper(res);
         if (res.isSuccess) {
           this.isSubmit = false;
           this.successMessage = res.message;
@@ -124,9 +111,7 @@ export class AddQuestionBankQuestionComponent implements OnInit {
         })
     }
     else {
-      // this.QuestionBankCategory.createdBy = this.user.userId;
       this.questionBankQuestionService.addQuestionBankQuestion(this.QuestionBankQuestionCreat).subscribe(res => {
-        //var response = Mapper.responseMapper(res);
         this.isSubmit = false;
         if (res.isSuccess) {
           this.successMessage = res.message;

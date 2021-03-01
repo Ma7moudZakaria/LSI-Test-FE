@@ -13,44 +13,32 @@ import { QuestionBankQuestionService } from 'src/app/core/services/question-bank
   styleUrls: ['./question-bank-questions-view.component.scss']
 })
 export class QuestionBankQuestionsViewComponent implements OnInit {
-  currentWindowWidth?: number;
-  smallScreen: number = 426;
-  valueLang = "nameAr";
+  //currentWindowWidth?: number;
+  //smallScreen: number = 426;
+  //valueLang = "nameAr";
   filterErrorMessage?:string;
   QuestionBankQuestionList: IquestionBankQuestionsModel[] = [];
   QuestionBankQuestionFilter: IquestionBankQuestionsFilterRequest = {};
-  position: string="";
-  msgs: Message[] = [];
+  // position: string="";
+  //msgs: Message[] = [];
  
-  constructor(private questionBankQuestionService: QuestionBankQuestionService,private activeroute: ActivatedRoute, private router: Router, public translate: TranslateService) { }
+  constructor(private questionBankQuestionService: QuestionBankQuestionService,
+     public translate: TranslateService) { }
 
   ngOnInit(): void {
-    this.currentWindowWidth = window.innerWidth;
-    this.valueLang= this.translate.currentLang=='en-US'?'nameEn':'nameAr';
+    // this.currentWindowWidth = window.innerWidth;
+    // this.valueLang= this.translate.currentLang=='en-US'?'nameEn':'nameAr';
     // this.nav.show();
     this.getQuestionBankQuestions(true)
   }
   getQuestionBankQuestions(isLazyLoading = false) {
     this.filterErrorMessage = "";
-    //reset skip on filter
-    // if (!isLazyLoading) {
-    //   this.QuestionBankCategoryFilter.skip = 0;
-    // }
-  
-    //this.QuestionBankCategoryFilter.catgName = this.QuestionBankCategoryFilter.catgName == "" ? null : this.QuestionBankCategoryFilter.catgName;
     this.QuestionBankQuestionFilter.PageNumber=10;
     this.QuestionBankQuestionFilter.PageSize=0;
     this.questionBankQuestionService.getQuestionBankQuestionsFilter(this.QuestionBankQuestionFilter).subscribe(res => {
       let response = <BaseResponseModel>res;
       if (response.isSuccess) {
         this.QuestionBankQuestionList = response.data;
-       // this.totalRec = response.count;
-        // this.from = this.QuestionBankCategoryFilter.skip + 1
-        // this.to = this.QuestionBankCategoryFilter.skip + this.QuestionBankCategoryFilter.take 
-        // if (this.to > this.totalRec) {
-        //   this.to = this.totalRec;
-
-        // }
       }
       else {
         this.QuestionBankQuestionList = [];
@@ -62,6 +50,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
       }
     )
   }
+  
   clearFilter(){
     this.QuestionBankQuestionFilter = {};
     this.QuestionBankQuestionFilter.PageNumber=10;
@@ -104,7 +93,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   }
 
   confirmPosition(position: string) {
-    this.position = position;
+    // this.position = position;
 
     // this.confirmationService.confirm({
     //   message: this.translate.currentLang == Languages.English ?'Do you want to delete this record?':'هل تريد حذف هذا السجل؟',

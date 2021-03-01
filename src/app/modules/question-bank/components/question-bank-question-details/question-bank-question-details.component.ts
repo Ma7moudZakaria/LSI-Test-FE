@@ -2,52 +2,44 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { IquestionBankCategoriesModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-categories-model';
+import { IquestionBankQuestionsModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
-import { QuestionBankCategoryService } from 'src/app/core/services/question-bank-services/question-bank-category.service';
+import { QuestionBankQuestionService } from 'src/app/core/services/question-bank-services/question-bank-question.service';
 
 @Component({
-  selector: 'app-question-bank-category-details',
-  templateUrl: './question-bank-category-details.component.html',
-  styleUrls: ['./question-bank-category-details.component.scss']
+  selector: 'app-question-bank-question-details',
+  templateUrl: './question-bank-question-details.component.html',
+  styleUrls: ['./question-bank-question-details.component.scss']
 })
-export class QuestionBankCategoryDetailsComponent implements OnInit {
-  valueLang = "nameEn";
+export class QuestionBankQuestionDetailsComponent implements OnInit {
+  //valueLang = "nameEn";
   QuestionBankCategoryId:string='';
-  QuestionBankCategory?: IquestionBankCategoriesModel ;
-  currentWindowWidth?: number;
+  QuestionBankQuestion?: IquestionBankQuestionsModel ;
+  //currentWindowWidth?: number;
   errorMessage?:string;
-  msgs: Message[] = [];
-  constructor(private questionBankCategoryService: QuestionBankCategoryService,private activeroute: ActivatedRoute, private router: Router, public translate: TranslateService, private authService: AuthService) { }
-
+  //msgs: Message[] = [];
+  QuestionBankQuestionId:string="";
+  
+  constructor(private questionBankQuestionService: QuestionBankQuestionService,
+     public translate: TranslateService) { }
   ngOnInit(): void {
-    // this.authService.currentLanguageEvent.subscribe(
-    //   (singal: Languages) => {
-    //     this.valueLang = this.translate.currentLang == 'en-US' ? 'nameEn' : 'nameAr';
-       
 
-    //   }
-    // )
     // this.nav.show();
-    // this.QuestionBankCategoryId = this.activeroute.snapshot.paramMap.get('id');
-    this.currentWindowWidth = window.innerWidth;
-
+    // this.QuestionBankQuestionId = this.activeroute.snapshot.paramMap.get('id');
+    // this.currentWindowWidth = window.innerWidth;
   }
-  @HostListener('window:resize')
+  // @HostListener('window:resize')
 
-  onResize() {
-    this.currentWindowWidth = window.innerWidth
-  }
-  loadQuestionBankCategoryDetails() {
-    this.questionBankCategoryService.getQuestionBankCategoryDetails(this.QuestionBankCategoryId).subscribe(
+  // onResize() {
+  //   this.currentWindowWidth = window.innerWidth
+  // }
+  loadQuestionBankQuestionDetails() {
+    this.questionBankQuestionService.getQuestionBankQuestionDetails(this.QuestionBankQuestionId).subscribe(
       res => {
         var response = <BaseResponseModel>res;
         if (response.isSuccess) {
-
-          this.QuestionBankCategory = response.data;
-       
-
+          this.QuestionBankQuestion = response.data;
         }
         else {
           this.errorMessage = response.message;
@@ -56,8 +48,6 @@ export class QuestionBankCategoryDetailsComponent implements OnInit {
         console.log(error);
       })
   }
-
-  
 
   // confirmDelete() {
    
@@ -72,11 +62,11 @@ export class QuestionBankCategoryDetailsComponent implements OnInit {
   //       acceptLabel: this.translate.currentLang == 'en-US' ? "Ok" : "موافق",
   //       rejectLabel: this.translate.currentLang == 'en-US' ? "No" : "لا",
   //       accept: () => {
-  //         this.questionBankCategoryService.deleteQuestionBankCategory(this.QuestionBankCategoryId).subscribe(
+  //         this.questionBankQuestionService.deleteQuestionBankQuestion(this.QuestionBankQuestionId).subscribe(
   //           res => {
 
 
-  //             this.router.navigateByUrl('/question-bank-categories-view/question-bank-categories-view');
+  //             this.router.navigateByUrl('/question-bank-questions-view/question-bank-questions-view');
 
   //           }, error => {
 
@@ -92,5 +82,6 @@ export class QuestionBankCategoryDetailsComponent implements OnInit {
     
 
   // }
+
 
 }

@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ProgramRoutingModule } from './program-routing.module';
-import { AddProgramComponent } from './add-program/add-program/add-program.component';
-import { ProgramsViewComponent } from './programs-view/programs-view/programs-view.component';
-import { ProgramDetailsComponent } from './program-details/program-details/program-details.component';
+import { AddProgramComponent } from './components/add-program/add-program.component';
+import { ProgramsViewComponent } from './components/programs-view/programs-view.component';
+import { ProgramDetailsComponent } from './components/program-details/program-details.component';
 
 
 @NgModule({
