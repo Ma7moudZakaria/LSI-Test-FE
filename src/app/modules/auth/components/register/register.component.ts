@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserModel } from 'src/app/core/interfaces/auth/user-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 
 @Component({
@@ -11,12 +10,12 @@ import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  RouteParams:any;
+  routeParams:any;
   signup = false;
   editProfile = false;
-  registrationModel: UserModel | undefined;
-  userForm: FormGroup | undefined;
-  errorMessage: string | undefined;
+  registrationModel = {};
+  userForm = new FormGroup({});
+  errorMessage:string | undefined;
   isSubmit = false;
   showActiveMessage = '';
 
@@ -34,16 +33,14 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.RouteParams = this.router.url;
+    this.routeParams = this.router.url;
     this.loadUserForm();
-    if (this.RouteParams === '/auth/signup') {
+    if (this.routeParams === '/auth/signup') {
       this.signup = true;
       this.editProfile = false;
-    } else if (this.RouteParams === '/user/edit-profile') {
+    } else if (this.routeParams === '/user/edit-profile') {
       this.signup = false;
       this.editProfile = true;
-      // this.userEditObj = JSON.parse(localStorage.getItem('currentUser'));
-      this.fillUserForm();
     }
   }
 

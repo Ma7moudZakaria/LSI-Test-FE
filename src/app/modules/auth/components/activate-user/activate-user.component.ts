@@ -15,7 +15,7 @@ export class ActivateUserComponent implements OnInit {
   constructor(private router: Router,private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.authService.ActivateUser(this.userId).subscribe(res => {
+    this.authService.activateUser(this.userId).subscribe(res => {
       console.log(res);
       if (res.isSuccess){
         this.successMessage={

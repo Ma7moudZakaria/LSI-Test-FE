@@ -12,14 +12,14 @@ import { ContentManagementService } from 'src/app/core/services/content-manageme
 })
 
 export class ContentManagementSystemComponent implements OnInit {
-  ContentManagementSystemForm!: FormGroup;
+  contentManagementSystemForm = new FormGroup({});
   contentmanagementsystem!: IContentManagement;
   createCMS = false;
   updateCMS = false;
   errorMessage:any;
   contentManagementId!: string;
-  RouteParams: any;
-  CMSType!: IContentManagementFilter;
+  routeParams: any;
+  cmsType!: IContentManagementFilter;
   isSubmit = false;
 
   constructor(
@@ -29,13 +29,13 @@ export class ContentManagementSystemComponent implements OnInit {
 
   ngOnInit(){      
       // Send Type Id as a parameter
-      this.CMSType.typeId = this.route.snapshot.params.id;
+      this.cmsType.typeId = this.route.snapshot.params.id;
 
-      if (this.RouteParams === '/content-management/create-content-management-system') {
+      if (this.routeParams === '/content-management/create-content-management-system') {
           this.createCMS = true;
           this.updateCMS = false;
-      } else if (this.RouteParams.includes('/user/update-content-management-system') && this.CMSType) {
-          this.contentmanagementService.getContentManagementSystemByType(this.CMSType).subscribe(cms => {
+      } else if (this.routeParams.includes('/user/update-content-management-system') && this.cmsType) {
+          this.contentmanagementService.getContentManagementSystemByType(this.cmsType).subscribe(cms => {
             this.contentmanagementsystem = cms.data;
           })
           this.createCMS = false;
@@ -72,11 +72,11 @@ export class ContentManagementSystemComponent implements OnInit {
   }
 
   get f() {
-    return this.ContentManagementSystemForm.controls;
+    return this.contentManagementSystemForm.controls;
   }
 
   buildForm() {
-    this.ContentManagementSystemForm = this.fb.group(
+    this.contentManagementSystemForm = this.fb.group(
       {
         shortDescriptionAr: ['', Validators.required],
         shortDescriptionEn: ['', Validators.required],

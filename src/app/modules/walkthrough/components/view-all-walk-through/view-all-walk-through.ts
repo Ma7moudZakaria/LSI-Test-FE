@@ -10,11 +10,11 @@ import { WalkThroughService } from 'src/app/core/services/walk-through-services/
 
 export class ViewAllWalkThroughComponent implements OnInit {
 
-  RouteParams: any;
-  WalkThroughId: any;
-  AllWalkThroughData:any;
-  IsSuccess:any;
-  SuccessMessage:any;
+  routeParams: any;
+  walkThroughId: any;
+  allWalkThroughData:any;
+  isSuccess:any;
+  successMessage:any;
 
   constructor(
     private router: Router,
@@ -23,13 +23,13 @@ export class ViewAllWalkThroughComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.RouteParams = this.router.url;
-    this.WalkThroughId = this.route.snapshot.params.id;
-    console.log("Walk Through Id :" , this.WalkThroughId);
+    this.routeParams = this.router.url;
+    this.walkThroughId = this.route.snapshot.params.id;
+    console.log("Walk Through Id :" , this.walkThroughId);
 
     this.walkThroughService.getAllWalkThrough().subscribe(res =>{
-      this.AllWalkThroughData = res.data;
-      console.log("All Walk Through Data :" , this.AllWalkThroughData);
+      this.allWalkThroughData = res.data;
+      console.log("All Walk Through Data :" , this.allWalkThroughData);
     });
   }
 
@@ -37,8 +37,8 @@ export class ViewAllWalkThroughComponent implements OnInit {
   {
     console.log("Walk Through Id :" , Id)    
     this.walkThroughService.deleteWalkThrough(Id).subscribe(res =>{
-      this.IsSuccess = res.isSuccess;
-      this.SuccessMessage = res.message;
+      this.isSuccess = res.isSuccess;
+      this.successMessage = res.message;
     });
   }
 }

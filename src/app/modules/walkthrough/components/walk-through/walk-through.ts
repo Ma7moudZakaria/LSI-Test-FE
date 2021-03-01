@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { IWalkThrough } from 'src/app/core/interfaces/walkthrough-interfaces/iwalkthrough';
 import { WalkThroughService } from 'src/app/core/services/walk-through-services/walk-through-services';
 
-
 @Component({
   selector: 'app-walk-through',
   templateUrl: './walk-through.html',
@@ -13,13 +12,13 @@ import { WalkThroughService } from 'src/app/core/services/walk-through-services/
 
 export class WalkThroughComponent implements OnInit {
 
-  WalkThroughForm!: FormGroup;
+  walkThroughForm = new FormGroup({});
   walkThrough!: IWalkThrough;
   createWalkThrough = false;
   updateWalkThrough = false;
   errorMessage:any;
   walkThroughId!: string;
-  RouteParams: any;
+  routeParams: any;
   isSubmit = false;
 
   constructor(
@@ -30,10 +29,10 @@ export class WalkThroughComponent implements OnInit {
   ngOnInit(){      
       this.walkThroughId = this.route.snapshot.params.id;
 
-      if (this.RouteParams === '/walk-through/create-walk-through') {
+      if (this.routeParams === '/walk-through/create-walk-through' && this.walkThroughId == null) {
           this.createWalkThrough = true;
           this.updateWalkThrough = false;
-      } else if (this.RouteParams.includes('/user/update-walk-through') && this.walkThroughId != null) {
+      } else if (this.routeParams.includes('/user/update-walk-through') && this.walkThroughId != null) {
           this.walkThroughService.getWalkThroughById(this.walkThroughId).subscribe(res => {
             this.walkThrough = res.data;
           })
@@ -69,11 +68,11 @@ export class WalkThroughComponent implements OnInit {
   }
 
   get f() {
-    return this.WalkThroughForm.controls;
+    return this.walkThroughForm.controls;
   }
 
   buildForm() {
-    this.WalkThroughForm = this.fb.group(
+    this.walkThroughForm = this.fb.group(
       {
         textAr: ['', Validators.required],
         textEn: ['', Validators.required]        

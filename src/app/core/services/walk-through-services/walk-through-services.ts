@@ -9,37 +9,37 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
 })
 export class WalkThroughService {
 
-  GetAllWalkThroughURL = environment.BaseURL + 'WalkThrough/get-all-walk-through/';
-  CreateWalkThroughURL = environment.BaseURL + 'WalkThrough/create-walk-through/';
-  UpdateWalkThroughURL = environment.BaseURL + 'WalkThrough/update-walk-through/';
-  GetWalkThroughByIdURL = environment.BaseURL + 'WalkThrough/get-walk-through-by-id/';
-  DeleteWalkThroughURL = environment.BaseURL + 'WalkThrough/delete-walk-through/';
+  getAllWalkThroughURL = environment.BaseURL + 'WalkThrough/get-all-walk-through/';
+  createWalkThroughURL = environment.BaseURL + 'WalkThrough/create-walk-through/';
+  updateWalkThroughURL = environment.BaseURL + 'WalkThrough/update-walk-through/';
+  getWalkThroughByIdURL = environment.BaseURL + 'WalkThrough/get-walk-through-by-id/';
+  deleteWalkThroughURL = environment.BaseURL + 'WalkThrough/delete-walk-through/';
   
 
   constructor(private http: HttpClient) { }
 
   getAllWalkThrough() 
   {
-    return this.http.get<BaseResponseModel>(this.GetAllWalkThroughURL);
+    return this.http.get<BaseResponseModel>(this.getAllWalkThroughURL);
   }
 
   createWalkThrough(model : any):Observable<BaseResponseModel>
   {
-    return this.http.post<BaseResponseModel>(this.CreateWalkThroughURL , model);
+    return this.http.post<BaseResponseModel>(this.createWalkThroughURL , model);
   }
 
   updateWalkThrough(model : any):Observable<BaseResponseModel>
   {
-    return this.http.put<BaseResponseModel>(this.UpdateWalkThroughURL , model);
+    return this.http.put<BaseResponseModel>(this.updateWalkThroughURL , model);
   }
 
   getWalkThroughById(id : string) 
   {
-    return this.http.get<BaseResponseModel>(this.GetWalkThroughByIdURL + id)
+    return this.http.get<BaseResponseModel>(this.getWalkThroughByIdURL + id)
   }
 
   deleteWalkThrough(id : string) 
   {
-    return this.http.delete<BaseResponseModel>(this.DeleteWalkThroughURL + id)
+    return this.http.delete<BaseResponseModel>(this.deleteWalkThroughURL + id)
   }
 }

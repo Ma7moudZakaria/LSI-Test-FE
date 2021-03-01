@@ -10,11 +10,11 @@ import { ContentManagementService } from 'src/app/core/services/content-manageme
 
 export class ViewAllContentManagementComponent implements OnInit {
 
-  RouteParams: any;
-  CMSId: any;
-  AllCMSData:any;
-  IsSuccess:any;
-  SuccessMessage:any;
+  routeParams: any;
+  cmsId: any;
+  allCMSData:any;
+  isSuccess:any;
+  successMessage:any;
 
   constructor(
     private router: Router,
@@ -23,13 +23,13 @@ export class ViewAllContentManagementComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.RouteParams = this.router.url;
-    this.CMSId = this.route.snapshot.params.id;
-    console.log("CMS Type Id :" , this.CMSId);
+    this.routeParams = this.router.url;
+    this.cmsId = this.route.snapshot.params.id;
+    console.log("CMS Type Id :" , this.cmsId);
 
     this.contentmanagementService.getAllContentManagementSystem().subscribe(res =>{
-      this.AllCMSData = res.data;
-      console.log("All CMS Data :" , this.AllCMSData);
+      this.allCMSData = res.data;
+      console.log("All CMS Data :" , this.allCMSData);
     });
   }
 
@@ -37,8 +37,8 @@ export class ViewAllContentManagementComponent implements OnInit {
   {
     console.log("CMS Id :" , Id)    
     this.contentmanagementService.deleteContentManagementSystem(Id).subscribe(res =>{
-      this.IsSuccess = res.isSuccess;
-      this.SuccessMessage = res.message;
+      this.isSuccess = res.isSuccess;
+      this.successMessage = res.message;
     });
   }
 }

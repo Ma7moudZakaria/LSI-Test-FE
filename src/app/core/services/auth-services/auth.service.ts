@@ -2,10 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { AuthenticationModel } from '../../interfaces/auth/authentication-model';
-import { ForgotPasswordModel } from '../../interfaces/auth/forgot-password-model';
-import { ResetPasswordModel } from '../../interfaces/auth/reset-password-model';
-import { UserModel } from '../../interfaces/auth/user-model';
+import { IAuthentication } from '../../interfaces/auth/iauthentication-model';
+import { IForgotPassword } from '../../interfaces/auth/iforgot-password-model';
+import { IResetPassword } from '../../interfaces/auth/ireset-password-model';
+import { IUser } from '../../interfaces/auth/iuser-model';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 
 @Injectable({
@@ -13,31 +13,31 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
 })
 export class AuthService {
 
-  RegisterUrl = environment.BaseURL + 'Users/register';
-  UserAuthenticationUrl = environment.BaseURL + 'Users/user-authentication';
-  ForgotPasswordUrl = environment.BaseURL + 'Users/forgot-password';
-  ResetPasswordUrl = environment.BaseURL + 'Users/reset-password';
-  ActivateUserUrl = environment.BaseURL + 'Users/send-new-activation-code/';
+  registerUrl = environment.BaseURL + 'Users/register';
+  userAuthenticationUrl = environment.BaseURL + 'User/user-authenticate';
+  forgotPasswordUrl = environment.BaseURL + 'User/forgot-password';
+  resetPasswordUrl = environment.BaseURL + 'User/reset-password';
+  activateUserUrl = environment.BaseURL + 'User/send-new-activation-code/';
 
   constructor(private http:HttpClient) { }
 
-  register(model: UserModel) {
-    return this.http.post<BaseResponseModel>(this.RegisterUrl, model);
+  register(model: IUser) {
+    return this.http.post<BaseResponseModel>(this.registerUrl, model);
   }
 
-  UserAuthentication(model:AuthenticationModel):Observable<BaseResponseModel>{
-    return this.http.post<BaseResponseModel>(this.UserAuthenticationUrl, model);
+  userAuthentication(model:IAuthentication){
+    return this.http.post(this.userAuthenticationUrl, model);
   }
 
-  ForgotPassword(model:ForgotPasswordModel):Observable<any>{
-    return this.http.post<BaseResponseModel>(this.ForgotPasswordUrl, model);
+  forgotPassword(model:IForgotPassword):Observable<any>{
+    return this.http.post<BaseResponseModel>(this.forgotPasswordUrl, model);
   }
 
-  ResetPassword(model:ResetPasswordModel):Observable<any>{
-    return this.http.post<BaseResponseModel>(this.ResetPasswordUrl, model);
+  resetPassword(model:IResetPassword):Observable<any>{
+    return this.http.post<BaseResponseModel>(this.resetPasswordUrl, model);
   }
 
-  ActivateUser(Id:any):Observable<any>{
-    return this.http.put<BaseResponseModel>(this.ActivateUserUrl + Id , null);
+  activateUser(Id:any):Observable<any>{
+    return this.http.put<BaseResponseModel>(this.activateUserUrl + Id , null);
   }
 }

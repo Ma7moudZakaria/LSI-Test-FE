@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ResetPasswordModel } from 'src/app/core/interfaces/auth/reset-password-model';
+import { IResetPassword } from 'src/app/core/interfaces/auth/ireset-password-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 // import { MustMatch } from 'src/app/core/_helper/must-match.validator';
 
@@ -13,14 +13,14 @@ import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 export class ForgotPasswordComponent implements OnInit {
 
   hidePassword = true;
-  userform: FormGroup | undefined;
+  userform = new FormGroup({});
   submitted: boolean | undefined;
   token:any;
   successMessage:any;
   errorMessage:any;
 
   constructor( 
-    private fb: FormBuilder,
+      private fb: FormBuilder,
       private router: Router,
       private activatedRoute: ActivatedRoute,
       private authService: AuthService
@@ -44,12 +44,12 @@ export class ForgotPasswordComponent implements OnInit {
 
   onSubmit(value: string) {
     if (this.userform?.valid) {
-      var resetPasswordModel : ResetPasswordModel;
+      var resetPasswordModel : IResetPassword;
       resetPasswordModel = {
         token: this.token,
         password: this.userform.value.password
     }
-      this.authService.ResetPassword(resetPasswordModel).subscribe(
+      this.authService.resetPassword(resetPasswordModel).subscribe(
         (res) => {
           if (res.isSuccess){
             this.successMessage={

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ResetPasswordModel } from 'src/app/core/interfaces/auth/reset-password-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 
 @Component({
@@ -13,8 +12,8 @@ export class ResetPasswordComponent implements OnInit {
 
   passwordType = 'password';
   passwordShown = false;
-  resetPasswordForm: FormGroup | undefined;
-  resetPasswordModel: ResetPasswordModel | undefined;
+  resetPasswordForm = new FormGroup({});
+  resetPasswordModel = {};
   token:any;
   successMessage:any;
   constructor(
@@ -59,7 +58,7 @@ export class ResetPasswordComponent implements OnInit {
         password: this.f?.password.value
       }
         
-      this.authService.ResetPassword(this.resetPasswordModel).subscribe(res => {
+      this.authService.resetPassword(this.resetPasswordModel).subscribe(res => {
         console.log(res);
         if (res.isSuccess){
           this.successMessage={
@@ -91,5 +90,4 @@ export class ResetPasswordComponent implements OnInit {
       }
     }
   } 
-
 }
