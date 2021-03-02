@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';import { Router } from '@angular/router';
+import { IUser } from 'src/app/core/interfaces/auth/iuser-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 
 @Component({
@@ -14,20 +14,12 @@ export class RegisterComponent implements OnInit {
   signup = false;
   editProfile = false;
   registrationModel = {};
-  userForm = new FormGroup({});
-  errorMessage:string | undefined;
+  registerform : FormGroup  = new FormGroup({});
+  errorMessage:any;
   isSubmit = false;
   showActiveMessage = '';
+  hidePassword = true;
 
-  prices = {
-    title: 'Background And Solution',
-    description: `Prices are per portfolio report for each year end. Note that you can revise your portfolio but can only produce one final report per fee.`,
-    list: [
-        'international Clients: $150 / report',
-        'South African Clients: R2200 (Excl VAT)',
-        'Payments are done by secure credit card or EFT (SA Clients only).',
-    ],
-  };
   constructor(private authService: AuthService,
     private router: Router,
     private fb: FormBuilder) { }
@@ -35,7 +27,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.routeParams = this.router.url;
     this.loadUserForm();
-    if (this.routeParams === '/auth/signup') {
+    
+    if (this.routeParams === '/auth/register') {
       this.signup = true;
       this.editProfile = false;
     } else if (this.routeParams === '/user/edit-profile') {
@@ -45,14 +38,15 @@ export class RegisterComponent implements OnInit {
   }
 
   get f() {
-    return this.userForm?.controls;
+    return this.registerform.controls;
   }
 
   loadUserForm() {
-    this.userForm = this.fb.group({
+    this.registerform = this.fb.group({
       email: ["", [Validators.required, Validators.email]],
       name: ["", Validators.required],
-      phone: ["", Validators.required],
+      fathername: ["", Validators.required],
+      familyname: ["", Validators.required],
       password: ["", Validators.required],
       confirmPassword: ["", Validators.required],
     });
@@ -61,31 +55,24 @@ export class RegisterComponent implements OnInit {
     // })
   }
 
-  // fillUserForm() {
-  //   this.f.email.setValue(this.userEditObj.email);
-  //   this.f.name.setValue(this.userEditObj.name);
-  //   this.f.phone.setValue(this.userEditObj.phone);
-  // }
-
-  onSignup(/*form: NgForm*/) {
+  onSignup(value: string) {
     this.isSubmit = true;
     this.errorMessage = '';
     localStorage.clear();
-
-    console.log(this.userForm?.value);
     this.registrationModel = {
-      email: this.userForm?.value.email,
-      userName: this.userForm?.value.userName,
-      confirmPassword: this.userForm?.value.confirmPassword,
-      password: this.userForm?.value.password
+      uname: this.registerform.value.name + " " + this.registerform.value.fathername + " " + this.registerform.value.familyname,
+      uemail: this.registerform.value.email,
+      ucpass: this.registerform.value.confirmPassword,//""
+      upass: this.registerform.value.password
     }
 
     this.authService.register(this.registrationModel).subscribe(res => {
       this.isSubmit = true;
       if (res.isSuccess) {
+        localStorage.setItem('user',JSON.stringify(res.data as IUser))
         this.showActiveMessage = "Account created successfully, please check you email for activation";
         setTimeout(()=>{            
-          this.router.navigate(['/home']);
+          // this.router.navigate(['/home']);
          }, 3000);
         }
         else {
