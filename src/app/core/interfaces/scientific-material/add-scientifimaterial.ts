@@ -8,6 +8,6 @@ export interface AddScientificMaterial {
     fileLink:string;
     active:boolean;
     availableForAllUsers:boolean;
-    programMatrial:ProgramScientificMaterial[];
+   programMatrial?:ProgramScientificMaterial[];
 
 }

@@ -15,11 +15,13 @@ export class AttachmentsService {
   
   upload(files:FileUpload[]) {
 
-    const fd = new FormData();
+    var fd = new FormData();
+    let i =0;
     Array.from(files).forEach((file) => {
-      fd.append('attachmentsModel'+[0]+'ContainerNameIndex', file.containerNameIndex.toString());
-      fd.append('attachmentsModel'+[0]+'File', file.file);
-
+      var x = 'attachmentsModel['+i+'].ContainerNameIndex';
+      fd.append('attachmentsModel['+i+'].ContainerNameIndex', file.containerNameIndex.toString());
+      fd.append('attachmentsModel['+i+'].File', file.file);
+      i++;
     });
     return this.http.post(this.UploadFilesURL,fd)
   }

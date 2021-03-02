@@ -11,6 +11,6 @@ export interface ScientificMaterialDetails {
     active:boolean;
     availableForAllUsers:boolean;
     matrialAttachments:IAttachment[];
-    matrialPrograms:any;
+    matrialPrograms?:any;
 
 }

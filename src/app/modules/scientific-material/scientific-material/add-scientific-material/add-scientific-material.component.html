@@ -1,1 +1,113 @@
-<p>add-scientific-material works!</p>
+<form class="form-group" [formGroup]="CurrentForm" (submit)="Submit()">
+
+    <div class="form-group">
+        <label for="programs">programs</label>
+        <div class="d-flex">
+            <div class="input-group">
+                <select multiple class="form-control" 
+                formControlName="programMatrial" name="formControlName"
+                (change)="selectProgram($event)">
+                    <option value="">select programs</option>
+                    <option *ngFor="let item of programs" value="{{item.id}}">{{item.arabName}}</option>
+
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="category">Material Category</label>
+
+        <div class="d-flex">
+            <div class="input-group">
+                <select class="form-control" formControlName="matrialCategory" name="matrialCategory">
+                    <option value="">select Category</option>
+                    <option *ngFor="let item of materialCategoriesLookup" value="{{item.id}}">{{item.nameAr}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="matrialTitleAr">Title Ar</label>
+        <input type="text" class="form-control" formControlName="matrialTitleAr" id="matrialTitleAr">
+    </div>
+    <div class="form-group">
+        <label for="matrialTitleEn">Title En</label>
+        <input type="text" class="form-control" formControlName="matrialTitleEn" id="matrialTitleEn">
+    </div>
+
+    <div class="custom-file"> 
+            <input type="file"   class="custom-file-input" multiple
+              id="importFile" (change)="onFileChange($any($event.target).files)" >
+        <label class="custom-file-label" for="customFile">Choose file</label>
+    </div>
+    <div class="row">
+        <div class="col-lg-8 col-md-8">                        
+            <ul class="files-conainer">
+                <li *ngFor="let item of fileList;let i=index">                    
+                    <button  (click)="DeleteAttachment(i,item.id)">delete</button>
+                    <a class="card" href="{{item.url}}"  target="_blank">
+                        <div class="pdf">
+                            <i class="fa fa-file"></i>
+                        </div>
+                        <div class="text-center fileName">
+                            <p
+                                style="text-overflow: ellipsis;overflow: hidden; white-space: nowrap;margin-left: 10px;margin-right: 10px;">
+                                {{item.fileName}}</p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="availableForAllUsers">Available For </label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" formControlName="availableForAllUsers" id="1" [value]=true>
+            <label class="form-check-label" for="1">All</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" formControlName="availableForAllUsers" id="2" [value]=false>
+            <label class="form-check-label" for="2">Selected Programs Only</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="availableForAllUsers">Activation </label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" formControlName="active" id="1" [value]=true>
+            <label class="form-check-label" for="1">Active</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" formControlName="active" id="2" [value]=false>
+            <label class="form-check-label" for="2">inActive</label>
+        </div>
+    </div>
+
+
+    <section>
+        <div class="row ">
+            <div class="col-12 direction-rtl ">
+                <ul class="list-buttons text-center-s mt-30">
+                    <li class="ml-2"> <button class="button" type="submit"
+                            [disabled]="disableSaveButtons">Save</button>
+                    </li>
+                    <li>
+                        <button class="backButton"  type="submit"
+                            [disabled]="disableSaveButtons">Cancel</button>
+                    </li>
+
+                </ul>
+            </div>
+
+
+            <div *ngIf="successMessage" class="alert alert-success">
+                {{successMessage}}
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger">
+                {{errorMessage}}
+            </div>
+        </div>
+
+    </section>
+
+</form>
