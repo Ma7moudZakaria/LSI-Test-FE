@@ -34,7 +34,7 @@ export class AddQuestionBankCategoryComponent implements OnInit {
   constructor(private questionBankCategoryService: QuestionBankCategoryService,
     private activeroute: ActivatedRoute, 
     private router: Router, 
-    public translate: TranslateService,private fb: FormBuilder,) { 
+    public translate: TranslateService,private fb: FormBuilder) { 
       this.formImport = new FormGroup({
         importFile: new FormControl('', Validators.required)
       });

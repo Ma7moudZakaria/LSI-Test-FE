@@ -1,8 +1,9 @@
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, HostListener, Input, OnInit } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { IquestionBankCategoriesModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-categories-model';
 import { IquestionBankQuestionCreatModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-question-creat-model';
 import { IquestionBankQuestionUpdateModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-question-update-model';
 import { IquestionBankQuestionsModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-model';
@@ -21,6 +22,7 @@ export class AddQuestionBankQuestionComponent implements OnInit {
   QuestionBankQuestions?: IquestionBankQuestionsModel ;
   QuestionBankQuestionCreat: IquestionBankQuestionCreatModel = {};
   QuestionBankQuestionUpdate: IquestionBankQuestionUpdateModel = {};
+  QBGLst:IquestionBankCategoriesModel[]=[];
   isAdd:boolean=true;
   // currentWindowWidth?: number;
   errorMessage?:string;
@@ -30,11 +32,17 @@ export class AddQuestionBankQuestionComponent implements OnInit {
   // errorMessage?:string;
   successMessage?:string;
   isSubmit = false;
- 
+  currentForm: FormGroup=new FormGroup({});
+   formImport: FormGroup;
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
     private activeroute: ActivatedRoute, 
     private router: Router,
-     public translate: TranslateService) { }
+     public translate: TranslateService,private fb: FormBuilder) {
+      this.formImport = new FormGroup({
+        importFile: new FormControl('', Validators.required)
+      });
+
+      }
 
   ngOnInit(): void {
     if (this.activeroute.snapshot.paramMap.get('id') != null) {
