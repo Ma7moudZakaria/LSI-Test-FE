@@ -1,4 +1,43 @@
 <p>question-bank-categories-view works!</p>
 <div class="row">
+    <div class="col-4">
+        <div class="row">
+            <p class="text-left col">The Departments</p>
+            <a [routerLink]="['/questionBank/add-question-bank-category']"><p class="text-right col">Add Department</p>
 
-</div>
+            </a> 
+            
+        </div>
+        <div class="row">
+            <input type="text" placeholder="Search.." name="search">
+          <br/>
+        </div>
+        
+      <div *ngFor="let QBC of TessLST ; let i=index;" class="list-group">
+        
+        <div routerLink="" class="list-group-item  list-group-item_custom list-group-item-action row" >
+          <p>
+             {{QBC.nam1}}
+          </p>
+        </div>
+   
+        </div>
+  
+  <!-- <div *ngFor="let QBC of QuestionBankCategoryList ; let i=index;">
+    <div class="list-group-item  list-group-item_custom list-group-item-action row" >
+      <p>
+         {{QBC.arabCatgName}}
+      </p>
+    </div>
+  </div> -->
+  
+    </div>
+    <div class="col" >
+  
+  
+    </div>
+  
+  </div>
+  
+  
+  

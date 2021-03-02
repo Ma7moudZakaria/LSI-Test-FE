@@ -9,11 +9,13 @@ import { AddQuestionBankQuestionComponent } from './components/add-question-bank
 import { QuestionBankQuestionsViewComponent } from './components/question-bank-questions-view/question-bank-questions-view.component';
 import { QuestionBankQuestionDetailsComponent } from './components/question-bank-question-details/question-bank-question-details.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AddQuestionBankCategoryComponent, QuestionBankCategoriesViewComponent, QuestionBankCategoryDetailsComponent, AddQuestionBankQuestionComponent, QuestionBankQuestionsViewComponent, QuestionBankQuestionDetailsComponent],
+  declarations: [AddQuestionBankCategoryComponent ,QuestionBankCategoriesViewComponent, QuestionBankCategoryDetailsComponent, AddQuestionBankQuestionComponent, QuestionBankQuestionsViewComponent, QuestionBankQuestionDetailsComponent],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     QuestionBankRoutingModule, TranslateModule
   ]

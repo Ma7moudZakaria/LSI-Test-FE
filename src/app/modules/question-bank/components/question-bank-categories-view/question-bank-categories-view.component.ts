@@ -21,7 +21,7 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
   QuestionBankCategoryFilter: IquestionBankCategoriesFilter = {};
   position: string="";
   //msgs: Message[] = [];
- 
+  TessLST=[{"id":"a1","nam1":"catogry1"},{"id":"a2","nam1":"catogry2"}];
   constructor(private questionBankCategoryService: QuestionBankCategoryService,
     private activeroute: ActivatedRoute, 
     private router: Router, public translate: TranslateService) { }
@@ -110,5 +110,12 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
     //   key: "positionDialog"
     // });
   }
+  ChangCTg(categoryId:string) {
+  
+    this.router.navigateByUrl('/questionBank/question-bank-questions-view/'+categoryId);
+ 
+    
+   }
+ 
 
 }
