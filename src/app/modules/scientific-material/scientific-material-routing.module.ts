@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ScientificMaterialViewComponent } from './scientific-material-view/scientific-material-view.component';
 import { AddScientificMaterialComponent } from './scientific-material/add-scientific-material/add-scientific-material.component';
+import { TstComponent } from './tst/tst.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,14 @@ const routes: Routes = [
       { path: 'add-scientific-material/:id', component: AddScientificMaterialComponent},      
       { path: 'scientific-material-view', component: ScientificMaterialViewComponent}
 
-    ]
+        ],
+        path: 'tst', component: TstComponent
+
+  }
+];
+const routes: Routes = [
+  {
+    path: 'tst' , component:TstComponent
   }
 ];
 
