@@ -10,18 +10,12 @@ const routes: Routes = [
     children: [
       { path: 'add-scientific-material', component: AddScientificMaterialComponent},
       { path: 'add-scientific-material/:id', component: AddScientificMaterialComponent},      
-      { path: 'scientific-material-view', component: ScientificMaterialViewComponent}
-
-        ],
-        path: 'tst', component: TstComponent
-
+      { path: 'scientific-material-view', component: ScientificMaterialViewComponent},
+      {path: 'tst', component: TstComponent}
+        ],        
   }
 ];
-const routes: Routes = [
-  {
-    path: 'tst' , component:TstComponent
-  }
-];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
