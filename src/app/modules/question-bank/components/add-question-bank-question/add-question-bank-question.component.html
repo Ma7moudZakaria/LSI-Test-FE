@@ -1,30 +1,30 @@
 <p>add-question-bank-question works!</p>
 <form class="form-group" [formGroup]="currentForm" (submit)="Submit()">
-    <div class="form-group">
+    <!-- <div class="form-group">
        
         <select class="form-select">
             <option selected>select catogry</option>
             <option value="1">One</option>
-            <!-- <option value="2">Two</option> -->
+           
             
           </select>
-    </div>
+    </div> -->
     
     <div class="form-group">
         <label for="comment">Question Ar</label>
-        <textarea class="form-control" cols="2" rows="5" id="comment"></textarea>
+        <textarea class="form-control" cols="2" rows="5" id="InputQuestioAr" formControlName="QuestioAr"></textarea>
       </div>
       <div class="form-group">
         <label for="comment">Question En</label>
-        <textarea class="form-control" cols="2" rows="5" id="comment"></textarea>
+        <textarea class="form-control" cols="2" rows="5" id="InputQuestionEn" formControlName="QuestionEn"></textarea>
       </div>
     <div class="form-group">
         <label for="exampleFormControlTextarea1">Answer Ar</label>
-        <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10"></textarea>
+        <textarea class="form-control rounded-0" rows="10" id="InputAnswerAr" formControlName="AnswerAr"></textarea>
       </div>
       <div class="form-group">
         <label for="exampleFormControlTextarea1">Answer En</label>
-        <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10"></textarea>
+        <textarea class="form-control rounded-0" rows="10" id="InputAnswerEn" formControlName="AnswerEn"></textarea>
       </div>
       
       

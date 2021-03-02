@@ -23,6 +23,7 @@ export class AddQuestionBankQuestionComponent implements OnInit {
   QuestionBankQuestionCreat: IquestionBankQuestionCreatModel = {};
   QuestionBankQuestionUpdate: IquestionBankQuestionUpdateModel = {};
   QBGLst:IquestionBankCategoriesModel[]=[];
+  QBCid?:string="7bfcdb33-b3a0-43fd-af30-12167ac46508";
   isAdd:boolean=true;
   // currentWindowWidth?: number;
   errorMessage?:string;
@@ -55,7 +56,23 @@ export class AddQuestionBankQuestionComponent implements OnInit {
       this.Title = "Add QuestionBankQuestion";
       this.isAdd=true;
     }
+   this.buildForm();
+  }
+  get f() {
+    return this.currentForm?.controls;
+  }
+  buildForm() {
+    this.currentForm = this.fb.group(
+      {
+       
+        QuestioAr: ['', Validators.required],
+        QuestionEn: ['', Validators.required],
+        AnswerAr : ['', Validators.required],
+        AnswerEn : ['', Validators.required],
+      
 
+
+      })
   }
   // @HostListener('window:resize')
 
@@ -84,6 +101,11 @@ export class AddQuestionBankQuestionComponent implements OnInit {
         var response =<BaseResponseModel>res;
         if (response.isSuccess) {
           this.QuestionBankQuestions = response.data;
+          this.QBCid=this.QuestionBankQuestions?.categoryId;
+          this.f.QuestioAr.setValue(this.QuestionBankQuestions?.arabQuestion);
+          this.f.QuestionEn.setValue(this.QuestionBankQuestions?.engQuestion);
+          this.f.AnswerAr.setValue(this.QuestionBankQuestions?.arabAnswer);
+          this.f.AnswerEn.setValue(this.QuestionBankQuestions?.engAnswer);
         }
         else {
           this.errorMessage = response.message;
@@ -100,7 +122,14 @@ export class AddQuestionBankQuestionComponent implements OnInit {
     this.errorMessage = '';
     this.successMessage = '';
 
-    if (this.QuestionBankQuestionId) {    
+    if (this.QuestionBankQuestionId) {   
+      this.QuestionBankQuestionUpdate.id=this.QuestionBankQuestionId;
+      this.QuestionBankQuestionUpdate.no=this.QuestionBankQuestions?.no;
+      this.QuestionBankQuestionUpdate.categoryId =this.QBCid;
+      this.QuestionBankQuestionUpdate.arabQuestion=this.f.QuestioAr.value;
+      this.QuestionBankQuestionUpdate.engQuestion=this.f.QuestionEn.value; 
+      this.QuestionBankQuestionUpdate.arabAnswer=this.f.AnswerAr.value;
+      this.QuestionBankQuestionUpdate.engAnswer=this.f.AnswerEn.value; 
       this.questionBankQuestionService.UpdateQuestionBankQuestion(this.QuestionBankQuestionUpdate).subscribe(res => {
         if (res.isSuccess) {
           this.isSubmit = false;
@@ -119,6 +148,11 @@ export class AddQuestionBankQuestionComponent implements OnInit {
         })
     }
     else {
+      this.QuestionBankQuestionCreat.categoryId =this.QBCid;
+      this.QuestionBankQuestionCreat.arabQuestion=this.f.QuestioAr.value;
+      this.QuestionBankQuestionCreat.engQuestion=this.f.QuestionEn.value; 
+      this.QuestionBankQuestionCreat.arabAnswer=this.f.AnswerAr.value;
+      this.QuestionBankQuestionCreat.engAnswer=this.f.AnswerEn.value; 
       this.questionBankQuestionService.addQuestionBankQuestion(this.QuestionBankQuestionCreat).subscribe(res => {
         this.isSubmit = false;
         if (res.isSuccess) {
