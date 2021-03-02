@@ -11,14 +11,10 @@ import { SharedModule } from './shared/shared.module';
 import { FooterComponent } from './core/layout/footer/footer.component';
 import { HeaderComponent } from './core/layout/header/header.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-export function HttpLoaderFactory(httpClient: HttpClient) {
-  return new TranslateHttpLoader(httpClient);
 
-  // return new TranslateHttpLoader(httpClient,
-    // environment.feServerUrl + '/assets/i18n/', '.json');
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
 }
-
-
 
 @NgModule({
   declarations: [
