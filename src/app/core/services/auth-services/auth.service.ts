@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { IActivationCode } from '../../interfaces/auth/iactivation-code-module';
 import { IAuthentication } from '../../interfaces/auth/iauthentication-model';
 import { IForgotPassword } from '../../interfaces/auth/iforgot-password-model';
 import { IResetPassword } from '../../interfaces/auth/ireset-password-model';
@@ -17,7 +18,8 @@ export class AuthService {
     userAuthenticationUrl = environment.BaseURL + 'User/user-authenticate';
     forgotPasswordUrl = environment.BaseURL + 'User/forgot-password';
     resetPasswordUrl = environment.BaseURL + 'User/reset-password';
-    activateUserUrl = environment.BaseURL + 'User/send-new-activation-code/';
+    sendActivateCodeUrl = environment.BaseURL + 'User/send-new-activation-code/';
+    verifyUserUrl = environment.BaseURL + 'User/verify-user-activiation-code/';
 
   constructor(private http: HttpClient) { }
 
@@ -30,18 +32,22 @@ export class AuthService {
   }
 
   userAuthentication(model:IAuthentication){
-    return this.http.post(this.userAuthenticationUrl, model);
+    return this.http.post<BaseResponseModel>(this.userAuthenticationUrl, model);
   }
 
-  forgotPassword(model:IForgotPassword):Observable<any>{
+  forgotPassword(model:IForgotPassword):Observable<BaseResponseModel>{
     return this.http.post<BaseResponseModel>(this.forgotPasswordUrl, model);
   }
 
-  resetPassword(model:IResetPassword):Observable<any>{
-    return this.http.post<BaseResponseModel>(this.resetPasswordUrl, model);
+  resetPassword(model:IResetPassword):Observable<BaseResponseModel>{
+    return this.http.put<BaseResponseModel>(this.resetPasswordUrl, model);
   }
 
-  activateUser(Id:any):Observable<any>{
-    return this.http.put<BaseResponseModel>(this.activateUserUrl + Id , null);
+  activateUser(model:IActivationCode):Observable<BaseResponseModel>{
+    return this.http.post<BaseResponseModel>(this.verifyUserUrl , model);
+  }
+
+  sendActivateCode(Id:any):Observable<BaseResponseModel>{
+    return this.http.put<BaseResponseModel>(this.sendActivateCodeUrl + Id , null);
   }
 }

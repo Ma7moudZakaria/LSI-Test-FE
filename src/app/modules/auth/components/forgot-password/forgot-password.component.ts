@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IResetPassword } from 'src/app/core/interfaces/auth/ireset-password-model';
+import { IForgotPassword } from 'src/app/core/interfaces/auth/iforgot-password-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
-// import { MustMatch } from 'src/app/core/_helper/must-match.validator';
 
 @Component({
   selector: 'app-forgot-password',
@@ -13,7 +12,7 @@ import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 export class ForgotPasswordComponent implements OnInit {
 
   hidePassword = true;
-  userform = new FormGroup({});
+  forgetpasswordform = new FormGroup({});
   submitted: boolean | undefined;
   token:any;
   successMessage:any;
@@ -27,44 +26,41 @@ export class ForgotPasswordComponent implements OnInit {
       ) { }
 
   ngOnInit(): void {
-    this.token = this.activatedRoute.snapshot.queryParamMap.get('tkn');
-    this.userform = this.fb.group({
-      'password': new FormControl('', Validators.compose([Validators.required, Validators.minLength(6)])),
-      'confirm_password': new FormControl('', Validators.compose([Validators.required])),
-    },{ 
-    // validator: MustMatch('password', 'confirm_password')
+    this.loadForgotPasswordForm();
+    // this.token = this.activatedRoute.snapshot.queryParamMap.get('tkn');
+    // this.forgetpasswordform = this.fb.group({
+    //   'password': new FormControl('', Validators.compose([Validators.required, Validators.minLength(6)])),
+    //   'confirm_password': new FormControl('', Validators.compose([Validators.required])),
+    // },{ 
+    // // validator: MustMatch('password', 'confirm_password')
+    // });
+  }
+
+  loadForgotPasswordForm() {
+    this.forgetpasswordform = this.fb.group({
+      email: ["", [Validators.required, Validators.email]]
     });
   }
 
-  // password(formGroup: FormGroup) {
-  //   const { value: password } = formGroup.get('password');
-  //   const { value: confirm_password } = formGroup.get('confirm_password');
-  //   return password === confirm_password ? null : { passwordNotMatch: true };
-  // }
-
   onSubmit(value: string) {
-    if (this.userform?.valid) {
-      var resetPasswordModel : IResetPassword;
-      resetPasswordModel = {
-        token: this.token,
-        password: this.userform.value.password
+    if (this.forgetpasswordform.valid) {
+      var forgotPasswordModel : IForgotPassword;
+      forgotPasswordModel = {
+        email: this.forgetpasswordform.value.email
     }
-      this.authService.resetPassword(resetPasswordModel).subscribe(
+      this.authService.forgotPassword(forgotPasswordModel).subscribe(
         (res) => {
           if (res.isSuccess){
             this.successMessage={
-              message:"Password reseted successfully",
+              message:"You Send Email Successfully",
               type:'success'
             }
-            setTimeout(()=>{
-              this.router.navigateByUrl('/');
-            },3000)
+            // setTimeout(()=>{
+            //   this.router.navigateByUrl('/');
+            // },3000)
           }
           else {
-            this.errorMessage={
-              message:"Something went wrong",
-              type:'danger'
-            }
+            this.errorMessage= res.message;
           }
         },
         (error: any) => {
@@ -81,9 +77,4 @@ export class ForgotPasswordComponent implements OnInit {
       }
     }
   }
-
-  get diagnostic() { 
-    return JSON.stringify(this.userform?.value); 
-  }
-
 }

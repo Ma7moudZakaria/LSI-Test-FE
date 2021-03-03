@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from '../../enums/language-enum.enum';
+import { BaseConstantModel } from '../../ng-model/base-constant-model';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +12,7 @@ import { LanguageEnum } from '../../enums/language-enum.enum';
 export class HeaderComponent implements OnInit {
 
   language:LanguageEnum = LanguageEnum.en;
-  constructor(public translate : TranslateService) { }
+  constructor(public translate : TranslateService, private router: Router) { }
 
   ngOnInit(): void {
     this.switchLang();
@@ -28,6 +30,10 @@ export class HeaderComponent implements OnInit {
       document.getElementsByTagName('html')[0].setAttribute('dir', 'ltr');
       document.getElementsByTagName('html')[0].setAttribute('lang', 'en');
     }
+  }
+
+  showHeader(){
+    return !BaseConstantModel.NO_HEADER_ROUTES.includes(this.router.url);
   }
 
 }
