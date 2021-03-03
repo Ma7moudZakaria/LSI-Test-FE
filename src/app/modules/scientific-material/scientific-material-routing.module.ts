@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ScientificMaterialViewComponent } from './scientific-material-view/scientific-material-view.component';
-import { AddScientificMaterialComponent } from './scientific-material/add-scientific-material/add-scientific-material.component';
-import { TstComponent } from './tst/tst.component';
+import { AddScientificMaterialComponent } from './components/scientific-material-view/add-scientific-material/add-scientific-material.component';
+import { ScientificMaterialViewComponent } from './components/scientific-material-view/scientific-material-view.component';
+import { TstComponent } from './components/tst/tst.component';
+// import { ScientificMaterialViewComponent } from './scientific-material-view/scientific-material-view.component';
+// import { AddScientificMaterialComponent } from './scientific-material/add-scientific-material/add-scientific-material.component';
+// import { TstComponent } from './tst/tst.component';
 
 const routes: Routes = [
   {
