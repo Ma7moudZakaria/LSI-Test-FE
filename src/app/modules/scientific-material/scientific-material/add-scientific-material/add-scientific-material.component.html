@@ -4,9 +4,8 @@
         <label for="programs">programs</label>
         <div class="d-flex">
             <div class="input-group">
-                <select multiple class="form-control" 
-                formControlName="programMatrial" name="formControlName"
-                (change)="selectProgram($event)">
+                <select multiple class="form-control" formControlName="programMatrial" name="formControlName"
+                    (change)="selectProgram($event)">
                     <option value="">select programs</option>
                     <option *ngFor="let item of programs" value="{{item.id}}">{{item.arabName}}</option>
 
@@ -36,17 +35,17 @@
         <input type="text" class="form-control" formControlName="matrialTitleEn" id="matrialTitleEn">
     </div>
 
-    <div class="custom-file"> 
-            <input type="file"   class="custom-file-input" multiple
-              id="importFile" (change)="onFileChange($any($event.target).files)" >
+    <div class="custom-file">
+        <input type="file" class="custom-file-input" multiple id="importFile"
+            (change)="onFileChange($any($event.target).files)">
         <label class="custom-file-label" for="customFile">Choose file</label>
     </div>
     <div class="row">
-        <div class="col-lg-8 col-md-8">                        
+        <div class="col-lg-8 col-md-8">
             <ul class="files-conainer">
-                <li *ngFor="let item of fileList;let i=index">                    
-                    <button  (click)="DeleteAttachment(i,item.id)">delete</button>
-                    <a class="card" href="{{item.url}}"  target="_blank">
+                <li *ngFor="let item of fileList;let i=index">
+                    <button (click)="DeleteAttachment(i,item.id)">delete</button>
+                    <a class="card" href="{{item.url}}" target="_blank">
                         <div class="pdf">
                             <i class="fa fa-file"></i>
                         </div>
@@ -87,18 +86,8 @@
     <section>
         <div class="row ">
             <div class="col-12 direction-rtl ">
-                <ul class="list-buttons text-center-s mt-30">
-                    <li class="ml-2"> <button class="button" type="submit"
-                            [disabled]="disableSaveButtons">Save</button>
-                    </li>
-                    <li>
-                        <button class="backButton"  type="submit"
-                            [disabled]="disableSaveButtons">Cancel</button>
-                    </li>
-
-                </ul>
+                <button class="button btn-primary" type="submit" [disabled]="disableSaveButtons">Save</button>
             </div>
-
 
             <div *ngIf="successMessage" class="alert alert-success">
                 {{successMessage}}

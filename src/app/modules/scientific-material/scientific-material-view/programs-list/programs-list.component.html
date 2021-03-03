@@ -1,0 +1,6 @@
+<p>programs-list works!</p>
+<ul>
+    <li *ngFor="let program  of programs">
+        <a (click)="loadProgramMaterial(program.id)">{{program.arabName}}</a>
+    </li>
+</ul>

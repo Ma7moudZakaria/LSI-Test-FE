@@ -9,7 +9,8 @@ import { ScientificMaterialService } from 'src/app/core/services/scientific-mate
 export class ScientificMaterialViewComponent implements OnInit {
 
   programs: any;
-
+  selectedMaterialId:any;
+  selectedProgramId:any;
   constructor( private scientifcMaterialService: ScientificMaterialService) { }
 
   ngOnInit(): void {
@@ -24,6 +25,17 @@ export class ScientificMaterialViewComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+  addNewMaterial(){
+    this.selectedMaterialId = null;
+  }
+  loadSelectedMateial(event:any){
+   this.selectedMaterialId = event;
+   // console.log(event);
+  }
+
+  setSelectedProgram(event:any){
+    this.selectedProgramId = event;
   }
 
 }

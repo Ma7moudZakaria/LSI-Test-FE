@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FileUpload } from 'src/app/core/interfaces/attachments-interfaces/file-upload';
@@ -34,6 +34,7 @@ export class AddScientificMaterialComponent implements OnInit {
   successMessage: string | undefined;
   errorMessage: string | undefined;
   disableSaveButtons = false;
+  @Input() selectedMaterialId: any;
   constructor(private fb: FormBuilder, private scientifcMaterialService: ScientificMaterialService,
     private attachmentService: AttachmentsService,
     private activeroute: ActivatedRoute, private router: Router) {
@@ -52,7 +53,10 @@ export class AddScientificMaterialComponent implements OnInit {
     this.buildForm();
 
   }
-
+  ngOnChanges(changes: any) {
+    console.log(changes);
+    this.loadScientificMaterialDetails(changes.selectedMaterialId.currentValue);
+  }
   loadPrograms() {
     this.scientifcMaterialService.getProgramsLookup().subscribe(
       (res: any) => {
@@ -68,7 +72,7 @@ export class AddScientificMaterialComponent implements OnInit {
       (res: any) => {
         this.materialCategoriesLookup = res.data as any[];
         if (this.ScientificMaterialId) {
-          this.loadScientificMaterialDetails();
+          this.loadScientificMaterialDetails(this.ScientificMaterialId);
         }
 
       }, error => {
@@ -76,18 +80,27 @@ export class AddScientificMaterialComponent implements OnInit {
       }
     );
   }
-  loadScientificMaterialDetails() {
+  loadScientificMaterialDetails(selectedId: any) {
+    if (selectedId) {
+      this.scientifcMaterialService.getScientificMaterial(selectedId).subscribe(
+        res => {
+          if (res.isSuccess) {
+            this.ScientificMaterialDetails = res.data;
+            this.PopulateForm();
 
-    this.scientifcMaterialService.getScientificMaterial(this.ScientificMaterialId).subscribe(
-      res => {
-        if (res.isSuccess) {
-          this.ScientificMaterialDetails = res.data;
-          this.PopulateForm();
+          }
+        }, error => {
+          console.log(error);
+        })
+    }
+    else{
+      this.CurrentForm.reset();
+      this.ScientificMaterialDetails = {} as ScientificMaterialDetails;
+      this.fileList = [];
+      this.selectedProgram = [];
 
-        }
-      }, error => {
-        console.log(error);
-      })
+    }
+
   }
   DeleteAttachment(index: number, id: string) {
     this.fileList.splice(index, 1);
@@ -104,7 +117,7 @@ export class AddScientificMaterialComponent implements OnInit {
     this.ScientificMaterialDetails?.matrialAttachments.forEach(element => {
       this.attachmentIds.push(element.id);
     });
-    this.selectedProgram = this.ScientificMaterialDetails?.matrialPrograms.forEach((pr:any) => {
+    this.selectedProgram = this.ScientificMaterialDetails?.matrialPrograms.forEach((pr: any) => {
       this.selectedProgram.push(pr.id);
     });
     this.UpdateScientificMaterial.id = this.ScientificMaterialDetails.id;
@@ -157,7 +170,7 @@ export class AddScientificMaterialComponent implements OnInit {
   }
   selectProgram(e: any) {
     this.ScientificMaterialDetails.matrialPrograms = null;
-        this.selectedProgram = [];
+    this.selectedProgram = [];
     var programMatrialIds = this.CurrentForm.get('programMatrial')?.value
     Array.from(programMatrialIds).forEach((id: any) => {
       this.selectedProgram.push({

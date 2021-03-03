@@ -5,7 +5,7 @@ export interface ScientificMaterialFilter{
     categoryId:string;
     isActive:boolean;
     isAvailableForAll :boolean;
-    programs:string;
+    programs?:string;
     programNameAr:string;
     programNameEn:string;
     skip:number;

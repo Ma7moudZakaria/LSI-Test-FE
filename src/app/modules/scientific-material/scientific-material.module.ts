@@ -8,9 +8,11 @@ import { ScientificMaterialViewComponent } from './scientific-material-view/scie
 import { TstComponent } from './tst/tst.component';
 
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
+import { MaterialListComponent } from './scientific-material-view/material-list/material-list.component';
+import { ProgramsListComponent } from './scientific-material-view/programs-list/programs-list.component';
 
 @NgModule({
-    declarations: [AddScientificMaterialComponent, ScientificMaterialViewComponent, TstComponent],
+    declarations: [AddScientificMaterialComponent, ScientificMaterialViewComponent, TstComponent, MaterialListComponent,  ProgramsListComponent],
   imports: [
     CommonModule,
     ScientificMaterialRoutingModule,
