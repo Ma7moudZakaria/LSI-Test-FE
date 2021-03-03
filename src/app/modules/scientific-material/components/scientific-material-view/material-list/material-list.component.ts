@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IScientificMaterialFilter } from 'src/app/core/interfaces/scientific-material/iscientific-matrial-filter';
-import { IScientificMaterialGrid } from 'src/app/core/interfaces/scientific-material/Iscientific-matrial-grid';
+import { IScientificMaterialGrid } from 'src/app/core/interfaces/scientific-material/iscientific-matrial-grid';
 import { ScientificMaterialService } from 'src/app/core/services/scientific-material-services/scientific-material.service';
 
 @Component({
