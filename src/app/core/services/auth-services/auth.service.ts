@@ -18,8 +18,8 @@ export class AuthService {
     userAuthenticationUrl = environment.BaseURL + 'User/user-authenticate';
     forgotPasswordUrl = environment.BaseURL + 'User/forgot-password';
     resetPasswordUrl = environment.BaseURL + 'User/reset-password';
-    activateUserUrl = environment.BaseURL + 'User/send-new-activation-code/';
-    activateUserUrl = environment.BaseURL + 'User/verify-user-activiation-code/';
+    sendActivateCodeUrl = environment.BaseURL + 'User/send-new-activation-code/';
+    verifyUserUrl = environment.BaseURL + 'User/verify-user-activiation-code/';
 
   constructor(private http: HttpClient) { }
 
@@ -44,7 +44,7 @@ export class AuthService {
   }
 
   activateUser(model:IActivationCode):Observable<BaseResponseModel>{
-    return this.http.post<BaseResponseModel>(this.activateUserUrl , model);
+    return this.http.post<BaseResponseModel>(this.verifyUserUrl , model);
   }
 
   sendActivateCode(Id:any):Observable<BaseResponseModel>{
