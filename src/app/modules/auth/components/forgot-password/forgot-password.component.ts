@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IForgotPassword } from 'src/app/core/interfaces/auth/iforgot-password-model';
+import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -7,9 +11,70 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  constructor() { }
+  hidePassword = true;
+  forgetpasswordform = new FormGroup({});
+  submitted: boolean | undefined;
+  token:any;
+  successMessage:any;
+  errorMessage:any;
+
+  constructor( 
+      private fb: FormBuilder,
+      private router: Router,
+      private activatedRoute: ActivatedRoute,
+      private authService: AuthService
+      ) { }
 
   ngOnInit(): void {
+    this.loadForgotPasswordForm();
+    // this.token = this.activatedRoute.snapshot.queryParamMap.get('tkn');
+    // this.forgetpasswordform = this.fb.group({
+    //   'password': new FormControl('', Validators.compose([Validators.required, Validators.minLength(6)])),
+    //   'confirm_password': new FormControl('', Validators.compose([Validators.required])),
+    // },{ 
+    // // validator: MustMatch('password', 'confirm_password')
+    // });
   }
 
+  loadForgotPasswordForm() {
+    this.forgetpasswordform = this.fb.group({
+      email: ["", [Validators.required, Validators.email]]
+    });
+  }
+
+  onSubmit(value: string) {
+    if (this.forgetpasswordform.valid) {
+      var forgotPasswordModel : IForgotPassword;
+      forgotPasswordModel = {
+        email: this.forgetpasswordform.value.email
+    }
+      this.authService.forgotPassword(forgotPasswordModel).subscribe(
+        (res) => {
+          if (res.isSuccess){
+            this.successMessage={
+              message:"You Send Email Successfully",
+              type:'success'
+            }
+            // setTimeout(()=>{
+            //   this.router.navigateByUrl('/');
+            // },3000)
+          }
+          else {
+            this.errorMessage= res.message;
+          }
+        },
+        (error: any) => {
+          if (!error.isSuccess) {
+            // this.errorMessage = this.translate.currentLang =='ar' ? "خطأ فى الاتصال" : "Cummunication error"//error.message;
+          }
+        }
+      );
+    }
+    else{
+      this.successMessage={
+        message:"Please fill missing fields",
+        type:'danger'
+      }
+    }
+  }
 }

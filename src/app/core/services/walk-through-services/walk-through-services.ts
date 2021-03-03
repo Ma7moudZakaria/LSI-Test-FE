@@ -1,0 +1,45 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { BaseResponseModel } from '../../ng-model/base-response-model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class WalkThroughService {
+
+  getAllWalkThroughURL = environment.BaseURL + 'WalkThrough/get-all-walk-through/';
+  createWalkThroughURL = environment.BaseURL + 'WalkThrough/create-walk-through/';
+  updateWalkThroughURL = environment.BaseURL + 'WalkThrough/update-walk-through/';
+  getWalkThroughByIdURL = environment.BaseURL + 'WalkThrough/get-walk-through-by-id/';
+  deleteWalkThroughURL = environment.BaseURL + 'WalkThrough/delete-walk-through/';
+  
+
+  constructor(private http: HttpClient) { }
+
+  getAllWalkThrough() 
+  {
+    return this.http.get<BaseResponseModel>(this.getAllWalkThroughURL);
+  }
+
+  createWalkThrough(model : any):Observable<BaseResponseModel>
+  {
+    return this.http.post<BaseResponseModel>(this.createWalkThroughURL , model);
+  }
+
+  updateWalkThrough(model : any):Observable<BaseResponseModel>
+  {
+    return this.http.put<BaseResponseModel>(this.updateWalkThroughURL , model);
+  }
+
+  getWalkThroughById(id : string) 
+  {
+    return this.http.get<BaseResponseModel>(this.getWalkThroughByIdURL + id)
+  }
+
+  deleteWalkThrough(id : string) 
+  {
+    return this.http.delete<BaseResponseModel>(this.deleteWalkThroughURL + id)
+  }
+}
