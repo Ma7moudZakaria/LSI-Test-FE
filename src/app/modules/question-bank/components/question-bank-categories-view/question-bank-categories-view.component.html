@@ -1,9 +1,9 @@
 <p>question-bank-categories-view works!</p>
-<div class="row">
+<div class="row" *ngIf="isView">
     <div class="col-4">
         <div class="row">
             <p class="text-left col">The Departments</p>
-            <a [routerLink]="['/questionBank/add-question-bank-category']"><p class="text-right col">Add Department</p>
+            <a (click)="addCatogry()"><p class="text-right col">Add Department</p>
 
             </a> 
             
@@ -13,7 +13,7 @@
           <br/>
         </div>
         
-      <div *ngFor="let QBC of TessLST ; let i=index;" class="list-group">
+      <!-- <div *ngFor="let QBC of TessLST ; let i=index;" class="list-group">
         
         <div routerLink="" class="list-group-item  list-group-item_custom list-group-item-action row" >
           <p>
@@ -21,22 +21,38 @@
           </p>
         </div>
    
-        </div>
+        </div> -->
   
-  <!-- <div *ngFor="let QBC of QuestionBankCategoryList ; let i=index;">
-    <div class="list-group-item  list-group-item_custom list-group-item-action row" >
-      <p>
-         {{QBC.arabCatgName}}
-      </p>
+  <div *ngFor="let QBC of QuestionBankCategoryList ; let i=index;" class="list-group" >
+    <div routerLink="" class="list-group-item  list-group-item_custom list-group-item-action row" [(ngModel)]="catogryChang" (click)="changCatogry(QBC.id)">
+        <p>
+           {{QBC.arabCatgName}}
+          <img src="assets/quesionBsnk/questionBankCategory/Icon feather-edit-3 (1).svg" alt="" class="mt-10 cursor-pointer" (click)="loadQuestionBankCategoryDetails(QBC.id)" />
+        </p>
+
     </div>
-  </div> -->
+    
+  </div>
   
     </div>
-    <div class="col" >
+    
   
+  </div>
+  <div class="row" *ngIf="!isView">
+    <form class="form-group" [formGroup]="currentForm" (submit)="Submit()">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Name Ar</label>
+        <input type="text" class="form-control" id="InputNamAr" formControlName="nameAr">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Name En</label>
+        <input type="text" class="form-control" id="InputNamEN" formControlName="nameEn">
+      </div>
   
-    </div>
-  
+      <button type="submit" class="btn btn-danger">Publish</button>
+      <button type="button" class="btn btn-warning">Delete</button>
+    </form>
+
   </div>
   
   

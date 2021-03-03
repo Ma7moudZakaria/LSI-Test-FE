@@ -33,8 +33,8 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   }
   getQuestionBankQuestions(isLazyLoading = false) {
     this.filterErrorMessage = "";
-    this.QuestionBankQuestionFilter.PageNumber=10;
-    this.QuestionBankQuestionFilter.PageSize=0;
+    this.QuestionBankQuestionFilter.PageNumber=1;
+    this.QuestionBankQuestionFilter.PageSize=10;
     this.questionBankQuestionService.getQuestionBankQuestionsFilter(this.QuestionBankQuestionFilter).subscribe(res => {
       let response = <BaseResponseModel>res;
       if (response.isSuccess) {

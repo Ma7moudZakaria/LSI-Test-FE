@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddQuestionBankCategoryComponent } from './components/add-question-bank-category/add-question-bank-category.component';
 import { AddQuestionBankQuestionComponent } from './components/add-question-bank-question//add-question-bank-question.component';
+import { QuesionBankViewComponent } from './components/quesion-bank-view/quesion-bank-view.component';
 import { QuestionBankCategoriesViewComponent } from './components/question-bank-categories-view/question-bank-categories-view.component';
 import { QuestionBankCategoryDetailsComponent } from './components/question-bank-category-details/question-bank-category-details.component';
 import { QuestionBankQuestionDetailsComponent } from './components/question-bank-question-details/question-bank-question-details.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'add-question-bank-question', component: AddQuestionBankQuestionComponent},
       {path: 'edit-question-bank-question/:id' , component: AddQuestionBankQuestionComponent},
       { path: 'question-bank-question-details/:id', component: QuestionBankQuestionDetailsComponent},
+      { path: 'question-bank-view', component: QuesionBankViewComponent},
      
      ],
   },
