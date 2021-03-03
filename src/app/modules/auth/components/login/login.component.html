@@ -1,12 +1,17 @@
-
+<div class="container-fluid">
 <div class="row UserLogin">
-    <div class="col-lg-6 col-md-6 col-sm-6">
-        <!-- <img class="UserLogin__LoginImage" src="D:\ArabDT_Projects\Hudaz_Front\huffaz-app\src\assets\images/LoginHeader.svg"/> -->
 
-        <section class="row justify-content-center UserLogin__FormContainer">
-            <section class="col-12 col-md-12 col-sm-12">
-              <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)" class="form-group UserLogin__LoginForm">
-                  <div class="col-lg-12 mb-4">
+   
+    <div class="col-lg-6 col-md-6 col-sm-6 LoginBackground_left_img pl-0 pr-0  ">
+        <div class="col-12  identity_img pl-0 pr-0 ">
+
+        </div>
+        <section class="row justify-content-center  ">
+          <div class="box">
+               <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)" class="form-group UserLogin__LoginForm">
+                <div class="content_form ">
+
+                <div class="col-lg-12 mb-4 mt-2">
                       <h1 class="font-weight-bold "> Login </h1> 
                   </div>
       
@@ -15,11 +20,14 @@
                       <label class="UserLogin__Label" for="UserEmail">Email Address</label>
                       <div class="input-group">
                           <div class="input-group-prepend">
-                              <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                  <i class="fa fa-envelope text-muted"></i>
+                              <span class="input-group-text bg-white pl-2 pr-2 border-md border-right-0">
+                                  <!-- <i class="fa fa-envelope text-muted"></i> -->
+                                  <img  class="UserLogin_icon_input" src="../../../../../assets/images/email.svg">
                               </span>
                           </div>
-                          <input id="email"  pInputText type="email" formControlName="email" name="email" placeholder="Email Address" class="form-control UserLogin__FormControl bg-white border-left-0 border-md ">
+                          <input id="email"  pInputText type="email" formControlName="email" name="email" 
+                          placeholder="Email Address" 
+                          class=" px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
                           
                       </div>                        
                   </div>
@@ -29,17 +37,22 @@
                       <label class="UserLogin__Label" for="UserPassword">Password</label>
                       <div class="input-group ">
                           <div class="input-group-prepend">
-                              <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                  <i class="fa fa-lock text-muted"></i>
+                              <span class="input-group-text bg-white pl-2 pr-2  border-md border-right-0">
+                                  <!-- <i class="fa fa-lock text-muted"></i> -->
+                                  <img   class="UserLogin_icon_input" src="../../../../../assets/images/password.svg">
+
                               </span>
                           </div>
-                          <input id="password" pPassword type="password" [type]="hidePassword ? 'password' : 'text'" formControlName="password" name="password" placeholder="Password" class="form-control UserLogin__FormControl bg-white border-left-0 border-md ">
+                          <input id="password" pPassword type="password" 
+                          [type]="hidePassword ? 'password' : 'text'" formControlName="password" name="password"
+                           placeholder="Password" 
+                           class="  px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
                           
                       </div>                        
                   </div>
        
                   <!-- Remember Me -->
-                  <div class="form-group col-lg-12 mb-4">
+                  <div class="form-group col-lg-12 mb-3">
                       <label class="UserLogin__RememberMeLabel">
                           <input class="UserLogin__RememberMe" type="checkbox" name="remember"> Remember me
                       </label>
@@ -48,33 +61,43 @@
                           <a class="UserLogin__ForgetPasswordLink" href="#"> Forget Password ?</a>
                       </label>
                   </div>
-       
-                  <!-- Submit Button -->
-                  <div class="form-group col-lg-12 mx-auto mb-0">
-                      <!-- <button type="submit" class="btn btn-primary btn-block UserLogin__Submit"  [disabled]="!userform.valid">Submit</button> -->
-                      <button type="submit" class="btn btn-primary btn-block UserLogin__Submit" >Submit</button>
-                      <a href="#" class="btn btn-primary btn-block py-2 UserLogin__SignUp">
-                          <div class="UserLogin__SignUpContainerOfLink">
-                              <span class="font-weight-bold UserLogin__SignUpLink"> Sign Up</span>
-                          </div>
-                      </a>
-                  </div> 
+                   <!-- Submit Button -->
+                   <div class="form-group col-lg-12 mx-auto mb-0">
+                    <!-- <button type="submit" class="btn btn-primary btn-block UserLogin__Submit"  [disabled]="!userform.valid">Submit</button> -->
+                    <button type="submit" class="btn  UserLogin__Submit " >Submit</button>
+                    <button type="submit" class="btn  UserLogin__SignUp " > Sign Up</button>
+
+                  
+                    
+                </div> 
+                </div>
+                
+                <div class="footer_form ">
+                    <hr>
+                <p class="footer_form_p mb-0 text-center mb-3">Log in via social media</p>
+                    <div class="d-flex mb-3">
+                        <button type="submit" class="btn UserLogin__Register" >Register as a teacher</button>
+                        <ul class="list-inline ml-5 mr-5">
+                            <li class="list-inline-item"> <img src="../../../../../assets/images/facebook.svg"></li>
+                            <li class="list-inline-item"><img src="../../../../../assets/images/twiiter.svg"></li>
+                            <li class="list-inline-item"><img src="../../../../../assets/images/gmail.svg"></li>
+                          </ul>
+                    </div>
+                   
+                </div>
+                 
               </form>
-            </section>
-          </section>
+          </div>
+        </section>
 
-        <!-- <img class="UserLogin__LoginHeader" src="/src/assets/images/LoginBackground.png" /> -->
     </div>
-
-    <div class="col-lg-6 col-md-6 col-sm-6 UserLogin__LoginImageLeft">
-        <p> Welcome 7oda </p>
-        <!-- <img class="UserLogin__LoginImage" src="/src/assets/images/LoginBackground.png" /> -->
+    <div class="col-lg-6 col-md-6 col-sm-6 LoginBackground_Right_img" >
+        <div class="test"></div>
     </div>
+    
+     <div class="col-12 repeater_img"></div>
 </div>
 
+</div>
+   
 
-<!-- <div class="container">
-    <div class="Login">
-
-    </div>
-</div>> -->
