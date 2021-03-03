@@ -45,7 +45,7 @@
                       </label>
                                        
                       <label class="UserLogin__ForgetPassword">
-                          <a class="UserLogin__ForgetPasswordLink" href="#"> Forget Password ?</a>
+                          <a class="UserLogin__ForgetPasswordLink" href="/forget-password" [routerLink]="['/forget-password']" > Forget Password ?</a>
                       </label>
                   </div>
        
@@ -53,12 +53,16 @@
                   <div class="form-group col-lg-12 mx-auto mb-0">
                       <!-- <button type="submit" class="btn btn-primary btn-block UserLogin__Submit"  [disabled]="!userform.valid">Submit</button> -->
                       <button type="submit" class="btn btn-primary btn-block UserLogin__Submit" >Submit</button>
-                      <a href="#" class="btn btn-primary btn-block py-2 UserLogin__SignUp">
+                      <a [routerLink]="['/register']" class="btn btn-primary btn-block py-2 UserLogin__SignUp">
                           <div class="UserLogin__SignUpContainerOfLink">
                               <span class="font-weight-bold UserLogin__SignUpLink"> Sign Up</span>
                           </div>
                       </a>
                   </div> 
+
+                  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+                    {{ errorMessage }}
+                  </div>
               </form>
             </section>
           </section>

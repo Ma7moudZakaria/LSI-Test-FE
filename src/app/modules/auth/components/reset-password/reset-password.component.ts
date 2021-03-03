@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IResetPassword } from 'src/app/core/interfaces/auth/ireset-password-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 
 @Component({
@@ -12,10 +13,13 @@ export class ResetPasswordComponent implements OnInit {
 
   passwordType = 'password';
   passwordShown = false;
-  resetPasswordForm = new FormGroup({});
-  resetPasswordModel = {};
+  resetpasswordform = new FormGroup({});
+  resetPasswordModel = {} as  IResetPassword;;
   token:any;
   successMessage:any;
+  hidePassword = true;
+  errorMessage:any;
+
   constructor(
     private router: Router, private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
@@ -23,7 +27,7 @@ export class ResetPasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.resetPasswordFormG();
-        this.token = this.activatedRoute.snapshot.queryParamMap.get('tkn');
+    this.token = this.activatedRoute.snapshot.queryParamMap.get('tkn');
   }
 
   togglePassword() {
@@ -37,25 +41,23 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   resetPasswordFormG() {
-    this.resetPasswordForm = this.fb.group({
-      password: ["",
-      Validators.compose([
-        Validators.required
-      ])],
-      retypePassword: ["",Validators.required]
+    this.resetpasswordform = this.fb.group({
+      password: ["", Validators.compose([Validators.required])],
+      confirmPassword: ["",Validators.required]
     });
   }
 
   get f() {
-    return this.resetPasswordForm?.controls;
+    return this.resetpasswordform.controls;
   }
 
-  onApply() {
-    if (this.resetPasswordForm?.valid){
+  onApply(value:string) {
+    if (this.resetpasswordform.valid){
 
       this.resetPasswordModel = {
         token: this.token,
-        password: this.f?.password.value
+        password: this.resetpasswordform.value.password,
+        confirmPassword: this.resetpasswordform.value.confirmPassword
       }
         
       this.authService.resetPassword(this.resetPasswordModel).subscribe(res => {
@@ -70,10 +72,7 @@ export class ResetPasswordComponent implements OnInit {
             },3000);
           }
         else{
-          this.successMessage={
-            message:res.message,
-            type:'danger'
-          }
+          this.errorMessage=res.message;
         }
       });
       // , error => {
