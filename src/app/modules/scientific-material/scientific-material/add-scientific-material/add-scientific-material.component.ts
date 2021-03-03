@@ -1,13 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FileUpload } from 'src/app/core/interfaces/attachments-interfaces/file-upload';
+import { IFileUpload } from 'src/app/core/interfaces/attachments-interfaces/ifile-upload';
 import { IAttachment } from 'src/app/core/interfaces/attachments-interfaces/iattachment';
-import { Lookup } from 'src/app/core/interfaces/lookup/lookup';
-import { AddScientificMaterial } from 'src/app/core/interfaces/scientific-material/add-scientifimaterial';
-import { ProgramScientificMaterial } from 'src/app/core/interfaces/scientific-material/program-scientific-material';
-import { ScientificMaterialDetails } from 'src/app/core/interfaces/scientific-material/scientific-material-details';
-import { UpdateScientificMaterial } from 'src/app/core/interfaces/scientific-material/update-scientific-material';
+import { ILookup } from 'src/app/core/interfaces/lookup/ilookup';
+import { IAddScientificMaterial } from 'src/app/core/interfaces/scientific-material/iadd-scientifimaterial';
+import { IProgramScientificMaterial } from 'src/app/core/interfaces/scientific-material/iprogram-scientific-material';
+import { IScientificMaterialDetails } from 'src/app/core/interfaces/scientific-material/iscientific-material-details';
+import { IUpdateScientificMaterial } from 'src/app/core/interfaces/scientific-material/iupdate-scientific-material';
 import { AttachmentsService } from 'src/app/core/services/attachments-services/attachments.service';
 import { ScientificMaterialService } from 'src/app/core/services/scientific-material-services/scientific-material.service';
 
@@ -17,20 +17,20 @@ import { ScientificMaterialService } from 'src/app/core/services/scientific-mate
   styleUrls: ['./add-scientific-material.component.scss']
 })
 export class AddScientificMaterialComponent implements OnInit {
-  materialCategoriesLookup: Lookup[] = [];
+  materialCategoriesLookup: ILookup[] = [];
   programs: any;
-  selectedProgram: ProgramScientificMaterial[] = [];
-  Title?: string;
-  ScientificMaterialId: any;
-  CurrentForm: FormGroup = new FormGroup({});
+  selectedProgram: IProgramScientificMaterial[] = [];
+  title?: string;
+  scientificMaterialId: any;
+  currentForm: FormGroup = new FormGroup({});
   attachmentIds: string[] = [];
   fileToUpload?: File;
   isSubmit = false;
-  fileUploadModel: FileUpload[] = [];
+  fileUploadModel: IFileUpload[] = [];
   fileList: IAttachment[] = [];
-  AddScientificMaterial = {} as AddScientificMaterial;
-  UpdateScientificMaterial = {} as UpdateScientificMaterial;
-  ScientificMaterialDetails = {} as ScientificMaterialDetails;
+  addScientificMaterial = {} as IAddScientificMaterial;
+  updateScientificMaterial = {} as IUpdateScientificMaterial;
+  ScientificMaterialDetails = {} as IScientificMaterialDetails;
   successMessage: string | undefined;
   errorMessage: string | undefined;
   disableSaveButtons = false;
@@ -44,11 +44,11 @@ export class AddScientificMaterialComponent implements OnInit {
     this.loadMaterialCategories();
     this.loadPrograms();
     if (this.activeroute.snapshot.paramMap.get('id') != null) {
-      this.Title = "Edit Scientific Material";
-      this.ScientificMaterialId = (this.activeroute.snapshot.paramMap.get('id') || undefined);
+      this.title = "Edit Scientific Material";
+      this.scientificMaterialId = (this.activeroute.snapshot.paramMap.get('id') || undefined);
       // this.loadParentDetails();
     } else {
-      this.Title = "Add Scientific Material";
+      this.title = "Add Scientific Material";
     }
     this.buildForm();
 
@@ -71,8 +71,8 @@ export class AddScientificMaterialComponent implements OnInit {
     this.scientifcMaterialService.GetScientificMatrialCategoriesLookup().subscribe(
       (res: any) => {
         this.materialCategoriesLookup = res.data as any[];
-        if (this.ScientificMaterialId) {
-          this.loadScientificMaterialDetails(this.ScientificMaterialId);
+        if (this.scientificMaterialId) {
+          this.loadScientificMaterialDetails(this.scientificMaterialId);
         }
 
       }, error => {
@@ -94,8 +94,8 @@ export class AddScientificMaterialComponent implements OnInit {
         })
     }
     else{
-      this.CurrentForm.reset();
-      this.ScientificMaterialDetails = {} as ScientificMaterialDetails;
+      this.currentForm.reset();
+      this.ScientificMaterialDetails = {} as IScientificMaterialDetails;
       this.fileList = [];
       this.selectedProgram = [];
 
@@ -120,16 +120,16 @@ export class AddScientificMaterialComponent implements OnInit {
     this.selectedProgram = this.ScientificMaterialDetails?.matrialPrograms.forEach((pr: any) => {
       this.selectedProgram.push(pr.id);
     });
-    this.UpdateScientificMaterial.id = this.ScientificMaterialDetails.id;
+    this.updateScientificMaterial.id = this.ScientificMaterialDetails.id;
   }
   get f() {
-    return this.CurrentForm.controls;
+    return this.currentForm.controls;
   }
 
   buildForm() {
     const arabicPattern = '^[\u0600-\u06FF\\\\()-/_]+$';
     const engPattern = '^[a-zA-Z()-\\\\/_]+$';
-    this.CurrentForm = this.fb.group(
+    this.currentForm = this.fb.group(
       {
         matrialTitleAr: ['', [Validators.required, Validators.maxLength(50), Validators.pattern(arabicPattern)]],
         matrialTitleEn: ['', [Validators.required, Validators.maxLength(50), Validators.pattern(engPattern)]],
@@ -157,7 +157,7 @@ export class AddScientificMaterialComponent implements OnInit {
   onFileChange(files?: FileList) {
     if (files) {
       Array.from(files).forEach(element => {
-        var fileUploadObj: FileUpload = {
+        var fileUploadObj: IFileUpload = {
           containerNameIndex: 1, // need to be changed based on file type
           file: element
 
@@ -171,7 +171,7 @@ export class AddScientificMaterialComponent implements OnInit {
   selectProgram(e: any) {
     this.ScientificMaterialDetails.matrialPrograms = null;
     this.selectedProgram = [];
-    var programMatrialIds = this.CurrentForm.get('programMatrial')?.value
+    var programMatrialIds = this.currentForm.get('programMatrial')?.value
     Array.from(programMatrialIds).forEach((id: any) => {
       this.selectedProgram.push({
         programId: id
@@ -199,16 +199,16 @@ export class AddScientificMaterialComponent implements OnInit {
     this.isSubmit = true;
 
 
-    if (this.ScientificMaterialId) {
-      this.UpdateScientificMaterial.matrialTitleAr = this.f.matrialTitleAr.value;
-      this.UpdateScientificMaterial.matrialTitleEn = this.f.matrialTitleEn.value;
-      this.UpdateScientificMaterial.matrialCategory = this.f.matrialCategory.value;
-      this.UpdateScientificMaterial.fileLink = this.f.fileLink.value === '' ? null : this.f.fileLink.value;
-      this.UpdateScientificMaterial.active = this.f.active.value;
-      this.UpdateScientificMaterial.availableForAllUsers = this.f.availableForAllUsers.value;
-      this.UpdateScientificMaterial.programScientificMatrial = this.selectedProgram;
-      this.UpdateScientificMaterial.attachmentIds = this.attachmentIds;
-      this.scientifcMaterialService.UpdateScientificMaterial(this.UpdateScientificMaterial).subscribe(res => {
+    if (this.scientificMaterialId) {
+      this.updateScientificMaterial.matrialTitleAr = this.f.matrialTitleAr.value;
+      this.updateScientificMaterial.matrialTitleEn = this.f.matrialTitleEn.value;
+      this.updateScientificMaterial.matrialCategory = this.f.matrialCategory.value;
+      this.updateScientificMaterial.fileLink = this.f.fileLink.value === '' ? null : this.f.fileLink.value;
+      this.updateScientificMaterial.active = this.f.active.value;
+      this.updateScientificMaterial.availableForAllUsers = this.f.availableForAllUsers.value;
+      this.updateScientificMaterial.programScientificMatrial = this.selectedProgram;
+      this.updateScientificMaterial.attachmentIds = this.attachmentIds;
+      this.scientifcMaterialService.UpdateScientificMaterial(this.updateScientificMaterial).subscribe(res => {
         //var response = Mapper.responseMapper(res);
         if (res.isSuccess) {
           this.isSubmit = false;
@@ -220,15 +220,15 @@ export class AddScientificMaterialComponent implements OnInit {
     }
     else {
 
-      this.AddScientificMaterial.matrialTitleAr = this.f.matrialTitleAr.value;
-      this.AddScientificMaterial.matrialTitleEn = this.f.matrialTitleEn.value;
-      this.AddScientificMaterial.matrialCategory = this.f.matrialCategory.value;
-      this.AddScientificMaterial.fileLink = this.f.fileLink.value === '' ? null : this.f.fileLink.value;
-      this.AddScientificMaterial.active = this.f.active.value;
-      this.AddScientificMaterial.availableForAllUsers = this.f.availableForAllUsers.value;
-      this.AddScientificMaterial.programMatrial = this.selectedProgram;
-      this.AddScientificMaterial.attachmentIds = this.attachmentIds;
-      this.scientifcMaterialService.addScientificMaterial(this.AddScientificMaterial).subscribe(res => {
+      this.addScientificMaterial.matrialTitleAr = this.f.matrialTitleAr.value;
+      this.addScientificMaterial.matrialTitleEn = this.f.matrialTitleEn.value;
+      this.addScientificMaterial.matrialCategory = this.f.matrialCategory.value;
+      this.addScientificMaterial.fileLink = this.f.fileLink.value === '' ? null : this.f.fileLink.value;
+      this.addScientificMaterial.active = this.f.active.value;
+      this.addScientificMaterial.availableForAllUsers = this.f.availableForAllUsers.value;
+      this.addScientificMaterial.programMatrial = this.selectedProgram;
+      this.addScientificMaterial.attachmentIds = this.attachmentIds;
+      this.scientifcMaterialService.addScientificMaterial(this.addScientificMaterial).subscribe(res => {
         //var response = Mapper.responseMapper(res);
         if (res.isSuccess) {
           this.isSubmit = false;

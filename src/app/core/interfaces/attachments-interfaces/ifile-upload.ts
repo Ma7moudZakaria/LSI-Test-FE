@@ -1,4 +1,4 @@
-export interface FileUpload{
+export interface IFileUpload{
 
     containerNameIndex:number;
     file:File;

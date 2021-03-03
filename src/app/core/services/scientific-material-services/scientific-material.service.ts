@@ -2,12 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { AddScientificMaterialResult } from '../../interfaces/scientific-material/add-scientific-material-result';
-import { AddScientificMaterial } from '../../interfaces/scientific-material/add-scientifimaterial';
-import { ScientificMaterialDetails } from '../../interfaces/scientific-material/scientific-material-details';
-import { ScientificMaterialFilter } from '../../interfaces/scientific-material/scientific-matrial-filter';
-import { ScientificMaterialGrid } from '../../interfaces/scientific-material/scientific-matrial-grid';
-import { UpdateScientificMaterial } from '../../interfaces/scientific-material/update-scientific-material';
+import { IAddScientificMaterial } from '../../interfaces/scientific-material/iadd-scientifimaterial';
+import { IScientificMaterialFilter } from '../../interfaces/scientific-material/iscientific-matrial-filter';
+import { IUpdateScientificMaterial } from '../../interfaces/scientific-material/iupdate-scientific-material';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 
 @Injectable({
@@ -16,36 +13,37 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
 export class ScientificMaterialService {
 
 
-  AddScientificMatrialURL = environment.BaseURL + 'ScientificMatrial/add-scientific-matrial/';
-  UpdateScientificMatrialURL = environment.BaseURL + 'ScientificMatrial/update-scientific-matrial/';
-  GetScientificMatrialDetailsURL = environment.BaseURL + 'ScientificMatrial/get-scientific-matrial-by-id/';
-  GetScientificMatrialFilterURL = environment.BaseURL + 'ScientificMatrial/get-scientific-matrial-filter/';
-  DeleteScientificMatrialURL = environment.BaseURL + 'ScientificMatrial/delete-scientific-matrial/';
-  GetProgramsLookupUrl = environment.BaseURL + 'Programs/get-programs-lookup';
-  GetScientificMatrialCategoriesURL = environment.BaseURL + 'ScientificMatrial/get-scientific-matrial-categories';
+  addScientificMatrialURL = environment.BaseURL + 'ScientificMatrial/add-scientific-matrial/';
+  updateScientificMatrialURL = environment.BaseURL + 'ScientificMatrial/update-scientific-matrial/';
+  getScientificMatrialDetailsURL = environment.BaseURL + 'ScientificMatrial/get-scientific-matrial-by-id/';
+  getScientificMatrialFilterURL = environment.BaseURL + 'ScientificMatrial/get-scientific-matrial-filter/';
+  deleteScientificMatrialURL = environment.BaseURL + 'ScientificMatrial/delete-scientific-matrial/';
+  getProgramsLookupUrl = environment.BaseURL + 'Programs/get-programs-lookup';
+  getScientificMatrialCategoriesURL = environment.BaseURL + 'ScientificMatrial/get-scientific-matrial-categories';
+
   constructor(private http: HttpClient) { }
 
-  addScientificMaterial(model: AddScientificMaterial): Observable<BaseResponseModel> {
-    return this.http.post<BaseResponseModel>(this.AddScientificMatrialURL, model);
+  addScientificMaterial(model: IAddScientificMaterial): Observable<BaseResponseModel> {
+    return this.http.post<BaseResponseModel>(this.addScientificMatrialURL, model);
   }
   getScientificMaterial(id: string): Observable<BaseResponseModel> {
-    return this.http.get<BaseResponseModel>(this.GetScientificMatrialDetailsURL + id)
+    return this.http.get<BaseResponseModel>(this.getScientificMatrialDetailsURL + id)
   }
-  UpdateScientificMaterial(model: UpdateScientificMaterial): Observable<BaseResponseModel> {
-    return this.http.put<BaseResponseModel>(this.UpdateScientificMatrialURL, model);
+  UpdateScientificMaterial(model: IUpdateScientificMaterial): Observable<BaseResponseModel> {
+    return this.http.put<BaseResponseModel>(this.updateScientificMatrialURL, model);
   }
 
   DeleteScientificMatrial(id: any): Observable<BaseResponseModel> {
-    return this.http.delete<BaseResponseModel>(this.DeleteScientificMatrialURL + id);
+    return this.http.delete<BaseResponseModel>(this.deleteScientificMatrialURL + id);
   }
-  getScientificMateriaFilter(filterRequest: ScientificMaterialFilter): Observable<BaseResponseModel> {
-    return this.http.post<BaseResponseModel>(this.GetScientificMatrialFilterURL, filterRequest)
+  getScientificMateriaFilter(filterRequest: IScientificMaterialFilter): Observable<BaseResponseModel> {
+    return this.http.post<BaseResponseModel>(this.getScientificMatrialFilterURL, filterRequest)
   }
   getProgramsLookup(): Observable<BaseResponseModel> {
-    return this.http.get<BaseResponseModel>(this.GetProgramsLookupUrl)
+    return this.http.get<BaseResponseModel>(this.getProgramsLookupUrl)
   }
   GetScientificMatrialCategoriesLookup():Observable<BaseResponseModel>{
-    return this.http.get<BaseResponseModel>(this.GetScientificMatrialCategoriesURL);
+    return this.http.get<BaseResponseModel>(this.getScientificMatrialCategoriesURL);
 
   }
 }

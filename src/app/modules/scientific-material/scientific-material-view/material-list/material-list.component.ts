@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ScientificMaterialFilter } from 'src/app/core/interfaces/scientific-material/scientific-matrial-filter';
-import { ScientificMaterialGrid } from 'src/app/core/interfaces/scientific-material/scientific-matrial-grid';
+import { IScientificMaterialFilter } from 'src/app/core/interfaces/scientific-material/iscientific-matrial-filter';
+import { IScientificMaterialGrid } from 'src/app/core/interfaces/scientific-material/Iscientific-matrial-grid';
 import { ScientificMaterialService } from 'src/app/core/services/scientific-material-services/scientific-material.service';
 
 @Component({
@@ -9,8 +9,8 @@ import { ScientificMaterialService } from 'src/app/core/services/scientific-mate
   styleUrls: ['./material-list.component.scss']
 })
 export class MaterialListComponent implements OnInit {
-  materials : ScientificMaterialGrid[] =[];
-  materialFilter = {} as ScientificMaterialFilter
+  materials : IScientificMaterialGrid[] =[];
+  materialFilter = {} as IScientificMaterialFilter
   @Input() selectedProgramId?:string; 
   @Output() materialId = new EventEmitter<string>();;
   constructor( private scientifcMaterialService: ScientificMaterialService) { }
@@ -28,7 +28,7 @@ export class MaterialListComponent implements OnInit {
     this.materialFilter.programs = programId ? programId : undefined
     this.scientifcMaterialService.getScientificMateriaFilter(this.materialFilter).subscribe(   
          (res: any) => {
-      this.materials = res.data as ScientificMaterialGrid[];
+      this.materials = res.data as IScientificMaterialGrid[];
 
     }, error => {
       console.log(error);

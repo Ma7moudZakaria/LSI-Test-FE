@@ -1,4 +1,4 @@
-export interface ProgramScientificMaterial {
+export interface IProgramScientificMaterial {
     id?:string;
     huffazId?:number;
     programId?:string;

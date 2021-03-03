@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { FileUpload } from '../../interfaces/attachments-interfaces/file-upload';
+import { IFileUpload } from '../../interfaces/attachments-interfaces/ifile-upload';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +9,11 @@ import { FileUpload } from '../../interfaces/attachments-interfaces/file-upload'
 export class AttachmentsService {
 
   constructor(private http: HttpClient) { }
-  UploadFilesURL =environment.BaseURL+"Attachments/upload-file";
+  uploadFilesURL =environment.BaseURL+"Attachments/upload-file";
   getAttachmentId=environment.BaseURL+"Attachments/download-file/";
   deleteAttachmentId=environment.BaseURL+"Attachments/delete-file/";
   
-  upload(files:FileUpload[]) {
+  upload(files:IFileUpload[]) {
 
     var fd = new FormData();
     let i =0;
@@ -23,7 +23,7 @@ export class AttachmentsService {
       fd.append('attachmentsModel['+i+'].File', file.file);
       i++;
     });
-    return this.http.post(this.UploadFilesURL,fd)
+    return this.http.post(this.uploadFilesURL,fd)
   }
    
   getFile(filesIds:Array<string>){

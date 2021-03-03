@@ -1,4 +1,6 @@
-export interface AddScientificMaterialResult {
+export interface IUpdateScientificMaterial{
+    id:string;
+    huffazId:number;
     matrialTitleAr:string;
     matrialTitleEn:string;
     matrialCategory:string;
@@ -6,6 +8,7 @@ export interface AddScientificMaterialResult {
     active:boolean;
     availableForAllUsers:boolean;
     programIds:string[];
+    attachmentIds:string[];
     attachmentPath:string;
-    
+    programScientificMatrial:any;
 }

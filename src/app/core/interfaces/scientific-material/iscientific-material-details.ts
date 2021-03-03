@@ -1,4 +1,7 @@
-export interface UpdateScientificMaterial{
+import { IAttachment } from "../attachments-interfaces/iattachment";
+
+export interface IScientificMaterialDetails {
+
     id:string;
     huffazId:number;
     matrialTitleAr:string;
@@ -7,8 +10,7 @@ export interface UpdateScientificMaterial{
     fileLink:string;
     active:boolean;
     availableForAllUsers:boolean;
-    programIds:string[];
-    attachmentIds:string[];
-    attachmentPath:string;
-    programScientificMatrial:any;
+    matrialAttachments:IAttachment[];
+    matrialPrograms?:any;
+
 }
