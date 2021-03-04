@@ -1,6 +1,6 @@
 <form [formGroup]="profileForm" (ngSubmit)="onSubmit(profileForm.value)" class="form-group">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
-        <h1 class="font-weight-bold "> Update User </h1> 
+        <h1 class="font-weight-bold "> {{'UPDATE_USER_PG.UpdateUser' | translate}} </h1> 
     </div>
 
     <!-- Name -->                    
@@ -9,12 +9,12 @@
             <!-- First Row-->
 
             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <label class="Register__Label" for="firstNameAr"> First Name Arabic </label>
+                <label class="Register__Label" for="firstNameAr"> {{'UPDATE_USER_PG.FirstNameAr' | translate}} </label>
                 <input id="firstNameEn"  pInputText type="text" formControlName="firstNameAr" name="firstNameAr" placeholder="Enter First Name" class="form-control UserRegister__FormControl">                            
             </div>
 
             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <label class="Register__Label" for="firstNameEn"> First Name English </label>
+                <label class="Register__Label" for="firstNameEn"> {{'UPDATE_USER_PG.FirstNameEn' | translate}} </label>
                 <input id="firstNameEn"  pInputText type="text" formControlName="firstNameEn" name="firstNameEn" placeholder="Enter Father Name" class="form-control UserRegister__FormControl">                            
             </div>
             
@@ -52,14 +52,14 @@
             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
                 <label class="Register__Label" for="gender"> Gender </label>
                 <select name="nameEn" formControlName="gender" style="width: 100px; height: 35px;"> 
-                    <option *ngFor = "let genderItem of genderData" [value]="genderItem.id" >{{genderItem.nameEn}}</option>
+                    <option *ngFor = "let genderItem of collectionOfLookup.GENDER" [value]="genderItem.id" >{{genderItem.nameEn}}</option>
                 </select>                     
             </div>  
 
             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
                 <label class="Register__Label" for="countryCode"> Country Code </label>
                 <select name="nameEn" formControlName="countryCode" style="width: 100px; height: 35px;" > 
-                    <option *ngFor = "let countryItem of countryData" [value]="countryItem.id">{{countryItem.nameEn}}</option>
+                    <option *ngFor = "let countryItem of collectionOfLookup.COUNTRY" [value]="countryItem.id">{{countryItem.nameEn}}</option>
                 </select>      
             </div>  
 
@@ -72,13 +72,13 @@
             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
                 <label class="Register__Label" for="nationality"> Nationality </label>
                 <select name="nameEn" formControlName="nationality" style="width: 100px; height: 35px;"  > 
-                    <option *ngFor = "let nationalityItem of nationalityData" [value]="nationalityItem.id">{{nationalityItem.nameEn}}</option>
+                    <option *ngFor = "let nationalityItem of collectionOfLookup.NATIONALITY" [value]="nationalityItem.id">{{nationalityItem.nameEn}}</option>
                 </select>        
             </div>  
             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
                 <label class="Register__Label" for="educationalLevel"> Educational Level </label>
                 <select name="nameEn" formControlName="educationallevel" style="width: 100px; height: 35px;"> 
-                    <option *ngFor = "let educationalLevelItem of educationalLevelData" [value]="educationalLevelItem.id">{{educationalLevelItem.nameEn}}</option>
+                    <option *ngFor = "let educationalLevelItem of collectionOfLookup.EDU_LEVEL" [value]="educationalLevelItem.id">{{educationalLevelItem.nameEn}}</option>
                 </select>       
             </div>  
 

@@ -12,12 +12,12 @@
                 <div class="content_form ">
 
                 <div class="col-lg-12 mb-4 mt-2">
-                      <h1 class="font-weight-bold "> Login </h1> 
+                      <h1 class="font-weight-bold "> {{'LOGIN_PG.Login' | translate}} </h1> 
                   </div>
       
                   <!-- Email Address -->                    
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
-                      <label class="UserLogin__Label" for="UserEmail">Email Address</label>
+                      <label class="UserLogin__Label" for="UserEmail"> {{'GENERAL.Email' | translate}} </label>
                       <div class="input-group">
                           <div class="input-group-prepend">
                               <span class="input-group-text bg-white pl-2 pr-2 border-md border-right-0">
@@ -34,7 +34,7 @@
        
                   <!-- Password -->                    
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
-                      <label class="UserLogin__Label" for="UserPassword">Password</label>
+                      <label class="UserLogin__Label" for="UserPassword">{{'GENERAL.Password' | translate}}</label>
                       <div class="input-group ">
                           <div class="input-group-prepend">
                               <span class="input-group-text bg-white pl-2 pr-2  border-md border-right-0">
@@ -54,18 +54,18 @@
                   <!-- Remember Me -->
                   <div class="form-group col-lg-12 mb-3">
                       <label class="UserLogin__RememberMeLabel">
-                          <input class="UserLogin__RememberMe" type="checkbox" name="remember"> Remember me
+                          <input class="UserLogin__RememberMe" type="checkbox" name="remember"> {{'LOGIN_PG.RememberMe' | translate}} 
                       </label>
                                        
                       <label class="UserLogin__ForgetPassword">
-                          <a class="UserLogin__ForgetPasswordLink" href="/forget-password" [routerLink]="['/forget-password']" > Forget Password ?</a>
+                          <a class="UserLogin__ForgetPasswordLink" href="/forget-password" [routerLink]="['/forget-password']" > {{'LOGIN_PG.ForgetPassword' | translate}} </a>
                       </label>
                   </div>
                    <!-- Submit Button -->
                    <div class="form-group col-lg-12 mx-auto mb-0">
                     <!-- <button type="submit" class="btn btn-primary btn-block UserLogin__Submit"  [disabled]="!userform.valid">Submit</button> -->
-                    <button type="submit" class="btn  UserLogin__Submit " >Submit</button>
-                    <button type="submit" class="btn  UserLogin__SignUp " > Sign Up</button>
+                    <button type="submit" class="btn  UserLogin__Submit " > {{'LOGIN_PG.Login' | translate}} </button>
+                    <button type="submit" class="btn  UserLogin__SignUp " > {{'LOGIN_PG.SignUp' | translate}}</button>
 
                   
                     
@@ -74,9 +74,9 @@
                 
                 <div class="footer_form ">
                     <hr>
-                <p class="footer_form_p mb-0 text-center mb-3">Log in via social media</p>
+                <p class="footer_form_p mb-0 text-center mb-3"> {{'LOGIN_PG.SoicalLogIn' | translate}} </p>
                     <div class="d-flex mb-3">
-                        <button type="submit" class="btn UserLogin__Register" >Register as a teacher</button>
+                        <button type="submit" class="btn UserLogin__Register" > {{'LOGIN_PG.TeacherSignup' | translate}}</button>
                         <ul class="list-inline ml-5 mr-5">
                             <li class="list-inline-item"> <img src="../../../../../assets/images/facebook.svg"></li>
                             <li class="list-inline-item"><img src="../../../../../assets/images/twiiter.svg"></li>

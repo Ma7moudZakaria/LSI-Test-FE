@@ -5,6 +5,7 @@ import { ViewUserProfileDetailsComponent } from './components/view-user-profile-
 
 import { UpdateUserProfileComponent } from './components/update-user-profile/update-user-profile';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UserRoutingModule,
     ReactiveFormsModule,
     CommonModule ,
-    FormsModule
+    FormsModule,
+    TranslateModule
   ]
 })
 export class UserModule { }

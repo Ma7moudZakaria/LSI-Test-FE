@@ -1,5 +1,46 @@
 {
-    "page1":{
-        "hello":"helo"
+    "GENERAL":{
+        "Send":"Send",
+        "Back":"Back",
+        "Email": "Email Address",
+        "Password":"Password",
+        "ConfirmPassword":"Confirm Password",
+        "Name":"Name",
+        "FatherName":"Father Name",
+        "FamilyName":"Family Name",
+        "Gender":"Gender",
+        "Male":"Male",
+        "FeMale":"FeMale"
+        
+    },
+    "ACTIVATION_USER_PG":{
+        "ActivationCode":"Activation Code",
+        "ActivationMessage":"The access code has been sent to your email",
+        "SendActivationCode":"Send Again",
+        "Message":"I did not receive the Activation Code."        
+    },
+    "FORGET_PASSWORD_PG":{
+        "ForgotPassword":"Forgot Password"
+        
+    },
+    "LOGIN_PG":{
+        "Login":"Login",
+        "RememberMe":"Remember me",
+        "ForgetPassword":"Forget Password ?",
+        "SignUp":"Register Now",
+        "SoicalLogIn":"Log in via social media",
+        "TeacherSignup":"Register as a teacher"
+    },
+    "SIGNUP_PG":{
+        "Signup":"Sign Up",
+        
+        "Next":"Next"
+    },
+    "RESETPASSWORD_PG":{
+        "ResetPassword":"Reset Password"
+    },
+    "UPDATE_USER_PG":{
+        "FirstNameAr":"First Name Arabic",
+        "FirstNameEn":"First Name English"
     }
 }

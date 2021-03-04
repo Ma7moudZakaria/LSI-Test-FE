@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { IActivationCode } from 'src/app/core/interfaces/auth/iactivation-code';
 import { IUser } from 'src/app/core/interfaces/auth/iuser-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
@@ -25,8 +26,9 @@ export class ActivateUserComponent implements OnInit {
   userData?:string;
 
   constructor(
-    private router: Router, private activatedRoute: ActivatedRoute,
+    private router: Router, 
     private fb: FormBuilder,
+    private translate: TranslateService,
     private authService: AuthService) { }
 
   ngOnInit(): void {
