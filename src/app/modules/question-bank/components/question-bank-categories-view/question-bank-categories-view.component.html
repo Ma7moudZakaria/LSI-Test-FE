@@ -24,7 +24,7 @@
         </div> -->
   
   <div *ngFor="let QBC of QuestionBankCategoryList ; let i=index;" class="list-group" >
-    <div routerLink="" class="list-group-item  list-group-item_custom list-group-item-action row" [(ngModel)]="catogryChang" (click)="changCatogry(QBC.id)">
+    <div  class="list-group-item  list-group-item_custom list-group-item-action row" (click)="loadCatogryQuiestion(QBC.id)">
         <p>
            {{QBC.arabCatgName}}
           <img src="assets/quesionBsnk/questionBankCategory/Icon feather-edit-3 (1).svg" alt="" class="mt-10 cursor-pointer" (click)="loadQuestionBankCategoryDetails(QBC.id)" />

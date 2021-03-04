@@ -3,7 +3,7 @@
 <div class="container">
     <div class=" row">
         <div class="col-6">
-            <app-question-bank-categories-view>
+            <app-question-bank-categories-view (selectedCategoryId)="setSelectedCategory($event)" >
         
             </app-question-bank-categories-view>
         </div>

@@ -39,10 +39,8 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
    formImport: FormGroup;
   successMessage?:string;
   isSubmit = false;
-@Input()
-catId:string="";
-@Output()
-catogryChang:EventEmitter<string>=new EventEmitter<string>();
+
+@Output() selectedCategoryId= new EventEmitter<string>();;
 clickChangeCtogry:string="";
   constructor(private questionBankCategoryService: QuestionBankCategoryService,
     private activeroute: ActivatedRoute, 
@@ -246,9 +244,9 @@ this.isAdd=true;
 
   }
 
-  changCatogry(id?:string){
-
-    this.catogryChang.emit(id);
+ 
+  loadCatogryQuiestion(id?:string){
+    this.selectedCategoryId?.emit(id);
   }
 
 }

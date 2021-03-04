@@ -1,5 +1,5 @@
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,EventEmitter, Input, Output} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { IquestionBankQuestionsFilterRequest } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-filter-request';
@@ -21,7 +21,8 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   QuestionBankQuestionFilter: IquestionBankQuestionsFilterRequest = {};
   // position: string="";
   //msgs: Message[] = [];
- 
+  @Input() selectedCategoryId?:string; 
+  @Output() QuestionId = new EventEmitter<string>();;
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
      public translate: TranslateService) { }
 
@@ -29,12 +30,17 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
     // this.currentWindowWidth = window.innerWidth;
     // this.valueLang= this.translate.currentLang=='en-US'?'nameEn':'nameAr';
     // this.nav.show();
-    this.getQuestionBankQuestions(true)
+    this.getQuestionBankQuestions()
   }
-  getQuestionBankQuestions(isLazyLoading = false) {
+  ngOnChanges(changes: any) {
+    // console.log(changes);
+    this.getQuestionBankQuestions(changes.selectedCategoryId.currentValue);
+  }
+  getQuestionBankQuestions(CategoryId?:any) {
     this.filterErrorMessage = "";
     this.QuestionBankQuestionFilter.PageNumber=1;
     this.QuestionBankQuestionFilter.PageSize=10;
+    this.QuestionBankQuestionFilter.catgyId=CategoryId;
     this.questionBankQuestionService.getQuestionBankQuestionsFilter(this.QuestionBankQuestionFilter).subscribe(res => {
       let response = <BaseResponseModel>res;
       if (response.isSuccess) {
@@ -108,5 +114,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
     //   key: "positionDialog"
     // });
   }
-
+  loadQuestion(QuestionId:string){
+    this.QuestionId?.emit(QuestionId);
+  }
 }
