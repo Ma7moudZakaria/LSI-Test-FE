@@ -1,9 +1,9 @@
 @import 'src/assets/scss/_variables.scss';
 
 .ActivationCode{
-    // .ActivationCode__Label{
-    //     color: $auth-backgroundcolor;
-    // }
+    .ActivationCode__Label{
+        color: $ForgetPasswordLink;
+    }
 
     .ActivationCode__FormControl::placeholder {
         color: $auth-color;
