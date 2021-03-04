@@ -16,6 +16,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
 import { AuthInterceptor } from './core/interceptors/auth-interceptors/auth.interceptor';
 import { ErrorInterceptor } from './core/interceptors/error-interceptors/error.interceptor';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -41,15 +44,15 @@ export function HttpLoaderFactory(http: HttpClient) {
     ReactiveFormsModule,
     SharedModule,
     NoopAnimationsModule,
-    MatRadioModule, 
-    MatCheckboxModule, 
-    MatCardModule
+    MatRadioModule,
+    MatCheckboxModule,
+    MatCardModule, MatExpansionModule, MatDialogModule, MatDialog
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
-  exports: [TranslateModule,MatRadioModule,MatCheckboxModule,MatCardModule]
+  exports: [TranslateModule, MatRadioModule, MatCheckboxModule, MatCardModule]
 })
 export class AppModule { }

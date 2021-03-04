@@ -1,6 +1,7 @@
 <div class="container">
     <div class="row">
-        <button type="button" class="btn btn-primary m-2 pull-left" (click)="addNewMaterial()">Add New Material</button>
+        <button type="button" class="btn btn-primary m-2 pull-left"
+        data-toggle="modal" data-target="#myModal">Add New Material</button>
     </div>
     <br/>
     <div class="row">
@@ -16,5 +17,29 @@
 
     <br/>
     <br/>
-    <app-add-scientific-material [selectedMaterialId]="selectedMaterialId"></app-add-scientific-material>
+
+      <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+            <app-add-scientific-material [selectedMaterialId]="selectedMaterialId"></app-add-scientific-material>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+      </div>
+      </div>
 </div>

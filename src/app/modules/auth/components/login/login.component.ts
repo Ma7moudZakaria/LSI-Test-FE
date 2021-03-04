@@ -13,14 +13,14 @@ import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 export class LoginComponent implements OnInit {
   hidePassword = true;
   userform = new FormGroup({});
-  submitted = new Boolean ({});
-  errorMessage:any;
-  successMessage:any;
+  submitted = new Boolean({});
+  errorMessage: any;
+  successMessage: any;
 
   constructor(
-      private fb: FormBuilder,
-      private authService: AuthService
-      ) { }
+    private fb: FormBuilder,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
     this.userform = this.fb.group({
@@ -35,18 +35,18 @@ export class LoginComponent implements OnInit {
       authModel = {
         uname: this.userform.value.email,
         upass: this.userform.value.password
-      }     
+      }
       this.authService.userAuthentication(authModel).subscribe(
         (res) => {
-          if (res.isSuccess){
-            localStorage.setItem('user',JSON.stringify(res.data as IUser))
-            this.successMessage={
+          if (res.isSuccess) {
+            localStorage.setItem('user', JSON.stringify(res.data as IUser))
+            this.successMessage = {
               message: res.message,
-              type:'success'
+              type: 'success'
             }
-            setTimeout(()=>{
-                // this.router.navigateByUrl('/auth/login');
-              },3000);
+            setTimeout(() => {
+              // this.router.navigateByUrl('/auth/login');
+            }, 3000);
           }
           else this.errorMessage = res.message;
         },
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
         }
       );
     }
-    else{
+    else {
     }
   }
 }
