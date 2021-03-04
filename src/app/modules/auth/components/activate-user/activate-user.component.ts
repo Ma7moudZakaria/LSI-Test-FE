@@ -54,13 +54,13 @@ export class ActivateUserComponent implements OnInit {
       console.log(res);
       if (res.isSuccess){
         this.successMessage={
-          message:"Activate Code send successfully",
+          message: res.message,
           type:'success'
         }
         setTimeout(()=>{
             // this.router.navigateByUrl('/auth/login');
           },3000);
-        }
+      }
       else{
         this.errorMessage  = res.message;
       }
@@ -79,7 +79,7 @@ export class ActivateUserComponent implements OnInit {
         console.log(res);
         if (res.isSuccess){
           this.successMessage={
-            message:"Account is activated successfully",
+            message:res.message,
             type:'success'
           }
           setTimeout(()=>{

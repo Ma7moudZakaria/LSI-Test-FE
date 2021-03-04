@@ -1,31 +1,31 @@
 
 <div class="row ActivationCode">
-    <div class="col-lg-6 col-md-6 col-sm-6">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
         <form [formGroup]="activationcodeform" (ngSubmit)="onApply(activationcodeform.value)" class="form-group">
-            <div class="col-lg-12 col-md-12 mb-4">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
                 <h1 class="font-weight-bold "> Activation Code </h1> 
             </div>
 
-            <div class="col-lg-12 col-md-12 mb-4">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
                 <label class="ActivationCode__Label"> Password </label>
             </div>
 
             <!-- Email -->
-            <div class="col-lg-12 col-md-12 mb-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
                 <div class="row">
-                    <div class="form-group col-lg-3 col-md-3 mb-12">
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-3 mb-12">
                         <input id="firstNumber" type="number" formControlName="firstNumber" name="firstNumber" class="form-control ActivationCode__FormControl">
                     </div>
 
-                    <div class="form-group col-lg-3 col-md-3 mb-12">
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-3 mb-12">
                         <input id="secondNumber" type="number" formControlName="secondNumber" name="secondNumber" class="form-control ActivationCode__FormControl">
                     </div>
 
-                    <div class="form-group col-lg-3 col-md-3 mb-12">
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-3 mb-12">
                         <input id="thirdNumber" type="number" formControlName="thirdNumber" name="thirdNumber" class="form-control ActivationCode__FormControl">
                     </div>
 
-                    <div class="form-group col-lg-3 col-md-3 mb-12">
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-3 mb-12">
                         <input id="fourthNumber" type="number" formControlName="fourthNumber" name="fourthNumber" class="form-control ActivationCode__FormControl">
                     </div>
                 </div>                                   
@@ -34,7 +34,7 @@
             <span class="underline" (click)="sendActivateCode()"> Send Again </span>
 
             <!-- Submit Button -->
-            <div class="form-group col-lg-12 col-md-12 mx-auto mb-0">
+            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-auto mb-0">
                 <button type="submit" class="btn btn-primary btn-block ActivationCode__Submit" > Send </button>                     
             </div>
 
@@ -44,7 +44,7 @@
         </form>
     </div>
 
-    <div class="col-lg-6 col-md-6 col-sm-6">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
        
     </div>
 </div>

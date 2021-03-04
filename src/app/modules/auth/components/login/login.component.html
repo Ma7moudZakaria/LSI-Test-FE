@@ -1,17 +1,17 @@
 
 <div class="row UserLogin">
-    <div class="col-lg-6 col-md-6 col-sm-6">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
         <!-- <img class="UserLogin__LoginImage" src="D:\ArabDT_Projects\Hudaz_Front\huffaz-app\src\assets\images/LoginHeader.svg"/> -->
 
         <section class="row justify-content-center UserLogin__FormContainer">
-            <section class="col-12 col-md-12 col-sm-12">
+            <section class="col-12 col-md-12 col-sm-12 col-xs-12 col-sm-12">
               <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)" class="form-group UserLogin__LoginForm">
                   <div class="col-lg-12 mb-4">
                       <h1 class="font-weight-bold "> Login </h1> 
                   </div>
       
                   <!-- Email Address -->                    
-                  <div class="col-lg-12 mb-4">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
                       <label class="UserLogin__Label" for="UserEmail">Email Address</label>
                       <div class="input-group">
                           <div class="input-group-prepend">
@@ -25,7 +25,7 @@
                   </div>
        
                   <!-- Password -->                    
-                  <div class="col-lg-12 mb-4">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
                       <label class="UserLogin__Label" for="UserPassword">Password</label>
                       <div class="input-group ">
                           <div class="input-group-prepend">
@@ -39,7 +39,7 @@
                   </div>
        
                   <!-- Remember Me -->
-                  <div class="form-group col-lg-12 mb-4">
+                  <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
                       <label class="UserLogin__RememberMeLabel">
                           <input class="UserLogin__RememberMe" type="checkbox" name="remember"> Remember me
                       </label>
@@ -50,7 +50,7 @@
                   </div>
        
                   <!-- Submit Button -->
-                  <div class="form-group col-lg-12 mx-auto mb-0">
+                  <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-auto mb-0">
                       <!-- <button type="submit" class="btn btn-primary btn-block UserLogin__Submit"  [disabled]="!userform.valid">Submit</button> -->
                       <button type="submit" class="btn btn-primary btn-block UserLogin__Submit" >Submit</button>
                       <a [routerLink]="['/register']" class="btn btn-primary btn-block py-2 UserLogin__SignUp">
@@ -70,7 +70,7 @@
         <!-- <img class="UserLogin__LoginHeader" src="/src/assets/images/LoginBackground.png" /> -->
     </div>
 
-    <div class="col-lg-6 col-md-6 col-sm-6 UserLogin__LoginImageLeft">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 UserLogin__LoginImageLeft">
         <p> Welcome 7oda </p>
         <!-- <img class="UserLogin__LoginImage" src="/src/assets/images/LoginBackground.png" /> -->
     </div>

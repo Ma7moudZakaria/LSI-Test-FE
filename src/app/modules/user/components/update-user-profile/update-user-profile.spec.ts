@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { UserProfileComponent } from './user-profile';
+import { UserProfileComponent } from './update-user-profile';
 
 describe('UserProfileComponent', () => {
   let component: UserProfileComponent;
