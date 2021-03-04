@@ -4,14 +4,14 @@
     .UserLogin__ForgetPassword{
         float: right;
         .UserLogin__ForgetPasswordLink{
-            color: #CB9118;
+            color: $auth-colorForgetPassword
         }
     }
     
     .UserLogin__RememberMeLabel{
         opacity: 0.5;
         .UserLogin__RememberMe{
-            color: #5A5A5A;
+            color: $auth-colorRememberMe;
             opacity: 0.5;
         }
     }

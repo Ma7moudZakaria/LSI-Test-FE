@@ -64,7 +64,7 @@ export class ResetPasswordComponent implements OnInit {
         console.log(res);
         if (res.isSuccess){
           this.successMessage={
-            message:"Password updated successfully",
+            message:res.message,
             type:'success'
           }
           setTimeout(()=>{

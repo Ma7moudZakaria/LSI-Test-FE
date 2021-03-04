@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   userform = new FormGroup({});
   submitted = new Boolean ({});
   errorMessage:any;
+  successMessage:any;
 
   constructor(
       private fb: FormBuilder,
@@ -29,10 +30,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(value: string) {
-    // this.submitted = true;
-    // this.msgs = [];
-    // this.messageService.add({severity:'info', summary:'Success', detail:'Form Submitted'});
-    // this.router.navigate(['home']);
     if (this.userform.valid) {
       var authModel: IAuthentication;
       authModel = {
@@ -41,10 +38,15 @@ export class LoginComponent implements OnInit {
       }     
       this.authService.userAuthentication(authModel).subscribe(
         (res) => {
-          // let response = Mapper.responseMapper(res);
           if (res.isSuccess){
             localStorage.setItem('user',JSON.stringify(res.data as IUser))
-            // this.router.navigateByUrl('/home');
+            this.successMessage={
+              message: res.message,
+              type:'success'
+            }
+            setTimeout(()=>{
+                // this.router.navigateByUrl('/auth/login');
+              },3000);
           }
           else this.errorMessage = res.message;
         },
@@ -57,7 +59,6 @@ export class LoginComponent implements OnInit {
       );
     }
     else{
-
     }
   }
 }

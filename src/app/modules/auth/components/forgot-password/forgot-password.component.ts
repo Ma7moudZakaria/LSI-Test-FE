@@ -52,15 +52,15 @@ export class ForgotPasswordComponent implements OnInit {
         (res) => {
           if (res.isSuccess){
             this.successMessage={
-              message:"You Send Email Successfully",
+              message: res.message,
               type:'success'
             }
-            // setTimeout(()=>{
-            //   this.router.navigateByUrl('/');
-            // },3000)
+            setTimeout(()=>{
+                // this.router.navigateByUrl('/auth/login');
+              },3000);
           }
-          else {
-            this.errorMessage= res.message;
+          else{
+            this.errorMessage  = res.message;
           }
         },
         (error: any) => {

@@ -7,19 +7,23 @@ import { IAuthentication } from '../../interfaces/auth/iauthentication-model';
 import { IForgotPassword } from '../../interfaces/auth/iforgot-password-model';
 import { IResetPassword } from '../../interfaces/auth/ireset-password-model';
 import { IUser } from '../../interfaces/auth/iuser-model';
+import { IProfileUser } from '../../interfaces/user-interfaces/iprofileuser';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
     changeLanguageUrl = environment.BaseURL + 'Language/set-lang';
-    registerUrl = environment.BaseURL + 'Users/register';
-    userAuthenticationUrl = environment.BaseURL + 'User/user-authenticate';
-    forgotPasswordUrl = environment.BaseURL + 'User/forgot-password';
-    resetPasswordUrl = environment.BaseURL + 'User/reset-password';
-    sendActivateCodeUrl = environment.BaseURL + 'User/send-new-activation-code/';
+  registerUrl = environment.BaseURL + 'User/register';
+  userAuthenticationUrl = environment.BaseURL + 'User/user-authenticate';
+  forgotPasswordUrl = environment.BaseURL + 'User/send-forgot-password-url';
+  resetPasswordUrl = environment.BaseURL + 'User/reset-password';
     verifyUserUrl = environment.BaseURL + 'User/verify-user-activiation-code/';
+  sendActivateCodeUrl = environment.BaseURL + 'User/send-new-activation-code/';
+  viewProfileDetailsUrl = environment.BaseURL + 'User/view-user-profile-details/';
+  updateUserUrl = environment.BaseURL + 'User/update-user';
 
   constructor(private http: HttpClient) { }
 
@@ -49,5 +53,13 @@ export class AuthService {
 
   sendActivateCode(Id:any):Observable<BaseResponseModel>{
     return this.http.put<BaseResponseModel>(this.sendActivateCodeUrl + Id , null);
+  }
+
+  viewProfileDetails(Id: any) {
+    return this.http.get<BaseResponseModel>(this.viewProfileDetailsUrl + Id);
+  }
+
+  updateUser(model:IProfileUser){
+    return this.http.put<BaseResponseModel>(this.updateUserUrl, model);
   }
 }
