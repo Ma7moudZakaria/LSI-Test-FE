@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IResetPassword } from 'src/app/core/interfaces/auth/ireset-password-model';
+import { IResetPassword } from 'src/app/core/interfaces/auth/ireset-password';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 
 @Component({

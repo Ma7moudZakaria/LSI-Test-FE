@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IForgotPassword } from 'src/app/core/interfaces/auth/iforgot-password-model';
+import { IForgotPassword } from 'src/app/core/interfaces/auth/iforgot-password';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 
 @Component({

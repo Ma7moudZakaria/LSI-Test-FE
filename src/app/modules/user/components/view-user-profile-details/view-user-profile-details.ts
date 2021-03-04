@@ -19,7 +19,7 @@ export class ViewUserProfileDetailsComponent implements OnInit {
   isSuccess:any;
   successMessage:any;
   allLookups:any;
-  listOfLookupProfile = ["GENDER","EDU_LEVEL","NATIONALITY","COUNTRY"];
+  listOfLookupProfile: string[] = ['GENDER','EDU_LEVEL','NATIONALITY','COUNTRY'];
   dataOfLookups = [];
   currentUser:any;
   errorMessage:any;

@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IActivationCode } from 'src/app/core/interfaces/auth/iactivation-code-module';
+import { IActivationCode } from 'src/app/core/interfaces/auth/iactivation-code';
 import { IUser } from 'src/app/core/interfaces/auth/iuser-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 

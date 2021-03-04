@@ -26,7 +26,7 @@ export class UpdateUserProfileComponent implements OnInit {
   country:any;
   nationality:any;
   educationalLevel:any;
-  listOfLookupProfile = ["GENDER","EDU_LEVEL","NATIONALITY","COUNTRY"];
+  listOfLookupProfile : string[] = ['GENDER','EDU_LEVEL','NATIONALITY','COUNTRY'];
   successMessage:any;
   userProfileDetails:any;
   updateUserModel = {};
