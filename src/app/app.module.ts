@@ -46,7 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NoopAnimationsModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatCardModule, MatExpansionModule, MatDialogModule, MatDialog
+    MatCardModule, MatExpansionModule/*, MatDialogModule, MatDialog*/
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
