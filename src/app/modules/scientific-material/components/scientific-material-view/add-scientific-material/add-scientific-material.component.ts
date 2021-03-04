@@ -11,6 +11,7 @@ import { AttachmentsService } from 'src/app/core/services/attachments-services/a
 import { ScientificMaterialService } from 'src/app/core/services/scientific-material-services/scientific-material.service';
 import { BaseLookupModel } from 'src/app/core/ng-model/base-lookup-model';
 import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 
 @Component({
   selector: 'app-add-scientific-material',
@@ -36,6 +37,7 @@ export class AddScientificMaterialComponent implements OnInit {
   errorMessage: any;
   disableSaveButtons = false;
   @Input() selectedMaterialId: any;
+  LangEnum = LanguageEnum ;
   constructor(private fb: FormBuilder, private scientifcMaterialService: ScientificMaterialService,
     private attachmentService: AttachmentsService,public translate : TranslateService,
     private activeroute: ActivatedRoute, private router: Router) {
@@ -101,6 +103,8 @@ export class AddScientificMaterialComponent implements OnInit {
       this.ScientificMaterialDetails = {} as IScientificMaterialDetails;
       this.fileList = [];      
       this.selectedProgram = [];
+      this.attachmentIds = [];
+      this.fileUploadModel = [];
 
     }
 

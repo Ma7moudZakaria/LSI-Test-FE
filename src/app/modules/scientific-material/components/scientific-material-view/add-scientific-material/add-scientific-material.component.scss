@@ -5,3 +5,56 @@
         margin-right: 1rem;
     }
 }
+.material-form{
+    background: #FBFBFB 0% 0% no-repeat padding-box;
+    border: 1px solid #FBFBFB;
+    opacity: 1;
+    text-align: right;
+    padding: 3rem;
+}
+.custom-file{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 3px dashed #DFDFDF;
+    border-radius: 12px;
+    opacity: 1;
+    height: 100px;
+    width: 80%;
+    margin:2rem;
+    padding: 2rem;
+    text-align: center;
+    &__text{
+        color: var(--unnamed-color-3a3a3a);
+        font: normal normal bold 18px/28px Almarai;
+        letter-spacing: -0.26px;
+        color: #3A3A3A;
+        opacity: 0.5;
+    }
+}
+label{
+    color: var(--unnamed-color-3a3a3a);
+    text-align: right;
+    font: normal normal bold 14px/22px Almarai;
+    letter-spacing: -0.2px;
+    color: #3A3A3A;
+    opacity: 1;
+}
+
+.save-btn{
+    background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
+    background: #8E2520 0% 0% no-repeat padding-box;
+    border-radius: 12px;
+    opacity: 1;
+    width: 10rem;
+    margin: 2rem;
+}
+
+.cancel-btn {
+    background: var(--unnamed-color-cb9118) 0% 0% no-repeat padding-box;
+    background: #CB9118 0% 0% no-repeat padding-box;
+    opacity: 1;
+    border-radius: 12px;
+    width: 10rem;margin: 2rem;
+}
+
+
+  

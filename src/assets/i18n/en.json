@@ -1,5 +1,21 @@
 {
     "page1":{
         "hello":"helo"
+    },
+    "ScientificMaterial":{
+        "SELECTOPTION" : "Select Option",
+        "PROGRAMS" : "Programs",
+        "CATEGORY":"Category",
+        "TITLEAR":"Arabic Name",
+        "TITLEEN":"English Namr",
+        "CHOOSEFILE":"Choose file to upload / Drag to upload",
+        "MATERIALAVAILABILITY":"Scientific Material Avalibality",
+        "ACTIVATION":"Activation",
+        "ALL" : "ALL",
+        "SELECTEDPROGRAMS" : "Selected Programs Only",
+        "ACTIVE" : "Active" ,
+        "INACTIVE" : "InActive",
+        "SAVE" : "Save",
+        "CANCEL" : "Cancel"
     }
 }

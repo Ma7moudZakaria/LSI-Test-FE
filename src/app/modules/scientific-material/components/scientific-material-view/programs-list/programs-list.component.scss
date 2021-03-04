@@ -3,10 +3,17 @@ ul{
     background: #FBFBFB 0% 0% no-repeat padding-box;
     border-radius: 19px;
     opacity: 1;
-    padding: 2rem;
-    height : 90%;;
+    padding: 1rem;
+    height : 100%;;
+    margin-top: 1rem;
 }
-
+ul > p{
+    text-align: right;
+    font: normal normal bold 20px/34px Almarai;
+    letter-spacing: 0px;
+    color: #3A3A3A;
+    opacity: 1
+}
 .list-group-item{
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 15px #0000000D;

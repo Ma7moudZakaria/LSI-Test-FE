@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { ScientificMaterialService } from 'src/app/core/services/scientific-material-services/scientific-material.service';
 
 @Component({
@@ -9,8 +11,8 @@ import { ScientificMaterialService } from 'src/app/core/services/scientific-mate
 export class ProgramsListComponent implements OnInit {
   programs: any;
   @Output() selectedProgramId = new EventEmitter<string>();;
-
-  constructor(private scientifcMaterialService: ScientificMaterialService) { }
+  langEnum = LanguageEnum;
+  constructor(private scientifcMaterialService: ScientificMaterialService,public translate : TranslateService) { }
 
   ngOnInit(): void {
     this.loadPrograms();
@@ -27,7 +29,7 @@ export class ProgramsListComponent implements OnInit {
     );
   }
   selectedIndex:any;
-  loadProgramMaterial(id:string){
+  loadProgramMaterial(id?:any){
     this.selectedProgramId?.emit(id);
   } 
 }

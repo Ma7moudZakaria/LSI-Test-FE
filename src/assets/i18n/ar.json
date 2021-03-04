@@ -1,5 +1,25 @@
 {
     "page1":{
         "hello":"هلا"
+    },
+    "ScientificMaterial":{
+        "SELECTOPTION" : "اختر من القائمة",
+        "PROGRAMS" : "البرامج",
+        "CATEGORY":"الفئة",
+        "TITLEAR":"الاسم العربى",
+        "TITLEEN":"الاسم الانجليزى",
+        "CHOOSEFILE":"إختر الملفات لرفعها / اسحبها وضعها هنا",
+        "MATERIALAVAILABILITY":"اتاحة المادة العلمية",
+        "ACTIVATION":"التنشيط",
+        "ALL" : "الكل",
+        "SELECTEDPROGRAMS" : "البرامج المحتارة فقط",
+        "ACTIVE" : "مفعل" ,
+        "INACTIVE" : " غير مفعل",
+        "SAVE" : "حفظ",
+        "CANCEL" : "إلغاء"
+    },
+    "ProgramsList":{
+        "PROGRAMS" : "البرامج",
+        "ALL" : "الكل"
     }
 }
