@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IForgotPassword } from 'src/app/core/interfaces/auth/iforgot-password-model';
+import { IForgotPassword } from 'src/app/core/interfaces/auth/iforgot-password';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 
 @Component({
@@ -52,15 +52,15 @@ export class ForgotPasswordComponent implements OnInit {
         (res) => {
           if (res.isSuccess){
             this.successMessage={
-              message:"You Send Email Successfully",
+              message: res.message,
               type:'success'
             }
-            // setTimeout(()=>{
-            //   this.router.navigateByUrl('/');
-            // },3000)
+            setTimeout(()=>{
+                // this.router.navigateByUrl('/auth/login');
+              },3000);
           }
-          else {
-            this.errorMessage= res.message;
+          else{
+            this.errorMessage  = res.message;
           }
         },
         (error: any) => {

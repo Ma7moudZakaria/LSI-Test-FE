@@ -1,0 +1,46 @@
+
+.form-control.valid_num{
+    border-bottom: 2px solid #4f8ac5  ;
+    border-bottom-color:#4f8ac5  ;
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+.form-control.valid_num :focus
+{
+    border: 2px solid #ced4da;
+    border-bottom-color: #CB9118 !important;
+    outline: 0;
+    box-shadow: none !important;
+    
+
+}
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+/****** card ****/
+.example-header-image {
+    background-image: url(../../../../../assets/images/download.svg);
+    background-repeat: no-repeat;
+}
+.mat-card-avatar {
+  height: 2rem;
+  width: 2rem;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 0;
+
+}
+.mat-card-header .mat-card-title {
+  font-size: 17px;
+}
+.content_card{
+  font-size: 12px;
+  color:#000000;
+}

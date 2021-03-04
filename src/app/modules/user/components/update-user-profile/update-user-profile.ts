@@ -1,0 +1,216 @@
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { IUser } from 'src/app/core/interfaces/auth/iuser-model';
+import { IProfileUser } from 'src/app/core/interfaces/user-interfaces/iprofileuser';
+import { IUserProfile } from 'src/app/core/interfaces/user-interfaces/iuserprofile';
+import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
+import { UserService } from 'src/app/core/services/user-services/user.service';
+
+@Component({
+  selector: 'app-update-user-profile',
+  templateUrl: './update-user-profile.html',
+  styleUrls: ['./update-user-profile.scss']
+})
+
+export class UpdateUserProfileComponent implements OnInit {
+  profileForm: FormGroup  = new FormGroup({})
+  userProfile = {} as IProfileUser;
+  completeUserProfile = false;
+  updateUserProfile = false;
+  errorMessage:any;
+  currentUser: any;
+  routeParams: any;
+  isSubmit = false;
+  gender:any;
+  country:any;
+  nationality:any;
+  educationalLevel:any;
+  listOfLookupProfile : string[] = ['GENDER','EDU_LEVEL','NATIONALITY','COUNTRY'];
+  successMessage:any;
+  userProfileDetails:any;
+  updateUserModel = {};
+
+  genderData :any;
+  countryData :any;
+  nationalityData :any;
+  educationalLevelData :any;
+
+  constructor(
+    private fb: FormBuilder,
+    private lookupService:LookupService,
+    private userService:UserService,
+    private userProfileService:UserService) {
+  }
+
+  ngOnInit(){        
+    this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
+    this.buildForm();
+    this.userProfileDetails as IUserProfile;
+    this.lookupService.getLookupByKey(this.listOfLookupProfile).subscribe(res =>{
+      this.genderData = res.data["GENDER"];
+      this.educationalLevelData  = res.data["EDU_LEVEL"];
+      this.nationalityData  = res.data["NATIONALITY"];
+      this.countryData  = res.data["COUNTRY"];
+      if (res.isSuccess){
+        this.getUserProfile(this.currentUser.id)        
+        this.successMessage={
+          message:"Activate Code send successfully",
+          type:'success'
+        }
+      }
+      else{
+        this.errorMessage  = res.message;
+      }
+    });
+  }
+
+  getUserProfile(id : any)
+  {
+    this.userService.viewUserProfileDetails(id).subscribe(res =>{
+      this.userProfileDetails = res.data;      
+      this.gender = this.genderData.filter((x:any) => {
+        return x.id == this.userProfileDetails.Gender;
+      })[0];
+
+      this.country = this.countryData.filter((x:any) => {
+        return x.id == this.userProfileDetails.CountryCode;
+      })[0];
+
+      this.nationality = this.nationalityData.filter((x:any) => {
+        return x.id == this.userProfileDetails.Nationality;
+      })[0];
+
+      this.educationalLevel = this.educationalLevelData.filter((x:any) => {
+        return x.id == this.userProfileDetails.eduLevel;
+      })[0];
+
+      if(res.isSuccess)
+      {
+        this.PopulateForm()
+      }
+      else
+      {
+        this.errorMessage = res.message;
+      }
+    });
+  }
+
+  onSubmit(value:string) {
+    this.genderData.filter((x:any) => {
+      return x.nameEn == this.profileForm.value.gender;
+    })[0];
+
+    this.countryData.filter((x:any) => {
+      return x.nameEn == this.profileForm.value.countryCode;
+    })[0];
+
+    this.nationalityData.filter((x:any) => {
+      return x.nameEn == this.profileForm.value.nationality;
+    })[0];
+
+    this.educationalLevelData.filter((x:any) => {
+      return x.nameEn == this.profileForm.value.educationallevel;
+    })[0];
+
+    this.updateUserModel = {
+      usrId:this.currentUser.id,
+      firstAr:this.profileForm.value.firstNameAr,
+      firstEn:this.profileForm.value.firstNameEn,
+      middleAr:this.profileForm.value.middleNameAr,
+      middleEn:this.profileForm.value.middleNameEn,
+      familyAr:this.profileForm.value.familyNameAr,
+      familyEn:this.profileForm.value.familyNameEn,
+      birthdate:this.profileForm.value.birthdate,  
+      gender:this.profileForm.value.gender,
+      mobile:this.profileForm.value.phoneNumber,
+      countryCode:this.profileForm.value.countryCode,
+      nationality:this.profileForm.value.nationality,
+      eduLevel:this.profileForm.value.educationallevel,
+      occupation:this.profileForm.value.occupation,
+      address:this.profileForm.value.address
+    }
+
+    this.isSubmit = true;
+    this.userProfileService.updateUser(this.updateUserModel).subscribe(
+      res => {
+          this.isSubmit = true;
+          if (res.isSuccess){            
+            this.successMessage={
+              message:res.message,
+              type:'success'
+            }
+          }
+          else{
+            this.errorMessage  = res.message;
+          }
+      }
+    );
+  }
+
+  mappModel(form: NgForm) {
+    this.userProfile.firstNameAr = form.value.firstNameAr;
+    this.userProfile.firstNameEn = form.value.firstNameEn;
+    this.userProfile.middleNameAr = form.value.middleNameAr;
+    this.userProfile.middleNameEn = form.value.middleNameEn;
+    this.userProfile.familyNameAr = form.value.familyNameAr;
+    this.userProfile.familyNameEn = form.value.familyNameEn;
+    this.userProfile.address = form.value.address;
+    this.userProfile.birthdate = form.value.birthdate;
+    this.userProfile.occupation = form.value.occupation;
+    this.userProfile.educationalLevelId = form.value.educationalLevelId;
+    this.userProfile.genderId = form.value.genderId;
+    this.userProfile.countryId = form.value.countryId;
+    this.userProfile.nationalityId = form.value.nationalityId;
+    this.userProfile.phoneNumber = form.value.phoneNumber;
+    this.userProfile.userId = form.value.userId;
+  }
+
+  get f() {
+    return this.profileForm.controls;
+  }
+
+  buildForm() {
+    var mobilePattern = "^(05)([0-9]{8})*$|^(\\+\\d{1,3}[- ]?)?\\d{10}";
+    this.profileForm = this.fb.group(
+      {
+        firstNameAr: ['', Validators.required],
+        firstNameEn: ['', Validators.required],
+        middleNameAr: ['', Validators.required],
+        middleNameEn: ['', Validators.required],
+        familyNameAr: ['', Validators.required],
+        familyNameEn: ['', Validators.required],
+        birthdate: [''],
+        nationality: [null, Validators.required],
+        educationallevel: [null, Validators.required],
+        gender: [null, Validators.required],
+        address: ['',Validators.required],
+        phoneNumber: ['', Validators.pattern(mobilePattern)],
+        occupation: [null, Validators.required],
+        countryCode: [null, Validators.required]
+      }
+    )
+  }
+
+  PopulateForm() {
+    this.f.firstNameAr.setValue(this.userProfileDetails.fnameAr);
+    this.f.firstNameEn.setValue(this.userProfileDetails.fnameEn);
+    this.f.middleNameAr.setValue(this.userProfileDetails.mnameAr);
+    this.f.middleNameEn.setValue(this.userProfileDetails.mnameEn);
+    this.f.familyNameAr.setValue(this.userProfileDetails.fanameAr);
+    this.f.familyNameEn.setValue(this.userProfileDetails.faNameEn);
+    this.f.address.setValue(this.userProfileDetails.address);
+    this.f.gender.setValue(this.userProfileDetails.Gender);
+    var birthdate = new Date(this.userProfileDetails.birthdate.toString());
+    this.f.birthdate.setValue(
+      new Date(birthdate.setDate(birthdate.getDate() + 1))
+        .toISOString()
+        .slice(0, 10)
+    );
+    this.f.nationality.setValue(this.userProfileDetails.Nationality);
+    this.f.occupation.setValue(this.userProfileDetails.occupation);
+    this.f.educationallevel.setValue(this.userProfileDetails.eduLevel);
+    this.f.phoneNumber.setValue(this.userProfileDetails.Mobile);
+    this.f.countryCode.setValue(this.userProfileDetails.CountryCode);
+  }
+}
