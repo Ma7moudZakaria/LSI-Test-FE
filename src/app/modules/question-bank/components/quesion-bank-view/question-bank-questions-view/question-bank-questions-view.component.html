@@ -9,7 +9,8 @@
                 <!-- class="row text-left" -->
              <div class="col text-righ"><p>The question</p></div>
              <div class="col text-righ">
-                <a [routerLink]="['/questionBank/add-question-bank-question']">Add question</a> 
+                <a [routerLink]="" (click)= "NewQuestion()">Add question</a> 
+                <!-- [routerLink]="['/questionBank/add-question-bank-question']" -->
              </div>
              <div class="col text-left">
                 <input type="text" placeholder="Search.." name="search">
@@ -24,12 +25,30 @@
     <div class="col-lg-12">
         <div *ngFor="let QBQ of QuestionBankQuestionList ; let i=index;">
     
-            <div class="col-lg-12">
-                <span> {{QBQ.engQuestion}}</span>
+            <div class="col-lg-12" >
+                <span class="filter-sapn" (click)="loadQuestion(QBQ.id)"> {{QBQ.engQuestion}}</span>
+                <button (click)="loadQuestion(QBQ.id)">edit</button>
+             <!-- <button >
+                <span  >
+                    
+                    {{QBQ.engQuestion}}
+                    
+
+                </span>
+             </button> -->
+                
+
+            
+                   
+               
+                    <!-- <a   class="ml-2" [routerLink]="['/question-bank-question-details', QBQ.id]"> <img src="assets/quesionBsnk/questionBankCategory/Icon feather-edit-3 (1).svg" alt="" class="mt-10 cursor-pointer"  /></a> -->
+               
+             
                
             </div>
             <div class="col-lg-12">
                 <span>{{QBQ.engAnswer}}</span>
+                <!-- <img src="assets/quesionBsnk/questionBankCategory/Icon feather-edit-3 (1).svg" alt="" class="mt-10 cursor-pointer" (click)="DetailsQuestion(QBQ.id)" /> -->
                 
             </div>   
         </div> 

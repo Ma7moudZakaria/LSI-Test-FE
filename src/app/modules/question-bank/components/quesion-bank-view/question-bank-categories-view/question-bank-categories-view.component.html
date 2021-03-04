@@ -3,7 +3,7 @@
     <div class="col-4">
         <div class="row">
             <p class="text-left col">The Departments</p>
-            <a (click)="addCatogry()"><p class="text-right col">Add Department</p>
+            <a  (click)="addCatogry()"><p class="text-right col">Add Department</p>
 
             </a> 
             
@@ -27,7 +27,12 @@
     <div  class="list-group-item  list-group-item_custom list-group-item-action row" (click)="loadCatogryQuiestion(QBC.id)">
         <p>
            {{QBC.arabCatgName}}
-          <img src="assets/quesionBsnk/questionBankCategory/Icon feather-edit-3 (1).svg" alt="" class="mt-10 cursor-pointer" (click)="loadQuestionBankCategoryDetails(QBC.id)" />
+           <!-- <a *ngIf="permissionService.canEditThirdPartyNotice() "
+           [routerLink]="['/third-party-notice/edit-third-party-notice', ThirdPartyNoticeItem.id]"
+           class="ml-2">
+           <img src="assets/images/child/edit.svg" alt="">
+       </a> -->
+          <img src="assets/quesionBsnk/questionBankCategory/Icon feather-edit-3 (1).svg" alt="" class="mt-10 cursor-pointer" (click)="loadQuestionBankCategoryDetails(QBC.id)"/>
         </p>
 
     </div>

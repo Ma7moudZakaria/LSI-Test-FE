@@ -1,5 +1,5 @@
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input,Output, EventEmitter,OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -34,21 +34,25 @@ export class AddQuestionBankQuestionComponent implements OnInit {
   successMessage?:string;
   isSubmit = false;
   currentForm: FormGroup=new FormGroup({});
-   formImport: FormGroup;
+  //  formImport: FormGroup;
+   @Input() selectedCategoryId?:string; 
+   @Input() QuestionId?:string; 
+  
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
     private activeroute: ActivatedRoute, 
     private router: Router,
      public translate: TranslateService,private fb: FormBuilder) {
-      this.formImport = new FormGroup({
-        importFile: new FormControl('', Validators.required)
-      });
+      // this.formImport = new FormGroup({
+      //   importFile: new FormControl('', Validators.required)
+      // });
 
       }
 
   ngOnInit(): void {
-    if (this.activeroute.snapshot.paramMap.get('id') != null) {
+    
+    if (this.QuestionId !== "" || this.QuestionId !== undefined) {
       this.Title = "Edit QuestionBankQuestion";
-      this.QuestionBankQuestionId = this.activeroute.snapshot.paramMap.get('id')||'';
+     // this.QuestionBankQuestionId = this.activeroute.snapshot.paramMap.get('id')||'';
       this.isAdd=false;
      this.loadQuestionBankQuestionDetails() ;
     } 
@@ -58,6 +62,13 @@ export class AddQuestionBankQuestionComponent implements OnInit {
     }
    this.buildForm();
   }
+
+  ngOnChanges(changes: any) {
+   
+    this.QuestionBankQuestionId=this.QuestionId||"";
+  }
+
+
   get f() {
     return this.currentForm?.controls;
   }
@@ -148,6 +159,7 @@ export class AddQuestionBankQuestionComponent implements OnInit {
         })
     }
     else {
+      this.QBCid=this.selectedCategoryId;
       this.QuestionBankQuestionCreat.categoryId =this.QBCid;
       this.QuestionBankQuestionCreat.arabQuestion=this.f.QuestioAr.value;
       this.QuestionBankQuestionCreat.engQuestion=this.f.QuestionEn.value; 

@@ -40,7 +40,7 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
   successMessage?:string;
   isSubmit = false;
 
-@Output() selectedCategoryId= new EventEmitter<string>();;
+@Output() selectedCategoryId= new EventEmitter<string>();
 clickChangeCtogry:string="";
   constructor(private questionBankCategoryService: QuestionBankCategoryService,
     private activeroute: ActivatedRoute, 
@@ -84,6 +84,7 @@ clickChangeCtogry:string="";
       let response = <BaseResponseModel>res;
       if (response.isSuccess) {
         this.QuestionBankCategoryList = response.data;
+        this.loadCatogryQuiestion(this.QuestionBankCategoryList[0].id)
       }
       else {
         this.QuestionBankCategoryList = [];

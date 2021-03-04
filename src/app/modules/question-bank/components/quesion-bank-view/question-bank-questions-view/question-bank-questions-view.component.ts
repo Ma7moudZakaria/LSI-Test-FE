@@ -22,7 +22,8 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   // position: string="";
   //msgs: Message[] = [];
   @Input() selectedCategoryId?:string; 
-  @Output() QuestionId = new EventEmitter<string>();;
+  @Output() QuestionId = new EventEmitter<{}>();;
+  @Output() isViewAdd = new EventEmitter<boolean>();;
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
      public translate: TranslateService) { }
 
@@ -114,7 +115,13 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
     //   key: "positionDialog"
     // });
   }
-  loadQuestion(QuestionId:string){
-    this.QuestionId?.emit(QuestionId);
+  loadQuestion(id?:string){
+    this.QuestionId?.emit({id: id, show : true });
+    // this.isViewAdd.emit(true);
+  }
+  NewQuestion(){
+    this.QuestionId?.emit({id: '', show : true });
+    // this.QuestionId?.emit("");
+    // this.isViewAdd.emit(true);
   }
 }

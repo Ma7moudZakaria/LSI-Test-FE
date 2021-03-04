@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-quesion-bank-view',
@@ -6,23 +6,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./quesion-bank-view.component.scss']
 })
 export class QuesionBankViewComponent implements OnInit {
-  selectedQuesionId:any;
+  QuestionId:string | undefined;
   selectedCategoryId:any;
+  showAddQuiestion?:boolean=false;
+  @Input() isViewAdd?:boolean; 
   constructor() { }
 
   ngOnInit(): void {
   }
 
   addNew(){
-    this.selectedQuesionId = null;
+    this.QuestionId = '';
+    this.showAddQuiestion=true;
   }
   loadSelectedQuesion(event:any){
-   this.selectedQuesionId = event;
+   this.QuestionId = event.id;
+   this.showAddQuiestion= event.show;
    // console.log(event);
   }
 
   setSelectedCategory(event:any){
     this.selectedCategoryId = event;
   }
+ 
 
 }
