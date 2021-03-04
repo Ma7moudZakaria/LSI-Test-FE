@@ -10,6 +10,7 @@ import { IScientificMaterialDetails } from 'src/app/core/interfaces/scientific-m
 import { IUpdateScientificMaterial } from 'src/app/core/interfaces/scientific-material/iupdate-scientific-material';
 import { AttachmentsService } from 'src/app/core/services/attachments-services/attachments.service';
 import { ScientificMaterialService } from 'src/app/core/services/scientific-material-services/scientific-material.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-scientific-material',
@@ -31,12 +32,12 @@ export class AddScientificMaterialComponent implements OnInit {
   addScientificMaterial = {} as IAddScientificMaterial;
   updateScientificMaterial = {} as IUpdateScientificMaterial;
   ScientificMaterialDetails = {} as IScientificMaterialDetails;
-  successMessage: string | undefined;
-  errorMessage: string | undefined;
+  successMessage: any;
+  errorMessage: any;
   disableSaveButtons = false;
   @Input() selectedMaterialId: any;
   constructor(private fb: FormBuilder, private scientifcMaterialService: ScientificMaterialService,
-    private attachmentService: AttachmentsService,
+    private attachmentService: AttachmentsService,public translate : TranslateService,
     private activeroute: ActivatedRoute, private router: Router) {
   }
 
@@ -86,6 +87,7 @@ export class AddScientificMaterialComponent implements OnInit {
         res => {
           if (res.isSuccess) {
             this.ScientificMaterialDetails = res.data;
+            this.scientificMaterialId = this.ScientificMaterialDetails.id;
             this.PopulateForm();
 
           }
@@ -95,8 +97,9 @@ export class AddScientificMaterialComponent implements OnInit {
     }
     else{
       this.currentForm.reset();
+      this.scientificMaterialId= null;
       this.ScientificMaterialDetails = {} as IScientificMaterialDetails;
-      this.fileList = [];
+      this.fileList = [];      
       this.selectedProgram = [];
 
     }
@@ -212,10 +215,18 @@ export class AddScientificMaterialComponent implements OnInit {
         //var response = Mapper.responseMapper(res);
         if (res.isSuccess) {
           this.isSubmit = false;
+          this.successMessage={
+            message:res.message,
+            type:'success'
+          }
         }
       },
         error => {
           console.log(error);
+          this.errorMessage={
+            message:error.message,
+            type:'danger'
+          }
         })
     }
     else {
@@ -232,10 +243,18 @@ export class AddScientificMaterialComponent implements OnInit {
         //var response = Mapper.responseMapper(res);
         if (res.isSuccess) {
           this.isSubmit = false;
+          this.successMessage={
+            message:res.message,
+            type:'success'
+          }
         }
       },
         error => {
           console.log(error);
+          this.errorMessage={
+            message:error.message,
+            type:'danger'
+          }
         });
     }
 

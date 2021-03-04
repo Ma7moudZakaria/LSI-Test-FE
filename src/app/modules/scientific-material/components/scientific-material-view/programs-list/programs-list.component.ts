@@ -26,7 +26,7 @@ export class ProgramsListComponent implements OnInit {
       }
     );
   }
-
+  selectedIndex:any;
   loadProgramMaterial(id:string){
     this.selectedProgramId?.emit(id);
   } 

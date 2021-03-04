@@ -1,6 +1,8 @@
-<p>programs-list works!</p>
-<ul>
-    <li *ngFor="let program  of programs">
-        <a (click)="loadProgramMaterial(program.id)">{{program.arabName}}</a>
+<ul class="list-group">
+    <p>programs-list works!</p>
+    <li class="list-group-item " *ngFor="let program  of programs; let i = index" 
+      [class.active]="selectedIndex === i" 
+      (click)="loadProgramMaterial(program.id);selectedIndex=i">
+        <a>{{program.arabName}}</a>
     </li>
 </ul>
