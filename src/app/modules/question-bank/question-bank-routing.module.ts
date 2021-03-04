@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddQuestionBankCategoryComponent } from './components/add-question-bank-category/add-question-bank-category.component';
-import { AddQuestionBankQuestionComponent } from './components/add-question-bank-question//add-question-bank-question.component';
+import { AddQuestionBankQuestionComponent } from './components/quesion-bank-view/add-question-bank-question/add-question-bank-question.component';
 import { QuesionBankViewComponent } from './components/quesion-bank-view/quesion-bank-view.component';
-import { QuestionBankCategoriesViewComponent } from './components/question-bank-categories-view/question-bank-categories-view.component';
+import { QuestionBankCategoriesViewComponent } from './components/quesion-bank-view/question-bank-categories-view/question-bank-categories-view.component';
+import { QuestionBankQuestionsViewComponent } from './components/quesion-bank-view/question-bank-questions-view/question-bank-questions-view.component';
 import { QuestionBankCategoryDetailsComponent } from './components/question-bank-category-details/question-bank-category-details.component';
 import { QuestionBankQuestionDetailsComponent } from './components/question-bank-question-details/question-bank-question-details.component';
-import { QuestionBankQuestionsViewComponent } from './components/question-bank-questions-view/question-bank-questions-view.component';
 
 const routes: Routes = [
   {
