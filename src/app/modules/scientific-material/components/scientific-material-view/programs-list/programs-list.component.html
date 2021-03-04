@@ -1,6 +1,14 @@
-<p>programs-list works!</p>
-<ul>
-    <li *ngFor="let program  of programs">
-        <a (click)="loadProgramMaterial(program.id)">{{program.arabName}}</a>
+<ul class="list-group">
+    <p>{{'ProgramsList.PROGRAMS' | translate}}</p>
+    <li class="list-group-item "  
+    [class.active]="selectedIndex === -1"
+    (click)="loadProgramMaterial(null);selectedIndex=-1"> {{'ProgramsList.ALL' | translate}}</li>
+
+    <li class="list-group-item " *ngFor="let program  of programs; let i = index" 
+      [class.active]="selectedIndex === i" 
+      (click)="loadProgramMaterial(program.id);selectedIndex=i">
+        <a> 
+            {{ translate.currentLang === langEnum.en ? program.engName : program.arabName}}
+        </a>
     </li>
 </ul>

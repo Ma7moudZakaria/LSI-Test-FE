@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { ScientificMaterialService } from 'src/app/core/services/scientific-material-services/scientific-material.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { ScientificMaterialService } from 'src/app/core/services/scientific-mate
   styleUrls: ['./scientific-material-view.component.scss']
 })
 export class ScientificMaterialViewComponent implements OnInit {
-
+  LangEnum = LanguageEnum ;
   programs: any;
   selectedMaterialId:any;
   selectedProgramId:any;
@@ -26,9 +27,9 @@ export class ScientificMaterialViewComponent implements OnInit {
       }
     );
   }
-  addNewMaterial(){
-    this.selectedMaterialId = null;
-  }
+  // addNewMaterial(){
+  //   this.selectedMaterialId = null;
+  // }
   loadSelectedMateial(event:any){
    this.selectedMaterialId = event;
    // console.log(event);
