@@ -3,13 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IFileUpload } from 'src/app/core/interfaces/attachments-interfaces/ifile-upload';
 import { IAttachment } from 'src/app/core/interfaces/attachments-interfaces/iattachment';
-import { ILookup } from 'src/app/core/interfaces/lookup/ilookup';
 import { IAddScientificMaterial } from 'src/app/core/interfaces/scientific-material/iadd-scientifimaterial';
 import { IProgramScientificMaterial } from 'src/app/core/interfaces/scientific-material/iprogram-scientific-material';
 import { IScientificMaterialDetails } from 'src/app/core/interfaces/scientific-material/iscientific-material-details';
 import { IUpdateScientificMaterial } from 'src/app/core/interfaces/scientific-material/iupdate-scientific-material';
 import { AttachmentsService } from 'src/app/core/services/attachments-services/attachments.service';
 import { ScientificMaterialService } from 'src/app/core/services/scientific-material-services/scientific-material.service';
+import { BaseLookupModel } from 'src/app/core/ng-model/base-lookup-model';
 
 @Component({
   selector: 'app-add-scientific-material',
@@ -17,7 +17,7 @@ import { ScientificMaterialService } from 'src/app/core/services/scientific-mate
   styleUrls: ['./add-scientific-material.component.scss']
 })
 export class AddScientificMaterialComponent implements OnInit {
-  materialCategoriesLookup: ILookup[] = [];
+  materialCategoriesLookup: BaseLookupModel[] = [];
   programs: any;
   selectedProgram: IProgramScientificMaterial[] = [];
   title?: string;
