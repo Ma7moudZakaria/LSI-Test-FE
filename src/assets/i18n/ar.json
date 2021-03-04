@@ -32,7 +32,7 @@
     },
     "SIGNUP_PG":{
         "Signup":"تسجيل حساب جديد",
-        
+        "UserName":"إسم االمستخدم",
         "Next":"التالى"
     },
     "RESETPASSWORD_PG":{

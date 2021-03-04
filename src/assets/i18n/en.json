@@ -33,7 +33,7 @@
     },
     "SIGNUP_PG":{
         "Signup":"Sign Up",
-        
+        "UserName":"User Name",
         "Next":"Next"
     },
     "RESETPASSWORD_PG":{

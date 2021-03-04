@@ -45,9 +45,7 @@ export class RegisterComponent implements OnInit {
   loadUserForm() {
     this.registerform = this.fb.group({
       email: ["", [Validators.required, Validators.email]],
-      name: ["", Validators.required],
-      fathername: ["", Validators.required],
-      familyname: ["", Validators.required],
+      userName: ["", Validators.required],
       password: ["", Validators.required],
       confirmPassword: ["", Validators.required],
     });
@@ -61,7 +59,7 @@ export class RegisterComponent implements OnInit {
     this.errorMessage = '';
     localStorage.clear();
     this.registrationModel = {
-      uname: this.registerform.value.name + " " + this.registerform.value.fathername + " " + this.registerform.value.familyname,
+      uname: this.registerform.value.userName ,
       uemail: this.registerform.value.email,
       ucpass: this.registerform.value.confirmPassword,//""
       upass: this.registerform.value.password
