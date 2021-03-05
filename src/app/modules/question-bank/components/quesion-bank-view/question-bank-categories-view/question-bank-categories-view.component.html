@@ -6,10 +6,10 @@
             </a> 
         </div>
         <div class="row">
-            <input type="text" placeholder="Search.." name="search"#text><button type="submit" class="btn" (click)=" getQuestionBankCategories(text.value)">search</button>
+            <input type="text" placeholder="Search.." name="search"#text><i><img src="assets/quesionBsnk/questionBankCategory/search-interface-symbol.svg" alt="" class="mt-10 cursor-pointer" (click)=" getQuestionBankCategories(text.value)"/></i>
           <br/>
         </div>
-  <div *ngFor="let QBC of QuestionBankCategoryList ; let i=index;" class="list-group" >
+  <div *ngFor="let QBC of questionBankCategoryList ; let i=index;" class="list-group" >
     <div  class="list-group-item  list-group-item_custom list-group-item-action row" (click)="loadCatogryQuiestion(QBC.id)">
         <p>
            {{QBC.arabCatgName}}
