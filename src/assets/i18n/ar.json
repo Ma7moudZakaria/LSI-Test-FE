@@ -3,7 +3,20 @@
         "hello":"هلا"
     },
     "QUESTION_BANK":{
-        "ADD_SDF":""
+        "Add_Department":"اضافة قسم",
+        "Departments":"الأقسام",
+        "Department_Ar":"القسم(عربي)",
+        "Department_En":"القسم (انجلزي)",
+        "Publish":"نشر",
+        "Delete":"حذف",
+        "Back":"رجوع",
+        "Search":"بحث...",
+        "Technical_Questions":"الاسئلة التقنية",
+        "Add_Question":"اضافة سؤال",
+        "Question_Ar":"السؤال (عربي)",
+        "Question_En":"السؤال (انجليزي)",
+        "Answer_Ar":"الاجابة (عربي)",
+        "Answer_En":"الاجابة (انجليزي)"
     }
     
 }

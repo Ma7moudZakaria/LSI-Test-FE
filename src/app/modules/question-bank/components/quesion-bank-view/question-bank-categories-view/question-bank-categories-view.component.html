@@ -1,18 +1,21 @@
 <div class="row" *ngIf="isView">
     <div class="col-4">
         <div class="row">
-            <p class="text-left col">The Departments</p>
-            <a [routerLink]="" (click)="addCatogry()"><p class="text-right col">Add Department</p>
+            <p class="text-left col">{{ 'QUESTION_BANK.Departments' | translate }}</p>
+            <a [routerLink]="" (click)="addCatogry()"><p class="text-right col">{{ 'QUESTION_BANK.Add_Department' | translate }}</p>
             </a> 
         </div>
         <div class="row">
-            <input type="text" placeholder="Search.." name="search"#text><i><img src="assets/quesionBsnk/questionBankCategory/search-interface-symbol.svg" alt="" class="mt-10 cursor-pointer" (click)=" getQuestionBankCategories(text.value)"/></i>
+            <input type="text" placeholder="{{'QUESTION_BANK.Search' | translate}}" name="search"#text><i><img src="assets/quesionBsnk/questionBankCategory/search-interface-symbol.svg" alt="" class="mt-10 cursor-pointer" (click)=" getQuestionBankCategories(text.value)"/></i>
           <br/>
         </div>
   <div *ngFor="let QBC of questionBankCategoryList ; let i=index;" class="list-group" >
     <div  class="list-group-item  list-group-item_custom list-group-item-action row" (click)="loadCatogryQuiestion(QBC.id)">
         <p>
-           {{QBC.arabCatgName}}
+         
+          
+          {{this.translate.currentLang === 'en-US' ?QBC.engCatgName:QBC.arabCatgName}}
+          
        <i>
         <img src="assets/quesionBsnk/questionBankCategory/Icon feather-edit-3 (1).svg" alt="" class="mt-10 cursor-pointer" (click)="loadQuestionBankCategoryDetails(QBC.id)"/>
        </i>
@@ -33,16 +36,16 @@
   <div class="row" *ngIf="!isView">
     <form class="form-group" [formGroup]="currentForm" (submit)="Submit()">
       <div class="form-group">
-        <label for="exampleInputEmail1">Name Ar</label>
+        <label for="exampleInputEmail1">{{'QUESTION_BANK.Department_Ar' | translate}}</label>
         <input type="text" class="form-control" id="InputNamAr" formControlName="nameAr">
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Name En</label>
+        <label for="exampleInputPassword1">{{'QUESTION_BANK.Department_En' | translate}}</label>
         <input type="text" class="form-control" id="InputNamEN" formControlName="nameEn">
       </div>
   
-      <button type="submit" class="btn btn-danger">Publish</button>
-      <button type="button" class="btn btn-warning" (click)="back_list_Catogry()">Back</button>
+      <button type="submit" class="btn btn-danger">{{'QUESTION_BANK.Publish' | translate}}</button>
+      <button type="button" class="btn btn-warning" (click)="back_list_Catogry()">{{'QUESTION_BANK.Back' | translate}}</button>
     </form>
 
   </div>

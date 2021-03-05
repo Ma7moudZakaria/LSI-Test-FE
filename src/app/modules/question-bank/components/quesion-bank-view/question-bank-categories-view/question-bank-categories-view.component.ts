@@ -35,12 +35,15 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
   isSubmit = false;
 @Output() selectedCategoryId= new EventEmitter<string>();
 clickChangeCtogry:string="";
+valueLang = "nameAr";
+
   constructor(private questionBankCategoryService: QuestionBankCategoryService,
     private activeroute: ActivatedRoute, 
     private router: Router, public translate: TranslateService,private fb: FormBuilder) { 
       this.formImport = new FormGroup({
         importFile: new FormControl('', Validators.required)
       });
+      this.valueLang = this.translate.currentLang == 'en-US' ? 'nameEn' : 'nameAr';
     }
   ngOnInit(): void {
     this.getQuestionBankCategories()
