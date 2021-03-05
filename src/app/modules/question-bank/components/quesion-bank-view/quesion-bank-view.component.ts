@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./quesion-bank-view.component.scss']
 })
 export class QuesionBankViewComponent implements OnInit {
-  QuestionId:string | undefined;
+  selectedQuestionId:string | undefined;
   selectedCategoryId:any;
   showAddQuiestion?:boolean=false;
   @Input() isViewAdd?:boolean; 
@@ -16,11 +16,11 @@ export class QuesionBankViewComponent implements OnInit {
   }
 
   addNew(){
-    this.QuestionId = '';
+    this.selectedQuestionId = '';
     this.showAddQuiestion=true;
   }
   loadSelectedQuesion(event:any){
-   this.QuestionId = event.id;
+   this.selectedQuestionId = event.id;
    this.showAddQuiestion= event.show;
    // console.log(event);
   }

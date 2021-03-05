@@ -1,4 +1,3 @@
-<p>quesion-bank-view works!</p>
 <div  class="col-12" >
 <div class="container">
     <div class=" row">
@@ -11,14 +10,14 @@
             <!-- <div class="row">
                 <button type="button" class="btn btn-primary m-2 pull-left" (click)="addNew()">Add New Question</button>
             </div> -->
-            <app-question-bank-questions-view [selectedCategoryId]="selectedCategoryId" (QuestionId)="loadSelectedQuesion($event)"> 
+            <app-question-bank-questions-view [selectedCategoryId]="selectedCategoryId" (selectedQuestionId)="loadSelectedQuesion($event)"> 
         
             </app-question-bank-questions-view>
         </div>
        
         <div class="col-2" *ngIf="showAddQuiestion">
             
-            <app-add-question-bank-question [selectedCategoryId]="selectedCategoryId"  [QuestionId]="QuestionId">
+            <app-add-question-bank-question [selectedCategoryId]="selectedCategoryId"  [selectedQuestionId]="selectedQuestionId">
 
             </app-add-question-bank-question>
 
