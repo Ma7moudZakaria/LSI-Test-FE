@@ -21,15 +21,9 @@ export class ViewUserProfileDetailsComponent implements OnInit {
   successMessage:any;
   allLookups:any;
   listOfLookupProfile: string[] = ['GENDER','EDU_LEVEL','NATIONALITY','COUNTRY'];
-  // dataOfLookups = [];
   currentUser:any;
   errorMessage:any;
   collectionOfLookup = {} as ILookupCollection;
-
-  gender:any;
-  country:any;
-  nationality:any;
-  educationalLevel:any;
 
   genderData :any;
   countryData :any;
@@ -68,23 +62,13 @@ export class ViewUserProfileDetailsComponent implements OnInit {
   getUserProfile(id : any)
   {
     this.userService.viewUserProfileDetails(id).subscribe(res =>{
+      
       this.userProfileDetails = res.data;
-
-      this.gender = this.collectionOfLookup.GENDER?.filter((x:any) => {
-        return x.id == this.userProfileDetails.Gender;
-      })[0];
-
-      this.country = this.collectionOfLookup.COUNTRY?.filter((x:any) => {
-        return x.id == this.userProfileDetails.CountryCode;
-      })[0];
-
-      this.nationality = this.collectionOfLookup.NATIONALITY?.filter((x:any) => {
-        return x.id == this.userProfileDetails.Nationality;
-      })[0];
-
-      this.educationalLevel = this.collectionOfLookup.EDU_LEVEL?.filter((x:any) => {
-        return x.id == this.userProfileDetails.eduLevel;
-      })[0];
+      if (res.isSuccess){
+      }
+      else{
+        this.errorMessage  = res.message;
+      }
     });
   }
 }

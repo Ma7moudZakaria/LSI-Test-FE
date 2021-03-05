@@ -1,46 +1,45 @@
 {
     "GENERAL":{
-        "Send":"إرسال",
-        "Back":"رجوع",
-        "Email":"البريد الإلكتروني",
-        "Password":"كلمة المرور",
-        "ConfirmPassword":"تأكيد كلمة المرور",
-        "Name":"الإسم",
-        "FatherName":"أسم الاب",
-        "FamilyName":"أسم العائلة",
-        "Gender":"الجنس",
-        "Male":"ذكر",
-        "FeMale":"أنثى"
+        "SEND":"إرسال",
+        "BACK":"رجوع",
+        "EMAIL":"البريد الإلكتروني",
+        "PASSWORD":"كلمة المرور",
+        "CONFIRMPASSWORD":"تأكيد كلمة المرور",
+        "NAME":"الإسم",
+        "FATHERNAME":"أسم الاب",
+        "FAMILYNAME":"أسم العائلة",
+        "GENDER":"الجنس",
+        "MALE":"ذكر",
+        "FEMALE":"أنثى"
     },
     "ACTIVATION_USER_PG":{
-        "ActivationCode":"رمز الدخول",
-        "ActivationMessage":"لقد تم إرسال رمز الدخول علي البريد الإلكتروني الخاص بك",
-        "SendActivationCode":"إعادة إرسال",
-        "Message":"لم أستقبل رمز الدخول."
+        "ACTIVATIONCODE":"رمز الدخول",
+        "ACTIVATIONMESSAGE":"لقد تم إرسال رمز الدخول علي البريد الإلكتروني الخاص بك",
+        "SENDACTIVATIONCODE":"إعادة إرسال",
+        "MESSAGE":"لم أستقبل رمز الدخول."
     },
     "FORGET_PASSWORD_PG":{
-        "ForgotPassword":"نسيت كلمة المرور"        
-        
+        "FORGETPASSWORD":"نسيت كلمة المرور"                
     },
     "LOGIN_PG":{
-        "Login":"تسجيل الدخول",
-        "RememberMe":"تذكرني",
-        "ForgetPassword":"نسيت كلمة المرور ؟",
-        "SignUp":"سجل الأن",
-        "SoicalLogIn":"الدخول عن طريق وسائل التواصل الاجتماعي",
-        "TeacherSignup":"التسجيل كمعلم"
+        "LOGIN":"تسجيل الدخول",
+        "REMEMBERME":"تذكرني",
+        "FORGETPASSWORD":"نسيت كلمة المرور ؟",
+        "SIGNUP":"سجل الأن",
+        "SOICALLOGIN":"الدخول عن طريق وسائل التواصل الاجتماعي",
+        "TEACHERSIGNUP":"التسجيل كمعلم"
     },
     "SIGNUP_PG":{
-        "Signup":"تسجيل حساب جديد",
-        "UserName":"إسم االمستخدم",
-        "Next":"التالى"
+        "SIGNUP":"تسجيل حساب جديد",
+        "USERNAME":"إسم االمستخدم",
+        "NEXT":"التالى"
     },
     "RESETPASSWORD_PG":{
-        "ResetPassword":"ادخل كلمة المرور الجديدة"
+        "RESETPASSWORD":"ادخل كلمة المرور الجديدة"
     },
     "UPDATE_USER_PG":{
-        "UpdateUser":"ادخل كلمة المرور الجديدة",
-        "FirstNameAr":"الأسم",
-        "FirstNameEn":"First Name English"
+        "UPDATEUSER":"ادخل كلمة المرور الجديدة",
+        "FIRSTNAMEAR":"الأسم",
+        "FIRSTNAMEEN":"First Name English"
     }
 }

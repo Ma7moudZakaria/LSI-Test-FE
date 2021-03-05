@@ -25,10 +25,6 @@ export class UpdateUserProfileComponent implements OnInit {
   currentUser: any;
   routeParams: any;
   isSubmit = false;
-  gender:any;
-  country:any;
-  nationality:any;
-  educationalLevel:any;
   listOfLookupProfile : string[] = ['GENDER','EDU_LEVEL','NATIONALITY','COUNTRY'];
   successMessage:any;
   userProfileDetails:any;
@@ -70,22 +66,6 @@ export class UpdateUserProfileComponent implements OnInit {
   {
     this.userService.viewUserProfileDetails(id).subscribe(res =>{
       this.userProfileDetails = res.data;      
-      this.gender = this.collectionOfLookup.GENDER?.filter((x:any) => {
-        return x.id == this.userProfileDetails.Gender;
-      })[0];
-
-      this.country = this.collectionOfLookup.COUNTRY?.filter((x:any) => {
-        return x.id == this.userProfileDetails.CountryCode;
-      })[0];
-
-      this.nationality = this.collectionOfLookup.NATIONALITY?.filter((x:any) => {
-        return x.id == this.userProfileDetails.Nationality;
-      })[0];
-
-      this.educationalLevel = this.collectionOfLookup.EDU_LEVEL?.filter((x:any) => {
-        return x.id == this.userProfileDetails.eduLevel;
-      })[0];
-
       if(res.isSuccess)
       {
         this.PopulateForm()
@@ -98,21 +78,6 @@ export class UpdateUserProfileComponent implements OnInit {
   }
 
   onSubmit(value:string) {
-    this.collectionOfLookup.GENDER?.filter((x:any) => {
-      return x.nameEn == this.profileForm.value.gender;
-    })[0];
-
-    this.collectionOfLookup.COUNTRY?.filter((x:any) => {
-      return x.nameEn == this.profileForm.value.countryCode;
-    })[0];
-
-    this.collectionOfLookup.NATIONALITY?.filter((x:any) => {
-      return x.nameEn == this.profileForm.value.nationality;
-    })[0];
-
-    this.collectionOfLookup.EDU_LEVEL?.filter((x:any) => {
-      return x.nameEn == this.profileForm.value.educationallevel;
-    })[0];
 
     this.updateUserModel = {
       usrId:this.currentUser.id,

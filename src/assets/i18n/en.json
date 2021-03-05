@@ -1,46 +1,46 @@
 {
     "GENERAL":{
-        "Send":"Send",
-        "Back":"Back",
-        "Email": "Email Address",
-        "Password":"Password",
-        "ConfirmPassword":"Confirm Password",
-        "Name":"Name",
-        "FatherName":"Father Name",
-        "FamilyName":"Family Name",
-        "Gender":"Gender",
-        "Male":"Male",
-        "FeMale":"FeMale"
+        "SEND":"Send",
+        "BACK":"Back",
+        "EMAIL": "Email Address",
+        "PASSWORD":"Password",
+        "CONFIRMPASSWORD":"Confirm Password",
+        "NAME":"Name",
+        "FATHERNAME":"Father Name",
+        "FAMILYNAME":"Family Name",
+        "GENDER":"Gender",
+        "MALE":"Male",
+        "FEMALE":"FeMale"
         
     },
     "ACTIVATION_USER_PG":{
-        "ActivationCode":"Activation Code",
-        "ActivationMessage":"The access code has been sent to your email",
-        "SendActivationCode":"Send Again",
-        "Message":"I did not receive the Activation Code."        
+        "ACTIVATIONCODE":"Activation Code",
+        "ACTIVATIONMESSAGE":"The access code has been sent to your email",
+        "SENDACTIVATIONCODE":"Send Again",
+        "MESSAGE":"I did not receive the Activation Code."        
     },
     "FORGET_PASSWORD_PG":{
-        "ForgotPassword":"Forgot Password"
-        
+        "FORGETPASSWORD":"Forgot Password"        
     },
     "LOGIN_PG":{
-        "Login":"Login",
-        "RememberMe":"Remember me",
-        "ForgetPassword":"Forget Password ?",
-        "SignUp":"Register Now",
-        "SoicalLogIn":"Log in via social media",
-        "TeacherSignup":"Register as a teacher"
+        "LOGIN":"Login",
+        "REMEMBERME":"Remember me",
+        "FORGETPASSWORD":"Forget Password ?",
+        "SIGNUP":"Register Now",
+        "SOICALLOGIN":"Log in via social media",
+        "TEACHERSIGNUP":"Register as a teacher"
     },
     "SIGNUP_PG":{
-        "Signup":"Sign Up",
-        "UserName":"User Name",
-        "Next":"Next"
+        "SIGNUP":"Sign Up",
+        "USERNAME":"User Name",
+        "NEXT":"Next"
     },
     "RESETPASSWORD_PG":{
-        "ResetPassword":"Reset Password"
+        "RESETPASSWORD":"Reset Password"
     },
     "UPDATE_USER_PG":{
-        "FirstNameAr":"First Name Arabic",
-        "FirstNameEn":"First Name English"
+        "UPDATEUSER":"Enter the new password",
+        "FIRSTNAMEAR":"First Name Arabic",
+        "FIRSTNAMEEN":"First Name English"
     }
 }

@@ -3,14 +3,14 @@
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-sm-6">
         <form [formGroup]="registerform" (ngSubmit)="onSignup(registerform.value)" class="form-group">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
-                <h1 class="font-weight-bold "> {{'SIGNUP_PG.Email' | translate}} </h1> 
+                <h1 class="font-weight-bold "> {{'GENERAL.EMAIL' | translate}} </h1> 
             </div>
 
             <!-- Name -->                    
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
                 <div class="row">
                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                        <label class="Register__Label" for="userName"> {{'SIGNUP_PG.UserName' | translate}} </label>
+                        <label class="Register__Label" for="userName"> {{'SIGNUP_PG.USERNAME' | translate}} </label>
                         <input id="userName"  pInputText type="text" formControlName="userName" name="userName" placeholder="Enter User Name" class="form-control UserRegister__FormControl">                            
                     </div>
     
@@ -29,19 +29,19 @@
             <!-- Email -->
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
                 <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                    <label class="Register__Label" for="email"> {{'GENERAL.Email' | translate}} </label>
+                    <label class="Register__Label" for="email"> {{'GENERAL.EMAIL' | translate}} </label>
                     <input id="email"  pInputText type="email" formControlName="email" name="email" placeholder="Ex. email@gmail.com" class="form-control UserRegister__FormControl">                            
                 </div>
                 
                 <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <label class="Register__Label" for="FamilyName"> {{'GENERAL.Gender' | translate}} </label>
+                    <label class="Register__Label" for="gender"> {{'GENERAL.GENDER' | translate}} </label>
                     <div class="row">
                         <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <input type="radio" class="form-check-input" id="Male" name="optradio" value="Male" checked> {{'GENERAL.Male' | translate}}
+                            <input type="radio" class="form-check-input" id="Male" name="optradio" value="Male" checked> {{'GENERAL.MALE' | translate}}
                         </div>
                         <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
                             <label class="form-check-label" for="Female">
-                                <input type="radio" class="form-check-input" id="Female" name="optradio" value="Female"> {{'GENERAL.Female' | translate}}
+                                <input type="radio" class="form-check-input" id="Female" name="optradio" value="Female"> {{'GENERAL.FEMALE' | translate}}
                             </label>
                         </div>
                     </div>                    
@@ -51,19 +51,19 @@
             <!-- Password -->                    
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <label class="Register__Label" for="password"> {{'GENERAL.Password' | translate}} </label>
+                    <label class="Register__Label" for="password"> {{'GENERAL.PASSWORD' | translate}} </label>
                     <input id="password" pPassword type="password" [type]="hidePassword ? 'password' : 'text'" formControlName="password" name="password" placeholder="• • • • • • • • • • • • •" class="form-control UserRegister__FormControl">
                 </div>
 
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <label class="Register__Label" for="confirmPassword"> {{'SIGNUP_PG.ConfirmPassword' | translate}} </label>
+                    <label class="Register__Label" for="confirmPassword"> {{'SIGNUP_PG.CONFIRMPASSWORD' | translate}} </label>
                     <input id="confirmPassword" pPassword type="password" [type]="hidePassword ? 'password' : 'text'" formControlName="confirmPassword" name="confirmPassword" placeholder="• • • • • • • • • • • • •" class="form-control UserRegister__FormControl">
                 </div>                                 
             </div>
 
             <!-- Submit Button -->
             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-auto mb-0">
-                <button type="submit" class="btn btn-primary btn-block UserRegister__Submit" > {{'SIGNUP_PG.Next' | translate}}  </button>                        
+                <button type="submit" class="btn btn-primary btn-block UserRegister__Submit" > {{'SIGNUP_PG.NEXT' | translate}}  </button>                        
             </div>
 
             <div *ngIf="errorMessage" class="alert alert-danger mt-3">
