@@ -17,9 +17,12 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   questionBankQuestionFilter: IquestionBankQuestionsFilterRequest = {};
   @Input() selectedCategoryId?:string; 
   @Output() selectedQuestionId = new EventEmitter<{}>();;
-  @Output() isViewAdd = new EventEmitter<boolean>();;
+  @Output() isViewAdd = new EventEmitter<boolean>();
+  valueLang = "nameAr";
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
-     public translate: TranslateService) { }
+     public translate: TranslateService) {
+      this.valueLang = this.translate.currentLang == 'en-US' ? 'nameEn' : 'nameAr';
+      }
 
   ngOnInit(): void {
     this.getQuestionBankQuestions()

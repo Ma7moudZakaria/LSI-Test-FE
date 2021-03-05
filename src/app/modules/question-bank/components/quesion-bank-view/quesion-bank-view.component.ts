@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-quesion-bank-view',
@@ -10,7 +11,10 @@ export class QuesionBankViewComponent implements OnInit {
   selectedCategoryId:any;
   showAddQuiestion?:boolean=false;
   @Input() isViewAdd?:boolean; 
-  constructor() { }
+  valueLang = "nameAr";
+  constructor(public translate: TranslateService) {
+    this.valueLang = this.translate.currentLang == 'en-US' ? 'nameEn' : 'nameAr';
+   }
 
   ngOnInit(): void {
   }

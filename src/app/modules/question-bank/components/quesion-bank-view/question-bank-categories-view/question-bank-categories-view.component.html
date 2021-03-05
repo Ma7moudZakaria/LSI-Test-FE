@@ -14,7 +14,7 @@
         <p>
          
           
-          {{this.translate.currentLang === 'en-US' ?QBC.engCatgName:QBC.arabCatgName}}
+          {{this.translate.currentLang==='en-US'?QBC.engCatgName:QBC.arabCatgName}}
           
        <i>
         <img src="assets/quesionBsnk/questionBankCategory/Icon feather-edit-3 (1).svg" alt="" class="mt-10 cursor-pointer" (click)="loadQuestionBankCategoryDetails(QBC.id)"/>
@@ -34,7 +34,9 @@
   
   </div>
   <div class="row" *ngIf="!isView">
+    
     <form class="form-group" [formGroup]="currentForm" (submit)="Submit()">
+      <sup>{{ 'QUESTION_BANK.Add_Department' | translate }}</sup>
       <div class="form-group">
         <label for="exampleInputEmail1">{{'QUESTION_BANK.Department_Ar' | translate}}</label>
         <input type="text" class="form-control" id="InputNamAr" formControlName="nameAr">
@@ -44,7 +46,7 @@
         <input type="text" class="form-control" id="InputNamEN" formControlName="nameEn">
       </div>
   
-      <button type="submit" class="btn btn-danger">{{'QUESTION_BANK.Publish' | translate}}</button>
+      <button type="submit" class="btn btn-danger" >{{'QUESTION_BANK.Publish' | translate}}</button>
       <button type="button" class="btn btn-warning" (click)="back_list_Catogry()">{{'QUESTION_BANK.Back' | translate}}</button>
     </form>
 

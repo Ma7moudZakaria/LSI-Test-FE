@@ -30,15 +30,19 @@ export class AddQuestionBankQuestionComponent implements OnInit {
   currentForm: FormGroup=new FormGroup({});
    @Input() selectedCategoryId?:string; 
    @Input() selectedQuestionId?:string; 
+   valueLang = "nameAr";
+   resultMessage={message:"",type:""};
+   disableSaveButtons = false;
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
     private activeroute: ActivatedRoute, 
     private router: Router,
      public translate: TranslateService,private fb: FormBuilder) {
+      this.valueLang = this.translate.currentLang == 'en-US' ? 'nameEn' : 'nameAr';
       }
 
   ngOnInit(): void {
     this.questionBankQuestionId=this.selectedQuestionId||"";
-    if (this.selectedQuestionId !== "" || this.selectedQuestionId !== undefined) {
+    if (this.selectedQuestionId !== "" ) {
       this.Title = "Edit QuestionBankQuestion";
       this.isAdd=false;
      this.loadQuestionBankQuestionDetails() ;
@@ -52,7 +56,8 @@ export class AddQuestionBankQuestionComponent implements OnInit {
   }
   ngOnChanges(changes: any) {
     this.questionBankQuestionId=this.selectedQuestionId||"";
-    this.loadQuestionBankQuestionDetails() ;
+    if( this.questionBankQuestionId!="")
+    {this.loadQuestionBankQuestionDetails() ;}
    if( this.questionBankQuestionId==""){
     this.currentForm.reset();
    }
@@ -80,6 +85,11 @@ export class AddQuestionBankQuestionComponent implements OnInit {
           this.f.QuestionEn.setValue(this.questionBankQuestions?.engQuestion);
           this.f.AnswerAr.setValue(this.questionBankQuestions?.arabAnswer);
           this.f.AnswerEn.setValue(this.questionBankQuestions?.engAnswer);
+          this.disableSaveButtons = false;
+          this.resultMessage = {
+            message:'',
+            type: ''
+          }
         }
         else {
           this.errorMessage = response.message;
@@ -104,13 +114,23 @@ export class AddQuestionBankQuestionComponent implements OnInit {
       this.questionBankQuestionService.UpdateQuestionBankQuestion(this.questionBankQuestionUpdate).subscribe(res => {
         if (res.isSuccess) {
           this.isSubmit = false;
-          this.successMessage = res.message;
+          this.disableSaveButtons = true;
+          // this.successMessage = res.message;
           // setTimeout(() => {
           //   this.router.navigateByUrl('/question-bank-question-details/question-bank-question-details/'+this.QuestionBankQuestionId);
           // }, 1500)
+          this.resultMessage = {
+            message:res.message||"",
+            type: 'success'
+          }
         }
         else {
-          this.errorMessage = res.message;
+          // this.errorMessage = res.message;
+          this.disableSaveButtons = true;
+          this.resultMessage = {
+            message:res.message||"",
+            type: 'danger'
+          }
         }
         
       },
@@ -128,13 +148,23 @@ export class AddQuestionBankQuestionComponent implements OnInit {
       this.questionBankQuestionService.addQuestionBankQuestion(this.questionBankQuestionCreat).subscribe(res => {
         this.isSubmit = false;
         if (res.isSuccess) {
-          this.successMessage = res.message;
+          // this.successMessage = res.message;
+          this.disableSaveButtons = true;
+          this.resultMessage = {
+            message:res.message||"",
+            type: 'success'
+          }
           // setTimeout(() => {
           //   this.router.navigateByUrl('/question-bank-question-details/question-bank-question-details/'+this.QuestionBankQuestionId);
           // }, 1500)
         }
         else {
-          this.errorMessage = res.message;
+          //this.errorMessage = res.message;
+          this.disableSaveButtons = true;
+          this.resultMessage = {
+            message:res.message||"",
+            type: 'danger'
+          }
         }
         
       },
