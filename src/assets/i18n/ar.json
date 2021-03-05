@@ -1,5 +1,9 @@
 {
     "page1":{
         "hello":"هلا"
+    },
+    "QUESTION_BANK":{
+        "ADD_SDF":""
     }
+    
 }

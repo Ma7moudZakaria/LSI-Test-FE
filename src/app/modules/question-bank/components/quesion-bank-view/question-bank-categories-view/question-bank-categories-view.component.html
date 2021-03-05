@@ -1,38 +1,25 @@
-<p>question-bank-categories-view works!</p>
 <div class="row" *ngIf="isView">
     <div class="col-4">
         <div class="row">
             <p class="text-left col">The Departments</p>
             <a  (click)="addCatogry()"><p class="text-right col">Add Department</p>
-
             </a> 
-            
         </div>
         <div class="row">
-            <input type="text" placeholder="Search.." name="search">
+            <input type="text" placeholder="Search.." name="search"#text><button type="submit" class="btn" (click)=" getQuestionBankCategories(text.value)">search</button>
           <br/>
         </div>
-        
-      <!-- <div *ngFor="let QBC of TessLST ; let i=index;" class="list-group">
-        
-        <div routerLink="" class="list-group-item  list-group-item_custom list-group-item-action row" >
-          <p>
-             {{QBC.nam1}}
-          </p>
-        </div>
-   
-        </div> -->
-  
   <div *ngFor="let QBC of QuestionBankCategoryList ; let i=index;" class="list-group" >
     <div  class="list-group-item  list-group-item_custom list-group-item-action row" (click)="loadCatogryQuiestion(QBC.id)">
         <p>
            {{QBC.arabCatgName}}
-           <!-- <a *ngIf="permissionService.canEditThirdPartyNotice() "
-           [routerLink]="['/third-party-notice/edit-third-party-notice', ThirdPartyNoticeItem.id]"
-           class="ml-2">
-           <img src="assets/images/child/edit.svg" alt="">
-       </a> -->
-          <img src="assets/quesionBsnk/questionBankCategory/Icon feather-edit-3 (1).svg" alt="" class="mt-10 cursor-pointer" (click)="loadQuestionBankCategoryDetails(QBC.id)"/>
+       <i>
+        <img src="assets/quesionBsnk/questionBankCategory/Icon feather-edit-3 (1).svg" alt="" class="mt-10 cursor-pointer" (click)="loadQuestionBankCategoryDetails(QBC.id)"/>
+       </i>
+          
+          <i>
+            <img src="assets/quesionBsnk/questionBankCategory/Icon feather-trash-2.svg" alt="" class="mt-10 cursor-pointer" (click)="delete_Categor(QBC.id)"/>
+          </i>
         </p>
 
     </div>
@@ -55,7 +42,7 @@
       </div>
   
       <button type="submit" class="btn btn-danger">Publish</button>
-      <button type="button" class="btn btn-warning">Delete</button>
+      <button type="button" class="btn btn-warning" (click)="back_list_Catogry()">Back</button>
     </form>
 
   </div>

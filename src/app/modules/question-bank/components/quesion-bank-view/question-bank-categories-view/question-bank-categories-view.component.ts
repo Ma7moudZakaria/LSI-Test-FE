@@ -55,7 +55,7 @@ clickChangeCtogry:string="";
     // this.currentWindowWidth = window.innerWidth;
     // this.valueLang= this.translate.currentLang=='en-US'?'nameEn':'nameAr';
     // this.nav.show();
-    this.getQuestionBankCategories(true)
+    this.getQuestionBankCategories()
     this.buildForm();
 
   }
@@ -73,11 +73,12 @@ clickChangeCtogry:string="";
 
       })
   }
-  getQuestionBankCategories(isLazyLoading = false) {
+  getQuestionBankCategories(name?:string) {
     this.isView=true;
     this.QuestionBankCategoryId="";
     this.filterErrorMessage = "";
-  
+    if(name!=null||name!=""){ this.QuestionBankCategoryFilter.catgName=name;}
+   
     this.QuestionBankCategoryFilter.pageNumber=1;
     this.QuestionBankCategoryFilter.pageSize=10;
     this.questionBankCategoryService.getQuestionBankCategoriesFilter(this.QuestionBankCategoryFilter).subscribe(res => {
@@ -100,42 +101,21 @@ clickChangeCtogry:string="";
     this.QuestionBankCategoryFilter = {};
     this.QuestionBankCategoryFilter.pageSize =0 ;
     this.QuestionBankCategoryFilter.pageNumber = 10;
-    this.getQuestionBankCategories(true);
+    this.getQuestionBankCategories();
   }
 
-  // confirm(id:string) {
-  //   this.confirmationService.confirm({
-  //     key: 'account',
-  //     message: this.translate.currentLang == 'en-US' ?
-  //     'Are You sure to delete the Third-Party Notice?' :"هل انت متاكد انك تريد الاستمرار؟",
-  //     header: this.translate.currentLang == 'en-US' ? 'Alert' : "تنبيه",
-  //     icon: 'pi pi-exclamation-triangle',
-  //     acceptLabel: this.translate.currentLang == 'en-US' ? "Ok" : "موافق",
-  //     rejectVisible: false,
+  delete_Categor(id?:string) {
+    this.questionBankCategoryService.deleteQuestionBankCategory(id||'').subscribe(
+      res => {
+alert("تم الحذف")
+        
+        this.getQuestionBankCategories();
+      }, error => {
 
-  //     accept: () => {
-  //       this.questionBankCategoryService.deleteQuestionBankCategory(id).subscribe(
-  //         res => {
-
-            
-  //           this.getQuestionBankCategories(true);
-  //         }, error => {
-
-  //         }
-  //       )
-
-  //         // this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' }];
-
-
-  //     },
-  //     reject: () => {
-
-  //       // this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
-  //       // this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
-  //     }
-  //   });
+      }
+    )
   
-  // }
+  }
 
   confirmPosition(position: string) {
     this.position = position;
@@ -200,7 +180,7 @@ clickChangeCtogry:string="";
           // setTimeout(() => {
           //   this.router.navigateByUrl('/question-bank-categories-view/question-bank-categories-view');
           // }, 1500)
-          this.isView=false;
+          this.isView=true;
           setTimeout(() => {
             this.getQuestionBankCategories();
           }, 1500)
@@ -220,10 +200,9 @@ clickChangeCtogry:string="";
       this.questionBankCategoryService.addQuestionBankCategory(this.QuestionBankCategoryCreat).subscribe(res => {
         this.isSubmit = false;
         if (res.isSuccess) {
-          this.isView=false;
+          this.isView=true;
           this.successMessage = res.message;
           setTimeout(() => {
-            // this.router.navigateByUrl('/question-bank-categories-view/question-bank-categories-view');
             this.getQuestionBankCategories();
           }, 1500)
         }
@@ -240,8 +219,14 @@ clickChangeCtogry:string="";
 
   }
   addCatogry(){
+    this.currentForm.reset();
 this.isView=false;
 this.isAdd=true;
+
+  }
+  back_list_Catogry(){
+this.isView=true;
+this.isAdd=false;
 
   }
 

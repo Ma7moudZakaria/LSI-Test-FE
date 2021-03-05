@@ -49,7 +49,7 @@ export class AddQuestionBankQuestionComponent implements OnInit {
       }
 
   ngOnInit(): void {
-    
+    this.QuestionBankQuestionId=this.QuestionId||"";
     if (this.QuestionId !== "" || this.QuestionId !== undefined) {
       this.Title = "Edit QuestionBankQuestion";
      // this.QuestionBankQuestionId = this.activeroute.snapshot.paramMap.get('id')||'';
@@ -59,6 +59,7 @@ export class AddQuestionBankQuestionComponent implements OnInit {
     else {
       this.Title = "Add QuestionBankQuestion";
       this.isAdd=true;
+      this.currentForm.reset();
     }
    this.buildForm();
   }
@@ -66,6 +67,10 @@ export class AddQuestionBankQuestionComponent implements OnInit {
   ngOnChanges(changes: any) {
    
     this.QuestionBankQuestionId=this.QuestionId||"";
+    this.loadQuestionBankQuestionDetails() ;
+   if( this.QuestionBankQuestionId==""){
+    this.currentForm.reset();
+   }
   }
 
 

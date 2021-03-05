@@ -36,12 +36,18 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   ngOnChanges(changes: any) {
     // console.log(changes);
     this.getQuestionBankQuestions(changes.selectedCategoryId.currentValue);
+    this.selectedCategoryId=changes.selectedCategoryId.currentValue;
   }
-  getQuestionBankQuestions(CategoryId?:any) {
+  searchQuestions(Questions?:string){
+    this.QuestionBankQuestionList=[];
+    this.getQuestionBankQuestions(this.selectedCategoryId,Questions) 
+  }
+  getQuestionBankQuestions(CategoryId?:any,Questions?:string) {
     this.filterErrorMessage = "";
     this.QuestionBankQuestionFilter.PageNumber=1;
     this.QuestionBankQuestionFilter.PageSize=10;
     this.QuestionBankQuestionFilter.catgyId=CategoryId;
+    this.QuestionBankQuestionFilter.question=Questions;
     this.questionBankQuestionService.getQuestionBankQuestionsFilter(this.QuestionBankQuestionFilter).subscribe(res => {
       let response = <BaseResponseModel>res;
       if (response.isSuccess) {
@@ -62,40 +68,19 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
     this.QuestionBankQuestionFilter = {};
     this.QuestionBankQuestionFilter.PageNumber=10;
     this.QuestionBankQuestionFilter.PageSize=0;
-    this.getQuestionBankQuestions(true);
+    this.getQuestionBankQuestions(this.selectedCategoryId);
   }
 
-  confirm(id:string) {
-    // this.confirmationService.confirm({
-    //   key: 'account',
-    //   message: this.translate.currentLang == 'en-US' ?
-    //   'Are You sure to delete the Third-Party Notice?' :"هل انت متاكد انك تريد الاستمرار؟",
-    //   header: this.translate.currentLang == 'en-US' ? 'Alert' : "تنبيه",
-    //   icon: 'pi pi-exclamation-triangle',
-    //   acceptLabel: this.translate.currentLang == 'en-US' ? "Ok" : "موافق",
-    //   rejectVisible: false,
+  delete_Question(id?:string) {
+    this.questionBankQuestionService.deleteQuestionBankQuestion(id||'').subscribe(
+      res => {
 
-    //   accept: () => {
-    //     this.questionBankQuestionService.deleteQuestionBankQuestion(id).subscribe(
-    //       res => {
+        alert("Delete Sucssed")
+        this.getQuestionBankQuestions(this.selectedCategoryId);
+      }, error => {
 
-            
-    //         this.getQuestionBankQuestions(true);
-    //       }, error => {
-
-    //       }
-    //     )
-
-    //       // this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' }];
-
-
-    //   },
-    //   reject: () => {
-
-    //     // this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
-    //     // this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
-    //   }
-    // });
+      }
+    )
   
   }
 
