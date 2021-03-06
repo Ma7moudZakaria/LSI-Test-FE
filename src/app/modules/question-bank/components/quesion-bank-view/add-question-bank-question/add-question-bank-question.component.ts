@@ -41,6 +41,12 @@ export class AddQuestionBankQuestionComponent implements OnInit {
       }
 
   ngOnInit(): void {
+    this.currentForm.reset();
+    this.disableSaveButtons = false;
+    this.resultMessage = {
+      message:'',
+      type: ''
+    }
     this.questionBankQuestionId=this.selectedQuestionId||"";
     if (this.selectedQuestionId !== "" ) {
       this.Title = "Edit QuestionBankQuestion";
@@ -55,11 +61,17 @@ export class AddQuestionBankQuestionComponent implements OnInit {
    this.buildForm();
   }
   ngOnChanges(changes: any) {
+    this.currentForm.reset();
     this.questionBankQuestionId=this.selectedQuestionId||"";
     if( this.questionBankQuestionId!="")
     {this.loadQuestionBankQuestionDetails() ;}
    if( this.questionBankQuestionId==""){
     this.currentForm.reset();
+   }
+   this.disableSaveButtons = false;
+   this.resultMessage = {
+     message:'',
+     type: ''
    }
   }
   get f() {
@@ -126,7 +138,7 @@ export class AddQuestionBankQuestionComponent implements OnInit {
         }
         else {
           // this.errorMessage = res.message;
-          this.disableSaveButtons = true;
+          this.disableSaveButtons = false;
           this.resultMessage = {
             message:res.message||"",
             type: 'danger'
@@ -160,7 +172,7 @@ export class AddQuestionBankQuestionComponent implements OnInit {
         }
         else {
           //this.errorMessage = res.message;
-          this.disableSaveButtons = true;
+          this.disableSaveButtons = false;
           this.resultMessage = {
             message:res.message||"",
             type: 'danger'

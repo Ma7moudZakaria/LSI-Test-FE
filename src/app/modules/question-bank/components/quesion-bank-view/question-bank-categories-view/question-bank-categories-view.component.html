@@ -46,8 +46,14 @@
         <input type="text" class="form-control" id="InputNamEN" formControlName="nameEn">
       </div>
   
-      <button type="submit" class="btn btn-danger" >{{'QUESTION_BANK.Publish' | translate}}</button>
+      <button type="submit" class="btn btn-danger" [disabled]="disableSaveButtons" >{{'QUESTION_BANK.Publish' | translate}}</button>
       <button type="button" class="btn btn-warning" (click)="back_list_Catogry()">{{'QUESTION_BANK.Back' | translate}}</button>
+      <div *ngIf="resultMessage?.type==='success'" class="alert alert-success">
+        {{resultMessage.message}}
+    </div>
+    <div *ngIf="resultMessage.type==='danger'" class="alert alert-danger">
+      {{resultMessage.message}}
+    </div>
     </form>
 
   </div>

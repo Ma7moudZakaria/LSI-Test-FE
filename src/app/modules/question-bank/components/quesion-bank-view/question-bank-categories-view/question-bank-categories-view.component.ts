@@ -36,7 +36,8 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
 @Output() selectedCategoryId= new EventEmitter<string>();
 clickChangeCtogry:string="";
 valueLang = "nameAr";
-
+resultMessage={message:"",type:""};
+disableSaveButtons = false;
   constructor(private questionBankCategoryService: QuestionBankCategoryService,
     private activeroute: ActivatedRoute, 
     private router: Router, public translate: TranslateService,private fb: FormBuilder) { 
@@ -105,6 +106,11 @@ alert("تم الحذف")
     this.router.navigateByUrl('/questionBank/question-bank-questions-view/'+categoryId);
    }
    loadQuestionBankCategoryDetails(id?:string) {
+    this.disableSaveButtons = false;
+    this.resultMessage = {
+      message:'',
+      type: ''
+    }
      this.isView=false;
      this.isAdd=false;
     this.questionBankCategoryId=id ||'';
@@ -137,17 +143,24 @@ alert("تم الحذف")
       this.questionBankCategoryService.UpdateQuestionBankCategory(this.questionBankCategoryUpdate).subscribe(res => {
         if (res.isSuccess) {
           this.isSubmit = false;
-          this.successMessage = res.message;
-          // setTimeout(() => {
-          //   this.router.navigateByUrl('/question-bank-categories-view/question-bank-categories-view');
-          // }, 1500)
-          this.isView=true;
+          // this.successMessage = res.message;
+          this.disableSaveButtons = true;
+          this.resultMessage = {
+            message:res.message||"",
+            type: 'success'
+          }
+          this.isView=false;
           setTimeout(() => {
             this.getQuestionBankCategories();
           }, 1500)
         }
         else {
-          this.errorMessage = res.message;
+          // this.errorMessage = res.message;
+          this.disableSaveButtons = false;
+          this.resultMessage = {
+            message:res.message||"",
+            type: 'danger'
+          }
         }
         
       },
@@ -161,14 +174,24 @@ alert("تم الحذف")
       this.questionBankCategoryService.addQuestionBankCategory(this.questionBankCategoryCreat).subscribe(res => {
         this.isSubmit = false;
         if (res.isSuccess) {
-          this.isView=true;
-          this.successMessage = res.message;
+          this.isView=false;
+          // this.successMessage = res.message;
+          this.disableSaveButtons = true;
+          this.resultMessage = {
+            message:res.message||"",
+            type: 'success'
+          }
           setTimeout(() => {
             this.getQuestionBankCategories();
           }, 1500)
         }
         else {
-          this.errorMessage = res.message;
+          // this.errorMessage = res.message;
+          this.disableSaveButtons = false;
+          this.resultMessage = {
+            message:res.message||"",
+            type: 'danger'
+          }
         }
       },
         error => {
@@ -180,6 +203,11 @@ alert("تم الحذف")
     this.currentForm.reset();
 this.isView=false;
 this.isAdd=true;
+this.disableSaveButtons = false;
+this.resultMessage = {
+  message:'',
+  type: ''
+}
   }
   back_list_Catogry(){
 this.isView=true;
