@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IScientificMaterialFilter } from 'src/app/core/interfaces/scientific-material/iscientific-matrial-filter';
 import { IScientificMaterialGrid } from 'src/app/core/interfaces/scientific-material/iscientific-matrial-grid';
 import { ScientificMaterialService } from 'src/app/core/services/scientific-material-services/scientific-material.service';
@@ -12,8 +14,9 @@ export class MaterialListComponent implements OnInit {
   materials : IScientificMaterialGrid[] =[];
   materialFilter = {} as IScientificMaterialFilter
   @Input() selectedProgramId?:string; 
-  @Output() materialId = new EventEmitter<string>();;
-  constructor( private scientifcMaterialService: ScientificMaterialService) { }
+  @Output() materialId = new EventEmitter<string>();
+  langEnum = LanguageEnum;
+    constructor( private scientifcMaterialService: ScientificMaterialService, public translate : TranslateService) { }
 
   ngOnInit(): void {
     this.loadProgramMaterial();
@@ -34,7 +37,8 @@ export class MaterialListComponent implements OnInit {
       console.log(error);
     })
   }
-  loadMaterial(materialId:string){
+  loadMaterial(materialId?:any){
     this.materialId?.emit(materialId);
   }
+
 }

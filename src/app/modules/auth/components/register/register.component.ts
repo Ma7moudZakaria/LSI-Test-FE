@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';import { Router } from '@angular/router';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { IUser } from 'src/app/core/interfaces/auth/iuser-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 
@@ -17,7 +18,7 @@ export class RegisterComponent implements OnInit {
   registerform : FormGroup  = new FormGroup({});
   errorMessage:any;
   isSubmit = false;
-  showActiveMessage = '';
+  successMessage: any;
   hidePassword = true;
 
   constructor(private authService: AuthService,
@@ -70,7 +71,11 @@ export class RegisterComponent implements OnInit {
       this.isSubmit = true;
       if (res.isSuccess) {
         localStorage.setItem('user',JSON.stringify(res.data as IUser))
-        this.showActiveMessage = "Account created successfully, please check you email for activation";
+        // this.showActiveMessage = res.message;
+        this.successMessage={
+          message: res.message,
+          type:'success'
+        }
         setTimeout(()=>{            
           // this.router.navigate(['/home']);
          }, 3000);

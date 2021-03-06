@@ -1,0 +1,100 @@
+
+.form-control.valid_num{
+    border-bottom: 2px solid #4f8ac5  ;
+    border-bottom-color:#4f8ac5  ;
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+.form-control.valid_num :focus
+{
+    border: 2px solid #ced4da;
+    border-bottom-color: #CB9118 !important;
+    outline: 0;
+    box-shadow: none !important;
+    
+
+}
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+/****** card ****/
+.example-header-image {
+    background-image: url(../../../../../assets/images/download.svg);
+    background-repeat: no-repeat;
+}
+.mat-card-avatar {
+  height: 2rem;
+  width: 2rem;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 0;
+
+}
+.mat-card-header .mat-card-title {
+  font-size: 17px;
+}
+.content_card{
+  font-size: 12px;
+  color:#000000;
+}
+// expanded
+
+
+// .mat-form-field + .mat-form-field {
+//   margin-left: 8px;
+// }
+// .mat-accordion .mat-expansion-panel:last-of-type{
+//   padding-top: 0.5rem;
+//   padding-bottom: 0.5rem;
+//   background-color: #C1C7D0;
+ 
+// }
+
+
+// .mat-expansion-panel-header-title, .mat-expansion-panel-header-description{
+//   color: #fff;
+//   font-size: 14px;
+//   font-weight: bold;
+// }
+
+// .mat-expansion-panel-body {
+//   padding: 0 24px 16px;
+//   background-color: #fff;
+//   color: #3A3A3A;
+//   font-size: 14px;
+//   font-weight: bold;
+// }
+.mat-expansion-panel-header.mat-expanded:focus, .mat-expansion-panel-header.mat-expanded:hover ,
+.mat-expansion-panel-header._mat-animation-noopable{
+  background-color: #C1C7D0;
+  
+}
+.mat-expansion-panel-header-description{
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.mat-expansion-panel:not(.mat-expanded):not([aria-disabled=true]) .mat-expansion-panel-header:hover{
+  background-color: #C1C7D0;
+}
+.mat-expansion-panel-header-title{
+   color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+}
+// end expanded 
+.overlay_container{
+  background-color: #4f8ac5;
+}
+.first_container,.sec_container{
+  background-color: #FBFBFB;
+  height: 50vh;
+}

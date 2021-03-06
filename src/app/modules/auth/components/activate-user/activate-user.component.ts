@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IActivationCode } from 'src/app/core/interfaces/auth/iactivation-code-module';
+import { IActivationCode } from 'src/app/core/interfaces/auth/iactivation-code';
 import { IUser } from 'src/app/core/interfaces/auth/iuser-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 
@@ -54,13 +54,13 @@ export class ActivateUserComponent implements OnInit {
       console.log(res);
       if (res.isSuccess){
         this.successMessage={
-          message:"Activate Code send successfully",
+          message: res.message,
           type:'success'
         }
         setTimeout(()=>{
             // this.router.navigateByUrl('/auth/login');
           },3000);
-        }
+      }
       else{
         this.errorMessage  = res.message;
       }
@@ -79,7 +79,7 @@ export class ActivateUserComponent implements OnInit {
         console.log(res);
         if (res.isSuccess){
           this.successMessage={
-            message:"Account is activated successfully",
+            message:res.message,
             type:'success'
           }
           setTimeout(()=>{

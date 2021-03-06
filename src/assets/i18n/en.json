@@ -1,21 +1,37 @@
 {
-    "page1":{
-        "hello":"helo"
-    },
-    "QUESTION_BANK":{
-        "Add_Department":"Add department",
-        "Departments":"Departments",
-        "Department_Ar":"Department(Arabic)",
-        "Department_En":"Department(English)",
-        "Publish":"Publish",
-        "Delete":"Delete",
-        "Back":"Back",
-        "Search":"Search..",
-        "Technical_Questions":"Technical questions",
-        "Add_Question":"Add question",
-        "Question_Ar":"question (Arabic)",
-        "Question_En":"question (English)",
-        "Answer_Ar":"Answer(Arabic)",
-        "Answer_En":"Answer(English)"
-    }
+  "page1": {
+    "hello": "helo"
+  },
+  "ScientificMaterial": {
+    "SELECTOPTION": "Select Option",
+    "PROGRAMS": "Programs",
+    "CATEGORY": "Category",
+    "TITLEAR": "Arabic Name",
+    "TITLEEN": "English Namr",
+    "CHOOSEFILE": "Choose file to upload / Drag to upload",
+    "MATERIALAVAILABILITY": "Scientific Material Avalibality",
+    "ACTIVATION": "Activation",
+    "ALL": "ALL",
+    "SELECTEDPROGRAMS": "Selected Programs Only",
+    "ACTIVE": "Active",
+    "INACTIVE": "InActive",
+    "SAVE": "Save",
+    "CANCEL": "Cancel"
+  },
+  "QUESTION_BANK": {
+    "Add_Department": "Add department",
+    "Departments": "Departments",
+    "Department_Ar": "Department(Arabic)",
+    "Department_En": "Department(English)",
+    "Publish": "Publish",
+    "Delete": "Delete",
+    "Back": "Back",
+    "Search": "Search..",
+    "Technical_Questions": "Technical questions",
+    "Add_Question": "Add question",
+    "Question_Ar": "question (Arabic)",
+    "Question_En": "question (English)",
+    "Answer_Ar": "Answer(Arabic)",
+    "Answer_En": "Answer(English)"
+  }
 }

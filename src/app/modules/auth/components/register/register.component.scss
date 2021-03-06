@@ -2,11 +2,11 @@
 
 .UserRegister{
     .UserRegister__Label{
-        color: #C1C7D0;
+        color: $ForgetPasswordLink;
     }
 
     .UserRegister__FormControl::placeholder {
-        color: #ccc;
+        color: $auth-color;
         font-size: 0.9rem;
     }
 
