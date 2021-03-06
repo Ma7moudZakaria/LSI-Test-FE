@@ -1,15 +1,15 @@
-<div class="row" *ngIf="isView">
+<div class="row Catogry" *ngIf="isView">
     <div class="col-4">
         <div class="row">
-            <p class="text-left col">{{ 'QUESTION_BANK.Departments' | translate }}</p>
-            <a [routerLink]="" (click)="addCatogry()"><p class="text-right col">{{ 'QUESTION_BANK.Add_Department' | translate }}</p>
+            <p class="Catogry_span">{{ 'QUESTION_BANK.Departments' | translate }}</p>
+            <a [routerLink]="" (click)="addCatogry()"><p class="Catogry_Link_Add">{{ 'QUESTION_BANK.Add_Department' | translate }}</p>
             </a> 
         </div>
         <div class="row">
-            <input type="text" placeholder="{{'QUESTION_BANK.Search' | translate}}" name="search"#text><i><img src="assets/quesionBsnk/questionBankCategory/search-interface-symbol.svg" alt="" class="mt-10 cursor-pointer" (click)=" getQuestionBankCategories(text.value)"/></i>
+            <input type="text" placeholder="{{'QUESTION_BANK.Search' | translate}}" name="search"#text class="Catogry_Text_Search"><i><img src="assets/quesionBsnk/questionBankCategory/search-interface-symbol.svg" alt="" class="mt-10 cursor-pointer Catogry_Icon_Search" (click)=" getQuestionBankCategories(text.value)"/></i>
           <br/>
         </div>
-  <div *ngFor="let QBC of questionBankCategoryList ; let i=index;" class="list-group" >
+  <div *ngFor="let QBC of questionBankCategoryList ; let i=index;" class="list-group Catogry_Icon" >
     <div  class="list-group-item  list-group-item_custom list-group-item-action row" (click)="loadCatogryQuiestion(QBC.id)">
         <p>
          
@@ -17,11 +17,11 @@
           {{this.translate.currentLang==='en-US'?QBC.engCatgName:QBC.arabCatgName}}
           
        <i>
-        <img src="assets/quesionBsnk/questionBankCategory/Icon feather-edit-3 (1).svg" alt="" class="mt-10 cursor-pointer" (click)="loadQuestionBankCategoryDetails(QBC.id)"/>
+        <img src="assets/quesionBsnk/questionBankCategory/Icon feather-edit-3 (1).svg" alt="" class="mt-10 cursor-pointer Catogry_Icon_Details" (click)="loadQuestionBankCategoryDetails(QBC.id)"/>
        </i>
           
           <i>
-            <img src="assets/quesionBsnk/questionBankCategory/Icon feather-trash-2.svg" alt="" class="mt-10 cursor-pointer" (click)="delete_Categor(QBC.id)"/>
+            <img src="assets/quesionBsnk/questionBankCategory/Icon feather-trash-2.svg" alt="" class="mt-10 cursor-pointer Catogry_Icon_delete" (click)="delete_Categor(QBC.id)"/>
           </i>
         </p>
 
@@ -33,21 +33,21 @@
     
   
   </div>
-  <div class="row" *ngIf="!isView">
+  <div class="row Catogry_Add" *ngIf="!isView">
     
     <form class="form-group" [formGroup]="currentForm" (submit)="Submit()">
-      <sup>{{ 'QUESTION_BANK.Add_Department' | translate }}</sup>
+      <sup class="Catogry_Add_Span">{{ 'QUESTION_BANK.Add_Department' | translate }}</sup>
       <div class="form-group">
-        <label for="exampleInputEmail1">{{'QUESTION_BANK.Department_Ar' | translate}}</label>
-        <input type="text" class="form-control" id="InputNamAr" formControlName="nameAr">
+        <label for="exampleInputEmail1" class="Catogry_Add_TextNam">{{'QUESTION_BANK.Department_Ar' | translate}}</label>
+        <input type="text" class="form-control Catogry_Add_Text" id="InputNamAr" formControlName="nameAr">
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">{{'QUESTION_BANK.Department_En' | translate}}</label>
-        <input type="text" class="form-control" id="InputNamEN" formControlName="nameEn">
+        <label for="exampleInputPassword1" class="Catogry_Add_TextNam">{{'QUESTION_BANK.Department_En' | translate}}</label>
+        <input type="text" class="form-control Catogry_Add_Text" id="InputNamEN" formControlName="nameEn">
       </div>
   
-      <button type="submit" class="btn btn-danger" [disabled]="disableSaveButtons" >{{'QUESTION_BANK.Publish' | translate}}</button>
-      <button type="button" class="btn btn-warning" (click)="back_list_Catogry()">{{'QUESTION_BANK.Back' | translate}}</button>
+      <button type="submit" class="btn btn-danger Catogry_publish_btn" [disabled]="disableSaveButtons" >{{'QUESTION_BANK.Publish' | translate}}</button>
+      <button type="button" class="btn btn-warning Catogry_Back_btn" (click)="back_list_Catogry()">{{'QUESTION_BANK.Back' | translate}}</button>
       <div *ngIf="resultMessage?.type==='success'" class="alert alert-success">
         {{resultMessage.message}}
     </div>
