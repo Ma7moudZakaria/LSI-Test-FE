@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from '../../enums/language-enum.enum';
 import { BaseConstantModel } from '../../ng-model/base-constant-model';
+import { AuthService } from '../../services/auth-services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -12,14 +13,29 @@ import { BaseConstantModel } from '../../ng-model/base-constant-model';
 export class HeaderComponent implements OnInit {
 
   language:LanguageEnum = LanguageEnum.en;
-  constructor(public translate : TranslateService, private router: Router) { }
+  constructor(public translate : TranslateService, 
+    private router: Router,
+    private auth: AuthService) { }
 
   ngOnInit(): void {
     this.switchLang();
   }
 
   switchLang(){
-    this.language = this.language === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar
+    this.auth.switchLanguage(this.language).subscribe(res =>{
+      if (res.isSuccess){
+        this.switchLangCallBack();
+      }
+      else{
+
+      }
+    });
+  }
+
+  switchLangCallBack(){
+    this.language = this.language === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
+    this.auth.currentLanguageEvent.emit(this.language);
+
     this.translate.use(this.language.toLowerCase());
     if (this.language === LanguageEnum.ar){
       document.getElementsByTagName('html')[0].setAttribute('dir', 'rtl');
