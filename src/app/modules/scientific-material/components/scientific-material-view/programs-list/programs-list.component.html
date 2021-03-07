@@ -1,8 +1,8 @@
 <ul class="list-group">
-    <p>{{'ProgramsList.PROGRAMS' | translate}}</p>
+    <p>{{'PROGRAMS_LIST.PROGRAMS' | translate}}</p>
     <li class="list-group-item "  
     [class.active]="selectedIndex === -1"
-    (click)="loadProgramMaterial(null);selectedIndex=-1"> {{'ProgramsList.ALL' | translate}}</li>
+    (click)="loadProgramMaterial(null);selectedIndex=-1"> {{'PROGRAMS_LIST.ALL' | translate}}</li>
 
     <li class="list-group-item " *ngFor="let program  of programs; let i = index" 
       [class.active]="selectedIndex === i" 

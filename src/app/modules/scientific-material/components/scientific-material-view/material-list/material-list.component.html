@@ -2,7 +2,6 @@
   <div class="col-12">
     <span> <img calss="m-2 pull-left" src="assets/images/scientificMaterial/Group 18093.svg" alt="" (click)="loadMaterial(null)">
     </span>
-
   </div>
   <div class="matrial-card col-lg-5 col-md-5 col-sm-12 m-2" *ngFor="let item of materials">
     <div class="row">
@@ -14,13 +13,12 @@
         <p> {{ translate.currentLang === langEnum.en ? item.matrialTitleEn : item.matrialTitleAr}}</p>
         <h3>{{translate.currentLang === langEnum.en  ? item.matrialTitleEn : item.matrialTitleAr}}</h3>
       </div>
-      <div class="col-lg-1 col-md-1 col-sm-4 mt-4">
-        <span> <img calss="" src="assets/images/scientificMaterial/Icon feather-edit-3.svg" alt=""
-            (click)="loadMaterial(item.id || '')"></span>
+      <div class="col-lg-1 col-md-1 col-sm-4 mt-4" (click)="loadMaterial(item.id || '')">
+        <span> <img calss="" src="assets/images/scientificMaterial/Icon feather-edit-3.svg" alt=""></span>
       </div>
-      <div class="col-lg-1 col-md-1 col-sm-4 mt-4">
+      <div class="col-lg-1 col-md-1 col-sm-4 mt-4" (click)="deleteMaterial(item.id || '')">
         <span> <img calss="" src="assets/images/scientificMaterial/Icon feather-trash-2.svg" alt=""></span>
       </div>
-    </div>
+    </div>  
   </div>
 </div>
