@@ -16,7 +16,7 @@ export class TstComponent implements OnInit {
 
     this.translate.use('ar');
 
-    this.auth.changeLanguage('en-Us').subscribe(res => console.log(res));
+    this.auth.switchLanguage('en-Us').subscribe(res => console.log(res));
   }
 
 }
