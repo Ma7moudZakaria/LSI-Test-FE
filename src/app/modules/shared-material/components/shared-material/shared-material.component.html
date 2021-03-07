@@ -309,10 +309,12 @@
 </div>
 
 <!--custom pop-up-->
-<div>
-  <button mat-raised-button color="primary" (click)="confirmDialog()">Confirm</button>
-  <br>
-  Response is: {{result}}
+<div class="container mb-5 mt-5">
+  <div class="row">
+    <button mat-raised-button color="primary" (click)="confirmDialog()">Confirm</button>
+    <br>
+    Response is: {{result}}
+  </div>
 </div>
 
 <!--cusome card-->
@@ -329,5 +331,19 @@
   </div>
 </div>
 
+<!--custom accordion with drag and drop-->
+<div class="container mb-5 mt-5">
+  <div class="row">
+    <div class="col-md-8 mb-5">
+      <h5>
+        List
+      </h5>
+      <app-custom-accordion [items]="items"></app-custom-accordion>
+    </div>
+  </div>
+  <div *ngFor="let item of items">
+    {{item.id}}
+  </div>
+</div>
 <!-- container-fluid -->
 </div>

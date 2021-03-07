@@ -5,17 +5,22 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { CustomeCardComponent } from './components/custome-card/custome-card.component';
 import { MatCardModule } from '@angular/material/card';
+import { CustomAccordionComponent } from './components/custom-accordion/custom-accordion.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 
 @NgModule({
-  declarations: [ConfirmModalComponent, CustomeCardComponent],
+  declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent],
   imports: [
     CommonModule,
-    MatButtonModule, MatDialogModule, MatCardModule
+    MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, DragDropModule
   ],
   exports: [
-    MatButtonModule, MatDialogModule, MatCardModule, CustomeCardComponent
+    MatRadioModule, MatCheckboxModule,MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, DragDropModule, CustomeCardComponent, CustomAccordionComponent
   ]
 })
 export class SharedModule { }

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
+import { IDragDropAccordionItems } from 'src/app/core/interfaces/shared-interfaces/accordion-interfaces/idrag-drop-accordion-items';
 
 export interface DragDropListItem {
   id: string;
@@ -99,5 +100,30 @@ export class SharedMaterialComponent implements OnInit {
    {title: 'title CDE', content:'content CDE', imgPath:'../../../assets/images/mic.svg'},
    {title: 'title EFG', content:'content EFG', imgPath:'../../../assets/images/book.svg'}
  ]
+
+ /*
+  * custome accordion 
+  */
+
+ items: IDragDropAccordionItems[] = [
+  {
+    id: '1',
+    title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
+    paragraph : "test test test test test test test test test test test test test test test test test test test test "
+    // description: 'This is description of tasks 1'
+  },
+  {
+    id: '2',
+    title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
+    paragraph : "test341 test341 test341 test341 test341 test341 test341 test341 test341 test341 "
+    // description: 'This is description of tasks 2'
+  },
+  {
+    id: '3',
+    title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
+    paragraph : "test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 "
+    // description: 'This is description of tasks 3'
+  }
+];
 }
 
