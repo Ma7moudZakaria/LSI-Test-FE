@@ -46,7 +46,7 @@ export class ScientificMaterialViewComponent implements OnInit {
   }
 
   closeMaterialFormAfterSave(event:any){
-    this.submitSuccess = event;
+    this.submitSuccess = event; 
     this.showMaterialForm = !event;
 
   }
