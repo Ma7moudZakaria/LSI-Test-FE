@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { LanguageEnum } from '../../enums/language-enum.enum';
 import { IActivationCode } from '../../interfaces/auth/iactivation-code';
 import { IAuthentication } from '../../interfaces/auth/iauthentication';
 import { IForgotPassword } from '../../interfaces/auth/iforgot-password';
@@ -15,7 +16,7 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
 })
 export class AuthService {
 
-    changeLanguageUrl = environment.BaseURL + 'Language/set-lang';
+    switchLanguageUrl = environment.BaseURL + 'Language/set-lang';
   registerUrl = environment.BaseURL + 'User/register';
   userAuthenticationUrl = environment.BaseURL + 'User/user-authenticate';
   forgotPasswordUrl = environment.BaseURL + 'User/send-forgot-password-url';
@@ -25,10 +26,12 @@ export class AuthService {
   viewProfileDetailsUrl = environment.BaseURL + 'User/view-user-profile-details/';
   updateUserUrl = environment.BaseURL + 'User/update-user';
 
+  currentLanguageEvent = new EventEmitter<LanguageEnum>();
+  
   constructor(private http: HttpClient) { }
 
-  changeLanguage(lang:any){
-    return this.http.put(this.changeLanguageUrl + '/' + lang, null);
+  switchLanguage(lang:string):Observable<BaseResponseModel>{
+    return this.http.put<BaseResponseModel>(this.switchLanguageUrl + '/' + lang, null);
     }
 
     register(model: IUser) {

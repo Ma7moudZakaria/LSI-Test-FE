@@ -298,7 +298,7 @@
   <div class="row">
     <div class="col-7 first_container border">
       <button class="btn btn-primary"> OVERLAY_DIV</button>
-      <button mat-button (click)="openDialog()">Open dialog</button>
+      <!-- <button mat-button (click)="openDialog()">Open dialog</button> -->
 
     </div>
     <div class="col-1"></div>
@@ -308,5 +308,42 @@
   
 </div>
 
+<!--custom pop-up-->
+<div class="container mb-5 mt-5">
+  <div class="row">
+    <button mat-raised-button color="primary" (click)="confirmDialog()">Confirm</button>
+    <br>
+    Response is: {{result}}
+  </div>
+</div>
+
+<!--cusome card-->
+<div class="container mb-5 mt-5">
+  <div class="row">
+    <div class="col-12">
+      <h1>CARDS</h1>
+    </div>
+    <div class="col-4 mb-3 mt-3" *ngFor="let item of cardLst">
+      
+        <app-custome-card [title] = 'item.title' [content] = 'item.content' [imgPath] = 'item.imgPath'></app-custome-card>
+      
+    </div>
+  </div>
+</div>
+
+<!--custom accordion with drag and drop-->
+<div class="container mb-5 mt-5">
+  <div class="row">
+    <div class="col-md-8 mb-5">
+      <h5>
+        List
+      </h5>
+      <app-custom-accordion [items]="items"></app-custom-accordion>
+    </div>
+  </div>
+  <div *ngFor="let item of items">
+    {{item.id}}
+  </div>
+</div>
 <!-- container-fluid -->
 </div>
