@@ -10,6 +10,7 @@ import { ScientificMaterialViewComponent } from './components/scientific-materia
 import { TstComponent } from './components/tst/tst.component';
 import { MaterialListComponent } from './components/scientific-material-view/material-list/material-list.component';
 import { ProgramsListComponent } from './components/scientific-material-view/programs-list/programs-list.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
     declarations: [AddScientificMaterialComponent, ScientificMaterialViewComponent, TstComponent, MaterialListComponent,  ProgramsListComponent],
@@ -18,7 +19,8 @@ import { ProgramsListComponent } from './components/scientific-material-view/pro
     ScientificMaterialRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    TranslateModule
+    TranslateModule,
+    SharedModule
   ]
 })
 export class ScientificMaterialModule { }
