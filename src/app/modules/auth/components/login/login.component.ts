@@ -48,18 +48,18 @@ export class LoginComponent implements OnInit {
       authModel = {
         uname: this.userform.value.email,
         upass: this.userform.value.password
-      }     
+      }
       this.authService.userAuthentication(authModel).subscribe(
         (res) => {
-          if (res.isSuccess){
-            localStorage.setItem('user',JSON.stringify(res.data as IUser))
-            this.successMessage={
+          if (res.isSuccess) {
+            localStorage.setItem('user', JSON.stringify(res.data as IUser))
+            this.successMessage = {
               message: res.message,
-              type:'success'
+              type: 'success'
             }
-            setTimeout(()=>{
-                // this.router.navigateByUrl('/auth/login');
-              },3000);
+            setTimeout(() => {
+              // this.router.navigateByUrl('/auth/login');
+            }, 3000);
           }
           else this.errorMessage = res.message;
         },
@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
         }
       );
     }
-    else{
+    else {
     }
   }
 }

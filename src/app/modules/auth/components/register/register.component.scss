@@ -1,9 +1,9 @@
 @import 'src/assets/scss/_variables.scss';
 
 .UserRegister{
-    // .UserRegister__Label{
-    //     //color: $auth-backgroundcolor;
-    // }
+    .UserRegister__Label{
+        color: $ForgetPasswordLink;
+    }
 
     .UserRegister__FormControl::placeholder {
         color: $auth-color;
