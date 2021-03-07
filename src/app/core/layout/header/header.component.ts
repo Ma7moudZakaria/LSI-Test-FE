@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
     this.language = this.language === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
     this.auth.currentLanguageEvent.emit(this.language);
 
-    this.translate.use(this.language.split('-')[0].toLowerCase());
+    this.translate.use(this.language.split("-")[0].toLowerCase());
     if (this.language === LanguageEnum.ar){
       document.getElementsByTagName('html')[0].setAttribute('dir', 'rtl');
       document.getElementsByTagName('html')[0].setAttribute('lang', 'ar');

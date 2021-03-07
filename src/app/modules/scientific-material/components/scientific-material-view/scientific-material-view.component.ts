@@ -12,6 +12,7 @@ export class ScientificMaterialViewComponent implements OnInit {
   programs: any;
   selectedMaterialId:any;
   selectedProgramId:any;
+  showMaterialForm = false;
   constructor( private scientifcMaterialService: ScientificMaterialService) { }
 
   ngOnInit(): void {
@@ -32,7 +33,11 @@ export class ScientificMaterialViewComponent implements OnInit {
   // }
   loadSelectedMateial(event:any){
    this.selectedMaterialId = event;
-   // console.log(event);
+   this.showMaterialForm =true;
+  }
+
+  closeMaterialForm(){
+    this.showMaterialForm = false;
   }
 
   setSelectedProgram(event:any){
