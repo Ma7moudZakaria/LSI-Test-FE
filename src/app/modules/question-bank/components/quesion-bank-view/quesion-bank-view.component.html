@@ -1,0 +1,32 @@
+<div  class="col-12" >
+<div class="container">
+    <div class=" row">
+        <div class="col-4">
+            <app-question-bank-categories-view (selectedCategoryId)="setSelectedCategory($event)" >
+        
+            </app-question-bank-categories-view>
+        </div>
+        <div class="col-6">
+            <!-- <div class="row">
+                <button type="button" class="btn btn-primary m-2 pull-left" (click)="addNew()">Add New Question</button>
+            </div> -->
+            <app-question-bank-questions-view [selectedCategoryId]="selectedCategoryId" (selectedQuestionId)="loadSelectedQuesion($event)"> 
+        
+            </app-question-bank-questions-view>
+        </div>
+       
+        <div class="col-2" *ngIf="showAddQuiestion">
+            
+            <app-add-question-bank-question [selectedCategoryId]="selectedCategoryId"  [selectedQuestionId]="selectedQuestionId">
+
+            </app-add-question-bank-question>
+
+        </div>
+    
+
+    </div>
+</div>
+    
+</div>
+
+

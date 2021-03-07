@@ -22,7 +22,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 }
 .identity_img{
-    background-image: url(../../huffaz-app/src/assets/images/Group18169.png);
+     background-image: url(../src/assets/images/Group18169.png);
     background-color: $login_background;
     max-width: 100%;
     width: 100%;
@@ -40,7 +40,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     // background: linear-gradient(#8E2520, #4F1512);
     // background: #8E2520;
     // background-image: url(../../huffaz-app/src/assets/images/opacity_background.png); 
-    background-image: url(../../huffaz-app/src/assets/images/shash.png), linear-gradient(#8E2520, #4F1512);
+    background-image: url(../src/assets/images/shash.png), linear-gradient(#8E2520, #4F1512);
 
      background-position-x: center;
      background-position-y: center;
@@ -51,7 +51,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     position: absolute;
     bottom: 2%;
     height: 10%;
-    background-image: url(../../huffaz-app/src/assets/images/Group18161.png);
+    background-image: url(../src/assets/images/Group18161.png);
     background-repeat: repeat-x;
     z-index: 100;
 

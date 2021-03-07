@@ -63,5 +63,21 @@
     "UPDATEUSER": "Enter the new password",
     "FIRSTNAMEAR": "First Name Arabic",
     "FIRSTNAMEEN": "First Name English"
+  },
+  "QUESTION_BANK": {
+    "Add_Department": "Add department",
+    "Departments": "Departments",
+    "Department_Ar": "Department(Arabic)",
+    "Department_En": "Department(English)",
+    "Publish": "Publish",
+    "Delete": "Delete",
+    "Back": "Back",
+    "Search": "Search..",
+    "Technical_Questions": "Technical questions",
+    "Add_Question": "Add question",
+    "Question_Ar": "question (Arabic)",
+    "Question_En": "question (English)",
+    "Answer_Ar": "Answer(Arabic)",
+    "Answer_En": "Answer(English)"
   }
 }
