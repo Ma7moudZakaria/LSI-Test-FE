@@ -60,9 +60,18 @@
                             
                             <!-- Submit Button -->
                             <div class="form-group col-lg-12 mx-auto mb-0">
-                                <button type="submit" class="btn UserLogin__Submit" > {{'LOGIN_PG.LOGIN' | translate}} </button>
+                                <button type="submit" class="btn UserLogin__Submit" [routerLink]="['/auth/shared']"> {{'LOGIN_PG.LOGIN' | translate}} </button>
                                 <button type="button" [routerLink]="['/auth/register']" class="btn  UserLogin__SignUp " > {{'LOGIN_PG.SIGNUP' | translate}}</button>
                             </div> 
+
+                            <div class="row">
+                                <div *ngIf="successMessage" class="alert alert-success">
+                                    {{successMessage}}
+                                </div>
+                                <div *ngIf="errorMessage" class="alert alert-danger">
+                                    {{errorMessage}}
+                                </div>
+                            </div>
                         </div>
                         
                         <div class="footer_form ">

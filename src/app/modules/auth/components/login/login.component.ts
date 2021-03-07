@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IAuthentication } from 'src/app/core/interfaces/auth/iauthentication';
 import { IUser } from 'src/app/core/interfaces/auth/iuser-model';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
@@ -21,9 +23,12 @@ export class LoginComponent implements OnInit {
   errorMessage:any;
   successMessage:any;
 
+  language:any;
+
   constructor(
       private fb: FormBuilder,
       private authService: AuthService,
+      private translate: TranslateService,
       private lookupService: LookupService
       ) { }
 
@@ -32,6 +37,8 @@ export class LoginComponent implements OnInit {
       'email': new FormControl('', Validators.required),
       'password': new FormControl('', Validators.compose([Validators.required, Validators.minLength(6)]))
     });
+    
+    this.language = this.language === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
     this.getLookups();
   }
 
@@ -72,6 +79,11 @@ export class LoginComponent implements OnInit {
       );
     }
     else {
+      // this.successMessage={
+      //   message: this.language == LanguageEnum.en ? "Please Enter A valid Data" : "برجاء إدخال البيانات صحيحة",
+      //   type:'danger'
+      // }
+      this.errorMessage = this.language == LanguageEnum.en ? "Please Enter A valid Data" : "برجاء إدخال البيانات صحيحة";
     }
   }
 }

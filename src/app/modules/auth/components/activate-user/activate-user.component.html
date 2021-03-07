@@ -44,8 +44,13 @@
                                 <button type="submit" class="btn UserLogin__Submit" > {{'GENERAL.SEND' | translate}} </button>               
                             </div>
                 
-                            <div *ngIf="errorMessage" class="alert alert-danger mt-3">
-                                {{ errorMessage }}
+                            <div class="row">
+                                <div *ngIf="successMessage" class="alert alert-success">
+                                    {{successMessage}}
+                                </div>
+                                <div *ngIf="errorMessage" class="alert alert-danger">
+                                    {{errorMessage}}
+                                </div>
                             </div>
                         </div>
                         
