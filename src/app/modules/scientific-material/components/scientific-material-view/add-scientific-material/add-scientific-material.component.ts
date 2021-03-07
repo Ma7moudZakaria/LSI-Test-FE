@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IFileUpload } from 'src/app/core/interfaces/attachments-interfaces/ifile-upload';
@@ -37,6 +37,7 @@ export class AddScientificMaterialComponent implements OnInit {
   errorMessage: any;
   disableSaveButtons = false;
   @Input() selectedMaterialId: any;
+  @Output() submitSuccess = new EventEmitter<boolean>();
   LangEnum = LanguageEnum ;
   constructor(private fb: FormBuilder, private scientifcMaterialService: ScientificMaterialService,
     private attachmentService: AttachmentsService,public translate : TranslateService,
@@ -161,8 +162,8 @@ export class AddScientificMaterialComponent implements OnInit {
     // )
   }
 
-  onFileChange(files?: FileList) {
-    if (files) {
+  onFileChange(files: FileList) {
+    if (files.length > 0) {
       Array.from(files).forEach(element => {
         var fileUploadObj: IFileUpload = {
           containerNameIndex: 1, // need to be changed based on file type
@@ -197,15 +198,22 @@ export class AddScientificMaterialComponent implements OnInit {
           this.fileList.push(elm);
 
         })
+        this.fileUploadModel = [];
       }, error => {
         console.log(error);
+        this.fileUploadModel = [];
+        this.errorMessage={
+          message:error.message,
+          type:'danger'
+        }
       }
     )
   }
   Submit() {
     this.isSubmit = true;
 
-
+    this.successMessage= null;
+    this.errorMessage = null;
     if (this.scientificMaterialId) {
       this.updateScientificMaterial.matrialTitleAr = this.f.matrialTitleAr.value;
       this.updateScientificMaterial.matrialTitleEn = this.f.matrialTitleEn.value;
@@ -222,6 +230,14 @@ export class AddScientificMaterialComponent implements OnInit {
           this.successMessage={
             message:res.message,
             type:'success'
+          }
+          this.closeForm();         
+        }
+        else{
+          this.isSubmit = false;
+          this.errorMessage={
+            message:res.message,
+            type:'danger'
           }
         }
       },
@@ -251,6 +267,14 @@ export class AddScientificMaterialComponent implements OnInit {
             message:res.message,
             type:'success'
           }
+          this.closeForm();         
+        }
+        else{
+          this.isSubmit = false;
+          this.errorMessage={
+            message:res.message,
+            type:'danger'
+          }
         }
       },
         error => {
@@ -264,4 +288,8 @@ export class AddScientificMaterialComponent implements OnInit {
 
   }
 
+  closeForm(){
+    setTimeout(() => {
+      this.submitSuccess?.emit(true);}, 2000);
+  }
 }

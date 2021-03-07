@@ -9,6 +9,7 @@ import { CustomAccordionComponent } from './components/custom-accordion/custom-a
 import { MatExpansionModule } from '@angular/material/expansion';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatRadioModule } from '@angular/material/radio';
+import {MatSelectModule} from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
@@ -17,10 +18,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent],
   imports: [
     CommonModule,
-    MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, DragDropModule
+    MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule,MatSelectModule, DragDropModule
   ],
   exports: [
-    MatRadioModule, MatCheckboxModule,MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, DragDropModule, CustomeCardComponent, CustomAccordionComponent
+    MatRadioModule, MatCheckboxModule,MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule,MatSelectModule, DragDropModule, CustomeCardComponent, CustomAccordionComponent
   ]
 })
 export class SharedModule { }
