@@ -62,7 +62,7 @@ export class ForgotPasswordComponent implements OnInit {
         },
         (error: any) => {
           if (!error.isSuccess) {
-            // this.errorMessage = this.translate.currentLang =='ar' ? "خطأ فى الاتصال" : "Cummunication error"//error.message;
+            this.errorMessage = this.language == LanguageEnum.en ? "Please Enter A valid Data" : "برجاء إدخال البيانات صحيحة";
           }
         }
       );
