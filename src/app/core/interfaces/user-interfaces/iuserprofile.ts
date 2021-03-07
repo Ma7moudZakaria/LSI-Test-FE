@@ -15,4 +15,12 @@ export interface IUserProfile {
     address?: string;
     userName?: string;
     userEmail?: string;
+    arbCountryName?:string;
+    arbEduLevelName?:string;
+    arbGenderName?:string;
+    arbNatName?:string;
+    engCountryName?:string;
+    engEduLevelName?:string;
+    engGenderName?:string;
+    engNatName?:string;
 }

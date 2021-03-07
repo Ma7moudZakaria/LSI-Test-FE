@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IUser } from 'src/app/core/interfaces/auth/iuser-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 
@@ -20,6 +21,7 @@ export class RegisterComponent implements OnInit {
   isSubmit = false;
   successMessage: any;
   hidePassword = true;
+  language:any;
 
   constructor(private authService: AuthService,
     private router: Router,
@@ -28,6 +30,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.routeParams = this.router.url;
     this.loadUserForm();
+    this.language = this.language === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
     
     if (this.routeParams === '/auth/register') {
       this.signup = true;
@@ -45,44 +48,49 @@ export class RegisterComponent implements OnInit {
   loadUserForm() {
     this.registerform = this.fb.group({
       email: ["", [Validators.required, Validators.email]],
-      name: ["", Validators.required],
-      fathername: ["", Validators.required],
-      familyname: ["", Validators.required],
+      userName: ["", Validators.required],
       password: ["", Validators.required],
       confirmPassword: ["", Validators.required],
     });
-    // {
-    //   validator: this.customValidation.MatchPassword("password","confirmPassword")
-    // })
   }
 
   onSignup(value: string) {
-    this.isSubmit = true;
-    this.errorMessage = '';
-    localStorage.clear();
-    this.registrationModel = {
-      uname: this.registerform.value.name + " " + this.registerform.value.fathername + " " + this.registerform.value.familyname,
-      uemail: this.registerform.value.email,
-      ucpass: this.registerform.value.confirmPassword,//""
-      upass: this.registerform.value.password
-    }
-
-    this.authService.register(this.registrationModel).subscribe(res => {
+    if (this.registerform.valid) {
       this.isSubmit = true;
-      if (res.isSuccess) {
-        localStorage.setItem('user',JSON.stringify(res.data as IUser))
-        // this.showActiveMessage = res.message;
-        this.successMessage={
-          message: res.message,
-          type:'success'
-        }
-        setTimeout(()=>{            
-          // this.router.navigate(['/home']);
-         }, 3000);
-        }
-        else {
-          this.errorMessage = res.message;
-        }
-    })
+      this.errorMessage = '';
+      localStorage.clear();
+      this.registrationModel = {
+        uname: this.registerform.value.userName ,
+        uemail: this.registerform.value.email,
+        ucpass: this.registerform.value.confirmPassword,//""
+        upass: this.registerform.value.password
+      }
+
+      this.authService.register(this.registrationModel).subscribe(res => {
+        this.isSubmit = true;
+        if (res.isSuccess) {
+          localStorage.setItem('user',JSON.stringify(res.data as IUser))
+          this.successMessage = res.message;
+          // this.successMessage={
+          //   message: res.message,
+          //   type:'success'
+          // }
+          this.router.navigate(['/auth/activate-code']);
+            setTimeout(()=>{            
+              // this.router.navigate(['/home']);
+            }, 3000);
+          }
+          else {
+            this.errorMessage = res.message;
+          }
+      })
+    }
+    else{
+      // this.successMessage={
+      //   message: this.language == LanguageEnum.en ? "Please Enter A valid Data" : "برجاء إدخال البيانات صحيحة",
+      //   type:'danger'
+      // }
+      this.errorMessage = this.language == LanguageEnum.en ? "Please Enter A valid Data" : "برجاء إدخال البيانات صحيحة";
+    }
   }
 }

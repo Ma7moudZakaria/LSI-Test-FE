@@ -2,6 +2,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IActivationCode } from 'src/app/core/interfaces/auth/iactivation-code';
 import { IUser } from 'src/app/core/interfaces/auth/iuser-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
@@ -21,18 +23,21 @@ export class ActivateUserComponent implements OnInit {
   successMessage:any;
   hidePassword = true;
   errorMessage:any;
-
+  language:any;
   userData?:string;
+  uemail?:string;
 
   constructor(
-    private router: Router, private activatedRoute: ActivatedRoute,
+    private router: Router, 
     private fb: FormBuilder,
+    private translate: TranslateService,
     private authService: AuthService) { }
 
   ngOnInit(): void {
     this.resetPasswordFormG();
-    
+    this.language = this.language === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
+    this.uemail = this.currentUser.uemail; 
   }
 
   resetPasswordFormG() {
@@ -78,27 +83,31 @@ export class ActivateUserComponent implements OnInit {
       this.authService.activateUser(this.activationcodeModel).subscribe(res => {
         console.log(res);
         if (res.isSuccess){
-          this.successMessage={
-            message:res.message,
-            type:'success'
-          }
+          // this.successMessage={
+          //   message:res.message,
+          //   type:'success'
+          // }
+          this.successMessage = res.message;
+          this.router.navigateByUrl('/shared');
           setTimeout(()=>{
               // this.router.navigateByUrl('/auth/login');
             },3000);
           }
         else{
-          this.successMessage={
-            message:res.message,
-            type:'danger'
-          }
+          // this.successMessage={
+          //   message:res.message,
+          //   type:'danger'
+          // }
+          this.errorMessage = res.message;
         }
       });  
     }
     else{
-      this.successMessage={
-        message:"Please, fill inputes",
-        type:'danger'
-      }
+      // this.successMessage={
+      //   message: this.language == LanguageEnum.en ? "Please Enter A valid Data" : "برجاء إدخال البيانات صحيحة",
+      //   type:'danger'
+      // }
+      this.errorMessage = this.language == LanguageEnum.en ? "Please Enter A valid Data" : "برجاء إدخال البيانات صحيحة";
     }
   } 
 }

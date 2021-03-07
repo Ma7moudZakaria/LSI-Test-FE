@@ -1,25 +1,66 @@
 {
-    "page1":{
-        "hello":"هلا"
-    },
-    "SCIENTIFIC_MATERIAL":{
-        "SELECTOPTION" : "اختر من القائمة",
-        "PROGRAMS" : "البرامج",
-        "CATEGORY":"الفئة",
-        "TITLEAR":"الاسم العربى",
-        "TITLEEN":"الاسم الانجليزى",
-        "CHOOSEFILE":"إختر الملفات لرفعها / اسحبها وضعها هنا",
-        "MATERIALAVAILABILITY":"اتاحة المادة العلمية",
-        "ACTIVATION":"التنشيط",
-        "ALL" : "الكل",
-        "SELECTEDPROGRAMS" : "البرامج المحتارة فقط",
-        "ACTIVE" : "مفعل" ,
-        "INACTIVE" : " غير مفعل",
-        "SAVE" : "حفظ",
-        "CANCEL" : "إلغاء"
-    },
-    "PROGRAMS_LIST":{
-        "PROGRAMS" : "البرامج",
-        "ALL" : "الكل"
-    }
+  "GENERAL": {
+    "SEND": "إرسال",
+    "BACK": "رجوع",
+    "SAVE": "حفظ",
+    "EMAIL": "البريد الإلكتروني",
+    "PASSWORD": "كلمة المرور",
+    "CONFIRMPASSWORD": "تأكيد كلمة المرور",
+    "NAME": "الإسم",
+    "FATHERNAME": "أسم الاب",
+    "FAMILYNAME": "أسم العائلة",
+    "GENDER": "الجنس",
+    "MALE": "ذكر",
+    "FEMALE": "أنثى"
+  },
+  "ACTIVATION_USER_PG": {
+    "ACTIVATIONCODE": "رمز الدخول",
+    "ACTIVATIONMESSAGE": "لقد تم إرسال رمز الدخول علي البريد الإلكتروني الخاص بك",
+    "SENDACTIVATIONCODE": "إعادة إرسال",
+    "MESSAGE": "لم أستقبل رمز الدخول."
+  },
+  "FORGET_PASSWORD_PG": {
+    "FORGETPASSWORD": "نسيت كلمة المرور"
+  },
+  "LOGIN_PG": {
+    "LOGIN": "تسجيل الدخول",
+    "REMEMBERME": "تذكرني",
+    "FORGETPASSWORD": "نسيت كلمة المرور ؟",
+    "SIGNUP": "سجل الأن",
+    "SOICALLOGIN": "الدخول عن طريق وسائل التواصل الاجتماعي",
+    "TEACHERSIGNUP": "التسجيل كمعلم"
+  },
+  "SIGNUP_PG": {
+    "SIGNUP": "تسجيل حساب جديد",
+    "USERNAME": "إسم االمستخدم",
+    "NEXT": "التالى"
+  },
+  "SCIENTIFIC_MATERIAL": {
+    "SELECTOPTION": "اختر من القائمة",
+    "PROGRAMS": "البرامج",
+    "CATEGORY": "الفئة",
+    "TITLEAR": "الاسم العربى",
+    "TITLEEN": "الاسم الانجليزى",
+    "CHOOSEFILE": "إختر الملفات لرفعها / اسحبها وضعها هنا",
+    "MATERIALAVAILABILITY": "اتاحة المادة العلمية",
+    "ACTIVATION": "التنشيط",
+    "ALL": "الكل",
+    "SELECTEDPROGRAMS": "البرامج المحتارة فقط",
+    "ACTIVE": "مفعل",
+    "INACTIVE": " غير مفعل",
+    "SAVE": "حفظ",
+    "CANCEL": "إلغاء"
+  },
+  "PROGRAMS_LIST": {
+    "PROGRAMS": "البرامج",
+    "ALL": "الكل"
+  },
+  "RESETPASSWORD_PG": {
+    "RESETPASSWORD": "ادخل كلمة المرور الجديدة"
+  },
+  "UPDATE_USER_PG": {
+    "UPDATEUSER": "ادخل كلمة المرور الجديدة",
+    "FIRSTNAMEAR": "الأسم",
+    "FIRSTNAMEEN": "First Name English"
+  }
 }

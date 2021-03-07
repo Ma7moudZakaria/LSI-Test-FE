@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IResetPassword } from 'src/app/core/interfaces/auth/ireset-password';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 
@@ -19,6 +20,7 @@ export class ResetPasswordComponent implements OnInit {
   successMessage:any;
   hidePassword = true;
   errorMessage:any;
+  language:any;
 
   constructor(
     private router: Router, private activatedRoute: ActivatedRoute,
@@ -27,6 +29,7 @@ export class ResetPasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.resetPasswordFormG();
+    this.language = this.language === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
     this.token = this.activatedRoute.snapshot.queryParamMap.get('tkn');
   }
 
@@ -63,14 +66,15 @@ export class ResetPasswordComponent implements OnInit {
       this.authService.resetPassword(this.resetPasswordModel).subscribe(res => {
         console.log(res);
         if (res.isSuccess){
-          this.successMessage={
-            message:res.message,
-            type:'success'
-          }
+          this.successMessage = res.message;
+          // this.successMessage={
+          //   message:res.message,
+          //   type:'success'
+          // }
           setTimeout(()=>{
               this.router.navigateByUrl('/auth/login');
             },3000);
-          }
+        }
         else{
           this.errorMessage=res.message;
         }
@@ -83,10 +87,11 @@ export class ResetPasswordComponent implements OnInit {
       //       console.log(error);      
     }
     else{
-      this.successMessage={
-        message:"Please, fill inputes",
-        type:'danger'
-      }
+      // this.successMessage={
+      //   message: this.language == LanguageEnum.en ? "Please Enter A valid Data" : "برجاء إدخال البيانات صحيحة",
+      //   type:'danger'
+      // }
+      this.errorMessage = this.language == LanguageEnum.en ? "Please Enter A valid Data" : "برجاء إدخال البيانات صحيحة";
     }
   } 
 }

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IUser } from 'src/app/core/interfaces/auth/iuser-model';
+import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
 import { IProfileUser } from 'src/app/core/interfaces/user-interfaces/iprofileuser';
 import { IUserProfile } from 'src/app/core/interfaces/user-interfaces/iuserprofile';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
@@ -22,14 +25,11 @@ export class UpdateUserProfileComponent implements OnInit {
   currentUser: any;
   routeParams: any;
   isSubmit = false;
-  gender:any;
-  country:any;
-  nationality:any;
-  educationalLevel:any;
   listOfLookupProfile : string[] = ['GENDER','EDU_LEVEL','NATIONALITY','COUNTRY'];
   successMessage:any;
   userProfileDetails:any;
   updateUserModel = {};
+  collectionOfLookup = {} as ILookupCollection;
 
   genderData :any;
   countryData :any;
@@ -48,14 +48,11 @@ export class UpdateUserProfileComponent implements OnInit {
     this.buildForm();
     this.userProfileDetails as IUserProfile;
     this.lookupService.getLookupByKey(this.listOfLookupProfile).subscribe(res =>{
-      this.genderData = res.data["GENDER"];
-      this.educationalLevelData  = res.data["EDU_LEVEL"];
-      this.nationalityData  = res.data["NATIONALITY"];
-      this.countryData  = res.data["COUNTRY"];
+      this.collectionOfLookup = res.data;
       if (res.isSuccess){
         this.getUserProfile(this.currentUser.id)        
         this.successMessage={
-          message:"Activate Code send successfully",
+          message: res.message,
           type:'success'
         }
       }
@@ -69,22 +66,6 @@ export class UpdateUserProfileComponent implements OnInit {
   {
     this.userService.viewUserProfileDetails(id).subscribe(res =>{
       this.userProfileDetails = res.data;      
-      this.gender = this.genderData.filter((x:any) => {
-        return x.id == this.userProfileDetails.Gender;
-      })[0];
-
-      this.country = this.countryData.filter((x:any) => {
-        return x.id == this.userProfileDetails.CountryCode;
-      })[0];
-
-      this.nationality = this.nationalityData.filter((x:any) => {
-        return x.id == this.userProfileDetails.Nationality;
-      })[0];
-
-      this.educationalLevel = this.educationalLevelData.filter((x:any) => {
-        return x.id == this.userProfileDetails.eduLevel;
-      })[0];
-
       if(res.isSuccess)
       {
         this.PopulateForm()
@@ -97,21 +78,6 @@ export class UpdateUserProfileComponent implements OnInit {
   }
 
   onSubmit(value:string) {
-    this.genderData.filter((x:any) => {
-      return x.nameEn == this.profileForm.value.gender;
-    })[0];
-
-    this.countryData.filter((x:any) => {
-      return x.nameEn == this.profileForm.value.countryCode;
-    })[0];
-
-    this.nationalityData.filter((x:any) => {
-      return x.nameEn == this.profileForm.value.nationality;
-    })[0];
-
-    this.educationalLevelData.filter((x:any) => {
-      return x.nameEn == this.profileForm.value.educationallevel;
-    })[0];
 
     this.updateUserModel = {
       usrId:this.currentUser.id,

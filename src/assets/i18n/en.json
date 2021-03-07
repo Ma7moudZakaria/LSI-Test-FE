@@ -1,26 +1,67 @@
 {
-    "page1":{
-        "hello":"helo"
-    },
-    "SCIENTIFIC_MATERIAL":{
-        "SELECTOPTION" : "Select Option",
-        "PROGRAMS" : "Programs",
-        "CATEGORY":"Category",
-        "TITLEAR":"Arabic Name",
-        "TITLEEN":"English Namr",
-        "CHOOSEFILE":"Choose file to upload / Drag to upload",
-        "MATERIALAVAILABILITY":"Scientific Material Avalibality",
-        "ACTIVATION":"Activation",
-        "ALL" : "ALL",
-        "SELECTEDPROGRAMS" : "Selected Programs Only",
-        "ACTIVE" : "Active" ,
-        "INACTIVE" : "InActive",
-        "SAVE" : "Save",
-        "CANCEL" : "Cancel"
-    }
-    ,
-    "PROGRAMS_LIST":{
-        "PROGRAMS" : "Programs",
-        "ALL" : "All"
-    }
+  "GENERAL": {
+    "SEND": "Send",
+    "BACK": "Back",
+    "SAVE": "Save",
+    "EMAIL": "Email Address",
+    "PASSWORD": "Password",
+    "CONFIRMPASSWORD": "Confirm Password",
+    "NAME": "Name",
+    "FATHERNAME": "Father Name",
+    "FAMILYNAME": "Family Name",
+    "GENDER": "Gender",
+    "MALE": "Male",
+    "FEMALE": "FeMale"
+
+  },
+  "ACTIVATION_USER_PG": {
+    "ACTIVATIONCODE": "Activation Code",
+    "ACTIVATIONMESSAGE": "The access code has been sent to your email",
+    "SENDACTIVATIONCODE": "Send Again",
+    "MESSAGE": "I did not receive the Activation Code."
+  },
+  "FORGET_PASSWORD_PG": {
+    "FORGETPASSWORD": "Forgot Password"
+  },
+  "LOGIN_PG": {
+    "LOGIN": "Login",
+    "REMEMBERME": "Remember me",
+    "FORGETPASSWORD": "Forget Password ?",
+    "SIGNUP": "Register Now",
+    "SOICALLOGIN": "Log in via social media",
+    "TEACHERSIGNUP": "Register as a teacher"
+  },
+  "SIGNUP_PG": {
+    "SIGNUP": "Sign Up",
+    "USERNAME": "User Name",
+    "NEXT": "Next"
+  },
+  "RESETPASSWORD_PG": {
+    "RESETPASSWORD": "Reset Password"
+  },
+  "SCIENTIFIC_MATERIAL": {
+    "SELECTOPTION": "Select Option",
+    "PROGRAMS": "Programs",
+    "CATEGORY": "Category",
+    "TITLEAR": "Arabic Name",
+    "TITLEEN": "English Namr",
+    "CHOOSEFILE": "Choose file to upload / Drag to upload",
+    "MATERIALAVAILABILITY": "Scientific Material Avalibality",
+    "ACTIVATION": "Activation",
+    "ALL": "ALL",
+    "SELECTEDPROGRAMS": "Selected Programs Only",
+    "ACTIVE": "Active",
+    "INACTIVE": "InActive",
+    "SAVE": "Save",
+    "CANCEL": "Cancel"
+  },
+  "PROGRAMS_LIST": {
+    "PROGRAMS": "Programs",
+    "ALL": "All"
+  },
+  "UPDATE_USER_PG": {
+    "UPDATEUSER": "Enter the new password",
+    "FIRSTNAMEAR": "First Name Arabic",
+    "FIRSTNAMEEN": "First Name English"
+  }
 }
