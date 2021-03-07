@@ -83,19 +83,22 @@ export class ActivateUserComponent implements OnInit {
       this.authService.activateUser(this.activationcodeModel).subscribe(res => {
         console.log(res);
         if (res.isSuccess){
-          this.successMessage={
-            message:res.message,
-            type:'success'
-          }
+          // this.successMessage={
+          //   message:res.message,
+          //   type:'success'
+          // }
+          this.successMessage = res.message;
+          this.router.navigateByUrl('/auth/login');
           setTimeout(()=>{
               // this.router.navigateByUrl('/auth/login');
             },3000);
           }
         else{
-          this.successMessage={
-            message:res.message,
-            type:'danger'
-          }
+          // this.successMessage={
+          //   message:res.message,
+          //   type:'danger'
+          // }
+          this.errorMessage = res.message;
         }
       });  
     }

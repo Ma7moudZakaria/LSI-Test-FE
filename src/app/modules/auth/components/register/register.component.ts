@@ -70,11 +70,11 @@ export class RegisterComponent implements OnInit {
         this.isSubmit = true;
         if (res.isSuccess) {
           localStorage.setItem('user',JSON.stringify(res.data as IUser))
-          // this.showActiveMessage = res.message;
-          this.successMessage={
-            message: res.message,
-            type:'success'
-          }
+          this.successMessage = res.message;
+          // this.successMessage={
+          //   message: res.message,
+          //   type:'success'
+          // }
           this.router.navigate(['/auth/activate-code']);
             setTimeout(()=>{            
               // this.router.navigate(['/home']);

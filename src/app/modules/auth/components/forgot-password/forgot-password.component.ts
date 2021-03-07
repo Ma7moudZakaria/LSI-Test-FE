@@ -47,10 +47,11 @@ export class ForgotPasswordComponent implements OnInit {
       this.authService.forgotPassword(forgotPasswordModel).subscribe(
         (res) => {
           if (res.isSuccess){
-            this.successMessage={
-              message: res.message,
-              type:'success'
-            }
+            this.successMessage = res.message;
+            // this.successMessage={
+            //   message: res.message,
+            //   type:'success'
+            // }
             setTimeout(()=>{
                 // this.router.navigateByUrl('/auth/login');
               },3000);
