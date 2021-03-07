@@ -54,14 +54,14 @@
                                 </label>
                                                 
                                 <label class="UserLogin__ForgetPassword">
-                                    <a class="UserLogin__ForgetPasswordLink" href="/forget-password" [routerLink]="['/forget-password']" > {{'LOGIN_PG.FORGETPASSWORD' | translate}} </a>
+                                    <a class="UserLogin__ForgetPasswordLink" href="/auth/forget-password" [routerLink]="['/auth/forget-password']" > {{'LOGIN_PG.FORGETPASSWORD' | translate}} </a>
                                 </label>                    
                             </div>
                             
                             <!-- Submit Button -->
                             <div class="form-group col-lg-12 mx-auto mb-0">
-                                <button type="submit" class="btn" > {{'LOGIN_PG.LOGIN' | translate}} </button>
-                                <button type="button" [routerLink]="['/register']" class="btn  UserLogin__SignUp " > {{'LOGIN_PG.SIGNUP' | translate}}</button>
+                                <button type="submit" class="btn UserLogin__Submit" > {{'LOGIN_PG.LOGIN' | translate}} </button>
+                                <button type="button" [routerLink]="['/auth/register']" class="btn  UserLogin__SignUp " > {{'LOGIN_PG.SIGNUP' | translate}}</button>
                             </div> 
                         </div>
                         
@@ -70,11 +70,12 @@
                             <p class="footer_form_p mb-0 text-center mb-3"> {{'LOGIN_PG.SOICALLOGIN' | translate}} </p>
                             <div class="d-flex mb-3">
                                 <button type="submit" class="btn UserLogin__Register" > {{'LOGIN_PG.TEACHERSIGNUP' | translate}}</button>
-                                <ul class="list-inline ml-5 mr-5">
+                                <ul class="list-inline UserLogin__SocialMedia">
                                     <li class="list-inline-item"> <img src="../../../../../assets/images/facebook.svg"></li>
                                     <li class="list-inline-item"><img src="../../../../../assets/images/twiiter.svg"></li>
                                     <li class="list-inline-item"><img src="../../../../../assets/images/gmail.svg"></li>
-                                </ul>
+                                </ul>                            
+                                
                             </div>                    
                         </div>                    
                     </form>

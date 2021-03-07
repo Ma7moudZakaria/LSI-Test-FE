@@ -104,21 +104,20 @@
                                     </div>
                                 </div>
                             </div>
-
-                            
                 
                             <!-- Submit Button -->
                             <div class="form-group col-lg-12 mx-auto mb-0">
-                                <button type="submit" class="btn UserLogin__Submit" > {{'SIGNUP_PG.NEXT' | translate}} </button>
+                                <button type="submit" class="btn UserLogin__Submit" [routerLink]="['/auth/activate-code']"> {{'SIGNUP_PG.NEXT' | translate}} </button>
                             </div> 
                         </div>
                         
                         <div class="footer_form ">
                             <hr>
                             <p class="footer_form_p mb-0 text-center mb-3"> {{'LOGIN_PG.SOICALLOGIN' | translate}} </p>
-                            <div class="d-flex mb-3">
-                                <ul class="list-inline ml-5 mr-5">
-                                    <li class="list-inline-item"> <img src="../../../../../assets/images/facebook.svg"></li>
+                            <!-- <div class="d-flex mb-3"> -->
+                            <div>
+                                <ul class="list-inline ml-5 mr-5 UserLogin__SocialMedia">
+                                    <li class="list-inline-item"><img src="../../../../../assets/images/facebook.svg"></li>
                                     <li class="list-inline-item"><img src="../../../../../assets/images/twiiter.svg"></li>
                                     <li class="list-inline-item"><img src="../../../../../assets/images/gmail.svg"></li>
                                 </ul>

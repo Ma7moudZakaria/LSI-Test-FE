@@ -138,6 +138,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   display: block;
 
 }
+
+.UserLogin__SocialMedia{
+  // margin-right: 6rem!important;
+  padding-left: 0;
+  padding-right: 0px;
+  list-style: none;
+  text-align: center;
+}
+
 .text-muted{
   color: $icon_input;
 }
@@ -169,7 +178,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin-right: 3rem;
 }
 .list-inline-item:lang(ar){
-  margin-right: 3rem;
+  margin-right: 2rem;
 }
 .hint_yellow{
   color: $hint_yellow;
