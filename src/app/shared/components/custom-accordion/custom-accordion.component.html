@@ -1,0 +1,22 @@
+<mat-accordion
+        cdkDropList
+        #unassignedList="cdkDropList"
+        [cdkDropListData]="items"
+				[cdkDropListConnectedTo]="[items1]"
+        (cdkDropListDropped)="drop($event)"
+      >
+				<mat-expansion-panel hideToggle
+          cdkDrag
+          *ngFor="let item of items"
+          >
+					<mat-expansion-panel-header>
+						<mat-panel-title>
+							{{ item.title }}
+						</mat-panel-title>
+						<mat-panel-description>
+							<!-- {{ task.description }} -->
+						</mat-panel-description>
+					</mat-expansion-panel-header>
+					<p class="mt-2">{{item.paragraph}}</p>
+				</mat-expansion-panel>
+			</mat-accordion>

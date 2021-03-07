@@ -4,20 +4,18 @@ import { CommonModule } from '@angular/common';
 import { SharedMaterialRoutingModule } from './shared-material-routing.module';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatCardModule } from '@angular/material/card';
-import { DialogContentExampleDialog, SharedMaterialComponent } from './components/shared-material/shared-material.component';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { DragDropModule } from '@angular/cdk/drag-drop';
+import { SharedMaterialComponent } from './components/shared-material/shared-material.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 // import { MatDialogModule } from '@angular/material/dialog';
 // import { MatDialog } from '@angular/material/dialog';
 
 
 @NgModule({
-  declarations: [SharedMaterialComponent, DialogContentExampleDialog],
+  declarations: [SharedMaterialComponent],
   imports: [
     CommonModule,
     SharedMaterialRoutingModule,
-    MatRadioModule, MatCheckboxModule, MatCardModule, MatExpansionModule, DragDropModule/*, MatDialogModule, MatDialog*/
+    SharedModule,
   ]
 })
 export class SharedMaterialModule { }
