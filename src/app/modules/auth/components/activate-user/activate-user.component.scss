@@ -1,22 +1,31 @@
 @import 'src/assets/scss/_variables.scss';
 
-.ActivationCode{
+.ActivationCode{   
+
+    .ActivationSendCode{
+        text-align: center;
+        margin-bottom: 2rem;
+
+        .ActivationSendCode__ActivationLink{
+            color: $icon_input;
+        }
+    
+        .ActivationSendCode__ActivateMessage{
+            color: $placeholder_inputs;
+        }           
+    }       
+
     .ActivationCode__Label{
-        color: $ForgetPasswordLink;
+        color: $placeholder_inputs;
+        font-size: 11px;
     }
 
-    .ActivationCode__FormControl::placeholder {
-        color: $auth-color;
-        font-size: 0.9rem;
+    .ActivationCode__Email{
+        color: $hint_yellow;
+        font-size: 12px;        
     }
 
-    .ActivationCode__Submit{
-        background-color: $user-color;
-        width: 19.063rem;
-        height: 3.191rem;
-        margin-left: auto;
-        margin-right: auto;
-        border: none;
-        border-radius: 1rem;
-    }
+    // .ActivationCode__Submit{
+    //     margin-top: 2rem;
+    // }   
 }

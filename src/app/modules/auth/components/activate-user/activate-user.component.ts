@@ -24,6 +24,7 @@ export class ActivateUserComponent implements OnInit {
   errorMessage:any;
 
   userData?:string;
+  uemail?:string;
 
   constructor(
     private router: Router, 
@@ -35,6 +36,7 @@ export class ActivateUserComponent implements OnInit {
     this.resetPasswordFormG();
     
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
+    this.uemail = this.currentUser.uemail; 
   }
 
   resetPasswordFormG() {

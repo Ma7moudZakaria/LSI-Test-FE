@@ -1,5 +1,4 @@
 @import 'src/assets/scss/_variables.scss';
-
     
     .UserLogin__ForgetPassword{
         float: right;
@@ -7,10 +6,12 @@
             color: $ForgetPasswordLink;
         }
     }
+
     .UserLogin__ForgetPassword:lang(ar)
-{
-  float: left 
-}
+    {
+        float: left 
+    }
+
     .UserLogin__RememberMeLabel{
         opacity: 0.5;
         .UserLogin__RememberMe{

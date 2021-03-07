@@ -2,6 +2,7 @@
     "GENERAL":{
         "SEND":"Send",
         "BACK":"Back",
+        "SAVE":"Save",
         "EMAIL": "Email Address",
         "PASSWORD":"Password",
         "CONFIRMPASSWORD":"Confirm Password",

@@ -1,78 +1,154 @@
-
-<div class="row UserRegister">
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-sm-6">
-        <form [formGroup]="registerform" (ngSubmit)="onSignup(registerform.value)" class="form-group">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
-                <h1 class="font-weight-bold "> {{'GENERAL.EMAIL' | translate}} </h1> 
+<div class="container-fluid">
+    <div class="row UserLogin">
+        <div class="col-lg-6 col-md-6 col-sm-6 LoginBackground_left_img pl-0 pr-0  ">
+            <div class="col-12  identity_img pl-0 pr-0 ">
             </div>
+            <section class="row justify-content-center  ">
+                <div class="box">
+                    <form [formGroup]="registerform" (ngSubmit)="onSignup(registerform.value)" class="form-group UserLogin__LoginForm">
+                        <div class="content_form ">
+                            <div class="col-lg-12 mb-4 mt-2">
+                                <h1 class="font-weight-bold "> {{'SIGNUP_PG.SIGNUP' | translate}} </h1> 
+                            </div>
+                                
+                            <!-- User Name -->                    
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
+                                <label for="UserEmail"> {{'SIGNUP_PG.USERNAME' | translate}} </label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-white pl-2 pr-2 border-md border-right-0">
+                                            <!-- <i class="fa fa-envelope text-muted"></i> -->
+                                            <img  class="UserLogin_icon_input" src="../../../../../assets/images/email.svg">
+                                        </span>
+                                    </div>
+                                    <input id="userName"  pInputText type="text" formControlName="userName" name="userName" 
+                                    placeholder="Enter User Name" 
+                                    class=" px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
+                                    
+                                </div>                        
+                            </div>
 
-            <!-- Name -->                    
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
-                <div class="row">
-                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                        <label class="Register__Label" for="userName"> {{'SIGNUP_PG.USERNAME' | translate}} </label>
-                        <input id="userName"  pInputText type="text" formControlName="userName" name="userName" placeholder="Enter User Name" class="form-control UserRegister__FormControl">                            
-                    </div>
-    
-                    <!-- <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                        <label class="Register__Label" for="FatherName"> {{'GENERAL.FatherName' | translate}} </label>
-                        <input id="email"  pInputText type="text" formControlName="fathername" name="fathername" placeholder="Enter Father Name" class="form-control UserRegister__FormControl">                            
-                    </div>
-                    
-                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                        <label class="Register__Label" for="FamilyName"> {{'GENERAL.FamilyName' | translate}} </label>
-                        <input id="email"  pInputText type="text" formControlName="familyname" name="familyname" placeholder="Email Address" class="form-control UserRegister__FormControl">                            
-                    </div>    -->
-                </div>                                                        
-            </div>
+                            <!-- Email Address -->                    
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                        <label for="UserEmail"> {{'GENERAL.EMAIL' | translate}} </label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text bg-white pl-2 pr-2 border-md border-right-0">
+                                                    <!-- <i class="fa fa-envelope text-muted"></i> -->
+                                                    <img  class="UserLogin_icon_input" src="../../../../../assets/images/email.svg">
+                                                </span>
+                                            </div>
+                                            <input id="email"  pInputText type="email" formControlName="email" name="email" 
+                                            placeholder="Ex. email@gmail.com" 
+                                            class=" px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
+                                        </div>
+                                    </div>
+                                                                               
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <label for="gender"> {{'GENERAL.GENDER' | translate}} </label>
+                                        <div class="row">
+                                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                <input type="radio" class="form-check-input" id="Male" name="optradio" value="Male" checked> 
+                                                <span class="m-4"> {{'GENERAL.MALE' | translate}} </span> 
+                                            </div>
+                                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                <label class="form-check-label" for="Female">
+                                                    <input type="radio" class="form-check-input" id="Female" name="optradio" value="Female">
+                                                    <span class="m-4"> {{'GENERAL.FEMALE' | translate}} </span> 
+                                                </label>
+                                            </div>
+                                        </div>                    
+                                    </div>   
+                                </div>                                
+                            </div>
+                            
+                            <!-- Password -->      
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mb-4">
+                                        <label for="password">{{'GENERAL.PASSWORD' | translate}}</label>
+                                        <div class="input-group ">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text bg-white pl-2 pr-2  border-md border-right-0">
+                                                    <!-- <i class="fa fa-lock text-muted"></i> -->
+                                                    <img   class="UserLogin_icon_input" src="../../../../../assets/images/password.svg">
+        
+                                                </span>
+                                            </div>
+                                            <input id="password" pPassword type="password" 
+                                            [type]="hidePassword ? 'password' : 'text'" formControlName="password" name="password"
+                                            placeholder="Password" 
+                                            class="  px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
+                                            
+                                        </div>                        
+                                    </div>
+                                    
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mb-4">
+                                        <label for="confirmPassword">{{'GENERAL.CONFIRMPASSWORD' | translate}}</label>
+                                        <div class="input-group ">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text bg-white pl-2 pr-2  border-md border-right-0">
+                                                    <!-- <i class="fa fa-lock text-muted"></i> -->
+                                                    <img   class="UserLogin_icon_input" src="../../../../../assets/images/password.svg">
+        
+                                                </span>
+                                            </div>
+                                            <input id="confirmPassword" pPassword type="password" 
+                                            [type]="hidePassword ? 'password' : 'text'" formControlName="confirmPassword" name="confirmPassword"
+                                            placeholder="confirmPassword" 
+                                            class="  px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
+                                            
+                                        </div>                        
+                                    </div>
+                                </div>
+                            </div>
 
-            <!-- Email -->
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
-                <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                    <label class="Register__Label" for="email"> {{'GENERAL.EMAIL' | translate}} </label>
-                    <input id="email"  pInputText type="email" formControlName="email" name="email" placeholder="Ex. email@gmail.com" class="form-control UserRegister__FormControl">                            
-                </div>
+                            
                 
-                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <label class="Register__Label" for="gender"> {{'GENERAL.GENDER' | translate}} </label>
-                    <div class="row">
-                        <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <input type="radio" class="form-check-input" id="Male" name="optradio" value="Male" checked> {{'GENERAL.MALE' | translate}}
+                            <!-- Submit Button -->
+                            <div class="form-group col-lg-12 mx-auto mb-0">
+                                <button type="submit" class="btn UserLogin__Submit" > {{'SIGNUP_PG.NEXT' | translate}} </button>
+                            </div> 
                         </div>
-                        <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <label class="form-check-label" for="Female">
-                                <input type="radio" class="form-check-input" id="Female" name="optradio" value="Female"> {{'GENERAL.FEMALE' | translate}}
-                            </label>
-                        </div>
-                    </div>                    
-                </div>                                           
-            </div>
-
-            <!-- Password -->                    
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
-                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <label class="Register__Label" for="password"> {{'GENERAL.PASSWORD' | translate}} </label>
-                    <input id="password" pPassword type="password" [type]="hidePassword ? 'password' : 'text'" formControlName="password" name="password" placeholder="• • • • • • • • • • • • •" class="form-control UserRegister__FormControl">
+                        
+                        <div class="footer_form ">
+                            <hr>
+                            <p class="footer_form_p mb-0 text-center mb-3"> {{'LOGIN_PG.SOICALLOGIN' | translate}} </p>
+                            <div class="d-flex mb-3">
+                                <ul class="list-inline ml-5 mr-5">
+                                    <li class="list-inline-item"> <img src="../../../../../assets/images/facebook.svg"></li>
+                                    <li class="list-inline-item"><img src="../../../../../assets/images/twiiter.svg"></li>
+                                    <li class="list-inline-item"><img src="../../../../../assets/images/gmail.svg"></li>
+                                </ul>
+                            </div>                    
+                        </div>                    
+                    </form>
                 </div>
-
-                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <label class="Register__Label" for="confirmPassword"> {{'SIGNUP_PG.CONFIRMPASSWORD' | translate}} </label>
-                    <input id="confirmPassword" pPassword type="password" [type]="hidePassword ? 'password' : 'text'" formControlName="confirmPassword" name="confirmPassword" placeholder="• • • • • • • • • • • • •" class="form-control UserRegister__FormControl">
-                </div>                                 
-            </div>
-
-            <!-- Submit Button -->
-            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-auto mb-0">
-                <button type="submit" class="btn btn-primary btn-block UserRegister__Submit" > {{'SIGNUP_PG.NEXT' | translate}}  </button>                        
-            </div>
-
-            <div *ngIf="errorMessage" class="alert alert-danger mt-3">
-                {{ errorMessage }}
-            </div>
-        </form>
-    </div>
-
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-       
+            </section>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 LoginBackground_Right_img" >
+            <div class="test"></div>
+        </div>        
+        <div class="col-12 repeater_img"></div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
