@@ -52,4 +52,8 @@ export class HeaderComponent implements OnInit {
     return !BaseConstantModel.NO_HEADER_ROUTES.includes(this.router.url);
   }
 
+  displayLang(){
+    return this.language.toUpperCase();
+  }
+
 }
