@@ -7,8 +7,10 @@
         </div>
         <div class="row">
             <input type="text" placeholder="{{'QUESTION_BANK.Search' | translate}}" name="search"#text class="Catogry_Text_Search"><i><img src="assets/quesionBsnk/questionBankCategory/search-interface-symbol.svg" alt="" class="mt-10 cursor-pointer Catogry_Icon_Search" (click)=" getQuestionBankCategories(text.value)"/></i>
-          <br/>
-        </div>
+            
+          </div>
+            <br/>
+          
   <div *ngFor="let QBC of questionBankCategoryList ; let i=index;" class="list-group Catogry_Icon" >
     <div  class="list-group-item  list-group-item_custom list-group-item-action row" (click)="loadCatogryQuiestion(QBC.id)">
         <p>
@@ -21,7 +23,7 @@
        </i>
           
           <i>
-            <img src="assets/quesionBsnk/questionBankCategory/Icon feather-trash-2.svg" alt="" class="mt-10 cursor-pointer Catogry_Icon_delete" (click)="delete_Categor(QBC.id)"/>
+            <img src="assets/quesionBsnk/questionBankCategory/Icon feather-trash-2.svg" alt="" class="mt-10 cursor-pointer Catogry_Icon_delete" (click)="confirmDialog(QBC.id)"/>
           </i>
         </p>
 
@@ -29,7 +31,7 @@
     
   </div>
   
-    </div>
+  
     
   
   </div>

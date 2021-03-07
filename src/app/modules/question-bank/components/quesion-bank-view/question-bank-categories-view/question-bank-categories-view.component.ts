@@ -1,6 +1,7 @@
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { IquestionBankCategoriesFilter } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-categories-filter-.request';
@@ -9,6 +10,7 @@ import { IquestionBankCategoryCreatModel } from 'src/app/core/interfaces/questio
 import { IquestionBankCategoryUpdateModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-category-update-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { QuestionBankCategoryService } from 'src/app/core/services/question-bank-services/question-bank-category.service';
+import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-question-bank-categories-view',
@@ -40,7 +42,7 @@ resultMessage={message:"",type:""};
 disableSaveButtons = false;
   constructor(private questionBankCategoryService: QuestionBankCategoryService,
     private activeroute: ActivatedRoute, 
-    private router: Router, public translate: TranslateService,private fb: FormBuilder) { 
+    private router: Router, public translate: TranslateService,private fb: FormBuilder,public dialog: MatDialog) { 
       this.formImport = new FormGroup({
         importFile: new FormControl('', Validators.required)
       });
@@ -90,18 +92,18 @@ disableSaveButtons = false;
     this.getQuestionBankCategories();
   }
 
-  delete_Categor(id?:string) {
-    this.questionBankCategoryService.deleteQuestionBankCategory(id||'').subscribe(
-      res => {
-alert("تم الحذف")
+//   delete_Categor(id?:string) {
+//     this.questionBankCategoryService.deleteQuestionBankCategory(id||'').subscribe(
+//       res => {
+// alert("تم الحذف")
         
-        this.getQuestionBankCategories();
-      }, error => {
+//         this.getQuestionBankCategories();
+//       }, error => {
 
-      }
-    )
+//       }
+//     )
   
-  }
+//   }
   ChangCTg(categoryId:string) {
     this.router.navigateByUrl('/questionBank/question-bank-questions-view/'+categoryId);
    }
@@ -218,5 +220,36 @@ this.isAdd=false;
   loadCatogryQuiestion(id?:string){
     this.selectedCategoryId?.emit(id);
   }
+  result: string = '';
+ async confirmDialog(id?:string){
+    const message = `Are you sure you want to do this?`;
 
+    const dialogData = new ConfirmDialogModel("Confirm Action", message);
+
+    const dialogRef = this.dialog.open(ConfirmModalComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      this.result= dialogResult;
+      if(dialogResult==true){
+        this.questionBankCategoryService.deleteQuestionBankCategory(id||'').subscribe(
+          res => {
+            res.message;
+            
+            this.getQuestionBankCategories();
+          }, error => {
+            error.errorMessage;
+          }
+        )
+
+      }
+     
+    });
+  }
+  
+//  async confirm_Delete(id?:string){
+//     await this.confirmDialog();
+//     await this.delete_Categor(id);
+//   }
 }
