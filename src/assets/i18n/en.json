@@ -2,7 +2,7 @@
     "page1":{
         "hello":"helo"
     },
-    "ScientificMaterial":{
+    "SCIENTIFIC_MATERIAL":{
         "SELECTOPTION" : "Select Option",
         "PROGRAMS" : "Programs",
         "CATEGORY":"Category",
@@ -17,5 +17,10 @@
         "INACTIVE" : "InActive",
         "SAVE" : "Save",
         "CANCEL" : "Cancel"
+    }
+    ,
+    "PROGRAMS_LIST":{
+        "PROGRAMS" : "Programs",
+        "ALL" : "All"
     }
 }

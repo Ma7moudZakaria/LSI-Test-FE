@@ -11,12 +11,12 @@ import { ScientificMaterialService } from 'src/app/core/services/scientific-mate
   styleUrls: ['./material-list.component.scss']
 })
 export class MaterialListComponent implements OnInit {
-  materials : IScientificMaterialGrid[] =[];
+  materials: IScientificMaterialGrid[] = [];
   materialFilter = {} as IScientificMaterialFilter
-  @Input() selectedProgramId?:string; 
+  @Input() selectedProgramId?: string;
   @Output() materialId = new EventEmitter<string>();
   langEnum = LanguageEnum;
-    constructor( private scientifcMaterialService: ScientificMaterialService, public translate : TranslateService) { }
+  constructor(private scientifcMaterialService: ScientificMaterialService, public translate: TranslateService) { }
 
   ngOnInit(): void {
     this.loadProgramMaterial();
@@ -25,20 +25,29 @@ export class MaterialListComponent implements OnInit {
     console.log(changes);
     this.loadProgramMaterial(changes.selectedProgramId.currentValue);
   }
-  loadProgramMaterial(programId?:any){
-    this.materialFilter.skip=0;
-    this.materialFilter.take =10;
+  loadProgramMaterial(programId?: any) {
+    this.materialFilter.skip = 0;
+    this.materialFilter.take = 10;
     this.materialFilter.programs = programId ? programId : undefined
-    this.scientifcMaterialService.getScientificMateriaFilter(this.materialFilter).subscribe(   
-         (res: any) => {
-      this.materials = res.data as IScientificMaterialGrid[];
+    this.scientifcMaterialService.getScientificMateriaFilter(this.materialFilter).subscribe(
+      (res: any) => {
+        this.materials = res.data as IScientificMaterialGrid[];
 
-    }, error => {
-      console.log(error);
-    })
+      }, error => {
+        console.log(error);
+      })
   }
-  loadMaterial(materialId?:any){
+  loadMaterial(materialId?: any) {
     this.materialId?.emit(materialId);
+  }
+
+  deleteMaterial(materialId?: any) {
+    this.scientifcMaterialService.DeleteScientificMatrial(materialId).subscribe(
+      (res: any) => {
+        console.log(res.data);
+      }, error => {
+        console.log(error);
+      })
   }
 
 }

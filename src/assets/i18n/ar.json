@@ -2,7 +2,7 @@
     "page1":{
         "hello":"هلا"
     },
-    "ScientificMaterial":{
+    "SCIENTIFIC_MATERIAL":{
         "SELECTOPTION" : "اختر من القائمة",
         "PROGRAMS" : "البرامج",
         "CATEGORY":"الفئة",
@@ -18,7 +18,7 @@
         "SAVE" : "حفظ",
         "CANCEL" : "إلغاء"
     },
-    "ProgramsList":{
+    "PROGRAMS_LIST":{
         "PROGRAMS" : "البرامج",
         "ALL" : "الكل"
     }
