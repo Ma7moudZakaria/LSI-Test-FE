@@ -88,7 +88,7 @@ export class ActivateUserComponent implements OnInit {
           //   type:'success'
           // }
           this.successMessage = res.message;
-          this.router.navigateByUrl('/auth/login');
+          this.router.navigateByUrl('/shared');
           setTimeout(()=>{
               // this.router.navigateByUrl('/auth/login');
             },3000);

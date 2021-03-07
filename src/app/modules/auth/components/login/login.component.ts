@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IAuthentication } from 'src/app/core/interfaces/auth/iauthentication';
@@ -29,7 +30,8 @@ export class LoginComponent implements OnInit {
       private fb: FormBuilder,
       private authService: AuthService,
       private translate: TranslateService,
-      private lookupService: LookupService
+      private lookupService: LookupService,
+      private router: Router
       ) { }
 
   ngOnInit(): void {
@@ -61,6 +63,7 @@ export class LoginComponent implements OnInit {
           if (res.isSuccess) {
             localStorage.setItem('user', JSON.stringify(res.data as IUser))
             this.successMessage = res.message;
+            this.router.navigateByUrl('/shared');
             // this.successMessage = {
             //   message: res.message,
             //   type: 'success'
