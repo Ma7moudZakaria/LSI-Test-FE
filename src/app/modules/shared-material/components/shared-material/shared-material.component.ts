@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
 import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 
 export interface DragDropListItem {
   id: string;
@@ -71,19 +72,20 @@ export class SharedMaterialComponent implements OnInit {
   }
 
 
+  result: string = '';
+  confirmDialog(): void {
+    const message = `Are you sure you want to do this?`;
 
-  openDialog() {
-    const dialogRef = this.dialog.open(DialogContentExampleDialog);
+    const dialogData = new ConfirmDialogModel("Confirm Action", message);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+    const dialogRef = this.dialog.open(ConfirmModalComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      this.result = dialogResult;
     });
   }
 }
-
-@Component({
-  selector: 'dialog-content-example-dialog',
-  templateUrl: 'dialog-content-example-dialog.html',
-})
-export class DialogContentExampleDialog { }
 

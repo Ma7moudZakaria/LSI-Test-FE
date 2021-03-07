@@ -298,7 +298,7 @@
   <div class="row">
     <div class="col-7 first_container border">
       <button class="btn btn-primary"> OVERLAY_DIV</button>
-      <button mat-button (click)="openDialog()">Open dialog</button>
+      <!-- <button mat-button (click)="openDialog()">Open dialog</button> -->
 
     </div>
     <div class="col-1"></div>
@@ -308,5 +308,11 @@
   
 </div>
 
+<!--pop-up-->
+<div>
+  <button mat-raised-button color="primary" (click)="confirmDialog()">Confirm</button>
+  <br>
+  Response is: {{result}}
+</div>
 <!-- container-fluid -->
 </div>
