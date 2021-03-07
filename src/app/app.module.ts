@@ -48,14 +48,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatCheckboxModule,
     BrowserAnimationsModule,
     SharedModule,
-    MatCardModule, MatExpansionModule
+    MatExpansionModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
-  exports: [TranslateModule, MatRadioModule, MatCheckboxModule, MatCardModule],
+  exports: [TranslateModule, MatRadioModule, MatCheckboxModule],
   entryComponents:[ConfirmModalComponent]
 })
 export class AppModule { }

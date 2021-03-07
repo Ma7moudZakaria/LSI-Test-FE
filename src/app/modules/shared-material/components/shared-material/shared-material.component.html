@@ -308,11 +308,26 @@
   
 </div>
 
-<!--pop-up-->
+<!--custom pop-up-->
 <div>
   <button mat-raised-button color="primary" (click)="confirmDialog()">Confirm</button>
   <br>
   Response is: {{result}}
 </div>
+
+<!--cusome card-->
+<div class="container mb-5 mt-5">
+  <div class="row">
+    <div class="col-12">
+      <h1>CARDS</h1>
+    </div>
+    <div class="col-4 mb-3 mt-3" *ngFor="let item of cardLst">
+      
+        <app-custome-card [title] = 'item.title' [content] = 'item.content' [imgPath] = 'item.imgPath'></app-custome-card>
+      
+    </div>
+  </div>
+</div>
+
 <!-- container-fluid -->
 </div>

@@ -71,7 +71,9 @@ export class SharedMaterialComponent implements OnInit {
     }
   }
 
-
+/*
+ * custome pop-up 
+ */
   result: string = '';
   confirmDialog(): void {
     const message = `Are you sure you want to do this?`;
@@ -87,5 +89,15 @@ export class SharedMaterialComponent implements OnInit {
       this.result = dialogResult;
     });
   }
+
+  /*
+ * custome card
+ */
+
+ cardLst = [
+   {title: 'title ABC', content:'content ABC', imgPath:'../../../assets/images/book.svg'},
+   {title: 'title CDE', content:'content CDE', imgPath:'../../../assets/images/mic.svg'},
+   {title: 'title EFG', content:'content EFG', imgPath:'../../../assets/images/book.svg'}
+ ]
 }
 
