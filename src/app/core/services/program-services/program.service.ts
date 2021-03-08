@@ -12,11 +12,11 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
 })
 export class ProgramService {
 
-  AddProgramURL=environment.BaseURL+'QuestionBankQuestions/add-question-bank-question/';
-  UpdateProgramnURL=environment.BaseURL+'QuestionBankQuestions/update-question-bank-question/';
-   GetProgramURL=environment.BaseURL+'QuestionBankQuestions/get-question-bank-question/';
-  GetProgramsFilterURL=environment.BaseURL+'QuestionBankQuestions/get-question-bank-questions-filter/';
-  DeleteProgramURL=environment.BaseURL+'QuestionBankQuestions/delete-question-bank-question/';
+  AddProgramURL=environment.baseUrl+'QuestionBankQuestions/add-question-bank-question/';
+  UpdateProgramnURL=environment.baseUrl+'QuestionBankQuestions/update-question-bank-question/';
+   GetProgramURL=environment.baseUrl+'QuestionBankQuestions/get-question-bank-question/';
+  GetProgramsFilterURL=environment.baseUrl+'QuestionBankQuestions/get-question-bank-questions-filter/';
+  DeleteProgramURL=environment.baseUrl+'QuestionBankQuestions/delete-question-bank-question/';
   constructor(private http:HttpClient) { }
 
   addProgram(model:IprogramCreatModel):Observable<BaseResponseModel>{

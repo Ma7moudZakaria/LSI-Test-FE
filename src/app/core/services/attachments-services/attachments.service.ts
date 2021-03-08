@@ -9,9 +9,9 @@ import { IFileUpload } from '../../interfaces/attachments-interfaces/ifile-uploa
 export class AttachmentsService {
 
   constructor(private http: HttpClient) { }
-  uploadFilesURL =environment.BaseURL+"Attachments/upload-file";
-  getAttachmentId=environment.BaseURL+"Attachments/download-file/";
-  deleteAttachmentId=environment.BaseURL+"Attachments/delete-file/";
+  uploadFilesURL =environment.baseUrl+"Attachments/upload-file";
+  getAttachmentId=environment.baseUrl+"Attachments/download-file/";
+  deleteAttachmentId=environment.baseUrl+"Attachments/delete-file/";
   
   upload(files:IFileUpload[]) {
 

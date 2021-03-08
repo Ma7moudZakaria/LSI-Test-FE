@@ -21,7 +21,8 @@ export class HeaderComponent implements OnInit {
     this.switchLang();
   }
 
-  switchLang(){
+  switchLang() {
+    this.language = this.language === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
     this.auth.switchLanguage(this.language).subscribe(res =>{
       if (res.isSuccess){
         this.switchLangCallBack();
@@ -32,8 +33,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  switchLangCallBack(){
-    this.language = this.language === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
+  switchLangCallBack() {
     this.auth.currentLanguageEvent.emit(this.language);
 
     this.translate.use(this.language.split("-")[0].toLowerCase());
@@ -42,7 +42,7 @@ export class HeaderComponent implements OnInit {
       document.getElementsByTagName('html')[0].setAttribute('lang', 'ar');
     }
     else{
-      // document.getElementsByTagName('html')[0].removeAttribute('dir');
+      document.getElementsByTagName('html')[0].removeAttribute('dir');
       document.getElementsByTagName('html')[0].setAttribute('dir', 'ltr');
       document.getElementsByTagName('html')[0].setAttribute('lang', 'en');
     }
@@ -53,7 +53,7 @@ export class HeaderComponent implements OnInit {
   }
 
   displayLang(){
-    return this.language.toUpperCase();
+    return this.language === LanguageEnum.ar ? LanguageEnum.en.toUpperCase() : LanguageEnum.ar.toUpperCase();
   }
 
 }

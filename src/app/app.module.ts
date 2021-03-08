@@ -18,6 +18,7 @@ import { AuthInterceptor } from './core/interceptors/auth-interceptors/auth.inte
 import { ErrorInterceptor } from './core/interceptors/error-interceptors/error.interceptor';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ConfirmModalComponent } from './shared/components/confirm-modal/confirm-modal.component';
+import { SidebarComponent } from './core/layout/sidebar/sidebar.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -28,6 +29,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     FooterComponent,
     HeaderComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
