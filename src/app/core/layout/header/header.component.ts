@@ -49,7 +49,9 @@ export class HeaderComponent implements OnInit {
   }
 
   showHeader(){
-    return !BaseConstantModel.NO_HEADER_ROUTES.includes(this.router.url);
+    return BaseConstantModel.NO_HEADER_ROUTES.some( item => {
+      item.indexOf(this.router.url) >= 0;
+    });
   }
 
   displayLang(){
