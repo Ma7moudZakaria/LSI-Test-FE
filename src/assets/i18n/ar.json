@@ -11,7 +11,9 @@
     "FAMILYNAME": "أسم العائلة",
     "GENDER": "الجنس",
     "MALE": "ذكر",
-    "FEMALE": "أنثى"
+    "FEMALE": "أنثى",
+    "PHONENUMBER":"رقم الهاتف",
+    "NATIONALITY":"الجنسية"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATIONCODE": "رمز الدخول",
@@ -59,8 +61,13 @@
     "RESETPASSWORD": "ادخل كلمة المرور الجديدة"
   },
   "UPDATE_USER_PG": {
-    "UPDATEUSER": "ادخل كلمة المرور الجديدة",
+    "PERSONALINFORMATION": "المعلومات الرئيسية",
     "FIRSTNAMEAR": "الأسم",
     "FIRSTNAMEEN": "First Name English"
+  },
+  "VIEW_USER_PROFILE_PG": {
+    "FATHERNAME": "إسم الأب",
+    "FAMILYNAME": "إسم العائلة",
+    "BIRTHDATE": "تاريخ الميلاد"
   }
 }

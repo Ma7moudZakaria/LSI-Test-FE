@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IUser } from 'src/app/core/interfaces/auth/iuser-model';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
 import { IUserProfile } from 'src/app/core/interfaces/user-interfaces/iuserprofile';
@@ -24,39 +27,28 @@ export class ViewUserProfileDetailsComponent implements OnInit {
   currentUser:any;
   errorMessage:any;
   collectionOfLookup = {} as ILookupCollection;
-
+  profileForm: FormGroup  = new FormGroup({})
   genderData :any;
   countryData :any;
   nationalityData :any;
   educationalLevelData :any;
+  language:any;
+  langEnum = LanguageEnum;
+  birthdate:any;
 
   constructor(
     private router: Router,
-    private lookupService:LookupService,
+    private fb: FormBuilder,
+    public translate : TranslateService,
     private userService:UserService) { 
   }
 
   ngOnInit(){
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
-
+    this.language = this.language === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
     this.userProfileDetails as IUserProfile;
     this.RouteParams = this.router.url;
-
-    this.lookupService.getLookupByKey(this.listOfLookupProfile).subscribe(res =>{
-      this.collectionOfLookup = res.data;
-
-      if (res.isSuccess){
-        this.getUserProfile(this.currentUser.id)
-        
-        this.successMessage={
-          message:"Activate Code send successfully",
-          type:'success'
-        }
-      }
-      else{
-        this.errorMessage  = res.message;
-      }
-    });    
+    this.getUserProfile(this.currentUser.id);    
   }
 
   getUserProfile(id : any)
@@ -64,6 +56,9 @@ export class ViewUserProfileDetailsComponent implements OnInit {
     this.userService.viewUserProfileDetails(id).subscribe(res =>{
       
       this.userProfileDetails = res.data;
+      this.birthdate = new Date(this.userProfileDetails.birthdate.toString());
+      this.birthdate = new Date(this.birthdate.setDate(this.birthdate.getDate() + 1)).toISOString().slice(0, 10);
+
       if (res.isSuccess){
       }
       else{
