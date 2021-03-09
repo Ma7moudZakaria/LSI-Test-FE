@@ -72,7 +72,8 @@ export class ResetPasswordComponent implements OnInit {
           //   type:'success'
           // }
           setTimeout(()=>{
-              this.router.navigateByUrl('/auth/login');
+              // this.router.navigateByUrl('/auth/login');
+              this.router.navigateByUrl('/auth');
             },3000);
         }
         else{

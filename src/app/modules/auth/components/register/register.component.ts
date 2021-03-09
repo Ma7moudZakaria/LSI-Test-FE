@@ -75,7 +75,8 @@ export class RegisterComponent implements OnInit {
           //   message: res.message,
           //   type:'success'
           // }
-          this.router.navigate(['/auth/activate-code']);
+          // this.router.navigate(['/auth/activate-code']);
+          this.router.navigateByUrl('/auth/(baseRouter:activate-code)');
             setTimeout(()=>{            
               // this.router.navigate(['/home']);
             }, 3000);

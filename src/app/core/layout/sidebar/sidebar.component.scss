@@ -70,7 +70,7 @@
     }
 }
 
-.container::before{
+.container:lang(en)::before{
     // content: "";
     // position:absolute;
     // top: 0;
@@ -91,7 +91,21 @@
     box-shadow: -25px 0 0 0 #3A0303;
 }
 
-.container::after{
+.container:lang(ar)::before{
+    content: "";
+    position:absolute;
+    top:0;
+    left:-50px;
+    height:50px;
+    width: 50px;
+    right:40px;
+    border-top-right-radius: 58%;
+    //border-bottom-left-radius: 48%;
+    background:tranparent;
+    box-shadow: -25px 0 0 0 #3A0303;
+}
+
+.container:lang(en)::after{
     //content: "";
     // position:absolute;
     // //margin:-20px;
@@ -122,7 +136,21 @@
     border-bottom-left-radius: 58%;
     background:tranparent;
     box-shadow: -25px 0 0 0 #3A0303;
-}    
+}   
+
+.container:lang(ar):after{
+    content: "";
+    position:absolute;
+    top:91.7%;
+    left:-50px;
+    right:40px;
+    height:50px;
+    width: 50px;
+    border-bottom-right-radius: 58%;
+    background:tranparent;
+    box-shadow: -25px 0 0 0 #3A0303;
+} 
+
 .side-nav-bar{
     margin: 0;
     padding: 0;
