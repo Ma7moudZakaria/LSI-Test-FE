@@ -11,7 +11,9 @@
     "FAMILYNAME": "Family Name",
     "GENDER": "Gender",
     "MALE": "Male",
-    "FEMALE": "FeMale"
+    "FEMALE": "FeMale",
+    "PHONENUMBER":"Phone Number",
+    "NATIONALITY":"Nationality"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATIONCODE": "Activation Code",
@@ -64,7 +66,7 @@
     "ALL": "All"
   },
   "UPDATE_USER_PG": {
-    "UPDATEUSER": "Enter the new password",
+    "PERSONALINFORMATION": "Main Information",
     "FIRSTNAMEAR": "First Name Arabic",
     "FIRSTNAMEEN": "First Name English"
   },
@@ -88,5 +90,10 @@
     "DASHBORD": "DashBoard",
     "MYPROGRAMS": "Myprograms",
     "SCIENTIFIC_ARTICLES": "Scientific articles"
+  },
+  "VIEW_USER_PROFILE_PG": {
+    "FATHERNAME": "Father Name",
+    "FAMILYNAME": "Family Name",
+    "BIRTHDATE": "Birthdate"
   }
 }
