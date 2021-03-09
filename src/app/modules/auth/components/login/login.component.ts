@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit {
     });
     
     this.language = this.language === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
-    this.getLookups();
   }
 
   getLookups(){
@@ -64,6 +63,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('user', JSON.stringify(res.data as IUser))
             this.successMessage = res.message;
             this.router.navigateByUrl('/shared');
+            this.getLookups();
             // this.successMessage = {
             //   message: res.message,
             //   type: 'success'

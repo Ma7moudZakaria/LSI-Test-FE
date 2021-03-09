@@ -10,7 +10,7 @@
         <div>
             <ul>
                 <li>
-                    <a href="#">
+                    <a [routerLink] = "['/dashboard']" routerLinkActive="active" class="nav-link">
                         <div>
                             <span>
                                 <i class=" side-nav-bar__icon side-nav-bar__dashboard-icon" aria-hidden="true"></i>
@@ -30,7 +30,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a [routerLink] = "['/scientific-material/scientific-material-view']" routerLinkActive="active" class="nav-link">
                         <div>
                             <span>
                                 <i class=" side-nav-bar__icon side-nav-bar__scientific-icon" aria-hidden="true"></i>
@@ -90,7 +90,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a [routerLink]="['/question-bank/question-bank-view']" routerLinkActive="active" class="nav-link">
                         <div>
                             <span>
                                 <i class=" side-nav-bar__icon side-nav-bar__question-bank-icon" aria-hidden="true"></i>

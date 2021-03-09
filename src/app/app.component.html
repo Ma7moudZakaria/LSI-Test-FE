@@ -1,5 +1,16 @@
-<app-header></app-header>
-<div class="container-fluid pl-0 pr-0">
-  <router-outlet></router-outlet>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-1 p-0" *ngIf="showHeader()">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-11">
+      <div *ngIf="showHeader()">
+        <app-header></app-header>
+      </div>
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
 </div>
 <!-- <app-footer></app-footer> -->
