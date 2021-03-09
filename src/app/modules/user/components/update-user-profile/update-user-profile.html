@@ -1,12 +1,105 @@
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit(profileForm.value)" class="form-group">
+<div class="container-fluid UpdateUser">
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit(profileForm.value)" class="form-group">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <label class="UpdateUser__Label"> معلومات الشخصية </label>
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <label class="Register__Label" for="name"> الإسم </label>
+                    <input id="name"  pInputText type="text" formControlName="name" name="name" placeholder="Enter First Name" class="form-control UserRegister__FormControl">                            
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <label class="Register__Label" for="fatherName"> إسم الأب </label>
+                    <input id="fatherName"  pInputText type="text" formControlName="fatherName" name="fatherName" placeholder="Enter Father Name" class="form-control UserRegister__FormControl">
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <label class="Register__Label" for="familyName"> إسم العائلة </label>
+                    <input id="familyName"  pInputText type="text" formControlName="familyName" name="familyName" placeholder="Enter Family Name" class="form-control UserRegister__FormControl">
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <label class="Register__Label" for="birthdate"> تاريخ الميلاد </label>
+                    <input id="birthdate"  pInputText type="date" formControlName="birthdate" name="birthdate" placeholder="Enter Birthdate" class="form-control UserRegister__FormControl">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <label class="Register__Label" for="birthdate"> الجنس </label>      
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" *ngFor="let item of collectionOfLookup.GENDER">                             
+                            <label for="male">  
+                                <input type="radio" id="male" name="gender" formControlName="gender" value="{{item.id}}"> {{item.nameAr}}
+                            </label> 
+                        </div>
+                        <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">                             
+                            <label for="female">  
+                                <input type="radio" id="female" name="gender" formControlName="gender"  value="E41635AB-56B8-43A9-B283-23D27C6AEF12"> أنثى
+                            </label> 
+                        </div> -->
+                    </div>                    
+                </div>
+            </div>                
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <label class="UpdateUser__Label"> معلومات التواصل </label>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <label class="Register__Label" for="phoneNumber"> رقم الجوال </label>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-4 col-sm-4 col-xs-4 ">
+                            <select class="UpdateUser__Options" name="nameEn" formControlName="countryCode" > 
+                                <option *ngFor = "let countryItem of collectionOfLookup.COUNTRY" [value]="countryItem.id">{{countryItem.nameEn}}</option>
+                            </select>  
+                        </div>
+                        <div class="col-lg-6 col-md-8 col-sm-8 col-xs-8 ">
+                            <input id="phoneNumber"  pInputText type="text" formControlName="phoneNumber" style="width:100%;" name="phoneNumber" class="form-control UserRegister__FormControl">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <label class="Register__Label" for="nationality"> Nationality </label>
+                    <div>
+                        <select class="UpdateUser__Options" name="nameEn" formControlName="nationality" > 
+                            <option *ngFor = "let nationalityItem of collectionOfLookup.NATIONALITY" [value]="nationalityItem.id">{{nationalityItem.nameEn}}</option>
+                        </select> 
+                    </div>                        
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <label class="Register__Label" for="educationalLevel"> Educational Level </label>
+                    <select class="UpdateUser__Options" name="nameEn" formControlName="educationallevel" > 
+                        <option *ngFor = "let educationalLevelItem of collectionOfLookup.EDU_LEVEL" [value]="educationalLevelItem.id">{{educationalLevelItem.nameEn}}</option>
+                    </select>  
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <label class="Register__Label" for="occupation"> Occupation </label>
+                    <input id="occupation"  pInputText type="text" formControlName="occupation" name="occupation" class="form-control UserRegister__FormControl">
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <label class="Register__Label" for="address"> Address </label>
+                    <input id="address"  pInputText type="text" formControlName="address" name="address" class="form-control UserRegister__FormControl">              
+                </div>
+            </div>                
+        </div>
+
+        <div class="form-group col-lg-12 mx-auto mb-0">
+            <button type="submit" class="btn UserLogin__Submit"> حفظ </button>            
+        </div> 
+    </form>
+</div>
+
+
+
+
+
+
+
+
+<!-- <form [formGroup]="profileForm" (ngSubmit)="onSubmit(profileForm.value)" class="form-group">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
-        <h1 class="font-weight-bold "> {{'UPDATE_USER_PG.UPDATEUSER' | translate}} </h1> 
+        <h1 class="font-weight-bold "> {{'UPDATE_USER_PG.PERSONALINFORMATION' | translate}} </h1> 
     </div>
 
-    <!-- Name -->                    
+              
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
         <div class="row">
-            <!-- First Row-->
+            
 
             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <label class="Register__Label" for="firstNameAr"> {{'UPDATE_USER_PG.FIRSTNAMEAR' | translate}} </label>
@@ -18,7 +111,7 @@
                 <input id="firstNameEn"  pInputText type="text" formControlName="firstNameEn" name="firstNameEn" placeholder="Enter Father Name" class="form-control UserRegister__FormControl">                            
             </div>
             
-            <!-- Second Row-->
+            
 
             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <label class="Register__Label" for="middleNameAr"> Middle Name Arabic </label>
@@ -30,7 +123,7 @@
                 <input id="middleNameEn"  pInputText type="text" formControlName="middleNameEn" name="middleNameEn" placeholder="Enter Middle Name English" class="form-control UserRegister__FormControl">                            
             </div>  
 
-            <!-- Third Row-->
+            
 
             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <label class="Register__Label" for="familyNameAr"> Father Name Arabic </label>
@@ -42,7 +135,7 @@
                 <input id="familyNameEn"  pInputText type="text" formControlName="familyNameEn" name="familyNameEn" placeholder="Enter Father Name English" class="form-control UserRegister__FormControl">                            
             </div>
 
-            <!-- Fourth Row-->
+            
             
             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
                 <label class="Register__Label" for="birthdate"> Birthdate </label>
@@ -63,7 +156,7 @@
                 </select>      
             </div>  
 
-            <!-- Fifth Row -->
+            
 
             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
                 <label class="Register__Label" for="phoneNumber"> Mobile </label>
@@ -82,7 +175,7 @@
                 </select>       
             </div>  
 
-            <!-- Six Row -->
+            
 
             <div class="form-group col-lg-3 col-md-4 col-sm-4 col-xs-4">
                 <label class="Register__Label" for="occupation"> Occupation </label>
@@ -96,7 +189,7 @@
         </div>                                                        
     </div>
 
-    <!-- Submit Button -->
+    
     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-auto mb-0">
         <button type="submit" class="btn btn-primary btn-block UserRegister__Submit" > Update </button>                        
     </div>
@@ -104,4 +197,4 @@
     <div *ngIf="errorMessage" class="alert alert-danger mt-3">
         {{ errorMessage }}
     </div>
-</form>
+</form> -->

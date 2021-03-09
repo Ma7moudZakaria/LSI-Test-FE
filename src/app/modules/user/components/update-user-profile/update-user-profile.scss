@@ -1,0 +1,16 @@
+@import 'src/assets/scss/_variables.scss';
+
+
+.UpdateUser{
+    .UpdateUser__Label{
+        color: $user-color;
+        border-width: 70%;
+        border-bottom: aliceblue;
+    }
+    
+    .UpdateUser__Options{
+        width: 100%; height: 35px;
+        border-radius: 1rem;
+        border-color: $gray-300;
+    }
+}
