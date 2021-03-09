@@ -52,7 +52,12 @@
     "ACTIVE": "Active",
     "INACTIVE": "InActive",
     "SAVE": "Save",
-    "CANCEL": "Cancel"
+    "CANCEL": "Cancel",
+    "REQUIRED" :"This Field Is Required.",
+    "TITLEARPATTERN" : "Please insert arabict text only.",
+    "TITLEARMAXLENGTH" : "Title Must be less than 50 character",
+    "TITLEENPATTERN" : "Please insert english text only.",
+    "TITLEENMAXLENGTH" : "Title Must be less than 50 character"
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "Programs",

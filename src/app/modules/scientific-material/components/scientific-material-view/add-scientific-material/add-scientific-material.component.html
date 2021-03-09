@@ -5,7 +5,7 @@
             <div class="input-group">
                 <select multiple class="form-control" formControlName="programMatrial" name="formControlName"
                     (change)="selectProgram($event)">
-                    <option value="">{{'SCIENTIFIC_MATERIAL.SELECTOPTION' | translate}}</option>
+                    <!-- <option value="">{{'SCIENTIFIC_MATERIAL.SELECTOPTION' | translate}}</option> -->
                     <option *ngFor="let item of programs" value="{{item.id}}">
                         {{translate.currentLang === LangEnum.en ? item.engName : item.arabName}}
                     </option>
@@ -13,6 +13,12 @@
                 </select>
             </div>
         </div>
+        <div *ngIf="selectedProgram.length == 0 && (f.programMatrial.touched || isSubmit)"
+        class="alert alert-danger mt-2 mb-2">
+        <div *ngIf="selectedProgram.length == 0">
+            {{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}
+        </div>
+    </div>
     </div>
     <div class="form-group">
         <label for="category">{{'SCIENTIFIC_MATERIAL.CATEGORY' | translate}}</label>
@@ -27,22 +33,54 @@
                 </select>
             </div>
         </div>
+        <div *ngIf="f.matrialCategory.errors && (f.matrialCategory.touched || isSubmit)"
+            class="alert alert-danger mt-2 mb-2">
+            <div *ngIf="f.matrialCategory.errors?.required">
+                {{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}
+            </div>
+        </div>
     </div>
 
     <div class="form-group">
         <label for="matrialTitleAr">{{'SCIENTIFIC_MATERIAL.TITLEAR' | translate}}</label>
         <input type="text" class="form-control" formControlName="matrialTitleAr" id="matrialTitleAr">
+        <div *ngIf="f.matrialTitleAr.errors && (f.matrialTitleAr.touched || isSubmit)"
+            class="alert alert-danger mt-2 mb-2">
+            <div *ngIf="f.matrialTitleAr.errors?.required">
+                {{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}
+            </div>
+            <div *ngIf="f.matrialTitleAr.errors.pattern">
+                {{ 'SCIENTIFIC_MATERIAL.TITLEARPATTERN' | translate }}
+            </div>
+            <div *ngIf="f.matrialTitleAr.errors.maxlength">
+                {{ 'SCIENTIFIC_MATERIAL.TITLEARMAXLENGTH' | translate}}
+            </div>
+
+        </div>
     </div>
     <div class="form-group">
         <label for="matrialTitleEn">{{'SCIENTIFIC_MATERIAL.TITLEEN' | translate}}</label>
         <input type="text" class="form-control" formControlName="matrialTitleEn" id="matrialTitleEn">
+        <div *ngIf="f.matrialTitleEn.errors && (f.matrialTitleEn.touched || isSubmit)"
+            class="alert alert-danger mt-2 mb-2">
+            <div *ngIf="f.matrialTitleEn.errors?.required">
+                {{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}
+            </div>
+            <div *ngIf="f.matrialTitleEn.errors.pattern">
+                {{ 'SCIENTIFIC_MATERIAL.TITLEENPATTERN' | translate }}
+            </div>
+            <div *ngIf="f.matrialTitleEn.errors.maxlength">
+                {{ 'SCIENTIFIC_MATERIAL.TITLEENMAXLENGTH' | translate}}
+            </div>
+
+        </div>
     </div>
 
     <label class="custom-file custom-file__text" for="importFile">{{'SCIENTIFIC_MATERIAL.CHOOSEFILE' |
         translate}}</label>
     <input type="file" class="custom-file-input" multiple id="importFile"
         (change)="onFileChange($any($event.target).files)" hidden>
-        
+
     <div class="row">
         <div class="col-lg-8 col-md-8">
             <ul class="files-conainer">
