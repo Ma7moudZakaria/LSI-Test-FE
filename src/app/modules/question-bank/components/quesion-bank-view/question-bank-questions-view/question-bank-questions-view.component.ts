@@ -38,7 +38,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   getQuestionBankQuestions(CategoryId?:any,Questions?:string) {
     this.filterErrorMessage = "";
     this.questionBankQuestionFilter.skip=0;
-    this.questionBankQuestionFilter.take= Number.MAX_SAFE_INTEGER;
+    this.questionBankQuestionFilter.take= 1000;
     this.questionBankQuestionFilter.catgyId=CategoryId;
     this.questionBankQuestionFilter.question=Questions;
     this.questionBankQuestionService.getQuestionBankQuestionsFilter(this.questionBankQuestionFilter).subscribe(res => {
@@ -59,7 +59,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   clearFilter(){
     this.questionBankQuestionFilter = {};
     this.questionBankQuestionFilter.skip=0;
-    this.questionBankQuestionFilter.take= Number.MAX_SAFE_INTEGER;
+    this.questionBankQuestionFilter.take= 1000;
     this.getQuestionBankQuestions(this.selectedCategoryId);
   }
 
