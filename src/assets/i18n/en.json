@@ -12,7 +12,6 @@
     "GENDER": "Gender",
     "MALE": "Male",
     "FEMALE": "FeMale"
-
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATIONCODE": "Activation Code",
@@ -79,5 +78,10 @@
     "Question_En": "question (English)",
     "Answer_Ar": "Answer(Arabic)",
     "Answer_En": "Answer(English)"
+  },
+  "SIDENAVBAR": {
+    "DASHBORD": "DashBoard",
+    "MYPROGRAMS": "Myprograms",
+    "SCIENTIFIC_ARTICLES": "Scientific articles"
   }
 }

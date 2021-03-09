@@ -19,3 +19,32 @@ body {
     font-family: 'Arabic Font';
   }
 */
+
+
+// TypoGraphy
+@font-face {
+  font-family:Almarai-Bold ;
+  src: url(../font/Almarai-Bold.ttf) ;
+}
+
+@font-face {
+  font-family:Almarai-ExtraBold;
+  src: url(../font/Almarai-ExtraBold.ttf) ;
+}
+
+@font-face {
+  font-family:Almarai-Light;
+  src: url(../font/Almarai-Light.ttf) ;
+}
+
+@font-face {
+  font-family:Almarai-Regular;
+  src: url(../font/Almarai-Regular.ttf) ;
+}
+.content_form label,.footer_form_p,.UserLogin__Submit,.UserLogin__SignUp,.UserLogin__Register{
+  font-family:Almarai-Regular;
+}
+.font-weight-bold{
+  font-family:Almarai-Bold !important;
+
+}
