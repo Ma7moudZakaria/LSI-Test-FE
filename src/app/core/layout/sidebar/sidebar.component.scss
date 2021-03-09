@@ -1,8 +1,124 @@
-.nav-icon{
-    .nav-icon__dashboard-ico{
-        background: url('../../../../assets/images/sidebar/Dashboard-icon.png');
-        height: 20px;
-        width: 20px;
+.container{
+    position: relative;
+    .container__navigation{
+        position: relative;
+        //width: 100px;
+        height: 100%;
+        background-color: #3A0303;
+        overflow: hidden !important;
+
+        .container__navigation__title{
+            position: relative;
+            display: block;
+            line-height: 25px;
+            float: right;
+            font-family: Almarai;
+            font-size: 14px;
+        }
+
+        // .container__navigation__ch1{
+        //     width: 640px; /* Can be in percentage also. */
+        //     height: auto;
+        //     margin: 0 auto;
+        //     padding: 10px;
+        //     position: relative;
+        // }
+    }
+
+    .container__navigation ul{
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 0;
+    }
+
+    .container__navigation ul li{
+        position: relative;
+        list-style: none;
+        width: 100%;
+    }
+
+    .container__navigation ul li :hover {
+        background-color: #CB9118;
+        border-top-left-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+    }
+
+    .container__navigation ul a{
+        position: relative;
         display: block;
+        width: 100%;
+        display: flex;
+        text-decoration: none;
+        color: #FFFF;
+        padding-left: 20px;
+        padding-top: 10px;
+        padding-right: 20px;
+        padding-bottom: 5px;
+    }
+}
+.side-nav-bar{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: block;
+    justify-content: center;
+    align-items: center;
+
+    .side-nav-bar__icon{
+        position: relative;
+        height: 33px;
+        width: 36px;
+        display: block;
+        text-align: center;
+        background-repeat: no-repeat !important;
+        margin: 0px 15px;
+    }
+    .side-nav-bar__logo-icon{
+        background: url('../../../../assets/images/sidebar/logo.png');
+        position: relative;
+        height: 82px;
+        width: 86px;
+        display: block;
+        text-align: center;
+        background-repeat: no-repeat !important;
+        //margin: 0px 0px;
+        
+    }
+    .side-nav-bar__dashboard-icon{
+        background: url('../../../../assets/images/sidebar/Dashboard-icon.png');
+    }
+
+    .side-nav-bar__program-icon{
+        background: url('../../../../assets/images/sidebar/program-icon.png');
+    }
+
+    .side-nav-bar__scientific-icon{
+        background: url('../../../../assets/images/sidebar/scientific-articles-icon.png');
+    }
+
+    .side-nav-bar__message-icon{
+        background: url('../../../../assets/images/sidebar/message-icon.png');
+    }
+
+    .side-nav-bar__student-icon{
+        background: url('../../../../assets/images/sidebar/student-icon.png');
+    }
+
+    .side-nav-bar__teacher-icon{
+        background: url('../../../../assets/images/sidebar/teacher-icon.png');
+    }
+
+    .side-nav-bar__setting-icon{
+        background: url('../../../../assets/images/sidebar/setting-icon.png');
+    }
+
+    .side-nav-bar__reviews-icon{
+        background: url('../../../../assets/images/sidebar/reviews-icon.png');
+    }
+
+    .side-nav-bar__question-bank-icon{
+        background: url('../../../../assets/images/sidebar/questions-bank-icon.png');
     }
 }

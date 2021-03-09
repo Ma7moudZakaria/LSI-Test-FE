@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
     private auth: AuthService) { }
 
   ngOnInit(): void {
-    this.switchLang();
+    //this.switchLang();
   }
 
   switchLang() {
@@ -42,14 +42,17 @@ export class HeaderComponent implements OnInit {
       document.getElementsByTagName('html')[0].setAttribute('lang', 'ar');
     }
     else{
-      document.getElementsByTagName('html')[0].removeAttribute('dir');
+      // document.getElementsByTagName('html')[0].removeAttribute('dir');
       document.getElementsByTagName('html')[0].setAttribute('dir', 'ltr');
       document.getElementsByTagName('html')[0].setAttribute('lang', 'en');
     }
   }
 
   showHeader(){
-    return !BaseConstantModel.NO_HEADER_ROUTES.includes(this.router.url) && this.router.url === '/';
+    //  console.log(this.router.url);
+    // console.log(!BaseConstantModel.NO_HEADER_ROUTES.includes(this.router.url.split('?')[0]) && this.router.url !== '/')
+    return !BaseConstantModel.NO_HEADER_ROUTES.includes(this.router.url.split('?')[0]) && this.router.url !== '/';
+    // return BaseConstantModel.NO_HEADER_ROUTES.some(r => r.indexOf(this.router.url))
   }
 
   displayLang(){
