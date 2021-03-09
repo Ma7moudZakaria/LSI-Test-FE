@@ -12,9 +12,9 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-12" *ngIf="!showHeader()">
-      <router-outlet></router-outlet>
+  <div class="row" *ngIf="!showHeader()">
+    <div class="col-12">
+      <router-outlet name='baseRouter'></router-outlet>
     </div>
   </div>
 </div>

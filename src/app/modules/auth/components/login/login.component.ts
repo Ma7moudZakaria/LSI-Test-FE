@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
           if (res.isSuccess) {
             localStorage.setItem('user', JSON.stringify(res.data as IUser))
             this.successMessage = res.message;
-            this.router.navigateByUrl('/shared');
+            this.router.navigateByUrl('/dashboard');
             this.getLookups();
             // this.successMessage = {
             //   message: res.message,
