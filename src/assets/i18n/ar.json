@@ -49,7 +49,12 @@
     "ACTIVE": "مفعل",
     "INACTIVE": " غير مفعل",
     "SAVE": "حفظ",
-    "CANCEL": "إلغاء"
+    "CANCEL": "إلغاء",
+    "REQUIRED" :"هذا الحقل مطلوب",
+    "TITLEARPATTERN" : "يرجى ادخال حروف عربى فقط",
+    "TITLEARMAXLENGTH" : "يرجى ادخال اسم اقل من 50 حرف",
+    "TITLEENPATTERN" : "يرجى ادخال حروف انجليزى فقط",
+    "TITLEENMAXLENGTH" : "يرجى ادخال اسم اقل من 50 حرف"
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "البرامج",

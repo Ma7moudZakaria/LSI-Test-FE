@@ -145,7 +145,7 @@ export class AddScientificMaterialComponent implements OnInit {
         fileLink: [''],
         active: [false],
         availableForAllUsers: [false],
-        programMatrial: []
+        programMatrial: [null,Validators.minLength(1)]
 
       });
   }
@@ -211,7 +211,9 @@ export class AddScientificMaterialComponent implements OnInit {
   }
   Submit() {
     this.isSubmit = true;
+    if(this.selectedProgram.length == 0){
 
+    }
     this.successMessage= null;
     this.errorMessage = null;
     if (this.scientificMaterialId) {
