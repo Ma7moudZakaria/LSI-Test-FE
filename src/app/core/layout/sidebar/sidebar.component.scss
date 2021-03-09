@@ -10,11 +10,13 @@
         .container__navigation__title{
             position: relative;
             display: block;
-            line-height: 25px;
-            float: right;
-            font-family: Almarai;
-            font-size: 14px;
+            line-height: 1.375rem;
+            // float: right;
+            font-family:Almarai-Bold ;
+            font-size: 0.65rem;
+            color: #CB9118;
         }
+       
     }
 
     .container__navigation ul{
@@ -31,23 +33,40 @@
         width: 100%;
     }
 
-    .container__navigation ul li :hover {
+    .container__navigation:lang(en) ul li:hover {
         background-color: #CB9118;
         border-top-left-radius: 1rem;
         border-bottom-left-radius: 1rem;
     }
 
+    .container__navigation:lang(ar) ul li:hover {
+        background-color: #CB9118;
+        border-top-right-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+    }
+
+
+    .container__navigation:hover   .container__navigation__title{
+        color: #fff;
+    }
+   
+    .nav-link.active .container__navigation__title{
+        color: #fff;
+    }
+
     .container__navigation ul a{
         position: relative;
-        display: block;
         width: 100%;
         display: flex;
         text-decoration: none;
         color: #FFFF;
         padding-left: 20px;
-        padding-top: 10px;
         padding-right: 20px;
+        padding-top: 10px;
         padding-bottom: 5px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
 }
 
@@ -111,15 +130,17 @@
     display: block;
     justify-content: center;
     align-items: center;
+    // height: 47.87rem;
+    // overflow-y: scroll;
 
     .side-nav-bar__icon{
         position: relative;
-        height: 33px;
-        width: 36px;
+        height: 2.1rem;
+        width: 2.25rem;
         display: block;
         text-align: center;
         background-repeat: no-repeat !important;
-        margin: 0px 15px;
+        margin: auto;
     }
     .side-nav-bar__logo-icon{
         background: url('../../../../assets/images/sidebar/logo.png');
@@ -129,42 +150,43 @@
         display: block;
         text-align: center;
         background-repeat: no-repeat !important;
-        //margin: 0px 0px;
         
     }
-    .side-nav-bar__dashboard-icon{
-        background: url('../../../../assets/images/sidebar/Dashboard-icon.png');
-    }
+    // .side-nav-bar__dashboard-icon{
+    //     background: url('../../../../assets/images/nav-icon/Dashboard-icon.png');
 
-    .side-nav-bar__program-icon{
-        background: url('../../../../assets/images/sidebar/program-icon.png');
-    }
+    // }
 
-    .side-nav-bar__scientific-icon{
-        background: url('../../../../assets/images/sidebar/scientific-articles-icon.png');
-    }
+    // .side-nav-bar__program-icon{
 
-    .side-nav-bar__message-icon{
-        background: url('../../../../assets/images/sidebar/message-icon.png');
-    }
+    //     background: url('../../../../assets/images/sidebar/program-icon.png');
+    // }
 
-    .side-nav-bar__student-icon{
-        background: url('../../../../assets/images/sidebar/student-icon.png');
-    }
+    // .side-nav-bar__scientific-icon{
+    //     background: url('../../../../assets/images/sidebar/scientific-articles-icon.png');
+    // }
 
-    .side-nav-bar__teacher-icon{
-        background: url('../../../../assets/images/sidebar/teacher-icon.png');
-    }
+    // .side-nav-bar__message-icon{
+    //     background: url('../../../../assets/images/sidebar/message-icon.png');
+    // }
 
-    .side-nav-bar__setting-icon{
-        background: url('../../../../assets/images/sidebar/setting-icon.png');
-    }
+    // .side-nav-bar__student-icon{
+    //     background: url('../../../../assets/images/sidebar/student-icon.png');
+    // }
 
-    .side-nav-bar__reviews-icon{
-        background: url('../../../../assets/images/sidebar/reviews-icon.png');
-    }
+    // .side-nav-bar__teacher-icon{
+    //     background: url('../../../../assets/images/sidebar/teacher-icon.png');
+    // }
 
-    .side-nav-bar__question-bank-icon{
-        background: url('../../../../assets/images/sidebar/questions-bank-icon.png');
-    }
+    // .side-nav-bar__setting-icon{
+    //     background: url('../../../../assets/images/sidebar/setting-icon.png');
+    // }
+
+    // .side-nav-bar__reviews-icon{
+    //     background: url('../../../../assets/images/sidebar/reviews-icon.png');
+    // }
+
+    // .side-nav-bar__question-bank-icon{
+    //     background: url('../../../../assets/images/sidebar/questions-bank-icon.png');
+    // }
 }

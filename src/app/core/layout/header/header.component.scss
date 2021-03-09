@@ -5,7 +5,12 @@
 .btttn:lang(ar){
     background-color: red !important;
 }
+.header:lang(ar){
+    border-radius: 0px  25px 0px  0px;
+    margin-right: -6px;
 
+
+}
 .header{
     top: 0px;
     right: 0px;
@@ -22,11 +27,15 @@
       }
     
     .header__img-larg{
-         height: 100%;
-         width: 100%;
-        margin-right: 22px;
-        //transform: scaleX(-1); 
-        background: url('../../../../assets/images/header/header-larg.png');
+        
+    height: 100%;
+    width: 100%;
+    margin-right: 22px;
+    background: url('../../../../assets/images/header/header-larg.png');
+    background-size: 76%;
+    background-repeat: repeat-x;
+    background-position: center;
+
     }
 
     .header__img-small{
@@ -39,5 +48,8 @@
 
     .header__padding{
         padding: 2.1rem!important;
+    }
+    .large_img_header{
+        width: 500px;
     }
 }

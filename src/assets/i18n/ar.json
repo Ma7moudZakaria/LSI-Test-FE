@@ -78,5 +78,10 @@
     "Question_En": "السؤال (انجليزي)",
     "Answer_Ar": "الاجابة (عربي)",
     "Answer_En": "الاجابة (انجليزي)"
+  },
+  "SIDENAVBAR": {
+    "DASHBORD": "لوحة التحكم",
+    "MYPROGRAMS": "برامجى",
+    "SCIENTIFIC_ARTICLES": "المواد العلمية"
   }
 }
