@@ -54,14 +54,15 @@
                                 </label>
                                                 
                                 <label class="UserLogin__ForgetPassword">
-                                    <a class="UserLogin__ForgetPasswordLink" href="/auth/forget-password" [routerLink]="['/auth/forget-password']" > {{'LOGIN_PG.FORGETPASSWORD' | translate}} </a>
+                                    <a class="UserLogin__ForgetPasswordLink" [routerLink]="['/auth', { outlets: {'baseRouter':['forget-password'] }}]" > {{'LOGIN_PG.FORGETPASSWORD' | translate}} </a>
                                 </label>                    
                             </div>
                             
                             <!-- Submit Button -->
                             <div class="form-group col-lg-12 mx-auto mb-0">
                                 <button type="submit" class="btn UserLogin__Submit"> {{'LOGIN_PG.LOGIN' | translate}} </button>
-                                <button type="button" [routerLink]="['/auth/register']" class="btn  UserLogin__SignUp " > {{'LOGIN_PG.SIGNUP' | translate}}</button>
+                                <!-- <button type="button" [routerLink]="['/auth/register']" class="btn  UserLogin__SignUp " > {{'LOGIN_PG.SIGNUP' | translate}}</button> -->
+                                <button type="button" [routerLink]="['/auth', { outlets: {'baseRouter':['register'] }}]" class="btn  UserLogin__SignUp " > {{'LOGIN_PG.SIGNUP' | translate}}</button>
                             </div> 
 
                             <div class="row">
