@@ -11,11 +11,11 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
   providedIn: 'root'
 })
 export class QuestionBankQuestionService {
-  AddQuestionBankQuestionURL=environment.BaseURL+'QuestionBankQuestions/add-question-bank-question/';
-  UpdateQuestionBankQuestionURL=environment.BaseURL+'QuestionBankQuestions/update-question-bank-question/';
-   GetQuestionBankQuestionDetailsURL=environment.BaseURL+'QuestionBankQuestions/get-question-bank-question/';
-  GetQuestionBankQuestionsFilterURL=environment.BaseURL+'QuestionBankQuestions/get-question-bank-questions-filter/';
-  DeleteQuestionBankQuestionURL=environment.BaseURL+'QuestionBankQuestions/delete-question-bank-question/';
+  AddQuestionBankQuestionURL=environment.baseUrl+'QuestionBankQuestions/add-question-bank-question/';
+  UpdateQuestionBankQuestionURL=environment.baseUrl+'QuestionBankQuestions/update-question-bank-question/';
+   GetQuestionBankQuestionDetailsURL=environment.baseUrl+'QuestionBankQuestions/get-question-bank-question/';
+  GetQuestionBankQuestionsFilterURL=environment.baseUrl+'QuestionBankQuestions/get-question-bank-questions-filter/';
+  DeleteQuestionBankQuestionURL=environment.baseUrl+'QuestionBankQuestions/delete-question-bank-question/';
 
   constructor(private http:HttpClient) { }
   addQuestionBankQuestion(model:IquestionBankQuestionCreatModel):Observable<BaseResponseModel>{

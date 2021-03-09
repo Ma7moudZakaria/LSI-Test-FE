@@ -1,5 +1,5 @@
 export interface IquestionBankCategoryUpdateModel {
-    id?:number
+    id?:string
     no? :number
     arabCatgName?:string
     engCatgName?:string

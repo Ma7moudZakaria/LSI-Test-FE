@@ -16,15 +16,15 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
 })
 export class AuthService {
 
-    switchLanguageUrl = environment.BaseURL + 'Language/set-lang';
-  registerUrl = environment.BaseURL + 'User/register';
-  userAuthenticationUrl = environment.BaseURL + 'User/user-authenticate';
-  forgotPasswordUrl = environment.BaseURL + 'User/send-forgot-password-url';
-  resetPasswordUrl = environment.BaseURL + 'User/reset-password';
-    verifyUserUrl = environment.BaseURL + 'User/verify-user-activiation-code/';
-  sendActivateCodeUrl = environment.BaseURL + 'User/send-new-activation-code/';
-  viewProfileDetailsUrl = environment.BaseURL + 'User/view-user-profile-details/';
-  updateUserUrl = environment.BaseURL + 'User/update-user';
+    switchLanguageUrl = environment.baseUrl + 'Language/set-lang';
+  registerUrl = environment.baseUrl + 'User/register';
+  userAuthenticationUrl = environment.baseUrl + 'User/user-authenticate';
+  forgotPasswordUrl = environment.baseUrl + 'User/send-forgot-password-url';
+  resetPasswordUrl = environment.baseUrl + 'User/reset-password';
+    verifyUserUrl = environment.baseUrl + 'User/verify-user-activiation-code/';
+  sendActivateCodeUrl = environment.baseUrl + 'User/send-new-activation-code/';
+  viewProfileDetailsUrl = environment.baseUrl + 'User/view-user-profile-details/';
+  updateUserUrl = environment.baseUrl + 'User/update-user';
 
   currentLanguageEvent = new EventEmitter<LanguageEnum>();
   

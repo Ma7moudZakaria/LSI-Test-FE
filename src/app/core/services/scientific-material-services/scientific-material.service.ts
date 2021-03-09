@@ -13,13 +13,13 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
 export class ScientificMaterialService {
 
 
-  addScientificMatrialURL = environment.BaseURL + 'ScientificMatrial/add-scientific-matrial/';
-  updateScientificMatrialURL = environment.BaseURL + 'ScientificMatrial/update-scientific-matrial/';
-  getScientificMatrialDetailsURL = environment.BaseURL + 'ScientificMatrial/get-scientific-matrial-by-id/';
-  getScientificMatrialFilterURL = environment.BaseURL + 'ScientificMatrial/get-scientific-matrial-filter/';
-  deleteScientificMatrialURL = environment.BaseURL + 'ScientificMatrial/delete-scientific-matrial/';
-  getProgramsLookupUrl = environment.BaseURL + 'Programs/get-programs-lookup';
-  getScientificMatrialCategoriesURL = environment.BaseURL + 'ScientificMatrial/get-scientific-matrial-categories';
+  addScientificMatrialURL = environment.baseUrl + 'ScientificMatrial/add-scientific-matrial/';
+  updateScientificMatrialURL = environment.baseUrl + 'ScientificMatrial/update-scientific-matrial/';
+  getScientificMatrialDetailsURL = environment.baseUrl + 'ScientificMatrial/get-scientific-matrial-by-id/';
+  getScientificMatrialFilterURL = environment.baseUrl + 'ScientificMatrial/get-scientific-matrial-filter/';
+  deleteScientificMatrialURL = environment.baseUrl + 'ScientificMatrial/delete-scientific-matrial/';
+  getProgramsLookupUrl = environment.baseUrl + 'Programs/get-programs-lookup';
+  getScientificMatrialCategoriesURL = environment.baseUrl + 'ScientificMatrial/get-scientific-matrial-categories';
 
   constructor(private http: HttpClient) { }
 

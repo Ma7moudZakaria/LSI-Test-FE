@@ -10,8 +10,8 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
 })
 export class LookupService {
 
-  getAllLookupsUrl = environment.BaseURL + 'Lookups/get-all-lookups';
-  getLookupByKeyUrl = environment.BaseURL + 'Lookups/get-lookups-by-keys/';
+  getAllLookupsUrl = environment.baseUrl + 'Lookups/get-all-lookups';
+  getLookupByKeyUrl = environment.baseUrl + 'Lookups/get-lookups-by-keys/';
 
   constructor(private http:HttpClient) { }
 

@@ -1,4 +1,4 @@
-<div class="container-fluid">
+
     <div class="row UserLogin">
         <div class="col-lg-6 col-md-6 col-sm-6 LoginBackground_left_img pl-0 pr-0  ">
             <div class="col-12  identity_img pl-0 pr-0 ">
@@ -54,14 +54,15 @@
                                 </label>
                                                 
                                 <label class="UserLogin__ForgetPassword">
-                                    <a class="UserLogin__ForgetPasswordLink" href="/auth/forget-password" [routerLink]="['/auth/forget-password']" > {{'LOGIN_PG.FORGETPASSWORD' | translate}} </a>
+                                    <a class="UserLogin__ForgetPasswordLink" [routerLink]="['/auth', { outlets: {'baseRouter':['forget-password'] }}]" > {{'LOGIN_PG.FORGETPASSWORD' | translate}} </a>
                                 </label>                    
                             </div>
                             
                             <!-- Submit Button -->
                             <div class="form-group col-lg-12 mx-auto mb-0">
                                 <button type="submit" class="btn UserLogin__Submit"> {{'LOGIN_PG.LOGIN' | translate}} </button>
-                                <button type="button" [routerLink]="['/auth/register']" class="btn  UserLogin__SignUp " > {{'LOGIN_PG.SIGNUP' | translate}}</button>
+                                <!-- <button type="button" [routerLink]="['/auth/register']" class="btn  UserLogin__SignUp " > {{'LOGIN_PG.SIGNUP' | translate}}</button> -->
+                                <button type="button" [routerLink]="['/auth', { outlets: {'baseRouter':['register'] }}]" class="btn  UserLogin__SignUp " > {{'LOGIN_PG.SIGNUP' | translate}}</button>
                             </div> 
 
                             <div class="row">
@@ -96,6 +97,6 @@
         </div>        
         <div class="col-12 repeater_img"></div>
     </div>
-</div>
+
    
 

@@ -11,11 +11,11 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
   providedIn: 'root'
 })
 export class QuestionBankCategoryService {
-  AddQuestionBankCategoryURL=environment.BaseURL+'QuestionBankCategories/add-question-bank-category/';
-  UpdateQuestionBankCategoryURL=environment.BaseURL+'QuestionBankCategories/update-question-bank-categories/';
-   GetQuestionBankCategoryDetailsURL=environment.BaseURL+'QuestionBankCategories/get-question-bank-category/';
-  GetQuestionBankCategoryFilterURL=environment.BaseURL+'QuestionBankCategories/get-question-bank-category-filter/';
-  DeleteQuestionBankCategoryURL=environment.BaseURL+'QuestionBankCategories/delete-question-bank-category/';
+  AddQuestionBankCategoryURL=environment.baseUrl+'QuestionBankCategories/add-question-bank-category/';
+  UpdateQuestionBankCategoryURL=environment.baseUrl+'QuestionBankCategories/update-question-bank-categories/';
+   GetQuestionBankCategoryDetailsURL=environment.baseUrl+'QuestionBankCategories/get-question-bank-category/';
+  GetQuestionBankCategoryFilterURL=environment.baseUrl+'QuestionBankCategories/get-question-bank-category-filter/';
+  DeleteQuestionBankCategoryURL=environment.baseUrl+'QuestionBankCategories/delete-question-bank-category/';
 
   constructor(private http:HttpClient) { }
   addQuestionBankCategory(model:IquestionBankCategoryCreatModel):Observable<BaseResponseModel>{

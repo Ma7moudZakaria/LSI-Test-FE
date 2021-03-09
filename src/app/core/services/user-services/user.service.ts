@@ -9,11 +9,11 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
 })
 export class UserService {
 
-  getAllUsersURL = environment.BaseURL + 'User/get-all-users/';
-  completeProfileURL = environment.BaseURL + 'User/complete-profile/';
-  updateUserURL = environment.BaseURL + 'User/update-user/';
-  viewUserProfileDetailsURL = environment.BaseURL + 'User/view-user-profile-details/';
-  deleteUserURL = environment.BaseURL + 'User/delete-user/';
+  getAllUsersURL = environment.baseUrl + 'User/get-all-users/';
+  completeProfileURL = environment.baseUrl + 'User/complete-profile/';
+  updateUserURL = environment.baseUrl + 'User/update-user/';
+  viewUserProfileDetailsURL = environment.baseUrl + 'User/view-user-profile-details/';
+  deleteUserURL = environment.baseUrl + 'User/delete-user/';
   
 
   constructor(private http: HttpClient) { }

@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from '../../enums/language-enum.enum';
 import { BaseConstantModel } from '../../ng-model/base-constant-model';
 import { AuthService } from '../../services/auth-services/auth.service';
+import { LanguageService } from '../../services/language-services/language.service';
 
 @Component({
   selector: 'app-header',
@@ -12,48 +13,25 @@ import { AuthService } from '../../services/auth-services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  language:LanguageEnum = LanguageEnum.en;
-  constructor(public translate : TranslateService, 
-    private router: Router,
-    private auth: AuthService) { }
+  currentLang = '';
+  constructor(private langService:LanguageService) { }
 
   ngOnInit(): void {
-    this.switchLang();
+    this.currentLang = JSON.parse(localStorage.getItem("lang") || '{}');
   }
 
-  switchLang(){
-    this.auth.switchLanguage(this.language).subscribe(res =>{
-      if (res.isSuccess){
-        this.switchLangCallBack();
-      }
-      else{
-
-      }
-    });
-  }
-
-  switchLangCallBack(){
-    this.language = this.language === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
-    this.auth.currentLanguageEvent.emit(this.language);
-
-    this.translate.use(this.language.split("-")[0].toLowerCase());
-    if (this.language === LanguageEnum.ar){
-      document.getElementsByTagName('html')[0].setAttribute('dir', 'rtl');
-      document.getElementsByTagName('html')[0].setAttribute('lang', 'ar');
+  switchLang() {
+    if (this.currentLang && Object.keys(this.currentLang).length === 0 && this.currentLang.constructor === Object){
+      this.langService.switchLang(LanguageEnum.ar);
     }
     else{
-      // document.getElementsByTagName('html')[0].removeAttribute('dir');
-      document.getElementsByTagName('html')[0].setAttribute('dir', 'ltr');
-      document.getElementsByTagName('html')[0].setAttribute('lang', 'en');
+      this.currentLang = this.currentLang === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
+      this.langService.switchLang(this.currentLang as LanguageEnum);
     }
-  }
-
-  showHeader(){
-    return !BaseConstantModel.NO_HEADER_ROUTES.includes(this.router.url);
   }
 
   displayLang(){
-    return this.language.toUpperCase();
+    return this.currentLang === LanguageEnum.ar ? LanguageEnum.en.split('-')[0].toUpperCase() : LanguageEnum.ar.split('-')[0].toUpperCase();
   }
 
 }

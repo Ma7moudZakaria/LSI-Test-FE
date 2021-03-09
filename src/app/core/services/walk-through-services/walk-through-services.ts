@@ -9,11 +9,11 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
 })
 export class WalkThroughService {
 
-  getAllWalkThroughURL = environment.BaseURL + 'WalkThrough/get-all-walk-through/';
-  createWalkThroughURL = environment.BaseURL + 'WalkThrough/create-walk-through/';
-  updateWalkThroughURL = environment.BaseURL + 'WalkThrough/update-walk-through/';
-  getWalkThroughByIdURL = environment.BaseURL + 'WalkThrough/get-walk-through-by-id/';
-  deleteWalkThroughURL = environment.BaseURL + 'WalkThrough/delete-walk-through/';
+  getAllWalkThroughURL = environment.baseUrl + 'WalkThrough/get-all-walk-through/';
+  createWalkThroughURL = environment.baseUrl + 'WalkThrough/create-walk-through/';
+  updateWalkThroughURL = environment.baseUrl + 'WalkThrough/update-walk-through/';
+  getWalkThroughByIdURL = environment.baseUrl + 'WalkThrough/get-walk-through-by-id/';
+  deleteWalkThroughURL = environment.baseUrl + 'WalkThrough/delete-walk-through/';
   
 
   constructor(private http: HttpClient) { }

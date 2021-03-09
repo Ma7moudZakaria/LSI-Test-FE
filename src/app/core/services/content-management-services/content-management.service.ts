@@ -9,12 +9,12 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
 })
 export class ContentManagementService {
 
-  getAllContentManagementSystemURL = environment.BaseURL + 'ContentManagementSystem/get-all-content-management-system/';
-  createContentManagementSystemURL = environment.BaseURL + 'ContentManagementSystem/create-content-management-system/';
-  updateContentManagementSystemURL = environment.BaseURL + 'ContentManagementSystem/update-content-management-system/';
-  getContentManagementSystemByTypeURL = environment.BaseURL + 'ContentManagementSystem/get-content-management-system-by-type/';
-  getContentManagementSystemByIdURL = environment.BaseURL + 'ContentManagementSystem/get-content-management-system-by-id/';
-  deleteContentManagementSystemURL = environment.BaseURL + 'ContentManagementSystem/delete-content-management-system/';
+  getAllContentManagementSystemURL = environment.baseUrl + 'ContentManagementSystem/get-all-content-management-system/';
+  createContentManagementSystemURL = environment.baseUrl + 'ContentManagementSystem/create-content-management-system/';
+  updateContentManagementSystemURL = environment.baseUrl + 'ContentManagementSystem/update-content-management-system/';
+  getContentManagementSystemByTypeURL = environment.baseUrl + 'ContentManagementSystem/get-content-management-system-by-type/';
+  getContentManagementSystemByIdURL = environment.baseUrl + 'ContentManagementSystem/get-content-management-system-by-id/';
+  deleteContentManagementSystemURL = environment.baseUrl + 'ContentManagementSystem/delete-content-management-system/';
   
 
   constructor(private http: HttpClient) { }
