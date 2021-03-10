@@ -17,7 +17,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 // custom scrollbar
 /* width */
 ::-webkit-scrollbar {
-  width: 0.5rem;
+  width: 0.3rem;
 }
 
 /* Track */
@@ -27,12 +27,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: rgb(185, 185, 185);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: rgb(196, 195, 195);
 }
 
 // login page 

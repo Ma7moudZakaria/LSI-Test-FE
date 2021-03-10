@@ -28,10 +28,11 @@
 .box_container{
     background: #FBFBFB 0% 0% no-repeat padding-box;
     border-radius: 19px;
-    padding: 26px 100px;
-    margin: 2rem;
+    padding: 26px 144px;
+    margin: auto;
     margin-bottom: 0;
     border: 1px solid #FBFBFB;
+    margin-top: 1rem;
 }
 
 .box_container:lang(ar)  {
@@ -40,19 +41,6 @@
 
 
 
-
-// .profile
-// {
-//     background: transparent linear-gradient(90deg, #680505 0% ,#340303  100%) 0% 0% no-repeat padding-box;
-// }
-// .profile_background{
-//     height: 144px;
-//     width: 1000px;
-//     background: url(../../../../../assets/images/header/header-larg.png);
-// background-repeat: repeat-x;
-// background-position: center;
-// position: relative;
-// }
 .profile_background{
 
     background: url(../../../../../assets/images/profile_img.svg);
@@ -70,4 +58,12 @@
 }
 .mb-50{
     margin-bottom: 50px;
+}
+.internal_scroll{
+max-height: 330px;
+overflow-y: scroll;
+overflow-x: hidden;
+}
+.border_bottom{
+    border-bottom: 1px solid #b9b0b061;
 }
