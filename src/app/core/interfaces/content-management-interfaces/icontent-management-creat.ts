@@ -1,9 +1,7 @@
-export interface IContentManagement {
-    id?:string;
-    no:number;
+export interface IcontentManagementCreat {
     shortDesAr?:string;
     shortDesEn?:string;
     longDesAr?:string;
     longDesEn?:string;
-    cmsTypeId?:string;
+    cmstype?:string;
 }

@@ -1,0 +1,14 @@
+<ul class="list-group">
+    <p>{{'CONTENT_MANEGMENT_SYSTEM.DEPARMENTs' | translate}}</p>
+    <!-- <li class="list-group-item "  
+    [class.active]="selectedIndex === -1"
+    (click)="loadContentManagementSystem(null);selectedIndex=-1"> {{'CONTENT_MANEGMENT_SYSTEM.ALL' | translate}}</li> -->
+
+    <li class="list-group-item " *ngFor="let cmsType  of cmsTypeLst; let i = index" 
+      [class.active]="selectedIndex === i" 
+      (click)="loadContentManagementSystem(cmsType.id);selectedIndex=i">
+        <a> 
+            {{ translate.currentLang === langEnum.en ? cmsType.nameEn : cmsType.nameAr}}
+        </a>
+    </li>
+</ul>
