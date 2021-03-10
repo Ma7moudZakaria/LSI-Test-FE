@@ -97,9 +97,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     box-shadow: 2px 8px 16px $shadow_color !important;
     border-radius: 16px;
     padding: 24px;
+    padding-bottom: 0;
     margin-top: 1rem;
     width: 35.812rem;
-    height: 33.25rem
+    height:auto
    
 }
 
