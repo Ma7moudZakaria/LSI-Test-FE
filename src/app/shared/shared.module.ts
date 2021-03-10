@@ -9,19 +9,22 @@ import { CustomAccordionComponent } from './components/custom-accordion/custom-a
 import { MatExpansionModule } from '@angular/material/expansion';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatRadioModule } from '@angular/material/radio';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ViewUserProfileCustomComponent } from './components/view-user-profile-custom/view-user-profile-custom.component';
 
 
 
 @NgModule({
-  declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent],
+  declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent],
   imports: [
     CommonModule,
-    MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule,MatSelectModule, DragDropModule
+    MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule
   ],
   exports: [
-    MatRadioModule, MatCheckboxModule,MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule,MatSelectModule, DragDropModule, CustomeCardComponent, CustomAccordionComponent
+    MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule,
+    MatExpansionModule, MatSelectModule, DragDropModule, CustomeCardComponent, CustomAccordionComponent,
+    ViewUserProfileCustomComponent
   ]
 })
 export class SharedModule { }
