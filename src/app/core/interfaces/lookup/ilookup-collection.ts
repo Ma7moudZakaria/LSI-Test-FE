@@ -9,4 +9,5 @@ export interface ILookupCollection{
     MATERIAL_CATEG?:BaseLookupModel[];
     NATIONALITY?:BaseLookupModel[];
     COUNTRY?:BaseLookupModel[];
+    WLAKTHROUGHPAGES?:BaseLookupModel[];
 }

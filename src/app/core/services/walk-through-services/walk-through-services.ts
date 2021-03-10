@@ -13,6 +13,7 @@ export class WalkThroughService {
   createWalkThroughURL = environment.baseUrl + 'WalkThrough/create-walk-through/';
   updateWalkThroughURL = environment.baseUrl + 'WalkThrough/update-walk-through/';
   getWalkThroughByIdURL = environment.baseUrl + 'WalkThrough/get-walk-through-by-id/';
+  getWalkThroughByPageIdURL = environment.baseUrl + 'WalkThrough/get-walk-through-by-page-id/';
   deleteWalkThroughURL = environment.baseUrl + 'WalkThrough/delete-walk-through/';
   
 
@@ -37,7 +38,10 @@ export class WalkThroughService {
   {
     return this.http.get<BaseResponseModel>(this.getWalkThroughByIdURL + id)
   }
-
+  getWalkThroughByPageId(id : string) 
+  {
+    return this.http.get<BaseResponseModel>(this.getWalkThroughByPageIdURL + id)
+  }
   deleteWalkThrough(id : string) 
   {
     return this.http.delete<BaseResponseModel>(this.deleteWalkThroughURL + id)

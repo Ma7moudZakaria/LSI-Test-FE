@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
+import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 import { WalkThroughService } from 'src/app/core/services/walk-through-services/walk-through-services';
 
 @Component({
@@ -14,7 +16,7 @@ export class ViewAllWalkThroughComponent implements OnInit {
   walkThroughId: any;
   allWalkThroughData:any;
   isSuccess:any;
-  successMessage:any;
+  selectedWalkThroughPageId:any;
 
   constructor(
     private router: Router,
@@ -23,22 +25,27 @@ export class ViewAllWalkThroughComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.routeParams = this.router.url;
-    this.walkThroughId = this.route.snapshot.params.id;
-    console.log("Walk Through Id :" , this.walkThroughId);
+    // this.routeParams = this.router.url;
+    // this.walkThroughId = this.route.snapshot.params.id;
+    // console.log("Walk Through Id :" , this.walkThroughId);
 
-    this.walkThroughService.getAllWalkThrough().subscribe(res =>{
-      this.allWalkThroughData = res.data;
-      console.log("All Walk Through Data :" , this.allWalkThroughData);
-    });
+    // this.walkThroughService.getAllWalkThrough().subscribe(res =>{
+    //   this.allWalkThroughData = res.data;
+    //   console.log("All Walk Through Data :" , this.allWalkThroughData);
+    // });
+  
   }
 
-  deleteWalkThrough(Id: any)
-  {
-    console.log("Walk Through Id :" , Id)    
-    this.walkThroughService.deleteWalkThrough(Id).subscribe(res =>{
-      this.isSuccess = res.isSuccess;
-      this.successMessage = res.message;
-    });
+  // deleteWalkThrough(Id: any)
+  // {
+  //   console.log("Walk Through Id :" , Id)    
+  //   this.walkThroughService.deleteWalkThrough(Id).subscribe(res =>{
+  //     this.isSuccess = res.isSuccess;
+  //     this.successMessage = res.message;
+  //   });
+  // }
+
+  setSelectedPageId(event:any){    
+      this.selectedWalkThroughPageId = event;  
   }
 }

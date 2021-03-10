@@ -1,0 +1,13 @@
+<div>
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <app-walk-through-pages  (selectedWalkThroughPageId)="setSelectedPageId($event)"></app-walk-through-pages>
+        </div>
+        <div class="col-lg-8  col-md-8 col-sm-8">
+            <app-walk-through [selectedWalkThroughPageId]="selectedWalkThroughPageId">
+            </app-walk-through>
+        </div>
+       
+    </div>
+</div>
