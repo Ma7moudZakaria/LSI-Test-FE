@@ -37,21 +37,20 @@
 
 // new style add by nermen  
 
-.navbar
- {
+.navbar:lang(en)
+ {border-radius: 25px  0px 0px  0px;
+    margin-left: 0.5rem;
      padding: 0;  
      background: transparent linear-gradient(90deg,#340303  0%, #680505 100%) 0% 0% no-repeat padding-box;
 }
+
 .navbar:lang(ar)
- {
-     padding: 0;  
+{ padding: 0;  
      background: transparent linear-gradient(90deg, #680505 0% ,#340303  100%) 0% 0% no-repeat padding-box;
-}
-.navbar:lang(ar)
-{
     border-radius: 0px  25px 0px  0px;
     margin-right: 0.5rem;
 }
+
 .navbar-nav {
     justify-content: space-between;
     align-items: center;

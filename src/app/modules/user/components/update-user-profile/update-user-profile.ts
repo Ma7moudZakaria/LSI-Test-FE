@@ -17,107 +17,104 @@ import { UserService } from 'src/app/core/services/user-services/user.service';
 })
 
 export class UpdateUserProfileComponent implements OnInit {
-  profileForm: FormGroup  = new FormGroup({})
+  profileForm: FormGroup = new FormGroup({})
   userProfile = {} as IProfileUser;
   completeUserProfile = false;
   updateUserProfile = false;
-  errorMessage:any;
+  errorMessage: any;
   currentUser: any;
   routeParams: any;
   isSubmit = false;
-  listOfLookupProfile : string[] = ['GENDER','EDU_LEVEL','NATIONALITY','COUNTRY'];
-  successMessage:any;
-  userProfileDetails:any;
+  listOfLookupProfile: string[] = ['GENDER', 'EDU_LEVEL', 'NATIONALITY', 'COUNTRY'];
+  successMessage: any;
+  userProfileDetails: any;
   updateUserModel = {};
   collectionOfLookup = {} as ILookupCollection;
 
-  genderData :any;
-  countryData :any;
-  nationalityData :any;
-  educationalLevelData :any;
-  language:any;
+  genderData: any;
+  countryData: any;
+  nationalityData: any;
+  educationalLevelData: any;
+  language: any;
 
   constructor(
     private fb: FormBuilder,
-    private lookupService:LookupService,
-    private userService:UserService,
-    private userProfileService:UserService) {
+    private lookupService: LookupService,
+    private userService: UserService,
+    private userProfileService: UserService) {
   }
 
-  ngOnInit(){        
+  ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     this.language = this.language === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
     this.buildForm();
     this.userProfileDetails as IUserProfile;
-    this.lookupService.getLookupByKey(this.listOfLookupProfile).subscribe(res =>{
+    this.lookupService.getLookupByKey(this.listOfLookupProfile).subscribe(res => {
       this.collectionOfLookup = res.data;
-      if (res.isSuccess){
-        this.getUserProfile(this.currentUser.id)        
-        this.successMessage={
+      if (res.isSuccess) {
+        this.getUserProfile(this.currentUser.id)
+        this.successMessage = {
           message: res.message,
-          type:'success'
+          type: 'success'
         }
       }
-      else{
-        this.errorMessage  = res.message;
-      }
-    });
-  }
-
-  getUserProfile(id : any)
-  {
-    this.userService.viewUserProfileDetails(id).subscribe(res =>{
-      this.userProfileDetails = res.data;      
-      if(res.isSuccess)
-      {
-        this.PopulateForm()
-      }
-      else
-      {
+      else {
         this.errorMessage = res.message;
       }
     });
   }
 
-  onSubmit(value:string) {
+  getUserProfile(id: any) {
+    this.userService.viewUserProfileDetails(id).subscribe(res => {
+      this.userProfileDetails = res.data;
+      if (res.isSuccess) {
+        this.PopulateForm()
+      }
+      else {
+        this.errorMessage = res.message;
+      }
+    });
+  }
+
+  onSubmit(value: string) {
 
     this.updateUserModel = {
-      usrId:this.currentUser.id,
-      firstAr:this.language == LanguageEnum.ar ? this.profileForm.value.name : this.userProfile.firstNameAr,
-      firstEn:this.language == LanguageEnum.en ? this.profileForm.value.name : this.userProfile.firstNameEn,
-      middleAr:this.language == LanguageEnum.ar ? this.profileForm.value.fatherName : this.userProfile.middleNameAr,
-      middleEn:this.language == LanguageEnum.en ? this.profileForm.value.fatherName : this.userProfile.middleNameEn,
-      familyAr:this.language == LanguageEnum.ar ? this.profileForm.value.familyName : this.userProfile.familyNameAr,
-      familyEn:this.language == LanguageEnum.en ? this.profileForm.value.familyName : this.userProfile.familyNameEn,
-      birthdate:this.profileForm.value.birthdate,  
-      gender:this.profileForm.value.gender,
-      mobile:this.profileForm.value.phoneNumber,
-      countryCode:this.profileForm.value.countryCode,
-      nationality:this.profileForm.value.nationality,
-      eduLevel:this.profileForm.value.educationallevel,
-      occupation:this.profileForm.value.occupation,
-      address:this.profileForm.value.address
+      usrId: this.currentUser.id,
+      firstAr: this.language == LanguageEnum.ar ? this.profileForm.value.name : this.userProfile.firstNameAr,
+      firstEn: this.language == LanguageEnum.en ? this.profileForm.value.name : this.userProfile.firstNameEn,
+      middleAr: this.language == LanguageEnum.ar ? this.profileForm.value.fatherName : this.userProfile.middleNameAr,
+      middleEn: this.language == LanguageEnum.en ? this.profileForm.value.fatherName : this.userProfile.middleNameEn,
+      familyAr: this.language == LanguageEnum.ar ? this.profileForm.value.familyName : this.userProfile.familyNameAr,
+      familyEn: this.language == LanguageEnum.en ? this.profileForm.value.familyName : this.userProfile.familyNameEn,
+      birthdate: this.profileForm.value.birthdate,
+      gender: this.profileForm.value.gender,
+      mobile: this.profileForm.value.phoneNumber,
+      countryCode: this.profileForm.value.countryCode,
+      nationality: this.profileForm.value.nationality,
+      eduLevel: this.profileForm.value.educationallevel,
+      occupation: this.profileForm.value.occupation,
+      address: this.profileForm.value.address
     }
 
     this.isSubmit = true;
     this.userProfileService.updateUser(this.updateUserModel).subscribe(
       res => {
-          this.isSubmit = true;
-          if (res.isSuccess){            
-            this.successMessage={
-              message:res.message,
-              type:'success'
-            }
+        this.isSubmit = true;
+        if (res.isSuccess) {
+          this.successMessage = {
+            message: res.message,
+            type: 'success'
           }
-          else{
-            this.errorMessage  = res.message;
-          }
+        }
+        else {
+          this.errorMessage = res.message;
+        }
       }
     );
   }
 
   mappModel(form: NgForm) {
-    this.userProfile.firstNameAr =  this.language == LanguageEnum.ar ? form.value.name : this.userProfile.firstNameAr;
+    this.userProfile.firstNameAr = this.language == LanguageEnum.ar ? form.value.name : this.userProfile.firstNameAr;
     this.userProfile.firstNameEn = this.language == LanguageEnum.en ? form.value.name : this.userProfile.firstNameEn;
     this.userProfile.middleNameAr = this.language == LanguageEnum.ar ? form.value.fatherName : this.userProfile.middleNameAr;
     this.userProfile.middleNameEn = this.language == LanguageEnum.en ? form.value.fatherName : this.userProfile.middleNameEn;
@@ -153,10 +150,11 @@ export class UpdateUserProfileComponent implements OnInit {
         // familyNameAr: ['', Validators.required],
         // familyNameEn: ['', Validators.required],
         birthdate: [''],
+        email: [''],
         nationality: [null, Validators.required],
         educationallevel: [null, Validators.required],
         gender: [null, Validators.required],
-        address: ['',Validators.required],
+        address: ['', Validators.required],
         phoneNumber: ['', Validators.pattern(mobilePattern)],
         occupation: [null, Validators.required],
         countryCode: [null, Validators.required]
@@ -176,6 +174,7 @@ export class UpdateUserProfileComponent implements OnInit {
     // this.f.familyNameEn.setValue(this.userProfileDetails.faNameEn);
     this.f.address.setValue(this.userProfileDetails.address);
     this.f.gender.setValue(this.userProfileDetails.Gender);
+    this.f.email.setValue(this.userProfileDetails.usrEmail);
     var birthdate = new Date(this.userProfileDetails.birthdate.toString());
     this.f.birthdate.setValue(
       new Date(birthdate.setDate(birthdate.getDate() + 1))

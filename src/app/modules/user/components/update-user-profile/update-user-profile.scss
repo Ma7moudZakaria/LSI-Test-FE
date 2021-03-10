@@ -6,11 +6,68 @@
         color: $user-color;
         border-width: 70%;
         border-bottom: aliceblue;
+        font-family:Almarai-Bold ;
+        font-size: 1.25rem;
     }
     
     .UpdateUser__Options{
         width: 100%; height: 35px;
-        border-radius: 1rem;
+        border-radius: 0.65rem;
         border-color: $gray-300;
     }
+    
+    Label{
+        font-family:Almarai-Regular;
+        font-size: 0.875rem;
+        color: #3A3A3A;
+
+    
+}
+}
+
+.box_container{
+    background: #FBFBFB 0% 0% no-repeat padding-box;
+    border-radius: 19px;
+    padding: 26px 100px;
+    margin: 2rem;
+    margin-bottom: 0;
+    border: 1px solid #FBFBFB;
+}
+
+.box_container:lang(ar)  {
+    text-align: right;
+}
+
+
+
+
+// .profile
+// {
+//     background: transparent linear-gradient(90deg, #680505 0% ,#340303  100%) 0% 0% no-repeat padding-box;
+// }
+// .profile_background{
+//     height: 144px;
+//     width: 1000px;
+//     background: url(../../../../../assets/images/header/header-larg.png);
+// background-repeat: repeat-x;
+// background-position: center;
+// position: relative;
+// }
+.profile_background{
+
+    background: url(../../../../../assets/images/profile_img.svg);
+    height: 207px;
+    width: 100%;
+    border-radius: 30px;
+    
+}
+
+.img_profile{
+    position:absolute;
+    top: 0;
+    left: 43%;
+    top: 20%;
+}
+.mb-50{
+    margin-bottom: 50px;
 }
