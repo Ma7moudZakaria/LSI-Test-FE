@@ -35,6 +35,7 @@ export class UpdateUserProfileComponent implements OnInit {
   countryData :any;
   nationalityData :any;
   educationalLevelData :any;
+  language:any;
 
   constructor(
     private fb: FormBuilder,
@@ -45,6 +46,7 @@ export class UpdateUserProfileComponent implements OnInit {
 
   ngOnInit(){        
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
+    this.language = this.language === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
     this.buildForm();
     this.userProfileDetails as IUserProfile;
     this.lookupService.getLookupByKey(this.listOfLookupProfile).subscribe(res =>{
@@ -81,12 +83,12 @@ export class UpdateUserProfileComponent implements OnInit {
 
     this.updateUserModel = {
       usrId:this.currentUser.id,
-      firstAr:this.profileForm.value.firstNameAr,
-      firstEn:this.profileForm.value.firstNameEn,
-      middleAr:this.profileForm.value.middleNameAr,
-      middleEn:this.profileForm.value.middleNameEn,
-      familyAr:this.profileForm.value.familyNameAr,
-      familyEn:this.profileForm.value.familyNameEn,
+      firstAr:this.language == LanguageEnum.ar ? this.profileForm.value.name : this.userProfile.firstNameAr,
+      firstEn:this.language == LanguageEnum.en ? this.profileForm.value.name : this.userProfile.firstNameEn,
+      middleAr:this.language == LanguageEnum.ar ? this.profileForm.value.fatherName : this.userProfile.middleNameAr,
+      middleEn:this.language == LanguageEnum.en ? this.profileForm.value.fatherName : this.userProfile.middleNameEn,
+      familyAr:this.language == LanguageEnum.ar ? this.profileForm.value.familyName : this.userProfile.familyNameAr,
+      familyEn:this.language == LanguageEnum.en ? this.profileForm.value.familyName : this.userProfile.familyNameEn,
       birthdate:this.profileForm.value.birthdate,  
       gender:this.profileForm.value.gender,
       mobile:this.profileForm.value.phoneNumber,
@@ -115,12 +117,12 @@ export class UpdateUserProfileComponent implements OnInit {
   }
 
   mappModel(form: NgForm) {
-    this.userProfile.firstNameAr = form.value.firstNameAr;
-    this.userProfile.firstNameEn = form.value.firstNameEn;
-    this.userProfile.middleNameAr = form.value.middleNameAr;
-    this.userProfile.middleNameEn = form.value.middleNameEn;
-    this.userProfile.familyNameAr = form.value.familyNameAr;
-    this.userProfile.familyNameEn = form.value.familyNameEn;
+    this.userProfile.firstNameAr =  this.language == LanguageEnum.ar ? form.value.name : this.userProfile.firstNameAr;
+    this.userProfile.firstNameEn = this.language == LanguageEnum.en ? form.value.name : this.userProfile.firstNameEn;
+    this.userProfile.middleNameAr = this.language == LanguageEnum.ar ? form.value.fatherName : this.userProfile.middleNameAr;
+    this.userProfile.middleNameEn = this.language == LanguageEnum.en ? form.value.fatherName : this.userProfile.middleNameEn;
+    this.userProfile.familyNameAr = this.language == LanguageEnum.ar ? form.value.familyName : this.userProfile.familyNameAr;
+    this.userProfile.familyNameEn = this.language == LanguageEnum.en ? form.value.familyName : this.userProfile.familyNameEn;
     this.userProfile.address = form.value.address;
     this.userProfile.birthdate = form.value.birthdate;
     this.userProfile.occupation = form.value.occupation;
@@ -140,12 +142,16 @@ export class UpdateUserProfileComponent implements OnInit {
     var mobilePattern = "^(05)([0-9]{8})*$|^(\\+\\d{1,3}[- ]?)?\\d{10}";
     this.profileForm = this.fb.group(
       {
-        firstNameAr: ['', Validators.required],
-        firstNameEn: ['', Validators.required],
-        middleNameAr: ['', Validators.required],
-        middleNameEn: ['', Validators.required],
-        familyNameAr: ['', Validators.required],
-        familyNameEn: ['', Validators.required],
+        // firstNameAr: ['', Validators.required],
+        // firstNameEn: ['', Validators.required],
+        name: ['', Validators.required],
+        fatherName: ['', Validators.required],
+        familyName: ['', Validators.required],
+
+        // middleNameAr: ['', Validators.required],
+        // middleNameEn: ['', Validators.required],
+        // familyNameAr: ['', Validators.required],
+        // familyNameEn: ['', Validators.required],
         birthdate: [''],
         nationality: [null, Validators.required],
         educationallevel: [null, Validators.required],
@@ -159,12 +165,15 @@ export class UpdateUserProfileComponent implements OnInit {
   }
 
   PopulateForm() {
-    this.f.firstNameAr.setValue(this.userProfileDetails.fnameAr);
-    this.f.firstNameEn.setValue(this.userProfileDetails.fnameEn);
-    this.f.middleNameAr.setValue(this.userProfileDetails.mnameAr);
-    this.f.middleNameEn.setValue(this.userProfileDetails.mnameEn);
-    this.f.familyNameAr.setValue(this.userProfileDetails.fanameAr);
-    this.f.familyNameEn.setValue(this.userProfileDetails.faNameEn);
+    this.f.name.setValue(this.userProfileDetails.fnameAr);
+    this.f.fatherName.setValue(this.userProfileDetails.mnameAr);
+    this.f.familyName.setValue(this.userProfileDetails.mnameAr);
+    // this.f.firstNameAr.setValue(this.userProfileDetails.fnameAr);
+    // this.f.firstNameEn.setValue(this.userProfileDetails.fnameEn);
+    // this.f.middleNameAr.setValue(this.userProfileDetails.mnameAr);
+    // this.f.middleNameEn.setValue(this.userProfileDetails.mnameEn);
+    // this.f.familyNameAr.setValue(this.userProfileDetails.fanameAr);
+    // this.f.familyNameEn.setValue(this.userProfileDetails.faNameEn);
     this.f.address.setValue(this.userProfileDetails.address);
     this.f.gender.setValue(this.userProfileDetails.Gender);
     var birthdate = new Date(this.userProfileDetails.birthdate.toString());
