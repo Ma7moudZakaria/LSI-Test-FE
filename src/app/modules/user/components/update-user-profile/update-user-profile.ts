@@ -187,4 +187,8 @@ export class UpdateUserProfileComponent implements OnInit {
     this.f.phoneNumber.setValue(this.userProfileDetails.Mobile);
     this.f.countryCode.setValue(this.userProfileDetails.CountryCode);
   }
+
+  // updateProfilePic(){
+  //   this.userService.upda
+  // }
 }
