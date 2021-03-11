@@ -56,8 +56,8 @@ export class ContentManagementService {
   {
     return this.http.get<BaseResponseModel>(this.getAllContentManagementSystemTypesURL);
   }
-  getContentManagementSystemByTypeCms(cmstypeId?:string) 
+  getContentManagementSystemByTypeCms(cmsType?:string) 
   {
-    return this.http.get<BaseResponseModel>(this.getContentManagementSystemByTypeCmsURL+cmstypeId )
+    return this.http.get<BaseResponseModel>(this.getContentManagementSystemByTypeCmsURL+cmsType )
   }
 }

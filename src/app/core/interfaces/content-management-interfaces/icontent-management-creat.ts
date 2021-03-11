@@ -3,5 +3,5 @@ export interface IcontentManagementCreat {
     shortDesEn?:string;
     longDesAr?:string;
     longDesEn?:string;
-    cmstype?:string;
+    cmsType?:string;
 }

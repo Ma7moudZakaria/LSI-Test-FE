@@ -17,7 +17,7 @@ import { ContentManagementService } from 'src/app/core/services/content-manageme
 })
 
 export class ContentManagementSystemComponent implements OnInit {
-  contentmanagementsystem!: IContentManagement;
+  contentmanagementsystem: IContentManagement={};
   createCMS = false;
   updateCMS = false;
   errorMessage:any;
@@ -33,7 +33,7 @@ export class ContentManagementSystemComponent implements OnInit {
   cmsId?:string='';
   isAdd:boolean=true;
   typeId?:string='';
-  contentmanagementsystemUpdate!: IcontentManagementUpdate;
+  contentmanagementsystemUpdate: IcontentManagementUpdate={};
   contentmanagementCreat:IcontentManagementCreat={};
   constructor(
     private route: ActivatedRoute, private fb: FormBuilder,
@@ -98,17 +98,22 @@ export class ContentManagementSystemComponent implements OnInit {
   
   loadContentManagementSystemByType() {
     if(this.selectedcmsTypeId!==undefined){
-
+      this.cmsId="";
+      this.contentmanagementsystem={};
       this.contentmanagementService.getContentManagementSystemByTypeCms(this.selectedcmsTypeId).subscribe(res => {
         var response =<BaseResponseModel>res;
         if (response.isSuccess) {
           this.contentmanagementsystem  = response.data;
-          this.cmsId=this.contentmanagementsystem.id;
-          if(this.cmsId!=''){this.isAdd=false;}else{this.isAdd=true;}
-          this.f.shortDescriptionAr.setValue(this.contentmanagementsystem.shortDesAr);
-          this.f.shortDescriptionEn.setValue(this.contentmanagementsystem.shortDesEn);
-          this.f.longDescriptionAr.setValue(this.contentmanagementsystem.longDesAr);
-          this.f.longDescriptionEn.setValue(this.contentmanagementsystem.longDesAr);
+          if(response.data!==null){
+            this.cmsId=this.contentmanagementsystem.id;
+            if(this.cmsId!=''){this.isAdd=false;}else{this.isAdd=true;}
+            this.f.shortDescriptionAr.setValue(this.contentmanagementsystem.shortDesAr);
+            this.f.shortDescriptionEn.setValue(this.contentmanagementsystem.shortDesEn);
+            this.f.longDescriptionAr.setValue(this.contentmanagementsystem.longDesAr);
+            this.f.longDescriptionEn.setValue(this.contentmanagementsystem.longDesEn);
+
+          }
+         
          // this.f.typeId.setValue(this.contentmanagementsystem.typeId);
           this.disableSaveButtons = false;
           this.resultMessage = {
@@ -134,7 +139,7 @@ export class ContentManagementSystemComponent implements OnInit {
       this.contentmanagementsystemUpdate.shortDesEn=this.f.shortDescriptionEn.value; 
       this.contentmanagementsystemUpdate.longDesAr=this.f.longDescriptionAr.value;
       this.contentmanagementsystemUpdate.longDesEn=this.f.longDescriptionEn.value;
-      this.contentmanagementsystemUpdate.cmsTypeId=this.selectedcmsTypeId;
+      this.contentmanagementsystemUpdate.cmsType=this.selectedcmsTypeId;
    
       this.contentmanagementService.updateContentManagementSystem(this.contentmanagementsystemUpdate).subscribe(res => {
         if (res.isSuccess) {
@@ -163,7 +168,7 @@ export class ContentManagementSystemComponent implements OnInit {
       this.contentmanagementCreat.shortDesEn=this.f.shortDescriptionEn.value; 
       this.contentmanagementCreat.longDesAr=this.f.longDescriptionAr.value;
       this.contentmanagementCreat.longDesEn=this.f.longDescriptionEn.value;
-      this.contentmanagementCreat.cmstype=this.selectedcmsTypeId;
+      this.contentmanagementCreat.cmsType=this.selectedcmsTypeId;
       this.contentmanagementService.createContentManagementSystem(this.contentmanagementCreat).subscribe(res => {
         this.isSubmit = false;
         if (res.isSuccess) {

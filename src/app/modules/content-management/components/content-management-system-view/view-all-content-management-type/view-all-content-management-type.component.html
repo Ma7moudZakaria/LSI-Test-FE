@@ -8,7 +8,8 @@
       [class.active]="selectedIndex === i" 
       (click)="loadContentManagementSystem(cmsType.id);selectedIndex=i">
         <a> 
-            {{ translate.currentLang === langEnum.en ? cmsType.nameEn : cmsType.nameAr}}
+            {{ translate.currentLang ==='en' ? cmsType.nameEn : cmsType.nameAr}}
+         
         </a>
     </li>
 </ul>
