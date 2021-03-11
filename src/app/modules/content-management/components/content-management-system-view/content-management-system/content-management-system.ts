@@ -190,7 +190,7 @@ export class ContentManagementSystemComponent implements OnInit {
         error => {
           
         })
-    }
+      }
   }
 
 
