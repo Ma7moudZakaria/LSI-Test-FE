@@ -1,11 +1,13 @@
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit ,EventEmitter, Input, Output} from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { IquestionBankQuestionsFilterRequest } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-filter-request';
 import { IquestionBankQuestionsModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { QuestionBankQuestionService } from 'src/app/core/services/question-bank-services/question-bank-question.service';
+import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 @Component({
   selector: 'app-question-bank-questions-view',
   templateUrl: './question-bank-questions-view.component.html',
@@ -20,7 +22,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   @Output() isViewAdd = new EventEmitter<boolean>();
   valueLang = "nameAr";
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
-     public translate: TranslateService) {
+     public translate: TranslateService,public dialog: MatDialog) {
       this.valueLang = this.translate.currentLang == 'en-US' ? 'nameEn' : 'nameAr';
       }
 
@@ -80,5 +82,29 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   }
   NewQuestion(){
     this.selectedQuestionId?.emit({id: '', show : true });
+  }
+  async confirmDialog(id?:string){
+    const message = `Are you sure you want to do this?`;
+
+    const dialogData = new ConfirmDialogModel("Confirm Action", message);
+
+    const dialogRef = this.dialog.open(ConfirmModalComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if(dialogResult==true){
+        this.questionBankQuestionService.deleteQuestionBankQuestion(id||'').subscribe(
+          res => {
+            res.message;
+            this.getQuestionBankQuestions(this.selectedCategoryId);
+          }, error => {
+    
+          }
+        )
+
+      }
+     
+    });
   }
 }
