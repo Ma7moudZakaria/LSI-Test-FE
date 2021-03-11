@@ -216,7 +216,7 @@ this.isView=true;
 this.isAdd=false;
   }
 
- 
+  selectedIndex:any;
   loadCatogryQuiestion(id?:string){
     this.selectedCategoryId?.emit(id);
   }

@@ -132,38 +132,38 @@ export class ContentManagementSystemComponent implements OnInit {
   }
   Submit() {
     this.isSubmit = true;
-    if (this.cmsId) {   
-      this.contentmanagementsystemUpdate.id=this.cmsId;
-      this.contentmanagementsystemUpdate.no=this.contentmanagementsystem.no;
-      this.contentmanagementsystemUpdate.shortDesAr=this.f.shortDescriptionAr.value;
-      this.contentmanagementsystemUpdate.shortDesEn=this.f.shortDescriptionEn.value; 
-      this.contentmanagementsystemUpdate.longDesAr=this.f.longDescriptionAr.value;
-      this.contentmanagementsystemUpdate.longDesEn=this.f.longDescriptionEn.value;
-      this.contentmanagementsystemUpdate.cmsType=this.selectedcmsTypeId;
+    // if (this.cmsId) {   
+    //   this.contentmanagementsystemUpdate.id=this.cmsId;
+    //   this.contentmanagementsystemUpdate.no=this.contentmanagementsystem.no;
+    //   this.contentmanagementsystemUpdate.shortDesAr=this.f.shortDescriptionAr.value;
+    //   this.contentmanagementsystemUpdate.shortDesEn=this.f.shortDescriptionEn.value; 
+    //   this.contentmanagementsystemUpdate.longDesAr=this.f.longDescriptionAr.value;
+    //   this.contentmanagementsystemUpdate.longDesEn=this.f.longDescriptionEn.value;
+    //   this.contentmanagementsystemUpdate.cmsType=this.selectedcmsTypeId;
    
-      this.contentmanagementService.updateContentManagementSystem(this.contentmanagementsystemUpdate).subscribe(res => {
-        if (res.isSuccess) {
-          this.isSubmit = false;
-          this.disableSaveButtons = true;
-          this.resultMessage = {
-            message:res.message||"",
-            type: 'success'
-          }
-        }
-        else {
-          this.disableSaveButtons = false;
-          this.resultMessage = {
-            message:res.message||"",
-            type: 'danger'
-          }
-        }
+    //   this.contentmanagementService.updateContentManagementSystem(this.contentmanagementsystemUpdate).subscribe(res => {
+    //     if (res.isSuccess) {
+    //       this.isSubmit = false;
+    //       this.disableSaveButtons = true;
+    //       this.resultMessage = {
+    //         message:res.message||"",
+    //         type: 'success'
+    //       }
+    //     }
+    //     else {
+    //       this.disableSaveButtons = false;
+    //       this.resultMessage = {
+    //         message:res.message||"",
+    //         type: 'danger'
+    //       }
+    //     }
         
-      },
-        error => {
+    //   },
+    //     error => {
           
-        })
-    }
-    else {
+    //     })
+    // }
+    // else {
       this.contentmanagementCreat.shortDesAr=this.f.shortDescriptionAr.value;
       this.contentmanagementCreat.shortDesEn=this.f.shortDescriptionEn.value; 
       this.contentmanagementCreat.longDesAr=this.f.longDescriptionAr.value;
@@ -191,7 +191,7 @@ export class ContentManagementSystemComponent implements OnInit {
           
         })
       }
-  }
+ // }
 
 
 }

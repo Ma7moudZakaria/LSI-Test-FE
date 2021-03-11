@@ -1,40 +1,17 @@
-<div class="row Catogry" *ngIf="isView">
-    <div class="col-4">
-        <div class="row">
-            <p class="Catogry_span">{{ 'QUESTION_BANK.Departments' | translate }}</p>
-            <a [routerLink]="" (click)="addCatogry()"><p class="Catogry_Link_Add">{{ 'QUESTION_BANK.Add_Department' | translate }}</p>
-            </a> 
-        </div>
-        <div class="row">
-            <input type="text" placeholder="{{'QUESTION_BANK.Search' | translate}}" name="search"#text class="Catogry_Text_Search"><i><img src="assets/quesionBsnk/questionBankCategory/search-interface-symbol.svg" alt="" class="mt-10 cursor-pointer Catogry_Icon_Search" (click)=" getQuestionBankCategories(text.value)"/></i>
-            
-          </div>
-            <br/>
-          
-  <div *ngFor="let QBC of questionBankCategoryList ; let i=index;" class="list-group Catogry_Icon" >
-    <div  class="list-group-item  list-group-item_custom list-group-item-action row" (click)="loadCatogryQuiestion(QBC.id)">
-        <p>
-         
-          
-          {{translate.currentLang==='en'?QBC.engCatgName:QBC.arabCatgName}}
-          
-       <i>
-        <img src="assets/quesionBsnk/questionBankCategory/Icon feather-edit-3 (1).svg" alt="" class="mt-10 cursor-pointer Catogry_Icon_Details" (click)="loadQuestionBankCategoryDetails(QBC.id)"/>
-       </i>
-          
-          <i>
-            <img src="assets/quesionBsnk/questionBankCategory/Icon feather-trash-2.svg" alt="" class="mt-10 cursor-pointer Catogry_Icon_delete" (click)="confirmDialog(QBC.id)"/>
-          </i>
-        </p>
+<ul class="list-group">
+  <p>{{'QUESTION_BANK.Departments' | translate}}</p>
+  <!-- <li class="list-group-item "  
+  [class.active]="selectedIndex === -1"
+  (click)="loadProgramMaterial(null);selectedIndex=-1"> {{'PROGRAMS_LIST.ALL' | translate}}</li> -->
 
-    </div>
-    
-  </div>
-  
-  
-    
-  
-  </div>
+  <li class="list-group-item " *ngFor="let QBC  of questionBankCategoryList ; let i=index;" 
+    [class.active]="selectedIndex === i" 
+    (click)="loadCatogryQuiestion(QBC.id);selectedIndex=i">
+      <a> 
+         {{translate.currentLang==='en'?QBC.engCatgName:QBC.arabCatgName}}
+      </a>
+  </li>
+</ul>
   <div class="row Catogry_Add" *ngIf="!isView">
     
     <form class="form-group" [formGroup]="currentForm" (submit)="Submit()">
