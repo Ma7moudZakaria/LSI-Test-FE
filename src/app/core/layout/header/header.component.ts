@@ -14,24 +14,30 @@ import { LanguageService } from '../../services/language-services/language.servi
 export class HeaderComponent implements OnInit {
 
   currentLang = '';
-  constructor(private langService:LanguageService) { }
+  showPro = true;
+  submitClose = false;
+  constructor(private langService: LanguageService) { }
 
   ngOnInit(): void {
     this.currentLang = JSON.parse(localStorage.getItem("lang") || '{}');
   }
 
   switchLang() {
-    if (this.currentLang && Object.keys(this.currentLang).length === 0 && this.currentLang.constructor === Object){
+    if (this.currentLang && Object.keys(this.currentLang).length === 0 && this.currentLang.constructor === Object) {
       this.langService.switchLang(LanguageEnum.ar);
     }
-    else{
+    else {
       this.currentLang = this.currentLang === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
       this.langService.switchLang(this.currentLang as LanguageEnum);
     }
   }
 
-  displayLang(){
+  displayLang() {
     return this.currentLang === LanguageEnum.ar ? LanguageEnum.en.split('-')[0].toUpperCase() : LanguageEnum.ar.split('-')[0].toUpperCase();
   }
+  closeProfile(event: boolean) {
+    this.submitClose = event;
+    this.showPro = true
 
+  }
 }

@@ -13,7 +13,8 @@
     "MALE": "ذكر",
     "FEMALE": "أنثى",
     "PHONENUMBER":"رقم الهاتف",
-    "NATIONALITY":"الجنسية"
+    "NATIONALITY":"الجنسية",
+    "FORM_INPUT_COMPLETION_MESSAGE":"برجاء اكمال البيانات"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATIONCODE": "رمز الدخول",

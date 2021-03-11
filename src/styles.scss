@@ -17,7 +17,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 // custom scrollbar
 /* width */
 ::-webkit-scrollbar {
-  width: 0.5rem;
+  width: 0.3rem;
 }
 
 /* Track */
@@ -27,12 +27,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: rgb(185, 185, 185);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: rgb(196, 195, 195);
 }
 
 // login page 
@@ -97,9 +97,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     box-shadow: 2px 8px 16px $shadow_color !important;
     border-radius: 16px;
     padding: 24px;
+    padding-bottom: 0;
     margin-top: 1rem;
     width: 35.812rem;
-    height: 33.25rem
+    height:auto
    
 }
 
@@ -117,7 +118,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .form-control,.input-group-text {
-  border-radius: 0.75rem;
+  border-radius: 0.65rem;
 }
 .form-control:focus,.input-group-text:focus{
   border-color:$border-input

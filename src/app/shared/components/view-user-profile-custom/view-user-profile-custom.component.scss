@@ -22,14 +22,21 @@
   
   /* Position and style the close button (top right corner) */
   .sidenav_profile .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
+    color: #818181;
+    font-size: 25px;
+    text-align: right;
+    margin-bottom: 1rem;
+    cursor: pointer;
   }
   
- 
+  .sidenav_profile a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    display: block;
+    transition: 0.3s;
+  }
+  
   
   /* On smaller screens, where height is less than 450px, change the style of the sidenav_profile (less padding and a smaller font size) */
   @media screen and (max-height: 450px) {
@@ -53,7 +60,7 @@
 
 .profile_background{
 
-    background: url(../../../../../assets/images/viewProfile.svg);
+    background: url(../../../../assets/images/viewProfile.svg);
     height: 168px;
     width: 100%;
     border-radius: 30px;

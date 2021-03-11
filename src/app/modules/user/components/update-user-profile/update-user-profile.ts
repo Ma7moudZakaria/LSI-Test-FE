@@ -1,12 +1,18 @@
+import { LIVE_ANNOUNCER_DEFAULT_OPTIONS } from '@angular/cdk/a11y';
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
-import { IUser } from 'src/app/core/interfaces/auth/iuser-model';
+import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
-import { IProfileUser } from 'src/app/core/interfaces/user-interfaces/iprofileuser';
+import { IUpdateUserProfile } from 'src/app/core/interfaces/user-interfaces/iupdateuserprofile';
+import { Iuser } from 'src/app/core/interfaces/user-interfaces/iuser';
+import { IUserProfilePicture } from 'src/app/core/interfaces/user-interfaces/iuser-profile-picture';
 import { IUserProfile } from 'src/app/core/interfaces/user-interfaces/iuserprofile';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 import { UserService } from 'src/app/core/services/user-services/user.service';
 
@@ -17,121 +23,122 @@ import { UserService } from 'src/app/core/services/user-services/user.service';
 })
 
 export class UpdateUserProfileComponent implements OnInit {
-  profileForm: FormGroup  = new FormGroup({})
-  userProfile = {} as IProfileUser;
+  profileForm: FormGroup = new FormGroup({})
   completeUserProfile = false;
   updateUserProfile = false;
-  errorMessage:any;
-  currentUser: any;
-  routeParams: any;
+  resMessage: BaseMessageModel = {};
+  currentUser: IUser | undefined;
   isSubmit = false;
-  listOfLookupProfile : string[] = ['GENDER','EDU_LEVEL','NATIONALITY','COUNTRY'];
-  successMessage:any;
-  userProfileDetails:any;
-  updateUserModel = {};
+  listOfLookupProfile: string[] = ['GENDER', 'EDU_LEVEL', 'NATIONALITY', 'COUNTRY'];
+  userProfileDetails: IUserProfile = {};
+  updateUserModel : IUpdateUserProfile = {};
   collectionOfLookup = {} as ILookupCollection;
-
-  genderData :any;
-  countryData :any;
-  nationalityData :any;
-  educationalLevelData :any;
-  language:any;
+  currentLang: LanguageEnum | undefined;
 
   constructor(
     private fb: FormBuilder,
-    private lookupService:LookupService,
-    private userService:UserService,
-    private userProfileService:UserService) {
+    private lookupService: LookupService,
+    private userService: UserService,
+    private userProfileService: UserService,
+    public translate: TranslateService) {
   }
 
-  ngOnInit(){        
+  setCurrentLang(){
+    this.currentLang = this.translate.currentLang == LanguageEnum.ar.split('-')[0] ? LanguageEnum.ar : LanguageEnum.en;
+  }
+
+  isRtlMode(){
+    return this.currentLang == LanguageEnum.ar ? true : false;
+  }
+
+  ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
-    this.language = this.language === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
+    this.setCurrentLang();
     this.buildForm();
-    this.userProfileDetails as IUserProfile;
-    this.lookupService.getLookupByKey(this.listOfLookupProfile).subscribe(res =>{
-      this.collectionOfLookup = res.data;
-      if (res.isSuccess){
-        this.getUserProfile(this.currentUser.id)        
-        this.successMessage={
+    this.lookupService.getLookupByKey(this.listOfLookupProfile).subscribe(res => {
+      this.collectionOfLookup = res.data as ILookupCollection;
+      if (res.isSuccess) {
+        this.getUserProfile(this.currentUser?.id)
+      }
+      else {
+        this.resMessage = 
+        {
           message: res.message,
-          type:'success'
+          type: BaseConstantModel.DANGER_TYPE
         }
       }
-      else{
-        this.errorMessage  = res.message;
-      }
     });
   }
 
-  getUserProfile(id : any)
-  {
-    this.userService.viewUserProfileDetails(id).subscribe(res =>{
-      this.userProfileDetails = res.data;      
-      if(res.isSuccess)
-      {
+  getUserProfile(id?: string) {
+    this.userService.viewUserProfileDetails(id || '').subscribe(res => {
+      if (res.isSuccess) {
+        this.userProfileDetails = res.data as IUserProfile;
+        if (!this.userProfileDetails?.proPic){
+          this.userProfileDetails.proPic = '../../../../../assets/images/profile1.png';
+        }
         this.PopulateForm()
       }
-      else
-      {
-        this.errorMessage = res.message;
+      else {
+        this.resMessage = 
+        {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       }
     });
   }
 
-  onSubmit(value:string) {
+  onSubmit(value: string) {
 
-    this.updateUserModel = {
-      usrId:this.currentUser.id,
-      firstAr:this.language == LanguageEnum.ar ? this.profileForm.value.name : this.userProfile.firstNameAr,
-      firstEn:this.language == LanguageEnum.en ? this.profileForm.value.name : this.userProfile.firstNameEn,
-      middleAr:this.language == LanguageEnum.ar ? this.profileForm.value.fatherName : this.userProfile.middleNameAr,
-      middleEn:this.language == LanguageEnum.en ? this.profileForm.value.fatherName : this.userProfile.middleNameEn,
-      familyAr:this.language == LanguageEnum.ar ? this.profileForm.value.familyName : this.userProfile.familyNameAr,
-      familyEn:this.language == LanguageEnum.en ? this.profileForm.value.familyName : this.userProfile.familyNameEn,
-      birthdate:this.profileForm.value.birthdate,  
-      gender:this.profileForm.value.gender,
-      mobile:this.profileForm.value.phoneNumber,
-      countryCode:this.profileForm.value.countryCode,
-      nationality:this.profileForm.value.nationality,
-      eduLevel:this.profileForm.value.educationallevel,
-      occupation:this.profileForm.value.occupation,
-      address:this.profileForm.value.address
-    }
-
-    this.isSubmit = true;
-    this.userProfileService.updateUser(this.updateUserModel).subscribe(
-      res => {
-          this.isSubmit = true;
-          if (res.isSuccess){            
-            this.successMessage={
-              message:res.message,
-              type:'success'
-            }
-          }
-          else{
-            this.errorMessage  = res.message;
-          }
+    this.resMessage = {}
+    if (this.profileForm.valid){
+      this.updateUserModel = {
+        usrId: this.currentUser?.id,
+        firstAr: this.translate.currentLang === LanguageEnum.ar.split('-')[0] ? this.profileForm.value.firstName : this.userProfileDetails.fnameAr,
+        firstEn:  this.translate.currentLang === LanguageEnum.en.split('-')[0] ? this.profileForm.value.firstName : this.userProfileDetails.fnameEn,
+        middleAr: this.translate.currentLang === LanguageEnum.ar.split('-')[0] ? this.profileForm.value.middleName : this.userProfileDetails.mnameAr,
+        middleEn: this.translate.currentLang === LanguageEnum.en.split('-')[0] ? this.profileForm.value.middleName : this.userProfileDetails.mnameEn,
+        familyAr: this.translate.currentLang === LanguageEnum.ar.split('-')[0] ? this.profileForm.value.familyName : this.userProfileDetails.fanameAr,
+        familyEn: this.translate.currentLang === LanguageEnum.en.split('-')[0] ? this.profileForm.value.familyName : this.userProfileDetails.faNameEn,
+        birthdate: this.profileForm.value.birthdate,
+        gender: this.profileForm.value.gender,
+        mobile: this.profileForm.value.phoneNumber,
+        countryCode: this.profileForm.value.countryCode,
+        nationality: this.profileForm.value.nationality,
+        eduLevel: this.profileForm.value.educationallevel,
+        occupation: this.profileForm.value.occupation,
+        address: this.profileForm.value.address
       }
-    );
-  }
-
-  mappModel(form: NgForm) {
-    this.userProfile.firstNameAr =  this.language == LanguageEnum.ar ? form.value.name : this.userProfile.firstNameAr;
-    this.userProfile.firstNameEn = this.language == LanguageEnum.en ? form.value.name : this.userProfile.firstNameEn;
-    this.userProfile.middleNameAr = this.language == LanguageEnum.ar ? form.value.fatherName : this.userProfile.middleNameAr;
-    this.userProfile.middleNameEn = this.language == LanguageEnum.en ? form.value.fatherName : this.userProfile.middleNameEn;
-    this.userProfile.familyNameAr = this.language == LanguageEnum.ar ? form.value.familyName : this.userProfile.familyNameAr;
-    this.userProfile.familyNameEn = this.language == LanguageEnum.en ? form.value.familyName : this.userProfile.familyNameEn;
-    this.userProfile.address = form.value.address;
-    this.userProfile.birthdate = form.value.birthdate;
-    this.userProfile.occupation = form.value.occupation;
-    this.userProfile.educationalLevelId = form.value.educationalLevelId;
-    this.userProfile.genderId = form.value.genderId;
-    this.userProfile.countryId = form.value.countryId;
-    this.userProfile.nationalityId = form.value.nationalityId;
-    this.userProfile.phoneNumber = form.value.phoneNumber;
-    this.userProfile.userId = form.value.userId;
+  
+      this.isSubmit = true;
+      this.userProfileService.updateUser(this.updateUserModel).subscribe(
+        res => {
+          this.isSubmit = true;
+          if (res.isSuccess) {
+            this.resMessage = 
+        {
+          message: res.message,
+          type: BaseConstantModel.SUCCESS_TYPE
+        }
+          }
+          else {
+            this.resMessage = 
+        {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+          }
+        }
+      );
+    }
+    else{
+      this.resMessage = 
+        {
+          message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+          type: BaseConstantModel.DANGER_TYPE
+        }
+    }
   }
 
   get f() {
@@ -140,52 +147,79 @@ export class UpdateUserProfileComponent implements OnInit {
 
   buildForm() {
     var mobilePattern = "^(05)([0-9]{8})*$|^(\\+\\d{1,3}[- ]?)?\\d{10}";
-    this.profileForm = this.fb.group(
-      {
-        // firstNameAr: ['', Validators.required],
-        // firstNameEn: ['', Validators.required],
-        name: ['', Validators.required],
-        fatherName: ['', Validators.required],
-        familyName: ['', Validators.required],
-
-        // middleNameAr: ['', Validators.required],
-        // middleNameEn: ['', Validators.required],
-        // familyNameAr: ['', Validators.required],
-        // familyNameEn: ['', Validators.required],
-        birthdate: [''],
-        nationality: [null, Validators.required],
-        educationallevel: [null, Validators.required],
-        gender: [null, Validators.required],
-        address: ['',Validators.required],
-        phoneNumber: ['', Validators.pattern(mobilePattern)],
-        occupation: [null, Validators.required],
-        countryCode: [null, Validators.required]
-      }
-    )
+      this.profileForm = this.fb.group(
+        {
+          firstName: ['', Validators.required ],
+          middleName: ['', Validators.required],
+          familyName: ['', Validators.required],
+          birthdate: [''],
+          email: [''],
+          nationality: [null, Validators.required],
+          educationallevel: [null, Validators.required],
+          gender: [null, Validators.required],
+          address: ['', Validators.required],
+          phoneNumber: ['', Validators.pattern(mobilePattern)],
+          occupation: [null, Validators.required],
+          countryCode: [null, Validators.required]
+        }
+      )
   }
 
   PopulateForm() {
-    this.f.name.setValue(this.userProfileDetails.fnameAr);
-    this.f.fatherName.setValue(this.userProfileDetails.mnameAr);
-    this.f.familyName.setValue(this.userProfileDetails.mnameAr);
-    // this.f.firstNameAr.setValue(this.userProfileDetails.fnameAr);
-    // this.f.firstNameEn.setValue(this.userProfileDetails.fnameEn);
-    // this.f.middleNameAr.setValue(this.userProfileDetails.mnameAr);
-    // this.f.middleNameEn.setValue(this.userProfileDetails.mnameEn);
-    // this.f.familyNameAr.setValue(this.userProfileDetails.fanameAr);
-    // this.f.familyNameEn.setValue(this.userProfileDetails.faNameEn);
-    this.f.address.setValue(this.userProfileDetails.address);
-    this.f.gender.setValue(this.userProfileDetails.Gender);
-    var birthdate = new Date(this.userProfileDetails.birthdate.toString());
-    this.f.birthdate.setValue(
-      new Date(birthdate.setDate(birthdate.getDate() + 1))
-        .toISOString()
-        .slice(0, 10)
-    );
-    this.f.nationality.setValue(this.userProfileDetails.Nationality);
-    this.f.occupation.setValue(this.userProfileDetails.occupation);
-    this.f.educationallevel.setValue(this.userProfileDetails.eduLevel);
-    this.f.phoneNumber.setValue(this.userProfileDetails.Mobile);
-    this.f.countryCode.setValue(this.userProfileDetails.CountryCode);
+    if (this.translate.currentLang === LanguageEnum.ar.split('-')[0]){
+      this.f.firstName.setValue(this.userProfileDetails?.fnameAr ? this.userProfileDetails?.fnameAr : this.userProfileDetails?.fnameEn ? this.userProfileDetails?.fnameEn : '' );
+      this.f.middleName.setValue(this.userProfileDetails?.mnameAr ? this.userProfileDetails?.mnameAr : this.userProfileDetails?.mnameEn ? this.userProfileDetails?.mnameEn : '');
+      this.f.familyName.setValue(this.userProfileDetails?.fanameAr ? this.userProfileDetails?.fanameAr : this.userProfileDetails?.faNameEn ? this.userProfileDetails?.faNameEn : '');
+    }
+    else{
+      this.f.firstName.setValue(this.userProfileDetails?.fnameEn ? this.userProfileDetails?.fnameEn : this.userProfileDetails?.fnameAr ? this.userProfileDetails?.fnameAr : '' );
+      this.f.middleName.setValue(this.userProfileDetails?.mnameEn ? this.userProfileDetails?.mnameEn : this.userProfileDetails?.mnameAr ? this.userProfileDetails?.mnameAr : '');
+      this.f.familyName.setValue(this.userProfileDetails?.faNameEn ? this.userProfileDetails?.faNameEn : this.userProfileDetails?.fanameAr ? this.userProfileDetails?.fanameAr : '');
+    }
+    this.f.address.setValue(this.userProfileDetails?.address);
+    this.f.gender.setValue(this.userProfileDetails?.gender);
+    this.f.email.setValue(this.userProfileDetails?.usrEmail);
+    let birthdate = new Date(this.userProfileDetails?.birthdate || '');
+    if (!isNaN(birthdate.getTime())){
+      this.f.birthdate.setValue(
+        new Date(birthdate.setDate(birthdate.getDate() + 1))
+          .toISOString()
+          .slice(0, 10)
+      );
+    }
+    this.f.nationality.setValue(this.userProfileDetails?.nationality);
+    this.f.occupation.setValue(this.userProfileDetails?.occupation);
+    this.f.educationallevel.setValue(this.userProfileDetails?.eduLevel);
+    this.f.phoneNumber.setValue(this.userProfileDetails?.mobile);
+    this.f.countryCode.setValue(this.userProfileDetails?.countryCode);
+  }
+
+  onFileChange(files:any){
+    let profImagModel: IUserProfilePicture = {
+      usrId : this.currentUser?.id,
+      image : files[0]
+    }
+    this.updateProfilePic(profImagModel);
+  }
+
+  updateProfilePic(profImagModel:IUserProfilePicture){
+    const formData=new FormData();
+    // formData.append('image', profImagModel.image);
+
+    // profImagModel.image = formData;
+    formData.append('UserProfilePictureModel.UserId',profImagModel.usrId || '');
+    formData.append('UserProfilePictureModel.ProfileImage',profImagModel.image);
+
+    this.userService.updateUserProfilePic(formData).subscribe(res => {
+      if (res.isSuccess){
+        this.userProfileDetails.proPic = res.data as string;
+      }
+      else{
+        this.resMessage = {
+          message : res.message,
+          type : BaseConstantModel.DANGER_TYPE
+        }
+      }
+    })
   }
 }

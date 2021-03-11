@@ -4,8 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
-import { IActivationCode } from 'src/app/core/interfaces/auth/iactivation-code';
-import { IUser } from 'src/app/core/interfaces/auth/iuser-model';
+import { IActivationCode } from 'src/app/core/interfaces/auth-interfaces/iactivation-code';
+import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 
 @Component({
@@ -55,7 +55,7 @@ export class ActivateUserComponent implements OnInit {
 
   sendActivateCode()
   {
-    this.authService.sendActivateCode(this.currentUser.id).subscribe(res => {
+    this.authService.sendActivateCode(this.currentUser?.id || '').subscribe(res => {
       console.log(res);
       if (res.isSuccess){
         this.successMessage={
