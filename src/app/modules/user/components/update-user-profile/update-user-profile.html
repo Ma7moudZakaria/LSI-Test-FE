@@ -8,8 +8,11 @@
         <div class="col-12 profile p-0 mb-50">
             <div  class="profile_background"></div>
             <img class="img_profile"  [src]="userProfileDetails?.proPic">
-            <input type="file" 
-        (change)="onFileChange($any($event.target).files)">
+
+                <input type="file"  class="custom_file_input" 
+                (change)="onFileChange($any($event.target).files)">
+
+         
         </div>
 
 <div class="internal_scroll">

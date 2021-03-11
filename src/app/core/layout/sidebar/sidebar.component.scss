@@ -216,3 +216,16 @@
     //     background: url('../../../../assets/images/sidebar/questions-bank-icon.png');
     // }
 }
+
+//  disabled sidenav
+.disabled_sidenav{
+    pointer-events: none;
+    background-color: #e9ecef;
+    cursor: no-drop !important;
+}
+
+.container .container__navigation  .disabled_sidenav  .container__navigation__title {
+    color: #740606 !important;
+    cursor: no-drop !important;
+
+}
