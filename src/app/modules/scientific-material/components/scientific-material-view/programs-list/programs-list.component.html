@@ -1,5 +1,7 @@
-<ul class="list-group">
+<!-- <ul class="list-group">
     <p>{{'PROGRAMS_LIST.PROGRAMS' | translate}}</p>
+   
+  
     <li class="list-group-item "  
     [class.active]="selectedIndex === -1"
     (click)="loadProgramMaterial(null);selectedIndex=-1"> {{'PROGRAMS_LIST.ALL' | translate}}</li>
@@ -11,4 +13,44 @@
             {{ translate.currentLang === langEnum.en ? program.engName : program.arabName}}
         </a>
     </li>
-</ul>
+</ul> -->
+
+
+<div class="list-group list-group_program-list">
+    <p class="mb-4">{{'PROGRAMS_LIST.PROGRAMS' | translate}}</p>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white pl-2 pr-2 border-md border-right-0">
+                    <img  class="UserLogin_icon_input" src="../../../../../../assets/images/search-ired.svg">
+                </span>
+            </div>
+            <input   
+            placeholder="{{'GENERAL.SEARCH' | translate}}" 
+            class=" px-3 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
+            
+        </div>
+<div class="internal_scroll_list_group">
+        <a class="list-group-item d-flex"  
+        [class.active]="selectedIndex === -1"
+        (click)="loadProgramMaterial(null);selectedIndex=-1"> 
+        <span>  {{'PROGRAMS_LIST.ALL' | translate}}</span>
+        <span> 
+            <i class="far fa-trash-alt"></i>
+        </span>
+       </a>
+
+        <a class="list-group-item  d-flex" *ngFor="let program  of programs; let i = index" 
+            [class.active]="selectedIndex === i" 
+            (click)="loadProgramMaterial(program.id);selectedIndex=i">
+               
+                <span>{{ translate.currentLang === langEnum.en ? program.engName : program.arabName}}</span>
+                <span> 
+                    <i class="far fa-trash-alt"></i>
+                </span>
+
+        </a>
+
+    
+    </div>
+  </div>

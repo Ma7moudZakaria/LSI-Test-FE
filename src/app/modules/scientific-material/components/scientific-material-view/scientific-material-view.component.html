@@ -1,13 +1,9 @@
-<div>
-    <!-- <div class="row">
-        <button type="button" class="btn btn-primary m-2 pull-left" (click)="addNewMaterial()">Add New Material</button>
-    </div> -->
-    <!-- <br/> -->
+<div class="container-fluid">
     <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-4">
+        <div class="col-lg-4 col-md-4 col-sm-4 ">
             <app-programs-list (selectedProgramId)="setSelectedProgram($event)"></app-programs-list>
         </div>
-        <div class="col-lg-8  col-md-8 col-sm-8">
+        <div class="col-lg-8  col-md-8 col-sm-8 ">
             <app-material-list (materialId)=loadSelectedMateial($event) [selectedProgramId]="selectedProgramId">
             </app-material-list>
         </div>
