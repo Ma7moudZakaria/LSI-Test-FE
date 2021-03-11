@@ -13,7 +13,8 @@
     "MALE": "Male",
     "FEMALE": "FeMale",
     "PHONENUMBER":"Phone Number",
-    "NATIONALITY":"Nationality"
+    "NATIONALITY":"Nationality",
+    "FORM_INPUT_COMPLETION_MESSAGE":"Please complete the missing information"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATIONCODE": "Activation Code",

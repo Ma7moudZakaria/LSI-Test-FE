@@ -3,8 +3,8 @@ import { FormBuilder, FormControl, Validators, FormGroup, ReactiveFormsModule } 
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
-import { IAuthentication } from 'src/app/core/interfaces/auth/iauthentication';
-import { IUser } from 'src/app/core/interfaces/auth/iuser-model';
+import { IAuthentication } from 'src/app/core/interfaces/auth-interfaces/iauthentication';
+import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';

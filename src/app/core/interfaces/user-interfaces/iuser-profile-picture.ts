@@ -1,4 +1,4 @@
 export interface IUserProfilePicture {
-    usrId:string,
-    image: {}
+    usrId?:string;
+    image?: any;
 }

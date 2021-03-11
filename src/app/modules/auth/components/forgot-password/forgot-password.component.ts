@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
-import { IForgotPassword } from 'src/app/core/interfaces/auth/iforgot-password';
+import { IForgotPassword } from 'src/app/core/interfaces/auth-interfaces/iforgot-password';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 
 @Component({

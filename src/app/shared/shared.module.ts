@@ -12,13 +12,14 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ViewUserProfileCustomComponent } from './components/view-user-profile-custom/view-user-profile-custom.component';
+import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent],
   imports: [
-    CommonModule,
+    CommonModule, RouterModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule
   ],
   exports: [

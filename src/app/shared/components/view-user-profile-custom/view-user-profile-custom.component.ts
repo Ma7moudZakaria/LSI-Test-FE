@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
-import { IUser } from 'src/app/core/interfaces/auth/iuser-model';
+import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
 import { IUserProfile } from 'src/app/core/interfaces/user-interfaces/iuserprofile';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
@@ -55,7 +55,7 @@ export class ViewUserProfileCustomComponent implements OnInit {
     this.userService.viewUserProfileDetails(id).subscribe(res => {
 
       this.userProfileDetails = res.data;
-      this.birthdate = new Date(this.userProfileDetails.birthdate.toString());
+      this.birthdate = new Date(this.userProfileDetails.birthdate);
       this.birthdate = new Date(this.birthdate.setDate(this.birthdate.getDate() + 1)).toISOString().slice(0, 10);
 
       if (res.isSuccess) {

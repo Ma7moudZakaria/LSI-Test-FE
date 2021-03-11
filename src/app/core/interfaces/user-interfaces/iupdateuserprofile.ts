@@ -14,6 +14,11 @@ export interface IUpdateUserProfile {
     eduLevel?: string;
     occupation?: string;
     address?: string;
+    quraanMemorizeAmount?:number;
+    ejazaIds?:string;
+    scientificArchives?:[];
+    sheikhs?:[];
+    courses?:[];
 }
 
 

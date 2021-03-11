@@ -44,7 +44,7 @@ export class UserService {
     return this.http.delete<BaseResponseModel>(this.deleteUserURL + id)
   }
 
-  updateUserProfilePic(model:IUserProfilePicture):Observable<BaseResponseModel>{
-    return this.http.put<BaseResponseModel>(this.updateUserProfilePicURL, model);
+  updateUserProfilePic(model:any):Observable<BaseResponseModel>{
+    return this.http.post<BaseResponseModel>(this.updateUserProfilePicURL, model);
   }
 }
