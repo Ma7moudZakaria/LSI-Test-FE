@@ -1,5 +1,14 @@
-<ul class="list-group">
+<ul class="list-group" *ngIf="isView">
   <p>{{'QUESTION_BANK.Departments' | translate}}</p>
+  <a [routerLink]="" (click)="addCatogry()"><p class="Catogry_Link_Add">{{ 'QUESTION_BANK.Add_Department' | translate }}</p>
+  </a> 
+ 
+
+  <i>
+    <img src="assets/quesionBsnk/questionBankCategory/search-interface-symbol.svg" alt="" class="mt-10 cursor-pointer Catogry_Icon_Search" (click)=" getQuestionBankCategories(text.value)"/>
+    <input type="text" placeholder="{{'QUESTION_BANK.Search' | translate}}" name="search"#text class="Catogry_Text_Search">
+    </i>
+
   <!-- <li class="list-group-item "  
   [class.active]="selectedIndex === -1"
   (click)="loadProgramMaterial(null);selectedIndex=-1"> {{'PROGRAMS_LIST.ALL' | translate}}</li> -->
@@ -12,7 +21,7 @@
       </a>
   </li>
 </ul>
-  <div class="row Catogry_Add" *ngIf="!isView">
+  <div class="row " *ngIf="!isView">
     
     <form class="form-group" [formGroup]="currentForm" (submit)="Submit()">
       <sup class="Catogry_Add_Span">{{ 'QUESTION_BANK.Add_Department' | translate }}</sup>
@@ -37,5 +46,5 @@
 
   </div>
   
-  
+ 
   
