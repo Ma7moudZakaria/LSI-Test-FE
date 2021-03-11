@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { IAttachment } from 'src/app/core/interfaces/attachments-interfaces/iattachment';
+import { IFileUpload } from 'src/app/core/interfaces/attachments-interfaces/ifile-upload';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
 import { IUpdateUserProfile } from 'src/app/core/interfaces/user-interfaces/iupdateuserprofile';
@@ -12,7 +14,9 @@ import { Iuser } from 'src/app/core/interfaces/user-interfaces/iuser';
 import { IUserProfilePicture } from 'src/app/core/interfaces/user-interfaces/iuser-profile-picture';
 import { IUserProfile } from 'src/app/core/interfaces/user-interfaces/iuserprofile';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseLookupModel } from 'src/app/core/ng-model/base-lookup-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
+import { AttachmentsService } from 'src/app/core/services/attachments-services/attachments.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 import { UserService } from 'src/app/core/services/user-services/user.service';
 
@@ -29,16 +33,23 @@ export class UpdateUserProfileComponent implements OnInit {
   resMessage: BaseMessageModel = {};
   currentUser: IUser | undefined;
   isSubmit = false;
-  listOfLookupProfile: string[] = ['GENDER', 'EDU_LEVEL', 'NATIONALITY', 'COUNTRY'];
-  userProfileDetails: IUserProfile = {};
+  listOfLookupProfile: string[] = ['GENDER', 'EDU_LEVEL', 'NATIONALITY', 'COUNTRY'
+  ,'SCIENTIFIC_ARCHIVES','TRAINING_COURSES', 'SYSTEM_SHEIKHS'];
+  userProfileDetails = {} as IUserProfile;
   updateUserModel : IUpdateUserProfile = {};
   collectionOfLookup = {} as ILookupCollection;
   currentLang: LanguageEnum | undefined;
-
+  fileUploadModel: IFileUpload[] = [];
+  fileList: IAttachment[] = [];
+  ejazaAttachmentIds: string[] = [];
+  quraanParts = new Array(30);
+  selectedShiekhsList = Array<BaseLookupModel>();
+  shiekhsMessage:any;
   constructor(
     private fb: FormBuilder,
     private lookupService: LookupService,
     private userService: UserService,
+    private attachmentService: AttachmentsService,
     private userProfileService: UserService,
     public translate: TranslateService) {
   }
@@ -93,6 +104,17 @@ export class UpdateUserProfileComponent implements OnInit {
 
     this.resMessage = {}
     if (this.profileForm.valid){
+      this.updateUserModel.sheikhs = [];
+      if (this.selectedShiekhsList.length) {
+        Array.from(this.selectedShiekhsList).forEach((elm: BaseLookupModel) => {
+          if (this.updateUserModel.sheikhs) {
+            this.updateUserModel.sheikhs.push({
+              sheikhsIds:elm.id
+            }); 
+          }
+    
+        });
+      }
       this.updateUserModel = {
         usrId: this.currentUser?.id,
         firstAr: this.translate.currentLang === LanguageEnum.ar.split('-')[0] ? this.profileForm.value.firstName : this.userProfileDetails.fnameAr,
@@ -108,7 +130,9 @@ export class UpdateUserProfileComponent implements OnInit {
         nationality: this.profileForm.value.nationality,
         eduLevel: this.profileForm.value.educationallevel,
         occupation: this.profileForm.value.occupation,
-        address: this.profileForm.value.address
+        address: this.profileForm.value.address,
+        quraanMemorizeAmount : this.profileForm.value.quraanMemorization,
+        ejazaIds : this.ejazaAttachmentIds,
       }
   
       this.isSubmit = true;
@@ -160,7 +184,10 @@ export class UpdateUserProfileComponent implements OnInit {
           address: ['', Validators.required],
           phoneNumber: ['', Validators.pattern(mobilePattern)],
           occupation: [null, Validators.required],
-          countryCode: [null, Validators.required]
+          countryCode: [null, Validators.required],
+          quraanMemorization: ['', Validators.required],
+          userSheikhs: []
+          
         }
       )
   }
@@ -192,7 +219,29 @@ export class UpdateUserProfileComponent implements OnInit {
     this.f.educationallevel.setValue(this.userProfileDetails?.eduLevel);
     this.f.phoneNumber.setValue(this.userProfileDetails?.mobile);
     this.f.countryCode.setValue(this.userProfileDetails?.countryCode);
+    this.f.quraanMemorization.setValue(this.userProfileDetails?.quraanMemorizeAmount);
+    this.fileList   = this.userProfileDetails?.ejazaAttachments;
+    this.userProfileDetails?.ejazaAttachments.forEach(element => {
+      this.ejazaAttachmentIds.push(element.id);
+    });
+    if (this.userProfileDetails?.sheikhs) {      
+      this.selectedShiekhsList =  this.userProfileDetails?.sheikhs;
+    }
   }
+  // fillUserShiekhsList(list) {
+  //     let look = this.jobSectorsLookup;
+  //     return list.map(function mapping(item) {
+  //       let obj: BaseLookupModel;
+  //       let fil = look.filter(i => i.id === item.jobSectorId)[0]
+  //       obj = {
+  //         id: fil.id,
+  //         code: fil.code,
+  //         nameAr: fil.nameAr,
+  //         nameEn: fil.nameEn
+  //       }
+  //       return obj;
+  //     });
+  // }
 
   onFileChange(files:any){
     let profImagModel: IUserProfilePicture = {
@@ -221,5 +270,77 @@ export class UpdateUserProfileComponent implements OnInit {
         }
       }
     })
+  }
+
+  DeleteAttachment(index: number, id: string) {
+    this.fileList.splice(index, 1);
+    this.ejazaAttachmentIds = this.ejazaAttachmentIds.filter(a => a !== id);
+  }
+
+  onEjazaFileChange(files: FileList) {
+    if (files.length > 0) {
+      Array.from(files).forEach(element => {
+        var fileUploadObj: IFileUpload = {
+          containerNameIndex: 1, // need to be changed based on file type
+          file: element
+
+        }
+        this.fileUploadModel.push(fileUploadObj)
+      });
+      this.UploadFiles(this.fileUploadModel);
+    }
+
+  }
+  UploadFiles(files: any) {
+    if (files.length === 0) {
+      return;
+    }
+    this.attachmentService.upload(files).subscribe(
+      (res: any) => {
+        Array.from(res.data).forEach((elm: any) => {
+          this.ejazaAttachmentIds.push(elm.id);
+          this.fileList.push(elm);
+
+        })
+        this.fileUploadModel = [];
+      }, error => {
+        console.log(error);
+        this.fileUploadModel = [];
+        this.resMessage = 
+        {
+          message: error.message,
+          type: BaseConstantModel.DANGER_TYPE
+        } 
+      }
+    )
+  }
+  addUserShiekhs(){
+    if (!this.profileForm.value.userSheikhs) {
+      if (this.translate.currentLang == 'ar') {
+        this.shiekhsMessage = {
+          message: "برجاء اختيار  شيخ ",
+          type: 'danger'
+        }
+      } else {
+        this.shiekhsMessage = {
+          message: "Please select shiekh",
+          type: 'danger'
+        }
+      }
+      return;
+    }
+    this.shiekhsMessage = "";
+
+    const exist = this.selectedShiekhsList.some(el => el.id === this.profileForm.value.userSheikhs)
+    if (!exist) {
+      if (this.collectionOfLookup.SYSTEM_SHEIKHS) {
+        this.selectedShiekhsList.push(
+          this.collectionOfLookup.SYSTEM_SHEIKHS.filter(el => el.id == this.profileForm.value.userSheikhs)[0]);  
+      }
+    }      
+  }
+  removeItemFromSelectedShiekhs(item:any) {
+    let index = this.selectedShiekhsList.indexOf(item);
+    this.selectedShiekhsList.splice(index, 1);
   }
 }

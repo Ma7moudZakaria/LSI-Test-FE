@@ -9,4 +9,7 @@ export interface ILookupCollection{
     MATERIAL_CATEG?:BaseLookupModel[];
     NATIONALITY?:BaseLookupModel[];
     COUNTRY?:BaseLookupModel[];
+    SCIENTIFIC_ARCHIVES?:BaseLookupModel[];
+    TRAINING_COURSES?:BaseLookupModel[];
+    SYSTEM_SHEIKHS?:BaseLookupModel[];
 }

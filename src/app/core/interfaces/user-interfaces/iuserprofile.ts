@@ -27,7 +27,7 @@ export interface IUserProfile {
     usrEmail?:string;
     proPic?:string;
     quraanMemorizeAmount?:number;
-    ejazaAttachments?:IAttachment;
+    ejazaAttachments:IAttachment[];
 
     scientificArchives?:[];
     sheikhs?:[];
