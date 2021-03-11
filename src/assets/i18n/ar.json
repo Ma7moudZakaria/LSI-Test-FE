@@ -91,7 +91,13 @@
   "SIDENAVBAR": {
     "DASHBORD": "لوحة التحكم",
     "MYPROGRAMS": "برامجى",
-    "SCIENTIFIC_ARTICLES": "المواد العلمية"
+    "SCIENTIFIC_ARTICLES": "المواد العلمية",
+    "VACATION_REQUEST": "الاجازات",
+    "EXAM_RESULTS": "نتائج الامتحانات",
+    "WITHDRAWAL_REQUESTS": "طلبات الانسجاب",
+    "CERTIFICATES": "الشهادات",
+    "MY_MESSAGES": "رسائلى",
+    "QUESTION_BANK": "بنك الأسئلة"
   },
   "VIEW_USER_PROFILE_PG": {
     "FATHERNAME": "إسم الأب",

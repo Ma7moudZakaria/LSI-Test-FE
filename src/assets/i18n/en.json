@@ -91,7 +91,13 @@
   "SIDENAVBAR": {
     "DASHBORD": "DashBoard",
     "MYPROGRAMS": "Myprograms",
-    "SCIENTIFIC_ARTICLES": "Scientific articles"
+    "SCIENTIFIC_ARTICLES": "Scientific articles",
+    "VACATION_REQUEST": "Vacation Req.",
+    "EXAM_RESULTS": "Exam Results",
+    "WITHDRAWAL_REQUESTS": "Withdrawal Req.",
+    "CERTIFICATES": "Certificates",
+    "MY_MESSAGES": "My Messages",
+    "QUESTION_BANK": "Question Bank"
   },
   "VIEW_USER_PROFILE_PG": {
     "FATHERNAME": "Father Name",
