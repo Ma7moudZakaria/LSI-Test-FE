@@ -26,26 +26,7 @@
         margin-left: 0;
       }
     
-    .header__img-larg{
-        
-    height: 100%;
-    width: 100%;
-    margin-right: 22px;
-    background: url('../../../../assets/images/header/header-larg.png');
-    background-size: 76%;
-    background-repeat: repeat-x;
-    background-position: center;
-
-    }
-
-    .header__img-small{
-        // height: 100%;
-        // width: 100%;
-        margin-right: 22px;
-        //transform: scaleX(-1); 
-        background: url('../../../../assets/images/header/header-small.png');
-    }
-
+   
     .header__padding{
         padding: 2.1rem!important;
     }
@@ -53,3 +34,75 @@
         width: 500px;
     }
 }
+
+// new style add by nermen  
+
+.navbar:lang(en)
+ {border-radius: 25px  0px 0px  0px;
+    margin-left: 0.5rem;
+     padding: 0;  
+     background: transparent linear-gradient(90deg,#340303  0%, #680505 100%) 0% 0% no-repeat padding-box;
+}
+.navbar:lang(ar)
+{ padding: 0;  
+     background: transparent linear-gradient(90deg, #680505 0% ,#340303  100%) 0% 0% no-repeat padding-box;
+    border-radius: 0px  25px 0px  0px;
+    margin-right: 0.5rem;
+}
+
+.navbar-nav {
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 0;
+    padding-left: 0;
+}
+.nav-item_Scientific {
+    width: 15%;
+}
+.nav-item_Scientific >a{
+ font-size: 1.25rem;
+ font-family:Almarai-Bold ;
+color: #ffffff
+
+}
+.nav-item_language{
+    font-size: 0.85rem;
+ font-family:Almarai-Bold ;
+color: #ffffff
+}
+.border-right:lang(ar){
+    border-right: 1px solid #ffff;
+}
+.border-left:lang(en){
+    border-left: 1px solid #ffff;
+}
+.fa-bell,.fa-user
+{
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.header__img-small{
+ 
+    background-position: center;
+     background: url('../../../../assets/images/header/header-small.png'); 
+    height: 72px;
+    width: 229px;
+    background-size: 80%;
+    background-position-x: unset;
+    background-repeat: no-repeat;
+
+}
+.header__img-small:lang(ar){
+    transform: scaleX(-1);
+}
+.header__img-larg{
+   
+    background: url('../../../../assets/images/header/header-larg.png');
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 72px;
+    width: 595px;
+
+    }

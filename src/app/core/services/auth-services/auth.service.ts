@@ -1,14 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { LanguageEnum } from '../../enums/language-enum.enum';
-import { IActivationCode } from '../../interfaces/auth/iactivation-code';
-import { IAuthentication } from '../../interfaces/auth/iauthentication';
-import { IForgotPassword } from '../../interfaces/auth/iforgot-password';
-import { IResetPassword } from '../../interfaces/auth/ireset-password';
-import { IUser } from '../../interfaces/auth/iuser-model';
-import { IProfileUser } from '../../interfaces/user-interfaces/iprofileuser';
+import { IActivationCode } from '../../interfaces/auth-interfaces/iactivation-code';
+import { IAuthentication } from '../../interfaces/auth-interfaces/iauthentication';
+import { IForgotPassword } from '../../interfaces/auth-interfaces/iforgot-password';
+import { IResetPassword } from '../../interfaces/auth-interfaces/ireset-password';
+import { IUser } from '../../interfaces/auth-interfaces/iuser-model';
+import { IUpdateUserProfile } from '../../interfaces/user-interfaces/iupdateuserprofile';
+import { Iuser } from '../../interfaces/user-interfaces/iuser';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 
 @Injectable({
@@ -28,7 +30,7 @@ export class AuthService {
 
   currentLanguageEvent = new EventEmitter<LanguageEnum>();
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   switchLanguage(lang:string):Observable<BaseResponseModel>{
     return this.http.put<BaseResponseModel>(this.switchLanguageUrl + '/' + lang, null);
@@ -54,15 +56,29 @@ export class AuthService {
     return this.http.post<BaseResponseModel>(this.verifyUserUrl , model);
   }
 
-  sendActivateCode(Id:any):Observable<BaseResponseModel>{
+  sendActivateCode(Id:string):Observable<BaseResponseModel>{
     return this.http.put<BaseResponseModel>(this.sendActivateCodeUrl + Id , null);
   }
 
-  viewProfileDetails(Id: any) {
+  viewProfileDetails(Id: string) {
     return this.http.get<BaseResponseModel>(this.viewProfileDetailsUrl + Id);
   }
 
-  updateUser(model:IProfileUser){
+  updateUser(model:IUpdateUserProfile){
     return this.http.put<BaseResponseModel>(this.updateUserUrl, model);
+  }
+
+  logout(){
+    var user = JSON.parse(localStorage.getItem("user") || '{}') as Iuser;
+    var lang = JSON.parse(localStorage.getItem("lang") || '{}');
+
+    if (user != null){
+      localStorage.removeItem("user");
+    }
+    if (lang != null){
+      localStorage.removeItem("lang");
+    }
+
+    this.router.navigateByUrl('');
   }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
-import { IUser } from 'src/app/core/interfaces/auth/iuser-model';
+import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 
 @Component({

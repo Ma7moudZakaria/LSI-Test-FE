@@ -6,10 +6,13 @@ export class BaseLookupModel {
     huffazId?: Number;
     nameAr?:string;
     nameEn?: string;
+    localNam?:string;
 
-    constructor(private translate: TranslateService){ }
+    constructor(private translate: TranslateService){ 
+        // this.id = this.getNameLocalized();
+    }
 
-    getNameLocalized(){
-        return this.translate.currentLang == LanguageEnum.ar ? this.nameAr : this.nameEn;
+    public getNameLocalized(){
+        return this.translate.currentLang == LanguageEnum.ar.split('-')[0] ? this.nameAr : this.nameEn;
     }
 }
