@@ -18,6 +18,14 @@
     (click)="loadCatogryQuiestion(QBC.id);selectedIndex=i">
       <a> 
          {{translate.currentLang==='en'?QBC.engCatgName:QBC.arabCatgName}}
+         <i>
+          <img src="assets/quesionBsnk/questionBankCategory/Icon feather-edit-3 (1).svg" alt="" class="mt-10 cursor-pointer Catogry_Icon_Details" (click)="loadQuestionBankCategoryDetails(QBC.id)"/>
+         </i>
+            
+            <i>
+              <img src="assets/quesionBsnk/questionBankCategory/Icon feather-trash-2.svg" alt="" class="mt-10 cursor-pointer Catogry_Icon_delete" (click)="confirmDialog(QBC.id)"/>
+            </i>
+  
       </a>
   </li>
 </ul>
