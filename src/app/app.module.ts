@@ -1,3 +1,4 @@
+import { UserModule } from 'src/app/modules/user/user.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -29,7 +30,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    SidebarComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +59,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   bootstrap: [AppComponent],
   exports: [TranslateModule, MatRadioModule, MatCheckboxModule],
-  entryComponents:[ConfirmModalComponent]
+  entryComponents: [ConfirmModalComponent]
 })
 export class AppModule { }

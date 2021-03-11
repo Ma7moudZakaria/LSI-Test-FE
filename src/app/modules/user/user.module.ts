@@ -9,14 +9,15 @@ import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
-  declarations: [UpdateUserProfileComponent,ViewUserProfileDetailsComponent],
+  declarations: [UpdateUserProfileComponent, ViewUserProfileDetailsComponent],
   imports: [
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
-    CommonModule ,
+    CommonModule,
     FormsModule,
     TranslateModule
-  ]
+  ],
+  exports: [ViewUserProfileDetailsComponent]
 })
 export class UserModule { }

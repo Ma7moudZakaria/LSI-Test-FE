@@ -1,26 +1,35 @@
-export interface IUserProfile {
-    firstNameAr?: string;
-    familyNameAr?: string;
-    middleNameAr?: string;
-    firstNameEn?: string;
-    familyNameEn?: string;
-    middleNameEn?: string;
-    birthdate?: Date;
-    genderId?: string;
-    phoneNumber?: string;
-    countryId?: string;
-    nationalityId?: string;
-    educationalLevelId?: string;
-    occupation?: string;
-    address?: string;
-    userName?: string;
-    userEmail?: string;
-    arbCountryName?:string;
-    arbEduLevelName?:string;
+import { IAttachment } from "../attachments-interfaces/iattachment";
+
+export interface IUserProfile {    
+    fnameAr?:string;
+    mnameAr?:string;
+    fanameAr?:string;
+    fnameEn?:string;
+    mnameEn?:string;
+    faNameEn?:string;
+    birthdate?:string;
+    gender?:string;
     arbGenderName?:string;
-    arbNatName?:string;
-    engCountryName?:string;
-    engEduLevelName?:string;
     engGenderName?:string;
+    mobile?:string;
+    countryCode?:string;
+    arbCountryName?:string;
+    engCountryName?:string;
+    nationality?:string;
+    arbNatName?:string;
     engNatName?:string;
+    eduLevel?:string;
+    arbEduLevelName?:string;
+    engEduLevelName?:String;
+    occupation?:string;
+    ejazaIds?:string;
+    address?:string;
+    usrEmail?:string;
+    proPic?:string;
+    quraanMemorizeAmount?:number;
+    ejazaAttachments?:IAttachment;
+
+    scientificArchives?:[];
+    sheikhs?:[];
+    courses?:[];
 }
