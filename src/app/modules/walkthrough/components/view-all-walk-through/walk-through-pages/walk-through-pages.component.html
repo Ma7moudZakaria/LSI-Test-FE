@@ -1,5 +1,7 @@
 <ul class="list-group" *ngIf="walkThroughPages">
-    <p>الشرائح</p>
+    <p>     
+          {{"WALKTHROUGH.PAGES" | translate}}
+    </p>
     <li class="list-group-item " *ngFor="let page  of walkThroughPages; let i = index" 
       [class.active]="selectedIndex === i" 
       (click)="loadPageWalkThrough(page.id);selectedIndex=i">

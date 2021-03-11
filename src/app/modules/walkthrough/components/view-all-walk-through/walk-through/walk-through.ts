@@ -54,8 +54,11 @@ export class WalkThroughComponent implements OnInit {
 
   ngOnChanges(changes: any) {
     console.log(changes);
-    if (changes.selectedWalkThroughPageId.currentValue) {
-      this.walkThroughService.getWalkThroughByPageId(changes.selectedWalkThroughPageId.currentValue).subscribe(res => {
+    this.LoadWalkThrough(changes.selectedWalkThroughPageId.currentValue);
+  }
+  LoadWalkThrough(selectedPageId: any){
+    if (selectedPageId) {
+      this.walkThroughService.getWalkThroughByPageId(selectedPageId).subscribe(res => {
         if (res.data) {
           this.walkThrough = res.data;
           this.PopulateForm();
@@ -70,7 +73,13 @@ export class WalkThroughComponent implements OnInit {
 
       });
     }
-
+    else {
+      this.currentForm.reset();
+      this.walkThrough = {};
+      this.fileList = [];
+      this.attachmentIds = [];
+      this.fileUploadModel = [];
+    }
   }
   DeleteAttachment(index: number, id: string) {
     this.fileList.splice(index, 1);

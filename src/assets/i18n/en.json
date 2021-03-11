@@ -95,5 +95,11 @@
     "FATHERNAME": "Father Name",
     "FAMILYNAME": "Family Name",
     "BIRTHDATE": "Birthdate"
-  }
+  },
+  "WALKTHROUGH" : {
+    "PAGES" : "Pages",
+    "UPLOADPIC" : "Upload Picture",
+    "ARABICMESSAGE" : "Arabic Message",
+    "ENGLISHMESSAGE" : "English Message"      
+  }  
 }

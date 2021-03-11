@@ -2,7 +2,7 @@
 <form class="form-group material-form" [formGroup]="currentForm" (submit)="Submit()" *ngIf="selectedWalkThroughPageId">
     <label class="custom-file custom-file__text" for="importFile">
         <span> <img calss="upload-icon" src="assets/images/walk-through/Group 18093.svg" alt="">
-        حمل صورة
+      <p> {{"WALKTHROUGH.UPLOADPIC" | translate}}</p>
         </span>        
     </label>
     <input type="file" class="custom-file-input"  id="importFile"
@@ -28,20 +28,19 @@
           </div>
       </div>
     <div class="form-group">
-        <label for="comment">الرسالة العربى </label>
+        <label for="comment">{{"WALKTHROUGH.ARABICMESSAGE" | translate}} </label>
         <textarea class="form-control" cols="2" rows="5" id="InputtextAr" formControlName="textAr"></textarea>
       </div>
       <div class="form-group">
-        <label for="comment">الرسالة الانجليزى </label>
+        <label for="comment">{{"WALKTHROUGH.ENGLISHMESSAGE" | translate}} </label>
         <textarea class="form-control" cols="2" rows="5" id="InputtextEn" formControlName="textEn"></textarea>
       </div>
 
       <section>
         <div class="row direction-rtl">
             <button class="save-btn" type="submit" [disabled]="disableSaveButtons">
-                {{'SCIENTIFIC_MATERIAL.SAVE' | translate}}
-            </button>
-           
+                {{'GENERAL.SAVE' | translate}}
+            </button>                    
 
             <div *ngIf="successMessage" class="alert alert-success">
                 {{successMessage.message}}

@@ -24,7 +24,8 @@ export class WalkThroughPagesComponent implements OnInit {
   ngOnInit(): void {
     this.lookupService.getLookupByKey(this.listOfLookupProfile).subscribe(res =>{
       this.collectionOfLookup = res.data;
-      this.walkThroughPages = this.collectionOfLookup.WLAKTHROUGHPAGES;
+      this.walkThroughPages = 
+      this.collectionOfLookup.WLAKTHROUGHPAGES?.sort((a,b) => this.compare(a,b) );
       if (res.isSuccess){
         this.successMessage={
           message: res.message,
@@ -43,5 +44,11 @@ export class WalkThroughPagesComponent implements OnInit {
   loadPageWalkThrough(id?:any){
     this.selectedWalkThroughPageId?.emit(id);
 
+  }
+  compare(a:BaseLookupModel,b:BaseLookupModel){
+    if (a.huffazId && b.huffazId) {
+      return a.huffazId > b.huffazId ?  1 : -1;
+    }
+    return 0;
   }
 }

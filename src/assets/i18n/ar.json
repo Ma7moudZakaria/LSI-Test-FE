@@ -95,5 +95,11 @@
     "FATHERNAME": "إسم الأب",
     "FAMILYNAME": "إسم العائلة",
     "BIRTHDATE": "تاريخ الميلاد"
+  },
+  "WALKTHROUGH" : {
+    "PAGES" : "الشرائح",
+    "UPLOADPIC" : "حمل صورة",
+    "ARABICMESSAGE" : "الرسالة العربى",
+    "ENGLISHMESSAGE" : "الرسالة الانجليزى"      
   }
 }
