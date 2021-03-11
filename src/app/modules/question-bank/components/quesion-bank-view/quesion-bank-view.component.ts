@@ -12,6 +12,8 @@ export class QuesionBankViewComponent implements OnInit {
   showAddQuiestion?:boolean=false;
   @Input() isViewAdd?:boolean; 
   valueLang = "nameAr";
+  showAddQuestionForm = false;
+  submitSuccess:any;
   constructor(public translate: TranslateService) {
     this.valueLang = this.translate.currentLang == 'en-US' ? 'nameEn' : 'nameAr';
    }
@@ -26,12 +28,20 @@ export class QuesionBankViewComponent implements OnInit {
   loadSelectedQuesion(event:any){
    this.selectedQuestionId = event.id;
    this.showAddQuiestion= event.show;
+   this.showAddQuestionForm =true;
    // console.log(event);
   }
 
   setSelectedCategory(event:any){
     this.selectedCategoryId = event;
   }
- 
+  closeAddQuestionForm(){
+    this.showAddQuestionForm = false;
+  }
+  closeAddQuestionFormAfterSave(event:any){
+    this.submitSuccess = event; 
+    this.showAddQuestionForm = !event;
+
+  }
 
 }

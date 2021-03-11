@@ -1,21 +1,22 @@
-<div class="col">
-    <div class="col-lg-12">
-        <div class="row">
+<div class="col QBQ-list">
+    <div class="row">
+    <div class="col-12">
+        <span> <img calss="m-2 pull-left" src="assets/images/scientificMaterial/Group 18093.svg" alt="" (click)= "NewQuestion()">
+        </span>
+      </div>
+       
             <div class=" row">
              <div class="col text-righ"><p>{{ 'QUESTION_BANK.Technical_Questions' | translate }}</p></div>
-             <div class="col text-righ">
-                <a [routerLink]="" (click)= "NewQuestion()">{{ 'QUESTION_BANK.Add_Question' | translate }}</a> 
-             </div>
-             <div class="col text-left">
-                <input type="text"  placeholder="{{'QUESTION_BANK.Search' | translate}}" name="search"#text><i><img src="assets/quesionBsnk/questionBankCategory/search-interface-symbol.svg" alt="" class="mt-10 cursor-pointer" (click)="searchQuestions(text.value)"/></i>
-             </div>
+             
+                <i> <input type="text"  placeholder="{{'QUESTION_BANK.Search' | translate}}" name="search"#text><img src="assets/quesionBsnk/questionBankCategory/search-interface-symbol.svg" alt="" class="mt-10 cursor-pointer" (click)="searchQuestions(text.value)"/></i>
+            
             </div>      
         </div> 
-    </div>
-    <div class="col-lg-12">
+       
+    <div class="col-lg-8 ">
         <div *ngFor="let QBQ of questionBankQuestionList ; let i=index;">
     
-            <div class="col-lg-12" >
+            <div class="col-lg-12 qestion" >
                 <span class="filter-sapn" (click)="loadQuestion(QBQ.id)">
                     {{this.translate.currentLang==='en-US'?QBQ.engQuestion:QBQ.arabQuestion}}
                     
@@ -26,10 +27,11 @@
                       <i>
                         <img src="assets/quesionBsnk/questionBankCategory/Icon feather-trash-2.svg" alt="" class="mt-10 cursor-pointer" (click)="delete_Question(QBQ.id)"/>
                       </i>
-            </div>
-            <div class="col-lg-12">
+            
+            <div class="col-lg-12 ">
                 <span>{{QBQ.engAnswer}}</span>
-            </div>   
+            </div> 
+        </div>  
         </div> 
     </div>
 </div>

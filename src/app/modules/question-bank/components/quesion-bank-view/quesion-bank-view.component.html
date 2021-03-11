@@ -1,4 +1,4 @@
-
+<div>
     <div class=" row">
         <div class="col-lg-4 col-md-4 col-sm-4">
             <app-question-bank-categories-view (selectedCategoryId)="setSelectedCategory($event)" >
@@ -12,18 +12,21 @@
             <app-question-bank-questions-view [selectedCategoryId]="selectedCategoryId" (selectedQuestionId)="loadSelectedQuesion($event)"> 
         
             </app-question-bank-questions-view>
+           
         </div>
-       
-        <div class="col-2" *ngIf="showAddQuiestion">
-            
-            <app-add-question-bank-question [selectedCategoryId]="selectedCategoryId"  [selectedQuestionId]="selectedQuestionId">
-
-            </app-add-question-bank-question>
-
-        </div>
-    
-
+        
     </div>
+
+    <div class="overlay" *ngIf="showAddQuestionForm">
+        <a href="javascript:void(0)" class="closebtn" (click)="closeAddQuestionForm()">&times;</a>
+        <app-add-question-bank-question [selectedCategoryId]="selectedCategoryId"  [selectedQuestionId]="selectedQuestionId"  (submitSuccess)="closeAddQuestionFormAfterSave($event)">
+
+        </app-add-question-bank-question>
+    </div>
+   
+
+</div>
+
 
     
 
