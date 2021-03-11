@@ -13,13 +13,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ViewUserProfileCustomComponent } from './components/view-user-profile-custom/view-user-profile-custom.component';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent],
   imports: [
-    CommonModule, RouterModule,
+    CommonModule, RouterModule,TranslateModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule
   ],
   exports: [

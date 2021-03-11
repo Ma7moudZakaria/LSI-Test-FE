@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { LanguageEnum } from '../../enums/language-enum.enum';
@@ -9,6 +10,7 @@ import { IForgotPassword } from '../../interfaces/auth-interfaces/iforgot-passwo
 import { IResetPassword } from '../../interfaces/auth-interfaces/ireset-password';
 import { IUser } from '../../interfaces/auth-interfaces/iuser-model';
 import { IUpdateUserProfile } from '../../interfaces/user-interfaces/iupdateuserprofile';
+import { Iuser } from '../../interfaces/user-interfaces/iuser';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 
 @Injectable({
@@ -28,7 +30,7 @@ export class AuthService {
 
   currentLanguageEvent = new EventEmitter<LanguageEnum>();
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   switchLanguage(lang:string):Observable<BaseResponseModel>{
     return this.http.put<BaseResponseModel>(this.switchLanguageUrl + '/' + lang, null);
@@ -64,5 +66,19 @@ export class AuthService {
 
   updateUser(model:IUpdateUserProfile){
     return this.http.put<BaseResponseModel>(this.updateUserUrl, model);
+  }
+
+  logout(){
+    var user = JSON.parse(localStorage.getItem("user") || '{}') as Iuser;
+    var lang = JSON.parse(localStorage.getItem("lang") || '{}');
+
+    if (user != null){
+      localStorage.removeItem("user");
+    }
+    if (lang != null){
+      localStorage.removeItem("lang");
+    }
+
+    this.router.navigateByUrl('');
   }
 }

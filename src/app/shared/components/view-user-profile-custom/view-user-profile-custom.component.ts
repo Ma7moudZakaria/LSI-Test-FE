@@ -6,6 +6,7 @@ import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
 import { IUserProfile } from 'src/app/core/interfaces/user-interfaces/iuserprofile';
+import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 import { UserService } from 'src/app/core/services/user-services/user.service';
 
@@ -40,7 +41,8 @@ export class ViewUserProfileCustomComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     public translate: TranslateService,
-    private userService: UserService) {
+    private userService: UserService,
+    private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -66,7 +68,9 @@ export class ViewUserProfileCustomComponent implements OnInit {
     });
   }
 
-
+  logout(){
+    this.authService.logout();
+  }
 
   closeNav() {
     this.submitClose.emit(true);

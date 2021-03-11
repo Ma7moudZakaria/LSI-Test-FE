@@ -14,7 +14,8 @@
     "FEMALE": "أنثى",
     "PHONENUMBER":"رقم الهاتف",
     "NATIONALITY":"الجنسية",
-    "FORM_INPUT_COMPLETION_MESSAGE":"برجاء اكمال البيانات"
+    "FORM_INPUT_COMPLETION_MESSAGE":"برجاء اكمال البيانات",
+    "LOGOUT":"خروج"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATIONCODE": "رمز الدخول",
