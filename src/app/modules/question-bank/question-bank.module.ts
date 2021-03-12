@@ -11,10 +11,13 @@ import { QuesionBankViewComponent } from './components/quesion-bank-view/quesion
 import { QuestionBankCategoriesViewComponent } from './components/quesion-bank-view/question-bank-categories-view/question-bank-categories-view.component';
 import { AddQuestionBankQuestionComponent } from './components/quesion-bank-view/add-question-bank-question/add-question-bank-question.component';
 import { QuestionBankQuestionsViewComponent } from './components/quesion-bank-view/question-bank-questions-view/question-bank-questions-view.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
-  declarations: [AddQuestionBankCategoryComponent ,QuestionBankCategoriesViewComponent, QuestionBankCategoryDetailsComponent, AddQuestionBankQuestionComponent, QuestionBankQuestionsViewComponent, QuestionBankQuestionDetailsComponent, QuesionBankViewComponent],
+  declarations: [AddQuestionBankCategoryComponent ,QuestionBankCategoriesViewComponent, QuestionBankCategoryDetailsComponent, AddQuestionBankQuestionComponent,
+     QuestionBankQuestionsViewComponent, QuestionBankQuestionDetailsComponent, QuesionBankViewComponent],
   imports: [
+    SharedModule,
     FormsModule,
     ReactiveFormsModule,
     CommonModule,

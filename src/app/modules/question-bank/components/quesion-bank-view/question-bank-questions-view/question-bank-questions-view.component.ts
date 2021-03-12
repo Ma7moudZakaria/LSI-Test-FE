@@ -21,6 +21,8 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   @Output() selectedQuestionId = new EventEmitter<{}>();;
   @Output() isViewAdd = new EventEmitter<boolean>();
   valueLang = "nameAr";
+  panelOpenState = false;
+  currentlyOpenedItemIndex = -1;
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
      public translate: TranslateService,public dialog: MatDialog) {
       this.valueLang = this.translate.currentLang == 'en-US' ? 'nameEn' : 'nameAr';
@@ -106,5 +108,27 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
       }
      
     });
+  }
+
+  items = [
+    { header: 'Header 1', description: 'Description 1', content: 'Content 1' },
+    { header: 'Header 2', description: 'Description 2', content: 'Content 2' },
+    { header: 'Header 3', description: 'Description 3', content: 'Content 3' },
+    { header: 'Header 4', description: 'Description 4', content: 'Content 4' },
+    { header: 'Header 5', description: 'Description 5', content: 'Content 5' },
+    { header: 'Header 6', description: 'Description 6', content: 'Content 6' },
+    { header: 'Header 7', description: 'Description 7', content: 'Content 7' },
+    { header: 'Header 8', description: 'Description 8', content: 'Content 8' },
+    { header: 'Header 9', description: 'Description 9', content: 'Content 9' },
+    { header: 'Header 10', description: 'Description 10', content: 'Content 10' },
+  ];
+  setOpened(itemIndex:number) {
+    this.currentlyOpenedItemIndex = itemIndex;
+  }
+
+  setClosed(itemIndex:Number) {
+    if(this.currentlyOpenedItemIndex === itemIndex) {
+      this.currentlyOpenedItemIndex = -1;
+    }
   }
 }
