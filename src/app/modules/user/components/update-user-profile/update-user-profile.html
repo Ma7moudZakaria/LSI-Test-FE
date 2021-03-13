@@ -1,150 +1,249 @@
-
 <div class="container-fluid UpdateUser">
- <div class="row">
-     <div class="box_container"> 
+    <div class="row">
+        <div class="box_container">
 
-    <form [formGroup]="profileForm" (ngSubmit)="onSubmit(profileForm.value)" class="form-group">
+            <form [formGroup]="profileForm" (ngSubmit)="onSubmit(profileForm.value)" class="form-group">
 
-        <div class="col-12 profile p-0 mb-50">
-            <div  class="profile_background"></div>
-            <img class="img_profile"  [src]="userProfileDetails?.proPic">
-            <input type="file" 
-        (change)="onFileChange($any($event.target).files)">
-        </div>
-
-<div class="internal_scroll">
-<div class="col-4 mt-4 mb-3 pl-0 pr-0 border_bottom">
-    <label class="UpdateUser__Label mt-5"> معلومات الشخصية </label>
-
-   </div>
-    
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4 pl-0 pr-0">
-            <div class="row pl-0 pr-0 ">
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <label class="Register__Label" for="firstName"> الإسم </label>
-                    <input id="firstName"  pInputText type="text" formControlName="firstName" name="firstName"  class="form-control UserRegister__FormControl">                            
+                <div class="col-12 profile p-0 mb-50">
+                    <div class="profile_background"></div>
+                    <img class="img_profile" [src]="userProfileDetails?.proPic">
+                    <input type="file" (change)="onFileChange($any($event.target).files)">
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <label class="Register__Label" for="middleName"> إسم الأب </label>
-                    <input id="middleName"  pInputText type="text" formControlName="middleName" name="middleName"  class="form-control UserRegister__FormControl">
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <label class="Register__Label" for="familyName"> إسم العائلة </label>
-                    <input id="familyName"  pInputText type="text" formControlName="familyName" name="familyName"  class="form-control UserRegister__FormControl">
-                </div>
-                <div class="col-lg-3 col-md-2 col-sm-2 col-xs-2">
-                    <label class="Register__Label" for="birthdate"> تاريخ الميلاد </label>
-                    <input id="birthdate"  pInputText type="date" formControlName="birthdate" name="birthdate"  class="form-control UserRegister__FormControl">
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4">
-                    <label class="Register__Label" for="birthdate"> الجنس </label>      
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" *ngFor="let item of collectionOfLookup.GENDER">                             
-                            <label for="male">  
-                                <input type="radio" id="male" name="gender" formControlName="gender" value="{{item.id}}"> 
-                                {{ translate.currentLang == 'en' ? item.nameEn : item.nameAr}}
-                            </label> 
+
+                <div class="internal_scroll">
+                    <div class="col-4 mt-4 mb-3 pl-0 pr-0 border_bottom">
+                        <label class="UpdateUser__Label mt-5"> معلومات الشخصية </label>
+
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4 pl-0 pr-0">
+                        <div class="row pl-0 pr-0 ">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                <label class="Register__Label" for="firstName"> الإسم </label>
+                                <input id="firstName" pInputText type="text" formControlName="firstName"
+                                    name="firstName" class="form-control UserRegister__FormControl">
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                <label class="Register__Label" for="middleName"> إسم الأب </label>
+                                <input id="middleName" pInputText type="text" formControlName="middleName"
+                                    name="middleName" class="form-control UserRegister__FormControl">
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                <label class="Register__Label" for="familyName"> إسم العائلة </label>
+                                <input id="familyName" pInputText type="text" formControlName="familyName"
+                                    name="familyName" class="form-control UserRegister__FormControl">
+                            </div>
+                            <div class="col-lg-3 col-md-2 col-sm-2 col-xs-2">
+                                <label class="Register__Label" for="birthdate"> تاريخ الميلاد </label>
+                                <input id="birthdate" pInputText type="date" formControlName="birthdate"
+                                    name="birthdate" class="form-control UserRegister__FormControl">
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4">
+                                <label class="Register__Label" for="birthdate"> الجنس </label>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"
+                                        *ngFor="let item of collectionOfLookup.GENDER">
+                                        <label for="male">
+                                            <input type="radio" id="male" name="gender" formControlName="gender"
+                                                value="{{item.id}}">
+                                            {{ translate.currentLang == 'en' ? item.nameEn : item.nameAr}}
+                                        </label>
 
 
-             <!-- <section >
+                                        <!-- <section >
             <label class="UserLogin__Label" for="UserEmail">Radio-button</label>
                 <mat-radio-group aria-label="Select an option"  class="example-radio-group">
                     <mat-radio-button value="1" class="example-radio-button" >Option 1</mat-radio-button>
                     <mat-radio-button value="2" class="example-radio-button" >Option 2</mat-radio-button>
                   </mat-radio-group>
           </section> -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>                    
-                </div>
-            </div>                
-        </div>
+                    </div>
 
 
-        <div class="col-4 mt-4 mb-3 pl-0 pr-0 mt-3 mb-4 border_bottom">
-            <label class="UpdateUser__Label"> معلومات التواصل </label>
+                    <div class="col-4 mt-4 mb-3 pl-0 pr-0 mt-3 mb-4 border_bottom">
+                        <label class="UpdateUser__Label"> معلومات التواصل </label>
 
-        </div>
+                    </div>
 
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 pr-0">
-            <div class="row pl-0 pr-0">
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 pr-0">
+                        <div class="row pl-0 pr-0">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
 
-                       <label class="Register__Label" for="phoneNumber"> دولةالاقامة </label>
+                                <label class="Register__Label" for="phoneNumber"> دولةالاقامة </label>
 
-                            <select class="UpdateUser__Options" name="nameEn" formControlName="countryCode" > 
-                                <option *ngFor = "let countryItem of collectionOfLookup.COUNTRY" [value]="countryItem.id">
-                                    {{ translate.currentLang == 'en' ? countryItem.nameEn : countryItem.nameAr}}</option><!--change check after adding language listner-->
-                            </select>  
+                                <select class="UpdateUser__Options" name="nameEn" formControlName="countryCode">
+                                    <option *ngFor="let countryItem of collectionOfLookup.COUNTRY"
+                                        [value]="countryItem.id">
+                                        {{ translate.currentLang == 'en' ? countryItem.nameEn : countryItem.nameAr}}
+                                    </option>
+                                    <!--change check after adding language listner-->
+                                </select>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+
+                                <label class="Register__Label" for="phoneNumber"> رقم الجوال </label>
+
+                                <input id="phoneNumber" pInputText type="text" formControlName="phoneNumber"
+                                    style="width:100%;" name="phoneNumber"
+                                    class="form-control UserRegister__FormControl">
+                            </div>
+
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                <label class="Register__Label" for="email"> البريد الاكترونى </label>
+                                <input id="email" type="email" formControlName="email" style="width:100%;" name="email"
+                                    class="form-control UserRegister__FormControl">
+                            </div>
+
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                <label class="Register__Label" for="nationality"> الجنسية </label>
+                                <div>
+                                    <select class="UpdateUser__Options" name="nameEn" formControlName="nationality">
+                                        <option *ngFor="let nationalityItem of collectionOfLookup.NATIONALITY"
+                                            [value]="nationalityItem.id">
+                                            {{ translate.currentLang == 'en' ? nationalityItem.nameEn :
+                                            nationalityItem.nameAr}}
+                                            <!--change check after adding language listner-->
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                <label class="Register__Label" for="address"> العنوان </label>
+                                <input id="address" pInputText type="text" formControlName="address" name="address"
+                                    class="form-control UserRegister__FormControl">
+                            </div>
                         </div>
-                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    </div>
 
-                    <label class="Register__Label" for="phoneNumber"> رقم الجوال </label>
 
-                            <input id="phoneNumber"  pInputText type="text" formControlName="phoneNumber" style="width:100%;" name="phoneNumber" class="form-control UserRegister__FormControl">
+
+                    <div class="col-4 mt-4 mb-3 pl-0 pr-0 mt-3 mb-4  border_bottom">
+                        <label class="UpdateUser__Label"> التعليم الأكاديمي</label>
+
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 pr-0">
+                        <div class="row pl-0 pr-0">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                <label class="Register__Label" for="educationalLevel"> مستوى التعليمي </label>
+                                <select class="UpdateUser__Options" name="nameEn" formControlName="educationallevel">
+                                    <option *ngFor="let educationalLevelItem of collectionOfLookup.EDU_LEVEL"
+                                        [value]="educationalLevelItem.id">
+                                        {{ translate.currentLang == 'en' ? educationalLevelItem.nameEn :
+                                        educationalLevelItem.nameAr}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                <label class="Register__Label" for="occupation"> المهنة </label>
+                                <input id="occupation" pInputText type="text" formControlName="occupation"
+                                    name="occupation" class="form-control UserRegister__FormControl">
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                <label class="Register__Label" for="quraanMemorization"> مقدار الحفظ من القران </label>
+                                <select class="UpdateUser__Options" name="nameEn" formControlName="quraanMemorization">
+                                    <option *ngFor="let amount of quraanParts; let i = index" [value]="i+1">
+                                        {{i+1}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <label class="Register__Label" for="educationalLevel"> اجازة حفظ القران </label>
+                                <input type="file" class="form-control UserRegister__FormControl" multiple
+                                    id="importFile" (change)="onEjazaFileChange($any($event.target).files)"
+                                    placeholder="ارفق اجازة حفظ القران">
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-8">
+                                        <ul class="files-conainer">
+                                            <li *ngFor="let item of fileList;let i=index">
+                                                <button (click)="DeleteAttachment(i,item.id)">delete</button>
+                                                <a class="card" href="{{item.url}}" target="_blank">
+                                                    <div class="pdf">
+                                                        <i class="fa fa-file"></i>
+                                                    </div>
+                                                    <div class="text-center fileName">
+                                                        <p
+                                                            style="text-overflow: ellipsis;overflow: hidden; white-space: nowrap;margin-left: 10px;margin-right: 10px;">
+                                                            {{item.fileName}}</p>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 pr-0">
+                        <div class="row pl-0 pr-0">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>
+                                    مشايخ درست عليهم
+
+                                    <button type="button" tooltipClass="custom-tooltip"
+                                        class="btn p-0 d-inline-block btn-link mr-2" placement="left" ngbTooltip="">
+                                        <i class="fa  fa-exclamation-circle"></i>
+
+                                    </button>
+                                </label>
+
+                                <div class="input-group">
+                                    <!-- <input class="form-control" type="text" /> -->
+                                    <div class="input-group">
+                                        <select class="form-control" id="shiekhs" formControlName="userSheikhs">
+                                            <option *ngFor="let sheikh of collectionOfLookup.SYSTEM_SHEIKHS" 
+                                                value="{{sheikh.id}}">
+                                                {{translate.currentLang=='en'? sheikh.nameEn : sheikh.nameAr}}</option>
+                                        </select>
+                                        <span class="select-arrow position-absolute">
+                                            <i class="fa fa-angle-down" style="color: inherit;"></i></span>
+                                    </div>
+                                    <span class="plus-btn position-absolute">
+                                        <button class="btn btn-primary btn-add" type="button"
+                                            (click)="addUserShiekhs()">
+                                            <i class="fa  fa-plus"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                                <div class="badges mt-3">
+                                    <span *ngFor="let p of selectedShiekhsList"
+                                        class="badge badge-info p-2">{{translate.currentLang=='ar'?p.nameAr:p.nameEn}}
+                                        <a (click)="removeItemFromSelectedShiekhs(p)"><i
+                                                class="fa  fa-close"></i></a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div *ngIf="shiekhsMessage" class="alert alert-{{ shiekhsMessage.type }} my-4 py-2">
+                                    {{ shiekhsMessage.message }}
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                            <label class="Register__Label" for="email"> البريد الاكترونى  </label>
-                             <input id="email"   type="email" 
-                             formControlName="email" style="width:100%;"
-                              name="email" class="form-control UserRegister__FormControl">
-                        </div>
+                    </div>
 
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <label class="Register__Label" for="nationality"> الجنسية </label>
-                    <div>
-                        <select class="UpdateUser__Options" name="nameEn" formControlName="nationality" > 
-                            <option *ngFor = "let nationalityItem of collectionOfLookup.NATIONALITY" [value]="nationalityItem.id">
-                                {{ translate.currentLang == 'en' ? nationalityItem.nameEn : nationalityItem.nameAr}}<!--change check after adding language listner-->
-                            </option>
-                        </select> 
-                    </div>                        
+                    <div class="form-group col-lg-12 mx-auto mb-0 mt-4">
+                        <button type="submit" class="btn UserLogin__Submit"> حفظ </button>
+                    </div>
+
+                    <div *ngIf="resMessage" class="alert alert-{{ resMessage.type }} my-4 py-2">
+                        {{ resMessage.message }}
+                    </div>
                 </div>
-               
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <label class="Register__Label" for="address"> العنوان </label>
-                    <input id="address"  pInputText type="text" formControlName="address" name="address" class="form-control UserRegister__FormControl">              
-                </div>
-            </div>                
+            </form>
         </div>
-
-
-
-        <div class="col-4 mt-4 mb-3 pl-0 pr-0 mt-3 mb-4  border_bottom">
-            <label class="UpdateUser__Label"> التعليم الأكاديمي</label>
-
-        </div>
-
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 pr-0">
-            <div class="row pl-0 pr-0">
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <label class="Register__Label" for="educationalLevel"> مستوى التعليمي  </label>
-                    <select class="UpdateUser__Options" name="nameEn" formControlName="educationallevel" > 
-                        <option *ngFor = "let educationalLevelItem of collectionOfLookup.EDU_LEVEL" [value]="educationalLevelItem.id">
-                            {{ translate.currentLang == 'en' ? educationalLevelItem.nameEn : educationalLevelItem.nameAr}}
-                        </option>
-                    </select>  
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <label class="Register__Label" for="occupation"> المهنة </label>
-                    <input id="occupation"  pInputText type="text" formControlName="occupation" name="occupation" class="form-control UserRegister__FormControl">
-                </div>
-            </div>
-        </div>
-
-
-
-        <div class="form-group col-lg-12 mx-auto mb-0 mt-4">
-            <button type="submit" class="btn UserLogin__Submit"> حفظ </button>            
-        </div> 
-
-        <div *ngIf="resMessage" class="alert alert-{{ resMessage.type }} my-4 py-2">
-            {{ resMessage.message }}
-          </div>
     </div>
-    </form>
-</div>
-</div>
 </div>
 
 

@@ -1,3 +1,7 @@
+import { IUserSheikhs } from "./iuser-sheikhs";
+import { IUserTrainingCourses } from "./iuser-training-courses";
+import { IUserScientificArchives } from "./iuserscientificarchives";
+
 export interface IUpdateUserProfile {
     usrId?: string;
     firstAr?: string;
@@ -15,10 +19,10 @@ export interface IUpdateUserProfile {
     occupation?: string;
     address?: string;
     quraanMemorizeAmount?:number;
-    ejazaIds?:string;
-    scientificArchives?:[];
-    sheikhs?:[];
-    courses?:[];
+    ejazaIds?:string[];
+    scientificArchives?:IUserScientificArchives[];
+    sheikhs?:IUserSheikhs[];
+    courses?:IUserTrainingCourses[];
 }
 
 
