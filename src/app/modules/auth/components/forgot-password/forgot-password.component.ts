@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IForgotPassword } from 'src/app/core/interfaces/auth-interfaces/iforgot-password';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 
 @Component({
@@ -15,21 +18,18 @@ export class ForgotPasswordComponent implements OnInit {
   hidePassword = true;
   forgetpasswordform = new FormGroup({});
   submitted: boolean | undefined;
-  token:any;
-  successMessage:any;
-  errorMessage:any;
-  language:any;
+  resMessage: BaseMessageModel = {};
+  currentLang: LanguageEnum | undefined;
 
   constructor( 
       private fb: FormBuilder,
-      private router: Router,
-      private activatedRoute: ActivatedRoute,
+      public translate: TranslateService,
       private authService: AuthService
       ) { }
 
   ngOnInit(): void {
     this.loadForgotPasswordForm();
-    this.language = this.language === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
+    this.currentLang = this.translate.currentLang === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
   }
 
   loadForgotPasswordForm() {
@@ -47,32 +47,25 @@ export class ForgotPasswordComponent implements OnInit {
       this.authService.forgotPassword(forgotPasswordModel).subscribe(
         (res) => {
           if (res.isSuccess){
-            this.successMessage = res.message;
-            // this.successMessage={
-            //   message: res.message,
-            //   type:'success'
-            // }
-            setTimeout(()=>{
-                // this.router.navigateByUrl('/auth/login');
-              },3000);
+            this.resMessage = {
+              message: res.message,
+              type: BaseConstantModel.SUCCESS_TYPE
+            }
           }
           else{
-            this.errorMessage  = res.message;
-          }
-        },
-        (error: any) => {
-          if (!error.isSuccess) {
-            this.errorMessage = this.language == LanguageEnum.en ? "Please Enter A valid Data" : "برجاء إدخال البيانات صحيحة";
+            this.resMessage = {
+              message: res.message,
+              type: BaseConstantModel.DANGER_TYPE
+            }
           }
         }
       );
     }
     else{
-      // this.successMessage={
-      //   message: this.language == LanguageEnum.en ? "Please Enter A valid Data" : "برجاء إدخال البيانات صحيحة",
-      //   type:'danger'
-      // }
-      this.errorMessage = this.language == LanguageEnum.en ? "Please Enter A valid Data" : "برجاء إدخال البيانات صحيحة";
+      this.resMessage = {
+        message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+        type: BaseConstantModel.DANGER_TYPE
+      }
     }
   }
 }

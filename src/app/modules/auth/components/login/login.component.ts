@@ -6,6 +6,8 @@ import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IAuthentication } from 'src/app/core/interfaces/auth-interfaces/iauthentication';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 
@@ -21,10 +23,8 @@ export class LoginComponent implements OnInit {
   submitted = new Boolean ({});
   lookupCollection: ILookupCollection | undefined;
   lkupsKeys : string[] = ['GENDER'];
-  errorMessage:any;
-  successMessage:any;
-
-  language:any;
+  resMessage: BaseMessageModel = {};
+  currentLang: LanguageEnum | undefined;
 
   constructor(
       private fb: FormBuilder,
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       'password': new FormControl('', Validators.compose([Validators.required, Validators.minLength(6)]))
     });
     
-    this.language = this.language === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
+    this.currentLang = this.translate.currentLang === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
   }
 
   getLookups(){
@@ -60,34 +60,25 @@ export class LoginComponent implements OnInit {
       this.authService.userAuthentication(authModel).subscribe(
         (res) => {
           if (res.isSuccess) {
-            localStorage.setItem('user', JSON.stringify(res.data as IUser))
-            this.successMessage = res.message;
+            localStorage.setItem('user', JSON.stringify(res.data as IUser));
             this.router.navigateByUrl('/dashboard');
             this.getLookups();
-            // this.successMessage = {
-            //   message: res.message,
-            //   type: 'success'
-            // }
-            setTimeout(() => {
-              // this.router.navigateByUrl('/auth/login');
-            }, 3000);
           }
-          else this.errorMessage = res.message;
-        },
-        (error: any) => {
-          if (!error.isSuccess) {
-            // this.errorMessage = this.translate.currentLang =='ar' ? "خطأ فى الاتصال" : "Cummunication error"//error.message;
-            // this.errorMessage = res.message;
-          }
+          else
+          {
+            this.resMessage = {
+              message: res.message,
+              type: BaseConstantModel.DANGER_TYPE
+            }
+          } 
         }
       );
     }
     else {
-      // this.successMessage={
-      //   message: this.language == LanguageEnum.en ? "Please Enter A valid Data" : "برجاء إدخال البيانات صحيحة",
-      //   type:'danger'
-      // }
-      this.errorMessage = this.language == LanguageEnum.en ? "Please Enter A valid Data" : "برجاء إدخال البيانات صحيحة";
+      this.resMessage = {
+        message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+        type: BaseConstantModel.DANGER_TYPE
+      }
     }
   }
 }
