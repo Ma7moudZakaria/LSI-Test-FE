@@ -29,13 +29,20 @@
     </li>
    
 
-    <li class="pl-3 pr-3 border-right">
-        <a (click)="showPro = false">  <i class="fas fa-user"></i></a>
+    <li class="pl-3 pr-3 border-right border-left">
+        <a (click)="showPro = false">
+              <!-- <i class="fas fa-user"></i> -->
+              <img  class="nav-items_user " src="../../../../assets/images/header/user.svg">
+            </a>
         <app-view-user-profile-custom *ngIf="!showPro"  (submitClose)="closeProfile($event)"></app-view-user-profile-custom>
     </li>
 
-    <li class="pl-3 pr-3 border-right">
-        <a> <i class="fas fa-bell"></i></a>
+    <li class="pl-3 pr-3 ">
+        <a> 
+            <!-- <i class="fas fa-bell"></i> -->
+            <img    class="nav-items_notify" src="../../../../assets/images/header/notify.svg">
+
+        </a>
     </li>
     </ul>
   </nav>

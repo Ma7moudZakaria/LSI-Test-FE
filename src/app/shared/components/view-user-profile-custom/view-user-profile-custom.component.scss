@@ -2,22 +2,29 @@
 
 
 /* The side navigation menu */
+
 .sidenav_profile {
-    height: 100%; /* 100% Full-height */
-    padding-left: 1rem;
-    padding-right: 1rem;
-    width: 30%; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
-    left: 0;
-    background-color: #FBFBFB; /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 30px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav_profile */
-  }
-  
-  
+  height: 100%; /* 100% Full-height */
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 30%; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  background-color: #FBFBFB; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 30px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav_profile */
+  box-shadow: 0 0 15px #0c0808;
+}
+.sidenav_profile:lang(en) {
+  left: 0;
+}
+.sidenav_profile:lang(ar) {
+  right: 0;
+}
+
+
   
   
   /* Position and style the close button (top right corner) */
@@ -34,7 +41,7 @@
     text-decoration: none;
     font-size: 25px;
     display: block;
-    transition: 0.3s;
+    transition: 5s;
   }
   
   
@@ -83,3 +90,23 @@
     font-family:Almarai-Bold ;
     font-size: 1.5rem;
 }
+
+.logout{
+  color: #828282;
+    font-size: 0.9rem;
+    font-family: Almarai-Bold;
+    padding: 1rem 0.5rem 
+}
+.logout_img{
+  width: 1.3rem;
+    height: 1.53rem;
+}
+.edit_profile:lang(en) ,.footer_logout:lang(en){
+  text-align: right;
+}
+.footer_logout:lang(en){
+.logout_img{
+  transform: rotate(
+    180deg
+    )
+}}

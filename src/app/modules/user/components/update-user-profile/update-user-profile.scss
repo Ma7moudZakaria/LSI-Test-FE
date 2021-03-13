@@ -62,10 +62,40 @@
     margin-bottom: 50px;
 }
 .internal_scroll{
-max-height: 330px;
+max-height: 300px;
 overflow-y: scroll;
 overflow-x: hidden;
 }
 .border_bottom{
     border-bottom: 1px solid #b9b0b061;
 }
+
+
+// {
+//     width: 20px;
+//     height: 20px;
+//     background-position: 0 -134px;
+//     background-image: url(/rsrc.php/v3/yO/r/e7tMeg9zyDj.png);
+//     background-size: 34px 326px;
+//     background-repeat: no-repeat;
+//     display: inline-block;
+// }
+.custom_file_input{
+  left: 37%;
+  position: absolute;
+  bottom: -37px;  
+}
+
+// .upload-image {
+//     cursor:pointer;
+//     width: 158px;
+//     height: 45px;
+//     overflow:hidden;
+//     position:relative;
+//     display:inline-block;
+//     /*background-color:#fff;*/
+//     background-repeat: no-repeat;
+//     background-image:
+//       url('http://icons.iconarchive.com/icons/martz90/circle/512/camera-icon.png');
+//     background-size:20px 20px;
+//   }

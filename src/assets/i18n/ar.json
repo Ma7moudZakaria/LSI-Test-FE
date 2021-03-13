@@ -12,10 +12,11 @@
     "GENDER": "الجنس",
     "MALE": "ذكر",
     "FEMALE": "أنثى",
-    "PHONENUMBER":"رقم الهاتف",
-    "NATIONALITY":"الجنسية",
-    "FORM_INPUT_COMPLETION_MESSAGE":"برجاء اكمال البيانات",
-    "LOGOUT":"خروج"
+    "PHONENUMBER": "رقم الهاتف",
+    "NATIONALITY": "الجنسية",
+    "FORM_INPUT_COMPLETION_MESSAGE": "برجاء اكمال البيانات",
+    "LOGOUT": "خروج",
+    "SEARCH": "بحث"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATIONCODE": "رمز الدخول",
@@ -54,11 +55,11 @@
     "INACTIVE": " غير مفعل",
     "SAVE": "حفظ",
     "CANCEL": "إلغاء",
-    "REQUIRED" :"هذا الحقل مطلوب",
-    "TITLEARPATTERN" : "يرجى ادخال حروف عربى فقط",
-    "TITLEARMAXLENGTH" : "يرجى ادخال اسم اقل من 50 حرف",
-    "TITLEENPATTERN" : "يرجى ادخال حروف انجليزى فقط",
-    "TITLEENMAXLENGTH" : "يرجى ادخال اسم اقل من 50 حرف"
+    "REQUIRED": "هذا الحقل مطلوب",
+    "TITLEARPATTERN": "يرجى ادخال حروف عربى فقط",
+    "TITLEARMAXLENGTH": "يرجى ادخال اسم اقل من 50 حرف",
+    "TITLEENPATTERN": "يرجى ادخال حروف انجليزى فقط",
+    "TITLEENMAXLENGTH": "يرجى ادخال اسم اقل من 50 حرف"
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "البرامج",

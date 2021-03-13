@@ -12,10 +12,11 @@
     "GENDER": "Gender",
     "MALE": "Male",
     "FEMALE": "FeMale",
-    "PHONENUMBER":"Phone Number",
-    "NATIONALITY":"Nationality",
-    "FORM_INPUT_COMPLETION_MESSAGE":"Please complete the missing information",
-    "LOGOUT":"Logout"
+    "PHONENUMBER": "Phone Number",
+    "NATIONALITY": "Nationality",
+    "FORM_INPUT_COMPLETION_MESSAGE": "Please complete the missing information",
+    "LOGOUT": "Logout",
+    "SEARCH": "Search"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATIONCODE": "Activation Code",
@@ -57,11 +58,11 @@
     "INACTIVE": "InActive",
     "SAVE": "Save",
     "CANCEL": "Cancel",
-    "REQUIRED" :"This Field Is Required.",
-    "TITLEARPATTERN" : "Please insert arabict text only.",
-    "TITLEARMAXLENGTH" : "Title Must be less than 50 character",
-    "TITLEENPATTERN" : "Please insert english text only.",
-    "TITLEENMAXLENGTH" : "Title Must be less than 50 character"
+    "REQUIRED": "This Field Is Required.",
+    "TITLEARPATTERN": "Please insert arabict text only.",
+    "TITLEARMAXLENGTH": "Title Must be less than 50 character",
+    "TITLEENPATTERN": "Please insert english text only.",
+    "TITLEENMAXLENGTH": "Title Must be less than 50 character"
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "Programs",
