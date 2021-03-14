@@ -1,4 +1,4 @@
-export interface IquestionBankQuestionUpdateModel {
+export interface IQuestionBankQuestionUpdateModel {
     id?:string;
     no?:number;
     arabQuestion?:string;

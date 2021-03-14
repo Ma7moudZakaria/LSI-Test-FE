@@ -1,4 +1,4 @@
-export interface IquestionBankCategoryUpdateModel {
+export interface IQuestionBankCategoryUpdateModel {
     id?:string
     no? :number
     arabCatgName?:string

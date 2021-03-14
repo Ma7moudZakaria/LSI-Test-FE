@@ -3,8 +3,8 @@ import { Component, OnInit ,EventEmitter, Input, Output} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { IquestionBankQuestionsFilterRequest } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-filter-request';
-import { IquestionBankQuestionsModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-model';
+import { IQuestionBankQuestionsFilterRequest } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-filter-request';
+import { IQuestionBankQuestionsModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { QuestionBankQuestionService } from 'src/app/core/services/question-bank-services/question-bank-question.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
@@ -15,8 +15,8 @@ import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/compon
 })
 export class QuestionBankQuestionsViewComponent implements OnInit {
   filterErrorMessage?:string;
-  questionBankQuestionList: IquestionBankQuestionsModel[] = [];
-  questionBankQuestionFilter: IquestionBankQuestionsFilterRequest = {};
+  questionBankQuestionList: IQuestionBankQuestionsModel[] = [];
+  questionBankQuestionFilter: IQuestionBankQuestionsFilterRequest = {};
   @Input() selectedCategoryId?:string; 
   @Output() selectedQuestionId = new EventEmitter<{}>();;
   @Output() isViewAdd = new EventEmitter<boolean>();

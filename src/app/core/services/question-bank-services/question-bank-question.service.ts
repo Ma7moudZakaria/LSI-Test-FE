@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IquestionBankQuestionCreatModel } from '../../interfaces/questionBankQuestions-interfaces/iquestion-bank-question-creat-model';
-import { IquestionBankQuestionUpdateModel } from '../../interfaces/questionBankQuestions-interfaces/iquestion-bank-question-update-model';
-import { IquestionBankQuestionsFilterRequest } from '../../interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-filter-request';
+import { IQuestionBankQuestionCreatModel } from '../../interfaces/questionBankQuestions-interfaces/iquestion-bank-question-creat-model';
+import { IQuestionBankQuestionUpdateModel } from '../../interfaces/questionBankQuestions-interfaces/iquestion-bank-question-update-model';
+import { IQuestionBankQuestionsFilterRequest } from '../../interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-filter-request';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 
 @Injectable({
@@ -18,14 +18,14 @@ export class QuestionBankQuestionService {
   DeleteQuestionBankQuestionURL=environment.baseUrl+'QuestionBankQuestions/delete-question-bank-question/';
 
   constructor(private http:HttpClient) { }
-  addQuestionBankQuestion(model:IquestionBankQuestionCreatModel):Observable<BaseResponseModel>{
+  addQuestionBankQuestion(model:IQuestionBankQuestionCreatModel):Observable<BaseResponseModel>{
     return this.http.post<BaseResponseModel>(this.AddQuestionBankQuestionURL,model);
   }
-  UpdateQuestionBankQuestion(model:IquestionBankQuestionUpdateModel):Observable<BaseResponseModel>{
+  UpdateQuestionBankQuestion(model:IQuestionBankQuestionUpdateModel):Observable<BaseResponseModel>{
     return this.http.put<BaseResponseModel>(this.UpdateQuestionBankQuestionURL,model);
   }
  
-  getQuestionBankQuestionsFilter(filterRequest:IquestionBankQuestionsFilterRequest):Observable<BaseResponseModel>{
+  getQuestionBankQuestionsFilter(filterRequest:IQuestionBankQuestionsFilterRequest):Observable<BaseResponseModel>{
     return this.http.post<BaseResponseModel>(this.GetQuestionBankQuestionsFilterURL,filterRequest)
   }
   getQuestionBankQuestionDetails(id:string):Observable<BaseResponseModel>{

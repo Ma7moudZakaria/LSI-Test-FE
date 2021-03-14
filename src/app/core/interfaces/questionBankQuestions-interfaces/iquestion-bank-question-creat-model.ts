@@ -1,4 +1,4 @@
-export interface IquestionBankQuestionCreatModel {
+export interface IQuestionBankQuestionCreatModel {
     arabQuestion?:string;
     engQuestion?:string;
     arabAnswer?:string;

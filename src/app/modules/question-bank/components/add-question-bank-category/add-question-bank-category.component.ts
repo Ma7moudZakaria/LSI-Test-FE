@@ -3,9 +3,9 @@ import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { IquestionBankCategoriesModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-categories-model';
-import { IquestionBankCategoryCreatModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-category-creat-model';
-import { IquestionBankCategoryUpdateModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-category-update-model';
+import { IQuestionBankCategoriesModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-categories-model';
+import { IQuestionBankCategoryCreatModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-category-creat-model';
+import { IQuestionBankCategoryUpdateModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-category-update-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { QuestionBankCategoryService } from 'src/app/core/services/question-bank-services/question-bank-category.service';
 
@@ -18,9 +18,9 @@ export class AddQuestionBankCategoryComponent implements OnInit {
   //@Input() user: any;
   Title?: string;
   QuestionBankCategoryId:string='';
-  QuestionBankCategory?: IquestionBankCategoriesModel ;
-  QuestionBankCategoryCreat: IquestionBankCategoryCreatModel = {};
-  QuestionBankCategoryUpdate: IquestionBankCategoryUpdateModel = {} ;
+  QuestionBankCategory?: IQuestionBankCategoriesModel ;
+  QuestionBankCategoryCreat: IQuestionBankCategoryCreatModel = {};
+  QuestionBankCategoryUpdate: IQuestionBankCategoryUpdateModel = {} ;
   isAdd:boolean=true;
   // currentWindowWidth?: number;
   errorMessage?:string;

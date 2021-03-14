@@ -1,4 +1,4 @@
-export interface IcontentManagementCreat {
+export interface IContentManagementCreat {
     shortDesAr?:string;
     shortDesEn?:string;
     longDesAr?:string;

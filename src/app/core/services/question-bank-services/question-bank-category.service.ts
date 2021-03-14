@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IquestionBankCategoriesFilter } from '../../interfaces/questionBankCategories-interfaces/iquestion-bank-categories-filter-.request';
-import { IquestionBankCategoryCreatModel } from '../../interfaces/questionBankCategories-interfaces/iquestion-bank-category-creat-model';
-import { IquestionBankCategoryUpdateModel } from '../../interfaces/questionBankCategories-interfaces/iquestion-bank-category-update-model';
+import { IQuestionBankCategoriesFilter } from '../../interfaces/questionBankCategories-interfaces/iquestion-bank-categories-filter-.request';
+import { IQuestionBankCategoryCreatModel } from '../../interfaces/questionBankCategories-interfaces/iquestion-bank-category-creat-model';
+import { IQuestionBankCategoryUpdateModel } from '../../interfaces/questionBankCategories-interfaces/iquestion-bank-category-update-model';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 
 @Injectable({
@@ -18,14 +18,14 @@ export class QuestionBankCategoryService {
   DeleteQuestionBankCategoryURL=environment.baseUrl+'QuestionBankCategories/delete-question-bank-category/';
 
   constructor(private http:HttpClient) { }
-  addQuestionBankCategory(model:IquestionBankCategoryCreatModel):Observable<BaseResponseModel>{
+  addQuestionBankCategory(model:IQuestionBankCategoryCreatModel):Observable<BaseResponseModel>{
     return this.http.post<BaseResponseModel>(this.AddQuestionBankCategoryURL,model);
   }
-  UpdateQuestionBankCategory(model:IquestionBankCategoryUpdateModel):Observable<BaseResponseModel>{
+  UpdateQuestionBankCategory(model:IQuestionBankCategoryUpdateModel):Observable<BaseResponseModel>{
     return this.http.put<BaseResponseModel>(this.UpdateQuestionBankCategoryURL,model);
   }
  
-  getQuestionBankCategoriesFilter(filterRequest:IquestionBankCategoriesFilter):Observable<BaseResponseModel>{
+  getQuestionBankCategoriesFilter(filterRequest:IQuestionBankCategoriesFilter):Observable<BaseResponseModel>{
     return this.http.post<BaseResponseModel>(this.GetQuestionBankCategoryFilterURL,filterRequest)
   }
   getQuestionBankCategoryDetails(id:string):Observable<BaseResponseModel>{
