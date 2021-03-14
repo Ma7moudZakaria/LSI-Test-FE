@@ -89,13 +89,13 @@ color: #ffffff
      height: 72px;
      width: 229px;
      background-size: 70%;
-     background-position-x: unset;
+     background-position-x: right;
      background-repeat: no-repeat;
      background-position-y: center;
-
+     transform: scaleX(-1);
 }
 .header__img-small:lang(ar){
-    transform: scaleX(-1);
+    transform: scaleX(1);
 }
 .header__img-larg{
    
