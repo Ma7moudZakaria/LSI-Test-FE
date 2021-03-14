@@ -68,7 +68,7 @@ disableSaveButtons = false;
     this.filterErrorMessage = "";
     if(name!=null||name!=""){ this.questionBankCategoryFilter.catgName=name;}
     this.questionBankCategoryFilter.skip=0;
-    this.questionBankCategoryFilter.take= Number.MAX_SAFE_INTEGER;
+    this.questionBankCategoryFilter.take= 100;
     this.questionBankCategoryService.getQuestionBankCategoriesFilter(this.questionBankCategoryFilter).subscribe(res => {
       let response = <BaseResponseModel>res;
       if (response.isSuccess) {
@@ -88,7 +88,7 @@ disableSaveButtons = false;
   clearFilter(){
     this.questionBankCategoryFilter = {};
     this.questionBankCategoryFilter.skip =0 ;
-    this.questionBankCategoryFilter.take =  Number.MAX_SAFE_INTEGER;
+    this.questionBankCategoryFilter.take =  100;
     this.getQuestionBankCategories();
   }
 
@@ -216,7 +216,7 @@ this.isView=true;
 this.isAdd=false;
   }
 
- 
+  selectedIndex:any;
   loadCatogryQuiestion(id?:string){
     this.selectedCategoryId?.emit(id);
   }

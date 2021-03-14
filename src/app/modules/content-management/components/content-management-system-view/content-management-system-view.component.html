@@ -1,0 +1,13 @@
+<div>
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <app-view-all-content-management-type (selectedcmsTypeId)="setSelectedCmsType($event)"></app-view-all-content-management-type>
+        </div>
+        <div class="col-lg-8  col-md-8 col-sm-8">
+            <app-content-management-system [selectedcmsTypeId]="selectedcmsTypeId">
+            </app-content-management-system>
+        </div>
+       
+    </div>
+
+</div>

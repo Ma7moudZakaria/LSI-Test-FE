@@ -1,6 +1,6 @@
-<div class="Question">
-  <sup class="Question_Span_Add">{{ 'QUESTION_BANK.Add_Question' | translate }}</sup>
-  <form class="form-group" [formGroup]="currentForm" (submit)="Submit()">
+
+  <!-- <sup class="Question_Span_Add">{{ 'QUESTION_BANK.Add_Question' | translate }}</sup> -->
+  <form class="form-group material-form" [formGroup]="currentForm" (submit)="Submit()">
     <!-- <div class="form-group">
        
         <select class="form-select">
@@ -30,14 +30,26 @@
       
       
     
-    <button type="submit" class="btn btn-danger" [disabled]="disableSaveButtons">{{'QUESTION_BANK.Publish' | translate}}</button>
-    <button type="button" class="btn btn-warning">{{'QUESTION_BANK.Back' | translate}}</button>
-    <div *ngIf="resultMessage?.type==='success'" class="alert alert-success">
-      {{resultMessage.message}}
-  </div>
-  <div *ngIf="resultMessage.type==='danger'" class="alert alert-danger">
-    {{resultMessage.message}}
-  </div>
+    <!-- <button type="submit" class="btn btn-danger" [disabled]="disableSaveButtons">{{'QUESTION_BANK.Publish' | translate}}</button>
+    <button type="button" class="btn btn-warning">{{'QUESTION_BANK.Back' | translate}}</button> -->
+
+    <section>
+      <div class="row direction-rtl">
+          <button class="save-btn" type="submit" [disabled]="disableSaveButtons">
+            {{'QUESTION_BANK.Publish' | translate}}
+          </button>
+          <div *ngIf="resultMessage?.type==='success'" class="alert alert-success">
+            {{resultMessage.message}}
+        </div>
+        <div *ngIf="resultMessage.type==='danger'" class="alert alert-danger">
+          {{resultMessage.message}}
+        </div>
+
+          
+      </div>
+
+  </section>
+   
   </form>
-</div>
+
 
