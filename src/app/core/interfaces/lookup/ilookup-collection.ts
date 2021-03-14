@@ -12,4 +12,5 @@ export interface ILookupCollection{
     SCIENTIFIC_ARCHIVES?:BaseLookupModel[];
     TRAINING_COURSES?:BaseLookupModel[];
     SYSTEM_SHEIKHS?:BaseLookupModel[];
+    WLAKTHROUGHPAGES?:BaseLookupModel[];
 }

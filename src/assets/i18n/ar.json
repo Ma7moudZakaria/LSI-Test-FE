@@ -105,18 +105,24 @@
     "FAMILYNAME": "إسم العائلة",
     "BIRTHDATE": "تاريخ الميلاد"
   },
-  "CONTENT_MANEGMENT_SYSTEM":{
+  "CONTENT_MANEGMENT_SYSTEM": {
     "ALL": "كل",
     "DEPARMENTs": "الأقسام",
     "TECNICAL_QUESTIONS": "الاسئلة التقنية",
-    "SHORTDESCRIPTIONAR":"وصف مختصر(عربي)",
-    "SHORTDESCRIPTIONEN":"وصف مختصر(انجليزي)",
-    "LONGDESCRIPTIONAR":"وصف كامل(عربي)",
-    "LONGDESCRIPTIONEN":"وصف كامل(انجليزي)",
+    "SHORTDESCRIPTIONAR": "وصف مختصر(عربي)",
+    "SHORTDESCRIPTIONEN": "وصف مختصر(انجليزي)",
+    "LONGDESCRIPTIONAR": "وصف كامل(عربي)",
+    "LONGDESCRIPTIONEN": "وصف كامل(انجليزي)",
     "PUBLISH": "نشر",
     "DELETE": "حذف",
     "BACK": "رجوع",
     "SEARCH": "بحث..."
 
+  },
+  "WALKTHROUGH": {
+    "PAGES": "الشرائح",
+    "UPLOADPIC": "حمل صورة",
+    "ARABICMESSAGE": "الرسالة العربى",
+    "ENGLISHMESSAGE": "الرسالة الانجليزى"
   }
 }

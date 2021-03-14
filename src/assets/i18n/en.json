@@ -105,17 +105,23 @@
     "FAMILYNAME": "Family Name",
     "BIRTHDATE": "Birthdate"
   },
-  "CONTENT_MANEGMENT_SYSTEM":{
+  "CONTENT_MANEGMENT_SYSTEM": {
     "ALL": "All",
     "DEPARMENTs": "Departments",
     "TECNICAL_QUESTIONS": "Tecnical questions",
-    "SHORTDESCRIPTIONAR":"Short description(Arabic)",
-    "SHORTDESCRIPTIONEN":"Short description(English)",
-    "LONGDESCRIPTIONAR":"Long Description(Arabic)",
-    "LONGDESCRIPTIONEN":"Long Description(English)",
+    "SHORTDESCRIPTIONAR": "Short description(Arabic)",
+    "SHORTDESCRIPTIONEN": "Short description(English)",
+    "LONGDESCRIPTIONAR": "Long Description(Arabic)",
+    "LONGDESCRIPTIONEN": "Long Description(English)",
     "PUBLISH": "Publish",
     "DELETE": "Delete",
     "BACK": "Back",
     "SEARCH": "Search.."
+  },
+  "WALKTHROUGH": {
+    "PAGES": "Pages",
+    "UPLOADPIC": "Upload Picture",
+    "ARABICMESSAGE": "Arabic Message",
+    "ENGLISHMESSAGE": "English Message"
   }
 }

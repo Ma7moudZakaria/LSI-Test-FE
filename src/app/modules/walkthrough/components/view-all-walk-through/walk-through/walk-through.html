@@ -1,0 +1,54 @@
+
+<form class="form-group material-form" [formGroup]="currentForm" (submit)="Submit()" *ngIf="selectedWalkThroughPageId">
+    <label class="custom-file custom-file__text" for="importFile">
+        <span> <img calss="upload-icon" src="assets/images/walk-through/Group 18093.svg" alt="">
+      <p> {{"WALKTHROUGH.UPLOADPIC" | translate}}</p>
+        </span>        
+    </label>
+    <input type="file" class="custom-file-input"  id="importFile"
+        (change)="onFileChange($any($event.target).files)" hidden>
+        
+        <div class="row">
+          <div class="col-lg-8 col-md-8">
+              <ul class="files-conainer">
+                  <li *ngFor="let item of fileList;let i=index">
+                      <button (click)="DeleteAttachment(i,item.id)">delete</button>
+                      <a class="card" href="{{item.url}}" target="_blank">
+                          <div class="pdf">
+                              <i class="fa fa-file"></i>
+                          </div>
+                          <div class="text-center fileName">
+                              <p
+                                  style="text-overflow: ellipsis;overflow: hidden; white-space: nowrap;margin-left: 10px;margin-right: 10px;">
+                                  {{item.fileName}}</p>
+                          </div>
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+    <div class="form-group">
+        <label for="comment">{{"WALKTHROUGH.ARABICMESSAGE" | translate}} </label>
+        <textarea class="form-control" cols="2" rows="5" id="InputtextAr" formControlName="textAr"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="comment">{{"WALKTHROUGH.ENGLISHMESSAGE" | translate}} </label>
+        <textarea class="form-control" cols="2" rows="5" id="InputtextEn" formControlName="textEn"></textarea>
+      </div>
+
+      <section>
+        <div class="row direction-rtl">
+            <button class="save-btn" type="submit" [disabled]="disableSaveButtons">
+                {{'GENERAL.SAVE' | translate}}
+            </button>                    
+
+            <div *ngIf="successMessage" class="alert alert-success">
+                {{successMessage.message}}
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger">
+                {{errorMessage.message}}
+            </div>
+        </div>
+
+    </section>
+</form>
