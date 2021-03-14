@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 
 @Component({
@@ -12,25 +15,24 @@ import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  routeParams:any;
+  routeParams:string | undefined;
   signup = false;
   editProfile = false;
   registrationModel = {};
   registerform : FormGroup  = new FormGroup({});
-  errorMessage:any;
-  isSubmit = false;
-  successMessage: any;
   hidePassword = true;
-  language:any;
+  resMessage: BaseMessageModel = {};
+  currentLang: LanguageEnum | undefined;
 
   constructor(private authService: AuthService,
     private router: Router,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    public translate: TranslateService) { }
 
   ngOnInit(): void {
     this.routeParams = this.router.url;
     this.loadUserForm();
-    this.language = this.language === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
+    this.currentLang = this.translate.currentLang === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
     
     if (this.routeParams === '/auth/register') {
       this.signup = true;
@@ -56,8 +58,6 @@ export class RegisterComponent implements OnInit {
 
   onSignup(value: string) {
     if (this.registerform.valid) {
-      this.isSubmit = true;
-      this.errorMessage = '';
       localStorage.clear();
       this.registrationModel = {
         uname: this.registerform.value.userName ,
@@ -67,31 +67,23 @@ export class RegisterComponent implements OnInit {
       }
 
       this.authService.register(this.registrationModel).subscribe(res => {
-        this.isSubmit = true;
         if (res.isSuccess) {
           localStorage.setItem('user',JSON.stringify(res.data as IUser))
-          this.successMessage = res.message;
-          // this.successMessage={
-          //   message: res.message,
-          //   type:'success'
-          // }
-          // this.router.navigate(['/auth/activate-code']);
           this.router.navigateByUrl('/auth/(baseRouter:activate-code)');
-            setTimeout(()=>{            
-              // this.router.navigate(['/home']);
-            }, 3000);
           }
           else {
-            this.errorMessage = res.message;
+            this.resMessage ={
+              message: res.message,
+              type: BaseConstantModel.DANGER_TYPE
+            }
           }
       })
     }
     else{
-      // this.successMessage={
-      //   message: this.language == LanguageEnum.en ? "Please Enter A valid Data" : "برجاء إدخال البيانات صحيحة",
-      //   type:'danger'
-      // }
-      this.errorMessage = this.language == LanguageEnum.en ? "Please Enter A valid Data" : "برجاء إدخال البيانات صحيحة";
+      this.resMessage = {
+        message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+        type: BaseConstantModel.DANGER_TYPE
+      }
     }
   }
 }

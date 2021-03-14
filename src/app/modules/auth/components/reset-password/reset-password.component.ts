@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IResetPassword } from 'src/app/core/interfaces/auth-interfaces/ireset-password';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 
 @Component({
@@ -16,21 +19,20 @@ export class ResetPasswordComponent implements OnInit {
   passwordShown = false;
   resetpasswordform = new FormGroup({});
   resetPasswordModel = {} as  IResetPassword;;
-  token:any;
-  successMessage:any;
+  token:string | undefined;
   hidePassword = true;
-  errorMessage:any;
-  language:any;
+  resMessage: BaseMessageModel = {};
+  currentLang: LanguageEnum | undefined;
 
   constructor(
-    private router: Router, private activatedRoute: ActivatedRoute,
-    private fb: FormBuilder,
+    private activatedRoute: ActivatedRoute,
+    private fb: FormBuilder, private translate: TranslateService,
     private authService: AuthService) { }
 
   ngOnInit(): void {
     this.resetPasswordFormG();
-    this.language = this.language === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
-    this.token = this.activatedRoute.snapshot.queryParamMap.get('tkn');
+    this.currentLang = this.translate.currentLang === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
+    this.token = this.activatedRoute.snapshot.queryParamMap.get('tkn') || '';
   }
 
   togglePassword() {
@@ -56,43 +58,32 @@ export class ResetPasswordComponent implements OnInit {
 
   onApply(value:string) {
     if (this.resetpasswordform.valid){
-
       this.resetPasswordModel = {
         token: this.token,
         password: this.resetpasswordform.value.password,
         confirmPassword: this.resetpasswordform.value.confirmPassword
-      }
-        
+      }        
       this.authService.resetPassword(this.resetPasswordModel).subscribe(res => {
         console.log(res);
         if (res.isSuccess){
-          this.successMessage = res.message;
-          // this.successMessage={
-          //   message:res.message,
-          //   type:'success'
-          // }
-          setTimeout(()=>{
-              // this.router.navigateByUrl('/auth/login');
-              this.router.navigateByUrl('/auth');
-            },3000);
+          this.resMessage = {
+            message: res.message,
+            type: BaseConstantModel.SUCCESS_TYPE
+          }
         }
         else{
-          this.errorMessage=res.message;
+          this.resMessage = {
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
+          }
         }
-      });
-      // , error => {
-      //       this.successMessage={
-      //         message:"Error",
-      //         type:'danger'
-      //       }
-      //       console.log(error);      
+      });         
     }
     else{
-      // this.successMessage={
-      //   message: this.language == LanguageEnum.en ? "Please Enter A valid Data" : "برجاء إدخال البيانات صحيحة",
-      //   type:'danger'
-      // }
-      this.errorMessage = this.language == LanguageEnum.en ? "Please Enter A valid Data" : "برجاء إدخال البيانات صحيحة";
+      this.resMessage = {
+        message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+        type: BaseConstantModel.DANGER_TYPE
+      }
     }
   } 
 }

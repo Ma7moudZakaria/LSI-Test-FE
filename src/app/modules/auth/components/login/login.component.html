@@ -65,14 +65,9 @@
                                 <button type="button" [routerLink]="['/auth', { outlets: {'baseRouter':['register'] }}]" class="btn  UserLogin__SignUp " > {{'LOGIN_PG.SIGNUP' | translate}}</button>
                             </div> 
 
-                            <div class="row">
-                                <div *ngIf="successMessage" class="alert alert-success">
-                                    {{successMessage}}
-                                </div>
-                                <div *ngIf="errorMessage" class="alert alert-danger">
-                                    {{errorMessage}}
-                                </div>
-                            </div>
+                            <div *ngIf="resMessage" class="alert alert-{{ resMessage.type }} my-4 py-2">
+                                {{ resMessage.message }}
+                              </div>
                         </div>
                         
                         <div class="footer_form ">
