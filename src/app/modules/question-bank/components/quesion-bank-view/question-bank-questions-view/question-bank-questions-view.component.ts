@@ -39,7 +39,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
     this.questionBankQuestionList=[];
     this.getQuestionBankQuestions(this.selectedCategoryId,Questions) 
   }
-  getQuestionBankQuestions(CategoryId?:any,Questions?:string) {
+  getQuestionBankQuestions(CategoryId?:string,Questions?:string) {
     this.filterErrorMessage = "";
     this.questionBankQuestionFilter.skip=0;
     this.questionBankQuestionFilter.take= 1000;
