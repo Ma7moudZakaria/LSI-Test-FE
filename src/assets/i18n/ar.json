@@ -33,7 +33,8 @@
     "FORGETPASSWORD": "نسيت كلمة المرور ؟",
     "SIGNUP": "سجل الأن",
     "SOICALLOGIN": "الدخول عن طريق وسائل التواصل الاجتماعي",
-    "TEACHERSIGNUP": "التسجيل كمعلم"
+    "TEACHERSIGNUP": "التسجيل كمعلم",
+    "EMAIL_ADDRESS_PLACEHOLDER":"البريد الإلكترونى"
   },
   "SIGNUP_PG": {
     "SIGNUP": "تسجيل حساب جديد",

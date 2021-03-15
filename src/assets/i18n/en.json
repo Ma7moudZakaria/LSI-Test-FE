@@ -33,7 +33,8 @@
     "FORGETPASSWORD": "Forget Password ?",
     "SIGNUP": "Register Now",
     "SOICALLOGIN": "Log in via social media",
-    "TEACHERSIGNUP": "Register as a teacher"
+    "TEACHERSIGNUP": "Register as a teacher",
+    "EMAIL_ADDRESS_PLACEHOLDER":"Email Address"
   },
   "SIGNUP_PG": {
     "SIGNUP": "Sign Up",
