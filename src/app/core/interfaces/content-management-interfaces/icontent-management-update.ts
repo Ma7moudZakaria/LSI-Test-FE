@@ -1,4 +1,4 @@
-export interface IcontentManagementUpdate {
+export interface IContentManagementUpdate {
     id?:string;
     no?:number;
     shortDesAr?:string;

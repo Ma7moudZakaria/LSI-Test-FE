@@ -3,10 +3,10 @@ import { Component, HostListener, Input,Output, EventEmitter,OnInit } from '@ang
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { IquestionBankCategoriesModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-categories-model';
-import { IquestionBankQuestionCreatModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-question-creat-model';
-import { IquestionBankQuestionUpdateModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-question-update-model';
-import { IquestionBankQuestionsModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-model';
+import { IQuestionBankCategoriesModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-categories-model';
+import { IQuestionBankQuestionCreatModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-question-creat-model';
+import { IQuestionBankQuestionUpdateModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-question-update-model';
+import { IQuestionBankQuestionsModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { QuestionBankQuestionService } from 'src/app/core/services/question-bank-services/question-bank-question.service';
 
@@ -18,10 +18,10 @@ import { QuestionBankQuestionService } from 'src/app/core/services/question-bank
 export class AddQuestionBankQuestionComponent implements OnInit {
   Title?: string;
   questionBankQuestionId:string='';
-  questionBankQuestions?: IquestionBankQuestionsModel ;
-  questionBankQuestionCreat: IquestionBankQuestionCreatModel = {};
-  questionBankQuestionUpdate: IquestionBankQuestionUpdateModel = {};
-  qBGLst:IquestionBankCategoriesModel[]=[];
+  questionBankQuestions?: IQuestionBankQuestionsModel ;
+  questionBankQuestionCreat: IQuestionBankQuestionCreatModel = {};
+  questionBankQuestionUpdate: IQuestionBankQuestionUpdateModel = {};
+  qBGLst:IQuestionBankCategoriesModel[]=[];
   QBCid?:string="7bfcdb33-b3a0-43fd-af30-12167ac46508";
   isAdd:boolean=true;
   errorMessage?:string;

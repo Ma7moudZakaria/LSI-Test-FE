@@ -4,10 +4,10 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { IquestionBankCategoriesFilter } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-categories-filter-.request';
-import { IquestionBankCategoriesModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-categories-model';
-import { IquestionBankCategoryCreatModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-category-creat-model';
-import { IquestionBankCategoryUpdateModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-category-update-model';
+import { IQuestionBankCategoriesFilter } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-categories-filter-.request';
+import { IQuestionBankCategoriesModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-categories-model';
+import { IQuestionBankCategoryCreatModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-category-creat-model';
+import { IQuestionBankCategoryUpdateModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-category-update-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { QuestionBankCategoryService } from 'src/app/core/services/question-bank-services/question-bank-category.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
@@ -19,15 +19,15 @@ import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/compon
 })
 export class QuestionBankCategoriesViewComponent implements OnInit {
   filterErrorMessage?:string;
-  questionBankCategoryList: IquestionBankCategoriesModel[] = []; ;
-  questionBankCategoryFilter: IquestionBankCategoriesFilter = {};
+  questionBankCategoryList: IQuestionBankCategoriesModel[] = []; ;
+  questionBankCategoryFilter: IQuestionBankCategoriesFilter = {};
   position: string="";
   isView: boolean = true;
   title?: string;
   questionBankCategoryId:string='';
-  questionBankCategory?: IquestionBankCategoriesModel ;
-  questionBankCategoryCreat: IquestionBankCategoryCreatModel = {};
-  questionBankCategoryUpdate: IquestionBankCategoryUpdateModel = {} ;
+  questionBankCategory?: IQuestionBankCategoriesModel ;
+  questionBankCategoryCreat: IQuestionBankCategoryCreatModel = {};
+  questionBankCategoryUpdate: IQuestionBankCategoryUpdateModel = {} ;
   isAdd:boolean=true;
   errorMessage?:string;
   maxDate: any;

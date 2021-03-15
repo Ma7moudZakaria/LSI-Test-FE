@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IcontentManagementCreat } from '../../interfaces/content-management-interfaces/icontent-management-creat';
-import { IcontentManagementUpdate } from '../../interfaces/content-management-interfaces/icontent-management-update';
+import { IContentManagementCreat } from '../../interfaces/content-management-interfaces/icontent-management-creat';
+import { IContentManagementUpdate } from '../../interfaces/content-management-interfaces/icontent-management-update';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 
 @Injectable({
@@ -28,12 +28,12 @@ export class ContentManagementService {
     return this.http.get<BaseResponseModel>(this.getAllContentManagementSystemURL);
   }
 
-  createContentManagementSystem(model : IcontentManagementCreat):Observable<BaseResponseModel>
+  createContentManagementSystem(model : IContentManagementCreat):Observable<BaseResponseModel>
   {
     return this.http.post<BaseResponseModel>(this.createContentManagementSystemURL , model);
   }
 
-  updateContentManagementSystem(model : IcontentManagementUpdate):Observable<BaseResponseModel>
+  updateContentManagementSystem(model : IContentManagementUpdate):Observable<BaseResponseModel>
   {
     return this.http.put<BaseResponseModel>(this.updateContentManagementSystemURL , model);
   }

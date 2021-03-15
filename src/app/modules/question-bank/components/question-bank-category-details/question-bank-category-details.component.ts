@@ -1,7 +1,7 @@
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IquestionBankCategoriesModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-categories-model';
+import { IQuestionBankCategoriesModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-categories-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { QuestionBankCategoryService } from 'src/app/core/services/question-bank-services/question-bank-category.service';
 
@@ -13,7 +13,7 @@ import { QuestionBankCategoryService } from 'src/app/core/services/question-bank
 export class QuestionBankCategoryDetailsComponent implements OnInit {
   //valueLang = "nameEn";
   QuestionBankCategoryId:string='';
-  QuestionBankCategory?: IquestionBankCategoriesModel ;
+  QuestionBankCategory?: IQuestionBankCategoriesModel ;
   //currentWindowWidth?: number;
   errorMessage?:string;
   // msgs: Message[] = [];
