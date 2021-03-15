@@ -38,10 +38,10 @@
           <button class="save-btn" type="submit" [disabled]="disableSaveButtons">
             {{'QUESTION_BANK.PUBLISH' | translate}}
           </button>
-          <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2">
+          <div *ngIf="resultMessage?.type==='success'" class="alert alert-{{ resultMessage.type }} my-4 py-2">
             {{resultMessage.message}}
         </div>
-        <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2">
+        <div *ngIf="resultMessage.type==='danger'" class="alert alert-{{ resultMessage.type }} my-4 py-2">
           {{resultMessage.message}}
         </div>
 

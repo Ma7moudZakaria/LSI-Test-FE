@@ -7,6 +7,8 @@ import { IContentManagementUpdate } from 'src/app/core/interfaces/content-manage
 import { IContentManagement } from 'src/app/core/interfaces/content-management-interfaces/icontentmanagement';
 import { IContentManagementDetails } from 'src/app/core/interfaces/content-management-interfaces/icontentmanagementdetails';
 import { IContentManagementFilter } from 'src/app/core/interfaces/content-management-interfaces/icontentmanagementfilter';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { ContentManagementService } from 'src/app/core/services/content-management-services/content-management.service';
 
@@ -27,7 +29,7 @@ export class ContentManagementSystemComponent implements OnInit {
   isSubmit = false;
   @Input() selectedcmsTypeId?: string;
   currentForm: FormGroup=new FormGroup({});
-  resultMessage={message:"",type:""};
+  resultMessage:BaseMessageModel = {};
   disableSaveButtons = false;
   valueLang = "nameAr";
   cmsId?:string='';
@@ -132,6 +134,9 @@ export class ContentManagementSystemComponent implements OnInit {
   }
   Submit() {
     this.isSubmit = true;
+    this.resultMessage = {
+      message:'',
+    }
     // if (this.cmsId) {   
     //   this.contentmanagementsystemUpdate.id=this.cmsId;
     //   this.contentmanagementsystemUpdate.no=this.contentmanagementsystem.no;
@@ -175,20 +180,23 @@ export class ContentManagementSystemComponent implements OnInit {
           this.disableSaveButtons = true;
           this.resultMessage = {
             message:res.message||"",
-            type: 'success'
+            type: BaseConstantModel.SUCCESS_TYPE
           }
         }
         else {
           this.disableSaveButtons = false;
           this.resultMessage = {
-            message:res.message||"",
-            type: 'danger'
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
           }
         }
         
       },
         error => {
-          
+          this.resultMessage = {
+            message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+            type: BaseConstantModel.DANGER_TYPE
+          }
         })
       }
  // }
