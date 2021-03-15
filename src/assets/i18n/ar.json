@@ -72,7 +72,7 @@
   "UPDATE_USER_PG": {
     "PERSONALINFORMATION": "المعلومات الرئيسية",
     "FIRSTNAMEAR": "الأسم",
-    "FIRSTNAMEEN": "First Name English"
+    "CHANGE_PIC": "تغير الصورة"
   },
   "QUESTION_BANK": {
     "Add_Department": "اضافة قسم",
@@ -97,6 +97,7 @@
     "VACATION_REQUEST": "الاجازات",
     "EXAM_RESULTS": "نتائج الامتحانات",
     "WITHDRAWAL_REQUESTS": "طلبات الانسجاب",
+    "SETTINGS":"الإعدادت",
     "CERTIFICATES": "الشهادات",
     "MY_MESSAGES": "رسائلى",
     "QUESTION_BANK": "بنك الأسئلة"
