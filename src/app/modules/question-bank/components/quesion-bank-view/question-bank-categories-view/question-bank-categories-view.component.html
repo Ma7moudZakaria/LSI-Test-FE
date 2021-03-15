@@ -3,9 +3,9 @@
   
 <div class="list-group list-group_program-list" *ngIf="isView">
   <div class="d-flex justify-content-between">
-  <p class="mb-4">{{'QUESTION_BANK.Departments' | translate}}</p>
+  <p class="mb-4">{{'QUESTION_BANK.DEPARTMENTS' | translate}}</p>
   <a [routerLink]="" (click)="addCatogry()">
-    <!-- <span class="Catogry_Link_Add">{{ 'QUESTION_BANK.Add_Department' | translate }}</span> -->
+    <!-- <span class="Catogry_Link_Add">{{ 'QUESTION_BANK.ADD_DEPARTMENT' | translate }}</span> -->
     <img  src="../../../../../../assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
   </a> 
 </div>
@@ -20,7 +20,7 @@
           </div>
           <input type="text"
           class=" px-3 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm"
-          placeholder="{{'QUESTION_BANK.Search' | translate}}" name="search"#text >
+          placeholder="{{'QUESTION_BANK.SEARCH' | translate}}" name="search"#text >
          
       </div>
       <img src="../../../../../../assets/images/sort.svg" alt="" 
@@ -53,18 +53,18 @@
   <div class="row " *ngIf="!isView">
     
     <form class="form-group" [formGroup]="currentForm" (submit)="Submit()">
-      <sup class="Catogry_Add_Span">{{ 'QUESTION_BANK.Add_Department' | translate }}</sup>
+      <sup class="Catogry_Add_Span">{{ 'QUESTION_BANK.ADD_DEPARTMENT' | translate }}</sup>
       <div class="form-group">
-        <label for="exampleInputEmail1" class="Catogry_Add_TextNam">{{'QUESTION_BANK.Department_Ar' | translate}}</label>
+        <label for="exampleInputEmail1" class="Catogry_Add_TextNam">{{'QUESTION_BANK.DEPARTMENT_AR' | translate}}</label>
         <input type="text" class="form-control Catogry_Add_Text" id="InputNamAr" formControlName="nameAr">
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1" class="Catogry_Add_TextNam">{{'QUESTION_BANK.Department_En' | translate}}</label>
+        <label for="exampleInputPassword1" class="Catogry_Add_TextNam">{{'QUESTION_BANK.DEPARTMENT_EN' | translate}}</label>
         <input type="text" class="form-control Catogry_Add_Text" id="InputNamEN" formControlName="nameEn">
       </div>
   
-      <button type="submit" class="btn btn-danger Catogry_publish_btn" [disabled]="disableSaveButtons" >{{'QUESTION_BANK.Publish' | translate}}</button>
-      <button type="button" class="btn btn-warning Catogry_Back_btn" (click)="back_list_Catogry()">{{'QUESTION_BANK.Back' | translate}}</button>
+      <button type="submit" class="btn btn-danger Catogry_publish_btn" [disabled]="disableSaveButtons" >{{'QUESTION_BANK.PUBLISH' | translate}}</button>
+      <button type="button" class="btn btn-warning Catogry_Back_btn" (click)="back_list_Catogry()">{{'QUESTION_BANK.BACK' | translate}}</button>
       <div *ngIf="resultMessage?.type==='success'" class="alert alert-success">
         {{resultMessage.message}}
     </div>

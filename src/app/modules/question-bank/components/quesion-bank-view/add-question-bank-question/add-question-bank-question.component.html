@@ -1,5 +1,5 @@
 
-  <!-- <sup class="Question_Span_Add">{{ 'QUESTION_BANK.Add_Question' | translate }}</sup> -->
+  <!-- <sup class="Question_Span_Add">{{ 'QUESTION_BANK.ADD_QUESTION' | translate }}</sup> -->
   <form class="form-group material-form" [formGroup]="currentForm" (submit)="Submit()">
     <!-- <div class="form-group">
        
@@ -12,19 +12,19 @@
     </div> -->
     
     <div class="form-group">
-        <label for="comment">{{ 'QUESTION_BANK.Question_Ar' | translate }}</label>
+        <label for="comment">{{ 'QUESTION_BANK.QUESTION_AR' | translate }}</label>
         <textarea class="form-control" cols="2" rows="5" id="InputQuestioAr" formControlName="QuestioAr"></textarea>
       </div>
       <div class="form-group">
-        <label for="comment">{{ 'QUESTION_BANK.Question_En' | translate }}</label>
+        <label for="comment">{{ 'QUESTION_BANK.QUESTION_EN' | translate }}</label>
         <textarea class="form-control" cols="2" rows="5" id="InputQuestionEn" formControlName="QuestionEn"></textarea>
       </div>
     <div class="form-group">
-        <label for="exampleFormControlTextarea1">{{ 'QUESTION_BANK.Answer_Ar' | translate }}</label>
+        <label for="exampleFormControlTextarea1">{{ 'QUESTION_BANK.ANSWER_AR' | translate }}</label>
         <textarea class="form-control rounded-0" rows="10" id="InputAnswerAr" formControlName="AnswerAr"></textarea>
       </div>
       <div class="form-group">
-        <label for="exampleFormControlTextarea1">{{ 'QUESTION_BANK.Answer_En' | translate }}</label>
+        <label for="exampleFormControlTextarea1">{{ 'QUESTION_BANK.ANSWER_EN' | translate }}</label>
         <textarea class="form-control rounded-0" rows="10" id="InputAnswerEn" formControlName="AnswerEn"></textarea>
       </div>
       
@@ -36,7 +36,7 @@
     <section>
       <div class="row direction-rtl">
           <button class="save-btn" type="submit" [disabled]="disableSaveButtons">
-            {{'QUESTION_BANK.Publish' | translate}}
+            {{'QUESTION_BANK.PUBLISH' | translate}}
           </button>
           <div *ngIf="resultMessage?.type==='success'" class="alert alert-success">
             {{resultMessage.message}}
