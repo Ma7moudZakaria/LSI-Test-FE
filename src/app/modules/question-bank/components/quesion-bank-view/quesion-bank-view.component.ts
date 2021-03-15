@@ -8,14 +8,11 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class QuesionBankViewComponent implements OnInit {
   selectedQuestionId:string | undefined;
-  selectedCategoryId:any;
-  showAddQuiestion?:boolean=false;
+  selectedCategoryId:string|undefined;
   @Input() isViewAdd?:boolean; 
-  valueLang = "nameAr";
   showAddQuestionForm = false;
   submitSuccess:any;
   constructor(public translate: TranslateService) {
-    this.valueLang = this.translate.currentLang == 'en-US' ? 'nameEn' : 'nameAr';
    }
 
   ngOnInit(): void {
@@ -23,13 +20,10 @@ export class QuesionBankViewComponent implements OnInit {
 
   addNew(){
     this.selectedQuestionId = '';
-    this.showAddQuiestion=true;
   }
   loadSelectedQuesion(event:any){
-   this.selectedQuestionId = event.id;
-   this.showAddQuiestion= event.show;
+   this.selectedQuestionId = event;
    this.showAddQuestionForm =true;
-   // console.log(event);
   }
 
   setSelectedCategory(event:any){
