@@ -33,7 +33,7 @@ export class AddQuestionBankQuestionComponent implements OnInit {
    @Input() selectedCategoryId?:string; 
    @Input() selectedQuestionId?:string; 
    valueLang = "nameAr";
-   resultMessage:BaseMessageModel = {};//{message:"",type:""};
+   resultMessage:BaseMessageModel = {};
    disableSaveButtons = false;
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
     private activeroute: ActivatedRoute, 
@@ -89,6 +89,10 @@ export class AddQuestionBankQuestionComponent implements OnInit {
       })
   }
   loadQuestionBankQuestionDetails() {
+    this.resultMessage = {
+      message:'',
+      type: ''
+    }
     this.questionBankQuestionService.getQuestionBankQuestionDetails(this.questionBankQuestionId).subscribe(
       res => {
         var response =<BaseResponseModel>res;
@@ -100,10 +104,7 @@ export class AddQuestionBankQuestionComponent implements OnInit {
           this.f.AnswerAr.setValue(this.questionBankQuestions?.arabAnswer);
           this.f.AnswerEn.setValue(this.questionBankQuestions?.engAnswer);
           this.disableSaveButtons = false;
-          this.resultMessage = {
-            message:'',
-            type: ''
-          }
+         
         }
         else {
           this.errorMessage = response.message;

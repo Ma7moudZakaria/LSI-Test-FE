@@ -8,6 +8,8 @@ import { IQuestionBankCategoriesFilter } from 'src/app/core/interfaces/questionB
 import { IQuestionBankCategoriesModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-categories-model';
 import { IQuestionBankCategoryCreatModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-category-creat-model';
 import { IQuestionBankCategoryUpdateModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-category-update-model';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { QuestionBankCategoryService } from 'src/app/core/services/question-bank-services/question-bank-category.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
@@ -37,7 +39,8 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
 @Output() selectedCategoryId= new EventEmitter<string>();
 clickChangeCtogry:string="";
 valueLang = "nameAr";
-resultMessage={message:"",type:""};
+resultMessage:BaseMessageModel = {};
+
 disableSaveButtons = false;
   constructor(private questionBankCategoryService: QuestionBankCategoryService,
     private activeroute: ActivatedRoute, 
@@ -148,7 +151,7 @@ disableSaveButtons = false;
           this.disableSaveButtons = true;
           this.resultMessage = {
             message:res.message||"",
-            type: 'success'
+            type: BaseConstantModel.SUCCESS_TYPE
           }
           this.isView=false;
           setTimeout(() => {
@@ -159,8 +162,8 @@ disableSaveButtons = false;
           // this.errorMessage = res.message;
           this.disableSaveButtons = false;
           this.resultMessage = {
-            message:res.message||"",
-            type: 'danger'
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
           }
         }
         
@@ -180,7 +183,7 @@ disableSaveButtons = false;
           this.disableSaveButtons = true;
           this.resultMessage = {
             message:res.message||"",
-            type: 'success'
+            type: BaseConstantModel.SUCCESS_TYPE
           }
           setTimeout(() => {
             this.getQuestionBankCategories();
@@ -190,8 +193,8 @@ disableSaveButtons = false;
           // this.errorMessage = res.message;
           this.disableSaveButtons = false;
           this.resultMessage = {
-            message:res.message||"",
-            type: 'danger'
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
           }
         }
       },
