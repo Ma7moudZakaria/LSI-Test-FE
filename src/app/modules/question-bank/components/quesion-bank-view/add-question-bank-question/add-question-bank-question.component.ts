@@ -32,14 +32,12 @@ export class AddQuestionBankQuestionComponent implements OnInit {
   currentForm: FormGroup=new FormGroup({});
    @Input() selectedCategoryId?:string; 
    @Input() selectedQuestionId?:string; 
-   valueLang = "nameAr";
    resultMessage:BaseMessageModel = {};
    disableSaveButtons = false;
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
     private activeroute: ActivatedRoute, 
     private router: Router,
      public translate: TranslateService,private fb: FormBuilder) {
-      this.valueLang = this.translate.currentLang == 'en-US' ? 'nameEn' : 'nameAr';
       }
 
   ngOnInit(): void {

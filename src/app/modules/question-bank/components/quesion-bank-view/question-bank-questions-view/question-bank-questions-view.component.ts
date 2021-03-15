@@ -20,12 +20,10 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   @Input() selectedCategoryId?:string; 
   @Output() selectedQuestionId = new EventEmitter<{}>();;
   @Output() isViewAdd = new EventEmitter<boolean>();
-  valueLang = "nameAr";
   panelOpenState = false;
   currentlyOpenedItemIndex = -1;
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
      public translate: TranslateService,public dialog: MatDialog) {
-      this.valueLang = this.translate.currentLang == 'en-US' ? 'nameEn' : 'nameAr';
       }
 
   ngOnInit(): void {

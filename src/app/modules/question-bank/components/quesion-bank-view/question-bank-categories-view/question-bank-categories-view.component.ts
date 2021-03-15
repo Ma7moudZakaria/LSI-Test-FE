@@ -38,7 +38,6 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
   isSubmit = false;
 @Output() selectedCategoryId= new EventEmitter<string>();
 clickChangeCtogry:string="";
-valueLang = "nameAr";
 resultMessage:BaseMessageModel = {};
 
 disableSaveButtons = false;
@@ -48,7 +47,6 @@ disableSaveButtons = false;
       this.formImport = new FormGroup({
         importFile: new FormControl('', Validators.required)
       });
-      this.valueLang = this.translate.currentLang == 'en-US' ? 'nameEn' : 'nameAr';
     }
   ngOnInit(): void {
     this.getQuestionBankCategories()
