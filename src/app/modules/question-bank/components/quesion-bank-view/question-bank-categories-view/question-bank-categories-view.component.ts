@@ -30,7 +30,6 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
   questionBankCategoryUpdate: IQuestionBankCategoryUpdateModel = {} ;
   isAdd:boolean=true;
   errorMessage?:string;
-  maxDate: any;
    currentForm: FormGroup=new FormGroup({});
    formImport: FormGroup;
   successMessage?:string;
@@ -216,7 +215,7 @@ this.isView=true;
 this.isAdd=false;
   }
 
-  selectedIndex:any;
+  selectedIndex?:Number;
   loadCatogryQuiestion(id?:string){
     this.selectedCategoryId?.emit(id);
   }

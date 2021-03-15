@@ -15,7 +15,7 @@
       <div class="input-group ">
           <div class="input-group-prepend">
               <span class="input-group-text bg-white pl-2 pr-2 border-md border-right-0">
-                  <img  class="UserLogin_icon_input" src="../../../../../../assets/images/search-ired.svg">
+                  <img  class="UserLogin_icon_input" src="../../../../../../assets/images/search-ired.svg" (click)=" getQuestionBankCategories(text.value)">
               </span>
           </div>
           <input type="text"
@@ -25,7 +25,7 @@
       </div>
       <img src="../../../../../../assets/images/sort.svg" alt="" 
       class="mt-10 cursor-pointer Catogry_Icon_Sort" 
-      (click)=" getQuestionBankCategories(text.value)"/>
+      />
 </div>
 
  <div class="internal_scroll_list_group ">
