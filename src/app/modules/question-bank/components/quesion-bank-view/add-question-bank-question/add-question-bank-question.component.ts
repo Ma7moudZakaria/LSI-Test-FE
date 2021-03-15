@@ -7,6 +7,8 @@ import { IQuestionBankCategoriesModel } from 'src/app/core/interfaces/questionBa
 import { IQuestionBankQuestionCreatModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-question-creat-model';
 import { IQuestionBankQuestionUpdateModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-question-update-model';
 import { IQuestionBankQuestionsModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-model';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { QuestionBankQuestionService } from 'src/app/core/services/question-bank-services/question-bank-question.service';
 
@@ -31,7 +33,7 @@ export class AddQuestionBankQuestionComponent implements OnInit {
    @Input() selectedCategoryId?:string; 
    @Input() selectedQuestionId?:string; 
    valueLang = "nameAr";
-   resultMessage={message:"",type:""};
+   resultMessage:BaseMessageModel = {};//{message:"",type:""};
    disableSaveButtons = false;
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
     private activeroute: ActivatedRoute, 
@@ -133,21 +135,24 @@ export class AddQuestionBankQuestionComponent implements OnInit {
           // }, 1500)
           this.resultMessage = {
             message:res.message||"",
-            type: 'success'
+            type: BaseConstantModel.SUCCESS_TYPE
           }
         }
         else {
           // this.errorMessage = res.message;
           this.disableSaveButtons = false;
           this.resultMessage = {
-            message:res.message||"",
-            type: 'danger'
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
           }
         }
         
       },
         error => {
-          
+          this.resultMessage = {
+            message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+            type: BaseConstantModel.DANGER_TYPE
+          }
         })
     }
     else {
@@ -160,11 +165,10 @@ export class AddQuestionBankQuestionComponent implements OnInit {
       this.questionBankQuestionService.addQuestionBankQuestion(this.questionBankQuestionCreat).subscribe(res => {
         this.isSubmit = false;
         if (res.isSuccess) {
-          // this.successMessage = res.message;
           this.disableSaveButtons = true;
           this.resultMessage = {
             message:res.message||"",
-            type: 'success'
+            type: BaseConstantModel.SUCCESS_TYPE
           }
           // setTimeout(() => {
           //   this.router.navigateByUrl('/question-bank-question-details/question-bank-question-details/'+this.QuestionBankQuestionId);
@@ -174,14 +178,17 @@ export class AddQuestionBankQuestionComponent implements OnInit {
           //this.errorMessage = res.message;
           this.disableSaveButtons = false;
           this.resultMessage = {
-            message:res.message||"",
-            type: 'danger'
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
           }
         }
         
       },
         error => {
-          
+          this.resultMessage = {
+            message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+            type: BaseConstantModel.DANGER_TYPE
+          }
         })
     }
   }
