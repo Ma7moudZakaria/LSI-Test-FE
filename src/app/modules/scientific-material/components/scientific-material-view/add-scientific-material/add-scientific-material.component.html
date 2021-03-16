@@ -13,12 +13,12 @@
                 </select>
             </div>
         </div>
-        <div *ngIf="selectedProgram.length == 0 && (f.programMatrial.touched || isSubmit)"
-        class="alert alert-danger mt-2 mb-2">
-        <div *ngIf="selectedProgram.length == 0">
-            {{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}
+        <div *ngIf="selectedProgram?.length == 0 && (f.programMatrial.touched || isSubmit)"
+            class="alert alert-danger mt-2 mb-2">
+            <div *ngIf="selectedProgram.length == 0">
+                {{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}
+            </div>
         </div>
-    </div>
     </div>
     <div class="form-group">
         <label for="category">{{'SCIENTIFIC_MATERIAL.CATEGORY' | translate}}</label>
@@ -85,7 +85,7 @@
         <div class="col-lg-8 col-md-8">
             <ul class="files-conainer">
                 <li *ngFor="let item of fileList;let i=index">
-                    <button (click)="DeleteAttachment(i,item.id)">delete</button>
+                    <button (click)="deleteAttachment(i,item.id)">delete</button>
                     <a class="card" href="{{item.url}}" target="_blank">
                         <div class="pdf">
                             <i class="fa fa-file"></i>
@@ -135,11 +135,8 @@
                 {{'SCIENTIFIC_MATERIAL.CANCEL' | translate }}
             </button>
 
-            <div *ngIf="successMessage" class="alert alert-success">
-                {{successMessage.message}}
-            </div>
-            <div *ngIf="errorMessage" class="alert alert-danger">
-                {{errorMessage.message}}
+            <div *ngIf="resMessage" class="alert alert-{{ resMessage.type }} my-4 py-2">
+                {{ resMessage.message }}
             </div>
         </div>
 

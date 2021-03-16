@@ -5,6 +5,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { IAttachment } from 'src/app/core/interfaces/attachments-interfaces/iattachment';
 import { IFileUpload } from 'src/app/core/interfaces/attachments-interfaces/ifile-upload';
 import { IWalkThrough } from 'src/app/core/interfaces/walkthrough-interfaces/iwalkthrough';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AttachmentsService } from 'src/app/core/services/attachments-services/attachments.service';
 import { WalkThroughService } from 'src/app/core/services/walk-through-services/walk-through-services';
 
@@ -20,8 +22,7 @@ export class WalkThroughComponent implements OnInit {
   walkThrough = {} as IWalkThrough;
   createWalkThrough = false;
   updateWalkThrough = false;
-  errorMessage: any;
-  successMessage: any;
+
   walkThroughId!: string;
   routeParams: any;
   isSubmit = false;
@@ -30,6 +31,7 @@ export class WalkThroughComponent implements OnInit {
   fileUploadModel: IFileUpload[] = [];
   fileList: IAttachment[] = [];
   disableSaveButtons = false;
+  resMessage: BaseMessageModel = {};
   constructor(
     private route: ActivatedRoute, private fb: FormBuilder,
     private attachmentService: AttachmentsService, public translate: TranslateService,
@@ -54,97 +56,119 @@ export class WalkThroughComponent implements OnInit {
 
   ngOnChanges(changes: any) {
     console.log(changes);
-    this.LoadWalkThrough(changes.selectedWalkThroughPageId.currentValue);
+    this.loadWalkThrough(changes.selectedWalkThroughPageId.currentValue);
   }
-  LoadWalkThrough(selectedPageId: any){
+  loadWalkThrough(selectedPageId: any) {
+    this.currentForm.reset();
+    this.walkThrough = {};
+    this.fileList = [];
+    this.attachmentIds = [];
+    this.fileUploadModel = [];
+
     if (selectedPageId) {
       this.walkThroughService.getWalkThroughByPageId(selectedPageId).subscribe(res => {
         if (res.data) {
           this.walkThrough = res.data;
-          this.PopulateForm();
+          this.populateForm();
         }
-        else {
-          this.currentForm.reset();
-          this.walkThrough = {};
-          this.fileList = [];
-          this.attachmentIds = [];
-          this.fileUploadModel = [];
-        }
+        // else {
+        //   this.currentForm.reset();
+        //   this.walkThrough = {};
+        //   this.fileList = [];
+        //   this.attachmentIds = [];
+        //   this.fileUploadModel = [];
+        // }
 
       });
     }
-    else {
-      this.currentForm.reset();
-      this.walkThrough = {};
-      this.fileList = [];
-      this.attachmentIds = [];
-      this.fileUploadModel = [];
-    }
+    // else {
+    //   this.currentForm.reset();
+    //   this.walkThrough = {};
+    //   this.fileList = [];
+    //   this.attachmentIds = [];
+    //   this.fileUploadModel = [];
+    // }
   }
-  DeleteAttachment(index: number, id: string) {
+  deleteAttachment(index: number, id: string) {
     this.fileList.splice(index, 1);
     this.attachmentIds = this.attachmentIds.filter(a => a !== id);
   }
 
-  Submit() {
+  submit() {
     this.isSubmit = true;
-    this.successMessage = null;
-    this.errorMessage = null;
-    this.mappModel();
+    this.resMessage = {};
+    if (this.currentForm.valid) {
+      if (this.attachmentIds.length ==0) {
+        return;
+      }
+      this.mappModel();
 
-    if (this.walkThrough.id) {
-      this.walkThroughService.updateWalkThrough(this.walkThrough).subscribe(
-        res => {
-          if (res.isSuccess) {
-            this.isSubmit = false;
-            this.successMessage = {
-              message: res.message,
-              type: 'success'
+      if (this.walkThrough.id) {
+        this.walkThroughService.updateWalkThrough(this.walkThrough).subscribe(
+          res => {
+            if (res.isSuccess) {
+              this.isSubmit = false;
+              this.resMessage = {
+                message: res.message,
+                type: BaseConstantModel.SUCCESS_TYPE
+              }
+              this.clearMessage();
             }
-          }
-          else {
-            this.isSubmit = false;
-            this.errorMessage = {
-              message: res.message,
-              type: 'danger'
+            else {
+              this.isSubmit = false;
+              this.resMessage = {
+                message: res.message,
+                type: BaseConstantModel.DANGER_TYPE
+              }
+              this.clearMessage();
             }
+          },
+          error => {
+            console.log(error);
+            this.resMessage = {
+              message: error.message,
+              type: BaseConstantModel.DANGER_TYPE
+            }
+            this.clearMessage();
           }
-        },
-        error => {
-          console.log(error);
-          this.errorMessage = {
-            message: error.message,
-            type: 'danger'
-          }
-        }
-      );
+        );
+      }
+      else {
+        this.walkThroughService.createWalkThrough(this.walkThrough).subscribe(
+          res => {
+            if (res.isSuccess) {
+              this.isSubmit = false;
+              this.resMessage = {
+                message: res.message,
+                type: BaseConstantModel.SUCCESS_TYPE
+              }
+              this.clearMessage();
+            }
+            else {
+              this.isSubmit = false;
+              this.resMessage = {
+                message: res.message,
+                type: BaseConstantModel.DANGER_TYPE
+              }
+              this.clearMessage();
+            }
+
+          },
+          error => {
+            console.log(error);
+            this.resMessage = {
+              message: error.message,
+              type: BaseConstantModel.DANGER_TYPE
+            }
+            this.clearMessage();
+          });
+      }
     }
     else {
-      this.walkThroughService.createWalkThrough(this.walkThrough).subscribe(
-        res => {
-          if (res.isSuccess) {
-            this.isSubmit = false;
-            this.successMessage = {
-              message: res.message,
-              type: 'success'
-            }
-          }
-          else {
-            this.isSubmit = false;
-            this.errorMessage = {
-              message: res.message,
-              type: 'danger'
-            }
-          }
-
-        },
-        error => {
-          console.log(error);
-          this.errorMessage={
-            message:error.message,
-            type:'danger'
-          }
-        });
+      this.resMessage = {
+        message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+        type: BaseConstantModel.DANGER_TYPE
+      }
     }
   }
 
@@ -163,15 +187,17 @@ export class WalkThroughComponent implements OnInit {
   }
 
   buildForm() {
+    const arabicPattern = "^[\u0621-\u064A\u0660-\u0669 ]+$";
+    const englishPattern = "^[a-zA-Z''-'\s]{1,40}$";
     this.currentForm = this.fb.group(
       {
-        textAr: ['', Validators.required],
-        textEn: ['', Validators.required]
+        textAr: ['', [Validators.required, Validators.pattern(arabicPattern)]],
+        textEn: ['', [Validators.required, Validators.pattern(englishPattern)]]
       }
     )
   }
 
-  PopulateForm() {
+  populateForm() {
     this.f.textAr.setValue(this.walkThrough.textAr);
     this.f.textEn.setValue(this.walkThrough.textEn);
     if (this.walkThrough.attachmentId) {
@@ -198,12 +224,12 @@ export class WalkThroughComponent implements OnInit {
         }
         this.fileUploadModel.push(fileUploadObj)
       });
-      this.UploadFiles(this.fileUploadModel);
+      this.uploadFiles(this.fileUploadModel);
     }
 
   }
 
-  UploadFiles(files: any) {
+  uploadFiles(files: any) {
     if (files.length === 0) {
       return;
     }
@@ -218,11 +244,17 @@ export class WalkThroughComponent implements OnInit {
       }, error => {
         console.log(error);
         this.fileUploadModel = [];
-        this.errorMessage = {
+        this.resMessage = {
           message: error.message,
-          type: 'danger'
+          type: BaseConstantModel.DANGER_TYPE
         }
+        this.clearMessage();
       }
     )
+  }
+  clearMessage() {
+    setTimeout(() => {
+      this.resMessage = {};
+    }, 2000);
   }
 }

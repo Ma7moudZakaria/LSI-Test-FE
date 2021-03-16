@@ -2,7 +2,7 @@ export interface IScientificMaterialFilter{
     scientificMatrialId?:string;
     titleAr?:string;
     titleEn?:string;
-    categoryId?:string;
+    categoryIds?:string;
     isActive?:boolean;
     isAvailableForAll?:boolean;
     programs?:string;

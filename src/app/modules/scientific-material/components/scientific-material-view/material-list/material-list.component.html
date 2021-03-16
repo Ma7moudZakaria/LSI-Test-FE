@@ -3,7 +3,7 @@
     <p class="mb-4 title_material-list">{{'PROGRAMS_LIST.PROGRAMS' | translate}}</p>
   </div>
   <div class="col-6 upload">
-    <a (click)="loadMaterial(null)">
+    <a (click)="loadMaterial()">
        <img calss="m-2 pull-left" src="assets/images/scientificMaterial/Group 18093.svg" alt="">
     </a>
   </div>
@@ -38,6 +38,8 @@
     </div>  
   </div>
 
-  
+  <div *ngIf="resMessage" class="alert alert-{{ resMessage.type }} my-4 py-2">
+    {{ resMessage.message }}
+</div>  
 </section>
 </div>

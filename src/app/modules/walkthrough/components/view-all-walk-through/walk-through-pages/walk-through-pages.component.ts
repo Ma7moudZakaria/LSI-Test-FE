@@ -2,7 +2,9 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseLookupModel } from 'src/app/core/ng-model/base-lookup-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 
 @Component({
@@ -11,37 +13,39 @@ import { LookupService } from 'src/app/core/services/lookup-services/lookup.serv
   styleUrls: ['./walk-through-pages.component.scss']
 })
 export class WalkThroughPagesComponent implements OnInit {
-  successMessage:any;
-  errorMessage: any;
+
   collectionOfLookup = {} as ILookupCollection;
   walkThroughPages? = {} as BaseLookupModel[];
   listOfLookupProfile : string[] = ['WLAKTHROUGHPAGES'];
   langEnum = LanguageEnum ;
+  resMessage: BaseMessageModel = {};
   @Output() selectedWalkThroughPageId = new EventEmitter<string>();;
 
   constructor( private lookupService:LookupService,public translate: TranslateService) { }
 
   ngOnInit(): void {
     this.lookupService.getLookupByKey(this.listOfLookupProfile).subscribe(res =>{
-      this.collectionOfLookup = res.data;
-      this.walkThroughPages = 
-      this.collectionOfLookup.WLAKTHROUGHPAGES?.sort((a,b) => this.compare(a,b) );
+     
       if (res.isSuccess){
-        this.successMessage={
-          message: res.message,
-          type:'success'
-        }
+        this.collectionOfLookup = res.data;
+        this.walkThroughPages = 
+        this.collectionOfLookup.WLAKTHROUGHPAGES?.sort((a,b) => this.compare(a,b) );
       }
       else{
-        this.errorMessage  =={
+        this.resMessage = {
           message: res.message,
-          type:'Danger'
+          type: BaseConstantModel.DANGER_TYPE
         }
+      }
+    },error => {
+      this.resMessage = {
+        message: error.message,
+        type: BaseConstantModel.DANGER_TYPE
       }
     });
   }
   selectedIndex:any;
-  loadPageWalkThrough(id?:any){
+  loadPageWalkThrough(id?:string){
     this.selectedWalkThroughPageId?.emit(id);
 
   }
