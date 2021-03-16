@@ -33,7 +33,8 @@
     "FORGETPASSWORD": "Forget Password ?",
     "SIGNUP": "Register Now",
     "SOICALLOGIN": "Log in via social media",
-    "TEACHERSIGNUP": "Register as a teacher"
+    "TEACHERSIGNUP": "Register as a teacher",
+    "EMAIL_ADDRESS_PLACEHOLDER":"Email Address"
   },
   "SIGNUP_PG": {
     "SIGNUP": "Sign Up",
@@ -71,7 +72,8 @@
   "UPDATE_USER_PG": {
     "PERSONALINFORMATION": "Main Information",
     "FIRSTNAMEAR": "First Name Arabic",
-    "FIRSTNAMEEN": "First Name English"
+    "FIRSTNAMEEN": "First Name English",
+    "CHANGE_PIC": "Change pic"
   },
   "QUESTION_BANK": {
     "Add_Department": "Add department",
@@ -97,6 +99,7 @@
     "EXAM_RESULTS": "Exam Results",
     "WITHDRAWAL_REQUESTS": "Withdrawal Req.",
     "CERTIFICATES": "Certificates",
+    "SETTINGS":"Settings",
     "MY_MESSAGES": "My Messages",
     "QUESTION_BANK": "Question Bank"
   },
@@ -107,7 +110,7 @@
   },
   "CONTENT_MANEGMENT_SYSTEM": {
     "ALL": "All",
-    "DEPARMENTs": "Departments",
+    "DEPARMENTS": "Departments",
     "TECNICAL_QUESTIONS": "Tecnical questions",
     "SHORTDESCRIPTIONAR": "Short description(Arabic)",
     "SHORTDESCRIPTIONEN": "Short description(English)",

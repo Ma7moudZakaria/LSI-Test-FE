@@ -8,8 +8,10 @@
             <div  class="profile_background"></div>
             <img class="img_profile"  [src]="userProfileDetails?.proPic">
 
-                <input type="file"  class="custom_file_input" 
+                <input type="file"  style="display: none;" #fileInput
                 (change)="onFileChange($any($event.target).files)">
+
+                <a class="custom_file_input"  (click)="fileInput.click()" id="upload_link">{{'UPDATE_USER_PG.CHANGE_PIC' | translate}}</a>
 
          
         </div>

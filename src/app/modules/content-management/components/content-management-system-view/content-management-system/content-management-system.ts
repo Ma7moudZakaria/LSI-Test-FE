@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { IcontentManagementCreat } from 'src/app/core/interfaces/content-management-interfaces/icontent-management-creat';
-import { IcontentManagementUpdate } from 'src/app/core/interfaces/content-management-interfaces/icontent-management-update';
+import { IContentManagementCreat } from 'src/app/core/interfaces/content-management-interfaces/icontent-management-creat';
+import { IContentManagementUpdate } from 'src/app/core/interfaces/content-management-interfaces/icontent-management-update';
 import { IContentManagement } from 'src/app/core/interfaces/content-management-interfaces/icontentmanagement';
 import { IContentManagementDetails } from 'src/app/core/interfaces/content-management-interfaces/icontentmanagementdetails';
 import { IContentManagementFilter } from 'src/app/core/interfaces/content-management-interfaces/icontentmanagementfilter';
@@ -33,8 +33,8 @@ export class ContentManagementSystemComponent implements OnInit {
   cmsId?:string='';
   isAdd:boolean=true;
   typeId?:string='';
-  contentmanagementsystemUpdate: IcontentManagementUpdate={};
-  contentmanagementCreat:IcontentManagementCreat={};
+  contentmanagementsystemUpdate: IContentManagementUpdate={};
+  contentmanagementCreat:IContentManagementCreat={};
   constructor(
     private route: ActivatedRoute, private fb: FormBuilder,
     private contentmanagementService:ContentManagementService,

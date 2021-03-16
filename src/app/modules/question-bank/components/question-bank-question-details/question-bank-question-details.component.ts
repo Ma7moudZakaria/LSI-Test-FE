@@ -2,7 +2,7 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { IquestionBankQuestionsModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-model';
+import { IQuestionBankQuestionsModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 import { QuestionBankQuestionService } from 'src/app/core/services/question-bank-services/question-bank-question.service';
@@ -15,7 +15,7 @@ import { QuestionBankQuestionService } from 'src/app/core/services/question-bank
 export class QuestionBankQuestionDetailsComponent implements OnInit {
   //valueLang = "nameEn";
   QuestionBankCategoryId:string='';
-  QuestionBankQuestion?: IquestionBankQuestionsModel ;
+  QuestionBankQuestion?: IQuestionBankQuestionsModel ;
   //currentWindowWidth?: number;
   errorMessage?:string;
   //msgs: Message[] = [];

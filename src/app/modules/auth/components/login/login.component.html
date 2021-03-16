@@ -22,7 +22,7 @@
                                         </span>
                                     </div>
                                     <input id="email"  pInputText type="email" formControlName="email" name="email" 
-                                    placeholder="Email Address" 
+                                    placeholder="{{'LOGIN_PG.EMAIL_ADDRESS_PLACEHOLDER' | translate}}" 
                                     class=" px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
                                     
                                 </div>                        
@@ -41,7 +41,7 @@
                                     </div>
                                     <input id="password" pPassword type="password" 
                                     [type]="hidePassword ? 'password' : 'text'" formControlName="password" name="password"
-                                    placeholder="Password" 
+                                    placeholder="{{'GENERAL.PASSWORD' | translate}}" 
                                     class="  px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
                                     
                                 </div>                        
@@ -50,7 +50,7 @@
                             <!-- Remember Me -->
                             <div class="col-lg-12 mb-3 justify-content-between">
                                 <label class="UserLogin__RememberMeLabel">
-                                    <input class="UserLogin__RememberMe" type="checkbox" name="remember"> {{'LOGIN_PG.REMEMBERME' | translate}} 
+                                    <!-- <input class="UserLogin__RememberMe" type="checkbox" name="remember"> {{'LOGIN_PG.REMEMBERME' | translate}}  -->
                                 </label>
                                                 
                                 <label class="UserLogin__ForgetPassword">

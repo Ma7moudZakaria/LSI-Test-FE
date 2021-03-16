@@ -1,4 +1,4 @@
-export interface IquestionBankCategoryCreatModel {
+export interface IQuestionBankCategoryCreatModel {
     arabCatgName?:string
     engCatgName?:string
 }
