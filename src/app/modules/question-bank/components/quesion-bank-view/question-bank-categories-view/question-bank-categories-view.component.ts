@@ -37,6 +37,7 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
   successMessage?:string;
   isSubmit = false;
 @Output() selectedCategoryId= new EventEmitter<string>();
+@Output() inputCategoryId= new EventEmitter<string>();
 clickChangeCtogry:string="";
 resultMessage:BaseMessageModel = {};
 
@@ -247,9 +248,12 @@ this.isAdd=false;
      
     });
   }
-  
-//  async confirm_Delete(id?:string){
-//     await this.confirmDialog();
-//     await this.delete_Categor(id);
-//   }
+
+  selectedIndex?:Number;
+  loadCatogry(id?:string){
+    this.inputCategoryId?.emit(id);
+  }
+  newCatogry(){
+    this.inputCategoryId?.emit('');
+  } 
 }

@@ -9,9 +9,11 @@ import { TranslateService } from '@ngx-translate/core';
 export class QuesionBankViewComponent implements OnInit {
   selectedQuestionId:string | undefined;
   selectedCategoryId:string|undefined;
+  inputCategoryId:string|undefined;
   @Input() isViewAdd?:boolean; 
   showAddQuestionForm = false;
   submitSuccess:any;
+  showAddCategoryForm = false;
   constructor(public translate: TranslateService) {
    }
 
@@ -35,6 +37,19 @@ export class QuesionBankViewComponent implements OnInit {
   closeAddQuestionFormAfterSave(event:any){
     this.submitSuccess = event; 
     this.showAddQuestionForm = !event;
+
+  }
+  setInputCategoryId(event:any){
+    this.inputCategoryId = event;
+    this.showAddCategoryForm =true;
+  }
+
+  closeAddCategoryForm(){
+    this.showAddCategoryForm = false;
+  }
+  closeAddCategoryFormAfterSave(event:any){
+    this.submitSuccess = event; 
+    this.showAddCategoryForm = !event;
 
   }
 

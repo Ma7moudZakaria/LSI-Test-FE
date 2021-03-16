@@ -89,7 +89,10 @@
     "QUESTION_AR": "question (Arabic)",
     "QUESTION_EN": "question (English)",
     "ANSWER_AR": "Answer(Arabic)",
-    "ANSWER_EN": "Answer(English)"
+    "ANSWER_EN": "Answer(English)",
+    "REQUIREDFIELD": "This field is required!",
+    "ARABICFIELD": "This field must be in Arabic",
+		"ENGLISHFIELD": "This field must be in English"
   },
   "SIDENAVBAR": {
     "DASHBORD": "DashBoard",

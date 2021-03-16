@@ -1,10 +1,10 @@
 
  
   
-<div class="list-group list-group_program-list" *ngIf="isView">
+<div class="list-group list-group_program-list">
   <div class="d-flex justify-content-between">
   <p class="mb-4">{{'QUESTION_BANK.DEPARTMENTS' | translate}}</p>
-  <a [routerLink]="" (click)="addCatogry()">
+  <a [routerLink]="" (click)="newCatogry()">
     <!-- <span class="Catogry_Link_Add">{{ 'QUESTION_BANK.ADD_DEPARTMENT' | translate }}</span> -->
     <img  src="../../../../../../assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
   </a> 
@@ -36,7 +36,7 @@
         <span>{{translate.currentLang==='en'?QBC.engCatgName:QBC.arabCatgName}}</span>
         <span>
            <a (click)="confirmDialog(QBC.id)" > <i class="far fa-trash-alt"></i></a> 
-           <a (click)="loadQuestionBankCategoryDetails(QBC.id) "> <i class="fas fa-pencil-alt"></i></a> 
+           <a (click)="loadCatogry(QBC.id) "> <i class="fas fa-pencil-alt"></i></a> 
 
             <!-- <img src="../../../../../../assets/images/edit.svg" alt="" class="mt-10 cursor-pointer Catogry_Icon_Details" (click)="loadQuestionBankCategoryDetails(QBC.id)"/> -->
            
@@ -50,7 +50,7 @@
 
 
 </div>
-  <div class="row " *ngIf="!isView">
+  <!-- <div class="row " *ngIf="!isView">
     
     <form class="form-group" [formGroup]="currentForm" (submit)="Submit()">
       <sup class="Catogry_Add_Span">{{ 'QUESTION_BANK.ADD_DEPARTMENT' | translate }}</sup>
@@ -64,7 +64,6 @@
       </div>
   
       <button type="submit" class="btn btn-danger Catogry_publish_btn" [disabled]="disableSaveButtons" >{{'QUESTION_BANK.PUBLISH' | translate}}</button>
-      <button type="button" class="btn btn-warning Catogry_Back_btn" (click)="back_list_Catogry()">{{'QUESTION_BANK.BACK' | translate}}</button>
       <div *ngIf="resultMessage?.type==='success'" class="alert alert-{{ resultMessage.type }} my-4 py-2">
         {{resultMessage.message}}
     </div>
@@ -73,7 +72,7 @@
     </div>
     </form>
 
-  </div>
+  </div> -->
 
 
   <!-- <ul class="list-group" *ngIf="isView">

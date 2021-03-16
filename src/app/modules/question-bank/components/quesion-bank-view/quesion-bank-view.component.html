@@ -4,26 +4,32 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-4 ">
-            <app-question-bank-categories-view (selectedCategoryId)="setSelectedCategory($event)" >
+            <app-question-bank-categories-view (selectedCategoryId)="setSelectedCategory($event)" (inputCategoryId)="setInputCategoryId($event)"  >
             </app-question-bank-categories-view>
         </div>
         <div class="col-lg-8  col-md-8 col-sm-8 ">
             <app-question-bank-questions-view [selectedCategoryId]="selectedCategoryId" (selectedQuestionId)="loadSelectedQuesion($event)"> 
             </app-question-bank-questions-view>
+
         </div>
        
     </div>
 
-<div class="overlay" *ngIf="showAddQuestionForm">
-    <a href="javascript:void(0)" class="closebtn" (click)="closeAddQuestionForm()">&times;</a>
-    <app-add-question-bank-question [selectedCategoryId]="selectedCategoryId"  [selectedQuestionId]="selectedQuestionId"  (submitSuccess)="closeAddQuestionFormAfterSave($event)">
-    </app-add-question-bank-question>
+    <div class="overlay overlay_dir_left overlay_dir_righ" *ngIf="showAddQuestionForm">
+        <a  class="closebtn" (click)="closeAddQuestionForm()">&times;</a>
+        <app-add-question-bank-question [selectedCategoryId]="selectedCategoryId"  [selectedQuestionId]="selectedQuestionId"  (submitSuccess)="closeAddQuestionFormAfterSave($event)">
+        </app-add-question-bank-question>
+    </div> 
+<div class="overlay overlay_dir_left overlay_dir_righ" *ngIf="showAddCategoryForm">
+    <a  class="closebtn" (click)="closeAddCategoryForm()">&times;</a>
+    <app-add-question-bank-category [inputCategoryId]="inputCategoryId"  (submitSuccess)="closeAddCategoryFormAfterSave($event)">
+    </app-add-question-bank-category>
 </div>
 
 </div>
 
 
-    
+
 
 
 

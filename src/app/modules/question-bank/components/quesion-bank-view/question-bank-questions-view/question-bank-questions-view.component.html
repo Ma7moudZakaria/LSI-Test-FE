@@ -4,7 +4,7 @@
 
 
     <div class="col-6">
-        <p class="mb-4">{{'QUESTION_BANK.DEPARTMENTS' | translate}}</p>
+        <!-- <p class="mb-4">{{'QUESTION_BANK.DEPARTMENTS' | translate}}</p> -->
     </div>
     <div class="col-6">
         <div class="input-group ">
@@ -21,10 +21,8 @@
         </div>  
     </div>
 
-
-   
-    <section class="w-100 row contanier_matrial-card">
-            <div class="col-lg-12 ">
+        <section class="w-100 row contanier_matrial-card">
+            <div class="col-lg-12">
                 <mat-accordion>
                     <mat-expansion-panel 
                       *ngFor="let QBQ of questionBankQuestionList; let i = index;"
@@ -42,8 +40,12 @@
                     </mat-expansion-panel>
                   </mat-accordion>
             </div>
+          
         
     </section>
+
+   
+  
 
   
 
