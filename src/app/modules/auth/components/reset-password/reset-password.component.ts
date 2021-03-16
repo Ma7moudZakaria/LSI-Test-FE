@@ -23,6 +23,7 @@ export class ResetPasswordComponent implements OnInit {
   hidePassword = true;
   resMessage: BaseMessageModel = {};
   currentLang: LanguageEnum | undefined;
+  isSubmit = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -47,8 +48,8 @@ export class ResetPasswordComponent implements OnInit {
 
   resetPasswordFormG() {
     this.resetpasswordform = this.fb.group({
-      password: ["", Validators.compose([Validators.required])],
-      confirmPassword: ["",Validators.required]
+      password: ["", [Validators.required, Validators.minLength(6) , ,Validators.maxLength(50)]],
+      confirmPassword: ["",[Validators.required, Validators.minLength(6) , ,Validators.maxLength(50)]]
     });
   }
 
@@ -57,6 +58,7 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   onApply(value:string) {
+    this.isSubmit = true;
     if (this.resetpasswordform.valid){
       this.resetPasswordModel = {
         token: this.token,
@@ -66,12 +68,14 @@ export class ResetPasswordComponent implements OnInit {
       this.authService.resetPassword(this.resetPasswordModel).subscribe(res => {
         console.log(res);
         if (res.isSuccess){
+          this.isSubmit = false;
           this.resMessage = {
             message: res.message,
             type: BaseConstantModel.SUCCESS_TYPE
           }
         }
         else{
+          this.isSubmit = false;
           this.resMessage = {
             message: res.message,
             type: BaseConstantModel.DANGER_TYPE
@@ -80,6 +84,7 @@ export class ResetPasswordComponent implements OnInit {
       });         
     }
     else{
+      this.isSubmit = false;
       this.resMessage = {
         message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
         type: BaseConstantModel.DANGER_TYPE

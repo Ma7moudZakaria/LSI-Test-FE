@@ -27,6 +27,7 @@ export class ActivateUserComponent implements OnInit {
   userData?:string;
   uemail?:string;
   resMessage: BaseMessageModel = {};
+  isSubmit = false;
 
   constructor(
     private router: Router, 
@@ -79,6 +80,7 @@ export class ActivateUserComponent implements OnInit {
   }
 
   onApply(value:string) {
+    this.isSubmit = true;
     if (this.activationcodeform.valid){
       this.activationcodeModel = {
         uid: this.currentUser.id,
@@ -87,6 +89,7 @@ export class ActivateUserComponent implements OnInit {
       this.authService.activateUser(this.activationcodeModel).subscribe(res => {
         console.log(res);
         if (res.isSuccess){
+          this.isSubmit = false;
           this.resMessage = {
             message: res.message,
             type: BaseConstantModel.SUCCESS_TYPE
@@ -94,6 +97,7 @@ export class ActivateUserComponent implements OnInit {
           this.router.navigateByUrl('/shared');
         }
         else{
+          this.isSubmit = false;
           this.resMessage = {
             message: res.message,
             type: BaseConstantModel.DANGER_TYPE
@@ -102,6 +106,7 @@ export class ActivateUserComponent implements OnInit {
       });  
     }
     else{
+      this.isSubmit = false;
       this.resMessage = {
           message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
           type: BaseConstantModel.DANGER_TYPE
