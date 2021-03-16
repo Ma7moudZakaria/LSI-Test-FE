@@ -90,7 +90,7 @@
     "QUESTION_EN": "question (English)",
     "ANSWER_AR": "Answer(Arabic)",
     "ANSWER_EN": "Answer(English)",
-    "REQUIREDFIELD": "This field is required!",
+    "REQUIRED": "This field is required!",
     "ARABICFIELD": "This field must be in Arabic",
 		"ENGLISHFIELD": "This field must be in English"
   },
@@ -122,7 +122,10 @@
     "PUBLISH": "Publish",
     "DELETE": "Delete",
     "BACK": "Back",
-    "SEARCH": "Search.."
+    "SEARCH": "Search..",
+    "REQUIRED": "This field is required!",
+    "ARABICFIELD": "This field must be in Arabic",
+		"ENGLISHFIELD": "This field must be in English"
   },
   "WALKTHROUGH": {
     "PAGES": "Pages",
