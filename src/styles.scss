@@ -228,3 +228,50 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin-bottom: 1rem;
   cursor: pointer;
 }
+
+
+select.form-control {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+}
+.select-arrow {
+  left: 10px;
+  top: 10px;
+  z-index: 6;
+}
+
+.plus-btn {
+  left: 5px;
+  top: 5px;
+  z-index: 6;
+
+  button {
+    width: 40px;
+    height: 36px;
+  }
+}
+
+.badges {
+  .badge-info {
+    background-color: rgb(63, 155, 200, .2);
+    color: $info-color;
+    font-size: 18px;
+    font-family: gulf-thin;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+
+    a {
+      color: inherit;
+    }
+  }
+}
+.badge-lightbadge-light {
+  color: $main-color;
+  background-color: #fff;
+  padding: .6em 1.6em;
+  font-size: 16px;
+  border-radius: 5px;
+}

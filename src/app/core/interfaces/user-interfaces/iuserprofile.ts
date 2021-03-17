@@ -29,7 +29,7 @@ export interface IUserProfile {
     quraanMemorizeAmount?:number;
     ejazaAttachments:IAttachment[];
 
-    scientificArchives?:[];
-    sheikhs?:[];
-    courses?:[];
+    usrScientificArchives?:[];
+    usrSheikhs?:[];
+    usrCourses?:[];
 }
