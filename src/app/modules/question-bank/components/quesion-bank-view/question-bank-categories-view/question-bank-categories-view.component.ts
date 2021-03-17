@@ -74,7 +74,8 @@ disableSaveButtons = false;
       let response = <BaseResponseModel>res;
       if (response.isSuccess) {
         this.questionBankCategoryList = response.data;
-        this.loadCatogryQuiestion(this.questionBankCategoryList[0].id)
+        this.loadCatogryQuiestion(this.questionBankCategoryList[0].id);
+        this.selectedIndex=0;
       }
       else {
         this.questionBankCategoryList = [];

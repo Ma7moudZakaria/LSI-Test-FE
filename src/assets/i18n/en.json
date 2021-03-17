@@ -129,8 +129,8 @@
     "ANSWER_AR": "Answer(Arabic)",
     "ANSWER_EN": "Answer(English)",
     "REQUIRED": "This field is required!",
-    "ARABICFIELD": "This field must be in Arabic",
-		"ENGLISHFIELD": "This field must be in English"
+    "ARABIC_FIELD": "This field must be in Arabic",
+		"ENGLISH_FIELD": "This field must be in English"
   },
   "SIDENAVBAR": {
     "DASHBORD": "DashBoard",
@@ -162,8 +162,8 @@
     "BACK": "Back",
     "SEARCH": "Search..",
     "REQUIRED": "This field is required!",
-    "ARABICFIELD": "This field must be in Arabic",
-		"ENGLISHFIELD": "This field must be in English"
+    "ARABIC_FIELD": "This field must be in Arabic",
+		"ENGLISH_FIELD": "This field must be in English"
   },
   "WALKTHROUGH": {
     "PAGES": "Pages",

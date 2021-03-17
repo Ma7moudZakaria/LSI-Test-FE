@@ -23,6 +23,7 @@ this.loadContentManagementSystemTypes();
       (res: any) => {
         this.cmsTypeLst = res.data as BaseLookupModel[];
         this.loadContentManagementSystem(this.cmsTypeLst[0].id);
+        this.selectedIndex=0;
 
       }, error => {
         console.log(error);

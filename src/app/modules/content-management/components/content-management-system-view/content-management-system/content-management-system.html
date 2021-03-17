@@ -11,7 +11,7 @@
                 {{"CONTENT_MANEGMENT_SYSTEM.REQUIRED"|translate}}
             </div>
             <div *ngIf="f.shortDescriptionAr.errors.pattern">
-                {{ 'CONTENT_MANEGMENT_SYSTEM.ARABICFIELD' | translate }}
+                {{ 'CONTENT_MANEGMENT_SYSTEM.ARABIC_FIELD' | translate }}
              </div>
         </div>
         </div>
@@ -24,7 +24,7 @@
                 {{"CONTENT_MANEGMENT_SYSTEM.REQUIRED"|translate}}
             </div>
             <div *ngIf="f.shortDescriptionEn.errors.pattern">
-                {{ 'CONTENT_MANEGMENT_SYSTEM.ENGLISHFIELD' | translate }}
+                {{ 'CONTENT_MANEGMENT_SYSTEM.ENGLISH_FIELD' | translate }}
              </div>
         </div>
         </div>
@@ -37,7 +37,7 @@
                 {{"CONTENT_MANEGMENT_SYSTEM.REQUIRED"|translate}}
             </div>
             <div *ngIf="f.longDescriptionAr.errors.pattern">
-                {{ 'CONTENT_MANEGMENT_SYSTEM.ARABICFIELD' | translate }}
+                {{ 'CONTENT_MANEGMENT_SYSTEM.ARABIC_FIELD' | translate }}
              </div>
         </div>
         </div>
@@ -50,20 +50,13 @@
                 {{"CONTENT_MANEGMENT_SYSTEM.REQUIRED"|translate}}
             </div>
             <div *ngIf="f.longDescriptionEn.errors.pattern">
-                {{ 'CONTENT_MANEGMENT_SYSTEM.ENGLISHFIELD' | translate }}
+                {{ 'CONTENT_MANEGMENT_SYSTEM.ENGLISH_FIELD' | translate }}
              </div>
         </div>
         </div>
-        
-        
-      
       <button type="submit" class="btn btn-danger" >{{'CONTENT_MANEGMENT_SYSTEM.PUBLISH' | translate}}</button>
-      <!-- <button type="button" class="btn btn-warning">{{'CONTENT_MANEGMENT_SYSTEM.BACK' | translate}}</button> -->
-      <div *ngIf="resultMessage?.type==='success'" class="alert alert-{{ resultMessage.type }} my-4 py-2">
+      <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2">
         {{resultMessage.message}}
-    </div>
-    <div *ngIf="resultMessage.type==='danger'" class="alert alert-{{ resultMessage.type }} my-4 py-2">
-      {{resultMessage.message}}
     </div>
     </form>
   </div>
