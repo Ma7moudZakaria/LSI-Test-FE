@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   lkupsKeys : string[] = ['GENDER'];
   resMessage: BaseMessageModel = {};
   currentLang: LanguageEnum | undefined;
+  isSubmit = false;
 
   constructor(
       private fb: FormBuilder,
@@ -35,12 +36,21 @@ export class LoginComponent implements OnInit {
       ) { }
 
   ngOnInit(): void {
+    // this.userform = this.fb.group({
+    //   'email': new FormControl('', Validators.compose([Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")])),
+    //   'password': new FormControl('', Validators.compose([Validators.required, Validators.minLength(6) , ,Validators.maxLength(50)]))
+    // });
+
     this.userform = this.fb.group({
-      'email': new FormControl('', Validators.required),
-      'password': new FormControl('', Validators.compose([Validators.required, Validators.minLength(6)]))
+      email: ["", [Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+      password: ["", [Validators.required, Validators.minLength(6) , Validators.maxLength(50)]],
     });
     
     this.currentLang = this.translate.currentLang === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
+  }
+
+  get f() {
+    return this.userform.controls;
   }
 
   getLookups(){
@@ -51,6 +61,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(value: string) {
+    this.isSubmit = true;
     if (this.userform.valid) {
       var authModel: IAuthentication;
       authModel = {
@@ -63,6 +74,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('user', JSON.stringify(res.data as IUser));
             this.router.navigateByUrl('/dashboard');
             this.getLookups();
+            this.isSubmit = false;
           }
           else
           {
@@ -70,11 +82,13 @@ export class LoginComponent implements OnInit {
               message: res.message,
               type: BaseConstantModel.DANGER_TYPE
             }
+            this.isSubmit = false;
           } 
         }
       );
     }
     else {
+      this.isSubmit = false;
       this.resMessage = {
         message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
         type: BaseConstantModel.DANGER_TYPE

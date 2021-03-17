@@ -24,28 +24,45 @@
                                     placeholder="Enter User Name" 
                                     class=" px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
                                     
-                                </div>                        
+                                </div>   
+                                    
+                                <div *ngIf="f.userName.errors && (f.userName.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.userName.errors?.required">
+                                        {{ 'GENERAL.USERNAMEREQUIRED' | translate }}
+                                    </div>
+                                    <div *ngIf="f.userName.errors?.maxlength ">
+                                        {{ 'GENERAL.USERNAMEMAXLENGTH' | translate}}
+                                    </div>
+                                    <div *ngIf="f.userName.errors?.minlength ">
+                                        {{ 'GENERAL.USERNAMEMINLENGTH' | translate}}
+                                    </div> 
+                                </div>                
                             </div>
 
                             <!-- Email Address -->                    
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
-                               
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">    
+                                <label for="UserEmail"> {{'GENERAL.EMAIL' | translate}} </label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-white pl-2 pr-2 border-md border-right-0">
+                                            <!-- <i class="fa fa-envelope text-muted"></i> -->
+                                            <img  class="UserLogin_icon_input" src="../../../../../assets/images/email.svg">
+                                        </span>
+                                    </div>
+                                    <input id="email"  pInputText type="email" formControlName="email" name="email" 
+                                    placeholder="Ex. email@gmail.com" 
+                                    class=" px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
+                                </div>
                                    
-                                        <label for="UserEmail"> {{'GENERAL.EMAIL' | translate}} </label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text bg-white pl-2 pr-2 border-md border-right-0">
-                                                    <!-- <i class="fa fa-envelope text-muted"></i> -->
-                                                    <img  class="UserLogin_icon_input" src="../../../../../assets/images/email.svg">
-                                                </span>
-                                            </div>
-                                            <input id="email"  pInputText type="email" formControlName="email" name="email" 
-                                            placeholder="Ex. email@gmail.com" 
-                                            class=" px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
-                                        </div>
-                                   
-                                                                               
-                                    <!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <div *ngIf="f.email.errors && (f.email.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.email.errors?.required">
+                                        {{ 'GENERAL.EMAILREQUIRED' | translate }}
+                                    </div>
+                                    <div *ngIf="f.email.errors.pattern">
+                                        {{ 'GENERAL.EMAILPATTERN' | translate }}
+                                    </div>
+                                </div>   
+                                <!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                         <label for="gender"> {{'GENERAL.GENDER' | translate}} </label>
                                         <div class="row">
                                             <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -81,7 +98,20 @@
                                             placeholder="Password" 
                                             class="  px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
                                             
-                                        </div>                        
+                                            
+                                        </div>     
+                                        <div *ngIf="f.password.errors && (f.password.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                            <div *ngIf="f.password.errors?.required ">
+                                                {{ 'GENERAL.PASSWORDREQUIRED' | translate }}
+                                            </div>
+                                            <div *ngIf="f.password.errors?.maxlength ">
+                                                {{ 'GENERAL.PASSWORDMAXLENGTH' | translate}}
+                                            </div>
+                                            <div *ngIf="f.password.errors?.minlength ">
+                                                {{ 'GENERAL.PASSWORDMINLENGTH' | translate}}
+                                            </div>      
+                                        </div>                                           
+                                                       
                                     </div>
                                     
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mb-4">
@@ -98,8 +128,18 @@
                                             [type]="hidePassword ? 'password' : 'text'" formControlName="confirmPassword" name="confirmPassword"
                                             placeholder="confirmPassword" 
                                             class="  px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
-                                            
-                                        </div>                        
+                                        </div>   
+                                        <div *ngIf="f.confirmPassword.errors && (f.confirmPassword.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                            <div *ngIf="f.confirmPassword.errors?.required ">
+                                                {{ 'GENERAL.CONFIRMPASSWORDREQUIRED' | translate }}
+                                            </div>
+                                            <div *ngIf="f.confirmPassword.errors?.maxlength ">
+                                                {{ 'GENERAL.CONFIRMPASSWORDMAXLENGTH' | translate}}
+                                            </div>
+                                            <div *ngIf="f.confirmPassword.errors?.minlength ">
+                                                {{ 'GENERAL.CONFIRMPASSWORDMINLENGTH' | translate}}
+                                            </div>      
+                                        </div>              
                                     </div>
                                 </div>
                             </div>

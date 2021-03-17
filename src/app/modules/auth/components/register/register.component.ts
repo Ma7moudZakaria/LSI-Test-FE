@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit {
   hidePassword = true;
   resMessage: BaseMessageModel = {};
   currentLang: LanguageEnum | undefined;
+  isSubmit = false;
 
   constructor(private authService: AuthService,
     private router: Router,
@@ -48,15 +49,17 @@ export class RegisterComponent implements OnInit {
   }
 
   loadUserForm() {
+    // let emailReg = '/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/';
     this.registerform = this.fb.group({
-      email: ["", [Validators.required, Validators.email]],
-      userName: ["", Validators.required],
-      password: ["", Validators.required],
-      confirmPassword: ["", Validators.required],
+      email: ["", [Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+      userName: ["", [Validators.required, Validators.minLength(3),Validators.maxLength(50)]],
+      password: ["", [Validators.required, Validators.minLength(6) , ,Validators.maxLength(50)]],
+      confirmPassword: ["", [Validators.required, Validators.minLength(6) , ,Validators.maxLength(50)]],
     });
   }
 
   onSignup(value: string) {
+    this.isSubmit = true;
     if (this.registerform.valid) {
       localStorage.clear();
       this.registrationModel = {
@@ -70,8 +73,10 @@ export class RegisterComponent implements OnInit {
         if (res.isSuccess) {
           localStorage.setItem('user',JSON.stringify(res.data as IUser))
           this.router.navigateByUrl('/auth/(baseRouter:activate-code)');
+          this.isSubmit = false;
           }
           else {
+            this.isSubmit = false;
             this.resMessage ={
               message: res.message,
               type: BaseConstantModel.DANGER_TYPE
@@ -80,6 +85,7 @@ export class RegisterComponent implements OnInit {
       })
     }
     else{
+      this.isSubmit = false;
       this.resMessage = {
         message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
         type: BaseConstantModel.DANGER_TYPE
