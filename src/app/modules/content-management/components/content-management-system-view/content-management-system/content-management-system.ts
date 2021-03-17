@@ -25,13 +25,11 @@ export class ContentManagementSystemComponent implements OnInit {
   errorMessage:any;
   contentManagementId!: string;
   routeParams: any;
-  // cmsType!: IContentManagementFilter;
   isSubmit = false;
-  @Input() selectedcmsTypeId?: string;
+  @Input() selectedcmsTypeId={id:'',nameAr:'',nameEn:''};
   currentForm: FormGroup=new FormGroup({});
   resultMessage:BaseMessageModel = {};
   disableSaveButtons = false;
-  valueLang = "nameAr";
   cmsId?:string='';
   isAdd:boolean=true;
   typeId?:string='';
@@ -41,7 +39,6 @@ export class ContentManagementSystemComponent implements OnInit {
     private route: ActivatedRoute, private fb: FormBuilder,
     private contentmanagementService:ContentManagementService,
     public translate: TranslateService) {
-      this.valueLang = this.translate.currentLang == 'en-US' ? 'nameEn' : 'nameAr';
   }
 
   ngOnInit(){    
@@ -52,8 +49,7 @@ export class ContentManagementSystemComponent implements OnInit {
       message:'',
       type: ''
     }
- // this.selectedcmsTypeId||undefined;
-      if (this.selectedcmsTypeId!== undefined) {
+      if (this.selectedcmsTypeId.id!== undefined) {
         this.isAdd=false;
         this.loadContentManagementSystemByType()
       }
@@ -66,7 +62,7 @@ export class ContentManagementSystemComponent implements OnInit {
   ngOnChanges(changes: any) {
     this.currentForm.reset();
     //this.cmsType.typeId=this.selectedcmsTypeId||"";
-    if (this.selectedcmsTypeId!== "") {
+    if (this.selectedcmsTypeId.id!== "") {
       this.isAdd=false;
       this.loadContentManagementSystemByType()
     }
@@ -101,10 +97,10 @@ export class ContentManagementSystemComponent implements OnInit {
   }
   
   loadContentManagementSystemByType() {
-    if(this.selectedcmsTypeId!==undefined){
+    if(this.selectedcmsTypeId.id!==undefined){
       this.cmsId="";
       this.contentmanagementsystem={};
-      this.contentmanagementService.getContentManagementSystemByTypeCms(this.selectedcmsTypeId).subscribe(res => {
+      this.contentmanagementService.getContentManagementSystemByTypeCms(this.selectedcmsTypeId.id).subscribe(res => {
         var response =<BaseResponseModel>res;
         if (response.isSuccess) {
           this.contentmanagementsystem  = response.data;
@@ -144,7 +140,7 @@ export class ContentManagementSystemComponent implements OnInit {
       this.contentmanagementCreat.shortDesEn=this.f.shortDescriptionEn.value; 
       this.contentmanagementCreat.longDesAr=this.f.longDescriptionAr.value;
       this.contentmanagementCreat.longDesEn=this.f.longDescriptionEn.value;
-      this.contentmanagementCreat.cmsType=this.selectedcmsTypeId;
+      this.contentmanagementCreat.cmsType=this.selectedcmsTypeId.id;
       this.contentmanagementService.createContentManagementSystem(this.contentmanagementCreat).subscribe(res => {
         this.isSubmit = false;
         if (res.isSuccess) {

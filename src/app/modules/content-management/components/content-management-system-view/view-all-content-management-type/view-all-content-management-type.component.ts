@@ -11,7 +11,7 @@ import { ContentManagementService } from 'src/app/core/services/content-manageme
 })
 export class ViewAllContentManagementTypeComponent implements OnInit {
   cmsTypeLst?: BaseLookupModel[];
-  @Output() selectedcmsTypeId = new EventEmitter<string>();;
+  @Output() selectedcmsTypeId = new EventEmitter<{}>();;
   langEnum = LanguageEnum;
   constructor(private contentmanagementService:ContentManagementService,public translate : TranslateService) { }
 
@@ -22,7 +22,7 @@ this.loadContentManagementSystemTypes();
     this.contentmanagementService.getAllContentManagementSystemTypes().subscribe(
       (res: any) => {
         this.cmsTypeLst = res.data as BaseLookupModel[];
-        this.loadContentManagementSystem(this.cmsTypeLst[0].id);
+        this.loadContentManagementSystem(this.cmsTypeLst[0].id,this.cmsTypeLst[0].nameAr,this.cmsTypeLst[0].nameEn);
         this.selectedIndex=0;
 
       }, error => {
@@ -30,8 +30,8 @@ this.loadContentManagementSystemTypes();
       }
     );
   }
-  selectedIndex:any;
-  loadContentManagementSystem(id?:any){
-    this.selectedcmsTypeId?.emit(id);
+  selectedIndex?:Number|0;
+  loadContentManagementSystem(id?:string,nameAr?:string,nameEn?:string){
+    this.selectedcmsTypeId?.emit({id:id,nameAr:nameAr,nameEn:nameEn});
   } 
 }
