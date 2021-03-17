@@ -9,4 +9,7 @@
             {{ translate.currentLang === langEnum.en ? page.nameEn : page.nameAr}}
         </a>
     </li>
+    <div *ngIf="resMessage" class="alert alert-{{ resMessage.type }} my-4 py-2">
+        {{ resMessage.message }}
+    </div>
 </ul>

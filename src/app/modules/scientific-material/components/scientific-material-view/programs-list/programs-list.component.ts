@@ -1,6 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
+import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { ScientificMaterialService } from 'src/app/core/services/scientific-material-services/scientific-material.service';
 
 @Component({
@@ -12,6 +16,8 @@ export class ProgramsListComponent implements OnInit {
   programs: any;
   @Output() selectedProgramId = new EventEmitter<string>();;
   langEnum = LanguageEnum;
+  resMessage: BaseMessageModel = {};
+
   constructor(private scientifcMaterialService: ScientificMaterialService,public translate : TranslateService) { }
 
   ngOnInit(): void {
@@ -20,16 +26,20 @@ export class ProgramsListComponent implements OnInit {
 
   loadPrograms() {
     this.scientifcMaterialService.getProgramsLookup().subscribe(
-      (res: any) => {
-        this.programs = res.data as any[];
+      (res: BaseResponseModel) => {
+        this.programs = res.data as IprogramsModel[];
 
       }, error => {
-        console.log(error);
+        
+        this.resMessage = {
+          message: error.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       }
     );
   }
   selectedIndex:any;
-  loadProgramMaterial(id?:any){
+  loadProgramMaterial(id?:string){
     this.selectedProgramId?.emit(id);
   } 
 }

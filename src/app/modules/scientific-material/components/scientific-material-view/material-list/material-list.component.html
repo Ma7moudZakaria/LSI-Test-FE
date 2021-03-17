@@ -3,14 +3,18 @@
     <p class="mb-4 title_material-list">{{'PROGRAMS_LIST.PROGRAMS' | translate}}</p>
   </div>
   <div class="col-6 upload">
-    <a (click)="loadMaterial(null)">
+    <a (click)="loadMaterial()">
        <img calss="m-2 pull-left" src="assets/images/scientificMaterial/Group 18093.svg" alt="">
     </a>
   </div>
   <div class="col-12 pr-0 pl-0 ">
     <section class="example-section">
-      <mat-checkbox class="example-margin" >مواد صوتية</mat-checkbox>
-      <mat-checkbox class="example-margin ml-5 mr-5" >مواد مقرؤة</mat-checkbox>
+        <mat-checkbox  *ngFor="let item of materialCategoires;let i=index" 
+        class="example-margin  ml-5 mr-5" (change)="changeCategory(item.id)">
+          {{translate.currentLang === LangEnum.en ? item.nameEn: item.nameAr}}  
+        </mat-checkbox>
+      <!-- <mat-checkbox class="example-margin" >مواد صوتية</mat-checkbox>
+      <mat-checkbox class="example-margin ml-5 mr-5" >مواد مقرؤة</mat-checkbox> -->
     </section>
 
   </div>
@@ -34,6 +38,8 @@
     </div>  
   </div>
 
-  
+  <div *ngIf="resMessage" class="alert alert-{{ resMessage.type }} my-4 py-2">
+    {{ resMessage.message }}
+</div>  
 </section>
 </div>

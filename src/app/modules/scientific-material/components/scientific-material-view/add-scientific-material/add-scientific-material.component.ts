@@ -12,6 +12,10 @@ import { ScientificMaterialService } from 'src/app/core/services/scientific-mate
 import { BaseLookupModel } from 'src/app/core/ng-model/base-lookup-model';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
+import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
 
 @Component({
   selector: 'app-add-scientific-material',
@@ -33,14 +37,14 @@ export class AddScientificMaterialComponent implements OnInit {
   addScientificMaterial = {} as IAddScientificMaterial;
   updateScientificMaterial = {} as IUpdateScientificMaterial;
   ScientificMaterialDetails = {} as IScientificMaterialDetails;
-  successMessage: any;
-  errorMessage: any;
   disableSaveButtons = false;
   @Input() selectedMaterialId: any;
   @Output() submitSuccess = new EventEmitter<boolean>();
-  LangEnum = LanguageEnum ;
+  LangEnum = LanguageEnum;
+  resMessage: BaseMessageModel = {};
+
   constructor(private fb: FormBuilder, private scientifcMaterialService: ScientificMaterialService,
-    private attachmentService: AttachmentsService,public translate : TranslateService,
+    private attachmentService: AttachmentsService, public translate: TranslateService,
     private activeroute: ActivatedRoute, private router: Router) {
   }
 
@@ -63,24 +67,30 @@ export class AddScientificMaterialComponent implements OnInit {
   }
   loadPrograms() {
     this.scientifcMaterialService.getProgramsLookup().subscribe(
-      (res: any) => {
-        this.programs = res.data as any[];
+      (res: BaseResponseModel) => {
+        this.programs = res.data as IprogramsModel[];
 
       }, error => {
-        console.log(error);
+        this.resMessage = {
+          message: error.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       }
     );
   }
   loadMaterialCategories() {
     this.scientifcMaterialService.GetScientificMatrialCategoriesLookup().subscribe(
-      (res: any) => {
-        this.materialCategoriesLookup = res.data as any[];
-        if (this.scientificMaterialId) {
-          this.loadScientificMaterialDetails(this.scientificMaterialId);
-        }
+      (res: BaseResponseModel) => {
+        this.materialCategoriesLookup = res.data as BaseLookupModel[];
+        // if (this.scientificMaterialId) {
+        //   this.loadScientificMaterialDetails(this.scientificMaterialId);
+        // }
 
       }, error => {
-        console.log(error);
+        this.resMessage = {
+          message: error.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       }
     );
   }
@@ -91,30 +101,34 @@ export class AddScientificMaterialComponent implements OnInit {
           if (res.isSuccess) {
             this.ScientificMaterialDetails = res.data;
             this.scientificMaterialId = this.ScientificMaterialDetails.id;
-            this.PopulateForm();
+            this.populateForm();
 
           }
         }, error => {
-          console.log(error);
+          this.resMessage = {
+            message: error.message,
+            type: BaseConstantModel.DANGER_TYPE
+          }
         })
     }
-    else{
+    else {
       this.currentForm.reset();
-      this.scientificMaterialId= null;
+      this.scientificMaterialId = null;
       this.ScientificMaterialDetails = {} as IScientificMaterialDetails;
-      this.fileList = [];      
+      this.fileList = [];
       this.selectedProgram = [];
       this.attachmentIds = [];
       this.fileUploadModel = [];
+      this.resMessage = {};
 
     }
 
   }
-  DeleteAttachment(index: number, id: string) {
+  deleteAttachment(index: number, id: string) {
     this.fileList.splice(index, 1);
     this.attachmentIds = this.attachmentIds.filter(a => a !== id);
   }
-  PopulateForm() {
+  populateForm() {
     this.f.matrialTitleAr.setValue(this.ScientificMaterialDetails?.matrialTitleAr);
     this.f.matrialTitleEn.setValue(this.ScientificMaterialDetails?.matrialTitleEn);
     this.f.matrialCategory.setValue(this.ScientificMaterialDetails?.matrialCategory);
@@ -125,9 +139,15 @@ export class AddScientificMaterialComponent implements OnInit {
     this.ScientificMaterialDetails?.matrialAttachments.forEach(element => {
       this.attachmentIds.push(element.id);
     });
-    this.selectedProgram = this.ScientificMaterialDetails?.matrialPrograms.forEach((pr: any) => {
-      this.selectedProgram.push(pr.id);
+    if (!this.selectedProgram) {
+      this.selectedProgram = [];
+    }
+    this.ScientificMaterialDetails?.matrialPrograms.forEach((pr: any) => {
+      this.selectedProgram.push({
+        programId: pr.id
+      });
     });
+
     this.updateScientificMaterial.id = this.ScientificMaterialDetails.id;
   }
   get f() {
@@ -145,11 +165,11 @@ export class AddScientificMaterialComponent implements OnInit {
         fileLink: [''],
         active: [false],
         availableForAllUsers: [false],
-        programMatrial: [null,Validators.minLength(1)]
+        programMatrial: [null, Validators.minLength(1)]
 
       });
   }
-  RemoveFile(index: any) {
+  RemoveFile(index: number) {
 
     this.attachmentIds.splice(index);
     //call this if we will remove the attachment from db
@@ -172,7 +192,7 @@ export class AddScientificMaterialComponent implements OnInit {
         }
         this.fileUploadModel.push(fileUploadObj)
       });
-      this.UploadFiles(this.fileUploadModel);
+      this.uploadFiles(this.fileUploadModel);
     }
 
   }
@@ -187,7 +207,7 @@ export class AddScientificMaterialComponent implements OnInit {
 
     });
   }
-  UploadFiles(files: any) {
+  uploadFiles(files: IFileUpload[]) {
     if (files.length === 0) {
       return;
     }
@@ -200,98 +220,107 @@ export class AddScientificMaterialComponent implements OnInit {
         })
         this.fileUploadModel = [];
       }, error => {
-        console.log(error);
         this.fileUploadModel = [];
-        this.errorMessage={
-          message:error.message,
-          type:'danger'
+        this.resMessage = {
+          message: error.message,
+          type: BaseConstantModel.DANGER_TYPE
         }
       }
     )
   }
   Submit() {
     this.isSubmit = true;
-    if(this.selectedProgram.length == 0){
+    if (this.currentForm.valid) {
+      if (this.selectedProgram.length == 0) {
+        return;
+      }
+      this.resMessage = {};
 
-    }
-    this.successMessage= null;
-    this.errorMessage = null;
-    if (this.scientificMaterialId) {
-      this.updateScientificMaterial.matrialTitleAr = this.f.matrialTitleAr.value;
-      this.updateScientificMaterial.matrialTitleEn = this.f.matrialTitleEn.value;
-      this.updateScientificMaterial.matrialCategory = this.f.matrialCategory.value;
-      this.updateScientificMaterial.fileLink = this.f.fileLink.value === '' ? null : this.f.fileLink.value;
-      this.updateScientificMaterial.active = this.f.active.value;
-      this.updateScientificMaterial.availableForAllUsers = this.f.availableForAllUsers.value;
-      this.updateScientificMaterial.programScientificMatrial = this.selectedProgram;
-      this.updateScientificMaterial.attachmentIds = this.attachmentIds;
-      this.scientifcMaterialService.UpdateScientificMaterial(this.updateScientificMaterial).subscribe(res => {
-        //var response = Mapper.responseMapper(res);
-        if (res.isSuccess) {
-          this.isSubmit = false;
-          this.successMessage={
-            message:res.message,
-            type:'success'
+      if (this.scientificMaterialId) {
+        this.updateScientificMaterial.matrialTitleAr = this.f.matrialTitleAr.value;
+        this.updateScientificMaterial.matrialTitleEn = this.f.matrialTitleEn.value;
+        this.updateScientificMaterial.matrialCategory = this.f.matrialCategory.value;
+        this.updateScientificMaterial.fileLink = this.f.fileLink.value === '' ? null : this.f.fileLink.value;
+        this.updateScientificMaterial.active = this.f.active.value;
+        this.updateScientificMaterial.availableForAllUsers = this.f.availableForAllUsers.value;
+        this.updateScientificMaterial.programScientificMatrial = this.selectedProgram;
+        this.updateScientificMaterial.attachmentIds = this.attachmentIds;
+        this.scientifcMaterialService.UpdateScientificMaterial(this.updateScientificMaterial).subscribe(res => {
+          //var response = Mapper.responseMapper(res);
+          if (res.isSuccess) {
+            this.isSubmit = false;
+            this.resMessage = {
+              message: res.message,
+              type: BaseConstantModel.SUCCESS_TYPE
+            }
+            this.closeForm();
           }
-          this.closeForm();         
-        }
-        else{
-          this.isSubmit = false;
-          this.errorMessage={
-            message:res.message,
-            type:'danger'
+          else {
+            this.isSubmit = false;
+
+            this.resMessage = {
+              message: res.message,
+              type: BaseConstantModel.DANGER_TYPE
+            }
           }
-        }
-      },
-        error => {
-          console.log(error);
-          this.errorMessage={
-            message:error.message,
-            type:'danger'
+        },
+          error => {
+            console.log(error);
+            this.resMessage = {
+              message: error.message,
+              type: BaseConstantModel.DANGER_TYPE
+            }
+          })
+      }
+      else {
+
+        this.addScientificMaterial.matrialTitleAr = this.f.matrialTitleAr.value;
+        this.addScientificMaterial.matrialTitleEn = this.f.matrialTitleEn.value;
+        this.addScientificMaterial.matrialCategory = this.f.matrialCategory.value;
+        this.addScientificMaterial.fileLink = this.f.fileLink.value === '' ? null : this.f.fileLink.value;
+        this.addScientificMaterial.active = this.f.active.value;
+        this.addScientificMaterial.availableForAllUsers = this.f.availableForAllUsers.value;
+        this.addScientificMaterial.programMatrial = this.selectedProgram;
+        this.addScientificMaterial.attachmentIds = this.attachmentIds;
+        this.scientifcMaterialService.addScientificMaterial(this.addScientificMaterial).subscribe(res => {
+          //var response = Mapper.responseMapper(res);
+          if (res.isSuccess) {
+            this.isSubmit = false;
+            this.resMessage = {
+              message: res.message,
+              type: BaseConstantModel.SUCCESS_TYPE
+            }
+            this.closeForm();
           }
-        })
+          else {
+            this.isSubmit = false;
+            this.resMessage = {
+              message: res.message,
+              type: BaseConstantModel.DANGER_TYPE
+            }
+          }
+        },
+          error => {
+            console.log(error);
+            this.resMessage = {
+              message: error.message,
+              type: BaseConstantModel.DANGER_TYPE
+            }
+          });
+      }
     }
     else {
-
-      this.addScientificMaterial.matrialTitleAr = this.f.matrialTitleAr.value;
-      this.addScientificMaterial.matrialTitleEn = this.f.matrialTitleEn.value;
-      this.addScientificMaterial.matrialCategory = this.f.matrialCategory.value;
-      this.addScientificMaterial.fileLink = this.f.fileLink.value === '' ? null : this.f.fileLink.value;
-      this.addScientificMaterial.active = this.f.active.value;
-      this.addScientificMaterial.availableForAllUsers = this.f.availableForAllUsers.value;
-      this.addScientificMaterial.programMatrial = this.selectedProgram;
-      this.addScientificMaterial.attachmentIds = this.attachmentIds;
-      this.scientifcMaterialService.addScientificMaterial(this.addScientificMaterial).subscribe(res => {
-        //var response = Mapper.responseMapper(res);
-        if (res.isSuccess) {
-          this.isSubmit = false;
-          this.successMessage={
-            message:res.message,
-            type:'success'
-          }
-          this.closeForm();         
-        }
-        else{
-          this.isSubmit = false;
-          this.errorMessage={
-            message:res.message,
-            type:'danger'
-          }
-        }
-      },
-        error => {
-          console.log(error);
-          this.errorMessage={
-            message:error.message,
-            type:'danger'
-          }
-        });
+      this.resMessage = {
+        message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+        type: BaseConstantModel.DANGER_TYPE
+      }
     }
 
   }
 
-  closeForm(){
+  closeForm() {
     setTimeout(() => {
-      this.submitSuccess?.emit(true);}, 2000);
+      this.submitSuccess?.emit(true);
+    }, 2000);
   }
 }
