@@ -1,4 +1,4 @@
-
+@import 'src/assets/scss/_variables.scss';
  .list-group_program-list{
     background: #FBFBFB 0% 0% no-repeat padding-box;
     border-radius: 19px;
@@ -83,6 +83,14 @@
             color: #FFFFFF;
         }
        
+}
+.link_Add{
+    color:$icon_input;
 } 
+.p_header{
+    margin-bottom: 1rem;
+    font-size: large;
+    font-weight: bold;
+}
 
   

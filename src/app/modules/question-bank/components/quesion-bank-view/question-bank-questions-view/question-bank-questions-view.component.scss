@@ -1,12 +1,13 @@
-
+@import 'src/assets/scss/_variables.scss';
 .material-list{
     background: #FBFBFB 0% 0% no-repeat padding-box;
     border-radius: 19px;
     opacity: 1;
     padding: 2rem;
     height : 98%;
-    margin: 1rem;
+    margin-top: 1rem;
     margin-bottom: 0;
+  
 
 }
 
@@ -85,3 +86,15 @@ opacity: 1;
   font-size: 14px;
   font-weight: bold;
 }
+.link_Add{
+  color:$icon_input;
+  margin-bottom: 3rem;
+} 
+.p_header{
+  margin-bottom: 1rem;
+  font-size: large;
+}
+.search_group{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+} 

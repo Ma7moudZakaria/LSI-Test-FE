@@ -25,11 +25,13 @@ Label{
     color:$placeholder_inputs;
     
     .labl_right:lang(ar) {
-        text-align: right;
+        direction: rtl;
+       // text-align: right;
     }
     .labl_lift:lang(en) {
              
-        text-align: left;
+        //text-align: left;
+        direction: ltr;
             }
 
 

@@ -3,11 +3,11 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-4 ">
+        <div class="col-lg-3 col-md-3 col-sm-3 ">
             <app-question-bank-categories-view (selectedCategoryId)="setSelectedCategory($event)" (inputCategoryId)="setInputCategoryId($event)"  >
             </app-question-bank-categories-view>
         </div>
-        <div class="col-lg-8  col-md-8 col-sm-8 ">
+        <div class="col-lg-9  col-md-9 col-sm-9 ">
             <app-question-bank-questions-view [selectedCategoryId]="selectedCategoryId" (selectedQuestionId)="loadSelectedQuesion($event)"> 
             </app-question-bank-questions-view>
 
