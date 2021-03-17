@@ -26,10 +26,17 @@
        </div>
   </div>
   </div>
+  <section>
+    <div class="row">
+      <button type="submit" class="save-btn btn btn-danger" [disabled]="disableSaveButtons" >{{'QUESTION_BANK.PUBLISH' | translate}}</button>
+      <button type="button" class="cancel-btn btn btn-danger" (click)="back_list_Catogry()">{{'QUESTION_BANK.CANCEL' | translate}}</button>
+    </div>
+    <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2">
+      {{resultMessage.message}}
+  </div>
 
-  <button type="submit" class="save-btn btn btn-danger Catogry_publish_btn" [disabled]="disableSaveButtons" >{{'QUESTION_BANK.PUBLISH' | translate}}</button>
-  <!-- <button type="button" class="btn btn-warning Catogry_Back_btn" (click)="back_list_Catogry()">{{'QUESTION_BANK.BACK' | translate}}</button> -->
-  <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2">
-    {{resultMessage.message}}
-</div>
+  </section>
+  
+
+ 
 </form>

@@ -1,4 +1,4 @@
-
+@import 'src/assets/scss/_variables.scss';
 .material-form{
     background: #FBFBFB 0% 0% no-repeat padding-box;
     border: 1px solid #FBFBFB;
@@ -35,4 +35,17 @@ border: none;
 color: #ffffff;
 display: block;
 }
+.cancel-btn{
+    background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
+    background:$icon_input ;
+    border-radius: 12px;
+    opacity: 1;
+    width: auto;
+    margin: 1rem;
+    padding: 0.5rem;
+    height: 2.31rem;
+    border: none;
+    color: #ffffff;
+    display: block;
+    }
 

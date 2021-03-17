@@ -21,8 +21,8 @@
         </app-add-question-bank-question>
     </div> 
 <div class="overlay overlay_dir_left overlay_dir_righ" *ngIf="showAddCategoryForm">
-    <a  class="closebtn" (click)="closeAddCategoryForm()">&times;</a>
-    <app-add-question-bank-category [inputCategoryId]="inputCategoryId"  (submitSuccess)="closeAddCategoryFormAfterSave($event)">
+    <!-- <a  class="closebtn" (click)="closeAddCategoryForm()">&times;</a> -->
+    <app-add-question-bank-category [inputCategoryId]="inputCategoryId"  (submitSuccess)="closeAddCategoryFormAfterSave($event)" (closeCategoryForm)="closeAddCategoryForm($event)" >
     </app-add-question-bank-category>
 </div>
 
