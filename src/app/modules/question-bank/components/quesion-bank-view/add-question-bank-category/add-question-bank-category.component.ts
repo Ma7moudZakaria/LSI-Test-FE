@@ -171,7 +171,7 @@ export class AddQuestionBankCategoryComponent implements OnInit {
 
   }
 
-  back_list_Catogry(){
+  backListCatogry(){
     this.closeCategoryForm?.emit(false);
   }
 

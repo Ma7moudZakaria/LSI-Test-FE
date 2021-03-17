@@ -168,5 +168,7 @@ export class ContentManagementSystemComponent implements OnInit {
       }
 
     }
-
+    reset(){
+      this.currentForm.reset();
+    }
 }

@@ -12,6 +12,7 @@ export class QuesionBankViewComponent implements OnInit {
   inputCategoryId:string|undefined;
   @Input() isViewAdd?:boolean; 
   @Input() closeCategoryForm?:boolean; 
+  @Input() closeQuestionForm?:boolean; 
   showAddQuestionForm = false;
   submitSuccess:any;
   showAddCategoryForm = false;
@@ -32,7 +33,7 @@ export class QuesionBankViewComponent implements OnInit {
   setSelectedCategory(event:any){
     this.selectedCategoryId = event;
   }
-  closeAddQuestionForm(){
+  closeAddQuestionForm(event:any){
     this.showAddQuestionForm = false;
   }
   closeAddQuestionFormAfterSave(event:any){
