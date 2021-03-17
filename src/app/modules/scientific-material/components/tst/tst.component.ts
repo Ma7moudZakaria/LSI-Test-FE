@@ -14,9 +14,9 @@ export class TstComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.translate.currentLang);
 
-    this.translate.use('ar');
+    //this.translate.use('ar');
 
-    this.auth.switchLanguage('en-Us').subscribe(res => console.log(res));
+    //this.auth.switchLanguage('en-Us').subscribe(res => console.log(res));
   }
 
 }

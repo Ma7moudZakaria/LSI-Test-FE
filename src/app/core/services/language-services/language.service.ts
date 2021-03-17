@@ -1,6 +1,6 @@
 import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y';
 import { JsonpClientBackend } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { UserModule } from 'src/app/modules/user/user.module';
 import { LanguageEnum } from '../../enums/language-enum.enum';
@@ -13,6 +13,9 @@ import { AuthService } from '../auth-services/auth.service';
 export class LanguageService {
 
   currentUser:Iuser | undefined
+  currentLanguageEvent = new EventEmitter<LanguageEnum>();
+  headerPageNameEvent = new EventEmitter<string>();
+
   constructor(private auth: AuthService, private translate: TranslateService) { 
     this.currentUser = JSON.parse(localStorage.getItem("user") || '{}');
   }
@@ -28,23 +31,21 @@ export class LanguageService {
   }
 
   switchLang(language:LanguageEnum) {
-    this.auth.switchLanguage(language).subscribe(res =>{
-      if (res.isSuccess){
-        this.switchLangCallBack(language);
-      }
-      else{
+    this.switchLangCallBack(language);
 
-      }
+    this.auth.switchLanguage(language).subscribe(res =>{
     });
   }
 
   switchLangCallBack(language:LanguageEnum) {
-  
-    this.auth.currentLanguageEvent.emit(language);
+
+    this.translate.use(language).subscribe(res => {
+      this.currentLanguageEvent.emit(language);
+    })
+
     /*used for refreshment case*/
     localStorage.setItem('lang', JSON.stringify(language));
 
-    this.translate.use(language.split("-")[0].toLowerCase());
     if (language === LanguageEnum.ar){
       document.getElementsByTagName('html')[0].setAttribute('dir', 'rtl');
       document.getElementsByTagName('html')[0].setAttribute('lang', 'ar');
@@ -54,5 +55,6 @@ export class LanguageService {
       document.getElementsByTagName('html')[0].setAttribute('dir', 'ltr');
       document.getElementsByTagName('html')[0].setAttribute('lang', 'en');
     }
+
   }
 }

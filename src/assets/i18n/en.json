@@ -84,6 +84,7 @@
     "ALL": "All"
   },
   "UPDATE_USER_PG": {
+    "TITLE":"User Profile",
     "PERSONALINFORMATION": "Main Information",
     "NAME": "Name",
     "FATHERNAME": "Father Name",

@@ -13,6 +13,6 @@ export class BaseLookupModel {
     }
 
     public getNameLocalized(){
-        return this.translate.currentLang == LanguageEnum.ar.split('-')[0] ? this.nameAr : this.nameEn;
+        return this.translate.currentLang == LanguageEnum.ar ? this.nameAr : this.nameEn;
     }
 }

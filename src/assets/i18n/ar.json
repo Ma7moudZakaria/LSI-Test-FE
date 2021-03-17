@@ -85,6 +85,7 @@
     
   },
   "UPDATE_USER_PG": {
+    "TITLE":"الملف الشخصى",
     "PERSONALINFORMATION": "المعلومات الشخصية",
     "NAME": "الاسم",
     "FATHERNAME": "إسم الأب",

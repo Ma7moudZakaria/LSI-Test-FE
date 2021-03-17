@@ -17,6 +17,7 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseLookupModel } from 'src/app/core/ng-model/base-lookup-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AttachmentsService } from 'src/app/core/services/attachments-services/attachments.service';
+import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 import { UserService } from 'src/app/core/services/user-services/user.service';
 
@@ -38,7 +39,6 @@ export class UpdateUserProfileComponent implements OnInit {
   userProfileDetails = {} as IUserProfile;
   updateUserModel : IUpdateUserProfile = {};
   collectionOfLookup = {} as ILookupCollection;
-  currentLang: LanguageEnum | undefined;
   fileUploadModel: IFileUpload[] = [];
   fileList: IAttachment[] = [];
   ejazaAttachmentIds: string[] = [];
@@ -53,15 +53,8 @@ export class UpdateUserProfileComponent implements OnInit {
     private userService: UserService,
     private attachmentService: AttachmentsService,
     private userProfileService: UserService,
-    public translate: TranslateService) {
-  }
-
-  setCurrentLang(){
-    this.currentLang = this.translate.currentLang == LanguageEnum.ar.split('-')[0] ? LanguageEnum.ar : LanguageEnum.en;
-  }
-
-  isRtlMode(){
-    return this.currentLang == LanguageEnum.ar ? true : false;
+    public translate: TranslateService,
+    public languageService: LanguageService) {
   }
 
   ngOnInit() {
@@ -81,6 +74,22 @@ export class UpdateUserProfileComponent implements OnInit {
         }
       }
     });
+  }
+
+  setCurrentLang(){
+    this.emitHeaderTitle();
+    this.languageService.currentLanguageEvent.subscribe(res => {
+      this.emitHeaderTitle();
+      this.PopulateForm();
+    });
+  }
+
+  emitHeaderTitle(){
+    this.languageService.headerPageNameEvent.emit(this.translate.instant('UPDATE_USER_PG.TITLE'));
+  }
+
+  isRtlMode(){
+    return this.translate.currentLang == LanguageEnum.ar ? true : false;
   }
 
   getUserProfile(id?: string) {
@@ -119,12 +128,12 @@ export class UpdateUserProfileComponent implements OnInit {
       }
       this.updateUserModel = {
         usrId: this.currentUser?.id,
-        firstAr: this.translate.currentLang === LanguageEnum.ar.split('-')[0] ? this.profileForm.value.firstName : this.userProfileDetails.fnameAr,
-        firstEn:  this.translate.currentLang === LanguageEnum.en.split('-')[0] ? this.profileForm.value.firstName : this.userProfileDetails.fnameEn,
-        middleAr: this.translate.currentLang === LanguageEnum.ar.split('-')[0] ? this.profileForm.value.middleName : this.userProfileDetails.mnameAr,
-        middleEn: this.translate.currentLang === LanguageEnum.en.split('-')[0] ? this.profileForm.value.middleName : this.userProfileDetails.mnameEn,
-        familyAr: this.translate.currentLang === LanguageEnum.ar.split('-')[0] ? this.profileForm.value.familyName : this.userProfileDetails.fanameAr,
-        familyEn: this.translate.currentLang === LanguageEnum.en.split('-')[0] ? this.profileForm.value.familyName : this.userProfileDetails.faNameEn,
+        firstAr: this.translate.currentLang === LanguageEnum.ar ? this.profileForm.value.firstName : this.userProfileDetails.fnameAr,
+        firstEn:  this.translate.currentLang === LanguageEnum.en ? this.profileForm.value.firstName : this.userProfileDetails.fnameEn,
+        middleAr: this.translate.currentLang === LanguageEnum.ar ? this.profileForm.value.middleName : this.userProfileDetails.mnameAr,
+        middleEn: this.translate.currentLang === LanguageEnum.en ? this.profileForm.value.middleName : this.userProfileDetails.mnameEn,
+        familyAr: this.translate.currentLang === LanguageEnum.ar ? this.profileForm.value.familyName : this.userProfileDetails.fanameAr,
+        familyEn: this.translate.currentLang === LanguageEnum.en ? this.profileForm.value.familyName : this.userProfileDetails.faNameEn,
         birthdate: this.profileForm.value.birthdate,
         gender: this.profileForm.value.gender,
         mobile: this.profileForm.value.phoneNumber,
@@ -193,7 +202,7 @@ export class UpdateUserProfileComponent implements OnInit {
   }
 
   PopulateForm() {
-    if (this.translate.currentLang === LanguageEnum.ar.split('-')[0]){
+    if (this.translate.currentLang === LanguageEnum.ar){
       this.f.firstName.setValue(this.userProfileDetails?.fnameAr ? this.userProfileDetails?.fnameAr : this.userProfileDetails?.fnameEn ? this.userProfileDetails?.fnameEn : '' );
       this.f.middleName.setValue(this.userProfileDetails?.mnameAr ? this.userProfileDetails?.mnameAr : this.userProfileDetails?.mnameEn ? this.userProfileDetails?.mnameEn : '');
       this.f.familyName.setValue(this.userProfileDetails?.fanameAr ? this.userProfileDetails?.fanameAr : this.userProfileDetails?.faNameEn ? this.userProfileDetails?.faNameEn : '');
