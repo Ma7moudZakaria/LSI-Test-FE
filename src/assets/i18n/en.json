@@ -169,6 +169,9 @@
     "PAGES": "Pages",
     "UPLOADPIC": "Upload Picture",
     "ARABICMESSAGE": "Arabic Message",
-    "ENGLISHMESSAGE": "English Message"
+    "ENGLISHMESSAGE": "English Message",
+    "REQUIRED" : "This field is required!",
+    "ARABICFIELD": "This field must be in Arabic",
+		"ENGLISHFIELD": "This field must be in English"
   }
 }

@@ -11,7 +11,7 @@
         <div *ngIf="attachmentIds?.length == 0 && (isSubmit)"
         class="alert alert-danger mt-2 mb-2">
         <div *ngIf="attachmentIds.length == 0">
-            {{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}
+            {{ 'WALKTHROUGH.REQUIRED' | translate }}
         </div>
     </div>
     <div class="row">
@@ -39,10 +39,10 @@
         
         <div *ngIf="f.textAr.errors && (f.textAr.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
             <div *ngIf="f.textAr.errors?.required">
-                {{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}
+                {{ 'WALKTHROUGH.REQUIRED' | translate }}
             </div>
             <div *ngIf="f.textAr.errors.pattern">
-                {{ 'SCIENTIFIC_MATERIAL.TITLEARPATTERN' | translate }}
+                {{ 'WALKTHROUGH.TITLEARPATTERN' | translate }}
             </div>
         </div>
     </div>
@@ -51,10 +51,10 @@
         <textarea class="form-control" cols="2" rows="5" id="InputtextEn" formControlName="textEn"></textarea>
         <div *ngIf="f.textEn.errors && (f.textEn.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
             <div *ngIf="f.textEn.errors?.required">
-                {{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}
+                {{ 'WALKTHROUGH.REQUIRED' | translate }}
             </div>
             <div *ngIf="f.textEn.errors.pattern">
-                {{ 'SCIENTIFIC_MATERIAL.TITLEENPATTERN' | translate }}
+                {{ 'WALKTHROUGH.TITLEENPATTERN' | translate }}
             </div>
         </div>
     </div>
