@@ -115,20 +115,23 @@
     "CHANGE_PIC": "تغير الصورة"
   },
   "QUESTION_BANK": {
-    "Add_Department": "اضافة قسم",
-    "Departments": "الأقسام",
-    "Department_Ar": "القسم(عربي)",
-    "Department_En": "القسم (انجلزي)",
-    "Publish": "نشر",
-    "Delete": "حذف",
-    "Back": "رجوع",
-    "Search": "بحث...",
-    "Technical_Questions": "الاسئلة التقنية",
-    "Add_Question": "اضافة سؤال",
-    "Question_Ar": "السؤال (عربي)",
-    "Question_En": "السؤال (انجليزي)",
-    "Answer_Ar": "الاجابة (عربي)",
-    "Answer_En": "الاجابة (انجليزي)"
+    "ADD_DEPARTMENT": "اضافة قسم",
+    "DEPARTMENTS": "الأقسام",
+    "DEPARTMENT_AR": "القسم(عربي)",
+    "DEPARTMENT_EN": "القسم (انجلزي)",
+    "PUBLISH": "نشر",
+    "DELETE": "حذف",
+    "BACK": "رجوع",
+    "SEARCH": "بحث...",
+    "TECHNICAL_QUESTIONS": "الاسئلة التقنية",
+    "ADD_QUESTION": "اضافة سؤال",
+    "QUESTION_AR": "السؤال (عربي)",
+    "QUESTION_EN": "السؤال (انجليزي)",
+    "ANSWER_AR": "الاجابة (عربي)",
+    "ANSWER_EN": "الاجابة (انجليزي)",
+    "REQUIRED": "هذا الحقل مطلوب!",
+    "ARABICFIELD": " هذا الحقل يجب ان يكون باللغة العربية",
+		"ENGLISHFIELD": "هذا الحقل يجب ان يكون باللغة الإنجليزية"
   },
   "SIDENAVBAR": {
     "DASHBORD": "لوحة التحكم",
@@ -158,7 +161,10 @@
     "PUBLISH": "نشر",
     "DELETE": "حذف",
     "BACK": "رجوع",
-    "SEARCH": "بحث..."
+    "SEARCH": "بحث...",
+    "REQUIRED": "هذا الحقل مطلوب!",
+    "ARABICFIELD": " هذا الحقل يجب ان يكون باللغة العربية",
+		"ENGLISHFIELD": "هذا الحقل يجب ان يكون باللغة الإنجليزية"
 
   },
   "WALKTHROUGH": {

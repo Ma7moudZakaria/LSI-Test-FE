@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddQuestionBankCategoryComponent } from './components/add-question-bank-category/add-question-bank-category.component';
+import { AddQuestionBankCategoryComponent } from './components/quesion-bank-view/add-question-bank-category/add-question-bank-category.component';
 import { AddQuestionBankQuestionComponent } from './components/quesion-bank-view/add-question-bank-question/add-question-bank-question.component';
 import { QuesionBankViewComponent } from './components/quesion-bank-view/quesion-bank-view.component';
 import { QuestionBankCategoriesViewComponent } from './components/quesion-bank-view/question-bank-categories-view/question-bank-categories-view.component';

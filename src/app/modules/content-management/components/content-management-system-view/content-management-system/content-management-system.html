@@ -1,32 +1,68 @@
 <div class="content_management">
     <p class="">{{ 'CONTENT_MANEGMENT_SYSTEM.TECNICAL_QUESTIONS' | translate }}</p>
-    <form class="form-group" [formGroup]="currentForm" (submit)="Submit()">
+    <form class="form-group internal_scroll_list_group" [formGroup]="currentForm" (submit)="Submit()">
      
       <div class="form-group">
           <label for="comment">{{ 'CONTENT_MANEGMENT_SYSTEM.SHORTDESCRIPTIONAR' | translate }}</label>
-          <textarea class="form-control" cols="2" rows="5" id="InputShortDescriptionAr" formControlName="shortDescriptionAr"></textarea>
+          <textarea class="form-control" cols="2" rows="5" id="InputShortDescriptionAr" formControlName="shortDescriptionAr" maxlength="200"
+          [ngClass]="{'red-border-class': f.shortDescriptionAr.errors && ( f.shortDescriptionAr.touched || isSubmit)}"></textarea>
+          <div *ngIf="f.shortDescriptionAr.errors && (f.shortDescriptionAr.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+            <div *ngIf="f.shortDescriptionAr.errors.required">
+                {{"CONTENT_MANEGMENT_SYSTEM.REQUIRED"|translate}}
+            </div>
+            <div *ngIf="f.shortDescriptionAr.errors.pattern">
+                {{ 'CONTENT_MANEGMENT_SYSTEM.ARABICFIELD' | translate }}
+             </div>
+        </div>
         </div>
         <div class="form-group">
           <label for="comment">{{ 'CONTENT_MANEGMENT_SYSTEM.SHORTDESCRIPTIONEN' | translate }}</label>
-          <textarea class="form-control" cols="2" rows="5" id="InputShortDescriptionEn" formControlName="shortDescriptionEn"></textarea>
+          <textarea class="form-control" cols="2" rows="5" id="InputShortDescriptionEn" formControlName="shortDescriptionEn"   maxlength="200"
+          [ngClass]="{'red-border-class': f.shortDescriptionEn.errors && ( f.shortDescriptionEn.touched || isSubmit)}"></textarea>
+          <div *ngIf="f.shortDescriptionEn.errors && (f.shortDescriptionEn.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+            <div *ngIf="f.shortDescriptionEn.errors.required">
+                {{"CONTENT_MANEGMENT_SYSTEM.REQUIRED"|translate}}
+            </div>
+            <div *ngIf="f.shortDescriptionEn.errors.pattern">
+                {{ 'CONTENT_MANEGMENT_SYSTEM.ENGLISHFIELD' | translate }}
+             </div>
+        </div>
         </div>
       <div class="form-group">
           <label for="exampleFormControlTextarea1">{{ 'CONTENT_MANEGMENT_SYSTEM.LONGDESCRIPTIONAR' | translate }}</label>
-          <textarea class="form-control rounded-0" rows="10" id="InputLongDescriptionAr" formControlName="longDescriptionAr"></textarea>
+          <textarea class="form-control rounded-0" rows="10" id="InputLongDescriptionAr" formControlName="longDescriptionAr" maxlength="500"
+          [ngClass]="{'red-border-class': f.longDescriptionAr.errors && ( f.longDescriptionAr.touched || isSubmit)}"></textarea>
+          <div *ngIf="f.longDescriptionAr.errors && (f.longDescriptionAr.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+            <div *ngIf="f.longDescriptionAr.errors.required">
+                {{"CONTENT_MANEGMENT_SYSTEM.REQUIRED"|translate}}
+            </div>
+            <div *ngIf="f.longDescriptionAr.errors.pattern">
+                {{ 'CONTENT_MANEGMENT_SYSTEM.ARABICFIELD' | translate }}
+             </div>
+        </div>
         </div>
         <div class="form-group">
           <label for="exampleFormControlTextarea1">{{ 'CONTENT_MANEGMENT_SYSTEM.LONGDESCRIPTIONEN' | translate }}</label>
-          <textarea class="form-control rounded-0" rows="10" id="InputlongDescriptionEn" formControlName="longDescriptionEn"></textarea>
+          <textarea class="form-control rounded-0" rows="10" id="InputlongDescriptionEn" formControlName="longDescriptionEn"  maxlength="500"
+          [ngClass]="{'red-border-class': f.longDescriptionEn.errors && ( f.longDescriptionEn.touched || isSubmit)}"></textarea>
+          <div *ngIf="f.longDescriptionEn.errors && (f.longDescriptionEn.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+            <div *ngIf="f.longDescriptionEn.errors.required">
+                {{"CONTENT_MANEGMENT_SYSTEM.REQUIRED"|translate}}
+            </div>
+            <div *ngIf="f.longDescriptionEn.errors.pattern">
+                {{ 'CONTENT_MANEGMENT_SYSTEM.ENGLISHFIELD' | translate }}
+             </div>
+        </div>
         </div>
         
         
       
       <button type="submit" class="btn btn-danger" >{{'CONTENT_MANEGMENT_SYSTEM.PUBLISH' | translate}}</button>
       <!-- <button type="button" class="btn btn-warning">{{'CONTENT_MANEGMENT_SYSTEM.BACK' | translate}}</button> -->
-      <div *ngIf="resultMessage?.type==='success'" class="alert alert-success">
+      <div *ngIf="resultMessage?.type==='success'" class="alert alert-{{ resultMessage.type }} my-4 py-2">
         {{resultMessage.message}}
     </div>
-    <div *ngIf="resultMessage.type==='danger'" class="alert alert-danger">
+    <div *ngIf="resultMessage.type==='danger'" class="alert alert-{{ resultMessage.type }} my-4 py-2">
       {{resultMessage.message}}
     </div>
     </form>

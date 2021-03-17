@@ -114,20 +114,23 @@
     "CHANGE_PIC": "Change pic"
   },
   "QUESTION_BANK": {
-    "Add_Department": "Add department",
-    "Departments": "Departments",
-    "Department_Ar": "Department(Arabic)",
-    "Department_En": "Department(English)",
-    "Publish": "Publish",
-    "Delete": "Delete",
-    "Back": "Back",
-    "Search": "Search..",
-    "Technical_Questions": "Technical questions",
-    "Add_Question": "Add question",
-    "Question_Ar": "question (Arabic)",
-    "Question_En": "question (English)",
-    "Answer_Ar": "Answer(Arabic)",
-    "Answer_En": "Answer(English)"
+    "ADD_DEPARTMENT": "Add department",
+    "DEPARTMENTS": "Departments",
+    "DEPARTMENT_AR": "Department(Arabic)",
+    "DEPARTMENT_EN": "Department(English)",
+    "PUBLISH": "Publish",
+    "DELETE": "Delete",
+    "BACK": "Back",
+    "SEARCH": "Search..",
+    "TECHNICAL_QUESTIONS": "Technical questions",
+    "ADD_QUESTION": "Add question",
+    "QUESTION_AR": "question (Arabic)",
+    "QUESTION_EN": "question (English)",
+    "ANSWER_AR": "Answer(Arabic)",
+    "ANSWER_EN": "Answer(English)",
+    "REQUIRED": "This field is required!",
+    "ARABICFIELD": "This field must be in Arabic",
+		"ENGLISHFIELD": "This field must be in English"
   },
   "SIDENAVBAR": {
     "DASHBORD": "DashBoard",
@@ -157,7 +160,10 @@
     "PUBLISH": "Publish",
     "DELETE": "Delete",
     "BACK": "Back",
-    "SEARCH": "Search.."
+    "SEARCH": "Search..",
+    "REQUIRED": "This field is required!",
+    "ARABICFIELD": "This field must be in Arabic",
+		"ENGLISHFIELD": "This field must be in English"
   },
   "WALKTHROUGH": {
     "PAGES": "Pages",
