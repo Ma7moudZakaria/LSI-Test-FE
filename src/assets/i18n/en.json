@@ -171,5 +171,8 @@
     "UPLOADPIC": "Upload Picture",
     "ARABICMESSAGE": "Arabic Message",
     "ENGLISHMESSAGE": "English Message"
+  },
+  "DASHBOARD": {
+    "TITLE":"Dashboard"
   }
 }

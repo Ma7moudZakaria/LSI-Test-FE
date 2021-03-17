@@ -173,5 +173,8 @@
     "UPLOADPIC": "حمل صورة",
     "ARABICMESSAGE": "الرسالة العربى",
     "ENGLISHMESSAGE": "الرسالة الانجليزى"
+  },
+  "DASHBOARD": {
+    "TITLE":"لوحة التحكم"
   }
 }
