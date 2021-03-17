@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
 import { ScientificMaterialService } from 'src/app/core/services/scientific-material-services/scientific-material.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class ScientificMaterialViewComponent implements OnInit {
   LangEnum = LanguageEnum ;
   programs: any;
   selectedMaterialId:any;
-  selectedProgramId:any;
+  selectedProgram?:IprogramsModel;
   submitSuccess:any;
   showMaterialForm = false;
   constructor( private scientifcMaterialService: ScientificMaterialService) { }
@@ -42,7 +43,7 @@ export class ScientificMaterialViewComponent implements OnInit {
   }
 
   setSelectedProgram(event:any){
-    this.selectedProgramId = event;
+    this.selectedProgram = event;
   }
 
   closeMaterialFormAfterSave(event:any){

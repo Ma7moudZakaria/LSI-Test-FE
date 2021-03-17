@@ -14,7 +14,7 @@ import { ScientificMaterialService } from 'src/app/core/services/scientific-mate
 })
 export class ProgramsListComponent implements OnInit {
   programs: any;
-  @Output() selectedProgramId = new EventEmitter<string>();;
+   @Output() selectedProgram =  new EventEmitter<IprogramsModel>();
   langEnum = LanguageEnum;
   resMessage: BaseMessageModel = {};
 
@@ -39,7 +39,7 @@ export class ProgramsListComponent implements OnInit {
     );
   }
   selectedIndex:any;
-  loadProgramMaterial(id?:string){
-    this.selectedProgramId?.emit(id);
+  loadProgramMaterial(program?:IprogramsModel){
+    this.selectedProgram?.emit(program);
   } 
 }

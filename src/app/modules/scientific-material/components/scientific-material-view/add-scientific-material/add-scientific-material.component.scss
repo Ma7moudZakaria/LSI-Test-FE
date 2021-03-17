@@ -1,8 +1,11 @@
 .files-conainer {
     display: flex;
 
-    li {
+    li:lang(ar) {
         margin-right: 1rem;
+    }
+    li:lang(en) {
+        margin-left: 1rem;
     }
 }
 .material-form{
