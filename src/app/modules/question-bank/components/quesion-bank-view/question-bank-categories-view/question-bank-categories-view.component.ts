@@ -8,6 +8,8 @@ import { IQuestionBankCategoriesFilter } from 'src/app/core/interfaces/questionB
 import { IQuestionBankCategoriesModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-categories-model';
 import { IQuestionBankCategoryCreatModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-category-creat-model';
 import { IQuestionBankCategoryUpdateModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-category-update-model';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { QuestionBankCategoryService } from 'src/app/core/services/question-bank-services/question-bank-category.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
@@ -30,15 +32,15 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
   questionBankCategoryUpdate: IQuestionBankCategoryUpdateModel = {} ;
   isAdd:boolean=true;
   errorMessage?:string;
-  maxDate: any;
    currentForm: FormGroup=new FormGroup({});
    formImport: FormGroup;
   successMessage?:string;
   isSubmit = false;
 @Output() selectedCategoryId= new EventEmitter<string>();
+@Output() inputCategoryId= new EventEmitter<string>();
 clickChangeCtogry:string="";
-valueLang = "nameAr";
-resultMessage={message:"",type:""};
+resultMessage:BaseMessageModel = {};
+
 disableSaveButtons = false;
   constructor(private questionBankCategoryService: QuestionBankCategoryService,
     private activeroute: ActivatedRoute, 
@@ -46,7 +48,6 @@ disableSaveButtons = false;
       this.formImport = new FormGroup({
         importFile: new FormControl('', Validators.required)
       });
-      this.valueLang = this.translate.currentLang == 'en-US' ? 'nameEn' : 'nameAr';
     }
   ngOnInit(): void {
     this.getQuestionBankCategories()
@@ -149,7 +150,7 @@ disableSaveButtons = false;
           this.disableSaveButtons = true;
           this.resultMessage = {
             message:res.message||"",
-            type: 'success'
+            type: BaseConstantModel.SUCCESS_TYPE
           }
           this.isView=false;
           setTimeout(() => {
@@ -160,8 +161,8 @@ disableSaveButtons = false;
           // this.errorMessage = res.message;
           this.disableSaveButtons = false;
           this.resultMessage = {
-            message:res.message||"",
-            type: 'danger'
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
           }
         }
         
@@ -181,7 +182,7 @@ disableSaveButtons = false;
           this.disableSaveButtons = true;
           this.resultMessage = {
             message:res.message||"",
-            type: 'success'
+            type: BaseConstantModel.SUCCESS_TYPE
           }
           setTimeout(() => {
             this.getQuestionBankCategories();
@@ -191,8 +192,8 @@ disableSaveButtons = false;
           // this.errorMessage = res.message;
           this.disableSaveButtons = false;
           this.resultMessage = {
-            message:res.message||"",
-            type: 'danger'
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
           }
         }
       },
@@ -216,7 +217,7 @@ this.isView=true;
 this.isAdd=false;
   }
 
-  selectedIndex:any;
+  selectedIndex?:Number;
   loadCatogryQuiestion(id?:string){
     this.selectedCategoryId?.emit(id);
   }
@@ -247,9 +248,12 @@ this.isAdd=false;
      
     });
   }
-  
-//  async confirm_Delete(id?:string){
-//     await this.confirmDialog();
-//     await this.delete_Categor(id);
-//   }
+
+  selectedIndex?:Number;
+  loadCatogry(id?:string){
+    this.inputCategoryId?.emit(id);
+  }
+  newCatogry(){
+    this.inputCategoryId?.emit('');
+  } 
 }

@@ -24,8 +24,15 @@
                                     <input id="email"  pInputText type="email" formControlName="email" name="email" 
                                     placeholder="{{'LOGIN_PG.EMAIL_ADDRESS_PLACEHOLDER' | translate}}" 
                                     class=" px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
-                                    
-                                </div>                        
+                                </div>      
+                                <div *ngIf="f.email.errors && (f.email.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.email.errors?.required">
+                                        {{ 'GENERAL.EMAILREQUIRED' | translate }}
+                                    </div>
+                                    <div *ngIf="f.email.errors.pattern">
+                                        {{ 'GENERAL.EMAILPATTERN' | translate }}
+                                    </div>
+                                </div>  
                             </div>
                 
                             <!-- Password -->                    
@@ -43,8 +50,18 @@
                                     [type]="hidePassword ? 'password' : 'text'" formControlName="password" name="password"
                                     placeholder="{{'GENERAL.PASSWORD' | translate}}" 
                                     class="  px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
-                                    
-                                </div>                        
+                                </div>      
+                                <div *ngIf="f.password.errors && (f.password.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.password.errors?.required">
+                                        {{'GENERAL.PASSWORDREQUIRED' | translate}}
+                                    </div>
+                                    <div *ngIf="f.password.errors?.maxlength ">
+                                        {{'GENERAL.PASSWORDMAXLENGTH' | translate}}
+                                    </div>
+                                    <div *ngIf="f.password.errors?.minlength ">
+                                        {{'GENERAL.PASSWORDMINLENGTH' | translate}}
+                                    </div> 
+                                </div>     
                             </div>
                 
                             <!-- Remember Me -->

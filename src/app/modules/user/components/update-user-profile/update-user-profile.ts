@@ -45,6 +45,8 @@ export class UpdateUserProfileComponent implements OnInit {
   quraanParts = new Array(30);
   selectedShiekhsList = Array<BaseLookupModel>();
   shiekhsMessage:any;
+
+
   constructor(
     private fb: FormBuilder,
     private lookupService: LookupService,
@@ -101,7 +103,7 @@ export class UpdateUserProfileComponent implements OnInit {
   }
 
   onSubmit(value: string) {
-
+    this.isSubmit = true;
     this.resMessage = {}
     if (this.profileForm.valid){
       this.updateUserModel.sheikhs = [];
@@ -134,34 +136,32 @@ export class UpdateUserProfileComponent implements OnInit {
         quraanMemorizeAmount : this.profileForm.value.quraanMemorization,
         ejazaIds : this.ejazaAttachmentIds,
       }
-  
-      this.isSubmit = true;
+      
       this.userProfileService.updateUser(this.updateUserModel).subscribe(
         res => {
-          this.isSubmit = true;
           if (res.isSuccess) {
-            this.resMessage = 
-        {
-          message: res.message,
-          type: BaseConstantModel.SUCCESS_TYPE
-        }
+            this.isSubmit = false;
+            this.resMessage = {
+              message: res.message,
+              type: BaseConstantModel.SUCCESS_TYPE
+            }
           }
           else {
-            this.resMessage = 
-        {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+            this.isSubmit = false;
+            this.resMessage = {
+              message: res.message,
+              type: BaseConstantModel.DANGER_TYPE
+            }
           }
         }
       );
     }
     else{
-      this.resMessage = 
-        {
-          message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
-          type: BaseConstantModel.DANGER_TYPE
-        }
+      this.isSubmit = false;
+      this.resMessage = {
+        message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+        type: BaseConstantModel.DANGER_TYPE
+      }
     }
   }
 
@@ -173,16 +173,16 @@ export class UpdateUserProfileComponent implements OnInit {
     var mobilePattern = "^(05)([0-9]{8})*$|^(\\+\\d{1,3}[- ]?)?\\d{10}";
       this.profileForm = this.fb.group(
         {
-          firstName: ['', Validators.required ],
-          middleName: ['', Validators.required],
-          familyName: ['', Validators.required],
+          firstName: ['', [Validators.required, Validators.minLength(3) , Validators.maxLength(50)]],
+          middleName: ['', [Validators.required, Validators.minLength(3) , Validators.maxLength(50)]],
+          familyName: ['', [Validators.required, Validators.minLength(3) , Validators.maxLength(50)]],
           birthdate: [''],
           email: [''],
           nationality: [null, Validators.required],
           educationallevel: [null, Validators.required],
           gender: [null, Validators.required],
           address: ['', Validators.required],
-          phoneNumber: ['', Validators.pattern(mobilePattern)],
+          phoneNumber: ['', [Validators.required,Validators.pattern(mobilePattern)]],
           occupation: [null, Validators.required],
           countryCode: [null, Validators.required],
           quraanMemorization: ['', Validators.required],
@@ -228,6 +228,7 @@ export class UpdateUserProfileComponent implements OnInit {
       this.selectedShiekhsList =  this.userProfileDetails?.sheikhs;
     }
   }
+  
   // fillUserShiekhsList(list) {
   //     let look = this.jobSectorsLookup;
   //     return list.map(function mapping(item) {
@@ -291,6 +292,7 @@ export class UpdateUserProfileComponent implements OnInit {
     }
 
   }
+
   UploadFiles(files: any) {
     if (files.length === 0) {
       return;
@@ -314,22 +316,26 @@ export class UpdateUserProfileComponent implements OnInit {
       }
     )
   }
+
   addUserShiekhs(){
     if (!this.profileForm.value.userSheikhs) {
       if (this.translate.currentLang == 'ar') {
         this.shiekhsMessage = {
           message: "برجاء اختيار  شيخ ",
-          type: 'danger'
+          type: BaseConstantModel.DANGER_TYPE
         }
       } else {
         this.shiekhsMessage = {
           message: "Please select shiekh",
-          type: 'danger'
+          type: BaseConstantModel.DANGER_TYPE
         }
       }
       return;
     }
-    this.shiekhsMessage = "";
+    this.shiekhsMessage = {
+      message: "",
+      type: BaseConstantModel.DANGER_TYPE
+    }
 
     const exist = this.selectedShiekhsList.some(el => el.id === this.profileForm.value.userSheikhs)
     if (!exist) {
@@ -339,6 +345,7 @@ export class UpdateUserProfileComponent implements OnInit {
       }
     }      
   }
+
   removeItemFromSelectedShiekhs(item:any) {
     let index = this.selectedShiekhsList.indexOf(item);
     this.selectedShiekhsList.splice(index, 1);

@@ -7,6 +7,8 @@ import { IContentManagementUpdate } from 'src/app/core/interfaces/content-manage
 import { IContentManagement } from 'src/app/core/interfaces/content-management-interfaces/icontentmanagement';
 import { IContentManagementDetails } from 'src/app/core/interfaces/content-management-interfaces/icontentmanagementdetails';
 import { IContentManagementFilter } from 'src/app/core/interfaces/content-management-interfaces/icontentmanagementfilter';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { ContentManagementService } from 'src/app/core/services/content-management-services/content-management.service';
 
@@ -27,7 +29,7 @@ export class ContentManagementSystemComponent implements OnInit {
   isSubmit = false;
   @Input() selectedcmsTypeId?: string;
   currentForm: FormGroup=new FormGroup({});
-  resultMessage={message:"",type:""};
+  resultMessage:BaseMessageModel = {};
   disableSaveButtons = false;
   valueLang = "nameAr";
   cmsId?:string='';
@@ -85,13 +87,15 @@ export class ContentManagementSystemComponent implements OnInit {
     return this.currentForm?.controls;
   }
   buildForm() {
+    const arabicWordPattern = "^[\u0621-\u064A\u0660-\u0669 ]+$";
+    const englishWordPattern ="^[a-zA-Z' '-'\s]{1,40}$";
     this.currentForm = this.fb.group(
       {
-        shortDescriptionAr: ['', Validators.required],
-        shortDescriptionEn: ['', Validators.required],
-        longDescriptionAr: ['', Validators.required],
-        longDescriptionEn: ['', Validators.required],
-        typeId: ['', Validators.required]
+        shortDescriptionAr: ['', [Validators.required, Validators.pattern(arabicWordPattern)]],
+        shortDescriptionEn:  ['', [Validators.required, Validators.pattern(englishWordPattern)]],
+        longDescriptionAr: ['', [Validators.required, Validators.pattern(arabicWordPattern)]],
+        longDescriptionEn:  ['', [Validators.required, Validators.pattern(englishWordPattern)]],
+        //typeId: ['', Validators.required]
       }
     )
   }
@@ -132,38 +136,10 @@ export class ContentManagementSystemComponent implements OnInit {
   }
   Submit() {
     this.isSubmit = true;
-    // if (this.cmsId) {   
-    //   this.contentmanagementsystemUpdate.id=this.cmsId;
-    //   this.contentmanagementsystemUpdate.no=this.contentmanagementsystem.no;
-    //   this.contentmanagementsystemUpdate.shortDesAr=this.f.shortDescriptionAr.value;
-    //   this.contentmanagementsystemUpdate.shortDesEn=this.f.shortDescriptionEn.value; 
-    //   this.contentmanagementsystemUpdate.longDesAr=this.f.longDescriptionAr.value;
-    //   this.contentmanagementsystemUpdate.longDesEn=this.f.longDescriptionEn.value;
-    //   this.contentmanagementsystemUpdate.cmsType=this.selectedcmsTypeId;
-   
-    //   this.contentmanagementService.updateContentManagementSystem(this.contentmanagementsystemUpdate).subscribe(res => {
-    //     if (res.isSuccess) {
-    //       this.isSubmit = false;
-    //       this.disableSaveButtons = true;
-    //       this.resultMessage = {
-    //         message:res.message||"",
-    //         type: 'success'
-    //       }
-    //     }
-    //     else {
-    //       this.disableSaveButtons = false;
-    //       this.resultMessage = {
-    //         message:res.message||"",
-    //         type: 'danger'
-    //       }
-    //     }
-        
-    //   },
-    //     error => {
-          
-    //     })
-    // }
-    // else {
+    this.resultMessage = {
+      message:'',
+    }
+    if (this.currentForm.valid) {
       this.contentmanagementCreat.shortDesAr=this.f.shortDescriptionAr.value;
       this.contentmanagementCreat.shortDesEn=this.f.shortDescriptionEn.value; 
       this.contentmanagementCreat.longDesAr=this.f.longDescriptionAr.value;
@@ -175,23 +151,26 @@ export class ContentManagementSystemComponent implements OnInit {
           this.disableSaveButtons = true;
           this.resultMessage = {
             message:res.message||"",
-            type: 'success'
+            type: BaseConstantModel.SUCCESS_TYPE
           }
         }
         else {
           this.disableSaveButtons = false;
           this.resultMessage = {
-            message:res.message||"",
-            type: 'danger'
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
           }
         }
         
       },
         error => {
-          
+          this.resultMessage = {
+            message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+            type: BaseConstantModel.DANGER_TYPE
+          }
         })
       }
- // }
 
+    }
 
 }

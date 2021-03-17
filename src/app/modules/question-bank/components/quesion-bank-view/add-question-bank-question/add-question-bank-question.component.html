@@ -1,5 +1,5 @@
 
-  <!-- <sup class="Question_Span_Add">{{ 'QUESTION_BANK.Add_Question' | translate }}</sup> -->
+  <!-- <sup class="Question_Span_Add">{{ 'QUESTION_BANK.ADD_QUESTION' | translate }}</sup> -->
   <form class="form-group material-form" [formGroup]="currentForm" (submit)="Submit()">
     <!-- <div class="form-group">
        
@@ -12,20 +12,56 @@
     </div> -->
     
     <div class="form-group">
-        <label for="comment">{{ 'QUESTION_BANK.Question_Ar' | translate }}</label>
-        <textarea class="form-control" cols="2" rows="5" id="InputQuestioAr" formControlName="QuestioAr"></textarea>
+        <label for="comment">{{ 'QUESTION_BANK.QUESTION_AR' | translate }}</label>
+        <textarea class="form-control" cols="2" rows="5" id="InputQuestioAr" formControlName="QuestioAr"  maxlength="50"
+        [ngClass]="{'red-border-class': f.QuestioAr.errors && ( f.QuestioAr.touched || isSubmit)}"></textarea>
+        <div *ngIf="f.QuestioAr.errors && (f.QuestioAr.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+          <div *ngIf="f.QuestioAr.errors.required">
+              {{"QUESTION_BANK.REQUIRED"|translate}}
+          </div>
+          <div *ngIf="f.QuestioAr.errors.pattern">
+              {{ 'QUESTION_BANK.ARABICFIELD' | translate }}
+           </div>
+      </div>
       </div>
       <div class="form-group">
-        <label for="comment">{{ 'QUESTION_BANK.Question_En' | translate }}</label>
-        <textarea class="form-control" cols="2" rows="5" id="InputQuestionEn" formControlName="QuestionEn"></textarea>
+        <label for="comment">{{ 'QUESTION_BANK.QUESTION_EN' | translate }}</label>
+        <textarea class="form-control" cols="2" rows="5" id="InputQuestionEn" formControlName="QuestionEn"  maxlength="50"
+        [ngClass]="{'red-border-class': f.QuestionEn.errors && ( f.QuestionEn.touched || isSubmit)}"></textarea>
+        <div *ngIf="f.QuestionEn.errors && (f.QuestionEn.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+          <div *ngIf="f.QuestionEn.errors.required">
+              {{"QUESTION_BANK.REQUIRED"|translate}}
+          </div>
+          <div *ngIf="f.QuestionEn.errors.pattern">
+              {{ 'QUESTION_BANK.ENGLISHFIELD' | translate }}
+           </div>
+      </div>
       </div>
     <div class="form-group">
-        <label for="exampleFormControlTextarea1">{{ 'QUESTION_BANK.Answer_Ar' | translate }}</label>
-        <textarea class="form-control rounded-0" rows="10" id="InputAnswerAr" formControlName="AnswerAr"></textarea>
+        <label for="exampleFormControlTextarea1">{{ 'QUESTION_BANK.ANSWER_AR' | translate }}</label>
+        <textarea class="form-control rounded-0" rows="10" id="InputAnswerAr" formControlName="AnswerAr" maxlength="500"
+        [ngClass]="{'red-border-class': f.QuestionEn.errors && ( f.QuestionEn.touched || isSubmit)}"></textarea>
+        <div *ngIf="f.AnswerAr.errors && (f.AnswerAr.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+          <div *ngIf="f.AnswerAr.errors.required">
+              {{"QUESTION_BANK.REQUIRED"|translate}}
+          </div>
+          <div *ngIf="f.AnswerAr.errors.pattern">
+              {{ 'QUESTION_BANK.ARABICFIELD' | translate }}
+           </div>
+      </div>
       </div>
       <div class="form-group">
-        <label for="exampleFormControlTextarea1">{{ 'QUESTION_BANK.Answer_En' | translate }}</label>
-        <textarea class="form-control rounded-0" rows="10" id="InputAnswerEn" formControlName="AnswerEn"></textarea>
+        <label for="exampleFormControlTextarea1">{{ 'QUESTION_BANK.ANSWER_EN' | translate }}</label>
+        <textarea class="form-control rounded-0" rows="10" id="InputAnswerEn" formControlName="AnswerEn" maxlength="500"
+        [ngClass]="{'red-border-class': f.QuestionEn.errors && ( f.QuestionEn.touched || isSubmit)}"></textarea>
+        <div *ngIf="f.AnswerEn.errors && (f.AnswerEn.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+          <div *ngIf="f.AnswerEn.errors.required">
+              {{"QUESTION_BANK.REQUIRED"|translate}}
+          </div>
+          <div *ngIf="f.AnswerEn.errors.pattern">
+              {{ 'QUESTION_BANK.ENGLISHFIELD' | translate }}
+           </div>
+      </div>
       </div>
       
       
@@ -34,14 +70,14 @@
     <button type="button" class="btn btn-warning">{{'QUESTION_BANK.Back' | translate}}</button> -->
 
     <section>
-      <div class="row direction-rtl">
+      <div class="row">
           <button class="save-btn" type="submit" [disabled]="disableSaveButtons">
-            {{'QUESTION_BANK.Publish' | translate}}
+            {{'QUESTION_BANK.PUBLISH' | translate}}
           </button>
-          <div *ngIf="resultMessage?.type==='success'" class="alert alert-success">
+          <div *ngIf="resultMessage?.type==='success'" class="alert alert-{{ resultMessage.type }} my-4 py-2">
             {{resultMessage.message}}
         </div>
-        <div *ngIf="resultMessage.type==='danger'" class="alert alert-danger">
+        <div *ngIf="resultMessage.type==='danger'" class="alert alert-{{ resultMessage.type }} my-4 py-2">
           {{resultMessage.message}}
         </div>
 

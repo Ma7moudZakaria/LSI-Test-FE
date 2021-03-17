@@ -7,6 +7,8 @@ import { IQuestionBankCategoriesModel } from 'src/app/core/interfaces/questionBa
 import { IQuestionBankQuestionCreatModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-question-creat-model';
 import { IQuestionBankQuestionUpdateModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-question-update-model';
 import { IQuestionBankQuestionsModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-model';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { QuestionBankQuestionService } from 'src/app/core/services/question-bank-services/question-bank-question.service';
 
@@ -30,14 +32,12 @@ export class AddQuestionBankQuestionComponent implements OnInit {
   currentForm: FormGroup=new FormGroup({});
    @Input() selectedCategoryId?:string; 
    @Input() selectedQuestionId?:string; 
-   valueLang = "nameAr";
-   resultMessage={message:"",type:""};
+   resultMessage:BaseMessageModel = {};
    disableSaveButtons = false;
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
     private activeroute: ActivatedRoute, 
     private router: Router,
      public translate: TranslateService,private fb: FormBuilder) {
-      this.valueLang = this.translate.currentLang == 'en-US' ? 'nameEn' : 'nameAr';
       }
 
   ngOnInit(): void {
@@ -78,15 +78,21 @@ export class AddQuestionBankQuestionComponent implements OnInit {
     return this.currentForm?.controls;
   }
   buildForm() {
+    const arabicWordPattern = "^[\u0621-\u064A\u0660-\u0669 ]+$";
+    const englishWordPattern ="^[a-zA-Z' '-'\s]{1,40}$";
     this.currentForm = this.fb.group(
       {
-        QuestioAr: ['', Validators.required],
-        QuestionEn: ['', Validators.required],
-        AnswerAr : ['', Validators.required],
-        AnswerEn : ['', Validators.required],
+        QuestioAr: ['', [Validators.required, Validators.pattern(arabicWordPattern)]],
+        QuestionEn: ['', [Validators.required, Validators.pattern(englishWordPattern)]],
+        AnswerAr :['', [Validators.required, Validators.pattern(arabicWordPattern)]],
+        AnswerEn : ['', [Validators.required, Validators.pattern(englishWordPattern)]],
       })
   }
   loadQuestionBankQuestionDetails() {
+    this.resultMessage = {
+      message:'',
+      type: ''
+    }
     this.questionBankQuestionService.getQuestionBankQuestionDetails(this.questionBankQuestionId).subscribe(
       res => {
         var response =<BaseResponseModel>res;
@@ -98,10 +104,7 @@ export class AddQuestionBankQuestionComponent implements OnInit {
           this.f.AnswerAr.setValue(this.questionBankQuestions?.arabAnswer);
           this.f.AnswerEn.setValue(this.questionBankQuestions?.engAnswer);
           this.disableSaveButtons = false;
-          this.resultMessage = {
-            message:'',
-            type: ''
-          }
+         
         }
         else {
           this.errorMessage = response.message;
@@ -114,75 +117,84 @@ export class AddQuestionBankQuestionComponent implements OnInit {
     this.isSubmit = true;
     this.errorMessage = '';
     this.successMessage = '';
-
-    if (this.questionBankQuestionId) {   
-      this.questionBankQuestionUpdate.id=this.questionBankQuestionId;
-      this.questionBankQuestionUpdate.no=this.questionBankQuestions?.no;
-      this.questionBankQuestionUpdate.categoryId =this.QBCid;
-      this.questionBankQuestionUpdate.arabQuestion=this.f.QuestioAr.value;
-      this.questionBankQuestionUpdate.engQuestion=this.f.QuestionEn.value; 
-      this.questionBankQuestionUpdate.arabAnswer=this.f.AnswerAr.value;
-      this.questionBankQuestionUpdate.engAnswer=this.f.AnswerEn.value; 
-      this.questionBankQuestionService.UpdateQuestionBankQuestion(this.questionBankQuestionUpdate).subscribe(res => {
-        if (res.isSuccess) {
+    if (this.currentForm.valid) {
+      if (this.questionBankQuestionId) {   
+        this.questionBankQuestionUpdate.id=this.questionBankQuestionId;
+        this.questionBankQuestionUpdate.no=this.questionBankQuestions?.no;
+        this.questionBankQuestionUpdate.categoryId =this.QBCid;
+        this.questionBankQuestionUpdate.arabQuestion=this.f.QuestioAr.value;
+        this.questionBankQuestionUpdate.engQuestion=this.f.QuestionEn.value; 
+        this.questionBankQuestionUpdate.arabAnswer=this.f.AnswerAr.value;
+        this.questionBankQuestionUpdate.engAnswer=this.f.AnswerEn.value; 
+        this.questionBankQuestionService.UpdateQuestionBankQuestion(this.questionBankQuestionUpdate).subscribe(res => {
+          if (res.isSuccess) {
+            this.isSubmit = false;
+            this.disableSaveButtons = true;
+            // this.successMessage = res.message;
+            // setTimeout(() => {
+            //   this.router.navigateByUrl('/question-bank-question-details/question-bank-question-details/'+this.QuestionBankQuestionId);
+            // }, 1500)
+            this.resultMessage = {
+              message:res.message||"",
+              type: BaseConstantModel.SUCCESS_TYPE
+            }
+          }
+          else {
+            // this.errorMessage = res.message;
+            this.disableSaveButtons = false;
+            this.resultMessage = {
+              message: res.message,
+              type: BaseConstantModel.DANGER_TYPE
+            }
+          }
+          
+        },
+          error => {
+            this.resultMessage = {
+              message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+              type: BaseConstantModel.DANGER_TYPE
+            }
+          })
+      }
+      else {
+        this.QBCid=this.selectedCategoryId;
+        this.questionBankQuestionCreat.categoryId =this.QBCid;
+        this.questionBankQuestionCreat.arabQuestion=this.f.QuestioAr.value;
+        this.questionBankQuestionCreat.engQuestion=this.f.QuestionEn.value; 
+        this.questionBankQuestionCreat.arabAnswer=this.f.AnswerAr.value;
+        this.questionBankQuestionCreat.engAnswer=this.f.AnswerEn.value; 
+        this.questionBankQuestionService.addQuestionBankQuestion(this.questionBankQuestionCreat).subscribe(res => {
           this.isSubmit = false;
-          this.disableSaveButtons = true;
-          // this.successMessage = res.message;
-          // setTimeout(() => {
-          //   this.router.navigateByUrl('/question-bank-question-details/question-bank-question-details/'+this.QuestionBankQuestionId);
-          // }, 1500)
-          this.resultMessage = {
-            message:res.message||"",
-            type: 'success'
+          if (res.isSuccess) {
+            this.disableSaveButtons = true;
+            this.resultMessage = {
+              message:res.message||"",
+              type: BaseConstantModel.SUCCESS_TYPE
+            }
+            // setTimeout(() => {
+            //   this.router.navigateByUrl('/question-bank-question-details/question-bank-question-details/'+this.QuestionBankQuestionId);
+            // }, 1500)
           }
-        }
-        else {
-          // this.errorMessage = res.message;
-          this.disableSaveButtons = false;
-          this.resultMessage = {
-            message:res.message||"",
-            type: 'danger'
+          else {
+            //this.errorMessage = res.message;
+            this.disableSaveButtons = false;
+            this.resultMessage = {
+              message: res.message,
+              type: BaseConstantModel.DANGER_TYPE
+            }
           }
-        }
-        
-      },
-        error => {
           
-        })
+        },
+          error => {
+            this.resultMessage = {
+              message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+              type: BaseConstantModel.DANGER_TYPE
+            }
+          })
+      }
+
     }
-    else {
-      this.QBCid=this.selectedCategoryId;
-      this.questionBankQuestionCreat.categoryId =this.QBCid;
-      this.questionBankQuestionCreat.arabQuestion=this.f.QuestioAr.value;
-      this.questionBankQuestionCreat.engQuestion=this.f.QuestionEn.value; 
-      this.questionBankQuestionCreat.arabAnswer=this.f.AnswerAr.value;
-      this.questionBankQuestionCreat.engAnswer=this.f.AnswerEn.value; 
-      this.questionBankQuestionService.addQuestionBankQuestion(this.questionBankQuestionCreat).subscribe(res => {
-        this.isSubmit = false;
-        if (res.isSuccess) {
-          // this.successMessage = res.message;
-          this.disableSaveButtons = true;
-          this.resultMessage = {
-            message:res.message||"",
-            type: 'success'
-          }
-          // setTimeout(() => {
-          //   this.router.navigateByUrl('/question-bank-question-details/question-bank-question-details/'+this.QuestionBankQuestionId);
-          // }, 1500)
-        }
-        else {
-          //this.errorMessage = res.message;
-          this.disableSaveButtons = false;
-          this.resultMessage = {
-            message:res.message||"",
-            type: 'danger'
-          }
-        }
-        
-      },
-        error => {
-          
-        })
-    }
+
+  
   }
 }
