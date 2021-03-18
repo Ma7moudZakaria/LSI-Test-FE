@@ -87,7 +87,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
     this.selectedQuestionId?.emit('');
   }
   async confirmDialog(id?:string){
-    const message = `Are you sure you want to do this?`;
+    const message =this.translate.currentLang === LanguageEnum.en ?"Are you sure that you want to delete this question":"هل متأكد من حذف هذا السؤال";
 
     const dialogData = new ConfirmDialogModel("Confirm Action", message);
 
