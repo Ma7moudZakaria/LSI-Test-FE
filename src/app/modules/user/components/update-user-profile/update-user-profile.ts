@@ -50,7 +50,7 @@ export class UpdateUserProfileComponent implements OnInit {
   shiekhsMessage:BaseMessageModel = {};
   selectedTrainingCourseList = Array<BaseLookupModel>();
   coursesMessage : BaseMessageModel = {};
-
+  langEnum = LanguageEnum;
 
 
   constructor(
@@ -372,7 +372,7 @@ export class UpdateUserProfileComponent implements OnInit {
     if (!this.profileForm.value.userSheikhs) {
       if (this.translate.currentLang == 'ar') {
         this.shiekhsMessage = {
-          message: "برجاء اختيار  شيخ ",
+          message:  "برجاء اختيار  شيخ ",
           type: BaseConstantModel.DANGER_TYPE
         }
       } else {

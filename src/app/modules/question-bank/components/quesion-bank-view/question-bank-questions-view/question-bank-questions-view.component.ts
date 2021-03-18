@@ -3,6 +3,7 @@ import { Component, OnInit ,EventEmitter, Input, Output} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IQuestionBankQuestionsFilterRequest } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-filter-request';
 import { IQuestionBankQuestionsModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
@@ -22,6 +23,8 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   @Output() isViewAdd = new EventEmitter<boolean>();
   panelOpenState = false;
   currentlyOpenedItemIndex = -1;
+  langEnum = LanguageEnum;
+
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
      public translate: TranslateService,public dialog: MatDialog) {
       }

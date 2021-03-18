@@ -90,7 +90,7 @@
                                         <label for="male">
                                             <input type="radio" id="male" name="gender" formControlName="gender"
                                                 value="{{item.id}}">
-                                            {{ translate.currentLang == 'en' ? item.nameEn : item.nameAr}}
+                                            {{ translate.currentLang == langEnum.en ? item.nameEn : item.nameAr}}
                                         </label>
                                         <div *ngIf="f.gender.errors && (f.gender.touched || isSubmit)"
                                             class="alert alert-danger mt-2 mb-2">
@@ -125,7 +125,7 @@
                                 <select class="UpdateUser__Options" name="nameEn" formControlName="countryCode">
                                     <option *ngFor="let countryItem of collectionOfLookup.COUNTRY"
                                         [value]="countryItem.id">
-                                        {{ translate.currentLang == 'en' ? countryItem.nameEn : countryItem.nameAr}}
+                                        {{ translate.currentLang == langEnum.en ? countryItem.nameEn : countryItem.nameAr}}
                                     </option>
                                     <!--change check after adding language listner-->
                                 </select>
@@ -166,7 +166,7 @@
                                     <select class="UpdateUser__Options" name="nameEn" formControlName="nationality">
                                         <option *ngFor="let nationalityItem of collectionOfLookup.NATIONALITY"
                                             [value]="nationalityItem.id">
-                                            {{ translate.currentLang == 'en' ? nationalityItem.nameEn :
+                                            {{ translate.currentLang == langEnum.en ? nationalityItem.nameEn :
                                             nationalityItem.nameAr}}
                                             <!--change check after adding language listner-->
                                         </option>
@@ -206,7 +206,7 @@
                                 <select class="UpdateUser__Options" name="nameEn" formControlName="educationallevel">
                                     <option *ngFor="let educationalLevelItem of collectionOfLookup.EDU_LEVEL"
                                         [value]="educationalLevelItem.id">
-                                        {{ translate.currentLang == 'en' ? educationalLevelItem.nameEn :
+                                        {{ translate.currentLang == langEnum.en ? educationalLevelItem.nameEn :
                                         educationalLevelItem.nameAr}}
                                     </option>
                                 </select>
@@ -295,7 +295,7 @@
                                         <select class="form-control" id="shiekhs" formControlName="userSheikhs">
                                             <option *ngFor="let sheikh of collectionOfLookup.SYSTEM_SHEIKHS"
                                                 value="{{sheikh.id}}">
-                                                {{translate.currentLang == 'en' ? sheikh.nameEn : sheikh.nameAr}}</option>
+                                                {{translate.currentLang == langEnum.en ? sheikh.nameEn : sheikh.nameAr}}</option>
                                         </select>
                                         <span class="select-arrow position-absolute">
                                             <i class="fa fa-angle-down" style="color: inherit;"></i></span>
@@ -314,7 +314,7 @@
                                 </div>
                                 <div class="badges mt-3">
                                     <span *ngFor="let p of selectedShiekhsList"
-                                        class="badge badge-info p-2">{{translate.currentLang == 'en'? p.nameEn :p.nameAr}}
+                                        class="badge badge-info p-2">{{translate.currentLang == langEnum.en? p.nameEn :p.nameAr}}
                                         <a (click)="removeItemFromSelectedShiekhs(p)"><i class="fa  fa-minus"></i></a>
                                     </span>
                                 </div>
@@ -336,7 +336,7 @@
                                         <select class="form-control" id="archives" formControlName="userArchives">
                                             <option *ngFor="let archive of collectionOfLookup.SCIENTIFIC_ARCHIVES"
                                                 value="{{archive.id}}">
-                                                {{translate.currentLang == 'en' ? archive.nameEn : archive.nameAr}}</option>
+                                                {{translate.currentLang == langEnum.en ? archive.nameEn : archive.nameAr}}</option>
                                         </select>
                                         <span class="select-arrow position-absolute">
                                             <i class="fa fa-angle-down" style="color: inherit;"></i></span>
@@ -355,7 +355,7 @@
                                 </div>
                                 <div class="badges mt-3">
                                     <span *ngFor="let p of selectedArchivesList"
-                                        class="badge badge-info p-2">{{translate.currentLang == 'en'? p.nameEn :p.nameAr}}
+                                        class="badge badge-info p-2">{{translate.currentLang == langEnum.en? p.nameEn :p.nameAr}}
                                         <a (click)="removeItemFromSelectedArchives(p)"><i class="fa  fa-minus"></i></a>
                                     </span>
                                 </div>
@@ -376,7 +376,7 @@
                                         <select class="form-control" id="course" formControlName="userCourses">
                                             <option *ngFor="let course of collectionOfLookup.TRAINING_COURSES"
                                                 value="{{course.id}}">
-                                                {{translate.currentLang == 'en' ? course.nameEn : course.nameAr}}</option>
+                                                {{translate.currentLang == langEnum.en ? course.nameEn : course.nameAr}}</option>
                                         </select>
                                         <span class="select-arrow position-absolute">
                                             <i class="fa fa-angle-down" style="color: inherit;"></i></span>
@@ -395,7 +395,7 @@
                                 </div>
                                 <div class="badges mt-3">
                                     <span *ngFor="let p of selectedTrainingCourseList"
-                                        class="badge badge-info p-2">{{translate.currentLang == 'en'? p.nameEn :p.nameAr}}
+                                        class="badge badge-info p-2">{{translate.currentLang == langEnum.en? p.nameEn :p.nameAr}}
                                       
                                         <a lass="btn btn-primary btn-add"
                                         (click)="removeItemFromSelectedCourses(p)"><i class="fa  fa-minus"></i></a>

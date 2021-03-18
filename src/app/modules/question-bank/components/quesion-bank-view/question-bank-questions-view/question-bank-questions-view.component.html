@@ -38,7 +38,7 @@
                             <mat-panel-title class="qestionHeader">
                               
                                 <span>
-                                    {{this.translate.currentLang==='en'?QBQ.engQuestion:QBQ.arabQuestion}}
+                                    {{this.translate.currentLang===langEnum.en?QBQ.engQuestion:QBQ.arabQuestion}}
                                 </span>  
                              
                                 <span>
@@ -51,7 +51,7 @@
                             </mat-panel-title>
                       
                       </mat-expansion-panel-header>
-                      <p>{{this.translate.currentLang==='en'?QBQ.engAnswer:QBQ.arabAnswer}}</p>
+                      <p>{{this.translate.currentLang===langEnum.en?QBQ.engAnswer:QBQ.arabAnswer}}</p>
                     </mat-expansion-panel>
                   </mat-accordion>
             </div>

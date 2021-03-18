@@ -13,6 +13,7 @@ export class ViewAllContentManagementTypeComponent implements OnInit {
   cmsTypeLst?: BaseLookupModel[];
   @Output() selectedcmsTypeId = new EventEmitter<{}>();;
   langEnum = LanguageEnum;
+
   constructor(private contentmanagementService:ContentManagementService,public translate : TranslateService) { }
 
   ngOnInit(): void {

@@ -4,7 +4,7 @@
         [class.active]="selectedIndex === i " 
         (click)="loadContentManagementSystem(cmsType.id,cmsType.nameAr,cmsType.nameEn);selectedIndex=i">
          
-            <span> {{ translate.currentLang ==='en' ? cmsType.nameEn : cmsType.nameAr}}</span>
+            <span> {{ translate.currentLang === langEnum.en ? cmsType.nameEn : cmsType.nameAr}}</span>
           
       
       </a>
