@@ -1,17 +1,10 @@
 <div class="question-list">
   
-    <!-- <div class="col-12 mb-4"> <img calss="m-2 pull-left" src="assets/images/scientificMaterial/Group 18093.svg" alt="" (click)= "NewQuestion()"></div> -->
-    <div class="d-flex justify-content-between">
-        <a [routerLink]="" (click)= "NewQuestion()">
-            <span class="link_Add ">  {{ 'QUESTION_BANK.ADD_QUESTION' | translate }}
-            <img  src="../../../../../../assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
-          </span>
-        </a> 
-      </div>
+    <div class="row p-3">
+        <div class="col-4">
+            <span class = "mb-4 p_header" style="float: right;">أسئلة تقنية</span>
+        </div>
 
-    <div class="col-6">
-        <!-- <p class="mb-4">{{'QUESTION_BANK.DEPARTMENTS' | translate}}</p> -->
-    </div>
     <div class="col-6">
         <div class="input-group search_group">
             <div class="input-group-prepend">
@@ -25,6 +18,16 @@
             placeholder="{{'QUESTION_BANK.SEARCH' | translate}}" name="search"#text >
         
         </div>  
+    </div>
+
+     <!-- <div class="col-12 mb-4"> <img calss="m-2 pull-left" src="assets/images/scientificMaterial/Group 18093.svg" alt="" (click)= "NewQuestion()"></div> -->
+     <div class="d-flex justify-content-between col-2">
+        <a [routerLink]="" (click)= "NewQuestion()">
+            <span class="link_Add ">  {{ 'QUESTION_BANK.ADD_QUESTION' | translate }}
+            <img  src="../../../../../../assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
+          </span>
+        </a> 
+      </div>
     </div>
 
         <section class="w-100 row contanier_matrial-card">
