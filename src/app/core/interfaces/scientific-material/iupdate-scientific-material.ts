@@ -1,3 +1,5 @@
+import { IProgramScientificMaterial } from "./iprogram-scientific-material";
+
 export interface IUpdateScientificMaterial{
     id:string;
     huffazId:number;
@@ -10,5 +12,5 @@ export interface IUpdateScientificMaterial{
     programIds:string[];
     attachmentIds:string[];
     attachmentPath:string;
-    programScientificMatrial:any;
+    programScientificMatrial:IProgramScientificMaterial[];
 }
