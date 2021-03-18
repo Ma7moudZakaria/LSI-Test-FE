@@ -32,6 +32,7 @@ export class AddQuestionBankQuestionComponent implements OnInit {
   currentForm: FormGroup=new FormGroup({});
    @Input() selectedCategoryId?:string; 
    @Input() selectedQuestionId?:string; 
+   @Output() closeQuestionForm = new EventEmitter<boolean>();
    resultMessage:BaseMessageModel = {};
    disableSaveButtons = false;
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
@@ -196,5 +197,8 @@ export class AddQuestionBankQuestionComponent implements OnInit {
     }
 
   
+  }
+  backListQuestio(){
+    this.closeQuestionForm?.emit(false);
   }
 }

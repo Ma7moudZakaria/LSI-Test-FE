@@ -130,8 +130,12 @@
     "ANSWER_AR": "Answer(Arabic)",
     "ANSWER_EN": "Answer(English)",
     "REQUIRED": "This field is required!",
-    "ARABICFIELD": "This field must be in Arabic",
-    "ENGLISHFIELD": "This field must be in English"
+    "ARABIC_FIELD": "This field must be in Arabic",
+    "ENGLISH_FIELD": "This field must be in English",
+    "SAVE": "Save",
+    "ADD": "Add",
+    "CANCEL": "Cancel"
+
   },
   "SIDENAVBAR": {
     "DASHBORD": "DashBoard",
@@ -154,17 +158,21 @@
     "ALL": "All",
     "DEPARMENTS": "Departments",
     "TECNICAL_QUESTIONS": "Tecnical questions",
-    "SHORTDESCRIPTIONAR": "Short description(Arabic)",
-    "SHORTDESCRIPTIONEN": "Short description(English)",
-    "LONGDESCRIPTIONAR": "Long Description(Arabic)",
-    "LONGDESCRIPTIONEN": "Long Description(English)",
+    "SHORTDESCRIPTIONAR": "Short description arabic",
+    "SHORTDESCRIPTIONEN": "Short description english",
+    "LONGDESCRIPTIONAR": "Long description arabic",
+    "LONGDESCRIPTIONEN": "Long description english",
     "PUBLISH": "Publish",
     "DELETE": "Delete",
     "BACK": "Back",
     "SEARCH": "Search..",
     "REQUIRED": "This field is required!",
-    "ARABICFIELD": "This field must be in Arabic",
-    "ENGLISHFIELD": "This field must be in English"
+    "ARABIC_FIELD": "This field must be in Arabic",
+    "ENGLISH_FIELD": "This field must be in English",
+    "SAVE": "Save",
+    "ADD": "Add",
+    "CANCEL": "Cancel"
+
   },
   "WALKTHROUGH": {
     "PAGES": "Pages",

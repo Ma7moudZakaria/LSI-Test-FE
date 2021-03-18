@@ -10,20 +10,14 @@ import { ContentManagementService } from 'src/app/core/services/content-manageme
 export class ContentManagementSystemViewComponent implements OnInit {
 
   LangEnum = LanguageEnum ;
-  selectedcmsTypeId:any;
+  selectedcmsTypeId={id:'',nameAr:'',nameEn:''};
   constructor( private contentManagementService: ContentManagementService) { }
   ngOnInit(): void {
     // this.loadPrograms()
   }
  
- 
- 
-
   setSelectedCmsType(event:any){
-    this.selectedcmsTypeId = event;
+    this.selectedcmsTypeId={id:event.id,nameAr:event.nameAr,nameEn:event.nameEn}
   }
-
- 
-
 
 }

@@ -1,13 +1,19 @@
-<div class=" row material-list">
+<div class="material-list marg_dir">
   
-    <div class="col-12 mb-4"> <img calss="m-2 pull-left" src="assets/images/scientificMaterial/Group 18093.svg" alt="" (click)= "NewQuestion()"></div>
-
+    <!-- <div class="col-12 mb-4"> <img calss="m-2 pull-left" src="assets/images/scientificMaterial/Group 18093.svg" alt="" (click)= "NewQuestion()"></div> -->
+    <div class="d-flex justify-content-between">
+        <a [routerLink]="" (click)= "NewQuestion()">
+            <span class="link_Add ">  {{ 'QUESTION_BANK.ADD_QUESTION' | translate }}
+            <img  src="../../../../../../assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
+          </span>
+        </a> 
+      </div>
 
     <div class="col-6">
         <!-- <p class="mb-4">{{'QUESTION_BANK.DEPARTMENTS' | translate}}</p> -->
     </div>
     <div class="col-6">
-        <div class="input-group ">
+        <div class="input-group search_group">
             <div class="input-group-prepend">
                 <span class="input-group-text bg-white pl-2 pr-2 border-md border-right-0">
                     <img  class="UserLogin_icon_input" src="../../../../../../assets/images/search-ired.svg"
@@ -30,9 +36,18 @@
                       (closed)="setClosed(i)">
                       <mat-expansion-panel-header >
                             <mat-panel-title class="qestionHeader">
-                                {{this.translate.currentLang==='en'?QBQ.engQuestion:QBQ.arabQuestion}}
-                                <img src="assets/quesionBsnk/questionBankCategory/Icon feather-edit-3 (1).svg" alt="" class="mt-10 cursor-pointer" (click)="loadQuestion(QBQ.id)"/>
-                                <img src="assets/quesionBsnk/questionBankCategory/Icon feather-trash-2.svg" alt="" class="mt-10 cursor-pointer" (click)="confirmDialog(QBQ.id)"/>
+                              
+                                <span>
+                                    {{this.translate.currentLang==='en'?QBQ.engQuestion:QBQ.arabQuestion}}
+                                </span>  
+                             
+                                <span>
+                                    <img src="assets/quesionBsnk/questionBankCategory/Icon feather-edit-3 (1).svg" alt="" class="mt-10 cursor-pointer" (click)="loadQuestion(QBQ.id)"/>
+                                    <img src="assets/quesionBsnk/questionBankCategory/Icon feather-trash-2.svg" alt="" class="mt-10 cursor-pointer" (click)="confirmDialog(QBQ.id)"/>
+                                  
+                                </span>
+                                  
+                           
                             </mat-panel-title>
                       
                       </mat-expansion-panel-header>
