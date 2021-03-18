@@ -42,14 +42,22 @@ span{
     // font-size: 0.875rem;
     color:black; 
     font-weight: bold;
-    .span_dir:lang(ar) {
-        float: right !important;
-        direction: ltr !important;
-    }
-    .span_dir:lang(en) {
-        // float: left;
-        direction: rtl !important;
-            }
+    // .span_dir:lang(ar) {
+    //     float: right !important;
+    //     direction: ltr !important;
+    // }
+    // .span_dir:lang(en) {
+    //     // float: left;
+    //     direction: rtl !important;
+    //         }
+}
+span:lang(ar){
+    float: right !important;
+    // direction: ltr !important;
+}
+span:lang(en){
+float: left;
+// direction: rtl !important;
 }
 .save-btn{
     background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
