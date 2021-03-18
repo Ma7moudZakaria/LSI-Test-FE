@@ -46,21 +46,23 @@ Label:lang(ar) {
 
         }
 span{
-    font-family:Almarai-Bold ;
-    font-size: large;
-    // font-size: 0.875rem;
+    //font-family:Almarai-Bold ;
+    //font-size: large;
+    // font-size: 1.25rem;
+     font: normal normal bold 1.25rem Almarai;
     color:black; 
     font-weight: bold;
     margin-bottom: 1rem;
+ 
    
 }
 span:lang(ar){
     float: right !important;
-    // direction: ltr !important;
+    padding-right: .75rem;
 }
 span:lang(en){
 float: left;
-// direction: rtl !important;
+padding-left: .5rem;
 }
 .save-btn{
     background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
