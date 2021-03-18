@@ -34,20 +34,14 @@
         <a class="list-group-item d-flex"  
         [class.active]="selectedIndex === -1"
         (click)="loadProgramMaterial();selectedIndex=-1"> 
-        <span>  {{'PROGRAMS_LIST.ALL' | translate}}</span>
-        <span> 
-            <i class="far fa-trash-alt"></i>
-        </span>
+        <span>  {{'PROGRAMS_LIST.ALL' | translate}}</span>        
        </a>
 
         <a class="list-group-item  d-flex" *ngFor="let program  of programs; let i = index" 
             [class.active]="selectedIndex === i" 
-            (click)="loadProgramMaterial(program.id);selectedIndex=i">
+            (click)="loadProgramMaterial(program);selectedIndex=i">
                
-                <span>{{ translate.currentLang === langEnum.en ? program.engName : program.arabName}}</span>
-                <span> 
-                    <i class="far fa-trash-alt"></i>
-                </span>
+                <span>{{ translate.currentLang === 'en' ? program.engName : program.arabName}}</span>                
 
         </a>
 

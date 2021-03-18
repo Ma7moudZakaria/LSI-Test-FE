@@ -4,7 +4,7 @@
     "BACK": "رجوع",
     "SAVE": "حفظ",
     "EMAIL": "البريد الإلكتروني",
-    "EMAILPATTERN":"يرجى ادخال بريد الكترونى صحيحا فقط",
+    "EMAILPATTERN": "يرجى ادخال بريد الكترونى صحيحا فقط",
     "PASSWORD": "كلمة المرور",
     "CONFIRMPASSWORD": "تأكيد كلمة المرور",
     "NAME": "الإسم",
@@ -27,10 +27,10 @@
     "CONFIRMPASSWORDMAXLENGTH": "يرجى إدخال كلمة مرور أقل من 50 حرفا",
     "CONFIRMPASSWORDMINLENGTH": "يرجى إدخال كلمة مرور أكثر من 6 حرفا",
     "EMAILADDRESS": "يرجى إدخال البريد الإلكترونى صحيحا",
-    "EMAILREQUIRED":"حقل الايميل مطلوب",
-    "USERNAMEREQUIRED":"حقل اسم المستخدم مطلوب",
+    "EMAILREQUIRED": "حقل الايميل مطلوب",
+    "USERNAMEREQUIRED": "حقل اسم المستخدم مطلوب",
     "USERNAMEMINLENGTH": "يرجى إدخال اسم المستخدم أكثر من 3 حرفا",
-    "USERNAMEMAXLENGTH":  "يرجى إدخال  اسم المستخدم أقل من 50 حرفا"
+    "USERNAMEMAXLENGTH": "يرجى إدخال  اسم المستخدم أقل من 50 حرفا"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATIONCODE": "رمز الدخول",
@@ -48,7 +48,7 @@
     "SIGNUP": "سجل الأن",
     "SOICALLOGIN": "الدخول عن طريق وسائل التواصل الاجتماعي",
     "TEACHERSIGNUP": "التسجيل كمعلم",
-    "EMAIL_ADDRESS_PLACEHOLDER":"البريد الإلكترونى"
+    "EMAIL_ADDRESS_PLACEHOLDER": "البريد الإلكترونى"
   },
   "SIGNUP_PG": {
     "SIGNUP": "تسجيل حساب جديد",
@@ -82,37 +82,37 @@
   },
   "RESETPASSWORD_PG": {
     "RESETPASSWORD": "ادخل كلمة المرور الجديدة"
-    
+
   },
   "UPDATE_USER_PG": {
-    "TITLE":"الملف الشخصى",
+    "TITLE": "الملف الشخصى",
     "PERSONALINFORMATION": "المعلومات الشخصية",
     "NAME": "الاسم",
     "FATHERNAME": "إسم الأب",
     "FAMILYNAME": "إسم العائلة",
-    "NAMEREQUIRED":"الاسم مطلوب",
-    "NAMEMAXLENGTH":"يرجى إدخال الاسم أقل من 50 حرفا",
-    "NAMEMINLENGTH":"يرجى إدخال الاسم أكثر من 3 حرفا",
-    "FATHERNAMEREQUIRED":"إسم الأب مطلوب",
-    "FATHERNAMEMAXLENGTH":"يرجى إدخال إسم الأب أقل من 50 حرفا",
-    "FATHERNAMEMINLENGTH":"يرجى إدخال إسم الأب أكثر من 3 حرفا",
-    "FAMILYNAMEREQUIRED":"إسم العائلة مطلوب",
-    "FAMILYNAMEMAXLENGTH":"يرجى إدخال إسم العائلة أقل من 50 حرفا",
-    "FAMILYNAMEMINLENGTH":"يرجى إدخال إسم العائلة أكثر من 3 حرفا",
-    "BIRTHDATE":"تاريخ الميلاد",
-    "GENDERREQUIRED":"الجنس مطلوب",
-    "COUNTRY":"دولة الإقامة",
-    "COUNTRYCODE":"حقل الدولة مطلوب",
-    "PHONENUMBERREQUIRED":"رقم الهاتف مطلوب",
-    "PHONENUMBERPATTERN":"يرجى ادخال رقم هاتف فقط",
+    "NAMEREQUIRED": "الاسم مطلوب",
+    "NAMEMAXLENGTH": "يرجى إدخال الاسم أقل من 50 حرفا",
+    "NAMEMINLENGTH": "يرجى إدخال الاسم أكثر من 3 حرفا",
+    "FATHERNAMEREQUIRED": "إسم الأب مطلوب",
+    "FATHERNAMEMAXLENGTH": "يرجى إدخال إسم الأب أقل من 50 حرفا",
+    "FATHERNAMEMINLENGTH": "يرجى إدخال إسم الأب أكثر من 3 حرفا",
+    "FAMILYNAMEREQUIRED": "إسم العائلة مطلوب",
+    "FAMILYNAMEMAXLENGTH": "يرجى إدخال إسم العائلة أقل من 50 حرفا",
+    "FAMILYNAMEMINLENGTH": "يرجى إدخال إسم العائلة أكثر من 3 حرفا",
+    "BIRTHDATE": "تاريخ الميلاد",
+    "GENDERREQUIRED": "الجنس مطلوب",
+    "COUNTRY": "دولة الإقامة",
+    "COUNTRYCODE": "حقل الدولة مطلوب",
+    "PHONENUMBERREQUIRED": "رقم الهاتف مطلوب",
+    "PHONENUMBERPATTERN": "يرجى ادخال رقم هاتف فقط",
     "NATIONALITYREQUIRED": "الجنسية مطلوبة",
     "ADDRESS": "العنوان",
     "ADDRESSREQUIRED": "العنوان مطلوب",
-    "EDU":"التعليم الأكاديمي",
-    "EDULEVEL":"مستوى التعليمي ",
-    "EDULEVELREQUIRED":"مستوى التعليمي مطلوب",
-    "OCCUPATION":"المهنة",
-    "OCCUPATIONREQUIRED":"المهنة مطلوبة",
+    "EDU": "التعليم الأكاديمي",
+    "EDULEVEL": "مستوى التعليمي ",
+    "EDULEVELREQUIRED": "مستوى التعليمي مطلوب",
+    "OCCUPATION": "المهنة",
+    "OCCUPATIONREQUIRED": "المهنة مطلوبة",
     "CHANGE_PIC": "تغير الصورة"
   },
   "QUESTION_BANK": {
@@ -132,7 +132,7 @@
     "ANSWER_EN": "الاجابة (انجليزي)",
     "REQUIRED": "هذا الحقل مطلوب!",
     "ARABICFIELD": " هذا الحقل يجب ان يكون باللغة العربية",
-		"ENGLISHFIELD": "هذا الحقل يجب ان يكون باللغة الإنجليزية"
+    "ENGLISHFIELD": "هذا الحقل يجب ان يكون باللغة الإنجليزية"
   },
   "SIDENAVBAR": {
     "DASHBORD": "لوحة التحكم",
@@ -141,7 +141,7 @@
     "VACATION_REQUEST": "الاجازات",
     "EXAM_RESULTS": "نتائج الامتحانات",
     "WITHDRAWAL_REQUESTS": "طلبات الانسجاب",
-    "SETTINGS":"الإعدادت",
+    "SETTINGS": "الإعدادت",
     "CERTIFICATES": "الشهادات",
     "MY_MESSAGES": "رسائلى",
     "QUESTION_BANK": "بنك الأسئلة"
@@ -165,16 +165,19 @@
     "SEARCH": "بحث...",
     "REQUIRED": "هذا الحقل مطلوب!",
     "ARABICFIELD": " هذا الحقل يجب ان يكون باللغة العربية",
-		"ENGLISHFIELD": "هذا الحقل يجب ان يكون باللغة الإنجليزية"
+    "ENGLISHFIELD": "هذا الحقل يجب ان يكون باللغة الإنجليزية"
 
   },
   "WALKTHROUGH": {
     "PAGES": "الشرائح",
     "UPLOADPIC": "حمل صورة",
     "ARABICMESSAGE": "الرسالة العربى",
-    "ENGLISHMESSAGE": "الرسالة الانجليزى"
+    "ENGLISHMESSAGE": "الرسالة الانجليزى",
+    "REQUIRED": "هذا الحقل مطلوب!",
+    "ARABICFIELD": " هذا الحقل يجب ان يكون باللغة العربية",
+    "ENGLISHFIELD": "هذا الحقل يجب ان يكون باللغة الإنجليزية"
   },
   "DASHBOARD": {
-    "TITLE":"لوحة التحكم"
+    "TITLE": "لوحة التحكم"
   }
 }

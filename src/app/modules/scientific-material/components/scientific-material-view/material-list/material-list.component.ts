@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
 import { IScientificMaterialFilter } from 'src/app/core/interfaces/scientific-material/iscientific-matrial-filter';
 import { IScientificMaterialGrid } from 'src/app/core/interfaces/scientific-material/iscientific-matrial-grid';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
@@ -17,13 +18,17 @@ import { ScientificMaterialService } from 'src/app/core/services/scientific-mate
 export class MaterialListComponent implements OnInit {
   materials: IScientificMaterialGrid[] = [];
   materialFilter = {} as IScientificMaterialFilter
-  @Input() selectedProgramId?: string;
+  @Input() selectedProgram?: IprogramsModel;
   @Output() materialId = new EventEmitter<string>();
   langEnum = LanguageEnum;
   materialCategoires: BaseLookupModel[] = [];
-  LangEnum = LanguageEnum;
   selectedCategories: string[] = [];
   resMessage: BaseMessageModel = {};
+  selectedProgramName: string = '';
+  booksId = 'd213e11c-14bd-43bf-b7e2-780e02d71ba9';
+  voiceId = '07985acc-8dc8-4def-b4e0-bc62a789db83';
+  plansId = '512da9c2-0604-4f5c-bbb2-d669f1346e34';
+  program = {} as IprogramsModel;
   constructor(private scientifcMaterialService: ScientificMaterialService, public translate: TranslateService) { }
 
   ngOnInit(): void {
@@ -31,8 +36,12 @@ export class MaterialListComponent implements OnInit {
     this.loadProgramMaterial();
   }
   ngOnChanges(changes: any) {
-    console.log(changes);
-    this.materialFilter.programs = changes.selectedProgramId.currentValue;
+
+    this.materialFilter.programs = changes.selectedProgram.currentValue?.id;
+
+    this.program = changes.selectedProgram.currentValue;
+    // this.translate.currentLang == 'ar' ?
+    //   changes.selectedProgram.currentValue?.arabName : changes.selectedProgram.currentValue?.engName;
     this.loadProgramMaterial();
   }
   loadProgramMaterial() {

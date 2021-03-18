@@ -4,7 +4,7 @@
     "BACK": "Back",
     "SAVE": "Save",
     "EMAIL": "Email Address",
-    "EMAILPATTERN":"Please insert email address only.",
+    "EMAILPATTERN": "Please insert email address only.",
     "PASSWORD": "Password",
     "CONFIRMPASSWORD": "Confirm Password",
     "NAME": "Name",
@@ -27,8 +27,8 @@
     "CONFIRMPASSWORDMINLENGTH": "Password sould be more than 6 charcter",
     "CONFIRMPASSWORDMAXLENGTH": "Password sould be less than 20 charcter",
     "EMAILADDRESS": "Please Enter a valid Email",
-    "EMAILREQUIRED":"Email is required",
-    "USERNAMEREQUIRED":"User Name is required",
+    "EMAILREQUIRED": "Email is required",
+    "USERNAMEREQUIRED": "User Name is required",
     "USERNAMEMINLENGTH": "User Name sould be more than 3 charcter",
     "USERNAMEMAXLENGTH": "User Name sould be less than 50 charcter"
   },
@@ -48,7 +48,7 @@
     "SIGNUP": "Register Now",
     "SOICALLOGIN": "Log in via social media",
     "TEACHERSIGNUP": "Register as a teacher",
-    "EMAIL_ADDRESS_PLACEHOLDER":"Email Address"
+    "EMAIL_ADDRESS_PLACEHOLDER": "Email Address"
   },
   "SIGNUP_PG": {
     "SIGNUP": "Sign Up",
@@ -84,34 +84,34 @@
     "ALL": "All"
   },
   "UPDATE_USER_PG": {
-    "TITLE":"User Profile",
+    "TITLE": "User Profile",
     "PERSONALINFORMATION": "Main Information",
     "NAME": "Name",
     "FATHERNAME": "Father Name",
     "FAMILYNAME": "Family Name",
-    "NAMEREQUIRED":"Name is Required",
-    "NAMEMINLENGTH":"Name sould be more than 3 character",
-    "NAMEMAXLENGTH":"Name sould be less than 50 character",
-    "FATHERNAMEREQUIRED":"Father Name is Required",
-    "FATHERNAMEMINLENGTH":"Father Name sould be more than 3 character",
-    "FATHERNAMEMAXLENGTH":"Father Name sould be less than 50 character",
-    "FAMILYNAMEREQUIRED":"Father Name is Required",
-    "FAMILYNAMEMINLENGTH":"Father Name sould be more than 3 character",
-    "FAMILYNAMEMAXLENGTH":"Father Name sould be less than 50 character",
-    "BIRTHDATE":"Birthdate",
-    "GENDERREQUIRED":"Gender is Required",
-    "COUNTRY":"Country",
-    "COUNTRYCODE":"Country is Required",
-    "PHONENUMBERREQUIRED":"Phone Number is Required",
-    "PHONENUMBERPATTERN":"Please insert phone number only",
+    "NAMEREQUIRED": "Name is Required",
+    "NAMEMINLENGTH": "Name sould be more than 3 character",
+    "NAMEMAXLENGTH": "Name sould be less than 50 character",
+    "FATHERNAMEREQUIRED": "Father Name is Required",
+    "FATHERNAMEMINLENGTH": "Father Name sould be more than 3 character",
+    "FATHERNAMEMAXLENGTH": "Father Name sould be less than 50 character",
+    "FAMILYNAMEREQUIRED": "Father Name is Required",
+    "FAMILYNAMEMINLENGTH": "Father Name sould be more than 3 character",
+    "FAMILYNAMEMAXLENGTH": "Father Name sould be less than 50 character",
+    "BIRTHDATE": "Birthdate",
+    "GENDERREQUIRED": "Gender is Required",
+    "COUNTRY": "Country",
+    "COUNTRYCODE": "Country is Required",
+    "PHONENUMBERREQUIRED": "Phone Number is Required",
+    "PHONENUMBERPATTERN": "Please insert phone number only",
     "NATIONALITYREQUIRED": "Nationality is Required",
     "ADDRESS": "Address",
     "ADDRESSREQUIRED": "Address is Required",
-    "EDU":"Academic education",
-    "EDULEVEL":"Educational Level",
-    "EDULEVELREQUIRED":"Educational Level is Required",
-    "OCCUPATION":"Occupation",
-    "OCCUPATIONREQUIRED":"Occupation  is Required",
+    "EDU": "Academic education",
+    "EDULEVEL": "Educational Level",
+    "EDULEVELREQUIRED": "Educational Level is Required",
+    "OCCUPATION": "Occupation",
+    "OCCUPATIONREQUIRED": "Occupation  is Required",
     "CHANGE_PIC": "Change pic"
   },
   "QUESTION_BANK": {
@@ -131,7 +131,7 @@
     "ANSWER_EN": "Answer(English)",
     "REQUIRED": "This field is required!",
     "ARABICFIELD": "This field must be in Arabic",
-		"ENGLISHFIELD": "This field must be in English"
+    "ENGLISHFIELD": "This field must be in English"
   },
   "SIDENAVBAR": {
     "DASHBORD": "DashBoard",
@@ -141,7 +141,7 @@
     "EXAM_RESULTS": "Exam Results",
     "WITHDRAWAL_REQUESTS": "Withdrawal Req.",
     "CERTIFICATES": "Certificates",
-    "SETTINGS":"Settings",
+    "SETTINGS": "Settings",
     "MY_MESSAGES": "My Messages",
     "QUESTION_BANK": "Question Bank"
   },
@@ -164,15 +164,18 @@
     "SEARCH": "Search..",
     "REQUIRED": "This field is required!",
     "ARABICFIELD": "This field must be in Arabic",
-		"ENGLISHFIELD": "This field must be in English"
+    "ENGLISHFIELD": "This field must be in English"
   },
   "WALKTHROUGH": {
     "PAGES": "Pages",
     "UPLOADPIC": "Upload Picture",
     "ARABICMESSAGE": "Arabic Message",
-    "ENGLISHMESSAGE": "English Message"
+    "ENGLISHMESSAGE": "English Message",
+    "REQUIRED": "This field is required!",
+    "ARABICFIELD": "This field must be in Arabic",
+    "ENGLISHFIELD": "This field must be in English"
   },
   "DASHBOARD": {
-    "TITLE":"Dashboard"
+    "TITLE": "Dashboard"
   }
 }

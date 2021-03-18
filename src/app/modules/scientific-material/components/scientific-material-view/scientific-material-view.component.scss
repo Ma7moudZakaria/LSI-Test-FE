@@ -26,12 +26,16 @@
 }
 
 
-.overlay .closebtn {
+.overlay .closebtn:lang(ar) {
   position: absolute;
   top: 10px;
   right: 15px;
 }
-
+.overlay .closebtn:lang(en) {
+  position: absolute;
+  top: 10px;
+  left:  15px;
+}
 .overlay a {
   padding: 8px;
   text-decoration: none;
@@ -47,3 +51,14 @@
   background-color: #FBFBFB;
   box-shadow: 0 0 15px #0c0808
 }
+
+.overlay_dir_right:lang(ar) {
+  margin-left: calc(1% - 1rem);
+            
+ 
+}
+.overlay_dir_left:lang(en) {
+ margin-left: calc(90% - 14rem);
+       // padding-right: 0.5rem;
+         // border-right: 1px 
+      }
