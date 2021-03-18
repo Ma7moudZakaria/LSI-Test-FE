@@ -7,11 +7,11 @@
                     <form [formGroup]="activationcodeform" (ngSubmit)="onApply(activationcodeform.value)" class="form-group ">
                         <div class="content_form ">
                             <div class="col-lg-12 mb-4 mt-2">
-                                <h1 class="font-weight-bold "> {{'ACTIVATION_USER_PG.ACTIVATIONCODE' | translate}}  </h1> 
+                                <h1 class="font-weight-bold "> {{'ACTIVATION_USER_PG.ACTIVATION_CODE' | translate}}  </h1> 
                             </div>
                 
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
-                                <span class="ActivationCode__Label"> {{'ACTIVATION_USER_PG.ACTIVATIONMESSAGE' | translate}} </span> 
+                                <span class="ActivationCode__Label"> {{'ACTIVATION_USER_PG.ACTIVATION_MESSAGE' | translate}} </span> 
                                 <span class="ActivationCode__Email">{{uemail}}</span>
                             </div>
 
@@ -21,7 +21,7 @@
                                 
                                     <div *ngIf="f.firstNumber.errors && (f.firstNumber.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.firstNumber.errors?.required">
-                                            {{ 'ACTIVATION_USER_PG.ACTIVATIONNUMBER_REQUIRED' | translate }}
+                                            {{ 'ACTIVATION_USER_PG.ACTIVATION_NUMBER_REQUIRED' | translate }}
                                         </div>
                                     </div> 
                                 </div>
@@ -30,7 +30,7 @@
                                     <input id="secondNumber" type="number" formControlName="secondNumber" name="secondNumber" class="form-control ActivationCode__FormControl">
                                     <div *ngIf="f.secondNumber.errors && (f.secondNumber.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.secondNumber.errors?.required">
-                                            {{ 'ACTIVATION_USER_PG.ACTIVATIONNUMBER_REQUIRED' | translate }}
+                                            {{ 'ACTIVATION_USER_PG.ACTIVATION_NUMBER_REQUIRED' | translate }}
                                         </div>
                                     </div> 
                                 </div>
@@ -39,7 +39,7 @@
                                     <input id="thirdNumber" type="number" formControlName="thirdNumber" name="thirdNumber" class="form-control ActivationCode__FormControl">
                                     <div *ngIf="f.thirdNumber.errors && (f.thirdNumber.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.thirdNumber.errors?.required">
-                                            {{ 'ACTIVATION_USER_PG.ACTIVATIONNUMBER_REQUIRED' | translate }}
+                                            {{ 'ACTIVATION_USER_PG.ACTIVATION_NUMBER_REQUIRED' | translate }}
                                         </div>
                                     </div> 
                                 </div>
@@ -48,7 +48,7 @@
                                     <input id="fourthNumber" type="number" formControlName="fourthNumber" name="fourthNumber" class="form-control ActivationCode__FormControl">
                                     <div *ngIf="f.fourthNumber.errors && (f.fourthNumber.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.fourthNumber.errors?.required">
-                                            {{ 'ACTIVATION_USER_PG.ACTIVATIONNUMBER_REQUIRED' | translate }}
+                                            {{ 'ACTIVATION_USER_PG.ACTIVATION_NUMBER_REQUIRED' | translate }}
                                         </div>
                                     </div> 
                                 </div>
@@ -56,7 +56,7 @@
 
                             <div class="ActivationSendCode">
                                 <span class="ActivationSendCode__ActivateMessage">{{'ACTIVATION_USER_PG.MESSAGE' | translate}}</span> 
-                                <a class="ActivationSendCode__ActivationLink" (click)="sendActivateCode()">  {{'ACTIVATION_USER_PG.SENDACTIVATIONCODE' | translate}} </a>
+                                <a class="ActivationSendCode__ActivationLink" (click)="sendActivateCode()">  {{'ACTIVATION_USER_PG.SEND_ACTIVATION_CODE' | translate}} </a>
                             </div>
                                                         
                             <!-- Submit Button -->
@@ -71,7 +71,7 @@
                         
                         <div class="footer_form ">
                             <hr>
-                            <p class="footer_form_p mb-0 text-center mb-3"> {{'LOGIN_PG.SOICALLOGIN' | translate}} </p>
+                            <p class="footer_form_p mb-0 text-center mb-3"> {{'LOGIN_PG.SOICAL_LOGIN' | translate}} </p>
                             <!-- <div class="d-flex mb-3"> -->
                             <div>
                                  <ul class="list-inline ml-5 mr-5 UserLogin__SocialMedia">

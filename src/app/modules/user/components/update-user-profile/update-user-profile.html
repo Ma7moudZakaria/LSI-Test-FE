@@ -13,7 +13,7 @@
 
                 <div class="internal_scroll">
                     <div class="col-4 mt-4 mb-3 pl-0 pr-0 border_bottom">
-                        <label class="UpdateUser__Label mt-5">{{'UPDATE_USER_PG.PERSONALINFORMATION' | translate}} </label>
+                        <label class="UpdateUser__Label mt-5">{{'UPDATE_USER_PG.PERSONAL_INFORMATION' | translate}} </label>
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4 pl-0 pr-0">
@@ -25,48 +25,48 @@
 
                                  <div *ngIf="f.firstName.errors && (f.firstName.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                     <div *ngIf="f.firstName.errors?.required">
-                                        {{ 'UPDATE_USER_PG.NAMEREQUIRED' | translate }}
+                                        {{ 'UPDATE_USER_PG.NAME_REQUIRED' | translate }}
                                     </div>
                                     <div *ngIf="f.firstName.errors?.maxlength">
-                                        {{ 'UPDATE_USER_PG.NAMEMAXLENGTH' | translate }}
+                                        {{ 'UPDATE_USER_PG.NAME_MAX_LENGTH' | translate }}
                                     </div>
                                     <div *ngIf="f.firstName.errors?.minlength">
-                                        {{ 'UPDATE_USER_PG.NAMEMINLENGTH' | translate }}
+                                        {{ 'UPDATE_USER_PG.NAME_MIN_LENGTH' | translate }}
                                     </div>
                                 </div> 
                             </div>
                             
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                <label class="Register__Label" for="middleName"> {{ 'UPDATE_USER_PG.FATHERNAME' | translate }} </label>
+                                <label class="Register__Label" for="middleName"> {{ 'UPDATE_USER_PG.FATHER_NAME' | translate }} </label>
                                 <input id="middleName" pInputText type="text" formControlName="middleName"
                                     name="middleName" class="form-control UserRegister__FormControl">
                                     
                                     <div *ngIf="f.middleName.errors && (f.middleName.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.middleName.errors?.required">
-                                            {{ 'UPDATE_USER_PG.FATHERNAMEREQUIRED' | translate }}
+                                            {{ 'UPDATE_USER_PG.FATHER_NAME_REQUIRED' | translate }}
                                         </div>
                                         <div *ngIf="f.middleName.errors?.maxlength">
-                                            {{ 'UPDATE_USER_PG.FATHERNAMEMAXLENGTH' | translate }}
+                                            {{ 'UPDATE_USER_PG.FATHER_NAME_MAX_LENGTH' | translate }}
                                         </div>
                                         <div *ngIf="f.middleName.errors?.minlength">
-                                            {{ 'UPDATE_USER_PG.FATHERNAMEMINLENGTH' | translate }}
+                                            {{ 'UPDATE_USER_PG.FATHER_NAME_MIN_LENGTH' | translate }}
                                         </div>
                                     </div> 
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                <label class="Register__Label" for="familyName"> {{ 'UPDATE_USER_PG.FAMILYNAME' | translate }} </label>
+                                <label class="Register__Label" for="familyName"> {{ 'UPDATE_USER_PG.FAMILY_NAME' | translate }} </label>
                                 <input id="familyName" pInputText type="text" formControlName="familyName"
                                     name="familyName" class="form-control UserRegister__FormControl">
 
                                     <div *ngIf="f.familyName.errors && (f.familyName.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.familyName.errors?.required">
-                                            {{ 'UPDATE_USER_PG.FAMILYNAMEREQUIRED' | translate }}
+                                            {{ 'UPDATE_USER_PG.FAMILY_NAME_REQUIRED' | translate }}
                                         </div>
                                         <div *ngIf="f.familyName.errors?.maxlength">
-                                            {{ 'UPDATE_USER_PG.FAMILYNAMEMAXLENGTH' | translate }}
+                                            {{ 'UPDATE_USER_PG.FAMILY_NAME_MAX_LENGTH' | translate }}
                                         </div>
                                         <div *ngIf="f.familyName.errors?.minlength">
-                                            {{ 'UPDATE_USER_PG.FAMILYNAMEMINLENGTH' | translate }}
+                                            {{ 'UPDATE_USER_PG.FAMILY_NAME_MIN_LENGTH' | translate }}
                                         </div>
                                     </div> 
                             </div>
@@ -87,7 +87,7 @@
                                         </label>
                                         <div *ngIf="f.gender.errors && (f.gender.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                             <div *ngIf="f.gender.errors?.required">
-                                                {{ 'UPDATE_USER_PG.GENDERREQUIRED' | translate }}
+                                                {{ 'UPDATE_USER_PG.GENDER_REQUIRED' | translate }}
                                             </div>
                                         </div> 
                                         <!-- <section >
@@ -123,22 +123,22 @@
 
                                 <div *ngIf="f.countryCode.errors && (f.countryCode.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                     <div *ngIf="f.countryCode.errors?.required">
-                                        {{ 'UPDATE_USER_PG.COUNTRYCODE' | translate }}
+                                        {{ 'UPDATE_USER_PG.COUNTRY_CODE' | translate }}
                                     </div>
                                 </div> 
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                <label class="Register__Label" for="phoneNumber"> {{ 'GENERAL.PHONENUMBER' | translate }} </label>
+                                <label class="Register__Label" for="phoneNumber"> {{ 'GENERAL.PHONE_NUMBER' | translate }} </label>
                                 <input id="phoneNumber" pInputText type="text" formControlName="phoneNumber"
                                     style="width:100%;" name="phoneNumber"
                                     class="form-control UserRegister__FormControl">
 
                                     <div *ngIf="f.phoneNumber.errors && (f.phoneNumber.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.phoneNumber.errors?.required">
-                                            {{ 'UPDATE_USER_PG.PHONENUMBERREQUIRED' | translate }}
+                                            {{ 'UPDATE_USER_PG.PHONE_NUMBER_REQUIRED' | translate }}
                                         </div>
                                         <div *ngIf="f.phoneNumber.errors?.pattern">
-                                            {{ 'UPDATE_USER_PG.PHONENUMBERPATTERN' | translate }}
+                                            {{ 'UPDATE_USER_PG.PHONE_NUMBER_PATTERN' | translate }}
                                         </div>
                                     </div> 
                             </div>
@@ -163,7 +163,7 @@
                                 </div>
                                 <div *ngIf="f.nationality.errors && (f.nationality.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                     <div *ngIf="f.nationality.errors?.required">
-                                        {{ 'UPDATE_USER_PG.NATIONALITYREQUIRED' | translate }}
+                                        {{ 'UPDATE_USER_PG.NATIONALITY_REQUIRED' | translate }}
                                     </div>
                                 </div> 
                             </div>
@@ -175,7 +175,7 @@
 
                                     <div *ngIf="f.address.errors && (f.address.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.address.errors?.required">
-                                            {{ 'UPDATE_USER_PG.ADDRESSREQUIRED' | translate }}
+                                            {{ 'UPDATE_USER_PG.ADDRESS_REQUIRED' | translate }}
                                         </div>
                                     </div> 
                             </div>
@@ -189,7 +189,7 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 pr-0">
                         <div class="row pl-0 pr-0">
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                <label class="Register__Label" for="educationalLevel"> {{ 'UPDATE_USER_PG.EDULEVEL' | translate }} </label>
+                                <label class="Register__Label" for="educationalLevel"> {{ 'UPDATE_USER_PG.EDU_LEVEL' | translate }} </label>
                                 <select class="UpdateUser__Options" name="nameEn" formControlName="educationallevel">
                                     <option *ngFor="let educationalLevelItem of collectionOfLookup.EDU_LEVEL"
                                         [value]="educationalLevelItem.id">
@@ -200,7 +200,7 @@
 
                                 <div *ngIf="f.educationallevel.errors && (f.educationallevel.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                     <div *ngIf="f.educationallevel.errors?.required">
-                                        {{ 'UPDATE_USER_PG.EDULEVELREQUIRED' | translate }}
+                                        {{ 'UPDATE_USER_PG.EDU_LEVEL_REQUIRED' | translate }}
                                     </div>
                                 </div> 
                             </div>
@@ -211,12 +211,12 @@
 
                                     <div *ngIf="f.occupation.errors && (f.occupation.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.occupation.errors?.required">
-                                            {{ 'UPDATE_USER_PG.OCCUPATIONREQUIRED' | translate }}
+                                            {{ 'UPDATE_USER_PG.OCCUPATION_REQUIRED' | translate }}
                                         </div>
                                     </div> 
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                <label class="Register__Label" for="quraanMemorization"> مقدار الحفظ من القران </label>
+                                <label class="Register__Label" for="quraanMemorization"> {{ 'UPDATE_USER_PG.AMOUNT_QURAN' | translate }} </label>
                                 <select class="UpdateUser__Options" name="nameEn" formControlName="quraanMemorization">
                                     <option *ngFor="let amount of quraanParts; let i = index" [value]="i+1">
                                         {{i+1}}
@@ -224,7 +224,7 @@
                                 </select>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                <label class="Register__Label" for="educationalLevel"> اجازة حفظ القران </label>
+                                <label class="Register__Label" for="educationalLevel"> {{ 'UPDATE_USER_PG.MEMORIES_QURAN' | translate }} </label>
                                 <input type="file" class="form-control UserRegister__FormControl" multiple
                                     id="importFile" (change)="onEjazaFileChange($any($event.target).files)"
                                     placeholder="ارفق اجازة حفظ القران">
@@ -232,7 +232,7 @@
                                     <div class="col-lg-8 col-md-8">
                                         <ul class="files-conainer">
                                             <li *ngFor="let item of fileList;let i=index">
-                                                <button (click)="DeleteAttachment(i,item.id)">delete</button>
+                                                <button (click)="DeleteAttachment(i,item.id)">{{ 'UPDATE_USER_PG.DELETE' | translate }}</button>
                                                 <a class="card" href="{{item.url}}" target="_blank">
                                                     <div class="pdf">
                                                         <i class="fa fa-file"></i>
@@ -258,7 +258,8 @@
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label>
-                                    مشايخ درست عليهم
+                                    {{ 'UPDATE_USER_PG.SHEIKHS_STUDIED' | translate }}
+                                    
 
                                     <button type="button" tooltipClass="custom-tooltip"
                                         class="btn p-0 d-inline-block btn-link mr-2" placement="left" ngbTooltip="">
@@ -323,7 +324,7 @@
 
 <!-- <form [formGroup]="profileForm" (ngSubmit)="onSubmit(profileForm.value)" class="form-group">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
-        <h1 class="font-weight-bold "> {{'UPDATE_USER_PG.PERSONALINFORMATION' | translate}} </h1> 
+        <h1 class="font-weight-bold "> {{'UPDATE_USER_PG.PERSONAL_INFORMATION' | translate}} </h1> 
     </div>
 
               
