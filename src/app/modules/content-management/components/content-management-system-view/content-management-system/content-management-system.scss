@@ -24,11 +24,11 @@ Label{
     font-size: 0.875rem;
     color:$placeholder_inputs;
     
-    .labl_right:lang(ar) {
+    .labl_dirc:lang(en) {
         direction: rtl;
        // text-align: right;
     }
-    .labl_lift:lang(en) {
+    .labl_dirc:lang(ar) {
              
         //text-align: left;
         direction: ltr;
@@ -43,14 +43,12 @@ span{
     color:black; 
     font-weight: bold;
     .span_dir:lang(ar) {
-        //float: right;
-        direction: rtl;
-       
+        float: right !important;
+        direction: ltr !important;
     }
     .span_dir:lang(en) {
-             
         // float: left;
-        direction: ltr;
+        direction: rtl !important;
             }
 }
 .save-btn{

@@ -1,10 +1,7 @@
 <div class="content_management">
-    <p class="">
      
       <span class="span_dir"> {{ translate.currentLang ==='en' ? selectedcmsTypeId.nameEn : selectedcmsTypeId.nameAr}}</span>
-    </p>
     <form class="form-group internal_scroll_list_group" [formGroup]="currentForm" (submit)="Submit()">
-      
       <div class="form-group">
           <label for="comment">{{ 'CONTENT_MANEGMENT_SYSTEM.SHORTDESCRIPTIONAR' | translate }}</label>
           <textarea class="form-control" cols="2" rows="5" id="InputShortDescriptionAr" formControlName="shortDescriptionAr" maxlength="200"
@@ -19,7 +16,7 @@
         </div>
         </div>
         <div class="form-group">
-          <label for="comment" class="labl_right labl_lift">{{ 'CONTENT_MANEGMENT_SYSTEM.SHORTDESCRIPTIONEN' | translate }}</label>
+          <label for="comment" class="labl_dirc">{{ 'CONTENT_MANEGMENT_SYSTEM.SHORTDESCRIPTIONEN' | translate }}</label>
           <textarea class="form-control" cols="2" rows="5" id="InputShortDescriptionEn" formControlName="shortDescriptionEn"   maxlength="200"
           [ngClass]="{'red-border-class': f.shortDescriptionEn.errors && ( f.shortDescriptionEn.touched || isSubmit)}"></textarea>
           <div *ngIf="f.shortDescriptionEn.errors && (f.shortDescriptionEn.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
