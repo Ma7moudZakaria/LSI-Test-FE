@@ -1,19 +1,21 @@
 @import 'src/assets/scss/_variables.scss';
-.material-list{
+.question-list{
     background: #FBFBFB 0% 0% no-repeat padding-box;
     border-radius: 19px;
     opacity: 1;
     padding: 2rem;
-    height : 98%;
+    height : 92%;
     margin-top: 1rem;
     margin-bottom: 0;
 }
 
-.material-list:lang(en){
+.question-list:lang(en){
   margin-right: 1rem;
+ 
 }
-.material-list:lang(ar){
+.question-list:lang(ar){
   margin-left: 1rem;
+ 
 }
 
 .contanier_matrial-card{
