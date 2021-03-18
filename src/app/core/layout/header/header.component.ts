@@ -16,10 +16,18 @@ export class HeaderComponent implements OnInit {
   currentLang = '';
   showPro = true;
   submitClose = false;
+  title = '';
   constructor(private langService: LanguageService) { }
 
   ngOnInit(): void {
     this.currentLang = JSON.parse(localStorage.getItem("lang") || '{}');
+    this.titleSubscription();
+  }
+
+  titleSubscription(){
+    this.langService.headerPageNameEvent.subscribe(res => {
+      this.title = res;
+    })
   }
 
   switchLang() {

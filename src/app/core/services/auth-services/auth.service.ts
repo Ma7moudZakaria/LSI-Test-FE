@@ -27,8 +27,6 @@ export class AuthService {
   sendActivateCodeUrl = environment.baseUrl + 'User/send-new-activation-code/';
   viewProfileDetailsUrl = environment.baseUrl + 'User/view-user-profile-details/';
   updateUserUrl = environment.baseUrl + 'User/update-user';
-
-  currentLanguageEvent = new EventEmitter<LanguageEnum>();
   
   constructor(private http: HttpClient, private router: Router) { }
 

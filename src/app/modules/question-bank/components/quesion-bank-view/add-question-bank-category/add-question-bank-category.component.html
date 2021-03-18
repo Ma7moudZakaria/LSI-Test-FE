@@ -9,7 +9,7 @@
           {{"QUESTION_BANK.REQUIRED"|translate}}
       </div>
       <div *ngIf="f.nameAr.errors.pattern">
-          {{ 'QUESTION_BANK.ARABICFIELD' | translate }}
+          {{ 'QUESTION_BANK.ARABIC_FIELD' | translate }}
        </div>
   </div>
   </div>
@@ -26,13 +26,13 @@
        </div>
   </div>
   </div>
-
-  <button type="submit" class="save-btn btn btn-danger Catogry_publish_btn" [disabled]="disableSaveButtons" >{{'QUESTION_BANK.PUBLISH' | translate}}</button>
-  <!-- <button type="button" class="btn btn-warning Catogry_Back_btn" (click)="back_list_Catogry()">{{'QUESTION_BANK.BACK' | translate}}</button> -->
-  <div *ngIf="resultMessage?.type==='success'" class="alert alert-{{ resultMessage.type }} my-4 py-2">
-    {{resultMessage.message}}
-</div>
-<div  *ngIf="resultMessage.type==='danger'" class="alert alert-{{ resultMessage.type }} my-4 py-2">
-  {{resultMessage.message}}
-</div>
+  <section>
+    <div class="row">
+      <button type="submit" class="save-btn btn btn-danger" [disabled]="disableSaveButtons" >{{'QUESTION_BANK.ADD' | translate}}</button>
+      <button type="button" class="cancel-btn btn btn-warning" (click)="backListCatogry()">{{'QUESTION_BANK.CANCEL' | translate}}</button>
+    </div>
+    <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2">
+      {{resultMessage.message}}
+  </div>
+  </section>
 </form>

@@ -1,5 +1,5 @@
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, Output,EventEmitter,OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -35,6 +35,7 @@ export class AddQuestionBankCategoryComponent implements OnInit {
   resultMessage:BaseMessageModel = {};
   disableSaveButtons = false;
   @Input() inputCategoryId?:string; 
+  @Output() closeCategoryForm = new EventEmitter<boolean>();
   constructor(private questionBankCategoryService: QuestionBankCategoryService,
     private activeroute: ActivatedRoute, 
     private router: Router, 
@@ -169,26 +170,9 @@ export class AddQuestionBankCategoryComponent implements OnInit {
     }
 
   }
-  onKeydownEnglish(event:any) {
-    var regex = new RegExp("^[a-zA-Z''-'\s]{1,40}$");
-    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-    if (!regex.test(key)) {
-      event.preventDefault();
-      return false;
-    }
-    return true
-  }
-  onKeydownArabic(event:any) {
-    // if (event.which === 32)
-    //   event.preventDefault();
-    var regex = new RegExp("^[\u0621-\u064A\u0660-\u0669 ]+$");
-    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-    if (regex.test(key)) {
-      event.preventDefault();
-      return false;
-    }
-    return true;
-  }
 
+  backListCatogry(){
+    this.closeCategoryForm?.emit(false);
+  }
 
 }

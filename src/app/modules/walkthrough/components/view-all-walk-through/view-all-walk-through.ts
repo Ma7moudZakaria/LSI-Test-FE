@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateCompiler, TranslateService } from '@ngx-translate/core';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
+import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 import { WalkThroughService } from 'src/app/core/services/walk-through-services/walk-through-services';
 
@@ -21,10 +23,13 @@ export class ViewAllWalkThroughComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private walkThroughService:WalkThroughService) { 
+    private walkThroughService:WalkThroughService,
+    private languageService: LanguageService,
+    public translate: TranslateService) { 
   }
 
   ngOnInit(){
+    this.setCurrentLang();
     // this.routeParams = this.router.url;
     // this.walkThroughId = this.route.snapshot.params.id;
     // console.log("Walk Through Id :" , this.walkThroughId);
@@ -34,6 +39,17 @@ export class ViewAllWalkThroughComponent implements OnInit {
     //   console.log("All Walk Through Data :" , this.allWalkThroughData);
     // });
   
+  }
+
+  setCurrentLang(){
+    this.emitHeaderTitle();
+    this.languageService.currentLanguageEvent.subscribe(res => {
+      this.emitHeaderTitle();
+    });
+  }
+
+  emitHeaderTitle(){
+    this.languageService.headerPageNameEvent.emit(this.translate.instant('WALKTHROUGH.TITLE'));
   }
 
   // deleteWalkThrough(Id: any)

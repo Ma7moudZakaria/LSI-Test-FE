@@ -94,7 +94,7 @@ export class ActivateUserComponent implements OnInit {
             message: res.message,
             type: BaseConstantModel.SUCCESS_TYPE
           }
-          this.router.navigateByUrl('/shared');
+          this.router.navigateByUrl('/dashboard');
         }
         else{
           this.isSubmit = false;

@@ -1,11 +1,11 @@
-
+@import 'src/assets/scss/_variables.scss';
 .content_management{
     background: #FBFBFB 0% 0% no-repeat padding-box;
     border-radius: 19px;
     opacity: 1;
     padding: 2rem;
     height : 98%;
-    margin: 1rem;
+    margin-top: 1rem;
     margin-bottom: 0;
     .internal_scroll_list_group:lang(ar) {
         height: 470px;
@@ -19,6 +19,64 @@
             }
 
 }
+Label{
+    font-family:Almarai-Regular;
+    font-size: 0.875rem;
+    color:$placeholder_inputs;
+    
+    .labl_dirc:lang(en) {
+        direction: rtl;
+       // text-align: right;
+    }
+    .labl_dirc:lang(ar) {
+             
+        //text-align: left;
+        direction: ltr;
+            }
+
+
+}
+span{
+    font-family:Almarai-Bold ;
+    font-size: large;
+    // font-size: 0.875rem;
+    color:black; 
+    font-weight: bold;
+    .span_dir:lang(ar) {
+        float: right !important;
+        direction: ltr !important;
+    }
+    .span_dir:lang(en) {
+        // float: left;
+        direction: rtl !important;
+            }
+}
+.save-btn{
+    background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
+    background: #8E2520 0% 0% no-repeat padding-box;
+    border-radius: 12px;
+    opacity: 1;
+    width: 7rem;
+    margin: 1rem;
+    padding: 0.5rem;
+    height: 2.31rem;
+    border: none;
+    color: #ffffff;
+    display: block;
+    }
+    .cancel-btn{
+        background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
+        background:$icon_input ;
+        border-radius: 12px;
+        opacity: 1;
+        width: 7rem;
+        margin: 1rem;
+        padding: 0.1rem;
+        height: 2.31rem;
+        border: none;
+        color: #ffffff;
+        display: block;
+        }
 
 
 
