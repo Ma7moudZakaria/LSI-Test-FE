@@ -57,6 +57,7 @@
     "NEXT": "التالى"
   },
   "SCIENTIFIC_MATERIAL": {
+    "TITLE":"المواد العلمية",
     "SELECTOPTION": "اختر من القائمة",
     "PROGRAMS": "البرامج",
     "CATEGORY": "الفئة",
@@ -122,6 +123,7 @@
     "SHEIKHS_STUDIED": "مشايخ درست عليهم"
   },
   "QUESTION_BANK": {
+    "TITLE":"بنك الأسئلة",
     "ADD_DEPARTMENT": "إضافة قسم",
     "DEPARTMENTS": "الأقسام",
     "DEPARTMENT_AR": "القسم(عربي)",
@@ -159,6 +161,7 @@
     "PERSONAL_PROFILE": "الملف الشخصي"
   },
   "CONTENT_MANEGMENT_SYSTEM": {
+    "TITLE":"إدارة المحتوى",
     "ALL": "كل",
     "DEPARMENTS": "الأقسام",
     "TECNICAL_QUESTIONS": "الأسئلة التقنية",
@@ -178,6 +181,7 @@
     "CANCEL": "إلغاء"
   },
   "WALKTHROUGH": {
+    "TITLE":"المقدمة",
     "PAGES": "الشرائح",
     "UPLOADPIC": "حمل صورة",
     "ARABICMESSAGE": "الرسالة العربى",
@@ -190,6 +194,7 @@
     "TITLE": "لوحة التحكم"
   },
   "SETTING_PG": {
+    "TITLE":"الإعدادت",
     "NOTIFICATION": "الاشعارات",
     "CRETIFICATION": "نموذج الشهادة",
     "PROVIDED_SCREEN": "شاشات المقدمة",

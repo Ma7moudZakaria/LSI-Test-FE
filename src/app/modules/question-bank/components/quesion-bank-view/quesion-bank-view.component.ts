@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { LanguageService } from 'src/app/core/services/language-services/language.service';
 
 @Component({
   selector: 'app-quesion-bank-view',
@@ -16,10 +17,23 @@ export class QuesionBankViewComponent implements OnInit {
   showAddQuestionForm = false;
   submitSuccess:any;
   showAddCategoryForm = false;
-  constructor(public translate: TranslateService) {
+  constructor(public translate: TranslateService,
+    private languageService: LanguageService) {
    }
 
   ngOnInit(): void {
+    this.setCurrentLang();
+  }
+
+  setCurrentLang(){
+    this.emitHeaderTitle();
+    this.languageService.currentLanguageEvent.subscribe(res => {
+      this.emitHeaderTitle();
+    });
+  }
+
+  emitHeaderTitle(){
+    this.languageService.headerPageNameEvent.emit(this.translate.instant('QUESTION_BANK.TITLE'));
   }
 
   addNew(){
