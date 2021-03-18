@@ -47,7 +47,7 @@ export class QuesionBankViewComponent implements OnInit {
   setSelectedCategory(event:any){
     this.selectedCategoryId = event;
   }
-  closeAddQuestionForm(event:any){
+  closeAddQuestionForm(){
     this.showAddQuestionForm = false;
   }
   closeAddQuestionFormAfterSave(event:any){
@@ -60,7 +60,7 @@ export class QuesionBankViewComponent implements OnInit {
     this.showAddCategoryForm =true;
   }
 
-  closeAddCategoryForm(event:any){
+  closeAddCategoryForm(){
     this.showAddCategoryForm = false;
   }
   closeAddCategoryFormAfterSave(event:any){

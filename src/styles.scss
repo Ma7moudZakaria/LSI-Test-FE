@@ -275,3 +275,59 @@ select.form-control {
   font-size: 16px;
   border-radius: 5px;
 }
+
+/* The side navigation menu */
+
+.overlay {
+  height: 100%; /* 100% Full-height */
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 30%; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 999; /* Stay on top */
+  top: 0; /* Stay at the top */
+  background-color: #FBFBFB; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 30px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav_profile */
+  box-shadow: 0 0 15px #0c0808;
+}
+.overlay:lang(en) {
+  left: 0;
+}
+.overlay:lang(ar) {
+  right: 0;
+}
+
+
+  
+  
+  /* Position and style the close button (top right corner) */
+  .overlay .closebtn {
+    color: #818181;
+    font-size: 25px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+  }
+
+  .overlay .closebtn:lang(en){
+    text-align: right;
+  }
+  .overlay .closebtn:lang(ar){
+    text-align: left;
+  }
+
+    .overlay a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    display: block;
+    transition: 5s;
+  }
+  
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav_profile (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .overlay {padding-top: 15px;}
+        .sidenav_profile a {font-size: 18px;}
+  }

@@ -3,12 +3,18 @@
     background: #FBFBFB 0% 0% no-repeat padding-box;
     border: 1px solid #FBFBFB;
     opacity: 1;
-    text-align: right;
     padding: 1rem;
     padding-top: 3rem;   
 }
 
 
+.material-form:lang(ar){
+    text-align: right;
+}
+
+.material-form:lang(en){
+    text-align: left;
+}
 
 label{
     

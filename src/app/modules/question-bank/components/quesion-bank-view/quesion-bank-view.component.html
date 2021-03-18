@@ -15,14 +15,14 @@
        
     </div>
 
-    <div class="overlay overlay_dir_left overlay_dir_righ" *ngIf="showAddQuestionForm">
+    <div class="overlay" *ngIf="showAddQuestionForm">
         <!-- <a  class="closebtn" (click)="closeAddQuestionForm()">&times;</a> -->
-        <app-add-question-bank-question [selectedCategoryId]="selectedCategoryId"  [selectedQuestionId]="selectedQuestionId"  (submitSuccess)="closeAddQuestionFormAfterSave($event)" (closeQuestionForm)="closeAddQuestionForm($event)">
+        <app-add-question-bank-question [selectedCategoryId]="selectedCategoryId"  [selectedQuestionId]="selectedQuestionId"  (submitSuccess)="closeAddQuestionFormAfterSave($event)" (closeQuestionForm)="closeAddQuestionForm()">
         </app-add-question-bank-question>
     </div> 
-<div class="overlay overlay_dir_left overlay_dir_righ" *ngIf="showAddCategoryForm">
-    <!-- <a  class="closebtn" (click)="closeAddCategoryForm()">&times;</a> -->
-    <app-add-question-bank-category [inputCategoryId]="inputCategoryId"  (submitSuccess)="closeAddCategoryFormAfterSave($event)" (closeCategoryForm)="closeAddCategoryForm($event)" >
+<div class="overlay" *ngIf="showAddCategoryForm">
+    <!-- <a  href="javascript:void(0)" class="closebtn" (click)="closeAddCategoryForm()">&times;</a> -->
+    <app-add-question-bank-category [inputCategoryId]="inputCategoryId"  (submitSuccess)="closeAddCategoryFormAfterSave($event)" (closeCategoryForm)="closeAddCategoryForm()" >
     </app-add-question-bank-category>
 </div>
 
