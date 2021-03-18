@@ -1,6 +1,7 @@
 <div class="content_management">
-     
-      <span class="span_dir"> {{ translate.currentLang === langEnum.en ? selectedcmsTypeId.nameEn : selectedcmsTypeId.nameAr}}</span>
+  <div class="row">
+    <span class="span_dir"> {{ translate.currentLang === langEnum.en ? selectedcmsTypeId.nameEn : selectedcmsTypeId.nameAr}}</span>
+   </div>
     <form class="form-group internal_scroll_list_group" [formGroup]="currentForm" (submit)="Submit()">
       <div class="form-group">
           <label for="comment">{{ 'CONTENT_MANEGMENT_SYSTEM.SHORTDESCRIPTIONAR' | translate }}</label>

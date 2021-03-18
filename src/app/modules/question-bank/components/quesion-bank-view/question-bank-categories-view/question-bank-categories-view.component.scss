@@ -39,6 +39,14 @@
                        }
 
 }
+ .list-category:lang(en){
+    margin-left: 1rem;
+   
+  }
+  .list-category:lang(ar){
+   
+    margin-right: 0rem;
+  }
 .list-category> p{
     font-family: Almarai-Bold;
     font-size: 20px;

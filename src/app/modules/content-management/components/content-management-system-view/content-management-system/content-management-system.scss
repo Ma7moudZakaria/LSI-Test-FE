@@ -4,7 +4,7 @@
     border-radius: 19px;
     opacity: 1;
     padding: 2rem;
-    height : 98%;
+    height : 100%;
     margin-top: 1rem;
     margin-bottom: 0;
     .internal_scroll_list_group:lang(ar) {
@@ -19,37 +19,40 @@
             }
 
 }
+.content_management:lang(en){
+    margin-right: 0rem;
+   
+  }
+  .content_management:lang(ar){
+    margin-left: 1rem;
+   
+  }
+
 Label{
     font-family:Almarai-Regular;
     font-size: 0.875rem;
     color:$placeholder_inputs;
+
     
-    .labl_dirc:lang(en) {
-        direction: rtl;
-       // text-align: right;
-    }
-    .labl_dirc:lang(ar) {
-             
-        //text-align: left;
-        direction: ltr;
-            }
+
 
 
 }
+Label:lang(en) {
+    float: left;
+}
+Label:lang(ar) {
+    float: right !important;     
+
+        }
 span{
     font-family:Almarai-Bold ;
     font-size: large;
     // font-size: 0.875rem;
     color:black; 
     font-weight: bold;
-    // .span_dir:lang(ar) {
-    //     float: right !important;
-    //     direction: ltr !important;
-    // }
-    // .span_dir:lang(en) {
-    //     // float: left;
-    //     direction: rtl !important;
-    //         }
+    margin-bottom: 1rem;
+   
 }
 span:lang(ar){
     float: right !important;
