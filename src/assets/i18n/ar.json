@@ -1,15 +1,15 @@
 {
   "GENERAL": {
-    "SEND": "إرسال",
+    "SEND": "ارسال",
     "BACK": "رجوع",
     "SAVE": "حفظ",
-    "EMAIL": "البريد الإلكتروني",
+    "EMAIL": "البريد الالكتروني",
     "EMAILPATTERN":"يرجى ادخال بريد الكترونى صحيحا فقط",
     "PASSWORD": "كلمة المرور",
     "CONFIRMPASSWORD": "تأكيد كلمة المرور",
-    "NAME": "الإسم",
-    "FATHERNAME": "أسم الاب",
-    "FAMILYNAME": "أسم العائلة",
+    "NAME": "الاسم",
+    "FATHERNAME": "اسم الاب",
+    "FAMILYNAME": "اسم العائلة",
     "GENDER": "الجنس",
     "MALE": "ذكر",
     "FEMALE": "أنثى",
@@ -18,25 +18,26 @@
     "FORM_INPUT_COMPLETION_MESSAGE": "برجاء اكمال البيانات",
     "LOGOUT": "خروج",
     "SEARCH": "بحث",
-    "PASSWORDREQUIRED": " كلمة المرور مطلوبة",
+    "PASSWORD_REQUIRED": " كلمة المرور مطلوبة",
     "CONFIRMPASSWORDREQUIRED": "تأكيد  كلمة المرور مطلوبة",
-    "PASSWORDPATTERN": "يرجى إدخال كلمة المرور صحيحة",
-    "PASSWORDMAXLENGTH": "يرجى إدخال كلمة مرور أقل من 50 حرفا",
-    "PASSWORDMINLENGTH": "يرجى إدخال كلمة مرور أكثر من 6 حرفا",
-    "CONFIRMPASSWORDPATTERN": "يرجى إدخال كلمة المرور صحيحة",
-    "CONFIRMPASSWORDMAXLENGTH": "يرجى إدخال كلمة مرور أقل من 50 حرفا",
-    "CONFIRMPASSWORDMINLENGTH": "يرجى إدخال كلمة مرور أكثر من 6 حرفا",
-    "EMAILADDRESS": "يرجى إدخال البريد الإلكترونى صحيحا",
+    "PASSWORDPATTERN": "يرجى ادخال كلمة المرور صحيحة",
+    "PASSWORDMAXLENGTH": "يرجى ادخال كلمة مرور أقل من 50 حرفا",
+    "PASSWORDMINLENGTH": "يرجى ادخال كلمة مرور أكثر من 6 حرفا",
+    "CONFIRMPASSWORDPATTERN": "يرجى ادخال كلمة المرور صحيحة",
+    "CONFIRMPASSWORDMAXLENGTH": "يرجى ادخال كلمة مرور أقل من 50 حرفا",
+    "CONFIRMPASSWORDMINLENGTH": "يرجى ادخال كلمة مرور أكثر من 6 حرفا",
+    "EMAILADDRESS": "يرجى ادخال البريد الالكترونى صحيحا",
     "EMAILREQUIRED":"حقل الايميل مطلوب",
     "USERNAMEREQUIRED":"حقل اسم المستخدم مطلوب",
-    "USERNAMEMINLENGTH": "يرجى إدخال اسم المستخدم أكثر من 3 حرفا",
-    "USERNAMEMAXLENGTH":  "يرجى إدخال  اسم المستخدم أقل من 50 حرفا"
+    "USERNAMEMINLENGTH": "يرجى ادخال اسم المستخدم أكثر من 3 حرفا",
+    "USERNAMEMAXLENGTH":  "يرجى ادخال  اسم المستخدم أقل من 50 حرفا"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATIONCODE": "رمز الدخول",
-    "ACTIVATIONMESSAGE": "لقد تم إرسال رمز الدخول علي البريد الإلكتروني الخاص بك",
-    "SENDACTIVATIONCODE": "إعادة إرسال",
-    "MESSAGE": "لم أستقبل رمز الدخول."
+    "ACTIVATIONMESSAGE": "لقد تم ارسال رمز الدخول علي البريد الالكتروني الخاص بك",
+    "SENDACTIVATIONCODE": "اعادة ارسال",
+    "MESSAGE": "لم أستقبل رمز الدخول.",
+    "ACTIVATIONNUMBER_REQUIRED":"رمز التفعيل مطلوب"
   },
   "FORGET_PASSWORD_PG": {
     "FORGETPASSWORD": "نسيت كلمة المرور"
@@ -48,11 +49,11 @@
     "SIGNUP": "سجل الأن",
     "SOICALLOGIN": "الدخول عن طريق وسائل التواصل الاجتماعي",
     "TEACHERSIGNUP": "التسجيل كمعلم",
-    "EMAIL_ADDRESS_PLACEHOLDER":"البريد الإلكترونى"
+    "EMAIL_ADDRESS_PLACEHOLDER":"البريد الالكترونى"
   },
   "SIGNUP_PG": {
     "SIGNUP": "تسجيل حساب جديد",
-    "USERNAME": "إسم االمستخدم",
+    "USERNAME": "اسم االمستخدم",
     "NEXT": "التالى"
   },
   "SCIENTIFIC_MATERIAL": {
@@ -61,7 +62,7 @@
     "CATEGORY": "الفئة",
     "TITLEAR": "الاسم العربى",
     "TITLEEN": "الاسم الانجليزى",
-    "CHOOSEFILE": "إختر الملفات لرفعها / اسحبها وضعها هنا",
+    "CHOOSEFILE": "اختر الملفات لرفعها / اسحبها وضعها هنا",
     "MATERIALAVAILABILITY": "اتاحة المادة العلمية",
     "ACTIVATION": "التنشيط",
     "ALL": "الكل",
@@ -69,7 +70,7 @@
     "ACTIVE": "مفعل",
     "INACTIVE": " غير مفعل",
     "SAVE": "حفظ",
-    "CANCEL": "إلغاء",
+    "CANCEL": "الغاء",
     "REQUIRED": "هذا الحقل مطلوب",
     "TITLEARPATTERN": "يرجى ادخال حروف عربى فقط",
     "TITLEARMAXLENGTH": "يرجى ادخال اسم اقل من 50 حرف",
@@ -87,20 +88,20 @@
   "UPDATE_USER_PG": {
     "PERSONALINFORMATION": "المعلومات الشخصية",
     "NAME": "الاسم",
-    "FATHERNAME": "إسم الأب",
-    "FAMILYNAME": "إسم العائلة",
-    "NAMEREQUIRED":"الاسم مطلوب",
-    "NAMEMAXLENGTH":"يرجى إدخال الاسم أقل من 50 حرفا",
-    "NAMEMINLENGTH":"يرجى إدخال الاسم أكثر من 3 حرفا",
-    "FATHERNAMEREQUIRED":"إسم الأب مطلوب",
-    "FATHERNAMEMAXLENGTH":"يرجى إدخال إسم الأب أقل من 50 حرفا",
-    "FATHERNAMEMINLENGTH":"يرجى إدخال إسم الأب أكثر من 3 حرفا",
-    "FAMILYNAMEREQUIRED":"إسم العائلة مطلوب",
-    "FAMILYNAMEMAXLENGTH":"يرجى إدخال إسم العائلة أقل من 50 حرفا",
-    "FAMILYNAMEMINLENGTH":"يرجى إدخال إسم العائلة أكثر من 3 حرفا",
+    "FATHERNAME": "اسم الأب",
+    "FAMILYNAME": "اسم العائلة",
+    "NAMEREQUIRED":"الاسم الاول مطلوب",
+    "NAMEMAXLENGTH":"يرجى ادخال الاسم أقل من 50 حرفا",
+    "NAMEMINLENGTH":"يرجى ادخال الاسم أكثر من 3 حرفا",
+    "FATHERNAMEREQUIRED":"اسم الأب مطلوب",
+    "FATHERNAMEMAXLENGTH":"يرجى ادخال اسم الأب أقل من 50 حرفا",
+    "FATHERNAMEMINLENGTH":"يرجى ادخال اسم الأب أكثر من 3 حرفا",
+    "FAMILYNAMEREQUIRED":"اسم العائلة مطلوب",
+    "FAMILYNAMEMAXLENGTH":"يرجى ادخال اسم العائلة أقل من 50 حرفا",
+    "FAMILYNAMEMINLENGTH":"يرجى ادخال اسم العائلة أكثر من 3 حرفا",
     "BIRTHDATE":"تاريخ الميلاد",
     "GENDERREQUIRED":"الجنس مطلوب",
-    "COUNTRY":"دولة الإقامة",
+    "COUNTRY":"دولة الاقامة",
     "COUNTRYCODE":"حقل الدولة مطلوب",
     "PHONENUMBERREQUIRED":"رقم الهاتف مطلوب",
     "PHONENUMBERPATTERN":"يرجى ادخال رقم هاتف فقط",
@@ -112,6 +113,7 @@
     "EDULEVELREQUIRED":"مستوى التعليمي مطلوب",
     "OCCUPATION":"المهنة",
     "OCCUPATIONREQUIRED":"المهنة مطلوبة",
+    "CONTACT_INFO":"معلومات التواصل",
     "CHANGE_PIC": "تغير الصورة"
   },
   "QUESTION_BANK": {
@@ -134,18 +136,16 @@
     "DASHBORD": "لوحة التحكم",
     "MYPROGRAMS": "برامجى",
     "SCIENTIFIC_ARTICLES": "المواد العلمية",
-    "VACATION_REQUEST": "الاجازات",
+    "VACATION_REQUEST": "المراسلات",
     "EXAM_RESULTS": "نتائج الامتحانات",
     "WITHDRAWAL_REQUESTS": "طلبات الانسجاب",
-    "SETTINGS":"الإعدادت",
+    "SETTINGS":"الاعدادت",
     "CERTIFICATES": "الشهادات",
-    "MY_MESSAGES": "رسائلى",
+    "MY_MESSAGES": "المشاعر",
     "QUESTION_BANK": "بنك الأسئلة"
   },
   "VIEW_USER_PROFILE_PG": {
-    "FATHERNAME": "إسم الأب",
-    "FAMILYNAME": "إسم العائلة",
-    "BIRTHDATE": "تاريخ الميلاد"
+    "PERSONAL_PROFILE": "الملف الشخصي"
   },
   "CONTENT_MANEGMENT_SYSTEM": {
     "ALL": "كل",
@@ -166,5 +166,13 @@
     "UPLOADPIC": "حمل صورة",
     "ARABICMESSAGE": "الرسالة العربى",
     "ENGLISHMESSAGE": "الرسالة الانجليزى"
+  },
+  "SETTING_PG":{
+    "NOTIFICATION":"الاشعارات",
+    "CRETIFICATION":"نموذج الشهادة",
+    "PROVIDED_SCREEN":"شاشات المقدمة",
+    "USER_MANAGEMENT":" إدارة المستخدمين",
+    "ABOUT_HUFFAZ":"عن حفاظ",
+    "POWER":"الصلاحيات"
   }
 }

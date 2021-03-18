@@ -18,7 +18,7 @@
     "FORM_INPUT_COMPLETION_MESSAGE": "Please complete the missing information",
     "LOGOUT": "Logout",
     "SEARCH": "Search",
-    "PASSWORDREQUIRED": "Password is Required",
+    "PASSWORD_REQUIRED": "Password is Required",
     "CONFIRMPASSWORDREQUIRED": "Confirm Password is Required",
     "PASSWORDPATTERN": "Please Enter a valid password",
     "PASSWORDMINLENGTH": "Password sould be more than 6 charcter",
@@ -36,7 +36,8 @@
     "ACTIVATIONCODE": "Activation Code",
     "ACTIVATIONMESSAGE": "The access code has been sent to your email",
     "SENDACTIVATIONCODE": "Send Again",
-    "MESSAGE": "I did not receive the Activation Code."
+    "MESSAGE": "I did not receive the Activation Code.",
+    "ACTIVATIONNUMBER":"Activation Code is required"
   },
   "FORGET_PASSWORD_PG": {
     "FORGETPASSWORD": "Forgot Password"
@@ -111,6 +112,7 @@
     "EDULEVELREQUIRED":"Educational Level is Required",
     "OCCUPATION":"Occupation",
     "OCCUPATIONREQUIRED":"Occupation  is Required",
+    "CONTACT_INFO":"Contact info",
     "CHANGE_PIC": "Change pic"
   },
   "QUESTION_BANK": {
@@ -133,18 +135,16 @@
     "DASHBORD": "DashBoard",
     "MYPROGRAMS": "Myprograms",
     "SCIENTIFIC_ARTICLES": "Scientific articles",
-    "VACATION_REQUEST": "Vacation Req.",
+    "VACATION_REQUEST": "My Messages",
     "EXAM_RESULTS": "Exam Results",
     "WITHDRAWAL_REQUESTS": "Withdrawal Req.",
     "CERTIFICATES": "Certificates",
     "SETTINGS":"Settings",
-    "MY_MESSAGES": "My Messages",
+    "MY_MESSAGES": "Feeling",
     "QUESTION_BANK": "Question Bank"
   },
   "VIEW_USER_PROFILE_PG": {
-    "FATHERNAME": "Father Name",
-    "FAMILYNAME": "Family Name",
-    "BIRTHDATE": "Birthdate"
+    "PERSONAL_PROFILE": "Personal Profile"
   },
   "CONTENT_MANEGMENT_SYSTEM": {
     "ALL": "All",
@@ -164,5 +164,13 @@
     "UPLOADPIC": "Upload Picture",
     "ARABICMESSAGE": "Arabic Message",
     "ENGLISHMESSAGE": "English Message"
+  },
+  "SETTING_PG":{
+    "NOTIFICATION":"Notifications",
+    "CRETIFICATION":"Certificate form",
+    "PROVIDED_SCREEN":"Provided screens",
+    "USER_MANAGEMENT":"User management",
+    "ABOUT_HUFFAZ":"About Huffaz",
+    "POWER":"Powers"
   }
 }
