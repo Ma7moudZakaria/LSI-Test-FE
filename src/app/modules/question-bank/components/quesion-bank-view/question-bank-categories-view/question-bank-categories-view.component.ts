@@ -37,7 +37,7 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
    formImport: FormGroup;
   successMessage?:string;
   isSubmit = false;
-@Output() selectedCategoryId= new EventEmitter<string>();
+@Output() selectedCategoryId= new EventEmitter<{}>();
 @Output() inputCategoryId= new EventEmitter<string>();
 clickChangeCtogry:string="";
 resultMessage:BaseMessageModel = {};
@@ -76,7 +76,7 @@ langEnum = LanguageEnum;
       let response = <BaseResponseModel>res;
       if (response.isSuccess) {
         this.questionBankCategoryList = response.data;
-        this.loadCatogryQuiestion(this.questionBankCategoryList[0].id);
+        this.loadCatogryQuiestion(this.questionBankCategoryList[0].id,this.questionBankCategoryList[0].arabCatgName,this.questionBankCategoryList[0].engCatgName);
         this.selectedIndex=0;
       }
       else {
@@ -221,8 +221,8 @@ this.isAdd=false;
   }
 
   selectedIndex?:Number;
-  loadCatogryQuiestion(id?:string){
-    this.selectedCategoryId?.emit(id);
+  loadCatogryQuiestion(id?:string,arabCatgName?:string,engCatgName?:string){
+    this.selectedCategoryId.emit({id:id,arabCatgName:arabCatgName,engCatgName:engCatgName});
   }
   result: string = '';
   confirmDialog(id?:string){

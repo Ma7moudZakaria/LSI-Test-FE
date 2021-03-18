@@ -34,7 +34,7 @@
  <div class="internal_scroll_list_group ">
   <a class="list-group-item d-flex" *ngFor="let QBC  of questionBankCategoryList ; let i=index;" 
     [class.active]="selectedIndex === i" 
-    (click)="loadCatogryQuiestion(QBC.id);selectedIndex=i">
+    (click)="loadCatogryQuiestion(QBC.id,QBC.arabCatgName,QBC.engCatgName);selectedIndex=i">
      
         <span>{{translate.currentLang===langEnum.en?QBC.engCatgName:QBC.arabCatgName}}</span>
         <span>

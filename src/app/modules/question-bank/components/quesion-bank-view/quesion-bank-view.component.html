@@ -17,7 +17,7 @@
 
     <div class="overlay" *ngIf="showAddQuestionForm">
         <!-- <a  class="closebtn" (click)="closeAddQuestionForm()">&times;</a> -->
-        <app-add-question-bank-question [selectedCategoryId]="selectedCategoryId"  [selectedQuestionId]="selectedQuestionId"  (submitSuccess)="closeAddQuestionFormAfterSave($event)" (closeQuestionForm)="closeAddQuestionForm()">
+        <app-add-question-bank-question [selectedCategoryId]="categoryId"  [selectedQuestionId]="selectedQuestionId"  (submitSuccess)="closeAddQuestionFormAfterSave($event)" (closeQuestionForm)="closeAddQuestionForm()">
         </app-add-question-bank-question>
     </div> 
 

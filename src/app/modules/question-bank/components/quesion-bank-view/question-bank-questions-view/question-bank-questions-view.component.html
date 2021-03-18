@@ -2,10 +2,11 @@
   
     <div class="row p-3">
         <div class="col-4">
-            <span class = "mb-4 p_header" style="float: right;">أسئلة تقنية</span>
+            <span class = "mb-4 p_header" >{{translate.currentLang===langEnum.en?selectedCategoryId.engCatgName:selectedCategoryId.arabCatgName}}
+            </span>
         </div>
 
-    <div class="col-6">
+    <div class="col-6" *ngIf="translate.currentLang===langEnum.ar">
         <div class="input-group search_group">
             <div class="input-group-prepend">
                 <span class="input-group-text bg-white pl-2 pr-2 border-md border-right-0">
@@ -16,6 +17,21 @@
             <input type="text"
             class=" px-3 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm"
             placeholder="{{'QUESTION_BANK.SEARCH' | translate}}" name="search"#text >
+        
+        </div>  
+    </div>
+    <div class="col-6" *ngIf="translate.currentLang===langEnum.en">
+        <div class="input-group search_group">
+          
+            <input type="text"
+            class=" px-3 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm"
+            placeholder="{{'QUESTION_BANK.SEARCH' | translate}}" name="search"#text >
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white pl-2 pr-2 border-md border-right-0">
+                    <img  class="UserLogin_icon_input" src="../../../../../../assets/images/search-ired.svg"
+                    (click)="searchQuestions(text.value)">
+                </span>
+            </div>
         
         </div>  
     </div>

@@ -9,7 +9,8 @@ import { LanguageService } from 'src/app/core/services/language-services/languag
 })
 export class QuesionBankViewComponent implements OnInit {
   selectedQuestionId:string | undefined;
-  selectedCategoryId:string|undefined;
+  selectedCategoryId={id:'',arabCatgName:'',engCatgName:''}; 
+  categoryId:string|undefined;
   inputCategoryId:string|undefined;
   @Input() isViewAdd?:boolean; 
   @Input() closeCategoryForm?:boolean; 
@@ -45,7 +46,9 @@ export class QuesionBankViewComponent implements OnInit {
   }
 
   setSelectedCategory(event:any){
-    this.selectedCategoryId = event;
+    this.selectedCategoryId = {id:event.id,arabCatgName:event.arabCatgName,engCatgName:event.engCatgName}; 
+  this.categoryId=event.id;
+    
   }
   closeAddQuestionForm(){
     this.showAddQuestionForm = false;

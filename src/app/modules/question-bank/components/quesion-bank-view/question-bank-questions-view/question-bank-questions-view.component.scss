@@ -98,8 +98,18 @@ opacity: 1;
   margin-bottom: 3rem;
 } 
 .p_header{
-  margin-bottom: 1rem;
-  font-size: large;
+  font: normal normal bold 1.25rem Almarai;
+    color:black; 
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+.p_header:lang(en){
+  float: left;
+ padding-left: .5rem;
+}
+.p_header:lang(ar){
+  float: right !important;
+  padding-right: .75rem;
 }
 .search_group{
   //margin-top: 2rem;
