@@ -80,8 +80,11 @@ langEnum = LanguageEnum;
       let response = <BaseResponseModel>res;
       if (response.isSuccess) {
         this.questionBankCategoryList = response.data;
-        this.loadCatogryQuiestion(this.questionBankCategoryList[0].id,this.questionBankCategoryList[0].arabCatgName,this.questionBankCategoryList[0].engCatgName);
-        this.selectedIndex=0;
+        if(this.addCategory===false)
+        {this.loadCatogryQuiestion(this.questionBankCategoryList[0].id,this.questionBankCategoryList[0].arabCatgName,this.questionBankCategoryList[0].engCatgName);
+          this.selectedIndex=0;
+        }
+        
       }
       else {
         this.questionBankCategoryList = [];
