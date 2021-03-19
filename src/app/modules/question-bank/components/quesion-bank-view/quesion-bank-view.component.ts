@@ -52,6 +52,7 @@ export class QuesionBankViewComponent implements OnInit {
     this.selectedCategoryId = {id:event.id,arabCatgName:event.arabCatgName,engCatgName:event.engCatgName}; 
   this.categoryId=event.id;
   this.addCategory=false;
+ this. isQuestionSave=false;
     
   }
   closeAddQuestionForm(){
