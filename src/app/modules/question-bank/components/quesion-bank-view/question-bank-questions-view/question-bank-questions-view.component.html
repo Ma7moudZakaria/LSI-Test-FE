@@ -57,17 +57,21 @@
                     (opened)="setOpened(i)" (closed)="setClosed(i)">
                     <mat-expansion-panel-header>
                         <mat-panel-title class="qestionHeader">
-                        
-                             
-                            <span>
-                                {{this.translate.currentLang===langEnum.en?QBQ.engQuestion:QBQ.arabQuestion}}
-                            </span>  
+                            <div class="col-11 span_question" >
+                                <span>
+                                    {{this.translate.currentLang===langEnum.en?QBQ.engQuestion:QBQ.arabQuestion}}
+                                </span> 
+                            </div>
+                            <!--   -->
+                            <div class="col-1 span_icon" >
+                                <span>
+                                    <img src="assets/quesionBsnk/questionBankCategory/Icon feather-edit-3 (1).svg" alt="" class="mt-10 cursor-pointer" (click)="loadQuestion(QBQ.id)"/>
+                                    <img src="assets/quesionBsnk/questionBankCategory/Icon feather-trash-2.svg" alt="" class="mt-10 cursor-pointer" (click)="confirmDialog(QBQ.id)"/>
+                                  
+                                </span>  
+                            </div>
                          
-                            <span>
-                                <img src="assets/quesionBsnk/questionBankCategory/Icon feather-edit-3 (1).svg" alt="" class="mt-10 cursor-pointer" (click)="loadQuestion(QBQ.id)"/>
-                                <img src="assets/quesionBsnk/questionBankCategory/Icon feather-trash-2.svg" alt="" class="mt-10 cursor-pointer" (click)="confirmDialog(QBQ.id)"/>
-                              
-                            </span>
+                        
                       
                           
                         </mat-panel-title>
