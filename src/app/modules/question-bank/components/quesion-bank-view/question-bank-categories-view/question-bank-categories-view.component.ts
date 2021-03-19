@@ -44,6 +44,7 @@ resultMessage:BaseMessageModel = {};
 disableSaveButtons = false;
 langEnum = LanguageEnum;
 @Input() addCategory=false; 
+
   constructor(private questionBankCategoryService: QuestionBankCategoryService,
     private activeroute: ActivatedRoute, 
     private router: Router, public translate: TranslateService,private fb: FormBuilder,public dialog: MatDialog) { 

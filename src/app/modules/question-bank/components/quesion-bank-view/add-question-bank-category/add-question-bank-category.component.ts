@@ -51,7 +51,7 @@ export class AddQuestionBankCategoryComponent implements OnInit {
     if (this.QuestionBankCategoryId !== "" ) {
       this.isAdd=false;
       this.currentForm.reset();
-     this.loadQuestionBankCategoryDetails() ;
+     this.populate() ;
     }
     else {
       this.currentForm.reset();
@@ -63,7 +63,7 @@ export class AddQuestionBankCategoryComponent implements OnInit {
     this.currentForm.reset();
     this.QuestionBankCategoryId=this.inputCategoryId||"";
     if(this.QuestionBankCategoryId !== "")
-    {this.loadQuestionBankCategoryDetails() ;}
+    {this.populate() ;}
    if( this.QuestionBankCategoryId==""){
     this.currentForm.reset();
    }
@@ -88,12 +88,12 @@ export class AddQuestionBankCategoryComponent implements OnInit {
   }
   
  
-  loadQuestionBankCategoryDetails() {
+  populate() {
     this.questionBankCategoryService.getQuestionBankCategoryDetails(this.QuestionBankCategoryId).subscribe(
       res => {
-        var response =<BaseResponseModel>res;
+        var response =res;
         if (response.isSuccess) {
-          this.QuestionBankCategory = response.data;
+          this.QuestionBankCategory =<IQuestionBankCategoriesModel> response.data;
           this.f.nameAr.setValue(this.QuestionBankCategory?.arabCatgName);
       this.f.nameEn.setValue(this.QuestionBankCategory?.engCatgName);
         }

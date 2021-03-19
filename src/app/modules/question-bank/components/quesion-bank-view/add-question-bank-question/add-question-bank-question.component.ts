@@ -54,7 +54,7 @@ export class AddQuestionBankQuestionComponent implements OnInit {
     if (this.selectedQuestionId !== "" ) {
       this.Title = "Edit QuestionBankQuestion";
       this.isAdd=false;
-     this.loadQuestionBankQuestionDetails() ;
+     this.populate() ;
     } 
     else {
       this.Title = "Add QuestionBankQuestion";
@@ -67,7 +67,7 @@ export class AddQuestionBankQuestionComponent implements OnInit {
     this.currentForm.reset();
     this.questionBankQuestionId=this.selectedQuestionId||"";
     if( this.questionBankQuestionId!="")
-    {this.loadQuestionBankQuestionDetails() ;}
+    {this.populate() ;}
    if( this.questionBankQuestionId==""){
     this.currentForm.reset();
    }
@@ -91,16 +91,16 @@ export class AddQuestionBankQuestionComponent implements OnInit {
         AnswerEn : ['', [Validators.required, Validators.pattern(englishWordPattern)]],
       })
   }
-  loadQuestionBankQuestionDetails() {
+  populate() {
     this.resultMessage = {
       message:'',
       type: ''
     }
     this.questionBankQuestionService.getQuestionBankQuestionDetails(this.questionBankQuestionId).subscribe(
       res => {
-        var response =<BaseResponseModel>res;
+        var response =res;
         if (response.isSuccess) {
-          this.questionBankQuestions = response.data;
+          this.questionBankQuestions = <IQuestionBankQuestionsModel>response.data;
           this.QBCid=this.questionBankQuestions?.categoryId;
           this.f.QuestioAr.setValue(this.questionBankQuestions?.arabQuestion);
           this.f.QuestionEn.setValue(this.questionBankQuestions?.engQuestion);
