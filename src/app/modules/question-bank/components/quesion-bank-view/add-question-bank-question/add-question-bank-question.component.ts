@@ -35,6 +35,8 @@ export class AddQuestionBankQuestionComponent implements OnInit {
    @Output() closeQuestionForm = new EventEmitter<boolean>();
    resultMessage:BaseMessageModel = {};
    disableSaveButtons = false;
+  //  @Output() isQuestionSave = new EventEmitter<{}>();
+  @Output() isQuestionSave = new EventEmitter<boolean>();
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
     private activeroute: ActivatedRoute, 
     private router: Router,
@@ -139,6 +141,7 @@ export class AddQuestionBankQuestionComponent implements OnInit {
               message:res.message||"",
               type: BaseConstantModel.SUCCESS_TYPE
             }
+            this.loodQuestionsListAfterAdd();
           }
           else {
             // this.errorMessage = res.message;
@@ -172,9 +175,7 @@ export class AddQuestionBankQuestionComponent implements OnInit {
               message:res.message||"",
               type: BaseConstantModel.SUCCESS_TYPE
             }
-            // setTimeout(() => {
-            //   this.router.navigateByUrl('/question-bank-question-details/question-bank-question-details/'+this.QuestionBankQuestionId);
-            // }, 1500)
+            this.loodQuestionsListAfterAdd();
           }
           else {
             //this.errorMessage = res.message;
@@ -200,5 +201,10 @@ export class AddQuestionBankQuestionComponent implements OnInit {
   }
   backListQuestio(){
     this.closeQuestionForm?.emit(false);
+  }
+  loodQuestionsListAfterAdd(){
+
+    // this.isQuestionSave.emit({isSave:isSave,catogeryId:catogeryId});
+    this.isQuestionSave.emit(true);
   }
 }

@@ -102,19 +102,6 @@ langEnum = LanguageEnum;
     this.questionBankCategoryFilter.take =  100;
     this.getQuestionBankCategories();
   }
-
-//   delete_Categor(id?:string) {
-//     this.questionBankCategoryService.deleteQuestionBankCategory(id||'').subscribe(
-//       res => {
-// alert("تم الحذف")
-        
-//         this.getQuestionBankCategories();
-//       }, error => {
-
-//       }
-//     )
-  
-//   }
   ChangCTg(categoryId:string) {
     this.router.navigateByUrl('/questionBank/question-bank-questions-view/'+categoryId);
    }

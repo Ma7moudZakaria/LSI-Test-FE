@@ -19,6 +19,7 @@ export class QuesionBankViewComponent implements OnInit {
   submitSuccess:any;
   showAddCategoryForm = false;
   addCategory=false;
+  isQuestionSave=false;
   constructor(public translate: TranslateService,
     private languageService: LanguageService) {
    }
@@ -44,6 +45,7 @@ export class QuesionBankViewComponent implements OnInit {
   loadSelectedQuesion(event:any){
    this.selectedQuestionId = event;
    this.showAddQuestionForm =true;
+   this.isQuestionSave=false;
   }
 
   setSelectedCategory(event:any){
@@ -66,6 +68,9 @@ export class QuesionBankViewComponent implements OnInit {
   }
   loadListAfterAddCategory(event:any){
     this.addCategory=event;
+  }
+  loadListAfterAddQuestion(){
+    this.isQuestionSave=true;
   }
   closeAddCategoryForm(){
     this.showAddCategoryForm = false;

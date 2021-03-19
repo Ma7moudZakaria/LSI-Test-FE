@@ -19,12 +19,14 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   questionBankQuestionList: IQuestionBankQuestionsModel[] = [];
   questionBankQuestionFilter: IQuestionBankQuestionsFilterRequest = {};
   @Input() selectedCategoryId={id:'',arabCatgName:'',engCatgName:''}; 
-  @Output() selectedQuestionId = new EventEmitter<string>();;
+  @Output() selectedQuestionId = new EventEmitter<string>();
   @Output() isViewAdd = new EventEmitter<boolean>();
+  // @Input() isQuestionSave={isSave:false,catogeryId:''}; 
+  @Input() isQuestionSave?:boolean; 
   panelOpenState = false;
   currentlyOpenedItemIndex = -1;
   langEnum = LanguageEnum;
-
+  isSave=false;
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
      public translate: TranslateService,public dialog: MatDialog) {
       }
@@ -33,8 +35,13 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
     this.getQuestionBankQuestions()
   }
   ngOnChanges(changes: any) {
+    if(this.isQuestionSave===true){ this.getQuestionBankQuestions(this.selectedCategoryId.id);}
+    if(changes.selectedCategoryId?.currentValue.id!==undefined)
+   {
     this.getQuestionBankQuestions(changes.selectedCategoryId.currentValue.id);
     this.selectedCategoryId.id=changes.selectedCategoryId.currentValue.id;
+   }
+  
   }
   searchQuestions(Questions?:string){
     this.questionBankQuestionList=[];

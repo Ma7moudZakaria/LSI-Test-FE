@@ -8,7 +8,7 @@
             </app-question-bank-categories-view>
         </div>
         <div class="col-lg-9  col-md-9 col-sm-12 pl-0">
-            <app-question-bank-questions-view [selectedCategoryId]="selectedCategoryId" (selectedQuestionId)="loadSelectedQuesion($event)"> 
+            <app-question-bank-questions-view [selectedCategoryId]="selectedCategoryId" (selectedQuestionId)="loadSelectedQuesion($event)" [isQuestionSave]="isQuestionSave"> 
             </app-question-bank-questions-view>
 
         </div>
@@ -17,7 +17,7 @@
 
     <div class="overlay" *ngIf="showAddQuestionForm">
         <!-- <a  class="closebtn" (click)="closeAddQuestionForm()">&times;</a> -->
-        <app-add-question-bank-question [selectedCategoryId]="categoryId"  [selectedQuestionId]="selectedQuestionId"  (submitSuccess)="closeAddQuestionFormAfterSave($event)" (closeQuestionForm)="closeAddQuestionForm()">
+        <app-add-question-bank-question [selectedCategoryId]="categoryId"  [selectedQuestionId]="selectedQuestionId"  (submitSuccess)="closeAddQuestionFormAfterSave($event)" (closeQuestionForm)="closeAddQuestionForm()" (isQuestionSave)="loadListAfterAddQuestion()" > 
         </app-add-question-bank-question>
     </div> 
 
