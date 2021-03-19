@@ -43,7 +43,7 @@ clickChangeCtogry:string="";
 resultMessage:BaseMessageModel = {};
 disableSaveButtons = false;
 langEnum = LanguageEnum;
-@Input() addCategory?:boolean; 
+@Input() addCategory=false; 
   constructor(private questionBankCategoryService: QuestionBankCategoryService,
     private activeroute: ActivatedRoute, 
     private router: Router, public translate: TranslateService,private fb: FormBuilder,public dialog: MatDialog) { 
@@ -55,6 +55,9 @@ langEnum = LanguageEnum;
     this.getQuestionBankCategories()
     this.buildForm();
     if(this.addCategory===true){  this.getQuestionBankCategories();}
+  }
+  ngOnChanges(changes: any) {
+    if(this.addCategory==true){  this.getQuestionBankCategories();}
   }
   get f() {
     return this.currentForm?.controls;

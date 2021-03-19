@@ -172,7 +172,7 @@ export class AddQuestionBankCategoryComponent implements OnInit {
   }
   loodCategoryList(){
 
-    this.addCategory?.emit(true);
+    this.addCategory.emit(true);
   }
   backListCatogry(){
     this.closeCategoryForm?.emit(false);
