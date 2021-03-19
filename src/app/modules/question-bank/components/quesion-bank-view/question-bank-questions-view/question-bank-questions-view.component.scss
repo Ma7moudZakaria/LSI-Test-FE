@@ -111,6 +111,18 @@ opacity: 1;
   float: right !important;
   padding-right: .75rem;
 }
+
+.span_icon:lang(ar){
+  float: left !important;
+  text-align: left;
+
+
+}
+.span_icon:lang(en){
+  float: right !important;
+
+  text-align: right;
+}
 .search_group{
   //margin-top: 2rem;
   //margin-bottom: 2rem;
