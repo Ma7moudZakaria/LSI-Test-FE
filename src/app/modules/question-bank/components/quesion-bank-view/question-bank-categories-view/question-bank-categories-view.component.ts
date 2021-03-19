@@ -43,7 +43,7 @@ clickChangeCtogry:string="";
 resultMessage:BaseMessageModel = {};
 disableSaveButtons = false;
 langEnum = LanguageEnum;
-
+@Input() addCategory?:boolean; 
   constructor(private questionBankCategoryService: QuestionBankCategoryService,
     private activeroute: ActivatedRoute, 
     private router: Router, public translate: TranslateService,private fb: FormBuilder,public dialog: MatDialog) { 
@@ -54,6 +54,7 @@ langEnum = LanguageEnum;
   ngOnInit(): void {
     this.getQuestionBankCategories()
     this.buildForm();
+    if(this.addCategory===true){  this.getQuestionBankCategories();}
   }
   get f() {
     return this.currentForm?.controls;

@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-12 pl-0">
-            <app-question-bank-categories-view (selectedCategoryId)="setSelectedCategory($event)" (inputCategoryId)="setInputCategoryId($event)"  >
+            <app-question-bank-categories-view (selectedCategoryId)="setSelectedCategory($event)" (inputCategoryId)="setInputCategoryId($event)" [addCategory]="addCategory" >
             </app-question-bank-categories-view>
         </div>
         <div class="col-lg-9  col-md-9 col-sm-12 pl-0">
@@ -23,7 +23,7 @@
 
     <div class="overlay" *ngIf="showAddCategoryForm">
         <!-- <a  href="javascript:void(0)" class="closebtn" (click)="closeAddCategoryForm()">&times;</a> -->
-        <app-add-question-bank-category [inputCategoryId]="inputCategoryId"  (submitSuccess)="closeAddCategoryFormAfterSave($event)" (closeCategoryForm)="closeAddCategoryForm()" >
+        <app-add-question-bank-category [inputCategoryId]="inputCategoryId"  (submitSuccess)="closeAddCategoryFormAfterSave($event)" (closeCategoryForm)="closeAddCategoryForm()" (addCategory)="loadListAfterAddCategory($event)">
         </app-add-question-bank-category>
     </div>
 </div>
