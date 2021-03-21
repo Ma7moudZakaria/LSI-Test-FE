@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IContentManagementCreat } from 'src/app/core/interfaces/content-management-interfaces/icontent-management-creat';
 import { IContentManagementUpdate } from 'src/app/core/interfaces/content-management-interfaces/icontent-management-update';
 import { IContentManagement } from 'src/app/core/interfaces/content-management-interfaces/icontentmanagement';
@@ -35,6 +36,8 @@ export class ContentManagementSystemComponent implements OnInit {
   typeId?:string='';
   contentmanagementsystemUpdate: IContentManagementUpdate={};
   contentmanagementCreat:IContentManagementCreat={};
+  langEnum = LanguageEnum;
+
   constructor(
     private route: ActivatedRoute, private fb: FormBuilder,
     private contentmanagementService:ContentManagementService,

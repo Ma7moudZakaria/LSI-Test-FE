@@ -1,20 +1,18 @@
 
  
   
-<div class="list-group list-group_program-list">
+<div class="list-group list-category">
   <div class="d-flex justify-content-between">
   <p class="mb-4 p_header">{{'QUESTION_BANK.DEPARTMENTS' | translate}}</p>
   <br/>
   <a [routerLink]="" (click)="newCatogry()">
-      <span class="link_Add ">  {{ 'QUESTION_BANK.ADD_QUESTION' | translate }}
+      <span class="link_Add ">  {{ 'QUESTION_BANK.ADD_DEPARTMENT' | translate }}
       <img  src="../../../../../../assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
     </span>
   </a> 
 </div>
-<div class="d-flex justify-content-between">
-
- 
-      <div class="input-group ">
+<div class="d-flex justify-content-between"  *ngIf="translate.currentLang===langEnum.ar">
+      <div class="input-group">
           <div class="input-group-prepend">
               <span class="input-group-text bg-white pl-2 pr-2 border-md border-right-0">
                
@@ -26,17 +24,27 @@
           placeholder="{{'QUESTION_BANK.SEARCH' | translate}}" name="search"#text >
          
       </div>
-      <!-- <img src="../../../../../../assets/images/sort.svg" alt="" 
-      class="mt-10 cursor-pointer Catogry_Icon_Sort" 
-      /> -->
+</div>
+<div class="d-flex justify-content-between"  *ngIf="translate.currentLang===langEnum.en" > 
+  <div class="input-group">
+    <input type="text"
+    class=" px-3 form-control UserLogin__FormControl bg-white border-right-0 border-md input-sm"
+    placeholder="{{'QUESTION_BANK.SEARCH' | translate}}" name="search"#text >
+      <div class="input-group-prepend">
+          <span class="input-group-text bg-white pl-2 pr-2 border-md border-left-0">
+           
+              <img  class="UserLogin_icon_input" src="../../../../../../assets/images/search-ired.svg" (click)=" getQuestionBankCategories(text.value)">
+          </span>
+      </div>
+  </div>
 </div>
 
  <div class="internal_scroll_list_group ">
   <a class="list-group-item d-flex" *ngFor="let QBC  of questionBankCategoryList ; let i=index;" 
     [class.active]="selectedIndex === i" 
-    (click)="loadCatogryQuiestion(QBC.id);selectedIndex=i">
+    (click)="loadCatogryQuiestion(QBC.id,QBC.arabCatgName,QBC.engCatgName);selectedIndex=i">
      
-        <span>{{translate.currentLang==='en'?QBC.engCatgName:QBC.arabCatgName}}</span>
+        <span>{{translate.currentLang===langEnum.en?QBC.engCatgName:QBC.arabCatgName}}</span>
         <span>
            <a (click)="confirmDialog(QBC.id)" > <i class="far fa-trash-alt"></i></a> 
            <a (click)="loadCatogry(QBC.id) "> <i class="fas fa-pencil-alt"></i></a> 

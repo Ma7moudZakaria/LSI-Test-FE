@@ -35,6 +35,8 @@ export class AddQuestionBankQuestionComponent implements OnInit {
    @Output() closeQuestionForm = new EventEmitter<boolean>();
    resultMessage:BaseMessageModel = {};
    disableSaveButtons = false;
+  //  @Output() isQuestionSave = new EventEmitter<{}>();
+  @Output() isQuestionSave = new EventEmitter<boolean>();
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
     private activeroute: ActivatedRoute, 
     private router: Router,
@@ -52,7 +54,7 @@ export class AddQuestionBankQuestionComponent implements OnInit {
     if (this.selectedQuestionId !== "" ) {
       this.Title = "Edit QuestionBankQuestion";
       this.isAdd=false;
-     this.loadQuestionBankQuestionDetails() ;
+     this.populate() ;
     } 
     else {
       this.Title = "Add QuestionBankQuestion";
@@ -65,7 +67,7 @@ export class AddQuestionBankQuestionComponent implements OnInit {
     this.currentForm.reset();
     this.questionBankQuestionId=this.selectedQuestionId||"";
     if( this.questionBankQuestionId!="")
-    {this.loadQuestionBankQuestionDetails() ;}
+    {this.populate() ;}
    if( this.questionBankQuestionId==""){
     this.currentForm.reset();
    }
@@ -89,16 +91,16 @@ export class AddQuestionBankQuestionComponent implements OnInit {
         AnswerEn : ['', [Validators.required, Validators.pattern(englishWordPattern)]],
       })
   }
-  loadQuestionBankQuestionDetails() {
+  populate() {
     this.resultMessage = {
       message:'',
       type: ''
     }
     this.questionBankQuestionService.getQuestionBankQuestionDetails(this.questionBankQuestionId).subscribe(
       res => {
-        var response =<BaseResponseModel>res;
+        var response =res;
         if (response.isSuccess) {
-          this.questionBankQuestions = response.data;
+          this.questionBankQuestions = <IQuestionBankQuestionsModel>response.data;
           this.QBCid=this.questionBankQuestions?.categoryId;
           this.f.QuestioAr.setValue(this.questionBankQuestions?.arabQuestion);
           this.f.QuestionEn.setValue(this.questionBankQuestions?.engQuestion);
@@ -139,6 +141,7 @@ export class AddQuestionBankQuestionComponent implements OnInit {
               message:res.message||"",
               type: BaseConstantModel.SUCCESS_TYPE
             }
+            this.loodQuestionsListAfterAdd();
           }
           else {
             // this.errorMessage = res.message;
@@ -172,9 +175,7 @@ export class AddQuestionBankQuestionComponent implements OnInit {
               message:res.message||"",
               type: BaseConstantModel.SUCCESS_TYPE
             }
-            // setTimeout(() => {
-            //   this.router.navigateByUrl('/question-bank-question-details/question-bank-question-details/'+this.QuestionBankQuestionId);
-            // }, 1500)
+            this.loodQuestionsListAfterAdd();
           }
           else {
             //this.errorMessage = res.message;
@@ -200,5 +201,10 @@ export class AddQuestionBankQuestionComponent implements OnInit {
   }
   backListQuestio(){
     this.closeQuestionForm?.emit(false);
+  }
+  loodQuestionsListAfterAdd(){
+
+    // this.isQuestionSave.emit({isSave:isSave,catogeryId:catogeryId});
+    this.isQuestionSave.emit(true);
   }
 }

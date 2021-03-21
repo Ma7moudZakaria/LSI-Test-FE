@@ -12,10 +12,18 @@
     background: #FBFBFB 0% 0% no-repeat padding-box;
     border: 1px solid #FBFBFB;
     opacity: 1;
-    text-align: right;
     padding: 1rem;
     padding-top: 3rem;   
 }
+
+.material-form:lang(ar){
+    text-align: right;
+}
+
+.material-form:lang(en){
+    text-align: left;
+}
+
 .custom-file{
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 3px dashed #DFDFDF;
@@ -42,8 +50,6 @@ label{
           letter-spacing: 0px;
           color: #3A3A3A;
           opacity: 1;
-      
-
 }
 
 .save-btn{

@@ -2,7 +2,7 @@
   <div class="col-6  pr-0 pl-0">
     <p class="mb-4 title_material-list" *ngIf="program">
       {{
-        translate.currentLang === 'ar' ?  program.arabName : program.engName
+        translate.currentLang === langEnum.ar ?  program.arabName : program.engName
       }}
     </p>
     <p class="mb-4 title_material-list" *ngIf="program === undefined">
@@ -38,9 +38,9 @@
         <span *ngIf="item.categoryId == plansId"> <img calss="" src="assets/images/scientificMaterial/Group 18138.svg" alt=""></span>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-8">
-        <p class="cat">{{translate.currentLang === 'en' ? item.matrialCategoryEn : item.matrialCategoryAr }}</p>
-        <p> {{ translate.currentLang ==='en' ? item.matrialTitleEn : item.matrialTitleAr}}</p>
-        <h3>{{translate.currentLang === 'en'  ? item.matrialTitleEn : item.matrialTitleAr}}</h3>
+        <p class="cat">{{translate.currentLang === langEnum.en ? item.matrialCategoryEn : item.matrialCategoryAr }}</p>
+        <p> {{ translate.currentLang === langEnum.en ? item.matrialTitleEn : item.matrialTitleAr}}</p>
+        <h3>{{translate.currentLang === langEnum.en  ? item.matrialTitleEn : item.matrialTitleAr}}</h3>
       </div>
       <div class="col-lg-1 col-md-1 col-sm-4 mt-4" (click)="loadMaterial(item.id || '')">
         <span> <img  class="size_icon" src="assets/images/scientificMaterial/Icon feather-edit-3.svg" alt=""></span>

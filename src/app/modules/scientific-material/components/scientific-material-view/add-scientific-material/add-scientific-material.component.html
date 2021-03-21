@@ -46,7 +46,7 @@
                 <select class="form-control" formControlName="matrialCategory" name="matrialCategory">
                     <option value="">{{'SCIENTIFIC_MATERIAL.SELECTOPTION' | translate}}</option>
                     <option *ngFor="let item of materialCategoriesLookup" value="{{item.id}}">
-                        {{translate.currentLang === 'en' ? item.nameEn: item.nameAr}}
+                        {{translate.currentLang === langEnum.en ? item.nameEn: item.nameAr}}
                     </option>
                 </select>
             </div>
