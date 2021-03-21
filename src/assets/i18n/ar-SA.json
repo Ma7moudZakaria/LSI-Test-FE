@@ -75,6 +75,7 @@
     "INACTIVE": " غير مفعل",
     "SAVE": "حفظ",
     "CANCEL": "إلغاء",
+    "CLOSE":"إغلاق",
     "REQUIRED": "هذا الحقل مطلوب",
     "TITLEARPATTERN": "يرجى إدخال حروف عربى فقط",
     "TITLEARMAXLENGTH": "يرجى إدخال اسم اقل من 50 حرف",

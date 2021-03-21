@@ -11,7 +11,7 @@
     </div>
 
 <div class="overlay" *ngIf="showMaterialForm">
-    <a href="javascript:void(0)" class="closebtn" (click)="closeMaterialForm()">&times;</a>
+    <!-- <a href="javascript:void(0)" class="closebtn" (click)="closeMaterialForm()">&times;</a> -->
     <app-add-scientific-material [selectedMaterialId]="selectedMaterialId"
         (submitSuccess)="closeMaterialFormAfterSave($event)"></app-add-scientific-material>
 </div>

@@ -279,7 +279,7 @@ export class AddScientificMaterialComponent implements OnInit {
               message: res.message,
               type: BaseConstantModel.SUCCESS_TYPE
             }
-            this.closeForm();
+            //this.closeForm();
           }
           else {
             this.isSubmit = false;
@@ -316,7 +316,7 @@ export class AddScientificMaterialComponent implements OnInit {
               message: res.message,
               type: BaseConstantModel.SUCCESS_TYPE
             }
-            this.closeForm();
+            //this.closeForm();
           }
           else {
             this.isSubmit = false;
@@ -367,8 +367,9 @@ export class AddScientificMaterialComponent implements OnInit {
   }
 
   closeForm() {
-    setTimeout(() => {
-      this.submitSuccess?.emit(true);
-    }, 2000);
+    this.submitSuccess?.emit(true);
+    // setTimeout(() => {
+    //   this.submitSuccess?.emit(true);
+    // }, 2000);
   }
 }

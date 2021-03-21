@@ -78,6 +78,7 @@
     "INACTIVE": "InActive",
     "SAVE": "Save",
     "CANCEL": "Cancel",
+    "CLOSE":"Close",
     "REQUIRED": "This Field Is Required.",
     "TITLEARPATTERN": "Please insert arabict text only.",
     "TITLEARMAXLENGTH": "Title Must be less than 50 character",

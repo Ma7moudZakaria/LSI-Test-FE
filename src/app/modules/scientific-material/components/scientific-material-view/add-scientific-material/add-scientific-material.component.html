@@ -152,8 +152,8 @@
                 {{'SCIENTIFIC_MATERIAL.SAVE' | translate}}
             </button>
             <button type="reset" class="cancel-btn" [disabled]="disableSaveButtons"
-                (click)="loadScientificMaterialDetails(null)">
-                {{'SCIENTIFIC_MATERIAL.CANCEL' | translate }}
+                (click)="closeForm()">
+                {{'SCIENTIFIC_MATERIAL.CLOSE' | translate }}
             </button>
 
             <div *ngIf="resMessage" class="alert alert-{{ resMessage.type }} my-4 py-2">
