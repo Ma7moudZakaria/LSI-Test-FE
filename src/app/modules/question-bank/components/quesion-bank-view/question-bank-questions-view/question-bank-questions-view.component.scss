@@ -153,10 +153,51 @@ opacity: 1;
   margin-left: 0.2rem;
 
 }
+// Background border
+::ng-deep .mat-checkbox .mat-checkbox-frame {
+  border-color: #8e2520;
+  // background-color: #ffffff;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 3px solid #8e2520;
+  border-radius: 5px;
+  opacity: 1;
+}
+///
+::ng-deep .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+::ng-deep 
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color:#8e2520;
+
+}
+
+::ng-deep .mat-checkbox:hover {
+  ::ng-deep .mat-checkbox-frame {
+      border-color: #8e2520 !important; //what ever color you want
+  }
+}
 .chicx_box:lang(ar){
   float: right;
 }
 .chicx_box:lang(en){
   float: left;
+}
+
+
+
+
+.no-data{
+  font: normal normal  1.25rem Almarai;
+    color:black; 
+    margin-bottom: 1rem;
+}
+.no-data:lang(en){
+  text-align: left;
+  padding-top: 2rem;
+ padding-left: 7rem;
+}
+.no-data:lang(ar){
+  text-align: right ;
+  padding-top: 2rem;
+  padding-right: 7rem;
 }
 
