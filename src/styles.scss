@@ -243,8 +243,8 @@ select.form-control {
 }
 
 .plus-btn {
-  left: 5px;
-  top: 5px;
+  // left: 5px;
+  // top: 5px;
   z-index: 6;
 
   button {
@@ -255,8 +255,8 @@ select.form-control {
 
 .badges {
   .badge-info {
-    background-color: rgb(63, 155, 200, .2);
-    color: $info-color;
+    background-color: $gray-300;
+    color: $user-color;
     font-size: 18px;
     font-family: gulf-thin;
     margin-left: 10px;

@@ -159,8 +159,8 @@ export class AddScientificMaterialComponent implements OnInit {
   }
 
   buildForm() {
-    const arabicPattern = '^[\u0600-\u06FF\\\\()-/_]+$';
-    const engPattern = '^[a-zA-Z()-\\\\/_]+$';
+    const engPattern ="^[a-zA-Z0-9' '-'\s]{1,40}$";
+    const arabicPattern = "^[\u0621-\u064A\u0660-\u0669 0-9]+$";
     this.currentForm = this.fb.group(
       {
         matrialTitleAr: ['', [Validators.required, Validators.maxLength(50), Validators.pattern(arabicPattern)]],
@@ -345,17 +345,10 @@ export class AddScientificMaterialComponent implements OnInit {
   }
   addProgram() {
     if (!this.currentForm.value.programMatrial) {
-      if (this.translate.currentLang == this.langEnum.ar) {
         this.programMessage = {
-          message: "برجاء اختيار  برنامج ",
+          message: this.translate.instant('SCIENTIFIC_MATERIAL.Select_Program'),
           type: BaseConstantModel.DANGER_TYPE
-        }
-      } else {
-        this.programMessage = {
-          message: "Please select program",
-          type: BaseConstantModel.DANGER_TYPE
-        }
-      }
+        }      
       return;
     }
     this.programMessage = {};

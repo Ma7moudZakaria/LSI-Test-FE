@@ -63,8 +63,8 @@
     "SELECTOPTION": "اختر من القائمة",
     "PROGRAMS": "البرامج",
     "CATEGORY": "الفئة",
-    "TITLEAR": "الأسم العربى",
-    "TITLEEN": "الأسم الإنجليزى",
+    "TITLEAR": "الاسم العربى",
+    "TITLEEN": "الاسم الإنجليزى",
     "FILE_URL": "رابط الملف",
     "CHOOSEFILE": "إختر الملفات لرفعها / إسحبها وضعها هنا",
     "MATERIALAVAILABILITY": "إتاحة المادة العلمية",
@@ -81,7 +81,8 @@
     "TITLEENPATTERN": "يرجى إدخال حروف إنجليزى فقط",
     "TITLEENMAXLENGTH": "يرجى إدخال أسم اقل من 50 حرف",
     "Confirm_Delete": "حذف المادة",
-    "Delete_Message" : "هل أنت متأكد من حذف المادة؟"
+    "Delete_Message" : "هل أنت متأكد من حذف المادة؟",
+    "Select_Program" : "برجاء اختيار  برنامج"
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "البرامج",
