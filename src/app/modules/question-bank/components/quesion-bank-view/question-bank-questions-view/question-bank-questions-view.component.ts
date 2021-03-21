@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { IQuestionBankQuestionUpdateModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-question-update-model';
 import { IQuestionBankQuestionsFilterRequest } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-filter-request';
 import { IQuestionBankQuestionsModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
@@ -27,6 +28,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   currentlyOpenedItemIndex = -1;
   langEnum = LanguageEnum;
   isSave=false;
+
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
      public translate: TranslateService,public dialog: MatDialog) {
       }
@@ -126,5 +128,23 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
     if(this.currentlyOpenedItemIndex === itemIndex) {
       this.currentlyOpenedItemIndex = -1;
     }
+  }
+  onCheckboxChange(questionBankQuestionUpdate: IQuestionBankQuestionUpdateModel){
+
+    //console.log(questionBankQuestionUpdate);
+
+    this.questionBankQuestionService.UpdateQuestionBankQuestion(questionBankQuestionUpdate).subscribe(res => {
+      if (res.isSuccess) {
+    
+      }
+      else {
+       
+      }
+      
+    },
+      error => {
+     
+      })
+
   }
 }

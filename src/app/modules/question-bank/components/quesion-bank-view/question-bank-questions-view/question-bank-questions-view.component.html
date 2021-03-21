@@ -55,9 +55,16 @@
             <mat-accordion>
                 <mat-expansion-panel *ngFor="let QBQ of questionBankQuestionList; let i = index;"
                     (opened)="setOpened(i)" (closed)="setClosed(i)">
+                   
                     <mat-expansion-panel-header>
+                        
                         <mat-panel-title class="qestionHeader">
-                            <div class="col-11 span_question" >
+                            <div class="col-.5  form-check" style="text-align: right;">
+                                <input class="form-check-input" type="checkbox" [(ngModel)]="QBQ.isActive" id="flexCheckIndeterminate" (change)="onCheckboxChange(QBQ)" >
+                               
+                              </div>
+                            <div class="col span_question" >
+                               
                                 <span>
                                     {{this.translate.currentLang===langEnum.en?QBQ.engQuestion:QBQ.arabQuestion}}
                                 </span> 
