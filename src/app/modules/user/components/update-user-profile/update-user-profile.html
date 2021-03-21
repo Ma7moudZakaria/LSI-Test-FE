@@ -9,8 +9,10 @@
                     <img class="img_profile" [src]="userProfileDetails?.proPic">
                     <input type="file" style="display: none;" #fileInput
                         (change)="onFileChange($any($event.target).files)">
-                    <a class="custom_file_input" (click)="fileInput.click()"
-                        id="upload_link">{{'UPDATE_USER_PG.CHANGE_PIC' | translate}}</a>
+                    <a class="custom_file_input" (click)="fileInput.click()" style="text-decoration: none;" id="upload_link">
+                        <!-- {{'UPDATE_USER_PG.CHANGE_PIC' | translate}} -->
+                        <img src="assets/images/update-user/UploadImage.svg"/>
+                    </a>
                 </div>
 
                 <div class="internal_scroll">

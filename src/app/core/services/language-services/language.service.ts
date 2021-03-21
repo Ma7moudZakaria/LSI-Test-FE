@@ -13,6 +13,7 @@ import { AuthService } from '../auth-services/auth.service';
 export class LanguageService {
 
   currentUser:Iuser | undefined
+  // headerPageNameEvent: any;
   currentLanguageEvent = new EventEmitter<LanguageEnum>();
   headerPageNameEvent = new EventEmitter<string>();
 

@@ -372,12 +372,12 @@ export class UpdateUserProfileComponent implements OnInit {
     if (!this.profileForm.value.userSheikhs) {
       if (this.translate.currentLang == 'ar') {
         this.shiekhsMessage = {
-          message:  "برجاء اختيار  شيخ ",
+          message: this.translate.instant('UPDATE_USER_PG.CHOOSE_SHEIKHS'),
           type: BaseConstantModel.DANGER_TYPE
         }
       } else {
         this.shiekhsMessage = {
-          message: "Please select shiekh",
+          message: this.translate.instant('UPDATE_USER_PG.CHOOSE_SHEIKHS'),
           type: BaseConstantModel.DANGER_TYPE
         }
       }
@@ -404,12 +404,12 @@ export class UpdateUserProfileComponent implements OnInit {
     if (!this.profileForm.value.userArchives) {
       if (this.translate.currentLang == 'ar') {
         this.archiveMessage = {
-          message: "برجاء اختيار  مادة علمية ",
+          message: this.translate.instant('UPDATE_USER_PG.ASRCHIVE'),
           type: BaseConstantModel.DANGER_TYPE
         }
       } else {
         this.archiveMessage = {
-          message: "Please select asrchive",
+          message: this.translate.instant('UPDATE_USER_PG.ASRCHIVE'),
           type: BaseConstantModel.DANGER_TYPE
         }
       }
@@ -433,12 +433,12 @@ export class UpdateUserProfileComponent implements OnInit {
     if (!this.profileForm.value.userCourses) {
       if (this.translate.currentLang == 'ar') {
         this.coursesMessage = {
-          message: "برجاء اختيار  تدريب ",
+          message: this.translate.instant('UPDATE_USER_PG.COURSE'),
           type: BaseConstantModel.DANGER_TYPE
         }
       } else {
         this.coursesMessage = {
-          message: "Please select course",
+          message: this.translate.instant('UPDATE_USER_PG.COURSE'),
           type: BaseConstantModel.DANGER_TYPE
         }
       }
