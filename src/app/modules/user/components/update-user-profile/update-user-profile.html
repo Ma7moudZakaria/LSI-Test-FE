@@ -30,6 +30,7 @@
 
                                 <div *ngIf="f.firstName.errors && (f.firstName.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
+
                                     <div *ngIf="f.firstName.errors?.required">
                                         {{ 'UPDATE_USER_PG.NAME_REQUIRED' | translate }}
                                     </div>
@@ -112,7 +113,6 @@
                             </div>
                         </div>
                     </div>
-
 
                     <div class="col-4 mt-4 mb-3 pl-0 pr-0 mt-3 mb-4 border_bottom">
                         <label class="UpdateUser__Label"> {{ 'UPDATE_USER_PG.CONTACT_INFO' | translate }} </label>
@@ -234,52 +234,50 @@
                                 </div>
                             </div>
                             
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 pr-0">
-                        <div class="row pl-0 pr-0">
-                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                            <label class="Register__Label" for="quraanMemorization"> {{ 'UPDATE_USER_PG.AMOUNT_QURAN' | translate }} </label>
-                            <select class="UpdateUser__Options" name="nameEn" formControlName="quraanMemorization">
-                                <option *ngFor="let amount of quraanParts; let i = index" [value]="i+1">
-                                    {{i+1}}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <label class="Register__Label" for="educationalLevel"> {{ 'UPDATE_USER_PG.MEMORIES_QURAN' | translate }} </label>
-                            <input type="file" class="form-control UserRegister__FormControl" multiple
-                                id="importFile" (change)="onEjazaFileChange($any($event.target).files)"
-                                placeholder="ارفق اجازة حفظ القران">
-                            <div class="row">
-                                <div class="col-lg-8 col-md-8">
-                                    <ul class="files-conainer">
-                                        <li *ngFor="let item of fileList;let i=index">
-                                            <button (click)="DeleteAttachment(i,item.id)">{{ 'UPDATE_USER_PG.DELETE' | translate }}</button>
-                                            <a class="card" href="{{item.url}}" target="_blank">
-                                                <div class="pdf">
-                                                    <i class="fa fa-file"></i>
-                                                </div>
-                                                <div class="text-center fileName">
-                                                    <p
-                                                        style="text-overflow: ellipsis;overflow: hidden; white-space: nowrap;margin-left: 10px;margin-right: 10px;">
-                                                        {{item.fileName}}</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
+
+                            <div class="col-lg-4 col-md-2 col-sm-2 col-xs-2">
+                                <label class="Register__Label" for="quraanMemorization"> {{ 'UPDATE_USER_PG.AMOUNT_QURAN' | translate }} </label>
+                                <select class="UpdateUser__Options" name="nameEn" formControlName="quraanMemorization">
+                                    <option *ngFor="let amount of quraanParts; let i = index" [value]="i+1">
+                                        {{i+1}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <label class="Register__Label" for="educationalLevel"> {{ 'UPDATE_USER_PG.MEMORIES_QURAN' | translate }} </label>
+                                <input type="file" class="form-control UserRegister__FormControl" multiple
+                                    id="importFile" (change)="onEjazaFileChange($any($event.target).files)"
+                                    placeholder="ارفق اجازة حفظ القران">
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-8">
+                                        <ul class="files-conainer">
+                                            <li *ngFor="let item of fileList;let i=index">
+                                                <button (click)="DeleteAttachment(i,item.id)">{{ 'UPDATE_USER_PG.DELETE' | translate }}</button>
+                                                <a class="card" href="{{item.url}}" target="_blank">
+                                                    <div class="pdf">
+                                                        <i class="fa fa-file"></i>
+                                                    </div>
+                                                    <div class="text-center fileName">
+                                                        <p
+                                                            style="text-overflow: ellipsis;overflow: hidden; white-space: nowrap;margin-left: 10px;margin-right: 10px;">
+                                                            {{item.fileName}}</p>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        </div>
                     </div>
+
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 pr-0">
                         <div class="row pl-0 pr-0">
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                             </div>
                         </div>
                         <div class="row">
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-lg-3 col-md-3">
                                 <label>
                                     {{ 'UPDATE_USER_PG.SHEIKHS_STUDIED' | translate }}
                                     
@@ -287,7 +285,7 @@
                                     <button type="button" tooltipClass="custom-tooltip"
                                         class="btn p-0 d-inline-block btn-link mr-2" placement="left" ngbTooltip="">
                                         <i class="fa  fa-exclamation-circle"></i>
-
+                                        
                                     </button>
                                 </label>
 
@@ -300,14 +298,33 @@
                                                 {{translate.currentLang == langEnum.en ? sheikh.nameEn : sheikh.nameAr}}</option>
                                         </select>
                                         <span class="select-arrow position-absolute">
-                                            <i class="fa fa-angle-down" style="color: inherit;"></i></span>
+                                            <i class="fa fa-angle-down" style="color: inherit;"></i>
+                                            
+                                        </span>
                                     </div>
                                     <span class="plus-btn position-absolute">
-                                        <button class="btn btn-primary btn-add" type="button"
+                                        
+                                        <button class="btn btn-light btn-add" type="button"
                                             (click)="addUserShiekhs()">
-                                            <i class="fa  fa-plus"></i>
+
+                                            <img  src="../../../../../../assets/images/add.svg" class=" cursor-pointer Catogry_Icon_Add">
+                                            <!-- <i class="fa  fa-plus"></i> -->
                                         </button>
                                     </span>
+
+
+                                    <!-- <span class="PlusIcon position-absolute">
+                                        <a style="text-decoration: none;" (click)="addUserShiekhs()">
+                                            <img  src="../../../../../../assets/images/add.svg" class=" cursor-pointer Catogry_Icon_Add">
+                                        </a>
+
+                                         <button class="btn btn-primary btn-add" type="button"
+                                            (click)="addUserShiekhs()">
+
+                                            <img  src="../../../../../../assets/images/add.svg" class=" cursor-pointer Catogry_Icon_Add">
+                                            <i class="fa  fa-plus"></i>
+                                        </button> 
+                                    </span> -->
                                 </div>
                                 <div>
                                     <div *ngIf="shiekhsMessage" class="alert alert-{{ shiekhsMessage.type }} my-4 py-2">
@@ -321,14 +338,14 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-lg-3 col-md-3">
                                 <label>
-                                    المحفوظات العلمية
+
+                                    {{ 'UPDATE_USER_PG.SCIENTIFIC_ARCHIVES' | translate }}
 
                                     <button type="button" tooltipClass="custom-tooltip"
                                         class="btn p-0 d-inline-block btn-link mr-2" placement="left" ngbTooltip="">
                                         <i class="fa  fa-exclamation-circle"></i>
-
                                     </button>
                                 </label>
 
@@ -344,9 +361,12 @@
                                             <i class="fa fa-angle-down" style="color: inherit;"></i></span>
                                     </div>
                                     <span class="plus-btn position-absolute">
-                                        <button class="btn btn-primary btn-add" type="button"
+                                        <button class="btn btn-light btn-add" type="button"
                                             (click)="addUserArchives()">
-                                            <i class="fa  fa-plus"></i>
+                                            <!-- <i class="fa  fa-plus"></i> -->
+
+                                            <img  src="../../../../../../assets/images/add.svg" class=" cursor-pointer Catogry_Icon_Add">
+
                                         </button>
                                     </span>
                                 </div>
@@ -362,9 +382,12 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-lg-3 col-md-3">
                                 <label>
-                                        دورات تدريبية
+                                    
+                                    {{ 'UPDATE_USER_PG.TRAINING_COURSES' | translate }}
+
+                                        
                                     <button type="button" tooltipClass="custom-tooltip"
                                         class="btn p-0 d-inline-block btn-link mr-2" placement="left" ngbTooltip="">
                                         <i class="fa  fa-exclamation-circle"></i>
@@ -384,9 +407,12 @@
                                             <i class="fa fa-angle-down" style="color: inherit;"></i></span>
                                     </div>
                                     <span class="plus-btn position-absolute">
-                                        <button class="btn btn-primary btn-add" type="button"
+                                        <button class="btn btn-light btn-add" type="button"
                                             (click)="addUserCourses()">
-                                            <i class="fa  fa-plus"></i>
+
+                                            <img  src="../../../../../../assets/images/add.svg" class=" cursor-pointer Catogry_Icon_Add">
+
+                                            <!-- <i class="fa  fa-plus"></i> -->
                                         </button>
                                     </span>
                                 </div>

@@ -123,7 +123,9 @@
     "SHEIKHS_STUDIED": "مشايخ درست عليهم",
     "CHOOSE_SHEIKHS":"برجاء اختيار  شيخ ",
     "ASRCHIVE":"برجاء اختيار  مادة علمية",
-    "COURSE":"برجاء اختيار  تدريب"
+    "COURSE":"برجاء اختيار  تدريب",
+    "SCIENTIFIC_ARCHIVES":"المحفوظات العلمية",
+    "TRAINING_COURSES":"دورات تدريبية"
   },
   "QUESTION_BANK": {
     "TITLE":"بنك الأسئلة",
