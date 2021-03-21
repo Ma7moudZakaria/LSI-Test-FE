@@ -125,7 +125,12 @@
     "AMOUNT_QURAN": "The amount of memorization from the Quran",
     "MEMORIES_QURAN": "A license to memorize the Quran",
     "DELETE": "Delete",
-    "SHEIKHS_STUDIED": "Sheikhs I studied on them"
+    "SHEIKHS_STUDIED": "Sheikhs I studied on them",
+    "CHOOSE_SHEIKHS":"Please Choose Sheikh",
+    "ASRCHIVE":"Please select asrchive",
+    "COURSE":"Please select course",
+    "SCIENTIFIC_ARCHIVES":"Scientific Archives",
+    "TRAINING_COURSES":"Training courses"
   },
   "QUESTION_BANK": {
     "TITLE":"Question Bank",
