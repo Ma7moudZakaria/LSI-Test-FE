@@ -81,8 +81,8 @@ export class AddQuestionBankQuestionComponent implements OnInit {
     return this.currentForm?.controls;
   }
   buildForm() {
-    const arabicWordPattern = "^[\u0621-\u064A\u0660-\u0669 ]+$";
-    const englishWordPattern ="^[a-zA-Z' '-'\s]{1,40}$";
+    const arabicWordPattern = "^[\u0621-\u064A\u0660-\u0669 0-9]+$";
+    const englishWordPattern ="^[a-zA-Z0-9' '-'\s]{1,40}$";
     this.currentForm = this.fb.group(
       {
         QuestioAr: ['', [Validators.required, Validators.pattern(arabicWordPattern)]],
