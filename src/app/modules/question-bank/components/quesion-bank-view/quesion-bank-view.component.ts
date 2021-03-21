@@ -9,7 +9,8 @@ import { LanguageService } from 'src/app/core/services/language-services/languag
 })
 export class QuesionBankViewComponent implements OnInit {
   selectedQuestionId:string | undefined;
-  selectedCategoryId:string|undefined;
+  selectedCategoryId={id:'',arabCatgName:'',engCatgName:''}; 
+  categoryId:string|undefined;
   inputCategoryId:string|undefined;
   @Input() isViewAdd?:boolean; 
   @Input() closeCategoryForm?:boolean; 
@@ -17,6 +18,8 @@ export class QuesionBankViewComponent implements OnInit {
   showAddQuestionForm = false;
   submitSuccess:any;
   showAddCategoryForm = false;
+  addCategory=false;
+  isQuestionSave=false;
   constructor(public translate: TranslateService,
     private languageService: LanguageService) {
    }
@@ -42,10 +45,15 @@ export class QuesionBankViewComponent implements OnInit {
   loadSelectedQuesion(event:any){
    this.selectedQuestionId = event;
    this.showAddQuestionForm =true;
+   this.isQuestionSave=false;
   }
 
   setSelectedCategory(event:any){
-    this.selectedCategoryId = event;
+    this.selectedCategoryId = {id:event.id,arabCatgName:event.arabCatgName,engCatgName:event.engCatgName}; 
+  this.categoryId=event.id;
+  this.addCategory=false;
+ this. isQuestionSave=false;
+    
   }
   closeAddQuestionForm(){
     this.showAddQuestionForm = false;
@@ -59,7 +67,12 @@ export class QuesionBankViewComponent implements OnInit {
     this.inputCategoryId = event;
     this.showAddCategoryForm =true;
   }
-
+  loadListAfterAddCategory(event:any){
+    this.addCategory=event;
+  }
+  loadListAfterAddQuestion(){
+    this.isQuestionSave=true;
+  }
   closeAddCategoryForm(){
     this.showAddCategoryForm = false;
   }

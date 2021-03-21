@@ -37,12 +37,13 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
    formImport: FormGroup;
   successMessage?:string;
   isSubmit = false;
-@Output() selectedCategoryId= new EventEmitter<string>();
+@Output() selectedCategoryId= new EventEmitter<{}>();
 @Output() inputCategoryId= new EventEmitter<string>();
 clickChangeCtogry:string="";
 resultMessage:BaseMessageModel = {};
 disableSaveButtons = false;
 langEnum = LanguageEnum;
+@Input() addCategory=false; 
 
   constructor(private questionBankCategoryService: QuestionBankCategoryService,
     private activeroute: ActivatedRoute, 
@@ -54,6 +55,10 @@ langEnum = LanguageEnum;
   ngOnInit(): void {
     this.getQuestionBankCategories()
     this.buildForm();
+    if(this.addCategory===true){  this.getQuestionBankCategories();}
+  }
+  ngOnChanges(changes: any) {
+    if(this.addCategory==true){  this.getQuestionBankCategories();}
   }
   get f() {
     return this.currentForm?.controls;
@@ -76,8 +81,11 @@ langEnum = LanguageEnum;
       let response = <BaseResponseModel>res;
       if (response.isSuccess) {
         this.questionBankCategoryList = response.data;
-        this.loadCatogryQuiestion(this.questionBankCategoryList[0].id);
-        this.selectedIndex=0;
+        if(this.addCategory===false)
+        {this.loadCatogryQuiestion(this.questionBankCategoryList[0].id,this.questionBankCategoryList[0].arabCatgName,this.questionBankCategoryList[0].engCatgName);
+          this.selectedIndex=0;
+        }
+        
       }
       else {
         this.questionBankCategoryList = [];
@@ -95,19 +103,6 @@ langEnum = LanguageEnum;
     this.questionBankCategoryFilter.take =  100;
     this.getQuestionBankCategories();
   }
-
-//   delete_Categor(id?:string) {
-//     this.questionBankCategoryService.deleteQuestionBankCategory(id||'').subscribe(
-//       res => {
-// alert("تم الحذف")
-        
-//         this.getQuestionBankCategories();
-//       }, error => {
-
-//       }
-//     )
-  
-//   }
   ChangCTg(categoryId:string) {
     this.router.navigateByUrl('/questionBank/question-bank-questions-view/'+categoryId);
    }
@@ -221,12 +216,12 @@ this.isAdd=false;
   }
 
   selectedIndex?:Number;
-  loadCatogryQuiestion(id?:string){
-    this.selectedCategoryId?.emit(id);
+  loadCatogryQuiestion(id?:string,arabCatgName?:string,engCatgName?:string){
+    this.selectedCategoryId.emit({id:id,arabCatgName:arabCatgName,engCatgName:engCatgName});
   }
   result: string = '';
- async confirmDialog(id?:string){
-    const message = `Are you sure you want to do this?`;
+  confirmDialog(id?:string){
+    const message =this.translate.currentLang === LanguageEnum.en ?"Are you sure that you want to delete this department":"هل متأكد من حذف هذا القسم";
 
     const dialogData = new ConfirmDialogModel("Confirm Action", message);
 
