@@ -333,3 +333,7 @@ select.form-control {
     .overlay {padding-top: 15px;}
         .sidenav_profile a {font-size: 18px;}
   }
+
+  ::-webkit-scrollbar-thumb{
+    background: $user-color;
+}
