@@ -1,5 +1,5 @@
 export interface IQuestionBankQuestionsFilterRequest {
-    question?:string;
+    text?:string;
     catgyId?:string;
     skip?:number;
     take?:number;
