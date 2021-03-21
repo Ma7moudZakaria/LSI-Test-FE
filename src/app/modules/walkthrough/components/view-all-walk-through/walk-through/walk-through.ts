@@ -235,6 +235,8 @@ export class WalkThroughComponent implements OnInit {
     }
     this.attachmentService.upload(files).subscribe(
       (res: any) => {
+        this.fileList = [];
+        this.attachmentIds =[];
         Array.from(res.data).forEach((elm: any) => {
           this.attachmentIds.push(elm.id);
           this.fileList.push(elm);

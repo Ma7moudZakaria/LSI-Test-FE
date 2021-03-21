@@ -1,7 +1,8 @@
-<form class="form-group material-form" [formGroup]="currentForm" (submit)="submit()" *ngIf="selectedWalkThroughPageId">
+<div class="walk-through">
+    <form class="form-group walk-through-form" [formGroup]="currentForm" (submit)="submit()" *ngIf="selectedWalkThroughPageId">
     <label class="custom-file custom-file__text" for="importFile">
         <span> <img calss="upload-icon" src="assets/images/walk-through/Group 18093.svg" alt="">
-            <p> {{"WALKTHROUGH.UPLOADPIC" | translate}}</p>
+            <p> {{"WALKTHROUGH.UPLOAD_PIC" | translate}}</p>
         </span>
     </label>
     <input type="file" class="custom-file-input" id="importFile" 
@@ -34,7 +35,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="comment">{{"WALKTHROUGH.ARABICMESSAGE" | translate}} </label>
+        <label for="comment">{{"WALKTHROUGH.ARABIC_MESSAGE" | translate}} </label>
         <textarea class="form-control" cols="2" rows="5" id="InputtextAr" formControlName="textAr"></textarea>
         
         <div *ngIf="f.textAr.errors && (f.textAr.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
@@ -42,19 +43,19 @@
                 {{ 'WALKTHROUGH.REQUIRED' | translate }}
             </div>
             <div *ngIf="f.textAr.errors.pattern">
-                {{ 'WALKTHROUGH.TITLEARPATTERN' | translate }}
+                {{ 'WALKTHROUGH.TITLEAR_PATTERN' | translate }}
             </div>
         </div>
     </div>
     <div class="form-group">
-        <label for="comment">{{"WALKTHROUGH.ENGLISHMESSAGE" | translate}} </label>
+        <label for="comment">{{"WALKTHROUGH.ENGLISH_MESSAGE" | translate}} </label>
         <textarea class="form-control" cols="2" rows="5" id="InputtextEn" formControlName="textEn"></textarea>
         <div *ngIf="f.textEn.errors && (f.textEn.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
             <div *ngIf="f.textEn.errors?.required">
                 {{ 'WALKTHROUGH.REQUIRED' | translate }}
             </div>
             <div *ngIf="f.textEn.errors.pattern">
-                {{ 'WALKTHROUGH.TITLEENPATTERN' | translate }}
+                {{ 'WALKTHROUGH.TITLEEN_PATTERN' | translate }}
             </div>
         </div>
     </div>
@@ -72,3 +73,4 @@
 
     </section>
 </form>
+</div>

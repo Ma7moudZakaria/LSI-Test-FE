@@ -24,7 +24,7 @@ import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/ipro
 })
 export class AddScientificMaterialComponent implements OnInit {
   materialCategoriesLookup: BaseLookupModel[] = [];
-  programs: any;
+  programs: IprogramsModel[] = [];
   selectedProgram: IProgramScientificMaterial[] = [];
   title?: string;
   scientificMaterialId: any;
@@ -38,9 +38,12 @@ export class AddScientificMaterialComponent implements OnInit {
   updateScientificMaterial = {} as IUpdateScientificMaterial;
   ScientificMaterialDetails = {} as IScientificMaterialDetails;
   disableSaveButtons = false;
+  selectedProgramsList = Array<IprogramsModel>();
+  programMessage: BaseMessageModel = {};
+
   @Input() selectedMaterialId: any;
   @Output() submitSuccess = new EventEmitter<boolean>();
-  LangEnum = LanguageEnum;
+  langEnum = LanguageEnum;
   resMessage: BaseMessageModel = {};
 
   constructor(private fb: FormBuilder, private scientifcMaterialService: ScientificMaterialService,
@@ -142,6 +145,7 @@ export class AddScientificMaterialComponent implements OnInit {
     if (!this.selectedProgram) {
       this.selectedProgram = [];
     }
+    this.selectedProgramsList = this.ScientificMaterialDetails?.matrialPrograms;
     this.ScientificMaterialDetails?.matrialPrograms.forEach((pr: any) => {
       this.selectedProgram.push({
         programId: pr.id
@@ -231,11 +235,33 @@ export class AddScientificMaterialComponent implements OnInit {
   Submit() {
     this.isSubmit = true;
     if (this.currentForm.valid) {
-      if (this.selectedProgram.length == 0) {
+      if (this.selectedProgramsList.length == 0) {
         return;
       }
       this.resMessage = {};
+      if (this.selectedProgramsList.length) {
+        this.updateScientificMaterial.programScientificMatrial = [];
+        this.addScientificMaterial.programMatrial = [];
+        Array.from(this.selectedProgramsList).forEach((elm: IprogramsModel) => {
 
+          if (this.scientificMaterialId) {
+            if (this.updateScientificMaterial.programScientificMatrial) {
+              this.updateScientificMaterial.programScientificMatrial.push({
+                programId: elm.id
+              });
+            }
+          }
+          else {
+            if (this.addScientificMaterial.programMatrial) {
+              this.addScientificMaterial.programMatrial.push({
+                programId: elm.id
+              });
+            }
+
+          }
+
+        });
+      }
       if (this.scientificMaterialId) {
         this.updateScientificMaterial.matrialTitleAr = this.f.matrialTitleAr.value;
         this.updateScientificMaterial.matrialTitleEn = this.f.matrialTitleEn.value;
@@ -243,7 +269,7 @@ export class AddScientificMaterialComponent implements OnInit {
         this.updateScientificMaterial.fileLink = this.f.fileLink.value === '' ? null : this.f.fileLink.value;
         this.updateScientificMaterial.active = this.f.active.value;
         this.updateScientificMaterial.availableForAllUsers = this.f.availableForAllUsers.value;
-        this.updateScientificMaterial.programScientificMatrial = this.selectedProgram;
+        // this.updateScientificMaterial.programScientificMatrial = this.selectedProgram;
         this.updateScientificMaterial.attachmentIds = this.attachmentIds;
         this.scientifcMaterialService.UpdateScientificMaterial(this.updateScientificMaterial).subscribe(res => {
           //var response = Mapper.responseMapper(res);
@@ -280,7 +306,7 @@ export class AddScientificMaterialComponent implements OnInit {
         this.addScientificMaterial.fileLink = this.f.fileLink.value === '' ? null : this.f.fileLink.value;
         this.addScientificMaterial.active = this.f.active.value;
         this.addScientificMaterial.availableForAllUsers = this.f.availableForAllUsers.value;
-        this.addScientificMaterial.programMatrial = this.selectedProgram;
+        // this.addScientificMaterial.programMatrial = this.selectedProgram;
         this.addScientificMaterial.attachmentIds = this.attachmentIds;
         this.scientifcMaterialService.addScientificMaterial(this.addScientificMaterial).subscribe(res => {
           //var response = Mapper.responseMapper(res);
@@ -316,6 +342,35 @@ export class AddScientificMaterialComponent implements OnInit {
       }
     }
 
+  }
+  addProgram() {
+    if (!this.currentForm.value.programMatrial) {
+      if (this.translate.currentLang == this.langEnum.ar) {
+        this.programMessage = {
+          message: "برجاء اختيار  برنامج ",
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      } else {
+        this.programMessage = {
+          message: "Please select program",
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+      return;
+    }
+    this.programMessage = {};
+
+    const exist = this.selectedProgramsList.some(el => el.id === this.currentForm.value.programMatrial)
+    if (!exist) {
+      if (this.programs) {
+        this.selectedProgramsList.push(
+          this.programs.filter(el => el.id == this.currentForm.value.programMatrial)[0]);
+      }
+    }
+  }
+  removeItemFromSelectedPrograms(item: any) {
+    let index = this.selectedProgramsList.indexOf(item);
+    this.selectedProgramsList.splice(index, 1);
   }
 
   closeForm() {
