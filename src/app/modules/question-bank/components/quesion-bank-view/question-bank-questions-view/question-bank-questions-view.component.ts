@@ -43,16 +43,16 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
    }
   
   }
-  searchQuestions(Questions?:string){
+  searchQuestions(text?:string){
     this.questionBankQuestionList=[];
-    this.getQuestionBankQuestions(this.selectedCategoryId.id,Questions) 
+    this.getQuestionBankQuestions(this.selectedCategoryId.id,text) 
   }
-  getQuestionBankQuestions(CategoryId?:string,Questions?:string) {
+  getQuestionBankQuestions(CategoryId?:string,text?:string) {
     this.filterErrorMessage = "";
     this.questionBankQuestionFilter.skip=0;
     this.questionBankQuestionFilter.take= 1000;
     this.questionBankQuestionFilter.catgyId=CategoryId;
-    this.questionBankQuestionFilter.question=Questions;
+    this.questionBankQuestionFilter.text=text;
     this.questionBankQuestionService.getQuestionBankQuestionsFilter(this.questionBankQuestionFilter).subscribe(res => {
       let response = <BaseResponseModel>res;
       if (response.isSuccess) {
