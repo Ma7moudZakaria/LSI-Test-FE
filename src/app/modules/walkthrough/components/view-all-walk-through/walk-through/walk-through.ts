@@ -187,8 +187,9 @@ export class WalkThroughComponent implements OnInit {
   }
 
   buildForm() {
-    const arabicPattern = "^[\u0621-\u064A\u0660-\u0669 ]+$";
-    const englishPattern = "^[a-zA-Z''-'\s]{1,40}$";
+    
+    const arabicPattern = "^[\u0621-\u064A\u0660-\u0669 0-9]+$";
+    const englishPattern ="^[a-zA-Z0-9' '-'\s]{1,40}$";
     this.currentForm = this.fb.group(
       {
         textAr: ['', [Validators.required, Validators.pattern(arabicPattern)]],
