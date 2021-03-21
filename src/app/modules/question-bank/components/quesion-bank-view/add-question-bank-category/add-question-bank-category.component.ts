@@ -36,6 +36,7 @@ export class AddQuestionBankCategoryComponent implements OnInit {
   disableSaveButtons = false;
   @Input() inputCategoryId?:string; 
   @Output() closeCategoryForm = new EventEmitter<boolean>();
+  @Output() addCategory = new EventEmitter<boolean>();
   constructor(private questionBankCategoryService: QuestionBankCategoryService,
     private activeroute: ActivatedRoute, 
     private router: Router, 
@@ -48,13 +49,11 @@ export class AddQuestionBankCategoryComponent implements OnInit {
   ngOnInit(): void {
     this.QuestionBankCategoryId=this.inputCategoryId||"";
     if (this.QuestionBankCategoryId !== "" ) {
-      this.Title = "Edit QuestionBankCategory";
       this.isAdd=false;
       this.currentForm.reset();
-     this.loadQuestionBankCategoryDetails() ;
+     this.populate() ;
     }
     else {
-      this.Title = "Add QuestionBankCategory";
       this.currentForm.reset();
       this.isAdd=true;
     }
@@ -64,7 +63,7 @@ export class AddQuestionBankCategoryComponent implements OnInit {
     this.currentForm.reset();
     this.QuestionBankCategoryId=this.inputCategoryId||"";
     if(this.QuestionBankCategoryId !== "")
-    {this.loadQuestionBankCategoryDetails() ;}
+    {this.populate() ;}
    if( this.QuestionBankCategoryId==""){
     this.currentForm.reset();
    }
@@ -89,12 +88,12 @@ export class AddQuestionBankCategoryComponent implements OnInit {
   }
   
  
-  loadQuestionBankCategoryDetails() {
+  populate() {
     this.questionBankCategoryService.getQuestionBankCategoryDetails(this.QuestionBankCategoryId).subscribe(
       res => {
-        var response =<BaseResponseModel>res;
+        var response =res;
         if (response.isSuccess) {
-          this.QuestionBankCategory = response.data;
+          this.QuestionBankCategory =<IQuestionBankCategoriesModel> response.data;
           this.f.nameAr.setValue(this.QuestionBankCategory?.arabCatgName);
       this.f.nameEn.setValue(this.QuestionBankCategory?.engCatgName);
         }
@@ -125,6 +124,7 @@ export class AddQuestionBankCategoryComponent implements OnInit {
               message:res.message||"",
               type: BaseConstantModel.SUCCESS_TYPE
             }
+            this. loodCategoryList();
           }
           else {
             this.resultMessage = {
@@ -151,7 +151,7 @@ export class AddQuestionBankCategoryComponent implements OnInit {
               message:res.message||"",
               type: BaseConstantModel.SUCCESS_TYPE
             }
-           
+            this. loodCategoryList();
           }
           else {
             this.resultMessage = {
@@ -170,7 +170,10 @@ export class AddQuestionBankCategoryComponent implements OnInit {
     }
 
   }
+  loodCategoryList(){
 
+    this.addCategory.emit(true);
+  }
   backListCatogry(){
     this.closeCategoryForm?.emit(false);
   }

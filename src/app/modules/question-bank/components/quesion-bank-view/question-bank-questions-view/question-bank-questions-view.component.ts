@@ -18,13 +18,15 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   filterErrorMessage?:string;
   questionBankQuestionList: IQuestionBankQuestionsModel[] = [];
   questionBankQuestionFilter: IQuestionBankQuestionsFilterRequest = {};
-  @Input() selectedCategoryId?:string; 
-  @Output() selectedQuestionId = new EventEmitter<string>();;
+  @Input() selectedCategoryId={id:'',arabCatgName:'',engCatgName:''}; 
+  @Output() selectedQuestionId = new EventEmitter<string>();
   @Output() isViewAdd = new EventEmitter<boolean>();
+  // @Input() isQuestionSave={isSave:false,catogeryId:''}; 
+  @Input() isQuestionSave?:boolean; 
   panelOpenState = false;
   currentlyOpenedItemIndex = -1;
   langEnum = LanguageEnum;
-
+  isSave=false;
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
      public translate: TranslateService,public dialog: MatDialog) {
       }
@@ -33,12 +35,17 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
     this.getQuestionBankQuestions()
   }
   ngOnChanges(changes: any) {
-    this.getQuestionBankQuestions(changes.selectedCategoryId.currentValue);
-    this.selectedCategoryId=changes.selectedCategoryId.currentValue;
+    if(this.isQuestionSave===true){ this.getQuestionBankQuestions(this.selectedCategoryId.id);}
+    if(changes.selectedCategoryId?.currentValue.id!==undefined)
+   {
+    this.getQuestionBankQuestions(changes.selectedCategoryId.currentValue.id);
+    this.selectedCategoryId.id=changes.selectedCategoryId.currentValue.id;
+   }
+  
   }
   searchQuestions(Questions?:string){
     this.questionBankQuestionList=[];
-    this.getQuestionBankQuestions(this.selectedCategoryId,Questions) 
+    this.getQuestionBankQuestions(this.selectedCategoryId.id,Questions) 
   }
   getQuestionBankQuestions(CategoryId?:string,Questions?:string) {
     this.filterErrorMessage = "";
@@ -65,7 +72,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
     this.questionBankQuestionFilter = {};
     this.questionBankQuestionFilter.skip=0;
     this.questionBankQuestionFilter.take= 1000;
-    this.getQuestionBankQuestions(this.selectedCategoryId);
+    this.getQuestionBankQuestions(this.selectedCategoryId.id);
   }
 
   delete_Question(id?:string) {
@@ -73,7 +80,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
       res => {
 
         alert("Delete Sucssed")
-        this.getQuestionBankQuestions(this.selectedCategoryId);
+        this.getQuestionBankQuestions(this.selectedCategoryId.id);
       }, error => {
 
       }
@@ -86,8 +93,8 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   NewQuestion(){
     this.selectedQuestionId?.emit('');
   }
-  async confirmDialog(id?:string){
-    const message = `Are you sure you want to do this?`;
+   confirmDialog(id?:string){
+    const message =this.translate.currentLang === LanguageEnum.en ?"Are you sure that you want to delete this question":"هل متأكد من حذف هذا السؤال";
 
     const dialogData = new ConfirmDialogModel("Confirm Action", message);
 
@@ -100,7 +107,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
         this.questionBankQuestionService.deleteQuestionBankQuestion(id||'').subscribe(
           res => {
             res.message;
-            this.getQuestionBankQuestions(this.selectedCategoryId);
+            this.getQuestionBankQuestions(this.selectedCategoryId.id);
           }, error => {
     
           }
