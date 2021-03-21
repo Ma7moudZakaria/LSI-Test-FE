@@ -44,7 +44,7 @@
     height: 30%;
     width: 95%;
     // margin:2rem;
-    padding: 7rem;
+    // padding: 7rem;
     text-align: center;
     
     &__text{
@@ -59,6 +59,10 @@
 }
 .upload-icon{
 margin-bottom: 10px;        
+}
+.page-image{
+    width: 100%;
+    height: 400px;
 }
 // label{
 //     color: var(--unnamed-color-c1c7d0);
