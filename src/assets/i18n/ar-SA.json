@@ -30,7 +30,9 @@
     "EMAIL_REQUIRED": "حقل الايميل مطلوب",
     "USERNAME_REQUIRED": "حقل اسم المستخدم مطلوب",
     "USERNAME_MIN_LENGTH": "يرجى ادخال اسم المستخدم أكثر من 3 حرفا",
-    "USERNAME_MAX_LENGTH": "يرجى ادخال  اسم المستخدم أقل من 50 حرفا"
+    "USERNAME_MAX_LENGTH": "يرجى ادخال  اسم المستخدم أقل من 50 حرفا",
+    "YES" : "نعم",
+    "NO" : "لا"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
@@ -62,21 +64,26 @@
     "PROGRAMS": "البرامج",
     "CATEGORY": "الفئة",
     "TITLEAR": "الاسم العربى",
-    "TITLEEN": "الاسم الانجليزى",
-    "CHOOSEFILE": "اختر الملفات لرفعها / اسحبها وضعها هنا",
-    "MATERIALAVAILABILITY": "اتاحة المادة العلمية",
+    "TITLEEN": "الاسم الإنجليزى",
+    "FILE_URL": "رابط الملف",
+    "CHOOSEFILE": "إختر الملفات لرفعها / إسحبها وضعها هنا",
+    "MATERIALAVAILABILITY": "إتاحة المادة العلمية",
     "ACTIVATION": "التنشيط",
     "ALL": "الكل",
     "SELECTEDPROGRAMS": "البرامج المختارة فقط",
     "ACTIVE": "مفعل",
     "INACTIVE": " غير مفعل",
     "SAVE": "حفظ",
-    "CANCEL": "الغاء",
+    "CANCEL": "إلغاء",
+    "CLOSE":"إغلاق",
     "REQUIRED": "هذا الحقل مطلوب",
-    "TITLEARPATTERN": "يرجى ادخال حروف عربى فقط",
-    "TITLEARMAXLENGTH": "يرجى ادخال اسم اقل من 50 حرف",
-    "TITLEENPATTERN": "يرجى ادخال حروف انجليزى فقط",
-    "TITLEENMAXLENGTH": "يرجى ادخال اسم اقل من 50 حرف"
+    "TITLEARPATTERN": "يرجى إدخال حروف عربى فقط",
+    "TITLEARMAXLENGTH": "يرجى إدخال اسم اقل من 50 حرف",
+    "TITLEENPATTERN": "يرجى إدخال حروف إنجليزى فقط",
+    "TITLEENMAXLENGTH": "يرجى إدخال أسم اقل من 50 حرف",
+    "Confirm_Delete": "حذف المادة",
+    "Delete_Message" : "هل أنت متأكد من حذف المادة؟",
+    "Select_Program" : "برجاء اختيار  برنامج"
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "البرامج",
@@ -188,12 +195,15 @@
   "WALKTHROUGH": {
     "TITLE":"المقدمة",
     "PAGES": "الشرائح",
-    "UPLOADPIC": "حمل صورة",
-    "ARABICMESSAGE": "الرسالة العربى",
-    "ENGLISHMESSAGE": "الرسالة الانجليزى",
+    "UPLOAD_PIC": "حمل صورة",
+    "ARABIC_MESSAGE": "الرسالة العربى",
+    "ENGLISH_MESSAGE": "الرسالة الإنجليزى",
     "REQUIRED": "هذا الحقل مطلوب!",
-    "ARABICFIELD": " هذا الحقل يجب ان يكون باللغة العربية",
-    "ENGLISHFIELD": "هذا الحقل يجب ان يكون باللغة الإنجليزية"
+    "ARABIC_FIELD": " هذا الحقل يجب أن يكون باللغة العربية",
+    "ENGLISH_FIELD": "هذا الحقل يجب أن يكون باللغة الإنجليزية",
+    "TITLEAR_PATTERN": "يرجى إدخال حروف عربى فقط",
+    "TITLEEN_PATTERN": "يرجى إدخال حروف إنجليزى فقط"
+
   },
   "DASHBOARD": {
     "TITLE": "لوحة التحكم"

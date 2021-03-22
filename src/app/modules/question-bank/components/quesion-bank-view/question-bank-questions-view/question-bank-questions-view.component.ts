@@ -43,16 +43,16 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
    }
   
   }
-  searchQuestions(Questions?:string){
+  searchQuestions(text?:string){
     this.questionBankQuestionList=[];
-    this.getQuestionBankQuestions(this.selectedCategoryId.id,Questions) 
+    this.getQuestionBankQuestions(this.selectedCategoryId.id,text) 
   }
-  getQuestionBankQuestions(CategoryId?:string,Questions?:string) {
+  getQuestionBankQuestions(CategoryId?:string,text?:string) {
     this.filterErrorMessage = "";
     this.questionBankQuestionFilter.skip=0;
     this.questionBankQuestionFilter.take= 1000;
     this.questionBankQuestionFilter.catgyId=CategoryId;
-    this.questionBankQuestionFilter.question=Questions;
+    this.questionBankQuestionFilter.text=text;
     this.questionBankQuestionService.getQuestionBankQuestionsFilter(this.questionBankQuestionFilter).subscribe(res => {
       let response = <BaseResponseModel>res;
       if (response.isSuccess) {
@@ -96,7 +96,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
    confirmDialog(id?:string){
     const message =this.translate.currentLang === LanguageEnum.en ?"Are you sure that you want to delete this question":"هل متأكد من حذف هذا السؤال";
 
-    const dialogData = new ConfirmDialogModel("Confirm Action", message);
+    const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete Question' : 'حذف سؤال', message);
 
     const dialogRef = this.dialog.open(ConfirmModalComponent, {
       maxWidth: "400px",

@@ -7,6 +7,11 @@
   </div>
   
   <div mat-dialog-actions>
-    <button mat-button (click)="onDismiss()">No</button>
-    <button mat-raised-button color="primary" (click)="onConfirm()">Yes</button>
+    <button mat-button (click)="onDismiss()"> 
+      {{"GENERAL.NO"|translate}}
+    </button>
+    <button mat-raised-button color="primary" (click)="onConfirm()">
+      {{"GENERAL.YES"|translate}}
+  
+    </button>
   </div>

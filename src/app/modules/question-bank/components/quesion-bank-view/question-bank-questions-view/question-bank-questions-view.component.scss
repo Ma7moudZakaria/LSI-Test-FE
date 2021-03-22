@@ -7,6 +7,11 @@
     height : 100%;
     margin-top: 1rem;
     margin-bottom: 0;
+    .Catogry_Icon_Add{
+      align-self: center;  
+      margin-right: 0.3rem;
+      margin-left: 0.3rem;
+     }
 }
 
 .question-list:lang(en){
@@ -142,3 +147,10 @@ opacity: 1;
 .p_answer:lang(en){
   text-align: left;
 }
+.fa-trash-alt ,.fa-pencil-alt{
+  color:#8E2520;
+  margin-right: 0.2rem;
+  margin-left: 0.2rem;
+
+}
+

@@ -38,7 +38,7 @@ export class ProgramsListComponent implements OnInit {
       }
     );
   }
-  selectedIndex:any;
+  selectedIndex=-1;
   loadProgramMaterial(program?:IprogramsModel){
     this.selectedProgram?.emit(program);
   } 

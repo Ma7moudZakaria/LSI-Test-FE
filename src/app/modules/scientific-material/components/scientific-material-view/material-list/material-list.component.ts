@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
@@ -9,6 +10,7 @@ import { BaseLookupModel } from 'src/app/core/ng-model/base-lookup-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { ScientificMaterialService } from 'src/app/core/services/scientific-material-services/scientific-material.service';
+import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-material-list',
@@ -29,7 +31,9 @@ export class MaterialListComponent implements OnInit {
   voiceId = '07985acc-8dc8-4def-b4e0-bc62a789db83';
   plansId = '512da9c2-0604-4f5c-bbb2-d669f1346e34';
   program = {} as IprogramsModel;
-  constructor(private scientifcMaterialService: ScientificMaterialService, public translate: TranslateService) { }
+  constructor(private scientifcMaterialService: ScientificMaterialService,
+    private dialog: MatDialog,
+     public translate: TranslateService) { }
 
   ngOnInit(): void {
     this.loadMaterialCategories();
@@ -67,9 +71,17 @@ export class MaterialListComponent implements OnInit {
   deleteMaterial(materialId?: any) {
     this.scientifcMaterialService.DeleteScientificMatrial(materialId).subscribe(
       (res: BaseResponseModel) => {
-        this.resMessage = {
-          message: res.message,
-          type: BaseConstantModel.SUCCESS_TYPE
+        if (res.isSuccess) {
+          this.resMessage = {
+            message: res.message,
+            type: BaseConstantModel.SUCCESS_TYPE
+          }
+        }
+        else{
+          this.resMessage = {
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
+          }
         }
         this.clearMessage();
         this.loadProgramMaterial();
@@ -117,4 +129,24 @@ export class MaterialListComponent implements OnInit {
     }, 2000);
   }
 
+  result: string = '';
+  async confirmDialog(id?:string){
+     const confirm = this.translate.instant('SCIENTIFIC_MATERIAL.Confirm_Delete');
+     const  message = this.translate.instant('SCIENTIFIC_MATERIAL.Delete_Message');
+    
+     const dialogData = new ConfirmDialogModel(confirm, message);
+
+     const dialogRef = this.dialog.open(ConfirmModalComponent, {
+       maxWidth: "400px",
+       data: dialogData
+     });
+     dialogRef.afterClosed().subscribe(dialogResult => {
+       this.result= dialogResult;
+       if(dialogResult==true){
+        this.deleteMaterial(id);
+ 
+       }
+      
+     });
+   }
 }

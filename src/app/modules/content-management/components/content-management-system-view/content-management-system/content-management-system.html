@@ -1,6 +1,6 @@
 <div class="content_management">
   <div class="row">
-    <span class="span_dir"> {{ translate.currentLang === langEnum.en ? selectedcmsTypeId.nameEn : selectedcmsTypeId.nameAr}}</span>
+    <span > {{ translate.currentLang === langEnum.en ? selectedcmsTypeId.nameEn : selectedcmsTypeId.nameAr}}</span>
    </div>
     <form class="form-group internal_scroll_list_group" [formGroup]="currentForm" (submit)="Submit()">
       <div class="form-group">
@@ -59,7 +59,7 @@
      <section>
      <div class="row col-6 ">
       <button type="submit" class="save-btn btn btn-danger" >{{'CONTENT_MANEGMENT_SYSTEM.SAVE' | translate}}</button>
-      <button type="button" class="cancel-btn btn btn-warning" (click)="reset()">{{'CONTENT_MANEGMENT_SYSTEM.CANCEL' | translate}}</button>
+      <!-- <button type="button" class="cancel-btn btn btn-warning" (click)="reset()">{{'CONTENT_MANEGMENT_SYSTEM.CANCEL' | translate}}</button> -->
      </div>
        
 

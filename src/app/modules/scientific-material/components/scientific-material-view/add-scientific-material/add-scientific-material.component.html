@@ -1,24 +1,42 @@
-<form class="form-group material-form" [formGroup]="currentForm" (submit)="Submit()">
-    <div class="form-group">
+<form class="form-group material-form" [formGroup]="currentForm" (submit)="Submit()">   
+     <div class="form-group">
         <label for="programs"> {{'SCIENTIFIC_MATERIAL.PROGRAMS' | translate}}</label>
-        <div class="d-flex">
+        <div class="input-group">
+            <!-- <input class="form-control" type="text" /> -->
             <div class="input-group">
-                <select multiple class="form-control" formControlName="programMatrial" name="formControlName"
-                    (change)="selectProgram($event)">
-                    <!-- <option value="">{{'SCIENTIFIC_MATERIAL.SELECTOPTION' | translate}}</option> -->
-                    <option *ngFor="let item of programs" value="{{item.id}}">
-                        {{translate.currentLang === LangEnum.en ? item.engName : item.arabName}}
+                <select class="form-control" id="programs" formControlName="programMatrial">
+                    <option *ngFor="let item of programs"
+                        value="{{item.id}}">
+                        {{translate.currentLang === langEnum.en ? item.engName : item.arabName}}
                     </option>
-
                 </select>
+                <span class="select-arrow position-absolute">
+                    <i class="fa fa-angle-down" style="color: inherit;"></i></span>
+            </div>
+            <span class="plus-btn position-absolute">
+                <button class="btn  btn-light btn-add" type="button"
+                    (click)="addProgram()">                    
+                    <img  src="assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
+                </button>
+            </span>
+        </div>
+        <div>
+            <div *ngIf="programMessage" class="alert alert-{{ programMessage.type }} my-4 py-2">
+                {{ programMessage.message }}
             </div>
         </div>
-        <div *ngIf="selectedProgram?.length == 0 && (f.programMatrial.touched || isSubmit)"
-            class="alert alert-danger mt-2 mb-2">
-            <div *ngIf="selectedProgram.length == 0">
-                {{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}
-            </div>
+        <div class="badges mt-3">
+            <span *ngFor="let p of selectedProgramsList"
+                class="badge badge-info p-2">{{translate.currentLang === langEnum.en ? p.engName :p.arabName}}
+                <a (click)="removeItemFromSelectedPrograms(p)"><i class="fa  fa-minus"></i></a>
+            </span>
         </div>
+        <div *ngIf="selectedProgramsList?.length == 0 && (f.programMatrial.touched || isSubmit)"
+        class="alert alert-danger mt-2 mb-2">
+        <div *ngIf="selectedProgramsList.length == 0">
+            {{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}
+        </div>
+    </div>
     </div>
     <div class="form-group">
         <label for="category">{{'SCIENTIFIC_MATERIAL.CATEGORY' | translate}}</label>
@@ -28,7 +46,7 @@
                 <select class="form-control" formControlName="matrialCategory" name="matrialCategory">
                     <option value="">{{'SCIENTIFIC_MATERIAL.SELECTOPTION' | translate}}</option>
                     <option *ngFor="let item of materialCategoriesLookup" value="{{item.id}}">
-                        {{translate.currentLang === LangEnum.en ? item.nameEn: item.nameAr}}
+                        {{translate.currentLang === langEnum.en ? item.nameEn: item.nameAr}}
                     </option>
                 </select>
             </div>
@@ -75,7 +93,10 @@
 
         </div>
     </div>
-
+    <div class="form-group">
+        <label for="matrialTitleAr">{{'SCIENTIFIC_MATERIAL.FILE_URL' | translate}}</label>
+        <input type="text" class="form-control" formControlName="fileLink" id="fileLink">      
+    </div>
     <label class="custom-file custom-file__text" for="importFile">{{'SCIENTIFIC_MATERIAL.CHOOSEFILE' |
         translate}}</label>
     <input type="file" class="custom-file-input" multiple id="importFile"
@@ -131,8 +152,8 @@
                 {{'SCIENTIFIC_MATERIAL.SAVE' | translate}}
             </button>
             <button type="reset" class="cancel-btn" [disabled]="disableSaveButtons"
-                (click)="loadScientificMaterialDetails(null)">
-                {{'SCIENTIFIC_MATERIAL.CANCEL' | translate }}
+                (click)="closeForm()">
+                {{'SCIENTIFIC_MATERIAL.CLOSE' | translate }}
             </button>
 
             <div *ngIf="resMessage" class="alert alert-{{ resMessage.type }} my-4 py-2">

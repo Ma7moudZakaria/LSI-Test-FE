@@ -56,7 +56,10 @@ export class ViewUserProfileCustomComponent implements OnInit {
   getUserProfile(id: any) {
     this.userService.viewUserProfileDetails(id).subscribe(res => {
 
-      this.userProfileDetails = res.data;
+      this.userProfileDetails = res.data as IUserProfile;
+      if (!this.userProfileDetails?.proPic){
+        this.userProfileDetails.proPic = '../../../../../assets/images/profile1.png';
+      }
       this.birthdate = new Date(this.userProfileDetails.birthdate);
       this.birthdate = new Date(this.birthdate.setDate(this.birthdate.getDate() + 1)).toISOString().slice(0, 10);
 

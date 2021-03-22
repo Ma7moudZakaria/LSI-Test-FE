@@ -66,14 +66,13 @@
     <section>
       <div class="row">
           <button class="save-btn btn btn-danger" type="submit" [disabled]="disableSaveButtons">
-            {{'QUESTION_BANK.ADD' | translate}}
+            {{'QUESTION_BANK.SAVE' | translate}}
           </button>
       <button type="button" class="cancel-btn btn btn-warning" (click)="backListQuestio()">{{'QUESTION_BANK.CANCEL' | translate}}</button>
-          <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2">
-            {{resultMessage.message}}
-        </div>
       </div>
-
+      <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2">
+        {{resultMessage.message}}
+    </div>
   </section>
    
   </form>

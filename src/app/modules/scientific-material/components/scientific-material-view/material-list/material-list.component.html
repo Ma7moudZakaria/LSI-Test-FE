@@ -1,4 +1,4 @@
-<div class=" row material-list">
+<div class="material-list">
   <div class="col-6  pr-0 pl-0">
     <p class="mb-4 title_material-list" *ngIf="program">
       {{
@@ -22,9 +22,13 @@
         </mat-checkbox>
       <!-- <mat-checkbox class="example-margin" >مواد صوتية</mat-checkbox>
       <mat-checkbox class="example-margin ml-5 mr-5" >مواد مقرؤة</mat-checkbox> -->
+      <div *ngIf="resMessage" class="alert alert-{{ resMessage.type }} my-4 py-2">
+        {{ resMessage.message }}
+    </div> 
     </section>
 
   </div>
+  
 <section class="w-100 row contanier_matrial-card">
   <div class="matrial-card col-lg-5 col-md-5 col-sm-12 m-2" *ngFor="let item of materials">
     <div class="row">
@@ -41,14 +45,12 @@
       <div class="col-lg-1 col-md-1 col-sm-4 mt-4" (click)="loadMaterial(item.id || '')">
         <span> <img  class="size_icon" src="assets/images/scientificMaterial/Icon feather-edit-3.svg" alt=""></span>
       </div>
-      <div class="col-lg-1 col-md-1 col-sm-4 mt-4" (click)="deleteMaterial(item.id || '')">
+      <div class="col-lg-1 col-md-1 col-sm-4 mt-4" (click)="confirmDialog(item.id || '')">
         <span> <img   class="size_icon"  src="assets/images/scientificMaterial/Icon feather-trash-2.svg" alt=""></span>
       </div>
     </div>  
   </div>
 
-  <div *ngIf="resMessage" class="alert alert-{{ resMessage.type }} my-4 py-2">
-    {{ resMessage.message }}
-</div>  
+  
 </section>
 </div>

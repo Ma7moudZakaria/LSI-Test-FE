@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-confirm-modal',
@@ -11,7 +12,7 @@ export class ConfirmModalComponent implements OnInit {
   title: string;
   message: string;
 
-  constructor(public dialogRef: MatDialogRef<ConfirmModalComponent>,
+  constructor(public translate: TranslateService,public dialogRef: MatDialogRef<ConfirmModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ConfirmDialogModel) {
     // Update view with given values
     this.title = data.title;

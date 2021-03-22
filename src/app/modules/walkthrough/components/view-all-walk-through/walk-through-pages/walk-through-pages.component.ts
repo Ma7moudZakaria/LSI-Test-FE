@@ -30,6 +30,9 @@ export class WalkThroughPagesComponent implements OnInit {
         this.collectionOfLookup = res.data;
         this.walkThroughPages = 
         this.collectionOfLookup.WLAKTHROUGHPAGES?.sort((a,b) => this.compare(a,b) );
+       if(this.collectionOfLookup.WLAKTHROUGHPAGES) 
+        this.selectedWalkThroughPageId?.emit(this.collectionOfLookup.WLAKTHROUGHPAGES[0].id);
+
       }
       else{
         this.resMessage = {
@@ -44,7 +47,7 @@ export class WalkThroughPagesComponent implements OnInit {
       }
     });
   }
-  selectedIndex:any;
+  selectedIndex=0;
   loadPageWalkThrough(id?:string){
     this.selectedWalkThroughPageId?.emit(id);
 
