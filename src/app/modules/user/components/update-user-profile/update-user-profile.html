@@ -297,10 +297,10 @@
                                                 value="{{sheikh.id}}">
                                                 {{translate.currentLang == langEnum.en ? sheikh.nameEn : sheikh.nameAr}}</option>
                                         </select>
-                                        <span class="select-arrow position-absolute">
+                                        <!-- <span class="select-arrow position-absolute">
                                             <i class="fa fa-angle-down" style="color: inherit;"></i>
                                             
-                                        </span>
+                                        </span> -->
                                     </div>
                                     <span class="plus-btn position-absolute">
                                         
@@ -327,7 +327,7 @@
                                     </span> -->
                                 </div>
                                 <div>
-                                    <div *ngIf="shiekhsMessage" class="alert alert-{{ shiekhsMessage.type }} my-4 py-2">
+                                    <div *ngIf="shiekhsMessage.message" class="alert alert-{{ shiekhsMessage.type }} my-4 py-2">
                                         {{ shiekhsMessage.message }}
                                     </div>
                                 </div>
@@ -357,8 +357,8 @@
                                                 value="{{archive.id}}">
                                                 {{translate.currentLang == langEnum.en ? archive.nameEn : archive.nameAr}}</option>
                                         </select>
-                                        <span class="select-arrow position-absolute">
-                                            <i class="fa fa-angle-down" style="color: inherit;"></i></span>
+                                        <!-- <span class="select-arrow position-absolute">
+                                            <i class="fa fa-angle-down" style="color: inherit;"></i></span> -->
                                     </div>
                                     <span class="plus-btn position-absolute">
                                         <button class="btn btn-light btn-add" type="button"
@@ -371,7 +371,7 @@
                                     </span>
                                 </div>
                                 <div>
-                                    <div *ngIf="archiveMessage" class="alert alert-{{ archiveMessage.type }} my-4 py-2">
+                                    <div *ngIf="archiveMessage.message" class="alert alert-{{ archiveMessage.type }} my-4 py-2">
                                         {{ archiveMessage.message }}
                                     </div>
                                 </div>
@@ -403,8 +403,8 @@
                                                 value="{{course.id}}">
                                                 {{translate.currentLang == langEnum.en ? course.nameEn : course.nameAr}}</option>
                                         </select>
-                                        <span class="select-arrow position-absolute">
-                                            <i class="fa fa-angle-down" style="color: inherit;"></i></span>
+                                        <!-- <span class="select-arrow position-absolute">
+                                            <i class="fa fa-angle-down" style="color: inherit;"></i></span> -->
                                     </div>
                                     <span class="plus-btn position-absolute">
                                         <button class="btn btn-light btn-add" type="button"
@@ -417,7 +417,7 @@
                                     </span>
                                 </div>
                                 <div>
-                                    <div *ngIf="coursesMessage" class="alert alert-{{ coursesMessage.type }} my-4 py-2">
+                                    <div *ngIf="coursesMessage.message" class="alert alert-{{ coursesMessage.type }} my-4 py-2">
                                         {{ coursesMessage.message }}
                                     </div>
                                 </div>

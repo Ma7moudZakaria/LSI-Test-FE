@@ -28,9 +28,14 @@
 }
 
 
+
+
 .contanier_setting-card{
     height: 27rem;
     // overflow-y: auto;
+    .SettingText{
+        color: #5A5A5A;
+    }
 }
 
 .setting-card p{

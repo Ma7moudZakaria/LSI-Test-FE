@@ -25,6 +25,7 @@ export interface IUserProfile {
     ejazaIds?:string;
     address?:string;
     usrEmail?:string;
+    usrName?:string;
     proPic?:string;
     quraanMemorizeAmount?:number;
     ejazaAttachments:IAttachment[];

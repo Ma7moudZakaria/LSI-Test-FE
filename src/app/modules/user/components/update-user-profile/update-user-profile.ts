@@ -370,17 +370,21 @@ export class UpdateUserProfileComponent implements OnInit {
 
   addUserShiekhs(){
     if (!this.profileForm.value.userSheikhs) {
-      if (this.translate.currentLang == 'ar') {
-        this.shiekhsMessage = {
-          message: this.translate.instant('UPDATE_USER_PG.CHOOSE_SHEIKHS'),
-          type: BaseConstantModel.DANGER_TYPE
-        }
-      } else {
-        this.shiekhsMessage = {
-          message: this.translate.instant('UPDATE_USER_PG.CHOOSE_SHEIKHS'),
-          type: BaseConstantModel.DANGER_TYPE
-        }
+      this.shiekhsMessage = {
+        message: this.translate.instant('UPDATE_USER_PG.CHOOSE_SHEIKHS'),
+        type: BaseConstantModel.DANGER_TYPE
       }
+      // if (this.translate.currentLang == 'ar') {
+      //   this.shiekhsMessage = {
+      //     message: this.translate.instant('UPDATE_USER_PG.CHOOSE_SHEIKHS'),
+      //     type: BaseConstantModel.DANGER_TYPE
+      //   }
+      // } else {
+      //   this.shiekhsMessage = {
+      //     message: this.translate.instant('UPDATE_USER_PG.CHOOSE_SHEIKHS'),
+      //     type: BaseConstantModel.DANGER_TYPE
+      //   }
+      // }
       return;
     }
     this.shiekhsMessage = {};
@@ -402,16 +406,20 @@ export class UpdateUserProfileComponent implements OnInit {
   }
   addUserArchives(){
     if (!this.profileForm.value.userArchives) {
-      if (this.translate.currentLang == 'ar') {
-        this.archiveMessage = {
-          message: this.translate.instant('UPDATE_USER_PG.ASRCHIVE'),
-          type: BaseConstantModel.DANGER_TYPE
-        }
-      } else {
-        this.archiveMessage = {
-          message: this.translate.instant('UPDATE_USER_PG.ASRCHIVE'),
-          type: BaseConstantModel.DANGER_TYPE
-        }
+      // if (this.translate.currentLang == 'ar') {
+      //   this.archiveMessage = {
+      //     message: this.translate.instant('UPDATE_USER_PG.ASRCHIVE'),
+      //     type: BaseConstantModel.DANGER_TYPE
+      //   }
+      // } else {
+      //   this.archiveMessage = {
+      //     message: this.translate.instant('UPDATE_USER_PG.ASRCHIVE'),
+      //     type: BaseConstantModel.DANGER_TYPE
+      //   }
+      // }
+      this.shiekhsMessage = {
+        message: this.translate.instant('UPDATE_USER_PG.ASRCHIVE'),
+        type: BaseConstantModel.DANGER_TYPE
       }
       return;
     }
@@ -431,16 +439,20 @@ export class UpdateUserProfileComponent implements OnInit {
   }
   addUserCourses(){
     if (!this.profileForm.value.userCourses) {
-      if (this.translate.currentLang == 'ar') {
-        this.coursesMessage = {
-          message: this.translate.instant('UPDATE_USER_PG.COURSE'),
-          type: BaseConstantModel.DANGER_TYPE
-        }
-      } else {
-        this.coursesMessage = {
-          message: this.translate.instant('UPDATE_USER_PG.COURSE'),
-          type: BaseConstantModel.DANGER_TYPE
-        }
+      // if (this.translate.currentLang == 'ar') {
+      //   this.coursesMessage = {
+      //     message: this.translate.instant('UPDATE_USER_PG.COURSE'),
+      //     type: BaseConstantModel.DANGER_TYPE
+      //   }
+      // } else {
+      //   this.coursesMessage = {
+      //     message: this.translate.instant('UPDATE_USER_PG.COURSE'),
+      //     type: BaseConstantModel.DANGER_TYPE
+      //   }
+      // }
+      this.coursesMessage = {
+        message: this.translate.instant('UPDATE_USER_PG.COURSE'),
+        type: BaseConstantModel.DANGER_TYPE
       }
       return;
     }
