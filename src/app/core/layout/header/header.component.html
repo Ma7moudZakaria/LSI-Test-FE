@@ -10,7 +10,7 @@
       
       <li class="pl-3 pr-3">
         <form class="form-inline" action="/action_page.php">
-            <div class="input-group">
+            <div class="input-group" *ngIf="translate.currentLang == lang.ar">
                 <div class="input-group-prepend">
                     <span class="input-group-text bg-white pl-2 pr-2 border-md border-right-0">
                         <img  class="UserLogin_icon_input" src="../../../assets/images/search.svg">
@@ -22,6 +22,17 @@
                 
                              
         </div>
+        <div class="input-group" *ngIf="translate.currentLang == lang.en">
+            <input   pInputText
+            placeholder="search" 
+            class=" px-1 form-control UserLogin__FormControl bg-white border-right-0 border-md input-sm">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white pl-2 pr-2 border-md border-left-0">
+                    <img  class="UserLogin_icon_input" src="../../../assets/images/search.svg">
+                </span>
+            </div>
+                         
+    </div>
           </form>
     </li>
     <li class="pl-3 pr-3">

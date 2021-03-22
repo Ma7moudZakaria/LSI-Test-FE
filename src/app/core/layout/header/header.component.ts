@@ -17,7 +17,8 @@ export class HeaderComponent implements OnInit {
   showPro = true;
   submitClose = false;
   title = '';
-  constructor(private langService: LanguageService) { }
+  lang = LanguageEnum;
+  constructor(private langService: LanguageService, public translate : TranslateService) { }
 
   ngOnInit(): void {
     this.currentLang = JSON.parse(localStorage.getItem("lang") || '{}');

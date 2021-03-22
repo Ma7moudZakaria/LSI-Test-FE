@@ -4,9 +4,12 @@
     border-radius: 19px;
     opacity: 1;
     padding: 2rem;
-    height : 85%;
+    height : 95%;
     margin-top: 1rem;
-    margin-right: 1rem;
+    //margin-right: 1rem;
+    // .list-group_program-list ul {
+    //     padding-inline-start: 0 !important;
+    // }
     .internal_scroll_list_group:lang(ar) {
         // background-color: antiquewhite;
                 height: 470px;
@@ -20,6 +23,16 @@
                         padding-right: 0.5rem;
                     }
 }
+
+.list-group_program-list:lang(en){
+    margin-left: 1rem;
+   
+  }
+  .list-group_program-list:lang(ar){
+   
+    margin-right: 0rem;
+  }
+
 .list-group_program-list > p{
     font-family: Almarai-Bold;
     font-size: 20px;

@@ -22,15 +22,37 @@
         </mat-checkbox>
       <!-- <mat-checkbox class="example-margin" >مواد صوتية</mat-checkbox>
       <mat-checkbox class="example-margin ml-5 mr-5" >مواد مقرؤة</mat-checkbox> -->
-      <div *ngIf="resMessage" class="alert alert-{{ resMessage.type }} my-4 py-2">
+      <div *ngIf="resMessage.message" class="alert alert-{{ resMessage.type }} my-4 py-2">
         {{ resMessage.message }}
     </div> 
     </section>
 
   </div>
   
-<section class="w-100 row contanier_matrial-card">
-  <div class="matrial-card col-lg-5 col-md-5 col-sm-12 m-2" *ngFor="let item of materials">
+<section class="internal_scroll_list_group">
+  <div class="w-100 row contanier_matrial-card">
+    <div class="matrial-card col-lg-5 col-md-5 col-sm-12 m-2" *ngFor="let item of materials">
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-4">
+          <span *ngIf="item.categoryId == voiceId"> <img calss="" src="assets/images/scientificMaterial/Group 18138.svg" alt=""></span>
+          <span *ngIf="item.categoryId == booksId"> <img calss="" src="assets/images/scientificMaterial/Group 18139.svg" alt=""></span>
+          <span *ngIf="item.categoryId == plansId"> <img calss="" src="assets/images/scientificMaterial/Group 18138.svg" alt=""></span>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-8">
+          <p class="cat">{{translate.currentLang === langEnum.en ? item.matrialCategoryEn : item.matrialCategoryAr }}</p>
+          <p> {{ translate.currentLang === langEnum.en ? item.matrialTitleEn : item.matrialTitleAr}}</p>
+          <h3>{{translate.currentLang === langEnum.en  ? item.matrialTitleEn : item.matrialTitleAr}}</h3>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-4 mt-4" (click)="loadMaterial(item.id || '')">
+          <span> <img  class="size_icon" src="assets/images/scientificMaterial/Icon feather-edit-3.svg" alt=""></span>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-4 mt-4" (click)="confirmDialog(item.id || '')">
+          <span> <img   class="size_icon"  src="assets/images/scientificMaterial/Icon feather-trash-2.svg" alt=""></span>
+        </div>
+      </div> 
+    </div>
+  </div>
+  <!-- <div class="matrial-card col-lg-5 col-md-5 col-sm-12 m-2" *ngFor="let item of materials">
     <div class="row">
       <div class="col-lg-3 col-md-3 col-sm-4">
         <span *ngIf="item.categoryId == voiceId"> <img calss="" src="assets/images/scientificMaterial/Group 18138.svg" alt=""></span>
@@ -49,7 +71,7 @@
         <span> <img   class="size_icon"  src="assets/images/scientificMaterial/Icon feather-trash-2.svg" alt=""></span>
       </div>
     </div>  
-  </div>
+  </div> -->
 
   
 </section>

@@ -2,8 +2,8 @@
     background: #fbfbfb 0% 0% no-repeat padding-box;
     border-radius: 19px;
     opacity: 1;
-    padding: 2rem;
-    height: 85%;
+    padding: 1.7rem;
+    height: 95%;
     margin-top: 1rem;
 }
 .material-list:lang(en){
@@ -63,7 +63,7 @@ p.title_material-list:lang(ar),
 }
 .contanier_matrial-card {
     // background-color: antiquewhite;
-    height: 70%;
+   // height: 70%;
     overflow-y: auto;
 }
 .size_icon {
@@ -103,3 +103,16 @@ p.title_material-list:lang(ar),
         max-width: 47.666667%;
     }
 }
+
+.internal_scroll_list_group:lang(ar) {
+    // background-color: antiquewhite;
+            height: 470px;
+            overflow-y: auto;
+            padding-left: 0.5rem;
+        }
+        .internal_scroll_list_group:lang(en) {
+            // background-color: antiquewhite;
+                    height: 470px;
+                    overflow-y: auto;
+                    padding-right: 0.5rem;
+                }
