@@ -4,8 +4,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { IQuestionBankQuestionUpdateModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-question-update-model';
 import { IQuestionBankQuestionsFilterRequest } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-filter-request';
 import { IQuestionBankQuestionsModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-model';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { QuestionBankQuestionService } from 'src/app/core/services/question-bank-services/question-bank-question.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
@@ -27,6 +30,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   currentlyOpenedItemIndex = -1;
   langEnum = LanguageEnum;
   isSave=false;
+  resultMessage:BaseMessageModel = {};
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
      public translate: TranslateService,public dialog: MatDialog) {
       }
@@ -126,5 +130,48 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
     if(this.currentlyOpenedItemIndex === itemIndex) {
       this.currentlyOpenedItemIndex = -1;
     }
+  }
+  onCheckboxChange(questionBankQuestionUpdate: IQuestionBankQuestionUpdateModel){
+
+    this.questionBankQuestionService.UpdateQuestionBankQuestion(questionBankQuestionUpdate).subscribe(res => {
+      if (res.isSuccess) {
+        this.resultMessage = {
+          message:res.message||"",
+          type: BaseConstantModel.SUCCESS_TYPE
+        }
+        setTimeout(() => {
+          this.resultMessage = {
+            message:"",
+            type:""
+          }
+        }, 1500)
+      }
+      else {
+        this.resultMessage = {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+        setTimeout(() => {
+          this.resultMessage = {
+            message:"",
+            type:""
+          }
+        }, 1500)
+      }
+      
+    },
+      error => {
+        this.resultMessage = {
+          message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+          type: BaseConstantModel.DANGER_TYPE
+        }
+        setTimeout(() => {
+          this.resultMessage = {
+            message:"",
+            type:""
+          }
+        }, 1500)
+      })
+
   }
 }
