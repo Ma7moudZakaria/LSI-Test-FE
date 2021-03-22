@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IQuestionBankQuestionCreatModel } from '../../interfaces/questionBankQuestions-interfaces/iquestion-bank-question-creat-model';
 import { IQuestionBankQuestionUpdateModel } from '../../interfaces/questionBankQuestions-interfaces/iquestion-bank-question-update-model';
+import { IQuestionBankQuestionUpdateOrderBy } from '../../interfaces/questionBankQuestions-interfaces/iquestion-bank-question-update-order-by';
 import { IQuestionBankQuestionsFilterRequest } from '../../interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-filter-request';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 
@@ -16,7 +17,7 @@ export class QuestionBankQuestionService {
    GetQuestionBankQuestionDetailsURL=environment.baseUrl+'QuestionBankQuestions/get-question-bank-question/';
   GetQuestionBankQuestionsFilterURL=environment.baseUrl+'QuestionBankQuestions/get-question-bank-questions-filter/';
   DeleteQuestionBankQuestionURL=environment.baseUrl+'QuestionBankQuestions/delete-question-bank-question/';
-
+  UpdateOrderQuestionBankQuestionURL=environment.baseUrl+'QuestionBankQuestions/update-order-question-bank-question/';
   constructor(private http:HttpClient) { }
   addQuestionBankQuestion(model:IQuestionBankQuestionCreatModel):Observable<BaseResponseModel>{
     return this.http.post<BaseResponseModel>(this.AddQuestionBankQuestionURL,model);
@@ -33,6 +34,9 @@ export class QuestionBankQuestionService {
   }
   deleteQuestionBankQuestion(id:string):Observable<BaseResponseModel>{
     return this.http.delete<BaseResponseModel>(this.DeleteQuestionBankQuestionURL+id);
+  }
+  UpdateOrderQuestionBankQuestion(model:IQuestionBankQuestionUpdateOrderBy):Observable<BaseResponseModel>{
+    return this.http.put<BaseResponseModel>(this.UpdateOrderQuestionBankQuestionURL,model);
   }
 
 }
