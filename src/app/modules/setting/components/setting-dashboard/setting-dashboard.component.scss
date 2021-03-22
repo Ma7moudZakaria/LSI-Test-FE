@@ -28,9 +28,14 @@
 }
 
 
+
+
 .contanier_setting-card{
     height: 27rem;
     // overflow-y: auto;
+    .setting-text{
+        color: $p_color;
+    }
 }
 
 .setting-card p{

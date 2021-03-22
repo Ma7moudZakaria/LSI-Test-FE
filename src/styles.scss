@@ -108,9 +108,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .content_form
 {
+  height: 25.5rem;
    padding-left: 3.5rem;
   padding-right: 3.5rem;
-  min-height: 50vh;
+  // min-height: 50vh;
 }
 .content_form:lang(ar){
   text-align: right;
