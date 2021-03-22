@@ -193,7 +193,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
     
       this.questionBankQuestionService.UpdateOrderQuestionBankQuestion(this.questionBankQuestionUpdateOrderBy).subscribe(res => {
         if (res.isSuccess) {
-       
+       this.getQuestionBankQuestions(this.selectedCategoryId.id);
         }
         else {
      
