@@ -28,7 +28,7 @@ export class ResetPasswordComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder, private translate: TranslateService,
-    private authService: AuthService) { }
+    private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.resetPasswordFormG();
@@ -69,10 +69,11 @@ export class ResetPasswordComponent implements OnInit {
         console.log(res);
         if (res.isSuccess){
           this.isSubmit = false;
-          this.resMessage = {
-            message: res.message,
-            type: BaseConstantModel.SUCCESS_TYPE
-          }
+          this.router.navigateByUrl('/dashboard');
+          // this.resMessage = {
+          //   message: res.message,
+          //   type: BaseConstantModel.SUCCESS_TYPE
+          // }
         }
         else{
           this.isSubmit = false;

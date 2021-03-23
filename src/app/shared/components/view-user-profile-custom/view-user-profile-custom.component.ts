@@ -52,7 +52,7 @@ export class ViewUserProfileCustomComponent implements OnInit {
           this.birthdate = new Date(birthdateValue.setDate(birthdateValue.getDate() + 1)).toISOString().slice(0, 10);
         }
         if (!this.userProfileDetails?.proPic){
-          this.userProfileDetails.proPic = '../../../../../assets/images/profile1.png';
+          this.userProfileDetails.proPic = '../../../../../assets/images/Profile.svg';
         }
       }
       else {

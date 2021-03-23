@@ -245,12 +245,36 @@
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                 <label class="Register__Label" for="educationalLevel"> {{ 'UPDATE_USER_PG.MEMORIES_QURAN' | translate }} </label>
-                                <input type="file" class="form-control UserRegister__FormControl" multiple
+                                
+                                    <label class="custom-file custom-file__text" for="importFile">
+                                        <div class="row">                                            
+                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                                <input type="text" class=" form-control UserRegister__FormControl" >
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2  UpdateUserIcon">
+                                                <img class=" upload-icon" src="assets/images/update-user/UploadIcon.svg"/>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 m-2 UpdateUserIcon">
+                                                
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <input type="file" class="custom-file-input" id="importFile" multiple
+                                     (change)="onEjazaFileChange($any($event.target).files)" hidden>
+                                
+
+                                <!-- <input type="file" class="form-control UserRegister__FormControl" multiple
                                     id="importFile" (change)="onEjazaFileChange($any($event.target).files)"
-                                    placeholder="ارفق اجازة حفظ القران">
+                                    placeholder="ارفق اجازة حفظ القران"> -->
                                 <div class="row">
                                     <div class="col-lg-8 col-md-8">
-                                        <ul class="files-conainer">
+                                        <div class="badges mt-3">
+                                            <span *ngFor="let item of fileList;let i=index"
+                                                class="badge badge-info p-2">{{item.fileName}}
+                                                <a (click)="DeleteAttachment(i,item.id)"><i class="fa  fa-minus"></i></a>
+                                            </span>
+                                        </div>
+                                        <!-- <ul class="files-conainer">
                                             <li *ngFor="let item of fileList;let i=index">
                                                 <button (click)="DeleteAttachment(i,item.id)">{{ 'UPDATE_USER_PG.DELETE' | translate }}</button>
                                                 <a class="card" href="{{item.url}}" target="_blank">
@@ -264,7 +288,7 @@
                                                     </div>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul> -->
                                     </div>
                                 </div>
                             </div>

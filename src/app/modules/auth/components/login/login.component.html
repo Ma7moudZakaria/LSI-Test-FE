@@ -47,10 +47,15 @@
                                         </span>
                                     </div>
                                     <input id="password" pPassword type="password" 
-                                    [type]="hidePassword ? 'password' : 'text'" formControlName="password" name="password"
+                                    [type]="hide ? 'password' : 'text'" formControlName="password" name="password"
                                     placeholder="{{'GENERAL.PASSWORD' | translate}}" 
                                     class="  px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
+                                
+                        
+                                    
                                 </div>      
+                                <!-- <mat-icon class="placeholder " (click)="myFunction()">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+                                
                                 <div *ngIf="f.password.errors && (f.password.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                     <div *ngIf="f.password.errors?.required">
                                         {{'GENERAL.PASSWORD_REQUIRED' | translate}}

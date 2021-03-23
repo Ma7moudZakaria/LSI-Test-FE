@@ -21,7 +21,7 @@
                                         </span>
                                     </div>
                                     <input id="userName"  pInputText type="text" formControlName="userName" name="userName" 
-                                    placeholder="Enter User Name" 
+                                    placeholder="{{'GENERAL.USERNAME' | translate}}"
                                     class=" px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
                                     
                                 </div>   
@@ -95,7 +95,7 @@
                                             </div>
                                             <input id="password" pPassword type="password" 
                                             [type]="hidePassword ? 'password' : 'text'" formControlName="password" name="password"
-                                            placeholder="Password" 
+                                            placeholder="{{'GENERAL.PASSWORD' | translate}}"
                                             class="  px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
                                             
                                             
@@ -126,7 +126,7 @@
                                             </div>
                                             <input id="confirmPassword" pPassword type="password" 
                                             [type]="hidePassword ? 'password' : 'text'" formControlName="confirmPassword" name="confirmPassword"
-                                            placeholder="confirmPassword" 
+                                            placeholder="{{'GENERAL.CONFIRM_PASSWORD' | translate}}"
                                             class="  px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
                                         </div>   
                                         <div *ngIf="f.confirmPassword.errors && (f.confirmPassword.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">

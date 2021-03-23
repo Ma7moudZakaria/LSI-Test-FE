@@ -9,6 +9,7 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { ActivateUserComponent } from './components/activate-user/activate-user.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { TranslateModule } from '@ngx-translate/core';
     AuthRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    MatIconModule,
     TranslateModule
   ]
 })
