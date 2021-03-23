@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit ,EventEmitter, Input, Output} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -5,8 +6,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IQuestionBankQuestionUpdateModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-question-update-model';
+import { IQuestionBankQuestionUpdateOrderBy } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-question-update-order-by';
 import { IQuestionBankQuestionsFilterRequest } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-filter-request';
 import { IQuestionBankQuestionsModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-model';
+import { IDragDropAccordionItems } from 'src/app/core/interfaces/shared-interfaces/accordion-interfaces/idrag-drop-accordion-items';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
@@ -31,6 +34,9 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   langEnum = LanguageEnum;
   isSave=false;
   resultMessage:BaseMessageModel = {};
+  items1:any;
+  questionBankQuestionUpdateOrderBy:IQuestionBankQuestionUpdateOrderBy={};
+  listOrder?: number[];
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
      public translate: TranslateService,public dialog: MatDialog) {
       }
@@ -133,7 +139,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   }
   onCheckboxChange(questionBankQuestionUpdate: IQuestionBankQuestionUpdateModel){
 
-    this.questionBankQuestionService.UpdateQuestionBankQuestion(questionBankQuestionUpdate).subscribe(res => {
+    this.questionBankQuestionService.updateQuestionBankQuestion(questionBankQuestionUpdate).subscribe(res => {
       if (res.isSuccess) {
         this.resultMessage = {
           message:res.message||"",
@@ -173,5 +179,35 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
         }, 1500)
       })
 
+  }
+
+  drop(event: CdkDragDrop<IDragDropAccordionItems[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      this.listOrder=[];
+      for(let i =0;i<=event.container.data.length-1;i++){
+        this.listOrder?.push(event.previousContainer.data[i].order||(i+1));
+      }
+      this.questionBankQuestionUpdateOrderBy.categoryId=this.selectedCategoryId.id;
+      this.questionBankQuestionUpdateOrderBy.orderList=this.listOrder;
+    
+      this.questionBankQuestionService.updateOrderQuestionBankQuestion(this.questionBankQuestionUpdateOrderBy).subscribe(res => {
+        if (res.isSuccess) {
+       this.getQuestionBankQuestions(this.selectedCategoryId.id);
+        }
+        else {
+     
+        }
+        
+      },
+        error => {
+      
+        })
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
   }
 }

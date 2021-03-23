@@ -59,8 +59,14 @@
     <section class="internal_scroll_list_group">
         <div class="w-100 row contanier_matrial-card">
             <div class="col-lg-12">
-                <mat-accordion>
-                    <mat-expansion-panel *ngFor="let QBQ of questionBankQuestionList; let i = index;"
+                <mat-accordion
+                cdkDropList
+                #unassignedList="cdkDropList"
+                [cdkDropListData]="questionBankQuestionList"
+                        [cdkDropListConnectedTo]="[items1]"
+                (cdkDropListDropped)="drop($event)"
+                >
+                    <mat-expansion-panel cdkDrag *ngFor="let QBQ of questionBankQuestionList; let i = index;"
                         (opened)="setOpened(i)" (closed)="setClosed(i)">
                        
                         <mat-expansion-panel-header>
