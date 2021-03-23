@@ -26,6 +26,7 @@
                 </span>
             </div>
             <input   
+            (change)="loadPrograms($any($event.target).value)"
             placeholder="{{'GENERAL.SEARCH' | translate}}" 
             class=" px-3 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
             

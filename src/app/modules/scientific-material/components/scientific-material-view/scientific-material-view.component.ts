@@ -15,6 +15,7 @@ export class ScientificMaterialViewComponent implements OnInit {
   programs: any;
   selectedMaterialId:any;
   selectedProgram?:IprogramsModel;
+  refreshMaterialId?:string;
   submitSuccess:any;
   showMaterialForm = false;
   constructor( private scientifcMaterialService: ScientificMaterialService,
@@ -67,5 +68,7 @@ export class ScientificMaterialViewComponent implements OnInit {
     this.showMaterialForm = !event;
 
   }
-
+  setrefreshMaterialId(event:any){
+    this.refreshMaterialId = event;
+  }
 }

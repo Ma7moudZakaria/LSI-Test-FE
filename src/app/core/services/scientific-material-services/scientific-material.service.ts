@@ -18,7 +18,7 @@ export class ScientificMaterialService {
   getScientificMatrialDetailsURL = environment.baseUrl + 'ScientificMatrial/get-scientific-matrial-by-id/';
   getScientificMatrialFilterURL = environment.baseUrl + 'ScientificMatrial/get-scientific-matrial-filter/';
   deleteScientificMatrialURL = environment.baseUrl + 'ScientificMatrial/delete-scientific-matrial/';
-  getProgramsLookupUrl = environment.baseUrl + 'Programs/get-programs-lookup';
+  getProgramsLookupUrl = environment.baseUrl + 'Programs/get-programs-lookup/';
   getScientificMatrialCategoriesURL = environment.baseUrl + 'ScientificMatrial/get-scientific-matrial-categories';
 
   constructor(private http: HttpClient) { }
@@ -39,8 +39,9 @@ export class ScientificMaterialService {
   getScientificMateriaFilter(filterRequest: IScientificMaterialFilter): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.getScientificMatrialFilterURL, filterRequest)
   }
-  getProgramsLookup(): Observable<BaseResponseModel> {
-    return this.http.get<BaseResponseModel>(this.getProgramsLookupUrl)
+  getProgramsLookup(programName?:string): Observable<BaseResponseModel> {
+    return this.http.get<BaseResponseModel>(programName ?this.getProgramsLookupUrl +programName:this.getProgramsLookupUrl 
+      )
   }
   GetScientificMatrialCategoriesLookup():Observable<BaseResponseModel>{
     return this.http.get<BaseResponseModel>(this.getScientificMatrialCategoriesURL);
