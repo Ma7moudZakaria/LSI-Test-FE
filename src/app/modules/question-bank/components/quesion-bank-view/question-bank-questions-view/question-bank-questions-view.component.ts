@@ -186,7 +186,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
       this.ListOrder=[];
       for(let i =0;i<=event.container.data.length-1;i++){
-        this. ListOrder?.push(event.previousContainer.data[i].order||-1);
+        this. ListOrder?.push(event.previousContainer.data[i].order||(i+1));
       }
       this.questionBankQuestionUpdateOrderBy.categoryId=this.selectedCategoryId.id;
       this.questionBankQuestionUpdateOrderBy.orderList=this.ListOrder;
@@ -201,10 +201,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
         
       },
         error => {
-          // this.resultMessage = {
-          //   message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
-          //   type: BaseConstantModel.DANGER_TYPE
-          // }
+      
         })
     } else {
       transferArrayItem(event.previousContainer.data,
