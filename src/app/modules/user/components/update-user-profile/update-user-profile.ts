@@ -103,7 +103,7 @@ export class UpdateUserProfileComponent implements OnInit {
       if (res.isSuccess) {
         this.userProfileDetails = res.data as IUserProfile;
         if (!this.userProfileDetails?.proPic){
-          this.userProfileDetails.proPic = '../../../../../assets/images/profile1.png';
+          this.userProfileDetails.proPic = '../../../../../assets/images/Profile.svg';
         }
         this.PopulateForm()
       }

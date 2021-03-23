@@ -15,13 +15,14 @@ import { ViewUserProfileCustomComponent } from './components/view-user-profile-c
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent],
   imports: [
     CommonModule, RouterModule,TranslateModule,
-    MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule
+    MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,MatIconModule
   ],
   exports: [
     MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule,

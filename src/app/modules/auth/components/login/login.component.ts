@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
   resMessage: BaseMessageModel = {};
   currentLang: LanguageEnum | undefined;
   isSubmit = false;
+  hide: boolean = true;
 
   constructor(
       private fb: FormBuilder,
@@ -34,6 +35,10 @@ export class LoginComponent implements OnInit {
       private lookupService: LookupService,
       private router: Router
       ) { }
+
+  myFunction() {
+    this.hide = !this.hide;
+  }
 
   ngOnInit(): void {
     // this.userform = this.fb.group({
