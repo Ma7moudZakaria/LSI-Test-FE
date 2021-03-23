@@ -43,6 +43,7 @@ export class AddScientificMaterialComponent implements OnInit {
 
   @Input() selectedMaterialId: any;
   @Output() submitSuccess = new EventEmitter<boolean>();
+  @Output() refreshMaterialId =  new EventEmitter<string>();
   langEnum = LanguageEnum;
   resMessage: BaseMessageModel = {};
 
@@ -159,8 +160,8 @@ export class AddScientificMaterialComponent implements OnInit {
   }
 
   buildForm() {
-    const engPattern ="^[a-zA-Z0-9' '-'\s]{1,40}$";
-    const arabicPattern = "^[\u0621-\u064A\u0660-\u0669 0-9]+$";
+    const engPattern ="^[a-zA-Z ()/\\\\_-]+$";
+    const arabicPattern = "^[\u0621-\u064A\u0660-\u0669 ()/\\\\_-]+$";
     this.currentForm = this.fb.group(
       {
         matrialTitleAr: ['', [Validators.required, Validators.maxLength(50), Validators.pattern(arabicPattern)]],
@@ -279,6 +280,7 @@ export class AddScientificMaterialComponent implements OnInit {
               message: res.message,
               type: BaseConstantModel.SUCCESS_TYPE
             }
+            this.refreshMaterialId.emit(Date.now().toString());
             //this.closeForm();
           }
           else {
@@ -316,6 +318,7 @@ export class AddScientificMaterialComponent implements OnInit {
               message: res.message,
               type: BaseConstantModel.SUCCESS_TYPE
             }
+            this.refreshMaterialId.emit(Date.now().toString());
             //this.closeForm();
           }
           else {

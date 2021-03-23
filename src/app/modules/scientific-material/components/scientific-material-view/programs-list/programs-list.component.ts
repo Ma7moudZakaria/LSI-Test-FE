@@ -24,8 +24,8 @@ export class ProgramsListComponent implements OnInit {
     this.loadPrograms();
   }
 
-  loadPrograms() {
-    this.scientifcMaterialService.getProgramsLookup().subscribe(
+  loadPrograms(programName?:string) {
+    this.scientifcMaterialService.getProgramsLookup(programName).subscribe(
       (res: BaseResponseModel) => {
         this.programs = res.data as IprogramsModel[];
 

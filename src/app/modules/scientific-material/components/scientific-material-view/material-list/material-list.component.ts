@@ -21,6 +21,8 @@ export class MaterialListComponent implements OnInit {
   materials: IScientificMaterialGrid[] = [];
   materialFilter = {} as IScientificMaterialFilter
   @Input() selectedProgram?: IprogramsModel;
+  @Input() refreshMaterialId?: string;
+
   @Output() materialId = new EventEmitter<string>();
   langEnum = LanguageEnum;
   materialCategoires: BaseLookupModel[] = [];
@@ -41,12 +43,14 @@ export class MaterialListComponent implements OnInit {
   }
   ngOnChanges(changes: any) {
 
-    this.materialFilter.programs = changes.selectedProgram.currentValue?.id;
-
-    this.program = changes.selectedProgram.currentValue;
-    // this.translate.currentLang == 'ar' ?
-    //   changes.selectedProgram.currentValue?.arabName : changes.selectedProgram.currentValue?.engName;
+    if (changes.selectedProgram) {
+      this.materialFilter.programs = changes.selectedProgram?.currentValue?.id;
+      this.program = changes.selectedProgram?.currentValue;      
+    }
+    else if(changes.refreshMaterialId)   
+    this.refreshMaterialId = changes.refreshMaterialId.currentValue;
     this.loadProgramMaterial();
+
   }
   loadProgramMaterial() {
     this.materialFilter.skip = 0;
