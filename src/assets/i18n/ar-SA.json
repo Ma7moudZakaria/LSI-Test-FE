@@ -28,6 +28,7 @@
     "CONFIRM_PASSWORD_MIN_LENGTH": "يرجى ادخال كلمة مرور أكثر من 6 حرفا",
     "EMAIL_ADDRESS": "يرجى ادخال البريد الالكترونى صحيحا",
     "EMAIL_REQUIRED": "حقل الايميل مطلوب",
+    "USERNAME": "ادخل اسم االمستخدم",
     "USERNAME_REQUIRED": "حقل اسم المستخدم مطلوب",
     "USERNAME_MIN_LENGTH": "يرجى ادخال اسم المستخدم أكثر من 3 حرفا",
     "USERNAME_MAX_LENGTH": "يرجى ادخال  اسم المستخدم أقل من 50 حرفا",
