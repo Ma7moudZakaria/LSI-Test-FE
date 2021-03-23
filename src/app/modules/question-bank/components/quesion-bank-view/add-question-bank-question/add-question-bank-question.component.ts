@@ -129,7 +129,7 @@ export class AddQuestionBankQuestionComponent implements OnInit {
         this.questionBankQuestionUpdate.engQuestion=this.f.QuestionEn.value; 
         this.questionBankQuestionUpdate.arabAnswer=this.f.AnswerAr.value;
         this.questionBankQuestionUpdate.engAnswer=this.f.AnswerEn.value; 
-        this.questionBankQuestionService.UpdateQuestionBankQuestion(this.questionBankQuestionUpdate).subscribe(res => {
+        this.questionBankQuestionService.updateQuestionBankQuestion(this.questionBankQuestionUpdate).subscribe(res => {
           if (res.isSuccess) {
             this.isSubmit = false;
             this.disableSaveButtons = true;

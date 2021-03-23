@@ -36,7 +36,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   resultMessage:BaseMessageModel = {};
   items1:any;
   questionBankQuestionUpdateOrderBy:IQuestionBankQuestionUpdateOrderBy={};
-  ListOrder?: number[];
+  listOrder?: number[];
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
      public translate: TranslateService,public dialog: MatDialog) {
       }
@@ -139,7 +139,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   }
   onCheckboxChange(questionBankQuestionUpdate: IQuestionBankQuestionUpdateModel){
 
-    this.questionBankQuestionService.UpdateQuestionBankQuestion(questionBankQuestionUpdate).subscribe(res => {
+    this.questionBankQuestionService.updateQuestionBankQuestion(questionBankQuestionUpdate).subscribe(res => {
       if (res.isSuccess) {
         this.resultMessage = {
           message:res.message||"",
@@ -184,14 +184,14 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   drop(event: CdkDragDrop<IDragDropAccordionItems[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-      this.ListOrder=[];
+      this.listOrder=[];
       for(let i =0;i<=event.container.data.length-1;i++){
-        this. ListOrder?.push(event.previousContainer.data[i].order||(i+1));
+        this.listOrder?.push(event.previousContainer.data[i].order||(i+1));
       }
       this.questionBankQuestionUpdateOrderBy.categoryId=this.selectedCategoryId.id;
-      this.questionBankQuestionUpdateOrderBy.orderList=this.ListOrder;
+      this.questionBankQuestionUpdateOrderBy.orderList=this.listOrder;
     
-      this.questionBankQuestionService.UpdateOrderQuestionBankQuestion(this.questionBankQuestionUpdateOrderBy).subscribe(res => {
+      this.questionBankQuestionService.updateOrderQuestionBankQuestion(this.questionBankQuestionUpdateOrderBy).subscribe(res => {
         if (res.isSuccess) {
        this.getQuestionBankQuestions(this.selectedCategoryId.id);
         }
