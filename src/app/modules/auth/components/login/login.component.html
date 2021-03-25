@@ -49,12 +49,12 @@
                                     <input id="password" pPassword type="password" 
                                     [type]="hide ? 'password' : 'text'" formControlName="password" name="password"
                                     placeholder="{{'GENERAL.PASSWORD' | translate}}" 
-                                    class="  px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
+                                    class="  px-1 form-control UserLogin__FormControl pw bg-white border-left-0 border-md input-sm">
                                 
                         
-                                    
+                                    <mat-icon class="placeholder " (click)="switchLang()">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                 </div>      
-                                <!-- <mat-icon class="placeholder " (click)="myFunction()">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+                                
                                 
                                 <div *ngIf="f.password.errors && (f.password.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                     <div *ngIf="f.password.errors?.required">

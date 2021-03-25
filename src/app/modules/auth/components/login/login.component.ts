@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       private router: Router
       ) { }
 
-  myFunction() {
+  switchLang() {
     this.hide = !this.hide;
   }
 
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
 
     this.userform = this.fb.group({
       email: ["", [Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
-      password: ["", [Validators.required, Validators.minLength(6) , Validators.maxLength(50)]],
+      password: ["", [Validators.required, Validators.minLength(6) , Validators.maxLength(12)]],
     });
     
     this.currentLang = this.translate.currentLang === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
