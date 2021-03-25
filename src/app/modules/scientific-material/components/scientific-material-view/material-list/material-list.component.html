@@ -9,7 +9,7 @@
       {{ 'PROGRAMS_LIST.ALL' | translate}}
     </p>
   </div>
-  <div class="col-6 upload">
+  <div class="upload">
     <a (click)="loadMaterial()">
        <img calss="m-2 pull-left" src="assets/images/scientificMaterial/Group 18093.svg" alt="">
     </a>
@@ -28,7 +28,13 @@
     </section>
 
   </div>
-  
+  <div  *ngIf="materials.length===0" class="row">
+    <label class="no-data">
+        {{"SCIENTIFIC_MATERIAL.NO_DATA"|translate}} 
+    </label>
+      
+     
+    </div>
 <section class="internal_scroll_list_group">
   <div class="w-100 row contanier_matrial-card">
     <div class="matrial-card col-lg-5 col-md-5 col-sm-12 m-2" *ngFor="let item of materials">

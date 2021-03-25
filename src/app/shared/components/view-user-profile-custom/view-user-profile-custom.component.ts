@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
@@ -11,6 +12,7 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 import { UserService } from 'src/app/core/services/user-services/user.service';
+import { ConfirmDialogModel, ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-view-user-profile-custom',
@@ -32,6 +34,7 @@ export class ViewUserProfileCustomComponent implements OnInit {
     private router: Router,
     public translate: TranslateService,
     private userService: UserService,
+    private dialog: MatDialog,
     private authService: AuthService) {
   }
 
@@ -72,5 +75,23 @@ export class ViewUserProfileCustomComponent implements OnInit {
   closeNav() {
     this.submitClose.emit(true);
   }
+  result: string = '';
+  async confirmDialog(id?:string){
+     const confirm = this.translate.instant('GENERAL.LOGOUT_CONFIRM');
+     const  message = this.translate.instant('GENERAL.LOGOUT_MESSAGE');
+    
+     const dialogData = new ConfirmDialogModel(confirm, message);
 
+     const dialogRef = this.dialog.open(ConfirmModalComponent, {
+       maxWidth: "500px",
+       data: dialogData
+     });
+     dialogRef.afterClosed().subscribe(dialogResult => {
+       this.result= dialogResult;
+       if(dialogResult==true){
+        this.logout();
+       }
+      
+     });
+   }
 }
