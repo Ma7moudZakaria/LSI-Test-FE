@@ -20,6 +20,9 @@ import { ErrorInterceptor } from './core/interceptors/error-interceptors/error.i
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ConfirmModalComponent } from './shared/components/confirm-modal/confirm-modal.component';
 import { SidebarComponent } from './core/layout/sidebar/sidebar.component';
+import { MyLoaderComponent } from './shared/components/my-loader/my-loader.component';
+import { LoaderService } from './core/services/loader-services/loader.service';
+import { LoaderInterceptor } from './core/services/interceptors/loader-interceptor.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -30,7 +33,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    MyLoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +60,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    LoaderService,
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],
   exports: [TranslateModule, MatRadioModule, MatCheckboxModule],
