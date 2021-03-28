@@ -123,6 +123,24 @@ export class SharedMaterialComponent implements OnInit {
     title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
     paragraph : "test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 "
     // description: 'This is description of tasks 3'
+  },
+  {
+    id: '4',
+    title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
+    paragraph : "test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 "
+    // description: 'This is description of tasks 3'
+  },
+  {
+    id: '5',
+    title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
+    paragraph : "test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 "
+    // description: 'This is description of tasks 3'
+  },
+  {
+    id: '6',
+    title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
+    paragraph : "test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 "
+    // description: 'This is description of tasks 3'
   }
 ];
 }
