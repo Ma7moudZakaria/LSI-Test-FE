@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       private router: Router
       ) { }
 
-  switchLang() {
+  togglePassword() {
     this.hide = !this.hide;
   }
 
