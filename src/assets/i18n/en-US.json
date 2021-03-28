@@ -161,7 +161,13 @@
     "SAVE": "Save",
     "ADD": "Add",
     "CANCEL": "Cancel",
-    "NO_DATA": "No Data found"
+    "NO_DATA": "No Data found",
+    "NAME_AR_MAX_LENGHT":"Department Arabic Must be less than 500 character",
+    "NAME_EN_MAX_LENGHT":"Department English Must be less than 500 character",
+    "QUESTION_AR_MAX_LENGHT":"Question Arabic Must be less than 50 character",
+    "QUESTION_EN_MAX_LENGHT":"Question English Must be less than 50 character",
+    "ANSWER_AR_MAX_LENGHT":"Answer Arabic Must be less than 500 character",
+    "ANSWER_EN_MAX_LENGHT":"Answer English Must be less than 500 character"
   },
   "SIDENAVBAR": {
     "DASHBORD": "DashBoard",

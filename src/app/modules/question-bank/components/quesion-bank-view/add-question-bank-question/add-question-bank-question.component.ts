@@ -85,10 +85,10 @@ export class AddQuestionBankQuestionComponent implements OnInit {
     const englishWordPattern ="^[a-zA-Z0-9' '-'\s]{1,40}$";
     this.currentForm = this.fb.group(
       {
-        QuestioAr: ['', [Validators.required, Validators.pattern(arabicWordPattern)]],
-        QuestionEn: ['', [Validators.required, Validators.pattern(englishWordPattern)]],
-        AnswerAr :['', [Validators.required, Validators.pattern(arabicWordPattern)]],
-        AnswerEn : ['', [Validators.required, Validators.pattern(englishWordPattern)]],
+        QuestioAr: ['', [Validators.required,Validators.maxLength(50), Validators.pattern(arabicWordPattern)]],
+        QuestionEn: ['', [Validators.required,Validators.maxLength(50), Validators.pattern(englishWordPattern)]],
+        AnswerAr :['', [Validators.required,Validators.maxLength(500), Validators.pattern(arabicWordPattern)]],
+        AnswerEn : ['', [Validators.required,Validators.maxLength(500), Validators.pattern(englishWordPattern)]],
       })
   }
   populate() {

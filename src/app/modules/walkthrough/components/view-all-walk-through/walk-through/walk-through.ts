@@ -98,9 +98,9 @@ export class WalkThroughComponent implements OnInit {
     this.isSubmit = true;
     this.resMessage = {};
     if (this.currentForm.valid) {
-      if (this.attachmentIds.length ==0) {
-        return;
-      }
+      // if (this.attachmentIds.length ==0) {
+      //   return;
+      // }
       this.mappModel();
 
       if (this.walkThrough.id) {

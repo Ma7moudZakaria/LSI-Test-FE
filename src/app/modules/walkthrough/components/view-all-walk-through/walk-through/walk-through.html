@@ -14,11 +14,11 @@
             </label>
             <input type="file" class="custom-file-input" id="importFile"
                 (change)="onFileChange($any($event.target).files)" hidden>
-            <div *ngIf="attachmentIds?.length == 0 && (isSubmit)" class="alert alert-danger mt-2 mb-2">
+            <!-- <div *ngIf="attachmentIds?.length == 0 && (isSubmit)" class="alert alert-danger mt-2 mb-2">
                 <div *ngIf="attachmentIds.length == 0">
                     {{ 'WALKTHROUGH.REQUIRED' | translate }}
                 </div>
-            </div>
+            </div> -->
         </div>
         <!-- <div class="form-group">
             <div class="col-lg-8 col-md-8">
@@ -41,7 +41,7 @@
         </div> -->
         <div class="form-group">
             <label for="comment">{{"WALKTHROUGH.ARABIC_MESSAGE" | translate}} </label>
-            <textarea class="form-control" cols="2" rows="5" id="InputtextAr" formControlName="textAr"></textarea>
+            <textarea class="form-control text-arabic" cols="2"  id="InputtextAr" formControlName="textAr"></textarea>
 
             <div *ngIf="f.textAr.errors && (f.textAr.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                 <div *ngIf="f.textAr.errors?.required">
@@ -54,7 +54,7 @@
         </div>
         <div class="form-group">
             <label for="comment">{{"WALKTHROUGH.ENGLISH_MESSAGE" | translate}} </label>
-            <textarea class="form-control" cols="2" rows="5" id="InputtextEn" formControlName="textEn"></textarea>
+            <textarea class="form-control text-english" cols="2"  id="InputtextEn" formControlName="textEn"></textarea>
             <div *ngIf="f.textEn.errors && (f.textEn.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                 <div *ngIf="f.textEn.errors?.required">
                     {{ 'WALKTHROUGH.REQUIRED' | translate }}

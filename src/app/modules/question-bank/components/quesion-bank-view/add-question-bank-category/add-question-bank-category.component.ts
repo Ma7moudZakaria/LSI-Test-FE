@@ -81,8 +81,8 @@ export class AddQuestionBankCategoryComponent implements OnInit {
     this.currentForm = this.fb.group(
       {
        
-        nameAr:['', [Validators.required, Validators.pattern(arabicWordPattern)]],
-        nameEn: ['', [Validators.required, Validators.pattern(englishWordPattern)]],
+        nameAr:['', [Validators.required,Validators.maxLength(500), Validators.pattern(arabicWordPattern)]],
+        nameEn: ['', [Validators.required,Validators.maxLength(500),  Validators.pattern(englishWordPattern)]],
 
       })
   }

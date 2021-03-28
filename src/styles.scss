@@ -232,7 +232,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   cursor: pointer;
 }
 
+.text-arabic{
+  text-align: right;
+}
 
+.text-english{
+  text-align: left;
+}
 
 select.form-control {
   appearance: none;
