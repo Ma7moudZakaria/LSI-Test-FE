@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { IDragDropToOrder } from 'src/app/core/interfaces/questionBankQuestions-interfaces/idrag-drop-to-order';
 import { IQuestionBankQuestionUpdateModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-question-update-model';
 import { IQuestionBankQuestionUpdateOrderBy } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-question-update-order-by';
 import { IQuestionBankQuestionsFilterRequest } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-filter-request';
@@ -36,6 +37,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   resultMessage:BaseMessageModel = {};
   items1:any;
   questionBankQuestionUpdateOrderBy:IQuestionBankQuestionUpdateOrderBy={};
+  listToOrder: IDragDropToOrder[]=[];
   listOrder?: number[];
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
      public translate: TranslateService,public dialog: MatDialog) {
@@ -184,30 +186,60 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   drop(event: CdkDragDrop<IDragDropAccordionItems[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-      this.listOrder=[];
-      for(let i =0;i<=event.container.data.length-1;i++){
-        this.listOrder?.push(event.previousContainer.data[i].order||(i+1));
-      }
-      this.questionBankQuestionUpdateOrderBy.categoryId=this.selectedCategoryId.id;
-      this.questionBankQuestionUpdateOrderBy.orderList=this.listOrder;
-    
-      this.questionBankQuestionService.updateOrderQuestionBankQuestion(this.questionBankQuestionUpdateOrderBy).subscribe(res => {
-        if (res.isSuccess) {
-       this.getQuestionBankQuestions(this.selectedCategoryId.id);
-        }
-        else {
+
      
-        }
-        
-      },
-        error => {
-      
-        })
-    } else {
+    
+    }
+    
+     else {
       transferArrayItem(event.previousContainer.data,
         event.container.data,
         event.previousIndex,
         event.currentIndex);
+
+      
     }
+    this.listToOrder=[];
+    this.listOrder=[];
+    for(let i =0;i<=event.container.data.length-1;i++){
+      this.listToOrder.push({
+        oldOrder:event.previousContainer.data[i].order||(i+1),
+        newOrder:i+1
+      });
+      // this.listToOrder[i].oldOrder=event.previousContainer.data[i].order||(i+1);
+      // this.listToOrder[i].newOrder=i+1;
+      // this.listToOrder.push( this.listToOrder[i]);
+    }
+    this.listToOrder=this.listToOrder.sort((a, b) => {
+      if(a.oldOrder > b.oldOrder) {
+        return 1;
+      } else if(a.oldOrder < b.oldOrder) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
+    // for(let i =0;i<=event.container.data.length-1;i++){
+    //   this.listOrder?.push(event.previousContainer.data[i].order||(i+1));
+    // }
+    for(let item of this.listToOrder)
+    {
+      this.listOrder?.push(item.newOrder);
+    }
+    this.questionBankQuestionUpdateOrderBy.categoryId=this.selectedCategoryId.id;
+    this.questionBankQuestionUpdateOrderBy.orderList=this.listOrder;
+  
+    this.questionBankQuestionService.updateOrderQuestionBankQuestion(this.questionBankQuestionUpdateOrderBy).subscribe(res => {
+      if (res.isSuccess) {
+     this.getQuestionBankQuestions(this.selectedCategoryId.id);
+      }
+      else {
+   
+      }
+      
+    },
+      error => {
+    
+      })
   }
 }
