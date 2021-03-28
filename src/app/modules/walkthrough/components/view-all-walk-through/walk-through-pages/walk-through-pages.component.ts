@@ -15,7 +15,7 @@ import { LookupService } from 'src/app/core/services/lookup-services/lookup.serv
 export class WalkThroughPagesComponent implements OnInit {
 
   collectionOfLookup = {} as ILookupCollection;
-  walkThroughPages? = {} as BaseLookupModel[];
+  walkThroughPages? = [] as BaseLookupModel[];
   listOfLookupProfile : string[] = ['WLAKTHROUGHPAGES'];
   langEnum = LanguageEnum ;
   resMessage: BaseMessageModel = {};
