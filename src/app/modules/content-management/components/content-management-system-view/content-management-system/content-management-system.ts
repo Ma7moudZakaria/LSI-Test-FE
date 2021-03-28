@@ -89,7 +89,7 @@ export class ContentManagementSystemComponent implements OnInit {
     const arabicWordPattern = "^[\u0621-\u064A\u0660-\u0669 0-9]+$";
     const englishWordPattern ="^[a-zA-Z0-9' '-'\s]{1,40}$";
     
-    const ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI = "^[\u0621-\u064A\u0660-\u0669 0-9_@./#&+-~؛)(÷*/'/!/$/u{1F600}/u{1F6FF}]+$";
+    const ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI = "^[\u0621-\u064A\u0660-\u0669 0-9_@./#&+\-~؛)(÷*/'/!/$/u{1F600}/u{1F6FF}]+$";
     const ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI = "^[ A-Za-z0-9_@./#&+-~؛)(÷*/'/!/$/u{1F600}/u{1F6FF}]*$";
     const ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITH_EMOJI = "^[\u0621-\u064A\u0660-\u0669 0-9_@./#&+-~؛)(÷*/'/!/$]+$";
     const ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITH_EMOJI = "^[ A-Za-z0-9_@./#&+-~؛)(÷*/'/!/$]*$";
