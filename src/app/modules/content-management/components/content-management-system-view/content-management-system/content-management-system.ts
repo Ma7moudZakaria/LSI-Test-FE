@@ -106,7 +106,7 @@ export class ContentManagementSystemComponent implements OnInit {
   }
   
   loadContentManagementSystemByType() {
-    if(this.selectedcmsTypeId.id!==undefined){
+    if(this.selectedcmsTypeId.id!==undefined && this.selectedcmsTypeId.id!==""){
       this.cmsId="";
       this.contentmanagementsystem={};
       this.contentmanagementService.getContentManagementSystemByTypeCms(this.selectedcmsTypeId.id).subscribe(res => {
