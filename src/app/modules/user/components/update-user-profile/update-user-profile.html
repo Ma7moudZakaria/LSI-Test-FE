@@ -192,6 +192,12 @@
                                         <div *ngIf="f.address.errors?.required">
                                             {{ 'UPDATE_USER_PG.ADDRESS_REQUIRED' | translate }}
                                         </div>
+                                        <div *ngIf="f.address.errors?.maxlength">
+                                            {{ 'UPDATE_USER_PG.ADDRESS_MAX_LENGTH' | translate }}
+                                        </div>
+                                        <div *ngIf="f.address.errors?.minlength">
+                                            {{ 'UPDATE_USER_PG.ADDRESS_MIN_LENGTH' | translate }}
+                                        </div>
                                     </div> 
                             </div>
                         </div>

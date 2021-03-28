@@ -22,6 +22,9 @@
           <div *ngIf="f.QuestioAr.errors.pattern">
               {{ 'QUESTION_BANK.ARABIC_FIELD' | translate }}
            </div>
+           <div *ngIf="f.QuestioAr.errors?.maxlength ">
+            {{ 'QUESTION_BANK.NAME_EN_MAX_LENGHT' | translate}}
+        </div>
       </div>
       </div>
       <div class="form-group">
@@ -35,6 +38,9 @@
           <div *ngIf="f.QuestionEn.errors.pattern">
               {{ 'QUESTION_BANK.ENGLISH_FIELD' | translate }}
            </div>
+           <div *ngIf="f.QuestionEn.errors?.maxlength ">
+            {{ 'QUESTION_BANK.NAME_EN_MAX_LENGHT' | translate}}
+        </div>
       </div>
       </div>
     <div class="form-group">
@@ -48,6 +54,9 @@
           <div *ngIf="f.AnswerAr.errors.pattern">
               {{ 'QUESTION_BANK.ARABIC_FIELD' | translate }}
            </div>
+           <div *ngIf="f.AnswerAr.errors?.maxlength ">
+            {{ 'QUESTION_BANK.NAME_EN_MAX_LENGHT' | translate}}
+        </div>
       </div>
       </div>
       <div class="form-group">
@@ -61,6 +70,9 @@
           <div *ngIf="f.AnswerEn.errors.pattern">
               {{ 'QUESTION_BANK.ENGLISH_FIELD' | translate }}
            </div>
+           <div *ngIf="f.AnswerEn.errors?.maxlength ">
+            {{ 'QUESTION_BANK.NAME_EN_MAX_LENGHT' | translate}}
+        </div>
       </div>
       </div>
     <section>

@@ -162,10 +162,14 @@ export class AddScientificMaterialComponent implements OnInit {
   buildForm() {
     const engPattern ="^[a-zA-Z ()/\\\\_-]+$";
     const arabicPattern = "^[\u0621-\u064A\u0660-\u0669 ()/\\\\_-]+$";
+
+    const Scientific_Material_Arabic_WITH_EMOJI = "^[\u0621-\u064A\u0660-\u0669 ()/\\\\_-/u{1F600}/u{1F6FF}]+$";
+    const Scientific_Material_English_WITH_EMOJI = "^[a-zA-Z ()/\\\\_-/u{1F600}/u{1F6FF}]+$";
+
     this.currentForm = this.fb.group(
       {
-        matrialTitleAr: ['', [Validators.required, Validators.maxLength(50), Validators.pattern(arabicPattern)]],
-        matrialTitleEn: ['', [Validators.required, Validators.maxLength(50), Validators.pattern(engPattern)]],
+        matrialTitleAr: ['', [Validators.required, Validators.maxLength(50), Validators.pattern(Scientific_Material_Arabic_WITH_EMOJI)]],
+        matrialTitleEn: ['', [Validators.required, Validators.maxLength(50), Validators.pattern(Scientific_Material_English_WITH_EMOJI)]],
         matrialCategory: ['', Validators.required],
         fileLink: [''],
         active: [false],

@@ -216,15 +216,15 @@ export class UpdateUserProfileComponent implements OnInit {
     var mobilePattern = "^(05)([0-9]{8})*$|^(\\+\\d{1,3}[- ]?)?\\d{10}";
       this.profileForm = this.fb.group(
         {
-          firstName: ['', [Validators.required, Validators.minLength(3) , Validators.maxLength(50)]],
-          middleName: ['', [Validators.required, Validators.minLength(3) , Validators.maxLength(50)]],
-          familyName: ['', [Validators.required, Validators.minLength(3) , Validators.maxLength(50)]],
+          firstName: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
+          middleName: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
+          familyName: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
           birthdate: [''],
           email: [''],
           nationality: [null, Validators.required],
           educationallevel: [null, Validators.required],
           gender: [null, Validators.required],
-          address: ['', Validators.required],
+          address: ['', [Validators.required, Validators.minLength(6) , Validators.maxLength(50)]],
           phoneNumber: ['', [Validators.required,Validators.pattern(mobilePattern)]],
           occupation: [null, Validators.required],
           countryCode: [null, Validators.required],

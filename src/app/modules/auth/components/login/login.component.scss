@@ -7,10 +7,7 @@
         }
     }
 
-    .UserLogin__ForgetPassword:lang(ar)
-    {
-        float: left 
-    }
+    
 
     .UserLogin__RememberMeLabel{
         opacity: 0.5;
@@ -25,7 +22,15 @@
         border-bottom-right-radius: 0;
         border-radius: 8px;
     }
+    .UserLogin__FormControl.pw{
+        border-radius: 0px !important;
 
+    }
+    .UserLogin__FormControl.pw:lang(ar){
+        border-top-right-radius: 8px !important;
+        border-bottom-right-radius: 8px  !important
+
+    }
     .placeholder{
         position: absolute;
         right: 15px;
@@ -37,5 +42,19 @@
         position: absolute;
       }
 
-    
+      .UserLogin__ForgetPassword:lang(ar)
+      {
+          float: left 
+      }
+
+
+      .input-group-prepend:lang(ar) {
+          float: left;
+    }
+   
+    // .UserLogin__LoginForm:lang(ar){
+    //     float: left;
+
+        
+    // }
    
