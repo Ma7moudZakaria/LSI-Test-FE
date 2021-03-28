@@ -86,7 +86,10 @@ export class LoginComponent implements OnInit {
             if(res.statusCode==BaseConstantModel.Bad_Request_Status_Code)
             {
               this.isSubmit = false;
-              this.router.navigateByUrl('/auth/(baseRouter:activate-code)');
+              setTimeout(()=>{
+                this.router.navigateByUrl('/auth/(baseRouter:activate-code)');
+              },3000);
+             
               // this.router.navigateByUrl('/activate-code'); 
             }
             else{
