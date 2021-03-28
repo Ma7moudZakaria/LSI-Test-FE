@@ -69,11 +69,9 @@ export class ResetPasswordComponent implements OnInit {
         console.log(res);
         if (res.isSuccess){
           this.isSubmit = false;
-          this.router.navigateByUrl('/auth/login');
-          // this.resMessage = {
-          //   message: res.message,
-          //   type: BaseConstantModel.SUCCESS_TYPE
-          // }
+          this.router.navigateByUrl('/auth');
+        // this.router.navigateByUrl('/auth/(baseRouter:login)');
+    
         }
         else{
           this.isSubmit = false;

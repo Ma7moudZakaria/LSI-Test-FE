@@ -83,11 +83,23 @@ export class LoginComponent implements OnInit {
           }
           else
           {
-            this.resMessage = {
-              message: res.message,
-              type: BaseConstantModel.DANGER_TYPE
+            if(res.statusCode==BaseConstantModel.Bad_Request_Status_Code)
+            {
+              this.isSubmit = false;
+              setTimeout(()=>{
+                this.router.navigateByUrl('/auth/(baseRouter:activate-code)');
+              },3000);
+             
+              // this.router.navigateByUrl('/activate-code'); 
             }
-            this.isSubmit = false;
+            else{
+              this.resMessage = {
+                message: res.message,
+                type: BaseConstantModel.DANGER_TYPE
+              }
+              this.isSubmit = false;
+            }
+           
           } 
         }
       );
