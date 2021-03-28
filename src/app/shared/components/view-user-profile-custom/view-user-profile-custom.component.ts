@@ -94,4 +94,9 @@ export class ViewUserProfileCustomComponent implements OnInit {
       
      });
    }
+
+   navEditProf(){
+     this.closeNav();
+    this.router.navigateByUrl('/user/update-user-profile');
+   }
 }
