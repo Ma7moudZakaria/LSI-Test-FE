@@ -83,6 +83,7 @@ onKeyDown(event: any) {
     while (true)
     {
         if (nextControl)
+        
         {
             if (nextControl.type === event.srcElement.type)
             {
@@ -91,9 +92,11 @@ onKeyDown(event: any) {
             }
             else
             {
-                nextControl = nextControl.nextElementSibling;
+               // nextControl = nextControl.nextElementSibling;
+                nextControl= nextControl.parentElement.nextElementSibling;
             }
         }
+       
         else
         {
             return;

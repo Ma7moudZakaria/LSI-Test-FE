@@ -201,31 +201,31 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
     }
     this.listToOrder=[];
     this.listOrder=[];
-    for(let i =0;i<=event.container.data.length-1;i++){
-      this.listToOrder.push({
-        oldOrder:event.previousContainer.data[i].order||(i+1),
-        newOrder:i+1
-      });
-      // this.listToOrder[i].oldOrder=event.previousContainer.data[i].order||(i+1);
-      // this.listToOrder[i].newOrder=i+1;
-      // this.listToOrder.push( this.listToOrder[i]);
-    }
-    this.listToOrder=this.listToOrder.sort((a, b) => {
-      if(a.oldOrder > b.oldOrder) {
-        return 1;
-      } else if(a.oldOrder < b.oldOrder) {
-        return -1;
-      } else {
-        return 0;
-      }
-    });
     // for(let i =0;i<=event.container.data.length-1;i++){
-    //   this.listOrder?.push(event.previousContainer.data[i].order||(i+1));
+    //   this.listToOrder.push({
+    //     oldOrder:event.previousContainer.data[i].order||(i+1),
+    //     newOrder:i+1
+    //   });
+    //   // this.listToOrder[i].oldOrder=event.previousContainer.data[i].order||(i+1);
+    //   // this.listToOrder[i].newOrder=i+1;
+    //   // this.listToOrder.push( this.listToOrder[i]);
     // }
-    for(let item of this.listToOrder)
-    {
-      this.listOrder?.push(item.newOrder);
+    // this.listToOrder=this.listToOrder.sort((a, b) => {
+    //   if(a.oldOrder > b.oldOrder) {
+    //     return 1;
+    //   } else if(a.oldOrder < b.oldOrder) {
+    //     return -1;
+    //   } else {
+    //     return 0;
+    //   }
+    // });
+    for(let i =0;i<=event.container.data.length-1;i++){
+      this.listOrder?.push(event.previousContainer.data[i].order||(i+1));
     }
+    // for(let item of this.listToOrder)
+    // {
+    //   this.listOrder?.push(item.newOrder);
+    // }
     this.questionBankQuestionUpdateOrderBy.categoryId=this.selectedCategoryId.id;
     this.questionBankQuestionUpdateOrderBy.orderList=this.listOrder;
   
