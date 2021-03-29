@@ -10,17 +10,18 @@ import { ActivateUserComponent } from './components/activate-user/activate-user.
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
+import { MoveNextByMaxLengthDirective } from 'src/app/app.module';
 
 
 @NgModule({
-  declarations: [RegisterComponent, LoginComponent, ForgotPasswordComponent, ResetPasswordComponent, ActivateUserComponent],
+  declarations: [RegisterComponent, LoginComponent, ForgotPasswordComponent, ResetPasswordComponent, ActivateUserComponent,MoveNextByMaxLengthDirective],
   imports: [
     CommonModule,
     AuthRoutingModule,
     ReactiveFormsModule,
     FormsModule,
     MatIconModule,
-    TranslateModule
+    TranslateModule,
   ]
 })
 export class AuthModule { }

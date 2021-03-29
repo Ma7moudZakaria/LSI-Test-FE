@@ -17,9 +17,9 @@
 
                             <div class="row" dir="ltr"  >
                                 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-3 mb-12" >
-                                    <input id="firstNumber" type="text" formControlName="firstNumber" name="firstNumber" class="form-control ActivationCode__FormControl" maxlength="1" >
+                                    <input id="firstNumber" type="text" formControlName="firstNumber" name="firstNumber" class="form-control ActivationCode__FormControl"  maxlength="1" autofocus moveNextByMaxLength>
                                 
-                                    <div *ngIf="f.firstNumber.errors && (f.firstNumber.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.firstNumber.errors && (f.firstNumber.touched || isSubmit)" class="alert alert-danger mt-2 mb-2" >
                                         <div *ngIf="f.firstNumber.errors?.required">
                                             {{ 'ACTIVATION_USER_PG.ACTIVATION_NUMBER_REQUIRED' | translate }}
                                         </div>
@@ -27,7 +27,7 @@
                                 </div>
             
                                 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-3 mb-12" >
-                                    <input id="secondNumber" type="text" formControlName="secondNumber" name="secondNumber" class="form-control ActivationCode__FormControl" maxlength="1" >
+                                    <input id="secondNumber" type="text" formControlName="secondNumber" name="secondNumber" class="form-control ActivationCode__FormControl" maxlength="1" moveNextByMaxLength >
                                     <div *ngIf="f.secondNumber.errors && (f.secondNumber.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.secondNumber.errors?.required">
                                             {{ 'ACTIVATION_USER_PG.ACTIVATION_NUMBER_REQUIRED' | translate }}
@@ -36,7 +36,7 @@
                                 </div>
             
                                 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-3 mb-12">
-                                    <input id="thirdNumber" type="text" formControlName="thirdNumber" name="thirdNumber" class="form-control ActivationCode__FormControl" maxlength="1">
+                                    <input id="thirdNumber" type="text" formControlName="thirdNumber" name="thirdNumber" class="form-control ActivationCode__FormControl" maxlength="1" moveNextByMaxLength>
                                     <div *ngIf="f.thirdNumber.errors && (f.thirdNumber.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.thirdNumber.errors?.required">
                                             {{ 'ACTIVATION_USER_PG.ACTIVATION_NUMBER_REQUIRED' | translate }}
@@ -45,7 +45,7 @@
                                 </div>
             
                                 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-3 mb-12">
-                                    <input id="fourthNumber" type="text" formControlName="fourthNumber" name="fourthNumber" class="form-control ActivationCode__FormControl" maxlength="1">
+                                    <input id="fourthNumber" type="text" formControlName="fourthNumber" name="fourthNumber" class="form-control ActivationCode__FormControl" [maxlength]="1" moveNextByMaxLength>
                                     <div *ngIf="f.fourthNumber.errors && (f.fourthNumber.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.fourthNumber.errors?.required">
                                             {{ 'ACTIVATION_USER_PG.ACTIVATION_NUMBER_REQUIRED' | translate }}
