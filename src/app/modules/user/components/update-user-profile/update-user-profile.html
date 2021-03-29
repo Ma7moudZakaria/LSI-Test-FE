@@ -22,61 +22,127 @@
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4 pl-0 pr-0">
                         <div class="row pl-0 pr-0 ">
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                <label class="Register__Label" for="firstName"> {{ 'UPDATE_USER_PG.NAME' | translate }}
+                            <!-- Names Arabic -->
+                            
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="translate.currentLang == langEnum.ar">
+                                <label class="Register__Label" for="firstNameAr"> {{ 'UPDATE_USER_PG.NAME_AR' | translate }}
                                 </label>
-                                <input id="firstName" pInputText type="text" formControlName="firstName"
-                                    name="firstName" class="form-control UserRegister__FormControl">
+                                <input id="firstNameAr" pInputText type="text" formControlName="firstNameAr"
+                                    name="firstNameAr" class="form-control UserRegister__FormControl">
 
-                                <div *ngIf="f.firstName.errors && (f.firstName.touched || isSubmit)"
+                                <div *ngIf="f.firstNameAr.errors && (f.firstNameAr.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
 
-                                    <div *ngIf="f.firstName.errors?.required">
-                                        {{ 'UPDATE_USER_PG.NAME_REQUIRED' | translate }}
+                                    <div *ngIf="f.firstNameAr.errors?.required">
+                                        {{ 'UPDATE_USER_PG.NAME_AR_REQUIRED' | translate }}
                                     </div>
                                     <div *ngIf="f.firstName.errors?.maxlength">
-                                        {{ 'UPDATE_USER_PG.NAME_MAX_LENGTH' | translate }}
+                                        {{ 'UPDATE_USER_PG.NAME_AR_MAX_LENGTH' | translate }}
                                     </div>
                                     <div *ngIf="f.firstName.errors?.minlength">
-                                        {{ 'UPDATE_USER_PG.NAME_MIN_LENGTH' | translate }}
+                                        {{ 'UPDATE_USER_PG.NAME_AR_MIN_LENGTH' | translate }}
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                <label class="Register__Label" for="middleName"> {{ 'UPDATE_USER_PG.FATHER_NAME' | translate }} </label>
-                                <input id="middleName" pInputText type="text" formControlName="middleName"
-                                    name="middleName" class="form-control UserRegister__FormControl">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="translate.currentLang == langEnum.ar">
+                                <label class="Register__Label" for="middleNameAr"> {{ 'UPDATE_USER_PG.FATHER_NAME_AR' | translate }} </label>
+                                <input id="middleNameAr" pInputText type="text" formControlName="middleNameAr"
+                                    name="middleNameAr" class="form-control UserRegister__FormControl">
                                     
-                                    <div *ngIf="f.middleName.errors && (f.middleName.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
-                                        <div *ngIf="f.middleName.errors?.required">
-                                            {{ 'UPDATE_USER_PG.FATHER_NAME_REQUIRED' | translate }}
+                                    <div *ngIf="f.middleNameAr.errors && (f.middleNameAr.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                        <div *ngIf="f.middleNameAr.errors?.required">
+                                            {{ 'UPDATE_USER_PG.FATHER_NAME_AR_REQUIRED' | translate }}
                                         </div>
-                                        <div *ngIf="f.middleName.errors?.maxlength">
-                                            {{ 'UPDATE_USER_PG.FATHER_NAME_MAX_LENGTH' | translate }}
+                                        <div *ngIf="f.middleNameAr.errors?.maxlength">
+                                            {{ 'UPDATE_USER_PG.FATHER_NAME_AR_MAX_LENGTH' | translate }}
                                         </div>
-                                        <div *ngIf="f.middleName.errors?.minlength">
-                                            {{ 'UPDATE_USER_PG.FATHER_NAME_MIN_LENGTH' | translate }}
+                                        <div *ngIf="f.middleNameAr.errors?.minlength">
+                                            {{ 'UPDATE_USER_PG.FATHER_NAME_AR_MIN_LENGTH' | translate }}
                                         </div>
                                     </div> 
                             </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                <label class="Register__Label" for="familyName"> {{ 'UPDATE_USER_PG.FAMILY_NAME' | translate }} </label>
-                                <input id="familyName" pInputText type="text" formControlName="familyName"
-                                    name="familyName" class="form-control UserRegister__FormControl">
 
-                                    <div *ngIf="f.familyName.errors && (f.familyName.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
-                                        <div *ngIf="f.familyName.errors?.required">
-                                            {{ 'UPDATE_USER_PG.FAMILY_NAME_REQUIRED' | translate }}
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="translate.currentLang == langEnum.ar">
+                                <label class="Register__Label" for="familyNameAr"> {{ 'UPDATE_USER_PG.FAMILY_NAME_AR' | translate }} </label>
+                                <input id="familyNameAr" pInputText type="text" formControlName="familyNameAr"
+                                    name="familyNameAr" class="form-control UserRegister__FormControl">
+
+                                    <div *ngIf="f.familyNameAr.errors && (f.familyNameAr.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                        <div *ngIf="f.familyNameAr.errors?.required">
+                                            {{ 'UPDATE_USER_PG.FAMILY_NAME_AR_REQUIRED' | translate }}
                                         </div>
-                                        <div *ngIf="f.familyName.errors?.maxlength">
-                                            {{ 'UPDATE_USER_PG.FAMILY_NAME_MAX_LENGTH' | translate }}
+                                        <div *ngIf="f.familyNameAr.errors?.maxlength">
+                                            {{ 'UPDATE_USER_PG.FAMILY_NAME_AR_MAX_LENGTH' | translate }}
                                         </div>
-                                        <div *ngIf="f.familyName.errors?.minlength">
-                                            {{ 'UPDATE_USER_PG.FAMILY_NAME_MIN_LENGTH' | translate }}
+                                        <div *ngIf="f.familyNameAr.errors?.minlength">
+                                            {{ 'UPDATE_USER_PG.FAMILY_NAME_AR_MIN_LENGTH' | translate }}
                                         </div>
                                     </div> 
                             </div>
+
+                            <!-- End Names Arabic -->
+
+                            <!-- Names English -->
+
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="translate.currentLang == langEnum.en">
+                                <label class="Register__Label" for="firstNameEn"> {{ 'UPDATE_USER_PG.NAME_EN' | translate }}
+                                </label>
+                                <input id="firstNameEn" pInputText type="text" formControlName="firstNameEn"
+                                    name="firstNameEn" class="form-control UserRegister__FormControl">
+
+                                <div *ngIf="f.firstNameEn.errors && (f.firstNameEn.touched || isSubmit)"
+                                    class="alert alert-danger mt-2 mb-2">
+
+                                    <div *ngIf="f.firstNameEn.errors?.required">
+                                        {{ 'UPDATE_USER_PG.NAME_EN_REQUIRED' | translate }}
+                                    </div>
+                                    <div *ngIf="f.firstNameEn.errors?.maxlength">
+                                        {{ 'UPDATE_USER_PG.NAME_EN_MAX_LENGTH' | translate }}
+                                    </div>
+                                    <div *ngIf="f.firstNameEn.errors?.minlength">
+                                        {{ 'UPDATE_USER_PG.NAME_EN_MIN_LENGTH' | translate }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="translate.currentLang == langEnum.en">
+                                <label class="Register__Label" for="middleNameEn"> {{ 'UPDATE_USER_PG.FATHER_NAME_EN' | translate }} </label>
+                                <input id="middleNameEn" pInputText type="text" formControlName="middleNameEn"
+                                    name="middleNameEn" class="form-control UserRegister__FormControl">
+                                    
+                                    <div *ngIf="f.middleNameEn.errors && (f.middleNameEn.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                        <div *ngIf="f.middleNameEn.errors?.required">
+                                            {{ 'UPDATE_USER_PG.FATHER_NAME_EN_REQUIRED' | translate }}
+                                        </div>
+                                        <div *ngIf="f.middleNameEn.errors?.maxlength">
+                                            {{ 'UPDATE_USER_PG.FATHER_NAME_EN_MAX_LENGTH' | translate }}
+                                        </div>
+                                        <div *ngIf="f.middleNameEn.errors?.minlength">
+                                            {{ 'UPDATE_USER_PG.FATHER_NAME_EN_MIN_LENGTH' | translate }}
+                                        </div>
+                                    </div> 
+                            </div>
+                            
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="translate.currentLang == langEnum.en">
+                                <label class="Register__Label" for="familyNameEn"> {{ 'UPDATE_USER_PG.FAMILY_NAME_EN' | translate }} </label>
+                                <input id="familyNameEn" pInputText type="text" formControlName="familyNameEn"
+                                    name="familyNameEn" class="form-control UserRegister__FormControl">
+
+                                    <div *ngIf="f.familyNameEn.errors && (f.familyNameEn.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                        <div *ngIf="f.familyNameEn.errors?.required">
+                                            {{ 'UPDATE_USER_PG.FAMILY_NAME_EN_REQUIRED' | translate }}
+                                        </div>
+                                        <div *ngIf="f.familyNameEn.errors?.maxlength">
+                                            {{ 'UPDATE_USER_PG.FAMILY_NAME_EN_MAX_LENGTH' | translate }}
+                                        </div>
+                                        <div *ngIf="f.familyNameEn.errors?.minlength">
+                                            {{ 'UPDATE_USER_PG.FAMILY_NAME_EN_MIN_LENGTH' | translate }}
+                                        </div>
+                                    </div> 
+                            </div>
+
+                            <!-- End Names English -->
 
                             <div class="col-lg-3 col-md-2 col-sm-2 col-xs-2">
                                 <label class="Register__Label" for="birthdate"> {{ 'UPDATE_USER_PG.BIRTHDATE' |

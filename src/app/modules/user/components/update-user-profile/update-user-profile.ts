@@ -86,6 +86,7 @@ export class UpdateUserProfileComponent implements OnInit {
     this.emitHeaderTitle();
     this.languageService.currentLanguageEvent.subscribe(res => {
       this.emitHeaderTitle();
+      var mobilePattern = "^(05)([0-9]{8})*$|^(\\+\\d{1,3}[- ]?)?\\d{10}";
       this.PopulateForm();
     });
   }
@@ -213,12 +214,15 @@ export class UpdateUserProfileComponent implements OnInit {
   }
 
   buildForm() {
+    // debugger;
     var mobilePattern = "^(05)([0-9]{8})*$|^(\\+\\d{1,3}[- ]?)?\\d{10}";
+    if(this.translate.currentLang === LanguageEnum.ar)
+    {
       this.profileForm = this.fb.group(
         {
-          firstName: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
-          middleName: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
-          familyName: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
+          firstNameAr: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
+          middleNameAr: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
+          familyNameAr: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
           birthdate: [''],
           email: [''],
           nationality: [null, Validators.required],
@@ -235,18 +239,63 @@ export class UpdateUserProfileComponent implements OnInit {
           
         }
       )
+    }
+    else{
+      this.profileForm = this.fb.group(
+        {
+          firstNameEn: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
+          middleNameEn: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
+          familyNameEn: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
+          birthdate: [''],
+          email: [''],
+          nationality: [null, Validators.required],
+          educationallevel: [null, Validators.required],
+          gender: [null, Validators.required],
+          address: ['', [Validators.required, Validators.minLength(6) , Validators.maxLength(50)]],
+          phoneNumber: ['', [Validators.required,Validators.pattern(mobilePattern)]],
+          occupation: [null, Validators.required],
+          countryCode: [null, Validators.required],
+          quraanMemorization: ['', Validators.required],
+          userSheikhs: [],
+          userArchives: [],
+          userCourses : []
+          
+        }
+      )
+    }
+      // this.profileForm = this.fb.group(
+      //   {
+      //     firstName: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
+      //     middleName: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
+      //     familyName: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
+      //     birthdate: [''],
+      //     email: [''],
+      //     nationality: [null, Validators.required],
+      //     educationallevel: [null, Validators.required],
+      //     gender: [null, Validators.required],
+      //     address: ['', [Validators.required, Validators.minLength(6) , Validators.maxLength(50)]],
+      //     phoneNumber: ['', [Validators.required,Validators.pattern(mobilePattern)]],
+      //     occupation: [null, Validators.required],
+      //     countryCode: [null, Validators.required],
+      //     quraanMemorization: ['', Validators.required],
+      //     userSheikhs: [],
+      //     userArchives: [],
+      //     userCourses : []
+          
+      //   }
+      // )
   }
 
   PopulateForm() {
     if (this.translate.currentLang === LanguageEnum.ar){
-      this.f.firstName.setValue(this.userProfileDetails?.fnameAr ? this.userProfileDetails?.fnameAr : this.userProfileDetails?.fnameEn ? this.userProfileDetails?.fnameEn : '' );
-      this.f.middleName.setValue(this.userProfileDetails?.mnameAr ? this.userProfileDetails?.mnameAr : this.userProfileDetails?.mnameEn ? this.userProfileDetails?.mnameEn : '');
-      this.f.familyName.setValue(this.userProfileDetails?.fanameAr ? this.userProfileDetails?.fanameAr : this.userProfileDetails?.faNameEn ? this.userProfileDetails?.faNameEn : '');
+      this.f.firstNameAr.setValue(this.userProfileDetails?.fnameAr ? this.userProfileDetails?.fnameAr : this.userProfileDetails?.fnameEn ? this.userProfileDetails?.fnameEn : '' );
+      this.f.middleNameAr.setValue(this.userProfileDetails?.mnameAr ? this.userProfileDetails?.mnameAr : this.userProfileDetails?.mnameEn ? this.userProfileDetails?.mnameEn : '');
+      this.f.familyNameAr.setValue(this.userProfileDetails?.fanameAr ? this.userProfileDetails?.fanameAr : this.userProfileDetails?.faNameEn ? this.userProfileDetails?.faNameEn : '');
     }
-    else{
-      this.f.firstName.setValue(this.userProfileDetails?.fnameEn ? this.userProfileDetails?.fnameEn : this.userProfileDetails?.fnameAr ? this.userProfileDetails?.fnameAr : '' );
-      this.f.middleName.setValue(this.userProfileDetails?.mnameEn ? this.userProfileDetails?.mnameEn : this.userProfileDetails?.mnameAr ? this.userProfileDetails?.mnameAr : '');
-      this.f.familyName.setValue(this.userProfileDetails?.faNameEn ? this.userProfileDetails?.faNameEn : this.userProfileDetails?.fanameAr ? this.userProfileDetails?.fanameAr : '');
+    if (this.translate.currentLang === LanguageEnum.en){
+      this.f.firstNameEn.setValue(this.userProfileDetails?.fnameEn ? this.userProfileDetails?.fnameEn : this.userProfileDetails?.fnameAr ? this.userProfileDetails?.fnameAr : '' );
+      this.f.middleNameEn.setValue(this.userProfileDetails?.mnameEn ? this.userProfileDetails?.mnameEn : this.userProfileDetails?.mnameAr ? this.userProfileDetails?.mnameAr : '');
+      this.f.familyNameEn.setValue(this.userProfileDetails?.faNameEn ? this.userProfileDetails?.faNameEn : this.userProfileDetails?.fanameAr ? this.userProfileDetails?.fanameAr : '');
     }
     this.f.address.setValue(this.userProfileDetails?.address);
     this.f.gender.setValue(this.userProfileDetails?.gender);
@@ -398,12 +447,11 @@ export class UpdateUserProfileComponent implements OnInit {
     }      
   }
 
- 
- 
   removeItemFromSelectedShiekhs(item:any) {
     let index = this.selectedShiekhsList.indexOf(item);
     this.selectedShiekhsList.splice(index, 1);
   }
+
   addUserArchives(){
     if (!this.profileForm.value.userArchives) {
       // if (this.translate.currentLang == 'ar') {
@@ -433,10 +481,12 @@ export class UpdateUserProfileComponent implements OnInit {
       }
     }      
   }
+  
   removeItemFromSelectedArchives(item:any) {
     let index = this.selectedArchivesList.indexOf(item);
     this.selectedArchivesList.splice(index, 1);
   }
+
   addUserCourses(){
     if (!this.profileForm.value.userCourses) {
       // if (this.translate.currentLang == 'ar') {
@@ -466,6 +516,7 @@ export class UpdateUserProfileComponent implements OnInit {
       }
     }      
   }
+
   removeItemFromSelectedCourses(item:any) {
     let index = this.selectedTrainingCourseList.indexOf(item);
     this.selectedTrainingCourseList.splice(index, 1);

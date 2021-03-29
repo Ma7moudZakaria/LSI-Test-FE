@@ -6,11 +6,10 @@ import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IContentManagementCreat } from 'src/app/core/interfaces/content-management-interfaces/icontent-management-creat';
 import { IContentManagementUpdate } from 'src/app/core/interfaces/content-management-interfaces/icontent-management-update';
 import { IContentManagement } from 'src/app/core/interfaces/content-management-interfaces/icontentmanagement';
-import { IContentManagementDetails } from 'src/app/core/interfaces/content-management-interfaces/icontentmanagementdetails';
-import { IContentManagementFilter } from 'src/app/core/interfaces/content-management-interfaces/icontentmanagementfilter';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
+import { PatternConstantModel } from 'src/app/core/ng-model/pattern-constant-model';
 import { ContentManagementService } from 'src/app/core/services/content-management-services/content-management.service';
 
 @Component({
@@ -62,6 +61,7 @@ export class ContentManagementSystemComponent implements OnInit {
       }
       this.buildForm();
   }
+
   ngOnChanges(changes: any) {
     this.currentForm.reset();
     //this.cmsType.typeId=this.selectedcmsTypeId||"";
@@ -80,26 +80,25 @@ export class ContentManagementSystemComponent implements OnInit {
    }
   }
 
-
-
   get f() {
     return this.currentForm?.controls;
   }
+
   buildForm() {
-    const arabicWordPattern = "^[\u0621-\u064A\u0660-\u0669 0-9]+$";
-    const englishWordPattern ="^[a-zA-Z0-9' '-'\s]{1,40}$";
+    // const arabicWordPattern = "^[\u0621-\u064A\u0660-\u0669 0-9]+$";
+    // const englishWordPattern ="^[a-zA-Z0-9' '-'\s]{1,40}$";
     
-    const ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI = "^[\u{1F600}\u{1F6FF}\u0621-\u064A\u0660-\u0669 0-9_@./#&+\\-~؛)(÷*/'/!/$]+$";
-    const ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI = "^[\u{1F600}\u{1F6FF}A-Za-z 0-9_@./#&+-~؛)(÷*/'/!/$]*$";
-    const ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITH_EMOJI = "^[\u0621-\u064A\u0660-\u0669 0-9_@./#&+-~؛)(÷*/'/!/$]+$";
-    const ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITH_EMOJI = "^[ A-Za-z0-9_@./#&+-~؛)(÷*/'/!/$]*$";
+    // const ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI = "^[\u{1F600}\u{1F6FF}\u0621-\u064A\u0660-\u0669 0-9_@./#&+\\-~؛)(÷*/'/!/$]+$";
+    // const ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI = "^[\u{1F600}\u{1F6FF}A-Za-z 0-9_@./#&+-~؛)(÷*/'/!/$]*$";
+    // const ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITH_EMOJI = "^[\u0621-\u064A\u0660-\u0669 0-9_@./#&+-~؛)(÷*/'/!/$]+$";
+    // const ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITH_EMOJI = "^[ A-Za-z0-9_@./#&+-~؛)(÷*/'/!/$]*$";
 
     this.currentForm = this.fb.group(
       {
-        shortDescriptionAr: ['', [Validators.required, Validators.pattern(ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
-        shortDescriptionEn:  ['', [Validators.required, Validators.pattern(ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
-        longDescriptionAr: ['', [Validators.required, Validators.pattern(ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
-        longDescriptionEn:  ['', [Validators.required, Validators.pattern(ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
+        shortDescriptionAr: ['', [Validators.required, Validators.pattern(PatternConstantModel.ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
+        shortDescriptionEn:  ['', [Validators.required, Validators.pattern(PatternConstantModel.ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
+        longDescriptionAr: ['', [Validators.required, Validators.pattern(PatternConstantModel.ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
+        longDescriptionEn:  ['', [Validators.required, Validators.pattern(PatternConstantModel.ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
         //typeId: ['', Validators.required]
       }
     )
