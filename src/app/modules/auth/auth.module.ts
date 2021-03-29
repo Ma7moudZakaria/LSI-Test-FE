@@ -10,7 +10,6 @@ import { ActivateUserComponent } from './components/activate-user/activate-user.
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { MoveNextByMaxLengthDirective } from 'src/app/core/directive/move-next-by-max-length.directive';
 
 
