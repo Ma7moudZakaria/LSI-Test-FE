@@ -113,4 +113,32 @@ export class ActivateUserComponent implements OnInit {
         }
     }
   } 
+  
 }
+// import { Directive, ElementRef, HostListener, Input } from '@angular/core';
+
+// @Directive({
+//   selector: '[validateOnBlur]', 
+// })
+
+// export class MyDirective {
+//   @Input('validateFormControl') validateFormControl:any;
+
+//   constructor() { }
+
+//   @HostListener('focus', ['$event.target'])
+//     onFocus(target:any) {
+//     console.log("Focus called");
+    
+//     this.validateFormControl.markAsUntouched();
+    
+//     console.log(this.validateFormControl.touched);
+//     }
+
+//   @HostListener('focusout', ['$event.target'])
+//   onFocusout(target:any) {
+//     console.log("Focus out called");
+//     this.validateFormControl.markAsTouched();
+//   }
+
+// }

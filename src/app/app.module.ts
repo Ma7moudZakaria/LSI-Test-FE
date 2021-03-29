@@ -68,3 +68,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   entryComponents: [ConfirmModalComponent]
 })
 export class AppModule { }
+
+    
+
