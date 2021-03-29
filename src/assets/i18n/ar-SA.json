@@ -42,7 +42,8 @@
     "ACTIVATION_MESSAGE": "لقد تم ارسال رمز الدخول علي البريد الالكتروني الخاص بك",
     "SEND_ACTIVATION_CODE": "اعادة ارسال",
     "MESSAGE": "لم أستقبل رمز الدخول.",
-    "ACTIVATION_NUMBER_REQUIRED": "رمز التفعيل مطلوب"
+    "ACTIVATION_NUMBER_REQUIRED": "رمز التفعيل مطلوب",
+    "ACTIVATION_NUMBER_MISSING": "رمز تفعيل مفقود"
   },
   "FORGET_PASSWORD_PG": {
     "FORGET_PASSWORD": "نسيت كلمة المرور"
