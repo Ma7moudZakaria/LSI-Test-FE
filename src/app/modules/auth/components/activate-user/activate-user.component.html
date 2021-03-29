@@ -20,7 +20,7 @@
                                     <input id="firstNumber" type="number" formControlName="firstNumber" name="firstNumber" class="form-control ActivationCode__FormControl">
                                 
                                     <div *ngIf="f.firstNumber.errors && (f.firstNumber.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
-                                        <div *ngIf="f.firstNumber.errors?.required">
+                                        <div *ngIf="f.firstNumber.errors.required">
                                             {{ 'ACTIVATION_USER_PG.ACTIVATION_NUMBER_REQUIRED' | translate }}
                                         </div>
                                     </div> 
@@ -29,7 +29,7 @@
                                 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-3 mb-12">
                                     <input id="secondNumber" type="number" formControlName="secondNumber" name="secondNumber" class="form-control ActivationCode__FormControl">
                                     <div *ngIf="f.secondNumber.errors && (f.secondNumber.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
-                                        <div *ngIf="f.secondNumber.errors?.required">
+                                        <div *ngIf="f.secondNumber.errors.required">
                                             {{ 'ACTIVATION_USER_PG.ACTIVATION_NUMBER_REQUIRED' | translate }}
                                         </div>
                                     </div> 
@@ -38,7 +38,7 @@
                                 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-3 mb-12">
                                     <input id="thirdNumber" type="number" formControlName="thirdNumber" name="thirdNumber" class="form-control ActivationCode__FormControl">
                                     <div *ngIf="f.thirdNumber.errors && (f.thirdNumber.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
-                                        <div *ngIf="f.thirdNumber.errors?.required">
+                                        <div *ngIf="f.thirdNumber.errors.required">
                                             {{ 'ACTIVATION_USER_PG.ACTIVATION_NUMBER_REQUIRED' | translate }}
                                         </div>
                                     </div> 
@@ -47,7 +47,7 @@
                                 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-3 mb-12">
                                     <input id="fourthNumber" type="number" formControlName="fourthNumber" name="fourthNumber" class="form-control ActivationCode__FormControl">
                                     <div *ngIf="f.fourthNumber.errors && (f.fourthNumber.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
-                                        <div *ngIf="f.fourthNumber.errors?.required">
+                                        <div *ngIf="f.fourthNumber.errors.required">
                                             {{ 'ACTIVATION_USER_PG.ACTIVATION_NUMBER_REQUIRED' | translate }}
                                         </div>
                                     </div> 

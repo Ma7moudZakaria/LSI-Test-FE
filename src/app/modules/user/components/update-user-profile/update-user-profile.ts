@@ -199,13 +199,13 @@ export class UpdateUserProfileComponent implements OnInit {
         }
       );
     }
-    else{
-      this.isSubmit = false;
-      this.resMessage = {
-        message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
-        type: BaseConstantModel.DANGER_TYPE
-      }
-    }
+    // else{
+    //   this.isSubmit = false;
+    //   // this.resMessage = {
+    //   //   message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+    //   //   type: BaseConstantModel.DANGER_TYPE
+    //   // }
+    // }
   }
 
   get f() {
@@ -219,13 +219,13 @@ export class UpdateUserProfileComponent implements OnInit {
           firstName: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
           middleName: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
           familyName: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
-          birthdate: [''],
+          birthdate: ['',Validators.required],
           email: [''],
           nationality: [null, Validators.required],
           educationallevel: [null, Validators.required],
           gender: [null, Validators.required],
           address: ['', [Validators.required, Validators.minLength(6) , Validators.maxLength(50)]],
-          phoneNumber: ['', [Validators.required,Validators.pattern(mobilePattern), Validators.maxLength(16)]],
+          phoneNumber: ['', [Validators.required,Validators.pattern(mobilePattern), Validators.minLength(6), Validators.maxLength(13)]],
           occupation: [null, Validators.required],
           countryCode: [null, Validators.required],
           quraanMemorization: ['', Validators.required],
@@ -398,12 +398,11 @@ export class UpdateUserProfileComponent implements OnInit {
     }      
   }
 
- 
- 
   removeItemFromSelectedShiekhs(item:any) {
     let index = this.selectedShiekhsList.indexOf(item);
     this.selectedShiekhsList.splice(index, 1);
   }
+
   addUserArchives(){
     if (!this.profileForm.value.userArchives) {
       // if (this.translate.currentLang == 'ar') {
@@ -433,10 +432,12 @@ export class UpdateUserProfileComponent implements OnInit {
       }
     }      
   }
+
   removeItemFromSelectedArchives(item:any) {
     let index = this.selectedArchivesList.indexOf(item);
     this.selectedArchivesList.splice(index, 1);
   }
+
   addUserCourses(){
     if (!this.profileForm.value.userCourses) {
       // if (this.translate.currentLang == 'ar') {
@@ -466,6 +467,7 @@ export class UpdateUserProfileComponent implements OnInit {
       }
     }      
   }
+
   removeItemFromSelectedCourses(item:any) {
     let index = this.selectedTrainingCourseList.indexOf(item);
     this.selectedTrainingCourseList.splice(index, 1);

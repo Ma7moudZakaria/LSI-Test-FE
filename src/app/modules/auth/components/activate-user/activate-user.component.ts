@@ -105,12 +105,12 @@ export class ActivateUserComponent implements OnInit {
         }
       });  
     }
-    else{
-      this.isSubmit = false;
-      this.resMessage = {
-          message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
-          type: BaseConstantModel.DANGER_TYPE
-        }
-    }
+    // else{
+    //   this.isSubmit = false;
+    //   this.resMessage = {
+    //       message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+    //       type: BaseConstantModel.DANGER_TYPE
+    //     }
+    // }
   } 
 }
