@@ -118,6 +118,7 @@
     "COUNTRY_CODE": "حقل الدولة مطلوب",
     "PHONE_NUMBER_REQUIRED": "رقم الهاتف مطلوب",
     "PHONE_NUMBER_PATTERN": "يرجى ادخال رقم هاتف فقط",
+    "PHONE_NUMBER_MAX_LENGTH": "يرجى ادخال رقم هاتف أقل من 16 رقم",
     "NATIONALITY_REQUIRED": "الجنسية مطلوبة",
     "ADDRESS": "العنوان",
     "ADDRESS_REQUIRED": "العنوان مطلوب",

@@ -117,6 +117,7 @@
     "COUNTRY_CODE": "Country is Required",
     "PHONE_NUMBER_REQUIRED": "Phone Number is Required",
     "PHONE_NUMBER_PATTERN": "Please insert phone number only",
+    "PHONE_NUMBER_MAX_LENGTH": "Phone Number sould be less than 16 number",
     "NATIONALITY_REQUIRED": "Nationality is Required",
     "ADDRESS": "Address",
     "ADDRESS_REQUIRED": "Address is Required",

@@ -152,6 +152,9 @@
                                         <div *ngIf="f.phoneNumber.errors?.pattern">
                                             {{ 'UPDATE_USER_PG.PHONE_NUMBER_PATTERN' | translate }}
                                         </div>
+                                        <div *ngIf="f.phoneNumber.errors?.maxlength">
+                                            {{ 'UPDATE_USER_PG.PHONE_NUMBER_MAX_LENGTH' | translate }}
+                                        </div>
                                     </div> 
                             </div>
 
