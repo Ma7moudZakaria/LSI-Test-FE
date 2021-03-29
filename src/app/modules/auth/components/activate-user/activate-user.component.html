@@ -31,7 +31,7 @@
                                 <div class="row p-2">
                                     <div *ngIf="f.firstNumber.errors && (f.firstNumber.touched || isSubmit)" class="alert alert-danger col-lg-11 col-md-11 col-sm-11 col-xs-11 mb-12 " >
                                         <div *ngIf="f.firstNumber.errors?.required||f.secondNumber.errors?.required||f.thirdNumber.errors?.required||f.fourthNumber.errors?.required">
-                                            {{ 'ACTIVATION_USER_PG.ACTIVATION_NUMBER_REQUIRED' | translate }}
+                                            {{ 'ACTIVATION_USER_PG.ACTIVATION_NUMBER_MISSING' | translate }}
                                         </div>
                                     </div> 
             

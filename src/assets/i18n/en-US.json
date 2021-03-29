@@ -42,7 +42,8 @@
     "ACTIVATION_MESSAGE": "The access code has been sent to your email",
     "SEND_ACTIVATION_CODE": "Send Again",
     "MESSAGE": "I did not receive the Activation Code.",
-    "ACTIVATION_NUMBER_REQUIRED": "Activation Code is required"
+    "ACTIVATION_NUMBER_REQUIRED": "Activation Code is required",
+    "ACTIVATION_NUMBER_MISSING": "Activation Code is missing"
   },
   "FORGET_PASSWORD_PG": {
     "FORGET_PASSWORD": "Forgot Password"
