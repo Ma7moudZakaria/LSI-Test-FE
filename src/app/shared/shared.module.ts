@@ -14,9 +14,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ViewUserProfileCustomComponent } from './components/view-user-profile-custom/view-user-profile-custom.component';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { SearchInputComponent } from './components/search-input/search-input.component';
+
 
 import {MatIconModule} from '@angular/material/icon';
+import { SearchInputComponent } from './components/search-input/search-input.component';
 
 
 @NgModule({
@@ -28,7 +29,7 @@ import {MatIconModule} from '@angular/material/icon';
   exports: [
     MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule,
     MatExpansionModule, MatSelectModule, DragDropModule, CustomeCardComponent, CustomAccordionComponent,
-    ViewUserProfileCustomComponent,SearchInputComponent
+    ViewUserProfileCustomComponent,SearchInputComponent,
   ]
 })
 export class SharedModule { }
