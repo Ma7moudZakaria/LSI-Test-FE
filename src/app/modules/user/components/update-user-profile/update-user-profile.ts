@@ -191,21 +191,20 @@ export class UpdateUserProfileComponent implements OnInit {
             }
           }
         },error =>{
-          this.isSubmit = false;
+          // this.isSubmit = false;
           this.resMessage = {
-            message: error.message,
+            message: error,
             type: BaseConstantModel.DANGER_TYPE
           }
         }
       );
     }
-    // else{
-    //   this.isSubmit = false;
-    //   // this.resMessage = {
-    //   //   message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
-    //   //   type: BaseConstantModel.DANGER_TYPE
-    //   // }
-    // }
+    else{
+      this.resMessage = {
+        message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    }
   }
 
   get f() {
