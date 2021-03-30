@@ -27,7 +27,7 @@
                                 </div>   
                                     
                                 <div *ngIf="f.userName.errors && (f.userName.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
-                                    <div *ngIf="f.userName.errors?.required">
+                                    <div *ngIf="f.userName.errors.required">
                                         {{ 'GENERAL.USERNAME_REQUIRED' | translate }}
                                     </div>
                                     <div *ngIf="f.userName.errors?.maxlength ">
@@ -55,7 +55,7 @@
                                 </div>
                                    
                                 <div *ngIf="f.email.errors && (f.email.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
-                                    <div *ngIf="f.email.errors?.required">
+                                    <div *ngIf="f.email.errors.required">
                                         {{ 'GENERAL.EMAIL_REQUIRED' | translate }}
                                     </div>
                                     <div *ngIf="f.email.errors.pattern">
@@ -101,7 +101,7 @@
                                             
                                         </div>     
                                         <div *ngIf="f.password.errors && (f.password.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
-                                            <div *ngIf="f.password.errors?.required ">
+                                            <div *ngIf="f.password.errors.required ">
                                                 {{ 'GENERAL.PASSWORD_REQUIRED' | translate }}
                                             </div>
                                             <div *ngIf="f.password.errors?.maxlength ">
@@ -130,7 +130,7 @@
                                             class="  px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
                                         </div>   
                                         <div *ngIf="f.confirmPassword.errors && (f.confirmPassword.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
-                                            <div *ngIf="f.confirmPassword.errors?.required ">
+                                            <div *ngIf="f.confirmPassword.errors.required ">
                                                 {{ 'GENERAL.CONFIRM_PASSWORD_REQUIRED' | translate }}
                                             </div>
                                             <div *ngIf="f.confirmPassword.errors?.maxlength ">

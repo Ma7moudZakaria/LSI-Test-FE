@@ -191,16 +191,15 @@ export class UpdateUserProfileComponent implements OnInit {
             }
           }
         },error =>{
-          this.isSubmit = false;
+          // this.isSubmit = false;
           this.resMessage = {
-            message: error.message,
+            message: error,
             type: BaseConstantModel.DANGER_TYPE
           }
         }
       );
     }
     else{
-      this.isSubmit = false;
       this.resMessage = {
         message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
         type: BaseConstantModel.DANGER_TYPE
@@ -216,16 +215,16 @@ export class UpdateUserProfileComponent implements OnInit {
     var mobilePattern = "^(05)([0-9]{8})*$|^(\\+\\d{1,3}[- ]?)?\\d{10}";
       this.profileForm = this.fb.group(
         {
-          firstName: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
-          middleName: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
-          familyName: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
-          birthdate: [''],
+          firstName: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(20)]],
+          middleName: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(20)]],
+          familyName: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(20)]],
+          birthdate: ['',Validators.required],
           email: [''],
           nationality: [null, Validators.required],
           educationallevel: [null, Validators.required],
           gender: [null, Validators.required],
           address: ['', [Validators.required, Validators.minLength(6) , Validators.maxLength(50)]],
-          phoneNumber: ['', [Validators.required,Validators.pattern(mobilePattern)]],
+          phoneNumber: ['', [Validators.required,Validators.pattern(mobilePattern), Validators.minLength(6), Validators.maxLength(16)]],
           occupation: [null, Validators.required],
           countryCode: [null, Validators.required],
           quraanMemorization: ['', Validators.required],
@@ -398,12 +397,11 @@ export class UpdateUserProfileComponent implements OnInit {
     }      
   }
 
- 
- 
   removeItemFromSelectedShiekhs(item:any) {
     let index = this.selectedShiekhsList.indexOf(item);
     this.selectedShiekhsList.splice(index, 1);
   }
+
   addUserArchives(){
     if (!this.profileForm.value.userArchives) {
       // if (this.translate.currentLang == 'ar') {
@@ -433,10 +431,12 @@ export class UpdateUserProfileComponent implements OnInit {
       }
     }      
   }
+
   removeItemFromSelectedArchives(item:any) {
     let index = this.selectedArchivesList.indexOf(item);
     this.selectedArchivesList.splice(index, 1);
   }
+
   addUserCourses(){
     if (!this.profileForm.value.userCourses) {
       // if (this.translate.currentLang == 'ar') {
@@ -466,6 +466,7 @@ export class UpdateUserProfileComponent implements OnInit {
       }
     }      
   }
+
   removeItemFromSelectedCourses(item:any) {
     let index = this.selectedTrainingCourseList.indexOf(item);
     this.selectedTrainingCourseList.splice(index, 1);
