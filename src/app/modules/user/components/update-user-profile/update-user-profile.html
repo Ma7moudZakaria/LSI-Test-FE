@@ -36,10 +36,10 @@
                                     <div *ngIf="f.firstNameAr.errors?.required">
                                         {{ 'UPDATE_USER_PG.NAME_AR_REQUIRED' | translate }}
                                     </div>
-                                    <div *ngIf="f.firstName.errors?.maxlength">
+                                    <div *ngIf="f.firstNameAr.errors?.maxlength">
                                         {{ 'UPDATE_USER_PG.NAME_AR_MAX_LENGTH' | translate }}
                                     </div>
-                                    <div *ngIf="f.firstName.errors?.minlength">
+                                    <div *ngIf="f.firstNameAr.errors?.minlength">
                                         {{ 'UPDATE_USER_PG.NAME_AR_MIN_LENGTH' | translate }}
                                     </div>
                                 </div>
@@ -237,7 +237,7 @@
 
                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                 <label class="Register__Label" for="email"> {{ 'GENERAL.EMAIL' | translate }} </label>
-                                <input id="email" type="email" formControlName="email" style="width:100%;" name="email"
+                                <input id="email" type="email" formControlName="email" style="width:100%;" readonly name="email"
                                     class="form-control UserRegister__FormControl dimmed" />
                             </div>
 

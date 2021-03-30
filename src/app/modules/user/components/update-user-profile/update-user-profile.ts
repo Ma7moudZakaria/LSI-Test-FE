@@ -86,7 +86,7 @@ export class UpdateUserProfileComponent implements OnInit {
     this.emitHeaderTitle();
     this.languageService.currentLanguageEvent.subscribe(res => {
       this.emitHeaderTitle();
-      var mobilePattern = "^(05)([0-9]{8})*$|^(\\+\\d{1,3}[- ]?)?\\d{10}";
+      this.buildForm();
       this.PopulateForm();
     });
   }
@@ -122,26 +122,49 @@ export class UpdateUserProfileComponent implements OnInit {
     this.isSubmit = true;
     this.resMessage = {}
     if (this.profileForm.valid){
-   
-      this.updateUserModel = {
-        usrId: this.currentUser?.id,
-        firstAr: this.translate.currentLang === LanguageEnum.ar ? this.profileForm.value.firstName : this.userProfileDetails.fnameAr,
-        firstEn:  this.translate.currentLang === LanguageEnum.en ? this.profileForm.value.firstName : this.userProfileDetails.fnameEn,
-        middleAr: this.translate.currentLang === LanguageEnum.ar ? this.profileForm.value.middleName : this.userProfileDetails.mnameAr,
-        middleEn: this.translate.currentLang === LanguageEnum.en ? this.profileForm.value.middleName : this.userProfileDetails.mnameEn,
-        familyAr: this.translate.currentLang === LanguageEnum.ar ? this.profileForm.value.familyName : this.userProfileDetails.fanameAr,
-        familyEn: this.translate.currentLang === LanguageEnum.en ? this.profileForm.value.familyName : this.userProfileDetails.faNameEn,
-        birthdate: this.profileForm.value.birthdate,
-        gender: this.profileForm.value.gender,
-        mobile: this.profileForm.value.phoneNumber,
-        countryCode: this.profileForm.value.countryCode,
-        nationality: this.profileForm.value.nationality,
-        eduLevel: this.profileForm.value.educationallevel,
-        occupation: this.profileForm.value.occupation,
-        address: this.profileForm.value.address,
-        quraanMemorizeAmount : this.profileForm.value.quraanMemorization,
-        ejazaIds : this.ejazaAttachmentIds,
+      if(this.translate.currentLang === LanguageEnum.ar)
+      {
+        this.updateUserModel = {
+          usrId: this.currentUser?.id,
+          firstAr: this.profileForm.value.firstNameAr,
+          firstEn: this.userProfileDetails.fnameEn,
+          middleAr: this.profileForm.value.middleNameAr,
+          middleEn: this.userProfileDetails.mnameEn,
+          familyAr: this.profileForm.value.familyNameAr,
+          familyEn: this.userProfileDetails.faNameEn,
+          birthdate: this.profileForm.value.birthdate,
+          gender: this.profileForm.value.gender,
+          mobile: this.profileForm.value.phoneNumber,
+          countryCode: this.profileForm.value.countryCode,
+          nationality: this.profileForm.value.nationality,
+          eduLevel: this.profileForm.value.educationallevel,
+          occupation: this.profileForm.value.occupation,
+          address: this.profileForm.value.address,
+          quraanMemorizeAmount : this.profileForm.value.quraanMemorization,
+          ejazaIds : this.ejazaAttachmentIds,
+        }
+      }else{
+        this.updateUserModel = {
+          usrId: this.currentUser?.id,
+          firstAr: this.userProfileDetails.fnameAr,
+          firstEn: this.profileForm.value.firstNameEn,
+          middleAr: this.userProfileDetails.mnameAr,
+          middleEn: this.profileForm.value.middleNameEn,
+          familyAr: this.userProfileDetails.fanameAr,
+          familyEn: this.profileForm.value.familyNameEn,
+          birthdate: this.profileForm.value.birthdate,
+          gender: this.profileForm.value.gender,
+          mobile: this.profileForm.value.phoneNumber,
+          countryCode: this.profileForm.value.countryCode,
+          nationality: this.profileForm.value.nationality,
+          eduLevel: this.profileForm.value.educationallevel,
+          occupation: this.profileForm.value.occupation,
+          address: this.profileForm.value.address,
+          quraanMemorizeAmount : this.profileForm.value.quraanMemorization,
+          ejazaIds : this.ejazaAttachmentIds,
+        }
       }
+      
       this.updateUserModel.sheikhs = [];
       if (this.selectedShiekhsList.length) {
         Array.from(this.selectedShiekhsList).forEach((elm: BaseLookupModel) => {
@@ -287,14 +310,14 @@ export class UpdateUserProfileComponent implements OnInit {
 
   PopulateForm() {
     if (this.translate.currentLang === LanguageEnum.ar){
-      this.f.firstNameAr.setValue(this.userProfileDetails?.fnameAr ? this.userProfileDetails?.fnameAr : this.userProfileDetails?.fnameEn ? this.userProfileDetails?.fnameEn : '' );
-      this.f.middleNameAr.setValue(this.userProfileDetails?.mnameAr ? this.userProfileDetails?.mnameAr : this.userProfileDetails?.mnameEn ? this.userProfileDetails?.mnameEn : '');
-      this.f.familyNameAr.setValue(this.userProfileDetails?.fanameAr ? this.userProfileDetails?.fanameAr : this.userProfileDetails?.faNameEn ? this.userProfileDetails?.faNameEn : '');
-    }
+      this.f.firstNameAr.setValue(this.userProfileDetails?.fnameAr);
+      this.f.middleNameAr.setValue(this.userProfileDetails?.mnameAr);
+     this.f.familyNameAr.setValue(this.userProfileDetails?.fanameAr);
+    }  
     if (this.translate.currentLang === LanguageEnum.en){
-      this.f.firstNameEn.setValue(this.userProfileDetails?.fnameEn ? this.userProfileDetails?.fnameEn : this.userProfileDetails?.fnameAr ? this.userProfileDetails?.fnameAr : '' );
-      this.f.middleNameEn.setValue(this.userProfileDetails?.mnameEn ? this.userProfileDetails?.mnameEn : this.userProfileDetails?.mnameAr ? this.userProfileDetails?.mnameAr : '');
-      this.f.familyNameEn.setValue(this.userProfileDetails?.faNameEn ? this.userProfileDetails?.faNameEn : this.userProfileDetails?.fanameAr ? this.userProfileDetails?.fanameAr : '');
+      this.f.firstNameEn.setValue(this.userProfileDetails?.fnameEn);
+      this.f.middleNameEn.setValue(this.userProfileDetails?.mnameEn);
+      this.f.familyNameEn.setValue(this.userProfileDetails?.faNameEn);
     }
     this.f.address.setValue(this.userProfileDetails?.address);
     this.f.gender.setValue(this.userProfileDetails?.gender);
