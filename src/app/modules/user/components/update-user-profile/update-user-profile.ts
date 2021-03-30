@@ -192,16 +192,15 @@ export class UpdateUserProfileComponent implements OnInit {
             }
           }
         },error =>{
-          this.isSubmit = false;
+          // this.isSubmit = false;
           this.resMessage = {
-            message: error.message,
+            message: error,
             type: BaseConstantModel.DANGER_TYPE
           }
         }
       );
     }
     else{
-      this.isSubmit = false;
       this.resMessage = {
         message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
         type: BaseConstantModel.DANGER_TYPE
@@ -229,7 +228,7 @@ export class UpdateUserProfileComponent implements OnInit {
           educationallevel: [null, Validators.required],
           gender: [null, Validators.required],
           address: ['', [Validators.required, Validators.minLength(6) , Validators.maxLength(50)]],
-          phoneNumber: ['', [Validators.required,Validators.pattern(mobilePattern)]],
+          phoneNumber: ['', [Validators.required,Validators.pattern(mobilePattern), Validators.minLength(6), Validators.maxLength(16)]],
           occupation: [null, Validators.required],
           countryCode: [null, Validators.required],
           quraanMemorization: ['', Validators.required],

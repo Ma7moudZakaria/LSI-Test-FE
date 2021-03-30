@@ -26,7 +26,7 @@
                                     class=" px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
                                 </div>      
                                 <div *ngIf="f.email.errors && (f.email.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
-                                    <div *ngIf="f.email.errors?.required">
+                                    <div *ngIf="f.email.errors.required">
                                         {{ 'GENERAL.EMAIL_REQUIRED' | translate }}
                                     </div>
                                     <div *ngIf="f.email.errors.pattern">
@@ -57,7 +57,7 @@
                                 
                                 
                                 <div *ngIf="f.password.errors && (f.password.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
-                                    <div *ngIf="f.password.errors?.required">
+                                    <div *ngIf="f.password.errors.required">
                                         {{'GENERAL.PASSWORD_REQUIRED' | translate}}
                                     </div>
                                     <div *ngIf="f.password.errors?.maxlength ">
