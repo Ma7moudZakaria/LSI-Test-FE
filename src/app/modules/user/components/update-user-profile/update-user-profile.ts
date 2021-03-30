@@ -224,7 +224,7 @@ export class UpdateUserProfileComponent implements OnInit {
           educationallevel: [null, Validators.required],
           gender: [null, Validators.required],
           address: ['', [Validators.required, Validators.minLength(6) , Validators.maxLength(50)]],
-          phoneNumber: ['', [Validators.required,Validators.pattern(mobilePattern), Validators.minLength(6), Validators.maxLength(13)]],
+          phoneNumber: ['', [Validators.required,Validators.pattern(mobilePattern), Validators.minLength(6), Validators.maxLength(16)]],
           occupation: [null, Validators.required],
           countryCode: [null, Validators.required],
           quraanMemorization: ['', Validators.required],

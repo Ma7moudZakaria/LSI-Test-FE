@@ -119,7 +119,7 @@
     "COUNTRY_CODE": "حقل الدولة مطلوب",
     "PHONE_NUMBER_REQUIRED": "رقم الهاتف مطلوب",
     "PHONE_NUMBER_PATTERN": "يرجى ادخال رقم هاتف فقط",
-    "PHONE_NUMBER_MAX_LENGTH": "يرجى ادخال رقم هاتف أقل من 13 رقم",
+    "PHONE_NUMBER_MAX_LENGTH": "يرجى ادخال رقم هاتف أقل من 16 رقم",
     "PHONE_NUMBER_MIN_LENGTH": "يرجى ادخال رقم هاتف أكثر من 6 رقم",
     "BIRTHDATE_REQUIRED":"تاريخ الميلاد مطلوب",
     "NATIONALITY_REQUIRED": "الجنسية مطلوبة",
