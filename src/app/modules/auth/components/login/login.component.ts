@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IAuthentication } from 'src/app/core/interfaces/auth-interfaces/iauthentication';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
@@ -27,13 +28,15 @@ export class LoginComponent implements OnInit {
   currentLang: LanguageEnum | undefined;
   isSubmit = false;
   hide: boolean = true;
-
+  user: SocialUser|undefined;
+  loggedIn: boolean=false;
   constructor(
       private fb: FormBuilder,
       private authService: AuthService,
       private translate: TranslateService,
       private lookupService: LookupService,
-      private router: Router
+      private router: Router,
+      private authServiceSocial: SocialAuthService
       ) { }
 
   togglePassword() {
@@ -52,6 +55,13 @@ export class LoginComponent implements OnInit {
     });
     
     this.currentLang = this.translate.currentLang === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
+//====================authServiceSocial=====================
+
+this.authServiceSocial.authState.subscribe((user) => {
+  this.user = user;
+  this.loggedIn = (user != null);
+});
+
   }
 
   get f() {
@@ -111,4 +121,21 @@ export class LoginComponent implements OnInit {
       }
     }
   }
+
+  //===============social==============
+
+  signInWithGoogle(): void {
+   this.authServiceSocial.signIn(GoogleLoginProvider.PROVIDER_ID);
+    // this.authServiceSocial.signIn(GoogleLoginProvider.PROVIDER_ID).then(x => console.log(x));
+  }
+
+  signInWithFB(): void {
+    this.authServiceSocial.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
+
+  signOut(): void {
+    this.authServiceSocial.signOut();
+  }
+
+  //=========================
 }

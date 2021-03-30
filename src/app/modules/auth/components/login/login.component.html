@@ -98,9 +98,9 @@
                             <div class="d-flex ">
                                 <button type="submit" disabled class="btn UserLogin__Register" > {{'LOGIN_PG.TEACHER_SIGNUP' | translate}}</button>
                                 <ul class="list-inline UserLogin__SocialMedia mb-0">
-                                    <li class="list-inline-item"> <img src="../../../../../assets/images/facebook.svg"></li>
+                                    <li class="list-inline-item"> <img src="../../../../../assets/images/facebook.svg" (click)="signInWithFB()"></li>
                                     <li class="list-inline-item"><img src="../../../../../assets/images/twiiter.svg"></li>
-                                    <li class="list-inline-item"><img src="../../../../../assets/images/gmail.svg"></li>
+                                    <li class="list-inline-item"><img src="../../../../../assets/images/gmail.svg" (click)="signInWithGoogle()"></li>
                                 </ul>                            
                                 
                             </div>                    
