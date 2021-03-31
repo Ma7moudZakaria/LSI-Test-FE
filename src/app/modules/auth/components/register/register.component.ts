@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
@@ -24,14 +24,17 @@ export class RegisterComponent implements OnInit {
   resMessage: BaseMessageModel = {};
   currentLang: LanguageEnum | undefined;
   isSubmit = false;
+  id : string | undefined
 
   constructor(private authService: AuthService,
     private router: Router,
     private fb: FormBuilder,
+    private route: ActivatedRoute,
     public translate: TranslateService) { }
 
   ngOnInit(): void {
     this.routeParams = this.router.url;
+    this.id =  this.route.snapshot.queryParamMap.get('id') || '';
     this.loadUserForm();
     this.currentLang = this.translate.currentLang === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
     
@@ -60,13 +63,15 @@ export class RegisterComponent implements OnInit {
 
   onSignup(value: string) {
     this.isSubmit = true;
-    if (this.registerform.valid) {
+    if (this.registerform.valid && this.id !== "" && this.id !== undefined) {
       localStorage.clear();
+
       this.registrationModel = {
         uname: this.registerform.value.userName ,
         uemail: this.registerform.value.email,
         ucpass: this.registerform.value.confirmPassword,//""
-        upass: this.registerform.value.password
+        upass: this.registerform.value.password,
+        roleid: this.id
       }
 
       this.authService.register(this.registrationModel).subscribe(res => {
