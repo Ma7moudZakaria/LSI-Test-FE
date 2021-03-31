@@ -166,7 +166,41 @@ this.authServiceSocial.authState.subscribe((user) => {
   }
 
   signInWithFB(): void {
-    this.authServiceSocial.signIn(FacebookLoginProvider.PROVIDER_ID);
+    this.authServiceSocial.signIn(FacebookLoginProvider.PROVIDER_ID).
+     then((res)=>
+    {
+     this.userSocial = res;
+     this.loggedIn = (res != null);
+     console.log(this.userSocial);
+     this.userSocialRegister.socType=1;
+     this.userSocialRegister.usrSocMail=this.userSocial.email;
+     this.userSocialRegister.usrSocName=this.userSocial.name;
+     this.userSocialRegister.usrSocId=this.userSocial.id;
+     this.authService.socialAuthentication(this.userSocialRegister).subscribe(
+       (res) => {
+         if (res.isSuccess) {
+           localStorage.setItem('user', JSON.stringify(res.data as IUser));
+           this.router.navigateByUrl('/dashboard');
+           this.getLookups();
+           this.isSubmit = false;
+         }
+         else
+         {
+           
+             this.resMessage = {
+               message: res.message,
+               type: BaseConstantModel.DANGER_TYPE
+             }
+             this.isSubmit = false;
+         
+          
+         } 
+       }
+     );
+ 
+    },err => this.signInErrorHandler(err)
+ 
+    );
   }
 
   signOut(): void {
