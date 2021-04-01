@@ -7,25 +7,28 @@
                 <div class="box">
                     <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)" class="form-group UserLogin__LoginForm">
                         <div class="content_form ">
-                            <div class="col-lg-12 mb-4 mt-2">
+                            <div class="col-lg-12 mb-2 mt-2">
                                 <h1 class="font-weight-bold "> {{'LOGIN_PG.LOGIN' | translate}} </h1> 
                             </div>
                 
                             <!-- Email Address -->                    
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-2">
                                 <label class="UserLogin__Label" for="UserEmail"> {{'GENERAL.EMAIL' | translate}} </label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-white pl-2 pr-2 border-md border-right-0">
+                                        <span class="input-group-text bg-white pl-2 pr-2 border-md border-right-0"
+                                        [ngClass]="{'error_input': f.email.errors && (f.email.touched || isSubmit)}">
                                             <!-- <i class="fa fa-envelope text-muted"></i> -->
                                             <img  class="UserLogin_icon_input" src="../../../../../assets/images/email.svg">
                                         </span>
                                     </div>
                                     <input id="email"  pInputText type="email" formControlName="email" name="email" 
+                                    [ngClass]="{'error_input': f.email.errors && (f.email.touched || isSubmit)}"
                                     placeholder="{{'LOGIN_PG.EMAIL_ADDRESS_PLACEHOLDER' | translate}}" 
                                     class=" px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
                                 </div>      
-                                <div *ngIf="f.email.errors && (f.email.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                <div *ngIf="f.email.errors && (f.email.touched || isSubmit)" class="error_message" 
+                                >
                                     <div *ngIf="f.email.errors.required">
                                         {{ 'GENERAL.EMAIL_REQUIRED' | translate }}
                                     </div>
@@ -36,17 +39,18 @@
                             </div>
                 
                             <!-- Password -->                    
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-2">
                                 <label class="UserLogin__Label" for="UserPassword">{{'GENERAL.PASSWORD' | translate}}</label>
                                 <div class="input-group ">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-white pl-2 pr-2  border-md border-right-0">
+                                        <span class="input-group-text bg-white pl-2 pr-2  border-md border-right-0" 
+                                        [ngClass]="{'error_input': f.password.errors && (f.password.touched || isSubmit)}">
                                             <!-- <i class="fa fa-lock text-muted"></i> -->
                                             <img   class="UserLogin_icon_input" src="../../../../../assets/images/password.svg">
 
                                         </span>
                                     </div>
-                                    <input id="password" pPassword type="password" 
+                                    <input id="password" pPassword type="password"  [ngClass]="{'error_input': f.password.errors && (f.password.touched || isSubmit)}"
                                     [type]="hide ? 'password' : 'text'" formControlName="password" name="password"
                                     placeholder="{{'GENERAL.PASSWORD' | translate}}" 
                                     class="  px-1 form-control UserLogin__FormControl pw bg-white border-left-0 border-md input-sm">
@@ -56,7 +60,7 @@
                                 </div>      
                                 
                                 
-                                <div *ngIf="f.password.errors && (f.password.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                <div *ngIf="f.password.errors && (f.password.touched || isSubmit)" class="error_message">
                                     <div *ngIf="f.password.errors.required">
                                         {{'GENERAL.PASSWORD_REQUIRED' | translate}}
                                     </div>
@@ -86,14 +90,14 @@
                                 <!-- <button type="button" [routerLink]="['/auth/register']" class="btn  UserLogin__SignUp " > {{'LOGIN_PG.SIGNUP' | translate}}</button> -->
                                 <button type="button" (click)="roleUser('5')" class="btn  UserLogin__SignUp " > {{'LOGIN_PG.SIGN_UP' | translate}}</button>
                             </div> 
-
-                            <div *ngIf="resMessage" class="alert alert-{{ resMessage.type }} my-4 py-2">
+                            <!-- class="alert alert-{{ resMessage.type }} my-4 py-2" -->
+                            <!-- <div *ngIf="resMessage" class="error_message ">
                                 {{ resMessage.message }}
-                              </div>
+                              </div> -->
                         </div>
                         
                         <div class="footer_form ">
-                            <hr>
+                            <hr class="mt-0">
                             <p class="footer_form_p mb-0 text-center mb-3"> {{'LOGIN_PG.SOICAL_LOGIN' | translate}} </p>
                             <div class="d-flex ">
                                 <button class="btn  UserLogin__Register " (click)="roleUser('4')"> {{'LOGIN_PG.TEACHER_SIGNUP' | translate}}</button>
