@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
   isSubmit = false;
   hide: boolean = true;
   userSocial: SocialUser|undefined;
-  loggedIn: boolean=false;
 
   userSocialRegister: IUserSocialRegister={};
   constructor(
@@ -49,7 +48,7 @@ export class LoginComponent implements OnInit {
   }
 
   roleUser(id:string){
-    this.roleData.emit({id:id});
+    // this.roleData.emit({id:id});
     this.router.navigateByUrl('/auth/(baseRouter:register)' + '?id=' +id);
   }
 
@@ -69,13 +68,6 @@ export class LoginComponent implements OnInit {
     });
     
     this.currentLang = this.translate.currentLang === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
-//====================authServiceSocial=====================
-
-this.authServiceSocial.authState.subscribe((user) => {
-  this.userSocial = user;
-  this.loggedIn = (user != null);
-});
-
   }
 
   get f() {
@@ -85,7 +77,6 @@ this.authServiceSocial.authState.subscribe((user) => {
   getLookups(){
     this.lookupService.getLookupByKey(this.lkupsKeys).subscribe(res=>{
       this.lookupCollection = res.data as ILookupCollection;
-      console.log(this.lookupCollection);
     })
   }
 
@@ -143,8 +134,6 @@ this.authServiceSocial.authState.subscribe((user) => {
    then((res)=>
    {
     this.userSocial = res;
-    this.loggedIn = (res != null);
-    console.log(this.userSocial);
     this.userSocialRegister.socType=3;
     this.userSocialRegister.usrSocMail=this.userSocial.email;
     this.userSocialRegister.usrSocName=this.userSocial.name;
@@ -154,7 +143,6 @@ this.authServiceSocial.authState.subscribe((user) => {
         if (res.isSuccess) {
           localStorage.setItem('user', JSON.stringify(res.data as IUser));
           this.router.navigateByUrl('/dashboard');
-          this.getLookups();
           this.isSubmit = false;
         }
         else
@@ -181,8 +169,6 @@ this.authServiceSocial.authState.subscribe((user) => {
      then((res)=>
     {
      this.userSocial = res;
-     this.loggedIn = (res != null);
-     console.log(this.userSocial);
      this.userSocialRegister.socType=1;
      this.userSocialRegister.usrSocMail=this.userSocial.email;
      this.userSocialRegister.usrSocName=this.userSocial.name;
@@ -192,7 +178,6 @@ this.authServiceSocial.authState.subscribe((user) => {
          if (res.isSuccess) {
            localStorage.setItem('user', JSON.stringify(res.data as IUser));
            this.router.navigateByUrl('/dashboard');
-           this.getLookups();
            this.isSubmit = false;
          }
          else
@@ -218,7 +203,6 @@ this.authServiceSocial.authState.subscribe((user) => {
     this.authServiceSocial.signOut();
   }
   private signInErrorHandler(err:any) {
-    console.warn(err);
 }
   //=========================
 }
