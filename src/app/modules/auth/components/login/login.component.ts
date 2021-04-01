@@ -3,9 +3,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IAuthentication } from 'src/app/core/interfaces/auth-interfaces/iauthentication';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
+import { IUserSocialRegister } from 'src/app/core/interfaces/auth-interfaces/iuser-social-register';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
@@ -28,18 +30,18 @@ export class LoginComponent implements OnInit {
   currentLang: LanguageEnum | undefined;
   isSubmit = false;
   hide: boolean = true;
-  @Output() roleData = new EventEmitter<{}>();
-  
-  // roleData ={id:'',nameAr:'',nameEn:''};
+  userSocial: SocialUser|undefined;
+  loggedIn: boolean=false;
 
-
+  userSocialRegister: IUserSocialRegister={};
   constructor(
       private fb: FormBuilder,
       private authService: AuthService,
       private translate: TranslateService,
       private lookupService: LookupService,
+      private router: Router,
+      private authServiceSocial: SocialAuthService,
       private route: ActivatedRoute,
-      private router: Router
       ) { }
 
   togglePassword() {
@@ -67,6 +69,13 @@ export class LoginComponent implements OnInit {
     });
     
     this.currentLang = this.translate.currentLang === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
+//====================authServiceSocial=====================
+
+this.authServiceSocial.authState.subscribe((user) => {
+  this.userSocial = user;
+  this.loggedIn = (user != null);
+});
+
   }
 
   get f() {
@@ -127,5 +136,89 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  
+  //===============social==============
+
+  signInWithGoogle(): void {
+   this.authServiceSocial.signIn(GoogleLoginProvider.PROVIDER_ID).
+   then((res)=>
+   {
+    this.userSocial = res;
+    this.loggedIn = (res != null);
+    console.log(this.userSocial);
+    this.userSocialRegister.socType=3;
+    this.userSocialRegister.usrSocMail=this.userSocial.email;
+    this.userSocialRegister.usrSocName=this.userSocial.name;
+    this.userSocialRegister.usrSocId=this.userSocial.id;
+    this.authService.socialAuthentication(this.userSocialRegister).subscribe(
+      (res) => {
+        if (res.isSuccess) {
+          localStorage.setItem('user', JSON.stringify(res.data as IUser));
+          this.router.navigateByUrl('/dashboard');
+          this.getLookups();
+          this.isSubmit = false;
+        }
+        else
+        {
+          
+            this.resMessage = {
+              message: res.message,
+              type: BaseConstantModel.DANGER_TYPE
+            }
+            this.isSubmit = false;
+        
+         
+        } 
+      }
+    );
+
+   },err => this.signInErrorHandler(err)
+
+   );
+  }
+
+  signInWithFB(): void {
+    this.authServiceSocial.signIn(FacebookLoginProvider.PROVIDER_ID).
+     then((res)=>
+    {
+     this.userSocial = res;
+     this.loggedIn = (res != null);
+     console.log(this.userSocial);
+     this.userSocialRegister.socType=1;
+     this.userSocialRegister.usrSocMail=this.userSocial.email;
+     this.userSocialRegister.usrSocName=this.userSocial.name;
+     this.userSocialRegister.usrSocId=this.userSocial.id;
+     this.authService.socialAuthentication(this.userSocialRegister).subscribe(
+       (res) => {
+         if (res.isSuccess) {
+           localStorage.setItem('user', JSON.stringify(res.data as IUser));
+           this.router.navigateByUrl('/dashboard');
+           this.getLookups();
+           this.isSubmit = false;
+         }
+         else
+         {
+           
+             this.resMessage = {
+               message: res.message,
+               type: BaseConstantModel.DANGER_TYPE
+             }
+             this.isSubmit = false;
+         
+          
+         } 
+       }
+     );
+ 
+    },err => this.signInErrorHandler(err)
+ 
+    );
+  }
+
+  signOut(): void {
+    this.authServiceSocial.signOut();
+  }
+  private signInErrorHandler(err:any) {
+    console.warn(err);
+}
+  //=========================
 }

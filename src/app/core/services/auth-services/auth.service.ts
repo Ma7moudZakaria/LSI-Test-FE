@@ -9,6 +9,7 @@ import { IAuthentication } from '../../interfaces/auth-interfaces/iauthenticatio
 import { IForgotPassword } from '../../interfaces/auth-interfaces/iforgot-password';
 import { IResetPassword } from '../../interfaces/auth-interfaces/ireset-password';
 import { IUser } from '../../interfaces/auth-interfaces/iuser-model';
+import { IUserSocialRegister } from '../../interfaces/auth-interfaces/iuser-social-register';
 import { IUpdateUserProfile } from '../../interfaces/user-interfaces/iupdateuserprofile';
 import { Iuser } from '../../interfaces/user-interfaces/iuser';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
@@ -27,6 +28,7 @@ export class AuthService {
   sendActivateCodeUrl = environment.baseUrl + 'User/send-new-activation-code/';
   viewProfileDetailsUrl = environment.baseUrl + 'User/view-user-profile-details/';
   updateUserUrl = environment.baseUrl + 'User/update-user';
+  socialAuthenticationUrl = environment.baseUrl + 'User/social-authentication';
   
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -78,5 +80,9 @@ export class AuthService {
     }
 
     this.router.navigateByUrl('');
+  }
+
+  socialAuthentication(model:IUserSocialRegister):Observable<BaseResponseModel>{
+    return this.http.post<BaseResponseModel>(this.socialAuthenticationUrl , model);
   }
 }

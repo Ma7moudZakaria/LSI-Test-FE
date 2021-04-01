@@ -23,6 +23,7 @@ import { SidebarComponent } from './core/layout/sidebar/sidebar.component';
 import { MyLoaderComponent } from './shared/components/my-loader/my-loader.component';
 import { LoaderService } from './core/services/loader-services/loader.service';
 import { LoaderInterceptor } from './core/services/interceptors/loader-interceptor.service';
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -55,13 +56,32 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatCheckboxModule,
     BrowserAnimationsModule,
     SharedModule,
-    MatExpansionModule
+    MatExpansionModule,
+    SocialLoginModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     LoaderService,
-    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '870269866675-itennv2jic75v6g773igda4iun5fi75e.apps.googleusercontent.com'
+            )
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('476016400500617')
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    }
   ],
   bootstrap: [AppComponent],
   exports: [TranslateModule, MatRadioModule, MatCheckboxModule],
