@@ -84,7 +84,7 @@
                             <div class="form-group col-lg-12 mx-auto mb-0">
                                 <button type="submit" class="btn UserLogin__Submit"> {{'LOGIN_PG.LOGIN' | translate}} </button>
                                 <!-- <button type="button" [routerLink]="['/auth/register']" class="btn  UserLogin__SignUp " > {{'LOGIN_PG.SIGNUP' | translate}}</button> -->
-                                <button type="button" [routerLink]="['/auth', { outlets: {'baseRouter':['register'] }}]" class="btn  UserLogin__SignUp " > {{'LOGIN_PG.SIGN_UP' | translate}}</button>
+                                <button type="button" (click)="roleUser('5')" class="btn  UserLogin__SignUp " > {{'LOGIN_PG.SIGN_UP' | translate}}</button>
                             </div> 
 
                             <div *ngIf="resMessage" class="alert alert-{{ resMessage.type }} my-4 py-2">
@@ -96,7 +96,8 @@
                             <hr>
                             <p class="footer_form_p mb-0 text-center mb-3"> {{'LOGIN_PG.SOICAL_LOGIN' | translate}} </p>
                             <div class="d-flex ">
-                                <button type="submit" disabled class="btn UserLogin__Register" > {{'LOGIN_PG.TEACHER_SIGNUP' | translate}}</button>
+                                <button class="btn  UserLogin__Register " (click)="roleUser('4')"> {{'LOGIN_PG.TEACHER_SIGNUP' | translate}}</button>
+                                
                                 <ul class="list-inline UserLogin__SocialMedia mb-0">
                                     <li class="list-inline-item"> <img src="../../../../../assets/images/facebook.svg"></li>
                                     <li class="list-inline-item"><img src="../../../../../assets/images/twiiter.svg"></li>

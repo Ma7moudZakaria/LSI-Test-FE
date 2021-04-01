@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { EventEmitter, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IAuthentication } from 'src/app/core/interfaces/auth-interfaces/iauthentication';
@@ -27,18 +28,32 @@ export class LoginComponent implements OnInit {
   currentLang: LanguageEnum | undefined;
   isSubmit = false;
   hide: boolean = true;
+  @Output() roleData = new EventEmitter<{}>();
+  
+  // roleData ={id:'',nameAr:'',nameEn:''};
+
 
   constructor(
       private fb: FormBuilder,
       private authService: AuthService,
       private translate: TranslateService,
       private lookupService: LookupService,
+      private route: ActivatedRoute,
       private router: Router
       ) { }
 
   togglePassword() {
     this.hide = !this.hide;
   }
+
+  roleUser(id:string){
+    this.roleData.emit({id:id});
+    this.router.navigateByUrl('/auth/(baseRouter:register)' + '?id=' +id);
+  }
+
+  // setroleUser(event:any){
+  //   this.roleData={id:event.id}
+  // }
 
   ngOnInit(): void {
     // this.userform = this.fb.group({
@@ -111,4 +126,6 @@ export class LoginComponent implements OnInit {
       }
     }
   }
+
+  
 }
