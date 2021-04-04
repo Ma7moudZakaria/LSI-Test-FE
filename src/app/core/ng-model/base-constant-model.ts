@@ -28,4 +28,7 @@ export class BaseConstantModel {
     public static Scientific_Material_English_WITHOUT_EMOJI = "^[\u{1F600}\u{1F6FF}a-zA-Z 0-9()/\\\\_-]+$";
 
     public static mobilePattern = "^(05)([0-9]{8})*$|^(\\+\\d{1,3}[- ]?)?\\d{10}";
+
+    public static TEXT_EAREA_ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI = "^[\u{1F600}\u{1F6FF}\u0621-\u064A\u0660-\u0669 \r\n 0-9_@./#&+\\-~؛)(÷*/'/!/$]+$";
+    public static  TEXT_EAREA_ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI = "^[\u{1F600}\u{1F6FF}A-Za-z \r\n 0-9_@./#&+-~؛)(÷*/'/!/$]*$";
 }
