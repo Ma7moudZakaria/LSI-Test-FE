@@ -42,7 +42,8 @@ export class HeaderComponent implements OnInit {
   }
 
   displayLang() {
-    return this.currentLang === LanguageEnum.ar ? LanguageEnum.en.split('-')[0].toUpperCase() : LanguageEnum.ar.split('-')[0].toUpperCase();
+    // return this.currentLang === LanguageEnum.ar ? LanguageEnum.en.split('-')[0].toUpperCase() : LanguageEnum.ar.split('-')[0].toUpperCase();
+    return this.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.ENGLISH_DISPALY_SWITCH') : this.translate.instant('GENERAL.ARABIC_DISPALY_SWITCH')
   }
   closeProfile(event: boolean) {
     this.submitClose = event;

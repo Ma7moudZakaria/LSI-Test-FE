@@ -35,7 +35,8 @@
     "YES" : "نعم",
     "NO" : "لا",
     "LOGOUT_CONFIRM" : "تسحيل الخروج",
-    "LOGOUT_MESSAGE" : "هل انت متاكد من تسجيل الخروج؟"
+    "LOGOUT_MESSAGE" : "هل انت متاكد من تسجيل الخروج؟",
+    "ENGLISH_DISPALY_SWITCH":"English"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
