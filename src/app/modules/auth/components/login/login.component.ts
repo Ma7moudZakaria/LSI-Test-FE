@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, Validators, FormGroup, ReactiveFormsModule } 
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { RoleEnum } from 'src/app/core/enums/role-enum.enum';
 import { IAuthentication } from 'src/app/core/interfaces/auth-interfaces/iauthentication';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
@@ -26,19 +27,15 @@ export class LoginComponent implements OnInit {
   lkupsKeys : string[] = ['GENDER'];
   resMessage: BaseMessageModel = {};
   currentLang: LanguageEnum | undefined;
+  roleEnum = RoleEnum;
   isSubmit = false;
   hide: boolean = true;
-  @Output() roleData = new EventEmitter<{}>();
-  
-  // roleData ={id:'',nameAr:'',nameEn:''};
-
 
   constructor(
       private fb: FormBuilder,
       private authService: AuthService,
       private translate: TranslateService,
       private lookupService: LookupService,
-      private route: ActivatedRoute,
       private router: Router
       ) { }
 
@@ -46,14 +43,9 @@ export class LoginComponent implements OnInit {
     this.hide = !this.hide;
   }
 
-  roleUser(id:string){
-    this.roleData.emit({id:id});
-    this.router.navigateByUrl('/auth/(baseRouter:register)' + '?id=' +id);
+  roleUser(roleType:number){
+    this.router.navigateByUrl('/auth/(baseRouter:register)' + '?type=' +roleType);
   }
-
-  // setroleUser(event:any){
-  //   this.roleData={id:event.id}
-  // }
 
   ngOnInit(): void {
     // this.userform = this.fb.group({
