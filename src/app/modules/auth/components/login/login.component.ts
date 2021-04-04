@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { RoleEnum } from 'src/app/core/enums/role-enum.enum';
 import { IAuthentication } from 'src/app/core/interfaces/auth-interfaces/iauthentication';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { IUserSocialRegister } from 'src/app/core/interfaces/auth-interfaces/iuser-social-register';
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
   lkupsKeys : string[] = ['GENDER'];
   resMessage: BaseMessageModel = {};
   currentLang: LanguageEnum | undefined;
+  roleEnum = RoleEnum;
   isSubmit = false;
   hide: boolean = true;
   userSocial: SocialUser|undefined;
@@ -47,14 +49,9 @@ export class LoginComponent implements OnInit {
     this.hide = !this.hide;
   }
 
-  roleUser(id:string){
-    // this.roleData.emit({id:id});
-    this.router.navigateByUrl('/auth/(baseRouter:register)' + '?id=' +id);
+  roleUser(roleType:number){
+    this.router.navigateByUrl('/auth/(baseRouter:register)' + '?type=' +roleType);
   }
-
-  // setroleUser(event:any){
-  //   this.roleData={id:event.id}
-  // }
 
   ngOnInit(): void {
     // this.userform = this.fb.group({

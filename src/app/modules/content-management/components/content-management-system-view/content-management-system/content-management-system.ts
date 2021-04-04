@@ -9,7 +9,6 @@ import { IContentManagement } from 'src/app/core/interfaces/content-management-i
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
-import { PatternConstantModel } from 'src/app/core/ng-model/pattern-constant-model';
 import { ContentManagementService } from 'src/app/core/services/content-management-services/content-management.service';
 
 @Component({
@@ -95,10 +94,10 @@ export class ContentManagementSystemComponent implements OnInit {
 
     this.currentForm = this.fb.group(
       {
-        shortDescriptionAr: ['', [Validators.required, Validators.pattern(PatternConstantModel.ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
-        shortDescriptionEn:  ['', [Validators.required, Validators.pattern(PatternConstantModel.ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
-        longDescriptionAr: ['', [Validators.required, Validators.pattern(PatternConstantModel.ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
-        longDescriptionEn:  ['', [Validators.required, Validators.pattern(PatternConstantModel.ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
+        shortDescriptionAr: ['', [Validators.required, Validators.pattern(BaseConstantModel.ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
+        shortDescriptionEn:  ['', [Validators.required, Validators.pattern(BaseConstantModel.ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
+        longDescriptionAr: ['', [Validators.required, Validators.pattern(BaseConstantModel.ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
+        longDescriptionEn:  ['', [Validators.required, Validators.pattern(BaseConstantModel.ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
         //typeId: ['', Validators.required]
       }
     )
