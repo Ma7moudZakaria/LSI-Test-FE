@@ -1,9 +1,32 @@
-.input-group.search>.input-group-prepend>.input-group-text:lang(ar) {
+.input-group>.input-group-prepend>.input-group-text:lang(ar) {
     border-top-left-radius: 0.65rem;
     border-bottom-left-radius: 0.65rem;
   }
-  .input-group.search>.input-group-prepend>.input-group-text:lang(en) {
-    border-top-right-radius: 0.65rem;
-    border-bottom-right-radius: 0.65rem;
+  // .input-group>.input-group-prepend>.input-group-text:lang(en) {
+  //   border-top-right-radius: 0.65rem;
+  //   border-bottom-right-radius: 0.65rem;
+  // }
+  
+
+
+    // for input in en 
+
+    .input-group:lang(en){
+      flex-direction: row-reverse;
+      .UserLogin__FormControl{
+          border-right: 0 ;
+          border-top-right-radius: 0px;
+          border-bottom-right-radius: 0;
+          border-top-left-radius: 0.56rem;
+          border-bottom-left-radius: 0.56rem;
+      }
+      .input-group-text
+      {
+          border-left: 1px solid transparent;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+          border-top-right-radius: 0.56rem;
+          border-bottom-right-radius: 0.56rem;
+      }
   }
   

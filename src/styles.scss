@@ -116,10 +116,22 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .content_form:lang(ar){
   text-align: right;
 }
+//for input in ar 
 .input-group:lang(ar){
   flex-direction: row-reverse;
+  .UserLogin__FormControl:lang(ar)
+  {
+    border-left-color: transparent;
+    
+  }
+  .input-group-text:lang(ar)
+  {
+    border-right-color: transparent;
+  }
 }
-
+.mat-icon{
+  opacity: 0.2;
+}
 .form-control,.input-group-text {
   border-radius: 0.65rem;
 }
@@ -129,6 +141,29 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   border-color:$border-input
 }
 
+  // for input in en 
+
+  .input-group:lang(en){
+    flex-direction: row-reverse;
+    .UserLogin__FormControl{
+        border-right: 0 ;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: 0.56rem;
+        border-bottom-left-radius: 0.56rem;
+    }
+    .input-group-text
+    {
+        border-left: 1px solid transparent;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 0.56rem;
+        border-bottom-right-radius: 0.56rem;
+    }
+}
+
+
+  // end input in en 
 
 // for error input && message
 
