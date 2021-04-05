@@ -11,6 +11,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MoveNextByMaxLengthDirective } from 'src/app/core/directive/move-next-by-max-length.directive';
+import { TelInputComponent } from 'src/app/shared/components/tel-input/tel-input.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -23,7 +25,10 @@ import { MoveNextByMaxLengthDirective } from 'src/app/core/directive/move-next-b
     FormsModule,
     MatIconModule,
     TranslateModule,
+    SharedModule,
     
+
+
   ]
 })
 export class AuthModule { }

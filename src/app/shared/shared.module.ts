@@ -18,10 +18,11 @@ import { SearchInputComponent } from './components/search-input/search-input.com
 
 import {MatIconModule} from '@angular/material/icon';
 import {Ng2TelInputModule} from 'ng2-tel-input';
+import { TelInputComponent } from './components/tel-input/tel-input.component';
 
 
 @NgModule({
-  declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent, SearchInputComponent],
+  declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent],
   imports: [
     CommonModule, RouterModule,TranslateModule,Ng2TelInputModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,MatIconModule

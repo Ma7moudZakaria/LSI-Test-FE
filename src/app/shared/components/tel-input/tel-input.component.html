@@ -1,0 +1,12 @@
+<div class="container mb-5 mt-5">
+    <div class="row">
+      <input type="text"
+      value="{{pp}}"
+      ng2TelInput
+      [ng2TelInputOptions]="{initialCountry: 'in'}"
+      (hasError)="hasError($event)"
+      (ng2TelOutput)="getNumber($event)"
+      (intlTelInputObject)="telInputObject($event)"
+      (countryChange)="onCountryChange($event)" />
+    </div>
+  </div>
