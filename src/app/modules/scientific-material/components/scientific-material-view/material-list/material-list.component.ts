@@ -35,7 +35,7 @@ export class MaterialListComponent implements OnInit {
   program = {} as IprogramsModel;
   constructor(private scientifcMaterialService: ScientificMaterialService,
     private dialog: MatDialog,
-     public translate: TranslateService) { }
+    public translate: TranslateService) { }
 
   ngOnInit(): void {
     this.loadMaterialCategories();
@@ -45,16 +45,16 @@ export class MaterialListComponent implements OnInit {
 
     if (changes.selectedProgram) {
       this.materialFilter.programs = changes.selectedProgram?.currentValue?.id;
-      this.program = changes.selectedProgram?.currentValue;      
+      this.program = changes.selectedProgram?.currentValue;
     }
-    else if(changes.refreshMaterialId)   
-    this.refreshMaterialId = changes.refreshMaterialId.currentValue;
+    else if (changes.refreshMaterialId)
+      this.refreshMaterialId = changes.refreshMaterialId.currentValue;
     this.loadProgramMaterial();
 
   }
   loadProgramMaterial() {
     this.materialFilter.skip = 0;
-    this.materialFilter.take = 10;
+    this.materialFilter.take = 2147483647;
     this.scientifcMaterialService.getScientificMateriaFilter(this.materialFilter).subscribe(
       (res: BaseResponseModel) => {
         this.materials = res.data as IScientificMaterialGrid[];
@@ -81,7 +81,7 @@ export class MaterialListComponent implements OnInit {
             type: BaseConstantModel.SUCCESS_TYPE
           }
         }
-        else{
+        else {
           this.resMessage = {
             message: res.message,
             type: BaseConstantModel.DANGER_TYPE
@@ -134,23 +134,23 @@ export class MaterialListComponent implements OnInit {
   }
 
   result: string = '';
-  async confirmDialog(id?:string){
-     const confirm = this.translate.instant('SCIENTIFIC_MATERIAL.Confirm_Delete');
-     const  message = this.translate.instant('SCIENTIFIC_MATERIAL.Delete_Message');
-    
-     const dialogData = new ConfirmDialogModel(confirm, message);
+  async confirmDialog(id?: string) {
+    const confirm = this.translate.instant('SCIENTIFIC_MATERIAL.Confirm_Delete');
+    const message = this.translate.instant('SCIENTIFIC_MATERIAL.Delete_Message');
 
-     const dialogRef = this.dialog.open(ConfirmModalComponent, {
-       maxWidth: "400px",
-       data: dialogData
-     });
-     dialogRef.afterClosed().subscribe(dialogResult => {
-       this.result= dialogResult;
-       if(dialogResult==true){
+    const dialogData = new ConfirmDialogModel(confirm, message);
+
+    const dialogRef = this.dialog.open(ConfirmModalComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      this.result = dialogResult;
+      if (dialogResult == true) {
         this.deleteMaterial(id);
- 
-       }
-      
-     });
-   }
+
+      }
+
+    });
+  }
 }

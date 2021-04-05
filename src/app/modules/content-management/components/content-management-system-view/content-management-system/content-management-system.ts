@@ -94,10 +94,10 @@ export class ContentManagementSystemComponent implements OnInit {
 
     this.currentForm = this.fb.group(
       {
-        shortDescriptionAr: ['', [Validators.required, Validators.pattern(BaseConstantModel.ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
-        shortDescriptionEn:  ['', [Validators.required, Validators.pattern(BaseConstantModel.ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
-        longDescriptionAr: ['', [Validators.required, Validators.pattern(BaseConstantModel.ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
-        longDescriptionEn:  ['', [Validators.required, Validators.pattern(BaseConstantModel.ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
+        shortDescriptionAr: ['', [Validators.required, Validators.pattern(BaseConstantModel.TEXT_AREA_ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
+        shortDescriptionEn:  ['', [Validators.required, Validators.pattern(BaseConstantModel.TEXT_AREA_ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
+        longDescriptionAr: ['', [Validators.required, Validators.pattern(BaseConstantModel.TEXT_AREA_ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
+        longDescriptionEn:  ['', [Validators.required, Validators.pattern(BaseConstantModel.TEXT_AREA_ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
         //typeId: ['', Validators.required]
       }
     )
