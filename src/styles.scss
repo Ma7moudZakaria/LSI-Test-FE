@@ -123,14 +123,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .form-control,.input-group-text {
   border-radius: 0.65rem;
 }
-.input-group>.input-group-prepend>.input-group-text:lang(ar) {
-  border-top-left-radius: 0.65rem;
-  border-bottom-left-radius: 0.65rem;
-}
-.input-group>.input-group-prepend>.input-group-text:lang(en) {
-  border-top-right-radius: 0.65rem;
-  border-bottom-right-radius: 0.65rem;
-}
+
 
 .form-control:focus,.input-group-text:focus{
   border-color:$border-input
