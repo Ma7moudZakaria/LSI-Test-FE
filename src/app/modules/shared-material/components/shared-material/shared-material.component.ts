@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
 import { MatDialog } from '@angular/material/dialog';
@@ -22,6 +22,7 @@ export class SharedMaterialComponent implements OnInit {
   disabled: boolean = false;
   panelOpenState: boolean = false;
   pp = '222222';
+  getPhonNumber='55555'; 
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
