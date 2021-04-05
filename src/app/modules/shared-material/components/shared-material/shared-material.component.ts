@@ -22,10 +22,14 @@ export class SharedMaterialComponent implements OnInit {
   disabled: boolean = false;
   panelOpenState: boolean = false;
   pp = '222222';
-  getPhonNumber='55555'; 
+  @Input() getPhonNumber='';
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+  ngOnChanges(changes: any) {
+    if( this.getPhonNumber!='')
+    this.getPhonNumber=changes.getPhonNumber;
   }
   unassignedTasks: DragDropListItem[] = [
     {
@@ -161,6 +165,12 @@ telInputObject(event:any){
 
 onCountryChange(event:any){
   console.log(event);
+}
+
+savePhonNumber(event:any){
+  this.getPhonNumber =event ;
+
+  
 }
 
 }
