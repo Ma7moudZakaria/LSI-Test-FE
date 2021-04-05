@@ -165,6 +165,10 @@ export class UpdateUserProfileComponent implements OnInit {
         }
       }
       
+      this.coursesMessage = {};
+      this.archiveMessage = {};
+      this.shiekhsMessage = {};
+
       this.updateUserModel.sheikhs = [];
       if (this.selectedShiekhsList.length) {
         Array.from(this.selectedShiekhsList).forEach((elm: BaseLookupModel) => {
@@ -202,9 +206,7 @@ export class UpdateUserProfileComponent implements OnInit {
         res => {
           if (res.isSuccess) {
             this.isSubmit = false;
-            this.coursesMessage = {};
-            this.archiveMessage = {};
-            this.shiekhsMessage = {};
+            
             this.resMessage = {
               message: res.message,
               type: BaseConstantModel.SUCCESS_TYPE

@@ -154,7 +154,8 @@
     "ASRCHIVE":"برجاء اختيار  مادة علمية",
     "COURSE":"برجاء اختيار  تدريب",
     "SCIENTIFIC_ARCHIVES":"المحفوظات العلمية",
-    "TRAINING_COURSES":"دورات تدريبية"
+    "TRAINING_COURSES":"دورات تدريبية",
+    "OPTIONAL":"اختيارى"
   },
   "QUESTION_BANK": {
     "TITLE":"بنك الأسئلة",
