@@ -42,21 +42,28 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-2">
                                 <label class="UserLogin__Label" for="UserPassword">{{'GENERAL.PASSWORD' | translate}}</label>
                                 <div class="input-group ">
+                                   
                                     <div class="input-group-prepend">
+                                      
                                         <span class="input-group-text bg-white pl-2 pr-2  border-md border-right-0" 
                                         [ngClass]="{'error_input': f.password.errors && (f.password.touched || isSubmit)}">
                                             <!-- <i class="fa fa-lock text-muted"></i> -->
+                                            <mat-icon   (click)="togglePassword()">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                             <img   class="UserLogin_icon_input" src="../../../../../assets/images/password.svg">
-
+                                            
                                         </span>
+                                       
+                                       
                                     </div>
+                                  
                                     <input id="password" pPassword type="password"  [ngClass]="{'error_input': f.password.errors && (f.password.touched || isSubmit)}"
                                     [type]="hide ? 'password' : 'text'" formControlName="password" name="password"
                                     placeholder="{{'GENERAL.PASSWORD' | translate}}" 
                                     class="  px-1 form-control UserLogin__FormControl pw bg-white border-left-0 border-md input-sm">
-                                
-                        
+                                  
                                     <!-- <mat-icon class="placeholder " (click)="togglePassword()">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+                              
+                                    
                                 </div>      
                                 
                                 
@@ -88,7 +95,7 @@
                             <div class="form-group col-lg-12 mx-auto mb-0">
                                 <button type="submit" class="btn UserLogin__Submit"> {{'LOGIN_PG.LOGIN' | translate}} </button>
                                 <!-- <button type="button" [routerLink]="['/auth/register']" class="btn  UserLogin__SignUp " > {{'LOGIN_PG.SIGNUP' | translate}}</button> -->
-                                <button type="button" (click)="roleUser('5')" class="btn  UserLogin__SignUp " > {{'LOGIN_PG.SIGN_UP' | translate}}</button>
+                                <button type="button" (click)="roleUser(roleEnum.Student)" class="btn  UserLogin__SignUp " > {{'LOGIN_PG.SIGN_UP' | translate}}</button>
                             </div> 
                             <!-- class="alert alert-{{ resMessage.type }} my-4 py-2" -->
                             <!-- <div *ngIf="resMessage" class="error_message ">
@@ -100,7 +107,7 @@
                             <hr class="mt-0">
                             <p class="footer_form_p mb-0 text-center mb-3"> {{'LOGIN_PG.SOICAL_LOGIN' | translate}} </p>
                             <div class="d-flex ">
-                                <button class="btn  UserLogin__Register " (click)="roleUser('4')"> {{'LOGIN_PG.TEACHER_SIGNUP' | translate}}</button>
+                                <button class="btn  UserLogin__Register " (click)="roleUser(roleEnum.Teacher)"> {{'LOGIN_PG.TEACHER_SIGNUP' | translate}}</button>
                                 
                                 <ul class="list-inline UserLogin__SocialMedia mb-0">
                                     <li class="list-inline-item"> <img src="../../../../../assets/images/facebook.svg" (click)="signInWithFB()"></li>

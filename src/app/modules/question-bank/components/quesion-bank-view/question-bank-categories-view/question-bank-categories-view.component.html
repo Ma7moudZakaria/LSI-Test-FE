@@ -11,7 +11,7 @@
     </span>
   </a> 
 </div>
-<div class="d-flex justify-content-between"  *ngIf="translate.currentLang===langEnum.ar">
+<!-- <div class="d-flex justify-content-between"  *ngIf="translate.currentLang===langEnum.ar">
       <div class="input-group">
           <div class="input-group-prepend">
               <span class="input-group-text bg-white pl-2 pr-2 border-md border-right-0">
@@ -37,9 +37,10 @@
           </span>
       </div>
   </div>
-</div>
+</div> -->
+<app-search-input (searchTerm)=getQuestionBankCategories($event)></app-search-input>
 
- <div class="internal_scroll_list_group ">
+<div class="internal_scroll_list_group ">
   <a class="list-group-item d-flex" *ngFor="let QBC  of questionBankCategoryList ; let i=index;" 
     [class.active]="selectedIndex === i" 
     (click)="loadCatogryQuiestion(QBC.id,QBC.arabCatgName,QBC.engCatgName);selectedIndex=i">

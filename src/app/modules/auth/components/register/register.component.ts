@@ -3,6 +3,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { RoleEnum } from 'src/app/core/enums/role-enum.enum';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
@@ -24,7 +25,7 @@ export class RegisterComponent implements OnInit {
   resMessage: BaseMessageModel = {};
   currentLang: LanguageEnum | undefined;
   isSubmit = false;
-  id : string | undefined
+  roleType : string | undefined
 
   constructor(private authService: AuthService,
     private router: Router,
@@ -34,7 +35,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.routeParams = this.router.url;
-    this.id =  this.route.snapshot.queryParamMap.get('id') || '';
+    this.roleType =  this.route.snapshot.queryParamMap.get('type') || '';
     this.loadUserForm();
     this.currentLang = this.translate.currentLang === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
     
@@ -63,7 +64,7 @@ export class RegisterComponent implements OnInit {
 
   onSignup(value: string) {
     this.isSubmit = true;
-    if (this.registerform.valid && this.id !== "" && this.id !== undefined) {
+    if (this.registerform.valid && this.roleType !== "" && this.roleType !== undefined) {
       localStorage.clear();
 
       this.registrationModel = {
@@ -71,7 +72,7 @@ export class RegisterComponent implements OnInit {
         uemail: this.registerform.value.email,
         ucpass: this.registerform.value.confirmPassword,//""
         upass: this.registerform.value.password,
-        roleid: this.id
+        roletype: this.roleType
       }
 
       this.authService.register(this.registrationModel).subscribe(res => {

@@ -76,7 +76,7 @@ langEnum = LanguageEnum;
     this.filterErrorMessage = "";
     if(name!=null||name!=""){ this.questionBankCategoryFilter.catgName=name;}
     this.questionBankCategoryFilter.skip=0;
-    this.questionBankCategoryFilter.take= 100;
+    this.questionBankCategoryFilter.take= 2147483647;
     this.questionBankCategoryService.getQuestionBankCategoriesFilter(this.questionBankCategoryFilter).subscribe(res => {
       let response = <BaseResponseModel>res;
       if (response.isSuccess) {

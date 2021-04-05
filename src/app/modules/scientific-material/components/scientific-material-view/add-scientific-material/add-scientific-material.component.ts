@@ -160,16 +160,16 @@ export class AddScientificMaterialComponent implements OnInit {
   }
 
   buildForm() {
-    const engPattern ="^[a-zA-Z ()/\\\\_-]+$";
-    const arabicPattern = "^[\u0621-\u064A\u0660-\u0669 ()/\\\\_-]+$";
+    // const engPattern ="^[a-zA-Z ()/\\\\_-]+$";
+    // const arabicPattern = "^[\u0621-\u064A\u0660-\u0669 ()/\\\\_-]+$";
 
-    const Scientific_Material_Arabic_WITHOUT_EMOJI = "^[\u{1F600}\u{1F6FF}\u0621-\u064A\u0660-\u0669 0-9()/\\\\_-]+$";
-    const Scientific_Material_English_WITHOUT_EMOJI = "^[\u{1F600}\u{1F6FF}a-zA-Z 0-9()/\\\\_-]+$";
+    // const Scientific_Material_Arabic_WITHOUT_EMOJI = "^[\u{1F600}\u{1F6FF}\u0621-\u064A\u0660-\u0669 0-9()/\\\\_-]+$";
+    // const Scientific_Material_English_WITHOUT_EMOJI = "^[\u{1F600}\u{1F6FF}a-zA-Z 0-9()/\\\\_-]+$";
 
     this.currentForm = this.fb.group(
       {
-        matrialTitleAr: ['', [Validators.required, Validators.maxLength(50), Validators.pattern(Scientific_Material_Arabic_WITHOUT_EMOJI)]],
-        matrialTitleEn: ['', [Validators.required, Validators.maxLength(50), Validators.pattern(Scientific_Material_English_WITHOUT_EMOJI)]],
+        matrialTitleAr: ['', [Validators.required, Validators.maxLength(50), Validators.pattern(BaseConstantModel.Scientific_Material_Arabic_WITHOUT_EMOJI)]],
+        matrialTitleEn: ['', [Validators.required, Validators.maxLength(50), Validators.pattern(BaseConstantModel.Scientific_Material_English_WITHOUT_EMOJI)]],
         matrialCategory: ['', Validators.required],
         fileLink: [''],
         active: [false],

@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { RoleEnum } from 'src/app/core/enums/role-enum.enum';
+import { SocialMediaEnum } from 'src/app/core/enums/social-media-enum.enum';
 import { IAuthentication } from 'src/app/core/interfaces/auth-interfaces/iauthentication';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { IUserSocialRegister } from 'src/app/core/interfaces/auth-interfaces/iuser-social-register';
@@ -28,6 +30,7 @@ export class LoginComponent implements OnInit {
   lkupsKeys : string[] = ['GENDER'];
   resMessage: BaseMessageModel = {};
   currentLang: LanguageEnum | undefined;
+  roleEnum = RoleEnum;
   isSubmit = false;
   hide: boolean = true;
   userSocial: SocialUser|undefined;
@@ -47,14 +50,9 @@ export class LoginComponent implements OnInit {
     this.hide = !this.hide;
   }
 
-  roleUser(id:string){
-    // this.roleData.emit({id:id});
-    this.router.navigateByUrl('/auth/(baseRouter:register)' + '?id=' +id);
+  roleUser(roleType:number){
+    this.router.navigateByUrl('/auth/(baseRouter:register)' + '?type=' +roleType);
   }
-
-  // setroleUser(event:any){
-  //   this.roleData={id:event.id}
-  // }
 
   ngOnInit(): void {
     // this.userform = this.fb.group({
@@ -63,7 +61,7 @@ export class LoginComponent implements OnInit {
     // });
 
     this.userform = this.fb.group({
-      email: ["", [Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+      email: ["", [Validators.required]],//, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")
       password: ["", [Validators.required, Validators.minLength(6) , Validators.maxLength(12)]],
     });
     
@@ -134,7 +132,7 @@ export class LoginComponent implements OnInit {
    then((res)=>
    {
     this.userSocial = res;
-    this.userSocialRegister.socType=3;
+    this.userSocialRegister.socType=SocialMediaEnum.Google;
     this.userSocialRegister.usrSocMail=this.userSocial.email;
     this.userSocialRegister.usrSocName=this.userSocial.name;
     this.userSocialRegister.usrSocId=this.userSocial.id;
@@ -169,7 +167,7 @@ export class LoginComponent implements OnInit {
      then((res)=>
     {
      this.userSocial = res;
-     this.userSocialRegister.socType=1;
+     this.userSocialRegister.socType=SocialMediaEnum.Facebook;
      this.userSocialRegister.usrSocMail=this.userSocial.email;
      this.userSocialRegister.usrSocName=this.userSocial.name;
      this.userSocialRegister.usrSocId=this.userSocial.id;
