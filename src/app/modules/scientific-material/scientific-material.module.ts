@@ -11,16 +11,16 @@ import { TstComponent } from './components/tst/tst.component';
 import { MaterialListComponent } from './components/scientific-material-view/material-list/material-list.component';
 import { ProgramsListComponent } from './components/scientific-material-view/programs-list/programs-list.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
-    declarations: [AddScientificMaterialComponent, ScientificMaterialViewComponent, TstComponent, MaterialListComponent,  ProgramsListComponent],
+  declarations: [AddScientificMaterialComponent, ScientificMaterialViewComponent, TstComponent, MaterialListComponent, ProgramsListComponent],
   imports: [
     CommonModule,
     ScientificMaterialRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     TranslateModule,
-    SharedModule
-  ]
+    SharedModule, MatTooltipModule
+  ], providers: [MatTooltipModule]
 })
 export class ScientificMaterialModule { }
