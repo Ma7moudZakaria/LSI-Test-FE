@@ -21,6 +21,7 @@ export class SharedMaterialComponent implements OnInit {
   // labelPosition: 'before' | 'after' = 'after';
   disabled: boolean = false;
   panelOpenState: boolean = false;
+  pp = '2222222';
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -143,5 +144,23 @@ export class SharedMaterialComponent implements OnInit {
     // description: 'This is description of tasks 3'
   }
 ];
+
+
+hasError(event:any){
+  console.log(event);
+}
+
+getNumber(event:any){
+  console.log(event);
+}
+
+telInputObject(event:any){
+  console.log(event);
+}
+
+onCountryChange(event:any){
+  console.log(event);
+}
+
 }
 

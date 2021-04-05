@@ -17,16 +17,17 @@ import { TranslateModule } from '@ngx-translate/core';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 
 import {MatIconModule} from '@angular/material/icon';
+import {Ng2TelInputModule} from 'ng2-tel-input';
 
 
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent, SearchInputComponent],
   imports: [
-    CommonModule, RouterModule,TranslateModule,
+    CommonModule, RouterModule,TranslateModule,Ng2TelInputModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,MatIconModule
   ],
   exports: [
-    MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule,
+    MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule,Ng2TelInputModule,
     MatExpansionModule, MatSelectModule, DragDropModule, CustomeCardComponent, CustomAccordionComponent,
     ViewUserProfileCustomComponent,SearchInputComponent
   ]
