@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tel-input.component.scss']
 })
 export class TelInputComponent implements OnInit {
-  pp = '2222222';
+  phonNumber = '01012141516';
   constructor() { }
   hasError(event:any){
     console.log(event);

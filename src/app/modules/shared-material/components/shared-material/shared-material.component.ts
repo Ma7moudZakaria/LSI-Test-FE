@@ -21,7 +21,7 @@ export class SharedMaterialComponent implements OnInit {
   // labelPosition: 'before' | 'after' = 'after';
   disabled: boolean = false;
   panelOpenState: boolean = false;
-  pp = '2222222';
+  pp = '222222';
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {

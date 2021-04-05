@@ -25,12 +25,12 @@ import { TelInputComponent } from './components/tel-input/tel-input.component';
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent],
   imports: [
     CommonModule, RouterModule,TranslateModule,Ng2TelInputModule,
-    MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,MatIconModule
+    MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,MatIconModule,
   ],
   exports: [
     MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule,Ng2TelInputModule,
     MatExpansionModule, MatSelectModule, DragDropModule, CustomeCardComponent, CustomAccordionComponent,
-    ViewUserProfileCustomComponent,SearchInputComponent
+    ViewUserProfileCustomComponent,SearchInputComponent,TelInputComponent
   ]
 })
 export class SharedModule { }
