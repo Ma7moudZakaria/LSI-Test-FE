@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-tel-input',
@@ -8,6 +8,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class TelInputComponent implements OnInit {
   phonNumber = '';
   @Output() getPhonNumber = new EventEmitter<string>();
+  @Input() setPhonNumber = '';
   constructor() { }
   hasError(event:any){
     console.log(event);
@@ -16,19 +17,19 @@ export class TelInputComponent implements OnInit {
   }
   getNumber(event:any){
     console.log(event);
-    this.getPhonNumber=event;
+    this.getPhonNumber.emit=event;
     console.log('getNumber'+this.getPhonNumber);
   }
   
   telInputObject(event:any){
     console.log(event);
-    console.log('telInputObject'+this.getPhonNumber);
+ 
    
   }
   
   onCountryChange(event:any){
     console.log(event);
-    console.log('onCountryChange'+this.getPhonNumber);
+    
     
   }
 }

@@ -22,7 +22,9 @@ export class SharedMaterialComponent implements OnInit {
   disabled: boolean = false;
   panelOpenState: boolean = false;
   pp = '222222';
-  @Input() getPhonNumber='';
+  @Input() getPhonNumber:string|undefined;
+  setPhonNumber = '0553403878';
+
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {

@@ -374,6 +374,6 @@
 </mat-accordion>
 <!-- --phon number-- -->
 
-<app-tel-input  (getPhonNumber)="savePhonNumber($event)"></app-tel-input>
+<app-tel-input  (getPhonNumber)="savePhonNumber($event)" [setPhonNumber]="setPhonNumber"></app-tel-input>
 
 {{getPhonNumber}}
