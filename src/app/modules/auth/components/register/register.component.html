@@ -15,7 +15,7 @@
                                 <label for="UserEmail"> {{'SIGNUP_PG.USERNAME' | translate}} </label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-white pl-2 pr-2 border-md border-right-0"
+                                        <span class="input-group-text bg-white pl-2 pr-2 border-md "
                                         [ngClass]="{'error_input': f.userName.errors && (f.userName.touched || isSubmit)}">
                                             <!-- <i class="fa fa-envelope text-muted"></i> -->
                                             <img  class="UserLogin_icon_input" src="../../../../../assets/images/email.svg">
@@ -24,7 +24,7 @@
                                     <input id="userName"  pInputText type="text" formControlName="userName" name="userName" 
                                     placeholder="{{'GENERAL.USERNAME' | translate}}"
                                     [ngClass]="{'error_input': f.userName.errors && (f.userName.touched || isSubmit)}"
-                                    class=" px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
+                                    class=" px-1 form-control UserLogin__FormControl bg-white  border-md input-sm">
                                     
                                 </div>   
                                     
@@ -46,7 +46,7 @@
                                 <label for="UserEmail"> {{'GENERAL.EMAIL' | translate}} </label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-white pl-2 pr-2 border-md border-right-0"
+                                        <span class="input-group-text bg-white pl-2 pr-2 border-md "
                                         [ngClass]="{'error_input': f.email.errors && (f.email.touched || isSubmit)}">
                                             <!-- <i class="fa fa-envelope text-muted"></i> -->
                                             <img  class="UserLogin_icon_input" src="../../../../../assets/images/email.svg">
@@ -55,7 +55,7 @@
                                     <input id="email"  pInputText type="email" formControlName="email" name="email" 
                                     placeholder="Ex. email@gmail.com" 
                                     [ngClass]="{'error_input': f.email.errors && (f.email.touched || isSubmit)}"
-                                    class=" px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
+                                    class=" px-1 form-control UserLogin__FormControl bg-white  border-md input-sm">
                                 </div>
                                    
                                 <div *ngIf="f.email.errors && (f.email.touched || isSubmit)"  class="error_message" >
@@ -91,7 +91,7 @@
                                         <label for="password">{{'GENERAL.PASSWORD' | translate}}</label>
                                         <div class="input-group ">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text bg-white pl-2 pr-2  border-md border-right-0"
+                                                <span class="input-group-text bg-white pl-2 pr-2  border-md "
                                                 [ngClass]="{'error_input': f.password.errors && (f.password.touched || isSubmit)}">
                                                     <!-- <i class="fa fa-lock text-muted"></i> -->
                                                     <img   class="UserLogin_icon_input" src="../../../../../assets/images/password.svg">
@@ -102,7 +102,7 @@
                                             [type]="hidePassword ? 'password' : 'text'" formControlName="password" name="password"
                                             placeholder="{{'GENERAL.PASSWORD' | translate}}"
                                             [ngClass]="{'error_input': f.password.errors && (f.password.touched || isSubmit)}"
-                                            class="  px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
+                                            class="  px-1 form-control UserLogin__FormControl bg-white  border-md input-sm">
                                             
                                             
                                         </div>     
@@ -124,7 +124,7 @@
                                         <label for="confirmPassword">{{'GENERAL.CONFIRM_PASSWORD' | translate}}</label>
                                         <div class="input-group ">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text bg-white pl-2 pr-2  border-md border-right-0"
+                                                <span class="input-group-text bg-white pl-2 pr-2  border-md "
                                                 [ngClass]="{'error_input': f.confirmPassword.errors && (f.confirmPassword.touched || isSubmit)}"
                                                 >
                                                     <!-- <i class="fa fa-lock text-muted"></i> -->
@@ -136,7 +136,7 @@
                                             [ngClass]="{'error_input': f.confirmPassword.errors && (f.confirmPassword.touched || isSubmit)}"
                                             [type]="hidePassword ? 'password' : 'text'" formControlName="confirmPassword" name="confirmPassword"
                                             placeholder="{{'GENERAL.CONFIRM_PASSWORD' | translate}}"
-                                            class="  px-1 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm">
+                                            class="  px-1 form-control UserLogin__FormControl bg-white  border-md input-sm">
                                         </div>   
                                         <div *ngIf="f.confirmPassword.errors && (f.confirmPassword.touched || isSubmit)"  class="error_message" >
                                             <div *ngIf="f.confirmPassword.errors.required ">

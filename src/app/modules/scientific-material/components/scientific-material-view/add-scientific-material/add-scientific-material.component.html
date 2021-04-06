@@ -19,12 +19,14 @@
                     <img  src="assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
                 </button>
             </span>
+
+
         </div>
-        <div>
-            <div *ngIf="programMessage" class="alert alert-{{ programMessage.type }} my-4 py-2">
+            <div *ngIf="programMessage" >
+                <div class="alert alert-{{ programMessage.type }} my-2 py-2">
                 {{ programMessage.message }}
+                </div>
             </div>
-        </div>
         <div class="badges mt-3">
             <span *ngFor="let p of selectedProgramsList"
                 class="badge badge-info p-2">{{translate.currentLang === langEnum.en ? p.engName :p.arabName}}

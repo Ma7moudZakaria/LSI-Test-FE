@@ -82,3 +82,8 @@ label{
 }
 
 
+// input with +
+.input-group:not(.has-validation)>.form-control:not(:last-child) {
+    border-top-right-radius: 0.65rem;
+    border-bottom-right-radius: 0.65rem;
+}
