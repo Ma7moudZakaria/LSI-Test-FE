@@ -337,11 +337,11 @@ select.form-control {
   }
 }
 .ellipsis {
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
-  word-wrap: break-word;
-  width: 10%;
+  max-width: 14rem;
+  cursor: pointer;
 }
 .badges {
   .badge-info {

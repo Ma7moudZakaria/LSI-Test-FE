@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [UpdateUserProfileComponent, ViewUserProfileDetailsComponent],
@@ -18,8 +19,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CommonModule,
     FormsModule,
     TranslateModule,
-    SharedModule
-  ],
+    SharedModule, MatTooltipModule
+  ], providers: [MatTooltipModule],
   exports: [ViewUserProfileDetailsComponent]
 })
 export class UserModule { }
