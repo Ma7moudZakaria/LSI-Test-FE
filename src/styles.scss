@@ -322,6 +322,7 @@ select.form-control {
   z-index: 6;
   right: 0;
 }
+
 .plus-btn {
   // left: 5px;
   // top: 5px;
@@ -331,8 +332,17 @@ select.form-control {
     width: 40px;
     height: 39px;
   }
+  .btn-add{
+    border: 1px solid #e0d6d6 !important;
+  }
 }
-
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: break-word;
+  width: 10%;
+}
 .badges {
   .badge-info {
     background-color: $gray-300;
