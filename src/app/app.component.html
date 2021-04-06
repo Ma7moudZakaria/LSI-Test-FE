@@ -1,5 +1,20 @@
-<app-header></app-header>
-<div class="container">
-  <router-outlet></router-outlet>
+<div class="container-fluid" *ngIf="showHeader()">
+  <div class="row" >
+    <div class="col-1 p-0">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-11 p-0">
+    
+        <app-header></app-header>
+       
+        <router-outlet></router-outlet>
+        <app-my-loader></app-my-loader>
+      
+    </div>
+  </div>
+  
 </div>
-<app-footer></app-footer>
+<div class="container-fluid" *ngIf="!showHeader()">
+    <router-outlet name='baseRouter'></router-outlet>
+</div>
+<!-- <app-footer></app-footer> -->

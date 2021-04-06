@@ -1,96 +1,82 @@
 @import 'src/assets/scss/_variables.scss';
-
-.UserLogin{
-    // background-color: aliceblue;
-    // background-repeat: no-repeat;
-
-    .UserLogin__LoginHeader{
-        text-align: left;
-    }
-
-    // .UserLogin__FormContainer{
-    //     padding: 2rem;
-    //     border-radius: 10px;
-    //     box-shadow: 0 3px 15px #0000001A
-    // }
-
-    .UserLogin__Label{
-        color: $auth-backgroundcolor;
-    }
-
-    // Email And Password
-    .UserLogin__FormControl:not(select) {
-        padding: 1.5rem 0.5rem;
-    }
     
-    select.UserLogin__FormControl {
-        height: 52px;
-        padding-left: 0.5rem;
-    }
-    
-    .UserLogin__FormControl::placeholder {
-        color: $auth-color;
-        font-weight: bold;
-        font-size: 0.9rem;
-    }
-    
-    .UserLogin__FormControl:focus {
-        box-shadow: none;
-    }
-
-    .UserLogin__PasswordError{
-        position: relative; 
-        top: -1.563rem;
-    }
-    
-    .UserLogin__LoginFooterForm{        
-        text-align: center;
-    }
-
     .UserLogin__ForgetPassword{
         float: right;
         .UserLogin__ForgetPasswordLink{
-            color: $auth-colorForgetPassword
+            color: $ForgetPasswordLink;
         }
     }
+
     
+
     .UserLogin__RememberMeLabel{
         opacity: 0.5;
         .UserLogin__RememberMe{
-            color: $auth-colorRememberMe;
+            color: $RememberMeLabel;
             opacity: 0.5;
         }
     }
 
-    .UserLogin__Submit{
-        background-color: $user-color;
-        width: 19.063rem;
-        height: 3.191rem;
-        margin-left: auto;
-        margin-right: auto;
-        border: none;
-        border-radius: 1rem;
+    .input-group:not(.has-validation)>.custom-file:not(:last-child) .custom-file-label::after, .input-group:not(.has-validation)>.custom-select:not(:last-child), .input-group:not(.has-validation)>.form-control:not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-radius: 8px;
     }
+    // .UserLogin__FormControl.pw{
+    //     border-radius: 0px !important;
 
-    .UserLogin__SignUp{
-        margin-top: 1.25rem;
-        background-color: $auth-colorSignupLink;
-        width: 19.063rem;
-        height: 3.191rem;
-        margin-left: auto;
-        margin-right: auto;
-        border: none;
-        border-radius: 1rem;        
+    // }
+    .UserLogin__FormControl.pw:lang(ar){
+        border-top-right-radius: 8px !important;
+        border-bottom-right-radius: 8px  !important
+
     }
+    .placeholder{
+        position: absolute;
+        right: 15px;
+        top: 5px;
+        cursor: pointer;
+      }
+      
+      .input-placeholder {
+        position: absolute;
+      }
 
-    .UserLogin__SignUpContainerOfLink{
-        margin-top: 0.3rem;
-        margin-bottom: 0.3rem;
-        .UserLogin__SignUpLink{
-            color: #172B4D;
+      .UserLogin__ForgetPassword:lang(ar)
+      {
+          float: left 
+      }
+
+
+      .input-group-prepend:lang(ar) {
+          float: left;
+    }
+   
+    // .UserLogin__LoginForm:lang(ar){
+    //     float: left;
+
+        
+    // }
+
+
+    // for input in en 
+
+    .input-group:lang(en){
+        flex-direction: row-reverse;
+        .UserLogin__FormControl{
+            border-right: 0 ;
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 0;
+            border-top-left-radius: 0.56rem;
+            border-bottom-left-radius: 0.56rem;
+        }
+        .input-group-text
+        {
+            border-left: 1px solid transparent;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-top-right-radius: 0.56rem;
+            border-bottom-right-radius: 0.56rem;
         }
     }
-
-    
-}
-
+  

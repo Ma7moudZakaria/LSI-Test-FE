@@ -2,8 +2,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IActivationCode } from 'src/app/core/interfaces/auth/iactivation-code-module';
-import { IUser } from 'src/app/core/interfaces/auth/iuser-model';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { IActivationCode } from 'src/app/core/interfaces/auth-interfaces/iactivation-code';
+import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 
 @Component({
@@ -18,21 +22,24 @@ export class ActivateUserComponent implements OnInit {
   activationcodeform = new FormGroup({});
   activationcodeModel = {} as  IActivationCode;
   currentUser = {} as IUser;
-  successMessage:any;
   hidePassword = true;
-  errorMessage:any;
-
+  currentLang: LanguageEnum | undefined;
   userData?:string;
+  uemail?:string;
+  resMessage: BaseMessageModel = {};
+  isSubmit = false;
 
   constructor(
-    private router: Router, private activatedRoute: ActivatedRoute,
+    private router: Router, 
     private fb: FormBuilder,
+    private translate: TranslateService,
     private authService: AuthService) { }
 
   ngOnInit(): void {
     this.resetPasswordFormG();
-    
+    this.currentLang = this.translate.currentLang === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
+    this.uemail = this.currentUser.uemail; 
   }
 
   resetPasswordFormG() {
@@ -50,55 +57,59 @@ export class ActivateUserComponent implements OnInit {
 
   sendActivateCode()
   {
-    this.authService.sendActivateCode(this.currentUser.id).subscribe(res => {
+    this.authService.sendActivateCode(this.currentUser?.id || '').subscribe(res => {
       console.log(res);
       if (res.isSuccess){
-        this.successMessage={
+        this.resMessage = 
+        {
           message: res.message,
-          type:'success'
+          type: BaseConstantModel.SUCCESS_TYPE
         }
         setTimeout(()=>{
             // this.router.navigateByUrl('/auth/login');
           },3000);
       }
       else{
-        this.errorMessage  = res.message;
+        this.resMessage = 
+        {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       }
     }); 
   }
 
   onApply(value:string) {
+    this.isSubmit = true;
     if (this.activationcodeform.valid){
-
       this.activationcodeModel = {
         uid: this.currentUser.id,
         activCode: this.activationcodeform.value.firstNumber.toString() + this.activationcodeform.value.secondNumber.toString() + this.activationcodeform.value.thirdNumber.toString() + this.activationcodeform.value.fourthNumber.toString(),
-      }
-        
+      }        
       this.authService.activateUser(this.activationcodeModel).subscribe(res => {
         console.log(res);
         if (res.isSuccess){
-          this.successMessage={
-            message:res.message,
-            type:'success'
+          this.isSubmit = false;
+          this.resMessage = {
+            message: res.message,
+            type: BaseConstantModel.SUCCESS_TYPE
           }
-          setTimeout(()=>{
-              // this.router.navigateByUrl('/auth/login');
-            },3000);
-          }
+          this.router.navigateByUrl('/dashboard');
+        }
         else{
-          this.successMessage={
-            message:res.message,
-            type:'danger'
+          this.isSubmit = false;
+          this.resMessage = {
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
           }
         }
       });  
     }
     else{
-      this.successMessage={
-        message:"Please, fill inputes",
-        type:'danger'
-      }
+      this.resMessage = {
+          message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+          type: BaseConstantModel.DANGER_TYPE
+        }
     }
   } 
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { IUserProfilePicture } from '../../interfaces/user-interfaces/iuser-profile-picture';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 
 @Injectable({
@@ -9,12 +10,12 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
 })
 export class UserService {
 
-  getAllUsersURL = environment.BaseURL + 'User/get-all-users/';
-  completeProfileURL = environment.BaseURL + 'User/complete-profile/';
-  updateUserURL = environment.BaseURL + 'User/update-user/';
-  viewUserProfileDetailsURL = environment.BaseURL + 'User/view-user-profile-details/';
-  deleteUserURL = environment.BaseURL + 'User/delete-user/';
-  
+  getAllUsersURL = environment.baseUrl + 'User/get-all-users/';
+  completeProfileURL = environment.baseUrl + 'User/complete-profile/';
+  updateUserURL = environment.baseUrl + 'User/update-user/';
+  viewUserProfileDetailsURL = environment.baseUrl + 'User/view-user-profile-details/';
+  deleteUserURL = environment.baseUrl + 'User/delete-user/';
+  updateUserProfilePicURL = environment.baseUrl + 'user/upload-profile-picture'
 
   constructor(private http: HttpClient) { }
 
@@ -28,18 +29,22 @@ export class UserService {
     return this.http.put<BaseResponseModel>(this.updateUserURL , model);
   }
 
-  viewUserProfileDetails(id : string) 
+  viewUserProfileDetails(id : string) :Observable<BaseResponseModel>
   {
     return this.http.get<BaseResponseModel>(this.viewUserProfileDetailsURL + id)
   }
 
-  getAllUsers() 
+  getAllUsers() :Observable<BaseResponseModel>
   {
     return this.http.get<BaseResponseModel>(this.getAllUsersURL)
   }
 
-  deleteUser(id : string) 
+  deleteUser(id : string) :Observable<BaseResponseModel>
   {
     return this.http.delete<BaseResponseModel>(this.deleteUserURL + id)
+  }
+
+  updateUserProfilePic(model:any):Observable<BaseResponseModel>{
+    return this.http.post<BaseResponseModel>(this.updateUserProfilePicURL, model);
   }
 }

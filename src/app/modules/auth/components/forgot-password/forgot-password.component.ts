@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IForgotPassword } from 'src/app/core/interfaces/auth/iforgot-password-model';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { IForgotPassword } from 'src/app/core/interfaces/auth-interfaces/iforgot-password';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 
 @Component({
@@ -14,35 +18,33 @@ export class ForgotPasswordComponent implements OnInit {
   hidePassword = true;
   forgetpasswordform = new FormGroup({});
   submitted: boolean | undefined;
-  token:any;
-  successMessage:any;
-  errorMessage:any;
+  resMessage: BaseMessageModel = {};
+  currentLang: LanguageEnum | undefined;
+  isSubmit = false;
 
   constructor( 
       private fb: FormBuilder,
-      private router: Router,
-      private activatedRoute: ActivatedRoute,
+      public translate: TranslateService,
       private authService: AuthService
       ) { }
 
   ngOnInit(): void {
     this.loadForgotPasswordForm();
-    // this.token = this.activatedRoute.snapshot.queryParamMap.get('tkn');
-    // this.forgetpasswordform = this.fb.group({
-    //   'password': new FormControl('', Validators.compose([Validators.required, Validators.minLength(6)])),
-    //   'confirm_password': new FormControl('', Validators.compose([Validators.required])),
-    // },{ 
-    // // validator: MustMatch('password', 'confirm_password')
-    // });
+    this.currentLang = this.translate.currentLang === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
+  }
+
+  get f() {
+    return this.forgetpasswordform.controls;
   }
 
   loadForgotPasswordForm() {
     this.forgetpasswordform = this.fb.group({
-      email: ["", [Validators.required, Validators.email]]
+      email: ["", [Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
     });
   }
 
   onSubmit(value: string) {
+    this.isSubmit = true;
     if (this.forgetpasswordform.valid) {
       var forgotPasswordModel : IForgotPassword;
       forgotPasswordModel = {
@@ -51,29 +53,26 @@ export class ForgotPasswordComponent implements OnInit {
       this.authService.forgotPassword(forgotPasswordModel).subscribe(
         (res) => {
           if (res.isSuccess){
-            this.successMessage={
+            this.isSubmit = false;
+            this.resMessage = {
               message: res.message,
-              type:'success'
+              type: BaseConstantModel.SUCCESS_TYPE
             }
-            setTimeout(()=>{
-                // this.router.navigateByUrl('/auth/login');
-              },3000);
           }
           else{
-            this.errorMessage  = res.message;
-          }
-        },
-        (error: any) => {
-          if (!error.isSuccess) {
-            // this.errorMessage = this.translate.currentLang =='ar' ? "خطأ فى الاتصال" : "Cummunication error"//error.message;
+            this.isSubmit = false;
+            this.resMessage = {
+              message: res.message,
+              type: BaseConstantModel.DANGER_TYPE
+            }
           }
         }
       );
     }
     else{
-      this.successMessage={
-        message:"Please fill missing fields",
-        type:'danger'
+      this.resMessage = {
+        message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+        type: BaseConstantModel.DANGER_TYPE
       }
     }
   }

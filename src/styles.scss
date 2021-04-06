@@ -2,7 +2,7 @@
 @import 'src/assets/scss/_typography.scss';
 
 html {
-  font-size: 15px;
+  font-size:16px;
 }
 
 @media (max-width: 768px) {
@@ -10,5 +10,408 @@ html {
     font-size: 13px;
   }
 }
-html, body { height: 100%; }
+html, body {  height: 100%;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+// custom scrollbar
+/* width */
+::-webkit-scrollbar {
+  width: 0.3rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(185, 185, 185);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(196, 195, 195);
+}
+
+// login page 
+
+.LoginBackground_left_img
+{
+    background-color: $login_background;
+    height: 100vh;
+
+}
+.identity_img{
+     background-image: url(../src/assets/images/Group18169.png);
+    background-color: $login_background;
+    max-width: 100%;
+    width: 100%;
+    background-position-x: center;
+    background-repeat: no-repeat;
+    height: 100px;
+    top: 0;
+}
+
+
+
+.LoginBackground_Right_img{
+   
+    //  background-color: $login_background;
+    // background: linear-gradient(#8E2520, #4F1512);
+    // background: #8E2520;
+    // background-image: url(../../huffaz-app/src/assets/images/opacity_background.png); 
+    background-image: url(../src/assets/images/logo.png), linear-gradient(#8E2520, #4F1512);
+
+     background-position-x: center;
+     background-position-y: center;
+     background-repeat: repeat-y;
+     
+}
+.repeater_img{
+    position: absolute;
+    bottom: 2%;
+    height: 10%;
+    background-image: url(../src/assets/images/Group18161.png);
+    background-repeat: repeat-x;
+    z-index: 100;
+
+}
+.test{
+  background-image: linear-gradient(#8E252000, #8E252050, #4F1512);
+  position: absolute;
+  height: 40%;
+  right: 0;
+  bottom: 0;
+  display: inline-block;
+  width: 100%;
+}
+.UserLogin__FormContainer{
+    height: 76px;
+    background-color:$main_background;
+    
+}
+.box {
+    background: $white 0% 0% no-repeat padding-box;
+    box-shadow: 2px 8px 16px $shadow_color !important;
+    border-radius: 16px;
+    padding: 24px;
+    padding-bottom: 0;
+    // margin-top: 1rem;
+    margin-top: 1.5rem;
+    // margin-bottom: 0.5rem;
+    width: 32.812rem;
+    height:auto
+   
+}
+
+.content_form
+{
+  min-height: 23.5rem;
+   padding-left: 3.5rem;
+  padding-right: 3.5rem;
+  // min-height: 50vh;
+}
+.content_form:lang(ar){
+  text-align: right;
+}
+//for input in ar 
+.input-group:lang(ar){
+  flex-direction: row-reverse;
+  .UserLogin__FormControl:lang(ar)
+  {
+    border-left-color: transparent;
+    
+  }
+  .input-group-text:lang(ar)
+  {
+    border-right-color: transparent;
+  }
+}
+.mat-icon{
+  opacity: 0.2;
+}
+.form-control,.input-group-text {
+  border-radius: 0.65rem;
+}
+
+
+.form-control:focus,.input-group-text:focus{
+  border-color:$border-input
+}
+
+  // for input in en 
+
+  .input-group:lang(en){
+    flex-direction: row-reverse;
+    .UserLogin__FormControl{
+        border-right: 0 ;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: 0.56rem;
+        border-bottom-left-radius: 0.56rem;
+    }
+    .input-group-text
+    {
+        border-left: 1px solid transparent;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 0.56rem;
+        border-bottom-right-radius: 0.56rem;
+    }
+}
+
+
+  // end input in en 
+
+// for error input && message
+
+.error_input
+{
+background-color: $error-message-bg !important;
+border-color:  $error-message-color;
+
+}
+
+.error_message
+{
+color: $error-message-color;
+font-size: 12px;
+padding-left: 0.5rem;
+padding-right: 0.5rem;
+font-family: Almarai-Regular;
+}
+// end error input && message
+
+.UserLogin__FormControl::placeholder {
+  color:$placeholder_inputs;
+  font-weight: 300;
+  font-size: 0.875rem
+}
+.UserLogin__FormControl:focus {
+  box-shadow: none;
+}
+.UserLogin__Label{
+  color: $labels;
+}
+
+
+.UserLogin__Submit{
+  background-color: $user-color;
+  width: 15rem;
+  height: 2.31rem;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  border-radius: 1rem;
+  color: $white;
+  display: block;
+}
+
+.UserLogin__SignUp{
+  margin-top: 1.25rem;
+  background-color: $main_background;
+  width: 15rem;
+  height: 2.31rem;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  border-radius: 1rem;
+  color: $fill_button;
+  display: block;
+
+}
+
+.UserLogin__SocialMedia{
+  // margin-right: 6rem!important;
+  padding-left: 0;
+  padding-right: 0px;
+  list-style: none;
+  text-align: center;
+}
+
+.text-muted{
+  color: $icon_input;
+}
+.UserLogin_icon_input
+{
+  width: 1rem;
+    height: 0.9rem;
+}
+// footer of login page 
+.UserLogin__Register{
+  
+  background-color: $main_background;
+  width: 11rem;
+  height: 2.31rem;
+ 
+  border: none;
+  border-radius: 1rem;
+  color: $fill_button;
+  font-size: 12px;
+  color: $p_color;
+  
+}
+
+.footer_form_p{
+  font-size: 12px;
+  color: $p_color;
+}
+.list-inline-item:not(:last-child) {
+  margin-right: 3rem;
+}
+.list-inline-item:lang(ar){
+  margin-right: 2rem;
+}
+.hint_yellow{
+  color: $hint_yellow;
+  font-size: 0.68rem
+}
+
+// check box 
+
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+  border-color: #8E2520 !important;
+
+}
+.mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+  background-color: #8E2520 !important;
+}
+
+.dimmed {
+  cursor: not-allowed !important;
+  color: #7674A150 !important;
+}
+
+//close button
+.closebtn {
+  color: #818181;
+  font-size: 1.875rem;
+  text-align: right;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.text-arabic{
+  text-align: right;
+}
+
+.text-english{
+  text-align: left;
+}
+
+select.form-control {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+}
+.select-arrow:lang(ar) {
+  left: 0px;
+  top: 10px;
+  z-index: 6;
+}
+.select-arrow:lang(en) {
+  right: 0px;
+  top: 10px;
+  z-index: 6;
+}
+.plus-btn:lang(en) {
+  z-index: 6;
+  right: 0;
+}
+.plus-btn {
+  // left: 5px;
+  // top: 5px;
+  z-index: 6;
+
+  button {
+    width: 40px;
+    height: 39px;
+  }
+}
+
+.badges {
+  .badge-info {
+    background-color: $gray-300;
+    color: $user-color;
+    font-size: 18px;
+    font-family: gulf-thin;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+
+    a {
+      color: inherit;
+    }
+  }
+}
+.badge-lightbadge-light {
+  color: $main-color;
+  background-color: #fff;
+  padding: .6em 1.6em;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+/* The side navigation menu */
+
+.overlay {
+  height: 100%; /* 100% Full-height */
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 30%; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 999; /* Stay on top */
+  top: 0; /* Stay at the top */
+  background-color: #FBFBFB; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 30px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav_profile */
+  box-shadow: 0 0 15px #0c0808;
+}
+.overlay:lang(en) {
+  left: 0;
+}
+.overlay:lang(ar) {
+  right: 0;
+}
+
+
+  
+  
+  /* Position and style the close button (top right corner) */
+  .overlay .closebtn {
+    color: #818181;
+    font-size: 25px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+  }
+
+  .overlay .closebtn:lang(en){
+    text-align: right;
+  }
+  .overlay .closebtn:lang(ar){
+    text-align: left;
+  }
+
+    .overlay a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    display: block;
+    transition: 5s;
+  }
+  
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav_profile (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .overlay {padding-top: 15px;}
+        .sidenav_profile a {font-size: 18px;}
+  }
+
+  ::-webkit-scrollbar-thumb{
+    background: $user-color;
+}

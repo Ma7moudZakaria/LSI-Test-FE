@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ViewAllWalkThroughComponent } from './components/view-all-walk-through/view-all-walk-through';
-import { WalkThroughComponent } from './components/walk-through/walk-through';
+import { WalkThroughComponent } from './components/view-all-walk-through/walk-through/walk-through';
 
 const routes: Routes = [
   {

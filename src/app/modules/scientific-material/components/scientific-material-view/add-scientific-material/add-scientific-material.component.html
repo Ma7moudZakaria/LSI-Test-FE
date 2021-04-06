@@ -1,0 +1,168 @@
+<form class="form-group material-form" [formGroup]="currentForm" (submit)="Submit()">   
+     <div class="form-group">
+        <label for="programs"> {{'SCIENTIFIC_MATERIAL.PROGRAMS' | translate}}</label>
+        <div class="input-group">
+            <!-- <input class="form-control" type="text" /> -->
+            <div class="input-group">
+                <select class="form-control" id="programs" formControlName="programMatrial">
+                    <option *ngFor="let item of programs"
+                        value="{{item.id}}">
+                        {{translate.currentLang === langEnum.en ? item.engName : item.arabName}}
+                    </option>
+                </select>
+                <span class="select-arrow position-absolute">
+                    <i class="fa fa-angle-down" style="color: inherit;"></i></span>
+            </div>
+            <span class="plus-btn position-absolute">
+                <button class="btn  btn-light btn-add" type="button"
+                    (click)="addProgram()">                    
+                    <img  src="assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
+                </button>
+            </span>
+
+
+        </div>
+            <div *ngIf="programMessage" >
+                <div class="alert alert-{{ programMessage.type }} my-2 py-2">
+                {{ programMessage.message }}
+                </div>
+            </div>
+        <div class="badges mt-3">
+            <span *ngFor="let p of selectedProgramsList"
+                class="badge badge-info p-2">{{translate.currentLang === langEnum.en ? p.engName :p.arabName}}
+                <a (click)="removeItemFromSelectedPrograms(p)"><i class="fa  fa-minus"></i></a>
+            </span>
+        </div>
+        <div *ngIf="selectedProgramsList?.length == 0 && (f.programMatrial.touched || isSubmit)"
+        class="alert alert-danger mt-2 mb-2">
+        <div *ngIf="selectedProgramsList.length == 0">
+            {{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}
+        </div>
+    </div>
+    </div>
+    <div class="form-group">
+        <label for="category">{{'SCIENTIFIC_MATERIAL.CATEGORY' | translate}}</label>
+
+        <div class="d-flex">
+            <div class="input-group">
+                <select class="form-control" formControlName="matrialCategory" name="matrialCategory">
+                    <option value="">{{'SCIENTIFIC_MATERIAL.SELECTOPTION' | translate}}</option>
+                    <option *ngFor="let item of materialCategoriesLookup" value="{{item.id}}">
+                        {{translate.currentLang === langEnum.en ? item.nameEn: item.nameAr}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div *ngIf="f.matrialCategory.errors && (f.matrialCategory.touched || isSubmit)"
+            class="alert alert-danger mt-2 mb-2">
+            <div *ngIf="f.matrialCategory.errors?.required">
+                {{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="matrialTitleAr">{{'SCIENTIFIC_MATERIAL.TITLEAR' | translate}}</label>
+        <input type="text" class="form-control" formControlName="matrialTitleAr" id="matrialTitleAr">
+        <div *ngIf="f.matrialTitleAr.errors && (f.matrialTitleAr.touched || isSubmit)"
+            class="alert alert-danger mt-2 mb-2">
+            <div *ngIf="f.matrialTitleAr.errors?.required">
+                {{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}
+            </div>
+            <div *ngIf="f.matrialTitleAr.errors.pattern">
+                {{ 'SCIENTIFIC_MATERIAL.TITLEARPATTERN' | translate }}
+            </div>
+            <div *ngIf="f.matrialTitleAr.errors.maxlength">
+                {{ 'SCIENTIFIC_MATERIAL.TITLEARMAXLENGTH' | translate}}
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="matrialTitleEn">{{'SCIENTIFIC_MATERIAL.TITLEEN' | translate}}</label>
+        <input type="text" class="form-control" formControlName="matrialTitleEn" id="matrialTitleEn">
+        <div *ngIf="f.matrialTitleEn.errors && (f.matrialTitleEn.touched || isSubmit)"
+            class="alert alert-danger mt-2 mb-2">
+            <div *ngIf="f.matrialTitleEn.errors?.required">
+                {{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}
+            </div>
+            <div *ngIf="f.matrialTitleEn.errors.pattern">
+                {{ 'SCIENTIFIC_MATERIAL.TITLEENPATTERN' | translate }}
+            </div>
+            <div *ngIf="f.matrialTitleEn.errors.maxlength">
+                {{ 'SCIENTIFIC_MATERIAL.TITLEENMAXLENGTH' | translate}}
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="matrialTitleAr">{{'SCIENTIFIC_MATERIAL.FILE_URL' | translate}}</label>
+        <input type="text" class="form-control" formControlName="fileLink" id="fileLink">      
+    </div>
+    <label class="custom-file custom-file__text" for="importFile">{{'SCIENTIFIC_MATERIAL.CHOOSEFILE' |
+        translate}}</label>
+    <input type="file" class="custom-file-input" multiple id="importFile"
+        (change)="onFileChange($any($event.target).files)" hidden>
+
+    <div class="row">
+        <div class="col-lg-8 col-md-8">
+            <ul class="files-conainer">
+                <li *ngFor="let item of fileList;let i=index">
+                    <button (click)="deleteAttachment(i,item.id)">delete</button>
+                    <a class="card" href="{{item.url}}" target="_blank">
+                        <div class="pdf">
+                            <i class="fa fa-file"></i>
+                        </div>
+                        <div class="text-center fileName">
+                            <p
+                                style="text-overflow: ellipsis;overflow: hidden; white-space: nowrap;margin-left: 10px;margin-right: 10px;">
+                                {{item.fileName}}</p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <label class="control-label" for="availableForAllUsers">{{'SCIENTIFIC_MATERIAL.MATERIALAVAILABILITY' |
+        translate}}</label>
+    <div class="form-group">
+        <div class="form-check form-check-inline m-2">
+            <input class="form-check-input" type="radio" formControlName="availableForAllUsers" id="1" [value]=true>
+            <label class="form-check-label" for="1">{{'SCIENTIFIC_MATERIAL.ALL' | translate}}</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" formControlName="availableForAllUsers" id="2" [value]=false>
+            <label class="form-check-label" for="2">{{'SCIENTIFIC_MATERIAL.SELECTEDPROGRAMS' | translate}}</label>
+        </div>
+    </div>
+    <label for="availableForAllUsers">{{'SCIENTIFIC_MATERIAL.ACTIVATION' | translate}} </label>
+    <div class="form-group">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" formControlName="active" id="1" [value]=true>
+            <label class="form-check-label" for="1">{{'SCIENTIFIC_MATERIAL.ACTIVE' | translate}}</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" formControlName="active" id="2" [value]=false>
+            <label class="form-check-label" for="2">{{'SCIENTIFIC_MATERIAL.INACTIVE' | translate}}</label>
+        </div>
+    </div>
+
+
+    <section>
+        <div class="row direction-rtl">
+            <button class="save-btn" type="submit" [disabled]="disableSaveButtons">
+                {{'SCIENTIFIC_MATERIAL.SAVE' | translate}}
+            </button>
+            <button type="reset" class="cancel-btn" [disabled]="disableSaveButtons"
+                (click)="closeForm()">
+                {{'SCIENTIFIC_MATERIAL.CLOSE' | translate }}
+            </button>
+
+            <div *ngIf="resMessage" class="alert alert-{{ resMessage.type }} my-4 py-2">
+                {{ resMessage.message }}
+            </div>
+        </div>
+
+    </section>
+
+</form>

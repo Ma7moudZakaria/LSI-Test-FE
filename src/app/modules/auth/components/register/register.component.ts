@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import { IUser } from 'src/app/core/interfaces/auth/iuser-model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { RoleEnum } from 'src/app/core/enums/role-enum.enum';
+import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 
 @Component({
@@ -11,23 +16,28 @@ import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  routeParams:any;
+  routeParams:string | undefined;
   signup = false;
   editProfile = false;
   registrationModel = {};
   registerform : FormGroup  = new FormGroup({});
-  errorMessage:any;
-  isSubmit = false;
-  successMessage: any;
   hidePassword = true;
+  resMessage: BaseMessageModel = {};
+  currentLang: LanguageEnum | undefined;
+  isSubmit = false;
+  roleType : string | undefined
 
   constructor(private authService: AuthService,
     private router: Router,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    public translate: TranslateService) { }
 
   ngOnInit(): void {
     this.routeParams = this.router.url;
+    this.roleType =  this.route.snapshot.queryParamMap.get('type') || '';
     this.loadUserForm();
+    this.currentLang = this.translate.currentLang === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
     
     if (this.routeParams === '/auth/register') {
       this.signup = true;
@@ -43,46 +53,48 @@ export class RegisterComponent implements OnInit {
   }
 
   loadUserForm() {
+    // let emailReg = '/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/';
     this.registerform = this.fb.group({
-      email: ["", [Validators.required, Validators.email]],
-      name: ["", Validators.required],
-      fathername: ["", Validators.required],
-      familyname: ["", Validators.required],
-      password: ["", Validators.required],
-      confirmPassword: ["", Validators.required],
+      email: ["", [Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+      userName: ["", [Validators.required, Validators.minLength(3),Validators.maxLength(20)]],
+      password: ["", [Validators.required, Validators.minLength(6) , ,Validators.maxLength(12)]],
+      confirmPassword: ["", [Validators.required, Validators.minLength(6) , ,Validators.maxLength(12)]],
     });
-    // {
-    //   validator: this.customValidation.MatchPassword("password","confirmPassword")
-    // })
   }
 
   onSignup(value: string) {
     this.isSubmit = true;
-    this.errorMessage = '';
-    localStorage.clear();
-    this.registrationModel = {
-      uname: this.registerform.value.name + " " + this.registerform.value.fathername + " " + this.registerform.value.familyname,
-      uemail: this.registerform.value.email,
-      ucpass: this.registerform.value.confirmPassword,//""
-      upass: this.registerform.value.password
-    }
+    if (this.registerform.valid && this.roleType !== "" && this.roleType !== undefined) {
+      localStorage.clear();
 
-    this.authService.register(this.registrationModel).subscribe(res => {
-      this.isSubmit = true;
-      if (res.isSuccess) {
-        localStorage.setItem('user',JSON.stringify(res.data as IUser))
-        // this.showActiveMessage = res.message;
-        this.successMessage={
-          message: res.message,
-          type:'success'
-        }
-        setTimeout(()=>{            
-          // this.router.navigate(['/home']);
-         }, 3000);
-        }
-        else {
-          this.errorMessage = res.message;
-        }
-    })
+      this.registrationModel = {
+        uname: this.registerform.value.userName ,
+        uemail: this.registerform.value.email,
+        ucpass: this.registerform.value.confirmPassword,//""
+        upass: this.registerform.value.password,
+        roletype: this.roleType
+      }
+
+      this.authService.register(this.registrationModel).subscribe(res => {
+        if (res.isSuccess) {
+          localStorage.setItem('user',JSON.stringify(res.data as IUser))
+          this.router.navigateByUrl('/auth/(baseRouter:activate-code)');
+          this.isSubmit = false;
+          }
+          else {
+            this.isSubmit = false;
+            this.resMessage ={
+              message: res.message,
+              type: BaseConstantModel.DANGER_TYPE
+            }
+          }
+      })
+    }
+    else{
+      this.resMessage = {
+        message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    }
   }
 }

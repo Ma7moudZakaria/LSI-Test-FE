@@ -1,13 +1,17 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IActivationCode } from '../../interfaces/auth/iactivation-code-module';
-import { IAuthentication } from '../../interfaces/auth/iauthentication-model';
-import { IForgotPassword } from '../../interfaces/auth/iforgot-password-model';
-import { IResetPassword } from '../../interfaces/auth/ireset-password-model';
-import { IUser } from '../../interfaces/auth/iuser-model';
-import { IProfileUser } from '../../interfaces/user-interfaces/iprofileuser';
+import { LanguageEnum } from '../../enums/language-enum.enum';
+import { IActivationCode } from '../../interfaces/auth-interfaces/iactivation-code';
+import { IAuthentication } from '../../interfaces/auth-interfaces/iauthentication';
+import { IForgotPassword } from '../../interfaces/auth-interfaces/iforgot-password';
+import { IResetPassword } from '../../interfaces/auth-interfaces/ireset-password';
+import { IUser } from '../../interfaces/auth-interfaces/iuser-model';
+import { IUserSocialRegister } from '../../interfaces/auth-interfaces/iuser-social-register';
+import { IUpdateUserProfile } from '../../interfaces/user-interfaces/iupdateuserprofile';
+import { Iuser } from '../../interfaces/user-interfaces/iuser';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 
 @Injectable({
@@ -15,18 +19,24 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
 })
 export class AuthService {
 
-  registerUrl = environment.BaseURL + 'User/register';
-  userAuthenticationUrl = environment.BaseURL + 'User/user-authenticate';
-  forgotPasswordUrl = environment.BaseURL + 'User/send-forgot-password-url';
-  resetPasswordUrl = environment.BaseURL + 'User/reset-password';
-  activateUserUrl = environment.BaseURL + 'User/verify-user-activiation-code/';
-  sendActivateCodeUrl = environment.BaseURL + 'User/send-new-activation-code/';
-  viewProfileDetailsUrl = environment.BaseURL + 'User/view-user-profile-details/';
-  updateUserUrl = environment.BaseURL + 'User/update-user';
+    switchLanguageUrl = environment.baseUrl + 'Language/set-lang';
+  registerUrl = environment.baseUrl + 'User/register';
+  userAuthenticationUrl = environment.baseUrl + 'User/user-authenticate';
+  forgotPasswordUrl = environment.baseUrl + 'User/send-forgot-password-url';
+  resetPasswordUrl = environment.baseUrl + 'User/reset-password';
+    verifyUserUrl = environment.baseUrl + 'User/verify-user-activiation-code/';
+  sendActivateCodeUrl = environment.baseUrl + 'User/send-new-activation-code/';
+  viewProfileDetailsUrl = environment.baseUrl + 'User/view-user-profile-details/';
+  updateUserUrl = environment.baseUrl + 'User/update-user';
+  socialAuthenticationUrl = environment.baseUrl + 'User/social-authentication';
+  
+  constructor(private http: HttpClient, private router: Router) { }
 
-  constructor(private http:HttpClient) { }
+  switchLanguage(lang:string):Observable<BaseResponseModel>{
+    return this.http.put<BaseResponseModel>(this.switchLanguageUrl + '/' + lang, null);
+    }
 
-  register(model: IUser) {
+    register(model: IUser) {
     return this.http.post<BaseResponseModel>(this.registerUrl, model);
   }
 
@@ -43,18 +53,36 @@ export class AuthService {
   }
 
   activateUser(model:IActivationCode):Observable<BaseResponseModel>{
-    return this.http.post<BaseResponseModel>(this.activateUserUrl , model);
+    return this.http.post<BaseResponseModel>(this.verifyUserUrl , model);
   }
 
-  sendActivateCode(Id:any):Observable<BaseResponseModel>{
+  sendActivateCode(Id:string):Observable<BaseResponseModel>{
     return this.http.put<BaseResponseModel>(this.sendActivateCodeUrl + Id , null);
   }
 
-  viewProfileDetails(Id: any) {
+  viewProfileDetails(Id: string) {
     return this.http.get<BaseResponseModel>(this.viewProfileDetailsUrl + Id);
   }
 
-  updateUser(model:IProfileUser){
+  updateUser(model:IUpdateUserProfile){
     return this.http.put<BaseResponseModel>(this.updateUserUrl, model);
+  }
+
+  logout(){
+    var user = JSON.parse(localStorage.getItem("user") || '{}') as Iuser;
+    // var lang = JSON.parse(localStorage.getItem("lang") || '{}');
+
+    if (user != null){
+      localStorage.removeItem("user");
+    }
+    // if (lang != null){
+    //   localStorage.removeItem("lang");
+    // }
+
+    this.router.navigateByUrl('');
+  }
+
+  socialAuthentication(model:IUserSocialRegister):Observable<BaseResponseModel>{
+    return this.http.post<BaseResponseModel>(this.socialAuthenticationUrl , model);
   }
 }

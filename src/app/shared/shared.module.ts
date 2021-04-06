@@ -1,12 +1,34 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { CustomeCardComponent } from './components/custome-card/custome-card.component';
+import { MatCardModule } from '@angular/material/card';
+import { CustomAccordionComponent } from './components/custom-accordion/custom-accordion.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ViewUserProfileCustomComponent } from './components/view-user-profile-custom/view-user-profile-custom.component';
+import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+import { SearchInputComponent } from './components/search-input/search-input.component';
 
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent, SearchInputComponent],
   imports: [
-    CommonModule
+    CommonModule, RouterModule,TranslateModule,
+    MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,MatIconModule
+  ],
+  exports: [
+    MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule,
+    MatExpansionModule, MatSelectModule, DragDropModule, CustomeCardComponent, CustomAccordionComponent,
+    ViewUserProfileCustomComponent,SearchInputComponent
   ]
 })
 export class SharedModule { }

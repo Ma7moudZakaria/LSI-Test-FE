@@ -1,0 +1,43 @@
+<!-- <ul class="list-group">
+    <p>{{'PROGRAMS_LIST.PROGRAMS' | translate}}</p>
+   
+  
+    <li class="list-group-item "  
+    [class.active]="selectedIndex === -1"
+    (click)="loadProgramMaterial(null);selectedIndex=-1"> {{'PROGRAMS_LIST.ALL' | translate}}</li>
+
+    <li class="list-group-item " *ngFor="let program  of programs; let i = index" 
+      [class.active]="selectedIndex === i" 
+      (click)="loadProgramMaterial(program.id);selectedIndex=i">
+        <a> 
+            {{ translate.currentLang === langEnum.en ? program.engName : program.arabName}}
+        </a>
+    </li>
+</ul> -->
+
+
+<div class="list-group list-group_program-list">
+    <p class="mb-4">{{'PROGRAMS_LIST.PROGRAMS' | translate}}</p>
+     
+    <app-search-input (searchTerm)=loadPrograms($event)></app-search-input>
+<div class="internal_scroll_list_group">
+        <a class="list-group-item d-flex"  
+        [class.active]="selectedIndex === -1"
+        (click)="loadProgramMaterial();selectedIndex=-1"> 
+        <span>  {{'PROGRAMS_LIST.ALL' | translate}}</span>        
+       </a>
+
+        <a class="list-group-item  d-flex" *ngFor="let program  of programs; let i = index" 
+            [class.active]="selectedIndex === i" 
+            (click)="loadProgramMaterial(program);selectedIndex=i">
+               
+                <span>{{ translate.currentLang === langEnum.en ? program.engName : program.arabName}}</span>                
+
+        </a>
+
+    
+    </div>
+    <div *ngIf="resMessage.message" class="alert alert-{{ resMessage.type }} my-4 py-2">
+        {{ resMessage.message }}
+    </div>
+  </div>

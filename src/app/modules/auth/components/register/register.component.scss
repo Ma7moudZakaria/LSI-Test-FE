@@ -2,7 +2,7 @@
 
 .UserRegister{
     .UserRegister__Label{
-        color: $auth-backgroundcolor;
+        color: $ForgetPasswordLink;
     }
 
     .UserRegister__FormControl::placeholder {
@@ -18,5 +18,9 @@
         margin-right: auto;
         border: none;
         border-radius: 1rem;
+    }
+
+    .UserLogin__SocialMedia{
+        margin-right: 6rem!important;
     }
 }

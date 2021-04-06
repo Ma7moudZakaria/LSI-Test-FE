@@ -5,16 +5,19 @@ import { ViewUserProfileDetailsComponent } from './components/view-user-profile-
 
 import { UpdateUserProfileComponent } from './components/update-user-profile/update-user-profile';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
-  declarations: [UpdateUserProfileComponent,ViewUserProfileDetailsComponent],
+  declarations: [UpdateUserProfileComponent, ViewUserProfileDetailsComponent],
   imports: [
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
-    CommonModule ,
-    FormsModule
-  ]
+    CommonModule,
+    FormsModule,
+    TranslateModule
+  ],
+  exports: [ViewUserProfileDetailsComponent]
 })
 export class UserModule { }

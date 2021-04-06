@@ -1,5 +1,7 @@
 export interface IWalkThroughDetails {
-    walkThroughId?:string;
+    id?:string;
+    pageId?:string;
     textAr?:string;
     textEn?:string;
+    fileUrl?:string;
 }

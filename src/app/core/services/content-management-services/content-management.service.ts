@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { IContentManagementCreat } from '../../interfaces/content-management-interfaces/icontent-management-creat';
+import { IContentManagementUpdate } from '../../interfaces/content-management-interfaces/icontent-management-update';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 
 @Injectable({
@@ -9,12 +11,14 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
 })
 export class ContentManagementService {
 
-  getAllContentManagementSystemURL = environment.BaseURL + 'ContentManagementSystem/get-all-content-management-system/';
-  createContentManagementSystemURL = environment.BaseURL + 'ContentManagementSystem/create-content-management-system/';
-  updateContentManagementSystemURL = environment.BaseURL + 'ContentManagementSystem/update-content-management-system/';
-  getContentManagementSystemByTypeURL = environment.BaseURL + 'ContentManagementSystem/get-content-management-system-by-type/';
-  getContentManagementSystemByIdURL = environment.BaseURL + 'ContentManagementSystem/get-content-management-system-by-id/';
-  deleteContentManagementSystemURL = environment.BaseURL + 'ContentManagementSystem/delete-content-management-system/';
+  getAllContentManagementSystemURL = environment.baseUrl + 'ContentManagementSystem/get-all-content-management-system/';
+  createContentManagementSystemURL = environment.baseUrl + 'ContentManagementSystem/create-content-management-system/';
+  updateContentManagementSystemURL = environment.baseUrl + 'ContentManagementSystem/update-content-management-system/';
+  getContentManagementSystemByTypeURL = environment.baseUrl + 'ContentManagementSystem/get-content-management-system-by-type/';
+  getContentManagementSystemByIdURL = environment.baseUrl + 'ContentManagementSystem/get-content-management-system-by-id/';
+  deleteContentManagementSystemURL = environment.baseUrl + 'ContentManagementSystem/delete-content-management-system/';
+  getAllContentManagementSystemTypesURL = environment.baseUrl + 'ContentManagementSystem/get-all-content-management-system-types';
+  getContentManagementSystemByTypeCmsURL = environment.baseUrl + 'ContentManagementSystem/get-content-management-system-by-typeCmd/';
   
 
   constructor(private http: HttpClient) { }
@@ -24,12 +28,12 @@ export class ContentManagementService {
     return this.http.get<BaseResponseModel>(this.getAllContentManagementSystemURL);
   }
 
-  createContentManagementSystem(model : any):Observable<BaseResponseModel>
+  createContentManagementSystem(model : IContentManagementCreat):Observable<BaseResponseModel>
   {
     return this.http.post<BaseResponseModel>(this.createContentManagementSystemURL , model);
   }
 
-  updateContentManagementSystem(model : any):Observable<BaseResponseModel>
+  updateContentManagementSystem(model : IContentManagementUpdate):Observable<BaseResponseModel>
   {
     return this.http.put<BaseResponseModel>(this.updateContentManagementSystemURL , model);
   }
@@ -47,5 +51,13 @@ export class ContentManagementService {
   deleteContentManagementSystem(id : string) 
   {
     return this.http.delete<BaseResponseModel>(this.deleteContentManagementSystemURL + id)
+  }
+  getAllContentManagementSystemTypes() 
+  {
+    return this.http.get<BaseResponseModel>(this.getAllContentManagementSystemTypesURL);
+  }
+  getContentManagementSystemByTypeCms(cmsType?:string) 
+  {
+    return this.http.get<BaseResponseModel>(this.getContentManagementSystemByTypeCmsURL+cmsType )
   }
 }
