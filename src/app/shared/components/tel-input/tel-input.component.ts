@@ -12,13 +12,13 @@ export class TelInputComponent implements OnInit {
   @Input() telInputParam : ITelInputParams | undefined;
   valid:boolean = true;
 
-  telInputOptions = JSON.parse('{"initialCountry": "eg"}');
+  telInputOptions = JSON.parse('{"initialCountry": "sa"}');
 
   constructor() { }
 
   ngOnInit() {
     let countryIso = this.telInputParam?.countryIsoCode;
-    this.telInputOptions = JSON.parse(countryIso || '{"initialCountry": "eg"}')
+    this.telInputOptions = JSON.parse(countryIso || '{"initialCountry": "sa"}')
   }
 
   hasError(event:boolean){
