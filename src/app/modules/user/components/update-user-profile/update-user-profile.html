@@ -203,7 +203,6 @@
                                         [value]="countryItem.id">
                                         {{ translate.currentLang == langEnum.en ? countryItem.nameEn : countryItem.nameAr}}
                                     </option>
-                                    <!--change check after adding language listner-->
                                 </select>
 
                                 <div *ngIf="f.countryCode.errors && (f.countryCode.touched || isSubmit)"
@@ -215,15 +214,16 @@
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                 <label class="Register__Label" for="phoneNumber"> {{ 'GENERAL.PHONE_NUMBER' | translate }} </label>
-                                <input id="phoneNumber" pInputText type="text" formControlName="phoneNumber"
+                                <!-- <input id="phoneNumber" pInputText type="text" formControlName="phoneNumber"
                                     style="width:100%;" name="phoneNumber"
-                                    class="form-control UserRegister__FormControl">
+                                    class="form-control UserRegister__FormControl"> -->
+                                    <app-tel-input  (getPhonNumber)="applyPhoneNumber($event)" [telInputParam]="telInputParam"></app-tel-input>
 
                                     <div *ngIf="f.phoneNumber.errors && (f.phoneNumber.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.phoneNumber.errors.required">
                                             {{ 'UPDATE_USER_PG.PHONE_NUMBER_REQUIRED' | translate }}
                                         </div>
-                                        <div *ngIf="f.phoneNumber.errors?.pattern">
+                                        <!-- <div *ngIf="f.phoneNumber.errors?.pattern">
                                             {{ 'UPDATE_USER_PG.PHONE_NUMBER_PATTERN' | translate }}
                                         </div>
                                         <div *ngIf="f.phoneNumber.errors?.maxlength">
@@ -231,7 +231,7 @@
                                         </div>
                                         <div *ngIf="f.phoneNumber.errors?.minlength">
                                             {{ 'UPDATE_USER_PG.PHONE_NUMBER_MIN_LENGTH' | translate }}
-                                        </div>
+                                        </div> -->
                                     </div> 
                             </div>
 

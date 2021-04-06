@@ -10,6 +10,7 @@ import { IAttachment } from 'src/app/core/interfaces/attachments-interfaces/iatt
 import { IFileUpload } from 'src/app/core/interfaces/attachments-interfaces/ifile-upload';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
+import { ITelInputParams } from 'src/app/core/interfaces/shared-interfaces/tel-input-interfaces/itel-input-params';
 import { IUpdateUserProfile } from 'src/app/core/interfaces/user-interfaces/iupdateuserprofile';
 import { Iuser } from 'src/app/core/interfaces/user-interfaces/iuser';
 import { IUserProfilePicture } from 'src/app/core/interfaces/user-interfaces/iuser-profile-picture';
@@ -51,6 +52,11 @@ export class UpdateUserProfileComponent implements OnInit {
   selectedTrainingCourseList = Array<BaseLookupModel>();
   coursesMessage : BaseMessageModel = {};
   langEnum = LanguageEnum;
+  telInputParam : ITelInputParams = {
+    // phoneNumber:'+201062100486',
+    isRequired : true,
+    // countryIsoCode: '{"initialCountry": "eg"}'
+  }
 
 
   constructor(
@@ -232,7 +238,7 @@ export class UpdateUserProfileComponent implements OnInit {
           educationallevel: [null, Validators.required],
           gender: [null, Validators.required],
           address: ['', [Validators.required, Validators.minLength(6) , Validators.maxLength(50)]],
-          phoneNumber: ['', [Validators.required,Validators.pattern(BaseConstantModel.mobilePattern), Validators.minLength(6), Validators.maxLength(16)]],
+          phoneNumber: ['', [Validators.required/*,Validators.pattern(BaseConstantModel.mobilePattern), Validators.minLength(6), Validators.maxLength(16)*/]],
           occupation: [null, Validators.required],
           countryCode: [null, Validators.required],
           quraanMemorization: ['', Validators.required],
@@ -294,6 +300,7 @@ export class UpdateUserProfileComponent implements OnInit {
     this.f.occupation.setValue(this.userProfileDetails?.occupation);
     this.f.educationallevel.setValue(this.userProfileDetails?.eduLevel);
     this.f.phoneNumber.setValue(this.userProfileDetails?.mobile);
+    this.telInputParam.phoneNumber = this.userProfileDetails?.mobile;
     this.f.countryCode.setValue(this.userProfileDetails?.countryCode);
     this.f.quraanMemorization.setValue(this.userProfileDetails?.quraanMemorizeAmount);
     this.fileList   = this.userProfileDetails?.ejazaAttachments;
@@ -503,49 +510,8 @@ export class UpdateUserProfileComponent implements OnInit {
     let index = this.selectedTrainingCourseList.indexOf(item);
     this.selectedTrainingCourseList.splice(index, 1);
   }
+
+  applyPhoneNumber(phoneNumber:string){
+    this.f.phoneNumber.setValue(phoneNumber);
+  }
 }
-
-
-
-// if(this.translate.currentLang === LanguageEnum.ar)
-//       {
-//         this.updateUserModel = {
-//           usrId: this.currentUser?.id,
-//           firstAr: this.profileForm.value.firstNameAr,
-//           firstEn: this.userProfileDetails.fnameEn,
-//           middleAr: this.profileForm.value.middleNameAr,
-//           middleEn: this.userProfileDetails.mnameEn,
-//           familyAr: this.profileForm.value.familyNameAr,
-//           familyEn: this.userProfileDetails.faNameEn,
-//           birthdate: this.profileForm.value.birthdate,
-//           gender: this.profileForm.value.gender,
-//           mobile: this.profileForm.value.phoneNumber,
-//           countryCode: this.profileForm.value.countryCode,
-//           nationality: this.profileForm.value.nationality,
-//           eduLevel: this.profileForm.value.educationallevel,
-//           occupation: this.profileForm.value.occupation,
-//           address: this.profileForm.value.address,
-//           quraanMemorizeAmount : this.profileForm.value.quraanMemorization,
-//           ejazaIds : this.ejazaAttachmentIds,
-//         }
-//       }else{
-//         this.updateUserModel = {
-//           usrId: this.currentUser?.id,
-//           firstAr: this.userProfileDetails.fnameAr,
-//           firstEn: this.profileForm.value.firstNameEn,
-//           middleAr: this.userProfileDetails.mnameAr,
-//           middleEn: this.profileForm.value.middleNameEn,
-//           familyAr: this.userProfileDetails.fanameAr,
-//           familyEn: this.profileForm.value.familyNameEn,
-//           birthdate: this.profileForm.value.birthdate,
-//           gender: this.profileForm.value.gender,
-//           mobile: this.profileForm.value.phoneNumber,
-//           countryCode: this.profileForm.value.countryCode,
-//           nationality: this.profileForm.value.nationality,
-//           eduLevel: this.profileForm.value.educationallevel,
-//           occupation: this.profileForm.value.occupation,
-//           address: this.profileForm.value.address,
-//           quraanMemorizeAmount : this.profileForm.value.quraanMemorization,
-//           ejazaIds : this.ejazaAttachmentIds,
-//         }
-//       }

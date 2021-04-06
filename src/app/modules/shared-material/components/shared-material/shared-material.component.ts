@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 import { IDragDropAccordionItems } from 'src/app/core/interfaces/shared-interfaces/accordion-interfaces/idrag-drop-accordion-items';
+import { ITelInputParams } from 'src/app/core/interfaces/shared-interfaces/tel-input-interfaces/itel-input-params';
 
 export interface DragDropListItem {
   id: string;
@@ -21,10 +22,18 @@ export class SharedMaterialComponent implements OnInit {
   // labelPosition: 'before' | 'after' = 'after';
   disabled: boolean = false;
   panelOpenState: boolean = false;
+  pp = '222222';
+  telInputParam : ITelInputParams = {
+    // phoneNumber:'+201062100486',
+    isRequired : true,
+    countryIsoCode: '{"initialCountry": "sa"}'
+  }
+
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
+
   unassignedTasks: DragDropListItem[] = [
     {
       id: '1',
@@ -143,5 +152,27 @@ export class SharedMaterialComponent implements OnInit {
     // description: 'This is description of tasks 3'
   }
 ];
+
+
+hasError(event:any){
+  console.log(event);
+}
+
+getNumber(event:any){
+  console.log(event);
+}
+
+telInputObject(event:any){
+  console.log(event);
+}
+
+onCountryChange(event:any){
+  console.log(event);
+}
+
+savePhonNumber(event:any){
+  this.telInputParam.phoneNumber =event ;
+}
+
 }
 
