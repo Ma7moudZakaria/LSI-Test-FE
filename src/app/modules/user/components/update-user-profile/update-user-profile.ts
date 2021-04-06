@@ -142,6 +142,10 @@ export class UpdateUserProfileComponent implements OnInit {
         ejazaIds : this.ejazaAttachmentIds,
       }
       
+      this.coursesMessage = {};
+      this.archiveMessage = {};
+      this.shiekhsMessage = {};
+
       this.updateUserModel.sheikhs = [];
       if (this.selectedShiekhsList.length) {
         Array.from(this.selectedShiekhsList).forEach((elm: BaseLookupModel) => {
@@ -179,6 +183,7 @@ export class UpdateUserProfileComponent implements OnInit {
         res => {
           if (res.isSuccess) {
             this.isSubmit = false;
+            
             this.resMessage = {
               message: res.message,
               type: BaseConstantModel.SUCCESS_TYPE
@@ -442,7 +447,7 @@ export class UpdateUserProfileComponent implements OnInit {
       //     type: BaseConstantModel.DANGER_TYPE
       //   }
       // }
-      this.shiekhsMessage = {
+      this.archiveMessage = {
         message: this.translate.instant('UPDATE_USER_PG.ASRCHIVE'),
         type: BaseConstantModel.DANGER_TYPE
       }

@@ -146,15 +146,16 @@
     "OCCUPATION_REQUIRED": "Occupation  is Required",
     "CONTACT_INFO": "Contact info",
     "CHANGE_PIC": "Change pic",
-    "AMOUNT_QURAN": "The amount of memorization from the Quran",
-    "MEMORIES_QURAN": "A license to memorize the Quran",
+    "AMOUNT_QURAN": "The amount of memorization from the Qur'an",
+    "MEMORIES_QURAN": "A permission to save the Quran file",
     "DELETE": "Delete",
-    "SHEIKHS_STUDIED": "Sheikhs I studied on them",
+    "SHEIKHS_STUDIED": "Sheikhs I studied on",
     "CHOOSE_SHEIKHS":"Please Choose Sheikh",
-    "ASRCHIVE":"Please select asrchive",
+    "ASRCHIVE":"Please select Archives",
     "COURSE":"Please select course",
     "SCIENTIFIC_ARCHIVES":"Scientific Archives",
-    "TRAINING_COURSES":"Training courses"
+    "TRAINING_COURSES":"Training courses",
+    "OPTIONAL":"Optional"
   },
   "QUESTION_BANK": {
     "TITLE":"Question Bank",
