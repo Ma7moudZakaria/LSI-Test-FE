@@ -70,14 +70,14 @@ export class AuthService {
 
   logout(){
     var user = JSON.parse(localStorage.getItem("user") || '{}') as Iuser;
-    var lang = JSON.parse(localStorage.getItem("lang") || '{}');
+    // var lang = JSON.parse(localStorage.getItem("lang") || '{}');
 
     if (user != null){
       localStorage.removeItem("user");
     }
-    if (lang != null){
-      localStorage.removeItem("lang");
-    }
+    // if (lang != null){
+    //   localStorage.removeItem("lang");
+    // }
 
     this.router.navigateByUrl('');
   }

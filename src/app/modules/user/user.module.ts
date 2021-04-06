@@ -6,6 +6,7 @@ import { ViewUserProfileDetailsComponent } from './components/view-user-profile-
 import { UpdateUserProfileComponent } from './components/update-user-profile/update-user-profile';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { TranslateModule } from '@ngx-translate/core';
     ReactiveFormsModule,
     CommonModule,
     FormsModule,
-    TranslateModule
+    TranslateModule,
+    SharedModule
   ],
   exports: [ViewUserProfileDetailsComponent]
 })

@@ -103,33 +103,32 @@ export class WalkThroughComponent implements OnInit {
       // }
       this.mappModel();
 
+      this.clearMessage();
       if (this.walkThrough.id) {
         this.walkThroughService.updateWalkThrough(this.walkThrough).subscribe(
           res => {
+            this.isSubmit = false;
             if (res.isSuccess) {
-              this.isSubmit = false;
               this.resMessage = {
                 message: res.message,
                 type: BaseConstantModel.SUCCESS_TYPE
               }
-              this.clearMessage();
+
+              this.clearSuccessMessage();
             }
             else {
-              this.isSubmit = false;
               this.resMessage = {
                 message: res.message,
                 type: BaseConstantModel.DANGER_TYPE
               }
-              this.clearMessage();
             }
           },
           error => {
-            console.log(error);
+            this.isSubmit = false;
             this.resMessage = {
-              message: error.message,
+              message: error,
               type: BaseConstantModel.DANGER_TYPE
             }
-            this.clearMessage();
           }
         );
       }
@@ -142,7 +141,7 @@ export class WalkThroughComponent implements OnInit {
                 message: res.message,
                 type: BaseConstantModel.SUCCESS_TYPE
               }
-              this.clearMessage();
+              this.clearSuccessMessage();
             }
             else {
               this.isSubmit = false;
@@ -150,7 +149,6 @@ export class WalkThroughComponent implements OnInit {
                 message: res.message,
                 type: BaseConstantModel.DANGER_TYPE
               }
-              this.clearMessage();
             }
 
           },
@@ -160,7 +158,6 @@ export class WalkThroughComponent implements OnInit {
               message: error.message,
               type: BaseConstantModel.DANGER_TYPE
             }
-            this.clearMessage();
           });
       }
     }
@@ -197,8 +194,8 @@ export class WalkThroughComponent implements OnInit {
     const ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITH_EMOJI = "^[ A-Za-z0-9_@./#&+-~؛)(÷*/'/!/$]*$";
     this.currentForm = this.fb.group(
       {
-        textAr: ['', [Validators.required, Validators.pattern(ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
-        textEn: ['', [Validators.required, Validators.pattern(ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]]
+        textAr: ['', [Validators.required, Validators.pattern(BaseConstantModel.TEXT_AREA_ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
+        textEn: ['', [Validators.required, Validators.pattern(BaseConstantModel.TEXT_AREA_ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]]
       }
     )
   }
@@ -256,11 +253,15 @@ export class WalkThroughComponent implements OnInit {
           message: error.message,
           type: BaseConstantModel.DANGER_TYPE
         }
-        this.clearMessage();
       }
     )
   }
-  clearMessage() {
+
+  clearMessage(){
+    this.resMessage = {};
+  }
+
+  clearSuccessMessage() {
     setTimeout(() => {
       this.resMessage = {};
     }, 2000);

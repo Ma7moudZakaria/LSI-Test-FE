@@ -24,6 +24,7 @@ import { MyLoaderComponent } from './shared/components/my-loader/my-loader.compo
 import { LoaderService } from './core/services/loader-services/loader.service';
 import { LoaderInterceptor } from './core/services/interceptors/loader-interceptor.service';
 import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
+import {Ng2TelInputModule} from 'ng2-tel-input';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -57,7 +58,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
     SharedModule,
     MatExpansionModule,
-    SocialLoginModule
+    SocialLoginModule,
+    Ng2TelInputModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
