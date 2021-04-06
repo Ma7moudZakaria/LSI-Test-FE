@@ -36,7 +36,8 @@
     "NO" : "لا",
     "LOGOUT_CONFIRM" : "تسحيل الخروج",
     "LOGOUT_MESSAGE" : "هل انت متاكد من تسجيل الخروج؟",
-    "ENGLISH_DISPALY_SWITCH":"English"
+    "ENGLISH_DISPALY_SWITCH":"إنجليزى",
+    "INVALID_PHONE_NUMBER":"رقم الجوال غير صحيح"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",

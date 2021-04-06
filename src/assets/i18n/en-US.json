@@ -36,7 +36,8 @@
     "NO" : "No",
     "LOGOUT_CONFIRM" : "LogOut",
     "LOGOUT_MESSAGE" : "Are you sure you want to logout ?",
-    "ARABIC_DISPALY_SWITCH":"عربى"
+    "ARABIC_DISPALY_SWITCH":"Arabic",
+    "INVALID_PHONE_NUMBER":"Invalid phone number"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",

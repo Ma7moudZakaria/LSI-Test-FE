@@ -4,6 +4,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from "@angular/cdk/dr
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 import { IDragDropAccordionItems } from 'src/app/core/interfaces/shared-interfaces/accordion-interfaces/idrag-drop-accordion-items';
+import { ITelInputParams } from 'src/app/core/interfaces/shared-interfaces/tel-input-interfaces/itel-input-params';
 
 export interface DragDropListItem {
   id: string;
@@ -22,17 +23,17 @@ export class SharedMaterialComponent implements OnInit {
   disabled: boolean = false;
   panelOpenState: boolean = false;
   pp = '222222';
-  @Input() getPhonNumber:string|undefined;
-  setPhonNumber = '0553403878';
+  telInputParam : ITelInputParams = {
+    // phoneNumber:'+201062100486',
+    isRequired : true,
+    countryIsoCode: '{"initialCountry": "sa"}'
+  }
 
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
-  ngOnChanges(changes: any) {
-    if( this.getPhonNumber!='')
-    this.getPhonNumber=changes.getPhonNumber;
-  }
+
   unassignedTasks: DragDropListItem[] = [
     {
       id: '1',
@@ -170,9 +171,7 @@ onCountryChange(event:any){
 }
 
 savePhonNumber(event:any){
-  this.getPhonNumber =event ;
-
-  
+  this.telInputParam.phoneNumber =event ;
 }
 
 }
