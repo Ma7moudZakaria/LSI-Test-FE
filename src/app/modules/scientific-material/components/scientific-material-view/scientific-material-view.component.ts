@@ -16,7 +16,7 @@ export class ScientificMaterialViewComponent implements OnInit {
   selectedMaterialId:any;
   selectedProgram?:IprogramsModel;
   refreshMaterialId?:string;
-  submitSuccess:any;
+  submitSuccess:boolean=true;
   showMaterialForm = false;
   constructor( private scientifcMaterialService: ScientificMaterialService,
     private languageService: LanguageService, public translate: TranslateService) { }
@@ -64,8 +64,10 @@ export class ScientificMaterialViewComponent implements OnInit {
   }
 
   closeMaterialFormAfterSave(event:any){
-    this.submitSuccess = event; 
-    this.showMaterialForm = !event;
+    // this.submitSuccess = event; 
+    // this.showMaterialForm = !event;
+
+    this.showMaterialForm = false;
 
   }
   setrefreshMaterialId(event:any){

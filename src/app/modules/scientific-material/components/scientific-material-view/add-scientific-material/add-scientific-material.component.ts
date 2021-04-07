@@ -286,6 +286,7 @@ export class AddScientificMaterialComponent implements OnInit {
             }
             this.refreshMaterialId.emit(Date.now().toString());
             //this.closeForm();
+            this.submitSuccess?.emit(true);//close form after submitSuccess
           }
           else {
             this.isSubmit = false;
@@ -324,6 +325,7 @@ export class AddScientificMaterialComponent implements OnInit {
             }
             this.refreshMaterialId.emit(Date.now().toString());
             //this.closeForm();
+            this.submitSuccess?.emit(true);//close form after submitSuccess
           }
           else {
             this.isSubmit = false;
