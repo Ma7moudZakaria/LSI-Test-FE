@@ -16,6 +16,7 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 
 @Component({
   selector: 'app-add-scientific-material',
@@ -49,7 +50,7 @@ export class AddScientificMaterialComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private scientifcMaterialService: ScientificMaterialService,
     private attachmentService: AttachmentsService, public translate: TranslateService,
-    private activeroute: ActivatedRoute, private router: Router) {
+    private activeroute: ActivatedRoute, private router: Router,private _alertify:AlertifyService) {
   }
 
   ngOnInit(): void {
@@ -287,6 +288,7 @@ export class AddScientificMaterialComponent implements OnInit {
             this.refreshMaterialId.emit(Date.now().toString());
             //this.closeForm();
             this.submitSuccess?.emit(true);//close form after submitSuccess
+            this._alertify.success(res.message||"");
           }
           else {
             this.isSubmit = false;
@@ -326,6 +328,7 @@ export class AddScientificMaterialComponent implements OnInit {
             this.refreshMaterialId.emit(Date.now().toString());
             //this.closeForm();
             this.submitSuccess?.emit(true);//close form after submitSuccess
+            this._alertify.success(res.message||"");
           }
           else {
             this.isSubmit = false;
