@@ -449,11 +449,25 @@ app-tel-input >
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #ced4da;
-    border-radius: .25rem;
+    border-radius: .65rem;
+    text-align: left;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 app-tel-input >
 .containe.phone-dir{
   margin-top: 0 !important;
   margin-bottom: 0 !important;
+}
+.iti.iti--allow-dropdown{
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.iti input:focus{
+  border-color:$border-input
+}
+.iti__selected-flag:lang(en){
+  padding: 0 6px 0 27px;
+}.iti__selected-flag:lang(ar){
+  padding: 0 6px 0 22px;
 }
