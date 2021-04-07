@@ -88,7 +88,14 @@ export class RegisterComponent implements OnInit {
               type: BaseConstantModel.DANGER_TYPE
             }
           }
-      })
+      },
+      error => {
+        this.resMessage ={
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+      )
     }
     else{
       this.resMessage = {
