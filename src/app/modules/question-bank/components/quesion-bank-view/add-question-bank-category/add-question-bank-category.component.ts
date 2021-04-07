@@ -37,6 +37,7 @@ export class AddQuestionBankCategoryComponent implements OnInit {
   @Input() inputCategoryId?:string; 
   @Output() closeCategoryForm = new EventEmitter<boolean>();
   @Output() addCategory = new EventEmitter<boolean>();
+  @Output() submitSuccess = new EventEmitter<boolean>();
   constructor(private questionBankCategoryService: QuestionBankCategoryService,
     private activeroute: ActivatedRoute, 
     private router: Router, 
@@ -130,6 +131,7 @@ export class AddQuestionBankCategoryComponent implements OnInit {
               type: BaseConstantModel.SUCCESS_TYPE
             }
             this. loodCategoryList();
+            this.submitSuccess?.emit(false);//close form after submit is success
           }
           else {
             this.resultMessage = {
@@ -157,6 +159,7 @@ export class AddQuestionBankCategoryComponent implements OnInit {
               type: BaseConstantModel.SUCCESS_TYPE
             }
             this. loodCategoryList();
+            this.submitSuccess?.emit(false);//close form after submit is success
           }
           else {
             this.resultMessage = {

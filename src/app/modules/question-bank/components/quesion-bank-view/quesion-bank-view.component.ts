@@ -16,7 +16,7 @@ export class QuesionBankViewComponent implements OnInit {
   @Input() closeCategoryForm?:boolean; 
   @Input() closeQuestionForm?:boolean; 
   showAddQuestionForm = false;
-  submitSuccess:any;
+  submitSuccess:boolean=true;
   showAddCategoryForm = false;
   addCategory=false;
   isQuestionSave=false;
@@ -59,8 +59,9 @@ export class QuesionBankViewComponent implements OnInit {
     this.showAddQuestionForm = false;
   }
   closeAddQuestionFormAfterSave(event:any){
-    this.submitSuccess = event; 
-    this.showAddQuestionForm = !event;
+    this.showAddQuestionForm = false;
+    // this.submitSuccess = event; 
+    // this.showAddQuestionForm = !event;
 
   }
   setInputCategoryId(event:any){
@@ -77,8 +78,9 @@ export class QuesionBankViewComponent implements OnInit {
     this.showAddCategoryForm = false;
   }
   closeAddCategoryFormAfterSave(event:any){
-    this.submitSuccess = event; 
-    this.showAddCategoryForm = !event;
+    // this.submitSuccess = event; 
+    // this.showAddCategoryForm = !event;
+    this.showAddCategoryForm = false;
 
   }
 
