@@ -408,7 +408,7 @@ select.form-control {
   }
 
     .overlay a {
-    padding: 8px 8px 8px 32px;
+    // padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
     display: block;
@@ -424,4 +424,36 @@ select.form-control {
 
   ::-webkit-scrollbar-thumb{
     background: $user-color;
+}
+//  replace arrow in extended card to icon arrang 
+.questionBank
+.mat-expansion-indicator::after {
+  border-style: solid;
+  border-width: 0 ;
+  content: url(assets/images/arrange.svg) !important;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(0);
+  vertical-align: middle;
+}
+
+// input phone custom 
+app-tel-input >
+.iti input, .iti input[type=text], .iti input[type=tel] 
+{
+    display: block;
+    height: calc(1.5em + .75rem + 2px);
+    font-size: 1rem;
+    font-weight: 400;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+app-tel-input >
+.containe.phone-dir{
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
