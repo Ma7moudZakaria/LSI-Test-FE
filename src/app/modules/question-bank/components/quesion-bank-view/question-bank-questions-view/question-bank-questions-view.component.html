@@ -1,57 +1,23 @@
 <div class="question-list">
 
-    <div class="row p-3">
-        <div class="col-4">
-            <span
-                class="mb-4 p_header">{{translate.currentLang===langEnum.en?selectedCategoryId.engCatgName:selectedCategoryId.arabCatgName}}
+    <div class="row p-0 align-items-center mb-3">
+        <div class="col-1">
+            <span class="p_header mb-0">
+                {{translate.currentLang===langEnum.en?selectedCategoryId.engCatgName:selectedCategoryId.arabCatgName}}
             </span>
         </div>
-
-        <!-- <div class="col-6" *ngIf="translate.currentLang===langEnum.ar">
-            <div class="input-group search_group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text bg-white pl-2 pr-2 border-md border-right-0">
-                        <img class="UserLogin_icon_input" src="../../../../../../assets/images/search-ired.svg"
-                            (click)="searchQuestions(text.value)">
-                    </span>
-                </div>
-                <input type="text"
-                    class=" px-3 form-control UserLogin__FormControl bg-white border-left-0 border-md input-sm"
-                    placeholder="{{'QUESTION_BANK.SEARCH' | translate}}" name="search" #text>
-
-            </div>
-        </div>
-        <div class="col-6" *ngIf="translate.currentLang===langEnum.en">
-            <div class="input-group search_group">
-
-                <input type="text"
-                    class=" px-3 form-control UserLogin__FormControl bg-white border-right-0 border-md input-sm"
-                    placeholder="{{'QUESTION_BANK.SEARCH' | translate}}" name="search" #text>
-                <div class="input-group-prepend">
-                    <span class="input-group-text bg-white pl-2 pr-2 border-md border-left-0">
-                        <img class="UserLogin_icon_input" src="../../../../../../assets/images/search-ired.svg"
-                            (click)="searchQuestions(text.value)">
-                    </span>
-                </div>
-
-            </div>
-
-
-
-        </div> -->
-
-        <!-- <div class="col-12 mb-4"> <img calss="m-2 pull-left" src="assets/images/scientificMaterial/Group 18093.svg" alt="" (click)= "NewQuestion()"></div> -->
-        <div class="col-6" >
-            <app-search-input (searchTerm)=searchQuestions($event)></app-search-input>
-
-        </div>
-        <div class="d-flex justify-content-between col-2">
+        <div class=" col-3 add_question">
             <a [routerLink]="" (click)="NewQuestion()">
                 <span class="link_Add "> {{ 'QUESTION_BANK.ADD_QUESTION' | translate }}
                     <img src="../../../../../../assets/images/add.svg" class=" cursor-pointer Catogry_Icon_Add">
                 </span>
             </a>
         </div>
+        <div class="offset-cu-21 col-4" >
+            <app-search-input (searchTerm)=searchQuestions($event)></app-search-input>
+
+        </div>
+        
     </div>
     <div  *ngIf="questionBankQuestionList.length===0" class="row">
 <label class="no-data">
@@ -61,8 +27,8 @@
  
 </div>
     <section class="internal_scroll_list_group">
-        <div class="w-100 row contanier_matrial-card">
-            <div class="col-lg-12">
+        <div class="w-100 row contanier_matrial-card questionBank">
+            <div class="col-lg-12 mb-3">
                 <mat-accordion
                 cdkDropList
                 #unassignedList="cdkDropList"
@@ -77,30 +43,31 @@
                             
                             <mat-panel-title class="qestionHeader">
                                 <div class="col-.5  chicx_box">
-                                    <!-- <input type="checkbox" [(ngModel)]="QBQ.isActive"  (change)="onCheckboxChange(QBQ)" >  -->
-                                
-                                        <mat-checkbox (change)="onCheckboxChange(QBQ)" [(ngModel)]="QBQ.isActive" >
+                                        
+                                        <a (click)="loadQuestion(QBQ.id)">
+                                            <img src="../../../../../../assets/images/Icon feather-edit-3.svg">
+                                        </a> 
+                                        <a (click)="confirmDialog(QBQ.id)" > <i class="far fa-trash-alt"></i></a>
+
+                                        <label class="switch">
+                                            <input type="checkbox" (change)="onCheckboxChange(QBQ)" [(ngModel)]="QBQ.isActive" >
+                                            <span class="slider round"></span>
+                                          </label>
+                                       
+                                      <!-- <mat-checkbox (change)="onCheckboxChange(QBQ)" [(ngModel)]="QBQ.isActive" >
                                       
-                                        </mat-checkbox>
-                                 
-                                    
+                                        </mat-checkbox> -->
                                   </div>
                                 <div class="col span_question" >
-                                   
                                     <span>
                                         {{this.translate.currentLang===langEnum.en?QBQ.engQuestion:QBQ.arabQuestion}}
                                     </span> 
                                 </div>
-                                <!--   -->
-                                <div class="col-1 span_icon" >
+                                <!-- <div class="col-1 span_icon" >
                                     <span>
-                                        <!-- <img src="assets/quesionBsnk/questionBankCategory/Icon feather-edit-3 (1).svg" alt="" class="mt-10 cursor-pointer" (click)="loadQuestion(QBQ.id)"/>
-                                        <img src="assets/quesionBsnk/questionBankCategory/Icon feather-trash-2.svg" alt="" class="mt-10 cursor-pointer" (click)="confirmDialog(QBQ.id)"/> -->
-                                        <a (click)="confirmDialog(QBQ.id)" > <i class="far fa-trash-alt"></i></a>
-                                        <a (click)="loadQuestion(QBQ.id)"> <i class="fas fa-pencil-alt"></i></a> 
-                                      
+                                        
                                     </span>  
-                                </div>
+                                </div> -->
                              
                             
                           
