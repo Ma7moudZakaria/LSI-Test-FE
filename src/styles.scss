@@ -342,6 +342,7 @@ select.form-control {
   text-overflow: ellipsis;
   max-width: 14rem;
   cursor: pointer;
+  width: 95%;
 }
 .badges {
   .badge-info {
@@ -435,13 +436,31 @@ select.form-control {
 .mat-expansion-indicator::after {
   border-style: solid;
   border-width: 0 ;
+  content: '';
+  display: none;
+ 
+}
+.questionBank
+.mat-content
+{
+align-items: center
+}
+.questionBank
+.mat-content::before{
+  border-style: solid;
+  border-width: 0 ;
   content: url(assets/images/arrange.svg) !important;
   display: inline-block;
   padding: 3px;
   transform: rotate(0);
   vertical-align: middle;
-}
+  margin-left: 0.23rem;
+  margin-right: 0.23rem;
 
+}
+.mat-expansion-panel-header-title, .mat-expansion-panel-header-description{
+  margin-right: 0 !important; 
+}
 // input phone custom 
 app-tel-input >
 .iti input, .iti input[type=text], .iti input[type=tel] 
@@ -475,4 +494,27 @@ app-tel-input >
   padding: 0 6px 0 27px;
 }.iti__selected-flag:lang(ar){
   padding: 0 6px 0 22px;
+}
+// nofify
+
+.alertify-notifier.ajs-right {
+  right: -10px;
+}
+.alertify-notifier.ajs-right .ajs-message {
+  right: -320px;
+}
+.alertify-notifier.ajs-right .ajs-message.ajs-visible {
+  right: 270px;
+  text-align: left;
+}
+.alertify-notifier.ajs-left {
+  left: 200px;
+}
+.alertify-notifier.ajs-left .ajs-message {
+  left: -300px;
+}
+
+.alertify-notifier.ajs-left .ajs-message.ajs-visible {
+  left:65px;
+  text-align: right;
 }

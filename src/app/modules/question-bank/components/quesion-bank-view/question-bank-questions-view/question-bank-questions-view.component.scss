@@ -152,11 +152,14 @@ opacity: 1;
   padding-left: 0;
 }
 .span_question:lang(ar){
-  text-align: left;
+  text-align: right;
 
 
 }
-.span_question:lang(en),.add_question:lang(ar){
+.span_question:lang(en){
+  text-align: left;
+}
+.add_question:lang(ar){
   text-align: right;
 }
 .p_answer:lang(ar){
@@ -286,12 +289,12 @@ input:checked + .slider:before {
 // end
 @media (min-width: 992px){
 .offset-cu-21 {
-    margin-left: 29.33%;
+    margin-left: 21%;
   margin-right: 0;
 
 }
 .offset-cu-21:lang(ar) {
-  margin-right: 29.33%;
+  margin-right: 21%;
   margin-left: 0;
 
 }
