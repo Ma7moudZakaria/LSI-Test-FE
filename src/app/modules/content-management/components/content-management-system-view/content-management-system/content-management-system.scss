@@ -61,6 +61,7 @@ span{
  
    
 }
+
 span:lang(ar){
     float: right !important;
     padding-right: .75rem;
@@ -96,5 +97,11 @@ padding-left: .5rem;
         display: block;
         }
 
+        .alert-danger:lang(ar) {
+            text-align: right;
+        }
+        .alert-danger:lang(en) {
+          text-align: left;
+        }
 
 

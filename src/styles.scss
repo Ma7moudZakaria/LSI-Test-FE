@@ -345,18 +345,24 @@ select.form-control {
 }
 .badges {
   .badge-info {
-    background-color: $gray-300;
-    color: $user-color;
+    background-color: $labels;
+    color: $white;
     font-size: 18px;
     font-family: gulf-thin;
     margin-left: 10px;
     margin-bottom: 5px;
     border-radius: 5px;
-
+    
     a {
       color: inherit;
+
     }
   }
+}
+.justify-content-between {
+  justify-content: space-between!important;
+  margin-top: 10px;
+  margin-bottom: 0px;
 }
 .badge-lightbadge-light {
   color: $main-color;
@@ -411,10 +417,9 @@ select.form-control {
     // padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    display: block;
+    // display: block;
     transition: 5s;
-  }
-  
+  }  
   
   /* On smaller screens, where height is less than 450px, change the style of the sidenav_profile (less padding and a smaller font size) */
   @media screen and (max-height: 450px) {
