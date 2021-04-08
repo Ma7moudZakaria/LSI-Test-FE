@@ -24,6 +24,21 @@
     text-align: left;
 }
 
+.justify-content-between {
+    justify-content: space-between !important;
+    margin-top: 0px; 
+    margin-bottom: 0px; 
+}
+
+// .overlay a {
+//     // padding: 0px 0px 0px 0px;
+//     // /* text-decoration: none; */
+//     // font-size: 18px;
+//     // transition: 5s;
+//     // margin-bottom: 10px;
+//     // margin-top: 0px;
+// }
+
 .custom-file{
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 3px dashed #DFDFDF;
@@ -87,3 +102,19 @@ label{
     border-top-right-radius: 0.65rem;
     border-bottom-right-radius: 0.65rem;
 }
+
+
+.badges {
+    
+    .badge-info {
+        margin-bottom: 30px;
+        margin-top: 0px;      
+      a {
+        color: inherit;
+        margin-top: -5px;
+        font-size: 18px;
+        margin-left: -30px;
+  
+      }
+    }
+  }
