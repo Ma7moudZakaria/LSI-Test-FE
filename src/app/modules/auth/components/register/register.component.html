@@ -119,11 +119,11 @@
                                             </div>  
                                             <div *ngIf="f.password.errors?.pattern ">
                                                 {{ 'GENERAL.PASSWORD_TO_CONTAINER' | translate}}
-                                            </div>     
+                                            </div>   
                                         </div>                                           
                                                        
                                     </div>
-                                    
+                                   
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mb-2 ">
                                         <label for="confirmPassword">{{'GENERAL.CONFIRM_PASSWORD' | translate}}</label>
                                         <div class="input-group ">
@@ -153,14 +153,14 @@
                                             <div *ngIf="f.confirmPassword.errors?.minlength ">
                                                 {{ 'GENERAL.CONFIRM_PASSWORD_MIN_LENGTH' | translate}}
                                             </div>  
-                                            <div *ngIf="f.password.errors?.pattern ">
+                                            <div *ngIf="f.confirmPassword.errors?.pattern ">
                                                 {{ 'GENERAL.CONFIRM_PASSWORD_TO_CONTAINER' | translate}}
-                                              </div>      
+                                            </div>        
                                         </div>              
                                     </div>
                                 </div>
                             </div>
-                
+                            
                             <!-- Submit Button -->
                             <div class="form-group col-lg-12 mx-auto mb-0">
                                 <button type="submit" class="btn UserLogin__Submit" > {{'SIGNUP_PG.NEXT' | translate}} </button>
