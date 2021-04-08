@@ -94,6 +94,7 @@
                                                 <span class="input-group-text bg-white pl-2 pr-2  border-md "
                                                 [ngClass]="{'error_input': f.password.errors && (f.password.touched || isSubmit)}">
                                                     <!-- <i class="fa fa-lock text-muted"></i> -->
+                                                    <mat-icon   (click)="togglePassword()">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
                                                     <img   class="UserLogin_icon_input" src="../../../../../assets/images/password.svg">
         
                                                 </span>
@@ -115,7 +116,10 @@
                                             </div>
                                             <div *ngIf="f.password.errors?.minlength ">
                                                 {{ 'GENERAL.PASSWORD_MIN_LENGTH' | translate}}
-                                            </div>      
+                                            </div>  
+                                            <div *ngIf="f.password.errors?.pattern ">
+                                                {{ 'GENERAL.PASSWORD_TO_CONTAINER' | translate}}
+                                            </div>     
                                         </div>                                           
                                                        
                                     </div>
@@ -128,13 +132,14 @@
                                                 [ngClass]="{'error_input': f.confirmPassword.errors && (f.confirmPassword.touched || isSubmit)}"
                                                 >
                                                     <!-- <i class="fa fa-lock text-muted"></i> -->
+                                                    <mat-icon   (click)="togglePasswordConfirm()">{{hidePasswordConfirm ? 'visibility_off' : 'visibility'}}</mat-icon>
                                                     <img   class="UserLogin_icon_input" src="../../../../../assets/images/password.svg">
         
                                                 </span>
                                             </div>
                                             <input id="confirmPassword" pPassword type="password" 
                                             [ngClass]="{'error_input': f.confirmPassword.errors && (f.confirmPassword.touched || isSubmit)}"
-                                            [type]="hidePassword ? 'password' : 'text'" formControlName="confirmPassword" name="confirmPassword"
+                                            [type]="hidePasswordConfirm ? 'password' : 'text'" formControlName="confirmPassword" name="confirmPassword"
                                             placeholder="{{'GENERAL.CONFIRM_PASSWORD' | translate}}"
                                             class="  px-1 form-control UserLogin__FormControl bg-white  border-md input-sm">
                                         </div>   
@@ -147,7 +152,10 @@
                                             </div>
                                             <div *ngIf="f.confirmPassword.errors?.minlength ">
                                                 {{ 'GENERAL.CONFIRM_PASSWORD_MIN_LENGTH' | translate}}
-                                            </div>      
+                                            </div>  
+                                            <div *ngIf="f.password.errors?.pattern ">
+                                                {{ 'GENERAL.CONFIRM_PASSWORD_TO_CONTAINER' | translate}}
+                                              </div>      
                                         </div>              
                                     </div>
                                 </div>

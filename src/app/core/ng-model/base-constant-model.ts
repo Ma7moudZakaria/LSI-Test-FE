@@ -31,4 +31,11 @@ export class BaseConstantModel {
 
     public static TEXT_AREA_ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI = "^[\u{1F600}\u{1F6FF}\u0621-\u064A\u0660-\u0669 \r\n 0-9_@./#&+\\-~؛)(÷*/'/!/$]+$";
     public static  TEXT_AREA_ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI = "^[\u{1F600}\u{1F6FF}A-Za-z \r\n 0-9_@./#&+-~؛)(÷*/'/!/$]*$";
+
+
+
+   // public static passwordPattern = "/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/";
+ // public static passwordPattern = "^(?=.*?[A-Z])(?=(.*){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{6,12}$";
+ // public static passwordPattern ="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$";
+ public static passwordPattern ="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=.!(){}<>,.?/~+\\-\\][;|:]).{6,12}$";
 }

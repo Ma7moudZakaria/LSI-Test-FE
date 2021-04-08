@@ -37,7 +37,9 @@
     "LOGOUT_CONFIRM" : "تسحيل الخروج",
     "LOGOUT_MESSAGE" : "هل انت متاكد من تسجيل الخروج؟",
     "ENGLISH_DISPALY_SWITCH":"إنجليزى",
-    "INVALID_PHONE_NUMBER":"رقم الجوال غير صحيح"
+    "INVALID_PHONE_NUMBER":"رقم الجوال غير صحيح",
+    "CONFIRM_PASSWORD_TO_CONTAINER": "أخل الرقم السرى بحيث يحتوى على الاقل على حرف واحد كبير ورقم واحد وحرف خاص ",
+    "PASSWORD_TO_CONTAINER": "أخل الرقم السرى بحيث يحتوى على الاقل على حرف واحد كبير ورقم واحد وحرف خاص "
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
