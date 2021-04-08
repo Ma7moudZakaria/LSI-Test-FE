@@ -52,11 +52,12 @@ export class UpdateUserProfileComponent implements OnInit {
   selectedTrainingCourseList = Array<BaseLookupModel>();
   coursesMessage : BaseMessageModel = {};
   langEnum = LanguageEnum;
-  telInputParam : ITelInputParams = {
-    // phoneNumber:'+201062100486',
-    isRequired : true,
-    // countryIsoCode: '{"initialCountry": "eg"}'
-  }
+  telInputParam : ITelInputParams = {}
+  // = {
+  //   // phoneNumber:'+201062100486',
+  //   isRequired : true,
+  //   // countryIsoCode: '{"initialCountry": "eg"}'
+  // }
 
 
   constructor(
@@ -71,6 +72,7 @@ export class UpdateUserProfileComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
+    this.getCountryIsoCode();
     this.setCurrentLang();
     this.buildForm();
     this.lookupService.getLookupByKey(this.listOfLookupProfile).subscribe(res => {
@@ -86,6 +88,18 @@ export class UpdateUserProfileComponent implements OnInit {
         }
       }
     });
+  }
+
+  getCountryIsoCode(){
+    this.userService.getCountryIsoCode().subscribe(res => {
+      let code = res.data as string;
+      this.telInputParam = {
+        // phoneNumber:'+201062100486',
+        isRequired : true,
+        countryIsoCode: '{"initialCountry": "' + code.toLowerCase() +'"}'
+      }
+      // this.telInputParam.countryIsoCode = '{"initialCountry": "' + code.toLowerCase() +'"}';
+    })
   }
 
   setCurrentLang(){

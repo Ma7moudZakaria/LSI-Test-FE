@@ -16,6 +16,7 @@ export class UserService {
   viewUserProfileDetailsURL = environment.baseUrl + 'User/view-user-profile-details/';
   deleteUserURL = environment.baseUrl + 'User/delete-user/';
   updateUserProfilePicURL = environment.baseUrl + 'user/upload-profile-picture'
+  getCountryIsoCodeUrl = environment.baseUrl + 'user/get-country-iso-code'
 
   constructor(private http: HttpClient) { }
 
@@ -46,5 +47,9 @@ export class UserService {
 
   updateUserProfilePic(model:any):Observable<BaseResponseModel>{
     return this.http.post<BaseResponseModel>(this.updateUserProfilePicURL, model);
+  }
+
+  getCountryIsoCode():Observable<BaseResponseModel>{
+    return this.http.get<BaseResponseModel>(this.getCountryIsoCodeUrl);
   }
 }
