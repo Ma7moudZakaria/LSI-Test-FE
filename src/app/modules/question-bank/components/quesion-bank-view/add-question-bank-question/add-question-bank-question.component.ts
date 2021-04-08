@@ -10,6 +10,7 @@ import { IQuestionBankQuestionsModel } from 'src/app/core/interfaces/questionBan
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { QuestionBankQuestionService } from 'src/app/core/services/question-bank-services/question-bank-question.service';
 
 @Component({
@@ -35,12 +36,13 @@ export class AddQuestionBankQuestionComponent implements OnInit {
    @Output() closeQuestionForm = new EventEmitter<boolean>();
    resultMessage:BaseMessageModel = {};
    disableSaveButtons = false;
+   @Output() submitSuccess = new EventEmitter<boolean>();
   //  @Output() isQuestionSave = new EventEmitter<{}>();
   @Output() isQuestionSave = new EventEmitter<boolean>();
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
     private activeroute: ActivatedRoute, 
     private router: Router,
-     public translate: TranslateService,private fb: FormBuilder) {
+     public translate: TranslateService,private fb: FormBuilder,private _alertify:AlertifyService) {
       }
 
   ngOnInit(): void {
@@ -146,7 +148,10 @@ export class AddQuestionBankQuestionComponent implements OnInit {
               message:res.message||"",
               type: BaseConstantModel.SUCCESS_TYPE
             }
+         
             this.loodQuestionsListAfterAdd();
+            this.submitSuccess?.emit(false);//close form after submit is success
+            this._alertify.success(res.message||"");
           }
           else {
             // this.errorMessage = res.message;
@@ -181,6 +186,8 @@ export class AddQuestionBankQuestionComponent implements OnInit {
               type: BaseConstantModel.SUCCESS_TYPE
             }
             this.loodQuestionsListAfterAdd();
+            this.submitSuccess?.emit(false);//close form after submit is success
+            this._alertify.success(res.message||"");
           }
           else {
             //this.errorMessage = res.message;

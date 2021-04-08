@@ -191,7 +191,7 @@
   "SIDENAVBAR": {
     "DASHBORD": "DashBoard",
     "MYPROGRAMS": "Myprograms",
-    "SCIENTIFIC_ARTICLES": "Scientific materials",
+    "SCIENTIFIC_ARTICLES": "Scientific Materials",
     "VACATION_REQUEST": "My Messages",
     "EXAM_RESULTS": "Exam Results",
     "WITHDRAWAL_REQUESTS": "Withdrawal Req.",
@@ -225,7 +225,7 @@
 
   },
   "WALKTHROUGH": {
-    "TITLE":"المقدمة",
+    "TITLE":"WalkThrough",
     "PAGES": "Pages",
     "UPLOAD_PIC": "Upload Picture",
     "ARABIC_MESSAGE": "Arabic Message",

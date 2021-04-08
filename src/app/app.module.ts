@@ -25,6 +25,7 @@ import { LoaderService } from './core/services/loader-services/loader.service';
 import { LoaderInterceptor } from './core/services/interceptors/loader-interceptor.service';
 import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 import {Ng2TelInputModule} from 'ng2-tel-input';
+import { AlertifyService } from './core/services/alertify-services/alertify.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -65,6 +66,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     LoaderService,
+    AlertifyService,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
     {
       provide: 'SocialAuthServiceConfig',
