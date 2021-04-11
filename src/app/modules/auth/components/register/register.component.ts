@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
   currentLang: LanguageEnum | undefined;
   isSubmit = false;
   roleType : string | undefined
-
+  hidePasswordConfirm: boolean = true;
   constructor(private authService: AuthService,
     private router: Router,
     private fb: FormBuilder,
@@ -54,11 +54,13 @@ export class RegisterComponent implements OnInit {
 
   loadUserForm() {
     // let emailReg = '/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/';
+    //"/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/"
+    //const regex = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
     this.registerform = this.fb.group({
       email: ["", [Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       userName: ["", [Validators.required, Validators.minLength(3),Validators.maxLength(20)]],
-      password: ["", [Validators.required, Validators.minLength(6) , ,Validators.maxLength(12)]],
-      confirmPassword: ["", [Validators.required, Validators.minLength(6) , ,Validators.maxLength(12)]],
+      password: ["", [Validators.required, Validators.minLength(6) ,Validators.maxLength(12), Validators.pattern(BaseConstantModel.passwordPattern)]],
+      confirmPassword: ["", [Validators.required, Validators.minLength(6) ,Validators.maxLength(12),Validators.pattern(BaseConstantModel.passwordPattern)]],
     });
   }
 
@@ -103,5 +105,11 @@ export class RegisterComponent implements OnInit {
         type: BaseConstantModel.DANGER_TYPE
       }
     }
+  }
+  togglePassword() {
+    this.hidePassword  = !this.hidePassword ;
+  }
+  togglePasswordConfirm() {
+    this.hidePasswordConfirm  = !this.hidePasswordConfirm ;
   }
 }

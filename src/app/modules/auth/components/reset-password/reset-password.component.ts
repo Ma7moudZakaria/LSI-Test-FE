@@ -24,7 +24,7 @@ export class ResetPasswordComponent implements OnInit {
   resMessage: BaseMessageModel = {};
   currentLang: LanguageEnum | undefined;
   isSubmit = false;
-
+  hidePasswordConfirm: boolean = true;
   constructor(
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder, private translate: TranslateService,
@@ -36,15 +36,15 @@ export class ResetPasswordComponent implements OnInit {
     this.token = this.activatedRoute.snapshot.queryParamMap.get('tkn') || '';
   }
 
-  togglePassword() {
-    if (this.passwordShown) {
-        this.passwordType = 'password';
-        this.passwordShown = false;
-    } else {
-        this.passwordType = 'text';
-        this.passwordShown = true;
-    }
-  }
+  // togglePassword() {
+  //   if (this.passwordShown) {
+  //       this.passwordType = 'password';
+  //       this.passwordShown = false;
+  //   } else {
+  //       this.passwordType = 'text';
+  //       this.passwordShown = true;
+  //   }
+  // }
 
   resetPasswordFormG() {
     this.resetpasswordform = this.fb.group({
@@ -89,4 +89,10 @@ export class ResetPasswordComponent implements OnInit {
       }
     }
   } 
+  togglePassword() {
+    this.hidePassword  = !this.hidePassword ;
+  }
+  togglePasswordConfirm() {
+    this.hidePasswordConfirm  = !this.hidePasswordConfirm ;
+  }
 }
