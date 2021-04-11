@@ -41,7 +41,7 @@
         </div> -->
         <div class="form-group">
             <label for="comment">{{"WALKTHROUGH.ARABIC_MESSAGE" | translate}} </label>
-            <textarea class="form-control text-arabic" cols="2" rows="10"  id="InputtextAr" formControlName="textAr"></textarea>
+            <textarea class="form-control text-arabic" cols="2" rows="10"  id="InputtextAr" formControlName="textAr" maxlength="1000"></textarea>
 
             <div *ngIf="f.textAr.errors && (f.textAr.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                 <div *ngIf="f.textAr.errors?.required">
@@ -57,7 +57,7 @@
         </div>
         <div class="form-group">
             <label for="comment">{{"WALKTHROUGH.ENGLISH_MESSAGE" | translate}} </label>
-            <textarea class="form-control text-english" cols="2" rows="10" id="InputtextEn" formControlName="textEn"></textarea>
+            <textarea class="form-control text-english" cols="2" rows="10" id="InputtextEn" formControlName="textEn" maxlength="1000"></textarea>
             <div *ngIf="f.textEn.errors && (f.textEn.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                 <div *ngIf="f.textEn.errors?.required">
                     {{ 'WALKTHROUGH.REQUIRED' | translate }}
