@@ -15,17 +15,34 @@ export class HeaderComponent implements OnInit {
 
   currentLang = '';
   showPro = true;
+  disableBlock = false;
   submitClose = false;
   title = '';
   lang = LanguageEnum;
-  constructor(private langService: LanguageService, public translate : TranslateService) { }
+  constructor(private langService: LanguageService, public translate: TranslateService) { }
 
   ngOnInit(): void {
     this.currentLang = JSON.parse(localStorage.getItem("lang") || '{}');
     this.titleSubscription();
   }
+  showoverlay() {
+    this.showPro = !this.showPro;
+    this.disableBlock = true;
 
-  titleSubscription(){
+  }
+  showoverlay_withoverlay() {
+    this.disableBlock = false;
+    this.showPro = true;
+    this.closeProfile(false);
+  }
+
+  closeProfile(event: boolean) {
+    this.submitClose = event;
+    this.showPro = true;
+
+  }
+
+  titleSubscription() {
     this.langService.headerPageNameEvent.subscribe(res => {
       this.title = res;
     })
@@ -45,9 +62,5 @@ export class HeaderComponent implements OnInit {
     // return this.currentLang === LanguageEnum.ar ? LanguageEnum.en.split('-')[0].toUpperCase() : LanguageEnum.ar.split('-')[0].toUpperCase();
     return this.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.ENGLISH_DISPALY_SWITCH') : this.translate.instant('GENERAL.ARABIC_DISPALY_SWITCH')
   }
-  closeProfile(event: boolean) {
-    this.submitClose = event;
-    this.showPro = true
 
-  }
 }
