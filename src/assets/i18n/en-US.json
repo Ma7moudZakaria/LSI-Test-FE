@@ -240,8 +240,9 @@
     "ARABIC_FIELD": "This field must be in Arabic",
     "ENGLISH_FIELD": "This field must be in English",
     "TITLEAR_PATTERN": "Please insert arabict text only.",
-    "TITLEEN_PATTERN": "Please insert english text only."
-
+    "TITLEEN_PATTERN": "Please insert english text only.",
+    "AR_MAX_LENGTH":"Arabic text should less than or equal 1000 characters",
+    "EN_MAX_LENGTH":"English text should less than or equal 1000 characters"
   },
   "DASHBOARD": {
     "TITLE": "Dashboard"
