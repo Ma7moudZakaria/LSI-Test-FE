@@ -24,8 +24,9 @@ import { MyLoaderComponent } from './shared/components/my-loader/my-loader.compo
 import { LoaderService } from './core/services/loader-services/loader.service';
 import { LoaderInterceptor } from './core/services/interceptors/loader-interceptor.service';
 import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
-import {Ng2TelInputModule} from 'ng2-tel-input';
+import { Ng2TelInputModule } from 'ng2-tel-input';
 import { AlertifyService } from './core/services/alertify-services/alertify.service';
+import { HasUnsavedDataGuard } from './core/guards/HasUnsavedDataGuard';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -63,6 +64,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     Ng2TelInputModule
   ],
   providers: [
+    HasUnsavedDataGuard,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     LoaderService,
@@ -93,5 +95,5 @@ export function HttpLoaderFactory(http: HttpClient) {
 })
 export class AppModule { }
 
-    
+
 
