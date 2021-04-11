@@ -224,7 +224,11 @@
     "ENGLISH_FIELD": "هذا الحقل يجب أن يكون باللغة الإنجليزية",
     "SAVE": "حفظ",
     "ADD": "إضافة",
-    "CANCEL": "إلغاء"
+    "CANCEL": "إلغاء",
+    "SHORT_DESCRIPTION_AR_MAX_LENGHT":"وصف مختصر عربي يجب ان يكون اقل من او يساوى 200 حرف",
+    "SHORT_DESCRIPTION_EN_MAX_LENGHT":"وصف مختصر إنجليزي يجب ان يكون اقل من او يساوى 200 حرف",
+    "LONG_DESCRIPTION_AR_MAX_LENGHT":"وصف كامل عربي يجب ان يكون اقل من او يساوى 1000 حرف",
+    "LONG_DESCRIPTION_EN_MAX_LENGHT":"وصف كامل إنجليزي يجب ان يكون اقل من او يساوى 1000 حرف"
   },
   "WALKTHROUGH": {
     "TITLE":"المقدمة",
