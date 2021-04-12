@@ -13,6 +13,8 @@ export class MiladyHijriCalendarComponent implements OnInit {
   dateTo!: NgbDateStruct;
 
   selectedDateType = DateType.Gregorian;  // or DateType.Gregorian
+  selectedDateType_Hijri = DateType.Hijri;  // or DateType.Gregorian
+
   dateFromString: string = '';
   maxGreg!: NgbDateStruct;
   maxHijri!: NgbDateStruct;
