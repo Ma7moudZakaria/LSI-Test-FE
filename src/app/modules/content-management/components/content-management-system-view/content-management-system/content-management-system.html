@@ -5,7 +5,7 @@
     <form class="form-group internal_scroll_list_group" [formGroup]="currentForm" (submit)="Submit()">
       <div class="form-group">
           <label for="comment">{{ 'CONTENT_MANEGMENT_SYSTEM.SHORTDESCRIPTIONAR' | translate }}</label>
-          <textarea class="form-control text-arabic" cols="2"  rows="5" id="InputShortDescriptionAr" formControlName="shortDescriptionAr" maxlength="200"
+          <textarea class="form-control text-arabic" cols="2"  rows="5" id="InputShortDescriptionAr" formControlName="shortDescriptionAr"
           [ngClass]="{'red-border-class': f.shortDescriptionAr.errors && ( f.shortDescriptionAr.touched || isSubmit)}"></textarea>
           <div *ngIf="f.shortDescriptionAr.errors && (f.shortDescriptionAr.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
             <div *ngIf="f.shortDescriptionAr.errors.required">
@@ -21,7 +21,7 @@
         </div>
         <div class="form-group">
           <label for="comment" class="labl_dirc">{{ 'CONTENT_MANEGMENT_SYSTEM.SHORTDESCRIPTIONEN' | translate }}</label>
-          <textarea class="form-control text-english" cols="2"  rows="5" id="InputShortDescriptionEn" formControlName="shortDescriptionEn" maxlength="200"
+          <textarea class="form-control text-english" cols="2"  rows="5" id="InputShortDescriptionEn" formControlName="shortDescriptionEn"
           [ngClass]="{'red-border-class': f.shortDescriptionEn.errors && ( f.shortDescriptionEn.touched || isSubmit)}"></textarea>
           <div *ngIf="f.shortDescriptionEn.errors && (f.shortDescriptionEn.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
             <div *ngIf="f.shortDescriptionEn.errors.required">
@@ -38,7 +38,7 @@
       <div class="form-group">
           <label for="exampleFormControlTextarea1">{{ 'CONTENT_MANEGMENT_SYSTEM.LONGDESCRIPTIONAR' | translate }}</label>
           <textarea class="form-control rounded-0  text-arabic"  cols="2"  rows="10"  id="InputLongDescriptionAr" formControlName="longDescriptionAr"
-          [ngClass]="{'red-border-class': f.longDescriptionAr.errors && ( f.longDescriptionAr.touched || isSubmit)}" maxlength="1000"></textarea>
+          [ngClass]="{'red-border-class': f.longDescriptionAr.errors && ( f.longDescriptionAr.touched || isSubmit)}"></textarea>
           <div *ngIf="f.longDescriptionAr.errors && (f.longDescriptionAr.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
             <div *ngIf="f.longDescriptionAr.errors.required">
                 {{"CONTENT_MANEGMENT_SYSTEM.REQUIRED"|translate}}
@@ -54,7 +54,7 @@
         <div class="form-group">
           <label for="exampleFormControlTextarea1">{{ 'CONTENT_MANEGMENT_SYSTEM.LONGDESCRIPTIONEN' | translate }}</label>
           <textarea class="form-control rounded-0 text-english"  cols="2"  rows="10"  id="InputlongDescriptionEn" formControlName="longDescriptionEn"  
-          [ngClass]="{'red-border-class': f.longDescriptionEn.errors && ( f.longDescriptionEn.touched || isSubmit)}" maxlength="1000"></textarea>
+          [ngClass]="{'red-border-class': f.longDescriptionEn.errors && ( f.longDescriptionEn.touched || isSubmit)}"></textarea>
           <div *ngIf="f.longDescriptionEn.errors && (f.longDescriptionEn.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
             <div *ngIf="f.longDescriptionEn.errors.required">
                 {{"CONTENT_MANEGMENT_SYSTEM.REQUIRED"|translate}}
