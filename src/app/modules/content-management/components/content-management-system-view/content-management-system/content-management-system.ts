@@ -80,14 +80,18 @@ export class ContentManagementSystemComponent implements OnInit {
   }
   @HostListener('window:beforeunload', ['$event'])
   public onPageUnload($event: BeforeUnloadEvent) {
+    $event.returnValue=this.isChangeData();
+
+  }
+  isChangeData(){
     if (this.temp.longDesAr != this.contentmanagementsystem.longDesAr
       || this.temp.longDesEn != this.contentmanagementsystem.longDesEn
       || this.temp.shortDesAr != this.contentmanagementsystem.shortDesAr
       || this.temp.shortDesEn != this.contentmanagementsystem.shortDesEn) {
-      $event.returnValue = true;
+      return true;
     }
     else
-      $event.returnValue = false;
+     return false;
 
   }
   get f() {
@@ -167,6 +171,7 @@ export class ContentManagementSystemComponent implements OnInit {
             message: res.message || "",
             type: BaseConstantModel.SUCCESS_TYPE
           }
+          this.loadContentManagementSystemByType();
         }
         else {
           this.disableSaveButtons = false;

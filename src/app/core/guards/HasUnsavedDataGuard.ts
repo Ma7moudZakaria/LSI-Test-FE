@@ -13,8 +13,12 @@ export class HasUnsavedDataGuard implements CanActivateChild, CanDeactivate<any>
         return true;
     }
     canDeactivate(component: any): boolean {
-        if (component.hasUnsavedData && component.hasUnsavedData()) {
-            return confirm('Are you sure you want to leave page without save changes');
+        // if (component.hasUnsavedData && component.hasUnsavedData())
+        if (component.hasUnsavedData)
+         {
+            // return confirm('Are you sure you want to leave page without save changes');
+            return confirm('You have some unsaved form data.Are you sure, you want to leave this page?');
+ 
         }
         return true;
     }

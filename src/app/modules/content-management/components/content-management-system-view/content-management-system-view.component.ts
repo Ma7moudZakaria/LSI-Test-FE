@@ -13,6 +13,8 @@ export class ContentManagementSystemViewComponent implements OnInit {
 
   LangEnum = LanguageEnum ;
   selectedcmsTypeId={id:'',nameAr:'',nameEn:''};
+  // hasUnsavedData=true;
+
   constructor( private contentManagementService: ContentManagementService,
     private languageService: LanguageService,
     public translate: TranslateService) { }
