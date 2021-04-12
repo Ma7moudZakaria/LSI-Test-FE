@@ -16,21 +16,23 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 
-import {MatIconModule} from '@angular/material/icon';
-import {Ng2TelInputModule} from 'ng2-tel-input';
+import { MatIconModule } from '@angular/material/icon';
+import { Ng2TelInputModule } from 'ng2-tel-input';
 import { TelInputComponent } from './components/tel-input/tel-input.component';
+import { MiladyHijriCalendarComponent } from './components/milady-hijri-calendar/milady-hijri-calendar.component';
+import { NgxHijriGregorianDatepickerModule } from 'ngx-hijri-gregorian-datepicker';
 
 
 @NgModule({
-  declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent],
+  declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent],
   imports: [
-    CommonModule, RouterModule,TranslateModule,Ng2TelInputModule,
-    MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,MatIconModule,
+    CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
+    MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule, MatIconModule,
   ],
   exports: [
-    MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule,Ng2TelInputModule,
+    MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule, Ng2TelInputModule,
     MatExpansionModule, MatSelectModule, DragDropModule, CustomeCardComponent, CustomAccordionComponent,
-    ViewUserProfileCustomComponent,SearchInputComponent,TelInputComponent
+    ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent
   ]
 })
 export class SharedModule { }

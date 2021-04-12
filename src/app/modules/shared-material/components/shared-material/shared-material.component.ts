@@ -17,15 +17,18 @@ export interface DragDropListItem {
   styleUrls: ['./shared-material.component.scss']
 })
 export class SharedMaterialComponent implements OnInit {
+
+  hijri: boolean = false;
+  milady: boolean = false;
   checked: boolean = false;
   indeterminate: boolean = false;
   // labelPosition: 'before' | 'after' = 'after';
   disabled: boolean = false;
   panelOpenState: boolean = false;
   pp = '222222';
-  telInputParam : ITelInputParams = {
+  telInputParam: ITelInputParams = {
     // phoneNumber:'+201062100486',
-    isRequired : true,
+    isRequired: true,
     countryIsoCode: '{"initialCountry": "sa"}'
   }
 
@@ -81,9 +84,9 @@ export class SharedMaterialComponent implements OnInit {
     }
   }
 
-/*
- * custome pop-up 
- */
+  /*
+   * custome pop-up 
+   */
   result: string = '';
   confirmDialog(): void {
     const message = `Are you sure you want to do this?`;
@@ -104,75 +107,75 @@ export class SharedMaterialComponent implements OnInit {
  * custome card
  */
 
- cardLst = [
-   {title: 'title ABC', content:'content ABC', imgPath:'../../../assets/images/book.svg'},
-   {title: 'title CDE', content:'content CDE', imgPath:'../../../assets/images/mic.svg'},
-   {title: 'title EFG', content:'content EFG', imgPath:'../../../assets/images/book.svg'}
- ]
+  cardLst = [
+    { title: 'title ABC', content: 'content ABC', imgPath: '../../../assets/images/book.svg' },
+    { title: 'title CDE', content: 'content CDE', imgPath: '../../../assets/images/mic.svg' },
+    { title: 'title EFG', content: 'content EFG', imgPath: '../../../assets/images/book.svg' }
+  ]
 
- /*
-  * custome accordion 
-  */
+  /*
+   * custome accordion 
+   */
 
- items: IDragDropAccordionItems[] = [
-  {
-    id: '1',
-    title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
-    paragraph : "test test test test test test test test test test test test test test test test test test test test "
-    // description: 'This is description of tasks 1'
-  },
-  {
-    id: '2',
-    title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
-    paragraph : "test341 test341 test341 test341 test341 test341 test341 test341 test341 test341 "
-    // description: 'This is description of tasks 2'
-  },
-  {
-    id: '3',
-    title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
-    paragraph : "test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 "
-    // description: 'This is description of tasks 3'
-  },
-  {
-    id: '4',
-    title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
-    paragraph : "test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 "
-    // description: 'This is description of tasks 3'
-  },
-  {
-    id: '5',
-    title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
-    paragraph : "test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 "
-    // description: 'This is description of tasks 3'
-  },
-  {
-    id: '6',
-    title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
-    paragraph : "test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 "
-    // description: 'This is description of tasks 3'
+  items: IDragDropAccordionItems[] = [
+    {
+      id: '1',
+      title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
+      paragraph: "test test test test test test test test test test test test test test test test test test test test "
+      // description: 'This is description of tasks 1'
+    },
+    {
+      id: '2',
+      title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
+      paragraph: "test341 test341 test341 test341 test341 test341 test341 test341 test341 test341 "
+      // description: 'This is description of tasks 2'
+    },
+    {
+      id: '3',
+      title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
+      paragraph: "test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 "
+      // description: 'This is description of tasks 3'
+    },
+    {
+      id: '4',
+      title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
+      paragraph: "test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 "
+      // description: 'This is description of tasks 3'
+    },
+    {
+      id: '5',
+      title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
+      paragraph: "test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 "
+      // description: 'This is description of tasks 3'
+    },
+    {
+      id: '6',
+      title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
+      paragraph: "test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 "
+      // description: 'This is description of tasks 3'
+    }
+  ];
+
+
+  hasError(event: any) {
+    console.log(event);
   }
-];
 
+  getNumber(event: any) {
+    console.log(event);
+  }
 
-hasError(event:any){
-  console.log(event);
-}
+  telInputObject(event: any) {
+    console.log(event);
+  }
 
-getNumber(event:any){
-  console.log(event);
-}
+  onCountryChange(event: any) {
+    console.log(event);
+  }
 
-telInputObject(event:any){
-  console.log(event);
-}
-
-onCountryChange(event:any){
-  console.log(event);
-}
-
-savePhonNumber(event:any){
-  this.telInputParam.phoneNumber =event ;
-}
+  savePhonNumber(event: any) {
+    this.telInputParam.phoneNumber = event;
+  }
 
 }
 

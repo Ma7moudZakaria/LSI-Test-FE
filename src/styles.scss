@@ -518,3 +518,24 @@ app-tel-input >
   left:65px;
   text-align: right;
 }
+
+// removeHijri
+.HijriGregorianDatePicker.removeHijri .btn:last-of-type{
+display: none;
+}
+.HijriGregorianDatePicker.removeHijri .btn:first-of-type{
+
+  color: #fff;
+  background-color: #117a8b;
+  border-color: #10707f;
+}
+//  removemilady
+.HijriGregorianDatePicker.removemilady .btn:first-of-type{
+  display: none;
+  }
+  .HijriGregorianDatePicker.removemilady .btn:last-of-type{
+  
+    color: #fff;
+    background-color: #117a8b;
+    border-color: #10707f;
+  }

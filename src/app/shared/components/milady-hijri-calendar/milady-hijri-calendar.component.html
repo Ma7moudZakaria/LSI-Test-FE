@@ -1,0 +1,45 @@
+<!-- for milady -->
+<ng-container *ngIf="hijri && !milady"> 
+ <hijri-gregorian-datepicker class="HijriGregorianDatePicker removemilady" 
+ [(selectedDate)]="dateTo" 
+[isRequired]="true"
+[maxGreg]="maxGreg"
+[maxHijri]="maxHijri" 
+[GregLabel]="GregLabel"
+[hijriLabel]="hijriLabel"
+ [selectedDateType]="selectedDateType" 
+  #datePickerTo>
+</hijri-gregorian-datepicker>
+</ng-container>
+
+<!-- for hijri -->
+<ng-container *ngIf="!hijri && milady"> 
+
+  <hijri-gregorian-datepicker class="HijriGregorianDatePicker   removeHijri" 
+  [(selectedDate)]="dateTo" 
+ [isRequired]="true"
+ [maxGreg]="maxGreg"
+ [maxHijri]="maxHijri" 
+ [GregLabel]="GregLabel"
+ [hijriLabel]="hijriLabel"
+  [selectedDateType]="selectedDateType" 
+   #datePickerTo>
+ </hijri-gregorian-datepicker>
+</ng-container>
+<!-- for hijri  and milady -->
+
+<ng-container *ngIf="!hijri && !milady"> 
+
+  <hijri-gregorian-datepicker class="HijriGregorianDatePicker " 
+  [(selectedDate)]="dateTo" 
+ [isRequired]="true"
+ [maxGreg]="maxGreg"
+ [maxHijri]="maxHijri" 
+ [GregLabel]="GregLabel"
+ [hijriLabel]="hijriLabel"
+  [selectedDateType]="selectedDateType" 
+   #datePickerTo>
+ </hijri-gregorian-datepicker>
+</ng-container>
+
+<!-- (selectedDateChange)="changeDateType('to')" -->

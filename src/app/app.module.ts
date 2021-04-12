@@ -27,6 +27,7 @@ import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, So
 import { Ng2TelInputModule } from 'ng2-tel-input';
 import { AlertifyService } from './core/services/alertify-services/alertify.service';
 import { HasUnsavedDataGuard } from './core/guards/HasUnsavedDataGuard';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -61,7 +62,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SharedModule,
     MatExpansionModule,
     SocialLoginModule,
-    Ng2TelInputModule
+    Ng2TelInputModule,
+    NgbModule
   ],
   providers: [
     HasUnsavedDataGuard,
