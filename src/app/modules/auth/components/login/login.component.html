@@ -48,10 +48,11 @@
                                         <span class="input-group-text bg-white pl-2 pr-2  border-md" 
                                         [ngClass]="{'error_input': f.password.errors && (f.password.touched || isSubmit)}">
                                             <!-- <i class="fa fa-lock text-muted"></i> -->
-                                            <mat-icon   (click)="togglePassword()">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                            
                                             <img   class="UserLogin_icon_input" src="../../../../../assets/images/password.svg">
                                             
                                         </span>
+                                        <mat-icon  class="toggle-password" (click)="togglePassword()">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                        
                                        
                                     </div>

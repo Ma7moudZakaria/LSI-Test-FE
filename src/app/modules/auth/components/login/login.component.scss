@@ -26,11 +26,11 @@
     //     border-radius: 0px !important;
 
     // }
-    .UserLogin__FormControl.pw:lang(ar){
-        border-top-right-radius: 8px !important;
-        border-bottom-right-radius: 8px  !important
+    // .UserLogin__FormControl.pw:lang(ar){
+    //     border-top-right-radius: 8px !important;
+    //     border-bottom-right-radius: 8px  !important
 
-    }
+    // }
     .placeholder{
         position: absolute;
         right: 15px;
@@ -59,24 +59,5 @@
     // }
 
 
-    // for input in en 
 
-    .input-group:lang(en){
-        flex-direction: row-reverse;
-        .UserLogin__FormControl{
-            border-right: 0 ;
-            border-top-right-radius: 0px;
-            border-bottom-right-radius: 0;
-            border-top-left-radius: 0.56rem;
-            border-bottom-left-radius: 0.56rem;
-        }
-        .input-group-text
-        {
-            border-left: 1px solid transparent;
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
-            border-top-right-radius: 0.56rem;
-            border-bottom-right-radius: 0.56rem;
-        }
-    }
   
