@@ -77,7 +77,7 @@ export class AddScientificMaterialComponent implements OnInit {
 
       }, error => {
         this.resMessage = {
-          message: error.message,
+          message: error,
           type: BaseConstantModel.DANGER_TYPE
         }
       }
@@ -93,7 +93,7 @@ export class AddScientificMaterialComponent implements OnInit {
 
       }, error => {
         this.resMessage = {
-          message: error.message,
+          message: error,
           type: BaseConstantModel.DANGER_TYPE
         }
       }
@@ -111,7 +111,7 @@ export class AddScientificMaterialComponent implements OnInit {
           }
         }, error => {
           this.resMessage = {
-            message: error.message,
+            message: error,
             type: BaseConstantModel.DANGER_TYPE
           }
         })
@@ -232,7 +232,7 @@ export class AddScientificMaterialComponent implements OnInit {
       }, error => {
         this.fileUploadModel = [];
         this.resMessage = {
-          message: error.message,
+          message: error,
           type: BaseConstantModel.DANGER_TYPE
         }
       }
@@ -300,9 +300,9 @@ export class AddScientificMaterialComponent implements OnInit {
           }
         },
           error => {
-            console.log(error);
+            // console.log(error);
             this.resMessage = {
-              message: error.message,
+              message: error,
               type: BaseConstantModel.DANGER_TYPE
             }
           })
@@ -339,9 +339,9 @@ export class AddScientificMaterialComponent implements OnInit {
           }
         },
           error => {
-            console.log(error);
+            // console.log(error);
             this.resMessage = {
-              message: error.message,
+              message: error,
               type: BaseConstantModel.DANGER_TYPE
             }
           });

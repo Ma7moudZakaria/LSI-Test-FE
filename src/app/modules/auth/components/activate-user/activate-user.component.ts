@@ -57,6 +57,8 @@ export class ActivateUserComponent implements OnInit {
 
   sendActivateCode()
   {
+    this.resMessage = {};
+
     this.authService.sendActivateCode(this.currentUser?.id || '').subscribe(res => {
       console.log(res);
       if (res.isSuccess){
@@ -76,11 +78,19 @@ export class ActivateUserComponent implements OnInit {
           type: BaseConstantModel.DANGER_TYPE
         }
       }
+    },
+    error => {
+      this.resMessage ={
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
     }); 
   }
 
   onApply(value:string) {
     this.isSubmit = true;
+    this.resMessage = {};
+
     if (this.activationcodeform.valid){
       this.activationcodeModel = {
         uid: this.currentUser.id,
@@ -102,6 +112,12 @@ export class ActivateUserComponent implements OnInit {
             message: res.message,
             type: BaseConstantModel.DANGER_TYPE
           }
+        }
+      },
+      error => {
+        this.resMessage ={
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
         }
       });  
     }

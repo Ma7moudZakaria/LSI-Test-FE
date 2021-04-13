@@ -129,10 +129,18 @@ export class ContentManagementSystemComponent implements OnInit {
           }
         }
         else {
-          this.errorMessage = response.message;
+          // this.errorMessage = response.message;
+          this.resultMessage ={
+            message: response.message,
+            type: BaseConstantModel.DANGER_TYPE
+          }
         }
-      }, error => {
-        console.log(error);
+      },
+      error => {
+        this.resultMessage ={
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       })
     }
    
@@ -166,12 +174,12 @@ export class ContentManagementSystemComponent implements OnInit {
         }
         
       },
-        error => {
-          this.resultMessage = {
-            message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
-            type: BaseConstantModel.DANGER_TYPE
-          }
-        })
+      error => {
+        this.resultMessage ={
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      })
       }
 
     }

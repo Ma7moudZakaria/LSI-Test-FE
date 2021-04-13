@@ -1,7 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseLookupModel } from 'src/app/core/ng-model/base-lookup-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { ContentManagementService } from 'src/app/core/services/content-management-services/content-management.service';
 
 @Component({
@@ -13,6 +15,7 @@ export class ViewAllContentManagementTypeComponent implements OnInit {
   cmsTypeLst?: BaseLookupModel[];
   @Output() selectedcmsTypeId = new EventEmitter<{}>();;
   langEnum = LanguageEnum;
+  resMessage: BaseMessageModel = {};
 
   constructor(private contentmanagementService:ContentManagementService,public translate : TranslateService) { }
 
@@ -26,8 +29,12 @@ this.loadContentManagementSystemTypes();
         this.loadContentManagementSystem(this.cmsTypeLst[0].id,this.cmsTypeLst[0].nameAr,this.cmsTypeLst[0].nameEn);
         this.selectedIndex=0;
 
-      }, error => {
-        console.log(error);
+      },
+      error => {
+        this.resMessage ={
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       }
     );
   }

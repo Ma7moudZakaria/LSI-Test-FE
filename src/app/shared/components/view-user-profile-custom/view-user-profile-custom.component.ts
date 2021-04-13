@@ -65,6 +65,11 @@ export class ViewUserProfileCustomComponent implements OnInit {
           type: BaseConstantModel.DANGER_TYPE
         }
       }
+    },  error => {        
+      this.resMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
     });
   }
 
@@ -75,6 +80,7 @@ export class ViewUserProfileCustomComponent implements OnInit {
   closeNav() {
     this.submitClose.emit(true);
   }
+
   result: string = '';
   async confirmDialog(id?:string){
      const confirm = this.translate.instant('GENERAL.LOGOUT_CONFIRM');
@@ -93,10 +99,10 @@ export class ViewUserProfileCustomComponent implements OnInit {
        }
       
      });
-   }
+  }
 
-   navEditProf(){
+  navEditProf(){
      this.closeNav();
     this.router.navigateByUrl('/user/update-user-profile');
-   }
+  }
 }

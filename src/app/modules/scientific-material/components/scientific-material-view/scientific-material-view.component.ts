@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { ScientificMaterialService } from 'src/app/core/services/scientific-material-services/scientific-material.service';
 
@@ -18,6 +20,8 @@ export class ScientificMaterialViewComponent implements OnInit {
   refreshMaterialId?:string;
   submitSuccess:boolean=true;
   showMaterialForm = false;
+  resMessage: BaseMessageModel = {};
+
   constructor( private scientifcMaterialService: ScientificMaterialService,
     private languageService: LanguageService, public translate: TranslateService) { }
 
@@ -42,14 +46,19 @@ export class ScientificMaterialViewComponent implements OnInit {
       (res: any) => {
         this.programs = res.data as any[];
 
-      }, error => {
-        console.log(error);
+      },  error => {        
+        this.resMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       }
     );
   }
+  
   // addNewMaterial(){
   //   this.selectedMaterialId = null;
   // }
+  
   loadSelectedMateial(event:any){
    this.selectedMaterialId = event;
    this.showMaterialForm =true;
@@ -68,8 +77,8 @@ export class ScientificMaterialViewComponent implements OnInit {
     // this.showMaterialForm = !event;
 
     this.showMaterialForm = false;
-
   }
+
   setrefreshMaterialId(event:any){
     this.refreshMaterialId = event;
   }

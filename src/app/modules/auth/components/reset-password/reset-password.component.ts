@@ -59,6 +59,8 @@ export class ResetPasswordComponent implements OnInit {
 
   onApply(value:string) {
     this.isSubmit = true;
+    this.resMessage = {};
+
     if (this.resetpasswordform.valid){
       this.resetPasswordModel = {
         token: this.token,
@@ -79,6 +81,12 @@ export class ResetPasswordComponent implements OnInit {
             message: res.message,
             type: BaseConstantModel.DANGER_TYPE
           }
+        }
+      },
+      error => {
+        this.resMessage ={
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
         }
       });         
     }

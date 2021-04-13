@@ -35,10 +35,12 @@ export class AddQuestionBankCategoryComponent implements OnInit {
   isSubmit = false;
   resultMessage:BaseMessageModel = {};
   disableSaveButtons = false;
+  
   @Input() inputCategoryId?:string; 
   @Output() closeCategoryForm = new EventEmitter<boolean>();
   @Output() addCategory = new EventEmitter<boolean>();
   @Output() submitSuccess = new EventEmitter<boolean>();
+
   constructor(private questionBankCategoryService: QuestionBankCategoryService,
     private activeroute: ActivatedRoute, 
     private router: Router, 
@@ -61,6 +63,7 @@ export class AddQuestionBankCategoryComponent implements OnInit {
     }
     this.buildForm();
   }
+
   ngOnChanges(changes: any) {
     this.currentForm.reset();
     this.QuestionBankCategoryId=this.inputCategoryId||"";
@@ -74,9 +77,11 @@ export class AddQuestionBankCategoryComponent implements OnInit {
      type: ''
    }
   }
+
   get f() {
     return this.currentForm?.controls;
   }
+
   buildForm() {
     // const arabicWordPattern = "^[\u0621-\u064A\u0660-\u0669 0-9]+$";
     // const englishWordPattern ="^[a-zA-Z0-9' '-'\s]{1,40}$";
@@ -93,8 +98,7 @@ export class AddQuestionBankCategoryComponent implements OnInit {
 
       })
   }
-  
- 
+   
   populate() {
     this.questionBankCategoryService.getQuestionBankCategoryDetails(this.QuestionBankCategoryId).subscribe(
       res => {
@@ -102,20 +106,31 @@ export class AddQuestionBankCategoryComponent implements OnInit {
         if (response.isSuccess) {
           this.QuestionBankCategory =<IQuestionBankCategoriesModel> response.data;
           this.f.nameAr.setValue(this.QuestionBankCategory?.arabCatgName);
-      this.f.nameEn.setValue(this.QuestionBankCategory?.engCatgName);
+          this.f.nameEn.setValue(this.QuestionBankCategory?.engCatgName);
         }
         else {
-          this.errorMessage = response.message;
+          // this.errorMessage = response.message;
+          this.resultMessage = {
+            message: response.message,
+            type: BaseConstantModel.DANGER_TYPE
+          }
         }
-      }, error => {
-        console.log(error);
+      },
+      error => {
+        this.resultMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       })
       
   }
+
   Submit() {
     this.isSubmit = true;
     this.errorMessage = '';
     this.successMessage = '';
+    this.resultMessage = {};
+    
     if (this.currentForm.valid) {
 
       if (this.QuestionBankCategoryId) {
@@ -140,12 +155,11 @@ export class AddQuestionBankCategoryComponent implements OnInit {
               message: res.message,
               type: BaseConstantModel.DANGER_TYPE
             }
-          }
-          
+          }          
         },
           error => {
             this.resultMessage = {
-              message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+              message: error,
               type: BaseConstantModel.DANGER_TYPE
             }
           })
@@ -173,7 +187,7 @@ export class AddQuestionBankCategoryComponent implements OnInit {
         },
           error => {
             this.resultMessage = {
-              message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+              message: error,
               type: BaseConstantModel.DANGER_TYPE
             }
           })
@@ -181,12 +195,13 @@ export class AddQuestionBankCategoryComponent implements OnInit {
     }
 
   }
+
   loodCategoryList(){
 
     this.addCategory.emit(true);
   }
+
   backListCatogry(){
     this.closeCategoryForm?.emit(false);
   }
-
 }

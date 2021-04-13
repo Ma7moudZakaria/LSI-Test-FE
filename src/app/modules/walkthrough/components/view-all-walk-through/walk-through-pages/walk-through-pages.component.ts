@@ -42,16 +42,18 @@ export class WalkThroughPagesComponent implements OnInit {
       }
     },error => {
       this.resMessage = {
-        message: error.message,
+        message: error,
         type: BaseConstantModel.DANGER_TYPE
       }
     });
   }
+
   selectedIndex=0;
   loadPageWalkThrough(id?:string){
     this.selectedWalkThroughPageId?.emit(id);
 
   }
+  
   compare(a:BaseLookupModel,b:BaseLookupModel){
     if (a.huffazId && b.huffazId) {
       return a.huffazId > b.huffazId ?  1 : -1;

@@ -42,6 +42,7 @@ export class QuesionBankViewComponent implements OnInit {
   addNew(){
     this.selectedQuestionId = '';
   }
+
   loadSelectedQuesion(event:any){
    this.selectedQuestionId = event;
    this.showAddQuestionForm =true;
@@ -50,38 +51,42 @@ export class QuesionBankViewComponent implements OnInit {
 
   setSelectedCategory(event:any){
     this.selectedCategoryId = {id:event.id,arabCatgName:event.arabCatgName,engCatgName:event.engCatgName}; 
-  this.categoryId=event.id;
-  this.addCategory=false;
- this. isQuestionSave=false;
-    
+    this.categoryId=event.id;
+    this.addCategory=false;
+    this. isQuestionSave=false;    
   }
+
   closeAddQuestionForm(){
     this.showAddQuestionForm = false;
   }
+
   closeAddQuestionFormAfterSave(event:any){
     this.showAddQuestionForm = false;
     // this.submitSuccess = event; 
     // this.showAddQuestionForm = !event;
-
   }
+
   setInputCategoryId(event:any){
     this.inputCategoryId = event;
     this.showAddCategoryForm =true;
   }
+  
   loadListAfterAddCategory(event:any){
     this.addCategory=event;
   }
+
   loadListAfterAddQuestion(){
     this.isQuestionSave=true;
   }
+
   closeAddCategoryForm(){
     this.showAddCategoryForm = false;
   }
+
   closeAddCategoryFormAfterSave(event:any){
     // this.submitSuccess = event; 
     // this.showAddCategoryForm = !event;
     this.showAddCategoryForm = false;
 
   }
-
 }
