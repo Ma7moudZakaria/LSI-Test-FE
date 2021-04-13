@@ -26,7 +26,7 @@ import { LoaderInterceptor } from './core/services/interceptors/loader-intercept
 import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 import { Ng2TelInputModule } from 'ng2-tel-input';
 import { AlertifyService } from './core/services/alertify-services/alertify.service';
-import { HasUnsavedDataGuard } from './core/guards/HasUnsavedDataGuard';
+import { CmsHasUnsavedDataGuard } from './core/guards/cms-has-unsaved-data-guard';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -64,7 +64,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     Ng2TelInputModule
   ],
   providers: [
-    HasUnsavedDataGuard,
+    CmsHasUnsavedDataGuard,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     LoaderService,

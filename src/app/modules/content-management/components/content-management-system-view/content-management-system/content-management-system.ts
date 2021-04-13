@@ -35,7 +35,7 @@ export class ContentManagementSystemComponent implements OnInit {
   contentmanagementsystemUpdate: IContentManagementUpdate = {};
   contentmanagementCreat: IContentManagementCreat = {};
   langEnum = LanguageEnum;
-  temp: IContentManagement = {};
+
   constructor(
     private route: ActivatedRoute, private fb: FormBuilder,
     private contentmanagementService: ContentManagementService,
@@ -80,16 +80,28 @@ export class ContentManagementSystemComponent implements OnInit {
   }
   @HostListener('window:beforeunload', ['$event'])
   public onPageUnload($event: BeforeUnloadEvent) {
-    if (this.temp.longDesAr != this.contentmanagementsystem.longDesAr
-      || this.temp.longDesEn != this.contentmanagementsystem.longDesEn
-      || this.temp.shortDesAr != this.contentmanagementsystem.shortDesAr
-      || this.temp.shortDesEn != this.contentmanagementsystem.shortDesEn) {
+    if (this.unsavedDataCheck()) {
       $event.returnValue = true;
+      // return "message";
     }
-    else
+    else{
       $event.returnValue = false;
-
+      // return '';
+    }
   }
+
+  @HostListener('window:popstate', ['$event'])
+  onPopState(event:any) {
+    this.contentmanagementService.setCanDeActivate(this.unsavedDataCheck());
+  }
+
+  unsavedDataCheck() : boolean{
+    return this.contentmanagementsystem.shortDesAr != this.f.shortDescriptionAr.value
+    || this.contentmanagementsystem.shortDesEn != this.f.shortDescriptionEn.value
+    || this.contentmanagementsystem.longDesAr != this.f.longDescriptionAr.value
+    || this.contentmanagementsystem.longDesEn != this.f.longDescriptionEn.value
+  }
+
   get f() {
     { return this.currentForm?.controls; }
   }
@@ -119,18 +131,17 @@ export class ContentManagementSystemComponent implements OnInit {
       this.cmsId = "";
       this.contentmanagementsystem = {};
       this.contentmanagementService.getContentManagementSystemByTypeCms(this.selectedcmsTypeId.id).subscribe(res => {
-        var response = <BaseResponseModel>res;
-        if (response.isSuccess) {
-          this.contentmanagementsystem = response.data;
-          if (response.data !== null) {
+        
+        if (res.isSuccess && res.data) {
+
+            this.contentmanagementsystem = res.data;
             this.cmsId = this.contentmanagementsystem.id;
+
             if (this.cmsId != '') { this.isAdd = false; } else { this.isAdd = true; }
             this.f.shortDescriptionAr.setValue(this.contentmanagementsystem.shortDesAr);
             this.f.shortDescriptionEn.setValue(this.contentmanagementsystem.shortDesEn);
             this.f.longDescriptionAr.setValue(this.contentmanagementsystem.longDesAr);
             this.f.longDescriptionEn.setValue(this.contentmanagementsystem.longDesEn);
-
-          }
 
           // this.f.typeId.setValue(this.contentmanagementsystem.typeId);
           this.disableSaveButtons = false;
@@ -140,7 +151,7 @@ export class ContentManagementSystemComponent implements OnInit {
           }
         }
         else {
-          this.errorMessage = response.message;
+          this.errorMessage = res.message;
         }
       }, error => {
         console.log(error);
@@ -167,6 +178,8 @@ export class ContentManagementSystemComponent implements OnInit {
             message: res.message || "",
             type: BaseConstantModel.SUCCESS_TYPE
           }
+
+          this.loadContentManagementSystemByType();
         }
         else {
           this.disableSaveButtons = false;
