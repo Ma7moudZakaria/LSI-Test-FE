@@ -13,7 +13,7 @@ export class ContentManagementSystemViewComponent implements OnInit {
 
   LangEnum = LanguageEnum ;
   selectedcmsTypeId={id:'',nameAr:'',nameEn:''};
-  constructor( private contentManagementService: ContentManagementService,
+  constructor( public contentManagementService: ContentManagementService,
     private languageService: LanguageService,
     public translate: TranslateService) { }
   ngOnInit(): void {

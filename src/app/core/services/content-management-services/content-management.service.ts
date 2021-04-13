@@ -19,7 +19,7 @@ export class ContentManagementService {
   deleteContentManagementSystemURL = environment.baseUrl + 'ContentManagementSystem/delete-content-management-system/';
   getAllContentManagementSystemTypesURL = environment.baseUrl + 'ContentManagementSystem/get-all-content-management-system-types';
   getContentManagementSystemByTypeCmsURL = environment.baseUrl + 'ContentManagementSystem/get-content-management-system-by-typeCmd/';
-  
+  canDecativate : boolean = false;
 
   constructor(private http: HttpClient) { }
 
@@ -59,5 +59,9 @@ export class ContentManagementService {
   getContentManagementSystemByTypeCms(cmsType?:string) 
   {
     return this.http.get<BaseResponseModel>(this.getContentManagementSystemByTypeCmsURL+cmsType )
+  }
+
+  setCanDeActivate(value:boolean){
+    this.canDecativate = value;
   }
 }

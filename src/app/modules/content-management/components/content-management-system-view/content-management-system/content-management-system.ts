@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -18,75 +18,98 @@ import { ContentManagementService } from 'src/app/core/services/content-manageme
 })
 
 export class ContentManagementSystemComponent implements OnInit {
-  contentmanagementsystem: IContentManagement={};
+  contentmanagementsystem: IContentManagement = {};
   createCMS = false;
   updateCMS = false;
-  errorMessage:any;
+  errorMessage: any;
   contentManagementId!: string;
   routeParams: any;
   isSubmit = false;
-  @Input() selectedcmsTypeId={id:'',nameAr:'',nameEn:''};
-  currentForm: FormGroup=new FormGroup({});
-  resultMessage:BaseMessageModel = {};
+  @Input() selectedcmsTypeId = { id: '', nameAr: '', nameEn: '' };
+  currentForm: FormGroup = new FormGroup({});
+  resultMessage: BaseMessageModel = {};
   disableSaveButtons = false;
-  cmsId?:string='';
-  isAdd:boolean=true;
-  typeId?:string='';
-  contentmanagementsystemUpdate: IContentManagementUpdate={};
-  contentmanagementCreat:IContentManagementCreat={};
+  cmsId?: string = '';
+  isAdd: boolean = true;
+  typeId?: string = '';
+  contentmanagementsystemUpdate: IContentManagementUpdate = {};
+  contentmanagementCreat: IContentManagementCreat = {};
   langEnum = LanguageEnum;
 
   constructor(
     private route: ActivatedRoute, private fb: FormBuilder,
-    private contentmanagementService:ContentManagementService,
+    private contentmanagementService: ContentManagementService,
     public translate: TranslateService) {
   }
 
-  ngOnInit(){    
+  ngOnInit() {
 
     this.currentForm.reset();
     this.disableSaveButtons = false;
     this.resultMessage = {
-      message:'',
+      message: '',
       type: ''
     }
-      if (this.selectedcmsTypeId.id!== undefined) {
-        this.isAdd=false;
-        this.loadContentManagementSystemByType()
-      }
-       else  {
-        this.isAdd=true;
-        this.currentForm.reset();
-      }
-      this.buildForm();
+    if (this.selectedcmsTypeId.id !== undefined) {
+      this.isAdd = false;
+      this.loadContentManagementSystemByType()
+    }
+    else {
+      this.isAdd = true;
+      this.currentForm.reset();
+    }
+    this.buildForm();
   }
 
   ngOnChanges(changes: any) {
     this.currentForm.reset();
     //this.cmsType.typeId=this.selectedcmsTypeId||"";
-    if (this.selectedcmsTypeId.id!== "") {
-      this.isAdd=false;
+    if (this.selectedcmsTypeId.id !== "") {
+      this.isAdd = false;
       this.loadContentManagementSystemByType()
     }
-     else  {
-      this.isAdd=true;
+    else {
+      this.isAdd = true;
       this.currentForm.reset();
     }
-   this.disableSaveButtons = false;
-   this.resultMessage = {
-     message:'',
-     type: ''
-   }
+    this.disableSaveButtons = false;
+    this.resultMessage = {
+      message: '',
+      type: ''
+    }
+  }
+  @HostListener('window:beforeunload', ['$event'])
+  public onPageUnload($event: BeforeUnloadEvent) {
+    if (this.unsavedDataCheck()) {
+      $event.returnValue = true;
+      // return "message";
+    }
+    else{
+      $event.returnValue = false;
+      // return '';
+    }
+  }
+
+  @HostListener('window:popstate', ['$event'])
+  onPopState(event:any) {
+    this.contentmanagementService.setCanDeActivate(this.unsavedDataCheck());
+  }
+
+  unsavedDataCheck() : boolean{
+    return this.contentmanagementsystem.shortDesAr != this.f.shortDescriptionAr.value
+    || this.contentmanagementsystem.shortDesEn != this.f.shortDescriptionEn.value
+    || this.contentmanagementsystem.longDesAr != this.f.longDescriptionAr.value
+    || this.contentmanagementsystem.longDesEn != this.f.longDescriptionEn.value
   }
 
   get f() {
-    return this.currentForm?.controls;
+    { return this.currentForm?.controls; }
   }
 
   buildForm() {
     // const arabicWordPattern = "^[\u0621-\u064A\u0660-\u0669 0-9]+$";
     // const englishWordPattern ="^[a-zA-Z0-9' '-'\s]{1,40}$";
-    
+
     // const ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI = "^[\u{1F600}\u{1F6FF}\u0621-\u064A\u0660-\u0669 0-9_@./#&+\\-~؛)(÷*/'/!/$]+$";
     // const ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI = "^[\u{1F600}\u{1F6FF}A-Za-z 0-9_@./#&+-~؛)(÷*/'/!/$]*$";
     // const ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITH_EMOJI = "^[\u0621-\u064A\u0660-\u0669 0-9_@./#&+-~؛)(÷*/'/!/$]+$";
@@ -94,68 +117,69 @@ export class ContentManagementSystemComponent implements OnInit {
 
     this.currentForm = this.fb.group(
       {
-        shortDescriptionAr: ['', [Validators.required,Validators.maxLength(200), Validators.pattern(BaseConstantModel.TEXT_AREA_ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
-        shortDescriptionEn:  ['', [Validators.required,Validators.maxLength(200), Validators.pattern(BaseConstantModel.TEXT_AREA_ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
-        longDescriptionAr: ['', [Validators.required,Validators.maxLength(1000), Validators.pattern(BaseConstantModel.TEXT_AREA_ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
-        longDescriptionEn:  ['', [Validators.required,Validators.maxLength(1000), Validators.pattern(BaseConstantModel.TEXT_AREA_ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
+        shortDescriptionAr: ['', [Validators.required, Validators.maxLength(200), Validators.pattern(BaseConstantModel.TEXT_AREA_ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
+        shortDescriptionEn: ['', [Validators.required, Validators.maxLength(200), Validators.pattern(BaseConstantModel.TEXT_AREA_ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
+        longDescriptionAr: ['', [Validators.required, Validators.maxLength(1000), Validators.pattern(BaseConstantModel.TEXT_AREA_ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
+        longDescriptionEn: ['', [Validators.required, Validators.maxLength(1000), Validators.pattern(BaseConstantModel.TEXT_AREA_ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
         //typeId: ['', Validators.required]
       }
     )
   }
-  
+
   loadContentManagementSystemByType() {
-    if(this.selectedcmsTypeId.id!==undefined && this.selectedcmsTypeId.id!==""){
-      this.cmsId="";
-      this.contentmanagementsystem={};
+    if (this.selectedcmsTypeId.id !== undefined && this.selectedcmsTypeId.id !== "") {
+      this.cmsId = "";
+      this.contentmanagementsystem = {};
       this.contentmanagementService.getContentManagementSystemByTypeCms(this.selectedcmsTypeId.id).subscribe(res => {
-        var response =<BaseResponseModel>res;
-        if (response.isSuccess) {
-          this.contentmanagementsystem  = response.data;
-          if(response.data!==null){
-            this.cmsId=this.contentmanagementsystem.id;
-            if(this.cmsId!=''){this.isAdd=false;}else{this.isAdd=true;}
+        
+        if (res.isSuccess && res.data) {
+
+            this.contentmanagementsystem = res.data;
+            this.cmsId = this.contentmanagementsystem.id;
+
+            if (this.cmsId != '') { this.isAdd = false; } else { this.isAdd = true; }
             this.f.shortDescriptionAr.setValue(this.contentmanagementsystem.shortDesAr);
             this.f.shortDescriptionEn.setValue(this.contentmanagementsystem.shortDesEn);
             this.f.longDescriptionAr.setValue(this.contentmanagementsystem.longDesAr);
             this.f.longDescriptionEn.setValue(this.contentmanagementsystem.longDesEn);
 
-          }
-         
-         // this.f.typeId.setValue(this.contentmanagementsystem.typeId);
+          // this.f.typeId.setValue(this.contentmanagementsystem.typeId);
           this.disableSaveButtons = false;
           this.resultMessage = {
-            message:'',
+            message: '',
             type: ''
           }
         }
         else {
-          this.errorMessage = response.message;
+          this.errorMessage = res.message;
         }
       }, error => {
         console.log(error);
       })
     }
-   
+
   }
   Submit() {
     this.isSubmit = true;
     this.resultMessage = {
-      message:'',
+      message: '',
     }
     if (this.currentForm.valid) {
-      this.contentmanagementCreat.shortDesAr=this.f.shortDescriptionAr.value;
-      this.contentmanagementCreat.shortDesEn=this.f.shortDescriptionEn.value; 
-      this.contentmanagementCreat.longDesAr=this.f.longDescriptionAr.value;
-      this.contentmanagementCreat.longDesEn=this.f.longDescriptionEn.value;
-      this.contentmanagementCreat.cmsType=this.selectedcmsTypeId.id;
+      this.contentmanagementCreat.shortDesAr = this.f.shortDescriptionAr.value;
+      this.contentmanagementCreat.shortDesEn = this.f.shortDescriptionEn.value;
+      this.contentmanagementCreat.longDesAr = this.f.longDescriptionAr.value;
+      this.contentmanagementCreat.longDesEn = this.f.longDescriptionEn.value;
+      this.contentmanagementCreat.cmsType = this.selectedcmsTypeId.id;
       this.contentmanagementService.createContentManagementSystem(this.contentmanagementCreat).subscribe(res => {
         this.isSubmit = false;
         if (res.isSuccess) {
           this.disableSaveButtons = true;
           this.resultMessage = {
-            message:res.message||"",
+            message: res.message || "",
             type: BaseConstantModel.SUCCESS_TYPE
           }
+
+          this.loadContentManagementSystemByType();
         }
         else {
           this.disableSaveButtons = false;
@@ -164,7 +188,7 @@ export class ContentManagementSystemComponent implements OnInit {
             type: BaseConstantModel.DANGER_TYPE
           }
         }
-        
+
       },
         error => {
           this.resultMessage = {
@@ -172,10 +196,10 @@ export class ContentManagementSystemComponent implements OnInit {
             type: BaseConstantModel.DANGER_TYPE
           }
         })
-      }
+    }
 
-    }
-    reset(){
-      this.currentForm.reset();
-    }
+  }
+  reset() {
+    this.currentForm.reset();
+  }
 }
