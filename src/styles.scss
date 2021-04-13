@@ -132,22 +132,22 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   }
 }
 
-.input-group>.custom-select:not(:first-child), .input-group>.form-control:not(:first-child):lang(ar) {
+.UserLogin .input-group>.custom-select:not(:first-child), .input-group>.form-control:not(:first-child):lang(ar) {
   border-top-left-radius: 0.65rem;
   border-bottom-left-radius: 0.65rem;
 }
 
-.input-group>.custom-select:not(:first-child), .input-group>.form-control:not(:first-child):lang(ar) {
+.UserLogin .input-group>.custom-select:not(:first-child), .input-group>.form-control:not(:first-child):lang(ar) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.input-group.has-validation>.input-group-append:nth-last-child(n+3)>.btn, .input-group.has-validation>.input-group-append:nth-last-child(n+3)>.input-group-text, .input-group:not(.has-validation)>.input-group-append:not(:last-child)>.btn, .input-group:not(.has-validation)>.input-group-append:not(:last-child)>.input-group-text, .input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle), .input-group>.input-group-append:last-child>.input-group-text:not(:last-child), .input-group>.input-group-prepend>.btn, .input-group>.input-group-prepend>.input-group-text:lang(ar) {
+.UserLogin .input-group.has-validation>.input-group-append:nth-last-child(n+3)>.btn, .input-group.has-validation>.input-group-append:nth-last-child(n+3)>.input-group-text, .input-group:not(.has-validation)>.input-group-append:not(:last-child)>.btn, .input-group:not(.has-validation)>.input-group-append:not(:last-child)>.input-group-text, .input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle), .input-group>.input-group-append:last-child>.input-group-text:not(:last-child), .input-group>.input-group-prepend>.btn, .input-group>.input-group-prepend>.input-group-text:lang(ar) {
   border-top-right-radius: 0.65rem;
   border-bottom-right-radius: 0.65rem;
 }
 
-.input-group:not(.has-validation)>.input-group-append:not(:last-child)>.input-group-text, .input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle), .input-group>.input-group-append:last-child>.input-group-text:not(:last-child), .input-group>.input-group-prepend>.btn, .input-group>.input-group-prepend>.input-group-text:lang(ar) {
+.UserLogin .input-group:not(.has-validation)>.input-group-append:not(:last-child)>.input-group-text, .input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle), .input-group>.input-group-append:last-child>.input-group-text:not(:last-child), .input-group>.input-group-prepend>.btn, .input-group>.input-group-prepend>.input-group-text:lang(ar) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -556,4 +556,22 @@ app-tel-input >
 .alertify-notifier.ajs-left .ajs-message.ajs-visible {
   left:65px;
   text-align: right;
+}
+
+.mat-dialog-container {
+  direction: initial;
+  min-width: 30rem;
+}
+
+.mat-dialog-title, .mat-dialog-content {
+  text-align: center;
+}
+
+.mat-dialog-actions:lang(en) {
+  float: right;
+}
+
+.mat-dialog-actions .mat-button-base+.mat-button-base, .mat-dialog-actions .mat-mdc-button-base+.mat-mdc-button-base {
+  margin-left: 8px !important;
+  margin-right: 8px !important;
 }
