@@ -94,10 +94,11 @@
                                                 <span class="input-group-text bg-white pl-2 pr-2  border-md "
                                                 [ngClass]="{'error_input': f.password.errors && (f.password.touched || isSubmit)}">
                                                     <!-- <i class="fa fa-lock text-muted"></i> -->
-                                                    <mat-icon   (click)="togglePassword()">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                            
                                                     <img   class="UserLogin_icon_input" src="../../../../../assets/images/password.svg">
         
                                                 </span>
+                                                <mat-icon   class="toggle-password" (click)="togglePassword()">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
                                             </div>
                                             <input id="password" pPassword type="password" 
                                             [type]="hidePassword ? 'password' : 'text'" formControlName="password" name="password"
@@ -132,10 +133,11 @@
                                                 [ngClass]="{'error_input': f.confirmPassword.errors && (f.confirmPassword.touched || isSubmit)}"
                                                 >
                                                     <!-- <i class="fa fa-lock text-muted"></i> -->
-                                                    <mat-icon   (click)="togglePasswordConfirm()">{{hidePasswordConfirm ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                                   
                                                     <img   class="UserLogin_icon_input" src="../../../../../assets/images/password.svg">
         
                                                 </span>
+                                                <mat-icon   class="toggle-password" (click)="togglePasswordConfirm()">{{hidePasswordConfirm ? 'visibility_off' : 'visibility'}}</mat-icon>
                                             </div>
                                             <input id="confirmPassword" pPassword type="password" 
                                             [ngClass]="{'error_input': f.confirmPassword.errors && (f.confirmPassword.touched || isSubmit)}"
