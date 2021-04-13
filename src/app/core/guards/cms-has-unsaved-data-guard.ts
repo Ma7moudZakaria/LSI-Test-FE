@@ -5,11 +5,9 @@ import { ContentManagementSystemViewComponent } from 'src/app/modules/content-ma
 import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
-export class CmsHasUnsavedDataGuard implements CanActivateChild, CanDeactivate<any>{
+export class CmsHasUnsavedDataGuard implements CanDeactivate<any>{
     constructor(private router: Router, public translate : TranslateService) { }
-    canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-        return true;
-    }
+    
     canDeactivate(component: ContentManagementSystemViewComponent): boolean {
         if (component.contentManagementService.canDecativate) {
             return confirm(this.translate.instant('GENERAL.UNSAVED_CHANGES'))

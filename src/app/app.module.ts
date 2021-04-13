@@ -27,6 +27,7 @@ import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, So
 import { Ng2TelInputModule } from 'ng2-tel-input';
 import { AlertifyService } from './core/services/alertify-services/alertify.service';
 import { CmsHasUnsavedDataGuard } from './core/guards/cms-has-unsaved-data-guard';
+import { WalkthroughHasUnsavedDataGuard } from './core/guards/walkthrough-has-unsaved-data-guard';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -65,6 +66,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     CmsHasUnsavedDataGuard,
+    WalkthroughHasUnsavedDataGuard,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     LoaderService,
