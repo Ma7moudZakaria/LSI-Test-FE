@@ -21,9 +21,9 @@ export class AlertifyService {
 
   success(message: string) {
   if (this.translate.currentLang ==='ar-SA')
-   { alertify.set('notifier', 'position', 'top-left');}
+   { alertify.set('notifier', 'position', 'bottom-left');}
    else{
-     alertify.set('notifier', 'position', 'top-right');
+     alertify.set('notifier', 'position', 'bottom-right');
     }
   
     alertify.success(message);
