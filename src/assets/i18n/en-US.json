@@ -39,8 +39,7 @@
     "ARABIC_DISPALY_SWITCH":"Arabic",
     "INVALID_PHONE_NUMBER":"Invalid phone number",
     "CONFIRM_PASSWORD_TO_CONTAINER": "Please enter a confirm password including at least one number and includes both lower and uppercase letters and special characters",
-    "PASSWORD_TO_CONTAINER": "Please enter a password including at least one number and includes both lower and uppercase letters and special characters",
-    "UNSAVED_CHANGES":"Are you sure you want to leave page without save changes"
+    "PASSWORD_TO_CONTAINER": "Please enter a password including at least one number and includes both lower and uppercase letters and special characters"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
@@ -246,7 +245,9 @@
     "EN_MAX_LENGTH":"English text should less than or equal 1000 characters"
   },
   "DASHBOARD": {
-    "TITLE": "Dashboard"
+    "TITLE": "Dashboard",
+    "STUDENTS" :"students",
+    "REGISTERED" :" Registered "
   },
   "SETTING_PG": {
     "TITLE":"Settings",
