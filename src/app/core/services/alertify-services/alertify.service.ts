@@ -20,7 +20,7 @@ export class AlertifyService {
   }
 
   success(message: string) {
-  if (this.translate.currentLang ==='ar-SA')
+  if (this.translate.currentLang === LanguageEnum.ar)
    { alertify.set('notifier', 'position', 'bottom-left');}
    else{
      alertify.set('notifier', 'position', 'bottom-right');
