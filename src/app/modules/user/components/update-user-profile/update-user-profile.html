@@ -406,8 +406,8 @@
 
                                 <div class="input-group">
                                     <!-- <input class="form-control" type="text" /> -->
-                                    <div class="input-group">
-                                        <select class="form-control" id="shiekhs" formControlName="userSheikhs">
+                                    <div class="input-group pr-2rem">
+                                        <select class="form-control " id="shiekhs" formControlName="userSheikhs">
                                             <option *ngFor="let sheikh of collectionOfLookup.SYSTEM_SHEIKHS"
                                                 value="{{sheikh.id}}">
                                                 {{translate.currentLang == langEnum.en ? sheikh.nameEn : sheikh.nameAr}}</option>
@@ -466,7 +466,7 @@
 
                                 <div class="input-group">
                                     <!-- <input class="form-control" type="text" /> -->
-                                    <div class="input-group">
+                                    <div class="input-group pr-2rem">
                                         <select class="form-control" id="archives" formControlName="userArchives">
                                             <option *ngFor="let archive of collectionOfLookup.SCIENTIFIC_ARCHIVES"
                                                 value="{{archive.id}}">
@@ -512,8 +512,8 @@
 
                                 <div class="input-group">
                                     <!-- <input class="form-control" type="text" /> -->
-                                    <div class="input-group">
-                                        <select class="form-control" id="course" formControlName="userCourses">
+                                    <div class="input-group pr-2rem">
+                                        <select class="form-control pr-2rem" id="course" formControlName="userCourses">
                                             <option *ngFor="let course of collectionOfLookup.TRAINING_COURSES"
                                                 value="{{course.id}}">
                                                 {{translate.currentLang == langEnum.en ? course.nameEn : course.nameAr}}</option>
