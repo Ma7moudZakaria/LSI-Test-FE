@@ -37,7 +37,7 @@
         </div>
       <div class="form-group">
           <label for="exampleFormControlTextarea1">{{ 'CONTENT_MANEGMENT_SYSTEM.LONGDESCRIPTIONAR' | translate }}</label>
-          <textarea class="form-control rounded-0  text-arabic"  cols="2"  rows="10"  id="InputLongDescriptionAr" formControlName="longDescriptionAr"
+          <textarea class="form-control  text-arabic"  cols="2"  rows="10"  id="InputLongDescriptionAr" formControlName="longDescriptionAr"
           [ngClass]="{'red-border-class': f.longDescriptionAr.errors && ( f.longDescriptionAr.touched || isSubmit)}"></textarea>
           <div *ngIf="f.longDescriptionAr.errors && (f.longDescriptionAr.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
             <div *ngIf="f.longDescriptionAr.errors.required">
@@ -53,7 +53,7 @@
         </div>
         <div class="form-group">
           <label for="exampleFormControlTextarea1">{{ 'CONTENT_MANEGMENT_SYSTEM.LONGDESCRIPTIONEN' | translate }}</label>
-          <textarea class="form-control rounded-0 text-english"  cols="2"  rows="10"  id="InputlongDescriptionEn" formControlName="longDescriptionEn"  
+          <textarea class="form-control text-english"  cols="2"  rows="10"  id="InputlongDescriptionEn" formControlName="longDescriptionEn"  
           [ngClass]="{'red-border-class': f.longDescriptionEn.errors && ( f.longDescriptionEn.touched || isSubmit)}"></textarea>
           <div *ngIf="f.longDescriptionEn.errors && (f.longDescriptionEn.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
             <div *ngIf="f.longDescriptionEn.errors.required">

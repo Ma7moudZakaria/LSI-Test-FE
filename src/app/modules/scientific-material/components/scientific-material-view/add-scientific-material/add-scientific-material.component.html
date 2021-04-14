@@ -3,7 +3,7 @@
         <label for="programs"> {{'SCIENTIFIC_MATERIAL.PROGRAMS' | translate}}</label>
         <div class="input-group">
             <!-- <input class="form-control" type="text" /> -->
-            <div class="input-group">
+            <div class="input-group pr-2rem">
                 <select class="form-control" id="programs" formControlName="programMatrial">
                     <option *ngFor="let item of programs"
                         value="{{item.id}}">
@@ -26,13 +26,22 @@
                 </div>
         </div>
 
-        <div class="badges mt-3">
+        <!-- <div class="badges mt-3">
             <span *ngFor="let p of selectedProgramsList"
                 class="badge badge-info">{{translate.currentLang === langEnum.en ? p.engName :p.arabName}}
                 <a (click)="removeItemFromSelectedPrograms(p)"><i class="fas fa-times-circle"></i></a>
             </span>
-        </div>
+        </div> -->
 
+        <div class="badges mt-3 ">
+            <div *ngFor="let p of selectedProgramsList;let i=index" 
+                class="badge badge-info p-2 " >
+            <div class="d-flex justify-content-between badge badge-info ">
+                <p class="mb-0 ml-2 mr-2"> {{translate.currentLang === langEnum.en ? p.engName :p.arabName}}</p>
+                <a (click)="removeItemFromSelectedPrograms(p)"><i class="fas fa-times-circle"></i></a>
+            </div>
+            </div>
+        </div>
         
         <div *ngIf="selectedProgramsList?.length == 0 && (f.programMatrial.touched || isSubmit)"
             class="alert alert-danger mt-2 mb-2">
