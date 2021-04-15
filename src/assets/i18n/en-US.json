@@ -246,7 +246,11 @@
     "EN_MAX_LENGTH":"English text should less than or equal 1000 characters"
   },
   "DASHBOARD": {
-    "TITLE": "Dashboard"
+    "TITLE": "Dashboard",
+    "STUDENTS-COUNTER":" Students Numbers",
+    "TEACHERS-COUNTER":" Teachers Numbers",
+    "MALES":"Males",
+    "FEMALES":"Females"
   },
   "SETTING_PG": {
     "TITLE":"Settings",

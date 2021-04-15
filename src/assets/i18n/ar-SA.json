@@ -246,7 +246,11 @@
     "EN_MAX_LENGTH":"النص الإنجليزى يجب أن يكون اقل من او يساوى 1000 حرف"
   },
   "DASHBOARD": {
-    "TITLE": "لوحة التحكم"
+    "TITLE": "لوحة التحكم",
+    "STUDENTS-COUNTER":"عدد الطلاب",
+    "TEACHERS-COUNTER":"عدد المعلمين",
+    "MALES":"ذكور",
+    "FEMALES":"إناث"
   },
   "SETTING_PG": {
     "TITLE":"الإعدادت",
