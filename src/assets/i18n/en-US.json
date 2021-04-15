@@ -38,8 +38,8 @@
     "LOGOUT_MESSAGE" : "Are you sure you want to logout ?",
     "ARABIC_DISPALY_SWITCH":"Arabic",
     "INVALID_PHONE_NUMBER":"Invalid phone number",
-    "CONFIRM_PASSWORD_TO_CONTAINER": "Please enter a confirm password including at least one number and includes both lower and uppercase letters and special characters",
-    "PASSWORD_TO_CONTAINER": "Please enter a password including at least one number and includes both lower and uppercase letters and special characters",
+    "CONFIRM_PASSWORD_TO_CONTAINER": "The password should including at least one number and includes both lower and uppercase letters and special characters",
+    "PASSWORD_TO_CONTAINER": "The password should including at least one number and includes both lower and uppercase letters and special characters",
     "UNSAVED_CHANGES":"Are you sure you want to leave page without save changes"
   },
   "ACTIVATION_USER_PG": {
