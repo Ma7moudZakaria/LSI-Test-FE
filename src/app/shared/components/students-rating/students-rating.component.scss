@@ -1,0 +1,43 @@
+@import 'src/assets/scss/_variables.scss';
+@import 'src/assets/scss/_typography.scss';
+
+
+.rating-box {
+
+    .img-container {
+        width: 46px;
+        height: 46px;
+        border-radius: 12px;
+        overflow: hidden;
+        
+    }
+
+    .arrow {
+        margin: auto;
+    }
+    
+}
+
+.rating-details:lang(en) { 
+    text-align: left;
+    margin: 0 1rem;
+}
+
+.rating-details:lang(ar) { 
+    text-align: right;
+    margin: 0 1rem;
+}
+.pacman {
+    width: 0px;
+    height: 0px;
+    border-right: 20px solid transparent;
+    border-top: 20px solid $user-color;
+    border-left: 20px solid $user-color;
+    border-bottom: 20px solid $user-color;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius:0px;
+    border-bottom-right-radius: 0px;
+    margin: auto 0;
+  }
+   
