@@ -228,8 +228,11 @@
     "ENGLISH_FIELD": "This field must be in English",
     "SAVE": "Save",
     "ADD": "Add",
-    "CANCEL": "Cancel"
-
+    "CANCEL": "Cancel",
+    "SHORT_DESCRIPTION_AR_MAX_LENGHT":"Arabic short description must be less than or equal 200 character",
+    "SHORT_DESCRIPTION_EN_MAX_LENGHT":"English short description must be less than or equal 200 character",
+    "LONG_DESCRIPTION_AR_MAX_LENGHT":"Arabic long description must be less than or equal 1000 character",
+    "LONG_DESCRIPTION_EN_MAX_LENGHT":"English long description must be less than or equal 1000 character"
   },
   "WALKTHROUGH": {
     "TITLE":"WalkThrough",
@@ -243,7 +246,8 @@
     "TITLEAR_PATTERN": "Please insert arabict text only.",
     "TITLEEN_PATTERN": "Please insert english text only.",
     "AR_MAX_LENGTH":"Arabic text should less than or equal 1000 characters",
-    "EN_MAX_LENGTH":"English text should less than or equal 1000 characters"
+    "EN_MAX_LENGTH":"English text should less than or equal 1000 characters",
+    "COMPLETE_FIELDS_ADD_ATTACHMENT":"Please complete all fields with adding attachment"
   },
   "DASHBOARD": {
     "TITLE": "Dashboard"

@@ -179,7 +179,9 @@ export class ContentManagementSystemComponent implements OnInit {
             type: BaseConstantModel.SUCCESS_TYPE
           }
 
-          this.loadContentManagementSystemByType();
+          setTimeout(() => {
+            this.loadContentManagementSystemByType();
+          }, 2000);
         }
         else {
           this.disableSaveButtons = false;
@@ -192,7 +194,7 @@ export class ContentManagementSystemComponent implements OnInit {
       },
         error => {
           this.resultMessage = {
-            message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+            message: error,
             type: BaseConstantModel.DANGER_TYPE
           }
         })
