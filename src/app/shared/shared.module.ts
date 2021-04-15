@@ -20,10 +20,11 @@ import {MatIconModule} from '@angular/material/icon';
 import {Ng2TelInputModule} from 'ng2-tel-input';
 import { TelInputComponent } from './components/tel-input/tel-input.component';
 import { UsersCounterComponent } from './components/users-counter/users-counter.component';
+import { KhatmeenStudentsComponent } from './components/khatmeen-students/khatmeen-students.component';
 
 
 @NgModule({
-  declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent, UsersCounterComponent],
+  declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent, UsersCounterComponent, KhatmeenStudentsComponent],
   imports: [
     CommonModule, RouterModule,TranslateModule,Ng2TelInputModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,MatIconModule,
@@ -31,7 +32,7 @@ import { UsersCounterComponent } from './components/users-counter/users-counter.
   exports: [
     MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule,Ng2TelInputModule,
     MatExpansionModule, MatSelectModule, DragDropModule, CustomeCardComponent, CustomAccordionComponent,
-    ViewUserProfileCustomComponent,SearchInputComponent,TelInputComponent,  UsersCounterComponent
+    ViewUserProfileCustomComponent,SearchInputComponent,TelInputComponent,  UsersCounterComponent,KhatmeenStudentsComponent
   ]
 })
 export class SharedModule { }

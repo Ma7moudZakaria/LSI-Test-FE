@@ -250,7 +250,8 @@
     "STUDENTS-COUNTER":" Students Numbers",
     "TEACHERS-COUNTER":" Teachers Numbers",
     "MALES":"Males",
-    "FEMALES":"Females"
+    "FEMALES":"Females",
+    "KHATMEEN":"Khatmeen"
   },
   "SETTING_PG": {
     "TITLE":"Settings",
