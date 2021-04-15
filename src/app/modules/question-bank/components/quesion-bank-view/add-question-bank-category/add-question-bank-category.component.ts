@@ -88,8 +88,8 @@ export class AddQuestionBankCategoryComponent implements OnInit {
     this.currentForm = this.fb.group(
       {
        
-        nameAr:['', [Validators.required,Validators.maxLength(500), Validators.pattern(BaseConstantModel.ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
-        nameEn: ['', [Validators.required,Validators.maxLength(500),  Validators.pattern(BaseConstantModel.ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
+        nameAr:['', [Validators.required,Validators.maxLength(100), Validators.pattern(BaseConstantModel.ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
+        nameEn: ['', [Validators.required,Validators.maxLength(100),  Validators.pattern(BaseConstantModel.ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
 
       })
   }
@@ -173,7 +173,7 @@ export class AddQuestionBankCategoryComponent implements OnInit {
         },
           error => {
             this.resultMessage = {
-              message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+              message: error,
               type: BaseConstantModel.DANGER_TYPE
             }
           })
