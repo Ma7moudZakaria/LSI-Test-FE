@@ -15,6 +15,24 @@
     .arrow {
         margin: auto;
     }
+
+    .student-name {
+        color: $user-color;
+        font: normal normal bold 15px/18px Almarai-Bold;
+    }
+    
+    .ratig {
+        color: $icon_input;
+        font: normal normal bold 24px/16px Almarai-Bold;
+        margin: 2px 0;
+    }
+
+    .rting-text {
+        font: normal normal normal 10px/16px Almarai-Regular;
+        letter-spacing: 0px;
+        color: $box-color2;
+        margin: 2px 0;
+    }
     
 }
 
@@ -30,6 +48,20 @@
 .pacman {
     width: 0px;
     height: 0px;
+    margin: auto 0;
+    padding: 0 .8rem;
+    color: $white;
+    position: relative;
+
+    div {
+        position: absolute;
+        margin: auto;
+        top: -10px;
+        font-weight: bolder;
+    }
+  }
+
+  .pacman:lang(ar){
     border-right: 20px solid transparent;
     border-top: 20px solid $user-color;
     border-left: 20px solid $user-color;
@@ -38,6 +70,16 @@
     border-top-right-radius: 0px;
     border-bottom-left-radius:0px;
     border-bottom-right-radius: 0px;
-    margin: auto 0;
+  }
+
+  .pacman:lang(en){
+    border-left: 20px solid transparent;
+    border-top: 20px solid $user-color;
+    border-right: 20px solid $user-color;
+    border-bottom: 20px solid $user-color;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-right-radius:0px;
+    border-bottom-left-radius: 0px;
   }
    

@@ -23,13 +23,14 @@ import { UsersCounterComponent } from './components/users-counter/users-counter.
 import { KhatmeenStudentsComponent } from './components/khatmeen-students/khatmeen-students.component';
 import { StudentNumbersComponent } from './components/student-numbers/student-numbers.component';
 import { StudentsRatingComponent } from './components/students-rating/students-rating.component';
+import { RatingModule } from 'ng-starrating';
 
 
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent, UsersCounterComponent, KhatmeenStudentsComponent, StudentNumbersComponent, StudentsRatingComponent],
   imports: [
     CommonModule, RouterModule,TranslateModule,Ng2TelInputModule,
-    MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,MatIconModule,
+    MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,MatIconModule,RatingModule
   ],
   exports: [
     MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule,Ng2TelInputModule,

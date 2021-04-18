@@ -27,6 +27,7 @@
     "angularx-social-login": "^3.5.4",
     "bootstrap": "^4.6.0",
     "intl-tel-input": "^17.0.12",
+    "ng-starrating": "^1.0.20",
     "ng2-tel-input": "^2.3.0",
     "ngx-bootstrap": "^6.2.0",
     "rxjs": "~6.6.0",
