@@ -109,8 +109,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .content_form
 {
   min-height: 23.5rem;
-   padding-left: 3.5rem;
-  padding-right: 3.5rem;
+   padding-left: 0.5rem;
+  padding-right: 0.5rem;
   // min-height: 50vh;
 }
 .content_form:lang(ar){
@@ -118,17 +118,54 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 //for input in ar 
 .input-group:lang(ar){
-  flex-direction: row-reverse;
+  // flex-direction: row-reverse;
   .UserLogin__FormControl:lang(ar)
   {
-    border-left-color: transparent;
+    border-right-color: transparent;
     
   }
   .input-group-text:lang(ar)
   {
-    border-right-color: transparent;
+    border-left-color: transparent;
+    position: relative;
+    left: -2px;
   }
 }
+
+.UserLogin .input-group>.custom-select:not(:first-child), .input-group>.form-control:not(:first-child):lang(ar) {
+  border-top-left-radius: 0.65rem;
+  border-bottom-left-radius: 0.65rem;
+}
+
+.UserLogin .input-group>.custom-select:not(:first-child), .input-group>.form-control:not(:first-child):lang(ar) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+// .UserLogin .input-group.has-validation>.input-group-append:nth-last-child(n+3)>.btn, 
+// .input-group.has-validation>.input-group-append:nth-last-child(n+3)>.input-group-text, 
+// .input-group:not(.has-validation)>.input-group-append:not(:last-child)>.btn, 
+// .input-group:not(.has-validation)>.input-group-append:not(:last-child)>.input-group-text, 
+// .input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle),
+//  .input-group>.input-group-append:last-child>.input-group-text:not(:last-child),
+//   .input-group>.input-group-prepend>.btn,
+   .input-group>.input-group-prepend>.input-group-text:lang(ar) {
+  border-top-right-radius: 0.65rem;
+  border-bottom-right-radius: 0.65rem;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+// .UserLogin .input-group:not(.has-validation)>.input-group-append:not(:last-child)>.input-group-text,
+//  .input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle), 
+//  .input-group>.input-group-append:last-child>.input-group-text:not(:last-child),
+//   .input-group>.input-group-prepend>.btn,
+//    .input-group>.input-group-prepend>.input-group-text:lang(ar) {
+//   border-top-left-radius: 0;
+//   border-bottom-left-radius: 0;
+// }
+
+
 .mat-icon{
   opacity: 0.2;
 }
@@ -140,26 +177,30 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .form-control:focus,.input-group-text:focus{
   border-color:$border-input
 }
-
+// for textarea in foucs
+textarea.form-control:focus{
+  box-shadow: none;
+  border: 3px solid #80bdff;
+}
+.pr-2rem{
+  padding-right: 2rem;
+}
   // for input in en 
 
   .input-group:lang(en){
-    flex-direction: row-reverse;
-    .UserLogin__FormControl{
-        border-right: 0 ;
-        border-top-right-radius: 0px;
-        border-bottom-right-radius: 0;
-        border-top-left-radius: 0.56rem;
-        border-bottom-left-radius: 0.56rem;
-    }
+   
     .input-group-text
     {
-        border-left: 1px solid transparent;
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-        border-top-right-radius: 0.56rem;
-        border-bottom-right-radius: 0.56rem;
+        border-right: 1px solid transparent;
+        position: relative;
+        left: 1px;
+     
     }
+    .UserLogin__FormControl:lang(en)
+  {
+    border-left-color: transparent;
+    
+  }
 }
 
 
@@ -173,6 +214,26 @@ background-color: $error-message-bg !important;
 border-color:  $error-message-color;
 
 }
+
+
+.toggle-password:lang(ar) {
+  position: absolute;
+  left: 10px;
+  z-index: 1000;
+  top: 7px;
+  cursor: pointer;
+}
+.toggle-password:lang(en) {
+  position: absolute;
+  left: unset;
+  right: 10px;
+  z-index: 1000;
+  top: 7px;
+  cursor: pointer;
+}
+
+
+
 
 .error_message
 {
@@ -539,3 +600,21 @@ display: none;
     background-color: #117a8b;
     border-color: #10707f;
   }
+  // mat-dialog-container 
+.mat-dialog-container {
+  direction: initial;
+  min-width: 30rem;
+}
+
+.mat-dialog-title, .mat-dialog-content {
+  text-align: center;
+}
+.mat-dialog-actions:lang(en) {
+  float: right;
+}
+.mat-dialog-actions .mat-button-base+.mat-button-base,
+ .mat-dialog-actions .mat-mdc-button-base+.mat-mdc-button-base {
+  margin-left: 8px !important;
+  margin-right: 8px !important;
+}
+// end mat-dialog-container 

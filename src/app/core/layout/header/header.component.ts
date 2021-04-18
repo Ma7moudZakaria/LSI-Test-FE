@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
   closeProfile(event: boolean) {
     this.submitClose = event;
     this.showPro = true;
-
+    this.showoverlay_withoverlay();
   }
 
   titleSubscription() {

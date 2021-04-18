@@ -81,6 +81,7 @@
     top: 20%;
     width: 178px;
     height: 178px;
+    border-radius: 1rem;
 }
 .mb-50{
     margin-bottom: 50px;
@@ -95,11 +96,12 @@
   color: #828282;
     font-size: 0.9rem;
     font-family: Almarai-Bold;
-    padding: 1rem 0.5rem 
+    padding: 1rem 0.5rem ;cursor: pointer;
 }
 .logout_img{
   width: 1.3rem;
     height: 1.53rem;
+    cursor: pointer;
 }
 .edit_profile:lang(en) ,.footer_logout:lang(en){
   text-align: right;

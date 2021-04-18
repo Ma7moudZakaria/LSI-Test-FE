@@ -15,7 +15,7 @@ export class WalkThroughService {
   getWalkThroughByIdURL = environment.baseUrl + 'WalkThrough/get-walk-through-by-id/';
   getWalkThroughByPageIdURL = environment.baseUrl + 'WalkThrough/get-walk-through-by-page-id/';
   deleteWalkThroughURL = environment.baseUrl + 'WalkThrough/delete-walk-through/';
-  
+  canDecativate : boolean = false;
 
   constructor(private http: HttpClient) { }
 
@@ -45,5 +45,9 @@ export class WalkThroughService {
   deleteWalkThrough(id : string) 
   {
     return this.http.delete<BaseResponseModel>(this.deleteWalkThroughURL + id)
+  }
+
+  setCanDeActivate(value:boolean){
+    this.canDecativate = value;
   }
 }

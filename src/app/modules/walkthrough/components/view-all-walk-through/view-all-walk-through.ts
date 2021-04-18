@@ -23,7 +23,7 @@ export class ViewAllWalkThroughComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private walkThroughService:WalkThroughService,
+    public walkThroughService:WalkThroughService,
     private languageService: LanguageService,
     public translate: TranslateService) { 
   }

@@ -38,8 +38,9 @@
     "LOGOUT_MESSAGE" : "Are you sure you want to logout ?",
     "ARABIC_DISPALY_SWITCH":"Arabic",
     "INVALID_PHONE_NUMBER":"Invalid phone number",
-    "CONFIRM_PASSWORD_TO_CONTAINER": "Please enter a confirm password including at least one number and includes both lower and uppercase letters and special characters",
-    "PASSWORD_TO_CONTAINER": "Please enter a password including at least one number and includes both lower and uppercase letters and special characters"
+    "CONFIRM_PASSWORD_TO_CONTAINER": "The password should including at least one number and includes both lower and uppercase letters and special characters",
+    "PASSWORD_TO_CONTAINER": "The password should including at least one number and includes both lower and uppercase letters and special characters",
+    "UNSAVED_CHANGES":"Are you sure you want to leave page without save changes"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
@@ -149,7 +150,7 @@
     "OCCUPATION_REQUIRED": "Occupation  is Required",
     "CONTACT_INFO": "Contact info",
     "CHANGE_PIC": "Change pic",
-    "AMOUNT_QURAN": "The amount of memorization from the Qur'an",
+    "AMOUNT_QURAN": "The memorization amount from Qur'an",
     "MEMORIES_QURAN": "A permission to save the Quran file",
     "DELETE": "Delete",
     "SHEIKHS_STUDIED": "Sheikhs I studied on",
@@ -183,8 +184,8 @@
     "ADD": "Add",
     "CANCEL": "Cancel",
     "NO_DATA": "No Data found",
-    "NAME_AR_MAX_LENGHT":"Department Arabic Must be less than or equal 500 character",
-    "NAME_EN_MAX_LENGHT":"Department English Must be less than or equal 500 character",
+    "NAME_AR_MAX_LENGHT":"Department Arabic Must be less than or equal 100 character",
+    "NAME_EN_MAX_LENGHT":"Department English Must be less than or equal 100 character",
     "QUESTION_AR_MAX_LENGHT":"Question Arabic Must be less than or equal 50 character",
     "QUESTION_EN_MAX_LENGHT":"Question English Must be less than or equal 50 character",
     "ANSWER_AR_MAX_LENGHT":"Answer Arabic Must be less than or equal 500 character",
@@ -227,8 +228,11 @@
     "ENGLISH_FIELD": "This field must be in English",
     "SAVE": "Save",
     "ADD": "Add",
-    "CANCEL": "Cancel"
-
+    "CANCEL": "Cancel",
+    "SHORT_DESCRIPTION_AR_MAX_LENGHT":"Arabic short description must be less than or equal 200 character",
+    "SHORT_DESCRIPTION_EN_MAX_LENGHT":"English short description must be less than or equal 200 character",
+    "LONG_DESCRIPTION_AR_MAX_LENGHT":"Arabic long description must be less than or equal 1000 character",
+    "LONG_DESCRIPTION_EN_MAX_LENGHT":"English long description must be less than or equal 1000 character"
   },
   "WALKTHROUGH": {
     "TITLE":"WalkThrough",
@@ -242,7 +246,8 @@
     "TITLEAR_PATTERN": "Please insert arabict text only.",
     "TITLEEN_PATTERN": "Please insert english text only.",
     "AR_MAX_LENGTH":"Arabic text should less than or equal 1000 characters",
-    "EN_MAX_LENGTH":"English text should less than or equal 1000 characters"
+    "EN_MAX_LENGTH":"English text should less than or equal 1000 characters",
+    "COMPLETE_FIELDS_ADD_ATTACHMENT":"Please complete all fields with adding attachment"
   },
   "DASHBOARD": {
     "TITLE": "Dashboard"

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -52,10 +52,34 @@ export class WalkThroughComponent implements OnInit {
     //     this.updateWalkThrough = true;
     // }
     this.buildForm();
+    // this.loadWalkThrough(this.selectedWalkThroughPageId);
+  }
+
+  @HostListener('window:beforeunload', ['$event'])
+  public onPageUnload($event: BeforeUnloadEvent) {
+    if (this.unsavedDataCheck()) {
+      $event.returnValue = true;
+      // return "message";
+    }
+    else{
+      $event.returnValue = false;
+      // return '';
+    }
+  }
+
+  @HostListener('window:popstate', ['$event'])
+  onPopState(event:any) {
+    this.walkThroughService.setCanDeActivate(this.unsavedDataCheck());
+  }
+
+  unsavedDataCheck() : boolean{
+    return this.walkThrough.textAr != this.f.textAr.value
+    || this.walkThrough.textEn != this.f.textEn.value
   }
 
   ngOnChanges(changes: any) {
     console.log(changes);
+    
     this.loadWalkThrough(changes.selectedWalkThroughPageId.currentValue);
   }
   loadWalkThrough(selectedPageId: any) {
@@ -97,11 +121,11 @@ export class WalkThroughComponent implements OnInit {
   submit() {
     this.isSubmit = true;
     this.resMessage = {};
-    if (this.currentForm.valid) {
+    this.mappModel();
+    if (this.currentForm.valid && this.walkThrough.attachmentId) {
       // if (this.attachmentIds.length ==0) {
       //   return;
       // }
-      this.mappModel();
 
       this.clearMessage();
       if (this.walkThrough.id) {
@@ -115,6 +139,7 @@ export class WalkThroughComponent implements OnInit {
               }
 
               this.clearSuccessMessage();
+              this.loadWalkThrough(this.selectedWalkThroughPageId);
             }
             else {
               this.resMessage = {
@@ -142,6 +167,7 @@ export class WalkThroughComponent implements OnInit {
                 type: BaseConstantModel.SUCCESS_TYPE
               }
               this.clearSuccessMessage();
+              this.loadWalkThrough(this.selectedWalkThroughPageId);
             }
             else {
               this.isSubmit = false;
@@ -163,7 +189,7 @@ export class WalkThroughComponent implements OnInit {
     }
     else {
       this.resMessage = {
-        message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+        message: this.translate.instant('WALKTHROUGH.COMPLETE_FIELDS_ADD_ATTACHMENT'),
         type: BaseConstantModel.DANGER_TYPE
       }
     }
