@@ -60,9 +60,9 @@ export class MaterialListComponent implements OnInit {
         this.materials = res.data as IScientificMaterialGrid[];
 
       }, error => {
-        console.log(error);
+        // console.log(error);
         this.resMessage = {
-          message: error.message,
+          message: error,
           type: BaseConstantModel.DANGER_TYPE
         }
         this.clearMessage();
@@ -90,9 +90,9 @@ export class MaterialListComponent implements OnInit {
         this.clearMessage();
         this.loadProgramMaterial();
       }, error => {
-        console.log(error);
+        // console.log(error);
         this.resMessage = {
-          message: error.message,
+          message: error,
           type: BaseConstantModel.DANGER_TYPE
         }
         this.clearMessage();
@@ -106,7 +106,7 @@ export class MaterialListComponent implements OnInit {
         this.materialCategoires = res.data as BaseLookupModel[];
       }, error => {
         this.resMessage = {
-          message: error.message,
+          message: error,
           type: BaseConstantModel.DANGER_TYPE
         }
         this.clearMessage();

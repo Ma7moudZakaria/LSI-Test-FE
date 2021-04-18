@@ -29,10 +29,9 @@ export class ProgramsListComponent implements OnInit {
       (res: BaseResponseModel) => {
         this.programs = res.data as IprogramsModel[];
 
-      }, error => {
-        
+      }, error => {        
         this.resMessage = {
-          message: error.message,
+          message: error,
           type: BaseConstantModel.DANGER_TYPE
         }
       }

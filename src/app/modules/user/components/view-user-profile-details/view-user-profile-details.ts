@@ -6,6 +6,8 @@ import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
 import { IUserProfile } from 'src/app/core/interfaces/user-interfaces/iuserprofile';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 import { UserService } from 'src/app/core/services/user-services/user.service';
 
@@ -35,6 +37,7 @@ export class ViewUserProfileDetailsComponent implements OnInit {
   language: any;
   langEnum = LanguageEnum;
   birthdate: any;
+  resMessage: BaseMessageModel = {};
 
   constructor(
     private router: Router,
@@ -61,7 +64,16 @@ export class ViewUserProfileDetailsComponent implements OnInit {
       if (res.isSuccess) {
       }
       else {
-        this.errorMessage = res.message;
+        // this.errorMessage = res.message;
+        this.resMessage = {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+    },  error => {        
+      this.resMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
       }
     });
   }

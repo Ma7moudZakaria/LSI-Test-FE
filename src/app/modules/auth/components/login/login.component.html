@@ -98,10 +98,9 @@
                                 <!-- <button type="button" [routerLink]="['/auth/register']" class="btn  UserLogin__SignUp " > {{'LOGIN_PG.SIGNUP' | translate}}</button> -->
                                 <button type="button" (click)="roleUser(roleEnum.Student)" class="btn  UserLogin__SignUp " > {{'LOGIN_PG.SIGN_UP' | translate}}</button>
                             </div> 
-                            <!-- class="alert alert-{{ resMessage.type }} my-4 py-2" -->
-                            <div *ngIf="resMessage" class="error_message ">
+                            <div *ngIf="resMessage" class="alert alert-{{ resMessage.type }} my-4 py-2">
                                 {{ resMessage.message }}
-                              </div>
+                            </div>
                         </div>
                         
                         <div class="footer_form ">

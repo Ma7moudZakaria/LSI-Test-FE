@@ -80,6 +80,8 @@ export class LoginComponent implements OnInit {
 
   onSubmit(value: string) {
     this.isSubmit = true;
+    this.resMessage = {};
+    
     if (this.userform.valid) {
       var authModel: IAuthentication;
       authModel = {
@@ -114,6 +116,12 @@ export class LoginComponent implements OnInit {
             }
            
           } 
+        },
+        error => {
+          this.resMessage ={
+            message: error,
+            type: BaseConstantModel.DANGER_TYPE
+          }
         }
       );
     }
@@ -144,22 +152,24 @@ export class LoginComponent implements OnInit {
           this.isSubmit = false;
         }
         else
-        {
-          
+        {         
             this.resMessage = {
               message: res.message,
               type: BaseConstantModel.DANGER_TYPE
             }
             this.isSubmit = false;
-        
-         
+                
         } 
       }
     );
 
-   },err => this.signInErrorHandler(err)
-
-   );
+   },
+   error => {
+     this.resMessage ={
+       message: error,
+       type: BaseConstantModel.DANGER_TYPE
+     }
+   });
   }
 
   signInWithFB(): void {
@@ -192,9 +202,13 @@ export class LoginComponent implements OnInit {
        }
      );
  
-    },err => this.signInErrorHandler(err)
- 
-    );
+    },
+    error => {
+      this.resMessage ={
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    });
   }
 
   signOut(): void {

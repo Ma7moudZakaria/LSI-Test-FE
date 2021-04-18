@@ -243,6 +243,7 @@ export class WalkThroughComponent implements OnInit {
     }
 
   }
+
   onFileChange(files: FileList) {
     if (files.length > 0) {
       Array.from(files).forEach(element => {
@@ -276,7 +277,7 @@ export class WalkThroughComponent implements OnInit {
         console.log(error);
         this.fileUploadModel = [];
         this.resMessage = {
-          message: error.message,
+          message: error,
           type: BaseConstantModel.DANGER_TYPE
         }
       }
