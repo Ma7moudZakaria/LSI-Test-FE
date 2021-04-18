@@ -1,0 +1,19 @@
+<mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{title}}</mat-card-title>
+      <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+    </mat-card-header>
+    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+    <mat-card-content>
+        <div class="d-flex justify-content-between">
+             <p class="content_card">
+                 {{content}}
+      </p>
+      <!-- <img  src="../../../assets/images/book.svg" class="align-self-baseline"> -->
+      <img  [src]="imgPath" class="align-self-baseline">
+        </div>
+     
+    </mat-card-content>
+   
+  </mat-card>

@@ -1,0 +1,26 @@
+@import 'src/assets/scss/_variables.scss';
+
+.UserRegister{
+    .UserRegister__Label{
+        color: $ForgetPasswordLink;
+    }
+
+    .UserRegister__FormControl::placeholder {
+        color: $auth-color;
+        font-size: 0.9rem;
+    }
+
+    .UserRegister__Submit{
+        background-color: $user-color;
+        width: 19.063rem;
+        height: 3.191rem;
+        margin-left: auto;
+        margin-right: auto;
+        border: none;
+        border-radius: 1rem;
+    }
+
+    .UserLogin__SocialMedia{
+        margin-right: 6rem!important;
+    }
+}

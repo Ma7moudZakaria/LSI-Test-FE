@@ -23,6 +23,12 @@
     "@angular/router": "~11.1.0",
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
+    "alertifyjs": "^1.13.1",
+    "angularx-social-login": "^3.5.4",
+    "bootstrap": "^4.6.0",
+    "intl-tel-input": "^17.0.12",
+    "ng2-tel-input": "^2.3.0",
+    "ngx-bootstrap": "^6.2.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"

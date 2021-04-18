@@ -1,0 +1,77 @@
+<!-- <div class="container-fluid">
+    <h1> {{ userProfileDetails.usrName }} </h1>
+    <p> {{ userProfileDetails.usrEmail }} </p>
+    <p> {{ userProfileDetails.Mobile }} </p>
+    <p> {{ birthdate }} </p>
+    <p> {{ translate.currentLang === langEnum.en ? userProfileDetails.engNatName : userProfileDetails.arbNatName}} </p>
+
+</div> -->
+
+
+
+
+
+<div id="mySidenav" class="overlay">
+
+
+
+    <div class="row mb-4">
+        <div class="col-12">
+    <!-- <a  class="closebtn" (click)="closeNav()">&times;</a> -->
+
+        </div>
+        <div class="col-6 label_profile">
+            <label>{{'VIEW_USER_PROFILE_PG.PERSONAL_PROFILE' | translate }}</label>
+        </div>
+
+        <div class="col-6 edit_profile">
+           <a (click)="navEditProf()"><img src="../../../../../assets/images/edit.svg"></a>
+        </div>
+    </div>
+    <div class="row">
+    <div class="col-12 profile mb-50">
+        <div  class="profile_background"></div>
+        <img class="img_profile" [src]="userProfileDetails?.proPic">
+    </div>
+</div>
+
+
+<div class="row mt-3 text-center">
+    <div class="col-12 mt-2 mb-2">
+    <label class="UpdateUser__Label "> {{ userProfileDetails?.usrName }}</label>
+    </div>
+    <div class="col-12 mt-2 mb-2">
+        <input   type="email" class="form-control UserRegister__FormControl"  disabled
+        placeholder="{{ userProfileDetails?.usrEmail }} ">                            
+    </div>
+    <div class="col-12 mt-2 mb-2 ">
+        <input   type="number" class="form-control UserRegister__FormControl"  disabled
+        placeholder="{{ userProfileDetails?.mobile }}">                            
+    </div>
+
+    <div class="col-12 mt-2 mb-2">
+        <input   type="text" class="form-control UserRegister__FormControl"  disabled
+        placeholder="{{ birthdate }} ">                            
+    </div>
+    <div class="col-12 mt-2 mb-2">
+        <input   type="text" class="form-control UserRegister__FormControl"  disabled
+        placeholder="{{ translate.currentLang === lang.en ? userProfileDetails?.engNatName : userProfileDetails?.arbNatName}}">                            
+    </div>
+</div>
+
+<div class="col-12 mt-5 footer_logout">
+ <a (click) = "confirmDialog()" class="p-0">
+   
+   <span  class="logout"> {{ 'GENERAL.LOGOUT' | translate}}</span>
+   <img  class="logout_img" src="../../../../assets/images/log-out.svg">
+</a>   
+</div>
+
+
+    <!-- <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Clients</a>
+    <a href="#">Contact</a> -->
+  </div>
+  
+  

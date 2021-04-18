@@ -1,0 +1,29 @@
+<div class="list-group list-group_program-list">
+    <div class="internal_scroll_list_group ">
+        <a class="list-group-item d-flex"  *ngFor="let page  of walkThroughPages; let i = index" 
+        [class.active]="selectedIndex === i " 
+        (click)="loadPageWalkThrough(page.id);selectedIndex=i">
+         
+            <span>  {{ translate.currentLang === langEnum.en ? page.nameEn : page.nameAr}}</span>
+          
+      
+      </a>
+
+    </div>
+
+<!-- 
+</div><ul class="list-group list-group_walk-through-list" *ngIf="walkThroughPages">
+    <p>     
+          {{"WALKTHROUGH.PAGES" | translate}}
+    </p>
+    <li class="list-group-item " *ngFor="let page  of walkThroughPages; let i = index" 
+      [class.active]="selectedIndex === i" 
+      (click)="loadPageWalkThrough(page.id);selectedIndex=i">
+        <a> 
+            {{ translate.currentLang === langEnum.en ? page.nameEn : page.nameAr}}
+        </a>
+    </li>
+    <div *ngIf="resMessage" class="alert alert-{{ resMessage.type }} my-4 py-2">
+        {{ resMessage.message }}
+    </div>
+</ul> -->

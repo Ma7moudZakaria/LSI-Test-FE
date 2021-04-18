@@ -1,0 +1,76 @@
+
+@import 'src/assets/scss/_variables.scss';
+
+.setting-list{
+    background: $gray-200 0% 0% no-repeat padding-box;
+    border-radius: 19px;
+    opacity: 1;
+    padding: 2rem;
+    // height : 100%;
+    margin: 1rem;
+    margin-bottom: 0;
+
+}
+
+.setting-card{
+    background: $white 0% 0% no-repeat padding-box;
+    border: 1px solid $border-input;
+    border-radius: 12px;
+    opacity: 1;
+    padding: 0rem;
+    text-decoration: none;
+    // height: 120px;
+}
+
+.MaskGroup{
+    height: 8rem;
+    // text-align: center;
+}
+
+
+
+
+.contanier_setting-card{
+    height: 27rem;
+    // overflow-y: auto;
+    .setting-text{
+        color: $p_color;
+    }
+}
+
+.setting-card p{
+    text-align: right;
+    font-family:Almarai-Bold ;
+    font-size: 18px ;
+    letter-spacing: -0.26px;
+    color: $user-color;
+    opacity: 1;
+    margin-bottom: 15%!important;
+    margin-top: 15%;
+    margin-right: 15%;
+}
+
+.setting-card p:lang(en){
+    text-align: left;
+    font-family:Almarai-Bold ;
+    font-size: 18px ;
+    letter-spacing: -0.26px;
+    color: $user-color;
+    opacity: 1;
+    margin-bottom: 15%!important;
+    margin-top: 15%;
+    margin-left: 15%;
+}
+
+@media (min-width: 992px){
+    .col-lg-5 {
+        flex: 0 0 47.666667%;
+        max-width: 47.666667%;
+    }
+}
+
+
+
+
+
+

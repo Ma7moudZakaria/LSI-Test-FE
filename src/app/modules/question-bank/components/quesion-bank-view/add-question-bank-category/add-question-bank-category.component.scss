@@ -1,0 +1,62 @@
+@import 'src/assets/scss/_variables.scss';
+.material-form{
+    background: #FBFBFB 0% 0% no-repeat padding-box;
+    border: 1px solid #FBFBFB;
+    opacity: 1;
+    padding: 1rem;
+    padding-top: 3rem;   
+}
+
+
+.material-form:lang(ar){
+    text-align: right;
+}
+
+.material-form:lang(en){
+    text-align: left;
+}
+
+label{
+    
+    text-align: right;
+      font-family: Almarai-Bold;
+      font-size: 1rem;
+      letter-spacing: 0px;
+      color: #3A3A3A;
+      opacity: 1;
+  
+
+}
+
+.save-btn{
+background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
+background: #8E2520 0% 0% no-repeat padding-box;
+border-radius: 12px;
+opacity: 1;
+width: 7.5rem;
+margin: 1rem;
+padding: 0.5rem;
+height: 2.31rem;
+border: none;
+color: #ffffff;
+display: block;
+}
+.cancel-btn{
+    background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
+    background:$icon_input ;
+    border-radius: 12px;
+    opacity: 1;
+    width: 7.5rem;
+    margin: 1rem;
+    padding: 0.5rem;
+    height: 2.31rem;
+    border: none;
+    color: #ffffff;
+    display: block;
+    }
+    Label{
+        font-family:Almarai-Regular;
+        font-size: 0.875rem;
+        color:$placeholder_inputs;
+    }
+

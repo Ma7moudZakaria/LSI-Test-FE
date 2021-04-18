@@ -1,9 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/auth', pathMatch: 'full' },
-  { path: 'auth', loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule) }
+  { path: 'auth', loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule) },
+  { path: 'user', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule), canActivate:[AuthGuard] },
+  { path: 'question-bank', loadChildren: () => import('./modules/question-bank/question-bank.module').then(m => m.QuestionBankModule), canActivate:[AuthGuard] },
+  { path: 'scientific-material', loadChildren: () => import('./modules/scientific-material/scientific-material.module').then(m => m.ScientificMaterialModule), canActivate:[AuthGuard] },
+  { path: 'shared', loadChildren: () => import('./modules/shared-material/shared-material.module').then(m => m.SharedMaterialModule) },
+  { path: 'dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule), canActivate: [AuthGuard] },
+  { path: 'content-management', loadChildren: () => import('./modules/content-management/content-management.module').then(m => m.ContentManagementModule) },
+  { path: 'walk-through', loadChildren: () => import('./modules/walkthrough/walkthrough.module').then(m => m.WalkthroughModule)},
+  { path: 'setting', loadChildren: () => import('./modules/setting/setting.module').then(m => m.SettingModule)},
 ];
 
 @NgModule({

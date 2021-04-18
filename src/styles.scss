@@ -2,7 +2,7 @@
 @import 'src/assets/scss/_typography.scss';
 
 html {
-  font-size: 15px;
+  font-size:16px;
 }
 
 @media (max-width: 768px) {
@@ -10,5 +10,591 @@ html {
     font-size: 13px;
   }
 }
-html, body { height: 100%; }
+html, body {  height: 100%;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+// custom scrollbar
+/* width */
+::-webkit-scrollbar {
+  width: 0.3rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(185, 185, 185);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(196, 195, 195);
+}
+
+// login page 
+
+.LoginBackground_left_img
+{
+    background-color: $login_background;
+    height: 100vh;
+
+}
+.identity_img{
+     background-image: url(../src/assets/images/Group18169.png);
+    background-color: $login_background;
+    max-width: 100%;
+    width: 100%;
+    background-position-x: center;
+    background-repeat: no-repeat;
+    height: 100px;
+    top: 0;
+}
+
+
+
+.LoginBackground_Right_img{
+   
+    //  background-color: $login_background;
+    // background: linear-gradient(#8E2520, #4F1512);
+    // background: #8E2520;
+    // background-image: url(../../huffaz-app/src/assets/images/opacity_background.png); 
+    background-image: url(../src/assets/images/logo.png), linear-gradient(#8E2520, #4F1512);
+
+     background-position-x: center;
+     background-position-y: center;
+     background-repeat: repeat-y;
+     
+}
+.repeater_img{
+    position: absolute;
+    bottom: 2%;
+    height: 10%;
+    background-image: url(../src/assets/images/Group18161.png);
+    background-repeat: repeat-x;
+    z-index: 100;
+
+}
+.test{
+  background-image: linear-gradient(#8E252000, #8E252050, #4F1512);
+  position: absolute;
+  height: 40%;
+  right: 0;
+  bottom: 0;
+  display: inline-block;
+  width: 100%;
+}
+.UserLogin__FormContainer{
+    height: 76px;
+    background-color:$main_background;
+    
+}
+.box {
+    background: $white 0% 0% no-repeat padding-box;
+    box-shadow: 2px 8px 16px $shadow_color !important;
+    border-radius: 16px;
+    padding: 24px;
+    padding-bottom: 0;
+    // margin-top: 1rem;
+    margin-top: 1.5rem;
+    // margin-bottom: 0.5rem;
+    width: 32.812rem;
+    height:auto
+   
+}
+
+.content_form
+{
+  min-height: 23.5rem;
+   padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  // min-height: 50vh;
+}
+.content_form:lang(ar){
+  text-align: right;
+}
+//for input in ar 
+.input-group:lang(ar){
+  // flex-direction: row-reverse;
+  .UserLogin__FormControl:lang(ar)
+  {
+    border-right-color: transparent;
+    
+  }
+  .input-group-text:lang(ar)
+  {
+    border-left-color: transparent;
+    position: relative;
+    left: -2px;
+  }
+}
+
+.UserLogin .input-group>.custom-select:not(:first-child), .input-group>.form-control:not(:first-child):lang(ar) {
+  border-top-left-radius: 0.65rem;
+  border-bottom-left-radius: 0.65rem;
+}
+
+.UserLogin .input-group>.custom-select:not(:first-child), .input-group>.form-control:not(:first-child):lang(ar) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+// .UserLogin .input-group.has-validation>.input-group-append:nth-last-child(n+3)>.btn, 
+// .input-group.has-validation>.input-group-append:nth-last-child(n+3)>.input-group-text, 
+// .input-group:not(.has-validation)>.input-group-append:not(:last-child)>.btn, 
+// .input-group:not(.has-validation)>.input-group-append:not(:last-child)>.input-group-text, 
+// .input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle),
+//  .input-group>.input-group-append:last-child>.input-group-text:not(:last-child),
+//   .input-group>.input-group-prepend>.btn,
+   .input-group>.input-group-prepend>.input-group-text:lang(ar) {
+  border-top-right-radius: 0.65rem;
+  border-bottom-right-radius: 0.65rem;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+// .UserLogin .input-group:not(.has-validation)>.input-group-append:not(:last-child)>.input-group-text,
+//  .input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle), 
+//  .input-group>.input-group-append:last-child>.input-group-text:not(:last-child),
+//   .input-group>.input-group-prepend>.btn,
+//    .input-group>.input-group-prepend>.input-group-text:lang(ar) {
+//   border-top-left-radius: 0;
+//   border-bottom-left-radius: 0;
+// }
+
+
+.mat-icon{
+  opacity: 0.2;
+}
+.form-control,.input-group-text {
+  border-radius: 0.65rem;
+}
+
+
+.form-control:focus,.input-group-text:focus{
+  border-color:$border-input
+}
+// for textarea in foucs
+textarea.form-control:focus{
+  box-shadow: none;
+  border: 3px solid #80bdff;
+}
+.pr-2rem{
+  padding-right: 2rem;
+}
+  // for input in en 
+
+  .input-group:lang(en){
+   
+    .input-group-text
+    {
+        border-right: 1px solid transparent;
+        position: relative;
+        left: 1px;
+     
+    }
+    .UserLogin__FormControl:lang(en)
+  {
+    border-left-color: transparent;
+    
+  }
+}
+
+
+  // end input in en 
+
+// for error input && message
+
+.error_input
+{
+background-color: $error-message-bg !important;
+border-color:  $error-message-color;
+
+}
+
+
+.toggle-password:lang(ar) {
+  position: absolute;
+  left: 10px;
+  z-index: 1000;
+  top: 7px;
+  cursor: pointer;
+}
+.toggle-password:lang(en) {
+  position: absolute;
+  left: unset;
+  right: 10px;
+  z-index: 1000;
+  top: 7px;
+  cursor: pointer;
+}
+
+
+
+
+.error_message
+{
+color: $error-message-color;
+font-size: 12px;
+padding-left: 0.5rem;
+padding-right: 0.5rem;
+font-family: Almarai-Regular;
+}
+// end error input && message
+
+.UserLogin__FormControl::placeholder {
+  color:$placeholder_inputs;
+  font-weight: 300;
+  font-size: 0.875rem
+}
+.UserLogin__FormControl:focus {
+  box-shadow: none;
+}
+.UserLogin__Label{
+  color: $labels;
+}
+
+
+.UserLogin__Submit{
+  background-color: $user-color;
+  width: 15rem;
+  height: 2.31rem;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  border-radius: 1rem;
+  color: $white;
+  display: block;
+}
+
+.UserLogin__SignUp{
+  margin-top: 1.25rem;
+  background-color: $main_background;
+  width: 15rem;
+  height: 2.31rem;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  border-radius: 1rem;
+  color: $fill_button;
+  display: block;
+
+}
+
+.UserLogin__SocialMedia{
+  // margin-right: 6rem!important;
+  padding-left: 0;
+  padding-right: 0px;
+  list-style: none;
+  text-align: center;
+}
+
+.text-muted{
+  color: $icon_input;
+}
+.UserLogin_icon_input
+{
+  width: 1rem;
+    height: 0.9rem;
+}
+// footer of login page 
+.UserLogin__Register{
+  
+  background-color: $main_background;
+  width: 11rem;
+  height: 2.31rem;
+ 
+  border: none;
+  border-radius: 1rem;
+  color: $fill_button;
+  font-size: 12px;
+  color: $p_color;
+  
+}
+
+.footer_form_p{
+  font-size: 12px;
+  color: $p_color;
+}
+.list-inline-item:not(:last-child) {
+  margin-right: 3rem;
+}
+.list-inline-item:lang(ar){
+  margin-right: 2rem;
+}
+.hint_yellow{
+  color: $hint_yellow;
+  font-size: 0.68rem
+}
+
+// check box 
+
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+  border-color: #8E2520 !important;
+
+}
+.mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+  background-color: #8E2520 !important;
+}
+
+.dimmed {
+  cursor: not-allowed !important;
+  color: #7674A150 !important;
+}
+
+//close button
+.closebtn {
+  color: #818181;
+  font-size: 1.875rem;
+  text-align: right;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.text-arabic{
+  text-align: right;
+}
+
+.text-english{
+  text-align: left;
+}
+
+select.form-control {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+}
+.select-arrow:lang(ar) {
+  left: 0px;
+  top: 10px;
+  z-index: 6;
+}
+.select-arrow:lang(en) {
+  right: 0px;
+  top: 10px;
+  z-index: 6;
+}
+.plus-btn:lang(en) {
+  z-index: 6;
+  right: 0;
+}
+
+.plus-btn {
+  // left: 5px;
+  // top: 5px;
+  z-index: 6;
+
+  button {
+    width: 40px;
+    height: 39px;
+  }
+  .btn-add{
+    border: 1px solid #e0d6d6 !important;
+  }
+}
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 14rem;
+  cursor: pointer;
+  width: 95%;
+}
+.badges {
+  .badge-info {
+    background-color: $labels;
+    color: $white;
+    font-size: 18px;
+    font-family: gulf-thin;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    
+    a {
+      color: inherit;
+
+    }
+  }
+}
+.justify-content-between {
+  justify-content: space-between!important;
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+.badge-lightbadge-light {
+  color: $main-color;
+  background-color: #fff;
+  padding: .6em 1.6em;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+/* The side navigation menu */
+
+.overlay {
+  height: 100%; /* 100% Full-height */
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 30%; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 999; /* Stay on top */
+  top: 0; /* Stay at the top */
+  background-color: #FBFBFB; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 30px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav_profile */
+  box-shadow: 0 0 15px #0c0808;
+}
+.overlay:lang(en) {
+  left: 0;
+}
+.overlay:lang(ar) {
+  right: 0;
+}
+
+
+  
+  
+  /* Position and style the close button (top right corner) */
+  .overlay .closebtn {
+    color: #818181;
+    font-size: 25px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+  }
+
+  .overlay .closebtn:lang(en){
+    text-align: right;
+  }
+  .overlay .closebtn:lang(ar){
+    text-align: left;
+  }
+
+    .overlay a {
+    // padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    // display: block;
+    transition: 5s;
+  }  
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav_profile (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .overlay {padding-top: 15px;}
+        .sidenav_profile a {font-size: 18px;}
+  }
+
+  ::-webkit-scrollbar-thumb{
+    background: $user-color;
+}
+//  replace arrow in extended card to icon arrang 
+.questionBank
+.mat-expansion-indicator::after {
+  border-style: solid;
+  border-width: 0 ;
+  content: '';
+  display: none;
+ 
+}
+.questionBank
+.mat-content
+{
+align-items: center
+}
+.questionBank
+.mat-content::before{
+  border-style: solid;
+  border-width: 0 ;
+  content: url(assets/images/arrange.svg) !important;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(0);
+  vertical-align: middle;
+  margin-left: 0.23rem;
+  margin-right: 0.23rem;
+
+}
+.mat-expansion-panel-header-title, .mat-expansion-panel-header-description{
+  margin-right: 0 !important; 
+}
+// input phone custom 
+app-tel-input >
+.iti input, .iti input[type=text], .iti input[type=tel] 
+{
+    display: block;
+    height: calc(1.5em + .75rem + 2px);
+    font-size: 1rem;
+    font-weight: 400;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .65rem;
+    text-align: left;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+app-tel-input >
+.containe.phone-dir{
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+.iti.iti--allow-dropdown{
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.iti input:focus{
+  border-color:$border-input
+}
+.iti__selected-flag:lang(en){
+  padding: 0 6px 0 27px;
+}.iti__selected-flag:lang(ar){
+  padding: 0 6px 0 22px;
+}
+// notify
+
+.alertify-notifier.ajs-right {
+  right: -10px;
+}
+.alertify-notifier.ajs-right .ajs-message {
+  right: -320px;
+}
+.alertify-notifier.ajs-right .ajs-message.ajs-visible {
+  right: 270px;
+  text-align: left;
+}
+.alertify-notifier.ajs-left {
+  left: 200px;
+}
+.alertify-notifier.ajs-left .ajs-message {
+  left: -300px;
+}
+
+.alertify-notifier.ajs-left .ajs-message.ajs-visible {
+  left:65px;
+  text-align: right;
+}
+
+.mat-dialog-container {
+  direction: initial;
+  min-width: 30rem;
+}
+
+.mat-dialog-title, .mat-dialog-content {
+  text-align: center;
+}
+
+.mat-dialog-actions:lang(en) {
+  float: right;
+}
+
+.mat-dialog-actions .mat-button-base+.mat-button-base,
+ .mat-dialog-actions .mat-mdc-button-base+.mat-mdc-button-base {
+  margin-left: 8px !important;
+  margin-right: 8px !important;
+}
