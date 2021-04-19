@@ -7,7 +7,8 @@
 [maxHijri]="maxHijri" 
 [GregLabel]="GregLabel"
 [hijriLabel]="hijriLabel"
- [selectedDateType]="selectedDateType" 
+ [selectedDateType]="selectedDateType_Melady" 
+ (selectedDateChange)="emitData($event)"
   #datePickerTo>
 </hijri-gregorian-datepicker>
 </ng-container>
@@ -23,6 +24,7 @@
  [GregLabel]="GregLabel"
  [hijriLabel]="hijriLabel"
   [selectedDateType]="selectedDateType_Hijri" 
+  (selectedDateChange)="emitData($event)"
    #datePickerTo>
  </hijri-gregorian-datepicker>
 </ng-container>
@@ -38,6 +40,7 @@
  [GregLabel]="GregLabel"
  [hijriLabel]="hijriLabel"
   [selectedDateType]="selectedDateType_Hijri" 
+  (selectedDateChange)="emitData($event)"
    #datePickerTo>
  </hijri-gregorian-datepicker>
 </ng-container>

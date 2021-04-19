@@ -107,40 +107,58 @@
       <hr>
       <br>
       
+     <mat-card>
+      <div class="row">
+
+        <div class="col-12">
+          <label>
+            hijri and milady 
+          </label>
+          <div>
+          <app-milady-hijri-calendar
+          (sendDate)="HijriTOMilady($event)" 
+          [hijri]="hijri" [milady]="milady">
+          </app-milady-hijri-calendar>
+    
+        </div>
+        <p>{{dataPinding}}</p>
+        </div>
+    
+    
      
+        <div class="col-12">
+          <label>
+            hijri  
+          </label>
+          <div>
+          <app-milady-hijri-calendar   (sendDate)="Hijri($event)" 
+          [hijri]="hijri" [milady]="!milady">
+        </app-milady-hijri-calendar>
+        </div>
+        <p>{{higriPinding}}</p>
+        </div>
+
+        <div class="col-12">
+          <label>
+            milady 
+          </label>
+          <div>
+          <app-milady-hijri-calendar [hijri]="!hijri" [milady]="milady"
+          (sendDate)="Milady($event)"
+          ></app-milady-hijri-calendar>
+        </div>
+        <p>{{MiladyPinding}}</p>
+
+        </div>
+
+      </div>
+     </mat-card>
       
 </div>
 
   </div>
-  <div class="row">
-
-    <div class="col-4 mt-5">
-      <label>
-        hijri and milady 
-      </label>
-      <div>
-      <app-milady-hijri-calendar [hijri]="hijri" [milady]="milady"></app-milady-hijri-calendar>
-    </div>
-    </div>
-
-
-    <div class="col-4 mt-5">
-      <label>
-        milady 
-      </label>
-      <div>
-      <app-milady-hijri-calendar [hijri]="!hijri" [milady]="milady"></app-milady-hijri-calendar>
-    </div>
-    </div>
-    <div class="col-4 mt-5">
-      <label>
-        hijri  
-      </label>
-      <div>
-      <app-milady-hijri-calendar [hijri]="hijri" [milady]="!milady"></app-milady-hijri-calendar>
-    </div>
-    </div>
-  </div>
+  
+ 
 <!-- CARDS  -->
         <div class="container mb-5 mt-5">
         <div class="row">

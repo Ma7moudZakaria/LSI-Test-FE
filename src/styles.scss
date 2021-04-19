@@ -590,6 +590,16 @@ display: none;
   background-color: #117a8b;
   border-color: #10707f;
 }
+.hijriInput{
+    border-top-left-radius: 0.56rem !important;
+    border-bottom-left-radius:  0.56rem !important;
+}
+.hijriInput:lang(ar){
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius:  0 !important;
+    border-top-right-radius:0.56rem !important;
+    border-bottom-right-radius: 0.56rem !important;
+}
 //  removemilady
 .HijriGregorianDatePicker.removemilady .btn:first-of-type{
   display: none;

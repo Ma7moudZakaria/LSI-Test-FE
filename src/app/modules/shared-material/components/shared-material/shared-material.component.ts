@@ -1,10 +1,13 @@
+import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { Component, Input, OnInit } from '@angular/core';
+import * as moment from 'moment-hijri';
 
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 import { IDragDropAccordionItems } from 'src/app/core/interfaces/shared-interfaces/accordion-interfaces/idrag-drop-accordion-items';
 import { ITelInputParams } from 'src/app/core/interfaces/shared-interfaces/tel-input-interfaces/itel-input-params';
+import { Data } from '@angular/router';
 
 export interface DragDropListItem {
   id: string;
@@ -20,6 +23,10 @@ export class SharedMaterialComponent implements OnInit {
 
   hijri: boolean = false;
   milady: boolean = false;
+  dataPinding: any;
+  higriPinding: any;
+  MiladyPinding: any;
+
   checked: boolean = false;
   indeterminate: boolean = false;
   // labelPosition: 'before' | 'after' = 'after';
@@ -177,5 +184,30 @@ export class SharedMaterialComponent implements OnInit {
     this.telInputParam.phoneNumber = event;
   }
 
+  // date 
+  dateToString = (date: any) => { date.year + '/' + date.month + '/' + date.day };
+
+  getCalenderData(date: any) {
+    this.HijriTOMilady(date);
+  }
+
+  Hijri(date: any) {
+    date = date.year + '/' + date.month + '/' + date.day;
+    console.log("Hijri ", date)
+    this.higriPinding = date
+  }
+  Milady(date: any) {
+    date = date.year + '/' + date.month + '/' + date.day;
+    console.log("Milady ", date)
+    this.MiladyPinding = date
+  }
+  HijriTOMilady(date: any) {
+    var currentDate = date.year + '/' + date.month + '/' + date.day;
+    moment.locale('en');
+    var m = moment.utc(currentDate, 'iYYYY/iM/iD'); // Parse a Hijri date.
+    var hijriDate = m.format('YYYY/M/D');
+    console.log("HijriTOMilady ", hijriDate)
+    this.dataPinding = hijriDate
+  }
 }
 

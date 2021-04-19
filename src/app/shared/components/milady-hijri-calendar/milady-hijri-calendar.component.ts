@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { DateType } from 'ngx-hijri-gregorian-datepicker';
 import { NgbModal, NgbDateStruct, NgbDate } from '@ng-bootstrap/ng-bootstrap';
 @Component({
@@ -12,8 +12,8 @@ export class MiladyHijriCalendarComponent implements OnInit {
   dateFrom!: NgbDateStruct;
   dateTo!: NgbDateStruct;
 
-  selectedDateType = DateType.Gregorian;  // or DateType.Gregorian
-  selectedDateType_Hijri = DateType.Hijri;  // or DateType.Gregorian
+  selectedDateType_Melady = DateType.Gregorian;  // or DateType.Gregorian
+  selectedDateType_Hijri = DateType.Hijri;
 
   dateFromString: string = '';
   maxGreg!: NgbDateStruct;
@@ -26,6 +26,8 @@ export class MiladyHijriCalendarComponent implements OnInit {
   @Input() hijri: boolean = false;
   @Input() milady: boolean = false;
 
+  @Output() sendDate = new EventEmitter;
+
   //  @Input() item: { title: string, state: boolean };
   constructor() { }
 
@@ -33,6 +35,10 @@ export class MiladyHijriCalendarComponent implements OnInit {
   }
 
 
+  emitData(data: any) {
+    console.log(data)
+    this.sendDate.emit(data)
+  }
 
 
 
