@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
+import { MaterialCategoires } from 'src/app/core/enum/MaterialCattegory.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
 import { IScientificMaterialFilter } from 'src/app/core/interfaces/scientific-material/iscientific-matrial-filter';
@@ -29,9 +30,9 @@ export class MaterialListComponent implements OnInit {
   selectedCategories: string[] = [];
   resMessage: BaseMessageModel = {};
   selectedProgramName: string = '';
-  booksId = 'd213e11c-14bd-43bf-b7e2-780e02d71ba9';
-  voiceId = '07985acc-8dc8-4def-b4e0-bc62a789db83';
-  plansId = '512da9c2-0604-4f5c-bbb2-d669f1346e34';
+  booksId?:string;
+  voiceId?:string ;
+  plansId? : string;
   program = {} as IprogramsModel;
   constructor(private scientifcMaterialService: ScientificMaterialService,
     private dialog: MatDialog,
@@ -104,6 +105,12 @@ export class MaterialListComponent implements OnInit {
     this.scientifcMaterialService.GetScientificMatrialCategoriesLookup().subscribe(
       (res: BaseResponseModel) => {
         this.materialCategoires = res.data as BaseLookupModel[];
+
+        this.plansId = this.materialCategoires.filter( m => m.huffazId == MaterialCategoires.ScientificPlans)[0].id; 
+
+        this.voiceId = this.materialCategoires.filter( m => m.huffazId == MaterialCategoires.Audio)[0].id; 
+
+        this.booksId = this.materialCategoires.filter( m => m.huffazId == MaterialCategoires.Books)[0].id; 
       }, error => {
         this.resMessage = {
           message: error,
