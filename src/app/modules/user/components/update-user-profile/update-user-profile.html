@@ -194,25 +194,7 @@
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 pr-0">
                         <div class="row pl-0 pr-0">
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                <label class="Register__Label" for="phoneNumber"> {{ 'UPDATE_USER_PG.COUNTRY' |
-                                    translate }} </label>
-
-                                <select class="UpdateUser__Options" name="nameEn" formControlName="countryCode">
-                                    <option *ngFor="let countryItem of collectionOfLookup.COUNTRY"
-                                        [value]="countryItem.id">
-                                        {{ translate.currentLang == langEnum.en ? countryItem.nameEn : countryItem.nameAr}}
-                                    </option>
-                                </select>
-
-                                <div *ngIf="f.countryCode.errors && (f.countryCode.touched || isSubmit)"
-                                    class="alert alert-danger mt-2 mb-2">
-                                    <div *ngIf="f.countryCode.errors.required">
-                                        {{ 'UPDATE_USER_PG.COUNTRY_CODE' | translate }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-2 col-sm-2 col-xs-2">
+                            <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2">
                                 <label class="Register__Label" for="phoneNumber"> {{ 'GENERAL.PHONE_NUMBER' | translate }} </label>
                                 <!-- <input id="phoneNumber" pInputText type="text" formControlName="phoneNumber"
                                     style="width:100%;" name="phoneNumber"
@@ -236,6 +218,8 @@
                                         </div> -->
                                     </div> 
                             </div>
+                      
+                           
 
                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                 <label class="Register__Label" for="email"> {{ 'GENERAL.EMAIL' | translate }} ({{ 'UPDATE_USER_PG.OPTIONAL' | translate }})</label>
@@ -243,7 +227,7 @@
                                     class="form-control UserRegister__FormControl dimmed" />
                             </div>
 
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                            <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2">
                                 <label class="Register__Label" for="nationality"> {{ 'GENERAL.NATIONALITY' | translate
                                     }} </label>
                                 <div>
@@ -263,8 +247,26 @@
                                     </div>
                                 </div>
                             </div>
+      
+                            <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2">
+                                <label class="Register__Label" for="phoneNumber"> {{ 'UPDATE_USER_PG.COUNTRY' |
+                                    translate }} </label>
 
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                <select class="UpdateUser__Options" name="nameEn" formControlName="countryCode">
+                                    <option *ngFor="let countryItem of collectionOfLookup.COUNTRY"
+                                        [value]="countryItem.id">
+                                        {{ translate.currentLang == langEnum.en ? countryItem.nameEn : countryItem.nameAr}}
+                                    </option>
+                                </select>
+
+                                <div *ngIf="f.countryCode.errors && (f.countryCode.touched || isSubmit)"
+                                    class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.countryCode.errors.required">
+                                        {{ 'UPDATE_USER_PG.COUNTRY_CODE' | translate }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-2 col-xs-2 mt-3">
                                 <label class="Register__Label" for="address"> {{ 'UPDATE_USER_PG.ADDRESS' | translate }}
                                 </label>
                                 <input id="address" pInputText type="text" formControlName="address" name="address" width="70px"

@@ -1,18 +1,42 @@
-<!-- <div class="container-fluid">
-    <h1> {{ userProfileDetails.usrName }} </h1>
-    <p> {{ userProfileDetails.usrEmail }} </p>
-    <p> {{ userProfileDetails.Mobile }} </p>
-    <p> {{ birthdate }} </p>
-    <p> {{ translate.currentLang === langEnum.en ? userProfileDetails.engNatName : userProfileDetails.arbNatName}} </p>
-
-</div> -->
+<div class="container-fluid UpdateUser" >
+    <div class="row">
+        <div class="box_container">
 
 
+                <div class="col-12 profile p-0 mb-3">
+                    <div class="profile_background"></div>
+                    <img class="img_profile" [src]="userProfileDetails?.proPic">
+                    <input type="file" style="display: none;" #fileInput>
+                    <a class="custom_file_input" (click)="fileInput.click()" style="text-decoration: none;" id="upload_link">
+                        <!-- {{'UPDATE_USER_PG.CHANGE_PIC' | translate}} -->
+                        <img src="assets/images/update-user/UploadImage.svg"/>
+                    </a>
+                  
+                </div>
+
+                <div class="col-12 textLeft">
+                    <a (click)="navEditProf()" ><img  class="ml-2 mr-2" src="../../../../../assets/images/student/edit.svg">
+                    <span class="profile_edit">{{'UPDATE_USER_PG.EDIT_PROFILE' | translate }}</span></a>
+                 </div>
+                
+          
+        </div>
+    </div>
+</div>
 
 
 
+
+
+
+
+
+
+
+
+
+<!-- 
 <div id="mySidenav" class="sidenav_profile">
-
 
 
     <div class="row mb-4">
@@ -58,11 +82,6 @@
 </div>
 
 
-    <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
-    <!-- <a href="#">About</a>
-    <a href="#">Services</a>
-    <a href="#">Clients</a>
-    <a href="#">Contact</a> -->
   </div>
   
-  
+   -->

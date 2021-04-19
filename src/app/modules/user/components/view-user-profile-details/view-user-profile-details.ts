@@ -70,7 +70,7 @@ export class ViewUserProfileDetailsComponent implements OnInit {
           type: BaseConstantModel.DANGER_TYPE
         }
       }
-    },  error => {        
+    }, error => {
       this.resMessage = {
         message: error,
         type: BaseConstantModel.DANGER_TYPE
@@ -78,12 +78,9 @@ export class ViewUserProfileDetailsComponent implements OnInit {
     });
   }
 
-  //  openNav() {
-  //   document.getElementById("mySidenav").style.width = "250px";
-  // }
 
-  /* Set the width of the side navigation to 0 */
-  closeNav() {
-    // document.getElementById("mySidenav").style.width = "0";
+
+  navEditProf() {
+    this.router.navigateByUrl('/user/update-user-profile');
   }
 }
