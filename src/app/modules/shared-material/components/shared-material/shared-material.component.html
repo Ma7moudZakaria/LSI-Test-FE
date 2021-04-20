@@ -377,3 +377,14 @@
 <app-tel-input  (getPhonNumber)="savePhonNumber($event)" [telInputParam]="telInputParam"></app-tel-input>
 
 {{telInputParam.phoneNumber}}
+<div style="text-align:center">
+ 
+
+  <a (click)="initiateRecording()" class="btn btn-primary" *ngIf="!recording"> Start Recording </a>
+    <a (click)="stopRecording()" class="btn btn-danger" *ngIf="recording"> Stop Recording </a>
+    <div class="clearfix"></div>
+    <audio controls="" *ngIf="url">
+        <source [src]="sanitize(url)" type="audio/wav">
+    </audio>
+
+</div> 
