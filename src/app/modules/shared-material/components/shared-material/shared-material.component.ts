@@ -43,7 +43,7 @@ export class SharedMaterialComponent implements OnInit {
 //Url of Blob
  url:any;
  error:any;
- ejazaAttachmentIds: string[] = [];
+ voiceNoteAttachmentIds: string[] = [];
  fileList: IAttachment[] = [];
  fileUploadModel: IFileUpload[] = [];
  resMessage: BaseMessageModel = {};
@@ -236,15 +236,6 @@ initiateRecording() {
      * @param  {any} blob Blog
      */
      processRecording(blob:any) {
-      // this.url = URL.createObjectURL(blob);
-      // this.onEjazaFileChange(blob);
-
-
-      // const formData = new FormData();
-      //  formData.append('file', blob);
-      //  this. UploadFiles(formData);
-     //  this. UploadFiles(blob);
-
      let files = Array<IFileUpload>();
      files.push({
        containerNameIndex : 1,
@@ -258,22 +249,6 @@ initiateRecording() {
   errorCallback(error:any) {
       this.error = 'Can not play audio in your browser';
   }
-
-  // onEjazaFileChange(files: FileList) {
-  //   if (files.length > 0) {
-  //     Array.from(files).forEach(element => {
-  //       var fileUploadObj: IFileUpload = {
-  //         containerNameIndex: 1, // need to be changed based on file type
-  //         file: element
-
-  //       }
-  //       this.fileUploadModel.push(fileUploadObj)
-  //     });
-  //     this.UploadFiles(this.fileUploadModel);
-  //   }
-
-  // }
-
   UploadFiles(files: any) {
     if (files.length === 0) {
       return;
@@ -281,7 +256,7 @@ initiateRecording() {
     this.attachmentService.upload(files).subscribe(
       (res: any) => {
         Array.from(res.data).forEach((elm: any) => {
-          this.ejazaAttachmentIds.push(elm.id);
+          this.voiceNoteAttachmentIds.push(elm.id);
           this.fileList.push(elm);
           this.url =elm.url ;
         })
