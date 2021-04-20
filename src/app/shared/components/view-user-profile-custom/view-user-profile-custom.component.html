@@ -1,19 +1,5 @@
-<!-- <div class="container-fluid">
-    <h1> {{ userProfileDetails.usrName }} </h1>
-    <p> {{ userProfileDetails.usrEmail }} </p>
-    <p> {{ userProfileDetails.Mobile }} </p>
-    <p> {{ birthdate }} </p>
-    <p> {{ translate.currentLang === langEnum.en ? userProfileDetails.engNatName : userProfileDetails.arbNatName}} </p>
-
-</div> -->
-
-
-
-
 
 <div id="mySidenav" class="overlay">
-
-
 
     <div class="row mb-4">
         <div class="col-12">
@@ -25,7 +11,10 @@
         </div>
 
         <div class="col-6 edit_profile">
-           <a (click)="navEditProf()"><img src="../../../../../assets/images/edit.svg"></a>
+           <!-- <a (click)="navEditProf()"><img src="../../../../../assets/images/edit.svg"></a> -->
+           <a (click)="navViewProf()"><img src="../../../../assets/images/student/user-profile.svg">
+           <span class="profile_edit">{{'VIEW_USER_PROFILE_PG.VIEW_PROFILE' | translate }}</span></a>
+ 
         </div>
     </div>
     <div class="row">
@@ -67,11 +56,6 @@
 </a>   
 </div>
 
-
-    <!-- <a href="#">About</a>
-    <a href="#">Services</a>
-    <a href="#">Clients</a>
-    <a href="#">Contact</a> -->
   </div>
   
   
