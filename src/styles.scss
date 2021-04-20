@@ -576,9 +576,23 @@ app-tel-input >
   margin-right: 8px !important;
 }
 
+.d-grid {
+  display: grid;
+}
+
 .general-box {
   background: $white 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 15px $box-shadow;
   border-radius: 12px;
   padding: 30px 20px;
+  overflow: hidden;
+  width: fit-content;
+
+  .title {
+    text-align: right;
+    font: normal normal bold 19px/20px Almarai-Bold;
+    letter-spacing: 0px;
+    color:$box-color2;
+    margin-bottom:  1rem ;
+  }
 }

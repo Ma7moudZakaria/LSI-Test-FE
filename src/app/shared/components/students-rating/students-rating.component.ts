@@ -14,20 +14,10 @@ export class StudentsRatingComponent implements OnInit {
    
   }
   items = [
-    { type: "Country", title: "Armenia" },
-    { type: "City", title: "Kapan" },
-    { type: "City", title: "Goris" },
-    { type: "City", title: "Hats’avan" },
+    { type: "Country", title: "Armenia hwln xbijksnx" },
+    { type: "City", title: "Kapan" }
 
-    { type: "Country", title: "Angola" },
-    { type: "City", title: "Catabola" },
-    { type: "City", title: "Camacupa" },
-    { type: "City", title: "Caluquembe" },
-
-    { type: "Country", title: "Argentina" },
-    { type: "City", title: "San Vicente" },
-    { type: "City", title: "Santa Elena" },
-    { type: "City", title: "Retiro" }
+   
   ];
   ngOnInit(): void {
   }

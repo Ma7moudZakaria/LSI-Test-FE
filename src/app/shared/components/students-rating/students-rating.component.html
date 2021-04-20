@@ -1,23 +1,27 @@
-<div class=" general-box d-inline-flex" *ngFor="let item of items; let i=index;">
-    <div class=" pacman">
-        <div >
-        {{i+1}}
+<div class="general-box d-grid">
+    <div class="title">hhhhhhhhe</div>
+    <div class=" general-box d-inline-flex mb-3 " *ngFor="let item of items; let i=index;">
+        <div class=" pacman">
+            <div >
+            {{i+1}}
+            </div>
         </div>
-    </div>
-    <div class="rating-box general-box d-inline-flex">
-        <div class="img-container">
-            <img src="../../../../assets/images/dashboard/student.png" alt="">
-        </div>
-        <div class="rating-details">
-            <span class="student-name d-block">{{item.title}}</span>
-            <span class="ratig d-block" *ngIf="ratig">80%</span>
-            <span class="ratig-stars ratig d-block" *ngIf="!ratigStars"><star-rating [value]='5' [totalstars]='5' checkedcolor="black" size="24px" [readonly]='false' (rate)="onRate()"></star-rating></span>
-            <span class="rting-text d-block">{{item.type}}</span>
-        </div>
-        <div class="arrow">
-            <img src="../../../../assets/images/dashboard/arrow.svg" alt="">
-        </div>
-
-    </div>
+        <div class="rating-box width-GB general-box d-inline-flex">
+            <div class="img-container">
+                <img src="../../../../assets/images/dashboard/student.png" alt="">
+            </div>
+            <div class="rating-details">
+                <span class="student-name d-block">{{item.title}}</span>
+                <span class="ratig d-block" *ngIf="ratig">80%</span>
+                <span class="ratig-stars ratig d-block" *ngIf="!ratigStars"><star-rating [value]='5' [totalstars]='5' checkedcolor="black" size="24px" [readonly]='false' (rate)="onRate()"></star-rating></span>
+                <span class="rting-text d-block">{{item.type}}</span>
+            </div>
+            <div class="arrow">
+                <img src="../../../../assets/images/dashboard/arrow.svg" alt="">
+            </div>
     
+        </div>
+        
+    </div>
 </div>
+

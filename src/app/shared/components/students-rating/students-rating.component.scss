@@ -1,7 +1,9 @@
 @import 'src/assets/scss/_variables.scss';
 @import 'src/assets/scss/_typography.scss';
 
-
+.width-GB {
+    width: 295px;
+}
 .rating-box {
 
     .img-container {
@@ -23,7 +25,7 @@
     
     .ratig {
         color: $icon_input;
-        font: normal normal bold 24px/16px Almarai-Bold;
+        font: normal normal bold 24px/24px Almarai-Bold;
         margin: 2px 0;
     }
 
