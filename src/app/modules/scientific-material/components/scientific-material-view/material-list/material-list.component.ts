@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
-import { MaterialCategoires } from 'src/app/core/enum/MaterialCattegory.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { MaterialCategoiresEnum } from 'src/app/core/enums/material-category-enum.enum';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
 import { IScientificMaterialFilter } from 'src/app/core/interfaces/scientific-material/iscientific-matrial-filter';
 import { IScientificMaterialGrid } from 'src/app/core/interfaces/scientific-material/iscientific-matrial-grid';
@@ -30,16 +30,15 @@ export class MaterialListComponent implements OnInit {
   selectedCategories: string[] = [];
   resMessage: BaseMessageModel = {};
   selectedProgramName: string = '';
-  booksId?:string;
-  voiceId?:string ;
-  plansId? : string;
   program = {} as IprogramsModel;
+  categoriesEnum = MaterialCategoiresEnum;
   constructor(private scientifcMaterialService: ScientificMaterialService,
     private dialog: MatDialog,
     public translate: TranslateService) { }
 
   ngOnInit(): void {
     this.loadMaterialCategories();
+
     this.loadProgramMaterial();
   }
   ngOnChanges(changes: any) {
@@ -106,11 +105,11 @@ export class MaterialListComponent implements OnInit {
       (res: BaseResponseModel) => {
         this.materialCategoires = res.data as BaseLookupModel[];
 
-        this.plansId = this.materialCategoires.filter( m => m.huffazId == MaterialCategoires.ScientificPlans)[0].id; 
+        // this.plansId = this.materialCategoires.filter( m => m.huffazId == MaterialCategoires.ScientificPlans)[0].id; 
 
-        this.voiceId = this.materialCategoires.filter( m => m.huffazId == MaterialCategoires.Audio)[0].id; 
+        // this.voiceId = this.materialCategoires.filter( m => m.huffazId == MaterialCategoires.Audio)[0].id; 
 
-        this.booksId = this.materialCategoires.filter( m => m.huffazId == MaterialCategoires.Books)[0].id; 
+        // this.booksId = this.materialCategoires.filter( m => m.huffazId == MaterialCategoires.Books)[0].id; 
       }, error => {
         this.resMessage = {
           message: error,
