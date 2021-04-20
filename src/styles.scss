@@ -598,6 +598,37 @@ app-tel-input >
   text-align: right;
 }
 
+// removeHijri
+.HijriGregorianDatePicker.removeHijri .btn:last-of-type{
+display: none;
+}
+.HijriGregorianDatePicker.removeHijri .btn:first-of-type{
+
+  color: #fff;
+  background-color: #117a8b;
+  border-color: #10707f;
+}
+.hijriInput{
+    border-top-left-radius: 0.56rem !important;
+    border-bottom-left-radius:  0.56rem !important;
+}
+.hijriInput:lang(ar){
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius:  0 !important;
+    border-top-right-radius:0.56rem !important;
+    border-bottom-right-radius: 0.56rem !important;
+}
+//  removemilady
+.HijriGregorianDatePicker.removemilady .btn:first-of-type{
+  display: none;
+  }
+  .HijriGregorianDatePicker.removemilady .btn:last-of-type{
+  
+    color: #fff;
+    background-color: #117a8b;
+    border-color: #10707f;
+  }
+  // mat-dialog-container 
 .mat-dialog-container {
   direction: initial;
   min-width: 30rem;
@@ -606,13 +637,12 @@ app-tel-input >
 .mat-dialog-title, .mat-dialog-content {
   text-align: center;
 }
-
 .mat-dialog-actions:lang(en) {
   float: right;
 }
-
 .mat-dialog-actions .mat-button-base+.mat-button-base,
  .mat-dialog-actions .mat-mdc-button-base+.mat-mdc-button-base {
   margin-left: 8px !important;
   margin-right: 8px !important;
 }
+// end mat-dialog-container 

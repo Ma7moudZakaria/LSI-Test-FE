@@ -1,10 +1,13 @@
+import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { Component, Input, OnInit } from '@angular/core';
+import * as moment from 'moment-hijri';
 
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 import { IDragDropAccordionItems } from 'src/app/core/interfaces/shared-interfaces/accordion-interfaces/idrag-drop-accordion-items';
 import { ITelInputParams } from 'src/app/core/interfaces/shared-interfaces/tel-input-interfaces/itel-input-params';
+import { Data } from '@angular/router';
 
 export interface DragDropListItem {
   id: string;
@@ -17,15 +20,22 @@ export interface DragDropListItem {
   styleUrls: ['./shared-material.component.scss']
 })
 export class SharedMaterialComponent implements OnInit {
+
+  hijri: boolean = false;
+  milady: boolean = false;
+  dataPinding: any;
+  higriPinding: any;
+  MiladyPinding: any;
+
   checked: boolean = false;
   indeterminate: boolean = false;
   // labelPosition: 'before' | 'after' = 'after';
   disabled: boolean = false;
   panelOpenState: boolean = false;
   pp = '222222';
-  telInputParam : ITelInputParams = {
+  telInputParam: ITelInputParams = {
     // phoneNumber:'+201062100486',
-    isRequired : true,
+    isRequired: true,
     countryIsoCode: '{"initialCountry": "sa"}'
   }
 
@@ -81,9 +91,9 @@ export class SharedMaterialComponent implements OnInit {
     }
   }
 
-/*
- * custome pop-up 
- */
+  /*
+   * custome pop-up 
+   */
   result: string = '';
   confirmDialog(): void {
     const message = `Are you sure you want to do this?`;
@@ -104,75 +114,100 @@ export class SharedMaterialComponent implements OnInit {
  * custome card
  */
 
- cardLst = [
-   {title: 'title ABC', content:'content ABC', imgPath:'../../../assets/images/book.svg'},
-   {title: 'title CDE', content:'content CDE', imgPath:'../../../assets/images/mic.svg'},
-   {title: 'title EFG', content:'content EFG', imgPath:'../../../assets/images/book.svg'}
- ]
+  cardLst = [
+    { title: 'title ABC', content: 'content ABC', imgPath: '../../../assets/images/book.svg' },
+    { title: 'title CDE', content: 'content CDE', imgPath: '../../../assets/images/mic.svg' },
+    { title: 'title EFG', content: 'content EFG', imgPath: '../../../assets/images/book.svg' }
+  ]
 
- /*
-  * custome accordion 
-  */
+  /*
+   * custome accordion 
+   */
 
- items: IDragDropAccordionItems[] = [
-  {
-    id: '1',
-    title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
-    paragraph : "test test test test test test test test test test test test test test test test test test test test "
-    // description: 'This is description of tasks 1'
-  },
-  {
-    id: '2',
-    title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
-    paragraph : "test341 test341 test341 test341 test341 test341 test341 test341 test341 test341 "
-    // description: 'This is description of tasks 2'
-  },
-  {
-    id: '3',
-    title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
-    paragraph : "test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 "
-    // description: 'This is description of tasks 3'
-  },
-  {
-    id: '4',
-    title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
-    paragraph : "test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 "
-    // description: 'This is description of tasks 3'
-  },
-  {
-    id: '5',
-    title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
-    paragraph : "test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 "
-    // description: 'This is description of tasks 3'
-  },
-  {
-    id: '6',
-    title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
-    paragraph : "test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 "
-    // description: 'This is description of tasks 3'
+  items: IDragDropAccordionItems[] = [
+    {
+      id: '1',
+      title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
+      paragraph: "test test test test test test test test test test test test test test test test test test test test "
+      // description: 'This is description of tasks 1'
+    },
+    {
+      id: '2',
+      title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
+      paragraph: "test341 test341 test341 test341 test341 test341 test341 test341 test341 test341 "
+      // description: 'This is description of tasks 2'
+    },
+    {
+      id: '3',
+      title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
+      paragraph: "test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 "
+      // description: 'This is description of tasks 3'
+    },
+    {
+      id: '4',
+      title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
+      paragraph: "test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 "
+      // description: 'This is description of tasks 3'
+    },
+    {
+      id: '5',
+      title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
+      paragraph: "test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 "
+      // description: 'This is description of tasks 3'
+    },
+    {
+      id: '6',
+      title: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from',
+      paragraph: "test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 test12234 "
+      // description: 'This is description of tasks 3'
+    }
+  ];
+
+
+  hasError(event: any) {
+    console.log(event);
   }
-];
 
+  getNumber(event: any) {
+    console.log(event);
+  }
 
-hasError(event:any){
-  console.log(event);
-}
+  telInputObject(event: any) {
+    console.log(event);
+  }
 
-getNumber(event:any){
-  console.log(event);
-}
+  onCountryChange(event: any) {
+    console.log(event);
+  }
 
-telInputObject(event:any){
-  console.log(event);
-}
+  savePhonNumber(event: any) {
+    this.telInputParam.phoneNumber = event;
+  }
 
-onCountryChange(event:any){
-  console.log(event);
-}
+  // date 
+  dateToString = (date: any) => { date.year + '/' + date.month + '/' + date.day };
 
-savePhonNumber(event:any){
-  this.telInputParam.phoneNumber =event ;
-}
+  getCalenderData(date: any) {
+    this.HijriTOMilady(date);
+  }
 
+  Hijri(date: any) {
+    date = date.year + '/' + date.month + '/' + date.day;
+    console.log("Hijri ", date)
+    this.higriPinding = date
+  }
+  Milady(date: any) {
+    date = date.year + '/' + date.month + '/' + date.day;
+    console.log("Milady ", date)
+    this.MiladyPinding = date
+  }
+  HijriTOMilady(date: any) {
+    var currentDate = date.year + '/' + date.month + '/' + date.day;
+    moment.locale('en');
+    var m = moment.utc(currentDate, 'iYYYY/iM/iD'); // Parse a Hijri date.
+    var hijriDate = m.format('YYYY/M/D');
+    console.log("HijriTOMilady ", hijriDate)
+    this.dataPinding = hijriDate
+  }
 }
 
