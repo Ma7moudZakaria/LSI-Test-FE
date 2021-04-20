@@ -103,13 +103,7 @@ export class MaterialListComponent implements OnInit {
 
     this.scientifcMaterialService.GetScientificMatrialCategoriesLookup().subscribe(
       (res: BaseResponseModel) => {
-        this.materialCategoires = res.data as BaseLookupModel[];
-
-        // this.plansId = this.materialCategoires.filter( m => m.huffazId == MaterialCategoires.ScientificPlans)[0].id; 
-
-        // this.voiceId = this.materialCategoires.filter( m => m.huffazId == MaterialCategoires.Audio)[0].id; 
-
-        // this.booksId = this.materialCategoires.filter( m => m.huffazId == MaterialCategoires.Books)[0].id; 
+        this.materialCategoires = res.data as BaseLookupModel[];       
       }, error => {
         this.resMessage = {
           message: error,
