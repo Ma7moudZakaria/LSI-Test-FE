@@ -48,7 +48,7 @@ export class SharedMaterialComponent implements OnInit {
  fileUploadModel: IFileUpload[] = [];
  resMessage: BaseMessageModel = {};
 //===========end record===============
-  constructor(public dialog: MatDialog,public domSanitizer: DomSanitizer,private attachmentService: AttachmentsService,) { }
+  constructor(public dialog: MatDialog,public domSanitizer: DomSanitizer,private attachmentService: AttachmentsService) { }
 
   ngOnInit(): void {
   }
