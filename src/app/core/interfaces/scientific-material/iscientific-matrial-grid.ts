@@ -1,6 +1,7 @@
 export interface IScientificMaterialGrid{
     id?:string;
     huffazId?:number;
+    categoryNumber?:number; 
     matrialTitleAr?:string;
     matrialTitleEn?:string;
     categoryId?:string;
