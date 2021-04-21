@@ -16,7 +16,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
-    CommonModule,
     FormsModule,
     TranslateModule,
     SharedModule, MatTooltipModule

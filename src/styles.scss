@@ -646,3 +646,20 @@ display: none;
   margin-right: 8px !important;
 }
 // end mat-dialog-container 
+// foe custom radio buttons
+.update_teacher_pg.mat-radio-group {
+
+  display: flex;
+    // justify-content: space-between;
+    width: 100%;
+    
+.mat-radio-button:lang(ar){
+  padding-left: 2rem;
+  padding-right: 0rem;
+
+}
+.mat-radio-button:lang(en){
+  padding-left: 0rem;
+  padding-right: 2rem;
+}
+}
