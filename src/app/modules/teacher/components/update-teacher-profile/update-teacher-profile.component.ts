@@ -1,25 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
-import { IAttachment } from 'src/app/core/interfaces/attachments-interfaces/iattachment';
-import { IFileUpload } from 'src/app/core/interfaces/attachments-interfaces/ifile-upload';
-import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
-import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
-import { ITelInputParams } from 'src/app/core/interfaces/shared-interfaces/tel-input-interfaces/itel-input-params';
-import { IUpdateUserProfile } from 'src/app/core/interfaces/user-interfaces/iupdateuserprofile';
-import { IUserProfilePicture } from 'src/app/core/interfaces/user-interfaces/iuser-profile-picture';
-import { IteacherProfile } from 'src/app/core/interfaces/teacher-interfaces/iteacher-profile';
-import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+//
 import { BaseLookupModel } from 'src/app/core/ng-model/base-lookup-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
-import { AttachmentsService } from 'src/app/core/services/attachments-services/attachments.service';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+//
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
-import { TeacherService } from 'src/app/core/services/teacher-services/teacher.service';
+import { TeacherProfileService } from 'src/app/core/services/teacher-profile/teacher-profile.service';
 import { UserService } from 'src/app/core/services/user-services/user.service';
+//
+import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
+import { IUserProfilePicture } from 'src/app/core/interfaces/user-interfaces/iuser-profile-picture';
+
+import { ITeacherProfile } from 'src/app/core/interfaces/teacher-interfaces/iteacher-profile';
+import { IUpdateTeacherProfile } from 'src/app/core/interfaces/teacher-interfaces/iupdate-teacher-profile';
+
+import { AttachmentsService } from 'src/app/core/services/attachments-services/attachments.service';
+import { IAttachment } from 'src/app/core/interfaces/attachments-interfaces/iattachment';
+import { IFileUpload } from 'src/app/core/interfaces/attachments-interfaces/ifile-upload';
+import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
+import { ITelInputParams } from 'src/app/core/interfaces/shared-interfaces/tel-input-interfaces/itel-input-params';
 
 @Component({
   selector: 'app-update-teacher-profile',
@@ -31,13 +35,13 @@ export class UpdateTeacherProfileComponent implements OnInit {
   currentUser: IUser | undefined;
   langEnum = LanguageEnum;
   telInputParam: ITelInputParams = {}
-  userProfileDetails = {} as IteacherProfile;
+  userProfileDetails = {} as ITeacherProfile;
   resMessage: BaseMessageModel = {};
   listbadges = [1, 2]
   constructor(
     private fb: FormBuilder,
     private lookupService: LookupService,
-    private teacherService: TeacherService,
+    private teacherService: TeacherProfileService,
     private userProfilePicService: UserService,
     private attachmentService: AttachmentsService,
     public translate: TranslateService,
@@ -62,9 +66,9 @@ export class UpdateTeacherProfileComponent implements OnInit {
     if (this.translate.currentLang === LanguageEnum.ar) {
       this.profileForm = this.fb.group(
         {
-          firstNameAr: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-          middleNameAr: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-          familyNameAr: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+          firstAr: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+          middleAr: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+          familyAr: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
           birthdate: [''],
           email: [''],
           nationality: [null, Validators.required],
@@ -79,26 +83,26 @@ export class UpdateTeacherProfileComponent implements OnInit {
           userArchives: [],
           userCourses: [],
           // 
-          AcademiceEducation: ['', [Validators.required]],
+          academiceEducation: ['', [Validators.required]],
           educationallevel: [null, Validators.required],
           occupation: [null, Validators.required],
-          LearnQuran: [null, Validators.required],
+          learnQuran: [null, Validators.required],
           side: [null, Validators.required],
           Duration: [null, Validators.required],
           //
           improvingQuran: [null, Validators.required],
-          ExperienceTeachingSunnah: [null, Validators.required],
-          ExperienceTeachingOnline: [null, Validators.required],
-          ExperienceTeachingforeigners: [null, Validators.required],
-          LeaveSave: [null, Validators.required],
-          LeaveRecitation: [null, Validators.required],
-          TypeReading: [null, Validators.required],
-          Languages: [null, Validators.required],
+          experienceTeachingSunnah: [null, Validators.required],
+          experienceTeachingOnline: [null, Validators.required],
+          experienceTeachingforeigners: [null, Validators.required],
+          leaveSave: [null, Validators.required],
+          leaveRecitation: [null, Validators.required],
+          typeReading: [null, Validators.required],
+          languages: [null, Validators.required],
           //
           workPlatform: [null, Validators.required],
           bankName: [null, Validators.required],
           accountNumber: [null, Validators.required],
-          ChooseProgram: [null, Validators.required],
+          chooseProgram: [null, Validators.required],
           proficiencyDegree: [null, Validators.required],
           //
           writeProgram: [null, Validators.required],
@@ -110,9 +114,9 @@ export class UpdateTeacherProfileComponent implements OnInit {
     else {
       this.profileForm = this.fb.group(
         {
-          firstNameEn: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-          middleNameEn: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-          familyNameEn: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+          firstEn: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+          middleEn: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+          familyEn: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
           birthdate: [''],
           email: [''],
           nationality: [null, Validators.required],
@@ -135,7 +139,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
   getUserProfile(id?: string) {
     this.teacherService.viewTeacherProfileDetails(id || '').subscribe(res => {
       if (res.isSuccess) {
-        this.userProfileDetails = res.data as IteacherProfile;
+        this.userProfileDetails = res.data as ITeacherProfile;
         if (!this.userProfileDetails?.proPic) {
           this.userProfileDetails.proPic = '../../../../../assets/images/Profile.svg';
         }

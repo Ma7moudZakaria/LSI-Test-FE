@@ -1,4 +1,4 @@
-export interface IupdateTeacherProfile {
+export interface IUpdateTeacherProfile {
     usrId?: string;
     firstAr?: string;
     firstEn?: string;
@@ -15,9 +15,12 @@ export interface IupdateTeacherProfile {
     city?: string;
     day?: string;
     time?: string;
-    academicEducation?: string;
-    qualification?: string;
-    specialization?: string;
+    academicEducationAr?: string;
+    academicEducationAEn?: string;
+    qualificationAr?: string;
+    qualificationEn?: string;
+    specializationAr?: string;
+    specializationEn?: string;
     agencyName?: string;
     eduYears?: string;
     entity?: string;
