@@ -1,0 +1,32 @@
+
+@import '../../../user/components/update-user-profile/update-user-profile.scss';
+
+.internal_scroll{
+    max-height: 10000px;
+}
+.profile_background{
+
+  background: url(../../../../../assets/images/profile_img.svg) !important;
+  height: 207px;
+  width: 100%;
+  border-radius: 30px;
+  
+}.box_container{
+  width: 99%;
+  height: 654px;
+}
+.textLeft:lang(en){
+  text-align: right;
+}
+.textLeft:lang(ar){
+  text-align: left;
+}
+
+
+.profile_edit
+{
+  color: $edit;
+  font-family:Almarai-Bold ;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
