@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { IAnswer } from 'src/app/core/interfaces/exam-builder-interfaces/ianswer';
 import { IQuestion } from 'src/app/core/interfaces/exam-builder-interfaces/iquestion';
 
 @Component({
@@ -13,5 +14,11 @@ export class QuestionTemplateComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  addAnswer(){
+    if (Object.keys(this.questionTemplat).length === 0){
+      this.questionTemplat = { questionId: '1', answers : []}
+    }
+     let answer : IAnswer  = {answerId : '1'}
+    this.questionTemplat.answers?.push(answer)
+  }
 }

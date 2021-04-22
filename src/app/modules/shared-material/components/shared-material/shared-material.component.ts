@@ -10,6 +10,7 @@ import { ITelInputParams } from 'src/app/core/interfaces/shared-interfaces/tel-i
 import { Data } from '@angular/router';
 import { IExam } from 'src/app/core/interfaces/exam-builder-interfaces/iexam';
 import { IQuestion } from 'src/app/core/interfaces/exam-builder-interfaces/iquestion';
+import { IAnswer } from 'src/app/core/interfaces/exam-builder-interfaces/ianswer';
 
 export interface DragDropListItem {
   id: string;
@@ -219,10 +220,10 @@ export class SharedMaterialComponent implements OnInit {
     if (Object.keys(this.exam).length === 0){
       this.exam = { examid: '1', questions : []}
     }
-    let ques : IQuestion  = {questionId : '1'}
+    let ques : IQuestion  = {questionId : '1',answers:[]}
     this.exam.questions?.push(ques);
   }
-
+ 
   saveExam(){
     this.submitExam = true;
   }

@@ -1,6 +1,6 @@
 export interface IAnswer {
-answerId:string;
-text:string;
-correct:boolean
+answerId?:string;
+text?:string;
+correct?:boolean
 
 }
