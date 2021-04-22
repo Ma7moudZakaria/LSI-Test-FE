@@ -40,9 +40,9 @@
     <div class="matrial-card col-lg-5 col-md-5 col-sm-12 m-2" *ngFor="let item of materials">
       <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-4">
-          <span *ngIf="item.categoryId == voiceId"> <img calss="" src="assets/images/scientificMaterial/Group 18138.svg" alt=""></span>
-          <span *ngIf="item.categoryId == booksId"> <img calss="" src="assets/images/scientificMaterial/Group 18139.svg" alt=""></span>
-          <span *ngIf="item.categoryId == plansId"> <img calss="" src="assets/images/scientificMaterial/Group 18138.svg" alt=""></span>
+          <span *ngIf="item.categoryNumber == categoriesEnum.Audio"> <img calss="" src="assets/images/scientificMaterial/Group 18138.svg" alt=""></span>
+          <span *ngIf="item.categoryNumber == categoriesEnum.Books"> <img calss="" src="assets/images/scientificMaterial/Group 18139.svg" alt=""></span>
+          <span *ngIf="item.categoryNumber ==  categoriesEnum.ScientificPlans"> <img calss="" src="assets/images/scientificMaterial/Group 18138.svg" alt=""></span>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-8">
           <p class="cat">{{translate.currentLang === langEnum.en ? item.matrialCategoryEn : item.matrialCategoryAr }}</p>
