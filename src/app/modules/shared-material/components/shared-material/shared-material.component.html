@@ -425,3 +425,11 @@
 <app-tel-input  (getPhonNumber)="savePhonNumber($event)" [telInputParam]="telInputParam"></app-tel-input>
 
 {{telInputParam.phoneNumber}}
+
+
+<button type="button" class="btn btn-primary" (click)="addQuestion()">Add question</button>
+
+<div *ngFor = 'let q of exam.questions'>
+  
+  <app-question-template [questionTemplat] = 'q'></app-question-template>
+</div>

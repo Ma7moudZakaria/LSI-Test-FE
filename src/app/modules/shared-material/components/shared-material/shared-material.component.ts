@@ -8,6 +8,8 @@ import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/compon
 import { IDragDropAccordionItems } from 'src/app/core/interfaces/shared-interfaces/accordion-interfaces/idrag-drop-accordion-items';
 import { ITelInputParams } from 'src/app/core/interfaces/shared-interfaces/tel-input-interfaces/itel-input-params';
 import { Data } from '@angular/router';
+import { IExam } from 'src/app/core/interfaces/exam-builder-interfaces/iexam';
+import { IQuestion } from 'src/app/core/interfaces/exam-builder-interfaces/iquestion';
 
 export interface DragDropListItem {
   id: string;
@@ -26,6 +28,7 @@ export class SharedMaterialComponent implements OnInit {
   dataPinding: any;
   higriPinding: any;
   MiladyPinding: any;
+  exam : IExam = {};
 
   checked: boolean = false;
   indeterminate: boolean = false;
@@ -208,6 +211,15 @@ export class SharedMaterialComponent implements OnInit {
     var hijriDate = m.format('YYYY/M/D');
     console.log("HijriTOMilady ", hijriDate)
     this.dataPinding = hijriDate
+  }
+  
+  //questin:IQuestion |undefined;
+  addQuestion(){
+    if (Object.keys(this.exam).length === 0){
+      this.exam = { examid: '1', questions : []}
+    }
+    let ques : IQuestion  = {questionId : '1'}
+    this.exam.questions?.push(ques);
   }
 }
 
