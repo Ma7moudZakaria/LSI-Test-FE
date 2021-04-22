@@ -29,6 +29,7 @@ export class SharedMaterialComponent implements OnInit {
   higriPinding: any;
   MiladyPinding: any;
   exam : IExam = {};
+  submitExam : boolean = false;
 
   checked: boolean = false;
   indeterminate: boolean = false;
@@ -220,6 +221,10 @@ export class SharedMaterialComponent implements OnInit {
     }
     let ques : IQuestion  = {questionId : '1'}
     this.exam.questions?.push(ques);
+  }
+
+  saveExam(){
+    this.submitExam = true;
   }
 }
 

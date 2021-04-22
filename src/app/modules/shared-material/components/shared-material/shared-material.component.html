@@ -433,3 +433,13 @@
   
   <app-question-template [questionTemplat] = 'q'></app-question-template>
 </div>
+
+
+<button (click)="saveExam()">save</button>
+<div *ngIf="submitExam">
+  <div  *ngFor = 'let q of exam.questions'>
+  
+    <app-question-template [questionTemplat] = 'q'></app-question-template>
+  </div>
+</div>
+

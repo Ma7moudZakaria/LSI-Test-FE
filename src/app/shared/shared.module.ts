@@ -22,12 +22,13 @@ import { TelInputComponent } from './components/tel-input/tel-input.component';
 import { MiladyHijriCalendarComponent } from './components/milady-hijri-calendar/milady-hijri-calendar.component';
 import { NgxHijriGregorianDatepickerModule } from 'ngx-hijri-gregorian-datepicker';
 import { QuestionTemplateComponent } from './components/question-template/question-template.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, QuestionTemplateComponent],
   imports: [
-    CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
+    CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,FormsModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule, MatIconModule,
   ],
   exports: [

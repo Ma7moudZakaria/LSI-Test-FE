@@ -7,7 +7,8 @@ import { IQuestion } from 'src/app/core/interfaces/exam-builder-interfaces/iques
   styleUrls: ['./question-template.component.scss']
 })
 export class QuestionTemplateComponent implements OnInit {
-  @Input() questionTemplat:IQuestion|undefined;;
+  @Input() questionTemplat:IQuestion = {};
+
   constructor() { }
 
   ngOnInit(): void {
