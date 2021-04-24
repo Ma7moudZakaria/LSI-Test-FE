@@ -8,17 +8,17 @@ import { IQuestion } from 'src/app/core/interfaces/exam-builder-interfaces/iques
   styleUrls: ['./question-template.component.scss']
 })
 export class QuestionTemplateComponent implements OnInit {
-  @Input() questionTemplat:IQuestion = {};
+  @Input() questionTemplate:IQuestion = {};
 
   constructor() { }
 
   ngOnInit(): void {
   }
   addAnswer(){
-    if (Object.keys(this.questionTemplat).length === 0){
-      this.questionTemplat = { questionId: '1', answers : []}
+    if (Object.keys(this.questionTemplate).length === 0){
+      this.questionTemplate = { questionId: '1', answers : []}
     }
      let answer : IAnswer  = {answerId : '1'}
-    this.questionTemplat.answers?.push(answer)
+    this.questionTemplate.answers?.push(answer)
   }
 }
