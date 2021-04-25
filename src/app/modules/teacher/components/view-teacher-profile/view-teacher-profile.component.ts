@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-teacher-profile.component.scss']
 })
 export class ViewTeacherProfileComponent implements OnInit {
+  listbadges = [1, 2]
 
   constructor() { }
 

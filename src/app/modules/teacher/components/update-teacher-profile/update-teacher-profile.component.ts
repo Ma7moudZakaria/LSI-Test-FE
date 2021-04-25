@@ -24,6 +24,7 @@ import { IAttachment } from 'src/app/core/interfaces/attachments-interfaces/iatt
 import { IFileUpload } from 'src/app/core/interfaces/attachments-interfaces/ifile-upload';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
 import { ITelInputParams } from 'src/app/core/interfaces/shared-interfaces/tel-input-interfaces/itel-input-params';
+//
 
 @Component({
   selector: 'app-update-teacher-profile',
@@ -37,23 +38,40 @@ export class UpdateTeacherProfileComponent implements OnInit {
   telInputParam: ITelInputParams = {}
   userProfileDetails = {} as ITeacherProfile;
   resMessage: BaseMessageModel = {};
-  listbadges = [1, 2]
+  listbadges = [1, 2];
+  isSubmit = false;
+  collectionOfLookup = {} as ILookupCollection;
+  listOfLookupProfile: string[] = ['GENDER', 'EDU_LEVEL', 'NATIONALITY', 'COUNTRY'];
   constructor(
     private fb: FormBuilder,
     private lookupService: LookupService,
     private teacherService: TeacherProfileService,
     private userProfilePicService: UserService,
+    private userService: UserService,
     private attachmentService: AttachmentsService,
     public translate: TranslateService,
     public languageService: LanguageService) {
   }
 
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
 
-    this.buildForm();
 
+    this.buildForm();
+    this.lookupService.getLookupByKey(this.listOfLookupProfile).subscribe(res => {
+      this.collectionOfLookup = res.data as ILookupCollection;
+      if (res.isSuccess) {
+        this.getUserProfile(this.currentUser?.id)
+      }
+      else {
+        this.resMessage =
+        {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+    });
   }
 
 
@@ -79,9 +97,8 @@ export class UpdateTeacherProfileComponent implements OnInit {
           phoneNumber: ['', [Validators.required/*,Validators.pattern(BaseConstantModel.mobilePattern), Validators.minLength(6), Validators.maxLength(16)*/]],
           countryCode: [null, Validators.required],
           quraanMemorization: ['', Validators.required],
-          userSheikhs: [],
-          userArchives: [],
-          userCourses: [],
+          city: ['', Validators.required],
+
           // 
           academiceEducation: ['', [Validators.required]],
           educationallevel: [null, Validators.required],
@@ -191,7 +208,22 @@ export class UpdateTeacherProfileComponent implements OnInit {
       }
     })
   }
+  onSubmit(value: string) { }
 
+  applyPhoneNumber(phoneNumber: string) {
+    this.f.phoneNumber.setValue(phoneNumber);
+  }
+  getCountryIsoCode() {
+    this.userService.getCountryIsoCode().subscribe(res => {
+      let code = res.data as string;
+      this.telInputParam = {
+        // phoneNumber:'+201062100486',
+        isRequired: true,
+        countryIsoCode: '{"initialCountry": "' + code.toLowerCase() + '"}'
+      }
+      // this.telInputParam.countryIsoCode = '{"initialCountry": "' + code.toLowerCase() +'"}';
+    })
+  }
 
 
 }

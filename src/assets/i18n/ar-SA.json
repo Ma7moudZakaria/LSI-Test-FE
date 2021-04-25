@@ -179,6 +179,7 @@
     "EXPERIENCE_TEACHING_FOREIGNERS": "هل لديك خبرة في تعليم الأجانب ؟",
     "LEAVE_SAVE": "هل لديك إجازة حفظ ؟",
     "LEAVE_RECITATION": "هل لديه إجازة تلاوة ؟",
+    "LEAVE_RECITATION_VIEW": "اجازة تلاوة ",
     "TYPE_READING": "بأي قراءة ؟",
     "LANGUAGES": "اللغات",
     "AVAILABLE_PROGRAMS_AND_TIMES": "البرامج و الاوقات المتاحة",
@@ -193,7 +194,8 @@
     "ADD": "اضافة",
     "ADDING_SUGGESTION": "إضافة اقتراح بتدريس برنامج أخر",
     "WRITE_PROGRAM": "اكتب البرنامج",
-    "INFO_CONTACT": "إختر الوقت المناسب ليقوم مدير النظام بالتواصل معك لإجراء مقابلة للإنضمام للمنصه"
+    "INFO_CONTACT": "إختر الوقت المناسب ليقوم مدير النظام بالتواصل معك لإجراء مقابلة للإنضمام للمنصه",
+    "CITY": "المدينة"
   },
   "QUESTION_BANK": {
     "TITLE": "بنك الأسئلة",

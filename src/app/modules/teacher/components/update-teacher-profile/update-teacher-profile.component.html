@@ -4,7 +4,7 @@
     <div class="row">
         <div class="box_container">
             <!-- [formGroup]="profileForm" (ngSubmit)="onSubmit(profileForm.value)"  -->
-            <form class="form-group" [formGroup]="profileForm" >
+            <form class="form-group" [formGroup]="profileForm" (ngSubmit)="onSubmit(profileForm.value)" >
 
                <div class="col-12 profile p-0 mb-50">
                     <div class="profile_background"></div>
@@ -32,7 +32,7 @@
                                 <input id="firstAr" pInputText type="text" formControlName="firstAr"
                                     name="firstAr" class="form-control UserRegister__FormControl">
 
-                                <!-- <div *ngIf="f.firstAr.errors && (f.firstAr.touched || isSubmit)"
+                                <div *ngIf="f.firstAr.errors && (f.firstAr.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
 
                                     <div *ngIf="f.firstAr.errors?.required">
@@ -44,7 +44,7 @@
                                     <div *ngIf="f.firstAr.errors?.minlength">
                                         {{ 'UPDATE_USER_PG.NAME_AR_MIN_LENGTH' | translate }}
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
 
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="translate.currentLang == langEnum.ar">
@@ -52,7 +52,7 @@
                                 <input id="middleAr" pInputText type="text" formControlName="middleAr"
                                     name="middleAr" class="form-control UserRegister__FormControl">
                                     
-                                    <!-- <div *ngIf="f.middleAr.errors && (f.middleAr.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.middleAr.errors && (f.middleAr.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.middleAr.errors?.required">
                                             {{ 'UPDATE_USER_PG.FATHER_NAME_AR_REQUIRED' | translate }}
                                         </div>
@@ -62,7 +62,7 @@
                                         <div *ngIf="f.middleAr.errors?.minlength">
                                             {{ 'UPDATE_USER_PG.FATHER_NAME_AR_MIN_LENGTH' | translate }}
                                         </div>
-                                    </div>  -->
+                                    </div> 
                             </div>
 
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="translate.currentLang == langEnum.ar">
@@ -70,7 +70,7 @@
                                 <input id="familyAr" pInputText type="text" formControlName="familyAr"
                                     name="familyAr" class="form-control UserRegister__FormControl">
 
-                                    <!-- <div *ngIf="f.familyAr.errors && (f.familyAr.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.familyAr.errors && (f.familyAr.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.familyAr.errors?.required">
                                             {{ 'UPDATE_USER_PG.FAMILY_NAME_AR_REQUIRED' | translate }}
                                         </div>
@@ -80,7 +80,7 @@
                                         <div *ngIf="f.familyAr.errors?.minlength">
                                             {{ 'UPDATE_USER_PG.FAMILY_NAME_AR_MIN_LENGTH' | translate }}
                                         </div>
-                                    </div>  -->
+                                    </div> 
                             </div>
 
                             <!-- End Names Arabic -->
@@ -93,7 +93,7 @@
                                 <input id="firstEn" pInputText type="text" formControlName="firstEn"
                                     name="firstEn" class="form-control UserRegister__FormControl">
 
-                                <!-- <div *ngIf="f.firstEn.errors && (f.firstEn.touched || isSubmit)"
+                                <div *ngIf="f.firstEn.errors && (f.firstEn.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
 
                                     <div *ngIf="f.firstEn.errors?.required">
@@ -105,7 +105,7 @@
                                     <div *ngIf="f.firstEn.errors?.minlength">
                                         {{ 'UPDATE_USER_PG.NAME_EN_MIN_LENGTH' | translate }}
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
 
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="translate.currentLang == langEnum.en">
@@ -113,7 +113,7 @@
                                 <input id="middleEn" pInputText type="text" formControlName="middleEn"
                                     name="middleEn" class="form-control UserRegister__FormControl">
                                     
-                                    <!-- <div *ngIf="f.middleEn.errors && (f.middleEn.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.middleEn.errors && (f.middleEn.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.middleEn.errors?.required">
                                             {{ 'UPDATE_USER_PG.FATHER_NAME_EN_REQUIRED' | translate }}
                                         </div>
@@ -123,7 +123,7 @@
                                         <div *ngIf="f.middleEn.errors?.minlength">
                                             {{ 'UPDATE_USER_PG.FATHER_NAME_EN_MIN_LENGTH' | translate }}
                                         </div>
-                                    </div>  -->
+                                    </div> 
                             </div>
                             
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="translate.currentLang == langEnum.en">
@@ -131,7 +131,7 @@
                                 <input id="familyEn" pInputText type="text" formControlName="familyEn"
                                     name="familyEn" class="form-control UserRegister__FormControl">
 
-                                    <!-- <div *ngIf="f.familyEn.errors && (f.familyEn.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.familyEn.errors && (f.familyEn.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.familyEn.errors?.required">
                                             {{ 'UPDATE_USER_PG.FAMILY_NAME_EN_REQUIRED' | translate }}
                                         </div>
@@ -141,7 +141,7 @@
                                         <div *ngIf="f.familyEn.errors?.minlength">
                                             {{ 'UPDATE_USER_PG.FAMILY_NAME_EN_MIN_LENGTH' | translate }}
                                         </div>
-                                    </div>  -->
+                                    </div> 
                             </div>
 
                             <!-- End Names English -->
@@ -153,17 +153,17 @@
                                     name="birthdate" class="form-control UserRegister__FormControl">
                                 
 
-                                    <!-- <div *ngIf="f.birthdate.errors && (f.birthdate.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.birthdate.errors && (f.birthdate.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.birthdate.errors.required">
                                             {{ 'UPDATE_USER_PG.BIRTHDATE_REQUIRED' | translate }}
                                         </div>
-                                    </div>  -->
+                                    </div> 
                             </div>
                             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4">
                                 <label class="Register__Label" for="gender"> {{ 'GENERAL.GENDER' | translate }}
                                 </label>
                                 <div class="row">
-                                    <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"
                                         *ngFor="let item of collectionOfLookup.GENDER">
                                         <label for="male">
                                             <input type="radio" id="male" name="gender" formControlName="gender"
@@ -171,20 +171,20 @@
                                             {{ translate.currentLang == langEnum.en ? item.nameEn : item.nameAr}}
                                         </label>
                                         
-                                         <section >
+                                         <!-- <section>
                                             <label class="UserLogin__Label" for="UserEmail">Radio-button</label>
                                                 <mat-radio-group aria-label="Select an option"  class="example-radio-group">
                                                     <mat-radio-button value="1" class="example-radio-button" >Option 1</mat-radio-button>
                                                     <mat-radio-button value="2" class="example-radio-button" >Option 2</mat-radio-button>
                                                 </mat-radio-group>
-                                        </section> 
-                                    </div> -->
-                                    <!-- <div *ngIf="f.gender.errors && (f.gender.touched || isSubmit)"
+                                        </section>  -->
+                                    </div>
+                                    <div *ngIf="f.gender.errors && (f.gender.touched || isSubmit)"
                                             class="alert alert-danger mt-2 mb-2">
                                             <div *ngIf="f.gender.errors.required">
                                                 {{ 'UPDATE_USER_PG.GENDER_REQUIRED' | translate }}
                                             </div>
-                                        </div> -->
+                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -202,13 +202,13 @@
                                     <!-- <app-tel-input  (getPhonNumber)="applyPhoneNumber($event)" 
                                     [telInputParam]="telInputParam"></app-tel-input> -->
 
-                                    <!-- <div *ngIf="f.phoneNumber.errors && (f.phoneNumber.touched || isSubmit)"
+                                    <div *ngIf="f.phoneNumber.errors && (f.phoneNumber.touched || isSubmit)"
                                      class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.phoneNumber.errors.required">
                                             {{ 'UPDATE_USER_PG.PHONE_NUMBER_REQUIRED' | translate }}
                                         </div>
                                       
-                                    </div>  -->
+                                    </div> 
                             </div>
                       
                            
@@ -240,8 +240,7 @@
                             </div>
       
                             <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2">
-                                <label class="Register__Label" for="phoneNumber"> {{ 'UPDATE_USER_PG.COUNTRY' |
-                                    translate }} </label>
+                                <label class="Register__Label" for="country"> {{ 'UPDATE_USER_PG.COUNTRY' | translate }} </label>
 
                                 <!-- <select class="UpdateUser__Options" name="nameEn" formControlName="countryCode">
                                     <option *ngFor="let countryItem of collectionOfLookup.COUNTRY"
@@ -257,12 +256,12 @@
                                     </div>
                                 </div> -->
                             </div>
-                            <!-- <div class="col-lg-3 col-md-6 col-sm-2 col-xs-2 mt-3">
-                                <label class="Register__Label" for="address"> {{ 'UPDATE_USER_PG.ADDRESS' | translate }}
+                            <div class="col-20 mt-3">
+                                <label class="Register__Label" for="city"> {{ 'UPDATE_TEACHER_PG.CITY' | translate }}
                                 </label>
-                                <input id="address" pInputText type="text" formControlName="address" name="address" width="70px"
+                                <input id="city" pInputText type="text" formControlName="city" name="city" width="70px"
                                     class="form-control UserRegister__FormControl">
-
+<!-- 
                                     <div *ngIf="f.address.errors && (f.address.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.address.errors.required">
                                             {{ 'UPDATE_USER_PG.ADDRESS_REQUIRED' | translate }}
@@ -273,8 +272,8 @@
                                         <div *ngIf="f.address.errors?.minlength">
                                             {{ 'UPDATE_USER_PG.ADDRESS_MIN_LENGTH' | translate }}
                                         </div>
-                                    </div> 
-                            </div> -->
+                                    </div>  -->
+                            </div>
                            <div class="col-12">
                                <br>
                            </div>
