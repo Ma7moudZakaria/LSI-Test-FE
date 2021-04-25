@@ -7,41 +7,49 @@ export interface IUpdateTeacherProfile {
     familyAr?: string;
     familyEn?: string;
     birthdate?: string;
+    hijriBirthDate?: string;
     gender?: string;
     mobile?: string;
     nationality?: string;
-    countryCode?: string;
-    countryid?: string;
+    // countryCode?: string;
+    // countryid?: string;
+
+    country?: string;
     city?: string;
-    day?: string;
-    time?: string;
-    academicEducationAr?: string;
-    academicEducationAEn?: string;
-    qualificationAr?: string;
-    qualificationEn?: string;
-    specializationAr?: string;
-    specializationEn?: string;
-    agencyName?: string;
-    eduYears?: string;
+    interviewDay?: string;
+    interviewTime?: string;
+    acEdu?: string;
+    // academicEducationAr?: string;
+    // academicEducationAEn?: string;
+    // qualificationAr?: string;
+    // qualificationEn?: string;
+    // specializationAr?: string;
+    // specializationEn?: string;
+    qualifi?: string;
+    specia?: string;
+    agency?: string;
+    eduYear?: string;
     entity?: string;
-    isHasQuranExperience?: boolean;
-    isHasTeachSunnaExperience?: boolean;
-    isHasInternetTeachExperience?: boolean;
-    isHasTeachForeignerExperience?: boolean;
+    isHasQuranExp?: boolean;
+    isHasTeachSunnaExp?: boolean;
+    isHasInternetTeachExp?: boolean;
+    isHasTeachForeignerExp?: boolean;
     isHasEjazaHafz?: boolean;
     isHasEjazaTelawa?: boolean;
-    anyLanguageReading?: string;
-    languageId?: string;
+    anyLangReading?: string;
+    lang?: string;
     workingPlatForm?: string;
     bankName?: string;
     bankNumber?: string;
     dayAndTime?: string;
     from?: string;
     to?: string;
-    ejazaIds?: string[];
-    programIds?: string[];
-    degreeIds?: string[];
-    eduLevels?: string[];
+    ejazaAttachments?: string[];
+    teacherPrograms?: string[];
+    degree?: string[];
+    // eduLevels?: string[];
+
+
 
 
 

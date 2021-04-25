@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatRadioModule } from '@angular/material/radio';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [ViewTeacherProfileComponent, UpdateTeacherProfileComponent],
@@ -17,9 +18,9 @@ import { MatRadioModule } from '@angular/material/radio';
     FormsModule,
     TranslateModule,
     MatTooltipModule,
-    MatRadioModule
+    MatRadioModule, SharedModule
 
   ], providers: [MatTooltipModule],
-  exports: []
+  exports: [ViewTeacherProfileComponent]
 })
 export class TeacherModule { }

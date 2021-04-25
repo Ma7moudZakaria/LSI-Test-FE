@@ -35,13 +35,16 @@ export class UpdateTeacherProfileComponent implements OnInit {
   profileForm: FormGroup = new FormGroup({})
   currentUser: IUser | undefined;
   langEnum = LanguageEnum;
-  telInputParam: ITelInputParams = {}
-  userProfileDetails = {} as ITeacherProfile;
+  telInputParam: ITelInputParams = {};
+  teacherProfileDetails = {} as ITeacherProfile;
   resMessage: BaseMessageModel = {};
   listbadges = [1, 2];
   isSubmit = false;
   collectionOfLookup = {} as ILookupCollection;
-  listOfLookupProfile: string[] = ['GENDER', 'EDU_LEVEL', 'NATIONALITY', 'COUNTRY'];
+  listOfLookupProfile: string[] = ['GENDER', 'EDU_LEVEL', 'NATIONALITY', 'COUNTRY', 'CITY'
+    , 'DEGREE', 'EDU_YEAR', 'INTERVIEW_DAY', 'LANG', 'QUALIFI', 'SPECIAL', 'WORKING_PLATFORM'];
+
+
   constructor(
     private fb: FormBuilder,
     private lookupService: LookupService,
@@ -56,7 +59,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
-
+    this.getUserProfile(this.currentUser.id);
 
     this.buildForm();
     this.lookupService.getLookupByKey(this.listOfLookupProfile).subscribe(res => {
@@ -92,17 +95,17 @@ export class UpdateTeacherProfileComponent implements OnInit {
           nationality: [null, Validators.required],
           gender: [null, Validators.required],
           address: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
-          SelectTime: ['', [Validators.required]],
-          SelectDay: ['', [Validators.required]],
+          interviewTime: ['', [Validators.required]],
+          interviewDay: ['', [Validators.required]],
           phoneNumber: ['', [Validators.required/*,Validators.pattern(BaseConstantModel.mobilePattern), Validators.minLength(6), Validators.maxLength(16)*/]],
-          countryCode: [null, Validators.required],
+          country: [null, Validators.required],
           quraanMemorization: ['', Validators.required],
           city: ['', Validators.required],
 
           // 
-          academiceEducation: ['', [Validators.required]],
+          acEdu: ['', [Validators.required]], //QUALIFI
           educationallevel: [null, Validators.required],
-          occupation: [null, Validators.required],
+          Special: [null, Validators.required],
           learnQuran: [null, Validators.required],
           side: [null, Validators.required],
           Duration: [null, Validators.required],
@@ -142,7 +145,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           address: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
           phoneNumber: ['', [Validators.required, Validators.pattern(BaseConstantModel.mobilePattern)]],
           occupation: [null, Validators.required],
-          countryCode: [null, Validators.required],
+          country: [null, Validators.required],
           quraanMemorization: ['', Validators.required],
           userSheikhs: [],
           userArchives: [],
@@ -152,13 +155,18 @@ export class UpdateTeacherProfileComponent implements OnInit {
       )
     }
   }
+  PopulateForm() {
+
+    this.telInputParam.phoneNumber = this.teacherProfileDetails?.mobile;
+
+  }
 
   getUserProfile(id?: string) {
     this.teacherService.viewTeacherProfileDetails(id || '').subscribe(res => {
       if (res.isSuccess) {
-        this.userProfileDetails = res.data as ITeacherProfile;
-        if (!this.userProfileDetails?.proPic) {
-          this.userProfileDetails.proPic = '../../../../../assets/images/Profile.svg';
+        this.teacherProfileDetails = res.data as ITeacherProfile;
+        if (!this.teacherProfileDetails?.proPic) {
+          this.teacherProfileDetails.proPic = '../../../../../assets/images/Profile.svg';
         }
         // this.PopulateForm()
       }
@@ -193,7 +201,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
 
     this.userProfilePicService.updateUserProfilePic(formData).subscribe(res => {
       if (res.isSuccess) {
-        this.userProfileDetails.proPic = res.data as string;
+        this.teacherProfileDetails.proPic = res.data as string;
       }
       else {
         this.resMessage = {

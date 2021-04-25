@@ -195,7 +195,9 @@
     "ADDING_SUGGESTION": "Adding a suggestion to teach another program",
     "WRITE_PROGRAM": "Write the program",
     "INFO_CONTACT": "Choose the appropriate time for the system administrator to contact you for an interview to join the platform",
-    "CITY": "City"
+    "CITY": "City",
+    "QUALIFICATION": "qualifi",
+    "SPECTALIST": "SPECIAL"
   },
   "QUESTION_BANK": {
     "TITLE": "Question Bank",
