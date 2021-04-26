@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExamFormComponent } from './exam-form.component';
+import { ExamFormViewComponent } from './exam-form-view.component';
 
-describe('ExamFormComponent', () => {
-  let component: ExamFormComponent;
-  let fixture: ComponentFixture<ExamFormComponent>;
+describe('ExamFormViewComponent', () => {
+  let component: ExamFormViewComponent;
+  let fixture: ComponentFixture<ExamFormViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ExamFormComponent ]
+      declarations: [ ExamFormViewComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExamFormComponent);
+    fixture = TestBed.createComponent(ExamFormViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
