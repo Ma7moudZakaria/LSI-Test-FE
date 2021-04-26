@@ -108,7 +108,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           Special: [null, Validators.required],
           learnQuran: [null, Validators.required],
           side: [null, Validators.required],
-          Duration: [null, Validators.required],
+          // Duration: [null, Validators.required],
           //
           improvingQuran: [null, Validators.required],
           experienceTeachingSunnah: [null, Validators.required],
@@ -144,7 +144,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           gender: [null, Validators.required],
           address: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
           phoneNumber: ['', [Validators.required, Validators.pattern(BaseConstantModel.mobilePattern)]],
-          occupation: [null, Validators.required],
+          // occupation: [null, Validators.required],
           country: [null, Validators.required],
           quraanMemorization: ['', Validators.required],
           userSheikhs: [],
