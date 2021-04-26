@@ -19,12 +19,6 @@ export interface IUpdateTeacherProfile {
     interviewDay?: string;
     interviewTime?: string;
     acEdu?: string;
-    // academicEducationAr?: string;
-    // academicEducationAEn?: string;
-    // qualificationAr?: string;
-    // qualificationEn?: string;
-    // specializationAr?: string;
-    // specializationEn?: string;
     qualifi?: string;
     specia?: string;
     agency?: string;
@@ -47,7 +41,7 @@ export interface IUpdateTeacherProfile {
     ejazaAttachments?: string[];
     teacherPrograms?: string[];
     degree?: string[];
-    // eduLevels?: string[];
+
 
 
 

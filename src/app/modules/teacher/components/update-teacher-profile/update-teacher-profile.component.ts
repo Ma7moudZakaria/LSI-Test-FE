@@ -99,7 +99,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           interviewDay: ['', [Validators.required]],
           phoneNumber: ['', [Validators.required/*,Validators.pattern(BaseConstantModel.mobilePattern), Validators.minLength(6), Validators.maxLength(16)*/]],
           country: [null, Validators.required],
-          quraanMemorization: ['', Validators.required],
+          // quraanMemorization: ['', Validators.required],
           city: ['', Validators.required],
 
           // 
