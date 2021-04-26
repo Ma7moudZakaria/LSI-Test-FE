@@ -9,8 +9,8 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
 export class TeacherProfileService {
 
 
-  updateTeacherUrl = environment.baseUrl + 'User/update-teacher-profile/';
-  viewTeacherProfileDetailsURL = environment.baseUrl + 'User/view-teacher-profile-details/';
+  updateTeacherUrl = environment.baseUrl + 'teacher/update-teacher-profile/';
+  viewTeacherProfileDetailsURL = environment.baseUrl + 'teacher/view-teacher-profile-details/';
 
   constructor(private http: HttpClient) { }
 
