@@ -23,10 +23,13 @@ import { MiladyHijriCalendarComponent } from './components/milady-hijri-calendar
 import { NgxHijriGregorianDatepickerModule } from 'ngx-hijri-gregorian-datepicker';
 import { QuestionTemplateComponent } from './components/question-template/question-template.component';
 import { FormsModule } from '@angular/forms';
+import { VoiceRecordingComponent } from './components/voice-recording/voice-recording.component';
 
 
 @NgModule({
-  declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, QuestionTemplateComponent],
+  declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent, 
+    SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, QuestionTemplateComponent, 
+    VoiceRecordingComponent],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,FormsModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule, MatIconModule,
@@ -34,7 +37,8 @@ import { FormsModule } from '@angular/forms';
   exports: [
     MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule, Ng2TelInputModule,
     MatExpansionModule, MatSelectModule, DragDropModule, CustomeCardComponent, CustomAccordionComponent,
-    ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent,QuestionTemplateComponent
+    ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent,
+    QuestionTemplateComponent,VoiceRecordingComponent
   ]
 })
 export class SharedModule { }
