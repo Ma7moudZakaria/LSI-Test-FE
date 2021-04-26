@@ -12,7 +12,7 @@ export interface ILookupCollection {
     SCIENTIFIC_ARCHIVES?: BaseLookupModel[];
     TRAINING_COURSES?: BaseLookupModel[];
     SYSTEM_SHEIKHS?: BaseLookupModel[];
-    WLAKTHROUGHPAGES?: BaseLookupModel[];
+    WALKTHROUGHPAGES?: BaseLookupModel[];
     CITY?: BaseLookupModel[];
     DEGREE?: BaseLookupModel[];
     EDU_YEAR?: BaseLookupModel[];
@@ -20,5 +20,5 @@ export interface ILookupCollection {
     LANG?: BaseLookupModel[];
     QUALIFI?: BaseLookupModel[];
     SPECIAL?: BaseLookupModel[];
-    WORKING_PLATFORM: BaseLookupModel[];//جهه العمل
+    WORKING_PLATFORM?: BaseLookupModel[];//جهه العمل
 }

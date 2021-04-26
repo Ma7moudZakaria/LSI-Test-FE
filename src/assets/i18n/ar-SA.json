@@ -169,7 +169,7 @@
     "GOVERNMENTAL_ENTITY": "جهه حكومية",
     "NOTGOVERNMENTAL_ENTITY": "غير جهه حكومية",
     "THISFIELD_REQUIRED": "هذا الحقل مطلوب",
-    "SIDE": "الجهة",
+    "ENTITY": "الجهة",
     "DURATION": "مدة الدارسة بالسنين ",
     "IMPROVING_QURAN_WITH_TAJWEED": "هل لديك خبرة فى تحسين القران بالتجويد",
     "YES": "نعم",
@@ -197,7 +197,8 @@
     "INFO_CONTACT": "إختر الوقت المناسب ليقوم مدير النظام بالتواصل معك لإجراء مقابلة للإنضمام للمنصه",
     "CITY": "المدينة",
     "QUALIFICATION": "المؤهل",
-    "SPECTALIST": "التخصص"
+    "SPECTALIST": "التخصص",
+    "CHOOSE_DEGREE": "برجاء اختيار  درجة الاجادة "
   },
   "QUESTION_BANK": {
     "TITLE": "بنك الأسئلة",

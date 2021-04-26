@@ -25,6 +25,7 @@ import { IFileUpload } from 'src/app/core/interfaces/attachments-interfaces/ifil
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
 import { ITelInputParams } from 'src/app/core/interfaces/shared-interfaces/tel-input-interfaces/itel-input-params';
 //
+import * as moment from 'moment-hijri';
 
 @Component({
   selector: 'app-update-teacher-profile',
@@ -37,14 +38,24 @@ export class UpdateTeacherProfileComponent implements OnInit {
   langEnum = LanguageEnum;
   telInputParam: ITelInputParams = {};
   teacherProfileDetails = {} as ITeacherProfile;
+  updateTeacherModel: IUpdateTeacherProfile = {};
+
   resMessage: BaseMessageModel = {};
+  degreeMessage: BaseMessageModel = {};
+  drgreeList = Array<BaseLookupModel>();
+  drgreeList__addition = Array<BaseLookupModel>();
+
   listbadges = [1, 2];
   isSubmit = false;
   collectionOfLookup = {} as ILookupCollection;
   listOfLookupProfile: string[] = ['GENDER', 'EDU_LEVEL', 'NATIONALITY', 'COUNTRY', 'CITY'
     , 'DEGREE', 'EDU_YEAR', 'INTERVIEW_DAY', 'LANG', 'QUALIFI', 'SPECIAL', 'WORKING_PLATFORM'];
 
-
+  hijri: boolean = false;
+  milady: boolean = false;
+  dataPinding: any;
+  higriPinding: any;
+  MiladyPinding: any;
   constructor(
     private fb: FormBuilder,
     private lookupService: LookupService,
@@ -59,13 +70,30 @@ export class UpdateTeacherProfileComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
-    this.getUserProfile(this.currentUser.id);
-
     this.buildForm();
+    this.getLookupByKey();
+  }
+
+  //  retrunProgramAndDegreeData(){
+  //   this.updateTeacherModel.teacherPrograms = [];
+  //   this.updateTeacherModel.degree = [];
+
+  //   if (this.drgreeList.length) {
+  //     Array.from(this.drgreeList).forEach((elm: BaseLookupModel) => {
+  //       if (this.updateTeacherModel.degree) {
+  //         this.updateTeacherModel.degree.push({
+  //          // sheikhsIds: elm.id
+  //         });
+  //       }
+
+  //     })
+  //   }}
+
+  getLookupByKey() {
     this.lookupService.getLookupByKey(this.listOfLookupProfile).subscribe(res => {
       this.collectionOfLookup = res.data as ILookupCollection;
       if (res.isSuccess) {
-        this.getUserProfile(this.currentUser?.id)
+        this.getTeacherProfile(this.currentUser?.id)
       }
       else {
         this.resMessage =
@@ -76,8 +104,6 @@ export class UpdateTeacherProfileComponent implements OnInit {
       }
     });
   }
-
-
   get f() {
     return this.profileForm.controls;
   }
@@ -90,43 +116,42 @@ export class UpdateTeacherProfileComponent implements OnInit {
           firstAr: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
           middleAr: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
           familyAr: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-          birthdate: [''],
+          hijriBirthDate: [''],
           email: [''],
           nationality: [null, Validators.required],
           gender: [null, Validators.required],
-          address: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
           interviewTime: ['', [Validators.required]],
           interviewDay: ['', [Validators.required]],
           phoneNumber: ['', [Validators.required/*,Validators.pattern(BaseConstantModel.mobilePattern), Validators.minLength(6), Validators.maxLength(16)*/]],
           country: [null, Validators.required],
-          // quraanMemorization: ['', Validators.required],
           city: ['', Validators.required],
 
           // 
-          acEdu: ['', [Validators.required]], //QUALIFI
-          educationallevel: [null, Validators.required],
-          Special: [null, Validators.required],
-          learnQuran: [null, Validators.required],
-          side: [null, Validators.required],
-          // Duration: [null, Validators.required],
+          acEdu: ['', [Validators.required]], //edu level
+          qualifi: [null, Validators.required],
+          special: [null, Validators.required],
+          workingPlatForm: [null, Validators.required],
+          entity: [null, Validators.required],
+          eduYear: [null, Validators.required],
+
           //
-          improvingQuran: [null, Validators.required],
-          experienceTeachingSunnah: [null, Validators.required],
-          experienceTeachingOnline: [null, Validators.required],
-          experienceTeachingforeigners: [null, Validators.required],
-          leaveSave: [null, Validators.required],
-          leaveRecitation: [null, Validators.required],
-          typeReading: [null, Validators.required],
+          isHasQuranExp: [null, Validators.required],
+          isHasTeachSunnaExp: [null, Validators.required],
+          isHasInternetTeachExp: [null, Validators.required],
+          isHasTeachForeignerExp: [null, Validators.required],
+          isHasEjazaHafz: [null, Validators.required],
+          isHasEjazaTelawa: [null, Validators.required],
+          anyLangReading: [null, Validators.required],
           languages: [null, Validators.required],
           //
           workPlatform: [null, Validators.required],
           bankName: [null, Validators.required],
-          accountNumber: [null, Validators.required],
-          chooseProgram: [null, Validators.required],
+          bankNumber: [null, Validators.required],
+          teacherPrograms: [null, Validators.required],
           proficiencyDegree: [null, Validators.required],
           //
-          writeProgram: [null, Validators.required],
-          proficiencyDegree_forSuggestion: [null, Validators.required],
+          // writeProgram: [null, Validators.required],
+          // proficiencyDegree_forSuggestion: [null, Validators.required],
 
         }
       )
@@ -137,38 +162,108 @@ export class UpdateTeacherProfileComponent implements OnInit {
           firstEn: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
           middleEn: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
           familyEn: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-          birthdate: [''],
+
+          hijriBirthDate: [''],
           email: [''],
           nationality: [null, Validators.required],
-          educationallevel: [null, Validators.required],
           gender: [null, Validators.required],
-          address: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
-          phoneNumber: ['', [Validators.required, Validators.pattern(BaseConstantModel.mobilePattern)]],
-          // occupation: [null, Validators.required],
+          interviewTime: ['', [Validators.required]],
+          interviewDay: ['', [Validators.required]],
+          phoneNumber: ['', [Validators.required/*,Validators.pattern(BaseConstantModel.mobilePattern), Validators.minLength(6), Validators.maxLength(16)*/]],
           country: [null, Validators.required],
-          quraanMemorization: ['', Validators.required],
-          userSheikhs: [],
-          userArchives: [],
-          userCourses: []
+          city: ['', Validators.required],
+
+          // 
+          acEdu: ['', [Validators.required]], //edu level
+          qualifi: [null, Validators.required],
+          special: [null, Validators.required],
+          workingPlatForm: [null, Validators.required],
+          entity: [null, Validators.required],
+          eduYear: [null, Validators.required],
+
+          //
+          isHasQuranExp: [null, Validators.required],
+          isHasTeachSunnaExp: [null, Validators.required],
+          isHasInternetTeachExp: [null, Validators.required],
+          isHasTeachForeignerExp: [null, Validators.required],
+          isHasEjazaHafz: [null, Validators.required],
+          isHasEjazaTelawa: [null, Validators.required],
+          anyLangReading: [null, Validators.required],
+          languages: [null, Validators.required],
+          //
+          workPlatform: [null, Validators.required],
+          bankName: [null, Validators.required],
+          bankNumber: [null, Validators.required],
+          teacherPrograms: [null, Validators.required],
+          proficiencyDegree: [null, Validators.required],
+          // writeProgram: [null, Validators.required],
+          // proficiencyDegree_forSuggestion: [null, Validators.required],
 
         }
       )
     }
   }
+
+
   PopulateForm() {
+    if (this.translate.currentLang === LanguageEnum.ar) {
+      this.f.fnameAr.setValue(this.teacherProfileDetails?.fnameAr);
+      this.f.mnameAr.setValue(this.teacherProfileDetails?.mnameAr);
+      this.f.familyAr.setValue(this.teacherProfileDetails?.fanameAr);
+
+    }
+    if (this.translate.currentLang === LanguageEnum.en) {
+      this.f.firstEn.setValue(this.teacherProfileDetails?.fnameEn);
+      this.f.middleEn.setValue(this.teacherProfileDetails?.mnameEn);
+      this.f.familyEn.setValue(this.teacherProfileDetails?.faNameEn);
+    }
+    this.f.hijriBirthDate.setValue(this.teacherProfileDetails?.hijriBirthDate)
+    this.f.email.setValue(this.teacherProfileDetails?.usrEmail)
+    this.f.nationality.setValue(this.teacherProfileDetails?.nationality)
+    this.f.country.setValue(this.teacherProfileDetails?.country)
+    this.f.city.setValue(this.teacherProfileDetails?.city)
+    this.f.gender.setValue(this.teacherProfileDetails?.gender)
+    this.f.interviewTime.setValue(this.teacherProfileDetails?.interviewTime)
+    this.f.interviewDay.setValue(this.teacherProfileDetails?.interviewDay)
 
     this.telInputParam.phoneNumber = this.teacherProfileDetails?.mobile;
+    this.f.phoneNumber.setValue(this.teacherProfileDetails?.mobile);
+
+    this.f.acEdu.setValue(this.teacherProfileDetails?.acEdu)
+    this.f.qualifi.setValue(this.teacherProfileDetails?.qualifi)
+    this.f.special.setValue(this.teacherProfileDetails?.specia)
+    this.f.workingPlatForm.setValue(this.teacherProfileDetails?.workingPlatForm)
+    this.f.entity.setValue(this.teacherProfileDetails?.entity)
+    this.f.eduYear.setValue(this.teacherProfileDetails?.eduYear)
+
+    this.f.isHasQuranExp.setValue(this.teacherProfileDetails?.isHasQuranExp)
+    this.f.isHasTeachSunnaExp.setValue(this.teacherProfileDetails?.isHasTeachSunnaExp)
+    this.f.isHasInternetTeachExp.setValue(this.teacherProfileDetails?.isHasInternetTeachExp)
+    this.f.isHasTeachForeignerExp.setValue(this.teacherProfileDetails?.isHasTeachForeignerExp)
+    this.f.isHasEjazaHafz.setValue(this.teacherProfileDetails?.isHasEjazaHafz)
+    this.f.isHasEjazaTelawa.setValue(this.teacherProfileDetails?.isHasEjazaTelawa)
+
+    this.f.anyLangReading.setValue(this.teacherProfileDetails?.anyLangReading)
+    this.f.languages.setValue(this.teacherProfileDetails?.lang)
+    //this.f.workPlatform.setValue(this.teacherProfileDetails?.workingPlatForm)
+    this.f.bankName.setValue(this.teacherProfileDetails?.bankName)
+    this.f.bankNumber.setValue(this.teacherProfileDetails?.bankNumber)
+    this.f.teacherPrograms.setValue(this.teacherProfileDetails?.teacherPrograms)
+    this.f.proficiencyDegree.setValue(this.teacherProfileDetails?.degree)
+
+
+
 
   }
 
-  getUserProfile(id?: string) {
+  getTeacherProfile(id?: string) {
     this.teacherService.viewTeacherProfileDetails(id || '').subscribe(res => {
       if (res.isSuccess) {
         this.teacherProfileDetails = res.data as ITeacherProfile;
         if (!this.teacherProfileDetails?.proPic) {
           this.teacherProfileDetails.proPic = '../../../../../assets/images/Profile.svg';
         }
-        // this.PopulateForm()
+        this.PopulateForm()
       }
       else {
         this.resMessage =
@@ -216,7 +311,106 @@ export class UpdateTeacherProfileComponent implements OnInit {
       }
     })
   }
-  onSubmit(value: string) { }
+
+  onSubmit(value: string) {
+    this.isSubmit = true;
+    this.resMessage = {}
+    if (this.profileForm.valid) {
+      this.updateTeacherModel = {
+        usrId: this.currentUser?.id,
+        firstAr: this.profileForm.value.firstAr != null ? this.profileForm.value.firstAr : this.teacherProfileDetails.fnameAr,
+        firstEn: this.profileForm.value.firstEn != null ? this.profileForm.value.firstEn : this.teacherProfileDetails.faNameEn,
+        middleAr: this.profileForm.value.middleAr != null ? this.profileForm.value.middleAr : this.teacherProfileDetails.mnameAr,
+        middleEn: this.profileForm.value.middleEn != null ? this.profileForm.value.middleEn : this.teacherProfileDetails.mnameEn,
+
+        familyAr: this.profileForm.value.familyAr != null ? this.profileForm.value.familyAr : this.teacherProfileDetails.fanameAr,
+        familyEn: this.profileForm.value.familyEn != null ? this.profileForm.value.familyEn : this.teacherProfileDetails.fanameAr,
+        nationality: this.profileForm.value.nationality,
+        hijriBirthDate: this.profileForm.value.hijriBirthDate,
+        gender: this.profileForm.value.gender,
+        mobile: this.profileForm.value.phoneNumber,
+
+        country: this.profileForm.value.country,
+        city: this.profileForm.value.city,
+        interviewDay: this.profileForm.value.interviewDay,
+        interviewTime: this.profileForm.value.interviewTime,
+
+        acEdu: this.profileForm.value.acEdu,
+        qualifi: this.profileForm.value.qualifi,
+        specia: this.profileForm.value.special,
+
+        workingPlatForm: this.profileForm.value.workingPlatForm,
+        entity: this.profileForm.value.entity,
+        eduYear: this.profileForm.value.eduYear,
+        isHasQuranExp: this.profileForm.value.isHasQuranExp,
+        isHasTeachSunnaExp: this.profileForm.value.isHasTeachSunnaExp,
+        isHasInternetTeachExp: this.profileForm.value.isHasInternetTeachExp,
+        isHasTeachForeignerExp: this.profileForm.value.isHasTeachForeignerExp,
+        isHasEjazaHafz: this.profileForm.value.isHasEjazaHafz,
+        isHasEjazaTelawa: this.profileForm.value.isHasEjazaTelawa,
+        anyLangReading: this.profileForm.value.anyLangReading,
+        lang: this.profileForm.value.languages,
+
+        agency: this.profileForm.value.workPlatform,
+        bankName: this.profileForm.value.bankName,
+        bankNumber: this.profileForm.value.bankNumber,
+
+
+        // ejazaAttachments?: string[];
+        // teacherPrograms?: string[];
+        // degree?: string[];
+      }
+
+      this.degreeMessage = {};
+
+
+      // this.updateTeacherModel.degree = [];
+      // if (this.drgreeList.length) {
+      //   Array.from(this.drgreeList).forEach((elm: BaseLookupModel) => {
+      //     if (this.updateTeacherModel.degree) {
+      //       this.updateTeacherModel.degree.push({
+      //         // sheikhsIds: elm.id
+      //       });
+      //     }
+
+      //   });
+      // }
+
+
+      this.teacherService.updateTeacher(this.updateTeacherModel).subscribe(
+        res => {
+          if (res.isSuccess) {
+            this.isSubmit = false;
+
+            this.resMessage = {
+              message: res.message,
+              type: BaseConstantModel.SUCCESS_TYPE
+            }
+          }
+          else {
+            this.isSubmit = false;
+            this.resMessage = {
+              message: res.message,
+              type: BaseConstantModel.DANGER_TYPE
+            }
+          }
+        }, error => {
+          // this.isSubmit = false;
+          this.resMessage = {
+            message: error,
+            type: BaseConstantModel.DANGER_TYPE
+          }
+        }
+      );
+    }
+    else {
+      this.resMessage = {
+        message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    }
+  }
+
 
   applyPhoneNumber(phoneNumber: string) {
     this.f.phoneNumber.setValue(phoneNumber);
@@ -232,6 +426,40 @@ export class UpdateTeacherProfileComponent implements OnInit {
       // this.telInputParam.countryIsoCode = '{"initialCountry": "' + code.toLowerCase() +'"}';
     })
   }
+  Hijri(date: any) {
+    date = date.year + '/' + date.month + '/' + date.day;
+    console.log("Hijri date", date)
+    this.higriPinding = date
+  }
+
+
+  addDrgree() {
+    if (!this.profileForm.value.proficiencyDegree) {
+      this.degreeMessage = {
+        message: this.translate.instant('UPDATE_TEACHER_PG.CHOOSE_DEGREE'),
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    }
+    else {
+
+      this.degreeMessage = {};
+
+      const exist = this.drgreeList.some(el => el.id === this.profileForm.value.proficiencyDegree)
+      if (!exist) {
+        if (this.collectionOfLookup.DEGREE) {
+          this.drgreeList.push(
+            this.collectionOfLookup.DEGREE.filter(el => el.id == this.profileForm.value.proficiencyDegree)[0]);
+        }
+      }
+    }
+  }
+
+
+  removeItemFromdrgreeList(item: any) {
+    let index = this.drgreeList.indexOf(item);
+    this.drgreeList.splice(index, 1)
+  }
+
 
 
 }

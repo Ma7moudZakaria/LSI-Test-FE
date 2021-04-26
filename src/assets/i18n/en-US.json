@@ -169,7 +169,7 @@
     "GOVERNMENTAL_ENTITY": "Governmental Entity",
     "NOTGOVERNMENTAL_ENTITY": "Not Governmental Entity",
     "THISFIELD_REQUIRED": "This field is required ",
-    "SIDE": "Side",
+    "ENTITY": "Entity",
     "DURATION": "Duration of study per years",
     "IMPROVING_QURAN_WITH_TAJWEED": "Do you have experience in improving the Quran with Tajweed?",
     "YES": "Yes",
@@ -197,6 +197,7 @@
     "INFO_CONTACT": "Choose the appropriate time for the system administrator to contact you for an interview to join the platform",
     "CITY": "City",
     "QUALIFICATION": "qualifi",
+    "CHOOSE_DEGREE": "Please Choose Degree",
     "SPECTALIST": "SPECIAL"
   },
   "QUESTION_BANK": {
