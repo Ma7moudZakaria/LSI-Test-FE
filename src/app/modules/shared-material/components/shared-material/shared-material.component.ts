@@ -11,6 +11,13 @@ import { Data } from '@angular/router';
 import { IExam } from 'src/app/core/interfaces/exam-builder-interfaces/iexam';
 import { IQuestion } from 'src/app/core/interfaces/exam-builder-interfaces/iquestion';
 import { IAnswer } from 'src/app/core/interfaces/exam-builder-interfaces/ianswer';
+import { DomSanitizer } from '@angular/platform-browser';
+import * as RecordRTC from 'recordrtc';
+import { AttachmentsService } from 'src/app/core/services/attachments-services/attachments.service';
+import { IAttachment } from 'src/app/core/interfaces/attachments-interfaces/iattachment';
+import { IFileUpload } from 'src/app/core/interfaces/attachments-interfaces/ifile-upload';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 
 export interface DragDropListItem {
   id: string;
@@ -43,8 +50,20 @@ export class SharedMaterialComponent implements OnInit {
     isRequired: true,
     countryIsoCode: '{"initialCountry": "sa"}'
   }
-
-  constructor(public dialog: MatDialog) { }
+//===========recrd=================
+//Lets initiate Record OBJ
+ record:any;
+//Will use this flag for detect recording
+ recording = false;
+//Url of Blob
+ url:any;
+ error:any;
+ voiceNoteAttachmentIds: string[] = [];
+ fileList: IAttachment[] = [];
+ fileUploadModel: IFileUpload[] = [];
+ resMessage: BaseMessageModel = {};
+//===========end record===============
+  constructor(public dialog: MatDialog,public domSanitizer: DomSanitizer,private attachmentService: AttachmentsService) { }
 
   ngOnInit(): void {
   }
@@ -227,5 +246,87 @@ export class SharedMaterialComponent implements OnInit {
   saveExam(){
     this.submitExam = true;
   }
+
+
+    // ===========record=========
+    sanitize(url: string) {
+        return this.domSanitizer.bypassSecurityTrustUrl(url);
+    }
+    /**
+    * Start recording.
+    */
+    initiateRecording() {
+
+        this.recording = true;
+        let mediaConstraints = {
+            video: false,
+            audio: true
+        };
+        navigator.mediaDevices
+            .getUserMedia(mediaConstraints)
+            .then(this.successCallback.bind(this), this.errorCallback.bind(this));
+    }
+    /**
+     * Will be called automatically.
+     */
+    successCallback(stream: any) {
+        var options = {
+            mimeType: "audio/wav",
+            numberOfAudioChannels: 1
+        };
+        //Start Actuall Recording
+        var StereoAudioRecorder = RecordRTC.StereoAudioRecorder;
+        this.record = new StereoAudioRecorder(stream, options);
+        this.record.record();
+    }
+    /**
+     * Stop recording.
+     */
+    stopRecording() {
+        this.recording = false;
+        this.record.stop(this.processRecording.bind(this));
+    }
+    /**
+     * processRecording Do what ever you want with blob
+     * @param  {any} blob Blog
+     */
+    processRecording(blob: any) {
+        let files = Array<IFileUpload>();
+        files.push({
+            containerNameIndex: 1,
+            file: blob
+        })
+        this.UploadFiles(files)
+    }
+    /**
+     * Process Error.
+     */
+    errorCallback(error: any) {
+        this.error = 'Can not play audio in your browser';
+    }
+    UploadFiles(files: any) {
+        if (files.length === 0) {
+            return;
+        }
+        this.attachmentService.upload(files).subscribe(
+            (res: any) => {
+                Array.from(res.data).forEach((elm: any) => {
+                    this.voiceNoteAttachmentIds.push(elm.id);
+                    this.fileList.push(elm);
+                    this.url = elm.url;
+                })
+                this.fileUploadModel = [];
+            }, error => {
+                console.log(error);
+                this.fileUploadModel = [];
+                this.resMessage =
+                {
+                    message: error,
+                    type: BaseConstantModel.DANGER_TYPE
+                }
+            }
+        )
+    }
+// =========end record===========
 }
 
