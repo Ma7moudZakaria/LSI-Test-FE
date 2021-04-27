@@ -10,7 +10,7 @@ const routes: Routes = [
 
       { path: 'update-teacher-profile', component: UpdateTeacherProfileComponent },
       // { path: 'update-teacher-profile-details/:id', component: UpdateTeacherProfileComponent },
-      { path: '', component: ViewTeacherProfileComponent },
+      { path: 'view-teacher-profile-details', component: ViewTeacherProfileComponent },
     ],
   }
 ];
