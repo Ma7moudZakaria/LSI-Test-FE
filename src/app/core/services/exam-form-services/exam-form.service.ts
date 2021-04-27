@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IAttachmentsExamTemplateModel } from '../../interfaces/exam-form-interfaces/iattachments-exam-template-model';
+import { IAttacheExamTemplateModel } from '../../interfaces/exam-form-interfaces/iattache-exam-template-model';
+
 import { IExamFormCreatModel } from '../../interfaces/exam-form-interfaces/iexam-form-creat-model';
 import { IExamFormFilter } from '../../interfaces/exam-form-interfaces/iexam-form-filter-request';
 
@@ -16,7 +17,7 @@ export class ExamFormService {
    GetExamFormDetailsURL=environment.baseUrl+'ExamForm/get-exam-form-details/';
   GetExamFormFilterURL=environment.baseUrl+'ExamForm/get-exam-forms-filter/';
   DeleteExamFormURL=environment.baseUrl+'ExamForm/delete-exam-Form/';
-  AttachmentsExamTemplateURL=environment.baseUrl+'ExamForm/attachments-exam-template/';
+  AttacheExamTemplateURL=environment.baseUrl+'ExamForm/attache-exam-template/';
   constructor(private http:HttpClient) { }
   addExamForm(model:IExamFormCreatModel):Observable<BaseResponseModel>{
     return this.http.post<BaseResponseModel>(this.AddExamFormURL,model);
@@ -31,7 +32,7 @@ export class ExamFormService {
   deleteExamForm(id:string):Observable<BaseResponseModel>{
     return this.http.delete<BaseResponseModel>(this.DeleteExamFormURL+id);
   }
-  attachmentsExamTemplate(model:IAttachmentsExamTemplateModel):Observable<BaseResponseModel>{
-    return this.http.put<BaseResponseModel>(this.AttachmentsExamTemplateURL,model);
+  attachmentsExamTemplate(model:IAttacheExamTemplateModel):Observable<BaseResponseModel>{
+    return this.http.put<BaseResponseModel>(this.AttacheExamTemplateURL,model);
   }
 }

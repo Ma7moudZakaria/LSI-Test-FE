@@ -10,12 +10,13 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { AttacheExamTemplateComponent } from './components/exam-form-view/attache-exam-template/attache-exam-template.component';
 
 
 
 
 @NgModule({
-  declarations: [AddExamComponent, ExamViewComponent, ExamFormViewComponent],
+  declarations: [AddExamComponent, ExamViewComponent, ExamFormViewComponent, AttacheExamTemplateComponent],
   imports: [
     SharedModule,
     FormsModule,
