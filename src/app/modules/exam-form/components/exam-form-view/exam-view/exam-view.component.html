@@ -1,1 +1,31 @@
-<p>exam-view works!</p>
+<div class="list-group list-category">
+    <div class="d-flex justify-content-between">
+    <p class="mb-4 p_header">{{'QUESTION_BANK.DEPARTMENTS' | translate}}</p>
+    <br/>
+    <a [routerLink]="" (click)="newCatogry()">
+        <span class="link_Add ">  {{ 'QUESTION_BANK.ADD_DEPARTMENT' | translate }}
+        <img  src="../../../../../../assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
+      </span>
+    </a> 
+  </div>
+  <app-search-input (searchTerm)=getQuestionBankCategories($event)></app-search-input>
+  
+  <div class="internal_scroll_list_group ">
+    <a class="list-group-item d-flex" *ngFor="let QBC  of questionBankCategoryList ; let i=index;" 
+      [class.active]="selectedIndex === i" 
+      (click)="loadCatogryQuiestion(QBC.id,QBC.arabExamFormNam,QBC.engExamFormNam);selectedIndex=i">
+       
+          <!-- <p class="ellipsis mb-0 question-categories" matTooltip="{{translate.currentLang===langEnum.en?QBC.engExamFormNam:QBC.arabExamFormNam}}">{{translate.currentLang===langEnum.en?QBC.engExamFormNam:QBC.arabExamFormNam}}</p> -->
+          <div class="d-flex ">
+             <a (click)="confirmDialog(QBC.id)" > <i class="far fa-trash-alt"></i></a>
+             <a (click)="loadCatogry(QBC.id) "> <i class="fas fa-pencil-alt"></i></a> 
+            </div>
+    
+    </a>
+    <div class="d-flex">
+      <label  class="no-data" *ngIf="questionBankCategoryList.length===0">
+        {{"QUESTION_BANK.NO_DATA"|translate}} 
+    </label>
+    </div>
+  </div>
+  </div>

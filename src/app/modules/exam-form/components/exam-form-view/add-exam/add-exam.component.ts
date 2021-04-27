@@ -16,9 +16,9 @@ import { ExamFormService } from 'src/app/core/services/exam-form-services/exam-f
 })
 export class AddExamComponent implements OnInit {
   Title?: string;
-  QuestionBankCategoryId:string='';
-  QuestionBankCategory?: IExamFormsModel ;
-  QuestionBankCategoryCreat: IExamFormCreatModel = {};
+  examId:string='';
+  examForm?: IExamFormsModel ;
+  examFormCreat: IExamFormCreatModel = {};
   isAdd:boolean=true;
   errorMessage?:string;
   maxDate: any;
@@ -29,9 +29,9 @@ export class AddExamComponent implements OnInit {
   resultMessage:BaseMessageModel = {};
   disableSaveButtons = false;
 
-  @Input() inputCategoryId?:string; 
-  @Output() closeCategoryForm = new EventEmitter<boolean>();
-  @Output() addCategory = new EventEmitter<boolean>();
+  @Input() inputExamId?:string; 
+  @Output() closeExamForm = new EventEmitter<boolean>();
+  @Output() addExamForm = new EventEmitter<boolean>();
   @Output() submitSuccess = new EventEmitter<boolean>();
 
   constructor(
@@ -47,8 +47,8 @@ export class AddExamComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.QuestionBankCategoryId=this.inputCategoryId||"";
-    if (this.QuestionBankCategoryId !== "" ) {
+    this.examId=this.inputExamId||"";
+    if (this.examId !== "" ) {
       this.isAdd=false;
       this.currentForm.reset();
      this.populate() ;
@@ -62,10 +62,10 @@ export class AddExamComponent implements OnInit {
 
   ngOnChanges(changes: any) {
     this.currentForm.reset();
-    this.QuestionBankCategoryId=this.inputCategoryId||"";
-    if(this.QuestionBankCategoryId !== "")
+    this.examId=this.inputExamId||"";
+    if(this.examId !== "")
     {this.populate() ;}
-   if( this.QuestionBankCategoryId==""){
+   if( this.examId==""){
     this.currentForm.reset();
    }
    this.resultMessage = {
@@ -90,13 +90,13 @@ export class AddExamComponent implements OnInit {
   }
    
   populate() {
-    this.examFormService.getExamFormDetails(this.QuestionBankCategoryId).subscribe(
+    this.examFormService.getExamFormDetails(this.examId).subscribe(
       res => {
         var response =res;
         if (response.isSuccess) {
-          this.QuestionBankCategory =<IExamFormsModel> response.data;
-          this.f.nameAr.setValue(this.QuestionBankCategory?.arabExamFormNam);
-          this.f.nameEn.setValue(this.QuestionBankCategory?.engExamFormNam);
+          this.examForm =<IExamFormsModel> response.data;
+          this.f.nameAr.setValue(this.examForm?.arabExamFormNam);
+          this.f.nameEn.setValue(this.examForm?.engExamFormNam);
         }
         else {
           this.resultMessage = {
@@ -123,16 +123,16 @@ export class AddExamComponent implements OnInit {
     if (this.currentForm.valid) {
 
    
-        this.QuestionBankCategoryCreat.arabExamFormNam=this.f.nameAr.value;
-        this.QuestionBankCategoryCreat.engExamFormNam=this.f.nameEn.value;
-        this.examFormService.addExamForm(this.QuestionBankCategoryCreat).subscribe(res => {
+        this.examFormCreat.arabExamFormNam=this.f.nameAr.value;
+        this.examFormCreat.engExamFormNam=this.f.nameEn.value;
+        this.examFormService.addExamForm(this.examFormCreat).subscribe(res => {
           this.isSubmit = false;
           if (res.isSuccess) {
             this.resultMessage = {
               message:res.message||"",
               type: BaseConstantModel.SUCCESS_TYPE
             }
-            this. loodCategoryList();
+            this. loodExamFormList();
             this.submitSuccess?.emit(false);//close form after submit is success
             this._alertify.success(res.message||"");
           }
@@ -153,12 +153,12 @@ export class AddExamComponent implements OnInit {
 
   }
 
-  loodCategoryList(){
+  loodExamFormList(){
 
-    this.addCategory.emit(true);
+    this.addExamForm.emit(true);
   }
 
-  backListCatogry(){
-    this.closeCategoryForm?.emit(false);
+  backListExamForm(){
+    this.closeExamForm?.emit(false);
   }
 }

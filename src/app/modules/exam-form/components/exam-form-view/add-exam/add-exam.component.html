@@ -1,8 +1,7 @@
 <form class="form-group material-form" [formGroup]="currentForm" (submit)="Submit()">
-    <!-- <sup class="Catogry_Add_Span">{{ 'QUESTION_BANK.ADD_DEPARTMENT' | translate }}</sup> -->
     <div class="form-group">
-      <label for="exampleInputEmail1" class="Catogry_Add_TextNam">{{'QUESTION_BANK.DEPARTMENT_AR' | translate}}</label>
-      <input type="text" class="form-control Catogry_Add_Text" id="InputNamAr" formControlName="nameAr"
+      <label for="exampleInputEmail1" >اسم النموذج عربي</label>
+      <input type="text" class="form-control" id="InputNamAr" formControlName="nameAr"
       [ngClass]="{'red-border-class': f.nameAr.errors && ( f.nameAr.touched || isSubmit)}">
       <div *ngIf="f.nameAr.errors && (f.nameAr.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
         <div *ngIf="f.nameAr.errors.required">
@@ -17,8 +16,8 @@
     </div>
     </div>
     <div class="form-group">
-      <label for="exampleInputPassword1" class="Catogry_Add_TextNam">{{'QUESTION_BANK.DEPARTMENT_EN' | translate}}</label>
-      <input type="text" class="form-control Catogry_Add_Text" id="InputNamEN" formControlName="nameEn"
+      <label for="exampleInputPassword1" >اسم النموذج انجليزى</label>
+      <input type="text" class="form-control" id="InputNamEN" formControlName="nameEn"
       [ngClass]="{'red-border-class': f.nameEn.errors && ( f.nameEn.touched || isSubmit)}">
       <div *ngIf="f.nameEn.errors && (f.nameEn.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
         <div *ngIf="f.nameEn.errors.required">
@@ -35,7 +34,7 @@
     <section>
       <div class="row">
         <button type="submit" class="save-btn btn btn-danger" [disabled]="disableSaveButtons" >{{'QUESTION_BANK.SAVE' | translate}}</button>
-        <button type="button" class="cancel-btn btn btn-warning" (click)="backListCatogry()">{{'QUESTION_BANK.CANCEL' | translate}}</button>
+        <button type="button" class="cancel-btn btn btn-warning" (click)="backListExamForm()">{{'QUESTION_BANK.CANCEL' | translate}}</button>
       </div>
       <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2">
         {{resultMessage.message}}
