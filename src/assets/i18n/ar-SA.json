@@ -198,7 +198,9 @@
     "CITY": "المدينة",
     "QUALIFICATION": "المؤهل",
     "SPECTALIST": "التخصص",
-    "CHOOSE_DEGREE": "برجاء اختيار  درجة الاجادة "
+    "CHOOSE_DEGREE": "برجاء اختيار  درجة الاجادة ",
+    "TIME": "الوقت",
+    "DAY": "اليوم"
   },
   "QUESTION_BANK": {
     "TITLE": "بنك الأسئلة",

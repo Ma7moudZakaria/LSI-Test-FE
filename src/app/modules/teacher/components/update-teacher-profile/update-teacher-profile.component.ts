@@ -35,27 +35,23 @@ import * as moment from 'moment-hijri';
 export class UpdateTeacherProfileComponent implements OnInit {
   profileForm: FormGroup = new FormGroup({})
   currentUser: IUser | undefined;
-  langEnum = LanguageEnum;
   telInputParam: ITelInputParams = {};
   teacherProfileDetails = {} as ITeacherProfile;
   updateTeacherModel: IUpdateTeacherProfile = {};
-
-  resMessage: BaseMessageModel = {};
-  degreeMessage: BaseMessageModel = {};
-  drgreeList = Array<BaseLookupModel>();
-  drgreeList__addition = Array<BaseLookupModel>();
-
-  listbadges = [1, 2];
-  isSubmit = false;
+  langEnum = LanguageEnum;
   collectionOfLookup = {} as ILookupCollection;
   listOfLookupProfile: string[] = ['GENDER', 'EDU_LEVEL', 'NATIONALITY', 'COUNTRY', 'CITY'
     , 'DEGREE', 'EDU_YEAR', 'INTERVIEW_DAY', 'LANG', 'QUALIFI', 'SPECIAL', 'WORKING_PLATFORM'];
 
+  resMessage: BaseMessageModel = {};
+  selecteddrgreeList = Array<BaseLookupModel>();
+  drgreeList__addition = Array<BaseLookupModel>();
+  degreeMessage: BaseMessageModel = {};
+  isSubmit = false;
   hijri: boolean = false;
   milady: boolean = false;
-  dataPinding: any;
   higriPinding: any;
-  MiladyPinding: any;
+
   constructor(
     private fb: FormBuilder,
     private lookupService: LookupService,
@@ -78,8 +74,8 @@ export class UpdateTeacherProfileComponent implements OnInit {
   //   this.updateTeacherModel.teacherPrograms = [];
   //   this.updateTeacherModel.degree = [];
 
-  //   if (this.drgreeList.length) {
-  //     Array.from(this.drgreeList).forEach((elm: BaseLookupModel) => {
+  //   if (this.selecteddrgreeList.length) {
+  //     Array.from(this.selecteddrgreeList).forEach((elm: BaseLookupModel) => {
   //       if (this.updateTeacherModel.degree) {
   //         this.updateTeacherModel.degree.push({
   //          // sheikhsIds: elm.id
@@ -205,6 +201,29 @@ export class UpdateTeacherProfileComponent implements OnInit {
   }
 
 
+  getTeacherProfile(id?: string) {
+    this.teacherService.viewTeacherProfileDetails(id || '').subscribe(res => {
+      if (res.isSuccess) {
+        this.teacherProfileDetails = res.data as ITeacherProfile;
+        if (!this.teacherProfileDetails?.proPic) {
+          this.teacherProfileDetails.proPic = '../../../../../assets/images/Profile.svg';
+        }
+        this.PopulateForm()
+      }
+      else {
+        this.resMessage =
+        {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+    }, error => {
+      this.resMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    });
+  }
   PopulateForm() {
     if (this.translate.currentLang === LanguageEnum.ar) {
       this.f.fnameAr.setValue(this.teacherProfileDetails?.fnameAr);
@@ -251,34 +270,13 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.f.teacherPrograms.setValue(this.teacherProfileDetails?.teacherPrograms)
     this.f.proficiencyDegree.setValue(this.teacherProfileDetails?.degree)
 
-
+    // if (this.teacherProfileDetails?.degree) {
+    //   this.selecteddrgreeList = this.teacherProfileDetails?.degree;
+    // }
 
 
   }
 
-  getTeacherProfile(id?: string) {
-    this.teacherService.viewTeacherProfileDetails(id || '').subscribe(res => {
-      if (res.isSuccess) {
-        this.teacherProfileDetails = res.data as ITeacherProfile;
-        if (!this.teacherProfileDetails?.proPic) {
-          this.teacherProfileDetails.proPic = '../../../../../assets/images/Profile.svg';
-        }
-        this.PopulateForm()
-      }
-      else {
-        this.resMessage =
-        {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
-      }
-    }, error => {
-      this.resMessage = {
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
-      }
-    });
-  }
 
   onFileChange(files: any) {
     let profImagModel: IUserProfilePicture = {
@@ -365,8 +363,8 @@ export class UpdateTeacherProfileComponent implements OnInit {
 
 
       // this.updateTeacherModel.degree = [];
-      // if (this.drgreeList.length) {
-      //   Array.from(this.drgreeList).forEach((elm: BaseLookupModel) => {
+      // if (this.selecteddrgreeList.length) {
+      //   Array.from(this.selecteddrgreeList).forEach((elm: BaseLookupModel) => {
       //     if (this.updateTeacherModel.degree) {
       //       this.updateTeacherModel.degree.push({
       //         // sheikhsIds: elm.id
@@ -444,10 +442,10 @@ export class UpdateTeacherProfileComponent implements OnInit {
 
       this.degreeMessage = {};
 
-      const exist = this.drgreeList.some(el => el.id === this.profileForm.value.proficiencyDegree)
+      const exist = this.selecteddrgreeList.some(el => el.id === this.profileForm.value.proficiencyDegree)
       if (!exist) {
         if (this.collectionOfLookup.DEGREE) {
-          this.drgreeList.push(
+          this.selecteddrgreeList.push(
             this.collectionOfLookup.DEGREE.filter(el => el.id == this.profileForm.value.proficiencyDegree)[0]);
         }
       }
@@ -455,9 +453,9 @@ export class UpdateTeacherProfileComponent implements OnInit {
   }
 
 
-  removeItemFromdrgreeList(item: any) {
-    let index = this.drgreeList.indexOf(item);
-    this.drgreeList.splice(index, 1)
+  removeItemFromselecteddrgreeList(item: any) {
+    let index = this.selecteddrgreeList.indexOf(item);
+    this.selecteddrgreeList.splice(index, 1)
   }
 
 

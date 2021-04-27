@@ -198,7 +198,9 @@
     "CITY": "City",
     "QUALIFICATION": "qualifi",
     "CHOOSE_DEGREE": "Please Choose Degree",
-    "SPECTALIST": "SPECIAL"
+    "SPECTALIST": "SPECIAL",
+    "TIME": "Time",
+    "DAY": "Day"
   },
   "QUESTION_BANK": {
     "TITLE": "Question Bank",

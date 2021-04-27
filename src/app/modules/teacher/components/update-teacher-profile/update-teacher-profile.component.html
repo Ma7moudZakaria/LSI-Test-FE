@@ -157,11 +157,11 @@
                                      </app-milady-hijri-calendar>
                                      <!-- <p>{{higriPinding}}</p> -->
                                     
-                                       <!-- <div *ngIf="f.hijriBirthDate.errors && (f.hijriBirthDate.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                       <div *ngIf="f.hijriBirthDate.errors && (f.hijriBirthDate.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                            <div *ngIf="f.hijriBirthDate.errors.required">
                                                {{ 'UPDATE_USER_PG.hijriBirthDate_REQUIRED' | translate }}
                                            </div>
-                                       </div>  -->
+                                       </div> 
                                 </div>
                                 <div class="pl-3 pr-3 gender_contanier">
                                     <label class="Register__Label" for="gender"> {{ 'GENERAL.GENDER' | translate }}
@@ -169,19 +169,20 @@
                                     <div class="row">
                                        
                                         <section class="col-12 mt-3" >
-                                            <mat-radio-group aria-label="Select an option"  class="example-radio-group"  formControlName="gender">
+                                            <mat-radio-group aria-label="Select an option"  class="example-radio-group"  
+                                             formControlName="gender">
                                                 <mat-radio-button value="{{item.id}}" class="example-radio-button ml-3"  
                                                 *ngFor="let item of collectionOfLookup.GENDER">
                                                 {{ translate.currentLang == langEnum.en ? item.nameEn : item.nameAr}}
                                                 </mat-radio-button>
                                             </mat-radio-group>
-                                    </section>
-                                        <!-- <div *ngIf="f.gender.errors && (f.gender.touched || isSubmit)"
+                                       </section>
+                                        <div *ngIf="f.gender.errors && (f.gender.touched || isSubmit)"
                                                 class="alert alert-danger mt-2 mb-2">
                                                 <div *ngIf="f.gender.errors.required">
                                                     {{ 'UPDATE_USER_PG.GENDER_REQUIRED' | translate }}
                                                 </div>
-                                            </div> -->
+                                            </div>
                                     </div>
                                 </div>
                             </div>
@@ -201,13 +202,13 @@
                                     <app-tel-input  (getPhonNumber)="applyPhoneNumber($event)" 
                                     [telInputParam]="telInputParam"></app-tel-input>
 
-                                    <!-- <div *ngIf="f.phoneNumber.errors && (f.phoneNumber.touched || isSubmit)"
+                                    <div *ngIf="f.phoneNumber.errors && (f.phoneNumber.touched || isSubmit)"
                                      class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.phoneNumber.errors.required">
                                             {{ 'UPDATE_USER_PG.PHONE_NUMBER_REQUIRED' | translate }}
                                         </div>
                                       
-                                    </div>  -->
+                                    </div> 
                             </div>
                       
                            
@@ -230,12 +231,12 @@
                                         </option>
                                     </select>
                                 </div>
-                                <!-- <div *ngIf="f.nationality.errors && (f.nationality.touched || isSubmit)"
+                                <div *ngIf="f.nationality.errors && (f.nationality.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
                                     <div *ngIf="f.nationality.errors.required">
                                         {{ 'UPDATE_USER_PG.NATIONALITY_REQUIRED' | translate }}
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
       
                             <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2">
@@ -248,12 +249,13 @@
                                     </option>
                                 </select>
 
-                                <!-- <div *ngIf="f.country.errors && (f.country.touched || isSubmit)"
+                                <div *ngIf="f.country.errors && (f.country.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
                                     <div *ngIf="f.country.errors.required">
-                                        {{ 'UPDATE_USER_PG.COUNTRY_CODE' | translate }}
+                                        {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
+
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2 mt-3">
                                 <label class="Register__Label" for="city"> {{ 'UPDATE_TEACHER_PG.CITY' | translate }}
@@ -266,22 +268,24 @@
                                         </option>
                                     </select>
 
-                                    <!-- <div *ngIf="f.city.errors && (f.city.touched || isSubmit)"
+                                    <div *ngIf="f.city.errors && (f.city.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
                                     <div *ngIf="f.city.errors.required">
-                                        {{ 'UPDATE_USER_PG.COUNTRY_CODE' | translate }}
+                                        {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
+
                                     </div>
-                                </div> -->
+                                   </div>
                             </div>
                            
                             
-                            <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2 align-self-end">
+                            <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2 align-self-center">
                                 <p class="info_contact mb-0">
                                     {{ 'UPDATE_TEACHER_PG.INFO_CONTACT' | translate }}
                                 </p>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-2 col-xs-2 mt-3">
-                                <label class="Register__Label" for="interviewDay"> اليوم
+                                <label class="Register__Label" for="interviewDay"> 
+                                    {{ 'UPDATE_TEACHER_PG.TIME' | translate }}
                                 </label>
                                
                                     <select class="UpdateUser__Options" name="nameEn" formControlName="interviewDay">
@@ -299,7 +303,9 @@
                                     </div>  -->
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-2 col-xs-2 mt-3">
-                                <label class="Register__Label" for="interviewTime"> time
+                                <label class="Register__Label" for="interviewTime"> 
+                                    {{ 'UPDATE_TEACHER_PG.TIME' | translate }}
+                                    
                                 </label>
                              
                                     <select class="UpdateUser__Options" name="nameEn" formControlName="interviewTime">
@@ -308,13 +314,12 @@
                                             {{ translate.currentLang == langEnum.en ? interviewTimeItem.nameEn : interviewTimeItem.nameAr}}
                                         </option> -->
                                     </select>
-                                    <!-- <div *ngIf="f.interviewTime.errors && (f.interviewTime.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.interviewTime.errors && (f.interviewTime.touched || isSubmit)"
+                                     class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.interviewTime.errors.required">
-                                            {{ 'UPDATE_USER_PG.THISFIELD_REQUIRED' | translate }}
+                                         {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
                                         </div>
-                                       
-                                        
-                                    </div>  -->
+                                    </div> 
                             </div>
 
                         </div>
@@ -338,12 +343,12 @@
                                     </option>
                                 </select>
                                    
-                                <!-- <div *ngIf="f.acEdu.errors && (f.acEdu.touched || isSubmit)"
+                                <div *ngIf="f.acEdu.errors && (f.acEdu.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
                                     <div *ngIf="f.acEdu.errors.required">
                                         {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
 
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
@@ -357,12 +362,12 @@
                                     </option>
                                 </select>
 
-                                <!-- <div *ngIf="f.qualifi.errors && (f.qualifi.touched || isSubmit)"
+                                <div *ngIf="f.qualifi.errors && (f.qualifi.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
                                     <div *ngIf="f.qualifi.errors.required">
                                         {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
 
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
@@ -377,12 +382,12 @@
                                         </option>
                                     </select>
     
-                                    <!-- <div *ngIf="f.special.errors && (f.special.touched || isSubmit)"
+                                    <div *ngIf="f.special.errors && (f.special.touched || isSubmit)"
                                         class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.special.errors.required">
                                             {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
                                         </div>
-                                    </div> -->
+                                    </div>
                             </div>
                             <div class="col-12">
                                 <br>
@@ -402,12 +407,13 @@
                                     </mat-radio-group>
                                </section>
 
-                                    <!-- <div *ngIf="f.workingPlatForm.errors && (f.workingPlatForm.touched || isSubmit)"
+                                    <div *ngIf="f.workingPlatForm.errors && (f.workingPlatForm.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
                                     <div *ngIf="f.workingPlatForm.errors.required">
-                                        {{ 'UPDATE_USER_PG.THISFIELD_REQUIRED' | translate }}
+                                         {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
+
                                     </div>
-                                </div> -->
+                                </div>
 
                             </div>
 
@@ -418,18 +424,17 @@
                                 <input id="entity" pInputText type="text" formControlName="entity"
                                     name="entity" class="form-control UserRegister__FormControl">
 
-                                <!-- <div *ngIf="f.entity.errors && (f.entity.touched || isSubmit)"
+                                <div *ngIf="f.entity.errors && (f.entity.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
                                     <div *ngIf="f.entity.errors.required">
-                                        {{ 'UPDATE_USER_PG.THISFIELD_REQUIRED' | translate }}
+                                        {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
                                        
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
 
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                 <label class="Register__Label" for="eduYear"> {{ 'UPDATE_TEACHER_PG.DURATION' | translate }} </label>
-                                
                                 <select class="UpdateUser__Options" name="nameEn" formControlName="eduYear">
                                     <option *ngFor="let eduYearItem of collectionOfLookup.EDU_YEAR"
                                         [value]="eduYearItem.id">
@@ -437,15 +442,13 @@
                                         eduYearItem.nameAr}}
                                     </option>
                                 </select>
-                                <!-- 
+                                
                                 <div *ngIf="f.eduYear.errors && (f.eduYear.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
                                     <div *ngIf="f.eduYear.errors.required">
-                                        {{ 'UPDATE_USER_PG.THISFIELD_REQUIRED' | translate }}
-
+                                        {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
                                     </div>
                                 </div> 
-                                -->
                             </div>
                             <div class="col-12">
                                 <br>
@@ -455,7 +458,7 @@
                             <div class="col-20 ">
                                 <label class="Register__Label" for="isHasQuranExp"> {{ 'UPDATE_TEACHER_PG.IMPROVING_QURAN_WITH_TAJWEED' | translate }} </label>
 
-                                <section>
+                                 <section>
                                         <mat-radio-group aria-label="Select an option"  formControlName="isHasQuranExp"
                                          class="example-radio-group update_teacher_pg">
                                             <mat-radio-button  value="ture" class="example-radio-button" >{{ 'UPDATE_TEACHER_PG.YES' | translate }}</mat-radio-button>
@@ -463,32 +466,31 @@
                                           </mat-radio-group>
                                   </section>
 
-                                    <!-- <div *ngIf="f.isHasQuranExp.errors && (f.isHasQuranExp.touched || isSubmit)"
+                                    <div *ngIf="f.isHasQuranExp.errors && (f.isHasQuranExp.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
                                     <div *ngIf="f.isHasQuranExp.errors.required">
-                                        {{ 'UPDATE_USER_PG.THISFIELD_REQUIRED' | translate }}
+                                        {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
                                     </div>
-                                </div> -->
+                                  </div>
 
                             </div>
 
                             <div class="col-20 ">
                                 <label class="Register__Label" for=" isHasTeachSunnaExp "> {{ 'UPDATE_TEACHER_PG.EXPERIENCE_TEACHING_SUNNAH' | translate }} </label>
-
                                 <section>
                                     <mat-radio-group aria-label="Select an option"  formControlName="isHasTeachSunnaExp"
                                      class="example-radio-group update_teacher_pg">
                                         <mat-radio-button  value="ture" class="example-radio-button" >{{ 'UPDATE_TEACHER_PG.YES' | translate }}</mat-radio-button>
                                         <mat-radio-button value="false" class="example-radio-button" >{{ 'UPDATE_TEACHER_PG.NO' | translate }}</mat-radio-button>
                                       </mat-radio-group>
-                              </section>
+                               </section>
 
-                                    <!-- <div *ngIf="f.isHasTeachSunnaExp.errors && (f.isHasTeachSunnaExp.touched || isSubmit)"
+                                    <div *ngIf="f.isHasTeachSunnaExp.errors && (f.isHasTeachSunnaExp.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
                                     <div *ngIf="f.isHasTeachSunnaExp.errors.required">
-                                        {{ 'UPDATE_USER_PG.THISFIELD_REQUIRED' | translate }}
+                                      {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
                                     </div>
-                                </div> -->
+                                   </div>
 
                             </div>
 
@@ -504,12 +506,12 @@
                                       </mat-radio-group>
                               </section>
 
-                                    <!-- <div *ngIf="f.isHasInternetTeachExp.errors && (f.isHasInternetTeachExp.touched || isSubmit)"
+                                    <div *ngIf="f.isHasInternetTeachExp.errors && (f.isHasInternetTeachExp.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
                                     <div *ngIf="f.isHasInternetTeachExp.errors.required">
-                                        {{ 'UPDATE_USER_PG.THISFIELD_REQUIRED' | translate }}
+                                        {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
                                     </div>
-                                </div> -->
+                                   </div>
 
                             </div>
 
@@ -528,12 +530,12 @@
                               </section>
 
 
-                                    <!-- <div *ngIf="f.isHasTeachForeignerExp.errors && (f.isHasTeachForeignerExp.touched || isSubmit)"
+                                    <div *ngIf="f.isHasTeachForeignerExp.errors && (f.isHasTeachForeignerExp.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
                                     <div *ngIf="f.isHasTeachForeignerExp.errors.required">
-                                        {{ 'UPDATE_USER_PG.THISFIELD_REQUIRED' | translate }}
+                                        {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
                                     </div>
-                                </div> -->
+                                </div>
 
                             </div>
                             
@@ -547,14 +549,14 @@
                                         <mat-radio-button  value="ture" class="example-radio-button" >{{ 'UPDATE_TEACHER_PG.YES' | translate }}</mat-radio-button>
                                         <mat-radio-button value="false" class="example-radio-button" >{{ 'UPDATE_TEACHER_PG.NO' | translate }}</mat-radio-button>
                                       </mat-radio-group>
-                              </section>
+                               </section>
 
-                                    <!-- <div *ngIf="f.isHasEjazaHafz.errors && (f.isHasEjazaHafz.touched || isSubmit)"
+                                    <div *ngIf="f.isHasEjazaHafz.errors && (f.isHasEjazaHafz.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
                                     <div *ngIf="f.isHasEjazaHafz.errors.required">
-                                        {{ 'UPDATE_USER_PG.THISFIELD_REQUIRED' | translate }}
+                                    {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
                                     </div>
-                                </div> -->
+                                 </div>
 
                             </div>
                             
@@ -572,15 +574,14 @@
                                       </mat-radio-group>
                               </section>
 
-                                    <!-- <div *ngIf="f.isHasEjazaTelawa.errors && (f.isHasEjazaTelawa.touched || isSubmit)"
+                                    <div *ngIf="f.isHasEjazaTelawa.errors && (f.isHasEjazaTelawa.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
                                     <div *ngIf="f.isHasEjazaTelawa.errors.required">
-                                        {{ 'UPDATE_USER_PG.THISFIELD_REQUIRED' | translate }}
+                                    {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
                                     </div>
-                                </div> -->
+                                </div>
 
                             </div>
-
 
                             
                             <div class="col-20 col-md-2 col-sm-2 col-xs-2">
@@ -589,13 +590,13 @@
                                 <input id="anyLangReading" pInputText type="text" formControlName="anyLangReading"
                                     name="anyLangReading" class="form-control UserRegister__FormControl">
 
-                                <!-- <div *ngIf="f.anyLangReading.errors && (f.anyLangReading.touched || isSubmit)"
+                                <div *ngIf="f.anyLangReading.errors && (f.anyLangReading.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
                                     <div *ngIf="f.anyLangReading.errors.required">
-                                        {{ 'UPDATE_USER_PG.THISFIELD_REQUIRED' | translate }}
+                                       {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
                                        
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
 
                             <div class="col-20 col-md-2 col-sm-2 col-xs-2">
@@ -609,13 +610,13 @@
                                             languageslItem.nameAr}}
                                         </option>
                                     </select>
-                                <!-- <div *ngIf="f.languages.errors && (f.languages.touched || isSubmit)"
+                                    <div *ngIf="f.languages.errors && (f.languages.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
-                                    <div *ngIf="f.Languages.errors.required">
-                                        {{ 'UPDATE_USER_PG.THISFIELD_REQUIRED' | translate }}
+                                    <div *ngIf="f.languages.errors.required">
+                                       {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
                                        
                                     </div>
-                                </div> -->
+                                  </div>
                             </div>
 
                             <div class="col-12">
@@ -630,7 +631,6 @@
                          <div class="col-12"></div>
                             <div class="col-3 ">
                                 <label class="Register__Label" for="workPlatform"> {{ 'UPDATE_TEACHER_PG.WORK_PLATFORM' | translate }} </label>
-
                                 <section>
 
                                         <mat-radio-group aria-label="Select an option"  class="example-radio-group update_teacher_pg">
@@ -639,12 +639,12 @@
                                           </mat-radio-group>
                                   </section>
 
-                                    <!-- <div *ngIf="f.workPlatform.errors && (f.workPlatform.touched || isSubmit)"
+                                    <div *ngIf="f.workPlatform.errors && (f.workPlatform.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
                                     <div *ngIf="f.workPlatform.errors.required">
-                                        {{ 'UPDATE_USER_PG.THISFIELD_REQUIRED' | translate }}
+                                        {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
                                     </div>
-                                </div> -->
+                                </div>
 
                             </div>
 
@@ -654,13 +654,12 @@
                                 <input id="bankName" pInputText type="text" formControlName="bankName"
                                     name="bankName" class="form-control UserRegister__FormControl">
 
-                                <!-- <div *ngIf="f.bankName.errors && (f.bankName.touched || isSubmit)"
+                                <div *ngIf="f.bankName.errors && (f.bankName.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
                                     <div *ngIf="f.bankName.errors.required">
-                                        {{ 'UPDATE_USER_PG.THISFIELD_REQUIRED' | translate }}
-                                       
+                                         {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
                             
                             <div class="col-20 col-md-2 col-sm-2 col-xs-2">
@@ -669,13 +668,12 @@
                                 <input id="bankNumber" pInputText type="text" formControlName="bankNumber" 
                                     name="bankNumber" class="form-control UserRegister__FormControl">
 
-                                <!-- <div *ngIf="f.bankNumber.errors && (f.bankNumber.touched || isSubmit)"
+                                <div *ngIf="f.bankNumber.errors && (f.bankNumber.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
                                     <div *ngIf="f.bankNumber.errors.required">
-                                        {{ 'UPDATE_USER_PG.THISFIELD_REQUIRED' | translate }}
-                                       
+                                        {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
 
 
@@ -686,10 +684,10 @@
                             </div>
 
 
-                            <div class="col-8 ">
-                                <label class="Register__Label" for="Languages"> {{ 'UPDATE_TEACHER_PG.PROGRAM_TAUGHT' | translate }} </label>
-                                <div class="row">
-                                    <div class="col-4">
+                        <div class="col-8 ">
+                            <label class="Register__Label" for="teacherPrograms"> {{ 'UPDATE_TEACHER_PG.PROGRAM_TAUGHT' | translate }} </label>
+                            <div class="row">
+                                 <div class="col-4">
                                 <label class="Register__Label" for="teacherPrograms"> {{ 'UPDATE_TEACHER_PG.CHOOSE_PROGRAM' | translate }} </label>
 
                                         <select class="UpdateUser__Options" name="nameEn" formControlName="teacherPrograms">
@@ -699,13 +697,12 @@
                                                     teacherProgramsItem.nameAr}}
                                             </option>
                                         </select>
-                                    <!-- <div *ngIf="f.teacherPrograms.errors && (f.teacherPrograms.touched || isSubmit)"
+                                    <div *ngIf="f.teacherPrograms.errors && (f.teacherPrograms.touched || isSubmit)"
                                         class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.teacherPrograms.errors.required">
-                                            {{ 'UPDATE_USER_PG.THISFIELD_REQUIRED' | translate }}
-                                           
+                                            {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
                                         </div>
-                                    </div> -->
+                                    </div>
                                     </div>
 
                                     <div class="col-4">
@@ -718,16 +715,15 @@
                                                     proficiencyDegreeItem.nameAr}}
                                             </option>
                                         </select>
-                                    <!-- <div *ngIf="f.proficiencyDegree.errors && (f.proficiencyDegree.touched || isSubmit)"
+                                    <div *ngIf="f.proficiencyDegree.errors && (f.proficiencyDegree.touched || isSubmit)"
                                         class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.proficiencyDegree.errors.required">
-                                            {{ 'UPDATE_USER_PG.THISFIELD_REQUIRED' | translate }}
-                                           
+                                                 {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
                                         </div>
-                                    </div> -->
+                                    </div>
                                     </div>
                                     <div class="col-4 align-self-end">
-                                        <label class="Register__Label invisible " for="Languages"> {{ 'UPDATE_TEACHER_PG.ADD' | translate }} </label>
+                                        <label class="Register__Label invisible " > {{ 'UPDATE_TEACHER_PG.ADD' | translate }} </label>
 
                                         <button  type="button" class="saveButton btn" (click)="addDrgree()"> {{ 'UPDATE_TEACHER_PG.ADD' | translate }}</button>
                                     </div>
@@ -740,9 +736,9 @@
                             <!-- upload file  -->
                             <div class="col-12">
                                 <div class="badges mt-3 " >
-                                    <span *ngFor="let p of drgreeList"
+                                    <span *ngFor="let p of selecteddrgreeList"
                                     class="badge badge-info p-2">{{translate.currentLang == langEnum.en? p.nameEn :p.nameAr}}
-                                    <a (click)="removeItemFromdrgreeList(p)"><i class="fas fa-times-circle"></i></a>
+                                    <a (click)="removeItemFromselecteddrgreeList(p)"><i class="fas fa-times-circle"></i></a>
                                 </span>
                                 </div>
                               </div>
@@ -778,7 +774,7 @@
                                  
                                     </div>
                                     <div class="col-4 align-self-end">
-                                        <label class="Register__Label invisible " for="Languages"> {{ 'UPDATE_TEACHER_PG.ADD' | translate }} </label>
+                                        <label class="Register__Label invisible " > {{ 'UPDATE_TEACHER_PG.ADD' | translate }} </label>
 
                                         <button  type="button" class="saveButton btn" > {{ 'UPDATE_TEACHER_PG.ADD' | translate }}</button>
                                     </div>
@@ -801,13 +797,15 @@
                         </div>
                     </div>
 
+                    <div *ngIf="resMessage.message" class="alert alert-{{ resMessage.type }} my-4 py-2">
+                        {{ resMessage.message }}
+                    </div>
+
                     <div class="form-group col-lg-12 mx-auto mb-0 mt-4">
                         <button type="submit" class="btn UserLogin__Submit"> {{ 'GENERAL.SAVE' | translate }} </button>
                     </div>
 
-                    <div *ngIf="resMessage.message" class="alert alert-{{ resMessage.type }} my-4 py-2">
-                        {{ resMessage.message }}
-                    </div>
+                
                 </div>
             </form>
         </div>
