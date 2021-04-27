@@ -304,7 +304,14 @@
     "COMPLETE_FIELDS_ADD_ATTACHMENT": "Please complete all fields with adding attachment"
   },
   "DASHBOARD": {
-    "TITLE": "Dashboard"
+    "TITLE": "Dashboard",
+    "STUDENTS-COUNTER":" Students Numbers",
+    "TEACHERS-COUNTER":" Teachers Numbers",
+    "MALES":"Males",
+    "FEMALES":"Females",
+    "KHATMEEN":"Khatmeen",
+    "STUDENTS" :"students",
+    "REGISTERED" :" Registered "
   },
   "SETTING_PG": {
     "TITLE": "Settings",

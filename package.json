@@ -29,6 +29,7 @@
     "angularx-social-login": "^3.5.4",
     "bootstrap": "^4.6.0",
     "intl-tel-input": "^17.0.12",
+    "ng-starrating": "^1.0.20",
     "moment": "^2.29.1",
     "moment-hijri": "^2.1.2",
     "ng2-tel-input": "^2.3.0",

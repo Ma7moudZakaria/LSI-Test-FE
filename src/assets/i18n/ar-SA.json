@@ -300,7 +300,14 @@
     "COMPLETE_FIELDS_ADD_ATTACHMENT": "برجاء اكمال الحقول مع اضافة مرفق"
   },
   "DASHBOARD": {
-    "TITLE": "لوحة التحكم"
+    "TITLE": "لوحة التحكم",
+    "STUDENTS-COUNTER":"عدد الطلاب",
+    "TEACHERS-COUNTER":"عدد المعلمين",
+    "MALES":"ذكور",
+    "FEMALES":"إناث",
+    "KHATMEEN":"خاتمين",
+    "STUDENTS" :" الطلاب ",
+    "REGISTERED" :"  المسجلين"
   },
   "SETTING_PG": {
     "TITLE": "الإعدادت",
