@@ -57,7 +57,7 @@ export interface ITeacherProfile {
     bankNumber?: string;
     from?: string;
     to?: string;
-    usrName?: string;
+    usrName?: string; 
     usrEmail?: string;
     proPic?: string;
     teacherPrograms?: ITeacherProfileProgram[];
