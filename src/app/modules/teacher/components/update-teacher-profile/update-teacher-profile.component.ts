@@ -330,10 +330,9 @@ export class UpdateTeacherProfileComponent implements OnInit {
 
         country: this.profileForm.value.country,
         city: this.profileForm.value.city,
-        interviewDay: this.profileForm.value.interviewDay,
-        interviewTime: this.profileForm.value.interviewTime,
+        interviewDays: this.profileForm.value.interviewDays,
+        // interviewTime: this.profileForm.value.interviewTime,
 
-        acEdu: this.profileForm.value.acEdu,
         qualifi: this.profileForm.value.qualifi,
         specia: this.profileForm.value.special,
 
@@ -346,7 +345,6 @@ export class UpdateTeacherProfileComponent implements OnInit {
         isHasTeachForeignerExp: this.profileForm.value.isHasTeachForeignerExp,
         isHasEjazaHafz: this.profileForm.value.isHasEjazaHafz,
         isHasEjazaTelawa: this.profileForm.value.isHasEjazaTelawa,
-        anyLangReading: this.profileForm.value.anyLangReading,
         lang: this.profileForm.value.languages,
 
         agency: this.profileForm.value.workPlatform,

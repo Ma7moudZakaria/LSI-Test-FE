@@ -1,3 +1,8 @@
+import { ITeacherProfileInterviewDay } from "./iteacher-profile-interview-day";
+import { ITeacherProfileLanguage } from "./iteacher-profile-language";
+import { ITeacherProfileProgram } from "./iteacher-profile-program";
+import { ITeacherProfileRewayat } from "./iteacher-profile-rewayat";
+
 export interface ITeacherProfile {
     fnameAr?: string;
     mnameAr?: string;
@@ -55,7 +60,8 @@ export interface ITeacherProfile {
     usrName?: string;
     usrEmail?: string;
     proPic?: string;
-    ejazaAttachments?: [];
-    teacherPrograms?: [];
-
+    teacherPrograms?: ITeacherProfileProgram[];
+    interviewDays?:ITeacherProfileInterviewDay[];
+    rewayats?:ITeacherProfileRewayat[];
+    Languages?:ITeacherProfileLanguage[];
 }
