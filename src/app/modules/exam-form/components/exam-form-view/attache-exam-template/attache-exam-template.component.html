@@ -1,27 +1,34 @@
-<!--exam builder-->
-<div class="input-group "><button type="button" class="btn btn-primary" (click)="addQuestion()">Add question</button></div>
-<br>
-<div class="input-group ">
-<div *ngFor = 'let q of exam.questions'>
+<div class="question-list">
+    <section class="internal_scroll_list_group">
+        <div class="input-group "><button type="button" class="btn btn-primary" (click)="addQuestion()">Add question</button></div>
+        <br>
+        <div class="input-group ">
+        <div *ngFor = 'let q of exam.questions'>
+          
+          <app-question-template [questionTemplate] = 'q'></app-question-template>
+        </div>
+        </div>
+        <br>
+        <div class="input-group "><button type="button" class="btn btn-success" (click)="saveExam()">save</button></div>
+        <!-- <button (click)="saveExam()">save</button> -->
+        <br>
+        <div *ngIf="submitExam" class="input-group ">
+          {{examJson}}
+          <div  *ngFor = 'let q of exam.questions'>
+          
+            <app-question-template [questionTemplate] = 'q'></app-question-template>
+          </div>
+        </div>
+        
+        
+        <!--recording-->
+        <div>
+          <app-voice-recording (getVoiceUrl)="saveVoiceUrl($event)"></app-voice-recording>
+          {{voiceUrl}}
+        </div>
+
+    </section>
   
-  <app-question-template [questionTemplate] = 'q'></app-question-template>
-</div>
-</div>
-<br>
-<div class="input-group "><button type="button" class="btn btn-success" (click)="saveExam()">save</button></div>
-<!-- <button (click)="saveExam()">save</button> -->
-<br>
-<div *ngIf="submitExam" class="input-group ">
-  {{examJson}}
-  <div  *ngFor = 'let q of exam.questions'>
-  
-    <app-question-template [questionTemplate] = 'q'></app-question-template>
-  </div>
+
 </div>
 
-
-<!--recording-->
-<div>
-  <app-voice-recording (getVoiceUrl)="saveVoiceUrl($event)"></app-voice-recording>
-  {{voiceUrl}}
-</div>
