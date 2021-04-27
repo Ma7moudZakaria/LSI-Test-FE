@@ -32,14 +32,15 @@
     "USERNAME_REQUIRED": "User Name is required",
     "USERNAME_MIN_LENGTH": "User Name sould be more than or equal 3 charcter",
     "USERNAME_MAX_LENGTH": "User Name sould be less than or equal 20 charcter",
-    "YES" : "Yes",
-    "NO" : "No",
-    "LOGOUT_CONFIRM" : "LogOut",
-    "LOGOUT_MESSAGE" : "Are you sure you want to logout ?",
-    "ARABIC_DISPALY_SWITCH":"Arabic",
-    "INVALID_PHONE_NUMBER":"Invalid phone number",
-    "CONFIRM_PASSWORD_TO_CONTAINER": "Please enter a confirm password including at least one number and includes both lower and uppercase letters and special characters",
-    "PASSWORD_TO_CONTAINER": "Please enter a password including at least one number and includes both lower and uppercase letters and special characters"
+    "YES": "Yes",
+    "NO": "No",
+    "LOGOUT_CONFIRM": "LogOut",
+    "LOGOUT_MESSAGE": "Are you sure you want to logout ?",
+    "ARABIC_DISPALY_SWITCH": "Arabic",
+    "INVALID_PHONE_NUMBER": "Invalid phone number",
+    "CONFIRM_PASSWORD_TO_CONTAINER": "The password should including at least one number and includes both lower and uppercase letters and special characters",
+    "PASSWORD_TO_CONTAINER": "The password should including at least one number and includes both lower and uppercase letters and special characters",
+    "UNSAVED_CHANGES": "Are you sure you want to leave page without save changes"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
@@ -70,7 +71,7 @@
     "RESET_PASSWORD": "Reset Password"
   },
   "SCIENTIFIC_MATERIAL": {
-    "TITLE":"Scientific Material",
+    "TITLE": "Scientific Material",
     "SELECTOPTION": "Select Option",
     "PROGRAMS": "Programs",
     "CATEGORY": "Category",
@@ -86,15 +87,15 @@
     "INACTIVE": "InActive",
     "SAVE": "Save",
     "CANCEL": "Cancel",
-    "CLOSE":"Close",
+    "CLOSE": "Close",
     "REQUIRED": "This Field Is Required.",
     "TITLEARPATTERN": "Please insert arabict text only.",
     "TITLEARMAXLENGTH": "Title Must be less than or equal 50 character",
     "TITLEENPATTERN": "Please insert english text only.",
     "TITLEENMAXLENGTH": "Title Must be less than or equal 50 character",
     "Confirm_Delete": "Delete Material",
-    "Delete_Message" : "Are you sure you want to delete this?",
-    "Select_Program" : "Please select program",
+    "Delete_Message": "Are you sure you want to delete this?",
+    "Select_Program": "Please select program",
     "NO_DATA": "No Data found"
   },
   "PROGRAMS_LIST": {
@@ -136,12 +137,12 @@
     "PHONE_NUMBER_PATTERN": "Please insert phone number correct",
     "PHONE_NUMBER_MAX_LENGTH": "Phone Number sould be less than or equal 16 numbers",
     "PHONE_NUMBER_MIN_LENGTH": "Phone Number sould be more than or equal 6 numbers",
-    "BIRTHDATE_REQUIRED":"Birthdate is required",
+    "BIRTHDATE_REQUIRED": "Birthdate is required",
     "NATIONALITY_REQUIRED": "Nationality is Required",
-    "ADDRESS": "Address",
+    "ADDRESS": "Permanent residence address",
     "ADDRESS_REQUIRED": "Address is Required",
-    "ADDRESS_MAX_LENGTH":"Address sould be less than or equal 50 character",
-    "ADDRESS_MIN_LENGTH":"Address sould be more than or equal 6 character",
+    "ADDRESS_MAX_LENGTH": "Address sould be less than or equal 50 character",
+    "ADDRESS_MIN_LENGTH": "Address sould be more than or equal 6 character",
     "EDU": "Academic education",
     "EDU_LEVEL": "Educational Level",
     "EDU_LEVEL_REQUIRED": "Educational Level is Required",
@@ -149,19 +150,20 @@
     "OCCUPATION_REQUIRED": "Occupation  is Required",
     "CONTACT_INFO": "Contact info",
     "CHANGE_PIC": "Change pic",
-    "AMOUNT_QURAN": "The amount of memorization from the Qur'an",
+    "AMOUNT_QURAN": "The memorization amount from Qur'an",
     "MEMORIES_QURAN": "A permission to save the Quran file",
     "DELETE": "Delete",
     "SHEIKHS_STUDIED": "Sheikhs I studied on",
-    "CHOOSE_SHEIKHS":"Please Choose Sheikh",
-    "ASRCHIVE":"Please select Archives",
-    "COURSE":"Please select course",
-    "SCIENTIFIC_ARCHIVES":"Scientific Archives",
-    "TRAINING_COURSES":"Training courses",
-    "OPTIONAL":"Optional"
+    "CHOOSE_SHEIKHS": "Please Choose Sheikh",
+    "ASRCHIVE": "Please select Archives",
+    "COURSE": "Please select course",
+    "SCIENTIFIC_ARCHIVES": "Scientific Archives",
+    "TRAINING_COURSES": "Training courses",
+    "OPTIONAL": "Optional",
+    "EDIT_PROFILE": "Edit profile"
   },
   "QUESTION_BANK": {
-    "TITLE":"Question Bank",
+    "TITLE": "Question Bank",
     "ADD_DEPARTMENT": "Add department",
     "DEPARTMENTS": "Departments",
     "DEPARTMENT_AR": "Department Arabic",
@@ -183,12 +185,12 @@
     "ADD": "Add",
     "CANCEL": "Cancel",
     "NO_DATA": "No Data found",
-    "NAME_AR_MAX_LENGHT":"Department Arabic Must be less than or equal 500 character",
-    "NAME_EN_MAX_LENGHT":"Department English Must be less than or equal 500 character",
-    "QUESTION_AR_MAX_LENGHT":"Question Arabic Must be less than or equal 50 character",
-    "QUESTION_EN_MAX_LENGHT":"Question English Must be less than or equal 50 character",
-    "ANSWER_AR_MAX_LENGHT":"Answer Arabic Must be less than or equal 500 character",
-    "ANSWER_EN_MAX_LENGHT":"Answer English Must be less than or equal 500 character"
+    "NAME_AR_MAX_LENGHT": "Department Arabic Must be less than or equal 100 character",
+    "NAME_EN_MAX_LENGHT": "Department English Must be less than or equal 100 character",
+    "QUESTION_AR_MAX_LENGHT": "Question Arabic Must be less than or equal 50 character",
+    "QUESTION_EN_MAX_LENGHT": "Question English Must be less than or equal 50 character",
+    "ANSWER_AR_MAX_LENGHT": "Answer Arabic Must be less than or equal 500 character",
+    "ANSWER_EN_MAX_LENGHT": "Answer English Must be less than or equal 500 character"
   },
   "SIDENAVBAR": {
     "DASHBORD": "DashBoard",
@@ -201,16 +203,17 @@
     "SETTINGS": "Settings",
     "MY_MESSAGES": "Feeling",
     "QUESTION_BANK": "Question Bank",
-    "SHORT_DESCRIPTION_AR_MAX_LENGHT":"Arabic short description must be less than or equal 200 character",
-    "SHORT_DESCRIPTION_EN_MAX_LENGHT":"English short description must be less than or equal 200 character",
-    "LONG_DESCRIPTION_AR_MAX_LENGHT":"Arabic long description must be less than or equal 1000 character",
-    "LONG_DESCRIPTION_EN_MAX_LENGHT":"English long description must be less than or equal 1000 character"
+    "SHORT_DESCRIPTION_AR_MAX_LENGHT": "Arabic short description must be less than or equal 200 character",
+    "SHORT_DESCRIPTION_EN_MAX_LENGHT": "English short description must be less than or equal 200 character",
+    "LONG_DESCRIPTION_AR_MAX_LENGHT": "Arabic long description must be less than or equal 1000 character",
+    "LONG_DESCRIPTION_EN_MAX_LENGHT": "English long description must be less than or equal 1000 character"
   },
   "VIEW_USER_PROFILE_PG": {
-    "PERSONAL_PROFILE": "Personal Profile"
+    "PERSONAL_PROFILE": "Personal Profile",
+    "VIEW_PROFILE": "View Profile"
   },
   "CONTENT_MANEGMENT_SYSTEM": {
-    "TITLE":"Content Managment",
+    "TITLE": "Content Managment",
     "ALL": "All",
     "DEPARMENTS": "Departments",
     "TECNICAL_QUESTIONS": "Tecnical questions",
@@ -227,11 +230,14 @@
     "ENGLISH_FIELD": "This field must be in English",
     "SAVE": "Save",
     "ADD": "Add",
-    "CANCEL": "Cancel"
-
+    "CANCEL": "Cancel",
+    "SHORT_DESCRIPTION_AR_MAX_LENGHT": "Arabic short description must be less than or equal 200 character",
+    "SHORT_DESCRIPTION_EN_MAX_LENGHT": "English short description must be less than or equal 200 character",
+    "LONG_DESCRIPTION_AR_MAX_LENGHT": "Arabic long description must be less than or equal 1000 character",
+    "LONG_DESCRIPTION_EN_MAX_LENGHT": "English long description must be less than or equal 1000 character"
   },
   "WALKTHROUGH": {
-    "TITLE":"WalkThrough",
+    "TITLE": "WalkThrough",
     "PAGES": "Pages",
     "UPLOAD_PIC": "Upload Picture",
     "ARABIC_MESSAGE": "Arabic Message",
@@ -241,8 +247,9 @@
     "ENGLISH_FIELD": "This field must be in English",
     "TITLEAR_PATTERN": "Please insert arabict text only.",
     "TITLEEN_PATTERN": "Please insert english text only.",
-    "AR_MAX_LENGTH":"Arabic text should less than or equal 1000 characters",
-    "EN_MAX_LENGTH":"English text should less than or equal 1000 characters"
+    "AR_MAX_LENGTH": "Arabic text should less than or equal 1000 characters",
+    "EN_MAX_LENGTH": "English text should less than or equal 1000 characters",
+    "COMPLETE_FIELDS_ADD_ATTACHMENT": "Please complete all fields with adding attachment"
   },
   "DASHBOARD": {
     "TITLE": "Dashboard",
@@ -255,7 +262,7 @@
     "REGISTERED" :" Registered "
   },
   "SETTING_PG": {
-    "TITLE":"Settings",
+    "TITLE": "Settings",
     "NOTIFICATION": "Notifications",
     "CRETIFICATION": "Certificate form",
     "PROVIDED_SCREEN": "Provided screens",

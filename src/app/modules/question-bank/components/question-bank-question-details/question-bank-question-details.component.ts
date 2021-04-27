@@ -3,6 +3,8 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { IQuestionBankQuestionsModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-model';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 import { QuestionBankQuestionService } from 'src/app/core/services/question-bank-services/question-bank-question.service';
@@ -18,6 +20,7 @@ export class QuestionBankQuestionDetailsComponent implements OnInit {
   QuestionBankQuestion?: IQuestionBankQuestionsModel ;
   //currentWindowWidth?: number;
   errorMessage?:string;
+  resMessage: BaseMessageModel = {};
   //msgs: Message[] = [];
   QuestionBankQuestionId:string="";
   
@@ -35,6 +38,8 @@ export class QuestionBankQuestionDetailsComponent implements OnInit {
   //   this.currentWindowWidth = window.innerWidth
   // }
   loadQuestionBankQuestionDetails() {
+    this.resMessage = {};
+    
     this.questionBankQuestionService.getQuestionBankQuestionDetails(this.QuestionBankQuestionId).subscribe(
       res => {
         var response = <BaseResponseModel>res;
@@ -42,10 +47,17 @@ export class QuestionBankQuestionDetailsComponent implements OnInit {
           this.QuestionBankQuestion = response.data;
         }
         else {
-          this.errorMessage = response.message;
+          // this.errorMessage = response.message;
+          this.resMessage ={
+            message: response.message,
+            type: BaseConstantModel.DANGER_TYPE
+          }
         }
       }, error => {
-        console.log(error);
+        this.resMessage ={
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       })
   }
 

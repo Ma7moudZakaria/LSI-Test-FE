@@ -142,15 +142,30 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   border-bottom-right-radius: 0;
 }
 
-.UserLogin .input-group.has-validation>.input-group-append:nth-last-child(n+3)>.btn, .input-group.has-validation>.input-group-append:nth-last-child(n+3)>.input-group-text, .input-group:not(.has-validation)>.input-group-append:not(:last-child)>.btn, .input-group:not(.has-validation)>.input-group-append:not(:last-child)>.input-group-text, .input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle), .input-group>.input-group-append:last-child>.input-group-text:not(:last-child), .input-group>.input-group-prepend>.btn, .input-group>.input-group-prepend>.input-group-text:lang(ar) {
+// .UserLogin .input-group.has-validation>.input-group-append:nth-last-child(n+3)>.btn, 
+// .input-group.has-validation>.input-group-append:nth-last-child(n+3)>.input-group-text, 
+// .input-group:not(.has-validation)>.input-group-append:not(:last-child)>.btn, 
+// .input-group:not(.has-validation)>.input-group-append:not(:last-child)>.input-group-text, 
+// .input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle),
+//  .input-group>.input-group-append:last-child>.input-group-text:not(:last-child),
+//   .input-group>.input-group-prepend>.btn,
+   .input-group>.input-group-prepend>.input-group-text:lang(ar) {
   border-top-right-radius: 0.65rem;
   border-bottom-right-radius: 0.65rem;
-}
-
-.UserLogin .input-group:not(.has-validation)>.input-group-append:not(:last-child)>.input-group-text, .input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle), .input-group>.input-group-append:last-child>.input-group-text:not(:last-child), .input-group>.input-group-prepend>.btn, .input-group>.input-group-prepend>.input-group-text:lang(ar) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
+
+// .UserLogin .input-group:not(.has-validation)>.input-group-append:not(:last-child)>.input-group-text,
+//  .input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle), 
+//  .input-group>.input-group-append:last-child>.input-group-text:not(:last-child),
+//   .input-group>.input-group-prepend>.btn,
+//    .input-group>.input-group-prepend>.input-group-text:lang(ar) {
+//   border-top-left-radius: 0;
+//   border-bottom-left-radius: 0;
+// }
+
+
 .mat-icon{
   opacity: 0.2;
 }
@@ -162,7 +177,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .form-control:focus,.input-group-text:focus{
   border-color:$border-input
 }
-
+// for textarea in foucs
+textarea.form-control:focus{
+  box-shadow: none;
+  border: 3px solid #80bdff;
+}
+.pr-2rem{
+  padding-right: 2rem;
+}
   // for input in en 
 
   .input-group:lang(en){
@@ -220,6 +242,24 @@ font-size: 12px;
 padding-left: 0.5rem;
 padding-right: 0.5rem;
 font-family: Almarai-Regular;
+}
+
+.alert-danger
+ {
+  color:  $error-message-color;
+  background-color: transparent;
+   border-color: transparent
+}
+.alert-success
+ {
+  color:$aler_success;
+  background-color: transparent;
+  border-color: transparent
+}
+.alert {
+  position: relative;
+   padding: 0.3rem 0;
+  margin-bottom: 1rem;
 }
 // end error input && message
 
@@ -558,6 +598,37 @@ app-tel-input >
   text-align: right;
 }
 
+// removeHijri
+.HijriGregorianDatePicker.removeHijri .btn:last-of-type{
+display: none;
+}
+.HijriGregorianDatePicker.removeHijri .btn:first-of-type{
+
+  color: #fff;
+  background-color: #117a8b;
+  border-color: #10707f;
+}
+.hijriInput{
+    border-top-left-radius: 0.56rem !important;
+    border-bottom-left-radius:  0.56rem !important;
+}
+.hijriInput:lang(ar){
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius:  0 !important;
+    border-top-right-radius:0.56rem !important;
+    border-bottom-right-radius: 0.56rem !important;
+}
+//  removemilady
+.HijriGregorianDatePicker.removemilady .btn:first-of-type{
+  display: none;
+  }
+  .HijriGregorianDatePicker.removemilady .btn:last-of-type{
+  
+    color: #fff;
+    background-color: #117a8b;
+    border-color: #10707f;
+  }
+  // mat-dialog-container 
 .mat-dialog-container {
   direction: initial;
   min-width: 30rem;
@@ -566,12 +637,11 @@ app-tel-input >
 .mat-dialog-title, .mat-dialog-content {
   text-align: center;
 }
-
 .mat-dialog-actions:lang(en) {
   float: right;
 }
-
-.mat-dialog-actions .mat-button-base+.mat-button-base, .mat-dialog-actions .mat-mdc-button-base+.mat-mdc-button-base {
+.mat-dialog-actions .mat-button-base+.mat-button-base,
+ .mat-dialog-actions .mat-mdc-button-base+.mat-mdc-button-base {
   margin-left: 8px !important;
   margin-right: 8px !important;
 }

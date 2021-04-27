@@ -105,19 +105,22 @@
     top: 20%;
     width: 13.313rem;
     height: 13.313rem;
+    border-radius: 1rem;
 }
 .mb-50{
     margin-bottom: 50px;
 }
+
 .internal_scroll{
 max-height: 300px;
 overflow-y: scroll;
 overflow-x: hidden;
+padding-left: 0.5rem;
+padding-right: 0.5rem;
 }
 .border_bottom{
     border-bottom: 1px solid #b9b0b061;
 }
-
 
 // {
 //     width: 20px;
@@ -128,13 +131,18 @@ overflow-x: hidden;
 //     background-repeat: no-repeat;
 //     display: inline-block;
 // }
-.custom_file_input{
+.custom_file_input:lang(ar){
   left: 58% !important;
   position: absolute;
   bottom: -46px;  
   
 }
 
+.custom_file_input:lang(en){
+    left: 42% !important;
+    position: absolute;
+    bottom: -46px;  
+}
 // .upload-image {
 //     cursor:pointer;
 //     width: 158px;

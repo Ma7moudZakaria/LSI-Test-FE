@@ -37,6 +37,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   items1:any;
   questionBankQuestionUpdateOrderBy:IQuestionBankQuestionUpdateOrderBy={};
   listOrder?: number[];
+
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
      public translate: TranslateService,public dialog: MatDialog) {
       }
@@ -44,6 +45,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   ngOnInit(): void {
     this.getQuestionBankQuestions()
   }
+
   ngOnChanges(changes: any) {
     if(this.isQuestionSave===true){ this.getQuestionBankQuestions(this.selectedCategoryId.id);}
     if(changes.selectedCategoryId?.currentValue.id!==undefined)
@@ -53,12 +55,15 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
    }
   
   }
+
   searchQuestions(text?:string){
     this.questionBankQuestionList=[];
     this.getQuestionBankQuestions(this.selectedCategoryId.id,text) 
   }
+
   getQuestionBankQuestions(CategoryId?:string,text?:string) {
     this.filterErrorMessage = "";
+    this.resultMessage = {};
     this.questionBankQuestionFilter.skip=0;
     this.questionBankQuestionFilter.take= 2147483647;
     this.questionBankQuestionFilter.catgyId=CategoryId;
@@ -73,11 +78,15 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
         this.filterErrorMessage = response.message;
       }
     },
-      error => {
-        console.log(error);
+    error => {
+      this.resultMessage ={
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
       }
+    }
     )
   }
+
   clearFilter(){
     this.questionBankQuestionFilter = {};
     this.questionBankQuestionFilter.skip=0;
@@ -92,17 +101,23 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
         alert("Delete Sucssed")
         this.getQuestionBankQuestions(this.selectedCategoryId.id);
       }, error => {
-
+        this.resultMessage ={
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       }
     )
   
   }
+
   loadQuestion(id?:string){
     this.selectedQuestionId?.emit(id);
   }
+
   NewQuestion(){
     this.selectedQuestionId?.emit('');
   }
+
    confirmDialog(id?:string){
     const message =this.translate.currentLang === LanguageEnum.en ?"Are you sure that you want to delete this question":"هل متأكد من حذف هذا السؤال";
 
@@ -119,12 +134,13 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
             res.message;
             this.getQuestionBankQuestions(this.selectedCategoryId.id);
           }, error => {
-    
+            this.resultMessage ={
+              message: error,
+              type: BaseConstantModel.DANGER_TYPE
+            }
           }
         )
-
-      }
-     
+      }     
     });
   }
 
@@ -137,6 +153,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
       this.currentlyOpenedItemIndex = -1;
     }
   }
+
   onCheckboxChange(questionBankQuestionUpdate: IQuestionBankQuestionUpdateModel){
 
     this.questionBankQuestionService.updateQuestionBankQuestion(questionBankQuestionUpdate).subscribe(res => {
@@ -200,9 +217,12 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
         }
         
       },
-        error => {
-      
-        })
+      error => {
+        this.resultMessage ={
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      })
     } else {
       transferArrayItem(event.previousContainer.data,
         event.container.data,

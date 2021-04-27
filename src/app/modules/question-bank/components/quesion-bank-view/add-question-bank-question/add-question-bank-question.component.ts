@@ -65,6 +65,7 @@ export class AddQuestionBankQuestionComponent implements OnInit {
     }
    this.buildForm();
   }
+
   ngOnChanges(changes: any) {
     this.currentForm.reset();
     this.questionBankQuestionId=this.selectedQuestionId||"";
@@ -79,9 +80,11 @@ export class AddQuestionBankQuestionComponent implements OnInit {
      type: ''
    }
   }
+
   get f() {
     return this.currentForm?.controls;
   }
+
   buildForm() {
     // const arabicWordPattern = "^[\u0621-\u064A\u0660-\u0669 0-9]+$";
     // const englishWordPattern ="^[a-zA-Z0-9' '-'\s]{1,40}$";
@@ -98,6 +101,7 @@ export class AddQuestionBankQuestionComponent implements OnInit {
         AnswerEn : ['', [Validators.required,Validators.maxLength(500), Validators.pattern(BaseConstantModel.ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
       })
   }
+
   populate() {
     this.resultMessage = {
       message:'',
@@ -119,14 +123,20 @@ export class AddQuestionBankQuestionComponent implements OnInit {
         else {
           this.errorMessage = response.message;
         }
-      }, error => {
-        console.log(error);
+      },error => {
+        this.resultMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       })
   }
+
   Submit() {
     this.isSubmit = true;
     this.errorMessage = '';
     this.successMessage = '';
+    this.resultMessage = {};
+
     if (this.currentForm.valid) {
       if (this.questionBankQuestionId) {   
         this.questionBankQuestionUpdate.id=this.questionBankQuestionId;
@@ -160,12 +170,11 @@ export class AddQuestionBankQuestionComponent implements OnInit {
               message: res.message,
               type: BaseConstantModel.DANGER_TYPE
             }
-          }
-          
+          }          
         },
           error => {
             this.resultMessage = {
-              message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+              message: error,
               type: BaseConstantModel.DANGER_TYPE
             }
           })
@@ -201,19 +210,18 @@ export class AddQuestionBankQuestionComponent implements OnInit {
         },
           error => {
             this.resultMessage = {
-              message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+              message: error,
               type: BaseConstantModel.DANGER_TYPE
             }
           })
       }
-
-    }
-
-  
+    }  
   }
+
   backListQuestio(){
     this.closeQuestionForm?.emit(false);
   }
+
   loodQuestionsListAfterAdd(){
 
     // this.isQuestionSave.emit({isSave:isSave,catogeryId:catogeryId});

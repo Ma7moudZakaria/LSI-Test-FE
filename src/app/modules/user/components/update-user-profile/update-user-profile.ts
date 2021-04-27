@@ -135,6 +135,11 @@ export class UpdateUserProfileComponent implements OnInit {
           type: BaseConstantModel.DANGER_TYPE
         }
       }
+    },  error => {        
+      this.resMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
     });
   }
 
@@ -373,6 +378,11 @@ export class UpdateUserProfileComponent implements OnInit {
           type : BaseConstantModel.DANGER_TYPE
         }
       }
+    },  error => {        
+      this.resMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
     })
   }
 
@@ -413,7 +423,7 @@ export class UpdateUserProfileComponent implements OnInit {
         this.fileUploadModel = [];
         this.resMessage = 
         {
-          message: error.message,
+          message: error,
           type: BaseConstantModel.DANGER_TYPE
         } 
       }

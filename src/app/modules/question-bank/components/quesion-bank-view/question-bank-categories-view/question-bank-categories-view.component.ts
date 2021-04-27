@@ -135,6 +135,8 @@ langEnum = LanguageEnum;
     this.isSubmit = true;
     this.errorMessage = '';
     this.successMessage = '';
+    this.resultMessage = {};
+
     if (this.questionBankCategoryId) {
       this.questionBankCategoryUpdate.id=this.questionBankCategoryId;
       this.questionBankCategoryUpdate.no=this.questionBankCategory?.no;
@@ -165,9 +167,12 @@ langEnum = LanguageEnum;
         }
         
       },
-        error => {
-          
-        })
+      error => {
+        this.resultMessage ={
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      })
     }
     else {
       this.questionBankCategoryCreat.arabCatgName=this.f.nameAr.value;
@@ -195,30 +200,36 @@ langEnum = LanguageEnum;
           }
         }
       },
-        error => {
-          
-        })
+      error => {
+        this.resultMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      })
     }
   }
+
   addCatogry(){
     this.currentForm.reset();
-this.isView=false;
-this.isAdd=true;
-this.disableSaveButtons = false;
-this.resultMessage = {
-  message:'',
-  type: ''
-}
+    this.isView=false;
+    this.isAdd=true;
+    this.disableSaveButtons = false;
+    this.resultMessage = {
+      message:'',
+      type: ''
+    }
   }
+
   back_list_Catogry(){
-this.isView=true;
-this.isAdd=false;
+    this.isView=true;
+    this.isAdd=false;
   }
 
   selectedIndex?:Number;
   loadCatogryQuiestion(id?:string,arabCatgName?:string,engCatgName?:string){
     this.selectedCategoryId.emit({id:id,arabCatgName:arabCatgName,engCatgName:engCatgName});
   }
+  
   result: string = '';
   confirmDialog(id?:string){
     const message =this.translate.currentLang === LanguageEnum.en ?"Are you sure that you want to delete this department":"هل متأكد من حذف هذا القسم";
@@ -237,13 +248,15 @@ this.isAdd=false;
             res.message;
             
             this.getQuestionBankCategories();
-          }, error => {
-            error.errorMessage;
+          }, 
+          error => {
+            this.resultMessage = {
+              message: error,
+              type: BaseConstantModel.DANGER_TYPE
+            }
           }
         )
-
-      }
-     
+      }     
     });
   }
 

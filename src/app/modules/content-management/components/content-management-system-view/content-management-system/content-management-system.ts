@@ -151,10 +151,18 @@ export class ContentManagementSystemComponent implements OnInit {
           }
         }
         else {
-          this.errorMessage = res.message;
+          // this.errorMessage = response.message;
+          this.resultMessage ={
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
+          }
         }
-      }, error => {
-        console.log(error);
+      },
+      error => {
+        this.resultMessage ={
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       })
     }
 
@@ -179,7 +187,9 @@ export class ContentManagementSystemComponent implements OnInit {
             type: BaseConstantModel.SUCCESS_TYPE
           }
 
-          this.loadContentManagementSystemByType();
+          setTimeout(() => {
+            this.loadContentManagementSystemByType();
+          }, 2000);
         }
         else {
           this.disableSaveButtons = false;
@@ -190,13 +200,13 @@ export class ContentManagementSystemComponent implements OnInit {
         }
 
       },
-        error => {
-          this.resultMessage = {
-            message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
-            type: BaseConstantModel.DANGER_TYPE
-          }
-        })
-    }
+      error => {
+        this.resultMessage ={
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      })
+      }
 
   }
   reset() {

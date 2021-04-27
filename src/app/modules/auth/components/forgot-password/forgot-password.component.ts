@@ -45,6 +45,8 @@ export class ForgotPasswordComponent implements OnInit {
 
   onSubmit(value: string) {
     this.isSubmit = true;
+    this.resMessage = {};
+
     if (this.forgetpasswordform.valid) {
       var forgotPasswordModel : IForgotPassword;
       forgotPasswordModel = {
@@ -65,6 +67,12 @@ export class ForgotPasswordComponent implements OnInit {
               message: res.message,
               type: BaseConstantModel.DANGER_TYPE
             }
+          }
+        },
+        error => {
+          this.resMessage ={
+            message: error,
+            type: BaseConstantModel.DANGER_TYPE
           }
         }
       );

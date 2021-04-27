@@ -121,11 +121,11 @@ export class WalkThroughComponent implements OnInit {
   submit() {
     this.isSubmit = true;
     this.resMessage = {};
-    if (this.currentForm.valid) {
+    this.mappModel();
+    if (this.currentForm.valid && this.walkThrough.attachmentId) {
       // if (this.attachmentIds.length ==0) {
       //   return;
       // }
-      this.mappModel();
 
       this.clearMessage();
       if (this.walkThrough.id) {
@@ -189,7 +189,7 @@ export class WalkThroughComponent implements OnInit {
     }
     else {
       this.resMessage = {
-        message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+        message: this.translate.instant('WALKTHROUGH.COMPLETE_FIELDS_ADD_ATTACHMENT'),
         type: BaseConstantModel.DANGER_TYPE
       }
     }
@@ -243,6 +243,7 @@ export class WalkThroughComponent implements OnInit {
     }
 
   }
+
   onFileChange(files: FileList) {
     if (files.length > 0) {
       Array.from(files).forEach(element => {
@@ -276,7 +277,7 @@ export class WalkThroughComponent implements OnInit {
         console.log(error);
         this.fileUploadModel = [];
         this.resMessage = {
-          message: error.message,
+          message: error,
           type: BaseConstantModel.DANGER_TYPE
         }
       }

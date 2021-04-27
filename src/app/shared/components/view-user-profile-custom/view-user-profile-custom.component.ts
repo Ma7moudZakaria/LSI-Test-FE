@@ -27,7 +27,7 @@ export class ViewUserProfileCustomComponent implements OnInit {
   currentLang: LanguageEnum | undefined;
   birthdate: string | undefined;
   userName: string | undefined;
-  lang = LanguageEnum ;
+  lang = LanguageEnum;
   @Output() submitClose = new EventEmitter<boolean>();
 
   constructor(
@@ -49,54 +49,59 @@ export class ViewUserProfileCustomComponent implements OnInit {
     this.userService.viewUserProfileDetails(id || '').subscribe(res => {
       if (res.isSuccess) {
         this.userProfileDetails = res.data as IUserProfile;
-        if(this.userProfileDetails?.birthdate)
-        {
+        if (this.userProfileDetails?.birthdate) {
           let birthdateValue = new Date(this.userProfileDetails.birthdate || '');
           this.birthdate = new Date(birthdateValue.setDate(birthdateValue.getDate() + 1)).toISOString().slice(0, 10);
         }
-        if (!this.userProfileDetails?.proPic){
+        if (!this.userProfileDetails?.proPic) {
           this.userProfileDetails.proPic = '../../../../../assets/images/Profile.svg';
         }
       }
       else {
-        this.resMessage = 
+        this.resMessage =
         {
           message: res.message,
           type: BaseConstantModel.DANGER_TYPE
         }
       }
+    }, error => {
+      this.resMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
     });
   }
 
-  logout(){
+  logout() {
     this.authService.logout();
   }
 
   closeNav() {
     this.submitClose.emit(true);
   }
+
   result: string = '';
-  async confirmDialog(id?:string){
-     const confirm = this.translate.instant('GENERAL.LOGOUT_CONFIRM');
-     const  message = this.translate.instant('GENERAL.LOGOUT_MESSAGE');
-    
-     const dialogData = new ConfirmDialogModel(confirm, message);
+  async confirmDialog(id?: string) {
+    const confirm = this.translate.instant('GENERAL.LOGOUT_CONFIRM');
+    const message = this.translate.instant('GENERAL.LOGOUT_MESSAGE');
 
-     const dialogRef = this.dialog.open(ConfirmModalComponent, {
-       maxWidth: "500px",
-       data: dialogData
-     });
-     dialogRef.afterClosed().subscribe(dialogResult => {
-       this.result= dialogResult;
-       if(dialogResult==true){
+    const dialogData = new ConfirmDialogModel(confirm, message);
+
+    const dialogRef = this.dialog.open(ConfirmModalComponent, {
+      maxWidth: "500px",
+      data: dialogData
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      this.result = dialogResult;
+      if (dialogResult == true) {
         this.logout();
-       }
-      
-     });
-   }
+      }
 
-   navEditProf(){
-     this.closeNav();
-    this.router.navigateByUrl('/user/update-user-profile');
-   }
+    });
+  }
+
+  navViewProf() {
+    this.closeNav();
+    this.router.navigateByUrl('/user/view-user-profile-details');
+  }
 }
