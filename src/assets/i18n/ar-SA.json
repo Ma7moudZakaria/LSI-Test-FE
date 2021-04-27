@@ -242,7 +242,8 @@
     "QUESTION_AR_MAX_LENGHT": "يرجى ادخال السؤال عربي أقل من أو يساوى 50 حرفا",
     "QUESTION_EN_MAX_LENGHT": "يرجى ادخال السؤال إنجليزي أقل من أو يساوى 50 حرفا",
     "ANSWER_AR_MAX_LENGHT": "يرجى ادخال الإجابة عربي أقل من أو يساوى 500 حرفا",
-    "ANSWER_EN_MAX_LENGHT": "يرجى ادخال الإجابةإنجليزي أقل من أو يساوى 500 حرفا"
+    "ANSWER_EN_MAX_LENGHT": "يرجى ادخال الإجابةإنجليزي أقل من أو يساوى 500 حرفا",
+    "ADD_SCIENTIFIC_PROBLEM": "اضافة اشكال علمي"
   },
   "SIDENAVBAR": {
     "DASHBORD": "لوحة التحكم",
@@ -301,13 +302,13 @@
   },
   "DASHBOARD": {
     "TITLE": "لوحة التحكم",
-    "STUDENTS-COUNTER":"عدد الطلاب",
-    "TEACHERS-COUNTER":"عدد المعلمين",
-    "MALES":"ذكور",
-    "FEMALES":"إناث",
-    "KHATMEEN":"خاتمين",
-    "STUDENTS" :" الطلاب ",
-    "REGISTERED" :"  المسجلين"
+    "STUDENTS-COUNTER": "عدد الطلاب",
+    "TEACHERS-COUNTER": "عدد المعلمين",
+    "MALES": "ذكور",
+    "FEMALES": "إناث",
+    "KHATMEEN": "خاتمين",
+    "STUDENTS": " الطلاب ",
+    "REGISTERED": "  المسجلين"
   },
   "SETTING_PG": {
     "TITLE": "الإعدادت",

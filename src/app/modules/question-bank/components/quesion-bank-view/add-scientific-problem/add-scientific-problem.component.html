@@ -1,0 +1,21 @@
+<form class="form-group material-form" [formGroup]="currentForm" (submit)="Submit()">
+ 
+    
+    <div class="form-group">
+        <label for="comment">{{ 'QUESTION_BANK.QUESTION_EN' | translate }}</label>
+        <textarea class="form-control" cols="2" rows="5" id="InputQuestion" formControlName="Question" 
+        [ngClass]="{'red-border-class': f.Question.errors && ( f.Question.touched || isSubmit)}"></textarea>
+        <div *ngIf="f.Question.errors && (f.Question.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+          <div *ngIf="f.Question.errors.required">
+              {{"QUESTION_BANK.REQUIRED"|translate}}
+          </div>
+          <div *ngIf="f.Question.errors.pattern">
+              {{ 'QUESTION_BANK.ENGLISH_FIELD' | translate }}
+           </div>
+           <div *ngIf="f.Question.errors?.maxlength ">
+            {{ 'QUESTION_BANK.QUESTION_EN_MAX_LENGHT' | translate}}
+        </div>
+      </div>
+      </div>
+  </form>
+  
