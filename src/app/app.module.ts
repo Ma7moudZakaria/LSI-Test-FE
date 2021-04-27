@@ -65,7 +65,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatExpansionModule,
     SocialLoginModule,
     Ng2TelInputModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [
     CmsHasUnsavedDataGuard,

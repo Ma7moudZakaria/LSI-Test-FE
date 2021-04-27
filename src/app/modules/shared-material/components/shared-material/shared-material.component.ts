@@ -1,5 +1,4 @@
-import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment-hijri';
 
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
@@ -7,7 +6,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 import { IDragDropAccordionItems } from 'src/app/core/interfaces/shared-interfaces/accordion-interfaces/idrag-drop-accordion-items';
 import { ITelInputParams } from 'src/app/core/interfaces/shared-interfaces/tel-input-interfaces/itel-input-params';
-import { Data } from '@angular/router';
+import { IExam } from 'src/app/core/interfaces/exam-builder-interfaces/iexam';
+import { IQuestion } from 'src/app/core/interfaces/exam-builder-interfaces/iquestion';
+import { DomSanitizer } from '@angular/platform-browser';
+import { AttachmentsService } from 'src/app/core/services/attachments-services/attachments.service';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 
 export interface DragDropListItem {
   id: string;
@@ -26,6 +29,9 @@ export class SharedMaterialComponent implements OnInit {
   dataPinding: any;
   higriPinding: any;
   MiladyPinding: any;
+  exam : IExam = {questions: []};
+  submitExam : boolean = false;
+  examJson:string | undefined;
 
   checked: boolean = false;
   indeterminate: boolean = false;
@@ -38,8 +44,9 @@ export class SharedMaterialComponent implements OnInit {
     isRequired: true,
     countryIsoCode: '{"initialCountry": "sa"}'
   }
+  voiceUrl:string | undefined;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog,public domSanitizer: DomSanitizer,private attachmentService: AttachmentsService) { }
 
   ngOnInit(): void {
   }
@@ -209,5 +216,27 @@ export class SharedMaterialComponent implements OnInit {
     console.log("HijriTOMilady ", hijriDate)
     this.dataPinding = hijriDate
   }
+  
+  //questin:IQuestion |undefined;
+  addQuestion(){
+    if (Object.keys(this.exam).length === 0){
+      let id = BaseConstantModel.newGuid();
+      this.exam = { examid: id, questions : []}
+    }
+    let qid = BaseConstantModel.newGuid();
+    let ques : IQuestion  = {questionId : qid, questionNo : this.exam?.questions?.length + 1 ,answers:[]}
+    this.exam.questions?.push(ques);
+  }
+ 
+  saveExam(){
+    this.submitExam = true;
+    this.examJson = JSON.stringify(this.exam);
+  }
+
+/////recording/////
+saveVoiceUrl(event:any){
+  this.voiceUrl = event;
+}
+/////end recording////
 }
 

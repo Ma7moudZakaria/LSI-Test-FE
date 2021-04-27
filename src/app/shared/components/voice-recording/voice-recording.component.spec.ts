@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SharedMaterialComponent } from './shared-material.component';
+import { VoiceRecordingComponent } from './voice-recording.component';
 
-describe('SharedMaterialComponent', () => {
-  let component: SharedMaterialComponent;
-  let fixture: ComponentFixture<SharedMaterialComponent>;
+describe('VoiceRecordingComponent', () => {
+  let component: VoiceRecordingComponent;
+  let fixture: ComponentFixture<VoiceRecordingComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SharedMaterialComponent ]
+      declarations: [ VoiceRecordingComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SharedMaterialComponent);
+    fixture = TestBed.createComponent(VoiceRecordingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

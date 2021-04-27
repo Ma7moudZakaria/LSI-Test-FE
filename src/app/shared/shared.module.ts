@@ -21,18 +21,24 @@ import { Ng2TelInputModule } from 'ng2-tel-input';
 import { TelInputComponent } from './components/tel-input/tel-input.component';
 import { MiladyHijriCalendarComponent } from './components/milady-hijri-calendar/milady-hijri-calendar.component';
 import { NgxHijriGregorianDatepickerModule } from 'ngx-hijri-gregorian-datepicker';
+import { QuestionTemplateComponent } from './components/question-template/question-template.component';
+import { FormsModule } from '@angular/forms';
+import { VoiceRecordingComponent } from './components/voice-recording/voice-recording.component';
 
 
 @NgModule({
-  declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent],
+  declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent, 
+    SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, QuestionTemplateComponent, 
+    VoiceRecordingComponent],
   imports: [
-    CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
-    MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule, MatIconModule,
+    CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,FormsModule,MatRadioModule,
+    MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule, MatIconModule,MatCheckboxModule
   ],
   exports: [
-    MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule, Ng2TelInputModule,
-    MatExpansionModule, MatSelectModule, DragDropModule, CustomeCardComponent, CustomAccordionComponent,
-    ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent
+    MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule,MatRadioModule, MatCheckboxModule,
+    Ng2TelInputModule, MatExpansionModule, MatSelectModule, DragDropModule, CustomeCardComponent, CustomAccordionComponent,
+    ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent,
+    QuestionTemplateComponent,VoiceRecordingComponent
   ]
 })
 export class SharedModule { }

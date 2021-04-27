@@ -1,0 +1,91 @@
+<div class="form-group" style=" border: 5px outset gray;border-radius: 10px;">
+
+    <div class="form-group row question">
+    <div class="col-sm-8">
+      <app-voice-recording *ngIf="!questionTemplate.text" (getVoiceUrl)="saveVoiceUrl($event)"></app-voice-recording>
+      <input type="text" *ngIf="!questionTemplate.voiceUrl" (input)="onQuestionTextChange()"
+      [(ngModel)]="questionTemplate.text" class="form-control" placeholder="add question">
+    </div>
+    <div class="col-sm-2">
+        <input type="text" [(ngModel)]="questionTemplate.degree"  class="form-control"  placeholder="degree">
+      </div>
+      <div class="col-sm-2">
+        <input type="text"  [(ngModel)]="questionTemplate.time"  class="form-control" placeholder="time">
+      </div>
+</div>
+<div class="form-group row">
+  {{questionTemplate.answerType}}
+  <mat-radio-group [(ngModel)]="questionTemplate.answerType" aria-label="Select an option">
+    <mat-radio-button value="{{answerTypeEnum.singleSelect}}">{{answerTypeEnum.singleSelect}}</mat-radio-button>
+    <mat-radio-button value="{{answerTypeEnum.multiSelect}}">{{answerTypeEnum.multiSelect}}</mat-radio-button>
+  </mat-radio-group>
+    <!-- <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+        <label class="custom-control-label" for="customRadioInline1">select</label>
+       
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+        <label class="custom-control-label" for="customRadioInline2">Multi select</label>
+       
+      </div> -->
+</div>
+<button type="button" class="btn btn-warning" (click)="addAnswer()">add answer</button>
+
+
+<div class="form-group row answerChick">
+  <div *ngIf="questionTemplate.answerType === answerTypeEnum.multiSelect">
+    <div *ngFor = 'let answer of questionTemplate.answers'>
+      <mat-checkbox class="example-margin" [checked]="answer.correct">
+        <input type="text" class="form-control" [(ngModel)]="answer.text"  aria-label="Text input with checkbox">
+      </mat-checkbox>
+    </div>
+  </div>
+
+  <div *ngIf="questionTemplate.answerType === answerTypeEnum.singleSelect">
+    <mat-radio-group [(ngModel)]="questionTemplate.correctAnswersByAnswerNumber">
+      <mat-radio-button *ngFor = 'let answer of questionTemplate.answers' 
+       value="answer.answerNo">
+       <input type="text" class="form-control" [(ngModel)]="answer.text"  aria-label="Text input with checkbox">
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+</div>
+
+<!-- <div class="form-group row answerChick">
+    <div *ngFor = 'let answer of questionTemplate.answers'>
+        <div class="input-group mb-3 col-sm-10">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input type="checkbox" aria-label="Checkbox for following text input" [(ngModel)]="answer.correct">
+              </div>
+            </div>
+            <input type="text" class="form-control" [(ngModel)]="answer.text"  aria-label="Text input with checkbox">
+          </div> 
+    </div>
+   
+    
+  </div> -->
+
+  <!-- <div class="form-group row answerRadio">
+    <div class="col-sm-10">
+        <div class="custom-control custom-radio">
+            <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+            <input type="text"  class="form-control"  >
+          </div>
+          <div class="custom-control custom-radio">
+            <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+            <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
+          </div> 
+    <div class="input-group ">
+      
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+          <input type="radio" aria-label="Radio button for following text input">
+          </div>
+        </div>
+        <input type="text" class="form-control" aria-label="Text input with radio button">
+    </div> 
+      </div> 
+</div> -->
+</div>
