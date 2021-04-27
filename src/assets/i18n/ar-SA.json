@@ -162,6 +162,18 @@
     "OPTIONAL": "اختيارى",
     "EDIT_PROFILE": "تعديل الملف الشخصي"
   },
+  "VIEW_USER_PG": {
+    "EDIT_PROFILE": " تعديل الملف الشخصي",
+    "COUNTRY": "المدينه",
+    "ADDRESS": "عنوان الإقامة الدائم",
+    "EDU": "التعليم الأكاديمي",
+    "EDU_LEVEL": "المستوي التعليمي",
+    "OCCUPATION": "المهنه",
+    "AMOUNT_QURAN": "مقدار الحفظ من القران",
+    "MASHAYIKH": "مشايخ درست عليهم",
+    "SCIENTIFIC_ARCHIVES": "المحفوظات العلمية",
+    "TRAINING_COURSES": "دورات تدريبية"
+  },
   "UPDATE_TEACHER_PG": {
     "EDU": "التعليم الأكاديمي",
     "EDU_REQUIRED": "التعليم الأكاديمي مطلوب",

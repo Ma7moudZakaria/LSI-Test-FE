@@ -19,6 +19,7 @@ import { UserService } from 'src/app/core/services/user-services/user.service';
 })
 
 export class ViewUserProfileDetailsComponent implements OnInit {
+  listbadges = [1, 2]
 
   RouteParams: any;
   userProfileDetails: any;

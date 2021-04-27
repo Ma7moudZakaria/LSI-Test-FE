@@ -162,6 +162,18 @@
     "OPTIONAL": "Optional",
     "EDIT_PROFILE": "Edit profile"
   },
+  "VIEW_USER_PG": {
+    "EDIT_PROFILE": "Edit profile",
+    "COUNTRY": "Country",
+    "ADDRESS": "Address",
+    "EDU": "Academic education",
+    "EDU_LEVEL": "Educational Level",
+    "OCCUPATION": "Occupation",
+    "AMOUNT_QURAN": "The amount of memorization from the Quran",
+    "MASHAYIKH": "Mashayikh darast ealayhim",
+    "SCIENTIFIC_ARCHIVES": "Scientific Archives",
+    "TRAINING_COURSES": "Training courses"
+  },
   "UPDATE_TEACHER_PG": {
     "EDU": "Academic education",
     "EDU_REQUIRED": "Academic education is Required",
