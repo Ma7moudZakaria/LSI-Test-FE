@@ -30,6 +30,7 @@ export class SharedMaterialComponent implements OnInit {
   MiladyPinding: any;
   exam : IExam = {};
   submitExam : boolean = false;
+  examJson:string | undefined;
 
   checked: boolean = false;
   indeterminate: boolean = false;
@@ -43,7 +44,7 @@ export class SharedMaterialComponent implements OnInit {
     countryIsoCode: '{"initialCountry": "sa"}'
   }
   voiceUrl:string | undefined;
-  
+
   constructor(public dialog: MatDialog,public domSanitizer: DomSanitizer,private attachmentService: AttachmentsService) { }
 
   ngOnInit(): void {
@@ -226,6 +227,7 @@ export class SharedMaterialComponent implements OnInit {
  
   saveExam(){
     this.submitExam = true;
+    this.examJson = JSON.stringify(this.exam);
   }
 
 /////recording/////
