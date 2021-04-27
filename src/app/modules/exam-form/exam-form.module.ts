@@ -9,6 +9,7 @@ import { ExamViewComponent } from './components/exam-form-view/exam-view/exam-vi
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 
@@ -22,6 +23,7 @@ import { TranslateModule } from '@ngx-translate/core';
     CommonModule,
     ExamFormRoutingModule,
      TranslateModule
-  ]
+     , MatTooltipModule
+  ], providers: [MatTooltipModule]
 })
 export class ExamFormModule { }

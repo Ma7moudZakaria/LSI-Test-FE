@@ -1,0 +1,20 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-12 pl-0">
+            <app-exam-view (selectedExamFormId)="setSelectedExam($event)" (inputExamId)="setInputExamId($event)" [addExamForm]="addExamForm" >
+            </app-exam-view>
+        </div>
+        <div class="col-lg-9  col-md-9 col-sm-12 pl-0">
+           
+
+        </div>
+       
+    </div>
+
+  
+
+    <div class="overlay" *ngIf="showAddExamForm">
+        <app-add-exam [inputExamId]="inputExamId"  (submitSuccess)="closeAddExamFormAfterSave($event)" (closeExamForm)="closeAddExamForm()" (addExamForm)="loadListAfterAddExam($event)">
+        </app-add-exam>
+    </div>
+</div>

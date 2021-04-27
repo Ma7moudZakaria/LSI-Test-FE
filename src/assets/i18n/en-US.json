@@ -40,7 +40,13 @@
     "INVALID_PHONE_NUMBER": "Invalid phone number",
     "CONFIRM_PASSWORD_TO_CONTAINER": "The password should including at least one number and includes both lower and uppercase letters and special characters",
     "PASSWORD_TO_CONTAINER": "The password should including at least one number and includes both lower and uppercase letters and special characters",
-    "UNSAVED_CHANGES": "Are you sure you want to leave page without save changes"
+    "UNSAVED_CHANGES": "Are you sure you want to leave page without save changes",
+    "NO_DATA": "No Data found",
+    "REQUIRED": "This field is required!",
+    "ARABIC_FIELD": "This field must be in Arabic",
+    "ENGLISH_FIELD": "This field must be in English",
+    "ADD": "Add",
+    "CANCEL": "Cancel"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
@@ -262,5 +268,12 @@
     "USER_MANAGEMENT": "User management",
     "ABOUT_HUFFAZ": "About Huffaz",
     "POWER": "Powers"
+  },
+  "EXAM_FORM":{
+    "TITLE":"Forms",
+    "FORM_NAME_AR":"Form Name (Arabic)",
+    "FORM_NAME_EN":"Form Name (English)",
+    "EXAM_FORMS":"Exam forms",
+    "ADD_FORM":"Add form"
   }
 }
