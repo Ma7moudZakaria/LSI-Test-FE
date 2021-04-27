@@ -10,6 +10,7 @@ import { IExam } from 'src/app/core/interfaces/exam-builder-interfaces/iexam';
 import { IQuestion } from 'src/app/core/interfaces/exam-builder-interfaces/iquestion';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AttachmentsService } from 'src/app/core/services/attachments-services/attachments.service';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 
 export interface DragDropListItem {
   id: string;
@@ -28,7 +29,7 @@ export class SharedMaterialComponent implements OnInit {
   dataPinding: any;
   higriPinding: any;
   MiladyPinding: any;
-  exam : IExam = {};
+  exam : IExam = {questions: []};
   submitExam : boolean = false;
   examJson:string | undefined;
 
@@ -219,9 +220,11 @@ export class SharedMaterialComponent implements OnInit {
   //questin:IQuestion |undefined;
   addQuestion(){
     if (Object.keys(this.exam).length === 0){
-      this.exam = { examid: '1', questions : []}
+      let id = BaseConstantModel.newGuid();
+      this.exam = { examid: id, questions : []}
     }
-    let ques : IQuestion  = {questionId : '1',answers:[]}
+    let qid = BaseConstantModel.newGuid();
+    let ques : IQuestion  = {questionId : qid, questionNo : this.exam?.questions?.length + 1 ,answers:[]}
     this.exam.questions?.push(ques);
   }
  

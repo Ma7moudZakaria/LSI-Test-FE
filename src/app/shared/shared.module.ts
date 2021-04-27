@@ -31,12 +31,12 @@ import { VoiceRecordingComponent } from './components/voice-recording/voice-reco
     SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, QuestionTemplateComponent, 
     VoiceRecordingComponent],
   imports: [
-    CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,FormsModule,
-    MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule, MatIconModule,
+    CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,FormsModule,MatRadioModule,
+    MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule, MatIconModule,MatCheckboxModule
   ],
   exports: [
-    MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule, Ng2TelInputModule,
-    MatExpansionModule, MatSelectModule, DragDropModule, CustomeCardComponent, CustomAccordionComponent,
+    MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule,MatRadioModule, MatCheckboxModule,
+    Ng2TelInputModule, MatExpansionModule, MatSelectModule, DragDropModule, CustomeCardComponent, CustomAccordionComponent,
     ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent,
     QuestionTemplateComponent,VoiceRecordingComponent
   ]
