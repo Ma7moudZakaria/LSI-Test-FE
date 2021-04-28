@@ -1,5 +1,5 @@
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
-import { Component, HostListener, Input, Output,EventEmitter,OnInit } from '@angular/core';
+import { Component, HostListener, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -20,62 +20,61 @@ import { QuestionBankCategoryService } from 'src/app/core/services/question-bank
 export class AddQuestionBankCategoryComponent implements OnInit {
   //@Input() user: any;
   Title?: string;
-  QuestionBankCategoryId:string='';
-  QuestionBankCategory?: IQuestionBankCategoriesModel ;
+  QuestionBankCategoryId: string = '';
+  QuestionBankCategory?: IQuestionBankCategoriesModel;
   QuestionBankCategoryCreat: IQuestionBankCategoryCreatModel = {};
-  QuestionBankCategoryUpdate: IQuestionBankCategoryUpdateModel = {} ;
-  isAdd:boolean=true;
+  QuestionBankCategoryUpdate: IQuestionBankCategoryUpdateModel = {};
+  isAdd: boolean = true;
   // currentWindowWidth?: number;
-  errorMessage?:string;
+  errorMessage?: string;
   maxDate: any;
   // msgs: Message[] = [];
-   currentForm: FormGroup=new FormGroup({});
-   formImport: FormGroup;
-  successMessage?:string;
+  currentForm: FormGroup = new FormGroup({});
+  formImport: FormGroup;
+  successMessage?: string;
   isSubmit = false;
-  resultMessage:BaseMessageModel = {};
+  resultMessage: BaseMessageModel = {};
   disableSaveButtons = false;
-  
-  @Input() inputCategoryId?:string; 
+
+  @Input() inputCategoryId?: string;
   @Output() closeCategoryForm = new EventEmitter<boolean>();
   @Output() addCategory = new EventEmitter<boolean>();
   @Output() submitSuccess = new EventEmitter<boolean>();
 
   constructor(private questionBankCategoryService: QuestionBankCategoryService,
-    private activeroute: ActivatedRoute, 
-    private router: Router, 
-    public translate: TranslateService,private fb: FormBuilder, private _alertify:AlertifyService) { 
-      this.formImport = new FormGroup({
-        importFile: new FormControl('', Validators.required)
-      });
-    }
+    private activeroute: ActivatedRoute,
+    private router: Router,
+    public translate: TranslateService, private fb: FormBuilder, private _alertify: AlertifyService) {
+    this.formImport = new FormGroup({
+      importFile: new FormControl('', Validators.required)
+    });
+  }
 
   ngOnInit(): void {
-    this.QuestionBankCategoryId=this.inputCategoryId||"";
-    if (this.QuestionBankCategoryId !== "" ) {
-      this.isAdd=false;
+    this.QuestionBankCategoryId = this.inputCategoryId || "";
+    if (this.QuestionBankCategoryId !== "") {
+      this.isAdd = false;
       this.currentForm.reset();
-     this.populate() ;
+      this.populate();
     }
     else {
       this.currentForm.reset();
-      this.isAdd=true;
+      this.isAdd = true;
     }
     this.buildForm();
   }
 
   ngOnChanges(changes: any) {
     this.currentForm.reset();
-    this.QuestionBankCategoryId=this.inputCategoryId||"";
-    if(this.QuestionBankCategoryId !== "")
-    {this.populate() ;}
-   if( this.QuestionBankCategoryId==""){
-    this.currentForm.reset();
-   }
-   this.resultMessage = {
-     message:'',
-     type: ''
-   }
+    this.QuestionBankCategoryId = this.inputCategoryId || "";
+    if (this.QuestionBankCategoryId !== "") { this.populate(); }
+    if (this.QuestionBankCategoryId == "") {
+      this.currentForm.reset();
+    }
+    this.resultMessage = {
+      message: '',
+      type: ''
+    }
   }
 
   get f() {
@@ -92,19 +91,19 @@ export class AddQuestionBankCategoryComponent implements OnInit {
     // const ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITH_EMOJI = "^[ A-Za-z0-9_@./#&+-~؛)(÷*/'/!/$]*$";
     this.currentForm = this.fb.group(
       {
-       
-        nameAr:['', [Validators.required,Validators.maxLength(100), Validators.pattern(BaseConstantModel.ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
-        nameEn: ['', [Validators.required,Validators.maxLength(100),  Validators.pattern(BaseConstantModel.ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
+
+        nameAr: ['', [Validators.required, Validators.maxLength(100), Validators.pattern(BaseConstantModel.ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
+        nameEn: ['', [Validators.required, Validators.maxLength(100), Validators.pattern(BaseConstantModel.ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
 
       })
   }
-   
+
   populate() {
     this.questionBankCategoryService.getQuestionBankCategoryDetails(this.QuestionBankCategoryId).subscribe(
       res => {
-        var response =res;
+        var response = res;
         if (response.isSuccess) {
-          this.QuestionBankCategory =<IQuestionBankCategoriesModel> response.data;
+          this.QuestionBankCategory = <IQuestionBankCategoriesModel>response.data;
           this.f.nameAr.setValue(this.QuestionBankCategory?.arabCatgName);
           this.f.nameEn.setValue(this.QuestionBankCategory?.engCatgName);
         }
@@ -122,7 +121,7 @@ export class AddQuestionBankCategoryComponent implements OnInit {
           type: BaseConstantModel.DANGER_TYPE
         }
       })
-      
+
   }
 
   Submit() {
@@ -130,32 +129,32 @@ export class AddQuestionBankCategoryComponent implements OnInit {
     this.errorMessage = '';
     this.successMessage = '';
     this.resultMessage = {};
-    
+
     if (this.currentForm.valid) {
 
       if (this.QuestionBankCategoryId) {
-        this.QuestionBankCategoryUpdate.id=this.QuestionBankCategoryId;
-        this.QuestionBankCategoryUpdate.no=this.QuestionBankCategory?.no;
-        this.QuestionBankCategoryUpdate.arabCatgName=this.f.nameAr.value;
-        this.QuestionBankCategoryUpdate.engCatgName=this.f.nameEn.value;
-      
+        this.QuestionBankCategoryUpdate.id = this.QuestionBankCategoryId;
+        this.QuestionBankCategoryUpdate.no = this.QuestionBankCategory?.no;
+        this.QuestionBankCategoryUpdate.arabCatgName = this.f.nameAr.value;
+        this.QuestionBankCategoryUpdate.engCatgName = this.f.nameEn.value;
+
         this.questionBankCategoryService.UpdateQuestionBankCategory(this.QuestionBankCategoryUpdate).subscribe(res => {
           if (res.isSuccess) {
             this.isSubmit = false;
             this.resultMessage = {
-              message:res.message||"",
+              message: res.message || "",
               type: BaseConstantModel.SUCCESS_TYPE
             }
-            this. loodCategoryList();
+            this.loodCategoryList();
             this.submitSuccess?.emit(false);//close form after submit is success
-            this._alertify.success(res.message||"");
+            this._alertify.success(res.message || "");
           }
           else {
             this.resultMessage = {
               message: res.message,
               type: BaseConstantModel.DANGER_TYPE
             }
-          }          
+          }
         },
           error => {
             this.resultMessage = {
@@ -165,18 +164,18 @@ export class AddQuestionBankCategoryComponent implements OnInit {
           })
       }
       else {
-        this.QuestionBankCategoryCreat.arabCatgName=this.f.nameAr.value;
-        this.QuestionBankCategoryCreat.engCatgName=this.f.nameEn.value;
+        this.QuestionBankCategoryCreat.arabCatgName = this.f.nameAr.value;
+        this.QuestionBankCategoryCreat.engCatgName = this.f.nameEn.value;
         this.questionBankCategoryService.addQuestionBankCategory(this.QuestionBankCategoryCreat).subscribe(res => {
           this.isSubmit = false;
           if (res.isSuccess) {
             this.resultMessage = {
-              message:res.message||"",
+              message: res.message || "",
               type: BaseConstantModel.SUCCESS_TYPE
             }
-            this. loodCategoryList();
+            this.loodCategoryList();
             this.submitSuccess?.emit(false);//close form after submit is success
-            this._alertify.success(res.message||"");
+            this._alertify.success(res.message || "");
           }
           else {
             this.resultMessage = {
@@ -196,12 +195,12 @@ export class AddQuestionBankCategoryComponent implements OnInit {
 
   }
 
-  loodCategoryList(){
+  loodCategoryList() {
 
     this.addCategory.emit(true);
   }
 
-  backListCatogry(){
+  backListCatogry() {
     this.closeCategoryForm?.emit(false);
   }
 }
