@@ -1,3 +1,3 @@
 export interface ITeacherProfileRewayat {
-    rewayats?:string;
+    rewayat?:string;    
 }

@@ -1,4 +1,5 @@
 
+import { ITeacherProfileInterviewDayLookup } from "./iteacher-profile-interview-day-lookup";
 import { ITeacherProfileLookup } from "./iteacher-profile-lookup";
 
 export interface ITeacherProfile{
@@ -58,7 +59,7 @@ export interface ITeacherProfile{
     proPic?:string;
     ejazaAttachments?:[];
     teacherPrograms ?: ITeacherProfileLookup[];
-    interviewDays ?: ITeacherProfileLookup[];
+    interviewDays ?: ITeacherProfileInterviewDayLookup[];
     rewayats ?: ITeacherProfileLookup[];
-    Languages ?: ITeacherProfileLookup[];
+    languages ?: ITeacherProfileLookup[];
 }

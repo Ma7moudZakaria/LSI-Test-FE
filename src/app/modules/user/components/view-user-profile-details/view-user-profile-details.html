@@ -29,7 +29,7 @@
                     <div class="row">
                        <div class="col-5"></div>
                         <div class="col-5  mt-4  mb-4 border text-center">
-                            <p class="update_item_profile-name">{{ translate.currentLang === lang.en ? userProfileDetails?.fnameEn + " " +  userProfileDetails?.mnameEn + " " + userProfileDetails?.faNameEn : userProfileDetails?.fnameAr+ " " +  userProfileDetails?.mnameAr + " " + userProfileDetails?.fanameAr}}/p>
+                            <p class="update_item_profile-name">{{ translate.currentLang === lang.en ? userProfileDetails?.fnameEn + " " +  userProfileDetails?.mnameEn + " " + userProfileDetails?.faNameEn : userProfileDetails?.fnameAr+ " " +  userProfileDetails?.mnameAr + " " + userProfileDetails?.fanameAr}} </p>
                             <p class="brith_date">starts</p>
                             <span class="brith_date">{{ userProfileDetails?.birthdate }}</span>
                         </div>
@@ -87,7 +87,7 @@
                                         <span>  &nbsp; </span>
                                         <span>  &nbsp; </span>
                                         <span class="data_view">
-                                            عنوان الإقامة الدائمعنوان الإقامة الدائمعنوان الإقامة الدائم
+                                            {{ userProfileDetails?.address }}
                                         </span>
                                     </div>
 <!-- التعليم الاكاديمى -->
@@ -102,7 +102,7 @@
                                         <span>  &nbsp; </span>
                                         <span>  &nbsp; </span>
                                         <span class="data_view">
-                                        مهنه
+                                            {{  translate.currentLang === lang.en ? userProfileDetails?.engEduLevelName : userProfileDetails?.arbEduLevelName }} 
                                         </span>
                                     </div>
 
@@ -112,7 +112,7 @@
                                         <span>  &nbsp; </span>
                                         <span>  &nbsp; </span>
                                         <span class="data_view">
-                                            اختر الجنسية
+                                            {{ userProfileDetails?.occupation }}
                                         </span>
                                     </div> 
                                      <div class="col-4  mb-3">
@@ -120,7 +120,7 @@
                                         <span>  &nbsp; </span>
                                         <span>  &nbsp; </span>
                                         <span class="data_view">
-                                            10 
+                                            {{ userProfileDetails?.quraanMemorizeAmount }} 
                                         </span>
                                     </div>
 
@@ -131,7 +131,7 @@
                                         </div>
                                         <div class="col-9">
                                             <div class="badges mt-3">
-                                               <div class="badge badge-info p-2 " *ngFor="let p of listbadges">
+                                               <div class="badge badge-info p-2 " *ngFor="let item of userProfileDetails?.usrSheikhs">
                                                 <div class="d-flex justify-content-between mt-0" >
                                                     <p class="ellipsis mb-0" matTooltip="fff"> المحفوظات العلميةالمحفوظات العلمية </p>
                                                 </div>
@@ -147,7 +147,7 @@
                                         </div>
                                         <div class="col-9">
                                             <div class="badges mt-3">
-                                               <div class="badge badge-info p-2 " *ngFor="let p of listbadges">
+                                               <div class="badge badge-info p-2 " *ngFor="let item of userProfileDetails?.usrScientificArchives">
                                                 <div class="d-flex justify-content-between mt-0" >
                                                     <p class="ellipsis mb-0" matTooltip="fff"> المحفوظات العلميةالمحفوظات العلمية </p>
                                                 </div>
@@ -163,7 +163,7 @@
 
                                         <div class="col-9">
                                             <div class="badges mt-3">
-                                               <div class="badge badge-info p-2 " *ngFor="let p of listbadges">
+                                               <div class="badge badge-info p-2 " *ngFor="let item of userProfileDetails?.usrCourses">
                                                 <div class="d-flex justify-content-between mt-0" >
                                                     <p class="ellipsis mb-0" matTooltip="fff"> المحفوظات العلميةالمحفوظات العلمية </p>
                                                 </div>

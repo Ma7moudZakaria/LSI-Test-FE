@@ -1,3 +1,3 @@
 export interface ITeacherProfileProgram {
-    teacherPrograms?:string;
+    program?:string;    
 }

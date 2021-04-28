@@ -1,3 +1,3 @@
 export interface ITeacherProfileLanguage {
-    languages?:string;
+    language?:string;    
 }

@@ -1,3 +1,3 @@
 export interface ITeacherProfileInterviewDay {
-    interviewDays?:string;
+    interviewDays?:string;    
 }
