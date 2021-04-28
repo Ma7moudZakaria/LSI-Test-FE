@@ -9,8 +9,8 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
 export class TeacherProfileService {
 
 
-  updateTeacherUrl = environment.baseUrl + 'teacher/update-teacher-profile/';
-  viewTeacherProfileDetailsURL = environment.baseUrl + 'teacher/view-teacher-profile-details/';
+  updateTeacherUrl = environment.baseUrl + 'Teacher/update-teacher-profile/';
+  viewTeacherProfileDetailsURL =  environment.baseUrl + 'Teacher/view-teacher-profile-details/';
 
   constructor(private http: HttpClient) { }
 
@@ -18,7 +18,7 @@ export class TeacherProfileService {
     return this.http.put<BaseResponseModel>(this.updateTeacherUrl, model);
   }
 
-  viewTeacherProfileDetails(id: string): Observable<BaseResponseModel> {
+  viewTeacherProfileDetails(id : string) :Observable<BaseResponseModel>{
     return this.http.get<BaseResponseModel>(this.viewTeacherProfileDetailsURL + id)
   }
 }

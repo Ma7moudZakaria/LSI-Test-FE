@@ -20,25 +20,13 @@ import { UserService } from 'src/app/core/services/user-services/user.service';
 
 export class ViewUserProfileDetailsComponent implements OnInit {
   listbadges = [1, 2]
-
-  RouteParams: any;
-  userProfileDetails: any;
-  isSuccess: any;
-  successMessage: any;
-  allLookups: any;
-  listOfLookupProfile: string[] = ['GENDER', 'EDU_LEVEL', 'NATIONALITY', 'COUNTRY'];
-  currentUser: any;
-  errorMessage: any;
-  collectionOfLookup = {} as ILookupCollection;
-  profileForm: FormGroup = new FormGroup({})
-  genderData: any;
-  countryData: any;
-  nationalityData: any;
-  educationalLevelData: any;
-  language: any;
-  langEnum = LanguageEnum;
-  birthdate: any;
+  RouteParams = {} as string;
+  userProfileDetails = {} as IUserProfile;
+  currentUser: IUser | undefined;
   resMessage: BaseMessageModel = {};
+  currentLang: LanguageEnum | undefined;
+  birthdate: string | undefined;
+  lang = LanguageEnum;
 
   constructor(
     private router: Router,
@@ -49,8 +37,7 @@ export class ViewUserProfileDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
-    this.language = this.language === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
-    this.userProfileDetails as IUserProfile;
+    this.currentLang = this.translate.currentLang === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
     this.RouteParams = this.router.url;
     this.getUserProfile(this.currentUser.id);
   }
@@ -58,14 +45,11 @@ export class ViewUserProfileDetailsComponent implements OnInit {
   getUserProfile(id: any) {
     this.userService.viewUserProfileDetails(id).subscribe(res => {
 
-      this.userProfileDetails = res.data;
-      this.birthdate = new Date(this.userProfileDetails.birthdate.toString());
-      this.birthdate = new Date(this.birthdate.setDate(this.birthdate.getDate() + 1)).toISOString().slice(0, 10);
-
+      this.userProfileDetails = res.data as IUserProfile;
+      
       if (res.isSuccess) {
       }
       else {
-        // this.errorMessage = res.message;
         this.resMessage = {
           message: res.message,
           type: BaseConstantModel.DANGER_TYPE
@@ -78,8 +62,6 @@ export class ViewUserProfileDetailsComponent implements OnInit {
       }
     });
   }
-
-
 
   navEditProf() {
     this.router.navigateByUrl('/user/update-user-profile');
