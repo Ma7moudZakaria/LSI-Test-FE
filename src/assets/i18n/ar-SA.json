@@ -162,6 +162,58 @@
     "OPTIONAL": "اختيارى",
     "EDIT_PROFILE": "تعديل الملف الشخصي"
   },
+  "VIEW_USER_PG": {
+    "EDIT_PROFILE": " تعديل الملف الشخصي",
+    "COUNTRY": "المدينه",
+    "ADDRESS": "عنوان الإقامة الدائم",
+    "EDU": "التعليم الأكاديمي",
+    "EDU_LEVEL": "المستوي التعليمي",
+    "OCCUPATION": "المهنه",
+    "AMOUNT_QURAN": "مقدار الحفظ من القران",
+    "MASHAYIKH": "مشايخ درست عليهم",
+    "SCIENTIFIC_ARCHIVES": "المحفوظات العلمية",
+    "TRAINING_COURSES": "دورات تدريبية"
+  },
+  "UPDATE_TEACHER_PG": {
+    "EDU": "التعليم الأكاديمي",
+    "EDU_REQUIRED": "التعليم الأكاديمي مطلوب",
+    "LEARN_THEQURAN": "تعلم القرأن وحفظه",
+    "GOVERNMENTAL_ENTITY": "جهه حكومية",
+    "NOTGOVERNMENTAL_ENTITY": "غير جهه حكومية",
+    "THISFIELD_REQUIRED": "هذا الحقل مطلوب",
+    "ENTITY": "الجهة",
+    "DURATION": "مدة الدارسة بالسنين ",
+    "IMPROVING_QURAN_WITH_TAJWEED": "هل لديك خبرة فى تحسين القران بالتجويد",
+    "YES": "نعم",
+    "NO": "لا",
+    "EXPERIENCE_TEACHING_SUNNAH": "هل لديك خبرة في في تدريس السنة ؟",
+    "EXPERIENCE_TEACHING_ONLINE": "هل لديك خبرة في التعلم عبر الإنترنت ؟",
+    "EXPERIENCE_TEACHING_FOREIGNERS": "هل لديك خبرة في تعليم الأجانب ؟",
+    "LEAVE_SAVE": "هل لديك إجازة حفظ ؟",
+    "LEAVE_RECITATION": "هل لديه إجازة تلاوة ؟",
+    "LEAVE_RECITATION_VIEW": "اجازة تلاوة ",
+    "TYPE_READING": "بأي قراءة ؟",
+    "LANGUAGES": "اللغات",
+    "AVAILABLE_PROGRAMS_AND_TIMES": "البرامج و الاوقات المتاحة",
+    "WORK_PLATFORM": "العمل في المنصه",
+    "VOLUNTEER": "تطوعي",
+    "TOGET_REWARD": "مفابل مكافئة",
+    "BANK_NAME": "اسم البنك",
+    "ACCOUNT_NUMBER": "رقم الحساب",
+    "PROGRAM_TAUGHT": "البرنامج المراد تدريسه",
+    "CHOOSE_PROGRAM": "اختر البرنامج",
+    "PROFICIENCY_DEGREE": "درجة الاجادة",
+    "ADD": "اضافة",
+    "ADDING_SUGGESTION": "إضافة اقتراح بتدريس برنامج أخر",
+    "WRITE_PROGRAM": "اكتب البرنامج",
+    "INFO_CONTACT": "إختر الوقت المناسب ليقوم مدير النظام بالتواصل معك لإجراء مقابلة للإنضمام للمنصه",
+    "CITY": "المدينة",
+    "QUALIFICATION": "المؤهل",
+    "SPECTALIST": "التخصص",
+    "CHOOSE_DEGREE": "برجاء اختيار  درجة الاجادة ",
+    "TIME": "الوقت",
+    "DAY": "اليوم"
+  },
   "QUESTION_BANK": {
     "TITLE": "بنك الأسئلة",
     "ADD_DEPARTMENT": "إضافة قسم",
@@ -190,7 +242,8 @@
     "QUESTION_AR_MAX_LENGHT": "يرجى ادخال السؤال عربي أقل من أو يساوى 50 حرفا",
     "QUESTION_EN_MAX_LENGHT": "يرجى ادخال السؤال إنجليزي أقل من أو يساوى 50 حرفا",
     "ANSWER_AR_MAX_LENGHT": "يرجى ادخال الإجابة عربي أقل من أو يساوى 500 حرفا",
-    "ANSWER_EN_MAX_LENGHT": "يرجى ادخال الإجابةإنجليزي أقل من أو يساوى 500 حرفا"
+    "ANSWER_EN_MAX_LENGHT": "يرجى ادخال الإجابةإنجليزي أقل من أو يساوى 500 حرفا",
+    "ADD_SCIENTIFIC_PROBLEM": "اضافة اشكال علمي"
   },
   "SIDENAVBAR": {
     "DASHBORD": "لوحة التحكم",
@@ -248,7 +301,14 @@
     "COMPLETE_FIELDS_ADD_ATTACHMENT": "برجاء اكمال الحقول مع اضافة مرفق"
   },
   "DASHBOARD": {
-    "TITLE": "لوحة التحكم"
+    "TITLE": "لوحة التحكم",
+    "STUDENTS-COUNTER": "عدد الطلاب",
+    "TEACHERS-COUNTER": "عدد المعلمين",
+    "MALES": "ذكور",
+    "FEMALES": "إناث",
+    "KHATMEEN": "خاتمين",
+    "STUDENTS": " الطلاب ",
+    "REGISTERED": "  المسجلين"
   },
   "SETTING_PG": {
     "TITLE": "الإعدادت",

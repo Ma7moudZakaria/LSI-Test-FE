@@ -1,4 +1,197 @@
+
+
 <div class="container-fluid UpdateUser" >
+    <div class="row">
+        <div class="box_container">
+
+
+                <div class="col-12 profile p-0 mb-3">
+                    <div class="profile_background"></div>
+                    <img class="img_profile" src="../../../../../assets/images/profile1.png">
+                    <input type="file" style="display: none;" #fileInput>
+                    <a class="custom_file_input"  style="text-decoration: none;" id="upload_link">
+                        <!-- {{'VIEW_USER_PG.CHANGE_PIC' | translate}} -->
+                        <img src="assets/images/update-user/UploadImage.svg"/>
+                    </a>
+                  
+                </div>
+
+                <div class="col-12 textLeft">
+                    <a (click)="navEditProf()" ><img  class="ml-2 mr-2" src="../../../../../assets/images/student/edit.svg">
+                    <span class="profile_edit">{{'VIEW_USER_PG.EDIT_PROFILE' | translate }}</span></a>
+                 </div>
+                
+             <div class="col-12">
+                 <div class=" row info_profile">
+                
+<!--  view teacher profile -->
+                    <div class="col-9  info_profile ">
+                    <div class="row">
+                       <div class="col-5"></div>
+                        <div class="col-5  mt-4  mb-4 border text-center">
+                            <p class="update_item_profile-name">{{ translate.currentLang === lang.en ? userProfileDetails?.fnameEn + " " +  userProfileDetails?.mnameEn + " " + userProfileDetails?.faNameEn : userProfileDetails?.fnameAr+ " " +  userProfileDetails?.mnameAr + " " + userProfileDetails?.fanameAr}} </p>
+                            <p class="brith_date">starts</p>
+                            <span class="brith_date">{{ userProfileDetails?.birthdate }}</span>
+                        </div>
+                        
+                           
+                            <!-- start data -->
+                            <div class="col-12 internal_scroll">
+                                <div class="row">
+                                    <div class="col-4  mb-3">
+                                        <span class="label_info">{{ 'GENERAL.EMAIL' | translate }} </span>
+                                        <span>  &nbsp; </span>
+                                        <span>  &nbsp; </span>
+                                        <span class="data_view">
+                                            {{ userProfileDetails?.usrEmail }}
+                                        </span>
+                                    </div>
+                                    <div class="col-8  mb-3">
+                                        <span class="label_info">{{ 'GENERAL.PHONE_NUMBER' | translate }} </span>
+                                        <span>  &nbsp; </span>
+                                        <span>  &nbsp; </span>
+                                        <span class="data_view">
+                                            {{ userProfileDetails?.mobile }}
+                                        </span>
+                                    </div>
+
+                                    <div class="col-4  mb-3">
+                                        <span class="label_info">{{ 'GENERAL.NATIONALITY' | translate}}</span>
+                                        <span>  &nbsp; </span>
+                                        <span>  &nbsp; </span>
+                                        <span class="data_view">
+                                            {{  translate.currentLang === lang.en ? userProfileDetails?.engNatName : userProfileDetails?.arbNatName }}
+                                        </span>
+                                    </div>
+
+                                    <div class="col-4  mb-3">
+                                        <span class="label_info"> {{ 'VIEW_USER_PG.COUNTRY' | translate }}</span>
+                                        <span>  &nbsp; </span>
+                                        <span>  &nbsp; </span>
+                                        <span class="data_view">
+                                            {{  translate.currentLang === lang.en ? userProfileDetails?.engCountryName : userProfileDetails?.arbCountryName }}
+                                        </span>
+                                    </div>
+
+                                    <div class="col-4  mb-3">
+                                        <span class="label_info"> {{ 'UPDATE_TEACHER_PG.CITY' | translate }}</span>
+                                        <span>  &nbsp; </span>
+                                        <span>  &nbsp; </span>
+                                        <span class="data_view">
+                                            {{  translate.currentLang === lang.en ? userProfileDetails?.engCityName : userProfileDetails?.arbCityName }}
+                                        </span>
+                                    </div>
+
+                                    <div class="col-12  mb-5">
+                                        <span class="label_info">  {{ 'VIEW_USER_PG.ADDRESS' | translate }} </span>
+                                        <span>  &nbsp; </span>
+                                        <span>  &nbsp; </span>
+                                        <span class="data_view">
+                                            {{ userProfileDetails?.address }}
+                                        </span>
+                                    </div>
+<!-- التعليم الاكاديمى -->
+                                    <div class="col-4 mt-4 mb-3 pl-0 pr-0 ml-3 mr-3 mt-3 mb-4 border_bottom">
+                                    <label class="UpdateUser__Label"> {{ 'UPDATE_TEACHER_PG.EDU' | translate }} </label>
+                                    </div>
+
+                                    <div class="col-12"></div>
+                                   
+                                    <div class="col-4  mb-3">
+                                        <span class="label_info"> {{ 'VIEW_USER_PG.EDU_LEVEL' | translate }} </span>
+                                        <span>  &nbsp; </span>
+                                        <span>  &nbsp; </span>
+                                        <span class="data_view">
+                                            {{  translate.currentLang === lang.en ? userProfileDetails?.engEduLevelName : userProfileDetails?.arbEduLevelName }} 
+                                        </span>
+                                    </div>
+
+                                    <div class="col-4  mb-3">
+                                        <span class="label_info">  {{ 'VIEW_USER_PG.OCCUPATION' | translate }}
+                                        </span>
+                                        <span>  &nbsp; </span>
+                                        <span>  &nbsp; </span>
+                                        <span class="data_view">
+                                            {{ userProfileDetails?.occupation }}
+                                        </span>
+                                    </div> 
+                                     <div class="col-4  mb-3">
+                                        <span class="label_info"> {{ 'VIEW_USER_PG.AMOUNT_QURAN' | translate }}</span>
+                                        <span>  &nbsp; </span>
+                                        <span>  &nbsp; </span>
+                                        <span class="data_view">
+                                            {{ userProfileDetails?.quraanMemorizeAmount }} 
+                                        </span>
+                                    </div>
+
+                                    <div class="col-3  ">
+                                        <span class="label_info"> {{ 'VIEW_USER_PG.MASHAYIKH' | translate }}  </span>
+                                        <span>  &nbsp; </span>
+                                        <span>  &nbsp; </span>
+                                        </div>
+                                        <div class="col-9">
+                                            <div class="badges mt-3">
+                                               <div class="badge badge-info p-2 " *ngFor="let item of userProfileDetails?.usrSheikhs">
+                                                <div class="d-flex justify-content-between mt-0" >
+                                                    <p class="ellipsis mb-0" matTooltip="fff"> المحفوظات العلميةالمحفوظات العلمية </p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        
+
+                                      <div class="col-3  ">
+                                        <span class="label_info"> {{ 'VIEW_USER_PG.SCIENTIFIC_ARCHIVES' | translate }}   </span>
+                                        <span>  &nbsp; </span>
+                                        <span>  &nbsp; </span>
+                                        </div>
+                                        <div class="col-9">
+                                            <div class="badges mt-3">
+                                               <div class="badge badge-info p-2 " *ngFor="let item of userProfileDetails?.usrScientificArchives">
+                                                <div class="d-flex justify-content-between mt-0" >
+                                                    <p class="ellipsis mb-0" matTooltip="fff"> المحفوظات العلميةالمحفوظات العلمية </p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+
+                                      <div class="col-3  ">
+                                        <span class="label_info"> {{ 'VIEW_USER_PG.TRAINING_COURSES' | translate }} </span>
+                                        <span>  &nbsp; </span>
+                                        <span>  &nbsp; </span>
+                                        </div>
+
+                                        <div class="col-9">
+                                            <div class="badges mt-3">
+                                               <div class="badge badge-info p-2 " *ngFor="let item of userProfileDetails?.usrCourses">
+                                                <div class="d-flex justify-content-between mt-0" >
+                                                    <p class="ellipsis mb-0" matTooltip="fff"> المحفوظات العلميةالمحفوظات العلمية </p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                  
+
+                                   
+                                      
+                                    <!-- end data -->
+                                </div>
+
+
+                           </div>
+                     </div>
+                  </div>
+          
+<!-- end  view teacher profile -->
+
+
+             </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- <div class="container-fluid UpdateUser" >
     <div class="row">
         <div class="box_container">
 
@@ -8,7 +201,6 @@
                     <img class="img_profile" [src]="userProfileDetails?.proPic">
                     <input type="file" style="display: none;" #fileInput>
                     <a class="custom_file_input" (click)="fileInput.click()" style="text-decoration: none;" id="upload_link">
-                        <!-- {{'UPDATE_USER_PG.CHANGE_PIC' | translate}} -->
                         <img src="assets/images/update-user/UploadImage.svg"/>
                     </a>
                   
@@ -16,72 +208,15 @@
 
                 <div class="col-12 textLeft">
                     <a (click)="navEditProf()" ><img  class="ml-2 mr-2" src="../../../../../assets/images/student/edit.svg">
-                    <span class="profile_edit">{{'UPDATE_USER_PG.EDIT_PROFILE' | translate }}</span></a>
+                    <span class="profile_edit">{{'VIEW_USER_PG.EDIT_PROFILE' | translate }}</span></a>
                  </div>
                 
           
         </div>
     </div>
-</div>
+</div> -->
 
 
 
 
 
-
-
-
-
-
-
-
-<!-- 
-<div id="mySidenav" class="sidenav_profile">
-
-
-    <div class="row mb-4">
-        <div class="col-6 label_profile">
-            <label>{{'VIEW_USER_PROFILE_PG.PERSONAL_PROFILE' | translate }}</label>
-        </div>
-
-        <div class="col-6 edit_profile">
-           <img src="../../../../../assets/images/edit.svg">
-        </div>
-    </div>
-    <div class="row">
-    <div class="col-12 profile mb-50">
-        <div  class="profile_background"></div>
-        <img class="img_profile"  src="../../../../../assets/images/profile1.png">
-    </div>
-</div>
-
-
-<div class="row mt-3 text-center">
-    <div class="col-12 mt-2 mb-2">
-    <label class="UpdateUser__Label "> {{ userProfileDetails.usrName }}</label>
-    </div>
-    <div class="col-12 mt-2 mb-2">
-        <input   type="email" class="form-control UserRegister__FormControl"  disabled
-        placeholder="{{ userProfileDetails.usrEmail }} ">                            
-    </div>
-    <div class="col-12 mt-2 mb-2 ">
-        <input   type="number" class="form-control UserRegister__FormControl"  disabled
-        placeholder="{{ userProfileDetails.Mobile }}">                            
-    </div>
-
-    <div class="col-12 mt-2 mb-2">
-        <input   type="date" class="form-control UserRegister__FormControl"  disabled
-        placeholder="{{ birthdate }} ">                            
-    </div>
-    <div class="col-12 mt-2 mb-2">
-        <input   type="text" class="form-control UserRegister__FormControl"  disabled
-        placeholder="{{ translate.currentLang === langEnum.en ? userProfileDetails.engNatName : userProfileDetails.arbNatName}}">                            
-    </div>
-
-
-</div>
-
-
-  </div>
-  
-   -->

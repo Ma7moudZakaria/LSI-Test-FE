@@ -162,6 +162,58 @@
     "OPTIONAL": "Optional",
     "EDIT_PROFILE": "Edit profile"
   },
+  "VIEW_USER_PG": {
+    "EDIT_PROFILE": "Edit profile",
+    "COUNTRY": "Country",
+    "ADDRESS": "Address",
+    "EDU": "Academic education",
+    "EDU_LEVEL": "Educational Level",
+    "OCCUPATION": "Occupation",
+    "AMOUNT_QURAN": "The amount of memorization from the Quran",
+    "MASHAYIKH": "Mashayikh darast ealayhim",
+    "SCIENTIFIC_ARCHIVES": "Scientific Archives",
+    "TRAINING_COURSES": "Training courses"
+  },
+  "UPDATE_TEACHER_PG": {
+    "EDU": "Academic education",
+    "EDU_REQUIRED": "Academic education is Required",
+    "LEARN_THEQURAN": "Learn the Quran",
+    "GOVERNMENTAL_ENTITY": "Governmental Entity",
+    "NOTGOVERNMENTAL_ENTITY": "Not Governmental Entity",
+    "THISFIELD_REQUIRED": "This field is required ",
+    "ENTITY": "Entity",
+    "DURATION": "Duration of study per years",
+    "IMPROVING_QURAN_WITH_TAJWEED": "Do you have experience in improving the Quran with Tajweed?",
+    "YES": "Yes",
+    "NO": "No",
+    "EXPERIENCE_TEACHING_SUNNAH": "Do you have experience in teaching Sunnah?",
+    "EXPERIENCE_TEACHING_ONLINE": "Do you have experience learning online?",
+    "EXPERIENCE_TEACHING_FOREIGNERS": "Do you have experience teaching foreigners?",
+    "LEAVE_SAVE": "Do you have leave to save?",
+    "LEAVE_RECITATION": "Does he have leave for recitation?",
+    "LEAVE_RECITATION_VIEW": "leave Recitation",
+    "TYPE_READING": "What reading?",
+    "LANGUAGES": "Languages",
+    "AVAILABLE_PROGRAMS_AND_TIMES": "Available programs and times",
+    "WORK_PLATFORM": "Work in the platform",
+    "VOLUNTEER": "Volunteer",
+    "TOGET_REWARD": "To get a reward",
+    "BANK_NAME": "Bank name",
+    "ACCOUNT_NUMBER": "account Number",
+    "PROGRAM_TAUGHT": "The program to be taught",
+    "CHOOSE_PROGRAM": "Choose the program",
+    "PROFICIENCY_DEGREE": "Proficiency degree",
+    "ADD": "Add",
+    "ADDING_SUGGESTION": "Adding a suggestion to teach another program",
+    "WRITE_PROGRAM": "Write the program",
+    "INFO_CONTACT": "Choose the appropriate time for the system administrator to contact you for an interview to join the platform",
+    "CITY": "City",
+    "QUALIFICATION": "qualifi",
+    "CHOOSE_DEGREE": "Please Choose Degree",
+    "SPECTALIST": "SPECIAL",
+    "TIME": "Time",
+    "DAY": "Day"
+  },
   "QUESTION_BANK": {
     "TITLE": "Question Bank",
     "ADD_DEPARTMENT": "Add department",
@@ -190,7 +242,8 @@
     "QUESTION_AR_MAX_LENGHT": "Question Arabic Must be less than or equal 50 character",
     "QUESTION_EN_MAX_LENGHT": "Question English Must be less than or equal 50 character",
     "ANSWER_AR_MAX_LENGHT": "Answer Arabic Must be less than or equal 500 character",
-    "ANSWER_EN_MAX_LENGHT": "Answer English Must be less than or equal 500 character"
+    "ANSWER_EN_MAX_LENGHT": "Answer English Must be less than or equal 500 character",
+    "ADD_SCIENTIFIC_PROBLEM": "Add-scientific-problem"
   },
   "SIDENAVBAR": {
     "DASHBORD": "DashBoard",
@@ -252,7 +305,14 @@
     "COMPLETE_FIELDS_ADD_ATTACHMENT": "Please complete all fields with adding attachment"
   },
   "DASHBOARD": {
-    "TITLE": "Dashboard"
+    "TITLE": "Dashboard",
+    "STUDENTS-COUNTER": " Students Numbers",
+    "TEACHERS-COUNTER": " Teachers Numbers",
+    "MALES": "Males",
+    "FEMALES": "Females",
+    "KHATMEEN": "Khatmeen",
+    "STUDENTS": "students",
+    "REGISTERED": " Registered "
   },
   "SETTING_PG": {
     "TITLE": "Settings",
