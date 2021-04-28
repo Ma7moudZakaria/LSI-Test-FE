@@ -13,10 +13,10 @@ export class ScientificProblemService {
 
 
   addScientificProblemReplayURL = environment.baseUrl + 'ScientificProblem/add-scientific-reply/';
-  createScientificProblemURL = environment.baseUrl + 'ScientificProblem​/create-scientific-problem/';
+  createScientificProblemURL = environment.baseUrl + 'ScientificProblem/create-scientific-problem';
   getScientificProblemDetailsURL = environment.baseUrl + 'ScientificProblem/get-scientific-problems-by-user-id/';
   getScientificProblemFilterURL = environment.baseUrl + 'ScientificProblem/get-scientific-problem-filter/';
-  deleteScientificFilterURL = environment.baseUrl + '/api/ScientificProblem/delete-scientific-problem/';
+  deleteScientificFilterURL = environment.baseUrl + 'ScientificProblem/delete-scientific-problem/';
 
 
 

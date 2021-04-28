@@ -14,8 +14,6 @@ import { AlertifyService } from 'src/app/core/services/alertify-services/alertif
 })
 export class AddScientificProblemComponent implements OnInit {
   currentUser: IUser | undefined;
-  errorMessage?: string;
-  successMessage?: string;
   isSubmit = false;
   disableSaveButtons = false;
   currentForm: FormGroup = new FormGroup({});
@@ -25,7 +23,7 @@ export class AddScientificProblemComponent implements OnInit {
   @Input() scientificProblem?: string;
   @Output() closeScientificProblem = new EventEmitter<boolean>();
 
-  constructor(private fb: FormBuilder, private createScientificProblemService: ScientificProblemService, private _alertify: AlertifyService) { }
+  constructor(private fb: FormBuilder, private scientificProblemService: ScientificProblemService, private _alertify: AlertifyService) { }
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
@@ -53,8 +51,6 @@ export class AddScientificProblemComponent implements OnInit {
 
   Submit() {
     this.isSubmit = true;
-    this.errorMessage = '';
-    this.successMessage = '';
     this.resMessage = {};
 
     if (this.currentForm.valid) {
@@ -64,7 +60,7 @@ export class AddScientificProblemComponent implements OnInit {
       }
       console.log("question", this.currentForm.value.question)
 
-      this.createScientificProblemService.createScientificProblem(this.createScientificProblemModel).subscribe(
+      this.scientificProblemService.createScientificProblem(this.createScientificProblemModel).subscribe(
         res => {
           if (res.isSuccess) {
             this.isSubmit = false;
