@@ -45,6 +45,7 @@ export class MaterialListComponent implements OnInit {
 
     if (changes.selectedProgram) {
       this.materialFilter.programs = changes.selectedProgram?.currentValue?.id;
+      this.materialFilter.isAvailableForAll = this.materialFilter.programs === undefined;
       this.program = changes.selectedProgram?.currentValue;
     }
     else if (changes.refreshMaterialId)
