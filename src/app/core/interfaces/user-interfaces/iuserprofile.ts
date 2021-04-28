@@ -7,6 +7,7 @@ export interface IUserProfile {
     fnameEn?:string;
     mnameEn?:string;
     faNameEn?:string;
+    birthGregorian?:string;
     birthdate?:string;
     gender?:string;
     arbGenderName?:string;
@@ -15,6 +16,9 @@ export interface IUserProfile {
     countryCode?:string;
     arbCountryName?:string;
     engCountryName?:string;
+    city?:string;
+    arbCityName?:string;
+    engCityName?:string;
     nationality?:string;
     arbNatName?:string;
     engNatName?:string;
