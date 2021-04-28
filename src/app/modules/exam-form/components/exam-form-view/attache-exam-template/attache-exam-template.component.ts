@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { IExam } from 'src/app/core/interfaces/exam-builder-interfaces/iexam';
 import { IQuestion } from 'src/app/core/interfaces/exam-builder-interfaces/iquestion';
 import { IAttacheExamTemplateModel } from 'src/app/core/interfaces/exam-form-interfaces/iattache-exam-template-model';
+import { IExamFormsModel } from 'src/app/core/interfaces/exam-form-interfaces/iexam-forms-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
+import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { ExamFormService } from 'src/app/core/services/exam-form-services/exam-form.service';
 
 @Component({
@@ -19,12 +22,30 @@ export class AttacheExamTemplateComponent implements OnInit {
   examJson:string | undefined;
   voiceUrl:string | undefined;
   isView=true;
-  sttacheExamTemplate: IAttacheExamTemplateModel = {};
+  attacheExamTemplate: IAttacheExamTemplateModel = {};
+  @Input() selectedExamFormId={id:'',arabExamName:'',engExamName:''}; 
+  resultMessage:BaseMessageModel = {};
+  filterErrorMessage?:string;
+  errorMessage?:string;
+  successMessage?:string;
   constructor( private examFormService: ExamFormService,private activeroute: ActivatedRoute, 
     private router: Router, 
     public translate: TranslateService,private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    if(this.selectedExamFormId.id!==undefined)
+    {
+     this.getAttacheExamTemplate(this.selectedExamFormId.id);
+     this.selectedExamFormId.id=this.selectedExamFormId.id;
+    }
+  }
+  ngOnChanges(changes: any) {
+    if(changes.selectedExamFormId?.currentValue.id!==undefined)
+   {
+    this.getAttacheExamTemplate(changes.selectedExamFormId.currentValue.id);
+    this.selectedExamFormId.id=changes.selectedExamFormId.currentValue.id;
+   }
+  
   }
   //questin:IQuestion |undefined;
   addQuestion(){
@@ -40,8 +61,9 @@ export class AttacheExamTemplateComponent implements OnInit {
   saveExam(){
     this.submitExam = true;
     this.isView=true;
-    this.examJson = JSON.stringify(this.exam);
-    console.log(this.examJson);
+   //  this.examJson = JSON.stringify(this.exam);
+    // console.log(this.examJson);
+    this.saveAttacheExamTemplate();
   }
 
 /////recording/////
@@ -53,4 +75,61 @@ saveVoiceUrl(event:any){
 editQuestionTemplate(){
   this.isView=false;
 }
+getAttacheExamTemplate(examId?:string) {
+  this.filterErrorMessage = "";
+  this.resultMessage = {};
+
+  this.examFormService.getExamFormDetails(examId).subscribe(res => {
+    
+    if (res.isSuccess) {
+      // response.data=<IExamFormsModel> response.data;
+     // this.exam=response.data.examTemplate;
+     this.exam = res.data;
+     this.exam.questions = JSON.parse(res.data.examTemplate);
+     // this.examJson = JSON.stringify(response.data.examTemplate);
+    }
+    else {
+      this.examJson = "";
+      this.filterErrorMessage = res.message;
+    }
+  },
+  error => {
+    this.resultMessage ={
+      message: error,
+      type: BaseConstantModel.DANGER_TYPE
+    }
+  }
+  )
+}
+saveAttacheExamTemplate(){
+ this.attacheExamTemplate.id= this.selectedExamFormId.id;
+ this.attacheExamTemplate.examTemplate=JSON.stringify(this.exam.questions);
+this.errorMessage = '';
+this.successMessage = '';
+this.resultMessage = {};
+this.examFormService.attachmentsExamTemplate(this.attacheExamTemplate).subscribe(res => {
+  let response = <BaseResponseModel>res;
+  if (response.isSuccess) {
+    this.resultMessage = {
+      message:res.message||"",
+      type: BaseConstantModel.SUCCESS_TYPE
+    }
+    this.getAttacheExamTemplate(this.attacheExamTemplate.id);
+  }
+  else {
+    this.resultMessage = {
+      message: res.message,
+      type: BaseConstantModel.DANGER_TYPE
+    }
+  }
+},
+error => {
+  this.resultMessage = {
+    message: error,
+    type: BaseConstantModel.DANGER_TYPE
+  }
+}
+)
+}
+
 }

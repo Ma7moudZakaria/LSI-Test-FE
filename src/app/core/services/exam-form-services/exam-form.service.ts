@@ -26,7 +26,7 @@ export class ExamFormService {
   getExamFormFilter(filterRequest:IExamFormFilter):Observable<BaseResponseModel>{
     return this.http.post<BaseResponseModel>(this.GetExamFormFilterURL,filterRequest)
   }
-  getExamFormDetails(id:string):Observable<BaseResponseModel>{
+  getExamFormDetails(id?:string):Observable<BaseResponseModel>{
     return this.http.get<BaseResponseModel>(this.GetExamFormDetailsURL+id)
   }
   deleteExamForm(id:string):Observable<BaseResponseModel>{
