@@ -121,9 +121,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           phoneNumber: ['', [Validators.required/*,Validators.pattern(BaseConstantModel.mobilePattern), Validators.minLength(6), Validators.maxLength(16)*/]],
           country: [null, Validators.required],
           city: ['', Validators.required],
-
-          // 
-          acEdu: ['', [Validators.required]], //edu level
+          eduLevel: ['', [Validators.required]], //edu level
           qualifi: [null, Validators.required],
           special: [null, Validators.required],
           workingPlatForm: [null, Validators.required],
@@ -242,13 +240,11 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.f.country.setValue(this.teacherProfileDetails?.country)
     this.f.city.setValue(this.teacherProfileDetails?.city)
     this.f.gender.setValue(this.teacherProfileDetails?.gender)
-    this.f.interviewTime.setValue(this.teacherProfileDetails?.interviewTime)
-    this.f.interviewDay.setValue(this.teacherProfileDetails?.interviewDay)
 
     this.telInputParam.phoneNumber = this.teacherProfileDetails?.mobile;
     this.f.phoneNumber.setValue(this.teacherProfileDetails?.mobile);
 
-    this.f.acEdu.setValue(this.teacherProfileDetails?.acEdu)
+    this.f.eduLevel.setValue(this.teacherProfileDetails?.eduLevel)
     this.f.qualifi.setValue(this.teacherProfileDetails?.qualifi)
     this.f.special.setValue(this.teacherProfileDetails?.specia)
     this.f.workingPlatForm.setValue(this.teacherProfileDetails?.workingPlatForm)
@@ -262,8 +258,6 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.f.isHasEjazaHafz.setValue(this.teacherProfileDetails?.isHasEjazaHafz)
     this.f.isHasEjazaTelawa.setValue(this.teacherProfileDetails?.isHasEjazaTelawa)
 
-    this.f.anyLangReading.setValue(this.teacherProfileDetails?.anyLangReading)
-    this.f.languages.setValue(this.teacherProfileDetails?.lang)
     //this.f.workPlatform.setValue(this.teacherProfileDetails?.workingPlatForm)
     this.f.bankName.setValue(this.teacherProfileDetails?.bankName)
     this.f.bankNumber.setValue(this.teacherProfileDetails?.bankNumber)

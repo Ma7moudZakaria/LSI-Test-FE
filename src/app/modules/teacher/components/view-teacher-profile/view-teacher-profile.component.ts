@@ -39,10 +39,9 @@ export class ViewTeacherProfileComponent implements OnInit {
     this.teacherProfileService.viewTeacherProfileDetails(id || '').subscribe(res => {
       if (res.isSuccess) {
         this.teacherProfileDetails = res.data as ITeacherProfile;
-        // if (this.teacherProfileDetails?.birthdate) {
-        //   let birthdateValue = new Date(this.teacherProfileDetails.birthdate || '');
-        //   this.birthdate = new Date(birthdateValue.setDate(birthdateValue.getDate() + 1)).toISOString().slice(0, 10);
-        // }
+        
+        console.log("Teacher Profile Details =========>" , this.teacherProfileDetails)
+        
         if (!this.teacherProfileDetails?.proPic) {
           this.teacherProfileDetails.proPic = '../../../../../assets/images/Profile.svg';
         }

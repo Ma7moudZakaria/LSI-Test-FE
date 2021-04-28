@@ -10,7 +10,7 @@ export class TeacherProfileService {
 
 
   updateTeacherUrl = environment.baseUrl + 'Teacher/update-teacher-profile/';
-  viewTeacherProfileDetailsURL = environment.baseUrl + 'Teacher/view-teacher-profile-details/';
+  viewTeacherProfileDetailsURL =  environment.baseUrl + 'Teacher/view-teacher-profile-details/';
 
   constructor(private http: HttpClient) { }
 
@@ -18,7 +18,7 @@ export class TeacherProfileService {
     return this.http.put<BaseResponseModel>(this.updateTeacherUrl, model);
   }
 
-  viewTeacherProfileDetails(id: string): Observable<BaseResponseModel> {
+  viewTeacherProfileDetails(id : string) :Observable<BaseResponseModel>{
     return this.http.get<BaseResponseModel>(this.viewTeacherProfileDetailsURL + id)
   }
 }
