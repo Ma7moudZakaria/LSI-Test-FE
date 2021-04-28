@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { IExam } from 'src/app/core/interfaces/exam-builder-interfaces/iexam';
 import { IQuestion } from 'src/app/core/interfaces/exam-builder-interfaces/iquestion';
+import { IAttacheExamTemplateModel } from 'src/app/core/interfaces/exam-form-interfaces/iattache-exam-template-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { ExamFormService } from 'src/app/core/services/exam-form-services/exam-form.service';
 
 @Component({
   selector: 'app-attache-exam-template',
@@ -13,7 +18,11 @@ export class AttacheExamTemplateComponent implements OnInit {
   submitExam : boolean = false;
   examJson:string | undefined;
   voiceUrl:string | undefined;
-  constructor() { }
+  isView=true;
+  sttacheExamTemplate: IAttacheExamTemplateModel = {};
+  constructor( private examFormService: ExamFormService,private activeroute: ActivatedRoute, 
+    private router: Router, 
+    public translate: TranslateService,private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
@@ -30,7 +39,9 @@ export class AttacheExamTemplateComponent implements OnInit {
  
   saveExam(){
     this.submitExam = true;
+    this.isView=true;
     this.examJson = JSON.stringify(this.exam);
+    console.log(this.examJson);
   }
 
 /////recording/////
@@ -38,4 +49,8 @@ saveVoiceUrl(event:any){
   this.voiceUrl = event;
 }
 /////end recording////
+
+editQuestionTemplate(){
+  this.isView=false;
+}
 }

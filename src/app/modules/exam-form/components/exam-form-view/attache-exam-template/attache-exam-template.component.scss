@@ -1,5 +1,5 @@
 @import 'src/assets/scss/_variables.scss';
-.question-list{
+.attache-exam-list{
     background: #FBFBFB 0% 0% no-repeat padding-box;
     border-radius: 19px;
     opacity: 1;
@@ -14,11 +14,11 @@
      }
 }
 
-.question-list:lang(en){
+.attache-exam-list:lang(en){
   margin-right: 0rem;
  
 }
-.question-list:lang(ar){
+.attache-exam-list:lang(ar){
   margin-left: 1rem;
  
 }
