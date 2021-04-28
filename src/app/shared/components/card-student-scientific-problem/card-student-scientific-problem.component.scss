@@ -1,0 +1,46 @@
+
+@import '../../../../assets/scss/variables';
+
+.card-student-scientific-problem {
+    background: $white 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 15px $box-shadow;
+    border-radius: 12px;
+    padding: 0  ;
+    // 20px 100px 20px
+    overflow: hidden;
+     font-family: Almarai-Regular;
+     font-size: 14px;
+     .bold{
+      font-family: Almarai-Bold;
+      font-size: 1rem;
+      
+      }
+    .card_header{
+      background-color: $user-color;
+      color: $white;
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 20px ;
+      font-size: 0.75rem;
+    }
+
+
+    .card_body{
+      background-color: $white;
+      height: 250px;
+      padding:  20px ;
+      color: #363636;
+      :lang(en){text-align: left;}
+      :lang(ar){text-align: right;}
+
+      .body_header{
+        background-color: $white;
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 0.5rem;
+        color: #9C9C9C;
+      }
+    }
+
+}
+
