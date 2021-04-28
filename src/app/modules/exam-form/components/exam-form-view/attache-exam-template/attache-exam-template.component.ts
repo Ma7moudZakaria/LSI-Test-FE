@@ -51,11 +51,12 @@ export class AttacheExamTemplateComponent implements OnInit {
   addQuestion(){
     if (Object.keys(this.exam).length === 0){
       let id = BaseConstantModel.newGuid();
-      this.exam = { examid: id, questions : []}
+      this.exam = { id: id, questions : []}
     }
+
     let qid = BaseConstantModel.newGuid();
-    let ques : IQuestion  = {questionId : qid, questionNo : this.exam?.questions?.length + 1 ,answers:[]}
-    this.exam.questions?.push(ques);
+    let ques : IQuestion  = {questionId : qid, questionNo : this.exam?.questions ? this.exam.questions.length + 1 : 1 ,answers:[]}
+    this.exam.questions.push(ques);
   }
  
   saveExam(){
@@ -79,27 +80,29 @@ getAttacheExamTemplate(examId?:string) {
   this.filterErrorMessage = "";
   this.resultMessage = {};
 
-  this.examFormService.getExamFormDetails(examId).subscribe(res => {
+  if (examId){
+    this.examFormService.getExamFormDetails(examId).subscribe(res => {
     
-    if (res.isSuccess) {
-      // response.data=<IExamFormsModel> response.data;
-     // this.exam=response.data.examTemplate;
-     this.exam = res.data;
-     this.exam.questions = JSON.parse(res.data.examTemplate);
-     // this.examJson = JSON.stringify(response.data.examTemplate);
+      if (res.isSuccess) {
+        // response.data=<IExamFormsModel> response.data;
+       // this.exam=response.data.examTemplate;
+       this.exam = res.data as IExam;
+       this.exam.questions = res.data.examTemplate ? JSON.parse(res.data.examTemplate) : [];
+       // this.examJson = JSON.stringify(response.data.examTemplate);
+      }
+      else {
+        this.examJson = "";
+        this.filterErrorMessage = res.message;
+      }
+    },
+    error => {
+      this.resultMessage ={
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
     }
-    else {
-      this.examJson = "";
-      this.filterErrorMessage = res.message;
-    }
-  },
-  error => {
-    this.resultMessage ={
-      message: error,
-      type: BaseConstantModel.DANGER_TYPE
-    }
+    )
   }
-  )
 }
 saveAttacheExamTemplate(){
  this.attacheExamTemplate.id= this.selectedExamFormId.id;

@@ -221,7 +221,7 @@ export class SharedMaterialComponent implements OnInit {
   addQuestion(){
     if (Object.keys(this.exam).length === 0){
       let id = BaseConstantModel.newGuid();
-      this.exam = { examid: id, questions : []}
+      this.exam = { id: id, questions : []}
     }
     let qid = BaseConstantModel.newGuid();
     let ques : IQuestion  = {questionId : qid, questionNo : this.exam?.questions?.length + 1 ,answers:[]}

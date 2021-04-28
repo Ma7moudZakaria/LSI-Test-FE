@@ -1,7 +1,11 @@
 import { IQuestion } from "./iquestion";
 
 export interface IExam {
- examid?:string; 
-examname?:string;
+id?:string; 
+no?:number;
+ arabExamFormNam?:string;
+ engExamFormNam?:string;
+ examTemplate?: string;
+ // examname?:string;
 questions: IQuestion[];
 }

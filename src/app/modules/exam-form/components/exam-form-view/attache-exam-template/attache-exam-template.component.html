@@ -18,19 +18,11 @@
         <div *ngIf="isView">
             <!-- <a (click)="editQuestionTemplate() "> <i class="fas fa-pencil-alt"></i></a>  -->
             <a (click)="editQuestionTemplate() "> <i style='font-size:24px' class='fas'>&#xf044;</i></a> 
-            <div *ngIf="submitExam" class="input-group ">
-                {{examJson}}
+            <div class="input-group ">
                 <div  *ngFor = 'let q of exam.questions'>
-                
+                {{q.voiceUrl}}
                   <app-question-template [questionTemplate] = 'q'></app-question-template>
                 </div>
-              </div>
-              
-              
-              <!--recording-->
-              <div>
-                <app-voice-recording (getVoiceUrl)="saveVoiceUrl($event)"></app-voice-recording>
-                {{voiceUrl}}
               </div>
         </div>
 
