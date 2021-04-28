@@ -9,6 +9,7 @@ import { LanguageService } from 'src/app/core/services/language-services/languag
 })
 export class QuesionBankViewComponent implements OnInit {
   selectedQuestionId: string | undefined;
+  scientificProblem: string | undefined;
   selectedCategoryId = { id: '', arabCatgName: '', engCatgName: '' };
   categoryId: string | undefined;
   inputCategoryId: string | undefined;
@@ -89,5 +90,13 @@ export class QuesionBankViewComponent implements OnInit {
     // this.showAddCategoryForm = !event;
     this.showAddCategoryForm = false;
 
+  }
+
+  openScientificProblem(event: boolean) {
+    this.showAddscientificProblemForm = event;
+  }
+
+  closeScientificProblem(event: boolean) {
+    this.showAddscientificProblemForm = event;
   }
 }

@@ -1,21 +1,27 @@
 <form class="form-group material-form" [formGroup]="currentForm" (submit)="Submit()">
  
-    
+    <h3> 
+        {{'QUESTION_BANK.ADD_SCIENTIFIC_PROBLEM' | translate}}   
+    </h3>
     <div class="form-group">
-        <label for="comment">{{ 'QUESTION_BANK.QUESTION_EN' | translate }}</label>
-        <textarea class="form-control" cols="2" rows="5" id="InputQuestion" formControlName="Question" 
-        [ngClass]="{'red-border-class': f.Question.errors && ( f.Question.touched || isSubmit)}"></textarea>
-        <div *ngIf="f.Question.errors && (f.Question.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
-          <div *ngIf="f.Question.errors.required">
+        <label for="comment">{{ 'QUESTION_BANK.QUESTION' | translate }}</label>
+        <textarea class="form-control" cols="2" rows="5" id="InputQuestion" formControlName="question" 
+        [ngClass]="{'red-border-class': f.question.errors && ( f.question.touched || isSubmit)}"></textarea>
+        <div *ngIf="f.question.errors && (f.question.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+          <div *ngIf="f.question.errors.required">
               {{"QUESTION_BANK.REQUIRED"|translate}}
           </div>
-          <div *ngIf="f.Question.errors.pattern">
-              {{ 'QUESTION_BANK.ENGLISH_FIELD' | translate }}
-           </div>
-           <div *ngIf="f.Question.errors?.maxlength ">
-            {{ 'QUESTION_BANK.QUESTION_EN_MAX_LENGHT' | translate}}
-        </div>
+          
+          
       </div>
       </div>
-  </form>
+      <div class="d-flex">
+      <button type="button" class="cancel-btn btn btn-danger" (click)="closeEvent()"> {{'QUESTION_BANK.CANCEL' | translate}} </button>
+      <button  type="submit" class="save-btn btn btn-danger" type="submit"
+       [disabled]="disableSaveButtons"> {{'GENERAL.SEND' | translate}} </button>
+   </div>
+        <div *ngIf="resMessage" class="alert alert-{{ resMessage.type }} my-4 py-2">
+            {{resMessage.message}}
+            </div>
+    </form>
   

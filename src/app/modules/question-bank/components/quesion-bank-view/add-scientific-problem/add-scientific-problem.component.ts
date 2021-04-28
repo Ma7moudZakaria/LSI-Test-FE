@@ -1,10 +1,11 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { ScientificProblemService } from 'src/app/core/services/scientific-problem-services/scientific-problem.service';
 import { ICreateScientificProblem } from 'src/app/core/interfaces/scientific-problrm/icreate-scientific-problem';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 
 @Component({
   selector: 'app-add-scientific-problem',
@@ -13,19 +14,26 @@ import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 })
 export class AddScientificProblemComponent implements OnInit {
   currentUser: IUser | undefined;
-  errorMessage?: string;
-  successMessage?: string;
   isSubmit = false;
+  disableSaveButtons = false;
   currentForm: FormGroup = new FormGroup({});
   resMessage: BaseMessageModel = {};
   createScientificProblemModel = {} as ICreateScientificProblem;
 
-  constructor(private fb: FormBuilder, private createScientificProblemService: ScientificProblemService) { }
+  @Input() scientificProblem?: string;
+  @Output() closeScientificProblem = new EventEmitter<boolean>();
+
+  constructor(private fb: FormBuilder, private scientificProblemService: ScientificProblemService, private _alertify: AlertifyService) { }
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     this.currentForm.reset();
     this.buildForm();
+    this.disableSaveButtons = false;
+    this.resMessage = {
+      message: '',
+      type: ''
+    }
   }
   get f() {
     return this.currentForm?.controls;
@@ -36,41 +44,36 @@ export class AddScientificProblemComponent implements OnInit {
 
     this.currentForm = this.fb.group(
       {
-        Question: ['', [Validators.required]],
+        question: ['', [Validators.required]],
 
       })
   }
 
-
-
-
-
   Submit() {
     this.isSubmit = true;
-    this.errorMessage = '';
-    this.successMessage = '';
     this.resMessage = {};
 
     if (this.currentForm.valid) {
-
       this.createScientificProblemModel = {
         usrId: this.currentUser?.id,
-        question: this.currentForm.value.Question
+        question: this.currentForm.value.question
       }
+      console.log("question", this.currentForm.value.question)
 
-      this.createScientificProblemService.createScientificProblem(this.createScientificProblemModel).subscribe(
+      this.scientificProblemService.createScientificProblem(this.createScientificProblemModel).subscribe(
         res => {
-          var response = res;
-          if (response.isSuccess) {
-            this.resMessage = {
-              message: response.message,
-              type: BaseConstantModel.SUCCESS_TYPE
-            }
+          if (res.isSuccess) {
+            this.isSubmit = false;
+            this.disableSaveButtons = true;
+            this._alertify.success(res.message || "");
+            this.closeEvent();
           }
           else {
+            this.disableSaveButtons = true;
+
             // this.errorMessage = response.message;
             this.resMessage = {
-              message: response.message,
+              message: res.message,
               type: BaseConstantModel.DANGER_TYPE
             }
           }
@@ -81,9 +84,10 @@ export class AddScientificProblemComponent implements OnInit {
             type: BaseConstantModel.DANGER_TYPE
           }
         })
-
-
-
     }
+  }
+
+  closeEvent() {
+    this.closeScientificProblem.emit(false);
   }
 }

@@ -40,7 +40,7 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
   isSubmit = false;
   @Output() selectedCategoryId = new EventEmitter<{}>();
   @Output() inputCategoryId = new EventEmitter<string>();
-  @Output() addScientificProblem = new EventEmitter<string>();
+  @Output() openScientificProblem = new EventEmitter<boolean>();
 
   clickChangeCtogry: string = "";
   resultMessage: BaseMessageModel = {};
@@ -271,6 +271,6 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
     this.inputCategoryId?.emit('');
   }
   newScientificProblem() {
-    this.addScientificProblem.emit();
+    this.openScientificProblem.emit(true);
   }
 }
