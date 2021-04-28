@@ -29,9 +29,10 @@
                     <div class="row">
                        <div class="col-5"></div>
                         <div class="col-5  mt-4  mb-4 border text-center">
-                            <p class="update_item_profile-name">سيف الدين ابراهيم</p>
+                            <p class="update_item_profile-name"> {{ translate.currentLang === lang.en ? teacherProfileDetails?.fnameEn + " " +  teacherProfileDetails?.mnameEn + " " + teacherProfileDetails?.faNameEn : teacherProfileDetails?.fnameAr+ " " +  teacherProfileDetails?.mnameAr + " " + teacherProfileDetails?.fanameAr}} </p>
+                            <!-- <p class="update_item_profile-name"> {{ translate.currentLang === lang.en ? teacherProfileDetails?.engNatName : teacherProfileDetails?.arbNatName}} </p> -->
                             <p class="brith_date">starts</p>
-                            <span class="brith_date">4/4/1994</span>
+                            <span class="brith_date"> {{ teacherProfileDetails?.hijriBirthDate }} </span>
                         </div>
                         
                            
@@ -43,7 +44,7 @@
                                         <span>  &nbsp; </span>
                                         <span>  &nbsp; </span>
                                         <span class="data_view">
-                                            Ex. email@gmail.com
+                                            {{ teacherProfileDetails?.usrEmail }}
                                         </span>
                                     </div>
                                     <div class="col-8  mb-3">
@@ -51,7 +52,7 @@
                                         <span>  &nbsp; </span>
                                         <span>  &nbsp; </span>
                                         <span class="data_view">
-                                            (+966)25177822
+                                            {{ teacherProfileDetails?.mobile }}
                                         </span>
                                     </div>
 
@@ -60,7 +61,7 @@
                                         <span>  &nbsp; </span>
                                         <span>  &nbsp; </span>
                                         <span class="data_view">
-                                            اختر الجنسية
+                                            {{  translate.currentLang === lang.en ? teacherProfileDetails?.nationalityEn : teacherProfileDetails?.nationalityAr }}                                    
                                         </span>
                                     </div>
 
@@ -69,7 +70,7 @@
                                         <span>  &nbsp; </span>
                                         <span>  &nbsp; </span>
                                         <span class="data_view">
-                                            اختر الجنسية
+                                            {{  translate.currentLang === lang.en ? teacherProfileDetails?.countryEn : teacherProfileDetails?.countryAr }}
                                         </span>
                                     </div>
 
@@ -78,7 +79,7 @@
                                         <span>  &nbsp; </span>
                                         <span>  &nbsp; </span>
                                         <span class="data_view">
-                                            اختر الجنسية
+                                            {{  translate.currentLang === lang.en ? teacherProfileDetails?.cityEn : teacherProfileDetails?.cityAr }}
                                         </span>
                                     </div>
 
@@ -101,7 +102,7 @@
                                         <span>  &nbsp; </span>
                                         <span>  &nbsp; </span>
                                         <span class="data_view">
-                                            اختر الجنسية
+                                            {{  translate.currentLang === lang.en ? teacherProfileDetails?.educationLevelEn : teacherProfileDetails?.educationLevelAr }} 
                                         </span>
                                     </div>
 
@@ -110,8 +111,7 @@
                                         <span>  &nbsp; </span>
                                         <span>  &nbsp; </span>
                                         <span class="data_view">
-                                            اختر الجنسية
-                                        </span>
+                                            {{  translate.currentLang === lang.en ? teacherProfileDetails?.qualifiEn : teacherProfileDetails?.qualifiAr }}                                       </span>
                                     </div>
 
                                     <div class="col-4  mb-3">
@@ -120,7 +120,7 @@
                                         <span>  &nbsp; </span>
                                         <span>  &nbsp; </span>
                                         <span class="data_view">
-                                            اختر الجنسية
+                                            {{  translate.currentLang === lang.en ? teacherProfileDetails?.speciaEn : teacherProfileDetails?.speciaAr }}
                                         </span>
                                     </div>
 
