@@ -299,3 +299,9 @@ input:checked + .slider:before {
 
 }
 }
+
+.disabled
+{
+  pointer-events: none;
+
+}

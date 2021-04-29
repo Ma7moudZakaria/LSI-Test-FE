@@ -21,10 +21,10 @@
     
         <!-- <button (click)="saveExam()">save</button> -->
         <br>
-        <div *ngIf="isView" disabled="true">
+        <div *ngIf="isView" >
             <!-- <a (click)="editQuestionTemplate() "> <i class="fas fa-pencil-alt"></i></a>  -->
             <a (click)="editQuestionTemplate() "> <i style='font-size:24px' class='fas'>&#xf044;</i></a> 
-            <div class="input-group " >
+            <div class="input-group " [ngClass]="{'disabled':true}">
                 <div  *ngFor = 'let q of exam.questions' >
                 {{q.voiceUrl}}
                   <app-question-template [questionTemplate] = 'q' ></app-question-template>
