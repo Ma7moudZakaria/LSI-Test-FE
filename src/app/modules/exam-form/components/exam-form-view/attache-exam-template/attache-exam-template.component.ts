@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IExam } from 'src/app/core/interfaces/exam-builder-interfaces/iexam';
 import { IQuestion } from 'src/app/core/interfaces/exam-builder-interfaces/iquestion';
 import { IAttacheExamTemplateModel } from 'src/app/core/interfaces/exam-form-interfaces/iattache-exam-template-model';
@@ -28,6 +29,7 @@ export class AttacheExamTemplateComponent implements OnInit {
   filterErrorMessage?:string;
   errorMessage?:string;
   successMessage?:string;
+  langEnum = LanguageEnum;
   constructor( private examFormService: ExamFormService,private activeroute: ActivatedRoute, 
     private router: Router, 
     public translate: TranslateService,private fb: FormBuilder) { }
@@ -40,6 +42,7 @@ export class AttacheExamTemplateComponent implements OnInit {
     }
   }
   ngOnChanges(changes: any) {
+    this.isView=true;
     if(changes.selectedExamFormId?.currentValue.id!==undefined)
    {
     this.getAttacheExamTemplate(changes.selectedExamFormId.currentValue.id);

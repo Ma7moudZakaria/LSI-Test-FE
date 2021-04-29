@@ -1,7 +1,13 @@
 <div class="attache-exam-list">
     <section class="internal_scroll_list_group">
+      <div class="col-2 p-4">
+        <p class="p_header mb-0 ellipsis" matTooltip="{{translate.currentLang===langEnum.en?selectedExamFormId.engExamName:selectedExamFormId.arabExamName}}">
+          {{translate.currentLang===langEnum.en?selectedExamFormId.engExamName:selectedExamFormId.arabExamName}}
+      </p>
+      </div>
+    
         <div  *ngIf="!isView">
-            <div class="input-group "><button type="button" class="btn btn-primary" (click)="addQuestion()">Add question</button></div>
+            <div class="input-group "><button type="button" class="btn btn-primary" (click)="addQuestion()">  {{"GENERAL.ADD_QUESTION"|translate}}</button></div>
             <br>
             <div class="input-group ">
             <div *ngFor = 'let q of exam.questions'>
@@ -10,20 +16,27 @@
             </div>
             </div>
             <br>
-            <div class="input-group "><button type="button" class="btn btn-success" (click)="saveExam()">save</button></div>
+            <div class="input-group "><button type="button" class="btn btn-success" (click)="saveExam()">{{"GENERAL.SAVE"|translate}}</button></div>
         </div>
     
         <!-- <button (click)="saveExam()">save</button> -->
         <br>
-        <div *ngIf="isView">
+        <div *ngIf="isView" disabled="true">
             <!-- <a (click)="editQuestionTemplate() "> <i class="fas fa-pencil-alt"></i></a>  -->
             <a (click)="editQuestionTemplate() "> <i style='font-size:24px' class='fas'>&#xf044;</i></a> 
-            <div class="input-group ">
-                <div  *ngFor = 'let q of exam.questions'>
+            <div class="input-group " >
+                <div  *ngFor = 'let q of exam.questions' >
                 {{q.voiceUrl}}
-                  <app-question-template [questionTemplate] = 'q'></app-question-template>
+                  <app-question-template [questionTemplate] = 'q' ></app-question-template>
                 </div>
               </div>
+              <div  *ngIf="exam.questions.length===0">
+                <label class="no-data input-group">
+                    {{"GENERAL.NO_DATA"|translate}} 
+                </label>
+                  
+                 
+                </div>
         </div>
 
 
