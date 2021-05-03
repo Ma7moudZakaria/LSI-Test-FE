@@ -26,10 +26,12 @@ import { KhatmeenStudentsComponent } from './components/khatmeen-students/khatme
 import { StudentNumbersComponent } from './components/student-numbers/student-numbers.component';
 import { StudentsRatingComponent } from './components/students-rating/students-rating.component';
 import { RatingModule } from 'ng-starrating';
+import { CardStudentScientificProblemComponent } from './components/card-student-scientific-problem/card-student-scientific-problem.component';
+import { CardAdminScientificProblemComponent } from './components/card-admin-scientific-problem/card-admin-scientific-problem.component';
 
 
 @NgModule({
-  declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent, StudentNumbersComponent, StudentsRatingComponent],
+  declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent, StudentNumbersComponent, StudentsRatingComponent, CardStudentScientificProblemComponent, CardAdminScientificProblemComponent],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule, MatIconModule, RatingModule
@@ -38,7 +40,8 @@ import { RatingModule } from 'ng-starrating';
     MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule, Ng2TelInputModule,
     MatExpansionModule, MatSelectModule, DragDropModule, CustomeCardComponent, CustomAccordionComponent,
     ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent,
-    UsersCounterComponent, KhatmeenStudentsComponent, StudentNumbersComponent, StudentsRatingComponent
+    UsersCounterComponent, KhatmeenStudentsComponent, StudentNumbersComponent, StudentsRatingComponent,
+    CardStudentScientificProblemComponent
   ]
 })
 export class SharedModule { }
