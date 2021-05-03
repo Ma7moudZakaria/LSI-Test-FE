@@ -8,13 +8,16 @@ const routes: Routes = [
   { path: 'user', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule), canActivate: [AuthGuard] },
   { path: 'teacher', loadChildren: () => import('./modules/teacher/teacher.module').then(m => m.TeacherModule) },
 
-  { path: 'question-bank', loadChildren: () => import('./modules/question-bank/question-bank.module').then(m => m.QuestionBankModule), canActivate: [AuthGuard] },
+  { path: 'question-bank', loadChildren: () => import('./modules/question-bank/question-bank.module').then(m => m.QuestionBankModule) ,canActivate: [AuthGuard] },
   { path: 'scientific-material', loadChildren: () => import('./modules/scientific-material/scientific-material.module').then(m => m.ScientificMaterialModule), canActivate: [AuthGuard] },
   { path: 'shared', loadChildren: () => import('./modules/shared-material/shared-material.module').then(m => m.SharedMaterialModule) },
   { path: 'dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule), canActivate: [AuthGuard] },
   { path: 'content-management', loadChildren: () => import('./modules/content-management/content-management.module').then(m => m.ContentManagementModule) },
   { path: 'walk-through', loadChildren: () => import('./modules/walkthrough/walkthrough.module').then(m => m.WalkthroughModule) },
   { path: 'setting', loadChildren: () => import('./modules/setting/setting.module').then(m => m.SettingModule) },
+
+  
+  { path: 'role-management', loadChildren: () => import('./modules/role-management/role-management.module').then(m => m.RoleManagementModule), canActivate: [AuthGuard] },
 ];
 
 @NgModule({

@@ -1,0 +1,11 @@
+<mat-card class="result" style="    padding-top: 0;padding-bottom: 0;">
+
+    <mat-card-content> 
+      <section *ngFor="let role of listRoles.children; let i = index" class="role-section">
+        <mat-checkbox (change)="changeValue($event,role)" [(ngModel)]="role.checked">
+          <i class="far fa-folder-open"></i>  {{translate.currentLang===langEnum.en?role.nodeNameEn:role.nodeNameAr}}
+        </mat-checkbox>
+        <app-role [selectedRoles]="selectedRoles" [listRoles]="role"></app-role>
+      </section>
+    </mat-card-content>
+  </mat-card>

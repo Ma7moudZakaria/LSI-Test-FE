@@ -1,0 +1,47 @@
+<div class="col-md-12">
+    <p class="title_add">
+        {{'Role_Management.CREATENEWGROUP' | translate}}
+    </p>
+        <div class="col-md-10 mx-auto">
+            <form class="DataForm" [formGroup]="DataForm">
+                <div class="form-group">
+                    <label for="exampleInputEmail1" class="label">{{'Role_Management.GROUPNAMEARABIC' | translate}}</label>
+
+                    <input type="text" class="form-control" id="InputNamAr" formControlName="arRoleName"
+                    [ngClass]="{'red-border-class': fc.arRoleName.errors && ( fc.arRoleName.touched || isSubmit)}">
+
+                    <div *ngIf="fc.arRoleName.errors && (fc.arRoleName.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                      <div *ngIf="fc.arRoleName.errors.required">
+                          {{"QUESTION_BANK.REQUIRED"|translate}}
+                      </div>
+                     
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1" class="label">{{'Role_Management.GROUPNAMEENGLISH' | translate}}</label>
+
+                    <input type="text" class="form-control" id="InputNamAr" formControlName="enRoleName"
+                    [ngClass]="{'red-border-class': fc.enRoleName.errors && ( fc.enRoleName.touched || isSubmit)}">
+
+                    <div *ngIf="fc.enRoleName.errors && (fc.enRoleName.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                      <div *ngIf="fc.enRoleName.errors.required">
+                          {{"QUESTION_BANK.REQUIRED"|translate}}
+                      </div>
+                     
+                  </div>
+                </div>
+            
+            </form>
+            <div class="row">
+                <div class="col-md-6">
+                    <button (click)="saveData()" class="save-btn  "   >{{'QUESTION_BANK.SAVE' | translate}}</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" class="cancel-btn " (click)="backList()">{{'QUESTION_BANK.CANCEL' | translate}}</button>
+                </div>
+              </div>
+        </div>
+
+      
+    
+</div>

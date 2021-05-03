@@ -1,0 +1,36 @@
+@import 'src/assets/scss/_variables.scss';
+.result{
+    width: 100%;
+    box-shadow: none;
+    font-family: Almarai-Bold;
+    .title{
+        font-size: 18px;
+    }
+    .title:lang(ar){
+        text-align: right;
+    }
+    .title:lang(en){
+        text-align: left;
+    }
+}
+.role-section:lang(ar){
+    text-align: right;
+}
+.role-section:lang(en){
+    text-align: left;
+}
+.role-section-child{
+    padding: 0 30px;
+}
+
+.role-section i{
+    font-size: 18px;
+    margin: 0 6px;
+    color: $icon_input;
+}
+
+.role-section-child i{
+    font-size: 18px;
+    margin: 0 6px;
+    color: $icon_input;
+}
