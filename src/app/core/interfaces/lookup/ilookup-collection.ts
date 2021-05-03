@@ -1,16 +1,24 @@
 import { BaseLookupModel } from "../../ng-model/base-lookup-model";
 
-export interface ILookupCollection{
-    GENDER?:BaseLookupModel[];
-    CONTENT_MANAG_TYPE?:BaseLookupModel[];
-    EDU_LEVEL?:BaseLookupModel[];
-    MEDIA_TYPES?:BaseLookupModel[];
-    SOC_MED_TYPES?:BaseLookupModel[];
-    MATERIAL_CATEG?:BaseLookupModel[];
-    NATIONALITY?:BaseLookupModel[];
-    COUNTRY?:BaseLookupModel[];
-    SCIENTIFIC_ARCHIVES?:BaseLookupModel[];
-    TRAINING_COURSES?:BaseLookupModel[];
-    SYSTEM_SHEIKHS?:BaseLookupModel[];
-    WLAKTHROUGHPAGES?:BaseLookupModel[];
+export interface ILookupCollection {
+    GENDER?: BaseLookupModel[];
+    CONTENT_MANAG_TYPE?: BaseLookupModel[];
+    EDU_LEVEL?: BaseLookupModel[];
+    MEDIA_TYPES?: BaseLookupModel[];
+    SOC_MED_TYPES?: BaseLookupModel[];
+    MATERIAL_CATEG?: BaseLookupModel[];
+    NATIONALITY?: BaseLookupModel[];
+    COUNTRY?: BaseLookupModel[];
+    SCIENTIFIC_ARCHIVES?: BaseLookupModel[];
+    TRAINING_COURSES?: BaseLookupModel[];
+    SYSTEM_SHEIKHS?: BaseLookupModel[];
+    WALKTHROUGHPAGES?: BaseLookupModel[];
+    CITY?: BaseLookupModel[];
+    DEGREE?: BaseLookupModel[];
+    EDU_YEAR?: BaseLookupModel[];
+    INTERVIEW_DAY?: BaseLookupModel[];
+    LANG?: BaseLookupModel[];
+    QUALIFI?: BaseLookupModel[];
+    SPECIAL?: BaseLookupModel[];
+    WORKING_PLATFORM?: BaseLookupModel[];//جهه العمل
 }

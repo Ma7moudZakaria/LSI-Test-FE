@@ -15,32 +15,32 @@ import { LookupService } from 'src/app/core/services/lookup-services/lookup.serv
 export class WalkThroughPagesComponent implements OnInit {
 
   collectionOfLookup = {} as ILookupCollection;
-  walkThroughPages? = [] as BaseLookupModel[];
-  listOfLookupProfile : string[] = ['WLAKTHROUGHPAGES'];
-  langEnum = LanguageEnum ;
+  walkThroughPages?= [] as BaseLookupModel[];
+  listOfLookupProfile: string[] = ['WALKTHROUGHPAGES'];
+  langEnum = LanguageEnum;
   resMessage: BaseMessageModel = {};
   @Output() selectedWalkThroughPageId = new EventEmitter<string>();;
 
-  constructor( private lookupService:LookupService,public translate: TranslateService) { }
+  constructor(private lookupService: LookupService, public translate: TranslateService) { }
 
   ngOnInit(): void {
-    this.lookupService.getLookupByKey(this.listOfLookupProfile).subscribe(res =>{
-     
-      if (res.isSuccess){
+    this.lookupService.getLookupByKey(this.listOfLookupProfile).subscribe(res => {
+
+      if (res.isSuccess) {
         this.collectionOfLookup = res.data;
-        this.walkThroughPages = 
-        this.collectionOfLookup.WLAKTHROUGHPAGES?.sort((a,b) => this.compare(a,b) );
-       if(this.collectionOfLookup.WLAKTHROUGHPAGES) 
-        this.selectedWalkThroughPageId?.emit(this.collectionOfLookup.WLAKTHROUGHPAGES[0].id);
+        this.walkThroughPages =
+          this.collectionOfLookup.WALKTHROUGHPAGES?.sort((a, b) => this.compare(a, b));
+        if (this.collectionOfLookup.WALKTHROUGHPAGES)
+          this.selectedWalkThroughPageId?.emit(this.collectionOfLookup.WALKTHROUGHPAGES[0].id);
 
       }
-      else{
+      else {
         this.resMessage = {
           message: res.message,
           type: BaseConstantModel.DANGER_TYPE
         }
       }
-    },error => {
+    }, error => {
       this.resMessage = {
         message: error,
         type: BaseConstantModel.DANGER_TYPE
@@ -48,15 +48,15 @@ export class WalkThroughPagesComponent implements OnInit {
     });
   }
 
-  selectedIndex=0;
-  loadPageWalkThrough(id?:string){
+  selectedIndex = 0;
+  loadPageWalkThrough(id?: string) {
     this.selectedWalkThroughPageId?.emit(id);
 
   }
-  
-  compare(a:BaseLookupModel,b:BaseLookupModel){
+
+  compare(a: BaseLookupModel, b: BaseLookupModel) {
     if (a.huffazId && b.huffazId) {
-      return a.huffazId > b.huffazId ?  1 : -1;
+      return a.huffazId > b.huffazId ? 1 : -1;
     }
     return 0;
   }

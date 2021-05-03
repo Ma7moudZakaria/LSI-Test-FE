@@ -13,10 +13,11 @@ import { QuestionBankQuestionsViewComponent } from './components/quesion-bank-vi
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AddQuestionBankCategoryComponent } from './components/quesion-bank-view/add-question-bank-category/add-question-bank-category.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { AddScientificProblemComponent } from './components/quesion-bank-view/add-scientific-problem/add-scientific-problem.component';
 
 @NgModule({
   declarations: [AddQuestionBankCategoryComponent, QuestionBankCategoriesViewComponent, QuestionBankCategoryDetailsComponent, AddQuestionBankQuestionComponent,
-    QuestionBankQuestionsViewComponent, QuestionBankQuestionDetailsComponent, QuesionBankViewComponent],
+    QuestionBankQuestionsViewComponent, QuestionBankQuestionDetailsComponent, QuesionBankViewComponent, AddScientificProblemComponent],
   imports: [
     SharedModule,
     FormsModule,

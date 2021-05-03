@@ -1,0 +1,816 @@
+<!-- <div class="container-fluid UpdateUser" *ngIf="telInputParam?.countryIsoCode"> -->
+<div class="container-fluid UpdateUser" >
+
+    <div class="row">
+        <div class="box_container">
+            <!-- [formGroup]="profileForm" (ngSubmit)="onSubmit(profileForm.value)"  -->
+            <form class="form-group" [formGroup]="profileForm" (ngSubmit)="onSubmit(profileForm.value)" >
+
+               <div class="col-12 profile p-0 mb-50">
+                    <div class="profile_background"></div>
+                    <img class="img_profile" [src]="teacherProfileDetails?.proPic">
+                    <input type="file" style="display: none;" #fileInput
+                        (change)="onFileChange($any($event.target).files)">
+                    <a class="custom_file_input" (click)="fileInput.click()" style="text-decoration: none;" id="upload_link">
+                        <!-- {{'UPDATE_USER_PG.CHANGE_PIC' | translate}} -->
+                        <img src="assets/images/update-user/UploadImage.svg"/>
+                    </a>
+                </div>
+
+                <div class="internal_scroll">
+                    <div class="col-4 mt-4 mb-3 pl-0 pr-0 border_bottom">
+                        <label class="UpdateUser__Label mt-5">{{'UPDATE_USER_PG.PERSONAL_INFORMATION' | translate}} </label>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4 pl-0 pr-0">
+                        <div class="row pl-0 pr-0 ">
+                            <!-- Names Arabic -->
+                            
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="translate.currentLang == langEnum.ar">
+                                <label class="Register__Label" for="firstAr"> {{ 'UPDATE_USER_PG.NAME_AR' | translate }}
+                                </label>
+                                <input id="firstAr" pInputText type="text" formControlName="firstAr"
+                                    name="firstAr" class="form-control UserRegister__FormControl">
+
+                                <div *ngIf="f.firstAr.errors && (f.firstAr.touched || isSubmit)"
+                                    class="alert alert-danger mt-2 mb-2">
+
+                                    <div *ngIf="f.firstAr.errors?.required">
+                                        {{ 'UPDATE_USER_PG.NAME_AR_REQUIRED' | translate }}
+                                    </div>
+                                    <div *ngIf="f.firstAr.errors?.maxlength">
+                                        {{ 'UPDATE_USER_PG.NAME_AR_MAX_LENGTH' | translate }}
+                                    </div>
+                                    <div *ngIf="f.firstAr.errors?.minlength">
+                                        {{ 'UPDATE_USER_PG.NAME_AR_MIN_LENGTH' | translate }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="translate.currentLang == langEnum.ar">
+                                <label class="Register__Label" for="middleAr"> {{ 'UPDATE_USER_PG.FATHER_NAME_AR' | translate }} </label>
+                                <input id="middleAr" pInputText type="text" formControlName="middleAr"
+                                    name="middleAr" class="form-control UserRegister__FormControl">
+                                    
+                                    <div *ngIf="f.middleAr.errors && (f.middleAr.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                        <div *ngIf="f.middleAr.errors?.required">
+                                            {{ 'UPDATE_USER_PG.FATHER_NAME_AR_REQUIRED' | translate }}
+                                        </div>
+                                        <div *ngIf="f.middleAr.errors?.maxlength">
+                                            {{ 'UPDATE_USER_PG.FATHER_NAME_AR_MAX_LENGTH' | translate }}
+                                        </div>
+                                        <div *ngIf="f.middleAr.errors?.minlength">
+                                            {{ 'UPDATE_USER_PG.FATHER_NAME_AR_MIN_LENGTH' | translate }}
+                                        </div>
+                                    </div> 
+                            </div>
+
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="translate.currentLang == langEnum.ar">
+                                <label class="Register__Label" for="familyAr"> {{ 'UPDATE_USER_PG.FAMILY_NAME_AR' | translate }} </label>
+                                <input id="familyAr" pInputText type="text" formControlName="familyAr"
+                                    name="familyAr" class="form-control UserRegister__FormControl">
+
+                                    <div *ngIf="f.familyAr.errors && (f.familyAr.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                        <div *ngIf="f.familyAr.errors?.required">
+                                            {{ 'UPDATE_USER_PG.FAMILY_NAME_AR_REQUIRED' | translate }}
+                                        </div>
+                                        <div *ngIf="f.familyAr.errors?.maxlength">
+                                            {{ 'UPDATE_USER_PG.FAMILY_NAME_AR_MAX_LENGTH' | translate }}
+                                        </div>
+                                        <div *ngIf="f.familyAr.errors?.minlength">
+                                            {{ 'UPDATE_USER_PG.FAMILY_NAME_AR_MIN_LENGTH' | translate }}
+                                        </div>
+                                    </div> 
+                            </div>
+
+                            <!-- End Names Arabic -->
+
+                            <!-- Names English -->
+
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="translate.currentLang == langEnum.en">
+                                <label class="Register__Label" for="firstEn"> {{ 'UPDATE_USER_PG.NAME_EN' | translate }}
+                                </label>
+                                <input id="firstEn" pInputText type="text" formControlName="firstEn"
+                                    name="firstEn" class="form-control UserRegister__FormControl">
+
+                                <div *ngIf="f.firstEn.errors && (f.firstEn.touched || isSubmit)"
+                                    class="alert alert-danger mt-2 mb-2">
+
+                                    <div *ngIf="f.firstEn.errors?.required">
+                                        {{ 'UPDATE_USER_PG.NAME_EN_REQUIRED' | translate }}
+                                    </div>
+                                    <div *ngIf="f.firstEn.errors?.maxlength">
+                                        {{ 'UPDATE_USER_PG.NAME_EN_MAX_LENGTH' | translate }}
+                                    </div>
+                                    <div *ngIf="f.firstEn.errors?.minlength">
+                                        {{ 'UPDATE_USER_PG.NAME_EN_MIN_LENGTH' | translate }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="translate.currentLang == langEnum.en">
+                                <label class="Register__Label" for="middleEn"> {{ 'UPDATE_USER_PG.FATHER_NAME_EN' | translate }} </label>
+                                <input id="middleEn" pInputText type="text" formControlName="middleEn"
+                                    name="middleEn" class="form-control UserRegister__FormControl">
+                                    
+                                    <div *ngIf="f.middleEn.errors && (f.middleEn.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                        <div *ngIf="f.middleEn.errors?.required">
+                                            {{ 'UPDATE_USER_PG.FATHER_NAME_EN_REQUIRED' | translate }}
+                                        </div>
+                                        <div *ngIf="f.middleEn.errors?.maxlength">
+                                            {{ 'UPDATE_USER_PG.FATHER_NAME_EN_MAX_LENGTH' | translate }}
+                                        </div>
+                                        <div *ngIf="f.middleEn.errors?.minlength">
+                                            {{ 'UPDATE_USER_PG.FATHER_NAME_EN_MIN_LENGTH' | translate }}
+                                        </div>
+                                    </div> 
+                            </div>
+                            
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="translate.currentLang == langEnum.en">
+                                <label class="Register__Label" for="familyEn"> {{ 'UPDATE_USER_PG.FAMILY_NAME_EN' | translate }} </label>
+                                <input id="familyEn" pInputText type="text" formControlName="familyEn"
+                                    name="familyEn" class="form-control UserRegister__FormControl">
+
+                                    <div *ngIf="f.familyEn.errors && (f.familyEn.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                        <div *ngIf="f.familyEn.errors?.required">
+                                            {{ 'UPDATE_USER_PG.FAMILY_NAME_EN_REQUIRED' | translate }}
+                                        </div>
+                                        <div *ngIf="f.familyEn.errors?.maxlength">
+                                            {{ 'UPDATE_USER_PG.FAMILY_NAME_EN_MAX_LENGTH' | translate }}
+                                        </div>
+                                        <div *ngIf="f.familyEn.errors?.minlength">
+                                            {{ 'UPDATE_USER_PG.FAMILY_NAME_EN_MIN_LENGTH' | translate }}
+                                        </div>
+                                    </div> 
+                            </div>
+
+                            <!-- End Names English -->
+
+                            <div class="col-5 updateTeacher_hijriBirthDate">
+                                <div class="d-flex justify-content-around" >
+                                <div class="hijriBirthDate_contanier">
+                                    <label class="Register__Label " for="hijriBirthDate">
+                                        {{ 'UPDATE_USER_PG.BIRTHDATE' |translate }}
+                                    </label>
+                                       <app-milady-hijri-calendar   (sendDate)="Hijri($event)"  formControlName="hijriBirthDate"
+                                       [hijri]="hijri" [milady]="!milady">
+                                     </app-milady-hijri-calendar>
+                                     <!-- <p>{{higriPinding}}</p> -->
+                                    
+                                       <div *ngIf="f.hijriBirthDate.errors && (f.hijriBirthDate.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                           <div *ngIf="f.hijriBirthDate.errors.required">
+                                               {{ 'UPDATE_USER_PG.hijriBirthDate_REQUIRED' | translate }}
+                                           </div>
+                                       </div> 
+                                </div>
+                                <div class="pl-3 pr-3 gender_contanier">
+                                    <label class="Register__Label" for="gender"> {{ 'GENERAL.GENDER' | translate }}
+                                    </label>
+                                    <div class="row">
+                                       
+                                        <section class="col-12 mt-3" >
+                                            <mat-radio-group aria-label="Select an option"  class="example-radio-group"  
+                                             formControlName="gender">
+                                                <mat-radio-button value="{{item.id}}" class="example-radio-button ml-3"  
+                                                *ngFor="let item of collectionOfLookup.GENDER">
+                                                {{ translate.currentLang == langEnum.en ? item.nameEn : item.nameAr}}
+                                                </mat-radio-button>
+                                            </mat-radio-group>
+                                       </section>
+                                        <div *ngIf="f.gender.errors && (f.gender.touched || isSubmit)"
+                                                class="alert alert-danger mt-2 mb-2">
+                                                <div *ngIf="f.gender.errors.required">
+                                                    {{ 'UPDATE_USER_PG.GENDER_REQUIRED' | translate }}
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-4 mt-4 mb-3 pl-0 pr-0 mt-3 mb-4 border_bottom">
+                        <label class="UpdateUser__Label"> {{ 'UPDATE_USER_PG.CONTACT_INFO' | translate }} </label>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 pr-0">
+                        <div class="row pl-0 pr-0">
+                            <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2">
+                                <label class="Register__Label" for="phoneNumber"> {{ 'GENERAL.PHONE_NUMBER' | translate }} </label>
+                              
+                                    <app-tel-input  (getPhonNumber)="applyPhoneNumber($event)" 
+                                    [telInputParam]="telInputParam"></app-tel-input>
+
+                                    <div *ngIf="f.phoneNumber.errors && (f.phoneNumber.touched || isSubmit)"
+                                     class="alert alert-danger mt-2 mb-2">
+                                        <div *ngIf="f.phoneNumber.errors.required">
+                                            {{ 'UPDATE_USER_PG.PHONE_NUMBER_REQUIRED' | translate }}
+                                        </div>
+                                      
+                                    </div> 
+                            </div>
+                      
+                           
+
+                            <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2">
+                                <label class="Register__Label" for="email"> {{ 'GENERAL.EMAIL' | translate }} ({{ 'UPDATE_USER_PG.OPTIONAL' | translate }})</label>
+                                <input id="email" type="email" formControlName="email" style="width:100%;" readonly name="email"
+                                    class="form-control UserRegister__FormControl dimmed" />
+                            </div>
+
+                            <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2">
+                                <label class="Register__Label" for="nationality"> {{ 'GENERAL.NATIONALITY' | translate
+                                    }} </label>
+                                <div>
+                                    <select class="UpdateUser__Options" name="nameEn" formControlName="nationality">
+                                        <option *ngFor="let nationalityItem of collectionOfLookup.NATIONALITY"
+                                            [value]="nationalityItem.id">
+                                            {{ translate.currentLang == langEnum.en ? nationalityItem.nameEn :
+                                            nationalityItem.nameAr}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div *ngIf="f.nationality.errors && (f.nationality.touched || isSubmit)"
+                                    class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.nationality.errors.required">
+                                        {{ 'UPDATE_USER_PG.NATIONALITY_REQUIRED' | translate }}
+                                    </div>
+                                </div>
+                            </div>
+      
+                            <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2">
+                                <label class="Register__Label" for="country"> {{ 'UPDATE_USER_PG.COUNTRY' | translate }} </label>
+
+                                <select class="UpdateUser__Options" name="nameEn" formControlName="country">
+                                    <option *ngFor="let countryItem of collectionOfLookup.COUNTRY"
+                                        [value]="countryItem.id">
+                                        {{ translate.currentLang == langEnum.en ? countryItem.nameEn : countryItem.nameAr}}
+                                    </option>
+                                </select>
+
+                                <div *ngIf="f.country.errors && (f.country.touched || isSubmit)"
+                                    class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.country.errors.required">
+                                        {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2 mt-3">
+                                <label class="Register__Label" for="city"> {{ 'UPDATE_TEACHER_PG.CITY' | translate }}
+                                </label>
+                               
+                                    <select class="UpdateUser__Options" name="nameEn" formControlName="city">
+                                        <option *ngFor="let cityItem of collectionOfLookup.CITY"
+                                            [value]="cityItem.id">
+                                            {{ translate.currentLang == langEnum.en ? cityItem.nameEn : cityItem.nameAr}}
+                                        </option>
+                                    </select>
+
+                                    <div *ngIf="f.city.errors && (f.city.touched || isSubmit)"
+                                    class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.city.errors.required">
+                                        {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
+
+                                    </div>
+                                   </div>
+                            </div>
+                           
+                            
+                            <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2 align-self-center">
+                                <p class="info_contact mb-0">
+                                    {{ 'UPDATE_TEACHER_PG.INFO_CONTACT' | translate }}
+                                </p>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-2 col-xs-2 mt-3">
+                                <label class="Register__Label" for="interviewDay"> 
+                                    {{ 'UPDATE_TEACHER_PG.TIME' | translate }}
+                                </label>
+                               
+                                    <select class="UpdateUser__Options" name="nameEn" formControlName="interviewDay">
+                                        <option *ngFor="let interviewDayItem of collectionOfLookup.INTERVIEW_DAY"
+                                            [value]="interviewDayItem.id">
+                                            {{ translate.currentLang == langEnum.en ? interviewDayItem.nameEn : interviewDayItem.nameAr}}
+                                        </option>
+                                    </select>
+<!-- 
+                                    <div *ngIf="f.interviewDayItem.errors && (f.interviewDayItem.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                        <div *ngIf="f.interviewDayItem.errors.required">
+                                            {{ 'UPDATE_USER_PG.ADDRESS_REQUIRED' | translate }}
+                                        </div>
+                                      
+                                    </div>  -->
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-2 col-xs-2 mt-3">
+                                <label class="Register__Label" for="interviewTime"> 
+                                    {{ 'UPDATE_TEACHER_PG.TIME' | translate }}
+                                    
+                                </label>
+                             
+                                    <select class="UpdateUser__Options" name="nameEn" formControlName="interviewTime">
+                                        <!-- <option *ngFor="let interviewTimeItem of collectionOfLookup.EDU_YEAR"
+                                            [value]="interviewTimeItem.id">
+                                            {{ translate.currentLang == langEnum.en ? interviewTimeItem.nameEn : interviewTimeItem.nameAr}}
+                                        </option> -->
+                                    </select>
+                                    <div *ngIf="f.interviewTime.errors && (f.interviewTime.touched || isSubmit)"
+                                     class="alert alert-danger mt-2 mb-2">
+                                        <div *ngIf="f.interviewTime.errors.required">
+                                         {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
+                                        </div>
+                                    </div> 
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-4 mt-4 mb-3 pl-0 pr-0 mt-3 mb-4  border_bottom">
+                        <label class="UpdateUser__Label"> {{ 'UPDATE_TEACHER_PG.EDU' | translate }} </label>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 pr-0">
+                        <div class="row pl-0 pr-0">
+
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                <label class="Register__Label" for="acEdu"> {{ 'UPDATE_USER_PG.EDU' | translate }} </label>
+                                
+                                <select class="UpdateUser__Options" name="nameEn" formControlName="acEdu">
+                                    <option *ngFor="let acEdulItem of collectionOfLookup.EDU_LEVEL"
+                                        [value]="acEdulItem.id">
+                                        {{ translate.currentLang == langEnum.en ? acEdulItem.nameEn :
+                                            acEdulItem.nameAr}}
+                                    </option>
+                                </select>
+                                   
+                                <div *ngIf="f.acEdu.errors && (f.acEdu.touched || isSubmit)"
+                                    class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.acEdu.errors.required">
+                                        {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                <label class="Register__Label" for="qualifi"> {{ 'UPDATE_TEACHER_PG.QUALIFICATION' | translate }} </label>
+                                
+                                <select class="UpdateUser__Options" name="nameEn" formControlName="qualifi">
+                                    <option *ngFor="let qualifiItem of collectionOfLookup.QUALIFI"
+                                        [value]="qualifiItem.id">
+                                        {{ translate.currentLang == langEnum.en ? qualifiItem.nameEn :
+                                        qualifiItem.nameAr}}
+                                    </option>
+                                </select>
+
+                                <div *ngIf="f.qualifi.errors && (f.qualifi.touched || isSubmit)"
+                                    class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.qualifi.errors.required">
+                                        {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                <label class="Register__Label" for="special"> {{ 'UPDATE_TEACHER_PG.SPECTALIST' |
+                                    translate }} </label>
+                                    
+                                    <select class="UpdateUser__Options" name="nameEn" formControlName="special">
+                                        <option *ngFor="let special of collectionOfLookup.SPECIAL"
+                                            [value]="special.id">
+                                            {{ translate.currentLang == langEnum.en ? special.nameEn :
+                                                special.nameAr}}
+                                        </option>
+                                    </select>
+    
+                                    <div *ngIf="f.special.errors && (f.special.touched || isSubmit)"
+                                        class="alert alert-danger mt-2 mb-2">
+                                        <div *ngIf="f.special.errors.required">
+                                            {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="col-12">
+                                <br>
+                                <br>
+                            </div>
+<!-- start  -->
+                            <div class="col-4">
+                                <label class="Register__Label" for="learnQuran"> {{ 'UPDATE_TEACHER_PG.LEARN_THEQURAN' | translate }} </label>
+
+                                <section>
+                                    <mat-radio-group  formControlName="workingPlatForm"  aria-label="Select an option"  class="example-radio-group">
+                                        <mat-radio-button  class="example-radio-button ml-3"    value="{{item.id}}" 
+                                        *ngFor="let item of collectionOfLookup.WORKING_PLATFORM"
+                                        >
+                                      {{ translate.currentLang == langEnum.en ? item.nameEn : item.nameAr}}
+                                        </mat-radio-button>
+                                    </mat-radio-group>
+                               </section>
+
+                                    <div *ngIf="f.workingPlatForm.errors && (f.workingPlatForm.touched || isSubmit)"
+                                    class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.workingPlatForm.errors.required">
+                                         {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-20">
+                                <label class="Register__Label" for="entity"> {{ 'UPDATE_TEACHER_PG.ENTITY' |
+                                    translate }} </label>
+                                <input id="entity" pInputText type="text" formControlName="entity"
+                                    name="entity" class="form-control UserRegister__FormControl">
+
+                                <div *ngIf="f.entity.errors && (f.entity.touched || isSubmit)"
+                                    class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.entity.errors.required">
+                                        {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
+                                       
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                <label class="Register__Label" for="eduYear"> {{ 'UPDATE_TEACHER_PG.DURATION' | translate }} </label>
+                                <select class="UpdateUser__Options" name="nameEn" formControlName="eduYear">
+                                    <option *ngFor="let eduYearItem of collectionOfLookup.EDU_YEAR"
+                                        [value]="eduYearItem.id">
+                                        {{ translate.currentLang == langEnum.en ? eduYearItem.nameEn :
+                                        eduYearItem.nameAr}}
+                                    </option>
+                                </select>
+                                
+                                <div *ngIf="f.eduYear.errors && (f.eduYear.touched || isSubmit)"
+                                    class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.eduYear.errors.required">
+                                        {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
+                                    </div>
+                                </div> 
+                            </div>
+                            <div class="col-12">
+                                <br>
+                                <br>
+                            </div>
+
+                            <div class="col-20 ">
+                                <label class="Register__Label" for="isHasQuranExp"> {{ 'UPDATE_TEACHER_PG.IMPROVING_QURAN_WITH_TAJWEED' | translate }} </label>
+
+                                 <section>
+                                        <mat-radio-group aria-label="Select an option"  formControlName="isHasQuranExp"
+                                         class="example-radio-group update_teacher_pg">
+                                            <mat-radio-button  value="ture" class="example-radio-button" >{{ 'UPDATE_TEACHER_PG.YES' | translate }}</mat-radio-button>
+                                            <mat-radio-button value="false" class="example-radio-button" >{{ 'UPDATE_TEACHER_PG.NO' | translate }}</mat-radio-button>
+                                          </mat-radio-group>
+                                  </section>
+
+                                    <div *ngIf="f.isHasQuranExp.errors && (f.isHasQuranExp.touched || isSubmit)"
+                                    class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.isHasQuranExp.errors.required">
+                                        {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
+                                    </div>
+                                  </div>
+
+                            </div>
+
+                            <div class="col-20 ">
+                                <label class="Register__Label" for=" isHasTeachSunnaExp "> {{ 'UPDATE_TEACHER_PG.EXPERIENCE_TEACHING_SUNNAH' | translate }} </label>
+                                <section>
+                                    <mat-radio-group aria-label="Select an option"  formControlName="isHasTeachSunnaExp"
+                                     class="example-radio-group update_teacher_pg">
+                                        <mat-radio-button  value="ture" class="example-radio-button" >{{ 'UPDATE_TEACHER_PG.YES' | translate }}</mat-radio-button>
+                                        <mat-radio-button value="false" class="example-radio-button" >{{ 'UPDATE_TEACHER_PG.NO' | translate }}</mat-radio-button>
+                                      </mat-radio-group>
+                               </section>
+
+                                    <div *ngIf="f.isHasTeachSunnaExp.errors && (f.isHasTeachSunnaExp.touched || isSubmit)"
+                                    class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.isHasTeachSunnaExp.errors.required">
+                                      {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
+                                    </div>
+                                   </div>
+
+                            </div>
+
+
+                            <div class="col-20 ">
+                                <label class="Register__Label" for="isHasInternetTeachExp"> {{ 'UPDATE_TEACHER_PG.EXPERIENCE_TEACHING_ONLINE' | translate }} </label>
+
+                                <section>
+                                    <mat-radio-group aria-label="Select an option"  formControlName="isHasInternetTeachExp"
+                                     class="example-radio-group update_teacher_pg">
+                                        <mat-radio-button  value="ture" class="example-radio-button" >{{ 'UPDATE_TEACHER_PG.YES' | translate }}</mat-radio-button>
+                                        <mat-radio-button value="false" class="example-radio-button" >{{ 'UPDATE_TEACHER_PG.NO' | translate }}</mat-radio-button>
+                                      </mat-radio-group>
+                              </section>
+
+                                    <div *ngIf="f.isHasInternetTeachExp.errors && (f.isHasInternetTeachExp.touched || isSubmit)"
+                                    class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.isHasInternetTeachExp.errors.required">
+                                        {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
+                                    </div>
+                                   </div>
+
+                            </div>
+
+
+
+
+                            <div class="col-20 ">
+                                <label class="Register__Label" for="isHasTeachForeignerExp"> {{ 'UPDATE_TEACHER_PG.EXPERIENCE_TEACHING_FOREIGNERS' | translate }} </label>
+
+                                <section>
+                                    <mat-radio-group aria-label="Select an option"  formControlName="isHasTeachForeignerExp"
+                                     class="example-radio-group update_teacher_pg">
+                                        <mat-radio-button  value="ture" class="example-radio-button" >{{ 'UPDATE_TEACHER_PG.YES' | translate }}</mat-radio-button>
+                                        <mat-radio-button value="false" class="example-radio-button" >{{ 'UPDATE_TEACHER_PG.NO' | translate }}</mat-radio-button>
+                                      </mat-radio-group>
+                              </section>
+
+
+                                    <div *ngIf="f.isHasTeachForeignerExp.errors && (f.isHasTeachForeignerExp.touched || isSubmit)"
+                                    class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.isHasTeachForeignerExp.errors.required">
+                                        {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
+                                    </div>
+                                </div>
+
+                            </div>
+                            
+
+                            <div class="col-20 ">
+                                <label class="Register__Label" for="isHasEjazaHafz"> {{ 'UPDATE_TEACHER_PG.LEAVE_SAVE' | translate }} </label>
+
+                                <section>
+                                    <mat-radio-group aria-label="Select an option"  formControlName="isHasEjazaHafz"
+                                     class="example-radio-group update_teacher_pg">
+                                        <mat-radio-button  value="ture" class="example-radio-button" >{{ 'UPDATE_TEACHER_PG.YES' | translate }}</mat-radio-button>
+                                        <mat-radio-button value="false" class="example-radio-button" >{{ 'UPDATE_TEACHER_PG.NO' | translate }}</mat-radio-button>
+                                      </mat-radio-group>
+                               </section>
+
+                                    <div *ngIf="f.isHasEjazaHafz.errors && (f.isHasEjazaHafz.touched || isSubmit)"
+                                    class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.isHasEjazaHafz.errors.required">
+                                    {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
+                                    </div>
+                                 </div>
+
+                            </div>
+                            
+                            <div class="col-12">
+                                <br>
+                            </div>
+                            <div class="col-20 ">
+                                <label class="Register__Label" for="isHasEjazaTelawa"> {{ 'UPDATE_TEACHER_PG.LEAVE_RECITATION' | translate }} </label>
+
+                                <section>
+                                    <mat-radio-group aria-label="Select an option"  formControlName="isHasEjazaTelawa"
+                                     class="example-radio-group update_teacher_pg">
+                                        <mat-radio-button  value="ture" class="example-radio-button" >{{ 'UPDATE_TEACHER_PG.YES' | translate }}</mat-radio-button>
+                                        <mat-radio-button value="false" class="example-radio-button" >{{ 'UPDATE_TEACHER_PG.NO' | translate }}</mat-radio-button>
+                                      </mat-radio-group>
+                              </section>
+
+                                    <div *ngIf="f.isHasEjazaTelawa.errors && (f.isHasEjazaTelawa.touched || isSubmit)"
+                                    class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.isHasEjazaTelawa.errors.required">
+                                    {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            
+                            <div class="col-20 col-md-2 col-sm-2 col-xs-2">
+                                <label class="Register__Label" for="anyLangReading"> {{ 'UPDATE_TEACHER_PG.TYPE_READING' |
+                                    translate }} </label>
+                                <input id="anyLangReading" pInputText type="text" formControlName="anyLangReading"
+                                    name="anyLangReading" class="form-control UserRegister__FormControl">
+
+                                <div *ngIf="f.anyLangReading.errors && (f.anyLangReading.touched || isSubmit)"
+                                    class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.anyLangReading.errors.required">
+                                       {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
+                                       
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-20 col-md-2 col-sm-2 col-xs-2">
+                                <label class="Register__Label" for="languages">
+                                     {{ 'UPDATE_TEACHER_PG.LANGUAGES' | translate }}
+                                 </label>
+                                    <select class="UpdateUser__Options" name="nameEn" formControlName="languages">
+                                        <option *ngFor="let languageslItem of collectionOfLookup.LANG"
+                                            [value]="languageslItem.id">
+                                            {{ translate.currentLang == langEnum.en ? languageslItem.nameEn :
+                                            languageslItem.nameAr}}
+                                        </option>
+                                    </select>
+                                    <div *ngIf="f.languages.errors && (f.languages.touched || isSubmit)"
+                                    class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.languages.errors.required">
+                                       {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
+                                       
+                                    </div>
+                                  </div>
+                            </div>
+
+                            <div class="col-12">
+                                <br>
+                                <br>
+                            </div>
+
+
+                            <div class="col-4 mt-4 mb-3 mt-3 mb-4 border_bottom">
+                                <label class="UpdateUser__Label"> {{ 'UPDATE_TEACHER_PG.AVAILABLE_PROGRAMS_AND_TIMES' | translate }} </label>
+                            </div>
+                         <div class="col-12"></div>
+                            <div class="col-3 ">
+                                <label class="Register__Label" for="workPlatform"> {{ 'UPDATE_TEACHER_PG.WORK_PLATFORM' | translate }} </label>
+                                <section>
+
+                                        <mat-radio-group aria-label="Select an option"  class="example-radio-group update_teacher_pg">
+                                            <mat-radio-button value="1" class="example-radio-button" >{{ 'UPDATE_TEACHER_PG.VOLUNTEER' | translate }}</mat-radio-button>
+                                            <mat-radio-button value="2" class="example-radio-button" >{{ 'UPDATE_TEACHER_PG.TOGET_REWARD' | translate }}</mat-radio-button>
+                                          </mat-radio-group>
+                                  </section>
+
+                                    <div *ngIf="f.workPlatform.errors && (f.workPlatform.touched || isSubmit)"
+                                    class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.workPlatform.errors.required">
+                                        {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-20 col-md-2 col-sm-2 col-xs-2">
+                                <label class="Register__Label" for="bankName"> {{ 'UPDATE_TEACHER_PG.BANK_NAME' |
+                                    translate }} </label>
+                                <input id="bankName" pInputText type="text" formControlName="bankName"
+                                    name="bankName" class="form-control UserRegister__FormControl">
+
+                                <div *ngIf="f.bankName.errors && (f.bankName.touched || isSubmit)"
+                                    class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.bankName.errors.required">
+                                         {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-20 col-md-2 col-sm-2 col-xs-2">
+                                <label class="Register__Label" for="bankNumber"> {{ 'UPDATE_TEACHER_PG.ACCOUNT_NUMBER' |
+                                    translate }} </label>
+                                <input id="bankNumber" pInputText type="text" formControlName="bankNumber" 
+                                    name="bankNumber" class="form-control UserRegister__FormControl">
+
+                                <div *ngIf="f.bankNumber.errors && (f.bankNumber.touched || isSubmit)"
+                                    class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.bankNumber.errors.required">
+                                        {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-12">
+                                <br>
+                                <br>
+                            </div>
+
+
+                        <div class="col-8 ">
+                            <label class="Register__Label" for="teacherPrograms"> {{ 'UPDATE_TEACHER_PG.PROGRAM_TAUGHT' | translate }} </label>
+                            <div class="row">
+                                 <div class="col-4">
+                                <label class="Register__Label" for="teacherPrograms"> {{ 'UPDATE_TEACHER_PG.CHOOSE_PROGRAM' | translate }} </label>
+
+                                        <select class="UpdateUser__Options" name="nameEn" formControlName="teacherPrograms">
+                                            <option *ngFor="let teacherProgramsItem of collectionOfLookup.TRAINING_COURSES"
+                                                [value]="teacherProgramsItem.id">
+                                                {{ translate.currentLang == langEnum.en ? teacherProgramsItem.nameEn :
+                                                    teacherProgramsItem.nameAr}}
+                                            </option>
+                                        </select>
+                                    <div *ngIf="f.teacherPrograms.errors && (f.teacherPrograms.touched || isSubmit)"
+                                        class="alert alert-danger mt-2 mb-2">
+                                        <div *ngIf="f.teacherPrograms.errors.required">
+                                            {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <label class="Register__Label" for="proficiencyDegree"> {{ 'UPDATE_TEACHER_PG.PROFICIENCY_DEGREE' | translate }} </label>
+
+                                        <select class="UpdateUser__Options" name="nameEn" formControlName="proficiencyDegree">
+                                            <option *ngFor="let proficiencyDegreeItem of collectionOfLookup.DEGREE"
+                                                [value]="proficiencyDegreeItem.id">
+                                                {{ translate.currentLang == langEnum.en ? proficiencyDegreeItem.nameEn :
+                                                    proficiencyDegreeItem.nameAr}}
+                                            </option>
+                                        </select>
+                                    <div *ngIf="f.proficiencyDegree.errors && (f.proficiencyDegree.touched || isSubmit)"
+                                        class="alert alert-danger mt-2 mb-2">
+                                        <div *ngIf="f.proficiencyDegree.errors.required">
+                                                 {{ 'UPDATE_TEACHER_PG.THISFIELD_REQUIRED' | translate }}
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <label class="Register__Label invisible " > {{ 'UPDATE_TEACHER_PG.ADD' | translate }} </label>
+
+                                        <button  type="button" class="saveButton btn" (click)="addDrgree()"> {{ 'UPDATE_TEACHER_PG.ADD' | translate }}</button>
+                                    </div>
+
+
+                                 
+                                </div>
+                                   
+                            </div>
+                            <!-- upload file  -->
+                            <div class="col-12">
+                                <div class="badges mt-3 " >
+                                    <span *ngFor="let p of selecteddrgreeList"
+                                    class="badge badge-info p-2">{{translate.currentLang == langEnum.en? p.nameEn :p.nameAr}}
+                                    <a (click)="removeItemFromselecteddrgreeList(p)"><i class="fas fa-times-circle"></i></a>
+                                </span>
+                                </div>
+                              </div>
+                            
+                            <!-- ////////////////////////// part 2 -->
+
+                            
+                            <div class="col-12">
+                                <br>
+                                <br>
+                            </div>
+
+
+                            <div class="col-8 ">
+                                <label class="Register__Label" for="Languages"> {{ 'UPDATE_TEACHER_PG.ADDING_SUGGESTION' | translate }} </label>
+                                <div class="row">
+                                    <div class="col-4">
+                                    <label class="Register__Label" for="writeProgram"> {{ 'UPDATE_TEACHER_PG.WRITE_PROGRAM' | translate }} </label>
+                                        <input id="writeProgram" pInputText type="text"
+                                        name="writeProgram" class="form-control UserRegister__FormControl">
+                                    </div>
+
+                                    <div class="col-4">
+                                        <label class="Register__Label" for="proficiencyDegree"> {{ 'UPDATE_TEACHER_PG.PROFICIENCY_DEGREE' | translate }} </label>
+
+                                        <select class="UpdateUser__Options" name="nameEn" formControlName="proficiencyDegree">
+                                            <option *ngFor="let proficiencyDegreeItem of collectionOfLookup.DEGREE"
+                                                [value]="proficiencyDegreeItem.id">
+                                                {{ translate.currentLang == langEnum.en ? proficiencyDegreeItem.nameEn :
+                                                    proficiencyDegreeItem.nameAr}}
+                                            </option>
+                                        </select>
+                                 
+                                    </div>
+                                    <div class="col-4">
+                                        <label class="Register__Label invisible " > {{ 'UPDATE_TEACHER_PG.ADD' | translate }} </label>
+
+                                        <button  type="button" class="saveButton btn" > {{ 'UPDATE_TEACHER_PG.ADD' | translate }}</button>
+                                    </div>
+
+
+                                 
+                                </div>
+                                   
+                            </div>
+                            <!-- upload file  -->
+                            <div class="col-12">
+                                        <div class="badges mt-3 " >
+                                            <span *ngFor="let p of drgreeList__addition"
+                                            class="badge badge-info p-2">{{translate.currentLang == langEnum.en? p.nameEn :p.nameAr}}
+                                            <a ><i class="fas fa-times-circle"></i></a>
+                                        </span>
+                                        </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div *ngIf="resMessage.message" class="alert alert-{{ resMessage.type }} my-4 py-2">
+                        {{ resMessage.message }}
+                    </div>
+
+                    <div class="form-group col-lg-12 mx-auto mb-0 mt-4">
+                        <button type="submit" class="btn UserLogin__Submit"> {{ 'GENERAL.SAVE' | translate }} </button>
+                    </div>
+
+                
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
