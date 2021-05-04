@@ -1,4 +1,6 @@
 @import 'src/assets/scss/_variables.scss';
+@import "../../../../../../assets/scss/buttons";
+
 .attache-exam-list{
     background: #FBFBFB 0% 0% no-repeat padding-box;
     border-radius: 19px;
@@ -31,16 +33,23 @@
 }
 
 .internal_scroll_list_group:lang(ar) {
-  height: 470px;
+  height: 586px;
  overflow-y: auto;
+ overflow-x: hidden;
   padding-left: 0.5rem;
+
+  
 }
 .internal_scroll_list_group:lang(en) {
-          height: 470px;
+          height:586px;
           overflow-y: auto;
           padding-right: 0.5rem;
+         
+          overflow-x: hidden;
+          
       }
 
+      
 .qestion{
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #C5C5C5;
@@ -311,4 +320,10 @@ input:checked + .slider:before {
   margin-right: 0.2rem;
   margin-left: 0.2rem;
 
+}
+.width1_4{
+  width: 1.4rem;
+  &:lang(en){
+    float: right;
+  }
 }

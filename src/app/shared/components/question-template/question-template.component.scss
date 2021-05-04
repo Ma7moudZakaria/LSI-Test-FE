@@ -1,0 +1,48 @@
+@import "../../../../assets/scss/buttons";
+.add-question-template{
+    border-bottom:1px solid rgba(193, 199, 208, 1);
+
+.label_item_question{
+    font-size: .875rem;
+    font-family:Almarai-Bold ;
+    color: #3A3A3A;
+    &:lang(ar){
+        float: right;
+    }
+}
+.add_answer{
+    &:lang(ar)
+    {text-align: right;}
+}
+.input_fullWidth
+{
+    width:850px
+}
+
+.border-left-transparent{
+
+    border-left: transparent;
+}
+.input_search_voice
+{
+input{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0.65rem !important;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0.65rem !important;
+}
+.input-group-text{
+    border-top-left-radius:0.65rem ;
+    border-top-right-radius: 0 ;
+    border-bottom-left-radius: 0.65rem ;
+    border-bottom-right-radius: 0 ;
+    border-left-color: #ced4da;
+    border-right-color: transparent;
+
+}
+.input-group-prepend {
+    margin-right: -4px;
+}
+}
+
+}
