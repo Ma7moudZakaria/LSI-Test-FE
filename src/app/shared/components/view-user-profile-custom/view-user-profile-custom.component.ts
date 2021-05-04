@@ -4,13 +4,17 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { RoleEnum } from 'src/app/core/enums/role-enum.enum';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
+import { ITeacherProfile } from 'src/app/core/interfaces/teacher-interfaces/iteacher-profile';
 import { IUserProfile } from 'src/app/core/interfaces/user-interfaces/iuserprofile';
+import { IViewUser } from 'src/app/core/interfaces/user-interfaces/iview-user';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
+import { TeacherProfileService } from 'src/app/core/services/teacher-profile/teacher-profile.service';
 import { UserService } from 'src/app/core/services/user-services/user.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 
@@ -21,19 +25,23 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../confirm-modal/conf
 })
 export class ViewUserProfileCustomComponent implements OnInit {
   RouteParams = {} as string;
-  userProfileDetails = {} as IUserProfile;
+  userDetails = {} as IViewUser;
+  // teacherProfileDetails = {} as ITeacherProfile;
   currentUser: IUser | undefined;
   resMessage: BaseMessageModel = {};
   currentLang: LanguageEnum | undefined;
   birthdate: string | undefined;
   userName: string | undefined;
   lang = LanguageEnum;
+  role = RoleEnum;
+
   @Output() submitClose = new EventEmitter<boolean>();
 
   constructor(
     private router: Router,
     public translate: TranslateService,
     private userService: UserService,
+    private teacherProfileService: TeacherProfileService,
     private dialog: MatDialog,
     private authService: AuthService) {
   }
@@ -42,19 +50,53 @@ export class ViewUserProfileCustomComponent implements OnInit {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     this.currentLang = this.translate.currentLang === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
     this.RouteParams = this.router.url;
-    this.getUserProfile(this.currentUser.id);
+
+    let res = this.currentUser.usrRoles?.usrRoles?.some(x => x.roleNo == this.role.Student.toString());
+
+    if(res == true){
+      this.getUserProfile(this.currentUser.id);
+    }
+    else{
+      this.getTeacherProfile(this.currentUser.id);
+    }
   }
 
   getUserProfile(id: any) {
     this.userService.viewUserProfileDetails(id || '').subscribe(res => {
       if (res.isSuccess) {
-        this.userProfileDetails = res.data as IUserProfile;
-        if (this.userProfileDetails?.birthdate) {
-          let birthdateValue = new Date(this.userProfileDetails.birthdate || '');
+        this.userDetails = res.data as IViewUser;
+        if (this.userDetails?.birthdate) {
+          let birthdateValue = new Date(this.userDetails.birthdate || '');
           this.birthdate = new Date(birthdateValue.setDate(birthdateValue.getDate() + 1)).toISOString().slice(0, 10);
         }
-        if (!this.userProfileDetails?.proPic) {
-          this.userProfileDetails.proPic = '../../../../../assets/images/Profile.svg';
+        if (!this.userDetails?.proPic) {
+          this.userDetails.proPic = '../../../../../assets/images/Profile.svg';
+        }
+      }
+      else {
+        this.resMessage =
+        {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+    }, error => {
+      this.resMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    });
+  }
+
+  getTeacherProfile(id: any) {
+    this.teacherProfileService.viewTeacherProfileDetails(id || '').subscribe(res => {
+      if (res.isSuccess) {
+        this.userDetails = res.data as IViewUser;
+        
+        console.log("Teacher Profile Details =========>" , this.userDetails)
+        
+        if (!this.userDetails?.proPic) {
+          this.userDetails.proPic = '../../../../../assets/images/Profile.svg';
         }
       }
       else {
@@ -102,6 +144,13 @@ export class ViewUserProfileCustomComponent implements OnInit {
 
   navViewProf() {
     this.closeNav();
-    this.router.navigateByUrl('/user/view-user-profile-details');
+    let res = this.currentUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.role.Student.toString());
+
+    if(res == true){
+      this.router.navigateByUrl('/user/view-user-profile-details');
+    }
+    else{
+      this.router.navigateByUrl('/teacher/view-teacher-profile-details');
+    }
   }
 }

@@ -17,7 +17,7 @@
     <img  src="../../../../../../assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
   </span>
 </a> -->
-<ng-container >
+<ng-container *ngIf="isView == true">
   <a (click)="newCatogry()">
     <span class="link_Add ">  {{ 'QUESTION_BANK.ADD_DEPARTMENT' | translate }}
     <img  src="../../../../../../assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >

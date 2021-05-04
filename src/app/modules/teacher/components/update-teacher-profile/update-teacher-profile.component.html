@@ -199,7 +199,7 @@
                             <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2">
                                 <label class="Register__Label" for="phoneNumber"> {{ 'GENERAL.PHONE_NUMBER' | translate }} </label>
                               
-                                    <app-tel-input  (getPhonNumber)="applyPhoneNumber($event)" 
+                                    <app-tel-input  (getPhonNumber)="applyPhoneNumber($event)" formControlName="mobile"
                                     [telInputParam]="telInputParam"></app-tel-input>
 
                                     <div *ngIf="f.mobile.errors && (f.mobile.touched || isSubmit)"

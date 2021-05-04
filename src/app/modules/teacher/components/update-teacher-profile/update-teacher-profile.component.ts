@@ -282,6 +282,15 @@ export class UpdateTeacherProfileComponent implements OnInit {
       this.f.familyEn.setValue(this.teacherProfileDetails?.faNameEn);
     }
     this.f.hijriBirthDate.setValue(this.teacherProfileDetails?.hijriBirthDate)
+    let birthdate = new Date(this.teacherProfileDetails?.hijriBirthDate || '');
+    if (!isNaN(birthdate.getTime())) {
+      this.f.hijriBirthDate.setValue(
+        new Date(birthdate.setDate(birthdate.getDate() + 1))
+          .toISOString()
+          .slice(0, 10)
+      );
+    }
+
     this.f.email.setValue(this.teacherProfileDetails?.usrEmail)
     this.f.nationality.setValue(this.teacherProfileDetails?.nationality)
     this.f.country.setValue(this.teacherProfileDetails?.country)

@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="col-12 textLeft">
-                    <a><img  class="ml-2 mr-2" src="../../../../../assets/images/student/edit.svg">
+                    <a (click)="navEditProf()"><img  class="ml-2 mr-2" src="../../../../../assets/images/student/edit.svg">
                     <span class="profile_edit">{{'UPDATE_USER_PG.EDIT_PROFILE' | translate }}</span></a>
                  </div>
                 
@@ -29,8 +29,15 @@
                     <div class="row">
                        <div class="col-5"></div>
                         <div class="col-5  mt-4  mb-4 border text-center">
-                            <p class="update_item_profile-name"> {{ translate.currentLang === lang.en ? teacherProfileDetails?.fnameEn + " " +  teacherProfileDetails?.mnameEn + " " + teacherProfileDetails?.faNameEn : teacherProfileDetails?.fnameAr+ " " +  teacherProfileDetails?.mnameAr + " " + teacherProfileDetails?.fanameAr}} </p>
+                            <!-- <p class="update_item_profile-name"> {{ translate.currentLang === langEnum.en ? teacherProfileDetails?.fnameEn : teacherProfileDetails?.fnameAr }} {{ translate.currentLang === langEnum.en ? teacherProfileDetails?.mnameEn : teacherProfileDetails?.mnameAr }} {{ translate.currentLang === langEnum.en ? teacherProfileDetails?.faNameEn : teacherProfileDetails?.fanameAr }} </p>  -->
                             <!-- <p class="update_item_profile-name"> {{ translate.currentLang === lang.en ? teacherProfileDetails?.engNatName : teacherProfileDetails?.arbNatName}} </p> -->
+
+                            <p class="update_item_profile-name">
+                                {{ translate.currentLang === lang.en ? teacherProfileDetails?.fnameEn : teacherProfileDetails?.fnameAr }} 
+                                {{ translate.currentLang === lang.en ? teacherProfileDetails?.mnameEn : teacherProfileDetails?.mnameAr }} 
+                                {{ translate.currentLang === lang.en ? teacherProfileDetails?.faNameEn : teacherProfileDetails?.fanameAr }} 
+                                
+                            </p>
                             <p class="brith_date">starts</p>
                             <span class="brith_date"> {{ teacherProfileDetails?.hijriBirthDate }} </span>
                         </div>
@@ -61,7 +68,7 @@
                                         <span>  &nbsp; </span>
                                         <span>  &nbsp; </span>
                                         <span class="data_view">
-                                            {{  translate.currentLang === lang.en ? teacherProfileDetails?.nationalityEn : teacherProfileDetails?.nationalityAr }}                                    
+                                            {{  translate.currentLang === lang.en ? teacherProfileDetails?.engNatName : teacherProfileDetails?.arbNatName }}                                    
                                         </span>
                                     </div>
 

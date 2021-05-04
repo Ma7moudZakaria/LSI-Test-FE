@@ -385,7 +385,9 @@
     "PROVIDED_SCREEN": "شاشات المقدمة",
     "USER_MANAGEMENT": " إدارة المستخدمين",
     "ABOUT_HUFFAZ": "عن حفاظ",
-    "POWER": "الصلاحيات"
+    "POWER": "الصلاحيات",
+    "BANK_ACCOUNT":"حساباتنا البنكية",
+    "EXAMS":"نماذج الاختبارات المرحلية والدورية"
   },
   "Role_Management":{
     "TITLE": "المجموعات",
