@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { AnswerTypeEnum } from 'src/app/core/enums/exam-builder-enums/answer-type-enum.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IExam } from 'src/app/core/interfaces/exam-builder-interfaces/iexam';
 import { IQuestion } from 'src/app/core/interfaces/exam-builder-interfaces/iquestion';
@@ -58,7 +59,13 @@ export class AttacheExamTemplateComponent implements OnInit {
     }
 
     let qid = BaseConstantModel.newGuid();
-    let ques : IQuestion  = {questionId : qid, questionNo : this.exam?.questions ? this.exam.questions.length + 1 : 1 ,answers:[]}
+    let ques : IQuestion  = 
+    {
+      questionId : qid, 
+      questionNo : this.exam?.questions ? this.exam.questions.length + 1 : 1 ,
+      answers:[],
+      answerType: AnswerTypeEnum.singleSelect
+    }
     this.exam.questions.push(ques);
   }
  

@@ -23,7 +23,7 @@
         <br>
         <div *ngIf="isView" >
             <!-- <a (click)="editQuestionTemplate() "> <i class="fas fa-pencil-alt"></i></a>  -->
-            <a (click)="editQuestionTemplate() "> <i style='font-size:24px' class='fas'>&#xf044;</i></a> 
+            <a *ngIf='this.selectedExamFormId.id' (click)="editQuestionTemplate() "> <i style='font-size:24px' class='fas'>&#xf044;</i></a> 
             <div class="input-group ">
                 <div  *ngFor = 'let question of exam.questions' >
                   <app-question-template [questionTemplate] = 'question' [viewMode] = 'isView'></app-question-template>
