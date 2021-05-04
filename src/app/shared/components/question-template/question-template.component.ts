@@ -7,6 +7,8 @@ import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IAnswer } from 'src/app/core/interfaces/exam-builder-interfaces/ianswer';
 import { IQuestion } from 'src/app/core/interfaces/exam-builder-interfaces/iquestion';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
+import { ExamFormService } from 'src/app/core/services/exam-form-services/exam-form.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 
 @Component({
@@ -20,8 +22,10 @@ export class QuestionTemplateComponent implements OnInit {
   answerTypeEnum = AnswerTypeEnum;
   currentLang = '';
   MULTISELECT='';
+  errorMessage?: string;
+  resultMessage: BaseMessageModel = {};
   constructor( public translate: TranslateService,
-    public dialog: MatDialog,) { }
+    public dialog: MatDialog,private examFormService: ExamFormService) { }
 
   ngOnInit(): void {
     this.MULTISELECT=this.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.MULTI_SELECT') : this.translate.instant('GENERAL.MULTI_SELECT')
@@ -32,9 +36,21 @@ export class QuestionTemplateComponent implements OnInit {
     // if (Object.keys(this.questionTemplate).length === 0){
     //   this.questionTemplate = { questionId: '1', answers : []}
     // }
-    let id = BaseConstantModel.newGuid();
-    let answer: IAnswer = { answerId: id, answerNo: this.questionTemplate.answers?.length + 1,correct : false }
-    this.questionTemplate.answers?.push(answer)
+    this.resultMessage = {}
+    if(this.examFormService.validateAnswer(this.questionTemplate.answers)===true)
+{
+  let id = BaseConstantModel.newGuid();
+  let answer: IAnswer = { answerId: id, answerNo: this.questionTemplate.answers?.length + 1,correct : false }
+  this.questionTemplate.answers?.push(answer)
+}
+else{
+  // alert("compelete data")
+  this.resultMessage = {
+   message: this.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+   type: BaseConstantModel.DANGER_TYPE
+ }
+}
+   
   }
 
   onQuestionTextChange(){

@@ -52,7 +52,7 @@ export class ExamFormService {
     if(answerList.length>0){
       // if (!questionList.some(e => e.text)||questionList.some(e => e.voiceUrl)){return false}
       if (!answerList.every(e => e.text)){return false}
-      if (!answerList.every(e => e.correct)){return false}
+      // if (!answerList.every(e => e.correct)){return false}
       else return true;
       }
       else
