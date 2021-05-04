@@ -3,6 +3,7 @@
     width: 100%;
     box-shadow: none;
     font-family: Almarai-Bold;
+    padding: 0 35px;
     .title{
         font-size: 18px;
     }
@@ -33,4 +34,16 @@
     font-size: 18px;
     margin: 0 6px;
     color: $icon_input;
+}
+.children-down{
+    color: black !important;
+    position: relative;
+    top: -5px;
+    right: -2px;
+}
+.children-left{
+    color: black !important;
+    position: relative;
+    top: -2px;
+    right: -4px;
 }

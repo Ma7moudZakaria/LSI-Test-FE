@@ -2,10 +2,12 @@
 
     <mat-card-content> 
       <section *ngFor="let role of listRoles.children; let i = index" class="role-section">
-        <mat-checkbox (change)="changeValue($event,role)" [(ngModel)]="role.checked">
+        <i *ngIf="role.children.length>0 &&role.show==false" (click)="role.show=!role.show" class="fas  fa-sort-down children-down"></i>
+        <i *ngIf="role.children.length>0 &&role.show==true" (click)="role.show=!role.show" class="fas fa-caret-left children-left"></i>
+           <mat-checkbox (change)="changeValue($event,role)" [(ngModel)]="role.checked">
           <i class="far fa-folder-open"></i>  {{translate.currentLang===langEnum.en?role.nodeNameEn:role.nodeNameAr}}
         </mat-checkbox>
-        <app-role [selectedRoles]="selectedRoles" [listRoles]="role"></app-role>
+        <app-role [@listRole] *ngIf="role.show"  [selectedRoles]="selectedRoles" [listRoles]="role"></app-role>
       </section>
     </mat-card-content>
   </mat-card>

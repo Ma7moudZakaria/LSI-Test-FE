@@ -20,7 +20,7 @@ export class GroupRolesComponent implements OnInit,OnChanges  {
     perms:[],
     roleId:''
   }
-  list:any
+  list:any=[]
   constructor(public RoleManagement:RoleManagementService, ){
 
   }
@@ -33,11 +33,12 @@ export class GroupRolesComponent implements OnInit,OnChanges  {
     
   }
   getcheckedperms(arr:any){
+   
     for(var i = 0; i < arr.length; i++){
+      if (arr[i].checked==true) {
+        this.list.push({'permId':arr[i].id})
+      }
       if(arr[i].children instanceof Array){
-        if (arr[i].checked==true) {
-          this.list.push({'permId':arr[i].permId})
-        }
         this.getcheckedperms(arr[i].children);
       }else{
           console.log(arr[i].children);
@@ -45,12 +46,17 @@ export class GroupRolesComponent implements OnInit,OnChanges  {
   }
 }
   saveData(){
-    this.getcheckedperms(this.listRoles);
-    this.assignRole.perms=this.list
-    this.assignRole.roleId=this.selectedRoleId
+     this.list=[]
+    this.getcheckedperms(this.listRoles.children);
+    this.assignRole.perms=this.list;
+    debugger;
+    console.log("this.assignRole.perms",this.assignRole.perms);
+    
+    this.assignRole.roleId=this.selectedRoleId;
+    console.log ("this.assignRole",this.selectedRoleId)
+   
     this.RoleManagement.assignRolePermissions(this.assignRole).subscribe(res=>{
       console.log(res);
-      
     })
   }
 

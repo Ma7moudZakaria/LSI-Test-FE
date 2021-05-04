@@ -56,7 +56,8 @@ export class RoleManagementViewComponent implements OnInit {
     this.selectedRoleId=roleId
     this.RoleManagement.getRoleDetails(roleId).subscribe(res=>{
       console.log(res);
-      this.listRoleUesrs=res.data.roleUsrs
+      this.listRoleUesrs=res.data.roleUsrs;
+      debugger
       this.selectedRoles=res.data.rolePerms
     })
   }
