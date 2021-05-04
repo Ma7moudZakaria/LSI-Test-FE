@@ -33,7 +33,6 @@ export class AttacheExamTemplateComponent implements OnInit {
   errorMessage?: string;
   successMessage?: string;
   langEnum = LanguageEnum;
-  currentLang = '';
   constructor(private examFormService: ExamFormService, 
     private activeroute: ActivatedRoute,
     public dialog: MatDialog,
@@ -78,7 +77,7 @@ if(this.examFormService.validateQuestion(this.exam.questions)===true)
 else{
  // alert("compelete data")
  this.resultMessage = {
-  message: this.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+  message: this.translate.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
   type: BaseConstantModel.DANGER_TYPE
 }
 }
@@ -95,7 +94,7 @@ else{
     }
     else{
       this.resultMessage = {
-        message:this.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),// this.translate.currentLang === LanguageEnum.en ? "Please complete the missing information" : "برجاء اكمال البيانات",
+        message:this.translate.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),// this.translate.currentLang === LanguageEnum.en ? "Please complete the missing information" : "برجاء اكمال البيانات",
         type: BaseConstantModel.DANGER_TYPE
       }
      }

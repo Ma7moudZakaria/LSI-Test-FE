@@ -38,9 +38,18 @@ export class ExamFormService {
     return this.http.put<BaseResponseModel>(this.AttacheExamTemplateURL,model);
   }
   validateQuestion(questionList:IQuestion[]):boolean{
-    if(questionList.length>0){
-    // if (!questionList.some(e => e.text)||questionList.some(e => e.voiceUrl)){return false}
-    if (!questionList.every(e => e.questionType)){return false}
+    if (questionList.length > 0) {
+    
+      let res1 = questionList.every(ques => {
+        let res = this.validateAnswer(ques.answers,true);
+        if (!res){
+          return false;
+        }
+        return true;
+      });
+    
+      if (!res1) {return false}
+    if (questionList.some(e => !e.text && !e.voiceUrl)){return false}
     if (!questionList.every(e => e.degree)){return false}
     if (!questionList.every(e => e.time)){return false}
     else return true;
@@ -48,11 +57,15 @@ export class ExamFormService {
     else
     return true;
   }
-  validateAnswer(answerList:IAnswer[]):boolean{
-    if(answerList.length>0){
-      // if (!questionList.some(e => e.text)||questionList.some(e => e.voiceUrl)){return false}
-      if (!answerList.every(e => e.text)){return false}
-      // if (!answerList.every(e => e.correct)){return false}
+
+  validateAnswer(answerList:IAnswer[], quesValid:boolean = false):boolean{
+    if (quesValid){
+      if (answerList.length <= 1) {return false}
+    }
+
+    if(answerList.length>=1){
+      // if (answerList.length === 1) {return false}
+      if (answerList.some(e => !e.text)){return false}
       else return true;
       }
       else
