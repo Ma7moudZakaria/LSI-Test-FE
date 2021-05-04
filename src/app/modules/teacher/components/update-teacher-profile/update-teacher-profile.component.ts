@@ -33,6 +33,7 @@ import { IprogramFilterRequest } from 'src/app/core/interfaces/programs-interfac
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
 import { ITeacherProfileInterviewDayLookup } from 'src/app/core/interfaces/teacher-interfaces/iteacher-profile-interview-day-lookup';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-update-teacher-profile',
@@ -60,6 +61,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
   hijri: boolean = false;
   milady: boolean = false;
   higriPinding: any;
+  hijriBirthDateInputParam:NgbDateStruct= {year:0,day:0,month:0};
 
   ProgramsList: IprogramsModel[] = []; ;
   ProgramFilter: IprogramFilterRequest = {};
@@ -140,9 +142,9 @@ export class UpdateTeacherProfileComponent implements OnInit {
   getCitiesLookupByCountry(id?:string){
     let countryId = this.f['country'].value;
     this.lookupService.getCitiesByCountryId(countryId || '').subscribe(res => {
-      this.collectionOfLookup.CITY = res.data;
       if (res.isSuccess) {
-        
+        this.collectionOfLookup.CITY = res.data;
+        this.collectionOfLookup && this.collectionOfLookup.CITY ? this.f.city.setValue(this.collectionOfLookup.CITY[0].id):'';
       }
       else {
         this.resMessage =
@@ -170,7 +172,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           gender: [null, Validators.required],
           mobile: [null, Validators.required],
           nationality: [null, Validators.required],
-          address: [null, Validators.required],
+          // address: [null, Validators.required],
           country: [null, Validators.required],
           city: [null, Validators.required],
           email: [null, Validators.required],
@@ -210,7 +212,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           gender: [null, Validators.required],
           mobile: [null, Validators.required],
           nationality: [null, Validators.required],
-          address: [null, Validators.required],
+          // address: [null, Validators.required],
           country: [null, Validators.required],
           city: [null, Validators.required],
           email: [null, Validators.required],
@@ -281,23 +283,30 @@ export class UpdateTeacherProfileComponent implements OnInit {
       this.f.middleEn.setValue(this.teacherProfileDetails?.mnameEn);
       this.f.familyEn.setValue(this.teacherProfileDetails?.faNameEn);
     }
-    this.f.hijriBirthDate.setValue(this.teacherProfileDetails?.hijriBirthDate)
-    let birthdate = new Date(this.teacherProfileDetails?.hijriBirthDate || '');
-    if (!isNaN(birthdate.getTime())) {
-      this.f.hijriBirthDate.setValue(
-        new Date(birthdate.setDate(birthdate.getDate() + 1))
-          .toISOString()
-          .slice(0, 10)
-      );
-    }
+    // this.f.hijriBirthDate.setValue(this.teacherProfileDetails?.hijriBirthDate)
+    // let birthdate = new Date(this.teacherProfileDetails?.hijriBirthDate || '');
+    // if (!isNaN(birthdate.getTime())) {
+    //   this.f.hijriBirthDate.setValue(
+    //     new Date(birthdate.setDate(birthdate.getDate() + 1))
+    //       .toISOString()
+    //       .slice(0, 10)
+    //   );
+    // }
+
+
+    let date = new Date(this.teacherProfileDetails?.hijriBirthDate || '');
+    // date = date.year + '/' + date.month + '/' + date.day;
+
+    this.hijriBirthDateInputParam = {year : date.getFullYear(), month : date.getMonth() + 1, day:date.getDay()}
 
     this.f.email.setValue(this.teacherProfileDetails?.usrEmail)
     this.f.nationality.setValue(this.teacherProfileDetails?.nationality)
     this.f.country.setValue(this.teacherProfileDetails?.country)
-    this.f.address.setValue(this.teacherProfileDetails?.address)
+    // this.f.address.setValue(this.teacherProfileDetails?.address)
     this.f.city.setValue(this.teacherProfileDetails?.city)
     this.f.email.setValue(this.teacherProfileDetails?.usrEmail)
-    this.f.mobile.setValue(this.teacherProfileDetails?.mobile)
+    // this.f.mobile.setValue(this.teacherProfileDetails?.mobile)
+    this.telInputParam.phoneNumber = this.teacherProfileDetails?.mobile;
     this.f.gender.setValue(this.teacherProfileDetails?.gender)
     this.f.qualifi.setValue(this.teacherProfileDetails?.qualifi)
     this.f.specia.setValue(this.teacherProfileDetails?.specia)
@@ -610,7 +619,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
   }
 
   applyPhoneNumber(phoneNumber: string) {
-    this.f.phoneNumber.setValue(phoneNumber);
+    this.f.mobile.setValue(phoneNumber);
   }
 
   getCountryIsoCode() {
@@ -629,6 +638,8 @@ export class UpdateTeacherProfileComponent implements OnInit {
     date = date.year + '/' + date.month + '/' + date.day;
     console.log("Hijri date", date)
     this.higriPinding = date
+
+    this.f.hijriBirthDate.setValue(date);
   }
 
   addDrgree() {

@@ -152,10 +152,9 @@
                                     <label class="Register__Label " for="hijriBirthDate">
                                         {{ 'UPDATE_TEACHER_PG.HIJRIBIRTHDATE' |translate }}
                                     </label>
-                                       <app-milady-hijri-calendar   (sendDate)="Hijri($event)"  formControlName="hijriBirthDate"
+                                       <app-milady-hijri-calendar   (sendDate)="Hijri($event)" [dateTo]='hijriBirthDateInputParam'
                                        [hijri]="hijri" [milady]="!milady">
                                      </app-milady-hijri-calendar>
-                                     <!-- <p>{{higriPinding}}</p> -->
                                     
                                        <div *ngIf="f.hijriBirthDate.errors && (f.hijriBirthDate.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                            <div *ngIf="f.hijriBirthDate.errors.required">
@@ -199,7 +198,7 @@
                             <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2">
                                 <label class="Register__Label" for="phoneNumber"> {{ 'GENERAL.PHONE_NUMBER' | translate }} </label>
                               
-                                    <app-tel-input  (getPhonNumber)="applyPhoneNumber($event)" formControlName="mobile"
+                                    <app-tel-input  (getPhonNumber)="applyPhoneNumber($event)"
                                     [telInputParam]="telInputParam"></app-tel-input>
 
                                     <div *ngIf="f.mobile.errors && (f.mobile.touched || isSubmit)"
@@ -306,7 +305,7 @@
                                
                                 <div  class="UpdateUser__Options">
                                     <input matInput type="time" placeholder="HH:MM" id="end_time_hour" formControlName="fromTimeinterview">
-                                    <mat-select name="ampm" class="ampm" [(ngModel)]="event.eampm">
+                                    <mat-select name="ampm" class="ampm" [(ngModel)]="event.eampm" [ngModelOptions]="{standalone: true}">
                                          <mat-option value="AM">AM</mat-option>
                                          <mat-option value="PM">PM</mat-option>
                                     </mat-select> 
@@ -326,7 +325,7 @@
                                
                                 <div  class="UpdateUser__Options">
                                     <input matInput type="time" placeholder="HH:MM" id="end_time_hour" formControlName="toTimeinterview">
-                                    <mat-select name="ampm" class="ampm" [(ngModel)]="event.eampm">
+                                    <mat-select name="ampm" class="ampm" [(ngModel)]="event.eampm" [ngModelOptions]="{standalone: true}">
                                          <mat-option value="AM">AM</mat-option>
                                          <mat-option value="PM">PM</mat-option>
                                     </mat-select> 
