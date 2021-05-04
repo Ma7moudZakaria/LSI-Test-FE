@@ -102,6 +102,26 @@ export class UpdateUserProfileComponent implements OnInit {
     })
   }
 
+  getCitiesLookupByCountry(id?:string){
+    // let countryId = this.f['countryCode'].value;
+
+    let countryId = this.profileForm.value.countryCode;
+
+    this.lookupService.getCitiesByCountryId(countryId || '').subscribe(res => {
+      this.collectionOfLookup.CITY = res.data;
+      if (res.isSuccess) {
+        
+      }
+      else {
+        this.resMessage =
+        {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+    });
+  }
+
   setCurrentLang() {
     this.emitHeaderTitle();
     this.languageService.currentLanguageEvent.subscribe(res => {
@@ -123,10 +143,13 @@ export class UpdateUserProfileComponent implements OnInit {
     this.userService.viewUserProfileDetails(id || '').subscribe(res => {
       if (res.isSuccess) {
         this.userProfileDetails = res.data as IUserProfile;
+
         if (!this.userProfileDetails?.proPic) {
           this.userProfileDetails.proPic = '../../../../../assets/images/Profile.svg';
         }
-        this.PopulateForm()
+
+        this.PopulateForm();
+        this.getCitiesLookupByCountry(this.userProfileDetails.countryCode);
       }
       else {
         this.resMessage =
@@ -159,6 +182,7 @@ export class UpdateUserProfileComponent implements OnInit {
         gender: this.profileForm.value.gender,
         mobile: this.profileForm.value.phoneNumber,
         countryCode: this.profileForm.value.countryCode,
+        city:this.profileForm.value.city,
         nationality: this.profileForm.value.nationality,
         eduLevel: this.profileForm.value.educationallevel,
         occupation: this.profileForm.value.occupation,
@@ -258,7 +282,8 @@ export class UpdateUserProfileComponent implements OnInit {
           address: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
           phoneNumber: ['', [Validators.required/*,Validators.pattern(BaseConstantModel.mobilePattern), Validators.minLength(6), Validators.maxLength(16)*/]],
           occupation: [null, Validators.required],
-          countryCode: [null, Validators.required],
+          countryCode: [null, Validators.required],          
+          city: [null, Validators.required],
           quraanMemorization: ['', Validators.required],
           userSheikhs: [],
           userArchives: [],
@@ -282,6 +307,7 @@ export class UpdateUserProfileComponent implements OnInit {
           phoneNumber: ['', [Validators.required, Validators.pattern(BaseConstantModel.mobilePattern)]],
           occupation: [null, Validators.required],
           countryCode: [null, Validators.required],
+          city: [null, Validators.required],
           quraanMemorization: ['', Validators.required],
           userSheikhs: [],
           userArchives: [],
@@ -320,6 +346,7 @@ export class UpdateUserProfileComponent implements OnInit {
     this.f.phoneNumber.setValue(this.userProfileDetails?.mobile);
     this.telInputParam.phoneNumber = this.userProfileDetails?.mobile;
     this.f.countryCode.setValue(this.userProfileDetails?.countryCode);
+    this.f.city.setValue(this.userProfileDetails?.city);
     this.f.quraanMemorization.setValue(this.userProfileDetails?.quraanMemorizeAmount);
     this.fileList = this.userProfileDetails?.ejazaAttachments;
     this.userProfileDetails?.ejazaAttachments.forEach(element => {

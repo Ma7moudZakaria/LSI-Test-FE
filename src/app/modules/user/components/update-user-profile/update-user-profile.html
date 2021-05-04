@@ -253,7 +253,7 @@
                                     translate }} </label>
 
                                 <select class="UpdateUser__Options" name="nameEn" formControlName="countryCode">
-                                    <option *ngFor="let countryItem of collectionOfLookup.COUNTRY"
+                                    <option *ngFor="let countryItem of collectionOfLookup.COUNTRY" (change)="getCitiesLookupByCountry()"
                                         [value]="countryItem.id">
                                         {{ translate.currentLang == langEnum.en ? countryItem.nameEn : countryItem.nameAr}}
                                     </option>
@@ -266,6 +266,27 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2 mt-3">
+                                <label class="Register__Label" for="city"> {{ 'UPDATE_USER_PG.CITY' | translate }}
+                                </label>
+                               
+                                    <select class="UpdateUser__Options" name="nameEn" formControlName="city">
+                                        <option *ngFor="let cityItem of collectionOfLookup.CITY"
+                                            [value]="cityItem.id">
+                                            {{ translate.currentLang == langEnum.en ? cityItem.nameEn : cityItem.nameAr}}
+                                        </option>
+                                    </select>
+
+                                    <div *ngIf="f.city.errors && (f.city.touched || isSubmit)"
+                                        class="alert alert-danger mt-2 mb-2">
+                                        <div *ngIf="f.city.errors.required">
+                                            {{ 'UPDATE_USER_PG.CITY_REQUIRED' | translate }}
+
+                                        </div>
+                                   </div>
+                            </div>
+
                             <div class="col-lg-6 col-md-6 col-sm-2 col-xs-2 mt-3">
                                 <label class="Register__Label" for="address"> {{ 'UPDATE_USER_PG.ADDRESS' | translate }}
                                 </label>

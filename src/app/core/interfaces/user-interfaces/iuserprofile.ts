@@ -1,3 +1,4 @@
+import { BaseLookupModel } from "../../ng-model/base-lookup-model";
 import { IAttachment } from "../attachments-interfaces/iattachment";
 
 export interface IUserProfile {    
@@ -34,7 +35,7 @@ export interface IUserProfile {
     quraanMemorizeAmount?:number;
     ejazaAttachments:IAttachment[];
 
-    usrScientificArchives?:[];
-    usrSheikhs?:[];
-    usrCourses?:[];
+    usrScientificArchives?:BaseLookupModel[];
+    usrSheikhs?:BaseLookupModel[];
+    usrCourses?:BaseLookupModel[];
 }
