@@ -675,7 +675,7 @@ display: none;
   }
 }
 // end mat-dialog-container 
-// foe custom radio buttons
+// for custom radio buttons
 .update_teacher_pg.mat-radio-group {
 
   display: flex;
@@ -690,6 +690,18 @@ display: none;
 .mat-radio-button:lang(en){
   padding-left: 0rem;
   padding-right: 2rem;
+}
+}
+//for custom radio button in  add-question
+.add-question-template {
+  .mat-radio-label-content ,.mat-checkbox-label{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.mat-checkbox-inner-container{
+  margin: 0.5rem;
 }
 }
 
