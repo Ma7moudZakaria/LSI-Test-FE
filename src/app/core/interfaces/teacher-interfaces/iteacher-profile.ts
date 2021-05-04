@@ -1,6 +1,7 @@
 
 import { ITeacherProfileInterviewDayLookup } from "./iteacher-profile-interview-day-lookup";
 import { ITeacherProfileLookup } from "./iteacher-profile-lookup";
+import { ITeacherProfileProgramDegreeLookup } from "./iteacher-profile-program-lookup";
 
 export interface ITeacherProfile{
     
@@ -49,16 +50,16 @@ export interface ITeacherProfile{
     workingPlatForm?:string;
     workingPlatFormAr?:string;
     workingPlatFormEn?:string;
-    degree?:string;
-    degreeAr?:string;
-    degreeEn?:string;
+    // degree?:string;
+    // degreeAr?:string;
+    // degreeEn?:string;
     bankName?:string;
     bankNumber?:string;
     usrName?:string;
     usrEmail?:string;
     proPic?:string;
     ejazaAttachments?:[];
-    teacherPrograms ?: ITeacherProfileLookup[];
+    teacherPrograms ?: ITeacherProfileProgramDegreeLookup[];
     interviewDays ?: ITeacherProfileInterviewDayLookup[];
     rewayats ?: ITeacherProfileLookup[];
     languages ?: ITeacherProfileLookup[];

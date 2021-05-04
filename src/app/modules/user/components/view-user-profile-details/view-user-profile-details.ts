@@ -26,7 +26,7 @@ export class ViewUserProfileDetailsComponent implements OnInit {
   resMessage: BaseMessageModel = {};
   currentLang: LanguageEnum | undefined;
   birthdate: string | undefined;
-  lang = LanguageEnum;
+  langEnum = LanguageEnum;
 
   constructor(
     private router: Router,

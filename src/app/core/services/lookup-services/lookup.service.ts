@@ -11,6 +11,7 @@ export class LookupService {
 
   getAllLookupsUrl = environment.baseUrl + 'Lookups/get-all-lookups';
   getLookupByKeyUrl = environment.baseUrl + 'Lookups/get-lookups-by-keys/';
+  getCitiesByCountryIdUrl = environment.baseUrl + 'Lookups/get-cities-by-country-id/';
 
   constructor(private http:HttpClient) { }
 
@@ -20,5 +21,9 @@ export class LookupService {
 
   getAllLookups():Observable<BaseResponseModel>{
     return this.http.get<BaseResponseModel>(this.getAllLookupsUrl);
+  }
+
+  getCitiesByCountryId(key: string):Observable<BaseResponseModel> {
+    return this.http.get<BaseResponseModel>(this.getCitiesByCountryIdUrl + key);
   }
 }

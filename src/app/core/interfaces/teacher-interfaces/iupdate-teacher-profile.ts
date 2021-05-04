@@ -1,7 +1,7 @@
-import { IprogramsModel } from "../programs-interfaces/iprograms-model";
 import { ITeacherProfileInterviewDay } from "./iteacher-profile-interview-day";
 import { ITeacherProfileLanguage } from "./iteacher-profile-language";
 import { ITeacherProfileProgram } from "./iteacher-profile-program";
+import { ITeacherProfileProgramDegreeLookup } from "./iteacher-profile-program-lookup";
 import { ITeacherProfileRewayat } from "./iteacher-profile-rewayat";
 
 export interface IUpdateTeacherProfile {
@@ -23,7 +23,6 @@ export interface IUpdateTeacherProfile {
     specia?: string;
     eduYear?: string;
     entity?: string;
-    degree?:string;
     agency?:string;
     edulevel?:string;
     isHasQuranExp?: boolean;
@@ -32,7 +31,6 @@ export interface IUpdateTeacherProfile {
     isHasTeachForeignerExp?: boolean;
     isHasEjazaHafz?: boolean;
     isHasEjazaTelawa?: boolean;
-    lang?: string;
     workingPlatForm?: string;
     bankName?: string;
     bankNumber?: string;
@@ -40,5 +38,5 @@ export interface IUpdateTeacherProfile {
     teacherPrograms?: ITeacherProfileProgram[];
     interviewDays?:ITeacherProfileInterviewDay[];
     rewayats?:ITeacherProfileRewayat[];
-    Languages?:ITeacherProfileLanguage[];
+    languages?:ITeacherProfileLanguage[];
 }

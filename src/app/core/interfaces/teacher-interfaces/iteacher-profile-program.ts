@@ -1,3 +1,4 @@
 export interface ITeacherProfileProgram {
-    program?:string;    
+    program?:string;   
+    degree?:string;    
 }

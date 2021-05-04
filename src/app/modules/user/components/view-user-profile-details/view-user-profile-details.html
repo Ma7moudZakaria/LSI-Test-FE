@@ -29,7 +29,7 @@
                     <div class="row">
                        <div class="col-5"></div>
                         <div class="col-5  mt-4  mb-4 border text-center">
-                            <p class="update_item_profile-name">{{ translate.currentLang === lang.en ? userProfileDetails?.fnameEn + " " +  userProfileDetails?.mnameEn + " " + userProfileDetails?.faNameEn : userProfileDetails?.fnameAr+ " " +  userProfileDetails?.mnameAr + " " + userProfileDetails?.fanameAr}} </p>
+                            <p class="update_item_profile-name">{{ translate.currentLang === langEnum.en ? userProfileDetails?.fnameEn + " " +  userProfileDetails?.mnameEn + " " + userProfileDetails?.faNameEn : userProfileDetails?.fnameAr+ " " +  userProfileDetails?.mnameAr + " " + userProfileDetails?.fanameAr}} </p>
                             <p class="brith_date">starts</p>
                             <span class="brith_date">{{ userProfileDetails?.birthdate }}</span>
                         </div>
@@ -60,7 +60,7 @@
                                         <span>  &nbsp; </span>
                                         <span>  &nbsp; </span>
                                         <span class="data_view">
-                                            {{  translate.currentLang === lang.en ? userProfileDetails?.engNatName : userProfileDetails?.arbNatName }}
+                                            {{  translate.currentLang === langEnum.en ? userProfileDetails?.engNatName : userProfileDetails?.arbNatName }}
                                         </span>
                                     </div>
 
@@ -69,7 +69,7 @@
                                         <span>  &nbsp; </span>
                                         <span>  &nbsp; </span>
                                         <span class="data_view">
-                                            {{  translate.currentLang === lang.en ? userProfileDetails?.engCountryName : userProfileDetails?.arbCountryName }}
+                                            {{  translate.currentLang === langEnum.en ? userProfileDetails?.engCountryName : userProfileDetails?.arbCountryName }}
                                         </span>
                                     </div>
 
@@ -78,7 +78,7 @@
                                         <span>  &nbsp; </span>
                                         <span>  &nbsp; </span>
                                         <span class="data_view">
-                                            {{  translate.currentLang === lang.en ? userProfileDetails?.engCityName : userProfileDetails?.arbCityName }}
+                                            {{  translate.currentLang === langEnum.en ? userProfileDetails?.engCityName : userProfileDetails?.arbCityName }}
                                         </span>
                                     </div>
 
@@ -102,7 +102,7 @@
                                         <span>  &nbsp; </span>
                                         <span>  &nbsp; </span>
                                         <span class="data_view">
-                                            {{  translate.currentLang === lang.en ? userProfileDetails?.engEduLevelName : userProfileDetails?.arbEduLevelName }} 
+                                            {{  translate.currentLang === langEnum.en ? userProfileDetails?.engEduLevelName : userProfileDetails?.arbEduLevelName }} 
                                         </span>
                                     </div>
 
@@ -133,7 +133,7 @@
                                             <div class="badges mt-3">
                                                <div class="badge badge-info p-2 " *ngFor="let item of userProfileDetails?.usrSheikhs">
                                                 <div class="d-flex justify-content-between mt-0" >
-                                                    <p class="ellipsis mb-0" matTooltip="fff"> المحفوظات العلميةالمحفوظات العلمية </p>
+                                                    <p class="ellipsis mb-0" matTooltip="fff"> {{translate.currentLang == langEnum.en? item.nameEn : item.nameAr}} </p>
                                                 </div>
                                             </div>
                                             </div>
@@ -149,7 +149,7 @@
                                             <div class="badges mt-3">
                                                <div class="badge badge-info p-2 " *ngFor="let item of userProfileDetails?.usrScientificArchives">
                                                 <div class="d-flex justify-content-between mt-0" >
-                                                    <p class="ellipsis mb-0" matTooltip="fff"> المحفوظات العلميةالمحفوظات العلمية </p>
+                                                    <p class="ellipsis mb-0" matTooltip="fff"> {{translate.currentLang == langEnum.en? item.nameEn : item.nameAr}} </p>
                                                 </div>
                                             </div>
                                             </div>
@@ -165,7 +165,7 @@
                                             <div class="badges mt-3">
                                                <div class="badge badge-info p-2 " *ngFor="let item of userProfileDetails?.usrCourses">
                                                 <div class="d-flex justify-content-between mt-0" >
-                                                    <p class="ellipsis mb-0" matTooltip="fff"> المحفوظات العلميةالمحفوظات العلمية </p>
+                                                    <p class="ellipsis mb-0" matTooltip="fff"> {{translate.currentLang == langEnum.en? item.nameEn : item.nameAr}} </p>
                                                 </div>
                                             </div>
                                             </div>

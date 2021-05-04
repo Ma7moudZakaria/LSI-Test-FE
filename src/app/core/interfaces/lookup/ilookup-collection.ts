@@ -20,5 +20,7 @@ export interface ILookupCollection {
     LANG?: BaseLookupModel[];
     QUALIFI?: BaseLookupModel[];
     SPECIAL?: BaseLookupModel[];
+    REWAYAT?: BaseLookupModel[];
+    AGENCY?: BaseLookupModel[];
     WORKING_PLATFORM?: BaseLookupModel[];//جهه العمل
 }
