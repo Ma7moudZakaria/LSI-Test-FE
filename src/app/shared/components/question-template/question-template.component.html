@@ -43,7 +43,7 @@
 <div class="form-group row answerChick">
   <div *ngIf="questionTemplate.answerType === answerTypeEnum.multiSelect">
     <div *ngFor = 'let answer of questionTemplate.answers'>
-      <mat-checkbox class="example-margin px-5" [checked]="answer.correct">
+      <mat-checkbox class="example-margin px-5" [(ngModel)]="answer.correct" [ngModelOptions]="{standalone: true}">
         <input type="text" class="form-control" [(ngModel)]="answer.text"  aria-label="Text input with checkbox">
       </mat-checkbox>
     </div>
@@ -52,7 +52,7 @@
     <div *ngIf="questionTemplate.answerType === answerTypeEnum.singleSelect">
       <mat-radio-group [(ngModel)]="questionTemplate.correctAnswersByAnswerNumber" class="input-group col-sm-10 ">
         <mat-radio-button *ngFor = 'let answer of questionTemplate.answers' 
-         value="answer.answerNo"class=" px-5" >
+         value="{{answer.answerNo}}"class=" px-5" >
          <input type="text" class="form-control " [(ngModel)]="answer.text"  aria-label="Text input with checkbox">
         </mat-radio-button>
       </mat-radio-group>
