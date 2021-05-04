@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { IAnswer } from '../../interfaces/exam-builder-interfaces/ianswer';
+import { IQuestion } from '../../interfaces/exam-builder-interfaces/iquestion';
 import { IAttacheExamTemplateModel } from '../../interfaces/exam-form-interfaces/iattache-exam-template-model';
 
 import { IExamFormCreatModel } from '../../interfaces/exam-form-interfaces/iexam-form-creat-model';
@@ -35,4 +37,20 @@ export class ExamFormService {
   attachmentsExamTemplate(model:IAttacheExamTemplateModel):Observable<BaseResponseModel>{
     return this.http.put<BaseResponseModel>(this.AttacheExamTemplateURL,model);
   }
+  validateQuestion(questionList:IQuestion[]):boolean{
+    if(questionList.length>0){
+    // if (!questionList.some(e => e.text)||questionList.some(e => e.voiceUrl)){return false}
+    if (!questionList.every(e => e.questionType)){return false}
+    if (!questionList.every(e => e.degree)){return false}
+    if (!questionList.every(e => e.time)){return false}
+    else return true;
+    }
+    else
+    return true;
+  }
+  validateAnswer(answerList:IAnswer[]):boolean{
+    return true;
+  }
+  
+
 }

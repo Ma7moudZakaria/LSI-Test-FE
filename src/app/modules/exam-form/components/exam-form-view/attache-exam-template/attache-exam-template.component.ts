@@ -54,29 +54,51 @@ export class AttacheExamTemplateComponent implements OnInit {
 
   }
   //questin:IQuestion |undefined;
+  //this.exam.questions
   addQuestion() {
+    this.resultMessage = {};
     if (Object.keys(this.exam).length === 0) {
       let id = BaseConstantModel.newGuid();
       this.exam = { id: id, questions: [] }
     }
 
-    let qid = BaseConstantModel.newGuid();
-    let ques: IQuestion =
-    {
-      questionId: qid,
-      questionNo: this.exam?.questions ? this.exam.questions.length + 1 : 1,
-      answers: [],
-      answerType: AnswerTypeEnum.singleSelect
-    }
-    this.exam.questions.push(ques);
+if(this.examFormService.validateQuestion(this.exam.questions)===true)
+{
+  let qid = BaseConstantModel.newGuid();
+  let ques: IQuestion =
+  {
+    questionId: qid,
+    questionNo: this.exam?.questions ? this.exam.questions.length + 1 : 1,
+    answers: [],
+    answerType: AnswerTypeEnum.singleSelect
+  }
+  this.exam.questions.push(ques);
+}
+else{
+ // alert("compelete data")
+ this.resultMessage = {
+  message: this.translate.currentLang === LanguageEnum.en ? "Please complete the missing information" : "برجاء اكمال البيانات",
+  type: BaseConstantModel.DANGER_TYPE
+}
+}
+   
   }
 
   saveExam() {
-    this.submitExam = true;
-    this.isView = true;
-    //  this.examJson = JSON.stringify(this.exam);
-    // console.log(this.examJson);
-    this.saveAttacheExamTemplate();
+    if(this.examFormService.validateQuestion(this.exam.questions)===true){
+      this.submitExam = true;
+      this.isView = true;
+      //  this.examJson = JSON.stringify(this.exam);
+      // console.log(this.examJson);
+      this.saveAttacheExamTemplate();
+    }
+    else{
+      this.resultMessage = {
+        message: this.translate.currentLang === LanguageEnum.en ? "Please complete the missing information" : "برجاء اكمال البيانات",
+        type: BaseConstantModel.DANGER_TYPE
+      }
+     }
+   
   }
 
   /////recording/////
@@ -122,7 +144,7 @@ export class AttacheExamTemplateComponent implements OnInit {
     this.errorMessage = '';
     this.successMessage = '';
     this.resultMessage = {};
-    this.examFormService.attachmentsExamTemplate(this.attacheExamTemplate).subscribe(res => {
+       this.examFormService.attachmentsExamTemplate(this.attacheExamTemplate).subscribe(res => {
       let response = <BaseResponseModel>res;
       if (response.isSuccess) {
         this.resultMessage = {
@@ -145,6 +167,7 @@ export class AttacheExamTemplateComponent implements OnInit {
         }
       }
     )
+ 
   }
 
   confirmDeleteQuestionDialog(question:IQuestion) {
