@@ -1,0 +1,32 @@
+
+@import "./variables";
+.save-btn{
+    background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
+    background:$user-color;
+    border-radius: 12px;
+    opacity: 1;
+    width: 7.5rem;
+    margin: 1rem;
+    padding: 0.5rem;
+    height: 2.31rem;
+    border: none;
+    color: #ffffff;
+    display: block;
+    }
+    .cancel-btn{
+        background: $hint_yellow;
+        border-radius: 12px;
+        opacity: 1;
+        width: auto;
+        min-width: 7rem;
+        padding: 0.5rem;
+        border: none;
+        color: #ffffff;
+        display: block;
+        }
+        .btn_trash{
+            padding: 0.5rem;
+            background: #e9c3c3 ;
+            border-radius: 8px;
+            margin: 0 0.5rem;
+        }
