@@ -11,7 +11,10 @@
             <br>
             <div class="input-group ">
             <div *ngFor = 'let question of exam.questions'>
-              
+              <div class="d-flex ">
+                <a (click)="confirmDeleteQuestionDialog(question)">delete<i class="far fa-trash-alt"></i></a>
+                <!-- <a (click)="loadExam(examForm.id) "> <i class="fas fa-pencil-alt"></i></a>  -->
+               </div>
               <app-question-template [questionTemplate] = 'question'></app-question-template>
             </div>
             </div>
