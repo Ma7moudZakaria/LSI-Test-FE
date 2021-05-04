@@ -14,9 +14,8 @@ const routes: Routes = [
   { path: 'dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule), canActivate: [AuthGuard] },
   { path: 'content-management', loadChildren: () => import('./modules/content-management/content-management.module').then(m => m.ContentManagementModule) },
   { path: 'walk-through', loadChildren: () => import('./modules/walkthrough/walkthrough.module').then(m => m.WalkthroughModule) },
-  { path: 'setting', loadChildren: () => import('./modules/setting/setting.module').then(m => m.SettingModule) },
-
-  
+    { path: 'setting', loadChildren: () => import('./modules/setting/setting.module').then(m => m.SettingModule) },
+    { path: 'exam-form', loadChildren: () => import('./modules/exam-form/exam-form.module').then(m => m.ExamFormModule), canActivate: [AuthGuard] },  
   { path: 'role-management', loadChildren: () => import('./modules/role-management/role-management.module').then(m => m.RoleManagementModule), canActivate: [AuthGuard] },
 ];
 

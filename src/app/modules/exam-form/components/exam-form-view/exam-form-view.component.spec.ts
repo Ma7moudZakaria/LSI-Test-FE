@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SharedMaterialComponent } from './shared-material.component';
+import { ExamFormViewComponent } from './exam-form-view.component';
 
-describe('SharedMaterialComponent', () => {
-  let component: SharedMaterialComponent;
-  let fixture: ComponentFixture<SharedMaterialComponent>;
+describe('ExamFormViewComponent', () => {
+  let component: ExamFormViewComponent;
+  let fixture: ComponentFixture<ExamFormViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SharedMaterialComponent ]
+      declarations: [ ExamFormViewComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SharedMaterialComponent);
+    fixture = TestBed.createComponent(ExamFormViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

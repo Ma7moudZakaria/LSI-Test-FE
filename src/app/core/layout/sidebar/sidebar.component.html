@@ -16,8 +16,9 @@
                             <span class="container__navigation__title">  {{'SIDENAVBAR.DASHBORD' | translate}}  </span>
                     </a>
                 </li>
-                <li class="disabled_sidenav">
-                    <a href="#" class="text-center">
+                <li >
+                    <!-- <a href="#" class="text-center"> -->
+                        <a [routerLink]="['/exam-form/exam-form-view']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/program-icon.png">
                          
                             <span class="container__navigation__title">{{'SIDENAVBAR.MYPROGRAMS' | translate}}</span>
