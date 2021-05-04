@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { IAttachment } from 'src/app/core/interfaces/attachments-interfaces/iattachment';
 import { IFileUpload } from 'src/app/core/interfaces/attachments-interfaces/ifile-upload';
@@ -15,15 +15,16 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 export class VoiceRecordingComponent implements OnInit {
 
   @Output() getVoiceUrl = new EventEmitter<string>();
+  @Input() viewMode : boolean = false;
+  @Input() voiceUrl?:string = '';
   record: any;
   recording = false;
-  url: any;
+  // url: any;
   error: any;
   voiceNoteAttachmentIds: string[] = [];
   fileList: IAttachment[] = [];
   fileUploadModel: IFileUpload[] = [];
   resMessage: BaseMessageModel = {};
-  //===========end record===============
 
   constructor(public domSanitizer: DomSanitizer, private attachmentService: AttachmentsService) { }
 
@@ -92,11 +93,13 @@ export class VoiceRecordingComponent implements OnInit {
     this.attachmentService.upload(files).subscribe(
       (res: any) => {
         Array.from(res.data).forEach((elm: any) => {
-          this.voiceNoteAttachmentIds.push(elm.id);
-          this.fileList.push(elm);
-          this.url = elm.url;
-
-          this.getVoiceUrl.emit(this.url);
+          //this.voiceNoteAttachmentIds.push(elm.id);
+          //this.fileList.push(elm);
+          this.voiceUrl = undefined;
+          setTimeout(()=>{
+            this.voiceUrl = elm.url;
+            this.getVoiceUrl.emit(this.voiceUrl);
+          },500);
         })
         this.fileUploadModel = [];
       }, error => {

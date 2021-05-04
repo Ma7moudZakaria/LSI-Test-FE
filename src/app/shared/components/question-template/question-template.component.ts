@@ -14,6 +14,7 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 })
 export class QuestionTemplateComponent implements OnInit {
   @Input() questionTemplate: IQuestion = { answers: [] };
+  @Input() viewMode: boolean = false;
   answerTypeEnum = AnswerTypeEnum;
   currentLang = '';
   MULTISELECT='';
