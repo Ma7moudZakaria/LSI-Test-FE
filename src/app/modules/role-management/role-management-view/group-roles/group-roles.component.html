@@ -1,0 +1,19 @@
+
+
+
+<div class="col-md-12">
+  <p class="title">  {{'Role_Management.ROLES' | translate }}</p>
+  <div class="row">
+    <app-role class="role" [listRoles]="listRoles" [selectedRoles]="selectedRoles"></app-role>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <button type="button" class="cancel-btn " (click)="cancel()">{{'QUESTION_BANK.CANCEL' | translate}}</button>
+  </div>
+    <div class="col-md-6">
+      <button (click)="saveData()" class="save-btn  "   >{{'QUESTION_BANK.SAVE' | translate}}</button>
+  </div>
+ <!-- {{selectedRoleId | json}} -->
+  </div>
+</div>

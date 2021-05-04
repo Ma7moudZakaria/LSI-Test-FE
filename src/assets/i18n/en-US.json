@@ -378,5 +378,16 @@
     "USER_MANAGEMENT": "User management",
     "ABOUT_HUFFAZ": "About Huffaz",
     "POWER": "Powers"
+  },
+  "Role_Management":{
+    "TITLE": "Groups",
+    "ADD_GROUP": "Add group",
+    "USERS":"User",
+    "ROLES":"Roles",
+    "GROUPNAMEARABIC":"Group name (Arabic)",
+    "CREATENEWGROUP":"Create new group",
+    "GROUPNAMEENGLISH":"Group name (English)"
+    
+
   }
 }

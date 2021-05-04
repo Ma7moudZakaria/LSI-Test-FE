@@ -376,5 +376,15 @@
     "USER_MANAGEMENT": " إدارة المستخدمين",
     "ABOUT_HUFFAZ": "عن حفاظ",
     "POWER": "الصلاحيات"
+  },
+  "Role_Management":{
+    "TITLE": "المجموعات",
+    "ADD_GROUP": "إضافة مجموعة",
+    "USERS":"الافراد",
+    "ROLES":"الصلاحيات",
+    "GROUPNAMEARABIC":"اسم المجموعة (عربي)",
+    "CREATENEWGROUP":"إنشاء مجموعة جديدة",
+    "GROUPNAMEENGLISH":"اسم المجموعة (انجليزي)"
+
   }
 }
