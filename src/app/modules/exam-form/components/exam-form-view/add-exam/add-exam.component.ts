@@ -112,7 +112,6 @@ export class AddExamComponent implements OnInit {
   Submit() {
     this.isSubmit = true;
     this.resultMessage = {};
-    
     if (this.currentForm.valid) {
         this.examFormCreat.arabExamFormNam=this.f.nameAr.value;
         this.examFormCreat.engExamFormNam=this.f.nameEn.value;

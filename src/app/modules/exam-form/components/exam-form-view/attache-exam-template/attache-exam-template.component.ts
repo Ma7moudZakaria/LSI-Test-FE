@@ -47,6 +47,7 @@ export class AttacheExamTemplateComponent implements OnInit {
       this.getAttacheExamTemplate(changes.selectedExamFormId.currentValue.id);
       this.selectedExamFormId.id = changes.selectedExamFormId.currentValue.id;
     }
+    this.getAttacheExamTemplate("");
   }
   addQuestion() {
     this.resultMessage = {};
@@ -113,6 +114,10 @@ else{
           }
         }
       )
+    }
+    else{
+    this.exam = {questions:[]};
+
     }
   }
   saveAttacheExamTemplate() {
