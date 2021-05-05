@@ -277,7 +277,9 @@
     "LANGUAGES_REQUIRED":"In any language is required",
     "WORKING_PLATFORM_REQUIRED":"Working Platform is required",
     "TEACHER_PROGRAMS_REQUIRED":"Program is required",
-    "TEACHER_PROGRAMS_DEGREE_REQUIRED":"Degree is required"
+    "TEACHER_PROGRAMS_DEGREE_REQUIRED":"Degree is required",
+    "ADDRESS": "Permanent residence address",
+    "ADDRESS_REQUIRED": "Address is Required"
   },
   "QUESTION_BANK": {
     "TITLE": "Question Bank",
@@ -387,7 +389,9 @@
     "PROVIDED_SCREEN": "Provided screens",
     "USER_MANAGEMENT": "User management",
     "ABOUT_HUFFAZ": "About Huffaz",
-    "POWER": "Powers"
+    "POWER": "Premissions",
+    "BANK_ACCOUNT":"Our bank accounts",
+    "EXAMS":"Forms of interim and periodic tests"
   },
   "Role_Management":{
     "TITLE": "Groups",

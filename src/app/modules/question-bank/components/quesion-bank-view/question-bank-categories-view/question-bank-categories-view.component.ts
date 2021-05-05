@@ -5,6 +5,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { RoleEnum } from 'src/app/core/enums/role-enum.enum';
+import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { IQuestionBankCategoriesFilter } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-categories-filter-.request';
 import { IQuestionBankCategoriesModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-categories-model';
 import { IQuestionBankCategoryCreatModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-category-creat-model';
@@ -48,6 +50,10 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
   langEnum = LanguageEnum;
   @Input() addCategory = false;
 
+  currentUser: IUser | undefined;
+  role = RoleEnum;
+  isView = true;
+
   constructor(private questionBankCategoryService: QuestionBankCategoryService,
     private activeroute: ActivatedRoute,
     private router: Router, public translate: TranslateService, private fb: FormBuilder, public dialog: MatDialog) {
@@ -56,10 +62,26 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
     });
   }
   ngOnInit(): void {
+    this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     this.getQuestionBankCategories()
     this.buildForm();
     if (this.addCategory === true) { this.getQuestionBankCategories(); }
   }
+
+  viewAddDepartment(){
+    let res = this.currentUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.role.Student.toString() || x.roleNo == this.role.Teacher.toString()); 
+    if (res) {return true}
+
+    return false;
+  }
+
+  viewScientificProblem(){
+    let res = this.currentUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.role.Student.toString()); 
+    if (res) {return true}
+
+    return false;
+  }
+
   ngOnChanges(changes: any) {
     if (this.addCategory == true) { this.getQuestionBankCategories(); }
   }

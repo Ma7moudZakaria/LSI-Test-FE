@@ -5,6 +5,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { RoleEnum } from 'src/app/core/enums/role-enum.enum';
+import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { IQuestionBankQuestionUpdateModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-question-update-model';
 import { IQuestionBankQuestionUpdateOrderBy } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-question-update-order-by';
 import { IQuestionBankQuestionsFilterRequest } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-filter-request';
@@ -38,12 +40,27 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   questionBankQuestionUpdateOrderBy:IQuestionBankQuestionUpdateOrderBy={};
   listOrder?: number[];
 
+  currentUser: IUser | undefined;
+  role = RoleEnum;
+  isView = true;
+
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
      public translate: TranslateService,public dialog: MatDialog) {
       }
 
   ngOnInit(): void {
-    this.getQuestionBankQuestions()
+    this.getQuestionBankQuestions();
+
+    this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
+
+    let res = this.currentUser.usrRoles?.usrRoles?.some(x => x.roleNo == this.role.Student.toString() || x.roleNo == this.role.Teacher.toString());
+
+    if(res == true){
+      this.isView = false;
+    }
+    else{
+      this.isView = true;
+    }
   }
 
   ngOnChanges(changes: any) {

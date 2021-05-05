@@ -4,7 +4,7 @@
 <div class="list-group list-category">
  
   
-  <a (click)="newScientificProblem()"> 
+  <a (click)="newScientificProblem()" *ngIf='viewScientificProblem()'> 
     <span class="link_Add ">  {{ 'QUESTION_BANK.ADD_SCIENTIFIC_PROBLEM' | translate }}
     <img  src="../../../../../../assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
   </span>
@@ -17,7 +17,7 @@
     <img  src="../../../../../../assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
   </span>
 </a> -->
-<ng-container >
+<ng-container *ngIf="!viewAddDepartment()">
   <a (click)="newCatogry()">
     <span class="link_Add ">  {{ 'QUESTION_BANK.ADD_DEPARTMENT' | translate }}
     <img  src="../../../../../../assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >

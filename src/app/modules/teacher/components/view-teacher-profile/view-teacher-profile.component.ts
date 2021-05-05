@@ -39,6 +39,11 @@ export class ViewTeacherProfileComponent implements OnInit {
     this.teacherProfileService.viewTeacherProfileDetails(id || '').subscribe(res => {
       if (res.isSuccess) {
         this.teacherProfileDetails = res.data as ITeacherProfile;
+
+        let birthdate = new Date(this.teacherProfileDetails?.hijriBirthDate || '');
+        if (!isNaN(birthdate.getTime())) {
+          this.teacherProfileDetails.hijriBirthDate = new Date(birthdate.setDate(birthdate.getDate() + 1)).toISOString().slice(0, 10);
+        }
         
         console.log("Teacher Profile Details =========>" , this.teacherProfileDetails)
         
@@ -61,4 +66,7 @@ export class ViewTeacherProfileComponent implements OnInit {
     });
   }
 
+  navEditProf() {
+    this.router.navigateByUrl('/teacher/update-teacher-profile');
+  }
 }
