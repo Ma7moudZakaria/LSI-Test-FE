@@ -70,7 +70,7 @@ if(this.examFormService.validateQuestion(this.exam.questions)===true)
 }
 else{
  this.resultMessage = {
-  message: this.translate.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+  message: this.translate.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE'),
   type: BaseConstantModel.DANGER_TYPE
 }
 }
@@ -84,7 +84,7 @@ else{
     }
     else{
       this.resultMessage = {
-        message:this.translate.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),// this.translate.currentLang === LanguageEnum.en ? "Please complete the missing information" : "برجاء اكمال البيانات",
+        message:this.translate.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE'),// this.translate.currentLang === LanguageEnum.en ? "Please complete the missing information" : "برجاء اكمال البيانات",
         type: BaseConstantModel.DANGER_TYPE
       }
      }
