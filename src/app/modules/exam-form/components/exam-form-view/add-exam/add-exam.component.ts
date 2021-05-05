@@ -15,16 +15,12 @@ import { ExamFormService } from 'src/app/core/services/exam-form-services/exam-f
   styleUrls: ['./add-exam.component.scss']
 })
 export class AddExamComponent implements OnInit {
-  Title?: string;
   examId:string='';
   examForm?: IExamFormsModel ;
   examFormCreat: IExamFormCreatModel = {};
   isAdd:boolean=true;
-  errorMessage?:string;
-  maxDate: any;
    currentForm: FormGroup=new FormGroup({});
    formImport: FormGroup;
-  successMessage?:string;
   isSubmit = false;
   resultMessage:BaseMessageModel = {};
   disableSaveButtons = false;
@@ -115,13 +111,9 @@ export class AddExamComponent implements OnInit {
 
   Submit() {
     this.isSubmit = true;
-    this.errorMessage = '';
-    this.successMessage = '';
     this.resultMessage = {};
     
     if (this.currentForm.valid) {
-
-   
         this.examFormCreat.arabExamFormNam=this.f.nameAr.value;
         this.examFormCreat.engExamFormNam=this.f.nameEn.value;
         this.examFormService.addExamForm(this.examFormCreat).subscribe(res => {

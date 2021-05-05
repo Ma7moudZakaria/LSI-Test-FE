@@ -11,7 +11,6 @@ export class ExamFormViewComponent implements OnInit {
   selectedExamFormId={id:'',arabExamName:'',engExamName:''}; 
   examId:string|undefined;
   inputExamId:string|undefined;
-  @Input() isViewAdd?:boolean; 
    @Input() closeExamForm?:boolean; 
   submitSuccess:boolean=true;
   showAddExamForm = false;

@@ -64,13 +64,12 @@ export class ExamFormService {
     }
 
     if(answerList.length>=1){
-      // if (answerList.length === 1) {return false}
       if (answerList.some(e => !e.text)){return false}
       else return true;
       }
       else
       return true;
   }
-  
+
 
 }
