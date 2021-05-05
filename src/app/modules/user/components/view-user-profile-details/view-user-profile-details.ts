@@ -46,6 +46,11 @@ export class ViewUserProfileDetailsComponent implements OnInit {
     this.userService.viewUserProfileDetails(id).subscribe(res => {
 
       this.userProfileDetails = res.data as IUserProfile;
+
+      let birthdate = new Date(this.userProfileDetails?.birthdate || '');
+      if (!isNaN(birthdate.getTime())) {
+        this.userProfileDetails.birthdate = new Date(birthdate.setDate(birthdate.getDate() + 1)).toISOString().slice(0, 10);
+      }
       
       if (res.isSuccess) {
       }

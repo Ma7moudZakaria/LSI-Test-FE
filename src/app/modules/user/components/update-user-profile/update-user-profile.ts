@@ -3,6 +3,7 @@ import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-date-struct';
 import { TranslateService } from '@ngx-translate/core';
 import { error } from 'selenium-webdriver';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
@@ -36,7 +37,7 @@ export class UpdateUserProfileComponent implements OnInit {
   resMessage: BaseMessageModel = {};
   currentUser: IUser | undefined;
   isSubmit = false;
-  listOfLookupProfile: string[] = ['GENDER', 'EDU_LEVEL', 'NATIONALITY', 'COUNTRY'
+  listOfLookupProfile: string[] = ['GENDER', 'EDU_LEVEL', 'NATIONALITY', 'COUNTRY', 'CITY'
     , 'SCIENTIFIC_ARCHIVES', 'TRAINING_COURSES', 'SYSTEM_SHEIKHS'];
   userProfileDetails = {} as IUserProfile;
   updateUserModel: IUpdateUserProfile = {};
@@ -53,6 +54,11 @@ export class UpdateUserProfileComponent implements OnInit {
   coursesMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
   telInputParam: ITelInputParams = {}
+  higriPinding: any;
+  hijri: boolean = false;
+  milady: boolean = false;
+
+  hijriBirthDateInputParam:NgbDateStruct= {year:0,day:0,month:0};
   // = {
   //   // phoneNumber:'+201062100486',
   //   isRequired : true,
@@ -103,14 +109,15 @@ export class UpdateUserProfileComponent implements OnInit {
   }
 
   getCitiesLookupByCountry(id?:string){
-    // let countryId = this.f['countryCode'].value;
+     let countryId = this.f['countryCode'].value;
 
-    let countryId = this.profileForm.value.countryCode;
+    //let countryId = this.profileForm.value.countryCode;
 
     this.lookupService.getCitiesByCountryId(countryId || '').subscribe(res => {
-      this.collectionOfLookup.CITY = res.data;
+      // this.collectionOfLookup.CITY = res.data;
       if (res.isSuccess) {
-        
+        this.collectionOfLookup.CITY = res.data;
+        this.collectionOfLookup && this.collectionOfLookup.CITY ? this.f.city.setValue(this.collectionOfLookup.CITY[0].id):'';
       }
       else {
         this.resMessage =
@@ -332,14 +339,18 @@ export class UpdateUserProfileComponent implements OnInit {
     this.f.address.setValue(this.userProfileDetails?.address);
     this.f.gender.setValue(this.userProfileDetails?.gender);
     this.f.email.setValue(this.userProfileDetails?.usrEmail);
-    let birthdate = new Date(this.userProfileDetails?.birthdate || '');
-    if (!isNaN(birthdate.getTime())) {
-      this.f.birthdate.setValue(
-        new Date(birthdate.setDate(birthdate.getDate() + 1))
-          .toISOString()
-          .slice(0, 10)
-      );
-    }
+    // let birthdate = new Date(this.userProfileDetails?.birthdate || '');
+    // if (!isNaN(birthdate.getTime())) {
+    //   this.f.birthdate.setValue(
+    //     new Date(birthdate.setDate(birthdate.getDate() + 1))
+    //       .toISOString()
+    //       .slice(0, 10)
+    //   );
+    // }
+    let date = new Date(this.userProfileDetails?.birthdate || '');
+
+    this.hijriBirthDateInputParam = {year : date.getFullYear(), month : date.getMonth() + 1, day:date.getDay()}
+
     this.f.nationality.setValue(this.userProfileDetails?.nationality);
     this.f.occupation.setValue(this.userProfileDetails?.occupation);
     this.f.educationallevel.setValue(this.userProfileDetails?.eduLevel);
@@ -563,5 +574,13 @@ export class UpdateUserProfileComponent implements OnInit {
 
   applyPhoneNumber(phoneNumber: string) {
     this.f.phoneNumber.setValue(phoneNumber);
+  }
+
+  Hijri(date: any) {
+    date = date.year + '/' + date.month + '/' + date.day;
+    console.log("Hijri date", date)
+    this.higriPinding = date
+
+    this.f.birthdate.setValue(date);
   }
 }

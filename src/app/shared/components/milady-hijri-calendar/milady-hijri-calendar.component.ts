@@ -9,8 +9,8 @@ import { NgbModal, NgbDateStruct, NgbDate } from '@ng-bootstrap/ng-bootstrap';
 })
 export class MiladyHijriCalendarComponent implements OnInit {
 
-  dateFrom!: NgbDateStruct;
-  dateTo!: NgbDateStruct;
+  // dateFrom!: NgbDateStruct;
+  @Input() dateTo!: NgbDateStruct;
 
   selectedDateType_Melady = DateType.Gregorian;  // or DateType.Gregorian
   selectedDateType_Hijri = DateType.Hijri;
