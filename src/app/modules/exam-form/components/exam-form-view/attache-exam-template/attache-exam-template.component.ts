@@ -22,7 +22,6 @@ import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/compon
 })
 export class AttacheExamTemplateComponent implements OnInit {
   exam: IExam = { questions: [] };
-  submitExam: boolean = false;
   examJson: string | undefined;
   voiceUrl: string | undefined;
   isView = true;

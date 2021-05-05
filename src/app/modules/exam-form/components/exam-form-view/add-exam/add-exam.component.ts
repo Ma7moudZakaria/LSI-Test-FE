@@ -124,7 +124,7 @@ export class AddExamComponent implements OnInit {
               type: BaseConstantModel.SUCCESS_TYPE
             }
             this. loodExamFormList();
-            this.submitSuccess?.emit(false);//close form after submit is success
+            this.closeExamForm?.emit(false);//close form after submit is success
             this._alertify.success(res.message||"");
           }
           else {
