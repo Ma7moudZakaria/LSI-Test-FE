@@ -49,7 +49,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
       }
 
   ngOnInit(): void {
-    this.getQuestionBankQuestions();
+    this.getQuestionBankQuestions("");
 
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
 
