@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -52,6 +53,8 @@ export class ExamFormService {
     if (questionList.some(e => !e.text && !e.voiceUrl)){return false}
     if (!questionList.every(e => e.degree)){return false}
     if (!questionList.every(e => e.time)){return false}
+   // var listTextQ=questionList[].text;
+  if(this.getDuplicatequestion(questionList).length>0){return false}
     else return true;
     }
     else
@@ -70,6 +73,17 @@ export class ExamFormService {
       else
       return true;
   }
-
+   getDuplicatequestion(arr:IQuestion[]){
+    // var sorted_arr = arr.slice().sort((a, b) => b.text!.localeCompare(a.text!));
+    var sorted_arr = arr.slice().sort((a, b) => a.text! > b.text! && 1 || -1);
+    sorted_arr=sorted_arr.filter(x=>x.text!="");
+    var results = [];
+    for (var i = 0; i < sorted_arr.length - 1; i++) {
+        if (sorted_arr[i + 1].text === sorted_arr[i].text) {
+            results.push(sorted_arr[i]);
+        }
+    }
+    return results;
+}
 
 }
