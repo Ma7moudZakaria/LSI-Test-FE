@@ -24,17 +24,12 @@ export class ExamViewComponent implements OnInit {
   examFormFilter: IExamFormFilter = {};
   isView: boolean = true;
    currentForm: FormGroup=new FormGroup({});
-   formImport: FormGroup;
 @Output() selectedExamFormId= new EventEmitter<{}>();
 @Output() inputExamId= new EventEmitter<string>();
 resultMessage:BaseMessageModel = {};
 langEnum = LanguageEnum;
 @Input() addExamForm=false;
   constructor(private examFormService: ExamFormService,public translate: TranslateService,private fb: FormBuilder,public dialog: MatDialog) {
-      this.formImport = new FormGroup({
-        importFile: new FormControl('', Validators.required)
-      });
-
      }
 
   ngOnInit(): void {
