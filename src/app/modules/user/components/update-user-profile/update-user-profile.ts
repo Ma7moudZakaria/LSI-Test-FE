@@ -37,7 +37,7 @@ export class UpdateUserProfileComponent implements OnInit {
   resMessage: BaseMessageModel = {};
   currentUser: IUser | undefined;
   isSubmit = false;
-  listOfLookupProfile: string[] = ['GENDER', 'EDU_LEVEL', 'NATIONALITY', 'COUNTRY', 'CITY'
+  listOfLookupProfile: string[] = ['GENDER', 'EDU_LEVEL', 'NATIONALITY', 'COUNTRY'
     , 'SCIENTIFIC_ARCHIVES', 'TRAINING_COURSES', 'SYSTEM_SHEIKHS'];
   userProfileDetails = {} as IUserProfile;
   updateUserModel: IUpdateUserProfile = {};
