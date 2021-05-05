@@ -3,28 +3,28 @@
     <div class="form-group row question mt-3 px-2">
     <div class="col-sm-8">
       <label class="label_item_question"> السؤال الاول</label>
-      <app-voice-recording *ngIf="!questionTemplate.text" (getVoiceUrl)="saveVoiceUrl($event)"
+      <!-- <app-voice-recording *ngIf="!questionTemplate.text" (getVoiceUrl)="saveVoiceUrl($event)"
       [viewMode]='viewMode' [voiceUrl]='questionTemplate?.voiceUrl'></app-voice-recording>
       <input type="text" *ngIf="!questionTemplate.voiceUrl" (input)="onQuestionTextChange()" [disabled]='viewMode'
       [(ngModel)]="questionTemplate.text" class="form-control" placeholder="add question">
-
+ -->
 
        
-<!--     
-        <div class="input-group input-sm input_search_voice" *ngIf="!questionTemplate.voiceUrl">
+    
+        <div class="input-group input-sm input_search_voice" >
            <input type="text"
-            *ngIf="!questionTemplate.voiceUrl"
+           *ngIf="!questionTemplate.voiceUrl"
              (input)="onQuestionTextChange()" 
              [disabled]='viewMode'
               [(ngModel)]="questionTemplate.text"
               class="form-control  border-left-transparent border-md " 
               placeholder="add question" >
-              <div class="input-group-prepend">
-                <span class="input-group-text pl-2 pr-2 border-md ">
-                    <img  class="UserLogin_icon_input" src="../../../../assets/images/question/voice.svg">
-                </span>
-            </div>
-      </div>  -->
+
+             
+            <app-voice-recording *ngIf="!questionTemplate.text" (getVoiceUrl)="saveVoiceUrl($event)"
+            [viewMode]='viewMode' [voiceUrl]='questionTemplate?.voiceUrl'></app-voice-recording>
+
+      </div> 
 
 
       
