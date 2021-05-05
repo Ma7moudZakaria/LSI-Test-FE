@@ -50,7 +50,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
   interviewDaysModel: ITeacherProfileInterviewDayLookup = {};
   langEnum = LanguageEnum;
   collectionOfLookup = {} as ILookupCollection;
-  listOfLookupProfile: string[] = ['GENDER', 'EDU_LEVEL', 'NATIONALITY', 'COUNTRY', 'CITY'
+  listOfLookupProfile: string[] = ['GENDER', 'EDU_LEVEL', 'NATIONALITY', 'COUNTRY'
     , 'DEGREE', 'EDU_YEAR', 'INTERVIEW_DAY', 'LANG', 'QUALIFI', 'SPECIAL', 'REWAYAT' , 'AGENCY', 'WORKING_PLATFORM'];
 
   resMessage: BaseMessageModel = {};
