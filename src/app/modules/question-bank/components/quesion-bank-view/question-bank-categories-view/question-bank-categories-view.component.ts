@@ -66,16 +66,22 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
     this.getQuestionBankCategories()
     this.buildForm();
     if (this.addCategory === true) { this.getQuestionBankCategories(); }
-
-    let res = this.currentUser.usrRoles?.usrRoles?.some(x => x.roleNo == this.role.Student.toString());
-
-    if(res == true){
-      this.isView = false;
-    }
-    else{
-      this.isView = true;
-    }
   }
+
+  viewAddDepartment(){
+    let res = this.currentUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.role.Student.toString() || x.roleNo == this.role.Teacher.toString()); 
+    if (res) {return true}
+
+    return false;
+  }
+
+  viewScientificProblem(){
+    let res = this.currentUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.role.Student.toString()); 
+    if (res) {return true}
+
+    return false;
+  }
+
   ngOnChanges(changes: any) {
     if (this.addCategory == true) { this.getQuestionBankCategories(); }
   }

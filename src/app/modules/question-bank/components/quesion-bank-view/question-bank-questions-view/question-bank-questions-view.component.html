@@ -6,7 +6,7 @@
                 {{translate.currentLang===langEnum.en?selectedCategoryId.engCatgName:selectedCategoryId.arabCatgName}}
             </p>
         </div>
-        <div class=" col-3 add_question" *ngIf="isView == true">
+        <div class=" col-3 add_question" *ngIf="isView">
             <a [routerLink]="" (click)="NewQuestion()">
                 <span class="link_Add "> {{ 'QUESTION_BANK.ADD_QUESTION' | translate }}
                     <img src="../../../../../../assets/images/add.svg" class=" cursor-pointer Catogry_Icon_Add">

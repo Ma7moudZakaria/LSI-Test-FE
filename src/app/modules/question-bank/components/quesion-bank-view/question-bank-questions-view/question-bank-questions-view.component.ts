@@ -53,7 +53,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
 
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
 
-    let res = this.currentUser.usrRoles?.usrRoles?.some(x => x.roleNo == this.role.Student.toString());
+    let res = this.currentUser.usrRoles?.usrRoles?.some(x => x.roleNo == this.role.Student.toString() || x.roleNo == this.role.Teacher.toString());
 
     if(res == true){
       this.isView = false;
