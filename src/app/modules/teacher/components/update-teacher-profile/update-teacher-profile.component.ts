@@ -172,7 +172,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           gender: [null, Validators.required],
           mobile: [null, Validators.required],
           nationality: [null, Validators.required],
-          // address: [null, Validators.required],
+          address: [null, Validators.required],
           country: [null, Validators.required],
           city: [null, Validators.required],
           email: [null, Validators.required],
@@ -212,7 +212,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           gender: [null, Validators.required],
           mobile: [null, Validators.required],
           nationality: [null, Validators.required],
-          // address: [null, Validators.required],
+          address: [null, Validators.required],
           country: [null, Validators.required],
           city: [null, Validators.required],
           email: [null, Validators.required],
@@ -302,10 +302,9 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.f.email.setValue(this.teacherProfileDetails?.usrEmail)
     this.f.nationality.setValue(this.teacherProfileDetails?.nationality)
     this.f.country.setValue(this.teacherProfileDetails?.country)
-    // this.f.address.setValue(this.teacherProfileDetails?.address)
+    this.f.address.setValue(this.teacherProfileDetails?.address)
     this.f.city.setValue(this.teacherProfileDetails?.city)
     this.f.email.setValue(this.teacherProfileDetails?.usrEmail)
-    // this.f.mobile.setValue(this.teacherProfileDetails?.mobile)
     this.telInputParam.phoneNumber = this.teacherProfileDetails?.mobile;
     this.f.gender.setValue(this.teacherProfileDetails?.gender)
     this.f.qualifi.setValue(this.teacherProfileDetails?.qualifi)

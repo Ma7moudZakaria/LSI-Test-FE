@@ -278,7 +278,9 @@
     "LANGUAGES_REQUIRED":"بأي لغة مطلوب",
     "WORKING_PLATFORM_REQUIRED":"العمل في المنصه مطلوب",
     "TEACHER_PROGRAMS_REQUIRED":"البرنامج مطلوب",
-    "TEACHER_PROGRAMS_DEGREE_REQUIRED":"الدرجة مطلوب"
+    "TEACHER_PROGRAMS_DEGREE_REQUIRED":"الدرجة مطلوب",
+    "ADDRESS": "عنوان الإقامة الدائم",
+    "ADDRESS_REQUIRED": "العنوان مطلوب"
   },
   "QUESTION_BANK": {
     "TITLE": "بنك الأسئلة",

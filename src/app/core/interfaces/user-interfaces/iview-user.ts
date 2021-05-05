@@ -4,6 +4,7 @@ export interface IViewUser {
     usrEmail?:string;
     mobile?:string;
     birthdate?:string;
+    hijriBirthDate?:string;
     arbNatName?:string;
     engNatName?:string;
 }

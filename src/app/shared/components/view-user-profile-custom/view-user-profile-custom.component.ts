@@ -92,7 +92,13 @@ export class ViewUserProfileCustomComponent implements OnInit {
     this.teacherProfileService.viewTeacherProfileDetails(id || '').subscribe(res => {
       if (res.isSuccess) {
         this.userDetails = res.data as IViewUser;
-        
+
+        console.log("Hijiri Birthdate ======>" , this.userDetails.hijriBirthDate)
+
+        if (this.userDetails?.hijriBirthDate) {
+          let birthdateValue = new Date(this.userDetails.hijriBirthDate || '');
+          this.birthdate = new Date(birthdateValue.setDate(birthdateValue.getDate() + 1)).toISOString().slice(0, 10);
+        }
         console.log("Teacher Profile Details =========>" , this.userDetails)
         
         if (!this.userDetails?.proPic) {
