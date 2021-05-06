@@ -53,8 +53,7 @@ export class ExamFormService {
     if (questionList.some(e => !e.text && !e.voiceUrl)){return false}
     if (!questionList.every(e => e.degree)){return false}
     if (!questionList.every(e => e.time)){return false}
-   // var listTextQ=questionList[].text;
-  if(this.getDuplicatequestion(questionList).length>0){return false}
+  if(this.getDuplicateQuestion(questionList).length>0){return false}
     else return true;
     }
     else
@@ -68,13 +67,13 @@ export class ExamFormService {
 
     if(answerList.length>=1){
       if (answerList.some(e => !e.text)){return false}
+      if(this.getDuplicateAnswer(answerList).length>0){return false}
       else return true;
       }
       else
       return true;
   }
-   getDuplicatequestion(arr:IQuestion[]){
-    // var sorted_arr = arr.slice().sort((a, b) => b.text!.localeCompare(a.text!));
+   getDuplicateQuestion(arr:IQuestion[]){
     var sorted_arr = arr.slice().sort((a, b) => a.text! > b.text! && 1 || -1);
     sorted_arr=sorted_arr.filter(x=>x.text!="");
     var results = [];
@@ -84,6 +83,18 @@ export class ExamFormService {
         }
     }
     return results;
+}
+
+getDuplicateAnswer(arr:IAnswer[]){
+  var sorted_arr = arr.slice().sort((a, b) => a.text! > b.text! && 1 || -1);
+  sorted_arr=sorted_arr.filter(x=>x.text!="");
+  var results = [];
+  for (var i = 0; i < sorted_arr.length - 1; i++) {
+      if (sorted_arr[i + 1].text === sorted_arr[i].text) {
+          results.push(sorted_arr[i]);
+      }
+  }
+  return results;
 }
 
 }

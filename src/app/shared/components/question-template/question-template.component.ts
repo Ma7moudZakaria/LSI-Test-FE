@@ -42,7 +42,7 @@ export class QuestionTemplateComponent implements OnInit {
 }
 else{
   this.resultMessage = {
-   message: this.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+   message: this.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE'),
    type: BaseConstantModel.DANGER_TYPE
  }
 }

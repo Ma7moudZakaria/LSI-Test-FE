@@ -51,7 +51,7 @@
     "MULTI_SELECT":"Multi Select",
     "ADD_QUESTION":"Add Question",
     "ADD_ANSWE":"Add Answer",
-    "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE":"Please complete the missing information or review duplicate data"
+    "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE":"Please complete the missing information and review duplicate data"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
