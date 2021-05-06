@@ -29,9 +29,9 @@ export class SharedMaterialComponent implements OnInit {
   dataPinding: any;
   higriPinding: any;
   MiladyPinding: any;
-  exam : IExam = {questions: []};
-  submitExam : boolean = false;
-  examJson:string | undefined;
+  exam: IExam = { questions: [] };
+  submitExam: boolean = false;
+  examJson: string | undefined;
 
   checked: boolean = false;
   indeterminate: boolean = false;
@@ -44,9 +44,10 @@ export class SharedMaterialComponent implements OnInit {
     isRequired: true,
     countryIsoCode: '{"initialCountry": "sa"}'
   }
-  voiceUrl:string | undefined;
+  passdata: Date = new Date();
+  voiceUrl: string | undefined;
 
-  constructor(public dialog: MatDialog,public domSanitizer: DomSanitizer,private attachmentService: AttachmentsService) { }
+  constructor(public dialog: MatDialog, public domSanitizer: DomSanitizer, private attachmentService: AttachmentsService) { }
 
   ngOnInit(): void {
   }
@@ -126,7 +127,12 @@ export class SharedMaterialComponent implements OnInit {
     { title: 'title CDE', content: 'content CDE', imgPath: '../../../assets/images/mic.svg' },
     { title: 'title EFG', content: 'content EFG', imgPath: '../../../assets/images/book.svg' }
   ]
+  card_scientificProblem = [
+    { question: 'gsgs sfsegf arfawr ', replay: 'gry qr qarq ', question_number: 4150, time: '03-05-1442' },
+    { question: 'aerar ey wywww t', replay: 'content content erfawera ', question_number: 4050, time: '03-05-1442' },
+    { question: 'aerar ey wywww t', replay: 'content se aerfarf content', question_number: 4050, time: '03-05-1442' },
 
+  ]
   /*
    * custome accordion 
    */
@@ -216,27 +222,27 @@ export class SharedMaterialComponent implements OnInit {
     console.log("HijriTOMilady ", hijriDate)
     this.dataPinding = hijriDate
   }
-  
+
   //questin:IQuestion |undefined;
-  addQuestion(){
-    if (Object.keys(this.exam).length === 0){
+  addQuestion() {
+    if (Object.keys(this.exam).length === 0) {
       let id = BaseConstantModel.newGuid();
-      this.exam = { id: id, questions : []}
+      this.exam = { id: id, questions: [] }
     }
     let qid = BaseConstantModel.newGuid();
-    let ques : IQuestion  = {questionId : qid, questionNo : this.exam?.questions?.length + 1 ,answers:[]}
+    let ques: IQuestion = { questionId: qid, questionNo: this.exam?.questions?.length + 1, answers: [] }
     this.exam.questions?.push(ques);
   }
- 
-  saveExam(){
+
+  saveExam() {
     this.submitExam = true;
     this.examJson = JSON.stringify(this.exam);
   }
 
-/////recording/////
-saveVoiceUrl(event:any){
-  this.voiceUrl = event;
-}
-/////end recording////
+  /////recording/////
+  saveVoiceUrl(event: any) {
+    this.voiceUrl = event;
+  }
+  /////end recording////
 }
 

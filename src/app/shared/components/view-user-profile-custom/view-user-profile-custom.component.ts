@@ -53,10 +53,10 @@ export class ViewUserProfileCustomComponent implements OnInit {
 
     let res = this.currentUser.usrRoles?.usrRoles?.some(x => x.roleNo == this.role.Student.toString());
 
-    if(res == true){
+    if (res == true) {
       this.getUserProfile(this.currentUser.id);
     }
-    else{
+    else {
       this.getTeacherProfile(this.currentUser.id);
     }
   }
@@ -93,14 +93,14 @@ export class ViewUserProfileCustomComponent implements OnInit {
       if (res.isSuccess) {
         this.userDetails = res.data as IViewUser;
 
-        console.log("Hijiri Birthdate ======>" , this.userDetails.hijriBirthDate)
+        console.log("Hijiri Birthdate ======>", this.userDetails.hijriBirthDate)
 
         if (this.userDetails?.hijriBirthDate) {
           let birthdateValue = new Date(this.userDetails.hijriBirthDate || '');
           this.birthdate = new Date(birthdateValue.setDate(birthdateValue.getDate() + 1)).toISOString().slice(0, 10);
         }
-        console.log("Teacher Profile Details =========>" , this.userDetails)
-        
+        console.log("Teacher Profile Details =========>", this.userDetails)
+
         if (!this.userDetails?.proPic) {
           this.userDetails.proPic = '../../../../../assets/images/Profile.svg';
         }
@@ -152,10 +152,10 @@ export class ViewUserProfileCustomComponent implements OnInit {
     this.closeNav();
     let res = this.currentUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.role.Student.toString());
 
-    if(res == true){
+    if (res == true) {
       this.router.navigateByUrl('/user/view-user-profile-details');
     }
-    else{
+    else {
       this.router.navigateByUrl('/teacher/view-teacher-profile-details');
     }
   }

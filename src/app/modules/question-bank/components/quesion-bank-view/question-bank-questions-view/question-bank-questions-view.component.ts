@@ -49,7 +49,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
       }
 
   ngOnInit(): void {
-    this.getQuestionBankQuestions();
+    this.getQuestionBankQuestions("");
 
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
 
@@ -70,12 +70,13 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
     this.getQuestionBankQuestions(changes.selectedCategoryId.currentValue.id);
     this.selectedCategoryId.id=changes.selectedCategoryId.currentValue.id;
    }
-  
+   this.getQuestionBankQuestions("");
   }
 
   searchQuestions(text?:string){
     this.questionBankQuestionList=[];
-    this.getQuestionBankQuestions(this.selectedCategoryId.id,text) 
+    this.getQuestionBankQuestions(this.selectedCategoryId.id,text);
+   
   }
 
   getQuestionBankQuestions(CategoryId?:string,text?:string) {
@@ -85,23 +86,28 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
     this.questionBankQuestionFilter.take= 2147483647;
     this.questionBankQuestionFilter.catgyId=CategoryId;
     this.questionBankQuestionFilter.text=text;
-    this.questionBankQuestionService.getQuestionBankQuestionsFilter(this.questionBankQuestionFilter).subscribe(res => {
-      let response = <BaseResponseModel>res;
-      if (response.isSuccess) {
-        this.questionBankQuestionList = response.data;
+    if(CategoryId!=""){
+      this.questionBankQuestionService.getQuestionBankQuestionsFilter(this.questionBankQuestionFilter).subscribe(res => {
+        let response = <BaseResponseModel>res;
+        if (response.isSuccess) {
+          this.questionBankQuestionList = response.data;
+        }
+        else {
+          this.questionBankQuestionList = [];
+          this.filterErrorMessage = response.message;
+        }
+      },
+      error => {
+        this.resultMessage ={
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       }
-      else {
-        this.questionBankQuestionList = [];
-        this.filterErrorMessage = response.message;
-      }
-    },
-    error => {
-      this.resultMessage ={
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
-      }
+      )
     }
-    )
+else{
+  this.questionBankQuestionList = [];
+}
   }
 
   clearFilter(){
