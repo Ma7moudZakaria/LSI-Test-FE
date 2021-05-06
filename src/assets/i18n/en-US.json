@@ -107,7 +107,12 @@
     "Confirm_Delete": "Delete Material",
     "Delete_Message": "Are you sure you want to delete this?",
     "Select_Program": "Please select program",
-    "NO_DATA": "No Data found"
+    "NO_DATA": "No Data found",
+  },
+  "SCIENTIFIC_PROBLEM": {
+    "TIME": "TIME",
+    "QUESTION": "Question",
+    "REPLY": "Replay"
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "Programs",
@@ -144,8 +149,8 @@
     "GENDER_REQUIRED": "Gender is Required",
     "COUNTRY": "Country",
     "COUNTRY_CODE": "Country is Required",
-    "CITY":"City",
-    "CITY_REQUIRED":"City is Required",
+    "CITY": "City",
+    "CITY_REQUIRED": "City is Required",
     "PHONE_NUMBER_REQUIRED": "Phone Number is Required",
     "PHONE_NUMBER_PATTERN": "Please insert phone number correct",
     "PHONE_NUMBER_MAX_LENGTH": "Phone Number sould be less than or equal 16 numbers",
@@ -227,7 +232,7 @@
     "GOVERNMENTAL_ENTITY": "Governmental Entity",
     "NOTGOVERNMENTAL_ENTITY": "Not Governmental Entity",
     "THISFIELD_REQUIRED": "This field is required ",
-    "ENTITY": "Entity",    
+    "ENTITY": "Entity",
     "ENTITY_REQUIRED": "Entity is required",
     "DURATION": "Duration of study per years",
     "IMPROVING_QURAN_WITH_TAJWEED": "Do you have experience in improving the Quran with Tajweed?",
@@ -267,18 +272,18 @@
     "FROM_REQUIRED": "From Time is required",
     "TO": "To Time",
     "TO_REQUIRED": "To Time is required",
-    "AGENCY_REQUIRED":"Learn the Quran is required",
-    "IS_HAS_QURAN_EXP_REQUIRED":"Is has qur'an experience is required",
-    "IS_HAS_TEACH_SUNNA_EXP_REQUIRED":"Is has teach sunna experience is required",
-    "IS_HAS_INTERNET_TEACH_EXP_REQUIRED":"Is has internet teach experience is required",
-    "IS_HAS_TEACH_FOREIGNER_EXP_REQUIRED":"Is has teach foreigner experience is required",
-    "IS_HAS_EJAZA_HAFZ_EXP_REQUIRED":"Is has Ejaza Hafz is required",
-    "IS_HAS_EJAZA_TELAWA_EXP_REQUIRED":"Is has Ejaza Telawa is required",
-    "REWAYATS_REQUIRED":"Any reading is required",
-    "LANGUAGES_REQUIRED":"In any language is required",
-    "WORKING_PLATFORM_REQUIRED":"Working Platform is required",
-    "TEACHER_PROGRAMS_REQUIRED":"Program is required",
-    "TEACHER_PROGRAMS_DEGREE_REQUIRED":"Degree is required",
+    "AGENCY_REQUIRED": "Learn the Quran is required",
+    "IS_HAS_QURAN_EXP_REQUIRED": "Is has qur'an experience is required",
+    "IS_HAS_TEACH_SUNNA_EXP_REQUIRED": "Is has teach sunna experience is required",
+    "IS_HAS_INTERNET_TEACH_EXP_REQUIRED": "Is has internet teach experience is required",
+    "IS_HAS_TEACH_FOREIGNER_EXP_REQUIRED": "Is has teach foreigner experience is required",
+    "IS_HAS_EJAZA_HAFZ_EXP_REQUIRED": "Is has Ejaza Hafz is required",
+    "IS_HAS_EJAZA_TELAWA_EXP_REQUIRED": "Is has Ejaza Telawa is required",
+    "REWAYATS_REQUIRED": "Any reading is required",
+    "LANGUAGES_REQUIRED": "In any language is required",
+    "WORKING_PLATFORM_REQUIRED": "Working Platform is required",
+    "TEACHER_PROGRAMS_REQUIRED": "Program is required",
+    "TEACHER_PROGRAMS_DEGREE_REQUIRED": "Degree is required",
     "ADDRESS": "Permanent residence address",
     "ADDRESS_REQUIRED": "Address is Required"
   },
@@ -391,23 +396,29 @@
     "USER_MANAGEMENT": "User management",
     "ABOUT_HUFFAZ": "About Huffaz",
     "POWER": "Premissions",
-    "BANK_ACCOUNT":"Our bank accounts",
-    "EXAMS":"Forms of interim and periodic tests"
+    "BANK_ACCOUNT": "Our bank accounts",
+    "EXAMS": "Forms of interim and periodic tests"
   },
-  "Role_Management":{
+  "Role_Management": {
     "TITLE": "Groups",
     "ADD_GROUP": "Add group",
-    "USERS":"User",
-    "ROLES":"Roles",
-    "GROUPNAMEARABIC":"Group name (Arabic)",
-    "CREATENEWGROUP":"Create new group",
-    "GROUPNAMEENGLISH":"Group name (English)"
+    "USERS": "User",
+    "ROLES": "Roles",
+    "GROUPNAMEARABIC": "Group name (Arabic)",
+    "CREATENEWGROUP": "Create new group",
+    "GROUPNAMEENGLISH": "Group name (English)"
   },
-  "EXAM_FORM":{
-    "TITLE":"Forms",
-    "FORM_NAME_AR":"Form Name (Arabic)",
-    "FORM_NAME_EN":"Form Name (English)",
-    "EXAM_FORMS":"Exam forms",
-    "ADD_FORM":"Add form"
+  "EXAM_FORM": {
+    "TITLE": "Forms",
+    "FORM_NAME_AR": "Form Name (Arabic)",
+    "FORM_NAME_EN": "Form Name (English)",
+    "EXAM_FORMS": "Exam forms",
+    "ADD_FORM": "Add form",
+    "QUESTION_NUMBER": "Question Number",
+    "ANSWER": "Answer",
+    "ANSWERS": "Answers",
+    "DGREE": "Dgree",
+    "DURATION_ANSWER": "Duration Answer",
+    "RIGHT_ANSWER": "Right Answer"
   }
 }

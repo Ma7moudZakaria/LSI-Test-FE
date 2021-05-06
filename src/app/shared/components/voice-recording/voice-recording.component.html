@@ -1,4 +1,4 @@
-<div style="text-align:center">
+<!-- <div style="text-align:center">
  
 
     <a (click)="initiateRecording()" class="btn btn-primary" *ngIf="!recording && !viewMode"> Start Recording </a>
@@ -8,4 +8,29 @@
           <source [src]="sanitize(voiceUrl)" type="audio/wav">
       </audio>
   
-  </div> 
+  </div>  -->
+ <!-- <div class="input-group-prepend">
+                <span class="input-group-text pl-2 pr-2 border-md ">
+                    <img  class="UserLogin_icon_input" src="../../../../assets/images/question/voice.svg">
+                </span>
+            </div> -->
+<div class="d-flex">
+    <div class="input-group-prepend" *ngIf="!recording && !viewMode">
+        <a class="input-group-text pl-2 pr-2 border-md  "
+        [ngClass]="{'input-group-text_with-audio': voiceUrl}"
+        (click)="initiateRecording()" >
+            <img  class="UserLogin_icon_input" src="../../../../assets/images/question/voiceBlue.svg">
+        </a>
+    </div>
+    <div *ngIf="recording" class="input-group-prepend" >
+        <a class="input-group-text pl-2 pr-2 border-md  "
+        [ngClass]="{'input-group-text_with-audio': voiceUrl}"
+        (click)="stopRecording()" >
+            <img  class="UserLogin_icon_input" src="../../../../assets/images/question/voiceRed.svg">
+        </a>
+
+    </div>
+    <audio controls="" *ngIf="voiceUrl">
+        <source [src]="sanitize(voiceUrl)" type="audio/wav">
+    </audio>  
+ </div>
