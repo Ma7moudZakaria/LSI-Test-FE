@@ -1,4 +1,4 @@
-export interface IscientificProblem {
+export interface IScientificProblem {
     id?:string;
     huffazNo?:number;
     question?:string;

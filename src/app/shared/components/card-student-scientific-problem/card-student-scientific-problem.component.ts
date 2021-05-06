@@ -1,6 +1,6 @@
 import { Data } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
-import { IscientificProblem } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem';
+import { IScientificProblem } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem';
 
 @Component({
   selector: 'app-card-student-scientific-problem',
@@ -10,7 +10,7 @@ import { IscientificProblem } from 'src/app/core/interfaces/scientific-problrm/i
 export class CardStudentScientificProblemComponent implements OnInit {
 
   constructor() { }
-  @Input() scientificProblem: IscientificProblem = {};
+  @Input() scientificProblem: IScientificProblem = {};
 
   ngOnInit(): void {
   }

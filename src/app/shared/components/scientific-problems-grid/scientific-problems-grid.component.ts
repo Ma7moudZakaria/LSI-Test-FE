@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IscientificProblem } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem';
+import { IScientificProblem } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem';
 
 @Component({
   selector: 'app-scientific-problems-grid',
@@ -8,7 +8,7 @@ import { IscientificProblem } from 'src/app/core/interfaces/scientific-problrm/i
 })
 export class ScientificProblemsGridComponent implements OnInit {
 
-  @Input() items: IscientificProblem[] = []
+  @Input() items: IScientificProblem[] = []
   @Input() numberPerRow:number = 3; //default is 3
 
   constructor() { }
