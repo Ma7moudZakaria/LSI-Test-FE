@@ -7,14 +7,19 @@ import { ScientificProblemsComponent } from './components/admin-messaging-view/s
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
   declarations: [AdminMessagingViewComponent, ScientificProblemsComponent],
   imports: [
     CommonModule,
-    AdminMessagingRoutingModule,SharedModule,
-    FormsModule,  ReactiveFormsModule,TranslateModule
+    FormsModule,
+    ReactiveFormsModule,
+    TranslateModule,
+    SharedModule,
+    MatIconModule,
+    AdminMessagingRoutingModule
   ]
 })
 export class AdminMessagingModule { }

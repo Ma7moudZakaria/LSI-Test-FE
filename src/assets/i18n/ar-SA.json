@@ -417,5 +417,8 @@
     "DGREE": "الدرجة",
     "DURATION_ANSWER": "مدة الاجابة",
     "RIGHT_ANSWER": "الاجابه الصحيحه"
+  },
+  "ADMIN_MESSAGING":{
+    "SCIENTIFIC_PROBLEM":"المشكلة الغلمية"
   }
 }

@@ -420,5 +420,8 @@
     "DGREE": "Dgree",
     "DURATION_ANSWER": "Duration Answer",
     "RIGHT_ANSWER": "Right Answer"
+  },
+  "ADMIN_MESSAGING":{
+    "SCIENTIFIC_PROBLEM":"Scientific Problem"
   }
 }
