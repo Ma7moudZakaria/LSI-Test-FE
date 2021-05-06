@@ -1,0 +1,5 @@
+<mat-grid-list cols="{{numberPerRow}}" rowHeight="3:3">
+    <mat-grid-tile *ngFor='let item of items'>
+        <app-card-student-scientific-problem class="card" [scientificProblem]='item'></app-card-student-scientific-problem>
+    </mat-grid-tile>
+  </mat-grid-list>

@@ -1,5 +1,6 @@
 import { Data } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
+import { IScientificProblem } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem';
 
 @Component({
   selector: 'app-card-student-scientific-problem',
@@ -9,10 +10,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CardStudentScientificProblemComponent implements OnInit {
 
   constructor() { }
-  @Input() question: string | undefined;
-  @Input() replay: string | undefined;
-  @Input() question_number: number | undefined;
-  @Input() time: string | undefined;
+  @Input() scientificProblem: IScientificProblem = {};
 
   ngOnInit(): void {
   }

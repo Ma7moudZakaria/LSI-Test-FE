@@ -107,7 +107,7 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
       if (response.isSuccess) {
         this.questionBankCategoryList = response.data;
         if (this.addCategory === false) {
-          this.loadCatogryQuiestion(this.questionBankCategoryList[0].id, this.questionBankCategoryList[0].arabCatgName, this.questionBankCategoryList[0].engCatgName);
+          this.loadCatogryQuiestion(this.questionBankCategoryList[0]?.id, this.questionBankCategoryList[0]?.arabCatgName, this.questionBankCategoryList[0]?.engCatgName);
           this.selectedIndex = 0;
         }
 

@@ -22,31 +22,14 @@ export class ExamViewComponent implements OnInit {
   filterErrorMessage?:string;
   examFormsList: IExamFormsModel[] = []; 
   examFormFilter: IExamFormFilter = {};
-  position: string="";
   isView: boolean = true;
-  title?: string;
-  examFormId:string='';
-  examForms?: IExamFormsModel ;
-  examFormCreat: IExamFormCreatModel = {};
-  isAdd:boolean=true;
-  errorMessage?:string;
    currentForm: FormGroup=new FormGroup({});
-   formImport: FormGroup;
-  successMessage?:string;
-  isSubmit = false;
 @Output() selectedExamFormId= new EventEmitter<{}>();
 @Output() inputExamId= new EventEmitter<string>();
 resultMessage:BaseMessageModel = {};
-disableSaveButtons = false;
 langEnum = LanguageEnum;
 @Input() addExamForm=false;
-  constructor(private examFormService: ExamFormService,
-    private activeroute: ActivatedRoute, 
-    private router: Router, public translate: TranslateService,private fb: FormBuilder,public dialog: MatDialog) {
-      this.formImport = new FormGroup({
-        importFile: new FormControl('', Validators.required)
-      });
-
+  constructor(private examFormService: ExamFormService,public translate: TranslateService,private fb: FormBuilder,public dialog: MatDialog) {
      }
 
   ngOnInit(): void {
@@ -70,28 +53,24 @@ langEnum = LanguageEnum;
   }
   getExamForms(name?:string) {
     this.isView=true;
-    this.examFormId="";
-    this.filterErrorMessage = "";
     this.examFormFilter.examFormNam=name || '';
     this.examFormFilter.skip=0;
     this.examFormFilter.take= 2147483647;
+    this.resultMessage = {};
     this.examFormService.getExamFormFilter(this.examFormFilter).subscribe(res => {
       let response = <BaseResponseModel>res;
-      if (response.isSuccess) {
         this.examFormsList = response.data;
-        if(this.addExamForm===false)
-        {this.loadExamn(this.examFormsList[0].id,this.examFormsList[0].arabExamFormNam,this.examFormsList[0].engExamFormNam);
-          this.selectedIndex=0;
+          if(this.addExamForm===false)
+          {this.loadExams(this.examFormsList[0]?.id,this.examFormsList[0]?.arabExamFormNam,this.examFormsList[0]?.engExamFormNam);
+            this.selectedIndex=0;
         }
-        
-      }
-      else {
-        this.examFormsList = [];
-        this.filterErrorMessage = response.message;
-      }
+      
     },
       error => {
-        console.log(error);
+        this.resultMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       }
     )
   }
@@ -102,7 +81,7 @@ langEnum = LanguageEnum;
     this.getExamForms();
   }
   selectedIndex?:Number;
-  loadExamn(id?:string,arabExamName?:string,engExamName?:string){
+  loadExams(id?:string,arabExamName?:string,engExamName?:string){
     this.selectedExamFormId.emit({id:id,arabExamName:arabExamName,engExamName:engExamName});
   }
   

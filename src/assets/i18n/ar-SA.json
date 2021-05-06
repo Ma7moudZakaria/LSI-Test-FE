@@ -47,10 +47,11 @@
     "ENGLISH_FIELD": "هذا الحقل يجب أن يكون باللغة الإنجليزية",
     "ADD": "إضافة",
     "CANCEL": "إلغاء",
-    "CHOICES": "إختيارات",
-    "MULTI_SELECT": "اختيارات متعددة",
-    "ADD_QUESTION": "إضافة سؤال",
-    "ADD_ANSWE": "إضافة إجابه"
+    "CHOICES":"إختيارات",
+    "MULTI_SELECT":"اختيارات متعددة",
+    "ADD_QUESTION":"إضافة سؤال",
+    "ADD_ANSWE":"إضافة إجابه",
+    "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE": " برجاء اكمال البيانات و مراجعة البيانات المكررة"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",

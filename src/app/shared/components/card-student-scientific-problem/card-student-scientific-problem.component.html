@@ -2,7 +2,7 @@
     <div class="card_header">
     <span> {{'SCIENTIFIC_PROBLEM.TIME' | translate}}</span>
     <span>
-     {{time}}
+     {{scientificProblem.createdOn}}
     </span>
     <span>
       <i class="far fa-trash-alt"></i>
@@ -12,16 +12,16 @@
     <div class="card_body">
       <div class="body_header">
         <span class="bold">{{'SCIENTIFIC_PROBLEM.QUESTION' | translate}}</span>
-        <span class="bold">{{question_number}}</span>
+        <span class="bold">{{scientificProblem.huffazNo}}</span>
       </div>
      
-    <p>{{question}}</p>
+    <p>{{scientificProblem.question}}</p>
       <div class="body_header">
       <span>{{'SCIENTIFIC_PROBLEM.REPLY' | translate}}</span>
 
       </div>
       <p class="bold">
-        {{replay}}
+        {{scientificProblem.reply}}
       </p>
     </div>
 

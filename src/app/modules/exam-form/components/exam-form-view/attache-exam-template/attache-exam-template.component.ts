@@ -22,16 +22,12 @@ import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/compon
 })
 export class AttacheExamTemplateComponent implements OnInit {
   exam: IExam = { questions: [] };
-  submitExam: boolean = false;
   examJson: string | undefined;
   voiceUrl: string | undefined;
   isView = true;
   attacheExamTemplate: IAttacheExamTemplateModel = {};
   @Input() selectedExamFormId = { id: '', arabExamName: '', engExamName: '' };
   resultMessage: BaseMessageModel = {};
-  filterErrorMessage?: string;
-  errorMessage?: string;
-  successMessage?: string;
   langEnum = LanguageEnum;
   constructor(private examFormService: ExamFormService, 
     private activeroute: ActivatedRoute,
@@ -51,10 +47,8 @@ export class AttacheExamTemplateComponent implements OnInit {
       this.getAttacheExamTemplate(changes.selectedExamFormId.currentValue.id);
       this.selectedExamFormId.id = changes.selectedExamFormId.currentValue.id;
     }
-
+    this.getAttacheExamTemplate("");
   }
-  //questin:IQuestion |undefined;
-  //this.exam.questions
   addQuestion() {
     this.resultMessage = {};
     if (Object.keys(this.exam).length === 0) {
@@ -75,9 +69,8 @@ if(this.examFormService.validateQuestion(this.exam.questions)===true)
   this.exam.questions.push(ques);
 }
 else{
- // alert("compelete data")
  this.resultMessage = {
-  message: this.translate.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+  message: this.translate.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE'),
   type: BaseConstantModel.DANGER_TYPE
 }
 }
@@ -86,15 +79,12 @@ else{
 
   saveExam() {
     if(this.examFormService.validateQuestion(this.exam.questions)===true){
-      this.submitExam = true;
       this.isView = true;
-      //  this.examJson = JSON.stringify(this.exam);
-      // console.log(this.examJson);
       this.saveAttacheExamTemplate();
     }
     else{
       this.resultMessage = {
-        message:this.translate.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),// this.translate.currentLang === LanguageEnum.en ? "Please complete the missing information" : "برجاء اكمال البيانات",
+        message:this.translate.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE'),// this.translate.currentLang === LanguageEnum.en ? "Please complete the missing information" : "برجاء اكمال البيانات",
         type: BaseConstantModel.DANGER_TYPE
       }
      }
@@ -111,23 +101,11 @@ else{
     this.isView = false;
   }
   getAttacheExamTemplate(examId?: string) {
-    this.filterErrorMessage = "";
     this.resultMessage = {};
-
     if (examId) {
       this.examFormService.getExamFormDetails(examId).subscribe(res => {
-
-        if (res.isSuccess) {
-          // response.data=<IExamFormsModel> response.data;
-          // this.exam=response.data.examTemplate;
           this.exam = res.data as IExam;
           this.exam.questions = res.data.examTemplate ? JSON.parse(res.data.examTemplate) : [];
-          // this.examJson = JSON.stringify(response.data.examTemplate);
-        }
-        else {
-          this.examJson = "";
-          this.filterErrorMessage = res.message;
-        }
       },
         error => {
           this.resultMessage = {
@@ -137,12 +115,14 @@ else{
         }
       )
     }
+    else{
+    this.exam = {questions:[]};
+
+    }
   }
   saveAttacheExamTemplate() {
     this.attacheExamTemplate.id = this.selectedExamFormId.id;
     this.attacheExamTemplate.examTemplate = JSON.stringify(this.exam.questions);
-    this.errorMessage = '';
-    this.successMessage = '';
     this.resultMessage = {};
        this.examFormService.attachmentsExamTemplate(this.attacheExamTemplate).subscribe(res => {
       let response = <BaseResponseModel>res;
@@ -181,7 +161,6 @@ else{
     });
     dialogRef.afterClosed().subscribe(dialogResult => {
       if (dialogResult == true) {
-        // let question = this.exam.questions.filter(q => q.questionNo == no)[0];
         const index = this.exam.questions.indexOf(question);
         if (index > -1){
           this.exam.questions.splice(index,1);
