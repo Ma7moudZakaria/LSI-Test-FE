@@ -9,7 +9,8 @@ import { IScientificProblem } from 'src/app/core/interfaces/scientific-problrm/i
 export class ScientificProblemsGridComponent implements OnInit {
 
   @Input() items: IScientificProblem[] = []
-  @Input() numberPerRow:number = 3; //default is 3
+  @Input() numberPerRow: number = 3; //default is 3
+  @Input() selectComponent: string | undefined;
 
   constructor() { }
 

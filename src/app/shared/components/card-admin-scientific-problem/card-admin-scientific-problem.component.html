@@ -1,14 +1,14 @@
 <div class="card-admin-scientific-problem">
     <div class="card_header">
       <section class="example-section">
-        <mat-checkbox class="example-margin">00000</mat-checkbox>
+        <mat-checkbox class="example-margin">{{scientificProblem.huffazNo}}</mat-checkbox>
       </section>
     
     <div>
       <span>{{'SCIENTIFIC_PROBLEM.TIME_QUESTION' | translate}} </span>
       <span>&nbsp;</span>
       <span>&nbsp;</span>
-      <span > 03-05-1442 </span> 
+      <span> {{scientificProblem.createdOn}}</span> 
     </div>
     
     </div>
@@ -17,9 +17,9 @@
       <div class="d-flex justify-content-between mb-3">
       <img class="img_user" src="../../../../../assets/images/profile1.png">
       <div class="mt-4">
-        <p class="name_user bold mb-0">سيف الدين ابراهيم</p>
-        <p class="program_user bold mb-0 ">اسم البرنامج</p>
-        <p class="daily_work mb-0">الواجب اليومي - يوم 1</p>
+        <p class="name_user bold mb-0">{{scientificProblem.usrId}}</p>
+        <p class="program_user bold mb-0 ">{{scientificProblem.progId}}</p>
+        <p class="daily_work mb-0">{{scientificProblem.day}}</p>
       </div>
       <div><a> <img src="../../../../../assets/images/chat.svg"></a></div>
       </div>
