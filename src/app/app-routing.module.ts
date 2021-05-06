@@ -16,7 +16,7 @@ const routes: Routes = [
     { path: 'setting', loadChildren: () => import('./modules/setting/setting.module').then(m => m.SettingModule) },
     { path: 'exam-form', loadChildren: () => import('./modules/exam-form/exam-form.module').then(m => m.ExamFormModule), canActivate: [AuthGuard] },  
   { path: 'role-management', loadChildren: () => import('./modules/role-management/role-management.module').then(m => m.RoleManagementModule), canActivate: [AuthGuard] },
-  { path: 'admin_messaging', loadChildren: () => import('./modules/admin_messaging/admin-messaging-routing.module').then(m => m.AdminMessagingRoutingModule) ,canActivate: [AuthGuard] },
+  { path: 'admin-messaging', loadChildren: () => import('./modules/admin-messaging/admin-messaging.module').then(m => m.AdminMessagingModule) ,canActivate: [AuthGuard] },
 ];
 
 @NgModule({
