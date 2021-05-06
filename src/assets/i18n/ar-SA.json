@@ -51,7 +51,7 @@
     "MULTI_SELECT":"اختيارات متعددة",
     "ADD_QUESTION":"إضافة سؤال",
     "ADD_ANSWE":"إضافة إجابه",
-    "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE": " برجاء اكمال البيانات أو مراجعة البيانات المكررة"
+    "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE": " برجاء اكمال البيانات و مراجعة البيانات المكررة"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
