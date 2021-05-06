@@ -9,14 +9,14 @@
         </div>
         <div>
             <ul>
-                <li>
+                <li *ngIf="roleService.isAdminOrStudentOrTeacher()">
                     <a [routerLink] = "['/dashboard']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/Dashboard-icon.png">
                            
                             <span class="container__navigation__title">  {{'SIDENAVBAR.DASHBORD' | translate}}  </span>
                     </a>
                 </li>
-                <li >
+                <li *ngIf="roleService.isAdminOrStudentOrTeacher()" >
                     <!-- <a href="#" class="text-center"> -->
                     <a href="#" class="text-center">
                         <img src="../../../../assets/images/sidebar/program-icon.png">
@@ -24,49 +24,49 @@
                             <span class="container__navigation__title">{{'SIDENAVBAR.MYPROGRAMS' | translate}}</span>
                     </a>
                 </li>
-                <li>
+                <li *ngIf="roleService.isAdminOrStudent()">
                     <a [routerLink] = "['/scientific-material/scientific-material-view']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/scientific-articles-icon.png">
 
                         <span class="container__navigation__title">{{'SIDENAVBAR.SCIENTIFIC_ARTICLES' | translate}}</span>
                     </a>
                 </li>
-                <li class="disabled_sidenav">
+                <li class="disabled_sidenav" *ngIf="roleService.isAdminOrStudentOrTeacher()">
                     <a href="#">
                         <img src="../../../../assets/images/sidebar/message-icon.png">
 
                         <span class="container__navigation__title">{{'SIDENAVBAR.VACATION_REQUEST' | translate}}</span>
                     </a>
                 </li>
-                <li class="disabled_sidenav">
+                <li class="disabled_sidenav" *ngIf="roleService.isAdminOrStudent()">
                     <a href="#">
                         <img src="../../../../assets/images/sidebar/student-icon.png">
 
                          <span class="container__navigation__title">{{'SIDENAVBAR.EXAM_RESULTS' | translate}}</span>
                     </a>
                 </li>
-                <li class="disabled_sidenav">
+                <li class="disabled_sidenav" *ngIf="roleService.isAdminOrStudentOrTeacher()">
                     <a href="#">
                         <img src="../../../../assets/images/sidebar/teacher-icon.png">
                        
                         <span class="container__navigation__title">{{'SIDENAVBAR.WITHDRAWAL_REQUESTS' | translate}}</span>
                     </a>
                 </li>
-                <li class="">
+                <li class="" *ngIf="roleService.isAdmin()">
                     <a [routerLink]="['/setting/setting-dashboard']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/setting-icon.png">
 
                          <span class="container__navigation__title">{{'SIDENAVBAR.SETTINGS' | translate}}</span>
                     </a>
                 </li>
-                <li class="disabled_sidenav">
+                <li class="disabled_sidenav" *ngIf="roleService.isAdmin()">
                     <a href="#">
                         <img src="../../../../assets/images/sidebar/reviews-icon.png">
 
                         <span class="container__navigation__title">{{'SIDENAVBAR.MY_MESSAGES' | translate}}</span>
                     </a>
                 </li>
-                <li>
+                <li *ngIf="roleService.isAdminOrStudentOrTeacher()"> 
                     <a [routerLink]="['/question-bank/question-bank-view']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/questions-bank-icon.png">
  
