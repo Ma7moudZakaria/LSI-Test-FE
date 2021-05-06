@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminMessagingViewComponent } from './components/admin-messaging-view.component';
+import { AdminMessagingViewComponent } from './components/admin-messaging-view/admin-messaging-view.component';
 
 const routes: Routes = [
   {
