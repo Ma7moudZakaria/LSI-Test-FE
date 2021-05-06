@@ -11,13 +11,13 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      { path: 'user-requests-view', component: UserRequestsViewComponent},
+      { path: 'user-requests-view', component: UserRequestsViewComponent}
       // { path: 'user-requests-categories-view', component: UserRequestsCategoriesViewComponent},
       // { path: 'user-scientific-problem', component: UserScientificProblemComponent},
       // { path: 'user-join-requests', component: UserJoinRequestsComponent},
       // { path: 'user-withdrawal-requests', component: UserWithdrawalRequestsComponent},
      ],
-  },
+  }
 
 ];
 
