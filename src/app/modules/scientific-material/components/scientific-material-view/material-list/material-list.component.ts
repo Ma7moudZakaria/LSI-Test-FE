@@ -37,9 +37,9 @@ export class MaterialListComponent implements OnInit {
     public translate: TranslateService) { }
 
   ngOnInit(): void {
-    this.loadMaterialCategories();
+   this.loadMaterialCategories();
 
-    this.loadProgramMaterial();
+  //  this.loadProgramMaterial();
   }
   ngOnChanges(changes: any) {
 
@@ -50,24 +50,31 @@ export class MaterialListComponent implements OnInit {
     }
     else if (changes.refreshMaterialId)
       this.refreshMaterialId = changes.refreshMaterialId.currentValue;
+else{this.materialFilter.programs =""}
     this.loadProgramMaterial();
+    
+  
 
   }
   loadProgramMaterial() {
     this.materialFilter.skip = 0;
     this.materialFilter.take = 2147483647;
-    this.scientifcMaterialService.getScientificMateriaFilter(this.materialFilter).subscribe(
-      (res: BaseResponseModel) => {
-        this.materials = res.data as IScientificMaterialGrid[];
-
-      }, error => {
-        // console.log(error);
-        this.resMessage = {
-          message: error,
-          type: BaseConstantModel.DANGER_TYPE
-        }
-        this.clearMessage();
-      })
+    if( this.materialFilter.programs !=""){
+      this.scientifcMaterialService.getScientificMateriaFilter(this.materialFilter).subscribe(
+        (res: BaseResponseModel) => {
+          this.materials = res.data as IScientificMaterialGrid[];
+  
+        }, error => {
+          // console.log(error);
+          this.resMessage = {
+            message: error,
+            type: BaseConstantModel.DANGER_TYPE
+          }
+          this.clearMessage();
+        })
+    }
+    else{  this.materials=[]}
+   
   }
   loadMaterial(materialId?: string) {
     this.materialId?.emit(materialId);

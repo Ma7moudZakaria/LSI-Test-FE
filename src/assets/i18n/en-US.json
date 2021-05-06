@@ -47,10 +47,11 @@
     "ENGLISH_FIELD": "This field must be in English",
     "ADD": "Add",
     "CANCEL": "Cancel",
-    "CHOICES": "Choices",
-    "MULTI_SELECT": "Multi Select",
-    "ADD_QUESTION": "Add Question",
-    "ADD_ANSWE": "Add Answer"
+    "CHOICES":"Choices",
+    "MULTI_SELECT":"Multi Select",
+    "ADD_QUESTION":"Add Question",
+    "ADD_ANSWE":"Add Answer",
+    "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE":"Please complete the missing information or review duplicate data"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
