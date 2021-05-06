@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Role, RoleManagementFilter, RoleUsrs } from 'src/app/core/interfaces/role-management-interfaces/role-management';
+import { AssignUserModel, Role, RoleManagementFilter, RoleUsrs } from 'src/app/core/interfaces/role-management-interfaces/role-management';
 import { RoleManagementService } from 'src/app/core/services/role-management/role-management.service';
 
 @Component({
@@ -11,10 +11,15 @@ import { RoleManagementService } from 'src/app/core/services/role-management/rol
 export class RoleManagementViewComponent implements OnInit {
   showtap:string='ROLES';
   listRoleUesrs:RoleUsrs[]=[]
-  listRolesPermissions:[]=[]
+  listRolesPermissions:[]=[];
+  UsersNotBelongToRole:[]=[]
   showAddGroupform:boolean=false
   selectedRoleId:string="";
   selectedRoles:any
+  assignUser:AssignUserModel={
+    roleId:'',
+    usrs:[]
+  }
 
   constructor(
     public RoleManagement:RoleManagementService,
@@ -55,16 +60,32 @@ export class RoleManagementViewComponent implements OnInit {
   getRoleDetails(roleId:string){
     this.selectedRoleId=roleId
     this.RoleManagement.getRoleDetails(roleId).subscribe(res=>{
-      console.log(res);
       this.listRoleUesrs=res.data.roleUsrs;
-      debugger
       this.selectedRoles=res.data.rolePerms
     })
+    this.getUserNotBelongToRole(this.selectedRoleId)
   }
   getPermissionsTreeView(){
     this.RoleManagement.getPermissionsTreeView().subscribe(res=>{
       this.listRolesPermissions=res.data
     })
+  }
+
+  getUserNotBelongToRole(RoleId:string){
+    this.RoleManagement.getUsersNotBelongToRole(RoleId).subscribe(res=>{
+      this.UsersNotBelongToRole=res.data
+    })
+  }
+
+  addUserToRole(event:any){
+    this.assignUser.roleId=this.selectedRoleId;
+    debugger
+  this.assignUser.usrs.push({usrId:event.usrId});
+    this.RoleManagement.assignUserRole(this.assignUser).subscribe(res=>{
+      console.log(res);
+      
+    })
+
   }
 
 

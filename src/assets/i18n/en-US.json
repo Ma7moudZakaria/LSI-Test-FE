@@ -400,7 +400,8 @@
     "ROLES":"Roles",
     "GROUPNAMEARABIC":"Group name (Arabic)",
     "CREATENEWGROUP":"Create new group",
-    "GROUPNAMEENGLISH":"Group name (English)"
+    "GROUPNAMEENGLISH":"Group name (English)",
+    "INDIVIDUALS":"Individuals"
   },
   "EXAM_FORM":{
     "TITLE":"Forms",
@@ -408,5 +409,6 @@
     "FORM_NAME_EN":"Form Name (English)",
     "EXAM_FORMS":"Exam forms",
     "ADD_FORM":"Add form"
+    
   }
 }

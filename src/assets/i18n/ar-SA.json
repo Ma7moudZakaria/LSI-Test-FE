@@ -398,8 +398,8 @@
     "ROLES":"الصلاحيات",
     "GROUPNAMEARABIC":"اسم المجموعة (عربي)",
     "CREATENEWGROUP":"إنشاء مجموعة جديدة",
-    "GROUPNAMEENGLISH":"اسم المجموعة (انجليزي)"
-
+    "GROUPNAMEENGLISH":"اسم المجموعة (انجليزي)",
+    "INDIVIDUALS":"الافراد"
   },
   "EXAM_FORM":{
     "TITLE": "النماذج",
@@ -407,5 +407,6 @@
     "FORM_NAME_EN":"اسم النموذج (إنجليزي)",
     "EXAM_FORMS":"نماذج الإختبار",
     "ADD_FORM":"إضافة نموذج"
+   
   }
 }

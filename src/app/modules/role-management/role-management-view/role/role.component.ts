@@ -46,13 +46,15 @@ export class RoleComponent implements OnInit, OnChanges {
   }
 
   restTree(arr: any) {
-    for (var i = 0; i < arr.length; i++) {
-      if (arr[i].children instanceof Array) {
-        arr[i].checked = false;
-        arr[i].show = true;
-        this.selected(arr[i].children);
-      } else {
-        console.log(arr[i].children);
+    if (arr&&arr.length>0) {
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i].children instanceof Array) {
+          arr[i].checked = false;
+          arr[i].show = true;
+          this.selected(arr[i].children);
+        } else {
+          console.log(arr[i].children);
+        }
       }
     }
   }

@@ -23,3 +23,18 @@ export interface AssignRoleModel{
     roleId: string,
   perms: []
 }
+export interface AssignUserModel{
+    roleId: string,
+    usrs: AssignUserList[]
+}
+export interface AssignUserList{
+    usrId:string
+}
+
+export interface UserSreach{
+    usrAvatarUrl:null,
+    usrEmail:string,
+    usrId:string,
+    enUsrName:string,
+    arUsrName:string
+}

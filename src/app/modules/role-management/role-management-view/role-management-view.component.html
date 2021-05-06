@@ -18,7 +18,7 @@
          
            <div class="row">
                 <app-group-roles style="width: 100%;" [selectedRoleId]="selectedRoleId" [selectedRoles]="selectedRoles"  [listRoles]="listRolesPermissions"  *ngIf="showtap=='ROLES'" ></app-group-roles>
-                <app-group-users style="width: 100%;" [listUsers]="listRoleUesrs" *ngIf="showtap=='USERS'"></app-group-users>
+                <app-group-users style="width: 100%;" (addUserToRole)="addUserToRole($event)" [UsersNotBelongToRole]="UsersNotBelongToRole" [selectedRoleId]="selectedRoleId" [listUsers]="listRoleUesrs" *ngIf="showtap=='USERS'"></app-group-users>
            </div>
 
 
