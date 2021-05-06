@@ -18,11 +18,11 @@ import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { QuestionBankQuestionService } from 'src/app/core/services/question-bank-services/question-bank-question.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 @Component({
-  selector: 'app-user-requests-questions-view',
-  templateUrl: './user-requests-questions-view.component.html',
-  styleUrls: ['./user-requests-questions-view.component.scss']
+  selector: 'app-user-scientific-problem',
+  templateUrl: './user-scientific-problem.component.html',
+  styleUrls: ['./user-scientific-problem.component.scss']
 })
-export class UserRequestViewComponent implements OnInit {
+export class UserScientificProblemComponent implements OnInit {
   filterErrorMessage?:string;
   questionBankQuestionList: IQuestionBankQuestionsModel[] = [];
   questionBankQuestionFilter: IQuestionBankQuestionsFilterRequest = {};

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { UserRequestViewComponent } from './user-requests-questions-view.component';
+import { UserJoinRequestsComponent } from './user-join-requests.component';
 
 
-describe('UserRequestViewComponent', () => {
-  let component: UserRequestViewComponent;
-  let fixture: ComponentFixture<UserRequestViewComponent>;
+describe('UserJoinRequestsComponent', () => {
+  let component: UserJoinRequestsComponent;
+  let fixture: ComponentFixture<UserJoinRequestsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserRequestViewComponent ]
+      declarations: [ UserJoinRequestsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserRequestViewComponent);
+    fixture = TestBed.createComponent(UserJoinRequestsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

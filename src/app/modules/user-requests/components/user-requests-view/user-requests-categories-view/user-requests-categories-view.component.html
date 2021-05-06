@@ -1,40 +1,23 @@
 
  
   
-<div class="list-group list-category">  
-    <a (click)="newScientificProblem()"> 
-        <span class="link_Add ">  {{ 'QUESTION_BANK.ADD_SCIENTIFIC_PROBLEM' | translate }}
-        <img  src="../../../../../../assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
-        </span>
-    </a>
+<div class="list-group list-category">      
     <div class="d-flex justify-content-between">
-        <p class="mb-4 p_header">{{'QUESTION_BANK.DEPARTMENTS' | translate}}</p>
-   
-        <ng-container>
-            <a (click)="newCatogry()">
-                <span class="link_Add ">  {{ 'QUESTION_BANK.ADD_DEPARTMENT' | translate }}
-                    <img  src="../../../../../../assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
-                </span>
-            </a> 
-        </ng-container>
+        <p class="mb-4 p_header">{{'User_Requests.REQUESTS' | translate}}</p>
     </div>
-    <app-search-input (searchTerm)=getQuestionBankCategories($event)></app-search-input>
-  
+    
     <div class="internal_scroll_list_group ">
-        <a class="list-group-item d-flex" *ngFor="let QBC  of questionBankCategoryList ; let i=index;" 
+        <a class="list-group-item d-flex" *ngFor="let item  of userRequestsCategoryList ; let i=index;" 
         [class.active]="selectedIndex === i" 
-        (click)="loadCatogryQuiestion(QBC.id,QBC.arabCatgName,QBC.engCatgName);selectedIndex=i">
+        (click)="loadUserRequests(item.userRequestNum,item.nameAr,item.nameEn);selectedIndex=i">
         
-            <p class="ellipsis mb-0 question-categories" matTooltip="{{translate.currentLang===langEnum.en?QBC.engCatgName:QBC.arabCatgName}}">{{translate.currentLang===langEnum.en?QBC.engCatgName:QBC.arabCatgName}}</p>
-            <div class="d-flex ">
-                <a (click)="confirmDialog(QBC.id)" > <i class="far fa-trash-alt"></i></a>
-                <a (click)="loadCatogry(QBC.id) "> <i class="fas fa-pencil-alt"></i></a> 
-            </div>    
+            <p class="ellipsis mb-0 question-categories" matTooltip="{{translate.currentLang===langEnum.en?item.nameEn:item.nameAr}}">{{translate.currentLang===langEnum.en?item.nameEn:item.nameAr}}</p>
+            
         </a>
 
         <div class="d-flex">
-            <label  class="no-data" *ngIf="questionBankCategoryList.length===0">
-                {{"QUESTION_BANK.NO_DATA"|translate}} 
+            <label  class="no-data" *ngIf="userRequestsCategoryList.length===0">
+                {{"User_Requests.NO_DATA"|translate}} 
             </label>
         </div>
     </div>

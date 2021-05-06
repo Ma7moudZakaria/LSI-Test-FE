@@ -417,5 +417,9 @@
     "DGREE": "الدرجة",
     "DURATION_ANSWER": "مدة الاجابة",
     "RIGHT_ANSWER": "الاجابه الصحيحه"
+  },
+  "User_Requests": {
+    "REQUESTS": "الطلبات",
+    "NO_DATA": "لا يوجد بيانات"
   }
 }

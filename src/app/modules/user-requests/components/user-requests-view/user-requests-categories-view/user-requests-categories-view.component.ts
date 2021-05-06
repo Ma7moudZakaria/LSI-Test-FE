@@ -11,6 +11,7 @@ import { IQuestionBankCategoriesFilter } from 'src/app/core/interfaces/questionB
 import { IQuestionBankCategoriesModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-categories-model';
 import { IQuestionBankCategoryCreatModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-category-creat-model';
 import { IQuestionBankCategoryUpdateModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-category-update-model';
+import { IUserRequestsCategory } from 'src/app/core/interfaces/scientific-problrm/iuser-requests';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
@@ -23,266 +24,30 @@ import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/compon
   styleUrls: ['./user-requests-categories-view.component.scss']
 })
 export class UserRequestsCategoriesViewComponent implements OnInit {
-  adminMode = false;
-  filterErrorMessage?: string;
-  questionBankCategoryList: IQuestionBankCategoriesModel[] = [];;
-  questionBankCategoryFilter: IQuestionBankCategoriesFilter = {};
-  position: string = "";
-  isView: boolean = true;
-  title?: string;
-  questionBankCategoryId: string = '';
-  questionBankCategory?: IQuestionBankCategoriesModel;
-  questionBankCategoryCreat: IQuestionBankCategoryCreatModel = {};
-  questionBankCategoryUpdate: IQuestionBankCategoryUpdateModel = {};
-  isAdd: boolean = true;
-  errorMessage?: string;
-  currentForm: FormGroup = new FormGroup({});
-  formImport: FormGroup;
-  successMessage?: string;
-  isSubmit = false;
-  @Output() selectedCategoryId = new EventEmitter<{}>();
-  @Output() inputCategoryId = new EventEmitter<string>();
+  userRequestsCategoryList: IUserRequestsCategory[] = 
+  [ 
+    { userRequestNum : "1" , nameAr : "طلبات الانضمام" , nameEn : "JoinRequest" } , 
+    { userRequestNum : "2" , nameAr : "طلبات الانسحاب" , nameEn : "ScientificProblem" } ,
+    { userRequestNum : "3" , nameAr : "إشكالات علمية" , nameEn : "Withdrawal" } 
+  ];
+
+  @Output() selectedUserRequest = new EventEmitter<{}>();
   @Output() openScientificProblem = new EventEmitter<boolean>();
-  clickChangeCtogry: string = "";
-  resultMessage: BaseMessageModel = {};
-  disableSaveButtons = false;
   langEnum = LanguageEnum;
-  @Input() addCategory = false;
   currentUser: IUser | undefined;
   role = RoleEnum;
-  isView = true;
 
-  constructor(private questionBankCategoryService: QuestionBankCategoryService,
-    private router: Router, public translate: TranslateService, private fb: FormBuilder, public dialog: MatDialog) {
-    this.formImport = new FormGroup({
-      importFile: new FormControl('', Validators.required)
-    });
+  constructor(public translate: TranslateService, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
-    this.getQuestionBankCategories()
-    this.buildForm();
-    if (this.addCategory === true) { this.getQuestionBankCategories(); }
-  }
-
-  ngOnChanges(changes: any) {
-    if (this.addCategory == true) { this.getQuestionBankCategories(); }
-  }
-
-  get f() {
-    return this.currentForm?.controls;
-  }
-
-  buildForm() {
-    this.currentForm = this.fb.group(
-      {
-        nameAr: ['', Validators.required],
-        nameEn: ['', Validators.required],
-      })
-  }
-
-  getQuestionBankCategories(name?: string) {
-    this.isView = true;
-    this.questionBankCategoryId = "";
-    this.filterErrorMessage = "";
-    if (name != null || name != "") { this.questionBankCategoryFilter.catgName = name; }
-    this.questionBankCategoryFilter.skip = 0;
-    this.questionBankCategoryFilter.take = 2147483647;
-    this.questionBankCategoryService.getQuestionBankCategoriesFilter(this.questionBankCategoryFilter).subscribe(res => {
-      let response = <BaseResponseModel>res;
-      if (response.isSuccess) {
-        this.questionBankCategoryList = response.data;
-        if (this.addCategory === false) {
-          this.loadCatogryQuiestion(this.questionBankCategoryList[0].id, this.questionBankCategoryList[0].arabCatgName, this.questionBankCategoryList[0].engCatgName);
-          this.selectedIndex = 0;
-        }
-
-      }
-      else {
-        this.questionBankCategoryList = [];
-        this.filterErrorMessage = response.message;
-      }
-    },
-      error => {
-        console.log(error);
-      }
-    )
-  }
-
-  clearFilter() {
-    this.questionBankCategoryFilter = {};
-    this.questionBankCategoryFilter.skip = 0;
-    this.questionBankCategoryFilter.take = 100;
-    this.getQuestionBankCategories();
-  }
-
-  ChangCTg(categoryId: string) {
-    this.router.navigateByUrl('/questionBank/question-bank-questions-view/' + categoryId);
-  }
-
-  loadQuestionBankCategoryDetails(id?: string) {
-    this.disableSaveButtons = false;
-    this.resultMessage = {
-      message: '',
-      type: ''
-    }
-    this.isView = false;
-    this.isAdd = false;
-    this.questionBankCategoryId = id || '';
-    this.questionBankCategoryService.getQuestionBankCategoryDetails(this.questionBankCategoryId).subscribe(
-      res => {
-        var response = <BaseResponseModel>res;
-        if (response.isSuccess) {
-          this.questionBankCategory = response.data;
-          this.f.nameAr.setValue(this.questionBankCategory?.arabCatgName);
-          this.f.nameEn.setValue(this.questionBankCategory?.engCatgName);
-        }
-        else {
-          this.errorMessage = response.message;
-        }
-      }, error => {
-        console.log(error);
-      })
-
-  }
-
-  Submit() {
-    this.isSubmit = true;
-    this.errorMessage = '';
-    this.successMessage = '';
-    this.resultMessage = {};
-
-    if (this.questionBankCategoryId) {
-      this.questionBankCategoryUpdate.id = this.questionBankCategoryId;
-      this.questionBankCategoryUpdate.no = this.questionBankCategory?.no;
-      this.questionBankCategoryUpdate.arabCatgName = this.f.nameAr.value;
-      this.questionBankCategoryUpdate.engCatgName = this.f.nameEn.value;
-
-      this.questionBankCategoryService.UpdateQuestionBankCategory(this.questionBankCategoryUpdate).subscribe(res => {
-        if (res.isSuccess) {
-          this.isSubmit = false;
-          // this.successMessage = res.message;
-          this.disableSaveButtons = true;
-          this.resultMessage = {
-            message: res.message || "",
-            type: BaseConstantModel.SUCCESS_TYPE
-          }
-          this.isView = false;
-          setTimeout(() => {
-            this.getQuestionBankCategories();
-          }, 1500)
-        }
-        else {
-          // this.errorMessage = res.message;
-          this.disableSaveButtons = false;
-          this.resultMessage = {
-            message: res.message,
-            type: BaseConstantModel.DANGER_TYPE
-          }
-        }
-
-      },
-        error => {
-          this.resultMessage = {
-            message: error,
-            type: BaseConstantModel.DANGER_TYPE
-          }
-        })
-    }
-    else {
-      this.questionBankCategoryCreat.arabCatgName = this.f.nameAr.value;
-      this.questionBankCategoryCreat.engCatgName = this.f.nameEn.value;
-      this.questionBankCategoryService.addQuestionBankCategory(this.questionBankCategoryCreat).subscribe(res => {
-        this.isSubmit = false;
-        if (res.isSuccess) {
-          this.isView = false;
-          // this.successMessage = res.message;
-          this.disableSaveButtons = true;
-          this.resultMessage = {
-            message: res.message || "",
-            type: BaseConstantModel.SUCCESS_TYPE
-          }
-          setTimeout(() => {
-            this.getQuestionBankCategories();
-          }, 1500)
-        }
-        else {
-          // this.errorMessage = res.message;
-          this.disableSaveButtons = false;
-          this.resultMessage = {
-            message: res.message,
-            type: BaseConstantModel.DANGER_TYPE
-          }
-        }
-      },
-        error => {
-          this.resultMessage = {
-            message: error,
-            type: BaseConstantModel.DANGER_TYPE
-          }
-        })
-    }
-  }
-
-  addCatogry() {
-    this.currentForm.reset();
-    this.isView = false;
-    this.isAdd = true;
-    this.disableSaveButtons = false;
-    this.resultMessage = {
-      message: '',
-      type: ''
-    }
-  }
-
-  back_list_Catogry() {
-    this.isView = true;
-    this.isAdd = false;
+    this.selectedIndex = 0;
   }
 
   selectedIndex?: Number;
-  loadCatogryQuiestion(id?: string, arabCatgName?: string, engCatgName?: string) {
-    this.selectedCategoryId.emit({ id: id, arabCatgName: arabCatgName, engCatgName: engCatgName });
-  }
-
-  result: string = '';
-  confirmDialog(id?: string) {
-    const message = this.translate.currentLang === LanguageEnum.en ? "Are you sure that you want to delete this department" : "هل متأكد من حذف هذا القسم";
-
-    const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete Category' : 'حذف قسم', message);
-
-    const dialogRef = this.dialog.open(ConfirmModalComponent, {
-      maxWidth: "400px",
-      data: dialogData
-    });
-    dialogRef.afterClosed().subscribe(dialogResult => {
-      this.result = dialogResult;
-      if (dialogResult == true) {
-        this.questionBankCategoryService.deleteQuestionBankCategory(id || '').subscribe(
-          res => {
-            res.message;
-
-            this.getQuestionBankCategories();
-          },
-          error => {
-            this.resultMessage = {
-              message: error,
-              type: BaseConstantModel.DANGER_TYPE
-            }
-          }
-        )
-      }
-    });
-  }
-
-  selectedIndex?: Number;
-  loadCatogry(id?: string) {
-    this.inputCategoryId?.emit(id);
-  }
-
-  newCatogry() {
-    this.inputCategoryId?.emit('');
+  loadUserRequests(userRequestNum?: string, nameAr?: string, nameEn?: string) {
+    this.selectedUserRequest.emit({ userRequestNum: userRequestNum, nameAr: nameAr, nameEn: nameEn });
   }
 
   newScientificProblem() {
