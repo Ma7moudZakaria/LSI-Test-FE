@@ -500,7 +500,9 @@ select.form-control {
     // display: block;
     transition: 5s;
   }  
-  
+  .cursor-pointer{
+    cursor: pointer;
+  }
   /* On smaller screens, where height is less than 450px, change the style of the sidenav_profile (less padding and a smaller font size) */
   @media screen and (max-height: 450px) {
     .overlay {padding-top: 15px;}
@@ -678,7 +680,7 @@ display: none;
 // for custom radio buttons
 .update_teacher_pg.mat-radio-group {
 
-  display: flex;
+   display: flex;
     // justify-content: space-between;
     width: 100%;
     
@@ -693,7 +695,7 @@ display: none;
 }
 }
 //for custom radio button in  add-question
-.add-question-template {
+ .dynamic-radio-button-with-input-text-model{
   .mat-radio-label-content ,.mat-checkbox-label{
     display: flex;
     justify-content: space-between;
