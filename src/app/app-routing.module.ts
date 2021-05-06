@@ -7,7 +7,6 @@ const routes: Routes = [
   { path: 'auth', loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule) },
   { path: 'user', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule), canActivate: [AuthGuard] },
   { path: 'teacher', loadChildren: () => import('./modules/teacher/teacher.module').then(m => m.TeacherModule) },
-
   { path: 'question-bank', loadChildren: () => import('./modules/question-bank/question-bank.module').then(m => m.QuestionBankModule) ,canActivate: [AuthGuard] },
   { path: 'scientific-material', loadChildren: () => import('./modules/scientific-material/scientific-material.module').then(m => m.ScientificMaterialModule), canActivate: [AuthGuard] },
   { path: 'shared', loadChildren: () => import('./modules/shared-material/shared-material.module').then(m => m.SharedMaterialModule) },
@@ -17,6 +16,7 @@ const routes: Routes = [
     { path: 'setting', loadChildren: () => import('./modules/setting/setting.module').then(m => m.SettingModule) },
     { path: 'exam-form', loadChildren: () => import('./modules/exam-form/exam-form.module').then(m => m.ExamFormModule), canActivate: [AuthGuard] },  
   { path: 'role-management', loadChildren: () => import('./modules/role-management/role-management.module').then(m => m.RoleManagementModule), canActivate: [AuthGuard] },
+  { path: 'admin_messaging', loadChildren: () => import('./modules/admin_messaging/admin-messaging-routing.module').then(m => m.AdminMessagingRoutingModule) ,canActivate: [AuthGuard] },
 ];
 
 @NgModule({
