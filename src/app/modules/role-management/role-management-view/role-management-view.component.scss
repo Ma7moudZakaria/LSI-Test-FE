@@ -18,9 +18,7 @@
         color: #FFFFFF;
     }
 }
-*{
-    font-family: Almarai-Bold;
-}
+
 .save-btn{
     background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
     background: #8E2520 0% 0% no-repeat padding-box;
@@ -46,3 +44,7 @@
         color: #ffffff;
         display: block;
         }
+
+        *{
+  font-family: Almarai-Bold;
+}

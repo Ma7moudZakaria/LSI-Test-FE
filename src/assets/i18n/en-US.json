@@ -107,7 +107,7 @@
     "Confirm_Delete": "Delete Material",
     "Delete_Message": "Are you sure you want to delete this?",
     "Select_Program": "Please select program",
-    "NO_DATA": "No Data found",
+    "NO_DATA": "No Data found"
   },
   "SCIENTIFIC_PROBLEM": {
     "TIME": "TIME",
@@ -406,7 +406,8 @@
     "ROLES": "Roles",
     "GROUPNAMEARABIC": "Group name (Arabic)",
     "CREATENEWGROUP": "Create new group",
-    "GROUPNAMEENGLISH": "Group name (English)"
+    "GROUPNAMEENGLISH": "Group name (English)",
+    "INDIVIDUALS":"Individuals"
   },
   "EXAM_FORM": {
     "TITLE": "Forms",

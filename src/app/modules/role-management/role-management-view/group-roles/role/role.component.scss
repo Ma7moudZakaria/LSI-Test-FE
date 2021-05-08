@@ -36,14 +36,25 @@
     color: $icon_input;
 }
 .children-down{
+    cursor: pointer;
     color: black !important;
     position: relative;
     top: -5px;
     right: -2px;
 }
-.children-left{
+
+.children-left:lang(ar){
+    cursor: pointer;
     color: black !important;
     position: relative;
     top: -2px;
     right: -4px;
+}
+.children-left:lang(en){
+    cursor: pointer;
+    color: black !important;
+    position: relative;
+    top: -2px;
+    transform: rotate(180deg); 
+    right: 4px;
 }

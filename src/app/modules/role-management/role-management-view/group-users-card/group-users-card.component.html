@@ -2,13 +2,19 @@
   <div class="col-md-12">
     <div class="row">
       <div class="col-md-4">
-          <div class="img">
-              <img width="100%" src="assets/images/roleManagement/ASH_90.png" alt="" srcset="">
-          </div>
+        <div class="img">
+          <img width="100%" src="assets/images/roleManagement/ASH_90.png" alt="" srcset="" />
+        </div>
       </div>
-      <div class="col-md-8" >
-          <p class="email_user_card">{{userData.usrEmail}}</p>
-          <p class="title_user_card">{{translate.currentLang===langEnum.en?userData.usrNameEn:userData.usrNameAr}}</p>
+      <div class="col-md-8">
+        <p class="email_user_card">{{ userData.usrEmail }}</p>
+        <p class="title_user_card">
+          {{
+          translate.currentLang === langEnum.en
+          ? userData.usrNameEn
+          : userData.usrNameAr
+          }}
+        </p>
       </div>
     </div>
   </div>
