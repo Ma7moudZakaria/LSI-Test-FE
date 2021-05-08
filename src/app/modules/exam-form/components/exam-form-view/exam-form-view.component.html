@@ -14,7 +14,7 @@
   
 
     <div class="overlay" *ngIf="showAddExamForm">
-        <app-add-exam [inputExamId]="inputExamId"  (submitSuccess)="closeAddExamFormAfterSave($event)" (closeExamForm)="closeAddExamForm()" (addExamForm)="loadListAfterAddExam($event)">
+        <app-add-exam [inputExamId]="inputExamId"  (closeExamForm)="closeAddExamForm()" (addExamForm)="loadListAfterAddExam($event)">
         </app-add-exam>
     </div>
 </div>

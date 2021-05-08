@@ -33,9 +33,6 @@ export class QuestionTemplateComponent implements OnInit {
 
 
   addAnswer() {
-    // if (Object.keys(this.questionTemplate).length === 0){
-    //   this.questionTemplate = { questionId: '1', answers : []}
-    // }
     this.resultMessage = {}
     if(this.examFormService.validateAnswer(this.questionTemplate.answers)===true)
 {
@@ -44,9 +41,8 @@ export class QuestionTemplateComponent implements OnInit {
   this.questionTemplate.answers?.push(answer)
 }
 else{
-  // alert("compelete data")
   this.resultMessage = {
-   message: this.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+   message: this.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE'),
    type: BaseConstantModel.DANGER_TYPE
  }
 }

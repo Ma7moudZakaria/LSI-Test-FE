@@ -50,7 +50,8 @@
     "CHOICES":"إختيارات",
     "MULTI_SELECT":"اختيارات متعددة",
     "ADD_QUESTION":"إضافة سؤال",
-    "ADD_ANSWE":"إضافة إجابه"
+    "ADD_ANSWE":"إضافة إجابه",
+    "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE": " برجاء اكمال البيانات و مراجعة البيانات المكررة"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
@@ -105,6 +106,11 @@
     "Select_Program": "برجاء اختيار  برنامج",
     "NO_DATA": "لا يوجد بيانات"
   },
+  "SCIENTIFIC_PROBLEM": {
+    "TIME": "تاريخ الطلب",
+    "QUESTION": "السؤال",
+    "REPLY": "الرد"
+  },
   "PROGRAMS_LIST": {
     "PROGRAMS": "البرامج",
     "ALL": "الكل"
@@ -143,8 +149,8 @@
     "GENDER_REQUIRED": "الجنس مطلوب",
     "COUNTRY": "دولة الإقامة",
     "COUNTRY_CODE": "حقل الدولة مطلوب",
-    "CITY":"المدينة",
-    "CITY_REQUIRED":"المدينة مطلوبة",
+    "CITY": "المدينة",
+    "CITY_REQUIRED": "المدينة مطلوبة",
     "PHONE_NUMBER_REQUIRED": "رقم الهاتف مطلوب",
     "PHONE_NUMBER_PATTERN": "يرجى ادخال رقم هاتف صحيح",
     "PHONE_NUMBER_MAX_LENGTH": "يرجى ادخال رقم هاتف أقل من أو يساوى 16 رقم",
@@ -222,7 +228,7 @@
     "EDU": "التعليم الأكاديمي",
     "EDU_REQUIRED": "التعليم الأكاديمي مطلوب",
     "EDU_LEVEL": "مستوى التعليمي ",
-    "EDU_LEVEL_REQUIRED": "مستوى التعليمي مطلوب",    
+    "EDU_LEVEL_REQUIRED": "مستوى التعليمي مطلوب",
     "LEARN_THEQURAN": "تعلم القرأن وحفظه",
     "GOVERNMENTAL_ENTITY": "جهه حكومية",
     "NOTGOVERNMENTAL_ENTITY": "غير جهه حكومية",
@@ -267,18 +273,18 @@
     "FROM_REQUIRED": "من الوقت مطلوب",
     "TO": "إلى وقت",
     "TO_REQUIRED": " إلى الوقت مطلوب",
-    "AGENCY_REQUIRED":"تعلم القرأن وحفظه مطلوب",
-    "IS_HAS_QURAN_EXP_REQUIRED":"هل لديك خبرة فى تحسين القران مطلوب",
-    "IS_HAS_TEACH_SUNNA_EXP_REQUIRED":"هل لديك خبرة في في تدريس السنة مطلوب",
-    "IS_HAS_INTERNET_TEACH_EXP_REQUIRED":"هل لديك خبرة في التعلم عبر الإنترنت مطلوب",
-    "IS_HAS_TEACH_FOREIGNER_EXP_REQUIRED":"هل لديك خبرة في تعليم الأجانب مطلوب",
-    "IS_HAS_EJAZA_HAFZ_EXP_REQUIRED":"هل لديك إجازة حفظ مطلوب",
-    "IS_HAS_EJAZA_TELAWA_EXP_REQUIRED":"هل لديه إجازة تلاوة مطلوب",
-    "REWAYATS_REQUIRED":"بأي قراءة مطلوب",
-    "LANGUAGES_REQUIRED":"بأي لغة مطلوب",
-    "WORKING_PLATFORM_REQUIRED":"العمل في المنصه مطلوب",
-    "TEACHER_PROGRAMS_REQUIRED":"البرنامج مطلوب",
-    "TEACHER_PROGRAMS_DEGREE_REQUIRED":"الدرجة مطلوب",
+    "AGENCY_REQUIRED": "تعلم القرأن وحفظه مطلوب",
+    "IS_HAS_QURAN_EXP_REQUIRED": "هل لديك خبرة فى تحسين القران مطلوب",
+    "IS_HAS_TEACH_SUNNA_EXP_REQUIRED": "هل لديك خبرة في في تدريس السنة مطلوب",
+    "IS_HAS_INTERNET_TEACH_EXP_REQUIRED": "هل لديك خبرة في التعلم عبر الإنترنت مطلوب",
+    "IS_HAS_TEACH_FOREIGNER_EXP_REQUIRED": "هل لديك خبرة في تعليم الأجانب مطلوب",
+    "IS_HAS_EJAZA_HAFZ_EXP_REQUIRED": "هل لديك إجازة حفظ مطلوب",
+    "IS_HAS_EJAZA_TELAWA_EXP_REQUIRED": "هل لديه إجازة تلاوة مطلوب",
+    "REWAYATS_REQUIRED": "بأي قراءة مطلوب",
+    "LANGUAGES_REQUIRED": "بأي لغة مطلوب",
+    "WORKING_PLATFORM_REQUIRED": "العمل في المنصه مطلوب",
+    "TEACHER_PROGRAMS_REQUIRED": "البرنامج مطلوب",
+    "TEACHER_PROGRAMS_DEGREE_REQUIRED": "الدرجة مطلوب",
     "ADDRESS": "عنوان الإقامة الدائم",
     "ADDRESS_REQUIRED": "العنوان مطلوب"
   },
@@ -325,7 +331,6 @@
     "CERTIFICATES": "الشهادات",
     "MY_MESSAGES": "المشاعر",
     "QUESTION_BANK": "بنك الأسئلة"
-    
   },
   "VIEW_USER_PROFILE_PG": {
     "PERSONAL_PROFILE": "الملف الشخصي",
@@ -388,10 +393,10 @@
     "USER_MANAGEMENT": " إدارة المستخدمين",
     "ABOUT_HUFFAZ": "عن حفاظ",
     "POWER": "الصلاحيات",
-    "BANK_ACCOUNT":"حساباتنا البنكية",
-    "EXAMS":"نماذج الاختبارات المرحلية والدورية"
+    "BANK_ACCOUNT": "حساباتنا البنكية",
+    "EXAMS": "نماذج الاختبارات المرحلية والدورية"
   },
-  "Role_Management":{
+  "Role_Management": {
     "TITLE": "المجموعات",
     "ADD_GROUP": "إضافة مجموعة",
     "USERS":"الافراد",
@@ -401,12 +406,17 @@
     "GROUPNAMEENGLISH":"اسم المجموعة (انجليزي)",
     "INDIVIDUALS":"الافراد"
   },
-  "EXAM_FORM":{
+  "EXAM_FORM": {
     "TITLE": "النماذج",
-    "FORM_NAME_AR":"اسم النموذج (عربي)",
-    "FORM_NAME_EN":"اسم النموذج (إنجليزي)",
-    "EXAM_FORMS":"نماذج الإختبار",
-    "ADD_FORM":"إضافة نموذج"
-   
+    "FORM_NAME_AR": "اسم النموذج (عربي)",
+    "FORM_NAME_EN": "اسم النموذج (إنجليزي)",
+    "EXAM_FORMS": "نماذج الإختبار",
+    "ADD_FORM": "إضافة نموذج",
+    "QUESTION_NUMBER": "سؤال رقم ",
+    "ANSWER": "اجابة",
+    "ANSWERS": "اجابات",
+    "DGREE": "الدرجة",
+    "DURATION_ANSWER": "مدة الاجابة",
+    "RIGHT_ANSWER": "الاجابه الصحيحه"
   }
 }

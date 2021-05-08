@@ -1,46 +1,46 @@
-<div class="form-group add-question-template"  >
+<div class="form-group add-question-template dynamic-radio-button-with-input-text-model"  >
 
     <div class="form-group row question mt-3 px-2">
     <div class="col-sm-8">
-      <label class="label_item_question"> السؤال الاول</label>
-      <app-voice-recording *ngIf="!questionTemplate.text" (getVoiceUrl)="saveVoiceUrl($event)"
+      <label class="label_item_question">  {{"EXAM_FORM.QUESTION_NUMBER"|translate}} {{questionTemplate.questionNo}}</label>
+      <!-- <app-voice-recording *ngIf="!questionTemplate.text" (getVoiceUrl)="saveVoiceUrl($event)"
       [viewMode]='viewMode' [voiceUrl]='questionTemplate?.voiceUrl'></app-voice-recording>
       <input type="text" *ngIf="!questionTemplate.voiceUrl" (input)="onQuestionTextChange()" [disabled]='viewMode'
       [(ngModel)]="questionTemplate.text" class="form-control" placeholder="add question">
-
+ -->
 
        
-<!--     
-        <div class="input-group input-sm input_search_voice" *ngIf="!questionTemplate.voiceUrl">
+    
+        <div class="input-group input-sm input_search_voice" >
            <input type="text"
-            *ngIf="!questionTemplate.voiceUrl"
+           *ngIf="!questionTemplate.voiceUrl"
              (input)="onQuestionTextChange()" 
              [disabled]='viewMode'
               [(ngModel)]="questionTemplate.text"
-              class="form-control  border-left-transparent border-md " 
+              class="form-control  border-md " 
+              [ngClass]="{' border-transparent': !questionTemplate.text,
+             'input_with-voice': !questionTemplate.text}"
               placeholder="add question" >
-              <div class="input-group-prepend">
-                <span class="input-group-text pl-2 pr-2 border-md ">
-                    <img  class="UserLogin_icon_input" src="../../../../assets/images/question/voice.svg">
-                </span>
-            </div>
-      </div>  -->
+            <app-voice-recording *ngIf="!questionTemplate.text" (getVoiceUrl)="saveVoiceUrl($event)"
+            [viewMode]='viewMode' [voiceUrl]='questionTemplate?.voiceUrl'></app-voice-recording>
+
+        </div> 
 
 
       
     </div>
     <div class="col-sm-2">
-      <label class="label_item_question">  مدة الإجابة</label>
+      <label class="label_item_question">{{"EXAM_FORM.DURATION_ANSWER"|translate}} </label>
         <input type="text" [(ngModel)]="questionTemplate.degree"  class="form-control"  placeholder="degree" [disabled]='viewMode'>
       </div>
       <div class="col-sm-2">
-        <label class="label_item_question">  الدرجة</label>
+        <label class="label_item_question">{{"EXAM_FORM.DGREE"|translate}}</label>
         <input type="text"  [(ngModel)]="questionTemplate.time"  class="form-control" placeholder="time" [disabled]='viewMode'>
       </div>
 </div>
 <div class="form-group row">
 <div class="col-10 pl-4 pr-4  ">
-  <label class="label_item_question">الاجابات</label>
+  <label class="label_item_question">{{"EXAM_FORM.ANSWER"|translate}}</label>
 
 </div>
   <div class="input-group col-sm-10">
@@ -57,13 +57,13 @@
 <div class="form-group row answerChick mb-0">
 
   <div class="col-10 pl-4 pr-4  ">
-    <label class="label_item_question">الصحيحة</label>
+    <label class="label_item_question">{{"EXAM_FORM.RIGHT_ANSWER"|translate}}</label>
   
   </div>
   
   <div *ngIf="questionTemplate.answerType === answerTypeEnum.multiSelect">
    
-      <ng-container *ngFor = 'let answer of questionTemplate.answers'>
+      <div *ngFor = 'let answer of questionTemplate.answers'>
         <div class="col-12">
       <mat-checkbox class="example-margin " [(ngModel)]="answer.correct" [ngModelOptions]="{standalone: true}" [disabled]='viewMode'>
         <input type="text" class="form-control input_fullWidth" [(ngModel)]="answer.text"  aria-label="Text input with checkbox" [disabled]='viewMode'>
@@ -74,11 +74,11 @@
         
       </mat-checkbox>
     </div>
-    </ng-container>
+    </div>
   </div>
   <div class="form-group row">
    
-      <ng-container *ngIf="questionTemplate.answerType === answerTypeEnum.singleSelect">
+      <div *ngIf="questionTemplate.answerType === answerTypeEnum.singleSelect">
  
           <mat-radio-group [(ngModel)]="questionTemplate.correctAnswersByAnswerNumber" 
           class="input-group  col-12" [disabled]='viewMode'>
@@ -95,7 +95,7 @@
       </mat-radio-group>
       
     
-   </ng-container>
+   </div>
   </div>
 
 </div>

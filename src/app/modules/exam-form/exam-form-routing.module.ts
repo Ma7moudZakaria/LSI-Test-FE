@@ -9,8 +9,6 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      { path: 'exam-view', component: ExamViewComponent},
-      { path: 'add-exam', component: AddExamComponent},
       { path: 'exam-form-view', component: ExamFormViewComponent},
      
      ],

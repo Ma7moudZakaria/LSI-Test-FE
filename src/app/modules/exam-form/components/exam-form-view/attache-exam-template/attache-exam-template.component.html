@@ -18,14 +18,11 @@
                 </span>
               </a> 
 
-              <!-- <button type="button" class="link_Add" (click)="addQuestion()"> 
-               {{"GENERAL.ADD_QUESTION"|translate}}</button>
-               <img  src="../../../../../../assets/images/add.svg" 
-               class="cursor-pointer Catogry_Icon_Add"> -->
           </div>
         
 
          </div>
+         
           <div class="input-group ">
           <div *ngFor = 'let question of exam.questions'>
             <div class="d-flex ">
@@ -45,7 +42,7 @@
       <div *ngIf="isView" >
           <a *ngIf='this.selectedExamFormId.id' (click)="editQuestionTemplate() "> 
             <!-- <i style='font-size:24px' class='fas'>&#xf044;</i> -->
-            <img class="mb-2 width1_4" src="../../../../../../assets/images/question/edit-question.svg " >
+            <img class="mb-2 width1_4 cursor-pointer" src="../../../../../../assets/images/question/edit-question.svg " >
           </a> 
           <div class="input-group ">
               <div  *ngFor = 'let question of exam.questions' >
