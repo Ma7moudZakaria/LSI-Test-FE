@@ -32,7 +32,6 @@ export class GroupUsersComponent implements OnInit {
   }
 
   saveData(){
-    debugger
     this.saveUsersRole.emit('')
   }
 
