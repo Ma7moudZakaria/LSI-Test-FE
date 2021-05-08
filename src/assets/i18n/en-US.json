@@ -420,5 +420,9 @@
     "DGREE": "Dgree",
     "DURATION_ANSWER": "Duration Answer",
     "RIGHT_ANSWER": "Right Answer"
+  },
+  "User_Requests": {
+    "REQUESTS": "Requests",
+    "NO_DATA": "No Data"
   }
 }
