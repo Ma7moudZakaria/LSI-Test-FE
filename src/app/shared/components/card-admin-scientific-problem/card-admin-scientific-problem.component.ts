@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IScientificProblem } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem';
 
 @Component({
   selector: 'app-card-admin-scientific-problem',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class CardAdminScientificProblemComponent implements OnInit {
 
   constructor() { }
+  @Input() scientificProblem: IScientificProblem = {};
 
   ngOnInit(): void {
   }

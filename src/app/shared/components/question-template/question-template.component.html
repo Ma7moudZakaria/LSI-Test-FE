@@ -1,6 +1,6 @@
-<div class="form-group add-question-template dynamic-radio-button-with-input-text-model"  >
+<div class="form-group add-question-template dynamic-radio-button-with-input-text-model mb-0"  >
 
-    <div class="form-group row question mt-3 px-2">
+    <div class="form-group row question px-2">
     <div class="col-sm-8">
       <label class="label_item_question">  {{"EXAM_FORM.QUESTION_NUMBER"|translate}} {{questionTemplate.questionNo}}</label>
       <!-- <app-voice-recording *ngIf="!questionTemplate.text" (getVoiceUrl)="saveVoiceUrl($event)"
@@ -104,6 +104,8 @@
 </div>
 </div>
 
-<div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2">
+<div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} ">
+  <span class=" py-2  my-4 ">
   {{resultMessage.message}}
+</span>
    </div>

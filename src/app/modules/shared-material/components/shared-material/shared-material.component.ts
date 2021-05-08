@@ -16,6 +16,7 @@ import { IScientificProblem } from 'src/app/core/interfaces/scientific-problrm/i
 export interface DragDropListItem {
   id: string;
   title: string;
+
   // description: string;
 }
 @Component({
@@ -47,7 +48,8 @@ export class SharedMaterialComponent implements OnInit {
   }
   passdata: Date = new Date();
   voiceUrl: string | undefined;
-
+  adminCard: string = 'adminCard';
+  studentCard: string = 'studentCard';
   constructor(public dialog: MatDialog, public domSanitizer: DomSanitizer, private attachmentService: AttachmentsService) { }
 
   ngOnInit(): void {
@@ -128,7 +130,7 @@ export class SharedMaterialComponent implements OnInit {
     { title: 'title CDE', content: 'content CDE', imgPath: '../../../assets/images/mic.svg' },
     { title: 'title EFG', content: 'content EFG', imgPath: '../../../assets/images/book.svg' }
   ]
-  card_scientificProblem : IScientificProblem[] = [
+  card_scientificProblem: IScientificProblem[] = [
     { question: 'gsgs sfsegf arfawr 1', reply: 'gry qr qarq ', huffazNo: 4150, createdOn: '03-05-1442' },
     { question: 'aerar ey wywww t1', reply: 'content content erfawera ', huffazNo: 4050, createdOn: '03-05-1442' },
     { question: 'aerar ey wywww t1', reply: 'content se aerfarf content', huffazNo: 4050, createdOn: '03-05-1442' },
@@ -136,6 +138,14 @@ export class SharedMaterialComponent implements OnInit {
     { question: 'aerar ey wywww t1', reply: 'content se aerfarf content', huffazNo: 4050, createdOn: '03-05-1442' },
 
   ]
+  admin_card_scientificProblem: IScientificProblem[] = [
+    { question: 'aerar ey wywww t1', reply: 'content content erfawera ', huffazNo: 4050, createdOn: '03-05-1442', usrId: "سيف الدين ابراهيم", progId: "اسم البرنام1", day: "الواجب اليومي - يوم " },
+    { question: 'aerar ey wywww t1', reply: 'content content erfawera ', huffazNo: 4050, createdOn: '03-05-1442', usrId: "سيف الدين ابراهيم", progId: "اسم البرنام1", day: "الواجب اليومي - يوم " },
+    { question: 'aerar ey wywww t1', reply: 'content content erfawera ', huffazNo: 4050, createdOn: '03-05-1442', usrId: "سيف الدين ابراهيم", progId: "اسم البرنام1", day: "الواجب اليومي - يوم " },
+    { question: 'aerar ey wywww t1', reply: 'content content erfawera ', huffazNo: 4050, createdOn: '03-05-1442', usrId: "سيف الدين ابراهيم", progId: "اسم البرنام1", day: "الواجب اليومي - يوم " },
+
+  ]
+
   /*
    * custome accordion 
    */

@@ -1,17 +1,32 @@
 
 @import "./variables";
 .save-btn{
-    background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
     background:$user-color;
     border-radius: 12px;
     opacity: 1;
-    width: 7.5rem;
+    width: auto;
+    min-width: 7rem;
     margin: 1rem;
     padding: 0.5rem;
     height: 2.31rem;
     border: none;
     color: #ffffff;
     display: block;
+  
+    }
+    .btn_replay{
+        background-color: #C1C7D0;
+        color: #ffffff;
+        border-radius: 12px;
+        opacity: 1;
+        width: auto;
+        min-width: 7rem;
+        margin: 1rem;
+        padding: 0.5rem;
+        height: 2.31rem;
+        border: none;
+        color: #ffffff;
+        display: block;
     }
     .cancel-btn{
         background: $hint_yellow;

@@ -115,7 +115,12 @@
 }
 .footer_logout:lang(en){
 .logout_img{
-  transform: rotate(
-    180deg
-    )
-}}
+  transform: rotate(180deg)
+}
+}
+.overlay:lang(en) {
+  left: 0;
+}
+.overlay:lang(ar) {
+  right: 0;
+}

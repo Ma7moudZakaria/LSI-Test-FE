@@ -32,26 +32,26 @@ import { QuestionTemplateComponent } from './components/question-template/questi
 import { FormsModule } from '@angular/forms';
 import { VoiceRecordingComponent } from './components/voice-recording/voice-recording.component';
 import { ScientificProblemsGridComponent } from './components/scientific-problems-grid/scientific-problems-grid.component';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 
 @NgModule({
-    declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
-        SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,
-        StudentNumbersComponent, StudentsRatingComponent, CardStudentScientificProblemComponent, CardAdminScientificProblemComponent,
-QuestionTemplateComponent, VoiceRecordingComponent, ScientificProblemsGridComponent],
+  declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
+    SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,
+    StudentNumbersComponent, StudentsRatingComponent, CardStudentScientificProblemComponent, CardAdminScientificProblemComponent,
+    QuestionTemplateComponent, VoiceRecordingComponent, ScientificProblemsGridComponent],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
-      MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,
-      MatIconModule, RatingModule, FormsModule, MatCheckboxModule,MatRadioModule, MatGridListModule
+    MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,
+    MatIconModule, RatingModule, FormsModule, MatCheckboxModule, MatRadioModule, MatGridListModule
   ],
   exports: [
     MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule, Ng2TelInputModule,
     MatExpansionModule, MatSelectModule, DragDropModule, CustomeCardComponent, CustomAccordionComponent,
     ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent,
     UsersCounterComponent, KhatmeenStudentsComponent, StudentNumbersComponent, StudentsRatingComponent,
-      CardStudentScientificProblemComponent, QuestionTemplateComponent, VoiceRecordingComponent,MatGridListModule,
-      ScientificProblemsGridComponent
+    CardStudentScientificProblemComponent, QuestionTemplateComponent, VoiceRecordingComponent, MatGridListModule,
+    ScientificProblemsGridComponent, CardAdminScientificProblemComponent
   ]
 })
 export class SharedModule { }
