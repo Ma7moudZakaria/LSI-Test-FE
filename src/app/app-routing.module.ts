@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'role-management', loadChildren: () => import('./modules/role-management/role-management.module').then(m => m.RoleManagementModule), canActivate: [AuthGuard] },
   { path: 'user-requests', loadChildren: () => import('./modules/user-requests/user-requests.module').then(m => m.UserRequestsModule), canActivate: [AuthGuard] }
   
+  { path: 'admin-messaging', loadChildren: () => import('./modules/admin-messaging/admin-messaging.module').then(m => m.AdminMessagingModule) ,canActivate: [AuthGuard] },
 ];
 
 @NgModule({

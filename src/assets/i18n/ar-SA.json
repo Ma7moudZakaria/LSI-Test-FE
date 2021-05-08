@@ -421,5 +421,8 @@
   "User_Requests": {
     "REQUESTS": "الطلبات",
     "NO_DATA": "لا يوجد بيانات"
+  },
+  "ADMIN_MESSAGING":{
+    "SCIENTIFIC_PROBLEM":"المشكلة الغلمية"
   }
 }
