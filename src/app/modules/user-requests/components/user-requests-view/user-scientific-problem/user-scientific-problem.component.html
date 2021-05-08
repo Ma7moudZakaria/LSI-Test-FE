@@ -1,1 +1,13 @@
 <h1>scientific poroblem</h1>
+
+<div class="col-lg-12 col-md-12 col-sm-12" >
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4" *ngFor="let item of scientificProblemData">
+            <app-card-student-scientific-problem [question]="item.question" [replay]="item.reply">
+        
+            </app-card-student-scientific-problem>
+        </div>
+    </div>
+</div>
+
+

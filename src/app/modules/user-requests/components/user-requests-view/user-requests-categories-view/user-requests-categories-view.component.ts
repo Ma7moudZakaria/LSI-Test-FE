@@ -19,8 +19,10 @@ export class UserRequestsCategoriesViewComponent implements OnInit {
     { userRequestNum : "3" , nameAr : "إشكالات علمية" , nameEn : "Withdrawal" } 
   ];
 
-  @Output() selectedUserRequest = new EventEmitter<{}>();
+  @Output() selectedCategoryId = new EventEmitter<{}>();
   @Output() openScientificProblem = new EventEmitter<boolean>();
+  @Output() inputCategoryId = new EventEmitter<string>();
+
   langEnum = LanguageEnum;
   currentUser: IUser | undefined;
   role = RoleEnum;
@@ -35,7 +37,11 @@ export class UserRequestsCategoriesViewComponent implements OnInit {
 
   selectedIndex?: Number;
   loadUserRequests(userRequestNum?: string, nameAr?: string, nameEn?: string) {
-    this.selectedUserRequest.emit({ userRequestNum: userRequestNum, nameAr: nameAr, nameEn: nameEn });
+    this.selectedCategoryId.emit({ userRequestNum: userRequestNum, nameAr: nameAr, nameEn: nameEn });
+  }
+
+  loadCatogry(id?: string) {
+    this.inputCategoryId?.emit(id);
   }
 
   newScientificProblem() {
