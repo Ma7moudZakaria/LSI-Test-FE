@@ -4,7 +4,6 @@ import { environment } from 'src/environments/environment';
 import { ICreateScientificProblem } from '../../interfaces/scientific-problrm/icreate-scientific-problem';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 import { Observable } from 'rxjs';
-import { IScientificProblemFilter } from '../../interfaces/scientific-problrm/iscientific-problem-filter';
 import { AssignRoleModel, AssignUserModel, CreateRoleModel, RoleManagementFilter } from '../../interfaces/role-management-interfaces/role-management';
 
 @Injectable({
@@ -13,28 +12,20 @@ import { AssignRoleModel, AssignUserModel, CreateRoleModel, RoleManagementFilter
 export class RoleManagementService {
 
 
-    viewRolesURL = environment.baseUrl + 'Roles/view-roles';
-    deleteRoleURL = environment.baseUrl + 'Roles/delete-role/';
-    roleDetailsURL = environment.baseUrl + 'Roles/get-role-details-by-id/';
-    createRoleURL = environment.baseUrl + 'Roles/add-role';
-    permissionsTreeViewURL=environment.baseUrl + 'Roles/get-permissions-tree-view';
-    assignRolePermissionsURL=environment.baseUrl + 'Roles/assign-role-permissions';
-    usersNotBelongToRoleURL=environment.baseUrl + 'Roles/get-users-not-belong-to-role/';
-    assignUserRoleURL=environment.baseUrl + 'Roles/assign-role-users';
-
-
-
-  // createScientificProblemURL = environment.baseUrl + 'ScientificProblem/create-scientific-problem';
-  // getScientificProblemDetailsURL = environment.baseUrl + 'ScientificProblem/get-scientific-problems-by-user-id/';
-  // getScientificProblemFilterURL = environment.baseUrl + 'ScientificProblem/get-scientific-problem-filter/';
-
-
+  viewRolesURL = environment.baseUrl + 'Roles/view-roles';
+  deleteRoleURL = environment.baseUrl + 'Roles/delete-role/';
+  roleDetailsURL = environment.baseUrl + 'Roles/get-role-details-by-id/';
+  createRoleURL = environment.baseUrl + 'Roles/add-role';
+  permissionsTreeViewURL = environment.baseUrl + 'Roles/get-permissions-tree-view';
+  assignRolePermissionsURL = environment.baseUrl + 'Roles/assign-role-permissions';
+  usersNotBelongToRoleURL = environment.baseUrl + 'Roles/get-users-not-belong-to-role/';
+  assignUserRoleURL = environment.baseUrl + 'Roles/assign-role-users';
 
 
   constructor(private http: HttpClient) { }
 
   getRolesList(model: RoleManagementFilter): Observable<BaseResponseModel> {
-    return this.http.post<BaseResponseModel>(this.viewRolesURL,model);
+    return this.http.post<BaseResponseModel>(this.viewRolesURL, model);
   }
 
   DeleteRole(id: any): Observable<BaseResponseModel> {
@@ -53,28 +44,17 @@ export class RoleManagementService {
     return this.http.post<BaseResponseModel>(this.createRoleURL, model);
   }
 
-  assignRolePermissions(model:AssignRoleModel){
+  assignRolePermissions(model: AssignRoleModel) {
     return this.http.post<BaseResponseModel>(this.assignRolePermissionsURL, model);
   }
 
-
-  getUsersNotBelongToRole(id:string){
+  getUsersNotBelongToRole(id: string) {
     return this.http.get<BaseResponseModel>(this.usersNotBelongToRoleURL + id)
   }
-  assignUserRole(model:AssignUserModel){
+
+  assignUserRole(model: AssignUserModel) {
     return this.http.post<BaseResponseModel>(this.assignUserRoleURL, model);
   }
-
-  // createScientificProblem(model: ICreateScientificProblem): Observable<BaseResponseModel> {
-  //   return this.http.post<BaseResponseModel>(this.createScientificProblemURL, model);
-  // }
-
-  // getScientificProblem(id: string): Observable<BaseResponseModel> {
-  //   return this.http.get<BaseResponseModel>(this.getScientificProblemDetailsURL + id)
-  // }
-  // getScientificMateriaFilter(filterRequest: IScientificProblemFilter): Observable<BaseResponseModel> {
-  //   return this.http.post<BaseResponseModel>(this.getScientificProblemFilterURL, filterRequest)
-  // }
 
 
 }

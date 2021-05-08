@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output ,EventEmitter} from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { RoleUsrs } from 'src/app/core/interfaces/role-management-interfaces/role-management';
 
 @Component({
@@ -7,17 +7,33 @@ import { RoleUsrs } from 'src/app/core/interfaces/role-management-interfaces/rol
   styleUrls: ['./group-users.component.scss']
 })
 export class GroupUsersComponent implements OnInit {
-  @Input() listUsers?: RoleUsrs[];
-  @Input() UsersNotBelongToRole: []=[];
-  @Input() selectedRoleId: string=''
+
+  @Input() listUsers!: RoleUsrs[];
+  @Input() UsersNotBelongToRole: [] = [];
+  @Input() selectedRoleId: string = ''
   @Output() addUserToRole = new EventEmitter<{}>();
+  @Output() deleteUser = new EventEmitter<string>();
+  @Output() saveUsersRole = new EventEmitter<{}>();
+
   constructor() { }
 
-  ngOnInit(): void {
-    console.log(this.listUsers);
-    
-  }
-  addUserNotBelongToRole(event:any){
+  ngOnInit(): void { }
+
+  addUserNotBelongToRole(event: any) {
     this.addUserToRole.emit(event)
   }
+
+  delete(userId: string){
+    this.deleteUser.emit(userId);
+  }
+
+  cancel(){
+
+  }
+
+  saveData(){
+    debugger
+    this.saveUsersRole.emit('')
+  }
+
 }

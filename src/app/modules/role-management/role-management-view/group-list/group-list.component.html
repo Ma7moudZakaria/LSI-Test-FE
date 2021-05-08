@@ -1,19 +1,27 @@
 <div class="col-md-12 group-list">
+  <p class="mb-4">{{ "Role_Management.TITLE" | translate }}</p>
+  <app-search-input (searchTerm)="loadPrograms($event)"></app-search-input>
+  <a (click)="showAdd()">
+    {{ "Role_Management.ADD_GROUP" | translate }} <i class="fas fa-plus"></i>
+  </a>
 
-    <p class="mb-4">{{'Role_Management.TITLE' | translate}}</p>
-    <app-search-input (searchTerm)=loadPrograms($event)></app-search-input>
-    <a (click)="showAdd()"> {{'Role_Management.ADD_GROUP' | translate}} <i class="fas fa-plus"></i> </a>
-
-    <div class="scroll_list_group">
-        <div class="group_item "  *ngFor="let item of listRole" (click)="getDetails(item.id)" [ngClass]="{'active_group_item': item.id==selectedRoleId}">
-            <p >{{translate.currentLang===langEnum.en?item.enRoleName:item.arRoleName}}</p>
-            <span (click)="delete(item.id)">
-                <i class="far fa-trash-alt"></i>
-            </span>
-        </div>
-
-
-    
+  <div class="scroll_list_group">
+    <div
+      class="group_item"
+      *ngFor="let item of listRole"
+      (click)="getDetails(item.id)"
+      [ngClass]="{ active_group_item: item.id == selectedRoleId }"
+    >
+      <p>
+        {{
+          translate.currentLang === langEnum.en
+            ? item.enRoleName
+            : item.arRoleName
+        }}
+      </p>
+      <span (click)="delete(item.id)">
+        <i class="far fa-trash-alt"></i>
+      </span>
     </div>
-
+  </div>
 </div>

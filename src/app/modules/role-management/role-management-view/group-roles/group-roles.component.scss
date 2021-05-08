@@ -1,42 +1,47 @@
-@import 'src/assets/scss/_variables.scss';
+@import "src/assets/scss/_variables.scss";
 
-.title{
-    font-size: 18px;
-    font-family: Almarai-Bold;
-    padding: 10px;
+.title {
+  font-size: 18px;
+  font-family: Almarai-Bold;
+  padding: 10px;
 }
-.title:lang(ar){
-    text-align: right;
+.title:lang(ar) {
+  text-align: right;
 }
-.title:lang(en){
-    text-align: left;
+.title:lang(en) {
+  text-align: left;
 }
 
-.save-btn{
-    background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
-    background: $user-color 0% 0% no-repeat padding-box;
-    border-radius: 12px;
-    opacity: 1;
-    opacity: 1;
-    width:100%;
-    padding: 0.5rem;
-    height: 2.31rem;
-    border: none;
-    color: #ffffff;
-    display: block;
-    }
-    .cancel-btn{
-        background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
-        background:$icon_input ;
-        border-radius: 12px;
-        opacity: 1;
-        width:100%;
-        padding: 0.5rem;
-        height: 2.31rem;
-        border: none;
-        color: #ffffff;
-        display: block;
-        }
-        .role{
-            padding: 10px 0;
-        }
+.save-btn {
+  background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
+  background: $user-color 0% 0% no-repeat padding-box;
+  border-radius: 12px;
+  opacity: 1;
+  opacity: 1;
+  width: 100%;
+  padding: 0.5rem;
+  height: 2.31rem;
+  border: none;
+  color: #ffffff;
+  display: block;
+}
+.cancel-btn {
+  background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
+  background: $icon_input;
+  border-radius: 12px;
+  opacity: 1;
+  width: 100%;
+  padding: 0.5rem;
+  height: 2.31rem;
+  border: none;
+  color: #ffffff;
+  display: block;
+}
+.role {
+  padding: 10px 0;
+}
+.max_h {
+  min-height: 66vh;
+  max-height: 66vh;
+  overflow-y: scroll;
+}

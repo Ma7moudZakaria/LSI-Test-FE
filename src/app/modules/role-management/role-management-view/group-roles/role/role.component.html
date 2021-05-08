@@ -1,0 +1,20 @@
+<mat-card class="result" style="padding-top: 0; padding-bottom: 0">
+  <mat-card-content *ngIf="listRoles?.children.length > 0">
+    <section *ngFor="let role of listRoles.children; let i = index" class="role-section">
+      <i *ngIf="role.children.length > 0 && role.show == false" (click)="role.show = !role.show"
+        class="fas fa-sort-down children-down"></i>
+      <i *ngIf="role.children.length > 0 && role.show == true" (click)="role.show = !role.show"
+        class="fas fa-caret-left children-left"></i>
+        <!-- [indeterminate]="true" -->
+      <mat-checkbox [indeterminate]="someChecked(role)"  (change)="changeValue($event, role)" [(ngModel)]="role.checked">
+        <i class="far fa-folder-open"></i>
+        {{
+        translate.currentLang === langEnum.en
+        ? role.nodeNameEn
+        : role.nodeNameAr
+        }}
+      </mat-checkbox>
+      <app-role [@listRole] *ngIf="role.show" [selectedRoles]="selectedRoles" [listRoles]="role"></app-role>
+    </section>
+  </mat-card-content>
+</mat-card>

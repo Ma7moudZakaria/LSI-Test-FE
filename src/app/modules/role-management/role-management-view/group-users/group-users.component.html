@@ -1,19 +1,38 @@
-
 <div class="group_user col-md-12">
     <div class="col-md-12 p-t-15">
-      <div class="row">
-          <div class="col-md-2">
-              <label class="label_sreach" for="">  {{'Role_Management.INDIVIDUALS' | translate}} </label>
-          </div>
-          <div class="col-md-5">
-            <app-input-sreach-list (addUserNotBelongToRole)="addUserNotBelongToRole($event)" [UsersNotBelongToRole]="UsersNotBelongToRole" [selectedRoleId]="selectedRoleId"></app-input-sreach-list>
-          </div>
-      </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4" *ngFor="let item of listUsers">
-            <app-group-users-card  [userData]="item" ></app-group-users-card>
+        <div class="row">
+            <div class="col-md-2">
+                <label class="label_sreach" for="">
+                    {{ "Role_Management.INDIVIDUALS" | translate }}
+                </label>
+            </div>
+            <div class="col-md-5">
+                <app-input-search-list (addUserNotBelongToRole)="addUserNotBelongToRole($event)"
+                    [UsersNotBelongToRole]="UsersNotBelongToRole" [selectedRoleId]="selectedRoleId">
+                </app-input-search-list>
+            </div>
         </div>
-       
+    </div>
+    <div class="col-md-12 max_h">
+        <div class="row">
+            <div class="col-md-4" *ngFor="let item of listUsers">
+                <app-group-users-card (deleteUser)="delete($event)" [userData]="item"></app-group-users-card>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-8"></div>
+            <div class="col-md-2">
+                <button type="button" class="cancel-btn" (click)="cancel()">
+                    {{ "QUESTION_BANK.CANCEL" | translate }}
+                </button>
+            </div>
+            <div class="col-md-2">
+                <button (click)="saveData()" class="save-btn">
+                    {{ "QUESTION_BANK.SAVE" | translate }}
+                </button>
+            </div>
+        </div>
     </div>
 </div>
