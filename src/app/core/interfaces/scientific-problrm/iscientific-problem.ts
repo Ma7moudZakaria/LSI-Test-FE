@@ -1,11 +1,12 @@
 export interface IScientificProblem {
-    question?: string,
-    reply?: string,
-    usrId?: string,
-    day?: string,
-    task?: string,
-    markAsQuestionBankItem?: string,
-    progId?: string,
-    skip?: number,
-    take?: number
+    id?:string;
+    huffazNo?:number;
+    question?:string;
+    reply?:string;
+    usrId?:string;
+    progId?:string;
+    day?:string;
+    task?:string;
+    markAsQuestionBankItem?:boolean;
+    createdOn?:string;
 }
