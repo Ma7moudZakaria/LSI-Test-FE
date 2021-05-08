@@ -9,7 +9,7 @@
     <div class="internal_scroll_list_group ">
         <a class="list-group-item d-flex" *ngFor="let item  of userRequestsCategoryList ; let i=index;" 
         [class.active]="selectedIndex === i" 
-        (click)="loadUserRequests(item.userRequestNum,item.nameAr,item.nameEn);selectedIndex=i">
+        (click)="loadUserRequests(item);selectedIndex=i">
         
             <p class="ellipsis mb-0 question-categories" matTooltip="{{translate.currentLang===langEnum.en?item.nameEn:item.nameAr}}">{{translate.currentLang===langEnum.en?item.nameEn:item.nameAr}}</p>
             

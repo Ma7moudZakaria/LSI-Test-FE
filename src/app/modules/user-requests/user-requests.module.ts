@@ -8,10 +8,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { UserScientificProblemComponent } from './components/user-requests-view/user-scientific-problem/user-scientific-problem.component';
 import { UserRequestsCategoriesViewComponent } from './components/user-requests-view/user-requests-categories-view/user-requests-categories-view.component';
 import { UserRequestsRoutingModule } from './user-requests-routing.module';
+import { UserWithdrawalRequestsComponent } from './components/user-requests-view/user-withdrawal-requests/user-withdrawal-requests.component';
+import { UserJoinRequestsComponent } from './components/user-requests-view/user-join-requests/user-join-requests.component';
 
 
 @NgModule({
-  declarations: [UserRequestsViewComponent , UserRequestsCategoriesViewComponent , UserScientificProblemComponent],
+  declarations: [UserRequestsViewComponent , UserRequestsCategoriesViewComponent , UserWithdrawalRequestsComponent , UserJoinRequestsComponent, UserScientificProblemComponent],
   imports: [
     SharedModule,
     FormsModule,

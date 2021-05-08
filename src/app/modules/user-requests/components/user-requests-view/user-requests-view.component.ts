@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { UserRequests } from 'src/app/core/enums/user-requests.enum.enum';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 
 @Component({
@@ -12,6 +13,10 @@ export class UserRequestsViewComponent implements OnInit {
   selectedCategoryId = {  userRequestNum : "" , nameAr : "" , nameEn : "" };
   categoryId: string | undefined;
   inputCategoryId: string | undefined;
+
+  showScientificProbreqs:boolean = false;
+  showJoinReqs:boolean = true;
+  showWithdrawalReqs:boolean = false;
   
   constructor(public translate: TranslateService,
     private languageService: LanguageService) {
@@ -32,9 +37,24 @@ export class UserRequestsViewComponent implements OnInit {
     this.languageService.headerPageNameEvent.emit(this.translate.instant('QUESTION_BANK.TITLE'));
   }
 
-  setSelectedCategory(event: any) {
-    this.selectedCategoryId = { userRequestNum : event.userRequestNum, nameAr: event.nameAr, nameEn: event.nameEn };
-    this.categoryId = event.id;
+  setSelectedCategory(event: UserRequests) {
+    switch(event){
+      case UserRequests.JoinRequest:
+        this.showWithdrawalReqs = false;
+        this.showScientificProbreqs = false;
+        this.showJoinReqs = true;
+        break;
+      case UserRequests.Withdrawal:
+        this.showWithdrawalReqs = true;
+        this.showScientificProbreqs = false;
+        this.showJoinReqs = false;
+          break;
+      case UserRequests.ScientificProblem:
+        this.showWithdrawalReqs = false;
+        this.showScientificProbreqs = true;
+        this.showJoinReqs = false;
+            break;
+    }
   }
 
   loadSelectedUserScientificProblem(event: any) {
