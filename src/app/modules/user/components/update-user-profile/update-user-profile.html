@@ -362,6 +362,12 @@
                                         {{i+1}}
                                     </option>
                                 </select>
+                                <div *ngIf="f.quraanMemorization.errors && (f.quraanMemorization.touched || isSubmit)"
+                                class="alert alert-danger mt-2 mb-2">
+                                <div *ngIf="f.quraanMemorization.errors.required">
+                                    {{ 'UPDATE_USER_PG.AMOUNT_QURAN_REQUIRED' | translate }}
+                                </div>
+                            </div>
                             </div>
                             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                 <label class="Register__Label" for="educationalLevel"> {{ 'UPDATE_USER_PG.MEMORIES_QURAN' | translate }} </label>

@@ -183,7 +183,8 @@
     "SCIENTIFIC_ARCHIVES": "Scientific Archives",
     "TRAINING_COURSES": "Training courses",
     "OPTIONAL": "Optional",
-    "EDIT_PROFILE": "Edit profile"
+    "EDIT_PROFILE": "Edit profile",
+    "AMOUNT_QURAN_REQUIRED": "The memorization amount from Qur'an is Required"
   },
   "VIEW_USER_PG": {
     "EDIT_PROFILE": "Edit profile",

@@ -184,7 +184,8 @@
     "SCIENTIFIC_ARCHIVES": "المحفوظات العلمية",
     "TRAINING_COURSES": "دورات تدريبية",
     "OPTIONAL": "اختيارى",
-    "EDIT_PROFILE": "تعديل الملف الشخصي"
+    "EDIT_PROFILE": "تعديل الملف الشخصي",
+    "AMOUNT_QURAN_REQUIRED": "مقدار الحفظ من القران مطلوب"
   },
   "VIEW_USER_PG": {
     "EDIT_PROFILE": " تعديل الملف الشخصي",
