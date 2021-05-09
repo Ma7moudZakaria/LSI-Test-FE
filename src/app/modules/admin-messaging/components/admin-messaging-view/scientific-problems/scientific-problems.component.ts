@@ -16,11 +16,12 @@ import { ScientificProblemService } from 'src/app/core/services/scientific-probl
 })
 export class ScientificProblemsComponent implements OnInit {
 
-  scientificProblemFilter: IScientificProblemFilter = {};
+  scientificProblemFilter: IScientificProblemFilter = {skip : 0, take : 1, sortField : 'Name', ordType: 1};
   resultMessage:BaseMessageModel = {};
   scientificProblems: IScientificProblem[] | undefined; 
-  numberItemsPerRow = 4;
   adminCard : ScientificProblemUsersEnum = ScientificProblemUsersEnum.Admin;
+  numberItemsPerRow = 4;
+  totalCount = 0;
 
   constructor(public translate: TranslateService,private scientificProblemService:ScientificProblemService) { }
 
@@ -30,13 +31,13 @@ export class ScientificProblemsComponent implements OnInit {
 
   getScientificProblems(name?:string) {
     this.scientificProblemFilter.filterText=name || '';
-    this.scientificProblemFilter.skip=0;
-    this.scientificProblemFilter.take= 2147483647;
+    
     this.resultMessage = {};
 
     this.scientificProblemService.getScientificMateriaFilter(this.scientificProblemFilter).subscribe(res => {
       if (res.isSuccess){
         this.scientificProblems = res.data;
+        this.totalCount = 2;
       }
       else{
         this.resultMessage = {
@@ -52,5 +53,15 @@ export class ScientificProblemsComponent implements OnInit {
         }
       }
     )
+  }
+
+  filterByText(searchKey:string){
+    this.scientificProblemFilter.filterText = searchKey;
+    this.getScientificProblems();
+  }
+
+  filterRequest(event:IScientificProblemFilter){
+    this.scientificProblemFilter = event;
+    this.getScientificProblems();
   }
 }

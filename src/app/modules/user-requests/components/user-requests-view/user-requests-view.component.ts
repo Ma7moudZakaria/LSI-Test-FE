@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { UserRequests } from 'src/app/core/enums/user-requests.enum.enum';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
+import { UserScientificProblemComponent } from './user-scientific-problem/user-scientific-problem.component';
 
 @Component({
   selector: 'app-user-requests-view',
@@ -13,10 +14,14 @@ export class UserRequestsViewComponent implements OnInit {
   selectedCategoryId = {  userRequestNum : "" , nameAr : "" , nameEn : "" };
   categoryId: string | undefined;
   inputCategoryId: string | undefined;
-
+  showAddscientificProblemForm = false;
   showScientificProbreqs:boolean = false;
   showJoinReqs:boolean = true;
   showWithdrawalReqs:boolean = false;
+
+  scientificProblem: string | undefined;
+
+  @ViewChild(UserScientificProblemComponent) userScientificProbChild:UserScientificProblemComponent | undefined;
   
   constructor(public translate: TranslateService,
     private languageService: LanguageService) {
@@ -63,5 +68,15 @@ export class UserRequestsViewComponent implements OnInit {
 
   setInputCategoryId(event: any) {
     this.inputCategoryId = event;
+  }
+
+
+  openScientificProblem(event: boolean) {
+    this.showAddscientificProblemForm = event;
+  }
+
+  closeScientificProblem(event: boolean) {
+    this.showAddscientificProblemForm = event;
+    this.userScientificProbChild?.getScientificProblemByUserId();
   }
 }

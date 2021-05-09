@@ -5,6 +5,7 @@ import { ICreateScientificProblem } from '../../interfaces/scientific-problrm/ic
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 import { Observable } from 'rxjs';
 import { IScientificProblemFilter } from '../../interfaces/scientific-problrm/iscientific-problem-filter';
+import { IUserScientificProblemFilter } from '../../interfaces/scientific-problrm/iuser-scientific-problem-filter';
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +32,8 @@ export class ScientificProblemService {
     return this.http.post<BaseResponseModel>(this.createScientificProblemURL, model);
   }
 
-  getScientificProblem(id: string): Observable<BaseResponseModel> {
-    return this.http.get<BaseResponseModel>(this.getScientificProblemDetailsURL + id)
+  getScientificProblem(model: IUserScientificProblemFilter): Observable<BaseResponseModel> {
+    return this.http.post<BaseResponseModel>(this.getScientificProblemDetailsURL , model)
   }
   getScientificMateriaFilter(filterRequest: IScientificProblemFilter): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.getScientificProblemFilterURL, filterRequest)

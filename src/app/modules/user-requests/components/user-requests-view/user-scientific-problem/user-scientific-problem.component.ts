@@ -1,7 +1,10 @@
+import { EventEmitter } from '@angular/core';
+import { Output } from '@angular/core';
 import { Component, OnInit} from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { IScientificProblem } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem';
+import { IUserScientificProblemFilter } from 'src/app/core/interfaces/scientific-problrm/iuser-scientific-problem-filter';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { ScientificProblemService } from 'src/app/core/services/scientific-problem-services/scientific-problem.service';
@@ -15,6 +18,9 @@ export class UserScientificProblemComponent implements OnInit {
   scientificProblemData = {} as IScientificProblem []; 
   resMessage: BaseMessageModel = {};
   currentUser: IUser | undefined;
+  totalCount = 0;
+  userScientificProblemFilterModel:IUserScientificProblemFilter = {};
+  @Output() openScientificProblem = new EventEmitter<boolean>();
 
   constructor(
      public translate: TranslateService , 
@@ -23,13 +29,21 @@ export class UserScientificProblemComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
-    this.getScientificProblemByUserId(this.currentUser.id);
+
+    this.userScientificProblemFilterModel= {
+      usrId : this.currentUser.id, oType: true, skip: 0, take:1
+    }
+    this.getScientificProblemByUserId();
   }
 
-  getScientificProblemByUserId(Id?:string){
-    this.scientificProblemService.getScientificProblem(Id || '').subscribe(res => {      
+  getScientificProblemByUserId(){
+    this.scientificProblemService.getScientificProblem(this.userScientificProblemFilterModel).subscribe(res => {      
       if (res.isSuccess) {
-        this.scientificProblemData = res.data as IScientificProblem[];    
+        this.scientificProblemData = res.data as IScientificProblem[]; 
+        this.scientificProblemData.forEach(function(item) {
+          item.scCreationDate = item.scCreationDate ? new Date(item.scCreationDate).toDateString(): '';
+        });   
+        this.totalCount = res.count ? res.count : 0;
       }
       else {
         this.resMessage = {
@@ -43,5 +57,23 @@ export class UserScientificProblemComponent implements OnInit {
         type: BaseConstantModel.DANGER_TYPE
       }
     });
+  }
+
+  searchScProb(text?:string){
+    this.scientificProblemData=[];
+
+    this.userScientificProblemFilterModel.filterText = text;
+    this.getScientificProblemByUserId();
+   
+  }
+
+  filterRequest(event:IUserScientificProblemFilter){
+    this.userScientificProblemFilterModel = event;
+    this.getScientificProblemByUserId();
+  }
+
+  newScientificProblem() {
+    this.openScientificProblem.emit(true);
+    
   }
 }

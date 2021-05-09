@@ -73,19 +73,14 @@
         color: #FFFFFF;
         opacity: 1;
         text-decoration: none;
+        
     }
 
-        &:first-child{
-            background-color:$user-color !important;
-            color: #FFFFFF !important;
-            border: 1px solid $user-color;
-        } 
-        .fa-trash-alt ,.fa-pencil-alt{
-            color:#8E2520;
-            margin-right: 0.2rem;
-            margin-left: 0.2rem;
-        
-        }
+        // &:first-child{
+        //     background-color:#CB9118 !important;
+        //     color: #FFFFFF !important;
+        //     border: 1px solid #CB9118;
+        // } 
 
         &.active .fa-trash-alt , &.active  .fa-pencil-alt
         ,&:hover .fa-trash-alt , &:hover .fa-pencil-alt

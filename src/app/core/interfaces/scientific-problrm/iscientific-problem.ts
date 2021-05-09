@@ -8,5 +8,5 @@ export interface IScientificProblem {
     day?:string;
     task?:string;
     markAsQuestionBankItem?:boolean;
-    createdOn?:string;
+    scCreationDate?:string;
 }

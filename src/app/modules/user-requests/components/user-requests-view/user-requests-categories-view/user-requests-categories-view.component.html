@@ -5,7 +5,7 @@
     <div class="d-flex justify-content-between">
         <p class="mb-4 p_header">{{'User_Requests.REQUESTS' | translate}}</p>
     </div>
-    
+
     <div class="internal_scroll_list_group ">
         <a class="list-group-item d-flex" *ngFor="let item  of userRequestsCategoryList ; let i=index;" 
         [class.active]="selectedIndex === i" 
