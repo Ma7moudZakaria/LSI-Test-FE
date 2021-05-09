@@ -16,7 +16,7 @@ import { ScientificProblemService } from 'src/app/core/services/scientific-probl
 })
 export class ScientificProblemsComponent implements OnInit {
 
-  scientificProblemFilter: IScientificProblemFilter = {skip : 0, take : 1};
+  scientificProblemFilter: IScientificProblemFilter = {skip : 0, take : 1, sortField : 'Name', ordType: 1};
   resultMessage:BaseMessageModel = {};
   scientificProblems: IScientificProblem[] | undefined; 
   adminCard : ScientificProblemUsersEnum = ScientificProblemUsersEnum.Admin;
@@ -55,8 +55,9 @@ export class ScientificProblemsComponent implements OnInit {
     )
   }
 
-  filterRequest(event:number){
-    this.scientificProblemFilter.skip = event;
+  filterRequest(event:IScientificProblemFilter){
+    this.scientificProblemFilter = event;
+    console.log(this.scientificProblemFilter);
     this.getScientificProblems();
   }
 }

@@ -9,7 +9,8 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <app-scientific-problems-grid (filterEvent)='filterRequest($event)' [totalCount]='totalCount' [items]='scientificProblems' [numberPerRow]='numberItemsPerRow' [userMode]='adminCard'></app-scientific-problems-grid>
+      <app-scientific-problems-grid (filterEvent)='filterRequest($event)' [totalCount]='totalCount' [items]='scientificProblems' 
+      [numberPerRow]='numberItemsPerRow' [userMode]='adminCard' [adminFilterRequestModel] = 'scientificProblemFilter'></app-scientific-problems-grid>
     </div>
   </div>
   
