@@ -11,7 +11,7 @@
      font-family: Almarai-Regular;
      font-size: 14px;
      .bold{
-      font-family: Almarai-Bold;
+      font-family:Almarai-Bold ;
       font-size: 1rem;
       
       }
@@ -22,7 +22,7 @@
       justify-content: space-between;
       padding: 5px 20px ;
       font-size: 0.75rem;
-      font-family: Almarai-Regular;
+      font-family:Almarai-Regular;
       // .label-date{
       //   font-size: 0.75rem;
       //   font-family: Almarai-Regular;
@@ -72,12 +72,13 @@
         justify-content: space-between;
         // padding-bottom: 0.5rem;
         color: #9C9C9C;
-        font-family: Almarai-Bold;
-        font-size: 0.75rem;
+        font-family:Almarai-Bold ;
+        font-weight: bold;
+        font-size: 1rem;
   
         .teacher_name{
           color: #CB9118;
-        font-size: 0.75rem;
+        font-size: 1rem;
   
         }
       }
