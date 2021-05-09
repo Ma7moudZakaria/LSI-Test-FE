@@ -498,12 +498,25 @@
                             </div>
 
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                <label class="Register__Label" for="eduYear"> {{ 'UPDATE_TEACHER_PG.DURATION' | translate }} </label>
-                                <select class="UpdateUser__Options" name="nameEn" formControlName="eduYear">
-                                    <option *ngFor="let eduYearItem of collectionOfLookup.EDU_YEAR"
-                                        [value]="eduYearItem.id">
-                                        {{ translate.currentLang == langEnum.en ? eduYearItem.nameEn :
-                                        eduYearItem.nameAr}}
+                                <label class="Register__Label" for="eduNum"> {{ 'UPDATE_TEACHER_PG.EDU_NUM' | translate }} </label>
+                                <input id="eduNum" pInputText type="number" formControlName="eduNum"
+                                    name="eduNum" class="form-control UserRegister__FormControl">
+
+                                
+                                <!-- <div *ngIf="f.eduNum.errors && (f.eduNum.touched || isSubmit)"
+                                    class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.eduNum.errors.required">
+                                        {{ 'UPDATE_TEACHER_PG.EDU_REQUIRED' | translate }}
+                                    </div>
+                                </div>  -->
+                            </div>
+
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                <label class="Register__Label" for="eduDate"> {{ 'UPDATE_TEACHER_PG.DURATION' | translate }} </label>
+                                <select class="UpdateUser__Options" name="nameEn" formControlName="eduDate">
+                                    <option *ngFor="let eduDateItem of collectionOfLookup.EDU_DATE"
+                                        [value]="eduDateItem.id">
+                                        {{ translate.currentLang == langEnum.en ? eduDateItem.nameEn : eduDateItem.nameAr}}
                                     </option>
                                 </select>
                                 

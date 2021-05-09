@@ -78,6 +78,10 @@ export class UpdateTeacherProfileComponent implements OnInit {
   teacherProgramsMessage: BaseMessageModel = {};
   selectedTeacherProgramsList = Array<ITeacherProfileProgramDegreeLookup>();
 
+  fileUploadModel: IFileUpload[] = [];
+  fileList: IAttachment[] = [];
+  ejazaAttachmentIds: string[] = [];
+
   event = {
     eampm: "AM"
   }
@@ -178,7 +182,8 @@ export class UpdateTeacherProfileComponent implements OnInit {
           email: [null, Validators.required],
           qualifi: [null, Validators.required],
           specia: [null, Validators.required],
-          eduYear: [null, Validators.required],
+          eduDate: [null, Validators.required],
+          eduNum: [null],
           entity: [null, Validators.required],
           agency: [null, Validators.required],
           edulevel: [null, Validators.required],
@@ -218,7 +223,8 @@ export class UpdateTeacherProfileComponent implements OnInit {
           email: [null, Validators.required],
           qualifi: [null, Validators.required],
           specia: [null, Validators.required],
-          eduYear: [null, Validators.required],
+          eduDate: [null, Validators.required],
+          eduNum: [null],
           entity: [null, Validators.required],
           agency: [null, Validators.required],
           edulevel: [null, Validators.required],
@@ -309,10 +315,11 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.f.gender.setValue(this.teacherProfileDetails?.gender)
     this.f.qualifi.setValue(this.teacherProfileDetails?.qualifi)
     this.f.specia.setValue(this.teacherProfileDetails?.specia)
-    this.f.eduYear.setValue(this.teacherProfileDetails?.eduYear)
+    this.f.eduDate.setValue(this.teacherProfileDetails?.eduDate)
     this.f.edulevel.setValue(this.teacherProfileDetails?.eduLevel)
     this.f.entity.setValue(this.teacherProfileDetails?.entity)
     this.f.agency.setValue(this.teacherProfileDetails?.agency)
+    this.f.eduNum.setValue(this.teacherProfileDetails?.eduNum)
     this.f.isHasQuranExp.setValue(this.teacherProfileDetails.isHasQuranExp?.toString())
     this.f.isHasTeachSunnaExp.setValue(this.teacherProfileDetails.isHasTeachSunnaExp?.toString())
     this.f.isHasInternetTeachExp.setValue(this.teacherProfileDetails.isHasInternetTeachExp?.toString())
@@ -322,6 +329,11 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.f.workingPlatForm.setValue(this.teacherProfileDetails?.workingPlatForm)
     this.f.bankName.setValue(this.teacherProfileDetails?.bankName)
     this.f.bankNumber.setValue(this.teacherProfileDetails?.bankNumber)
+
+    // this.fileList = this.teacherProfileDetails?.ejazaAttachments;
+    // this.teacherProfileDetails?.ejazaAttachments.forEach(element => {
+    //   this.ejazaAttachmentIds.push(element.id);
+    // });
 
     if (this.teacherProfileDetails?.rewayats) {
       this.selectedRewayatsList = this.teacherProfileDetails?.rewayats;
@@ -397,7 +409,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
         specia: this.profileForm.value.specia,
         workingPlatForm: this.profileForm.value.workingPlatForm,
         entity: this.profileForm.value.entity,
-        eduYear: this.profileForm.value.eduYear,
+        eduDate: this.profileForm.value.eduDate,
         isHasQuranExp: this.profileForm.value.isHasQuranExp,
         isHasTeachSunnaExp: this.profileForm.value.isHasTeachSunnaExp,
         isHasInternetTeachExp: this.profileForm.value.isHasInternetTeachExp,
@@ -408,6 +420,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
         bankName: this.profileForm.value.bankName,
         bankNumber: this.profileForm.value.bankNumber,
         address:this.profileForm.value.address,
+        ejazaAttachments: this.ejazaAttachmentIds,
       }
 
       this.rewayatsMessage = {};
@@ -665,5 +678,49 @@ export class UpdateTeacherProfileComponent implements OnInit {
   removeItemFromselecteddrgreeList(item: any) {
     let index = this.selecteddrgreeList.indexOf(item);
     this.selecteddrgreeList.splice(index, 1)
+  }
+
+  DeleteAttachment(index: number, id: string) {
+    this.fileList.splice(index, 1);
+    this.ejazaAttachmentIds = this.ejazaAttachmentIds.filter(a => a !== id);
+  }
+
+  onEjazaFileChange(files: FileList) {
+    if (files.length > 0) {
+      Array.from(files).forEach(element => {
+        var fileUploadObj: IFileUpload = {
+          containerNameIndex: 1, // need to be changed based on file type
+          file: element
+
+        }
+        this.fileUploadModel.push(fileUploadObj)
+      });
+      this.UploadFiles(this.fileUploadModel);
+    }
+
+  }
+
+  UploadFiles(files: any) {
+    if (files.length === 0) {
+      return;
+    }
+    this.attachmentService.upload(files).subscribe(
+      (res: any) => {
+        Array.from(res.data).forEach((elm: any) => {
+          this.ejazaAttachmentIds.push(elm.id);
+          this.fileList.push(elm);
+
+        })
+        this.fileUploadModel = [];
+      }, error => {
+        console.log(error);
+        this.fileUploadModel = [];
+        this.resMessage =
+        {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+    )
   }
 }

@@ -40,6 +40,8 @@ export class ViewTeacherProfileComponent implements OnInit {
       if (res.isSuccess) {
         this.teacherProfileDetails = res.data as ITeacherProfile;
 
+        console.log("Details",this.teacherProfileDetails);
+
         let birthdate = new Date(this.teacherProfileDetails?.hijriBirthDate || '');
         if (!isNaN(birthdate.getTime())) {
           this.teacherProfileDetails.hijriBirthDate = new Date(birthdate.setDate(birthdate.getDate() + 1)).toISOString().slice(0, 10);

@@ -291,7 +291,8 @@
     "TEACHER_PROGRAMS_REQUIRED": "البرنامج مطلوب",
     "TEACHER_PROGRAMS_DEGREE_REQUIRED": "الدرجة مطلوب",
     "ADDRESS": "عنوان الإقامة الدائم",
-    "ADDRESS_REQUIRED": "العنوان مطلوب"
+    "ADDRESS_REQUIRED": "العنوان مطلوب",
+    "EDU_NUM":"مدة الدراسة"
   },
   "QUESTION_BANK": {
     "TITLE": "بنك الأسئلة",

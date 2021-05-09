@@ -21,7 +21,8 @@ export interface IUpdateTeacherProfile {
     city?: string;
     qualifi?: string;
     specia?: string;
-    eduYear?: string;
+    eduDate?: string;
+    eduNum?: number;
     entity?: string;
     agency?:string;
     edulevel?:string;

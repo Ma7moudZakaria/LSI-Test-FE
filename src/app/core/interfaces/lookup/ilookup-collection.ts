@@ -15,7 +15,7 @@ export interface ILookupCollection {
     WALKTHROUGHPAGES?: BaseLookupModel[];
     CITY?: BaseLookupModel[];
     DEGREE?: BaseLookupModel[];
-    EDU_YEAR?: BaseLookupModel[];
+    EDU_DATE?: BaseLookupModel[];
     INTERVIEW_DAY?: BaseLookupModel[];
     LANG?: BaseLookupModel[];
     QUALIFI?: BaseLookupModel[];
