@@ -16,8 +16,8 @@ export class ScientificProblemsGridComponent implements OnInit {
   @Input() userMode: ScientificProblemUsersEnum = ScientificProblemUsersEnum.Student;
   @Output() adminFilterEvent = new EventEmitter<IScientificProblemFilter>();
   @Output() userFilterEvent = new EventEmitter<IUserScientificProblemFilter>();
-  @Input() adminFilterRequestModel : IScientificProblemFilter = {};
-  @Input() userFilterRequestModel : IUserScientificProblemFilter = {};
+  @Input() adminFilterRequestModel : IScientificProblemFilter = {skip : 0, take: 0};
+  @Input() userFilterRequestModel : IUserScientificProblemFilter = {skip : 0, take: 0};
   orderTypeToggel = 1;
   userOrderTypeToggel = true;
   // @Output() sortEvent = new EventEmitter<>();
@@ -25,7 +25,6 @@ export class ScientificProblemsGridComponent implements OnInit {
   scientificProblemUsers = ScientificProblemUsersEnum 
   @Input() totalCount: number= 0;
   page = 1
-  take = 1;
 
 
   constructor() { }
@@ -34,12 +33,12 @@ export class ScientificProblemsGridComponent implements OnInit {
   }
 
   onAdminPageChange(){
-    this.adminFilterRequestModel.skip = (this.page - 1) * this.take; 
+    this.adminFilterRequestModel.skip = (this.page - 1) * this.adminFilterRequestModel.take; 
     this.adminFilterEvent.emit(this.adminFilterRequestModel);
   }
 
   onUserPageChange(){
-    this.userFilterRequestModel.skip = (this.page - 1) * this.take; 
+    this.userFilterRequestModel.skip = (this.page - 1) * this.userFilterRequestModel.take; 
     this.userFilterEvent.emit(this.userFilterRequestModel);
   }
 
