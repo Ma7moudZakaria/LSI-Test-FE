@@ -55,6 +55,11 @@ export class ScientificProblemsComponent implements OnInit {
     )
   }
 
+  filterByText(searchKey:string){
+    this.scientificProblemFilter.filterText = searchKey;
+    this.getScientificProblems();
+  }
+
   filterRequest(event:IScientificProblemFilter){
     this.scientificProblemFilter = event;
     console.log(this.scientificProblemFilter);

@@ -8,6 +8,14 @@
     </div>
   </div>
   <div class="row">
+    <div class="col-2">
+        {{'ADMIN_MESSAGING.SCIENTIFIC_PROBLEM' | translate}}
+    </div>
+    <div class="offset-cu-21 col-4" >
+        <app-search-input (searchTerm)=filterByText($event)></app-search-input>
+    </div>
+</div>
+  <div class="row">
     <div class="col-12">
       <app-scientific-problems-grid (filterEvent)='filterRequest($event)' [totalCount]='totalCount' [items]='scientificProblems' 
       [numberPerRow]='numberItemsPerRow' [userMode]='adminCard' [adminFilterRequestModel] = 'scientificProblemFilter'></app-scientific-problems-grid>
