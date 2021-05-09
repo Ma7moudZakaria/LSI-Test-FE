@@ -17,7 +17,7 @@ export class ScientificProblemService {
   createScientificProblemURL = environment.baseUrl + 'ScientificProblem/create-scientific-problem';
   getScientificProblemDetailsURL = environment.baseUrl + 'ScientificProblem/get-scientific-problems-by-user-id/';
   getScientificProblemFilterURL = environment.baseUrl + 'ScientificProblem/get-scientific-problem-filter/';
-  deleteScientificFilterURL = environment.baseUrl + 'ScientificProblem/delete-scientific-problem/';
+  deleteScientificProblemUrl = environment.baseUrl + 'ScientificProblem/delete-scientific-problem/';
 
 
 
@@ -38,8 +38,8 @@ export class ScientificProblemService {
   getScientificMateriaFilter(filterRequest: IScientificProblemFilter): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.getScientificProblemFilterURL, filterRequest)
   }
-  DeleteScientificMatrial(id: any): Observable<BaseResponseModel> {
-    return this.http.delete<BaseResponseModel>(this.deleteScientificFilterURL + id);
+  DeleteScientificProblem(id: any): Observable<BaseResponseModel> {
+    return this.http.delete<BaseResponseModel>(this.deleteScientificProblemUrl + id);
   }
 
 }

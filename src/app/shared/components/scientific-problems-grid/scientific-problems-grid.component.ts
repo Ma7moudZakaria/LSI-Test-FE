@@ -3,6 +3,7 @@ import { ScientificProblemUsersEnum } from 'src/app/core/enums/scientific-proble
 import { IScientificProblem } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem';
 import { IScientificProblemFilter } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem-filter';
 import { IUserScientificProblemFilter } from 'src/app/core/interfaces/scientific-problrm/iuser-scientific-problem-filter';
+import { SettingRoutingModule } from 'src/app/modules/setting/setting-routing.module';
 
 @Component({
   selector: 'app-scientific-problems-grid',
@@ -11,13 +12,14 @@ import { IUserScientificProblemFilter } from 'src/app/core/interfaces/scientific
 })
 export class ScientificProblemsGridComponent implements OnInit {
 
-  @Input() items: IScientificProblem[] = []
-  @Input() numberPerRow: number = 3; //default is 3 for student
-  @Input() userMode: ScientificProblemUsersEnum = ScientificProblemUsersEnum.Student;
   @Output() adminFilterEvent = new EventEmitter<IScientificProblemFilter>();
   @Output() userFilterEvent = new EventEmitter<IUserScientificProblemFilter>();
+  @Output() deleteUserScProb = new EventEmitter<string>();
+  @Input() userMode: ScientificProblemUsersEnum = ScientificProblemUsersEnum.Student;
   @Input() adminFilterRequestModel : IScientificProblemFilter = {skip : 0, take: 0};
   @Input() userFilterRequestModel : IUserScientificProblemFilter = {skip : 0, take: 0};
+  @Input() numberPerRow: number = 3; //default is 3 for student
+  @Input() items: IScientificProblem[] = []
   orderTypeToggel = 1;
   userOrderTypeToggel = true;
   // @Output() sortEvent = new EventEmitter<>();
@@ -77,6 +79,10 @@ export class ScientificProblemsGridComponent implements OnInit {
   userSortByCreatedOnOrderType(){
     if (this.userFilterRequestModel.oType) {return true}
     else {return false}
+  }
+
+  deleteScientificProblem(id:string){
+    this.deleteUserScProb.emit(id);
   }
 
 }

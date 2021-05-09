@@ -10,7 +10,7 @@
 <mat-grid-list cols="{{numberPerRow}}" rowHeight="3:3">
     <ng-container *ngIf="userMode == scientificProblemUsers.Student">
         <mat-grid-tile *ngFor='let item of items' >
-            <app-card-student-scientific-problem class="card" [scientificProblem]='item'></app-card-student-scientific-problem>
+            <app-card-student-scientific-problem (deleteScientificProblem)='deleteScientificProblem($event)' class="card" [scientificProblem]='item'></app-card-student-scientific-problem>
         </mat-grid-tile>
     </ng-container>
     <ng-container *ngIf="userMode == scientificProblemUsers.Admin">
