@@ -719,3 +719,34 @@ display: none;
 //   background-color: #9985846e;
 //  }
 }
+
+.link_Add{
+  cursor: pointer;
+}
+/******************
+pagination
+/***********************/
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #CB9118;
+    border: 1px solid #CB9118;
+    border-color: #CB9118;
+  }
+  .page-item .page-link{
+    background-color: #CB911826;
+    border: 1px solid #CB911826;
+    color: #CB9118;
+    border-radius: 0.75rem;
+    margin: 0 0.2rem;
+
+}
+.page-item.disabled .page-link {
+  color: #6c757d;
+  pointer-events: none;
+  cursor: auto;
+  background-color: #cb91181f;
+  border: 1px solid #CB911826;
+  cursor: no-drop;
+}
