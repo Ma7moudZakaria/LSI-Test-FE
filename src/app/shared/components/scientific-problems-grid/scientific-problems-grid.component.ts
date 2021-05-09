@@ -1,7 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { ScientificProblemUsersEnum } from 'src/app/core/enums/scientific-problem-users-enum.enum';
 import { IScientificProblem } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem';
 import { IScientificProblemFilter } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem-filter';
+import { IScientificProblemGridItems } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem-grid-items';
 import { IUserScientificProblemFilter } from 'src/app/core/interfaces/scientific-problrm/iuser-scientific-problem-filter';
 import { SettingRoutingModule } from 'src/app/modules/setting/setting-routing.module';
 
@@ -20,6 +23,8 @@ export class ScientificProblemsGridComponent implements OnInit {
   @Input() userFilterRequestModel : IUserScientificProblemFilter = {skip : 0, take: 0};
   @Input() numberPerRow: number = 3; //default is 3 for student
   @Input() items: IScientificProblem[] = []
+  @Input() adminItems: IScientificProblemGridItems[] = []
+  
   orderTypeToggel = 1;
   userOrderTypeToggel = true;
   // @Output() sortEvent = new EventEmitter<>();
@@ -29,7 +34,7 @@ export class ScientificProblemsGridComponent implements OnInit {
   page = 1
 
 
-  constructor() { }
+  constructor(public translate:TranslateService) { }
 
   ngOnInit(): void {
   }
@@ -45,27 +50,27 @@ export class ScientificProblemsGridComponent implements OnInit {
   }
 
   sortByName(){
-    this.adminFilterRequestModel.sortField = 'Name';
+    this.adminFilterRequestModel.sorField = this.translate.currentLang === LanguageEnum.ar ? 'studfullnamear' : 'studfullnameen';
     this.adminFilterRequestModel.ordType = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
     this.adminFilterEvent.emit(this.adminFilterRequestModel);
   }
 
   sortByCreatedOn(){
-    this.adminFilterRequestModel.sortField = 'CreatedOn';
+    this.adminFilterRequestModel.sorField = 'createdon';
     this.adminFilterRequestModel.ordType = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
     this.adminFilterEvent.emit(this.adminFilterRequestModel);
   }
 
   sortByNameOrderType(){
-    if (this.adminFilterRequestModel.sortField === "Name" && this.adminFilterRequestModel.ordType == 1) {return 'asend'}
-    if (this.adminFilterRequestModel.sortField === "Name" && this.adminFilterRequestModel.ordType == -1) {return 'desend'}
+    if ((this.adminFilterRequestModel.sorField === "studfullnamear" || this.adminFilterRequestModel.sorField === "studfullnameen") && this.adminFilterRequestModel.ordType == 1) {return 'asend'}
+    if ((this.adminFilterRequestModel.sorField === "studfullnamear" || this.adminFilterRequestModel.sorField === "studfullnameen") &&  this.adminFilterRequestModel.ordType == -1) {return 'desend'}
 
     return '';
   }
 
   sortByCreatedOnOrderType(){
-    if (this.adminFilterRequestModel.sortField === "CreatedOn" && this.adminFilterRequestModel.ordType == 1) {return 'asend'}
-    if (this.adminFilterRequestModel.sortField === "CreatedOn" && this.adminFilterRequestModel.ordType == -1) {return 'desend'}
+    if (this.adminFilterRequestModel.sorField === "CreatedOn" && this.adminFilterRequestModel.ordType == 1) {return 'asend'}
+    if (this.adminFilterRequestModel.sorField === "CreatedOn" && this.adminFilterRequestModel.ordType == -1) {return 'desend'}
 
     return '';
   }
