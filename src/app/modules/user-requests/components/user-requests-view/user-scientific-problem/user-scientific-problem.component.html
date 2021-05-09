@@ -1,2 +1,25 @@
+<div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="row">
+        <div class="col-lg-2 col-lg-2 col-lg-2">
+            <h3 > 
+                {{ 'QUESTION_BANK.ADD_SCIENTIFIC_PROBLEM' | translate }}
+            </h3>    
+        </div>     
+        
+        <div class="col-lg-2 col-lg-2 col-lg-2 add_question">
+            <a (click)="newScientificProblem()" > 
+                <span class="link_Add ">  {{ 'QUESTION_BANK.ADD_SCIENTIFIC_PROBLEM' | translate }}
+                <img  src="../../../../../../assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
+            </span>
+            </a>
+        </div>   
+
+        <div class="offset-cu-21 col-lg-4 col-lg-4 col-lg-4">
+            <app-search-input (searchTerm)=searchQuestions($event)></app-search-input>    
+        </div>   
+    </div>
+</div>
+
+
 <app-scientific-problems-grid [items]='scientificProblemData'></app-scientific-problems-grid>
 

@@ -10,10 +10,11 @@ import { UserRequestsCategoriesViewComponent } from './components/user-requests-
 import { UserRequestsRoutingModule } from './user-requests-routing.module';
 import { UserWithdrawalRequestsComponent } from './components/user-requests-view/user-withdrawal-requests/user-withdrawal-requests.component';
 import { UserJoinRequestsComponent } from './components/user-requests-view/user-join-requests/user-join-requests.component';
+import { AddScientificProblemComponent } from './components/user-requests-view/add-scientific-problem/add-scientific-problem.component';
 
 
 @NgModule({
-  declarations: [UserRequestsViewComponent , UserRequestsCategoriesViewComponent , UserWithdrawalRequestsComponent , UserJoinRequestsComponent, UserScientificProblemComponent],
+  declarations: [UserRequestsViewComponent , UserRequestsCategoriesViewComponent , UserWithdrawalRequestsComponent , UserJoinRequestsComponent, UserScientificProblemComponent, AddScientificProblemComponent],
   imports: [
     SharedModule,
     FormsModule,

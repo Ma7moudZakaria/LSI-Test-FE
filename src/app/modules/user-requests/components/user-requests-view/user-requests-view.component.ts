@@ -13,10 +13,12 @@ export class UserRequestsViewComponent implements OnInit {
   selectedCategoryId = {  userRequestNum : "" , nameAr : "" , nameEn : "" };
   categoryId: string | undefined;
   inputCategoryId: string | undefined;
-
+  showAddscientificProblemForm = false;
   showScientificProbreqs:boolean = false;
   showJoinReqs:boolean = true;
   showWithdrawalReqs:boolean = false;
+
+  scientificProblem: string | undefined;
   
   constructor(public translate: TranslateService,
     private languageService: LanguageService) {
@@ -63,5 +65,14 @@ export class UserRequestsViewComponent implements OnInit {
 
   setInputCategoryId(event: any) {
     this.inputCategoryId = event;
+  }
+
+
+  openScientificProblem(event: boolean) {
+    this.showAddscientificProblemForm = event;
+  }
+
+  closeScientificProblem(event: boolean) {
+    this.showAddscientificProblemForm = event;
   }
 }

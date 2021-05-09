@@ -1,6 +1,4 @@
 
-<h1>user requestsd view</h1>
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-12 pl-0">
@@ -9,7 +7,7 @@
             </app-user-requests-categories-view>
         </div>
         <div class="col-lg-9  col-md-9 col-sm-12 pl-0"*ngIf='showScientificProbreqs'> 
-            <app-user-scientific-problem></app-user-scientific-problem>
+            <app-user-scientific-problem (openScientificProblem)="openScientificProblem($event)" ></app-user-scientific-problem>
         </div>
         <div class="col-lg-9  col-md-9 col-sm-12 pl-0" *ngIf='showJoinReqs'>
             <app-user-join-requests></app-user-join-requests>
@@ -21,12 +19,12 @@
        
     </div>
 
-    
+    <div class="overlay" *ngIf="showAddscientificProblemForm">
+        <app-add-scientific-problem 
+        (closeScientificProblem)='closeScientificProblem($event)'
+        ></app-add-scientific-problem>
+    </div>
+
 </div>
 
 
-
-
-
- 
-.
