@@ -76,11 +76,11 @@
         
     }
 
-        &:first-child{
-            background-color:#CB9118 !important;
-            color: #FFFFFF !important;
-            border: 1px solid #CB9118;
-        } 
+        // &:first-child{
+        //     background-color:#CB9118 !important;
+        //     color: #FFFFFF !important;
+        //     border: 1px solid #CB9118;
+        // } 
 
         &.active .fa-trash-alt , &.active  .fa-pencil-alt
         ,&:hover .fa-trash-alt , &:hover .fa-pencil-alt
