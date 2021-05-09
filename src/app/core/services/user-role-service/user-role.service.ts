@@ -33,42 +33,5 @@ export class UserRoleService {
     if (res) {return true}
     return false;
   }
-  isAdminOrStudent(){
-      let res = this.localUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.roles.Admin.toString() 
-      || x.roleNo == this.roles.SuperAdmin.toString()
-      || x.roleNo == this.roles.Supervisor.toString()
-      || x.roleNo == this.roles.TechnicalSupport.toString()
-      || x.roleNo == this.roles.Student.toString()); 
-   if (res) {return true}
-   return false;
-   // return this.isAdmin() || this.isStudent();
-  }
-  isAdminOrTeacher(){
-    let res = this.localUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.roles.Admin.toString() 
-        || x.roleNo == this.roles.SuperAdmin.toString()
-        || x.roleNo == this.roles.Supervisor.toString()
-        || x.roleNo == this.roles.TechnicalSupport.toString()
-        ||x.roleNo == this.roles.Teacher.toString()); 
-    if (res) {return true}
-    return false;
-   // return this.isAdmin() || this.isTeacher();
-  }
-  isAdminOrStudentOrTeacher(){
-    let res = this.localUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.roles.Admin.toString() 
-        || x.roleNo == this.roles.SuperAdmin.toString()
-        || x.roleNo == this.roles.Supervisor.toString()
-        || x.roleNo == this.roles.TechnicalSupport.toString()
-        || x.roleNo == this.roles.Teacher.toString()
-        || x.roleNo == this.roles.Student.toString()); 
-    if (res) {return true}
-    return false;
-  //  return this.isAdmin() || this.isStudent() || this.isTeacher();
-  }
-  isTeacherOrStudent(){
-    let res = this.localUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.roles.Teacher.toString()
-                                           || x.roleNo == this.roles.Student.toString()); 
-    if (res) {return true}
-    return false;
-   // return this.isTeacher() || this.isStudent();
-  }
+  
 }
