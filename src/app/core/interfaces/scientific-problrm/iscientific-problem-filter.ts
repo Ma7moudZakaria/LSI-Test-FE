@@ -1,6 +1,6 @@
 export interface IScientificProblemFilter {
-    filterText?: string,
-    progId?: string,
-    skip?: number,
-    take?: number
+    filterText?: string;
+    progId?: string;
+    skip?: number;
+    take?: number;
 }

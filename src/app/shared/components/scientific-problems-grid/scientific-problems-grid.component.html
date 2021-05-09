@@ -1,3 +1,8 @@
+<div class="row">
+    <ngb-pagination [collectionSize]="totalCount" [(page)]="page" [pageSize]="take" [rotate]="true" [boundaryLinks]="true" (pageChange)="onPageChange()"></ngb-pagination>
+    <button >name</button>
+    <button >date</button>
+</div>
 <mat-grid-list cols="{{numberPerRow}}" rowHeight="3:3">
     <ng-container *ngIf="userMode == ScientificProblemUsers.Student">
         <mat-grid-tile *ngFor='let item of items' >
