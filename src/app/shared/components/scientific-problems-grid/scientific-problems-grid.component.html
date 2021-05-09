@@ -5,7 +5,15 @@
 </div>
 <div class="row" *ngIf='userMode == scientificProblemUsers.Student'>
     <ngb-pagination [collectionSize]="totalCount" [(page)]="page" [pageSize]="userFilterRequestModel.take" [rotate]="true" [boundaryLinks]="true" (pageChange)="onUserPageChange()"></ngb-pagination>
-    <button (click)='userSortByCreatedOn()'>create on <span *ngIf='userSortByCreatedOnOrderType()'>asend </span> <span *ngIf='!userSortByCreatedOnOrderType()'>desend </span></button>
+    <button  class="asend_desend_btn" (click)='userSortByCreatedOn()'>
+        {{'User_Requests.SORT_DATE' | translate}}
+        <span   *ngIf='userSortByCreatedOnOrderType()'>
+            <img  class="asend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+         </span> 
+        <span   *ngIf='!userSortByCreatedOnOrderType()'>
+            <img  class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+        </span>
+    </button>
 </div>
 <mat-grid-list cols="{{numberPerRow}}" rowHeight="3:3">
     <ng-container *ngIf="userMode == scientificProblemUsers.Student">

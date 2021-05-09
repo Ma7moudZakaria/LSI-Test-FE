@@ -402,7 +402,7 @@
       </div>
       <div class="col-lg-9  col-md-9 col-sm-12 " style="background-color:#e6e6e6;">
          <div class="row"  >
-          <div class="col-4 mt-3" *ngFor="let card of card_scientificProblem">
+          <div class="col-4 mt-3" *ngFor="let card of student_card_scientificProblem">
             <app-card-student-scientific-problem
             [scientificProblem] ='card'
 
@@ -497,6 +497,11 @@
 </div>
 
 <!--scientific problem grid-->
-<app-scientific-problems-grid [items]='card_scientificProblem'></app-scientific-problems-grid>
+<app-scientific-problems-grid [items]='student_card_scientificProblem'></app-scientific-problems-grid>
 <app-scientific-problems-grid [items]='admin_card_scientificProblem' [numberPerRow]='4' 
 [userMode]= 'adminCard' ></app-scientific-problems-grid>
+
+<!-- not-auth  -->
+<div class="container-fluid">
+<app-not-auth></app-not-auth>
+</div>

@@ -19,11 +19,11 @@ import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/compon
 })
 export class UserScientificProblemComponent implements OnInit {
 
-  scientificProblemData = {} as IScientificProblem []; 
+  scientificProblemData = {} as IScientificProblem[];
   resMessage: BaseMessageModel = {};
   currentUser: IUser | undefined;
   totalCount = 0;
-  userScientificProblemFilterModel:IUserScientificProblemFilter = {skip:0,take:0};
+  userScientificProblemFilterModel: IUserScientificProblemFilter = { skip: 0, take: 0 };
   @Output() openScientificProblem = new EventEmitter<boolean>();
 
   constructor(
@@ -34,25 +34,25 @@ export class UserScientificProblemComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
 
-    this.userScientificProblemFilterModel= {
-      usrId : this.currentUser.id, oType: true, skip: 0, take:9
+    this.userScientificProblemFilterModel = {
+      usrId: this.currentUser.id, oType: true, skip: 0, take: 9
     }
     this.getScientificProblemByUserId();
   }
 
-  getScientificProblemByUserId(){
-    this.scientificProblemService.getScientificProblem(this.userScientificProblemFilterModel).subscribe(res => {      
+  getScientificProblemByUserId() {
+    this.scientificProblemService.getScientificProblem(this.userScientificProblemFilterModel).subscribe(res => {
       if (res.isSuccess) {
-        this.scientificProblemData = res.data as IScientificProblem[]; 
-        this.scientificProblemData.forEach(function(item) {
-          item.scCreationDate = item.scCreationDate ? new Date(item.scCreationDate).toDateString(): '';
-        });   
+        this.scientificProblemData = res.data as IScientificProblem[];
+        this.scientificProblemData.forEach(function (item) {
+          item.scCreationDate = item.scCreationDate ? new Date(item.scCreationDate).toDateString() : '';
+        });
         this.totalCount = res.count ? res.count : 0;
       }
       else {
         this.resMessage = {
-        message: res.message,
-        type: BaseConstantModel.DANGER_TYPE
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
         }
       }
     }, error => {
@@ -63,22 +63,22 @@ export class UserScientificProblemComponent implements OnInit {
     });
   }
 
-  searchScProb(text?:string){
-    this.scientificProblemData=[];
+  searchScProb(text?: string) {
+    this.scientificProblemData = [];
 
     this.userScientificProblemFilterModel.filterText = text;
     this.getScientificProblemByUserId();
-   
+
   }
 
-  filterRequest(event:IUserScientificProblemFilter){
+  filterRequest(event: IUserScientificProblemFilter) {
     this.userScientificProblemFilterModel = event;
     this.getScientificProblemByUserId();
   }
 
   newScientificProblem() {
     this.openScientificProblem.emit(true);
-    
+
   }
 
   deleteUserScProb(id:string){

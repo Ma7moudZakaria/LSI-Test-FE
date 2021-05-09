@@ -49,7 +49,7 @@ export class SharedMaterialComponent implements OnInit {
   }
   passdata: Date = new Date();
   voiceUrl: string | undefined;
-  adminCard:ScientificProblemUsersEnum = ScientificProblemUsersEnum.Admin;
+  adminCard: ScientificProblemUsersEnum = ScientificProblemUsersEnum.Admin;
   constructor(public dialog: MatDialog, public domSanitizer: DomSanitizer, private attachmentService: AttachmentsService) { }
 
   ngOnInit(): void {
@@ -130,7 +130,7 @@ export class SharedMaterialComponent implements OnInit {
     { title: 'title CDE', content: 'content CDE', imgPath: '../../../assets/images/mic.svg' },
     { title: 'title EFG', content: 'content EFG', imgPath: '../../../assets/images/book.svg' }
   ]
-  card_scientificProblem: IScientificProblem[] = [
+  student_card_scientificProblem: IScientificProblem[] = [
     { question: 'gsgs sfsegf arfawr 1', reply: 'gry qr qarq ', huffazNo: 4150, scCreationDate: '03-05-1442' },
     { question: 'aerar ey wywww t1', reply: 'content content erfawera ', huffazNo: 4050, scCreationDate: '03-05-1442' },
     { question: 'aerar ey wywww t1', reply: 'content se aerfarf content', huffazNo: 4050, scCreationDate: '03-05-1442' },
