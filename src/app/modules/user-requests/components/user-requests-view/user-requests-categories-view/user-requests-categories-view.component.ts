@@ -27,18 +27,18 @@ export class UserRequestsCategoriesViewComponent implements OnInit {
   langEnum = LanguageEnum;
   currentUser: IUser | undefined;
   role = RoleEnum;
+  selectedIndex: Number = 0;
 
   constructor(public translate: TranslateService, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
-    // this.selectedIndex = 0;
   }
 
-  selectedIndex?: Number;
+  
   loadUserRequests(item : IUserRequestsCategory) {
     this.selectedCategoryId.emit(item.userRequestNum);
-    this.selectedIndex = this.selectedIndex;
+   // this.selectedIndex = this.selectedIndex;
   }
 }
