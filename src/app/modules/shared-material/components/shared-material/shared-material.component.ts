@@ -12,6 +12,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { AttachmentsService } from 'src/app/core/services/attachments-services/attachments.service';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { IScientificProblem } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem';
+import { ScientificProblemUsersEnum } from 'src/app/core/enums/scientific-problem-users-enum.enum';
 
 export interface DragDropListItem {
   id: string;
@@ -48,8 +49,7 @@ export class SharedMaterialComponent implements OnInit {
   }
   passdata: Date = new Date();
   voiceUrl: string | undefined;
-  adminCard: string = 'adminCard';
-  studentCard: string = 'studentCard';
+  adminCard:ScientificProblemUsersEnum = ScientificProblemUsersEnum.Admin;
   constructor(public dialog: MatDialog, public domSanitizer: DomSanitizer, private attachmentService: AttachmentsService) { }
 
   ngOnInit(): void {

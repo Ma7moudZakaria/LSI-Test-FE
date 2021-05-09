@@ -404,11 +404,12 @@
   "Role_Management": {
     "TITLE": "المجموعات",
     "ADD_GROUP": "إضافة مجموعة",
-    "USERS": "الافراد",
-    "ROLES": "الصلاحيات",
-    "GROUPNAMEARABIC": "اسم المجموعة (عربي)",
-    "CREATENEWGROUP": "إنشاء مجموعة جديدة",
-    "GROUPNAMEENGLISH": "اسم المجموعة (انجليزي)"
+    "USERS":"الافراد",
+    "ROLES":"الصلاحيات",
+    "GROUPNAMEARABIC":"اسم المجموعة (عربي)",
+    "CREATENEWGROUP":"إنشاء مجموعة جديدة",
+    "GROUPNAMEENGLISH":"اسم المجموعة (انجليزي)",
+    "INDIVIDUALS":"الافراد"
   },
   "EXAM_FORM": {
     "TITLE": "النماذج",
@@ -422,5 +423,12 @@
     "DGREE": "الدرجة",
     "DURATION_ANSWER": "مدة الاجابة",
     "RIGHT_ANSWER": "الاجابه الصحيحه"
+  },
+  "User_Requests": {
+    "REQUESTS": "الطلبات",
+    "NO_DATA": "لا يوجد بيانات"
+  },
+  "ADMIN_MESSAGING":{
+    "SCIENTIFIC_PROBLEM":"الإشكالات العلمية"
   }
 }

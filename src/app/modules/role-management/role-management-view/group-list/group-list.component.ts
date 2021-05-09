@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit,EventEmitter, Output, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output, OnChanges, SimpleChanges } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { Role } from 'src/app/core/interfaces/role-management-interfaces/role-management';
@@ -8,7 +8,8 @@ import { Role } from 'src/app/core/interfaces/role-management-interfaces/role-ma
   templateUrl: './group-list.component.html',
   styleUrls: ['./group-list.component.scss']
 })
-export class GroupListComponent implements OnInit,OnChanges {
+export class GroupListComponent implements OnInit {
+
   @Input() listRole!: Role[];
   @Input() selectedRoleId?: string;
   @Output() deleteRole = new EventEmitter<string>();
@@ -19,31 +20,29 @@ export class GroupListComponent implements OnInit,OnChanges {
   langEnum = LanguageEnum;
 
   constructor(public translate: TranslateService) { }
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.listRole&&this.listRole.length>0) {
-      this.getDetails(this.listRole[0].id)
-    } 
-  }
- 
 
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   if (changes.listRole && this.listRole.length > 0) {
+  //     this.getDetails(this.listRole[0].id)
+  //   }
+  // }
 
   ngOnInit(): void {
     // console.log("this.listRole",this.listRole);
-   
+
   }
-  showAdd(){
+  showAdd() {
     this.showAddGroup?.emit(true)
   }
-  loadPrograms(event :string){
+  loadPrograms(event: string) {
     this.filterRole?.emit(event)
   }
 
-  delete(id:string){
+  delete(id: string) {
     this.deleteRole?.emit(id);
-    // console.log('deleteRole');
   }
 
-  getDetails(id:string){
+  getDetails(id: string) {
     this.getRoleDetails?.emit(id)
   }
 }

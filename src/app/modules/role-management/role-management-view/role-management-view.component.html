@@ -1,35 +1,36 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3">
-            <app-group-list (showAddGroup)="showAddGroup($event)" [selectedRoleId]="selectedRoleId"  [listRole]="roleList" (getRoleDetails)="getRoleDetails($event)" (filterRole)="filterRole($event)" (deleteRole)="deleteRole($event)"></app-group-list>
+            <app-group-list (showAddGroup)="showAddGroup($event)" [selectedRoleId]="selectedRoleId"
+                [listRole]="roleList" (getRoleDetails)="getRoleDetails($event)" (filterRole)="filterRole($event)"
+                (deleteRole)="deleteRole($event)"></app-group-list>
         </div>
         <div class="col-md-9">
             <div class="row group_header">
-
-                <div class="item_group" (click)="showtap='USERS'" [ngClass]="{'item_group_active': showtap=='USERS'}" >
-                    {{'Role_Management.USERS' | translate}}
+                <div class="item_group" (click)="showTap = 'USERS'"
+                    [ngClass]="{ item_group_active: showTap == 'USERS' }">
+                    {{ "Role_Management.USERS" | translate }}
                 </div>
-                <div class="item_group" (click)="showtap='ROLES'" [ngClass]="{'item_group_active': showtap=='ROLES'}" >
-                    {{'Role_Management.ROLES' | translate}}
+                <div class="item_group" (click)="showTap = 'ROLES'"
+                    [ngClass]="{ item_group_active: showTap == 'ROLES' }">
+                    {{ "Role_Management.ROLES" | translate }}
                 </div>
-
             </div>
             <!-- {{selectedRoleId | json}} -->
-         
-           <div class="row">
-                <app-group-roles style="width: 100%;" [selectedRoleId]="selectedRoleId" [selectedRoles]="selectedRoles"  [listRoles]="listRolesPermissions"  *ngIf="showtap=='ROLES'" ></app-group-roles>
-                <app-group-users style="width: 100%;" [listUsers]="listRoleUesrs" *ngIf="showtap=='USERS'"></app-group-users>
-           </div>
+           
+            <div class="row">
+                <app-group-roles style="width: 100%" [selectedRoleId]="selectedRoleId" [selectedRoles]="selectedRoles"
+                    [listRoles]="listRolesPermissions" *ngIf="showTap == 'ROLES'"></app-group-roles>
 
-
-
-          
-            
+                <app-group-users style="width: 100%" (addUserToRole)="addUserToRole($event)"
+                (deleteUser)="deleteUser($event)" (saveUsersRole)="saveUsersRole()"
+                    [UsersNotBelongToRole]="UsersNotBelongToRole" [selectedRoleId]="selectedRoleId"
+                    [listUsers]="listRoleUesrs" *ngIf="showTap == 'USERS'"></app-group-users>
+            </div>
         </div>
     </div>
 
-    <div class="overlay" *ngIf="showAddGroupform">
-        <app-add-group (hideform)="showAddGroup($event)" ></app-add-group>
+    <div class="overlay" *ngIf="showAddGroupForm">
+        <app-add-group (hideform)="showAddGroup($event)"></app-add-group>
     </div>
-
 </div>

@@ -497,9 +497,6 @@
 </div>
 
 <!--scientific problem grid-->
-<!-- <app-scientific-problems-grid [items]='student_card_scientificProblem' [numberPerRow]='4' [selectComponent]= 'studentCard' ></app-scientific-problems-grid> -->
-<app-scientific-problems-grid 
-[items]='admin_card_scientificProblem'
- [numberPerRow]='4' 
-[selectComponent]= 'adminCard'>
-</app-scientific-problems-grid>
+<app-scientific-problems-grid [items]='student_card_scientificProblem'></app-scientific-problems-grid>
+<app-scientific-problems-grid [items]='admin_card_scientificProblem' [numberPerRow]='4' 
+[userMode]= 'adminCard' ></app-scientific-problems-grid>

@@ -1,44 +1,50 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { RoleManagementService } from 'src/app/core/services/role-management/role-management.service';
 
 @Component({
   selector: 'app-add-group',
   templateUrl: './add-group.component.html',
-  styleUrls: ['./add-group.component.scss']
+  styleUrls: ['./add-group.component.scss'],
 })
 export class AddGroupComponent implements OnInit {
   DataForm!: FormGroup;
-  isSubmit:boolean=false;
+  isSubmit: boolean = false;
   @Output() hideform = new EventEmitter<boolean>();
-  constructor(private formBuilder: FormBuilder,private RoleManagement:RoleManagementService) { }
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private RoleManagement: RoleManagementService,
+    private _alertify: AlertifyService
+  ) { }
 
   ngOnInit(): void {
-    this.buildForm()
+    this.buildForm();
   }
   buildForm() {
-    this.DataForm = this.formBuilder.group(
-      {
-        arRoleName:  ['', Validators.required],
-        enRoleName:  ['', Validators.required],
-      
-      }
-    );
+    this.DataForm = this.formBuilder.group({
+      arRoleName: ['', Validators.required],
+      enRoleName: ['', Validators.required],
+    });
   }
 
   get fc() {
     return this.DataForm.controls;
   }
-  saveData(){
+
+  saveData() {
     this.isSubmit = true;
     if (this.DataForm.invalid) {
       return;
     }
-    this.RoleManagement.createRole(this.DataForm.value).subscribe(res=>{
-      this.backList()
-    })
+    this.RoleManagement.createRole(this.DataForm.value).subscribe((res) => {
+      this._alertify.success(res.message || "");
+      this.backList();
+    });
   }
-  backList(){
-    this.hideform?.emit(false)
+
+  backList() {
+    this.hideform?.emit(false);
   }
 }

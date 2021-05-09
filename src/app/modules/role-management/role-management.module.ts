@@ -9,15 +9,24 @@ import { GroupListComponent } from './role-management-view/group-list/group-list
 import { GroupUsersComponent } from './role-management-view/group-users/group-users.component';
 import { GroupRolesComponent } from './role-management-view/group-roles/group-roles.component';
 import { GroupUsersCardComponent } from './role-management-view/group-users-card/group-users-card.component';
-import {MatTreeModule} from '@angular/material/tree';
+import { MatTreeModule } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
 import { AddGroupComponent } from './role-management-view/add-group/add-group.component';
-import { RoleComponent } from './role-management-view/role/role.component';
-
-
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { InputSearchListComponent } from './role-management-view/input-search-list/input-search-list.component';
+import { RoleComponent } from './role-management-view/group-roles/role/role.component';
 
 @NgModule({
-  declarations: [RoleManagementViewComponent, GroupListComponent, GroupUsersComponent, GroupRolesComponent, GroupUsersCardComponent, AddGroupComponent, RoleComponent],
+  declarations: [
+    RoleManagementViewComponent,
+    GroupListComponent,
+    GroupUsersComponent,
+    GroupRolesComponent,
+    GroupUsersCardComponent,
+    AddGroupComponent,
+    RoleComponent,
+    InputSearchListComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -25,8 +34,9 @@ import { RoleComponent } from './role-management-view/role/role.component';
     TranslateModule,
     MatTreeModule,
     MatIconModule,
+    MatAutocompleteModule,
     SharedModule,
-    RoleManagementRoutingModule
-  ]
+    RoleManagementRoutingModule,
+  ],
 })
-export class RoleManagementModule { }
+export class RoleManagementModule {}

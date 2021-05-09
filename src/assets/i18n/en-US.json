@@ -411,7 +411,8 @@
     "ROLES": "Roles",
     "GROUPNAMEARABIC": "Group name (Arabic)",
     "CREATENEWGROUP": "Create new group",
-    "GROUPNAMEENGLISH": "Group name (English)"
+    "GROUPNAMEENGLISH": "Group name (English)",
+    "INDIVIDUALS":"Individuals"
   },
   "EXAM_FORM": {
     "TITLE": "Forms",
@@ -425,5 +426,12 @@
     "DGREE": "Dgree",
     "DURATION_ANSWER": "Duration Answer",
     "RIGHT_ANSWER": "Right Answer"
+  },
+  "User_Requests": {
+    "REQUESTS": "Requests",
+    "NO_DATA": "No Data"
+  },
+  "ADMIN_MESSAGING":{
+    "SCIENTIFIC_PROBLEM":"Scientific Problems"
   }
 }
