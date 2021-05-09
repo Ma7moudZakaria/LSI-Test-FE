@@ -34,6 +34,7 @@ import { VoiceRecordingComponent } from './components/voice-recording/voice-reco
 import { ScientificProblemsGridComponent } from './components/scientific-problems-grid/scientific-problems-grid.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { NotAuthComponent } from './components/not-auth/not-auth.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -44,7 +45,7 @@ import { NotAuthComponent } from './components/not-auth/not-auth.component';
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,
-    MatIconModule, RatingModule, FormsModule, MatCheckboxModule, MatRadioModule, MatGridListModule
+    MatIconModule, RatingModule, FormsModule, MatCheckboxModule, MatRadioModule, MatGridListModule, NgbModule
   ],
   exports: [
     MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule, Ng2TelInputModule,
