@@ -3,6 +3,6 @@ export interface IScientificProblemFilter {
     progId?: string;
     sortField?:string;
     ordType?:number;
-    skip?: number;
-    take?: number;
+    skip: number;
+    take: number;
 }

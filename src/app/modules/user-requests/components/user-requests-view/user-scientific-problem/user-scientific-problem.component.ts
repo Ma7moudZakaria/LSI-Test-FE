@@ -2,6 +2,7 @@ import { EventEmitter } from '@angular/core';
 import { Output } from '@angular/core';
 import { Component, OnInit} from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { take } from 'rxjs/operators';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { IScientificProblem } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem';
 import { IUserScientificProblemFilter } from 'src/app/core/interfaces/scientific-problrm/iuser-scientific-problem-filter';
@@ -19,7 +20,7 @@ export class UserScientificProblemComponent implements OnInit {
   resMessage: BaseMessageModel = {};
   currentUser: IUser | undefined;
   totalCount = 0;
-  userScientificProblemFilterModel:IUserScientificProblemFilter = {};
+  userScientificProblemFilterModel:IUserScientificProblemFilter = {skip:0,take:0};
   @Output() openScientificProblem = new EventEmitter<boolean>();
 
   constructor(
@@ -31,7 +32,7 @@ export class UserScientificProblemComponent implements OnInit {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
 
     this.userScientificProblemFilterModel= {
-      usrId : this.currentUser.id, oType: true, skip: 0, take:1
+      usrId : this.currentUser.id, oType: true, skip: 0, take:9
     }
     this.getScientificProblemByUserId();
   }

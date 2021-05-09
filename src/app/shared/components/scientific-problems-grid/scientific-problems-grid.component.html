@@ -1,10 +1,10 @@
 <div class="row" *ngIf='userMode != scientificProblemUsers.Student'>
-    <ngb-pagination [collectionSize]="totalCount" [(page)]="page" [pageSize]="take" [rotate]="true" [boundaryLinks]="true" (pageChange)="onAdminPageChange()"></ngb-pagination>
+    <ngb-pagination [collectionSize]="totalCount" [(page)]="page" [pageSize]="adminFilterRequestModel.take" [rotate]="true" [boundaryLinks]="true" (pageChange)="onAdminPageChange()"></ngb-pagination>
     <button (click)='sortByName()'>name <span *ngIf='this.adminFilterRequestModel.sortField != "Name"'>default </span> <span *ngIf='sortByNameOrderType() == "asend"'>asend </span> <span *ngIf='sortByNameOrderType() == "desend"'>desend </span></button>
     <button (click)='sortByCreatedOn()'>create on <span *ngIf='this.adminFilterRequestModel.sortField != "CreatedOn"'>default </span> <span *ngIf='sortByCreatedOnOrderType() == "asend"'>asend </span> <span *ngIf='sortByCreatedOnOrderType() == "desend"'>desend </span></button>
 </div>
 <div class="row" *ngIf='userMode == scientificProblemUsers.Student'>
-    <ngb-pagination [collectionSize]="totalCount" [(page)]="page" [pageSize]="take" [rotate]="true" [boundaryLinks]="true" (pageChange)="onUserPageChange()"></ngb-pagination>
+    <ngb-pagination [collectionSize]="totalCount" [(page)]="page" [pageSize]="userFilterRequestModel.take" [rotate]="true" [boundaryLinks]="true" (pageChange)="onUserPageChange()"></ngb-pagination>
     <button (click)='userSortByCreatedOn()'>create on <span *ngIf='userSortByCreatedOnOrderType()'>asend </span> <span *ngIf='!userSortByCreatedOnOrderType()'>desend </span></button>
 </div>
 <mat-grid-list cols="{{numberPerRow}}" rowHeight="3:3">
