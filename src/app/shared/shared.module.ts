@@ -33,13 +33,14 @@ import { FormsModule } from '@angular/forms';
 import { VoiceRecordingComponent } from './components/voice-recording/voice-recording.component';
 import { ScientificProblemsGridComponent } from './components/scientific-problems-grid/scientific-problems-grid.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { NotAuthComponent } from './components/not-auth/not-auth.component';
 
 
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
     SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,
     StudentNumbersComponent, StudentsRatingComponent, CardStudentScientificProblemComponent, CardAdminScientificProblemComponent,
-    QuestionTemplateComponent, VoiceRecordingComponent, ScientificProblemsGridComponent],
+    QuestionTemplateComponent, VoiceRecordingComponent, ScientificProblemsGridComponent, NotAuthComponent],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,
@@ -51,7 +52,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent,
     UsersCounterComponent, KhatmeenStudentsComponent, StudentNumbersComponent, StudentsRatingComponent,
     CardStudentScientificProblemComponent, QuestionTemplateComponent, VoiceRecordingComponent, MatGridListModule,
-    ScientificProblemsGridComponent, CardAdminScientificProblemComponent
+    ScientificProblemsGridComponent, CardAdminScientificProblemComponent, NotAuthComponent
   ]
 })
 export class SharedModule { }
