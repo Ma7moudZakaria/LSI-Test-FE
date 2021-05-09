@@ -1,5 +1,5 @@
 import { Data } from '@angular/router';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IScientificProblem } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem';
 
 @Component({
@@ -11,8 +11,13 @@ export class CardStudentScientificProblemComponent implements OnInit {
 
   constructor() { }
   @Input() scientificProblem: IScientificProblem = {};
+  @Output() deleteScientificProblem = new EventEmitter<string>();
 
   ngOnInit(): void {
+  }
+
+  deleteScientificProblemEve(){
+    this.deleteScientificProblem.emit(this.scientificProblem.id);
   }
 
 }

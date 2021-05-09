@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IScientificProblem } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem';
+import { IScientificProblemGridItems } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem-grid-items';
 
 @Component({
   selector: 'app-card-admin-scientific-problem',
@@ -8,8 +11,10 @@ import { IScientificProblem } from 'src/app/core/interfaces/scientific-problrm/i
 })
 export class CardAdminScientificProblemComponent implements OnInit {
 
-  constructor() { }
-  @Input() scientificProblem: IScientificProblem = {};
+  langEnum = LanguageEnum;
+
+  constructor(public translate:TranslateService) { }
+  @Input() scientificProblem: IScientificProblemGridItems = {};
 
   ngOnInit(): void {
   }

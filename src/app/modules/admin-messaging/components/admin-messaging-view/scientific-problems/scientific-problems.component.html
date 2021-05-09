@@ -17,7 +17,7 @@
 </div>
   <div class="row">
     <div class="col-12">
-      <app-scientific-problems-grid (adminFilterEvent)='filterRequest($event)' [totalCount]='totalCount' [items]='scientificProblems' 
+      <app-scientific-problems-grid (adminFilterEvent)='filterRequest($event)' [totalCount]='totalCount' [adminItems]='scientificProblems' 
       [numberPerRow]='numberItemsPerRow' [userMode]='adminCard' [adminFilterRequestModel] = 'scientificProblemFilter'></app-scientific-problems-grid>
     </div>
   </div>
