@@ -640,6 +640,10 @@ display: none;
       display: none !important;
       }
     }
+    .HijriGregorianDatePicker  hijri-date-picker   ngb-datepicker.dropdown-menu{
+      transform: translate(50px, 38px)!important;
+      transition: all linear;
+    }
   // mat-dialog-container 
 .mat-dialog-container {
   direction: initial;
