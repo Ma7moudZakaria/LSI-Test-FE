@@ -10,7 +10,13 @@
   margin-top: 1rem;
   margin-bottom: 0;
 }
-
+.internal_scroll_list_group{
+   height: 555px;
+    overflow-y: auto;
+    padding-left: 0.5rem;
+    overflow-x: hidden;
+    padding-top: 0.7rem;
+}
 .link_Add{
     color:$icon_input;
     margin-bottom: 3rem;

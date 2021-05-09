@@ -4,7 +4,9 @@
 html {
   font-size:16px;
 }
-
+body:lang(ar){
+  text-align: right;
+}
 @media (max-width: 768px) {
   html {
     font-size: 13px;
@@ -723,10 +725,24 @@ display: none;
 .link_Add{
   cursor: pointer;
 }
+.offset-2:lang(en) {
+  margin-left: 16.666667%;
+}
+.offset-2:lang(ar) {
+  margin-right: 16.666667%;
+  margin-left: 0;
+
+}
 /******************
 pagination
 /***********************/
+.pagination:lang(ar)
+,
+.pagination:lang(en)
 
+{
+  padding-inline-start: 20px;
+}
 .page-item.active .page-link {
     z-index: 3;
     color: #fff;
@@ -738,7 +754,7 @@ pagination
     background-color: #CB911826;
     border: 1px solid #CB911826;
     color: #CB9118;
-    border-radius: 0.75rem;
+    border-radius: 0.75rem !important;
     margin: 0 0.2rem;
 
 }

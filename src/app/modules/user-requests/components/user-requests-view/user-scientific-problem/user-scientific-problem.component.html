@@ -1,15 +1,14 @@
 
 <div class="scientific-problem">
-
 <div class="col-lg-12 col-md-12 col-sm-12">
     <div class="row">
-        <div class="col-lg-2 col-lg-2 col-lg-2">
+        <div class="col-3">
             <h3 > 
                 {{ 'QUESTION_BANK.ADD_SCIENTIFIC_PROBLEM' | translate }}
             </h3>    
         </div>     
         
-        <div class="col-lg-2 col-lg-2 col-lg-2 add_question">
+        <div class="col-3 add_question">
             <a (click)="newScientificProblem()" > 
                 <span class="link_Add ">  {{ 'QUESTION_BANK.ADD_SCIENTIFIC_PROBLEM' | translate }}
                 <img  src="../../../../../../assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
@@ -17,17 +16,19 @@
             </a>
         </div>   
 
-        <div class="offset-cu-21 col-lg-4 col-lg-4 col-lg-4">
+        <div class="offset-2 col-4">
             <app-search-input (searchTerm)=searchScProb($event)></app-search-input>    
         </div>   
     </div>
 </div>
-
 <div *ngIf='!scientificProblemData || scientificProblemData.length === 0'>
     {{ 'GENERAL.NO_DATA' | translate}}
 </div>
+<section class="internal_scroll_list_group"> 
+
 <app-scientific-problems-grid *ngIf='scientificProblemData && scientificProblemData.length > 0' 
     (userFilterEvent)='filterRequest($event)' [items]='scientificProblemData' [totalCount]='totalCount' 
 [userFilterRequestModel] = 'userScientificProblemFilterModel'></app-scientific-problems-grid>
+</section>
 
 </div>

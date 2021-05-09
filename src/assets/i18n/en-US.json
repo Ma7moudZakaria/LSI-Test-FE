@@ -430,7 +430,8 @@
   },
   "User_Requests": {
     "REQUESTS": "Requests",
-    "NO_DATA": "No Data"
+    "NO_DATA": "No Data",
+    "SORT_DATE": "Sort by date"
   },
   "ADMIN_MESSAGING": {
     "SCIENTIFIC_PROBLEM": "Scientific Problem"

@@ -427,7 +427,8 @@
   },
   "User_Requests": {
     "REQUESTS": "الطلبات",
-    "NO_DATA": "لا يوجد بيانات"
+    "NO_DATA": "لا يوجد بيانات",
+    "SORT_DATE": "ترتيب بالتاريخ"
   },
   "ADMIN_MESSAGING": {
     "SCIENTIFIC_PROBLEM": "إشكال علمى"
