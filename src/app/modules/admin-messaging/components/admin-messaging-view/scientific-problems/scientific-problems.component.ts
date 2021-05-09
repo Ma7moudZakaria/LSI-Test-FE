@@ -62,7 +62,6 @@ export class ScientificProblemsComponent implements OnInit {
 
   filterRequest(event:IScientificProblemFilter){
     this.scientificProblemFilter = event;
-    console.log(this.scientificProblemFilter);
     this.getScientificProblems();
   }
 }

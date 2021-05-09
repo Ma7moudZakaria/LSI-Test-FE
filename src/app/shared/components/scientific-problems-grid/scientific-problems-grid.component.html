@@ -1,15 +1,19 @@
-<div class="row">
+<div class="row" *ngIf='userMode != scientificProblemUsers.Student'>
     <ngb-pagination [collectionSize]="totalCount" [(page)]="page" [pageSize]="take" [rotate]="true" [boundaryLinks]="true" (pageChange)="onAdminPageChange()"></ngb-pagination>
     <button (click)='sortByName()'>name <span *ngIf='this.adminFilterRequestModel.sortField != "Name"'>default </span> <span *ngIf='sortByNameOrderType() == "asend"'>asend </span> <span *ngIf='sortByNameOrderType() == "desend"'>desend </span></button>
     <button (click)='sortByCreatedOn()'>create on <span *ngIf='this.adminFilterRequestModel.sortField != "CreatedOn"'>default </span> <span *ngIf='sortByCreatedOnOrderType() == "asend"'>asend </span> <span *ngIf='sortByCreatedOnOrderType() == "desend"'>desend </span></button>
 </div>
+<div class="row" *ngIf='userMode == scientificProblemUsers.Student'>
+    <ngb-pagination [collectionSize]="totalCount" [(page)]="page" [pageSize]="take" [rotate]="true" [boundaryLinks]="true" (pageChange)="onUserPageChange()"></ngb-pagination>
+    <button (click)='userSortByCreatedOn()'>create on <span *ngIf='userSortByCreatedOnOrderType()'>asend </span> <span *ngIf='!userSortByCreatedOnOrderType()'>desend </span></button>
+</div>
 <mat-grid-list cols="{{numberPerRow}}" rowHeight="3:3">
-    <ng-container *ngIf="userMode == ScientificProblemUsers.Student">
+    <ng-container *ngIf="userMode == scientificProblemUsers.Student">
         <mat-grid-tile *ngFor='let item of items' >
             <app-card-student-scientific-problem class="card" [scientificProblem]='item'></app-card-student-scientific-problem>
         </mat-grid-tile>
     </ng-container>
-    <ng-container *ngIf="userMode == ScientificProblemUsers.Admin">
+    <ng-container *ngIf="userMode == scientificProblemUsers.Admin">
         
         <mat-grid-tile *ngFor='let item of items' >
             <app-card-admin-scientific-problem class="card" [scientificProblem]='item'></app-card-admin-scientific-problem>

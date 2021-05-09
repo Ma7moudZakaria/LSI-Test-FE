@@ -18,7 +18,8 @@ export class UserScientificProblemComponent implements OnInit {
   scientificProblemData = {} as IScientificProblem []; 
   resMessage: BaseMessageModel = {};
   currentUser: IUser | undefined;
-  userScientificProfblemModel:IUserScientificProblemFilter = {};
+  totalCount = 0;
+  userScientificProblemFilterModel:IUserScientificProblemFilter = {};
   @Output() openScientificProblem = new EventEmitter<boolean>();
 
   constructor(
@@ -29,16 +30,20 @@ export class UserScientificProblemComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
 
-    this.userScientificProfblemModel= {
-      usrId : this.currentUser.id, oType: true
+    this.userScientificProblemFilterModel= {
+      usrId : this.currentUser.id, oType: true, skip: 0, take:1
     }
-    this.getScientificProblemByUserId(this.userScientificProfblemModel);
+    this.getScientificProblemByUserId();
   }
 
-  getScientificProblemByUserId(model:IUserScientificProblemFilter){
-    this.scientificProblemService.getScientificProblem(model).subscribe(res => {      
+  getScientificProblemByUserId(){
+    this.scientificProblemService.getScientificProblem(this.userScientificProblemFilterModel).subscribe(res => {      
       if (res.isSuccess) {
-        this.scientificProblemData = res.data as IScientificProblem[];    
+        this.scientificProblemData = res.data as IScientificProblem[]; 
+        this.scientificProblemData.forEach(function(item) {
+          item.scCreationDate = item.scCreationDate ? new Date(item.scCreationDate).toDateString(): '';
+        });   
+        this.totalCount = res.count ? res.count : 0;
       }
       else {
         this.resMessage = {
@@ -54,25 +59,21 @@ export class UserScientificProblemComponent implements OnInit {
     });
   }
 
-  clearFilter() {
-    this.userScientificProfblemModel = {};
-    this.userScientificProfblemModel.skip = 0;
-    this.userScientificProfblemModel.take = 100;
-    this.getScientificProblemByUserId(this.userScientificProfblemModel);
-  }
-
-  searchQuestions(text?:string){
+  searchScProb(text?:string){
     this.scientificProblemData=[];
 
-    this.userScientificProfblemModel= {
-      usrId : this.currentUser?.id, oType: true
-    };
-    this.getScientificProblemByUserId(this.userScientificProfblemModel);
+    this.userScientificProblemFilterModel.filterText = text;
+    this.getScientificProblemByUserId();
    
   }
 
+  filterRequest(event:IUserScientificProblemFilter){
+    this.userScientificProblemFilterModel = event;
+    this.getScientificProblemByUserId();
+  }
 
   newScientificProblem() {
     this.openScientificProblem.emit(true);
+    
   }
 }
