@@ -1,0 +1,18 @@
+.group_header{
+    margin-top: 1.5%;
+    border-bottom:1px solid #CB9118;
+    .item_group{
+        cursor: pointer;
+        background-color: #EBEBEB;
+        font-size: .9rem;
+        color: #828282;
+        text-align: center;
+        margin: 0 4px;
+        padding: 10px 20px;
+        border-radius: 10px 10px 0  0;
+    }
+    .item_group_active{
+        background-color: #CB9118;
+        color: #FFFFFF;
+    }
+}

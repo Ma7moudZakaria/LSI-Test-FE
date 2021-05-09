@@ -11,10 +11,13 @@ import { IQuestion } from 'src/app/core/interfaces/exam-builder-interfaces/iques
 import { DomSanitizer } from '@angular/platform-browser';
 import { AttachmentsService } from 'src/app/core/services/attachments-services/attachments.service';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { IScientificProblem } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem';
+import { ScientificProblemUsersEnum } from 'src/app/core/enums/scientific-problem-users-enum.enum';
 
 export interface DragDropListItem {
   id: string;
   title: string;
+
   // description: string;
 }
 @Component({
@@ -46,7 +49,7 @@ export class SharedMaterialComponent implements OnInit {
   }
   passdata: Date = new Date();
   voiceUrl: string | undefined;
-
+  adminCard:ScientificProblemUsersEnum = ScientificProblemUsersEnum.Admin;
   constructor(public dialog: MatDialog, public domSanitizer: DomSanitizer, private attachmentService: AttachmentsService) { }
 
   ngOnInit(): void {
@@ -127,12 +130,22 @@ export class SharedMaterialComponent implements OnInit {
     { title: 'title CDE', content: 'content CDE', imgPath: '../../../assets/images/mic.svg' },
     { title: 'title EFG', content: 'content EFG', imgPath: '../../../assets/images/book.svg' }
   ]
-  card_scientificProblem = [
-    { question: 'gsgs sfsegf arfawr ', replay: 'gry qr qarq ', question_number: 4150, time: '03-05-1442' },
-    { question: 'aerar ey wywww t', replay: 'content content erfawera ', question_number: 4050, time: '03-05-1442' },
-    { question: 'aerar ey wywww t', replay: 'content se aerfarf content', question_number: 4050, time: '03-05-1442' },
+  card_scientificProblem: IScientificProblem[] = [
+    { question: 'gsgs sfsegf arfawr 1', reply: 'gry qr qarq ', huffazNo: 4150, createdOn: '03-05-1442' },
+    { question: 'aerar ey wywww t1', reply: 'content content erfawera ', huffazNo: 4050, createdOn: '03-05-1442' },
+    { question: 'aerar ey wywww t1', reply: 'content se aerfarf content', huffazNo: 4050, createdOn: '03-05-1442' },
+    { question: 'aerar ey wywww t1', reply: 'content se aerfarf content', huffazNo: 4050, createdOn: '03-05-1442' },
+    { question: 'aerar ey wywww t1', reply: 'content se aerfarf content', huffazNo: 4050, createdOn: '03-05-1442' },
 
   ]
+  admin_card_scientificProblem: IScientificProblem[] = [
+    { question: 'aerar ey wywww t1', reply: 'content content erfawera ', huffazNo: 4050, createdOn: '03-05-1442', usrId: "سيف الدين ابراهيم", progId: "اسم البرنام1", day: "الواجب اليومي - يوم " },
+    { question: 'aerar ey wywww t1', reply: 'content content erfawera ', huffazNo: 4050, createdOn: '03-05-1442', usrId: "سيف الدين ابراهيم", progId: "اسم البرنام1", day: "الواجب اليومي - يوم " },
+    { question: 'aerar ey wywww t1', reply: 'content content erfawera ', huffazNo: 4050, createdOn: '03-05-1442', usrId: "سيف الدين ابراهيم", progId: "اسم البرنام1", day: "الواجب اليومي - يوم " },
+    { question: 'aerar ey wywww t1', reply: 'content content erfawera ', huffazNo: 4050, createdOn: '03-05-1442', usrId: "سيف الدين ابراهيم", progId: "اسم البرنام1", day: "الواجب اليومي - يوم " },
+
+  ]
+
   /*
    * custome accordion 
    */

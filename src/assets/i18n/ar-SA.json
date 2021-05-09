@@ -108,8 +108,13 @@
   },
   "SCIENTIFIC_PROBLEM": {
     "TIME": "تاريخ الطلب",
+    "TIME_QUESTION": "تاريخ السؤال",
     "QUESTION": "السؤال",
-    "REPLY": "الرد"
+    "REPLY": "الرد",
+    "ADDLINK": "اضافه الينك",
+    "DELETE": "مسح",
+    "REPLAYANSWER": "رد",
+    "SUPERVISOR_NAME": "اسم المشرف"
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "البرامج",
@@ -418,5 +423,12 @@
     "DGREE": "الدرجة",
     "DURATION_ANSWER": "مدة الاجابة",
     "RIGHT_ANSWER": "الاجابه الصحيحه"
+  },
+  "User_Requests": {
+    "REQUESTS": "الطلبات",
+    "NO_DATA": "لا يوجد بيانات"
+  },
+  "ADMIN_MESSAGING":{
+    "SCIENTIFIC_PROBLEM":"الإشكالات العلمية"
   }
 }

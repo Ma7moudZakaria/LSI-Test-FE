@@ -395,27 +395,32 @@
   </div>
 </div>
 <!-- card student scientific problem -->
+
 <div class="container-fluid">
   <div class="row ">
-      <div class="col-lg-3 col-md-3 col-sm-12" style="height: 500px;background-color:#e6e6e6;">
+      <div class="col-lg-3 col-md-3 col-sm-12" style="background-color:#e6e6e6;">
       </div>
-      <div class="col-lg-9  col-md-9 col-sm-12 " style="height: 500px;background-color:#e6e6e6;">
-         <div class="row">
+      <div class="col-lg-9  col-md-9 col-sm-12 " style="background-color:#e6e6e6;">
+         <div class="row"  >
           <div class="col-4 mt-3" *ngFor="let card of card_scientificProblem">
             <app-card-student-scientific-problem
-            [question] ='card.question'
-            [replay] ='card.replay'
-            [question_number] ='card.question_number'
-            [time] ='card.time'
+            [scientificProblem] ='card'
 
             ></app-card-student-scientific-problem>
           </div>
           
-        
-      
-
       </div>
      
+  </div>
+<!-- card admin scientific problem -->
+
+  <div class="col-12" style="background-color: bisque; height: 400px;">
+    <div class="row">
+      <div class="col-3 mt-3" *ngFor="let Admincard of admin_card_scientificProblem">
+      <app-card-admin-scientific-problem [scientificProblem]= 'Admincard' ></app-card-admin-scientific-problem>
+    </div>
+    </div>
+    
   </div>
 </div>
 <!--custom accordion with drag and drop-->
@@ -490,3 +495,8 @@
   <app-voice-recording (getVoiceUrl)="saveVoiceUrl($event)"></app-voice-recording>
   {{voiceUrl}}
 </div>
+
+<!--scientific problem grid-->
+<app-scientific-problems-grid [items]='card_scientificProblem'></app-scientific-problems-grid>
+<app-scientific-problems-grid [items]='admin_card_scientificProblem' [numberPerRow]='4' 
+[userMode]= 'adminCard' ></app-scientific-problems-grid>

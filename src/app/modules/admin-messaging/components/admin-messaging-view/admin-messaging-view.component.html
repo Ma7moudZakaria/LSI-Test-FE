@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="row group_header">
+
+                <div class="item_group" (click)="showtap='USERS'" [ngClass]="{'item_group_active': showtap=='scientificProblem'}" >
+                    {{'ADMIN_MESSAGING.SCIENTIFIC_PROBLEM' | translate}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <app-scientific-problems></app-scientific-problems>
+        </div>
+    </div>
+</div>

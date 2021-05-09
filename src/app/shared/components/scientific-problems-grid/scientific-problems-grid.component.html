@@ -1,0 +1,13 @@
+<mat-grid-list cols="{{numberPerRow}}" rowHeight="3:3">
+    <ng-container *ngIf="userMode == ScientificProblemUsers.Student">
+        <mat-grid-tile *ngFor='let item of items' >
+            <app-card-student-scientific-problem class="card" [scientificProblem]='item'></app-card-student-scientific-problem>
+        </mat-grid-tile>
+    </ng-container>
+    <ng-container *ngIf="userMode == ScientificProblemUsers.Admin">
+        
+        <mat-grid-tile *ngFor='let item of items' >
+            <app-card-admin-scientific-problem class="card" [scientificProblem]='item'></app-card-admin-scientific-problem>
+        </mat-grid-tile>
+    </ng-container>
+</mat-grid-list>

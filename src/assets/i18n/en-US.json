@@ -110,9 +110,14 @@
     "NO_DATA": "No Data found"
   },
   "SCIENTIFIC_PROBLEM": {
-    "TIME": "TIME",
+    "TIME": "Time",
+    "TIME_QUESTION": "Time Question",
     "QUESTION": "Question",
-    "REPLY": "Replay"
+    "REPLY": "Replay",
+    "ADDLINK": "Add link",
+    "DELETE": "Delete",
+    "REPLAYANSWER": "Replay Answer",
+    "SUPERVISOR_NAME": "Supervisor's name"
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "Programs",
@@ -421,5 +426,12 @@
     "DGREE": "Dgree",
     "DURATION_ANSWER": "Duration Answer",
     "RIGHT_ANSWER": "Right Answer"
+  },
+  "User_Requests": {
+    "REQUESTS": "Requests",
+    "NO_DATA": "No Data"
+  },
+  "ADMIN_MESSAGING":{
+    "SCIENTIFIC_PROBLEM":"Scientific Problems"
   }
 }
