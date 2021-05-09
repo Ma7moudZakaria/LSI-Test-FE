@@ -60,7 +60,7 @@
     (click)="loadCatogryQuiestion(QBC.id,QBC.arabCatgName,QBC.engCatgName);selectedIndex=i">
      
         <p class="ellipsis mb-0 question-categories" matTooltip="{{translate.currentLang===langEnum.en?QBC.engCatgName:QBC.arabCatgName}}">{{translate.currentLang===langEnum.en?QBC.engCatgName:QBC.arabCatgName}}</p>
-        <div class="d-flex ">
+        <div class="d-flex " *ngIf="!viewAddDepartment()">
            <a (click)="confirmDialog(QBC.id)" > <i class="far fa-trash-alt"></i></a>
            <a (click)="loadCatogry(QBC.id) "> <i class="fas fa-pencil-alt"></i></a> 
 
