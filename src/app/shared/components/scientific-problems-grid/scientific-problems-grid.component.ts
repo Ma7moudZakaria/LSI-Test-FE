@@ -19,6 +19,9 @@ export class ScientificProblemsGridComponent implements OnInit {
   @Output() adminFilterEvent = new EventEmitter<IScientificProblemFilter>();
   @Output() userFilterEvent = new EventEmitter<IUserScientificProblemFilter>();
   @Output() deleteUserScProb = new EventEmitter<string>();
+  @Output() addReplyToScProb = new EventEmitter<IScientificProblemGridItems>();
+  @Output() saveScProbToQuestionBank = new EventEmitter<IScientificProblemGridItems>();
+
   @Input() userMode: ScientificProblemUsersEnum = ScientificProblemUsersEnum.Student;
   @Input() adminFilterRequestModel : IScientificProblemFilter = {skip : 0, take: 0};
   @Input() userFilterRequestModel : IUserScientificProblemFilter = {skip : 0, take: 0};
@@ -102,4 +105,11 @@ export class ScientificProblemsGridComponent implements OnInit {
     this.deleteUserScProb.emit(id);
   }
 
+  addReplyToScProbGr(event:IScientificProblemGridItems){
+    this.addReplyToScProb.emit(event);
+  }
+
+  saveScProbToQuestionBankGr(event:IScientificProblemGridItems){
+    this.saveScProbToQuestionBank.emit(event);
+  }
 }

@@ -1,5 +1,4 @@
 <div class="row" *ngIf='userMode != scientificProblemUsers.Student'>
-    {{adminFilterRequestModel.sorField}}
     <ngb-pagination [collectionSize]="totalCount" [(page)]="page" [pageSize]="adminFilterRequestModel.take" [rotate]="true" [boundaryLinks]="true" (pageChange)="onAdminPageChange()"></ngb-pagination>
     <button class="asend_desend_btn" (click)='sortByName()'>name 
         <span *ngIf='this.adminFilterRequestModel.sorField != "studfullnamear" && this.adminFilterRequestModel.sorField != "studfullnameen"'>default </span> 
@@ -41,7 +40,8 @@
     <ng-container *ngIf="userMode == scientificProblemUsers.Admin">
         
         <mat-grid-tile *ngFor='let item of adminItems' >
-            <app-card-admin-scientific-problem class="card" (deleteScientificProblem)='deleteScientificProblem($event)' [scientificProblem]='item'></app-card-admin-scientific-problem>
+            <app-card-admin-scientific-problem class="card" (deleteScientificProblem)='deleteScientificProblem($event)' 
+            (addReplyToScProb)='addReplyToScProbGr($event)' (saveScProbToQuestionBank)='saveScProbToQuestionBankGr($event)' [scientificProblem]='item'></app-card-admin-scientific-problem>
         </mat-grid-tile>
     </ng-container>
 </mat-grid-list>

@@ -49,8 +49,8 @@
      
     </div>
     <div class="body_footer">
-      <button class="btn cancel-btn"> {{'SCIENTIFIC_PROBLEM.ADDLINK' | translate}}</button>
-      <button [attr.disabled]="showAddReplyArea || scientificProblem.repText ? true : null" (click)='showAddReplyAreaTog()' class=" btn btn_replay"> {{'SCIENTIFIC_PROBLEM.REPLAYANSWER' | translate}}</button>
+      <button class="btn cancel-btn" (click)='saveToQuestionBank()' [attr.disabled]='!scientificProblem.repText ? true : null' > {{'SCIENTIFIC_PROBLEM.ADDLINK' | translate}}</button>
+      <button class=" btn btn_replay" [attr.disabled]="showAddReplyArea || scientificProblem.repText ? true : null" (click)='showAddReplyAreaTog()'> {{'SCIENTIFIC_PROBLEM.REPLAYANSWER' | translate}}</button>
       <button (click)='deleteScientificProblemEve()' class=" btn save-btn"> {{'SCIENTIFIC_PROBLEM.DELETE' | translate}}</button>
     </div>
   </div>

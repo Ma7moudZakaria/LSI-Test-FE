@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { ScientificProblemUsersEnum } from 'src/app/core/enums/scientific-problem-users-enum.enum';
+import { IAddScProbReply } from 'src/app/core/interfaces/scientific-problrm/iadd-sc-prob-reply';
+import { IAddScProbToQuestionBank } from 'src/app/core/interfaces/scientific-problrm/iadd-sc-prob-to-question-bank';
 import { IScientificProblem } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem';
 import { IScientificProblemFilter } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem-filter';
 import { IScientificProblemGridItems } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem-grid-items';
@@ -10,7 +12,9 @@ import { IScientificProblemGridItems } from 'src/app/core/interfaces/scientific-
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
+import { QuestionBankQuestionService } from 'src/app/core/services/question-bank-services/question-bank-question.service';
 import { ScientificProblemService } from 'src/app/core/services/scientific-problem-services/scientific-problem.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 
@@ -30,7 +34,9 @@ export class ScientificProblemsComponent implements OnInit {
 
   constructor(public translate: TranslateService,public dialog: MatDialog,
     private scientificProblemService:ScientificProblemService,
-    private languageService : LanguageService) { }
+    private languageService : LanguageService,
+    private alertify:AlertifyService,
+    private questionBankService:QuestionBankQuestionService) { }
 
   ngOnInit(): void {
     this.scientificProblemFilter.sorField = this.translate.currentLang === LanguageEnum.ar ? 'studfullnamear' : 'studfullnameen'
@@ -110,5 +116,48 @@ export class ScientificProblemsComponent implements OnInit {
         )
       }     
     });
+  }
+
+  addReplyToScProb(event:IScientificProblemGridItems){
+    let model : IAddScProbReply = {
+      id : event.id,
+      reply: event.repText
+    };
+    this.scientificProblemService.addScientificProblemReply(model).subscribe(res => {
+      if (res.isSuccess){
+        this.alertify.success(res.message || '');
+        this.getScientificProblems();
+      }
+      else{
+        this.alertify.error(res.message || '');
+      }
+    }, error => {
+      this.resultMessage ={
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    })
+  }
+
+  saveScProbToQuestionBank(event:IScientificProblemGridItems){
+    let model : IAddScProbToQuestionBank = {
+      id : event.id,
+      question:event.questText,
+      reply: event.repText
+    };
+    this.questionBankService.moveScProbToQuestionBank(model).subscribe(res => {
+      if (res.isSuccess){
+        this.alertify.success(res.message || '');
+        this.getScientificProblems();
+      }
+      else{
+        this.alertify.error(res.message || '');
+      }
+    }, error => {
+      this.resultMessage ={
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    })
   }
 }

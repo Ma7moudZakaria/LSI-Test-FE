@@ -16,6 +16,8 @@ export class CardAdminScientificProblemComponent implements OnInit {
   constructor(public translate:TranslateService) { }
   @Input() scientificProblem: IScientificProblemGridItems = {};
   @Output() deleteScientificProblem = new EventEmitter<string>();
+  @Output() addReplyToScProb = new EventEmitter<IScientificProblemGridItems>();
+  @Output() saveScProbToQuestionBank = new EventEmitter<IScientificProblemGridItems>();
 
   showAddReplyArea = false;
 
@@ -28,6 +30,11 @@ export class CardAdminScientificProblemComponent implements OnInit {
 
   saveReply(){
     this.showAddReplyAreaTog();
+    this.addReplyToScProb.emit(this.scientificProblem);
+  }
+
+  saveToQuestionBank(){
+    this.saveScProbToQuestionBank.emit(this.scientificProblem);
   }
 
   deleteScientificProblemEve(){
