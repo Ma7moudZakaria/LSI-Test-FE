@@ -10,6 +10,7 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseLookupModel } from 'src/app/core/ng-model/base-lookup-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
+import { RoleManagementService } from 'src/app/core/services/role-management/role-management.service';
 import { ScientificMaterialService } from 'src/app/core/services/scientific-material-services/scientific-material.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 
@@ -34,7 +35,8 @@ export class MaterialListComponent implements OnInit {
   categoriesEnum = MaterialCategoiresEnum;
   constructor(private scientifcMaterialService: ScientificMaterialService,
     private dialog: MatDialog,
-    public translate: TranslateService) { }
+    public translate: TranslateService,
+    public roleService:RoleManagementService) { }
 
   ngOnInit(): void {
    this.loadMaterialCategories();

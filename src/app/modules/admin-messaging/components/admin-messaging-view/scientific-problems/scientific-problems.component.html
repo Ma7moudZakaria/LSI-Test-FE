@@ -12,7 +12,7 @@
       {{ 'GENERAL.NO_DATA' | translate}}
   </div>
     
-    <div class="col-12 internal_scroll">
+    <div *ngIf='scientificProblems && scientificProblems.length > 0' class="col-12 internal_scroll">
       <app-scientific-problems-grid (adminFilterEvent)='filterRequest($event)' (deleteUserScProb)='deleteUserSingleScProb($event)' 
       (addReplyToScProb)='addReplyToScProb($event)' (saveScProbToQuestionBank)='saveScProbToQuestionBank($event)'
       [totalCount]='totalCount' [adminItems]='scientificProblems' 
