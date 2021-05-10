@@ -431,7 +431,8 @@
   "User_Requests": {
     "REQUESTS": "Requests",
     "NO_DATA": "No Data",
-    "SORT_DATE": "Sort by date"
+    "SORT_DATE": "Sort by  Date",
+    "SORT_NAME": "Sort by Name"
   },
   "ADMIN_MESSAGING": {
     "SCIENTIFIC_PROBLEM": "Scientific Problem"

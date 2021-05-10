@@ -428,7 +428,8 @@
   "User_Requests": {
     "REQUESTS": "الطلبات",
     "NO_DATA": "لا يوجد بيانات",
-    "SORT_DATE": "ترتيب بالتاريخ"
+    "SORT_DATE": "ترتيب بالتاريخ",
+    "SORT_NAME": "ترتيب بالاسم "
   },
   "ADMIN_MESSAGING": {
     "SCIENTIFIC_PROBLEM": "إشكال علمى"

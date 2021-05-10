@@ -1,5 +1,6 @@
 <div class="row" *ngIf='userMode != scientificProblemUsers.Student'>
     <ngb-pagination [collectionSize]="totalCount" [(page)]="page" [pageSize]="adminFilterRequestModel.take" [rotate]="true" [boundaryLinks]="true" (pageChange)="onAdminPageChange()"></ngb-pagination>
+   
     <button class="asend_desend_btn" (click)='sortByName()'>name 
         <span *ngIf='this.adminFilterRequestModel.sorField != "studfullnamear" && this.adminFilterRequestModel.sorField != "studfullnameen"'>default </span> 
         <span *ngIf='sortByNameOrderType() == "asend"'>
@@ -9,8 +10,39 @@
             <img  class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
         </span>
     </button>
-    <button class="asend_desend_btn" (click)='sortByCreatedOn()'>create on 
-        <span *ngIf='this.adminFilterRequestModel.sorField != "createdon"'>default </span> 
+    <!-- <button 
+    *ngIf='this.adminFilterRequestModel.sorField != "studfullnamear" && this.adminFilterRequestModel.sorField != "studfullnameen"'
+          class="default_btn" (click)='sortByName()'>
+         {{'User_Requests.SORT_NAME' | translate}}
+         <span>
+            <img  class="asend_btn" src="../../../../assets/images/sc-problem/Group 18449.svg">
+        </span>
+                    
+      </button>
+      <button 
+         class="asend_desend_btn" (click)='sortByName()'>
+        {{'User_Requests.SORT_NAME' | translate}}
+        <span *ngIf='sortByNameOrderType() == "asend"'>
+            <img  class="asend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+        </span> 
+        <span *ngIf='sortByNameOrderType() == "desend"'>
+            <img  class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+        </span>
+    </button> -->
+
+<!-- SORT by create on -->
+    <button class="default_btn" (click)='sortByCreatedOn()'
+     *ngIf='this.adminFilterRequestModel.sorField != "createdon"'> 
+     {{'User_Requests.SORT_DATE' | translate}}
+     
+        <span >
+            <img  class="asend_btn" src="../../../../assets/images/sc-problem/Group 18449.svg">
+        </span>
+     </button>
+        <button *ngIf='this.adminFilterRequestModel.sorField == "createdon"'
+        class="asend_desend_btn" (click)='sortByCreatedOn()'>
+        {{'User_Requests.SORT_DATE' | translate}}
+ 
         <span *ngIf='sortByCreatedOnOrderType() == "asend"'>
             <img  class="asend_btn" src="../../../../assets/images/sc-problem/desend.svg">
         </span> 

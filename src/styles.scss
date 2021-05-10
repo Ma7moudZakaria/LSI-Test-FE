@@ -4,9 +4,10 @@
 html {
   font-size:16px;
 }
-body:lang(ar){
-  text-align: right;
+.text-left:lang(ar){
+  text-align: right !important;
 }
+
 @media (max-width: 768px) {
   html {
     font-size: 13px;
@@ -366,7 +367,10 @@ font-family: Almarai-Regular;
   color: #7674A150 !important;
 }
 
-//close button
+:focus:is(input,textarea,select){
+  border: 1px solid  #dee2e6;
+}
+
 .closebtn {
   color: #818181;
   font-size: 1.875rem;
@@ -374,14 +378,25 @@ font-family: Almarai-Regular;
   margin-bottom: 1rem;
   cursor: pointer;
 }
-
-.text-arabic{
+textarea{
+  &:lang(ar){
   text-align: right;
-}
 
-.text-english{
+  }
+  &:lang(en){
   text-align: left;
+
+  }
 }
+// .text-arabic{
+//   text-align: right;
+
+// }
+
+// .text-english{
+//   text-align: left;
+
+// }
 
 select.form-control {
   appearance: none;
@@ -728,6 +743,9 @@ display: none;
 
 .link_Add{
   cursor: pointer;
+  color:$icon_input;
+  text-decoration: underline;
+
 }
 .offset-2:lang(en) {
   margin-left: 16.666667%;
