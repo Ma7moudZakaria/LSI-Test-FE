@@ -6,6 +6,7 @@ import { IScientificProblem } from 'src/app/core/interfaces/scientific-problrm/i
 import { IScientificProblemFilter } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem-filter';
 import { IScientificProblemGridItems } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem-grid-items';
 import { IUserScientificProblemFilter } from 'src/app/core/interfaces/scientific-problrm/iuser-scientific-problem-filter';
+import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { SettingRoutingModule } from 'src/app/modules/setting/setting-routing.module';
 
 @Component({
@@ -34,9 +35,20 @@ export class ScientificProblemsGridComponent implements OnInit {
   page = 1
 
 
-  constructor(public translate:TranslateService) { }
+  constructor(public translate:TranslateService, private languageService:LanguageService) { }
 
   ngOnInit(): void {
+    this.setCurrentLang();
+  }
+
+  setCurrentLang() {
+    this.languageService.currentLanguageEvent.subscribe(res => {
+      this.updateLocalizatoinProps();
+    });
+  }
+
+  updateLocalizatoinProps(){
+    this.adminFilterRequestModel.sorField = this.translate.currentLang === LanguageEnum.ar ? 'studfullnamear' : 'studfullnameen';
   }
 
   onAdminPageChange(){
@@ -69,8 +81,8 @@ export class ScientificProblemsGridComponent implements OnInit {
   }
 
   sortByCreatedOnOrderType(){
-    if (this.adminFilterRequestModel.sorField === "CreatedOn" && this.adminFilterRequestModel.ordType == 1) {return 'asend'}
-    if (this.adminFilterRequestModel.sorField === "CreatedOn" && this.adminFilterRequestModel.ordType == -1) {return 'desend'}
+    if (this.adminFilterRequestModel.sorField === "createdon" && this.adminFilterRequestModel.ordType == 1) {return 'asend'}
+    if (this.adminFilterRequestModel.sorField === "createdon" && this.adminFilterRequestModel.ordType == -1) {return 'desend'}
 
     return '';
   }

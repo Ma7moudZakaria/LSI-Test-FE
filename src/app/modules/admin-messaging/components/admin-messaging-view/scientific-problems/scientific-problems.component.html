@@ -10,7 +10,7 @@
 
     
     <div class="col-12 internal_scroll">
-      <app-scientific-problems-grid (adminFilterEvent)='filterRequest($event)' [totalCount]='totalCount' [adminItems]='scientificProblems' 
+      <app-scientific-problems-grid (adminFilterEvent)='filterRequest($event)' (deleteUserScProb)='deleteUserSingleScProb($event)' [totalCount]='totalCount' [adminItems]='scientificProblems' 
       [numberPerRow]='numberItemsPerRow' [userMode]='adminCard' [adminFilterRequestModel] = 'scientificProblemFilter'></app-scientific-problems-grid>
     </div>
   </div>

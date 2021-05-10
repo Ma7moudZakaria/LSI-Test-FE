@@ -8,4 +8,5 @@ export interface IScientificProblemGridItems {
     adNameEn?:string;
     adNameAr?:string;
     scCreatedOn?:string;
+    avatarLink?:string;
 }

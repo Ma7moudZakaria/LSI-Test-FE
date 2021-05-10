@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { ScientificProblemUsersEnum } from 'src/app/core/enums/scientific-problem-users-enum.enum';
@@ -9,7 +10,9 @@ import { IScientificProblemGridItems } from 'src/app/core/interfaces/scientific-
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
+import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { ScientificProblemService } from 'src/app/core/services/scientific-problem-services/scientific-problem.service';
+import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-scientific-problems',
@@ -25,15 +28,27 @@ export class ScientificProblemsComponent implements OnInit {
   numberItemsPerRow = 4;
   totalCount = 0;
 
-  constructor(public translate: TranslateService,private scientificProblemService:ScientificProblemService) { }
+  constructor(public translate: TranslateService,public dialog: MatDialog,
+    private scientificProblemService:ScientificProblemService,
+    private languageService : LanguageService) { }
 
   ngOnInit(): void {
+    this.scientificProblemFilter.sorField = this.translate.currentLang === LanguageEnum.ar ? 'studfullnamear' : 'studfullnameen'
     this.getScientificProblems();
   }
 
-  getScientificProblems(name?:string) {
-    this.scientificProblemFilter.filterText=name || '';
-    this.scientificProblemFilter.sorField = this.translate.currentLang === LanguageEnum.ar ? 'studfullnamear' : 'studfullnameen'
+  emitHeaderTitle() {
+    this.languageService.headerPageNameEvent.emit(this.translate.currentLang == LanguageEnum.ar ? 'المراسلات' : 'Messaging');
+  }
+
+  setCurrentLang() {
+    this.emitHeaderTitle();
+    this.languageService.currentLanguageEvent.subscribe(res => {
+      this.emitHeaderTitle();
+    });
+  }
+
+  getScientificProblems() {
     
     this.resultMessage = {};
 
@@ -69,5 +84,31 @@ export class ScientificProblemsComponent implements OnInit {
   filterRequest(event:IScientificProblemFilter){
     this.scientificProblemFilter = event;
     this.getScientificProblems();
+  }
+
+  deleteUserSingleScProb(id:string){
+    const message =this.translate.currentLang === LanguageEnum.en ?"Are you sure that you want to delete this scientific problem":"هل متأكد من حذف هذا الإشكال العلمى";
+
+    const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete Question' : 'حذف سؤال', message);
+
+    const dialogRef = this.dialog.open(ConfirmModalComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if(dialogResult==true){
+        this.scientificProblemService.DeleteScientificProblem(id||'').subscribe(
+          res => {
+            res.message;
+            this.getScientificProblems();
+          }, error => {
+            this.resultMessage ={
+              message: error,
+              type: BaseConstantModel.DANGER_TYPE
+            }
+          }
+        )
+      }     
+    });
   }
 }
