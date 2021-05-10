@@ -5,12 +5,16 @@ import { ICreateScientificProblem } from '../../interfaces/scientific-problrm/ic
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 import { Observable } from 'rxjs';
 import { AssignRoleModel, AssignUserModel, CreateRoleModel, RoleManagementFilter } from '../../interfaces/role-management-interfaces/role-management';
+import { IUser } from '../../interfaces/auth-interfaces/iuser-model';
+import { RoleEnum } from '../../enums/role-enum.enum';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoleManagementService {
 
+  localUser:IUser;
+  roles = RoleEnum;
 
   viewRolesURL = environment.baseUrl + 'Roles/view-roles';
   deleteRoleURL = environment.baseUrl + 'Roles/delete-role/';
@@ -22,7 +26,9 @@ export class RoleManagementService {
   assignUserRoleURL = environment.baseUrl + 'Roles/assign-role-users';
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    this.localUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
+  }
 
   getRolesList(model: RoleManagementFilter): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.viewRolesURL, model);
@@ -56,5 +62,35 @@ export class RoleManagementService {
     return this.http.post<BaseResponseModel>(this.assignUserRoleURL, model);
   }
 
+   isStudent(){
+     
+    //fixing issue when logout then back
+    this.localUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
+    
+    let res = this.localUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.roles.Student.toString()); 
+    if (res) {return true}
+
+    return false;
+  }
+  isAdmin(){
+    //fixing issue when logout then back
+    this.localUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
+    
+    let res = this.localUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.roles.Admin.toString() 
+                                                    || x.roleNo == this.roles.SuperAdmin.toString()
+                                                    || x.roleNo == this.roles.Supervisor.toString()
+                                                    || x.roleNo == this.roles.TechnicalSupport.toString()); 
+    if (res) {return true}
+    return false;
+  }
+  
+  isTeacher(){
+    //fixing issue when logout then back
+    this.localUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
+
+    let res = this.localUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.roles.Teacher.toString()); 
+    if (res) {return true}
+    return false;
+  }
 
 }

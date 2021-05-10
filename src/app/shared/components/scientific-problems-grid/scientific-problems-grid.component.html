@@ -1,22 +1,47 @@
 <div class="row" *ngIf='userMode != scientificProblemUsers.Student'>
-    <ngb-pagination [collectionSize]="totalCount" [(page)]="page" [pageSize]="take" [rotate]="true" [boundaryLinks]="true" (pageChange)="onAdminPageChange()"></ngb-pagination>
-    <button (click)='sortByName()'>name <span *ngIf='this.adminFilterRequestModel.sortField != "Name"'>default </span> <span *ngIf='sortByNameOrderType() == "asend"'>asend </span> <span *ngIf='sortByNameOrderType() == "desend"'>desend </span></button>
-    <button (click)='sortByCreatedOn()'>create on <span *ngIf='this.adminFilterRequestModel.sortField != "CreatedOn"'>default </span> <span *ngIf='sortByCreatedOnOrderType() == "asend"'>asend </span> <span *ngIf='sortByCreatedOnOrderType() == "desend"'>desend </span></button>
+    <ngb-pagination [collectionSize]="totalCount" [(page)]="page" [pageSize]="adminFilterRequestModel.take" [rotate]="true" [boundaryLinks]="true" (pageChange)="onAdminPageChange()"></ngb-pagination>
+    <button class="asend_desend_btn" (click)='sortByName()'>name 
+        <span *ngIf='this.adminFilterRequestModel.sorField != "studfullnamear" && this.adminFilterRequestModel.sorField != "studfullnameen"'>default </span> 
+        <span *ngIf='sortByNameOrderType() == "asend"'>
+            <img  class="asend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+        </span> 
+        <span *ngIf='sortByNameOrderType() == "desend"'>
+            <img  class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+        </span>
+    </button>
+    <button class="asend_desend_btn" (click)='sortByCreatedOn()'>create on 
+        <span *ngIf='this.adminFilterRequestModel.sorField != "createdon"'>default </span> 
+        <span *ngIf='sortByCreatedOnOrderType() == "asend"'>
+            <img  class="asend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+        </span> 
+        <span *ngIf='sortByCreatedOnOrderType() == "desend"'>
+            <img  class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+        </span>
+    </button>
 </div>
 <div class="row" *ngIf='userMode == scientificProblemUsers.Student'>
-    <ngb-pagination [collectionSize]="totalCount" [(page)]="page" [pageSize]="take" [rotate]="true" [boundaryLinks]="true" (pageChange)="onUserPageChange()"></ngb-pagination>
-    <button (click)='userSortByCreatedOn()'>create on <span *ngIf='userSortByCreatedOnOrderType()'>asend </span> <span *ngIf='!userSortByCreatedOnOrderType()'>desend </span></button>
+    <ngb-pagination [collectionSize]="totalCount" [(page)]="page" [pageSize]="userFilterRequestModel.take" [rotate]="true" [boundaryLinks]="true" (pageChange)="onUserPageChange()"></ngb-pagination>
+    <button  class="asend_desend_btn" (click)='userSortByCreatedOn()'>
+        {{'User_Requests.SORT_DATE' | translate}}
+        <span   *ngIf='userSortByCreatedOnOrderType()'>
+            <img  class="asend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+         </span> 
+        <span   *ngIf='!userSortByCreatedOnOrderType()'>
+            <img  class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+        </span>
+    </button>
 </div>
 <mat-grid-list cols="{{numberPerRow}}" rowHeight="3:3">
     <ng-container *ngIf="userMode == scientificProblemUsers.Student">
         <mat-grid-tile *ngFor='let item of items' >
-            <app-card-student-scientific-problem class="card" [scientificProblem]='item'></app-card-student-scientific-problem>
+            <app-card-student-scientific-problem (deleteScientificProblem)='deleteScientificProblem($event)' class="card" [scientificProblem]='item'></app-card-student-scientific-problem>
         </mat-grid-tile>
     </ng-container>
     <ng-container *ngIf="userMode == scientificProblemUsers.Admin">
         
-        <mat-grid-tile *ngFor='let item of items' >
-            <app-card-admin-scientific-problem class="card" [scientificProblem]='item'></app-card-admin-scientific-problem>
+        <mat-grid-tile *ngFor='let item of adminItems' >
+            <app-card-admin-scientific-problem class="card" (deleteScientificProblem)='deleteScientificProblem($event)' 
+            (addReplyToScProb)='addReplyToScProbGr($event)' (saveScProbToQuestionBank)='saveScProbToQuestionBankGr($event)' [scientificProblem]='item'></app-card-admin-scientific-problem>
         </mat-grid-tile>
     </ng-container>
 </mat-grid-list>

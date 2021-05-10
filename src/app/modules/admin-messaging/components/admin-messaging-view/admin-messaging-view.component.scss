@@ -1,5 +1,4 @@
 .group_header{
-    margin-top: 1.5%;
     border-bottom:1px solid #CB9118;
     .item_group{
         cursor: pointer;
@@ -15,4 +14,16 @@
         background-color: #CB9118;
         color: #FFFFFF;
     }
+}
+
+.container-fluid{
+        background: #FBFBFB;
+        border: 1px solid goldenrod;
+        border-radius: 19px;
+        opacity: 1;
+        padding: 1rem;
+        margin-top: 1rem;
+        margin-bottom: 0;
+        width: 98%;
+        height: auto;
 }
