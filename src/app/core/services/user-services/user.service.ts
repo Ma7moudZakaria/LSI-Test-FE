@@ -17,7 +17,7 @@ export class UserService {
   deleteUserURL = environment.baseUrl + 'User/delete-user/';
   updateUserProfilePicURL = environment.baseUrl + 'user/upload-profile-picture'
   getCountryIsoCodeUrl = environment.baseUrl + 'user/get-country-iso-code'
-
+  canDecativate : boolean = false;
   constructor(private http: HttpClient) { }
 
   completeProfile(model : any):Observable<BaseResponseModel>
@@ -51,5 +51,8 @@ export class UserService {
 
   getCountryIsoCode():Observable<BaseResponseModel>{
     return this.http.get<BaseResponseModel>(this.getCountryIsoCodeUrl);
+  }
+  setCanDeActivate(value:boolean){
+    this.canDecativate = value;
   }
 }

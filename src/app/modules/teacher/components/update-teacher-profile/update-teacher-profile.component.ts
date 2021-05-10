@@ -34,6 +34,7 @@ import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
 import { ITeacherProfileInterviewDayLookup } from 'src/app/core/interfaces/teacher-interfaces/iteacher-profile-interview-day-lookup';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-update-teacher-profile',
@@ -101,7 +102,55 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.getPrograms();
     this.getLookupByKey();
   }
+  @HostListener('window:beforeunload', ['$event'])
+  public onPageUnload($event: BeforeUnloadEvent) {
+    if (this.unsavedDataCheck()) {
+      $event.returnValue = true;
+      // return "message";
+    }
+    else{
+      $event.returnValue = false;
+      // return '';
+    }
+  }
 
+  @HostListener('window:popstate', ['$event'])
+  onPopState(event:any) {
+    this.userService.setCanDeActivate(this.unsavedDataCheck());
+  }
+
+  unsavedDataCheck() : boolean{
+    return this.profileForm.value.firstNameAr != this.teacherProfileDetails?.fnameAr
+    || this.profileForm.value.firstNameEn != this.teacherProfileDetails?.faNameEn
+    || this.profileForm.value.middleNameAr != this.teacherProfileDetails?.mnameAr
+    || this.profileForm.value.middleNameEn != this.teacherProfileDetails?.mnameEn
+    || this.profileForm.value. familyNameAr!= this.teacherProfileDetails?.fanameAr
+    || this.profileForm.value. familyNameEn!= this.teacherProfileDetails?.faNameEn
+    || this.profileForm.value.nationality != this.teacherProfileDetails?.nationality
+    || this.profileForm.value.birthdate != this.teacherProfileDetails?.hijriBirthDate
+    || this.profileForm.value.gender != this.teacherProfileDetails?.gender
+    || this.profileForm.value.phoneNumber!= this.teacherProfileDetails?.mobile
+    || this.profileForm.value.country!= this.teacherProfileDetails?.country
+    || this.profileForm.value.city!= this.teacherProfileDetails?.city
+    || this.profileForm.value.nationality!= this.teacherProfileDetails?.nationality
+    || this.profileForm.value.educationallevel!= this.teacherProfileDetails?.eduLevel
+    || this.profileForm.value.qualifi!= this.teacherProfileDetails?.qualifi
+    || this.profileForm.value.specia!= this.teacherProfileDetails?.specia
+    || this.profileForm.value.eduYear!= this.teacherProfileDetails?.eduYear
+    || this.profileForm.value.isHasQuranExp!= this.teacherProfileDetails?.isHasQuranExp
+    || this.profileForm.value.isHasTeachSunnaExp!= this.teacherProfileDetails?.isHasTeachSunnaExp
+    || this.profileForm.value.isHasInternetTeachExp!= this.teacherProfileDetails?.isHasInternetTeachExp
+    || this.profileForm.value.isHasTeachForeignerExp!= this.teacherProfileDetails?.isHasTeachForeignerExp
+    || this.profileForm.value.isHasEjazaHafz!= this.teacherProfileDetails?.isHasEjazaHafz
+    || this.profileForm.value.workingPlatForm!= this.teacherProfileDetails?.workingPlatForm
+    || this.profileForm.value.isHasEjazaTelawa!= this.teacherProfileDetails?.isHasEjazaTelawa
+    || this.profileForm.value.bankName!= this.teacherProfileDetails?.bankName
+    || this.profileForm.value.agency!= this.teacherProfileDetails?.agency
+    || this.profileForm.value.address!= this.teacherProfileDetails?.address
+    || this.profileForm.value.bankNumber!= this.teacherProfileDetails?.bankNumber
+    || this.profileForm.value.address!= this.teacherProfileDetails?.address
+    || this.profileForm.value.ejazaAttachmentIds!= this.teacherProfileDetails?.ejazaAttachments
+  }
   getPrograms() {
     this.ProgramService.getAllPrograms().subscribe(res => {
       let response = <BaseResponseModel>res;
@@ -168,11 +217,11 @@ export class UpdateTeacherProfileComponent implements OnInit {
           firstAr:['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
           middleAr:['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
           familyAr:['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-          hijriBirthDate: [],
+          hijriBirthDate: [null, Validators.required],
           gender: [null, Validators.required],
           mobile: [null, Validators.required],
           nationality: [null, Validators.required],
-          address: [null, Validators.required],
+          address: [],
           country: [null, Validators.required],
           city: [null, Validators.required],
           email: [null, Validators.required],
@@ -208,11 +257,11 @@ export class UpdateTeacherProfileComponent implements OnInit {
           firstEn:['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
           middleEn:['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
           familyEn:['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-          hijriBirthDate: [],
+          hijriBirthDate: [null, Validators.required],
           gender: [null, Validators.required],
           mobile: [null, Validators.required],
           nationality: [null, Validators.required],
-          address: [null, Validators.required],
+          address: [],
           country: [null, Validators.required],
           city: [null, Validators.required],
           email: [null, Validators.required],

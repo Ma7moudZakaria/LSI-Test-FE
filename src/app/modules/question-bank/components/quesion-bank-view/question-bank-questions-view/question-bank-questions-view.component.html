@@ -80,7 +80,7 @@
                 <mat-accordion>
                     <mat-expansion-panel  *ngFor="let QBQ of questionBankQuestionList; let i = index;"
                         (opened)="setOpened(i)" (closed)="setClosed(i)">
-                        <mat-expansion-panel-header  *ngIf="QBQ.isActive">
+                        <mat-expansion-panel-header  >
                             <mat-panel-title class="qestionHeader">
                          
                                 <div class="col span_question" >
@@ -96,7 +96,7 @@
                               </div>
                             </mat-panel-title>
                         </mat-expansion-panel-header>
-                        <p class="p_answer" *ngIf="QBQ.isActive">{{this.translate.currentLang===langEnum.en?QBQ.engAnswer:QBQ.arabAnswer}}</p>
+                        <p class="p_answer">{{this.translate.currentLang===langEnum.en?QBQ.engAnswer:QBQ.arabAnswer}}</p>
                     </mat-expansion-panel>
                 </mat-accordion>
             </div>
