@@ -426,7 +426,9 @@
     "ANSWERS": "Answers",
     "DGREE": "Dgree",
     "DURATION_ANSWER": "Duration Answer",
-    "RIGHT_ANSWER": "Right Answer"
+    "RIGHT_ANSWER": "Right Answer",
+    "DURATION": "Duration",
+    "ADD_QUESTION": "Add question"
   },
   "User_Requests": {
     "REQUESTS": "Requests",

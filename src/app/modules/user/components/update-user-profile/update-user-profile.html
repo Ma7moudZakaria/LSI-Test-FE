@@ -364,7 +364,7 @@
                                 </select>
                                 <div *ngIf="f.quraanMemorization.errors && (f.quraanMemorization.touched || isSubmit)"
                                 class="alert alert-danger mt-2 mb-2">
-                                <div *ngIf="f.quraanMemorization.errors.required">
+                                <div *ngIf="f.quraanMemorization.errors.pattern">
                                     {{ 'UPDATE_USER_PG.AMOUNT_QURAN_REQUIRED' | translate }}
                                 </div>
                             </div>

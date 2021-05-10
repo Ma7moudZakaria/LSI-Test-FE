@@ -176,6 +176,7 @@ export class UpdateUserProfileComponent implements OnInit {
   onSubmit(value: string) {
     this.isSubmit = true;
     this.resMessage = {}
+    console.log("###########:"+this.profileForm.value.quraanMemorization);
     if (this.profileForm.valid) {
       this.updateUserModel = {
         usrId: this.currentUser?.id,
@@ -274,7 +275,6 @@ export class UpdateUserProfileComponent implements OnInit {
   }
 
   buildForm() {
-
     if (this.translate.currentLang === LanguageEnum.ar) {
       this.profileForm = this.fb.group(
         {
@@ -291,7 +291,7 @@ export class UpdateUserProfileComponent implements OnInit {
           occupation: [null, Validators.required],
           countryCode: [''],          
           city: [''],
-          quraanMemorization: [null, Validators.required],
+          quraanMemorization:['', [Validators.pattern(BaseConstantModel.numberBiggerThanZero)]],
           userSheikhs: [],
           userArchives: [],
           userCourses: []
@@ -315,7 +315,7 @@ export class UpdateUserProfileComponent implements OnInit {
           occupation: [null, Validators.required],
           countryCode: [null],
           city: [null],
-          quraanMemorization: [null, Validators.required],
+          quraanMemorization:['', [Validators.pattern(BaseConstantModel.numberBiggerThanZero)]],
           userSheikhs: [],
           userArchives: [],
           userCourses: []

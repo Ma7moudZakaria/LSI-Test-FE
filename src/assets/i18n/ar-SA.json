@@ -423,7 +423,9 @@
     "ANSWERS": "اجابات",
     "DGREE": "الدرجة",
     "DURATION_ANSWER": "مدة الاجابة",
-    "RIGHT_ANSWER": "الاجابه الصحيحه"
+    "RIGHT_ANSWER": "الاجابه الصحيحه",
+    "DURATION": "المدة",
+    "ADD_QUESTION": "إضافة سؤالٍ"
   },
   "User_Requests": {
     "REQUESTS": "الطلبات",

@@ -20,7 +20,7 @@
               class="form-control  border-md " 
               [ngClass]="{' border-transparent': !questionTemplate.text,
              'input_with-voice': !questionTemplate.text}"
-              placeholder="add question" >
+              placeholder="{{'EXAM_FORM.ADD_QUESTION'|translate}}" >
             <app-voice-recording *ngIf="!questionTemplate.text" (getVoiceUrl)="saveVoiceUrl($event)"
             [viewMode]='viewMode' [voiceUrl]='questionTemplate?.voiceUrl'></app-voice-recording>
 
@@ -31,11 +31,11 @@
     </div>
     <div class="col-sm-2">
       <label class="label_item_question">{{"EXAM_FORM.DURATION_ANSWER"|translate}} </label>
-        <input type="text" [(ngModel)]="questionTemplate.degree"  class="form-control"  placeholder="degree" [disabled]='viewMode'>
+        <input type="text" [(ngModel)]="questionTemplate.degree"  class="form-control"  placeholder="{{'EXAM_FORM.DURATION'|translate}}" [disabled]='viewMode'>
       </div>
       <div class="col-sm-2">
         <label class="label_item_question">{{"EXAM_FORM.DGREE"|translate}}</label>
-        <input type="text"  [(ngModel)]="questionTemplate.time"  class="form-control" placeholder="time" [disabled]='viewMode'>
+        <input type="text"  [(ngModel)]="questionTemplate.time"  class="form-control" placeholder="{{'EXAM_FORM.DGREE'|translate}}" [disabled]='viewMode'>
       </div>
 </div>
 <div class="form-group row">
