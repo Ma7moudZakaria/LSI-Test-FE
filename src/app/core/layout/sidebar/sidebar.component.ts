@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserRoleService } from '../../services/user-role-service/user-role.service';
+import { RoleManagementService } from '../../services/role-management/role-management.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,7 +8,7 @@ import { UserRoleService } from '../../services/user-role-service/user-role.serv
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(public roleService:UserRoleService) { }
+  constructor(public roleService:RoleManagementService) { }
 
   ngOnInit(): void {
   }
