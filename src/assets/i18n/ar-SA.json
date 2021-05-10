@@ -47,10 +47,11 @@
     "ENGLISH_FIELD": "هذا الحقل يجب أن يكون باللغة الإنجليزية",
     "ADD": "إضافة",
     "CANCEL": "إلغاء",
-    "CHOICES":"إختيارات",
-    "MULTI_SELECT":"اختيارات متعددة",
-    "ADD_QUESTION":"إضافة سؤال",
-    "ADD_ANSWE":"إضافة إجابه",
+    "CHOICES": "إختيارات",
+    "MULTI_SELECT": "اختيارات متعددة",
+    "ADD_QUESTION": "إضافة سؤال",
+    "ADD_ANSWE": "إضافة إجابه",
+    "NOT_AUTHORIZED": "انت غير مصرح لك بالدخول ",
     "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE": " برجاء اكمال البيانات و مراجعة البيانات المكررة"
   },
   "ACTIVATION_USER_PG": {
@@ -405,12 +406,12 @@
   "Role_Management": {
     "TITLE": "المجموعات",
     "ADD_GROUP": "إضافة مجموعة",
-    "USERS":"الافراد",
-    "ROLES":"الصلاحيات",
-    "GROUPNAMEARABIC":"اسم المجموعة (عربي)",
-    "CREATENEWGROUP":"إنشاء مجموعة جديدة",
-    "GROUPNAMEENGLISH":"اسم المجموعة (انجليزي)",
-    "INDIVIDUALS":"الافراد"
+    "USERS": "الافراد",
+    "ROLES": "الصلاحيات",
+    "GROUPNAMEARABIC": "اسم المجموعة (عربي)",
+    "CREATENEWGROUP": "إنشاء مجموعة جديدة",
+    "GROUPNAMEENGLISH": "اسم المجموعة (انجليزي)",
+    "INDIVIDUALS": "الافراد"
   },
   "EXAM_FORM": {
     "TITLE": "النماذج",
@@ -429,9 +430,10 @@
   },
   "User_Requests": {
     "REQUESTS": "الطلبات",
-    "NO_DATA": "لا يوجد بيانات"
+    "NO_DATA": "لا يوجد بيانات",
+    "SORT_DATE": "ترتيب بالتاريخ"
   },
-  "ADMIN_MESSAGING":{
-    "SCIENTIFIC_PROBLEM":"إشكال علمى"
+  "ADMIN_MESSAGING": {
+    "SCIENTIFIC_PROBLEM": "إشكال علمى"
   }
 }

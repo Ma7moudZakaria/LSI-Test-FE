@@ -47,11 +47,12 @@
     "ENGLISH_FIELD": "This field must be in English",
     "ADD": "Add",
     "CANCEL": "Cancel",
-    "CHOICES":"Choices",
-    "MULTI_SELECT":"Multi Select",
-    "ADD_QUESTION":"Add Question",
-    "ADD_ANSWE":"Add Answer",
-    "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE":"Please complete the missing information and review duplicate data"
+    "CHOICES": "Choices",
+    "MULTI_SELECT": "Multi Select",
+    "ADD_QUESTION": "Add Question",
+    "ADD_ANSWE": "Add Answer",
+    "NOT_AUTHORIZED": "YOU ARE NOT AUTHORIZED",
+    "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE": "Please complete the missing information and review duplicate data"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
@@ -413,7 +414,7 @@
     "GROUPNAMEARABIC": "Group name (Arabic)",
     "CREATENEWGROUP": "Create new group",
     "GROUPNAMEENGLISH": "Group name (English)",
-    "INDIVIDUALS":"Individuals"
+    "INDIVIDUALS": "Individuals"
   },
   "EXAM_FORM": {
     "TITLE": "Forms",
@@ -432,9 +433,10 @@
   },
   "User_Requests": {
     "REQUESTS": "Requests",
-    "NO_DATA": "No Data"
+    "NO_DATA": "No Data",
+    "SORT_DATE": "Sort by date"
   },
-  "ADMIN_MESSAGING":{
-    "SCIENTIFIC_PROBLEM":"Scientific Problem"
+  "ADMIN_MESSAGING": {
+    "SCIENTIFIC_PROBLEM": "Scientific Problem"
   }
 }

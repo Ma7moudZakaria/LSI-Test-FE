@@ -1,27 +1,24 @@
 
-<div *ngIf="scientificProblems"> 
-  <div>
-    <div class="row">
-      <div>
-        <!-- <ngb-pagination [collectionSize]="120" [(page)]="page" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination> -->
-      </div>
-    </div>
-  </div>
+<div *ngIf="scientificProblems" class="scientific-problem"> 
   <div class="row">
-    <div class="col-2">
+    <div class="col-7">
         {{'ADMIN_MESSAGING.SCIENTIFIC_PROBLEM' | translate}}
     </div>
-    <div class="offset-cu-21 col-4" >
+    <div class="offset-2 col-3" >
         <app-search-input (searchTerm)=filterByText($event)></app-search-input>
     </div>
-</div>
-  <div class="row">
-    <div class="col-12">
-      <app-scientific-problems-grid (adminFilterEvent)='filterRequest($event)' [totalCount]='totalCount' [items]='scientificProblems' 
+
+    <div *ngIf='!scientificProblems || scientificProblems.length === 0'>
+      {{ 'GENERAL.NO_DATA' | translate}}
+  </div>
+    
+    <div *ngIf='scientificProblems && scientificProblems.length > 0' class="col-12 internal_scroll">
+      <app-scientific-problems-grid (adminFilterEvent)='filterRequest($event)' (deleteUserScProb)='deleteUserSingleScProb($event)' 
+      (addReplyToScProb)='addReplyToScProb($event)' (saveScProbToQuestionBank)='saveScProbToQuestionBank($event)'
+      [totalCount]='totalCount' [adminItems]='scientificProblems' 
       [numberPerRow]='numberItemsPerRow' [userMode]='adminCard' [adminFilterRequestModel] = 'scientificProblemFilter'></app-scientific-problems-grid>
     </div>
   </div>
-  
 </div>
 
 <!-- <div class="row">

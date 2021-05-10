@@ -6,6 +6,7 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
 import { Observable } from 'rxjs';
 import { IScientificProblemFilter } from '../../interfaces/scientific-problrm/iscientific-problem-filter';
 import { IUserScientificProblemFilter } from '../../interfaces/scientific-problrm/iuser-scientific-problem-filter';
+import { IAddScProbReply } from '../../interfaces/scientific-problrm/iadd-sc-prob-reply';
 
 @Injectable({
   providedIn: 'root'
@@ -13,19 +14,19 @@ import { IUserScientificProblemFilter } from '../../interfaces/scientific-problr
 export class ScientificProblemService {
 
 
-  addScientificProblemReplayURL = environment.baseUrl + 'ScientificProblem/add-scientific-reply/';
+  addScientificProblemReplyURL = environment.baseUrl + 'ScientificProblem/add-scientific-reply/';
   createScientificProblemURL = environment.baseUrl + 'ScientificProblem/create-scientific-problem';
   getScientificProblemDetailsURL = environment.baseUrl + 'ScientificProblem/get-scientific-problems-by-user-id/';
   getScientificProblemFilterURL = environment.baseUrl + 'ScientificProblem/get-scientific-problem-filter/';
-  deleteScientificFilterURL = environment.baseUrl + 'ScientificProblem/delete-scientific-problem/';
+  deleteScientificProblemUrl = environment.baseUrl + 'ScientificProblem/delete-scientific-problem/';
 
 
 
 
   constructor(private http: HttpClient) { }
 
-  addScientificProblemReplay(model: ICreateScientificProblem): Observable<BaseResponseModel> {
-    return this.http.post<BaseResponseModel>(this.addScientificProblemReplayURL, model);
+  addScientificProblemReply(model: IAddScProbReply): Observable<BaseResponseModel> {
+    return this.http.post<BaseResponseModel>(this.addScientificProblemReplyURL, model);
   }
 
   createScientificProblem(model: ICreateScientificProblem): Observable<BaseResponseModel> {
@@ -38,8 +39,8 @@ export class ScientificProblemService {
   getScientificMateriaFilter(filterRequest: IScientificProblemFilter): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.getScientificProblemFilterURL, filterRequest)
   }
-  DeleteScientificMatrial(id: any): Observable<BaseResponseModel> {
-    return this.http.delete<BaseResponseModel>(this.deleteScientificFilterURL + id);
+  DeleteScientificProblem(id: any): Observable<BaseResponseModel> {
+    return this.http.delete<BaseResponseModel>(this.deleteScientificProblemUrl + id);
   }
 
 }

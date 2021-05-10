@@ -1,25 +1,26 @@
 <div class="card-admin-scientific-problem">
     <div class="card_header">
       <section class="example-section">
-        <mat-checkbox class="example-margin">{{scientificProblem.huffazNo}}</mat-checkbox>
+        <mat-checkbox class="example-margin">{{scientificProblem.scNo}}</mat-checkbox>
       </section>
     
     <div>
       <span>{{'SCIENTIFIC_PROBLEM.TIME_QUESTION' | translate}} </span>
       <span>&nbsp;</span>
       <span>&nbsp;</span>
-      <span> {{scientificProblem.scCreationDate}}</span> 
+      <span> {{scientificProblem.scCreatedOn}}</span> 
     </div>
     
     </div>
   
     <div class="card_body">
       <div class="d-flex justify-content-between mb-3">
-      <img class="img_user" src="../../../../../assets/images/profile1.png">
+      <img *ngIf='!scientificProblem.avatarLink' class="img_user" src="../../../../assets/images/student/user-profile.svg">
+      <img *ngIf='scientificProblem.avatarLink' class="img_user" src="{{scientificProblem.avatarLink}}" >
       <div class="mt-4">
-        <p class="name_user bold mb-0">{{scientificProblem.usrId}}</p>
-        <p class="program_user bold mb-0 ">{{scientificProblem.progId}}</p>
-        <p class="daily_work mb-0">{{scientificProblem.day}}</p>
+        <p class="name_user bold mb-0">{{ translate.currentLang === langEnum.en ? scientificProblem.studNameEn : scientificProblem.studNameAr}}</p>
+        <!-- <p class="program_user bold mb-0 ">{{scientificProblem.progId}}</p>
+        <p class="daily_work mb-0">{{scientificProblem.day}}</p> -->
       </div>
       <div><a> <img src="../../../../../assets/images/chat.svg"></a></div>
       </div>
@@ -29,23 +30,27 @@
      
       <div class="body_container">
         <p>
-          squedg gdthd r ryru  yet hed hdghd htght gstion
+          {{scientificProblem.questText}}
          </p>
       </div>
       <div class="body_header">
       <span >{{'SCIENTIFIC_PROBLEM.REPLY' | translate}}</span>
-      <span class="teacher_name bold">{{'SCIENTIFIC_PROBLEM.SUPERVISOR_NAME' | translate}}</span>
+      <span class="teacher_name bold">{{ translate.currentLang === langEnum.en ? scientificProblem.adNameEn : scientificProblem.adNameAr}}</span>
       </div>
       <div class="body_container">
-        <p>
-          squedg gdthd r ryru  yet hed hdghd htght gstion
+        <p *ngIf='!showAddReplyArea'>
+          {{scientificProblem.repText}}
          </p>
+         <div *ngIf='showAddReplyArea' class="row">
+          <textarea [(ngModel)]='scientificProblem.repText' class="col-8"></textarea>
+          <button class="col-2" (click)='saveReply()' class=" btn"> {{'GENERAL.SAVE' | translate}}</button>
+         </div>
       </div>
      
     </div>
     <div class="body_footer">
-      <button class="btn cancel-btn"> {{'SCIENTIFIC_PROBLEM.ADDLINK' | translate}}</button>
-      <button class=" btn btn_replay"> {{'SCIENTIFIC_PROBLEM.REPLAYANSWER' | translate}}</button>
-      <button class=" btn save-btn"> {{'SCIENTIFIC_PROBLEM.DELETE' | translate}}</button>
+      <button class="btn cancel-btn" (click)='saveToQuestionBank()' [attr.disabled]='!scientificProblem.repText ? true : null' > {{'SCIENTIFIC_PROBLEM.ADDLINK' | translate}}</button>
+      <button class=" btn btn_replay" [attr.disabled]="showAddReplyArea || scientificProblem.repText ? true : null" (click)='showAddReplyAreaTog()'> {{'SCIENTIFIC_PROBLEM.REPLAYANSWER' | translate}}</button>
+      <button (click)='deleteScientificProblemEve()' class=" btn save-btn"> {{'SCIENTIFIC_PROBLEM.DELETE' | translate}}</button>
     </div>
   </div>
