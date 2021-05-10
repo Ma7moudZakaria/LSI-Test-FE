@@ -770,3 +770,11 @@ pagination
   border: 1px solid #CB911826;
   cursor: no-drop;
 }
+/******************
+form inut desabled
+/***********************/
+.form-control:disabled, .form-control[readonly] {
+  background-color: #F4F5F7;
+  opacity: 1;
+  border-color: #F4F5F7;
+}
