@@ -8,6 +8,9 @@
         <app-search-input (searchTerm)=filterByText($event)></app-search-input>
     </div>
 
+    <div *ngIf='!scientificProblems || scientificProblems.length === 0'>
+      {{ 'GENERAL.NO_DATA' | translate}}
+  </div>
     
     <div class="col-12 internal_scroll">
       <app-scientific-problems-grid (adminFilterEvent)='filterRequest($event)' (deleteUserScProb)='deleteUserSingleScProb($event)' 

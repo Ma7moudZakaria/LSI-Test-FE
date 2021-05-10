@@ -63,12 +63,19 @@ export class RoleManagementService {
   }
 
    isStudent(){
+     
+    //fixing issue when logout then back
+    this.localUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
+    
     let res = this.localUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.roles.Student.toString()); 
     if (res) {return true}
 
     return false;
   }
   isAdmin(){
+    //fixing issue when logout then back
+    this.localUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
+    
     let res = this.localUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.roles.Admin.toString() 
                                                     || x.roleNo == this.roles.SuperAdmin.toString()
                                                     || x.roleNo == this.roles.Supervisor.toString()
@@ -78,6 +85,9 @@ export class RoleManagementService {
   }
   
   isTeacher(){
+    //fixing issue when logout then back
+    this.localUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
+
     let res = this.localUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.roles.Teacher.toString()); 
     if (res) {return true}
     return false;
