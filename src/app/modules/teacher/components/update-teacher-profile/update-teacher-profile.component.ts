@@ -178,7 +178,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           email: [null, Validators.required],
           qualifi: [null, Validators.required],
           specia: [null, Validators.required],
-          eduYear: [null, Validators.required],
+          // eduYear: [null],
           entity: [null, Validators.required],
           agency: [null, Validators.required],
           edulevel: [null, Validators.required],
@@ -218,7 +218,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           email: [null, Validators.required],
           qualifi: [null, Validators.required],
           specia: [null, Validators.required],
-          eduYear: [null, Validators.required],
+          //eduYear: [null, Validators.required],
           entity: [null, Validators.required],
           agency: [null, Validators.required],
           edulevel: [null, Validators.required],
@@ -309,7 +309,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.f.gender.setValue(this.teacherProfileDetails?.gender)
     this.f.qualifi.setValue(this.teacherProfileDetails?.qualifi)
     this.f.specia.setValue(this.teacherProfileDetails?.specia)
-    this.f.eduYear.setValue(this.teacherProfileDetails?.eduYear)
+    // this.f.eduYear.setValue(this.teacherProfileDetails?.eduYear)
     this.f.edulevel.setValue(this.teacherProfileDetails?.eduLevel)
     this.f.entity.setValue(this.teacherProfileDetails?.entity)
     this.f.agency.setValue(this.teacherProfileDetails?.agency)
@@ -397,7 +397,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
         specia: this.profileForm.value.specia,
         workingPlatForm: this.profileForm.value.workingPlatForm,
         entity: this.profileForm.value.entity,
-        eduYear: this.profileForm.value.eduYear,
+        // eduYear: this.profileForm.value.eduYear,
         isHasQuranExp: this.profileForm.value.isHasQuranExp,
         isHasTeachSunnaExp: this.profileForm.value.isHasTeachSunnaExp,
         isHasInternetTeachExp: this.profileForm.value.isHasInternetTeachExp,
