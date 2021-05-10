@@ -9,11 +9,24 @@
       {{ 'PROGRAMS_LIST.ALL' | translate}}
     </p>
   </div>
-  <div class="upload" *ngIf='roleService.isAdmin()'>
-    <a (click)="loadMaterial()"   matTooltip="{{ 'QUESTION_BANK.ADD' | translate}}">
-       <img calss="m-2 pull-left"  src="assets/images/scientificMaterial/Group 18093.svg" alt="">
-    </a>
+  <div class="row p-0 align-items-center mb-3">
+
+    <div class="col-2">
+      <div class="upload" *ngIf='roleService.isAdmin()'>
+        <a (click)="loadMaterial()"   matTooltip="{{ 'QUESTION_BANK.ADD' | translate}}">
+           <img calss="m-2 pull-left"  src="assets/images/scientificMaterial/Group 18093.svg" alt="">
+        </a>
+      </div>
+    </div>
+    <div class="offset-cu-21 col-4" >
+      <app-search-input (searchTerm)=searchMaterial($event)></app-search-input>
+  
   </div>
+  </div>
+ 
+
+
+  
   <div class="col-12 pr-0 pl-0 ">
     <section class="example-section">
         <mat-checkbox  *ngFor="let item of materialCategoires;let i=index" 
