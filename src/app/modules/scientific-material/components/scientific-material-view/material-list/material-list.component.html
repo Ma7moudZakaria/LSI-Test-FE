@@ -1,28 +1,26 @@
 <div class="material-list">
-  <div class="col-6  pr-0 pl-0">
-    <p class="mb-4 title_material-list" *ngIf="program">
-      {{
-        translate.currentLang === langEnum.ar ?  program.arabName : program.engName
-      }}
-    </p>
-    <p class="mb-4 title_material-list" *ngIf="program === undefined">
-      {{ 'PROGRAMS_LIST.ALL' | translate}}
-    </p>
-  </div>
-  <div class="row p-0 align-items-center mb-3">
-
-    <div class="col-2">
-      <div class="upload" *ngIf='roleService.isAdmin()'>
-        <a (click)="loadMaterial()"   matTooltip="{{ 'QUESTION_BANK.ADD' | translate}}">
-           <img calss="m-2 pull-left"  src="assets/images/scientificMaterial/Group 18093.svg" alt="">
-        </a>
-      </div>
+  <div class="row">
+    <div class="col-9 pr-0 pl-0">
+      <p class="mb-4 title_material-list" *ngIf="program?.arabName || program?.engName">
+        {{
+          translate.currentLang === langEnum.ar ?  program.arabName : program.engName
+        }}
+      </p>
+      <p class="mb-4 title_material-list" *ngIf="!program?.arabName && !program?.engName">
+        {{ 'PROGRAMS_LIST.ALL' | translate}}
+      </p>
     </div>
-    <div class="offset-cu-21 col-4" >
-      <app-search-input (searchTerm)=searchMaterial($event)></app-search-input>
+    <div class="col-3 p-0 align-items-center mb-3">
+
+        <div class="upload" *ngIf='roleService.isAdmin()'>
+          <span style="color: #CB9118;"> {{ 'SCIENTIFIC_MATERIAL.ADD_SCIENTIFIC_MATERIAL' | translate}} </span>
+          <a (click)="loadMaterial()"   matTooltip="{{ 'QUESTION_BANK.ADD' | translate}}">
+             <img calss="m-2 pull-left"  src="assets/images/scientificMaterial/Group 18093.svg" alt="">
+          </a>
+        </div>
+    </div>
+  </div>
   
-  </div>
-  </div>
  
 
 
@@ -35,10 +33,14 @@
         </mat-checkbox>
       <!-- <mat-checkbox class="example-margin" >مواد صوتية</mat-checkbox>
       <mat-checkbox class="example-margin ml-5 mr-5" >مواد مقرؤة</mat-checkbox> -->
-      <div *ngIf="resMessage.message" class="alert alert-{{ resMessage.type }} my-4 py-2">
+      <!-- <div *ngIf="resMessage.message" class="alert alert-{{ resMessage.type }} my-4 py-2">
         {{ resMessage.message }}
-    </div> 
+    </div>  -->
     </section>
+    <div class="offset-cu-21 col-4" >
+      <app-search-input (searchTerm)=searchMaterial($event)></app-search-input>
+
+    </div>
 
   </div>
   <div  *ngIf="materials.length===0" class="row">

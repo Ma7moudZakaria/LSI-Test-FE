@@ -108,7 +108,8 @@
     "Confirm_Delete": "Delete Material",
     "Delete_Message": "Are you sure you want to delete this?",
     "Select_Program": "Please select program",
-    "NO_DATA": "No Data found"
+    "NO_DATA": "No Data found",
+    "ADD_SCIENTIFIC_MATERIAL":"Add Scientific Material"
   },
   "SCIENTIFIC_PROBLEM": {
     "TIME": "Time",

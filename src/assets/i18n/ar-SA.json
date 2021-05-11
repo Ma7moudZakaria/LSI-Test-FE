@@ -105,7 +105,8 @@
     "Confirm_Delete": "حذف المادة",
     "Delete_Message": "هل أنت متأكد من حذف المادة؟",
     "Select_Program": "برجاء اختيار  برنامج",
-    "NO_DATA": "لا يوجد بيانات"
+    "NO_DATA": "لا يوجد بيانات",
+    "ADD_SCIENTIFIC_MATERIAL":"إضافة مادة علمية"
   },
   "SCIENTIFIC_PROBLEM": {
     "TIME": "تاريخ الطلب",
