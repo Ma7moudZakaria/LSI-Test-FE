@@ -1,6 +1,6 @@
 import { LIVE_ANNOUNCER_DEFAULT_OPTIONS } from '@angular/cdk/a11y';
 import { formatDate } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-date-struct';
@@ -94,6 +94,43 @@ export class UpdateUserProfileComponent implements OnInit {
         }
       }
     });
+  }
+
+  @HostListener('window:beforeunload', ['$event'])
+  public onPageUnload($event: BeforeUnloadEvent) {
+    if (this.unsavedDataCheck()) {
+      $event.returnValue = true;
+      // return "message";
+    }
+    else{
+      $event.returnValue = false;
+      // return '';
+    }
+  }
+
+  @HostListener('window:popstate', ['$event'])
+  onPopState(event:any) {
+    this.userService.setCanDeActivate(this.unsavedDataCheck());
+  }
+
+  unsavedDataCheck() : boolean{
+    return this.profileForm.value.firstNameAr != this.userProfileDetails?.fnameAr
+    || this.profileForm.value.firstNameEn != this.userProfileDetails?.faNameEn
+    || this.profileForm.value.middleNameAr != this.userProfileDetails?.mnameAr
+    || this.profileForm.value.middleNameEn != this.userProfileDetails?.mnameEn
+    || this.profileForm.value. familyNameAr!= this.userProfileDetails?.fanameAr
+    || this.profileForm.value. familyNameEn!= this.userProfileDetails?.faNameEn
+    || this.profileForm.value.birthdate != this.userProfileDetails?.birthdate
+    || this.profileForm.value.gender != this.userProfileDetails?.gender
+    || this.profileForm.value.phoneNumber!= this.userProfileDetails?.mobile
+    || this.profileForm.value.countryCode!= this.userProfileDetails?.countryCode
+    || this.profileForm.value.city!= this.userProfileDetails?.city
+    || this.profileForm.value.nationality!= this.userProfileDetails?.nationality
+    || this.profileForm.value.educationallevel!= this.userProfileDetails?.eduLevel
+    || this.profileForm.value.occupation!= this.userProfileDetails?.occupation
+    || this.profileForm.value.address!= this.userProfileDetails?.address
+    || this.profileForm.value.quraanMemorization!= this.userProfileDetails?.quraanMemorizeAmount
+    || this.profileForm.value.ejazaAttachmentIds!= this.userProfileDetails?.ejazaAttachments
   }
 
   getCountryIsoCode() {
@@ -274,24 +311,23 @@ export class UpdateUserProfileComponent implements OnInit {
   }
 
   buildForm() {
-
     if (this.translate.currentLang === LanguageEnum.ar) {
       this.profileForm = this.fb.group(
         {
           firstNameAr: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
           middleNameAr: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
           familyNameAr: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-          birthdate: [''],
+          birthdate: ['', [Validators.required]],
           email: [''],
           nationality: [null, Validators.required],
           educationallevel: [null, Validators.required],
           gender: [null, Validators.required],
-          address: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
+          address: [''],// address: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
           phoneNumber: ['', [Validators.required/*,Validators.pattern(BaseConstantModel.mobilePattern), Validators.minLength(6), Validators.maxLength(16)*/]],
           occupation: [null, Validators.required],
           countryCode: [null, Validators.required],          
           city: [null, Validators.required],
-          quraanMemorization: ['', Validators.required],
+          quraanMemorization:['', [Validators.pattern(BaseConstantModel.numberBiggerThanZero)]],
           userSheikhs: [],
           userArchives: [],
           userCourses: []
@@ -305,17 +341,17 @@ export class UpdateUserProfileComponent implements OnInit {
           firstNameEn: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
           middleNameEn: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
           familyNameEn: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-          birthdate: [''],
+          birthdate: ['', [Validators.required]],
           email: [''],
           nationality: [null, Validators.required],
           educationallevel: [null, Validators.required],
           gender: [null, Validators.required],
-          address: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
+          address: [''],
           phoneNumber: ['', [Validators.required, Validators.pattern(BaseConstantModel.mobilePattern)]],
           occupation: [null, Validators.required],
           countryCode: [null, Validators.required],
           city: [null, Validators.required],
-          quraanMemorization: ['', Validators.required],
+          quraanMemorization:['', [Validators.pattern(BaseConstantModel.numberBiggerThanZero)]],
           userSheikhs: [],
           userArchives: [],
           userCourses: []

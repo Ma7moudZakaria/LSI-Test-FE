@@ -11,5 +11,6 @@ export interface IScientificMaterialFilter{
     skip?:number;
     take?:number;
     sortField?:string;
-    sortOrder?:number;    
+    sortOrder?:number;  
+    text?:string;  
 }

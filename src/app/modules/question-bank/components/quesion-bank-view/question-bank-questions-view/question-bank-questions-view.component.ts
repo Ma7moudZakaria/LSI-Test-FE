@@ -16,6 +16,7 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { QuestionBankQuestionService } from 'src/app/core/services/question-bank-services/question-bank-question.service';
+import { RoleManagementService } from 'src/app/core/services/role-management/role-management.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 @Component({
   selector: 'app-question-bank-questions-view',
@@ -45,7 +46,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   isView = true;
 
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
-     public translate: TranslateService,public dialog: MatDialog) {
+     public translate: TranslateService,public dialog: MatDialog, private roleService : RoleManagementService) {
       }
 
   ngOnInit(): void {
@@ -90,7 +91,13 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
       this.questionBankQuestionService.getQuestionBankQuestionsFilter(this.questionBankQuestionFilter).subscribe(res => {
         let response = <BaseResponseModel>res;
         if (response.isSuccess) {
-          this.questionBankQuestionList = response.data;
+          let items : IQuestionBankQuestionsModel []= response.data
+          if (this.roleService.isAdmin()){
+            this.questionBankQuestionList = items;
+          }
+          else{
+            this.questionBankQuestionList = items.filter(i => i.isActive);
+          }
         }
         else {
           this.questionBankQuestionList = [];
@@ -253,4 +260,5 @@ else{
         event.currentIndex);
     }
   }
+ 
 }

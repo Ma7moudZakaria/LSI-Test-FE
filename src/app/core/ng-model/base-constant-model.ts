@@ -38,7 +38,7 @@ export class BaseConstantModel {
  // public static passwordPattern = "^(?=.*?[A-Z])(?=(.*){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{6,12}$";
  // public static passwordPattern ="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$";
  public static passwordPattern ="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=.!(){}<>,.?/~+\\-\\][;|:]).{6,12}$";
-
+ public static numberBiggerThanZero ="^[1-9][0-9]*$" ;
  static newGuid() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
       var r = Math.random() * 16 | 0,
@@ -46,4 +46,6 @@ export class BaseConstantModel {
       return v.toString(16);
     });
   }
+
+  
 }
