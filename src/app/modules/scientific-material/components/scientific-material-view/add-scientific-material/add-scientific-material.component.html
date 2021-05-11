@@ -177,13 +177,13 @@
 
 
     <section>
-        <div class="row direction-rtl">
+        <div class="row direction-rtl buttons-center">
             <button class="save-btn" type="submit" [disabled]="disableSaveButtons">
                 {{'SCIENTIFIC_MATERIAL.SAVE' | translate}}
             </button>
             <button type="reset" class="cancel-btn" [disabled]="disableSaveButtons"
                 (click)="closeForm()">
-                {{'SCIENTIFIC_MATERIAL.CLOSE' | translate }}
+                {{'SCIENTIFIC_MATERIAL.CANCEL' | translate }}
             </button>
 
             <div *ngIf="resMessage.message" class="alert alert-{{ resMessage.type }} my-4 py-2">
