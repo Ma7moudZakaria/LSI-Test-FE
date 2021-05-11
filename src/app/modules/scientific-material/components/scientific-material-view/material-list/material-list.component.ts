@@ -58,10 +58,9 @@ else{this.materialFilter.programs =""}
   
 
   }
-  loadProgramMaterial(text?:string) {
+  loadProgramMaterial() {
     this.materialFilter.skip = 0;
     this.materialFilter.take = 2147483647;
-    this.materialFilter.text=text;
     if( this.materialFilter.programs !=""){
       this.scientifcMaterialService.getScientificMateriaFilter(this.materialFilter).subscribe(
         (res: BaseResponseModel) => {
@@ -167,7 +166,8 @@ else{this.materialFilter.programs =""}
 
   searchMaterial(text?:string){
     this.materials=[];
-    this.loadProgramMaterial(text);
+    this.translate.currentLang == LanguageEnum.ar ? this.materialFilter.titleAr = text : this.materialFilter.titleEn = text
+    this.loadProgramMaterial();
    // this.loadMaterialCategories(this.selectedCategoryId.id,text);
    
   }

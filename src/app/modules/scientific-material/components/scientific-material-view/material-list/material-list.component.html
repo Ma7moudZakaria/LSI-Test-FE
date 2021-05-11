@@ -20,14 +20,12 @@
         </div>
     </div>
   </div>
-  
- 
 
-
-  
-  <div class="col-12 pr-0 pl-0 ">
+  <div class="pr-0 pl-0 ">
     <section class="example-section">
-        <mat-checkbox  *ngFor="let item of materialCategoires;let i=index" 
+      <div class="row">
+        <div class="col-8">
+          <mat-checkbox  *ngFor="let item of materialCategoires;let i=index" 
         class="example-margin  ml-1 mr-1" (change)="changeCategory(item.id)" [ngClass]="{'ml-1 mr-1':i==0 ,'ml-5 mr-5': i==1, 'ml-3 mr-3': i==2}">
           {{translate.currentLang === langEnum.en ? item.nameEn: item.nameAr}}  
         </mat-checkbox>
@@ -36,11 +34,13 @@
       <!-- <div *ngIf="resMessage.message" class="alert alert-{{ resMessage.type }} my-4 py-2">
         {{ resMessage.message }}
     </div>  -->
-    </section>
-    <div class="offset-cu-21 col-4" >
+        </div>
+        <div class="col-4 offset-cu-21">
       <app-search-input (searchTerm)=searchMaterial($event)></app-search-input>
 
-    </div>
+        </div>
+      </div>
+    </section>
 
   </div>
   <div  *ngIf="materials.length===0" class="row">
