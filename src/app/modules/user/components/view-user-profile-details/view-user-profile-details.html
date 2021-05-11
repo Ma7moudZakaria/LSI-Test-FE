@@ -7,7 +7,7 @@
 
                 <div class="col-12 profile p-0 mb-3">
                     <div class="profile_background"></div>
-                    <img class="img_profile" src="../../../../../assets/images/profile1.png">
+                    <img class="img_profile" [src]="userProfileDetails?.proPic">
                     <input type="file" style="display: none;" #fileInput>
                     <a class="custom_file_input"  style="text-decoration: none;" id="upload_link">
                         <!-- {{'VIEW_USER_PG.CHANGE_PIC' | translate}} -->
@@ -28,7 +28,7 @@
                     <div class="col-9  info_profile ">
                     <div class="row">
                        <div class="col-5"></div>
-                        <div class="col-5  mt-4  mb-4 border text-center">
+                        <div class="col-5  mt-4  mb-4  text-center">
                             <p class="update_item_profile-name">{{ translate.currentLang === langEnum.en ? userProfileDetails?.fnameEn : userProfileDetails?.fnameAr }} {{ translate.currentLang === langEnum.en ? userProfileDetails?.mnameEn : userProfileDetails?.mnameAr }} {{ translate.currentLang === langEnum.en ? userProfileDetails?.faNameEn : userProfileDetails?.fanameAr }} </p>
                             <p class="brith_date">starts</p>
                             <span class="brith_date">{{ userProfileDetails?.birthdate }}</span>

@@ -1,11 +1,11 @@
 <div class="container-fluid UpdateUser" >
     <div class="row">
         <div class="box_container">
-
+            <!-- src="../../../../../assets/images/profile1.png" -->
 
                 <div class="col-12 profile p-0 mb-3">
                     <div class="profile_background"></div>
-                    <img class="img_profile" src="../../../../../assets/images/profile1.png">
+                    <img class="img_profile"  [src]="teacherProfileDetails?.proPic" >
                     <input type="file" style="display: none;" #fileInput>
                     <a class="custom_file_input"  style="text-decoration: none;" id="upload_link">
                         <!-- {{'UPDATE_USER_PG.CHANGE_PIC' | translate}} -->
@@ -28,7 +28,7 @@
                     <div class="col-9  info_profile ">
                     <div class="row">
                        <div class="col-5"></div>
-                        <div class="col-5  mt-4  mb-4 border text-center">
+                        <div class="col-5  mt-4  mb-4  text-center">
                             <!-- <p class="update_item_profile-name"> {{ translate.currentLang === langEnum.en ? teacherProfileDetails?.fnameEn : teacherProfileDetails?.fnameAr }} {{ translate.currentLang === langEnum.en ? teacherProfileDetails?.mnameEn : teacherProfileDetails?.mnameAr }} {{ translate.currentLang === langEnum.en ? teacherProfileDetails?.faNameEn : teacherProfileDetails?.fanameAr }} </p>  -->
                             <!-- <p class="update_item_profile-name"> {{ translate.currentLang === lang.en ? teacherProfileDetails?.engNatName : teacherProfileDetails?.arbNatName}} </p> -->
 
