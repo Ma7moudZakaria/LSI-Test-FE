@@ -87,14 +87,22 @@ else{
         const index = this.questionTemplate.answers.indexOf(answer);
         if (index > -1){
           this.questionTemplate.answers.splice(index,1);
-          let numberAnswer=parseInt(this.questionTemplate.correctAnswersByAnswerNumber!);
-          if(numberAnswer>1)
-          {  
-             numberAnswer=numberAnswer-1
-            this.questionTemplate.correctAnswersByAnswerNumber=numberAnswer.toString();
+          if(this.questionTemplate.answerType === AnswerTypeEnum.singleSelect){
+            let numberAnswer=parseInt(this.questionTemplate.correctAnswersByAnswerNumber!);
+            if(numberAnswer>1)
+            {  
+               numberAnswer=numberAnswer-1
+              this.questionTemplate.correctAnswersByAnswerNumber=numberAnswer.toString();
+            }
+            else{
+              this.questionTemplate.correctAnswersByAnswerNumber=numberAnswer.toString();
+            }
           }
           else{
-            this.questionTemplate.correctAnswersByAnswerNumber=numberAnswer.toString();
+            if(this.questionTemplate.answers.filter(x=>x.correct==true).length<1)
+            {
+              this.questionTemplate.answers[0].correct=true;
+            }
           }
           this.questionTemplate.answers.forEach(element => {
             element.answerNo=this.questionTemplate.answers.indexOf(element)+1;
