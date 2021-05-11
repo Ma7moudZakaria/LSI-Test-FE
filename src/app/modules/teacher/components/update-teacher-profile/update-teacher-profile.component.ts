@@ -102,6 +102,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
+    this.setCurrentLang();
     this.getCountryIsoCode();
     this.buildForm();
     this.getPrograms();

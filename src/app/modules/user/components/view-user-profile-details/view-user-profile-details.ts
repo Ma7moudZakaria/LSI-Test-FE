@@ -8,6 +8,7 @@ import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collec
 import { IUserProfile } from 'src/app/core/interfaces/user-interfaces/iuserprofile';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
+import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 import { UserService } from 'src/app/core/services/user-services/user.service';
 
@@ -32,14 +33,27 @@ export class ViewUserProfileDetailsComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     public translate: TranslateService,
-    private userService: UserService) {
+    private userService: UserService,
+    private languageService : LanguageService) {
   }
 
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     this.currentLang = this.translate.currentLang === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
     this.RouteParams = this.router.url;
+    this.setCurrentLang();
     this.getUserProfile(this.currentUser.id);
+  }
+
+  setCurrentLang() {
+    this.emitHeaderTitle();
+    this.languageService.currentLanguageEvent.subscribe(res => {
+      this.emitHeaderTitle();
+    });
+  }
+
+  emitHeaderTitle() {
+    this.languageService.headerPageNameEvent.emit(this.translate.instant('UPDATE_TEACHER_PG.TITLE'));
   }
 
   getUserProfile(id: any) {
