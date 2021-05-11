@@ -142,7 +142,8 @@
                                             <div class="badges " >
                                                 <div class="badge badge-info p-2 " >
                                                 <div class="d-flex justify-content-between mt-0">
-                                                    <p class="ellipsis mb-0" matTooltip="fff">  {{  translate.currentLang === lang.en ? teacherProfileDetails?.eduUnitEn : teacherProfileDetails?.eduUnitAr }} - {{  translate.currentLang === lang.en ? teacherProfileDetails?.agencyEn : teacherProfileDetails?.agencyAr }}</p>
+                                                    <p class="ellipsis mb-0" matTooltip="{{  translate.currentLang === lang.en ? teacherProfileDetails?.eduUnitEn : teacherProfileDetails?.eduUnitAr }} - {{  translate.currentLang === lang.en ? teacherProfileDetails?.agencyEn : teacherProfileDetails?.agencyAr }}">  
+                                                        {{  translate.currentLang === lang.en ? teacherProfileDetails?.eduUnitEn : teacherProfileDetails?.eduUnitAr }} - {{  translate.currentLang === lang.en ? teacherProfileDetails?.agencyEn : teacherProfileDetails?.agencyAr }}</p>
                                                 </div>
                                                 </div>
                                             </div>
@@ -162,7 +163,8 @@
                                             <div class="badges " >
                                                 <div class="badge badge-info p-2 " >
                                                 <div class="d-flex justify-content-between mt-0">
-                                                    <p class="ellipsis mb-0" matTooltip="fff">  {{  translate.currentLang === lang.en ? item?.nameEn : item?.nameAr }} </p>
+                                                    <p class="ellipsis mb-0" matTooltip="{{  translate.currentLang === lang.en ? item?.nameEn : item?.nameAr }}">  
+                                                        {{  translate.currentLang === lang.en ? item?.nameEn : item?.nameAr }} </p>
                                                 </div>
                                                 </div>
                                             </div>
@@ -182,7 +184,8 @@
                                             <div class="badges  " >
                                                 <div class="badge badge-info p-2 " >
                                                 <div class="d-flex justify-content-between mt-0">
-                                                    <p class="ellipsis mb-0" matTooltip="fff">   {{  translate.currentLang === lang.en ? item?.nameEn : item?.nameAr }}  </p>
+                                                    <p class="ellipsis mb-0" matTooltip="{{  translate.currentLang === lang.en ? item?.nameEn : item?.nameAr }}">   
+                                                        {{  translate.currentLang === lang.en ? item?.nameEn : item?.nameAr }}  </p>
                                                 </div>
                                                 </div>
                                             </div>
@@ -201,18 +204,23 @@
                                             <div class="badges" >
                                                 <div class="badge badge-info p-2 ">
                                                 <div class="d-flex justify-content-between mt-0">
-                                                    <p class="ellipsis mb-0" > 
-                                                        {{  translate.currentLang === lang.en ? item?.nameEn : item?.nameAr }} <span>&nbsp; </span>
-                                                        <!-- <span>من 5:00 الي 8:00</span> -->
+                                                    <p *ngIf='translate.currentLang === lang.en' 
+                                                    class="ellipsis mb-0" 
+                                                    matTooltip='{{item?.nameEn}} From {{item.fromTime}}  To  {{item.toTime  }}'> 
+                                                        {{ item?.nameEn }}
                                                         <span *ngIf="translate.currentLang === lang.en">
                                                             From {{ item.fromTime }} To {{ item.toTime }}
                                                         </span>
-                                                        <span *ngIf="translate.currentLang === lang.ar">
-                                                            من {{ item.toTime }} الي {{ item.fromTime }}
-                                                        </span>
-
+                                                        
                                                     </p>
-                                                    <a ><img src="../../../../../assets/images/update-user/cancel.svg"> </a>
+                                                    <p *ngIf='translate.currentLang === lang.ar' 
+                                                    class="ellipsis mb-0"
+                                                    matTooltip='{{item?.nameAr}} من {{item.fromTime }}الي {{item.toTime }}'>
+                                                        {{ item?.nameAr }}
+                                                        <span *ngIf="translate.currentLang === lang.ar">
+                                                            من {{ item.fromTime }} الي {{ item.toTime }}
+                                                        </span>
+                                                    </p>
                                                 </div>
                                                 </div>
                                             </div>
