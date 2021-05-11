@@ -115,10 +115,10 @@
     "TIME": "Time",
     "TIME_QUESTION": "Time Question",
     "QUESTION": "Question",
-    "REPLY": "Replay",
+    "REPLY": "Reply",
     "ADDLINK": "Add link",
     "DELETE": "Delete",
-    "REPLAYANSWER": "Replay Answer",
+    "REPLY_ANSWER": "Reply Answer",
     "SUPERVISOR_NAME": "Supervisor's name"
   },
   "PROGRAMS_LIST": {
