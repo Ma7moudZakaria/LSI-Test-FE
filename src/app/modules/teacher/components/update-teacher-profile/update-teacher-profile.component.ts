@@ -141,7 +141,8 @@ export class UpdateTeacherProfileComponent implements OnInit {
     || this.profileForm.value.educationallevel!= this.teacherProfileDetails?.eduLevel
     || this.profileForm.value.qualifi!= this.teacherProfileDetails?.qualifi
     || this.profileForm.value.specia!= this.teacherProfileDetails?.specia
-    || this.profileForm.value.eduYear!= this.teacherProfileDetails?.eduYear
+    || this.profileForm.value.eduDate!= this.teacherProfileDetails?.eduDate
+    || this.profileForm.value.eduNum != this.teacherProfileDetails?.eduNum
     || this.profileForm.value.isHasQuranExp!= this.teacherProfileDetails?.isHasQuranExp
     || this.profileForm.value.isHasTeachSunnaExp!= this.teacherProfileDetails?.isHasTeachSunnaExp
     || this.profileForm.value.isHasInternetTeachExp!= this.teacherProfileDetails?.isHasInternetTeachExp
