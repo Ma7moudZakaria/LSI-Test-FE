@@ -68,6 +68,7 @@ export class ExamFormService {
     if(answerList.length>=1){
       if (answerList.some(e => !e.text)){return false}
       if(this.getDuplicateAnswer(answerList).length>0){return false}
+      if(answerList.filter(x=>x.correct==true).length<1){return false}
       else return true;
       }
       else
