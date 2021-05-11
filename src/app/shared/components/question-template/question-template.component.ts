@@ -37,7 +37,12 @@ export class QuestionTemplateComponent implements OnInit {
     if(this.examFormService.validateAnswer(this.questionTemplate.answers)===true)
 {
   let id = BaseConstantModel.newGuid();
-  let answer: IAnswer = { answerId: id, answerNo: this.questionTemplate.answers?.length + 1,correct : false }
+  if (this.questionTemplate.answerType === AnswerTypeEnum.singleSelect && this.questionTemplate.answers.length === 0){
+    this.questionTemplate.correctAnswersByAnswerNumber = 1;
+  }
+  let answer: IAnswer = { answerId: id, answerNo: this.questionTemplate.answers?.length + 1,correct :this.questionTemplate.answers?.length ===0 ? true : false }
+
+  
   this.questionTemplate.answers?.push(answer)
 }
 else{
@@ -82,6 +87,7 @@ else{
         const index = this.questionTemplate.answers.indexOf(answer);
         if (index > -1){
           this.questionTemplate.answers.splice(index,1);
+         // this.questionTemplate.correctAnswersByAnswerNumber=this.questionTemplate.correctAnswersByAnswerNumber-1;
         }
       }
     });

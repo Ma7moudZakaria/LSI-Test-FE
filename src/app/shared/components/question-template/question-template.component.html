@@ -80,7 +80,7 @@
    
       <div *ngIf="questionTemplate.answerType === answerTypeEnum.singleSelect">
  
-          <mat-radio-group [(ngModel)]="questionTemplate.correctAnswersByAnswerNumber" 
+          <mat-radio-group *ngIf='questionTemplate.answers.length > 0' [(ngModel)]="questionTemplate.correctAnswersByAnswerNumber" 
           class="input-group  col-12" [disabled]='viewMode'>
         <mat-radio-button *ngFor = 'let answer of questionTemplate.answers' 
          value="{{answer.answerNo}}"class=" px-4  col-12" >

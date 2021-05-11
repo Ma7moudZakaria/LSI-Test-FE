@@ -64,7 +64,9 @@ if(this.examFormService.validateQuestion(this.exam.questions)===true)
     questionId: qid,
     questionNo: this.exam?.questions ? this.exam.questions.length + 1 : 1,
     answers: [],
-    answerType: AnswerTypeEnum.singleSelect
+    answerType: AnswerTypeEnum.singleSelect,
+    correctAnswersByAnswerNumber:1,
+    correctAnswersByAnswerNumbers:[1]
   }
   this.exam.questions.push(ques);
 }
