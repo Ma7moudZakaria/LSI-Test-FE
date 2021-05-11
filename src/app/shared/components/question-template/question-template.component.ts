@@ -37,13 +37,13 @@ export class QuestionTemplateComponent implements OnInit {
     if(this.examFormService.validateAnswer(this.questionTemplate.answers)===true)
 {
   let id = BaseConstantModel.newGuid();
-  if (this.questionTemplate.answerType === AnswerTypeEnum.singleSelect && this.questionTemplate.answers.length === 0){
-    this.questionTemplate.correctAnswersByAnswerNumber = 1;
-  }
-  let answer: IAnswer = { answerId: id, answerNo: this.questionTemplate.answers?.length + 1,correct :this.questionTemplate.answers?.length ===0 ? true : false }
 
-  
+  let answer: IAnswer = { answerId: id, answerNo: this.questionTemplate.answers?.length + 1,correct :this.questionTemplate.answers?.length ===0 ? true : false }
+  if (this.questionTemplate.answerType === AnswerTypeEnum.singleSelect && this.questionTemplate.answers.length === 0){
+    this.questionTemplate.correctAnswersByAnswerNumber = "1";
+ }
   this.questionTemplate.answers?.push(answer)
+  
 }
 else{
   this.resultMessage = {
@@ -87,9 +87,28 @@ else{
         const index = this.questionTemplate.answers.indexOf(answer);
         if (index > -1){
           this.questionTemplate.answers.splice(index,1);
-         // this.questionTemplate.correctAnswersByAnswerNumber=this.questionTemplate.correctAnswersByAnswerNumber-1;
+          let numberAnswer=parseInt(this.questionTemplate.correctAnswersByAnswerNumber!);
+          if(numberAnswer>1)
+          {  
+             numberAnswer=numberAnswer-1
+            this.questionTemplate.correctAnswersByAnswerNumber=numberAnswer.toString();
+          }
+          else{
+            this.questionTemplate.correctAnswersByAnswerNumber=numberAnswer.toString();
+          }
+          this.questionTemplate.answers.forEach(element => {
+            element.answerNo=this.questionTemplate.answers.indexOf(element)+1;
+          });
         }
+       
       }
     });
   }
+
+  stopPropagation(event: Event){
+    event.preventDefault();
+    event.stopPropagation();
+}
+
+
 }

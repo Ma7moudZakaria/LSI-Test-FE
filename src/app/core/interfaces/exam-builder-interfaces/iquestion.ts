@@ -14,7 +14,7 @@ questionType? :QuestionTypeEnum ;//enum
 answerType?:AnswerTypeEnum;//enum
 answers :IAnswer [];
 correctAnswersByAnswerNumbers?: number [];
-correctAnswersByAnswerNumber?: number;
+correctAnswersByAnswerNumber?: string;
 }
 
 

@@ -66,8 +66,6 @@ if(this.examFormService.validateQuestion(this.exam.questions)===true)
     time:5,
     answers: [],
     answerType: AnswerTypeEnum.singleSelect,
-    correctAnswersByAnswerNumber:1,
-    correctAnswersByAnswerNumbers:[1]
   }
   this.exam.questions.push(ques);
 }
