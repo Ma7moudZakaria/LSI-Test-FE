@@ -292,7 +292,9 @@
     "TEACHER_PROGRAMS_DEGREE_REQUIRED": "الدرجة مطلوب",
     "ADDRESS": "عنوان الإقامة الدائم",
     "ADDRESS_REQUIRED": "العنوان مطلوب",
-    "EDU_NUM":"مدة الدراسة"
+    "EDU_NUM":"مدة الدراسة",
+    "PHONE_NUMBER_REQUIRED": "رقم الهاتف مطلوب",
+    "NATIONALITY_REQUIRED": "الجنسية مطلوبة"
   },
   "QUESTION_BANK": {
     "TITLE": "بنك الأسئلة",

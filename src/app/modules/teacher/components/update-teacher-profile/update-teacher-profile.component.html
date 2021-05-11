@@ -1,5 +1,5 @@
 <!-- <div class="container-fluid UpdateUser" *ngIf="telInputParam?.countryIsoCode"> -->
-<div class="container-fluid UpdateUser" >
+<div class="container-fluid UpdateUser" *ngIf="telInputParam?.countryIsoCode">
 
     <div class="row">
         <div class="box_container">
@@ -367,7 +367,7 @@
                                         From {{ p.fromTime }} To {{ p.toTime }}
                                     </span>
                                     <span *ngIf="translate.currentLang === langEnum.ar">
-                                        من {{ p.toTime }} الي {{ p.fromTime }}
+                                        من {{ p.fromTime }} الي {{ p.toTime }}
                                     </span>
                                     <a (click)="removeItemFromSelectedInterviewDays(p)"><i class="fas fa-times-circle"></i></a>
                                 </span>
@@ -520,9 +520,9 @@
                                     </option>
                                 </select>
                                 
-                                <div *ngIf="f.eduYear.errors && (f.eduYear.touched || isSubmit)"
+                                <div *ngIf="f.eduDate.errors && (f.eduDate.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
-                                    <div *ngIf="f.eduYear.errors.required">
+                                    <div *ngIf="f.eduDate.errors.required">
                                         {{ 'UPDATE_TEACHER_PG.EDU_REQUIRED' | translate }}
                                     </div>
                                 </div> 

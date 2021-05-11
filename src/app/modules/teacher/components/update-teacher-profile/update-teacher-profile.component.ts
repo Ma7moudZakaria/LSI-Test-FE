@@ -51,7 +51,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
   langEnum = LanguageEnum;
   collectionOfLookup = {} as ILookupCollection;
   listOfLookupProfile: string[] = ['GENDER', 'EDU_LEVEL', 'NATIONALITY', 'COUNTRY'
-    , 'DEGREE', 'EDU_YEAR', 'INTERVIEW_DAY', 'LANG', 'QUALIFI', 'SPECIAL', 'REWAYAT' , 'AGENCY', 'WORKING_PLATFORM'];
+    , 'DEGREE', 'EDU_DATE', 'INTERVIEW_DAY', 'LANG', 'QUALIFI', 'SPECIAL', 'REWAYAT' , 'AGENCY', 'WORKING_PLATFORM'];
 
   resMessage: BaseMessageModel = {};
   selecteddrgreeList = Array<BaseLookupModel>();
@@ -101,9 +101,23 @@ export class UpdateTeacherProfileComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
+    this.getCountryIsoCode();
     this.buildForm();
     this.getPrograms();
     this.getLookupByKey();
+  }
+
+  setCurrentLang() {
+    this.emitHeaderTitle();
+    this.languageService.currentLanguageEvent.subscribe(res => {
+      this.emitHeaderTitle();
+      this.buildForm();
+      this.PopulateForm();
+    });
+  }
+
+  emitHeaderTitle() {
+    this.languageService.headerPageNameEvent.emit(this.translate.instant('UPDATE_TEACHER_PG.TITLE'));
   }
 
   getPrograms() {
@@ -172,7 +186,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           firstAr:['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
           middleAr:['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
           familyAr:['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-          hijriBirthDate: [],
+          hijriBirthDate: [Validators.required],
           gender: [null, Validators.required],
           mobile: [null, Validators.required],
           nationality: [null, Validators.required],
@@ -194,8 +208,8 @@ export class UpdateTeacherProfileComponent implements OnInit {
           isHasEjazaHafz: [null, Validators.required],
           isHasEjazaTelawa: [null, Validators.required],
           workingPlatForm: [null, Validators.required],
-          bankName: [null, Validators.required],
-          bankNumber: [null, Validators.required],
+          bankName: [null],
+          bankNumber: [null],
           ejazaAttachments: [],
           teacherPrograms: [],
           teacherProgramDegrees: [],
@@ -213,7 +227,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           firstEn:['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
           middleEn:['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
           familyEn:['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-          hijriBirthDate: [],
+          hijriBirthDate: [Validators.required],
           gender: [null, Validators.required],
           mobile: [null, Validators.required],
           nationality: [null, Validators.required],
@@ -235,8 +249,8 @@ export class UpdateTeacherProfileComponent implements OnInit {
           isHasEjazaHafz: [null, Validators.required],
           isHasEjazaTelawa: [null, Validators.required],
           workingPlatForm: [null, Validators.required],
-          bankName: [null, Validators.required],
-          bankNumber: [null, Validators.required],
+          bankName: [null],
+          bankNumber: [null],
           ejazaAttachments: [],
           teacherPrograms: [],
           teacherProgramDegrees: [],
@@ -254,6 +268,8 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.teacherService.viewTeacherProfileDetails(id || '').subscribe(res => {
       if (res.isSuccess) {
         this.teacherProfileDetails = res.data as ITeacherProfile;
+
+        console.log("teacherProfileDetails ===========>" , this.teacherProfileDetails);
 
         if (!this.teacherProfileDetails?.proPic) {
           this.teacherProfileDetails.proPic = '../../../../../assets/images/Profile.svg';
@@ -275,6 +291,10 @@ export class UpdateTeacherProfileComponent implements OnInit {
         type: BaseConstantModel.DANGER_TYPE
       }
     });
+  }
+
+  isRtlMode() {
+    return this.translate.currentLang == LanguageEnum.ar ? true : false;
   }
 
   PopulateForm() {
@@ -304,6 +324,8 @@ export class UpdateTeacherProfileComponent implements OnInit {
     // date = date.year + '/' + date.month + '/' + date.day;
 
     this.hijriBirthDateInputParam = {year : date.getFullYear(), month : date.getMonth() + 1, day:date.getDay()}
+    // this.Hijri(this.hijriBirthDateInputParam);
+
 
     this.f.email.setValue(this.teacherProfileDetails?.usrEmail)
     this.f.nationality.setValue(this.teacherProfileDetails?.nationality)
@@ -311,7 +333,10 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.f.address.setValue(this.teacherProfileDetails?.address)
     this.f.city.setValue(this.teacherProfileDetails?.city)
     this.f.email.setValue(this.teacherProfileDetails?.usrEmail)
+
+    this.f.mobile.setValue(this.teacherProfileDetails?.mobile)
     this.telInputParam.phoneNumber = this.teacherProfileDetails?.mobile;
+
     this.f.gender.setValue(this.teacherProfileDetails?.gender)
     this.f.qualifi.setValue(this.teacherProfileDetails?.qualifi)
     this.f.specia.setValue(this.teacherProfileDetails?.specia)
@@ -389,6 +414,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.isSubmit = true;
     this.resMessage = {}
     if (this.profileForm.valid) {
+
       this.updateTeacherModel = {
         usrId: this.currentUser?.id,
         firstAr: this.profileForm.value.firstAr != null ? this.profileForm.value.firstAr : this.teacherProfileDetails.fnameAr,
@@ -399,7 +425,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
         familyAr: this.profileForm.value.familyAr != null ? this.profileForm.value.familyAr : this.teacherProfileDetails.fanameAr,
         familyEn: this.profileForm.value.familyEn != null ? this.profileForm.value.familyEn : this.teacherProfileDetails.fanameAr,
         nationality: this.profileForm.value.nationality,
-        hijriBirthDate: this.profileForm.value.hijriBirthDate,
+        hijriBirthDate: this.profileForm.value.hijriBirthDate  ,
         gender: this.profileForm.value.gender,
         mobile: this.profileForm.value.mobile,
         country: this.profileForm.value.country,
