@@ -201,12 +201,12 @@
                                     <app-tel-input  (getPhonNumber)="applyPhoneNumber($event)"
                                     [telInputParam]="telInputParam"></app-tel-input>
 
-                                    <div *ngIf="f.mobile.errors && (f.mobile.touched || isSubmit)"
+                                    <!-- <div *ngIf="f.mobile.errors && (f.mobile.touched || isSubmit)"
                                      class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.mobile.errors.required">
                                             {{ 'UPDATE_TEACHER_PG.PHONE_NUMBER_REQUIRED' | translate }}
                                         </div>                                      
-                                    </div> 
+                                    </div>  -->
                             </div>
                       
                             <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2">
