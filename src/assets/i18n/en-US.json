@@ -293,6 +293,7 @@
     "TEACHER_PROGRAMS_DEGREE_REQUIRED": "Degree is required",
     "ADDRESS": "Permanent residence address",
     "ADDRESS_REQUIRED": "Address is Required",
+    "EDU_NUM":"Education Number",
     "PHONE_NUMBER_REQUIRED": "Phone Number is Required",
     "NATIONALITY_REQUIRED": "Nationality is Required"
   },

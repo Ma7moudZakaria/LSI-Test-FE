@@ -1,4 +1,5 @@
 
+import { IAttachment } from "../attachments-interfaces/iattachment";
 import { ITeacherProfileInterviewDayLookup } from "./iteacher-profile-interview-day-lookup";
 import { ITeacherProfileLookup } from "./iteacher-profile-lookup";
 import { ITeacherProfileProgramDegreeLookup } from "./iteacher-profile-program-lookup";
@@ -34,9 +35,10 @@ export interface ITeacherProfile{
     specia?:string;
     speciaAr?:string;
     speciaEn?:string;
-    eduYear?:string;
-    eduYearAr?:string;
-    eduYearEn?:string;
+    eduDate?: string;
+    eduUnitAr?:string;
+    eduUnitEn?:string;
+    eduNum?: number;    
     entity?:string;
     isHasQuranExp?:boolean;
     isHasTeachSunnaExp?:boolean;
@@ -58,7 +60,7 @@ export interface ITeacherProfile{
     usrName?:string;
     usrEmail?:string;
     proPic?:string;
-    ejazaAttachments?:[];
+    ejazaAttachments?:IAttachment[];
     teacherPrograms ?: ITeacherProfileProgramDegreeLookup[];
     interviewDays ?: ITeacherProfileInterviewDayLookup[];
     rewayats ?: ITeacherProfileLookup[];
