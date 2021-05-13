@@ -11,7 +11,10 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <app-scientific-problems></app-scientific-problems>
+            <app-scientific-problems (showAddReplyToScProblem)='showAddReplyToScProblem($event)'></app-scientific-problems>
         </div>
+    </div>
+    <div class="overlay" *ngIf="showAddReplyOverlay">
+        <app-add-scientifi-problem-reply (closeAddReplyToScProblem)='showAddReplyToScProblem($event)' [scProbObjForAddReplyView]='scProbObjForAddReplyView'></app-add-scientifi-problem-reply>
     </div>
 </div>
