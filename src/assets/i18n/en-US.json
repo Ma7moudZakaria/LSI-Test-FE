@@ -120,7 +120,8 @@
     "DELETE": "Delete",
     "REPLY_ANSWER": "Reply Answer",
     "SUPERVISOR_NAME": "Supervisor's name",
-    "ADD_REPLY_TO_SCIENTIFIC_PROBLEM":"Add reply to scientific problem"
+    "ADD_REPLY_TO_SCIENTIFIC_PROBLEM":"Add reply to scientific problem",
+    "USER_QUESTION":"User Question"
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "Programs",
