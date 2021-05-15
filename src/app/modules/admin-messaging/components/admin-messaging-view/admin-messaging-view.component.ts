@@ -14,17 +14,26 @@ export class AdminMessagingViewComponent implements OnInit {
   
   showtap:string='scientificProblem';
   showAddReplyOverlay = false;
+  showAddScProbToQuestionBankOverlay = false;
   scProbObjForAddReplyView : IScientificProblemGridItems = {}
+  scProbObjForAddToQuestionBankView : IScientificProblemGridItems = {}
 
   constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
   }
 
-  showAddReplyToScProblem(event : IScientificProblemGridItems){
+  showAddReplyToScProblemView(event : IScientificProblemGridItems){
     this.scProbObjForAddReplyView = event;
     this.showAddReplyOverlay = !this.showAddReplyOverlay;
 
     if (!this.showAddReplyOverlay) {this.scientificProblmChild?.getScientificProblems();}
+  }
+
+  showAddScProbToQuestionBankView(event : IScientificProblemGridItems){
+    this.scProbObjForAddToQuestionBankView = event;
+    this.showAddScProbToQuestionBankOverlay = !this.showAddScProbToQuestionBankOverlay;
+
+    if (!this.showAddScProbToQuestionBankOverlay) {this.scientificProblmChild?.getScientificProblems();}
   }
 }

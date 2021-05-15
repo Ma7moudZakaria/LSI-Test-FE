@@ -1,1 +1,19 @@
-<p>add-scientifi-problem-to-question-bank works!</p>
+<form class="form-group">
+    <div class="row">
+        <h1>{{ 'SCIENTIFIC_PROBLEM.ADD_SC_PROBLEM_TO_QUESTION_BANK' | translate }}</h1>
+        <h3>{{ 'SCIENTIFIC_PROBLEM.USER_QUESTION' | translate }}</h3>
+        <p>{{ scProbObjForAddToQuestionBankView?.questText }}</p>
+        <h3>{{ 'SCIENTIFIC_PROBLEM.SC_PROBLEM_ANSWER' | translate }}</h3>
+        <p>{{ scProbObjForAddToQuestionBankView?.repText }}</p>
+        <div>
+            <select [(ngModel)]="selectedCategory" [ngModelOptions]="{standalone: true}">
+                <option *ngFor="let c of questionBankCategoryList" [ngValue]="c">{{ translate.currentLang === langEnum.en ? c.engCatgName : c.arabCatgName}}</option>
+              </select>
+        </div>
+        <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2">
+            {{resultMessage.message}}
+        </div>
+        <button (click)='saveScProblemToQuestionBank()'>Save</button>
+        <button (click)='closeAddScProblemToQuestionBankEvent()'>Close</button>
+    </div>
+</form>

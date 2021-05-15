@@ -26,6 +26,7 @@ import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/compon
 export class ScientificProblemsComponent implements OnInit {
 
   @Output() showAddReplyToScProblem = new EventEmitter<IScientificProblemGridItems>();
+  @Output() showAddScProblemToQuestionBank = new EventEmitter<IScientificProblemGridItems>();
 
   scientificProblemFilter: IScientificProblemFilter = {skip : 0, take : 12, sorField : '', ordType: 1};
   resultMessage:BaseMessageModel = {};
@@ -143,24 +144,25 @@ export class ScientificProblemsComponent implements OnInit {
   }
 
   saveScProbToQuestionBank(event:IScientificProblemGridItems){
-    let model : IAddScProbToQuestionBank = {
-      id : event.id,
-      question:event.questText,
-      reply: event.repText
-    };
-    this.questionBankService.moveScProbToQuestionBank(model).subscribe(res => {
-      if (res.isSuccess){
-        this.alertify.success(res.message || '');
-        this.getScientificProblems();
-      }
-      else{
-        this.alertify.error(res.message || '');
-      }
-    }, error => {
-      this.resultMessage ={
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
-      }
-    })
+    this.showAddScProblemToQuestionBank.emit(event);
+    // let model : IAddScProbToQuestionBank = {
+    //   id : event.id,
+    //   question:event.questText,
+    //   reply: event.repText
+    // };
+    // this.questionBankService.moveScProbToQuestionBank(model).subscribe(res => {
+    //   if (res.isSuccess){
+    //     this.alertify.success(res.message || '');
+    //     this.getScientificProblems();
+    //   }
+    //   else{
+    //     this.alertify.error(res.message || '');
+    //   }
+    // }, error => {
+    //   this.resultMessage ={
+    //     message: error,
+    //     type: BaseConstantModel.DANGER_TYPE
+    //   }
+    // })
   }
 }
