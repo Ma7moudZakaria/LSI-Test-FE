@@ -80,7 +80,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
   selectedTeacherProgramsList = Array<ITeacherProfileProgramDegreeLookup>();
 
   fileUploadModel: IFileUpload[] = [];
-  fileList: IAttachment[] = [];
+  fileList?: IAttachment[] = [];
   ejazaAttachmentIds: string[] = [];
 
   event = {
@@ -372,14 +372,9 @@ export class UpdateTeacherProfileComponent implements OnInit {
 
 
     let date = new Date(this.teacherProfileDetails?.hijriBirthDate || '');
-    // date = date.year + '/' + date.month + '/' + date.day;
-
     this.hijriBirthDateInputParam = {year : date.getFullYear(), month : date.getMonth() + 1, day:date.getDay()}
     this.f.hijriBirthDate.setValue(date);
-    // this.Hijri(this.hijriBirthDateInputParam);
 
-
-    this.f.email.setValue(this.teacherProfileDetails?.usrEmail)
     this.f.nationality.setValue(this.teacherProfileDetails?.nationality)
     this.f.country.setValue(this.teacherProfileDetails?.country)
     this.f.address.setValue(this.teacherProfileDetails?.address)
@@ -407,10 +402,10 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.f.bankName.setValue(this.teacherProfileDetails?.bankName)
     this.f.bankNumber.setValue(this.teacherProfileDetails?.bankNumber)
 
-    // this.fileList = this.teacherProfileDetails?.ejazaAttachments;
-    // this.teacherProfileDetails?.ejazaAttachments.forEach(element => {
-    //   this.ejazaAttachmentIds.push(element.id);
-    // });
+    this.fileList = this.teacherProfileDetails?.ejazaAttachments;
+    this.teacherProfileDetails?.ejazaAttachments?.forEach(element => {
+      this.ejazaAttachmentIds.push(element.id);
+    });
 
     if (this.teacherProfileDetails?.rewayats) {
       this.selectedRewayatsList = this.teacherProfileDetails?.rewayats;
@@ -759,7 +754,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
   }
 
   DeleteAttachment(index: number, id: string) {
-    this.fileList.splice(index, 1);
+    this.fileList?.splice(index, 1);
     this.ejazaAttachmentIds = this.ejazaAttachmentIds.filter(a => a !== id);
   }
 
@@ -771,7 +766,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           file: element
 
         }
-        this.fileUploadModel.push(fileUploadObj)
+        this.fileUploadModel?.push(fileUploadObj)
       });
       this.UploadFiles(this.fileUploadModel);
     }
@@ -786,7 +781,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
       (res: any) => {
         Array.from(res.data).forEach((elm: any) => {
           this.ejazaAttachmentIds.push(elm.id);
-          this.fileList.push(elm);
+          this.fileList?.push(elm);
 
         })
         this.fileUploadModel = [];

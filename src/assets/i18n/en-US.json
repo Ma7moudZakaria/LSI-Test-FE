@@ -296,7 +296,8 @@
     "ADDRESS_REQUIRED": "Address is Required",
     "EDU_NUM":"Education Number",
     "PHONE_NUMBER_REQUIRED": "Phone Number is Required",
-    "NATIONALITY_REQUIRED": "Nationality is Required"
+    "NATIONALITY_REQUIRED": "Nationality is Required",
+    "MEMORIES_QURAN": "A permission to save the Quran file"
   },
   "QUESTION_BANK": {
     "TITLE": "Question Bank",

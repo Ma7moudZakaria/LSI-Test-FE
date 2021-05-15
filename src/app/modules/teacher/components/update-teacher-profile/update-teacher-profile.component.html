@@ -388,6 +388,40 @@
                                     </div>
                                 </div> 
                             </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <label class="Register__Label" for="educationalLevel"> {{ 'UPDATE_TEACHER_PG.MEMORIES_QURAN' | translate }} </label>
+                                
+                                    <label class="custom-file custom-file__text" for="importFile">
+                                        <div class="row">                                            
+                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                                <input type="text" class=" form-control UserRegister__FormControl" >
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2  UpdateUserIcon">
+                                                <img class=" upload-icon" src="assets/images/update-user/UploadIcon.svg"/>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 m-2 UpdateUserIcon">
+                                                
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <input type="file" class="custom-file-input" id="importFile" multiple
+                                     (change)="onEjazaFileChange($any($event.target).files)" hidden>
+                                
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-8">
+                                        <div class="badges mt-3 ">
+                                            <div *ngFor="let item of fileList;let i=index" 
+                                                class="badge badge-info p-2 " >
+                                            <div class="d-flex justify-content-between">
+                                                <p class="ellipsis mb-0" matTooltip="{{item.fileName}}"> {{item.fileName}}</p>
+                                                <a (click)="DeleteAttachment(i,item.id)"><i class="fas fa-times-circle"></i></a>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
                         </div>
                     </div>
 
