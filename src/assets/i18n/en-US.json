@@ -119,7 +119,11 @@
     "ADDLINK": "Add link",
     "DELETE": "Delete",
     "REPLY_ANSWER": "Reply Answer",
-    "SUPERVISOR_NAME": "Supervisor's name"
+    "SUPERVISOR_NAME": "Supervisor's name",
+    "ADD_REPLY_TO_SCIENTIFIC_PROBLEM":"Add reply to scientific problem",
+    "USER_QUESTION":"User Question",
+    "ADD_SC_PROBLEM_TO_QUESTION_BANK":"Add scientific problem to question bank",
+    "SC_PROBLEM_ANSWER":"Answer"
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "Programs",

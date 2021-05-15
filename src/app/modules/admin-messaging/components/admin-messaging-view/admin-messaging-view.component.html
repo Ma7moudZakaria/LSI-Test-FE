@@ -11,7 +11,13 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <app-scientific-problems></app-scientific-problems>
+            <app-scientific-problems (showAddReplyToScProblem)='showAddReplyToScProblemView($event)' (showAddScProblemToQuestionBank)='showAddScProbToQuestionBankView($event)'></app-scientific-problems>
         </div>
+    </div>
+    <div class="overlay" *ngIf="showAddReplyOverlay">
+        <app-add-scientifi-problem-reply (closeAddReplyToScProblem)='showAddReplyToScProblemView($event)' [scProbObjForAddReplyView]='scProbObjForAddReplyView'></app-add-scientifi-problem-reply>
+    </div>
+    <div class="overlay" *ngIf="showAddScProbToQuestionBankOverlay">
+        <app-add-scientifi-problem-to-question-bank (closeAddScProblemToQuestionBankView)='showAddScProbToQuestionBankView($event)' [scProbObjForAddToQuestionBankView]='scProbObjForAddToQuestionBankView'></app-add-scientifi-problem-to-question-bank>
     </div>
 </div>

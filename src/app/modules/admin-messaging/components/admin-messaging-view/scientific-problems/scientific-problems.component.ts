@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
@@ -24,6 +24,9 @@ import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/compon
   styleUrls: ['./scientific-problems.component.scss']
 })
 export class ScientificProblemsComponent implements OnInit {
+
+  @Output() showAddReplyToScProblem = new EventEmitter<IScientificProblemGridItems>();
+  @Output() showAddScProblemToQuestionBank = new EventEmitter<IScientificProblemGridItems>();
 
   scientificProblemFilter: IScientificProblemFilter = {skip : 0, take : 12, sorField : '', ordType: 1};
   resultMessage:BaseMessageModel = {};
@@ -119,45 +122,47 @@ export class ScientificProblemsComponent implements OnInit {
   }
 
   addReplyToScProb(event:IScientificProblemGridItems){
-    let model : IAddScProbReply = {
-      id : event.id,
-      reply: event.repText
-    };
-    this.scientificProblemService.addScientificProblemReply(model).subscribe(res => {
-      if (res.isSuccess){
-        this.alertify.success(res.message || '');
-        this.getScientificProblems();
-      }
-      else{
-        this.alertify.error(res.message || '');
-      }
-    }, error => {
-      this.resultMessage ={
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
-      }
-    })
+    this.showAddReplyToScProblem.emit(event);
+    // let model : IAddScProbReply = {
+    //   id : event.id,
+    //   reply: event.repText
+    // };
+    // this.scientificProblemService.addScientificProblemReply(model).subscribe(res => {
+    //   if (res.isSuccess){
+    //     this.alertify.success(res.message || '');
+    //     this.getScientificProblems();
+    //   }
+    //   else{
+    //     this.alertify.error(res.message || '');
+    //   }
+    // }, error => {
+    //   this.resultMessage ={
+    //     message: error,
+    //     type: BaseConstantModel.DANGER_TYPE
+    //   }
+    // })
   }
 
   saveScProbToQuestionBank(event:IScientificProblemGridItems){
-    let model : IAddScProbToQuestionBank = {
-      id : event.id,
-      question:event.questText,
-      reply: event.repText
-    };
-    this.questionBankService.moveScProbToQuestionBank(model).subscribe(res => {
-      if (res.isSuccess){
-        this.alertify.success(res.message || '');
-        this.getScientificProblems();
-      }
-      else{
-        this.alertify.error(res.message || '');
-      }
-    }, error => {
-      this.resultMessage ={
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
-      }
-    })
+    this.showAddScProblemToQuestionBank.emit(event);
+    // let model : IAddScProbToQuestionBank = {
+    //   id : event.id,
+    //   question:event.questText,
+    //   reply: event.repText
+    // };
+    // this.questionBankService.moveScProbToQuestionBank(model).subscribe(res => {
+    //   if (res.isSuccess){
+    //     this.alertify.success(res.message || '');
+    //     this.getScientificProblems();
+    //   }
+    //   else{
+    //     this.alertify.error(res.message || '');
+    //   }
+    // }, error => {
+    //   this.resultMessage ={
+    //     message: error,
+    //     type: BaseConstantModel.DANGER_TYPE
+    //   }
+    // })
   }
 }

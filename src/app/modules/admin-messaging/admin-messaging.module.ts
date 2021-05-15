@@ -8,10 +8,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { AdminMessagingViewComponent } from './components/admin-messaging-view/admin-messaging-view.component';
 import { ScientificProblemsComponent } from './components/admin-messaging-view/scientific-problems/scientific-problems.component';
+import { AddScientifiProblemReplyComponent } from './components/admin-messaging-view/add-scientifi-problem-reply/add-scientifi-problem-reply.component';
+import { AddScientifiProblemToQuestionBankComponent } from './components/admin-messaging-view/add-scientifi-problem-to-question-bank/add-scientifi-problem-to-question-bank.component';
 
 
 @NgModule({
-  declarations: [AdminMessagingViewComponent, ScientificProblemsComponent],
+  declarations: [AdminMessagingViewComponent, ScientificProblemsComponent, AddScientifiProblemReplyComponent, AddScientifiProblemToQuestionBankComponent],
   imports: [
     CommonModule,
     FormsModule,

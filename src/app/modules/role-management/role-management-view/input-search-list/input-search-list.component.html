@@ -16,7 +16,7 @@
         #auto="matAutocomplete">
         <mat-option *ngFor="let item of filteredOptions" [value]="item">
             {{
-            translate.currentLang === langEnum.en ? item.enUsrName : item.arUsrName
+            translate.currentLang === langEnum.en ? item.enUsrName ? item.enUsrName : item.arUsrName : item.arUsrName ? item.arUsrName : item.enUsrName
             }}
         </mat-option>
     </mat-autocomplete>
