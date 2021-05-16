@@ -21,6 +21,7 @@ export class ScientificProblemsGridComponent implements OnInit {
   @Output() deleteUserScProb = new EventEmitter<string>();
   @Output() addReplyToScProb = new EventEmitter<IScientificProblemGridItems>();
   @Output() saveScProbToQuestionBank = new EventEmitter<IScientificProblemGridItems>();
+  @Output() deleteListOfScProblems = new EventEmitter<string>();
 
   @Input() userMode: ScientificProblemUsersEnum = ScientificProblemUsersEnum.Student;
   @Input() adminFilterRequestModel : IScientificProblemFilter = {skip : 0, take: 0};
@@ -28,13 +29,13 @@ export class ScientificProblemsGridComponent implements OnInit {
   @Input() numberPerRow: number = 3; //default is 3 for student
   @Input() items: IScientificProblem[] = []
   @Input() adminItems: IScientificProblemGridItems[] = []
+  @Input() totalCount: number= 0;
   
   orderTypeToggel = 1;
   userOrderTypeToggel = true;
-  // @Output() sortEvent = new EventEmitter<>();
+  allSelected: boolean = false;
 
   scientificProblemUsers = ScientificProblemUsersEnum 
-  @Input() totalCount: number= 0;
   page = 1
 
 
@@ -111,5 +112,36 @@ export class ScientificProblemsGridComponent implements OnInit {
 
   saveScProbToQuestionBankGr(event:IScientificProblemGridItems){
     this.saveScProbToQuestionBank.emit(event);
+  }
+
+  deleteScProblemsByIds(){
+    this.deleteListOfScProblems.emit();
+  }
+
+  exportScProblems(){
+    
+  }
+
+  /*
+   *select all 
+   */
+
+   updateAllItemsChecked() {
+    this.allSelected = this.adminItems != null && this.adminItems.every(t => t.checked);
+  }
+
+  someItemsChecked(): boolean {
+    if (this.adminItems == null) {
+      return false;
+    }
+    return this.adminItems.filter(t => t.checked).length > 0 && !this.allSelected;
+  }
+
+  setAllChecked(completed: boolean) {
+    this.allSelected = completed;
+    if (this.adminItems == null) {
+      return;
+    }
+    this.adminItems.forEach(t => t.checked = completed);
   }
 }

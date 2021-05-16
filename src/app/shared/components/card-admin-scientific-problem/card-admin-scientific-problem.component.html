@@ -1,7 +1,7 @@
 <div class="card-admin-scientific-problem">
     <div class="card_header">
       <section class="example-section">
-        <mat-checkbox class="example-margin">{{scientificProblem.scNo}}</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="scientificProblem.checked" (ngModelChange)="updateAllItemsCheckedCall()">{{scientificProblem.scNo}}</mat-checkbox>
       </section>
     
     <div>

@@ -19,9 +19,7 @@ export class ScientificProblemService {
   getScientificProblemDetailsURL = environment.baseUrl + 'ScientificProblem/get-scientific-problems-by-user-id/';
   getScientificProblemFilterURL = environment.baseUrl + 'ScientificProblem/get-scientific-problem-filter/';
   deleteScientificProblemUrl = environment.baseUrl + 'ScientificProblem/delete-scientific-problem/';
-
-
-
+  deleteListOfScientificProblemsUrl = environment.baseUrl + 'ScientificProblem/delete-list-of-scientific-problems/'
 
   constructor(private http: HttpClient) { }
 
@@ -41,6 +39,10 @@ export class ScientificProblemService {
   }
   DeleteScientificProblem(id: any): Observable<BaseResponseModel> {
     return this.http.delete<BaseResponseModel>(this.deleteScientificProblemUrl + id);
+  }
+
+  deleteListOfScientificProblems(ids:(string | undefined)[] | undefined):Observable<BaseResponseModel>{
+    return this.http.post<BaseResponseModel>(this.deleteListOfScientificProblemsUrl, ids);
   }
 
 }
