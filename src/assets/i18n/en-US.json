@@ -422,7 +422,8 @@
     "GROUPNAMEARABIC": "Group name (Arabic)",
     "CREATENEWGROUP": "Create new group",
     "GROUPNAMEENGLISH": "Group name (English)",
-    "INDIVIDUALS": "Individuals"
+    "INDIVIDUALS": "Individuals",
+    "SELECT_GROUP_MEMBERS":"Select group members"
   },
   "EXAM_FORM": {
     "TITLE": "Forms",

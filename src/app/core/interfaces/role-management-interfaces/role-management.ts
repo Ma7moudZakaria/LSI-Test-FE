@@ -59,3 +59,20 @@ export interface RolesTreeModel {
     nodeOrder: number
     nodeParentId: string
 }
+
+export interface UsersExceptStudent{
+    avatarUrl: string
+    id: string
+    loginTime: string
+    usrFamilyNameAr: string
+    usrFamilyNameEn: string
+    usrFirstNameAr: string
+    usrFirstNameEn: string
+    usrFullNameAr: string
+    usrFullNameEn: string
+    usrMiddleNameAr: string
+    usrMiddleNameEn: string
+    enUsrName?:string
+    arUsrName?:string
+    usrAvatarUrl?:string
+}

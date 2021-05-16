@@ -419,7 +419,8 @@
     "GROUPNAMEARABIC": "اسم المجموعة (عربي)",
     "CREATENEWGROUP": "إنشاء مجموعة جديدة",
     "GROUPNAMEENGLISH": "اسم المجموعة (انجليزي)",
-    "INDIVIDUALS": "الافراد"
+    "INDIVIDUALS": "الافراد",
+    "SELECT_GROUP_MEMBERS":"اختر أعضاء المجموعة"
   },
   "EXAM_FORM": {
     "TITLE": "النماذج",

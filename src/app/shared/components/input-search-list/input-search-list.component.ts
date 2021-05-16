@@ -20,7 +20,7 @@ import { SearchItem, UserSearch } from 'src/app/core/interfaces/role-management-
 export class InputSearchListComponent implements OnInit, OnChanges {
 
 
-  @Input() searchList: SearchItem[] = [];
+  @Input() searchList: any[] = [];
   @Output() addSearchItem = new EventEmitter<{}>();
 
   filteredOptions: SearchItem[] = [];

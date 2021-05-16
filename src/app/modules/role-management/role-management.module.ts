@@ -12,6 +12,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
 import { AddGroupComponent } from './role-management-view/add-group/add-group.component';
 import { RoleComponent } from './role-management-view/group-roles/role/role.component';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { RoleComponent } from './role-management-view/group-roles/role/role.comp
     MatIconModule,
     SharedModule,
     RoleManagementRoutingModule,
+    MatListModule
   ],
 })
 export class RoleManagementModule {}
