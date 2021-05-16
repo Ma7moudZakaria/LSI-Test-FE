@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IScientificProblemGridItems } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem-grid-items';
-import { ScientificProblemsComponent } from './scientific-problems/scientific-problems.component';
+import { ScientificProblemsComponent } from './scientific-problems-view/scientific-problems/scientific-problems.component';
 
 @Component({
   selector: 'app-admin-messaging-view',
