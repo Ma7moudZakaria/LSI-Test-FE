@@ -38,7 +38,7 @@
             <i (click)='deleteScProblemsByIds()' class="far fa-trash-alt"></i>
         </span>
         <span>
-            <i (click)='exportScProblems()' class="far fa-trash-alt"></i>
+            <i (click)='exportScProblemsCSV()' class="far fa-trash-alt"></i>
         </span>
      </div>
 </div>
@@ -65,7 +65,7 @@
         <mat-grid-tile *ngFor='let item of adminItems' >
             <app-card-admin-scientific-problem class="card" (deleteScientificProblem)='deleteScientificProblem($event)' 
             (addReplyToScProb)='addReplyToScProbGr($event)' (saveScProbToQuestionBank)='saveScProbToQuestionBankGr($event)' 
-            (updateAllItemsChecked)='updateAllItemsChecked($event)' [scientificProblem]='item'></app-card-admin-scientific-problem>
+            (updateAllItemsChecked)='updateAllItemsChecked()' [scientificProblem]='item'></app-card-admin-scientific-problem>
         </mat-grid-tile>
     </ng-container>
 </mat-grid-list>
