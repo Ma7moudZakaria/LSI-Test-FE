@@ -1,3 +1,4 @@
+import { stringify } from '@angular/compiler/src/util';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
@@ -98,7 +99,7 @@ export class ScientificProblemsComponent implements OnInit {
   deleteUserSingleScProb(id:string){
     const message =this.translate.currentLang === LanguageEnum.en ?"Are you sure that you want to delete this scientific problem":"هل متأكد من حذف هذا الإشكال العلمى";
 
-    const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete Question' : 'حذف سؤال', message);
+    const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete Scinetific Problem' : 'حذف إشكال علمى', message);
 
     const dialogRef = this.dialog.open(ConfirmModalComponent, {
       maxWidth: "400px",
@@ -123,46 +124,42 @@ export class ScientificProblemsComponent implements OnInit {
 
   addReplyToScProb(event:IScientificProblemGridItems){
     this.showAddReplyToScProblem.emit(event);
-    // let model : IAddScProbReply = {
-    //   id : event.id,
-    //   reply: event.repText
-    // };
-    // this.scientificProblemService.addScientificProblemReply(model).subscribe(res => {
-    //   if (res.isSuccess){
-    //     this.alertify.success(res.message || '');
-    //     this.getScientificProblems();
-    //   }
-    //   else{
-    //     this.alertify.error(res.message || '');
-    //   }
-    // }, error => {
-    //   this.resultMessage ={
-    //     message: error,
-    //     type: BaseConstantModel.DANGER_TYPE
-    //   }
-    // })
   }
 
   saveScProbToQuestionBank(event:IScientificProblemGridItems){
     this.showAddScProblemToQuestionBank.emit(event);
-    // let model : IAddScProbToQuestionBank = {
-    //   id : event.id,
-    //   question:event.questText,
-    //   reply: event.repText
-    // };
-    // this.questionBankService.moveScProbToQuestionBank(model).subscribe(res => {
-    //   if (res.isSuccess){
-    //     this.alertify.success(res.message || '');
-    //     this.getScientificProblems();
-    //   }
-    //   else{
-    //     this.alertify.error(res.message || '');
-    //   }
-    // }, error => {
-    //   this.resultMessage ={
-    //     message: error,
-    //     type: BaseConstantModel.DANGER_TYPE
-    //   }
-    // })
+  }
+
+  deleteScProblmes(){
+    const message =this.translate.currentLang === LanguageEnum.en ?"Are you sure that you want to delete this list of scientific problems":"هل متأكد من حذف هذه القائمة من الإشكالات العلمية";
+
+    const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete Scientific Problmes' : 'حذف إشكالات علمية', message);
+
+    const dialogRef = this.dialog.open(ConfirmModalComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if(dialogResult==true){
+        let ids = this.scientificProblems?.filter(i => i.checked).map(a => a.id);
+        this.scientificProblemService.deleteListOfScientificProblems(ids).subscribe( res => {
+          if (res.isSuccess){
+            this.getScientificProblems();
+          }
+          else{
+            this.resultMessage ={
+              message: res.message,
+              type: BaseConstantModel.DANGER_TYPE
+            }
+          }
+        }, error => {
+            this.resultMessage ={
+              message: error,
+              type: BaseConstantModel.DANGER_TYPE
+            }
+          }
+        )
+      }     
+    });
   }
 }
