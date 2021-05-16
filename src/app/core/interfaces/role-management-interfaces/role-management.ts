@@ -40,6 +40,15 @@ export interface UserSearch {
 }
 
 
+export interface SearchItem {
+    usrAvatarUrl: null;
+    usrEmail: string;
+    usrId: string;
+    enUsrName: string;
+    arUsrName: string;
+}
+
+
 export interface RolesTreeModel {
     children: []
     huffazId: string
