@@ -25,14 +25,14 @@ import {
       transition('* => *', [
         query(
           ':leave',
-          [stagger(100, [animate('0.3s', style({ opacity: 0, height: 0 }))])],
+          [stagger(50, [animate('0.2s', style({ opacity: 0, height: 0 }))])],
           { optional: true }
         ),
         query(
           ':enter',
           [
             style({ opacity: 0 }),
-            stagger(100, [animate('0.3s', style({ opacity: 1, height: '*' }))]),
+            stagger(50, [animate('0.2s', style({ opacity: 1, height: '*' }))]),
           ],
           { optional: true }
         ),
@@ -69,7 +69,7 @@ export class RoleComponent implements OnInit, OnChanges {
       for (var i = 0; i < arr.length; i++) {
         if (arr[i].children instanceof Array) {
           arr[i].checked = false;
-          arr[i].show = true;
+          arr[i].show = false;
           this.selected(arr[i].children);
         } else {
           console.log(arr[i].children);

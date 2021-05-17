@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { stringify } from '@angular/compiler/src/util';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
@@ -24,6 +25,9 @@ import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/compon
   styleUrls: ['./scientific-problems.component.scss']
 })
 export class ScientificProblemsComponent implements OnInit {
+
+  @Output() showAddReplyToScProblem = new EventEmitter<IScientificProblemGridItems>();
+  @Output() showAddScProblemToQuestionBank = new EventEmitter<IScientificProblemGridItems>();
 
   scientificProblemFilter: IScientificProblemFilter = {skip : 0, take : 12, sorField : '', ordType: 1};
   resultMessage:BaseMessageModel = {};
@@ -95,7 +99,7 @@ export class ScientificProblemsComponent implements OnInit {
   deleteUserSingleScProb(id:string){
     const message =this.translate.currentLang === LanguageEnum.en ?"Are you sure that you want to delete this scientific problem":"هل متأكد من حذف هذا الإشكال العلمى";
 
-    const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete Question' : 'حذف سؤال', message);
+    const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete Scinetific Problem' : 'حذف إشكال علمى', message);
 
     const dialogRef = this.dialog.open(ConfirmModalComponent, {
       maxWidth: "400px",
@@ -119,45 +123,43 @@ export class ScientificProblemsComponent implements OnInit {
   }
 
   addReplyToScProb(event:IScientificProblemGridItems){
-    let model : IAddScProbReply = {
-      id : event.id,
-      reply: event.repText
-    };
-    this.scientificProblemService.addScientificProblemReply(model).subscribe(res => {
-      if (res.isSuccess){
-        this.alertify.success(res.message || '');
-        this.getScientificProblems();
-      }
-      else{
-        this.alertify.error(res.message || '');
-      }
-    }, error => {
-      this.resultMessage ={
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
-      }
-    })
+    this.showAddReplyToScProblem.emit(event);
   }
 
   saveScProbToQuestionBank(event:IScientificProblemGridItems){
-    let model : IAddScProbToQuestionBank = {
-      id : event.id,
-      question:event.questText,
-      reply: event.repText
-    };
-    this.questionBankService.moveScProbToQuestionBank(model).subscribe(res => {
-      if (res.isSuccess){
-        this.alertify.success(res.message || '');
-        this.getScientificProblems();
-      }
-      else{
-        this.alertify.error(res.message || '');
-      }
-    }, error => {
-      this.resultMessage ={
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
-      }
-    })
+    this.showAddScProblemToQuestionBank.emit(event);
+  }
+
+  deleteScProblmes(){
+    const message =this.translate.currentLang === LanguageEnum.en ?"Are you sure that you want to delete this list of scientific problems":"هل متأكد من حذف هذه القائمة من الإشكالات العلمية";
+
+    const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete Scientific Problmes' : 'حذف إشكالات علمية', message);
+
+    const dialogRef = this.dialog.open(ConfirmModalComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if(dialogResult==true){
+        let ids = this.scientificProblems?.filter(i => i.checked).map(a => a.id);
+        this.scientificProblemService.deleteListOfScientificProblems(ids).subscribe( res => {
+          if (res.isSuccess){
+            this.getScientificProblems();
+          }
+          else{
+            this.resultMessage ={
+              message: res.message,
+              type: BaseConstantModel.DANGER_TYPE
+            }
+          }
+        }, error => {
+            this.resultMessage ={
+              message: error,
+              type: BaseConstantModel.DANGER_TYPE
+            }
+          }
+        )
+      }     
+    });
   }
 }

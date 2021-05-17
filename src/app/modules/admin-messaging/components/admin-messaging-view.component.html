@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="row group_header">
+
+                <div class="item_group" (click)="showtap='USERS'" [ngClass]="{'item_group_active': showtap=='scientificProblem'}" >
+                    {{'ADMIN_MESSAGING.SCIENTIFIC_PROBLEM' | translate}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <app-scientific-problems (showAddReplyToScProblem)='showAddReplyToScProblemView($event)' (showAddScProblemToQuestionBank)='showAddScProbToQuestionBankView($event)'></app-scientific-problems>
+        </div>
+    </div>
+    <div class="overlay" *ngIf="showAddReplyOverlay">
+        <app-add-scientifi-problem-reply (closeAddReplyToScProblem)='showAddReplyToScProblemView($event)' [scProbObjForAddReplyView]='scProbObjForAddReplyView'></app-add-scientifi-problem-reply>
+    </div>
+    <div class="overlay" *ngIf="showAddScProbToQuestionBankOverlay">
+        <app-add-scientifi-problem-to-question-bank (closeAddScProblemToQuestionBankView)='showAddScProbToQuestionBankView($event)' [scProbObjForAddToQuestionBankView]='scProbObjForAddToQuestionBankView'></app-add-scientifi-problem-to-question-bank>
+    </div>
+</div>

@@ -1,7 +1,7 @@
 <div class="card-admin-scientific-problem">
     <div class="card_header">
       <section class="example-section">
-        <mat-checkbox class="example-margin">{{scientificProblem.scNo}}</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="scientificProblem.checked" (ngModelChange)="updateAllItemsCheckedCall()">{{scientificProblem.scNo}}</mat-checkbox>
       </section>
     
     <div>
@@ -42,10 +42,10 @@
           {{scientificProblem.repText}}
          </p>
          
-         <div *ngIf='showAddReplyArea' class="row form-group">
+         <!-- <div *ngIf='showAddReplyArea' class="row form-group">
           <textarea  class="form-control col-8" cols="1"  rows="1"  [(ngModel)]='scientificProblem.repText' ></textarea>
           <button class="col-2" (click)='saveReply()' class="btn link_Add"> {{'GENERAL.SAVE' | translate}}</button>
-         </div>
+         </div> -->
       </div>
      
     </div>

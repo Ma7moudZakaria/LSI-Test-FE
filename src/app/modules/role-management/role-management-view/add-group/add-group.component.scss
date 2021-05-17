@@ -15,7 +15,7 @@ color: $box-color2;
         padding-bottom: 15px;
 }
 .DataForm{
-    height: 60vh;
+    height: 70vh;
 }
 .label:lang(ar){
     text-align: right;
@@ -63,4 +63,22 @@ color: $box-color2;
 
         .red-border-class{
             border: 1px solid red;
+        }
+        .mat-list-icon{
+            width: 40px!important;
+            height: 40px !important;
+            border-radius: 10px !important;
+        }
+        .mat-line:lang(ar){
+            text-align: right;
+        }
+        .mat-line:lang(en){
+            text-align: left;
+        }
+        .mat-line:nth-child(n+2) {
+            font-size: 12px !important;
+        }
+        .mat-delete{
+            color: red;
+            cursor: pointer;
         }

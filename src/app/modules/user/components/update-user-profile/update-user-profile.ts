@@ -54,7 +54,7 @@ export class UpdateUserProfileComponent implements OnInit {
   coursesMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
   telInputParam: ITelInputParams = {}
-  higriPinding: any;
+  hijriBinding: any;
   hijri: boolean = false;
   milady: boolean = false;
 
@@ -616,7 +616,7 @@ export class UpdateUserProfileComponent implements OnInit {
   Hijri(date: any) {
     date = date.year + '/' + date.month + '/' + date.day;
     console.log("Hijri date", date)
-    this.higriPinding = date
+    this.hijriBinding = date
 
     this.f.birthdate.setValue(date);
   }

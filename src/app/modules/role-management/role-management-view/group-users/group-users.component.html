@@ -7,8 +7,8 @@
                 </label>
             </div>
             <div class="col-md-5">
-                <app-input-search-list (addUserNotBelongToRole)="addUserNotBelongToRole($event)"
-                    [UsersNotBelongToRole]="UsersNotBelongToRole" [selectedRoleId]="selectedRoleId">
+                <app-input-search-list (addSearchItem)="addUserNotBelongToRole($event)"
+                    [searchList]="UsersNotBelongToRole">
                 </app-input-search-list>
             </div>
         </div>
