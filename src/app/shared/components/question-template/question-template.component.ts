@@ -34,11 +34,16 @@ export class QuestionTemplateComponent implements OnInit {
 
   addAnswer() {
     this.resultMessage = {}
-    if(this.examFormService.validateAnswer(this.questionTemplate.answers)===true)
+    if(this.examFormService.validateAnswer(this.questionTemplate.answers)===true, false,this.questionTemplate.answerType)
 {
   let id = BaseConstantModel.newGuid();
-  let answer: IAnswer = { answerId: id, answerNo: this.questionTemplate.answers?.length + 1,correct : false }
+
+  let answer: IAnswer = { answerId: id, answerNo: this.questionTemplate.answers?.length + 1,correct :this.questionTemplate.answers?.length ===0 ? true : false }
+  if (this.questionTemplate.answerType === AnswerTypeEnum.singleSelect && this.questionTemplate.answers.length === 0){
+    this.questionTemplate.correctAnswersByAnswerNumber = "1";
+ }
   this.questionTemplate.answers?.push(answer)
+  
 }
 else{
   this.resultMessage = {
@@ -82,8 +87,36 @@ else{
         const index = this.questionTemplate.answers.indexOf(answer);
         if (index > -1){
           this.questionTemplate.answers.splice(index,1);
+          if(this.questionTemplate.answerType === AnswerTypeEnum.singleSelect){
+            let numberAnswer=parseInt(this.questionTemplate.correctAnswersByAnswerNumber!);
+            if(numberAnswer>1)
+            {  
+               numberAnswer=numberAnswer-1
+              this.questionTemplate.correctAnswersByAnswerNumber=numberAnswer.toString();
+            }
+            else{
+              this.questionTemplate.correctAnswersByAnswerNumber=numberAnswer.toString();
+            }
+          }
+          else{
+            if(this.questionTemplate.answers.filter(x=>x.correct==true).length<1)
+            {
+              this.questionTemplate.answers[0].correct=true;
+            }
+          }
+          this.questionTemplate.answers.forEach(element => {
+            element.answerNo=this.questionTemplate.answers.indexOf(element)+1;
+          });
         }
+       
       }
     });
   }
+
+  stopPropagation(event: Event){
+    event.preventDefault();
+    event.stopPropagation();
+}
+
+
 }
