@@ -24,6 +24,8 @@
       </div>
       <div><a> <img src="../../../../../assets/images/chat.svg"></a></div>
       </div>
+      <div class="card_body_data">
+
       <div class="body_header">
         <span>{{'SCIENTIFIC_PROBLEM.QUESTION' | translate}}</span>
       </div>
@@ -33,7 +35,7 @@
           {{scientificProblem.questText}}
          </p>
       </div>
-      <div class="body_header">
+      <div class="body_header mt-3">
       <span >{{'SCIENTIFIC_PROBLEM.REPLY' | translate}}</span>
       <span class="teacher_name bold">{{ translate.currentLang === langEnum.en ? scientificProblem.adNameEn : scientificProblem.adNameAr}}</span>
       </div>
@@ -47,7 +49,7 @@
           <button class="col-2" (click)='saveReply()' class="btn link_Add"> {{'GENERAL.SAVE' | translate}}</button>
          </div> -->
       </div>
-     
+     </div>
     </div>
     <div class="body_footer">
       <button class="btn cancel-btn" (click)='saveToQuestionBank()' [attr.disabled]='!scientificProblem.repText ? true : null' > {{'SCIENTIFIC_PROBLEM.ADDLINK' | translate}}</button>
