@@ -36,4 +36,10 @@ export class AdminMessagingViewComponent implements OnInit {
 
     if (!this.showAddScProbToQuestionBankOverlay) {this.scientificProblmChild?.getScientificProblems();}
   }
+
+  closeOverlay(){
+    this.showAddReplyOverlay = false;
+    this.showAddScProbToQuestionBankOverlay = false;
+    this.scientificProblmChild?.getScientificProblems();
+  }
 }

@@ -423,7 +423,8 @@
     "CREATENEWGROUP": "Create new group",
     "GROUPNAMEENGLISH": "Group name (English)",
     "INDIVIDUALS": "Individuals",
-    "SELECT_GROUP_MEMBERS":"Select group members"
+    "SELECT_GROUP_MEMBERS":"Select group members",
+    "SAVE":"Create"
   },
   "EXAM_FORM": {
     "TITLE": "Forms",

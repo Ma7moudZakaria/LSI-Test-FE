@@ -113,7 +113,7 @@
     "TIME_QUESTION": "تاريخ السؤال",
     "QUESTION": "السؤال",
     "REPLY": "الرد",
-    "ADDLINK": "اضافه الينك",
+    "ADDLINK": "اضافه للبنك",
     "DELETE": "مسح",
     "REPLY_ANSWER": "رد",
     "SUPERVISOR_NAME": "اسم المشرف",
@@ -420,7 +420,8 @@
     "CREATENEWGROUP": "إنشاء مجموعة جديدة",
     "GROUPNAMEENGLISH": "اسم المجموعة (انجليزي)",
     "INDIVIDUALS": "الافراد",
-    "SELECT_GROUP_MEMBERS":"اختر أعضاء المجموعة"
+    "SELECT_GROUP_MEMBERS":"اختر أعضاء المجموعة",
+    "SAVE":"إنشاء"
   },
   "EXAM_FORM": {
     "TITLE": "النماذج",

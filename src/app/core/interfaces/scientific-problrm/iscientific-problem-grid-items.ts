@@ -9,5 +9,6 @@ export interface IScientificProblemGridItems {
     adNameAr?:string;
     scCreatedOn?:string;
     avatarLink?:string;
+    IsQuesBank?:boolean;
     checked?:boolean;
 }
