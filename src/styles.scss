@@ -802,3 +802,26 @@ form inut desabled
 .scProblem .mat-checkbox-layout{
   margin-bottom: 0 !important;
 }
+/******************
+mat-grid-list
+/***********************/
+mat-grid-list {
+  &:lang(en){
+    direction: ltr;
+  justify-content: start !important;
+  align-items:start !important;
+  }
+  &:lang(ar){
+    direction: rtl;
+    justify-content: start !important;
+  align-items:start !important;
+  }
+}
+ 
+.lrt-dir{
+  direction: ltr;
+}
+.rtl-dir{
+  direction: rtl;
+
+}

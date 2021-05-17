@@ -15,3 +15,14 @@
       overflow-x: hidden;
       padding-top: 0.7rem;
   }
+  .header_sc{
+    font-size: 20px;
+    color: #3A3A3A;
+  }
+  .text-left{
+  &:lang(en)
+  {text-align: left;}
+  &:lang(ar){
+    text-align: right;
+  }
+  }
