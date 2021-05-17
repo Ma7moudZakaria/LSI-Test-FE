@@ -22,7 +22,7 @@ export interface IUpdateTeacherProfile {
     qualifi?: string;
     specia?: string;
     eduDate?: string;
-    eduNum?: number;
+    eduNum?: number;    
     entity?: string;
     agency?:string;
     edulevel?:string;

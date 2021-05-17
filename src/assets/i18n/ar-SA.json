@@ -303,7 +303,8 @@
     "ADDRESS_REQUIRED": "العنوان مطلوب",
     "EDU_NUM": "مدة الدراسة",
     "PHONE_NUMBER_REQUIRED": "رقم الهاتف مطلوب",
-    "NATIONALITY_REQUIRED": "الجنسية مطلوبة"
+    "NATIONALITY_REQUIRED": "الجنسية مطلوبة",
+    "MEMORIES_QURAN": "اجازة حفظ القران"
   },
   "QUESTION_BANK": {
     "TITLE": "بنك الأسئلة",

@@ -182,7 +182,7 @@
     "CONTACT_INFO": "Contact info",
     "CHANGE_PIC": "Change pic",
     "AMOUNT_QURAN": "The memorization amount from Qur'an",
-    "MEMORIES_QURAN": "A permission to save the Quran file",
+    "MEMORIES_QURAN": "A permission to save the Qur’an file",
     "DELETE": "Delete",
     "SHEIKHS_STUDIED": "Sheikhs I studied on",
     "CHOOSE_SHEIKHS": "Please Choose Sheikh",
@@ -249,7 +249,7 @@
     "ENTITY": "Entity",
     "ENTITY_REQUIRED": "Entity is required",
     "DURATION": "Duration of study per years",
-    "IMPROVING_QURAN_WITH_TAJWEED": "Do you have experience in improving the Quran with Tajweed?",
+    "IMPROVING_QURAN_WITH_TAJWEED": "Do you have experience in improving the Qur’an with Tajweed?",
     "YES": "Yes",
     "NO": "No",
     "EXPERIENCE_TEACHING_SUNNAH": "Do you have experience in teaching Sunnah?",
@@ -286,7 +286,7 @@
     "FROM_REQUIRED": "From Time is required",
     "TO": "To Time",
     "TO_REQUIRED": "To Time is required",
-    "AGENCY_REQUIRED": "Learn the Quran is required",
+    "AGENCY_REQUIRED": "Learn the Qur’an is required",
     "IS_HAS_QURAN_EXP_REQUIRED": "Is has qur'an experience is required",
     "IS_HAS_TEACH_SUNNA_EXP_REQUIRED": "Is has teach sunna experience is required",
     "IS_HAS_INTERNET_TEACH_EXP_REQUIRED": "Is has internet teach experience is required",
@@ -302,7 +302,8 @@
     "ADDRESS_REQUIRED": "Address is Required",
     "EDU_NUM": "Education Number",
     "PHONE_NUMBER_REQUIRED": "Phone Number is Required",
-    "NATIONALITY_REQUIRED": "Nationality is Required"
+    "NATIONALITY_REQUIRED": "Nationality is Required",
+    "MEMORIES_QURAN": "A permission to save the Qur’an file"
   },
   "QUESTION_BANK": {
     "TITLE": "Question Bank",
