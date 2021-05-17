@@ -7,6 +7,7 @@ import { ITeacherProfile } from 'src/app/core/interfaces/teacher-interfaces/itea
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
+import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { TeacherProfileService } from 'src/app/core/services/teacher-profile/teacher-profile.service';
 
 @Component({
@@ -26,13 +27,26 @@ export class ViewTeacherProfileComponent implements OnInit {
   constructor(
     private router: Router,
     public translate: TranslateService,
-    private teacherProfileService: TeacherProfileService) { }
+    private teacherProfileService: TeacherProfileService,
+    public languageService: LanguageService) { }
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     this.currentLang = this.translate.currentLang === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
     this.RouteParams = this.router.url;
+    this.setCurrentLang();
     this.getTeacherProfile(this.currentUser.id);
+  }
+
+  setCurrentLang() {
+    this.emitHeaderTitle();
+    this.languageService.currentLanguageEvent.subscribe(res => {
+      this.emitHeaderTitle();
+    });
+  }
+
+  emitHeaderTitle() {
+    this.languageService.headerPageNameEvent.emit(this.translate.instant('UPDATE_TEACHER_PG.TITLE'));
   }
 
   getTeacherProfile(id: any) {

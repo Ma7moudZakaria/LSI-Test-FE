@@ -9,9 +9,13 @@
         font-size: .9rem;
         color: #828282;
         text-align: center;
-        margin: 0 4px;
+        margin-left: 4px;
         padding: 10px 20px;
         border-radius: 10px 10px 0  0;
+    }
+    .item_group:lang(en){
+        margin-left: 0 !important;
+        margin-right: 4px !important;
     }
     .item_group_active{
         background-color: #CB9118;
@@ -47,4 +51,8 @@
 
         *{
   font-family: Almarai-Bold;
+}
+.fix_margin{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }

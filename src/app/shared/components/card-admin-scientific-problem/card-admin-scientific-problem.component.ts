@@ -18,6 +18,7 @@ export class CardAdminScientificProblemComponent implements OnInit {
   @Output() deleteScientificProblem = new EventEmitter<string>();
   @Output() addReplyToScProb = new EventEmitter<IScientificProblemGridItems>();
   @Output() saveScProbToQuestionBank = new EventEmitter<IScientificProblemGridItems>();
+  @Output() updateAllItemsChecked = new EventEmitter<boolean>();
 
   showAddReplyArea = false;
 
@@ -26,12 +27,14 @@ export class CardAdminScientificProblemComponent implements OnInit {
 
   showAddReplyAreaTog(){
     this.showAddReplyArea = this.showAddReplyArea ? false : true;
+    this.addReplyToScProb.emit(this.scientificProblem);
+
   }
 
-  saveReply(){
-    this.showAddReplyAreaTog();
-    this.addReplyToScProb.emit(this.scientificProblem);
-  }
+  // saveReply(){
+  //   this.showAddReplyAreaTog();
+  //   this.addReplyToScProb.emit(this.scientificProblem);
+  // }
 
   saveToQuestionBank(){
     this.saveScProbToQuestionBank.emit(this.scientificProblem);
@@ -39,5 +42,9 @@ export class CardAdminScientificProblemComponent implements OnInit {
 
   deleteScientificProblemEve(){
     this.deleteScientificProblem.emit(this.scientificProblem.id);
+  }
+
+  updateAllItemsCheckedCall(){
+    this.updateAllItemsChecked.emit();
   }
 }

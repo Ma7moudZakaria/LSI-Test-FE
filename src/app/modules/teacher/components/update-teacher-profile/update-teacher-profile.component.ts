@@ -102,6 +102,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
+    this.setCurrentLang();
     this.getCountryIsoCode();
     this.buildForm();
     this.getPrograms();
@@ -374,6 +375,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
     // date = date.year + '/' + date.month + '/' + date.day;
 
     this.hijriBirthDateInputParam = {year : date.getFullYear(), month : date.getMonth() + 1, day:date.getDay()}
+    this.f.hijriBirthDate.setValue(date);
     // this.Hijri(this.hijriBirthDateInputParam);
 
 
@@ -475,7 +477,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
         familyAr: this.profileForm.value.familyAr != null ? this.profileForm.value.familyAr : this.teacherProfileDetails.fanameAr,
         familyEn: this.profileForm.value.familyEn != null ? this.profileForm.value.familyEn : this.teacherProfileDetails.fanameAr,
         nationality: this.profileForm.value.nationality,
-        hijriBirthDate: this.profileForm.value.hijriBirthDate  ,
+        hijriBirthDate: this.profileForm.value.hijriBirthDate ,
         gender: this.profileForm.value.gender,
         mobile: this.profileForm.value.mobile,
         country: this.profileForm.value.country,

@@ -6,6 +6,7 @@ import { IScientificProblem } from 'src/app/core/interfaces/scientific-problrm/i
 import { IScientificProblemFilter } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem-filter';
 import { IScientificProblemGridItems } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem-grid-items';
 import { IUserScientificProblemFilter } from 'src/app/core/interfaces/scientific-problrm/iuser-scientific-problem-filter';
+import { ExportationService } from 'src/app/core/services/exportation-services/exportation.service';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { SettingRoutingModule } from 'src/app/modules/setting/setting-routing.module';
 
@@ -21,6 +22,7 @@ export class ScientificProblemsGridComponent implements OnInit {
   @Output() deleteUserScProb = new EventEmitter<string>();
   @Output() addReplyToScProb = new EventEmitter<IScientificProblemGridItems>();
   @Output() saveScProbToQuestionBank = new EventEmitter<IScientificProblemGridItems>();
+  @Output() deleteListOfScProblems = new EventEmitter<string>();
 
   @Input() userMode: ScientificProblemUsersEnum = ScientificProblemUsersEnum.Student;
   @Input() adminFilterRequestModel : IScientificProblemFilter = {skip : 0, take: 0};
@@ -28,17 +30,19 @@ export class ScientificProblemsGridComponent implements OnInit {
   @Input() numberPerRow: number = 3; //default is 3 for student
   @Input() items: IScientificProblem[] = []
   @Input() adminItems: IScientificProblemGridItems[] = []
+  @Input() totalCount: number= 0;
   
   orderTypeToggel = 1;
   userOrderTypeToggel = true;
-  // @Output() sortEvent = new EventEmitter<>();
+  allSelected: boolean = false;
 
   scientificProblemUsers = ScientificProblemUsersEnum 
-  @Input() totalCount: number= 0;
   page = 1
 
 
-  constructor(public translate:TranslateService, private languageService:LanguageService) { }
+  constructor(public translate:TranslateService, 
+    private languageService:LanguageService,
+    private exportationService : ExportationService) { }
 
   ngOnInit(): void {
     this.setCurrentLang();
@@ -111,5 +115,56 @@ export class ScientificProblemsGridComponent implements OnInit {
 
   saveScProbToQuestionBankGr(event:IScientificProblemGridItems){
     this.saveScProbToQuestionBank.emit(event);
+  }
+
+  deleteScProblemsByIds(){
+    this.deleteListOfScProblems.emit();
+  }
+
+  exportScProblems(){
+
+  }
+
+  /*
+   *select all 
+   */
+
+   updateAllItemsChecked() {
+    this.allSelected = this.adminItems != null && this.adminItems.every(t => t.checked);
+  }
+
+  someItemsChecked(): boolean {
+    if (this.adminItems == null) {
+      return false;
+    }
+    return this.adminItems.filter(t => t.checked).length > 0 && !this.allSelected;
+  }
+
+  setAllChecked(completed: boolean) {
+    this.allSelected = completed;
+    if (this.adminItems == null) {
+      return;
+    }
+    this.adminItems.forEach(t => t.checked = completed);
+  }
+
+  /*
+  * exportation
+  */
+
+  exportScProblemsCSV(){
+    let expItems = this.adminItems.filter(a => a.checked);
+    let headerLabels = this.translate.currentLang == 'en-US' ?
+      ['Serial', 'Question', 'Reply', 'Student English Name', 'Student Arabic Name', 'Admin English Name', 'Admin Arabic Name'] :
+      ['رقم النظام ',
+        'السؤال',
+        'الاجابة',
+        'اسم الطالب عربى',
+        'اسم الطالب إنجليزى',
+        'اسم المشرف عربى',
+        'اسم المشرف إنجليزى'];
+
+    let data = ['scNo','questText','repText','studNameEn', 'studNameAr', 'adNameEn', 'adNameAr'];
+    this.exportationService.exportCSV(expItems, 'Scientific Problems', data, headerLabels);
   }
 }

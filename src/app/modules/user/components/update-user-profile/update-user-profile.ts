@@ -386,6 +386,7 @@ export class UpdateUserProfileComponent implements OnInit {
     let date = new Date(this.userProfileDetails?.birthdate || '');
 
     this.hijriBirthDateInputParam = {year : date.getFullYear(), month : date.getMonth() + 1, day:date.getDay()}
+    this.f.birthdate.setValue(date);
 
     this.f.nationality.setValue(this.userProfileDetails?.nationality);
     this.f.occupation.setValue(this.userProfileDetails?.occupation);
