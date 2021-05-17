@@ -69,7 +69,7 @@ export class UpdateUserProfileComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private lookupService: LookupService,
-    private userService: UserService,
+    public userService: UserService,
     private attachmentService: AttachmentsService,
     private userProfileService: UserService,
     public translate: TranslateService,
@@ -114,13 +114,15 @@ export class UpdateUserProfileComponent implements OnInit {
   }
 
   unsavedDataCheck() : boolean{
+    let  birthDateFromDetails=new Date(this.userProfileDetails?.birthdate||"");
     return this.profileForm.value.firstNameAr != this.userProfileDetails?.fnameAr
     || this.profileForm.value.firstNameEn != this.userProfileDetails?.faNameEn
     || this.profileForm.value.middleNameAr != this.userProfileDetails?.mnameAr
     || this.profileForm.value.middleNameEn != this.userProfileDetails?.mnameEn
     || this.profileForm.value. familyNameAr!= this.userProfileDetails?.fanameAr
     || this.profileForm.value. familyNameEn!= this.userProfileDetails?.faNameEn
-    || this.profileForm.value.birthdate != this.userProfileDetails?.birthdate
+    // || this.profileForm.value.birthdate.getTime() != birthDateFromDetails.getTime()
+    // || this.profileForm.value.birthdate != this.userProfileDetails?.birthdate
     || this.profileForm.value.gender != this.userProfileDetails?.gender
     || this.profileForm.value.phoneNumber!= this.userProfileDetails?.mobile
     || this.profileForm.value.countryCode!= this.userProfileDetails?.countryCode
@@ -130,7 +132,7 @@ export class UpdateUserProfileComponent implements OnInit {
     || this.profileForm.value.occupation!= this.userProfileDetails?.occupation
     || this.profileForm.value.address!= this.userProfileDetails?.address
     || this.profileForm.value.quraanMemorization!= this.userProfileDetails?.quraanMemorizeAmount
-    || this.profileForm.value.ejazaAttachmentIds!= this.userProfileDetails?.ejazaAttachments
+   // || this.profileForm.value.ejazaAttachments!= this.userProfileDetails?.ejazaAttachments
   }
 
   getCountryIsoCode() {

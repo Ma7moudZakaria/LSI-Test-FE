@@ -127,36 +127,35 @@ export class UpdateTeacherProfileComponent implements OnInit {
 
   unsavedDataCheck() : boolean{
     return this.profileForm.value.firstAr != this.teacherProfileDetails?.fnameAr
-    // || this.profileForm.value.firstNameEn != this.teacherProfileDetails?.faNameEn
-    // || this.profileForm.value.middleNameAr != this.teacherProfileDetails?.mnameAr
-    // || this.profileForm.value.middleNameEn != this.teacherProfileDetails?.mnameEn
-    // || this.profileForm.value. familyNameAr!= this.teacherProfileDetails?.fanameAr
-    // || this.profileForm.value. familyNameEn!= this.teacherProfileDetails?.faNameEn
-    // || this.profileForm.value.nationality != this.teacherProfileDetails?.nationality
-    // || this.profileForm.value.birthdate != this.teacherProfileDetails?.hijriBirthDate
-    // || this.profileForm.value.gender != this.teacherProfileDetails?.gender
-    // || this.profileForm.value.phoneNumber!= this.teacherProfileDetails?.mobile
-    // || this.profileForm.value.country!= this.teacherProfileDetails?.country
-    // || this.profileForm.value.city!= this.teacherProfileDetails?.city
-    // || this.profileForm.value.nationality!= this.teacherProfileDetails?.nationality
-    // || this.profileForm.value.educationallevel!= this.teacherProfileDetails?.eduLevel
-    // || this.profileForm.value.qualifi!= this.teacherProfileDetails?.qualifi
-    // || this.profileForm.value.specia!= this.teacherProfileDetails?.specia
-    // || this.profileForm.value.eduDate!= this.teacherProfileDetails?.eduDate
-    // || this.profileForm.value.eduNum != this.teacherProfileDetails?.eduNum
-    // || this.profileForm.value.isHasQuranExp!= this.teacherProfileDetails?.isHasQuranExp
-    // || this.profileForm.value.isHasTeachSunnaExp!= this.teacherProfileDetails?.isHasTeachSunnaExp
-    // || this.profileForm.value.isHasInternetTeachExp!= this.teacherProfileDetails?.isHasInternetTeachExp
-    // || this.profileForm.value.isHasTeachForeignerExp!= this.teacherProfileDetails?.isHasTeachForeignerExp
-    // || this.profileForm.value.isHasEjazaHafz!= this.teacherProfileDetails?.isHasEjazaHafz
-    // || this.profileForm.value.workingPlatForm!= this.teacherProfileDetails?.workingPlatForm
-    // || this.profileForm.value.isHasEjazaTelawa!= this.teacherProfileDetails?.isHasEjazaTelawa
-    // || this.profileForm.value.bankName!= this.teacherProfileDetails?.bankName
-    // || this.profileForm.value.agency!= this.teacherProfileDetails?.agency
-    // || this.profileForm.value.address!= this.teacherProfileDetails?.address
-    // || this.profileForm.value.bankNumber!= this.teacherProfileDetails?.bankNumber
-    // || this.profileForm.value.address!= this.teacherProfileDetails?.address
-    // || this.profileForm.value.ejazaAttachmentIds!= this.teacherProfileDetails?.ejazaAttachments
+    || this.profileForm.value.firstNameEn != this.teacherProfileDetails?.faNameEn
+    || this.profileForm.value.middleAr != this.teacherProfileDetails?.mnameAr
+    || this.profileForm.value.middleNameEn != this.teacherProfileDetails?.mnameEn
+    || this.profileForm.value. familyAr!= this.teacherProfileDetails?.fanameAr
+    || this.profileForm.value. familyNameEn!= this.teacherProfileDetails?.faNameEn
+    || this.profileForm.value.nationality != this.teacherProfileDetails?.nationality
+   // || this.profileForm.value.hijriBirthDate != this.teacherProfileDetails?.hijriBirthDate
+    || this.profileForm.value.gender != this.teacherProfileDetails?.gender
+    || this.profileForm.value.mobile!= this.teacherProfileDetails?.mobile
+    || this.profileForm.value.country!= this.teacherProfileDetails?.country
+    || this.profileForm.value.city!= this.teacherProfileDetails?.city
+    || this.profileForm.value.nationality!= this.teacherProfileDetails?.nationality
+    || this.profileForm.value.edulevel!= this.teacherProfileDetails?.eduLevel
+    || this.profileForm.value.qualifi!= this.teacherProfileDetails?.qualifi
+    || this.profileForm.value.specia!= this.teacherProfileDetails?.specia
+    || this.profileForm.value.eduDate!= this.teacherProfileDetails?.eduDate
+    || this.profileForm.value.eduNum != this.teacherProfileDetails?.eduNum
+    || this.profileForm.value.isHasQuranExp!= this.teacherProfileDetails?.isHasQuranExp?.toString()
+    || this.profileForm.value.isHasTeachSunnaExp!= this.teacherProfileDetails?.isHasTeachSunnaExp?.toString()
+    || this.profileForm.value.isHasInternetTeachExp!= this.teacherProfileDetails?.isHasInternetTeachExp?.toString()
+    || this.profileForm.value.isHasTeachForeignerExp!= this.teacherProfileDetails?.isHasTeachForeignerExp?.toString()
+    || this.profileForm.value.isHasEjazaHafz!= this.teacherProfileDetails?.isHasEjazaHafz?.toString()
+    || this.profileForm.value.workingPlatForm!= this.teacherProfileDetails?.workingPlatForm
+    || this.profileForm.value.isHasEjazaTelawa!= this.teacherProfileDetails?.isHasEjazaTelawa?.toString()
+    || this.profileForm.value.bankName!= this.teacherProfileDetails?.bankName
+    || this.profileForm.value.agency!= this.teacherProfileDetails?.agency
+    || this.profileForm.value.address!= this.teacherProfileDetails?.address
+    || this.profileForm.value.bankNumber!= this.teacherProfileDetails?.bankNumber
+//    || this.profileForm.value.ejazaAttachmentIds!= this.teacherProfileDetails?.ejazaAttachments
   }
   setCurrentLang() {
     this.emitHeaderTitle();
