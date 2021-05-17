@@ -34,7 +34,7 @@ export class QuestionTemplateComponent implements OnInit {
 
   addAnswer() {
     this.resultMessage = {}
-    if(this.examFormService.validateAnswer(this.questionTemplate.answers)===true)
+    if(this.examFormService.validateAnswer(this.questionTemplate.answers)===true, false,this.questionTemplate.answerType)
 {
   let id = BaseConstantModel.newGuid();
 
