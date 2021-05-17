@@ -61,7 +61,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
   isSubmit = false;
   hijri: boolean = false;
   milady: boolean = false;
-  higriPinding: any;
+  hijriBinding: any;
   hijriBirthDateInputParam:NgbDateStruct= {year:0,day:0,month:0};
 
   ProgramsList: IprogramsModel[] = []; ;
@@ -158,6 +158,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
     || this.profileForm.value.address!= this.teacherProfileDetails?.address
     || this.profileForm.value.ejazaAttachmentIds!= this.teacherProfileDetails?.ejazaAttachments
   }
+  
   setCurrentLang() {
     this.emitHeaderTitle();
     this.languageService.currentLanguageEvent.subscribe(res => {
@@ -360,17 +361,6 @@ export class UpdateTeacherProfileComponent implements OnInit {
       this.f.middleEn.setValue(this.teacherProfileDetails?.mnameEn);
       this.f.familyEn.setValue(this.teacherProfileDetails?.faNameEn);
     }
-    // this.f.hijriBirthDate.setValue(this.teacherProfileDetails?.hijriBirthDate)
-    // let birthdate = new Date(this.teacherProfileDetails?.hijriBirthDate || '');
-    // if (!isNaN(birthdate.getTime())) {
-    //   this.f.hijriBirthDate.setValue(
-    //     new Date(birthdate.setDate(birthdate.getDate() + 1))
-    //       .toISOString()
-    //       .slice(0, 10)
-    //   );
-    // }
-
-
     let date = new Date(this.teacherProfileDetails?.hijriBirthDate || '');
     this.hijriBirthDateInputParam = {year : date.getFullYear(), month : date.getMonth() + 1, day:date.getDay()}
     this.f.hijriBirthDate.setValue(date);
@@ -483,6 +473,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
         workingPlatForm: this.profileForm.value.workingPlatForm,
         entity: this.profileForm.value.entity,
         eduDate: this.profileForm.value.eduDate,
+        eduNum: this.profileForm.value.eduNum,
         isHasQuranExp: this.profileForm.value.isHasQuranExp,
         isHasTeachSunnaExp: this.profileForm.value.isHasTeachSunnaExp,
         isHasInternetTeachExp: this.profileForm.value.isHasInternetTeachExp,
@@ -722,7 +713,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
   Hijri(date: any) {
     date = date.year + '/' + date.month + '/' + date.day;
     console.log("Hijri date", date)
-    this.higriPinding = date
+    this.hijriBinding = date
 
     this.f.hijriBirthDate.setValue(date);
   }

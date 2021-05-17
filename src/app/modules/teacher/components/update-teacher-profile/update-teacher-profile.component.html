@@ -156,11 +156,11 @@
                                        [hijri]="hijri" [milady]="!milady">
                                      </app-milady-hijri-calendar>
                                     
-                                       <div *ngIf="f.hijriBirthDate.errors && (f.hijriBirthDate.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
-                                           <div *ngIf="f.hijriBirthDate.errors.required">
-                                               {{ 'UPDATE_TEACHER_PG.HIJRIBIRTHDATE_REQUIRED' | translate }}
-                                           </div>
-                                       </div> 
+                                       <div *ngIf="!hijriBinding && (f.hijriBirthDate.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                        <div *ngIf="!hijriBinding">
+                                            {{ 'UPDATE_TEACHER_PG.HIJRIBIRTHDATE_REQUIRED' | translate }}
+                                        </div>
+                                    </div> 
                                 </div>
 
                                 <div class="pl-3 pr-3 gender_contanier">
@@ -207,6 +207,13 @@
                                             {{ 'UPDATE_TEACHER_PG.PHONE_NUMBER_REQUIRED' | translate }}
                                         </div>                                      
                                     </div>  -->
+
+                                    <div *ngIf="f.mobile.errors && (f.mobile.touched || isSubmit)"
+                                     class="alert alert-danger mt-2 mb-2">
+                                        <div *ngIf="f.mobile.errors.required">
+                                            {{ 'UPDATE_TEACHER_PG.PHONE_NUMBER_REQUIRED' | translate }}
+                                        </div>
+                                    </div> 
                             </div>
                       
                             <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2">
