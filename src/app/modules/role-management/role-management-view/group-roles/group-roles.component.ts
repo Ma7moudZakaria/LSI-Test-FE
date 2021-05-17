@@ -52,7 +52,6 @@ export class GroupRolesComponent implements OnInit {
 
     this.RoleManagement.assignRolePermissions(this.assignRole).subscribe(
       (res) => {
-        // console.log(res);
         this._alertify.success(res.message || '');
       }
     );

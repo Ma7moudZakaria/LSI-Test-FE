@@ -10,7 +10,7 @@ import {
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
-import { UserSearch } from 'src/app/core/interfaces/role-management-interfaces/role-management';
+import { SearchItem, UserSearch } from 'src/app/core/interfaces/role-management-interfaces/role-management';
 
 @Component({
   selector: 'app-input-search-list',
@@ -19,28 +19,37 @@ import { UserSearch } from 'src/app/core/interfaces/role-management-interfaces/r
 })
 export class InputSearchListComponent implements OnInit, OnChanges {
 
-  @Input() selectedRoleId: string = '';
-  @Input() UsersNotBelongToRole: UserSearch[] = [];
-  @Output() addUserNotBelongToRole = new EventEmitter<{}>();
 
-  filteredOptions: UserSearch[] = [];
-  selectedUser: {} = {};
+  @Input() searchList: any[] = [];
+  @Output() addSearchItem = new EventEmitter<{}>();
+
+  filteredOptions: SearchItem[] = [];
+
+  selectedUser: any = {};
   search: string = '';
   langEnum = LanguageEnum;
 
   constructor(public translate: TranslateService) { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.UsersNotBelongToRole) {
-      this.filteredOptions = this.UsersNotBelongToRole;
+    console.log('UsersNotBelongToRole',this.searchList);
+    
+    if (changes.searchList) {
+      this.filteredOptions = this.searchList;
     }
   }
 
   ngOnInit(): void { }
 
   addUser() {
-    this.search=''
-    this.addUserNotBelongToRole.emit(this.selectedUser);
+    if (this.search != "" && this.selectedUser != '') {
+      this.addSearchItem.emit(this.selectedUser);
+      // to delete form list Options
+      let index = this.filteredOptions.indexOf(this.selectedUser);
+      this.filteredOptions.splice(index, 1);
+      this.search = '';
+      this.selectedUser = '';
+    }
   }
 
   searchKey() {
@@ -57,7 +66,7 @@ export class InputSearchListComponent implements OnInit, OnChanges {
 
   private _filter(value: string) {
     const filterValue = value.toLowerCase();
-    return this.UsersNotBelongToRole.filter(
+    return this.searchList.filter(
       (option) => option.enUsrName.toLowerCase().indexOf(filterValue) === 0
     );
   }

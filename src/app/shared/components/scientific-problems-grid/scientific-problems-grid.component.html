@@ -1,7 +1,7 @@
 <div class="row" *ngIf='userMode != scientificProblemUsers.Student'>
-    <ngb-pagination [collectionSize]="totalCount" [(page)]="page" [pageSize]="adminFilterRequestModel.take" [rotate]="true" [boundaryLinks]="true" (pageChange)="onAdminPageChange()"></ngb-pagination>
+    <ngb-pagination class="col-5" [collectionSize]="totalCount" [(page)]="page" [pageSize]="adminFilterRequestModel.take" [rotate]="true" [boundaryLinks]="true" (pageChange)="onAdminPageChange()"></ngb-pagination>
    
-    <button [ngClass]="{'default_btn': adminFilterRequestModel.sorField != 'studfullnamear' && adminFilterRequestModel.sorField != 'studfullnameen', 'asend_desend_btn' : this.adminFilterRequestModel.sorField != 'createdon' }"
+    <button class="col-2" [ngClass]="{'default_btn': adminFilterRequestModel.sorField != 'studfullnamear' && adminFilterRequestModel.sorField != 'studfullnameen', 'asend_desend_btn' : this.adminFilterRequestModel.sorField != 'createdon' }"
     (click)='sortByName()'>
     {{'User_Requests.SORT_NAME' | translate}} 
         <span *ngIf='this.adminFilterRequestModel.sorField != "studfullnamear" && this.adminFilterRequestModel.sorField != "studfullnameen"'>
@@ -14,7 +14,7 @@
             <img  class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
         </span>
     </button>
-    <button [ngClass]="{'asend_desend_btn': adminFilterRequestModel.sorField != 'studfullnamear' && adminFilterRequestModel.sorField != 'studfullnameen', 'default_btn' : this.adminFilterRequestModel.sorField != 'createdon'}"
+    <button class="col-2" [ngClass]="{'asend_desend_btn': adminFilterRequestModel.sorField != 'studfullnamear' && adminFilterRequestModel.sorField != 'studfullnameen', 'default_btn' : this.adminFilterRequestModel.sorField != 'createdon'}"
     (click)='sortByCreatedOn()'> 
      {{'User_Requests.SORT_DATE' | translate}}
      
@@ -28,6 +28,19 @@
             <img  class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
         </span>
      </button>
+
+     <div class="col-3">
+        <mat-checkbox class="example-margin"
+                  [checked]="allSelected"
+                  [indeterminate]="someItemsChecked()"
+                  (change)="setAllChecked($event.checked)"></mat-checkbox>
+        <span>
+            <i (click)='deleteScProblemsByIds()' class="far fa-trash-alt"></i>
+        </span>
+        <span>
+            <i (click)='exportScProblemsCSV()' class="far fa-trash-alt"></i>
+        </span>
+     </div>
 </div>
 <div class="row" *ngIf='userMode == scientificProblemUsers.Student'>
     <ngb-pagination [collectionSize]="totalCount" [(page)]="page" [pageSize]="userFilterRequestModel.take" [rotate]="true" [boundaryLinks]="true" (pageChange)="onUserPageChange()"></ngb-pagination>
@@ -51,7 +64,8 @@
         
         <mat-grid-tile *ngFor='let item of adminItems' >
             <app-card-admin-scientific-problem class="card" (deleteScientificProblem)='deleteScientificProblem($event)' 
-            (addReplyToScProb)='addReplyToScProbGr($event)' (saveScProbToQuestionBank)='saveScProbToQuestionBankGr($event)' [scientificProblem]='item'></app-card-admin-scientific-problem>
+            (addReplyToScProb)='addReplyToScProbGr($event)' (saveScProbToQuestionBank)='saveScProbToQuestionBankGr($event)' 
+            (updateAllItemsChecked)='updateAllItemsChecked()' [scientificProblem]='item'></app-card-admin-scientific-problem>
         </mat-grid-tile>
     </ng-container>
 </mat-grid-list>

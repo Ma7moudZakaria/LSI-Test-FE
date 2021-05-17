@@ -20,7 +20,7 @@ export class RoleManagementViewComponent implements OnInit {
 
   listRoleUesrs: RoleUsrs[] = [];
   listRolesPermissions!: RolesTreeModel;
-  UsersNotBelongToRole: [] = [];
+  UsersNotBelongToRole:any;
 
   showAddGroupForm: boolean = false;
   selectedRoleId: string = '';
@@ -105,7 +105,8 @@ export class RoleManagementViewComponent implements OnInit {
     let idx = 0;
     this.listRoleUesrs.forEach((element, index) => {
       if (element.usrId == userId) {
-        idx = index;
+        idx = index; 
+        this.UsersNotBelongToRole.push(element)
       }
     });
     this.listRoleUesrs.splice(idx, 1);
@@ -122,5 +123,6 @@ export class RoleManagementViewComponent implements OnInit {
     this.RoleManagement.assignUserRole(this.assignUser).subscribe((res) => {
       this._alertify.success(res.message || '');
     });
+
   }
 }

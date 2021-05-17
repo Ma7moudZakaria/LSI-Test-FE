@@ -15,7 +15,9 @@ export class SearchInputComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   updateSearchTerm(programName?:string){
     this.searchTerm.emit(programName);
   }
+  
 }

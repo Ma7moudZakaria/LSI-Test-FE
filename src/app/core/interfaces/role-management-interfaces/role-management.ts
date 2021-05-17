@@ -40,6 +40,15 @@ export interface UserSearch {
 }
 
 
+export interface SearchItem {
+    usrAvatarUrl: null;
+    usrEmail: string;
+    usrId: string;
+    enUsrName: string;
+    arUsrName: string;
+}
+
+
 export interface RolesTreeModel {
     children: []
     huffazId: string
@@ -49,4 +58,21 @@ export interface RolesTreeModel {
     nodeNameEn: string
     nodeOrder: number
     nodeParentId: string
+}
+
+export interface UsersExceptStudent{
+    avatarUrl: string
+    id: string
+    loginTime: string
+    usrFamilyNameAr: string
+    usrFamilyNameEn: string
+    usrFirstNameAr: string
+    usrFirstNameEn: string
+    usrFullNameAr: string
+    usrFullNameEn: string
+    usrMiddleNameAr: string
+    usrMiddleNameEn: string
+    enUsrName?:string
+    arUsrName?:string
+    usrAvatarUrl?:string
 }

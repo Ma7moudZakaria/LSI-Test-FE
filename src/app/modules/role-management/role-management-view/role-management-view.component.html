@@ -6,7 +6,7 @@
                 (deleteRole)="deleteRole($event)"></app-group-list>
         </div>
         <div class="col-md-9">
-            <div class="row group_header">
+            <div class="row group_header fix_margin">
                 <div class="item_group" (click)="showTap = 'USERS'"
                     [ngClass]="{ item_group_active: showTap == 'USERS' }">
                     {{ "Role_Management.USERS" | translate }}
@@ -18,7 +18,7 @@
             </div>
             <!-- {{selectedRoleId | json}} -->
            
-            <div class="row">
+            <div class="row fix_margin" >
                 <app-group-roles style="width: 100%" [selectedRoleId]="selectedRoleId" [selectedRoles]="selectedRoles"
                     [listRoles]="listRolesPermissions" *ngIf="showTap == 'ROLES'"></app-group-roles>
 
