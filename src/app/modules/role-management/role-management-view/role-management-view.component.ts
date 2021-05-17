@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import {
   AssignUserModel,
   Role,
@@ -7,8 +9,11 @@ import {
   RolesTreeModel,
   RoleUsrs,
 } from 'src/app/core/interfaces/role-management-interfaces/role-management';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { RoleManagementService } from 'src/app/core/services/role-management/role-management.service';
+import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-role-management-view',
@@ -25,6 +30,8 @@ export class RoleManagementViewComponent implements OnInit {
   showAddGroupForm: boolean = false;
   selectedRoleId: string = '';
   selectedRoles: any;
+  resultMessage:BaseMessageModel = {};
+  
   assignUser: AssignUserModel = {
     roleId: '',
     usrs: [],
@@ -33,7 +40,8 @@ export class RoleManagementViewComponent implements OnInit {
   constructor(
     public RoleManagement: RoleManagementService,
     public translate: TranslateService,
-    private _alertify: AlertifyService
+    private _alertify: AlertifyService,
+    public dialog: MatDialog,
   ) {}
 
   roleList: Role[] = [];
@@ -54,11 +62,28 @@ export class RoleManagementViewComponent implements OnInit {
   }
 
   deleteRole(roleId: string) {
-    console.log(roleId);
-    this.RoleManagement.DeleteRole(roleId).subscribe((res) => {
-      // console.log(res);
-      this._alertify.success(res.message || '');
-      this.getRolesList();
+    const message =this.translate.currentLang === LanguageEnum.en ?"Are you sure that you want to delete Role":"هل متأكد من حذف هذا الدور";
+
+    const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete Role' : 'حذف دور', message);
+
+    const dialogRef = this.dialog.open(ConfirmModalComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if(dialogResult==true){
+        this.RoleManagement.DeleteRole(roleId).subscribe(
+          res => {
+            this._alertify.success(res.message || '');
+            this.getRolesList();
+          }, error => {
+            this.resultMessage ={
+              message: error,
+              type: BaseConstantModel.DANGER_TYPE
+            }
+          }
+        )
+      }     
     });
   }
 

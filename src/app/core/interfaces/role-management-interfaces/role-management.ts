@@ -18,6 +18,7 @@ export interface RoleUsrs {
 export interface CreateRoleModel {
     arRoleName: string;
     enRoleName: string;
+    usrs: AssignUserList[];
 }
 export interface AssignRoleModel {
     roleId: string;
