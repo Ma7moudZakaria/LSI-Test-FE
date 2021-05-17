@@ -1,3 +1,4 @@
+import { transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IAddScProbReply } from 'src/app/core/interfaces/scientific-problrm/iadd-sc-prob-reply';
@@ -16,43 +17,53 @@ export class AddScientifiProblemReplyComponent implements OnInit {
 
   @Output() closeAddReplyToScProblem = new EventEmitter<IScientificProblemGridItems>();
 
-  @Input() scProbObjForAddReplyView : IScientificProblemGridItems = {}
+  @Input() scProbObjForAddReplyView: IScientificProblemGridItems = {}
 
-  resultMessage:BaseMessageModel = {};
+  resultMessage: BaseMessageModel = {};
 
-  constructor(public tranlste:TranslateService,
+  constructor(public tranlste: TranslateService,
     private scientificProblemService: ScientificProblemService,
     private alertify: AlertifyService) { }
 
   ngOnInit(): void {
   }
 
-  closeAddReplyEvent(){
+  closeAddReplyEvent() {
     this.closeAddReplyToScProblem.emit();
   }
 
-  saveReplyToScientificProble(){
-    let model : IAddScProbReply = {
-      id : this.scProbObjForAddReplyView?.id,
+  saveReplyToScientificProble() {
+    let model: IAddScProbReply = {
+      id: this.scProbObjForAddReplyView?.id,
       reply: this.scProbObjForAddReplyView?.repText
     };
-    this.scientificProblemService.addScientificProblemReply(model).subscribe(res => {
-      if (res.isSuccess){
-        this.alertify.success(res.message || '');
-        this.closeAddReplyToScProblem.emit();
-      }
-      else{
-        this.resultMessage ={
-          message: res.message,
+
+    if (model.reply) {
+      this.scientificProblemService.addScientificProblemReply(model).subscribe(res => {
+        if (res.isSuccess) {
+          this.alertify.success(res.message || '');
+          this.closeAddReplyToScProblem.emit();
+        }
+        else {
+          this.resultMessage = {
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
+          }
+        }
+      }, error => {
+        this.resultMessage = {
+          message: error,
           type: BaseConstantModel.DANGER_TYPE
         }
-      }
-    }, error => {
-      this.resultMessage ={
-        message: error,
+      })
+    }
+    else {
+      this.resultMessage = {
+        message: this.tranlste.instant('dffgdfg'),
         type: BaseConstantModel.DANGER_TYPE
       }
-    })
+    }
+
   }
 
 }

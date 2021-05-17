@@ -52,6 +52,13 @@
         font-size: 18px;
   
       }
+      .card_body_data{
+        height: 60%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-left: 0.2rem;
+        padding-right: 0.2rem;
+      }
       .img_user{
         width: 75px;
         height: 75px;
@@ -88,6 +95,7 @@
         font-family: Almarai-Bold;
         font-size: 0.875rem;
         color: #363636;
+        
   
       }
     } // card body

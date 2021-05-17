@@ -1,4 +1,4 @@
-<form class="form-group">
+<!-- <form class="form-group">
     <div class="row">
         <h1>{{ 'SCIENTIFIC_PROBLEM.ADD_SC_PROBLEM_TO_QUESTION_BANK' | translate }}</h1>
         <h3>{{ 'SCIENTIFIC_PROBLEM.USER_QUESTION' | translate }}</h3>
@@ -16,4 +16,49 @@
         <button (click)='saveScProblemToQuestionBank()'>Save</button>
         <button (click)='closeAddScProblemToQuestionBankEvent()'>Close</button>
     </div>
-</form>
+</form> -->
+
+<form class="form-group DataForm mt-5 pl-3 pr-3">
+    <h3 class="text-right head  bold">{{ 'SCIENTIFIC_PROBLEM.ADD_SC_PROBLEM_TO_QUESTION_BANK' | translate }}</h3>
+    <div class="form-group">
+        <label  class="label">
+            {{ 'SCIENTIFIC_PROBLEM.USER_QUESTION' | translate }}
+        </label>
+        <label  class="data_label">
+            {{ scProbObjForAddToQuestionBankView?.questText }}
+        </label>
+        <label  class="label">
+            {{ 'SCIENTIFIC_PROBLEM.SC_PROBLEM_ANSWER' | translate }}
+        </label>
+        <label  class="data_label">
+            {{ scProbObjForAddToQuestionBankView?.repText }}
+        </label>
+
+        <div  class="form-group">
+            <label  class="label">
+            {{ 'SCIENTIFIC_PROBLEM.DEPARTMENT' | translate }}
+
+            </label>
+
+            <select class="form-control "
+            [(ngModel)]="selectedCategory" [ngModelOptions]="{standalone: true}">
+                <option *ngFor="let c of questionBankCategoryList" [ngValue]="c">{{ translate.currentLang === langEnum.en ? c.engCatgName : c.arabCatgName}}</option>
+              </select>
+        </div>
+        <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2 text-center">
+            <span class="bold"> {{resultMessage.message}}</span>
+         </div>
+        <section class="mt-5">
+            <div  class="row direction-rtl buttons-center mt-5">
+                <button  (click)='saveScProblemToQuestionBank()' type="submit" class="save-btn"> 
+                    {{ "GENERAL.SAVE" | translate }}
+                    
+                </button>
+                <button   (click)='closeAddScProblemToQuestionBankEvent()' type="reset" class="cancel-btn"> 
+                    {{ "GENERAL.CANCEL" | translate }}
+                    
+                </button>
+            </div>
+        </section>
+   </div>
+   </form>

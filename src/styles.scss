@@ -37,7 +37,10 @@ html, body {  height: 100%;}
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(196, 195, 195);
 }
+.bold{
+    font-family: Almarai-Bold !important;
 
+}
 // login page 
 
 .LoginBackground_left_img
@@ -795,4 +798,7 @@ form inut desabled
   background-color: #F4F5F7;
   opacity: 1;
   border-color: #F4F5F7;
+}
+.scProblem .mat-checkbox-layout{
+  margin-bottom: 0 !important;
 }

@@ -106,7 +106,7 @@
     "Delete_Message": "هل أنت متأكد من حذف المادة؟",
     "Select_Program": "برجاء اختيار  برنامج",
     "NO_DATA": "لا يوجد بيانات",
-    "ADD_SCIENTIFIC_MATERIAL":"إضافة مادة علمية"
+    "ADD_SCIENTIFIC_MATERIAL": "إضافة مادة علمية"
   },
   "SCIENTIFIC_PROBLEM": {
     "TIME": "تاريخ الطلب",
@@ -117,10 +117,12 @@
     "DELETE": "مسح",
     "REPLY_ANSWER": "رد",
     "SUPERVISOR_NAME": "اسم المشرف",
-    "ADD_REPLY_TO_SCIENTIFIC_PROBLEM":"الرد على الإشكال العلمى",
-    "USER_QUESTION":"سؤال للمستخدم",
-    "ADD_SC_PROBLEM_TO_QUESTION_BANK":"إضافة سؤال الى بنك الاسئلة",
-    "SC_PROBLEM_ANSWER":"الإجابة"
+    "ADD_REPLY_TO_SCIENTIFIC_PROBLEM": "الرد على الإشكال العلمى",
+    "USER_QUESTION": "سؤال للمستخدم",
+    "ADD_SC_PROBLEM_TO_QUESTION_BANK": "إضافة سؤال الى بنك الاسئلة",
+    "SC_PROBLEM_ANSWER": "الإجابة",
+    "RESPONSE_SCIENTIFIC_PROBLEM": "رد على الإشكال العلمي",
+    "DEPARTMENT": "القسم "
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "البرامج",
@@ -299,7 +301,7 @@
     "TEACHER_PROGRAMS_DEGREE_REQUIRED": "الدرجة مطلوب",
     "ADDRESS": "عنوان الإقامة الدائم",
     "ADDRESS_REQUIRED": "العنوان مطلوب",
-    "EDU_NUM":"مدة الدراسة",
+    "EDU_NUM": "مدة الدراسة",
     "PHONE_NUMBER_REQUIRED": "رقم الهاتف مطلوب",
     "NATIONALITY_REQUIRED": "الجنسية مطلوبة"
   },
