@@ -24,6 +24,7 @@ export class RoleManagementService {
   assignRolePermissionsURL = environment.baseUrl + 'Roles/assign-role-permissions';
   usersNotBelongToRoleURL = environment.baseUrl + 'Roles/get-users-not-belong-to-role/';
   assignUserRoleURL = environment.baseUrl + 'Roles/assign-role-users';
+  getUsersExceptStudentsURL = environment.baseUrl + 'Roles/get-users-except-students';
 
 
   constructor(private http: HttpClient) { 
@@ -56,6 +57,10 @@ export class RoleManagementService {
 
   getUsersNotBelongToRole(id: string) {
     return this.http.get<BaseResponseModel>(this.usersNotBelongToRoleURL + id)
+  }
+  
+  getUsersExceptStudents() {
+    return this.http.get<BaseResponseModel>(this.getUsersExceptStudentsURL)
   }
 
   assignUserRole(model: AssignUserModel) {

@@ -28,8 +28,6 @@ export class GroupListComponent implements OnInit {
   // }
 
   ngOnInit(): void {
-    // console.log("this.listRole",this.listRole);
-
   }
   showAdd() {
     this.showAddGroup?.emit(true)
