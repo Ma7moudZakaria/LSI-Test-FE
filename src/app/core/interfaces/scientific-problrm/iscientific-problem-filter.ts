@@ -10,4 +10,5 @@ export interface IScientificProblemFilter {
     ordType?:number;
     skip: number;
     take: number;
+    page:number;
 }

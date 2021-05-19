@@ -93,7 +93,7 @@
   </div>
 
 </div>
-<div class="col-12 add_answer mb-2">
+<div class="col-12 add_answer mb-2" *ngIf='!viewMode'>
   <button type="button" class="btn cancel-btn btn btn-warning" (click)="addAnswer()" [disabled]='viewMode'>{{"GENERAL.ADD_ANSWE"|translate}}</button>
 </div>
 </div>
