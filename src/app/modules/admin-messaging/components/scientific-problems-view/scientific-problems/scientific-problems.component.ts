@@ -47,17 +47,6 @@ export class ScientificProblemsComponent implements OnInit {
     this.getScientificProblems();
   }
 
-  emitHeaderTitle() {
-    this.languageService.headerPageNameEvent.emit(this.translate.currentLang == LanguageEnum.ar ? 'المراسلات' : 'Messaging');
-  }
-
-  setCurrentLang() {
-    this.emitHeaderTitle();
-    this.languageService.currentLanguageEvent.subscribe(res => {
-      this.emitHeaderTitle();
-    });
-  }
-
   getScientificProblems() {
     
     this.resultMessage = {};
