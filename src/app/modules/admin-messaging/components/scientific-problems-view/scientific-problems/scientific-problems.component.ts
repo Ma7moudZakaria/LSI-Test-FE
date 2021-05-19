@@ -29,7 +29,7 @@ export class ScientificProblemsComponent implements OnInit {
   @Output() showAddReplyToScProblem = new EventEmitter<IScientificProblemGridItems>();
   @Output() showAddScProblemToQuestionBank = new EventEmitter<IScientificProblemGridItems>();
 
-  scientificProblemFilter: IScientificProblemFilter = {skip : 0, take : 2, sorField : '', ordType: 1, page : 1};
+  scientificProblemFilter: IScientificProblemFilter = {skip : 0, take : 12, sorField : '', ordType: 1, page : 1};
   resultMessage:BaseMessageModel = {};
   scientificProblems: IScientificProblemGridItems[] | undefined; 
   adminCard : ScientificProblemUsersEnum = ScientificProblemUsersEnum.Admin;

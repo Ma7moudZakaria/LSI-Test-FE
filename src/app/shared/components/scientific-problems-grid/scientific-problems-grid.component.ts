@@ -61,6 +61,7 @@ export class ScientificProblemsGridComponent implements OnInit {
   onAdminPageChange() {
     this.adminFilterRequestModel.skip = (this.adminFilterRequestModel.page - 1) * this.adminFilterRequestModel.take;
     this.adminFilterEvent.emit(this.adminFilterRequestModel);
+    this.setAllChecked(false);
   }
 
   onUserPageChange() {
