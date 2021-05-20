@@ -50,7 +50,7 @@ export class MiladyHijriCalendarComponent implements OnInit {
       this.hijriLabel = 'Hijri';
     }
     else{
-      this.GregLabel = 'ميلادي';
+      this.GregLabel = 'ميلادي'; 
       this.hijriLabel = 'هجري';
     }
   }
