@@ -25,8 +25,8 @@ export class ScientificProblemsGridComponent implements OnInit {
   @Output() deleteListOfScProblems = new EventEmitter<string>();
 
   @Input() userMode: ScientificProblemUsersEnum = ScientificProblemUsersEnum.Student;
-  @Input() adminFilterRequestModel: IScientificProblemFilter = { skip: 0, take: 0 };
-  @Input() userFilterRequestModel: IUserScientificProblemFilter = { skip: 0, take: 0 };
+  @Input() adminFilterRequestModel: IScientificProblemFilter = { skip: 0, take: 0, page :1 };
+  @Input() userFilterRequestModel: IUserScientificProblemFilter = { skip: 0, take: 0, page:1 };
   @Input() numberPerRow: number = 3; //default is 3 for student
   @Input() items: IScientificProblem[] = []
   @Input() adminItems: IScientificProblemGridItems[] = []
@@ -37,7 +37,7 @@ export class ScientificProblemsGridComponent implements OnInit {
   allSelected: boolean = false;
 
   scientificProblemUsers = ScientificProblemUsersEnum
-  page = 1
+   page = 1
 
 
   constructor(public translate: TranslateService,
@@ -59,12 +59,13 @@ export class ScientificProblemsGridComponent implements OnInit {
   }
 
   onAdminPageChange() {
-    this.adminFilterRequestModel.skip = (this.page - 1) * this.adminFilterRequestModel.take;
+    this.adminFilterRequestModel.skip = (this.adminFilterRequestModel.page - 1) * this.adminFilterRequestModel.take;
     this.adminFilterEvent.emit(this.adminFilterRequestModel);
+    this.setAllChecked(false);
   }
 
   onUserPageChange() {
-    this.userFilterRequestModel.skip = (this.page - 1) * this.userFilterRequestModel.take;
+    this.userFilterRequestModel.skip = (this.userFilterRequestModel.page - 1) * this.userFilterRequestModel.take;
     this.userFilterEvent.emit(this.userFilterRequestModel);
   }
 

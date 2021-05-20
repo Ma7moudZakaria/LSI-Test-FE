@@ -12,6 +12,7 @@ import {
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
+import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { RoleManagementService } from 'src/app/core/services/role-management/role-management.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 
@@ -42,6 +43,7 @@ export class RoleManagementViewComponent implements OnInit {
     public translate: TranslateService,
     private _alertify: AlertifyService,
     public dialog: MatDialog,
+    public languageService:LanguageService
   ) {}
 
   roleList: Role[] = [];
@@ -50,6 +52,19 @@ export class RoleManagementViewComponent implements OnInit {
   ngOnInit(): void {
     this.getRolesList();
     this.getPermissionsTreeView();
+
+    this.setCurrentLang();
+  }
+
+  emitHeaderTitle() {
+    this.languageService.headerPageNameEvent.emit(this.translate.currentLang == LanguageEnum.ar ? 'الأدوار' : 'Roles');
+  }
+
+  setCurrentLang() {
+    this.emitHeaderTitle();
+    this.languageService.currentLanguageEvent.subscribe(res => {
+      this.emitHeaderTitle();
+    });
   }
 
   getRolesList() {
