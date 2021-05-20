@@ -559,6 +559,12 @@ align-items: center
   margin-right: 0.23rem;
 
 }
+.questionBank.student
+.mat-content::before{
+
+  content: url() !important;
+}
+
 .mat-expansion-panel-header-title, .mat-expansion-panel-header-description{
   margin-right: 0 !important; 
 }
