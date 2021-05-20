@@ -1,6 +1,16 @@
 @import 'src/assets/scss/_variables.scss';
 
-
+.header_sc{
+  font-size: 20px;
+  color: #3A3A3A;
+}
+.text-left{
+&:lang(en)
+{text-align: left;}
+&:lang(ar){
+  text-align: right;
+}
+}
 .scientific-problem{
   background: #FBFBFB;
   border-radius: 19px;

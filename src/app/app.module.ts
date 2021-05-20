@@ -30,6 +30,8 @@ import { AlertifyService } from './core/services/alertify-services/alertify.serv
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CmsHasUnsavedDataGuard } from './core/guards/cms-has-unsaved-data-guard';
 import { WalkthroughHasUnsavedDataGuard } from './core/guards/walkthrough-has-unsaved-data-guard';
+import { UpdateTeacherProfileHasUnsavedDataGuard } from './core/guards/update-teacher-profile-has-unsaved-data-guard';
+import { UpdateUserProfileHasUnsavedDataGuard } from './core/guards/update-user-profile-has-unsaved-data-guard';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -70,6 +72,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [
     CmsHasUnsavedDataGuard,
     WalkthroughHasUnsavedDataGuard,
+    UpdateTeacherProfileHasUnsavedDataGuard,
+    UpdateUserProfileHasUnsavedDataGuard,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     LoaderService,

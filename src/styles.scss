@@ -718,7 +718,11 @@ display: none;
   padding-right: 2rem;
 }
 }
-//for custom radio button in  add-question
+
+/******************
+ custom radio button in  add-question
+/***********************/
+
  .dynamic-radio-button-with-input-text-model{
   .mat-radio-label-content ,.mat-checkbox-label{
     display: flex;
@@ -730,8 +734,11 @@ display: none;
   margin: 0.5rem;
 }
 }
-// check box for card-admin-scientific-problem
-.card-admin-scientific-problem{
+/******************
+check box for card-admin-scientific-problem
+/***********************/
+
+.card-admin-scientific-problem {
     .mat-checkbox-layout{
       margin-bottom: 0 !important;
     }
@@ -739,9 +746,10 @@ display: none;
       background-color: white;
     }
 
-//  .mat-checkbox-checked.mat-accent .mat-checkbox-background {
-//   background-color: #9985846e;
-//  }
+ .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  // background-color: #8E2520;
+
+ }
 }
 
 .link_Add{
@@ -801,4 +809,27 @@ form inut desabled
 }
 .scProblem .mat-checkbox-layout{
   margin-bottom: 0 !important;
+}
+/******************
+mat-grid-list
+/***********************/
+mat-grid-list {
+  &:lang(en){
+    direction: ltr;
+  justify-content: start !important;
+  align-items:start !important;
+  }
+  &:lang(ar){
+    direction: rtl;
+    justify-content: start !important;
+  align-items:start !important;
+  }
+}
+ 
+.lrt-dir{
+  direction: ltr;
+}
+.rtl-dir{
+  direction: rtl;
+
 }

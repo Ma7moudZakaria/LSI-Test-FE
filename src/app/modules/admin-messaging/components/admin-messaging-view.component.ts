@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IScientificProblemGridItems } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem-grid-items';
+import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { ScientificProblemsComponent } from './scientific-problems-view/scientific-problems/scientific-problems.component';
 
 @Component({
@@ -18,9 +20,21 @@ export class AdminMessagingViewComponent implements OnInit {
   scProbObjForAddReplyView : IScientificProblemGridItems = {}
   scProbObjForAddToQuestionBankView : IScientificProblemGridItems = {}
 
-  constructor(public translate: TranslateService) { }
+  constructor(public translate: TranslateService, private languageService : LanguageService) { }
 
   ngOnInit(): void {
+    this.setCurrentLang();
+  }
+
+  emitHeaderTitle() {
+    this.languageService.headerPageNameEvent.emit(this.translate.currentLang == LanguageEnum.ar ? 'المراسلات' : 'Messaging');
+  }
+
+  setCurrentLang() {
+    this.emitHeaderTitle();
+    this.languageService.currentLanguageEvent.subscribe(res => {
+      this.emitHeaderTitle();
+    });
   }
 
   showAddReplyToScProblemView(event : IScientificProblemGridItems){
