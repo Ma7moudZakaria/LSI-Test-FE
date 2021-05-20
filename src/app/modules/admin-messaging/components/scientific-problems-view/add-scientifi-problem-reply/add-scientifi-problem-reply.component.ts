@@ -59,7 +59,7 @@ export class AddScientifiProblemReplyComponent implements OnInit {
     }
     else {
       this.resultMessage = {
-        message: this.tranlste.instant('dffgdfg'),
+        message: this.tranlste.instant('SCIENTIFIC_PROBLEM.ENTER_REPLAY'),
         type: BaseConstantModel.DANGER_TYPE
       }
     }

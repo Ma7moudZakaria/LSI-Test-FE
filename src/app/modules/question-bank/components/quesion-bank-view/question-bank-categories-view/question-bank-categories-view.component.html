@@ -3,28 +3,19 @@
   
 <div class="list-group list-category">
  
-  
-  <a (click)="newScientificProblem()" *ngIf='viewScientificProblem()'> 
+ 
+  <p class="mb-4 p_header mb-0">{{'QUESTION_BANK.DEPARTMENTS' | translate}}</p>
+ 
+  <a (click)="newScientificProblem()" *ngIf='viewScientificProblem()' class="mb-2"> 
     <span class="link_Add ">  {{ 'QUESTION_BANK.ADD_SCIENTIFIC_PROBLEM' | translate }}
     <img  src="../../../../../../assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
   </span>
 </a>
-  <div class="d-flex justify-content-between">
-  <p class="mb-4 p_header">{{'QUESTION_BANK.DEPARTMENTS' | translate}}</p>
- 
-  <!-- <a (click)="newScientificProblem()" *ngIf="!adminMode"> 
-    <span class="link_Add ">  {{ 'QUESTION_BANK.ADD_SCIENTIFIC_PROBLEM' | translate }}
-    <img  src="../../../../../../assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
-  </span>
-</a> -->
-<ng-container *ngIf="!viewAddDepartment()">
-  <a (click)="newCatogry()">
+  <a (click)="newCatogry()"  *ngIf="!viewAddDepartment()" class="mb-2">
     <span class="link_Add ">  {{ 'QUESTION_BANK.ADD_DEPARTMENT' | translate }}
     <img  src="../../../../../../assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
   </span>
 </a> 
-</ng-container>
-</div>
 <!-- <div class="d-flex justify-content-between"  *ngIf="translate.currentLang===langEnum.ar">
       <div class="input-group">
           <div class="input-group-prepend">

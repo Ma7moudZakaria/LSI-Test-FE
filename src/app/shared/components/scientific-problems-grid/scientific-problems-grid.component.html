@@ -1,4 +1,4 @@
-<div class="row" *ngIf='userMode != scientificProblemUsers.Student'>
+<div class="row scientific-problem-grid" *ngIf='userMode != scientificProblemUsers.Student'>
   
   <div class="col-6 d-flex justify-content-start">
    <ngb-pagination  [collectionSize]="totalCount" [(page)]="adminFilterRequestModel.page" [pageSize]="adminFilterRequestModel.take" [rotate]="true" [boundaryLinks]="true" (pageChange)="onAdminPageChange()"></ngb-pagination>
