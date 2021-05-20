@@ -55,8 +55,8 @@ export class ExamFormService {
     if (questionList.some(e => !e.text && !e.voiceUrl)){return false}
     if (!questionList.every(e => e.degree)){return false}
     if (!questionList.every(e => e.time)){return false}
-    if (questionList.some(e => e.degree && e.degree >= 1)){return false}
-    if (questionList.some(e => e.time && e.time >= 1)){return false}
+    if (questionList.some(e => e.degree && e.degree < 1)){return false}
+    if (questionList.some(e => e.time && e.time < 1)){return false}
   if(this.getDuplicateQuestion(questionList).length>0){return false}
     else return true;
     }
