@@ -36,7 +36,7 @@
     "NO": "No",
     "LOGOUT_CONFIRM": "LogOut",
     "LOGOUT_MESSAGE": "Are you sure you want to logout ?",
-    "ARABIC_DISPALY_SWITCH": "Arabic",
+    "ENGLISH_DISPALY_SWITCH": "English",
     "INVALID_PHONE_NUMBER": "Invalid phone number",
     "CONFIRM_PASSWORD_TO_CONTAINER": "The password should including at least one number and includes both lower and uppercase letters and special characters",
     "PASSWORD_TO_CONTAINER": "The password should including at least one number and includes both lower and uppercase letters and special characters",
@@ -116,7 +116,7 @@
     "TIME_QUESTION": "Time Question",
     "QUESTION": "Question",
     "REPLY": "Reply",
-    "ADDLINK": "Add link",
+    "ADDLINK": "Add to Bank",
     "DELETE": "Delete",
     "REPLY_ANSWER": "Reply Answer",
     "SUPERVISOR_NAME": "Supervisor's name",
@@ -426,8 +426,8 @@
     "CREATENEWGROUP": "Create new group",
     "GROUPNAMEENGLISH": "Group name (English)",
     "INDIVIDUALS": "Individuals",
-    "SELECT_GROUP_MEMBERS":"Select group members",
-    "SAVE":"Create"
+    "SELECT_GROUP_MEMBERS": "Select group members",
+    "SAVE": "Create"
   },
   "EXAM_FORM": {
     "TITLE": "Forms",

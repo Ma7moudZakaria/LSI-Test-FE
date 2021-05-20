@@ -36,7 +36,7 @@
     "NO": "لا",
     "LOGOUT_CONFIRM": "تسحيل الخروج",
     "LOGOUT_MESSAGE": "هل انت متاكد من تسجيل الخروج؟",
-    "ENGLISH_DISPALY_SWITCH": "إنجليزى",
+    "ARABIC_DISPALY_SWITCH": "عربي",
     "INVALID_PHONE_NUMBER": "رقم الجوال غير صحيح",
     "CONFIRM_PASSWORD_TO_CONTAINER": "الرقم السرى يجب أن يحتوى على الأقل على رقم واحد و حرف واحد كبير و حرف صغير وحرف خاص ",
     "PASSWORD_TO_CONTAINER": "الرقم السرى يجب أن يحتوى على الأقل على رقم واحد و حرف واحد كبير و حرف صغير وحرف خاص ",
@@ -423,8 +423,8 @@
     "CREATENEWGROUP": "إنشاء مجموعة جديدة",
     "GROUPNAMEENGLISH": "اسم المجموعة (انجليزي)",
     "INDIVIDUALS": "الافراد",
-    "SELECT_GROUP_MEMBERS":"اختر أعضاء المجموعة",
-    "SAVE":"إنشاء"
+    "SELECT_GROUP_MEMBERS": "اختر أعضاء المجموعة",
+    "SAVE": "إنشاء"
   },
   "EXAM_FORM": {
     "TITLE": "النماذج",
