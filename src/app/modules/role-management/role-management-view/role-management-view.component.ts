@@ -7,7 +7,7 @@ import {
   Role,
   RoleManagementFilter,
   RolesTreeModel,
-  RoleUsrs,
+  UserCard,
 } from 'src/app/core/interfaces/role-management-interfaces/role-management';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
@@ -24,7 +24,8 @@ import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/compon
 export class RoleManagementViewComponent implements OnInit {
   showTap: string = 'USERS';
 
-  listRoleUesrs: RoleUsrs[] = [];
+  listRoleUesrs: UserCard[] = [];
+
   editRoleData:Role = {
     arRoleName:'',
     enRoleName:'',

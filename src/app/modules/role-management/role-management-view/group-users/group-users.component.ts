@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { RoleUsrs } from 'src/app/core/interfaces/role-management-interfaces/role-management';
+import { SearchItem, UserCard } from 'src/app/core/interfaces/role-management-interfaces/role-management';
 
 @Component({
   selector: 'app-group-users',
@@ -8,8 +8,8 @@ import { RoleUsrs } from 'src/app/core/interfaces/role-management-interfaces/rol
 })
 export class GroupUsersComponent implements OnInit {
 
-  @Input() listUsers!: RoleUsrs[];
-  @Input() UsersNotBelongToRole: [] = [];
+  @Input() listUsers!: UserCard[];
+  @Input() UsersNotBelongToRole: SearchItem[] = [];
   @Input() selectedRoleId: string = ''
   @Output() addUserToRole = new EventEmitter<{}>();
   @Output() deleteUser = new EventEmitter<string>();

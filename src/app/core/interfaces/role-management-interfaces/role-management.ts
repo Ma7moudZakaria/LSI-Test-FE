@@ -8,13 +8,7 @@ export interface Role {
     arRoleName: string;
     enRoleName: string;
 }
-export interface RoleUsrs {
-    usrAvatarUrl: null;
-    usrEmail: string;
-    usrId: string;
-    usrNameAr: string;
-    usrNameEn: string;
-}
+
 export interface CreateRoleModel {
     arRoleName: string;
     enRoleName: string;
@@ -32,17 +26,11 @@ export interface AssignUserList {
     usrId: string;
 }
 
-export interface UserSearch {
-    usrAvatarUrl: null;
-    usrEmail: string;
-    usrId: string;
-    enUsrName: string;
-    arUsrName: string;
-}
+
 
 
 export interface SearchItem {
-    usrAvatarUrl: null;
+    usrAvatarUrl: string;
     usrEmail: string;
     usrId: string;
     enUsrName: string;
@@ -73,7 +61,15 @@ export interface UsersExceptStudent{
     usrFullNameEn: string
     usrMiddleNameAr: string
     usrMiddleNameEn: string
-    enUsrName?:string
-    arUsrName?:string
-    usrAvatarUrl?:string
+   
+}
+
+
+
+export interface UserCard {
+    usrAvatarUrl: string;
+    usrEmail: string;
+    usrId: string;
+    usrNameAr: string;
+    usrNameEn: string;
 }

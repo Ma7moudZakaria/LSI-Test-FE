@@ -39,7 +39,7 @@
             <div class="form-group" *ngIf="dataEdit.id==''">
                 <label for="exampleInputEmail1" class="label">{{"Role_Management.SELECT_GROUP_MEMBERS" | translate
                     }}</label>
-                <app-input-search-list [searchList]="usersExceptStudent" (addSearchItem)="addUser($event)">
+                <app-input-search-list [searchList]="SearchItemList" (addSearchItem)="addUser($event)">
                 </app-input-search-list>
             </div>
 
