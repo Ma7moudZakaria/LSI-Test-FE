@@ -19,6 +19,11 @@ export class RoleManagementViewComponent implements OnInit {
   showTap: string = 'USERS';
 
   listRoleUesrs: RoleUsrs[] = [];
+  editRoleData:Role = {
+    arRoleName:'',
+    enRoleName:'',
+    id:''
+  }
   listRolesPermissions!: RolesTreeModel;
   UsersNotBelongToRole:any;
 
@@ -64,6 +69,7 @@ export class RoleManagementViewComponent implements OnInit {
 
   showAddGroup(event: boolean) {
     this.showAddGroupForm = event;
+    this.editRoleData={id:'',enRoleName:'',arRoleName:''}
     if (event == false) {
       this.getRolesList();
     }
@@ -124,5 +130,10 @@ export class RoleManagementViewComponent implements OnInit {
       this._alertify.success(res.message || '');
     });
 
+  }
+
+  editRole(event:Role){
+    this.showAddGroupForm=true;
+    this.editRoleData=event;
   }
 }

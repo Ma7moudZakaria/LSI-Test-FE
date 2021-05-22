@@ -36,7 +36,7 @@
             </div>
 
 
-            <div class="form-group">
+            <div class="form-group" *ngIf="dataEdit.id==''">
                 <label for="exampleInputEmail1" class="label">{{"Role_Management.SELECT_GROUP_MEMBERS" | translate
                     }}</label>
                 <app-input-search-list [searchList]="usersExceptStudent" (addSearchItem)="addUser($event)">
@@ -44,7 +44,7 @@
             </div>
 
 
-            <mat-list>
+            <mat-list *ngIf="dataEdit.id==''">
                 <mat-list-item *ngFor="let SelectedUser of listSelectedUser">
                     <img mat-list-icon src="assets/images/roleManagement/ASH_90.png" alt="">
                     <div mat-line>{{ translate.currentLang === langEnum.en
@@ -60,7 +60,12 @@
             {{resultMessage.message}}
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6" *ngIf="dataEdit.id!=''">
+                <button (click)="EditData()" class="save-btn">
+                    {{ "Role_Management.EDIT" | translate }}
+                </button>
+            </div>
+            <div class="col-md-6" *ngIf="dataEdit.id==''">
                 <button (click)="saveData()" class="save-btn">
                     {{ "QUESTION_BANK.SAVE" | translate }}
                 </button>

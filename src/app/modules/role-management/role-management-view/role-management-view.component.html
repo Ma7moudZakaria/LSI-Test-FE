@@ -3,7 +3,7 @@
         <div class="col-md-3">
             <app-group-list (showAddGroup)="showAddGroup($event)" [selectedRoleId]="selectedRoleId"
                 [listRole]="roleList" (getRoleDetails)="getRoleDetails($event)" (filterRole)="filterRole($event)"
-                (deleteRole)="deleteRole($event)"></app-group-list>
+                (deleteRole)="deleteRole($event)"  (editRole)="editRole($event)"></app-group-list>
         </div>
         <div class="col-md-9">
             <div class="row group_header fix_margin">
@@ -31,6 +31,6 @@
     </div>
 
     <div class="overlay" *ngIf="showAddGroupForm">
-        <app-add-group (hideform)="showAddGroup($event)"></app-add-group>
+        <app-add-group (hideform)="showAddGroup($event)" [dataEdit]="editRoleData"  ></app-add-group>
     </div>
 </div>

@@ -1,8 +1,8 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
-import { UsersExceptStudent } from 'src/app/core/interfaces/role-management-interfaces/role-management';
+import { Role, UsersExceptStudent } from 'src/app/core/interfaces/role-management-interfaces/role-management';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
@@ -13,10 +13,11 @@ import { RoleManagementService } from 'src/app/core/services/role-management/rol
   templateUrl: './add-group.component.html',
   styleUrls: ['./add-group.component.scss'],
 })
-export class AddGroupComponent implements OnInit {
+export class AddGroupComponent implements OnInit,AfterViewInit,OnChanges {
   DataForm!: FormGroup;
   isSubmit: boolean = false;
   @Output() hideform = new EventEmitter<boolean>();
+  @Input() dataEdit: Role = {arRoleName:'',id:'',enRoleName:''};
   listSelectedUser:any=[]
   resultMessage: BaseMessageModel = {};
   usersExceptStudent:UsersExceptStudent[]=[];
@@ -27,6 +28,16 @@ export class AddGroupComponent implements OnInit {
     private _alertify: AlertifyService,
     public translate: TranslateService
   ) { }
+  ngAfterViewInit(): void {
+    if (this.dataEdit.id!='') {
+      this.DataForm.patchValue(this.dataEdit)
+    }
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.dataEdit&&this.dataEdit.id!='') {
+      this.DataForm.patchValue(this.dataEdit)
+    }
+  }
 
   ngOnInit(): void {
     this.buildForm();
@@ -92,6 +103,34 @@ export class AddGroupComponent implements OnInit {
         type: BaseConstantModel.DANGER_TYPE
       }
     });
+  }
+
+  EditData(){
+    this.isSubmit = true;
+    if (this.DataForm.invalid) {
+      return;
+    }
+   if (this.dataEdit.id!='') {
+    this.RoleManagement.editRole({roleId:this.dataEdit.id,...this.DataForm.value}).subscribe((res) => {
+      if (res.isSuccess){
+        
+      this._alertify.success(res.message || "");
+      this.backList();
+      }
+      else{
+        this.resultMessage = {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+    },error => {
+      this.resultMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    });
+   }
+
   }
 
   backList() {
