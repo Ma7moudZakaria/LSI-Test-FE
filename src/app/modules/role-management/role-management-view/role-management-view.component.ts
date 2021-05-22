@@ -71,6 +71,11 @@ export class RoleManagementViewComponent implements OnInit {
       this.emitHeaderTitle();
     });
   }
+  showTapFn(event:string){
+    this.showTap=event;
+    this.getRoleDetails(this.selectedRoleId);
+   
+  }
 
   getRolesList() {
     this.RoleManagement.getRolesList(this.RoleManagementFilter).subscribe(
@@ -126,7 +131,10 @@ export class RoleManagementViewComponent implements OnInit {
       this.listRoleUesrs = res.data.roleUsrs;
       this.selectedRoles = res.data.rolePerms;
     });
-    this.getUserNotBelongToRole(this.selectedRoleId);
+    if (this.showTap=='USERS') {
+      this.getUserNotBelongToRole(this.selectedRoleId);
+    }
+  
   }
 
   getPermissionsTreeView() {

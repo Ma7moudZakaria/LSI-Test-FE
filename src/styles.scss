@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'src/assets/scss/_typography.scss';
+@import 'src/assets/scss/_variables.scss';
 
 html {
   font-size:16px;
@@ -838,4 +839,8 @@ mat-grid-list {
 .rtl-dir{
   direction: rtl;
 
+}
+
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background{
+  background-color: $main-color-2 !important;
 }

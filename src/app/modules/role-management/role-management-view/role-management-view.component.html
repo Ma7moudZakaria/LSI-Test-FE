@@ -7,11 +7,11 @@
         </div>
         <div class="col-md-9">
             <div class="row group_header fix_margin">
-                <div class="item_group" (click)="showTap = 'USERS'"
+                <div class="item_group" (click)="showTapFn('USERS')"
                     [ngClass]="{ item_group_active: showTap == 'USERS' }">
                     {{ "Role_Management.USERS" | translate }}
                 </div>
-                <div class="item_group" (click)="showTap = 'ROLES'"
+                <div class="item_group" (click)="showTapFn('ROLES')"
                     [ngClass]="{ item_group_active: showTap == 'ROLES' }">
                     {{ "Role_Management.ROLES" | translate }}
                 </div>
