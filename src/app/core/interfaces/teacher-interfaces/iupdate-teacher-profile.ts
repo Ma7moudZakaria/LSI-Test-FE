@@ -26,6 +26,8 @@ export interface IUpdateTeacherProfile {
     entity?: string;
     agency?:string;
     edulevel?:string;
+    interviewId?:string;
+    fromTime?:string;
     isHasQuranExp?: boolean;
     isHasTeachSunnaExp?: boolean;
     isHasInternetTeachExp?: boolean;
