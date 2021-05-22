@@ -23,7 +23,7 @@ export class UserScientificProblemComponent implements OnInit {
   resMessage: BaseMessageModel = {};
   currentUser: IUser | undefined;
   totalCount = 0;
-  userScientificProblemFilterModel: IUserScientificProblemFilter = { skip: 0, take: 0 };
+  userScientificProblemFilterModel: IUserScientificProblemFilter = { skip: 0, take: 0,page : 1 };
   @Output() openScientificProblem = new EventEmitter<boolean>();
 
   constructor(
@@ -35,7 +35,7 @@ export class UserScientificProblemComponent implements OnInit {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
 
     this.userScientificProblemFilterModel = {
-      usrId: this.currentUser.id, oType: true, skip: 0, take: 9
+      usrId: this.currentUser.id, oType: true, skip: 0, take: 9, page : 1
     }
     this.getScientificProblemByUserId();
   }
@@ -48,6 +48,12 @@ export class UserScientificProblemComponent implements OnInit {
           item.scCreationDate = item.scCreationDate ? new Date(item.scCreationDate).toDateString() : '';
         });
         this.totalCount = res.count ? res.count : 0;
+
+        if ( this.userScientificProblemFilterModel.skip > 0  && (!this.scientificProblemData || this.scientificProblemData.length === 0)){
+          this.userScientificProblemFilterModel.page -= 1;
+          this.userScientificProblemFilterModel.skip = (this.userScientificProblemFilterModel.page - 1) * this.userScientificProblemFilterModel.take;
+          this.getScientificProblemByUserId(); 
+        }
       }
       else {
         this.resMessage = {

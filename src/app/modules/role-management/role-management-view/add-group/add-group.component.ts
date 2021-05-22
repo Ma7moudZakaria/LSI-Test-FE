@@ -2,7 +2,8 @@ import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Outpu
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
-import { Role, UsersExceptStudent } from 'src/app/core/interfaces/role-management-interfaces/role-management';
+import { Role } from 'src/app/core/interfaces/role-management-interfaces/role-management';
+import { CreateRoleModel, UsersExceptStudent } from 'src/app/core/interfaces/role-management-interfaces/role-management';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
@@ -85,6 +86,12 @@ export class AddGroupComponent implements OnInit,AfterViewInit,OnChanges {
     if (this.DataForm.invalid) {
       return;
     }
+
+    let createModel : CreateRoleModel = this.DataForm.value;
+    
+    //statment need to updated based on models as it's recorded as type any
+    createModel.usrs = this.listSelectedUser.map((i:any) => ({usrId : i.id}));
+
     this.RoleManagement.createRole(this.DataForm.value).subscribe((res) => {
       if (res.isSuccess){
         

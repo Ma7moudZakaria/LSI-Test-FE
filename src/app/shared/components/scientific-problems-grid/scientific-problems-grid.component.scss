@@ -37,3 +37,30 @@
 {
     margin: 0 0.3rem;
 }
+.exportIcon
+{   
+    
+    width: 1.1rem;
+    height: 1.2rem;
+
+}
+.text-right{
+    &:lang(ar){
+        text-align: left !important;
+    }
+    &:lang(en){
+        text-align: right !important;
+
+    }
+}    
+.fa-trash-alt{
+color: #8E2520;
+}
+
+a.disabled {
+    color: gray;
+    cursor: not-allowed;
+    text-decoration: underline;
+    pointer-events:none;
+    opacity: 0.2;
+}

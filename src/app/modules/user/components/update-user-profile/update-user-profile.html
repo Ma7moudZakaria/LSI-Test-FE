@@ -152,13 +152,13 @@
                                         <!-- <input id="birthdate" pInputText type="date" formControlName="birthdate"
                                             name="birthdate" class="form-control UserRegister__FormControl"> -->
         
-                                            <app-milady-hijri-calendar   (sendDate)="Hijri($event)" [dateTo]='hijriBirthDateInputParam'
+                                            <app-milady-hijri-calendar (sendDate)="Hijri($event)" [dateTo]='hijriBirthDateInputParam'
                                                [hijri]="hijri" [milady]="!milady">
                                              </app-milady-hijri-calendar>
                                                                            
-        
-                                            <div *ngIf="f.birthdate.errors && (f.birthdate.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
-                                                <div *ngIf="f.birthdate.errors.required">
+    
+                                            <div *ngIf="!hijriBinding && (f.birthdate.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                                <div *ngIf="!hijriBinding">
                                                     {{ 'UPDATE_USER_PG.BIRTHDATE_REQUIRED' | translate }}
                                                 </div>
                                             </div> 

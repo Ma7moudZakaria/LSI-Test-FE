@@ -36,7 +36,7 @@
     "NO": "No",
     "LOGOUT_CONFIRM": "LogOut",
     "LOGOUT_MESSAGE": "Are you sure you want to logout ?",
-    "ARABIC_DISPALY_SWITCH": "Arabic",
+    "ENGLISH_DISPALY_SWITCH": "عربى",
     "INVALID_PHONE_NUMBER": "Invalid phone number",
     "CONFIRM_PASSWORD_TO_CONTAINER": "The password should including at least one number and includes both lower and uppercase letters and special characters",
     "PASSWORD_TO_CONTAINER": "The password should including at least one number and includes both lower and uppercase letters and special characters",
@@ -47,8 +47,8 @@
     "ENGLISH_FIELD": "This field must be in English",
     "ADD": "Add",
     "CANCEL": "Cancel",
-    "CHOICES": "Choices",
-    "MULTI_SELECT": "Multi Select",
+    "CHOICES": "One Choice",
+    "MULTI_SELECT": "Multi Choices",
     "ADD_QUESTION": "Add Question",
     "ADD_ANSWE": "Add Answer",
     "NOT_AUTHORIZED": "YOU ARE NOT AUTHORIZED",
@@ -109,21 +109,23 @@
     "Delete_Message": "Are you sure you want to delete this?",
     "Select_Program": "Please select program",
     "NO_DATA": "No Data found",
-    "ADD_SCIENTIFIC_MATERIAL":"Add Scientific Material"
+    "ADD_SCIENTIFIC_MATERIAL": "Add Scientific Material"
   },
   "SCIENTIFIC_PROBLEM": {
-    "TIME": "Time",
+    "TIME": "Request Date",
     "TIME_QUESTION": "Time Question",
     "QUESTION": "Question",
     "REPLY": "Reply",
-    "ADDLINK": "Add link",
+    "ADDLINK": "Add to Bank",
     "DELETE": "Delete",
     "REPLY_ANSWER": "Reply Answer",
     "SUPERVISOR_NAME": "Supervisor's name",
-    "ADD_REPLY_TO_SCIENTIFIC_PROBLEM":"Add reply to scientific problem",
-    "USER_QUESTION":"User Question",
-    "ADD_SC_PROBLEM_TO_QUESTION_BANK":"Add scientific problem to question bank",
-    "SC_PROBLEM_ANSWER":"Answer"
+    "ADD_REPLY_TO_SCIENTIFIC_PROBLEM": "Add reply to scientific problem",
+    "USER_QUESTION": "User Question",
+    "ADD_SC_PROBLEM_TO_QUESTION_BANK": "Add scientific problem to question bank",
+    "SC_PROBLEM_ANSWER": "Answer",
+    "RESPONSE_SCIENTIFIC_PROBLEM": "Response to the scientific problem",
+    "DEPARTMENT": "Department"
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "Programs",
@@ -180,7 +182,7 @@
     "CONTACT_INFO": "Contact info",
     "CHANGE_PIC": "Change pic",
     "AMOUNT_QURAN": "The memorization amount from Qur'an",
-    "MEMORIES_QURAN": "A permission to save the Quran file",
+    "MEMORIES_QURAN": "A permission to save the Qur’an file",
     "DELETE": "Delete",
     "SHEIKHS_STUDIED": "Sheikhs I studied on",
     "CHOOSE_SHEIKHS": "Please Choose Sheikh",
@@ -247,7 +249,7 @@
     "ENTITY": "Entity",
     "ENTITY_REQUIRED": "Entity is required",
     "DURATION": "Duration of study per years",
-    "IMPROVING_QURAN_WITH_TAJWEED": "Do you have experience in improving the Quran with Tajweed?",
+    "IMPROVING_QURAN_WITH_TAJWEED": "Do you have experience in improving the Qur’an with Tajweed?",
     "YES": "Yes",
     "NO": "No",
     "EXPERIENCE_TEACHING_SUNNAH": "Do you have experience in teaching Sunnah?",
@@ -284,7 +286,7 @@
     "FROM_REQUIRED": "From Time is required",
     "TO": "To Time",
     "TO_REQUIRED": "To Time is required",
-    "AGENCY_REQUIRED": "Learn the Quran is required",
+    "AGENCY_REQUIRED": "Learn the Qur’an is required",
     "IS_HAS_QURAN_EXP_REQUIRED": "Is has qur'an experience is required",
     "IS_HAS_TEACH_SUNNA_EXP_REQUIRED": "Is has teach sunna experience is required",
     "IS_HAS_INTERNET_TEACH_EXP_REQUIRED": "Is has internet teach experience is required",
@@ -298,9 +300,10 @@
     "TEACHER_PROGRAMS_DEGREE_REQUIRED": "Degree is required",
     "ADDRESS": "Permanent residence address",
     "ADDRESS_REQUIRED": "Address is Required",
-    "EDU_NUM":"Education Number",
+    "EDU_NUM": "Education Number",
     "PHONE_NUMBER_REQUIRED": "Phone Number is Required",
-    "NATIONALITY_REQUIRED": "Nationality is Required"
+    "NATIONALITY_REQUIRED": "Nationality is Required",
+    "MEMORIES_QURAN": "A permission to save the Qur’an file"
   },
   "QUESTION_BANK": {
     "TITLE": "Question Bank",
@@ -424,7 +427,8 @@
     "GROUPNAMEENGLISH": "Group name (English)",
     "INDIVIDUALS": "Individuals",
     "EDIT": "Edit",
-    "SELECT_GROUP_MEMBERS":"Select group members"
+    "SELECT_GROUP_MEMBERS": "Select group members",
+    "SAVE": "Create"
   },
   "EXAM_FORM": {
     "TITLE": "Forms",
@@ -435,8 +439,8 @@
     "QUESTION_NUMBER": "Question Number",
     "ANSWER": "Answer",
     "ANSWERS": "Answers",
-    "DGREE": "Dgree",
-    "DURATION_ANSWER": "Duration Answer",
+    "DGREE": "Score",
+    "DURATION_ANSWER": "Answer Duration",
     "RIGHT_ANSWER": "Right Answer",
     "DURATION": "Duration",
     "ADD_QUESTION": "Add question"

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { UserRequests } from 'src/app/core/enums/user-requests.enum.enum';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { UserScientificProblemComponent } from './user-scientific-problem/user-scientific-problem.component';
@@ -39,7 +40,7 @@ export class UserRequestsViewComponent implements OnInit {
   }
 
   emitHeaderTitle() {
-    this.languageService.headerPageNameEvent.emit(this.translate.instant('QUESTION_BANK.TITLE'));
+    this.languageService.headerPageNameEvent.emit(this.translate.currentLang == LanguageEnum.ar ? 'المراسلات' : 'Messaging');
   }
 
   setSelectedCategory(event: UserRequests) {

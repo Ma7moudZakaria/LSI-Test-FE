@@ -42,7 +42,7 @@ export class InputSearchListComponent implements OnInit, OnChanges {
   ngOnInit(): void { }
 
   addUser() {
-    if (this.search != "" && this.selectedUser != '') {
+    if (this.search != "" && this.selectedUser != '' && Object.keys(this.selectedUser).length > 0 && this.selectedUser.constructor === Object) {
       this.addSearchItem.emit(this.selectedUser);
       // to delete form list Options
       let index = this.filteredOptions.indexOf(this.selectedUser);

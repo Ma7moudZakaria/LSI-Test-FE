@@ -8,13 +8,13 @@ questionNo?:number;
 text?:string;
 voiceUrl?:string;
 title?:string;
-time?:string;
-degree?:string;
+time?:number;
+degree?:number;
 questionType? :QuestionTypeEnum ;//enum
 answerType?:AnswerTypeEnum;//enum
 answers :IAnswer [];
 correctAnswersByAnswerNumbers?: number [];
-correctAnswersByAnswerNumber?: number;
+correctAnswersByAnswerNumber?: string;
 }
 
 

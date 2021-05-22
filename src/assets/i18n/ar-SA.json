@@ -36,7 +36,7 @@
     "NO": "لا",
     "LOGOUT_CONFIRM": "تسحيل الخروج",
     "LOGOUT_MESSAGE": "هل انت متاكد من تسجيل الخروج؟",
-    "ENGLISH_DISPALY_SWITCH": "إنجليزى",
+    "ARABIC_DISPALY_SWITCH": "English",
     "INVALID_PHONE_NUMBER": "رقم الجوال غير صحيح",
     "CONFIRM_PASSWORD_TO_CONTAINER": "الرقم السرى يجب أن يحتوى على الأقل على رقم واحد و حرف واحد كبير و حرف صغير وحرف خاص ",
     "PASSWORD_TO_CONTAINER": "الرقم السرى يجب أن يحتوى على الأقل على رقم واحد و حرف واحد كبير و حرف صغير وحرف خاص ",
@@ -106,21 +106,23 @@
     "Delete_Message": "هل أنت متأكد من حذف المادة؟",
     "Select_Program": "برجاء اختيار  برنامج",
     "NO_DATA": "لا يوجد بيانات",
-    "ADD_SCIENTIFIC_MATERIAL":"إضافة مادة علمية"
+    "ADD_SCIENTIFIC_MATERIAL": "إضافة مادة علمية"
   },
   "SCIENTIFIC_PROBLEM": {
     "TIME": "تاريخ الطلب",
     "TIME_QUESTION": "تاريخ السؤال",
     "QUESTION": "السؤال",
     "REPLY": "الرد",
-    "ADDLINK": "اضافه الينك",
+    "ADDLINK": "اضافه للبنك",
     "DELETE": "مسح",
     "REPLY_ANSWER": "رد",
     "SUPERVISOR_NAME": "اسم المشرف",
-    "ADD_REPLY_TO_SCIENTIFIC_PROBLEM":"الرد على الإشكال العلمى",
-    "USER_QUESTION":"سؤال للمستخدم",
-    "ADD_SC_PROBLEM_TO_QUESTION_BANK":"إضافة سؤال الى بنك الاسئلة",
-    "SC_PROBLEM_ANSWER":"الإجابة"
+    "ADD_REPLY_TO_SCIENTIFIC_PROBLEM": "الرد على الإشكال العلمى",
+    "USER_QUESTION": "سؤال للمستخدم",
+    "ADD_SC_PROBLEM_TO_QUESTION_BANK": "إضافة سؤال الى بنك الاسئلة",
+    "SC_PROBLEM_ANSWER": "الإجابة",
+    "RESPONSE_SCIENTIFIC_PROBLEM": "رد على الإشكال العلمي",
+    "DEPARTMENT": "القسم "
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "البرامج",
@@ -299,9 +301,10 @@
     "TEACHER_PROGRAMS_DEGREE_REQUIRED": "الدرجة مطلوب",
     "ADDRESS": "عنوان الإقامة الدائم",
     "ADDRESS_REQUIRED": "العنوان مطلوب",
-    "EDU_NUM":"مدة الدراسة",
+    "EDU_NUM": "مدة الدراسة",
     "PHONE_NUMBER_REQUIRED": "رقم الهاتف مطلوب",
-    "NATIONALITY_REQUIRED": "الجنسية مطلوبة"
+    "NATIONALITY_REQUIRED": "الجنسية مطلوبة",
+    "MEMORIES_QURAN": "اجازة حفظ القران"
   },
   "QUESTION_BANK": {
     "TITLE": "بنك الأسئلة",
@@ -421,7 +424,8 @@
     "GROUPNAMEENGLISH": "اسم المجموعة (انجليزي)",
     "INDIVIDUALS": "الافراد",
     "EDIT": "تعديل",
-    "SELECT_GROUP_MEMBERS":"اختر أعضاء المجموعة"
+    "SELECT_GROUP_MEMBERS": "اختر أعضاء المجموعة",
+    "SAVE": "إنشاء"
   },
   "EXAM_FORM": {
     "TITLE": "النماذج",

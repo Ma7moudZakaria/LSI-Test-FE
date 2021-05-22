@@ -3,7 +3,8 @@
     <div class="row">
       <div class="col-md-4">
         <div class="img">
-          <img width="100%" src="assets/images/roleManagement/ASH_90.png" alt="" srcset="" />
+          <img *ngIf='!userData?.usrAvatarUrl' width="100%" src="assets/images/roleManagement/ASH_90.png" alt="" srcset="" />
+          <img *ngIf='userData?.usrAvatarUrl' width="100%" [src]="userData?.usrAvatarUrl" alt="" srcset="" />
         </div>
       </div>
       <div class="col-md-8">

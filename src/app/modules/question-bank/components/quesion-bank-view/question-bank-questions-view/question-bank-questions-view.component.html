@@ -75,7 +75,7 @@
     </section>
 
     <section class="internal_scroll_list_group" *ngIf="!isView">
-        <div class="w-100 row contanier_matrial-card questionBank">
+        <div class="w-100 row contanier_matrial-card questionBank student">
             <div class="col-lg-12 mb-3">
                 <mat-accordion>
                     <mat-expansion-panel  *ngFor="let QBQ of questionBankQuestionList; let i = index;"
@@ -88,12 +88,7 @@
                                         {{this.translate.currentLang===langEnum.en?QBQ.engQuestion:QBQ.arabQuestion}}
                                     </span> 
                                 </div>
-                                <div class="col-.5  chicx_box">
-                                    <label class="switch">
-                                        <input type="checkbox"  [(ngModel)]="QBQ.isActive" disabled>
-                                        <span class="slider round"></span>
-                                      </label>
-                              </div>
+                              
                             </mat-panel-title>
                         </mat-expansion-panel-header>
                         <p class="p_answer">{{this.translate.currentLang===langEnum.en?QBQ.engAnswer:QBQ.arabAnswer}}</p>

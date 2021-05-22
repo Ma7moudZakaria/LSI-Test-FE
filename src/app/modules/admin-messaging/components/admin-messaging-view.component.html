@@ -21,3 +21,5 @@
         <app-add-scientifi-problem-to-question-bank (closeAddScProblemToQuestionBankView)='showAddScProbToQuestionBankView($event)' [scProbObjForAddToQuestionBankView]='scProbObjForAddToQuestionBankView'></app-add-scientifi-problem-to-question-bank>
     </div>
 </div>
+
+<div class="showoverlay" (click)="closeOverlay()" [ngClass]="{'disableBlock': showAddReplyOverlay || showAddScProbToQuestionBankOverlay}"></div>

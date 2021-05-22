@@ -46,7 +46,9 @@
 
             <mat-list *ngIf="dataEdit.id==''">
                 <mat-list-item *ngFor="let SelectedUser of listSelectedUser">
-                    <img mat-list-icon src="assets/images/roleManagement/ASH_90.png" alt="">
+                    <!-- <img mat-list-icon src="assets/images/roleManagement/ASH_90.png" alt=""> -->
+                    <img mat-list-icon *ngIf='!SelectedUser?.usrAvatarUrl' src="assets/images/roleManagement/ASH_90.png" alt=""/>
+                    <img mat-list-icon *ngIf='SelectedUser?.usrAvatarUrl' [src]="SelectedUser?.usrAvatarUrl" alt="" />
                     <div mat-line>{{ translate.currentLang === langEnum.en
                         ? SelectedUser.enUsrName : SelectedUser.arUsrName}}</div>
                     <div mat-line> {{SelectedUser.loginTime | date}} </div>
@@ -67,7 +69,7 @@
             </div>
             <div class="col-md-6" *ngIf="dataEdit.id==''">
                 <button (click)="saveData()" class="save-btn">
-                    {{ "QUESTION_BANK.SAVE" | translate }}
+                    {{ "Role_Management.SAVE" | translate }}
                 </button>
             </div>
             <div class="col-md-6">

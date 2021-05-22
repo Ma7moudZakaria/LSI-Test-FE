@@ -22,15 +22,15 @@ export class AddScientifiProblemToQuestionBankComponent implements OnInit {
 
   @Output() closeAddScProblemToQuestionBankView = new EventEmitter<IScientificProblemGridItems>();
 
-  @Input() scProbObjForAddToQuestionBankView : IScientificProblemGridItems = {}
+  @Input() scProbObjForAddToQuestionBankView: IScientificProblemGridItems = {}
 
-  resultMessage:BaseMessageModel = {};
-  questionBankCategoryFilter:IQuestionBankCategoriesFilter = {skip:0, take:2147483647};
+  resultMessage: BaseMessageModel = {};
+  questionBankCategoryFilter: IQuestionBankCategoriesFilter = { skip: 0, take: 2147483647 };
   questionBankCategoryList: IQuestionBankCategoriesModel[] = [];
-  selectedCategory : IQuestionBankCategoriesModel | undefined;
+  selectedCategory: IQuestionBankCategoriesModel | undefined;
   langEnum = LanguageEnum
-  
-  constructor(public translate:TranslateService,
+
+  constructor(public translate: TranslateService,
     private questionBankService: QuestionBankQuestionService,
     private questionBankCategoryService: QuestionBankCategoryService,
     private alertify: AlertifyService) { }
@@ -39,53 +39,62 @@ export class AddScientifiProblemToQuestionBankComponent implements OnInit {
     this.getQuestionBankCategories();
   }
 
-  closeAddScProblemToQuestionBankEvent(){
+  closeAddScProblemToQuestionBankEvent() {
     this.closeAddScProblemToQuestionBankView.emit();
   }
 
-  getQuestionBankCategories(){
+  getQuestionBankCategories() {
     this.questionBankCategoryService.getQuestionBankCategoriesFilter(this.questionBankCategoryFilter).subscribe(res => {
-      if (res.isSuccess){
+      if (res.isSuccess) {
         this.questionBankCategoryList = res.data;
       }
-      else{
-        this.resultMessage ={
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
-      }
-    },error=>{
-      this.resultMessage ={
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
-      }
-    })
-  }
-
-  saveScProblemToQuestionBank(){
-    let model : IAddScProbToQuestionBank = {
-      id : this.scProbObjForAddToQuestionBankView.id,
-      question:this.scProbObjForAddToQuestionBankView?.questText,
-      reply: this.scProbObjForAddToQuestionBankView?.repText,
-      catId: this.selectedCategory?.id
-    };
-    this.questionBankService.moveScProbToQuestionBank(model).subscribe(res => {
-      if (res.isSuccess){
-        this.alertify.success(res.message || '');
-        this.closeAddScProblemToQuestionBankView.emit();
-      }
-      else{
-        this.resultMessage ={
+      else {
+        this.resultMessage = {
           message: res.message,
           type: BaseConstantModel.DANGER_TYPE
         }
       }
     }, error => {
-      this.resultMessage ={
+      this.resultMessage = {
         message: error,
         type: BaseConstantModel.DANGER_TYPE
       }
     })
+  }
+
+  saveScProblemToQuestionBank() {
+    let model: IAddScProbToQuestionBank = {
+      id: this.scProbObjForAddToQuestionBankView.id,
+      question: this.scProbObjForAddToQuestionBankView?.questText,
+      reply: this.scProbObjForAddToQuestionBankView?.repText,
+      catId: this.selectedCategory?.id
+    };
+
+    if (model.catId) {
+      this.questionBankService.moveScProbToQuestionBank(model).subscribe(res => {
+        if (res.isSuccess) {
+          this.alertify.success(res.message || '');
+          this.closeAddScProblemToQuestionBankView.emit();
+        }
+        else {
+          this.resultMessage = {
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
+          }
+        }
+      }, error => {
+        this.resultMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      })
+    }
+    else {
+      this.resultMessage = {
+        message: this.translate.instant('dfgdfg'),
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    }
   }
 
 }

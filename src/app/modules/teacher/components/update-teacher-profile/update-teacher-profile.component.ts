@@ -61,7 +61,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
   isSubmit = false;
   hijri: boolean = false;
   milady: boolean = false;
-  higriPinding: any;
+  hijriBinding: any;
   hijriBirthDateInputParam:NgbDateStruct= {year:0,day:0,month:0};
 
   ProgramsList: IprogramsModel[] = []; ;
@@ -80,7 +80,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
   selectedTeacherProgramsList = Array<ITeacherProfileProgramDegreeLookup>();
 
   fileUploadModel: IFileUpload[] = [];
-  fileList: IAttachment[] = [];
+  fileList?: IAttachment[] = [];
   ejazaAttachmentIds: string[] = [];
 
   event = {
@@ -92,7 +92,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
     private lookupService: LookupService,
     private teacherService: TeacherProfileService,
     private userProfilePicService: UserService,
-    private userService: UserService,
+    public userService: UserService,
     private attachmentService: AttachmentsService,
     public translate: TranslateService, 
     private ProgramService: ProgramService,
@@ -126,38 +126,38 @@ export class UpdateTeacherProfileComponent implements OnInit {
   }
 
   unsavedDataCheck() : boolean{
-    return this.profileForm.value.firstNameAr != this.teacherProfileDetails?.fnameAr
+    return this.profileForm.value.firstAr != this.teacherProfileDetails?.fnameAr
     || this.profileForm.value.firstNameEn != this.teacherProfileDetails?.faNameEn
-    || this.profileForm.value.middleNameAr != this.teacherProfileDetails?.mnameAr
+    || this.profileForm.value.middleAr != this.teacherProfileDetails?.mnameAr
     || this.profileForm.value.middleNameEn != this.teacherProfileDetails?.mnameEn
-    || this.profileForm.value. familyNameAr!= this.teacherProfileDetails?.fanameAr
+    || this.profileForm.value. familyAr!= this.teacherProfileDetails?.fanameAr
     || this.profileForm.value. familyNameEn!= this.teacherProfileDetails?.faNameEn
     || this.profileForm.value.nationality != this.teacherProfileDetails?.nationality
-    || this.profileForm.value.birthdate != this.teacherProfileDetails?.hijriBirthDate
+   // || this.profileForm.value.hijriBirthDate != this.teacherProfileDetails?.hijriBirthDate
     || this.profileForm.value.gender != this.teacherProfileDetails?.gender
-    || this.profileForm.value.phoneNumber!= this.teacherProfileDetails?.mobile
+    || this.profileForm.value.mobile!= this.teacherProfileDetails?.mobile
     || this.profileForm.value.country!= this.teacherProfileDetails?.country
     || this.profileForm.value.city!= this.teacherProfileDetails?.city
     || this.profileForm.value.nationality!= this.teacherProfileDetails?.nationality
-    || this.profileForm.value.educationallevel!= this.teacherProfileDetails?.eduLevel
+    || this.profileForm.value.edulevel!= this.teacherProfileDetails?.eduLevel
     || this.profileForm.value.qualifi!= this.teacherProfileDetails?.qualifi
     || this.profileForm.value.specia!= this.teacherProfileDetails?.specia
     || this.profileForm.value.eduDate!= this.teacherProfileDetails?.eduDate
     || this.profileForm.value.eduNum != this.teacherProfileDetails?.eduNum
-    || this.profileForm.value.isHasQuranExp!= this.teacherProfileDetails?.isHasQuranExp
-    || this.profileForm.value.isHasTeachSunnaExp!= this.teacherProfileDetails?.isHasTeachSunnaExp
-    || this.profileForm.value.isHasInternetTeachExp!= this.teacherProfileDetails?.isHasInternetTeachExp
-    || this.profileForm.value.isHasTeachForeignerExp!= this.teacherProfileDetails?.isHasTeachForeignerExp
-    || this.profileForm.value.isHasEjazaHafz!= this.teacherProfileDetails?.isHasEjazaHafz
+    || this.profileForm.value.isHasQuranExp!= this.teacherProfileDetails?.isHasQuranExp?.toString()
+    || this.profileForm.value.isHasTeachSunnaExp!= this.teacherProfileDetails?.isHasTeachSunnaExp?.toString()
+    || this.profileForm.value.isHasInternetTeachExp!= this.teacherProfileDetails?.isHasInternetTeachExp?.toString()
+    || this.profileForm.value.isHasTeachForeignerExp!= this.teacherProfileDetails?.isHasTeachForeignerExp?.toString()
+    || this.profileForm.value.isHasEjazaHafz!= this.teacherProfileDetails?.isHasEjazaHafz?.toString()
     || this.profileForm.value.workingPlatForm!= this.teacherProfileDetails?.workingPlatForm
-    || this.profileForm.value.isHasEjazaTelawa!= this.teacherProfileDetails?.isHasEjazaTelawa
+    || this.profileForm.value.isHasEjazaTelawa!= this.teacherProfileDetails?.isHasEjazaTelawa?.toString()
     || this.profileForm.value.bankName!= this.teacherProfileDetails?.bankName
     || this.profileForm.value.agency!= this.teacherProfileDetails?.agency
     || this.profileForm.value.address!= this.teacherProfileDetails?.address
     || this.profileForm.value.bankNumber!= this.teacherProfileDetails?.bankNumber
-    || this.profileForm.value.address!= this.teacherProfileDetails?.address
-    || this.profileForm.value.ejazaAttachmentIds!= this.teacherProfileDetails?.ejazaAttachments
+//    || this.profileForm.value.ejazaAttachmentIds!= this.teacherProfileDetails?.ejazaAttachments
   }
+  
   setCurrentLang() {
     this.emitHeaderTitle();
     this.languageService.currentLanguageEvent.subscribe(res => {
@@ -360,26 +360,10 @@ export class UpdateTeacherProfileComponent implements OnInit {
       this.f.middleEn.setValue(this.teacherProfileDetails?.mnameEn);
       this.f.familyEn.setValue(this.teacherProfileDetails?.faNameEn);
     }
-    // this.f.hijriBirthDate.setValue(this.teacherProfileDetails?.hijriBirthDate)
-    // let birthdate = new Date(this.teacherProfileDetails?.hijriBirthDate || '');
-    // if (!isNaN(birthdate.getTime())) {
-    //   this.f.hijriBirthDate.setValue(
-    //     new Date(birthdate.setDate(birthdate.getDate() + 1))
-    //       .toISOString()
-    //       .slice(0, 10)
-    //   );
-    // }
-
-
     let date = new Date(this.teacherProfileDetails?.hijriBirthDate || '');
-    // date = date.year + '/' + date.month + '/' + date.day;
-
     this.hijriBirthDateInputParam = {year : date.getFullYear(), month : date.getMonth() + 1, day:date.getDay()}
     this.f.hijriBirthDate.setValue(date);
-    // this.Hijri(this.hijriBirthDateInputParam);
 
-
-    this.f.email.setValue(this.teacherProfileDetails?.usrEmail)
     this.f.nationality.setValue(this.teacherProfileDetails?.nationality)
     this.f.country.setValue(this.teacherProfileDetails?.country)
     this.f.address.setValue(this.teacherProfileDetails?.address)
@@ -407,10 +391,10 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.f.bankName.setValue(this.teacherProfileDetails?.bankName)
     this.f.bankNumber.setValue(this.teacherProfileDetails?.bankNumber)
 
-    // this.fileList = this.teacherProfileDetails?.ejazaAttachments;
-    // this.teacherProfileDetails?.ejazaAttachments.forEach(element => {
-    //   this.ejazaAttachmentIds.push(element.id);
-    // });
+    this.fileList = this.teacherProfileDetails?.ejazaAttachments;
+    this.teacherProfileDetails?.ejazaAttachments?.forEach(element => {
+      this.ejazaAttachmentIds.push(element.id);
+    });
 
     if (this.teacherProfileDetails?.rewayats) {
       this.selectedRewayatsList = this.teacherProfileDetails?.rewayats;
@@ -488,6 +472,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
         workingPlatForm: this.profileForm.value.workingPlatForm,
         entity: this.profileForm.value.entity,
         eduDate: this.profileForm.value.eduDate,
+        eduNum: this.profileForm.value.eduNum,
         isHasQuranExp: this.profileForm.value.isHasQuranExp,
         isHasTeachSunnaExp: this.profileForm.value.isHasTeachSunnaExp,
         isHasInternetTeachExp: this.profileForm.value.isHasInternetTeachExp,
@@ -727,7 +712,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
   Hijri(date: any) {
     date = date.year + '/' + date.month + '/' + date.day;
     console.log("Hijri date", date)
-    this.higriPinding = date
+    this.hijriBinding = date
 
     this.f.hijriBirthDate.setValue(date);
   }
@@ -759,7 +744,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
   }
 
   DeleteAttachment(index: number, id: string) {
-    this.fileList.splice(index, 1);
+    this.fileList?.splice(index, 1);
     this.ejazaAttachmentIds = this.ejazaAttachmentIds.filter(a => a !== id);
   }
 
@@ -771,7 +756,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           file: element
 
         }
-        this.fileUploadModel.push(fileUploadObj)
+        this.fileUploadModel?.push(fileUploadObj)
       });
       this.UploadFiles(this.fileUploadModel);
     }
@@ -786,7 +771,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
       (res: any) => {
         Array.from(res.data).forEach((elm: any) => {
           this.ejazaAttachmentIds.push(elm.id);
-          this.fileList.push(elm);
+          this.fileList?.push(elm);
 
         })
         this.fileUploadModel = [];

@@ -25,24 +25,24 @@ export class ScientificProblemsGridComponent implements OnInit {
   @Output() deleteListOfScProblems = new EventEmitter<string>();
 
   @Input() userMode: ScientificProblemUsersEnum = ScientificProblemUsersEnum.Student;
-  @Input() adminFilterRequestModel : IScientificProblemFilter = {skip : 0, take: 0};
-  @Input() userFilterRequestModel : IUserScientificProblemFilter = {skip : 0, take: 0};
+  @Input() adminFilterRequestModel: IScientificProblemFilter = { skip: 0, take: 0, page :1 };
+  @Input() userFilterRequestModel: IUserScientificProblemFilter = { skip: 0, take: 0, page:1 };
   @Input() numberPerRow: number = 3; //default is 3 for student
   @Input() items: IScientificProblem[] = []
   @Input() adminItems: IScientificProblemGridItems[] = []
-  @Input() totalCount: number= 0;
-  
+  @Input() totalCount: number = 0;
+
   orderTypeToggel = 1;
   userOrderTypeToggel = true;
   allSelected: boolean = false;
 
-  scientificProblemUsers = ScientificProblemUsersEnum 
-  page = 1
+  scientificProblemUsers = ScientificProblemUsersEnum
+   page = 1
 
 
-  constructor(public translate:TranslateService, 
-    private languageService:LanguageService,
-    private exportationService : ExportationService) { }
+  constructor(public translate: TranslateService,
+    private languageService: LanguageService,
+    private exportationService: ExportationService) { }
 
   ngOnInit(): void {
     this.setCurrentLang();
@@ -54,74 +54,75 @@ export class ScientificProblemsGridComponent implements OnInit {
     });
   }
 
-  updateLocalizatoinProps(){
+  updateLocalizatoinProps() {
     this.adminFilterRequestModel.sorField = this.translate.currentLang === LanguageEnum.ar ? 'studfullnamear' : 'studfullnameen';
   }
 
-  onAdminPageChange(){
-    this.adminFilterRequestModel.skip = (this.page - 1) * this.adminFilterRequestModel.take; 
+  onAdminPageChange() {
+    this.adminFilterRequestModel.skip = (this.adminFilterRequestModel.page - 1) * this.adminFilterRequestModel.take;
     this.adminFilterEvent.emit(this.adminFilterRequestModel);
+    this.setAllChecked(false);
   }
 
-  onUserPageChange(){
-    this.userFilterRequestModel.skip = (this.page - 1) * this.userFilterRequestModel.take; 
+  onUserPageChange() {
+    this.userFilterRequestModel.skip = (this.userFilterRequestModel.page - 1) * this.userFilterRequestModel.take;
     this.userFilterEvent.emit(this.userFilterRequestModel);
   }
 
-  sortByName(){
+  sortByName() {
     this.adminFilterRequestModel.sorField = this.translate.currentLang === LanguageEnum.ar ? 'studfullnamear' : 'studfullnameen';
     this.adminFilterRequestModel.ordType = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
     this.adminFilterEvent.emit(this.adminFilterRequestModel);
   }
 
-  sortByCreatedOn(){
+  sortByCreatedOn() {
     this.adminFilterRequestModel.sorField = 'createdon';
     this.adminFilterRequestModel.ordType = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
     this.adminFilterEvent.emit(this.adminFilterRequestModel);
   }
 
-  sortByNameOrderType(){
-    if ((this.adminFilterRequestModel.sorField === "studfullnamear" || this.adminFilterRequestModel.sorField === "studfullnameen") && this.adminFilterRequestModel.ordType == 1) {return 'asend'}
-    if ((this.adminFilterRequestModel.sorField === "studfullnamear" || this.adminFilterRequestModel.sorField === "studfullnameen") &&  this.adminFilterRequestModel.ordType == -1) {return 'desend'}
+  sortByNameOrderType() {
+    if ((this.adminFilterRequestModel.sorField === "studfullnamear" || this.adminFilterRequestModel.sorField === "studfullnameen") && this.adminFilterRequestModel.ordType == 1) { return 'asend' }
+    if ((this.adminFilterRequestModel.sorField === "studfullnamear" || this.adminFilterRequestModel.sorField === "studfullnameen") && this.adminFilterRequestModel.ordType == -1) { return 'desend' }
 
     return '';
   }
 
-  sortByCreatedOnOrderType(){
-    if (this.adminFilterRequestModel.sorField === "createdon" && this.adminFilterRequestModel.ordType == 1) {return 'asend'}
-    if (this.adminFilterRequestModel.sorField === "createdon" && this.adminFilterRequestModel.ordType == -1) {return 'desend'}
+  sortByCreatedOnOrderType() {
+    if (this.adminFilterRequestModel.sorField === "createdon" && this.adminFilterRequestModel.ordType == 1) { return 'asend' }
+    if (this.adminFilterRequestModel.sorField === "createdon" && this.adminFilterRequestModel.ordType == -1) { return 'desend' }
 
     return '';
   }
 
   /**user */
-  userSortByCreatedOn(){
+  userSortByCreatedOn() {
     this.userFilterRequestModel.oType = this.userOrderTypeToggel = this.userOrderTypeToggel ? false : true;
     this.userFilterEvent.emit(this.userFilterRequestModel);
   }
 
-  userSortByCreatedOnOrderType(){
-    if (this.userFilterRequestModel.oType) {return true}
-    else {return false}
+  userSortByCreatedOnOrderType() {
+    if (this.userFilterRequestModel.oType) { return true }
+    else { return false }
   }
 
-  deleteScientificProblem(id:string){
+  deleteScientificProblem(id: string) {
     this.deleteUserScProb.emit(id);
   }
 
-  addReplyToScProbGr(event:IScientificProblemGridItems){
+  addReplyToScProbGr(event: IScientificProblemGridItems) {
     this.addReplyToScProb.emit(event);
   }
 
-  saveScProbToQuestionBankGr(event:IScientificProblemGridItems){
+  saveScProbToQuestionBankGr(event: IScientificProblemGridItems) {
     this.saveScProbToQuestionBank.emit(event);
   }
 
-  deleteScProblemsByIds(){
+  deleteScProblemsByIds() {
     this.deleteListOfScProblems.emit();
   }
 
-  exportScProblems(){
+  exportScProblems() {
 
   }
 
@@ -129,7 +130,10 @@ export class ScientificProblemsGridComponent implements OnInit {
    *select all 
    */
 
-   updateAllItemsChecked() {
+  enableSelectOperations(): boolean {
+    return this.adminItems.filter(t => t.checked).length > 0 || this.allSelected;
+  }
+  updateAllItemsChecked() {
     this.allSelected = this.adminItems != null && this.adminItems.every(t => t.checked);
   }
 
@@ -152,7 +156,7 @@ export class ScientificProblemsGridComponent implements OnInit {
   * exportation
   */
 
-  exportScProblemsCSV(){
+  exportScProblemsCSV() {
     let expItems = this.adminItems.filter(a => a.checked);
     let headerLabels = this.translate.currentLang == 'en-US' ?
       ['Serial', 'Question', 'Reply', 'Student English Name', 'Student Arabic Name', 'Admin English Name', 'Admin Arabic Name'] :
@@ -164,7 +168,7 @@ export class ScientificProblemsGridComponent implements OnInit {
         'اسم المشرف عربى',
         'اسم المشرف إنجليزى'];
 
-    let data = ['scNo','questText','repText','studNameEn', 'studNameAr', 'adNameEn', 'adNameAr'];
+    let data = ['scNo', 'questText', 'repText', 'studNameEn', 'studNameAr', 'adNameEn', 'adNameAr'];
     this.exportationService.exportCSV(expItems, 'Scientific Problems', data, headerLabels);
   }
 }
