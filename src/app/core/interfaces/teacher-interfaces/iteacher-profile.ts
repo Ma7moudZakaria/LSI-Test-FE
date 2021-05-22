@@ -52,9 +52,10 @@ export interface ITeacherProfile{
     workingPlatForm?:string;
     workingPlatFormAr?:string;
     workingPlatFormEn?:string;
-    // degree?:string;
-    // degreeAr?:string;
-    // degreeEn?:string;
+    interviewId?:string;
+    interviewAr?:string;
+    interviewEn?:string;
+    fromTime?:string;
     bankName?:string;
     bankNumber?:string;
     usrName?:string;

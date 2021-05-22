@@ -265,8 +265,11 @@ export class UpdateTeacherProfileComponent implements OnInit {
           teacherPrograms: [],
           teacherProgramDegrees: [],
           interviewDays: [],
+          interviewTimes: [],
           fromTimeinterview: [],
-          toTimeinterview: [],
+
+          fromDayTimeinterview: [],
+          toDayTimeinterview: [],
           rewayats: [],
           languages: [],
         }
@@ -306,8 +309,11 @@ export class UpdateTeacherProfileComponent implements OnInit {
           teacherPrograms: [],
           teacherProgramDegrees: [],
           interviewDays: [],
+          interviewTimes: [],
           fromTimeinterview: [],
-          toTimeinterview: [],
+
+          fromDayTimeinterview: [],
+          toDayTimeinterview: [],
           rewayats: [],
           languages: [],
         }
@@ -390,6 +396,9 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.f.workingPlatForm.setValue(this.teacherProfileDetails?.workingPlatForm)
     this.f.bankName.setValue(this.teacherProfileDetails?.bankName)
     this.f.bankNumber.setValue(this.teacherProfileDetails?.bankNumber)
+
+    this.f.interviewTimes.setValue(this.teacherProfileDetails?.interviewId)
+    this.f.fromTimeinterview.setValue(this.teacherProfileDetails?.fromTime)
 
     this.fileList = this.teacherProfileDetails?.ejazaAttachments;
     this.teacherProfileDetails?.ejazaAttachments?.forEach(element => {
@@ -482,6 +491,10 @@ export class UpdateTeacherProfileComponent implements OnInit {
         agency: this.profileForm.value.agency,
         bankName: this.profileForm.value.bankName,
         bankNumber: this.profileForm.value.bankNumber,
+
+        interviewId: this.profileForm.value.interviewTimes,
+        fromTime: this.profileForm.value.fromTimeinterview,
+
         address:this.profileForm.value.address,
         ejazaAttachments: this.ejazaAttachmentIds,
       }
@@ -634,8 +647,8 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.interviewDaysMessage = {};
 
     const existInterviewDays = this.selectedInterviewDaysList.some(el => el.id === this.profileForm.value.interviewDays)
-    const existFromTime = this.profileForm.value.fromTimeinterview;
-    const existtoTime = this.profileForm.value.toTimeinterview;
+    const existFromTime = this.profileForm.value.fromDayTimeinterview;
+    const existtoTime = this.profileForm.value.toDayTimeinterview;
     if (!existInterviewDays && existFromTime != null && existtoTime != null ) {
       if (this.collectionOfLookup.INTERVIEW_DAY ) {
         this.interviewDaysModel = {
@@ -644,8 +657,8 @@ export class UpdateTeacherProfileComponent implements OnInit {
           nameAr:this.collectionOfLookup.INTERVIEW_DAY.filter(el => el.id == this.profileForm.value.interviewDays)[0].nameAr,
           nameEn:this.collectionOfLookup.INTERVIEW_DAY.filter(el => el.id == this.profileForm.value.interviewDays)[0].nameEn,
           
-          fromTime:this.profileForm.value.fromTimeinterview,
-          toTime:this.profileForm.value.toTimeinterview
+          fromTime:this.profileForm.value.fromDayTimeinterview,
+          toTime:this.profileForm.value.toDayTimeinterview
         }
 
         this.selectedInterviewDaysList.push(this.interviewDaysModel);
