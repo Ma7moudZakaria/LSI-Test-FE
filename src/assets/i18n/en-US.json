@@ -52,7 +52,7 @@
     "ADD_QUESTION": "Add Question",
     "ADD_ANSWE": "Add Answer",
     "NOT_AUTHORIZED": "YOU ARE NOT AUTHORIZED",
-    "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE": "Please complete the missing information and review duplicate data"
+    "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE": "Please complete the missing information, add more than one answer and review duplicate data"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
