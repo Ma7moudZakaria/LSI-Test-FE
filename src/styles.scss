@@ -741,10 +741,11 @@ display: none;
 }
 }
 /******************
-check box for card-admin-scientific-problem
+ custom check box for card-admin-scientific-problem
 /***********************/
 
-.card-admin-scientific-problem {
+.card-admin-scientific-problem 
+ {
     .mat-checkbox-layout{
       margin-bottom: 0 !important;
     }
@@ -756,6 +757,37 @@ check box for card-admin-scientific-problem
   // background-color: #8E2520;
 
  }
+ .mat-checkbox-checkmark-path {
+  stroke: #a51313 !important;
+}
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, 
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: white;
+}
+
+}
+ .scientific-problem-grid {
+  .mat-checkbox-checkmark-path {
+    stroke: white;
+  }
+  .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, 
+  .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background-color:   #a51313 !important;
+  }
+}
+// calender
+
+
+
+ngb-datepicker-navigation-select>.custom-select {
+width: 100px;
+padding: 0px 1.5rem 0 0 !important
+}
+
+
+ngb-datepicker-month {
+  display: block;
+  width: 264px !important
 }
 
 .link_Add{

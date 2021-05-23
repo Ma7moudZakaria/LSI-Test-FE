@@ -122,7 +122,9 @@
     "ADD_SC_PROBLEM_TO_QUESTION_BANK": "إضافة سؤال الى بنك الاسئلة",
     "SC_PROBLEM_ANSWER": "الإجابة",
     "RESPONSE_SCIENTIFIC_PROBLEM": "رد على الإشكال العلمي",
-    "DEPARTMENT": "القسم "
+    "DEPARTMENT": "القسم ",
+    "ENTER_REPLAY": "من فضلك ادخل الرد ",
+    "SELECT_DEPATMENT": "من فضلك اختار القسم"
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "البرامج",
@@ -337,7 +339,8 @@
     "QUESTION_EN_MAX_LENGHT": "يرجى ادخال السؤال إنجليزي أقل من أو يساوى 50 حرفا",
     "ANSWER_AR_MAX_LENGHT": "يرجى ادخال الإجابة عربي أقل من أو يساوى 500 حرفا",
     "ANSWER_EN_MAX_LENGHT": "يرجى ادخال الإجابةإنجليزي أقل من أو يساوى 500 حرفا",
-    "ADD_SCIENTIFIC_PROBLEM": "اضافة اشكال علمي"
+    "ADD_SCIENTIFIC_PROBLEM": "اضافة اشكال علمي",
+    "SCIENTIFIC_PROBLEM": "إشكال علمي"
   },
   "SIDENAVBAR": {
     "DASHBORD": "لوحة التحكم",

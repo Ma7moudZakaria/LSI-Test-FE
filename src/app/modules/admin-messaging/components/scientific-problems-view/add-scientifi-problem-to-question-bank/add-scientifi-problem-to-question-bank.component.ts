@@ -91,7 +91,7 @@ export class AddScientifiProblemToQuestionBankComponent implements OnInit {
     }
     else {
       this.resultMessage = {
-        message: this.translate.instant('dfgdfg'),
+        message: this.translate.instant('SCIENTIFIC_PROBLEM.SELECT_DEPATMENT'),
         type: BaseConstantModel.DANGER_TYPE
       }
     }
