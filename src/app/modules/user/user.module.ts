@@ -9,6 +9,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [UpdateUserProfileComponent, ViewUserProfileDetailsComponent],
@@ -16,10 +17,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
-    CommonModule,
     FormsModule,
     TranslateModule,
-    SharedModule, MatTooltipModule
+    SharedModule, MatTooltipModule,NgbRatingModule
   ], providers: [MatTooltipModule],
   exports: [ViewUserProfileDetailsComponent]
 })

@@ -151,10 +151,18 @@ export class ContentManagementSystemComponent implements OnInit {
           }
         }
         else {
-          this.errorMessage = res.message;
+          // this.errorMessage = response.message;
+          this.resultMessage ={
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
+          }
         }
-      }, error => {
-        console.log(error);
+      },
+      error => {
+        this.resultMessage ={
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       })
     }
 
@@ -192,13 +200,13 @@ export class ContentManagementSystemComponent implements OnInit {
         }
 
       },
-        error => {
-          this.resultMessage = {
-            message: error,
-            type: BaseConstantModel.DANGER_TYPE
-          }
-        })
-    }
+      error => {
+        this.resultMessage ={
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      })
+      }
 
   }
   reset() {

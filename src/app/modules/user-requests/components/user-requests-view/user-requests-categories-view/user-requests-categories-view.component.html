@@ -1,0 +1,24 @@
+
+ 
+  
+<div class="list-group list-category">      
+    <div class="d-flex justify-content-between">
+        <p class="mb-4 p_header">{{'User_Requests.REQUESTS' | translate}}</p>
+    </div>
+
+    <div class="internal_scroll_list_group ">
+        <a class="list-group-item d-flex" *ngFor="let item  of userRequestsCategoryList ; let i=index;" 
+        [class.active]="selectedIndex === i" 
+        (click)="loadUserRequests(item);selectedIndex=i">
+        
+            <p class="ellipsis mb-0 question-categories" matTooltip="{{translate.currentLang===langEnum.en?item.nameEn:item.nameAr}}">{{translate.currentLang===langEnum.en?item.nameEn:item.nameAr}}</p>
+            
+        </a>
+
+        <div class="d-flex">
+            <label  class="no-data" *ngIf="userRequestsCategoryList.length===0">
+                {{"User_Requests.NO_DATA"|translate}} 
+            </label>
+        </div>
+    </div>
+</div>

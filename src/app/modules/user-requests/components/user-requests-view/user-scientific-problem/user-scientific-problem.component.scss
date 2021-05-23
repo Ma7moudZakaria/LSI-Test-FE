@@ -1,0 +1,58 @@
+@import 'src/assets/scss/_variables.scss';
+@import 'src/assets/scss/_buttons.scss';
+
+.header_sc{
+  font-size: 20px;
+  color: #3A3A3A;
+}
+.text-left{
+&:lang(en)
+{text-align: left;}
+&:lang(ar){
+  text-align: right;
+}
+}
+.scientific-problem{
+  background: #FBFBFB;
+  border-radius: 19px;
+  opacity: 1;
+  padding: 1rem;
+  height: 100%;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+.internal_scroll_list_group{
+   height: 555px;
+    overflow-y: auto;
+    padding-left: 0.5rem;
+    overflow-x: hidden;
+    padding-top: 0.7rem;
+}
+.link_Add{
+    color:$icon_input;
+    margin-bottom: 3rem;
+  } 
+
+  .add_question:lang(ar){
+    text-align: right;
+  }
+
+  .Catogry_Icon_Add{
+    align-self: center;  
+    margin-right: 0.3rem;
+    margin-left: 0.3rem;
+   }
+
+
+@media (min-width: 992px){
+    .offset-cu-21 {
+        margin-left: 21%;
+      margin-right: 0;
+    
+    }
+    .offset-cu-21:lang(ar) {
+      margin-right: 21%;
+      margin-left: 0;
+    
+    }
+    }

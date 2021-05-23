@@ -66,6 +66,8 @@ export class RegisterComponent implements OnInit {
 
   onSignup(value: string) {
     this.isSubmit = true;
+    this.resMessage = {};
+
     if (this.registerform.valid && this.roleType !== "" && this.roleType !== undefined) {
       localStorage.clear();
 
@@ -106,9 +108,11 @@ export class RegisterComponent implements OnInit {
       }
     }
   }
+
   togglePassword() {
     this.hidePassword  = !this.hidePassword ;
   }
+  
   togglePasswordConfirm() {
     this.hidePasswordConfirm  = !this.hidePasswordConfirm ;
   }

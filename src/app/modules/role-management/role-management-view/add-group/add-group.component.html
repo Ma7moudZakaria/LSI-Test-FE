@@ -1,0 +1,82 @@
+<div class="col-md-12">
+    <p class="title_add">
+        {{ "Role_Management.CREATENEWGROUP" | translate }}
+    </p>
+    <div class="col-md-10 mx-auto">
+        <form class="DataForm" [formGroup]="DataForm">
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="label">{{
+                    "Role_Management.GROUPNAMEARABIC" | translate
+                    }}</label>
+
+                <input type="text" class="form-control" id="InputNamAr" formControlName="arRoleName"
+                    [ngClass]="{'red-border-class':fc.arRoleName.errors && (fc.arRoleName.touched || isSubmit)}" />
+
+                <div *ngIf="fc.arRoleName.errors && (fc.arRoleName.touched || isSubmit)"
+                    class="alert alert-danger mt-2 mb-2">
+                    <div *ngIf="fc.arRoleName.errors.required">
+                        {{ "QUESTION_BANK.REQUIRED" | translate }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="label">{{
+                    "Role_Management.GROUPNAMEENGLISH" | translate
+                    }}</label>
+
+                <input type="text" class="form-control" id="InputNamAr" formControlName="enRoleName"
+                    [ngClass]="{'red-border-class':fc.enRoleName.errors && (fc.enRoleName.touched || isSubmit)}" />
+
+                <div *ngIf="fc.enRoleName.errors && (fc.enRoleName.touched || isSubmit)"
+                    class="alert alert-danger mt-2 mb-2">
+                    <div *ngIf="fc.enRoleName.errors.required">
+                        {{ "QUESTION_BANK.REQUIRED" | translate }}
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group" *ngIf="dataEdit.id==''">
+                <label for="exampleInputEmail1" class="label">{{"Role_Management.SELECT_GROUP_MEMBERS" | translate
+                    }}</label>
+                <app-input-search-list [searchList]="SearchItemList" (addSearchItem)="addUser($event)">
+                </app-input-search-list>
+            </div>
+
+
+            <mat-list *ngIf="dataEdit.id==''">
+                <mat-list-item *ngFor="let SelectedUser of listSelectedUser">
+                    <!-- <img mat-list-icon src="assets/images/roleManagement/ASH_90.png" alt=""> -->
+                    <img mat-list-icon *ngIf='!SelectedUser?.usrAvatarUrl' src="assets/images/Profile.svg" alt=""/>
+                    <img mat-list-icon *ngIf='SelectedUser?.usrAvatarUrl' [src]="SelectedUser?.usrAvatarUrl" alt="" />
+                    <div mat-line>{{ translate.currentLang === langEnum.en
+                        ? SelectedUser.enUsrName : SelectedUser.arUsrName}}</div>
+                    <div mat-line> {{SelectedUser.loginTime | date}} </div>
+                   <span class="mat-delete" (click)="delete(SelectedUser)"><i class="fas fa-trash-alt"></i></span>
+                    <mat-divider></mat-divider>
+                </mat-list-item>
+            </mat-list>
+
+        </form>
+        <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2">
+            {{resultMessage.message}}
+        </div>
+        <div class="row">
+            <div class="col-md-6" *ngIf="dataEdit.id!=''">
+                <button (click)="EditData()" class="save-btn">
+                    {{ "Role_Management.EDIT" | translate }}
+                </button>
+            </div>
+            <div class="col-md-6" *ngIf="dataEdit.id==''">
+                <button (click)="saveData()" class="save-btn">
+                    {{ "Role_Management.SAVE" | translate }}
+                </button>
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="cancel-btn" (click)="backList()">
+                    {{ "QUESTION_BANK.CANCEL" | translate }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

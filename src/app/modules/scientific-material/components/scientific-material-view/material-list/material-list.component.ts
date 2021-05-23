@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { MaterialCategoiresEnum } from 'src/app/core/enums/material-category-enum.enum';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
 import { IScientificMaterialFilter } from 'src/app/core/interfaces/scientific-material/iscientific-matrial-filter';
 import { IScientificMaterialGrid } from 'src/app/core/interfaces/scientific-material/iscientific-matrial-grid';
@@ -9,6 +10,7 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseLookupModel } from 'src/app/core/ng-model/base-lookup-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
+import { RoleManagementService } from 'src/app/core/services/role-management/role-management.service';
 import { ScientificMaterialService } from 'src/app/core/services/scientific-material-services/scientific-material.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 
@@ -29,44 +31,52 @@ export class MaterialListComponent implements OnInit {
   selectedCategories: string[] = [];
   resMessage: BaseMessageModel = {};
   selectedProgramName: string = '';
-  booksId = 'd213e11c-14bd-43bf-b7e2-780e02d71ba9';
-  voiceId = '07985acc-8dc8-4def-b4e0-bc62a789db83';
-  plansId = '512da9c2-0604-4f5c-bbb2-d669f1346e34';
   program = {} as IprogramsModel;
+  categoriesEnum = MaterialCategoiresEnum;
   constructor(private scientifcMaterialService: ScientificMaterialService,
     private dialog: MatDialog,
-    public translate: TranslateService) { }
+    public translate: TranslateService,
+    public roleService:RoleManagementService) { }
 
   ngOnInit(): void {
-    this.loadMaterialCategories();
-    this.loadProgramMaterial();
+   this.loadMaterialCategories();
+
+  //  this.loadProgramMaterial();
   }
   ngOnChanges(changes: any) {
 
     if (changes.selectedProgram) {
       this.materialFilter.programs = changes.selectedProgram?.currentValue?.id;
+      this.materialFilter.isAvailableForAll = this.materialFilter.programs === undefined;
       this.program = changes.selectedProgram?.currentValue;
     }
     else if (changes.refreshMaterialId)
       this.refreshMaterialId = changes.refreshMaterialId.currentValue;
+else{this.materialFilter.programs =""}
     this.loadProgramMaterial();
+    
+  
 
   }
   loadProgramMaterial() {
     this.materialFilter.skip = 0;
     this.materialFilter.take = 2147483647;
-    this.scientifcMaterialService.getScientificMateriaFilter(this.materialFilter).subscribe(
-      (res: BaseResponseModel) => {
-        this.materials = res.data as IScientificMaterialGrid[];
-
-      }, error => {
-        console.log(error);
-        this.resMessage = {
-          message: error.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
-        this.clearMessage();
-      })
+    if( this.materialFilter.programs !=""){
+      this.scientifcMaterialService.getScientificMateriaFilter(this.materialFilter).subscribe(
+        (res: BaseResponseModel) => {
+          this.materials = res.data as IScientificMaterialGrid[];
+  
+        }, error => {
+          // console.log(error);
+          this.resMessage = {
+            message: error,
+            type: BaseConstantModel.DANGER_TYPE
+          }
+          this.clearMessage();
+        })
+    }
+    else{  this.materials=[]}
+   
   }
   loadMaterial(materialId?: string) {
     this.materialId?.emit(materialId);
@@ -90,9 +100,9 @@ export class MaterialListComponent implements OnInit {
         this.clearMessage();
         this.loadProgramMaterial();
       }, error => {
-        console.log(error);
+        // console.log(error);
         this.resMessage = {
-          message: error.message,
+          message: error,
           type: BaseConstantModel.DANGER_TYPE
         }
         this.clearMessage();
@@ -103,10 +113,10 @@ export class MaterialListComponent implements OnInit {
 
     this.scientifcMaterialService.GetScientificMatrialCategoriesLookup().subscribe(
       (res: BaseResponseModel) => {
-        this.materialCategoires = res.data as BaseLookupModel[];
+        this.materialCategoires = res.data as BaseLookupModel[];       
       }, error => {
         this.resMessage = {
-          message: error.message,
+          message: error,
           type: BaseConstantModel.DANGER_TYPE
         }
         this.clearMessage();
@@ -152,5 +162,13 @@ export class MaterialListComponent implements OnInit {
       }
 
     });
+  }
+
+  searchMaterial(text?:string){
+    this.materials=[];
+    this.translate.currentLang == LanguageEnum.ar ? this.materialFilter.titleAr = text : this.materialFilter.titleEn = text
+    this.loadProgramMaterial();
+   // this.loadMaterialCategories(this.selectedCategoryId.id,text);
+   
   }
 }

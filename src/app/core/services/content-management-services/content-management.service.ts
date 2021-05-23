@@ -18,7 +18,7 @@ export class ContentManagementService {
   getContentManagementSystemByIdURL = environment.baseUrl + 'ContentManagementSystem/get-content-management-system-by-id/';
   deleteContentManagementSystemURL = environment.baseUrl + 'ContentManagementSystem/delete-content-management-system/';
   getAllContentManagementSystemTypesURL = environment.baseUrl + 'ContentManagementSystem/get-all-content-management-system-types';
-  getContentManagementSystemByTypeCmsURL = environment.baseUrl + 'ContentManagementSystem/get-content-management-system-by-typeCmd/';
+  getContentManagementSystemByTypeCmsURL = environment.baseUrl + 'ContentManagementSystem/get-content-management-system-by-type/';
   canDecativate : boolean = false;
 
   constructor(private http: HttpClient) { }
@@ -38,10 +38,10 @@ export class ContentManagementService {
     return this.http.put<BaseResponseModel>(this.updateContentManagementSystemURL , model);
   }
 
-  getContentManagementSystemByType(model : any) 
-  {
-    return this.http.post<BaseResponseModel>(this.getContentManagementSystemByTypeURL , model)
-  }
+  // getContentManagementSystemByType(model : any) 
+  // {
+  //   return this.http.post<BaseResponseModel>(this.getContentManagementSystemByTypeURL , model)
+  // }
 
   getContentManagementSystemById(id : string) 
   {

@@ -1,0 +1,105 @@
+<div class="form-group add-question-template dynamic-radio-button-with-input-text-model mb-0"  >
+
+    <div class="form-group row question px-2">
+    <div class="col-sm-8">
+      <label class="label_item_question">  {{"EXAM_FORM.QUESTION_NUMBER"|translate}} {{questionTemplate.questionNo}}</label>
+      <!-- <app-voice-recording *ngIf="!questionTemplate.text" (getVoiceUrl)="saveVoiceUrl($event)"
+      [viewMode]='viewMode' [voiceUrl]='questionTemplate?.voiceUrl'></app-voice-recording>
+      <input type="text" *ngIf="!questionTemplate.voiceUrl" (input)="onQuestionTextChange()" [disabled]='viewMode'
+      [(ngModel)]="questionTemplate.text" class="form-control" placeholder="add question">
+ -->
+
+       
+    
+        <div class="input-group input-sm input_search_voice" >
+           <input type="text"
+           *ngIf="!questionTemplate.voiceUrl"
+             (input)="onQuestionTextChange()" 
+             [disabled]='viewMode'
+              [(ngModel)]="questionTemplate.text"
+              class="form-control  border-md " 
+              [ngClass]="{' border-transparent': !questionTemplate.text,
+             'input_with-voice': !questionTemplate.text}"
+              placeholder="{{'EXAM_FORM.ADD_QUESTION'|translate}}" >
+            <app-voice-recording *ngIf="!questionTemplate.text" (getVoiceUrl)="saveVoiceUrl($event)"
+            [viewMode]='viewMode' [voiceUrl]='questionTemplate?.voiceUrl'></app-voice-recording>
+
+        </div> 
+
+
+      
+    </div>
+    <div class="col-sm-2">
+      <label class="label_item_question">{{"EXAM_FORM.DURATION_ANSWER"|translate}} </label>
+        <input type="number" min="1" [(ngModel)]="questionTemplate.time"  class="form-control"  placeholder="{{'EXAM_FORM.DURATION'|translate}}" [disabled]='viewMode'>
+      </div>
+      <div class="col-sm-2">
+        <label class="label_item_question">{{"EXAM_FORM.DGREE"|translate}}</label>
+        <input type="number" min="1" [(ngModel)]="questionTemplate.degree"  class="form-control" placeholder="{{'EXAM_FORM.DGREE'|translate}}" [disabled]='viewMode'>
+      </div>
+</div>
+<div class="form-group row">
+<div class="col-10 pl-4 pr-4  ">
+  <label class="label_item_question">{{"EXAM_FORM.ANSWER"|translate}}</label>
+
+</div>
+  <div class="input-group col-sm-10">
+    <mat-radio-group [(ngModel)]="questionTemplate.answerType" aria-label="Select an option" [disabled]='viewMode'>
+        <mat-radio-button value="{{answerTypeEnum.singleSelect}}" class="px-2">{{ CHOICES()}}</mat-radio-button>
+        <mat-radio-button value="{{answerTypeEnum.multiSelect}}" class="px-2"> {{ MULTI_SELECT()}}</mat-radio-button>
+    </mat-radio-group>
+
+  </div>
+  
+</div>
+
+
+<div class="form-group row answerChick mb-0">
+
+  <div class="col-10 pl-4 pr-4  ">
+    <label class="label_item_question">{{"EXAM_FORM.RIGHT_ANSWER"|translate}}</label>
+  
+  </div>
+  
+  <div *ngIf="questionTemplate.answerType === answerTypeEnum.multiSelect">
+   
+      <div *ngFor = 'let answer of questionTemplate.answers'>
+        <div class="col-12">
+      <mat-checkbox class="example-margin " [(ngModel)]="answer.correct" [ngModelOptions]="{standalone: true}" [disabled]='viewMode'>
+        <input type="text" class="form-control input_fullWidth" [(ngModel)]="answer.text"  aria-label="Text input with checkbox" [disabled]='viewMode'>
+          <a *ngIf='!viewMode' (click)="stopPropagation($event)" (click)='deleteAnswerDialog(answer)'>
+            <img src="../../../../assets/images/trash-2.svg" class="btn_trash">   
+          </a>
+      </mat-checkbox>
+    </div>
+    </div>
+  </div>
+  <div class="form-group row">
+      <div *ngIf="questionTemplate.answerType === answerTypeEnum.singleSelect">
+          <mat-radio-group [(ngModel)]="questionTemplate.correctAnswersByAnswerNumber" aria-label="Select an option"
+          class="input-group  col-12" [disabled]='viewMode'>
+        <mat-radio-button  *ngFor = 'let answer of questionTemplate.answers' 
+         value="{{answer.answerNo}}" class=" px-4  col-12" >
+         <input type="text" class="form-control input_fullWidth "
+          [(ngModel)]="answer.text"  aria-label="Text input with checkbox" [disabled]='viewMode'>
+          <a *ngIf='!viewMode' (click)="stopPropagation($event)" (click)='deleteAnswerDialog(answer)' >
+             <img src="../../../../assets/images/trash-2.svg" class="btn_trash">    
+          </a>
+        </mat-radio-button>
+      </mat-radio-group>
+      
+    
+   </div>
+  </div>
+
+</div>
+<div class="col-12 add_answer mb-2" *ngIf='!viewMode'>
+  <button type="button" class="btn cancel-btn btn btn-warning" (click)="addAnswer()" [disabled]='viewMode'>{{"GENERAL.ADD_ANSWE"|translate}}</button>
+</div>
+</div>
+
+<div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} ">
+  <span class=" py-2  my-4 ">
+  {{resultMessage.message}}
+</span>
+   </div>

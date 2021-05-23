@@ -1,0 +1,36 @@
+
+<div *ngIf="scientificProblems" class="scientific-problem"> 
+  <div class="row">
+    <div class="col-7 text-left">
+      <h3  class="bold header_sc"> 
+        {{'ADMIN_MESSAGING.SCIENTIFIC_PROBLEM' | translate}}
+        </h3>
+    </div>
+    <div class="offset-2 col-3" >
+        <app-search-input (searchTerm)=filterByText($event)></app-search-input>
+    </div>
+
+    <div *ngIf='!scientificProblems || scientificProblems.length === 0'>
+      {{ 'GENERAL.NO_DATA' | translate}}
+  </div>
+    
+    <div *ngIf='scientificProblems && scientificProblems.length > 0' class="col-12 internal_scroll">
+      <app-scientific-problems-grid (adminFilterEvent)='filterRequest($event)' (deleteUserScProb)='deleteUserSingleScProb($event)' 
+      (addReplyToScProb)='addReplyToScProb($event)' (saveScProbToQuestionBank)='saveScProbToQuestionBank($event)'
+      (deleteListOfScProblems)='deleteScProblmes()' [totalCount]='totalCount' [adminItems]='scientificProblems'
+      [numberPerRow]='numberItemsPerRow' [userMode]='adminCard' [adminFilterRequestModel] = 'scientificProblemFilter'></app-scientific-problems-grid>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-12" style="height: 500px;background-color:#e6e6e6;">
+    </div>
+    <div class="col-lg-9  col-md-9 col-sm-12 " style="height: 500px;background-color:#e6e6e6;">
+       <div class="row">
+        <div class="col-4 mt-3" *ngFor="let card of card_scientificProblem">
+          <app-card-student-scientific-problem></app-card-student-scientific-problem>
+        </div>
+    </div>
+  </div>
+</div> -->

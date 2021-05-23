@@ -1,0 +1,45 @@
+import { ITeacherProfileInterviewDay } from "./iteacher-profile-interview-day";
+import { ITeacherProfileLanguage } from "./iteacher-profile-language";
+import { ITeacherProfileProgram } from "./iteacher-profile-program";
+import { ITeacherProfileProgramDegreeLookup } from "./iteacher-profile-program-lookup";
+import { ITeacherProfileRewayat } from "./iteacher-profile-rewayat";
+
+export interface IUpdateTeacherProfile {
+    usrId?: string;
+    firstAr?: string;
+    firstEn?: string;
+    middleAr?: string;
+    middleEn?: string;
+    familyAr?: string;
+    familyEn?: string;
+    hijriBirthDate?: string;
+    gender?: string;
+    mobile?: string;
+    nationality?: string;
+    address?: string;
+    country?: string;
+    city?: string;
+    qualifi?: string;
+    specia?: string;
+    eduDate?: string;
+    eduNum?: number;    
+    entity?: string;
+    agency?:string;
+    edulevel?:string;
+    interviewId?:string;
+    fromTime?:string;
+    isHasQuranExp?: boolean;
+    isHasTeachSunnaExp?: boolean;
+    isHasInternetTeachExp?: boolean;
+    isHasTeachForeignerExp?: boolean;
+    isHasEjazaHafz?: boolean;
+    isHasEjazaTelawa?: boolean;
+    workingPlatForm?: string;
+    bankName?: string;
+    bankNumber?: string;
+    ejazaAttachments?: string[];
+    teacherPrograms?: ITeacherProfileProgram[];
+    interviewDays?:ITeacherProfileInterviewDay[];
+    rewayats?:ITeacherProfileRewayat[];
+    languages?:ITeacherProfileLanguage[];
+}

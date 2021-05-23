@@ -1,0 +1,58 @@
+
+@import "./variables";
+.save-btn{
+    background:$user-color;
+    border-radius: 12px;
+    opacity: 1;
+    width: auto;
+    min-width: 7rem;
+    margin: 1rem;
+    padding: 0.5rem;
+    height: 2.31rem;
+    border: none;
+    color: #ffffff;
+    display: block;
+  
+    }
+    .btn_replay{
+        background-color: #C1C7D0;
+        color: #ffffff;
+        border-radius: 12px;
+        opacity: 1;
+        width: auto;
+        min-width: 7rem;
+        margin: 1rem;
+        padding: 0.5rem;
+        height: 2.31rem;
+        border: none;
+        color: #ffffff;
+        display: block;
+    }
+    .cancel-btn{
+        background: $hint_yellow;
+        border-radius: 12px;
+        opacity: 1;
+        width: auto;
+        min-width: 7rem;
+        padding: 0.5rem;
+        border: none;
+        color: #ffffff;
+        display: block;
+        }
+        .btn_trash{
+            padding: 0.5rem;
+            background: #e9c3c3 ;
+            border-radius: 8px;
+            margin: 0 0.5rem;
+        }
+        .btn_fram{
+            border: 1px solid $hint_yellow !important;
+            color: $hint_yellow;
+            border-radius: 10px;
+            padding: 0.5rem;
+            text-align: center;
+            text-decoration: none !important;
+            font-family: Almarai-Bold;
+            font-size: 0.875rem;
+            cursor: pointer;
+        }

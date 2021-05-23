@@ -2,6 +2,8 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IQuestionBankCategoriesModel } from 'src/app/core/interfaces/questionBankCategories-interfaces/iquestion-bank-categories-model';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { QuestionBankCategoryService } from 'src/app/core/services/question-bank-services/question-bank-category.service';
 
@@ -15,6 +17,7 @@ export class QuestionBankCategoryDetailsComponent implements OnInit {
   QuestionBankCategoryId:string='';
   QuestionBankCategory?: IQuestionBankCategoriesModel ;
   //currentWindowWidth?: number;
+  resMessage: BaseMessageModel = {};
   errorMessage?:string;
   // msgs: Message[] = [];
   constructor(private questionBankCategoryService: QuestionBankCategoryService,
@@ -30,6 +33,8 @@ export class QuestionBankCategoryDetailsComponent implements OnInit {
   //    this.currentWindowWidth = window.innerWidth
   // }
   loadQuestionBankCategoryDetails() {
+    this.resMessage = {};
+
     this.questionBankCategoryService.getQuestionBankCategoryDetails(this.QuestionBankCategoryId).subscribe(
       res => {
         var response = <BaseResponseModel>res;
@@ -37,10 +42,18 @@ export class QuestionBankCategoryDetailsComponent implements OnInit {
           this.QuestionBankCategory = response.data;
         }
         else {
-          this.errorMessage = response.message;
+          // this.errorMessage = response.message;
+          this.resMessage ={
+            message: response.message,
+            type: BaseConstantModel.DANGER_TYPE
+          }
         }
-      }, error => {
-        console.log(error);
+      },
+      error => {
+        this.resMessage ={
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       })
   }
   // confirmDelete() {

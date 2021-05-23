@@ -1,0 +1,28 @@
+.scientific-problem{
+    background: #fff;
+    border: 1px solid #FBFBFB;
+    border-radius: 19px;
+    opacity: 1;
+    padding: 1rem;
+    height: 100%;
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+  .internal_scroll{
+      height: 480px;
+      overflow-y: auto;
+      padding-left: 0.5rem;
+      overflow-x: hidden;
+      padding-top: 0.7rem;
+  }
+  .header_sc{
+    font-size: 20px;
+    color: #3A3A3A;
+  }
+  .text-left{
+  &:lang(en)
+  {text-align: left;}
+  &:lang(ar){
+    text-align: right;
+  }
+  }

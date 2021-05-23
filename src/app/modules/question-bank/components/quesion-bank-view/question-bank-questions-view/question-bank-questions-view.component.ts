@@ -5,6 +5,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { RoleEnum } from 'src/app/core/enums/role-enum.enum';
+import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { IQuestionBankQuestionUpdateModel } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-question-update-model';
 import { IQuestionBankQuestionUpdateOrderBy } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-question-update-order-by';
 import { IQuestionBankQuestionsFilterRequest } from 'src/app/core/interfaces/questionBankQuestions-interfaces/iquestion-bank-questions-filter-request';
@@ -14,6 +16,7 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { QuestionBankQuestionService } from 'src/app/core/services/question-bank-services/question-bank-question.service';
+import { RoleManagementService } from 'src/app/core/services/role-management/role-management.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 @Component({
   selector: 'app-question-bank-questions-view',
@@ -37,13 +40,30 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   items1:any;
   questionBankQuestionUpdateOrderBy:IQuestionBankQuestionUpdateOrderBy={};
   listOrder?: number[];
+
+  currentUser: IUser | undefined;
+  role = RoleEnum;
+  isView = true;
+
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
-     public translate: TranslateService,public dialog: MatDialog) {
+     public translate: TranslateService,public dialog: MatDialog, private roleService : RoleManagementService) {
       }
 
   ngOnInit(): void {
-    this.getQuestionBankQuestions()
+    this.getQuestionBankQuestions("");
+
+    this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
+
+    let res = this.currentUser.usrRoles?.usrRoles?.some(x => x.roleNo == this.role.Student.toString() || x.roleNo == this.role.Teacher.toString());
+
+    if(res == true){
+      this.isView = false;
+    }
+    else{
+      this.isView = true;
+    }
   }
+
   ngOnChanges(changes: any) {
     if(this.isQuestionSave===true){ this.getQuestionBankQuestions(this.selectedCategoryId.id);}
     if(changes.selectedCategoryId?.currentValue.id!==undefined)
@@ -51,33 +71,52 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
     this.getQuestionBankQuestions(changes.selectedCategoryId.currentValue.id);
     this.selectedCategoryId.id=changes.selectedCategoryId.currentValue.id;
    }
-  
+   this.getQuestionBankQuestions("");
   }
+
   searchQuestions(text?:string){
     this.questionBankQuestionList=[];
-    this.getQuestionBankQuestions(this.selectedCategoryId.id,text) 
+    this.getQuestionBankQuestions(this.selectedCategoryId.id,text);
+   
   }
+
   getQuestionBankQuestions(CategoryId?:string,text?:string) {
     this.filterErrorMessage = "";
+    this.resultMessage = {};
     this.questionBankQuestionFilter.skip=0;
     this.questionBankQuestionFilter.take= 2147483647;
     this.questionBankQuestionFilter.catgyId=CategoryId;
     this.questionBankQuestionFilter.text=text;
-    this.questionBankQuestionService.getQuestionBankQuestionsFilter(this.questionBankQuestionFilter).subscribe(res => {
-      let response = <BaseResponseModel>res;
-      if (response.isSuccess) {
-        this.questionBankQuestionList = response.data;
-      }
-      else {
-        this.questionBankQuestionList = [];
-        this.filterErrorMessage = response.message;
-      }
-    },
+    if(CategoryId!=""){
+      this.questionBankQuestionService.getQuestionBankQuestionsFilter(this.questionBankQuestionFilter).subscribe(res => {
+        let response = <BaseResponseModel>res;
+        if (response.isSuccess) {
+          let items : IQuestionBankQuestionsModel []= response.data
+          if (this.roleService.isAdmin()){
+            this.questionBankQuestionList = items;
+          }
+          else{
+            this.questionBankQuestionList = items.filter(i => i.isActive);
+          }
+        }
+        else {
+          this.questionBankQuestionList = [];
+          this.filterErrorMessage = response.message;
+        }
+      },
       error => {
-        console.log(error);
+        this.resultMessage ={
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       }
-    )
+      )
+    }
+else{
+  this.questionBankQuestionList = [];
+}
   }
+
   clearFilter(){
     this.questionBankQuestionFilter = {};
     this.questionBankQuestionFilter.skip=0;
@@ -92,17 +131,23 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
         alert("Delete Sucssed")
         this.getQuestionBankQuestions(this.selectedCategoryId.id);
       }, error => {
-
+        this.resultMessage ={
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       }
     )
   
   }
+
   loadQuestion(id?:string){
     this.selectedQuestionId?.emit(id);
   }
+
   NewQuestion(){
     this.selectedQuestionId?.emit('');
   }
+
    confirmDialog(id?:string){
     const message =this.translate.currentLang === LanguageEnum.en ?"Are you sure that you want to delete this question":"هل متأكد من حذف هذا السؤال";
 
@@ -119,12 +164,13 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
             res.message;
             this.getQuestionBankQuestions(this.selectedCategoryId.id);
           }, error => {
-    
+            this.resultMessage ={
+              message: error,
+              type: BaseConstantModel.DANGER_TYPE
+            }
           }
         )
-
-      }
-     
+      }     
     });
   }
 
@@ -137,6 +183,7 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
       this.currentlyOpenedItemIndex = -1;
     }
   }
+
   onCheckboxChange(questionBankQuestionUpdate: IQuestionBankQuestionUpdateModel){
 
     this.questionBankQuestionService.updateQuestionBankQuestion(questionBankQuestionUpdate).subscribe(res => {
@@ -200,9 +247,12 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
         }
         
       },
-        error => {
-      
-        })
+      error => {
+        this.resultMessage ={
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      })
     } else {
       transferArrayItem(event.previousContainer.data,
         event.container.data,
@@ -210,4 +260,5 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
         event.currentIndex);
     }
   }
+ 
 }

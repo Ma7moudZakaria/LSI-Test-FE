@@ -6,6 +6,9 @@ import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
 import { IUserProfile } from 'src/app/core/interfaces/user-interfaces/iuserprofile';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
+import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 import { UserService } from 'src/app/core/services/user-services/user.service';
 
@@ -17,61 +20,76 @@ import { UserService } from 'src/app/core/services/user-services/user.service';
 })
 
 export class ViewUserProfileDetailsComponent implements OnInit {
-
-  RouteParams: any;
-  userProfileDetails: any;
-  isSuccess: any;
-  successMessage: any;
-  allLookups: any;
-  listOfLookupProfile: string[] = ['GENDER', 'EDU_LEVEL', 'NATIONALITY', 'COUNTRY'];
-  currentUser: any;
-  errorMessage: any;
-  collectionOfLookup = {} as ILookupCollection;
-  profileForm: FormGroup = new FormGroup({})
-  genderData: any;
-  countryData: any;
-  nationalityData: any;
-  educationalLevelData: any;
-  language: any;
+  starsSelected=5;
+  listbadges = [1, 2]
+  RouteParams = {} as string;
+  userProfileDetails = {} as IUserProfile;
+  currentUser: IUser | undefined;
+  resMessage: BaseMessageModel = {};
+  currentLang: LanguageEnum | undefined;
+  birthdate: string | undefined;
   langEnum = LanguageEnum;
-  birthdate: any;
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
     public translate: TranslateService,
-    private userService: UserService) {
+    private userService: UserService,
+    private languageService : LanguageService) {
   }
 
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
-    this.language = this.language === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
-    this.userProfileDetails as IUserProfile;
+    this.currentLang = this.translate.currentLang === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
     this.RouteParams = this.router.url;
+    this.setCurrentLang();
     this.getUserProfile(this.currentUser.id);
+  }
+
+  setCurrentLang() {
+    this.emitHeaderTitle();
+    this.languageService.currentLanguageEvent.subscribe(res => {
+      this.emitHeaderTitle();
+    });
+  }
+
+  emitHeaderTitle() {
+    this.languageService.headerPageNameEvent.emit(this.translate.instant('UPDATE_TEACHER_PG.TITLE'));
   }
 
   getUserProfile(id: any) {
     this.userService.viewUserProfileDetails(id).subscribe(res => {
-
-      this.userProfileDetails = res.data;
-      this.birthdate = new Date(this.userProfileDetails.birthdate.toString());
-      this.birthdate = new Date(this.birthdate.setDate(this.birthdate.getDate() + 1)).toISOString().slice(0, 10);
-
       if (res.isSuccess) {
+
+        this.userProfileDetails = res.data as IUserProfile;
+
+        let birthdate = new Date(this.userProfileDetails?.birthdate || '');
+        if (!isNaN(birthdate.getTime())) {
+          this.userProfileDetails.birthdate = new Date(birthdate.setDate(birthdate.getDate() + 1)).toISOString().slice(0, 10);
+        }
+
+
+        if (!this.userProfileDetails?.proPic) {
+          this.userProfileDetails.proPic = '../../../../../assets/images/Profile.svg';
+        }
+
+
       }
       else {
-        this.errorMessage = res.message;
+        this.resMessage = {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+    }, error => {
+      this.resMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
       }
     });
   }
 
-  //  openNav() {
-  //   document.getElementById("mySidenav").style.width = "250px";
-  // }
-
-  /* Set the width of the side navigation to 0 */
-  closeNav() {
-    // document.getElementById("mySidenav").style.width = "0";
+  navEditProf() {
+    this.router.navigateByUrl('/user/update-user-profile');
   }
 }

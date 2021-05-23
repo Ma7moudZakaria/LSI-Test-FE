@@ -1,0 +1,29 @@
+<div class="card-student-scientific-problem">
+    <div class="card_header">
+    <span> {{'SCIENTIFIC_PROBLEM.TIME' | translate}}</span>
+    <span>
+     {{scientificProblem.scCreationDate}}
+    </span>
+    <span>
+      <i (click)='deleteScientificProblemEve()' class="far fa-trash-alt"></i>
+    </span>
+    </div>
+
+    <div class="card_body">
+      <div class="body_header">
+        <span class="bold">{{'SCIENTIFIC_PROBLEM.QUESTION' | translate}}</span>
+        <span class="bold">{{scientificProblem.huffazNo}}</span>
+      </div>
+     
+    <p>{{scientificProblem.question}}</p>
+      <div class="body_header">
+      <span>{{'SCIENTIFIC_PROBLEM.REPLY' | translate}}</span>
+
+      </div>
+      <p class="bold">
+        {{scientificProblem.reply}}
+      </p>
+    
+    </div>
+
+   </div>

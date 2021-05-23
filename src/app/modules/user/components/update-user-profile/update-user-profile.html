@@ -144,20 +144,29 @@
 
                             <!-- End Names English -->
 
-                            <div class="col-lg-3 col-md-2 col-sm-2 col-xs-2">
-                                <label class="Register__Label" for="birthdate"> {{ 'UPDATE_USER_PG.BIRTHDATE' |
-                                    translate }} </label>
-                                <input id="birthdate" pInputText type="date" formControlName="birthdate"
-                                    name="birthdate" class="form-control UserRegister__FormControl">
+                            <div class="col-lg-4 col-md-2 col-sm-2 col-xs-2 updateTeacher_hijriBirthDate">
+                                <div class="d-flex justify-content-around" >
+                                    <div class="hijriBirthDate_contanier">
+                                        <label class="Register__Label" for="birthdate"> {{ 'UPDATE_USER_PG.BIRTHDATE' |
+                                            translate }} </label>
+                                        <!-- <input id="birthdate" pInputText type="date" formControlName="birthdate"
+                                            name="birthdate" class="form-control UserRegister__FormControl"> -->
+        
+                                            <app-milady-hijri-calendar (sendDate)="Hijri($event)" [dateTo]='hijriBirthDateInputParam'
+                                               [hijri]="hijri" [milady]="!milady">
+                                             </app-milady-hijri-calendar>
+                                                                           
+    
+                                            <div *ngIf="!hijriBinding && (f.birthdate.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                                <div *ngIf="!hijriBinding">
+                                                    {{ 'UPDATE_USER_PG.BIRTHDATE_REQUIRED' | translate }}
+                                                </div>
+                                            </div> 
+                                    </div>
+                                </div>
                                 
-
-                                    <div *ngIf="f.birthdate.errors && (f.birthdate.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
-                                        <div *ngIf="f.birthdate.errors.required">
-                                            {{ 'UPDATE_USER_PG.BIRTHDATE_REQUIRED' | translate }}
-                                        </div>
-                                    </div> 
                             </div>
-                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4">
+                            <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
                                 <label class="Register__Label" for="gender"> {{ 'GENERAL.GENDER' | translate }}
                                 </label>
                                 <div class="row">
@@ -194,25 +203,7 @@
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0 pr-0">
                         <div class="row pl-0 pr-0">
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                <label class="Register__Label" for="phoneNumber"> {{ 'UPDATE_USER_PG.COUNTRY' |
-                                    translate }} </label>
-
-                                <select class="UpdateUser__Options" name="nameEn" formControlName="countryCode">
-                                    <option *ngFor="let countryItem of collectionOfLookup.COUNTRY"
-                                        [value]="countryItem.id">
-                                        {{ translate.currentLang == langEnum.en ? countryItem.nameEn : countryItem.nameAr}}
-                                    </option>
-                                </select>
-
-                                <div *ngIf="f.countryCode.errors && (f.countryCode.touched || isSubmit)"
-                                    class="alert alert-danger mt-2 mb-2">
-                                    <div *ngIf="f.countryCode.errors.required">
-                                        {{ 'UPDATE_USER_PG.COUNTRY_CODE' | translate }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-2 col-sm-2 col-xs-2">
+                            <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2">
                                 <label class="Register__Label" for="phoneNumber"> {{ 'GENERAL.PHONE_NUMBER' | translate }} </label>
                                 <!-- <input id="phoneNumber" pInputText type="text" formControlName="phoneNumber"
                                     style="width:100%;" name="phoneNumber"
@@ -236,6 +227,8 @@
                                         </div> -->
                                     </div> 
                             </div>
+                      
+                           
 
                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                 <label class="Register__Label" for="email"> {{ 'GENERAL.EMAIL' | translate }} ({{ 'UPDATE_USER_PG.OPTIONAL' | translate }})</label>
@@ -243,7 +236,7 @@
                                     class="form-control UserRegister__FormControl dimmed" />
                             </div>
 
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                            <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2">
                                 <label class="Register__Label" for="nationality"> {{ 'GENERAL.NATIONALITY' | translate
                                     }} </label>
                                 <div>
@@ -263,8 +256,47 @@
                                     </div>
                                 </div>
                             </div>
+      
+                            <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2">
+                                <label class="Register__Label" for="phoneNumber"> {{ 'UPDATE_USER_PG.COUNTRY' |
+                                    translate }} </label>
 
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                <select class="UpdateUser__Options" name="nameEn" formControlName="countryCode" (change)="getCitiesLookupByCountry()">
+                                    <option *ngFor="let countryItem of collectionOfLookup.COUNTRY" 
+                                        [value]="countryItem.id">
+                                        {{ translate.currentLang == langEnum.en ? countryItem.nameEn : countryItem.nameAr}}
+                                    </option>
+                                </select>
+
+                                <div *ngIf="f.countryCode.errors && (f.countryCode.touched || isSubmit)"
+                                    class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.countryCode.errors.required">
+                                        {{ 'UPDATE_USER_PG.COUNTRY_CODE' | translate }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2 mt-3">
+                                <label class="Register__Label" for="city"> {{ 'UPDATE_USER_PG.CITY' | translate }}
+                                </label>
+                               
+                                    <select class="UpdateUser__Options" name="nameEn" formControlName="city">
+                                        <option *ngFor="let cityItem of collectionOfLookup.CITY"
+                                            [value]="cityItem.id">
+                                            {{ translate.currentLang == langEnum.en ? cityItem.nameEn : cityItem.nameAr}}
+                                        </option>
+                                    </select>
+
+                                    <div *ngIf="f.city.errors && (f.city.touched || isSubmit)"
+                                        class="alert alert-danger mt-2 mb-2">
+                                        <div *ngIf="f.city.errors.required">
+                                            {{ 'UPDATE_USER_PG.CITY_REQUIRED' | translate }}
+
+                                        </div>
+                                   </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-2 col-xs-2 mt-3">
                                 <label class="Register__Label" for="address"> {{ 'UPDATE_USER_PG.ADDRESS' | translate }}
                                 </label>
                                 <input id="address" pInputText type="text" formControlName="address" name="address" width="70px"
@@ -330,6 +362,12 @@
                                         {{i+1}}
                                     </option>
                                 </select>
+                                <div *ngIf="f.quraanMemorization.errors && (f.quraanMemorization.touched || isSubmit)"
+                                class="alert alert-danger mt-2 mb-2">
+                                <div *ngIf="f.quraanMemorization.errors.pattern">
+                                    {{ 'UPDATE_USER_PG.AMOUNT_QURAN_REQUIRED' | translate }}
+                                </div>
+                            </div>
                             </div>
                             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                 <label class="Register__Label" for="educationalLevel"> {{ 'UPDATE_USER_PG.MEMORIES_QURAN' | translate }} </label>
@@ -552,7 +590,7 @@
                         <button type="submit" class="btn UserLogin__Submit"> {{ 'GENERAL.SAVE' | translate }} </button>
                     </div>
 
-                    <div *ngIf="resMessage" class="alert alert-{{ resMessage.type }} my-4 py-2">
+                    <div *ngIf="resMessage.message" class="alert alert-{{ resMessage.type }} my-4 py-2">
                         {{ resMessage.message }}
                     </div>
                 </div>
@@ -565,112 +603,3 @@
 
 
 
-
-
-<!-- <form [formGroup]="profileForm" (ngSubmit)="onSubmit(profileForm.value)" class="form-group">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
-        <h1 class="font-weight-bold "> {{'UPDATE_USER_PG.PERSONAL_INFORMATION' | translate}} </h1> 
-    </div>
-
-              
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-12">
-        <div class="row">
-            
-
-            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <label class="Register__Label" for="firstNameAr"> {{'UPDATE_USER_PG.FIRSTNAMEAR' | translate}} </label>
-                <input id="firstNameEn"  pInputText type="text" formControlName="firstNameAr" name="firstNameAr" placeholder="Enter First Name" class="form-control UserRegister__FormControl">                            
-            </div>
-
-            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <label class="Register__Label" for="firstNameEn"> {{'UPDATE_USER_PG.FIRSTNAMEEN' | translate}} </label>
-                <input id="firstNameEn"  pInputText type="text" formControlName="firstNameEn" name="firstNameEn" placeholder="Enter Father Name" class="form-control UserRegister__FormControl">                            
-            </div>
-            
-            
-
-            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <label class="Register__Label" for="middleNameAr"> Middle Name Arabic </label>
-                <input id="middleNameAr"  pInputText type="text" formControlName="middleNameAr" name="middleNameAr" placeholder="Enter Middle Name Arabic" class="form-control UserRegister__FormControl">                            
-            </div>
-
-            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <label class="Register__Label" for="middleNameEn"> Middle Name English </label>
-                <input id="middleNameEn"  pInputText type="text" formControlName="middleNameEn" name="middleNameEn" placeholder="Enter Middle Name English" class="form-control UserRegister__FormControl">                            
-            </div>  
-
-            
-
-            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <label class="Register__Label" for="familyNameAr"> Father Name Arabic </label>
-                <input id="familyNameAr"  pInputText type="text" formControlName="familyNameAr" name="familyNameAr" placeholder="Enter Father Name Arabic" class="form-control UserRegister__FormControl">                            
-            </div>
-
-            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <label class="Register__Label" for="familyNameEn"> Father Name English </label>
-                <input id="familyNameEn"  pInputText type="text" formControlName="familyNameEn" name="familyNameEn" placeholder="Enter Father Name English" class="form-control UserRegister__FormControl">                            
-            </div>
-
-            
-            
-            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <label class="Register__Label" for="birthdate"> Birthdate </label>
-                <input id="birthdate"  pInputText type="date" formControlName="birthdate" name="birthdate" class="form-control UserRegister__FormControl">                            
-            </div>  
-
-            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <label class="Register__Label" for="gender"> Gender </label>
-                <select name="nameEn" formControlName="gender" style="width: 100px; height: 35px;"> 
-                    <option *ngFor = "let genderItem of collectionOfLookup.GENDER" [value]="genderItem.id" >{{genderItem.nameEn}}</option>
-                </select>                     
-            </div>  
-
-            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <label class="Register__Label" for="countryCode"> Country Code </label>
-                <select name="nameEn" formControlName="countryCode" style="width: 100px; height: 35px;" > 
-                    <option *ngFor = "let countryItem of collectionOfLookup.COUNTRY" [value]="countryItem.id">{{countryItem.nameEn}}</option>
-                </select>      
-            </div>  
-
-            
-
-            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <label class="Register__Label" for="phoneNumber"> Mobile </label>
-                <input id="phoneNumber"  pInputText type="text" formControlName="phoneNumber" name="phoneNumber" class="form-control UserRegister__FormControl">                            
-            </div>  
-            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <label class="Register__Label" for="nationality"> Nationality </label>
-                <select name="nameEn" formControlName="nationality" style="width: 100px; height: 35px;"  > 
-                    <option *ngFor = "let nationalityItem of collectionOfLookup.NATIONALITY" [value]="nationalityItem.id">{{nationalityItem.nameEn}}</option>
-                </select>        
-            </div>  
-            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <label class="Register__Label" for="educationalLevel"> Educational Level </label>
-                <select name="nameEn" formControlName="educationallevel" style="width: 100px; height: 35px;"> 
-                    <option *ngFor = "let educationalLevelItem of collectionOfLookup.EDU_LEVEL" [value]="educationalLevelItem.id">{{educationalLevelItem.nameEn}}</option>
-                </select>       
-            </div>  
-
-            
-
-            <div class="form-group col-lg-3 col-md-4 col-sm-4 col-xs-4">
-                <label class="Register__Label" for="occupation"> Occupation </label>
-                <input id="occupation"  pInputText type="text" formControlName="occupation" name="occupation" class="form-control UserRegister__FormControl">                            
-            </div>  
-            <div class="form-group col-lg-3 col-md-4 col-sm-4 col-xs-4">
-                <label class="Register__Label" for="address"> Address </label>
-                <input id="address"  pInputText type="text" formControlName="address" name="address" class="form-control UserRegister__FormControl">                               
-            </div>  
-            
-        </div>                                                        
-    </div>
-
-    
-    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-auto mb-0">
-        <button type="submit" class="btn btn-primary btn-block UserRegister__Submit" > Update </button>                        
-    </div>
-
-    <div *ngIf="errorMessage" class="alert alert-danger mt-3">
-        {{ errorMessage }}
-    </div>
-</form> -->

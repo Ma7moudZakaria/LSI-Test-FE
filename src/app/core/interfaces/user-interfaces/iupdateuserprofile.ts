@@ -14,6 +14,7 @@ export interface IUpdateUserProfile {
     gender?: string;
     mobile?: string;
     countryCode?: string;
+    city?:string;
     nationality?: string;
     eduLevel?: string;
     occupation?: string;

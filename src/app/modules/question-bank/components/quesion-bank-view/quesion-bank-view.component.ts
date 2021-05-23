@@ -8,80 +8,95 @@ import { LanguageService } from 'src/app/core/services/language-services/languag
   styleUrls: ['./quesion-bank-view.component.scss']
 })
 export class QuesionBankViewComponent implements OnInit {
-  selectedQuestionId:string | undefined;
-  selectedCategoryId={id:'',arabCatgName:'',engCatgName:''}; 
-  categoryId:string|undefined;
-  inputCategoryId:string|undefined;
-  @Input() isViewAdd?:boolean; 
-  @Input() closeCategoryForm?:boolean; 
-  @Input() closeQuestionForm?:boolean; 
+  selectedQuestionId: string | undefined;
+  scientificProblem: string | undefined;
+  selectedCategoryId = { id: '', arabCatgName: '', engCatgName: '' };
+  categoryId: string | undefined;
+  inputCategoryId: string | undefined;
+  @Input() isViewAdd?: boolean;
+  @Input() closeCategoryForm?: boolean;
+  @Input() closeQuestionForm?: boolean;
   showAddQuestionForm = false;
-  submitSuccess:boolean=true;
+  submitSuccess: boolean = true;
   showAddCategoryForm = false;
-  addCategory=false;
-  isQuestionSave=false;
+  showAddscientificProblemForm = false;
+  addCategory = false;
+  isQuestionSave = false;
   constructor(public translate: TranslateService,
     private languageService: LanguageService) {
-   }
+  }
 
   ngOnInit(): void {
     this.setCurrentLang();
   }
 
-  setCurrentLang(){
+  setCurrentLang() {
     this.emitHeaderTitle();
     this.languageService.currentLanguageEvent.subscribe(res => {
       this.emitHeaderTitle();
     });
   }
 
-  emitHeaderTitle(){
+  emitHeaderTitle() {
     this.languageService.headerPageNameEvent.emit(this.translate.instant('QUESTION_BANK.TITLE'));
   }
 
-  addNew(){
+  addNew() {
     this.selectedQuestionId = '';
   }
-  loadSelectedQuesion(event:any){
-   this.selectedQuestionId = event;
-   this.showAddQuestionForm =true;
-   this.isQuestionSave=false;
+
+  loadSelectedQuesion(event: any) {
+    this.selectedQuestionId = event;
+    this.showAddQuestionForm = true;
+    this.isQuestionSave = false;
   }
 
-  setSelectedCategory(event:any){
-    this.selectedCategoryId = {id:event.id,arabCatgName:event.arabCatgName,engCatgName:event.engCatgName}; 
-  this.categoryId=event.id;
-  this.addCategory=false;
- this. isQuestionSave=false;
-    
+  setSelectedCategory(event: any) {
+    this.selectedCategoryId = { id: event.id, arabCatgName: event.arabCatgName, engCatgName: event.engCatgName };
+    this.categoryId = event.id;
+    this.addCategory = false;
+    this.isQuestionSave = false;
   }
-  closeAddQuestionForm(){
+
+  closeAddQuestionForm() {
     this.showAddQuestionForm = false;
   }
-  closeAddQuestionFormAfterSave(event:any){
+
+  closeAddQuestionFormAfterSave(event: any) {
     this.showAddQuestionForm = false;
     // this.submitSuccess = event; 
     // this.showAddQuestionForm = !event;
+  }
 
-  }
-  setInputCategoryId(event:any){
+  setInputCategoryId(event: any) {
     this.inputCategoryId = event;
-    this.showAddCategoryForm =true;
+    this.showAddCategoryForm = true;
   }
-  loadListAfterAddCategory(event:any){
-    this.addCategory=event;
+
+  loadListAfterAddCategory(event: any) {
+    this.addCategory = event;
   }
-  loadListAfterAddQuestion(){
-    this.isQuestionSave=true;
+
+  loadListAfterAddQuestion() {
+    this.isQuestionSave = true;
   }
-  closeAddCategoryForm(){
+
+  closeAddCategoryForm() {
     this.showAddCategoryForm = false;
   }
-  closeAddCategoryFormAfterSave(event:any){
+
+  closeAddCategoryFormAfterSave(event: any) {
     // this.submitSuccess = event; 
     // this.showAddCategoryForm = !event;
     this.showAddCategoryForm = false;
 
   }
 
+  openScientificProblem(event: boolean) {
+    this.showAddscientificProblemForm = event;
+  }
+
+  closeScientificProblem(event: boolean) {
+    this.showAddscientificProblemForm = event;
+  }
 }

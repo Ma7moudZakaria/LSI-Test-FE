@@ -28,11 +28,11 @@ export class ProgramsListComponent implements OnInit {
     this.scientifcMaterialService.getProgramsLookup(programName).subscribe(
       (res: BaseResponseModel) => {
         this.programs = res.data as IprogramsModel[];
-
-      }, error => {
-        
+      this.loadProgramMaterial({})
+     this.selectedIndex=-1;
+      }, error => {        
         this.resMessage = {
-          message: error.message,
+          message: error,
           type: BaseConstantModel.DANGER_TYPE
         }
       }

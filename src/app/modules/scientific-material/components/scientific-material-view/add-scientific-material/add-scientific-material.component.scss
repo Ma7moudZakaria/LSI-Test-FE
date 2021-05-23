@@ -98,7 +98,9 @@ label{
 
 }
 
-
+.buttons-center{
+    margin: 5rem;
+}
 // input with +
 .input-group:not(.has-validation)>.form-control:not(:last-child) {
     border-top-right-radius: 0.65rem;

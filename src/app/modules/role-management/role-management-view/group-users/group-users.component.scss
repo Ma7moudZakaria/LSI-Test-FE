@@ -1,0 +1,47 @@
+@import 'src/assets/scss/_variables.scss';
+
+.group_user {
+  background: #fbfbfb;
+  width: 100%;
+}
+.label_sreach {
+  color: #3a3a3a;
+  font-size: 18px;
+  padding: 8px;
+}
+.m-t-15 {
+  margin-top: 20px;
+}
+.p-t-15 {
+  padding-top: 15px;
+}
+.max_h {
+  min-height: 66vh;
+  max-height: 66vh;
+  overflow-y: scroll;
+}
+.save-btn{
+  background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
+  background: #8E2520 0% 0% no-repeat padding-box;
+  border-radius: 12px;
+  opacity: 1;
+  opacity: 1;
+  width:100%;
+  padding: 0.5rem;
+  height: 2.31rem;
+  border: none;
+  color: #ffffff;
+  display: block;
+  }
+  .cancel-btn{
+      background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
+      background:$icon_input ;
+      border-radius: 12px;
+      opacity: 1;
+      width:100%;
+      padding: 0.5rem;
+      height: 2.31rem;
+      border: none;
+      color: #ffffff;
+      display: block;
+      }

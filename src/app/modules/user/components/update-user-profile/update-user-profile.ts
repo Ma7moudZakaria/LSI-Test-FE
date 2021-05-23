@@ -1,8 +1,9 @@
 import { LIVE_ANNOUNCER_DEFAULT_OPTIONS } from '@angular/cdk/a11y';
 import { formatDate } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-date-struct';
 import { TranslateService } from '@ngx-translate/core';
 import { error } from 'selenium-webdriver';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
@@ -37,9 +38,9 @@ export class UpdateUserProfileComponent implements OnInit {
   currentUser: IUser | undefined;
   isSubmit = false;
   listOfLookupProfile: string[] = ['GENDER', 'EDU_LEVEL', 'NATIONALITY', 'COUNTRY'
-  ,'SCIENTIFIC_ARCHIVES','TRAINING_COURSES', 'SYSTEM_SHEIKHS'];
+    , 'SCIENTIFIC_ARCHIVES', 'TRAINING_COURSES', 'SYSTEM_SHEIKHS'];
   userProfileDetails = {} as IUserProfile;
-  updateUserModel : IUpdateUserProfile = {};
+  updateUserModel: IUpdateUserProfile = {};
   collectionOfLookup = {} as ILookupCollection;
   fileUploadModel: IFileUpload[] = [];
   fileList: IAttachment[] = [];
@@ -47,12 +48,17 @@ export class UpdateUserProfileComponent implements OnInit {
   quraanParts = new Array(30);
   selectedShiekhsList = Array<BaseLookupModel>();
   selectedArchivesList = Array<BaseLookupModel>();
-  archiveMessage : BaseMessageModel = {};
-  shiekhsMessage:BaseMessageModel = {};
+  archiveMessage: BaseMessageModel = {};
+  shiekhsMessage: BaseMessageModel = {};
   selectedTrainingCourseList = Array<BaseLookupModel>();
-  coursesMessage : BaseMessageModel = {};
+  coursesMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
-  telInputParam : ITelInputParams = {}
+  telInputParam: ITelInputParams = {}
+  hijriBinding: any;
+  hijri: boolean = false;
+  milady: boolean = false;
+
+  hijriBirthDateInputParam:NgbDateStruct= {year:0,day:0,month:0};
   // = {
   //   // phoneNumber:'+201062100486',
   //   isRequired : true,
@@ -63,7 +69,7 @@ export class UpdateUserProfileComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private lookupService: LookupService,
-    private userService: UserService,
+    public userService: UserService,
     private attachmentService: AttachmentsService,
     private userProfileService: UserService,
     public translate: TranslateService,
@@ -81,7 +87,7 @@ export class UpdateUserProfileComponent implements OnInit {
         this.getUserProfile(this.currentUser?.id)
       }
       else {
-        this.resMessage = 
+        this.resMessage =
         {
           message: res.message,
           type: BaseConstantModel.DANGER_TYPE
@@ -90,19 +96,79 @@ export class UpdateUserProfileComponent implements OnInit {
     });
   }
 
-  getCountryIsoCode(){
+  @HostListener('window:beforeunload', ['$event'])
+  public onPageUnload($event: BeforeUnloadEvent) {
+    if (this.unsavedDataCheck()) {
+      $event.returnValue = true;
+      // return "message";
+    }
+    else{
+      $event.returnValue = false;
+      // return '';
+    }
+  }
+
+  @HostListener('window:popstate', ['$event'])
+  onPopState(event:any) {
+    this.userService.setCanDeActivate(this.unsavedDataCheck());
+  }
+
+  unsavedDataCheck() : boolean{
+    let  birthDateFromDetails=new Date(this.userProfileDetails?.birthdate||"");
+    return this.profileForm.value.firstNameAr != this.userProfileDetails?.fnameAr
+    || this.profileForm.value.firstNameEn != this.userProfileDetails?.faNameEn
+    || this.profileForm.value.middleNameAr != this.userProfileDetails?.mnameAr
+    || this.profileForm.value.middleNameEn != this.userProfileDetails?.mnameEn
+    || this.profileForm.value. familyNameAr!= this.userProfileDetails?.fanameAr
+    || this.profileForm.value. familyNameEn!= this.userProfileDetails?.faNameEn
+    // || this.profileForm.value.birthdate.getTime() != birthDateFromDetails.getTime()
+    // || this.profileForm.value.birthdate != this.userProfileDetails?.birthdate
+    || this.profileForm.value.gender != this.userProfileDetails?.gender
+    || this.profileForm.value.phoneNumber!= this.userProfileDetails?.mobile
+    || this.profileForm.value.countryCode!= this.userProfileDetails?.countryCode
+    || this.profileForm.value.city!= this.userProfileDetails?.city
+    || this.profileForm.value.nationality!= this.userProfileDetails?.nationality
+    || this.profileForm.value.educationallevel!= this.userProfileDetails?.eduLevel
+    || this.profileForm.value.occupation!= this.userProfileDetails?.occupation
+    || this.profileForm.value.address!= this.userProfileDetails?.address
+    || this.profileForm.value.quraanMemorization!= this.userProfileDetails?.quraanMemorizeAmount
+   // || this.profileForm.value.ejazaAttachments!= this.userProfileDetails?.ejazaAttachments
+  }
+
+  getCountryIsoCode() {
     this.userService.getCountryIsoCode().subscribe(res => {
       let code = res.data as string;
       this.telInputParam = {
         // phoneNumber:'+201062100486',
-        isRequired : true,
-        countryIsoCode: '{"initialCountry": "' + code.toLowerCase() +'"}'
+        isRequired: true,
+        countryIsoCode: '{"initialCountry": "' + code.toLowerCase() + '"}'
       }
       // this.telInputParam.countryIsoCode = '{"initialCountry": "' + code.toLowerCase() +'"}';
     })
   }
 
-  setCurrentLang(){
+  getCitiesLookupByCountry(id?:string){
+     let countryId = this.f['countryCode'].value;
+
+    //let countryId = this.profileForm.value.countryCode;
+
+    this.lookupService.getCitiesByCountryId(countryId || '').subscribe(res => {
+      // this.collectionOfLookup.CITY = res.data;
+      if (res.isSuccess) {
+        this.collectionOfLookup.CITY = res.data;
+        this.collectionOfLookup && this.collectionOfLookup.CITY ? this.f.city.setValue(this.collectionOfLookup.CITY[0].id):'';
+      }
+      else {
+        this.resMessage =
+        {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+    });
+  }
+
+  setCurrentLang() {
     this.emitHeaderTitle();
     this.languageService.currentLanguageEvent.subscribe(res => {
       this.emitHeaderTitle();
@@ -111,11 +177,11 @@ export class UpdateUserProfileComponent implements OnInit {
     });
   }
 
-  emitHeaderTitle(){
+  emitHeaderTitle() {
     this.languageService.headerPageNameEvent.emit(this.translate.instant('UPDATE_USER_PG.TITLE'));
   }
 
-  isRtlMode(){
+  isRtlMode() {
     return this.translate.currentLang == LanguageEnum.ar ? true : false;
   }
 
@@ -123,17 +189,25 @@ export class UpdateUserProfileComponent implements OnInit {
     this.userService.viewUserProfileDetails(id || '').subscribe(res => {
       if (res.isSuccess) {
         this.userProfileDetails = res.data as IUserProfile;
-        if (!this.userProfileDetails?.proPic){
+
+        if (!this.userProfileDetails?.proPic) {
           this.userProfileDetails.proPic = '../../../../../assets/images/Profile.svg';
         }
-        this.PopulateForm()
+
+        this.PopulateForm();
+        this.getCitiesLookupByCountry(this.userProfileDetails.countryCode);
       }
       else {
-        this.resMessage = 
+        this.resMessage =
         {
           message: res.message,
           type: BaseConstantModel.DANGER_TYPE
         }
+      }
+    }, error => {
+      this.resMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
       }
     });
   }
@@ -141,12 +215,12 @@ export class UpdateUserProfileComponent implements OnInit {
   onSubmit(value: string) {
     this.isSubmit = true;
     this.resMessage = {}
-    if (this.profileForm.valid){
+    if (this.profileForm.valid) {
       this.updateUserModel = {
         usrId: this.currentUser?.id,
-        firstAr: this.profileForm.value.firstNameAr != null ? this.profileForm.value.firstNameAr : this.userProfileDetails.fnameAr ,
-        firstEn: this.profileForm.value.firstNameEn != null ? this.profileForm.value.firstNameEn : this.userProfileDetails.fnameEn ,
-        middleAr: this.profileForm.value.middleNameAr != null ? this.profileForm.value.middleNameAr : this.userProfileDetails.mnameAr ,
+        firstAr: this.profileForm.value.firstNameAr != null ? this.profileForm.value.firstNameAr : this.userProfileDetails.fnameAr,
+        firstEn: this.profileForm.value.firstNameEn != null ? this.profileForm.value.firstNameEn : this.userProfileDetails.fnameEn,
+        middleAr: this.profileForm.value.middleNameAr != null ? this.profileForm.value.middleNameAr : this.userProfileDetails.mnameAr,
         middleEn: this.profileForm.value.middleNameEn != null ? this.profileForm.value.middleNameEn : this.userProfileDetails.mnameEn,
         familyAr: this.profileForm.value.familyNameAr != null ? this.profileForm.value.familyNameAr : this.userProfileDetails.fanameAr,
         familyEn: this.profileForm.value.familyNameEn != null ? this.profileForm.value.familyNameEn : this.userProfileDetails.faNameEn,
@@ -154,14 +228,15 @@ export class UpdateUserProfileComponent implements OnInit {
         gender: this.profileForm.value.gender,
         mobile: this.profileForm.value.phoneNumber,
         countryCode: this.profileForm.value.countryCode,
+        city:this.profileForm.value.city,
         nationality: this.profileForm.value.nationality,
         eduLevel: this.profileForm.value.educationallevel,
         occupation: this.profileForm.value.occupation,
         address: this.profileForm.value.address,
-        quraanMemorizeAmount : this.profileForm.value.quraanMemorization,
-        ejazaIds : this.ejazaAttachmentIds,
+        quraanMemorizeAmount: this.profileForm.value.quraanMemorization,
+        ejazaIds: this.ejazaAttachmentIds,
       }
-      
+
       this.coursesMessage = {};
       this.archiveMessage = {};
       this.shiekhsMessage = {};
@@ -171,10 +246,10 @@ export class UpdateUserProfileComponent implements OnInit {
         Array.from(this.selectedShiekhsList).forEach((elm: BaseLookupModel) => {
           if (this.updateUserModel.sheikhs) {
             this.updateUserModel.sheikhs.push({
-              sheikhsIds:elm.id
-            }); 
+              sheikhsIds: elm.id
+            });
           }
-    
+
         });
       }
       this.updateUserModel.scientificArchives = [];
@@ -182,10 +257,10 @@ export class UpdateUserProfileComponent implements OnInit {
         Array.from(this.selectedArchivesList).forEach((elm: BaseLookupModel) => {
           if (this.updateUserModel.scientificArchives) {
             this.updateUserModel.scientificArchives.push({
-              archiveId:elm.id
-            }); 
+              archiveId: elm.id
+            });
           }
-    
+
         });
       }
       this.updateUserModel.courses = [];
@@ -193,17 +268,17 @@ export class UpdateUserProfileComponent implements OnInit {
         Array.from(this.selectedTrainingCourseList).forEach((elm: BaseLookupModel) => {
           if (this.updateUserModel.courses) {
             this.updateUserModel.courses.push({
-              coursesIds:elm.id
-            }); 
+              coursesIds: elm.id
+            });
           }
-    
+
         });
       }
       this.userProfileService.updateUser(this.updateUserModel).subscribe(
         res => {
           if (res.isSuccess) {
             this.isSubmit = false;
-            
+
             this.resMessage = {
               message: res.message,
               type: BaseConstantModel.SUCCESS_TYPE
@@ -216,7 +291,7 @@ export class UpdateUserProfileComponent implements OnInit {
               type: BaseConstantModel.DANGER_TYPE
             }
           }
-        },error =>{
+        }, error => {
           // this.isSubmit = false;
           this.resMessage = {
             message: error,
@@ -225,7 +300,7 @@ export class UpdateUserProfileComponent implements OnInit {
         }
       );
     }
-    else{
+    else {
       this.resMessage = {
         message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
         type: BaseConstantModel.DANGER_TYPE
@@ -238,63 +313,63 @@ export class UpdateUserProfileComponent implements OnInit {
   }
 
   buildForm() {
-
-    if(this.translate.currentLang === LanguageEnum.ar)
-    {
+    if (this.translate.currentLang === LanguageEnum.ar) {
       this.profileForm = this.fb.group(
         {
-          firstNameAr: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
-          middleNameAr: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
-          familyNameAr: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
-          birthdate: [''],
+          firstNameAr: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+          middleNameAr: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+          familyNameAr: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+          birthdate: ['', [Validators.required]],
           email: [''],
           nationality: [null, Validators.required],
           educationallevel: [null, Validators.required],
           gender: [null, Validators.required],
-          address: ['', [Validators.required, Validators.minLength(6) , Validators.maxLength(50)]],
+          address: [''],// address: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
           phoneNumber: ['', [Validators.required/*,Validators.pattern(BaseConstantModel.mobilePattern), Validators.minLength(6), Validators.maxLength(16)*/]],
           occupation: [null, Validators.required],
-          countryCode: [null, Validators.required],
-          quraanMemorization: ['', Validators.required],
+          countryCode: [null, Validators.required],          
+          city: [null, Validators.required],
+          quraanMemorization:['', [Validators.pattern(BaseConstantModel.numberBiggerThanZero)]],
           userSheikhs: [],
           userArchives: [],
-          userCourses : []
-          
+          userCourses: []
+
         }
       )
     }
-    else{
+    else {
       this.profileForm = this.fb.group(
         {
-          firstNameEn: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
-          middleNameEn: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
-          familyNameEn: ['', [Validators.required, Validators.minLength(2) , Validators.maxLength(50)]],
-          birthdate: [''],
+          firstNameEn: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+          middleNameEn: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+          familyNameEn: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+          birthdate: ['', [Validators.required]],
           email: [''],
           nationality: [null, Validators.required],
           educationallevel: [null, Validators.required],
           gender: [null, Validators.required],
-          address: ['', [Validators.required, Validators.minLength(6) , Validators.maxLength(50)]],
-          phoneNumber: ['', [Validators.required,Validators.pattern(BaseConstantModel.mobilePattern)]],
+          address: [''],
+          phoneNumber: ['', [Validators.required, Validators.pattern(BaseConstantModel.mobilePattern)]],
           occupation: [null, Validators.required],
           countryCode: [null, Validators.required],
-          quraanMemorization: ['', Validators.required],
+          city: [null, Validators.required],
+          quraanMemorization:['', [Validators.pattern(BaseConstantModel.numberBiggerThanZero)]],
           userSheikhs: [],
           userArchives: [],
-          userCourses : []
-          
+          userCourses: []
+
         }
       )
     }
   }
 
   PopulateForm() {
-    if (this.translate.currentLang === LanguageEnum.ar){
+    if (this.translate.currentLang === LanguageEnum.ar) {
       this.f.firstNameAr.setValue(this.userProfileDetails?.fnameAr);
       this.f.middleNameAr.setValue(this.userProfileDetails?.mnameAr);
-     this.f.familyNameAr.setValue(this.userProfileDetails?.fanameAr);
-    }  
-    if (this.translate.currentLang === LanguageEnum.en){
+      this.f.familyNameAr.setValue(this.userProfileDetails?.fanameAr);
+    }
+    if (this.translate.currentLang === LanguageEnum.en) {
       this.f.firstNameEn.setValue(this.userProfileDetails?.fnameEn);
       this.f.middleNameEn.setValue(this.userProfileDetails?.mnameEn);
       this.f.familyNameEn.setValue(this.userProfileDetails?.faNameEn);
@@ -302,36 +377,42 @@ export class UpdateUserProfileComponent implements OnInit {
     this.f.address.setValue(this.userProfileDetails?.address);
     this.f.gender.setValue(this.userProfileDetails?.gender);
     this.f.email.setValue(this.userProfileDetails?.usrEmail);
-    let birthdate = new Date(this.userProfileDetails?.birthdate || '');
-    if (!isNaN(birthdate.getTime())){
-      this.f.birthdate.setValue(
-        new Date(birthdate.setDate(birthdate.getDate() + 1))
-          .toISOString()
-          .slice(0, 10)
-      );
-    }
+    // let birthdate = new Date(this.userProfileDetails?.birthdate || '');
+    // if (!isNaN(birthdate.getTime())) {
+    //   this.f.birthdate.setValue(
+    //     new Date(birthdate.setDate(birthdate.getDate() + 1))
+    //       .toISOString()
+    //       .slice(0, 10)
+    //   );
+    // }
+    let date = new Date(this.userProfileDetails?.birthdate || '');
+
+    this.hijriBirthDateInputParam = {year : date.getFullYear(), month : date.getMonth() + 1, day:date.getDay()}
+    this.f.birthdate.setValue(date);
+
     this.f.nationality.setValue(this.userProfileDetails?.nationality);
     this.f.occupation.setValue(this.userProfileDetails?.occupation);
     this.f.educationallevel.setValue(this.userProfileDetails?.eduLevel);
     this.f.phoneNumber.setValue(this.userProfileDetails?.mobile);
     this.telInputParam.phoneNumber = this.userProfileDetails?.mobile;
     this.f.countryCode.setValue(this.userProfileDetails?.countryCode);
+    this.f.city.setValue(this.userProfileDetails?.city);
     this.f.quraanMemorization.setValue(this.userProfileDetails?.quraanMemorizeAmount);
-    this.fileList   = this.userProfileDetails?.ejazaAttachments;
+    this.fileList = this.userProfileDetails?.ejazaAttachments;
     this.userProfileDetails?.ejazaAttachments.forEach(element => {
       this.ejazaAttachmentIds.push(element.id);
     });
-    if (this.userProfileDetails?.usrSheikhs) {      
-      this.selectedShiekhsList =  this.userProfileDetails?.usrSheikhs;
+    if (this.userProfileDetails?.usrSheikhs) {
+      this.selectedShiekhsList = this.userProfileDetails?.usrSheikhs;
     }
-    if (this.userProfileDetails?.usrScientificArchives) {      
-      this.selectedArchivesList =  this.userProfileDetails?.usrScientificArchives;
+    if (this.userProfileDetails?.usrScientificArchives) {
+      this.selectedArchivesList = this.userProfileDetails?.usrScientificArchives;
     }
-    if (this.userProfileDetails?.usrCourses) {      
-      this.selectedTrainingCourseList =  this.userProfileDetails?.usrCourses;
+    if (this.userProfileDetails?.usrCourses) {
+      this.selectedTrainingCourseList = this.userProfileDetails?.usrCourses;
     }
   }
-  
+
   // fillUserShiekhsList(list) {
   //     let look = this.jobSectorsLookup;
   //     return list.map(function mapping(item) {
@@ -347,31 +428,36 @@ export class UpdateUserProfileComponent implements OnInit {
   //     });
   // }
 
-  onFileChange(files:any){
+  onFileChange(files: any) {
     let profImagModel: IUserProfilePicture = {
-      usrId : this.currentUser?.id,
-      image : files[0]
+      usrId: this.currentUser?.id,
+      image: files[0]
     }
     this.updateProfilePic(profImagModel);
   }
 
-  updateProfilePic(profImagModel:IUserProfilePicture){
-    const formData=new FormData();
+  updateProfilePic(profImagModel: IUserProfilePicture) {
+    const formData = new FormData();
     // formData.append('image', profImagModel.image);
 
     // profImagModel.image = formData;
-    formData.append('UserProfilePictureModel.UserId',profImagModel.usrId || '');
-    formData.append('UserProfilePictureModel.ProfileImage',profImagModel.image);
+    formData.append('UserProfilePictureModel.UserId', profImagModel.usrId || '');
+    formData.append('UserProfilePictureModel.ProfileImage', profImagModel.image);
 
     this.userService.updateUserProfilePic(formData).subscribe(res => {
-      if (res.isSuccess){
+      if (res.isSuccess) {
         this.userProfileDetails.proPic = res.data as string;
       }
-      else{
+      else {
         this.resMessage = {
-          message : res.message,
-          type : BaseConstantModel.DANGER_TYPE
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
         }
+      }
+    }, error => {
+      this.resMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
       }
     })
   }
@@ -411,16 +497,16 @@ export class UpdateUserProfileComponent implements OnInit {
       }, error => {
         console.log(error);
         this.fileUploadModel = [];
-        this.resMessage = 
+        this.resMessage =
         {
-          message: error.message,
+          message: error,
           type: BaseConstantModel.DANGER_TYPE
-        } 
+        }
       }
     )
   }
 
-  addUserShiekhs(){
+  addUserShiekhs() {
     if (!this.profileForm.value.userSheikhs) {
       this.shiekhsMessage = {
         message: this.translate.instant('UPDATE_USER_PG.CHOOSE_SHEIKHS'),
@@ -445,17 +531,17 @@ export class UpdateUserProfileComponent implements OnInit {
     if (!exist) {
       if (this.collectionOfLookup.SYSTEM_SHEIKHS) {
         this.selectedShiekhsList.push(
-          this.collectionOfLookup.SYSTEM_SHEIKHS.filter(el => el.id == this.profileForm.value.userSheikhs)[0]);  
+          this.collectionOfLookup.SYSTEM_SHEIKHS.filter(el => el.id == this.profileForm.value.userSheikhs)[0]);
       }
-    }      
+    }
   }
 
-  removeItemFromSelectedShiekhs(item:any) {
+  removeItemFromSelectedShiekhs(item: any) {
     let index = this.selectedShiekhsList.indexOf(item);
     this.selectedShiekhsList.splice(index, 1);
   }
 
-  addUserArchives(){
+  addUserArchives() {
     if (!this.profileForm.value.userArchives) {
       // if (this.translate.currentLang == 'ar') {
       //   this.archiveMessage = {
@@ -480,17 +566,17 @@ export class UpdateUserProfileComponent implements OnInit {
     if (!exist) {
       if (this.collectionOfLookup.SCIENTIFIC_ARCHIVES) {
         this.selectedArchivesList.push(
-          this.collectionOfLookup.SCIENTIFIC_ARCHIVES.filter(el => el.id == this.profileForm.value.userArchives)[0]);  
+          this.collectionOfLookup.SCIENTIFIC_ARCHIVES.filter(el => el.id == this.profileForm.value.userArchives)[0]);
       }
-    }      
+    }
   }
-  
-  removeItemFromSelectedArchives(item:any) {
+
+  removeItemFromSelectedArchives(item: any) {
     let index = this.selectedArchivesList.indexOf(item);
     this.selectedArchivesList.splice(index, 1);
   }
 
-  addUserCourses(){
+  addUserCourses() {
     if (!this.profileForm.value.userCourses) {
       // if (this.translate.currentLang == 'ar') {
       //   this.coursesMessage = {
@@ -515,17 +601,25 @@ export class UpdateUserProfileComponent implements OnInit {
     if (!exist) {
       if (this.collectionOfLookup.TRAINING_COURSES) {
         this.selectedTrainingCourseList.push(
-          this.collectionOfLookup.TRAINING_COURSES.filter(el => el.id == this.profileForm.value.userCourses)[0]);  
+          this.collectionOfLookup.TRAINING_COURSES.filter(el => el.id == this.profileForm.value.userCourses)[0]);
       }
-    }      
+    }
   }
 
-  removeItemFromSelectedCourses(item:any) {
+  removeItemFromSelectedCourses(item: any) {
     let index = this.selectedTrainingCourseList.indexOf(item);
     this.selectedTrainingCourseList.splice(index, 1);
   }
 
-  applyPhoneNumber(phoneNumber:string){
+  applyPhoneNumber(phoneNumber: string) {
     this.f.phoneNumber.setValue(phoneNumber);
+  }
+
+  Hijri(date: any) {
+    date = date.year + '/' + date.month + '/' + date.day;
+    console.log("Hijri date", date)
+    this.hijriBinding = date
+
+    this.f.birthdate.setValue(date);
   }
 }
