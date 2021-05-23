@@ -681,8 +681,8 @@ export class UpdateTeacherProfileComponent implements OnInit {
     }
     this.teacherProgramsMessage = {};
 
-    const existDegree = this.selectedTeacherProgramsList.some(el => el.id === this.profileForm.value.teacherProgramDegrees)
-    const existProgram = this.selectedTeacherProgramsList.some(el => el.id === this.profileForm.value.teacherPrograms)
+    const existDegree = this.selectedTeacherProgramsList.some(el => el.degreeId === this.profileForm.value.teacherProgramDegrees)
+    const existProgram = this.selectedTeacherProgramsList.some(el => el.programId === this.profileForm.value.teacherPrograms)
     if (!existDegree && !existProgram) {
       if (this.collectionOfLookup.DEGREE && this.ProgramsList) {
         this.teacherProgramModel = {
