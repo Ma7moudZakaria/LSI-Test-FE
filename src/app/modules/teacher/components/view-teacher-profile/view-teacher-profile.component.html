@@ -38,7 +38,7 @@
                                 {{ translate.currentLang === lang.en ? teacherProfileDetails?.faNameEn : teacherProfileDetails?.fanameAr }} 
                                 
                             </p>
-                            <p class="brith_date">starts</p>
+                            <p class="brith_date">stars</p>
                             <span class="brith_date"> {{ teacherProfileDetails?.hijriBirthDate }} </span>
                         </div>
                         
@@ -200,7 +200,7 @@
                                     </div>
                                     <div class="col-12 times_programs">
                                         <div class="row">
-                                        <div class="col-4" *ngFor="let item of teacherProfileDetails?.interviewDays">
+                                        <div class="col-4" *ngFor="let item of teacherProfileDetails?.availabilityDays">
                                             <div class="badges" >
                                                 <div class="badge badge-info p-2 ">
                                                 <div class="d-flex justify-content-between mt-0">

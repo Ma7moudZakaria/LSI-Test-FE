@@ -1,6 +1,6 @@
 
 import { IAttachment } from "../attachments-interfaces/iattachment";
-import { ITeacherProfileInterviewDayLookup } from "./iteacher-profile-interview-day-lookup";
+import { ITeacherProfileAvailabilityLookup } from "./iteacher-availability-lookup";
 import { ITeacherProfileLookup } from "./iteacher-profile-lookup";
 import { ITeacherProfileProgramDegreeLookup } from "./iteacher-profile-program-lookup";
 
@@ -55,7 +55,7 @@ export interface ITeacherProfile{
     interviewId?:string;
     interviewAr?:string;
     interviewEn?:string;
-    fromTime?:string;
+    interviewTime?:string;
     bankName?:string;
     bankNumber?:string;
     usrName?:string;
@@ -63,7 +63,7 @@ export interface ITeacherProfile{
     proPic?:string;
     ejazaAttachments?:IAttachment[];
     teacherPrograms ?: ITeacherProfileProgramDegreeLookup[];
-    interviewDays ?: ITeacherProfileInterviewDayLookup[];
+    availabilityDays ?: ITeacherProfileAvailabilityLookup[];
     rewayats ?: ITeacherProfileLookup[];
     languages ?: ITeacherProfileLookup[];
 }

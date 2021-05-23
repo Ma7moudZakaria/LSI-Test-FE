@@ -21,6 +21,7 @@ export class MiladyHijriCalendarComponent implements OnInit {
   dateFromString: string = '';
   maxGreg!: NgbDateStruct;
   maxHijri!: NgbDateStruct;
+  // minHijri!: NgbDateStruct;
 
   isSubmit = false;
   GregLabel = 'ميلادي';
@@ -35,6 +36,7 @@ export class MiladyHijriCalendarComponent implements OnInit {
   constructor(public translate: TranslateService , public languageService: LanguageService) { }
 
   ngOnInit(): void {
+    // this.minHijri = Date.now() || 2020;
     this.setCurrentLang();
   }
 
@@ -57,6 +59,15 @@ export class MiladyHijriCalendarComponent implements OnInit {
 
   emitData(data: any) {
     console.log(data)
+    // let DateNow = Date.now();
+
+    // // let YearDate = DateNow.toString("yyyy mm dd");
+
+    // if(data > DateNow){
+    //   this.sendDate.emit(data)      
+    // }
+    
+
     this.sendDate.emit(data)
   }
 
