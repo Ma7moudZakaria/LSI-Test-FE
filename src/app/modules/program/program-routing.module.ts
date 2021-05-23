@@ -1,11 +1,13 @@
+import { ProgramDetailsComponent } from './components/program-details/program-details.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { WrapperProgramComponent } from './components/wrapper-program/wrapper-program.component';
+import { AddProgramComponent } from './components/add-program/add-program.component';
 
 const routes: Routes = [
 
 
-  { path: '', component: WrapperProgramComponent },
+  { path: '', component: ProgramDetailsComponent },
+  { path: 'add-program', component: AddProgramComponent }
 
 
 ];

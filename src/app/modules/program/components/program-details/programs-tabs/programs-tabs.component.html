@@ -1,0 +1,55 @@
+
+    <div class="row group_header fix_margin w-100">
+        <div class="item_group" (click)="showTap = 'BASEINFO'"
+        [ngClass]="{ item_group_active: showTap == 'BASEINFO' }" >
+           
+            البيانات الاساسية
+        </div>
+        <div class="item_group" (click)="showTap = 'STUDENS'"
+        [ngClass]="{ item_group_active: showTap == 'STUDENS' }" >
+           
+        الطلاب
+        </div>
+        
+        <div class="item_group" (click)="showTap = 'PROGRESSTEST'"
+        [ngClass]="{ item_group_active: showTap == 'PROGRESSTEST' }">
+            اختبار مرحلي
+        </div>
+        <div class="item_group" (click)="showTap = 'DAYS'"
+        [ngClass]="{ item_group_active: showTap == 'DAYS' }">
+            الايام
+        </div>
+        <div class="item_group" (click)="showTap = 'JOIN'"
+        [ngClass]="{ item_group_active: showTap == 'JOIN' }" >
+            طلبات الانضمام
+        </div>
+        <div class="item_group" (click)="showTap = 'VACATION'"
+        [ngClass]="{ item_group_active: showTap == 'VACATION'}">
+             طلبات الاجازات
+        </div>
+        <div class="item_group" (click)="showTap = 'NOTIFACATION'"
+        [ngClass]="{ item_group_active: showTap == 'NOTIFACATION' }">
+            تنبيهات 
+        </div>
+        <div class="item_group" (click)="showTap = 'CANDITION'"
+        [ngClass]="{ item_group_active: showTap == 'CANDITION' }">
+         شروط 
+        </div>
+    </div>
+    <!-- {{selectedRoleId | json}} -->
+   
+    <div class="row fix_margin w-100" >
+        <div class="col-12 px-0 ">
+
+           <app-basic-information *ngIf="showTap == 'BASEINFO'"></app-basic-information>
+           <app-days *ngIf="showTap == 'DAYS'"></app-days>
+           <app-conditions *ngIf="showTap == 'CANDITION'"></app-conditions>
+           <app-join-requests *ngIf="showTap == 'JOIN'"></app-join-requests>
+           <app-notify *ngIf="showTap == 'NOTIFACATION'"></app-notify>
+           <app-progress-test  *ngIf="showTap == 'PROGRESSTEST'"></app-progress-test>
+           <app-students *ngIf="showTap == 'STUDENS'"></app-students>
+           <app-vacation-requests *ngIf="showTap == 'VACATION'"></app-vacation-requests>
+           
+        </div>
+
+    </div>
