@@ -13,6 +13,7 @@ export class GroupListComponent implements OnInit {
   @Input() listRole!: Role[];
   @Input() selectedRoleId?: string;
   @Output() deleteRole = new EventEmitter<string>();
+  @Output() editRole = new EventEmitter<Role>();
   @Output() showAddGroup = new EventEmitter<boolean>();
   @Output() filterRole = new EventEmitter<string>();
   @Output() getRoleDetails = new EventEmitter<string>();
@@ -42,5 +43,8 @@ export class GroupListComponent implements OnInit {
 
   getDetails(id: string) {
     this.getRoleDetails?.emit(id)
+  }
+  edit(event: Role){
+    this.editRole.emit(event)
   }
 }
