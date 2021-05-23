@@ -16,6 +16,7 @@ import { TeacherProfileService } from 'src/app/core/services/teacher-profile/tea
   styleUrls: ['./view-teacher-profile.component.scss']
 })
 export class ViewTeacherProfileComponent implements OnInit {
+  starsSelected=5;
   listbadges = [1, 2]
   RouteParams = {} as string;
   teacherProfileDetails = {} as ITeacherProfile;

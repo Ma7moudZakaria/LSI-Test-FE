@@ -38,8 +38,14 @@
                                 {{ translate.currentLang === lang.en ? teacherProfileDetails?.faNameEn : teacherProfileDetails?.fanameAr }} 
                                 
                             </p>
+                            <ngb-rating [(rate)]="starsSelected" [max]="5" [readonly]="true">
+                                <ng-template let-fill="fill" let-index="index">
+                                    <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                                  </ng-template>
+                            </ngb-rating>
+                            <!-- <ngb-rating [(rate)]="5" [readonly]="readonly"></ngb-rating> -->
                             <!-- <p class="brith_date">starts</p> -->
-                            <span class="brith_date"> {{ teacherProfileDetails?.hijriBirthDate }} </span>
+                            <p class="brith_date"> {{ teacherProfileDetails?.hijriBirthDate }} </p>
                         </div>
                         
                            

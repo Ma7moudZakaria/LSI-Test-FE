@@ -25,7 +25,6 @@ import { UsersCounterComponent } from './components/users-counter/users-counter.
 import { KhatmeenStudentsComponent } from './components/khatmeen-students/khatmeen-students.component';
 import { StudentNumbersComponent } from './components/student-numbers/student-numbers.component';
 import { StudentsRatingComponent } from './components/students-rating/students-rating.component';
-import { RatingModule } from 'ng-starrating';
 import { CardStudentScientificProblemComponent } from './components/card-student-scientific-problem/card-student-scientific-problem.component';
 import { CardAdminScientificProblemComponent } from './components/card-admin-scientific-problem/card-admin-scientific-problem.component';
 import { QuestionTemplateComponent } from './components/question-template/question-template.component';
@@ -34,7 +33,7 @@ import { VoiceRecordingComponent } from './components/voice-recording/voice-reco
 import { ScientificProblemsGridComponent } from './components/scientific-problems-grid/scientific-problems-grid.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { NotAuthComponent } from './components/not-auth/not-auth.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbRating, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { GroupUsersCardComponent } from './components/group-users-card/group-users-card.component';
 import { InputSearchListComponent } from './components/input-search-list/input-search-list.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -44,11 +43,13 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
     SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,
     StudentNumbersComponent, StudentsRatingComponent, CardStudentScientificProblemComponent, CardAdminScientificProblemComponent,
-    QuestionTemplateComponent, VoiceRecordingComponent, ScientificProblemsGridComponent, NotAuthComponent,GroupUsersCardComponent,InputSearchListComponent],
+    QuestionTemplateComponent, VoiceRecordingComponent, ScientificProblemsGridComponent, NotAuthComponent,GroupUsersCardComponent,
+    InputSearchListComponent],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,
-    MatIconModule, RatingModule, FormsModule, MatCheckboxModule, MatRadioModule, MatGridListModule, NgbModule,MatAutocompleteModule
+    MatIconModule, FormsModule, MatCheckboxModule, MatRadioModule, MatGridListModule, 
+    NgbModule,MatAutocompleteModule,NgbRatingModule
   ],
   exports: [
     MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule, Ng2TelInputModule,
@@ -56,7 +57,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent,
     UsersCounterComponent, KhatmeenStudentsComponent, StudentNumbersComponent, StudentsRatingComponent,
     CardStudentScientificProblemComponent, QuestionTemplateComponent, VoiceRecordingComponent, MatGridListModule,
-    ScientificProblemsGridComponent, CardAdminScientificProblemComponent, NotAuthComponent,GroupUsersCardComponent,InputSearchListComponent
+    ScientificProblemsGridComponent, CardAdminScientificProblemComponent, NotAuthComponent,GroupUsersCardComponent,
+    InputSearchListComponent,NgbRatingModule
   ]
 })
 export class SharedModule { }

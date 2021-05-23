@@ -8,6 +8,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatRadioModule } from '@angular/material/radio';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [ViewTeacherProfileComponent, UpdateTeacherProfileComponent],
@@ -18,7 +19,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     FormsModule,
     TranslateModule,
     MatTooltipModule,
-    MatRadioModule, SharedModule
+    MatRadioModule, SharedModule,NgbRatingModule
 
   ], providers: [MatTooltipModule],
   exports: [ViewTeacherProfileComponent]
