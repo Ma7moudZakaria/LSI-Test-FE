@@ -79,9 +79,9 @@ export class InputSearchListComponent implements OnInit, OnChanges {
   private _filter(value: string) {
     const filterValue = value.toLowerCase();
     return this.translate.currentLang === this.langEnum.en ? this.searchList.filter(
-      (option) => option.enUsrName.toLowerCase().indexOf(filterValue) === 0
+      (option) => option.enUsrName.toLowerCase().includes(filterValue.toLowerCase())
     ): this.searchList.filter(
-      (option) => option.arUsrName.toLowerCase().indexOf(filterValue) === 0
+      (option) => option.arUsrName.toLowerCase().includes(filterValue.toLowerCase())
     )
   }
 
