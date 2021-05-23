@@ -127,7 +127,8 @@
     "RESPONSE_SCIENTIFIC_PROBLEM": "Response to the scientific problem",
     "DEPARTMENT": "Department",
     "ENTER_REPLAY": "Please enter a reply",
-    "SELECT_DEPATMENT": "Please select a Department"
+    "SELECT_DEPATMENT": "Please select a Department",
+    "PROGRAM_NAME": "Program name"
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "Programs",
@@ -283,7 +284,7 @@
     "SPECTALIZATION_REQUIRED": "Specialization is required",
     "TIME": "Time",
     "DAY": "Day",
-    "DAY_AND_TIME":"Days and Times",
+    "DAY_AND_TIME": "Days and Times",
     "DAY_REQUIRED": "Day is required",
     "FROM": "From",
     "FROM_REQUIRED": "From Time is required",

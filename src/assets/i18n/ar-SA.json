@@ -124,7 +124,8 @@
     "RESPONSE_SCIENTIFIC_PROBLEM": "رد على الإشكال العلمي",
     "DEPARTMENT": "القسم ",
     "ENTER_REPLAY": "من فضلك ادخل الرد ",
-    "SELECT_DEPATMENT": "من فضلك اختار القسم"
+    "SELECT_DEPATMENT": "من فضلك اختار القسم",
+    "PROGRAM_NAME": "اسم البرنامج"
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "البرامج",
@@ -284,7 +285,7 @@
     "DEGREE_REQUIRED": "برجاء اختيار  درجة الاجادة ",
     "TIME": "الوقت",
     "DAY": "اليوم",
-    "DAY_AND_TIME":"الايام و الاوقات",
+    "DAY_AND_TIME": "الايام و الاوقات",
     "DAY_REQUIRED": "اليوم مطلوب",
     "FROM": "من",
     "FROM_REQUIRED": "من الوقت مطلوب",
