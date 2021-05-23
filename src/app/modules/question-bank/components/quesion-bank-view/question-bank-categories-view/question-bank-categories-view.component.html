@@ -4,14 +4,15 @@
 <div class="list-group list-category">
  
  
-  <p class="mb-4 p_header mb-0">{{'QUESTION_BANK.DEPARTMENTS' | translate}}</p>
+  <p class="mb-4 p_header mb-2">{{'QUESTION_BANK.DEPARTMENTS' | translate}}</p>
  
-  <a (click)="newScientificProblem()" *ngIf='viewScientificProblem()' class="mb-2"> 
+    
+  <a (click)="newScientificProblem()" *ngIf='viewScientificProblem()' class="mb-2 add_scientfic_problem"> 
     <span class="link_Add ">  {{ 'QUESTION_BANK.ADD_SCIENTIFIC_PROBLEM' | translate }}
     <img  src="../../../../../../assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
   </span>
 </a>
-  <a (click)="newCatogry()"  *ngIf="!viewAddDepartment()" class="mb-2">
+  <a (click)="newCatogry()"  *ngIf="!viewAddDepartment()" class="mb-2 add_scientfic_problem">
     <span class="link_Add ">  {{ 'QUESTION_BANK.ADD_DEPARTMENT' | translate }}
     <img  src="../../../../../../assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
   </span>
