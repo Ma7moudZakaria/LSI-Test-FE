@@ -202,9 +202,9 @@
     "EDIT_PROFILE": " تعديل الملف الشخصي",
     "COUNTRY": "المدينه",
     "ADDRESS": "عنوان الإقامة الدائم",
-    "EDU": "التعليم الأكاديمي",
-    "EDU_LEVEL": "المستوي التعليمي",
-    "OCCUPATION": "المهنه",
+    "EDU": "المستوى التعليمي ",
+    "EDU_LEVEL": "المؤهل الدراسي ",
+    "OCCUPATION": "التخصص",
     "AMOUNT_QURAN": "مقدار الحفظ من القران",
     "MASHAYIKH": "مشايخ درست عليهم",
     "SCIENTIFIC_ARCHIVES": "المحفوظات العلمية",
@@ -308,7 +308,13 @@
     "EDU_NUM": "مدة الدراسة",
     "PHONE_NUMBER_REQUIRED": "رقم الهاتف مطلوب",
     "NATIONALITY_REQUIRED": "الجنسية مطلوبة",
-    "MEMORIES_QURAN": "اجازة حفظ القران"
+    "MEMORIES_QURAN": "اجازة حفظ القران",
+    "EDU_NUM_MIN_LENGTH": "يرجى ادخال مدة الدراسة أكثر من أو يساوى 1 رقم",
+    "CHOOSE_TEACHER_PROGRAM": "برجاء اختيار  برنامج ",
+    "CHOOSE_TEACHER_REWAYAT": "برجاء اختيار  قراءة ",
+    "CHOOSE_TEACHER_LANGUAGE": "برجاء اختيار  لغة ",
+    "CHOOSE_TEACHER_AVAILABILITY": "برجاء اختيار  ايام ",
+    "TEACHER_AVAILABILITY_FROM_TIME":"يرجى إدخال الى وقت بعد توقيت من وقت"
   },
   "QUESTION_BANK": {
     "TITLE": "بنك الأسئلة",
