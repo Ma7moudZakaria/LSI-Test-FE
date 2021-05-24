@@ -16,7 +16,7 @@ export interface ILookupCollection {
     CITY?: BaseLookupModel[];
     DEGREE?: BaseLookupModel[];
     EDU_DATE?: BaseLookupModel[];
-    INTERVIEW_DAY?: BaseLookupModel[];
+    DAYS?: BaseLookupModel[];
     LANG?: BaseLookupModel[];
     QUALIFI?: BaseLookupModel[];
     SPECIAL?: BaseLookupModel[];

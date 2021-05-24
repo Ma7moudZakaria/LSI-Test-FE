@@ -1,7 +1,6 @@
-import { ITeacherProfileInterviewDay } from "./iteacher-profile-interview-day";
+import { ITeacherProfileAvailability } from "./iteacher-availability";
 import { ITeacherProfileLanguage } from "./iteacher-profile-language";
 import { ITeacherProfileProgram } from "./iteacher-profile-program";
-import { ITeacherProfileProgramDegreeLookup } from "./iteacher-profile-program-lookup";
 import { ITeacherProfileRewayat } from "./iteacher-profile-rewayat";
 
 export interface IUpdateTeacherProfile {
@@ -27,7 +26,7 @@ export interface IUpdateTeacherProfile {
     agency?:string;
     edulevel?:string;
     interviewId?:string;
-    fromTime?:string;
+    interviewTime?:string;
     isHasQuranExp?: boolean;
     isHasTeachSunnaExp?: boolean;
     isHasInternetTeachExp?: boolean;
@@ -39,7 +38,7 @@ export interface IUpdateTeacherProfile {
     bankNumber?: string;
     ejazaAttachments?: string[];
     teacherPrograms?: ITeacherProfileProgram[];
-    interviewDays?:ITeacherProfileInterviewDay[];
+    availabilityDays?:ITeacherProfileAvailability[];
     rewayats?:ITeacherProfileRewayat[];
     languages?:ITeacherProfileLanguage[];
 }

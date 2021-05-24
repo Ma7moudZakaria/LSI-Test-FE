@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit {
   showoverlay_withoverlay() {
     this.disableBlock = false;
     this.showPro = true;
-    this.closeProfile(false);
+    //this.closeProfile(false);
   }
 
   closeProfile(event: boolean) {

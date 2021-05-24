@@ -102,15 +102,16 @@ export class ScientificProblemsComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(dialogResult => {
       if(dialogResult==true){
-        this.scientificProblemService.DeleteScientificProblem(id||'').subscribe(
-          res => {
-            res.message;
+        this.scientificProblemService.DeleteScientificProblem(id||'').subscribe( res => {
+          if (res.isSuccess){
+            this.alertify.success(res.message || '');
             this.getScientificProblems();
+          }
+          else{
+            this.alertify.error(res.message || '');
+          }
           }, error => {
-            this.resultMessage ={
-              message: error,
-              type: BaseConstantModel.DANGER_TYPE
-            }
+            this.alertify.error(error || '');
           }
         )
       }     
@@ -139,19 +140,14 @@ export class ScientificProblemsComponent implements OnInit {
         let ids = this.scientificProblems?.filter(i => i.checked).map(a => a.id);
         this.scientificProblemService.deleteListOfScientificProblems(ids).subscribe( res => {
           if (res.isSuccess){
+            this.alertify.success(res.message || '');
             this.getScientificProblems();
           }
           else{
-            this.resultMessage ={
-              message: res.message,
-              type: BaseConstantModel.DANGER_TYPE
-            }
+            this.alertify.error(res.message || '');
           }
         }, error => {
-            this.resultMessage ={
-              message: error,
-              type: BaseConstantModel.DANGER_TYPE
-            }
+          this.alertify.error(error || '');
           }
         )
       }     
