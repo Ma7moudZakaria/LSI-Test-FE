@@ -1,21 +1,20 @@
 <div class="question-list">
 
-    <div class="row p-0 align-items-center mb-3">
-        <div class="col-2">
+    <div class="row pl-3 pr-3 align-items-center mb-3 ">
+        <div class="col-4 ">
             <p class="p_header mb-0 ellipsis" matTooltip="{{translate.currentLang===langEnum.en?selectedCategoryId.engCatgName:selectedCategoryId.arabCatgName}}">
                 {{translate.currentLang===langEnum.en?selectedCategoryId.engCatgName:selectedCategoryId.arabCatgName}}
             </p>
         </div>
-        <div class=" col-3 add_question" *ngIf="roleManagmentService.isAdmin()">
+        <div class=" col-4 add_question" *ngIf="roleManagmentService.isAdmin()">
             <a [routerLink]="" (click)="NewQuestion()">
                 <span class="link_Add "> {{ 'QUESTION_BANK.ADD_QUESTION' | translate }}
                     <img src="../../../../../../assets/images/add.svg" class=" cursor-pointer Catogry_Icon_Add">
                 </span>
             </a>
         </div>
-        <div class="offset-cu-21 col-4" >
+        <div class=" col-4" [ngClass]="{'offset-4 ': !roleManagmentService.isAdmin()}">
             <app-search-input (searchTerm)=searchQuestions($event)></app-search-input>
-
         </div>
         
     </div>
