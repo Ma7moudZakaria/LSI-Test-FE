@@ -51,7 +51,7 @@
                     <img mat-list-icon *ngIf='SelectedUser?.usrAvatarUrl' [src]="SelectedUser?.usrAvatarUrl" alt="" />
                     <div mat-line>{{ translate.currentLang === langEnum.en
                         ? SelectedUser.enUsrName : SelectedUser.arUsrName}}</div>
-                    <div mat-line> {{SelectedUser.loginTime | date}} </div>
+                    <div mat-line> {{SelectedUser.createdOn | date}} </div>
                    <span class="mat-delete" (click)="delete(SelectedUser)"><i class="fas fa-trash-alt"></i></span>
                     <mat-divider></mat-divider>
                 </mat-list-item>

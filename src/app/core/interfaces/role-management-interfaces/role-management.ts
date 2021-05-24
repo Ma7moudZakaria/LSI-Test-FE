@@ -35,6 +35,7 @@ export interface SearchItem {
     usrId: string;
     enUsrName: string;
     arUsrName: string;
+    createdOn: string;
 }
 
 
@@ -52,7 +53,7 @@ export interface RolesTreeModel {
 export interface UsersExceptStudent{
     avatarUrl: string
     id: string
-    loginTime: string
+    createdOn: string
     usrFamilyNameAr: string
     usrFamilyNameEn: string
     usrFirstNameAr: string
@@ -61,7 +62,7 @@ export interface UsersExceptStudent{
     usrFullNameEn: string
     usrMiddleNameAr: string
     usrMiddleNameEn: string
-   
+    userName:string
 }
 
 

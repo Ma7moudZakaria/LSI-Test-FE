@@ -31,6 +31,7 @@ export class InputSearchListComponent implements OnInit, OnChanges {
     usrAvatarUrl:'',
     usrEmail:'',
     usrId:"",
+    createdOn:""
   };
   search: string = '';
   langEnum = LanguageEnum;
@@ -60,6 +61,7 @@ export class InputSearchListComponent implements OnInit, OnChanges {
         usrAvatarUrl:'',
         usrEmail:'',
         usrId:"",
+        createdOn:""
       };
     }
   }
