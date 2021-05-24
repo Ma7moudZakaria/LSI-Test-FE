@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { DateType } from 'ngx-hijri-gregorian-datepicker';
+import { DateFormatterService, DateType } from 'ngx-hijri-gregorian-datepicker';
 import { NgbModal, NgbDateStruct, NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
@@ -33,11 +33,19 @@ export class MiladyHijriCalendarComponent implements OnInit {
   @Output() sendDate = new EventEmitter;
 
   //  @Input() item: { title: string, state: boolean };
-  constructor(public translate: TranslateService , public languageService: LanguageService) { }
+  constructor(public translate: TranslateService , public languageService: LanguageService,
+    private dateFormatterService: DateFormatterService) { }
 
   ngOnInit(): void {
     // this.minHijri = Date.now() || 2020;
     this.setCurrentLang();
+    this.setHijri();
+  }
+
+  setHijri() {
+    // this.selectedDateType = DateType.Hijri;
+    this.maxHijri = this.dateFormatterService.GetTodayHijri();
+    console.log(this.maxHijri);
   }
 
   setCurrentLang() {

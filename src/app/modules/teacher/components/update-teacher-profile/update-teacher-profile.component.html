@@ -152,7 +152,7 @@
                                     <label class="Register__Label " for="hijriBirthDate">
                                         {{ 'UPDATE_TEACHER_PG.HIJRIBIRTHDATE' |translate }}
                                     </label>
-                                       <app-milady-hijri-calendar (sendDate)="Hijri($event)" [dateTo]='hijriBirthDateInputParam'
+                                       <app-milady-hijri-calendar (sendDate)="Hijri($event)" (keypress)="$event.preventDefault()" [dateTo]='hijriBirthDateInputParam'
                                        [hijri]="hijri" [milady]="!milady">
                                      </app-milady-hijri-calendar>
                                     
