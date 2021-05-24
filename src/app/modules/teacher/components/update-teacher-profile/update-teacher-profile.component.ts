@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 //
@@ -26,15 +25,13 @@ import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collec
 import { ITelInputParams } from 'src/app/core/interfaces/shared-interfaces/tel-input-interfaces/itel-input-params';
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
 import { ITeacherProfileLookup } from 'src/app/core/interfaces/teacher-interfaces/iteacher-profile-lookup';
-import { ITeacherProfileInterviewDay } from 'src/app/core/interfaces/teacher-interfaces/iteacher-profile-interview-day';
-import { ITeacherProfileProgram } from 'src/app/core/interfaces/teacher-interfaces/iteacher-profile-program';
 import { ITeacherProfileProgramDegreeLookup } from 'src/app/core/interfaces/teacher-interfaces/iteacher-profile-program-lookup';
 import { IprogramFilterRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-request';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
-import { ITeacherProfileInterviewDayLookup } from 'src/app/core/interfaces/teacher-interfaces/iteacher-profile-interview-day-lookup';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { HostListener } from '@angular/core';
+import { ITeacherProfileAvailabilityLookup } from 'src/app/core/interfaces/teacher-interfaces/iteacher-availability-lookup';
 
 @Component({
   selector: 'app-update-teacher-profile',
@@ -48,11 +45,11 @@ export class UpdateTeacherProfileComponent implements OnInit {
   teacherProfileDetails = {} as ITeacherProfile;
   updateTeacherModel: IUpdateTeacherProfile = {};
   teacherProgramModel: ITeacherProfileProgramDegreeLookup = {};
-  interviewDaysModel: ITeacherProfileInterviewDayLookup = {};
+  availabilityDaysModel: ITeacherProfileAvailabilityLookup = {};
   langEnum = LanguageEnum;
   collectionOfLookup = {} as ILookupCollection;
   listOfLookupProfile: string[] = ['GENDER', 'EDU_LEVEL', 'NATIONALITY', 'COUNTRY'
-    , 'DEGREE', 'EDU_DATE', 'INTERVIEW_DAY', 'LANG', 'QUALIFI', 'SPECIAL', 'REWAYAT' , 'AGENCY', 'WORKING_PLATFORM'];
+    , 'DEGREE', 'EDU_DATE', 'DAYS', 'LANG', 'QUALIFI', 'SPECIAL', 'REWAYAT' , 'AGENCY', 'WORKING_PLATFORM'];
 
   resMessage: BaseMessageModel = {};
   selecteddrgreeList = Array<BaseLookupModel>();
@@ -73,8 +70,8 @@ export class UpdateTeacherProfileComponent implements OnInit {
   languagesMessage: BaseMessageModel = {};
   selectedLanguagesList = Array<ITeacherProfileLookup>();
 
-  interviewDaysMessage: BaseMessageModel = {};
-  selectedInterviewDaysList = Array<ITeacherProfileInterviewDayLookup>();
+  availabilityDaysMessage: BaseMessageModel = {};
+  selectedAvailabilityDaysList = Array<ITeacherProfileAvailabilityLookup>();
 
   teacherProgramsMessage: BaseMessageModel = {};
   selectedTeacherProgramsList = Array<ITeacherProfileProgramDegreeLookup>();
@@ -248,7 +245,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           qualifi: [null, Validators.required],
           specia: [null, Validators.required],
           eduDate: [null, Validators.required],
-          eduNum: [null],
+          eduNum: [null , [Validators.min(1)]],
           entity: [null, Validators.required],
           agency: [null, Validators.required],
           edulevel: [null, Validators.required],
@@ -264,9 +261,9 @@ export class UpdateTeacherProfileComponent implements OnInit {
           ejazaAttachments: [],
           teacherPrograms: [],
           teacherProgramDegrees: [],
-          interviewDays: [],
-          interviewTimes: [],
-          fromTimeinterview: [],
+          availabilityDays: [],
+          interviewDay: [],
+          interviewTime: [],
 
           fromDayTimeinterview: [],
           toDayTimeinterview: [],
@@ -292,7 +289,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           qualifi: [null, Validators.required],
           specia: [null, Validators.required],
           eduDate: [null, Validators.required],
-          eduNum: [null],
+          eduNum: [null , [Validators.min(1)]],
           entity: [null, Validators.required],
           agency: [null, Validators.required],
           edulevel: [null, Validators.required],
@@ -308,9 +305,9 @@ export class UpdateTeacherProfileComponent implements OnInit {
           ejazaAttachments: [],
           teacherPrograms: [],
           teacherProgramDegrees: [],
-          interviewDays: [],
-          interviewTimes: [],
-          fromTimeinterview: [],
+          availabilityDays: [],
+          interviewDay: [],
+          interviewTime: [],
 
           fromDayTimeinterview: [],
           toDayTimeinterview: [],
@@ -397,8 +394,8 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.f.bankName.setValue(this.teacherProfileDetails?.bankName)
     this.f.bankNumber.setValue(this.teacherProfileDetails?.bankNumber)
 
-    this.f.interviewTimes.setValue(this.teacherProfileDetails?.interviewId)
-    this.f.fromTimeinterview.setValue(this.teacherProfileDetails?.fromTime)
+    this.f.interviewDay.setValue(this.teacherProfileDetails?.interviewId)
+    this.f.interviewTime.setValue(this.teacherProfileDetails?.interviewTime)
 
     this.fileList = this.teacherProfileDetails?.ejazaAttachments;
     this.teacherProfileDetails?.ejazaAttachments?.forEach(element => {
@@ -413,8 +410,8 @@ export class UpdateTeacherProfileComponent implements OnInit {
       this.selectedTeacherProgramsList = this.teacherProfileDetails?.teacherPrograms;
     }
 
-    if (this.teacherProfileDetails?.interviewDays) {
-      this.selectedInterviewDaysList = this.teacherProfileDetails?.interviewDays;
+    if (this.teacherProfileDetails?.availabilityDays) {
+      this.selectedAvailabilityDaysList = this.teacherProfileDetails?.availabilityDays;
     }
 
     if (this.teacherProfileDetails?.languages) {
@@ -492,8 +489,8 @@ export class UpdateTeacherProfileComponent implements OnInit {
         bankName: this.profileForm.value.bankName,
         bankNumber: this.profileForm.value.bankNumber,
 
-        interviewId: this.profileForm.value.interviewTimes,
-        fromTime: this.profileForm.value.fromTimeinterview,
+        interviewId: this.profileForm.value.interviewDay,
+        interviewTime: this.profileForm.value.interviewTime,
 
         address:this.profileForm.value.address,
         ejazaAttachments: this.ejazaAttachmentIds,
@@ -525,13 +522,13 @@ export class UpdateTeacherProfileComponent implements OnInit {
         });
       }
 
-      this.interviewDaysMessage = {};
+      this.availabilityDaysMessage = {};
 
-      this.updateTeacherModel.interviewDays = [];
-      if (this.selectedInterviewDaysList.length) {
-        Array.from(this.selectedInterviewDaysList).forEach((elm: ITeacherProfileInterviewDayLookup) => {
-          if (this.updateTeacherModel.interviewDays) {
-            this.updateTeacherModel.interviewDays.push({
+      this.updateTeacherModel.availabilityDays = [];
+      if (this.selectedAvailabilityDaysList.length) {
+        Array.from(this.selectedAvailabilityDaysList).forEach((elm: ITeacherProfileAvailabilityLookup) => {
+          if (this.updateTeacherModel.availabilityDays) {
+            this.updateTeacherModel.availabilityDays.push({
               interviewDay: elm.id,
               fromTime:elm.fromTime,
               toTime:elm.toTime
@@ -591,7 +588,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
   addTeacherRewayats() {
     if (!this.profileForm.value.rewayats) {
       this.rewayatsMessage = {
-        message: this.translate.instant('UPDATE_USER_PG.CHOOSE_SHEIKHS'),
+        message: this.translate.instant('UPDATE_TEACHER_PG.CHOOSE_TEACHER_REWAYAT'),
         type: BaseConstantModel.DANGER_TYPE
       }
       return;
@@ -615,7 +612,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
   addTeacherLanguages() {
     if (!this.profileForm.value.languages) {
       this.languagesMessage = {
-        message: this.translate.instant('UPDATE_USER_PG.CHOOSE_SHEIKHS'),
+        message: this.translate.instant('UPDATE_TEACHER_PG.CHOOSE_TEACHER_LANGUAGE'),
         type: BaseConstantModel.DANGER_TYPE
       }
       return;
@@ -636,45 +633,52 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.selectedLanguagesList.splice(index, 1);
   }
 
-  addInterviewDays() {
-    if (!this.profileForm.value.interviewDays && !this.profileForm.value.timeinterview) {
-      this.interviewDaysMessage = {
-        message: this.translate.instant('UPDATE_USER_PG.CHOOSE_SHEIKHS'),
+  addAvailabilityDays() {
+    if (!this.profileForm.value.availabilityDays && !this.profileForm.value.timeinterview) {
+      this.availabilityDaysMessage = {
+        message: this.translate.instant('UPDATE_TEACHER_PG.CHOOSE_TEACHER_AVAILABILITY'),
         type: BaseConstantModel.DANGER_TYPE
       }
       return;
     }
-    this.interviewDaysMessage = {};
+    this.availabilityDaysMessage = {};
 
-    const existInterviewDays = this.selectedInterviewDaysList.some(el => el.id === this.profileForm.value.interviewDays)
+    const existAvailabilityDays = this.selectedAvailabilityDaysList.some(el => el.id === this.profileForm.value.availabilityDays)
     const existFromTime = this.profileForm.value.fromDayTimeinterview;
     const existtoTime = this.profileForm.value.toDayTimeinterview;
-    if (!existInterviewDays && existFromTime != null && existtoTime != null ) {
-      if (this.collectionOfLookup.INTERVIEW_DAY ) {
-        this.interviewDaysModel = {
-          id:this.collectionOfLookup.INTERVIEW_DAY.filter(el => el.id == this.profileForm.value.interviewDays)[0].id,
+
+    if (!existAvailabilityDays && existFromTime != null && existtoTime != null && existtoTime > existFromTime) {
+      if (this.collectionOfLookup.DAYS ) {
+        this.availabilityDaysModel = {
+          id:this.collectionOfLookup.DAYS.filter(el => el.id == this.profileForm.value.availabilityDays)[0].id,
           
-          nameAr:this.collectionOfLookup.INTERVIEW_DAY.filter(el => el.id == this.profileForm.value.interviewDays)[0].nameAr,
-          nameEn:this.collectionOfLookup.INTERVIEW_DAY.filter(el => el.id == this.profileForm.value.interviewDays)[0].nameEn,
+          nameAr:this.collectionOfLookup.DAYS.filter(el => el.id == this.profileForm.value.availabilityDays)[0].nameAr,
+          nameEn:this.collectionOfLookup.DAYS.filter(el => el.id == this.profileForm.value.availabilityDays)[0].nameEn,
           
           fromTime:this.profileForm.value.fromDayTimeinterview,
           toTime:this.profileForm.value.toDayTimeinterview
         }
 
-        this.selectedInterviewDaysList.push(this.interviewDaysModel);
+        this.selectedAvailabilityDaysList.push(this.availabilityDaysModel);
       }
     }
+    // else{
+    //   this.availabilityDaysMessage = {
+    //     message: this.translate.instant('UPDATE_TEACHER_PG.TEACHER_AVAILABILITY_FROM_TIME'),
+    //     type: BaseConstantModel.DANGER_TYPE
+    //   }
+    // }
   }
 
-  removeItemFromSelectedInterviewDays(item: any) {
-    let index = this.selectedInterviewDaysList.indexOf(item);
-    this.selectedInterviewDaysList.splice(index, 1);
+  removeItemFromSelectedAvailabilityDays(item: any) {
+    let index = this.selectedAvailabilityDaysList.indexOf(item);
+    this.selectedAvailabilityDaysList.splice(index, 1);
   }
 
   addTeacherPrograms() {
     if (!this.profileForm.value.teacherPrograms && !this.profileForm.value.teacherProgramDegrees) {
       this.teacherProgramsMessage = {
-        message: this.translate.instant('UPDATE_USER_PG.CHOOSE_SHEIKHS'),
+        message: this.translate.instant('UPDATE_TEACHER_PG.CHOOSE_TEACHER_PROGRAM'),
         type: BaseConstantModel.DANGER_TYPE
       }
       return;

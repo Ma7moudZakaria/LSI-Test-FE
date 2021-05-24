@@ -58,11 +58,12 @@ export class AddGroupComponent implements OnInit, AfterViewInit, OnChanges {
       this.usersExceptStudent.forEach(element => {
         this.SearchItemList.push(
           {
-            enUsrName: element.usrFullNameEn,
-            arUsrName: element.usrFullNameAr,
+            enUsrName: element.userName,//element.usrFullNameEn,
+            arUsrName: element.userName,
             usrAvatarUrl: element.avatarUrl,
             usrEmail: '',
-            usrId: element.id
+            usrId: element.id,
+            createdOn: element.createdOn
           }
         )
       });
@@ -100,7 +101,7 @@ export class AddGroupComponent implements OnInit, AfterViewInit, OnChanges {
     let createModel: CreateRoleModel = this.DataForm.value;
 
     //statment need to updated based on models as it's recorded as type any
-    createModel.usrs = this.listSelectedUser.map((i: any) => ({ usrId: i.id }));
+    createModel.usrs = this.listSelectedUser.map((i: any) => ({ usrId: i.usrId }));
 
     this.RoleManagement.createRole(this.DataForm.value).subscribe((res) => {
       if (res.isSuccess) {

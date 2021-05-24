@@ -15,6 +15,7 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { QuestionBankCategoryService } from 'src/app/core/services/question-bank-services/question-bank-category.service';
+import { RoleManagementService } from 'src/app/core/services/role-management/role-management.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 
 @Component({
@@ -28,7 +29,6 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
   questionBankCategoryList: IQuestionBankCategoriesModel[] = [];;
   questionBankCategoryFilter: IQuestionBankCategoriesFilter = {};
   position: string = "";
-  isView: boolean = true;
   title?: string;
   questionBankCategoryId: string = '';
   questionBankCategory?: IQuestionBankCategoriesModel;
@@ -52,11 +52,11 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
 
   currentUser: IUser | undefined;
   role = RoleEnum;
-  isView = true;
 
   constructor(private questionBankCategoryService: QuestionBankCategoryService,
-    private activeroute: ActivatedRoute,
-    private router: Router, public translate: TranslateService, private fb: FormBuilder, public dialog: MatDialog) {
+    private activeroute: ActivatedRoute, private router: Router, 
+    public translate: TranslateService, private fb: FormBuilder, 
+    public dialog: MatDialog, public roleManagmentService:RoleManagementService) {
     this.formImport = new FormGroup({
       importFile: new FormControl('', Validators.required)
     });
@@ -66,20 +66,6 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
     this.getQuestionBankCategories()
     this.buildForm();
     if (this.addCategory === true) { this.getQuestionBankCategories(); }
-  }
-
-  viewAddDepartment(){
-    let res = this.currentUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.role.Student.toString() || x.roleNo == this.role.Teacher.toString()); 
-    if (res) {return true}
-
-    return false;
-  }
-
-  viewScientificProblem(){
-    let res = this.currentUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.role.Student.toString()); 
-    if (res) {return true}
-
-    return false;
   }
 
   ngOnChanges(changes: any) {
@@ -96,7 +82,6 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
       })
   }
   getQuestionBankCategories(name?: string) {
-    this.isView = true;
     this.questionBankCategoryId = "";
     this.filterErrorMessage = "";
     if (name != null || name != "") { this.questionBankCategoryFilter.catgName = name; }
@@ -137,7 +122,7 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
       message: '',
       type: ''
     }
-    this.isView = false;
+
     this.isAdd = false;
     this.questionBankCategoryId = id || '';
     this.questionBankCategoryService.getQuestionBankCategoryDetails(this.questionBankCategoryId).subscribe(
@@ -177,7 +162,7 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
             message: res.message || "",
             type: BaseConstantModel.SUCCESS_TYPE
           }
-          this.isView = false;
+
           setTimeout(() => {
             this.getQuestionBankCategories();
           }, 1500)
@@ -205,8 +190,7 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
       this.questionBankCategoryService.addQuestionBankCategory(this.questionBankCategoryCreat).subscribe(res => {
         this.isSubmit = false;
         if (res.isSuccess) {
-          this.isView = false;
-          // this.successMessage = res.message;
+          
           this.disableSaveButtons = true;
           this.resultMessage = {
             message: res.message || "",
@@ -236,7 +220,6 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
 
   addCatogry() {
     this.currentForm.reset();
-    this.isView = false;
     this.isAdd = true;
     this.disableSaveButtons = false;
     this.resultMessage = {
@@ -246,7 +229,6 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
   }
 
   back_list_Catogry() {
-    this.isView = true;
     this.isAdd = false;
   }
 

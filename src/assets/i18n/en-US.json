@@ -52,7 +52,7 @@
     "ADD_QUESTION": "Add Question",
     "ADD_ANSWE": "Add Answer",
     "NOT_AUTHORIZED": "YOU ARE NOT AUTHORIZED",
-    "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE": "Please complete the missing information and review duplicate data"
+    "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE": "Please complete the missing information, add more than one answer and review duplicate data"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
@@ -307,7 +307,13 @@
     "EDU_NUM": "Education Number",
     "PHONE_NUMBER_REQUIRED": "Phone Number is Required",
     "NATIONALITY_REQUIRED": "Nationality is Required",
-    "MEMORIES_QURAN": "A permission to save the Qur’an file"
+    "MEMORIES_QURAN": "A permission to save the Qur’an file",
+    "EDU_NUM_MIN_LENGTH": "Education Number sould be more than or equal 1 number",
+    "CHOOSE_TEACHER_PROGRAM": "Please Choose Program",
+    "CHOOSE_TEACHER_REWAYAT": "Please Choose Rewaya",
+    "CHOOSE_TEACHER_LANGUAGE": "Please Choose Language",
+    "CHOOSE_TEACHER_AVAILABILITY": "Please Choose Available Day",
+    "TEACHER_AVAILABILITY_FROM_TIME":"Please Enter To Time After From Time"
   },
   "QUESTION_BANK": {
     "TITLE": "Question Bank",

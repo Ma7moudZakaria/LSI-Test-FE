@@ -17,7 +17,7 @@ export class UserRequestsCategoriesViewComponent implements OnInit {
   [ 
     { userRequestNum : UserRequests.JoinRequest , nameAr : "طلبات الانضمام" , nameEn : "Join Request" } , 
     { userRequestNum : UserRequests.Withdrawal , nameAr : "طلبات الانسحاب" , nameEn : "Withdrawal" } ,
-    { userRequestNum : UserRequests.ScientificProblem , nameAr : "إشكالات علمية" , nameEn : "Scientific Problems" } 
+    { userRequestNum : UserRequests.ScientificProblem , nameAr : "الإشكالات علمية" , nameEn : "Scientific Problems" } 
   ];
 
   @Output() selectedCategoryId = new EventEmitter<UserRequests>();

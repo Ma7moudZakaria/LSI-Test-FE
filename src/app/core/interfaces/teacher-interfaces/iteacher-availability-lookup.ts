@@ -1,4 +1,4 @@
-export interface ITeacherProfileInterviewDayLookup {
+export interface ITeacherProfileAvailabilityLookup {
     id?:string;
     nameAr?:string;
     nameEn?:string;

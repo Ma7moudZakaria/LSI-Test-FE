@@ -10,6 +10,7 @@ import { IScientificProblem } from 'src/app/core/interfaces/scientific-problrm/i
 import { IUserScientificProblemFilter } from 'src/app/core/interfaces/scientific-problrm/iuser-scientific-problem-filter';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { ScientificProblemService } from 'src/app/core/services/scientific-problem-services/scientific-problem.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 @Component({
@@ -28,7 +29,8 @@ export class UserScientificProblemComponent implements OnInit {
 
   constructor(
      public translate: TranslateService , public dialog: MatDialog,
-     public scientificProblemService: ScientificProblemService) {
+     public scientificProblemService: ScientificProblemService,
+     private alertify:AlertifyService,) {
       }
 
   ngOnInit(): void {
@@ -98,15 +100,16 @@ export class UserScientificProblemComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(dialogResult => {
       if(dialogResult==true){
-        this.scientificProblemService.DeleteScientificProblem(id||'').subscribe(
-          res => {
-            res.message;
+        this.scientificProblemService.DeleteScientificProblem(id||'').subscribe(res => {
+          if (res.isSuccess){
+            this.alertify.success(res.message || '');
             this.getScientificProblemByUserId();
+          }
+          else{
+            this.alertify.error(res.message || '');
+          }
           }, error => {
-            this.resMessage ={
-              message: error,
-              type: BaseConstantModel.DANGER_TYPE
-            }
+            this.alertify.error(error || '');
           }
         )
       }     

@@ -76,30 +76,23 @@ export class RoleManagementService {
     //fixing issue when logout then back
     this.localUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     
-    let res = this.localUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.roles.Student.toString()); 
-    if (res) {return true}
-
-    return false;
+    return this.localUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.roles.Student.toString());
   }
   isAdmin(){
     //fixing issue when logout then back
     this.localUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     
-    let res = this.localUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.roles.Admin.toString() 
+    return this.localUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.roles.Admin.toString() 
                                                     || x.roleNo == this.roles.SuperAdmin.toString()
                                                     || x.roleNo == this.roles.Supervisor.toString()
-                                                    || x.roleNo == this.roles.TechnicalSupport.toString()); 
-    if (res) {return true}
-    return false;
+                                                    || x.roleNo == this.roles.TechnicalSupport.toString());
   }
   
   isTeacher(){
     //fixing issue when logout then back
     this.localUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
 
-    let res = this.localUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.roles.Teacher.toString()); 
-    if (res) {return true}
-    return false;
+    return this.localUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.roles.Teacher.toString());
   }
 
 }

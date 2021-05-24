@@ -80,7 +80,7 @@ export class ExamFormService {
   }
    getDuplicateQuestion(arr:IQuestion[]){
     var sorted_arr = arr.slice().sort((a, b) => a.text! > b.text! && 1 || -1);
-    sorted_arr=sorted_arr.filter(x=>x.text!="");
+    sorted_arr=sorted_arr.filter(x=>x.text!="" && x.questionType != QuestionTypeEnum.voice);
     var results = [];
     for (var i = 0; i < sorted_arr.length - 1; i++) {
         if (sorted_arr[i + 1].text === sorted_arr[i].text) {
