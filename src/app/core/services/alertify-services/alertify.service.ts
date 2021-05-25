@@ -25,7 +25,7 @@ export class AlertifyService {
       alertify.set('notifier', 'position', 'bottom-right');
     }
 
-    alertify.success(message, 0);
+    alertify.success(message);
     // alertify.success(message + alertify.get('notifier', 'position'));
 
 
