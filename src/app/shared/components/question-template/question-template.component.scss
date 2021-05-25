@@ -9,6 +9,7 @@
         &:lang(ar){
             float: right;
         }
+      
     }
     .add_answer{
         &:lang(ar)
@@ -16,7 +17,15 @@
     }
     .input_fullWidth
     {
-        width:850px
+        width:850px;
+        &:lang(ar){
+            margin-right: 4rem;
+
+        }
+        &:lang(en){
+            margin-left: 4rem;
+        }
+        
     }
 
     .input_search_voice
@@ -45,5 +54,14 @@
                     { border-right: transparent;}
             }
     }
+    .item_label{
+        &:lang(ar){
+            margin-right: 1rem;
 
+        }
+        &:lang(en){
+            margin-left: 1rem;
+
+        }
+    }
 }
