@@ -96,22 +96,22 @@ export class UpdateUserProfileComponent implements OnInit {
     });
   }
 
-  @HostListener('window:beforeunload', ['$event'])
-  public onPageUnload($event: BeforeUnloadEvent) {
-    if (this.unsavedDataCheck()) {
-      $event.returnValue = true;
-      // return "message";
-    }
-    else{
-      $event.returnValue = false;
-      // return '';
-    }
-  }
+  // @HostListener('window:beforeunload', ['$event'])
+  // public onPageUnload($event: BeforeUnloadEvent) {
+  //   if (this.unsavedDataCheck()) {
+  //     $event.returnValue = true;
+  //     // return "message";
+  //   }
+  //   else{
+  //     $event.returnValue = false;
+  //     // return '';
+  //   }
+  // }
 
-  @HostListener('window:popstate', ['$event'])
-  onPopState(event:any) {
-    this.userService.setCanDeActivate(this.unsavedDataCheck());
-  }
+  // @HostListener('window:popstate', ['$event'])
+  // onPopState(event:any) {
+  //   this.userService.setCanDeActivate(this.unsavedDataCheck());
+  // }
 
   unsavedDataCheck() : boolean{
     let  birthDateFromDetails=new Date(this.userProfileDetails?.birthdate||"");
