@@ -3,15 +3,15 @@
         <div class="col-md-3">
             <app-group-list (showAddGroup)="showAddGroup($event)" [selectedRoleId]="selectedRoleId"
                 [listRole]="roleList" (getRoleDetails)="getRoleDetails($event)" (filterRole)="filterRole($event)"
-                (deleteRole)="deleteRole($event)"></app-group-list>
+                (deleteRole)="deleteRole($event)"  (editRole)="editRole($event)"></app-group-list>
         </div>
         <div class="col-md-9">
             <div class="row group_header fix_margin">
-                <div class="item_group" (click)="showTap = 'USERS'"
+                <div class="item_group" (click)="showTapFn('USERS')"
                     [ngClass]="{ item_group_active: showTap == 'USERS' }">
                     {{ "Role_Management.USERS" | translate }}
                 </div>
-                <div class="item_group" (click)="showTap = 'ROLES'"
+                <div class="item_group" (click)="showTapFn('ROLES')"
                     [ngClass]="{ item_group_active: showTap == 'ROLES' }">
                     {{ "Role_Management.ROLES" | translate }}
                 </div>
@@ -31,6 +31,6 @@
     </div>
 
     <div class="overlay" *ngIf="showAddGroupForm">
-        <app-add-group (hideform)="showAddGroup($event)"></app-add-group>
+        <app-add-group (hideform)="showAddGroup($event)" [dataEdit]="editRoleData"  ></app-add-group>
     </div>
 </div>

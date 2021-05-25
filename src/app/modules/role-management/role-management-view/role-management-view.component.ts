@@ -7,7 +7,7 @@ import {
   Role,
   RoleManagementFilter,
   RolesTreeModel,
-  RoleUsrs,
+  UserCard,
 } from 'src/app/core/interfaces/role-management-interfaces/role-management';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
@@ -24,7 +24,13 @@ import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/compon
 export class RoleManagementViewComponent implements OnInit {
   showTap: string = 'USERS';
 
-  listRoleUesrs: RoleUsrs[] = [];
+  listRoleUesrs: UserCard[] = [];
+
+  editRoleData:Role = {
+    arRoleName:'',
+    enRoleName:'',
+    id:''
+  }
   listRolesPermissions!: RolesTreeModel;
   UsersNotBelongToRole:any;
 
@@ -66,6 +72,11 @@ export class RoleManagementViewComponent implements OnInit {
       this.emitHeaderTitle();
     });
   }
+  showTapFn(event:string){
+    this.showTap=event;
+    this.getRoleDetails(this.selectedRoleId);
+   
+  }
 
   getRolesList() {
     this.RoleManagement.getRolesList(this.RoleManagementFilter).subscribe(
@@ -104,6 +115,7 @@ export class RoleManagementViewComponent implements OnInit {
 
   showAddGroup(event: boolean) {
     this.showAddGroupForm = event;
+    this.editRoleData={id:'',enRoleName:'',arRoleName:''}
     if (event == false) {
       this.getRolesList();
     }
@@ -120,7 +132,10 @@ export class RoleManagementViewComponent implements OnInit {
       this.listRoleUesrs = res.data.roleUsrs;
       this.selectedRoles = res.data.rolePerms;
     });
-    this.getUserNotBelongToRole(this.selectedRoleId);
+    if (this.showTap=='USERS') {
+      this.getUserNotBelongToRole(this.selectedRoleId);
+    }
+  
   }
 
   getPermissionsTreeView() {
@@ -164,5 +179,10 @@ export class RoleManagementViewComponent implements OnInit {
       this._alertify.success(res.message || '');
     });
 
+  }
+
+  editRole(event:Role){
+    this.showAddGroupForm=true;
+    this.editRoleData=event;
   }
 }

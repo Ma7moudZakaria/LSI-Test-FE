@@ -4,14 +4,15 @@
 <div class="list-group list-category">
  
  
-  <p class="mb-4 p_header mb-0">{{'QUESTION_BANK.DEPARTMENTS' | translate}}</p>
+  <p class="mb-4 p_header mb-2">{{'QUESTION_BANK.DEPARTMENTS' | translate}}</p>
  
-  <a (click)="newScientificProblem()" *ngIf='viewScientificProblem()' class="mb-2"> 
+    
+  <a (click)="newScientificProblem()" *ngIf='roleManagmentService.isStudent()' class="mb-2 add_scientfic_problem"> 
     <span class="link_Add ">  {{ 'QUESTION_BANK.ADD_SCIENTIFIC_PROBLEM' | translate }}
     <img  src="../../../../../../assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
   </span>
 </a>
-  <a (click)="newCatogry()"  *ngIf="!viewAddDepartment()" class="mb-2">
+  <a (click)="newCatogry()"  *ngIf="roleManagmentService.isAdmin()" class="mb-2 add_scientfic_problem">
     <span class="link_Add ">  {{ 'QUESTION_BANK.ADD_DEPARTMENT' | translate }}
     <img  src="../../../../../../assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
   </span>
@@ -51,7 +52,7 @@
     (click)="loadCatogryQuiestion(QBC.id,QBC.arabCatgName,QBC.engCatgName);selectedIndex=i">
      
         <p class="ellipsis mb-0 question-categories" matTooltip="{{translate.currentLang===langEnum.en?QBC.engCatgName:QBC.arabCatgName}}">{{translate.currentLang===langEnum.en?QBC.engCatgName:QBC.arabCatgName}}</p>
-        <div class="d-flex " *ngIf="!viewAddDepartment()">
+        <div class="d-flex " *ngIf="roleManagmentService.isAdmin()">
            <a (click)="confirmDialog(QBC.id)" > <i class="far fa-trash-alt"></i></a>
            <a (click)="loadCatogry(QBC.id) "> <i class="fas fa-pencil-alt"></i></a> 
 
@@ -76,79 +77,3 @@
 
 
 </div>
-  <!-- <div class="row " *ngIf="!isView">
-    
-    <form class="form-group" [formGroup]="currentForm" (submit)="Submit()">
-      <sup class="Catogry_Add_Span">{{ 'QUESTION_BANK.ADD_DEPARTMENT' | translate }}</sup>
-      <div class="form-group">
-        <label for="exampleInputEmail1" class="Catogry_Add_TextNam">{{'QUESTION_BANK.DEPARTMENT_AR' | translate}}</label>
-        <input type="text" class="form-control Catogry_Add_Text" id="InputNamAr" formControlName="nameAr">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1" class="Catogry_Add_TextNam">{{'QUESTION_BANK.DEPARTMENT_EN' | translate}}</label>
-        <input type="text" class="form-control Catogry_Add_Text" id="InputNamEN" formControlName="nameEn">
-      </div>
-  
-      <button type="submit" class="btn btn-danger Catogry_publish_btn" [disabled]="disableSaveButtons" >{{'QUESTION_BANK.PUBLISH' | translate}}</button>
-      <div *ngIf="resultMessage?.type==='success'" class="alert alert-{{ resultMessage.type }} my-4 py-2">
-        {{resultMessage.message}}
-    </div>
-    <div  *ngIf="resultMessage.type==='danger'" class="alert alert-{{ resultMessage.type }} my-4 py-2">
-      {{resultMessage.message}}
-    </div>
-    </form>
-
-  </div> -->
-
-
-  <!-- <ul class="list-group" *ngIf="isView">
-  <p>{{'QUESTION_BANK.Departments' | translate}}</p>
-  <a [routerLink]="" (click)="addCatogry()"><p class="Catogry_Link_Add">{{ 'QUESTION_BANK.Add_Department' | translate }}</p>
-  </a> 
- 
-
-  <i>
-    <img src="assets/quesionBsnk/questionBankCategory/search-interface-symbol.svg" alt="" class="mt-10 cursor-pointer Catogry_Icon_Search" (click)=" getQuestionBankCategories(text.value)"/>
-    <input type="text" placeholder="{{'QUESTION_BANK.Search' | translate}}" name="search"#text class="Catogry_Text_Search">
-    </i>
-
-  <li class="list-group-item " *ngFor="let QBC  of questionBankCategoryList ; let i=index;" 
-    [class.active]="selectedIndex === i" 
-    (click)="loadCatogryQuiestion(QBC.id);selectedIndex=i">
-      <a> 
-         {{translate.currentLang==='en'?QBC.engCatgName:QBC.arabCatgName}}
-          <i>
-            <img src="assets/quesionBsnk/questionBankCategory/Icon feather-edit-3 (1).svg" alt="" class="mt-10 cursor-pointer Catogry_Icon_Details" (click)="loadQuestionBankCategoryDetails(QBC.id)"/>
-           </i>
-            <i>
-              <img src="assets/quesionBsnk/questionBankCategory/Icon feather-trash-2.svg" alt="" class="mt-10 cursor-pointer Catogry_Icon_delete" (click)="confirmDialog(QBC.id)"/>
-            </i>
-  
-      </a>
-  </li>
-</ul>
-  <div class="row " *ngIf="!isView">
-    
-    <form class="form-group" [formGroup]="currentForm" (submit)="Submit()">
-      <sup class="Catogry_Add_Span">{{ 'QUESTION_BANK.Add_Department' | translate }}</sup>
-      <div class="form-group">
-        <label for="exampleInputEmail1" class="Catogry_Add_TextNam">{{'QUESTION_BANK.Department_Ar' | translate}}</label>
-        <input type="text" class="form-control Catogry_Add_Text" id="InputNamAr" formControlName="nameAr">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1" class="Catogry_Add_TextNam">{{'QUESTION_BANK.Department_En' | translate}}</label>
-        <input type="text" class="form-control Catogry_Add_Text" id="InputNamEN" formControlName="nameEn">
-      </div>
-  
-      <button type="submit" class="btn btn-danger Catogry_publish_btn" [disabled]="disableSaveButtons" >{{'QUESTION_BANK.Publish' | translate}}</button>
-      <button type="button" class="btn btn-warning Catogry_Back_btn" (click)="back_list_Catogry()">{{'QUESTION_BANK.Back' | translate}}</button>
-      <div *ngIf="resultMessage?.type==='success'" class="alert alert-success">
-        {{resultMessage.message}}
-    </div>
-    <div *ngIf="resultMessage.type==='danger'" class="alert alert-danger">
-      {{resultMessage.message}}
-    </div>
-    </form>
-
-  </div>
-   -->

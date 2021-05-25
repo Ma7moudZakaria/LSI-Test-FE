@@ -41,11 +41,12 @@
                 color: #828282;
                 margin: 0;
                 display: inline-block;
-                width: 85%;
+                width: 80%;
             }
             span{
                 cursor: pointer;
                  color: $icon_input;
+                 margin: 0px 4px;
              }
              p:lang(en){
                 float: left;

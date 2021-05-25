@@ -20,6 +20,7 @@ export class RoleManagementService {
   deleteRoleURL = environment.baseUrl + 'Roles/delete-role/';
   roleDetailsURL = environment.baseUrl + 'Roles/get-role-details-by-id/';
   createRoleURL = environment.baseUrl + 'Roles/add-role';
+  editRoleURL = environment.baseUrl + 'Roles/edit-role';
   permissionsTreeViewURL = environment.baseUrl + 'Roles/get-permissions-tree-view';
   assignRolePermissionsURL = environment.baseUrl + 'Roles/assign-role-permissions';
   usersNotBelongToRoleURL = environment.baseUrl + 'Roles/get-users-not-belong-to-role/';
@@ -50,6 +51,9 @@ export class RoleManagementService {
   createRole(model: CreateRoleModel): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.createRoleURL, model);
   }
+  editRole(model: CreateRoleModel): Observable<BaseResponseModel> {
+    return this.http.post<BaseResponseModel>(this.editRoleURL, model);
+  }
 
   assignRolePermissions(model: AssignRoleModel) {
     return this.http.post<BaseResponseModel>(this.assignRolePermissionsURL, model);
@@ -72,30 +76,23 @@ export class RoleManagementService {
     //fixing issue when logout then back
     this.localUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     
-    let res = this.localUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.roles.Student.toString()); 
-    if (res) {return true}
-
-    return false;
+    return this.localUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.roles.Student.toString());
   }
   isAdmin(){
     //fixing issue when logout then back
     this.localUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     
-    let res = this.localUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.roles.Admin.toString() 
+    return this.localUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.roles.Admin.toString() 
                                                     || x.roleNo == this.roles.SuperAdmin.toString()
                                                     || x.roleNo == this.roles.Supervisor.toString()
-                                                    || x.roleNo == this.roles.TechnicalSupport.toString()); 
-    if (res) {return true}
-    return false;
+                                                    || x.roleNo == this.roles.TechnicalSupport.toString());
   }
   
   isTeacher(){
     //fixing issue when logout then back
     this.localUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
 
-    let res = this.localUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.roles.Teacher.toString()); 
-    if (res) {return true}
-    return false;
+    return this.localUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.roles.Teacher.toString());
   }
 
 }

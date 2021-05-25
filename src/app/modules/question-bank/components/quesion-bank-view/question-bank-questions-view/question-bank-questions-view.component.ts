@@ -43,25 +43,16 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
 
   currentUser: IUser | undefined;
   role = RoleEnum;
-  isView = true;
 
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
-     public translate: TranslateService,public dialog: MatDialog, private roleService : RoleManagementService) {
+     public translate: TranslateService,public dialog: MatDialog, 
+     private roleService : RoleManagementService, public roleManagmentService:RoleManagementService) {
       }
 
   ngOnInit(): void {
     this.getQuestionBankQuestions("");
 
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
-
-    let res = this.currentUser.usrRoles?.usrRoles?.some(x => x.roleNo == this.role.Student.toString() || x.roleNo == this.role.Teacher.toString());
-
-    if(res == true){
-      this.isView = false;
-    }
-    else{
-      this.isView = true;
-    }
   }
 
   ngOnChanges(changes: any) {

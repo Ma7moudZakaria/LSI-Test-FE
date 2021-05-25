@@ -28,11 +28,18 @@
                     <div class="col-9  info_profile ">
                     <div class="row">
                        <div class="col-5"></div>
-                        <div class="col-5  mt-4  mb-4  text-center">
+                        <div class="col-6  mt-4  mb-4  text-center align-items-center">
+
                             <p class="update_item_profile-name">
                                 {{ translate.currentLang === langEnum.en ? userProfileDetails?.fnameEn : userProfileDetails?.fnameAr }} {{ translate.currentLang === langEnum.en ? userProfileDetails?.mnameEn : userProfileDetails?.mnameAr }} {{ translate.currentLang === langEnum.en ? userProfileDetails?.faNameEn : userProfileDetails?.fanameAr }} </p>
-                            <!-- <p class="brith_date">starts</p> -->
-                            <span class="brith_date">{{ userProfileDetails?.birthdate }}</span>
+                                <!-- <ngb-rating [(rate)]="selected" [max]="5" [readonly]="true"></ngb-rating> -->
+                                <ngb-rating [(rate)]="starsSelected" [max]="5" [readonly]="true">
+                                    <ng-template let-fill="fill" let-index="index">
+                                        <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                                      </ng-template>
+                                </ngb-rating>
+                                <!-- <p class="brith_date">starts</p> -->
+                            <p class="brith_date">{{ userProfileDetails?.birthdate }}</p>
                         </div>
                         
                            

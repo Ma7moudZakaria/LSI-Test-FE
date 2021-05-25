@@ -10,7 +10,7 @@ import {
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
-import { SearchItem, UserSearch } from 'src/app/core/interfaces/role-management-interfaces/role-management';
+import { SearchItem } from 'src/app/core/interfaces/role-management-interfaces/role-management';
 
 @Component({
   selector: 'app-input-search-list',
@@ -20,12 +20,19 @@ import { SearchItem, UserSearch } from 'src/app/core/interfaces/role-management-
 export class InputSearchListComponent implements OnInit, OnChanges {
 
 
-  @Input() searchList: any[] = [];
-  @Output() addSearchItem = new EventEmitter<{}>();
+  @Input() searchList: SearchItem[] = [];
+  @Output() addSearchItem = new EventEmitter<SearchItem>();
 
   filteredOptions: SearchItem[] = [];
 
-  selectedUser: any = {};
+  selectedUser: SearchItem = {
+    arUsrName:'',
+    enUsrName:'',
+    usrAvatarUrl:'',
+    usrEmail:'',
+    usrId:"",
+    createdOn:""
+  };
   search: string = '';
   langEnum = LanguageEnum;
 
@@ -42,13 +49,20 @@ export class InputSearchListComponent implements OnInit, OnChanges {
   ngOnInit(): void { }
 
   addUser() {
-    if (this.search != "" && this.selectedUser != '' && Object.keys(this.selectedUser).length > 0 && this.selectedUser.constructor === Object) {
+    if (this.search != "" && this.selectedUser.usrId != '' && Object.keys(this.selectedUser).length > 0 && this.selectedUser.constructor === Object) {
       this.addSearchItem.emit(this.selectedUser);
       // to delete form list Options
       let index = this.filteredOptions.indexOf(this.selectedUser);
       this.filteredOptions.splice(index, 1);
       this.search = '';
-      this.selectedUser = '';
+      this.selectedUser = {
+        arUsrName:'',
+        enUsrName:'',
+        usrAvatarUrl:'',
+        usrEmail:'',
+        usrId:"",
+        createdOn:""
+      };
     }
   }
 
@@ -66,9 +80,11 @@ export class InputSearchListComponent implements OnInit, OnChanges {
 
   private _filter(value: string) {
     const filterValue = value.toLowerCase();
-    return this.searchList.filter(
-      (option) => option.enUsrName.toLowerCase().indexOf(filterValue) === 0
-    );
+    return this.translate.currentLang === this.langEnum.en ? this.searchList.filter(
+      (option) => option.enUsrName.toLowerCase().includes(filterValue.toLowerCase())
+    ): this.searchList.filter(
+      (option) => option.arUsrName.toLowerCase().includes(filterValue.toLowerCase())
+    )
   }
 
 }

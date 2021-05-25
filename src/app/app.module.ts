@@ -27,7 +27,7 @@ import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, So
 import { Ng2TelInputModule } from 'ng2-tel-input';
 import { AlertifyService } from './core/services/alertify-services/alertify.service';
 // import { HasUnsavedDataGuard } from './core/guards/HasUnsavedDataGuard';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbRating, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { CmsHasUnsavedDataGuard } from './core/guards/cms-has-unsaved-data-guard';
 import { WalkthroughHasUnsavedDataGuard } from './core/guards/walkthrough-has-unsaved-data-guard';
 import { UpdateTeacherProfileHasUnsavedDataGuard } from './core/guards/update-teacher-profile-has-unsaved-data-guard';
@@ -68,6 +68,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SocialLoginModule,
     Ng2TelInputModule,
     NgbModule,
+    NgbRatingModule
   ],
   providers: [
     CmsHasUnsavedDataGuard,

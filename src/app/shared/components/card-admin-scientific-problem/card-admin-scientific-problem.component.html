@@ -18,9 +18,9 @@
       <img *ngIf='!scientificProblem.avatarLink' class="img_user" src="../../../../assets/images/student/user-profile.svg">
       <img *ngIf='scientificProblem.avatarLink' class="img_user" src="{{scientificProblem.avatarLink}}" >
       <div class="mt-4">
-        <p class="name_user bold mb-0">{{ translate.currentLang === langEnum.en ? scientificProblem.studNameEn : scientificProblem.studNameAr}}</p>
-        <!-- <p class="program_user bold mb-0 ">{{scientificProblem.progId}}</p>
-        <p class="daily_work mb-0">{{scientificProblem.day}}</p> -->
+        <p class="name_user bold mb-2">{{ translate.currentLang === langEnum.en ? scientificProblem.studNameEn : scientificProblem.studNameAr}}</p>
+        <p class="program_user bold mb-0 "> {{'SCIENTIFIC_PROBLEM.PROGRAM_NAME' | translate}}</p>
+        <!-- <p class="daily_work mb-0">{{scientificProblem.day}}</p> -->
       </div>
       <div><a> <img src="../../../../../assets/images/chat.svg"></a></div>
       </div>
@@ -52,7 +52,7 @@
      </div>
     </div>
     <div class="body_footer">
-      <button class="btn cancel-btn" (click)='saveToQuestionBank()' [attr.disabled]='(!scientificProblem.repText && !scientificProblem.IsQuesBank) || (!scientificProblem.repText || scientificProblem.IsQuesBank) ? true : null' > {{'SCIENTIFIC_PROBLEM.ADDLINK' | translate}}</button>
+      <button class="btn cancel-btn" (click)='saveToQuestionBank()' [attr.disabled]='!scientificProblem.repText ? true : null' > {{'SCIENTIFIC_PROBLEM.ADDLINK' | translate}}</button>
       <button class=" btn btn_replay" [attr.disabled]="showAddReplyArea || scientificProblem.repText ? true : null" (click)='showAddReplyAreaTog()'> {{'SCIENTIFIC_PROBLEM.REPLY_ANSWER' | translate}}</button>
       <button (click)='deleteScientificProblemEve()' class=" btn save-btn"> {{'SCIENTIFIC_PROBLEM.DELETE' | translate}}</button>
     </div>
