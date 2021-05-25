@@ -253,9 +253,11 @@ font-family: Almarai-Regular;
 
 .alert-danger
  {
-  color:  $error-message-color;
-  background-color: transparent;
-   border-color: transparent
+   color:  $error-message-color;
+   background-color: transparent;
+   border-color: transparent;
+   font-size: 13px;
+   font-weight: bold;
 }
 .alert-success
  {
