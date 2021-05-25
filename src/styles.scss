@@ -253,9 +253,11 @@ font-family: Almarai-Regular;
 
 .alert-danger
  {
-  color:  $error-message-color;
-  background-color: transparent;
-   border-color: transparent
+   color:  $error-message-color;
+   background-color: transparent;
+   border-color: transparent;
+   font-size: 13px;
+   font-weight: bold;
 }
 .alert-success
  {
@@ -604,7 +606,15 @@ app-tel-input >
   padding: 0 6px 0 22px;
 }
 // notify
-
+.alertify-notifier .ajs-message.ajs-success {
+  background: #D8FFE959;
+    border: 5px solid #00BB3259;
+    border-radius: 16px;}
+    .alertify-notifier .ajs-message.ajs-success::before
+    {
+      content: url(./assets/images/check-circle1.svg);
+      margin: 0 0.5rem;
+    }
 .alertify-notifier.ajs-right {
   right: -10px;
 }
@@ -614,6 +624,7 @@ app-tel-input >
 .alertify-notifier.ajs-right .ajs-message.ajs-visible {
   right: 270px;
   text-align: left;
+  
 }
 .alertify-notifier.ajs-left {
   left: 200px;
@@ -625,6 +636,12 @@ app-tel-input >
 .alertify-notifier.ajs-left .ajs-message.ajs-visible {
   left:65px;
   text-align: right;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  padding-top: 0.4rem;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 // removemilady
@@ -876,8 +893,9 @@ mat-grid-list {
 .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background{
   background-color: $main-color-2 !important;
 }
-
-
+/******************
+// for star in rate 
+/***********************/
 .star {
   font-size: 1.5rem;
   color: #b0c4de;
@@ -890,4 +908,10 @@ mat-grid-list {
 }
 .filled.bad {
   color: #ff1e1e;
+}
+/******************
+// list-group-item.active
+/***********************/
+.list-group-item.active{
+  border-color: transparent !important;
 }

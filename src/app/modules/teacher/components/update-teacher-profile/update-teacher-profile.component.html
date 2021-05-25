@@ -30,7 +30,7 @@
                                 <label class="Register__Label" for="firstAr"> {{ 'UPDATE_TEACHER_PG.NAME_AR' | translate }}
                                 </label>
                                 <input id="firstAr" pInputText type="text" formControlName="firstAr"
-                                    name="firstAr" class="form-control UserRegister__FormControl">
+                                    name="firstAr" class="form-control UserRegister__FormControl" placeholder="{{ 'UPDATE_TEACHER_PG.FIRST_NAME' | translate }}">
 
                                 <div *ngIf="f.firstAr.errors && (f.firstAr.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
@@ -50,7 +50,7 @@
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="translate.currentLang == langEnum.ar">
                                 <label class="Register__Label" for="middleAr"> {{ 'UPDATE_TEACHER_PG.FATHER_NAME_AR' | translate }} </label>
                                 <input id="middleAr" pInputText type="text" formControlName="middleAr"
-                                    name="middleAr" class="form-control UserRegister__FormControl">
+                                    name="middleAr" class="form-control UserRegister__FormControl" placeholder="{{ 'UPDATE_TEACHER_PG.FATHER_NAME_EN' | translate }}">
                                     
                                     <div *ngIf="f.middleAr.errors && (f.middleAr.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.middleAr.errors?.required">
@@ -68,7 +68,7 @@
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="translate.currentLang == langEnum.ar">
                                 <label class="Register__Label" for="familyAr"> {{ 'UPDATE_TEACHER_PG.FAMILY_NAME_AR' | translate }} </label>
                                 <input id="familyAr" pInputText type="text" formControlName="familyAr"
-                                    name="familyAr" class="form-control UserRegister__FormControl">
+                                    name="familyAr" class="form-control UserRegister__FormControl"placeholder="{{ 'UPDATE_TEACHER_PG.FAMILY_NAME_AR' | translate }}" >
 
                                     <div *ngIf="f.familyAr.errors && (f.familyAr.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.familyAr.errors?.required">
@@ -91,7 +91,7 @@
                                 <label class="Register__Label" for="firstEn"> {{ 'UPDATE_TEACHER_PG.NAME_EN' | translate }}
                                 </label>
                                 <input id="firstEn" pInputText type="text" formControlName="firstEn"
-                                    name="firstEn" class="form-control UserRegister__FormControl">
+                                    name="firstEn" class="form-control UserRegister__FormControl" placeholder="{{ 'UPDATE_TEACHER_PG.FIRST_NAME' | translate }}">
 
                                 <div *ngIf="f.firstEn.errors && (f.firstEn.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
@@ -111,7 +111,7 @@
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="translate.currentLang == langEnum.en">
                                 <label class="Register__Label" for="middleEn"> {{ 'UPDATE_TEACHER_PG.FATHER_NAME_EN' | translate }} </label>
                                 <input id="middleEn" pInputText type="text" formControlName="middleEn"
-                                    name="middleEn" class="form-control UserRegister__FormControl">
+                                    name="middleEn" class="form-control UserRegister__FormControl" placeholder="{{ 'UPDATE_TEACHER_PG.FATHER_NAME_EN' | translate }}">
                                     
                                     <div *ngIf="f.middleEn.errors && (f.middleEn.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.middleEn.errors?.required">
@@ -129,7 +129,7 @@
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="translate.currentLang == langEnum.en">
                                 <label class="Register__Label" for="familyEn"> {{ 'UPDATE_TEACHER_PG.FAMILY_NAME_EN' | translate }} </label>
                                 <input id="familyEn" pInputText type="text" formControlName="familyEn"
-                                    name="familyEn" class="form-control UserRegister__FormControl">
+                                    name="familyEn" class="form-control UserRegister__FormControl" placeholder="{{ 'UPDATE_TEACHER_PG.FAMILY_NAME_EN' | translate }}">
 
                                     <div *ngIf="f.familyEn.errors && (f.familyEn.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.familyEn.errors?.required">
@@ -146,8 +146,7 @@
 
                             <!-- End Names English -->
 
-                            <div class="col-5 updateTeacher_hijriBirthDate">
-                                <div class="d-flex justify-content-around" >
+                            <div class="col-4 updateTeacher_hijriBirthDate">
                                 <div class="hijriBirthDate_contanier">
                                     <label class="Register__Label " for="hijriBirthDate">
                                         {{ 'UPDATE_TEACHER_PG.HIJRIBIRTHDATE' |translate }}
@@ -162,30 +161,32 @@
                                         </div>
                                     </div> 
                                 </div>
+                            
+                            </div>
 
-                                <div class="pl-3 pr-3 gender_contanier">
-                                    <label class="Register__Label" for="gender"> {{ 'GENERAL.GENDER' | translate }}
-                                    </label>
-                                    <div class="row">                                       
-                                        <section class="col-12 mt-3" >
-                                            <mat-radio-group aria-label="Select an option"  class="example-radio-group"  
-                                             formControlName="gender">
-                                                <mat-radio-button value="{{item.id}}" class="example-radio-button ml-3"  
-                                                *ngFor="let item of collectionOfLookup.GENDER">
-                                                {{ translate.currentLang == langEnum.en ? item.nameEn : item.nameAr}}
-                                                </mat-radio-button>
-                                            </mat-radio-group>
-                                       </section>
-                                        <div *ngIf="f.gender.errors && (f.gender.touched || isSubmit)"
-                                                class="alert alert-danger mt-2 mb-2">
-                                                <div *ngIf="f.gender.errors.required">
-                                                    {{ 'UPDATE_TEACHER_PG.GENDER_REQUIRED' | translate }}
-                                                </div>
-                                        </div>
+                            
+                            <div class="pl-3 pr-3 gender_contanier col-3">
+                                <label class="Register__Label" for="gender"> {{ 'GENERAL.GENDER' | translate }}
+                                </label>
+                                <div class="row">                                       
+                                    <section class="col-12 mt-3" >
+                                        <mat-radio-group aria-label="Select an option"  class="example-radio-group"  
+                                         formControlName="gender">
+                                            <mat-radio-button value="{{item.id}}" class="example-radio-button ml-3"  
+                                            *ngFor="let item of collectionOfLookup.GENDER">
+                                            {{ translate.currentLang == langEnum.en ? item.nameEn : item.nameAr}}
+                                            </mat-radio-button>
+                                        </mat-radio-group>
+                                   </section>
+                                    <div *ngIf="f.gender.errors && (f.gender.touched || isSubmit)"
+                                            class="alert alert-danger mt-2 mb-2">
+                                            <div *ngIf="f.gender.errors.required">
+                                                {{ 'UPDATE_TEACHER_PG.GENDER_REQUIRED' | translate }}
+                                            </div>
                                     </div>
                                 </div>
                             </div>
-                            </div>
+
                         </div>
                     </div>
 
@@ -223,9 +224,10 @@
                             </div>
 
                             <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2">
-                                <label class="Register__Label" for="nationality"> {{ 'GENERAL.NATIONALITY' | translate }} </label>
+                                <label class="Register__Label" for="nationality">{{ 'GENERAL.NATIONALITY' | translate }} </label>
                                 <div>
                                     <select class="UpdateUser__Options" name="nameEn" formControlName="nationality">
+                                        <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELECT_NATIONALITY' | translate }}</option>
                                         <option *ngFor="let nationalityItem of collectionOfLookup.NATIONALITY"
                                             [value]="nationalityItem.id">
                                             {{ translate.currentLang == langEnum.en ? nationalityItem.nameEn : nationalityItem.nameAr}}
@@ -241,10 +243,12 @@
                             </div>
       
                             <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2">
-                                <label class="Register__Label" for="country"> {{ 'UPDATE_TEACHER_PG.COUNTRY' | translate }} </label>
+                                <label class="Register__Label" for="country"> {{ 'UPDATE_TEACHER_PG.SELECT_Country' | translate }} </label>
 
                                 <select class="UpdateUser__Options" name="nameEn" formControlName="country" 
                                 (change)="getCitiesLookupByCountry()">
+                                <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELECT_Country' | translate }}</option>
+
                                     <option *ngFor="let countryItem of collectionOfLookup.COUNTRY"
                                         [value]="countryItem.id">
                                         {{ translate.currentLang == langEnum.en ? countryItem.nameEn : countryItem.nameAr}}
@@ -265,6 +269,9 @@
                                 </label>
                                
                                     <select class="UpdateUser__Options" name="nameEn" formControlName="city">
+                                        <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELEC_CITY' | translate }}</option>
+
+
                                         <option *ngFor="let cityItem of collectionOfLookup.CITY"
                                             [value]="cityItem.id">
                                             {{ translate.currentLang == langEnum.en ? cityItem.nameEn : cityItem.nameAr}}
@@ -285,12 +292,14 @@
                                     {{ 'UPDATE_TEACHER_PG.INFO_CONTACT' | translate }}
                                 </p>
                             </div>
-                            <div class="col-lg-1 col-md-6 col-sm-2 col-xs-2 mt-3">
+                            <div class="col-lg-2  col-md-6 col-sm-2 col-xs-2 mt-3">
                                 <label class="Register__Label" for="interviewDay"> 
                                     {{ 'UPDATE_TEACHER_PG.DAY' | translate }}
                                 </label>
                                
                                     <select class="UpdateUser__Options" name="nameEn" formControlName="interviewDay">
+                                        <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELECT_DAY' | translate }}</option>
+                                        
                                         <option *ngFor="let interviewDayItem of collectionOfLookup.DAYS"
                                             [value]="interviewDayItem.id">
                                             {{ translate.currentLang == langEnum.en ? interviewDayItem.nameEn : interviewDayItem.nameAr}}
@@ -354,7 +363,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-4 col-xs-4">
                                 <label class="Register__Label" for="address"> {{ 'UPDATE_TEACHER_PG.ADDRESS' | translate }} </label>
                                 <input id="address" pInputText type="text" formControlName="address"
-                                    name="address" class="form-control UserRegister__FormControl">
+                                    name="address" class="form-control UserRegister__FormControl" placeholder="{{ 'UPDATE_TEACHER_PG.SELECT_ADDRESS' | translate }}">
 
                                 <div *ngIf="f.address.errors && (f.address.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                     <div *ngIf="f.address.errors?.required">
@@ -369,7 +378,7 @@
                                     <label class="custom-file custom-file__text" for="importFile">
                                         <div class="row">                                            
                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-                                                <input type="text" class=" form-control UserRegister__FormControl" >
+                                                <input type="text" class=" form-control UserRegister__FormControl" placeholder="{{ 'UPDATE_TEACHER_PG.JOIN_MEMORIES_QURAN' | translate }}" >
                                             </div>
                                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2  UpdateUserIcon">
                                                 <img class=" upload-icon" src="assets/images/update-user/UploadIcon.svg"/>
@@ -410,6 +419,8 @@
                                 <label class="Register__Label" for="edulevel"> {{ 'UPDATE_TEACHER_PG.EDU' | translate }} </label>
                                 
                                 <select class="UpdateUser__Options" name="nameEn" formControlName="edulevel">
+                                    <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELECT_EDU' | translate }}</option>
+
                                     <option *ngFor="let edulevelItem of collectionOfLookup.EDU_LEVEL"
                                         [value]="edulevelItem.id">
                                         {{ translate.currentLang == langEnum.en ? edulevelItem.nameEn :
@@ -429,6 +440,8 @@
                                 <label class="Register__Label" for="qualifi"> {{ 'UPDATE_TEACHER_PG.QUALIFICATION' | translate }} </label>
                                 
                                 <select class="UpdateUser__Options" name="nameEn" formControlName="qualifi">
+                                    <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELECT_EDU_LEVEL' | translate }}</option>
+
                                     <option *ngFor="let qualifiItem of collectionOfLookup.QUALIFI"
                                         [value]="qualifiItem.id">
                                         {{ translate.currentLang == langEnum.en ? qualifiItem.nameEn :
@@ -448,6 +461,8 @@
                                 <label class="Register__Label" for="specia"> {{ 'UPDATE_TEACHER_PG.SPECTALIZATION' | translate }} </label>
                                     
                                     <select class="UpdateUser__Options" name="nameEn" formControlName="specia">
+                                    <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELECT_SPECTALIZATION' | translate }}</option>
+
                                         <option *ngFor="let special of collectionOfLookup.SPECIAL"
                                             [value]="special.id">
                                             {{ translate.currentLang == langEnum.en ? special.nameEn :
@@ -494,7 +509,7 @@
                             <div class="col-20">
                                 <label class="Register__Label" for="entity"> {{ 'UPDATE_TEACHER_PG.ENTITY' | translate }} </label>
                                 <input id="entity" pInputText type="text" formControlName="entity"
-                                    name="entity" class="form-control UserRegister__FormControl">
+                                    name="entity" class="form-control UserRegister__FormControl" placeholder="{{ 'UPDATE_TEACHER_PG.NAME_ENTITY' | translate }}">
 
                                 <div *ngIf="f.entity.errors && (f.entity.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
@@ -508,7 +523,9 @@
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                 <label class="Register__Label" for="eduNum"> {{ 'UPDATE_TEACHER_PG.EDU_NUM' | translate }} </label>
                                 <input id="eduNum" pInputText type="number" formControlName="eduNum"
-                                    name="eduNum" class="form-control UserRegister__FormControl">
+                                    name="eduNum" class="form-control UserRegister__FormControl"
+                                    placeholder="{{ 'UPDATE_TEACHER_PG.NAME_ENTITY' | translate }}"
+                                    >
 
                                 
                                     
@@ -527,6 +544,8 @@
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                 <label class="Register__Label" for="eduDate"> {{ 'UPDATE_TEACHER_PG.DURATION' | translate }} </label>
                                 <select class="UpdateUser__Options" name="nameEn" formControlName="eduDate">
+                                    <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELECT_EDUCATION_YEARS' | translate }}</option>
+
                                     <option *ngFor="let eduDateItem of collectionOfLookup.EDU_DATE"
                                         [value]="eduDateItem.id">
                                         {{ translate.currentLang == langEnum.en ? eduDateItem.nameEn : eduDateItem.nameAr}}
@@ -677,6 +696,7 @@
                                     <!-- <input class="form-control" type="text" /> -->
                                     <div class="input-group pr-2rem">
                                         <select class="form-control " id="rewayats" formControlName="rewayats">
+                                            
                                             <option *ngFor="let rewayat of collectionOfLookup.REWAYAT"
                                                 value="{{rewayat.id}}">
                                                 {{translate.currentLang == langEnum.en ? rewayat.nameEn : rewayat.nameAr}}</option>
@@ -714,6 +734,8 @@
                                     <!-- <input class="form-control" type="text" /> -->
                                     <div class="input-group pr-2rem">
                                         <select class="form-control " id="languages" formControlName="languages">
+                                    <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELECT_languages' | translate }}</option>
+
                                             <option *ngFor="let language of collectionOfLookup.LANG"
                                                 value="{{language.id}}">
                                                 {{translate.currentLang == langEnum.en ? language.nameEn : language.nameAr}}</option>
@@ -778,7 +800,7 @@
                                 <label class="Register__Label" for="bankName"> {{ 'UPDATE_TEACHER_PG.BANK_NAME' |
                                     translate }} </label>
                                 <input id="bankName" pInputText type="text" formControlName="bankName"
-                                    name="bankName" class="form-control UserRegister__FormControl">
+                                    name="bankName" class="form-control UserRegister__FormControl" placeholder="{{ 'UPDATE_TEACHER_PG.INPUT_BANK_NMAE' | translate }}">
 
                                 <!-- <div *ngIf="f.bankName.errors && (f.bankName.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
@@ -792,7 +814,7 @@
                                 <label class="Register__Label" for="bankNumber"> {{ 'UPDATE_TEACHER_PG.ACCOUNT_NUMBER' |
                                     translate }} </label>
                                 <input id="bankNumber" pInputText type="text" formControlName="bankNumber" 
-                                    name="bankNumber" class="form-control UserRegister__FormControl">
+                                    name="bankNumber" class="form-control UserRegister__FormControl" placeholder="{{ 'UPDATE_TEACHER_PG.INPUT_ACCOUNT_NUMBER' | translate }}">
 
                                 <!-- <div *ngIf="f.bankNumber.errors && (f.bankNumber.touched || isSubmit)"
                                     class="alert alert-danger mt-2 mb-2">
@@ -815,6 +837,8 @@
                                     <label class="Register__Label" for="teacherPrograms"> {{ 'UPDATE_TEACHER_PG.CHOOSE_PROGRAM' | translate }} </label>
 
                                     <select class="UpdateUser__Options" name="nameEn" formControlName="teacherPrograms">
+                                    <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELECT_PROGRAM' | translate }}</option>
+
                                         <option *ngFor="let item of ProgramsList"
                                             [value]="item.id">
                                                     {{ translate.currentLang == langEnum.en ? item.engName : item.arabName}}
@@ -833,6 +857,8 @@
                                         <label class="Register__Label" for="teacherProgramDegrees"> {{ 'UPDATE_TEACHER_PG.PROFICIENCY_DEGREE' | translate }} </label>
 
                                         <select class="UpdateUser__Options" name="nameEn" formControlName="teacherProgramDegrees">
+                                         <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELECT_PROGRAM_DEGREE' | translate }}</option>
+
                                             <option *ngFor="let degreeItem of collectionOfLookup.DEGREE"
                                                 [value]="degreeItem.id">
                                                 {{ translate.currentLang == langEnum.en ? degreeItem.nameEn :
@@ -876,6 +902,8 @@
                                     </label>
                                    
                                         <select class="UpdateUser__Options" name="nameEn" formControlName="availabilityDays">
+                                        <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELECT_DAY' | translate }}</option>
+
                                             <option *ngFor="let interviewDayItem of collectionOfLookup.DAYS"
                                                 [value]="interviewDayItem.id">
                                                 {{ translate.currentLang == langEnum.en ? interviewDayItem.nameEn : interviewDayItem.nameAr}}
