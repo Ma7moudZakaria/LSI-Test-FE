@@ -1,1 +1,43 @@
-<p>add-program works!</p>
+
+<div class="container-fluid"> 
+        <div class="row group_header fix_margin w-100">
+        <div class="item_group "(click)="showTap = 'BASEINFO'"
+        [ngClass]="{ item_group_active: showTap == 'BASEINFO' }" >
+            البيانات الاساسية
+        </div>
+        <div class="item_group"  (click)="showTap = 'CANDITION'"
+        [ngClass]="{ item_group_active: showTap == 'CANDITION' }">
+            الشروط
+        </div>
+        <div class="item_group"  (click)="showTap = 'JOINEXAME'"
+        [ngClass]="{ item_group_active: showTap == 'JOINEXAME' }">
+            إختبارات الانضمام
+        </div>
+        <div class="item_group" (click)="showTap = 'DAYS'"
+        [ngClass]="{ item_group_active: showTap == 'DAYS' }" >
+            الايام
+        </div>
+        <div class="item_group" (click)="showTap = 'PERIODICEXAME '"
+        [ngClass]="{ item_group_active: showTap == 'PERIODICEXAME' }" >
+            الاختبارات الدورية
+        </div>
+        <div class="item_group" (click)="showTap = 'NOTIFY'"
+        [ngClass]="{ item_group_active: showTap == 'NOTIFY' }" >
+            إلية التنبيه
+        </div>
+      
+    </div>
+    <!-- {{selectedRoleId | json}} -->
+   
+    <div class="row fix_margin w-100" >
+        <div class="col-12 px-0 ">
+        <app-program-basic-info *ngIf="showTap == 'BASEINFO'"></app-program-basic-info>
+        <app-program-conditions *ngIf="showTap == 'CANDITION'"></app-program-conditions>
+        <app-program-days *ngIf="showTap == 'DAYS'"></app-program-days>
+        <app-program-exames *ngIf="showTap == 'JOINEXAME'"></app-program-exames>
+        <app-periodic-exame *ngIf="showTap == 'PERIODICEXAME'"></app-periodic-exame>
+        <app-program-notifacations *ngIf="showTap == 'NOTIFY'"></app-program-notifacations>
+        </div>
+     
+      </div>
+    </div>
