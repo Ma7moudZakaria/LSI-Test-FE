@@ -1,5 +1,5 @@
 export interface ITeacherProfileAvailability {
-    interviewDay?:string;   
+    availableDay?:string;   
     fromTime?:string;    
     toTime?:string;     
 }
