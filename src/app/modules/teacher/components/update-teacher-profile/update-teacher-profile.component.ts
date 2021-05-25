@@ -529,7 +529,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
         Array.from(this.selectedAvailabilityDaysList).forEach((elm: ITeacherProfileAvailabilityLookup) => {
           if (this.updateTeacherModel.availabilityDays) {
             this.updateTeacherModel.availabilityDays.push({
-              interviewDay: elm.id,
+              availableDay: elm.id,
               fromTime:elm.fromTime,
               toTime:elm.toTime
             });
