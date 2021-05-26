@@ -490,5 +490,11 @@
   },
   "ADMIN_MESSAGING": {
     "SCIENTIFIC_PROBLEM": "إشكال علمى"
+  },
+  "NOTIFACATIONS": {
+    "AFTER_ASSIGNMENT": "بعد عدم تنفيذ ",
+    "ASSIGNMENT": "واجب",
+    "MESSAGE_ARABIC": "الراسله بالعربي",
+    "MESSAGE_ENGLISH": "الراسله بالانجليزي"
   }
 }

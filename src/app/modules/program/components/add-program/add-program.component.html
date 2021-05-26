@@ -1,9 +1,10 @@
 
 <div class="container-fluid"> 
         <div class="row group_header fix_margin w-100">
+
         <div class="item_group "(click)="showTap = 'BASEINFO'"
-        [ngClass]="{ item_group_active: showTap == 'BASEINFO' }" >
-            البيانات الاساسية
+            [ngClass]="{ item_group_active: showTap == 'BASEINFO' }" >
+                البيانات الاساسية
         </div>
         <div class="item_group"  (click)="showTap = 'CANDITION'"
         [ngClass]="{ item_group_active: showTap == 'CANDITION' }">
@@ -25,9 +26,8 @@
         [ngClass]="{ item_group_active: showTap == 'NOTIFY' }" >
             إلية التنبيه
         </div>
-      
+        
     </div>
-    <!-- {{selectedRoleId | json}} -->
    
     <div class="row fix_margin w-100" >
         <div class="col-12 px-0 ">
@@ -36,8 +36,17 @@
         <app-program-days *ngIf="showTap == 'DAYS'"></app-program-days>
         <app-program-exames *ngIf="showTap == 'JOINEXAME'"></app-program-exames>
         <app-periodic-exame *ngIf="showTap == 'PERIODICEXAME'"></app-periodic-exame>
-        <app-program-notifacations *ngIf="showTap == 'NOTIFY'"></app-program-notifacations>
+        
+        <app-program-notifacations *ngIf="showTap == 'NOTIFY'"
+        (openNotifyfrom)="openNotifyProgram()" ></app-program-notifacations>
+
         </div>
      
       </div>
+
+      
+      <div class="overlay" *ngIf="showAddOverlay">
+         <app-add-notifacations  (closeNotifyForm) = "closeNotifyProgram()"></app-add-notifacations>
+     </div>
+
     </div>

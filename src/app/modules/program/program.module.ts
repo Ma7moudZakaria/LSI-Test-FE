@@ -24,9 +24,10 @@ import { ProgramExamesComponent } from './components/add-program/program-exames/
 import { ProgramDaysComponent } from './components/add-program/program-days/program-days.component';
 import { ProgramNotifacationsComponent } from './components/add-program/program-notifacations/program-notifacations.component';
 import { PeriodicExameComponent } from './components/add-program/periodic-exame/periodic-exame.component';
+import { AddNotifacationsComponent } from './components/add-program/add-notifacations/add-notifacations.component';
 
 @NgModule({
-  declarations: [AddProgramComponent, ProgramDetailsComponent, ProgramDetailsComponent, ProgramsListComponent, BasicInformationComponent, StudentsComponent, ProgressTestComponent, DaysComponent, JoinRequestsComponent, VacationRequestsComponent, ConditionsComponent, NotifyComponent, ProgramBasicInfoComponent, ProgramConditionsComponent, ProgramExamesComponent, ProgramDaysComponent, ProgramNotifacationsComponent, PeriodicExameComponent],
+  declarations: [AddProgramComponent, ProgramDetailsComponent, ProgramDetailsComponent, ProgramsListComponent, BasicInformationComponent, StudentsComponent, ProgressTestComponent, DaysComponent, JoinRequestsComponent, VacationRequestsComponent, ConditionsComponent, NotifyComponent, ProgramBasicInfoComponent, ProgramConditionsComponent, ProgramExamesComponent, ProgramDaysComponent, ProgramNotifacationsComponent, PeriodicExameComponent, AddNotifacationsComponent],
   imports: [
     CommonModule,
     ProgramRoutingModule,

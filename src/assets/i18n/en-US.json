@@ -493,5 +493,11 @@
   },
   "ADMIN_MESSAGING": {
     "SCIENTIFIC_PROBLEM": "Scientific Problem"
+  },
+  "NOTIFACATIONS": {
+    "AFTER_ASSIGNMENT": "After Not performing",
+    "ASSIGNMENT": "assignment",
+    "MESSAGE_ARABIC": "The message is in Arabic",
+    "MESSAGE_ENGLISH": "The message is in English"
   }
 }

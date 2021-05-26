@@ -1,1 +1,27 @@
-<p>program-notifacations works!</p>
+<div class="tab_page notifacation_page">
+    <div class=" pt-3">
+        <div class="row">
+            <div class="col-md-12 container_haeder mb-2">
+                <div>
+                 <span class="haeder">التبيهات</span>
+                </div>
+
+               <button class="cancel-btn" (click)="AddProgram()" >
+                اضافه برنامج
+               </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-12 max_h">
+        <div class="row">
+         <ng-container *ngFor="let item of listCard">
+        <div class="col-4 mb-3" >
+            <app-card-notifacations></app-card-notifacations>
+        </div>
+      </ng-container>
+        </div>
+    </div>
+   
+    
+</div>

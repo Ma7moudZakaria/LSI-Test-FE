@@ -1,0 +1,66 @@
+
+
+<form class="form-group notifyForm mt-5 pl-3 pr-3">
+    <h3 class="text-right  head  bold">إضافة تنبية</h3>
+    
+    
+       
+        
+    <div class="form-group">
+        <div class="row">
+            <div class="col-12">
+                <label class="text-right header_input">عدد الواجبات</label>
+               <input type="text" class="form-control" formControlName="" id=""
+               placeholder="اكتب عدد الواجبات التي لم تنفذ">
+        
+            </div>
+        </div>
+        
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-12">
+                <label class="text-right header_input">اسم التنبية</label>
+               <input type="text" class="form-control" formControlName="" id=""
+               placeholder="اسم التنبية">
+        
+            </div>
+        </div>
+        
+    </div>
+    
+    <div  class="form-group">
+        <label  class="label">
+            نوع التنبية
+
+        </label>
+
+        <select class="form-control " >
+            <option >f</option>
+            <option >f</option>  <option >f</option>  <option >f</option>
+          </select>
+    </div>
+    <div class="form-group">
+        <label for="comment">{{ 'QUESTION_BANK.QUESTION_AR' | translate }}</label>
+        <textarea class="form-control" cols="2" rows="3"  ></textarea>
+       
+      </div>
+   
+      <div class="form-group">
+        <label for="comment">{{ 'QUESTION_BANK.QUESTION_AR' | translate }}</label>
+        <textarea class="form-control" cols="2" rows="3"  ></textarea>
+       
+      </div>
+   <section class="mt-5">
+            <div  class="row direction-rtl buttons-center mt-5">
+                <button   type="submit" class="save-btn"> 
+                    {{ "GENERAL.SAVE" | translate }}
+                    
+                </button>
+                <button    type="reset" class="cancel-btn" (click)="closeNotify()"> 
+                    {{ "GENERAL.CANCEL" | translate }}
+                    
+                </button>
+            </div>
+        </section>
+   </form>
