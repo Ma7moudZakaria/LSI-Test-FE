@@ -37,16 +37,15 @@
         <app-program-exames *ngIf="showTap == 'JOINEXAME'"></app-program-exames>
         <app-periodic-exame *ngIf="showTap == 'PERIODICEXAME'"></app-periodic-exame>
         
-        <app-program-notifacations *ngIf="showTap == 'NOTIFY'"
-        (openNotifyfrom)="openNotifyProgram()" ></app-program-notifacations>
+        <app-program-notifacations *ngIf="showTap == 'NOTIFY'"></app-program-notifacations>
 
         </div>
      
       </div>
 
       
-      <div class="overlay" *ngIf="showAddOverlay">
-         <app-add-notifacations  (closeNotifyForm) = "closeNotifyProgram()"></app-add-notifacations>
-     </div>
+      <!-- <div class="overlay" *ngIf="showAddOverlay">
+         <app-add-edit-notification  (closeNotifyForm) = "closeNotifyProgram()" [IProgramNotificationDetails]="IProgramNotificationDetails" ></app-add-edit-notification>
+     </div> -->
 
     </div>

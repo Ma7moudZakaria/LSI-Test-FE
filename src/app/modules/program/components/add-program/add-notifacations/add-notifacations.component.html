@@ -1,8 +1,7 @@
+<!-- 
 
-
-<form class="form-group notifyForm mt-5 pl-3 pr-3">
+<form class="form-group notifyForm mt-5 pl-3 pr-3" [formGroup]="notifyForm" (ngSubmit)="Submit()">
     <h3 class="text-right  head  bold">إضافة تنبية</h3>
-    
     
        
         
@@ -10,7 +9,7 @@
         <div class="row">
             <div class="col-12">
                 <label class="text-right header_input">عدد الواجبات</label>
-               <input type="text" class="form-control" formControlName="" id=""
+               <input type="text" class="form-control" formControlName="numberNotify" id=""
                placeholder="اكتب عدد الواجبات التي لم تنفذ">
         
             </div>
@@ -21,7 +20,7 @@
         <div class="row">
             <div class="col-12">
                 <label class="text-right header_input">اسم التنبية</label>
-               <input type="text" class="form-control" formControlName="" id=""
+               <input type="text" class="form-control" formControlName="notifyNameAr" id=""
                placeholder="اسم التنبية">
         
             </div>
@@ -35,20 +34,20 @@
 
         </label>
 
-        <select class="form-control " >
+        <select class="form-control " formControlName="notifyType" >
             <option >f</option>
             <option >f</option>  <option >f</option>  <option >f</option>
           </select>
     </div>
     <div class="form-group">
         <label for="comment">{{ 'QUESTION_BANK.QUESTION_AR' | translate }}</label>
-        <textarea class="form-control" cols="2" rows="3"  ></textarea>
+        <textarea class="form-control" cols="2" rows="3"   formControlName="questionAr"></textarea>
        
       </div>
    
       <div class="form-group">
-        <label for="comment">{{ 'QUESTION_BANK.QUESTION_AR' | translate }}</label>
-        <textarea class="form-control" cols="2" rows="3"  ></textarea>
+        <label for="comment">{{ 'QUESTION_BANK.QUESTION_EN' | translate }}</label>
+        <textarea class="form-control" cols="2" rows="3"   formControlName="questionEn"></textarea>
        
       </div>
    <section class="mt-5">
@@ -63,4 +62,4 @@
                 </button>
             </div>
         </section>
-   </form>
+   </form> -->

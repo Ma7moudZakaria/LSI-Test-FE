@@ -1,0 +1,128 @@
+
+
+<form class="form-group notifyForm mt-3 pl-3 pr-3" 
+[formGroup]="notifyForm" (ngSubmit)="onSubmit()"
+>
+    <h3 class="text-right  head  bold" *ngIf="!notificationDetails">إضافة تنبية</h3>
+    <h3 class="text-right  head  bold" *ngIf="notificationDetails">تعديل التنبية</h3>
+       
+        
+    <div class="form-group">
+        <div class="row">
+            <div class="col-12">
+                <label class="text-right header_input">عدد الواجبات</label>
+               <input type="text" class="form-control" formControlName="numberNotify" 
+               placeholder="اكتب عدد الواجبات التي لم تنفذ">
+        
+            </div>
+
+            <div *ngIf="f.numberNotify.errors && (f.numberNotify.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 pl-4 pr-4">
+                <div *ngIf="f.numberNotify.errors?.required">
+                    {{ 'GENERAL.REQUIRED' | translate }}
+                </div>
+              
+            </div> 
+
+
+        </div>
+        
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-12">
+                <label class="text-right header_input"> اسم التنبية</label>
+               <input type="text" class="form-control" formControlName="notifyName" 
+               placeholder="اسم التنبيه">
+        
+            </div>
+
+            <div *ngIf="f.notifyName.errors && (f.notifyName.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 pl-4 pr-4">
+                <div *ngIf="f.notifyName.errors?.required">
+                    {{ 'GENERAL.REQUIRED' | translate }}
+                </div>
+              
+            </div> 
+
+
+        </div>
+        
+    </div>
+
+
+    
+    <div  class="form-group">
+        <label  class="label">
+            نوع التنبية
+
+        </label>
+
+        <select class="form-control " formControlName="notifyType"  >
+            <option >f</option>
+            <option >f</option>  <option >f</option>  <option >f</option>
+          </select>
+
+
+
+          <div *ngIf="f.notifyType.errors && (f.notifyType.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 pl-4 pr-4">
+            <div *ngIf="f.notifyType.errors?.required">
+                {{ 'GENERAL.REQUIRED' | translate }}
+            </div>
+          
+        </div> 
+
+
+    </div>
+    <div class="form-group">
+        <label for="comment">{{ 'QUESTION_BANK.QUESTION_AR' | translate }}</label>
+        <textarea class="form-control" cols="2" rows="3"   formControlName="messageAr"></textarea>
+       
+      </div>
+   
+      <div *ngIf="f.messageAr.errors && (f.messageAr.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 pl-2 pr-2">
+        <div *ngIf="f.messageAr.errors?.required">
+            {{ 'GENERAL.REQUIRED' | translate }}
+        </div>
+        <div *ngIf="f.messageAr.errors?.maxlength">
+            <!-- {{ 'UPDATE_USER_PG.FAMILY_NAME_AR_MAX_LENGTH' | translate }} -->
+        </div>
+        <div *ngIf="f.messageAr.errors?.minlength">
+            <!-- {{ 'UPDATE_USER_PG.FAMILY_NAME_AR_MIN_LENGTH' | translate }} -->
+        </div>
+    </div> 
+
+      <div class="form-group">
+        <label for="comment">{{ 'QUESTION_BANK.QUESTION_EN' | translate }}</label>
+        <textarea class="form-control" cols="2" rows="3"   formControlName="messageEn"></textarea>
+       
+      </div>
+
+      <div *ngIf="f.messageEn.errors && (f.messageEn.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 pl-2 pr-2">
+        <div *ngIf="f.messageEn.errors?.required">
+            {{ 'GENERAL.REQUIRED' | translate }}
+        </div>
+        <div *ngIf="f.messageEn.errors?.maxlength">
+            <!-- {{ 'UPDATE_USER_PG.FAMILY_NAME_AR_MAX_LENGTH' | translate }} -->
+        </div>
+        <div *ngIf="f.messageEn.errors?.minlength">
+            <!-- {{ 'UPDATE_USER_PG.FAMILY_NAME_AR_MIN_LENGTH' | translate }} -->
+        </div>
+    </div> 
+    
+   <section class="mt-5">
+            <div  class="row direction-rtl buttons-center mt-5">
+                <button   type="submit" class="save-btn" *ngIf="!notificationDetails"> 
+                    {{ "GENERAL.SAVE" | translate }}
+                    
+                </button>
+                <button   type="submit" class="save-btn" *ngIf="notificationDetails"> 
+                   تعديل
+                    
+                </button>
+                <button    type="reset" class="cancel-btn" (click)="closeNotify()"> 
+                    {{ "GENERAL.CANCEL" | translate }}
+                    
+                </button>
+            </div>
+        </section>
+   </form>

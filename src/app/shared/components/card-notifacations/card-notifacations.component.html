@@ -1,17 +1,21 @@
 <div class=" notify_card">
     <div class="card_header">
-    <span>تنبية مبدائي</span>
+    <span>{{notificationsCardDetails.notifyName}}</span>
     
     <span class="icon_actions">
-     <img src="/assets/images/notify/edit.svg" (click)="deleteCard()"> 
-     <img src="/assets/images/notify/trash.svg" (click)="editCard()">  
+     <img src="/assets/images/notify/edit.svg" (click)="editCard()"> 
+     <img src="/assets/images/notify/trash.svg" (click)="deleteCard()">  
     </span>
     </div>
     <div class="row">
         <div class="col-12 ">
             <p class="notify_type mb-0"> 
-                <span >نوع التنبيه  </span> 
-                <span>{{'NOTIFACATIONS.AFTER_ASSIGNMENT' | translate}} <span class=" bold notify_number"> عدد الوجبات</span> {{'NOTIFACATIONS.ASSIGNMENT' | translate}}  </span>
+                <span>{{notificationsCardDetails.notifyType}}</span> 
+                <span>&nbsp;</span>
+                <span>&nbsp;</span> 
+                <span>{{'NOTIFACATIONS.AFTER_ASSIGNMENT' | translate}}
+                    
+                <span class=" bold notify_number">{{notificationsCardDetails.numberNotify}}</span> {{'NOTIFACATIONS.ASSIGNMENT' | translate}}  </span>
             </p>
         </div>
     </div>
@@ -21,9 +25,8 @@
             <span> {{'NOTIFACATIONS.MESSAGE_ARABIC' | translate}} </span>
             </div>
             <p class="bold">
-            
-                  سبب الإجازة سبب الإجازة سبب الإجا
-                  زة سبب الإجازة سبب الإجازة سبب الإجازة سبب الإجازة سبب الإجازة سبب الإجازة سبب الإجازة
+                {{notificationsCardDetails.messageAr}}
+                 
          
             </p>
     
@@ -31,9 +34,9 @@
       <span>{{'NOTIFACATIONS.MESSAGE_ENGLISH' | translate}}  </span>
       </div>
       <p class="bold">
+        {{notificationsCardDetails.messageEn}}
       
-            سبب الإجازة سبب الإجازة سبب الإجا
-            زة سبب الإجازة سبب الإجازة سبب الإجازة سبب الإجازة سبب الإجازة سبب الإجازة سبب الإجازة
+          
    
       </p>
     </div>

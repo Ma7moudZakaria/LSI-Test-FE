@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { IprogramCreatModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-creat-model';
+import { IProgramNotificationDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-notification-details';
 import { IprogramUpdateModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-update-model';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
@@ -18,7 +19,7 @@ export class AddProgramComponent implements OnInit {
   showTap: string = 'NOTIFY';
   showAddOverlay: boolean = false;
   // openNotify: boolean = false;
-
+  IProgramNotificationDetails: IProgramNotificationDetails = {}
   constructor() { }
 
   ngOnInit(): void {
@@ -26,15 +27,16 @@ export class AddProgramComponent implements OnInit {
 
   }
 
-  closeNotifyProgram() {
-    this.showAddOverlay = false;
-  }
+
   openNotifyProgram() {
     this.showAddOverlay = true;
-    console.log(this.showAddOverlay);
   }
 
-
+  editNotification(event: IProgramNotificationDetails) {
+    this.IProgramNotificationDetails = event
+    this.showAddOverlay = true;
+    console.log(event)
+  }
 
 
 
