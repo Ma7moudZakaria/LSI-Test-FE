@@ -36,29 +36,28 @@ export class ProgramNotificationViewComponent implements OnInit {
   notificationsCardList: IProgramNotificationModel[] = [
     {
       notifyName: 'تنبيه واحد ',
-
-      numberNotify: '5',
+      no: 5,
       notifyType: 'تنبيه رقم 1',
-      messageAr: 'ىىىى حخهلث لث ع ث0ع0عث  ثع سعبحح حع بحصبح  ',
-      messageEn: ' Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry '
+      msgAr: 'ىىىى حخهلث لث ع ث0ع0عث  ثع سعبحح حع بحصبح  ',
+      msgEn: ' Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry '
 
     },
     {
-      notifyName: 'تنبيه 2',
-
-      numberNotify: '2',
+      notifyName: 'تنبيه واحد ',
+      no: 5,
       notifyType: 'تنبيه رقم 1',
-      messageAr: 'رررررررررررر سبؤئس سفلس ثثثف لثقر ',
-      messageEn: 'NNNNNNNNNNN NNNNNNNNNNNNNNNNNNNNN NNNNNNNNNNNNNNN NNNNNNN',
+      msgAr: 'ىىىى حخهلث لث ع ث0ع0عث  ثع سعبحح حع بحصبح  ',
+      msgEn: ' Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry '
+
     }
     ,
     {
-      notifyName: 'تنبيه 3',
+      notifyName: 'تنبيه واحد ',
+      no: 5,
+      notifyType: 'تنبيه رقم 1',
+      msgAr: 'ىىىى حخهلث لث ع ث0ع0عث  ثع سعبحح حع بحصبح  ',
+      msgEn: ' Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry '
 
-      numberNotify: '2',
-      notifyType: 'تنبيه رقم 3',
-      messageAr: 'رررررررررررر سبؤئس سفلس ثثثف لثقر ',
-      messageEn: 'NNNNNNNNNNN NNNNNNNNNNNNNNNNNNNNN NNNNNNNNNNNNNNN NNNNNNN',
     }
   ]
 
