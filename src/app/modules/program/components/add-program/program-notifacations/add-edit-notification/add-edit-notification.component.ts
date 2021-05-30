@@ -83,13 +83,13 @@ export class AddEditNotificationComponent implements OnInit {
       if (this.notificationDetails) {
         // fill edit model 
         this.notificationEditModel = {
-
+          programId: this.notificationDetails.programId,
           notificationId: this.notificationDetails.notificationId,
-          notifyName: this.notificationDetails.notifyName,
-          numberNotify: this.notificationDetails.numberNotify,
-          notifyType: this.notificationDetails.notifyType,
-          messageAr: this.notificationDetails.messageAr,
-          messageEn: this.notificationDetails.messageEn,
+          notifyName: this.notifyForm.value.notifyName,
+          numberNotify: this.notifyForm.value.numberNotify,
+          notifyType: this.notifyForm.value.notifyType,
+          messageAr: this.notifyForm.value.messageAr,
+          messageEn: this.notifyForm.value.messageEn,
 
         }
         // send edit model to api 

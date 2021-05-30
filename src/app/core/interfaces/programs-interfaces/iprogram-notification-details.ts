@@ -1,5 +1,5 @@
 export interface IProgramNotificationDetails {
-
+    programId?: string;
     notificationId?: string;
     notifyName?: string;
     numberNotify?: string;
