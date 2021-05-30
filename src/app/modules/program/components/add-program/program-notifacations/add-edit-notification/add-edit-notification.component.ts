@@ -22,7 +22,6 @@ export class AddEditNotificationComponent implements OnInit {
   isSubmit = false;
   langEnum = LanguageEnum;
   resultMessage: BaseMessageModel = {};
-
   @Input() notificationDetails = {} as IProgramNotificationDetails;
   @Input() notificationInputs = {} as IProgramNotificationModel;
 
@@ -76,13 +75,9 @@ export class AddEditNotificationComponent implements OnInit {
   }
   onSubmit() {
     this.isSubmit = true;
-
-    // stop here if form is invalid
-    if (this.notifyForm.invalid) {
-      return;
-    }
-
-    else {
+    this.resultMessage = {}
+    //form is valid
+    if (this.notifyForm.valid) {
 
       // edit mode 
       if (this.notificationDetails) {
@@ -118,9 +113,15 @@ export class AddEditNotificationComponent implements OnInit {
       }
 
 
-    } //clse else in case vaild form
+    }
+    // form is invalid
+    else {
+      this.resultMessage = {
+        message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    } //close else if in case form not invalid
   }
-
   addNotifcation() {
 
     this.notificationService.addNotification(this.notificationAddModel || {}).subscribe(res => {

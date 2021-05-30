@@ -1,4 +1,3 @@
-import { LookupService } from './../../services/lookup-services/lookup.service';
 export interface IProgramNotificationModel {
 
     notifyName?: string;

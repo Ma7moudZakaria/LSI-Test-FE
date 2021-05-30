@@ -3,16 +3,16 @@
 <form class="form-group notifyForm mt-3 pl-3 pr-3" 
 [formGroup]="notifyForm" (ngSubmit)="onSubmit()"
 >
-    <h3 class="text-right  head  bold" *ngIf="!notificationDetails">إضافة تنبية</h3>
-    <h3 class="text-right  head  bold" *ngIf="notificationDetails">تعديل التنبية</h3>
+    <h3 class=" head  bold" *ngIf="!notificationDetails"> {{ 'NOTIFICATIONS.NOTIFICATION_NAME' | translate }}</h3>
+    <h3 class=" head  bold" *ngIf="notificationDetails">{{ 'NOTIFICATIONS.EDIT_NOTIFICATION' | translate }}</h3>
        
         
     <div class="form-group">
         <div class="row">
             <div class="col-12">
-                <label class="text-right header_input">عدد الواجبات</label>
+                <label class="text-right header_input"> {{ 'NOTIFICATIONS.NUMBER_HOMEWORK' | translate }}</label>
                <input type="text" class="form-control" formControlName="numberNotify" 
-               placeholder="اكتب عدد الواجبات التي لم تنفذ">
+               placeholder=" {{ 'NOTIFICATIONS.WRITE_HOMEWORK_MISSED' | translate }}">
         
             </div>
 
@@ -31,9 +31,9 @@
     <div class="form-group">
         <div class="row">
             <div class="col-12">
-                <label class="text-right header_input"> اسم التنبية</label>
+                <label class="text-right header_input"> {{ 'NOTIFICATIONS.NOTIFICATION_NAME' | translate }}</label>
                <input type="text" class="form-control" formControlName="notifyName" 
-               placeholder="اسم التنبيه">
+               placeholder="{{ 'NOTIFICATIONS.NOTIFICATION_NAME' | translate }}">
         
             </div>
 
@@ -52,12 +52,10 @@
 
     
     <div  class="form-group">
-        <label  class="label">
-            نوع التنبية
-
-        </label>
-
+      
+        <label class="text-right header_input"> {{ 'NOTIFICATIONS.NOTIFICITION_TYPE' | translate }}</label>
         <select class="form-control " formControlName="notifyType"  >
+            <option [ngValue]="null"  disabled selected>{{ 'NOTIFICATIONS.SELECT_NOTIFICATION_TYPE' | translate }}</option>
             <option >f</option>
             <option >f</option>  <option >f</option>  <option >f</option>
           </select>
@@ -75,7 +73,9 @@
     </div>
     <div class="form-group">
         <label for="comment">{{ 'QUESTION_BANK.QUESTION_AR' | translate }}</label>
-        <textarea class="form-control" cols="2" rows="3"   formControlName="messageAr"></textarea>
+        <textarea class="form-control" cols="2" rows="3"   formControlName="messageAr"
+        placeholder="{{ 'NOTIFICATIONS.WRITE_MESSAGE' | translate }}"
+        ></textarea>
        
       </div>
    
@@ -93,7 +93,7 @@
 
       <div class="form-group">
         <label for="comment">{{ 'QUESTION_BANK.QUESTION_EN' | translate }}</label>
-        <textarea class="form-control" cols="2" rows="3"   formControlName="messageEn"></textarea>
+        <textarea class="form-control" cols="2" rows="3"   formControlName="messageEn"  placeholder="{{ 'NOTIFICATIONS.WRITE_MESSAGE' | translate }}"></textarea>
        
       </div>
 
@@ -116,8 +116,8 @@
                     
                 </button>
                 <button   type="submit" class="save-btn" *ngIf="notificationDetails"> 
-                   تعديل
-                    
+                   
+                   {{ "GENERAL.EDIT" | translate }}
                 </button>
                 <button    type="reset" class="cancel-btn" (click)="closeNotify()"> 
                     {{ "GENERAL.CANCEL" | translate }}

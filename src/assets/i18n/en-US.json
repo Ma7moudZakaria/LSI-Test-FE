@@ -3,6 +3,7 @@
     "SEND": "Send",
     "BACK": "Back",
     "SAVE": "Save",
+    "EDIT": "Edit",
     "EMAIL": "Email Address",
     "EMAIL_PATTERN": "Please insert email address only.",
     "PASSWORD": "Password",
@@ -495,10 +496,26 @@
   "ADMIN_MESSAGING": {
     "SCIENTIFIC_PROBLEM": "Scientific Problem"
   },
-  "NOTIFACATIONS": {
+  "NOTIFICATIONS": {
     "AFTER_ASSIGNMENT": "After Not performing",
     "ASSIGNMENT": "assignment",
     "MESSAGE_ARABIC": "The message is in Arabic",
-    "MESSAGE_ENGLISH": "The message is in English"
+    "MESSAGE_ENGLISH": "The message is in English",
+    "NOTIFICATION_NAME": "Notification Name",
+    "ADD_NOTIFICATION": " Add Notification",
+    "EDIT_NOTIFICATION": "Edit Notification",
+    "NUMBER_HOMEWORK": "Number of homework ",
+    "WRITE_HOMEWORK_MISSED": "Write the number of homework missed",
+    "NOTIFICITION_TYPE": "Notification Type",
+    "SELECT_NOTIFICATION_TYPE": " Select Notification Type",
+    "WRITE_MESSAGE": "Write Message",
+    "ADD_PROGRAM": "Add Program",
+    "NOTIFICATIONS": "Notification",
+    "BASICiNFO": "Basic info",
+    "PROGRAM_CONDITIONS": "conditions",
+    "PROGRAM_DAYS": "Days",
+    "PROGRAM_JOINEXAME": "Join Examae",
+    "PROGRAM_PERIODICEXAME": "Periodic Exam",
+    "PROGRAM_NOTIFICATIONS": "Notifications"
   }
 }

@@ -24,13 +24,12 @@ import { ProgramExamesComponent } from './components/add-program/program-exames/
 import { ProgramDaysComponent } from './components/add-program/program-days/program-days.component';
 import { ProgramNotifacationsComponent } from './components/add-program/program-notifacations/program-notifacations.component';
 import { PeriodicExameComponent } from './components/add-program/periodic-exame/periodic-exame.component';
-import { AddNotifacationsComponent } from './components/add-program/add-notifacations/add-notifacations.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProgramNotificationViewComponent } from './components/add-program/program-notifacations/program-notification-view/program-notification-view.component';
 import { AddEditNotificationComponent } from './components/add-program/program-notifacations/add-edit-notification/add-edit-notification.component';
 
 @NgModule({
-  declarations: [AddEditNotificationComponent, AddProgramComponent, ProgramDetailsComponent, ProgramDetailsComponent, ProgramsListComponent, BasicInformationComponent, StudentsComponent, ProgressTestComponent, DaysComponent, JoinRequestsComponent, VacationRequestsComponent, ConditionsComponent, NotifyComponent, ProgramBasicInfoComponent, ProgramConditionsComponent, ProgramExamesComponent, ProgramDaysComponent, ProgramNotifacationsComponent, PeriodicExameComponent, AddNotifacationsComponent, ProgramNotificationViewComponent],
+  declarations: [AddEditNotificationComponent, AddProgramComponent, ProgramDetailsComponent, ProgramDetailsComponent, ProgramsListComponent, BasicInformationComponent, StudentsComponent, ProgressTestComponent, DaysComponent, JoinRequestsComponent, VacationRequestsComponent, ConditionsComponent, NotifyComponent, ProgramBasicInfoComponent, ProgramConditionsComponent, ProgramExamesComponent, ProgramDaysComponent, ProgramNotifacationsComponent, PeriodicExameComponent, ProgramNotificationViewComponent],
   imports: [
     CommonModule,
     ProgramRoutingModule,

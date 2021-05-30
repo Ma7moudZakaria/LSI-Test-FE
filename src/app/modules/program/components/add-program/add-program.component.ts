@@ -18,7 +18,7 @@ export class AddProgramComponent implements OnInit {
 
   showTap: string = 'NOTIFY';
   showAddOverlay: boolean = false;
-  // openNotify: boolean = false;
+
   IProgramNotificationDetails: IProgramNotificationDetails = {}
   constructor() { }
 

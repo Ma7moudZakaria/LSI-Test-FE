@@ -16,7 +16,7 @@ import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/compon
 })
 export class ProgramNotificationViewComponent implements OnInit {
 
-  listCard = [1, 2, 3, 4]
+
   notificationDetails = {} as IProgramNotificationDetails;
   resultMessage: BaseMessageModel = {};
 
