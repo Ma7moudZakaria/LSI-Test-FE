@@ -37,19 +37,21 @@ import { NgbModule, NgbRating, NgbRatingModule } from '@ng-bootstrap/ng-bootstra
 import { GroupUsersCardComponent } from './components/group-users-card/group-users-card.component';
 import { InputSearchListComponent } from './components/input-search-list/input-search-list.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { CardNotifacationsComponent } from './components/card-notifacations/card-notifacations.component';
 
 
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
     SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,
     StudentNumbersComponent, StudentsRatingComponent, CardStudentScientificProblemComponent, CardAdminScientificProblemComponent,
-    QuestionTemplateComponent, VoiceRecordingComponent, ScientificProblemsGridComponent, NotAuthComponent,GroupUsersCardComponent,
-    InputSearchListComponent],
+    QuestionTemplateComponent, VoiceRecordingComponent, ScientificProblemsGridComponent, NotAuthComponent, GroupUsersCardComponent,
+    InputSearchListComponent,
+    CardNotifacationsComponent],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,
-    MatIconModule, FormsModule, MatCheckboxModule, MatRadioModule, MatGridListModule, 
-    NgbModule,MatAutocompleteModule,NgbRatingModule
+    MatIconModule, FormsModule, MatCheckboxModule, MatRadioModule, MatGridListModule,
+    NgbModule, MatAutocompleteModule, NgbRatingModule
   ],
   exports: [
     MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule, Ng2TelInputModule,
@@ -57,8 +59,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent,
     UsersCounterComponent, KhatmeenStudentsComponent, StudentNumbersComponent, StudentsRatingComponent,
     CardStudentScientificProblemComponent, QuestionTemplateComponent, VoiceRecordingComponent, MatGridListModule,
-    ScientificProblemsGridComponent, CardAdminScientificProblemComponent, NotAuthComponent,GroupUsersCardComponent,
-    InputSearchListComponent,NgbRatingModule
+    ScientificProblemsGridComponent, CardAdminScientificProblemComponent, NotAuthComponent, GroupUsersCardComponent,
+    InputSearchListComponent, NgbRatingModule, CardNotifacationsComponent
   ]
 })
 export class SharedModule { }

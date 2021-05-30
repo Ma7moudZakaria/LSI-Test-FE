@@ -2,32 +2,31 @@
 <div class="container-fluid"> 
         <div class="row group_header fix_margin w-100">
         <div class="item_group "(click)="showTap = 'BASEINFO'"
-        [ngClass]="{ item_group_active: showTap == 'BASEINFO' }" >
-            البيانات الاساسية
+            [ngClass]="{ item_group_active: showTap == 'BASEINFO' }" >
+                {{ 'NOTIFICATIONS.BASICiNFO' | translate }}
         </div>
         <div class="item_group"  (click)="showTap = 'CANDITION'"
         [ngClass]="{ item_group_active: showTap == 'CANDITION' }">
-            الشروط
+            {{ 'NOTIFICATIONS.PROGRAM_CONDITIONS' | translate }}
         </div>
         <div class="item_group"  (click)="showTap = 'JOINEXAME'"
         [ngClass]="{ item_group_active: showTap == 'JOINEXAME' }">
-            إختبارات الانضمام
+            {{ 'NOTIFICATIONS.PROGRAM_JOINEXAME' | translate }}
         </div>
         <div class="item_group" (click)="showTap = 'DAYS'"
         [ngClass]="{ item_group_active: showTap == 'DAYS' }" >
-            الايام
+            {{ 'NOTIFICATIONS.PROGRAM_DAYS' | translate }}
         </div>
         <div class="item_group" (click)="showTap = 'PERIODICEXAME '"
         [ngClass]="{ item_group_active: showTap == 'PERIODICEXAME' }" >
-            الاختبارات الدورية
+            {{ 'NOTIFICATIONS.PROGRAM_PERIODICEXAME' | translate }}
         </div>
         <div class="item_group" (click)="showTap = 'NOTIFY'"
         [ngClass]="{ item_group_active: showTap == 'NOTIFY' }" >
-            إلية التنبيه
+            {{ 'NOTIFICATIONS.PROGRAM_NOTIFICATIONS' | translate }}
         </div>
-      
+        
     </div>
-    <!-- {{selectedRoleId | json}} -->
    
     <div class="row fix_margin w-100" >
         <div class="col-12 px-0 ">
@@ -38,6 +37,6 @@
         <app-periodic-exame *ngIf="showTap == 'PERIODICEXAME'"></app-periodic-exame>
         <app-program-notifacations *ngIf="showTap == 'NOTIFY'"></app-program-notifacations>
         </div>
-     
       </div>
+
     </div>

@@ -1,0 +1,83 @@
+
+@import '../../../../assets/scss/variables';
+// cards notifacations 
+.notify_card{
+    background: $white;
+    box-shadow: 0px 3px 15px $box-shadow;
+    border-radius: 12px;
+    padding: 0  ;
+    overflow: hidden;
+     font-family: Almarai-Regular;
+     font-size: 14px;
+     .bold{
+      font-family: Almarai-Bold;
+      font-size: 1rem;
+      
+      }
+
+    .card_header{
+      background-color: #fff;
+      color: #8E2520;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 20px;
+      font-size: 0.75rem;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+    .icon_actions img
+        {
+        width: 20px;
+        height: 20px;
+        margin: 0 0.3rem;
+        cursor: pointer;
+        }
+        .notify_type{
+          padding: 0 20px;
+          color: #8D8D8D;
+          font-size: 1rem;
+          font-family: Almarai;
+    
+         
+          &:lang(ar){
+            text-align: right;
+          }
+        }
+        .notify_number
+        {
+          font-size: 1.25rem;
+          color: #CB9118;
+          
+        }
+        .card_body{
+            background-color: #ffffff;
+            height: 250px;
+            padding: 0 20px 20px;
+            color: #363636;
+            overflow-y: auto;
+            margin-top: 1rem;
+            
+            :lang(en){text-align: left;}
+            :lang(ar){text-align: right;}
+      
+            .body_header{
+              background-color: $white;
+              display: flex;
+              justify-content: space-between;
+              padding-bottom: 0.5rem;
+              color: #9C9C9C;
+            }
+          }
+         .card_body .body_header { 
+          background-color: #ffffff;
+          display: flex;
+          justify-content: space-between;
+          padding-bottom: 0.5rem;
+          color: #C1C7D0;
+      }
+    
+    
+    }
+    
+    
+       
