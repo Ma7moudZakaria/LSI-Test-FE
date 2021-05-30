@@ -8,10 +8,10 @@ export class WalkthroughHasUnsavedDataGuard implements CanDeactivate<any>{
     constructor(private router: Router, public translate : TranslateService) { }
     
     canDeactivate(component: ViewAllWalkThroughComponent): boolean {
-        if (component.walkThroughService.canDecativate) {
-            return confirm(this.translate.instant('GENERAL.UNSAVED_CHANGES'))
-            // return confirm('Are you sure you want to leave page without save changes');
-        }
+        // if (component.walkThroughService.canDecativate) {
+        //     return confirm(this.translate.instant('GENERAL.UNSAVED_CHANGES'))
+        //     // return confirm('Are you sure you want to leave page without save changes');
+        // }
         return true;
     }
 

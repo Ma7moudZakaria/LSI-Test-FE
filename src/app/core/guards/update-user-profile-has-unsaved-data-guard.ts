@@ -8,9 +8,9 @@ export class UpdateUserProfileHasUnsavedDataGuard {
     constructor(public translate : TranslateService) { }
     
     canDeactivate(component: UpdateUserProfileComponent): boolean {
-        if (component.userService.canDecativate) {
-            return confirm(this.translate.instant('GENERAL.UNSAVED_CHANGES'))
-        }
+        // if (component.userService.canDecativate) {
+        //     return confirm(this.translate.instant('GENERAL.UNSAVED_CHANGES'))
+        // }
         return true;
     }
 }

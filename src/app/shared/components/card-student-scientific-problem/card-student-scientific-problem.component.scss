@@ -47,3 +47,10 @@
 
 }
 
+a.disabled {
+  color: gray;
+  cursor: not-allowed;
+  text-decoration: underline;
+  pointer-events:none;
+  opacity: 0.2;
+}

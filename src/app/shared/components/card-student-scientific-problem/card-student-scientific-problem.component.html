@@ -4,9 +4,9 @@
     <span>
      {{scientificProblem.scCreationDate}}
     </span>
-    <span>
+    <a [class.disabled]='scientificProblem.reply'>
       <i (click)='deleteScientificProblemEve()' class="far fa-trash-alt"></i>
-    </span>
+    </a>
     </div>
 
     <div class="card_body">
