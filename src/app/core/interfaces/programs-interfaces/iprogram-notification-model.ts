@@ -1,10 +1,10 @@
 export interface IProgramNotificationModel {
 
+
+
+    no?: number
     notifyName?: string;
-    numberNotify?: string;
     notifyType?: string;
-    messageAr?: string;
-    messageEn?: string;
-
-
+    msgAr?: string;
+    msgEn?: string;
 }

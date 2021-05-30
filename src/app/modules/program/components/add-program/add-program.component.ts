@@ -16,28 +16,14 @@ import { ProgramService } from 'src/app/core/services/program-services/program.s
 })
 export class AddProgramComponent implements OnInit {
 
-  showTap: string = 'NOTIFY';
-  showAddOverlay: boolean = false;
+  showTap: string = 'BASEINFO';
 
-  IProgramNotificationDetails: IProgramNotificationDetails = {}
+
   constructor() { }
 
   ngOnInit(): void {
 
 
   }
-
-
-  openNotifyProgram() {
-    this.showAddOverlay = true;
-  }
-
-  editNotification(event: IProgramNotificationDetails) {
-    this.IProgramNotificationDetails = event
-    this.showAddOverlay = true;
-    console.log(event)
-  }
-
-
 
 }

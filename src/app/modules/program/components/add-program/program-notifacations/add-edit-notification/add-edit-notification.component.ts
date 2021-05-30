@@ -67,10 +67,10 @@ export class AddEditNotificationComponent implements OnInit {
   PopulateForm() {
 
     this.f.notifyName.setValue(this.notificationDetails?.notifyName);
-    this.f.numberNotify.setValue(this.notificationDetails?.numberNotify);
+    this.f.numberNotify.setValue(this.notificationDetails?.no);
     this.f.notifyType.setValue(this.notificationDetails?.notifyType);
-    this.f.messageAr.setValue(this.notificationDetails?.messageAr);
-    this.f.messageEn.setValue(this.notificationDetails?.messageEn);
+    this.f.messageAr.setValue(this.notificationDetails?.msgAr);
+    this.f.messageEn.setValue(this.notificationDetails?.msgEn);
 
   }
   onSubmit() {
@@ -83,13 +83,13 @@ export class AddEditNotificationComponent implements OnInit {
       if (this.notificationDetails) {
         // fill edit model 
         this.notificationEditModel = {
-          programId: this.notificationDetails.programId,
-          notificationId: this.notificationDetails.notificationId,
+          progId: this.notificationDetails.progId,
+          notifyId: this.notificationDetails.notifyId,
           notifyName: this.notifyForm.value.notifyName,
-          numberNotify: this.notifyForm.value.numberNotify,
+          no: this.notifyForm.value.numberNotify,
           notifyType: this.notifyForm.value.notifyType,
-          messageAr: this.notifyForm.value.messageAr,
-          messageEn: this.notifyForm.value.messageEn,
+          msgAr: this.notifyForm.value.messageAr,
+          msgEn: this.notifyForm.value.messageEn,
 
         }
         // send edit model to api 
@@ -100,10 +100,10 @@ export class AddEditNotificationComponent implements OnInit {
         // 1- fill add model 
         this.notificationAddModel = {
           notifyName: this.notificationInputs.notifyName,
-          numberNotify: this.notificationInputs.numberNotify,
+          no: this.notificationInputs.no,
           notifyType: this.notificationInputs.notifyType,
-          messageAr: this.notificationInputs.messageAr,
-          messageEn: this.notificationInputs.messageEn,
+          msgAr: this.notificationInputs.msgAr,
+          msgEn: this.notificationInputs.msgEn,
 
 
         }

@@ -1,11 +1,11 @@
 export interface IProgramNotificationDetails {
-    programId?: string;
-    notificationId?: string;
+    progId?: string;
+    no?: number
+    notifyId?: string;
     notifyName?: string;
-    numberNotify?: string;
     notifyType?: string;
-    messageAr?: string;
-    messageEn?: string;
+    msgAr?: string;
+    msgEn?: string;
 
 
 }
