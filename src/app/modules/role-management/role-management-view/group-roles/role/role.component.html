@@ -5,8 +5,9 @@
         class="fas fa-sort-down children-down"></i>
       <i *ngIf="role.children.length > 0 && role.show == true" (click)="role.show = !role.show"
         class="fas fa-caret-left children-left"></i>
-        <!-- [indeterminate]="true" -->
-      <mat-checkbox [indeterminate]="someChecked(role)"  (change)="changeValue($event, role)" [(ngModel)]="role.checked">
+      <!-- [indeterminate]="true" -->
+      <mat-checkbox [indeterminate]="someChecked(role)" (change)="changeValue($event, role)" [(ngModel)]="role.checked">
+       
         <i class="far fa-folder-open"></i>
         {{
         translate.currentLang === langEnum.en
@@ -14,7 +15,7 @@
         : role.nodeNameAr
         }}
       </mat-checkbox>
-      <app-role [@listRole] *ngIf="role.show" [selectedRoles]="selectedRoles" [listRoles]="role"></app-role>
+      <app-role [ngClass]="{'d-none': !role.show}" [selectedRoles]="selectedRoles" [listRoles]="role"></app-role>
     </section>
   </mat-card-content>
 </mat-card>

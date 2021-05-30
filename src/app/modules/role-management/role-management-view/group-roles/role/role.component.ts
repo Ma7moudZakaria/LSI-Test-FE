@@ -61,7 +61,11 @@ export class RoleComponent implements OnInit, OnChanges {
   changeValue(event: MatCheckboxChange, role: any) {
     let value = event.checked;
     this.allComplete=value
-    this.printArray(role.children, value);
+    this.CheckAllArray(role.children, value);
+    if (value) {
+      const isAllChecked = (currentValue:any) => currentValue.checked ==true;
+      this.listRoles.checked=this.listRoles.children.every(isAllChecked);
+    }
   }
 
   restTree(arr: any) {
@@ -100,11 +104,11 @@ export class RoleComponent implements OnInit, OnChanges {
     }
   }
 
-  printArray(arr: any, value: any) {
+  CheckAllArray(arr: any, value: any) {
     for (var i = 0; i < arr.length; i++) {
       if (arr[i].children instanceof Array) {
         arr[i].checked = value;
-        this.printArray(arr[i].children, value);
+        this.CheckAllArray(arr[i].children, value);
       } else {
         console.log(arr[i].children);
       }
@@ -112,12 +116,14 @@ export class RoleComponent implements OnInit, OnChanges {
   }
 
   getChecked(arr:any){
-    let checkedIndeterminate=false
+    let checkedIndeterminate=false;  
       for (var i = 0; i < arr.length; i++) {
         if (arr[i].children instanceof Array) {
           // arr[i].checked=false;
+
           if (arr[i].checked ==true) {
-            checkedIndeterminate=true
+            checkedIndeterminate=true;            
+            arr[i].checkedIndeterminate=true
           }
           this.getChecked(arr[i].children);
         } else {
@@ -129,9 +135,15 @@ export class RoleComponent implements OnInit, OnChanges {
   }
 
   someChecked(role:any): boolean {
+
     if (role.children == null) {
       return false;
     }
-    return this.getChecked(role.children)&& !this.allComplete;
+
+    let isAllChildren
+    const isAllChecked = (currentValue:any) => currentValue.checked ==true;
+    isAllChildren=role.children.every(isAllChecked);
+
+    return this.getChecked(role.children) && !isAllChildren;
   }
 }
