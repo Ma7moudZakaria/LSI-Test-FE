@@ -3,6 +3,7 @@
     "SEND": "ارسال",
     "BACK": "رجوع",
     "SAVE": "حفظ",
+    "EDIT": "تعديل",
     "EMAIL": "البريد الالكتروني",
     "EMAIL_PATTERN": "يرجى ادخال بريد الكترونى صحيحا فقط",
     "PASSWORD": "كلمة المرور",
@@ -491,5 +492,27 @@
   },
   "ADMIN_MESSAGING": {
     "SCIENTIFIC_PROBLEM": "إشكال علمى"
+  },
+  "NOTIFICATIONS": {
+    "AFTER_ASSIGNMENT": "بعد عدم تنفيذ ",
+    "ASSIGNMENT": "واجب",
+    "MESSAGE_ARABIC": "الراسله بالعربي",
+    "MESSAGE_ENGLISH": "الراسله بالانجليزي",
+    "NOTIFICATION_NAME": "اسم التنبية",
+    "ADD_NOTIFICATION": " إضافة تنبية",
+    "EDIT_NOTIFICATION": "تعديل التنبيه",
+    "NUMBER_HOMEWORK": "عدد الواجبات",
+    "WRITE_HOMEWORK_MISSED": "اكتب عدد الواجبات التي لم تنفذ",
+    "NOTIFICITION_TYPE": "نوع التنبية",
+    "SELECT_NOTIFICATION_TYPE": "إختر نوع التنبية",
+    "WRITE_MESSAGE": "اكتب نص الرسالة",
+    "ADD_PROGRAM": "اضافه برنامج",
+    "NOTIFICATIONS": "التبيهات",
+    "BASICiNFO": " البيانات الاساسية",
+    "PROGRAM_CONDITIONS": "الشروط",
+    "PROGRAM_DAYS": "الايام",
+    "PROGRAM_JOINEXAME": "ِاختبارات الانضام",
+    "PROGRAM_PERIODICEXAME": "الاختبارات الدوريه",
+    "PROGRAM_NOTIFICATIONS": "اليه التنبيه"
   }
 }

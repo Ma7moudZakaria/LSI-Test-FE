@@ -1,1 +1,10 @@
-<p>program-notifacations works!</p>
+<div class="container-fluid">
+<div>
+    <app-program-notification-view  (openNotifyfrom)='openAddEditOverLay($event)' ></app-program-notification-view>
+</div>
+<div class="overlay" *ngIf='showAddEditOverlay'>
+<app-add-edit-notification [notificationDetails] = 'notificationEditObjec'
+
+(closeNotifyForm)="closeNotifyProgram()"></app-add-edit-notification>
+</div>
+</div>

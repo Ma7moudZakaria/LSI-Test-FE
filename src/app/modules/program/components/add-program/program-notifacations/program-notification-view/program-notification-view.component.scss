@@ -1,0 +1,43 @@
+@import 'src/assets/scss/_variables.scss';
+
+.notifacation_page{
+
+    &.tab_page  {
+      background: #fbfbfb;
+      width: 100%;
+      margin-top: 1rem;
+      border-radius: 5px;
+      padding: 1rem;
+      }
+      
+      .max_h {
+        min-height: 65vh;
+        max-height: 65vh;
+        overflow-y: scroll;
+      }
+      .container_haeder{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      
+      }
+      .cancel-btn{
+        background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
+        background:$icon_input ;
+        border-radius: 12px;
+        opacity: 1;
+        width:100px;
+        padding: 0.5rem;
+        height: 2.31rem;
+        border: none;
+        color: #ffffff;
+        display: block;
+        }
+    .haeder{
+      // font-family: Almarai-Bold;
+      font-size:1.25rem;
+      color:$edit;
+      font-weight: bold;
+    }
+
+}

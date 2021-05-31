@@ -24,16 +24,41 @@ import { ProgramExamesComponent } from './components/add-program/program-exames/
 import { ProgramDaysComponent } from './components/add-program/program-days/program-days.component';
 import { ProgramNotifacationsComponent } from './components/add-program/program-notifacations/program-notifacations.component';
 import { PeriodicExameComponent } from './components/add-program/periodic-exame/periodic-exame.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ProgramNotificationViewComponent } from './components/add-program/program-notifacations/program-notification-view/program-notification-view.component';
+import { AddEditNotificationComponent } from './components/add-program/program-notifacations/add-edit-notification/add-edit-notification.component';
+import { ProgramsTabsComponent } from './components/program-details/programs-tabs/programs-tabs.component';
 import { ExamFormsListComponent } from './components/add-program/program-exames/exam-forms-list/exam-forms-list.component';
 import { AttacheExamTemplatsComponent } from './components/add-program/program-exames/attache-exam-templats/attache-exam-templats.component';
 
 @NgModule({
-  declarations: [AddProgramComponent, ProgramDetailsComponent, ProgramDetailsComponent, ProgramsListComponent, BasicInformationComponent, StudentsComponent, ProgressTestComponent, DaysComponent, JoinRequestsComponent, VacationRequestsComponent, ConditionsComponent, NotifyComponent, ProgramBasicInfoComponent, ProgramConditionsComponent, ProgramExamesComponent, ProgramDaysComponent, ProgramNotifacationsComponent, PeriodicExameComponent, ExamFormsListComponent, AttacheExamTemplatsComponent],
+  declarations: [AddEditNotificationComponent,
+    AddProgramComponent,
+    ProgramDetailsComponent,
+    ProgramDetailsComponent,
+    ProgramsListComponent,
+    BasicInformationComponent,
+    StudentsComponent,
+    ProgressTestComponent,
+    DaysComponent,
+    JoinRequestsComponent,
+    VacationRequestsComponent,
+    ConditionsComponent,
+    NotifyComponent,
+    ProgramBasicInfoComponent,
+    ProgramConditionsComponent,
+    ProgramExamesComponent,
+    ProgramDaysComponent,
+    ProgramNotifacationsComponent,
+    PeriodicExameComponent,
+    ProgramNotificationViewComponent,
+    ProgramsTabsComponent],
   imports: [
     CommonModule,
     ProgramRoutingModule,
     TranslateModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class ProgramModule { }
