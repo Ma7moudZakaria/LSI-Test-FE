@@ -1,4 +1,5 @@
 @import 'src/assets/scss/_variables.scss';
+@import '../.././../../../../assets/scss/buttons';
 
 .notifacation_page{
 
@@ -60,7 +61,6 @@
         display: block;
         }
         .saveButton{
-        
           background: #CB9118;
           border-radius: 12px;
           opacity: 1;
@@ -80,5 +80,11 @@
 
     select.form-control {
       appearance: auto !important;}
+
+      .save-btn
+       {
+        margin: 0 1rem;
+       }
+
 
 }

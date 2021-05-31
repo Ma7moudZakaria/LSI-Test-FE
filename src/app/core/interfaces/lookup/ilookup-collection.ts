@@ -23,4 +23,10 @@ export interface ILookupCollection {
     REWAYAT?: BaseLookupModel[];
     AGENCY?: BaseLookupModel[];
     WORKING_PLATFORM?: BaseLookupModel[];//جهه العمل
+    PROG_TYPES?: BaseLookupModel[];
+    SARD_TYPES?: BaseLookupModel[];
+    SHARED_TYPES?: BaseLookupModel[];
+    DUTY_TYPES?: BaseLookupModel[];
+
+
 }

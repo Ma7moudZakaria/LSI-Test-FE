@@ -457,7 +457,8 @@
     "ABOUT_HUFFAZ": "About Huffaz",
     "POWER": "Premissions",
     "BANK_ACCOUNT": "Our bank accounts",
-    "EXAMS": "Forms of interim and periodic tests"
+    "EXAMS": "Forms of interim and periodic tests",
+    "PROGRAM_COND": "Program Conditions"
   },
   "Role_Management": {
     "TITLE": "Groups",

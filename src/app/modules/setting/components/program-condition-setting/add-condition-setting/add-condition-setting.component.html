@@ -1,0 +1,82 @@
+
+
+<form class="form-group conditionForm mt-3 pl-3 pr-3" 
+
+>
+    <h3 class="head"> إضافة شرط</h3>
+    
+       
+        
+    <div class="form-group">
+        <div class="row">
+            <div class="col-12">
+                <label class="text-right header_input">عنوان الشرط</label>
+               <input type="text" class="form-control"
+               >
+        
+            </div>
+
+        </div>
+        
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-12">
+                <label class="text-right header_input mb-3"> نوع الاجابه</label>
+                <mat-radio-group   class="example-radio-group" >
+                    <mat-radio-button value="1" class="example-radio-button ml-2 mr-2" >اختيارات</mat-radio-button>
+                    <mat-radio-button value="2" class="example-radio-button ml-1 mr-1"  >نصي </mat-radio-button>
+                    <mat-radio-button value="3" class="example-radio-button ml-1 mr-1"  >نعم / لا </mat-radio-button>
+                </mat-radio-group>
+        
+            </div>
+
+           
+
+        </div>
+        
+    </div>
+
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-12">
+                <label class="text-right header_input mb-3"> الاجابات </label>
+                <div class="d-flex">
+               <input type="text" class="form-control w-90">
+               <a>
+                <img src="../../../../assets/images/trash-2.svg" class="btn_trash">   
+               </a>
+               </div>
+        
+            </div>
+                <div class="col-12 mt-3">
+                    <button   type="submit" class="cancel-btn m-0" > 
+                        اضافه اجابه
+                    </button>
+                </div>
+        </div>
+        
+    </div>
+
+
+
+
+    
+
+    
+   <section class="mt-5">
+            <div  class="row direction-rtl buttons-center mt-5">
+                <button   type="submit" class="save-btn" > 
+                    {{ "GENERAL.SAVE" | translate }}
+                    
+                </button>
+               
+                <button  type="reset" class="cancel-btn"    (click)="closeForm()"> 
+                    {{ "GENERAL.CANCEL" | translate }} 
+                    
+                </button>
+            </div>
+        </section>
+   </form>

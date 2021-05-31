@@ -1,25 +1,26 @@
 export interface IProgramBasicInfoDetailsModel {
 
     id?: string;
-    progName?: string
-    shareWith?: string
-    progType?: string
-    durationProg?: string
-    timeHomework?: string
-    vaildDays?: string
-    ideaProg?: string
-    goalProg?: string
-    visionProg?: string
-    methodProg?: string
-    featuresProg?: string
-    textPledge?: string
-    countDays?: string
-    countDaysInputSelct?: string
-    examPass?: string
-    rateProg?: string
-    recitationDates?: string
-    thereNarration?: string
-    recitationPeriod?: string
-    fromTime?: string
-    toTime?: string
+    progName?: string;
+    shareWith?: string;
+    progType?: string;
+    durationProg?: string;
+    dutyTime?: string;
+    availableDuty?: string;
+    ideaProg?: string;
+    goalProg?: string;
+    visionProg?: string;
+    pathProg?: string;
+    advantageProg?: string;
+    textPledge?: string;
+    dutiesDays?: string;
+    numberOfDays?: string;
+    specificDays?: string;
+    examPass?: string;
+    rateProg?: string;
+    recitationDates?: string;
+    isAlsard?: string;
+    recitationPeriod?: string;
+    fromTime?: string;
+    toTime?: string;
 }
