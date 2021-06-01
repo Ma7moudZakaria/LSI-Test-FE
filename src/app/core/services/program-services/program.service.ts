@@ -18,6 +18,7 @@ export class ProgramService {
   GetProgramsFilterURL=environment.baseUrl+'QuestionBankQuestions/get-question-bank-questions-filter/';
   DeleteProgramURL=environment.baseUrl+'QuestionBankQuestions/delete-question-bank-question/';
   GetAllProgramsURL=environment.baseUrl+'Programs/get-programs-lookup/';
+  
   constructor(private http:HttpClient) { }
 
   addProgram(model:IprogramCreatModel):Observable<BaseResponseModel>{
@@ -40,5 +41,5 @@ export class ProgramService {
   }
   deleteProgram(id:number):Observable<BaseResponseModel>{
     return this.http.delete<BaseResponseModel>(this.DeleteProgramURL+id);
-  }
+  }  
 }

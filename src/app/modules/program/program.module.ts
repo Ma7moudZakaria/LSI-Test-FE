@@ -28,6 +28,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProgramNotificationViewComponent } from './components/add-program/program-notifacations/program-notification-view/program-notification-view.component';
 import { AddEditNotificationComponent } from './components/add-program/program-notifacations/add-edit-notification/add-edit-notification.component';
 import { ProgramsTabsComponent } from './components/program-details/programs-tabs/programs-tabs.component';
+import { ProgramDutyDaysComponent } from './components/add-program/program-days/program-duty-days/program-duty-days.component';
+import { ProgramDayTasksComponent } from './components/add-program/program-days/program-day-tasks/program-day-tasks.component';
+import { ProgramDayTasksDetailsComponent } from './components/add-program/program-days/program-day-tasks-details/program-day-tasks-details.component';
+import { AddProgramDayTasksComponent } from './components/add-program/program-days/add-program-day-tasks/add-program-day-tasks.component';
 
 @NgModule({
   declarations: [AddEditNotificationComponent,
@@ -50,7 +54,11 @@ import { ProgramsTabsComponent } from './components/program-details/programs-tab
     ProgramNotifacationsComponent,
     PeriodicExameComponent,
     ProgramNotificationViewComponent,
-    ProgramsTabsComponent],
+    ProgramsTabsComponent,
+    ProgramDutyDaysComponent,
+    ProgramDayTasksComponent,
+    ProgramDayTasksDetailsComponent,
+    AddProgramDayTasksComponent],
   imports: [
     CommonModule,
     ProgramRoutingModule,
