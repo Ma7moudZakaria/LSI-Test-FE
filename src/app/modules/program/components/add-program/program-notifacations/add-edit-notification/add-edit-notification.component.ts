@@ -99,11 +99,11 @@ export class AddEditNotificationComponent implements OnInit {
       else {
         // 1- fill add model 
         this.notificationAddModel = {
-          notifyName: this.notificationInputs.notifyName,
-          no: this.notificationInputs.no,
-          notifyType: this.notificationInputs.notifyType,
-          msgAr: this.notificationInputs.msgAr,
-          msgEn: this.notificationInputs.msgEn,
+          notifyName: this.notifyForm.value.notifyName,
+          no: this.notifyForm.value.numberNotify,
+          notifyType: this.notifyForm.value.notifyType,
+          msgAr: this.notifyForm.value.messageAr,
+          msgEn: this.notifyForm.value.messageEn,
 
 
         }

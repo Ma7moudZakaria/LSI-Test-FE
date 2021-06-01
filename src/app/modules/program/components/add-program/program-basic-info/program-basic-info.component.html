@@ -1,7 +1,8 @@
+<form [formGroup]="baseInfoForm" (ngSubmit)="onSubmit()" class="form-group " >
 
-<div class="tab_page notifacation_page">
+<div class="tab_page basICinfo_page ">
     <div class="col-md-12 max_h">
-        <form [formGroup]="baseInfoForm" (ngSubmit)="onSubmit()" class="form-group " >
+       
         <div class="row">
         <div class="col-md-3">
                 <div class="form-group">
@@ -194,16 +195,16 @@
               <!-- <mat-radio-button value="{{item.id}}" class="example-radio-button ml-1 mr-1"  >أيام محددة</mat-radio-button> -->
             </ng-container>
             </mat-radio-group>
-              <input type="text" class="form-control w-50" placeholder="اكتب عدد الايام"  formControlName="numberOfDays" >
+              <input type="text" class="form-control w-50" placeholder="اكتب عدد الايام"   >
       
               <ng-container *ngFor="let item of collectionOfLookup.DAYS">
-              <mat-checkbox  formControlName="specificDays"  
+              <mat-checkbox   
               class="example-margin ml-1 mr-1"  >
               {{item.nameAr}}  
               </mat-checkbox>
               </ng-container>
 
-        <!-- <mat-checkbox  formControlName="specificDays"  *ngFor="let Item of days" 
+        <!-- <mat-checkbox    *ngFor="let Item of days" 
         class="example-margin ml-1 mr-1"  >
           {{Item}}  
         </mat-checkbox> -->
@@ -282,7 +283,7 @@
               <div>
                 <label class="header_input">فترة التسميع</label>
               </div>
-               <mat-radio-group aria-label="Select an option"  class="example-radio-group" formControlName="recitationPeriod">
+               <mat-radio-group aria-label="Select an option"  class="example-radio-group" >
             <ng-container *ngFor="let item of collectionOfLookup.SARD_TYPES ;let i=index">
                   
                 <mat-radio-button value="{{item.id}}" class="example-radio-button ml-2 mr-2">{{item.nameAr}}</mat-radio-button>
@@ -301,7 +302,7 @@
                <div class="form-group">
                  <label class="header_input">من الساعه</label>
              
-                 <input type="time" class="form-control" formControlName="fromTime" >
+                 <input type="time" class="form-control"  >
                  
                </div>
                </div>
@@ -309,7 +310,7 @@
                  <div class="form-group">
                    <label class="header_input">الى الساعه</label>
                
-                   <input type="time" class="form-control"  formControlName="toTime">
+                   <input type="time" class="form-control"  >
                    
                  </div>
                  </div>
@@ -343,17 +344,23 @@
 
 
   
-      <div  class="row direction-rtl ">
-          <button   type="submit" class="save-btn" > 
-              {{ "GENERAL.SAVE" | translate }}
-          </button>
-        
-          <button    type="reset" class="cancel-btn"> 
-              {{ "GENERAL.CANCEL" | translate }}
-          </button>
-      </div>
+      
 
 
-    </form>
     </div>
+
+
+
+
+
+</div> 
+<div  class="row justify-content-end ml-3 mt-3">
+  <button   type="submit" class="save-btn" > 
+      {{ "GENERAL.SAVE" | translate }}
+  </button>
+
+  <button    type="reset" class="cancel-btn"> 
+      {{ "GENERAL.CANCEL" | translate }}
+  </button>
 </div>
+ </form>

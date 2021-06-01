@@ -12,14 +12,14 @@ export interface IProgramBasicInfoModel {
     advantageProg?: string;
     textPledge?: string;
     dutiesDays?: string;
-    numberOfDays?: string;
-    specificDays?: string;
+    // numberOfDays?: string;
+    // specificDays?: string;
     examPass?: string;
     rateProg?: string;
     recitationDates?: string;
     isAlsard?: string;
-    recitationPeriod?: string;
-    fromTime?: string;
-    toTime?: string;
+    // recitationPeriod?: string;
+    // fromTime?: string;
+    // toTime?: string;
 
 }

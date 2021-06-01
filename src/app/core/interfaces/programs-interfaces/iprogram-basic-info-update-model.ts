@@ -1,5 +1,6 @@
 export interface IProgramBasicInfoUpdateModel {
-    id?: string;
+    progId?: string;
+    basicId?: string;
     progName?: string;
     shareWith?: string;
     progType?: string;
@@ -13,15 +14,15 @@ export interface IProgramBasicInfoUpdateModel {
     advantageProg?: string;
     textPledge?: string;
     dutiesDays?: string;
-    numberOfDays?: string;
-    specificDays?: string;
+    // numberOfDays?: string;
+    // specificDays?: string;
     examPass?: string;
     rateProg?: string;
     recitationDates?: string;
     isAlsard?: string;
-    recitationPeriod?: string;
-    fromTime?: string;
-    toTime?: string;
+    // recitationPeriod?: string;
+    // fromTime?: string;
+    // toTime?: string;
 
 
 }

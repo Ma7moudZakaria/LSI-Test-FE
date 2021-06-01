@@ -1,7 +1,7 @@
 @import 'src/assets/scss/_variables.scss';
 @import '../.././../../../../assets/scss/buttons';
 
-.notifacation_page{
+.basICinfo_page{
 
     &.tab_page  {
       background: #fbfbfb;
@@ -48,18 +48,7 @@
         align-items: center;
       
       }
-      .cancel-btn{
-        background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
-        background:$icon_input ;
-        border-radius: 12px;
-        opacity: 1;
-        width:100px;
-        padding: 0.5rem;
-        height: 2.31rem;
-        border: none;
-        color: #ffffff;
-        display: block;
-        }
+   
         .saveButton{
           background: #CB9118;
           border-radius: 12px;
@@ -88,3 +77,21 @@
 
 
 }
+
+
+
+.cancel-btn{
+  background:$icon_input ;
+  border-radius: 12px;
+  opacity: 1;
+  width:100px;
+  padding: 0.5rem;
+  height: 2.31rem !important;
+  border: none;
+  color: #ffffff;
+  display: block;
+  }
+  .save-btn
+       {
+        margin: 0 1rem;
+       }
