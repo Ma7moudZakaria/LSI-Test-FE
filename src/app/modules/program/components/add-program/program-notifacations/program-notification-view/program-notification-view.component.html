@@ -17,7 +17,12 @@
     
     <div class="col-md-12 max_h">
         <div class="row">
-         
+         <ng-container *ngIf="!notificationsCardList || notificationsCardList.length === 0">
+             <div class="col-12 text-center bold">
+                    <p>  {{ 'GENERAL.NO_DATA' | translate}}</p>
+             </div>
+        </ng-container>
+         <ng-container *ngIf="notificationsCardList">
                 <ng-container *ngFor="let item of notificationsCardList">
                 <div class="col-4 mb-3">
                     <app-card-notifacations
@@ -27,7 +32,7 @@
                     ></app-card-notifacations>
                 </div>
             </ng-container>
-
+       </ng-container>
        
         </div>
     </div>
