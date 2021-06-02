@@ -8,7 +8,7 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
-import { ProgramService } from 'src/app/core/services/program-services/program.service';
+import { ProgramDayTasksService } from 'src/app/core/services/program-day-tasks-services/program-day-tasks.service';
 
 @Component({
   selector: 'app-program-duty-days',
@@ -23,13 +23,14 @@ export class ProgramDutyDaysComponent implements OnInit {
 
   constructor(
     public languageService: LanguageService,
-    private ProgramService: ProgramService,
+    private programDayTasksService: ProgramDayTasksService,
     public translate: TranslateService,
     private fb: FormBuilder,
     private lookupService: LookupService
   ) { }
 
   ngOnInit(): void {
+    this.setCurrentLang();
   }
 
   setCurrentLang() {
@@ -43,8 +44,8 @@ export class ProgramDutyDaysComponent implements OnInit {
     // this.languageService.headerPageNameEvent.emit(this.translate.instant('UPDATE_TEACHER_PG.TITLE'));
   }
 
-  getProgramDutyDays(id?: string) {
-    this.ProgramService.getProgramDetails(id || '').subscribe(res => {
+  getProgramDutyDays(id: string) {
+    this.programDayTasksService.getProgramDayTasks(id).subscribe(res => {
       if (res.isSuccess) {
         this.programDutyDaysDetails = res.data as IProgramDetailsModel;
 

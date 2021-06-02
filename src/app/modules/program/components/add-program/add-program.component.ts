@@ -1,12 +1,8 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-import { IprogramCreatModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-creat-model';
-import { IProgramNotificationDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-notification-details';
-import { IprogramUpdateModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-update-model';
-import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
-import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { IProgramDetailsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-details-model';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
 
 @Component({
@@ -17,13 +13,42 @@ import { ProgramService } from 'src/app/core/services/program-services/program.s
 export class AddProgramComponent implements OnInit {
 
   showTap: string = 'BASEINFO';
+  programDetails = {} as IProgramDetailsModel;
+  resMessage: BaseMessageModel = {};
 
-
-  constructor() { }
+  constructor( 
+    private route: ActivatedRoute,
+    private programService: ProgramService) { }
 
   ngOnInit(): void {
+    var programId = this.route.snapshot.queryParams['id'] || '';
 
+    console.log("programId =====>" , programId);
 
+    if (programId){
+      this.getProgramDutyDays(programId)
+    }
   }
 
+  getProgramDutyDays(id: string) {
+    this.programService.getProgramDetails(id).subscribe(res => {
+      if (res.isSuccess) {
+        this.programDetails = res.data as IProgramDetailsModel;
+
+        console.log("programDetails ===========>", this.programDetails);
+      }
+      else {
+        this.resMessage =
+        {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+    }, error => {
+      this.resMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    });
+  }
 }

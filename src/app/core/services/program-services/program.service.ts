@@ -14,7 +14,9 @@ export class ProgramService {
 
   AddProgramURL=environment.baseUrl+'QuestionBankQuestions/add-question-bank-question/';
   UpdateProgramnURL=environment.baseUrl+'QuestionBankQuestions/update-question-bank-question/';
-   GetProgramURL=environment.baseUrl+'QuestionBankQuestions/get-question-bank-question/';
+  // GetProgramURL=environment.baseUrl+'QuestionBankQuestions/get-question-bank-question/';
+  GetProgramURL=environment.baseUrl+'Programs/get-program-details-by-id/';
+  
   GetProgramsFilterURL=environment.baseUrl+'QuestionBankQuestions/get-question-bank-questions-filter/';
   DeleteProgramURL=environment.baseUrl+'QuestionBankQuestions/delete-question-bank-question/';
   GetAllProgramsURL=environment.baseUrl+'Programs/get-programs-lookup/';
@@ -36,9 +38,18 @@ export class ProgramService {
     return this.http.get<BaseResponseModel>(this.GetAllProgramsURL)
   }
 
+  // getProgramDetails(id:string):Observable<BaseResponseModel>{
+  //   return this.http.get<BaseResponseModel>(this.GetProgramURL+id)
+  // }
+
   getProgramDetails(id:string):Observable<BaseResponseModel>{
     return this.http.get<BaseResponseModel>(this.GetProgramURL+id)
   }
+
+  getProgramDutyDays(id:string):Observable<BaseResponseModel>{
+    return this.http.get<BaseResponseModel>(this.DeleteProgramURL+id);
+  }  
+
   deleteProgram(id:number):Observable<BaseResponseModel>{
     return this.http.delete<BaseResponseModel>(this.DeleteProgramURL+id);
   }  

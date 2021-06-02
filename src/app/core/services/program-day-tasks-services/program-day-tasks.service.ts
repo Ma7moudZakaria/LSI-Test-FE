@@ -35,7 +35,7 @@ export class ProgramDayTasksService {
     return this.http.delete<BaseResponseModel>(this.DeleteProgramDayTasksURL+id);
   }
 
-  GetProgramDayTasks(id:string):Observable<BaseResponseModel>{
+  getProgramDayTasks(id:string):Observable<BaseResponseModel>{
     return this.http.get<BaseResponseModel>(this.GetProgramDayTasksURL+id);
   }
 
