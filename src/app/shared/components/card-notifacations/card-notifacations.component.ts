@@ -22,7 +22,7 @@ export class CardNotifacationsComponent implements OnInit {
   }
 
   deleteCard() {
-    this.deleteCardNotify.emit(this.notificationsCardDetails.notifyId);
+    this.deleteCardNotify.emit(this.notificationsCardDetails.id);
   }
   editCard() {
     this.editCardNotify.emit(this.notificationsCardDetails);

@@ -11,12 +11,11 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
 export class ProgramNotificationService {
 
 
-  AddNotificationURL = environment.baseUrl + '';
-  UpdateNotificationURL = environment.baseUrl + '';
-  DelaeteNotificationURL = environment.baseUrl + '';
-  GetAllNotificationURL = environment.baseUrl + '';
-  GetNotificationDetails = environment.baseUrl + '';
-  DeleteNotificationURL = environment.baseUrl + '';
+  AddNotificationURL = environment.baseUrl + 'Programs/add-program-notification';
+  UpdateNotificationURL = environment.baseUrl + 'Programs/update-program-notification';
+  DeleteNotificationURL = environment.baseUrl + 'Programs/delete-program-notification/';
+  GetAllNotificationURL = environment.baseUrl + 'Programs/get-program-notifications-by-program-id/';
+  GetNotificationDetails = environment.baseUrl + 'Programs/get-program-notification-types-to-program';
 
 
   constructor(private http: HttpClient) { }

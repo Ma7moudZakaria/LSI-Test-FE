@@ -55,14 +55,19 @@
       
         <label class="text-right header_input"> {{ 'NOTIFICATIONS.NOTIFICITION_TYPE' | translate }}</label>
         <select class="form-control " formControlName="notifyType"  >
-            <option [ngValue]="null"  disabled selected>{{ 'NOTIFICATIONS.SELECT_NOTIFICATION_TYPE' | translate }}</option>
-            <option >f</option>
-            <option >f</option>  <option >f</option>  <option >f</option>
+            <!-- <option [ngValue]="null"  disabled selected>{{ 'NOTIFICATIONS.SELECT_NOTIFICATION_TYPE' | translate }}</option> -->
+           <ng-container *ngFor="let item of collectionOfLookup">
+            <option  [value]="item.id">
+                {{ translate.currentLang == langEnum.en ? item.nameEn : item.nameAr}}
+
+            </option>
+           </ng-container>
+            
           </select>
 
 
 
-          <div *ngIf="f.notifyType.errors && (f.notifyType.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 pl-4 pr-4">
+          <div *ngIf="f.notifyType.errors && (f.notifyType.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 pl-2 pr-2">
             <div *ngIf="f.notifyType.errors?.required">
                 {{ 'GENERAL.REQUIRED' | translate }}
             </div>
@@ -83,12 +88,12 @@
         <div *ngIf="f.messageAr.errors?.required">
             {{ 'GENERAL.REQUIRED' | translate }}
         </div>
-        <div *ngIf="f.messageAr.errors?.maxlength">
-            <!-- {{ 'UPDATE_USER_PG.FAMILY_NAME_AR_MAX_LENGTH' | translate }} -->
-        </div>
-        <div *ngIf="f.messageAr.errors?.minlength">
-            <!-- {{ 'UPDATE_USER_PG.FAMILY_NAME_AR_MIN_LENGTH' | translate }} -->
-        </div>
+        <div *ngIf="f.messageAr.errors.pattern">
+            {{ 'QUESTION_BANK.ARABIC_FIELD' | translate }}
+         </div>
+         <div *ngIf="f.messageAr.errors?.maxlength ">
+          {{ 'QUESTION_BANK.QUESTION_AR_MAX_LENGHT' | translate}}
+      </div>
     </div> 
 
       <div class="form-group">
@@ -101,14 +106,16 @@
         <div *ngIf="f.messageEn.errors?.required">
             {{ 'GENERAL.REQUIRED' | translate }}
         </div>
-        <div *ngIf="f.messageEn.errors?.maxlength">
-            <!-- {{ 'UPDATE_USER_PG.FAMILY_NAME_AR_MAX_LENGTH' | translate }} -->
-        </div>
-        <div *ngIf="f.messageEn.errors?.minlength">
-            <!-- {{ 'UPDATE_USER_PG.FAMILY_NAME_AR_MIN_LENGTH' | translate }} -->
-        </div>
+        <div *ngIf="f.messageEn.errors.pattern">
+            {{ 'QUESTION_BANK.ARABIC_FIELD' | translate }}
+         </div>
+         <div *ngIf="f.messageEn.errors?.maxlength ">
+          {{ 'QUESTION_BANK.QUESTION_AR_MAX_LENGHT' | translate}}
+      </div>
     </div> 
-    
+    <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2 text-center">
+        <span class="bold"> {{resultMessage.message}}</span>
+     </div>
    <section class="mt-5">
             <div  class="row direction-rtl buttons-center mt-5">
                 <button   type="submit" class="save-btn" *ngIf="!notificationDetails"> 
@@ -125,4 +132,5 @@
                 </button>
             </div>
         </section>
+       
    </form>

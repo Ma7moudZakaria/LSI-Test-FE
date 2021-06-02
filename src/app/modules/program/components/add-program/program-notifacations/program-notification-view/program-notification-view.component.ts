@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { IProgramNotificationDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-notification-details';
 import { IProgramNotificationModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-notification-model';
@@ -32,34 +32,36 @@ export class ProgramNotificationViewComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.getAllNotifications('e65c382a-9417-47b2-9cbf-903f728c48e8');
   }
-  notificationsCardList: IProgramNotificationModel[] = [
-    {
-      notifyName: 'تنبيه واحد ',
-      no: 5,
-      notifyType: 'تنبيه رقم 1',
-      msgAr: 'ىىىى حخهلث لث ع ث0ع0عث  ثع سعبحح حع بحصبح  ',
-      msgEn: ' Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry '
 
-    },
-    {
-      notifyName: 'تنبيه واحد ',
-      no: 5,
-      notifyType: 'تنبيه رقم 1',
-      msgAr: 'ىىىى حخهلث لث ع ث0ع0عث  ثع سعبحح حع بحصبح  ',
-      msgEn: ' Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry '
+  notificationsCardList: IProgramNotificationModel[] = []
+  // {
+  //   notifyName: 'تنبيه واحد ',
+  //   no: 5,
+  //   notifyType: 'تنبيه رقم 1',
+  //   msgAr: 'ىىىى حخهلث لث ع ث0ع0عث  ثع سعبحح حع بحصبح  ',
+  //   msgEn: ' Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry '
 
-    }
-    ,
-    {
-      notifyName: 'تنبيه واحد ',
-      no: 5,
-      notifyType: 'تنبيه رقم 1',
-      msgAr: 'ىىىى حخهلث لث ع ث0ع0عث  ثع سعبحح حع بحصبح  ',
-      msgEn: ' Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry '
+  // },
+  // {
+  //   notifyName: 'تنبيه واحد ',
+  //   no: 5,
+  //   notifyType: 'تنبيه رقم 1',
+  //   msgAr: 'ىىىى حخهلث لث ع ث0ع0عث  ثع سعبحح حع بحصبح  ',
+  //   msgEn: ' Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry '
 
-    }
-  ]
+  // }
+  // ,
+  // {
+  //   notifyName: 'تنبيه واحد ',
+  //   no: 5,
+  //   notifyType: 'تنبيه رقم 1',
+  //   msgAr: 'ىىىى حخهلث لث ع ث0ع0عث  ثع سعبحح حع بحصبح  ',
+  //   msgEn: ' Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry '
+
+  // }
+
 
   // notificationsCardList: IProgramNotificationModel[] =[]
 

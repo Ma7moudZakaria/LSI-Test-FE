@@ -1,10 +1,13 @@
 export interface IProgramNotificationModel {
 
 
-
-    no?: number
+    progId?: string
+    noDuties?: number;
     notifyName?: string;
     notifyType?: string;
     msgAr?: string;
     msgEn?: string;
+
 }
+
+

@@ -1,1 +1,366 @@
-<p>program-basic-info works!</p>
+<form [formGroup]="baseInfoForm" (ngSubmit)="onSubmit()" class="form-group " >
+
+<div class="tab_page basICinfo_page ">
+    <div class="col-md-12 max_h">
+       
+        <div class="row">
+        <div class="col-md-3">
+                <div class="form-group">
+                        <label class="header_input">اسم البرنامج </label>
+                        <input type="text" class="form-control" formControlName="progName"  >
+               </div>
+            <div *ngIf="f.progName.errors && (f.progName.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
+               <div *ngIf="f.progName.errors?.required">
+                {{ 'GENERAL.REQUIRED' | translate }}
+            </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+            <div class="form-group">
+                    <label class="header_input">المشاركة مع </label>
+                    <select class="form-control "  formControlName="shareWith" >
+                        <!-- <option [ngValue]="null"  disabled selected>{{ 'NOTIFICATIONS.SELECT_NOTIFICATION_TYPE' | translate }}</option> -->
+                        <ng-container *ngFor="let item of collectionOfLookup.SHARED_TYPES">
+                        <option>{{item.nameAr}}</option>
+                        
+                        </ng-container>
+                      </select>
+
+           </div>
+           <div *ngIf="f.shareWith.errors && (f.shareWith.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
+            <div *ngIf="f.shareWith.errors?.required">
+             {{ 'GENERAL.REQUIRED' | translate }}
+         </div>
+         </div>
+
+         </div>
+
+
+       <div class="col-md-6 example-section">
+        <div class="form-group">
+            <div>
+                <label class="header_input mb-3">نوع البرنامح </label>
+            </div>
+            <ng-container *ngFor="let item of collectionOfLookup.PROG_TYPES ;let i=index">
+                <mat-checkbox   formControlName="progType" 
+                class="example-margin " [ngClass]="{'ml-1 mr-1':i==0 ,'ml-5 mr-5': i==1, 'ml-3 mr-3': i==2}" >
+                  {{item.nameAr}}  
+                </mat-checkbox>
+                </ng-container>
+       </div>
+        <div *ngIf="f.progType.errors && (f.progType.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
+          <div *ngIf="f.progType.errors?.required">
+          {{ 'GENERAL.REQUIRED' | translate }}
+          </div>
+          </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+                <label class="header_input">مدة البرنامج</label>
+                <input type="text" class="form-control"  formControlName="durationProg">
+       </div>
+       <div *ngIf="f.progType.errors && (f.progType.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
+        <div *ngIf="f.progType.errors?.required">
+        {{ 'GENERAL.REQUIRED' | translate }}
+        </div>
+
+        
+
+        </div>
+
+      
+       </div>
+       <div class="col-md-2">
+        <div class="form-group">
+                <label class="header_input">وقت اظهار الواجب</label>
+                <input type="time" class="form-control"  formControlName="dutyTime">
+       </div>
+
+       <div *ngIf="f.dutyTime.errors && (f.dutyTime.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
+        <div *ngIf="f.dutyTime.errors?.required">
+         {{ 'GENERAL.REQUIRED' | translate }}
+        </div>
+        </div>
+
+       </div>
+
+       <div class="col-md-2">
+        <div class="form-group">
+                <label class="header_input">عدد أيام الواجب المتاحة</label>
+                <input type="text" class="form-control"   formControlName="availableDuty">
+       </div>
+       <div *ngIf="f.availableDuty.errors && (f.availableDuty.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
+        <div *ngIf="f.availableDuty.errors?.required">
+         {{ 'GENERAL.REQUIRED' | translate }}
+        </div>
+        </div>
+
+       </div>
+
+      <div class="col-6">
+        <div class="form-group">
+          <label  class="header_input" for="comment">الفكره</label>
+          <textarea class="form-control" cols="2" rows="2"  formControlName="ideaProg"></textarea>
+        
+        </div>
+        <div *ngIf="f.ideaProg.errors && (f.ideaProg.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
+          <div *ngIf="f.ideaProg.errors?.required">
+           {{ 'GENERAL.REQUIRED' | translate }}
+          </div>
+          </div>
+
+      </div>
+
+
+     <div class="col-6">
+        <div class="form-group">
+          <label  class="header_input"  for="comment">اهداف البرنامج</label>
+          <textarea class="form-control" cols="2" rows="2" formControlName="goalProg"></textarea>
+        
+        </div>
+
+        <div *ngIf="f.goalProg.errors && (f.goalProg.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
+          <div *ngIf="f.goalProg.errors?.required">
+           {{ 'GENERAL.REQUIRED' | translate }}
+          </div>
+          </div>
+
+      </div>
+
+      <div class="col-6">
+        <div class="form-group">
+          <label  class="header_input" for="comment"> رؤية البرنامج <small>اختياري</small></label>
+          <textarea class="form-control" cols="2" rows="2" formControlName="visionProg"></textarea>
+        
+        </div>
+      </div>
+
+
+      <div class="col-6">
+        <div class="form-group">
+          <label  class="header_input" for="comment">طريقة البرنامج</label>
+          <textarea class="form-control" cols="2" rows="2" formControlName="pathProg"></textarea>
+        
+        </div>
+
+        <div *ngIf="f.pathProg.errors && (f.pathProg.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
+          <div *ngIf="f.pathProg.errors?.required">
+           {{ 'GENERAL.REQUIRED' | translate }}
+          </div>
+          </div>
+
+      </div>
+
+
+      <div class="col-6">
+        <div class="form-group">
+          <label  class="header_input" for="comment">مميزات البرنامج</label>
+          <textarea class="form-control" cols="2" rows="2" formControlName="advantageProg"></textarea>
+        </div>
+
+        <div *ngIf="f.advantageProg.errors && (f.advantageProg.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
+          <div *ngIf="f.advantageProg.errors?.required">
+           {{ 'GENERAL.REQUIRED' | translate }}
+          </div>
+          </div>
+
+      </div>
+
+
+      <div class="col-6">
+        <div class="form-group">
+          <label  class="header_input"  class="mb-3 header_input">نص التعهد</label>
+          <textarea class="form-control" cols="2" rows="2" formControlName="textPledge"></textarea>
+        </div>
+
+        <div *ngIf="f.textPledge.errors && (f.textPledge.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
+          <div *ngIf="f.textPledge.errors?.required">
+           {{ 'GENERAL.REQUIRED' | translate }}
+          </div>
+          </div>
+
+      </div>
+
+      <div class="col-6">
+        <div class="form-group">
+          <div>
+            <label class="header_input">ايام الواجبات</label>
+          </div>
+          <mat-radio-group aria-label="Select an option"  class="example-radio-group" formControlName="dutiesDays">
+            <ng-container *ngFor="let item of collectionOfLookup.DUTY_TYPES">
+              <mat-radio-button value="{{item.id}}" class="example-radio-button ml-2 mr-2"  >{{item.nameAr}}</mat-radio-button>
+              <!-- <mat-radio-button value="{{item.id}}" class="example-radio-button ml-1 mr-1"  >أيام محددة</mat-radio-button> -->
+            </ng-container>
+            </mat-radio-group>
+              <input type="text" class="form-control w-50" placeholder="اكتب عدد الايام"   >
+      
+              <ng-container *ngFor="let item of collectionOfLookup.DAYS">
+              <mat-checkbox   
+              class="example-margin ml-1 mr-1"  >
+              {{item.nameAr}}  
+              </mat-checkbox>
+              </ng-container>
+
+        <!-- <mat-checkbox    *ngFor="let Item of days" 
+        class="example-margin ml-1 mr-1"  >
+          {{Item}}  
+        </mat-checkbox> -->
+
+         <!-- <div *ngIf="f.dutiesDays.errors && (f.dutiesDays.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
+          <div *ngIf="f.dutiesDays.errors?.required">
+           {{ 'GENERAL.REQUIRED' | translate }}
+          </div>
+          </div> -->
+
+
+          </div>
+      </div>
+<div class="col-12 mt-2 mb-2">
+
+</div>
+
+      <div class="col-md-3 example-section">
+        <div class="form-group">
+            <div>
+                <label class="header_input mb-3">اجتياز الاختبار قبل القبول </label>
+            </div>
+                <mat-checkbox  class="example-margin " formControlName="examPass"> الزامى
+                </mat-checkbox>
+       </div>
+      </div>
+
+      <div class="col-md-4 example-section">
+        <div class="form-group">
+            <div>
+                <label class="header_input mb-3">تقيم  </label>
+            </div>
+            <mat-checkbox   *ngFor="let item of rate;let i=index" formControlName="rateProg"
+            class="example-margin " [ngClass]="{'ml-1 mr-1':i==0 ,'ml-5 mr-5': i==1, 'ml-3 mr-3': i==2}" >
+              {{item}}  
+            </mat-checkbox>
+       </div>
+      </div>
+
+
+      
+      
+      <div class="col-md-4 example-section">
+        <div class="form-group">
+            <div>
+                <label class="header_input mb-3">مواعيد التسميع </label>
+            </div>
+                <mat-checkbox  class="example-margin " formControlName="recitationDates" > الزامى
+                </mat-checkbox>
+       </div>
+      </div>
+
+
+
+
+
+      <div class="col-2">
+        <div class="form-group">
+          <div>
+            <label class="header_input">هل يوجد سرد</label>
+          </div>
+          <mat-radio-group aria-label="Select an option"  class="example-radio-group" formControlName="isAlsard">
+
+              <mat-radio-button value="1" class="example-radio-button ml-2 mr-2" >نعم</mat-radio-button>
+              <mat-radio-button value="2" class="example-radio-button ml-1 mr-1" checked>لا</mat-radio-button>
+            </mat-radio-group>
+            
+          </div>
+       </div>
+
+
+       <div class="col-8">
+         <div class="row">
+           <div class="col-4">
+            <div class="form-group">
+              <div>
+                <label class="header_input">فترة التسميع</label>
+              </div>
+               <mat-radio-group aria-label="Select an option"  class="example-radio-group" >
+            <ng-container *ngFor="let item of collectionOfLookup.SARD_TYPES ;let i=index">
+                  
+                <mat-radio-button value="{{item.id}}" class="example-radio-button ml-2 mr-2">{{item.nameAr}}</mat-radio-button>
+                  <!-- <mat-radio-button value="2" class="example-radio-button ml-1 mr-1">فترة محددة</mat-radio-button> -->
+                </ng-container>
+                </mat-radio-group>
+                
+ 
+    
+              </div>
+           </div>
+           <div class="col-8">
+              
+            <div class="row">
+              <div class="col-4">
+               <div class="form-group">
+                 <label class="header_input">من الساعه</label>
+             
+                 <input type="time" class="form-control"  >
+                 
+               </div>
+               </div>
+               <div class="col-4">
+                 <div class="form-group">
+                   <label class="header_input">الى الساعه</label>
+               
+                   <input type="time" class="form-control"  >
+                   
+                 </div>
+                 </div>
+                 <div class="col-4">
+                 <label class="header_input invisible">فترة التسميع</label>
+
+                   <button  type="button" class="saveButton btn"> Add</button>
+                     
+                   </div>
+   
+                   <div class="col-12">
+                    <div class="badges mt-3 ">
+                      <div *ngFor="let item of programType;let i=index" 
+                          class="badge badge-info p-2 " >
+                      <div class="d-flex justify-content-between">
+                          <p class="ellipsis mb-0"> from:__ , to:__</p>
+                          <a ><i class="fas fa-times-circle"></i></a>
+                      </div>
+                      </div>
+                  </div>
+                   </div>
+              </div>
+      
+           </div>
+         </div>
+
+       </div>
+
+    
+     </div>
+
+
+  
+      
+
+
+    </div>
+
+
+
+
+
+</div> 
+<div  class="row justify-content-end ml-3 mt-3">
+  <button   type="submit" class="save-btn" > 
+      {{ "GENERAL.SAVE" | translate }}
+  </button>
+
+  <button    type="reset" class="cancel-btn"> 
+      {{ "GENERAL.CANCEL" | translate }}
+  </button>
+</div>
+ </form>

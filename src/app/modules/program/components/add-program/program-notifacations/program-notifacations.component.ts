@@ -13,7 +13,7 @@ export class ProgramNotifacationsComponent implements OnInit {
   notificationEditObjec: IProgramNotificationDetails = {};
   @ViewChild(ProgramNotificationViewComponent) ProgramNotificationChild: ProgramNotificationViewComponent | undefined;
   ngOnInit(): void {
-
+    // this.ProgramNotificationChild?.getAllNotifications('a7cc7cec-8a16-403e-9343-2d7f0e994856');
   }
 
   openAddEditOverLay(event: IProgramNotificationDetails) {
@@ -24,7 +24,7 @@ export class ProgramNotifacationsComponent implements OnInit {
 
   closeNotifyProgram() {
     this.showAddEditOverlay = false;
-    this.ProgramNotificationChild?.getAllNotifications('');
+    this.ProgramNotificationChild?.getAllNotifications('e65c382a-9417-47b2-9cbf-903f728c48e8');
   }
 
 

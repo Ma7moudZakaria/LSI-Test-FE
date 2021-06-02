@@ -31,6 +31,10 @@ import { ProgramsTabsComponent } from './components/program-details/programs-tab
 import { ExamFormsListComponent } from './components/add-program/program-exames/exam-forms-list/exam-forms-list.component';
 import { ProgramAttacheExamTemplatsComponent } from './components/add-program/program-exames/program-attache-exam-templats/program-attache-exam-templats.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ProgramDutyDaysComponent } from './components/add-program/program-days/program-duty-days/program-duty-days.component';
+import { ProgramDayTasksComponent } from './components/add-program/program-days/program-day-tasks/program-day-tasks.component';
+import { ProgramDayTasksDetailsComponent } from './components/add-program/program-days/program-day-tasks-details/program-day-tasks-details.component';
+import { AddProgramDayTasksComponent } from './components/add-program/program-days/add-program-day-tasks/add-program-day-tasks.component';
 
 @NgModule({
   declarations: [AddEditNotificationComponent,
@@ -56,7 +60,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     ProgramsTabsComponent,
     ExamFormsListComponent,
     ProgramAttacheExamTemplatsComponent],
-    
   imports: [
     CommonModule,
     ProgramRoutingModule,
@@ -65,6 +68,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     FormsModule,
     ReactiveFormsModule,
     MatTooltipModule
-  ],providers: [MatTooltipModule]
+  ], providers: [MatTooltipModule]
 })
 export class ProgramModule { }
