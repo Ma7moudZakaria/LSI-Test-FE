@@ -28,6 +28,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProgramNotificationViewComponent } from './components/add-program/program-notifacations/program-notification-view/program-notification-view.component';
 import { AddEditNotificationComponent } from './components/add-program/program-notifacations/add-edit-notification/add-edit-notification.component';
 import { ProgramsTabsComponent } from './components/program-details/programs-tabs/programs-tabs.component';
+import { ExamFormsListComponent } from './components/add-program/program-exames/exam-forms-list/exam-forms-list.component';
+import { ProgramAttacheExamTemplatsComponent } from './components/add-program/program-exames/program-attache-exam-templats/program-attache-exam-templats.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { ProgramDutyDaysComponent } from './components/add-program/program-days/program-duty-days/program-duty-days.component';
 import { ProgramDayTasksComponent } from './components/add-program/program-days/program-day-tasks/program-day-tasks.component';
 import { ProgramDayTasksDetailsComponent } from './components/add-program/program-days/program-day-tasks-details/program-day-tasks-details.component';
@@ -55,16 +58,15 @@ import { AddProgramDayTasksComponent } from './components/add-program/program-da
     PeriodicExameComponent,
     ProgramNotificationViewComponent,
     ProgramsTabsComponent,
-    ProgramDutyDaysComponent,
-    ProgramDayTasksComponent,
-    ProgramDayTasksDetailsComponent,
-    AddProgramDayTasksComponent],
+    ExamFormsListComponent,
+    ProgramAttacheExamTemplatsComponent],
   imports: [
     CommonModule,
     ProgramRoutingModule,
     TranslateModule,
     SharedModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    MatTooltipModule
+  ],providers: [MatTooltipModule]
 })
 export class ProgramModule { }

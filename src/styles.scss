@@ -607,12 +607,12 @@ app-tel-input >
 }
 // notify
 .alertify-notifier .ajs-message.ajs-success {
-  background: #D8FFE959;
+  background: #d4e5dc;
     border: 5px solid #00BB3259;
     border-radius: 16px;}
     .alertify-notifier .ajs-message.ajs-success::before
     {
-      content: url(./assets/images/check-circle1.svg);
+      content: url(/assets/images/check-circle1.svg);
       margin: 0 0.5rem;
     }
 .alertify-notifier.ajs-right {

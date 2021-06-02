@@ -17,15 +17,18 @@
     
     <div class="col-md-12 max_h">
         <div class="row">
-         <ng-container *ngFor="let item of notificationsCardList">
-        <div class="col-4 mb-3">
-            <app-card-notifacations
-             [notificationsCardDetails]="item" 
-            (deleteCardNotify)="deleteCardNotify($event)"
-            (editCardNotify)="editNotificationCard($event)"
-            ></app-card-notifacations>
-        </div>
-      </ng-container>
+         
+                <ng-container *ngFor="let item of notificationsCardList">
+                <div class="col-4 mb-3">
+                    <app-card-notifacations
+                    [notificationsCardDetails]="item" 
+                    (deleteCardNotify)="deleteCardNotify($event)"
+                    (editCardNotify)="editNotificationCard($event)"
+                    ></app-card-notifacations>
+                </div>
+            </ng-container>
+
+       
         </div>
     </div>
    

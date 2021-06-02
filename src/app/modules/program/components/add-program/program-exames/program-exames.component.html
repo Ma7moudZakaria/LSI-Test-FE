@@ -1,1 +1,17 @@
-<p>program-exames works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-12 pl-0">
+            <app-exam-forms-list (selectedExamFormId)="setSelectedExam($event)">
+            </app-exam-forms-list>
+        </div>
+        <div class="col-lg-9  col-md-9 col-sm-12 pl-0">
+            <app-program-attache-exam-templats [selectedExamFormId]="selectedExamFormId"></app-program-attache-exam-templats>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
