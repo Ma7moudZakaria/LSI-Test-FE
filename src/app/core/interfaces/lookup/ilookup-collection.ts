@@ -30,5 +30,6 @@ export interface ILookupCollection {
     SHARED_TYPES?: BaseLookupModel[];
     DUTY_TYPES?: BaseLookupModel[];
     PROGRAM_CONDTION?: BaseLookupModel[];
+    PROG_TYPES?: BaseLookupModel[];
 
 }

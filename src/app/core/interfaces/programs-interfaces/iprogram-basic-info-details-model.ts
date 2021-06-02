@@ -14,8 +14,7 @@ export interface IProgramBasicInfoDetailsModel {
     advantageProg?: string;
     textPledge?: string;
     dutiesDays?: string;
-    // numberOfDays?: string;
-    // specificDays?: string;
+
     examPass?: string;
     rateProg?: string;
     recitationDates?: string;
@@ -23,4 +22,6 @@ export interface IProgramBasicInfoDetailsModel {
     // recitationPeriod?: string;
     // fromTime?: string;
     // toTime?: string;
+    // numberOfDays?: string;
+    // specificDays?: string;
 }
