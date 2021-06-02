@@ -29,7 +29,8 @@ import { ProgramNotificationViewComponent } from './components/add-program/progr
 import { AddEditNotificationComponent } from './components/add-program/program-notifacations/add-edit-notification/add-edit-notification.component';
 import { ProgramsTabsComponent } from './components/program-details/programs-tabs/programs-tabs.component';
 import { ExamFormsListComponent } from './components/add-program/program-exames/exam-forms-list/exam-forms-list.component';
-import { AttacheExamTemplatsComponent } from './components/add-program/program-exames/attache-exam-templats/attache-exam-templats.component';
+import { ProgramAttacheExamTemplatsComponent } from './components/add-program/program-exames/program-attache-exam-templats/program-attache-exam-templats.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [AddEditNotificationComponent,
@@ -52,13 +53,17 @@ import { AttacheExamTemplatsComponent } from './components/add-program/program-e
     ProgramNotifacationsComponent,
     PeriodicExameComponent,
     ProgramNotificationViewComponent,
-    ProgramsTabsComponent],
+    ProgramsTabsComponent,
+    ExamFormsListComponent,
+    ProgramAttacheExamTemplatsComponent],
+    
   imports: [
     CommonModule,
     ProgramRoutingModule,
     TranslateModule,
     SharedModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    MatTooltipModule
+  ],providers: [MatTooltipModule]
 })
 export class ProgramModule { }
