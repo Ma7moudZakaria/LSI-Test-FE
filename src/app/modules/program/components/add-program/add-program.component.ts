@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IProgramDetailsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-details-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
@@ -15,6 +15,8 @@ export class AddProgramComponent implements OnInit {
   showTap: string = 'BASEINFO';
   programDetails = {} as IProgramDetailsModel;
   resMessage: BaseMessageModel = {};
+
+  @Output() getProgramDetails = new EventEmitter<IProgramDetailsModel>();
 
   constructor( 
     private route: ActivatedRoute,
@@ -51,4 +53,9 @@ export class AddProgramComponent implements OnInit {
       }
     });
   }
+
+  openProgramDetails(){
+    this.getProgramDetails.emit(this.programDetails);
+  }
+
 }

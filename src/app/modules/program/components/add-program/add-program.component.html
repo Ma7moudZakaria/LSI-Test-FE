@@ -32,7 +32,7 @@
         <div class="col-12 px-0 ">
         <app-program-basic-info *ngIf="showTap == 'BASEINFO'"></app-program-basic-info>
         <app-program-conditions *ngIf="showTap == 'CANDITION'"></app-program-conditions>
-        <app-program-days *ngIf="showTap == 'DAYS'"></app-program-days>
+        <app-program-days *ngIf="showTap == 'DAYS'" (openProgramDetails)='openProgramDetails()'></app-program-days>
         <app-program-exames *ngIf="showTap == 'JOINEXAME'"></app-program-exames>
         <app-periodic-exame *ngIf="showTap == 'PERIODICEXAME'"></app-periodic-exame>
         <app-program-notifacations *ngIf="showTap == 'NOTIFY'"></app-program-notifacations>

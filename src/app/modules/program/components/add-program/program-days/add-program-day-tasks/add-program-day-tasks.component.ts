@@ -8,7 +8,7 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
-import { ProgramDayTasksService } from 'src/app/core/services/program-day-tasks-services/program-day-tasks.service';
+import { ProgramDayTasksService } from 'src/app/core/services/program-services/program-day-tasks.service';
 
 @Component({
   selector: 'app-add-program-day-tasks',
