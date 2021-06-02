@@ -1,0 +1,18 @@
+<div class="list-group list-category">
+    <p class="mb-4 p_header mb-2">{{'QUESTION_BANK.DEPARTMENTS' | translate}}</p>
+  <app-input-search-list (addSearchItem)="addUserNotBelongToRole($event)"
+  [searchList]="searchExamFormsList || []">
+</app-input-search-list>
+  <div class="internal_scroll_list_group ">
+    <a class="list-group-item d-flex" *ngFor="let EX of examFormsAddedToProgramList ; let i=index;"
+    [class.active]="selectedIndex === i" 
+    (click)="loadExams(EX.usrId,EX.arUsrName,EX.enUsrName);selectedIndex=i">
+          <p class="ellipsis mb-0 question-categories" >{{translate.currentLang===langEnum.en?EX.enUsrName:EX.arUsrName}}</p>
+    </a>
+    <div class="d-flex">
+      <label  class="no-data" *ngIf="examFormsAddedToProgramList.length===0">
+        {{'QUESTION_BANK.NO_DATA'|translate}} 
+    </label>
+    </div>
+  </div>
+  </div>

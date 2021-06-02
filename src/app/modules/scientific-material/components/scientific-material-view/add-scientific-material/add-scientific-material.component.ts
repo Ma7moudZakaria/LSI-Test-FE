@@ -17,6 +17,7 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
+import { IProgramFilterByNameFilterRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-by-name-filter-request';
 
 @Component({
   selector: 'app-add-scientific-material',
@@ -41,6 +42,7 @@ export class AddScientificMaterialComponent implements OnInit {
   disableSaveButtons = false;
   selectedProgramsList = Array<IprogramsModel>();
   programMessage: BaseMessageModel = {};
+  programFilterByName: IProgramFilterByNameFilterRequest = {};
 
   @Input() selectedMaterialId: any;
   @Output() submitSuccess = new EventEmitter<boolean>();
@@ -71,7 +73,9 @@ export class AddScientificMaterialComponent implements OnInit {
     this.loadScientificMaterialDetails(changes.selectedMaterialId.currentValue);
   }
   loadPrograms() {
-    this.scientifcMaterialService.getProgramsLookup().subscribe(
+    this.programFilterByName.skip = 0;
+    this.programFilterByName.take = 2147483647;
+    this.scientifcMaterialService.getProgramsLookup(this.programFilterByName).subscribe(
       (res: BaseResponseModel) => {
         this.programs = res.data as IprogramsModel[];
 
