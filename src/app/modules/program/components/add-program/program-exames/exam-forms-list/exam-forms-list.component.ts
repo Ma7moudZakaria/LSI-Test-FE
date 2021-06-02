@@ -1,13 +1,16 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IExamFormFilter } from 'src/app/core/interfaces/exam-form-interfaces/iexam-form-filter-request';
 import { IExamFormsModel } from 'src/app/core/interfaces/exam-form-interfaces/iexam-forms-model';
+import { IAssignExamFormsToProgram } from 'src/app/core/interfaces/programs-interfaces/iassign-exam-forms-to-program';
 import { SearchItem } from 'src/app/core/interfaces/role-management-interfaces/role-management';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { ExamFormService } from 'src/app/core/services/exam-form-services/exam-form.service';
+import { ProgramService } from 'src/app/core/services/program-services/program.service';
 
 @Component({
   selector: 'app-exam-forms-list',
@@ -20,10 +23,13 @@ export class ExamFormsListComponent implements OnInit {
   examFormsAddedToProgramList: SearchItem[] = []; 
   examFormFilter: IExamFormFilter = {};
   resultMessage:BaseMessageModel = {};
+  assignExamFormsToProgramModel:IAssignExamFormsToProgram ={};
  langEnum = LanguageEnum;
  searchExamFormsList : SearchItem[] | undefined;
  @Output() selectedExamFormId= new EventEmitter<{}>();
-  constructor(private examFormService: ExamFormService,public translate: TranslateService) { }
+ @Input() selectedprogram={programId:'a7cc7cec-8a16-403e-9343-2d7f0e994856',isContainExam:'true'}; 
+ 
+  constructor(private examFormService: ExamFormService,private programService:ProgramService,public translate: TranslateService,private _alertify:AlertifyService) { }
 
   ngOnInit(): void {
     this.getExamForms();
@@ -46,8 +52,8 @@ export class ExamFormsListComponent implements OnInit {
           usrEmail:''
          
         }))
-      //  this.loadExams(this.examFormsList[0]?.id,this.examFormsList[0]?.arabExamFormNam,this.examFormsList[0]?.engExamFormNam);
-      //     this.selectedIndex=0;
+        this.loadExams(this.examFormsAddedToProgramList[0]?.usrId,this.examFormsAddedToProgramList[0]?.arUsrName,this.examFormsAddedToProgramList[0]?.enUsrName);
+          this.selectedIndex=0;
     },
       error => {
         this.resultMessage = {
@@ -60,12 +66,91 @@ export class ExamFormsListComponent implements OnInit {
 
   addUserNotBelongToRole(event: any) {
     this.examFormsAddedToProgramList.push(event);
-    console.log(event);
+   if(this.examFormsAddedToProgramList.length==1) {
+    this.loadExams(this.examFormsAddedToProgramList[0]?.usrId,this.examFormsAddedToProgramList[0]?.arUsrName,this.examFormsAddedToProgramList[0]?.enUsrName);
+    this.selectedIndex=0;
+   }
+   
+  }
+  deleteFromExamFormsAddedToProgramList(item:SearchItem) {
+    const index = this.examFormsAddedToProgramList.indexOf(item);
+    this.examFormsAddedToProgramList.splice(index,1);
+    this.searchExamFormsList?.push(item);
   }
 
   selectedIndex?:Number;
   loadExams(id?:string,arabExamName?:string,engExamName?:string){
     this.selectedExamFormId.emit({id:id,arabExamName:arabExamName,engExamName:engExamName});
+  }
+
+  onCheckboxChange(progId:string){
+
+    this.programService.updateProgramExamToggle(progId).subscribe(res => {
+      if (res.isSuccess) {
+        this.resultMessage = {
+          message:res.message||"",
+          type: BaseConstantModel.SUCCESS_TYPE
+        }
+        setTimeout(() => {
+          this.resultMessage = {
+            message:"",
+            type:""
+          }
+        }, 1500)
+      }
+      else {
+        this.resultMessage = {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+        setTimeout(() => {
+          this.resultMessage = {
+            message:"",
+            type:""
+          }
+        }, 1500)
+      }
+      
+    },
+      error => {
+        this.resultMessage = {
+          message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+          type: BaseConstantModel.DANGER_TYPE
+        }
+        setTimeout(() => {
+          this.resultMessage = {
+            message:"",
+            type:""
+          }
+        }, 1500)
+      })
+
+  }
+
+  assignExamFormToProgram() {
+    this.resultMessage = {};
+    this.assignExamFormsToProgramModel.programId=this.selectedprogram.programId;
+    this.assignExamFormsToProgramModel.examForms=this.examFormsAddedToProgramList.map(item => ({ examFormId:item.usrId || ''}));
+        this.programService.assignExamFormToProgram(this.assignExamFormsToProgramModel).subscribe(res => {
+          if (res.isSuccess) {
+            
+            this._alertify.success(res.message||"");
+        
+          }
+          else {
+            this.resultMessage = {
+              message: res.message,
+              type: BaseConstantModel.DANGER_TYPE
+            }
+          }
+        },
+          error => {
+            this.resultMessage = {
+              message: error,
+              type: BaseConstantModel.DANGER_TYPE
+            }
+          })
+
   }
 
 }

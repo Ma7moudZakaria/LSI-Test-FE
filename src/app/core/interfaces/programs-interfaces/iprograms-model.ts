@@ -10,4 +10,5 @@ export interface IprogramsModel {
     engShortDesc?:string;
     arabLongDesc?:string;
     engLongDesc?:string;
+    isContainExam?:boolean;
 }

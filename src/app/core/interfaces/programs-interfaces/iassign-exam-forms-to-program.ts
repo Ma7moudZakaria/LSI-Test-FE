@@ -1,6 +1,6 @@
 export interface IAssignExamFormsToProgram {
-    programId:string;
-    examForms:IExamForms[];
+    programId?:string;
+    examForms?:IExamForms[];
 
 }
 
