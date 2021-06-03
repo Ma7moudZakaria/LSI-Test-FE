@@ -63,7 +63,7 @@ export class ProgramService {
   }
 
   updateProgramExamToggle(programId:string):Observable<BaseResponseModel>{
-    return this.http.put<BaseResponseModel>(this.updateProgramExamToggleURL,programId);
+    return this.http.put<BaseResponseModel>(this.updateProgramExamToggleURL+programId, null);
   }
 
   programPause(programId:string):Observable<BaseResponseModel>{

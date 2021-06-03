@@ -1,9 +1,10 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
 import { ICreateProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/icreate-program-day-tasks-model';
+import { IProgramDutyDaysModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-details-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
@@ -22,8 +23,12 @@ export class AddProgramDayTasksComponent implements OnInit {
   createProgramDayTasksModel = Array<ICreateProgramDayTasksModel>();
   listOfLookups: string[] = ['Tasks'];
 
+  @Input() programDutyDay = {} as IProgramDutyDaysModel;
+
   resMessage: BaseMessageModel = {};
   selectedProgramDayTasksList = Array<ICreateProgramDayTasksModel>();
+  
+  ccc:boolean = false;  
 
   @Output() closeDayTasks = new EventEmitter<boolean>();
   
@@ -38,6 +43,7 @@ export class AddProgramDayTasksComponent implements OnInit {
   ngOnInit(): void {
     this.setCurrentLang();
     this.getLookupByKey();
+    console.log(this.programDutyDay);
   }
 
   setCurrentLang() {
@@ -77,15 +83,24 @@ export class AddProgramDayTasksComponent implements OnInit {
     })
   }
 
-  onSubmit(value: string) {
+  onTaskChange(item : any, event : any){
+    if (event.checked){
+      this.selectedProgramDayTasksList.push(item.id);
+    }
+    else{
+
+    }
+  }
+
+  onSubmit() {
     this.resMessage = {}
-    if (this.programDayTasksForm.valid) {
+    if (true) {
       this.createProgramDayTasksModel = [];
       if (this.selectedProgramDayTasksList.length) {
-        Array.from(this.selectedProgramDayTasksList).forEach((elm: ICreateProgramDayTasksModel) => {
+        Array.from(this.selectedProgramDayTasksList).forEach((elm: any) => {
           this.createProgramDayTasksModel.push({
-            programDutyDay: elm.programDutyDay,
-            dayTask: elm.dayTask
+            programDutyDay: this.programDutyDay.id,
+            dayTask: elm
           });
         });
       }

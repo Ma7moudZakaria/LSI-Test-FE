@@ -14,7 +14,7 @@
 
 
 <div class="overlay" *ngIf="showAddDayTasksForm">
-    <app-add-program-day-tasks  
+    <app-add-program-day-tasks  [programDutyDay]='programDutyDay'
     (closeDayTasks)='closeDayTasks($event)'
     ></app-add-program-day-tasks>
 </div>

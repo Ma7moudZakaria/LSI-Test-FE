@@ -71,6 +71,7 @@ import { AddProgramDayTasksComponent } from './components/add-program/program-da
     ProgramRoutingModule,
     TranslateModule,
     SharedModule,
+    FormsModule,
     ReactiveFormsModule,
     MatTooltipModule,
     FormsModule

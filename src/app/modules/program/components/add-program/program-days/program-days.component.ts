@@ -12,8 +12,12 @@ export class ProgramDaysComponent implements OnInit {
 
   @ViewChild(ProgramDayTasksComponent) progDayTaskChild: ProgramDayTasksComponent | undefined;
 
-  @Input() programDetails: IProgramDetailsModel = {}
+  @Input() programDetails: IProgramDetailsModel = {};
+  programDutyDay: IProgramDutyDaysModel = {}
+
   showAddDayTasksForm = false;
+
+  dataOfProgDutyDay: IProgramDutyDaysModel = {};
 
   progDutyDayModel: IProgramDutyDaysModel | undefined;
 
@@ -27,6 +31,7 @@ export class ProgramDaysComponent implements OnInit {
 
   progDutyDayEventCallBk(event: IProgramDutyDaysModel) {
     this.progDayTaskChild?.getProgramDutyDays(event.id || '');
+    this.programDutyDay = event;    
   }
 
   openAddDayTasks(event: boolean) {
@@ -41,6 +46,11 @@ export class ProgramDaysComponent implements OnInit {
   }
   openAddDayTasksForm() {
     this.showAddDayTasksForm = true;
+
+  }
+
+  getProgramDutyDay() {
+    this.dataOfProgDutyDay = this.programDutyDay;
 
   }
 }
