@@ -9,9 +9,11 @@
       <p class="mb-4 head">الواجب اليومي</p>
   </div>
  
-<app-search-input></app-search-input>
-<div class="internal_scroll_list_group programDays">
-    <ng-container *ngFor='let item of progDaysList' >
+<!-- <app-search-input></app-search-input> -->
+{{filterargs.dayOrder}}
+<input type='number' [(ngModel)]='filterargs.dayOrder'>
+<div class="internal_scroll_list_group programDays" *ngIf='progDaysList'>
+    <ng-container *ngFor='let item of progDaysList | myfilter:filterargs' >
     <a  class="list-group-item  d-flex align-items-center"  (click)='onDayClick(item)'>
         <mat-checkbox    class="example-margin " >
             day-{{item.dayOrder}}

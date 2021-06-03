@@ -31,7 +31,7 @@ import { ProgramsTabsComponent } from './components/program-details/programs-tab
 import { ExamFormsListComponent } from './components/add-program/program-exames/exam-forms-list/exam-forms-list.component';
 import { ProgramAttacheExamTemplatsComponent } from './components/add-program/program-exames/program-attache-exam-templats/program-attache-exam-templats.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { ProgramDutyDaysComponent } from './components/add-program/program-days/program-duty-days/program-duty-days.component';
+import { MyFilterPipe, ProgramDutyDaysComponent } from './components/add-program/program-days/program-duty-days/program-duty-days.component';
 import { ProgramDayTasksComponent } from './components/add-program/program-days/program-day-tasks/program-day-tasks.component';
 import { ProgramDayTasksDetailsComponent } from './components/add-program/program-days/program-day-tasks-details/program-day-tasks-details.component';
 import { AddProgramDayTasksComponent } from './components/add-program/program-days/add-program-day-tasks/add-program-day-tasks.component';
@@ -63,7 +63,8 @@ import { AddProgramDayTasksComponent } from './components/add-program/program-da
     ProgramDutyDaysComponent,
     ProgramDayTasksComponent,
     ProgramDayTasksDetailsComponent,
-    AddProgramDayTasksComponent
+    AddProgramDayTasksComponent,
+    MyFilterPipe
   ],
   imports: [
     CommonModule,
@@ -72,7 +73,8 @@ import { AddProgramDayTasksComponent } from './components/add-program/program-da
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    FormsModule
   ], providers: [MatTooltipModule]
 })
 export class ProgramModule { }
