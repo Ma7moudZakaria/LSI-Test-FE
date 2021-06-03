@@ -43,7 +43,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FooterComponent,
     HeaderComponent,
     SidebarComponent,
-    MyLoaderComponent
+    MyLoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,7 +68,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SocialLoginModule,
     Ng2TelInputModule,
     NgbModule,
-    NgbRatingModule
+    NgbRatingModule,
   ],
   providers: [
     CmsHasUnsavedDataGuard,
