@@ -38,6 +38,18 @@ import { GroupUsersCardComponent } from './components/group-users-card/group-use
 import { InputSearchListComponent } from './components/input-search-list/input-search-list.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { CardNotifacationsComponent } from './components/card-notifacations/card-notifacations.component';
+import { ProgramDayTaskHearingComponent } from './components/program-day-tasks/program-day-task-hearing/program-day-task-hearing.component';
+import { ProgramDayTaskReadExplanationComponent } from './components/program-day-tasks/program-day-task-read-explanation/program-day-task-read-explanation.component';
+import { ProgramDayTaskMemorizeComponent } from './components/program-day-tasks/program-day-task-memorize/program-day-task-memorize.component';
+import { ProgramDayTaskRepetitionComponent } from './components/program-day-tasks/program-day-task-repetition/program-day-task-repetition.component';
+import { ProgramDayTaskLinkingComponent } from './components/program-day-tasks/program-day-task-linking/program-day-task-linking.component';
+import { ProgramDayTaskDailyTestComponent } from './components/program-day-tasks/program-day-task-daily-test/program-day-task-daily-test.component';
+import { ProgramDayTaskEncouragementLetterComponent } from './components/program-day-tasks/program-day-task-encouragement-letter/program-day-task-encouragement-letter.component';
+import { ProgramDayTaskVideoComponent } from './components/program-day-tasks/program-day-task-video/program-day-task-video.component';
+import { ProgramDayTaskReviewComponent } from './components/program-day-tasks/program-day-task-review/program-day-task-review.component';
+import { ProgramDayTaskRecitationComponent } from './components/program-day-tasks/program-day-task-recitation/program-day-task-recitation.component';
+import { ProgramDayTaskRecitationStudentsComponent } from './components/program-day-tasks/program-day-task-recitation-students/program-day-task-recitation-students.component';
+import { ProgramDayTaskTestPhasedComponent } from './components/program-day-tasks/program-day-task-test-phased/program-day-task-test-phased.component';
 
 
 @NgModule({
@@ -46,7 +58,19 @@ import { CardNotifacationsComponent } from './components/card-notifacations/card
     StudentNumbersComponent, StudentsRatingComponent, CardStudentScientificProblemComponent, CardAdminScientificProblemComponent,
     QuestionTemplateComponent, VoiceRecordingComponent, ScientificProblemsGridComponent, NotAuthComponent, GroupUsersCardComponent,
     InputSearchListComponent,
-    CardNotifacationsComponent],
+    CardNotifacationsComponent,
+    ProgramDayTaskHearingComponent,
+    ProgramDayTaskReadExplanationComponent,
+    ProgramDayTaskMemorizeComponent,
+    ProgramDayTaskRepetitionComponent,
+    ProgramDayTaskLinkingComponent,
+    ProgramDayTaskDailyTestComponent,
+    ProgramDayTaskEncouragementLetterComponent,
+    ProgramDayTaskVideoComponent,
+    ProgramDayTaskReviewComponent,
+    ProgramDayTaskRecitationComponent,
+    ProgramDayTaskRecitationStudentsComponent,
+    ProgramDayTaskTestPhasedComponent],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,
