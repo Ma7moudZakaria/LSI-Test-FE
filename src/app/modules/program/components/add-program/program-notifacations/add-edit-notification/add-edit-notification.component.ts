@@ -1,3 +1,4 @@
+import { BaseLookupModel } from './../../../../../../core/ng-model/base-lookup-model';
 import { AlertifyService } from './../../../../../../core/services/alertify-services/alertify.service';
 import { UpdateTeacherProfileComponent } from './../../../../../teacher/components/update-teacher-profile/update-teacher-profile.component';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
@@ -12,6 +13,7 @@ import { ProgramNotificationService } from 'src/app/core/services/program-servic
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
+import { IProgramNotificationTypes } from 'src/app/core/interfaces/lookup/iprogram-notification-types';
 
 @Component({
   selector: 'app-add-edit-notification',
@@ -28,7 +30,7 @@ export class AddEditNotificationComponent implements OnInit {
   @Input() notificationDetails = {} as IProgramNotificationDetails;
   @Input() notificationInputs = {} as IProgramNotificationModel;
 
-  collectionOfLookup = {} as ILookupCollection;
+  collectionOfLookup = {} as BaseLookupModel[];
   listOfLookupProfile: string[] = ['PROG_NOTIF_TYPES'];
 
   notificationAddModel: IProgramNotificationModel | undefined;
@@ -54,10 +56,14 @@ export class AddEditNotificationComponent implements OnInit {
   }
 
   getLookupByKey() {
-    this.lookupService.getLookupByKey(this.listOfLookupProfile).subscribe(res => {
+    let param: IProgramNotificationTypes = {
+      notifyId: this.notificationDetails ? this.notificationDetails.id : '',
+      progId: 'e65c382a-9417-47b2-9cbf-903f728c48e8'
+    }
+    this.lookupService.getProgramNotificationTypesToProgram(param).subscribe(res => {
 
       if (res.isSuccess) {
-        this.collectionOfLookup = res.data as ILookupCollection;
+        this.collectionOfLookup = res.data as BaseLookupModel[];
       }
       else {
         this.resultMessage =
@@ -92,7 +98,7 @@ export class AddEditNotificationComponent implements OnInit {
   PopulateForm() {
 
     this.f.notifyName.setValue(this.notificationDetails?.notifyName);
-    this.f.numberNotify.setValue(this.notificationDetails?.no);
+    this.f.numberNotify.setValue(this.notificationDetails?.noDuties);
     this.f.notifyType.setValue(this.notificationDetails?.notifyType);
     this.f.messageAr.setValue(this.notificationDetails?.msgAr);
     this.f.messageEn.setValue(this.notificationDetails?.msgEn);
@@ -109,7 +115,7 @@ export class AddEditNotificationComponent implements OnInit {
         // fill edit model 
         this.notificationEditModel = {
           progId: this.notificationDetails.progId,
-          notifyId: this.notificationDetails.notifyId,
+          notifyId: this.notificationDetails.id,
           notifyName: this.notifyForm.value.notifyName,
           no: this.notifyForm.value.numberNotify,
           notifyType: this.notifyForm.value.notifyType,
@@ -124,9 +130,9 @@ export class AddEditNotificationComponent implements OnInit {
       else {
         // 1- fill add model 
         this.notificationAddModel = {
-          progId: 'a7cc7cec-8a16-403e-9343-2d7f0e994856',
+          progId: 'e65c382a-9417-47b2-9cbf-903f728c48e8',
           notifyName: this.notifyForm.value.notifyName,
-          no: this.notifyForm.value.numberNotify,
+          noDuties: this.notifyForm.value.numberNotify,
           notifyType: this.notifyForm.value.notifyType,
           msgAr: this.notifyForm.value.messageAr,
           msgEn: this.notifyForm.value.messageEn,

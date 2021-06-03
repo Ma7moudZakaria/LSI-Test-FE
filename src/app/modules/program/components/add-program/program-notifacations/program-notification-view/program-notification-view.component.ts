@@ -17,7 +17,7 @@ import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/compon
 export class ProgramNotificationViewComponent implements OnInit {
 
 
-  @Input() notificationDetails = {} as IProgramNotificationDetails;
+  notificationDetails = {} as IProgramNotificationDetails;
   resultMessage: BaseMessageModel = {};
 
   @Output() openNotifyfrom = new EventEmitter<IProgramNotificationDetails>();
@@ -32,6 +32,7 @@ export class ProgramNotificationViewComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.getAllNotifications('e65c382a-9417-47b2-9cbf-903f728c48e8');
   }
 
   notificationsCardList: IProgramNotificationModel[] = []

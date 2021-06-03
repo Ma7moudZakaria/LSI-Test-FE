@@ -13,8 +13,8 @@ export class ProgramNotificationService {
 
   AddNotificationURL = environment.baseUrl + 'Programs/add-program-notification';
   UpdateNotificationURL = environment.baseUrl + 'Programs/update-program-notification';
-  DeleteNotificationURL = environment.baseUrl + 'Programs/delete-program-notification/{id}';
-  GetAllNotificationURL = environment.baseUrl + 'Programs/get-program-notifications-by-program-id';
+  DeleteNotificationURL = environment.baseUrl + 'Programs/delete-program-notification/';
+  GetAllNotificationURL = environment.baseUrl + 'Programs/get-program-notifications-by-program-id/';
   GetNotificationDetails = environment.baseUrl + 'Programs/get-program-notification-types-to-program';
 
 

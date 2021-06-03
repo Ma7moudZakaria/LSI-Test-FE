@@ -72,6 +72,6 @@ import { AddProgramDayTasksComponent } from './components/add-program/program-da
     SharedModule,
     ReactiveFormsModule,
     MatTooltipModule
-  ],providers: [MatTooltipModule]
+  ], providers: [MatTooltipModule]
 })
 export class ProgramModule { }

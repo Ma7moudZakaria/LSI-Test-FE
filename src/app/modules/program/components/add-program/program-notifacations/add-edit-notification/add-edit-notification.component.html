@@ -56,7 +56,7 @@
         <label class="text-right header_input"> {{ 'NOTIFICATIONS.NOTIFICITION_TYPE' | translate }}</label>
         <select class="form-control " formControlName="notifyType"  >
             <!-- <option [ngValue]="null"  disabled selected>{{ 'NOTIFICATIONS.SELECT_NOTIFICATION_TYPE' | translate }}</option> -->
-           <ng-container *ngFor="let item of collectionOfLookup.PROG_NOTIF_TYPES">
+           <ng-container *ngFor="let item of collectionOfLookup">
             <option  [value]="item.id">
                 {{ translate.currentLang == langEnum.en ? item.nameEn : item.nameAr}}
 
