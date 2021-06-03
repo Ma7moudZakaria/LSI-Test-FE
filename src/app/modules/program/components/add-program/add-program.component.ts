@@ -12,13 +12,13 @@ import { ProgramService } from 'src/app/core/services/program-services/program.s
 })
 export class AddProgramComponent implements OnInit {
 
-  showTap: string = 'BASEINFO';
+  showTap: string = 'DAYS';
   programDetails = {} as IProgramDetailsModel;
   resMessage: BaseMessageModel = {};
 
   // @Input() getProgramDetails: IProgramDetailsModel | undefined
 
-  constructor( 
+  constructor(
     private route: ActivatedRoute,
     private programService: ProgramService) { }
 
@@ -55,5 +55,5 @@ export class AddProgramComponent implements OnInit {
     });
   }
 
-  
+
 }
