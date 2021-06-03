@@ -27,3 +27,6 @@
        </div>
 
 </div> -->
+<div *ngFor='let item of progDaysList'>
+    <a (click)='onDayClick(item)'> day-{{item.dayOrder}} </a>
+</div>
