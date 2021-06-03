@@ -50,6 +50,7 @@ import { ProgramDayTaskReviewComponent } from './components/program-day-tasks/pr
 import { ProgramDayTaskRecitationComponent } from './components/program-day-tasks/program-day-task-recitation/program-day-task-recitation.component';
 import { ProgramDayTaskRecitationStudentsComponent } from './components/program-day-tasks/program-day-task-recitation-students/program-day-task-recitation-students.component';
 import { ProgramDayTaskTestPhasedComponent } from './components/program-day-tasks/program-day-task-test-phased/program-day-task-test-phased.component';
+import { ProgramDayTaskTasmeaComponent } from './components/program-day-tasks/program-day-task-tasmea/program-day-task-tasmea.component';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { ProgramDayTaskTestPhasedComponent } from './components/program-day-task
     ProgramDayTaskReviewComponent,
     ProgramDayTaskRecitationComponent,
     ProgramDayTaskRecitationStudentsComponent,
-    ProgramDayTaskTestPhasedComponent],
+    ProgramDayTaskTestPhasedComponent,
+    ProgramDayTaskTasmeaComponent],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,
