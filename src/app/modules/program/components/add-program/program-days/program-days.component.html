@@ -1,13 +1,13 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-4">
+        <div class="col-3">
             <app-program-duty-days [progDaysList]='programDetails?.programDays' (progDutyDayEvent)='progDutyDayEventCallBk($event)'></app-program-duty-days>
         </div>
-        <div class="col-4">
-            <app-program-day-tasks (openAddDayTasks)='openAddDayTasks($event)' ></app-program-day-tasks>
+        <div class="col-3">
+            <app-program-day-tasks (openAddDayTasks)="openAddDayTasksForm()" ></app-program-day-tasks>
         </div>
-        <div class="col-4"> 
-            <app-add-program-day-tasks></app-add-program-day-tasks >
+        <div class="col-6"> 
+            <app-program-day-tasks-details ></app-program-day-tasks-details >
         </div>
     </div>
 </div>
