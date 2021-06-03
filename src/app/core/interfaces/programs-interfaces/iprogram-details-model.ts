@@ -1,6 +1,6 @@
 export interface IProgramDetailsModel {
     id?:string;
-    programDutyDays?:IProgramDutyDaysModel[];
+    programDays?:IProgramDutyDaysModel[];
 }
 
 export interface IProgramDutyDaysModel {

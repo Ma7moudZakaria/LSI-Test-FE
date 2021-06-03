@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-model';
+import { IProgramDutyDaysModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-details-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
@@ -15,6 +16,8 @@ import { ProgramDayTasksService } from 'src/app/core/services/program-services/p
   styleUrls: ['./program-day-tasks.component.scss']
 })
 export class ProgramDayTasksComponent implements OnInit {
+
+  @Output() openAddDayTasks = new EventEmitter<boolean>();
 
   langEnum = LanguageEnum;
   resMessage: BaseMessageModel = {};
@@ -60,6 +63,11 @@ export class ProgramDayTasksComponent implements OnInit {
         type: BaseConstantModel.DANGER_TYPE
       }
     });
+  }
+
+  newDayTasks() {
+    this.openAddDayTasks.emit(true);
+
   }
 
 }

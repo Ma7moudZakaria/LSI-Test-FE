@@ -1,6 +1,7 @@
-import { EventEmitter, Input } from '@angular/core';
+import { EventEmitter, Input, ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { IProgramDetailsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-details-model';
+import { IProgramDetailsModel, IProgramDutyDaysModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-details-model';
+import { ProgramDayTasksComponent } from './program-day-tasks/program-day-tasks.component';
 
 @Component({
   selector: 'app-program-days',
@@ -9,15 +10,31 @@ import { IProgramDetailsModel } from 'src/app/core/interfaces/programs-interface
 })
 export class ProgramDaysComponent implements OnInit {
 
-  @Input() getProgramDetails = new EventEmitter<IProgramDetailsModel>();
+  @ViewChild(ProgramDayTasksComponent) progDayTaskChild :ProgramDayTasksComponent | undefined;
+
+  @Input() programDetails: IProgramDetailsModel = {}
+  showAddDayTasksForm = false;
+
+  progDutyDayModel:IProgramDutyDaysModel | undefined;
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.programDetails);
+    // this.DetailsOfProgram = this.getProgramDetails || this.DetailsOfProgram;
+
   }
 
-  openProgramDetails(event: IProgramDetailsModel) {
-    this.getProgramDetails.emit(event);
+  progDutyDayEventCallBk(event:IProgramDutyDaysModel){
+    this.progDayTaskChild?.getProgramDutyDays(event.id || '');
   }
 
+  openAddDayTasks(event: boolean) {
+    this.showAddDayTasksForm = event;
+  }
+
+  closeDayTasks(event: boolean) {
+    this.showAddDayTasksForm = event;
+    // this.userScientificProbChild?.getScientificProblemByUserId();
+  }
 }

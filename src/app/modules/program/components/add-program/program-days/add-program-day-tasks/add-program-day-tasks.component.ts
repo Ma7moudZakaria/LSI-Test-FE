@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
@@ -24,6 +24,8 @@ export class AddProgramDayTasksComponent implements OnInit {
 
   resMessage: BaseMessageModel = {};
   selectedProgramDayTasksList = Array<ICreateProgramDayTasksModel>();
+
+  @Output() closeDayTasks = new EventEmitter<boolean>();
   
   constructor(
     public languageService: LanguageService,
@@ -116,5 +118,9 @@ export class AddProgramDayTasksComponent implements OnInit {
         type: BaseConstantModel.DANGER_TYPE
       }
     }
+  }
+
+  closeEvent() {
+    this.closeDayTasks.emit(false);
   }
 }
