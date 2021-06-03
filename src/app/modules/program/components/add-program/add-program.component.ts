@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IProgramDetailsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-details-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
@@ -16,6 +16,8 @@ export class AddProgramComponent implements OnInit {
   programDetails = {} as IProgramDetailsModel;
   resMessage: BaseMessageModel = {};
 
+  // @Input() getProgramDetails: IProgramDetailsModel | undefined
+
   constructor( 
     private route: ActivatedRoute,
     private programService: ProgramService) { }
@@ -23,14 +25,15 @@ export class AddProgramComponent implements OnInit {
   ngOnInit(): void {
     var programId = this.route.snapshot.queryParams['id'] || '';
 
-    console.log("programId =====>" , programId);
+    this.getProgramDetails("2E7F00FB-C02F-4351-B7D6-01B94B796B61")
+    // console.log("programId =====>" , programId);
 
-    if (programId){
-      this.getProgramDutyDays(programId)
-    }
+    // if (programId != ''){
+    //   this.getProgramDutyDays(programId)
+    // }
   }
 
-  getProgramDutyDays(id: string) {
+  getProgramDetails(id: string) {
     this.programService.getProgramDetails(id).subscribe(res => {
       if (res.isSuccess) {
         this.programDetails = res.data as IProgramDetailsModel;
@@ -51,4 +54,6 @@ export class AddProgramComponent implements OnInit {
       }
     });
   }
+
+  
 }

@@ -1,1 +1,9 @@
 <p>program-day-tasks works!</p>
+<div class="col-3 add_question mt-2">
+    <a (click)="newDayTasks()" > 
+        <img  src="../../../../../../assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
+    </a>
+</div>   
+<div *ngFor='let item of programDayTasksLists'>
+    <a > {{item.dayTaskNameAr}} </a>
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
@@ -8,7 +8,7 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
-import { ProgramDayTasksService } from 'src/app/core/services/program-day-tasks-services/program-day-tasks.service';
+import { ProgramDayTasksService } from 'src/app/core/services/program-services/program-day-tasks.service';
 
 @Component({
   selector: 'app-add-program-day-tasks',
@@ -24,6 +24,8 @@ export class AddProgramDayTasksComponent implements OnInit {
 
   resMessage: BaseMessageModel = {};
   selectedProgramDayTasksList = Array<ICreateProgramDayTasksModel>();
+
+  @Output() closeDayTasks = new EventEmitter<boolean>();
   
   constructor(
     public languageService: LanguageService,
@@ -116,5 +118,9 @@ export class AddProgramDayTasksComponent implements OnInit {
         type: BaseConstantModel.DANGER_TYPE
       }
     }
+  }
+
+  closeEvent() {
+    this.closeDayTasks.emit(false);
   }
 }

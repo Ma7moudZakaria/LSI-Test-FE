@@ -1,1 +1,18 @@
-<p>program-days works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4">
+            <app-program-duty-days [progDaysList]='programDetails?.programDays' (progDutyDayEvent)='progDutyDayEventCallBk($event)'></app-program-duty-days>
+        </div>
+        <div class="col-4">
+            <app-program-day-tasks (openAddDayTasks)='openAddDayTasks($event)' ></app-program-day-tasks>
+        </div>
+        
+    </div>
+</div>
+
+
+<div class="overlay" *ngIf="showAddDayTasksForm">
+    <app-add-program-day-tasks  
+    (closeDayTasks)='closeDayTasks($event)'
+    ></app-add-program-day-tasks>
+</div>
