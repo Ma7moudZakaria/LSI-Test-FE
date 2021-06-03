@@ -24,7 +24,7 @@ import { ProgramExamesComponent } from './components/add-program/program-exames/
 import { ProgramDaysComponent } from './components/add-program/program-days/program-days.component';
 import { ProgramNotifacationsComponent } from './components/add-program/program-notifacations/program-notifacations.component';
 import { PeriodicExameComponent } from './components/add-program/periodic-exame/periodic-exame.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProgramNotificationViewComponent } from './components/add-program/program-notifacations/program-notification-view/program-notification-view.component';
 import { AddEditNotificationComponent } from './components/add-program/program-notifacations/add-edit-notification/add-edit-notification.component';
 import { ProgramsTabsComponent } from './components/program-details/programs-tabs/programs-tabs.component';
@@ -70,6 +70,7 @@ import { AddProgramDayTasksComponent } from './components/add-program/program-da
     ProgramRoutingModule,
     TranslateModule,
     SharedModule,
+    FormsModule,
     ReactiveFormsModule,
     MatTooltipModule
   ], providers: [MatTooltipModule]
