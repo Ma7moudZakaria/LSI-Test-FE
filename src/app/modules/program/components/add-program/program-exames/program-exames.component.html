@@ -6,13 +6,14 @@
         </div>
         <div class="col-lg-9  col-md-9 col-sm-12 pl-0">
             <app-program-attache-exam-templats [selectedExamFormId]="selectedExamFormId"></app-program-attache-exam-templats>
-
+            <div  class="row justify-content-end ml-3 mt-3">
+                <button   (click)="assignExamFormToProgram()"  class="save-btn" > 
+                    {{ "GENERAL.SAVE" | translate }}
+                </button>
+              
+              </div>
         </div>
-        <section>
-            <div class="row">
-              <button (click)="assignExamFormToProgram()" class="save-btn btn btn-danger" >{{'QUESTION_BANK.SAVE' | translate}}</button>
-            </div>
-          </section>
+          
     </div>
 </div>
 
