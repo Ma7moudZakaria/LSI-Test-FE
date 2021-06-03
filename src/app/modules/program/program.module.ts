@@ -59,7 +59,7 @@ import { AddProgramDayTasksComponent } from './components/add-program/program-da
     ProgramNotificationViewComponent,
     ProgramsTabsComponent,
     ExamFormsListComponent,
-    ProgramAttacheExamTemplatsComponent],
+    ProgramAttacheExamTemplatsComponent, ProgramDutyDaysComponent, ProgramDayTasksComponent, ProgramDayTasksDetailsComponent, AddProgramDayTasksComponent],
   imports: [
     CommonModule,
     ProgramRoutingModule,
