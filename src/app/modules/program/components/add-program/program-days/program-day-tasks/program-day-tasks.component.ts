@@ -1,14 +1,18 @@
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-model';
+import { IProgramDayTasksUpdateOrderByModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-update-order-by-model';
 import { IProgramDutyDaysModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-details-model';
+import { IDragDropAccordionItems } from 'src/app/core/interfaces/shared-interfaces/accordion-interfaces/idrag-drop-accordion-items';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 import { ProgramDayTasksService } from 'src/app/core/services/program-services/program-day-tasks.service';
+import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-program-day-tasks',
@@ -25,11 +29,15 @@ export class ProgramDayTasksComponent implements OnInit {
   langEnum = LanguageEnum;
   resMessage: BaseMessageModel = {};
   programDayTasksLists = {} as Array<IProgramDayTasksModel>;
+  items1:any;
+  programDayTasksUpdateOrderByModel:IProgramDayTasksUpdateOrderByModel={};
+  listOrder?: number[];
 
   constructor(
     public languageService: LanguageService,
     private programDayTasksService: ProgramDayTasksService,
     public translate: TranslateService,
+    public dialog: MatDialog, 
     private lookupService: LookupService) { }
 
   ngOnInit(): void {
@@ -119,5 +127,72 @@ export class ProgramDayTasksComponent implements OnInit {
         type: BaseConstantModel.DANGER_TYPE
       }
     });
+  }
+
+  confirmDialog(id?:string){
+    const message =this.translate.currentLang === LanguageEnum.en ?"Are you sure that you want to delete this question":"هل متأكد من حذف هذا السؤال";
+
+    const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete Question' : 'حذف سؤال', message);
+
+    const dialogRef = this.dialog.open(ConfirmModalComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if(dialogResult==true){
+        this.programDayTasksService.DeleteProgramDayTasks(id || '').subscribe(res => {
+          if (res.isSuccess) {
+            this.programDayTasksLists = res.data as Array<IProgramDayTasksModel>;
+    
+            console.log("programDayTasksLists ===========>", this.programDayTasksLists);
+          }
+          else {
+            this.resMessage =
+            {
+              message: res.message,
+              type: BaseConstantModel.DANGER_TYPE
+            }
+          }
+        }, error => {
+          this.resMessage = {
+            message: error,
+            type: BaseConstantModel.DANGER_TYPE
+          }
+        });
+      }     
+    });
+  }
+
+  drop(event: CdkDragDrop<IDragDropAccordionItems[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      this.listOrder=[];
+      for(let i =0;i<=event.container.data.length-1;i++){
+        this.listOrder?.push(event.previousContainer.data[i].order||(i+1));
+      }
+      this.programDayTasksUpdateOrderByModel.programDutyDay =this.programDayTasksLists[0].programDutyDay;
+      this.programDayTasksUpdateOrderByModel.orderList =this.listOrder;
+    
+      this.programDayTasksService.UpdateOrderByProgramDayTasks(this.programDayTasksUpdateOrderByModel).subscribe(res => {
+        if (res.isSuccess) {
+       this.getProgramDutyDays(this.programDutyDay.id || '');
+        }
+        else {
+     
+        }
+        
+      },
+      error => {
+        this.resMessage ={
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      })
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
   }
 }
