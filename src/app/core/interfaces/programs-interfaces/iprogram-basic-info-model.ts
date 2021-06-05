@@ -1,28 +1,40 @@
 export interface IProgramBasicInfoModel {
-
-
     progName?: string;
-    shareWith?: string;
-    progType?: string;
-    durationProg?: string;
-    dutyTime?: string;
-    availableDuty?: string;
-    ideaProg?: string;
-    goalProg?: string;
-    visionProg?: string;
-    pathProg?: string;
-    advantageProg?: string;
-    textPledge?: string;
-    dutiesDays?: string;
-    examPass?: string;
-    rateProg?: string;
-    recitationDates?: string;
-    isAlsard?: string;
-    // numberOfDays?: string;
-    // specificDays?: string; // recitationPeriod?: string;
-    // fromTime?: string;
-    // toTime?: string;
-
-
+    progIdea?: string;
+    progGoal?: string;
+    progMthd?:string;
+    progAdva?: string;
+    progPldgtxt?: string;
+    progVision?: string;
+    progSharedWith?: string;
+    progTypes?:IProgramType[];
+    progDura?:number;
+    progAvableDtyTime?:string;
+    progAllowedDtyDay?: number;
+    progDtyDaytyp?: string;
+    progCountDtyDay?: number;
+    progDtyDays?:ProgWeeklyDutyDays[];
+    progIsPasJinExm?:boolean;
+    proRatTyps?:ProgRatings[];
+    progIsRecTimeMand?:boolean;
+    progIsRecitationEna?:boolean;
+    progRecType?: string;
+    progRecitTimes?: RecitationTimes[];
 }
 
+export interface IProgramType{
+    progTypeId?:String;
+}
+
+export interface ProgWeeklyDutyDays{
+    progWeeklyDay?:string;
+}
+
+export interface ProgRatings{
+    progRatId?:string;
+}
+
+export interface RecitationTimes{
+    progRecFrom?:string;
+    progRecTo?:string;
+}

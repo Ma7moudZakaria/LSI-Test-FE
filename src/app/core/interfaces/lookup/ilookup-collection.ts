@@ -31,6 +31,6 @@ export interface ILookupCollection {
     DUTY_TYPES?: BaseLookupModel[];
     PROGRAM_CONDTION?: BaseLookupModel[];
     PROG_TYPES?: BaseLookupModel[];
-
     Tasks?: BaseLookupModel[];
+    RATING?:BaseLookupModel[];
 }

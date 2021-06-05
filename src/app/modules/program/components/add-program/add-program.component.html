@@ -17,10 +17,10 @@
         [ngClass]="{ item_group_active: showTap == 'DAYS' }" >
             {{ 'NOTIFICATIONS.PROGRAM_DAYS' | translate }}
         </div>
-        <div class="item_group" (click)="showTap = 'PERIODICEXAME '"
+        <!-- <div class="item_group" (click)="showTap = 'PERIODICEXAME '"
         [ngClass]="{ item_group_active: showTap == 'PERIODICEXAME' }" >
             {{ 'NOTIFICATIONS.PROGRAM_PERIODICEXAME' | translate }}
-        </div>
+        </div> -->
         <div class="item_group" (click)="showTap = 'NOTIFY'"
         [ngClass]="{ item_group_active: showTap == 'NOTIFY' }" >
             {{ 'NOTIFICATIONS.PROGRAM_NOTIFICATIONS' | translate }}
@@ -34,7 +34,7 @@
         <app-program-conditions *ngIf="showTap == 'CANDITION'"></app-program-conditions>
         <app-program-days *ngIf="showTap == 'DAYS'" [programDetails]='programDetails'></app-program-days>
         <app-program-exames *ngIf="showTap == 'JOINEXAME'"></app-program-exames>
-        <app-periodic-exame *ngIf="showTap == 'PERIODICEXAME'"></app-periodic-exame>
+        <!-- <app-periodic-exame *ngIf="showTap == 'PERIODICEXAME'"></app-periodic-exame> -->
         <app-program-notifacations *ngIf="showTap == 'NOTIFY'"></app-program-notifacations>
         </div>
       </div>
