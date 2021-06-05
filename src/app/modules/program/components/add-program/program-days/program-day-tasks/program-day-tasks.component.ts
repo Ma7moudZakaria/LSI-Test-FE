@@ -76,4 +76,48 @@ export class ProgramDayTasksComponent implements OnInit {
   getProgramdutyDays() {
     this.programDutyDayModel.emit(this.programDutyDay);
   }
+
+  deleteTask(id?: string){
+    this.programDayTasksService.DeleteProgramDayTasks(id || '').subscribe(res => {
+      if (res.isSuccess) {
+        this.programDayTasksLists = res.data as Array<IProgramDayTasksModel>;
+
+        console.log("programDayTasksLists ===========>", this.programDayTasksLists);
+      }
+      else {
+        this.resMessage =
+        {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+    }, error => {
+      this.resMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    });
+  }
+
+  copyTask(id?: string){
+    this.programDayTasksService.CopyProgramDayTasks(id || '').subscribe(res => {
+      if (res.isSuccess) {
+        this.programDayTasksLists = res.data as Array<IProgramDayTasksModel>;
+
+        console.log("programDayTasksLists ===========>", this.programDayTasksLists);
+      }
+      else {
+        this.resMessage =
+        {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+    }, error => {
+      this.resMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    });
+  }
 }
