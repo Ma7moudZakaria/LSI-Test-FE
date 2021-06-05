@@ -20,7 +20,7 @@ export class ProgramDayTasksComponent implements OnInit {
   @Output() openAddDayTasks = new EventEmitter<boolean>();
   @Output() programDutyDayModel = new EventEmitter<IProgramDutyDaysModel>();
 
-  programDutyDay = {} as IProgramDutyDaysModel;
+  @Input() programDutyDay = {} as IProgramDutyDaysModel;
 
   langEnum = LanguageEnum;
   resMessage: BaseMessageModel = {};
@@ -71,10 +71,6 @@ export class ProgramDayTasksComponent implements OnInit {
   newDayTasks() {
     this.openAddDayTasks.emit(true);
 
-  }
-
-  getProgramdutyDays() {
-    this.programDutyDayModel.emit(this.programDutyDay);
   }
 
   deleteTask(id?: string){

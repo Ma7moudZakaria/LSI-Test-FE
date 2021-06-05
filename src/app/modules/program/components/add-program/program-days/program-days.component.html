@@ -4,7 +4,7 @@
             <app-program-duty-days [progDaysList]='programDetails?.programDays' (progDutyDayEvent)='progDutyDayEventCallBk($event)'></app-program-duty-days>
         </div>
         <div class="col-3">
-            <app-program-day-tasks (openAddDayTasks)="openAddDayTasksForm()" ></app-program-day-tasks>
+            <app-program-day-tasks (openAddDayTasks)="openAddDayTasksForm()" [programDutyDay]='programDutyDay'></app-program-day-tasks>
         </div>
         <div class="col-6"> 
             <app-program-day-tasks-details ></app-program-day-tasks-details >
