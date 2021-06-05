@@ -1,4 +1,5 @@
         export interface IProgramDayTasksModel {
+            id?:string;
             detailsTask?:string;
             dayTask?:string;
             dayTaskNameAr?:string;
