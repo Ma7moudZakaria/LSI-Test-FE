@@ -1,0 +1,33 @@
+
+
+@import '../../../../../scientific-material/components/scientific-material-view/programs-list/programs-list.component.scss';
+
+@import 'src/assets/scss/_variables.scss';
+
+.head{
+    font-weight: bold;
+    font-size: 1rem;
+}
+label{
+    margin-bottom: 0 !important;
+}
+.count{
+    background: #F4F5F7;
+    width: 34px;
+    height: 34px;
+    color: #8E2520;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: .4rem 1.2rem;}
+
+    .list-group_program-list 
+    .internal_scroll_list_group:lang(ar)
+     {
+        height: 434px;
+    }

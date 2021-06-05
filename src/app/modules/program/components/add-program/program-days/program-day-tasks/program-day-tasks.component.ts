@@ -18,6 +18,9 @@ import { ProgramDayTasksService } from 'src/app/core/services/program-services/p
 export class ProgramDayTasksComponent implements OnInit {
 
   @Output() openAddDayTasks = new EventEmitter<boolean>();
+  @Output() programDutyDayModel = new EventEmitter<IProgramDutyDaysModel>();
+
+  programDutyDay = {} as IProgramDutyDaysModel;
 
   langEnum = LanguageEnum;
   resMessage: BaseMessageModel = {};
@@ -70,4 +73,7 @@ export class ProgramDayTasksComponent implements OnInit {
 
   }
 
+  getProgramdutyDays() {
+    this.programDutyDayModel.emit(this.programDutyDay);
+  }
 }

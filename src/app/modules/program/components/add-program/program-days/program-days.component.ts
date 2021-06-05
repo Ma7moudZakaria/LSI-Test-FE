@@ -10,12 +10,16 @@ import { ProgramDayTasksComponent } from './program-day-tasks/program-day-tasks.
 })
 export class ProgramDaysComponent implements OnInit {
 
-  @ViewChild(ProgramDayTasksComponent) progDayTaskChild :ProgramDayTasksComponent | undefined;
+  @ViewChild(ProgramDayTasksComponent) progDayTaskChild: ProgramDayTasksComponent | undefined;
 
-  @Input() programDetails: IProgramDetailsModel = {}
+  @Input() programDetails: IProgramDetailsModel = {};
+  programDutyDay: IProgramDutyDaysModel = {}
+
   showAddDayTasksForm = false;
 
-  progDutyDayModel:IProgramDutyDaysModel | undefined;
+  dataOfProgDutyDay: IProgramDutyDaysModel = {};
+
+  progDutyDayModel: IProgramDutyDaysModel | undefined;
 
   constructor() { }
 
@@ -25,8 +29,9 @@ export class ProgramDaysComponent implements OnInit {
 
   }
 
-  progDutyDayEventCallBk(event:IProgramDutyDaysModel){
+  progDutyDayEventCallBk(event: IProgramDutyDaysModel) {
     this.progDayTaskChild?.getProgramDutyDays(event.id || '');
+    this.programDutyDay = event;    
   }
 
   openAddDayTasks(event: boolean) {
@@ -35,6 +40,17 @@ export class ProgramDaysComponent implements OnInit {
 
   closeDayTasks(event: boolean) {
     this.showAddDayTasksForm = event;
+    this.showAddDayTasksForm = false;
+
     // this.userScientificProbChild?.getScientificProblemByUserId();
+  }
+  openAddDayTasksForm() {
+    this.showAddDayTasksForm = true;
+
+  }
+
+  getProgramDutyDay() {
+    this.dataOfProgDutyDay = this.programDutyDay;
+
   }
 }

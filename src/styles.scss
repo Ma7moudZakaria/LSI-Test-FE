@@ -464,8 +464,8 @@ select.form-control {
 }
 .justify-content-between {
   justify-content: space-between!important;
-  margin-top: 10px;
-  margin-bottom: 0px;
+  // margin-top: 10px;
+  // margin-bottom: 0px;
 }
 .badge-lightbadge-light {
   color: $main-color;
@@ -863,7 +863,7 @@ form inut desabled
   opacity: 1;
   border-color: #F4F5F7;
 }
-.scProblem .mat-checkbox-layout{
+.scProblem .mat-checkbox-layout ,.programDays .mat-checkbox-layout{
   margin-bottom: 0 !important;
 }
 /******************
