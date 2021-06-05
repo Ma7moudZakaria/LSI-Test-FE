@@ -1,4 +1,4 @@
 export enum ProgramDayTaskRecitationType {
-    limited="limited",
-    unlimited="unlimited"
+    limited=1,
+    unlimited=2
 }

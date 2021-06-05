@@ -12,7 +12,7 @@ import { ProgramService } from 'src/app/core/services/program-services/program.s
 })
 export class AddProgramComponent implements OnInit {
 
-  showTap: string = 'DAYS';
+  showTap: string = 'BASEINFO';
   programDetails = {} as IProgramDetailsModel;
   resMessage: BaseMessageModel = {};
 

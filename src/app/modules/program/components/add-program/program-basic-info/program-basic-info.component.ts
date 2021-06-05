@@ -9,6 +9,8 @@ import { ProgramBasicInfoService } from 'src/app/core/services/program-services/
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 import { IProgramBasicInfoUpdateModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-basic-info-update-model';
 import { IProgramBasicInfoDetailsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-basic-info-details-model';
+import { ProgramDutiesEnum } from 'src/app/core/enums/programs/program-duties-enum.enum';
+import { ProgramDayTaskRecitationType } from 'src/app/core/enums/program-day-task-recitation-type.enum';
 @Component({
   selector: 'app-program-basic-info',
   templateUrl: './program-basic-info.component.html',
@@ -16,8 +18,8 @@ import { IProgramBasicInfoDetailsModel } from 'src/app/core/interfaces/programs-
 })
 export class ProgramBasicInfoComponent implements OnInit {
 
-  programType = ['برنامج حفظ', 'برنامج قراءة', 'برنامج شرح'];
-  rate = ['من الطالب للمعلم', 'من المعلم للطالب']
+  // programTypes = ['برنامج حفظ', 'برنامج قراءة', 'برنامج شرح'];
+  // ratingTypes = ['من الطالب للمعلم', 'من المعلم للطالب']
   baseInfoForm: FormGroup = new FormGroup({});
   isSubmit = false;
   baseicInfoProgrmInputs = {} as IProgramBasicInfoModel;
@@ -28,7 +30,11 @@ export class ProgramBasicInfoComponent implements OnInit {
   baseicInfoProgrmEditModel: IProgramBasicInfoUpdateModel | undefined;
 
   collectionOfLookup = {} as ILookupCollection;
-  listOfLookup: string[] = ['PROG_TYPES', 'SARD_TYPES', 'SHARED_TYPES', 'DUTY_TYPES', 'DAYS'];
+  listOfLookup: string[] = ['PROG_TYPES', 'SARD_TYPES', 'SHARED_TYPES', 'DUTY_TYPES', 'DAYS','RATING'];
+
+  progDutyDaysFreeDaysSelection:boolean = true;
+  isSardEnabled:boolean = false;
+  isSardTimesEnabled:boolean = false;
 
 
   constructor(private fb: FormBuilder, public translate: TranslateService,
@@ -36,20 +42,18 @@ export class ProgramBasicInfoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.buildForm();
     this.getLookupByKey();
+    this.buildForm();
     if (this.baseicInfoProgrmDetails) {
       this.PopulateForm();
     }
-
   }
 
 
   getLookupByKey() {
     this.lookupService.getLookupByKey(this.listOfLookup).subscribe(res => {
-      this.collectionOfLookup = res.data as ILookupCollection;
       if (res.isSuccess) {
-
+        this.collectionOfLookup = res.data as ILookupCollection;
       }
       else {
         this.resultMessage =
@@ -157,22 +161,27 @@ export class ProgramBasicInfoComponent implements OnInit {
       // 1- fill add model 
       this.baseicInfoProgrmModel = {
         progName: this.baseInfoForm.value.progName,
-        shareWith: this.baseInfoForm.value.shareWith,
-        progType: this.baseInfoForm.value.progType,
-        durationProg: this.baseInfoForm.value.durationProg,
-        dutyTime: this.baseInfoForm.value.dutyTime,
-        availableDuty: this.baseInfoForm.value.availableDuty,
-        ideaProg: this.baseInfoForm.value.ideaProg,
-        goalProg: this.baseInfoForm.value.goalProg,
-        visionProg: this.baseInfoForm.value.visionProg,
-        pathProg: this.baseInfoForm.value.pathProg,
-        advantageProg: this.baseInfoForm.value.advantageProg,
-        textPledge: this.baseInfoForm.value.textPledge,
-        dutiesDays: this.baseInfoForm.value.dutiesDays,
-        examPass: this.baseInfoForm.value.examPass,
-        rateProg: this.baseInfoForm.value.rateProg,
-        recitationDates: this.baseInfoForm.value.recitationDates,
-        isAlsard: this.baseInfoForm.value.isAlsard,
+        progSharedWith: this.baseInfoForm.value.shareWith,
+        // progTypes: this.baseInfoForm.value.progType,
+        progDura: this.baseInfoForm.value.durationProg,
+        progAvableDtyTime: this.baseInfoForm.value.dutyTime,
+        progAllowedDtyDay: this.baseInfoForm.value.availableDuty,
+        progIdea: this.baseInfoForm.value.ideaProg,
+        progGoal: this.baseInfoForm.value.goalProg,
+        progVision: this.baseInfoForm.value.visionProg,
+        progMthd: this.baseInfoForm.value.pathProg,
+        progAdva: this.baseInfoForm.value.advantageProg,
+        progPldgtxt: this.baseInfoForm.value.textPledge,
+        // dutiesDays: this.baseInfoForm.value.dutiesDays,
+        progIsPasJinExm: this.baseInfoForm.value.examPass,
+        // rateProg: this.baseInfoForm.value.rateProg,
+        // recitationDates: this.baseInfoForm.value.recitationDates,
+        progIsRecTimeMand: this.baseInfoForm.value.isAlsard,
+        progCountDtyDay:1,
+        progRecType:'',
+        progIsRecitationEna:true,
+        progDtyDaytyp:'',
+
 
 
       }
@@ -243,4 +252,20 @@ export class ProgramBasicInfoComponent implements OnInit {
       }
     });
   }
+
+  dutyDaysChange(event:any){
+    this.progDutyDaysFreeDaysSelection = this.collectionOfLookup.DUTY_TYPES?.filter(i => i.id === event.value)[0].huffazId === ProgramDutiesEnum.FreeDays;
+  }
+
+  isSardChange(event:any){
+    this.isSardEnabled = event.value;
+  }
+
+  isSardTimesChange(event:any){
+    this.isSardTimesEnabled = this.collectionOfLookup.SARD_TYPES?.filter(i => i.id === event.value)[0].huffazId === ProgramDayTaskRecitationType.unlimited;
+  }
+
+  // isSardTimesChange(event:any){
+  //   this.isSardTimesEnabled = event.value;
+  // }
 }

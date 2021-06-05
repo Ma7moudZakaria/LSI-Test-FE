@@ -189,20 +189,22 @@
           <div>
             <label class="header_input">ايام الواجبات</label>
           </div>
-          <mat-radio-group aria-label="Select an option"  class="example-radio-group" formControlName="dutiesDays">
+          <mat-radio-group aria-label="Select an option"  class="example-radio-group" formControlName="dutiesDays" (change)='dutyDaysChange($event)'>
             <ng-container *ngFor="let item of collectionOfLookup.DUTY_TYPES">
               <mat-radio-button value="{{item.id}}" class="example-radio-button ml-2 mr-2"  >{{item.nameAr}}</mat-radio-button>
               <!-- <mat-radio-button value="{{item.id}}" class="example-radio-button ml-1 mr-1"  >أيام محددة</mat-radio-button> -->
             </ng-container>
             </mat-radio-group>
-              <input type="text" class="form-control w-50" placeholder="اكتب عدد الايام"   >
+              <input type="text" class="form-control w-50" placeholder="اكتب عدد الايام" *ngIf='progDutyDaysFreeDaysSelection'>
       
-              <ng-container *ngFor="let item of collectionOfLookup.DAYS">
-              <mat-checkbox   
-              class="example-margin ml-1 mr-1"  >
-              {{item.nameAr}}  
-              </mat-checkbox>
-              </ng-container>
+              <div *ngIf='!progDutyDaysFreeDaysSelection'>
+                <ng-container *ngFor="let item of collectionOfLookup.DAYS" >
+                  <mat-checkbox   
+                  class="example-margin ml-1 mr-1"  >
+                  {{item.nameAr}}  
+                  </mat-checkbox>
+                  </ng-container>
+              </div>
 
         <!-- <mat-checkbox    *ngFor="let Item of days" 
         class="example-margin ml-1 mr-1"  >
@@ -237,9 +239,9 @@
             <div>
                 <label class="header_input mb-3">تقيم  </label>
             </div>
-            <mat-checkbox   *ngFor="let item of rate;let i=index" formControlName="rateProg"
+            <mat-checkbox   *ngFor="let item of collectionOfLookup.RATING;let i=index" formControlName="rateProg"
             class="example-margin " [ngClass]="{'ml-1 mr-1':i==0 ,'ml-5 mr-5': i==1, 'ml-3 mr-3': i==2}" >
-              {{item}}  
+              {{item.nameAr}}  
             </mat-checkbox>
        </div>
       </div>
@@ -266,24 +268,23 @@
           <div>
             <label class="header_input">هل يوجد سرد</label>
           </div>
-          <mat-radio-group aria-label="Select an option"  class="example-radio-group" formControlName="isAlsard">
+          <mat-radio-group aria-label="Select an option"  class="example-radio-group" formControlName="isAlsard" (change)='isSardChange($event)'>
 
-              <mat-radio-button value="1" class="example-radio-button ml-2 mr-2" >نعم</mat-radio-button>
-              <mat-radio-button value="2" class="example-radio-button ml-1 mr-1" checked>لا</mat-radio-button>
+              <mat-radio-button [value]="true" class="example-radio-button ml-2 mr-2">نعم</mat-radio-button>
+              <mat-radio-button [value]="false" class="example-radio-button ml-1 mr-1" checked="true">لا</mat-radio-button>
             </mat-radio-group>
             
           </div>
        </div>
 
-
-       <div class="col-8">
+       <div class="col-8" *ngIf='isSardEnabled'>
          <div class="row">
            <div class="col-4">
             <div class="form-group">
               <div>
                 <label class="header_input">فترة التسميع</label>
               </div>
-               <mat-radio-group aria-label="Select an option"  class="example-radio-group" >
+               <mat-radio-group aria-label="Select an option"  class="example-radio-group" (change)='isSardTimesChange($event)' >
             <ng-container *ngFor="let item of collectionOfLookup.SARD_TYPES ;let i=index">
                   
                 <mat-radio-button value="{{item.id}}" class="example-radio-button ml-2 mr-2">{{item.nameAr}}</mat-radio-button>
@@ -295,7 +296,7 @@
     
               </div>
            </div>
-           <div class="col-8">
+           <div class="col-8" *ngIf='isSardTimesEnabled'>
               
             <div class="row">
               <div class="col-4">
@@ -322,15 +323,15 @@
                    </div>
    
                    <div class="col-12">
-                    <div class="badges mt-3 ">
-                      <div *ngFor="let item of programType;let i=index" 
+                    <!-- <div class="badges mt-3 ">
+                      <div *ngFor="let item of programTypes;let i=index" 
                           class="badge badge-info p-2 " >
                       <div class="d-flex justify-content-between">
                           <p class="ellipsis mb-0"> from:__ , to:__</p>
                           <a ><i class="fas fa-times-circle"></i></a>
                       </div>
                       </div>
-                  </div>
+                  </div> -->
                    </div>
               </div>
       
