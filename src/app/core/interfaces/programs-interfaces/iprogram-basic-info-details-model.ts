@@ -13,12 +13,13 @@ export interface IProgramBasicInfoDetailsModel {
     pathProg?: string;
     advantageProg?: string;
     textPledge?: string;
-    dutiesDays?: string;
+    dutiesDayType?: string;
 
     examPass?: string;
     rateProg?: string;
-    recitationDates?: string;
+    rectMand?: string;
     isAlsard?: string;
+    recitType?:string;
     // recitationPeriod?: string;
     // fromTime?: string;
     // toTime?: string;

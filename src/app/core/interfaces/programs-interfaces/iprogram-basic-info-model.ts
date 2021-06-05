@@ -13,28 +13,29 @@ export interface IProgramBasicInfoModel {
     progAllowedDtyDay?: number;
     progDtyDaytyp?: string;
     progCountDtyDay?: number;
-    progDtyDays?:ProgWeeklyDutyDays[];
+    progDtyDays?:IProgWeeklyDutyDays[];
     progIsPasJinExm?:boolean;
-    proRatTyps?:ProgRatings[];
+    proRatTyps?:IProgRatings[];
     progIsRecTimeMand?:boolean;
     progIsRecitationEna?:boolean;
     progRecType?: string;
-    progRecitTimes?: RecitationTimes[];
+    progRecitTimes?: IRecitationTimes[];
 }
 
 export interface IProgramType{
     progTypeId?:String;
 }
 
-export interface ProgWeeklyDutyDays{
+export interface IProgWeeklyDutyDays{
     progWeeklyDay?:string;
 }
 
-export interface ProgRatings{
+export interface IProgRatings{
     progRatId?:string;
 }
 
-export interface RecitationTimes{
+export interface IRecitationTimes{
+    // id?:string;
     progRecFrom?:string;
     progRecTo?:string;
 }
