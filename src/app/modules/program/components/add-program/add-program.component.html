@@ -1,5 +1,5 @@
 
-<div class="container-fluid"> 
+<div class="container-fluid" *ngIf='programId'> 
         <div class="row group_header fix_margin w-100">
         <div class="item_group "(click)="showTap = 'BASEINFO'"
             [ngClass]="{ item_group_active: showTap == 'BASEINFO' }" >
@@ -28,14 +28,53 @@
         
     </div>
    
-    <div class="row fix_margin w-100" >
+    <div class="row fix_margin w-100">
+        <div class="col-12 px-0 ">
+        <app-program-basic-info *ngIf="showTap == 'BASEINFO' && programDetails" [progBasicInfoDetails]='programDetails.progBaseInfo'></app-program-basic-info>
+        <app-program-conditions *ngIf="showTap == 'CANDITION' && programDetails"></app-program-conditions>
+        <app-program-days *ngIf="showTap == 'DAYS' && programDetails" [programDetails]='programDetails'></app-program-days>
+        <app-program-exames *ngIf="showTap == 'JOINEXAME' && programDetails"></app-program-exames>
+        <!-- <app-periodic-exame *ngIf="showTap == 'PERIODICEXAME'"></app-periodic-exame> -->
+        <app-program-notifacations *ngIf="showTap == 'NOTIFY' && programDetails"></app-program-notifacations>
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <div class="container-fluid" *ngIf='!programId'> 
+        <div class="row group_header fix_margin w-100">
+        <div class="item_group "(click)="showTap = 'BASEINFO'"
+            [ngClass]="{ item_group_active: showTap == 'BASEINFO' }" >
+                {{ 'NOTIFICATIONS.BASICiNFO' | translate }}
+        </div>
+        <!-- <div class="item_group"  (click)="showTap = 'CANDITION'"
+        [ngClass]="{ item_group_active: showTap == 'CANDITION' }">
+            {{ 'NOTIFICATIONS.PROGRAM_CONDITIONS' | translate }}
+        </div>
+        <div class="item_group"  (click)="showTap = 'JOINEXAME'"
+        [ngClass]="{ item_group_active: showTap == 'JOINEXAME' }">
+            {{ 'NOTIFICATIONS.PROGRAM_JOINEXAME' | translate }}
+        </div>
+        <div class="item_group" (click)="showTap = 'DAYS'"
+        [ngClass]="{ item_group_active: showTap == 'DAYS' }" >
+            {{ 'NOTIFICATIONS.PROGRAM_DAYS' | translate }}
+        </div>
+        <div class="item_group" (click)="showTap = 'NOTIFY'"
+        [ngClass]="{ item_group_active: showTap == 'NOTIFY' }" >
+            {{ 'NOTIFICATIONS.PROGRAM_NOTIFICATIONS' | translate }}
+        </div> -->
+        
+    </div>
+   
+    <div class="row fix_margin w-100">
         <div class="col-12 px-0 ">
         <app-program-basic-info *ngIf="showTap == 'BASEINFO'"></app-program-basic-info>
-        <app-program-conditions *ngIf="showTap == 'CANDITION'"></app-program-conditions>
+        <!-- <app-program-conditions *ngIf="showTap == 'CANDITION'"></app-program-conditions>
         <app-program-days *ngIf="showTap == 'DAYS'" [programDetails]='programDetails'></app-program-days>
         <app-program-exames *ngIf="showTap == 'JOINEXAME'"></app-program-exames>
-        <!-- <app-periodic-exame *ngIf="showTap == 'PERIODICEXAME'"></app-periodic-exame> -->
-        <app-program-notifacations *ngIf="showTap == 'NOTIFY'"></app-program-notifacations>
+        <app-program-notifacations *ngIf="showTap == 'NOTIFY'"></app-program-notifacations> -->
         </div>
       </div>
 

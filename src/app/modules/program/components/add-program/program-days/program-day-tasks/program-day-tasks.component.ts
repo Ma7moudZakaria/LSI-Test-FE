@@ -3,7 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-model';
-import { IProgramDutyDaysModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-details-model';
+import { IProgramDutyDays } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
@@ -18,9 +18,9 @@ import { ProgramDayTasksService } from 'src/app/core/services/program-services/p
 export class ProgramDayTasksComponent implements OnInit {
 
   @Output() openAddDayTasks = new EventEmitter<boolean>();
-  @Output() programDutyDayModel = new EventEmitter<IProgramDutyDaysModel>();
+  @Output() programDutyDayModel = new EventEmitter<IProgramDutyDays>();
 
-  @Input() programDutyDay = {} as IProgramDutyDaysModel;
+  @Input() programDutyDay = {} as IProgramDutyDays;
 
   langEnum = LanguageEnum;
   resMessage: BaseMessageModel = {};

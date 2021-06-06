@@ -44,7 +44,7 @@
                 <label class="header_input mb-3">نوع البرنامح </label>
             </div>
             <ng-container *ngFor="let item of collectionOfLookup.PROG_TYPES ;let i=index">
-                <mat-checkbox (change)='addProgTypeToList(item, $event)'
+                <mat-checkbox  (change)='addProgTypeToList(item, $event)'
                 class="example-margin " [ngClass]="{'ml-1 mr-1':i==0 ,'ml-5 mr-5': i==1, 'ml-3 mr-3': i==2}" >
                   {{item.nameAr}}  
                 </mat-checkbox>
@@ -304,7 +304,6 @@
                <div class="form-group">
                  <label class="header_input">من الساعه</label>
 
-                 {{recitFrom}}
                  <input type="time" class="form-control" [(ngModel)]='recitFrom' [ngModelOptions]="{standalone: true}">
                  
                </div>
@@ -312,7 +311,6 @@
                <div class="col-4">
                  <div class="form-group">
                    <label class="header_input">الى الساعه</label>
-                 {{recitTo}}
                    <input type="time" class="form-control" [(ngModel)]='recitTo' [ngModelOptions]="{standalone: true}">
                    
                  </div>
@@ -334,6 +332,15 @@
                       </div>
                       </div>
                   </div>
+                  <!-- <div class="badges mt-3 " *ngIf='progBasicInfoDetails'>
+                    <div *ngFor="let item of progBasicInfoDetails.prgRecitTms;let i=index" 
+                        class="badge badge-info p-2 " >
+                    <div class="d-flex justify-content-between">
+                        <p class="ellipsis mb-0"> from : {{item.recitFrom}} , to : {{item.recitTo}}</p>
+                        <a (click)='removeRecitationTimeToList(item)'><i class="fas fa-times-circle"></i></a>
+                    </div>
+                    </div>
+                </div> -->
                    </div>
               </div>
       

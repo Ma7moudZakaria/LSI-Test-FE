@@ -1,6 +1,6 @@
 import { EventEmitter, Input, ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { IProgramDetailsModel, IProgramDutyDaysModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-details-model';
+import { IProgramDetails, IProgramDutyDays } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { ProgramDayTasksComponent } from './program-day-tasks/program-day-tasks.component';
 
 @Component({
@@ -12,14 +12,14 @@ export class ProgramDaysComponent implements OnInit {
 
   @ViewChild(ProgramDayTasksComponent) progDayTaskChild: ProgramDayTasksComponent | undefined;
 
-  @Input() programDetails: IProgramDetailsModel = {};
-  programDutyDay: IProgramDutyDaysModel = {}
+  @Input() programDetails: IProgramDetails = {};
+  programDutyDay: IProgramDutyDays = {}
 
   showAddDayTasksForm = false;
 
-  dataOfProgDutyDay: IProgramDutyDaysModel = {};
+  dataOfProgDutyDay: IProgramDutyDays = {};
 
-  progDutyDayModel: IProgramDutyDaysModel | undefined;
+  progDutyDayModel: IProgramDutyDays | undefined;
 
   constructor() { }
 
@@ -29,7 +29,7 @@ export class ProgramDaysComponent implements OnInit {
 
   }
 
-  progDutyDayEventCallBk(event: IProgramDutyDaysModel) {
+  progDutyDayEventCallBk(event: IProgramDutyDays) {
     this.progDayTaskChild?.getProgramDutyDays(event.id || '');
     this.programDutyDay = event;    
   }

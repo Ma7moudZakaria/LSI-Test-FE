@@ -1,4 +1,4 @@
-import { APP_ID, Component, OnInit } from '@angular/core';
+import { APP_ID, Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
@@ -12,6 +12,8 @@ import { IProgramBasicInfoDetailsModel } from 'src/app/core/interfaces/programs-
 import { ProgramDutiesEnum } from 'src/app/core/enums/programs/program-duties-enum.enum';
 import { ProgramDayTaskRecitationType } from 'src/app/core/enums/program-day-task-recitation-type.enum';
 import { BaseLookupModel } from 'src/app/core/ng-model/base-lookup-model';
+import { Router } from '@angular/router';
+import { IProgramBasicInfoDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 @Component({
   selector: 'app-program-basic-info',
   templateUrl: './program-basic-info.component.html',
@@ -24,7 +26,7 @@ export class ProgramBasicInfoComponent implements OnInit {
   baseInfoForm: FormGroup = new FormGroup({});
   isSubmit = false;
   baseicInfoProgrmInputs = {} as IProgramBasicInfoModel;
-  baseicInfoProgrmDetails : IProgramBasicInfoDetailsModel | undefined;
+  @Input() progBasicInfoDetails : IProgramBasicInfoDetails | undefined;
 
   resultMessage: BaseMessageModel = {};
   baseicInfoProgrmModel: IProgramBasicInfoModel | undefined;
@@ -45,16 +47,16 @@ export class ProgramBasicInfoComponent implements OnInit {
   recitTo:string = '';
 
 
-  constructor(private fb: FormBuilder, public translate: TranslateService,
-    private BasicInfoService: ProgramBasicInfoService, private lookupService: LookupService,
+  constructor(private fb: FormBuilder, 
+    public translate: TranslateService,
+    private BasicInfoService: ProgramBasicInfoService, 
+    private lookupService: LookupService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.getLookupByKey();
     this.buildForm();
-    if (this.baseicInfoProgrmDetails) {
-      this.PopulateForm();
-    }
   }
 
 
@@ -62,6 +64,9 @@ export class ProgramBasicInfoComponent implements OnInit {
     this.lookupService.getLookupByKey(this.listOfLookup).subscribe(res => {
       if (res.isSuccess) {
         this.collectionOfLookup = res.data as ILookupCollection;
+        if (this.progBasicInfoDetails) {
+          this.PopulateForm();
+        }
       }
       else {
         this.resultMessage =
@@ -103,29 +108,36 @@ export class ProgramBasicInfoComponent implements OnInit {
   }
   PopulateForm() {
 
-    this.f.progName.setValue(this.baseicInfoProgrmDetails?.progName);
-    this.f.shareWith.setValue(this.baseicInfoProgrmDetails?.shareWith);
-    // this.f.progType.setValue(this.baseicInfoProgrmDetails?.progType);
-    this.f.durationProg.setValue(this.baseicInfoProgrmDetails?.durationProg);
+    this.f.progName.setValue(this.progBasicInfoDetails?.prgName);
+    this.f.shareWith.setValue(this.progBasicInfoDetails?.prgSharType);
+    this.f.durationProg.setValue(this.progBasicInfoDetails?.prgDura);
 
-    this.f.dutyTime.setValue(this.baseicInfoProgrmDetails?.dutyTime);
-    this.f.availableDuty.setValue(this.baseicInfoProgrmDetails?.availableDuty);
-    this.f.ideaProg.setValue(this.baseicInfoProgrmDetails?.ideaProg);
-    this.f.goalProg.setValue(this.baseicInfoProgrmDetails?.goalProg);
+    this.f.dutyTime.setValue(this.progBasicInfoDetails?.prgAvailaDutyTime);
+    this.f.availableDuty.setValue(this.progBasicInfoDetails?.prgAllowDutyDays);
+    this.f.ideaProg.setValue(this.progBasicInfoDetails?.prgIda);
+    this.f.goalProg.setValue(this.progBasicInfoDetails?.prgGoal);
 
-    this.f.visionProg.setValue(this.baseicInfoProgrmDetails?.visionProg);
-    this.f.pathProg.setValue(this.baseicInfoProgrmDetails?.pathProg);
-    this.f.advantageProg.setValue(this.baseicInfoProgrmDetails?.advantageProg);
-    this.f.textPledge.setValue(this.baseicInfoProgrmDetails?.textPledge);
+    this.f.visionProg.setValue(this.progBasicInfoDetails?.prgVisi);
+    this.f.pathProg.setValue(this.progBasicInfoDetails?.prgMeth);
+    this.f.advantageProg.setValue(this.progBasicInfoDetails?.prgAdvan);
+    this.f.textPledge.setValue(this.progBasicInfoDetails?.prgPledgTxt);
 
-    this.f.dutiesDayType.setValue(this.baseicInfoProgrmDetails?.dutiesDayType);
-    this.f.dayCount.setValue(this.baseicInfoProgrmDetails?.textPledge);
+    this.f.dutiesDayType.setValue(this.progBasicInfoDetails?.prgDutiDayType);
+    this.dutyDaysChange({value:this.progBasicInfoDetails?.prgDutiDayType});
+    this.f.dayCount.setValue(this.progBasicInfoDetails?.prgNoDutyDays);
 
-    this.f.examPass.setValue(this.baseicInfoProgrmDetails?.examPass);
-    // this.f.rateProg.setValue(this.baseicInfoProgrmDetails?.rateProg);
-    this.f.rectMand.setValue(this.baseicInfoProgrmDetails?.rectMand);
-    this.f.isAlsard.setValue(this.baseicInfoProgrmDetails?.isAlsard);
-    this.f.recitType.setValue(this.baseicInfoProgrmDetails?.recitType);
+    this.f.examPass.setValue(this.progBasicInfoDetails?.prgIsPassExaRequ);
+    this.f.rectMand.setValue(this.progBasicInfoDetails?.prgIsRecitTimeMand);
+    this.f.isAlsard.setValue(this.progBasicInfoDetails?.prgIsSard);
+    this.isSardChange({value:this.progBasicInfoDetails?.prgIsSard});
+    this.f.recitType.setValue(this.progBasicInfoDetails?.prgRecitType);
+    this.isSardTimesChange({value:this.progBasicInfoDetails?.prgRecitType});
+
+    this.progRecitationTimes = this.progBasicInfoDetails?.prgRecitTms ? 
+    this.progBasicInfoDetails?.prgRecitTms.map((item: any) => ({ progRecFrom:item.recitFrom, progRecTo:item.recitTo })) : [];
+
+    // this.progRecitationTimes = this.progBasicInfoDetails?.prgRecitTms;
+    // this.programTypesList = this.progBasicInfoDetails?.prgTps
 
   }
 
@@ -136,10 +148,9 @@ export class ProgramBasicInfoComponent implements OnInit {
     if (this.baseInfoForm.valid) {
 
       // 1- fill EDit model 
-      if (this.baseicInfoProgrmDetails) {
+      if (this.progBasicInfoDetails) {
         this.baseicInfoProgrmEditModel = {
-          progId: this.baseicInfoProgrmDetails.progId,
-          basicId: this.baseicInfoProgrmDetails.basicId,
+          progId: this.progBasicInfoDetails.id,
           progName: this.baseInfoForm.value.progName,
           shareWith: this.baseInfoForm.value.shareWith,
           progType: this.baseInfoForm.value.progType,
@@ -210,11 +221,7 @@ export class ProgramBasicInfoComponent implements OnInit {
     this.BasicInfoService.addBasicIfoProgram(this.baseicInfoProgrmModel || {}).subscribe(res => {
 
       if (res.isSuccess) {
-        this.resultMessage = {
-          message: res.message || "",
-          type: BaseConstantModel.SUCCESS_TYPE
-        }
-
+        this.router.navigate(['/program/edit-program/' + res.data]);
       }
       else {
         this.resultMessage = {
