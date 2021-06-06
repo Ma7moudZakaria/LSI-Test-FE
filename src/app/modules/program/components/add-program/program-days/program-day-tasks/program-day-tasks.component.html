@@ -11,7 +11,7 @@
    
     <app-search-input></app-search-input>
   <div class="internal_scroll_list_group programDays ">
-      <ng-container *ngFor='let item of programDayTasksLists'>
+      <!-- <ng-container *ngFor='let item of programDayTasksLists'>
         <a  class="list-group-item  d-flex align-items-center " >
             <div class="d-flex">
           <img src="../../../../../../../assets/images/gray-arrange.svg" class="arrangeIcon">
@@ -22,9 +22,45 @@
             <i class="far fa-copy " (click)="copyTask(item.id)"></i>
           </div>
         </a>
-      </ng-container>
+      </ng-container> -->
     
-  
+      <mat-accordion
+                cdkDropList
+                #unassignedList="cdkDropList"
+                [cdkDropListData]="programDayTasksLists"
+                        [cdkDropListConnectedTo]="[items1]"
+                (cdkDropListDropped)="drop($event)"
+                >
+                    <mat-expansion-panel cdkDrag *ngFor="let item of programDayTasksLists ; let i = index;"
+                        >
+                        <!-- (opened)="setOpened(i)" (closed)="setClosed(i)" -->
+                       
+                        <mat-expansion-panel-header>
+                            
+                            <mat-panel-title class="qestionHeader">
+                         
+                                <div class="col span_question" >
+                                    <span>
+                                        {{this.translate.currentLang===langEnum.en?item.dayTaskNameEn : item.dayTaskNameAr}}
+                                    </span> 
+                                </div>
+
+                                <div class="col-.5  chicx_box">
+                                    <!-- <label class="switch">
+                                        <input type="checkbox" (change)="onCheckboxChange(item)" >
+                                        <span class="slider round"></span>
+                                      </label> -->
+                                      <!-- <a (click)="confirmDialog(item.id)" > <i class="far fa-trash-alt"></i></a>
+                                                          -->
+                                      
+                                      <i class="far fa-copy " (click)="copyTask(item.id)"></i>
+                                      <i class="far fa-trash-alt ml-1 mr-1" (click)="confirmDialog(item.id)"></i>
+                              </div>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p class="p_answer">{{this.translate.currentLang===langEnum.en?item.dayTaskNameEn : item.dayTaskNameAr}}</p>
+                    </mat-expansion-panel>
+                </mat-accordion>
     </div>
   
   </div>

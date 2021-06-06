@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ICreateProgramDayTasksModel } from '../../interfaces/programs-interfaces/icreate-program-day-tasks-model';
+import { IProgramDayTasksUpdateOrderByModel } from '../../interfaces/programs-interfaces/iprogram-day-tasks-update-order-by-model';
 import { ISaveProgramDayTaskDetailsModel } from '../../interfaces/programs-interfaces/isave-program-day-task-Details-model';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 
@@ -16,6 +17,7 @@ export class ProgramDayTasksService {
   CopyProgramDayTasksURL=environment.baseUrl+'Programs/copy-program-day-task/';
   DeleteProgramDayTasksURL=environment.baseUrl+'Programs/delete-program-day-task/';
   GetProgramDayTasksURL=environment.baseUrl+'Programs/get-day-tasks-by-program-day/';
+  UpdateOrderByProgramDayTasksURL=environment.baseUrl+'Programs/update-order-program-day-tasks/';
   
   constructor(private http:HttpClient) { }
 
@@ -39,4 +41,7 @@ export class ProgramDayTasksService {
     return this.http.get<BaseResponseModel>(this.GetProgramDayTasksURL+id);
   }
 
+  UpdateOrderByProgramDayTasks(model:IProgramDayTasksUpdateOrderByModel):Observable<BaseResponseModel>{
+    return this.http.put<BaseResponseModel>(this.UpdateOrderByProgramDayTasksURL , model);
+  }
 }
