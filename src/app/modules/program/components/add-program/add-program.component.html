@@ -30,7 +30,7 @@
         <app-program-conditions *ngIf="showTap == 'CANDITION' && programDetails"></app-program-conditions>
         <app-program-days *ngIf="showTap == 'DAYS' && programDetails" [progDetails]='programDetails'></app-program-days>
         <app-program-exames *ngIf="showTap == 'JOINEXAME' && programDetails" [progDetails]='programDetails' (progDetailsEvent)='getProgramDetails()'></app-program-exames>
-        <app-program-notifacations *ngIf="showTap == 'NOTIFY' && programDetails"></app-program-notifacations>
+        <app-program-notifacations *ngIf="showTap == 'NOTIFY' && programDetails" [progId]='programDetails?.progBaseInfo?.id'></app-program-notifacations>
         </div>
       </div>
     </div>

@@ -1,3 +1,5 @@
+import { BaseLookupModel } from "../../ng-model/base-lookup-model";
+
 export interface IProgramNotificationModel {
 
 
