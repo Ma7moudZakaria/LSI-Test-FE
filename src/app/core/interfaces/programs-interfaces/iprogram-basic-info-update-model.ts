@@ -1,28 +1,19 @@
+import { IProgRatings, IRecitationTimes } from "./iprogram-basic-info-model";
+
 export interface IProgramBasicInfoUpdateModel {
-    progId?: string;
-    basicId?: string;
-    progName?: string;
-    shareWith?: string;
-    progType?: string;
-    durationProg?: string;
-    dutyTime?: string;
-    availableDuty?: string;
-    ideaProg?: string;
-    goalProg?: string;
-    visionProg?: string;
-    pathProg?: string;
-    advantageProg?: string;
-    textPledge?: string;
-    dutiesDayType?: string;
-    // numberOfDays?: string;
-    // specificDays?: string;
-    examPass?: string;
-    rateProg?: string;
-    rectMand?: string;
-    isAlsard?: string;
-    // recitationPeriod?: string;
-    // fromTime?: string;
-    // toTime?: string;
-
-
+    progId?:string;
+    progIdea?: string;
+    progGoal?: string;
+    progMthd?:string;
+    progAdva?: string;
+    progPldgtxt?: string;
+    progVision?: string;
+    progSharedWith?: string;
+    progAvableDtyTime?:string;
+    progAllowedDtyDay?: number;
+    progIsPasJinExm?:boolean;
+    proRatTyps?:IProgRatings[];
+    progIsRecTimeMand?:boolean;
+    progRecType?: string;
+    progRecitTimes?: IRecitationTimes[];
 }

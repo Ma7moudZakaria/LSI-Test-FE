@@ -14,6 +14,7 @@ import { ProgramDayTaskRecitationType } from 'src/app/core/enums/program-day-tas
 import { BaseLookupModel } from 'src/app/core/ng-model/base-lookup-model';
 import { Router } from '@angular/router';
 import { IProgramBasicInfoDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
+import { ThrowStmt } from '@angular/compiler';
 @Component({
   selector: 'app-program-basic-info',
   templateUrl: './program-basic-info.component.html',
@@ -64,6 +65,10 @@ export class ProgramBasicInfoComponent implements OnInit {
     this.lookupService.getLookupByKey(this.listOfLookup).subscribe(res => {
       if (res.isSuccess) {
         this.collectionOfLookup = res.data as ILookupCollection;
+        
+        //set default value for duty days lookups
+        this.f.dutiesDayType.setValue(this.collectionOfLookup?.DUTY_TYPES ? this.collectionOfLookup?.DUTY_TYPES[0]?.id:'');
+
         if (this.progBasicInfoDetails) {
           this.PopulateForm();
         }
@@ -101,8 +106,9 @@ export class ProgramBasicInfoComponent implements OnInit {
         dayCount:[''],
         examPass: [''],
         rectMand: [''],
-        isAlsard: [''],
-        recitType:['']
+        isAlsard: [false],
+        recitType:[''],
+        // progType:[['3349E0C2-177D-4587-91D5-1F8F2B9E1406','0BBAB569-71C7-4D8E-B96A-6207C46BF4CB']]
 
       })
   }
@@ -134,10 +140,16 @@ export class ProgramBasicInfoComponent implements OnInit {
     this.isSardTimesChange({value:this.progBasicInfoDetails?.prgRecitType});
 
     this.progRecitationTimes = this.progBasicInfoDetails?.prgRecitTms ? 
-    this.progBasicInfoDetails?.prgRecitTms.map((item: any) => ({ progRecFrom:item.recitFrom, progRecTo:item.recitTo })) : [];
+    this.progBasicInfoDetails?.prgRecitTms.filter(i=>i.huffno !== ProgramDayTaskRecitationType.limited).map((item: any) => ({ progRecFrom:item.recitFrom, progRecTo:item.recitTo })) : [];
 
-    // this.progRecitationTimes = this.progBasicInfoDetails?.prgRecitTms;
-    // this.programTypesList = this.progBasicInfoDetails?.prgTps
+    this.programTypesList = this.progBasicInfoDetails?.prgTps ?
+    this.progBasicInfoDetails?.prgTps.map((item: any) => ({ progTypeId: item.id })) : [];
+
+    this.progWeeklyDayList = this.progBasicInfoDetails?.prgWeekDutiDas ? 
+    this.progBasicInfoDetails?.prgWeekDutiDas.map((item:any) => ({progWeeklyDay: item.id})) : [] ;
+
+    this.programRatingList = this.progBasicInfoDetails?.prgRats ? 
+    this.progBasicInfoDetails?.prgRats.map((item:any) => ({progRatId: item.id})) : [] ;
 
   }
 
@@ -150,25 +162,21 @@ export class ProgramBasicInfoComponent implements OnInit {
       // 1- fill EDit model 
       if (this.progBasicInfoDetails) {
         this.baseicInfoProgrmEditModel = {
-          progId: this.progBasicInfoDetails.id,
-          progName: this.baseInfoForm.value.progName,
-          shareWith: this.baseInfoForm.value.shareWith,
-          progType: this.baseInfoForm.value.progType,
-          durationProg: this.baseInfoForm.value.durationProg,
-          dutyTime: this.baseInfoForm.value.dutyTime,
-          availableDuty: this.baseInfoForm.value.availableDuty,
-          ideaProg: this.baseInfoForm.value.ideaProg,
-          goalProg: this.baseInfoForm.value.goalProg,
-          visionProg: this.baseInfoForm.value.visionProg,
-          pathProg: this.baseInfoForm.value.pathProg,
-          advantageProg: this.baseInfoForm.value.advantageProg,
-          textPledge: this.baseInfoForm.value.textPledge,
-          dutiesDayType: this.baseInfoForm.value.dutiesDayType,
-          examPass: this.baseInfoForm.value.examPass,
-          rateProg: this.baseInfoForm.value.rateProg,
-          rectMand: this.baseInfoForm.value.rectMand,
-          isAlsard: this.baseInfoForm.value.isAlsard,
-
+          progId: this.progBasicInfoDetails?.id,
+          progSharedWith: this.baseInfoForm.value.shareWith,
+          progAvableDtyTime: this.baseInfoForm.value.dutyTime,
+          progAllowedDtyDay: this.baseInfoForm.value.availableDuty,
+          progIdea: this.baseInfoForm.value.ideaProg,
+          progGoal: this.baseInfoForm.value.goalProg,
+          progVision: this.baseInfoForm.value.visionProg,
+          progMthd: this.baseInfoForm.value.pathProg,
+          progAdva: this.baseInfoForm.value.advantageProg,
+          progPldgtxt: this.baseInfoForm.value.textPledge,
+          progIsPasJinExm: this.baseInfoForm.value.examPass,
+          progIsRecTimeMand: this.baseInfoForm.value.rectMand,
+          progRecType:this.baseInfoForm.value.recitType,
+          proRatTyps:this.programRatingList,
+          progRecitTimes:this.progRecitationTimes
         }
         // send edit model to api 
         this.editBasicInfoProgrm()
@@ -265,7 +273,7 @@ export class ProgramBasicInfoComponent implements OnInit {
   }
 
   dutyDaysChange(event:any){
-    this.progDutyDaysFreeDaysSelection = this.collectionOfLookup.DUTY_TYPES?.filter(i => i.id === event.value)[0].huffazId === ProgramDutiesEnum.FreeDays;
+    this.progDutyDaysFreeDaysSelection = this.collectionOfLookup.DUTY_TYPES?.filter(i => i.id === event.value)[0]?.huffazId === ProgramDutiesEnum.FreeDays;
   }
 
   isSardChange(event:any){
@@ -273,7 +281,10 @@ export class ProgramBasicInfoComponent implements OnInit {
   }
 
   isSardTimesChange(event:any){
-    this.isSardTimesEnabled = this.collectionOfLookup.SARD_TYPES?.filter(i => i.id === event.value)[0].huffazId === ProgramDayTaskRecitationType.unlimited;
+    this.isSardTimesEnabled = this.collectionOfLookup.SARD_TYPES?.filter(i => i.id === event.value)[0]?.huffazId === ProgramDayTaskRecitationType.unlimited;
+    if(!this.isSardTimesEnabled){
+      this.progRecitationTimes = [];
+    }
   }
 
   addProgTypeToList(item: BaseLookupModel, event:any){
@@ -290,6 +301,10 @@ export class ProgramBasicInfoComponent implements OnInit {
     console.log(this.programTypesList);
   }
 
+  progTypeChecked(item:BaseLookupModel){
+    return this.programTypesList.some(it => it.progTypeId === item.id);
+  }
+
   addProgRatingToList(item: BaseLookupModel, event:any){
     if (event.checked){
       this.programRatingList?.push({progRatId:item.id});
@@ -304,6 +319,11 @@ export class ProgramBasicInfoComponent implements OnInit {
     console.log(this.programRatingList);
   }
 
+  progProgRatingChecked(item:BaseLookupModel){
+    return this.programRatingList.some(it => it.progRatId === item.id);
+  }
+
+
   addProgWeeklyDayToList(item: BaseLookupModel, event:any){
     if (event.checked){
       this.progWeeklyDayList?.push({progWeeklyDay:item.id});
@@ -316,6 +336,10 @@ export class ProgramBasicInfoComponent implements OnInit {
       }
     }
     console.log(this.progWeeklyDayList);
+  }
+
+  progWeeklyDaysChecked(item:BaseLookupModel){
+    return this.progWeeklyDayList.some(it => it.progWeeklyDay === item.id);
   }
 
   addRecitationTimeToList(){
