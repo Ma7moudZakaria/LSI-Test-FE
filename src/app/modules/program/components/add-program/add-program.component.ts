@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IProgramDetailsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-details-model';
+import { IProgramDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
@@ -13,8 +13,9 @@ import { ProgramService } from 'src/app/core/services/program-services/program.s
 export class AddProgramComponent implements OnInit {
 
   showTap: string = 'BASEINFO';
-  programDetails = {} as IProgramDetailsModel;
+  programDetails : IProgramDetails | undefined;
   resMessage: BaseMessageModel = {};
+  programId:string | undefined;
 
   // @Input() getProgramDetails: IProgramDetailsModel | undefined
 
@@ -23,9 +24,10 @@ export class AddProgramComponent implements OnInit {
     private programService: ProgramService) { }
 
   ngOnInit(): void {
-    var programId = this.route.snapshot.queryParams['id'] || '';
+    this.programId = this.route.snapshot.params.id;
 
-    this.getProgramDetails("2E7F00FB-C02F-4351-B7D6-01B94B796B61")
+    if(this.programId)
+        this.getProgramDetails();
     // console.log("programId =====>" , programId);
 
     // if (programId != ''){
@@ -33,10 +35,10 @@ export class AddProgramComponent implements OnInit {
     // }
   }
 
-  getProgramDetails(id: string) {
-    this.programService.getProgramDetails(id).subscribe(res => {
+  getProgramDetails() {
+    this.programService.getProgramDetails(this.programId || '').subscribe(res => {
       if (res.isSuccess) {
-        this.programDetails = res.data as IProgramDetailsModel;
+        this.programDetails = res.data as IProgramDetails;
 
         console.log("programDetails ===========>", this.programDetails);
       }

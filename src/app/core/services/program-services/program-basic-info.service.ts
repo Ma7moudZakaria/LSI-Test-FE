@@ -12,7 +12,7 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
 export class ProgramBasicInfoService {
 
   AddBasicInfoURL = environment.baseUrl + 'programs/add-program-basic-info';
-  UpdateBasicInfoURL = environment.baseUrl + '';
+  UpdateBasicInfoURL = environment.baseUrl + 'programs/update-program-basic-info';
 
   constructor(private http: HttpClient) { }
 

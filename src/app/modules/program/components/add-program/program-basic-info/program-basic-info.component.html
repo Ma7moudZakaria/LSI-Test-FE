@@ -7,7 +7,7 @@
         <div class="col-md-3">
                 <div class="form-group">
                         <label class="header_input">اسم البرنامج </label>
-                        <input type="text" class="form-control" formControlName="progName"  >
+                        <input type="text" class="form-control" formControlName="progName" [attr.disabled]='progBasicInfoDetails ? true : null' >
                </div>
             <div *ngIf="f.progName.errors && (f.progName.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
                <div *ngIf="f.progName.errors?.required">
@@ -23,7 +23,7 @@
                     <select class="form-control "  formControlName="shareWith" >
                         <!-- <option [ngValue]="null"  disabled selected>{{ 'NOTIFICATIONS.SELECT_NOTIFICATION_TYPE' | translate }}</option> -->
                         <ng-container *ngFor="let item of collectionOfLookup.SHARED_TYPES">
-                        <option>{{item.nameAr}}</option>
+                        <option [value]="item .id" >{{item.nameAr}}</option>
                         
                         </ng-container>
                       </select>
@@ -44,32 +44,33 @@
                 <label class="header_input mb-3">نوع البرنامح </label>
             </div>
             <ng-container *ngFor="let item of collectionOfLookup.PROG_TYPES ;let i=index">
-                <mat-checkbox   formControlName="progType" 
-                class="example-margin " [ngClass]="{'ml-1 mr-1':i==0 ,'ml-5 mr-5': i==1, 'ml-3 mr-3': i==2}" >
+                <mat-checkbox  (change)='addProgTypeToList(item, $event)' [checked]="progTypeChecked(item)"
+                class="example-margin " [ngClass]="{'ml-1 mr-1':i==0 ,'ml-5 mr-5': i==1, 'ml-3 mr-3': i==2}"
+                [disabled]='progBasicInfoDetails !== undefined'>
                   {{item.nameAr}}  
                 </mat-checkbox>
                 </ng-container>
        </div>
-        <div *ngIf="f.progType.errors && (f.progType.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
+        <!-- <div *ngIf="f.progType.errors && (f.progType.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
           <div *ngIf="f.progType.errors?.required">
           {{ 'GENERAL.REQUIRED' | translate }}
           </div>
-          </div>
+          </div> -->
       </div>
 
       <div class="col-md-2">
         <div class="form-group">
                 <label class="header_input">مدة البرنامج</label>
-                <input type="text" class="form-control"  formControlName="durationProg">
+                <input type="text" class="form-control"  formControlName="durationProg" [attr.disabled]='progBasicInfoDetails ? true : null'>
        </div>
-       <div *ngIf="f.progType.errors && (f.progType.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
+       <!-- <div *ngIf="f.progType.errors && (f.progType.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
         <div *ngIf="f.progType.errors?.required">
         {{ 'GENERAL.REQUIRED' | translate }}
         </div>
 
         
 
-        </div>
+        </div> -->
 
       
        </div>
@@ -189,18 +190,20 @@
           <div>
             <label class="header_input">ايام الواجبات</label>
           </div>
-          <mat-radio-group aria-label="Select an option"  class="example-radio-group" formControlName="dutiesDays" (change)='dutyDaysChange($event)'>
+          <mat-radio-group aria-label="Select an option"  class="example-radio-group"
+          formControlName="dutiesDayType" (change)='dutyDaysChange($event)'>
             <ng-container *ngFor="let item of collectionOfLookup.DUTY_TYPES">
-              <mat-radio-button value="{{item.id}}" class="example-radio-button ml-2 mr-2"  >{{item.nameAr}}</mat-radio-button>
-              <!-- <mat-radio-button value="{{item.id}}" class="example-radio-button ml-1 mr-1"  >أيام محددة</mat-radio-button> -->
+              <mat-radio-button value="{{item.id}}" class="example-radio-button ml-2 mr-2"  
+              [disabled]='progBasicInfoDetails !== undefined'>{{item.nameAr}}</mat-radio-button>
             </ng-container>
             </mat-radio-group>
-              <input type="text" class="form-control w-50" placeholder="اكتب عدد الايام" *ngIf='progDutyDaysFreeDaysSelection'>
+              <input type="text" class="form-control w-50" formControlName="dayCount" placeholder="اكتب عدد الايام" 
+              [attr.disabled]='progBasicInfoDetails ? true : null' *ngIf='progDutyDaysFreeDaysSelection'>
       
               <div *ngIf='!progDutyDaysFreeDaysSelection'>
                 <ng-container *ngFor="let item of collectionOfLookup.DAYS" >
-                  <mat-checkbox   
-                  class="example-margin ml-1 mr-1"  >
+                  <mat-checkbox   (change)='addProgWeeklyDayToList(item, $event)' [checked]="progWeeklyDaysChecked(item)"
+                  class="example-margin ml-1 mr-1" [disabled]='progBasicInfoDetails !== undefined' >
                   {{item.nameAr}}  
                   </mat-checkbox>
                   </ng-container>
@@ -239,7 +242,8 @@
             <div>
                 <label class="header_input mb-3">تقيم  </label>
             </div>
-            <mat-checkbox   *ngFor="let item of collectionOfLookup.RATING;let i=index" formControlName="rateProg"
+            <mat-checkbox   *ngFor="let item of collectionOfLookup.RATING;let i=index" [checked]='progProgRatingChecked(item)'
+            (change)='addProgRatingToList(item, $event)'
             class="example-margin " [ngClass]="{'ml-1 mr-1':i==0 ,'ml-5 mr-5': i==1, 'ml-3 mr-3': i==2}" >
               {{item.nameAr}}  
             </mat-checkbox>
@@ -254,7 +258,7 @@
             <div>
                 <label class="header_input mb-3">مواعيد التسميع </label>
             </div>
-                <mat-checkbox  class="example-margin " formControlName="recitationDates" > الزامى
+                <mat-checkbox  class="example-margin " formControlName="rectMand" > الزامى
                 </mat-checkbox>
        </div>
       </div>
@@ -270,8 +274,8 @@
           </div>
           <mat-radio-group aria-label="Select an option"  class="example-radio-group" formControlName="isAlsard" (change)='isSardChange($event)'>
 
-              <mat-radio-button [value]="true" class="example-radio-button ml-2 mr-2">نعم</mat-radio-button>
-              <mat-radio-button [value]="false" class="example-radio-button ml-1 mr-1" checked="true">لا</mat-radio-button>
+              <mat-radio-button [value]="true" class="example-radio-button ml-2 mr-2" [disabled]='progBasicInfoDetails !== undefined'>نعم</mat-radio-button>
+              <mat-radio-button [value]="false" class="example-radio-button ml-1 mr-1" checked="true" [disabled]='progBasicInfoDetails !== undefined'>لا</mat-radio-button>
             </mat-radio-group>
             
           </div>
@@ -284,7 +288,8 @@
               <div>
                 <label class="header_input">فترة التسميع</label>
               </div>
-               <mat-radio-group aria-label="Select an option"  class="example-radio-group" (change)='isSardTimesChange($event)' >
+               <mat-radio-group aria-label="Select an option"  class="example-radio-group" 
+               (change)='isSardTimesChange($event)' formControlName="recitType">
             <ng-container *ngFor="let item of collectionOfLookup.SARD_TYPES ;let i=index">
                   
                 <mat-radio-button value="{{item.id}}" class="example-radio-button ml-2 mr-2">{{item.nameAr}}</mat-radio-button>
@@ -302,36 +307,44 @@
               <div class="col-4">
                <div class="form-group">
                  <label class="header_input">من الساعه</label>
-             
-                 <input type="time" class="form-control"  >
+
+                 <input type="time" class="form-control" [(ngModel)]='recitFrom' [ngModelOptions]="{standalone: true}">
                  
                </div>
                </div>
                <div class="col-4">
                  <div class="form-group">
                    <label class="header_input">الى الساعه</label>
-               
-                   <input type="time" class="form-control"  >
+                   <input type="time" class="form-control" [(ngModel)]='recitTo' [ngModelOptions]="{standalone: true}">
                    
                  </div>
                  </div>
                  <div class="col-4">
                  <label class="header_input invisible">فترة التسميع</label>
 
-                   <button  type="button" class="saveButton btn"> Add</button>
+                   <button  type="button" class="saveButton btn" (click)='addRecitationTimeToList()'> Add</button>
                      
                    </div>
    
                    <div class="col-12">
-                    <!-- <div class="badges mt-3 ">
-                      <div *ngFor="let item of programTypes;let i=index" 
+                    <div class="badges mt-3 ">
+                      <div *ngFor="let item of progRecitationTimes;let i=index" 
                           class="badge badge-info p-2 " >
                       <div class="d-flex justify-content-between">
-                          <p class="ellipsis mb-0"> from:__ , to:__</p>
-                          <a ><i class="fas fa-times-circle"></i></a>
+                          <p class="ellipsis mb-0"> from : {{item.progRecFrom}} , to : {{item.progRecTo}}</p>
+                          <a (click)='removeRecitationTimeToList(item)'><i class="fas fa-times-circle"></i></a>
                       </div>
                       </div>
-                  </div> -->
+                  </div>
+                  <!-- <div class="badges mt-3 " *ngIf='progBasicInfoDetails'>
+                    <div *ngFor="let item of progBasicInfoDetails.prgRecitTms;let i=index" 
+                        class="badge badge-info p-2 " >
+                    <div class="d-flex justify-content-between">
+                        <p class="ellipsis mb-0"> from : {{item.recitFrom}} , to : {{item.recitTo}}</p>
+                        <a (click)='removeRecitationTimeToList(item)'><i class="fas fa-times-circle"></i></a>
+                    </div>
+                    </div>
+                </div> -->
                    </div>
               </div>
       

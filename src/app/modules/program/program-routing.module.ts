@@ -9,7 +9,7 @@ const routes: Routes = [
 
   { path: '', component: ProgramDetailsComponent },
   { path: 'add-program', component: AddProgramComponent },
-  { path: 'program-days/:id', component: ProgramDaysComponent }
+  { path: 'edit-program/:id', component: AddProgramComponent }
 
 
 ];
