@@ -5,4 +5,5 @@
             dayTaskNameAr?:string;
             dayTaskNameEn?:string;
             programDutyDay?:string;
+            order?:number;
         }
