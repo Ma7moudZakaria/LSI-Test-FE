@@ -27,7 +27,7 @@ export class AddProgramComponent implements OnInit {
     this.programId = this.route.snapshot.params.id;
 
     if(this.programId)
-        this.getProgramDetails(this.programId);
+        this.getProgramDetails();
     // console.log("programId =====>" , programId);
 
     // if (programId != ''){
@@ -35,8 +35,8 @@ export class AddProgramComponent implements OnInit {
     // }
   }
 
-  getProgramDetails(id: string) {
-    this.programService.getProgramDetails(id).subscribe(res => {
+  getProgramDetails() {
+    this.programService.getProgramDetails(this.programId || '').subscribe(res => {
       if (res.isSuccess) {
         this.programDetails = res.data as IProgramDetails;
 

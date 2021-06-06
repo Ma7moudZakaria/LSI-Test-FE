@@ -49,8 +49,10 @@ export class ProgramDutyDaysComponent implements OnInit {
 
   ngOnInit(): void {
     this.setCurrentLang();
-    this.progDaysList = [];
-    this.progDaysList?.push({ id: '11', dayOrder: 11 }, { id: '1', dayOrder: 1 }, { id: '2', dayOrder: 2 }, { id: '3', dayOrder: 3 })
+
+    if (this.progDaysList){
+      this.onDayClick(this.progDaysList[0]);
+    }
   }
 
   setCurrentLang() {

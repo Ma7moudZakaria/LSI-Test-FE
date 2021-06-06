@@ -2,8 +2,8 @@
 <div class="attache-exam-list">
     <div class="row">
       <div class="col-12">
-        <p class="p_header mb-0" matTooltip="{{translate.currentLang===langEnum.en?selectedExamFormId.engExamName:selectedExamFormId.arabExamName}}">
-          {{translate.currentLang===langEnum.en?selectedExamFormId.engExamName:selectedExamFormId.arabExamName}}
+        <p class="p_header mb-0" matTooltip="{{translate.currentLang===langEnum.en ? exam?.engExamFormNam : exam?.arabExamFormNam}}">
+          {{translate.currentLang===langEnum.en ? exam?.arabExamFormNam : exam?.engExamFormNam}}
       </p>
       </div>
       <div class="col-12">
@@ -35,7 +35,7 @@
         
           <!-- <br> -->
           <div *ngIf="isView" >
-              <a *ngIf='this.selectedExamFormId.id' (click)="editQuestionTemplate() "> 
+              <a *ngIf='this.exam.id' (click)="editQuestionTemplate() "> 
                 <!-- <i style='font-size:24px' class='fas'>&#xf044;</i> -->
                 <img class="mb-2 width1_4 cursor-pointer" src="../../../../../../assets/images/question/edit-question.svg " >
               </a> 

@@ -1,3 +1,5 @@
+import { BaseLookupModel } from "../../ng-model/base-lookup-model";
+
 export interface IProgramNotificationDetails {
     id?: string;
     progId?: string;
@@ -7,6 +9,7 @@ export interface IProgramNotificationDetails {
     notifyType?: string;
     msgAr?: string;
     msgEn?: string;
+    notifyTypeLookup?:BaseLookupModel;
 
 
 }

@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-12 ">
             <p class="notify_type mb-0"> 
-                <span>{{notificationsCardDetails.notifyType}}</span> 
+                <span>{{translate.currentLang === lang.en? notificationsCardDetails?.notifyTypeLookup?.nameEn : notificationsCardDetails?.notifyTypeLookup?.nameAr}}</span> 
                 <span>&nbsp;</span>
                 <span>&nbsp;</span> 
                 <span>{{'NOTIFICATIONS.AFTER_ASSIGNMENT' | translate}}

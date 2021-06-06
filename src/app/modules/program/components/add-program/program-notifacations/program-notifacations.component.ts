@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { IProgramNotificationDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-notification-details';
 import { IProgramUpdateNotifacationModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-update-notification-model';
 import { ProgramNotificationViewComponent } from './program-notification-view/program-notification-view.component';
@@ -12,6 +12,9 @@ export class ProgramNotifacationsComponent implements OnInit {
   showAddEditOverlay: boolean = false;
   notificationEditObjec: IProgramNotificationDetails = {};
   @ViewChild(ProgramNotificationViewComponent) ProgramNotificationChild: ProgramNotificationViewComponent | undefined;
+
+  @Input() progId?: string = '';
+
   ngOnInit(): void {
     // this.ProgramNotificationChild?.getAllNotifications('a7cc7cec-8a16-403e-9343-2d7f0e994856');
   }
@@ -24,7 +27,7 @@ export class ProgramNotifacationsComponent implements OnInit {
 
   closeNotifyProgram() {
     this.showAddEditOverlay = false;
-    this.ProgramNotificationChild?.getAllNotifications('e65c382a-9417-47b2-9cbf-903f728c48e8');
+    this.ProgramNotificationChild?.getAllNotifications(this.progId);
   }
 
 

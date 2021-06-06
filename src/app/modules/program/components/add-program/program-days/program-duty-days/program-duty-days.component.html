@@ -10,15 +10,27 @@
   </div>
  
 <!-- <app-search-input></app-search-input> -->
-{{filterargs.dayOrder}}
-<input type='number' [(ngModel)]='filterargs.dayOrder'>
+<div class="input-group  mb-3" >
+  <div class="input-group-prepend ">
+      <span class="input-group-text bg-white pl-2 pr-2 border-md ">
+          <img  class="UserLogin_icon_input" src="../../../../../../assets/images/search-ired.svg">
+      </span>
+  </div>
+  <input    type='number' [(ngModel)]='filterargs.dayOrder'
+  class=" px-3 form-control UserLogin__FormControl bg-white  border-md input-sm">
+  
+</div>
+
+<!-- {{filterargs.dayOrder}} -->
+
+<!-- <input type='number' [(ngModel)]='filterargs.dayOrder'> -->
 <div class="internal_scroll_list_group programDays" *ngIf='progDaysList'>
     <ng-container *ngFor='let item of progDaysList | myfilter:filterargs' >
     <a  class="list-group-item  d-flex align-items-center"  (click)='onDayClick(item)'>
         <mat-checkbox    class="example-margin " >
-            day-{{item.dayOrder}}
+            day-{{item.order}}
         </mat-checkbox>
-        <span class="count">1</span>
+        <span class="count">{{item.tskCnt}}</span>
     </a>
   </ng-container>
 </div>

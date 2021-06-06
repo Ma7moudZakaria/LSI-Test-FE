@@ -9,6 +9,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
+import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
+import { LookupsEnum } from 'src/app/core/enums/lookups-enum.enum';
+import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 @Component({
   selector: 'app-program-notification-view',
   templateUrl: './program-notification-view.component.html',
@@ -16,26 +19,45 @@ import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/compon
 })
 export class ProgramNotificationViewComponent implements OnInit {
 
-
+  collectionOfLookup = {} as ILookupCollection;
+  listOfLookup: string[] = ['PROG_NOTIF_TYPES'];
   notificationDetails = {} as IProgramNotificationDetails;
   resultMessage: BaseMessageModel = {};
 
   @Output() openNotifyfrom = new EventEmitter<IProgramNotificationDetails>();
+  @Input() progId?: string = '';
   // @Output() editCardNotify = new EventEmitter<IProgramNotificationDetails>();
 
   constructor(private notificationService: ProgramNotificationService,
 
     public translate: TranslateService, public dialog: MatDialog,
     private alertify: AlertifyService,
+    private lookupService:LookupService
 
   ) { }
 
 
   ngOnInit(): void {
-    this.getAllNotifications('e65c382a-9417-47b2-9cbf-903f728c48e8');
+    this.getLookupByKey();
   }
 
-  notificationsCardList: IProgramNotificationModel[] = []
+  getLookupByKey() {
+    this.lookupService.getLookupByKey(this.listOfLookup).subscribe(res => {
+      if (res.isSuccess) {
+        this.collectionOfLookup = res.data as ILookupCollection;
+        this.getAllNotifications(this.progId);
+      }
+      else {
+        this.resultMessage =
+        {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+    });
+  }
+
+  notificationsCardList: IProgramNotificationDetails[] = []
   // {
   //   notifyName: 'تنبيه واحد ',
   //   no: 5,
@@ -67,8 +89,11 @@ export class ProgramNotificationViewComponent implements OnInit {
 
   getAllNotifications(id: any) {
     this.notificationService.getAllNotifications(id || '').subscribe(res => {
-      this.notificationsCardList = res.data as IProgramNotificationModel[];
+      this.notificationsCardList = res.data as IProgramNotificationDetails[];
 
+      this.notificationsCardList.forEach(item=>{
+        item.notifyTypeLookup = this.collectionOfLookup.PROG_NOTIF_TYPES?.filter(i => i.id === item.notifyType)[0]
+      })
       if (res.isSuccess) {
         this.resultMessage = {
           message: res.message || "",

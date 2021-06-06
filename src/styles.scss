@@ -915,3 +915,16 @@ mat-grid-list {
 .list-group-item.active{
   border-color: transparent !important;
 }
+
+// Remove Arrows
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

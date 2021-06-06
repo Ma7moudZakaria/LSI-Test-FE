@@ -29,6 +29,7 @@ export class AddEditNotificationComponent implements OnInit {
   resultMessage: BaseMessageModel = {};
   @Input() notificationDetails = {} as IProgramNotificationDetails;
   @Input() notificationInputs = {} as IProgramNotificationModel;
+  @Input() progId?: string = '';
 
   collectionOfLookup = {} as BaseLookupModel[];
   listOfLookupProfile: string[] = ['PROG_NOTIF_TYPES'];
@@ -58,7 +59,7 @@ export class AddEditNotificationComponent implements OnInit {
   getLookupByKey() {
     let param: IProgramNotificationTypes = {
       notifyId: this.notificationDetails ? this.notificationDetails.id : '',
-      progId: 'e65c382a-9417-47b2-9cbf-903f728c48e8'
+      progId: this.progId
     }
     this.lookupService.getProgramNotificationTypesToProgram(param).subscribe(res => {
 
@@ -130,7 +131,7 @@ export class AddEditNotificationComponent implements OnInit {
       else {
         // 1- fill add model 
         this.notificationAddModel = {
-          progId: 'e65c382a-9417-47b2-9cbf-903f728c48e8',
+          progId: this.progId,
           notifyName: this.notifyForm.value.notifyName,
           noDuties: this.notifyForm.value.numberNotify,
           notifyType: this.notifyForm.value.notifyType,

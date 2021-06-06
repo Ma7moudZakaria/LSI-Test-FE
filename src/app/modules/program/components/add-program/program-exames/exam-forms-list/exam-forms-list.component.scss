@@ -1,10 +1,13 @@
-@import 'src/assets/scss/_variables.scss';
+@import 'src/assets/scss/_variables.scss';;
+
+
+
  .list-category{
     background: #FBFBFB 0% 0% no-repeat padding-box;
     border-radius: 19px;
     opacity: 1;
     padding: 1.7rem;
-    height : 95%;;
+    height : auto;;
     margin-top: 1rem;
     .list-category ul {
         padding-inline-start: 0 !important;
@@ -16,12 +19,12 @@
     }
     .internal_scroll_list_group:lang(ar) {
         // background-color: antiquewhite;
-                height: 470px;
+                height: 43.5vh;
                 overflow-y: auto;
             }
             .internal_scroll_list_group:lang(en) {
                 // background-color: antiquewhite;
-                        height: 470px;
+                        height: 43.5vh;
                         overflow-y: auto;
                     }
 

@@ -7,13 +7,13 @@
       background: #fbfbfb;
       width: 100%;
       margin-top: 1rem;
-      border-radius: 5px;
+      border-radius: 10px;
       padding: 1rem;
       }
       
       .max_h {
-        min-height: 75vh;
-        max-height: 75vh;
+        min-height: 65vh;
+        max-height: 65vh;
         overflow-y: scroll;
       }
       &:lang(en) {
