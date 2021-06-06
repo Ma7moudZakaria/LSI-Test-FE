@@ -164,7 +164,7 @@ export class ExamFormsListComponent implements OnInit {
 
   }
 
-  assignExamFormToProgram() {
+  async assignExamFormToProgram() {
     this.resultMessage = {};
     // this.assignExamFormsToProgramModel.programId=this.selectedprogram.programId;
     this.assignExamFormsToProgramModel.programId=this.progDetails?.progBaseInfo?.id;
