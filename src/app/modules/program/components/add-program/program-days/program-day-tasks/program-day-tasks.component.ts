@@ -130,9 +130,9 @@ export class ProgramDayTasksComponent implements OnInit {
   }
 
   confirmDialog(id?:string){
-    const message =this.translate.currentLang === LanguageEnum.en ?"Are you sure that you want to delete this question":"هل متأكد من حذف هذا السؤال";
+    const message =this.translate.currentLang === LanguageEnum.en ?"Are you sure that you want to delete this task":"هل متأكد من حذف هذه المهمة";
 
-    const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete Question' : 'حذف سؤال', message);
+    const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete task' : 'حذف المهمة', message);
 
     const dialogRef = this.dialog.open(ConfirmModalComponent, {
       maxWidth: "400px",
