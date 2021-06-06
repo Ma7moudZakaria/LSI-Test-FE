@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
 import { ICreateProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/icreate-program-day-tasks-model';
-import { IProgramDutyDaysModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-details-model';
+import { IProgramDutyDays } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
@@ -23,7 +23,7 @@ export class AddProgramDayTasksComponent implements OnInit {
   createProgramDayTasksModel = Array<ICreateProgramDayTasksModel>();
   listOfLookups: string[] = ['Tasks'];
 
-  @Input() programDutyDay = {} as IProgramDutyDaysModel;
+  @Input() programDutyDay = {} as IProgramDutyDays;
 
   resMessage: BaseMessageModel = {};
   selectedProgramDayTasksList = Array<ICreateProgramDayTasksModel>();
