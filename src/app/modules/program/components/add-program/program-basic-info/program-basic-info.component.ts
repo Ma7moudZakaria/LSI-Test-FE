@@ -8,7 +8,6 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { ProgramBasicInfoService } from 'src/app/core/services/program-services/program-basic-info.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 import { IProgramBasicInfoUpdateModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-basic-info-update-model';
-import { IProgramBasicInfoDetailsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-basic-info-details-model';
 import { ProgramDutiesEnum } from 'src/app/core/enums/programs/program-duties-enum.enum';
 import { ProgramDayTaskRecitationType } from 'src/app/core/enums/program-day-task-recitation-type.enum';
 import { BaseLookupModel } from 'src/app/core/ng-model/base-lookup-model';
