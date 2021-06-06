@@ -97,7 +97,8 @@ export interface IProgramExamFormsDetails{
 
 export interface IProgramDutyDays {
     id?:string;
-    dayOrder?:Number;
+    order?:Number;
+    tskCnt?:number;
 }
 
 export interface IProgramNotificationsDetails{

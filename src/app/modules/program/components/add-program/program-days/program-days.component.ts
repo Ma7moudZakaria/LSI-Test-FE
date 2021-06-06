@@ -12,7 +12,7 @@ export class ProgramDaysComponent implements OnInit {
 
   @ViewChild(ProgramDayTasksComponent) progDayTaskChild: ProgramDayTasksComponent | undefined;
 
-  @Input() programDetails: IProgramDetails = {};
+  @Input() progDetails: IProgramDetails = {};
   programDutyDay: IProgramDutyDays = {}
 
   showAddDayTasksForm = false;
@@ -24,7 +24,7 @@ export class ProgramDaysComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.programDetails);
+    console.log(this.progDetails);
     // this.DetailsOfProgram = this.getProgramDetails || this.DetailsOfProgram;
 
   }
@@ -41,7 +41,7 @@ export class ProgramDaysComponent implements OnInit {
   closeDayTasks(event: boolean) {
     this.showAddDayTasksForm = event;
     this.showAddDayTasksForm = false;
-
+this.progDutyDayEventCallBk(this.programDutyDay);
     // this.userScientificProbChild?.getScientificProblemByUserId();
   }
   openAddDayTasksForm() {

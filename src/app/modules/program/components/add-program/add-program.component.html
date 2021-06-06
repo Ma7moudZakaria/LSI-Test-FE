@@ -28,7 +28,7 @@
         <div class="col-12 px-0 ">
         <app-program-basic-info *ngIf="showTap == 'BASEINFO' && programDetails" [progBasicInfoDetails]='programDetails.progBaseInfo'></app-program-basic-info>
         <app-program-conditions *ngIf="showTap == 'CANDITION' && programDetails"></app-program-conditions>
-        <app-program-days *ngIf="showTap == 'DAYS' && programDetails" [programDetails]='programDetails'></app-program-days>
+        <app-program-days *ngIf="showTap == 'DAYS' && programDetails" [progDetails]='programDetails'></app-program-days>
         <app-program-exames *ngIf="showTap == 'JOINEXAME' && programDetails" [progDetails]='programDetails' (progDetailsEvent)='getProgramDetails()'></app-program-exames>
         <app-program-notifacations *ngIf="showTap == 'NOTIFY' && programDetails"></app-program-notifacations>
         </div>

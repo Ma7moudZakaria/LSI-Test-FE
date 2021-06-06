@@ -24,7 +24,7 @@
         </a>
       </ng-container> -->
     
-      <mat-accordion
+      <mat-accordion *ngIf='programDayTasksLists'
                 cdkDropList
                 #unassignedList="cdkDropList"
                 [cdkDropListData]="programDayTasksLists"
