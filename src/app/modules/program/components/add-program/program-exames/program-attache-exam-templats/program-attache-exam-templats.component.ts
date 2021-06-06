@@ -25,7 +25,7 @@ export class ProgramAttacheExamTemplatsComponent implements OnInit {
   voiceUrl: string | undefined;
   isView = true;
   attacheExamTemplate: IAttacheExamTemplateModel = {};
-  @Input() selectedExamFormId = { id: '', arabExamName: '', engExamName: '' };
+  // @Input() selectedExamFormId = { id: '', arabExamName: '', engExamName: '' };
   resultMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
   constructor(private examFormService: ExamFormService, 
@@ -35,19 +35,19 @@ export class ProgramAttacheExamTemplatsComponent implements OnInit {
     public translate: TranslateService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    if (this.selectedExamFormId.id !== undefined) {
-      this.getAttacheExamTemplate(this.selectedExamFormId.id);
-      this.selectedExamFormId.id = this.selectedExamFormId.id;
-    }
+    // if (this.selectedExamFormId.id !== undefined) {
+    //   this.getAttacheExamTemplate(this.selectedExamFormId.id);
+    //   this.selectedExamFormId.id = this.selectedExamFormId.id;
+    // }
   }
 
   ngOnChanges(changes: any) {
-    this.isView = true;
-    if (changes.selectedExamFormId?.currentValue.id !== undefined) {
-      this.getAttacheExamTemplate(changes.selectedExamFormId.currentValue.id);
-      this.selectedExamFormId.id = changes.selectedExamFormId.currentValue.id;
-    }
-    this.getAttacheExamTemplate("");
+    // this.isView = true;
+    // if (changes.selectedExamFormId?.currentValue.id !== undefined) {
+    //   this.getAttacheExamTemplate(changes.selectedExamFormId.currentValue.id);
+    //   this.selectedExamFormId.id = changes.selectedExamFormId.currentValue.id;
+    // }
+    // this.getAttacheExamTemplate("");
   }
   addQuestion() {
     this.resultMessage = {};
@@ -122,7 +122,8 @@ else{
     }
   }
   saveAttacheExamTemplate() {
-    this.attacheExamTemplate.id = this.selectedExamFormId.id;
+    // this.attacheExamTemplate.id = this.selectedExamFormId.id;
+    this.attacheExamTemplate.id = this.exam.id;
     this.attacheExamTemplate.examTemplate = JSON.stringify(this.exam.questions);
     this.resultMessage = {};
        this.examFormService.attachmentsExamTemplate(this.attacheExamTemplate).subscribe(res => {
