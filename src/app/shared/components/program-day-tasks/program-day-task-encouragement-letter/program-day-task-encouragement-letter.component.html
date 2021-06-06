@@ -1,1 +1,23 @@
-<p>15</p>
+<div class="form-group add-question-template dynamic-radio-button-with-input-text-model mb-0"  >
+    <div class="form-group row question px-2">
+        <div class="col-sm-8">
+            <label class="label_item_question">  {{"EXAM_FORM.QUESTION_NUMBER"|translate}} </label>
+            <div class="input-group input-sm input_search_voice" >
+                <input type="text"
+                *ngIf="!questionTemplate.voiceUrl"
+                  (input)="onQuestionTextChange()" 
+                  [disabled]='viewMode'
+                   [(ngModel)]="questionTemplate.text"
+                   class="form-control  border-md " 
+                   [ngClass]="{' border-transparent': !questionTemplate.text,
+                  'input_with-voice': !questionTemplate.text}"
+                   placeholder="{{'EXAM_FORM.ADD_QUESTION'|translate}}" >
+                 <app-voice-recording *ngIf="!questionTemplate.text" (getVoiceUrl)="saveVoiceUrl($event)"
+                 [viewMode]='viewMode' [voiceUrl]='questionTemplate?.voiceUrl'></app-voice-recording>
+     
+             </div>
+
+        </div>
+
+    </div>
+</div>

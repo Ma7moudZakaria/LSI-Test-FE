@@ -39,12 +39,16 @@ export class ProgramDayTaskDailyTestComponent implements OnInit {
     public translate: TranslateService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    if (this.selectedTaskId !== undefined) {
+      this.getAttacheExamTemplate(this.selectedTaskId);
+      this.selectedTaskId = this.selectedTaskId;
+    }
   }
   ngOnChanges(changes: any) {
     this.isView = true;
-    if (changes.selectedExamFormId?.currentValue.id !== undefined) {
-      this.getAttacheExamTemplate(changes.selectedExamFormId.currentValue.id);
-      this.selectedExamFormId.id = changes.selectedExamFormId.currentValue.id;
+    if (changes.selectedTaskId?.currentValue !== undefined) {
+      this.getAttacheExamTemplate(changes.selectedTaskId.currentValue);
+      this.selectedTaskId = changes.selectedTaskId.currentValue;
     }
     this.getAttacheExamTemplate("");
   }
