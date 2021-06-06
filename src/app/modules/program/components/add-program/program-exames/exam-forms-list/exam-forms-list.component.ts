@@ -105,6 +105,8 @@ export class ExamFormsListComponent implements OnInit {
     const index = this.examFormsAddedToProgramList.indexOf(item);
     this.examFormsAddedToProgramList.splice(index,1);
     this.searchExamFormsList?.push(item);
+      this.loadExams(this.examFormsAddedToProgramList[0]?.usrId,this.examFormsAddedToProgramList[0]?.arUsrName,this.examFormsAddedToProgramList[0]?.enUsrName);
+      this.selectedIndex=0;
   }
 
   loadExams(id?:string,arabExamName?:string,engExamName?:string){
