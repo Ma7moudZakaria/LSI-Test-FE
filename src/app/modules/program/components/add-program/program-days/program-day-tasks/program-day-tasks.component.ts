@@ -167,7 +167,7 @@ export class ProgramDayTasksComponent implements OnInit {
       for(let i =0;i<=event.container.data.length-1;i++){
         this.listOrder?.push(event.previousContainer.data[i].order||(i+1));
       }
-      this.programDayTasksUpdateOrderByModel.programDutyDay =this.programDayTasksLists[0].programDutyDay;
+      this.programDayTasksUpdateOrderByModel.programDutyDay =this.programDutyDay?.id;
       this.programDayTasksUpdateOrderByModel.orderList =this.listOrder;
     
       this.programDayTasksService.UpdateOrderByProgramDayTasks(this.programDayTasksUpdateOrderByModel).subscribe(res => {
