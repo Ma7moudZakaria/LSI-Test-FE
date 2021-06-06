@@ -16,11 +16,11 @@ import { ProgramDayTasksService } from 'src/app/core/services/program-services/p
 })
 export class MyFilterPipe implements PipeTransform {
   transform(items: any[], filter: any): any {
-    if (!items || !filter || !filter.dayOrder) {
+    if (!items || !filter || !filter.order) {
       return items;
     }
 
-    return items.filter(item => item.dayOrder === filter.dayOrder);
+    return items.filter(item => item.order === filter.order);
   }
 }
 
@@ -34,7 +34,7 @@ export class ProgramDutyDaysComponent implements OnInit {
   resMessage: BaseMessageModel = {};
   selectedProgramDayTasksList = Array<ICreateProgramDayTasksModel>();
   programDutyDaysDetails = {} as IProgramDetails;
-  filterargs = { dayOrder: undefined };
+  filterargs = { order: undefined };
 
   @Input() progDaysList: IProgramDutyDays[] | undefined;
   @Output() progDutyDayEvent = new EventEmitter<IProgramDutyDays>();
