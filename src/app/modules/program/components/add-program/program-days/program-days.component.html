@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-3">
-            <app-program-duty-days [progDaysList]='programDetails?.progDays' (progDutyDayEvent)='progDutyDayEventCallBk($event)'></app-program-duty-days>
+            <app-program-duty-days [progDaysList]='progDetails?.progDays' (progDutyDayEvent)='progDutyDayEventCallBk($event)'></app-program-duty-days>
         </div>
         <div class="col-3">
             <app-program-day-tasks (openAddDayTasks)="openAddDayTasksForm()" [programDutyDay]='programDutyDay'></app-program-day-tasks>

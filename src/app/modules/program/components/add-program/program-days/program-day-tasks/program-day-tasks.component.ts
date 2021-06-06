@@ -28,7 +28,7 @@ export class ProgramDayTasksComponent implements OnInit {
 
   langEnum = LanguageEnum;
   resMessage: BaseMessageModel = {};
-  programDayTasksLists = {} as Array<IProgramDayTasksModel>;
+  programDayTasksLists = [] as Array<IProgramDayTasksModel>;
   items1:any;
   programDayTasksUpdateOrderByModel:IProgramDayTasksUpdateOrderByModel={};
   listOrder?: number[];
@@ -41,6 +41,7 @@ export class ProgramDayTasksComponent implements OnInit {
     private lookupService: LookupService) { }
 
   ngOnInit(): void {
+    this.getProgramDutyDays(this.programDutyDay?.id);
   }
 
   setCurrentLang() {
@@ -54,8 +55,8 @@ export class ProgramDayTasksComponent implements OnInit {
     // this.languageService.headerPageNameEvent.emit(this.translate.instant('UPDATE_TEACHER_PG.TITLE'));
   }
 
-  getProgramDutyDays(id: string) {
-    this.programDayTasksService.getProgramDayTasks(id).subscribe(res => {
+  getProgramDutyDays(id?: string) {
+    this.programDayTasksService.getProgramDayTasks(id || '').subscribe(res => {
       if (res.isSuccess) {
         this.programDayTasksLists = res.data as Array<IProgramDayTasksModel>;
 

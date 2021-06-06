@@ -112,6 +112,7 @@ export class AddProgramDayTasksComponent implements OnInit {
               message: res.message,
               type: BaseConstantModel.SUCCESS_TYPE
             }
+            this.closeEvent();
           }
           else {
             this.resMessage = {
