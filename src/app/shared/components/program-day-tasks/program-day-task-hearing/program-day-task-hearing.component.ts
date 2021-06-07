@@ -14,23 +14,20 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 })
 export class ProgramDayTaskHearingComponent implements OnInit {
   resMessage: BaseMessageModel = {};
+  fileUploadModel: IFileUpload[] = [];
+  fileList?: IAttachment[] = [];
+  attachmentIds: string[] = [];
+  dayTaskHearingModel: IProgramDayTaskHearing = { hearingAttachments: [] };
 
   constructor(
     private attachmentService: AttachmentsService
 
   ) { }
 
-
-  dayTaskHearingModel: IProgramDayTaskHearing = { hearingAttachments: [] };
-
   ngOnInit(): void {
   }
 
 
-
-  fileUploadModel: IFileUpload[] = [];
-  fileList?: IAttachment[] = [];
-  attachmentIds: string[] = [];
 
   DeleteAttachment(index: number, id: string) {
     this.fileList?.splice(index, 1);
@@ -78,6 +75,12 @@ export class ProgramDayTaskHearingComponent implements OnInit {
 
   saveUpload() {
     let hearingModel = JSON.stringify(this.dayTaskHearingModel);
+
+    // this.programDayTaskDetails.programDayTask = this.selectedTaskId;
+    // this.programDayTaskDetails.detailsTask = JSON.stringify(this.exam.questions);
+    // this.resultMessage = {};
+    //    this.programDayTasksService.SaveProgramDayTaskDetails(this.programDayTaskDetails).subscribe(res => {
+
   }
 
 

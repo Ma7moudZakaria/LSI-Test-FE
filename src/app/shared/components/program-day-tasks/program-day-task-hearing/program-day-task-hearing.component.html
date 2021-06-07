@@ -1,7 +1,7 @@
 
-<div class="task_days">
+<div class="hearing_days">
 <div class="row">
-<span class="ml-3">الاستماع</span>
+<span class="ml-3 head">الاستماع</span>
     
     <mat-checkbox  class="example-margin mx-2"   [(ngModel)]="dayTaskHearingModel.isMndatory"
     class="example-margin ">الزامى </mat-checkbox>
@@ -24,10 +24,10 @@
 <div class="form-group">
     <label class="custom-file custom-file__text" for="importFile">
      
-        <span> 
-            <img calss="page-image"    src="assets/images/walk-through/Group 18093.svg"  >
-            <p> إختر الملفات لرفعها / اسحبها وضعها هنا</p>
-        </span>
+      
+            <!-- <img calss="page-image"    src="assets/images/walk-through/Group 18093.svg"  > -->
+            <p class="custom-file__label"> إختر الملفات لرفعها / اسحبها وضعها هنا</p>
+       
     </label>
     
     <input type="file" class="custom-file-input" id="importFile" [(ngModel)]="dayTaskHearingModel.hearingAttachments"
@@ -36,7 +36,7 @@
     
             <div class="col-4 cardRecourd"  *ngFor="let item of fileList;let i=index" >
                 <img src="assets/images/days/book.svg">
-                <span>00</span>
+                <span>{{item.fileName}}</span>
                 <i class="fas fa-play-circle"></i>
                 <img src="assets/images/trash-2.svg" (click)="DeleteAttachment(i,item.id)">
             </div>

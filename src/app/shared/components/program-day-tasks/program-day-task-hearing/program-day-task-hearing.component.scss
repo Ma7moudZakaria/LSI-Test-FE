@@ -1,5 +1,9 @@
 @import '../../../../../assets/scss/buttons';
-.task_days{
+.hearing_days{
+    .head {
+        font-weight: bold;
+        font-size: 1rem;
+    }
     &:lang(en)
     {
         text-align: left;
@@ -16,7 +20,7 @@
         letter-spacing: -0.29px;
         color: #363636;
         opacity: 1;
-        padding: 1rem;
+        padding: 2rem;
     }
 
     .custom-file {
@@ -28,6 +32,10 @@
         width: 100%;
         text-align: center;
     }
+    .custom-file__label{
+        margin-bottom: 0;
+        color: #dedddd;
+     }
     .upload-icon{
         margin-bottom: 10px;  
         width: 3rem;
