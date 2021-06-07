@@ -4,20 +4,22 @@
             <label class="label_item_question">  {{"EXAM_FORM.QUESTION_NUMBER"|translate}} </label>
             <div class="input-group input-sm input_search_voice" >
                 <input type="text"
-                *ngIf="!questionTemplate.voiceUrl"
+                *ngIf="!encouragementLetterObj.voiceUrl"
                   (input)="onQuestionTextChange()" 
                   [disabled]='viewMode'
-                   [(ngModel)]="questionTemplate.text"
+                   [(ngModel)]="encouragementLetterObj.text"
                    class="form-control  border-md " 
-                   [ngClass]="{' border-transparent': !questionTemplate.text,
-                  'input_with-voice': !questionTemplate.text}"
+                   [ngClass]="{' border-transparent': !encouragementLetterObj.text,
+                  'input_with-voice': !encouragementLetterObj.text}"
                    placeholder="{{'EXAM_FORM.ADD_QUESTION'|translate}}" >
-                 <app-voice-recording *ngIf="!questionTemplate.text" (getVoiceUrl)="saveVoiceUrl($event)"
-                 [viewMode]='viewMode' [voiceUrl]='questionTemplate?.voiceUrl'></app-voice-recording>
+                 <app-voice-recording *ngIf="!encouragementLetterObj.text" (getVoiceUrl)="saveVoiceUrl($event)"
+                 [viewMode]='viewMode' [voiceUrl]='encouragementLetterObj?.voiceUrl'></app-voice-recording>
      
              </div>
-
+             <div class="input-group justify-content-end"><button type="button" class="btn save-btn" (click)="saveEncouragementLetterTaskToProgram()">{{"GENERAL.SAVE"|translate}}</button></div>
         </div>
-
+        <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2">
+            {{resultMessage.message}}
+             </div>
     </div>
 </div>
