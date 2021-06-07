@@ -52,7 +52,6 @@ import { ProgramDayTaskRecitationStudentsComponent } from './components/program-
 import { ProgramDayTaskTestPhasedComponent } from './components/program-day-tasks/program-day-task-test-phased/program-day-task-test-phased.component';
 import { ProgramDayTaskTasmeaComponent } from './components/program-day-tasks/program-day-task-tasmea/program-day-task-tasmea.component';
 
-
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
     SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,
@@ -86,7 +85,9 @@ import { ProgramDayTaskTasmeaComponent } from './components/program-day-tasks/pr
     UsersCounterComponent, KhatmeenStudentsComponent, StudentNumbersComponent, StudentsRatingComponent,
     CardStudentScientificProblemComponent, QuestionTemplateComponent, VoiceRecordingComponent, MatGridListModule,
     ScientificProblemsGridComponent, CardAdminScientificProblemComponent, NotAuthComponent, GroupUsersCardComponent,
-    InputSearchListComponent, NgbRatingModule, CardNotifacationsComponent
+    InputSearchListComponent, NgbRatingModule, CardNotifacationsComponent, ProgramDayTaskHearingComponent,
+    NgbModule, ProgramDayTaskReadExplanationComponent, ProgramDayTaskRepetitionComponent,
+    ProgramDayTaskMemorizeComponent, ProgramDayTaskLinkingComponent
   ]
 })
 export class SharedModule { }
