@@ -93,7 +93,7 @@ export class AddQuestionBankCategoryComponent implements OnInit {
       {
 
         nameAr: ['', [Validators.required, Validators.maxLength(100), Validators.pattern(BaseConstantModel.ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
-        nameEn: ['', [Validators.required, Validators.maxLength(100), Validators.pattern(BaseConstantModel.ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
+        nameEn: [''],
 
       })
   }

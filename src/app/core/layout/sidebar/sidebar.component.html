@@ -9,7 +9,7 @@
         </div>
         <div>
             <ul>
-                <li>
+                <li onclick="" class="nav-item" routerLinkActive="active">
                     <a [routerLink] = "['/dashboard']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/Dashboard-icon.png">
                            
@@ -24,14 +24,14 @@
                             <span class="container__navigation__title">{{'SIDENAVBAR.MYPROGRAMS' | translate}}</span>
                     </a>
                 </li>
-                <li>
+                <li class="nav-item" routerLinkActive="active">
                     <a [routerLink] = "['/scientific-material/scientific-material-view']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/scientific-articles-icon.png">
 
                         <span class="container__navigation__title">{{'SIDENAVBAR.SCIENTIFIC_ARTICLES' | translate}}</span>
                     </a>
                 </li>
-                <li>
+                <li class="nav-item" routerLinkActive="active">
                     <a *ngIf='roleService.isAdmin() && (!roleService.isStudent() || !roleService.isTeacher())' [routerLink]="['/admin-messaging/admin-messaging-view']"  routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/message-icon.png">
 
@@ -57,7 +57,7 @@
                         <span class="container__navigation__title">{{'SIDENAVBAR.WITHDRAWAL_REQUESTS' | translate}}</span>
                     </a>
                 </li>
-                <li>
+                <li class="nav-item" routerLinkActive="active">
                     <a [routerLink]="['/setting/setting-dashboard']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/setting-icon.png">
 
@@ -71,7 +71,7 @@
                         <span class="container__navigation__title">{{'SIDENAVBAR.MY_MESSAGES' | translate}}</span>
                     </a>
                 </li>
-                <li> 
+                <li class="nav-item" routerLinkActive="active"> 
                     <a [routerLink]="['/question-bank/question-bank-view']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/questions-bank-icon.png">
  
