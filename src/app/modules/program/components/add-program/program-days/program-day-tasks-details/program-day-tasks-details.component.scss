@@ -1,3 +1,4 @@
+@import '../../../../../../../assets/scss/buttons';
 .days_details
 {
     background: #FBFBFB 0% 0% no-repeat padding-box;
@@ -7,3 +8,9 @@
     height: 95%;
     margin-top: 1rem;
 }
+.save-btn, .cancel-btn
+{
+  height: 2.31rem;
+  margin: 1rem;
+
+ }

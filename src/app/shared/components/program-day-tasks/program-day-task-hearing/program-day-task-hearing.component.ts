@@ -26,13 +26,14 @@ export class ProgramDayTaskHearingComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    
   }
 
 
 
   DeleteAttachment(index: number, id: string) {
-    this.fileList?.splice(index, 1);
-    this.attachmentIds = this.attachmentIds.filter(a => a !== id);
+    this.hearingTaskDetailsModel?.hearingAttachments?.splice(index, 1);
+    // this.attachmentIds = this.attachmentIds.filter(a => a !== id);
   }
 
   onFileChange(files: FileList) {
@@ -56,9 +57,9 @@ export class ProgramDayTaskHearingComponent implements OnInit {
     }
     this.attachmentService.upload(files).subscribe(
       (res: any) => {
+        // this.hearingTaskDetailsModel.hearingAttachments = res.data as IAttachment[];
         Array.from(res.data).forEach((elm: any) => {
-          this.attachmentIds.push(elm.id);
-          this.fileList?.push(elm);
+          this.hearingTaskDetailsModel.hearingAttachments?.push(elm as IAttachment);
 
         })
         this.fileUploadModel = [];

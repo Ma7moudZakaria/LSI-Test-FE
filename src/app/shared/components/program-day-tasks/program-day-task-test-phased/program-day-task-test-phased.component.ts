@@ -32,6 +32,7 @@ export class ProgramDayTaskTestPhasedComponent implements OnInit {
   @Input() selectedTaskId:string|undefined;
   resultMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
+  @Input() testPhasedDetailsModel: IAttacheExamTemplateModel = {};
   constructor(private programDayTasksService:ProgramDayTasksService,private examFormService: ExamFormService, 
     private activeroute: ActivatedRoute,
     public dialog: MatDialog,

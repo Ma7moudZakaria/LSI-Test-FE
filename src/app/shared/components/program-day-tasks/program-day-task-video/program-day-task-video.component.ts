@@ -28,6 +28,7 @@ export class ProgramDayTaskVideoComponent implements OnInit {
   programDayTaskDetails: ISaveProgramDayTaskDetailsModel={};
   resultMessage: BaseMessageModel = {};
   @Input() selectedTaskId:string|undefined;
+  @Input() videoDetailsModel: IProgramDayTaskVideo = {};
   constructor(
     private programDayTasksService:ProgramDayTasksService,
     private activeroute: ActivatedRoute,

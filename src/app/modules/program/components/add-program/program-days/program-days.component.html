@@ -6,7 +6,7 @@
         <div class="col-3">
             <app-program-day-tasks (openAddDayTasks)="openAddDayTasksForm()" [programDutyDay]='programDutyDay' (taskDetailsEvent)="sendTaskIdToProgDayTaskDetails($event)"></app-program-day-tasks>
         </div>
-        <div class="col-6" > 
+        <div class="col-6" *ngIf='taskDetails'> 
             <app-program-day-tasks-details [taskDetails]='taskDetails' ></app-program-day-tasks-details >
         </div>
     </div>

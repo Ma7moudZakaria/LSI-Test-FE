@@ -22,6 +22,7 @@ export class ProgramDayTaskEncouragementLetterComponent implements OnInit {
   programDayTaskDetails: ISaveProgramDayTaskDetailsModel={};
   resultMessage: BaseMessageModel = {};
   @Input() selectedTaskId:string|undefined;
+  @Input() encouragementLetterDetailsModel: IProgramDayTaskEncouragementLetter = {}
   constructor(
     private programDayTasksService:ProgramDayTasksService, 
     private activeroute: ActivatedRoute,

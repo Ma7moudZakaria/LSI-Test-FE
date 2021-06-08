@@ -1,4 +1,4 @@
-
+child{{hearingTaskDetailsModel}}
 <div class="hearing_days">
 <div class="row">
 <span class="ml-3 head">الاستماع</span>
@@ -23,18 +23,14 @@
 
 <div class="form-group">
     <label class="custom-file custom-file__text" for="importFile">
-     
-      
             <!-- <img calss="page-image"    src="assets/images/walk-through/Group 18093.svg"  > -->
             <p class="custom-file__label"> إختر الملفات لرفعها / اسحبها وضعها هنا</p>
        
     </label>
     
-    <input type="file" class="custom-file-input" id="importFile" [(ngModel)]="hearingTaskDetailsModel.hearingAttachments"
+    <input type="file" class="custom-file-input" id="importFile" 
     (change)="onFileChange($any($event.target).files)" >
-
-    
-            <div class="col-4 cardRecourd"  *ngFor="let item of fileList;let i=index" >
+            <div class="col-4 cardRecourd"  *ngFor="let item of hearingTaskDetailsModel?.hearingAttachments;let i=index" >
                 <img src="assets/images/days/book.svg">
                 <span>{{item.fileName}}</span>
                 <i class="fas fa-play-circle"></i>
@@ -57,24 +53,4 @@
     </div>
     
 </div>
-
-
-
-<section class="mt-5">
-    <div  class="row direction-rtl buttons-center mt-5">
-        <button   type="submit" class="save-btn" (click)="saveUpload()" > 
-            <!-- {{ "GENERAL.SAVE" | translate }} -->
-            SAVE
-        </button>
-       
-        <button    type="reset" class="cancel-btn"  > 
-            <!-- {{ "GENERAL.CANCEL" | translate }} -->
-            CANCEL
-            
-        </button>
-    </div>
-</section>
-
-
-
 </div>

@@ -28,6 +28,7 @@ export class ProgramDayTaskReviewComponent implements OnInit {
   programDayTaskDetails: ISaveProgramDayTaskDetailsModel={};
   resultMessage: BaseMessageModel = {};
   @Input() selectedTaskId:string|undefined;
+  @Input() reviewDetailsModel: IProgramDayTaskReview = {};
   constructor(
     private programDayTasksService:ProgramDayTasksService,
     private activeroute: ActivatedRoute,

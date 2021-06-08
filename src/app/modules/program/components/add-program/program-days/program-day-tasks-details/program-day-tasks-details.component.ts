@@ -1,16 +1,23 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { ProgramDayTasksDetails } from 'src/app/core/enums/programs/program-day-tasks-details.enum';
 import { IAttacheExamTemplateModel } from 'src/app/core/interfaces/exam-form-interfaces/iattache-exam-template-model';
 import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-model';
+import { ISaveProgramDayTaskDetailsModel } from 'src/app/core/interfaces/programs-interfaces/isave-program-day-task-Details-model';
 import { IProgramDayTaskEncouragementLetter } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-encouragement-letter';
 import { IProgramDayTaskHearing } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-hearing';
 import { IProgramDayTaskLinking } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-linking';
 import { IProgramDayTaskMemorize } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-memorize';
 import { IProgramDayTaskReadExplanation } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-read-explanation';
 import { IProgramDayTaskRecitation } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-recitation';
+import { IProgramDayTaskRecitationStudents } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-recitation-students';
 import { IProgramDayTaskRepetition } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-repetition';
 import { IProgramDayTaskReview } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-review';
 import { IProgramDayTaskVideo } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-video';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
+import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
+import { ProgramDayTasksService } from 'src/app/core/services/program-services/program-day-tasks.service';
 
 @Component({
   selector: 'app-program-day-tasks-details',
@@ -20,8 +27,7 @@ import { IProgramDayTaskVideo } from 'src/app/core/interfaces/programs-interface
 export class ProgramDayTasksDetailsComponent implements OnInit {
   @Input() taskDetails: IProgramDayTasksModel | undefined;
   detailsTypeEnum = ProgramDayTasksDetails;
-
-  hearingTaskDetailsModel: IProgramDayTaskHearing = {}
+  hearingTaskDetailsModel: IProgramDayTaskHearing = {};
   readExplanationDetailsModel: IProgramDayTaskReadExplanation = {}
   encouragementLetterDetailsModel: IProgramDayTaskEncouragementLetter = {}
   linkingDetailsModel: IProgramDayTaskLinking = {}
@@ -29,31 +35,124 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
   recitationDetailsModel: IProgramDayTaskRecitation = {}
   repetitionDetailsModel: IProgramDayTaskRepetition = {}
   reviewDetailsModel: IProgramDayTaskReview = {}
-  VideoDetailsModel: IProgramDayTaskVideo = {}
+  videoDetailsModel: IProgramDayTaskVideo = {}
   testPhasedDetailsModel: IAttacheExamTemplateModel = {}
   dailyTestDetailsModel: IAttacheExamTemplateModel = {}
+  recitationStudentsModel :IProgramDayTaskRecitationStudents={}
+  programDayTaskDetails: ISaveProgramDayTaskDetailsModel={};
+  resultMessage: BaseMessageModel = {};
 
-
-
-  constructor() { }
+  constructor(
+    public translate: TranslateService,
+    private programDayTasksService:ProgramDayTasksService,
+  ) { }
 
   ngOnInit(): void {
+    this.getprogramDayTaskDetails();
   }
 
   save() {
-    // console.log('model'+ this.hearingTaskDetailsModel);
-    // console.log('string'+ JSON.stringify(this.hearingTaskDetailsModel));
-    let detailsStringfy
-
+    this.programDayTaskDetails.programDayTask=this.taskDetails?.id;
     switch (this.taskDetails?.huffazTask) {
       case this.detailsTypeEnum.taskHearing:
-        detailsStringfy = JSON.stringify(this.hearingTaskDetailsModel);
+        this.programDayTaskDetails.detailsTask = JSON.stringify(this.hearingTaskDetailsModel);
         break;
       case this.detailsTypeEnum.TaskReadExplanation:
-        detailsStringfy = JSON.stringify(this.readExplanationDetailsModel);
+        this.programDayTaskDetails.detailsTask = JSON.stringify(this.readExplanationDetailsModel);
         break;
-
+        case this.detailsTypeEnum.TaskMemorize:
+          this.programDayTaskDetails.detailsTask = JSON.stringify(this.memorizeDetailsModel);
+          break;
+          case this.detailsTypeEnum.TaskRepetition:
+            this.programDayTaskDetails.detailsTask = JSON.stringify(this.repetitionDetailsModel);
+            break;
+           case this.detailsTypeEnum.TaskLinking:
+            this.programDayTaskDetails.detailsTask = JSON.stringify(this.linkingDetailsModel);
+            break;
+            case this.detailsTypeEnum.TaskEncouragementLetter:
+              this.programDayTaskDetails.detailsTask = JSON.stringify(this.encouragementLetterDetailsModel);
+              break;
+              case this.detailsTypeEnum.TaskVideo:
+                this.programDayTaskDetails.detailsTask = JSON.stringify(this.videoDetailsModel);
+                break;
+                case this.detailsTypeEnum.TaskReview:
+                this.programDayTaskDetails.detailsTask = JSON.stringify(this.reviewDetailsModel);
+                break;
+                case this.detailsTypeEnum.TaskRecitation:
+                  this.programDayTaskDetails.detailsTask = JSON.stringify(this.recitationDetailsModel);
+                  break;
+                  case this.detailsTypeEnum.TaskRecitationStudents:
+                    this.programDayTaskDetails.detailsTask = JSON.stringify(this.recitationStudentsModel);
+                    break;
+                    case this.detailsTypeEnum.TaskTestPhased:
+                    this.programDayTaskDetails.detailsTask = JSON.stringify(this.testPhasedDetailsModel);
+                    break;
       default:
+        this.programDayTaskDetails.detailsTask ="";
+        break;
+    }
+    this.resultMessage = {};
+    this.programDayTasksService.SaveProgramDayTaskDetails(this.programDayTaskDetails).subscribe(res => {
+   let response = <BaseResponseModel>res;
+   if (response.isSuccess) {
+     this.resultMessage = {
+       message: res.message || "",
+       type: BaseConstantModel.SUCCESS_TYPE
+     }
+   
+   }
+   else {
+     this.resultMessage = {
+       message: res.message,
+       type: BaseConstantModel.DANGER_TYPE
+     }
+   }
+ },
+   error => {
+     this.resultMessage = {
+       message: error,
+       type: BaseConstantModel.DANGER_TYPE
+     }
+   }
+ )
+  }
+  getprogramDayTaskDetails(){
+    switch (this.taskDetails?.huffazTask) {
+      case this.detailsTypeEnum.taskHearing:
+       this.hearingTaskDetailsModel= JSON.parse(this.taskDetails?.detailsTask||"");
+        break;
+      case this.detailsTypeEnum.TaskReadExplanation:
+        this.readExplanationDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"");
+        break;
+        case this.detailsTypeEnum.TaskMemorize:
+         this.memorizeDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"");
+          break;
+          case this.detailsTypeEnum.TaskRepetition:
+           this.repetitionDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"");
+            break;
+           case this.detailsTypeEnum.TaskLinking:
+            this.linkingDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"");
+            break;
+            case this.detailsTypeEnum.TaskEncouragementLetter:
+              this.encouragementLetterDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"");
+              break;
+              case this.detailsTypeEnum.TaskVideo:
+               this.videoDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"");
+                break;
+                case this.detailsTypeEnum.TaskReview:
+               this.reviewDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"");
+                break;
+                case this.detailsTypeEnum.TaskRecitation:
+                  this.recitationDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"");
+                  break;
+                  case this.detailsTypeEnum.TaskRecitationStudents:
+                    this.recitationStudentsModel=JSON.parse(this.taskDetails?.detailsTask||"");
+                    break;
+                    case this.detailsTypeEnum.TaskTestPhased:
+                    this.testPhasedDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"");
+                    break;
+      default:
+        "";
         break;
     }
   }

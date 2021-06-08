@@ -32,7 +32,7 @@ export class ProgramDayTaskDailyTestComponent implements OnInit {
   @Input() selectedTaskId: string | undefined;
 
   // @Input() dailyTestDetailsModel: ISaveProgramDayTaskDetailsModel = {};
-
+  @Input() dailyTestDetailsModel: IAttacheExamTemplateModel = {};
   resultMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
   constructor(private programDayTasksService: ProgramDayTasksService, private examFormService: ExamFormService,
