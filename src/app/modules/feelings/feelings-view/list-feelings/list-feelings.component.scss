@@ -1,0 +1,22 @@
+
+.interTab{
+    padding: 0 2rem;
+    &:lang(ar){
+        text-align: right;
+    }&:lang(en){
+        text-align: left;
+    } 
+    .head{
+        font-size: 20px;
+        color: #3A3A3A;
+        font-weight: 500;
+    } 
+    .list_old{
+        height: 74vh;
+        min-height: 74vh;
+        overflow-y: scroll;
+        background-color: #fff;
+        border-radius: 0.5rem;
+        padding: 0.5rem 0.8rem;
+    } 
+}

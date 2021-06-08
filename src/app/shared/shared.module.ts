@@ -51,6 +51,7 @@ import { ProgramDayTaskRecitationComponent } from './components/program-day-task
 import { ProgramDayTaskRecitationStudentsComponent } from './components/program-day-tasks/program-day-task-recitation-students/program-day-task-recitation-students.component';
 import { ProgramDayTaskTestPhasedComponent } from './components/program-day-tasks/program-day-task-test-phased/program-day-task-test-phased.component';
 import { ProgramDayTaskTasmeaComponent } from './components/program-day-tasks/program-day-task-tasmea/program-day-task-tasmea.component';
+import { CardFeelingsComponent } from './components/card-feelings/card-feelings.component';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { ProgramDayTaskTasmeaComponent } from './components/program-day-tasks/pr
     ProgramDayTaskRecitationComponent,
     ProgramDayTaskRecitationStudentsComponent,
     ProgramDayTaskTestPhasedComponent,
-    ProgramDayTaskTasmeaComponent],
+    ProgramDayTaskTasmeaComponent,
+    CardFeelingsComponent],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,
@@ -86,7 +88,7 @@ import { ProgramDayTaskTasmeaComponent } from './components/program-day-tasks/pr
     UsersCounterComponent, KhatmeenStudentsComponent, StudentNumbersComponent, StudentsRatingComponent,
     CardStudentScientificProblemComponent, QuestionTemplateComponent, VoiceRecordingComponent, MatGridListModule,
     ScientificProblemsGridComponent, CardAdminScientificProblemComponent, NotAuthComponent, GroupUsersCardComponent,
-    InputSearchListComponent, NgbRatingModule, CardNotifacationsComponent
+    InputSearchListComponent, NgbRatingModule, CardNotifacationsComponent, CardFeelingsComponent
   ]
 })
 export class SharedModule { }

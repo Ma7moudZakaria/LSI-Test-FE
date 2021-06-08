@@ -1,0 +1,30 @@
+
+<div class="container-fluid" > 
+
+<div class="row group_header fix_margin w-100">
+    <div class="item_group" (click)="showTap = 'students'"
+    [ngClass]="{ item_group_active: showTap == 'students' }" >
+       
+    الطلاب
+    </div>
+    <div class="item_group" (click)="showTap = 'teacher'"
+    [ngClass]="{ item_group_active: showTap == 'teacher' }" >
+       معلمين
+    
+    </div>
+    
+
+</div>
+
+
+<div class="row fix_margin w-100" >
+    <div class="col-12 px-0 interTab">
+
+        <app-list-feelings  *ngIf="showTap == 'students'"></app-list-feelings>
+       
+    </div>
+
+</div>
+
+
+</div>
