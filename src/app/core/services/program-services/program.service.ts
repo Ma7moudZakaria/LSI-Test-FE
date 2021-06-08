@@ -24,8 +24,10 @@ export class ProgramService {
 
   assignExamFormToProgramURL=environment.baseUrl+'Programs/assign-exam-form-to-program/';
   updateProgramExamToggleURL=environment.baseUrl+'Programs/update-program-exam-form-toggle/';
-  programPauseURL=environment.baseUrl+'Programs/program-pause/';
-  constructor(private http:HttpClient) { }
+  programPauseURL = environment.baseUrl + 'Programs/program-pause/';
+  programAdvancedFilter = environment.baseUrl + 'Programs/get-program-advanced-filter';
+
+  constructor(private http: HttpClient) { }
 
   addProgram(model:IprogramCreatModel):Observable<BaseResponseModel>{
     return this.http.post<BaseResponseModel>(this.AddProgramURL,model);
@@ -68,6 +70,12 @@ export class ProgramService {
 
   programPause(programId:string):Observable<BaseResponseModel>{
     return this.http.put<BaseResponseModel>(this.programPauseURL,programId);
+  }
+
+
+
+  getProgramAdvancedFilter(filterRequest: IprogramFilterRequest): Observable<BaseResponseModel> {
+    return this.http.post<BaseResponseModel>(this.GetProgramsFilterURL, filterRequest)
   }
 
  

@@ -6,8 +6,9 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { ScientificMaterialService } from 'src/app/core/services/scientific-material-services/scientific-material.service';
-
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProgramService } from 'src/app/core/services/program-services/program.service';
+
 
 @Component({
   selector: 'app-programs-list',
@@ -22,13 +23,30 @@ export class ProgramsListComponent implements OnInit {
   resMessage: BaseMessageModel = {};
 
   constructor(private scientifcMaterialService: ScientificMaterialService,
+    private programService: ProgramService,
     public translate: TranslateService,
     private router: Router,
   ) { }
 
   ngOnInit(): void {
     this.loadPrograms();
+    this.loadProgramsbyAdvancedFilter();
   }
+
+  loadProgramsbyAdvancedFilter() {
+    this.programService.getProgramAdvancedFilter(programName).subscribe(
+      (res: BaseResponseModel) => {
+        this.programs = res.data as IprogramsModel[];
+        this.loadProgramMaterial({})
+        this.selectedIndex = -1;
+      }, error => {
+        this.resMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+    );
+    }
 
   loadPrograms(programName?: any) {
     this.scientifcMaterialService.getProgramsLookup(programName).subscribe(
