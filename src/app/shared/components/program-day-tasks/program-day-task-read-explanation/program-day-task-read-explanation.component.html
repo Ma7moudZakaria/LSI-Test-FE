@@ -3,7 +3,7 @@
     <div class="row">
     <h3 class="ml-3">الشرح</h3>
         
-        <mat-checkbox  class="example-margin mx-2"   [(ngModel)]="dayTaskReadExplanationModel.isMndatory"
+        <mat-checkbox  class="example-margin mx-2"   [(ngModel)]="readExplanationDetailsModel.isMndatory"
         class="example-margin ">الزامى </mat-checkbox>
     </div>
     
@@ -19,7 +19,7 @@
             </span>
         </label>
         
-        <input type="file" class="custom-file-input" id="importFile" [(ngModel)]="dayTaskReadExplanationModel.bookAttatchments"
+        <input type="file" class="custom-file-input" id="importFile" [(ngModel)]="readExplanationDetailsModel.bookAttatchments"
         (change)="onFileChange($any($event.target).files)" >
     
         
@@ -36,9 +36,9 @@
             <div class="col-6">
                 <label class="text-right header_input"> الصفحات</label>
     <div class="d-flex ">
-        <input type="text" class="form-control  " [(ngModel)]="dayTaskReadExplanationModel.frmoPage" >
+        <input type="text" class="form-control  " [(ngModel)]="readExplanationDetailsModel.frmoPage" >
         
-        <input type="text" class="form-control mx-2" [(ngModel)]="dayTaskReadExplanationModel.toPage" >
+        <input type="text" class="form-control mx-2" [(ngModel)]="readExplanationDetailsModel.toPage" >
 
     </div>
               
@@ -55,7 +55,7 @@
             <div class="col-12">
                 <label class="text-right header_input"> الدرجة</label>
     
-               <input type="text" class="form-control w-50" [(ngModel)]="dayTaskReadExplanationModel.degree" >
+               <input type="text" class="form-control w-50" [(ngModel)]="readExplanationDetailsModel.degree" >
         
             </div>
     
@@ -68,7 +68,7 @@
             <div class="col-12">
                 <label class="text-right header_input"> السؤال الذي يظهر للطالب </label>
     
-               <input type="text" class="form-control " [(ngModel)]="dayTaskReadExplanationModel.questionToStudent" >
+               <input type="text" class="form-control " [(ngModel)]="readExplanationDetailsModel.questionToStudent" >
         
             </div>
     

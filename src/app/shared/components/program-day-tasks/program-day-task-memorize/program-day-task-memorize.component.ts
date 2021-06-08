@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IAttachment } from 'src/app/core/interfaces/attachments-interfaces/iattachment';
 import { IFileUpload } from 'src/app/core/interfaces/attachments-interfaces/ifile-upload';
 import { IProgramDayTaskMemorize } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-memorize';
@@ -14,11 +14,12 @@ import { AttachmentsService } from 'src/app/core/services/attachments-services/a
 export class ProgramDayTaskMemorizeComponent implements OnInit {
 
 
-  dayTaskMemorizenModel: IProgramDayTaskMemorize = { bookAttatchments: [] };
+  // memorizeDetailsModel: IProgramDayTaskMemorize = { bookAttatchments: [] };
   resMessage: BaseMessageModel = {};
   fileUploadModel: IFileUpload[] = [];
   fileList?: IAttachment[] = [];
   attachmentIds: string[] = [];
+  @Input() memorizeDetailsModel: IProgramDayTaskMemorize = {}
 
   constructor
     (
@@ -79,7 +80,7 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
   }
 
   saveUpload() {
-    let hearingModel = JSON.stringify(this.dayTaskMemorizenModel);
+    let hearingModel = JSON.stringify(this.memorizeDetailsModel);
   }
 
 

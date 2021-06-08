@@ -87,7 +87,9 @@ import { ProgramDayTaskTasmeaComponent } from './components/program-day-tasks/pr
     ScientificProblemsGridComponent, CardAdminScientificProblemComponent, NotAuthComponent, GroupUsersCardComponent,
     InputSearchListComponent, NgbRatingModule, CardNotifacationsComponent, ProgramDayTaskHearingComponent,
     NgbModule, ProgramDayTaskReadExplanationComponent, ProgramDayTaskRepetitionComponent,
-    ProgramDayTaskMemorizeComponent, ProgramDayTaskLinkingComponent
+    ProgramDayTaskMemorizeComponent, ProgramDayTaskLinkingComponent, ProgramDayTaskVideoComponent, ProgramDayTaskDailyTestComponent,
+    ProgramDayTaskEncouragementLetterComponent, ProgramDayTaskReviewComponent, ProgramDayTaskRecitationComponent,
+    ProgramDayTaskRecitationStudentsComponent, ProgramDayTaskTestPhasedComponent, ProgramDayTaskTasmeaComponent
   ]
 })
 export class SharedModule { }

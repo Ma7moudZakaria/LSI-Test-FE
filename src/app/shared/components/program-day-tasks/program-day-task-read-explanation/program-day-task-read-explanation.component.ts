@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IAttachment } from 'src/app/core/interfaces/attachments-interfaces/iattachment';
 import { IFileUpload } from 'src/app/core/interfaces/attachments-interfaces/ifile-upload';
 import { IProgramDayTaskHearing } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-hearing';
@@ -26,8 +26,9 @@ export class ProgramDayTaskReadExplanationComponent implements OnInit {
   ) { }
 
 
-  dayTaskReadExplanationModel: IProgramDayTaskReadExplanation = { bookAttatchments: [] };
+  // dayTaskReadExplanationModel: IProgramDayTaskReadExplanation = { bookAttatchments: [] };
 
+  @Input() readExplanationDetailsModel: IProgramDayTaskReadExplanation = {}
   ngOnInit(): void {
   }
 
@@ -79,7 +80,7 @@ export class ProgramDayTaskReadExplanationComponent implements OnInit {
   }
 
   saveUpload() {
-    let hearingModel = JSON.stringify(this.dayTaskReadExplanationModel);
+    let hearingModel = JSON.stringify(this.readExplanationDetailsModel);
   }
 
 

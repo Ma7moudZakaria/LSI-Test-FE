@@ -29,10 +29,13 @@ export class ProgramDayTaskDailyTestComponent implements OnInit {
   attacheExamTemplate: IAttacheExamTemplateModel = {};
   programDayTaskDetails: ISaveProgramDayTaskDetailsModel = {};
   @Input() selectedExamFormId = { id: '', arabExamName: '', engExamName: '' };
-  @Input() selectedTaskId:string|undefined;
+  @Input() selectedTaskId: string | undefined;
+
+  // @Input() dailyTestDetailsModel: ISaveProgramDayTaskDetailsModel = {};
+
   resultMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
-  constructor(private programDayTasksService:ProgramDayTasksService,private examFormService: ExamFormService, 
+  constructor(private programDayTasksService: ProgramDayTasksService, private examFormService: ExamFormService,
     private activeroute: ActivatedRoute,
     public dialog: MatDialog,
     private router: Router,
@@ -59,40 +62,39 @@ export class ProgramDayTaskDailyTestComponent implements OnInit {
       this.exam = { id: id, questions: [] }
     }
 
-if(this.examFormService.validateQuestion(this.exam.questions)===true)
-{
-  let qid = BaseConstantModel.newGuid();
-  let ques: IQuestion =
-  {
-    questionId: qid,
-    questionNo: this.exam?.questions ? this.exam.questions.length + 1 : 1,
-    time:5,
-    answers: [],
-    answerType: AnswerTypeEnum.singleSelect,
-  }
-  this.exam.questions.push(ques);
-}
-else{
- this.resultMessage = {
-  message: this.translate.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE'),
-  type: BaseConstantModel.DANGER_TYPE
-}
-}
-   
+    if (this.examFormService.validateQuestion(this.exam.questions) === true) {
+      let qid = BaseConstantModel.newGuid();
+      let ques: IQuestion =
+      {
+        questionId: qid,
+        questionNo: this.exam?.questions ? this.exam.questions.length + 1 : 1,
+        time: 5,
+        answers: [],
+        answerType: AnswerTypeEnum.singleSelect,
+      }
+      this.exam.questions.push(ques);
+    }
+    else {
+      this.resultMessage = {
+        message: this.translate.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE'),
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    }
+
   }
 
   saveExam() {
-    if(this.examFormService.validateQuestion(this.exam.questions)===true){
+    if (this.examFormService.validateQuestion(this.exam.questions) === true) {
       this.isView = true;
       this.saveAttacheExamTemplate();
     }
-    else{
+    else {
       this.resultMessage = {
-        message:this.translate.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE'),// this.translate.currentLang === LanguageEnum.en ? "Please complete the missing information" : "برجاء اكمال البيانات",
+        message: this.translate.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE'),// this.translate.currentLang === LanguageEnum.en ? "Please complete the missing information" : "برجاء اكمال البيانات",
         type: BaseConstantModel.DANGER_TYPE
       }
-     }
-   
+    }
+
   }
 
   /////recording/////
@@ -108,8 +110,8 @@ else{
     this.resultMessage = {};
     if (examId) {
       this.examFormService.getExamFormDetails(examId).subscribe(res => {
-          this.exam = res.data as IExam;
-          this.exam.questions = res.data.examTemplate ? JSON.parse(res.data.examTemplate) : [];
+        this.exam = res.data as IExam;
+        this.exam.questions = res.data.examTemplate ? JSON.parse(res.data.examTemplate) : [];
       },
         error => {
           this.resultMessage = {
@@ -119,8 +121,8 @@ else{
         }
       )
     }
-    else{
-    this.exam = {questions:[]};
+    else {
+      this.exam = { questions: [] };
 
     }
   }
@@ -128,7 +130,7 @@ else{
     this.programDayTaskDetails.programDayTask = this.selectedTaskId;
     this.programDayTaskDetails.detailsTask = JSON.stringify(this.exam.questions);
     this.resultMessage = {};
-       this.programDayTasksService.SaveProgramDayTaskDetails(this.programDayTaskDetails).subscribe(res => {
+    this.programDayTasksService.SaveProgramDayTaskDetails(this.programDayTaskDetails).subscribe(res => {
       let response = <BaseResponseModel>res;
       if (response.isSuccess) {
         this.resultMessage = {
@@ -151,10 +153,10 @@ else{
         }
       }
     )
- 
+
   }
 
-  confirmDeleteQuestionDialog(question:IQuestion) {
+  confirmDeleteQuestionDialog(question: IQuestion) {
     const message = this.translate.currentLang === LanguageEnum.en ? "Are you sure that you want to delete question" : "هل متأكد من حذف هذا السؤال";
 
     const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete Question' : 'حذف السؤال', message);
@@ -166,8 +168,8 @@ else{
     dialogRef.afterClosed().subscribe(dialogResult => {
       if (dialogResult == true) {
         const index = this.exam.questions.indexOf(question);
-        if (index > -1){
-          this.exam.questions.splice(index,1);
+        if (index > -1) {
+          this.exam.questions.splice(index, 1);
         }
       }
     });

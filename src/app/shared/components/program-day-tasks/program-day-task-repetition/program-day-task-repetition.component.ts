@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IProgramDayTaskRepetition } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-repetition';
 
 @Component({
@@ -7,14 +7,14 @@ import { IProgramDayTaskRepetition } from 'src/app/core/interfaces/programs-inte
   styleUrls: ['./program-day-task-repetition.component.scss']
 })
 export class ProgramDayTaskRepetitionComponent implements OnInit {
-  dayRepetitionModel: IProgramDayTaskRepetition = {};
+  @Input() repetitionDetailsModel: IProgramDayTaskRepetition = {};
   constructor() { }
 
   ngOnInit(): void {
   }
 
   saveUpload() {
-    let hearingModel = JSON.stringify(this.dayRepetitionModel);
+    let hearingModel = JSON.stringify(this.repetitionDetailsModel);
   }
 
 }

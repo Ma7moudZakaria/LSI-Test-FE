@@ -6,7 +6,7 @@
             
 
 
-            <mat-checkbox  class="example-margin mx-2"   [(ngModel)]="dayRepetitionModel.isMndatory"
+            <mat-checkbox  class="example-margin mx-2"   [(ngModel)]="repetitionDetailsModel.isMndatory"
             class="example-margin ">الزامى </mat-checkbox>
         </div>
     
@@ -17,12 +17,12 @@
         <div class="row">
             <div class="col-3">
                 <label class="text-right header_input"> عدد مرات التكرار</label>
-                <input type="text" class="form-control  " [(ngModel)]="dayRepetitionModel.repetitionNo" >
+                <input type="text" class="form-control  " [(ngModel)]="repetitionDetailsModel.repetitionNo" >
             </div>
     
             <div class="col-3">
                     <label class="text-right header_input"> الدرجة</label>
-                    <input type="text" class="form-control mx-2" [(ngModel)]="dayRepetitionModel.degree" >
+                    <input type="text" class="form-control mx-2" [(ngModel)]="repetitionDetailsModel.degree" >
             </div>
           
         </div>
@@ -38,7 +38,7 @@
             <div class="col-12">
                 <label class="text-right header_input">الرسالة </label>
     
-               <input type="text" class="form-control " [(ngModel)]="dayRepetitionModel.msg" >
+               <input type="text" class="form-control " [(ngModel)]="repetitionDetailsModel.msg" >
         
             </div>
     
@@ -52,7 +52,7 @@
             <div class="col-12">
                 <label class="text-right header_input"> السؤال الذي يظهر للطالب </label>
     
-               <input type="text" class="form-control " [(ngModel)]="dayRepetitionModel.questionToStudent" >
+               <input type="text" class="form-control " [(ngModel)]="repetitionDetailsModel.questionToStudent" >
         
             </div>
     
