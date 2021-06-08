@@ -1,7 +1,7 @@
 <div class="days_details">
 
 
-    <app-program-day-task-hearing></app-program-day-task-hearing>
+    <app-program-day-task-hearing *ngIf="detailsTypeEnum.taskHearing===huffazTaskType"></app-program-day-task-hearing>
     <!-- <app-program-day-task-video></app-program-day-task-video> -->
     <!-- <app-program-day-task-read-explanation></app-program-day-task-read-explanation> -->
     <!-- <app-program-day-task-repetition></app-program-day-task-repetition> -->

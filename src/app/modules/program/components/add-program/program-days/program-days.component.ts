@@ -12,7 +12,7 @@ import { ProgramDayTasksComponent } from './program-day-tasks/program-day-tasks.
 export class ProgramDaysComponent implements OnInit {
 
   @ViewChild(ProgramDayTasksComponent) progDayTaskChild: ProgramDayTasksComponent | undefined;
-  @ViewChild(ProgramDayTasksComponent) progDayTaskDetailsChild: ProgramDayTasksDetailsComponent | undefined;
+  @ViewChild(ProgramDayTasksDetailsComponent) progDayTaskDetailsChild: ProgramDayTasksDetailsComponent | undefined;
 
   @Input() progDetails: IProgramDetails = {};
   programDutyDay: IProgramDutyDays = {}
@@ -58,6 +58,6 @@ this.progDutyDayEventCallBk(this.programDutyDay);
   sendTaskIdToProgDayTaskDetails(huffazTask?:any){
     this.progDayTaskDetailsChild?.programDayTaskId!=huffazTask.programDayTaskId;
     this.progDayTaskDetailsChild?.huffazTaskType!=huffazTask.huffazTaskType;
-  
+    this.progDayTaskDetailsChild?.getProgramDayTaskDetails(huffazTask.programDayTaskId,huffazTask.huffazTaskType);
   }
 }

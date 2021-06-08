@@ -1,0 +1,15 @@
+export enum ProgramDayTasksDetails {
+    taskHearing=1,
+   TaskReadExplanation=13,
+TaskMemorize=3,
+TaskRepetition=4,
+TaskLinking=5,
+TtaskDailyTest=6,
+TaskEncouragementLetter=3,
+TaskVideo=10,
+TaskReview=11,
+TaskRecitation=7,
+TaskRecitationStudents=8,
+TaskTasmea=14,
+TaskTestPhased=15,
+}

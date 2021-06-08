@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ProgramDayTasksDetails } from 'src/app/core/enums/programs/program-day-tasks-details.enum';
 
 @Component({
   selector: 'app-program-day-tasks-details',
@@ -8,11 +9,12 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ProgramDayTasksDetailsComponent implements OnInit {
   @Input()programDayTaskId?:any;
   @Input()huffazTaskType?:number;
+  detailsTypeEnum = ProgramDayTasksDetails;
   constructor() { }
 
   ngOnInit(): void {
   }
-getProgramDayTaskDetails(id?:any,huffazTask?:number){
+ getProgramDayTaskDetails(id?:string,huffazTask?:number){
   this.programDayTaskId=id;
   this.huffazTaskType=huffazTask;
   console.log("this.programDayTaskId:"+this.programDayTaskId+"this.huffazTaskType:"+this.huffazTaskType)
