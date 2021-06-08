@@ -1,5 +1,5 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
@@ -13,6 +13,7 @@ import { LanguageService } from 'src/app/core/services/language-services/languag
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 import { ProgramDayTasksService } from 'src/app/core/services/program-services/program-day-tasks.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
+import { ProgramDayTasksDetailsComponent } from '../program-day-tasks-details/program-day-tasks-details.component';
 
 @Component({
   selector: 'app-program-day-tasks',
@@ -20,12 +21,15 @@ import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/compon
   styleUrls: ['./program-day-tasks.component.scss']
 })
 export class ProgramDayTasksComponent implements OnInit {
+ 
 
   @Output() openAddDayTasks = new EventEmitter<boolean>();
   @Output() programDutyDayModel = new EventEmitter<IProgramDutyDays>();
 
   @Input() programDutyDay = {} as IProgramDutyDays;
-
+  @Output()programDayTaskId=new EventEmitter<string>();
+  @Output()huffazTaskType=new EventEmitter<number>();
+  @Output()huffazTask=new EventEmitter<{programDayTaskId:'',huffazTaskType:''}>();
   langEnum = LanguageEnum;
   resMessage: BaseMessageModel = {};
   programDayTasksLists = [] as Array<IProgramDayTasksModel>;
@@ -82,26 +86,32 @@ export class ProgramDayTasksComponent implements OnInit {
 
   }
 
-  deleteTask(id?: string){
-    this.programDayTasksService.DeleteProgramDayTasks(id || '').subscribe(res => {
-      if (res.isSuccess) {
-        this.programDayTasksLists = res.data as Array<IProgramDayTasksModel>;
+  setProgrmeDayTask(id?: any,huffazTask?:any){
+    this.huffazTask.emit({programDayTaskId:id,huffazTaskType:huffazTask});
 
-        console.log("programDayTasksLists ===========>", this.programDayTasksLists);
-      }
-      else {
-        this.resMessage =
-        {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
-      }
-    }, error => {
-      this.resMessage = {
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
-      }
-    });
+    //this.progDayTaskDetailsChild?.getProgramDayTaskDetails(id ||'',huffazTask);
+
+    // this.programDayTasksService.DeleteProgramDayTasks(id || '').subscribe(res => {
+    //   if (res.isSuccess) {
+    //     this.programDayTasksLists = res.data as Array<IProgramDayTasksModel>;
+
+    //     console.log("programDayTasksLists ===========>", this.programDayTasksLists);
+    //   }
+    //   else {
+    //     this.resMessage =
+    //     {
+    //       message: res.message,
+    //       type: BaseConstantModel.DANGER_TYPE
+    //     }
+    //   }
+    // }, error => {
+    //   this.resMessage = {
+    //     message: error,
+    //     type: BaseConstantModel.DANGER_TYPE
+    //   }
+    // });
+
+
   }
 
   copyTask(id?: string){
