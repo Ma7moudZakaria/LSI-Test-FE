@@ -56,8 +56,6 @@ this.progDutyDayEventCallBk(this.programDutyDay);
 
   }
   sendTaskIdToProgDayTaskDetails(huffazTask?:any){
-    this.progDayTaskDetailsChild?.programDayTaskId!=huffazTask.programDayTaskId;
-    this.progDayTaskDetailsChild?.huffazTaskType!=huffazTask.huffazTaskType;
     this.progDayTaskDetailsChild?.getProgramDayTaskDetails(huffazTask.programDayTaskId,huffazTask.huffazTaskType);
   }
 }
