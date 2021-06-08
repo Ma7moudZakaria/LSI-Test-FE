@@ -29,7 +29,7 @@ export class ProgramDayTasksComponent implements OnInit {
   @Input() programDutyDay = {} as IProgramDutyDays;
   @Output()programDayTaskId=new EventEmitter<string>();
   @Output()huffazTaskType=new EventEmitter<number>();
-  @Output()huffazTask=new EventEmitter<{programDayTaskId:'',huffazTaskType:''}>();
+  @Output()taskDetailsEvent=new EventEmitter<IProgramDayTasksModel>();
   langEnum = LanguageEnum;
   resMessage: BaseMessageModel = {};
   programDayTasksLists = [] as Array<IProgramDayTasksModel>;
@@ -86,8 +86,8 @@ export class ProgramDayTasksComponent implements OnInit {
 
   }
 
-  setProgrmeDayTask(id?: any,huffazTask?:any){
-    this.huffazTask.emit({programDayTaskId:id,huffazTaskType:huffazTask});
+  setProgrmeDayTask(item : IProgramDayTasksModel){
+    this.taskDetailsEvent.emit(item);
 
     //this.progDayTaskDetailsChild?.getProgramDayTaskDetails(id ||'',huffazTask);
 

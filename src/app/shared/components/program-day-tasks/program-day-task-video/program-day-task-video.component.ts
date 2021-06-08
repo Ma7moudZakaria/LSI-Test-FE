@@ -80,8 +80,8 @@ export class ProgramDayTaskVideoComponent implements OnInit {
     this.attachmentIds = this.attachmentIds.filter(a => a !== id);
   }
   saveVideoTaskToProgram() {
-    this.programDayTaskDetails.programDayTask = this.selectedTaskId;
-    this.programDayTaskVideoObj.attachmentIds=this.attachmentIds;
+    // this.programDayTaskDetails.programDayTask = this.selectedTaskId;
+    // this.programDayTaskVideoObj.attachmentIds=this.attachmentIds;
     this.programDayTaskDetails.detailsTask = JSON.stringify(this.programDayTaskVideoObj);
     this.resultMessage = {};
        this.programDayTasksService.SaveProgramDayTaskDetails(this.programDayTaskDetails).subscribe(res => {

@@ -1,5 +1,6 @@
 import { EventEmitter, Input, ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-model';
 import { IProgramDetails, IProgramDutyDays } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { ProgramDayTasksDetailsComponent } from './program-day-tasks-details/program-day-tasks-details.component';
 import { ProgramDayTasksComponent } from './program-day-tasks/program-day-tasks.component';
@@ -16,6 +17,7 @@ export class ProgramDaysComponent implements OnInit {
 
   @Input() progDetails: IProgramDetails = {};
   programDutyDay: IProgramDutyDays = {}
+  taskDetails?:IProgramDayTasksModel;
 
   showAddDayTasksForm = false;
 
@@ -55,7 +57,7 @@ this.progDutyDayEventCallBk(this.programDutyDay);
     this.dataOfProgDutyDay = this.programDutyDay;
 
   }
-  sendTaskIdToProgDayTaskDetails(huffazTask?:any){
-    this.progDayTaskDetailsChild?.getProgramDayTaskDetails(huffazTask.programDayTaskId,huffazTask.huffazTaskType);
+  sendTaskIdToProgDayTaskDetails(item?:IProgramDayTasksModel){
+    this.taskDetails=item;
   }
 }

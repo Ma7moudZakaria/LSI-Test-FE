@@ -4,10 +4,10 @@
             <app-program-duty-days [progDaysList]='progDetails?.progDays' (progDutyDayEvent)='progDutyDayEventCallBk($event)'></app-program-duty-days>
         </div>
         <div class="col-3">
-            <app-program-day-tasks (openAddDayTasks)="openAddDayTasksForm()" [programDutyDay]='programDutyDay' (huffazTask)="sendTaskIdToProgDayTaskDetails($event)"></app-program-day-tasks>
+            <app-program-day-tasks (openAddDayTasks)="openAddDayTasksForm()" [programDutyDay]='programDutyDay' (taskDetailsEvent)="sendTaskIdToProgDayTaskDetails($event)"></app-program-day-tasks>
         </div>
-        <div class="col-6"> 
-            <app-program-day-tasks-details ></app-program-day-tasks-details >
+        <div class="col-6" > 
+            <app-program-day-tasks-details [taskDetails]='taskDetails' ></app-program-day-tasks-details >
         </div>
     </div>
 </div>

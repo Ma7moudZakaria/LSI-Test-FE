@@ -1,5 +1,5 @@
 import { BaseLookupModel } from 'src/app/core/ng-model/base-lookup-model';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { IAttachment } from 'src/app/core/interfaces/attachments-interfaces/iattachment';
 import { IFileUpload } from 'src/app/core/interfaces/attachments-interfaces/ifile-upload';
 import { IProgramDayTaskHearing } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-hearing';
@@ -17,8 +17,9 @@ export class ProgramDayTaskHearingComponent implements OnInit {
   fileUploadModel: IFileUpload[] = [];
   fileList?: IAttachment[] = [];
   attachmentIds: string[] = [];
-  dayTaskHearingModel: IProgramDayTaskHearing = { hearingAttachments: [] };
-
+  // dayTaskHearingModel: IProgramDayTaskHearing = { hearingAttachments: [] };
+  @Input() hearingTaskDetailsModel : IProgramDayTaskHearing = {}
+  
   constructor(
     private attachmentService: AttachmentsService
 
@@ -74,7 +75,7 @@ export class ProgramDayTaskHearingComponent implements OnInit {
   }
 
   saveUpload() {
-    let hearingModel = JSON.stringify(this.dayTaskHearingModel);
+    let hearingModel = JSON.stringify(this.hearingTaskDetailsModel);
 
     // this.programDayTaskDetails.programDayTask = this.selectedTaskId;
     // this.programDayTaskDetails.detailsTask = JSON.stringify(this.exam.questions);
