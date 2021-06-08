@@ -26,7 +26,7 @@ import { ITelInputParams } from 'src/app/core/interfaces/shared-interfaces/tel-i
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
 import { ITeacherProfileLookup } from 'src/app/core/interfaces/teacher-interfaces/iteacher-profile-lookup';
 import { ITeacherProfileProgramDegreeLookup } from 'src/app/core/interfaces/teacher-interfaces/iteacher-profile-program-lookup';
-import { IprogramFilterRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-request';
+import { IProgramFilterAdvancedRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-requests';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
@@ -62,7 +62,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
   hijriBirthDateInputParam: NgbDateStruct = { year: 0, day: 0, month: 0 };
 
   ProgramsList: IprogramsModel[] = [];;
-  ProgramFilter: IprogramFilterRequest = {};
+  ProgramFilter: IProgramFilterAdvancedRequest = {};
 
   rewayatsMessage: BaseMessageModel = {};
   selectedRewayatsList = Array<ITeacherProfileLookup>();

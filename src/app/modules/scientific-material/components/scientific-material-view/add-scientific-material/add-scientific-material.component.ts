@@ -17,7 +17,7 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
-import { IProgramFilterByNameFilterRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-by-name-filter-request';
+import { IProgramFilterByNameRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-requests';
 
 @Component({
   selector: 'app-add-scientific-material',
@@ -42,7 +42,7 @@ export class AddScientificMaterialComponent implements OnInit {
   disableSaveButtons = false;
   selectedProgramsList = Array<IprogramsModel>();
   programMessage: BaseMessageModel = {};
-  programFilterByName: IProgramFilterByNameFilterRequest = {};
+  programFilterByName: IProgramFilterByNameRequest = {};
 
   @Input() selectedMaterialId: any;
   @Output() submitSuccess = new EventEmitter<boolean>();

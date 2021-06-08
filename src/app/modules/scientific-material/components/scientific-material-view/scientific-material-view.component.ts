@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
-import { IProgramFilterByNameFilterRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-by-name-filter-request';
+import { IProgramFilterByNameRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-requests';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
@@ -22,7 +22,7 @@ export class ScientificMaterialViewComponent implements OnInit {
   submitSuccess:boolean=true;
   showMaterialForm = false;
   resMessage: BaseMessageModel = {};
-  programFilterByName: IProgramFilterByNameFilterRequest = {};
+  programFilterByName: IProgramFilterByNameRequest = {};
 
   constructor( private scientifcMaterialService: ScientificMaterialService,
     private languageService: LanguageService, public translate: TranslateService) { }
