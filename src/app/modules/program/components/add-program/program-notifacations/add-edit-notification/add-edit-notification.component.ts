@@ -86,11 +86,11 @@ export class AddEditNotificationComponent implements OnInit {
   buildForm() {
     this.notifyForm = this.fb.group(
       {
-        notifyName: ['', [Validators.required]],
-        numberNotify: ['', [Validators.required]],
+        notifyName: ['', [Validators.required, Validators.maxLength(100), Validators.pattern(BaseConstantModel.LETTERS_WITH_ALPHANUMERIC_AND_SPECIAL_CHAR)]],
+        numberNotify: ['', [Validators.required, Validators.maxLength(100), Validators.pattern(BaseConstantModel.LETTERS_WITH_ALPHANUMERIC_AND_SPECIAL_CHAR)]],
         notifyType: ['', [Validators.required]],
-        messageAr: ['', [Validators.required, Validators.maxLength(50), Validators.pattern(BaseConstantModel.ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
-        messageEn: ['', [Validators.required, Validators.maxLength(50), Validators.pattern(BaseConstantModel.ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]]
+        messageAr: ['', [Validators.required, Validators.maxLength(300), Validators.pattern(BaseConstantModel.ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
+        messageEn: ['', [Validators.required, Validators.maxLength(300), Validators.pattern(BaseConstantModel.ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]]
       })
   }
 

@@ -4,7 +4,7 @@ import { IProgramDetails, IProgramDutyDays } from 'src/app/core/interfaces/progr
 import { ProgramDayTasksComponent } from './program-day-tasks/program-day-tasks.component';
 
 @Component({
-  selector: 'app-program-days',
+  selector: 'app-program-days', 
   templateUrl: './program-days.component.html',
   styleUrls: ['./program-days.component.scss']
 })
