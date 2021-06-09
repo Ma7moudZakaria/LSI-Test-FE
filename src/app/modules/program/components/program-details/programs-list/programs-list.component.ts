@@ -36,8 +36,8 @@ export class ProgramsListComponent implements OnInit {
     this.loadProgramsbyAdvancedFilter();
   }
 
-  loadProgramsbyAdvancedFilter(filterRequest?: any,) {
-    if (filterRequest != null || filterRequest != "")
+  loadProgramsbyAdvancedFilter(filterRequest?: any) {
+    if (filterRequest != null || filterRequest != "" || filterRequest != {})
       this.programService.getProgramAdvancedFilter(filterRequest.name);
 
     this.programService.getProgramAdvancedFilter(filterRequest).subscribe(
