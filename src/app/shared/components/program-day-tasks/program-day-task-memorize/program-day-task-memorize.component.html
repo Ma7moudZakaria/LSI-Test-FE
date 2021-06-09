@@ -4,7 +4,7 @@
     <h3 class="ml-3">الحفظ</h3>
         
         <mat-checkbox  class="example-margin mx-2"   [(ngModel)]="memorizeDetailsModel.isMndatory"
-        class="example-margin ">الزامى </mat-checkbox>
+        class="example-margin ">{{'GENERAL.MANDATORY'| translate}} </mat-checkbox>
     </div>
     
     
@@ -22,43 +22,33 @@
         
     </div>
     
-   
-  
-    
     <div class="form-group">
         <label class="custom-file custom-file__text" for="importFile">
-         
             <span> 
-                <!-- <img calss="page-image"    src="assets/images/walk-through/Group 18093.svg"  > -->
-                <p> إختر الملفات لرفعها / اسحبها وضعها هنا</p>
+                <p>{{'GENERAL.CHOOSEFILE' |translate}}</p>
             </span>
         </label>
-        
-        <input type="file" class="custom-file-input" id="importFile" [(ngModel)]="memorizeDetailsModel.bookAttatchments"
+        <input type="file" class="custom-file-input" id="importFile" 
         (change)="onFileChange($any($event.target).files)" >
-    
-        
-                <div class="col-4 cardRecourd"  *ngFor="let item of fileList;let i=index" >
+                <div class="col-4 cardRecourd"  *ngFor="let item of memorizeDetailsModel?.bookAttatchments;let i=index" >
                     <img src="assets/images/days/book.svg">
-                    <span>00</span>
+                    <span>{{item.fileName}}</span>
                     <i class="fas fa-play-circle"></i>
                     <img src="assets/images/trash-2.svg" (click)="DeleteAttachment(i,item.id)">
                 </div>
     </div>
     
-   
-
     <div class="form-group">
         <div class="row">
             <div class="col-6">
-                <label class="text-right header_input"> الصفحات</label>
+                <label class="text-right header_input">{{'PROGRAM_DAY_TASK_DETIALS.PAGES'|translate}}</label>
             <div class="d-flex ">
                 <input type="text" class="form-control  " [(ngModel)]="memorizeDetailsModel.frmoPage" >
                 
                 <input type="text" class="form-control mx-2" [(ngModel)]="memorizeDetailsModel.toPage" >
 
-                <mat-checkbox  class="example-margin mx-2"  
-                class="example-margin ">الزامى </mat-checkbox>
+                <mat-checkbox  class="example-margin mx-2"  [(ngModel)]="memorizeDetailsModel.fileIsMndatory"
+                class="example-margin ">{{'GENERAL.MANDATORY'| translate}} </mat-checkbox>
 
             </div>
               
@@ -68,11 +58,10 @@
         
     </div>
 
-
     <div class="form-group">
         <div class="row">
             <div class="col-12">
-                <label class="text-right header_input"> السؤال الذي يظهر للطالب </label>
+                <label class="text-right header_input">{{'PROGRAM_DAY_TASK_DETIALS.SHOW_QUESTION_TO_STUDENT'|translate}} </label>
     
                <input type="text" class="form-control " [(ngModel)]="memorizeDetailsModel.questionToStudent" >
         
@@ -81,24 +70,4 @@
         </div>
         
     </div>
-    
-    
-    
-    <section class="mt-5">
-        <div  class="row direction-rtl buttons-center mt-5">
-            <button   type="submit" class="save-btn" (click)="saveUpload()" > 
-                <!-- {{ "GENERAL.SAVE" | translate }} -->
-                SAVE
-            </button>
-           
-            <button    type="reset" class="cancel-btn"  > 
-                <!-- {{ "GENERAL.CANCEL" | translate }} -->
-                CANCEL
-                
-            </button>
-        </div>
-    </section>
-    
-    
-    
     </div>

@@ -58,8 +58,6 @@ this.progDutyDayEventCallBk(this.programDutyDay);
 
   }
   sendTaskIdToProgDayTaskDetails(item?:IProgramDayTasksModel){
-    console.log('pass '+ item);
-    console.log(item);
     this.taskDetails=item;
   }
 }

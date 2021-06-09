@@ -13,8 +13,6 @@ import { AttachmentsService } from 'src/app/core/services/attachments-services/a
 })
 export class ProgramDayTaskMemorizeComponent implements OnInit {
 
-
-  // memorizeDetailsModel: IProgramDayTaskMemorize = { bookAttatchments: [] };
   resMessage: BaseMessageModel = {};
   fileUploadModel: IFileUpload[] = [];
   fileList?: IAttachment[] = [];
@@ -32,12 +30,8 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-
-
   DeleteAttachment(index: number, id: string) {
-    this.fileList?.splice(index, 1);
-    this.attachmentIds = this.attachmentIds.filter(a => a !== id);
+    this.memorizeDetailsModel?.bookAttatchments?.splice(index, 1);
   }
 
   onFileChange(files: FileList) {
@@ -62,10 +56,9 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
     this.attachmentService.upload(files).subscribe(
       (res: any) => {
         Array.from(res.data).forEach((elm: any) => {
-          this.attachmentIds.push(elm.id);
-          this.fileList?.push(elm);
-
+          this.fileList?.push(elm as IAttachment);
         })
+        this.memorizeDetailsModel.bookAttatchments=this.fileList;
         this.fileUploadModel = [];
       }, error => {
         console.log(error);
@@ -78,12 +71,4 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
       }
     )
   }
-
-  saveUpload() {
-    let hearingModel = JSON.stringify(this.memorizeDetailsModel);
-  }
-
-
-
-
 }

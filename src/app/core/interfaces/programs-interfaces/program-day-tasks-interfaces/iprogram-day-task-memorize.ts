@@ -6,6 +6,7 @@ export interface IProgramDayTaskMemorize {
     frmoPage?: string;
     toPage?: string;
     degree?: number;
+    fileIsMndatory?: boolean;
     questionToStudent?: string
 }
 

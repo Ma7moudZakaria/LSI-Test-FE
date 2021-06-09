@@ -5,7 +5,7 @@ export enum ProgramDayTasksDetails {
     TaskRepetition = 4,
     TaskLinking = 5,
     TaskDailyTest = 6,
-    TaskEncouragementLetter = 3,
+    TaskEncouragementLetter = 9,
     TaskVideo = 10,
     TaskReview = 11,
     TaskRecitation = 7,

@@ -128,34 +128,34 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
        this.hearingTaskDetailsModel= JSON.parse(this.taskDetails?.detailsTask||"");
         break;
       case this.detailsTypeEnum.TaskReadExplanation:
-        this.readExplanationDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"");
+        this.readExplanationDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
         break;
         case this.detailsTypeEnum.TaskMemorize:
-         this.memorizeDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"");
+         this.memorizeDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
           break;
           case this.detailsTypeEnum.TaskRepetition:
-           this.repetitionDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"");
+           this.repetitionDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
             break;
            case this.detailsTypeEnum.TaskLinking:
-            this.linkingDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"");
+            this.linkingDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
             break;
             case this.detailsTypeEnum.TaskEncouragementLetter:
-              this.encouragementLetterDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"");
+              this.encouragementLetterDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
               break;
               case this.detailsTypeEnum.TaskVideo:
-               this.videoDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"");
+               this.videoDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
                 break;
                 case this.detailsTypeEnum.TaskReview:
-               this.reviewDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"");
+               this.reviewDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
                 break;
                 case this.detailsTypeEnum.TaskRecitation:
-                  this.recitationDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"");
+                  this.recitationDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
                   break;
                   case this.detailsTypeEnum.TaskRecitationStudents:
-                    this.recitationStudentsModel=JSON.parse(this.taskDetails?.detailsTask||"");
+                    this.recitationStudentsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
                     break;
                     case this.detailsTypeEnum.TaskTestPhased:
-                    this.testPhasedDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"");
+                    this.testPhasedDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
                     break;
       default:
         "";

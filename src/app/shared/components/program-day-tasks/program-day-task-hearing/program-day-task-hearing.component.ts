@@ -25,8 +25,7 @@ export class ProgramDayTaskHearingComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('init hearing ' + this.hearingTaskDetailsModel);
-    console.log(this.hearingTaskDetailsModel);
+ 
   }
 
   DeleteAttachment(index: number, id: string) {
