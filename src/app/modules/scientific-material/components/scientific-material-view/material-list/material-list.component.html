@@ -13,7 +13,7 @@
     <div class="col-3 p-0 align-items-center mb-3">
 
         <div class="upload" *ngIf='roleService.isAdmin()'>
-          <span style="color: #CB9118;"> {{ 'SCIENTIFIC_MATERIAL.ADD_SCIENTIFIC_MATERIAL' | translate}} </span>
+          <span style="color: #CB9118;" class="sc"> {{ 'SCIENTIFIC_MATERIAL.ADD_SCIENTIFIC_MATERIAL' | translate}} </span>
           <a (click)="loadMaterial()"   matTooltip="{{ 'QUESTION_BANK.ADD' | translate}}">
              <img calss="m-2 pull-left"  src="assets/images/scientificMaterial/Group 18093.svg" alt="">
           </a>
