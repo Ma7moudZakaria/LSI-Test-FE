@@ -6,6 +6,7 @@ import { AttachmentsService } from 'src/app/core/services/attachments-services/a
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { IProgramDayTaskLinking } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-linking';
+import { ProgramDayTaskLinkingType } from 'src/app/core/enums/program-day-task-linking-type.enum';
 @Component({
   selector: 'app-program-day-task-linking',
   templateUrl: './program-day-task-linking.component.html',
@@ -14,27 +15,22 @@ import { IProgramDayTaskLinking } from 'src/app/core/interfaces/programs-interfa
 export class ProgramDayTaskLinkingComponent implements OnInit {
 
   resMessage: BaseMessageModel = {};
-
+  @Input() linkingDetailsModel: IProgramDayTaskLinking = {};
+ TaskLinkingTypeEnum=ProgramDayTaskLinkingType;
   constructor(
     private attachmentService: AttachmentsService
 
   ) { }
 
-
-  // linkingDetailsModel: IProgramDayTaskLinking = { bookAttatchments: [] };
-  @Input() linkingDetailsModel: IProgramDayTaskLinking = {};
   ngOnInit(): void {
   }
-
-
 
   fileUploadModel: IFileUpload[] = [];
   fileList?: IAttachment[] = [];
   attachmentIds: string[] = [];
 
   DeleteAttachment(index: number, id: string) {
-    this.fileList?.splice(index, 1);
-    this.attachmentIds = this.attachmentIds.filter(a => a !== id);
+    this.linkingDetailsModel?.bookAttatchments?.splice(index, 1);
   }
 
   onFileChange(files: FileList) {
@@ -59,10 +55,10 @@ export class ProgramDayTaskLinkingComponent implements OnInit {
     this.attachmentService.upload(files).subscribe(
       (res: any) => {
         Array.from(res.data).forEach((elm: any) => {
-          this.attachmentIds.push(elm.id);
-          this.fileList?.push(elm);
+          this.fileList?.push(elm as IAttachment);
 
         })
+        this.linkingDetailsModel.bookAttatchments=this.fileList;
         this.fileUploadModel = [];
       }, error => {
         console.log(error);
@@ -74,10 +70,6 @@ export class ProgramDayTaskLinkingComponent implements OnInit {
         }
       }
     )
-  }
-
-  saveUpload() {
-    let hearingModel = JSON.stringify(this.linkingDetailsModel);
   }
 
 

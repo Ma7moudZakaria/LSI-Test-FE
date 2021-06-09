@@ -27,8 +27,7 @@ export class ProgramDayTaskReadExplanationComponent implements OnInit {
   @Input() readExplanationDetailsModel: IProgramDayTaskReadExplanation = {};
 
   ngOnInit(): void {
-    console.log('init exp ' + this.readExplanationDetailsModel);
-    console.log(this.readExplanationDetailsModel);
+   
   }
 
   DeleteAttachment(index: number, id: string) {

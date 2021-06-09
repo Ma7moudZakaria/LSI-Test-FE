@@ -13,8 +13,4 @@ export class ProgramDayTaskRepetitionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  saveUpload() {
-    let hearingModel = JSON.stringify(this.repetitionDetailsModel);
-  }
-
 }

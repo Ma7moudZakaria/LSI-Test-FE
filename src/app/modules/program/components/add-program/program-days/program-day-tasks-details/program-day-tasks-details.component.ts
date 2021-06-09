@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { ProgramDayTasksDetails } from 'src/app/core/enums/programs/program-day-tasks-details.enum';
 import { IAttacheExamTemplateModel } from 'src/app/core/interfaces/exam-form-interfaces/iattache-exam-template-model';
 import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-model';
@@ -41,6 +42,7 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
   recitationStudentsModel :IProgramDayTaskRecitationStudents={}
   programDayTaskDetails: ISaveProgramDayTaskDetailsModel={};
   resultMessage: BaseMessageModel = {};
+  langEnum = LanguageEnum;
 
   constructor(
     public translate: TranslateService,

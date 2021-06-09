@@ -2,10 +2,6 @@
 <div class="day-task-repetition">
     <div class="form-group">
         <div class="row">
-        <h3 class="ml-3">التكرار</h3>
-            
-
-
             <mat-checkbox  class="example-margin mx-2"   [(ngModel)]="repetitionDetailsModel.isMndatory"
             class="example-margin ">الزامى </mat-checkbox>
         </div>
@@ -19,38 +15,27 @@
                 <label class="text-right header_input"> عدد مرات التكرار</label>
                 <input type="text" class="form-control  " [(ngModel)]="repetitionDetailsModel.repetitionNo" >
             </div>
-    
             <div class="col-3">
-                    <label class="text-right header_input"> الدرجة</label>
+                    <label class="text-right header_input"> {{'PROGRAM_DAY_TASK_DETIALS.PAGES'|translate}}</label>
                     <input type="text" class="form-control mx-2" [(ngModel)]="repetitionDetailsModel.degree" >
             </div>
-          
         </div>
-        
     </div>
 
-    
-
-  
-  
     <div class="form-group">
         <div class="row">
             <div class="col-12">
                 <label class="text-right header_input">الرسالة </label>
     
                <input type="text" class="form-control " [(ngModel)]="repetitionDetailsModel.msg" >
-        
             </div>
-    
         </div>
-        
     </div>
-    
     
     <div class="form-group">
         <div class="row">
             <div class="col-12">
-                <label class="text-right header_input"> السؤال الذي يظهر للطالب </label>
+                <label class="text-right header_input">{{'PROGRAM_DAY_TASK_DETIALS.SHOW_QUESTION_TO_STUDENT'|translate}}</label>
     
                <input type="text" class="form-control " [(ngModel)]="repetitionDetailsModel.questionToStudent" >
         
@@ -59,24 +44,5 @@
         </div>
         
     </div>
-    
-    
-    
-    <section class="mt-5">
-        <div  class="row direction-rtl buttons-center mt-5">
-            <button   type="submit" class="save-btn" (click)="saveUpload()" > 
-                <!-- {{ "GENERAL.SAVE" | translate }} -->
-                SAVE
-            </button>
-           
-            <button    type="reset" class="cancel-btn"  > 
-                <!-- {{ "GENERAL.CANCEL" | translate }} -->
-                CANCEL
-                
-            </button>
-        </div>
-    </section>
-    
-    
     
     </div>
