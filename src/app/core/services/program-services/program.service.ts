@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IAssignExamFormsToProgram } from '../../interfaces/programs-interfaces/iassign-exam-forms-to-program';
 import { IprogramCreatModel } from '../../interfaces/programs-interfaces/iprogram-creat-model';
+import { IProgramFilterByNameFilterRequest } from '../../interfaces/programs-interfaces/iprogram-filter-by-name-filter-request';
 import { IprogramFilterRequest } from '../../interfaces/programs-interfaces/iprogram-filter-request';
 import { IprogramUpdateModel } from '../../interfaces/programs-interfaces/iprogram-update-model';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
@@ -20,7 +21,8 @@ export class ProgramService {
   
   GetProgramsFilterURL=environment.baseUrl+'QuestionBankQuestions/get-question-bank-questions-filter/';
   DeleteProgramURL=environment.baseUrl+'QuestionBankQuestions/delete-question-bank-question/';
-  GetAllProgramsURL=environment.baseUrl+'Programs/get-programs-lookup/';
+  // GetAllProgramsURL=environment.baseUrl+'Programs/get-programs-lookup/';
+  GetAllProgramsURL=environment.baseUrl+'Programs/get-program-filter-by-name/';
 
   assignExamFormToProgramURL=environment.baseUrl+'Programs/assign-exam-form-to-program/';
   updateProgramExamToggleURL=environment.baseUrl+'Programs/update-program-exam-form-toggle/';
@@ -38,8 +40,8 @@ export class ProgramService {
     return this.http.post<BaseResponseModel>(this.GetProgramsFilterURL,filterRequest)
   }
 
-  getAllPrograms():Observable<BaseResponseModel>{
-    return this.http.get<BaseResponseModel>(this.GetAllProgramsURL)
+  getAllPrograms(model:IProgramFilterByNameFilterRequest):Observable<BaseResponseModel>{
+    return this.http.post<BaseResponseModel>(this.GetAllProgramsURL, model)
   }
 
   // getProgramDetails(id:string):Observable<BaseResponseModel>{

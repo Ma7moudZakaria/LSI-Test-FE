@@ -1,7 +1,6 @@
 export interface ITeacherProfileProgramDegreeLookup {
     id?:string;
-    programNameAr?:string;
-    programNameEn?:string;
+    progName?:string;
     degreeNameAr?:string;
     degreeNameEn?:string;
 
