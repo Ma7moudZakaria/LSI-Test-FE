@@ -6,6 +6,9 @@ export interface IProgramFilterAdvancedRequest {
   isTest?: boolean;
   PageNumber?: number;
   PageSize?: number;
+
+  arabName?:string;
+  engName?:string;
 }
 
 

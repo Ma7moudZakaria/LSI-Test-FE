@@ -19,7 +19,9 @@ import { IProgramFilterAdvancedRequest } from 'src/app/core/interfaces/programs-
 })
 export class ProgramsListComponent implements OnInit {
 
-  programs: any;
+  programsList :IprogramsModel[]=[];
+  programsbyAdvancedFilter :IProgramFilterAdvancedRequest= {};
+
   @Output() selectedProgram = new EventEmitter<IprogramsModel>();
   langEnum = LanguageEnum;
   resMessage: BaseMessageModel = {};
@@ -32,17 +34,26 @@ export class ProgramsListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loadPrograms();
-    this.loadProgramsbyAdvancedFilter();
+    // this.loadPrograms();
+    this.programsbyAdvancedFilter = {
+      // name:null,
+      // dura:0,
+      // typeList: ["","",""],
+      // isTest: false,
+      // PageNumber: 0,
+      // PageSize: 7199254740992,
+    }
+
+    this.loadProgramsbyAdvancedFilter( this.programsbyAdvancedFilter ) ;
   }
 
-  loadProgramsbyAdvancedFilter(filterRequest?: any) {
-    if (filterRequest != null || filterRequest != "" || filterRequest != {})
-      this.programService.getProgramAdvancedFilter(filterRequest.name);
+  loadProgramsbyAdvancedFilter(ProgramsbyAdvancedFilter: IProgramFilterAdvancedRequest) {
+    // if (filterRequest != null || filterRequest != "" || filterRequest != {})
+    //   this.programService.getProgramAdvancedFilter(filterRequest.name);
 
-    this.programService.getProgramAdvancedFilter(filterRequest).subscribe(
+    this.programService.getProgramAdvancedFilter(ProgramsbyAdvancedFilter).subscribe(
       (res: BaseResponseModel) => {
-        this.programs = res.data as IprogramsModel[];
+        this.programsList = res.data as IprogramsModel [];
       }, error => {
         this.resMessage = {
           message: error,
@@ -52,19 +63,19 @@ export class ProgramsListComponent implements OnInit {
     );
   }
 
-  loadPrograms(programName?: any) {
-    this.scientifcMaterialService.getProgramsLookup(programName).subscribe(
-      (res: BaseResponseModel) => {
-        this.programs = res.data as IprogramsModel[];
-        this.selectedIndex = -1;
-      }, error => {
-        this.resMessage = {
-          message: error,
-          type: BaseConstantModel.DANGER_TYPE
-        }
-      }
-    );
-  }
+  // loadPrograms(programName?: any) {
+  //   this.scientifcMaterialService.getProgramsLookup(programName).subscribe(
+  //     (res: BaseResponseModel) => {
+  //       this.programsList = res.data as IprogramsModel[];
+  //       this.selectedIndex = -1;
+  //     }, error => {
+  //       this.resMessage = {
+  //         message: error,
+  //         type: BaseConstantModel.DANGER_TYPE
+  //       }
+  //     }
+  //   );
+  // }
 
   selectedIndex = -1;
 
