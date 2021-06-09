@@ -1,22 +1,50 @@
 
 
-    <div  class="card">
+    <div  class="card" *ngIf="FeelingsDetailsModel.isPub">
     <div class="card_header">
-      <img src="../../../../assets/images/feelings/ASH_9078.png">  
+      <!-- <img src="../../../../assets/images/feelings/ASH_9078.png" >   -->
+      <img  [src]="FeelingsDetailsModel.img">  
+
       <div class="data pl-3 pr-3">
-        <p class="title">محمد محمد احمد</p>
+        <p class="title">{{FeelingsDetailsModel.name}}</p>
         <p class="detlis">
-        ؟وريم إيبسوم(Loفي صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ ال ؟
+          {{FeelingsDetailsModel.des}}
         </p>
 
       </div>
-      <span class="date">17/3/1442</span>
+      <span class="date">{{FeelingsDetailsModel.pubDate}}</span>
     <div class="actions">
-        <a > <img class="delete" src="../../../../assets/images/trash-2.svg"></a>
-        <a > <img class="arrow"src="../../../../assets/images/feelings/leftArrow.svg"></a>
+        <a (click)= "DeleteFeelingCard()"> <img class="delete" src="../../../../assets/images/trash-2.svg"></a>
+        <a (click)= "goPublishList()"> <img class="arrow"src="../../../../assets/images/feelings/leftArrow.svg"></a>
 
     </div>
     </div>
-</div>
+  </div>
    
 
+  <!-- publish list of card  -->
+
+
+  <div  class="card">
+    <div class="card_header">
+      <!-- <img src="../../../../assets/images/feelings/ASH_9078.png" >   -->
+      <img  [src]="FeelingsDetailsModel.img">  
+
+      <div class="data pl-3 pr-3">
+        <p class="title">{{FeelingsDetailsModel.name}}</p>
+        <p class="detlis">
+          {{FeelingsDetailsModel.des}}
+        </p>
+
+      </div>
+      <span class="date">{{FeelingsDetailsModel.pubDate}}</span>
+    <div class="actions">
+        <a (click)= "DeleteFeelingCard()"> <img class="delete" src="../../../../assets/images/trash-2.svg"></a>
+        <a (click)= "goPublishList()"> <img class="arrow"src="../../../../assets/images/feelings/leftArrow.svg"></a>
+
+    </div>
+    </div>
+  </div>
+  
+
+  

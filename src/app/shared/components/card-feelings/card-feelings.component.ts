@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { IFeelingsDetailsModel } from 'src/app/core/interfaces/feeling-interfaces/ifeelings-details-model';
 
 @Component({
   selector: 'app-card-feelings',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardFeelingsComponent implements OnInit {
 
+  @Input() FeelingsDetailsModel: IFeelingsDetailsModel = {};
+  @Output() deleteFeeling = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  DeleteFeelingCard() {
+    this.deleteFeeling.emit(this.FeelingsDetailsModel.feelId);
+  }
+  goPublishList() {
+
+  }
 }

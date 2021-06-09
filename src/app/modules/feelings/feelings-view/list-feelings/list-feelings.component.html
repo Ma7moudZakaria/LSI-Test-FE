@@ -1,13 +1,55 @@
-<p>list-feelings works!</p>
+
 <div class="row interTab">
     <div class="col-6">
         <h3 class="head"> 
             مشاعر الطلاب الجديدة
         </h3>
-        <app-card-feelings></app-card-feelings>
-
+        
+        <ng-container *ngFor="let item of FeelingsDetailsModel">
+        <app-card-feelings [FeelingsDetailsModel] = "item"  (deleteFeeling)="deleteFeelingCard($event)"></app-card-feelings>
+        </ng-container>
     </div>
-    <div class="col-6">
+
+
+
+
+
+    <mat-accordion 
+            cdkDropList
+            #unassignedList="cdkDropList"
+            [cdkDropListData]=""
+                    [cdkDropListConnectedTo]="[]"
+            (cdkDropListDropped)="FeelingsDetailsModel" >
+        <mat-expansion-panel cdkDrag  disabled>
+           
+            <mat-expansion-panel-header>
+                
+                <mat-panel-title class="qestionHeader">
+             
+                    <div class="col span_question" >
+                        <span>
+                            mmmm
+                        </span> 
+                    </div>
+                </mat-panel-title>
+                <mat-panel-title class="qestionHeader">
+             
+                    <div class="col span_question" >
+                        <span>
+                            mmmm
+                        </span> 
+                    </div>
+                </mat-panel-title>
+
+            </mat-expansion-panel-header>
+        </mat-expansion-panel>
+
+
+    </mat-accordion>
+    
+
+
+    <!-- <div class="col-6">
         <div class="list_old">
         <h3 class="head">
             قائمة مشاعر الطلاب
@@ -16,5 +58,5 @@
         <app-card-feelings></app-card-feelings>
 
     </div>
-</div>
+</div> -->
 </div>
