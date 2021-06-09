@@ -56,7 +56,9 @@
     "ADD_QUESTION": "Add Question",
     "ADD_ANSWE": "Add Answer",
     "NOT_AUTHORIZED": "YOU ARE NOT AUTHORIZED",
-    "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE": "Please complete the missing information, add more than one answer and review duplicate data"
+    "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE": "Please complete the missing information, add more than one answer and review duplicate data",
+    "CHOOSEFILE": "Choose file to upload",
+    "MANDATORY":"Mandatory"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
@@ -521,5 +523,12 @@
     "PROGRAM_JOINEXAME": "Join Examae",
     "PROGRAM_PERIODICEXAME": "Periodic Exam",
     "PROGRAM_NOTIFICATIONS": "Notifications"
+  },
+  "PROGRAM_DAY_TASK_DETIALS":{
+"DEGREE":"Degree",
+"SHOW_QUESTION_TO_STUDENT":"Show question to student",
+"THE_LISTENING":"The listening",
+"PAGES":"Pages"
+
   }
 }

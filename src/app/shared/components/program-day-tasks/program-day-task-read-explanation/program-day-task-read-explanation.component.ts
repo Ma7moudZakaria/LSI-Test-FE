@@ -6,6 +6,7 @@ import { AttachmentsService } from 'src/app/core/services/attachments-services/a
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { IProgramDayTaskReadExplanation } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-read-explanation';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-program-day-task-read-explanation',
@@ -13,31 +14,25 @@ import { IProgramDayTaskReadExplanation } from 'src/app/core/interfaces/programs
   styleUrls: ['./program-day-task-read-explanation.component.scss']
 })
 export class ProgramDayTaskReadExplanationComponent implements OnInit {
-
   resMessage: BaseMessageModel = {};
-
   fileUploadModel: IFileUpload[] = [];
   fileList?: IAttachment[] = [];
   attachmentIds: string[] = [];
-
   constructor(
+    public translate: TranslateService,
     private attachmentService: AttachmentsService
 
   ) { }
 
+  @Input() readExplanationDetailsModel: IProgramDayTaskReadExplanation = {};
 
-  // dayTaskReadExplanationModel: IProgramDayTaskReadExplanation = { bookAttatchments: [] };
-
-  @Input() readExplanationDetailsModel: IProgramDayTaskReadExplanation = {}
   ngOnInit(): void {
+    console.log('init exp ' + this.readExplanationDetailsModel);
+    console.log(this.readExplanationDetailsModel);
   }
 
-
-
-
   DeleteAttachment(index: number, id: string) {
-    this.fileList?.splice(index, 1);
-    this.attachmentIds = this.attachmentIds.filter(a => a !== id);
+    this.readExplanationDetailsModel?.bookAttatchments?.splice(index, 1);
   }
 
   onFileChange(files: FileList) {
@@ -62,10 +57,10 @@ export class ProgramDayTaskReadExplanationComponent implements OnInit {
     this.attachmentService.upload(files).subscribe(
       (res: any) => {
         Array.from(res.data).forEach((elm: any) => {
-          this.attachmentIds.push(elm.id);
-          this.fileList?.push(elm);
+          this.fileList?.push(elm as IAttachment);
 
         })
+        this.readExplanationDetailsModel.bookAttatchments=this.fileList;
         this.fileUploadModel = [];
       }, error => {
         console.log(error);
@@ -79,9 +74,7 @@ export class ProgramDayTaskReadExplanationComponent implements OnInit {
     )
   }
 
-  saveUpload() {
-    let hearingModel = JSON.stringify(this.readExplanationDetailsModel);
-  }
+
 
 
 

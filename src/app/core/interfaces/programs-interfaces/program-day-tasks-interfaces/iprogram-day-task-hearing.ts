@@ -5,5 +5,4 @@ export interface IProgramDayTaskHearing {
     degree?:number;
     hearingAttachments?:IAttachment[];
     questionToStudent?:string;
-    attachmentIds?:string[];
 }

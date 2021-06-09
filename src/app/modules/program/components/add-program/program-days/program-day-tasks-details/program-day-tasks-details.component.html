@@ -1,17 +1,9 @@
 <div class="days_details">
-
-    <!-- sdfsf {{readExplanationDetailsModel?.isMndatory}}
-    qurestino {{readExplanationDetailsModel?.questionToStudent}} -->
-    enum:{{taskDetails?.huffazTask}}
-    details:{{taskDetails?.detailsTask}}
-
     <app-program-day-task-hearing *ngIf="detailsTypeEnum.taskHearing===taskDetails?.huffazTask"
      [hearingTaskDetailsModel]='hearingTaskDetailsModel'>
     </app-program-day-task-hearing>
-
     <app-program-day-task-read-explanation *ngIf="detailsTypeEnum.TaskReadExplanation===taskDetails?.huffazTask"
     [readExplanationDetailsModel] ='readExplanationDetailsModel'></app-program-day-task-read-explanation>
-
     <app-program-day-task-memorize *ngIf="detailsTypeEnum.TaskMemorize===taskDetails?.huffazTask" [memorizeDetailsModel] ='memorizeDetailsModel'></app-program-day-task-memorize>
     <app-program-day-task-repetition *ngIf="detailsTypeEnum.TaskRepetition===taskDetails?.huffazTask" [repetitionDetailsModel]="repetitionDetailsModel"></app-program-day-task-repetition>
     <app-program-day-task-linking *ngIf="detailsTypeEnum.TaskLinking===taskDetails?.huffazTask" [linkingDetailsModel]="linkingDetailsModel"></app-program-day-task-linking>

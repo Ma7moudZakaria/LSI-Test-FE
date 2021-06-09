@@ -50,48 +50,54 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.getprogramDayTaskDetails();
   }
+  ngOnChanges(changes: any){
+    this.getprogramDayTaskDetails();
+  }
 
   save() {
-    this.programDayTaskDetails.programDayTask=this.taskDetails?.id;
     switch (this.taskDetails?.huffazTask) {
       case this.detailsTypeEnum.taskHearing:
-        this.programDayTaskDetails.detailsTask = JSON.stringify(this.hearingTaskDetailsModel);
+        this.taskDetails.detailsTask = JSON.stringify(this.hearingTaskDetailsModel);
         break;
       case this.detailsTypeEnum.TaskReadExplanation:
-        this.programDayTaskDetails.detailsTask = JSON.stringify(this.readExplanationDetailsModel);
+        this.taskDetails.detailsTask = JSON.stringify(this.readExplanationDetailsModel);
         break;
         case this.detailsTypeEnum.TaskMemorize:
-          this.programDayTaskDetails.detailsTask = JSON.stringify(this.memorizeDetailsModel);
+          this.taskDetails.detailsTask = JSON.stringify(this.memorizeDetailsModel);
           break;
           case this.detailsTypeEnum.TaskRepetition:
-            this.programDayTaskDetails.detailsTask = JSON.stringify(this.repetitionDetailsModel);
+            this.taskDetails.detailsTask = JSON.stringify(this.repetitionDetailsModel);
             break;
            case this.detailsTypeEnum.TaskLinking:
-            this.programDayTaskDetails.detailsTask = JSON.stringify(this.linkingDetailsModel);
+            this.taskDetails.detailsTask = JSON.stringify(this.linkingDetailsModel);
             break;
             case this.detailsTypeEnum.TaskEncouragementLetter:
-              this.programDayTaskDetails.detailsTask = JSON.stringify(this.encouragementLetterDetailsModel);
+              this.taskDetails.detailsTask = JSON.stringify(this.encouragementLetterDetailsModel);
               break;
               case this.detailsTypeEnum.TaskVideo:
-                this.programDayTaskDetails.detailsTask = JSON.stringify(this.videoDetailsModel);
+                this.taskDetails.detailsTask = JSON.stringify(this.videoDetailsModel);
                 break;
                 case this.detailsTypeEnum.TaskReview:
-                this.programDayTaskDetails.detailsTask = JSON.stringify(this.reviewDetailsModel);
+                this.taskDetails.detailsTask = JSON.stringify(this.reviewDetailsModel);
                 break;
                 case this.detailsTypeEnum.TaskRecitation:
-                  this.programDayTaskDetails.detailsTask = JSON.stringify(this.recitationDetailsModel);
+                  this.taskDetails.detailsTask = JSON.stringify(this.recitationDetailsModel);
                   break;
                   case this.detailsTypeEnum.TaskRecitationStudents:
-                    this.programDayTaskDetails.detailsTask = JSON.stringify(this.recitationStudentsModel);
+                    this.taskDetails.detailsTask = JSON.stringify(this.recitationStudentsModel);
                     break;
                     case this.detailsTypeEnum.TaskTestPhased:
-                    this.programDayTaskDetails.detailsTask = JSON.stringify(this.testPhasedDetailsModel);
+                    this.taskDetails.detailsTask = JSON.stringify(this.testPhasedDetailsModel);
                     break;
       default:
-        this.programDayTaskDetails.detailsTask ="";
+        this.taskDetails!.detailsTask = JSON.stringify("{}");
         break;
     }
     this.resultMessage = {};
+
+    this.programDayTaskDetails.programDayTask = this.taskDetails?.id
+    this.programDayTaskDetails.detailsTask = this.taskDetails?.detailsTask
+
     this.programDayTasksService.SaveProgramDayTaskDetails(this.programDayTaskDetails).subscribe(res => {
    let response = <BaseResponseModel>res;
    if (response.isSuccess) {

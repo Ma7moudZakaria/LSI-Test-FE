@@ -56,7 +56,9 @@
     "ADD_QUESTION": "إضافة سؤال",
     "ADD_ANSWE": "إضافة إجابه",
     "NOT_AUTHORIZED": "انت غير مصرح لك بالدخول ",
-    "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE": " برجاء اكمال البيانات وإضافة اكتر من اجابه لسؤال و مراجعة البيانات المكررة"
+    "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE": " برجاء اكمال البيانات وإضافة اكتر من اجابه لسؤال و مراجعة البيانات المكررة",
+    "CHOOSEFILE": "إختر الملفات لرفعها",
+    "MANDATORY":"إلزامى"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
@@ -518,5 +520,12 @@
     "PROGRAM_JOINEXAME": "ِاختبارات الانضام",
     "PROGRAM_PERIODICEXAME": "الاختبارات الدوريه",
     "PROGRAM_NOTIFICATIONS": "اليه التنبيه"
+  },
+  "PROGRAM_DAY_TASK_DETIALS":{
+"DEGREE":"الدرجات",
+"SHOW_QUESTION_TO_STUDENT":"السؤال الذى يظهر لطالب",
+"THE_LISTENING":"الإستماع",
+"PAGES":"الصفحات"
+
   }
 }

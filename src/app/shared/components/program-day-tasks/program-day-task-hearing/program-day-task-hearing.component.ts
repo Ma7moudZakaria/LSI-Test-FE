@@ -6,6 +6,7 @@ import { IProgramDayTaskHearing } from 'src/app/core/interfaces/programs-interfa
 import { AttachmentsService } from 'src/app/core/services/attachments-services/attachments.service';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-program-day-task-hearing',
@@ -17,23 +18,19 @@ export class ProgramDayTaskHearingComponent implements OnInit {
   fileUploadModel: IFileUpload[] = [];
   fileList?: IAttachment[] = [];
   attachmentIds: string[] = [];
-  // dayTaskHearingModel: IProgramDayTaskHearing = { hearingAttachments: [] };
-  @Input() hearingTaskDetailsModel : IProgramDayTaskHearing = {}
-  
+  @Input() hearingTaskDetailsModel : IProgramDayTaskHearing = {};
   constructor(
+    public translate: TranslateService,
     private attachmentService: AttachmentsService
-
   ) { }
 
   ngOnInit(): void {
-    
+    console.log('init hearing ' + this.hearingTaskDetailsModel);
+    console.log(this.hearingTaskDetailsModel);
   }
-
-
 
   DeleteAttachment(index: number, id: string) {
     this.hearingTaskDetailsModel?.hearingAttachments?.splice(index, 1);
-    // this.attachmentIds = this.attachmentIds.filter(a => a !== id);
   }
 
   onFileChange(files: FileList) {
@@ -57,11 +54,10 @@ export class ProgramDayTaskHearingComponent implements OnInit {
     }
     this.attachmentService.upload(files).subscribe(
       (res: any) => {
-        // this.hearingTaskDetailsModel.hearingAttachments = res.data as IAttachment[];
         Array.from(res.data).forEach((elm: any) => {
-          this.hearingTaskDetailsModel.hearingAttachments?.push(elm as IAttachment);
-
+          this.fileList?.push(elm as IAttachment);
         })
+        this.hearingTaskDetailsModel.hearingAttachments=this.fileList;
         this.fileUploadModel = [];
       }, error => {
         console.log(error);
@@ -74,16 +70,5 @@ export class ProgramDayTaskHearingComponent implements OnInit {
       }
     )
   }
-
-  saveUpload() {
-    let hearingModel = JSON.stringify(this.hearingTaskDetailsModel);
-
-    // this.programDayTaskDetails.programDayTask = this.selectedTaskId;
-    // this.programDayTaskDetails.detailsTask = JSON.stringify(this.exam.questions);
-    // this.resultMessage = {};
-    //    this.programDayTasksService.SaveProgramDayTaskDetails(this.programDayTaskDetails).subscribe(res => {
-
-  }
-
 
 }
