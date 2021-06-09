@@ -7,13 +7,14 @@
         text-align: left;
     } 
     .head{
+        margin-top: 1rem;
         font-size: 20px;
         color: #3A3A3A;
         font-weight: 500;
     } 
     .list_old{
-        height: 74vh;
-        min-height: 74vh;
+        height: 70vh;
+        min-height: 70vh;
         overflow-y: scroll;
         background-color: #fff;
         border-radius: 0.5rem;

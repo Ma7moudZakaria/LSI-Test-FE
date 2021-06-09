@@ -2,12 +2,12 @@
 <div class="container-fluid" > 
 
 <div class="row group_header fix_margin w-100">
-    <div class="item_group" (click)="showTap = 'students'"
-    [ngClass]="{ item_group_active: showTap == 'students' }" >
+    <div class="item_group" (click)="studentTab()"
+    [ngClass]="{ item_group_active: showTap == 'student' }" >
        
     الطلاب
     </div>
-    <div class="item_group" (click)="showTap = 'teacher'"
+    <div class="item_group" (click)="teacherTab()"
     [ngClass]="{ item_group_active: showTap == 'teacher' }" >
        معلمين
     
@@ -20,7 +20,8 @@
 <div class="row fix_margin w-100" >
     <div class="col-12 px-0 interTab">
 
-        <app-list-feelings  *ngIf="showTap == 'students'"></app-list-feelings>
+        <app-list-feelings *ngIf='showTap == "student"' [tabType]='roleEnum'></app-list-feelings>
+        <app-list-feelings *ngIf='showTap == "teacher"' [tabType]='roleEnum'></app-list-feelings>
        
     </div>
 

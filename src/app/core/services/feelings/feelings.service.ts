@@ -1,3 +1,4 @@
+import { RoleEnum } from 'src/app/core/enums/role-enum.enum';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -28,7 +29,7 @@ export class FeelingsService {
   addAllFeelings(model: IProgramNotificationModel): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.AddFeelingsURL, model);
   }
-  getAllFeelings(id: string): Observable<BaseResponseModel> {
+  getAllFeelings(id: RoleEnum): Observable<BaseResponseModel> {
     return this.http.get<BaseResponseModel>(this.GetAllFeelingsURL + id)
   }
 

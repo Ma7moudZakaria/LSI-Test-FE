@@ -10,6 +10,8 @@ export class CardFeelingsComponent implements OnInit {
 
   @Input() FeelingsDetailsModel: IFeelingsDetailsModel = {};
   @Output() deleteFeeling = new EventEmitter<string>();
+  @Output() cancelFeeling = new EventEmitter<string>();
+  @Output() publishList = new EventEmitter<boolean>();
 
   constructor() { }
 
@@ -19,7 +21,11 @@ export class CardFeelingsComponent implements OnInit {
   DeleteFeelingCard() {
     this.deleteFeeling.emit(this.FeelingsDetailsModel.feelId);
   }
-  goPublishList() {
+  cancelFeelingCard() {
+    this.cancelFeeling.emit(this.FeelingsDetailsModel.feelId);
 
+  }
+  goPublishList() {
+    this.publishList.emit(this.FeelingsDetailsModel.isPub);
   }
 }

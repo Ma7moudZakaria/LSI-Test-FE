@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { RoleEnum } from 'src/app/core/enums/role-enum.enum';
+import { Component, Input, OnInit } from '@angular/core';
 import { IFeelingsDetailsModel } from 'src/app/core/interfaces/feeling-interfaces/ifeelings-details-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
@@ -16,6 +17,8 @@ import { AlertifyService } from 'src/app/core/services/alertify-services/alertif
 })
 export class ListFeelingsComponent implements OnInit {
 
+  @Input() tabType: RoleEnum = RoleEnum.Student;
+
   FeelingsDetailsModel: IFeelingsDetailsModel[] = [];
   resultMessage: BaseMessageModel = {};
 
@@ -29,10 +32,12 @@ export class ListFeelingsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getAllFeelings_notPub(this.tabType)
+    // this.getAllFeelings_notPub(this.tabType)
   }
 
 
-  getAllFeelings(id: any) {
+  getAllFeelings_notPub(id: RoleEnum) {
     this.feelingsServices.getAllFeelings(id || '').subscribe(res => {
       this.FeelingsDetailsModel = res.data as IFeelingsDetailsModel[];
       if (res.isSuccess) {
@@ -56,7 +61,30 @@ export class ListFeelingsComponent implements OnInit {
     });
 
   }
+  // getAllFeelings_Pub(id: any) {
+  //   this.feelingsServices.getAllFeelings(id || '').subscribe(res => {
+  //     this.FeelingsDetailsModel = res.data as IFeelingsDetailsModel[];
+  //     if (res.isSuccess) {
+  //       this.resultMessage = {
+  //         message: res.message || "",
+  //         type: BaseConstantModel.SUCCESS_TYPE
+  //       }
 
+  //     }
+  //     else {
+  //       this.resultMessage = {
+  //         message: res.message,
+  //         type: BaseConstantModel.DANGER_TYPE
+  //       }
+  //     }
+  //   }, error => {
+  //     this.resultMessage = {
+  //       message: error,
+  //       type: BaseConstantModel.DANGER_TYPE
+  //     }
+  //   });
+
+  // }
   deleteFeelingCard(id: string) {
     const message = this.translate.currentLang === LanguageEnum.en ? "Are you sure that you want to delete this feeling" : "هل متأكد من حذف هذه المشاعر ";
 
@@ -85,9 +113,36 @@ export class ListFeelingsComponent implements OnInit {
   }
 
 
+  cancelFeelingCard(id?: string) {
+    const message = this.translate.currentLang === LanguageEnum.en ? "Are you sure that you want to cancel this feeling" : "هل متأكد من حذف هذه المشاعر ";
 
+    const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Cancel feeling ' : 'حذف  المشاعر', message);
 
+    const dialogRef = this.dialog.open(ConfirmModalComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult == true) {
+        this.feelingsServices.approvecCancelFeelingS(id || '').subscribe(res => {
+          if (res.isSuccess) {
+            this.alertify.success(res.message || '');
+            this.getAllFeelings_notPub(this.tabType);
+          }
+          else {
+            this.alertify.error(res.message || '');
+          }
+        }, error => {
+          this.alertify.error(error || '');
+        }
+        )
+      }
+    });
+  }
 
+  goPublishList(event: boolean) {
+    // this.publishList.emit(this.FeelingsDetailsModel.isPub);
+  }
 
 
 }
