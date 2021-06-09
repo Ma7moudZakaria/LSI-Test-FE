@@ -18,13 +18,11 @@ import { ProgramDayTasksService } from 'src/app/core/services/program-services/p
 })
 export class ProgramDayTaskEncouragementLetterComponent implements OnInit {
   @Input() viewMode: boolean = false;
-  encouragementLetterObj: IProgramDayTaskEncouragementLetter={};
   programDayTaskDetails: ISaveProgramDayTaskDetailsModel={};
   resultMessage: BaseMessageModel = {};
   @Input() selectedTaskId:string|undefined;
   @Input() encouragementLetterDetailsModel: IProgramDayTaskEncouragementLetter = {}
   constructor(
-    private programDayTasksService:ProgramDayTasksService, 
     private activeroute: ActivatedRoute,
     public dialog: MatDialog,
     private router: Router,
@@ -34,39 +32,14 @@ export class ProgramDayTaskEncouragementLetterComponent implements OnInit {
   ngOnInit(): void {
   }
   onQuestionTextChange(){
-    this.encouragementLetterObj.text ? this.encouragementLetterObj.letterType = ProgramDayTaskEncouragementLetterType.text : null;
+    this.encouragementLetterDetailsModel.text ? this.encouragementLetterDetailsModel.letterType = ProgramDayTaskEncouragementLetterType.text : null;
   }
   saveVoiceUrl(event: any) {
-    this.encouragementLetterObj.voiceUrl = event;
-    this.encouragementLetterObj.voiceUrl ? this.encouragementLetterObj.letterType = ProgramDayTaskEncouragementLetterType.voice: null;
+    this.encouragementLetterDetailsModel.voiceUrl = event;
+    this.encouragementLetterDetailsModel.voiceUrl ? this.encouragementLetterDetailsModel.letterType = ProgramDayTaskEncouragementLetterType.voice: null;
   }
-  saveEncouragementLetterTaskToProgram() {
-    this.programDayTaskDetails.programDayTask = this.selectedTaskId;
-    this.programDayTaskDetails.detailsTask = JSON.stringify(this.encouragementLetterObj);
-    this.resultMessage = {};
-       this.programDayTasksService.SaveProgramDayTaskDetails(this.programDayTaskDetails).subscribe(res => {
-      let response = <BaseResponseModel>res;
-      if (response.isSuccess) {
-        this.resultMessage = {
-          message: res.message || "",
-          type: BaseConstantModel.SUCCESS_TYPE
-        }
-      
-      }
-      else {
-        this.resultMessage = {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
-      }
-    },
-      error => {
-        this.resultMessage = {
-          message: error,
-          type: BaseConstantModel.DANGER_TYPE
-        }
-      }
-    )
- 
+  DeleteMSG(){
+    this.encouragementLetterDetailsModel.voiceUrl="" ;
+    this.encouragementLetterDetailsModel.text="";
   }
 }
