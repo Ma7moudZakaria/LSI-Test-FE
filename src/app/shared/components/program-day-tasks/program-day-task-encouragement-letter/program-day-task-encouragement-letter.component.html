@@ -12,10 +12,15 @@
                    [ngClass]="{' border-transparent': !encouragementLetterDetailsModel.text,
                   'input_with-voice': !encouragementLetterDetailsModel.text}"
                    placeholder="{{'EXAM_FORM.ADD_QUESTION'|translate}}" >
+                   
                  <app-voice-recording *ngIf="!encouragementLetterDetailsModel.text" (getVoiceUrl)="saveVoiceUrl($event)"
-                 [viewMode]='viewMode' [voiceUrl]='encouragementLetterDetailsModel?.voiceUrl'></app-voice-recording>
-                 <img src="assets/images/trash-2.svg" (click)="DeleteMSG()"/>
-     
+                 [viewMode]='viewMode' [voiceUrl]='encouragementLetterDetailsModel?.voiceUrl'>
+                </app-voice-recording>
+
+                <div class='row'>
+                    <img src="assets/images/trash-2.svg" (click)="DeleteMSG()">
+                </div>
+                
              </div>
         </div>
       

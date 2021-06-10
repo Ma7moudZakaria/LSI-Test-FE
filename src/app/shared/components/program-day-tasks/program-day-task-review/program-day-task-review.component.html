@@ -1,43 +1,51 @@
-<div class="form-group add-question-template dynamic-radio-button-with-input-text-model mb-0"  >
-    <div class="form-group row question px-2">
-        <div class="col-sm-8">
-            <label class="custom-file custom-file__text" for="importFile">{{'SCIENTIFIC_MATERIAL.CHOOSEFILE' |
-                translate}}</label>
-            <input type="file" class="custom-file-input" multiple id="importFile"
-                (change)="onFileChange($any($event.target).files)" hidden>
-                <div class="row">
-                    <div class="col-lg-8 col-md-8">
-                        <div class="badges mt-3 ">
-                            <div *ngFor="let item of fileList;let i=index" 
-                                class="badge badge-info p-2 " >
-                            <div class="d-flex justify-content-between">
-                                <p class="ellipsis mb-0" > {{item.fileName}}</p>
-                                <a (click)="deleteAttachment(i,item.id)"><i class="fas fa-times-circle"></i></a>
-                            </div>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-                <div class="form-group">
-                    <label for="matrialTitleAr">from page</label>
-                    <input type="text" class="form-control"  [(ngModel)]="programDayTaskReviewObj.frmoPage" id="fileLink">      
-                </div>
-                <div class="form-group">
-                    <label for="matrialTitleAr">to page</label>
-                    <input type="text" class="form-control"  [(ngModel)]="programDayTaskReviewObj.toPage" id="fileLink">      
-                </div>
-                <div class="form-group">
-                    <label for="matrialTitleAr">degree</label>
-                    <input type="text" class="form-control" [(ngModel)]="programDayTaskReviewObj.degree" id="fileLink">      
-                </div>
-                <div class="form-group">
-                    <label for="matrialTitleAr">question to student</label>
-                    <input type="text" class="form-control" [(ngModel)]="programDayTaskReviewObj.questionToStudent" id="fileLink">      
-                </div>
-             <div class="input-group justify-content-end"><button type="button" class="btn save-btn" (click)="saveReviewTaskToProgram()">{{"GENERAL.SAVE"|translate}}</button></div>
-        </div>
-        <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2">
-            {{resultMessage.message}}
-             </div>
+<div class="day-task-review-details">
+    <div class="form-group">
+        <label class="custom-file custom-file__text" for="importFile">
+            <span> 
+                <!-- <img calss="page-image" src="assets/images/walk-through/Group 18093.svg"  > -->
+                <p>{{'GENERAL.CHOOSEFILE' |translate}}</p>
+            </span>
+        </label>
+        <input type="file" class="custom-file-input" id="importFile" 
+    (change)="onFileChange($any($event.target).files)" >
+            <div class="col-4 cardRecourd"  *ngFor="let item of reviewDetailsModel?.bookAttatchments;let i=index" >
+                <img src="assets/images/days/book.svg">
+                <span>{{item.fileName}}</span>
+                <i class="fas fa-play-circle"></i>
+                <img src="assets/images/trash-2.svg" (click)="DeleteAttachment(i,item.id)">
+            </div>
     </div>
-</div>
+    
+    <div class="form-group">
+        <div class="row">
+            <div class="col-6">
+                <label class="text-right header_input">{{'PROGRAM_DAY_TASK_DETIALS.PAGES'|translate}}</label>
+    <div class="d-flex ">
+        <input type="text" class="form-control  " [(ngModel)]="reviewDetailsModel.frmoPage" >
+        
+        <input type="text" class="form-control mx-2" [(ngModel)]="reviewDetailsModel.toPage" >
+
+    </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-12">
+                <label class="text-right header_input">{{'PROGRAM_DAY_TASK_DETIALS.DEGREE'|translate}}</label>
+               <input type="text" class="form-control w-50" [(ngModel)]="reviewDetailsModel.degree" >
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-12">
+                <label class="text-right header_input">{{'PROGRAM_DAY_TASK_DETIALS.SHOW_QUESTION_TO_STUDENT'|translate}} </label>
+    
+               <input type="text" class="form-control " [(ngModel)]="reviewDetailsModel.questionToStudent" >
+            </div>
+        </div>
+    </div>
+    </div>

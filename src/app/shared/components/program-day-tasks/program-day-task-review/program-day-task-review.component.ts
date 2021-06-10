@@ -24,10 +24,8 @@ export class ProgramDayTaskReviewComponent implements OnInit {
   attachmentIds: string[] = [];
   fileToUpload?: File;
   resMessage: BaseMessageModel = {};
-  programDayTaskReviewObj: IProgramDayTaskReview={};
   programDayTaskDetails: ISaveProgramDayTaskDetailsModel={};
   resultMessage: BaseMessageModel = {};
-  @Input() selectedTaskId:string|undefined;
   @Input() reviewDetailsModel: IProgramDayTaskReview = {};
   constructor(
     private programDayTasksService:ProgramDayTasksService,
@@ -42,6 +40,10 @@ export class ProgramDayTaskReviewComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  DeleteAttachment(index: number, id: string) {
+    this.reviewDetailsModel?.bookAttatchments?.splice(index, 1);
+  }
+
   onFileChange(files: FileList) {
     if (files.length > 0) {
       Array.from(files).forEach(element => {
@@ -50,66 +52,35 @@ export class ProgramDayTaskReviewComponent implements OnInit {
           file: element
 
         }
-        this.fileUploadModel.push(fileUploadObj)
+        this.fileUploadModel?.push(fileUploadObj)
       });
-      this.uploadFiles(this.fileUploadModel);
+      this.UploadFiles(this.fileUploadModel);
     }
 
   }
 
-  uploadFiles(files: IFileUpload[]) {
+  UploadFiles(files: any) {
     if (files.length === 0) {
       return;
     }
     this.attachmentService.upload(files).subscribe(
       (res: any) => {
         Array.from(res.data).forEach((elm: any) => {
-          this.attachmentIds.push(elm.id);
-          this.fileList.push(elm);
+          this.fileList?.push(elm as IAttachment);
+
         })
+        this.reviewDetailsModel.bookAttatchments=this.fileList;
         this.fileUploadModel = [];
       }, error => {
+        console.log(error);
         this.fileUploadModel = [];
-        this.resMessage = {
+        this.resMessage =
+        {
           message: error,
           type: BaseConstantModel.DANGER_TYPE
         }
       }
     )
-  }
-  deleteAttachment(index: number, id: string) {
-    this.fileList.splice(index, 1);
-    this.attachmentIds = this.attachmentIds.filter(a => a !== id);
-  }
-  saveReviewTaskToProgram() {
-    this.programDayTaskDetails.programDayTask = this.selectedTaskId;
-    this.programDayTaskReviewObj.attachmentIds=this.attachmentIds;
-    this.programDayTaskDetails.detailsTask = JSON.stringify(this.programDayTaskReviewObj);
-    this.resultMessage = {};
-       this.programDayTasksService.SaveProgramDayTaskDetails(this.programDayTaskDetails).subscribe(res => {
-      let response = <BaseResponseModel>res;
-      if (response.isSuccess) {
-        this.resultMessage = {
-          message: res.message || "",
-          type: BaseConstantModel.SUCCESS_TYPE
-        }
-      
-      }
-      else {
-        this.resultMessage = {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
-      }
-    },
-      error => {
-        this.resultMessage = {
-          message: error,
-          type: BaseConstantModel.DANGER_TYPE
-        }
-      }
-    )
- 
   }
 
 }

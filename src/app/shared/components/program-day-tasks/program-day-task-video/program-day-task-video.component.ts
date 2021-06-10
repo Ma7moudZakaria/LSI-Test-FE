@@ -21,26 +21,21 @@ import { ProgramDayTasksService } from 'src/app/core/services/program-services/p
 export class ProgramDayTaskVideoComponent implements OnInit {
   fileUploadModel: IFileUpload[] = [];
   fileList: IAttachment[] = [];
-  attachmentIds: string[] = [];
   fileToUpload?: File;
   resMessage: BaseMessageModel = {};
-  programDayTaskVideoObj: IProgramDayTaskVideo={};
-  programDayTaskDetails: ISaveProgramDayTaskDetailsModel={};
   resultMessage: BaseMessageModel = {};
-  @Input() selectedTaskId:string|undefined;
   @Input() videoDetailsModel: IProgramDayTaskVideo = {};
   constructor(
-    private programDayTasksService:ProgramDayTasksService,
-    private activeroute: ActivatedRoute,
-    public dialog: MatDialog,
-    private router: Router,
     public translate: TranslateService,
     private attachmentService: AttachmentsService, 
-     private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
   }
+  DeleteAttachment(index: number, id: string) {
+    this.videoDetailsModel?.vidio?.splice(index, 1);
+  }
+
   onFileChange(files: FileList) {
     if (files.length > 0) {
       Array.from(files).forEach(element => {
@@ -49,65 +44,34 @@ export class ProgramDayTaskVideoComponent implements OnInit {
           file: element
 
         }
-        this.fileUploadModel.push(fileUploadObj)
+        this.fileUploadModel?.push(fileUploadObj)
       });
-      this.uploadFiles(this.fileUploadModel);
+      this.UploadFiles(this.fileUploadModel);
     }
 
   }
 
-  uploadFiles(files: IFileUpload[]) {
+  UploadFiles(files: any) {
     if (files.length === 0) {
       return;
     }
     this.attachmentService.upload(files).subscribe(
       (res: any) => {
         Array.from(res.data).forEach((elm: any) => {
-          this.attachmentIds.push(elm.id);
-          this.fileList.push(elm);
+          this.fileList?.push(elm as IAttachment);
+
         })
+        this.videoDetailsModel.vidio=this.fileList;
         this.fileUploadModel = [];
       }, error => {
+        console.log(error);
         this.fileUploadModel = [];
-        this.resMessage = {
+        this.resMessage =
+        {
           message: error,
           type: BaseConstantModel.DANGER_TYPE
         }
       }
     )
-  }
-  deleteAttachment(index: number, id: string) {
-    this.fileList.splice(index, 1);
-    this.attachmentIds = this.attachmentIds.filter(a => a !== id);
-  }
-  saveVideoTaskToProgram() {
-    // this.programDayTaskDetails.programDayTask = this.selectedTaskId;
-    // this.programDayTaskVideoObj.attachmentIds=this.attachmentIds;
-    this.programDayTaskDetails.detailsTask = JSON.stringify(this.programDayTaskVideoObj);
-    this.resultMessage = {};
-       this.programDayTasksService.SaveProgramDayTaskDetails(this.programDayTaskDetails).subscribe(res => {
-      let response = <BaseResponseModel>res;
-      if (response.isSuccess) {
-        this.resultMessage = {
-          message: res.message || "",
-          type: BaseConstantModel.SUCCESS_TYPE
-        }
-      
-      }
-      else {
-        this.resultMessage = {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
-      }
-    },
-      error => {
-        this.resultMessage = {
-          message: error,
-          type: BaseConstantModel.DANGER_TYPE
-        }
-      }
-    )
- 
   }
 }
