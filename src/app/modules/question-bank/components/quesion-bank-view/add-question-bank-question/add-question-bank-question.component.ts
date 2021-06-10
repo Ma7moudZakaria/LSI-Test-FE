@@ -96,9 +96,9 @@ export class AddQuestionBankQuestionComponent implements OnInit {
     this.currentForm = this.fb.group(
       {
         QuestioAr: ['', [Validators.required,Validators.maxLength(50), Validators.pattern(BaseConstantModel.ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
-        QuestionEn: ['', [Validators.required,Validators.maxLength(50), Validators.pattern(BaseConstantModel.ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
+        QuestionEn: ['', [/*Validators.required,Validators.maxLength(50),*/ Validators.pattern(BaseConstantModel.ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
         AnswerAr :['', [Validators.required,Validators.maxLength(500), Validators.pattern(BaseConstantModel.ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
-        AnswerEn : ['', [Validators.required,Validators.maxLength(500), Validators.pattern(BaseConstantModel.ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
+        AnswerEn : ['', [/*Validators.required,Validators.maxLength(500),*/ Validators.pattern(BaseConstantModel.ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
       })
   }
 

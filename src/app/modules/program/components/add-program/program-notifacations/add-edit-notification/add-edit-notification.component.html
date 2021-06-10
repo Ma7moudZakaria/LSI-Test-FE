@@ -20,7 +20,12 @@
                 <div *ngIf="f.numberNotify.errors?.required">
                     {{ 'GENERAL.REQUIRED' | translate }}
                 </div>
-              
+                <div *ngIf="f.numberNotify.errors.pattern">
+                    {{ 'NOTIFICATIONS.NUMBER_HOMEWORK_PATTERN' | translate }}
+                  </div>
+                  <div *ngIf="f.numberNotify.errors?.maxlength">
+                    {{ 'NOTIFICATIONS.NUMBER_HOMEWORK_MAX_LENGTH' | translate }}
+                  </div>
             </div> 
 
 
@@ -41,7 +46,12 @@
                 <div *ngIf="f.notifyName.errors?.required">
                     {{ 'GENERAL.REQUIRED' | translate }}
                 </div>
-              
+                <div *ngIf="f.notifyName.errors.pattern">
+                    {{ 'NOTIFICATIONS.NOTIFICATION_NAME_PATTERN' | translate }}
+                </div>
+                <div *ngIf="f.notifyName.errors?.maxlength">
+                    {{ 'NOTIFICATIONS.NOTIFICATION_NAME_MAX_LENGTH' | translate }}
+                </div>
             </div> 
 
 
@@ -89,10 +99,10 @@
             {{ 'GENERAL.REQUIRED' | translate }}
         </div>
         <div *ngIf="f.messageAr.errors.pattern">
-            {{ 'QUESTION_BANK.ARABIC_FIELD' | translate }}
+            {{ 'NOTIFICATIONS.ARABIC_FIELD' | translate }}
          </div>
          <div *ngIf="f.messageAr.errors?.maxlength ">
-          {{ 'QUESTION_BANK.QUESTION_AR_MAX_LENGHT' | translate}}
+          {{ 'NOTIFICATIONS.QUESTION_AR_MAX_LENGHT' | translate}}
       </div>
     </div> 
 
@@ -107,10 +117,10 @@
             {{ 'GENERAL.REQUIRED' | translate }}
         </div>
         <div *ngIf="f.messageEn.errors.pattern">
-            {{ 'QUESTION_BANK.ARABIC_FIELD' | translate }}
+            {{ 'NOTIFICATIONS.ARABIC_FIELD' | translate }}
          </div>
          <div *ngIf="f.messageEn.errors?.maxlength ">
-          {{ 'QUESTION_BANK.QUESTION_AR_MAX_LENGHT' | translate}}
+          {{ 'NOTIFICATIONS.QUESTION_AR_MAX_LENGHT' | translate}}
       </div>
     </div> 
     <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2 text-center">
