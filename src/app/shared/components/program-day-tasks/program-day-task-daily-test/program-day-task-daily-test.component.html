@@ -5,7 +5,7 @@
         <section class="internal_scroll_list_group ">
           <div>
               <div class="input-group ">
-              <div *ngFor = 'let question of dailyTestDetailsModel.questions'>
+              <div *ngFor = 'let question of dailyTestDetailsModel?.questions'>
                 <div class="d-flex justify-content-end mt-3">
                   <a (click)="confirmDeleteQuestionDialog(question)">
                     <img src="../../../../assets/images/trash-2.svg" class="btn_trash">

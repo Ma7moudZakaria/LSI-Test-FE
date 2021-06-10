@@ -18,7 +18,7 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/c
 export class ProgramDayTaskTestPhasedComponent implements OnInit {
   examJson: string | undefined;
   voiceUrl: string | undefined;
-  @Input() testPhasedDetailsModel: IExam = { questions: [] };
+  @Input() testPhasedDetailsModel: IExam | undefined ;
   resultMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
   constructor(
@@ -27,36 +27,35 @@ export class ProgramDayTaskTestPhasedComponent implements OnInit {
     public translate: TranslateService) { }
 
   ngOnInit(): void {
-  
   }
   addQuestion() {
-    console.log(this.testPhasedDetailsModel);
     this.resultMessage = {};
-    if (Object.keys(this.testPhasedDetailsModel).length === 0) {
-      let id = BaseConstantModel.newGuid();
-      this.testPhasedDetailsModel = { id: id, questions: [] }
-    }
-
-    if (this.examFormService.validateQuestion(this.testPhasedDetailsModel.questions) === true) {
-      let qid = BaseConstantModel.newGuid();
-      let ques: IQuestion =
-      {
-        questionId: qid,
-        questionNo: this.testPhasedDetailsModel?.questions ? this.testPhasedDetailsModel.questions.length + 1 : 1,
-        time: 5,
-        answers: [],
-        answerType: AnswerTypeEnum.singleSelect,
+    if (this.testPhasedDetailsModel){
+      if (Object.keys(this.testPhasedDetailsModel).length === 0) {
+        let id = BaseConstantModel.newGuid();
+        this.testPhasedDetailsModel.id = id; //{ id: id, questions: [] }
       }
-      this.testPhasedDetailsModel.questions.push(ques);
-    }
-    else {
-      this.resultMessage = {
-        message: this.translate.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE'),
-        type: BaseConstantModel.DANGER_TYPE
+  
+      if (this.examFormService.validateQuestion(this.testPhasedDetailsModel.questions) === true) {
+        let qid = BaseConstantModel.newGuid();
+        let ques: IQuestion =
+        {
+          questionId: qid,
+          questionNo: this.testPhasedDetailsModel?.questions ? this.testPhasedDetailsModel.questions.length + 1 : 1,
+          time: 5,
+          answers: [],
+          answerType: AnswerTypeEnum.singleSelect,
+        }
+        this.testPhasedDetailsModel.questions.push(ques);
       }
+      else {
+        this.resultMessage = {
+          message: this.translate.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE'),
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+  
     }
-    console.log(this.testPhasedDetailsModel);
-
   }
 
   
@@ -68,7 +67,6 @@ export class ProgramDayTaskTestPhasedComponent implements OnInit {
   /////end recording////
 
   confirmDeleteQuestionDialog(question: IQuestion) {
-    console.log(this.testPhasedDetailsModel);
     const message = this.translate.currentLang === LanguageEnum.en ? "Are you sure that you want to delete question" : "هل متأكد من حذف هذا السؤال";
 
     const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete Question' : 'حذف السؤال', message);
@@ -78,14 +76,13 @@ export class ProgramDayTaskTestPhasedComponent implements OnInit {
       data: dialogData
     });
     dialogRef.afterClosed().subscribe(dialogResult => {
-      if (dialogResult == true) {
+      if (dialogResult == true && this.testPhasedDetailsModel) {
         const index = this.testPhasedDetailsModel.questions.indexOf(question);
         if (index > -1) {
           this.testPhasedDetailsModel.questions.splice(index, 1);
         }
       }
     });
-    console.log(this.testPhasedDetailsModel);
   }
 
 

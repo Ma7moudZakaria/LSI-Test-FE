@@ -18,7 +18,7 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/c
 export class ProgramDayTaskDailyTestComponent implements OnInit {
   examJson: string | undefined;
   voiceUrl: string | undefined;
-  @Input() dailyTestDetailsModel: IExam = { questions: [] };
+  @Input() dailyTestDetailsModel: IExam | undefined //{ questions: [] };
   resultMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
   constructor(
@@ -32,30 +32,32 @@ export class ProgramDayTaskDailyTestComponent implements OnInit {
 
   addQuestion() {
     this.resultMessage = {};
-    if (Object.keys(this.dailyTestDetailsModel).length === 0) {
-      let id = BaseConstantModel.newGuid();
-      this.dailyTestDetailsModel = { id: id, questions: [] }
-    }
-
-    if (this.examFormService.validateQuestion(this.dailyTestDetailsModel.questions) === true) {
-      let qid = BaseConstantModel.newGuid();
-      let ques: IQuestion =
-      {
-        questionId: qid,
-        questionNo: this.dailyTestDetailsModel?.questions ? this.dailyTestDetailsModel.questions.length + 1 : 1,
-        time: 5,
-        answers: [],
-        answerType: AnswerTypeEnum.singleSelect,
+    if (this.dailyTestDetailsModel){
+      if (Object.keys(this.dailyTestDetailsModel).length === 0) {
+        let id = BaseConstantModel.newGuid();
+        this.dailyTestDetailsModel.id = id; //{ id: id, questions: [] }
       }
-      this.dailyTestDetailsModel.questions.push(ques);
-    }
-    else {
-      this.resultMessage = {
-        message: this.translate.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE'),
-        type: BaseConstantModel.DANGER_TYPE
+  
+      if (this.examFormService.validateQuestion(this.dailyTestDetailsModel.questions) === true) {
+        let qid = BaseConstantModel.newGuid();
+        let ques: IQuestion =
+        {
+          questionId: qid,
+          questionNo: this.dailyTestDetailsModel?.questions ? this.dailyTestDetailsModel.questions.length + 1 : 1,
+          time: 5,
+          answers: [],
+          answerType: AnswerTypeEnum.singleSelect,
+        }
+        this.dailyTestDetailsModel.questions.push(ques);
       }
+      else {
+        this.resultMessage = {
+          message: this.translate.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE'),
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+  
     }
-
   }
 
   
@@ -76,7 +78,7 @@ export class ProgramDayTaskDailyTestComponent implements OnInit {
       data: dialogData
     });
     dialogRef.afterClosed().subscribe(dialogResult => {
-      if (dialogResult == true) {
+      if (dialogResult == true && this.dailyTestDetailsModel) {
         const index = this.dailyTestDetailsModel.questions.indexOf(question);
         if (index > -1) {
           this.dailyTestDetailsModel.questions.splice(index, 1);

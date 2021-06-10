@@ -50,11 +50,10 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.testPhasedDetailsModel);
+    // console.log(this.testPhasedDetailsModel);
     this.getprogramDayTaskDetails();
   }
   ngOnChanges(changes: any){
-    console.log(this.testPhasedDetailsModel);
     this.getprogramDayTaskDetails();
   }
 
@@ -163,9 +162,13 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
                     break;
                     case this.detailsTypeEnum.TaskTestPhased:
                     this.testPhasedDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
+                    if (!this.testPhasedDetailsModel.questions)
+                        this.testPhasedDetailsModel.questions = [];
                     break;
                     case this.detailsTypeEnum.TaskDailyTest:
                       this.dailyTestDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
+                      if (!this.dailyTestDetailsModel.questions)
+                        this.dailyTestDetailsModel.questions = [];
                       break;
       default:
         "";
