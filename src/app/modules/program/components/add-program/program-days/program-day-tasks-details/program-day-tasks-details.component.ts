@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { ProgramDayTasksDetails } from 'src/app/core/enums/programs/program-day-tasks-details.enum';
-import { IAttacheExamTemplateModel } from 'src/app/core/interfaces/exam-form-interfaces/iattache-exam-template-model';
+import { IExam } from 'src/app/core/interfaces/exam-builder-interfaces/iexam';
 import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-model';
 import { ISaveProgramDayTaskDetailsModel } from 'src/app/core/interfaces/programs-interfaces/isave-program-day-task-Details-model';
 import { IProgramDayTaskEncouragementLetter } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-encouragement-letter';
@@ -29,17 +29,17 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
   @Input() taskDetails: IProgramDayTasksModel | undefined;
   detailsTypeEnum = ProgramDayTasksDetails;
   hearingTaskDetailsModel: IProgramDayTaskHearing = {};
-  readExplanationDetailsModel: IProgramDayTaskReadExplanation = {}
-  encouragementLetterDetailsModel: IProgramDayTaskEncouragementLetter = {}
-  linkingDetailsModel: IProgramDayTaskLinking = {}
-  memorizeDetailsModel: IProgramDayTaskMemorize = {}
-  recitationDetailsModel: IProgramDayTaskRecitation = {}
-  repetitionDetailsModel: IProgramDayTaskRepetition = {}
-  reviewDetailsModel: IProgramDayTaskReview = {}
-  videoDetailsModel: IProgramDayTaskVideo = {}
-  testPhasedDetailsModel: IAttacheExamTemplateModel = {}
-  dailyTestDetailsModel: IAttacheExamTemplateModel = {}
-  recitationStudentsModel :IProgramDayTaskRecitationStudents={}
+  readExplanationDetailsModel: IProgramDayTaskReadExplanation = {};
+  encouragementLetterDetailsModel: IProgramDayTaskEncouragementLetter = {};
+  linkingDetailsModel: IProgramDayTaskLinking = {};
+  memorizeDetailsModel: IProgramDayTaskMemorize = {};
+  recitationDetailsModel: IProgramDayTaskRecitation = {};
+  repetitionDetailsModel: IProgramDayTaskRepetition = {};
+  reviewDetailsModel: IProgramDayTaskReview = {};
+  videoDetailsModel: IProgramDayTaskVideo = {};
+  testPhasedDetailsModel:IExam = { questions: [] };
+  dailyTestDetailsModel: IExam = { questions: [] };
+  recitationStudentsModel :IProgramDayTaskRecitationStudents={};
   programDayTaskDetails: ISaveProgramDayTaskDetailsModel={};
   resultMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
@@ -50,9 +50,11 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.testPhasedDetailsModel);
     this.getprogramDayTaskDetails();
   }
   ngOnChanges(changes: any){
+    console.log(this.testPhasedDetailsModel);
     this.getprogramDayTaskDetails();
   }
 
@@ -90,6 +92,9 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
                     break;
                     case this.detailsTypeEnum.TaskTestPhased:
                     this.taskDetails.detailsTask = JSON.stringify(this.testPhasedDetailsModel);
+                    break;
+                    case this.detailsTypeEnum.TaskDailyTest:
+                    this.taskDetails.detailsTask = JSON.stringify(this.dailyTestDetailsModel);
                     break;
       default:
         this.taskDetails!.detailsTask = JSON.stringify("{}");
@@ -159,6 +164,9 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
                     case this.detailsTypeEnum.TaskTestPhased:
                     this.testPhasedDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
                     break;
+                    case this.detailsTypeEnum.TaskDailyTest:
+                      this.dailyTestDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
+                      break;
       default:
         "";
         break;
