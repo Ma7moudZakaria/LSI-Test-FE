@@ -32,6 +32,7 @@ import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/ipro
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { HostListener } from '@angular/core';
 import { ITeacherProfileAvailabilityLookup } from 'src/app/core/interfaces/teacher-interfaces/iteacher-availability-lookup';
+import { IProgramFilterByNameFilterRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-by-name-filter-request';
 
 @Component({
   selector: 'app-update-teacher-profile',
@@ -79,6 +80,8 @@ export class UpdateTeacherProfileComponent implements OnInit {
   fileUploadModel: IFileUpload[] = [];
   fileList?: IAttachment[] = [];
   ejazaAttachmentIds: string[] = [];
+
+  programFilterByNameFilterRequest = {} as IProgramFilterByNameFilterRequest;
 
   event = {
     eampm: "AM"
@@ -169,7 +172,11 @@ export class UpdateTeacherProfileComponent implements OnInit {
   }
 
   getPrograms() {
-    this.ProgramService.getAllPrograms().subscribe(res => {
+    this.programFilterByNameFilterRequest = { 
+      name: ""
+    }
+
+    this.ProgramService.getAllPrograms(this.programFilterByNameFilterRequest).subscribe(res => {
       let response = <BaseResponseModel>res;
       if (response.isSuccess) {
         this.ProgramsList = response.data;
@@ -693,8 +700,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           programId: this.ProgramsList.filter(el => el.id == this.profileForm.value.teacherPrograms)[0].id,
           degreeId: this.collectionOfLookup.DEGREE.filter(el => el.id == this.profileForm.value.teacherProgramDegrees)[0].id,
 
-          programNameEn: this.ProgramsList.filter(el => el.id == this.profileForm.value.teacherPrograms)[0].engName,
-          programNameAr: this.ProgramsList.filter(el => el.id == this.profileForm.value.teacherPrograms)[0].arabName,
+          progName: this.ProgramsList.filter(el => el.id == this.profileForm.value.teacherPrograms)[0].name,
 
           degreeNameEn: this.collectionOfLookup.DEGREE.filter(el => el.id == this.profileForm.value.teacherProgramDegrees)[0].nameEn,
           degreeNameAr: this.collectionOfLookup.DEGREE.filter(el => el.id == this.profileForm.value.teacherProgramDegrees)[0].nameAr,
