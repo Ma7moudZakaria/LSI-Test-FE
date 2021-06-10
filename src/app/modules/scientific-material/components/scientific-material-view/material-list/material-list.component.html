@@ -13,7 +13,7 @@
     <div class="col-3 p-0 align-items-center mb-3">
 
         <div class="upload" *ngIf='roleService.isAdmin()'>
-          <span style="color: #CB9118;" class="sc"> {{ 'SCIENTIFIC_MATERIAL.ADD_SCIENTIFIC_MATERIAL' | translate}} </span>
+          <span class="sc"> {{ 'SCIENTIFIC_MATERIAL.ADD_SCIENTIFIC_MATERIAL' | translate}} </span>
           <a (click)="loadMaterial()"   matTooltip="{{ 'QUESTION_BANK.ADD' | translate}}">
              <img calss="m-2 pull-left"  src="assets/images/scientificMaterial/Group 18093.svg" alt="">
           </a>
@@ -57,7 +57,7 @@
         <div class="col-lg-3 col-md-3 col-sm-4">
           <span *ngIf="item.categoryNumber == categoriesEnum.Audio"> <img calss="" src="assets/images/scientificMaterial/Group 18138.svg" alt=""></span>
           <span *ngIf="item.categoryNumber == categoriesEnum.Books"> <img calss="" src="assets/images/scientificMaterial/Group 18139.svg" alt=""></span>
-          <span *ngIf="item.categoryNumber ==  categoriesEnum.ScientificPlans"> <img calss="" src="assets/images/scientificMaterial/Group 18138.svg" alt=""></span>
+          <span *ngIf="item.categoryNumber ==  categoriesEnum.ScientificPlans"> <img calss="" src="assets/images/scientificMaterial/Group 18139.svg" alt=""></span>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-8">
           <p class="cat">{{translate.currentLang === langEnum.en ? item.matrialCategoryEn : item.matrialCategoryAr }}</p>

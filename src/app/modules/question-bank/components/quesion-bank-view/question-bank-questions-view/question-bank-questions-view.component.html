@@ -44,7 +44,7 @@
                          
                                 <div class="col span_question" >
                                     <span>
-                                        {{this.translate.currentLang===langEnum.en?QBQ.engQuestion:QBQ.arabQuestion}}
+                                        {{this.translate.currentLang===langEnum.en?QBQ.engQuestion ? QBQ.engQuestion : QBQ.arabQuestion : QBQ.arabQuestion}}
                                     </span> 
                                 </div>
 
@@ -63,7 +63,7 @@
                               </div>
                             </mat-panel-title>
                         </mat-expansion-panel-header>
-                        <p class="p_answer">{{this.translate.currentLang===langEnum.en?QBQ.engAnswer:QBQ.arabAnswer}}</p>
+                        <p class="p_answer">{{this.translate.currentLang===langEnum.en?QBQ.engAnswer ? QBQ.engAnswer : QBQ.arabAnswer: QBQ.arabAnswer}}</p>
                     </mat-expansion-panel>
                 </mat-accordion>
             </div>
