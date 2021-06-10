@@ -21,7 +21,7 @@
             [class.active]="selectedIndex === i" 
             (click)="loadProgramsbyAdvancedFilter(program);selectedIndex=i">
                
-             <span>{{ translate.currentLang === langEnum.en ? program.engName : program.arabName}}</span>                
+             <span>{{ program.progName}}</span>                
 
         </a>
 

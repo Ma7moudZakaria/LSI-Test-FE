@@ -1,7 +1,8 @@
 export interface IprogramsModel {
     id?:string;
     no?:number;
-    name?:string;
+    // name?:string;
+    progName?:string;
     arabName?:string;
     engName?:string;
     arabTitle?:string;
