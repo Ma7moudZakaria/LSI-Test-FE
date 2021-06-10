@@ -1,12 +1,14 @@
 export interface IFeelingsDetailsModel {
 
-    usrId?: string;
-    feelId?: string;
-    name?: string;
-    img?: string;
-    des?: string;
-    ordNo?: number;
-    isPub?: boolean;
-    pubDate?: string;
-
+    id?:string;
+    no?:number;
+    des?:string;
+    pubDate?:string;
+    ordNo?:number;
+    usrName?:string;
+    fullNameAr?:string;
+    fullNameEn?:string;
+    proPic?:string;
+    usrId?:string;
+    crdOn?:string;
 }

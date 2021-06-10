@@ -13,19 +13,21 @@ export class CardFeelingsComponent implements OnInit {
   @Output() cancelFeeling = new EventEmitter<string>();
   @Output() publishList = new EventEmitter<boolean>();
 
+  @Input() isPub:boolean = false;;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
   DeleteFeelingCard() {
-    this.deleteFeeling.emit(this.FeelingsDetailsModel.feelId);
+    this.deleteFeeling.emit(this.FeelingsDetailsModel.id);
   }
   cancelFeelingCard() {
-    this.cancelFeeling.emit(this.FeelingsDetailsModel.feelId);
+    this.cancelFeeling.emit(this.FeelingsDetailsModel.id);
 
   }
   goPublishList() {
-    this.publishList.emit(this.FeelingsDetailsModel.isPub);
+    // this.publishList.emit(this.FeelingsDetailsModel.isPub);
   }
 }

@@ -19,7 +19,8 @@ export class ListFeelingsComponent implements OnInit {
 
   @Input() tabType: RoleEnum = RoleEnum.Student;
 
-  FeelingsDetailsModel: IFeelingsDetailsModel[] = [];
+  feelingsNotPublishedList: IFeelingsDetailsModel[] = [];
+  feelingsPublishedList: IFeelingsDetailsModel[] = [];
   resultMessage: BaseMessageModel = {};
 
   constructor
@@ -32,15 +33,54 @@ export class ListFeelingsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getAllFeelings_notPub(this.tabType)
-    // this.getAllFeelings_notPub(this.tabType)
+    this.getNotPublishedFeelings(this.tabType)
+    this.getPublishedFeelings(this.tabType)
   }
 
 
-  getAllFeelings_notPub(id: RoleEnum) {
-    this.feelingsServices.getAllFeelings(id || '').subscribe(res => {
-      this.FeelingsDetailsModel = res.data as IFeelingsDetailsModel[];
+  getNotPublishedFeelings(id: RoleEnum) {
+    this.feelingsServices.getNotPublishedFeelings(id || '').subscribe(res => {
       if (res.isSuccess) {
+        this.feelingsNotPublishedList = res.data as IFeelingsDetailsModel[];
+        this.feelingsNotPublishedList.forEach(element => {
+          element.crdOn = element.crdOn ? new Date(element.crdOn).toDateString(): '';
+
+          if (!element?.proPic) {
+            element.proPic = '../../../../../assets/images/Profile.svg';
+          }
+        });
+        // this.resultMessage = {
+        //   message: res.message || "",
+        //   type: BaseConstantModel.SUCCESS_TYPE
+        // }
+
+      }
+      else {
+        this.resultMessage = {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+    }, error => {
+      this.resultMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    });
+
+  }
+  getPublishedFeelings(id: any) {
+    this.feelingsServices.getPublishedFeelingsByFilter(id || '').subscribe(res => {
+      if (res.isSuccess) {
+        this.feelingsPublishedList = res.data as IFeelingsDetailsModel[];
+        this.feelingsNotPublishedList.forEach(element => {
+          element.crdOn = element.crdOn ? new Date(element.crdOn).toDateString(): '';
+
+          if (!element?.proPic) {
+            element.proPic = '../../../../../assets/images/Profile.svg';
+          }
+        });
+
         this.resultMessage = {
           message: res.message || "",
           type: BaseConstantModel.SUCCESS_TYPE
@@ -61,30 +101,7 @@ export class ListFeelingsComponent implements OnInit {
     });
 
   }
-  // getAllFeelings_Pub(id: any) {
-  //   this.feelingsServices.getAllFeelings(id || '').subscribe(res => {
-  //     this.FeelingsDetailsModel = res.data as IFeelingsDetailsModel[];
-  //     if (res.isSuccess) {
-  //       this.resultMessage = {
-  //         message: res.message || "",
-  //         type: BaseConstantModel.SUCCESS_TYPE
-  //       }
 
-  //     }
-  //     else {
-  //       this.resultMessage = {
-  //         message: res.message,
-  //         type: BaseConstantModel.DANGER_TYPE
-  //       }
-  //     }
-  //   }, error => {
-  //     this.resultMessage = {
-  //       message: error,
-  //       type: BaseConstantModel.DANGER_TYPE
-  //     }
-  //   });
-
-  // }
   deleteFeelingCard(id: string) {
     const message = this.translate.currentLang === LanguageEnum.en ? "Are you sure that you want to delete this feeling" : "هل متأكد من حذف هذه المشاعر ";
 
@@ -127,7 +144,7 @@ export class ListFeelingsComponent implements OnInit {
         this.feelingsServices.approvecCancelFeelingS(id || '').subscribe(res => {
           if (res.isSuccess) {
             this.alertify.success(res.message || '');
-            this.getAllFeelings_notPub(this.tabType);
+            this.getNotPublishedFeelings(this.tabType);
           }
           else {
             this.alertify.error(res.message || '');

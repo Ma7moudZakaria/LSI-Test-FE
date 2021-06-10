@@ -6,7 +6,7 @@
         </h3>
         
         
-        <ng-container *ngFor="let FeelingItem of FeelingsDetailsModel">
+        <ng-container *ngFor="let FeelingItem of feelingsNotPublishedList">
         <app-card-feelings 
         [FeelingsDetailsModel] = "FeelingItem"  
         (deleteFeeling) = "deleteFeelingCard($event)"
@@ -31,10 +31,10 @@
         </h3>
         <div class="list_old">
        
-            <ng-container *ngFor="let item of FeelingsDetailsModel">
+            <ng-container *ngFor="let item of feelingsPublishedList">
                 <app-card-feelings 
                 [FeelingsDetailsModel] = "item"  
-                (cancelFeeling)="cancelFeelingCard(item.feelId)"
+                (cancelFeeling)="cancelFeelingCard(item.id)"
                 >
                 </app-card-feelings>
             </ng-container>

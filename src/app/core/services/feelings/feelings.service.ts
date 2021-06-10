@@ -17,24 +17,24 @@ export class FeelingsService {
   constructor(private http: HttpClient) { }
 
 
-  AddFeelingsURL = environment.baseUrl + 'Feeling/create-feeling';
-  GetAllFeelingsURL = environment.baseUrl + 'Feeling/get-all-feelings';
-  GetAllFeelingsByFilterURL = environment.baseUrl + 'Feeling/get-all-feelings-by-filter/';
-  approveCancelFeelingsURL = environment.baseUrl + 'Feeling/aprove-cancel-feeling/';
-  DeleteFeelingsURL = environment.baseUrl + 'Feeling/delete-feeling/';
+  addFeelingsURL = environment.baseUrl + 'Feeling/create-feeling';
+  getNotPublishedFeelingsURL = environment.baseUrl + 'Feeling/get-not-published-feelings/';
+  getPublishedFeelingsByFilterURL = environment.baseUrl + 'Feeling/get-published-feelings-by-filter/';
+  approveCancelFeelingsURL = environment.baseUrl + 'Feeling/approve-cancel-feeling/';
+  deleteFeelingsURL = environment.baseUrl + 'Feeling/delete-feeling/';
 
 
 
 
   addAllFeelings(model: IProgramNotificationModel): Observable<BaseResponseModel> {
-    return this.http.post<BaseResponseModel>(this.AddFeelingsURL, model);
+    return this.http.post<BaseResponseModel>(this.addFeelingsURL, model);
   }
-  getAllFeelings(id: RoleEnum): Observable<BaseResponseModel> {
-    return this.http.get<BaseResponseModel>(this.GetAllFeelingsURL + id)
+  getNotPublishedFeelings(id: RoleEnum): Observable<BaseResponseModel> {
+    return this.http.get<BaseResponseModel>(this.getNotPublishedFeelingsURL + id)
   }
 
-  getFeelingsByFilter(id: string): Observable<BaseResponseModel> {
-    return this.http.get<BaseResponseModel>(this.GetAllFeelingsByFilterURL + id)
+  getPublishedFeelingsByFilter(id: string): Observable<BaseResponseModel> {
+    return this.http.get<BaseResponseModel>(this.getPublishedFeelingsByFilterURL + id)
   }
 
   approvecCancelFeelingS(id: string): Observable<BaseResponseModel> {
@@ -42,7 +42,7 @@ export class FeelingsService {
   }
 
   deleteFeelings(id: string): Observable<BaseResponseModel> {
-    return this.http.delete<BaseResponseModel>(this.DeleteFeelingsURL + id);
+    return this.http.delete<BaseResponseModel>(this.deleteFeelingsURL + id);
   }
 
 

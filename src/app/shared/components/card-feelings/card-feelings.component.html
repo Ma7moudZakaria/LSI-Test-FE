@@ -1,19 +1,19 @@
   <!--not  publish list of card  -->
 
-<ng-container *ngIf="FeelingsDetailsModel.isPub">
+<ng-container *ngIf="!isPub">
   <div  class="card" >
     <div class="card_header">
-      <img  [src]="FeelingsDetailsModel.img">  
+      <img  [src]="FeelingsDetailsModel.proPic">  
       <!-- <img src="../../../../assets/images/feelings/ASH_9078.png" >   -->
 
       <div class="data dataInfo pl-3 pr-3">
-        <p class="title">{{FeelingsDetailsModel.name}}</p>
+        <p class="title">{{FeelingsDetailsModel.fullNameAr}}</p>
         <p class="detlis">
           {{FeelingsDetailsModel.des}}
         </p>
 
       </div>
-      <span class="date">{{FeelingsDetailsModel.pubDate}}</span>
+      <span class="date">{{FeelingsDetailsModel.crdOn}}</span>
     <div class="actions">
         <a (click)= "DeleteFeelingCard()"> <img class="delete" src="../../../../assets/images/feelings/trash.svg"></a>
         <a (click)= "goPublishList()"> <img class="arrow"src="../../../../assets/images/feelings/leftArrow.svg"></a>
@@ -24,7 +24,7 @@
 </ng-container>
 
   <!-- publish list of card  -->
-<ng-container *ngIf=" !FeelingsDetailsModel.isPub" >
+<!-- <ng-container *ngIf="isPub" >
   <mat-accordion class="feelingCard__OldList"
       cdkDropList
       #unassignedList="cdkDropList"
@@ -37,18 +37,18 @@
                 <div class="card_header">
                   
                   <img src="../../../../assets/images/feelings/arrange.svg" class="arrange" >  
-                  <!-- <img src="../../../../assets/images/feelings/ASH_9078.png" >   -->
+                  <img src="../../../../assets/images/feelings/ASH_9078.png" >  
 
-                  <img  [src]="FeelingsDetailsModel.img">  
+                  <img  [src]="FeelingsDetailsModel.proPic">  
             
                   <div class="data dataInfo pl-3 pr-3">
-                    <p class="title">{{FeelingsDetailsModel.name}}</p>
+                    <p class="title">{{FeelingsDetailsModel.fullNameAr}}</p>
                     <p class="detlis">
                    {{FeelingsDetailsModel.des}}
                     </p>
             
                   </div>
-                  <span class="date">{{FeelingsDetailsModel.pubDate}}</span>
+                  <span class="date">{{FeelingsDetailsModel.crdOn}}</span>
                 <div class="actions">
                     <a (click)= "cancelFeelingCard()"> <img class="delete" src="../../../../assets/images/feelings/close.svg"></a>
                     <a > <img class="arrow"src="../../../../assets/images/feelings/downArrow.svg"></a>
@@ -64,4 +64,4 @@
 
 
 </mat-accordion>
-</ng-container>
+</ng-container> -->
