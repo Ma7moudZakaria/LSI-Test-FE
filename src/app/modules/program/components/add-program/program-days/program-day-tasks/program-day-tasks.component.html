@@ -30,12 +30,13 @@
                 [cdkDropListData]="programDayTasksLists"
                         [cdkDropListConnectedTo]="[items1]"
                 (cdkDropListDropped)="drop($event)"
+
                 >
                     <mat-expansion-panel cdkDrag  disabled *ngFor="let item of programDayTasksLists ; let i = index;"
                         >
                         <!-- (opened)="setOpened(i)" (closed)="setClosed(i)" -->
                        
-                        <mat-expansion-panel-header>
+                        <mat-expansion-panel-header (click)="setProgrmeDayTask(item)" >
                             
                             <mat-panel-title class="qestionHeader">
                          

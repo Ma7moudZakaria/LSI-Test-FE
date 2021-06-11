@@ -4,5 +4,7 @@ export interface IProgramDayTaskReview {
     frmoPage?:string;
     toPage?:string;
     degree?:number;
+    attachmentIds?:string[];
+    questionToStudent?:string;
 }
 

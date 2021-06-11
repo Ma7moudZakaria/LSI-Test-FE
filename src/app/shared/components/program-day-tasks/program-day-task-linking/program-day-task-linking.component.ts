@@ -1,5 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, Input, OnInit } from '@angular/core';
+import { IAttachment } from 'src/app/core/interfaces/attachments-interfaces/iattachment';
+import { IFileUpload } from 'src/app/core/interfaces/attachments-interfaces/ifile-upload';
+import { IProgramDayTaskHearing } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-hearing';
+import { AttachmentsService } from 'src/app/core/services/attachments-services/attachments.service';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { IProgramDayTaskLinking } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-linking';
+import { ProgramDayTaskLinkingType } from 'src/app/core/enums/program-day-task-linking-type.enum';
 @Component({
   selector: 'app-program-day-task-linking',
   templateUrl: './program-day-task-linking.component.html',
@@ -7,9 +14,63 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProgramDayTaskLinkingComponent implements OnInit {
 
-  constructor() { }
+  resMessage: BaseMessageModel = {};
+  @Input() linkingDetailsModel: IProgramDayTaskLinking = {};
+ TaskLinkingTypeEnum=ProgramDayTaskLinkingType;
+  constructor(
+    private attachmentService: AttachmentsService
+
+  ) { }
 
   ngOnInit(): void {
   }
+
+  fileUploadModel: IFileUpload[] = [];
+  fileList?: IAttachment[] = [];
+  attachmentIds: string[] = [];
+
+  DeleteAttachment(index: number, id: string) {
+    this.linkingDetailsModel?.bookAttatchments?.splice(index, 1);
+  }
+
+  onFileChange(files: FileList) {
+    if (files.length > 0) {
+      Array.from(files).forEach(element => {
+        var fileUploadObj: IFileUpload = {
+          containerNameIndex: 1, // need to be changed based on file type
+          file: element
+
+        }
+        this.fileUploadModel?.push(fileUploadObj)
+      });
+      this.UploadFiles(this.fileUploadModel);
+    }
+
+  }
+
+  UploadFiles(files: any) {
+    if (files.length === 0) {
+      return;
+    }
+    this.attachmentService.upload(files).subscribe(
+      (res: any) => {
+        Array.from(res.data).forEach((elm: any) => {
+          this.fileList?.push(elm as IAttachment);
+
+        })
+        this.linkingDetailsModel.bookAttatchments=this.fileList;
+        this.fileUploadModel = [];
+      }, error => {
+        console.log(error);
+        this.fileUploadModel = [];
+        this.resMessage =
+        {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+    )
+  }
+
 
 }

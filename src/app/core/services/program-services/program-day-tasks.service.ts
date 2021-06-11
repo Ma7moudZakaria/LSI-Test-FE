@@ -26,7 +26,7 @@ export class ProgramDayTasksService {
   }
 
   SaveProgramDayTaskDetails(model:ISaveProgramDayTaskDetailsModel):Observable<BaseResponseModel>{
-    return this.http.post<BaseResponseModel>(this.SaveProgramDayTaskDetailsURL,model);
+    return this.http.put<BaseResponseModel>(this.SaveProgramDayTaskDetailsURL,model);
   }
 
   CopyProgramDayTasks(id:string):Observable<BaseResponseModel>{

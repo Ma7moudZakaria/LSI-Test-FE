@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IAttachment } from 'src/app/core/interfaces/attachments-interfaces/iattachment';
+import { IFileUpload } from 'src/app/core/interfaces/attachments-interfaces/ifile-upload';
+import { IProgramDayTaskMemorize } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-memorize';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
+import { AttachmentsService } from 'src/app/core/services/attachments-services/attachments.service';
 
 @Component({
   selector: 'app-program-day-task-memorize',
@@ -7,9 +13,62 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProgramDayTaskMemorizeComponent implements OnInit {
 
-  constructor() { }
+  resMessage: BaseMessageModel = {};
+  fileUploadModel: IFileUpload[] = [];
+  fileList?: IAttachment[] = [];
+  attachmentIds: string[] = [];
+  @Input() memorizeDetailsModel: IProgramDayTaskMemorize = {}
+
+  constructor
+    (
+      private attachmentService: AttachmentsService
+
+    ) { }
+
+
 
   ngOnInit(): void {
   }
 
+  DeleteAttachment(index: number, id: string) {
+    this.memorizeDetailsModel?.bookAttatchments?.splice(index, 1);
+  }
+
+  onFileChange(files: FileList) {
+    if (files.length > 0) {
+      Array.from(files).forEach(element => {
+        var fileUploadObj: IFileUpload = {
+          containerNameIndex: 1, // need to be changed based on file type
+          file: element
+
+        }
+        this.fileUploadModel?.push(fileUploadObj)
+      });
+      this.UploadFiles(this.fileUploadModel);
+    }
+
+  }
+
+  UploadFiles(files: any) {
+    if (files.length === 0) {
+      return;
+    }
+    this.attachmentService.upload(files).subscribe(
+      (res: any) => {
+        Array.from(res.data).forEach((elm: any) => {
+          this.fileList?.push(elm as IAttachment);
+        })
+        this.memorizeDetailsModel.bookAttatchments=this.fileList;
+        this.fileUploadModel = [];
+      }, error => {
+        console.log(error);
+        this.fileUploadModel = [];
+        this.resMessage =
+        {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+    )
+  }
 }

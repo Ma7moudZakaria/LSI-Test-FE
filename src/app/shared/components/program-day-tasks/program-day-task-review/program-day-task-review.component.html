@@ -1,1 +1,51 @@
-<p>17</p>
+<div class="day-task-review-details">
+    <div class="form-group">
+        <label class="custom-file custom-file__text" for="importFile">
+            <span> 
+                <!-- <img calss="page-image" src="assets/images/walk-through/Group 18093.svg"  > -->
+                <p>{{'GENERAL.CHOOSEFILE' |translate}}</p>
+            </span>
+        </label>
+        <input type="file" class="custom-file-input" id="importFile" 
+    (change)="onFileChange($any($event.target).files)" >
+            <div class="col-4 cardRecourd"  *ngFor="let item of reviewDetailsModel?.bookAttatchments;let i=index" >
+                <img src="assets/images/days/book.svg">
+                <span>{{item.fileName}}</span>
+                <i class="fas fa-play-circle"></i>
+                <img src="assets/images/trash-2.svg" (click)="DeleteAttachment(i,item.id)">
+            </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="row">
+            <div class="col-6">
+                <label class="text-right header_input">{{'PROGRAM_DAY_TASK_DETIALS.PAGES'|translate}}</label>
+    <div class="d-flex ">
+        <input type="text" class="form-control  " [(ngModel)]="reviewDetailsModel.frmoPage" >
+        
+        <input type="text" class="form-control mx-2" [(ngModel)]="reviewDetailsModel.toPage" >
+
+    </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-12">
+                <label class="text-right header_input">{{'PROGRAM_DAY_TASK_DETIALS.DEGREE'|translate}}</label>
+               <input type="text" class="form-control w-50" [(ngModel)]="reviewDetailsModel.degree" >
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-12">
+                <label class="text-right header_input">{{'PROGRAM_DAY_TASK_DETIALS.SHOW_QUESTION_TO_STUDENT'|translate}} </label>
+    
+               <input type="text" class="form-control " [(ngModel)]="reviewDetailsModel.questionToStudent" >
+            </div>
+        </div>
+    </div>
+    </div>
