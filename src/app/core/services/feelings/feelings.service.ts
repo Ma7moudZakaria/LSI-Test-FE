@@ -20,7 +20,7 @@ export class FeelingsService {
   addFeelingsURL = environment.baseUrl + 'Feeling/create-feeling';
   getNotPublishedFeelingsURL = environment.baseUrl + 'Feeling/get-not-published-feelings/';
   getPublishedFeelingsByFilterURL = environment.baseUrl + 'Feeling/get-published-feelings-by-filter/';
-  approveCancelFeelingsURL = environment.baseUrl + 'Feeling/approve-cancel-feeling/';
+  approveCancelFeelingURL = environment.baseUrl + 'Feeling/approve-cancel-feeling/';
   deleteFeelingsURL = environment.baseUrl + 'Feeling/delete-feeling/';
 
 
@@ -33,19 +33,15 @@ export class FeelingsService {
     return this.http.get<BaseResponseModel>(this.getNotPublishedFeelingsURL + id)
   }
 
-  getPublishedFeelingsByFilter(id: string): Observable<BaseResponseModel> {
+  getPublishedFeelingsByFilter(id: RoleEnum): Observable<BaseResponseModel> {
     return this.http.get<BaseResponseModel>(this.getPublishedFeelingsByFilterURL + id)
   }
 
-  approvecCancelFeelingS(id: string): Observable<BaseResponseModel> {
-    return this.http.get<BaseResponseModel>(this.approveCancelFeelingsURL + id);
+  approvecCancelFeeling(id: string): Observable<BaseResponseModel> {
+    return this.http.put<BaseResponseModel>(this.approveCancelFeelingURL + id, null);
   }
 
   deleteFeelings(id: string): Observable<BaseResponseModel> {
     return this.http.delete<BaseResponseModel>(this.deleteFeelingsURL + id);
   }
-
-
-
-
 }

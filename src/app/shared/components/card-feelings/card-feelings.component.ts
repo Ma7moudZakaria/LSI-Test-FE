@@ -8,10 +8,10 @@ import { IFeelingsDetailsModel } from 'src/app/core/interfaces/feeling-interface
 })
 export class CardFeelingsComponent implements OnInit {
 
-  @Input() FeelingsDetailsModel: IFeelingsDetailsModel = {};
-  @Output() deleteFeeling = new EventEmitter<string>();
-  @Output() cancelFeeling = new EventEmitter<string>();
-  @Output() publishList = new EventEmitter<boolean>();
+  @Input() feelingsDetailsModel: IFeelingsDetailsModel | undefined ;
+  @Output() deleteFeeling = new EventEmitter<IFeelingsDetailsModel>();
+  @Output() cancelFeeling = new EventEmitter<IFeelingsDetailsModel>();
+  @Output() approveCancelFeeling = new EventEmitter<IFeelingsDetailsModel>();
 
   @Input() isPub:boolean = false;;
 
@@ -20,14 +20,15 @@ export class CardFeelingsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  DeleteFeelingCard() {
-    this.deleteFeeling.emit(this.FeelingsDetailsModel.id);
+  deleteFeelingCard() {
+    this.deleteFeeling.emit(this.feelingsDetailsModel);
   }
-  cancelFeelingCard() {
-    this.cancelFeeling.emit(this.FeelingsDetailsModel.id);
 
+  cancelFeelingItem() {
+    this.cancelFeeling.emit(this.feelingsDetailsModel);
   }
-  goPublishList() {
-    // this.publishList.emit(this.FeelingsDetailsModel.isPub);
+
+  publishFeelingItem() {
+    this.approveCancelFeeling.emit(this.feelingsDetailsModel);
   }
 }

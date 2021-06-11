@@ -11,4 +11,6 @@ export interface IFeelingsDetailsModel {
     proPic?:string;
     usrId?:string;
     crdOn?:string;
+
+    isNew?:boolean;
 }

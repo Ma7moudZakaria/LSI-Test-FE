@@ -9,6 +9,8 @@ import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { IDragDropAccordionItems } from 'src/app/core/interfaces/shared-interfaces/accordion-interfaces/idrag-drop-accordion-items';
 
 @Component({
   selector: 'app-list-feelings',
@@ -22,6 +24,8 @@ export class ListFeelingsComponent implements OnInit {
   feelingsNotPublishedList: IFeelingsDetailsModel[] = [];
   feelingsPublishedList: IFeelingsDetailsModel[] = [];
   resultMessage: BaseMessageModel = {};
+  items1:any;
+  listOrder?: number[];
 
   constructor
     (
@@ -33,18 +37,17 @@ export class ListFeelingsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getNotPublishedFeelings(this.tabType)
-    this.getPublishedFeelings(this.tabType)
+    this.getNotPublishedFeelings()
+    this.getPublishedFeelings()
   }
 
-
-  getNotPublishedFeelings(id: RoleEnum) {
-    this.feelingsServices.getNotPublishedFeelings(id || '').subscribe(res => {
+  getNotPublishedFeelings() {
+    this.feelingsServices.getNotPublishedFeelings(this.tabType || '').subscribe(res => {
       if (res.isSuccess) {
         this.feelingsNotPublishedList = res.data as IFeelingsDetailsModel[];
         this.feelingsNotPublishedList.forEach(element => {
           element.crdOn = element.crdOn ? new Date(element.crdOn).toDateString(): '';
-
+          element.isNew = true;
           if (!element?.proPic) {
             element.proPic = '../../../../../assets/images/Profile.svg';
           }
@@ -69,13 +72,14 @@ export class ListFeelingsComponent implements OnInit {
     });
 
   }
-  getPublishedFeelings(id: any) {
-    this.feelingsServices.getPublishedFeelingsByFilter(id || '').subscribe(res => {
+
+  getPublishedFeelings() {
+    this.feelingsServices.getPublishedFeelingsByFilter(this.tabType || '').subscribe(res => {
       if (res.isSuccess) {
         this.feelingsPublishedList = res.data as IFeelingsDetailsModel[];
-        this.feelingsNotPublishedList.forEach(element => {
+        this.feelingsPublishedList.forEach(element => {
           element.crdOn = element.crdOn ? new Date(element.crdOn).toDateString(): '';
-
+          element.isNew = false;
           if (!element?.proPic) {
             element.proPic = '../../../../../assets/images/Profile.svg';
           }
@@ -102,7 +106,7 @@ export class ListFeelingsComponent implements OnInit {
 
   }
 
-  deleteFeelingCard(id: string) {
+  deleteFeeling(event: IFeelingsDetailsModel) {
     const message = this.translate.currentLang === LanguageEnum.en ? "Are you sure that you want to delete this feeling" : "هل متأكد من حذف هذه المشاعر ";
 
     const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete feeling ' : 'حذف  المشاعر', message);
@@ -113,10 +117,10 @@ export class ListFeelingsComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(dialogResult => {
       if (dialogResult == true) {
-        this.feelingsServices.deleteFeelings(id || '').subscribe(res => {
+        this.feelingsServices.deleteFeelings(event.id || '').subscribe(res => {
           if (res.isSuccess) {
             this.alertify.success(res.message || '');
-
+            this.getNotPublishedFeelings();
           }
           else {
             this.alertify.error(res.message || '');
@@ -129,11 +133,10 @@ export class ListFeelingsComponent implements OnInit {
     });
   }
 
+  cancelFeeling(event:IFeelingsDetailsModel) {
+    const message = this.translate.currentLang === LanguageEnum.en ? "Are you sure that you want to cancel this feeling" : "هل متأكد من الغاء نشر هذه المشاعر ";
 
-  cancelFeelingCard(id?: string) {
-    const message = this.translate.currentLang === LanguageEnum.en ? "Are you sure that you want to cancel this feeling" : "هل متأكد من حذف هذه المشاعر ";
-
-    const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Cancel feeling ' : 'حذف  المشاعر', message);
+    const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Cancel feeling ' : 'الغاء نشر  المشاعر', message);
 
     const dialogRef = this.dialog.open(ConfirmModalComponent, {
       maxWidth: "400px",
@@ -141,25 +144,55 @@ export class ListFeelingsComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(dialogResult => {
       if (dialogResult == true) {
-        this.feelingsServices.approvecCancelFeelingS(id || '').subscribe(res => {
-          if (res.isSuccess) {
-            this.alertify.success(res.message || '');
-            this.getNotPublishedFeelings(this.tabType);
-          }
-          else {
-            this.alertify.error(res.message || '');
-          }
-        }, error => {
-          this.alertify.error(error || '');
-        }
-        )
+        this.approveCancelFeeling(event);
       }
     });
   }
 
-  goPublishList(event: boolean) {
-    // this.publishList.emit(this.FeelingsDetailsModel.isPub);
+  approveCancelFeeling(event: IFeelingsDetailsModel) {
+    this.feelingsServices.approvecCancelFeeling(event.id || '').subscribe(res => {
+      if (res.isSuccess){
+        this.getNotPublishedFeelings();
+        this.getPublishedFeelings();
+      }
+      else{
+
+      }
+    },error => {
+
+    })
   }
 
-
+  drop(event: CdkDragDrop<IDragDropAccordionItems[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      this.listOrder=[];
+      for(let i =0;i<=event.container.data.length-1;i++){
+        this.listOrder?.push(event.previousContainer.data[i].order||(i+1));
+      }
+      // this.questionBankQuestionUpdateOrderBy.categoryId=this.selectedCategoryId.id;
+      // this.questionBankQuestionUpdateOrderBy.orderList=this.listOrder;
+    
+      // this.questionBankQuestionService.updateOrderQuestionBankQuestion(this.questionBankQuestionUpdateOrderBy).subscribe(res => {
+      //   if (res.isSuccess) {
+      //  this.getQuestionBankQuestions(this.selectedCategoryId.id);
+      //   }
+      //   else {
+     
+      //   }
+        
+      // },
+      // error => {
+      //   this.resultMessage ={
+      //     message: error,
+      //     type: BaseConstantModel.DANGER_TYPE
+      //   }
+      // })
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
+  }
 }

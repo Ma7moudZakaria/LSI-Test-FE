@@ -3,21 +3,27 @@
 <ng-container *ngIf="!isPub">
   <div  class="card" >
     <div class="card_header">
-      <img  [src]="FeelingsDetailsModel.proPic">  
-      <!-- <img src="../../../../assets/images/feelings/ASH_9078.png" >   -->
+      <img  [src]="feelingsDetailsModel?.proPic">
 
       <div class="data dataInfo pl-3 pr-3">
-        <p class="title">{{FeelingsDetailsModel.fullNameAr}}</p>
+        <p class="title">{{feelingsDetailsModel?.fullNameAr}}</p>
         <p class="detlis">
-          {{FeelingsDetailsModel.des}}
+          {{feelingsDetailsModel?.des}}
         </p>
 
       </div>
-      <span class="date">{{FeelingsDetailsModel.crdOn}}</span>
+      <span class="date">{{feelingsDetailsModel?.crdOn}}</span>
     <div class="actions">
-        <a (click)= "DeleteFeelingCard()"> <img class="delete" src="../../../../assets/images/feelings/trash.svg"></a>
-        <a (click)= "goPublishList()"> <img class="arrow"src="../../../../assets/images/feelings/leftArrow.svg"></a>
-
+      <div *ngIf='feelingsDetailsModel?.isNew'>
+        <a (click)= "deleteFeelingCard()"> <img class="delete" src="../../../../assets/images/feelings/trash.svg"></a>
+        <a (click)= "publishFeelingItem()"> <img class="arrow"src="../../../../assets/images/feelings/leftArrow.svg"></a>
+      </div>
+        
+      <div *ngIf='!feelingsDetailsModel?.isNew'>
+        <a (click)= "cancelFeelingItem()"> <img class="delete" src="../../../../assets/images/feelings/close.svg"></a>
+        <a > <img class="arrow"src="../../../../assets/images/feelings/downArrow.svg"></a>
+        <a > <img class="arrow"src="../../../../assets/images/feelings/topArrow.svg"></a>
+      </div>
     </div>
     </div>
   </div>
