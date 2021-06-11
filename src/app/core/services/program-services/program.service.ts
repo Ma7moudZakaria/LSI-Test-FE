@@ -3,10 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IAssignExamFormsToProgram } from '../../interfaces/programs-interfaces/iassign-exam-forms-to-program';
+import { ICopyProgram } from '../../interfaces/programs-interfaces/iprogram-copy-model';
 import { IprogramCreatModel } from '../../interfaces/programs-interfaces/iprogram-creat-model';
-import { IProgramFilterByNameFilterRequest } from '../../interfaces/programs-interfaces/iprogram-filter-by-name-filter-request';
-import { IprogramFilterRequest } from '../../interfaces/programs-interfaces/iprogram-filter-request';
-import { IProgramFilterAdvancedRequest } from '../../interfaces/programs-interfaces/iprogram-filter-requests';
+import { IProgramFilterAdvancedRequest, IProgramFilterByNameRequest } from '../../interfaces/programs-interfaces/iprogram-filter-requests';
 import { IprogramUpdateModel } from '../../interfaces/programs-interfaces/iprogram-update-model';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 
@@ -29,6 +28,9 @@ export class ProgramService {
   programPauseURL = environment.baseUrl + 'Programs/program-pause/';
   programAdvancedFilterURL = environment.baseUrl + 'Programs/get-program-advanced-filter';
 
+  programPublishPauseURL = environment.baseUrl + 'Programs/program-publish-pause/';
+  CopyProgramURL=environment.baseUrl+'Programs/copy-program/';
+
   constructor(private http: HttpClient) { }
 
   addProgram(model:IprogramCreatModel):Observable<BaseResponseModel>{
@@ -39,11 +41,11 @@ export class ProgramService {
     return this.http.put<BaseResponseModel>(this.UpdateProgramnURL,model);
   }
  
-  getProgramsFilter(filterRequest:IprogramFilterRequest):Observable<BaseResponseModel>{
+  getProgramsFilter(filterRequest:IProgramFilterAdvancedRequest):Observable<BaseResponseModel>{
     return this.http.post<BaseResponseModel>(this.GetProgramsFilterURL,filterRequest)
   }
 
-  getAllPrograms(model:IProgramFilterByNameFilterRequest):Observable<BaseResponseModel>{
+  getAllPrograms(model:IProgramFilterByNameRequest):Observable<BaseResponseModel>{
     return this.http.post<BaseResponseModel>(this.GetAllProgramsURL, model)
   }
 
@@ -55,7 +57,11 @@ export class ProgramService {
     return this.http.get<BaseResponseModel>(this.DeleteProgramURL+id);
   }  
 
-  deleteProgram(id:number):Observable<BaseResponseModel>{
+  copyProgram(model:ICopyProgram):Observable<BaseResponseModel>{
+    return this.http.post<BaseResponseModel>(this.CopyProgramURL,model);
+  }
+
+  deleteProgram(id:string):Observable<BaseResponseModel>{
     return this.http.delete<BaseResponseModel>(this.DeleteProgramURL+id);
   }
 
@@ -75,4 +81,7 @@ export class ProgramService {
     return this.http.post<BaseResponseModel>(this.programAdvancedFilterURL,filterRequest)
   }
 
+  ProgramPublishPause(id: string): Observable<BaseResponseModel>{
+    return this.http.put<BaseResponseModel>(this.programPublishPauseURL+id , null);
+  }
 }

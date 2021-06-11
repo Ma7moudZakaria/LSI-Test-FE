@@ -41,7 +41,7 @@ export interface IProgramBasicInfoDetails{
     prgRats?:IProgramRatingTypesDetails[];
     prgWeekDutiDas?:IProgramStudentWeeklyDutiesDaysDetails[];
     prgRecitTms?:IProgramRecitationTimesDetails[];
-    prgTps?:IProgramRatingTypesDetails[];
+    prgTps?:IProgramTypesDetails[];
 
 }
 

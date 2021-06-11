@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
@@ -9,6 +9,7 @@ import { ScientificMaterialService } from 'src/app/core/services/scientific-mate
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
 import { IProgramFilterAdvancedRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-requests';
+import { ProgramDetailsComponent } from '../program-details.component';
 
 
 
@@ -20,8 +21,9 @@ import { IProgramFilterAdvancedRequest } from 'src/app/core/interfaces/programs-
 export class ProgramsListComponent implements OnInit {
 
   programsList :IprogramsModel[]=[];
+  programDetails = {} as IprogramsModel;
   programsbyAdvancedFilter :IProgramFilterAdvancedRequest= {};
-
+ 
   @Output() selectedProgram = new EventEmitter<IprogramsModel>();
   langEnum = LanguageEnum;
   resMessage: BaseMessageModel = {};
@@ -34,6 +36,7 @@ export class ProgramsListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
     // this.loadPrograms();
     this.programsbyAdvancedFilter = {
     }
@@ -47,6 +50,7 @@ export class ProgramsListComponent implements OnInit {
         this.programsList = res.data as IprogramsModel [];
 
         console.log("Programs List : " , this.programsList);
+        this.getProgramIdToProgramDetails(this.programsList[0] || null);
 
       }, error => {
         this.resMessage = {
@@ -55,6 +59,10 @@ export class ProgramsListComponent implements OnInit {
         }
       }
     );
+  }
+
+  getProgramIdToProgramDetails(item:IprogramsModel) {
+    this.selectedProgram.emit(item);
   }
 
   selectedIndex = -1;
