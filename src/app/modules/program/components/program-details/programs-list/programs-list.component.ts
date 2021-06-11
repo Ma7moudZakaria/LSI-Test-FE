@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
@@ -6,8 +6,12 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { ScientificMaterialService } from 'src/app/core/services/scientific-material-services/scientific-material.service';
-
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProgramService } from 'src/app/core/services/program-services/program.service';
+import { IProgramFilterAdvancedRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-requests';
+import { ProgramDetailsComponent } from '../program-details.component';
+
+
 
 @Component({
   selector: 'app-programs-list',
@@ -16,26 +20,38 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProgramsListComponent implements OnInit {
 
-  programs: any;
-  //  @Output() selectedProgram =  new EventEmitter<IprogramsModel>();
+  programsList :IprogramsModel[]=[];
+  programDetails = {} as IprogramsModel;
+  programsbyAdvancedFilter :IProgramFilterAdvancedRequest= {};
+ 
+  @Output() selectedProgram = new EventEmitter<IprogramsModel>();
   langEnum = LanguageEnum;
   resMessage: BaseMessageModel = {};
+  filterRequest: IProgramFilterAdvancedRequest = {};
 
   constructor(private scientifcMaterialService: ScientificMaterialService,
+    private programService: ProgramService,
     public translate: TranslateService,
     private router: Router,
   ) { }
 
   ngOnInit(): void {
-    this.loadPrograms();
+
+    // this.loadPrograms();
+    this.programsbyAdvancedFilter = {
+    }
+
+    this.loadProgramsbyAdvancedFilter( this.programsbyAdvancedFilter ) ;
   }
 
-  loadPrograms(programName?: any) {
-    this.scientifcMaterialService.getProgramsLookup(programName).subscribe(
+  loadProgramsbyAdvancedFilter(ProgramsbyAdvancedFilter: IProgramFilterAdvancedRequest) {
+    this.programService.getProgramAdvancedFilter(ProgramsbyAdvancedFilter).subscribe(
       (res: BaseResponseModel) => {
-        this.programs = res.data as IprogramsModel[];
-        this.loadProgramMaterial({})
-        this.selectedIndex = -1;
+        this.programsList = res.data as IprogramsModel [];
+
+        console.log("Programs List : " , this.programsList);
+        this.getProgramIdToProgramDetails(this.programsList[0] || null);
+
       }, error => {
         this.resMessage = {
           message: error,
@@ -44,10 +60,13 @@ export class ProgramsListComponent implements OnInit {
       }
     );
   }
-  selectedIndex = -1;
-  loadProgramMaterial(program?: IprogramsModel) {
-    // this.selectedProgram?.emit(program);
+
+  getProgramIdToProgramDetails(item:IprogramsModel) {
+    this.selectedProgram.emit(item);
   }
+
+  selectedIndex = -1;
+
   addPrgramPage() {
     this.router.navigateByUrl('/program/add-program)');
   }

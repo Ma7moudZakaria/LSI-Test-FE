@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
-import { IProgramFilterByNameFilterRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-by-name-filter-request';
+import { IProgramFilterByNameRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-requests';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
@@ -18,15 +18,16 @@ export class ProgramsListComponent implements OnInit {
    @Output() selectedProgram =  new EventEmitter<IprogramsModel>();
   langEnum = LanguageEnum;
   resMessage: BaseMessageModel = {};
-  programFilterByName: IProgramFilterByNameFilterRequest = {};
+  programFilterByName: IProgramFilterByNameRequest = {};
 
   constructor(private scientifcMaterialService: ScientificMaterialService,public translate : TranslateService) { }
 
   ngOnInit(): void {
     this.loadPrograms();
+    
   }
 
-  loadPrograms(programName?:any) {
+  loadPrograms(programName?: any) {
     if (programName != null || programName != "") { this.programFilterByName.name = programName; }
     else{this.programFilterByName.name="";}
     this.programFilterByName.skip = 0;
@@ -34,6 +35,7 @@ export class ProgramsListComponent implements OnInit {
     this.scientifcMaterialService.getProgramsLookup(this.programFilterByName).subscribe(
       (res: BaseResponseModel) => {
         this.programs = res.data as IprogramsModel[];
+        console.log("programs" , this.programs);
       this.loadProgramMaterial({})
      this.selectedIndex=-1;
       }, error => {        

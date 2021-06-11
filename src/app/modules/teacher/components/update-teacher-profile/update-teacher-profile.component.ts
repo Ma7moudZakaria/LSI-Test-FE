@@ -26,13 +26,12 @@ import { ITelInputParams } from 'src/app/core/interfaces/shared-interfaces/tel-i
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
 import { ITeacherProfileLookup } from 'src/app/core/interfaces/teacher-interfaces/iteacher-profile-lookup';
 import { ITeacherProfileProgramDegreeLookup } from 'src/app/core/interfaces/teacher-interfaces/iteacher-profile-program-lookup';
-import { IprogramFilterRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-request';
+import { IProgramFilterAdvancedRequest, IProgramFilterByNameRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-requests';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { HostListener } from '@angular/core';
 import { ITeacherProfileAvailabilityLookup } from 'src/app/core/interfaces/teacher-interfaces/iteacher-availability-lookup';
-import { IProgramFilterByNameFilterRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-by-name-filter-request';
 
 @Component({
   selector: 'app-update-teacher-profile',
@@ -63,7 +62,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
   hijriBirthDateInputParam: NgbDateStruct = { year: 0, day: 0, month: 0 };
 
   ProgramsList: IprogramsModel[] = [];;
-  ProgramFilter: IprogramFilterRequest = {};
+  ProgramFilter: IProgramFilterAdvancedRequest = {};
 
   rewayatsMessage: BaseMessageModel = {};
   selectedRewayatsList = Array<ITeacherProfileLookup>();
@@ -81,7 +80,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
   fileList?: IAttachment[] = [];
   ejazaAttachmentIds: string[] = [];
 
-  programFilterByNameFilterRequest = {} as IProgramFilterByNameFilterRequest;
+  programFilterByNameFilterRequest = {} as IProgramFilterByNameRequest;
 
   event = {
     eampm: "AM"
@@ -700,7 +699,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           programId: this.ProgramsList.filter(el => el.id == this.profileForm.value.teacherPrograms)[0].id,
           degreeId: this.collectionOfLookup.DEGREE.filter(el => el.id == this.profileForm.value.teacherProgramDegrees)[0].id,
 
-          progName: this.ProgramsList.filter(el => el.id == this.profileForm.value.teacherPrograms)[0].name,
+          progName: this.ProgramsList.filter(el => el.id == this.profileForm.value.teacherPrograms)[0].progName,
 
           degreeNameEn: this.collectionOfLookup.DEGREE.filter(el => el.id == this.profileForm.value.teacherProgramDegrees)[0].nameEn,
           degreeNameAr: this.collectionOfLookup.DEGREE.filter(el => el.id == this.profileForm.value.teacherProgramDegrees)[0].nameAr,

@@ -38,11 +38,11 @@
     </div>
     <!-- {{selectedRoleId | json}} -->
    
-    <div class="row fix_margin w-100" >
+    <div class="row fix_margin w-100" *ngIf='programDetails'>
         <div class="col-12 px-0 ">
 
-           <app-basic-information *ngIf="showTap == 'BASEINFO'"></app-basic-information>
-           <app-days *ngIf="showTap == 'DAYS'"></app-days>
+           <app-basic-information *ngIf="showTap == 'BASEINFO'" [progBasicInfoDetails]='programDetails?.progBaseInfo'></app-basic-information>
+           <app-days *ngIf="showTap == 'DAYS'" [progDays]='programDetails?.progDays'></app-days>
            <app-conditions *ngIf="showTap == 'CANDITION'"></app-conditions>
            <app-join-requests *ngIf="showTap == 'JOIN'"></app-join-requests>
            <app-notify *ngIf="showTap == 'NOTIFACATION'"></app-notify>

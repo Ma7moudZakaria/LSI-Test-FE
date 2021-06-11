@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IProgramFilterByNameFilterRequest } from '../../interfaces/programs-interfaces/iprogram-filter-by-name-filter-request';
+import { IProgramFilterByNameRequest } from '../../interfaces/programs-interfaces/iprogram-filter-requests';
 import { IAddScientificMaterial } from '../../interfaces/scientific-material/iadd-scientifimaterial';
 import { IScientificMaterialFilter } from '../../interfaces/scientific-material/iscientific-matrial-filter';
 import { IUpdateScientificMaterial } from '../../interfaces/scientific-material/iupdate-scientific-material';
@@ -40,7 +40,7 @@ export class ScientificMaterialService {
   getScientificMateriaFilter(filterRequest: IScientificMaterialFilter): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.getScientificMatrialFilterURL, filterRequest)
   }
-  getProgramsLookup(filterRequest: IProgramFilterByNameFilterRequest): Observable<BaseResponseModel> {
+  getProgramsLookup(filterRequest: IProgramFilterByNameRequest): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.getProgramsLookupUrl,filterRequest)
   }
   GetScientificMatrialCategoriesLookup():Observable<BaseResponseModel>{

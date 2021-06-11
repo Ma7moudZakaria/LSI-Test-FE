@@ -1,7 +1,7 @@
 <div class="container-fluid"> 
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-12 pl-0">
-            <app-programs-list></app-programs-list>
+            <app-programs-list (selectedProgram)='selectedProgramCallBack($event)'></app-programs-list>
             <!-- <app-view-all-content-management-type (selectedcmsTypeId)="setSelectedCmsType($event)"></app-view-all-content-management-type> -->
         </div>
         <div class="col-lg-9  col-md-9 col-sm-12 ">
@@ -9,7 +9,7 @@
             </app-content-management-system> -->
        <!-- <app-programs-type></app-programs-type> -->
             <!-- <programs-tabs></programs-tabs> -->
-            <app-programs-tabs></app-programs-tabs>
+            <app-programs-tabs [programModel]='programModel'></app-programs-tabs>
         </div>
        
     </div>
