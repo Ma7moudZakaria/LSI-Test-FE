@@ -70,6 +70,18 @@
     }
 }
 
+.nav-item :active {
+     background: #CB9118;
+     color : #ffffff;
+}
+
+
+.active {
+    background: #CB9118;
+    color : #ffffff;
+  }
+
+ 
 .container:lang(en)::before{
     // content: "";
     // position:absolute;
@@ -228,4 +240,10 @@
     color: #740606 !important;
     cursor: no-drop !important;
 
+}
+
+.nav-item.active 
+.container__navigation__title
+{
+  color:#fff !important; 
 }

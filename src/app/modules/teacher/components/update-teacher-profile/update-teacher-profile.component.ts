@@ -26,7 +26,7 @@ import { ITelInputParams } from 'src/app/core/interfaces/shared-interfaces/tel-i
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
 import { ITeacherProfileLookup } from 'src/app/core/interfaces/teacher-interfaces/iteacher-profile-lookup';
 import { ITeacherProfileProgramDegreeLookup } from 'src/app/core/interfaces/teacher-interfaces/iteacher-profile-program-lookup';
-import { IProgramFilterAdvancedRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-requests';
+import { IProgramFilterAdvancedRequest, IProgramFilterByNameRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-requests';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
@@ -79,6 +79,8 @@ export class UpdateTeacherProfileComponent implements OnInit {
   fileUploadModel: IFileUpload[] = [];
   fileList?: IAttachment[] = [];
   ejazaAttachmentIds: string[] = [];
+
+  programFilterByNameFilterRequest = {} as IProgramFilterByNameRequest;
 
   event = {
     eampm: "AM"
@@ -169,7 +171,11 @@ export class UpdateTeacherProfileComponent implements OnInit {
   }
 
   getPrograms() {
-    this.ProgramService.getAllPrograms().subscribe(res => {
+    this.programFilterByNameFilterRequest = { 
+      name: ""
+    }
+
+    this.ProgramService.getAllPrograms(this.programFilterByNameFilterRequest).subscribe(res => {
       let response = <BaseResponseModel>res;
       if (response.isSuccess) {
         this.ProgramsList = response.data;
@@ -693,8 +699,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           programId: this.ProgramsList.filter(el => el.id == this.profileForm.value.teacherPrograms)[0].id,
           degreeId: this.collectionOfLookup.DEGREE.filter(el => el.id == this.profileForm.value.teacherProgramDegrees)[0].id,
 
-          programNameEn: this.ProgramsList.filter(el => el.id == this.profileForm.value.teacherPrograms)[0].engName,
-          programNameAr: this.ProgramsList.filter(el => el.id == this.profileForm.value.teacherPrograms)[0].arabName,
+          progName: this.ProgramsList.filter(el => el.id == this.profileForm.value.teacherPrograms)[0].progName,
 
           degreeNameEn: this.collectionOfLookup.DEGREE.filter(el => el.id == this.profileForm.value.teacherProgramDegrees)[0].nameEn,
           degreeNameAr: this.collectionOfLookup.DEGREE.filter(el => el.id == this.profileForm.value.teacherProgramDegrees)[0].nameAr,

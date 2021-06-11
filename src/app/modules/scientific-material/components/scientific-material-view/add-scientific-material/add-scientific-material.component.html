@@ -8,7 +8,7 @@
                     <option *ngFor="let item of programs"
                         value="{{item.id}}">
                         <!-- {{translate.currentLang === langEnum.en ? item.engName : item.arabName}} -->
-                        {{ item.name}}
+                        {{ item.progName}}
                     </option>
                 </select>
                 <span class="select-arrow position-absolute">
@@ -39,7 +39,7 @@
                 class="badge badge-info p-2 " >
             <div class="d-flex justify-content-between badge badge-info ">
                 <!-- <p class="mb-0 ml-2 mr-2"> {{translate.currentLang === langEnum.en ? p.engName :p.arabName}}</p> -->
-                <p class="mb-0 ml-2 mr-2"> {{p.name}}</p>
+                <p class="mb-0 ml-2 mr-2"> {{p.progName}}</p>
                 <a (click)="removeItemFromSelectedPrograms(p)"><i class="fas fa-times-circle"></i></a>
             </div>
             </div>

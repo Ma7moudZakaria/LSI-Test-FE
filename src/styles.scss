@@ -752,11 +752,16 @@ display: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    font-family: Almarai-Regular;
 }
 .mat-checkbox-inner-container{
   margin: 0.5rem;
 }
+}
+
+.mat-radio-label-content ,.mat-checkbox-label{
+ font-size: 14px;
+  font-family: Almarai-Regular;
 }
 /******************
  custom check box for card-admin-scientific-problem
@@ -811,7 +816,6 @@ ngb-datepicker-month {
 .link_Add{
   cursor: pointer;
   color:$icon_input;
-  text-decoration: underline;
 
 }
 .offset-2:lang(en) {
