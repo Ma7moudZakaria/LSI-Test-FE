@@ -4,7 +4,7 @@ export interface IFeelingsDetailsModel {
     no?:number;
     des?:string;
     pubDate?:string;
-    ordNo?:number;
+    order?:number;
     usrName?:string;
     fullNameAr?:string;
     fullNameEn?:string;
