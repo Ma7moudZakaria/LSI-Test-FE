@@ -24,6 +24,7 @@ export class ProgramsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadPrograms();
+    
   }
 
   loadPrograms(programName?: any) {
@@ -34,6 +35,7 @@ export class ProgramsListComponent implements OnInit {
     this.scientifcMaterialService.getProgramsLookup(this.programFilterByName).subscribe(
       (res: BaseResponseModel) => {
         this.programs = res.data as IprogramsModel[];
+        console.log("programs" , this.programs);
       this.loadProgramMaterial({})
      this.selectedIndex=-1;
       }, error => {        
