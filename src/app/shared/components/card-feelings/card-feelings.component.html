@@ -1,0 +1,73 @@
+  <!--not  publish list of card  -->
+
+<ng-container *ngIf="!isPub">
+  <div  class="card" >
+    <div class="card_header">
+      <img  [src]="feelingsDetailsModel?.proPic">
+
+      <div class="data dataInfo pl-3 pr-3">
+        <p class="title">{{feelingsDetailsModel?.fullNameAr}}</p>
+        <p class="detlis">
+          {{feelingsDetailsModel?.des}}
+        </p>
+
+      </div>
+      <span class="date">{{feelingsDetailsModel?.crdOn}}</span>
+    <div class="actions">
+      <div *ngIf='feelingsDetailsModel?.isNew'>
+        <a (click)= "deleteFeelingCard()"> <img class="delete" src="../../../../assets/images/feelings/trash.svg"></a>
+        <a (click)= "publishFeelingItem()"> <img class="arrow"src="../../../../assets/images/feelings/leftArrow.svg"></a>
+      </div>
+        
+      <div *ngIf='!feelingsDetailsModel?.isNew'>
+        <a (click)= "cancelFeelingItem()"> <img class="delete" src="../../../../assets/images/feelings/close.svg"></a>
+        <a > <img class="arrow"src="../../../../assets/images/feelings/downArrow.svg"></a>
+        <a > <img class="arrow"src="../../../../assets/images/feelings/topArrow.svg"></a>
+      </div>
+    </div>
+    </div>
+  </div>
+</ng-container>
+
+  <!-- publish list of card  -->
+<!-- <ng-container *ngIf="isPub" >
+  <mat-accordion class="feelingCard__OldList"
+      cdkDropList
+      #unassignedList="cdkDropList"
+      [cdkDropListData]=""
+      [cdkDropListConnectedTo]="[]"
+      (cdkDropListDropped)="FeelingsDetailsModel" >
+      <mat-expansion-panel cdkDrag  disabled>
+        <mat-expansion-panel-header >
+              <div  class="card" >
+                <div class="card_header">
+                  
+                  <img src="../../../../assets/images/feelings/arrange.svg" class="arrange" >  
+                  <img src="../../../../assets/images/feelings/ASH_9078.png" >  
+
+                  <img  [src]="FeelingsDetailsModel.proPic">  
+            
+                  <div class="data dataInfo pl-3 pr-3">
+                    <p class="title">{{FeelingsDetailsModel.fullNameAr}}</p>
+                    <p class="detlis">
+                   {{FeelingsDetailsModel.des}}
+                    </p>
+            
+                  </div>
+                  <span class="date">{{FeelingsDetailsModel.crdOn}}</span>
+                <div class="actions">
+                    <a (click)= "cancelFeelingCard()"> <img class="delete" src="../../../../assets/images/feelings/close.svg"></a>
+                    <a > <img class="arrow"src="../../../../assets/images/feelings/downArrow.svg"></a>
+                    <a > <img class="arrow"src="../../../../assets/images/feelings/topArrow.svg"></a>
+            
+                </div>
+                </div>
+              </div>
+               
+           
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+
+
+</mat-accordion>
+</ng-container> -->

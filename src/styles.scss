@@ -742,7 +742,9 @@ display: none;
   padding-right: 2rem;
 }
 }
-
+.mat-expansion-panel-header[aria-disabled=true] {
+  color: rgba(0,0,0,.87);
+}
 /******************
  custom radio button in  add-question
 /***********************/
@@ -826,6 +828,27 @@ ngb-datepicker-month {
   margin-left: 0;
 
 }
+
+/******************
+accordion
+/***********************/
+.feelingCard__OldList.mat-accordion{
+    .mat-expansion-panel-header{
+      height: 103px;
+      padding: 0;
+    }
+    .mat-content{
+      padding: 0.5rem;
+    }
+   .card
+    {width: 100%;}
+    .mat-expansion-panel:not([class*=mat-elevation-z]) {
+      box-shadow: none !important;
+    }
+  }
+  
+
+
 /******************
 pagination
 /***********************/
