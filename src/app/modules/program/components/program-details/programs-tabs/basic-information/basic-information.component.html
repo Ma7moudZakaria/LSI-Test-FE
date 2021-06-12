@@ -7,7 +7,7 @@
             <div class="d-flex justify-content-between" >
                 <p class="head">{{ progBasicInfoDetails?.prgName}} </p>
                 <div class="d-flex">
-                    <i class="far fa-copy" (click)="copyTask()"></i>
+                    <i class="far fa-copy" (click)="copyProgramData()"></i>
                     <i class="fas fa-play" (click)="publishProgram()"></i>
                     <img src="assets/images/question/edit-question.svg"  (click)="confirmDialog()">
                     <img src="assets/images/feelings/trash.svg" (click)="editBasicInfo()">
@@ -117,25 +117,24 @@
 
             </div>
            
-            <div class="col-6 mb-3  col-md-6">
+            <!-- <div class="col-6 mb-3  col-md-6">
                 <label class="title"> 
                     أيام الإجازة
                     <span>  &nbsp;  : </span>
                     <span>  &nbsp; </span> 
 
                  </label>
-                 <!-- <label> {{ progBasicInfoDetails?.prgWeekDutiDas}} </label> -->
 
-            </div>
+            </div> -->
 
             <div class="col-6 mb-3  col-md-6">
                 <label class="title"> 
                     أيام الواجبات
-                    <span>  &nbsp;  : </span>
-                    <span>  &nbsp; </span> 
+                    <span>  &nbsp;  :  </span>
+                    <span >  &nbsp; </span> 
 
                  </label>
-                 <!-- <label> {{ progBasicInfoDetails?.prgNoDutyDays}} </label> -->
+                 <label *ngFor="let progWeekDutiDas of progBasicInfoDetails?.prgWeekDutiDas ;let i=index"> {{ this.translate.currentLang === langEnum.en? progWeekDutiDas.enDaName : progWeekDutiDas.arDaName }}  </label> 
 
 
             </div>
