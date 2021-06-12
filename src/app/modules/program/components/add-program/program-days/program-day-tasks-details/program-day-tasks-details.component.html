@@ -1,5 +1,7 @@
 <div class="days_details">
-    <span class="ml-3 head">{{this.translate.currentLang===langEnum.en?taskDetails?.dayTaskNameEn:taskDetails?.dayTaskNameAr}}</span>
+    <span class="ml-3 head">
+        {{this.translate.currentLang===langEnum.en?taskDetails?.dayTaskNameEn:taskDetails?.dayTaskNameAr}}
+    </span>
     <app-program-day-task-hearing *ngIf="detailsTypeEnum.taskHearing===taskDetails?.huffazTask"
      [hearingTaskDetailsModel]='hearingTaskDetailsModel'>
     </app-program-day-task-hearing>
@@ -16,8 +18,8 @@
     <app-program-day-task-recitation-students *ngIf="detailsTypeEnum.TaskRecitationStudents===taskDetails?.huffazTask" [recitationStudentsModel]="recitationStudentsModel"></app-program-day-task-recitation-students>
     <!-- <app-program-day-task-tasmea *ngIf="detailsTypeEnum.TaskTasmea===taskDetails?.huffazTask" []=""></app-program-day-task-tasmea>  -->
      <app-program-day-task-test-phased *ngIf="detailsTypeEnum.TaskTestPhased===taskDetails?.huffazTask" [testPhasedDetailsModel]="testPhasedDetailsModel"></app-program-day-task-test-phased>
-     <section class="mt-5">
-        <div  class="row direction-rtl buttons-center mt-5">
+     <section >
+        <div  class="row direction-rtl buttons-center ">
             <button   type="submit" class="save-btn" (click)="save()" > 
                 {{ "GENERAL.SAVE" | translate }}
             </button>
