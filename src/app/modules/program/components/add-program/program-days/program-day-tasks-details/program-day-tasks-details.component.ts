@@ -43,6 +43,7 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
   dailyTestDetailsModel: IExam = { questions: [] };
   recitationStudentsModel :IProgramBasicInfoDetails = {};
   programDayTaskDetails: ISaveProgramDayTaskDetailsModel={};
+  tasmeaModel :IProgramBasicInfoDetails = {};
   resultMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
 
@@ -172,6 +173,9 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
                       if (!this.dailyTestDetailsModel.questions)
                         this.dailyTestDetailsModel.questions = [];
                       break;
+                      case this.detailsTypeEnum.TaskTasmea:
+                    this.tasmeaModel=this.progamDetails?.progBaseInfo||{};
+                    break;
       default:
         "";
         break;
