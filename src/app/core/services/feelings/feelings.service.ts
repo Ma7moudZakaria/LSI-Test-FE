@@ -7,6 +7,9 @@ import { IProgramNotificationModel } from '../../interfaces/programs-interfaces/
 import { IProgramUpdateNotifacationModel } from '../../interfaces/programs-interfaces/iprogram-update-notification-model';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 import { IFeelingsDetailsModel } from '../../interfaces/feeling-interfaces/ifeelings-details-model';
+import { ThisReceiver } from '@angular/compiler';
+import { IFeelingOrderModel } from '../../interfaces/feeling-interfaces/ifeeling-order-model';
+import { IFeelingSwapModel } from '../../interfaces/feeling-interfaces/ifeeling-swap-model';
 
 
 @Injectable({
@@ -22,9 +25,8 @@ export class FeelingsService {
   getPublishedFeelingsByFilterURL = environment.baseUrl + 'Feeling/get-published-feelings-by-filter/';
   approveCancelFeelingURL = environment.baseUrl + 'Feeling/approve-cancel-feeling/';
   deleteFeelingsURL = environment.baseUrl + 'Feeling/delete-feeling/';
-
-
-
+  updateFeelingsOrderURL = environment.baseUrl + 'Feeling/update-feelings-order/'
+  swapFeelingsURL = environment.baseUrl + 'Feeling/swap-feelings/'
 
   addAllFeelings(model: IProgramNotificationModel): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.addFeelingsURL, model);
@@ -43,5 +45,13 @@ export class FeelingsService {
 
   deleteFeelings(id: string): Observable<BaseResponseModel> {
     return this.http.delete<BaseResponseModel>(this.deleteFeelingsURL + id);
+  }
+
+  updateFeelingsOrder(model:IFeelingOrderModel):Observable<BaseResponseModel>{
+    return this.http.put<BaseResponseModel>(this.updateFeelingsOrderURL, model);
+  }
+
+  swapFeelings(model:IFeelingSwapModel):Observable<BaseResponseModel>{
+    return this.http.put<BaseResponseModel>(this.swapFeelingsURL, model);
   }
 }
