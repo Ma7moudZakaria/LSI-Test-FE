@@ -10,6 +10,7 @@ import { IFeelingsDetailsModel } from '../../interfaces/feeling-interfaces/ifeel
 import { ThisReceiver } from '@angular/compiler';
 import { IFeelingOrderModel } from '../../interfaces/feeling-interfaces/ifeeling-order-model';
 import { IFeelingSwapModel } from '../../interfaces/feeling-interfaces/ifeeling-swap-model';
+import { IFeelingsFilter } from '../../interfaces/feeling-interfaces/ifeelings-filter';
 
 
 @Injectable({
@@ -31,12 +32,12 @@ export class FeelingsService {
   addAllFeelings(model: IProgramNotificationModel): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.addFeelingsURL, model);
   }
-  getNotPublishedFeelings(id: RoleEnum): Observable<BaseResponseModel> {
-    return this.http.get<BaseResponseModel>(this.getNotPublishedFeelingsURL + id)
+  getNotPublishedFeelings(model:IFeelingsFilter): Observable<BaseResponseModel> {
+    return this.http.post<BaseResponseModel>(this.getNotPublishedFeelingsURL, model)
   }
 
-  getPublishedFeelingsByFilter(id: RoleEnum): Observable<BaseResponseModel> {
-    return this.http.get<BaseResponseModel>(this.getPublishedFeelingsByFilterURL + id)
+  getPublishedFeelingsByFilter(model:IFeelingsFilter): Observable<BaseResponseModel> {
+    return this.http.post<BaseResponseModel>(this.getPublishedFeelingsByFilterURL, model)
   }
 
   approvecCancelFeeling(id: string): Observable<BaseResponseModel> {

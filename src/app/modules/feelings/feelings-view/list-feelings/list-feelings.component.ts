@@ -11,6 +11,10 @@ import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/compon
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { IDragDropAccordionItems } from 'src/app/core/interfaces/shared-interfaces/accordion-interfaces/idrag-drop-accordion-items';
+import { IFeelingsFilter } from 'src/app/core/interfaces/feeling-interfaces/ifeelings-filter';
+import { skip } from 'rxjs/operators';
+import { IFeelingOrderModel } from 'src/app/core/interfaces/feeling-interfaces/ifeeling-order-model';
+import { IFeelingSwapModel } from 'src/app/core/interfaces/feeling-interfaces/ifeeling-swap-model';
 
 @Component({
   selector: 'app-list-feelings',
@@ -26,6 +30,9 @@ export class ListFeelingsComponent implements OnInit {
   resultMessage: BaseMessageModel = {};
   items1:any;
   listOrder?: number[];
+  feelingFilter:IFeelingsFilter={take:2147483647,skip:0}
+  feelingsOrder:IFeelingOrderModel = {};
+  swapFeeling:IFeelingSwapModel ={};
 
   constructor
     (
@@ -37,12 +44,14 @@ export class ListFeelingsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.feelingFilter.usrRe = this.tabType;
+    this.feelingsOrder.usrTp = this.tabType;
     this.getNotPublishedFeelings()
     this.getPublishedFeelings()
   }
 
   getNotPublishedFeelings() {
-    this.feelingsServices.getNotPublishedFeelings(this.tabType || '').subscribe(res => {
+    this.feelingsServices.getNotPublishedFeelings(this.feelingFilter).subscribe(res => {
       if (res.isSuccess) {
         this.feelingsNotPublishedList = res.data as IFeelingsDetailsModel[];
         this.feelingsNotPublishedList.forEach(element => {
@@ -74,7 +83,7 @@ export class ListFeelingsComponent implements OnInit {
   }
 
   getPublishedFeelings() {
-    this.feelingsServices.getPublishedFeelingsByFilter(this.tabType || '').subscribe(res => {
+    this.feelingsServices.getPublishedFeelingsByFilter(this.feelingFilter).subscribe(res => {
       if (res.isSuccess) {
         this.feelingsPublishedList = res.data as IFeelingsDetailsModel[];
         this.feelingsPublishedList.forEach(element => {
@@ -170,29 +179,55 @@ export class ListFeelingsComponent implements OnInit {
       for(let i =0;i<=event.container.data.length-1;i++){
         this.listOrder?.push(event.previousContainer.data[i].order||(i+1));
       }
-      // this.questionBankQuestionUpdateOrderBy.categoryId=this.selectedCategoryId.id;
-      // this.questionBankQuestionUpdateOrderBy.orderList=this.listOrder;
-    
-      // this.questionBankQuestionService.updateOrderQuestionBankQuestion(this.questionBankQuestionUpdateOrderBy).subscribe(res => {
-      //   if (res.isSuccess) {
-      //  this.getQuestionBankQuestions(this.selectedCategoryId.id);
-      //   }
-      //   else {
-     
-      //   }
-        
-      // },
-      // error => {
-      //   this.resultMessage ={
-      //     message: error,
-      //     type: BaseConstantModel.DANGER_TYPE
-      //   }
-      // })
+      
+      this.feelingsOrder.orderList = this.listOrder;
+
+      this.feelingsServices.updateFeelingsOrder(this.feelingsOrder).subscribe(res => {
+        if (res.isSuccess){
+          this.getPublishedFeelings();
+        }
+        else{
+
+        }
+      },
+      error => {
+        this.resultMessage ={
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      })
     } else {
       transferArrayItem(event.previousContainer.data,
         event.container.data,
         event.previousIndex,
         event.currentIndex);
     }
+  }
+
+  swapUp(event : IFeelingsDetailsModel){
+    this.swapFeeling.feelA = event.id;
+    this.swapFeeling.feelB = this.feelingsPublishedList[this.feelingsPublishedList.indexOf(event) - 1].id;
+  }
+
+  swapDown(event : IFeelingsDetailsModel){
+    this.swapFeeling.feelA = event.id;
+    this.swapFeeling.feelB = this.feelingsPublishedList[this.feelingsPublishedList.indexOf(event) + 1].id;
+  }
+
+  swapFeelingsItems(){
+    this.feelingsServices.swapFeelings(this.swapFeeling).subscribe(res=>{
+      if (res.isSuccess){
+        this.getPublishedFeelings();
+      }
+      else{
+
+      }
+
+    },error => {
+      this.resultMessage ={
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    })
   }
 }

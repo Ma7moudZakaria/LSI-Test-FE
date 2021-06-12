@@ -1,4 +1,6 @@
+import { RoleEnum } from "../../enums/role-enum.enum";
+
 export interface IFeelingOrderModel {
-    usrTp:number;
-    orderList:number[];
+    usrTp?:RoleEnum;
+    orderList?:number[];
 }

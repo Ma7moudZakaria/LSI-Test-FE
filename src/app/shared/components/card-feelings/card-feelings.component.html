@@ -21,8 +21,8 @@
         
       <div *ngIf='!feelingsDetailsModel?.isNew'>
         <a (click)= "cancelFeelingItem()"> <img class="delete" src="../../../../assets/images/feelings/close.svg"></a>
-        <a > <img class="arrow"src="../../../../assets/images/feelings/downArrow.svg"></a>
-        <a > <img class="arrow"src="../../../../assets/images/feelings/topArrow.svg"></a>
+        <a (click)='swapUp()'> <img class="arrow"src="../../../../assets/images/feelings/downArrow.svg"></a>
+        <a (click)='swapDown()'> <img class="arrow"src="../../../../assets/images/feelings/topArrow.svg"></a>
       </div>
     </div>
     </div>

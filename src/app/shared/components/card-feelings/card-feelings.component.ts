@@ -12,6 +12,8 @@ export class CardFeelingsComponent implements OnInit {
   @Output() deleteFeeling = new EventEmitter<IFeelingsDetailsModel>();
   @Output() cancelFeeling = new EventEmitter<IFeelingsDetailsModel>();
   @Output() approveCancelFeeling = new EventEmitter<IFeelingsDetailsModel>();
+  @Output() swapUpEvent = new EventEmitter<IFeelingsDetailsModel>();
+  @Output() swapDownEvent = new EventEmitter<IFeelingsDetailsModel>();
 
   @Input() isPub:boolean = false;;
 
@@ -30,5 +32,13 @@ export class CardFeelingsComponent implements OnInit {
 
   publishFeelingItem() {
     this.approveCancelFeeling.emit(this.feelingsDetailsModel);
+  }
+
+  swapUp(){
+    this.swapUpEvent.emit(this.feelingsDetailsModel);
+  }
+
+  swapDown(){
+    this.swapUpEvent.emit(this.feelingsDetailsModel);
   }
 }

@@ -1,4 +1,4 @@
 export interface IFeelingSwapModel {
-    feelA:string;
-    feelB:string;
+    feelA?:string;
+    feelB?:string;
 }

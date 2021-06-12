@@ -33,7 +33,8 @@
                         <app-card-feelings 
                         [feelingsDetailsModel] = "feelingItem"  
                         (cancelFeeling)="cancelFeeling($event)"
-                        >
+                        (swapUpEvent)='swapUp($event)'
+                        (swapDownEvent)='swapDown($event)'>
                         </app-card-feelings>
                          
                       </mat-expansion-panel-header>
