@@ -37,7 +37,7 @@ export class BasicInformationComponent implements OnInit {
     console.log("progBasicInfoDetails ===========>", this.progBasicInfoDetails);
   }
 
-  copyTask(){
+  copyProgramData(){
 
     this.copyProgram = {
       progId:this.progBasicInfoDetails?.id,
