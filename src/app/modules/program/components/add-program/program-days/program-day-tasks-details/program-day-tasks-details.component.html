@@ -14,7 +14,7 @@
     <app-program-day-task-review *ngIf="detailsTypeEnum.TaskReview===taskDetails?.huffazTask" [reviewDetailsModel]="reviewDetailsModel"></app-program-day-task-review>
     <app-program-day-task-recitation *ngIf="detailsTypeEnum.TaskRecitation===taskDetails?.huffazTask" [recitationDetailsModel]="recitationDetailsModel"></app-program-day-task-recitation>
     <app-program-day-task-recitation-students *ngIf="detailsTypeEnum.TaskRecitationStudents===taskDetails?.huffazTask" [recitationStudentsModel]="recitationStudentsModel"></app-program-day-task-recitation-students>
-    <app-program-day-task-tasmea *ngIf="detailsTypeEnum.TaskTasmea===taskDetails?.huffazTask"></app-program-day-task-tasmea> 
+    <app-program-day-task-tasmea *ngIf="detailsTypeEnum.TaskTasmea===taskDetails?.huffazTask" [tasmeaModel]="tasmeaModel"></app-program-day-task-tasmea> 
      <app-program-day-task-test-phased *ngIf="detailsTypeEnum.TaskTestPhased===taskDetails?.huffazTask" [testPhasedDetailsModel]="testPhasedDetailsModel"></app-program-day-task-test-phased>
      <section class="mt-5" *ngIf="detailsTypeEnum.TaskRecitation!=taskDetails?.huffazTask && detailsTypeEnum.TaskRecitationStudents!=taskDetails?.huffazTask && detailsTypeEnum.TaskTasmea!=taskDetails?.huffazTask">
         <div  class="row direction-rtl buttons-center mt-5">

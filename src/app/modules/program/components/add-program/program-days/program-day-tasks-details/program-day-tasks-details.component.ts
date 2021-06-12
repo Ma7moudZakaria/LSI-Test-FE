@@ -41,8 +41,9 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
   videoDetailsModel: IProgramDayTaskVideo = {};
   testPhasedDetailsModel:IExam = { questions: [] };
   dailyTestDetailsModel: IExam = { questions: [] };
-  recitationStudentsModel :IProgramDayTaskRecitationStudents={};
+  recitationStudentsModel :IProgramBasicInfoDetails = {};
   programDayTaskDetails: ISaveProgramDayTaskDetailsModel={};
+  tasmeaModel :IProgramBasicInfoDetails = {};
   resultMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
 
@@ -160,7 +161,7 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
                   this.recitationDetailsModel=this.progamDetails?.progBaseInfo||{};
                   break;
                   case this.detailsTypeEnum.TaskRecitationStudents:
-                    this.recitationStudentsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
+                    this.recitationStudentsModel=this.progamDetails?.progBaseInfo||{};
                     break;
                     case this.detailsTypeEnum.TaskTestPhased:
                     this.testPhasedDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
@@ -172,6 +173,9 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
                       if (!this.dailyTestDetailsModel.questions)
                         this.dailyTestDetailsModel.questions = [];
                       break;
+                      case this.detailsTypeEnum.TaskTasmea:
+                    this.tasmeaModel=this.progamDetails?.progBaseInfo||{};
+                    break;
       default:
         "";
         break;
