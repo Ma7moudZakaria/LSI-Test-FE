@@ -1,1 +1,34 @@
-<p>program-day-task-recitation-students works!</p>
+
+<div class="day-recitation">
+   
+    
+    <div class="form-group">
+       <div class="row">
+           <div class="col-12">
+               <div>
+                   <label class="header_input">فترة التسميع</label>
+                 </div>
+                  <mat-radio-group aria-label="Select an option"  class="example-radio-group" 
+                   [(ngModel)]="recitationStudentsModel.prgRecitType" disabled>
+               <ng-container *ngFor="let item of collectionOfLookup.SARD_TYPES ;let i=index">
+                   <mat-radio-button value="{{item.id}}" class="example-radio-button ml-2 mr-2">{{item.nameAr}}</mat-radio-button>
+                   </ng-container>
+                   </mat-radio-group>
+           </div>
+       </div>
+   </div>
+   <div class="form-group">
+       <div class="row">
+           <div class="col-12">
+               <div class="badges mt-3 ">
+                   <div *ngFor="let item of progRecitationTimes;let i=index" 
+                       class="badge badge-info p-2 " >
+                   <div class="d-flex justify-content-between">
+                       <p class="ellipsis mb-0"> from : {{item.progRecFrom}} , to : {{item.progRecTo}}</p>
+                   </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+   </div>
