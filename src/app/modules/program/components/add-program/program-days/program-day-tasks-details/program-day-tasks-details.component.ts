@@ -4,6 +4,7 @@ import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { ProgramDayTasksDetails } from 'src/app/core/enums/programs/program-day-tasks-details.enum';
 import { IExam } from 'src/app/core/interfaces/exam-builder-interfaces/iexam';
 import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-model';
+import { IProgramBasicInfoDetails, IProgramDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { ISaveProgramDayTaskDetailsModel } from 'src/app/core/interfaces/programs-interfaces/isave-program-day-task-Details-model';
 import { IProgramDayTaskEncouragementLetter } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-encouragement-letter';
 import { IProgramDayTaskHearing } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-hearing';
@@ -27,13 +28,14 @@ import { ProgramDayTasksService } from 'src/app/core/services/program-services/p
 })
 export class ProgramDayTasksDetailsComponent implements OnInit {
   @Input() taskDetails: IProgramDayTasksModel | undefined;
+  @Input() progamDetails: IProgramDetails | undefined;
   detailsTypeEnum = ProgramDayTasksDetails;
   hearingTaskDetailsModel: IProgramDayTaskHearing = {};
   readExplanationDetailsModel: IProgramDayTaskReadExplanation = {};
   encouragementLetterDetailsModel: IProgramDayTaskEncouragementLetter = {};
   linkingDetailsModel: IProgramDayTaskLinking = {};
   memorizeDetailsModel: IProgramDayTaskMemorize = {};
-  recitationDetailsModel: IProgramDayTaskRecitation = {};
+  recitationDetailsModel: IProgramBasicInfoDetails = {};
   repetitionDetailsModel: IProgramDayTaskRepetition = {};
   reviewDetailsModel: IProgramDayTaskReview = {};
   videoDetailsModel: IProgramDayTaskVideo = {};
@@ -131,7 +133,7 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
   getprogramDayTaskDetails(){
     switch (this.taskDetails?.huffazTask) {
       case this.detailsTypeEnum.taskHearing:
-       this.hearingTaskDetailsModel= JSON.parse(this.taskDetails?.detailsTask||"");
+       this.hearingTaskDetailsModel= JSON.parse(this.taskDetails?.detailsTask||"{}");
         break;
       case this.detailsTypeEnum.TaskReadExplanation:
         this.readExplanationDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
@@ -155,7 +157,7 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
                this.reviewDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
                 break;
                 case this.detailsTypeEnum.TaskRecitation:
-                  this.recitationDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
+                  this.recitationDetailsModel=this.progamDetails?.progBaseInfo||{};
                   break;
                   case this.detailsTypeEnum.TaskRecitationStudents:
                     this.recitationStudentsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");

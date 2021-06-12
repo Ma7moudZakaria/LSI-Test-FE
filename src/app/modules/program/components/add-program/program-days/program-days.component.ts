@@ -18,7 +18,7 @@ export class ProgramDaysComponent implements OnInit {
   @Input() progDetails: IProgramDetails = {};
   programDutyDay: IProgramDutyDays = {}
   taskDetails?:IProgramDayTasksModel;
-
+  progamDetails: IProgramDetails = {};
   showAddDayTasksForm = false;
 
   dataOfProgDutyDay: IProgramDutyDays = {};
@@ -59,5 +59,6 @@ this.progDutyDayEventCallBk(this.programDutyDay);
   }
   sendTaskIdToProgDayTaskDetails(item?:IProgramDayTasksModel){
     this.taskDetails=item;
+    this.progamDetails=this.progDetails;
   }
 }
