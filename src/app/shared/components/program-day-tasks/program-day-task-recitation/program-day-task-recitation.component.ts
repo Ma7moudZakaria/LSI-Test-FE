@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IProgramDayTaskRecitation } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-recitation';
+import { IProgramBasicInfoDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 
 @Component({
   selector: 'app-program-day-task-recitation',
@@ -7,7 +7,7 @@ import { IProgramDayTaskRecitation } from 'src/app/core/interfaces/programs-inte
   styleUrls: ['./program-day-task-recitation.component.scss']
 })
 export class ProgramDayTaskRecitationComponent implements OnInit {
-  @Input() recitationDetailsModel: IProgramDayTaskRecitation = {}
+  @Input() recitationDetailsModel: IProgramBasicInfoDetails = {}
   constructor() { }
 
   ngOnInit(): void {
