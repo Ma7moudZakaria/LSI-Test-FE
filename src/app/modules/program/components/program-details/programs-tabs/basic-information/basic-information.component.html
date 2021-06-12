@@ -1,77 +1,148 @@
 <div class="tab_page ">
     <div class=" pt-3">
-        <div class="row">
-            <div class="col-md-12 ">
-                <label>
-                BASE INFO
+        
+        <div class="info_basic_info">
+
+      
+            <div class="d-flex justify-content-between" >
+                <p class="head">{{ progBasicInfoDetails?.prgName}} </p>
+                <div class="d-flex">
+                    <i class="far fa-copy" (click)="copyTask()"></i>
+                    <i class="fas fa-play" (click)="publishProgram()"></i>
+                    <img src="assets/images/question/edit-question.svg"  (click)="confirmDialog()">
+                    <img src="assets/images/feelings/trash.svg" (click)="editBasicInfo()">
+
+                </div>
+
+            </div>
+            <div class="row mt-3">
+                <div class="col-2">
+                <p class="details">مدة البرنامج <span class="num">10</span> يوم</p>
+                </div>
+                <div class="col-2">
+                    <p>عدد الطلاب <span class="num">10</span> </p>
+                </div>
+
+                <div class="col-2">
+                    <p>عدد الاجزاء <span class="num">10</span> </p>
+                </div>
+                <div class="col-2">
+                    <p>عدد المعلمين <span class="num">10</span> </p>
+                </div>
+
+            </div>
+             </div>
+        
+    </div>
+    <div class="col-md-12 max_h ">
+        <div class="row pl-4 pr-4">
+            <div class="col-6 mb-3   ">
+                <label class="title"> 
+                    فكرة
+                   <span>  &nbsp;  : </span>
+                   <span>  &nbsp; </span> 
+                </label>
+                <label>  </label>
+                <label class="title_data" *ngFor="let progTypeItem of progBasicInfoDetails?.prgTps ; let i = index;"> 
+                    {{ progBasicInfoDetails?.prgIda}}
                 </label>
             </div>
-            <label> {{ progBasicInfoDetails?.prgName}} </label>
             
-            <i class="far fa-copy" (click)="publishProgram()"></i>
-            <i class="far fa-copy" (click)="copyTask()"></i>
-            <i class="far fa-edit" (click)="editBasicInfo()"></i>
-            <i class="far fa-trash-alt ml-1 mr-1" (click)="confirmDialog()"></i>
-        </div>
-    </div>
-    <div class="col-md-12 max_h">
-        <div class="row">
-            <div class="col-lg-12 col-md-12">
-                <div class="col-lg-6 col-md-6">
-                    <div class="col-lg-6 col-md-6">
-                        <label> 
-                            نوع البرنامج
-                        </label>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <label *ngFor="let progTypeItem of progBasicInfoDetails?.prgTps ; let i = index;"> 
-                            {{ this.translate.currentLang === langEnum.en? progTypeItem.enPrgTpeName : progTypeItem.arPrgTpeName }}
-                        </label>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <label> {{ progBasicInfoDetails?.prgIda}} </label>
-                </div>
+            <div class="col-6 mb-3   ">
+                <label class="title"> 
+                 نوع البرنامج
+                   <span>  &nbsp;  : </span>
+                   <span>  &nbsp; </span> 
+                </label>
+                <label class="title_data" *ngFor="let progTypeItem of progBasicInfoDetails?.prgTps ; let i = index;"> 
+                    {{ this.translate.currentLang === langEnum.en? progTypeItem.enPrgTpeName : progTypeItem.arPrgTpeName }}
+                </label>
             </div>
+            <div class="col-6 mb-3  col-md-6">
+                <label class="title"> 
+                    اهداف البرنامج
+                    <span>  &nbsp;  : </span>
+                    <span>  &nbsp; </span> 
+
+                 </label>
+
+                <label> {{ progBasicInfoDetails?.prgGoal}} </label>
+            </div>
+            <div class="col-6 mb-3  col-md-6">
+                <label class="title"> 
+                    رؤية البرنامج
+                    <span>  &nbsp;  : </span>
+                    <span>  &nbsp; </span> 
+                 </label>
+                <label> {{ progBasicInfoDetails?.prgVisi}} </label>
+            </div>
+            <div class="col-6 mb-3  col-md-6">
+                <label class="title"> 
+                    طريقة البرنامج
+                    <span>  &nbsp;  : </span>
+                    <span>  &nbsp; </span> 
+
+                 </label>
+                <label> {{ progBasicInfoDetails?.prgMeth}} </label>
+            </div>
+            <div class="col-6 mb-3  col-md-6">
+                <label class="title"> 
+                    مميزات البرنامج
+                    <span>  &nbsp;  : </span>
+                    <span>  &nbsp; </span> 
+
+                 </label>
+                <label> {{ progBasicInfoDetails?.prgAdvan}} </label>
+            </div>
+
+            <div class="col-6 mb-3  col-md-6">
+                <label class="title"> 
+                    نص التعهد
+                    <span>  &nbsp;  : </span>
+                    <span>  &nbsp; </span> 
+
+                 </label>
+                 <label> {{ progBasicInfoDetails?.prgPledgTxt}} </label>
+
+            </div>
+
+            <div class="col-6 mb-3  col-md-6">
+                <label class="title"> 
+                    اسم البرنامج 
+                    <span>  &nbsp;  : </span>
+                    <span>  &nbsp; </span> 
+
+                 </label>
+                 <label> {{ progBasicInfoDetails?.prgName}} </label>
+
+            </div>
+           
+            <div class="col-6 mb-3  col-md-6">
+                <label class="title"> 
+                    أيام الإجازة
+                    <span>  &nbsp;  : </span>
+                    <span>  &nbsp; </span> 
+
+                 </label>
+                 <!-- <label> {{ progBasicInfoDetails?.prgWeekDutiDas}} </label> -->
+
+            </div>
+
+            <div class="col-6 mb-3  col-md-6">
+                <label class="title"> 
+                    أيام الواجبات
+                    <span>  &nbsp;  : </span>
+                    <span>  &nbsp; </span> 
+
+                 </label>
+                 <!-- <label> {{ progBasicInfoDetails?.prgNoDutyDays}} </label> -->
+
+
+            </div>
+
+
         </div>
 
-        <div class="row">
-            <div class="col-lg-12 col-md-12">
-                <div class="col-lg-6 col-md-6">
-                    <label> {{ progBasicInfoDetails?.prgGoal}} </label>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <label> {{ progBasicInfoDetails?.prgVisi}} </label>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-12 col-md-12">
-                <div class="col-lg-6 col-md-6">
-                    <label> {{ progBasicInfoDetails?.prgMeth}} </label>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <label> {{ progBasicInfoDetails?.prgAdvan}} </label>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-12 col-md-12">
-                <div class="col-lg-12 col-md-12">
-                    <label> {{ progBasicInfoDetails?.prgPledgTxt}} </label>
-                </div>
-               
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-12 col-md-12">
-                <div class="col-lg-6 col-md-6">
-                    <label> {{ progBasicInfoDetails?.prgName}} </label>
-                </div>
-            </div>
-        </div>
+     
     </div>
 </div>
