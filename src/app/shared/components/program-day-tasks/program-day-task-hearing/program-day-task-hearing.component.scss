@@ -1,5 +1,5 @@
 @import '../../../../../assets/scss/buttons';
-.hearing_days{
+.details_day{
     .head {
         font-weight: bold;
         font-size: 1rem;
@@ -12,6 +12,14 @@
     {
         text-align: right;
     }
+        .header_input{
+            font-family:Almarai-Bold ;
+            font-size: 14px;
+        }
+   
+   .trash {
+            color: #8E2520;
+          }
 
     .custom-file__text {
         color: var(--unnamed-color-363636);

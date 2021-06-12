@@ -1,7 +1,7 @@
-<div class="day-task-video">
+<div class="day-task-video details_day">
     <div class="form-group">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 mt-3">
                 <label class="text-right header_input">أسم الفديو</label>
     
                <input type="text" class="form-control " [(ngModel)]="videoDetailsModel.videoName" >
@@ -11,18 +11,15 @@
 
     <div class="form-group">
         <label class="custom-file custom-file__text" for="importFile">
-            <span> 
-                <!-- <img calss="page-image" src="assets/images/walk-through/Group 18093.svg"  > -->
-                <p>{{'GENERAL.CHOOSEFILE' |translate}}</p>
-            </span>
-        </label>
+            <p class="custom-file__label">{{'GENERAL.CHOOSEFILE' |translate}}</p>
+    </label>
         <input type="file" class="custom-file-input" id="importFile" 
     (change)="onFileChange($any($event.target).files)" >
             <div class="col-4 cardRecourd"  *ngFor="let item of videoDetailsModel?.vidio;let i=index" >
                 <!-- <img src="assets/images/days/book.svg"> -->
                 <span>{{item.fileName}}</span>
                 <i class="fas fa-play-circle"></i>
-                <img src="assets/images/trash-2.svg" (click)="DeleteAttachment(i,item.id)">
+                <img class="trash" src="assets/images/feelings/trash.svg"  (click)="DeleteAttachment(i,item.id)">
             </div>
     </div>
 

@@ -31,7 +31,9 @@
     .input_search_voice
     {
         input{
-            min-width: 400px;
+            // min-width: 400px;
+            min-width: 0px;
+
             border-top-left-radius: 0.65rem ;
             border-top-right-radius: 0.65rem !important;
             border-bottom-left-radius: 0.65rem;
@@ -54,6 +56,8 @@
                     { border-right: transparent;}
             }
     }
+
+
     .item_label{
         &:lang(ar){
             margin-right: 1rem;
@@ -65,3 +69,7 @@
         }
     }
 }
+
+.day_detils.add-question-template 
+.input_search_voice input {
+   min-width: 0 !important;}
