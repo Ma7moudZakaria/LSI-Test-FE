@@ -23,7 +23,7 @@
                     <div class="col-4 cardRecourd"  *ngFor="let item of linkingDetailsModel?.bookAttatchments;let i=index" >
                         <img src="assets/images/days/book.svg">
                         <span>{{item.fileName}}</span>
-                        <img src="assets/images/trash-2.svg" (click)="DeleteAttachment(i,item.id)">
+                        <img class="trash" src="assets/images/feelings/trash.svg" (click)="DeleteAttachment(i,item.id)">
                     </div>
     </div>
  
