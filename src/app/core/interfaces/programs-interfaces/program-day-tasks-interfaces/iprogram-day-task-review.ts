@@ -1,7 +1,7 @@
 import { IAttachment } from "../../attachments-interfaces/iattachment";
 export interface IProgramDayTaskReview {
     bookAttatchments?:IAttachment[];
-    frmoPage?:string;
+    fromPage?:string;
     toPage?:string;
     degree?:number;
     attachmentIds?:string[];

@@ -33,7 +33,7 @@ export class ProgramDayTaskVideoComponent implements OnInit {
   ngOnInit(): void {
   }
   DeleteAttachment(index: number, id: string) {
-    this.videoDetailsModel?.vidio?.splice(index, 1);
+    this.videoDetailsModel?.videoAttatchments?.splice(index, 1);
   }
 
   onFileChange(files: FileList) {
@@ -61,7 +61,7 @@ export class ProgramDayTaskVideoComponent implements OnInit {
           this.fileList?.push(elm as IAttachment);
 
         })
-        this.videoDetailsModel.vidio=this.fileList;
+        this.videoDetailsModel.videoAttatchments=this.fileList;
         this.fileUploadModel = [];
       }, error => {
         console.log(error);
