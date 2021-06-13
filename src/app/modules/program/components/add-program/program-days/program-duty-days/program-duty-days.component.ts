@@ -38,7 +38,7 @@ export class ProgramDutyDaysComponent implements OnInit {
 
   @Input() progDaysList: IProgramDutyDays[] | undefined;
   @Output() progDutyDayEvent = new EventEmitter<IProgramDutyDays>();
-
+  defaultSelectedDay = 0;
   constructor(
     public languageService: LanguageService,
     private programDayTasksService: ProgramDayTasksService,
@@ -50,7 +50,7 @@ export class ProgramDutyDaysComponent implements OnInit {
   ngOnInit(): void {
     this.setCurrentLang();
 
-    if (this.progDaysList){
+    if (this.progDaysList) {
       this.onDayClick(this.progDaysList[0]);
     }
   }

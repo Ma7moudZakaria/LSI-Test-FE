@@ -3,7 +3,6 @@
     <div class="row">
       <div class="col-12">
         <section class="internal_scroll_list_group ">
-          <div class="">
               <div class="input-group ">
               <div *ngFor = 'let question of dailyTestDetailsModel?.questions'>
                 <div class="d-flex justify-content-end mt-3">
@@ -12,7 +11,8 @@
                   </a>
                  </div>
                   <app-question-template  class="day_detils"
-                  [questionTemplate] = 'question' ></app-question-template>
+                  [questionTemplate] = 'question' >
+                </app-question-template>
               </div>
               </div>
              
@@ -22,7 +22,6 @@
                       {{"GENERAL.ADD_QUESTION"|translate}}</button>
                 </div>
                </div>
-            </div>
             <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2">
               {{resultMessage.message}}
                </div>
