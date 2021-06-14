@@ -61,6 +61,7 @@ export class ProgramDayTaskReadExplanationComponent implements OnInit {
         })
         this.readExplanationDetailsModel.bookAttatchments=this.fileList;
         this.fileUploadModel = [];
+        this.fileList = [];
       }, error => {
         console.log(error);
         this.fileUploadModel = [];

@@ -58,6 +58,7 @@ export class ProgramDayTaskHearingComponent implements OnInit {
         })
         this.hearingTaskDetailsModel.hearingAttachments=this.fileList;
         this.fileUploadModel = [];
+        this.fileList = [];
       }, error => {
         console.log(error);
         this.fileUploadModel = [];

@@ -71,6 +71,7 @@ export class ProgramDayTaskReviewComponent implements OnInit {
         })
         this.reviewDetailsModel.bookAttatchments=this.fileList;
         this.fileUploadModel = [];
+        this.fileList = [];
       }, error => {
         console.log(error);
         this.fileUploadModel = [];

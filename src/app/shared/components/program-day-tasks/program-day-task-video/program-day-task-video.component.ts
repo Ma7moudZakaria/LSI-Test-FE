@@ -63,6 +63,7 @@ export class ProgramDayTaskVideoComponent implements OnInit {
         })
         this.videoDetailsModel.vidio=this.fileList;
         this.fileUploadModel = [];
+        this.fileList = [];
       }, error => {
         console.log(error);
         this.fileUploadModel = [];
