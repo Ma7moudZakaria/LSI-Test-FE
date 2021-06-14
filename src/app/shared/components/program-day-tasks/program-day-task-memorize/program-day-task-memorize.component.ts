@@ -32,6 +32,9 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  ngOnChanges(changes: any){
+    this.fileList = this.memorizeDetailsModel?.bookAttatchments?this.memorizeDetailsModel?.bookAttatchments:[];
+  }
 
   DeleteAttachment(index: number, id: string) {
     this.memorizeDetailsModel?.bookAttatchments?.splice(index, 1);
