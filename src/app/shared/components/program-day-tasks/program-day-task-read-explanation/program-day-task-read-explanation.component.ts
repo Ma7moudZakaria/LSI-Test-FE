@@ -33,7 +33,7 @@ export class ProgramDayTaskReadExplanationComponent implements OnInit {
   }
 
   ngOnChanges(changes: any){
-    this.fileList = this.readExplanationDetailsModel.bookAttatchments;
+    this.fileList = this.readExplanationDetailsModel?.bookAttatchments?this.readExplanationDetailsModel?.bookAttatchments:[];
   }
 
   DeleteAttachment(index: number, id: string) {

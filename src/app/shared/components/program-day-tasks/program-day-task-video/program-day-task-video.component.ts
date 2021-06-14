@@ -34,7 +34,7 @@ export class ProgramDayTaskVideoComponent implements OnInit {
   }
 
   ngOnChanges(changes: any){
-    this.fileList = this.videoDetailsModel.videoAttatchments;
+    this.fileList = this.videoDetailsModel?.videoAttatchments?this.videoDetailsModel?.videoAttatchments:[];
   }
 
   DeleteAttachment(index: number, id: string) {
