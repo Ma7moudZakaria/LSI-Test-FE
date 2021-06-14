@@ -7,6 +7,7 @@ import { AttachmentsService } from 'src/app/core/services/attachments-services/a
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { TranslateService } from '@ngx-translate/core';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 
 @Component({
   selector: 'app-program-day-task-hearing',
@@ -21,14 +22,16 @@ export class ProgramDayTaskHearingComponent implements OnInit {
   @Input() hearingTaskDetailsModel: IProgramDayTaskHearing = {};
   constructor(
     public translate: TranslateService,
-    private attachmentService: AttachmentsService
+    private attachmentService: AttachmentsService,
+    private alertify: AlertifyService,
+
   ) { }
 
   ngOnInit(): void {
   }
 
-  ngOnChanges(changes: any){
-    this.fileList = this.hearingTaskDetailsModel.hearingAttachments?this.hearingTaskDetailsModel.hearingAttachments:[];
+  ngOnChanges(changes: any) {
+    this.fileList = this.hearingTaskDetailsModel.hearingAttachments ? this.hearingTaskDetailsModel.hearingAttachments : [];
   }
 
   DeleteAttachment(index: number, id: string) {
@@ -36,20 +39,30 @@ export class ProgramDayTaskHearingComponent implements OnInit {
   }
 
   onFileChange(files: FileList) {
+
     if (files.length > 0) {
-      Array.from(files).forEach(element => {
-        var fileUploadObj: IFileUpload = {
-          containerNameIndex: 1, // need to be changed based on file type
-          file: element
+      if (files[0].size > 5, 242, 880) {
+        this.alertify.error('your file size more than 3m');
 
+      }
+
+      else {
+
+        if (files.length > 0) {
+          Array.from(files).forEach(element => {
+            var fileUploadObj: IFileUpload = {
+              containerNameIndex: 1, // need to be changed based on file type
+              file: element
+
+            }
+            this.fileUploadModel?.push(fileUploadObj)
+          });
+          this.UploadFiles(this.fileUploadModel);
         }
-        this.fileUploadModel?.push(fileUploadObj)
-      });
-      this.UploadFiles(this.fileUploadModel);
+
+      }
     }
-
   }
-
   UploadFiles(files: any) {
     if (files.length === 0) {
       return;

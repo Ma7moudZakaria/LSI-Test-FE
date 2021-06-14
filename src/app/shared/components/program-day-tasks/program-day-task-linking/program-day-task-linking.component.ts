@@ -10,6 +10,7 @@ import { ProgramDayTaskLinkingType } from 'src/app/core/enums/program-day-task-l
 import { ProgramDayTasksService } from 'src/app/core/services/program-services/program-day-tasks.service';
 import { IProgramLastFiveWorkToLinkAuto } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-last-five-work-to-link-auto';
 import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-model';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 @Component({
   selector: 'app-program-day-task-linking',
   templateUrl: './program-day-task-linking.component.html',
@@ -19,21 +20,23 @@ export class ProgramDayTaskLinkingComponent implements OnInit {
 
   resMessage: BaseMessageModel = {};
   @Input() linkingDetailsModel: IProgramDayTaskLinking = {};
- TaskLinkingTypeEnum=ProgramDayTaskLinkingType;
- lastFiveHomeWorkAutolst:IAttachment[]=[];
- programLastFiveWorkToLinkAuto:IProgramLastFiveWorkToLinkAuto={};
+  TaskLinkingTypeEnum = ProgramDayTaskLinkingType;
+  lastFiveHomeWorkAutolst: IAttachment[] = [];
+  programLastFiveWorkToLinkAuto: IProgramLastFiveWorkToLinkAuto = {};
   constructor(
-    private programDayTasksService:ProgramDayTasksService,
-    private attachmentService: AttachmentsService
+    private programDayTasksService: ProgramDayTasksService,
+    private attachmentService: AttachmentsService,
+    private alertify: AlertifyService,
+
 
   ) { }
 
   ngOnInit(): void {
- 
+
   }
 
-  ngOnChanges(changes: any){
-    this.fileList = this.linkingDetailsModel?.bookAttatchments?this.linkingDetailsModel?.bookAttatchments:[];
+  ngOnChanges(changes: any) {
+    this.fileList = this.linkingDetailsModel?.bookAttatchments ? this.linkingDetailsModel?.bookAttatchments : [];
   }
 
   fileUploadModel: IFileUpload[] = [];
@@ -47,17 +50,29 @@ export class ProgramDayTaskLinkingComponent implements OnInit {
   }
 
   onFileChange(files: FileList) {
-    if (files.length > 0) {
-      Array.from(files).forEach(element => {
-        var fileUploadObj: IFileUpload = {
-          containerNameIndex: 1, // need to be changed based on file type
-          file: element
 
-        }
-        this.fileUploadModel?.push(fileUploadObj)
-      });
-      this.UploadFiles(this.fileUploadModel);
+    if (files.length > 0) {
+
+      if (files[0].size > 3, 145, 728) {
+        this.alertify.error('your file size more than 3m');
+
+      }
+
+      else {
+        Array.from(files).forEach(element => {
+          var fileUploadObj: IFileUpload = {
+            containerNameIndex: 1, // need to be changed based on file type
+            file: element
+
+          }
+          this.fileUploadModel?.push(fileUploadObj)
+        });
+        this.UploadFiles(this.fileUploadModel);
+
+      }
     }
+
+
 
   }
 
@@ -71,7 +86,7 @@ export class ProgramDayTaskLinkingComponent implements OnInit {
           this.fileList?.push(elm as IAttachment);
 
         })
-        this.linkingDetailsModel.bookAttatchments=this.fileList;
+        this.linkingDetailsModel.bookAttatchments = this.fileList;
         this.fileUploadModel = [];
       }, error => {
         console.log(error);
@@ -85,32 +100,33 @@ export class ProgramDayTaskLinkingComponent implements OnInit {
     )
   }
 
-getLastFiveHomeWorkAuto(){
-  this.linkingDetailsModel.bookAttatchments=[];
-  this.fileList=[];
-  this.programLastFiveWorkToLinkAuto.progId=this.linkingDetailsModel.progId||'';
-  this.programLastFiveWorkToLinkAuto.progDayOrder=this.linkingDetailsModel.progDayOrder;
-this.programDayTasksService.GetProgramLastFiveHomeWorkToLinkAuto(this.programLastFiveWorkToLinkAuto).subscribe(
-  (res:any)=>{
-    res.data as IProgramDayTasksModel
-    Array.from(res.data).forEach((elm: any) => {
-      let lstBookAttatchments=JSON.parse(elm.detailsTask).bookAttatchments 
-      if(lstBookAttatchments.length>1){
-        Array.from(lstBookAttatchments).forEach((item: any) => {this.fileList?.push(item as IAttachment);})
+  getLastFiveHomeWorkAuto() {
+    this.linkingDetailsModel.bookAttatchments = [];
+    this.fileList = [];
+    this.programLastFiveWorkToLinkAuto.progId = this.linkingDetailsModel.progId || '';
+    this.programLastFiveWorkToLinkAuto.progDayOrder = this.linkingDetailsModel.progDayOrder;
+    this.programDayTasksService.GetProgramLastFiveHomeWorkToLinkAuto(this.programLastFiveWorkToLinkAuto).subscribe(
+      (res: any) => {
+        res.data as IProgramDayTasksModel
+        Array.from(res.data).forEach((elm: any) => {
+          let lstBookAttatchments = JSON.parse(elm.detailsTask).bookAttatchments
+          if (lstBookAttatchments.length > 1) {
+            Array.from(lstBookAttatchments).forEach((item: any) => { this.fileList?.push(item as IAttachment); })
+          }
+          else { this.fileList?.push(elm as IAttachment); }
+        })
+        this.linkingDetailsModel.bookAttatchments = this.fileList;
       }
-      else{this.fileList?.push(elm as IAttachment);}
-    })
-    this.linkingDetailsModel.bookAttatchments=this.fileList;
+      , error => {
+        this.linkingDetailsModel.bookAttatchments = [];
+      }
+    );
   }
-  , error => {
-    this.linkingDetailsModel.bookAttatchments=[];
+
+  HomeWorkeManeual() {
+    this.fileList = [];
+    this.linkingDetailsModel.bookAttatchments = [];
   }
-);
-}
-HomeWorkeManeual(){
-  this.fileList = [];
-  this.linkingDetailsModel.bookAttatchments=[];
-}
 
 
 }
