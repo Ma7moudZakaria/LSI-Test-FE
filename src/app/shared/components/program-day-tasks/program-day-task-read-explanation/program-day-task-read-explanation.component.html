@@ -11,13 +11,37 @@
             <p class="custom-file__label">{{'GENERAL.CHOOSEFILE' |translate}}</p>
     </label>
         <input type="file" class="custom-file-input" id="importFile" 
-    (change)="onFileChange($any($event.target).files)" >
-            <div class="col-4 cardRecourd"  *ngFor="let item of readExplanationDetailsModel?.bookAttatchments;let i=index" >
-                <img src="assets/images/days/book.svg">
-                <span>{{item.fileName}}</span>
-                <i class="fas fa-play-circle"></i>
-                <img class="trash" src="assets/images/feelings/trash.svg"  (click)="DeleteAttachment(i,item.id)">
-            </div>
+    (change)="onFileChange($any($event.target).files)" 
+       accept="application/pdf,image/*"
+    >
+          
+    </div>
+    <div class="row">
+        <ng-container *ngFor="let item of readExplanationDetailsModel?.bookAttatchments;let i=index">
+          <div class="col-4 cardRecourd ml-3 mr-3 mb-2"   >
+        <img src="assets/images/days/book.svg">
+        <p class="ellipsis mb-0 ml-2 mr-2"  matTooltip="{{item.fileName}}"
+        >{{item.fileName}}</p>
+        <!-- (click)="openVerticallyCentered(content)" -->
+        <!-- <i class="fas fa-play-circle"></i> -->
+        <img class="trash" src="assets/images/feelings/trash.svg"  (click)="DeleteAttachment(i,item.id)">
+       </div>   
+
+       <!-- <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title">{{item.fileName}}</h4>
+       
+        </div>
+        <div class="modal-body">
+          <p>One fine body&hellip;</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+        </div>
+      </ng-template> -->
+
+        </ng-container>
+       
     </div>
     
     <div class="form-group">
@@ -33,6 +57,9 @@
             </div>
         </div>
     </div>
+
+
+   
 
     <div class="form-group">
         <div class="row">
