@@ -14,19 +14,19 @@ import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/compon
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
 import { LookupsEnum } from 'src/app/core/enums/lookups-enum.enum';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
+import { IProgramBasicInfoDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 @Component({
   selector: 'app-notify',
   templateUrl: './notify.component.html',
   styleUrls: ['./notify.component.scss']
 })
 export class NotifyComponent implements OnInit {
-  notificationsCardList: IProgramNotificationDetails[] = []
-  constructor(private notificationService: ProgramNotificationService,
+  notificationsCardList: IProgramNotificationDetails[] = [];
 
+  constructor(private notificationService: ProgramNotificationService,
     public translate: TranslateService, public dialog: MatDialog,
     private alertify: AlertifyService,
     private lookupService: LookupService
-
   ) { }
 
   collectionOfLookup = {} as ILookupCollection;
@@ -36,9 +36,11 @@ export class NotifyComponent implements OnInit {
 
   @Output() openNotifyfrom = new EventEmitter<IProgramNotificationDetails>();
   @Input() progId?: string = '';
+  // @Input() progBasicInfoDetails:IProgramBasicInfoDetails | undefined;
 
   ngOnInit(): void {
     this.getLookupByKey();
+    console.log("progBasicInfoDetails Notify id===========>", this.progId);
   }
 
   getLookupByKey() {
@@ -58,7 +60,7 @@ export class NotifyComponent implements OnInit {
   }
 
   getAllNotifications(id: any) {
-    this.notificationService.getAllNotifications(id || '').subscribe(res => {
+    this.notificationService.getAllNotifications(this.progId || '').subscribe(res => {
       this.notificationsCardList = res.data as IProgramNotificationDetails[];
 
       this.notificationsCardList.forEach(item => {
@@ -83,8 +85,6 @@ export class NotifyComponent implements OnInit {
         type: BaseConstantModel.DANGER_TYPE
       }
     });
-
-
   }
 
   deleteCardNotify(id: string) {

@@ -15,7 +15,7 @@ export class ProgramNotificationService {
   UpdateNotificationURL = environment.baseUrl + 'Programs/update-program-notification';
   DeleteNotificationURL = environment.baseUrl + 'Programs/delete-program-notification/';
   GetAllNotificationURL = environment.baseUrl + 'Programs/get-program-notifications-by-program-id/';
-  GetNotificationDetails = environment.baseUrl + 'Programs/get-program-notification-types-to-program';
+  GetNotificationDetailsURL = environment.baseUrl + 'Programs/get-program-notification-types-to-program';
 
 
   constructor(private http: HttpClient) { }
@@ -34,7 +34,7 @@ export class ProgramNotificationService {
   }
 
   getNotificationDetails(id: string): Observable<BaseResponseModel> {
-    return this.http.get<BaseResponseModel>(this.GetNotificationDetails + id)
+    return this.http.get<BaseResponseModel>(this.GetNotificationDetailsURL + id)
   }
 
   deleteNotification(id: string): Observable<BaseResponseModel> {
