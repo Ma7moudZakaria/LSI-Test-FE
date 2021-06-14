@@ -20,7 +20,7 @@ import { ProgramDayTasksService } from 'src/app/core/services/program-services/p
 })
 export class ProgramDayTaskVideoComponent implements OnInit {
   fileUploadModel: IFileUpload[] = [];
-  fileList: IAttachment[] = [];
+  fileList?: IAttachment[] = [];
   fileToUpload?: File;
   resMessage: BaseMessageModel = {};
   resultMessage: BaseMessageModel = {};
@@ -32,8 +32,13 @@ export class ProgramDayTaskVideoComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  ngOnChanges(changes: any){
+    this.fileList = this.videoDetailsModel.videoAttatchments;
+  }
+
   DeleteAttachment(index: number, id: string) {
-    this.videoDetailsModel?.vidio?.splice(index, 1);
+    this.videoDetailsModel?.videoAttatchments?.splice(index, 1);
   }
 
   onFileChange(files: FileList) {
@@ -61,7 +66,7 @@ export class ProgramDayTaskVideoComponent implements OnInit {
           this.fileList?.push(elm as IAttachment);
 
         })
-        this.videoDetailsModel.vidio=this.fileList;
+        this.videoDetailsModel.videoAttatchments=this.fileList;
         this.fileUploadModel = [];
       }, error => {
         console.log(error);

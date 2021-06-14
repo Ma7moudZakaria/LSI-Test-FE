@@ -20,7 +20,7 @@ import { ProgramDayTasksService } from 'src/app/core/services/program-services/p
 })
 export class ProgramDayTaskReviewComponent implements OnInit {
   fileUploadModel: IFileUpload[] = [];
-  fileList: IAttachment[] = [];
+  fileList?: IAttachment[] = [];
   attachmentIds: string[] = [];
   fileToUpload?: File;
   resMessage: BaseMessageModel = {};
@@ -38,6 +38,10 @@ export class ProgramDayTaskReviewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(changes: any){
+    this.fileList = this.reviewDetailsModel.bookAttatchments;
   }
 
   DeleteAttachment(index: number, id: string) {

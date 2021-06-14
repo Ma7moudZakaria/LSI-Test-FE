@@ -63,7 +63,7 @@ export class ProgramDayTasksComponent implements OnInit {
     this.programDayTasksService.getProgramDayTasks(id || '').subscribe(res => {
       if (res.isSuccess) {
         this.programDayTasksLists = res.data as Array<IProgramDayTasksModel>;
-
+         this.setProgrmeDayTask(this.programDayTasksLists[0])
         console.log("programDayTasksLists ===========>", this.programDayTasksLists);
       }
       else {

@@ -7,6 +7,9 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { IProgramDayTaskLinking } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-linking';
 import { ProgramDayTaskLinkingType } from 'src/app/core/enums/program-day-task-linking-type.enum';
+import { ProgramDayTasksService } from 'src/app/core/services/program-services/program-day-tasks.service';
+import { IProgramLastFiveWorkToLinkAuto } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-last-five-work-to-link-auto';
+import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-model';
 @Component({
   selector: 'app-program-day-task-linking',
   templateUrl: './program-day-task-linking.component.html',
@@ -17,17 +20,27 @@ export class ProgramDayTaskLinkingComponent implements OnInit {
   resMessage: BaseMessageModel = {};
   @Input() linkingDetailsModel: IProgramDayTaskLinking = {};
  TaskLinkingTypeEnum=ProgramDayTaskLinkingType;
+ lastFiveHomeWorkAutolst:IAttachment[]=[];
+ programLastFiveWorkToLinkAuto:IProgramLastFiveWorkToLinkAuto={};
   constructor(
+    private programDayTasksService:ProgramDayTasksService,
     private attachmentService: AttachmentsService
 
   ) { }
 
   ngOnInit(): void {
+ 
+  }
+
+  ngOnChanges(changes: any){
+    this.fileList = this.linkingDetailsModel.bookAttatchments;
   }
 
   fileUploadModel: IFileUpload[] = [];
   fileList?: IAttachment[] = [];
   attachmentIds: string[] = [];
+
+  attatchmentsAuto?: IAttachment[] = [];
 
   DeleteAttachment(index: number, id: string) {
     this.linkingDetailsModel?.bookAttatchments?.splice(index, 1);
@@ -71,6 +84,28 @@ export class ProgramDayTaskLinkingComponent implements OnInit {
       }
     )
   }
+
+getLastFiveHomeWorkAuto(){
+  this.linkingDetailsModel.bookAttatchments=[];
+  this.programLastFiveWorkToLinkAuto.progId=this.linkingDetailsModel.progId||'';
+  this.programLastFiveWorkToLinkAuto.progDayOrder=this.linkingDetailsModel.progDayOrder;
+this.programDayTasksService.GetProgramLastFiveHomeWorkToLinkAuto(this.programLastFiveWorkToLinkAuto).subscribe(
+  (res:any)=>{
+    res.data as IProgramDayTasksModel
+    Array.from(res.data).forEach((elm: any) => {
+      this.fileList?.push(JSON.parse(elm.detailsTask).bookAttatchments as IAttachment);
+
+    })
+    this.linkingDetailsModel.bookAttatchments=this.fileList;
+  }
+  , error => {
+    this.linkingDetailsModel.bookAttatchments=[];
+  }
+);
+}
+HomeWorkeManeual(){
+  this.linkingDetailsModel.bookAttatchments=[];
+}
 
 
 }

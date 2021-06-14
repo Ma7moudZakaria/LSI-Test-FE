@@ -39,6 +39,6 @@ export class CardFeelingsComponent implements OnInit {
   }
 
   swapDown(){
-    this.swapUpEvent.emit(this.feelingsDetailsModel);
+    this.swapDownEvent.emit(this.feelingsDetailsModel);
   }
 }
