@@ -18,7 +18,7 @@
 .max_h {
   min-height: 66vh;
   max-height: 66vh;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .save-btn{
   background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;

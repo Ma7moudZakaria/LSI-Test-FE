@@ -1,5 +1,5 @@
 <div class="days_details">
-    <span class="ml-3 head">
+    <span class=" head">
         {{this.translate.currentLang===langEnum.en?taskDetails?.dayTaskNameEn:taskDetails?.dayTaskNameAr}}
     </span>
     <app-program-day-task-hearing *ngIf="detailsTypeEnum.taskHearing===taskDetails?.huffazTask"
@@ -18,11 +18,15 @@
     <app-program-day-task-recitation-students *ngIf="detailsTypeEnum.TaskRecitationStudents===taskDetails?.huffazTask" [recitationStudentsModel]="recitationStudentsModel"></app-program-day-task-recitation-students>
     <app-program-day-task-tasmea *ngIf="detailsTypeEnum.TaskTasmea===taskDetails?.huffazTask" [tasmeaModel]="tasmeaModel"></app-program-day-task-tasmea> 
      <app-program-day-task-test-phased *ngIf="detailsTypeEnum.TaskTestPhased===taskDetails?.huffazTask" [testPhasedDetailsModel]="testPhasedDetailsModel"></app-program-day-task-test-phased>
-     <section class="mt-5" *ngIf="detailsTypeEnum.TaskRecitation!=taskDetails?.huffazTask && detailsTypeEnum.TaskRecitationStudents!=taskDetails?.huffazTask && detailsTypeEnum.TaskTasmea!=taskDetails?.huffazTask">
-        <div  class="row direction-rtl buttons-center mt-5">
+     <section *ngIf="detailsTypeEnum.TaskRecitation!=taskDetails?.huffazTask && detailsTypeEnum.TaskRecitationStudents!=taskDetails?.huffazTask && detailsTypeEnum.TaskTasmea!=taskDetails?.huffazTask">
+        <div  class="row direction-rtl buttons-center ">
             <button   type="submit" class="save-btn" (click)="save()" > 
                 {{ "GENERAL.SAVE" | translate }}
             </button>
         </div>
     </section>
     </div>
+    <!-- <div *ngIf="!detailsTypeEnum || detailsTypeEnum.length === 0 ">
+            {{ 'GENERAL.NO_DATA' | translate}}
+
+    </div> -->

@@ -10,7 +10,7 @@
             <div class="col-12" *ngFor="let item of collectionOfLookup.TASKS ;let i=index">
                 
                 <mat-checkbox  class="example-margin " (change)='onTaskChange(item, $event)'  value="{{item.id}}"
-                class="example-margin " [ngClass]="{'ml-1 mr-1':i==0 ,'ml-5 mr-5': i==1, 'ml-3 mr-3': i==2}" >
+                class="example-margin " >
                   {{item.nameAr}}  
                 </mat-checkbox>
             </div>
@@ -22,7 +22,7 @@
     
 
     
-   <section class="mt-5">
+     <section class="mt-5">
             <div  class="row direction-rtl buttons-center mt-5">
                 <button   type="submit" class="save-btn" (click)="onSubmit()"> 
                     {{ "GENERAL.SAVE" | translate }}

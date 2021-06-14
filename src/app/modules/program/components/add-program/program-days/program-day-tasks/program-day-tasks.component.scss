@@ -20,3 +20,21 @@
 .arrangeIcon{
     width: 0.5rem;
 }
+.taskDays.mat-accordion {
+    .mat-expansion-panel{
+        margin-bottom: 0.8rem;
+        border-radius: 12px;
+        border: 1px solid #827f7f3d;
+        box-shadow: none;
+    }
+    .mat-expansion-panel-header{
+        padding: 0 1rem;
+    }
+    .mat-expansion-panel-header-title {
+    justify-content: space-between;
+    color: #8E2520;
+    margin-left: 0;
+    font-size: 1rem;
+    font-family: Almarai-Bold;
+    }
+}

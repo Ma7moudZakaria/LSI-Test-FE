@@ -10,10 +10,13 @@
     .internal_scroll_list_group:lang(ar) {
                 height: 470px;
                 overflow-y: auto;
+                padding-left: 0.5rem;
+               
             }
             .internal_scroll_list_group:lang(en) {
                         height: 470px;
                         overflow-y: auto;
+                        padding-right: 0.5rem;
                     }
 }
 
