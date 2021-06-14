@@ -49,10 +49,12 @@ export class ProgramDayTaskReadExplanationComponent implements OnInit {
   onFileChange(files: FileList) {
 
     if (files.length > 0) {
+
       if (files[0].size > 3, 145, 728) {
-        this.alertify.error('your file lenght more than 3m');
-        return;
+        this.alertify.error('your file size more than 3m');
+
       }
+
       else {
         Array.from(files).forEach(element => {
           var fileUploadObj: IFileUpload = {

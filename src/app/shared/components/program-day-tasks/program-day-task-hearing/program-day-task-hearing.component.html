@@ -18,11 +18,11 @@
 </div>
 <div class="form-group">
     <label class="custom-file custom-file__text" for="importFile">
-            <!-- <img calss="page-image"    src="assets/images/walk-through/Group 18093.svg"  > -->
             <p class="custom-file__label"> {{'GENERAL.CHOOSEFILE' |translate}}</p>
     </label>
+
     <input type="file" class="custom-file-input" id="importFile" 
-    (change)="onFileChange($any($event.target).files)" >
+    (change)="onFileChange($any($event.target).files)"   >
             <div class="col-4 cardRecourd"  *ngFor="let item of hearingTaskDetailsModel?.hearingAttachments;let i=index" >
                 <img src="assets/images/days/book.svg">
                 <span>{{item.fileName}}</span>

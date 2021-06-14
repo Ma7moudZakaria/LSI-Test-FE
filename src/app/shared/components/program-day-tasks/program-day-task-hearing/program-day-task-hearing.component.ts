@@ -18,7 +18,7 @@ export class ProgramDayTaskHearingComponent implements OnInit {
   fileUploadModel: IFileUpload[] = [];
   fileList?: IAttachment[] = [];
   attachmentIds: string[] = [];
-  @Input() hearingTaskDetailsModel : IProgramDayTaskHearing = {};
+  @Input() hearingTaskDetailsModel: IProgramDayTaskHearing = {};
   constructor(
     public translate: TranslateService,
     private attachmentService: AttachmentsService
@@ -27,7 +27,7 @@ export class ProgramDayTaskHearingComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ngOnChanges(changes: any){
+  ngOnChanges(changes: any) {
     this.fileList = this.hearingTaskDetailsModel.hearingAttachments;
   }
 
@@ -59,7 +59,7 @@ export class ProgramDayTaskHearingComponent implements OnInit {
         Array.from(res.data).forEach((elm: any) => {
           this.fileList?.push(elm as IAttachment);
         })
-        this.hearingTaskDetailsModel.hearingAttachments=this.fileList;
+        this.hearingTaskDetailsModel.hearingAttachments = this.fileList;
         this.fileUploadModel = [];
       }, error => {
         console.log(error);
