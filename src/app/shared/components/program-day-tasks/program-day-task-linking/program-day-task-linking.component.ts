@@ -33,7 +33,7 @@ export class ProgramDayTaskLinkingComponent implements OnInit {
   }
 
   ngOnChanges(changes: any){
-    this.fileList = this.linkingDetailsModel.bookAttatchments;
+    this.fileList = this.linkingDetailsModel?.bookAttatchments?this.linkingDetailsModel?.bookAttatchments:[];
   }
 
   fileUploadModel: IFileUpload[] = [];

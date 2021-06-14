@@ -41,7 +41,7 @@ export class ProgramDayTaskReviewComponent implements OnInit {
   }
 
   ngOnChanges(changes: any){
-    this.fileList = this.reviewDetailsModel.bookAttatchments;
+    this.fileList = this.reviewDetailsModel?.bookAttatchments?this.reviewDetailsModel?.bookAttatchments:[];
   }
 
   DeleteAttachment(index: number, id: string) {
