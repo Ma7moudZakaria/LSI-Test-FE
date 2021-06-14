@@ -35,11 +35,12 @@ export class ProgramDayTaskReadExplanationComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  // openVerticallyCentered(content: any) {
+     // openVerticallyCentered(content: any) {
   //   this.modalService.open(content, { centered: true });
   // }
-  ngOnChanges(changes: any) {
-    this.fileList = this.readExplanationDetailsModel.bookAttatchments;
+
+  ngOnChanges(changes: any){
+    this.fileList = this.readExplanationDetailsModel?.bookAttatchments?this.readExplanationDetailsModel?.bookAttatchments:[];
   }
 
   DeleteAttachment(index: number, id: string) {
@@ -49,10 +50,12 @@ export class ProgramDayTaskReadExplanationComponent implements OnInit {
   onFileChange(files: FileList) {
 
     if (files.length > 0) {
-      if (files[0].size > 3, 145, 728) {
-        this.alertify.error('your file lenght more than 3m');
-        return;
+
+      if (files[0].size > 3145728) {
+        this.alertify.error('your file size more than 3m');
+
       }
+
       else {
         Array.from(files).forEach(element => {
           var fileUploadObj: IFileUpload = {

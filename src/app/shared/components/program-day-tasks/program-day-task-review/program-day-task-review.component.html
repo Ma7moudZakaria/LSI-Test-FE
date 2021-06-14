@@ -4,15 +4,21 @@
             <p class="custom-file__label">{{'GENERAL.CHOOSEFILE' |translate}}</p>
     </label>
         <input type="file" class="custom-file-input" id="importFile" 
-    (change)="onFileChange($any($event.target).files)" >
-            <div class="col-4 cardRecourd"  *ngFor="let item of reviewDetailsModel?.bookAttatchments;let i=index" >
+       (change)="onFileChange($any($event.target).files)" 
+
+       accept="application/pdf,image/*" >
+            
+    </div>
+    <div class="row">
+        <ng-container  *ngFor="let item of reviewDetailsModel?.bookAttatchments;let i=index" >
+            <div class="col-4 cardRecourd" >
                 <img src="assets/images/days/book.svg">
-                <span>{{item.fileName}}</span>
-                <i class="fas fa-play-circle"></i>
+                <p class="ellipsis mb-0 ml-2 mr-2"  matTooltip="{{item.fileName}}">{{item.fileName}}</p>
+                <!-- <i class="fas fa-play-circle"></i> -->
                 <img class="trash" src="assets/images/feelings/trash.svg"  (click)="DeleteAttachment(i,item.id)">
             </div>
+        </ng-container>
     </div>
-    
     <div class="form-group">
         <div class="row">
             <div class="col-6">

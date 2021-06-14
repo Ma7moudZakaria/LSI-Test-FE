@@ -14,11 +14,11 @@
             <p class="custom-file__label">{{'GENERAL.CHOOSEFILE' |translate}}</p>
     </label>
         <input type="file" class="custom-file-input" id="importFile" 
-    (change)="onFileChange($any($event.target).files)" >
+    (change)="onFileChange($any($event.target).files)" 
+    accept="video/mp4,video/x-m4v,video/*" >
             <div class="col-4 cardRecourd"  *ngFor="let item of videoDetailsModel?.videoAttatchments;let i=index" >
-                <!-- <img src="assets/images/days/book.svg"> -->
-                <span>{{item.fileName}}</span>
-                <i class="fas fa-play-circle"></i>
+                <img src="assets/images/days/book.svg">
+                <p class="ellipsis mb-0 ml-2 mr-2"  matTooltip="{{item.fileName}}">{{item.fileName}}</p>
                 <img class="trash" src="assets/images/feelings/trash.svg"  (click)="DeleteAttachment(i,item.id)">
             </div>
     </div>

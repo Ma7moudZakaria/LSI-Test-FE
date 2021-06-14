@@ -18,13 +18,20 @@
             <label class="custom-file custom-file__text" for="importFile">
                     <p class="custom-file__label">{{'GENERAL.CHOOSEFILE' |translate}}</p>
             </label>
-            <input type="file" class="custom-file-input" id="importFile" [(ngModel)]="linkingDetailsModel.bookAttatchments"
-            (change)="onFileChange($any($event.target).files)" >
-                    <div class="col-4 cardRecourd"  *ngFor="let item of linkingDetailsModel?.bookAttatchments;let i=index" >
-                        <img src="assets/images/days/book.svg">
-                        <span>{{item.fileName}}</span>
-                        <img class="trash" src="assets/images/feelings/trash.svg" (click)="DeleteAttachment(i,item.id)">
-                    </div>
+            <input type="file" class="custom-file-input" id="importFile" 
+            [(ngModel)]="linkingDetailsModel.bookAttatchments"
+            (change)="onFileChange($any($event.target).files)"  accept="application/pdf,image/*" >
+                   
+    </div>
+    <div class="row">
+        <ng-container *ngFor="let item of linkingDetailsModel?.bookAttatchments;let i=index"> 
+            <div class="col-4 cardRecourd"   >
+                <img src="assets/images/days/book.svg">
+                <p class="ellipsis mb-0 ml-2 mr-2"  matTooltip="{{item.fileName}}">{{item.fileName}}</p>
+                <img class="trash" src="assets/images/feelings/trash.svg" (click)="DeleteAttachment(i,item.id)">
+            </div>
+       </ng-container>
+
     </div>
     <div class="form-group mt-3" *ngIf="this.linkingDetailsModel?.linkingType===this.TaskLinkingTypeEnum.automatic">
                 <div class="col-4 cardRecourd"  *ngFor="let item of linkingDetailsModel?.bookAttatchments;let i=index" >
