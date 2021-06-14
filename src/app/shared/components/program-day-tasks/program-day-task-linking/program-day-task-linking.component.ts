@@ -87,14 +87,18 @@ export class ProgramDayTaskLinkingComponent implements OnInit {
 
 getLastFiveHomeWorkAuto(){
   this.linkingDetailsModel.bookAttatchments=[];
+  this.fileList=[];
   this.programLastFiveWorkToLinkAuto.progId=this.linkingDetailsModel.progId||'';
   this.programLastFiveWorkToLinkAuto.progDayOrder=this.linkingDetailsModel.progDayOrder;
 this.programDayTasksService.GetProgramLastFiveHomeWorkToLinkAuto(this.programLastFiveWorkToLinkAuto).subscribe(
   (res:any)=>{
     res.data as IProgramDayTasksModel
     Array.from(res.data).forEach((elm: any) => {
-      this.fileList?.push(JSON.parse(elm.detailsTask).bookAttatchments as IAttachment);
-
+      let lstBookAttatchments=JSON.parse(elm.detailsTask).bookAttatchments 
+      if(lstBookAttatchments.length>1){
+        Array.from(lstBookAttatchments).forEach((item: any) => {this.fileList?.push(item as IAttachment);})
+      }
+      else{this.fileList?.push(elm as IAttachment);}
     })
     this.linkingDetailsModel.bookAttatchments=this.fileList;
   }
