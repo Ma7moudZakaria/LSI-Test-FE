@@ -8,13 +8,13 @@
     <div class="row">
         <div class="col-12">
               <mat-radio-group [(ngModel)]="linkingDetailsModel.linkingType" aria-label="Select an option">
-                <mat-radio-button value="{{TaskLinkingTypeEnum.automatic}}" class="px-2">الى</mat-radio-button>
-                <mat-radio-button value="{{TaskLinkingTypeEnum.manual}}" class="px-2">يدوى</mat-radio-button>
+                <mat-radio-button value="{{TaskLinkingTypeEnum.automatic}}" class="px-2" (click)="getLastFiveHomeWorkAuto()">الى</mat-radio-button>
+                <mat-radio-button value="{{TaskLinkingTypeEnum.manual}}" class="px-2" (click)="HomeWorkeManeual()">يدوى</mat-radio-button>
             </mat-radio-group>
         </div>
         </div>  
 
-  <div class="form-group mt-3">
+  <div class="form-group mt-3" *ngIf="this.linkingDetailsModel?.linkingType===this.TaskLinkingTypeEnum.manual">
             <label class="custom-file custom-file__text" for="importFile">
                     <p class="custom-file__label">{{'GENERAL.CHOOSEFILE' |translate}}</p>
             </label>
@@ -26,6 +26,13 @@
                         <img class="trash" src="assets/images/feelings/trash.svg" (click)="DeleteAttachment(i,item.id)">
                     </div>
     </div>
+    <div class="form-group mt-3" *ngIf="this.linkingDetailsModel?.linkingType===this.TaskLinkingTypeEnum.automatic">
+                <div class="col-4 cardRecourd"  *ngFor="let item of linkingDetailsModel?.bookAttatchments;let i=index" >
+                    <img src="assets/images/days/book.svg">
+                    <span>{{item.fileName}}</span>
+                    <!-- <img class="trash" src="assets/images/feelings/trash.svg" (click)="DeleteAttachment(i,item.id)"> -->
+                </div>
+</div>
  
     <div class="form-group">
         <div class="row">

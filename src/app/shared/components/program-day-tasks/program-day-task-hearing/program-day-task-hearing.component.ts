@@ -25,7 +25,10 @@ export class ProgramDayTaskHearingComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
- 
+  }
+
+  ngOnChanges(changes: any){
+    this.fileList = this.hearingTaskDetailsModel.hearingAttachments;
   }
 
   DeleteAttachment(index: number, id: string) {

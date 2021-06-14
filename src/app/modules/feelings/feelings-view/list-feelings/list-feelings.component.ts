@@ -206,12 +206,20 @@ export class ListFeelingsComponent implements OnInit {
 
   swapUp(event : IFeelingsDetailsModel){
     this.swapFeeling.feelA = event.id;
-    this.swapFeeling.feelB = this.feelingsPublishedList[this.feelingsPublishedList.indexOf(event) - 1].id;
+    let feelAIndex = this.feelingsPublishedList.indexOf(event);
+    if (feelAIndex - 1 >= 0){
+      this.swapFeeling.feelB = this.feelingsPublishedList[this.feelingsPublishedList.indexOf(event) - 1].id;
+      this.swapFeelingsItems();
+    }
   }
 
   swapDown(event : IFeelingsDetailsModel){
     this.swapFeeling.feelA = event.id;
-    this.swapFeeling.feelB = this.feelingsPublishedList[this.feelingsPublishedList.indexOf(event) + 1].id;
+    let feelBIndex = this.feelingsPublishedList.indexOf(event);
+    if (feelBIndex + 1 < this.feelingsPublishedList.length){
+      this.swapFeeling.feelB = this.feelingsPublishedList[this.feelingsPublishedList.indexOf(event) + 1].id;
+      this.swapFeelingsItems();
+    }
   }
 
   swapFeelingsItems(){

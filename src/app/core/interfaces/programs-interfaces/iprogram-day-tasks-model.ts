@@ -7,4 +7,5 @@
             programDutyDay?:string;
             order?:number;
             huffazTask?:number;
+            dutyDay?:string;
         }

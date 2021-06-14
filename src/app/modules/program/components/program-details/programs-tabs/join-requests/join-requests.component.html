@@ -1,33 +1,15 @@
 <div class="tab_page  ">
-    <!-- <div class=" pt-3">
-        <div class="row">
-            <div class="col-md-12 ">
-                <p>join-requests works!</p>
-            </div>
-        </div>
-    </div> -->
+  
     <div class=" part1 list_exams">
-        <!-- <p class="head">النمازج </p>
-        <div class="internal_scroll_list_group">
-        <div class="internal_scroll_list_group">
-            <a class="list-group-item  d-flex"  >
-                 <span> program.progName</span>                
-            </a>
-        
-             </div>
-            </div> -->
-
-
-
 
 
             <div class="list-group list-group_program-list">
-                <p class="mb-4">النماذج</p>
-                 
-                <div class="internal_scroll_list_group">
-                    <a class="list-group-item d-flex"> 
-                        <span>  {{'PROGRAMS_LIST.ALL' | translate}}</span>        
-                    </a>
+               
+                  <p class="mb-4">النمازج</p>
+            <div class="internal_scroll_list_group">
+                    <a class="list-group-item d-flex"  > 
+                    <span>  {{'PROGRAMS_LIST.ALL' | translate}}</span>        
+                   </a>
             
                     <a class="list-group-item  d-flex" *ngFor="let progExamFormsDetailsItem of programExamFormsDetails ;let i=index">                           
                         <span> {{ this.translate.currentLang === langEnum.en? progExamFormsDetailsItem.enExaName : progExamFormsDetailsItem.arExaName }}</span>               
@@ -39,19 +21,14 @@
             </div>
     </div>
     <div class="part2  list_exams">
+        <p class="mb-2 name_prog"> اسم البرنامج</p>
+        <p class="mb-3 head">اسم البرنامج <small class="name_prog">الدرجة 100</small></p>
 
+        <app-question-template  class="day_detils">
+      </app-question-template>
+      <!-- [questionTemplate] = 'question' -->
     </div>
-    <!-- <div class="col-md-12 max_h">
-        <div class="row mb-3">
-           <div class="col-3 list_exams" > 
-
-           </div>
-           <div class="col-6 list_exams" >
-
-           </div>
-
-        </div>
-    </div> -->
+    
    
     
 </div>
