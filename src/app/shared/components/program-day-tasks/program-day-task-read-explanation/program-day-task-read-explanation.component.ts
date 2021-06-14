@@ -14,20 +14,26 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./program-day-task-read-explanation.component.scss']
 })
 export class ProgramDayTaskReadExplanationComponent implements OnInit {
+
+  @Input() readExplanationDetailsModel: IProgramDayTaskReadExplanation = {};
+
   resMessage: BaseMessageModel = {};
   fileUploadModel: IFileUpload[] = [];
   fileList?: IAttachment[] = [];
   attachmentIds: string[] = [];
+
   constructor(
     public translate: TranslateService,
     private attachmentService: AttachmentsService
 
   ) { }
 
-  @Input() readExplanationDetailsModel: IProgramDayTaskReadExplanation = {};
-
   ngOnInit(): void {
    
+  }
+
+  ngOnChanges(changes: any){
+    this.fileList = this.readExplanationDetailsModel.bookAttatchments;
   }
 
   DeleteAttachment(index: number, id: string) {

@@ -7,4 +7,7 @@ export interface IProgramDayTaskLinking {
     questionToStudent?:string;
     bookAttatchments?:IAttachment[];
     linkingType? :ProgramDayTaskLinkingType ;
+    progId?:string;
+    progDayOrder?:Number;
+
 }

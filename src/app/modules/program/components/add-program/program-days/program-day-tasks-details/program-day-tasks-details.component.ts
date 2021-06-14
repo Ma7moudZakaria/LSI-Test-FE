@@ -147,6 +147,8 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
             break;
            case this.detailsTypeEnum.TaskLinking:
             this.linkingDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
+            this.linkingDetailsModel.progId=this.progamDetails?.progBaseInfo?.id;
+            this.linkingDetailsModel.progDayOrder=this.progamDetails?.progDays?.find(x=>x.id==this.taskDetails?.dutyDay)?.order;
             break;
             case this.detailsTypeEnum.TaskEncouragementLetter:
               this.encouragementLetterDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
