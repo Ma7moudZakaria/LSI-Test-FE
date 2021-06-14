@@ -35,13 +35,31 @@
   }
 //   for list
 .list-group_program-list
-{
-background:transparent;
-border-radius: 0;
- opacity: 1; 
-  padding: 0; 
- height: auto; 
-margin-top: 0;
-box-shadow: 0 2px 3px #80808052;
+    {
+            background:transparent;
+            border-radius: 0;
+            opacity: 1; 
+            padding: 0; 
+            height: auto; 
+            margin-top: 0;
+        .list-group-item
+        {
+            box-shadow: 0 2px 3px #80808052;
+            color: #8E2520;
+            font-family: Almarai-Bold;
+            font-size: 18px;
+            &:hover{
+                color: #fff;
+        }
+  }
+ 
+}
+ // for program details 
+ .name_prog{
+    font-size: 14px;
+    color: #8D8D8D;
+    font-family: Almarai-Regular;
 
-}}
+}
+
+}
