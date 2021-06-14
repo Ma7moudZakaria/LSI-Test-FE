@@ -6,13 +6,13 @@
             <div class="list-group list-group_program-list">
                
                   <p class="mb-4">النمازج</p>
-            <div class="internal_scroll_list_group">
-                    <a class="list-group-item d-flex"  > 
+            <div class="internal_scroll_list_group" *ngFor="let progExamFormsDetailsItem of programDetails?.progJoiExa ;let i=index" [class.active]="selectedIndex === i" (click)='getProgramJoinExam(progExamFormsDetailsItem)'>
+                    <!-- <a class="list-group-item d-flex"  > 
                     <span>  {{'PROGRAMS_LIST.ALL' | translate}}</span>        
-                   </a>
+                   </a> -->
             
-                    <a class="list-group-item  d-flex" *ngFor="let progExamFormsDetailsItem of programExamFormsDetails ;let i=index">                           
-                        <span> {{ this.translate.currentLang === langEnum.en? progExamFormsDetailsItem.enExaName : progExamFormsDetailsItem.arExaName }}</span>               
+                    <a class="list-group-item  d-flex"  >                           
+                        <span > {{ this.translate.currentLang === langEnum.en? progExamFormsDetailsItem.enExaName : progExamFormsDetailsItem.arExaName }}</span>               
                     </a>
                 </div>
                 <!-- <div *ngIf="resMessage.message" class="alert alert-{{ resMessage.type }} my-4 py-2">
@@ -21,10 +21,10 @@
             </div>
     </div>
     <div class="part2  list_exams">
-        <p class="mb-2 name_prog"> اسم البرنامج</p>
-        <p class="mb-3 head">اسم البرنامج <small class="name_prog">الدرجة 100</small></p>
+        <p class="mb-2 name_prog"> {{ programDetails?.progBaseInfo?.prgName }}</p>
+        <p class="mb-3 head"> {{ this.translate.currentLang === langEnum.en? progExamFormsDetails?.engExamFormNam : progExamFormsDetails?.arabExamFormNam }} <small class="name_prog">الدرجة {{degree}}</small></p>
 
-        <app-question-template  class="day_detils">
+        <app-question-template  class="day_detils" [questionDataTemplate]='progExamFormsDetails'>
       </app-question-template>
       <!-- [questionTemplate] = 'question' -->
     </div>

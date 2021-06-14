@@ -5,6 +5,7 @@ import { AnswerTypeEnum } from 'src/app/core/enums/exam-builder-enums/answer-typ
 import { QuestionTypeEnum } from 'src/app/core/enums/exam-builder-enums/question-type-enum.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IAnswer } from 'src/app/core/interfaces/exam-builder-interfaces/ianswer';
+import { IExam } from 'src/app/core/interfaces/exam-builder-interfaces/iexam';
 import { IQuestion } from 'src/app/core/interfaces/exam-builder-interfaces/iquestion';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
@@ -18,6 +19,7 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../confirm-modal/conf
 })
 export class QuestionTemplateComponent implements OnInit {
   @Input() questionTemplate: IQuestion = { answers: [] };
+  @Input() questionDataTemplate: IExam | undefined ;
   @Input() viewMode: boolean = false;
   answerTypeEnum = AnswerTypeEnum;
   currentLang = '';
@@ -29,6 +31,8 @@ export class QuestionTemplateComponent implements OnInit {
 
   ngOnInit(): void {
     this.MULTISELECT=this.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.MULTI_SELECT') : this.translate.instant('GENERAL.MULTI_SELECT')
+    
+    console.log("program Exams Details ===========>", this.questionDataTemplate);
   }
 
 

@@ -44,7 +44,7 @@
            <app-basic-information *ngIf="showTap == 'BASEINFO'" [progBasicInfoDetails]='programDetails?.progBaseInfo'></app-basic-information>
            <app-days *ngIf="showTap == 'DAYS'" [progDays]='programDetails?.progDays'></app-days>
            <app-conditions *ngIf="showTap == 'CANDITION'"></app-conditions>
-           <app-join-requests *ngIf="showTap == 'JOIN'" [programExamFormsDetails]='programDetails?.progJoiExa'></app-join-requests>
+           <app-join-requests *ngIf="showTap == 'JOIN'" [programDetails]='programDetails'></app-join-requests>
            <app-notify *ngIf="showTap == 'NOTIFACATION'" [progId]='programDetails?.id'></app-notify>
            <app-progress-test  *ngIf="showTap == 'PROGRESSTEST'"></app-progress-test>
            <app-students *ngIf="showTap == 'STUDENS'"></app-students>
