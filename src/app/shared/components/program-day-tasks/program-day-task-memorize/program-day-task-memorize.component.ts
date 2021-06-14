@@ -42,7 +42,7 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
 
   onFileChange(files: FileList) {
 
-    if (files[0].size > 3, 145, 728) {
+    if (files[0].size > 3145728) {
       this.alertify.error('your file size more than 3m');
 
     }

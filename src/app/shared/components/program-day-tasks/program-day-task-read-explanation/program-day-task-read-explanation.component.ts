@@ -51,7 +51,7 @@ export class ProgramDayTaskReadExplanationComponent implements OnInit {
 
     if (files.length > 0) {
 
-      if (files[0].size > 3, 145, 728) {
+      if (files[0].size > 3145728) {
         this.alertify.error('your file size more than 3m');
 
       }
