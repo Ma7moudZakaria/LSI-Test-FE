@@ -122,7 +122,9 @@ export class ProgramDayTaskLinkingComponent implements OnInit {
       }
     );
   }
+
   HomeWorkeManeual() {
+    this.fileList = [];
     this.linkingDetailsModel.bookAttatchments = [];
   }
 
