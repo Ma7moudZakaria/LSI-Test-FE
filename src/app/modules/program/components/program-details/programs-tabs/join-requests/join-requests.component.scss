@@ -47,13 +47,21 @@
             box-shadow: 0 2px 3px #80808052;
             color: #8E2520;
             font-family: Almarai-Bold;
-            font-size: 18px;
+            font-size: 1rem;
             &:hover{
                 color: #fff;
+             
         }
+     
   }
  
 }
+.list-group_program-list > p{
+  
+    font-size: 18px;
+   
+}
+
  // for program details 
  .name_prog{
     font-size: 14px;
