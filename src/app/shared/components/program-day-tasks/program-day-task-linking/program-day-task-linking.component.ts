@@ -108,6 +108,7 @@ this.programDayTasksService.GetProgramLastFiveHomeWorkToLinkAuto(this.programLas
 );
 }
 HomeWorkeManeual(){
+  this.fileList = [];
   this.linkingDetailsModel.bookAttatchments=[];
 }
 
