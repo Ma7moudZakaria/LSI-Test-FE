@@ -9,20 +9,25 @@
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group mb-0">
         <label class="custom-file custom-file__text" for="importFile">
             <p class="custom-file__label">{{'GENERAL.CHOOSEFILE' |translate}}</p>
     </label>
         <input type="file" class="custom-file-input" id="importFile" 
     (change)="onFileChange($any($event.target).files)" 
     accept="video/mp4,video/x-m4v,video/*" >
-            <div class="col-4 cardRecourd"  *ngFor="let item of videoDetailsModel?.videoAttatchments;let i=index" >
+        
+    </div>
+
+    <div class="row mx-0" >
+        <ng-container *ngFor="let item of videoDetailsModel?.videoAttatchments;let i=index">
+            <div class="col-4 cardRecourd">
                 <img src="assets/images/days/book.svg">
                 <p class="ellipsis mb-0 ml-2 mr-2"  matTooltip="{{item.fileName}}">{{item.fileName}}</p>
                 <img class="trash" src="assets/images/feelings/trash.svg"  (click)="DeleteAttachment(i,item.id)">
             </div>
+        </ng-container>
     </div>
-
     <div class="form-group">
         <div class="row">
             <div class="col-12">
