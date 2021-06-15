@@ -46,48 +46,27 @@
 </div>
     
       <!--part حفظ  -->
-<div class=" part1 list_exams">
-       <p class="mb-2 name"> {{ this.translate.currentLang === langEnum.en? dayTasksDetails?.dayTaskNameEn : dayTasksDetails?.dayTaskNameAr }}</p>
-            <div class="d-flex">       
-
-                    <div class="col-6 px-0">
-                        <span class="regular">إلزامي</span>
-                    </div>
-                    <div class="col-6 px-0">
-                        <span class="grad">الدرجة
-                            <span>  &nbsp;  : </span>
-                            <span>  &nbsp; </span> 
-
-                            <small class="info">10</small>
-                        </span>
-                    </div>
-                    
-            </div>
-            <div class="mt-3  mb-3">
-                <span class="grad">  الصفحات
-                    <span>  &nbsp;  : </span>
-                    <span>  &nbsp; </span> 
-                    <small class="info">200 - 205</small>
-                </span>
-
-            </div>
-
-                 
-           
-                <ng-container *ngFor="let item of bookAttach;let i=index">
-                  <div class=" cardRecourd mb-2  "   >
-                <img src="assets/images/days/bookView.svg">
-                <p class=" mr-2 mb-0" 
-                >اسم الصفحة الصفحة الصفحة .pdf</p>
-               </div>    
-                
-                </ng-container>
-                
-            <p class="mt-3 grad">
-                السؤال الذي يظهر للطالب
-            </p>
-            <p class="regular">هل قمت بحفظ الصفحات؟</p>
-        
-</div>
+      <div class=" part1 list_exams" >
+      <span class=" head">
+          {{this.translate.currentLang===langEnum.en?dayTasksDetails?.dayTaskNameEn:dayTasksDetails?.dayTaskNameAr}}
+      </span>
+      <app-program-day-task-hearing *ngIf="detailsTypeEnum.taskHearing===dayTasksDetails?.huffazTask"
+      [hearingTaskDetailsModel]='hearingTaskDetailsModel'>
+      </app-program-day-task-hearing>
+      <app-program-day-task-read-explanation *ngIf="detailsTypeEnum.TaskReadExplanation===dayTasksDetails?.huffazTask"
+      [readExplanationDetailsModel] ='readExplanationDetailsModel'></app-program-day-task-read-explanation>
+      <app-program-day-task-memorize *ngIf="detailsTypeEnum.TaskMemorize===dayTasksDetails?.huffazTask" [memorizeDetailsModel] ='memorizeDetailsModel' [isView] ='isView'></app-program-day-task-memorize>
+      <app-program-day-task-repetition *ngIf="detailsTypeEnum.TaskRepetition===dayTasksDetails?.huffazTask" [repetitionDetailsModel]="repetitionDetailsModel"></app-program-day-task-repetition>
+      <app-program-day-task-linking *ngIf="detailsTypeEnum.TaskLinking===dayTasksDetails?.huffazTask" [linkingDetailsModel]="linkingDetailsModel"></app-program-day-task-linking>
+      <app-program-day-task-daily-test *ngIf="detailsTypeEnum.TaskDailyTest===dayTasksDetails?.huffazTask" [dailyTestDetailsModel]="dailyTestDetailsModel"></app-program-day-task-daily-test>
+      <app-program-day-task-encouragement-letter *ngIf="detailsTypeEnum.TaskEncouragementLetter===dayTasksDetails?.huffazTask" [encouragementLetterDetailsModel]="encouragementLetterDetailsModel"></app-program-day-task-encouragement-letter>
+      <app-program-day-task-video *ngIf="detailsTypeEnum.TaskVideo===dayTasksDetails?.huffazTask" [videoDetailsModel]="videoDetailsModel"></app-program-day-task-video>
+      <app-program-day-task-review *ngIf="detailsTypeEnum.TaskReview===dayTasksDetails?.huffazTask" [reviewDetailsModel]="reviewDetailsModel"></app-program-day-task-review>
+      <app-program-day-task-recitation *ngIf="detailsTypeEnum.TaskRecitation===dayTasksDetails?.huffazTask" [recitationDetailsModel]="recitationDetailsModel"></app-program-day-task-recitation>
+      <app-program-day-task-recitation-students *ngIf="detailsTypeEnum.TaskRecitationStudents===dayTasksDetails?.huffazTask" [recitationStudentsModel]="recitationStudentsModel"></app-program-day-task-recitation-students>
+      <app-program-day-task-tasmea *ngIf="detailsTypeEnum.TaskTasmea===dayTasksDetails?.huffazTask" [tasmeaModel]="tasmeaModel"></app-program-day-task-tasmea> 
+       <app-program-day-task-test-phased *ngIf="detailsTypeEnum.TaskTestPhased===dayTasksDetails?.huffazTask" [testPhasedDetailsModel]="testPhasedDetailsModel"></app-program-day-task-test-phased>
+       
+      </div>
     
 </div>

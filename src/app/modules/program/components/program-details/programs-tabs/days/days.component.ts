@@ -27,8 +27,9 @@ export class DaysComponent implements OnInit {
 
   @Input() progs: IProgramDetails | undefined;
   @Input() progDays: Array<IProgramDutyDays> | undefined;
+
   programDayTasksDetails: Array<IProgramDayTasksModel> | undefined;
-  dayTasksDetails:IProgramDayTasksModel | undefined;
+  dayTasksDetails: IProgramDayTasksModel | undefined;
   resMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
   selectedIndex?: Number;
@@ -44,11 +45,12 @@ export class DaysComponent implements OnInit {
   repetitionDetailsModel: IProgramDayTaskRepetition = {};
   reviewDetailsModel: IProgramDayTaskReview = {};
   videoDetailsModel: IProgramDayTaskVideo = {};
-  testPhasedDetailsModel:IExam = { questions: [] };
+  testPhasedDetailsModel: IExam = { questions: [] };
   dailyTestDetailsModel: IExam = { questions: [] };
-  recitationStudentsModel :IProgramBasicInfoDetails = {};
-  programDayTaskDetails: ISaveProgramDayTaskDetailsModel={};
-  tasmeaModel :IProgramBasicInfoDetails = {};
+  recitationStudentsModel: IProgramBasicInfoDetails = {};
+  programDayTaskDetails: ISaveProgramDayTaskDetailsModel = {};
+  tasmeaModel: IProgramBasicInfoDetails = {};
+  isView: boolean = false;
 
   constructor(private programDayTasksService: ProgramDayTasksService, public translate: TranslateService) { }
 
@@ -83,54 +85,67 @@ export class DaysComponent implements OnInit {
     });
   }
 
-  getDayTasksDetails(dayTasksDetailsParameter:IProgramDayTasksModel) {
+  getDayTasksDetails(dayTasksDetailsParameter: IProgramDayTasksModel) {
     this.dayTasksDetails = dayTasksDetailsParameter;
     switch (this.dayTasksDetails?.huffazTask) {
       case this.detailsTypeEnum.taskHearing:
-       this.hearingTaskDetailsModel= JSON.parse(this.dayTasksDetails?.detailsTask||"{}");
+        this.hearingTaskDetailsModel = JSON.parse(this.dayTasksDetails?.detailsTask || "{}");
+        this.isView = true;
         break;
       case this.detailsTypeEnum.TaskReadExplanation:
-        this.readExplanationDetailsModel=JSON.parse(this.dayTasksDetails?.detailsTask||"{}");
+        this.readExplanationDetailsModel = JSON.parse(this.dayTasksDetails?.detailsTask || "{}");
+        this.isView = true;
         break;
-        case this.detailsTypeEnum.TaskMemorize:
-         this.memorizeDetailsModel=JSON.parse(this.dayTasksDetails?.detailsTask||"{}");
-          break;
-          case this.detailsTypeEnum.TaskRepetition:
-           this.repetitionDetailsModel=JSON.parse(this.dayTasksDetails?.detailsTask||"{}");
-            break;
-           case this.detailsTypeEnum.TaskLinking:
-            this.linkingDetailsModel=JSON.parse(this.dayTasksDetails?.detailsTask||"{}");
-            this.linkingDetailsModel.progId=this.progs?.progBaseInfo?.id;
-            this.linkingDetailsModel.progDayOrder=this.progs?.progDays?.find(x=>x.id==this.dayTasksDetails?.dutyDay)?.order;
-            break;
-            case this.detailsTypeEnum.TaskEncouragementLetter:
-              this.encouragementLetterDetailsModel=JSON.parse(this.dayTasksDetails?.detailsTask||"{}");
-              break;
-              case this.detailsTypeEnum.TaskVideo:
-               this.videoDetailsModel=JSON.parse(this.dayTasksDetails?.detailsTask||"{}");
-                break;
-                case this.detailsTypeEnum.TaskReview:
-               this.reviewDetailsModel=JSON.parse(this.dayTasksDetails?.detailsTask||"{}");
-                break;
-                case this.detailsTypeEnum.TaskRecitation:
-                  this.recitationDetailsModel=this.progs?.progBaseInfo||{};
-                  break;
-                  case this.detailsTypeEnum.TaskRecitationStudents:
-                    this.recitationStudentsModel=this.progs?.progBaseInfo||{};
-                    break;
-                    case this.detailsTypeEnum.TaskTestPhased:
-                    this.testPhasedDetailsModel=JSON.parse(this.dayTasksDetails?.detailsTask||"{}");
-                    if (!this.testPhasedDetailsModel.questions)
-                        this.testPhasedDetailsModel.questions = [];
-                    break;
-                    case this.detailsTypeEnum.TaskDailyTest:
-                      this.dailyTestDetailsModel=JSON.parse(this.dayTasksDetails?.detailsTask||"{}");
-                      if (!this.dailyTestDetailsModel.questions)
-                        this.dailyTestDetailsModel.questions = [];
-                      break;
-                      case this.detailsTypeEnum.TaskTasmea:
-                    this.tasmeaModel=this.progs?.progBaseInfo||{};
-                    break;
+      case this.detailsTypeEnum.TaskMemorize:
+        this.memorizeDetailsModel = JSON.parse(this.dayTasksDetails?.detailsTask || "{}");
+        this.isView = true;
+        break;
+      case this.detailsTypeEnum.TaskRepetition:
+        this.repetitionDetailsModel = JSON.parse(this.dayTasksDetails?.detailsTask || "{}");
+        this.isView = true;
+        break;
+      case this.detailsTypeEnum.TaskLinking:
+        this.linkingDetailsModel = JSON.parse(this.dayTasksDetails?.detailsTask || "{}");
+        this.isView = true;
+        this.linkingDetailsModel.progId = this.progs?.progBaseInfo?.id;
+        this.linkingDetailsModel.progDayOrder = this.progs?.progDays?.find(x => x.id == this.dayTasksDetails?.dutyDay)?.order;
+        break;
+      case this.detailsTypeEnum.TaskEncouragementLetter:
+        this.encouragementLetterDetailsModel = JSON.parse(this.dayTasksDetails?.detailsTask || "{}");
+        this.isView = true;
+        break;
+      case this.detailsTypeEnum.TaskVideo:
+        this.videoDetailsModel = JSON.parse(this.dayTasksDetails?.detailsTask || "{}");
+        this.isView = true;
+        break;
+      case this.detailsTypeEnum.TaskReview:
+        this.reviewDetailsModel = JSON.parse(this.dayTasksDetails?.detailsTask || "{}");
+        this.isView = true;
+        break;
+      case this.detailsTypeEnum.TaskRecitation:
+        this.recitationDetailsModel = this.progs?.progBaseInfo || {};
+        this.isView = true;
+        break;
+      case this.detailsTypeEnum.TaskRecitationStudents:
+        this.recitationStudentsModel = this.progs?.progBaseInfo || {};
+        this.isView = true;
+        break;
+      case this.detailsTypeEnum.TaskTestPhased:
+        this.testPhasedDetailsModel = JSON.parse(this.dayTasksDetails?.detailsTask || "{}");
+        this.isView = true;
+        if (!this.testPhasedDetailsModel.questions)
+          this.testPhasedDetailsModel.questions = [];
+        break;
+      case this.detailsTypeEnum.TaskDailyTest:
+        this.dailyTestDetailsModel = JSON.parse(this.dayTasksDetails?.detailsTask || "{}");
+        this.isView = true;
+        if (!this.dailyTestDetailsModel.questions)
+          this.dailyTestDetailsModel.questions = [];
+        break;
+      case this.detailsTypeEnum.TaskTasmea:
+        this.tasmeaModel = this.progs?.progBaseInfo || {};
+        this.isView = true;
+        break;
       default:
         "";
         break;

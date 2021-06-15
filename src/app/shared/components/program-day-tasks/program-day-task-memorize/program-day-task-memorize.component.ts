@@ -13,12 +13,13 @@ import { AttachmentsService } from 'src/app/core/services/attachments-services/a
   styleUrls: ['./program-day-task-memorize.component.scss']
 })
 export class ProgramDayTaskMemorizeComponent implements OnInit {
-
+  // isView: boolean = false;
   resMessage: BaseMessageModel = {};
   fileUploadModel: IFileUpload[] = [];
   fileList?: IAttachment[] = [];
   attachmentIds: string[] = [];
-  @Input() memorizeDetailsModel: IProgramDayTaskMemorize = {}
+  @Input() memorizeDetailsModel: IProgramDayTaskMemorize = {};
+  @Input() isView: boolean = false;
 
   constructor
     (
@@ -32,8 +33,8 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  ngOnChanges(changes: any){
-    this.fileList = this.memorizeDetailsModel?.bookAttatchments?this.memorizeDetailsModel?.bookAttatchments:[];
+  ngOnChanges(changes: any) {
+    this.fileList = this.memorizeDetailsModel?.bookAttatchments ? this.memorizeDetailsModel?.bookAttatchments : [];
   }
 
   DeleteAttachment(index: number, id: string) {
