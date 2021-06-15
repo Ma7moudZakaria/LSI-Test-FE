@@ -17,6 +17,10 @@ import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { QuestionBankCategoryService } from 'src/app/core/services/question-bank-services/question-bank-category.service';
 import { RoleManagementService } from 'src/app/core/services/role-management/role-management.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { IDragDropAccordionItems } from '../../../../../core/interfaces/shared-interfaces/accordion-interfaces/idrag-drop-accordion-items';
+import { IQuestionBankCategoryUpdateOrder } from '../../../../../core/interfaces/questionBankCategories-interfaces/iquestion-bank-category-update-order';
+
 
 @Component({
   selector: 'app-question-bank-categories-view',
@@ -52,6 +56,10 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
 
   currentUser: IUser | undefined;
   role = RoleEnum;
+
+  items1: any;
+  questionBankCategoryUpdateOrder: IQuestionBankCategoryUpdateOrder = {};
+  listOrder?: number[];
 
   constructor(private questionBankCategoryService: QuestionBankCategoryService,
     private activeroute: ActivatedRoute, private router: Router, 
@@ -276,5 +284,36 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
   }
   newScientificProblem() {
     this.openScientificProblem.emit(true);
+  }
+
+  drop(event: CdkDragDrop<IDragDropAccordionItems[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      this.listOrder = [];
+      for (let i = 0; i <= event.container.data.length - 1; i++) {
+        this.listOrder?.push(event.previousContainer.data[i].order || (i + 1));
+      }
+
+      this.questionBankCategoryUpdateOrder.orderList = this.listOrder;
+
+      this.questionBankCategoryService.UpdateOrderQuestionBankCategories(this.questionBankCategoryUpdateOrder).subscribe(res => {
+        //if (res.isSuccess) {
+        //  this.getQuestionBankCategories();
+        //}
+        //else {
+        //}
+      },
+        error => {
+          this.resultMessage = {
+            message: error,
+            type: BaseConstantModel.DANGER_TYPE
+          }
+        })
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
   }
 }

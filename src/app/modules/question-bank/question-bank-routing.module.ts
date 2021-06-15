@@ -14,14 +14,13 @@ const routes: Routes = [
     children: [
       { path: 'question-bank-categories-view', component: QuestionBankCategoriesViewComponent},
       { path: 'add-question-bank-category', component: AddQuestionBankCategoryComponent},
-      {path: 'edit-question-bank-category/:id' , component: AddQuestionBankCategoryComponent},
+      { path: 'edit-question-bank-category/:id' , component: AddQuestionBankCategoryComponent},
       { path: 'question-bank-category-details/:id', component: QuestionBankCategoryDetailsComponent},
       { path: 'question-bank-questions-view', component: QuestionBankQuestionsViewComponent},
       { path: 'add-question-bank-question', component: AddQuestionBankQuestionComponent},
-      {path: 'edit-question-bank-question/:id' , component: AddQuestionBankQuestionComponent},
+      { path: 'edit-question-bank-question/:id' , component: AddQuestionBankQuestionComponent},
       { path: 'question-bank-question-details/:id', component: QuestionBankQuestionDetailsComponent},
-      { path: 'question-bank-view', component: QuesionBankViewComponent},
-     
+      { path: 'question-bank-view', component: QuesionBankViewComponent },
      ],
   },
 
