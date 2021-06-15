@@ -1,4 +1,4 @@
-<div class="details_day">
+<div class="details_day" *ngIf="!isView">
     <div class="row">
         <div class="col-12 mt-3">
     <mat-checkbox  class="example-margin mx-2" [(ngModel)]="linkingDetailsModel.isMndatory"
@@ -61,3 +61,50 @@
     </div>
     
     </div>
+
+
+    
+    <ng-container *ngIf="isView">
+        <!-- <p class="mb-2 name"> الحفظ</p> -->
+
+             <div class="d-flex mb-3">       
+ 
+                     <div class="col-6 px-0">
+                         <span class="regular">إلزامي</span>
+                     </div>
+                     <div class="col-6 px-0">
+                         <span class="grad">الدرجة
+                             <span>  &nbsp;  : </span>
+                             <span>  &nbsp; </span> 
+ 
+                             <small class="info">10</small>
+                         </span>
+                     </div>
+                     
+             </div>
+             <!-- <div class="mt-3  mb-3">
+                 <span class="grad">  الصفحات
+                     <span>  &nbsp;  : </span>
+                     <span>  &nbsp; </span> 
+                     <small class="info">200 - 205</small>
+                 </span>
+ 
+             </div> -->
+ 
+                  
+            
+                 <ng-container >
+                   <div class=" cardRecourd mb-2 "   >
+                 <img src="assets/images/days/bookView.svg">
+                 <p class=" mr-2 mb-0" 
+                 >اسم الصفحة الصفحة الصفحة .pdf</p>
+                </div>    
+                 
+                 </ng-container>
+                 
+             <p class="mt-3 grad">
+                 السؤال الذي يظهر للطالب
+             </p>
+             <p class="regular mt-2">هل قمت بحفظ الصفحات؟</p>
+        </ng-container>
+

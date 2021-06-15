@@ -15,6 +15,7 @@ import { AlertifyService } from 'src/app/core/services/alertify-services/alertif
   styleUrls: ['./program-day-task-read-explanation.component.scss']
 })
 export class ProgramDayTaskReadExplanationComponent implements OnInit {
+  @Input() isView: boolean = false;
 
   @Input() readExplanationDetailsModel: IProgramDayTaskReadExplanation = {};
 
@@ -35,12 +36,12 @@ export class ProgramDayTaskReadExplanationComponent implements OnInit {
   ngOnInit(): void {
 
   }
-     // openVerticallyCentered(content: any) {
+  // openVerticallyCentered(content: any) {
   //   this.modalService.open(content, { centered: true });
   // }
 
-  ngOnChanges(changes: any){
-    this.fileList = this.readExplanationDetailsModel?.bookAttatchments?this.readExplanationDetailsModel?.bookAttatchments:[];
+  ngOnChanges(changes: any) {
+    this.fileList = this.readExplanationDetailsModel?.bookAttatchments ? this.readExplanationDetailsModel?.bookAttatchments : [];
   }
 
   DeleteAttachment(index: number, id: string) {

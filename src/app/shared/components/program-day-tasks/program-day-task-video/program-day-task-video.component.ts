@@ -26,6 +26,8 @@ export class ProgramDayTaskVideoComponent implements OnInit {
   resMessage: BaseMessageModel = {};
   resultMessage: BaseMessageModel = {};
   @Input() videoDetailsModel: IProgramDayTaskVideo = {};
+  @Input() isView: boolean = false;
+
   constructor(
     public translate: TranslateService,
     private attachmentService: AttachmentsService,

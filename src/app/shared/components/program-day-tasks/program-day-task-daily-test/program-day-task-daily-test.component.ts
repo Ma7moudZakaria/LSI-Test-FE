@@ -16,29 +16,31 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/c
   styleUrls: ['./program-day-task-daily-test.component.scss']
 })
 export class ProgramDayTaskDailyTestComponent implements OnInit {
+
   examJson: string | undefined;
   voiceUrl: string | undefined;
   @Input() dailyTestDetailsModel: IExam | undefined //{ questions: [] };
-  @Input() isView : boolean = false;
+  @Input() isView: boolean = false;
   resultMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
+
   constructor(
     public dialog: MatDialog,
     private examFormService: ExamFormService,
     public translate: TranslateService) { }
 
   ngOnInit(): void {
-   
+
   }
 
   addQuestion() {
     this.resultMessage = {};
-    if (this.dailyTestDetailsModel){
+    if (this.dailyTestDetailsModel) {
       if (Object.keys(this.dailyTestDetailsModel).length === 0) {
         let id = BaseConstantModel.newGuid();
         this.dailyTestDetailsModel.id = id; //{ id: id, questions: [] }
       }
-  
+
       if (this.examFormService.validateQuestion(this.dailyTestDetailsModel.questions) === true) {
         let qid = BaseConstantModel.newGuid();
         let ques: IQuestion =
@@ -57,11 +59,11 @@ export class ProgramDayTaskDailyTestComponent implements OnInit {
           type: BaseConstantModel.DANGER_TYPE
         }
       }
-  
+
     }
   }
 
-  
+
 
   /////recording/////
   saveVoiceUrl(event: any) {

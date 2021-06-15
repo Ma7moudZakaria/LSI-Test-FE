@@ -14,19 +14,21 @@ import { LookupService } from 'src/app/core/services/lookup-services/lookup.serv
   styleUrls: ['./program-day-task-recitation-students.component.scss']
 })
 export class ProgramDayTaskRecitationStudentsComponent implements OnInit {
-  @Input() recitationStudentsModel : IProgramBasicInfoDetails = {};
+  @Input() recitationStudentsModel: IProgramBasicInfoDetails = {};
+  @Input() isView: boolean = false;
+
   collectionOfLookup = {} as ILookupCollection;
   listOfLookup: string[] = ['SARD_TYPES'];
   resultMessage: BaseMessageModel = {};
-  progRecitationTimes:IRecitationTimes[] = [];
-  constructor( 
-     public translate: TranslateService,
+  progRecitationTimes: IRecitationTimes[] = [];
+  constructor(
+    public translate: TranslateService,
     private lookupService: LookupService) { }
 
   ngOnInit(): void {
     this.getLookupByKey();
-    this.progRecitationTimes = this.recitationStudentsModel?.prgRecitTms ? 
-    this.recitationStudentsModel?.prgRecitTms.filter(i=>i.huffno !== ProgramDayTaskRecitationType.limited).map((item: any) => ({ progRecFrom:item.recitFrom, progRecTo:item.recitTo })) : [];
+    this.progRecitationTimes = this.recitationStudentsModel?.prgRecitTms ?
+      this.recitationStudentsModel?.prgRecitTms.filter(i => i.huffno !== ProgramDayTaskRecitationType.limited).map((item: any) => ({ progRecFrom: item.recitFrom, progRecTo: item.recitTo })) : [];
 
   }
   getLookupByKey() {

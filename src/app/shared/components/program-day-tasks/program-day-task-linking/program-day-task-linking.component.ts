@@ -17,12 +17,14 @@ import { AlertifyService } from 'src/app/core/services/alertify-services/alertif
   styleUrls: ['./program-day-task-linking.component.scss']
 })
 export class ProgramDayTaskLinkingComponent implements OnInit {
+  @Input() isView: boolean = false;
 
   resMessage: BaseMessageModel = {};
   @Input() linkingDetailsModel: IProgramDayTaskLinking = {};
   TaskLinkingTypeEnum = ProgramDayTaskLinkingType;
   lastFiveHomeWorkAutolst: IAttachment[] = [];
   programLastFiveWorkToLinkAuto: IProgramLastFiveWorkToLinkAuto = {};
+
   constructor(
     private programDayTasksService: ProgramDayTasksService,
     private attachmentService: AttachmentsService,

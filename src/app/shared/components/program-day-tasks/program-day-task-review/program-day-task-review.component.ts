@@ -28,6 +28,8 @@ export class ProgramDayTaskReviewComponent implements OnInit {
   programDayTaskDetails: ISaveProgramDayTaskDetailsModel = {};
   resultMessage: BaseMessageModel = {};
   @Input() reviewDetailsModel: IProgramDayTaskReview = {};
+  @Input() isView: boolean = false;
+
   constructor(
     private programDayTasksService: ProgramDayTasksService,
     private activeroute: ActivatedRoute,

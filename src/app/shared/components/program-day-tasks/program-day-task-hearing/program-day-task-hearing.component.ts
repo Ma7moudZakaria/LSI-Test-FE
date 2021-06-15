@@ -15,6 +15,8 @@ import { AlertifyService } from 'src/app/core/services/alertify-services/alertif
   styleUrls: ['./program-day-task-hearing.component.scss']
 })
 export class ProgramDayTaskHearingComponent implements OnInit {
+  @Input() isView: boolean = false;
+
   resMessage: BaseMessageModel = {};
   fileUploadModel: IFileUpload[] = [];
   fileList?: IAttachment[] = [];
