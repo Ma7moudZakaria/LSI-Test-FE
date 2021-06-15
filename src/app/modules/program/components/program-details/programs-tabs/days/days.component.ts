@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { ProgramDayTasksDetails } from 'src/app/core/enums/programs/program-day-tasks-details.enum';
 import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-model';
 import { IProgramDetails, IProgramDutyDays } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
@@ -19,7 +20,8 @@ export class DaysComponent implements OnInit {
   resMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
   selectedIndex?: Number;
-  bookAttach = [1, 2, 3]
+  bookAttach = [1, 2, 3];
+  detailsTypeEnum = ProgramDayTasksDetails;
   constructor(private programDayTasksService: ProgramDayTasksService, public translate: TranslateService) { }
 
   ngOnInit(): void {

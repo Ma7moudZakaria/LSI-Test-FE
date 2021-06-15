@@ -1,4 +1,5 @@
 <div class="tab_page  ">
+      <!--part الايام  -->
   
     <div class=" part1 list_exams">
             <div class="list-group list-group_program-list">
@@ -18,6 +19,7 @@
             </div>
     </div>
       
+      <!--part المهام المطلوبة  -->
 
 
     <div class=" part1 list_exams">
@@ -27,15 +29,20 @@
 
             <div class="internal_scroll_list_group">
         
-                <a class="list-group-item  d-flex"  *ngFor="let programDayTasksDetailsItem of programDayTasksDetails ;let i=index" >                           
-                    <span>  {{ this.translate.currentLang === langEnum.en? programDayTasksDetailsItem.dayTaskNameEn : programDayTasksDetailsItem.dayTaskNameAr }} </span>               
+                <a class="list-group-item  d-flex  " 
+                 *ngFor="let programDayTasksDetailsItem of programDayTasksDetails ;let i=index" >                           
+                   
+               
+                 <span>  {{ this.translate.currentLang === langEnum.en? programDayTasksDetailsItem.dayTaskNameEn : programDayTasksDetailsItem.dayTaskNameAr }} </span>               
+                
+                <span class="redPoint" *ngIf="detailsTypeEnum.taskHearing===programDayTasksDetailsItem?.huffazTask"></span>
                 </a>
             </div>
        
         </div>
 </div>
     
-      
+      <!--part حفظ  -->
 <div class=" part1 list_exams">
        <p class="mb-2 name"> الحفظ</p>
             <div class="d-flex">       
