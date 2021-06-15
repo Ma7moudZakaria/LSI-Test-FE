@@ -27,7 +27,7 @@ export class ProgramNotifacationsComponent implements OnInit {
 
   closeNotifyProgram() {
     this.showAddEditOverlay = false;
-    this.ProgramNotificationChild?.getAllNotifications(this.progId);
+    this.ProgramNotificationChild?.getAllNotifications();
   }
 
 
