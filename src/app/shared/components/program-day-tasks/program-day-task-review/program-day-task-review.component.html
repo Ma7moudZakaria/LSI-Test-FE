@@ -1,5 +1,5 @@
 <div class="details_day">
-    <div class="form-group mt-3">
+    <div class="form-group mt-3 mb-0">
         <label class="custom-file custom-file__text" for="importFile">
             <p class="custom-file__label">{{'GENERAL.CHOOSEFILE' |translate}}</p>
     </label>
@@ -9,11 +9,11 @@
        accept="application/pdf,image/*" >
             
     </div>
-    <div class="row">
+    <div class="row mx-0">
         <ng-container  *ngFor="let item of reviewDetailsModel?.bookAttatchments;let i=index" >
             <div class="col-4 cardRecourd" >
                 <img src="assets/images/days/book.svg">
-                <p class="ellipsis mb-0 ml-2 mr-2"  matTooltip="{{item.fileName}}">{{item.fileName}}</p>
+                <p class="ellipsis mb-0 "  matTooltip="{{item.fileName}}">{{item.fileName}}</p>
                 <!-- <i class="fas fa-play-circle"></i> -->
                 <img class="trash" src="assets/images/feelings/trash.svg"  (click)="DeleteAttachment(i,item.id)">
             </div>
