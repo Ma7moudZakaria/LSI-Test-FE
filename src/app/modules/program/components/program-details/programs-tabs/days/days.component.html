@@ -32,7 +32,7 @@
         
                 <a class="list-group-item  d-flex  " 
                   [class.active]="selectedIndexTasks === i" 
-                  (click)='selectedIndexTasks=i ; getDayTasksDetails(programDayTasksDetailsItem)'
+                  (click)='selectedIndexTasks=i ; getDayTasksDetails(programDayTasksDetailsItem);'
                  *ngFor="let programDayTasksDetailsItem of programDayTasksDetails ;let i=index" >                           
                    
                

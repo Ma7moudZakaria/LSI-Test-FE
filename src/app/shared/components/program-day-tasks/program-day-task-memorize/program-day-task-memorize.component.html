@@ -73,14 +73,15 @@
              <div class="d-flex mb-4">       
  
                      <div class="col-6 px-0">
-                         <span class="regular">إلزامي</span>
+                         <span class="regular"> <mat-checkbox [disabled]="true" class="example-margin mx-2"   [(ngModel)]="memorizeDetailsModel.isMndatory"
+                            class="example-margin ">{{'GENERAL.MANDATORY'| translate}} </mat-checkbox></span>
                      </div>
                      <div class="col-6 px-0">
                          <span class="grad">الدرجة
                              <span>  &nbsp;  : </span>
                              <span>  &nbsp; </span> 
  
-                             <small class="info">10</small>
+                             <small class="info">{{memorizeDetailsModel.degree}}</small>
                          </span>
                      </div>
                      
@@ -89,7 +90,7 @@
                  <span class="grad">  الصفحات
                      <span>  &nbsp;  : </span>
                      <span>  &nbsp; </span> 
-                     <small class="info">200 - 205</small>
+                     <small class="info">{{memorizeDetailsModel.fromPage}} - {{memorizeDetailsModel.toPage}}</small>
                  </span>
  
              </div>
@@ -97,16 +98,15 @@
                   
             
                  <ng-container >
-                   <div class=" cardRecourd mb-2  "   >
-                 <img src="assets/images/days/bookView.svg">
-                 <p class=" mr-2 mb-0" 
-                 >اسم الصفحة الصفحة الصفحة .pdf</p>
-                </div>    
+                   <div class=" cardRecourd mb-2  "   *ngFor="let item of memorizeDetailsModel?.bookAttatchments;let i=index" >
+                        <img src="assets/images/days/bookView.svg">
+                        <p class=" mr-2 mb-0" matTooltip="{{item.fileName}}">{{item.fileName}}</p>
+                    </div>    
                  
                  </ng-container>
                  
              <p class="mt-3 grad">
                  السؤال الذي يظهر للطالب
              </p>
-             <p class="regular">هل قمت بحفظ الصفحات؟</p>
+             <p class="regular">{{memorizeDetailsModel.questionToStudent}}</p>
         </ng-container>

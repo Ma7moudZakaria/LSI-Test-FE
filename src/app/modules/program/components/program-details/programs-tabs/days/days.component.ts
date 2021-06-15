@@ -87,10 +87,12 @@ export class DaysComponent implements OnInit {
 
   getDayTasksDetails(dayTasksDetailsParameter: IProgramDayTasksModel) {
     this.dayTasksDetails = dayTasksDetailsParameter;
+    console.log("dayTasksDetails ===========>", this.dayTasksDetails);
     switch (this.dayTasksDetails?.huffazTask) {
       case this.detailsTypeEnum.taskHearing:
         this.hearingTaskDetailsModel = JSON.parse(this.dayTasksDetails?.detailsTask || "{}");
         this.isView = true;
+        console.log("hearingTaskDetailsModel ===========>", this.hearingTaskDetailsModel)
         break;
       case this.detailsTypeEnum.TaskReadExplanation:
         this.readExplanationDetailsModel = JSON.parse(this.dayTasksDetails?.detailsTask || "{}");
