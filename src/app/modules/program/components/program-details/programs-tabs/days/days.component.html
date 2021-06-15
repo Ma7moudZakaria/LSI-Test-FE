@@ -6,13 +6,13 @@
                   <p class="mb-4">الايام</p>
                 <app-search-input></app-search-input>
 
-            <div class="internal_scroll_list_group">
-                    <a class="list-group-item d-flex"  > 
+                <div class="internal_scroll_list_group">
+                    <!-- <a class="list-group-item d-flex"  > 
                     <span>  {{'PROGRAMS_LIST.ALL' | translate}}</span>        
-                   </a>
+                   </a> -->
             
-                    <a class="list-group-item  d-flex" >                           
-                        <span>  sdfvsdgfdr </span>               
+                    <a class="list-group-item  d-flex" [class.active]="selectedIndex === i" *ngFor="let progDaysItem of progDays ;let i=index" (click)='getDayTasks(progDaysItem.id)'>                           
+                        <span>  Day - {{progDaysItem.order}} </span>               
                     </a>
                 </div>
            
@@ -24,13 +24,13 @@
            
               <p class="mb-2">المهام المطلوبة</p>
 
-        <div class="internal_scroll_list_group">
-                <a class="list-group-item d-flex"  > 
-                <span>  {{'PROGRAMS_LIST.ALL' | translate}}</span>        
-               </a>
+            <div class="internal_scroll_list_group">
+                <!-- <a class="list-group-item d-flex"  > 
+                    <span>  {{'PROGRAMS_LIST.ALL' | translate}}</span>        
+                </a> -->
         
-                <a class="list-group-item  d-flex" >                           
-                    <span>  sdfvsdgfdr </span>               
+                <a class="list-group-item  d-flex"  *ngFor="let programDayTasksDetailsItem of programDayTasksDetails ;let i=index" >                           
+                    <span>  {{ this.translate.currentLang === langEnum.en? programDayTasksDetailsItem.dayTaskNameEn : programDayTasksDetailsItem.dayTaskNameAr }} </span>               
                 </a>
             </div>
        

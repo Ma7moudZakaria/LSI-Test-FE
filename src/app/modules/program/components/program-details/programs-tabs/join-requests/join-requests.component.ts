@@ -24,25 +24,12 @@ export class JoinRequestsComponent implements OnInit {
   constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
-    console.log("program Exams Details ===========>", this.programDetails);
-
-     this.Data = this.programDetails?.progJoiExa == null ?  [] : this.programDetails?.progJoiExa;
-
-     console.log("Data [0] ===========>", this.Data[0]);
-    
-
+    this.Data = this.programDetails?.progJoiExa == null ?  [] : this.programDetails?.progJoiExa;
     this.getProgramJoinExam(this.Data[0] || {} );
-
-    
-    // var x = this.programDetails?.progJoiExa[0]?.exaTemp || null
-
-    // this.hearingProgramExamFormsDetails = JSON.parse( ||"{}");
-    // this.degree = 
   }
 
   selectedIndex = 0;
   getProgramJoinExam(programExamFormsDetails?:IProgramExamFormsDetails){
-    console.log("hearingProgramExamFormsDetails ===========>", programExamFormsDetails?.exaTemp);
     this.hearingProgramExamFormsDetails= JSON.parse(programExamFormsDetails?.exaTemp ||"{}") as Array<IQuestion> ;
 
      this.degree = this.hearingProgramExamFormsDetails[0].degree;
@@ -54,20 +41,5 @@ export class JoinRequestsComponent implements OnInit {
       arabExamFormNam: programExamFormsDetails?.arExaName,
       engExamFormNam:programExamFormsDetails?.enExaName
     }
-
-    // this.progExamFormsDetails = {
-    //   questionId: this.hearingProgramExamFormsDetails?.questionId,
-    //   questionNo: this.hearingProgramExamFormsDetails?.questionNo,
-    //   text: this.hearingProgramExamFormsDetails?.text,
-    //   voiceUrl: this.hearingProgramExamFormsDetails?.voiceUrl,
-    //   title: this.hearingProgramExamFormsDetails?.voiceUrl,
-    //   time: this.hearingProgramExamFormsDetails?.time,
-    //   degree: this.hearingProgramExamFormsDetails?.degree,
-    //   questionType: this.hearingProgramExamFormsDetails?.questionType,
-    //   answerType: this.hearingProgramExamFormsDetails?.answerType,
-    //   answers : this.hearingProgramExamFormsDetails?.answers == null ? [] : this.hearingProgramExamFormsDetails.answers,
-    //   correctAnswersByAnswerNumbers: this.hearingProgramExamFormsDetails?.correctAnswersByAnswerNumbers,
-    //   correctAnswersByAnswerNumber: this.hearingProgramExamFormsDetails?.correctAnswersByAnswerNumber
-    // }
   }
 }
