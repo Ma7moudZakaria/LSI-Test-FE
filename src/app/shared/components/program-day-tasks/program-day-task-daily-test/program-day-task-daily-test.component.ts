@@ -19,6 +19,7 @@ export class ProgramDayTaskDailyTestComponent implements OnInit {
   examJson: string | undefined;
   voiceUrl: string | undefined;
   @Input() dailyTestDetailsModel: IExam | undefined //{ questions: [] };
+  @Input() isView : boolean = false;
   resultMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
   constructor(
