@@ -10,6 +10,7 @@ import { IProgramDayTaskVideo } from 'src/app/core/interfaces/programs-interface
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { AttachmentsService } from 'src/app/core/services/attachments-services/attachments.service';
 import { ProgramDayTasksService } from 'src/app/core/services/program-services/program-day-tasks.service';
 
@@ -25,34 +26,49 @@ export class ProgramDayTaskVideoComponent implements OnInit {
   resMessage: BaseMessageModel = {};
   resultMessage: BaseMessageModel = {};
   @Input() videoDetailsModel: IProgramDayTaskVideo = {};
+  @Input() isView: boolean = false;
+
   constructor(
     public translate: TranslateService,
-    private attachmentService: AttachmentsService, 
+    private attachmentService: AttachmentsService,
+    private alertify: AlertifyService,
+
   ) { }
 
   ngOnInit(): void {
   }
 
-  ngOnChanges(changes: any){
-    this.fileList = this.videoDetailsModel?.videoAttatchments?this.videoDetailsModel?.videoAttatchments:[];
+  ngOnChanges(changes: any) {
+    this.fileList = this.videoDetailsModel?.videoAttatchments ? this.videoDetailsModel?.videoAttatchments : [];
   }
 
   DeleteAttachment(index: number, id: string) {
     this.videoDetailsModel?.videoAttatchments?.splice(index, 1);
   }
-
   onFileChange(files: FileList) {
-    if (files.length > 0) {
-      Array.from(files).forEach(element => {
-        var fileUploadObj: IFileUpload = {
-          containerNameIndex: 1, // need to be changed based on file type
-          file: element
 
-        }
-        this.fileUploadModel?.push(fileUploadObj)
-      });
-      this.UploadFiles(this.fileUploadModel);
+
+    if (files.length > 0) {
+
+      if (files[0].size > 3145728) {
+        this.alertify.error('your file size more than 3m');
+
+      }
+
+      else {
+        Array.from(files).forEach(element => {
+          var fileUploadObj: IFileUpload = {
+            containerNameIndex: 1, // need to be changed based on file type
+            file: element
+
+          }
+          this.fileUploadModel?.push(fileUploadObj)
+        });
+        this.UploadFiles(this.fileUploadModel);
+      }
     }
+
+
 
   }
 
@@ -66,7 +82,7 @@ export class ProgramDayTaskVideoComponent implements OnInit {
           this.fileList?.push(elm as IAttachment);
 
         })
-        this.videoDetailsModel.videoAttatchments=this.fileList;
+        this.videoDetailsModel.videoAttatchments = this.fileList;
         this.fileUploadModel = [];
       }, error => {
         console.log(error);

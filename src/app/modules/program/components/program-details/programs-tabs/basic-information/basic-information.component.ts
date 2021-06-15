@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { ICopyProgram } from 'src/app/core/interfaces/programs-interfaces/iprogram-copy-model';
@@ -24,12 +25,16 @@ export class BasicInformationComponent implements OnInit {
   basicInfoDetails:IProgramBasicInfoDetails | undefined;
   resMessage: BaseMessageModel = {};
   copyProgram = {} as ICopyProgram;
+  closeResult = '';
+  isShow = false;
+  programName:string | undefined;
   
   constructor( 
     public translate: TranslateService, 
     public dialog: MatDialog,  
     private programService: ProgramService,
     private router: Router,
+    private modalService: NgbModal,
     private programDayTasksService: ProgramDayTasksService) { }
 
   ngOnInit(): void {
@@ -37,18 +42,29 @@ export class BasicInformationComponent implements OnInit {
     console.log("progBasicInfoDetails ===========>", this.progBasicInfoDetails);
   }
 
-  copyProgramData(){
+  copyProgramData(progName?:string){
 
-    this.copyProgram = {
-      progId:this.progBasicInfoDetails?.id,
-      progName: this.progBasicInfoDetails?.prgName
+    if(progName == null || progName == ''){
+      this.copyProgram = {
+        progId:this.progBasicInfoDetails?.id,
+        progName: this.progBasicInfoDetails?.prgName
+      }
     }
+    else{
+      this.copyProgram = {
+        progId:this.progBasicInfoDetails?.id,
+        progName: progName
+      }
+    }
+    
+    
 
     this.programService.copyProgram(this.copyProgram).subscribe(res => {
       if (res.isSuccess) {
-
+        this.isShow = false;
       }
       else {
+        this.isShow = false;
         this.resMessage =
         {
           message: res.message,
@@ -118,5 +134,24 @@ export class BasicInformationComponent implements OnInit {
         type: BaseConstantModel.DANGER_TYPE
       }
     });
+  }
+  
+  open(content:any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+      
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 }
