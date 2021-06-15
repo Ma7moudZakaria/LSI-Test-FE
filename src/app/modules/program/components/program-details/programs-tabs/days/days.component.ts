@@ -26,8 +26,6 @@ export class DaysComponent implements OnInit {
   constructor(private programDayTasksService: ProgramDayTasksService, public translate: TranslateService) { }
 
   ngOnInit(): void {
-    console.log("progDays ===========>", this.progDays);
-
     var DayTasksData = this.progDays == null ? [] : this.progDays;
 
     this.getDayTasks(DayTasksData[0].id || '');

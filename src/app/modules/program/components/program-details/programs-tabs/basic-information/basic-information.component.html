@@ -7,7 +7,7 @@
             <div class="d-flex justify-content-between" >
                 <p class="head">{{ progBasicInfoDetails?.prgName}} </p>
                 <div class="d-flex">
-                    <i class="far fa-copy" (click)="copyProgramData()"></i>
+                  <a (click)="open(content)"><i class="far fa-copy" ></i></a>  
                     <i class="fas fa-play" (click)="publishProgram()"></i>
                     <img src="assets/images/question/edit-question.svg"  (click)="editBasicInfo()">
                     <img src="assets/images/feelings/trash.svg" (click)="confirmDialog()">
@@ -147,5 +147,31 @@
             <h3 class="head_conditions"> الشروط</h3>
         </div>
      </div>
+    </div>
+
+
+
+    <div class="copy_model">
+        <ng-template #content let-modal >
+            <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Copy Program</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                    <label for="dateOfBirth">Program Name</label>
+                    <div class="input-group">
+                        <input id="dateOfBirth" class="form-control" name="dp" type="text" [(ngModel)]="programName">
+                    </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click');copyProgramData(programName)">Save</button>
+            </div>
+        </ng-template> 
     </div>
 </div>
