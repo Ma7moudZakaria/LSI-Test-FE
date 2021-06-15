@@ -30,6 +30,8 @@
             <div class="internal_scroll_list_group">
         
                 <a class="list-group-item  d-flex  " 
+                  [class.active]="selectedIndexTasks === i" 
+                  (click)='selectedIndexTasks=i'
                  *ngFor="let programDayTasksDetailsItem of programDayTasksDetails ;let i=index" >                           
                    
                

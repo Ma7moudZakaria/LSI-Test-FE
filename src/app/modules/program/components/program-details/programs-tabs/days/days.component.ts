@@ -20,6 +20,7 @@ export class DaysComponent implements OnInit {
   resMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
   selectedIndex?: Number;
+  selectedIndexTasks?: Number;
   bookAttach = [1, 2, 3];
   detailsTypeEnum = ProgramDayTasksDetails;
   constructor(private programDayTasksService: ProgramDayTasksService, public translate: TranslateService) { }
@@ -31,6 +32,7 @@ export class DaysComponent implements OnInit {
 
     this.getDayTasks(DayTasksData[0].id || '');
     this.selectedIndex = 0;
+    this.selectedIndexTasks = 0;
 
   }
 
