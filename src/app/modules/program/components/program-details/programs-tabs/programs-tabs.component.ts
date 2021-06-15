@@ -29,25 +29,26 @@ export class ProgramsTabsComponent implements OnInit {
   }
 
   getProgramDetails(){
-    this.progService.getProgramDetails(this.programModel?.id || '').subscribe(res => {
-      if (res.isSuccess) {
-        this.programDetails = res.data as IProgramDetails;
-
-        console.log("programTabs ===========>", this.programDetails);
-      }
-      else {
-        this.resMessage =
-        {
-          message: res.message,
+    if (this.programModel && this.programModel.id){
+      this.progService.getProgramDetails(this.programModel?.id || '').subscribe(res => {
+        if (res.isSuccess) {
+          this.programDetails = res.data as IProgramDetails;
+  
+          console.log("programTabs ===========>", this.programDetails);
+        }
+        else {
+          this.resMessage =
+          {
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
+          }
+        }
+      }, error => {
+        this.resMessage = {
+          message: error,
           type: BaseConstantModel.DANGER_TYPE
         }
-      }
-    }, error => {
-      this.resMessage = {
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
-      }
-    });
+      });
+    }
   }
-
 }
