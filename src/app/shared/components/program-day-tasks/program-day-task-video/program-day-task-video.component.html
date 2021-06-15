@@ -50,7 +50,7 @@
                      <span>  &nbsp;  : </span>
                      <span>  &nbsp; </span> 
                  </span>
-                 <p class="info">اسم الفديو</p>
+                 <p class="info">{{videoDetailsModel.videoName}}</p>
     
              </div>
     
@@ -59,15 +59,15 @@
                     <span>  &nbsp;  : </span>
                     <span>  &nbsp; </span> 
                 </span>
-                <p class="info">رابط لفيديو خارجي </p>
+                <p class="info">{{videoDetailsModel.videoLink}} </p>
    
             </div> 
             
-                 <ng-container>
+                 <ng-container  *ngFor="let item of videoDetailsModel?.videoAttatchments;let i=index">
                    <div class=" cardRecourd mb-2 "   >
                  <img src="assets/images/days/bookView.svg">
                  <p class=" mr-2 mb-0" 
-                 >اسم الصفحة الصفحة الصفحة .pdf</p>
+                 matTooltip="{{item.fileName}}">{{item.fileName}}</p>
                 </div>    
                  
                  </ng-container>

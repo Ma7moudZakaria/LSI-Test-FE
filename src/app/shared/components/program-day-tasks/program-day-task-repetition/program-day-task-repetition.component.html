@@ -57,14 +57,15 @@
          <div class="d-flex mb-3">       
 
                  <div class="col-6 px-0">
-                     <span class="regular">إلزامي</span>
+                     <span class="regular"><mat-checkbox [disabled]="true" class="example-margin mx-2"   [(ngModel)]="repetitionDetailsModel.isMndatory"
+                        class="example-margin ">{{'GENERAL.MANDATORY'| translate}} </mat-checkbox></span>
                  </div>
                  <div class="col-6 px-0">
                      <span class="grad">الدرجة
                          <span>  &nbsp;  : </span>
                          <span>  &nbsp; </span> 
 
-                         <small class="info">10</small>
+                         <small class="info">{{repetitionDetailsModel.degree}}</small>
                      </span>
                  </div>
                  
@@ -73,27 +74,17 @@
              <span class="grad">  عدد مرات التكرار
                  <span>  &nbsp;  : </span>
                  <span>  &nbsp; </span> 
-                 <small class="info">200 - 205</small>
+                 <small class="info">{{repetitionDetailsModel.repetitionNo}}</small>
              </span>
 
          </div>
 
-              
-        
-             <ng-container >
-               <div class=" cardRecourd mb-2 "   >
-             <img src="assets/images/days/bookView.svg">
-             <p class=" mr-2 mb-0" 
-             >اسم الصفحة الصفحة الصفحة .pdf</p>
-            </div>    
-             
-             </ng-container>
              
          <p class="mt-3 grad">
-            الرسالة
+            {{repetitionDetailsModel.msg}}
          </p>
          <p class="mt-3 grad">
-            السؤال الذي يظهر للطالب
+            {{repetitionDetailsModel.questionToStudent}}
         </p>
 
 </ng-container>

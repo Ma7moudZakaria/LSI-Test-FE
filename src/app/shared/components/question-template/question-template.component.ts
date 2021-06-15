@@ -19,7 +19,6 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../confirm-modal/conf
 })
 export class QuestionTemplateComponent implements OnInit {
   @Input() questionTemplate: IQuestion = { answers: [] };
-  @Input() questionDataTemplate: IExam | undefined ;
   @Input() viewMode: boolean = false;
   answerTypeEnum = AnswerTypeEnum;
   currentLang = '';
@@ -31,8 +30,7 @@ export class QuestionTemplateComponent implements OnInit {
 
   ngOnInit(): void {
     this.MULTISELECT=this.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.MULTI_SELECT') : this.translate.instant('GENERAL.MULTI_SELECT')
-    
-    console.log("program Exams Details ===========>", this.questionDataTemplate);
+  
   }
 
 

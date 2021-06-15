@@ -34,7 +34,7 @@
     <ng-container *ngIf="isView">
       <!-- <p class="mb-2 name"> الحفظ</p> -->
   
-           <div class="d-flex mb-3">       
+           <!-- <div class="d-flex mb-3">       
   
                    <div class="col-6 px-0">
                        <span class="regular">إلزامي</span>
@@ -56,16 +56,19 @@
                    <small class="info">200 - 205</small>
                </span>
   
-           </div>
+           </div> -->
   
                 
           
                <ng-container >
-                 <div class=" cardRecourd mb-2 "   >
-               <img src="assets/images/days/bookView.svg">
-               <p class=" mr-2 mb-0" 
-               >اسم الصفحة الصفحة الصفحة .pdf</p>
-              </div>    
+                  <div class=" cardRecourd mb-2 "  *ngFor = 'let question of dailyTestDetailsModel?.questions'>
+                    <img src="assets/images/days/bookView.svg">
+                    <!-- <p class=" mr-2 mb-0" 
+                    >اسم الصفحة الصفحة الصفحة .pdf</p> -->
+                    <app-question-template  class="day_detils"
+                      [questionTemplate] = 'question' [viewMode]='true'>
+                    </app-question-template>
+                  </div>    
                
                </ng-container>
                
