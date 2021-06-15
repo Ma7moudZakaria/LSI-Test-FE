@@ -60,11 +60,11 @@ export class BasicInformationComponent implements OnInit {
     
 
     this.programService.copyProgram(this.copyProgram).subscribe(res => {
+      this.isShow = false;
       if (res.isSuccess) {
-        this.isShow = false;
+        
       }
       else {
-        this.isShow = false;
         this.resMessage =
         {
           message: res.message,
