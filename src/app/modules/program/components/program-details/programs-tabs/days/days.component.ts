@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { ProgramDayTasksDetails } from 'src/app/core/enums/programs/program-day-tasks-details.enum';
 import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-model';
 import { IProgramDetails, IProgramDutyDays } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
@@ -14,21 +15,26 @@ import { ProgramDayTasksService } from 'src/app/core/services/program-services/p
 })
 export class DaysComponent implements OnInit {
 
-  @Input() progDays:Array<IProgramDutyDays> | undefined;
-  programDayTasksDetails : Array<IProgramDayTasksModel> | undefined;
+  @Input() progDays: Array<IProgramDutyDays> | undefined;
+  programDayTasksDetails: Array<IProgramDayTasksModel> | undefined;
   resMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
-
-  constructor(private programDayTasksService:ProgramDayTasksService , public translate: TranslateService) { }
+  selectedIndex?: Number;
+  selectedIndexTasks?: Number;
+  bookAttach = [1, 2, 3];
+  detailsTypeEnum = ProgramDayTasksDetails;
+  constructor(private programDayTasksService: ProgramDayTasksService, public translate: TranslateService) { }
 
   ngOnInit(): void {
     var DayTasksData = this.progDays == null ? [] : this.progDays;
-    
+
     this.getDayTasks(DayTasksData[0].id || '');
+    this.selectedIndex = 0;
+    this.selectedIndexTasks = 0;
+
   }
 
-  selectedIndex = 0; 
-  getDayTasks(progDutyDaysId?: string){
+  getDayTasks(progDutyDaysId?: string) {
     this.programDayTasksService.getProgramDayTasks(progDutyDaysId || '').subscribe(res => {
       if (res.isSuccess) {
         this.programDayTasksDetails = res.data as Array<IProgramDayTasksModel>;

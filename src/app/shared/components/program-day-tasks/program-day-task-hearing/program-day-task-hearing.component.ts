@@ -41,7 +41,7 @@ export class ProgramDayTaskHearingComponent implements OnInit {
   onFileChange(files: FileList) {
 
     if (files.length > 0) {
-      if (files[0].size > 5, 242, 880) {
+      if (files[0].size > 5242880) {
         this.alertify.error('your file size more than 3m');
 
       }
