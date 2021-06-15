@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -9,6 +9,7 @@ import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfac
 import { IProgramBasicInfoDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { ProgramDayTasksService } from 'src/app/core/services/program-services/program-day-tasks.service';
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
@@ -20,6 +21,7 @@ import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/compon
 })
 export class BasicInformationComponent implements OnInit {
 
+  @Output() refreshProgList = new EventEmitter();
   @Input() progBasicInfoDetails:IProgramBasicInfoDetails | undefined;
   langEnum = LanguageEnum;
   basicInfoDetails:IProgramBasicInfoDetails | undefined;
@@ -35,7 +37,8 @@ export class BasicInformationComponent implements OnInit {
     private programService: ProgramService,
     private router: Router,
     private modalService: NgbModal,
-    private programDayTasksService: ProgramDayTasksService) { }
+    private programDayTasksService: ProgramDayTasksService,
+    private alert : AlertifyService) { }
 
   ngOnInit(): void {
     this.basicInfoDetails = this.progBasicInfoDetails;
@@ -44,32 +47,30 @@ export class BasicInformationComponent implements OnInit {
 
   copyProgramData(progName?:string){
 
-    if(progName == null || progName == ''){
-      this.copyProgram = {
-        progId:this.progBasicInfoDetails?.id,
-        progName: this.progBasicInfoDetails?.prgName
-      }
-    }
-    else{
+    // if(progName == null || progName == ''){
+      // this.copyProgram = {
+      //   progId:this.progBasicInfoDetails?.id,
+      //   progName: this.progBasicInfoDetails?.prgName
+      // }
+    // }
+    // else{
       this.copyProgram = {
         progId:this.progBasicInfoDetails?.id,
         progName: progName
       }
-    }
+    // }
     
     
 
     this.programService.copyProgram(this.copyProgram).subscribe(res => {
       this.isShow = false;
+      this.programName = '';
       if (res.isSuccess) {
-        
+        this.alert.success(res.message || '');
+        this.refreshProgList.emit();
       }
       else {
-        this.resMessage =
-        {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+        this.alert.error(res.message || '');
       }
     }, error => {
       this.resMessage = {
@@ -92,14 +93,16 @@ export class BasicInformationComponent implements OnInit {
       if(dialogResult==true){
         this.programService.deleteProgram(this.progBasicInfoDetails?.id || '').subscribe(res => {
           if (res.isSuccess) {
-            
+            this.alert.success(res.message || '');
+            this.refreshProgList.emit();
           }
           else {
-            this.resMessage =
-            {
-              message: res.message,
-              type: BaseConstantModel.DANGER_TYPE
-            }
+            this.alert.error(res.message || '');
+            // this.resMessage =
+            // {
+            //   message: res.message,
+            //   type: BaseConstantModel.DANGER_TYPE
+            // }
           }
         }, error => {
           this.resMessage = {
