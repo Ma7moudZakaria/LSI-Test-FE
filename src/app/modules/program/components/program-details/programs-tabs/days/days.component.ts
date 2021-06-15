@@ -29,7 +29,7 @@ export class DaysComponent implements OnInit {
     this.getDayTasks(DayTasksData[0].id || '');
   }
 
-  selectedIndex = 0;
+  selectedIndex = 0; 
   getDayTasks(progDutyDaysId?: string){
     this.programDayTasksService.getProgramDayTasks(progDutyDaysId || '').subscribe(res => {
       if (res.isSuccess) {
