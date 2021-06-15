@@ -14,6 +14,7 @@ import { BaseLookupModel } from 'src/app/core/ng-model/base-lookup-model';
 import { Router } from '@angular/router';
 import { IProgramBasicInfoDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { ThrowStmt } from '@angular/compiler';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 @Component({
   selector: 'app-program-basic-info',
   templateUrl: './program-basic-info.component.html',
@@ -51,7 +52,8 @@ export class ProgramBasicInfoComponent implements OnInit {
     public translate: TranslateService,
     private BasicInfoService: ProgramBasicInfoService, 
     private lookupService: LookupService,
-    private router: Router
+    private router: Router,
+    private alert : AlertifyService
   ) { }
 
   ngOnInit(): void {
@@ -231,6 +233,7 @@ export class ProgramBasicInfoComponent implements OnInit {
         this.router.navigate(['/program/edit-program/' + res.data]);
       }
       else {
+        this.alert.error(res.message || '');
         this.resultMessage = {
           message: res.message,
           type: BaseConstantModel.DANGER_TYPE
