@@ -1,5 +1,6 @@
 <div class="tab_page  ">
       <!--part الايام  -->
+      
   
     <div class=" part1 list_exams">
             <div class="list-group list-group_program-list">
@@ -9,7 +10,7 @@
                 <div class="internal_scroll_list_group order">
             
                     <a class="list-group-item  d-flex" 
-                    *ngFor="let progDaysItem of progDays ;let i=index" 
+                    *ngFor="let progDaysItem of progs?.progDays ;let i=index" 
                     [class.active]="selectedIndex === i" 
                     (click)='getDayTasks(progDaysItem.id);selectedIndex=i' >                           
                         <span>  Day - {{progDaysItem.order}} </span>               
@@ -31,7 +32,7 @@
         
                 <a class="list-group-item  d-flex  " 
                   [class.active]="selectedIndexTasks === i" 
-                  (click)='selectedIndexTasks=i'
+                  (click)='selectedIndexTasks=i ; getDayTasksDetails(programDayTasksDetailsItem)'
                  *ngFor="let programDayTasksDetailsItem of programDayTasksDetails ;let i=index" >                           
                    
                
@@ -46,7 +47,7 @@
     
       <!--part حفظ  -->
 <div class=" part1 list_exams">
-       <p class="mb-2 name"> الحفظ</p>
+       <p class="mb-2 name"> {{ this.translate.currentLang === langEnum.en? dayTasksDetails?.dayTaskNameEn : dayTasksDetails?.dayTaskNameAr }}</p>
             <div class="d-flex">       
 
                     <div class="col-6 px-0">

@@ -45,7 +45,7 @@
         <div class="col-12 px-0 ">
 
            <app-basic-information *ngIf="showTap == 'BASEINFO'" [progBasicInfoDetails]='programDetails?.progBaseInfo'></app-basic-information>
-           <app-days *ngIf="showTap == 'DAYS'" [progDays]='programDetails?.progDays'></app-days>
+           <app-days *ngIf="showTap == 'DAYS'" [progs]='programDetails'></app-days>
            <!-- <app-conditions *ngIf="showTap == 'CANDITION'"></app-conditions> -->
            <app-join-requests *ngIf="showTap == 'JOIN'" [programDetails]='programDetails'></app-join-requests>
            <app-notify *ngIf="showTap == 'NOTIFACATION'" [progId]='programDetails?.id'></app-notify>
