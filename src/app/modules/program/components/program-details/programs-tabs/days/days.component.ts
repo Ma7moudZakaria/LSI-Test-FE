@@ -14,23 +14,25 @@ import { ProgramDayTasksService } from 'src/app/core/services/program-services/p
 })
 export class DaysComponent implements OnInit {
 
-  @Input() progDays:Array<IProgramDutyDays> | undefined;
-  programDayTasksDetails : Array<IProgramDayTasksModel> | undefined;
+  @Input() progDays: Array<IProgramDutyDays> | undefined;
+  programDayTasksDetails: Array<IProgramDayTasksModel> | undefined;
   resMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
-
-  constructor(private programDayTasksService:ProgramDayTasksService , public translate: TranslateService) { }
+  selectedIndex?: Number;
+  bookAttach = [1, 2, 3]
+  constructor(private programDayTasksService: ProgramDayTasksService, public translate: TranslateService) { }
 
   ngOnInit(): void {
     console.log("progDays ===========>", this.progDays);
 
     var DayTasksData = this.progDays == null ? [] : this.progDays;
-    
+
     this.getDayTasks(DayTasksData[0].id || '');
+    this.selectedIndex = 0;
+
   }
 
-  selectedIndex = 0; 
-  getDayTasks(progDutyDaysId?: string){
+  getDayTasks(progDutyDaysId?: string) {
     this.programDayTasksService.getProgramDayTasks(progDutyDaysId || '').subscribe(res => {
       if (res.isSuccess) {
         this.programDayTasksDetails = res.data as Array<IProgramDayTasksModel>;
