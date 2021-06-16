@@ -30,7 +30,7 @@ export class MiladyHijriCalendarComponent implements OnInit {
   @Input() hijri: boolean = false;
   @Input() milady: boolean = false;
 
-  @Output() sendDate = new EventEmitter;
+  @Output() sendDate = new EventEmitter<{}>();;
 
   //  @Input() item: { title: string, state: boolean };
   constructor(public translate: TranslateService , public languageService: LanguageService,
@@ -74,9 +74,9 @@ export class MiladyHijriCalendarComponent implements OnInit {
     // if(data > DateNow){
     //   this.sendDate.emit(data)      
     // }
-    
-
-    this.sendDate.emit(data)
+  //this.dateFormatterService.ToGregorian(data);
+  let type=data.isPrototypeOf();
+    this.sendDate.emit({hijri:data,miladi:this.dateFormatterService.ToGregorian(data)})
   }
 
 

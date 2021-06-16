@@ -732,11 +732,12 @@ export class UpdateTeacherProfileComponent implements OnInit {
   }
 
   Hijri(date: any) {
-    date = date.year + '/' + date.month + '/' + date.day;
+   let dateHijri =date.hijri.year + '/' + date.hijri.month + '/' + date.hijri.day;// date.year + '/' + date.month + '/' + date.day;
+   let dateMiladi =date.miladi.year + '/' + date.miladi.month + '/' + date.miladi.day;
     console.log("Hijri date", date)
-    this.hijriBinding = date
+    this.hijriBinding = dateHijri
 
-    this.f.hijriBirthDate.setValue(date);
+    this.f.hijriBirthDate.setValue(dateHijri);
   }
 
   addDrgree() {
