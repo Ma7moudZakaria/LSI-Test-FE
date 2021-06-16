@@ -44,6 +44,7 @@ export class MiladyHijriCalendarComponent implements OnInit {
 
   setHijri() {
     // this.selectedDateType = DateType.Hijri;
+ 
     this.maxHijri = this.dateFormatterService.GetTodayHijri();
     console.log(this.maxHijri);
   }
@@ -75,6 +76,10 @@ export class MiladyHijriCalendarComponent implements OnInit {
     //   this.sendDate.emit(data)      
     // }
   //this.dateFormatterService.ToGregorian(data);
+  // let x=this.dateTo;
+  // let y=moment(this.dateTo.year, 'iYYY').isValid();
+  // let z=moment('2014-11-28 16:40:00', 'YYYY-M-D HH:mm:ss').endOf('iMonth').format('iYYYY/iM/iD HH:mm:ss'); 
+  // console.log(y);
   let type=data.isPrototypeOf();
     this.sendDate.emit({hijri:data,miladi:this.dateFormatterService.ToGregorian(data)})
   }
