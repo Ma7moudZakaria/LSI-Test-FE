@@ -5,7 +5,7 @@
     <div class="col-12 mt-3">
 
             <mat-checkbox  class="example-margin mx-2"   [(ngModel)]="repetitionDetailsModel.isMndatory"
-            class="example-margin ">الزامى </mat-checkbox>
+            class="example-margin "> {{'PROGRAM_DAY_TASK_REPETITION.REQUIRED'| translate}}</mat-checkbox>
         </div>
     </div>
     
@@ -15,7 +15,7 @@
     <div class="form-group">
         <div class="row">
             <div class="col-3">
-                <label class="text-right header_input"> عدد مرات التكرار</label>
+                <label class="text-right header_input">{{'PROGRAM_DAY_TASK_REPETITION.REPETITION_NUMBER'| translate}} </label>
                 <input type="text" class="form-control  " [(ngModel)]="repetitionDetailsModel.repetitionNo" >
             </div>
             <div class="col-3">
@@ -28,7 +28,7 @@
     <div class="form-group">
         <div class="row">
             <div class="col-12">
-                <label class="text-right header_input">الرسالة </label>
+                <label class="text-right header_input"> {{'PROGRAM_DAY_TASK_REPETITION.MESSAGE'| translate}}</label>
     
                <input type="text" class="form-control " [(ngModel)]="repetitionDetailsModel.msg" >
             </div>
@@ -61,7 +61,7 @@
                         class="example-margin ">{{'GENERAL.MANDATORY'| translate}} </mat-checkbox></span>
                  </div>
                  <div class="col-6 px-0">
-                     <span class="grad">الدرجة
+                     <span class="grad"> {{'PROGRAM_DAY_TASK_REPETITION.DEGREE'| translate}}
                          <span>  &nbsp;  : </span>
                          <span>  &nbsp; </span> 
 
@@ -71,7 +71,7 @@
                  
          </div>
          <div class="mt-3  mb-3">
-             <span class="grad">  عدد مرات التكرار
+             <span class="grad"> {{'PROGRAM_DAY_TASK_REPETITION.REPETITION_NUMBER'| translate}}
                  <span>  &nbsp;  : </span>
                  <span>  &nbsp; </span> 
                  <small class="info">{{repetitionDetailsModel.repetitionNo}}</small>

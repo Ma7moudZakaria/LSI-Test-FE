@@ -5,7 +5,7 @@
 
             <div class="list-group list-group_program-list">
                
-                  <p class="mb-4">النمازج</p>
+                  <p class="mb-4">{{'JOINING_REQUEST.MODELS' | translate}}</p>
             <div class="internal_scroll_list_group" >
                     <!-- <a class="list-group-item d-flex"  > 
                     <span>  {{'PROGRAMS_LIST.ALL' | translate}}</span>        
@@ -22,7 +22,7 @@
     </div>
     <div class="part2  list_exams">
         <p class="mb-2 name_prog"> {{ programDetails?.progBaseInfo?.prgName }}</p>
-        <p class="mb-3 head"> {{ this.translate.currentLang === langEnum.en? progExamFormsDetails?.engExamFormNam : progExamFormsDetails?.arabExamFormNam }} <small class="name_prog">الدرجة {{degree}}</small></p>
+        <p class="mb-3 head"> {{ this.translate.currentLang === langEnum.en? progExamFormsDetails?.engExamFormNam : progExamFormsDetails?.arabExamFormNam }} <small class="name_prog">{{'JOINING_REQUEST.DEGREE' | translate}} {{degree}}</small></p>
 
         <div *ngFor="let questionItem of progExamFormsDetails?.questions ;let i=index">
             <app-question-template  class="day_detils" [questionTemplate]='questionItem'>

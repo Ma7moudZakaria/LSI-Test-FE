@@ -5,7 +5,7 @@
     <div class="form-group">
         <div class="row">
             <div class="col-12 mt-3">
-                <label class="text-right header_input">أسم الفديو</label>
+                <label class="text-right header_input"> {{'PROGRAM_DAY_TASK_VIDEO.VIDEO_NAME'| translate}}</label>
     
                <input type="text" class="form-control " [(ngModel)]="videoDetailsModel.videoName" >
             </div>
@@ -34,7 +34,7 @@
     <div class="form-group">
         <div class="row">
             <div class="col-12">
-                <label class="text-right header_input">رابط الفديو </label>
+                <label class="text-right header_input"> {{'PROGRAM_DAY_TASK_VIDEO.VIDEO_LINK'| translate}}</label>
     
                <input type="text" class="form-control " [(ngModel)]="videoDetailsModel.videoLink" >
             </div>
@@ -46,7 +46,7 @@
         <!-- <p class="mb-2 name"> الحفظ</p> -->
     
              <div class="mt-3  mb-3">
-                 <span class="grad">  اسم الفديو 
+                 <span class="grad">  {{'PROGRAM_DAY_TASK_VIDEO.VIDEO_NAME'| translate}}
                      <span>  &nbsp;  : </span>
                      <span>  &nbsp; </span> 
                  </span>
@@ -55,7 +55,7 @@
              </div>
     
              <div class="mt-3  mb-3">
-                <span class="grad">  رابط لفيديو خارجي 
+                <span class="grad">    {{'PROGRAM_DAY_TASK_VIDEO.VIDEO_ANOTHER_LINK'| translate}}
                     <span>  &nbsp;  : </span>
                     <span>  &nbsp; </span> 
                 </span>
