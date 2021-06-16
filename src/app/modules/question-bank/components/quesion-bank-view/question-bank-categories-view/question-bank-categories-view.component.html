@@ -40,7 +40,7 @@
     </div>
   </div> -->
   <app-search-input (searchTerm)=getQuestionBankCategories($event)></app-search-input>
-  <div class="internal_scroll_list_group">
+  <!-- <div class="internal_scroll_list_group">
     <mat-accordion *ngIf='questionBankCategoryList' class="ques_bank" cdkDropList #unassignedList="cdkDropList" [cdkDropListData]="questionBankCategoryList" [cdkDropListConnectedTo]="[items1]" (cdkDropListDropped)="drop($event)">
       <mat-expansion-panel cdkDrag disabled *ngFor="let QBC  of questionBankCategoryList ; let i = index;">
         <mat-expansion-panel-header>
@@ -61,5 +61,33 @@
         </mat-expansion-panel-header>
       </mat-expansion-panel>
     </mat-accordion>
+  </div> -->
+
+  <div class="internal_scroll_list_group ">
+    <a class="list-group-item d-flex" *ngFor="let QBC  of questionBankCategoryList ; let i=index;" 
+      
+      (click)="loadCatogryQuiestion(QBC.id,QBC.arabCatgName,QBC.engCatgName);selectedIndex=i">
+       
+          <p class="ellipsis mb-0 question-categories" matTooltip="{{translate.currentLang===langEnum.en?QBC.engCatgName:QBC.arabCatgName}}">{{translate.currentLang===langEnum.en?QBC.engCatgName:QBC.arabCatgName}}</p>
+          <div class="d-flex " *ngIf="roleManagmentService.isAdmin()">
+             <a (click)="confirmDialog(QBC.id)" > <i class="far fa-trash-alt"></i></a>
+             <a (click)="loadCatogry(QBC.id) "> <i class="fas fa-pencil-alt"></i></a> 
+  
+              <!-- <img src="../../../../../../assets/images/edit.svg" alt="" class="mt-10 cursor-pointer Catogry_Icon_Details" (click)="loadQuestionBankCategoryDetails(QBC.id)"/> -->
+             
+              <!-- <img src="assets/quesionBsnk/questionBankCategory/Icon feather-trash-2.svg" alt=""
+               class="mt-10 cursor-pointer Catogry_Icon_delete" /> -->
+            </div>
+    
+    </a>
+    <div class="d-flex">
+      <label  class="no-data" *ngIf="questionBankCategoryList.length===0">
+        {{"QUESTION_BANK.NO_DATA"|translate}} 
+    </label>
+    </div>
+    
+     
+        
+       
   </div>
 </div>
