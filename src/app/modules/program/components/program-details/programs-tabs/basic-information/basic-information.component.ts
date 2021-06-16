@@ -119,17 +119,17 @@ export class BasicInformationComponent implements OnInit {
   }
 
   publishProgram(){
-    console.log("id ===========>", this.basicInfoDetails?.id);
     this.programService.ProgramPublishPause(this.progBasicInfoDetails?.id || '').subscribe(res => {
       if (res.isSuccess) {
-
+        this.alert.success(res.message || '');
       }
       else {
-        this.resMessage =
-        {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+        this.alert.error(res.message || '');
+        // this.resMessage =
+        // {
+        //   message: res.message,
+        //   type: BaseConstantModel.DANGER_TYPE
+        // }
       }
     }, error => {
       this.resMessage = {
