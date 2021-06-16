@@ -4,8 +4,8 @@ export interface IProgramFilterAdvancedRequest {
   typeList?: string[];
   dura?: number;
   isTest?: boolean;
-  PageNumber?: number;
-  PageSize?: number;
+  skip?: number;
+  take?: number;
 
   arabName?:string;
   engName?:string;

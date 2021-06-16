@@ -605,7 +605,7 @@ app-tel-input >
 }.iti__selected-flag:lang(ar){
   padding: 0 6px 0 22px;
 }
-// notify
+// start  notify alertify
 .alertify-notifier .ajs-message.ajs-success {
   background: #d4e5dc;
     border: 5px solid #00BB3259;
@@ -615,6 +615,12 @@ app-tel-input >
       content: url(/assets/images/check-circle1.svg);
       margin: 0 0.5rem;
     }
+    .alertify-notifier .ajs-message.ajs-error::before
+    {
+      content: url(/assets/images/feelings/close.sv);
+      margin: 0 0.5rem;
+    }
+    
 .alertify-notifier.ajs-right {
   right: -10px;
 }
@@ -643,6 +649,13 @@ app-tel-input >
   font-size: 1rem;
   font-weight: bold;
 }
+
+.alertify-notifier .ajs-message.ajs-error {
+  
+  padding: 1rem !important;
+  border-radius: 5px;
+}
+// end  notify alertify
 
 // removemilady
 .HijriGregorianDatePicker.removemilady .btn:last-of-type{

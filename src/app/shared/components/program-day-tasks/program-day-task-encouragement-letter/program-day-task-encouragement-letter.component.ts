@@ -17,10 +17,12 @@ import { ProgramDayTasksService } from 'src/app/core/services/program-services/p
   styleUrls: ['./program-day-task-encouragement-letter.component.scss']
 })
 export class ProgramDayTaskEncouragementLetterComponent implements OnInit {
+  @Input() isView: boolean = false;
+
   @Input() viewMode: boolean = false;
-  programDayTaskDetails: ISaveProgramDayTaskDetailsModel={};
+  programDayTaskDetails: ISaveProgramDayTaskDetailsModel = {};
   resultMessage: BaseMessageModel = {};
-  @Input() selectedTaskId:string|undefined;
+  @Input() selectedTaskId: string | undefined;
   @Input() encouragementLetterDetailsModel: IProgramDayTaskEncouragementLetter = {}
   constructor(
     private activeroute: ActivatedRoute,
@@ -31,15 +33,15 @@ export class ProgramDayTaskEncouragementLetterComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onQuestionTextChange(){
+  onQuestionTextChange() {
     this.encouragementLetterDetailsModel.text ? this.encouragementLetterDetailsModel.letterType = ProgramDayTaskEncouragementLetterType.text : null;
   }
   saveVoiceUrl(event: any) {
     this.encouragementLetterDetailsModel.voiceUrl = event;
-    this.encouragementLetterDetailsModel.voiceUrl ? this.encouragementLetterDetailsModel.letterType = ProgramDayTaskEncouragementLetterType.voice: null;
+    this.encouragementLetterDetailsModel.voiceUrl ? this.encouragementLetterDetailsModel.letterType = ProgramDayTaskEncouragementLetterType.voice : null;
   }
-  DeleteMSG(){
-    this.encouragementLetterDetailsModel.voiceUrl="" ;
-    this.encouragementLetterDetailsModel.text="";
+  DeleteMSG() {
+    this.encouragementLetterDetailsModel.voiceUrl = "";
+    this.encouragementLetterDetailsModel.text = "";
   }
 }

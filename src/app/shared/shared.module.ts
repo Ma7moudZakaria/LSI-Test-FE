@@ -52,7 +52,7 @@ import { ProgramDayTaskRecitationStudentsComponent } from './components/program-
 import { ProgramDayTaskTestPhasedComponent } from './components/program-day-tasks/program-day-task-test-phased/program-day-task-test-phased.component';
 import { ProgramDayTaskTasmeaComponent } from './components/program-day-tasks/program-day-task-tasmea/program-day-task-tasmea.component';
 import { CardFeelingsComponent } from './components/card-feelings/card-feelings.component';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
     SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,
@@ -78,7 +78,7 @@ import { CardFeelingsComponent } from './components/card-feelings/card-feelings.
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,
     MatIconModule, FormsModule, MatCheckboxModule, MatRadioModule, MatGridListModule,
-    NgbModule, MatAutocompleteModule, NgbRatingModule
+    NgbModule, MatAutocompleteModule, NgbRatingModule, MatTooltipModule
   ],
   exports: [
     MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule, Ng2TelInputModule,
@@ -91,7 +91,8 @@ import { CardFeelingsComponent } from './components/card-feelings/card-feelings.
     NgbModule, ProgramDayTaskReadExplanationComponent, ProgramDayTaskRepetitionComponent,
     ProgramDayTaskMemorizeComponent, ProgramDayTaskLinkingComponent, ProgramDayTaskVideoComponent, ProgramDayTaskDailyTestComponent,
     ProgramDayTaskEncouragementLetterComponent, ProgramDayTaskReviewComponent, ProgramDayTaskRecitationComponent,
-      ProgramDayTaskRecitationStudentsComponent, ProgramDayTaskTestPhasedComponent, ProgramDayTaskTasmeaComponent, CardFeelingsComponent
+    ProgramDayTaskRecitationStudentsComponent, ProgramDayTaskTestPhasedComponent,
+    ProgramDayTaskTasmeaComponent, CardFeelingsComponent, MatTooltipModule
   ]
 })
 export class SharedModule { }

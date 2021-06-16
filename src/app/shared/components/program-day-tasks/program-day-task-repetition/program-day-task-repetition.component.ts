@@ -8,6 +8,8 @@ import { IProgramDayTaskRepetition } from 'src/app/core/interfaces/programs-inte
 })
 export class ProgramDayTaskRepetitionComponent implements OnInit {
   @Input() repetitionDetailsModel: IProgramDayTaskRepetition = {};
+  @Input() isView: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {

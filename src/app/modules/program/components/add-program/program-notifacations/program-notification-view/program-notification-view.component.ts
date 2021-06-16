@@ -45,7 +45,7 @@ export class ProgramNotificationViewComponent implements OnInit {
     this.lookupService.getLookupByKey(this.listOfLookup).subscribe(res => {
       if (res.isSuccess) {
         this.collectionOfLookup = res.data as ILookupCollection;
-        this.getAllNotifications(this.progId);
+        this.getAllNotifications();
       }
       else {
         this.resultMessage =
@@ -87,8 +87,8 @@ export class ProgramNotificationViewComponent implements OnInit {
 
   // notificationsCardList: IProgramNotificationModel[] =[]
 
-  getAllNotifications(id: any) {
-    this.notificationService.getAllNotifications(id || '').subscribe(res => {
+  getAllNotifications() {
+    this.notificationService.getAllNotifications(this.progId || '').subscribe(res => {
       this.notificationsCardList = res.data as IProgramNotificationDetails[];
 
       this.notificationsCardList.forEach(item=>{
@@ -140,7 +140,7 @@ export class ProgramNotificationViewComponent implements OnInit {
         this.notificationService.deleteNotification(id || '').subscribe(res => {
           if (res.isSuccess) {
             this.alertify.success(res.message || '');
-            this.getAllNotifications(id);
+            this.getAllNotifications();
           }
           else {
             this.alertify.error(res.message || '');

@@ -1,5 +1,10 @@
 @import '../../../../../assets/scss/buttons';
+@import '../../../../modules/program/components/program-details/programs-tabs/days/days.component.scss';
+
 .details_day{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 58vh;
     .head {
         font-weight: bold;
         font-size: 1rem;
@@ -60,6 +65,7 @@
         padding: 0.5rem 1rem;
         background-color: #DFDFDF;
         border-radius: 7px;
+        margin: 0.2rem;
     }
     .save-btn, .cancel-btn
     {

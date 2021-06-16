@@ -22,7 +22,7 @@ export class ProgramsListComponent implements OnInit {
 
   programsList :IprogramsModel[]=[];
   programDetails = {} as IprogramsModel;
-  programsbyAdvancedFilter :IProgramFilterAdvancedRequest= {};
+  programsbyAdvancedFilter :IProgramFilterAdvancedRequest= {skip:0, take:2147483647};
  
   @Output() selectedProgram = new EventEmitter<IprogramsModel>();
   langEnum = LanguageEnum;
@@ -37,15 +37,11 @@ export class ProgramsListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // this.loadPrograms();
-    this.programsbyAdvancedFilter = {
-    }
-
-    this.loadProgramsbyAdvancedFilter( this.programsbyAdvancedFilter ) ;
+    this.loadProgramsbyAdvancedFilter() ;
   }
 
-  loadProgramsbyAdvancedFilter(ProgramsbyAdvancedFilter: IProgramFilterAdvancedRequest) {
-    this.programService.getProgramAdvancedFilter(ProgramsbyAdvancedFilter).subscribe(
+  loadProgramsbyAdvancedFilter() {
+    this.programService.getProgramAdvancedFilter(this.programsbyAdvancedFilter).subscribe(
       (res: BaseResponseModel) => {
         this.programsList = res.data as IprogramsModel [];
 
@@ -69,5 +65,10 @@ export class ProgramsListComponent implements OnInit {
 
   addPrgramPage() {
     this.router.navigateByUrl('/program/add-program)');
+  }
+
+  filterByNameSearchKey(searchKey:string){
+    this.programsbyAdvancedFilter.name = searchKey;
+    this.loadProgramsbyAdvancedFilter();
   }
 }

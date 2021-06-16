@@ -6,7 +6,7 @@
           </button>
     </div>
    
-    <app-search-input (searchTerm)=loadProgramsbyAdvancedFilter(programsbyAdvancedFilter)></app-search-input>
+    <app-search-input (searchTerm)="filterByNameSearchKey($event)"></app-search-input>
     <a class="advanced_search">
         بحث متقدم 
     </a>
