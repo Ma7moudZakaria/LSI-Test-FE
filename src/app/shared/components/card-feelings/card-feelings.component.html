@@ -1,8 +1,9 @@
   <!--not  publish list of card  -->
 
 <ng-container *ngIf="!isPub">
-  <div  class="card" >
+  <div  class="card  mb-2" >
     <div class="card_header">
+      <img  *ngIf='!feelingsDetailsModel?.isNew' src="../../../../assets/images/feelings/arrange2.svg" class="arrange" >  
       <img  [src]="feelingsDetailsModel?.proPic">
 
       <div class="data dataInfo pl-3 pr-3">
@@ -19,7 +20,7 @@
         <a (click)= "publishFeelingItem()"> <img class="arrow"src="../../../../assets/images/feelings/leftArrow.svg"></a>
       </div>
         
-      <div *ngIf='!feelingsDetailsModel?.isNew'>
+      <div *ngIf='!feelingsDetailsModel?.isNew' class="actions_notNew">
         <a (click)= "cancelFeelingItem()"> <img class="delete" src="../../../../assets/images/feelings/close.svg"></a>
         <a (click)='swapUp()'> <img class="arrow"src="../../../../assets/images/feelings/downArrow.svg"></a>
         <a (click)='swapDown()'> <img class="arrow"src="../../../../assets/images/feelings/topArrow.svg"></a>
