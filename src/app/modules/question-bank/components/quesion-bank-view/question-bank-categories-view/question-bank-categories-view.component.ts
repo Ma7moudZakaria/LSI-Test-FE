@@ -56,7 +56,6 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
 
   currentUser: IUser | undefined;
   role = RoleEnum;
-
   items1: any;
   questionBankCategoryUpdateOrder: IQuestionBankCategoryUpdateOrder = {};
   listOrder?: number[];
@@ -70,6 +69,8 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
     });
   }
   ngOnInit(): void {
+    this.selectedIndex = 0;
+
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     this.getQuestionBankCategories()
     this.buildForm();
@@ -101,7 +102,6 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
         this.questionBankCategoryList = response.data;
         if (this.addCategory === false) {
           this.loadCatogryQuiestion(this.questionBankCategoryList[0]?.id, this.questionBankCategoryList[0]?.arabCatgName, this.questionBankCategoryList[0]?.engCatgName);
-          this.selectedIndex = 0;
         }
 
       }
