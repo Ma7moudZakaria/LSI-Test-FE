@@ -1,6 +1,6 @@
 export interface IProgramUpdateNotifacationModel {
     progId?: string;
-    no?: number
+    noDuties?:number;
     notifyId?: string;
     notifyName?: string;
     notifyType?: string;

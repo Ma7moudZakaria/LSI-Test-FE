@@ -118,7 +118,7 @@ export class AddEditNotificationComponent implements OnInit {
           progId: this.notificationDetails.progId,
           notifyId: this.notificationDetails.id,
           notifyName: this.notifyForm.value.notifyName,
-          no: this.notifyForm.value.numberNotify,
+          noDuties: this.notifyForm.value.numberNotify,
           notifyType: this.notifyForm.value.notifyType,
           msgAr: this.notifyForm.value.messageAr,
           msgEn: this.notifyForm.value.messageEn,
