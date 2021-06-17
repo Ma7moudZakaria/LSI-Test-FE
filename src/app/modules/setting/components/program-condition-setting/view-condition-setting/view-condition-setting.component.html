@@ -12,34 +12,33 @@
     
     <div class="col-md-12 max_h">
         <div class="row">
-                        
+            <ng-container  *ngFor="let item of programConditionsList ;let i=index">
             <div class="col-4 mb-3">
-                <app-setting-scientific-problem></app-setting-scientific-problem>
+                <app-setting-scientific-problem [title]="item"></app-setting-scientific-problem>
             </div>
 
             <div class="col-4 mb-3">
-                <app-setting-part-qraan></app-setting-part-qraan>
+                <app-setting-part-qraan [title]="item"></app-setting-part-qraan>
 
             </div>
             <div class="col-4 mb-3">
-                <app-setting-age></app-setting-age>
+                <app-setting-age [title]="item"></app-setting-age>
             </div>
 
             <div class="col-4">
-                <app-setting-last-program></app-setting-last-program>
+                <app-setting-last-program [title]="item"></app-setting-last-program>
             </div>
                 
             <div class="col-4">
-                <app-setting-degree-last-program></app-setting-degree-last-program>
+                <app-setting-degree-last-program [title]="item"></app-setting-degree-last-program>
             </div>    
 
             <div class="col-4 mb-3">
-                <app-setting-maxmum-subscribe></app-setting-maxmum-subscribe>
+                <app-setting-maxmum-subscribe [title]="item"></app-setting-maxmum-subscribe>
 
             </div>    
-       
 
-
+        </ng-container>
 
         </div>
     </div>

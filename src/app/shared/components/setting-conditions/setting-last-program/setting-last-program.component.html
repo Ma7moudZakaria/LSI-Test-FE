@@ -1,12 +1,14 @@
 <div class="card-setting">
     <div class="head">
-        إتمام برنامج سابق بالمنصة
+{{item.title}}
     </div>
     <div class="body">
         <div class="details">شرط رقمي</div>
-        <span class="icon_actions">
-            <img src="/assets/images/notify/edit.svg" > 
-            <img src="/assets/images/notify/trash.svg">  
-           </span>
+        <ng-container *ngIf="item.isCustom">
+            <span class="icon_actions">
+                <img src="/assets/images/notify/edit.svg" > 
+                <img src="/assets/images/notify/trash.svg">  
+               </span>
+            </ng-container>
     </div>
 </div>
