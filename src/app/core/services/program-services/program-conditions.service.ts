@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { IAddProgramPredefinedCustomConditionsModel } from '../../interfaces/programs-interfaces/iadd-program-predefined-custom-conditions-model';
 import { IassignConditionsToProgramModel } from '../../interfaces/programs-interfaces/iassign-conditions-to-program-model';
+import { IUpdateProgramPredefinedCustomConditionsModel } from '../../interfaces/programs-interfaces/iupdate-program-predefined-custom-conditions-model';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 
 @Injectable({
@@ -10,9 +12,11 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
 })
 export class ProgramConditionsService {
 getProgramConditionsListURL = environment.baseUrl + 'ProgramPredefinedCustomConditions/get-all-program-predefined-custom-conditions';
-addProgramPredefinedCustomConditionsURL=environment.baseUrl +'ProgramPredefinedCustomConditions/add-program-predefined-custom-conditions'
-
+addProgramPredefinedCustomConditionsURL=environment.baseUrl +'ProgramPredefinedCustomConditions/add-program-predefined-custom-conditions';
+updateProgramPredefinedCustomConditionsURL=environment.baseUrl +'ProgramPredefinedCustomConditions/update-program-predefined-custom-conditions';
+deleteProgramPredefinedCustomConditionsURL=environment.baseUrl +'ProgramPredefinedCustomConditions/delete-program-predefined-custom-conditions';
 saveProgramConditionsListURL = environment.baseUrl + 'Programs/assign-conditions-to-program';
+
   constructor(
     private http: HttpClient
   ) { }
@@ -21,9 +25,18 @@ saveProgramConditionsListURL = environment.baseUrl + 'Programs/assign-conditions
     return this.http.get<BaseResponseModel>(this.getProgramConditionsListURL);
   }
 
-  saveProgramConditionsList(model:IassignConditionsToProgramModel): Observable<BaseResponseModel> {
-    return this.http.post<BaseResponseModel>(this.saveProgramConditionsListURL,model);
+  saveProgramPredefinedCustomConditions(model:IAddProgramPredefinedCustomConditionsModel): Observable<BaseResponseModel> {
+    return this.http.post<BaseResponseModel>(this.addProgramPredefinedCustomConditionsURL,model);
   }
+
+  putProgramPredefinedCustomConditions(model:IUpdateProgramPredefinedCustomConditionsModel): Observable<BaseResponseModel> {
+    return this.http.put<BaseResponseModel>(this.updateProgramPredefinedCustomConditionsURL,model);
+  }
+
+  deleteProgramPredefinedCustomConditions(id:string): Observable<BaseResponseModel> {
+    return this.http.delete<BaseResponseModel>(this.deleteProgramPredefinedCustomConditionsURL+id);
+  }
+
   saveProgramConditions(model:IassignConditionsToProgramModel): Observable<BaseResponseModel> {
     return this.http.put<BaseResponseModel>(this.saveProgramConditionsListURL,model);
   }
