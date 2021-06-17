@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-12" *ngFor="let item of programConditionsList ;let i=index">
                 
-                <mat-checkbox  class="example-margin "   value="{{item.id}}"
+                <mat-checkbox  class="example-margin " (change)='onTaskChange(item, $event)'   value="{{item.id}}"
                 class="example-margin " >
                   {{item.title}}  
                 </mat-checkbox>
@@ -21,18 +21,18 @@
     
 
     
-     <!-- <section class="mt-5">
+     <section class="mt-5">
             <div  class="row direction-rtl buttons-center mt-5">
-                <button   type="submit" class="save-btn" (click)="onSubmit()"> 
+                <button   type="submit" class="save-btn" (click)="saveProgramConditions()"> 
                     {{ "GENERAL.SAVE" | translate }}
                     
                 </button>
                 
-                <button    type="reset" class="cancel-btn" (click)="closeEvent()" > 
+                <!-- <button    type="reset" class="cancel-btn" (click)="closeEvent()" > 
                     {{ "GENERAL.CANCEL" | translate }}
                     
-                </button>
+                </button> -->
             </div>
-        </section> -->
+        </section>
        
    </form>

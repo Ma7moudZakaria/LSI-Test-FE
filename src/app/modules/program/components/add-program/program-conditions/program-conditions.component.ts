@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IProgramDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 
 @Component({
   selector: 'app-program-conditions',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./program-conditions.component.scss']
 })
 export class ProgramConditionsComponent implements OnInit {
-
+  @Input() progId?: string = '';
   constructor() { }
 
   ngOnInit(): void {

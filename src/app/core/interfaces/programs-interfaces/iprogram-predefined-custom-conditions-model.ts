@@ -1,5 +1,6 @@
 export interface IprogramPredefinedCustomConditionsModel {
     id?:string;
+    no?:number;
     title?:string;
     conditionType?:string;
     conditionTypeAr?:string;
