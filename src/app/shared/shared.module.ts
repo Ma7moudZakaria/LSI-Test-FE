@@ -59,6 +59,12 @@ import { ProgramConditionsGraduateComponent } from './components/program-conditi
 import { ProgramConditionsNumberStudentSubscribtionComponent } from './components/program-conditions/program-conditions-number-student-subscribtion/program-conditions-number-student-subscribtion.component';
 import { ProgramConditionsMemorizeQuranComponent } from './components/program-conditions/program-conditions-memorize-quran/program-conditions-memorize-quran.component';
 import { ProgramConditionsProgramFinishedComponent } from './components/program-conditions/program-conditions-program-finished/program-conditions-program-finished.component';
+import { SettingScientificProblemComponent } from './components/setting-conditions/setting-scientific-problem/setting-scientific-problem.component';
+import { SettingAgeComponent } from './components/setting-conditions/setting-age/setting-age.component';
+import { SettingLastProgramComponent } from './components/setting-conditions/setting-last-program/setting-last-program.component';
+import { SettingDegreeLastProgramComponent } from './components/setting-conditions/setting-degree-last-program/setting-degree-last-program.component';
+import { SettingMaxmumSubscribeComponent } from './components/setting-conditions/setting-maxmum-subscribe/setting-maxmum-subscribe.component';
+import { SettingPartQraanComponent } from './components/setting-conditions/setting-part-qraan/setting-part-qraan.component';
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
     SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,
@@ -85,7 +91,13 @@ import { ProgramConditionsProgramFinishedComponent } from './components/program-
     ProgramConditionsGraduateComponent,
     ProgramConditionsNumberStudentSubscribtionComponent,
     ProgramConditionsMemorizeQuranComponent,
-    ProgramConditionsProgramFinishedComponent],
+    ProgramConditionsProgramFinishedComponent,
+    SettingScientificProblemComponent,
+    SettingAgeComponent,
+    SettingLastProgramComponent,
+    SettingDegreeLastProgramComponent,
+    SettingMaxmumSubscribeComponent,
+    SettingPartQraanComponent],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,
@@ -104,7 +116,10 @@ import { ProgramConditionsProgramFinishedComponent } from './components/program-
     ProgramDayTaskMemorizeComponent, ProgramDayTaskLinkingComponent, ProgramDayTaskVideoComponent, ProgramDayTaskDailyTestComponent,
     ProgramDayTaskEncouragementLetterComponent, ProgramDayTaskReviewComponent, ProgramDayTaskRecitationComponent,
     ProgramDayTaskRecitationStudentsComponent, ProgramDayTaskTestPhasedComponent,
-    ProgramDayTaskTasmeaComponent, CardFeelingsComponent, MatTooltipModule
+    ProgramDayTaskTasmeaComponent, CardFeelingsComponent, MatTooltipModule,
+    SettingScientificProblemComponent, SettingAgeComponent, SettingDegreeLastProgramComponent, SettingLastProgramComponent,
+    SettingMaxmumSubscribeComponent, SettingPartQraanComponent
+
   ]
 })
 export class SharedModule { }

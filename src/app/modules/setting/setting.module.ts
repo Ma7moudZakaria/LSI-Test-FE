@@ -7,10 +7,11 @@ import { SettingDashboardComponent } from './components/setting-dashboard/settin
 import { ProgramConditionSettingComponent } from './components/program-condition-setting/program-condition-setting.component';
 import { AddConditionSettingComponent } from './components/program-condition-setting/add-condition-setting/add-condition-setting.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ViewConditionSettingComponent } from './components/program-condition-setting/view-condition-setting/view-condition-setting.component';
 
 
 @NgModule({
-  declarations: [SettingDashboardComponent, ProgramConditionSettingComponent, AddConditionSettingComponent],
+  declarations: [SettingDashboardComponent, ProgramConditionSettingComponent, AddConditionSettingComponent, ViewConditionSettingComponent],
   imports: [
     CommonModule,
     SettingRoutingModule,
