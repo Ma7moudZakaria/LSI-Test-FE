@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ConditionsForm, IassignConditionsToProgramModel } from 'src/app/core/interfaces/programs-interfaces/iassign-conditions-to-program-model';
 import { IprogramPredefinedCustomConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-predefined-custom-conditions-model';
@@ -20,7 +20,7 @@ export class ProgramConditionListComponent implements OnInit {
   assignConditionsToProgramModel:IassignConditionsToProgramModel={};
   @Input() progId?: string = '';
   resultMessage: BaseMessageModel = {};
-  
+  @Output() closeConditionList = new EventEmitter<boolean>();
   constructor(
     public languageService: LanguageService,
     public translate: TranslateService,
@@ -63,6 +63,7 @@ export class ProgramConditionListComponent implements OnInit {
           message: res.message || "",
           type: BaseConstantModel.SUCCESS_TYPE
         }
+        this.closeEvent();
       }
       else {
         this.resultMessage = {
@@ -79,6 +80,10 @@ export class ProgramConditionListComponent implements OnInit {
     }
     
     );
+  }
+
+  closeEvent() {
+    this.closeConditionList.emit(true)
   }
 
 }
