@@ -22,6 +22,7 @@ export class ProgramConditionsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getProgramConditionsLisByProgId()
   }
   closeConditionList(event: boolean) {
     this.showAddConditionListForm = false;
@@ -29,6 +30,7 @@ export class ProgramConditionsComponent implements OnInit {
   }
   addConditions() {
     this.showAddConditionListForm = true;
+    //this.getProgramConditionsLisByProgId();
   }
   getProgramConditionsLisByProgId() {
     this.programConditionsService.getProgramConditionsByProgId(this.progId || '').subscribe(res => {

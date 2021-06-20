@@ -120,7 +120,7 @@ import { CustomConditionsComponent } from './components/setting-conditions/custo
     ProgramDayTaskRecitationStudentsComponent, ProgramDayTaskTestPhasedComponent,
     ProgramDayTaskTasmeaComponent, CardFeelingsComponent, MatTooltipModule,
     SettingScientificProblemComponent, SettingAgeComponent, SettingDegreeLastProgramComponent, SettingLastProgramComponent,
-    SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent
+    SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent,ProgramConditionsAgeComponent
 
   ]
 })

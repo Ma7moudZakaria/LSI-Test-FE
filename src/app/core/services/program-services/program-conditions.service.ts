@@ -16,7 +16,7 @@ addProgramPredefinedCustomConditionsURL=environment.baseUrl +'ProgramPredefinedC
 updateProgramPredefinedCustomConditionsURL=environment.baseUrl +'ProgramPredefinedCustomConditions/update-program-predefined-custom-conditions';
 deleteProgramPredefinedCustomConditionsURL=environment.baseUrl +'ProgramPredefinedCustomConditions/delete-program-predefined-custom-conditions';
 saveProgramConditionsListURL = environment.baseUrl + 'Programs/assign-conditions-to-program';
-getProgramConditionsByProgIdURL=environment.baseUrl + 'Programs/get-program-condition-by-program-id';
+getProgramConditionsByProgIdURL=environment.baseUrl + 'Programs/get-program-condition-by-program-id/';
 
   constructor(
     private http: HttpClient
