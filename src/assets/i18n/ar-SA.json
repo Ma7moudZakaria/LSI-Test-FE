@@ -212,7 +212,9 @@
   "PROGRAM_DAY_TASK_REVIEW":{
     "DEGREE":"الدرجة",
     "PAGES":"الصفحات",
-    "QUESTION":"السؤال الذي يظهر للطالب"
+    "QUESTION":"السؤال الذي يظهر للطالب",
+    "FROM":"من",
+    "TO":"إلى"
   },
   "PROGRAM_DAY_TASK_VIDEO":{
     "VIDEO_NAME":"إسم الفيديو",
@@ -639,6 +641,7 @@
     "TEXT_PLEDGE_PATTERN": "يرجى ادخال نص التعهد صحيحا",
     "TEXT_PLEDGE_MAX_LENGTH": "يرجى ادخال نص التعهد اقل من او يساوى 300  حرف",
     "DAY_COUNT": " ايام الواجبات",
+    "DAY_COUNT_MAX": "يرجى ادخال ايام الواجبات اقل من او يساوى 7  يوم",
     "WRITE_DAY_COUNT": "اكتب عدد الايام",
     "EXAM_PASS": "اجتياز الاختبار قبل القبول",
     "REQUIRD": "الزامى",
