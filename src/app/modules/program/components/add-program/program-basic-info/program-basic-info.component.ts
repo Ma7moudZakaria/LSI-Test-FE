@@ -274,6 +274,10 @@ export class ProgramBasicInfoComponent implements OnInit {
     });
   }
 
+  onCancel(){
+    this.router.navigate(["/program"]);
+  }
+
   dutyDaysChange(event:any){
     this.progDutyDaysFreeDaysSelection = this.collectionOfLookup.DUTY_TYPES?.filter(i => i.id === event.value)[0]?.huffazId === ProgramDutiesEnum.FreeDays;
   }
