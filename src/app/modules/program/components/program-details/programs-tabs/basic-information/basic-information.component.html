@@ -17,17 +17,17 @@
             </div>
             <div class="row mt-3">
                 <div class="col-2">
-                <p class="details">مدة البرنامج <span class="num">{{progBasicInfoDetails?.prgDura}}</span> يوم</p>
+                <p class="details">{{'VIEW_PROGRAMS_BASIC_INFO.PROGRAM_DATE' | translate}}   <span class="num">{{progBasicInfoDetails?.prgDura}}</span>{{'VIEW_PROGRAMS_BASIC_INFO.DAY' | translate}} </p>
                 </div>
                 <div class="col-2">
-                    <p>عدد الطلاب <span class="num">10</span> </p>
+                    <p> {{'VIEW_PROGRAMS_BASIC_INFO.STUDENT_NUMBER' | translate}}  <span class="num">10</span> </p>
                 </div>
 
                 <div class="col-2">
-                    <p>عدد الاجزاء <span class="num">10</span> </p>
+                    <p>{{'VIEW_PROGRAMS_BASIC_INFO.PARTS_NUMBER' | translate}}  <span class="num">10</span> </p>
                 </div>
                 <div class="col-2">
-                    <p>عدد المعلمين <span class="num">10</span> </p>
+                    <p>{{'VIEW_PROGRAMS_BASIC_INFO.TEACHER_NUMBER' | translate}}  <span class="num">10</span> </p>
                 </div>
 
             </div>
@@ -38,7 +38,7 @@
         <div class="row pl-4 pr-4">
             <div class="col-6 mb-3   ">
                 <label class="title"> 
-                    فكرة
+                    {{'VIEW_PROGRAMS_BASIC_INFO.IDEA' | translate}}
                    <span>  &nbsp;  : </span>
                    <span>  &nbsp; </span> 
                 </label>
@@ -50,7 +50,7 @@
             
             <div class="col-6 mb-3   ">
                 <label class="title"> 
-                 نوع البرنامج
+                 {{'VIEW_PROGRAMS_BASIC_INFO.PROGRAM_TYPE' | translate}}
                    <span>  &nbsp;  : </span>
                    <span>  &nbsp; </span> 
                 </label>
@@ -60,7 +60,8 @@
             </div>
             <div class="col-6 mb-3  col-md-6">
                 <label class="title"> 
-                    اهداف البرنامج
+                    
+                    {{'VIEW_PROGRAMS_BASIC_INFO.PROGRAM_GOALS' | translate}}
                     <span>  &nbsp;  : </span>
                     <span>  &nbsp; </span> 
 
@@ -70,7 +71,8 @@
             </div>
             <div class="col-6 mb-3  col-md-6">
                 <label class="title"> 
-                    رؤية البرنامج
+                    
+                    {{'VIEW_PROGRAMS_BASIC_INFO.PROGRAM_VISION' | translate}}
                     <span>  &nbsp;  : </span>
                     <span>  &nbsp; </span> 
                  </label>
@@ -78,7 +80,8 @@
             </div>
             <div class="col-6 mb-3  col-md-6">
                 <label class="title"> 
-                    طريقة البرنامج
+                    
+                    {{'VIEW_PROGRAMS_BASIC_INFO.PROGRAM_METHOD' | translate}}
                     <span>  &nbsp;  : </span>
                     <span>  &nbsp; </span> 
 
@@ -87,7 +90,8 @@
             </div>
             <div class="col-6 mb-3  col-md-6">
                 <label class="title"> 
-                    مميزات البرنامج
+                    
+                    {{'VIEW_PROGRAMS_BASIC_INFO.PROGRAM_ADVAN' | translate}}
                     <span>  &nbsp;  : </span>
                     <span>  &nbsp; </span> 
 
@@ -97,23 +101,13 @@
 
             <div class="col-6 mb-3  col-md-6">
                 <label class="title"> 
-                    نص التعهد
+                    
+                    {{'VIEW_PROGRAMS_BASIC_INFO.PROGRAM_PLEDGTXT' | translate}}
                     <span>  &nbsp;  : </span>
                     <span>  &nbsp; </span> 
 
                  </label>
                  <label> {{ progBasicInfoDetails?.prgPledgTxt}} </label>
-
-            </div>
-
-            <div class="col-6 mb-3  col-md-6">
-                <label class="title"> 
-                    اسم البرنامج 
-                    <span>  &nbsp;  : </span>
-                    <span>  &nbsp; </span> 
-
-                 </label>
-                 <label> {{ progBasicInfoDetails?.prgName}} </label>
 
             </div>
            
@@ -129,7 +123,8 @@
 
             <div class="col-6 mb-3  col-md-6">
                 <label class="title"> 
-                    أيام الواجبات
+                    
+                    {{'VIEW_PROGRAMS_BASIC_INFO.PROGRAM_WEEK_DUTI_DAS' | translate}}
                     <span>  &nbsp;  :  </span>
                     <span >  &nbsp; </span> 
 
@@ -144,7 +139,7 @@
 
      <div class="row pl-4 pr-4">
         <div class="col-6">
-            <h3 class="head_conditions"> الشروط</h3>
+            <h3 class="head_conditions">{{'VIEW_PROGRAMS_BASIC_INFO.CONDTIONS' | translate}} </h3>
         </div>
      </div>
     </div>
@@ -154,7 +149,7 @@
     <div class="copy_model">
         <ng-template #content let-modal >
             <div class="modal-header">
-            <h4 class="modal-title" id="modal-basic-title">Copy Program</h4>
+            <h4 class="modal-title" id="modal-basic-title">{{'VIEW_PROGRAMS_BASIC_INFO.COPY_PROGRAM' | translate}}</h4>
             <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -162,7 +157,7 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                    <label for="dateOfBirth">Program Name</label>
+                    <label for="dateOfBirth">{{'VIEW_PROGRAMS_BASIC_INFO.PROGRAM_NAME' | translate}}</label>
                     <div class="input-group">
                         <input id="dateOfBirth" class="form-control" name="dp" type="text" [(ngModel)]="programName">
                     </div>
@@ -170,7 +165,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click');copyProgramData(programName)">Save</button>
+                <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click');copyProgramData(programName)">{{'VIEW_PROGRAMS_BASIC_INFO.SAVE' | translate}}</button>
             </div>
         </ng-template> 
     </div>

@@ -135,7 +135,91 @@
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "البرامج",
-    "ALL": "الكل"
+    "ALL": "الكل",
+    "ADD_PROGRAM":"اضافه برنامج",
+    "ADVANCED_SEARCH":" بحث متقدم "
+  },
+  "VIEW_PROGRAMS_BASIC_INFO": {
+    "PROGRAM_DATE":"مدة البرنامج",
+    "STUDENT_NUMBER":" عدد الطلاب",
+    "TEACHER_NUMBER":" عدد المعلمين",
+    "PARTS_NUMBER":"عدد الاجزاء",
+    "IDEA":"فكرة",
+    "PROGRAM_TYPE":"نوع البرنامج",
+    "PROGRAM_GOALS":"اهداف البرنامج",
+    "PROGRAM_VISION":"رؤية البرنامج",
+    "PROGRAM_METHOD":"طريقة البرنامج",
+    "PROGRAM_ADVAN":"مميزات البرنامج",
+    "PROGRAM_PLEDGTXT":"نص التعهد",
+    "PROGRAM_WEEK_DUTI_DAS":"أيام الواجبات",
+    "CONDTIONS":"الشروط",
+    "COPY_PROGRAM":"نسخ البرنامج",
+    "PROGRAM_NAME":"إسم البرنامج",
+    "SAVE":"حفظ",
+    "DAY":"يوم"
+  },
+  "PROGRAM_TABS":{
+    "BASIC_INFO":"البيانات الاساسية",
+    "STUDENTS":"الطلاب",
+    "JOINING_EXAM":"إختبارات الانضمام",
+    "DAYS":"الأيام",
+    "NOTIFACATION":"تنبيهات"
+  },
+  "PROGRAM_DAYS":{
+    "DAYS":"الأيام",
+    "DAY":"يوم",
+    "REQUIRED_TASKS":"المهام المطلوبة"
+  },
+  "JOINING_REQUEST":{
+    "MODELS":"النمازج",
+    "DEGREE":"الدرجة"
+  },
+  "PROGRAM_DAY_TASK_ENCOURAGEMENT":{
+    "MESSAGE":"الرسالة"
+  },
+  "PROGRAM_DAY_TASK_HEARING":{
+    "DEGREE":"الدرجة",
+    "QUESTION":"السؤال الذي يظهر للطالب"
+  },
+  "PROGRAM_DAY_TASK_LINKING":{
+    "REQUIRED":"الزامى",
+    "QUESTION":"السؤال الذي يظهر للطالب",
+    "AUTO":"الى",
+    "MANUAL":"يدوى",
+    "DEGREE":"الدرجة"
+  },
+  "PROGRAM_DAY_TASK_MEMORIZE":{
+    "PAGES":"صفحات",
+    "QUESTION":"السؤال الذي يظهر للطالب",
+    "DEGREE":"الدرجة"
+  },
+  "PROGRAM_DAY_TASK_EXPLANATION":{
+    "PAGES":"صفحات",
+    "QUESTION":"السؤال الذي يظهر للطالب",
+    "DEGREE":"الدرجة"
+  },
+  "PROGRAM_DAY_TASK_RECITIATION":{
+    "RECITIATION_PERIOD":"فترة التسميع",
+    "FROM":"من",
+    "TO":"إلى"
+  },
+  "PROGRAM_DAY_TASK_REPETITION":{
+    "REQUIRED":"الزامى",
+    "REPETITION_NUMBER":"عدد مرات التكرار",
+    "MESSAGE":"الرسالة",
+    "DEGREE":"الدرجة"
+  },
+  "PROGRAM_DAY_TASK_REVIEW":{
+    "DEGREE":"الدرجة",
+    "PAGES":"الصفحات",
+    "QUESTION":"السؤال الذي يظهر للطالب",
+    "FROM":"من",
+    "TO":"إلى"
+  },
+  "PROGRAM_DAY_TASK_VIDEO":{
+    "VIDEO_NAME":"إسم الفيديو",
+    "VIDEO_LINK":"رابط الفديو",
+    "VIDEO_ANOTHER_LINK":"رابط لفيديو خارجي"
   },
   "RESETPASSWORD_PG": {
     "RESET_PASSWORD": "ادخل كلمة المرور الجديدة"
@@ -557,6 +641,7 @@
     "TEXT_PLEDGE_PATTERN": "يرجى ادخال نص التعهد صحيحا",
     "TEXT_PLEDGE_MAX_LENGTH": "يرجى ادخال نص التعهد اقل من او يساوى 300  حرف",
     "DAY_COUNT": " ايام الواجبات",
+    "DAY_COUNT_MAX": "يرجى ادخال ايام الواجبات اقل من او يساوى 7  يوم",
     "WRITE_DAY_COUNT": "اكتب عدد الايام",
     "EXAM_PASS": "اجتياز الاختبار قبل القبول",
     "REQUIRD": "الزامى",

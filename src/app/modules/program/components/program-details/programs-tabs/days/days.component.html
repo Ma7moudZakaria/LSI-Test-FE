@@ -4,7 +4,7 @@
   
     <div class=" part1 list_exams">
             <div class="list-group list-group_program-list">
-                  <p class="mb-4">الايام</p>
+                  <p class="mb-4"> {{'PROGRAM_DAYS.DAYS' | translate}}</p>
                 <app-search-input></app-search-input>
  
                 <div class="internal_scroll_list_group order">
@@ -13,7 +13,7 @@
                     *ngFor="let progDaysItem of progs?.progDays ;let i=index" 
                     [class.active]="selectedIndex === i" 
                     (click)='getDayTasks(progDaysItem.id);selectedIndex=i' >                           
-                        <span>  Day - {{progDaysItem.order}} </span>               
+                        <span>  {{'PROGRAM_DAYS.DAY' | translate}} - {{progDaysItem.order}} </span>               
                     </a>
                 </div>
            
@@ -26,7 +26,7 @@
     <div class=" part1 list_exams">
         <div class="list-group list-group_program-list">
            
-              <p class="mb-2">المهام المطلوبة</p>
+              <p class="mb-2">{{'PROGRAM_DAYS.REQUIRED_TASKS' | translate}} </p>
 
             <div class="internal_scroll_list_group">
         

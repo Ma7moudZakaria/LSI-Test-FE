@@ -104,7 +104,7 @@ export class ProgramBasicInfoComponent implements OnInit {
         advantageProg: ['', [Validators.required, Validators.maxLength(300), Validators.pattern(BaseConstantModel.LETTERS_WITH_ALPHANUMERIC_AND_SPECIAL_CHAR)]],
         textPledge: ['', [Validators.required, Validators.maxLength(300), Validators.pattern(BaseConstantModel.LETTERS_WITH_ALPHANUMERIC_AND_SPECIAL_CHAR)]],
         dutiesDayType: ['', [Validators.required]],
-        dayCount:[''],
+        dayCount:['',Validators.max(7)],
         examPass: [''],
         rectMand: [''],
         isAlsard: [false],
@@ -272,6 +272,10 @@ export class ProgramBasicInfoComponent implements OnInit {
         type: BaseConstantModel.DANGER_TYPE
       }
     });
+  }
+
+  onCancel(){
+    this.router.navigate(["/program"]);
   }
 
   dutyDaysChange(event:any){
