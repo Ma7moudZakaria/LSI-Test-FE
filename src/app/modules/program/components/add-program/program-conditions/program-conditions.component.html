@@ -2,6 +2,12 @@
     <button class="cancel-btn"(click)="addConditions()">
         إضافة شرط
        </button>
+       <div *ngFor="let item of programConditionsList ;let i=index">
+        <div class="col-3">
+            <app-program-conditions-age *ngIf="programConditionsEnum.age===item.conditionNo"></app-program-conditions-age>
+        </div>
+       </div>
+      
 </div>
 
 <div class="overlay" *ngIf="showAddConditionListForm">

@@ -1,4 +1,4 @@
-export enum ProgramPredefinedConditionsEnum {
+export enum programPredefinedConditionsEnum {
     memorize = 1,
     age = 2,
     graduate=3,

@@ -118,7 +118,7 @@ import { SettingPartQraanComponent } from './components/setting-conditions/setti
     ProgramDayTaskRecitationStudentsComponent, ProgramDayTaskTestPhasedComponent,
     ProgramDayTaskTasmeaComponent, CardFeelingsComponent, MatTooltipModule,
     SettingScientificProblemComponent, SettingAgeComponent, SettingDegreeLastProgramComponent, SettingLastProgramComponent,
-    SettingMaxmumSubscribeComponent, SettingPartQraanComponent
+    SettingMaxmumSubscribeComponent, SettingPartQraanComponent,ProgramConditionsAgeComponent
 
   ]
 })

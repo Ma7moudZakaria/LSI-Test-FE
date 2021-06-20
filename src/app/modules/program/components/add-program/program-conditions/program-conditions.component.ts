@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { programPredefinedConditionsEnum } from 'src/app/core/enums/programs/program-predefined-conditions-enum.enum';
 import { IProgramConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-conditions-model';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { ProgramConditionsService } from 'src/app/core/services/program-services/program-conditions.service';
@@ -13,6 +14,7 @@ export class ProgramConditionsComponent implements OnInit {
   @Input() progId?: string = '';
   showAddConditionListForm = false;
   programConditionsList:IProgramConditionsModel[]=[];
+  programConditionsEnum=programPredefinedConditionsEnum;
   constructor(
     public languageService: LanguageService,
     public translate: TranslateService,
