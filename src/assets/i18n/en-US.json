@@ -665,6 +665,13 @@
     "SHOW_QUESTION_TO_STUDENT": "Show question to student",
     "THE_LISTENING": "The listening",
     "PAGES": "Pages"
-
+  },
+  "FEELINGS": {
+    "TEACHERS_FEELINGS": "Teachers feelings",
+    "STUDENTS_FEELINGS": "Students feelings",
+    "TEACHERS_NEW_FEELINGS": "Teachers' new feelings",
+    "STUDENTS_NEW_FEELINGS": "Students' new feelings",
+    "STUDENT_FEELINGS_LIST": "Student feelings list",
+    "TEACHER_FEELINGS_LIST ": "Teacher feelings list"
   }
 }

@@ -586,7 +586,7 @@
   "NOTIFICATIONS": {
     "AFTER_ASSIGNMENT": "بعد عدم تنفيذ ",
     "ASSIGNMENT": "واجب",
-    "MESSAGE_ARABIC": "الراسله بالعربي",
+    "MESSAGE_ARABIC": "الرسالة بالعربي",
     "MESSAGE_ENGLISH": "الراسله بالانجليزي",
     "NOTIFICATION_NAME": "اسم التنبية",
     "ADD_NOTIFICATION": " إضافة تنبية",
@@ -662,6 +662,13 @@
     "SHOW_QUESTION_TO_STUDENT": "السؤال الذى يظهر لطالب",
     "THE_LISTENING": "الإستماع",
     "PAGES": "الصفحات"
-
+  },
+  "FEELINGS": {
+    "TEACHERS_FEELINGS": "مشاعر المعلمين ",
+    "STUDENTS_FEELINGS": "مشاعر الطلاب ",
+    "TEACHERS_NEW_FEELINGS": "مشاعر المعلمين الجديدة",
+    "STUDENTS_NEW_FEELINGS": "مشاعر الطلاب الجديدة",
+    "STUDENT_FEELINGS_LIST": "قائمة مشاعر الطلاب",
+    "TEACHER_FEELINGS_LIST": "قائمة مشاعر المعلمين"
   }
 }
