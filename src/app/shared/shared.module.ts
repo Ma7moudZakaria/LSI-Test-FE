@@ -65,6 +65,7 @@ import { SettingLastProgramComponent } from './components/setting-conditions/set
 import { SettingDegreeLastProgramComponent } from './components/setting-conditions/setting-degree-last-program/setting-degree-last-program.component';
 import { SettingMaxmumSubscribeComponent } from './components/setting-conditions/setting-maxmum-subscribe/setting-maxmum-subscribe.component';
 import { SettingPartQraanComponent } from './components/setting-conditions/setting-part-qraan/setting-part-qraan.component';
+import { CustomConditionsComponent } from './components/setting-conditions/custom-conditions/custom-conditions.component';
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
     SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,
@@ -97,7 +98,8 @@ import { SettingPartQraanComponent } from './components/setting-conditions/setti
     SettingLastProgramComponent,
     SettingDegreeLastProgramComponent,
     SettingMaxmumSubscribeComponent,
-    SettingPartQraanComponent],
+    SettingPartQraanComponent,
+    CustomConditionsComponent],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,
@@ -118,7 +120,7 @@ import { SettingPartQraanComponent } from './components/setting-conditions/setti
     ProgramDayTaskRecitationStudentsComponent, ProgramDayTaskTestPhasedComponent,
     ProgramDayTaskTasmeaComponent, CardFeelingsComponent, MatTooltipModule,
     SettingScientificProblemComponent, SettingAgeComponent, SettingDegreeLastProgramComponent, SettingLastProgramComponent,
-    SettingMaxmumSubscribeComponent, SettingPartQraanComponent
+    SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent
 
   ]
 })
