@@ -4,12 +4,12 @@
 <div class="row group_header fix_margin w-100">
     <div class="item_group" (click)="studentTab()"
     [ngClass]="{ item_group_active: showTap == 'student' }" >
+    {{'FEELINGS.STUDENTS_FEELINGS' | translate}}
        
-    الطلاب
     </div>
     <div class="item_group" (click)="teacherTab()"
     [ngClass]="{ item_group_active: showTap == 'teacher' }" >
-       معلمين
+       {{'FEELINGS.TEACHERS_FEELINGS' | translate}}
     
     </div>
     

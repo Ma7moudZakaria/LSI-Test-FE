@@ -16,13 +16,18 @@
     }&:lang(en){
         text-align: left;
     }
+    .actions_notNew{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    }
     img{
-        top: 290px;
-        left: 1564px;
-        width: 58px;
-        height: 58px;
-        border-radius: 12px;
-        opacity: 1;
+        // top: 290px;
+        // left: 1564px;
+        // width: 58px;
+        // height: 58px;
+        // border-radius: 12px;
+        // opacity: 1;
         margin-left: 0.3rem;
         margin-right: 0.3rem;
     }
@@ -92,6 +97,9 @@
                 height: 8px;
                 cursor: pointer;
 
-            }
+            &:lang(en)
+            {
+                transform: rotate(180deg);
+            }}
       }
 }
