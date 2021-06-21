@@ -4,7 +4,7 @@ import { ISettingAnswer } from './isetting-answer';
 
 export interface IConditionModel {
     title?: string;
-    answerType?: string;//SettingAnswerTypeEnum;
+    answerType?: Number;//SettingAnswerTypeEnum;
     answerList?: ISettingAnswer[];
 }
 
