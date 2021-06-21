@@ -139,90 +139,90 @@
   "PROGRAMS_LIST": {
     "PROGRAMS": "Programs",
     "ALL": "All",
-    "ADD_PROGRAM":"Add Program",
-    "ADVANCED_SEARCH":"Advanced Search"
+    "ADD_PROGRAM": "Add Program",
+    "ADVANCED_SEARCH": "Advanced Search"
   },
   "VIEW_PROGRAMS_BASIC_INFO": {
-    "PROGRAM_DATE":"Program Duration",
-    "STUDENT_NUMBER":"Number of student",
-    "TEACHER_NUMBER":"Number of teacher ",
-    "PARTS_NUMBER":"Number of parts",
-    "IDEA":"Idea",
-    "PROGRAM_TYPE":"Program Type",
-    "PROGRAM_GOALS":"Program Goals",
-    "PROGRAM_VISION":"Program Vision",
-    "PROGRAM_METHOD":"Program Method",
-    "PROGRAM_ADVAN":"Program Advantage",
-    "PROGRAM_PLEDGTXT":"Pledge text",
-    "PROGRAM_WEEK_DUTI_DAS":"Homework Days",
-    "CONDTIONS":"Conditions",
-    "COPY_PROGRAM":"Copy Program",
-    "PROGRAM_NAME":"Program Name",
-    "SAVE":"Save",
-    "DAY":"Day"
+    "PROGRAM_DATE": "Program Duration",
+    "STUDENT_NUMBER": "Number of student",
+    "TEACHER_NUMBER": "Number of teacher ",
+    "PARTS_NUMBER": "Number of parts",
+    "IDEA": "Idea",
+    "PROGRAM_TYPE": "Program Type",
+    "PROGRAM_GOALS": "Program Goals",
+    "PROGRAM_VISION": "Program Vision",
+    "PROGRAM_METHOD": "Program Method",
+    "PROGRAM_ADVAN": "Program Advantage",
+    "PROGRAM_PLEDGTXT": "Pledge text",
+    "PROGRAM_WEEK_DUTI_DAS": "Homework Days",
+    "CONDTIONS": "Conditions",
+    "COPY_PROGRAM": "Copy Program",
+    "PROGRAM_NAME": "Program Name",
+    "SAVE": "Save",
+    "DAY": "Day"
   },
-  "PROGRAM_TABS":{
-    "BASIC_INFO":"Basic Info",
-    "STUDENTS":"Students",
-    "JOINING_EXAM":"Joining Exam",
-    "DAYS":"Days",
-    "NOTIFACATION":"Notification"
+  "PROGRAM_TABS": {
+    "BASIC_INFO": "Basic Info",
+    "STUDENTS": "Students",
+    "JOINING_EXAM": "Joining Exam",
+    "DAYS": "Days",
+    "NOTIFACATION": "Notification"
   },
-  "PROGRAM_DAYS":{
-    "DAYS":"Days",
-    "DAY":"Day",
-    "REQUIRED_TASKS":"Tasks"
+  "PROGRAM_DAYS": {
+    "DAYS": "Days",
+    "DAY": "Day",
+    "REQUIRED_TASKS": "Tasks"
   },
-  "JOINING_REQUEST":{
-    "MODELS":"Models",
-    "DEGREE":"Degree"
+  "JOINING_REQUEST": {
+    "MODELS": "Models",
+    "DEGREE": "Degree"
   },
-  "PROGRAM_DAY_TASK_ENCOURAGEMENT":{
-    "MESSAGE":"Message"
+  "PROGRAM_DAY_TASK_ENCOURAGEMENT": {
+    "MESSAGE": "Message"
   },
-  "PROGRAM_DAY_TASK_HEARING":{
-    "DEGREE":"Degree",
-    "QUESTION":"The question that appears to the student"
+  "PROGRAM_DAY_TASK_HEARING": {
+    "DEGREE": "Degree",
+    "QUESTION": "The question that appears to the student"
   },
-  "PROGRAM_DAY_TASK_LINKING":{
-    "REQUIRED":"Required",
-    "QUESTION":"The question that appears to the student",
-    "AUTO":"Auto",
-    "MANUAL":"Manual",
-    "DEGREE":"Degree"
+  "PROGRAM_DAY_TASK_LINKING": {
+    "REQUIRED": "Required",
+    "QUESTION": "The question that appears to the student",
+    "AUTO": "Auto",
+    "MANUAL": "Manual",
+    "DEGREE": "Degree"
   },
-  "PROGRAM_DAY_TASK_MEMORIZE":{
-    "PAGES":"Pages",
-    "QUESTION":"The question that appears to the student",
-    "DEGREE":"Degree"
+  "PROGRAM_DAY_TASK_MEMORIZE": {
+    "PAGES": "Pages",
+    "QUESTION": "The question that appears to the student",
+    "DEGREE": "Degree"
   },
-  "PROGRAM_DAY_TASK_EXPLANATION":{
-    "PAGES":"Pages",
-    "QUESTION":"The question that appears to the student",
-    "DEGREE":"Degree"
+  "PROGRAM_DAY_TASK_EXPLANATION": {
+    "PAGES": "Pages",
+    "QUESTION": "The question that appears to the student",
+    "DEGREE": "Degree"
   },
-  "PROGRAM_DAY_TASK_RECITIATION":{
-    "RECITIATION_PERIOD":"Recitation Period",
-    "FROM":"From",
-    "TO":"To"
+  "PROGRAM_DAY_TASK_RECITIATION": {
+    "RECITIATION_PERIOD": "Recitation Period",
+    "FROM": "From",
+    "TO": "To"
   },
-  "PROGRAM_DAY_TASK_REPETITION":{
-    "REQUIRED":"Required",
-    "REPETITION_NUMBER":"Repetition Numbers",
-    "MESSAGE":"Message",
-    "DEGREE":"Degree"
+  "PROGRAM_DAY_TASK_REPETITION": {
+    "REQUIRED": "Required",
+    "REPETITION_NUMBER": "Repetition Numbers",
+    "MESSAGE": "Message",
+    "DEGREE": "Degree"
   },
-  "PROGRAM_DAY_TASK_REVIEW":{
-    "DEGREE":"Degree",
-    "PAGES":"Pages",
-    "QUESTION":"The question that appears to the student",
-    "FROM":"From",
-    "TO":"To"
+  "PROGRAM_DAY_TASK_REVIEW": {
+    "DEGREE": "Degree",
+    "PAGES": "Pages",
+    "QUESTION": "The question that appears to the student",
+    "FROM": "From",
+    "TO": "To"
   },
-  "PROGRAM_DAY_TASK_VIDEO":{
-    "VIDEO_NAME":"Video Name",
-    "VIDEO_LINK":"Video Link",
-    "VIDEO_ANOTHER_LINK":"Link to an external video"
+  "PROGRAM_DAY_TASK_VIDEO": {
+    "VIDEO_NAME": "Video Name",
+    "VIDEO_LINK": "Video Link",
+    "VIDEO_ANOTHER_LINK": "Link to an external video"
   },
   "UPDATE_USER_PG": {
     "TITLE": "User Profile",
@@ -426,6 +426,7 @@
     "SELECT_SPECTALIZATION": "Select spectalization",
     "JOIN_EDU_LEVEL": "Add education level ",
     "SELECT_EDUCATION_YEARS": "Select education year",
+    "EDUCATION_YEARS": "Education year",
     "SELECT_languages": "select languages",
     "NAME_ENTITY": "Name Entity",
     "SELECT_ONE": "select one",
@@ -608,7 +609,7 @@
     "PROGRAM_PERIODICEXAME": "Periodic Exam",
     "PROGRAM_NOTIFICATIONS": "Notifications",
     "NUMBER_HOMEWORK_PATTERN": "Please Enter a valid Number of homework",
-    "NUMBER_HOMEWORK_MAX_LENGTH": "Number of homework sould be less than or equal 100 charcter",
+    "NUMBER_HOMEWORK_MAX_LENGTH": "Number of homework sould be less than 100 charcter",
     "NOTIFICATION_NAME_PATTERN": "Please Enter a valid Notification Name",
     "NOTIFICATION_NAME_MAX_LENGTH": "Notification Name sould be less than or equal 100 charcter",
     "QUESTION_AR_MAX_LENGHT": "Question Arabic Must be less than or equal 300 character",
