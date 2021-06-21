@@ -1,7 +1,8 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-3">
-            <app-program-duty-days [progDaysList]='progDetails?.progDays' (progDutyDayEvent)='progDutyDayEventCallBk($event)'></app-program-duty-days>
+            <app-program-duty-days [progDaysList]='progDetails?.progDays' 
+            (progDutyDayEvent)='progDutyDayEventCallBk($event)' (progDutyDaysCheckBoxEvent)='progDutyDaysCheckBoxCallBK($event)'></app-program-duty-days>
         </div>
         <div class="col-3">
             <app-program-day-tasks (openAddDayTasks)="openAddDayTasksForm()" [programDutyDay]='programDutyDay' (taskDetailsEvent)="sendTaskIdToProgDayTaskDetails($event)"></app-program-day-tasks>
@@ -14,7 +15,7 @@
 
 
 <div class="overlay" *ngIf="showAddDayTasksForm">
-    <app-add-program-day-tasks  [programDutyDay]='programDutyDay'
+    <app-add-program-day-tasks  [programDutyDay]='programDutyDay' [selectedProgDutyDays]='selectedProgDutyDays'
     (closeDayTasks)='closeDayTasks($event)'
     ></app-add-program-day-tasks>
 </div>
