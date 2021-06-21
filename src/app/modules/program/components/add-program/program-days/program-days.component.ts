@@ -44,8 +44,8 @@ export class ProgramDaysComponent implements OnInit {
       this.progDayTaskChild.programDutyDay = event;
       this.progDayTaskChild?.getProgramDutyDays();
     } 
-    this.programDutyDay = event;    
-    this.selectedProgDutyDays = [];
+    this.programDutyDay = event; 
+    //this.selectedProgDutyDays = [];
   }
 
   progDutyDaysCheckBoxCallBK(event: IProgramDutyDays){
@@ -74,6 +74,7 @@ export class ProgramDaysComponent implements OnInit {
     this.showAddDayTasksForm = event;
     this.showAddDayTasksForm = false;
     this.refreshProgDetails.emit();
+    this.selectedProgDutyDays = [];
     // this.progDutyDayEventCallBk(this.programDutyDay);
     // this.userScientificProbChild?.getScientificProblemByUserId();
   }
