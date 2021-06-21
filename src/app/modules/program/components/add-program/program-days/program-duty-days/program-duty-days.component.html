@@ -26,8 +26,9 @@
 <!-- <input type='number' [(ngModel)]='filterargs.dayOrder'> -->
 <div class="internal_scroll_list_group programDays" *ngIf='progDaysList'>
     <ng-container *ngFor='let item of progDaysList | myfilter:filterargs ; let i = index' >
-    <a  class="list-group-item  d-flex align-items-center"  (click)='onDayClick(item)'>
-        <mat-checkbox    class="example-margin "  [checked] = "i === defaultSelectedDay " >
+    <a  class="list-group-item  d-flex align-items-center"  (click)='onDayClick(item); defaultSelectedDay = i'
+    [class.active]="defaultSelectedDay === i">
+        <mat-checkbox    class="example-margin "  [disabled]='item.tskCnt > 0' >
             day-{{item.order}}
         </mat-checkbox>
         <span class="count">{{item.tskCnt}}</span>

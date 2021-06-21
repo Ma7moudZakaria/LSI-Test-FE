@@ -138,7 +138,91 @@
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "Programs",
-    "ALL": "All"
+    "ALL": "All",
+    "ADD_PROGRAM":"Add Program",
+    "ADVANCED_SEARCH":"Advanced Search"
+  },
+  "VIEW_PROGRAMS_BASIC_INFO": {
+    "PROGRAM_DATE":"Program Duration",
+    "STUDENT_NUMBER":"Number of student",
+    "TEACHER_NUMBER":"Number of teacher ",
+    "PARTS_NUMBER":"Number of parts",
+    "IDEA":"Idea",
+    "PROGRAM_TYPE":"Program Type",
+    "PROGRAM_GOALS":"Program Goals",
+    "PROGRAM_VISION":"Program Vision",
+    "PROGRAM_METHOD":"Program Method",
+    "PROGRAM_ADVAN":"Program Advantage",
+    "PROGRAM_PLEDGTXT":"Pledge text",
+    "PROGRAM_WEEK_DUTI_DAS":"Homework Days",
+    "CONDTIONS":"Conditions",
+    "COPY_PROGRAM":"Copy Program",
+    "PROGRAM_NAME":"Program Name",
+    "SAVE":"Save",
+    "DAY":"Day"
+  },
+  "PROGRAM_TABS":{
+    "BASIC_INFO":"Basic Info",
+    "STUDENTS":"Students",
+    "JOINING_EXAM":"Joining Exam",
+    "DAYS":"Days",
+    "NOTIFACATION":"Notification"
+  },
+  "PROGRAM_DAYS":{
+    "DAYS":"Days",
+    "DAY":"Day",
+    "REQUIRED_TASKS":"Tasks"
+  },
+  "JOINING_REQUEST":{
+    "MODELS":"Models",
+    "DEGREE":"Degree"
+  },
+  "PROGRAM_DAY_TASK_ENCOURAGEMENT":{
+    "MESSAGE":"Message"
+  },
+  "PROGRAM_DAY_TASK_HEARING":{
+    "DEGREE":"Degree",
+    "QUESTION":"The question that appears to the student"
+  },
+  "PROGRAM_DAY_TASK_LINKING":{
+    "REQUIRED":"Required",
+    "QUESTION":"The question that appears to the student",
+    "AUTO":"Auto",
+    "MANUAL":"Manual",
+    "DEGREE":"Degree"
+  },
+  "PROGRAM_DAY_TASK_MEMORIZE":{
+    "PAGES":"Pages",
+    "QUESTION":"The question that appears to the student",
+    "DEGREE":"Degree"
+  },
+  "PROGRAM_DAY_TASK_EXPLANATION":{
+    "PAGES":"Pages",
+    "QUESTION":"The question that appears to the student",
+    "DEGREE":"Degree"
+  },
+  "PROGRAM_DAY_TASK_RECITIATION":{
+    "RECITIATION_PERIOD":"Recitation Period",
+    "FROM":"From",
+    "TO":"To"
+  },
+  "PROGRAM_DAY_TASK_REPETITION":{
+    "REQUIRED":"Required",
+    "REPETITION_NUMBER":"Repetition Numbers",
+    "MESSAGE":"Message",
+    "DEGREE":"Degree"
+  },
+  "PROGRAM_DAY_TASK_REVIEW":{
+    "DEGREE":"Degree",
+    "PAGES":"Pages",
+    "QUESTION":"The question that appears to the student",
+    "FROM":"From",
+    "TO":"To"
+  },
+  "PROGRAM_DAY_TASK_VIDEO":{
+    "VIDEO_NAME":"Video Name",
+    "VIDEO_LINK":"Video Link",
+    "VIDEO_ANOTHER_LINK":"Link to an external video"
   },
   "UPDATE_USER_PG": {
     "TITLE": "User Profile",
@@ -537,6 +621,7 @@
     "PROG_NAME_MAX_LENGTH": "Program Name sould be less than or equal 100 charcter",
     "SHARE_WITH": "Share with",
     "PROG_TYPE": "Program Type",
+    "PROG_DURATION": "Program Duration",
     "PROG_DUTY_TIME": "Duty time",
     "PROG_AVAILABLE_DUTY": "Number of duty days available",
     "PROG_IDEA": "Idea",
@@ -559,6 +644,7 @@
     "TEXT_PLEDGE_PATTERN": "Please Enter a valid Text Pledge",
     "TEXT_PLEDGE_MAX_LENGTH": "Text Pledge sould be less than or equal 300 charcter",
     "DAY_COUNT": "days of homework",
+    "DAY_COUNT_MAX": "Days of homework sould be less than or equal 7 days",
     "WRITE_DAY_COUNT": "Write the number of days",
     "EXAM_PASS": "Pass the test before admission",
     "EXAM_PASS_REQUIRD": "Required",
@@ -579,6 +665,13 @@
     "SHOW_QUESTION_TO_STUDENT": "Show question to student",
     "THE_LISTENING": "The listening",
     "PAGES": "Pages"
-
+  },
+  "FEELINGS": {
+    "TEACHERS_FEELINGS": "Teachers feelings",
+    "STUDENTS_FEELINGS": "Students feelings",
+    "TEACHERS_NEW_FEELINGS": "Teachers' new feelings",
+    "STUDENTS_NEW_FEELINGS": "Students' new feelings",
+    "STUDENT_FEELINGS_LIST": "Student feelings list",
+    "TEACHER_FEELINGS_LIST ": "Teacher feelings list"
   }
 }

@@ -28,6 +28,7 @@ export class ProgramsListComponent implements OnInit {
   langEnum = LanguageEnum;
   resMessage: BaseMessageModel = {};
   filterRequest: IProgramFilterAdvancedRequest = {};
+  selectedIndex = 0;
 
   constructor(private scientifcMaterialService: ScientificMaterialService,
     private programService: ProgramService,
@@ -60,8 +61,6 @@ export class ProgramsListComponent implements OnInit {
   getProgramIdToProgramDetails(item:IprogramsModel) {
     this.selectedProgram.emit(item);
   }
-
-  selectedIndex = -1;
 
   addPrgramPage() {
     this.router.navigateByUrl('/program/add-program)');

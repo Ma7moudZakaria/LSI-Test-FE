@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ProgramConditionsService } from 'src/app/core/services/program-services/program-conditions.service';
 import { IprogramPredefinedCustomConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-predefined-custom-conditions-model';
+import { programPredefinedConditionsEnum } from 'src/app/core/enums/programs/program-predefined-conditions-enum.enum';
 
 @Component({
   selector: 'app-view-condition-setting',
@@ -11,6 +12,7 @@ export class ViewConditionSettingComponent implements OnInit {
 
   @Output() openCoiditionFrom = new EventEmitter<boolean>();
   programConditionsList: IprogramPredefinedCustomConditionsModel[] = [];
+  programPredefinedEnum = programPredefinedConditionsEnum;
 
   constructor(public programConditionsService: ProgramConditionsService) { }
 

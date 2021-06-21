@@ -22,6 +22,7 @@ import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/compon
 export class BasicInformationComponent implements OnInit {
 
   @Output() refreshProgList = new EventEmitter();
+  @Output() refreshProgDetails = new EventEmitter();
   @Input() progBasicInfoDetails:IProgramBasicInfoDetails | undefined;
   langEnum = LanguageEnum;
   basicInfoDetails:IProgramBasicInfoDetails | undefined;
@@ -122,6 +123,7 @@ export class BasicInformationComponent implements OnInit {
     this.programService.ProgramPublishPause(this.progBasicInfoDetails?.id || '').subscribe(res => {
       if (res.isSuccess) {
         this.alert.success(res.message || '');
+        this.refreshProgDetails.emit();
       }
       else {
         this.alert.error(res.message || '');
