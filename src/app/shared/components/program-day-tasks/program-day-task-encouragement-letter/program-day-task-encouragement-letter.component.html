@@ -56,13 +56,15 @@
 
          </div> -->
 
-              
+         <app-voice-recording *ngIf="!encouragementLetterDetailsModel.text" (getVoiceUrl)="saveVoiceUrl($event)"
+         [viewMode]='true' [voiceUrl]='encouragementLetterDetailsModel?.voiceUrl'>
+        </app-voice-recording>
         
-             <ng-container >
+             <ng-container  *ngIf="!encouragementLetterDetailsModel.voiceUrl">
                <div class=" cardRecourd mb-2 "   >
-             <img src="assets/images/days/bookView.svg">
+             <!-- <img src="assets/images/days/bookView.svg"> -->
              <p class=" mr-2 mb-0" 
-             >encouragementLetterDetailsModel.text</p>
+             >{{encouragementLetterDetailsModel.text}}</p>
             </div>    
              
              </ng-container>
