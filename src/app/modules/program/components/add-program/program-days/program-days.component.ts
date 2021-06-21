@@ -38,6 +38,7 @@ export class ProgramDaysComponent implements OnInit {
     // this.DetailsOfProgram = this.getProgramDetails || this.DetailsOfProgram;
 
   }
+  
 
   progDutyDayEventCallBk(event?: IProgramDutyDays) {
     if (this.progDayTaskChild && event){

@@ -104,12 +104,12 @@ export class ProgramBasicInfoComponent implements OnInit {
         advantageProg: ['', [Validators.required, Validators.maxLength(300), Validators.pattern(BaseConstantModel.LETTERS_WITH_ALPHANUMERIC_AND_SPECIAL_CHAR)]],
         textPledge: ['', [Validators.required, Validators.maxLength(300), Validators.pattern(BaseConstantModel.LETTERS_WITH_ALPHANUMERIC_AND_SPECIAL_CHAR)]],
         dutiesDayType: ['', [Validators.required]],
-        dayCount:['',Validators.max(7)],
+        dayCount:['' , [Validators.required,Validators.max(7)] ],
         examPass: [''],
         rectMand: [''],
         isAlsard: [false],
         recitType:[''],
-        // progType:[['3349E0C2-177D-4587-91D5-1F8F2B9E1406','0BBAB569-71C7-4D8E-B96A-6207C46BF4CB']]
+        progType:[[] , [Validators.required]]
 
       })
   }

@@ -58,7 +58,9 @@
     "NOT_AUTHORIZED": "انت غير مصرح لك بالدخول ",
     "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE": " برجاء اكمال البيانات وإضافة اكتر من اجابه لسؤال و مراجعة البيانات المكررة",
     "CHOOSEFILE": "إختر الملفات لرفعها",
-    "MANDATORY": "إلزامى"
+    "MANDATORY": "إلزامى",
+    "MY_PROGRAM":"برامجى",
+    "FEELING":"مشاعرى"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
@@ -164,6 +166,11 @@
     "JOINING_EXAM": "إختبارات الانضمام",
     "DAYS": "الأيام",
     "NOTIFACATION": "تنبيهات"
+  },
+  "PROGRAM_DAY_TASKS": {
+    "TASKS": "المهام",
+    "ADD_ITEM":"إضافة بند",
+    "DAILY_HOMEWORK":"الواجب اليومي"
   },
   "PROGRAM_DAYS": {
     "DAYS": "الأيام",
