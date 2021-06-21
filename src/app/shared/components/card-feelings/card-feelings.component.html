@@ -4,7 +4,7 @@
   <div  class="card  mb-2" >
     <div class="card_header">
       <img  *ngIf='!feelingsDetailsModel?.isNew' src="../../../../assets/images/feelings/arrange2.svg" class="arrange" >  
-      <img  [src]="feelingsDetailsModel?.proPic">
+      <img  class="proPic" [src]="feelingsDetailsModel?.proPic">
 
       <div class="data dataInfo pl-3 pr-3">
         <p class="title">{{feelingsDetailsModel?.fullNameAr}}</p>
