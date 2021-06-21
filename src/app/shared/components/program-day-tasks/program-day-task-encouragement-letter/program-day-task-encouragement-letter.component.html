@@ -1,4 +1,4 @@
-<ng-container *ngIf="isView">
+<ng-container *ngIf="!isView">
 <div class="form-group add-question-template dynamic-radio-button-with-input-text-model mb-0"  >
     <div class="form-group row question px-2">
         <div class="col-sm-8 mt-3">
@@ -31,36 +31,13 @@
 </ng-container>
     
 <ng-container *ngIf="isView">
-<!-- 
-         <div class="d-flex mb-3">       
-
-                 <div class="col-6 px-0">
-                     <span class="regular">إلزامي</span>
-                 </div>
-                 <div class="col-6 px-0">
-                     <span class="grad">الدرجة
-                         <span>  &nbsp;  : </span>
-                         <span>  &nbsp; </span> 
-
-                         <small class="info">10</small>
-                     </span>
-                 </div>
-                 
-         </div> -->
-         <!-- <div class="mt-3  mb-3">
-             <span class="grad">  الصفحات
-                 <span>  &nbsp;  : </span>
-                 <span>  &nbsp; </span> 
-                 <small class="info">200 - 205</small>
-             </span>
-
-         </div> -->
-
-              
+         <app-voice-recording *ngIf="!encouragementLetterDetailsModel.text" (getVoiceUrl)="saveVoiceUrl($event)"
+         [viewMode]='true' [voiceUrl]='encouragementLetterDetailsModel?.voiceUrl'>
+        </app-voice-recording>
         
-             <ng-container >
+             <ng-container  *ngIf="!encouragementLetterDetailsModel.voiceUrl">
                <div class=" cardRecourd mb-2 "   >
-             <img src="assets/images/days/bookView.svg">
+             <!-- <img src="assets/images/days/bookView.svg"> -->
              <p class=" mr-2 mb-0" 
              >{{encouragementLetterDetailsModel.text}}</p>
             </div>    

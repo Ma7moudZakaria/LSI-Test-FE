@@ -53,6 +53,19 @@ import { ProgramDayTaskTestPhasedComponent } from './components/program-day-task
 import { ProgramDayTaskTasmeaComponent } from './components/program-day-tasks/program-day-task-tasmea/program-day-task-tasmea.component';
 import { CardFeelingsComponent } from './components/card-feelings/card-feelings.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ProgramConditionsAgeComponent } from './components/program-conditions/program-conditions-age/program-conditions-age.component';
+import { ProgramConditionsMemorizeAmountQuranComponent } from './components/program-conditions/program-conditions-memorize-amount-quran/program-conditions-memorize-amount-quran.component';
+import { ProgramConditionsGraduateComponent } from './components/program-conditions/program-conditions-graduate/program-conditions-graduate.component';
+import { ProgramConditionsNumberStudentSubscribtionComponent } from './components/program-conditions/program-conditions-number-student-subscribtion/program-conditions-number-student-subscribtion.component';
+import { ProgramConditionsMemorizeQuranComponent } from './components/program-conditions/program-conditions-memorize-quran/program-conditions-memorize-quran.component';
+import { ProgramConditionsProgramFinishedComponent } from './components/program-conditions/program-conditions-program-finished/program-conditions-program-finished.component';
+import { SettingScientificProblemComponent } from './components/setting-conditions/setting-scientific-problem/setting-scientific-problem.component';
+import { SettingAgeComponent } from './components/setting-conditions/setting-age/setting-age.component';
+import { SettingLastProgramComponent } from './components/setting-conditions/setting-last-program/setting-last-program.component';
+import { SettingDegreeLastProgramComponent } from './components/setting-conditions/setting-degree-last-program/setting-degree-last-program.component';
+import { SettingMaxmumSubscribeComponent } from './components/setting-conditions/setting-maxmum-subscribe/setting-maxmum-subscribe.component';
+import { SettingPartQraanComponent } from './components/setting-conditions/setting-part-qraan/setting-part-qraan.component';
+import { CustomConditionsComponent } from './components/setting-conditions/custom-conditions/custom-conditions.component';
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
     SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,
@@ -73,7 +86,20 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     ProgramDayTaskRecitationStudentsComponent,
     ProgramDayTaskTestPhasedComponent,
     ProgramDayTaskTasmeaComponent,
-    CardFeelingsComponent],
+    CardFeelingsComponent,
+    ProgramConditionsAgeComponent,
+    ProgramConditionsMemorizeAmountQuranComponent,
+    ProgramConditionsGraduateComponent,
+    ProgramConditionsNumberStudentSubscribtionComponent,
+    ProgramConditionsMemorizeQuranComponent,
+    ProgramConditionsProgramFinishedComponent,
+    SettingScientificProblemComponent,
+    SettingAgeComponent,
+    SettingLastProgramComponent,
+    SettingDegreeLastProgramComponent,
+    SettingMaxmumSubscribeComponent,
+    SettingPartQraanComponent,
+    CustomConditionsComponent],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,
@@ -92,7 +118,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     ProgramDayTaskMemorizeComponent, ProgramDayTaskLinkingComponent, ProgramDayTaskVideoComponent, ProgramDayTaskDailyTestComponent,
     ProgramDayTaskEncouragementLetterComponent, ProgramDayTaskReviewComponent, ProgramDayTaskRecitationComponent,
     ProgramDayTaskRecitationStudentsComponent, ProgramDayTaskTestPhasedComponent,
-    ProgramDayTaskTasmeaComponent, CardFeelingsComponent, MatTooltipModule
+    ProgramDayTaskTasmeaComponent, CardFeelingsComponent, MatTooltipModule,
+    SettingScientificProblemComponent, SettingAgeComponent, SettingDegreeLastProgramComponent, SettingLastProgramComponent,
+    SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent,ProgramConditionsAgeComponent
+
   ]
 })
 export class SharedModule { }

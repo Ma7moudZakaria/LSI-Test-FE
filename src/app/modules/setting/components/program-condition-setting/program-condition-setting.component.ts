@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./program-condition-setting.component.scss']
 })
 export class ProgramConditionSettingComponent implements OnInit {
-  showAddForm = true;
+  showAddForm = false;
   constructor() { }
 
   ngOnInit(): void {
@@ -15,5 +15,9 @@ export class ProgramConditionSettingComponent implements OnInit {
 
   closeForm() {
     this.showAddForm = false
+  }
+  openCoiditionFrom() {
+    this.showAddForm = true
+
   }
 }
