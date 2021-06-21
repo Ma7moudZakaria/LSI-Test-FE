@@ -119,8 +119,8 @@ import { SettingQualificationsComponent } from './components/setting-conditions/
     ProgramDayTaskEncouragementLetterComponent, ProgramDayTaskReviewComponent, ProgramDayTaskRecitationComponent,
     ProgramDayTaskRecitationStudentsComponent, ProgramDayTaskTestPhasedComponent,
     ProgramDayTaskTasmeaComponent, CardFeelingsComponent, MatTooltipModule,
-    SettingAgeComponent, SettingDegreeLastProgramComponent, SettingLastProgramComponent,
-    SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent, SettingQualificationsComponent
+    SettingAgeComponent, SettingDegreeLastProgramComponent, SettingLastProgramComponent, SettingQualificationsComponent,
+    SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent, ProgramConditionsAgeComponent
 
   ]
 })

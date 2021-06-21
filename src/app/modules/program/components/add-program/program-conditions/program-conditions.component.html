@@ -1,7 +1,15 @@
-<p>program-conditions works!</p>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <button class="cancel-btn"(click)="addConditions()">
+        إضافة شرط
+       </button>
+       <div *ngFor="let item of programConditionsList ;let i=index">
+        <div class="col-3">
+            <app-program-conditions-age *ngIf="programConditionsEnum.age===item.conditionNo"></app-program-conditions-age>
+        </div>
+       </div>
+      
+</div>
 
-<div class="overlay" >
-    <app-program-condition-list  
-    
-    ></app-program-condition-list>
+<div class="overlay" *ngIf="showAddConditionListForm">
+    <app-program-condition-list [progId]='progId' (closeConditionList)='closeConditionList($event)'></app-program-condition-list>
 </div>

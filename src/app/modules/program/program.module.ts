@@ -37,6 +37,7 @@ import { ProgramDayTasksDetailsComponent } from './components/add-program/progra
 import { AddProgramDayTasksComponent } from './components/add-program/program-days/add-program-day-tasks/add-program-day-tasks.component';
 import { ProgramConditionListComponent } from './components/add-program/program-conditions/program-condition-list/program-condition-list.component';
 
+
 @NgModule({
   declarations: [AddEditNotificationComponent,
     AddProgramComponent,
