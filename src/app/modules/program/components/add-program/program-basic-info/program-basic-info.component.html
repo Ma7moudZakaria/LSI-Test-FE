@@ -69,6 +69,11 @@
                 <label class="header_input">{{ 'PROGRAM_BASIC_INFO.PROG_DURATION' | translate }}</label>
                 <input type="text" class="form-control"  formControlName="durationProg" [attr.disabled]='progBasicInfoDetails ? true : null'>
         </div>
+        <div *ngIf="f.durationProg.errors && (f.durationProg.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
+          <div *ngIf="f.durationProg.errors?.required">
+            {{ 'GENERAL.REQUIRED' | translate }}
+          </div>
+        </div>
       </div>
        <div class="col-md-2">
         <div class="form-group">
@@ -249,11 +254,11 @@
           {{Item}}  
         </mat-checkbox> -->
 
-         <!-- <div *ngIf="f.dutiesDays.errors && (f.dutiesDays.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
-          <div *ngIf="f.dutiesDays.errors?.required">
-           {{ 'GENERAL.REQUIRED' | translate }}
-          </div>
-          </div> -->
+            <div *ngIf="f.dayCount.errors && (f.dayCount.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
+              <div *ngIf="f.dayCount.errors?.max">
+              {{ 'PROGRAM_BASIC_INFO.DAY_COUNT_MAX' | translate }}
+              </div>
+            </div>
 
 
           </div>
@@ -408,7 +413,7 @@
       {{ "GENERAL.SAVE" | translate }}
   </button>
 
-  <button    type="reset" class="cancel-btn"> 
+  <button (click)="onCancel()" type="reset" class="cancel-btn"> 
       {{ "GENERAL.CANCEL" | translate }}
   </button>
 </div>

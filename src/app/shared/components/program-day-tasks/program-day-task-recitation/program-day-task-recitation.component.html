@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-12">
                 <div>
-                    <label class="header_input">فترة التسميع</label>
+                    <label class="header_input"> {{'PROGRAM_DAY_TASK_RECITIATION.RECITIATION_PERIOD'| translate}}</label>
                   </div>
                    <mat-radio-group aria-label="Select an option"  class="example-radio-group" 
                     [(ngModel)]="recitationDetailsModel.prgRecitType" disabled>
@@ -24,7 +24,7 @@
                     <div *ngFor="let item of progRecitationTimes;let i=index" 
                         class="badge badge-info p-2 " >
                     <div class="d-flex justify-content-between">
-                        <p class="ellipsis mb-0"> from : {{item.progRecFrom}} , to : {{item.progRecTo}}</p>
+                        <p class="ellipsis mb-0"> {{'PROGRAM_DAY_TASK_RECITIATION.FROM'| translate}} : {{item.progRecFrom}} ,  {{'PROGRAM_DAY_TASK_RECITIATION.TO'| translate}} : {{item.progRecTo}}</p>
                     </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                 <div *ngFor="let item of progRecitationTimes;let i=index" 
                         class="badge badge-info p-2 " >
                     <div class="d-flex justify-content-between">
-                        <p class="ellipsis mb-0"> from : {{item.progRecFrom}} , to : {{item.progRecTo}}</p>
+                        <p class="ellipsis mb-0"> {{'PROGRAM_DAY_TASK_RECITIATION.FROM'| translate}} : {{item.progRecFrom}} , {{'PROGRAM_DAY_TASK_RECITIATION.TO'| translate}} : {{item.progRecTo}}</p>
                     </div>
                 </div>
     

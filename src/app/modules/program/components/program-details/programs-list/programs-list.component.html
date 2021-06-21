@@ -2,13 +2,14 @@
     <div class="d-flex justify-content-between">
         <p class="mb-4">{{'PROGRAMS_LIST.PROGRAMS' | translate}}</p>
         <button class="cancel-btn" (click)="addPrgramPage()">
-           اضافه برنامج
+            {{'PROGRAMS_LIST.ADD_PROGRAM' | translate}} 
           </button>
     </div>
    
     <app-search-input (searchTerm)="filterByNameSearchKey($event)"></app-search-input>
     <a class="advanced_search">
-        بحث متقدم 
+        {{'PROGRAMS_LIST.ADVANCED_SEARCH' | translate}} 
+       
     </a>
          <div class="internal_scroll_list_group">
         <!-- <a class="list-group-item d-flex"  
@@ -20,7 +21,7 @@
        <!-- (click)="loadProgramsbyAdvancedFilter(program);selectedIndex=i" -->
         <a class="list-group-item  d-flex" *ngFor="let program  of programsList; let i = index" 
             [class.active]="selectedIndex === i" 
-            (click)="getProgramIdToProgramDetails(program)"
+            (click)="getProgramIdToProgramDetails(program);selectedIndex=i"
             >
                
              <span>{{ program.progName}}</span>                

@@ -2,14 +2,14 @@
     <div class="row">
         <div class="col-12 mt-3">
     <mat-checkbox  class="example-margin mx-2" [(ngModel)]="linkingDetailsModel.isMndatory"
-        class="example-margin ">الزامى </mat-checkbox>
+        class="example-margin "> {{'PROGRAM_DAY_TASK_LINKING.REQUIRED' | translate}} </mat-checkbox>
     </div>
     </div>
     <div class="row">
         <div class="col-12">
               <mat-radio-group [(ngModel)]="linkingDetailsModel.linkingType" aria-label="Select an option">
-                <mat-radio-button value="{{TaskLinkingTypeEnum.automatic}}" class="px-2" (click)="getLastFiveHomeWorkAuto()">الى</mat-radio-button>
-                <mat-radio-button value="{{TaskLinkingTypeEnum.manual}}" class="px-2" (click)="HomeWorkeManeual()">يدوى</mat-radio-button>
+                <mat-radio-button value="{{TaskLinkingTypeEnum.automatic}}" class="px-2" (click)="getLastFiveHomeWorkAuto()"> {{'PROGRAM_DAY_TASK_LINKING.AUTO' | translate}}</mat-radio-button>
+                <mat-radio-button value="{{TaskLinkingTypeEnum.manual}}" class="px-2" (click)="HomeWorkeManeual()"> {{'PROGRAM_DAY_TASK_LINKING.MANUAL' | translate}}</mat-radio-button>
             </mat-radio-group>
         </div>
         </div>  
@@ -65,7 +65,7 @@
                             class="example-margin ">{{'GENERAL.MANDATORY'| translate}} </mat-checkbox></span>
                      </div>
                      <div class="col-6 px-0">
-                         <span class="grad">الدرجة
+                         <span class="grad">{{'PROGRAM_DAY_TASK_LINKING.DEGREE' | translate}} 
                              <span>  &nbsp;  : </span>
                              <span>  &nbsp; </span> 
  
@@ -75,8 +75,8 @@
                      
              </div>
              <mat-radio-group [disabled]="true" [(ngModel)]="linkingDetailsModel.linkingType" aria-label="Select an option">
-                <mat-radio-button value="{{TaskLinkingTypeEnum.automatic}}" class="px-2" (click)="getLastFiveHomeWorkAuto()">الى</mat-radio-button>
-                <mat-radio-button value="{{TaskLinkingTypeEnum.manual}}" class="px-2" (click)="HomeWorkeManeual()">يدوى</mat-radio-button>
+                <mat-radio-button value="{{TaskLinkingTypeEnum.automatic}}" class="px-2" (click)="getLastFiveHomeWorkAuto()">{{'PROGRAM_DAY_TASK_LINKING.AUTO' | translate}} </mat-radio-button>
+                <mat-radio-button value="{{TaskLinkingTypeEnum.manual}}" class="px-2" (click)="HomeWorkeManeual()">{{'PROGRAM_DAY_TASK_LINKING.MANUAL' | translate}} </mat-radio-button>
             </mat-radio-group>
              <!-- <div class="mt-3  mb-3">
                  <span class="grad">  الصفحات
@@ -99,7 +99,7 @@
                  </ng-container>
                  
              <p class="mt-3 grad">
-                 السؤال الذي يظهر للطالب
+                {{'PROGRAM_DAY_TASK_LINKING.QUESTION' | translate}} 
              </p>
              <p class="regular mt-2">{{linkingDetailsModel.questionToStudent}}</p>
         </ng-container>

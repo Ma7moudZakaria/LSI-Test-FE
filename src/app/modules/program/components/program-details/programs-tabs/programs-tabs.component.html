@@ -2,13 +2,12 @@
     <div class="row group_header fix_margin w-100">
         <div class="item_group" (click)="showTap = 'BASEINFO'"
         [ngClass]="{ item_group_active: showTap == 'BASEINFO' }" >
-           
-            البيانات الاساسية
+        {{'PROGRAM_TABS.BASIC_INFO' | translate}}
+            
         </div>
         <div class="item_group" (click)="showTap = 'STUDENS'"
         [ngClass]="{ item_group_active: showTap == 'STUDENS' }" >
-           
-        الطلاب
+        {{'PROGRAM_TABS.STUDENTS' | translate}}
         </div>
         
         <!-- <div class="item_group" (click)="showTap = 'PROGRESSTEST'"
@@ -18,12 +17,14 @@
      
         <div class="item_group" (click)="showTap = 'JOIN'"
         [ngClass]="{ item_group_active: showTap == 'JOIN' }" >
-        إختبارات الانضمام
+        {{'PROGRAM_TABS.JOINING_EXAM' | translate}}
+        
         </div>
 
         <div class="item_group" (click)="showTap = 'DAYS'"
         [ngClass]="{ item_group_active: showTap == 'DAYS' }">
-            الايام
+        {{'PROGRAM_TABS.DAYS' | translate}}
+            
         </div>
 
         <!-- <div class="item_group" (click)="showTap = 'VACATION'"
@@ -32,7 +33,8 @@
         </div> -->
         <div class="item_group" (click)="showTap = 'NOTIFACATION'"
         [ngClass]="{ item_group_active: showTap == 'NOTIFACATION' }">
-            تنبيهات 
+        {{'PROGRAM_TABS.NOTIFACATION' | translate}}
+             
         </div>
         <!-- <div class="item_group" (click)="showTap = 'CANDITION'"
         [ngClass]="{ item_group_active: showTap == 'CANDITION' }">
@@ -44,7 +46,8 @@
     <div class="row fix_margin w-100" *ngIf='programDetails'>
         <div class="col-12 px-0 ">
 
-           <app-basic-information *ngIf="showTap == 'BASEINFO'" [progBasicInfoDetails]='programDetails?.progBaseInfo' (refreshProgList)='refreshProgList()'></app-basic-information>
+           <app-basic-information *ngIf="showTap == 'BASEINFO'" [progBasicInfoDetails]='programDetails?.progBaseInfo' 
+           (refreshProgList)='refreshProgList()' (refreshProgDetails)='getProgramDetails()'></app-basic-information>
            <app-days *ngIf="showTap == 'DAYS'" [progs]='programDetails'></app-days>
            <!-- <app-conditions *ngIf="showTap == 'CANDITION'"></app-conditions> -->
            <app-join-requests *ngIf="showTap == 'JOIN'" [programDetails]='programDetails'></app-join-requests>
