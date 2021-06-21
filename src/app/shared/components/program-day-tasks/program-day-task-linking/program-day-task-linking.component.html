@@ -13,6 +13,7 @@
             </mat-radio-group>
         </div>
         </div>  
+        {{this.linkingDetailsModel?.linkingType}}
 
     <div class="row mx-0" *ngIf="this.linkingDetailsModel?.linkingType===this.TaskLinkingTypeEnum.manual">
         <ng-container *ngFor="let item of linkingDetailsModel?.bookAttatchments;let i=index"> 

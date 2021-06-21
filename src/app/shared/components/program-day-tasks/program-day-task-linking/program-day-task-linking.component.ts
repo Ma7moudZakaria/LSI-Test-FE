@@ -112,10 +112,13 @@ export class ProgramDayTaskLinkingComponent implements OnInit {
         res.data as IProgramDayTasksModel
         Array.from(res.data).forEach((elm: any) => {
           let lstBookAttatchments = JSON.parse(elm.detailsTask).bookAttatchments
+          if(this.fileList?.length! <5)
+          {
           if (lstBookAttatchments.length > 0) {
             Array.from(lstBookAttatchments).forEach((item: any) => { this.fileList?.push(item as IAttachment); })
           }
           else { this.fileList?.push(elm as IAttachment); }
+        }
         })
         this.linkingDetailsModel.bookAttatchments = this.fileList;
       }
