@@ -57,11 +57,11 @@
                 </mat-checkbox>
             </ng-container>
        </div>
-        <!-- <div *ngIf="f.progType.errors && (f.progType.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
-          <div *ngIf="f.progType.errors?.required">
-          {{ 'GENERAL.REQUIRED' | translate }}
+          <div *ngIf="f.progType.errors && (f.progType.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 "> 
+            <div *ngIf="f.progType.errors?.required">
+              {{ 'GENERAL.REQUIRED' | translate }}
+            </div>
           </div>
-          </div> -->
       </div>
 
       <div class="col-md-2">
@@ -255,6 +255,10 @@
         </mat-checkbox> -->
 
             <div *ngIf="f.dayCount.errors && (f.dayCount.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
+              
+              <div *ngIf="f.dayCount.errors?.required">
+                {{ 'GENERAL.REQUIRED' | translate }}
+              </div>
               <div *ngIf="f.dayCount.errors?.max">
               {{ 'PROGRAM_BASIC_INFO.DAY_COUNT_MAX' | translate }}
               </div>
