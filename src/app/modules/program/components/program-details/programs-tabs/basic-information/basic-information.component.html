@@ -8,7 +8,8 @@
                 <p class="head">{{ progBasicInfoDetails?.prgName}} </p>
                 <div class="d-flex">
                   <a (click)="open(content)"><i class="far fa-copy" ></i></a>  
-                    <i class="fas fa-play" (click)="publishProgram()"></i>
+                    <i *ngIf='!basicInfoDetails?.prgIsPubli' class="fas fa-play" (click)="publishProgram()"></i>
+                    <i *ngIf='basicInfoDetails?.prgIsPubli' class="fas fa-pause" (click)="publishProgram()"></i>
                     <img src="assets/images/question/edit-question.svg"  (click)="editBasicInfo()">
                     <img src="assets/images/feelings/trash.svg" (click)="confirmDialog()">
 

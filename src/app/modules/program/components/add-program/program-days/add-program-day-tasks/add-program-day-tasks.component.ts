@@ -88,7 +88,11 @@ export class AddProgramDayTasksComponent implements OnInit {
       this.selectedProgramDayTasksList.push(item.id);
     }
     else{
-
+      let it = this.selectedProgramDayTasksList.filter(i => i === item.id)[0];
+      const ind = this.selectedProgramDayTasksList?.indexOf(it);
+      if (ind > -1) {
+        this.selectedProgramDayTasksList?.splice(ind, 1);
+      }
     }
   }
 

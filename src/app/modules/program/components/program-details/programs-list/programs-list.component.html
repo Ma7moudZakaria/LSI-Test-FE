@@ -21,7 +21,7 @@
        <!-- (click)="loadProgramsbyAdvancedFilter(program);selectedIndex=i" -->
         <a class="list-group-item  d-flex" *ngFor="let program  of programsList; let i = index" 
             [class.active]="selectedIndex === i" 
-            (click)="getProgramIdToProgramDetails(program)"
+            (click)="getProgramIdToProgramDetails(program);selectedIndex=i"
             >
                
              <span>{{ program.progName}}</span>                
