@@ -28,7 +28,7 @@
     <ng-container *ngFor='let item of progDaysList | myfilter:filterargs ; let i = index' >
     <a  class="list-group-item  d-flex align-items-center"  (click)='onDayClick(item); defaultSelectedDay = i'
     [class.active]="defaultSelectedDay === i">
-        <mat-checkbox    class="example-margin "  [disabled]='item.tskCnt > 0' >
+        <mat-checkbox class="example-margin " [disabled]='item.tskCnt > 0' (change)='onDayCheckBoxChecked(item)'>
             day-{{item.order}}
         </mat-checkbox>
         <span class="count">{{item.tskCnt}}</span>

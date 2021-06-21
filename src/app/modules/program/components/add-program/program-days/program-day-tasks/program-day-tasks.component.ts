@@ -26,7 +26,7 @@ export class ProgramDayTasksComponent implements OnInit {
   @Output() openAddDayTasks = new EventEmitter<boolean>();
   @Output() programDutyDayModel = new EventEmitter<IProgramDutyDays>();
 
-  @Input() programDutyDay = {} as IProgramDutyDays;
+  @Input() programDutyDay : IProgramDutyDays | undefined;
   @Output()programDayTaskId=new EventEmitter<string>();
   @Output()huffazTaskType=new EventEmitter<number>();
   @Output()taskDetailsEvent=new EventEmitter<IProgramDayTasksModel>();
@@ -45,7 +45,7 @@ export class ProgramDayTasksComponent implements OnInit {
     private lookupService: LookupService) { }
 
   ngOnInit(): void {
-    this.getProgramDutyDays(this.programDutyDay?.id);
+    this.getProgramDutyDays();
   }
 
   setCurrentLang() {
@@ -59,8 +59,8 @@ export class ProgramDayTasksComponent implements OnInit {
     // this.languageService.headerPageNameEvent.emit(this.translate.instant('UPDATE_TEACHER_PG.TITLE'));
   }
 
-  getProgramDutyDays(id?: string) {
-    this.programDayTasksService.getProgramDayTasks(id || '').subscribe(res => {
+  getProgramDutyDays() {
+    this.programDayTasksService.getProgramDayTasks(this.programDutyDay?.id || '').subscribe(res => {
       if (res.isSuccess) {
         this.programDayTasksLists = res.data as Array<IProgramDayTasksModel>;
          this.setProgrmeDayTask(this.programDayTasksLists[0])
@@ -182,7 +182,7 @@ export class ProgramDayTasksComponent implements OnInit {
     
       this.programDayTasksService.UpdateOrderByProgramDayTasks(this.programDayTasksUpdateOrderByModel).subscribe(res => {
         if (res.isSuccess) {
-       this.getProgramDutyDays(this.programDutyDay.id || '');
+       this.getProgramDutyDays();
         }
         else {
      
