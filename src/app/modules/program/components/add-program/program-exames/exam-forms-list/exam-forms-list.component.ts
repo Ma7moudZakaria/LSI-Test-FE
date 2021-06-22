@@ -22,6 +22,7 @@ import { ProgramDetailsComponent } from '../../../program-details/program-detail
 export class ExamFormsListComponent implements OnInit {
   
   @Output() selectedExamFormId= new EventEmitter<string>();
+  @Output() progDetailsEvent = new EventEmitter();
   
   @Input() progDetails : IProgramDetails | undefined;
 
@@ -43,12 +44,11 @@ export class ExamFormsListComponent implements OnInit {
     private _alertify:AlertifyService) { }
 
   ngOnInit(): void {
-    this.getExamForms();
-
     if (this.progDetails?.progJoiExa && this.progDetails?.progJoiExa.length > 0){
       this.mapProgExams();
       this.toggel = this.progDetails.progBaseInfo?.prgIsConExa;
     }
+    this.getExamForms();
   }
 
   mapProgExams(){
@@ -70,6 +70,10 @@ export class ExamFormsListComponent implements OnInit {
     this.examFormService.getExamFormFilter(this.examFormFilter).subscribe(res => {
       let response = <BaseResponseModel>res;
         this.examFormsList = response.data;
+
+        if (this.progDetails?.progJoiExa && this.progDetails?.progJoiExa.length > 0){
+          this.examFormsList = this.examFormsList.filter( ( el ) => !this.progDetails?.progJoiExa?.filter( e => e.id == el.id )[0] );
+        }
 
         this.searchExamFormsList= this.examFormsList.map(item => ({
           usrId:item.id || '',
@@ -171,11 +175,10 @@ export class ExamFormsListComponent implements OnInit {
     // this.assignExamFormsToProgramModel.programId=this.selectedprogram.programId;
     this.assignExamFormsToProgramModel.programId=this.progDetails?.progBaseInfo?.id;
     this.assignExamFormsToProgramModel.examForms=this.examFormsAddedToProgramList.map(item => ({ examFormId:item.usrId || ''}));
-        this.programService.assignExamFormToProgram(this.assignExamFormsToProgramModel).subscribe(res => {
+    this.programService.assignExamFormToProgram(this.assignExamFormsToProgramModel).subscribe(res => {
           if (res.isSuccess) {
-            
             this._alertify.success(res.message||"");
-        
+            this.progDetailsEvent.emit();
           }
           else {
             this.resultMessage = {
