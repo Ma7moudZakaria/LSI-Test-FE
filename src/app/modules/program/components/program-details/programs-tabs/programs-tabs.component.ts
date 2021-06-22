@@ -39,7 +39,7 @@ export class ProgramsTabsComponent implements OnInit {
       this.progService.getProgramDetails(this.programModel?.id || '').subscribe(res => {
         if (res.isSuccess) {
           this.programDetails = res.data as IProgramDetails;
-          
+
           if (this.basicInfoCompChild && this.basicInfoCompChild.basicInfoDetails) 
           {
             this.basicInfoCompChild.basicInfoDetails = this.programDetails.progBaseInfo;

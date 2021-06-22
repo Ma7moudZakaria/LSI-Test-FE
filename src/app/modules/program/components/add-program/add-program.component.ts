@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IProgramDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
@@ -24,6 +24,7 @@ export class AddProgramComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private programService: ProgramService) { }
 
   ngOnInit(): void {
@@ -43,6 +44,10 @@ export class AddProgramComponent implements OnInit {
       if (res.isSuccess) {
         this.programDetails = res.data as IProgramDetails;
 
+        if (this.programDetails?.progBaseInfo?.prgPubliDate && this.programDetails?.progBaseInfo?.prgIsPubli){
+          this.router.navigate(["/program"]);
+        }
+
         if (this.progDaysCompChild && this.progDaysCompChild.progDetails) 
         {
           this.progDaysCompChild.progDetails = this.programDetails;
@@ -56,8 +61,6 @@ export class AddProgramComponent implements OnInit {
           }
 
         }
-  
-        console.log("programDetails ===========>", this.programDetails);
       }
       else {
         this.resMessage =
