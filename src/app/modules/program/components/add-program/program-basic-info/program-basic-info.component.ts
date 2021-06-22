@@ -238,43 +238,23 @@ export class ProgramBasicInfoComponent implements OnInit {
       }
       else {
         this.alert.error(res.message || '');
-        this.resultMessage = {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
       }
     }, error => {
-      this.resultMessage = {
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
-      }
+      this.alert.error(error || '');
     });
-
-
   }
-
 
   editBasicInfoProgrm() {
     this.BasicInfoService.updateBasicIfoProgram(this.baseicInfoProgrmEditModel || {}).subscribe(res => {
 
       if (res.isSuccess) {
-        this.resultMessage = {
-          message: res.message || "",
-          type: BaseConstantModel.SUCCESS_TYPE
-        }
-
+        this.alert.success(res.message || '');
       }
       else {
-        this.resultMessage = {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+        this.alert.error(res.message || '');
       }
     }, error => {
-      this.resultMessage = {
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
-      }
+      this.alert.error(error || '');
     });
   }
 
