@@ -127,45 +127,23 @@ export class ExamFormsListComponent implements OnInit {
       this.examFormsAddedToProgramList = [];
       this.getExamForms();
     }
+    else if(this.progDetails?.progJoiExa && this.progDetails?.progJoiExa.length > 0){
+      this.mapProgExams();
+      this.getExamForms();
+    }
 
     this.programService.updateProgramExamToggle(this.progDetails?.progBaseInfo?.id || '').subscribe(res => {
       if (res.isSuccess) {
-        this.resultMessage = {
-          message:res.message||"",
-          type: BaseConstantModel.SUCCESS_TYPE
-        }
-        setTimeout(() => {
-          this.resultMessage = {
-            message:"",
-            type:""
-          }
-        }, 1500)
+        this._alertify.success(res.message||"");
+        this.progDetailsEvent.emit();
       }
       else {
-        this.resultMessage = {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
-        setTimeout(() => {
-          this.resultMessage = {
-            message:"",
-            type:""
-          }
-        }, 1500)
+        this._alertify.error(res.message || '');
       }
       
     },
       error => {
-        this.resultMessage = {
-          message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
-          type: BaseConstantModel.DANGER_TYPE
-        }
-        setTimeout(() => {
-          this.resultMessage = {
-            message:"",
-            type:""
-          }
-        }, 1500)
+        this._alertify.error(error || '');
       })
 
   }
@@ -181,17 +159,11 @@ export class ExamFormsListComponent implements OnInit {
             this.progDetailsEvent.emit();
           }
           else {
-            this.resultMessage = {
-              message: res.message,
-              type: BaseConstantModel.DANGER_TYPE
-            }
+            this._alertify.error(res.message || '');
           }
         },
           error => {
-            this.resultMessage = {
-              message: error,
-              type: BaseConstantModel.DANGER_TYPE
-            }
+            this._alertify.error(error || '');
           })
 
   }
