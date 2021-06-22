@@ -237,8 +237,18 @@
               [disabled]='progBasicInfoDetails !== undefined'>{{item.nameAr}}</mat-radio-button>
             </ng-container>
             </mat-radio-group>
-              <input type="text" class="form-control w-50" formControlName="dayCount" placeholder="{{ 'PROGRAM_BASIC_INFO.WRITE_DAY_COUNT' | translate }} " 
+              <input type="number" class="form-control w-50" formControlName="dayCount" placeholder="{{ 'PROGRAM_BASIC_INFO.WRITE_DAY_COUNT' | translate }} " 
               [attr.disabled]='progBasicInfoDetails ? true : null' *ngIf='progDutyDaysFreeDaysSelection'>
+
+              <div *ngIf="progDutyDaysFreeDaysSelection && f.dayCount.errors && (f.dayCount.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
+              
+                <div *ngIf="progDutyDaysFreeDaysSelection && f.dayCount.errors?.required">
+                  {{ 'GENERAL.REQUIRED' | translate }}
+                </div>
+                <div *ngIf="progDutyDaysFreeDaysSelection && f.dayCount.errors?.max">
+                {{ 'PROGRAM_BASIC_INFO.DAY_COUNT_MAX' | translate }}
+                </div>
+              </div>
       
               <div *ngIf='!progDutyDaysFreeDaysSelection'>
                 <ng-container *ngFor="let item of collectionOfLookup.DAYS" >
@@ -249,12 +259,19 @@
                   </ng-container>
               </div>
 
+              <div *ngIf="!progDutyDaysFreeDaysSelection && isSubmit && progWeeklyDayList.length === 0" class="alert alert-danger mt-2 mb-2 ">
+              
+                <div>
+                  {{ 'GENERAL.REQUIRED' | translate }}
+                </div>
+              </div>
+
         <!-- <mat-checkbox    *ngFor="let Item of days" 
         class="example-margin ml-1 mr-1"  >
           {{Item}}  
         </mat-checkbox> -->
 
-            <div *ngIf="f.dayCount.errors && (f.dayCount.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
+            <!-- <div *ngIf="f.dayCount.errors && (f.dayCount.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
               
               <div *ngIf="f.dayCount.errors?.required">
                 {{ 'GENERAL.REQUIRED' | translate }}
@@ -262,7 +279,7 @@
               <div *ngIf="f.dayCount.errors?.max">
               {{ 'PROGRAM_BASIC_INFO.DAY_COUNT_MAX' | translate }}
               </div>
-            </div>
+            </div> -->
 
 
           </div>

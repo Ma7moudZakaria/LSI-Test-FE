@@ -104,7 +104,7 @@ export class ProgramBasicInfoComponent implements OnInit {
         advantageProg: ['', [Validators.required, Validators.maxLength(300), Validators.pattern(BaseConstantModel.LETTERS_WITH_ALPHANUMERIC_AND_SPECIAL_CHAR)]],
         textPledge: ['', [Validators.required, Validators.maxLength(300), Validators.pattern(BaseConstantModel.LETTERS_WITH_ALPHANUMERIC_AND_SPECIAL_CHAR)]],
         dutiesDayType: ['', [Validators.required]],
-        dayCount:['' , [Validators.required,Validators.max(7)] ],
+        dayCount:['1' , [Validators.required,Validators.max(7)]], 
         examPass: [''],
         rectMand: [''],
         isAlsard: [false],
@@ -157,6 +157,10 @@ export class ProgramBasicInfoComponent implements OnInit {
   onSubmit() {
     this.isSubmit = true;
     this.resultMessage = {}
+
+    if (!this.progDutyDaysFreeDaysSelection && this.progWeeklyDayList.length === 0){
+      return;
+    }
     //form is valid
     if (this.baseInfoForm.valid && this.programTypesList.length > 0) {
 
@@ -341,7 +345,6 @@ export class ProgramBasicInfoComponent implements OnInit {
         this.progWeeklyDayList?.splice(ind, 1);
       }
     }
-    console.log(this.progWeeklyDayList);
   }
 
   progWeeklyDaysChecked(item:BaseLookupModel){
