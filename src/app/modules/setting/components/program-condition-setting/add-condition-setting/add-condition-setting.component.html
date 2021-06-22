@@ -19,20 +19,19 @@
 
     <div class="form-group">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12" *ngIf='conditionModel.answerType'>
                 <label class="text-right header_input mb-3"> نوع الاجابه</label>
                 <mat-radio-group  
-                [ngModelOptions]="{standalone: true}"
                  class="example-radio-group" 
-                 [(ngModel)]="conditionModel.answerType" >
+                 [(ngModel)]="conditionModel.answerType" [ngModelOptions]="{standalone: true}" >
                    <!-- <ng-container  *ngFor="let item of collectionOfLookup.PROGRAM_CONDTION"></ng-container> -->
                     <!-- <mat-radio-button value="{{item.id}}" class="example-radio-button ml-3"  
                     *ngFor="let item of collectionOfLookup.PROG_COND_TYPES" (change)="radioChange($event)">
                     {{ translate.currentLang == langEnum.en ? item.nameEn : item.nameAr}}
                     </mat-radio-button> -->
                     <mat-radio-button  value="{{answerTypeEnum.Choices}}" class="example-radio-button ml-1 mr-1" >{{Choices()}} </mat-radio-button>
-                    <mat-radio-button  value="{{answerTypeEnum.text}}" class="example-radio-button ml-1 mr-1"  >{{text() }} </mat-radio-button>
-                    <mat-radio-button  value="{{answerTypeEnum.toggel}}" class="example-radio-button ml-1 mr-1"  >{{toggel() }} </mat-radio-button>
+                    <mat-radio-button  value="{{answerTypeEnum.Text}}" class="example-radio-button ml-1 mr-1"  >{{text() }} </mat-radio-button>
+                    <mat-radio-button  value="{{answerTypeEnum.Toggel}}" class="example-radio-button ml-1 mr-1"  >{{toggel() }} </mat-radio-button>
                 </mat-radio-group>
         
             </div>
@@ -42,8 +41,7 @@
         </div>
         
     </div>
- {{conditionModel.answerType}}
- {{answerTypeEnum.Choices}}
+
 <ng-container *ngIf="answerTypeEnum.Choices == conditionModel.answerType" >
     <div class="form-group" >
         <div class="row">

@@ -1,3 +1,4 @@
+import { ProgramConditionsService } from 'src/app/core/services/program-services/program-conditions.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { SettingAnswerTypeEnum } from 'src/app/core/enums/setting-answerType-enum.enum';
@@ -8,6 +9,7 @@ import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
+import { IAddProgramPredefinedCustomConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iadd-program-predefined-custom-conditions-model';
 
 @Component({
   selector: 'app-add-condition-setting',
@@ -17,7 +19,7 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 export class AddConditionSettingComponent implements OnInit {
   @Output() closeOverlay = new EventEmitter<boolean>();
 
-  conditionModel: IConditionModel = { answerList: [] };
+  conditionModel: IConditionModel = { answerType: SettingAnswerTypeEnum.Choices, answerList: [] };
   answerTypeEnum = SettingAnswerTypeEnum;
   langEnum = LanguageEnum;
   collectionOfLookup = {} as ILookupCollection;
@@ -29,7 +31,9 @@ export class AddConditionSettingComponent implements OnInit {
   currentLang = '';
   MULTISELECT = '';
 
-  constructor(public translate: TranslateService, private lookupService: LookupService,) { }
+  constructor(public translate: TranslateService,
+    private lookupService: LookupService,
+    private progCondService: ProgramConditionsService) { }
 
   ngOnInit(): void {
     this.MULTISELECT = this.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.MULTI_SELECT') : this.translate.instant('GENERAL.MULTI_SELECT')
@@ -81,9 +85,21 @@ export class AddConditionSettingComponent implements OnInit {
   }
 
   saveCondition() {
-    let conditionConvertModel = JSON.stringify(this.conditionModel);
-    console.log(conditionConvertModel);
+    let model: IAddProgramPredefinedCustomConditionsModel = {
+      title: this.conditionModel.title,
+      conditionJson: JSON.stringify(this.conditionModel)
+    }
 
+    this.progCondService.saveProgramPredefinedCustomConditions(model).subscribe(res => {
+      if (res.isSuccess) {
+
+      }
+      else {
+
+      }
+    }, error => {
+
+    })
   }
 
   getModel() {

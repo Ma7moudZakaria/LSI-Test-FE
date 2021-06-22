@@ -17,6 +17,7 @@ export class ViewConditionSettingComponent implements OnInit {
   constructor(public programConditionsService: ProgramConditionsService) { }
 
   ngOnInit(): void {
+    this.getProgramConditionsLis();
   }
   AddConditions() {
     this.openCoiditionFrom.emit(true)
