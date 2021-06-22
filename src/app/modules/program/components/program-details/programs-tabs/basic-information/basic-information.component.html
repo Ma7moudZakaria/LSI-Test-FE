@@ -11,7 +11,7 @@
                     <i *ngIf='!basicInfoDetails?.prgIsPubli' class="fas fa-play" (click)="publishProgram()"></i>
                     <i *ngIf='basicInfoDetails?.prgIsPubli' class="fas fa-pause" (click)="publishProgram()"></i>
                     <img *ngIf='!basicInfoDetails?.prgPubliDate || !basicInfoDetails?.prgIsPubli' src="assets/images/question/edit-question.svg"  (click)="editBasicInfo()">
-                    <img src="assets/images/feelings/trash.svg" (click)="confirmDialog()">
+                    <img *ngIf='!basicInfoDetails?.prgPubliDate || !basicInfoDetails?.prgIsPubli' src="assets/images/feelings/trash.svg" (click)="confirmDialog()">
 
                 </div>
 
