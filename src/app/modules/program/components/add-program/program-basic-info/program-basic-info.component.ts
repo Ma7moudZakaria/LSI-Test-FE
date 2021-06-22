@@ -109,7 +109,7 @@ export class ProgramBasicInfoComponent implements OnInit {
         rectMand: [''],
         isAlsard: [false],
         recitType:[''],
-        progType:[[] , [Validators.required]]
+        //progType:[[] /*, [Validators.required]*/]
 
       })
   }
@@ -158,7 +158,7 @@ export class ProgramBasicInfoComponent implements OnInit {
     this.isSubmit = true;
     this.resultMessage = {}
     //form is valid
-    if (this.baseInfoForm.valid) {
+    if (this.baseInfoForm.valid && this.programTypesList.length > 0) {
 
       // 1- fill EDit model 
       if (this.progBasicInfoDetails) {

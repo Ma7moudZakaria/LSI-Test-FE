@@ -57,8 +57,8 @@
                 </mat-checkbox>
             </ng-container>
        </div>
-          <div *ngIf="f.progType.errors && (f.progType.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 "> 
-            <div *ngIf="f.progType.errors?.required">
+          <div *ngIf="isSubmit && programTypesList.length === 0" class="alert alert-danger mt-2 mb-2 "> 
+            <div>
               {{ 'GENERAL.REQUIRED' | translate }}
             </div>
           </div>
