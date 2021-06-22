@@ -14,12 +14,12 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
 })
 export class ProgramService {
 
-  AddProgramURL=environment.baseUrl+'QuestionBankQuestions/add-question-bank-question/';
-  UpdateProgramnURL=environment.baseUrl+'QuestionBankQuestions/update-question-bank-question/';
-  GetProgramURL=environment.baseUrl+'Programs/get-program-details-by-id/';
+  // AddProgramURL=environment.baseUrl+'QuestionBankQuestions/add-question-bank-question/';
+  // UpdateProgramnURL=environment.baseUrl+'QuestionBankQuestions/update-question-bank-question/';
+  getProgramURL=environment.baseUrl+'Programs/get-program-details-by-id/';
   
-  GetProgramsFilterURL=environment.baseUrl+'QuestionBankQuestions/get-question-bank-questions-filter/';
-  DeleteProgramURL=environment.baseUrl+'QuestionBankQuestions/delete-question-bank-question/';
+  // GetProgramsFilterURL=environment.baseUrl+'QuestionBankQuestions/get-question-bank-questions-filter/';
+  deleteProgramURL=environment.baseUrl+'Programs/delete-program/';
   // GetAllProgramsURL=environment.baseUrl+'Programs/get-programs-lookup/';
   GetAllProgramsURL=environment.baseUrl+'Programs/get-program-filter-by-name/';
 
@@ -33,36 +33,36 @@ export class ProgramService {
 
   constructor(private http: HttpClient) { }
 
-  addProgram(model:IprogramCreatModel):Observable<BaseResponseModel>{
-    return this.http.post<BaseResponseModel>(this.AddProgramURL,model);
-  }
+  // addProgram(model:IprogramCreatModel):Observable<BaseResponseModel>{
+  //   return this.http.post<BaseResponseModel>(this.AddProgramURL,model);
+  // }
 
-  UpdateProgram(model: IprogramUpdateModel): Observable<BaseResponseModel>{
-    return this.http.put<BaseResponseModel>(this.UpdateProgramnURL,model);
-  }
+  // UpdateProgram(model: IprogramUpdateModel): Observable<BaseResponseModel>{
+  //   return this.http.put<BaseResponseModel>(this.UpdateProgramnURL,model);
+  // }
  
-  getProgramsFilter(filterRequest:IProgramFilterAdvancedRequest):Observable<BaseResponseModel>{
-    return this.http.post<BaseResponseModel>(this.GetProgramsFilterURL,filterRequest)
-  }
+  // getProgramsFilter(filterRequest:IProgramFilterAdvancedRequest):Observable<BaseResponseModel>{
+  //   return this.http.post<BaseResponseModel>(this.GetProgramsFilterURL,filterRequest)
+  // }
 
   getAllPrograms(model:IProgramFilterByNameRequest):Observable<BaseResponseModel>{
     return this.http.post<BaseResponseModel>(this.GetAllProgramsURL, model)
   }
 
   getProgramDetails(id:string):Observable<BaseResponseModel>{
-    return this.http.get<BaseResponseModel>(this.GetProgramURL+id)
+    return this.http.get<BaseResponseModel>(this.getProgramURL+id)
   }
 
-  getProgramDutyDays(id:string):Observable<BaseResponseModel>{
-    return this.http.get<BaseResponseModel>(this.DeleteProgramURL+id);
-  }  
+  // getProgramDutyDays(id:string):Observable<BaseResponseModel>{
+  //   return this.http.get<BaseResponseModel>(this.DeleteProgramURL+id);
+  // }  
 
   copyProgram(model:ICopyProgram):Observable<BaseResponseModel>{
     return this.http.post<BaseResponseModel>(this.CopyProgramURL,model);
   }
 
   deleteProgram(id:string):Observable<BaseResponseModel>{
-    return this.http.delete<BaseResponseModel>(this.DeleteProgramURL+id);
+    return this.http.delete<BaseResponseModel>(this.deleteProgramURL+id);
   }
 
   assignExamFormToProgram(model:IAssignExamFormsToProgram):Observable<BaseResponseModel>{
