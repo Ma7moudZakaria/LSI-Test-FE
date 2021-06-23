@@ -6,17 +6,21 @@
       <img  *ngIf='!feelingsDetailsModel?.isNew' src="../../../../assets/images/feelings/arrange2.svg" class="arrange" >  
       <img  [src]="feelingsDetailsModel?.proPic">
 
-      <div class="data dataInfo pl-3 pr-3">
-        <p class="title">{{feelingsDetailsModel?.fullNameAr}}</p>
+      <div class="data dataInfo  " [ngClass]="{'pl-2 pr-2': !feelingsDetailsModel?.isNew}">
+           
+        <div class="d-flex  justify-content-between">
+          <p class="title mb-0">feelingsDetailsModel?.fullNameAr</p>
+          <span class="date">{{feelingsDetailsModel?.crdOn | date:"MM/dd/yy"}}</span>
+        </div>
         <p class="detlis">
           {{feelingsDetailsModel?.des}}
         </p>
 
       </div>
-      <span class="date">{{feelingsDetailsModel?.crdOn}}</span>
+     
     <div class="actions">
-      <div *ngIf='feelingsDetailsModel?.isNew'>
-        <a (click)= "deleteFeelingCard()"> <img class="delete" src="../../../../assets/images/feelings/trash.svg"></a>
+      <div *ngIf='feelingsDetailsModel?.isNew' class="actions_notNew">
+        <a (click)= "deleteFeelingCard()"> <img class="delete mb-3" src="../../../../assets/images/feelings/trash.svg"></a>
         <a (click)= "publishFeelingItem()"> <img class="arrow"src="../../../../assets/images/feelings/leftArrow.svg"></a>
       </div>
         
