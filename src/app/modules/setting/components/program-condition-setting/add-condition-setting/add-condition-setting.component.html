@@ -66,14 +66,18 @@
 </ng-container>
 
 
-    
+<div *ngIf="resMessage" class="alert alert-{{ resMessage.type }} my-4 py-2 text-center">
+    <span class="bold"> {{resMessage.message}}</span>
+ </div>
    <section class="mt-5">
             <div  class="row direction-rtl buttons-center mt-5">
-                <button   type="submit" class="save-btn" (click)="saveCondition()"> 
+                <button   type="submit" class="save-btn" (click)="saveCondition()" *ngIf="!conditionsDetails"> 
                     {{ "GENERAL.SAVE" | translate }}
                     
                 </button>
-               
+                <button   type="submit" class="save-btn" (click)="editCondition()"*ngIf="conditionsDetails" > 
+                    {{ "GENERAL.EDIT" | translate }}
+                </button>
                 <button  type="reset" class="cancel-btn"    (click)="closeForm()"> 
                     {{ "GENERAL.CANCEL" | translate }} 
                     
