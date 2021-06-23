@@ -1,18 +1,20 @@
-<div class="card-setting">
-    <div class="head">
-      
-        {{item.title}}
-    </div>
-    <div class="body">
-        <div class="details">شرط رقمي</div>
-       
-        
-        <ng-container *ngIf="item.isCustom">
-            <span class="icon_actions">
-                <img src="/assets/images/notify/edit.svg" > 
-                <img src="/assets/images/notify/trash.svg">  
-               </span>
-        </ng-container>
+<ng-container >
+    <div class="card-setting viewMode">
+        <div class="head">
+           <span>{{item.title}}</span>
+           <img class="close" src="../../../../../assets/images/feelings/close.svg">
+        </div>
+        <div class="body">
+            <div class="details"> اجتياز اخر برنامج بالمنصة بتقدير</div>
+            <select class="UpdateUser__Options" name="nameEn">
+                <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELECT_PROGRAM_DEGREE' | translate }}</option>
 
+                   <option *ngFor="let degreeItem of collectionOfLookup.DEGREE"
+                       [value]="degreeItem.id">
+                       {{ translate.currentLang == langEnum.en ? degreeItem.nameEn :
+                           degreeItem.nameAr}}
+                   </option>
+               </select>
+        </div>
     </div>
-</div>
+</ng-container>

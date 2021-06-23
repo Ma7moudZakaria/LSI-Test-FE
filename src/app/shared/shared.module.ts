@@ -66,6 +66,7 @@ import { SettingMaxmumSubscribeComponent } from './components/setting-conditions
 import { SettingPartQraanComponent } from './components/setting-conditions/setting-part-qraan/setting-part-qraan.component';
 import { CustomConditionsComponent } from './components/setting-conditions/custom-conditions/custom-conditions.component';
 import { SettingQualificationsComponent } from './components/setting-conditions/setting-qualifications/setting-qualifications.component';
+import { SettingAcceptComponent } from './components/setting-conditions/setting-accept/setting-accept.component';
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
     SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,
@@ -99,7 +100,8 @@ import { SettingQualificationsComponent } from './components/setting-conditions/
     SettingMaxmumSubscribeComponent,
     SettingPartQraanComponent,
     CustomConditionsComponent,
-    SettingQualificationsComponent],
+    SettingQualificationsComponent,
+    SettingAcceptComponent],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,
@@ -120,7 +122,7 @@ import { SettingQualificationsComponent } from './components/setting-conditions/
     ProgramDayTaskRecitationStudentsComponent, ProgramDayTaskTestPhasedComponent,
     ProgramDayTaskTasmeaComponent, CardFeelingsComponent, MatTooltipModule,
     SettingAgeComponent, SettingDegreeLastProgramComponent, SettingLastProgramComponent, SettingQualificationsComponent,
-    SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent, ProgramConditionsAgeComponent
+    SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent, ProgramConditionsAgeComponent,SettingAcceptComponent
 
   ]
 })

@@ -1,16 +1,48 @@
-<div class="d-flex justify-content-between align-items-center mb-3">
-    <button class="cancel-btn"(click)="addConditions()">
-        إضافة شرط
-       </button>
-       <div *ngFor="let item of programConditionsList ;let i=index">
-        <div class="col-3">
-            <app-setting-qualifications *ngIf="programConditionsEnum.age===item.conditionNo"></app-setting-qualifications>
-            <!-- <app-program-conditions-age *ngIf="programConditionsEnum.age===item.conditionNo"></app-program-conditions-age> -->
+<div class="tab_page notifacation_page condition_details">
+    <div class=" pt-3 mb-3">
+        <div class="row">
+            <div class="col-md-12 container_haeder mb-2">
+         
+               <button class="cancel-btn" (click)="addConditions()" >
+                إضافة شرط
+               </button>
+            </div>
         </div>
-       </div>
-      
+    </div>
+    <div class="d-flex  row justify-content-between align-items-center mb-3">
+        <div class="row">
+            <ng-container  *ngFor="let item of programConditionsList ;let i=index">
+                  <div class="col-4">
+                    <app-setting-age  *ngIf="programConditionsEnum.age===item.conditionNo"></app-setting-age>
+                  </div>
+    
+         <div class="col-4">
+            <app-setting-qualifications ></app-setting-qualifications>
+         </div>
+         <div class="col-4">
+                <app-setting-degree-last-program></app-setting-degree-last-program>
+            </div>
+            <div class="col-4">
+                <app-setting-last-program></app-setting-last-program>
+            </div>
+    
+            <div class="col-4">
+                <app-setting-maxmum-subscribe></app-setting-maxmum-subscribe>
+            </div>
+            <div class="col-4">
+                <app-setting-part-qraan></app-setting-part-qraan>
+            </div>
+            <div class="col-4">
+                <app-setting-accept></app-setting-accept>
+            </div>
+           
+           </ng-container >
+        </div>
+    </div>
+    <hr>
+    
+    <div class="overlay" *ngIf="showAddConditionListForm">
+        <app-program-condition-list [progId]='progId' (closeConditionList)='closeConditionList($event)'></app-program-condition-list>
+    </div>
 </div>
 
-<div class="overlay" *ngIf="showAddConditionListForm">
-    <app-program-condition-list [progId]='progId' (closeConditionList)='closeConditionList($event)'></app-program-condition-list>
-</div>

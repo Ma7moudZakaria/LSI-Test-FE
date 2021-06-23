@@ -1,14 +1,19 @@
-<div class="card-setting">
-    <div class="head">
-{{item.title}}
+<ng-container >
+    <div class="card-setting viewMode">
+        <div class="head">
+           <span>{{item.title}}</span>
+           <img class="close" src="../../../../../assets/images/feelings/close.svg">
+        </div>
+        <div class="body">
+            <div class="details">اتمام برنامج سابق بالمنصه</div>
+            <select class="UpdateUser__Options" name="nameEn">
+                <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELECT_PROGRAM' | translate }}</option>
+
+                    <option *ngFor="let item of ProgramsList"
+                        [value]="item.id">
+                                {{ item.progName}}
+                            </option>
+                </select>
+        </div>
     </div>
-    <div class="body">
-        <div class="details">شرط رقمي</div>
-        <ng-container *ngIf="item.isCustom">
-            <span class="icon_actions">
-                <img src="/assets/images/notify/edit.svg" > 
-                <img src="/assets/images/notify/trash.svg">  
-               </span>
-            </ng-container>
-    </div>
-</div>
+</ng-container>

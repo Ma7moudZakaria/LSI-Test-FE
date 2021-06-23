@@ -1,14 +1,22 @@
-<div class="card-setting">
+<!-- <div class="card-setting">
     <div class="head">
      {{item.title}}
     </div>
     <div class="body">
-        <div class="details">شرط رقمي</div>
-        <ng-container *ngIf="item.isCustom">
-            <span class="icon_actions">
-                <img src="/assets/images/notify/edit.svg" > 
-                <img src="/assets/images/notify/trash.svg">  
-               </span>
-        </ng-container>
+        <div class="details"> السن لا يقل عن</div>
+      
     </div>
-</div>
+</div> -->
+
+<ng-container >
+    <div class="card-setting viewMode">
+        <div class="head">
+           <span>{{item.title}}</span>
+           <img class="close" src="../../../../../assets/images/feelings/close.svg">
+        </div>
+        <div class="body">
+            <div class="details">السن لا يقل عن</div>
+            <input type="text">
+        </div>
+    </div>
+</ng-container>
