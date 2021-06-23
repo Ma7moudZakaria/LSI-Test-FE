@@ -60,7 +60,7 @@
     "CHOOSEFILE": "إختر الملفات لرفعها",
     "MANDATORY": "إلزامى",
     "MY_PROGRAM":"برامجى",
-    "FEELING":"مشاعرى"
+    "FEELING":"المشاعر"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
@@ -98,7 +98,7 @@
     "CHOOSEFILE": "إختر الملفات لرفعها",
     "MATERIALAVAILABILITY": "إتاحة المادة العلمية",
     "ACTIVATION": "التنشيط",
-    "ALL": "الكل",
+    "ALL": " الكل ",
     "SELECTEDPROGRAMS": "البرامج المختارة فقط",
     "ACTIVE": "مفعل",
     "INACTIVE": " غير مفعل",
