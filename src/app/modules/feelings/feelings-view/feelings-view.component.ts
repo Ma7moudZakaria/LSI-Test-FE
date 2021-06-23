@@ -10,8 +10,8 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./feelings-view.component.scss']
 })
 export class FeelingsViewComponent implements OnInit {
-  showTap: string = 'student';
-  roleEnum: RoleEnum = RoleEnum.Student;
+  showTap: string = 'teacher';
+  roleEnum: RoleEnum = RoleEnum.Teacher;
   constructor(public languageService: LanguageService,
     public translate: TranslateService) { }
 

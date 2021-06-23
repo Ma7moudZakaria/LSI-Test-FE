@@ -9,7 +9,7 @@
       <div class="data dataInfo  " [ngClass]="{'pl-2 pr-2': !feelingsDetailsModel?.isNew}">
            
         <div class="d-flex  justify-content-between">
-          <p class="title mb-0">feelingsDetailsModel?.fullNameAr</p>
+          <p class="title mb-0">{{translate.currentLang === langEnum.en ? feelingsDetailsModel?.fullNameEn : feelingsDetailsModel?.fullNameAr}}</p>
           <span class="date">{{feelingsDetailsModel?.crdOn | date:"MM/dd/yy"}}</span>
         </div>
         <p class="detlis">
