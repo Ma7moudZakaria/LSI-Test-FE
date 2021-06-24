@@ -68,7 +68,7 @@
         <div class="row">
         <ng-container  *ngFor="let item of customConditionsList ;let i=index">
                     <div class="col-4 mb-3">
-                        <app-custom-conditions [title]="item"></app-custom-conditions>
+                        <app-custom-conditions [customConditionsModel]='item'></app-custom-conditions>
                     </div>
         </ng-container>
           </div>
