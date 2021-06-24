@@ -1,4 +1,6 @@
+import { StringMappingType } from "typescript";
 import { CustomCondTypesEnum } from "../../enums/custom-cond-types-enum.enum";
+import { IProgramCustomCondUI } from "./iprogram-custom-cond-ui";
 
 export interface IprogramPredefinedCustomConditionsModel {
     id?: string;
@@ -11,7 +13,7 @@ export interface IprogramPredefinedCustomConditionsModel {
     conditionJson?: IProgramCustomCondUI;
 }
 
-export interface IProgramCustomCondUI {
-    conditionType: CustomCondTypesEnum;
-    values: string[];
-}
+// export interface IProgramCustomCondUI {
+//     conditionType: CustomCondTypesEnum;
+//     values: string[];
+// }

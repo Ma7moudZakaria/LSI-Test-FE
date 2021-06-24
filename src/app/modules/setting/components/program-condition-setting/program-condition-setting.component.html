@@ -9,7 +9,7 @@
     </div>
 
 <div class="overlay" *ngIf="showAddForm">
-    <app-add-condition-setting (closeOverlay)="closeForm()" ></app-add-condition-setting>
+    <app-add-condition-setting (closeOverlay)="closeForm()" (addCustomCondition)="addCustomCondition()"></app-add-condition-setting>
 </div>
 
 </div>
