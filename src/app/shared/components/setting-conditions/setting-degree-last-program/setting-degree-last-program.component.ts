@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
+import { IProgCondPredefinedMultiList, IProgramPredefinedvalue } from 'src/app/core/interfaces/programs-interfaces/iprog-cond-predefined-multi-list';
 import { IprogramPredefinedCustomConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-predefined-custom-conditions-model';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 
@@ -11,10 +12,13 @@ import { LookupService } from 'src/app/core/services/lookup-services/lookup.serv
   styleUrls: ['./setting-degree-last-program.component.scss']
 })
 export class SettingDegreeLastProgramComponent implements OnInit {
-  @Input() item: IprogramPredefinedCustomConditionsModel = {}
+  @Input() item: IprogramPredefinedCustomConditionsModel = {};
+  @Input()  degreeLastProgramModel: IProgCondPredefinedMultiList = {};
   langEnum = LanguageEnum;
   collectionOfLookup = {} as ILookupCollection;
   listOfLookupProfile: string[] = ['DEGREE'];
+  //selectedDegreeLastPrograms:string[]=[];
+  selectedDegreeLastPrograms = Array<IProgramPredefinedvalue>();
   constructor(
     private lookupService: LookupService,
     public translate: TranslateService,
@@ -28,5 +32,14 @@ export class SettingDegreeLastProgramComponent implements OnInit {
       this.collectionOfLookup = res.data as ILookupCollection;
      
     });
+  }
+  addDegreeItem(){
+    const exist = this.selectedDegreeLastPrograms.some(el => el.id === this.degreeLastProgramModel.condSelcted)
+    if (!exist) {
+      if (this.collectionOfLookup.LANG) {
+        this.selectedDegreeLastPrograms.push(
+          this.collectionOfLookup.LANG.filter(el => el.id == this.degreeLastProgramModel.condSelcted)[0]);
+      }
+    }
   }
 }
