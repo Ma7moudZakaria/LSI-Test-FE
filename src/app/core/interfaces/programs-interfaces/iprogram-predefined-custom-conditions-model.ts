@@ -1,3 +1,4 @@
+import { StringMappingType } from "typescript";
 import { CustomCondTypesEnum } from "../../enums/custom-cond-types-enum.enum";
 import { IProgramCustomCondUI } from "./iprogram-custom-cond-ui";
 

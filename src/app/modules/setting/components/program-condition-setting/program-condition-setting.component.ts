@@ -1,5 +1,6 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ViewConditionSettingComponent } from './view-condition-setting/view-condition-setting.component';
 
 @Component({
   selector: 'app-program-condition-setting',
@@ -9,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class ProgramConditionSettingComponent implements OnInit {
   showAddForm = false;
   constructor() { }
+
+  @ViewChild(ViewConditionSettingComponent) CustomCondition: ViewConditionSettingComponent | undefined;
 
   ngOnInit(): void {
   }
@@ -20,4 +23,12 @@ export class ProgramConditionSettingComponent implements OnInit {
     this.showAddForm = true
 
   }
+  addCustomCondition() {
+    this.closeForm();
+    this.CustomCondition?.getProgramConditionsLis();
+  }
 }
+function getProgramConditionsLis(getProgramConditionsLis: any) {
+  throw new Error('Function not implemented.');
+}
+

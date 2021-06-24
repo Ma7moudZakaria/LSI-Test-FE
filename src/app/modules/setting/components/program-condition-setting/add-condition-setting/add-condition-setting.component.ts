@@ -27,6 +27,7 @@ export class AddConditionSettingComponent implements OnInit {
   @Input() conditionsDetails = {} as IDetailsProgramPredefinedCustomConditionsModel;
 
   @Output() closeOverlay = new EventEmitter<boolean>();
+  @Output() addCustomCondition = new EventEmitter();
 
   conditionModel: IConditionModel = { answerType: SettingAnswerTypeEnum.Choices, answerList: [] };
   answerTypeEnum = SettingAnswerTypeEnum;
@@ -98,13 +99,17 @@ export class AddConditionSettingComponent implements OnInit {
       conditionJson: JSON.stringify(this.conditionModel)
     }
     this.addSettingConditions();
+
+
   }
 
   addSettingConditions() {
     this.progCondService.saveProgramPredefinedCustomConditions(this.model || {}).subscribe(res => {
       if (res.isSuccess) {
+        this.addCustomCondition.emit()
 
         this.closeForm();
+
         this.alert.success(res.message || '');
       }
       else {
