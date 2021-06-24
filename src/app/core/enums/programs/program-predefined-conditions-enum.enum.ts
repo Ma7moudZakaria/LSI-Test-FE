@@ -1,5 +1,5 @@
 export enum programPredefinedConditionsEnum {
-    memorize = 1,
+    accept = 1,
     age = 2,
     qualifications = 3,
     programFinished = 4,

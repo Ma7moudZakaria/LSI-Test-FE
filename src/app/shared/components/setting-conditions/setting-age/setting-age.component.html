@@ -11,12 +11,12 @@
 <ng-container >
     <div class="card-setting viewMode">
         <div class="head">
-           <span>{{item.title}}</span>
+           <span>{{ageModel.title}}</span>
            <img class="close" src="../../../../../assets/images/feelings/close.svg">
         </div>
         <div class="body">
             <div class="details">السن لا يقل عن</div>
-            <input type="text">
+            <input type="text" class="form-control w-50" [(ngModel)]="ageModel.value" >
         </div>
     </div>
 </ng-container>

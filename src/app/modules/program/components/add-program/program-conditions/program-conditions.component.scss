@@ -1,5 +1,5 @@
 @import 'src/assets/scss/_variables.scss';
-
+@import '../../../../../../assets/scss/buttons';
 .condition_details{
 
     &.tab_page  {
@@ -32,11 +32,17 @@
         color: #ffffff;
         display: block;
         }
+ .save-btn
+{
+  height: 2.31rem;
+  margin: 1rem;
+
+ }
     .haeder{
       // font-family: Almarai-Bold;
       font-size:1.25rem;
       color:$edit;
       font-weight: bold;
     }
-
+   
 }
