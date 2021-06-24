@@ -42,11 +42,11 @@ export class SettingDegreeLastProgramComponent implements OnInit {
     const exist = this.degreeLastProgramModel.value.some(el => el.id === this.degreeLastProgramModel.condSelcted)
     if (!exist) {
       if (this.collectionOfLookup.DEGREE) {
-        this.degreeLastProgramModel.value.push(
+        this.selectedDegreeLastPrograms.push(
           this.collectionOfLookup.DEGREE.filter(el => el.id == this.degreeLastProgramModel.condSelcted)[0]);
           
       }
-      this.degreeLastProgramModel.value=this.selectedDegreeLastPrograms;
+      this.selectedDegreeLastPrograms=this.selectedDegreeLastPrograms;
     }
   }
 }

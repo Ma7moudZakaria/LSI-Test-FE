@@ -3,3 +3,4 @@ export interface IProgCondPredefinedList {
     condNo?:number;
     value?:string;
 }
+

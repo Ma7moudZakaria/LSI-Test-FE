@@ -10,3 +10,21 @@ export interface IProgramPredefinedvalue {
     nameAr?:string;
     nameEn?:string;
 }
+
+
+
+export interface Base{
+    title?:string;
+    condId?:string;
+    condNo?:number;
+}
+
+export interface multi extends Base{
+    condSelcted?:string;
+    value?:IProgramPredefinedvalue[];
+}
+
+export interface single extends Base{
+    value?:number;
+}
+
