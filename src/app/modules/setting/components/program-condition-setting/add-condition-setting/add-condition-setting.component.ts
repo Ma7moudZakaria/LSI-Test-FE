@@ -1,3 +1,4 @@
+import { AnswerTypeEnum } from './../../../../../core/enums/exam-builder-enums/answer-type-enum.enum';
 import { ProgramConditionsService } from 'src/app/core/services/program-services/program-conditions.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
@@ -120,14 +121,7 @@ export class AddConditionSettingComponent implements OnInit {
     });
   }
 
-  populateData() {
-    this.getModel();
-  }
-  getModel() {
-    this.conditionModel = JSON.parse("{\"answerList\":[{\"id\":\"a81fa3f0-a173-4bc6-a642-2f5a930d9ea5\",\"text\":\"kjlkj\"},{\"id\":\"19ecde13-6b8b-4330-b431-32ff1b0fae33\",\"text\":\"poipoipo\"},{\"id\":\"e58a2811-d72a-48fc-8014-16ae0559e71c\",\"text\":\";jkl;lk;lk\"}],\"title\":\"gjghjghj\",\"answerType\":\"Choices\"}")
-    // this.conditionModel = JSON.parse(this.detailsModel)
 
-  }
 
   editCondition() {
     this.editModel = {
@@ -135,6 +129,7 @@ export class AddConditionSettingComponent implements OnInit {
       // conditionJson: JSON.stringify(this.conditionModel)
 
     }
+
   }
 
 
@@ -161,6 +156,30 @@ export class AddConditionSettingComponent implements OnInit {
 
 
 
+  getModel() {
+    this.conditionModel = JSON.parse("{\"answerList\":[{\"id\":\"a81fa3f0-a173-4bc6-a642-2f5a930d9ea5\",\"text\":\"kjlkj\"},{\"id\":\"19ecde13-6b8b-4330-b431-32ff1b0fae33\",\"text\":\"poipoipo\"},{\"id\":\"e58a2811-d72a-48fc-8014-16ae0559e71c\",\"text\":\";jkl;lk;lk\"}],\"title\":\"gjghjghj\",\"answerType\":\"Choices\"}")
+
+    // this.resMessage = {};
+    // if (id) {
+    //   this.progCondService.getProgramConditionsByProgId(id).subscribe(res => {
+    //     this.conditionModel = res.data as IConditionModel;
+    //     this.conditionModel.answerList = res.data.AnswerTypeEnum ? JSON.parse(res.data.AnswerTypeEnum) : [];
+    //   },
+    //     error => {
+    //       this.resMessage = {
+    //         message: error,
+    //         type: BaseConstantModel.DANGER_TYPE
+    //       }
+    //     }
+    //   )
+    // }
+    // else {
+    //   this.conditionModel = { answerList: [] };
+
+    // }
+
+
+  }
 
 
 
@@ -172,5 +191,24 @@ export class AddConditionSettingComponent implements OnInit {
 
 
 
+  // getAttacheExamTemplate(examId?: string) {
+  //   this.resultMessage = {};
+  //   if (examId) {
+  //     this.examFormService.getExamFormDetails(examId).subscribe(res => {
+  //         this.exam = res.data as IExam;
+  //         this.exam.questions = res.data.examTemplate ? JSON.parse(res.data.examTemplate) : [];
+  //     },
+  //       error => {
+  //         this.resultMessage = {
+  //           message: error,
+  //           type: BaseConstantModel.DANGER_TYPE
+  //         }
+  //       }
+  //     )
+  //   }
+  //   else{
+  //   this.exam = {questions:[]};
 
+  //   }
+  // }
 }

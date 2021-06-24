@@ -11,8 +11,10 @@ import { programPredefinedConditionsEnum } from 'src/app/core/enums/programs/pro
 export class ViewConditionSettingComponent implements OnInit {
 
   @Output() openCoiditionFrom = new EventEmitter<boolean>();
-  programConditionsList: IprogramPredefinedCustomConditionsModel[] = [];
+  predefineConditionsList: IprogramPredefinedCustomConditionsModel[] = [];
+  customConditionsList: IprogramPredefinedCustomConditionsModel[] = [];
   programPredefinedEnum = programPredefinedConditionsEnum;
+
 
   constructor(public programConditionsService: ProgramConditionsService) { }
 
@@ -24,7 +26,11 @@ export class ViewConditionSettingComponent implements OnInit {
   }
   getProgramConditionsLis() {
     this.programConditionsService.getProgramConditionsList().subscribe(res => {
-      this.programConditionsList = res.data as IprogramPredefinedCustomConditionsModel[];
+      let allItems = res.data as IprogramPredefinedCustomConditionsModel[];
+      this.predefineConditionsList = allItems.filter(i => !i.isCustom);
+      this.customConditionsList = allItems.filter(i => i.isCustom);
+
+
     });
   }
 
