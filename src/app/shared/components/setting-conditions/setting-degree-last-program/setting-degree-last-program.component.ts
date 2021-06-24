@@ -26,6 +26,10 @@ export class SettingDegreeLastProgramComponent implements OnInit {
 
   ngOnInit(): void {
     this.getLookupByKey();
+    this.selectedDegreeLastPrograms=this.degreeLastProgramModel.value||[];
+  }
+  ngOnChanges(changes: any) {
+    this.selectedDegreeLastPrograms=this.degreeLastProgramModel.value||[];
   }
   getLookupByKey() {
     this.lookupService.getLookupByKey(this.listOfLookupProfile).subscribe(res => {
@@ -34,12 +38,15 @@ export class SettingDegreeLastProgramComponent implements OnInit {
     });
   }
   addDegreeItem(){
-    const exist = this.selectedDegreeLastPrograms.some(el => el.id === this.degreeLastProgramModel.condSelcted)
+    this.degreeLastProgramModel.value=[];
+    const exist = this.degreeLastProgramModel.value.some(el => el.id === this.degreeLastProgramModel.condSelcted)
     if (!exist) {
-      if (this.collectionOfLookup.LANG) {
-        this.selectedDegreeLastPrograms.push(
-          this.collectionOfLookup.LANG.filter(el => el.id == this.degreeLastProgramModel.condSelcted)[0]);
+      if (this.collectionOfLookup.DEGREE) {
+        this.degreeLastProgramModel.value.push(
+          this.collectionOfLookup.DEGREE.filter(el => el.id == this.degreeLastProgramModel.condSelcted)[0]);
+          
       }
+      this.degreeLastProgramModel.value=this.selectedDegreeLastPrograms;
     }
   }
 }

@@ -55,6 +55,7 @@ export class ProgramConditionsComponent implements OnInit {
       this.programConditionsList = res.data as IProgramConditionsModel[];
       this.programConditionsList.forEach(element => {
         if(this.programConditionsEnum.age===element.conditionNo){this.ageModel=JSON.parse(element.progCondValue ||'{}')}
+        if(this.programConditionsEnum.dgreeaLastProgram===element.conditionNo){this.degreeLastProgramModel=JSON.parse(element.progCondValue ||'{}')}
       });
     });
   }
@@ -62,10 +63,17 @@ export class ProgramConditionsComponent implements OnInit {
   saveProgramConditions() {
     this.assignConditionsToProgramModel = {};
     
-      this.programConditionsList.forEach((elm: IProgramConditionsModel) => {
+      this.programConditionsList.filter(x=>x.conditionNo=this.programConditionsEnum.age).forEach((elm: IProgramConditionsModel) => {
         this.conditionsFormModel.push({
           condId: elm.condId,
-          condValue:JSON.stringify(this.ageModel),
+         condValue:JSON.stringify(this.ageModel),
+          required:true
+        });
+      });
+      this.programConditionsList.filter(x=>x.conditionNo=this.programConditionsEnum.dgreeaLastProgram).forEach((elm: IProgramConditionsModel) => {
+        this.conditionsFormModel.push({
+          condId: '429c689b-0abb-4f07-8206-d4f236b68694',
+         condValue:JSON.stringify(this.degreeLastProgramModel),
           required:true
         });
       });

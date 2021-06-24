@@ -19,9 +19,9 @@
          <div class="col-6" *ngIf="programConditionsEnum.qualifications===item.conditionNo">
             <app-setting-qualifications ></app-setting-qualifications>
          </div>
-         <!-- *ngIf="programConditionsEnum.dgreeaLastProgram===item.conditionNo" -->
-         <div class="col-6" >
-                <app-setting-degree-last-program></app-setting-degree-last-program>
+         <!--  -->
+         <div class="col-6" *ngIf="programConditionsEnum.dgreeaLastProgram===item.conditionNo">
+                <app-setting-degree-last-program [degreeLastProgramModel] ='degreeLastProgramModel'></app-setting-degree-last-program>
             </div>
             <div class="col-6" *ngIf="programConditionsEnum.programFinished===item.conditionNo">
                 <app-setting-last-program></app-setting-last-program>
