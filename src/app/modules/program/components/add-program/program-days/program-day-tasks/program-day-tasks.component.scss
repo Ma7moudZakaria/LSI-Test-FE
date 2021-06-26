@@ -1,0 +1,40 @@
+@import '../program-duty-days/program-duty-days.component.scss';
+.cancel-btn{
+    background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
+    background:$icon_input ;
+    border-radius: 12px;
+    opacity: 1;
+    width:50%;
+    padding: 0.5rem;
+    height: 2.31rem;
+    border: none;
+    color: #ffffff;
+    display: block;
+    }
+.title_card{
+    color: #8E2520;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.arrangeIcon{
+    width: 0.5rem;
+}
+.taskDays.mat-accordion {
+    .mat-expansion-panel{
+        margin-bottom: 0.8rem;
+        border-radius: 12px;
+        border: 1px solid #827f7f3d;
+        box-shadow: none;
+    }
+    .mat-expansion-panel-header{
+        padding: 0 1rem;
+    }
+    .mat-expansion-panel-header-title {
+    justify-content: space-between;
+    color: #8E2520;
+    margin-left: 0;
+    font-size: 1rem;
+    font-family: Almarai-Bold;
+    }
+}

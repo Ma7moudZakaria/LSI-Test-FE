@@ -1,0 +1,15 @@
+
+
+<div class="container-fluid">
+    <div class="row">
+       <div class="col-12">
+           <app-view-condition-setting (openCoiditionFrom)="openCoiditionFrom()"></app-view-condition-setting>
+       </div>
+       
+    </div>
+
+<div class="overlay" *ngIf="showAddForm">
+    <app-add-condition-setting (closeOverlay)="closeForm()" ></app-add-condition-setting>
+</div>
+
+</div>

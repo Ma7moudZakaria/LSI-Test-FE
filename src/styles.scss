@@ -253,9 +253,11 @@ font-family: Almarai-Regular;
 
 .alert-danger
  {
-  color:  $error-message-color;
-  background-color: transparent;
-   border-color: transparent
+   color:  $error-message-color;
+   background-color: transparent;
+   border-color: transparent;
+   font-size: 13px;
+   font-weight: bold;
 }
 .alert-success
  {
@@ -443,6 +445,7 @@ select.form-control {
   max-width: 14rem;
   cursor: pointer;
   width: 95%;
+  padding: 0 0.5rem;
 }
 .badges {
   .badge-info {
@@ -462,8 +465,8 @@ select.form-control {
 }
 .justify-content-between {
   justify-content: space-between!important;
-  margin-top: 10px;
-  margin-bottom: 0px;
+  // margin-top: 10px;
+  // margin-bottom: 0px;
 }
 .badge-lightbadge-light {
   color: $main-color;
@@ -603,8 +606,22 @@ app-tel-input >
 }.iti__selected-flag:lang(ar){
   padding: 0 6px 0 22px;
 }
-// notify
-
+// start  notify alertify
+.alertify-notifier .ajs-message.ajs-success {
+  background: #d4e5dc;
+    border: 5px solid #00BB3259;
+    border-radius: 16px;}
+    .alertify-notifier .ajs-message.ajs-success::before
+    {
+      content: url(/assets/images/check-circle1.svg);
+      margin: 0 0.5rem;
+    }
+    .alertify-notifier .ajs-message.ajs-error::before
+    {
+      content: url(/assets/images/feelings/close.sv);
+      margin: 0 0.5rem;
+    }
+    
 .alertify-notifier.ajs-right {
   right: -10px;
 }
@@ -614,6 +631,7 @@ app-tel-input >
 .alertify-notifier.ajs-right .ajs-message.ajs-visible {
   right: 270px;
   text-align: left;
+  
 }
 .alertify-notifier.ajs-left {
   left: 200px;
@@ -625,7 +643,20 @@ app-tel-input >
 .alertify-notifier.ajs-left .ajs-message.ajs-visible {
   left:65px;
   text-align: right;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  padding-top: 0.4rem;
+  font-size: 1rem;
+  font-weight: bold;
 }
+
+.alertify-notifier .ajs-message.ajs-error {
+  
+  padding: 1rem !important;
+  border-radius: 5px;
+}
+// end  notify alertify
 
 // removemilady
 .HijriGregorianDatePicker.removemilady .btn:last-of-type{
@@ -725,7 +756,9 @@ display: none;
   padding-right: 2rem;
 }
 }
-
+.mat-expansion-panel-header[aria-disabled=true] {
+  color: rgba(0,0,0,.87);
+}
 /******************
  custom radio button in  add-question
 /***********************/
@@ -809,6 +842,27 @@ ngb-datepicker-month {
   margin-left: 0;
 
 }
+
+/******************
+accordion
+/***********************/
+.feelingCard__OldList.mat-accordion{
+    .mat-expansion-panel-header{
+      height: 103px;
+      padding: 0;
+    }
+    .mat-content{
+      padding: 0.5rem;
+    }
+   .card
+    {width: 100%;}
+    .mat-expansion-panel:not([class*=mat-elevation-z]) {
+      box-shadow: none !important;
+    }
+  }
+  
+
+
 /******************
 pagination
 /***********************/
@@ -850,7 +904,7 @@ form inut desabled
   opacity: 1;
   border-color: #F4F5F7;
 }
-.scProblem .mat-checkbox-layout{
+.scProblem .mat-checkbox-layout ,.programDays .mat-checkbox-layout{
   margin-bottom: 0 !important;
 }
 /******************
@@ -880,8 +934,9 @@ mat-grid-list {
 .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background{
   background-color: $main-color-2 !important;
 }
-
-
+/******************
+// for star in rate 
+/***********************/
 .star {
   font-size: 1.5rem;
   color: #b0c4de;
@@ -894,4 +949,23 @@ mat-grid-list {
 }
 .filled.bad {
   color: #ff1e1e;
+}
+/******************
+// list-group-item.active
+/***********************/
+.list-group-item.active{
+  border-color: transparent !important;
+}
+
+// Remove Arrows
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

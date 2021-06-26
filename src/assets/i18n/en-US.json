@@ -3,6 +3,7 @@
     "SEND": "Send",
     "BACK": "Back",
     "SAVE": "Save",
+    "EDIT": "Edit",
     "EMAIL": "Email Address",
     "EMAIL_PATTERN": "Please insert email address only.",
     "PASSWORD": "Password",
@@ -48,11 +49,18 @@
     "ADD": "Add",
     "CANCEL": "Cancel",
     "CHOICES": "One Choice",
+    "MORE_CHOICES": "ChoiceS",
+    "TEXT": "Text",
+    "Toggel": "yes/No",
     "MULTI_SELECT": "Multi Choices",
     "ADD_QUESTION": "Add Question",
     "ADD_ANSWE": "Add Answer",
     "NOT_AUTHORIZED": "YOU ARE NOT AUTHORIZED",
-    "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE": "Please complete the missing information, add more than one answer and review duplicate data"
+    "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE": "Please complete the missing information, add more than one answer and review duplicate data",
+    "CHOOSEFILE": "Choose file to upload",
+    "MANDATORY": "Mandatory",
+    "MY_PROGRAM":"My Program",
+    "FEELING":"Feeling"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
@@ -132,7 +140,96 @@
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "Programs",
-    "ALL": "All"
+    "ALL": "All",
+    "ADD_PROGRAM": "Add Program",
+    "ADVANCED_SEARCH": "Advanced Search"
+  },
+  "VIEW_PROGRAMS_BASIC_INFO": {
+    "PROGRAM_DATE": "Program Duration",
+    "STUDENT_NUMBER": "Number of student",
+    "TEACHER_NUMBER": "Number of teacher ",
+    "PARTS_NUMBER": "Number of parts",
+    "IDEA": "Idea",
+    "PROGRAM_TYPE": "Program Type",
+    "PROGRAM_GOALS": "Program Goals",
+    "PROGRAM_VISION": "Program Vision",
+    "PROGRAM_METHOD": "Program Method",
+    "PROGRAM_ADVAN": "Program Advantage",
+    "PROGRAM_PLEDGTXT": "Pledge text",
+    "PROGRAM_WEEK_DUTI_DAS": "Homework Days",
+    "CONDTIONS": "Conditions",
+    "COPY_PROGRAM": "Copy Program",
+    "PROGRAM_NAME": "Program Name",
+    "SAVE": "Save",
+    "DAY": "Day"
+  },
+  "PROGRAM_TABS": {
+    "BASIC_INFO": "Basic Info",
+    "STUDENTS": "Students",
+    "JOINING_EXAM": "Joining Exam",
+    "DAYS": "Days",
+    "NOTIFACATION": "Notification"
+  },
+  "PROGRAM_DAYS": {
+    "DAYS": "Days",
+    "DAY": "Day",
+    "REQUIRED_TASKS": "Tasks"
+  },
+  "JOINING_REQUEST": {
+    "MODELS": "Models",
+    "DEGREE": "Degree"
+  },
+  "PROGRAM_DAY_TASK_ENCOURAGEMENT": {
+    "MESSAGE": "Message"
+  },
+  "PROGRAM_DAY_TASK_HEARING": {
+    "DEGREE": "Degree",
+    "QUESTION": "The question that appears to the student"
+  },
+  "PROGRAM_DAY_TASKS": {
+    "TASKS": "Tasks",
+    "ADD_ITEM":"Add Item",
+    "DAILY_HOMEWORK":"Daily Homework "
+  },
+  "PROGRAM_DAY_TASK_LINKING": {
+    "REQUIRED": "Required",
+    "QUESTION": "The question that appears to the student",
+    "AUTO": "Auto",
+    "MANUAL": "Manual",
+    "DEGREE": "Degree"
+  },
+  "PROGRAM_DAY_TASK_MEMORIZE": {
+    "PAGES": "Pages",
+    "QUESTION": "The question that appears to the student",
+    "DEGREE": "Degree"
+  },
+  "PROGRAM_DAY_TASK_EXPLANATION": {
+    "PAGES": "Pages",
+    "QUESTION": "The question that appears to the student",
+    "DEGREE": "Degree"
+  },
+  "PROGRAM_DAY_TASK_RECITIATION": {
+    "RECITIATION_PERIOD": "Recitation Period",
+    "FROM": "From",
+    "TO": "To"
+  },
+  "PROGRAM_DAY_TASK_REPETITION": {
+    "REQUIRED": "Required",
+    "REPETITION_NUMBER": "Repetition Numbers",
+    "MESSAGE": "Message",
+    "DEGREE": "Degree"
+  },
+  "PROGRAM_DAY_TASK_REVIEW": {
+    "DEGREE": "Degree",
+    "PAGES": "Pages",
+    "QUESTION": "The question that appears to the student",
+    "FROM": "From",
+    "TO": "To"
+  },
+  "PROGRAM_DAY_TASK_VIDEO": {
+    "VIDEO_NAME": "Video Name",
+    "VIDEO_LINK": "Video Link",
+    "VIDEO_ANOTHER_LINK": "Link to an external video"
   },
   "UPDATE_USER_PG": {
     "TITLE": "User Profile",
@@ -181,16 +278,21 @@
     "EDU_LEVEL": "Educational Level",
     "EDU_LEVEL_REQUIRED": "Educational Level is Required",
     "OCCUPATION": "Occupation",
+    "INPUT_OCCUPATION": "input occupation",
     "OCCUPATION_REQUIRED": "Occupation  is Required",
     "CONTACT_INFO": "Contact info",
     "CHANGE_PIC": "Change pic",
     "AMOUNT_QURAN": "The memorization amount from Qur'an",
+    "INPUT_AMOUNT_QURAN": "input memorization amount",
     "MEMORIES_QURAN": "A permission to save the Qur’an file",
     "DELETE": "Delete",
     "SHEIKHS_STUDIED": "Sheikhs I studied on",
+    "INPUT_CHOOSE_SHEIKHS": "Choose Sheikh",
     "CHOOSE_SHEIKHS": "Please Choose Sheikh",
     "ASRCHIVE": "Please select Archives",
     "COURSE": "Please select course",
+    "INPUT_COURSE": "select course",
+    "INPUT_ASRCHIVE": "select Archives",
     "SCIENTIFIC_ARCHIVES": "Scientific Archives",
     "TRAINING_COURSES": "Training courses",
     "OPTIONAL": "Optional",
@@ -225,8 +327,12 @@
     "FAMILY_NAME_AR_MIN_LENGTH": "Father Name sould be more than 3 character",
     "FAMILY_NAME_AR_MAX_LENGTH": "Father Name sould be less than 20 character",
     "NAME_EN": " Name",
+    "FIRST_NAME": "First name",
     "FATHER_NAME_EN": "Father Name",
     "FAMILY_NAME_EN": "Family Name",
+    "INPUT_FIRST_NAME": "Input First name",
+    "INPUT_FATHER_NAME_EN": "Input Father Name",
+    "INPUT_FAMILY_NAME_EN": "Input Family Name",
     "NAME_EN_REQUIRED": "Name is Required",
     "NAME_EN_MIN_LENGTH": "Name sould be more than 3 character",
     "NAME_EN_MAX_LENGTH": "Name sould be less than 20 character",
@@ -242,6 +348,7 @@
     "CONTACT_INFO": "Contact info",
     "COUNTRY": "Country",
     "EDU": "Academic education",
+    "OCCUPATION": "Occupation",
     "EDU_REQUIRED": "Academic education is Required",
     "EDU_LEVEL": "Educational Level",
     "EDU_LEVEL_REQUIRED": "Educational Level is Required",
@@ -313,7 +420,28 @@
     "CHOOSE_TEACHER_REWAYAT": "Please Choose Rewaya",
     "CHOOSE_TEACHER_LANGUAGE": "Please Choose Language",
     "CHOOSE_TEACHER_AVAILABILITY": "Please Choose Available Day",
-    "TEACHER_AVAILABILITY_FROM_TIME":"Please Enter To Time After From Time"
+    "TEACHER_AVAILABILITY_FROM_TIME": "Please Enter To Time After From Time",
+    "SELECT_NATIONALITY": "Select nationality ",
+    "SELEC_CITY": "Select city",
+    "SELECT_Country": "Select Country",
+    "SELECT_ADDRESS": "input your Address",
+    "SELECT_DAY": "Select day",
+    "SELECT_TIME": "Select_time",
+    "COUNT": "Count",
+    "SELECT_EDU": "select Academic education",
+    "SELECT_EDU_LEVEL": "Select education level ",
+    "SELECT_SPECTALIZATION": "Select spectalization",
+    "JOIN_EDU_LEVEL": "Add education level ",
+    "SELECT_EDUCATION_YEARS": "Select education year",
+    "EDUCATION_YEARS": "Education year",
+    "SELECT_languages": "select languages",
+    "NAME_ENTITY": "Name Entity",
+    "SELECT_ONE": "select one",
+    "JOIN_MEMORIES_QURAN": "add memories quran",
+    "INPUT_BANK_NMAE": "input bank name ",
+    "INPUT_ACCOUNT_NUMBER": " input account number ",
+    "SELECT_PROGRAM": "select program",
+    "SELECT_PROGRAM_DEGREE": "Program degree"
   },
   "QUESTION_BANK": {
     "TITLE": "Question Bank",
@@ -426,7 +554,8 @@
     "ABOUT_HUFFAZ": "About Huffaz",
     "POWER": "Premissions",
     "BANK_ACCOUNT": "Our bank accounts",
-    "EXAMS": "Forms of interim and periodic tests"
+    "EXAMS": "Forms of interim and periodic tests",
+    "PROGRAM_COND": "Program Conditions"
   },
   "Role_Management": {
     "TITLE": "Groups",
@@ -464,5 +593,93 @@
   },
   "ADMIN_MESSAGING": {
     "SCIENTIFIC_PROBLEM": "Scientific Problem"
+  },
+  "NOTIFICATIONS": {
+    "AFTER_ASSIGNMENT": "After Not performing",
+    "ASSIGNMENT": "assignment",
+    "MESSAGE_ARABIC": "The message is in Arabic",
+    "MESSAGE_ENGLISH": "The message is in English",
+    "NOTIFICATION_NAME": "Notification Name",
+    "ADD_NOTIFICATION": " Add Notification",
+    "EDIT_NOTIFICATION": "Edit Notification",
+    "NUMBER_HOMEWORK": "Number of homework ",
+    "WRITE_HOMEWORK_MISSED": "Write the number of homework missed",
+    "NOTIFICITION_TYPE": "Notification Type",
+    "SELECT_NOTIFICATION_TYPE": " Select Notification Type",
+    "WRITE_MESSAGE": "Write Message",
+    "ADD_PROGRAM": "Add Alarm",
+    "NOTIFICATIONS": "Notification",
+    "BASICiNFO": "Basic info",
+    "PROGRAM_CONDITIONS": "conditions",
+    "PROGRAM_DAYS": "Days",
+    "PROGRAM_JOINEXAME": "Join Exam",
+    "PROGRAM_PERIODICEXAME": "Periodic Exam",
+    "PROGRAM_NOTIFICATIONS": "Notifications",
+    "NUMBER_HOMEWORK_PATTERN": "Please Enter a valid Number of homework",
+    "NUMBER_HOMEWORK_MAX_LENGTH": "Number of homework sould be less than 100 charcter",
+    "NOTIFICATION_NAME_PATTERN": "Please Enter a valid Notification Name",
+    "NOTIFICATION_NAME_MAX_LENGTH": "Notification Name sould be less than or equal 100 charcter",
+    "QUESTION_AR_MAX_LENGHT": "Question Arabic Must be less than or equal 300 character",
+    "QUESTION_EN_MAX_LENGHT": "Question English Must be less than or equal 300 character",
+    "ARABIC_FIELD": "This field must be in Arabic"
+  },
+  "PROGRAM_BASIC_INFO": {
+    "PROG_NAME": "Program Name",
+    "PROG_PATTERN": "Please Enter a valid program name",
+    "PROG_NAME_MAX_LENGTH": "Program Name sould be less than or equal 100 charcter",
+    "SHARE_WITH": "Share with",
+    "PROG_TYPE": "Program Type",
+    "PROG_DURATION": "Program Duration",
+    "PROG_DUTY_TIME": "Duty time",
+    "PROG_AVAILABLE_DUTY": "Number of duty days available",
+    "PROG_IDEA": "Idea",
+    "PROG_IDEA_PATTERN": "Please Enter a valid Idea",
+    "PROG_IDEA_MAX_LENGTH": "Idea sould be less than or equal 300 charcter",
+    "PROG_GOAL": "Program Goal",
+    "PROG_GOAL_PATTERN": "Please Enter a valid Program Goal",
+    "PROG_GOAL_MAX_LENGTH": "Program Goal sould be less than or equal 300 charcter",
+    "PROG_VISION": "Program Vision",
+    "PROG_VISION_PATTERN": "Please Enter a valid Program Vision",
+    "PROG_VISION_MAX_LENGTH": "Program Vision sould be less than or equal 300 charcter",
+    "PROG_VISION_OPTIONAL": "Optional",
+    "PATH_PROG": "Path Program",
+    "PATH_PROG_PATTERN": "Please Enter a valid Path Program",
+    "PATH_PROG_MAX_LENGTH": "Path Program sould be less than or equal 300 charcter",
+    "ADVANTAGE_PROG": "Advantage Program",
+    "ADVANTAGE_PROG_PATTERN": "Please Enter a valid Advantage Program",
+    "ADVANTAGE_PROG_MAX_LENGTH": "Advantage Program sould be less than or equal 300 charcter",
+    "TEXT_PLEDGE": "Text Pledge",
+    "TEXT_PLEDGE_PATTERN": "Please Enter a valid Text Pledge",
+    "TEXT_PLEDGE_MAX_LENGTH": "Text Pledge sould be less than or equal 300 charcter",
+    "DAY_COUNT": "days of homework",
+    "DAY_COUNT_MAX": "Days of homework sould be less than or equal 7 days",
+    "WRITE_DAY_COUNT": "Write the number of days",
+    "EXAM_PASS": "Pass the test before admission",
+    "EXAM_PASS_REQUIRD": "Required",
+    "RATING": "Rate",
+    "RECTMAND": "recitation dates",
+    "ISALSARD": "Is there a recitation ?",
+    "YES": "Yes",
+    "NO": "No",
+    "RECITTYPE": "recitation period",
+    "FROM_HOUR": "from the hour",
+    "TO_HOUR": "To the hour",
+    "ADD": "Add",
+    "FROM": "From",
+    "TO": "To"
+  },
+  "PROGRAM_DAY_TASK_DETIALS": {
+    "DEGREE": "Degree",
+    "SHOW_QUESTION_TO_STUDENT": "Show question to student",
+    "THE_LISTENING": "The listening",
+    "PAGES": "Pages"
+  },
+  "FEELINGS": {
+    "TEACHERS_FEELINGS": "Teachers feelings",
+    "STUDENTS_FEELINGS": "Students feelings",
+    "TEACHERS_NEW_FEELINGS": "Teachers' new feelings",
+    "STUDENTS_NEW_FEELINGS": "Students' new feelings",
+    "STUDENT_FEELINGS_LIST": "Student feelings list",
+    "TEACHER_FEELINGS_LIST": "Teacher feelings list"
   }
 }

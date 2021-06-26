@@ -3,6 +3,7 @@
     "SEND": "ارسال",
     "BACK": "رجوع",
     "SAVE": "حفظ",
+    "EDIT": "تعديل",
     "EMAIL": "البريد الالكتروني",
     "EMAIL_PATTERN": "يرجى ادخال بريد الكترونى صحيحا فقط",
     "PASSWORD": "كلمة المرور",
@@ -48,11 +49,18 @@
     "ADD": "إضافة",
     "CANCEL": "إلغاء",
     "CHOICES": "إختيار واحد",
+    "MORE_CHOICES": "اختيارات",
+    "TEXT": "نص",
+    "Toggel": "نعم / لا",
     "MULTI_SELECT": "اختيارات متعددة",
     "ADD_QUESTION": "إضافة سؤال",
     "ADD_ANSWE": "إضافة إجابه",
     "NOT_AUTHORIZED": "انت غير مصرح لك بالدخول ",
-    "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE": " برجاء اكمال البيانات وإضافة اكتر من اجابه لسؤال و مراجعة البيانات المكررة"
+    "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE": " برجاء اكمال البيانات وإضافة اكتر من اجابه لسؤال و مراجعة البيانات المكررة",
+    "CHOOSEFILE": "إختر الملفات لرفعها",
+    "MANDATORY": "إلزامى",
+    "MY_PROGRAM":"برامجى",
+    "FEELING":"المشاعر"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
@@ -90,7 +98,7 @@
     "CHOOSEFILE": "إختر الملفات لرفعها",
     "MATERIALAVAILABILITY": "إتاحة المادة العلمية",
     "ACTIVATION": "التنشيط",
-    "ALL": "الكل",
+    "ALL": " الكل ",
     "SELECTEDPROGRAMS": "البرامج المختارة فقط",
     "ACTIVE": "مفعل",
     "INACTIVE": " غير مفعل",
@@ -129,7 +137,96 @@
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "البرامج",
-    "ALL": "الكل"
+    "ALL": "الكل",
+    "ADD_PROGRAM": "اضافه برنامج",
+    "ADVANCED_SEARCH": " بحث متقدم "
+  },
+  "VIEW_PROGRAMS_BASIC_INFO": {
+    "PROGRAM_DATE": "مدة البرنامج",
+    "STUDENT_NUMBER": " عدد الطلاب",
+    "TEACHER_NUMBER": " عدد المعلمين",
+    "PARTS_NUMBER": "عدد الاجزاء",
+    "IDEA": "فكرة",
+    "PROGRAM_TYPE": "نوع البرنامج",
+    "PROGRAM_GOALS": "اهداف البرنامج",
+    "PROGRAM_VISION": "رؤية البرنامج",
+    "PROGRAM_METHOD": "طريقة البرنامج",
+    "PROGRAM_ADVAN": "مميزات البرنامج",
+    "PROGRAM_PLEDGTXT": "نص التعهد",
+    "PROGRAM_WEEK_DUTI_DAS": "أيام الواجبات",
+    "CONDTIONS": "الشروط",
+    "COPY_PROGRAM": "نسخ البرنامج",
+    "PROGRAM_NAME": "إسم البرنامج",
+    "SAVE": "حفظ",
+    "DAY": "يوم"
+  },
+  "PROGRAM_TABS": {
+    "BASIC_INFO": "البيانات الاساسية",
+    "STUDENTS": "الطلاب",
+    "JOINING_EXAM": "إختبارات الانضمام",
+    "DAYS": "الأيام",
+    "NOTIFACATION": "تنبيهات"
+  },
+  "PROGRAM_DAY_TASKS": {
+    "TASKS": "المهام",
+    "ADD_ITEM":"إضافة بند",
+    "DAILY_HOMEWORK":"الواجب اليومي"
+  },
+  "PROGRAM_DAYS": {
+    "DAYS": "الأيام",
+    "DAY": "يوم",
+    "REQUIRED_TASKS": "المهام المطلوبة"
+  },
+  "JOINING_REQUEST": {
+    "MODELS": "النمازج",
+    "DEGREE": "الدرجة"
+  },
+  "PROGRAM_DAY_TASK_ENCOURAGEMENT": {
+    "MESSAGE": "الرسالة"
+  },
+  "PROGRAM_DAY_TASK_HEARING": {
+    "DEGREE": "الدرجة",
+    "QUESTION": "السؤال الذي يظهر للطالب"
+  },
+  "PROGRAM_DAY_TASK_LINKING": {
+    "REQUIRED": "الزامى",
+    "QUESTION": "السؤال الذي يظهر للطالب",
+    "AUTO": "الى",
+    "MANUAL": "يدوى",
+    "DEGREE": "الدرجة"
+  },
+  "PROGRAM_DAY_TASK_MEMORIZE": {
+    "PAGES": "صفحات",
+    "QUESTION": "السؤال الذي يظهر للطالب",
+    "DEGREE": "الدرجة"
+  },
+  "PROGRAM_DAY_TASK_EXPLANATION": {
+    "PAGES": "صفحات",
+    "QUESTION": "السؤال الذي يظهر للطالب",
+    "DEGREE": "الدرجة"
+  },
+  "PROGRAM_DAY_TASK_RECITIATION": {
+    "RECITIATION_PERIOD": "فترة التسميع",
+    "FROM": "من",
+    "TO": "إلى"
+  },
+  "PROGRAM_DAY_TASK_REPETITION": {
+    "REQUIRED": "الزامى",
+    "REPETITION_NUMBER": "عدد مرات التكرار",
+    "MESSAGE": "الرسالة",
+    "DEGREE": "الدرجة"
+  },
+  "PROGRAM_DAY_TASK_REVIEW": {
+    "DEGREE": "الدرجة",
+    "PAGES": "الصفحات",
+    "QUESTION": "السؤال الذي يظهر للطالب",
+    "FROM": "من",
+    "TO": "إلى"
+  },
+  "PROGRAM_DAY_TASK_VIDEO": {
+    "VIDEO_NAME": "إسم الفيديو",
+    "VIDEO_LINK": "رابط الفديو",
+    "VIDEO_ANOTHER_LINK": "رابط لفيديو خارجي"
   },
   "RESETPASSWORD_PG": {
     "RESET_PASSWORD": "ادخل كلمة المرور الجديدة"
@@ -182,16 +279,21 @@
     "EDU_LEVEL": "مستوى التعليمي ",
     "EDU_LEVEL_REQUIRED": "مستوى التعليمي مطلوب",
     "OCCUPATION": "المهنة",
+    "INPUT_OCCUPATION": "ادخل المهنة",
     "OCCUPATION_REQUIRED": "المهنة مطلوبة",
     "CONTACT_INFO": "معلومات التواصل",
     "CHANGE_PIC": "تغير الصورة",
     "AMOUNT_QURAN": "مقدار الحفظ من القران",
+    "INPUT_AMOUNT_QURAN": "ادخل مقدار الحفظ",
     "MEMORIES_QURAN": "اجازة حفظ القران",
     "DELETE": "حذف",
     "SHEIKHS_STUDIED": "مشايخ درست عليهم",
+    "INPUT_CHOOSE_SHEIKHS": " اختيار  شيخ ",
     "CHOOSE_SHEIKHS": "برجاء اختيار  شيخ ",
     "ASRCHIVE": "برجاء اختيار  مادة علمية",
     "COURSE": "برجاء اختيار  تدريب",
+    "INPUT_COURSE": " اختر  تدريب",
+    "INPUT_ASRCHIVE": " اختر  مادة علمية",
     "SCIENTIFIC_ARCHIVES": "المحفوظات العلمية",
     "TRAINING_COURSES": "دورات تدريبية",
     "OPTIONAL": "اختيارى",
@@ -226,8 +328,12 @@
     "FAMILY_NAME_AR_MAX_LENGTH": "يرجى ادخال اسم العائلة أقل من 20 حرفا",
     "FAMILY_NAME_AR_MIN_LENGTH": "يرجى ادخال اسم العائلة أكثر من 3 حرفا",
     "NAME_EN": "الاسم",
+    "FIRST_NAME": " الاسم الاول",
     "FATHER_NAME_EN": "اسم الأب",
-    "FAMILY_NAME_EN": "اسم العائلة",
+    "FAMILY_NAME_EN": " ادخل اسم العائلة",
+    "INPUT_FIRST_NAME": "ادخل الاسم الاول",
+    "INPUT_FATHER_NAME_EN": "ادخل اسم الأب",
+    "INPUT_FAMILY_NAME_EN": " ادخل اسم العائلة",
     "NAME_EN_REQUIRED": "الاسم الاول مطلوب",
     "NAME_EN_MAX_LENGTH": "يرجى ادخال الاسم أقل من 20 حرفا",
     "NAME_EN_MIN_LENGTH": "يرجى ادخال الاسم أكثر من 3 حرفا",
@@ -242,9 +348,10 @@
     "GENDER_REQUIRED": "الجنس مطلوب",
     "CONTACT_INFO": "معلومات التواصل",
     "COUNTRY": "دولة الإقامة",
-    "EDU": "التعليم الأكاديمي",
+    "EDU": "المستوى التعليمي",
+    "OCCUPATION": "التخصص",
     "EDU_REQUIRED": "التعليم الأكاديمي مطلوب",
-    "EDU_LEVEL": "مستوى التعليمي ",
+    "EDU_LEVEL": " المؤهل الدراسي",
     "EDU_LEVEL_REQUIRED": "مستوى التعليمي مطلوب",
     "LEARN_THEQURAN": "تعلم القرأن وحفظه",
     "GOVERNMENTAL_ENTITY": "جهه حكومية",
@@ -314,7 +421,28 @@
     "CHOOSE_TEACHER_REWAYAT": "برجاء اختيار  قراءة ",
     "CHOOSE_TEACHER_LANGUAGE": "برجاء اختيار  لغة ",
     "CHOOSE_TEACHER_AVAILABILITY": "برجاء اختيار  ايام ",
-    "TEACHER_AVAILABILITY_FROM_TIME":"يرجى إدخال الى وقت بعد توقيت من وقت"
+    "TEACHER_AVAILABILITY_FROM_TIME": "يرجى إدخال الى وقت بعد توقيت من وقت",
+    "SELECT_NATIONALITY": "اختر الجنسية",
+    "SELEC_CITY": "اختر المدينة",
+    "SELECT_Country": "اختر الدوله ",
+    "SELECT_ADDRESS": "ادخل العنوان ",
+    "SELECT_DAY": "اختر اليوم",
+    "SELECT_TIME": "اختر الوقت",
+    "COUNT": "عدد",
+    "SELECT_EDU": "اختر التعليم الاكاديمي  ",
+    "SELECT_EDU_LEVEL": "اختر المؤهل الدراسي",
+    "SELECT_EDUCATION_YEARS": "حدد مدة الدراسه",
+    "EDUCATION_YEARS": " مدة الدراسه",
+    "SELECT_languages": " اختر اللغه",
+    "SELECT_SPECTALIZATION": "اختر التخصص",
+    "JOIN_EDU_LEVEL": "ارفق المؤهل الدراسي ",
+    "NAME_ENTITY": "اكتب اسم الجهة",
+    "SELECT_ONE": "اختر واحدة",
+    "JOIN_MEMORIES_QURAN": "ارفق اجازة حفظ القرأن",
+    "INPUT_BANK_NMAE": " ادخل اسم البنك",
+    "INPUT_ACCOUNT_NUMBER": " ادخل رقم الحساب ",
+    "SELECT_PROGRAM": "اختر البرنامج",
+    "SELECT_PROGRAM_DEGREE": "درجه الاجاده"
   },
   "QUESTION_BANK": {
     "TITLE": "بنك الأسئلة",
@@ -423,7 +551,8 @@
     "ABOUT_HUFFAZ": "عن حفاظ",
     "POWER": "الصلاحيات",
     "BANK_ACCOUNT": "حساباتنا البنكية",
-    "EXAMS": "نماذج الاختبارات المرحلية والدورية"
+    "EXAMS": "نماذج الاختبارات المرحلية والدورية",
+    "PROGRAM_COND": "شروط البرنامج"
   },
   "Role_Management": {
     "TITLE": "المجموعات",
@@ -461,5 +590,93 @@
   },
   "ADMIN_MESSAGING": {
     "SCIENTIFIC_PROBLEM": "إشكال علمى"
+  },
+  "NOTIFICATIONS": {
+    "AFTER_ASSIGNMENT": "بعد عدم تنفيذ ",
+    "ASSIGNMENT": "واجب",
+    "MESSAGE_ARABIC": "الرسالة بالعربي",
+    "MESSAGE_ENGLISH": "الرسالة بالانجليزي",
+    "NOTIFICATION_NAME": "اسم التنبية",
+    "ADD_NOTIFICATION": " إضافة تنبية",
+    "EDIT_NOTIFICATION": "تعديل التنبيه",
+    "NUMBER_HOMEWORK": "عدد الواجبات",
+    "WRITE_HOMEWORK_MISSED": "اكتب عدد الواجبات التي لم تنفذ",
+    "NOTIFICITION_TYPE": "نوع التنبية",
+    "SELECT_NOTIFICATION_TYPE": "إختر نوع التنبية",
+    "WRITE_MESSAGE": "اكتب نص الرسالة",
+    "ADD_PROGRAM": "اضافه تنبيه",
+    "NOTIFICATIONS": "التبيهات",
+    "BASICiNFO": " البيانات الاساسية",
+    "PROGRAM_CONDITIONS": "الشروط",
+    "PROGRAM_DAYS": "الايام",
+    "PROGRAM_JOINEXAME": "اختبارات الانضمام",
+    "PROGRAM_PERIODICEXAME": "الاختبارات الدوريه",
+    "PROGRAM_NOTIFICATIONS": "اليه التنبيه",
+    "NUMBER_HOMEWORK_PATTERN": "يرجى ادخال عدد الواجبات صحيحا",
+    "NUMBER_HOMEWORK_MAX_LENGTH": "يرجى ادخال عدد الواجبات اقل من  100  حرف",
+    "NOTIFICATION_NAME_PATTERN": "يرجى ادخال اسم التنبية صحيحا",
+    "NOTIFICATION_NAME_MAX_LENGTH": "يرجى ادخال اسم التنبية اقل من او يساوى 100  حرف",
+    "QUESTION_AR_MAX_LENGHT": "يرجى ادخال السؤال عربي أقل من أو يساوى 300 حرفا",
+    "QUESTION_EN_MAX_LENGHT": "يرجى ادخال السؤال إنجليزي أقل من أو يساوى 300 حرفا",
+    "ARABIC_FIELD": " هذا الحقل يجب أن يكون باللغة العربية"
+  },
+  "PROGRAM_BASIC_INFO": {
+    "PROG_NAME": "اسم البرنامج",
+    "PROG_PATTERN": "يرجى ادخال اسم البرنامج صحيحا",
+    "PROG_NAME_MAX_LENGTH": "يرجى ادخال اسم البرنامج اقل من او يساوى 100  حرف",
+    "SHARE_WITH": "المشاركة مع",
+    "PROG_TYPE": "نوع البرنامج",
+    "PROG_DURATION": "مدة البرنامج",
+    "PROG_DUTY_TIME": "وقت اظهار الواجب",
+    "PROG_AVAILABLE_DUTY": "عدد أيام الواجب المتاحة",
+    "PROG_IDEA": "الفكره",
+    "PROG_IDEA_PATTERN": "يرجى ادخال الفكره صحيحا",
+    "PROG_IDEA_MAX_LENGTH": "يرجى ادخال الفكره اقل من او يساوى 300  حرف",
+    "PROG_GOAL": "اهداف البرنامج",
+    "PROG_GOAL_PATTERN": "يرجى ادخال اهداف البرنامج صحيحا",
+    "PROG_GOAL_MAX_LENGTH": "يرجى ادخال اهداف البرنامج اقل من او يساوى 300  حرف",
+    "PROG_VISION": "رؤية البرنامج",
+    "PROG_VISION_PATTERN": "يرجى ادخال رؤية البرنامج صحيحا",
+    "PROG_VISION_MAX_LENGTH": "يرجى ادخال رؤية البرنامج اقل من او يساوى 300  حرف",
+    "PROG_VISION_OPTIONAL": "إختيارى",
+    "PATH_PROG": "طريقة البرنامج",
+    "PATH_PROG_PATTERN": "يرجى ادخال طريقة البرنامج صحيحا",
+    "PATH_PROG_MAX_LENGTH": "يرجى ادخال طريقة البرنامج اقل من او يساوى 300  حرف",
+    "ADVANTAGE_PROG": "مميزات البرنامج",
+    "ADVANTAGE_PROG_PATTERN": "يرجى ادخال مميزات البرنامج صحيحا",
+    "ADVANTAGE_PROG_MAX_LENGTH": "يرجى ادخال مميزات البرنامج اقل من او يساوى 300  حرف",
+    "TEXT_PLEDGE": "نص التعهد",
+    "TEXT_PLEDGE_PATTERN": "يرجى ادخال نص التعهد صحيحا",
+    "TEXT_PLEDGE_MAX_LENGTH": "يرجى ادخال نص التعهد اقل من او يساوى 300  حرف",
+    "DAY_COUNT": " ايام الواجبات",
+    "DAY_COUNT_MAX": "يرجى ادخال ايام الواجبات اقل من او يساوى 7  يوم",
+    "WRITE_DAY_COUNT": "اكتب عدد الايام",
+    "EXAM_PASS": "اجتياز الاختبار قبل القبول",
+    "REQUIRD": "الزامى",
+    "RATING": "تقيم",
+    "RECTMAND": "مواعيد التسميع",
+    "ISALSARD": "هل يوجد سرد",
+    "YES": "نعم",
+    "NO": "لا",
+    "RECITTYPE": "فترة التسميع",
+    "FROM_HOUR": "من الساعه",
+    "TO_HOUR": "الى الساعه",
+    "ADD": "إضافة",
+    "FROM": "من",
+    "TO": "إلى"
+  },
+  "PROGRAM_DAY_TASK_DETIALS": {
+    "DEGREE": "الدرجات",
+    "SHOW_QUESTION_TO_STUDENT": "السؤال الذى يظهر لطالب",
+    "THE_LISTENING": "الإستماع",
+    "PAGES": "الصفحات"
+  },
+  "FEELINGS": {
+    "TEACHERS_FEELINGS": "مشاعر المعلمين ",
+    "STUDENTS_FEELINGS": "مشاعر الطلاب ",
+    "TEACHERS_NEW_FEELINGS": "مشاعر المعلمين الجديدة",
+    "STUDENTS_NEW_FEELINGS": "مشاعر الطلاب الجديدة",
+    "STUDENT_FEELINGS_LIST": "قائمة مشاعر الطلاب",
+    "TEACHER_FEELINGS_LIST": "قائمة مشاعر المعلمين"
   }
 }

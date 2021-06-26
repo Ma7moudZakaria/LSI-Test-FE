@@ -10,9 +10,9 @@ export class UpdateTeacherProfileHasUnsavedDataGuard implements CanDeactivate<an
     constructor(public translate : TranslateService) { }
     
     canDeactivate(component: UpdateTeacherProfileComponent): boolean {
-        if (component.userService.canDecativate) {
-            return confirm(this.translate.instant('GENERAL.UNSAVED_CHANGES'))
-        }
+        // if (component.userService.canDecativate) {
+        //     return confirm(this.translate.instant('GENERAL.UNSAVED_CHANGES'))
+        // }
         return true;
     }
 }

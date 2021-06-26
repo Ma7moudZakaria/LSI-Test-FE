@@ -1,0 +1,59 @@
+
+<div class="row interTab">
+    <div class="col-6" *ngIf='feelingsNotPublishedList'>
+        <h3 class="head" *ngIf="tabType ===  tabTypeSelected.Student"> 
+            {{'FEELINGS.STUDENTS_NEW_FEELINGS' | translate}}
+        </h3>
+        <h3 class="head"   *ngIf="tabType ===  tabTypeSelected.Teacher"> 
+            {{'FEELINGS.TEACHERS_NEW_FEELINGS' | translate}}
+
+        </h3>
+        
+        <ng-container *ngFor="let feelingNotItem of feelingsNotPublishedList">
+        <app-card-feelings 
+        [feelingsDetailsModel] = "feelingNotItem"  
+        (deleteFeeling) = "deleteFeeling($event)"
+        (approveCancelFeeling) = "approveCancelFeeling($event)"
+        >
+        </app-card-feelings>
+        </ng-container>
+    </div>
+
+    <div class="col-6" *ngIf='feelingsPublishedList'>
+        <h3 class="head" *ngIf="tabType ===  tabTypeSelected.Student"> 
+            {{'FEELINGS.STUDENT_FEELINGS_LIST' | translate}}
+
+        </h3>
+        <h3 class="head"  *ngIf="tabType ===  tabTypeSelected.Teacher">
+            {{'FEELINGS.TEACHER_FEELINGS_LIST' | translate}}
+
+
+        </h3>
+        <div class="list_old">
+            <ng-container>
+                <mat-accordion class="feelingCard__OldList"
+                    cdkDropList
+                    #unassignedList="cdkDropList"
+                    [cdkDropListData]="feelingsPublishedList"
+                    [cdkDropListConnectedTo]="[items1]"
+                    (cdkDropListDropped)="drop($event)">
+                    <mat-expansion-panel cdkDrag  disabled *ngFor="let feelingItem of feelingsPublishedList">
+                      <mat-expansion-panel-header >
+                        <app-card-feelings class="w-100"
+                        [feelingsDetailsModel] = "feelingItem"  
+                        (cancelFeeling)="cancelFeeling($event)"
+                        (swapUpEvent)='swapUp($event)'
+                        (swapDownEvent)='swapDown($event)'>
+                        </app-card-feelings>
+                         
+                      </mat-expansion-panel-header>
+                    </mat-expansion-panel>
+              
+              
+              </mat-accordion>
+              </ng-container>
+       
+           
+    </div>
+</div>
+</div>

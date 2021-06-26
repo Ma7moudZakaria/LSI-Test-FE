@@ -1,0 +1,97 @@
+@import 'src/assets/scss/_variables.scss';
+@import '../.././../../../../assets/scss/buttons';
+
+.basICinfo_page{
+
+    &.tab_page  {
+      background: #fbfbfb;
+      width: 100%;
+      margin-top: 1rem;
+      border-radius: 10px;
+      padding: 1rem;
+      }
+      
+      .max_h {
+        min-height: 65vh;
+        max-height: 65vh;
+        overflow-y: auto;
+      }
+      &:lang(en) {
+        text-align: left;
+    }
+    &:lang(ar) {
+        text-align: right;
+    }
+    .header_input{
+        font-size: 14px;
+        // font-family:Almarai-Bold;
+        color: #3A3A3A;
+        font-weight: bold;
+
+    }
+    .head{
+        font-size: 1.25rem;
+        color:#3A3A3A;
+    
+    }
+    .label{
+        width: 100%;
+        color: #3A3A3A;
+        // font-family: Almarai-Regular;
+        font-size: 0.875rem;
+        font-weight: bold;
+        }
+
+      .container_haeder{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      
+      }
+   
+        .saveButton{
+          background: #CB9118;
+          border-radius: 12px;
+          opacity: 1;
+          width: 7.5rem;
+          padding: 0.5rem;
+          height: 2.31rem;
+          border: none;
+          color: #ffffff;
+          display: block;
+      }
+    .haeder{
+      // font-family: Almarai-Bold;
+      font-size:1.25rem;
+      color:$edit;
+      font-weight: bold;
+    }
+
+    select.form-control {
+      appearance: auto !important;}
+
+      .save-btn
+       {
+        margin: 0 1rem;
+       }
+
+
+}
+
+
+
+.cancel-btn{
+  background:$icon_input ;
+  border-radius: 12px;
+  opacity: 1;
+  width:100px;
+  padding: 0.5rem;
+  height: 2.31rem !important;
+  border: none;
+  color: #ffffff;
+  display: block;
+  }
+  .save-btn
+       {
+        margin: 0 1rem;
+       }

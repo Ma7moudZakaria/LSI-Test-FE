@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { IProgramFilterByNameRequest } from '../../interfaces/programs-interfaces/iprogram-filter-requests';
 import { IAddScientificMaterial } from '../../interfaces/scientific-material/iadd-scientifimaterial';
 import { IScientificMaterialFilter } from '../../interfaces/scientific-material/iscientific-matrial-filter';
 import { IUpdateScientificMaterial } from '../../interfaces/scientific-material/iupdate-scientific-material';
@@ -18,7 +19,7 @@ export class ScientificMaterialService {
   getScientificMatrialDetailsURL = environment.baseUrl + 'ScientificMatrial/get-scientific-matrial-by-id/';
   getScientificMatrialFilterURL = environment.baseUrl + 'ScientificMatrial/get-scientific-matrial-filter/';
   deleteScientificMatrialURL = environment.baseUrl + 'ScientificMatrial/delete-scientific-matrial/';
-  getProgramsLookupUrl = environment.baseUrl + 'Programs/get-programs-lookup/';
+  getProgramsLookupUrl = environment.baseUrl + 'Programs/get-program-filter-by-name/';
   getScientificMatrialCategoriesURL = environment.baseUrl + 'ScientificMatrial/get-scientific-matrial-categories';
 
   constructor(private http: HttpClient) { }
@@ -39,9 +40,8 @@ export class ScientificMaterialService {
   getScientificMateriaFilter(filterRequest: IScientificMaterialFilter): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.getScientificMatrialFilterURL, filterRequest)
   }
-  getProgramsLookup(programName?:string): Observable<BaseResponseModel> {
-    return this.http.get<BaseResponseModel>(programName ?this.getProgramsLookupUrl +programName:this.getProgramsLookupUrl 
-      )
+  getProgramsLookup(filterRequest: IProgramFilterByNameRequest): Observable<BaseResponseModel> {
+    return this.http.post<BaseResponseModel>(this.getProgramsLookupUrl,filterRequest)
   }
   GetScientificMatrialCategoriesLookup():Observable<BaseResponseModel>{
     return this.http.get<BaseResponseModel>(this.getScientificMatrialCategoriesURL);

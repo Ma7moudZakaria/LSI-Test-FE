@@ -16,11 +16,11 @@
                             <span class="container__navigation__title">  {{'SIDENAVBAR.DASHBORD' | translate}}  </span>
                     </a>
                 </li>
-                <li class="disabled_sidenav">
+                <li class="nav-item" routerLinkActive="active">
                     <!-- <a href="#" class="text-center"> -->
-                    <a href="#" class="text-center">
+                    <!-- <a href="#" class="text-center"> -->
+                    <a [routerLink] = "['/program']">
                         <img src="../../../../assets/images/sidebar/program-icon.png">
-                         
                             <span class="container__navigation__title">{{'SIDENAVBAR.MYPROGRAMS' | translate}}</span>
                     </a>
                 </li>
@@ -64,8 +64,8 @@
                          <span class="container__navigation__title">{{'SIDENAVBAR.SETTINGS' | translate}}</span>
                     </a>
                 </li>
-                <li class="disabled_sidenav">
-                    <a href="#">
+                <li >
+                    <a [routerLink]="['/feelings']"  >
                         <img src="../../../../assets/images/sidebar/reviews-icon.png">
 
                         <span class="container__navigation__title">{{'SIDENAVBAR.MY_MESSAGES' | translate}}</span>

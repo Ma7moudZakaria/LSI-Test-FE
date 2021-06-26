@@ -1,0 +1,36 @@
+<div class="tab_page  ">
+  
+    <div class=" part1 list_exams">
+
+
+            <div class="list-group list-group_program-list">
+               
+                  <p class="mb-4">{{'JOINING_REQUEST.MODELS' | translate}}</p>
+            <div class="internal_scroll_list_group" >
+                    <!-- <a class="list-group-item d-flex"  > 
+                    <span>  {{'PROGRAMS_LIST.ALL' | translate}}</span>        
+                   </a> -->
+            
+                    <a class="list-group-item  d-flex"  *ngFor="let progExamFormsDetailsItem of programDetails?.progJoiExa ;let i=index" [class.active]="selectedIndex === i" (click)='getProgramJoinExam(progExamFormsDetailsItem)'>                           
+                        <span > {{ this.translate.currentLang === langEnum.en? progExamFormsDetailsItem.enExaName : progExamFormsDetailsItem.arExaName }}</span>               
+                    </a>
+                </div>
+                <!-- <div *ngIf="resMessage.message" class="alert alert-{{ resMessage.type }} my-4 py-2">
+                    {{ resMessage.message }}
+                </div> -->
+            </div>
+    </div>
+    <div class="part2  list_exams">
+        <p class="mb-2 name_prog"> {{ programDetails?.progBaseInfo?.prgName }}</p>
+        <p class="mb-3 head"> {{ this.translate.currentLang === langEnum.en? progExamFormsDetails?.engExamFormNam : progExamFormsDetails?.arabExamFormNam }} <small class="name_prog">{{'JOINING_REQUEST.DEGREE' | translate}} {{degree}}</small></p>
+
+        <div *ngFor="let questionItem of progExamFormsDetails?.questions ;let i=index">
+            <app-question-template  class="day_detils" [questionTemplate]='questionItem'>
+            </app-question-template>
+        </div>
+      <!-- [questionTemplate] = 'question' -->
+    </div>
+    
+   
+    
+</div>

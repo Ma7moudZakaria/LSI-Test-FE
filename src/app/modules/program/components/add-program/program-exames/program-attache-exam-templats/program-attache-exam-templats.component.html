@@ -1,0 +1,67 @@
+
+<div class="attache-exam-list">
+    <div class="row">
+      <div class="col-12 pr-4 mt-3">
+        <p class="p_header mb-0" matTooltip="{{translate.currentLang===langEnum.en ? exam?.engExamFormNam : exam?.arabExamFormNam}}">
+          {{translate.currentLang===langEnum.en ? exam?.engExamFormNam : exam?.arabExamFormNam }}
+      </p>
+      </div>
+      <div class="col-12">
+        <section class="internal_scroll_list_group ">
+        
+          <div  *ngIf="!isView">
+              <div class="input-group ">
+              <div *ngFor = 'let question of exam.questions'>
+                <div class="d-flex justify-content-end mt-3">
+                  <a (click)="confirmDeleteQuestionDialog(question)">
+                    <img src="../../../../assets/images/trash-2.svg" class="btn_trash">
+                  </a>
+                 </div>
+                <app-question-template [questionTemplate] = 'question'></app-question-template>
+              </div>
+              </div>
+             
+              <div class="col-12 addQuestion">
+                <div class="input-group justify-content-end">
+                    <button type="button" class="btn cancel-btn btn btn-warning mb-3" (click)="addQuestion()" >
+                      {{"GENERAL.ADD_QUESTION"|translate}}</button>
+                </div>
+               </div>
+    
+              <div class="input-group justify-content-end"><button type="button" class="btn save-btn mt-0" (click)="saveExam()">{{"GENERAL.SAVE"|translate}}</button></div>
+    
+            </div>
+      
+        
+          <!-- <br> -->
+          <div *ngIf="isView" >
+              <a *ngIf='this.exam.id' (click)="editQuestionTemplate() "> 
+                <!-- <i style='font-size:24px' class='fas'>&#xf044;</i> -->
+                <img class="mb-2 width1_4 cursor-pointer" src="../../../../../../assets/images/question/edit-question.svg " >
+              </a> 
+              <div class="input-group ">
+                  <div  *ngFor = 'let question of exam.questions' >
+                    <app-question-template [questionTemplate] = 'question' [viewMode] = 'isView'></app-question-template>
+                  </div>
+                </div>
+                <div  *ngIf="exam.questions.length===0">
+                  <label class="no-data input-group">
+                      {{"GENERAL.NO_DATA"|translate}} 
+                  </label>
+                    
+                   
+                  </div>
+          </div>
+    
+          <div *ngIf="!isView && resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2">
+            {{resultMessage.message}}
+             </div>
+    
+    
+        </section>
+      </div>
+    </div>
+    
+    </div>
+    
+    

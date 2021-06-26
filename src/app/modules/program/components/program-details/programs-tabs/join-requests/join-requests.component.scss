@@ -1,0 +1,73 @@
+@import '../../../../../scientific-material/components/scientific-material-view/programs-list/programs-list.component.scss';
+@import 'src/assets/scss/_variables.scss';
+.tab_page{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    background: #fbfbfb;
+    width: 100%;
+    border-radius:  0px 0px 12px 12px ;
+    &:lang(ar){text-align: right;}
+    &:lang(en){text-align: left;}
+    
+.list_exams{
+    background-color: #fff;
+    box-shadow:0px 3px 15px #0000001A;
+    border-radius: 19px;
+    height: 74vh;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-top: 2rem;
+    padding: 1rem 0.5rem;
+}
+.part1{
+    flex: 0 0 30.333333%;
+    max-width: 30.333333%
+}
+.part2{
+    flex: 0 0 64.666667%;
+    max-width: 64.666667%;
+}
+.head{
+    font-size: 20px;
+    font-family: Almarai-Bold;
+    color: #3A3A3A;
+  }
+//   for list
+.list-group_program-list
+    {
+            background:transparent;
+            border-radius: 0;
+            opacity: 1; 
+            padding: 0; 
+            height: auto; 
+            margin-top: 0;
+        .list-group-item
+        {
+            box-shadow: 0 2px 3px #80808052;
+            color: #8E2520;
+            font-family: Almarai-Bold;
+            font-size: 1rem;
+            &:hover{
+                color: #fff;
+             
+        }
+     
+  }
+ 
+}
+.list-group_program-list > p{
+  
+    font-size: 18px;
+   
+}
+
+ // for program details 
+ .name_prog{
+    font-size: 14px;
+    color: #8D8D8D;
+    font-family: Almarai-Regular;
+
+}
+
+}

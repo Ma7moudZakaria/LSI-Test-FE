@@ -1,0 +1,10 @@
+<div class="container-fluid">
+<div>
+    <app-program-notification-view  (openNotifyfrom)='openAddEditOverLay($event)' [progId]='progId'></app-program-notification-view>
+</div>
+<div class="overlay" *ngIf='showAddEditOverlay'>
+<app-add-edit-notification [notificationDetails] = 'notificationEditObjec' [progId]='progId'
+
+(closeNotifyForm)="closeNotifyProgram()"></app-add-edit-notification>
+</div>
+</div>

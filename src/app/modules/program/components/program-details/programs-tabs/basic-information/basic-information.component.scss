@@ -1,0 +1,76 @@
+
+.tab_page 
+ {
+  background: #fbfbfb;
+  width: 100%;
+  border-radius:  0px 0px 12px 12px ;
+    &:lang(ar){
+      text-align: right;
+    }
+    &:lang(en){
+      text-align: left;
+    }
+ 
+
+
+    .max_h {
+      min-height: 57vh;
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+    .info_basic_info{
+      background-color: #fff;
+      padding: 1.5rem;
+      color: #3A3A3A;
+      margin: 1rem 1.8rem;
+      border-radius: 19px;
+      font-family: Almarai-Regular;
+      font-size: 1rem;
+      .head{
+        font-size: 2rem;
+        font-family: Almarai-Bold;
+      }
+    
+    img,i{
+      width: 1rem;
+      height: 1rem;
+      margin: 0 0.2rem;
+      cursor: pointer;
+      color: #8E2520;
+    }
+    .details
+    {
+      color: #3A3A3A;
+      font-size:1rem
+    }
+    .num{
+      color: #8E2520;
+      font-family: Almarai-Bold;
+    
+    }
+    
+    }
+    .title{
+      color: #CB9118;
+      font-size: 14px;
+      font-family: Almarai-Bold;
+      
+      }
+      .title_data{
+      color: #363636;
+      font-size: 14px;
+      font-family: Almarai-Bold;
+      }
+      .head_conditions{
+        color: #8E2520;
+        font-size: 18px;
+        font-family: Almarai-Bold;
+        border-bottom: 1px solid #8080803d;
+
+      }
+}
+
+
+
+
+

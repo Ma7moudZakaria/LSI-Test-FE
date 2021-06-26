@@ -1,6 +1,8 @@
 export interface IprogramsModel {
     id?:string;
     no?:number;
+    // name?:string;
+    progName?:string;
     arabName?:string;
     engName?:string;
     arabTitle?:string;
@@ -9,4 +11,5 @@ export interface IprogramsModel {
     engShortDesc?:string;
     arabLongDesc?:string;
     engLongDesc?:string;
+    isContainExam?:boolean;
 }

@@ -26,7 +26,7 @@ import { ITelInputParams } from 'src/app/core/interfaces/shared-interfaces/tel-i
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
 import { ITeacherProfileLookup } from 'src/app/core/interfaces/teacher-interfaces/iteacher-profile-lookup';
 import { ITeacherProfileProgramDegreeLookup } from 'src/app/core/interfaces/teacher-interfaces/iteacher-profile-program-lookup';
-import { IprogramFilterRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-request';
+import { IProgramFilterAdvancedRequest, IProgramFilterByNameRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-requests';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
@@ -49,7 +49,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
   langEnum = LanguageEnum;
   collectionOfLookup = {} as ILookupCollection;
   listOfLookupProfile: string[] = ['GENDER', 'EDU_LEVEL', 'NATIONALITY', 'COUNTRY'
-    , 'DEGREE', 'EDU_DATE', 'DAYS', 'LANG', 'QUALIFI', 'SPECIAL', 'REWAYAT' , 'AGENCY', 'WORKING_PLATFORM'];
+    , 'DEGREE', 'EDU_DATE', 'DAYS', 'LANG', 'QUALIFI', 'SPECIAL', 'REWAYAT', 'AGENCY', 'WORKING_PLATFORM'];
 
   resMessage: BaseMessageModel = {};
   selecteddrgreeList = Array<BaseLookupModel>();
@@ -59,10 +59,10 @@ export class UpdateTeacherProfileComponent implements OnInit {
   hijri: boolean = false;
   milady: boolean = false;
   hijriBinding: any;
-  hijriBirthDateInputParam:NgbDateStruct= {year:0,day:0,month:0};
+  hijriBirthDateInputParam: NgbDateStruct = { year: 0, day: 0, month: 0 };
 
-  ProgramsList: IprogramsModel[] = []; ;
-  ProgramFilter: IprogramFilterRequest = {};
+  ProgramsList: IprogramsModel[] = [];;
+  ProgramFilter: IProgramFilterAdvancedRequest = {};
 
   rewayatsMessage: BaseMessageModel = {};
   selectedRewayatsList = Array<ITeacherProfileLookup>();
@@ -80,6 +80,8 @@ export class UpdateTeacherProfileComponent implements OnInit {
   fileList?: IAttachment[] = [];
   ejazaAttachmentIds: string[] = [];
 
+  programFilterByNameFilterRequest = {} as IProgramFilterByNameRequest;
+
   event = {
     eampm: "AM"
   }
@@ -91,7 +93,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
     private userProfilePicService: UserService,
     public userService: UserService,
     private attachmentService: AttachmentsService,
-    public translate: TranslateService, 
+    public translate: TranslateService,
     private ProgramService: ProgramService,
     public languageService: LanguageService) {
   }
@@ -105,56 +107,56 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.getPrograms();
     this.getLookupByKey();
   }
-  @HostListener('window:beforeunload', ['$event'])
-  public onPageUnload($event: BeforeUnloadEvent) {
-    if (this.unsavedDataCheck()) {
-      $event.returnValue = true;
-      // return "message";
-    }
-    else{
-      $event.returnValue = false;
-      // return '';
-    }
-  }
+  // @HostListener('window:beforeunload', ['$event'])
+  // public onPageUnload($event: BeforeUnloadEvent) {
+  //   if (this.unsavedDataCheck()) {
+  //     $event.returnValue = true;
+  //     // return "message";
+  //   }
+  //   else {
+  //     $event.returnValue = false;
+  //     // return '';
+  //   }
+  // }
 
-  @HostListener('window:popstate', ['$event'])
-  onPopState(event:any) {
-    this.userService.setCanDeActivate(this.unsavedDataCheck());
-  }
+  // @HostListener('window:popstate', ['$event'])
+  // onPopState(event: any) {
+  //   this.userService.setCanDeActivate(this.unsavedDataCheck());
+  // }
 
-  unsavedDataCheck() : boolean{
+  unsavedDataCheck(): boolean {
     return this.profileForm.value.firstAr != this.teacherProfileDetails?.fnameAr
-    || this.profileForm.value.firstNameEn != this.teacherProfileDetails?.faNameEn
-    || this.profileForm.value.middleAr != this.teacherProfileDetails?.mnameAr
-    || this.profileForm.value.middleNameEn != this.teacherProfileDetails?.mnameEn
-    || this.profileForm.value. familyAr!= this.teacherProfileDetails?.fanameAr
-    || this.profileForm.value. familyNameEn!= this.teacherProfileDetails?.faNameEn
-    || this.profileForm.value.nationality != this.teacherProfileDetails?.nationality
-   // || this.profileForm.value.hijriBirthDate != this.teacherProfileDetails?.hijriBirthDate
-    || this.profileForm.value.gender != this.teacherProfileDetails?.gender
-    || this.profileForm.value.mobile!= this.teacherProfileDetails?.mobile
-    || this.profileForm.value.country!= this.teacherProfileDetails?.country
-    || this.profileForm.value.city!= this.teacherProfileDetails?.city
-    || this.profileForm.value.nationality!= this.teacherProfileDetails?.nationality
-    || this.profileForm.value.edulevel!= this.teacherProfileDetails?.eduLevel
-    || this.profileForm.value.qualifi!= this.teacherProfileDetails?.qualifi
-    || this.profileForm.value.specia!= this.teacherProfileDetails?.specia
-    || this.profileForm.value.eduDate!= this.teacherProfileDetails?.eduDate
-    || this.profileForm.value.eduNum != this.teacherProfileDetails?.eduNum
-    || this.profileForm.value.isHasQuranExp!= this.teacherProfileDetails?.isHasQuranExp?.toString()
-    || this.profileForm.value.isHasTeachSunnaExp!= this.teacherProfileDetails?.isHasTeachSunnaExp?.toString()
-    || this.profileForm.value.isHasInternetTeachExp!= this.teacherProfileDetails?.isHasInternetTeachExp?.toString()
-    || this.profileForm.value.isHasTeachForeignerExp!= this.teacherProfileDetails?.isHasTeachForeignerExp?.toString()
-    || this.profileForm.value.isHasEjazaHafz!= this.teacherProfileDetails?.isHasEjazaHafz?.toString()
-    || this.profileForm.value.workingPlatForm!= this.teacherProfileDetails?.workingPlatForm
-    || this.profileForm.value.isHasEjazaTelawa!= this.teacherProfileDetails?.isHasEjazaTelawa?.toString()
-    || this.profileForm.value.bankName!= this.teacherProfileDetails?.bankName
-    || this.profileForm.value.agency!= this.teacherProfileDetails?.agency
-    || this.profileForm.value.address!= this.teacherProfileDetails?.address
-    || this.profileForm.value.bankNumber!= this.teacherProfileDetails?.bankNumber
-//    || this.profileForm.value.ejazaAttachmentIds!= this.teacherProfileDetails?.ejazaAttachments
+      || this.profileForm.value.firstNameEn != this.teacherProfileDetails?.faNameEn
+      || this.profileForm.value.middleAr != this.teacherProfileDetails?.mnameAr
+      || this.profileForm.value.middleNameEn != this.teacherProfileDetails?.mnameEn
+      || this.profileForm.value.familyAr != this.teacherProfileDetails?.fanameAr
+      || this.profileForm.value.familyNameEn != this.teacherProfileDetails?.faNameEn
+      || this.profileForm.value.nationality != this.teacherProfileDetails?.nationality
+      // || this.profileForm.value.hijriBirthDate != this.teacherProfileDetails?.hijriBirthDate
+      || this.profileForm.value.gender != this.teacherProfileDetails?.gender
+      || this.profileForm.value.mobile != this.teacherProfileDetails?.mobile
+      || this.profileForm.value.country != this.teacherProfileDetails?.country
+      || this.profileForm.value.city != this.teacherProfileDetails?.city
+      || this.profileForm.value.nationality != this.teacherProfileDetails?.nationality
+      || this.profileForm.value.edulevel != this.teacherProfileDetails?.eduLevel
+      || this.profileForm.value.qualifi != this.teacherProfileDetails?.qualifi
+      || this.profileForm.value.specia != this.teacherProfileDetails?.specia
+      || this.profileForm.value.eduDate != this.teacherProfileDetails?.eduDate
+      || this.profileForm.value.eduNum != this.teacherProfileDetails?.eduNum
+      || this.profileForm.value.isHasQuranExp != this.teacherProfileDetails?.isHasQuranExp?.toString()
+      || this.profileForm.value.isHasTeachSunnaExp != this.teacherProfileDetails?.isHasTeachSunnaExp?.toString()
+      || this.profileForm.value.isHasInternetTeachExp != this.teacherProfileDetails?.isHasInternetTeachExp?.toString()
+      || this.profileForm.value.isHasTeachForeignerExp != this.teacherProfileDetails?.isHasTeachForeignerExp?.toString()
+      || this.profileForm.value.isHasEjazaHafz != this.teacherProfileDetails?.isHasEjazaHafz?.toString()
+      || this.profileForm.value.workingPlatForm != this.teacherProfileDetails?.workingPlatForm
+      || this.profileForm.value.isHasEjazaTelawa != this.teacherProfileDetails?.isHasEjazaTelawa?.toString()
+      || this.profileForm.value.bankName != this.teacherProfileDetails?.bankName
+      || this.profileForm.value.agency != this.teacherProfileDetails?.agency
+      || this.profileForm.value.address != this.teacherProfileDetails?.address
+      || this.profileForm.value.bankNumber != this.teacherProfileDetails?.bankNumber
+    //    || this.profileForm.value.ejazaAttachmentIds!= this.teacherProfileDetails?.ejazaAttachments
   }
-  
+
   setCurrentLang() {
     this.emitHeaderTitle();
     this.languageService.currentLanguageEvent.subscribe(res => {
@@ -169,7 +171,11 @@ export class UpdateTeacherProfileComponent implements OnInit {
   }
 
   getPrograms() {
-    this.ProgramService.getAllPrograms().subscribe(res => {
+    this.programFilterByNameFilterRequest = { 
+      name: ""
+    }
+
+    this.ProgramService.getAllPrograms(this.programFilterByNameFilterRequest).subscribe(res => {
       let response = <BaseResponseModel>res;
       if (response.isSuccess) {
         this.ProgramsList = response.data;
@@ -205,12 +211,12 @@ export class UpdateTeacherProfileComponent implements OnInit {
     });
   }
 
-  getCitiesLookupByCountry(id?:string){
+  getCitiesLookupByCountry(id?: string) {
     let countryId = this.f['country'].value;
     this.lookupService.getCitiesByCountryId(countryId || '').subscribe(res => {
       if (res.isSuccess) {
         this.collectionOfLookup.CITY = res.data;
-        this.collectionOfLookup && this.collectionOfLookup.CITY ? this.f.city.setValue(this.collectionOfLookup.CITY[0].id):'';
+        this.collectionOfLookup && this.collectionOfLookup.CITY ? this.f.city.setValue(this.collectionOfLookup.CITY[0].id) : '';
       }
       else {
         this.resMessage =
@@ -231,9 +237,9 @@ export class UpdateTeacherProfileComponent implements OnInit {
     if (this.translate.currentLang === LanguageEnum.ar) {
       this.profileForm = this.fb.group(
         {
-          firstAr:['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-          middleAr:['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-          familyAr:['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+          firstAr: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+          middleAr: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+          familyAr: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
           hijriBirthDate: [null, Validators.required],
           gender: [null, Validators.required],
           mobile: [null, Validators.required],
@@ -245,7 +251,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           qualifi: [null, Validators.required],
           specia: [null, Validators.required],
           eduDate: [null, Validators.required],
-          eduNum: [null , [Validators.min(1)]],
+          eduNum: [null, [Validators.min(1)]],
           entity: [null, Validators.required],
           agency: [null, Validators.required],
           edulevel: [null, Validators.required],
@@ -275,9 +281,9 @@ export class UpdateTeacherProfileComponent implements OnInit {
     else {
       this.profileForm = this.fb.group(
         {
-          firstEn:['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-          middleEn:['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-          familyEn:['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+          firstEn: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+          middleEn: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+          familyEn: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
           hijriBirthDate: [null, Validators.required],
           gender: [null, Validators.required],
           mobile: [null, Validators.required],
@@ -289,7 +295,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           qualifi: [null, Validators.required],
           specia: [null, Validators.required],
           eduDate: [null, Validators.required],
-          eduNum: [null , [Validators.min(1)]],
+          eduNum: [null, [Validators.min(1)]],
           entity: [null, Validators.required],
           agency: [null, Validators.required],
           edulevel: [null, Validators.required],
@@ -323,7 +329,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
       if (res.isSuccess) {
         this.teacherProfileDetails = res.data as ITeacherProfile;
 
-        console.log("teacherProfileDetails ===========>" , this.teacherProfileDetails);
+        console.log("teacherProfileDetails ===========>", this.teacherProfileDetails);
 
         if (!this.teacherProfileDetails?.proPic) {
           this.teacherProfileDetails.proPic = '../../../../../assets/images/Profile.svg';
@@ -364,7 +370,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
       this.f.familyEn.setValue(this.teacherProfileDetails?.faNameEn);
     }
     let date = new Date(this.teacherProfileDetails?.hijriBirthDate || '');
-    this.hijriBirthDateInputParam = {year : date.getFullYear(), month : date.getMonth() + 1, day:date.getDay()}
+    this.hijriBirthDateInputParam = { year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDay() }
     this.f.hijriBirthDate.setValue(date);
 
     this.f.nationality.setValue(this.teacherProfileDetails?.nationality)
@@ -467,7 +473,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
         familyAr: this.profileForm.value.familyAr != null ? this.profileForm.value.familyAr : this.teacherProfileDetails.fanameAr,
         familyEn: this.profileForm.value.familyEn != null ? this.profileForm.value.familyEn : this.teacherProfileDetails.fanameAr,
         nationality: this.profileForm.value.nationality,
-        hijriBirthDate: this.profileForm.value.hijriBirthDate ,
+        hijriBirthDate: this.profileForm.value.hijriBirthDate,
         gender: this.profileForm.value.gender,
         mobile: this.profileForm.value.mobile,
         country: this.profileForm.value.country,
@@ -492,7 +498,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
         interviewId: this.profileForm.value.interviewDay,
         interviewTime: this.profileForm.value.interviewTime,
 
-        address:this.profileForm.value.address,
+        address: this.profileForm.value.address,
         ejazaAttachments: this.ejazaAttachmentIds,
       }
 
@@ -545,7 +551,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           if (this.updateTeacherModel.teacherPrograms) {
             this.updateTeacherModel.teacherPrograms.push({
               program: elm.programId,
-              degree:elm.degreeId
+              degree: elm.degreeId
             });
           }
         });
@@ -648,15 +654,15 @@ export class UpdateTeacherProfileComponent implements OnInit {
     const existtoTime = this.profileForm.value.toDayTimeinterview;
 
     if (!existAvailabilityDays && existFromTime != null && existtoTime != null && existtoTime > existFromTime) {
-      if (this.collectionOfLookup.DAYS ) {
+      if (this.collectionOfLookup.DAYS) {
         this.availabilityDaysModel = {
-          id:this.collectionOfLookup.DAYS.filter(el => el.id == this.profileForm.value.availabilityDays)[0].id,
-          
-          nameAr:this.collectionOfLookup.DAYS.filter(el => el.id == this.profileForm.value.availabilityDays)[0].nameAr,
-          nameEn:this.collectionOfLookup.DAYS.filter(el => el.id == this.profileForm.value.availabilityDays)[0].nameEn,
-          
-          fromTime:this.profileForm.value.fromDayTimeinterview,
-          toTime:this.profileForm.value.toDayTimeinterview
+          id: this.collectionOfLookup.DAYS.filter(el => el.id == this.profileForm.value.availabilityDays)[0].id,
+
+          nameAr: this.collectionOfLookup.DAYS.filter(el => el.id == this.profileForm.value.availabilityDays)[0].nameAr,
+          nameEn: this.collectionOfLookup.DAYS.filter(el => el.id == this.profileForm.value.availabilityDays)[0].nameEn,
+
+          fromTime: this.profileForm.value.fromDayTimeinterview,
+          toTime: this.profileForm.value.toDayTimeinterview
         }
 
         this.selectedAvailabilityDaysList.push(this.availabilityDaysModel);
@@ -690,14 +696,13 @@ export class UpdateTeacherProfileComponent implements OnInit {
     if (!existDegree && !existProgram) {
       if (this.collectionOfLookup.DEGREE && this.ProgramsList) {
         this.teacherProgramModel = {
-          programId:this.ProgramsList.filter(el => el.id == this.profileForm.value.teacherPrograms)[0].id,
-          degreeId:this.collectionOfLookup.DEGREE.filter(el => el.id == this.profileForm.value.teacherProgramDegrees)[0].id,
-        
-          programNameEn:this.ProgramsList.filter(el => el.id == this.profileForm.value.teacherPrograms)[0].engName,
-          programNameAr:this.ProgramsList.filter(el => el.id == this.profileForm.value.teacherPrograms)[0].arabName,
+          programId: this.ProgramsList.filter(el => el.id == this.profileForm.value.teacherPrograms)[0].id,
+          degreeId: this.collectionOfLookup.DEGREE.filter(el => el.id == this.profileForm.value.teacherProgramDegrees)[0].id,
 
-          degreeNameEn:this.collectionOfLookup.DEGREE.filter(el => el.id == this.profileForm.value.teacherProgramDegrees)[0].nameEn,
-          degreeNameAr:this.collectionOfLookup.DEGREE.filter(el => el.id == this.profileForm.value.teacherProgramDegrees)[0].nameAr,
+          progName: this.ProgramsList.filter(el => el.id == this.profileForm.value.teacherPrograms)[0].progName,
+
+          degreeNameEn: this.collectionOfLookup.DEGREE.filter(el => el.id == this.profileForm.value.teacherProgramDegrees)[0].nameEn,
+          degreeNameAr: this.collectionOfLookup.DEGREE.filter(el => el.id == this.profileForm.value.teacherProgramDegrees)[0].nameAr,
         }
 
         this.selectedTeacherProgramsList.push(this.teacherProgramModel);

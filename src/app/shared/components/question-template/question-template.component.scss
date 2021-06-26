@@ -9,6 +9,7 @@
         &:lang(ar){
             float: right;
         }
+      
     }
     .add_answer{
         &:lang(ar)
@@ -16,13 +17,23 @@
     }
     .input_fullWidth
     {
-        width:850px
+        width:400px;
+        &:lang(ar){
+            margin-right: 4rem;
+
+        }
+        &:lang(en){
+            margin-left: 4rem;
+        }
+        
     }
 
     .input_search_voice
     {
         input{
-            min-width: 400px;
+            // min-width: 400px;
+            min-width: 0px;
+
             border-top-left-radius: 0.65rem ;
             border-top-right-radius: 0.65rem !important;
             border-bottom-left-radius: 0.65rem;
@@ -46,4 +57,19 @@
             }
     }
 
+
+    .item_label{
+        &:lang(ar){
+            margin-right: 1rem;
+
+        }
+        &:lang(en){
+            margin-left: 1rem;
+
+        }
+    }
 }
+
+.day_detils.add-question-template 
+.input_search_voice input {
+   min-width: 0 !important;}

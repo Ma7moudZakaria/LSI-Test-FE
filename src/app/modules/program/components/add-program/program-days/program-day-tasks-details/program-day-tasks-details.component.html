@@ -1,0 +1,32 @@
+<div class="days_details">
+    <span class=" head">
+        {{this.translate.currentLang===langEnum.en?taskDetails?.dayTaskNameEn:taskDetails?.dayTaskNameAr}}
+    </span>
+    <app-program-day-task-hearing *ngIf="detailsTypeEnum.taskHearing===taskDetails?.huffazTask"
+     [hearingTaskDetailsModel]='hearingTaskDetailsModel'>
+    </app-program-day-task-hearing>
+    <app-program-day-task-read-explanation *ngIf="detailsTypeEnum.TaskReadExplanation===taskDetails?.huffazTask"
+    [readExplanationDetailsModel] ='readExplanationDetailsModel'></app-program-day-task-read-explanation>
+    <app-program-day-task-memorize *ngIf="detailsTypeEnum.TaskMemorize===taskDetails?.huffazTask" [memorizeDetailsModel] ='memorizeDetailsModel'></app-program-day-task-memorize>
+    <app-program-day-task-repetition *ngIf="detailsTypeEnum.TaskRepetition===taskDetails?.huffazTask" [repetitionDetailsModel]="repetitionDetailsModel"></app-program-day-task-repetition>
+    <app-program-day-task-linking *ngIf="detailsTypeEnum.TaskLinking===taskDetails?.huffazTask" [linkingDetailsModel]="linkingDetailsModel"></app-program-day-task-linking>
+    <app-program-day-task-daily-test *ngIf="detailsTypeEnum.TaskDailyTest===taskDetails?.huffazTask" [dailyTestDetailsModel]="dailyTestDetailsModel"></app-program-day-task-daily-test>
+    <app-program-day-task-encouragement-letter *ngIf="detailsTypeEnum.TaskEncouragementLetter===taskDetails?.huffazTask" [encouragementLetterDetailsModel]="encouragementLetterDetailsModel"></app-program-day-task-encouragement-letter>
+    <app-program-day-task-video *ngIf="detailsTypeEnum.TaskVideo===taskDetails?.huffazTask" [videoDetailsModel]="videoDetailsModel"></app-program-day-task-video>
+    <app-program-day-task-review *ngIf="detailsTypeEnum.TaskReview===taskDetails?.huffazTask" [reviewDetailsModel]="reviewDetailsModel"></app-program-day-task-review>
+    <app-program-day-task-recitation *ngIf="detailsTypeEnum.TaskRecitation===taskDetails?.huffazTask" [recitationDetailsModel]="recitationDetailsModel"></app-program-day-task-recitation>
+    <app-program-day-task-recitation-students *ngIf="detailsTypeEnum.TaskRecitationStudents===taskDetails?.huffazTask" [recitationStudentsModel]="recitationStudentsModel"></app-program-day-task-recitation-students>
+    <app-program-day-task-tasmea *ngIf="detailsTypeEnum.TaskTasmea===taskDetails?.huffazTask" [tasmeaModel]="tasmeaModel"></app-program-day-task-tasmea> 
+     <app-program-day-task-test-phased *ngIf="detailsTypeEnum.TaskTestPhased===taskDetails?.huffazTask" [testPhasedDetailsModel]="testPhasedDetailsModel"></app-program-day-task-test-phased>
+     <section *ngIf="detailsTypeEnum.TaskRecitation!=taskDetails?.huffazTask && detailsTypeEnum.TaskRecitationStudents!=taskDetails?.huffazTask && detailsTypeEnum.TaskTasmea!=taskDetails?.huffazTask">
+        <div  class="row direction-rtl buttons-center ">
+            <button   type="submit" class="save-btn" (click)="save()" > 
+                {{ "GENERAL.SAVE" | translate }}
+            </button>
+        </div>
+    </section>
+    </div>
+    <!-- <div *ngIf="!detailsTypeEnum || detailsTypeEnum.length === 0 ">
+            {{ 'GENERAL.NO_DATA' | translate}}
+
+    </div> -->

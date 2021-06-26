@@ -96,22 +96,22 @@ export class UpdateUserProfileComponent implements OnInit {
     });
   }
 
-  @HostListener('window:beforeunload', ['$event'])
-  public onPageUnload($event: BeforeUnloadEvent) {
-    if (this.unsavedDataCheck()) {
-      $event.returnValue = true;
-      // return "message";
-    }
-    else{
-      $event.returnValue = false;
-      // return '';
-    }
-  }
+  // @HostListener('window:beforeunload', ['$event'])
+  // public onPageUnload($event: BeforeUnloadEvent) {
+  //   if (this.unsavedDataCheck()) {
+  //     $event.returnValue = true;
+  //     // return "message";
+  //   }
+  //   else{
+  //     $event.returnValue = false;
+  //     // return '';
+  //   }
+  // }
 
-  @HostListener('window:popstate', ['$event'])
-  onPopState(event:any) {
-    this.userService.setCanDeActivate(this.unsavedDataCheck());
-  }
+  // @HostListener('window:popstate', ['$event'])
+  // onPopState(event:any) {
+  //   this.userService.setCanDeActivate(this.unsavedDataCheck());
+  // }
 
   unsavedDataCheck() : boolean{
     let  birthDateFromDetails=new Date(this.userProfileDetails?.birthdate||"");
@@ -365,14 +365,14 @@ export class UpdateUserProfileComponent implements OnInit {
 
   PopulateForm() {
     if (this.translate.currentLang === LanguageEnum.ar) {
-      this.f.firstNameAr.setValue(this.userProfileDetails?.fnameAr);
-      this.f.middleNameAr.setValue(this.userProfileDetails?.mnameAr);
-      this.f.familyNameAr.setValue(this.userProfileDetails?.fanameAr);
+      this.f.firstNameAr.setValue(this.userProfileDetails?.fnameAr ? this.userProfileDetails?.fnameAr : this.userProfileDetails?.fnameEn);
+      this.f.middleNameAr.setValue(this.userProfileDetails?.mnameAr ? this.userProfileDetails?.mnameAr : this.userProfileDetails?.mnameEn );
+      this.f.familyNameAr.setValue(this.userProfileDetails?.fanameAr ? this.userProfileDetails?.fanameAr : this.userProfileDetails?.faNameEn);
     }
     if (this.translate.currentLang === LanguageEnum.en) {
-      this.f.firstNameEn.setValue(this.userProfileDetails?.fnameEn);
-      this.f.middleNameEn.setValue(this.userProfileDetails?.mnameEn);
-      this.f.familyNameEn.setValue(this.userProfileDetails?.faNameEn);
+      this.f.firstNameEn.setValue(this.userProfileDetails?.fnameEn ? this.userProfileDetails?.fnameEn : this.userProfileDetails?.fnameAr);
+      this.f.middleNameEn.setValue(this.userProfileDetails?.mnameEn ? this.userProfileDetails?.mnameEn : this.userProfileDetails?.mnameAr);
+      this.f.familyNameEn.setValue(this.userProfileDetails?.faNameEn ? this.userProfileDetails?.faNameEn : this.userProfileDetails?.fanameAr);
     }
     this.f.address.setValue(this.userProfileDetails?.address);
     this.f.gender.setValue(this.userProfileDetails?.gender);

@@ -78,22 +78,22 @@ export class ContentManagementSystemComponent implements OnInit {
       type: ''
     }
   }
-  @HostListener('window:beforeunload', ['$event'])
-  public onPageUnload($event: BeforeUnloadEvent) {
-    if (this.unsavedDataCheck()) {
-      $event.returnValue = true;
-      // return "message";
-    }
-    else{
-      $event.returnValue = false;
-      // return '';
-    }
-  }
+  // @HostListener('window:beforeunload', ['$event'])
+  // public onPageUnload($event: BeforeUnloadEvent) {
+  //   if (this.unsavedDataCheck()) {
+  //     $event.returnValue = true;
+  //     // return "message";
+  //   }
+  //   else{
+  //     $event.returnValue = false;
+  //     // return '';
+  //   }
+  // }
 
-  @HostListener('window:popstate', ['$event'])
-  onPopState(event:any) {
-    this.contentmanagementService.setCanDeActivate(this.unsavedDataCheck());
-  }
+  // @HostListener('window:popstate', ['$event'])
+  // onPopState(event:any) {
+  //   this.contentmanagementService.setCanDeActivate(this.unsavedDataCheck());
+  // }
 
   unsavedDataCheck() : boolean{
     return this.contentmanagementsystem.shortDesAr != this.f.shortDescriptionAr.value

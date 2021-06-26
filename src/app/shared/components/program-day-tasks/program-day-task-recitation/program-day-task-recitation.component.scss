@@ -1,0 +1,55 @@
+@import '../../../../modules/program/components/program-details/programs-tabs/days/days.component.scss';
+
+.day-recitation{
+    &:lang(en)
+    {
+        text-align: left;
+    }
+    &:lang(ar)
+    {
+        text-align: right;
+    }
+
+    .custom-file__text {
+        color: var(--unnamed-color-363636);
+        text-align: center;
+        font: normal normal bold 20px/31px Almarai;
+        letter-spacing: -0.29px;
+        color: #363636;
+        opacity: 1;
+        padding: 1rem;
+    }
+
+    .custom-file {
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border: 3px dashed #DFDFDF;
+        border-radius: 12px;
+        opacity: 1;
+        height: 30%;
+        width: 100%;
+        text-align: center;
+    }
+    .upload-icon{
+        margin-bottom: 10px;  
+        width: 3rem;
+        height: 3rem;      
+        }
+    .page-image{
+        width: 100%;
+        height: 400px;
+    }
+    .cardRecourd{
+       justify-content: space-between;
+        align-items: center;
+        display: flex;
+        padding: 0.5rem 1rem;
+        background-color: #DFDFDF;
+        border-radius: 7px;
+    }
+    .save-btn, .cancel-btn
+    {
+      height: 2.31rem;
+      margin: 1rem;
+  
+     }
+}
