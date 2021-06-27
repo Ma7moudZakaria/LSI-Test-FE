@@ -4,3 +4,4 @@ export interface IProgCondPredefinedNumerical {
     condNo?:number;
     value?:number;
 }
+
