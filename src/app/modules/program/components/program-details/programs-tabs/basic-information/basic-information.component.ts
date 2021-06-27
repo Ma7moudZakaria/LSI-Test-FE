@@ -82,9 +82,9 @@ export class BasicInformationComponent implements OnInit {
   }
 
   confirmDialog(){
-    const message =this.translate.currentLang === LanguageEnum.en ?"Are you sure that you want to delete this task":"هل متأكد من حذف هذه المهمة";
+    const message =this.translate.currentLang === LanguageEnum.en ?"Are you sure that you want to delete this program":"هل متأكد من حذف هذا البرنامج";
 
-    const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete task' : 'حذف المهمة', message);
+    const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete program' : 'حذف برنامج', message);
 
     const dialogRef = this.dialog.open(ConfirmModalComponent, {
       maxWidth: "400px",
