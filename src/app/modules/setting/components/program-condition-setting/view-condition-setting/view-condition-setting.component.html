@@ -71,6 +71,8 @@
                             <app-custom-conditions
                              [customConditionsModel]='customConditionsData'
                              (editcustomConditionsCard)="editCustomConditions($event)"
+                             (deleteCustomConditionsCard) = deleteCustomCard($event)
+
                              ></app-custom-conditions>
                         </div>
             </ng-container>

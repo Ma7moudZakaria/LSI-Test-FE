@@ -15,7 +15,7 @@ export class ProgramConditionsService {
   getProgramConditionsListURL = environment.baseUrl + 'ProgramPredefinedCustomConditions/get-all-program-predefined-custom-conditions';
   addProgramPredefinedCustomConditionsURL = environment.baseUrl + 'ProgramPredefinedCustomConditions/add-program-predefined-custom-conditions';
   updateProgramPredefinedCustomConditionsURL = environment.baseUrl + 'ProgramPredefinedCustomConditions/update-program-predefined-custom-conditions';
-  deleteProgramPredefinedCustomConditionsURL = environment.baseUrl + 'ProgramPredefinedCustomConditions/delete-program-predefined-custom-conditions';
+  deleteProgramPredefinedCustomConditionsURL = environment.baseUrl + 'ProgramPredefinedCustomConditions/delete-program-predefined-custom-conditions/';
   saveProgramConditionsListURL = environment.baseUrl + 'Programs/assign-conditions-to-program';
   getProgramConditionsByProgIdURL = environment.baseUrl + 'Programs/get-program-condition-by-program-id/';
 

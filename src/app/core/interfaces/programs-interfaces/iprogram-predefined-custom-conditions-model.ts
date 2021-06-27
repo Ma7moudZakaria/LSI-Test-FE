@@ -17,8 +17,3 @@ export interface IprogramPredefinedCustomConditionsModel {
 
 
 
-
-// export interface IProgramCustomCondUI {
-//     conditionType: CustomCondTypesEnum;
-//     values: string[];
-// }

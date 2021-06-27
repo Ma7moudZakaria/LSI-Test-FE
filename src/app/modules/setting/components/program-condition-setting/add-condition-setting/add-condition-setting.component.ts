@@ -16,6 +16,9 @@ import { AlertifyService } from 'src/app/core/services/alertify-services/alertif
 import { IDetailsProgramPredefinedCustomConditionsModel } from 'src/app/core/interfaces/programs-interfaces/idetails-program-predefined-custom-conditions-model';
 import { IUpdateProgramPredefinedCustomConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iupdate-program-predefined-custom-conditions-model';
 import { IprogramPredefinedCustomConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-predefined-custom-conditions-model';
+import { IAnswer } from 'src/app/core/interfaces/exam-builder-interfaces/ianswer';
+import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-condition-setting',
@@ -24,14 +27,11 @@ import { IprogramPredefinedCustomConditionsModel } from 'src/app/core/interfaces
 })
 export class AddConditionSettingComponent implements OnInit {
   model: IAddProgramPredefinedCustomConditionsModel | undefined;
-  // editModel: IUpdateProgramPredefinedCustomConditionsModel | undefined;
-  // detailsModel: IDetailsProgramPredefinedCustomConditionsModel | undefined
-
   conditionModel: IConditionModel = { answerType: SettingAnswerTypeEnum.Choices, answerList: [] };
   answerTypeEnum = SettingAnswerTypeEnum;
 
-  // @Input() conditionsDetails = {} as IDetailsProgramPredefinedCustomConditionsModel;
   @Input() modelEdit: IprogramPredefinedCustomConditionsModel | undefined;
+
   @Output() closeOverlay = new EventEmitter<boolean>();
   @Output() addCustomCondition = new EventEmitter();
 
@@ -47,18 +47,17 @@ export class AddConditionSettingComponent implements OnInit {
   constructor(public translate: TranslateService,
     private lookupService: LookupService,
     private alert: AlertifyService,
+    public dialog: MatDialog,
     private progCondService: ProgramConditionsService) { }
 
   ngOnInit(): void {
     this.MULTISELECT = this.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.MULTI_SELECT') : this.translate.instant('GENERAL.MULTI_SELECT')
-
 
     // in case edit form 
     if (this.modelEdit) {
       this.getModel();
     }
 
-    // this.conditionModel.answerType = this.collectionOfLookup.PROG_COND_TYPES ? this.collectionOfLookup.PROG_COND_TYPES[0].id : '';
   }
 
 
@@ -123,6 +122,17 @@ export class AddConditionSettingComponent implements OnInit {
     });
   }
 
+  // case in edit
+
+
+  getModel() {
+    if (this.modelEdit && this.modelEdit.conditionModel)
+      this.conditionModel = this.modelEdit?.conditionModel;
+
+
+
+  }
+
   savingEdit() {
     this.modelEdit = {
       id: this.modelEdit?.id,
@@ -153,50 +163,28 @@ export class AddConditionSettingComponent implements OnInit {
     });
   }
 
+  // delete answer
 
 
-  getModel() {
-    if (this.modelEdit && this.modelEdit.conditionModel)
-      this.conditionModel = this.modelEdit?.conditionModel;
-    // conditionModel: JSON.parse(this.conditionJson)
+  deleteAnswerDialog(answer: ISettingAnswer) {
+    const message = this.translate.currentLang === LanguageEnum.en ? "Are you sure that you want to delete answer" : "هل متأكد من حذف الإجابة";
 
-    // this.modelEdit = {
-    //   id: this.modelEdit.id,
-    //   title: this.modelEdit.title,
+    const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete Answer' : 'حذف الإجابة', message);
 
+    const dialogRef = this.dialog.open(ConfirmModalComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult == true) {
+        // let question = this.exam.questions.filter(q => q.questionNo == no)[0];
 
-    // }
-    // this.conditionModel.title.setValue(this.editModel?.title) 
-    // this.f.notifyName.setValue(this.notificationDetails?.notifyName);
-
-
-
-
-
-    // this.conditionModel = JSON.parse("{\"answerList\":[{\"id\":\"a81fa3f0-a173-4bc6-a642-2f5a930d9ea5\",\"text\":\"kjlkj\"},{\"id\":\"19ecde13-6b8b-4330-b431-32ff1b0fae33\",\"text\":\"poipoipo\"},{\"id\":\"e58a2811-d72a-48fc-8014-16ae0559e71c\",\"text\":\";jkl;lk;lk\"}],\"title\":\"gjghjghj\",\"answerType\":\"Choices\"}")
-
-    // this.resMessage = {};
-    // if (id) {
-    //   this.progCondService.getProgramConditionsByProgId(id).subscribe(res => {
-    //     this.conditionModel = res.data as IConditionModel;
-    //     this.conditionModel.answerList = res.data.AnswerTypeEnum ? JSON.parse(res.data.AnswerTypeEnum) : [];
-    //   },
-    //     error => {
-    //       this.resMessage = {
-    //         message: error,
-    //         type: BaseConstantModel.DANGER_TYPE
-    //       }
-    //     }
-    //   )
-    // }
-    // else {
-    //   this.conditionModel = { answerList: [] };
-
-    // }
-
-
+        const index = this.conditionModel?.answerList?.indexOf(answer);
+        if (index)
+          this.conditionModel.answerList?.splice(index, 1);
+      }
+    });
   }
-
 
 
 
@@ -206,25 +194,4 @@ export class AddConditionSettingComponent implements OnInit {
   }
 
 
-
-  // getAttacheExamTemplate(examId?: string) {
-  //   this.resultMessage = {};
-  //   if (examId) {
-  //     this.examFormService.getExamFormDetails(examId).subscribe(res => {
-  //         this.exam = res.data as IExam;
-  //         this.exam.questions = res.data.examTemplate ? JSON.parse(res.data.examTemplate) : [];
-  //     },
-  //       error => {
-  //         this.resultMessage = {
-  //           message: error,
-  //           type: BaseConstantModel.DANGER_TYPE
-  //         }
-  //       }
-  //     )
-  //   }
-  //   else{
-  //   this.exam = {questions:[]};
-
-  //   }
-  // }
 }

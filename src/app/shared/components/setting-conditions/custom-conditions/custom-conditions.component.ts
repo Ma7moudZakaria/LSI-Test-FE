@@ -9,13 +9,14 @@ import { IConditionModel } from 'src/app/core/interfaces/setting/icondition-mode
   styleUrls: ['./custom-conditions.component.scss']
 })
 export class CustomConditionsComponent implements OnInit {
+
   @Input() customConditionsModel: IprogramPredefinedCustomConditionsModel = {}
   answerType = SettingAnswerTypeEnum;
 
   @Output() editcustomConditionsCard = new EventEmitter<IprogramPredefinedCustomConditionsModel>();
+  @Output() deleteCustomConditionsCard = new EventEmitter<string>();
 
   constructor() { }
-
 
   ngOnInit(): void {
   }
@@ -23,4 +24,10 @@ export class CustomConditionsComponent implements OnInit {
   editCustomCondition() {
     this.editcustomConditionsCard.emit(this.customConditionsModel)
   }
+
+
+  deleteCustomCondition() {
+    this.deleteCustomConditionsCard.emit(this.customConditionsModel?.id)
+  }
+
 }

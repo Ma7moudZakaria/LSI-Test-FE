@@ -54,7 +54,6 @@ export class ProgramConditionSettingComponent implements OnInit {
 
 
 
-
 }
 function getProgramConditionsLis(getProgramConditionsLis: any) {
   throw new Error('Function not implemented.');

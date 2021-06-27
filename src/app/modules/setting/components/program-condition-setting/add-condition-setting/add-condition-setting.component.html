@@ -52,7 +52,7 @@
                 <ng-container *ngFor="let answer of conditionModel.answerList">
                     <div class="d-flex mb-2">
                     <input type="text" class="form-control w-90" [(ngModel)]="answer.text" >
-                    <a>
+                    <a (click)='deleteAnswerDialog(answer)'>
                         <img src="../../../../assets/images/trash-2.svg" class="btn_trash" >   
                     </a>
                     </div>
