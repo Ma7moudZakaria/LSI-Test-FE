@@ -3,13 +3,20 @@
 <div class="container-fluid">
     <div class="row">
        <div class="col-12">
-           <app-view-condition-setting (openCoiditionFrom)="openCoiditionFrom()"></app-view-condition-setting>
+           <app-view-condition-setting 
+           (openCoiditionFrom)="openCoiditionFrom()"
+            (editCondition)="openEditOverLay($event)"
+           ></app-view-condition-setting>
        </div>
        
     </div>
 
 <div class="overlay" *ngIf="showAddForm">
-    <app-add-condition-setting (closeOverlay)="closeForm()" (addCustomCondition)="addCustomCondition()"></app-add-condition-setting>
+    <app-add-condition-setting 
+     (closeOverlay)="closeForm()"
+     (addCustomCondition)="addCustomCondition()"
+     [modelEdit]="modelEdit"
+     ></app-add-condition-setting>
 </div>
 
 </div>

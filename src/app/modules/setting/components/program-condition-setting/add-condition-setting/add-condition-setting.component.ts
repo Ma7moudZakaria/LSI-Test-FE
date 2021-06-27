@@ -1,3 +1,4 @@
+import { CustomConditionsComponent } from './../../../../../shared/components/setting-conditions/custom-conditions/custom-conditions.component';
 import { AnswerTypeEnum } from './../../../../../core/enums/exam-builder-enums/answer-type-enum.enum';
 import { ProgramConditionsService } from 'src/app/core/services/program-services/program-conditions.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
@@ -14,6 +15,7 @@ import { IAddProgramPredefinedCustomConditionsModel } from 'src/app/core/interfa
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { IDetailsProgramPredefinedCustomConditionsModel } from 'src/app/core/interfaces/programs-interfaces/idetails-program-predefined-custom-conditions-model';
 import { IUpdateProgramPredefinedCustomConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iupdate-program-predefined-custom-conditions-model';
+import { IprogramPredefinedCustomConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-predefined-custom-conditions-model';
 
 @Component({
   selector: 'app-add-condition-setting',
@@ -22,15 +24,17 @@ import { IUpdateProgramPredefinedCustomConditionsModel } from 'src/app/core/inte
 })
 export class AddConditionSettingComponent implements OnInit {
   model: IAddProgramPredefinedCustomConditionsModel | undefined;
-  editModel: IUpdateProgramPredefinedCustomConditionsModel | undefined;
-  detailsModel: IDetailsProgramPredefinedCustomConditionsModel | undefined
-  @Input() conditionsDetails = {} as IDetailsProgramPredefinedCustomConditionsModel;
-
-  @Output() closeOverlay = new EventEmitter<boolean>();
-  @Output() addCustomCondition = new EventEmitter();
+  // editModel: IUpdateProgramPredefinedCustomConditionsModel | undefined;
+  // detailsModel: IDetailsProgramPredefinedCustomConditionsModel | undefined
 
   conditionModel: IConditionModel = { answerType: SettingAnswerTypeEnum.Choices, answerList: [] };
   answerTypeEnum = SettingAnswerTypeEnum;
+
+  // @Input() conditionsDetails = {} as IDetailsProgramPredefinedCustomConditionsModel;
+  @Input() modelEdit: IprogramPredefinedCustomConditionsModel | undefined;
+  @Output() closeOverlay = new EventEmitter<boolean>();
+  @Output() addCustomCondition = new EventEmitter();
+
   langEnum = LanguageEnum;
   collectionOfLookup = {} as ILookupCollection;
   listOfLookupConditions: string[] = ['PROG_COND_TYPES'];
@@ -47,25 +51,18 @@ export class AddConditionSettingComponent implements OnInit {
 
   ngOnInit(): void {
     this.MULTISELECT = this.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.MULTI_SELECT') : this.translate.instant('GENERAL.MULTI_SELECT')
-    this.getModel();
+
+
+    // in case edit form 
+    if (this.modelEdit) {
+      this.getModel();
+    }
 
     // this.conditionModel.answerType = this.collectionOfLookup.PROG_COND_TYPES ? this.collectionOfLookup.PROG_COND_TYPES[0].id : '';
   }
 
-  // getLookupByKey() {
-  //   this.lookupService.getLookupByKey(this.listOfLookupConditions).subscribe(res => {
-  //     this.collectionOfLookup = res.data as ILookupCollection;
-  //     if (res.isSuccess) {
-  //     }
-  //     else {
-  //       this.resMessage =
-  //       {
-  //         message: res.message,
-  //         type: BaseConstantModel.DANGER_TYPE
-  //       }
-  //     }
-  //   });
-  // }
+
+
 
   closeForm() {
     this.closeOverlay.emit(false)
@@ -126,20 +123,17 @@ export class AddConditionSettingComponent implements OnInit {
     });
   }
 
-
-
-  editCondition() {
-    this.editModel = {
+  savingEdit() {
+    this.modelEdit = {
+      id: this.modelEdit?.id,
       title: this.conditionModel.title,
-      // conditionJson: JSON.stringify(this.conditionModel)
-
+      conditionJson: JSON.stringify(this.conditionModel)
     }
-
+    this.editSettingConditions();
   }
 
-
   editSettingConditions() {
-    this.progCondService.putProgramPredefinedCustomConditions(this.editModel || {}).subscribe(res => {
+    this.progCondService.putProgramPredefinedCustomConditions(this.modelEdit || {}).subscribe(res => {
       if (res.isSuccess) {
 
         this.closeForm();
@@ -162,7 +156,24 @@ export class AddConditionSettingComponent implements OnInit {
 
 
   getModel() {
-    this.conditionModel = JSON.parse("{\"answerList\":[{\"id\":\"a81fa3f0-a173-4bc6-a642-2f5a930d9ea5\",\"text\":\"kjlkj\"},{\"id\":\"19ecde13-6b8b-4330-b431-32ff1b0fae33\",\"text\":\"poipoipo\"},{\"id\":\"e58a2811-d72a-48fc-8014-16ae0559e71c\",\"text\":\";jkl;lk;lk\"}],\"title\":\"gjghjghj\",\"answerType\":\"Choices\"}")
+    if (this.modelEdit && this.modelEdit.conditionModel)
+      this.conditionModel = this.modelEdit?.conditionModel;
+    // conditionModel: JSON.parse(this.conditionJson)
+
+    // this.modelEdit = {
+    //   id: this.modelEdit.id,
+    //   title: this.modelEdit.title,
+
+
+    // }
+    // this.conditionModel.title.setValue(this.editModel?.title) 
+    // this.f.notifyName.setValue(this.notificationDetails?.notifyName);
+
+
+
+
+
+    // this.conditionModel = JSON.parse("{\"answerList\":[{\"id\":\"a81fa3f0-a173-4bc6-a642-2f5a930d9ea5\",\"text\":\"kjlkj\"},{\"id\":\"19ecde13-6b8b-4330-b431-32ff1b0fae33\",\"text\":\"poipoipo\"},{\"id\":\"e58a2811-d72a-48fc-8014-16ae0559e71c\",\"text\":\";jkl;lk;lk\"}],\"title\":\"gjghjghj\",\"answerType\":\"Choices\"}")
 
     // this.resMessage = {};
     // if (id) {

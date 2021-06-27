@@ -1,9 +1,11 @@
 
 
 <div class="form-group conditionForm mt-3 pl-3 pr-3" >
-    <h3 class="head"> إضافة شرط</h3>
     
+    <h3 class=" head  bold" *ngIf="!modelEdit"> إضافة شرط</h3>
+    <h3 class=" head  bold" *ngIf="modelEdit">تعديل شرط</h3>
        
+    
         
     <div class="form-group">
         <div class="row">
@@ -69,15 +71,16 @@
 <div *ngIf="resMessage" class="alert alert-{{ resMessage.type }} my-4 py-2 text-center">
     <span class="bold"> {{resMessage.message}}</span>
  </div>
+ 
    <section class="mt-5">
             <div  class="row direction-rtl buttons-center mt-5">
-                <button   type="submit" class="save-btn" (click)="saveCondition()" *ngIf="conditionsDetails"> 
+                <button   type="submit" class="save-btn" (click)="saveCondition()" *ngIf="!modelEdit"> 
                     {{ "GENERAL.SAVE" | translate }}
                     
                 </button>
-                <!-- <button   type="submit" class="save-btn" (click)="editCondition()"*ngIf="conditionsDetails" > 
+                <button   type="submit" class="save-btn" (click)="savingEdit()"*ngIf="modelEdit" > 
                     {{ "GENERAL.EDIT" | translate }}
-                </button> -->
+                </button>
                 <button  type="reset" class="cancel-btn"    (click)="closeForm()"> 
                     {{ "GENERAL.CANCEL" | translate }} 
                     

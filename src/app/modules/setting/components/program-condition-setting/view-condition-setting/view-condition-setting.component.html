@@ -66,12 +66,15 @@
         <!-- customConditions cards  -->
         <hr> 
         <div class="row">
-        <ng-container  *ngFor="let item of customConditionsList ;let i=index">
-                    <div class="col-4 mb-3">
-                        <app-custom-conditions [customConditionsModel]='item'></app-custom-conditions>
-                    </div>
-        </ng-container>
-          </div>
+            <ng-container  *ngFor="let customConditionsData of customConditionsList ;let i=index">
+                        <div class="col-4 mb-3">
+                            <app-custom-conditions
+                             [customConditionsModel]='customConditionsData'
+                             (editcustomConditionsCard)="editCustomConditions($event)"
+                             ></app-custom-conditions>
+                        </div>
+            </ng-container>
+        </div>
          
     </div>
    

@@ -9,13 +9,15 @@
             <select class="form-control" id="sel1">
               <option *ngFor='let item of customConditionsModel.conditionModel?.answerList'>{{item.text}} </option>
             </select>
+
           </div>
           <div *ngIf='customConditionsModel.conditionModel?.answerType === answerType.Toggel'>
             toog
           </div>
+
         <ng-container >
             <span class="icon_actions">
-                <img src="/assets/images/notify/edit.svg" > 
+                <img src="/assets/images/notify/edit.svg" (click)="editCustomCondition()" > 
                 <img src="/assets/images/notify/trash.svg">  
                </span>
         </ng-container>

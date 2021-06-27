@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { ProgramConditionsService } from 'src/app/core/services/program-services/program-conditions.service';
 import { IprogramPredefinedCustomConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-predefined-custom-conditions-model';
 import { programPredefinedConditionsEnum } from 'src/app/core/enums/programs/program-predefined-conditions-enum.enum';
@@ -14,7 +14,7 @@ export class ViewConditionSettingComponent implements OnInit {
 
   @Output() openCoiditionFrom = new EventEmitter<boolean>();
   predefineConditionsList: IprogramPredefinedCustomConditionsModel[] = [];
-  customConditionsList: IprogramPredefinedCustomConditionsModel[] = [];
+  @Input() customConditionsList: IprogramPredefinedCustomConditionsModel[] = [];
   programPredefinedEnum = programPredefinedConditionsEnum;
   getCustomConditionsList: IConditionModel[] = [];
 
@@ -45,13 +45,21 @@ export class ViewConditionSettingComponent implements OnInit {
       //     JSON.parse(element.conditionJson||'{}')
       //   )
       // });
-//this.customConditionsList =JSON.parse()
-     // this.item=JSON.parse(this.customConditionsList||'{}')
+      //this.customConditionsList =JSON.parse()
+      // this.item=JSON.parse(this.customConditionsList||'{}')
 
       // this.customConditionsList[0].conditionJson = JSON.parse(this.customConditionsList[0].conditionJson);
 
 
     });
   }
+
+  @Output() editCondition = new EventEmitter<IprogramPredefinedCustomConditionsModel>();
+
+
+  editCustomConditions(event: IprogramPredefinedCustomConditionsModel) {
+    this.editCondition.emit(event);
+  }
+
 
 }
