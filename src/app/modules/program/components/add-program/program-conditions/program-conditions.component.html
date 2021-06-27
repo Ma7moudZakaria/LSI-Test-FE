@@ -27,10 +27,10 @@
             </div>
     
             <div class="col-4" *ngIf="programConditionsEnum.numberStudentSubscribtion===item.conditionNo">
-                <app-setting-maxmum-subscribe></app-setting-maxmum-subscribe>
+                <app-setting-maxmum-subscribe [programConditionsModel] ='maxmumSubscribeModel' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()'></app-setting-maxmum-subscribe>
             </div>
             <div class="col-4" *ngIf="programConditionsEnum.memorizeQuran===item.conditionNo">
-                <app-setting-part-qraan></app-setting-part-qraan>
+                <app-setting-part-qraan [programConditionsModel] ='partQuranModel' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()'></app-setting-part-qraan>
             </div>
             <div class="col-4" *ngIf="programConditionsEnum.accept===item.conditionNo">
                 <app-setting-accept></app-setting-accept>

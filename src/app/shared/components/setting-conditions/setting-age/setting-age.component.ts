@@ -34,13 +34,12 @@ export class SettingAgeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.updateProgramConditionDetailsModel.condId=this.programConditionsModel.id;
     this.ageModel=JSON.parse(this.programConditionsModel.progCondValue ||'{}')||{};
     this.ageModel.id = this.programConditionsModel.id;
     this.ageModel.condId = this.programConditionsModel.condId;
     this.ageModel.isRequired=this.programConditionsModel.condRequired;
     this.ageModel.progId=this.programConditionsModel.progId;
-   
+    this.ageModel.title=this.programConditionsModel.title;
   }
 
   saveProgramConditions() {

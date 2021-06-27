@@ -26,14 +26,13 @@ export class ProgramConditionsComponent implements OnInit {
   conIds:string[]=[];
   assignConditionsToProgramModel:IassignConditionsToProgramModel={};
   resultMessage: BaseMessageModel = {};
-  programConditionsModel: IProgramConditionsModel = {};
-  ageModel: IProgCondPredefinedNumerical = {};
-  partQuranModel: IProgCondPredefinedNumerical = {};
-  maxmumSubscribeModel: IProgCondPredefinedNumerical = {};
+  ageModel: IProgramConditionsModel = {};
+  partQuranModel: IProgramConditionsModel = {};
+  maxmumSubscribeModel: IProgramConditionsModel = {};
   qualificationsModel: IProgCondPredefinedList = {};
-  accepModel: IProgCondPredefinedList = {};
- degreeLastProgramModel: IProgCondPredefinedMultiList = {};
- lastProgramModel: IProgCondPredefinedMultiList = {};
+  accepModel: IProgramConditionsModel = {};
+ degreeLastProgramModel: IProgramConditionsModel = {};
+ lastProgramModel: IProgramConditionsModel = {};
  
   constructor(
     public languageService: LanguageService,
@@ -59,7 +58,12 @@ export class ProgramConditionsComponent implements OnInit {
       this.programConditionsList = res.data as IProgramConditionsModel[];
       this.programConditionsList.forEach(element => {
         if(this.programConditionsEnum.age===element.conditionNo){this.ageModel=element}
+        if(this.programConditionsEnum.numberStudentSubscribtion===element.conditionNo){this.maxmumSubscribeModel=element}
+        if(this.programConditionsEnum.memorizeQuran===element.conditionNo){this.partQuranModel=element}
         if(this.programConditionsEnum.dgreeaLastProgram===element.conditionNo){this.degreeLastProgramModel=element}
+        if(this.programConditionsEnum.qualifications===element.conditionNo){this.qualificationsModel=element}
+        if(this.programConditionsEnum.programFinished===element.conditionNo){this.lastProgramModel=element}
+        if(this.programConditionsEnum.accept===element.conditionNo){this.accepModel=element}
       });
     });
   }

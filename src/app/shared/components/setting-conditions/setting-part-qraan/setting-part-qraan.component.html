@@ -1,12 +1,21 @@
 <ng-container >
     <div class="card-setting viewMode">
         <div class="head">
-           <span>{{item.title}}</span>
-           <img class="close" src="../../../../../assets/images/feelings/close.svg">
+           <span>{{partQuranModel.title}}</span>
+           <img class="close" src="../../../../../assets/images/feelings/close.svg" (click)="confirmDialog()">
         </div>
         <div class="body">
             <div class="details">عدد الأجزاء</div>
-            <input type="text">
+            <input type="text" class="form-control w-50" [(ngModel)]="partQuranModel.value" >
         </div>
+        <div  class="row  buttons-center mt-5">
+            <label class="switch">
+                <input type="checkbox" [(ngModel)]="partQuranModel.isRequired" >
+                <span class="slider round">الزامى</span>
+              </label>
+            <button   type="submit" class="save-btn" (click)="saveProgramConditions()"> 
+                {{ "GENERAL.SAVE" | translate }}
+            </button>
+    </div>
     </div>
 </ng-container>
