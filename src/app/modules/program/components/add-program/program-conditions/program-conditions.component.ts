@@ -26,6 +26,7 @@ export class ProgramConditionsComponent implements OnInit {
   conIds:string[]=[];
   assignConditionsToProgramModel:IassignConditionsToProgramModel={};
   resultMessage: BaseMessageModel = {};
+  programConditionsModel: IProgramConditionsModel = {};
   ageModel: IProgCondPredefinedNumerical = {};
   partQuranModel: IProgCondPredefinedNumerical = {};
   maxmumSubscribeModel: IProgCondPredefinedNumerical = {};
@@ -43,65 +44,25 @@ export class ProgramConditionsComponent implements OnInit {
   ngOnInit(): void {
     this.getProgramConditionsLisByProgId()
   }
+
   closeConditionList(event: boolean) {
     this.showAddConditionListForm = false;
     this.getProgramConditionsLisByProgId();
   }
+
   addConditions() {
     this.showAddConditionListForm = true;
   }
+
   getProgramConditionsLisByProgId() {
     this.programConditionsService.getProgramConditionsByProgId(this.progId || '').subscribe(res => {
       this.programConditionsList = res.data as IProgramConditionsModel[];
       this.programConditionsList.forEach(element => {
-        if(this.programConditionsEnum.age===element.conditionNo){this.ageModel=JSON.parse(element.progCondValue ||'{}')}
-        if(this.programConditionsEnum.programFinished===element.conditionNo){this.degreeLastProgramModel=JSON.parse(element.progCondValue ||'{}')}
+        if(this.programConditionsEnum.age===element.conditionNo){this.ageModel=element}
+        if(this.programConditionsEnum.dgreeaLastProgram===element.conditionNo){this.degreeLastProgramModel=element}
       });
     });
   }
 
-  saveProgramConditions() {
-    this.assignConditionsToProgramModel = {};
-    
-      this.programConditionsList.filter(x=>x.conditionNo=this.programConditionsEnum.age).forEach((elm: IProgramConditionsModel) => {
-        this.conditionsFormModel.push({
-          condId: elm.condId,
-         condValue:JSON.stringify(this.ageModel),
-          required:true
-        });
-      });
-      this.programConditionsList.filter(x=>x.conditionNo=this.programConditionsEnum.dgreeaLastProgram).forEach((elm: IProgramConditionsModel) => {
-        this.conditionsFormModel.push({
-          condId:elm.condId,
-         condValue:JSON.stringify(this.degreeLastProgramModel),
-          required:true
-        });
-      });
-    this.assignConditionsToProgramModel.conditions=this.conditionsFormModel;
-    this.assignConditionsToProgramModel.progId=this.progId;
-    this.programConditionsService.saveProgramConditions(this.assignConditionsToProgramModel).subscribe(res => {
-      let response = <BaseResponseModel>res;
-      if (response.isSuccess) {
-        this.resultMessage = {
-          message: res.message || "",
-          type: BaseConstantModel.SUCCESS_TYPE
-        }
-      }
-      else {
-        this.resultMessage = {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
-      }
-    },
-    error => {
-      this.resultMessage = {
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
-      }
-    }
-    
-    );
-  }
 
 }

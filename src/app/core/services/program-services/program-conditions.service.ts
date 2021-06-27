@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IAddProgramPredefinedCustomConditionsModel } from '../../interfaces/programs-interfaces/iadd-program-predefined-custom-conditions-model';
 import { IassignConditionsToProgramModel } from '../../interfaces/programs-interfaces/iassign-conditions-to-program-model';
+import { IUpdateProgramConditionDetailsModel } from '../../interfaces/programs-interfaces/iupdate-program-condition-details-model';
 import { IUpdateProgramPredefinedCustomConditionsModel } from '../../interfaces/programs-interfaces/iupdate-program-predefined-custom-conditions-model';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 
@@ -17,6 +18,9 @@ updateProgramPredefinedCustomConditionsURL=environment.baseUrl +'ProgramPredefin
 deleteProgramPredefinedCustomConditionsURL=environment.baseUrl +'ProgramPredefinedCustomConditions/delete-program-predefined-custom-conditions';
 saveProgramConditionsListURL = environment.baseUrl + 'Programs/assign-conditions-to-program';
 getProgramConditionsByProgIdURL=environment.baseUrl + 'Programs/get-program-condition-by-program-id/';
+getConditionsNotAssignedToProgramURL=environment.baseUrl + 'Programs/get-conditions-not-assigned-to-program/';
+deleteProgramConditionURL=environment.baseUrl +'Programs/delete-prog-cond/';
+updateProgramConditionDetailsURL=environment.baseUrl +'Programs/update-program-condition-details';
 
   constructor(
     private http: HttpClient
@@ -44,6 +48,17 @@ getProgramConditionsByProgIdURL=environment.baseUrl + 'Programs/get-program-cond
 
   saveProgramConditions(model:IassignConditionsToProgramModel): Observable<BaseResponseModel> {
     return this.http.put<BaseResponseModel>(this.saveProgramConditionsListURL,model);
+  }
+
+  getConditionsNotAssignedToProgram(id:string): Observable<BaseResponseModel> {
+    return this.http.get<BaseResponseModel>(this.getConditionsNotAssignedToProgramURL+id);
+  }
+
+  deleteProgramCondition(id:string): Observable<BaseResponseModel> {
+    return this.http.delete<BaseResponseModel>(this.deleteProgramConditionURL+id);
+  }
+  updateProgramConditionDetails(model:IUpdateProgramConditionDetailsModel): Observable<BaseResponseModel> {
+    return this.http.put<BaseResponseModel>(this.updateProgramConditionDetailsURL,model);
   }
 
 }

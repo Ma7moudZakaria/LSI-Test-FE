@@ -18,7 +18,6 @@ export interface Base{
     condId?:string;
     condNo?:number;
 }
-
 export interface multi extends Base{
     condSelcted?:string;
     value?:IProgramPredefinedvalue[];

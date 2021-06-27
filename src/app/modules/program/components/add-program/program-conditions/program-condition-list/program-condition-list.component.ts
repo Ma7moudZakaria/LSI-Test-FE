@@ -34,7 +34,7 @@ export class ProgramConditionListComponent implements OnInit {
   }
 
   getProgramConditionsLis() {
-    this.programConditionsService.getProgramConditionsList().subscribe(res => {
+    this.programConditionsService.getConditionsNotAssignedToProgram(this.progId||'').subscribe(res => {
       this.programConditionsList = res.data as IprogramPredefinedCustomConditionsModel[];
     });
   }

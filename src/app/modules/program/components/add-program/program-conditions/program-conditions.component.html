@@ -13,15 +13,14 @@
         <div class="row">
             <ng-container  *ngFor="let item of programConditionsList ;let i=index">
                   <div class="col-6" *ngIf="programConditionsEnum.age===item.conditionNo">
-                    <app-setting-age [ageModel] ='ageModel'></app-setting-age>
+                    <app-setting-age [programConditionsModel] ='ageModel' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()'></app-setting-age>
                   </div>
-    
          <div class="col-6" *ngIf="programConditionsEnum.qualifications===item.conditionNo">
             <app-setting-qualifications ></app-setting-qualifications>
          </div>
          <!--  -->
          <div class="col-6" *ngIf="programConditionsEnum.dgreeaLastProgram===item.conditionNo">
-                <app-setting-degree-last-program [degreeLastProgramModel] ='degreeLastProgramModel'></app-setting-degree-last-program>
+                <app-setting-degree-last-program [programConditionsModel] ='degreeLastProgramModel' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()'></app-setting-degree-last-program>
             </div>
             <div class="col-6" *ngIf="programConditionsEnum.programFinished===item.conditionNo">
                 <app-setting-last-program></app-setting-last-program>
@@ -42,12 +41,6 @@
     </div>
 
     <hr>
-
-        <div  class="row  buttons-center mt-5">
-                <button   type="submit" class="save-btn" (click)="saveProgramConditions()"> 
-                    {{ "GENERAL.SAVE" | translate }}
-                </button>
-        </div>
     <div class="overlay" *ngIf="showAddConditionListForm">
         <app-program-condition-list [progId]='progId' (closeConditionList)='closeConditionList($event)'></app-program-condition-list>
     </div>
