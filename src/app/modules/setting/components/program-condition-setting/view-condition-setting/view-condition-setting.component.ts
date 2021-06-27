@@ -17,10 +17,10 @@ import { AlertifyService } from 'src/app/core/services/alertify-services/alertif
 })
 export class ViewConditionSettingComponent implements OnInit {
 
-  @Output() openCoiditionFrom = new EventEmitter<boolean>();
+  @Output() addEditCoidition = new EventEmitter<IprogramPredefinedCustomConditionsModel>();
   predefineConditionsList: IprogramPredefinedCustomConditionsModel[] = [];
   @Input() customConditionsList: IprogramPredefinedCustomConditionsModel[] = [];
-  @Output() editCondition = new EventEmitter<IprogramPredefinedCustomConditionsModel>();
+  // @Output() editCondition = new EventEmitter<IprogramPredefinedCustomConditionsModel>();
 
 
   programPredefinedEnum = programPredefinedConditionsEnum;
@@ -38,9 +38,7 @@ export class ViewConditionSettingComponent implements OnInit {
   ngOnInit(): void {
     this.getProgramConditionsLis();
   }
-  AddConditions() {
-    this.openCoiditionFrom.emit(true)
-  }
+
   getProgramConditionsLis() {
     this.programConditionsService.getProgramConditionsList().subscribe(res => {
       let allItems = res.data as IprogramPredefinedCustomConditionsModel[];
@@ -56,11 +54,24 @@ export class ViewConditionSettingComponent implements OnInit {
     });
   }
 
-
+  AddConditions() {
+    this.addEditCoidition.emit(undefined)
+  }
 
   editCustomConditions(event: IprogramPredefinedCustomConditionsModel) {
-    this.editCondition.emit(event);
+    this.addEditCoidition.emit(event);
   }
+
+
+  // AddProgram() {
+  //   this.openNotifyfrom.emit(undefined);
+  // }
+
+  // editNotificationCard(event: IProgramNotificationDetails) {
+  //   this.openNotifyfrom.emit(event);
+  // }
+
+
   // delete custom card
 
   deleteCustomCard(id: string) {

@@ -20,8 +20,6 @@ export class CardNotifacationsComponent implements OnInit {
 
   ngOnInit(): void {
 
-
-
   }
 
   deleteCard() {

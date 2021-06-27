@@ -136,90 +136,90 @@
   "PROGRAMS_LIST": {
     "PROGRAMS": "البرامج",
     "ALL": "الكل",
-    "ADD_PROGRAM":"اضافه برنامج",
-    "ADVANCED_SEARCH":" بحث متقدم "
+    "ADD_PROGRAM": "اضافه برنامج",
+    "ADVANCED_SEARCH": " بحث متقدم "
   },
   "VIEW_PROGRAMS_BASIC_INFO": {
-    "PROGRAM_DATE":"مدة البرنامج",
-    "STUDENT_NUMBER":" عدد الطلاب",
-    "TEACHER_NUMBER":" عدد المعلمين",
-    "PARTS_NUMBER":"عدد الاجزاء",
-    "IDEA":"فكرة",
-    "PROGRAM_TYPE":"نوع البرنامج",
-    "PROGRAM_GOALS":"اهداف البرنامج",
-    "PROGRAM_VISION":"رؤية البرنامج",
-    "PROGRAM_METHOD":"طريقة البرنامج",
-    "PROGRAM_ADVAN":"مميزات البرنامج",
-    "PROGRAM_PLEDGTXT":"نص التعهد",
-    "PROGRAM_WEEK_DUTI_DAS":"أيام الواجبات",
-    "CONDTIONS":"الشروط",
-    "COPY_PROGRAM":"نسخ البرنامج",
-    "PROGRAM_NAME":"إسم البرنامج",
-    "SAVE":"حفظ",
-    "DAY":"يوم"
+    "PROGRAM_DATE": "مدة البرنامج",
+    "STUDENT_NUMBER": " عدد الطلاب",
+    "TEACHER_NUMBER": " عدد المعلمين",
+    "PARTS_NUMBER": "عدد الاجزاء",
+    "IDEA": "فكرة",
+    "PROGRAM_TYPE": "نوع البرنامج",
+    "PROGRAM_GOALS": "اهداف البرنامج",
+    "PROGRAM_VISION": "رؤية البرنامج",
+    "PROGRAM_METHOD": "طريقة البرنامج",
+    "PROGRAM_ADVAN": "مميزات البرنامج",
+    "PROGRAM_PLEDGTXT": "نص التعهد",
+    "PROGRAM_WEEK_DUTI_DAS": "أيام الواجبات",
+    "CONDTIONS": "الشروط",
+    "COPY_PROGRAM": "نسخ البرنامج",
+    "PROGRAM_NAME": "إسم البرنامج",
+    "SAVE": "حفظ",
+    "DAY": "يوم"
   },
-  "PROGRAM_TABS":{
-    "BASIC_INFO":"البيانات الاساسية",
-    "STUDENTS":"الطلاب",
-    "JOINING_EXAM":"إختبارات الانضمام",
-    "DAYS":"الأيام",
-    "NOTIFACATION":"تنبيهات"
+  "PROGRAM_TABS": {
+    "BASIC_INFO": "البيانات الاساسية",
+    "STUDENTS": "الطلاب",
+    "JOINING_EXAM": "إختبارات الانضمام",
+    "DAYS": "الأيام",
+    "NOTIFACATION": "تنبيهات"
   },
-  "PROGRAM_DAYS":{
-    "DAYS":"الأيام",
-    "DAY":"يوم",
-    "REQUIRED_TASKS":"المهام المطلوبة"
+  "PROGRAM_DAYS": {
+    "DAYS": "الأيام",
+    "DAY": "يوم",
+    "REQUIRED_TASKS": "المهام المطلوبة"
   },
-  "JOINING_REQUEST":{
-    "MODELS":"النمازج",
-    "DEGREE":"الدرجة"
+  "JOINING_REQUEST": {
+    "MODELS": "النمازج",
+    "DEGREE": "الدرجة"
   },
-  "PROGRAM_DAY_TASK_ENCOURAGEMENT":{
-    "MESSAGE":"الرسالة"
+  "PROGRAM_DAY_TASK_ENCOURAGEMENT": {
+    "MESSAGE": "الرسالة"
   },
-  "PROGRAM_DAY_TASK_HEARING":{
-    "DEGREE":"الدرجة",
-    "QUESTION":"السؤال الذي يظهر للطالب"
+  "PROGRAM_DAY_TASK_HEARING": {
+    "DEGREE": "الدرجة",
+    "QUESTION": "السؤال الذي يظهر للطالب"
   },
-  "PROGRAM_DAY_TASK_LINKING":{
-    "REQUIRED":"الزامى",
-    "QUESTION":"السؤال الذي يظهر للطالب",
-    "AUTO":"الى",
-    "MANUAL":"يدوى",
-    "DEGREE":"الدرجة"
+  "PROGRAM_DAY_TASK_LINKING": {
+    "REQUIRED": "الزامى",
+    "QUESTION": "السؤال الذي يظهر للطالب",
+    "AUTO": "الى",
+    "MANUAL": "يدوى",
+    "DEGREE": "الدرجة"
   },
-  "PROGRAM_DAY_TASK_MEMORIZE":{
-    "PAGES":"صفحات",
-    "QUESTION":"السؤال الذي يظهر للطالب",
-    "DEGREE":"الدرجة"
+  "PROGRAM_DAY_TASK_MEMORIZE": {
+    "PAGES": "صفحات",
+    "QUESTION": "السؤال الذي يظهر للطالب",
+    "DEGREE": "الدرجة"
   },
-  "PROGRAM_DAY_TASK_EXPLANATION":{
-    "PAGES":"صفحات",
-    "QUESTION":"السؤال الذي يظهر للطالب",
-    "DEGREE":"الدرجة"
+  "PROGRAM_DAY_TASK_EXPLANATION": {
+    "PAGES": "صفحات",
+    "QUESTION": "السؤال الذي يظهر للطالب",
+    "DEGREE": "الدرجة"
   },
-  "PROGRAM_DAY_TASK_RECITIATION":{
-    "RECITIATION_PERIOD":"فترة التسميع",
-    "FROM":"من",
-    "TO":"إلى"
+  "PROGRAM_DAY_TASK_RECITIATION": {
+    "RECITIATION_PERIOD": "فترة التسميع",
+    "FROM": "من",
+    "TO": "إلى"
   },
-  "PROGRAM_DAY_TASK_REPETITION":{
-    "REQUIRED":"الزامى",
-    "REPETITION_NUMBER":"عدد مرات التكرار",
-    "MESSAGE":"الرسالة",
-    "DEGREE":"الدرجة"
+  "PROGRAM_DAY_TASK_REPETITION": {
+    "REQUIRED": "الزامى",
+    "REPETITION_NUMBER": "عدد مرات التكرار",
+    "MESSAGE": "الرسالة",
+    "DEGREE": "الدرجة"
   },
-  "PROGRAM_DAY_TASK_REVIEW":{
-    "DEGREE":"الدرجة",
-    "PAGES":"الصفحات",
-    "QUESTION":"السؤال الذي يظهر للطالب",
-    "FROM":"من",
-    "TO":"إلى"
+  "PROGRAM_DAY_TASK_REVIEW": {
+    "DEGREE": "الدرجة",
+    "PAGES": "الصفحات",
+    "QUESTION": "السؤال الذي يظهر للطالب",
+    "FROM": "من",
+    "TO": "إلى"
   },
-  "PROGRAM_DAY_TASK_VIDEO":{
-    "VIDEO_NAME":"إسم الفيديو",
-    "VIDEO_LINK":"رابط الفديو",
-    "VIDEO_ANOTHER_LINK":"رابط لفيديو خارجي"
+  "PROGRAM_DAY_TASK_VIDEO": {
+    "VIDEO_NAME": "إسم الفيديو",
+    "VIDEO_LINK": "رابط الفديو",
+    "VIDEO_ANOTHER_LINK": "رابط لفيديو خارجي"
   },
   "RESETPASSWORD_PG": {
     "RESET_PASSWORD": "ادخل كلمة المرور الجديدة"
@@ -670,5 +670,21 @@
     "STUDENTS_NEW_FEELINGS": "مشاعر الطلاب الجديدة",
     "STUDENT_FEELINGS_LIST": "قائمة مشاعر الطلاب",
     "TEACHER_FEELINGS_LIST": "قائمة مشاعر المعلمين"
+  },
+  "CONDITIONDS": {
+    "CUSTOM_CONDITIONDS": "الشروط خاصة",
+    "ADD_CONDITIONS": "إضافة شرط",
+    "EDIT_CONDITIONS": "تعديل الشرط",
+    "CONDITION_TITLE": "عنوان الشرط",
+    "ANSWERS": "اجابات",
+    "ANSWER_TYPE": "نوع الاجابة",
+    "ADD_ANSWER": "إضافة إجابة",
+    "AGE": " السن لا يقل عن",
+    "PASSING_LAST_PROGRAM": " اجتياز اخر برنامج بالمنصة بتقدير",
+    "PREVIOUS_PROGRA": "اتمام برنامج سابق بالمنصه",
+    "MAXIMUM_SUBSCRIBERS": "الحد الأقصى لعدد المشتركين",
+    "NUMBER_PARTS": "عدد الأجزاء",
+    "Qualification": "المؤهل العلمى",
+    "ADMISSIONS": "القبول"
   }
 }

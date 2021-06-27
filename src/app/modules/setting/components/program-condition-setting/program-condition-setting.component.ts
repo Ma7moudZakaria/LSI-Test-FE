@@ -21,21 +21,21 @@ export class ProgramConditionSettingComponent implements OnInit {
   closeForm() {
     this.showAddForm = false
   }
-  openCoiditionFrom() {
-    this.showAddForm = true
+  // openCoiditionFrom() {
+  //   this.showAddForm = true
 
-  }
+  // }
   addCustomCondition() {
     this.closeForm();
     this.CustomCondition?.getProgramConditionsLis();
   }
 
-  editcustomConditionsCard() {
-    this.openCoiditionFrom();
+  // editcustomConditionsCard() {
+  //   this.openCoiditionFrom();
 
-  }
+  // }
 
-  openEditOverLay(event: IprogramPredefinedCustomConditionsModel) {
+  openAddEditOverLay(event: IprogramPredefinedCustomConditionsModel) {
     this.showAddForm = true
     //  pass object deatils to form 
     this.modelEdit = event;

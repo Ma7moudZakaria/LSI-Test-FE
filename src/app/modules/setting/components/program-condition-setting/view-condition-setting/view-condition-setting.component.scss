@@ -25,7 +25,7 @@
         background:$icon_input ;
         border-radius: 12px;
         opacity: 1;
-        width:100px;
+        width:135px;
         padding: 0.5rem;
         height: 2.31rem;
         border: none;
@@ -38,5 +38,19 @@
       color:$edit;
       font-weight: bold;
     }
+    .title{
+      border-bottom: 1px solid rgba(0,0,0,.1);
 
+    }
+    .title_custom{
+      color: #8E2520;
+      font-size:1.25rem;
+      font-weight: bold;
+        &:lang(en) {
+          text-align: left;
+      }
+      &:lang(ar) {
+        text-align: right;
+    }
+    }
 }
