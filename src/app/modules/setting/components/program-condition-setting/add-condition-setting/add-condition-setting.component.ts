@@ -1,5 +1,4 @@
-import { CustomConditionsComponent } from './../../../../../shared/components/setting-conditions/custom-conditions/custom-conditions.component';
-import { AnswerTypeEnum } from './../../../../../core/enums/exam-builder-enums/answer-type-enum.enum';
+
 import { ProgramConditionsService } from 'src/app/core/services/program-services/program-conditions.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
@@ -13,10 +12,7 @@ import { LookupService } from 'src/app/core/services/lookup-services/lookup.serv
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { IAddProgramPredefinedCustomConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iadd-program-predefined-custom-conditions-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
-import { IDetailsProgramPredefinedCustomConditionsModel } from 'src/app/core/interfaces/programs-interfaces/idetails-program-predefined-custom-conditions-model';
-import { IUpdateProgramPredefinedCustomConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iupdate-program-predefined-custom-conditions-model';
 import { IprogramPredefinedCustomConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-predefined-custom-conditions-model';
-import { IAnswer } from 'src/app/core/interfaces/exam-builder-interfaces/ianswer';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -145,21 +141,15 @@ export class AddConditionSettingComponent implements OnInit {
   editSettingConditions() {
     this.progCondService.putProgramPredefinedCustomConditions(this.modelEdit || {}).subscribe(res => {
       if (res.isSuccess) {
-
+        this.addCustomCondition.emit()
         this.closeForm();
         this.alert.success(res.message || '');
       }
       else {
-        this.resMessage = {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+        this.alert.error(res.message || '');
       }
     }, error => {
-      this.resMessage = {
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
-      }
+      this.alert.error(error || '');
     });
   }
 
