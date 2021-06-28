@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { programPredefinedConditionsEnum } from 'src/app/core/enums/programs/program-predefined-conditions-enum.enum';
 import { ConditionsForm, IassignConditionsToProgramModel } from 'src/app/core/interfaces/programs-interfaces/iassign-conditions-to-program-model';
-import { IProgCondPredefinedList } from 'src/app/core/interfaces/programs-interfaces/iprog-cond-predefined-list';
 import { IProgramConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-conditions-model';
 import { IprogramPredefinedCustomConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-predefined-custom-conditions-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
@@ -28,7 +27,7 @@ export class ProgramConditionsComponent implements OnInit {
   ageModel: IProgramConditionsModel = {};
   partQuranModel: IProgramConditionsModel = {};
   maxmumSubscribeModel: IProgramConditionsModel = {};
-  qualificationsModel: IProgCondPredefinedList = {};
+  qualificationsModel: IProgramConditionsModel = {};
   accepModel: IProgramConditionsModel = {};
  degreeLastProgramModel: IProgramConditionsModel = {};
  lastProgramModel: IProgramConditionsModel = {};
