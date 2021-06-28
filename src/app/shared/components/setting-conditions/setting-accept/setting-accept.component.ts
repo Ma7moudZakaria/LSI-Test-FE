@@ -23,6 +23,7 @@ export class SettingAcceptComponent implements OnInit {
   programConditionAcceptEnum = ProgramConditionAcceptEnum;
   langEnum = LanguageEnum;
   @Input() programConditionsModel: IProgramConditionsModel = {};
+  @Input() isViewToProgCond: boolean = false;
   @Output() progIdToLoadProgCond = new EventEmitter<string>();
   accepModel:IProgramPredefinedCoditionsSingle={};
   resultMessage: BaseMessageModel = {};

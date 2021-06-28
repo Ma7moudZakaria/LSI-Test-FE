@@ -8,4 +8,5 @@ export interface IProgramConditionsModel {
     conditionNo?:number;
     title?:string;
     conditionContain?:string;
+    isCustom?:boolean;
 }

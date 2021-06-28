@@ -9,38 +9,44 @@
             </div>
         </div>
     </div>
-    <div class="d-flex  row justify-content-between align-items-center mb-3">
         <div class="row">
-            <ng-container  *ngFor="let item of programConditionsList ;let i=index">
-                  <div class="col-6" *ngIf="programConditionsEnum.age===item.conditionNo">
+            <ng-container  *ngFor="let item of programConditionsPredefinedList ;let i=index">
+                  <div class="col-4 mb-3" *ngIf="programConditionsEnum.age===item.conditionNo">
                     <app-setting-age [programConditionsModel] ='ageModel' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()'></app-setting-age>
                   </div>
-         <div class="col-6" *ngIf="programConditionsEnum.qualifications===item.conditionNo">
+         <div class="col-4 mb-3" *ngIf="programConditionsEnum.qualifications===item.conditionNo">
             <app-setting-qualifications [programConditionsModel] ='qualificationsModel' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()'></app-setting-qualifications>
          </div>
          <!--  -->
-         <div class="col-6" *ngIf="programConditionsEnum.dgreeaLastProgram===item.conditionNo">
+         <div class="col-4 mb-3" *ngIf="programConditionsEnum.dgreeaLastProgram===item.conditionNo">
                 <app-setting-degree-last-program [programConditionsModel] ='degreeLastProgramModel' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()'></app-setting-degree-last-program>
             </div>
-            <div class="col-6" *ngIf="programConditionsEnum.programFinished===item.conditionNo">
+            <div class="col-4 mb-3" *ngIf="programConditionsEnum.programFinished===item.conditionNo">
                 <app-setting-last-program [programConditionsModel] ='lastProgramModel' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()'></app-setting-last-program>
             </div>
     
-            <div class="col-4" *ngIf="programConditionsEnum.numberStudentSubscribtion===item.conditionNo">
+            <div class="col-4 mb-3" *ngIf="programConditionsEnum.numberStudentSubscribtion===item.conditionNo">
                 <app-setting-maxmum-subscribe [programConditionsModel] ='maxmumSubscribeModel' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()'></app-setting-maxmum-subscribe>
             </div>
-            <div class="col-4" *ngIf="programConditionsEnum.memorizeQuran===item.conditionNo">
+            <div class="col-4 mb-3" *ngIf="programConditionsEnum.memorizeQuran===item.conditionNo">
                 <app-setting-part-qraan [programConditionsModel] ='partQuranModel' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()'></app-setting-part-qraan>
             </div>
-            <div class="col-4" *ngIf="programConditionsEnum.accept===item.conditionNo">
-                <app-setting-accept [programConditionsModel] ='accepModel' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()'></app-setting-accept>
+            <div class="col-4 mb-3" *ngIf="programConditionsEnum.accept===item.conditionNo">
+                <app-setting-accept [programConditionsModel] ='accepModel' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [isViewToProgCond]='true'></app-setting-accept>
             </div>
            
            </ng-container >
         </div>
-    </div>
 
     <hr>
+    <div class="row">
+        <ng-container  *ngFor="let item of programConditionsCustomList ;let i=index">
+                    <div class="col-4 mb-3">
+                        <app-custom-conditions [customConditionsModel]='item' [isViewToProgCond]='true' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()'></app-custom-conditions>
+                    </div>
+        </ng-container>
+          </div>
+    
     <div class="overlay" *ngIf="showAddConditionListForm">
         <app-program-condition-list [progId]='progId' (closeConditionList)='closeConditionList($event)'></app-program-condition-list>
     </div>
