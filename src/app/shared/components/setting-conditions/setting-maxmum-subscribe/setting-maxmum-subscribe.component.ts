@@ -20,6 +20,7 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/c
 })
 export class SettingMaxmumSubscribeComponent implements OnInit {
   @Input() programConditionsModel: IProgramConditionsModel = {};
+  @Input() isViewToProgCond: boolean = false;
   @Output() progIdToLoadProgCond = new EventEmitter<string>();
   maxmumSubscribeModel:IProgramPredefinedCoditionsSingle={};
   resultMessage: BaseMessageModel = {};

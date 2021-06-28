@@ -22,6 +22,7 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/c
 export class SettingAgeComponent implements OnInit {
   @Input() programConditionsModel: IProgramConditionsModel = {};
   @Output() progIdToLoadProgCond = new EventEmitter<string>();
+  @Input() isViewToProgCond: boolean = false;
  ageModel:IProgramPredefinedCoditionsSingle={};// IProgCondPredefinedNumerical = {};
   resultMessage: BaseMessageModel = {};
   updateProgramConditionDetailsModel:IUpdateProgramConditionDetailsModel={};

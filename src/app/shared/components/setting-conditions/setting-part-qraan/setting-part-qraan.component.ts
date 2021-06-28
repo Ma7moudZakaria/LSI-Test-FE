@@ -19,6 +19,7 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/c
 })
 export class SettingPartQraanComponent implements OnInit {
   @Input() programConditionsModel: IProgramConditionsModel = {};
+  @Input() isViewToProgCond: boolean = false;
   @Output() progIdToLoadProgCond = new EventEmitter<string>();
   partQuranModel:IProgramPredefinedCoditionsSingle={};
   resultMessage: BaseMessageModel = {};

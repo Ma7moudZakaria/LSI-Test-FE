@@ -1,14 +1,5 @@
-<!-- <div class="card-setting">
-    <div class="head">
-       
-        {{item.title}}
-    </div>
-    <div class="body">
-        <div class="details"> المؤهل العلمى</div>
-       
-    </div>
-</div> -->
-<ng-container >
+
+<ng-container *ngIf="isViewToProgCond">
     <div class="card-setting viewMode">
         <div class="head">
            <span>{{qualificationModel.title}}</span>

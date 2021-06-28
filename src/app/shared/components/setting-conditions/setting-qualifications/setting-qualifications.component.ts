@@ -23,6 +23,7 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/c
 })
 export class SettingQualificationsComponent implements OnInit {
   @Input() programConditionsModel: IProgramConditionsModel = {};
+  @Input() isViewToProgCond: boolean = false;
   @Output() progIdToLoadProgCond = new EventEmitter<string>();
   qualificationModel: IProgramPredefinedCoditionsMulti={};//IProgCondPredefinedMultiList = {};
   resultMessage: BaseMessageModel = {};

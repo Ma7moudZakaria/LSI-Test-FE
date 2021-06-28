@@ -22,6 +22,7 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/c
 })
 export class SettingLastProgramComponent implements OnInit {
   @Input() programConditionsModel: IProgramConditionsModel = {};
+  @Input() isViewToProgCond: boolean = false;
   @Output() progIdToLoadProgCond = new EventEmitter<string>();
   lastProgramModel: IProgramPredefinedCoditionsMulti={};//IProgCondPredefinedMultiList = {};
   resultMessage: BaseMessageModel = {};
