@@ -5,12 +5,11 @@
            <img class="close" src="../../../../../assets/images/feelings/close.svg" (click)="confirmDialog()">
         </div>
         <div class="body">
-            <!-- <div class="details">السن لا يقل عن</div> -->
-            <input type="text" class="form-control w-50" [(ngModel)]="ageModel.value" >
+            <input type="text" class="form-control w-100" [(ngModel)]="ageModel.value" >
         </div>
-        <div  class="row  buttons-center mt-5">
-            <label class="switch">
-                <input type="checkbox" [(ngModel)]="ageModel.isRequired" >
+        <div  class="row  buttons-center mt-3">
+            <label class="switch mx-3">
+                <input type="checkbox" [(ngModel)]="ageModel.isRequired" class="mx-1" >
                 <span class="slider round">{{ "GENERAL.MANDATORY" | translate }}</span>
               </label>
             <button   type="submit" class="save-btn" (click)="saveProgramConditions()"> 

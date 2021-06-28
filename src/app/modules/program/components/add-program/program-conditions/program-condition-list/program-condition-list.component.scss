@@ -1,5 +1,13 @@
 @import '../../../../../../../assets/scss/buttons';
+.currentForm{
+  &:lang(en){
+    text-align: left;
 
+  }
+  &:lang(ar){
+    text-align: right;
+  }
+}
 .save-btn, .cancel-btn
 {
   height: 2.31rem;

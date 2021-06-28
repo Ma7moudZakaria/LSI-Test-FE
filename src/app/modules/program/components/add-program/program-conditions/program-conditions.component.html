@@ -9,46 +9,50 @@
             </div>
         </div>
     </div>
-        <div class="row">
+    <div class="col-md-12 max_h">
+
+        <div class="row ">
             <ng-container  *ngFor="let item of programConditionsPredefinedList ;let i=index">
-                  <div class="col-4 mb-3" *ngIf="programConditionsEnum.age===item.conditionNo">
+                  <div class="col-3 mb-3" *ngIf="programConditionsEnum.age===item.conditionNo">
                     <app-setting-age [programConditionsModel] ='ageModel' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [isViewToProgCond]='true'></app-setting-age>
                   </div>
-         <div class="col-4 mb-3" *ngIf="programConditionsEnum.qualifications===item.conditionNo">
+         <div class="col-3 mb-3" *ngIf="programConditionsEnum.qualifications===item.conditionNo">
             <app-setting-qualifications [programConditionsModel] ='qualificationsModel' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [isViewToProgCond]='true'></app-setting-qualifications>
          </div>
          <!--  -->
-         <div class="col-4 mb-3" *ngIf="programConditionsEnum.dgreeaLastProgram===item.conditionNo">
+         <div class="col-3 mb-3" *ngIf="programConditionsEnum.dgreeaLastProgram===item.conditionNo">
                 <app-setting-degree-last-program [programConditionsModel] ='degreeLastProgramModel' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [isViewToProgCond]='true'></app-setting-degree-last-program>
             </div>
-            <div class="col-4 mb-3" *ngIf="programConditionsEnum.programFinished===item.conditionNo">
+            <div class="col-3 mb-3" *ngIf="programConditionsEnum.programFinished===item.conditionNo">
                 <app-setting-last-program [programConditionsModel] ='lastProgramModel' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [isViewToProgCond]='true'></app-setting-last-program>
             </div>
     
-            <div class="col-4 mb-3" *ngIf="programConditionsEnum.numberStudentSubscribtion===item.conditionNo">
+            <div class="col-3 mb-3" *ngIf="programConditionsEnum.numberStudentSubscribtion===item.conditionNo">
                 <app-setting-maxmum-subscribe [programConditionsModel] ='maxmumSubscribeModel' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [isViewToProgCond]='true'></app-setting-maxmum-subscribe>
             </div>
-            <div class="col-4 mb-3" *ngIf="programConditionsEnum.memorizeQuran===item.conditionNo">
+            <div class="col-3 mb-3" *ngIf="programConditionsEnum.memorizeQuran===item.conditionNo">
                 <app-setting-part-qraan [programConditionsModel] ='partQuranModel' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [isViewToProgCond]='true'></app-setting-part-qraan>
             </div>
-            <div class="col-4 mb-3" *ngIf="programConditionsEnum.accept===item.conditionNo">
+            <div class="col-6 mb-3" *ngIf="programConditionsEnum.accept===item.conditionNo">
                 <app-setting-accept [programConditionsModel] ='accepModel' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [isViewToProgCond]='true'></app-setting-accept>
             </div>
            
            </ng-container >
         </div>
 
-    <hr>
-    <div class="row">
+        <hr>
+        <div class="row">
         <ng-container  *ngFor="let item of programConditionsCustomList ;let i=index">
-                    <div class="col-4 mb-3">
+                    <div class="col-3 mb-3">
                         <app-custom-conditions [customConditionsModel]='item' [isViewToProgCond]='true' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()'></app-custom-conditions>
                     </div>
         </ng-container>
           </div>
     
-    <div class="overlay" *ngIf="showAddConditionListForm">
+ 
+    </div>
+    </div>
+
+   <div class="overlay" *ngIf="showAddConditionListForm">
         <app-program-condition-list [progId]='progId' (closeConditionList)='closeConditionList($event)'></app-program-condition-list>
     </div>
-</div>
-

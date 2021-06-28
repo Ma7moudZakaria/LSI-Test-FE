@@ -4,20 +4,24 @@
            <span>{{accepModel.title}}</span>
            <img class="close" src="../../../../../assets/images/feelings/close.svg" (click)="confirmDialog()">
         </div>
-        <div class="body">
+        <div class="body accept">
             <!-- <div class="details"> القبول </div> -->
             <mat-radio-group [(ngModel)]="accepModel.value"  aria-label="Select an option">
+                <mat-radio-button value="{{programConditionAcceptEnum.memorizeAndRead}}" class="px-2">  {{'CONDITIONDS.MEMORIZE_READ' | translate}}   </mat-radio-button>
+             
                 <mat-radio-button value="{{programConditionAcceptEnum.memorize}}" class="px-2" > {{'CONDITIONDS.MEMORIZE_ONLY' | translate}} </mat-radio-button>
                 <mat-radio-button value="{{programConditionAcceptEnum.readOnly}}" class="px-2">  {{'CONDITIONDS.READ_ONLY' | translate}}   </mat-radio-button>
+              
                 <mat-radio-button value="{{programConditionAcceptEnum.moreProgramMemorize}}" class="px-2" >  {{'CONDITIONDS.MORE_PROGRAM' | translate}}  </mat-radio-button> 
+              
                 <mat-radio-button value="{{programConditionAcceptEnum.moreProgramRead}}" class="px-2"> {{'CONDITIONDS.MORE_EXPLANATION_PROGRAM' | translate}}  </mat-radio-button>
             </mat-radio-group>
         </div>
-        <div  class="row  buttons-center mt-5">
-            <label class="switch">
+        <div  class="row  buttons-center mt-3">
+            <!-- <label class="switch">
                 <input type="checkbox" [(ngModel)]="accepModel.isRequired" >
                 <span class="slider round">{{ "GENERAL.MANDATORY" | translate }}</span>
-              </label>
+              </label> -->
             <button   type="submit" class="save-btn" (click)="saveProgramConditions()"> 
                 {{ "GENERAL.SAVE" | translate }}
             </button>
@@ -34,8 +38,11 @@
             <!-- <div class="details">  {{'CONDITIONDS.ADMISSIONS' | translate}}</div> -->
 
             <mat-radio-group  aria-label="Select an option">
+                <mat-radio-button value="{{programConditionAcceptEnum.memorizeAndRead}}" class="px-2">  {{'CONDITIONDS.MEMORIZE_READ' | translate}}   </mat-radio-button>
+
                 <mat-radio-button value="{{programConditionAcceptEnum.memorize}}" class="px-2" > {{'CONDITIONDS.MEMORIZE_ONLY' | translate}} </mat-radio-button>
                 <mat-radio-button value="{{programConditionAcceptEnum.readOnly}}" class="px-2">  {{'CONDITIONDS.READ_ONLY' | translate}}   </mat-radio-button>
+              
                 <mat-radio-button value="{{programConditionAcceptEnum.moreProgramMemorize}}" class="px-2" >  {{'CONDITIONDS.MORE_PROGRAM' | translate}}  </mat-radio-button> 
                 <mat-radio-button value="{{programConditionAcceptEnum.moreProgramRead}}" class="px-2"> {{'CONDITIONDS.MORE_EXPLANATION_PROGRAM' | translate}}  </mat-radio-button>
             </mat-radio-group>

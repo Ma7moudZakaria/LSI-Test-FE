@@ -23,6 +23,8 @@
         font-family: Almarai-Bold;
         font-size: 1rem;
         margin-bottom: 0.5rem;
+        display: flex;
+        justify-content: space-between;
     }
 
     .body {
@@ -55,10 +57,27 @@
         width: 90% !important;
     }
 
-    .save-btn {
-        height: 2.31rem;
-        margin: 1rem;
-    }
+    .save-btn
+    {
+      height: 2.31rem;
+      margin: 1rem;
+      margin-top: 0px;
+      margin-bottom: 0px;
+    
+     }
+     .buttons-center{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+     }
+     .switch{
+         margin-left: 1rem;
+         margin-right: 1rem;
+         input{
+            margin-left: 0.4rem;
+            margin-right: 0.4rem;
+         }
+     }
 }
 
 // .viewMode{
