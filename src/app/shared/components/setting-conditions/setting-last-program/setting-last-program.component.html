@@ -1,19 +1,47 @@
 <ng-container >
     <div class="card-setting viewMode">
         <div class="head">
-           <span>{{item.title}}</span>
-           <img class="close" src="../../../../../assets/images/feelings/close.svg">
+           <span>{{lastProgramModel.title}}</span>
+           <img class="close" src="../../../../../assets/images/feelings/close.svg" (click)="confirmDialog()">
         </div>
         <div class="body">
-            <div class="details">اتمام برنامج سابق بالمنصه</div>
-            <select class="UpdateUser__Options" name="nameEn">
-                <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELECT_PROGRAM' | translate }}</option>
+            <div class="input-group">
+                <div class="input-group pr-2rem"> 
+                    <select class="UpdateUser__Options" name="nameEn" [(ngModel)]="lastProgramModel.condSelcted">
+                        <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELECT_PROGRAM' | translate }}</option>
+        
+                            <option *ngFor="let item of ProgramsList"
+                                [value]="item.id">
+                                        {{ translate.currentLang == langEnum.en ? item.nameEn :
+                                            item.nameAr}}
+                                    </option>
+                        </select>
+                </div>
+                <span class="plus-btn position-absolute">                                        
+                    <button class="btn btn-light btn-add" type="button"
+                        (click)="addDegreeItem()">
+                        <img  src="../../../../../../assets/images/add.svg" class=" cursor-pointer Catogry_Icon_Add">
+                    </button>
+                </span>
+             
+            </div>
 
-                    <option *ngFor="let item of ProgramsList"
-                        [value]="item.id">
-                                {{ item.progName}}
-                            </option>
-                </select>
+            <div class="badges mt-3">
+                <span *ngFor="let p of selectedLastPrograms"
+                    class="badge badge-info p-2">{{translate.currentLang == langEnum.en? p.nameEn :p.nameAr}}
+                </span>
+            </div>
+
+            <div  class="row  buttons-center mt-5">
+                <label class="switch">
+                    <input type="checkbox" [(ngModel)]="lastProgramModel.isRequired" >
+                    <span class="slider round">الزامى</span>
+                  </label>
+                <button   type="submit" class="save-btn" (click)="saveProgramConditions()"> 
+                    {{ "GENERAL.SAVE" | translate }}
+                </button>
+        </div>
+            
         </div>
     </div>
 </ng-container>

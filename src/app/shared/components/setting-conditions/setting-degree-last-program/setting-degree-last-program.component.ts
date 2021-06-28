@@ -70,6 +70,7 @@ export class SettingDegreeLastProgramComponent implements OnInit {
 
   saveProgramConditions() {
     this.updateProgramConditionDetailsModel.id = this.degreeLastProgramModel.id;
+    this.degreeLastProgramModel.condSelcted='null';
     this.updateProgramConditionDetailsModel.progCondDetails=JSON.stringify(this.degreeLastProgramModel);
     this.updateProgramConditionDetailsModel.isRequired = this.degreeLastProgramModel.isRequired;
     this.programConditionsService.updateProgramConditionDetails(this.updateProgramConditionDetailsModel).subscribe(res => {

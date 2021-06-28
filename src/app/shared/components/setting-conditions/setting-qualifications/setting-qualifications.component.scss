@@ -1,3 +1,4 @@
+@import '../../../../../assets/scss/buttons';
 
 
 .card-setting{
@@ -34,6 +35,12 @@
         margin: 0 0.3rem;
         cursor: pointer;
     }
+    .save-btn
+{
+  height: 2.31rem;
+  margin: 1rem;
+
+ }
 }
 
 .viewMode{

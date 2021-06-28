@@ -16,14 +16,14 @@
                     <app-setting-age [programConditionsModel] ='ageModel' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()'></app-setting-age>
                   </div>
          <div class="col-6" *ngIf="programConditionsEnum.qualifications===item.conditionNo">
-            <app-setting-qualifications ></app-setting-qualifications>
+            <app-setting-qualifications [programConditionsModel] ='qualificationsModel' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()'></app-setting-qualifications>
          </div>
          <!--  -->
          <div class="col-6" *ngIf="programConditionsEnum.dgreeaLastProgram===item.conditionNo">
                 <app-setting-degree-last-program [programConditionsModel] ='degreeLastProgramModel' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()'></app-setting-degree-last-program>
             </div>
             <div class="col-6" *ngIf="programConditionsEnum.programFinished===item.conditionNo">
-                <app-setting-last-program></app-setting-last-program>
+                <app-setting-last-program [programConditionsModel] ='lastProgramModel' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()'></app-setting-last-program>
             </div>
     
             <div class="col-4" *ngIf="programConditionsEnum.numberStudentSubscribtion===item.conditionNo">
@@ -33,7 +33,7 @@
                 <app-setting-part-qraan [programConditionsModel] ='partQuranModel' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()'></app-setting-part-qraan>
             </div>
             <div class="col-4" *ngIf="programConditionsEnum.accept===item.conditionNo">
-                <app-setting-accept></app-setting-accept>
+                <app-setting-accept [programConditionsModel] ='accepModel' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()'></app-setting-accept>
             </div>
            
            </ng-container >
