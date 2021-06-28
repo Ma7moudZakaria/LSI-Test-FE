@@ -48,6 +48,7 @@ export class SettingQualificationsComponent implements OnInit {
     this.qualificationModel.condId = this.programConditionsModel.condId;
     this.qualificationModel.isRequired=this.programConditionsModel.condRequired;
     this.qualificationModel.progId=this.programConditionsModel.progId;
+    this.qualificationModel.title=this.programConditionsModel.title;
     this.selectedQualification=this.qualificationModel.value||[];
   }
   getLookupByKey() {

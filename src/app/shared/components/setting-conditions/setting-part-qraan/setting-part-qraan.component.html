@@ -5,13 +5,13 @@
            <img class="close" src="../../../../../assets/images/feelings/close.svg" (click)="confirmDialog()">
         </div>
         <div class="body">
-            <div class="details">عدد الأجزاء</div>
+            <!-- <div class="details">عدد الأجزاء</div> -->
             <input type="text" class="form-control w-50" [(ngModel)]="partQuranModel.value" >
         </div>
         <div  class="row  buttons-center mt-5">
             <label class="switch">
                 <input type="checkbox" [(ngModel)]="partQuranModel.isRequired" >
-                <span class="slider round">الزامى</span>
+                <span class="slider round">{{ "GENERAL.MANDATORY" | translate }}</span>
               </label>
             <button   type="submit" class="save-btn" (click)="saveProgramConditions()"> 
                 {{ "GENERAL.SAVE" | translate }}

@@ -6,7 +6,7 @@
            <img class="close" src="../../../../../assets/images/feelings/close.svg">
         </div>
         <div class="body">
-            <div class="details"> المؤهل العلمى</div>
+            <!-- <div class="details"> المؤهل العلمى</div> -->
             <div class="input-group">
                 <div class="input-group pr-2rem">
                     <select class="UpdateUser__Options" name="nameEn" [(ngModel)]="qualificationModel.condSelcted">
@@ -36,7 +36,7 @@
             <div  class="row  buttons-center mt-5">
                 <label class="switch">
                     <input type="checkbox" [(ngModel)]="qualificationModel.isRequired" >
-                    <span class="slider round">الزامى</span>
+                    <span class="slider round">{{ "GENERAL.MANDATORY" | translate }}</span>
                   </label>
                 <button   type="submit" class="save-btn" (click)="saveProgramConditions()"> 
                     {{ "GENERAL.SAVE" | translate }}

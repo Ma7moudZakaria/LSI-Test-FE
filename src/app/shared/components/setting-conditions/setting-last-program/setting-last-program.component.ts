@@ -47,6 +47,7 @@ export class SettingLastProgramComponent implements OnInit {
     this.lastProgramModel.condId = this.programConditionsModel.condId;
     this.lastProgramModel.isRequired=this.programConditionsModel.condRequired;
     this.lastProgramModel.progId=this.programConditionsModel.progId;
+    this.lastProgramModel.title=this.programConditionsModel.title;
     this.selectedLastPrograms=this.lastProgramModel.value||[];
   }
 

@@ -5,7 +5,7 @@
            <img class="close" src="../../../../../assets/images/feelings/close.svg" (click)="confirmDialog()">
         </div>
         <div class="body">
-            <div class="details"> القبول </div>
+            <!-- <div class="details"> القبول </div> -->
             <mat-radio-group [(ngModel)]="accepModel.value"  aria-label="Select an option">
                 <mat-radio-button value="{{programConditionAcceptEnum.memorize}}" class="px-2" >حفظ فقط </mat-radio-button>
                 <mat-radio-button value="{{programConditionAcceptEnum.readOnly}}" class="px-2"> قرائة فقط</mat-radio-button>
@@ -16,7 +16,7 @@
         <div  class="row  buttons-center mt-5">
             <label class="switch">
                 <input type="checkbox" [(ngModel)]="accepModel.isRequired" >
-                <span class="slider round">الزامى</span>
+                <span class="slider round">{{ "GENERAL.MANDATORY" | translate }}</span>
               </label>
             <button   type="submit" class="save-btn" (click)="saveProgramConditions()"> 
                 {{ "GENERAL.SAVE" | translate }}

@@ -46,6 +46,7 @@ export class SettingDegreeLastProgramComponent implements OnInit {
     this.degreeLastProgramModel.condId = this.programConditionsModel.condId;
     this.degreeLastProgramModel.isRequired=this.programConditionsModel.condRequired;
     this.degreeLastProgramModel.progId=this.programConditionsModel.progId;
+    this.degreeLastProgramModel.title=this.programConditionsModel.title;
     this.selectedDegreeLastPrograms=this.degreeLastProgramModel.value||[];
   }
  

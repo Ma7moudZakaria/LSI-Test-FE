@@ -35,7 +35,7 @@
             <div  class="row  buttons-center mt-5">
                 <label class="switch">
                     <input type="checkbox" [(ngModel)]="lastProgramModel.isRequired" >
-                    <span class="slider round">الزامى</span>
+                    <span class="slider round">{{ "GENERAL.MANDATORY" | translate }}</span>
                   </label>
                 <button   type="submit" class="save-btn" (click)="saveProgramConditions()"> 
                     {{ "GENERAL.SAVE" | translate }}
