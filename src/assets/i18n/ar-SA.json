@@ -170,7 +170,8 @@
   "PROGRAM_DAY_TASKS": {
     "TASKS": "المهام",
     "ADD_ITEM":"إضافة بند",
-    "DAILY_HOMEWORK":"الواجب اليومي"
+    "DAILY_HOMEWORK":"الواجب اليومي",
+    "DAY":"يوم"
   },
   "PROGRAM_DAYS": {
     "DAYS": "الأيام",
@@ -605,7 +606,7 @@
     "SELECT_NOTIFICATION_TYPE": "إختر نوع التنبية",
     "WRITE_MESSAGE": "اكتب نص الرسالة",
     "ADD_PROGRAM": "اضافه تنبيه",
-    "NOTIFICATIONS": "التبيهات",
+    "NOTIFICATIONS": "التنبيهات",
     "BASICiNFO": " البيانات الاساسية",
     "PROGRAM_CONDITIONS": "الشروط",
     "PROGRAM_DAYS": "الايام",
