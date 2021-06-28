@@ -25,30 +25,33 @@ export class SettingAcceptComponent implements OnInit {
   @Input() programConditionsModel: IProgramConditionsModel = {};
   @Input() isViewToProgCond: boolean = false;
   @Output() progIdToLoadProgCond = new EventEmitter<string>();
-  accepModel:IProgramPredefinedCoditionsSingle={};
+  accepModel: IProgramPredefinedCoditionsSingle = {};
   resultMessage: BaseMessageModel = {};
-  updateProgramConditionDetailsModel:IUpdateProgramConditionDetailsModel={};
+  updateProgramConditionDetailsModel: IUpdateProgramConditionDetailsModel = {};
   result: string = '';
   constructor(
     public languageService: LanguageService,
     public translate: TranslateService,
-    public programConditionsService:ProgramConditionsService,
-    public dialog: MatDialog, 
+    public programConditionsService: ProgramConditionsService,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
-    this.accepModel=JSON.parse(this.programConditionsModel.progCondValue ||'{}')||{};
-    this.accepModel.id = this.programConditionsModel.id;
-    this.accepModel.condId = this.programConditionsModel.condId;
-    this.accepModel.isRequired=this.programConditionsModel.condRequired;
-    this.accepModel.progId=this.programConditionsModel.progId;
-    this.accepModel.title=this.programConditionsModel.title;
+    this.populateData()
 
   }
 
+  populateData() {
+    this.accepModel = JSON.parse(this.programConditionsModel.progCondValue || '{}') || {};
+    this.accepModel.id = this.programConditionsModel.id;
+    this.accepModel.condId = this.programConditionsModel.condId;
+    this.accepModel.isRequired = this.programConditionsModel.condRequired;
+    this.accepModel.progId = this.programConditionsModel.progId;
+    this.accepModel.title = this.programConditionsModel.title;
+  }
   saveProgramConditions() {
     this.updateProgramConditionDetailsModel.id = this.accepModel.id;
-    this.updateProgramConditionDetailsModel.progCondDetails=JSON.stringify(this.accepModel);
+    this.updateProgramConditionDetailsModel.progCondDetails = JSON.stringify(this.accepModel);
     this.updateProgramConditionDetailsModel.isRequired = this.accepModel.isRequired;
     this.programConditionsService.updateProgramConditionDetails(this.updateProgramConditionDetailsModel).subscribe(res => {
       let response = <BaseResponseModel>res;
@@ -65,16 +68,16 @@ export class SettingAcceptComponent implements OnInit {
         }
       }
     },
-    error => {
-      this.resultMessage = {
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
+      error => {
+        this.resultMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       }
-    }
-    
+
     );
   }
- 
+
   confirmDialog() {
     const message = this.translate.currentLang === LanguageEnum.en ? "Are you sure that you want to delete this condition" : "هل متأكد من حذف هذا الشرط";
 

@@ -22,29 +22,32 @@ export class SettingAgeComponent implements OnInit {
   @Input() programConditionsModel: IProgramConditionsModel = {};
   @Output() progIdToLoadProgCond = new EventEmitter<string>();
   @Input() isViewToProgCond: boolean = false;
- ageModel:IProgramPredefinedCoditionsSingle={};// IProgCondPredefinedNumerical = {};
+  ageModel: IProgramPredefinedCoditionsSingle = {};// IProgCondPredefinedNumerical = {};
   resultMessage: BaseMessageModel = {};
-  updateProgramConditionDetailsModel:IUpdateProgramConditionDetailsModel={};
+  updateProgramConditionDetailsModel: IUpdateProgramConditionDetailsModel = {};
   result: string = '';
   constructor(
     public languageService: LanguageService,
     public translate: TranslateService,
-    public programConditionsService:ProgramConditionsService,
-    public dialog: MatDialog, 
+    public programConditionsService: ProgramConditionsService,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
-    this.ageModel=JSON.parse(this.programConditionsModel.progCondValue ||'{}')||{};
-    this.ageModel.id = this.programConditionsModel.id;
-    this.ageModel.condId = this.programConditionsModel.condId;
-    this.ageModel.isRequired=this.programConditionsModel.condRequired;
-    this.ageModel.progId=this.programConditionsModel.progId;
-    this.ageModel.title=this.programConditionsModel.title;
+    this.populateData();
   }
 
+  populateData() {
+    this.ageModel = JSON.parse(this.programConditionsModel.progCondValue || '{}') || {};
+    this.ageModel.id = this.programConditionsModel.id;
+    this.ageModel.condId = this.programConditionsModel.condId;
+    this.ageModel.isRequired = this.programConditionsModel.condRequired;
+    this.ageModel.progId = this.programConditionsModel.progId;
+    this.ageModel.title = this.programConditionsModel.title;
+  }
   saveProgramConditions() {
     this.updateProgramConditionDetailsModel.id = this.ageModel.id;
-    this.updateProgramConditionDetailsModel.progCondDetails=JSON.stringify(this.ageModel);
+    this.updateProgramConditionDetailsModel.progCondDetails = JSON.stringify(this.ageModel);
     this.updateProgramConditionDetailsModel.isRequired = this.ageModel.isRequired;
     this.programConditionsService.updateProgramConditionDetails(this.updateProgramConditionDetailsModel).subscribe(res => {
       let response = <BaseResponseModel>res;
@@ -61,16 +64,16 @@ export class SettingAgeComponent implements OnInit {
         }
       }
     },
-    error => {
-      this.resultMessage = {
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
+      error => {
+        this.resultMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       }
-    }
-    
+
     );
   }
- 
+
   confirmDialog() {
     const message = this.translate.currentLang === LanguageEnum.en ? "Are you sure that you want to delete this condition" : "هل متأكد من حذف هذا الشرط";
 

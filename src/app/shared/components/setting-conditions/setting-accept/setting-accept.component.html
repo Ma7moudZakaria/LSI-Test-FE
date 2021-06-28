@@ -7,10 +7,10 @@
         <div class="body">
             <!-- <div class="details"> القبول </div> -->
             <mat-radio-group [(ngModel)]="accepModel.value"  aria-label="Select an option">
-                <mat-radio-button value="{{programConditionAcceptEnum.memorize}}" class="px-2" >حفظ فقط </mat-radio-button>
-                <mat-radio-button value="{{programConditionAcceptEnum.readOnly}}" class="px-2"> قرائة فقط</mat-radio-button>
-                <mat-radio-button value="{{programConditionAcceptEnum.moreProgramMemorize}}" class="px-2" >اكتر من برنامج حفظ</mat-radio-button> 
-                <mat-radio-button value="{{programConditionAcceptEnum.moreProgramRead}}" class="px-2">اكتر من برنامج شرح </mat-radio-button>
+                <mat-radio-button value="{{programConditionAcceptEnum.memorize}}" class="px-2" > {{'CONDITIONDS.MEMORIZE_ONLY' | translate}} </mat-radio-button>
+                <mat-radio-button value="{{programConditionAcceptEnum.readOnly}}" class="px-2">  {{'CONDITIONDS.READ_ONLY' | translate}}   </mat-radio-button>
+                <mat-radio-button value="{{programConditionAcceptEnum.moreProgramMemorize}}" class="px-2" >  {{'CONDITIONDS.MORE_PROGRAM' | translate}}  </mat-radio-button> 
+                <mat-radio-button value="{{programConditionAcceptEnum.moreProgramRead}}" class="px-2"> {{'CONDITIONDS.MORE_EXPLANATION_PROGRAM' | translate}}  </mat-radio-button>
             </mat-radio-group>
         </div>
         <div  class="row  buttons-center mt-5">
@@ -24,21 +24,22 @@
     </div>
     </div>
 </ng-container>
-<!-- <ng-container *ngIf="!isViewToProgCond">
+<ng-container *ngIf="!isViewToProgCond">
     <div class="card-setting viewMode">
         <div class="head">
-           <span>{{item.title}}</span>
-           <img class="close" src="../../../../../assets/images/feelings/close.svg">
+           <span>{{'CONDITIONDS.ADMISSIONS' | translate}}</span>
+           <!-- <img class="close" src="../../../../../assets/images/feelings/close.svg"> -->
         </div>
         <div class="body">
-            <div class="details">  {{'CONDITIONDS.ADMISSIONS' | translate}}</div>
+            <!-- <div class="details">  {{'CONDITIONDS.ADMISSIONS' | translate}}</div> -->
+
             <mat-radio-group  aria-label="Select an option">
-                <mat-radio-button value="{{programConditionAcceptEnum.memorize}}" class="px-2" >حفظ فقط </mat-radio-button>
-                <mat-radio-button value="{{programConditionAcceptEnum.readOnly}}" class="px-2"> قرائة فقط</mat-radio-button>
-                <mat-radio-button value="{{programConditionAcceptEnum.moreProgramMemorize}}" class="px-2" >اكتر من برنامج حفظ</mat-radio-button> 
-                <mat-radio-button value="{{programConditionAcceptEnum.moreProgramRead}}" class="px-2">اكتر من برنامج شرح </mat-radio-button>
+                <mat-radio-button value="{{programConditionAcceptEnum.memorize}}" class="px-2" > {{'CONDITIONDS.MEMORIZE_ONLY' | translate}} </mat-radio-button>
+                <mat-radio-button value="{{programConditionAcceptEnum.readOnly}}" class="px-2">  {{'CONDITIONDS.READ_ONLY' | translate}}   </mat-radio-button>
+                <mat-radio-button value="{{programConditionAcceptEnum.moreProgramMemorize}}" class="px-2" >  {{'CONDITIONDS.MORE_PROGRAM' | translate}}  </mat-radio-button> 
+                <mat-radio-button value="{{programConditionAcceptEnum.moreProgramRead}}" class="px-2"> {{'CONDITIONDS.MORE_EXPLANATION_PROGRAM' | translate}}  </mat-radio-button>
             </mat-radio-group>
         </div>
     </div>
-</ng-container> -->
+</ng-container>
 

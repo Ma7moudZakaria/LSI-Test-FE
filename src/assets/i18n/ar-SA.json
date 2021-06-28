@@ -685,6 +685,13 @@
     "MAXIMUM_SUBSCRIBERS": "الحد الأقصى لعدد المشتركين",
     "NUMBER_PARTS": "عدد الأجزاء",
     "Qualification": "المؤهل العلمى",
-    "ADMISSIONS": "القبول"
+    "ADMISSIONS": "القبول",
+    "MORE_THAN": "أكبر من او يساوي",
+    "LESS_THAN": "أقل من او يساوي",
+    "NUMERIC_CLAUSE": "شرط رقمي",
+    "MEMORIZE_ONLY": "حفظ فقط ",
+    "READ_ONLY": " قرائة فقط",
+    "MORE_PROGRAM": "اكتر من برنامج حفظ",
+    "MORE_EXPLANATION_PROGRAM": "اكتر من برنامج شرح"
   }
 }

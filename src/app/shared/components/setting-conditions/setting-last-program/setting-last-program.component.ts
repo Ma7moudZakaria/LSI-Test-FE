@@ -24,11 +24,11 @@ export class SettingLastProgramComponent implements OnInit {
   @Input() programConditionsModel: IProgramConditionsModel = {};
   @Input() isViewToProgCond: boolean = false;
   @Output() progIdToLoadProgCond = new EventEmitter<string>();
-  lastProgramModel: IProgramPredefinedCoditionsMulti={};//IProgCondPredefinedMultiList = {};
+  lastProgramModel: IProgramPredefinedCoditionsMulti = {};//IProgCondPredefinedMultiList = {};
   resultMessage: BaseMessageModel = {};
-  updateProgramConditionDetailsModel:IUpdateProgramConditionDetailsModel={};
+  updateProgramConditionDetailsModel: IUpdateProgramConditionDetailsModel = {};
   result: string = '';
-  progData:IprogramsModel[]=[];
+  progData: IprogramsModel[] = [];
   ProgramsList: IProgramPredefinedvalue[] = [];
   programFilterByNameFilterRequest = {} as IProgramFilterByNameRequest;
   langEnum = LanguageEnum;
@@ -36,36 +36,39 @@ export class SettingLastProgramComponent implements OnInit {
   constructor(
     private ProgramService: ProgramService,
     public translate: TranslateService,
-    public programConditionsService:ProgramConditionsService,
-    public dialog: MatDialog, 
+    public programConditionsService: ProgramConditionsService,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
     this.getPrograms();
-    this.lastProgramModel=JSON.parse(this.programConditionsModel.progCondValue ||'{}')||{};
+    this.populateData();
+
+  }
+  populateData() {
+    this.lastProgramModel = JSON.parse(this.programConditionsModel.progCondValue || '{}') || {};
     this.lastProgramModel.id = this.programConditionsModel.id;
     this.lastProgramModel.condId = this.programConditionsModel.condId;
-    this.lastProgramModel.isRequired=this.programConditionsModel.condRequired;
-    this.lastProgramModel.progId=this.programConditionsModel.progId;
-    this.lastProgramModel.title=this.programConditionsModel.title;
-    this.selectedLastPrograms=this.lastProgramModel.value||[];
+    this.lastProgramModel.isRequired = this.programConditionsModel.condRequired;
+    this.lastProgramModel.progId = this.programConditionsModel.progId;
+    this.lastProgramModel.title = this.programConditionsModel.title;
+    this.selectedLastPrograms = this.lastProgramModel.value || [];
   }
-
   getPrograms() {
-    this.programFilterByNameFilterRequest = { 
+    this.programFilterByNameFilterRequest = {
       // name: '',
-      take:2147483647
+      take: 2147483647
 
     }
 
     this.ProgramService.getAllPrograms(this.programFilterByNameFilterRequest).subscribe(res => {
       let response = <BaseResponseModel>res;
-         this.progData=response.data;
-         this.ProgramsList =this.progData.map(item =>({
-           id:item.id,
-           nameAr:item.progName,
-           nameEn:item.progName
-         }))
+      this.progData = response.data;
+      this.ProgramsList = this.progData.map(item => ({
+        id: item.id,
+        nameAr: item.progName,
+        nameEn: item.progName
+      }))
     },
       error => {
         console.log(error);
@@ -73,20 +76,20 @@ export class SettingLastProgramComponent implements OnInit {
     )
   }
 
-  addDegreeItem(){
-    this.lastProgramModel.value=[];
-    const exist =this.selectedLastPrograms.some(el => el.id === this.lastProgramModel.condSelcted)
+  addDegreeItem() {
+    this.lastProgramModel.value = [];
+    const exist = this.selectedLastPrograms.some(el => el.id === this.lastProgramModel.condSelcted)
     if (!exist) {
-        this.selectedLastPrograms.push(
-          this.ProgramsList.filter(el => el.id == this.lastProgramModel.condSelcted)[0]);
+      this.selectedLastPrograms.push(
+        this.ProgramsList.filter(el => el.id == this.lastProgramModel.condSelcted)[0]);
     }
-    this.lastProgramModel.value=this.selectedLastPrograms;
+    this.lastProgramModel.value = this.selectedLastPrograms;
   }
 
   saveProgramConditions() {
     this.updateProgramConditionDetailsModel.id = this.lastProgramModel.id;
-    this.lastProgramModel.condSelcted="null";
-    this.updateProgramConditionDetailsModel.progCondDetails=JSON.stringify(this.lastProgramModel);
+    this.lastProgramModel.condSelcted = "null";
+    this.updateProgramConditionDetailsModel.progCondDetails = JSON.stringify(this.lastProgramModel);
     this.updateProgramConditionDetailsModel.isRequired = this.lastProgramModel.isRequired;
     this.programConditionsService.updateProgramConditionDetails(this.updateProgramConditionDetailsModel).subscribe(res => {
       let response = <BaseResponseModel>res;
@@ -103,16 +106,16 @@ export class SettingLastProgramComponent implements OnInit {
         }
       }
     },
-    error => {
-      this.resultMessage = {
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
+      error => {
+        this.resultMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       }
-    }
-    
+
     );
   }
- 
+
   confirmDialog() {
     const message = this.translate.currentLang === LanguageEnum.en ? "Are you sure that you want to delete this condition" : "هل متأكد من حذف هذا الشرط";
 

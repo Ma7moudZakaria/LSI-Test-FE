@@ -22,31 +22,33 @@ export class SettingMaxmumSubscribeComponent implements OnInit {
   @Input() programConditionsModel: IProgramConditionsModel = {};
   @Input() isViewToProgCond: boolean = false;
   @Output() progIdToLoadProgCond = new EventEmitter<string>();
-  maxmumSubscribeModel:IProgramPredefinedCoditionsSingle={};
+  maxmumSubscribeModel: IProgramPredefinedCoditionsSingle = {};
   resultMessage: BaseMessageModel = {};
-  updateProgramConditionDetailsModel:IUpdateProgramConditionDetailsModel={};
+  updateProgramConditionDetailsModel: IUpdateProgramConditionDetailsModel = {};
   result: string = '';
 
   constructor(
     public languageService: LanguageService,
     public translate: TranslateService,
-    public programConditionsService:ProgramConditionsService,
-    public dialog: MatDialog, 
+    public programConditionsService: ProgramConditionsService,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
-    this.maxmumSubscribeModel=JSON.parse(this.programConditionsModel.progCondValue ||'{}')||{};
-    this.maxmumSubscribeModel.id = this.programConditionsModel.id;
-    this.maxmumSubscribeModel.condId = this.programConditionsModel.condId;
-    this.maxmumSubscribeModel.isRequired=this.programConditionsModel.condRequired;
-    this.maxmumSubscribeModel.progId=this.programConditionsModel.progId;
-    this.maxmumSubscribeModel.title=this.programConditionsModel.title;
+    this.populateData()
   }
 
-  
+  populateData() {
+    this.maxmumSubscribeModel = JSON.parse(this.programConditionsModel.progCondValue || '{}') || {};
+    this.maxmumSubscribeModel.id = this.programConditionsModel.id;
+    this.maxmumSubscribeModel.condId = this.programConditionsModel.condId;
+    this.maxmumSubscribeModel.isRequired = this.programConditionsModel.condRequired;
+    this.maxmumSubscribeModel.progId = this.programConditionsModel.progId;
+    this.maxmumSubscribeModel.title = this.programConditionsModel.title;
+  }
   saveProgramConditions() {
     this.updateProgramConditionDetailsModel.id = this.maxmumSubscribeModel.id;
-    this.updateProgramConditionDetailsModel.progCondDetails=JSON.stringify(this.maxmumSubscribeModel);
+    this.updateProgramConditionDetailsModel.progCondDetails = JSON.stringify(this.maxmumSubscribeModel);
     this.updateProgramConditionDetailsModel.isRequired = this.maxmumSubscribeModel.isRequired;
     this.programConditionsService.updateProgramConditionDetails(this.updateProgramConditionDetailsModel).subscribe(res => {
       let response = <BaseResponseModel>res;
@@ -63,16 +65,16 @@ export class SettingMaxmumSubscribeComponent implements OnInit {
         }
       }
     },
-    error => {
-      this.resultMessage = {
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
+      error => {
+        this.resultMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       }
-    }
-    
+
     );
   }
- 
+
   confirmDialog() {
     const message = this.translate.currentLang === LanguageEnum.en ? "Are you sure that you want to delete this condition" : "هل متأكد من حذف هذا الشرط";
 

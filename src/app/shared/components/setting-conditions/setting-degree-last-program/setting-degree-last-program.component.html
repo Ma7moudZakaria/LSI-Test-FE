@@ -44,15 +44,15 @@
     </div>
 </ng-container>
 
-<!-- <ng-container *ngIf="!isViewToProgCond">
+<ng-container *ngIf="!isViewToProgCond">
     <div class="card-setting viewMode">
         <div class="head">
-           <span>{{degreeLastProgramModel.title}}   {{'CONDITIONDS.PASSING_LAST_PROGRAM' | translate}}</span>
+           <span>  {{'CONDITIONDS.PASSING_LAST_PROGRAM' | translate}}</span>
         </div>
         <div class="body">
         <div class="formGroup  w-90">
             <div class="input-group ">
-                <div class="input-group pr-2rem"> 
+                <div class="input-group "> 
                     <select class="UpdateUser__Options form-control" name="nameEn" [(ngModel)]="degreeLastProgramModel.condSelcted">
                         <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELECT_PROGRAM_DEGREE' | translate }}</option>
         
@@ -63,12 +63,12 @@
                            </option>
                        </select>
                 </div>
-                <span class="plus-btn position-absolute">                                        
+                <!-- <span class="plus-btn position-absolute">                                        
                     <button class="btn btn-light btn-add" type="button"
                         (click)="addDegreeItem()">
                         <img  src="../../../../../../assets/images/add.svg" class=" cursor-pointer Catogry_Icon_Add">
                     </button>
-                </span>
+                </span> -->
              </div>
              <div class="badges mt-3">
                 <span *ngFor="let p of selectedDegreeLastPrograms"
@@ -79,4 +79,4 @@
         </div>
         </div>
     </div>
-</ng-container> -->
+</ng-container>

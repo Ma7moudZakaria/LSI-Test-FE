@@ -25,56 +25,60 @@ export class SettingQualificationsComponent implements OnInit {
   @Input() programConditionsModel: IProgramConditionsModel = {};
   @Input() isViewToProgCond: boolean = false;
   @Output() progIdToLoadProgCond = new EventEmitter<string>();
-  qualificationModel: IProgramPredefinedCoditionsMulti={};//IProgCondPredefinedMultiList = {};
+  qualificationModel: IProgramPredefinedCoditionsMulti = {};//IProgCondPredefinedMultiList = {};
   resultMessage: BaseMessageModel = {};
-  updateProgramConditionDetailsModel:IUpdateProgramConditionDetailsModel={};
+  updateProgramConditionDetailsModel: IUpdateProgramConditionDetailsModel = {};
   result: string = '';
   collectionOfLookup = {} as ILookupCollection;
-  listOfLookupProfile: string[] = [ 'QUALIFI'];
+  listOfLookupProfile: string[] = ['QUALIFI'];
   langEnum = LanguageEnum;
   selectedQualification = Array<IProgramPredefinedvalue>();
   constructor(
     private lookupService: LookupService,
     public translate: TranslateService,
     public languageService: LanguageService,
-    public programConditionsService:ProgramConditionsService,
-    public dialog: MatDialog, 
+    public programConditionsService: ProgramConditionsService,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
     this.getLookupByKey();
-    this.qualificationModel=JSON.parse(this.programConditionsModel.progCondValue ||'{}')||{};
+    this.populateData()
+  }
+
+  populateData() {
+    this.qualificationModel = JSON.parse(this.programConditionsModel.progCondValue || '{}') || {};
     this.qualificationModel.id = this.programConditionsModel.id;
     this.qualificationModel.condId = this.programConditionsModel.condId;
-    this.qualificationModel.isRequired=this.programConditionsModel.condRequired;
-    this.qualificationModel.progId=this.programConditionsModel.progId;
-    this.qualificationModel.title=this.programConditionsModel.title;
-    this.selectedQualification=this.qualificationModel.value||[];
+    this.qualificationModel.isRequired = this.programConditionsModel.condRequired;
+    this.qualificationModel.progId = this.programConditionsModel.progId;
+    this.qualificationModel.title = this.programConditionsModel.title;
+    this.selectedQualification = this.qualificationModel.value || [];
   }
   getLookupByKey() {
     this.lookupService.getLookupByKey(this.listOfLookupProfile).subscribe(res => {
       this.collectionOfLookup = res.data as ILookupCollection;
-    
+
     });
   }
 
-  addDegreeItem(){
-    this.qualificationModel.value=[];
-    const exist =  this.selectedQualification.some(el => el.id === this.qualificationModel.condSelcted)
+  addDegreeItem() {
+    this.qualificationModel.value = [];
+    const exist = this.selectedQualification.some(el => el.id === this.qualificationModel.condSelcted)
     if (!exist) {
       if (this.collectionOfLookup.QUALIFI) {
         this.selectedQualification.push(
           this.collectionOfLookup.QUALIFI.filter(el => el.id == this.qualificationModel.condSelcted)[0]);
-          
+
       }
-      this.qualificationModel.value=this.selectedQualification;
+      this.qualificationModel.value = this.selectedQualification;
     }
   }
 
   saveProgramConditions() {
     this.updateProgramConditionDetailsModel.id = this.qualificationModel.id;
-    this.qualificationModel.condSelcted='null';
-    this.updateProgramConditionDetailsModel.progCondDetails=JSON.stringify(this.qualificationModel);
+    this.qualificationModel.condSelcted = 'null';
+    this.updateProgramConditionDetailsModel.progCondDetails = JSON.stringify(this.qualificationModel);
     this.updateProgramConditionDetailsModel.isRequired = this.qualificationModel.isRequired;
     this.programConditionsService.updateProgramConditionDetails(this.updateProgramConditionDetailsModel).subscribe(res => {
       let response = <BaseResponseModel>res;
@@ -91,16 +95,16 @@ export class SettingQualificationsComponent implements OnInit {
         }
       }
     },
-    error => {
-      this.resultMessage = {
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
+      error => {
+        this.resultMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       }
-    }
-    
+
     );
   }
- 
+
   confirmDialog() {
     const message = this.translate.currentLang === LanguageEnum.en ? "Are you sure that you want to delete this condition" : "هل متأكد من حذف هذا الشرط";
 

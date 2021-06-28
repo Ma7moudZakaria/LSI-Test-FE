@@ -21,30 +21,32 @@ export class SettingPartQraanComponent implements OnInit {
   @Input() programConditionsModel: IProgramConditionsModel = {};
   @Input() isViewToProgCond: boolean = false;
   @Output() progIdToLoadProgCond = new EventEmitter<string>();
-  partQuranModel:IProgramPredefinedCoditionsSingle={};
+  partQuranModel: IProgramPredefinedCoditionsSingle = {};
   resultMessage: BaseMessageModel = {};
-  updateProgramConditionDetailsModel:IUpdateProgramConditionDetailsModel={};
+  updateProgramConditionDetailsModel: IUpdateProgramConditionDetailsModel = {};
   result: string = '';
 
   constructor(
     public languageService: LanguageService,
     public translate: TranslateService,
-    public programConditionsService:ProgramConditionsService,
+    public programConditionsService: ProgramConditionsService,
     public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
-    this.partQuranModel=JSON.parse(this.programConditionsModel.progCondValue ||'{}')||{};
+    this.populateData()
+  }
+  populateData() {
+    this.partQuranModel = JSON.parse(this.programConditionsModel.progCondValue || '{}') || {};
     this.partQuranModel.id = this.programConditionsModel.id;
     this.partQuranModel.condId = this.programConditionsModel.condId;
-    this.partQuranModel.isRequired=this.programConditionsModel.condRequired;
-    this.partQuranModel.progId=this.programConditionsModel.progId;
-    this.partQuranModel.title=this.programConditionsModel.title;
+    this.partQuranModel.isRequired = this.programConditionsModel.condRequired;
+    this.partQuranModel.progId = this.programConditionsModel.progId;
+    this.partQuranModel.title = this.programConditionsModel.title;
   }
-
   saveProgramConditions() {
     this.updateProgramConditionDetailsModel.id = this.partQuranModel.id;
-    this.updateProgramConditionDetailsModel.progCondDetails=JSON.stringify(this.partQuranModel);
+    this.updateProgramConditionDetailsModel.progCondDetails = JSON.stringify(this.partQuranModel);
     this.updateProgramConditionDetailsModel.isRequired = this.partQuranModel.isRequired;
     this.programConditionsService.updateProgramConditionDetails(this.updateProgramConditionDetailsModel).subscribe(res => {
       let response = <BaseResponseModel>res;
@@ -61,16 +63,16 @@ export class SettingPartQraanComponent implements OnInit {
         }
       }
     },
-    error => {
-      this.resultMessage = {
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
+      error => {
+        this.resultMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       }
-    }
-    
+
     );
   }
- 
+
   confirmDialog() {
     const message = this.translate.currentLang === LanguageEnum.en ? "Are you sure that you want to delete this condition" : "هل متأكد من حذف هذا الشرط";
 

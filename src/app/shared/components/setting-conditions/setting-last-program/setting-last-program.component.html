@@ -45,11 +45,10 @@
         </div>
     </div>
 </ng-container>
-<!-- <ng-container *ngIf="!isViewToProgCond">
+<ng-container *ngIf="!isViewToProgCond">
     <div class="card-setting viewMode">
         <div class="head">
            <span>
-               {{item.title}} 
             {{'CONDITIONDS.PASSING_LAST_PROGRAM' | translate}}   
            </span>
         </div>
@@ -58,14 +57,15 @@
             <select class="UpdateUser__Options form-control"  name="nameEn">
                 <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELECT_PROGRAM' | translate }}</option>
 
-                    <option *ngFor="let item of ProgramsList"
-                        [value]="item.id">
-                                {{ item.progName}}
-                            </option>
+                <option *ngFor="let item of ProgramsList"
+                [value]="item.id">
+                        {{ translate.currentLang == langEnum.en ? item.nameEn :
+                            item.nameAr}}
+                    </option>
             </select>
             </div>
         </div>
 
 
     </div>
-</ng-container> -->
+</ng-container>

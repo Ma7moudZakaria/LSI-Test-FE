@@ -37,7 +37,7 @@
 
          
                 <ng-container *ngIf="programPredefinedEnum.programFinished === item.no">
-                 <div class="col-4">
+                 <div class="col-4 mb-3">
                 <app-setting-last-program [title]="item"></app-setting-last-program>
                </div> 
               </ng-container>
@@ -45,7 +45,7 @@
                 
            
                 <ng-container *ngIf="programPredefinedEnum.dgreeaLastProgram === item.no">
-                 <div class="col-4">
+                 <div class="col-4 mb-3">
                 <app-setting-degree-last-program [title]="item"></app-setting-degree-last-program>
                  </div>   
                  </ng-container>
@@ -57,7 +57,14 @@
                 <app-setting-maxmum-subscribe [title]="item"></app-setting-maxmum-subscribe>
                 </div> 
                 </ng-container>
-               
+
+                
+                <ng-container *ngIf="programPredefinedEnum.accept === item.no">
+                    <div class="col-4 mb-3">
+                        <app-setting-accept [title]="item"></app-setting-accept>
+                    </div> 
+                    </ng-container>
+
 
            </ng-container>
 

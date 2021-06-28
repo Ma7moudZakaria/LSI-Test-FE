@@ -688,6 +688,13 @@
     "MAXIMUM_SUBSCRIBERS": "Maximum number of subscribers",
     "NUMBER_PARTS": "number of parts",
     "Qualification": "Qualification",
-    "ADMISSIONS": "admissions"
+    "ADMISSIONS": "admissions",
+    "LESS_THAN": "less than or equal",
+    "MORE_THAN": "More than or equal to",
+    "NUMERIC_CLAUSE": "Numeric Condition",
+    "MEMORIZE_ONLY": "Memorize only",
+    "READ_ONLY": "read only",
+    "MORE_PROGRAM": "More than Memorize program",
+    "MORE_EXPLANATION_PROGRAM": "More than an explanation program"
   }
 }
