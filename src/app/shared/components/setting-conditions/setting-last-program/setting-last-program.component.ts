@@ -75,7 +75,7 @@ export class SettingLastProgramComponent implements OnInit {
 
   addDegreeItem(){
     this.lastProgramModel.value=[];
-    const exist = this.lastProgramModel.value.some(el => el.id === this.lastProgramModel.condSelcted)
+    const exist =this.selectedLastPrograms.some(el => el.id === this.lastProgramModel.condSelcted)
     if (!exist) {
         this.selectedLastPrograms.push(
           this.ProgramsList.filter(el => el.id == this.lastProgramModel.condSelcted)[0]);

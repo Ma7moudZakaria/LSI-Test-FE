@@ -59,7 +59,7 @@ export class SettingDegreeLastProgramComponent implements OnInit {
 
   addDegreeItem(){
     this.degreeLastProgramModel.value=[];
-    const exist = this.degreeLastProgramModel.value.some(el => el.id === this.degreeLastProgramModel.condSelcted)
+    const exist = this.selectedDegreeLastPrograms.some(el => el.id === this.degreeLastProgramModel.condSelcted)
     if (!exist) {
       if (this.collectionOfLookup.DEGREE) {
         this.selectedDegreeLastPrograms.push(

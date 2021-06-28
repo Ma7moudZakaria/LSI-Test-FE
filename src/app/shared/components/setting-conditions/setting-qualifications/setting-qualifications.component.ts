@@ -60,7 +60,7 @@ export class SettingQualificationsComponent implements OnInit {
 
   addDegreeItem(){
     this.qualificationModel.value=[];
-    const exist = this.qualificationModel.value.some(el => el.id === this.qualificationModel.condSelcted)
+    const exist =  this.selectedQualification.some(el => el.id === this.qualificationModel.condSelcted)
     if (!exist) {
       if (this.collectionOfLookup.QUALIFI) {
         this.selectedQualification.push(
