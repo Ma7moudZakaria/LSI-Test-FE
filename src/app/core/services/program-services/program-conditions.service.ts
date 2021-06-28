@@ -14,15 +14,14 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
 })
 export class ProgramConditionsService {
 getProgramConditionsListURL = environment.baseUrl + 'ProgramPredefinedCustomConditions/get-all-program-predefined-custom-conditions';
-updateProgramPredefinedCustomConditionsURL=environment.baseUrl +'ProgramPredefinedCustomConditions/update-program-predefined-custom-conditions';
 saveProgramConditionsListURL = environment.baseUrl + 'Programs/assign-conditions-to-program';
 getProgramConditionsByProgIdURL=environment.baseUrl + 'Programs/get-program-condition-by-program-id/';
 getConditionsNotAssignedToProgramURL=environment.baseUrl + 'Programs/get-conditions-not-assigned-to-program/';
 deleteProgramConditionURL=environment.baseUrl +'Programs/delete-prog-cond/';
 updateProgramConditionDetailsURL=environment.baseUrl +'Programs/update-program-condition-details';
 addProgramPredefinedCustomConditionsURL = environment.baseUrl + 'ProgramPredefinedCustomConditions/add-program-predefined-custom-conditions';
-  updateProgramPredefinedCustomConditionsURL = environment.baseUrl + 'ProgramPredefinedCustomConditions/update-program-predefined-custom-conditions';
-  deleteProgramPredefinedCustomConditionsURL = environment.baseUrl + 'ProgramPredefinedCustomConditions/delete-program-predefined-custom-conditions/';
+updateProgramPredefinedCustomConditionsURL = environment.baseUrl + 'ProgramPredefinedCustomConditions/update-program-predefined-custom-conditions';
+ deleteProgramPredefinedCustomConditionsURL = environment.baseUrl + 'ProgramPredefinedCustomConditions/delete-program-predefined-custom-conditions/';
 
   constructor(
     private http: HttpClient
