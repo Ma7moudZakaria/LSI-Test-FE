@@ -71,7 +71,10 @@ export class SettingDegreeLastProgramComponent implements OnInit {
       this.degreeLastProgramModel.value = this.selectedDegreeLastPrograms;
     }
   }
-
+  removeItemFromSelectedDegreeLastPrograms(item: any) {
+    let index = this.selectedDegreeLastPrograms.indexOf(item);
+    this.selectedDegreeLastPrograms.splice(index, 1);
+  }
   saveProgramConditions() {
     this.updateProgramConditionDetailsModel.id = this.degreeLastProgramModel.id;
     this.degreeLastProgramModel.condSelcted = 'null';

@@ -29,6 +29,7 @@
             <div class="badges mt-3">
                 <span *ngFor="let p of selectedLastPrograms"
                     class="badge badge-info p-2">{{translate.currentLang == langEnum.en? p.nameEn :p.nameAr}}
+                    <a (click)="removeItemFromSelectedLastPrograms(p)"><i class="fas fa-times-circle"></i></a>
                 </span>
             </div>
 

@@ -74,7 +74,10 @@ export class SettingQualificationsComponent implements OnInit {
       this.qualificationModel.value = this.selectedQualification;
     }
   }
-
+  removeItemFromSelectedQualification(item: any) {
+    let index = this.selectedQualification.indexOf(item);
+    this.selectedQualification.splice(index, 1);
+  }
   saveProgramConditions() {
     this.updateProgramConditionDetailsModel.id = this.qualificationModel.id;
     this.qualificationModel.condSelcted = 'null';

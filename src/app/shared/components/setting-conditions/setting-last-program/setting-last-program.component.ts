@@ -85,7 +85,10 @@ export class SettingLastProgramComponent implements OnInit {
     }
     this.lastProgramModel.value = this.selectedLastPrograms;
   }
-
+  removeItemFromSelectedLastPrograms(item: any) {
+    let index = this.selectedLastPrograms.indexOf(item);
+    this.selectedLastPrograms.splice(index, 1);
+  }
   saveProgramConditions() {
     this.updateProgramConditionDetailsModel.id = this.lastProgramModel.id;
     this.lastProgramModel.condSelcted = "null";
