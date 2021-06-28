@@ -10,18 +10,15 @@ import { IProgramNotificationModel } from 'src/app/core/interfaces/programs-inte
 })
 export class CardNotifacationsComponent implements OnInit {
 
-  constructor(public translate:TranslateService) { }
+  constructor(public translate: TranslateService) { }
   @Output() deleteCardNotify = new EventEmitter<string>();
   @Output() editCardNotify = new EventEmitter<IProgramNotificationModel>();
-  // @Input() inputCardId ;
   @Input() notificationsCardDetails: IProgramNotificationDetails = {};
 
-  lang=LanguageEnum;
+  lang = LanguageEnum;
 
 
   ngOnInit(): void {
-
-
 
   }
 

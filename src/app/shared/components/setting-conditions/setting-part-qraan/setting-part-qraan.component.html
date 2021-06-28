@@ -19,3 +19,23 @@
     </div>
     </div>
 </ng-container>
+
+<ng-container *ngIf="!isViewToProgCond">
+    <div class="card-setting viewMode">
+        <div class="head">
+           <span>{{item.title}} {{'CONDITIONDS.NUMBER_PARTS' | translate}}   </span>
+           <!-- <img class="close" src="../../../../../assets/images/feelings/close.svg"> -->
+        </div>
+        <!-- <div class="body">
+            <div class="details">عدد الأجزاء</div>
+            <input type="text">
+        </div> -->
+        <div class="body">
+            <!-- <div class="details"></div> -->
+            <div class="form-group w-90"  >
+            <input type="text" class="form-control" >
+            </div>
+        </div>
+
+    </div>
+</ng-container>

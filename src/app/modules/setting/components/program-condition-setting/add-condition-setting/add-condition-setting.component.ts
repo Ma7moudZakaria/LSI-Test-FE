@@ -1,4 +1,4 @@
-import { AnswerTypeEnum } from './../../../../../core/enums/exam-builder-enums/answer-type-enum.enum';
+
 import { ProgramConditionsService } from 'src/app/core/services/program-services/program-conditions.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
@@ -12,8 +12,9 @@ import { LookupService } from 'src/app/core/services/lookup-services/lookup.serv
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { IAddProgramPredefinedCustomConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iadd-program-predefined-custom-conditions-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
-import { IDetailsProgramPredefinedCustomConditionsModel } from 'src/app/core/interfaces/programs-interfaces/idetails-program-predefined-custom-conditions-model';
-import { IUpdateProgramPredefinedCustomConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iupdate-program-predefined-custom-conditions-model';
+import { IprogramPredefinedCustomConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-predefined-custom-conditions-model';
+import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-condition-setting',
@@ -22,15 +23,14 @@ import { IUpdateProgramPredefinedCustomConditionsModel } from 'src/app/core/inte
 })
 export class AddConditionSettingComponent implements OnInit {
   model: IAddProgramPredefinedCustomConditionsModel | undefined;
-  editModel: IUpdateProgramPredefinedCustomConditionsModel | undefined;
-  detailsModel: IDetailsProgramPredefinedCustomConditionsModel | undefined
-  @Input() conditionsDetails = {} as IDetailsProgramPredefinedCustomConditionsModel;
+  conditionModel: IConditionModel = { answerType: SettingAnswerTypeEnum.Choices, answerList: [] };
+  answerTypeEnum = SettingAnswerTypeEnum;
+
+  @Input() modelEdit: IprogramPredefinedCustomConditionsModel | undefined;
 
   @Output() closeOverlay = new EventEmitter<boolean>();
   @Output() addCustomCondition = new EventEmitter();
 
-  conditionModel: IConditionModel = { answerType: SettingAnswerTypeEnum.Choices, answerList: [] };
-  answerTypeEnum = SettingAnswerTypeEnum;
   langEnum = LanguageEnum;
   collectionOfLookup = {} as ILookupCollection;
   listOfLookupConditions: string[] = ['PROG_COND_TYPES'];
@@ -43,29 +43,21 @@ export class AddConditionSettingComponent implements OnInit {
   constructor(public translate: TranslateService,
     private lookupService: LookupService,
     private alert: AlertifyService,
+    public dialog: MatDialog,
     private progCondService: ProgramConditionsService) { }
 
   ngOnInit(): void {
     this.MULTISELECT = this.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.MULTI_SELECT') : this.translate.instant('GENERAL.MULTI_SELECT')
-    this.getModel();
 
-    // this.conditionModel.answerType = this.collectionOfLookup.PROG_COND_TYPES ? this.collectionOfLookup.PROG_COND_TYPES[0].id : '';
+    // in case edit form 
+    if (this.modelEdit) {
+      this.getModel();
+    }
+
   }
 
-  // getLookupByKey() {
-  //   this.lookupService.getLookupByKey(this.listOfLookupConditions).subscribe(res => {
-  //     this.collectionOfLookup = res.data as ILookupCollection;
-  //     if (res.isSuccess) {
-  //     }
-  //     else {
-  //       this.resMessage =
-  //       {
-  //         message: res.message,
-  //         type: BaseConstantModel.DANGER_TYPE
-  //       }
-  //     }
-  //   });
-  // }
+
+
 
   closeForm() {
     this.closeOverlay.emit(false)
@@ -126,66 +118,63 @@ export class AddConditionSettingComponent implements OnInit {
     });
   }
 
+  // case in edit
 
 
-  editCondition() {
-    this.editModel = {
-      title: this.conditionModel.title,
-      // conditionJson: JSON.stringify(this.conditionModel)
+  getModel() {
+    if (this.modelEdit && this.modelEdit.conditionModel)
+      this.conditionModel = this.modelEdit?.conditionModel;
 
-    }
+
 
   }
 
+  savingEdit() {
+    this.modelEdit = {
+      id: this.modelEdit?.id,
+      title: this.conditionModel.title,
+      conditionJson: JSON.stringify(this.conditionModel)
+    }
+    this.editSettingConditions();
+  }
 
   editSettingConditions() {
-    this.progCondService.putProgramPredefinedCustomConditions(this.editModel || {}).subscribe(res => {
+    this.progCondService.putProgramPredefinedCustomConditions(this.modelEdit || {}).subscribe(res => {
       if (res.isSuccess) {
-
+        this.addCustomCondition.emit()
         this.closeForm();
         this.alert.success(res.message || '');
       }
       else {
-        this.resMessage = {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+        this.alert.error(res.message || '');
       }
     }, error => {
-      this.resMessage = {
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
-      }
+      this.alert.error(error || '');
     });
   }
 
+  // delete answer
 
 
-  getModel() {
-    this.conditionModel = JSON.parse("{\"answerList\":[{\"id\":\"a81fa3f0-a173-4bc6-a642-2f5a930d9ea5\",\"text\":\"kjlkj\"},{\"id\":\"19ecde13-6b8b-4330-b431-32ff1b0fae33\",\"text\":\"poipoipo\"},{\"id\":\"e58a2811-d72a-48fc-8014-16ae0559e71c\",\"text\":\";jkl;lk;lk\"}],\"title\":\"gjghjghj\",\"answerType\":\"Choices\"}")
+  deleteAnswerDialog(answer: ISettingAnswer) {
+    const message = this.translate.currentLang === LanguageEnum.en ? "Are you sure that you want to delete answer" : "هل متأكد من حذف الإجابة";
 
-    // this.resMessage = {};
-    // if (id) {
-    //   this.progCondService.getProgramConditionsByProgId(id).subscribe(res => {
-    //     this.conditionModel = res.data as IConditionModel;
-    //     this.conditionModel.answerList = res.data.AnswerTypeEnum ? JSON.parse(res.data.AnswerTypeEnum) : [];
-    //   },
-    //     error => {
-    //       this.resMessage = {
-    //         message: error,
-    //         type: BaseConstantModel.DANGER_TYPE
-    //       }
-    //     }
-    //   )
-    // }
-    // else {
-    //   this.conditionModel = { answerList: [] };
+    const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete Answer' : 'حذف الإجابة', message);
 
-    // }
+    const dialogRef = this.dialog.open(ConfirmModalComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult == true) {
+        // let question = this.exam.questions.filter(q => q.questionNo == no)[0];
 
-
+        const index = this.conditionModel?.answerList?.indexOf(answer);
+        if (index)
+          this.conditionModel.answerList?.splice(index, 1);
+      }
+    });
   }
-
 
 
 
@@ -195,25 +184,4 @@ export class AddConditionSettingComponent implements OnInit {
   }
 
 
-
-  // getAttacheExamTemplate(examId?: string) {
-  //   this.resultMessage = {};
-  //   if (examId) {
-  //     this.examFormService.getExamFormDetails(examId).subscribe(res => {
-  //         this.exam = res.data as IExam;
-  //         this.exam.questions = res.data.examTemplate ? JSON.parse(res.data.examTemplate) : [];
-  //     },
-  //       error => {
-  //         this.resultMessage = {
-  //           message: error,
-  //           type: BaseConstantModel.DANGER_TYPE
-  //         }
-  //       }
-  //     )
-  //   }
-  //   else{
-  //   this.exam = {questions:[]};
-
-  //   }
-  // }
 }

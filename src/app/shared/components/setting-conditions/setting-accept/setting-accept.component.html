@@ -24,3 +24,21 @@
     </div>
     </div>
 </ng-container>
+<ng-container *ngIf="!isViewToProgCond">
+    <div class="card-setting viewMode">
+        <div class="head">
+           <span>{{item.title}}</span>
+           <img class="close" src="../../../../../assets/images/feelings/close.svg">
+        </div>
+        <div class="body">
+            <div class="details">  {{'CONDITIONDS.ADMISSIONS' | translate}}</div>
+            <mat-radio-group  aria-label="Select an option">
+                <mat-radio-button value="{{programConditionAcceptEnum.memorize}}" class="px-2" >حفظ فقط </mat-radio-button>
+                <mat-radio-button value="{{programConditionAcceptEnum.readOnly}}" class="px-2"> قرائة فقط</mat-radio-button>
+                <mat-radio-button value="{{programConditionAcceptEnum.moreProgramMemorize}}" class="px-2" >اكتر من برنامج حفظ</mat-radio-button> 
+                <mat-radio-button value="{{programConditionAcceptEnum.moreProgramRead}}" class="px-2">اكتر من برنامج شرح </mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </div>
+</ng-container>
+

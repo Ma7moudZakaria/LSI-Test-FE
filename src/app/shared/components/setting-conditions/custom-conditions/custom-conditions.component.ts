@@ -19,13 +19,16 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/c
   styleUrls: ['./custom-conditions.component.scss']
 })
 export class CustomConditionsComponent implements OnInit {
+
   @Input() customConditionsModel: IprogramPredefinedCustomConditionsModel = {}
   @Input() isViewToProgCond: boolean = false;
   answerType=SettingAnswerTypeEnum
   resultMessage: BaseMessageModel = {};
   updateProgramConditionDetailsModel:IUpdateProgramConditionDetailsModel={};
   result: string = '';
-  @Output() progIdToLoadProgCond = new EventEmitter<string>();
+    @Output() progIdToLoadProgCond = new EventEmitter<string>();
+    @Output() editcustomConditionsCard = new EventEmitter<IprogramPredefinedCustomConditionsModel>();
+    @Output() deleteCustomConditionsCard = new EventEmitter<string>();
   constructor(
     public languageService: LanguageService,
     public translate: TranslateService,
@@ -91,6 +94,15 @@ export class CustomConditionsComponent implements OnInit {
         )
       }
     });
-  }
+    }
+
+    editCustomCondition() {
+        this.editcustomConditionsCard.emit(this.customConditionsModel)
+    }
+
+
+    deleteCustomCondition() {
+        this.deleteCustomConditionsCard.emit(this.customConditionsModel?.id)
+    }
 
 }

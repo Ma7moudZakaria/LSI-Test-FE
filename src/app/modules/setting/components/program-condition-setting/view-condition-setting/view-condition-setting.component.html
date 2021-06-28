@@ -2,9 +2,8 @@
     <div class=" pt-3 mb-3">
         <div class="row">
             <div class="col-md-12 container_haeder mb-2">
-         
                <button class="cancel-btn" (click)="AddConditions()" >
-                إضافة شرط
+                {{'CONDITIONDS.ADD_CONDITIONS' | translate}} 
                </button>
             </div>
         </div>
@@ -64,14 +63,22 @@
 
         </div>
         <!-- customConditions cards  -->
-        <hr> 
+        <div class="col-6 mt-4 mb-4 title ">
+          
+            <p class="title_custom">  {{'CONDITIONDS.CUSTOM_CONDITIONDS' | translate}} </p>
+        </div>
         <div class="row">
-        <ng-container  *ngFor="let item of customConditionsList ;let i=index">
-                    <div class="col-4 mb-3">
-                        <app-custom-conditions [customConditionsModel]='item'></app-custom-conditions>
-                    </div>
-        </ng-container>
-          </div>
+            <ng-container  *ngFor="let customConditionsData of customConditionsList ;let i=index">
+                        <div class="col-4 mb-3">
+                            <app-custom-conditions
+                             [customConditionsModel]='customConditionsData'
+                             (editcustomConditionsCard)="editCustomConditions($event)"
+                             (deleteCustomConditionsCard) = deleteCustomCard($event)
+
+                             ></app-custom-conditions>
+                        </div>
+            </ng-container>
+        </div>
          
     </div>
    
