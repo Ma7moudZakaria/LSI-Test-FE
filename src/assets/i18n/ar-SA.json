@@ -226,7 +226,7 @@
   },
   "PROGRAM_DAY_TASK_VIDEO": {
     "VIDEO_NAME": "إسم الفيديو",
-    "VIDEO_LINK": "رابط الفديو",
+    "VIDEO_LINK": "رابط لفيديو خارجي",
     "VIDEO_ANOTHER_LINK": "رابط لفيديو خارجي"
   },
   "RESETPASSWORD_PG": {
@@ -667,7 +667,7 @@
     "TO": "إلى"
   },
   "PROGRAM_DAY_TASK_DETIALS": {
-    "DEGREE": "الدرجات",
+    "DEGREE": "الدرجه",
     "SHOW_QUESTION_TO_STUDENT": "السؤال الذى يظهر لطالب",
     "THE_LISTENING": "الإستماع",
     "PAGES": "الصفحات"
