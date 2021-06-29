@@ -58,7 +58,10 @@
     "NOT_AUTHORIZED": "انت غير مصرح لك بالدخول ",
     "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE": " برجاء اكمال البيانات وإضافة اكتر من اجابه لسؤال و مراجعة البيانات المكررة",
     "CHOOSEFILE": "إختر الملفات لرفعها",
-    "MANDATORY": "إلزامى"
+    "MANDATORY": "إلزامى",
+    "TWO_OPTIOPN": "  من فضلك ادخل على الاقل قمتين  للاختيارات",
+    "TEXT_INPUT": "ادخل القيم ",
+    "DUPLICATED_ANSWER": "هذا النص مكرر"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",

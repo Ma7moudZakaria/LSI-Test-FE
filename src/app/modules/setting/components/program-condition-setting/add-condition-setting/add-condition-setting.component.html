@@ -51,15 +51,22 @@
                         {{'CONDITIONDS.ADD_ANSWER' | translate}} 
                     </button>
                 </div>
+
+                <div *ngIf="resMessage" class="alert alert-{{ resMessage.type }} ">
+                    <span class=" py-2  my-4 ">
+                    {{resMessage.message}}
+                  </span>
+                     </div>
+
         </div>
     </div>
 </ng-container>
 
-
+<!-- 
 <div *ngIf="resMessage" class="alert alert-{{ resMessage.type }} my-4 py-2 text-center">
     <span class="bold"> {{resMessage.message}}</span>
  </div>
- 
+  -->
    <section class="mt-5">
             <div  class="row direction-rtl buttons-center mt-5">
                 <button   type="submit" class="save-btn" (click)="saveCondition()" *ngIf="!modelEdit"> 

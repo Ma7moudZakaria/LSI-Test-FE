@@ -63,7 +63,50 @@ export class AddConditionSettingComponent implements OnInit {
     let id = BaseConstantModel.newGuid();
     let answer: ISettingAnswer = { id: id }
     this.conditionModel.answerList?.push(answer)
-    // console.log(this.conditionModel.answerList);
+
+    console.log(this.conditionModel.answerList);
+
+  }
+  validateAnswer(answerList: ISettingAnswer[], ansType: SettingAnswerTypeEnum): boolean {
+    if (answerList.length < 2 && ansType === SettingAnswerTypeEnum.Choices) {
+      this.resMessage = {
+        message: this.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.TWO_OPTIOPN') : this.translate.instant('GENERAL.TWO_OPTIOPN'),
+        type: BaseConstantModel.DANGER_TYPE
+      }
+
+      return false;
+    }
+
+    if (ansType === SettingAnswerTypeEnum.Choices && answerList.some(r => r.text === '' || !r.text)) {
+      this.resMessage = {
+        message: this.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.TEXT_INPUT') : this.translate.instant('GENERAL.TEXT_INPUT'),
+        type: BaseConstantModel.DANGER_TYPE
+      }
+
+      return false;
+    }
+
+    if (this.getDuplicateAnswer(answerList).length > 0 && ansType === SettingAnswerTypeEnum.Choices) {
+      this.resMessage = {
+        message: this.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.DUPLICATED_ANSWER') : this.translate.instant('GENERAL.DUPLICATED_ANSWER'),
+        type: BaseConstantModel.DANGER_TYPE
+      }
+      return false;
+    }
+    return true;
+
+  }
+
+  getDuplicateAnswer(arr: ISettingAnswer[]) {
+    var sorted_arr = arr.slice().sort((a, b) => a.text! > b.text! && 1 || -1);
+    sorted_arr = sorted_arr.filter(x => x.text != "");
+    var results = [];
+    for (var i = 0; i < sorted_arr.length - 1; i++) {
+      if (sorted_arr[i + 1].text === sorted_arr[i].text) {
+        results.push(sorted_arr[i]);
+      }
+    }
+    return results;
   }
 
   Choices() {
@@ -79,11 +122,15 @@ export class AddConditionSettingComponent implements OnInit {
   }
 
   saveCondition() {
-    this.model = {
-      title: this.conditionModel.title,
-      conditionJson: JSON.stringify(this.conditionModel)
+    if (this.conditionModel && this.conditionModel.answerList && this.conditionModel.answerType
+      && this.validateAnswer(this.conditionModel.answerList, this.conditionModel.answerType)) {
+      this.model = {
+        title: this.conditionModel.title,
+        conditionJson: JSON.stringify(this.conditionModel)
+      }
+      this.addSettingConditions();
     }
-    this.addSettingConditions();
+
   }
 
   addSettingConditions() {
