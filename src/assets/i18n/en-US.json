@@ -59,8 +59,11 @@
     "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE": "Please complete the missing information, add more than one answer and review duplicate data",
     "CHOOSEFILE": "Choose file to upload",
     "MANDATORY": "Mandatory",
-    "MY_PROGRAM":"My Program",
-    "FEELING":"Feeling"
+    "TWO_OPTIOPN": "Please choose two answer ",
+    "TEXT_INPUT": "You shoud input value",
+    "DUPLICATED_ANSWER": "Duplicate Answer",
+    "MY_PROGRAM": "My Program",
+    "FEELING": "Feeling"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
@@ -704,7 +707,9 @@
     "MEMORIZE_ONLY": "Memorize only",
     "READ_ONLY": "read only",
     "MORE_PROGRAM": "More than Memorize program",
-    "MORE_EXPLANATION_PROGRAM": "More than an explanation program",
-    "MEMORIZE_READ": "Memorize And Read"
+    "MORE_EXPLANATION_PROGRAM": "More than an Read program",
+    "MEMORIZE_READ": "Memorize And Read",
+    "TOGGEL": "Yes/No",
+    "TEXT": "Text"
   }
 }

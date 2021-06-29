@@ -9,31 +9,23 @@ import { ViewConditionSettingComponent } from './view-condition-setting/view-con
   styleUrls: ['./program-condition-setting.component.scss']
 })
 export class ProgramConditionSettingComponent implements OnInit {
-  showAddForm = false;
-  constructor() { }
 
   @ViewChild(ViewConditionSettingComponent) CustomCondition: ViewConditionSettingComponent | undefined;
   modelEdit: IprogramPredefinedCustomConditionsModel = {};
+  showAddForm = false;
 
+  constructor() { }
   ngOnInit(): void {
   }
 
   closeForm() {
     this.showAddForm = false
   }
-  // openCoiditionFrom() {
-  //   this.showAddForm = true
 
-  // }
   addCustomCondition() {
     this.closeForm();
     this.CustomCondition?.getProgramConditionsLis();
   }
-
-  // editcustomConditionsCard() {
-  //   this.openCoiditionFrom();
-
-  // }
 
   openAddEditOverLay(event: IprogramPredefinedCustomConditionsModel) {
     this.showAddForm = true
@@ -41,21 +33,8 @@ export class ProgramConditionSettingComponent implements OnInit {
     this.modelEdit = event;
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-function getProgramConditionsLis(getProgramConditionsLis: any) {
-  throw new Error('Function not implemented.');
-}
+// function getProgramConditionsLis(getProgramConditionsLis: any) {
+//   throw new Error('Function not implemented.');
+// }
 

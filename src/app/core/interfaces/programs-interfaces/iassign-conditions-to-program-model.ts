@@ -1,4 +1,4 @@
-export interface IassignConditionsToProgramModel {
+export interface IAssignConditionsToProgramModel {
     progId?:string;
     conditions?:ConditionsForm[]
 }

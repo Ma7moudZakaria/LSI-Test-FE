@@ -1,3 +1,4 @@
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
@@ -21,10 +22,10 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/c
   styleUrls: ['./setting-last-program.component.scss']
 })
 export class SettingLastProgramComponent implements OnInit {
+  @Output() progIdToLoadProgCond = new EventEmitter<string>();
   @Input() programConditionsModel: IProgramConditionsModel = {};
   @Input() isViewToProgCond: boolean = false;
-  @Output() progIdToLoadProgCond = new EventEmitter<string>();
-  lastProgramModel: IProgramPredefinedCoditionsMulti = {};//IProgCondPredefinedMultiList = {};
+  lastProgramModel: IProgramPredefinedCoditionsMulti = {};
   resultMessage: BaseMessageModel = {};
   updateProgramConditionDetailsModel: IUpdateProgramConditionDetailsModel = {};
   result: string = '';
@@ -38,6 +39,8 @@ export class SettingLastProgramComponent implements OnInit {
     public translate: TranslateService,
     public programConditionsService: ProgramConditionsService,
     public dialog: MatDialog,
+    private alertify: AlertifyService
+
   ) { }
 
   ngOnInit(): void {
@@ -97,16 +100,10 @@ export class SettingLastProgramComponent implements OnInit {
     this.programConditionsService.updateProgramConditionDetails(this.updateProgramConditionDetailsModel).subscribe(res => {
       let response = <BaseResponseModel>res;
       if (response.isSuccess) {
-        this.resultMessage = {
-          message: res.message || "",
-          type: BaseConstantModel.SUCCESS_TYPE
-        }
+        this.alertify.success(res.message || '');
       }
       else {
-        this.resultMessage = {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+        this.alertify.error(res.message || '');
       }
     },
       error => {
@@ -133,14 +130,17 @@ export class SettingLastProgramComponent implements OnInit {
       if (dialogResult == true) {
         this.programConditionsService.deleteProgramCondition(this.lastProgramModel.id || '').subscribe(
           res => {
-            res.message;
-            this.progIdToLoadProgCond.emit(this.lastProgramModel.progId)
+            if (res.isSuccess) {
+              this.progIdToLoadProgCond.emit(this.lastProgramModel.progId)
+
+              this.alertify.success(res.message || '');
+            }
+            else {
+              this.alertify.error(res.message || '');
+            }
           },
           error => {
-            this.resultMessage = {
-              message: error,
-              type: BaseConstantModel.DANGER_TYPE
-            }
+            this.alertify.error(error || '');
           }
         )
       }

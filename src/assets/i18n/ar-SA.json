@@ -59,8 +59,11 @@
     "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE": " برجاء اكمال البيانات وإضافة اكتر من اجابه لسؤال و مراجعة البيانات المكررة",
     "CHOOSEFILE": "إختر الملفات لرفعها",
     "MANDATORY": "إلزامى",
-    "MY_PROGRAM":"برامجى",
-    "FEELING":"المشاعر"
+    "TWO_OPTIOPN": "  من فضلك ادخل على الاقل قمتين  للاختيارات",
+    "TEXT_INPUT": "ادخل القيم ",
+    "DUPLICATED_ANSWER": "هذا النص مكرر",
+    "MY_PROGRAM": "برامجى",
+    "FEELING": "المشاعر"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
@@ -701,7 +704,9 @@
     "MEMORIZE_ONLY": "حفظ فقط ",
     "READ_ONLY": " قرائة فقط",
     "MORE_PROGRAM": "اكتر من برنامج حفظ",
-    "MORE_EXPLANATION_PROGRAM": "اكتر من برنامج شرح",
-    "MEMORIZE_READ": "حفظ وقراءة معا"
+    "MORE_EXPLANATION_PROGRAM": "اكتر من برنامج قراءة",
+    "MEMORIZE_READ": "حفظ وقراءة معا",
+    "TOGGEL": "نعم/لا",
+    "TEXT": "نصى"
   }
 }

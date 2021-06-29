@@ -10,6 +10,7 @@ import { IUpdateProgramConditionDetailsModel } from 'src/app/core/interfaces/pro
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { ProgramConditionsService } from 'src/app/core/services/program-services/program-conditions.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/confirm-modal.component';
@@ -22,9 +23,9 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/c
 export class SettingAcceptComponent implements OnInit {
   programConditionAcceptEnum = ProgramConditionAcceptEnum;
   langEnum = LanguageEnum;
+  @Output() progIdToLoadProgCond = new EventEmitter<string>();
   @Input() programConditionsModel: IProgramConditionsModel = {};
   @Input() isViewToProgCond: boolean = false;
-  @Output() progIdToLoadProgCond = new EventEmitter<string>();
   accepModel: IProgramPredefinedCoditionsSingle = {};
   resultMessage: BaseMessageModel = {};
   updateProgramConditionDetailsModel: IUpdateProgramConditionDetailsModel = {};
@@ -34,6 +35,8 @@ export class SettingAcceptComponent implements OnInit {
     public translate: TranslateService,
     public programConditionsService: ProgramConditionsService,
     public dialog: MatDialog,
+    private alertify: AlertifyService,
+
   ) { }
 
   ngOnInit(): void {
@@ -56,16 +59,10 @@ export class SettingAcceptComponent implements OnInit {
     this.programConditionsService.updateProgramConditionDetails(this.updateProgramConditionDetailsModel).subscribe(res => {
       let response = <BaseResponseModel>res;
       if (response.isSuccess) {
-        this.resultMessage = {
-          message: res.message || "",
-          type: BaseConstantModel.SUCCESS_TYPE
-        }
+        this.alertify.success(res.message || '');
       }
       else {
-        this.resultMessage = {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+        this.alertify.error(res.message || '');
       }
     },
       error => {
@@ -90,18 +87,24 @@ export class SettingAcceptComponent implements OnInit {
     dialogRef.afterClosed().subscribe(dialogResult => {
       this.result = dialogResult;
       if (dialogResult == true) {
-        this.programConditionsService.deleteProgramCondition(this.accepModel.id || '').subscribe(
-          res => {
-            res.message;
-            this.progIdToLoadProgCond.emit(this.accepModel.progId)
-          },
-          error => {
-            this.resultMessage = {
-              message: error,
-              type: BaseConstantModel.DANGER_TYPE
+        this.programConditionsService.deleteProgramCondition(this.accepModel.id || '').subscribe
+          (
+            res => {
+              if (res.isSuccess) {
+                this.progIdToLoadProgCond.emit(this.accepModel.progId)
+
+                this.alertify.success(res.message || '');
+
+              }
+              else {
+                this.alertify.error(res.message || '');
+              }
+            },
+            error => {
+              this.alertify.error(error || '');
             }
-          }
-        )
+          )
+
       }
     });
   }

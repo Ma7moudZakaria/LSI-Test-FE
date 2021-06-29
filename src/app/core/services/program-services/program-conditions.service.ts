@@ -3,10 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IAddProgramPredefinedCustomConditionsModel } from '../../interfaces/programs-interfaces/iadd-program-predefined-custom-conditions-model';
-import { IassignConditionsToProgramModel } from '../../interfaces/programs-interfaces/iassign-conditions-to-program-model';
+import { IAssignConditionsToProgramModel } from '../../interfaces/programs-interfaces/iassign-conditions-to-program-model';
 import { IUpdateProgramConditionDetailsModel } from '../../interfaces/programs-interfaces/iupdate-program-condition-details-model';
 import { IprogramPredefinedCustomConditionsModel } from '../../interfaces/programs-interfaces/iprogram-predefined-custom-conditions-model';
-import { IUpdateProgramPredefinedCustomConditionsModel } from '../../interfaces/programs-interfaces/iupdate-program-predefined-custom-conditions-model';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 
 @Injectable({
@@ -47,7 +46,7 @@ updateProgramPredefinedCustomConditionsURL = environment.baseUrl + 'ProgramPrede
     return this.http.delete<BaseResponseModel>(this.deleteProgramPredefinedCustomConditionsURL + id);
   }
 
-  saveProgramConditions(model: IassignConditionsToProgramModel): Observable<BaseResponseModel> {
+  saveProgramConditions(model: IAssignConditionsToProgramModel): Observable<BaseResponseModel> {
     return this.http.put<BaseResponseModel>(this.saveProgramConditionsListURL, model);
   }
 

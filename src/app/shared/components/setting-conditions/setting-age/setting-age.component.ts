@@ -11,6 +11,7 @@ import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { ProgramConditionsService } from 'src/app/core/services/program-services/program-conditions.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/confirm-modal.component';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 
 
 @Component({
@@ -19,8 +20,8 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/c
   styleUrls: ['./setting-age.component.scss']
 })
 export class SettingAgeComponent implements OnInit {
-  @Input() programConditionsModel: IProgramConditionsModel = {};
   @Output() progIdToLoadProgCond = new EventEmitter<string>();
+  @Input() programConditionsModel: IProgramConditionsModel = {};
   @Input() isViewToProgCond: boolean = false;
   ageModel: IProgramPredefinedCoditionsSingle = {};// IProgCondPredefinedNumerical = {};
   resultMessage: BaseMessageModel = {};
@@ -31,6 +32,7 @@ export class SettingAgeComponent implements OnInit {
     public translate: TranslateService,
     public programConditionsService: ProgramConditionsService,
     public dialog: MatDialog,
+    private alertify: AlertifyService
   ) { }
 
   ngOnInit(): void {
@@ -52,16 +54,10 @@ export class SettingAgeComponent implements OnInit {
     this.programConditionsService.updateProgramConditionDetails(this.updateProgramConditionDetailsModel).subscribe(res => {
       let response = <BaseResponseModel>res;
       if (response.isSuccess) {
-        this.resultMessage = {
-          message: res.message || "",
-          type: BaseConstantModel.SUCCESS_TYPE
-        }
+        this.alertify.success(res.message || '');
       }
       else {
-        this.resultMessage = {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+        this.alertify.error(res.message || '');
       }
     },
       error => {
@@ -87,17 +83,21 @@ export class SettingAgeComponent implements OnInit {
       this.result = dialogResult;
       if (dialogResult == true) {
         this.programConditionsService.deleteProgramCondition(this.ageModel.id || '').subscribe(
+
           res => {
-            res.message;
-            this.progIdToLoadProgCond.emit(this.ageModel.progId)
+            if (res.isSuccess) {
+              this.progIdToLoadProgCond.emit(this.ageModel.progId)
+              this.alertify.success(res.message || '');
+            }
+            else {
+              this.alertify.error(res.message || '');
+            }
           },
           error => {
-            this.resultMessage = {
-              message: error,
-              type: BaseConstantModel.DANGER_TYPE
-            }
+            this.alertify.error(error || '');
           }
         )
+
       }
     });
   }
