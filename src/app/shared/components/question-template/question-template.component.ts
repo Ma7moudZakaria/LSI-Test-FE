@@ -30,7 +30,8 @@ export class QuestionTemplateComponent implements OnInit {
 
   ngOnInit(): void {
     this.MULTISELECT=this.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.MULTI_SELECT') : this.translate.instant('GENERAL.MULTI_SELECT')
-  
+    this.questionTemplate.studentAnswersByAnswerNumber = '';
+    this.questionTemplate.studentAnswersByAnswerNumbers = [];
   }
 
 
@@ -118,6 +119,19 @@ else{
   stopPropagation(event: Event){
     event.preventDefault();
     event.stopPropagation();
+}
+
+onItemChecked(item: IAnswer, event:any){
+  if (event.checked){
+    this.questionTemplate.studentAnswersByAnswerNumbers?.push(item.answerNo || 0);
+  }
+  else{
+    let it = this.questionTemplate.studentAnswersByAnswerNumbers?.filter(i => i === item.answerNo)[0];
+    const ind = it ? this.questionTemplate.studentAnswersByAnswerNumbers?.indexOf(it) : -1;
+    if (ind && ind > -1) {
+      this.questionTemplate.studentAnswersByAnswerNumbers?.splice(ind, 1);
+    }
+  }
 }
 
 
