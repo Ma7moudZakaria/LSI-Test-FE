@@ -22,10 +22,10 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/c
   styleUrls: ['./setting-last-program.component.scss']
 })
 export class SettingLastProgramComponent implements OnInit {
+  @Output() progIdToLoadProgCond = new EventEmitter<string>();
   @Input() programConditionsModel: IProgramConditionsModel = {};
   @Input() isViewToProgCond: boolean = false;
-  @Output() progIdToLoadProgCond = new EventEmitter<string>();
-  lastProgramModel: IProgramPredefinedCoditionsMulti = {};//IProgCondPredefinedMultiList = {};
+  lastProgramModel: IProgramPredefinedCoditionsMulti = {};
   resultMessage: BaseMessageModel = {};
   updateProgramConditionDetailsModel: IUpdateProgramConditionDetailsModel = {};
   result: string = '';
@@ -100,16 +100,10 @@ export class SettingLastProgramComponent implements OnInit {
     this.programConditionsService.updateProgramConditionDetails(this.updateProgramConditionDetailsModel).subscribe(res => {
       let response = <BaseResponseModel>res;
       if (response.isSuccess) {
-        this.resultMessage = {
-          message: res.message || "",
-          type: BaseConstantModel.SUCCESS_TYPE
-        }
+        this.alertify.success(res.message || '');
       }
       else {
-        this.resultMessage = {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+        this.alertify.error(res.message || '');
       }
     },
       error => {

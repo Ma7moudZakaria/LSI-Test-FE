@@ -19,9 +19,9 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/c
   styleUrls: ['./setting-part-qraan.component.scss']
 })
 export class SettingPartQraanComponent implements OnInit {
+  @Output() progIdToLoadProgCond = new EventEmitter<string>();
   @Input() programConditionsModel: IProgramConditionsModel = {};
   @Input() isViewToProgCond: boolean = false;
-  @Output() progIdToLoadProgCond = new EventEmitter<string>();
   partQuranModel: IProgramPredefinedCoditionsSingle = {};
   resultMessage: BaseMessageModel = {};
   updateProgramConditionDetailsModel: IUpdateProgramConditionDetailsModel = {};
@@ -53,16 +53,10 @@ export class SettingPartQraanComponent implements OnInit {
     this.programConditionsService.updateProgramConditionDetails(this.updateProgramConditionDetailsModel).subscribe(res => {
       let response = <BaseResponseModel>res;
       if (response.isSuccess) {
-        this.resultMessage = {
-          message: res.message || "",
-          type: BaseConstantModel.SUCCESS_TYPE
-        }
+        this.alertify.success(res.message || '');
       }
       else {
-        this.resultMessage = {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+        this.alertify.error(res.message || '');
       }
     },
       error => {

@@ -23,9 +23,9 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/c
 export class SettingAcceptComponent implements OnInit {
   programConditionAcceptEnum = ProgramConditionAcceptEnum;
   langEnum = LanguageEnum;
+  @Output() progIdToLoadProgCond = new EventEmitter<string>();
   @Input() programConditionsModel: IProgramConditionsModel = {};
   @Input() isViewToProgCond: boolean = false;
-  @Output() progIdToLoadProgCond = new EventEmitter<string>();
   accepModel: IProgramPredefinedCoditionsSingle = {};
   resultMessage: BaseMessageModel = {};
   updateProgramConditionDetailsModel: IUpdateProgramConditionDetailsModel = {};
@@ -59,16 +59,10 @@ export class SettingAcceptComponent implements OnInit {
     this.programConditionsService.updateProgramConditionDetails(this.updateProgramConditionDetailsModel).subscribe(res => {
       let response = <BaseResponseModel>res;
       if (response.isSuccess) {
-        this.resultMessage = {
-          message: res.message || "",
-          type: BaseConstantModel.SUCCESS_TYPE
-        }
+        this.alertify.success(res.message || '');
       }
       else {
-        this.resultMessage = {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+        this.alertify.error(res.message || '');
       }
     },
       error => {

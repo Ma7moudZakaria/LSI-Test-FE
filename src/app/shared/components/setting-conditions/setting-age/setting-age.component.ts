@@ -20,8 +20,8 @@ import { AlertifyService } from 'src/app/core/services/alertify-services/alertif
   styleUrls: ['./setting-age.component.scss']
 })
 export class SettingAgeComponent implements OnInit {
-  @Input() programConditionsModel: IProgramConditionsModel = {};
   @Output() progIdToLoadProgCond = new EventEmitter<string>();
+  @Input() programConditionsModel: IProgramConditionsModel = {};
   @Input() isViewToProgCond: boolean = false;
   ageModel: IProgramPredefinedCoditionsSingle = {};// IProgCondPredefinedNumerical = {};
   resultMessage: BaseMessageModel = {};
@@ -54,16 +54,10 @@ export class SettingAgeComponent implements OnInit {
     this.programConditionsService.updateProgramConditionDetails(this.updateProgramConditionDetailsModel).subscribe(res => {
       let response = <BaseResponseModel>res;
       if (response.isSuccess) {
-        this.resultMessage = {
-          message: res.message || "",
-          type: BaseConstantModel.SUCCESS_TYPE
-        }
+        this.alertify.success(res.message || '');
       }
       else {
-        this.resultMessage = {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+        this.alertify.error(res.message || '');
       }
     },
       error => {

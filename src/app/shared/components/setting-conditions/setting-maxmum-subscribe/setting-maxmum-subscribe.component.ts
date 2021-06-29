@@ -20,9 +20,9 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/c
   styleUrls: ['./setting-maxmum-subscribe.component.scss']
 })
 export class SettingMaxmumSubscribeComponent implements OnInit {
+  @Output() progIdToLoadProgCond = new EventEmitter<string>();
   @Input() programConditionsModel: IProgramConditionsModel = {};
   @Input() isViewToProgCond: boolean = false;
-  @Output() progIdToLoadProgCond = new EventEmitter<string>();
   maxmumSubscribeModel: IProgramPredefinedCoditionsSingle = {};
   resultMessage: BaseMessageModel = {};
   updateProgramConditionDetailsModel: IUpdateProgramConditionDetailsModel = {};
@@ -55,16 +55,10 @@ export class SettingMaxmumSubscribeComponent implements OnInit {
     this.programConditionsService.updateProgramConditionDetails(this.updateProgramConditionDetailsModel).subscribe(res => {
       let response = <BaseResponseModel>res;
       if (response.isSuccess) {
-        this.resultMessage = {
-          message: res.message || "",
-          type: BaseConstantModel.SUCCESS_TYPE
-        }
+        this.alertify.success(res.message || '');
       }
       else {
-        this.resultMessage = {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+        this.alertify.error(res.message || '');
       }
     },
       error => {
