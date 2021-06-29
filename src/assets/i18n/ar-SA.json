@@ -179,7 +179,7 @@
     "REQUIRED_TASKS": "المهام المطلوبة"
   },
   "JOINING_REQUEST": {
-    "MODELS": "النمازج",
+    "MODELS": "النماذج",
     "DEGREE": "الدرجة"
   },
   "PROGRAM_DAY_TASK_ENCOURAGEMENT": {
@@ -679,5 +679,29 @@
     "STUDENTS_NEW_FEELINGS": "مشاعر الطلاب الجديدة",
     "STUDENT_FEELINGS_LIST": "قائمة مشاعر الطلاب",
     "TEACHER_FEELINGS_LIST": "قائمة مشاعر المعلمين"
+  },
+  "CONDITIONDS": {
+    "CUSTOM_CONDITIONDS": "الشروط خاصة",
+    "ADD_CONDITIONS": "إضافة شرط",
+    "EDIT_CONDITIONS": "تعديل الشرط",
+    "CONDITION_TITLE": "عنوان الشرط",
+    "ANSWERS": "اجابات",
+    "ANSWER_TYPE": "نوع الاجابة",
+    "ADD_ANSWER": "إضافة إجابة",
+    "AGE": " السن لا يقل عن",
+    "PASSING_LAST_PROGRAM": " اجتياز اخر برنامج بالمنصة بتقدير",
+    "PREVIOUS_PROGRA": "اتمام برنامج سابق بالمنصه",
+    "MAXIMUM_SUBSCRIBERS": "الحد الأقصى لعدد المشتركين",
+    "NUMBER_PARTS": "عدد الأجزاء",
+    "Qualification": "المؤهل العلمى",
+    "ADMISSIONS": "القبول",
+    "MORE_THAN": "أكبر من او يساوي",
+    "LESS_THAN": "أقل من او يساوي",
+    "NUMERIC_CLAUSE": "شرط رقمي",
+    "MEMORIZE_ONLY": "حفظ فقط ",
+    "READ_ONLY": " قرائة فقط",
+    "MORE_PROGRAM": "اكتر من برنامج حفظ",
+    "MORE_EXPLANATION_PROGRAM": "اكتر من برنامج شرح",
+    "MEMORIZE_READ": "حفظ وقراءة معا"
   }
 }

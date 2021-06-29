@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IprogramPredefinedCustomConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-predefined-custom-conditions-model';
 
 @Component({
   selector: 'app-program-conditions-age',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./program-conditions-age.component.scss']
 })
 export class ProgramConditionsAgeComponent implements OnInit {
-
+  @Input() item: IprogramPredefinedCustomConditionsModel = {}
   constructor() { }
 
   ngOnInit(): void {

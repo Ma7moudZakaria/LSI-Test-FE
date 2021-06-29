@@ -4,5 +4,5 @@ export interface IassignConditionsToProgramModel {
 }
 export interface ConditionsForm {
     condId?:string;
-
+  
 }

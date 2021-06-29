@@ -1,1 +1,53 @@
-<p>custom-conditions works!</p>
+<div class="card-setting" *ngIf="!isViewToProgCond">
+    <div class="head">
+     {{customConditionsModel.title}}
+    </div>
+    <div class="body">
+        <div class="details" *ngIf='customConditionsModel.conditionModel?.answerType === answerType.Text'>text</div>
+        <div class="form-group w-75" *ngIf='customConditionsModel.conditionModel?.answerType === answerType.Choices'>
+           
+            <select class="form-control" id="sel1">
+              <option *ngFor='let item of customConditionsModel.conditionModel?.answerList'>{{item.text}} </option>
+            </select>
+
+          </div>
+          <div *ngIf='customConditionsModel.conditionModel?.answerType === answerType.Toggel'>
+            toog
+          </div>
+
+        <ng-container >
+            <span class="icon_actions">
+                <img src="/assets/images/notify/edit.svg" (click)="editCustomCondition()" > 
+                <img src="/assets/images/notify/trash.svg"  (click)="deleteCustomCondition()">  
+               </span>
+        </ng-container>
+    </div>
+</div>
+
+
+<div class="card-setting" *ngIf="isViewToProgCond">
+  <div class="head">
+   {{customConditionsModel.title}}
+   <img class="close" src="../../../../../assets/images/feelings/close.svg" (click)="confirmDialog()">
+  </div>
+  <div class="body">
+      <div class="details" *ngIf='customConditionsModel.conditionModel?.answerType === answerType.Text'>text</div>
+      <div class="form-group w-100" *ngIf='customConditionsModel.conditionModel?.answerType === answerType.Choices'>
+         
+          <select class="form-control" id="sel1">
+            <option *ngFor='let item of customConditionsModel.conditionModel?.answerList'>{{item.text}} </option>
+          </select>
+        </div>
+        <div *ngIf='customConditionsModel.conditionModel?.answerType === answerType.Toggel'>
+          toog
+        </div>
+     
+     
+  </div> 
+    <div  class="row  buttons-center ">
+          
+          <button   type="submit" class="save-btn" (click)="saveProgramConditions()"> 
+              {{ "GENERAL.SAVE" | translate }}
+          </button>
+  </div>
+</div>

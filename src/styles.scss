@@ -359,7 +359,13 @@ font-family: Almarai-Regular;
 
 // check box 
 
-
+.accept {
+  
+  .mat-radio-label-content
+    {
+      font-size: 12px;
+    }
+}
 .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
   border-color: #8E2520 !important;
 

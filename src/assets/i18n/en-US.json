@@ -681,6 +681,30 @@
     "TEACHERS_NEW_FEELINGS": "Teachers' new feelings",
     "STUDENTS_NEW_FEELINGS": "Students' new feelings",
     "STUDENT_FEELINGS_LIST": "Student feelings list",
-    "TEACHER_FEELINGS_LIST": "Teacher feelings list"
+    "TEACHER_FEELINGS_LIST ": "Teacher feelings list"
+  },
+  "CONDITIONDS": {
+    "CUSTOM_CONDITIONDS": "Custom Condition",
+    "ADD_CONDITIONS": "Add Condition",
+    "EDIT_CONDITIONS": "Edit Condition",
+    "CONDITION_TITLE": "Condition title",
+    "ANSWERS": "Answers",
+    "ANSWER_TYPE": "Answer Type",
+    "ADD_ANSWER": "Add Answer",
+    "AGE": "Age not less than",
+    "PASSING_LAST_PROGRAM": "Passing the last program with grade",
+    "PREVIOUS_PROGRA": "Completion of a previous program ",
+    "MAXIMUM_SUBSCRIBERS": "Maximum number of subscribers",
+    "NUMBER_PARTS": "number of parts",
+    "Qualification": "Qualification",
+    "ADMISSIONS": "admissions",
+    "LESS_THAN": "less than or equal",
+    "MORE_THAN": "More than or equal to",
+    "NUMERIC_CLAUSE": "Numeric Condition",
+    "MEMORIZE_ONLY": "Memorize only",
+    "READ_ONLY": "read only",
+    "MORE_PROGRAM": "More than Memorize program",
+    "MORE_EXPLANATION_PROGRAM": "More than an explanation program",
+    "MEMORIZE_READ": "Memorize And Read"
   }
 }

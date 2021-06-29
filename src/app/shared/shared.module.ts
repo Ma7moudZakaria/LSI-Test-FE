@@ -59,13 +59,14 @@ import { ProgramConditionsGraduateComponent } from './components/program-conditi
 import { ProgramConditionsNumberStudentSubscribtionComponent } from './components/program-conditions/program-conditions-number-student-subscribtion/program-conditions-number-student-subscribtion.component';
 import { ProgramConditionsMemorizeQuranComponent } from './components/program-conditions/program-conditions-memorize-quran/program-conditions-memorize-quran.component';
 import { ProgramConditionsProgramFinishedComponent } from './components/program-conditions/program-conditions-program-finished/program-conditions-program-finished.component';
-import { SettingScientificProblemComponent } from './components/setting-conditions/setting-scientific-problem/setting-scientific-problem.component';
 import { SettingAgeComponent } from './components/setting-conditions/setting-age/setting-age.component';
 import { SettingLastProgramComponent } from './components/setting-conditions/setting-last-program/setting-last-program.component';
 import { SettingDegreeLastProgramComponent } from './components/setting-conditions/setting-degree-last-program/setting-degree-last-program.component';
 import { SettingMaxmumSubscribeComponent } from './components/setting-conditions/setting-maxmum-subscribe/setting-maxmum-subscribe.component';
 import { SettingPartQraanComponent } from './components/setting-conditions/setting-part-qraan/setting-part-qraan.component';
 import { CustomConditionsComponent } from './components/setting-conditions/custom-conditions/custom-conditions.component';
+import { SettingQualificationsComponent } from './components/setting-conditions/setting-qualifications/setting-qualifications.component';
+import { SettingAcceptComponent } from './components/setting-conditions/setting-accept/setting-accept.component';
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
     SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,
@@ -93,13 +94,14 @@ import { CustomConditionsComponent } from './components/setting-conditions/custo
     ProgramConditionsNumberStudentSubscribtionComponent,
     ProgramConditionsMemorizeQuranComponent,
     ProgramConditionsProgramFinishedComponent,
-    SettingScientificProblemComponent,
     SettingAgeComponent,
     SettingLastProgramComponent,
     SettingDegreeLastProgramComponent,
     SettingMaxmumSubscribeComponent,
     SettingPartQraanComponent,
-    CustomConditionsComponent],
+    CustomConditionsComponent,
+    SettingQualificationsComponent,
+    SettingAcceptComponent],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,
@@ -119,8 +121,8 @@ import { CustomConditionsComponent } from './components/setting-conditions/custo
     ProgramDayTaskEncouragementLetterComponent, ProgramDayTaskReviewComponent, ProgramDayTaskRecitationComponent,
     ProgramDayTaskRecitationStudentsComponent, ProgramDayTaskTestPhasedComponent,
     ProgramDayTaskTasmeaComponent, CardFeelingsComponent, MatTooltipModule,
-    SettingScientificProblemComponent, SettingAgeComponent, SettingDegreeLastProgramComponent, SettingLastProgramComponent,
-    SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent,ProgramConditionsAgeComponent
+    SettingAgeComponent, SettingDegreeLastProgramComponent, SettingLastProgramComponent, SettingQualificationsComponent,
+    SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent, ProgramConditionsAgeComponent,SettingAcceptComponent
 
   ]
 })
