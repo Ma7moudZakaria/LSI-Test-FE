@@ -58,7 +58,10 @@
     "NOT_AUTHORIZED": "YOU ARE NOT AUTHORIZED",
     "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE": "Please complete the missing information, add more than one answer and review duplicate data",
     "CHOOSEFILE": "Choose file to upload",
-    "MANDATORY": "Mandatory"
+    "MANDATORY": "Mandatory",
+    "TWO_OPTIOPN": "Please choose two answer ",
+    "TEXT_INPUT": "You shoud input value",
+    "DUPLICATED_ANSWER": "Duplicate Answer"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
