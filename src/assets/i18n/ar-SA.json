@@ -693,6 +693,8 @@
     "READ_ONLY": " قرائة فقط",
     "MORE_PROGRAM": "اكتر من برنامج حفظ",
     "MORE_EXPLANATION_PROGRAM": "اكتر من برنامج شرح",
-    "MEMORIZE_READ": "حفظ وقراءة معا"
+    "MEMORIZE_READ": "حفظ وقراءة معا",
+    "TOGGEL": "نعم/لا",
+    "TEXT": "نصى"
   }
 }

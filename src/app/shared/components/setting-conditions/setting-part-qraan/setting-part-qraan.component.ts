@@ -8,6 +8,7 @@ import { IUpdateProgramConditionDetailsModel } from 'src/app/core/interfaces/pro
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { ProgramConditionsService } from 'src/app/core/services/program-services/program-conditions.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/confirm-modal.component';
@@ -31,6 +32,7 @@ export class SettingPartQraanComponent implements OnInit {
     public translate: TranslateService,
     public programConditionsService: ProgramConditionsService,
     public dialog: MatDialog,
+    private alertify: AlertifyService
   ) { }
 
   ngOnInit(): void {
@@ -87,14 +89,17 @@ export class SettingPartQraanComponent implements OnInit {
       if (dialogResult == true) {
         this.programConditionsService.deleteProgramCondition(this.partQuranModel.id || '').subscribe(
           res => {
-            res.message;
-            this.progIdToLoadProgCond.emit(this.partQuranModel.progId)
+            if (res.isSuccess) {
+              this.progIdToLoadProgCond.emit(this.partQuranModel.progId)
+
+              this.alertify.success(res.message || '');
+            }
+            else {
+              this.alertify.error(res.message || '');
+            }
           },
           error => {
-            this.resultMessage = {
-              message: error,
-              type: BaseConstantModel.DANGER_TYPE
-            }
+            this.alertify.error(error || '');
           }
         )
       }

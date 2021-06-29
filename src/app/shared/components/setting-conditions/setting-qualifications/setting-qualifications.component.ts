@@ -1,3 +1,4 @@
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
@@ -39,6 +40,7 @@ export class SettingQualificationsComponent implements OnInit {
     public languageService: LanguageService,
     public programConditionsService: ProgramConditionsService,
     public dialog: MatDialog,
+    private alertify: AlertifyService
   ) { }
 
   ngOnInit(): void {
@@ -121,16 +123,22 @@ export class SettingQualificationsComponent implements OnInit {
       this.result = dialogResult;
       if (dialogResult == true) {
         this.programConditionsService.deleteProgramCondition(this.qualificationModel.id || '').subscribe(
+
           res => {
-            res.message;
-            this.progIdToLoadProgCond.emit(this.qualificationModel.progId)
+            if (res.isSuccess) {
+              this.progIdToLoadProgCond.emit(this.qualificationModel.progId)
+
+              this.alertify.success(res.message || '');
+            }
+            else {
+              this.alertify.error(res.message || '');
+            }
           },
           error => {
-            this.resultMessage = {
-              message: error,
-              type: BaseConstantModel.DANGER_TYPE
-            }
+            this.alertify.error(error || '');
           }
+
+
         )
       }
     });

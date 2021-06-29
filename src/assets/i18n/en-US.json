@@ -696,6 +696,8 @@
     "READ_ONLY": "read only",
     "MORE_PROGRAM": "More than Memorize program",
     "MORE_EXPLANATION_PROGRAM": "More than an explanation program",
-    "MEMORIZE_READ": "Memorize And Read"
+    "MEMORIZE_READ": "Memorize And Read",
+    "TOGGEL": "Yes/No",
+    "TEXT": "Text"
   }
 }

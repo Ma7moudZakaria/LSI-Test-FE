@@ -22,23 +22,23 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./add-condition-setting.component.scss']
 })
 export class AddConditionSettingComponent implements OnInit {
-  model: IAddProgramPredefinedCustomConditionsModel | undefined;
-  conditionModel: IConditionModel = { answerType: SettingAnswerTypeEnum.Choices, answerList: [] };
-  answerTypeEnum = SettingAnswerTypeEnum;
 
-  @Input() modelEdit: IprogramPredefinedCustomConditionsModel | undefined;
+
+
 
   @Output() closeOverlay = new EventEmitter<boolean>();
   @Output() addCustomCondition = new EventEmitter();
-
+  @Input() modelEdit: IprogramPredefinedCustomConditionsModel | undefined;
+  model: IAddProgramPredefinedCustomConditionsModel | undefined;
+  conditionModel: IConditionModel = { answerType: SettingAnswerTypeEnum.Choices, answerList: [] };
+  answerTypeEnum = SettingAnswerTypeEnum;
   langEnum = LanguageEnum;
   collectionOfLookup = {} as ILookupCollection;
   listOfLookupConditions: string[] = ['PROG_COND_TYPES'];
-
   resMessage: BaseMessageModel = {};
-
   currentLang = '';
   MULTISELECT = '';
+  huff: Number | undefined;
 
   constructor(public translate: TranslateService,
     private lookupService: LookupService,
@@ -48,7 +48,6 @@ export class AddConditionSettingComponent implements OnInit {
 
   ngOnInit(): void {
     this.MULTISELECT = this.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.MULTI_SELECT') : this.translate.instant('GENERAL.MULTI_SELECT')
-
     // in case edit form 
     if (this.modelEdit) {
       this.getModel();
@@ -56,21 +55,15 @@ export class AddConditionSettingComponent implements OnInit {
 
   }
 
-
-
-
   closeForm() {
     this.closeOverlay.emit(false)
-
   }
 
   addAnswer() {
     let id = BaseConstantModel.newGuid();
     let answer: ISettingAnswer = { id: id }
-
     this.conditionModel.answerList?.push(answer)
-    console.log(this.conditionModel.answerList);
-
+    // console.log(this.conditionModel.answerList);
   }
 
   Choices() {
@@ -91,17 +84,13 @@ export class AddConditionSettingComponent implements OnInit {
       conditionJson: JSON.stringify(this.conditionModel)
     }
     this.addSettingConditions();
-
-
   }
 
   addSettingConditions() {
     this.progCondService.saveProgramPredefinedCustomConditions(this.model || {}).subscribe(res => {
       if (res.isSuccess) {
         this.addCustomCondition.emit()
-
         this.closeForm();
-
         this.alert.success(res.message || '');
       }
       else {
@@ -119,18 +108,19 @@ export class AddConditionSettingComponent implements OnInit {
   }
 
   // case in edit
-
-
   getModel() {
-    if (this.modelEdit && this.modelEdit.conditionModel)
+    if (this.modelEdit && this.modelEdit.conditionModel) {
       this.conditionModel = this.modelEdit?.conditionModel;
+      if (this.answerTypeEnum.Choices != this.conditionModel.answerType) {
+        this.conditionModel.answerList = []
 
-
-
+      }
+    }
   }
 
   savingEdit() {
-    this.modelEdit = {
+    this.modelEdit =
+    {
       id: this.modelEdit?.id,
       title: this.conditionModel.title,
       conditionJson: JSON.stringify(this.conditionModel)
@@ -152,15 +142,10 @@ export class AddConditionSettingComponent implements OnInit {
       this.alert.error(error || '');
     });
   }
-
   // delete answer
-
-
   deleteAnswerDialog(answer: ISettingAnswer) {
     const message = this.translate.currentLang === LanguageEnum.en ? "Are you sure that you want to delete answer" : "هل متأكد من حذف الإجابة";
-
     const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete Answer' : 'حذف الإجابة', message);
-
     const dialogRef = this.dialog.open(ConfirmModalComponent, {
       maxWidth: "400px",
       data: dialogData
@@ -176,12 +161,8 @@ export class AddConditionSettingComponent implements OnInit {
     });
   }
 
-
-
-  huff: Number | undefined;
   radioChange(event: any) {
     this.huff = this.collectionOfLookup.PROG_COND_TYPES?.filter(i => i.id == event.value)[0].huffazId;
   }
-
 
 }

@@ -1,3 +1,4 @@
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
@@ -37,6 +38,7 @@ export class SettingDegreeLastProgramComponent implements OnInit {
     public translate: TranslateService,
     public programConditionsService: ProgramConditionsService,
     public dialog: MatDialog,
+    private alertify: AlertifyService
   ) { }
 
   ngOnInit(): void {
@@ -119,15 +121,18 @@ export class SettingDegreeLastProgramComponent implements OnInit {
       if (dialogResult == true) {
         this.programConditionsService.deleteProgramCondition(this.degreeLastProgramModel.id || '').subscribe(
           res => {
-            res.message;
-            this.progIdToLoadProgCond.emit(this.degreeLastProgramModel.progId)
+            if (res.isSuccess) {
+              this.progIdToLoadProgCond.emit(this.degreeLastProgramModel.progId)
+              this.alertify.success(res.message || '');
+            }
+            else {
+              this.alertify.error(res.message || '');
+            }
           },
           error => {
-            this.resultMessage = {
-              message: error,
-              type: BaseConstantModel.DANGER_TYPE
-            }
+            this.alertify.error(error || '');
           }
+
         )
       }
     });

@@ -10,6 +10,7 @@ import { IUpdateProgramConditionDetailsModel } from 'src/app/core/interfaces/pro
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { ProgramConditionsService } from 'src/app/core/services/program-services/program-conditions.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/confirm-modal.component';
@@ -34,6 +35,8 @@ export class SettingAcceptComponent implements OnInit {
     public translate: TranslateService,
     public programConditionsService: ProgramConditionsService,
     public dialog: MatDialog,
+    private alertify: AlertifyService,
+
   ) { }
 
   ngOnInit(): void {
@@ -90,18 +93,24 @@ export class SettingAcceptComponent implements OnInit {
     dialogRef.afterClosed().subscribe(dialogResult => {
       this.result = dialogResult;
       if (dialogResult == true) {
-        this.programConditionsService.deleteProgramCondition(this.accepModel.id || '').subscribe(
-          res => {
-            res.message;
-            this.progIdToLoadProgCond.emit(this.accepModel.progId)
-          },
-          error => {
-            this.resultMessage = {
-              message: error,
-              type: BaseConstantModel.DANGER_TYPE
+        this.programConditionsService.deleteProgramCondition(this.accepModel.id || '').subscribe
+          (
+            res => {
+              if (res.isSuccess) {
+                this.progIdToLoadProgCond.emit(this.accepModel.progId)
+
+                this.alertify.success(res.message || '');
+
+              }
+              else {
+                this.alertify.error(res.message || '');
+              }
+            },
+            error => {
+              this.alertify.error(error || '');
             }
-          }
-        )
+          )
+
       }
     });
   }
