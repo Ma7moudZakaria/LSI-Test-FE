@@ -4,11 +4,12 @@ export interface IProgramFilterAdvancedRequest {
   typeList?: string[];
   dura?: number;
   isTest?: boolean;
+  stuNum?: number;
+  techNum?: number;
   skip?: number;
   take?: number;
-
-  arabName?:string;
-  engName?:string;
+  arabName?: string;
+  engName?: string;
 }
 
 

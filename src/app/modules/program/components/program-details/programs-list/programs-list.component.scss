@@ -1,6 +1,8 @@
 @import '../../../../scientific-material/components/scientific-material-view/programs-list/programs-list.component.scss';
 
 @import 'src/assets/scss/_variables.scss';
+@import 'src/assets/scss/_buttons.scss';
+
 
 .advanced_search {
     font-family: Almarai-Bold;
@@ -10,6 +12,7 @@
     opacity: 1;
     letter-spacing: 0px;
     opacity: 1;
+    cursor: pointer;
 }
 .cancel-btn{
     background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
@@ -55,5 +58,24 @@
             {
                 color: #FFFFFF;
             }
+
+         
            
-    } 
+    }    .advancedSearchForm{
+                .label{
+                    display: block;
+                    color: #C1C7D0;
+                    font-size: 14PX;
+                    font-family: Almarai-Bold;
+                }
+                &:lang(ar){
+                    text-align: right;
+                }
+                &:lang(en){
+                    text-align: left;
+                }
+                .btn_replay{
+                    margin: 0 0.5rem;
+
+                }
+            }
