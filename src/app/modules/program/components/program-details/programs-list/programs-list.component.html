@@ -7,6 +7,90 @@
     </div>
    
     <app-search-input (searchTerm)="filterByNameSearchKey($event)"></app-search-input>
+
+        <ng-container *ngIf="advancedSearch && programsbyAdvancedFilter">
+          <div class=" row ">
+            <ng-container *ngIf='programsbyAdvancedFilter.typeList && programsbyAdvancedFilter.typeList.length > 0'>
+                
+                <ng-container *ngFor="let item of programsbyAdvancedFilter.typeList ;let i=index">
+                    <div class="col-6" >
+                    <div class="card_advanced_search">
+                            <p class="mb-0">{{selectTypes(item) }}</p>
+                    <img src="assets/images/feelings/close.svg" (click)='clearProgTypeFilter(item)'>
+
+                   </div></div>
+             </ng-container>
+                
+            </ng-container>
+
+              <ng-container *ngIf='programsbyAdvancedFilter.name'>
+                <div class="col-6" >
+                    <div class="card_advanced_search">
+                    <p class="mb-0">{{programsbyAdvancedFilter.name}}</p>
+                    <img src="assets/images/feelings/close.svg" (click)='clearNameFilter()'>
+                </div>
+            </div>
+            </ng-container>
+            <ng-container *ngIf='programsbyAdvancedFilter.dura'>
+                <div class="col-6" >
+                    <div class="card_advanced_search">
+                    <p class="mb-0">{{programsbyAdvancedFilter.dura}} يوم</p>
+                    <img src="assets/images/feelings/close.svg" (click)="clearDura()">
+                </div>
+            </div>
+            </ng-container>
+
+            <ng-container *ngIf=' programsbyAdvancedFilter.stuNum'>
+                <div class="col-6" >
+                    <div class="card_advanced_search">
+                    <p class="mb-0">{{programsbyAdvancedFilter.stuNum}} طالب</p>
+                    <img src="assets/images/feelings/close.svg" (click)="clearStuNum()">
+                </div>
+            </div>
+            </ng-container>
+
+            <ng-container *ngIf=' programsbyAdvancedFilter.techNum'>
+                <div class="col-6" >
+                    <div class="card_advanced_search">
+                    <p class="mb-0">{{programsbyAdvancedFilter.techNum}} معلم</p>
+                    <img src="assets/images/feelings/close.svg" (click)="clearTechNum()">
+                </div>
+            </div>
+            </ng-container>
+
+            <ng-container *ngIf='programsbyAdvancedFilter.isTest'>
+                <div class="col-6" >
+                    <div class="card_advanced_search">
+                    <p class="mb-0">اختبار القبول </p>
+                    <img src="assets/images/feelings/close.svg" (click)="clearTestFilter()">
+                </div>
+            </div>
+            </ng-container>
+
+            <ng-container *ngIf='programsbyAdvancedFilter.isPeriodicExam'>
+                <div class="col-6" >
+                    <div class="card_advanced_search">
+                    <p class="mb-0">اختبار القبول </p>
+                    <img src="assets/images/feelings/close.svg"  (click)="clearPeriodicExamFilter()">
+                </div>
+            </div>
+            </ng-container>
+
+           
+            </div>
+
+        </ng-container>
+        <!-- <ng-container  *ngIf="advancedSearch && programsbyAdvancedFilter">
+            <div class="row">
+            <div class="col-12" >
+                <a class="card_advanced_search justify-content-center" (click)="resetSearch()">
+                <p class="mb-0">
+                    CLEAR ALL
+                 </p>
+             </a>
+          </div> </div>
+       </ng-container> -->
+
     <a class="advanced_search" (click)="ToggelAdvancSearch()">
         {{'PROGRAMS_LIST.ADVANCED_SEARCH' | translate}} 
        
@@ -21,6 +105,7 @@
                 </a>
                 </div>
         </ng-container>
+
          <ng-container *ngIf="!advancedSearch">
                 <div class="internal_scroll_list_group">
                    <div  class="form-group advancedSearchForm">
@@ -31,7 +116,7 @@
                         <!-- (change)='addProgTypeToList(item, $event)' [checked]="progTypeChecked(item)" -->
                  
                         <ng-container *ngFor="let item of collectionOfLookup.PROG_TYPES ;let i=index">
-                            <mat-checkbox  
+                            <mat-checkbox   (change)='addProgTypeToList(item, $event)' [checked]="progTypeChecked(item)"
                               class="example-margin mx-3 " 
                            >
                                 {{item.nameAr}}  
@@ -76,7 +161,10 @@
                         class="example-margin mx-2 " [(ngModel)]="programsbyAdvancedFilter.isTest">
                         إختبار قبول 
                       </mat-checkbox>
-
+                      <mat-checkbox  
+                      class="example-margin mx-2 " [(ngModel)]="programsbyAdvancedFilter.isPeriodicExam">
+                      إختبار مرحلى 
+                    </mat-checkbox>
                     
 
                        </div>
@@ -84,7 +172,7 @@
                         <button class="cancel-btn " (click)="submitSearch()">
                             {{'GENERAL.SEARCH' | translate}}
                           </button>
-                          <button class="btn_replay " >
+                          <button class="btn_replay " (click)="resetSearch()" >
                            RE
                           </button>
                        </div>

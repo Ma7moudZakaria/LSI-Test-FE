@@ -14,6 +14,8 @@ import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collec
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 
 import { BaseLookupModel } from 'src/app/core/ng-model/base-lookup-model';
+import { IProgramType } from 'src/app/core/interfaces/programs-interfaces/iprogram-basic-info-model';
+import { IProgramBasicInfoDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 
 
 @Component({
@@ -24,16 +26,20 @@ import { BaseLookupModel } from 'src/app/core/ng-model/base-lookup-model';
 export class ProgramsListComponent implements OnInit {
   @Output() selectedProgram = new EventEmitter<IprogramsModel>();
   programsList: IprogramsModel[] = [];
+  progBasicInfoDetails: IProgramBasicInfoDetails | undefined;
+
   programDetails = {} as IprogramsModel;
   programsbyAdvancedFilter: IProgramFilterAdvancedRequest = { skip: 0, take: 2147483647 };
   langEnum = LanguageEnum;
   resMessage: BaseMessageModel = {};
   filterRequest: IProgramFilterAdvancedRequest = {};
   selectedIndex = 0;
-  advancedSearch: boolean = false;
+  advancedSearch: boolean = true;
   collectionOfLookup = {} as ILookupCollection;
   listOfLookup: string[] = ['PROG_TYPES'];
-
+  programTypesList: IProgramType[] = [];
+  medelSearch: IProgramFilterAdvancedRequest | undefined;
+  list = [1, 2, 3]
   constructor(private scientifcMaterialService: ScientificMaterialService,
     private programService: ProgramService,
     public translate: TranslateService,
@@ -46,6 +52,13 @@ export class ProgramsListComponent implements OnInit {
     this.getLookupByKey();
 
     this.loadProgramsbyAdvancedFilter();
+  }
+
+
+  //  advanced search
+
+  ToggelAdvancSearch() {
+    this.advancedSearch = !this.advancedSearch
   }
 
 
@@ -64,34 +77,34 @@ export class ProgramsListComponent implements OnInit {
       }
     });
   }
-  // addProgTypeToList(item: BaseLookupModel, event:any){
-  //   if (event.checked){
-  //     this.programTypesList?.push({progTypeId:item.id});
-  //   }
-  //   else{
-  //     let it = this.programTypesList.filter(i => i.progTypeId === item.id)[0];
-  //     const ind = this.programTypesList?.indexOf(it);
-  //     if (ind > -1) {
-  //       this.programTypesList?.splice(ind, 1);
-  //     }
-  //   }
-  //   console.log(this.programTypesList);
-  // }
-  // progTypeChecked(item:BaseLookupModel){
-  //   return this.programTypesList.some(it => it.progTypeId === item.id);
-  // }
 
-
-  ToggelAdvancSearch() {
-    this.advancedSearch = !this.advancedSearch
+  addProgTypeToList(item: BaseLookupModel, event: any) {
+    if (event.checked) {
+      this.programTypesList?.push({ progTypeId: item.id });
+    }
+    else {
+      let it = this.programTypesList.filter(i => i.progTypeId === item.id)[0];
+      const ind = this.programTypesList?.indexOf(it);
+      if (ind > -1) {
+        this.programTypesList?.splice(ind, 1);
+      }
+    }
+    console.log("programTypesList", this.programTypesList);
   }
 
-  medelSearch: IProgramFilterAdvancedRequest | undefined;
+  progTypeChecked(item: BaseLookupModel) {
+    return this.programTypesList.some(it => it.progTypeId === item.id);
+  }
 
+  selectTypes(type: IProgramType) {
+    var item = this.collectionOfLookup.PROG_TYPES?.filter(i => i.id == type.progTypeId)[0];
+    return this.translate.currentLang == LanguageEnum.ar ? item?.nameAr : item?.nameEn;
+  }
 
   submitSearch() {
     this.programsbyAdvancedFilter =
     {
+      typeList: this.programTypesList,
       name: this.programsbyAdvancedFilter.name,
       dura: this.programsbyAdvancedFilter.dura,
       isTest: this.programsbyAdvancedFilter.isTest,
@@ -100,15 +113,18 @@ export class ProgramsListComponent implements OnInit {
       skip: 0,
       take: 2147483647
     }
-    this.loadProgramsbyAdvancedFilter()
+    this.ToggelAdvancSearch();
+    this.loadProgramsbyAdvancedFilter();
   }
+
+
   loadProgramsbyAdvancedFilter() {
     this.programService.getProgramAdvancedFilter(this.programsbyAdvancedFilter || {}).subscribe(
       (res: BaseResponseModel) => {
         console.log("res.data", res.data)
         this.programsList = res.data as IprogramsModel[];
 
-        console.log("Programs List : ", this.programsList);
+        // console.log("Programs List : ", this.programsList);
         this.getProgramIdToProgramDetails(this.programsList[0] || null);
 
       }, error => {
@@ -119,6 +135,14 @@ export class ProgramsListComponent implements OnInit {
       }
     );
   }
+  resetSearch() {
+    this.programTypesList = []
+    this.programsbyAdvancedFilter = {}
+
+
+  }
+
+  // end advanced search
 
   getProgramIdToProgramDetails(item: IprogramsModel) {
     this.selectedProgram.emit(item);
@@ -131,5 +155,35 @@ export class ProgramsListComponent implements OnInit {
   filterByNameSearchKey(searchKey: string) {
     this.programsbyAdvancedFilter.name = searchKey;
     this.loadProgramsbyAdvancedFilter();
+  }
+
+  clearNameFilter() {
+    this.programsbyAdvancedFilter.name = '';
+  }
+  clearProgTypeFilter(item: IProgramType) {
+    let it = this.programTypesList.filter(i => i.progTypeId === item.progTypeId)[0];
+    const ind = this.programTypesList?.indexOf(it);
+    if (ind > -1) {
+      this.programTypesList?.splice(ind, 1);
+    }
+  }
+
+  clearPeriodicExamFilter() {
+    this.programsbyAdvancedFilter.isPeriodicExam = false
+
+  }
+  clearTestFilter() {
+    this.programsbyAdvancedFilter.isTest = false
+
+  }
+  clearTechNum() {
+    this.programsbyAdvancedFilter.techNum = 0;
+  }
+  clearStuNum() {
+    this.programsbyAdvancedFilter.stuNum = 0;
+  }
+  clearDura() {
+    this.programsbyAdvancedFilter.dura = 0;
+
   }
 }
