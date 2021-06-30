@@ -47,7 +47,7 @@ export class ViewConditionSettingComponent implements OnInit {
         this.customConditionsList.forEach(element => {
           element.conditionModel = JSON.parse(element.conditionJson || "{}")
         });
-        this.alertify.success(res.message || '');
+        // this.alertify.success(res.message || '');
       }
       else {
         this.alertify.error(res.message || '');
