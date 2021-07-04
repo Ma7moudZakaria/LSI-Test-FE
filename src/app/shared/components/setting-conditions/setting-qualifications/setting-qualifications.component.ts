@@ -68,9 +68,9 @@ export class SettingQualificationsComponent implements OnInit {
     this.qualificationModel.value = [];
     const exist = this.selectedQualification.some(el => el.id === this.qualificationModel.condSelcted)
     if (!exist) {
-      if (this.collectionOfLookup.QUALIFI) {
+      if (this.collectionOfLookup.EDU_LEVEL) {
         this.selectedQualification.push(
-          this.collectionOfLookup.QUALIFI.filter(el => el.id == this.qualificationModel.condSelcted)[0]);
+          this.collectionOfLookup.EDU_LEVEL.filter(el => el.id == this.qualificationModel.condSelcted)[0]);
 
       }
       this.qualificationModel.value = this.selectedQualification;

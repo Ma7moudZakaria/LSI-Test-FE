@@ -61,11 +61,10 @@
             <div class="form-group w-90"  >
               <select class="UpdateUser__Options form-control" name="nameEn" >
                 <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELECT_EDU_LEVEL' | translate }}</option>
-
-                <option *ngFor="let qualifiItem of collectionOfLookup.QUALIFI"
-                    [value]="qualifiItem.id">
-                    {{ translate.currentLang == langEnum.en ? qualifiItem.nameEn :
-                    qualifiItem.nameAr}}
+                <option *ngFor="let item of collectionOfLookup.EDU_LEVEL"
+                    [value]="item.id">
+                    {{ translate.currentLang == langEnum.en ? item.nameEn :
+                        item.nameAr}}
                 </option>
                </select>
              </div>
