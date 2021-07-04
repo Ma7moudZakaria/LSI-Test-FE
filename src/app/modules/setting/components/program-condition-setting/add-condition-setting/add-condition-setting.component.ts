@@ -30,7 +30,7 @@ export class AddConditionSettingComponent implements OnInit {
   @Output() addCustomCondition = new EventEmitter();
   @Input() modelEdit: IprogramPredefinedCustomConditionsModel | undefined;
   model: IAddProgramPredefinedCustomConditionsModel | undefined;
-  conditionModel: IConditionModel = { answerType: SettingAnswerTypeEnum.Choices, answerList: [] };
+  conditionModel: IConditionModel = { answerType: SettingAnswerTypeEnum.Choices, answerList: [], studAnsValues:[] };
   answerTypeEnum = SettingAnswerTypeEnum;
   langEnum = LanguageEnum;
   collectionOfLookup = {} as ILookupCollection;
@@ -62,11 +62,9 @@ export class AddConditionSettingComponent implements OnInit {
   addAnswer() {
     let id = BaseConstantModel.newGuid();
     let answer: ISettingAnswer = { id: id }
-    this.conditionModel.answerList?.push(answer)
-
-    console.log(this.conditionModel.answerList);
-
+    this.conditionModel.answerList?.push(answer);
   }
+  
   validateAnswer(answerList: ISettingAnswer[], ansType: SettingAnswerTypeEnum): boolean {
     if (answerList.length < 2 && ansType === SettingAnswerTypeEnum.Choices) {
       this.resMessage = {
@@ -94,7 +92,6 @@ export class AddConditionSettingComponent implements OnInit {
       return false;
     }
     return true;
-
   }
 
   getDuplicateAnswer(arr: ISettingAnswer[]) {
@@ -124,6 +121,8 @@ export class AddConditionSettingComponent implements OnInit {
   saveCondition() {
     if (this.conditionModel && this.conditionModel.answerList && this.conditionModel.answerType
       && this.validateAnswer(this.conditionModel.answerList, this.conditionModel.answerType)) {
+
+      this.updateModelTypeSubmition();
       this.model = {
         title: this.conditionModel.title,
         conditionJson: JSON.stringify(this.conditionModel)
@@ -131,6 +130,27 @@ export class AddConditionSettingComponent implements OnInit {
       this.addSettingConditions();
     }
 
+  }
+
+  updateModelTypeSubmition(){
+    if (this.conditionModel.answerType === SettingAnswerTypeEnum.Text){
+      this.conditionModel.answerList = undefined;
+      this.conditionModel.studAnsValues = undefined;
+      this.conditionModel.studBoolAns = undefined;
+
+      this.conditionModel.studTxtAns = '';
+    }
+    else if(this.conditionModel.answerType === SettingAnswerTypeEnum.Toggel){
+      this.conditionModel.answerList = undefined;
+      this.conditionModel.studAnsValues = undefined;
+      this.conditionModel.studTxtAns = undefined;
+
+      this.conditionModel.studBoolAns = true;
+    }
+    else{
+      this.conditionModel.studTxtAns = undefined;
+      this.conditionModel.studBoolAns = undefined;
+    }
   }
 
   addSettingConditions() {
@@ -165,14 +185,21 @@ export class AddConditionSettingComponent implements OnInit {
     }
   }
 
+
   savingEdit() {
-    this.modelEdit =
-    {
-      id: this.modelEdit?.id,
-      title: this.conditionModel.title,
-      conditionJson: JSON.stringify(this.conditionModel)
-    }
-    this.editSettingConditions();
+    if (this.conditionModel && this.conditionModel.answerList && this.conditionModel.answerType
+      && this.validateAnswer(this.conditionModel.answerList, this.conditionModel.answerType)) {
+        
+        this.updateModelTypeSubmition();
+        this.modelEdit =
+        {
+          id: this.modelEdit?.id,
+          title: this.conditionModel.title,
+          conditionJson: JSON.stringify(this.conditionModel)
+        }
+
+        this.editSettingConditions();
+      }
   }
 
   editSettingConditions() {
