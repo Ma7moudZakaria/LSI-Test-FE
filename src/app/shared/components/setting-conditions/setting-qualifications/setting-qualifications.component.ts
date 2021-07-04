@@ -31,7 +31,7 @@ export class SettingQualificationsComponent implements OnInit {
   updateProgramConditionDetailsModel: IUpdateProgramConditionDetailsModel = {};
   result: string = '';
   collectionOfLookup = {} as ILookupCollection;
-  listOfLookupProfile: string[] = ['QUALIFI'];
+  listOfLookupProfile: string[] = ['EDU_LEVEL'];
   langEnum = LanguageEnum;
   selectedQualification = Array<IProgramPredefinedvalue>();
   constructor(
