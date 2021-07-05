@@ -34,7 +34,10 @@
             <ng-container *ngIf='programsbyAdvancedFilter.dura'>
                 <div class="col-6" >
                     <div class="card_advanced_search">
-                    <p class="mb-0">{{programsbyAdvancedFilter.dura}} يوم</p>
+                    <p class="mb-0">{{programsbyAdvancedFilter.dura}} 
+                    {{'PROGRAMS_LIST.DAY' | translate}} 
+
+                    </p>
                     <img src="assets/images/feelings/close.svg" (click)="clearDura()">
                 </div>
             </div>
@@ -43,7 +46,7 @@
             <ng-container *ngIf=' programsbyAdvancedFilter.stuNum'>
                 <div class="col-6" >
                     <div class="card_advanced_search">
-                    <p class="mb-0">{{programsbyAdvancedFilter.stuNum}} طالب</p>
+                    <p class="mb-0">{{programsbyAdvancedFilter.stuNum}}  {{'PROGRAMS_LIST.STUDENT' | translate}}  </p>
                     <img src="assets/images/feelings/close.svg" (click)="clearStuNum()">
                 </div>
             </div>
@@ -52,7 +55,7 @@
             <ng-container *ngIf=' programsbyAdvancedFilter.techNum'>
                 <div class="col-6" >
                     <div class="card_advanced_search">
-                    <p class="mb-0">{{programsbyAdvancedFilter.techNum}} معلم</p>
+                    <p class="mb-0">{{programsbyAdvancedFilter.techNum}} {{'PROGRAMS_LIST.TEACHER' | translate}}  </p>
                     <img src="assets/images/feelings/close.svg" (click)="clearTechNum()">
                 </div>
             </div>
@@ -61,7 +64,7 @@
             <ng-container *ngIf='programsbyAdvancedFilter.isTest'>
                 <div class="col-6" >
                     <div class="card_advanced_search">
-                    <p class="mb-0">اختبار القبول </p>
+                    <p class="mb-0"> {{'PROGRAMS_LIST.JOINING_EXAM' | translate}} </p>
                     <img src="assets/images/feelings/close.svg" (click)="clearTestFilter()">
                 </div>
             </div>
@@ -70,7 +73,7 @@
             <ng-container *ngIf='programsbyAdvancedFilter.isPeriodicExam'>
                 <div class="col-6" >
                     <div class="card_advanced_search">
-                    <p class="mb-0">اختبار القبول </p>
+                    <p class="mb-0"> {{'PROGRAMS_LIST.JOINING_EXAM' | translate}} </p>
                     <img src="assets/images/feelings/close.svg"  (click)="clearPeriodicExamFilter()">
                 </div>
             </div>
@@ -80,16 +83,8 @@
             </div>
 
         </ng-container>
-        <!-- <ng-container  *ngIf="advancedSearch && programsbyAdvancedFilter">
-            <div class="row">
-            <div class="col-12" >
-                <a class="card_advanced_search justify-content-center" (click)="resetSearch()">
-                <p class="mb-0">
-                    CLEAR ALL
-                 </p>
-             </a>
-          </div> </div>
-       </ng-container> -->
+    
+        
 
     <a class="advanced_search" (click)="ToggelAdvancSearch()">
         {{'PROGRAMS_LIST.ADVANCED_SEARCH' | translate}} 
@@ -111,7 +106,7 @@
                    <div  class="form-group advancedSearchForm">
                        <div class="form-group">
                         <label  class="label">
-                            نوع البرنامج
+                            {{'PROGRAMS_LIST.PROGRAM_TYPE' | translate}}
                         </label>
                         <!-- (change)='addProgTypeToList(item, $event)' [checked]="progTypeChecked(item)" -->
                  
@@ -119,35 +114,42 @@
                             <mat-checkbox   (change)='addProgTypeToList(item, $event)' [checked]="progTypeChecked(item)"
                               class="example-margin mx-3 " 
                            >
-                                {{item.nameAr}}  
+                           {{ translate.currentLang == langEnum.en ? item.nameEn :
+                            item.nameAr}}
                             </mat-checkbox>
                         </ng-container>
                         
                        </div>
                        <div class="form-group">
                         <label  class="label">
-                            أسم البرنامج
+                            {{'PROGRAMS_LIST.PROGRAM_NAME' | translate}}
+
+                            
                         </label>
                         <input type="text" class="form-control w-100" [(ngModel)]="programsbyAdvancedFilter.name">
                         
                        </div>
                        <div class="form-group">
                         <label  class="label">
-                            مدة البرنامج 
+                            {{'PROGRAMS_LIST.PROGRAM_DATE' | translate}}
+
+                             
                         </label>
                         <input type="text" class="form-control w-100" [(ngModel)]="programsbyAdvancedFilter.dura">
                         
                        </div>
                        <div class="form-group">
                         <label  class="label">
-                            عدد الطلاب 
+                            {{'PROGRAMS_LIST.STUDENT_NUMBER' | translate}}
+
                         </label>
                         <input type="text" class="form-control w-100"  [(ngModel)]="programsbyAdvancedFilter.stuNum">
                         
                        </div>
                        <div class="form-group">
                         <label  class="label">
-                            عدد المعلمين 
+                            {{'PROGRAMS_LIST.TEACHER_NUMBER' | translate}}
+
                         </label>
                         <input type="text" class="form-control w-100" [(ngModel)]="programsbyAdvancedFilter.techNum">
                         
@@ -155,15 +157,21 @@
 
                        <div class="form-group">
                         <label  class="label">
-                            الاختبارات
+                            {{'PROGRAMS_LIST.THE_EXAM' | translate}}
+
+                            
                         </label>
                         <mat-checkbox  
                         class="example-margin mx-2 " [(ngModel)]="programsbyAdvancedFilter.isTest">
-                        إختبار قبول 
+                        {{'PROGRAMS_LIST.JOINING_EXAM' | translate}}
+
+                        
                       </mat-checkbox>
                       <mat-checkbox  
                       class="example-margin mx-2 " [(ngModel)]="programsbyAdvancedFilter.isPeriodicExam">
-                      إختبار مرحلى 
+                      
+                      {{'PROGRAMS_LIST.STAGE_EXAM' | translate}}
+
                     </mat-checkbox>
                     
 

@@ -59,8 +59,8 @@
     "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE": "Please complete the missing information, add more than one answer and review duplicate data",
     "CHOOSEFILE": "Choose file to upload",
     "MANDATORY": "Mandatory",
-    "MY_PROGRAM":"My Program",
-    "FEELING":"Feeling"
+    "MY_PROGRAM": "My Program",
+    "FEELING": "Feeling"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
@@ -142,7 +142,18 @@
     "PROGRAMS": "Programs",
     "ALL": "All",
     "ADD_PROGRAM": "Add Program",
-    "ADVANCED_SEARCH": "Advanced Search"
+    "ADVANCED_SEARCH": "Advanced Search",
+    "DAY": "Day",
+    "STUDENT": "Student",
+    "TEACHER": "Teacher",
+    "JOINING_EXAM": "Joining Exam",
+    "PROGRAM_TYPE": "Program Type",
+    "PROGRAM_NAME": "Program Name",
+    "PROGRAM_DATE": "Program Duration",
+    "STUDENT_NUMBER": "Number of student",
+    "TEACHER_NUMBER": "Number of teacher ",
+    "THE_EXAM": "The Exams",
+    "STAGE_EXAM": "Stage Exam"
   },
   "VIEW_PROGRAMS_BASIC_INFO": {
     "PROGRAM_DATE": "Program Duration",
@@ -188,9 +199,9 @@
   },
   "PROGRAM_DAY_TASKS": {
     "TASKS": "Tasks",
-    "ADD_ITEM":"Add Item",
-    "DAILY_HOMEWORK":"Daily Homework ",
-    "DAY":"Day"
+    "ADD_ITEM": "Add Item",
+    "DAILY_HOMEWORK": "Daily Homework ",
+    "DAY": "Day"
   },
   "PROGRAM_DAY_TASK_LINKING": {
     "REQUIRED": "Required",
