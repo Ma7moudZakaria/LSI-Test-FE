@@ -142,7 +142,18 @@
     "PROGRAMS": "البرامج",
     "ALL": "الكل",
     "ADD_PROGRAM": "اضافه برنامج",
-    "ADVANCED_SEARCH": " بحث متقدم "
+    "ADVANCED_SEARCH": " بحث متقدم ",
+    "DAY": "يوم",
+    "STUDENT": "طالب",
+    "TEACHER": "معلم",
+    "JOINING_EXAM": "اختبار القبول",
+    "PROGRAM_TYPE": "نوع البرنامج",
+    "PROGRAM_NAME": "أسم البرنامج",
+    "PROGRAM_DATE": "مدة البرنامج",
+    "STUDENT_NUMBER": " عدد الطلاب",
+    "TEACHER_NUMBER": " عدد المعلمين",
+    "THE_EXAM": "الاختبتارات ",
+    "STAGE_EXAM": "إختبار مرحلى"
   },
   "VIEW_PROGRAMS_BASIC_INFO": {
     "PROGRAM_DATE": "مدة البرنامج",
@@ -172,9 +183,9 @@
   },
   "PROGRAM_DAY_TASKS": {
     "TASKS": "المهام",
-    "ADD_ITEM":"إضافة بند",
-    "DAILY_HOMEWORK":"الواجب اليومي",
-    "DAY":"يوم"
+    "ADD_ITEM": "إضافة بند",
+    "DAILY_HOMEWORK": "الواجب اليومي",
+    "DAY": "يوم"
   },
   "PROGRAM_DAYS": {
     "DAYS": "الأيام",
