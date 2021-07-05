@@ -622,7 +622,8 @@
     "NOTIFICATION_NAME_MAX_LENGTH": "يرجى ادخال اسم التنبية اقل من او يساوى 100  حرف",
     "QUESTION_AR_MAX_LENGHT": "يرجى ادخال السؤال عربي أقل من أو يساوى 300 حرفا",
     "QUESTION_EN_MAX_LENGHT": "يرجى ادخال السؤال إنجليزي أقل من أو يساوى 300 حرفا",
-    "ARABIC_FIELD": " هذا الحقل يجب أن يكون باللغة العربية"
+    "ARABIC_FIELD": " هذا الحقل يجب أن يكون باللغة العربية",
+    "ENGLISH_FIELD": " هذا الحقل يجب أن يكون باللغة الإنجليزية"
   },
   "PROGRAM_BASIC_INFO": {
     "PROG_NAME": "اسم البرنامج",
@@ -670,7 +671,7 @@
     "TO": "إلى"
   },
   "PROGRAM_DAY_TASK_DETIALS": {
-    "DEGREE": "الدرجات",
+    "DEGREE": "الدرجه",
     "SHOW_QUESTION_TO_STUDENT": "السؤال الذى يظهر لطالب",
     "THE_LISTENING": "الإستماع",
     "PAGES": "الصفحات"

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -13,6 +13,7 @@ import { AlertifyService } from 'src/app/core/services/alertify-services/alertif
 import { ProgramDayTasksService } from 'src/app/core/services/program-services/program-day-tasks.service';
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
+import { ProgramsTabsComponent } from '../programs-tabs.component';
 
 @Component({
   selector: 'app-basic-information',
@@ -24,6 +25,7 @@ export class BasicInformationComponent implements OnInit {
   @Output() refreshProgList = new EventEmitter();
   @Output() refreshProgDetails = new EventEmitter();
   @Input() progBasicInfoDetails:IProgramBasicInfoDetails | undefined;
+
   langEnum = LanguageEnum;
   basicInfoDetails:IProgramBasicInfoDetails | undefined;
   resMessage: BaseMessageModel = {};

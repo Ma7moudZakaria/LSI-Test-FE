@@ -117,10 +117,10 @@
             {{ 'GENERAL.REQUIRED' | translate }}
         </div>
         <div *ngIf="f.messageEn.errors.pattern">
-            {{ 'NOTIFICATIONS.ARABIC_FIELD' | translate }}
+            {{ 'NOTIFICATIONS.ENGLISH_FIELD' | translate }}
          </div>
          <div *ngIf="f.messageEn.errors?.maxlength ">
-          {{ 'NOTIFICATIONS.QUESTION_AR_MAX_LENGHT' | translate}}
+          {{ 'NOTIFICATIONS.QUESTION_EN_MAX_LENGHT' | translate}}
       </div>
     </div> 
     <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2 text-center">
