@@ -16,6 +16,7 @@ import { LookupService } from 'src/app/core/services/lookup-services/lookup.serv
 import { BaseLookupModel } from 'src/app/core/ng-model/base-lookup-model';
 import { IProgramType } from 'src/app/core/interfaces/programs-interfaces/iprogram-basic-info-model';
 import { IProgramBasicInfoDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 
 
 @Component({
@@ -26,8 +27,7 @@ import { IProgramBasicInfoDetails } from 'src/app/core/interfaces/programs-inter
 export class ProgramsListComponent implements OnInit {
   @Output() selectedProgram = new EventEmitter<IprogramsModel>();
   programsList: IprogramsModel[] = [];
-  progBasicInfoDetails: IProgramBasicInfoDetails | undefined;
-
+  // progBasicInfoDetails: IProgramBasicInfoDetails | undefined;
   programDetails = {} as IprogramsModel;
   programsbyAdvancedFilter: IProgramFilterAdvancedRequest = { skip: 0, take: 2147483647 };
   langEnum = LanguageEnum;
@@ -38,19 +38,17 @@ export class ProgramsListComponent implements OnInit {
   collectionOfLookup = {} as ILookupCollection;
   listOfLookup: string[] = ['PROG_TYPES'];
   programTypesList: IProgramType[] = [];
-  medelSearch: IProgramFilterAdvancedRequest | undefined;
-  list = [1, 2, 3]
   constructor(private scientifcMaterialService: ScientificMaterialService,
     private programService: ProgramService,
     public translate: TranslateService,
     private router: Router,
     private lookupService: LookupService,
+    private alert: AlertifyService,
 
   ) { }
 
   ngOnInit(): void {
     this.getLookupByKey();
-
     this.loadProgramsbyAdvancedFilter();
   }
 
@@ -61,12 +59,10 @@ export class ProgramsListComponent implements OnInit {
     this.advancedSearch = !this.advancedSearch
   }
 
-
   getLookupByKey() {
     this.lookupService.getLookupByKey(this.listOfLookup).subscribe(res => {
       if (res.isSuccess) {
         this.collectionOfLookup = res.data as ILookupCollection;
-
       }
       else {
         this.resMessage =
@@ -117,17 +113,21 @@ export class ProgramsListComponent implements OnInit {
     this.loadProgramsbyAdvancedFilter();
   }
 
-
   loadProgramsbyAdvancedFilter() {
-    this.programService.getProgramAdvancedFilter(this.programsbyAdvancedFilter || {}).subscribe(
-      (res: BaseResponseModel) => {
-        console.log("res.data", res.data)
+    this.programService.getProgramAdvancedFilter(this.programsbyAdvancedFilter || {}).subscribe(res => {
+      if (res.isSuccess) {
         this.programsList = res.data as IprogramsModel[];
-
-        // console.log("Programs List : ", this.programsList);
         this.getProgramIdToProgramDetails(this.programsList[0] || null);
-
-      }, error => {
+        // this.alert.success(res.message || '');
+      }
+      else {
+        this.resMessage = {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+    },
+      error => {
         this.resMessage = {
           message: error,
           type: BaseConstantModel.DANGER_TYPE
@@ -135,11 +135,10 @@ export class ProgramsListComponent implements OnInit {
       }
     );
   }
+
   resetSearch() {
     this.programTypesList = []
     this.programsbyAdvancedFilter = {}
-
-
   }
 
   // end advanced search
@@ -184,6 +183,5 @@ export class ProgramsListComponent implements OnInit {
   }
   clearDura() {
     this.programsbyAdvancedFilter.dura = 0;
-
   }
 }
