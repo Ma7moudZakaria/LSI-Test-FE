@@ -172,9 +172,9 @@
   },
   "PROGRAM_DAY_TASKS": {
     "TASKS": "المهام",
-    "ADD_ITEM":"إضافة بند",
-    "DAILY_HOMEWORK":"الواجب اليومي",
-    "DAY":"يوم"
+    "ADD_ITEM": "إضافة بند",
+    "DAILY_HOMEWORK": "الواجب اليومي",
+    "DAY": "يوم"
   },
   "PROGRAM_DAYS": {
     "DAYS": "الأيام",

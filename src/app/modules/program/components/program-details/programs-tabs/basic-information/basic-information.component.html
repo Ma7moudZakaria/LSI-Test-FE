@@ -9,7 +9,7 @@
                 <div class="d-flex">
                   <a (click)="open(content)"><i class="far fa-copy" ></i></a>  
                     <i *ngIf='!basicInfoDetails?.prgIsPubli' class="fas fa-play" (click)="publishProgram()"></i>
-                    <i *ngIf='basicInfoDetails?.prgIsPubli' class="fas fa-pause" (click)="publishProgram()"></i>
+                    <i *ngIf='basicInfoDetails?.prgIsPubli' class="fas fa-pause" (click)="confirmPuseDialog()"></i>
                     <img *ngIf='!basicInfoDetails?.prgPubliDate || !basicInfoDetails?.prgIsPubli' src="assets/images/question/edit-question.svg"  (click)="editBasicInfo()">
                     <img *ngIf='!basicInfoDetails?.prgPubliDate || !basicInfoDetails?.prgIsPubli' src="assets/images/feelings/trash.svg" (click)="confirmDialog()">
 

@@ -50,12 +50,14 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
 
     else {
       if (files.length > 0) {
+
         Array.from(files).forEach(element => {
           var fileUploadObj: IFileUpload = {
             containerNameIndex: 1, // need to be changed based on file type
             file: element
 
           }
+
           this.fileUploadModel?.push(fileUploadObj)
         });
         this.UploadFiles(this.fileUploadModel);
@@ -85,4 +87,6 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
       }
     )
   }
+
+
 }

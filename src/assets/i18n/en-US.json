@@ -191,9 +191,9 @@
   },
   "PROGRAM_DAY_TASKS": {
     "TASKS": "Tasks",
-    "ADD_ITEM":"Add Item",
-    "DAILY_HOMEWORK":"Daily Homework ",
-    "DAY":"Day"
+    "ADD_ITEM": "Add Item",
+    "DAILY_HOMEWORK": "Daily Homework ",
+    "DAY": "Day"
   },
   "PROGRAM_DAY_TASK_LINKING": {
     "REQUIRED": "Required",
