@@ -5,9 +5,7 @@
             <p class="custom-file__label">{{'GENERAL.CHOOSEFILE' |translate}}</p>
     </label>
         <input type="file" class="custom-file-input" id="importFile" 
-       (change)="onFileChange($any($event.target).files)" 
-
-       accept="application/pdf,image/*" >
+       (change)="onFileChange($any($event.target).files)" >
             
     </div>
     <div class="row mx-0">
