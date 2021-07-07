@@ -305,7 +305,7 @@
             </div>
             <mat-checkbox   *ngFor="let item of collectionOfLookup.RATING;let i=index" [checked]='progProgRatingChecked(item)'
             (change)='addProgRatingToList(item, $event)'
-            class="example-margin " [ngClass]="{'ml-1 mr-1':i==0 ,'ml-5 mr-5': i==1, 'ml-3 mr-3': i==2}" >
+            class="example-margin " [ngClass]="{'ml-1 mr-1':i==0 ,'ml-2 mr-2': i==1}" >
             {{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}
             </mat-checkbox>
        </div>

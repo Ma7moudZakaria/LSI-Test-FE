@@ -978,3 +978,20 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+// model style in EN and AR
+.modal-header ,.modal-body ,.modal-footer{
+  &:lang(ar){
+      direction: rtl;
+      text-align: right;
+  }
+  &:lang(en){
+      direction: ltr;
+      text-align: left;
+  }
+
+}
+.size_img_model
+{
+  width: 465px;
+  height: 400px;
+}

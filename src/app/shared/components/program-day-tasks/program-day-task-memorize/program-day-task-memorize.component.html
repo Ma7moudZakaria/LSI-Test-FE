@@ -28,13 +28,43 @@
     
     <div class="row mx-0">
         <ng-container  *ngFor="let item of memorizeDetailsModel?.bookAttatchments;let i=index">
-            <div class="col-4 cardRecourd"   >
+            <div class="col-4 cardRecourd" (click)="openVerticallyCentered(content)">
                 <img src="assets/images/days/book.svg">
-                <p class="ellipsis mb-0"  matTooltip="{{item.fileName}}">{{item.fileName}}</p>
                 <img class="trash" src="assets/images/feelings/trash.svg" (click)="DeleteAttachment(i,item.id)">
             </div>
+            <ng-template #content let-modal>
+                <div class="modal-header">
+                  <h4 class="modal-title">{{item.fileName}}</h4>
+                  <!-- <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button> -->
+                </div>
+                <div class="modal-body">
+                    <img  [src]="item.url" class="size_img_model">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+                </div>
+              </ng-template>
         </ng-container>
     </div>
+  
+     
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="form-group">
         <div class="row">
             <div class="col-6 mb-3">

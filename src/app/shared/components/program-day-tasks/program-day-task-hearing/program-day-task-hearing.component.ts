@@ -1,3 +1,4 @@
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BaseLookupModel } from 'src/app/core/ng-model/base-lookup-model';
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { IAttachment } from 'src/app/core/interfaces/attachments-interfaces/iattachment';
@@ -26,6 +27,7 @@ export class ProgramDayTaskHearingComponent implements OnInit {
     public translate: TranslateService,
     private attachmentService: AttachmentsService,
     private alertify: AlertifyService,
+    private modalService: NgbModal
 
   ) { }
 
@@ -40,7 +42,11 @@ export class ProgramDayTaskHearingComponent implements OnInit {
     this.hearingTaskDetailsModel?.hearingAttachments?.splice(index, 1);
   }
 
-  listExt = ["MP3", "4MP", "FLP", "PEK"]
+  closeResult: string | undefined;
+  openVerticallyCentered(content: any) {
+    this.modalService.open(content, { centered: true });
+  }
+  listExt = ["MP3", "MP4", "FLP", "PEK", "m4a"]
 
   onFileChange(files: FileList) {
     if (files.length > 0) {

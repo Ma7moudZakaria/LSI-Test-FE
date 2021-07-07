@@ -12,12 +12,24 @@
     </div>
     <div class="row mx-0">
         <ng-container  *ngFor="let item of reviewDetailsModel?.bookAttatchments;let i=index" >
-            <div class="col-4 cardRecourd" >
+            <div class="col-4 cardRecourd" (click)="openVerticallyCentered(content)">
                 <img src="assets/images/days/book.svg">
                 <p class="ellipsis mb-0 "  matTooltip="{{item.fileName}}">{{item.fileName}}</p>
-                <!-- <i class="fas fa-play-circle"></i> -->
                 <img class="trash" src="assets/images/feelings/trash.svg"  (click)="DeleteAttachment(i,item.id)">
             </div>
+           
+            <ng-template #content let-modal>
+                <div class="modal-header">
+                  <h4 class="modal-title">{{item.fileName}}</h4>
+                
+                </div>
+                <div class="modal-body">
+                    <img  [src]="item.url" class="size_img_model">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+                </div>
+              </ng-template>
         </ng-container>
     </div>
     <div class="form-group">

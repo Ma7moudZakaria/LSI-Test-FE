@@ -7,7 +7,7 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { AttachmentsService } from 'src/app/core/services/attachments-services/attachments.service';
-
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-program-day-task-memorize',
   templateUrl: './program-day-task-memorize.component.html',
@@ -22,11 +22,13 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
   @Input() memorizeDetailsModel: IProgramDayTaskMemorize = {};
   @Input() isView: boolean = false;
 
+
   constructor
     (
       private attachmentService: AttachmentsService,
       private alertify: AlertifyService,
-      public translate: TranslateService
+      public translate: TranslateService,
+      private modalService: NgbModal
     ) { }
 
 
@@ -35,6 +37,11 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
   }
   ngOnChanges(changes: any) {
     this.fileList = this.memorizeDetailsModel?.bookAttatchments ? this.memorizeDetailsModel?.bookAttatchments : [];
+  }
+  closeResult: string | undefined;
+
+  openVerticallyCentered(content: any) {
+    this.modalService.open(content, { centered: true });
   }
 
   DeleteAttachment(index: number, id: string) {

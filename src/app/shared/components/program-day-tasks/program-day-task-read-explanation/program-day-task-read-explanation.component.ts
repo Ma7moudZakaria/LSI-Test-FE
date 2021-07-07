@@ -36,9 +36,7 @@ export class ProgramDayTaskReadExplanationComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  // openVerticallyCentered(content: any) {
-  //   this.modalService.open(content, { centered: true });
-  // }
+
 
   ngOnChanges(changes: any) {
     this.fileList = this.readExplanationDetailsModel?.bookAttatchments ? this.readExplanationDetailsModel?.bookAttatchments : [];
@@ -48,6 +46,11 @@ export class ProgramDayTaskReadExplanationComponent implements OnInit {
     this.readExplanationDetailsModel?.bookAttatchments?.splice(index, 1);
   }
 
+  closeResult: string | undefined;
+
+  openVerticallyCentered(content: any) {
+    this.modalService.open(content, { centered: true });
+  }
 
   listExt = ["jpg", "png", "jpeg", "gif", "bmp", "tif", "tiff", "pdf"]
 

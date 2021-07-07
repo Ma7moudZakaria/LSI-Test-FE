@@ -1,3 +1,4 @@
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -39,7 +40,7 @@ export class ProgramDayTaskReviewComponent implements OnInit {
     private attachmentService: AttachmentsService,
     private fb: FormBuilder,
     private alertify: AlertifyService,
-
+    private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -51,6 +52,11 @@ export class ProgramDayTaskReviewComponent implements OnInit {
 
   DeleteAttachment(index: number, id: string) {
     this.reviewDetailsModel?.bookAttatchments?.splice(index, 1);
+  }
+  closeResult: string | undefined;
+
+  openVerticallyCentered(content: any) {
+    this.modalService.open(content, { centered: true });
   }
 
   listExt = ["jpg", "png", "jpeg", "gif", "bmp", "tif", "tiff", "pdf"]
