@@ -106,6 +106,7 @@ export class ProgramsListComponent implements OnInit {
       isTest: this.programsbyAdvancedFilter.isTest,
       stuNum: this.programsbyAdvancedFilter.stuNum,
       techNum: this.programsbyAdvancedFilter.techNum,
+      isPeriodicExam : this.programsbyAdvancedFilter.isPeriodicExam,
       skip: 0,
       take: 2147483647
     }
