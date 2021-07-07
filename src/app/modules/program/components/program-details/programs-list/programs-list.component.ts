@@ -107,6 +107,8 @@ export class ProgramsListComponent implements OnInit {
       stuNum: this.programsbyAdvancedFilter.stuNum,
       techNum: this.programsbyAdvancedFilter.techNum,
       isPeriodicExam : this.programsbyAdvancedFilter.isPeriodicExam,
+      studentsCount : this.programsbyAdvancedFilter.studentsCount,
+      teachersCount : this.programsbyAdvancedFilter.teachersCount,
       skip: 0,
       take: 2147483647
     }

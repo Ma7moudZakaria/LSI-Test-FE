@@ -11,7 +11,9 @@ export interface IProgramFilterAdvancedRequest {
   take?: number;
   arabName?: string;
   engName?: string;
-  isPeriodicExam?: boolean
+  isPeriodicExam?: boolean;
+  teachersCount?: number;
+  studentsCount?: number;
 }
 
 
