@@ -2,7 +2,7 @@
 <div class="day-recitation">
    
     
-     <div class="form-group">
+     <div class="form-group"  *ngIf='recitationDetailsModel.prgRecitType'>
         <div class="row">
             <div class="col-12">
                 <div>
@@ -31,12 +31,17 @@
             </div>
         </div>
     </div>
+    <div class="d-flex">
+    <label  class="no-data" *ngIf='!recitationDetailsModel.prgRecitType'>
+        {{"GENERAL.NO_DATA"|translate}} 
+    </label>
     </div>
+</div>
 </ng-container>
     <ng-container *ngIf="isView">
         <!-- <p class="mb-2 name"> الحفظ</p> -->
     
-             <div class="d-flex mb-3">       
+             <div class="d-flex mb-3"  *ngIf='recitationDetailsModel.prgRecitType'>       
     
                 <mat-radio-group aria-label="Select an option"  class="example-radio-group" 
                 [(ngModel)]="recitationDetailsModel.prgRecitType" disabled>
@@ -55,7 +60,11 @@
                 </div>
     
              </div>
-    
+             <div class="d-flex">
+                <label  class="no-data" *ngIf='!recitationDetailsModel.prgRecitType'>
+                    {{"GENERAL.NO_DATA"|translate}} 
+                </label>
+                </div>
                   
             
     </ng-container>
