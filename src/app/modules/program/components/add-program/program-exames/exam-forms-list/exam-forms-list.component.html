@@ -30,7 +30,7 @@
     [class.active]="selectedIndex === i" 
     (click)="loadExams(EX.usrId,EX.arUsrName,EX.enUsrName);selectedIndex=i">
           <p class="ellipsis mb-0 question-categories" >{{translate.currentLang===langEnum.en?EX.enUsrName:EX.arUsrName}}</p>
-          <a (click)="deleteFromExamFormsAddedToProgramList(EX)" > <img src="assets/images/feelings/close.svg"></a>
+          <a (click)="deleteFromExamFormsAddedToProgramList(EX)" > <i class="fas fa-times"></i></a>
     </a>
     </div>
  
