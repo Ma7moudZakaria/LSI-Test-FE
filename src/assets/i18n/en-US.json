@@ -636,7 +636,8 @@
     "NOTIFICATION_NAME_MAX_LENGTH": "Notification Name sould be less than or equal 100 charcter",
     "QUESTION_AR_MAX_LENGHT": "Question Arabic Must be less than or equal 300 character",
     "QUESTION_EN_MAX_LENGHT": "Question English Must be less than or equal 300 character",
-    "ARABIC_FIELD": "This field must be in Arabic"
+    "ARABIC_FIELD": "This field must be in Arabic",
+    "ENGLISH_FIELD": " This field must be in English"
   },
   "PROGRAM_BASIC_INFO": {
     "PROG_NAME": "Program Name",
