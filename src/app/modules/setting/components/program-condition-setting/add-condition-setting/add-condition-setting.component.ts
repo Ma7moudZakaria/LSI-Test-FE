@@ -161,10 +161,14 @@ export class AddConditionSettingComponent implements OnInit {
         this.alert.success(res.message || '');
       }
       else {
-        this.resMessage = {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+        // this.resMessage = {
+        //   message: res.message,
+        //   type: BaseConstantModel.DANGER_TYPE
+        // }
+       // this.closeForm();
+       if(this.conditionModel.answerType===SettingAnswerTypeEnum.Text||this.conditionModel.answerType===SettingAnswerTypeEnum.Toggel)
+       {this.conditionModel.answerList=[]}
+        this.alert.error(res.message || '');
       }
     }, error => {
       this.resMessage = {
