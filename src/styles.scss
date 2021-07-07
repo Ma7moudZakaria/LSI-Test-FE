@@ -624,8 +624,10 @@ app-tel-input >
     }
     .alertify-notifier .ajs-message.ajs-error::before
     {
-      content: url(/assets/images/feelings/close.sv);
+      content: url(/src/assets/images/check-circle.svg);
       margin: 0 0.5rem;
+       padding: 0.5rem;
+    
     }
     
 .alertify-notifier.ajs-right {
@@ -658,7 +660,8 @@ app-tel-input >
 }
 
 .alertify-notifier .ajs-message.ajs-error {
-  
+  background: #fff;
+    border: 3px solid #8E25205C;
   padding: 1rem !important;
   border-radius: 5px;
 }

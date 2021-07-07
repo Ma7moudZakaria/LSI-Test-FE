@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 import { IProgramBasicInfoDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { ThrowStmt } from '@angular/compiler';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 @Component({
   selector: 'app-program-basic-info',
   templateUrl: './program-basic-info.component.html',
@@ -39,6 +40,7 @@ export class ProgramBasicInfoComponent implements OnInit {
   progDutyDaysFreeDaysSelection:boolean = true;
   isSardEnabled:boolean = false;
   isSardTimesEnabled:boolean = false;
+  langEnum = LanguageEnum;
 
   programTypesList: IProgramType[] = [];
   programRatingList:IProgRatings[] = [];
