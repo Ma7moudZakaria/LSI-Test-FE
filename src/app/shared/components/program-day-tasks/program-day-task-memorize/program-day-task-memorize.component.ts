@@ -25,13 +25,11 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
     (
       private attachmentService: AttachmentsService,
       private alertify: AlertifyService,
-
-
   ) { }
 
 
-
   ngOnInit(): void {
+
   }
   ngOnChanges(changes: any) {
     this.fileList = this.memorizeDetailsModel?.bookAttatchments ? this.memorizeDetailsModel?.bookAttatchments : [];
@@ -50,14 +48,17 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
 
     else {
       if (files.length > 0) {
+
         Array.from(files).forEach(element => {
           var fileUploadObj: IFileUpload = {
             containerNameIndex: 1, // need to be changed based on file type
             file: element
 
           }
+
           this.fileUploadModel?.push(fileUploadObj)
         });
+        // this.checkFileExt(this.fileUploadModel)
         this.UploadFiles(this.fileUploadModel);
       }
     }
@@ -85,4 +86,16 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
       }
     )
   }
+
+  // checkFileExt(files: IFileUpload[]) {
+  //   let fileExtension = files.forEach((file) => { file.name?.split('.').pop(); });//"pdf"
+  //   let listExt = ["png", "pdf"]
+  //   let res = this.fileList?.some(i => i.fileName.split('.').pop() === fileExtension)
+
+  //   console.log("file EXT", fileExtension);
+  // }
+
+
+
+
 }
