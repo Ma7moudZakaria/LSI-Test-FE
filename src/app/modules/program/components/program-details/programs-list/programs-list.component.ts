@@ -1,3 +1,4 @@
+/* tslint:disable */
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
@@ -17,6 +18,7 @@ import { BaseLookupModel } from 'src/app/core/ng-model/base-lookup-model';
 import { IProgramType } from 'src/app/core/interfaces/programs-interfaces/iprogram-basic-info-model';
 import { IProgramBasicInfoDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
+import {parseJson} from "@angular/cli/utilities/json-file";
 
 
 @Component({
@@ -86,6 +88,7 @@ export class ProgramsListComponent implements OnInit {
       }
     }
     console.log("programTypesList", this.programTypesList);
+
   }
 
   progTypeChecked(item: BaseLookupModel) {
@@ -98,11 +101,13 @@ export class ProgramsListComponent implements OnInit {
   }
 
   submitSearch() {
+    // this.programTypesList.map(value => value.progTypeId);
     this.programsbyAdvancedFilter =
     {
-      typeList: this.programTypesList,
+      programTypesFilter: this.programTypesList.map(value => value.progTypeId).join() ,
+      programTypes : this.programTypesList,
       name: this.programsbyAdvancedFilter.name,
-      dura: this.programsbyAdvancedFilter.dura,
+      duration: this.programsbyAdvancedFilter.duration,
       isTest: this.programsbyAdvancedFilter.isTest,
       stuNum: this.programsbyAdvancedFilter.stuNum,
       techNum: this.programsbyAdvancedFilter.techNum,
@@ -179,12 +184,12 @@ export class ProgramsListComponent implements OnInit {
 
   }
   clearTechNum() {
-    this.programsbyAdvancedFilter.techNum = 0;
+    this.programsbyAdvancedFilter.teachersCount = 0;
   }
   clearStuNum() {
-    this.programsbyAdvancedFilter.stuNum = 0;
+    this.programsbyAdvancedFilter.studentsCount = 0;
   }
   clearDura() {
-    this.programsbyAdvancedFilter.dura = 0;
+    this.programsbyAdvancedFilter.duration = 0;
   }
 }
