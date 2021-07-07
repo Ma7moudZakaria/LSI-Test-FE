@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { IAttachment } from 'src/app/core/interfaces/attachments-interfaces/iattachment';
 import { IFileUpload } from 'src/app/core/interfaces/attachments-interfaces/ifile-upload';
 import { IProgramDayTaskMemorize } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-memorize';
@@ -25,13 +26,12 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
     (
       private attachmentService: AttachmentsService,
       private alertify: AlertifyService,
-
-
-  ) { }
-
+      public translate: TranslateService
+    ) { }
 
 
   ngOnInit(): void {
+
   }
   ngOnChanges(changes: any) {
     this.fileList = this.memorizeDetailsModel?.bookAttatchments ? this.memorizeDetailsModel?.bookAttatchments : [];
@@ -40,26 +40,32 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
   DeleteAttachment(index: number, id: string) {
     this.memorizeDetailsModel?.bookAttatchments?.splice(index, 1);
   }
+  listExt = ["jpg", "png", "jpeg", "gif", "bmp", "tif", "tiff", "pdf"]
 
   onFileChange(files: FileList) {
+    if (files.length > 0) {
 
-    if (files[0].size > 3145728) {
-      this.alertify.error('your file size more than 3m');
-
-    }
-
-    else {
-      if (files.length > 0) {
-        Array.from(files).forEach(element => {
-          var fileUploadObj: IFileUpload = {
-            containerNameIndex: 1, // need to be changed based on file type
-            file: element
-
-          }
-          this.fileUploadModel?.push(fileUploadObj)
-        });
-        this.UploadFiles(this.fileUploadModel);
+      if (files[0].size >= 3145728) {
+        this.alertify.error(this.translate.instant('GENERAL.FILE_SIZE'));
+        return;
       }
+
+      if (!this.attachmentService.checkFileExtention(files[0], this.listExt)) {
+        this.alertify.error(this.translate.instant('GENERAL.EXTENTION_FILE'));
+
+        return;
+      }
+
+      Array.from(files).forEach(element => {
+        var fileUploadObj: IFileUpload = {
+          containerNameIndex: 1, // need to be changed based on file type
+          file: element
+        }
+        this.fileUploadModel?.push(fileUploadObj)
+      });
+      this.UploadFiles(this.fileUploadModel);
+    } else {
+      return;
     }
   }
 
@@ -74,6 +80,7 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
         })
         this.memorizeDetailsModel.bookAttatchments = this.fileList;
         this.fileUploadModel = [];
+        this.alertify.success(res.message || '');
       }, error => {
         console.log(error);
         this.fileUploadModel = [];
@@ -85,4 +92,7 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
       }
     )
   }
+
+
+
 }

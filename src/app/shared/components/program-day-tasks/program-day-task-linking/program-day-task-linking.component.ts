@@ -11,6 +11,7 @@ import { ProgramDayTasksService } from 'src/app/core/services/program-services/p
 import { IProgramLastFiveWorkToLinkAuto } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-last-five-work-to-link-auto';
 import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-program-day-task-linking',
   templateUrl: './program-day-task-linking.component.html',
@@ -29,6 +30,8 @@ export class ProgramDayTaskLinkingComponent implements OnInit {
     private programDayTasksService: ProgramDayTasksService,
     private attachmentService: AttachmentsService,
     private alertify: AlertifyService,
+    public translate: TranslateService,
+
 
 
   ) { }
@@ -51,29 +54,39 @@ export class ProgramDayTaskLinkingComponent implements OnInit {
     this.linkingDetailsModel?.bookAttatchments?.splice(index, 1);
   }
 
-  onFileChange(files: FileList) {
 
+
+
+  listExt = ["jpg", "png", "jpeg", "gif", "bmp", "tif", "tiff", "pdf"]
+
+  onFileChange(files: FileList) {
     if (files.length > 0) {
 
-      if (files[0].size > 3145728) {
-        this.alertify.error('your file size more than 3m');
-
+      if (files[0].size >= 3145728) {
+        this.alertify.error(this.translate.instant('GENERAL.FILE_SIZE'));
+        return;
+      }
+      if (!this.attachmentService.checkFileExtention(files[0], this.listExt)) {
+        this.alertify.error(this.translate.instant('GENERAL.EXTENTION_FILE'));
+        return;
       }
 
-      else {
-        Array.from(files).forEach(element => {
-          var fileUploadObj: IFileUpload = {
-            containerNameIndex: 1, // need to be changed based on file type
-            file: element
-
-          }
-          this.fileUploadModel?.push(fileUploadObj)
-        });
-        this.UploadFiles(this.fileUploadModel);
-
-      }
+      Array.from(files).forEach(element => {
+        var fileUploadObj: IFileUpload = {
+          containerNameIndex: 1, // need to be changed based on file type
+          file: element
+        }
+        this.fileUploadModel?.push(fileUploadObj)
+      });
+      this.UploadFiles(this.fileUploadModel);
+    } else {
+      return;
     }
   }
+
+
+
+
 
   UploadFiles(files: any) {
     if (files.length === 0) {

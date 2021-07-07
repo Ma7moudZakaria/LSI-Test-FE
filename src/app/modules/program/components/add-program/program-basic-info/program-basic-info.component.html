@@ -29,7 +29,7 @@
                     <select class="form-control "  formControlName="shareWith" >
                         <!-- <option [ngValue]="null"  disabled selected>{{ 'NOTIFICATIONS.SELECT_NOTIFICATION_TYPE' | translate }}</option> -->
                         <ng-container *ngFor="let item of collectionOfLookup.SHARED_TYPES">
-                        <option [value]="item .id" >{{item.nameAr}}</option>
+                        <option [value]="item .id" >{{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}</option>
                         
                         </ng-container>
                       </select>
@@ -53,7 +53,7 @@
                 <mat-checkbox  (change)='addProgTypeToList(item, $event)' [checked]="progTypeChecked(item)"
                   class="example-margin " [ngClass]="{'ml-1 mr-1':i==0 ,'ml-5 mr-5': i==1, 'ml-3 mr-3': i==2}"
                   [disabled]='progBasicInfoDetails !== undefined'>
-                    {{item.nameAr}}  
+                  {{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}
                 </mat-checkbox>
             </ng-container>
        </div>
@@ -234,7 +234,7 @@
           formControlName="dutiesDayType" (change)='dutyDaysChange($event)'>
             <ng-container *ngFor="let item of collectionOfLookup.DUTY_TYPES">
               <mat-radio-button value="{{item.id}}" class="example-radio-button ml-2 mr-2"  
-              [disabled]='progBasicInfoDetails !== undefined'>{{item.nameAr}}</mat-radio-button>
+              [disabled]='progBasicInfoDetails !== undefined'>{{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}</mat-radio-button>
             </ng-container>
             </mat-radio-group>
               <input type="number" class="form-control w-50" formControlName="dayCount" placeholder="{{ 'PROGRAM_BASIC_INFO.WRITE_DAY_COUNT' | translate }} " 
@@ -254,7 +254,7 @@
                 <ng-container *ngFor="let item of collectionOfLookup.DAYS" >
                   <mat-checkbox   (change)='addProgWeeklyDayToList(item, $event)' [checked]="progWeeklyDaysChecked(item)"
                   class="example-margin ml-1 mr-1" [disabled]='progBasicInfoDetails !== undefined' >
-                  {{item.nameAr}}  
+                  {{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}
                   </mat-checkbox>
                   </ng-container>
               </div>
@@ -306,7 +306,7 @@
             <mat-checkbox   *ngFor="let item of collectionOfLookup.RATING;let i=index" [checked]='progProgRatingChecked(item)'
             (change)='addProgRatingToList(item, $event)'
             class="example-margin " [ngClass]="{'ml-1 mr-1':i==0 ,'ml-5 mr-5': i==1, 'ml-3 mr-3': i==2}" >
-              {{item.nameAr}}  
+            {{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}
             </mat-checkbox>
        </div>
       </div>
@@ -353,7 +353,7 @@
                (change)='isSardTimesChange($event)' formControlName="recitType">
             <ng-container *ngFor="let item of collectionOfLookup.SARD_TYPES ;let i=index">
                   
-                <mat-radio-button value="{{item.id}}" class="example-radio-button ml-2 mr-2">{{item.nameAr}}</mat-radio-button>
+                <mat-radio-button value="{{item.id}}" class="example-radio-button ml-2 mr-2">{{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}</mat-radio-button>
                   <!-- <mat-radio-button value="2" class="example-radio-button ml-1 mr-1">فترة محددة</mat-radio-button> -->
                 </ng-container>
                 </mat-radio-group>

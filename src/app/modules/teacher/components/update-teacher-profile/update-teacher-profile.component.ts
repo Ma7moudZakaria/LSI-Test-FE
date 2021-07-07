@@ -161,6 +161,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.emitHeaderTitle();
     this.languageService.currentLanguageEvent.subscribe(res => {
       this.emitHeaderTitle();
+      this.getLookupByKey();
       this.buildForm();
       this.PopulateForm();
     });
