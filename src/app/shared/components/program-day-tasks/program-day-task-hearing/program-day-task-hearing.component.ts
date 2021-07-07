@@ -40,31 +40,34 @@ export class ProgramDayTaskHearingComponent implements OnInit {
     this.hearingTaskDetailsModel?.hearingAttachments?.splice(index, 1);
   }
 
+  listExt = ["MP3", "4MP", "FLP", "PEK"]
+
   onFileChange(files: FileList) {
-
     if (files.length > 0) {
-      if (files[0].size > 5242880) {
-        this.alertify.error('your file size more than 3m');
 
+      if (files[0].size >= 5242880) {
+        this.alertify.error(this.translate.instant('GENERAL.FILE_SIZE'));
+        return;
+      }
+      if (!this.attachmentService.checkFileExtention(files[0], this.listExt)) {
+        this.alertify.error(this.translate.instant('GENERAL.EXTENTION_FILE'));
+        return;
       }
 
-      else {
-
-        if (files.length > 0) {
-          Array.from(files).forEach(element => {
-            var fileUploadObj: IFileUpload = {
-              containerNameIndex: 1, // need to be changed based on file type
-              file: element
-
-            }
-            this.fileUploadModel?.push(fileUploadObj)
-          });
-          this.UploadFiles(this.fileUploadModel);
+      Array.from(files).forEach(element => {
+        var fileUploadObj: IFileUpload = {
+          containerNameIndex: 1, // need to be changed based on file type
+          file: element
         }
-
-      }
+        this.fileUploadModel?.push(fileUploadObj)
+      });
+      this.UploadFiles(this.fileUploadModel);
+    } else {
+      return;
     }
   }
+
+
   UploadFiles(files: any) {
     if (files.length === 0) {
       return;

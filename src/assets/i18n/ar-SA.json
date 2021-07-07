@@ -63,7 +63,9 @@
     "TEXT_INPUT": "ادخل القيم ",
     "DUPLICATED_ANSWER": "هذا النص مكرر",
     "MY_PROGRAM": "برامجى",
-    "FEELING": "المشاعر"
+    "FEELING": "المشاعر",
+    "FILE_SIZE": "حجم الملف أكبر من 3 ميجا",
+    "EXTENTION_FILE": "امتداد الفايل غير مسوح بيه "
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",

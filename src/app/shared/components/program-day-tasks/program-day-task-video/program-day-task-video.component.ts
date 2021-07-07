@@ -45,32 +45,36 @@ export class ProgramDayTaskVideoComponent implements OnInit {
   DeleteAttachment(index: number, id: string) {
     this.videoDetailsModel?.videoAttatchments?.splice(index, 1);
   }
+
+
+
+  listExt = ["mp4", "x-m4v", "PSV", "SFD", "WEBM"]
+
   onFileChange(files: FileList) {
-
-
     if (files.length > 0) {
 
-      if (files[0].size > 3145728) {
-        this.alertify.error('your file size more than 3m');
-
+      if (files[0].size >= 3145728) {
+        this.alertify.error(this.translate.instant('GENERAL.FILE_SIZE'));
+        return;
+      }
+      if (!this.attachmentService.checkFileExtention(files[0], this.listExt)) {
+        this.alertify.error(this.translate.instant('GENERAL.EXTENTION_FILE'));
+        return;
       }
 
-      else {
-        Array.from(files).forEach(element => {
-          var fileUploadObj: IFileUpload = {
-            containerNameIndex: 1, // need to be changed based on file type
-            file: element
-
-          }
-          this.fileUploadModel?.push(fileUploadObj)
-        });
-        this.UploadFiles(this.fileUploadModel);
-      }
+      Array.from(files).forEach(element => {
+        var fileUploadObj: IFileUpload = {
+          containerNameIndex: 1, // need to be changed based on file type
+          file: element
+        }
+        this.fileUploadModel?.push(fileUploadObj)
+      });
+      this.UploadFiles(this.fileUploadModel);
+    } else {
+      return;
     }
-
-
-
   }
+
 
   UploadFiles(files: any) {
     if (files.length === 0) {

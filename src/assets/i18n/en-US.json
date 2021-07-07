@@ -63,7 +63,9 @@
     "TEXT_INPUT": "You shoud input value",
     "DUPLICATED_ANSWER": "Duplicate Answer",
     "MY_PROGRAM": "My Program",
-    "FEELING": "Feeling"
+    "FEELING": "Feeling",
+    "FILE_SIZE": "your file size more than 3m",
+    "EXTENTION_FILE": "your extention file not accepted"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
