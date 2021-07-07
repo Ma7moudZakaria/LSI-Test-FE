@@ -722,5 +722,11 @@
     "MEMORIZE_READ": "حفظ وقراءة معا",
     "TOGGEL": "نعم/لا",
     "TEXT": "نصى"
+  },
+  "PROGRAM_EXAM_FORM": {
+    "PROGRAM_ACCEPTANCE_EXAM": " اختبار قبول البرنامج",
+    "EXAM_FORMS": "نماذج الإختبار"
+
+
   }
 }

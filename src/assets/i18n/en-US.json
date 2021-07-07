@@ -726,5 +726,9 @@
     "MEMORIZE_READ": "Memorize And Read",
     "TOGGEL": "Yes/No",
     "TEXT": "Text"
+  },
+  "PROGRAM_EXAM_FORM": {
+    "PROGRAM_ACCEPTANCE_EXAM": "Program acceptance test",
+    "EXAM_FORMS": "Exam forms"
   }
 }

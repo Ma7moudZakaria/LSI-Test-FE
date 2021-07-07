@@ -11,6 +11,7 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { ExamFormService } from 'src/app/core/services/exam-form-services/exam-form.service';
+import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
 import { ProgramDetailsComponent } from '../../../program-details/program-details.component';
 
@@ -78,7 +79,7 @@ export class ExamFormsListComponent implements OnInit {
         this.searchExamFormsList= this.examFormsList.map(item => ({
           usrId:item.id || '',
           arUsrName :item.arabExamFormNam || '',
-          enUsrName:item.arabExamFormNam || '',
+          enUsrName:item.engExamFormNam || '',
           createdOn:'',
           usrAvatarUrl:'',
           usrEmail:''
@@ -167,5 +168,6 @@ export class ExamFormsListComponent implements OnInit {
           })
 
   }
+
 
 }
