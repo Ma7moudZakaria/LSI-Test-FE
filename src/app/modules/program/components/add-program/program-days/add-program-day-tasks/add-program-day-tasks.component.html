@@ -8,9 +8,8 @@
     <div class="form-group">
         <div class="row">
             <div class="col-12" *ngFor="let item of collectionOfLookup.TASKS ;let i=index">
-                
                 <mat-checkbox  class="example-margin " (change)='onTaskChange(item, $event)'  value="{{item.id}}"
-                class="example-margin " >
+                class="example-margin " [disabled]="programDutyDay?.order==1 &&item.huffazId===5">
                  
                   {{this.translate.currentLang===langEnum.en ? item.nameEn : item.nameAr}}
                 </mat-checkbox>
