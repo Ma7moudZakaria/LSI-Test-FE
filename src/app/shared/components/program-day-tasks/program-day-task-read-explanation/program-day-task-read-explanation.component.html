@@ -35,7 +35,12 @@
         
         </div>
         <div class="modal-body">
-            <img  [src]="item.url" class="size_img_model">
+            <a  [href]="item.url">
+                <span>{{item.fileName}}</span>
+                <ng-container  *ngIf="item.fileName.split('.').pop() !=='pdf' ">
+                <img [src]="item.url"  class="size_img_model">
+            </ng-container>
+            </a>
             
         </div>
         <div class="modal-footer">

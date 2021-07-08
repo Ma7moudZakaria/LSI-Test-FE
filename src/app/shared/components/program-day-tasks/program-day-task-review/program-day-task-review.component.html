@@ -11,7 +11,7 @@
     <span class="hint_validation">{{'PROGRAM_DAY_TASK_DETIALS.VALIDATION_IMG_PDF'|translate}}</span>
             
     </div>
-    <div class="row mx-0">
+    <div class="row mx-0  mb-3">
         <ng-container  *ngFor="let item of reviewDetailsModel?.bookAttatchments;let i=index" >
             <div class="col-4 cardRecourd" (click)="openVerticallyCentered(content)">
                 <img src="assets/images/days/book.svg">
@@ -25,7 +25,12 @@
                 
                 </div>
                 <div class="modal-body">
-                    <img  [src]="item.url" class="size_img_model">
+                    <a  [href]="item.url">
+                        <span>{{item.fileName}}</span>
+                        <ng-container  *ngIf="item.fileName.split('.').pop() !=='pdf' ">
+                        <img [src]="item.url"  class="size_img_model">
+                    </ng-container>
+                    </a>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>

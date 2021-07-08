@@ -8,6 +8,10 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { AttachmentsService } from 'src/app/core/services/attachments-services/attachments.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+declare const Buffer: new (arg0: string, arg1: string) => any
+
+
 @Component({
   selector: 'app-program-day-task-memorize',
   templateUrl: './program-day-task-memorize.component.html',
@@ -21,7 +25,7 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
   attachmentIds: string[] = [];
   @Input() memorizeDetailsModel: IProgramDayTaskMemorize = {};
   @Input() isView: boolean = false;
-
+  pdfSrc: any;
 
   constructor
     (
@@ -86,6 +90,11 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
           this.fileList?.push(elm as IAttachment);
         })
         this.memorizeDetailsModel.bookAttatchments = this.fileList;
+        // this.fileList?.forEach(element => {
+        //   var buff = new Buffer(element.content, 'base64')
+        //   const file = new Blob([buff])
+        //   this.pdfSrc = file
+        // });
         this.fileUploadModel = [];
         this.alertify.success(res.message || '');
       }, error => {
@@ -99,6 +108,7 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
       }
     )
   }
+
 
 
 
