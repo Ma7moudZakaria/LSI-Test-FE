@@ -43,19 +43,19 @@
             </div>
             </ng-container>
 
-            <ng-container *ngIf=' programsbyAdvancedFilter.stuNum'>
+            <ng-container *ngIf=' programsbyAdvancedFilter.studentsCount'>
                 <div class="col-6" >
                     <div class="card_advanced_search">
-                    <p class="mb-0">{{programsbyAdvancedFilter.stuNum}}  {{'PROGRAMS_LIST.STUDENT' | translate}}  </p>
+                    <p class="mb-0">{{programsbyAdvancedFilter.studentsCount}}  {{'PROGRAMS_LIST.STUDENT' | translate}}  </p>
                     <img src="assets/images/feelings/close.svg" (click)="clearStuNum()">
                 </div>
             </div>
             </ng-container>
 
-            <ng-container *ngIf=' programsbyAdvancedFilter.techNum'>
+            <ng-container *ngIf=' programsbyAdvancedFilter.teachersCount'>
                 <div class="col-6" >
                     <div class="card_advanced_search">
-                    <p class="mb-0">{{programsbyAdvancedFilter.techNum}} {{'PROGRAMS_LIST.TEACHER' | translate}}  </p>
+                    <p class="mb-0">{{programsbyAdvancedFilter.teachersCount}} {{'PROGRAMS_LIST.TEACHER' | translate}}  </p>
                     <img src="assets/images/feelings/close.svg" (click)="clearTechNum()">
                 </div>
             </div>

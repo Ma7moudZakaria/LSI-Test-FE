@@ -9,13 +9,16 @@ import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { ScientificMaterialService } from 'src/app/core/services/scientific-material-services/scientific-material.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
-import { IProgramFilterAdvancedRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-requests';
+import {
+  IProgramFilterAdvancedRequest,
+  IProgramType
+} from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-requests';
 import { ProgramDetailsComponent } from '../program-details.component';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 
 import { BaseLookupModel } from 'src/app/core/ng-model/base-lookup-model';
-import { IProgramType } from 'src/app/core/interfaces/programs-interfaces/iprogram-basic-info-model';
+// import { IProgramType } from 'src/app/core/interfaces/programs-interfaces/iprogram-basic-info-model';
 import { IProgramBasicInfoDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import {parseJson} from "@angular/cli/utilities/json-file";
@@ -147,7 +150,7 @@ export class ProgramsListComponent implements OnInit {
   resetSearch() {
     this.programTypesList = []
     this.programsbyAdvancedFilter = {}
-    // this.loadProgramsbyAdvancedFilter();
+    this.loadProgramsbyAdvancedFilter();
   }
 
   // end advanced search
@@ -173,24 +176,30 @@ export class ProgramsListComponent implements OnInit {
     const ind = this.programTypesList?.indexOf(it);
     if (ind > -1) {
       this.programTypesList?.splice(ind, 1);
+      this.programsbyAdvancedFilter.programTypesFilter = this.programTypesList.map(value => value.progTypeId).join() ;
+      this.loadProgramsbyAdvancedFilter();
     }
+
   }
 
   clearPeriodicExamFilter() {
-    this.programsbyAdvancedFilter.isPeriodicExam = false;
+    this.programsbyAdvancedFilter.isPeriodicExam = undefined;
     this.loadProgramsbyAdvancedFilter();
   }
   clearTestFilter() {
-    this.programsbyAdvancedFilter.isTest = false
-
+    this.programsbyAdvancedFilter.isTest = undefined;
+    this.loadProgramsbyAdvancedFilter();
   }
   clearTechNum() {
-    this.programsbyAdvancedFilter.teachersCount = 0;
+    this.programsbyAdvancedFilter.teachersCount = undefined;
+    this.loadProgramsbyAdvancedFilter();
   }
   clearStuNum() {
-    this.programsbyAdvancedFilter.studentsCount = 0;
+    this.programsbyAdvancedFilter.studentsCount = undefined;
+    this.loadProgramsbyAdvancedFilter();
   }
   clearDura() {
-    this.programsbyAdvancedFilter.duration = 0;
+    this.programsbyAdvancedFilter.duration = undefined;
+    this.loadProgramsbyAdvancedFilter();
   }
 }
