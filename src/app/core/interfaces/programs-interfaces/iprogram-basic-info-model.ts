@@ -23,7 +23,7 @@ export interface IProgramBasicInfoModel {
 }
 
 export interface IProgramType{
-    progTypeId?:String;
+    progTypeId?:string;
 }
 
 export interface IProgWeeklyDutyDays{

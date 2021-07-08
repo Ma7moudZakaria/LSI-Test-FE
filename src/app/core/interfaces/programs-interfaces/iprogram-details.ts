@@ -42,6 +42,8 @@ export interface IProgramBasicInfoDetails{
     prgWeekDutiDas?:IProgramStudentWeeklyDutiesDaysDetails[];
     prgRecitTms?:IProgramRecitationTimesDetails[];
     prgTps?:IProgramTypesDetails[];
+    prgcountTeachers?: number;
+    prgcountStudents?: number;
 
 }
 

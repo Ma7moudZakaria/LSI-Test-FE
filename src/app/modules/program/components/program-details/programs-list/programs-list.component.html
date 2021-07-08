@@ -10,9 +10,9 @@
 
         <ng-container *ngIf="advancedSearch && programsbyAdvancedFilter">
           <div class=" row ">
-            <ng-container *ngIf='programsbyAdvancedFilter.typeList && programsbyAdvancedFilter.typeList.length > 0'>
+            <ng-container *ngIf='programsbyAdvancedFilter.programTypes && programsbyAdvancedFilter.programTypes.length > 0'>
 
-                <ng-container *ngFor="let item of programsbyAdvancedFilter.typeList ;let i=index">
+                <ng-container *ngFor="let item of programsbyAdvancedFilter.programTypes ;let i=index">
                     <div class="col-6" >
                     <div class="card_advanced_search">
                             <p class="mb-0">{{selectTypes(item) }}</p>
@@ -31,10 +31,10 @@
                 </div>
             </div>
             </ng-container>
-            <ng-container *ngIf='programsbyAdvancedFilter.dura'>
+            <ng-container *ngIf='programsbyAdvancedFilter.duration'>
                 <div class="col-6" >
                     <div class="card_advanced_search">
-                    <p class="mb-0">{{programsbyAdvancedFilter.dura}}
+                    <p class="mb-0">{{programsbyAdvancedFilter.duration}}
                     {{'PROGRAMS_LIST.DAY' | translate}}
 
                     </p>
@@ -135,7 +135,7 @@
 
 
                         </label>
-                        <input type="text" class="form-control w-100" [(ngModel)]="programsbyAdvancedFilter.dura">
+                        <input type="text" class="form-control w-100" [(ngModel)]="programsbyAdvancedFilter.duration">
 
                        </div>
                        <div class="form-group">
@@ -143,7 +143,7 @@
                             {{'PROGRAMS_LIST.STUDENT_NUMBER' | translate}}
 
                         </label>
-                        <input type="text" class="form-control w-100"  [(ngModel)]="programsbyAdvancedFilter.stuNum">
+                        <input type="text" class="form-control w-100"  [(ngModel)]="programsbyAdvancedFilter.studentsCount">
 
                        </div>
                        <div class="form-group">
@@ -151,7 +151,7 @@
                             {{'PROGRAMS_LIST.TEACHER_NUMBER' | translate}}
 
                         </label>
-                        <input type="text" class="form-control w-100" [(ngModel)]="programsbyAdvancedFilter.techNum">
+                        <input type="text" class="form-control w-100" [(ngModel)]="programsbyAdvancedFilter.teachersCount">
 
                        </div>
 
