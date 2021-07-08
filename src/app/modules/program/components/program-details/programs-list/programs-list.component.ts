@@ -140,6 +140,7 @@ export class ProgramsListComponent implements OnInit {
   resetSearch() {
     this.programTypesList = []
     this.programsbyAdvancedFilter = {}
+    // this.loadProgramsbyAdvancedFilter();
   }
 
   // end advanced search
@@ -169,8 +170,8 @@ export class ProgramsListComponent implements OnInit {
   }
 
   clearPeriodicExamFilter() {
-    this.programsbyAdvancedFilter.isPeriodicExam = false
-
+    this.programsbyAdvancedFilter.isPeriodicExam = false;
+    this.loadProgramsbyAdvancedFilter();
   }
   clearTestFilter() {
     this.programsbyAdvancedFilter.isTest = false
