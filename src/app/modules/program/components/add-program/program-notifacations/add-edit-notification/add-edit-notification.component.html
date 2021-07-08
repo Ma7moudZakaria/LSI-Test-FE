@@ -68,9 +68,9 @@
                 <div *ngIf="f.notifyName.errors?.required">
                     {{ 'GENERAL.REQUIRED' | translate }}
                 </div>
-                <div *ngIf="f.notifyName.errors.pattern">
+                <!-- <div *ngIf="f.notifyName.errors.pattern">
                     {{ 'NOTIFICATIONS.NOTIFICATION_NAME_PATTERN' | translate }}
-                </div>
+                </div> -->
                 <div *ngIf="f.notifyName.errors?.maxlength">
                     {{ 'NOTIFICATIONS.NOTIFICATION_NAME_MAX_LENGTH' | translate }}
                 </div>
@@ -94,9 +94,9 @@
         <div *ngIf="f.messageAr.errors?.required">
             {{ 'GENERAL.REQUIRED' | translate }}
         </div>
-        <div *ngIf="f.messageAr.errors.pattern">
+        <!-- <div *ngIf="f.messageAr.errors.pattern">
             {{ 'NOTIFICATIONS.ARABIC_FIELD' | translate }}
-         </div>
+         </div> -->
          <div *ngIf="f.messageAr.errors?.maxlength ">
           {{ 'NOTIFICATIONS.QUESTION_AR_MAX_LENGHT' | translate}}
       </div>
@@ -112,9 +112,9 @@
         <div *ngIf="f.messageEn.errors?.required">
             {{ 'GENERAL.REQUIRED' | translate }}
         </div>
-        <div *ngIf="f.messageEn.errors.pattern">
+        <!-- <div *ngIf="f.messageEn.errors.pattern">
             {{ 'NOTIFICATIONS.ENGLISH_FIELD' | translate }}
-         </div>
+         </div> -->
          <div *ngIf="f.messageEn.errors?.maxlength ">
           {{ 'NOTIFICATIONS.QUESTION_EN_MAX_LENGHT' | translate}}
       </div>

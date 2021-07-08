@@ -31,6 +31,7 @@ export class BasicInformationComponent implements OnInit {
   closeResult = '';
   isShow = false;
   programName: string | undefined;
+  prgPubliDate:string | undefined;
 
   constructor(
     public translate: TranslateService,
@@ -43,6 +44,12 @@ export class BasicInformationComponent implements OnInit {
 
   ngOnInit(): void {
     this.basicInfoDetails = this.progBasicInfoDetails;
+
+    let publishDate = new Date(this.basicInfoDetails?.prgPubliDate || '');
+    if (!isNaN(publishDate.getTime())) {
+      this.prgPubliDate = new Date(publishDate.setDate(publishDate.getDate() + 1)).toISOString().slice(0, 10);
+    }
+
     console.log("progBasicInfoDetails ===========>", this.progBasicInfoDetails);
   }
 
