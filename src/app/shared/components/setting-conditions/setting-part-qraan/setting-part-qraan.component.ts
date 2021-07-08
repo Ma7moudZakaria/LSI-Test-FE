@@ -26,7 +26,7 @@ export class SettingPartQraanComponent implements OnInit {
   resultMessage: BaseMessageModel = {};
   updateProgramConditionDetailsModel: IUpdateProgramConditionDetailsModel = {};
   result: string = '';
-
+  resValidation: Number | undefined;
   constructor(
     public languageService: LanguageService,
     public translate: TranslateService,
@@ -50,23 +50,34 @@ export class SettingPartQraanComponent implements OnInit {
     this.updateProgramConditionDetailsModel.id = this.partQuranModel.id;
     this.updateProgramConditionDetailsModel.progCondDetails = JSON.stringify(this.partQuranModel);
     this.updateProgramConditionDetailsModel.isRequired = this.partQuranModel.isRequired;
-    this.programConditionsService.updateProgramConditionDetails(this.updateProgramConditionDetailsModel).subscribe(res => {
-      let response = <BaseResponseModel>res;
-      if (response.isSuccess) {
-        this.alertify.success(res.message || '');
+    // check validaton on part quran 
+    this.resValidation = this.partQuranModel.value ? this.partQuranModel.value : 0;
+    if (this.resValidation < 1 || this.resValidation > 30) {
+      this.resultMessage =
+      {
+        message: this.translate.instant('PROGRAM_DAY_TASK_DETIALS.VALIDATION_VALUE'),
+        type: BaseConstantModel.DANGER_TYPE
       }
-      else {
-        this.alertify.error(res.message || '');
-      }
-    },
-      error => {
-        this.resultMessage = {
-          message: error,
-          type: BaseConstantModel.DANGER_TYPE
+    }
+    else {
+      this.programConditionsService.updateProgramConditionDetails(this.updateProgramConditionDetailsModel).subscribe(res => {
+        let response = <BaseResponseModel>res;
+        if (response.isSuccess) {
+          this.alertify.success(res.message || '');
         }
-      }
+        else {
+          this.alertify.error(res.message || '');
+        }
+      },
+        error => {
+          this.resultMessage = {
+            message: error,
+            type: BaseConstantModel.DANGER_TYPE
+          }
+        }
 
-    );
+      );
+    }
   }
 
   confirmDialog() {

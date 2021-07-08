@@ -73,5 +73,17 @@
       margin: 1rem;
   
      }
+     .custom-file-input{
+         height: 0;
+         width: 0;
+     }
+     .hint_validation{
+         color: #C1C7D0;
+         font-size: 12px;
+         font-family: Almarai-Regular;
+         display: flex;
+         justify-content: flex-end;
+         margin:0.2rem  0.5rem;
+     }
   
 }

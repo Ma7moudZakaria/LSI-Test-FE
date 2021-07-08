@@ -691,7 +691,11 @@
     "DEGREE": "Degree",
     "SHOW_QUESTION_TO_STUDENT": "Show question to student",
     "THE_LISTENING": "The listening",
-    "PAGES": "Pages"
+    "PAGES": "Pages",
+    "VALIDATION_AUDIO": "mp3, maximum 5 M",
+    "VALIDATION_VIDEO": "mp4,video, maximum 5 M",
+    "VALIDATION_IMG_PDF": "pdf,png &jpg, maximum 5 M",
+    "VALIDATION_VALUE": " value can't be less than  1 and more than 30"
   },
   "FEELINGS": {
     "TEACHERS_FEELINGS": "Teachers feelings",
