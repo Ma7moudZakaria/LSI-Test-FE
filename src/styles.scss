@@ -569,6 +569,21 @@ align-items: center
   margin-right: 0.23rem;
 
 }
+.arrange
+{
+        border-style: solid;
+        border-width: 0;
+        // content: url('../../../../assets/images/feelings/arrange.svg') !important;
+        display: inline-block;
+        padding: 3px;
+        transform: rotate(0);
+        vertical-align: middle;
+        margin-left: 0.23rem;
+        margin-right: 0.23rem;
+        width: 12px;
+        height: 20px;
+    }
+    
 .questionBank.student
 .mat-content::before{
 

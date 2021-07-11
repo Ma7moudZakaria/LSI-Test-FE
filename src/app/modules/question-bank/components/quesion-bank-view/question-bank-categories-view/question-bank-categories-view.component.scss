@@ -155,7 +155,9 @@
     }
 }
 
-
+.display_hidden{
+    display: none;
+}
 .selectedFirst{
     background-color:$user-color !important;
     color: #FFFFFF !important;
