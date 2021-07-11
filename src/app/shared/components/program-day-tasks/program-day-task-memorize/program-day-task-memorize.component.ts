@@ -8,9 +8,7 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { AttachmentsService } from 'src/app/core/services/attachments-services/attachments.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
-declare const Buffer: new (arg0: string, arg1: string) => any
-
+declare const Buffer:any;
 
 @Component({
   selector: 'app-program-day-task-memorize',
@@ -25,7 +23,9 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
   attachmentIds: string[] = [];
   @Input() memorizeDetailsModel: IProgramDayTaskMemorize = {};
   @Input() isView: boolean = false;
-  pdfSrc: any;
+
+  attachmentId : string[] = [];
+  pdfSrc : any;
 
   constructor
     (
@@ -72,6 +72,7 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
           containerNameIndex: 1, // need to be changed based on file type
           file: element
         }
+
         this.fileUploadModel?.push(fileUploadObj)
       });
       this.UploadFiles(this.fileUploadModel);
@@ -84,17 +85,24 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
     if (files.length === 0) {
       return;
     }
+
+    
+    
+
     this.attachmentService.upload(files).subscribe(
       (res: any) => {
         Array.from(res.data).forEach((elm: any) => {
           this.fileList?.push(elm as IAttachment);
+
+
+          this.pdfSrc = elm.url;
         })
-        this.memorizeDetailsModel.bookAttatchments = this.fileList;
-        // this.fileList?.forEach(element => {
-        //   var buff = new Buffer(element.content, 'base64')
-        //   const file = new Blob([buff])
-        //   this.pdfSrc = file
-        // });
+        this.memorizeDetailsModel.bookAttatchments = this.fileList;       
+
+        console.log("pdfSrc =============> ", this.pdfSrc)
+
+        // this.pdfSrc = "D:/ArabDT_Projects/DoubtLess/PDF/LastUpdate_New_IFRS 9 - Trade receivables TTC.pdf";
+        
         this.fileUploadModel = [];
         this.alertify.success(res.message || '');
       }, error => {
@@ -108,6 +116,7 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
       }
     )
   }
+
 
 
 
