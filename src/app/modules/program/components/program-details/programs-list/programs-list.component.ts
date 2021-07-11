@@ -9,13 +9,13 @@ import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { ScientificMaterialService } from 'src/app/core/services/scientific-material-services/scientific-material.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
-import { IProgramFilterAdvancedRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-requests';
+import { IProgramFilterAdvancedRequest, IProgramType } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-requests';
 import { ProgramDetailsComponent } from '../program-details.component';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 
 import { BaseLookupModel } from 'src/app/core/ng-model/base-lookup-model';
-import { IProgramType } from 'src/app/core/interfaces/programs-interfaces/iprogram-basic-info-model';
+// import { IProgramType } from 'src/app/core/interfaces/programs-interfaces/iprogram-basic-info-model';
 import { IProgramBasicInfoDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import {parseJson} from "@angular/cli/utilities/json-file";
