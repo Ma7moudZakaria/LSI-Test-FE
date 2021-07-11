@@ -174,7 +174,9 @@
     "COPY_PROGRAM": "نسخ البرنامج",
     "PROGRAM_NAME": "إسم البرنامج",
     "SAVE": "حفظ",
-    "DAY": "يوم"
+    "DAY": "يوم",
+    "PUBLISH_DATE": "تاريخ النشر",
+    "START_DATE":"تاريخ البدء"
   },
   "PROGRAM_TABS": {
     "BASIC_INFO": "البيانات الاساسية",

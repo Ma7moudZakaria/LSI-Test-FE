@@ -13,9 +13,9 @@
               <div *ngIf="f.progName.errors?.required">
                 {{ 'GENERAL.REQUIRED' | translate }}
               </div>
-              <div *ngIf="f.progName.errors.pattern">
+              <!-- <div *ngIf="f.progName.errors.pattern">
                 {{ 'PROGRAM_BASIC_INFO.PROG_PATTERN' | translate }}
-              </div>
+              </div> -->
               <div *ngIf="f.progName.errors?.maxlength">
                 {{ 'PROGRAM_BASIC_INFO.PROG_NAME_MAX_LENGTH' | translate }}
               </div>
@@ -112,9 +112,9 @@
           <div *ngIf="f.ideaProg.errors?.required">
            {{ 'GENERAL.REQUIRED' | translate }}
           </div>
-          <div *ngIf="f.ideaProg.errors.pattern">
+          <!-- <div *ngIf="f.ideaProg.errors.pattern">
             {{ 'PROGRAM_BASIC_INFO.PROG_IDEA_PATTERN' | translate }}
-          </div>
+          </div> -->
           <div *ngIf="f.ideaProg.errors?.maxlength">
             {{ 'PROGRAM_BASIC_INFO.PROG_IDEA_MAX_LENGTH' | translate }}
           </div>
@@ -134,9 +134,9 @@
           <div *ngIf="f.goalProg.errors?.required">
            {{ 'GENERAL.REQUIRED' | translate }}
           </div>
-          <div *ngIf="f.goalProg.errors.pattern">
+          <!-- <div *ngIf="f.goalProg.errors.pattern">
             {{ 'PROGRAM_BASIC_INFO.PROG_GOAL_PATTERN' | translate }}
-          </div>
+          </div> -->
           <div *ngIf="f.goalProg.errors?.maxlength">
             {{ 'PROGRAM_BASIC_INFO.PROG_GOAL_MAX_LENGTH' | translate }}
           </div>
@@ -152,9 +152,9 @@
 
         <div *ngIf="f.visionProg.errors && (f.visionProg.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
           
-          <div *ngIf="f.visionProg.errors.pattern">
+          <!-- <div *ngIf="f.visionProg.errors.pattern">
             {{ 'PROGRAM_BASIC_INFO.PROG_VISION_PATTERN' | translate }}
-          </div>
+          </div> -->
           <div *ngIf="f.visionProg.errors?.maxlength">
             {{ 'PROGRAM_BASIC_INFO.PROG_VISION_MAX_LENGTH' | translate }}
           </div>
@@ -173,9 +173,9 @@
           <div *ngIf="f.pathProg.errors?.required">
            {{ 'GENERAL.REQUIRED' | translate }}
           </div>
-          <div *ngIf="f.pathProg.errors.pattern">
+          <!-- <div *ngIf="f.pathProg.errors.pattern">
             {{ 'PROGRAM_BASIC_INFO.PATH_PROG_PATTERN' | translate }}
-          </div>
+          </div> -->
           <div *ngIf="f.pathProg.errors?.maxlength">
             {{ 'PROGRAM_BASIC_INFO.PATH_PROG_MAX_LENGTH' | translate }}
           </div>
@@ -194,9 +194,9 @@
           <div *ngIf="f.advantageProg.errors?.required">
            {{ 'GENERAL.REQUIRED' | translate }}
           </div>
-          <div *ngIf="f.advantageProg.errors.pattern">
+          <!-- <div *ngIf="f.advantageProg.errors.pattern">
             {{ 'PROGRAM_BASIC_INFO.ADVANTAGE_PROG_PATTERN' | translate }}
-          </div>
+          </div> -->
           <div *ngIf="f.advantageProg.errors?.maxlength">
             {{ 'PROGRAM_BASIC_INFO.ADVANTAGE_PROG_MAX_LENGTH' | translate }}
           </div>
@@ -215,9 +215,9 @@
           <div *ngIf="f.textPledge.errors?.required">
            {{ 'GENERAL.REQUIRED' | translate }}
           </div>
-          <div *ngIf="f.textPledge.errors.pattern">
+          <!-- <div *ngIf="f.textPledge.errors.pattern">
             {{ 'PROGRAM_BASIC_INFO.TEXT_PLEDGE_PATTERN' | translate }}
-          </div>
+          </div> -->
           <div *ngIf="f.textPledge.errors?.maxlength">
             {{ 'PROGRAM_BASIC_INFO.TEXT_PLEDGE_MAX_LENGTH' | translate }}
           </div>

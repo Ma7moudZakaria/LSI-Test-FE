@@ -173,8 +173,8 @@ export class AddScientificMaterialComponent implements OnInit {
 
     this.currentForm = this.fb.group(
       {
-        matrialTitleAr: ['', [Validators.required, Validators.maxLength(50), Validators.pattern(BaseConstantModel.Scientific_Material_Arabic_WITHOUT_EMOJI)]],
-        matrialTitleEn: ['', [Validators.required, Validators.maxLength(50), Validators.pattern(BaseConstantModel.Scientific_Material_English_WITHOUT_EMOJI)]],
+        matrialTitleAr: ['', [Validators.required, Validators.maxLength(50)]],
+        matrialTitleEn: ['', [Validators.required, Validators.maxLength(50)]],
         matrialCategory: ['', Validators.required],
         fileLink: [''],
         active: [false],

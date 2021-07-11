@@ -177,7 +177,9 @@
     "COPY_PROGRAM": "Copy Program",
     "PROGRAM_NAME": "Program Name",
     "SAVE": "Save",
-    "DAY": "Day"
+    "DAY": "Day",
+    "PUBLISH_DATE": "Publish Date",
+    "START_DATE":"Start Date"
   },
   "PROGRAM_TABS": {
     "BASIC_INFO": "Basic Info",
