@@ -1,4 +1,4 @@
-<form class="form-group material-form" [formGroup]="currentForm" (submit)="Submit()">   
+<form class="form-group material-form" [formGroup]="currentForm" (submit)="Submit()">
     <div class="form-group">
         <label for="programs"> {{'SCIENTIFIC_MATERIAL.PROGRAMS' | translate}}</label>
         <div class="input-group">
@@ -16,7 +16,7 @@
             </div>
             <span class="plus-btn position-absolute">
                 <button class="btn  btn-light btn-add" type="button"
-                    (click)="addProgram()">                    
+                    (click)="addProgram()">
                     <img  src="assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
                 </button>
             </span>
@@ -35,7 +35,7 @@
         </div> -->
 
         <div class="badges mt-3 ">
-            <div *ngFor="let p of selectedProgramsList;let i=index" 
+            <div *ngFor="let p of selectedProgramsList;let i=index"
                 class="badge badge-info p-2 " >
             <div class="d-flex justify-content-between badge badge-info ">
                 <!-- <p class="mb-0 ml-2 mr-2"> {{translate.currentLang === langEnum.en ? p.engName :p.arabName}}</p> -->
@@ -44,15 +44,15 @@
             </div>
             </div>
         </div>
-        
+
         <div *ngIf="selectedProgramsList?.length == 0 && (f.programMatrial.touched || isSubmit)"
             class="alert alert-danger mt-2 mb-2">
             <div *ngIf="selectedProgramsList.length == 0">
                 {{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}
             </div>
         </div>
-    
-        
+
+
     </div>
 
 
@@ -113,18 +113,18 @@
     </div>
     <div class="form-group">
         <label for="matrialTitleAr">{{'SCIENTIFIC_MATERIAL.FILE_URL' | translate}}</label>
-        <input type="text" class="form-control" formControlName="fileLink" id="fileLink">      
+        <input type="text" class="form-control" formControlName="fileLink" id="fileLink">
     </div>
+  <div (dragover)="onDragOver($event)" (drop)="onDropSuccess($event)">
     <label class="custom-file custom-file__text" for="importFile">{{'SCIENTIFIC_MATERIAL.CHOOSEFILE' |
         translate}}</label>
     <input type="file" class="custom-file-input" multiple id="importFile"
         (change)="onFileChange($any($event.target).files)" hidden>
-
-
+  </div>
         <div class="row">
             <div class="col-lg-8 col-md-8">
                 <div class="badges mt-3 ">
-                    <div *ngFor="let item of fileList;let i=index" 
+                    <div *ngFor="let item of fileList;let i=index"
                         class="badge badge-info p-2 " >
                     <div class="d-flex justify-content-between">
                         <p class="ellipsis mb-0" matTooltip="{{item.fileName}}"> {{item.fileName}}</p>
@@ -132,7 +132,7 @@
                     </div>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
     <!-- <div class="row">
         <div class="col-lg-8 col-md-8">
