@@ -147,6 +147,7 @@ export class ProgramsListComponent implements OnInit {
   resetSearch() {
     this.programTypesList = []
     this.programsbyAdvancedFilter = {}
+    this.loadProgramsbyAdvancedFilter();
   }
 
   // end advanced search
@@ -172,24 +173,30 @@ export class ProgramsListComponent implements OnInit {
     const ind = this.programTypesList?.indexOf(it);
     if (ind > -1) {
       this.programTypesList?.splice(ind, 1);
+      this.programsbyAdvancedFilter.programTypesFilter = this.programTypesList.map(value => value.progTypeId).join() ;
+      this.loadProgramsbyAdvancedFilter();
     }
+
   }
 
   clearPeriodicExamFilter() {
-    this.programsbyAdvancedFilter.isPeriodicExam = false
-
+    this.programsbyAdvancedFilter.isPeriodicExam = undefined;
+    this.loadProgramsbyAdvancedFilter();
   }
   clearTestFilter() {
-    this.programsbyAdvancedFilter.isTest = false
-
+    this.programsbyAdvancedFilter.isTest = undefined;
+    this.loadProgramsbyAdvancedFilter();
   }
   clearTechNum() {
-    this.programsbyAdvancedFilter.teachersCount = 0;
+    this.programsbyAdvancedFilter.teachersCount = undefined;
+    this.loadProgramsbyAdvancedFilter();
   }
   clearStuNum() {
-    this.programsbyAdvancedFilter.studentsCount = 0;
+    this.programsbyAdvancedFilter.studentsCount = undefined;
+    this.loadProgramsbyAdvancedFilter();
   }
   clearDura() {
-    this.programsbyAdvancedFilter.duration = 0;
+    this.programsbyAdvancedFilter.duration = undefined;
+    this.loadProgramsbyAdvancedFilter();
   }
 }
