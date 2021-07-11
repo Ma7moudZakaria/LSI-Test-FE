@@ -12,6 +12,7 @@ import { IProgramLastFiveWorkToLinkAuto } from 'src/app/core/interfaces/programs
 import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { TranslateService } from '@ngx-translate/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-program-day-task-linking',
   templateUrl: './program-day-task-linking.component.html',
@@ -19,20 +20,22 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class ProgramDayTaskLinkingComponent implements OnInit {
   @Input() isView: boolean = false;
-
-  resMessage: BaseMessageModel = {};
   @Input() linkingDetailsModel: IProgramDayTaskLinking = {};
   TaskLinkingTypeEnum = ProgramDayTaskLinkingType;
   lastFiveHomeWorkAutolst: IAttachment[] = [];
   programLastFiveWorkToLinkAuto: IProgramLastFiveWorkToLinkAuto = {};
+  fileUploadModel: IFileUpload[] = [];
+  fileList?: IAttachment[] = [];
+  attachmentIds: string[] = [];
+  resMessage: BaseMessageModel = {};
+  attatchmentsAuto?: IAttachment[] = [];
 
   constructor(
     private programDayTasksService: ProgramDayTasksService,
     private attachmentService: AttachmentsService,
     private alertify: AlertifyService,
     public translate: TranslateService,
-
-
+    private modalService: NgbModal
 
   ) { }
 
@@ -44,18 +47,13 @@ export class ProgramDayTaskLinkingComponent implements OnInit {
     this.fileList = this.linkingDetailsModel?.bookAttatchments ? this.linkingDetailsModel?.bookAttatchments : [];
   }
 
-  fileUploadModel: IFileUpload[] = [];
-  fileList?: IAttachment[] = [];
-  attachmentIds: string[] = [];
-
-  attatchmentsAuto?: IAttachment[] = [];
-
   DeleteAttachment(index: number, id: string) {
     this.linkingDetailsModel?.bookAttatchments?.splice(index, 1);
   }
-
-
-
+  closeResult: string | undefined;
+  openVerticallyCentered(content: any) {
+    this.modalService.open(content, { centered: true });
+  }
 
   listExt = ["jpg", "png", "jpeg", "gif", "bmp", "tif", "tiff", "pdf"]
 

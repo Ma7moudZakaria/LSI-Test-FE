@@ -6,7 +6,7 @@
         </div>
         <div class="body">
             <!-- <div class="details">عدد الأجزاء</div> -->
-            <input type="text" class="form-control w-100" [(ngModel)]="partQuranModel.value" >
+            <input type="number" class="form-control w-100" [(ngModel)]="partQuranModel.value" >
         </div>
         <div  class="row  buttons-center mt-3">
             <label class="switch">
@@ -17,6 +17,11 @@
                 {{ "GENERAL.SAVE" | translate }}
             </button>
     </div>
+
+    <div *ngIf="resultMessage.message" class="alert alert-{{ resultMessage.type }} my-4 py-2">
+        {{ resultMessage.message }}
+    </div>
+
     </div>
 </ng-container>
 

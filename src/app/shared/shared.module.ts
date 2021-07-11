@@ -61,6 +61,7 @@ import { SettingPartQraanComponent } from './components/setting-conditions/setti
 import { CustomConditionsComponent } from './components/setting-conditions/custom-conditions/custom-conditions.component';
 import { SettingQualificationsComponent } from './components/setting-conditions/setting-qualifications/setting-qualifications.component';
 import { SettingAcceptComponent } from './components/setting-conditions/setting-accept/setting-accept.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
     SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,
@@ -94,7 +95,7 @@ import { SettingAcceptComponent } from './components/setting-conditions/setting-
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,
     MatIconModule, FormsModule, MatCheckboxModule, MatRadioModule, MatGridListModule,
-    NgbModule, MatAutocompleteModule, NgbRatingModule, MatTooltipModule
+    NgbModule, MatAutocompleteModule, NgbRatingModule, MatTooltipModule, PdfViewerModule
   ],
   exports: [
     MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule, Ng2TelInputModule,
@@ -110,7 +111,7 @@ import { SettingAcceptComponent } from './components/setting-conditions/setting-
     ProgramDayTaskRecitationStudentsComponent, ProgramDayTaskTestPhasedComponent,
     ProgramDayTaskTasmeaComponent, CardFeelingsComponent, MatTooltipModule,
     SettingAgeComponent, SettingDegreeLastProgramComponent, SettingLastProgramComponent, SettingQualificationsComponent,
-    SettingMaxmumSubscribeComponent, SettingPartQraanComponent,CustomConditionsComponent,SettingAcceptComponent
+    SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent, SettingAcceptComponent
 
   ]
 })

@@ -1,3 +1,4 @@
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -32,6 +33,7 @@ export class ProgramDayTaskVideoComponent implements OnInit {
     public translate: TranslateService,
     private attachmentService: AttachmentsService,
     private alertify: AlertifyService,
+    private modalService: NgbModal
 
   ) { }
 
@@ -46,7 +48,10 @@ export class ProgramDayTaskVideoComponent implements OnInit {
     this.videoDetailsModel?.videoAttatchments?.splice(index, 1);
   }
 
-
+  closeResult: string | undefined;
+  openVerticallyCentered(content: any) {
+    this.modalService.open(content, { centered: true });
+  }
 
   listExt = ["mp4", "x-m4v", "PSV", "SFD", "WEBM"]
 

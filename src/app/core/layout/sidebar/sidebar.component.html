@@ -64,13 +64,14 @@
                          <span class="container__navigation__title">{{'SIDENAVBAR.SETTINGS' | translate}}</span>
                     </a>
                 </li>
-                <li >
-                    <a [routerLink]="['/feelings']"  >
-                        <img src="../../../../assets/images/sidebar/reviews-icon.png">
 
+                <li class="nav-item" routerLinkActive="active">
+                    <a  [routerLink]="['/feelings']" routerLinkActive="active" class="nav-link">
+                        <img src="../../../../assets/images/sidebar/reviews-icon.png">
                         <span class="container__navigation__title">{{'SIDENAVBAR.MY_MESSAGES' | translate}}</span>
                     </a>
                 </li>
+                
                 <li class="nav-item" routerLinkActive="active"> 
                     <a [routerLink]="['/question-bank/question-bank-view']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/questions-bank-icon.png">

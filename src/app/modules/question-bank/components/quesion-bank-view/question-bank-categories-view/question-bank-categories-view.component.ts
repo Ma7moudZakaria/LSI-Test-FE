@@ -17,6 +17,7 @@ import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { QuestionBankCategoryService } from 'src/app/core/services/question-bank-services/question-bank-category.service';
 import { RoleManagementService } from 'src/app/core/services/role-management/role-management.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 
 @Component({
   selector: 'app-question-bank-categories-view',
@@ -54,9 +55,10 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
   role = RoleEnum;
 
   constructor(private questionBankCategoryService: QuestionBankCategoryService,
-    private activeroute: ActivatedRoute, private router: Router, 
-    public translate: TranslateService, private fb: FormBuilder, 
-    public dialog: MatDialog, public roleManagmentService:RoleManagementService) {
+    private activeroute: ActivatedRoute, private router: Router,
+    public translate: TranslateService, private fb: FormBuilder,
+    private alert: AlertifyService,
+    public dialog: MatDialog, public roleManagmentService: RoleManagementService) {
     this.formImport = new FormGroup({
       importFile: new FormControl('', Validators.required)
     });
@@ -190,7 +192,7 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
       this.questionBankCategoryService.addQuestionBankCategory(this.questionBankCategoryCreat).subscribe(res => {
         this.isSubmit = false;
         if (res.isSuccess) {
-          
+
           this.disableSaveButtons = true;
           this.resultMessage = {
             message: res.message || "",
@@ -250,20 +252,28 @@ export class QuestionBankCategoriesViewComponent implements OnInit {
     dialogRef.afterClosed().subscribe(dialogResult => {
       this.result = dialogResult;
       if (dialogResult == true) {
-        this.questionBankCategoryService.deleteQuestionBankCategory(id || '').subscribe(
-          res => {
-            res.message;
-
+        this.questionBankCategoryService.deleteQuestionBankCategory(id || '').subscribe(res => {
+          if (res.isSuccess) {
+            this.alert.success(res.message || '');
             this.getQuestionBankCategories();
-          },
-          error => {
-            this.resultMessage = {
-              message: error,
+          }
+          else {
+            this.alert.error(res.message || '');
+            this.resultMessage =
+            {
+              message: res.message,
               type: BaseConstantModel.DANGER_TYPE
             }
           }
-        )
+        }, error => {
+          this.resultMessage = {
+            message: error,
+            type: BaseConstantModel.DANGER_TYPE
+          }
+        });
+
       }
+
     });
   }
 
