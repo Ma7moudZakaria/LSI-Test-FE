@@ -2,8 +2,8 @@ import { period } from './program-day-tasks-interfaces/iprogram-day-task-recitat
 
 export interface IProgramFilterAdvancedRequest {
   name?: string;
-  typeList?: IProgramType[];
-  dura?: number;
+  programTypes?: IProgramType[];
+  duration?: number;
   isTest?: boolean;
   stuNum?: number;
   techNum?: number;
@@ -11,7 +11,10 @@ export interface IProgramFilterAdvancedRequest {
   take?: number;
   arabName?: string;
   engName?: string;
-  isPeriodicExam?: boolean
+  isPeriodicExam?: boolean;
+  teachersCount?: number;
+  studentsCount?: number;
+  programTypesFilter?: string;
 }
 
 
