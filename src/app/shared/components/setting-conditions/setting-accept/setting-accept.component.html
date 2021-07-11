@@ -1,4 +1,4 @@
-<ng-container  *ngIf="isViewToProgCond">
+<ng-container  *ngIf="ViewprogCondmood===programConditionViewMoodEnum.conditionProgramViewMood">
     <div class="card-setting viewMode">
         <div class="head">
            <span>{{accepModel.title}}</span>
@@ -28,7 +28,7 @@
     </div>
     </div>
 </ng-container>
-<ng-container *ngIf="!isViewToProgCond">
+<ng-container *ngIf="ViewprogCondmood===programConditionViewMoodEnum.conditionSettingViewMood">
     <div class="card-setting viewMode">
         <div class="head">
            <span>{{'CONDITIONDS.ADMISSIONS' | translate}}</span>
@@ -48,5 +48,19 @@
             </mat-radio-group>
         </div>
     </div>
+</ng-container>
+<ng-container *ngIf="ViewprogCondmood===programConditionViewMoodEnum.conditionBasicInfoViewMood">
+    <label class="title">
+        {{accepModel.title}}
+        <span>  &nbsp;  : </span>
+        <span>  &nbsp; </span>
+     </label>
+     <label *ngIf='programConditionAcceptEnum.memorizeAndRead==accepModel.value'> {{'CONDITIONDS.MEMORIZE_READ' | translate}}  </label>
+     <label *ngIf='programConditionAcceptEnum.memorize==accepModel.value'> {{'CONDITIONDS.MEMORIZE_ONLY' | translate}} </label>
+     <label *ngIf='accepModel.value==programConditionAcceptEnum.readOnly'> {{'CONDITIONDS.READ_ONLY' | translate}} </label>
+     <label *ngIf='programConditionAcceptEnum.moreProgramMemorize==accepModel.value'>  {{'CONDITIONDS.MORE_PROGRAM' | translate}}  </label>
+     <label *ngIf='programConditionAcceptEnum.moreProgramRead==accepModel.value'> {{'CONDITIONDS.MORE_EXPLANATION_PROGRAM' | translate}}   </label>
+     <span>  &nbsp; </span>
+     <span *ngIf="accepModel.isRequired" class="requiredFlag">{{ "GENERAL.MANDATORY" | translate }} </span>
 </ng-container>
 

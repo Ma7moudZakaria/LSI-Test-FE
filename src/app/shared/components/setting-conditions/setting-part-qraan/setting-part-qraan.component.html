@@ -1,4 +1,4 @@
-<ng-container *ngIf="isViewToProgCond">
+<ng-container *ngIf="ViewprogCondmood===programConditionViewMoodEnum.conditionProgramViewMood">
     <div class="card-setting viewMode">
         <div class="head">
            <span>{{partQuranModel.title}}</span>
@@ -25,7 +25,7 @@
     </div>
 </ng-container>
 
-<ng-container *ngIf="!isViewToProgCond">
+<ng-container *ngIf="ViewprogCondmood===programConditionViewMoodEnum.conditionSettingViewMood">
     <div class="card-setting viewMode">
         <div class="head">
            <span>{{'CONDITIONDS.NUMBER_PARTS' | translate}} </span>
@@ -41,4 +41,14 @@
         </div>
 
     </div>
+</ng-container>
+<ng-container *ngIf="ViewprogCondmood===programConditionViewMoodEnum.conditionBasicInfoViewMood">
+    <label class="title">
+        {{partQuranModel.title}}
+        <span>  &nbsp;  : </span>
+        <span>  &nbsp; </span>
+     </label>
+     <label> {{ partQuranModel.value}} </label>
+     <span>  &nbsp; </span>
+     <span *ngIf="partQuranModel.isRequired" class="requiredFlag">{{ "GENERAL.MANDATORY" | translate }} </span>
 </ng-container>

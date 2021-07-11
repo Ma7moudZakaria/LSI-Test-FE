@@ -14,7 +14,7 @@
         <div class="row ">
             <ng-container  *ngFor="let item of programConditionsPredefinedList ;let i=index">
                   <div class="col-3 mb-3" *ngIf="programConditionsEnum.age===item.conditionNo">
-                    <app-setting-age [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [isViewToProgCond]='true'></app-setting-age>
+                    <app-setting-age [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [ViewprogCondmood]='programConditionViewMoodEnum.conditionProgramViewMood'></app-setting-age>
                   </div>
          <div class="col-3 mb-3" *ngIf="programConditionsEnum.qualifications===item.conditionNo">
             <app-setting-qualifications [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [isViewToProgCond]='true'></app-setting-qualifications>
@@ -28,13 +28,13 @@
             </div>
     
             <div class="col-3 mb-3" *ngIf="programConditionsEnum.numberStudentSubscribtion===item.conditionNo">
-                <app-setting-maxmum-subscribe [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [isViewToProgCond]='true'></app-setting-maxmum-subscribe>
+                <app-setting-maxmum-subscribe [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [ViewprogCondmood]='programConditionViewMoodEnum.conditionProgramViewMood'></app-setting-maxmum-subscribe>
             </div>
             <div class="col-3 mb-3" *ngIf="programConditionsEnum.memorizeQuran===item.conditionNo">
-                <app-setting-part-qraan [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [isViewToProgCond]='true'></app-setting-part-qraan>
+                <app-setting-part-qraan [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [ViewprogCondmood]='programConditionViewMoodEnum.conditionProgramViewMood'></app-setting-part-qraan>
             </div>
             <div class="col-6 mb-3" *ngIf="programConditionsEnum.accept===item.conditionNo">
-                <app-setting-accept [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [isViewToProgCond]='true'></app-setting-accept>
+                <app-setting-accept [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [ViewprogCondmood]='programConditionViewMoodEnum.conditionProgramViewMood'></app-setting-accept>
             </div>
            
            </ng-container >

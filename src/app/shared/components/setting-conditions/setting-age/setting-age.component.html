@@ -1,4 +1,4 @@
-﻿<ng-container *ngIf="isViewToProgCond">
+﻿<ng-container *ngIf="ViewprogCondmood===programConditionViewMoodEnum.conditionProgramViewMood">
     <div class="card-setting viewMode">
         <div class="head">
            <span>{{ageModel.title}}</span>
@@ -20,7 +20,7 @@
    
 </ng-container>
 
-<ng-container *ngIf="!isViewToProgCond">
+<ng-container *ngIf="ViewprogCondmood===programConditionViewMoodEnum.conditionSettingViewMood">
     <div class="card-setting viewMode">
         <div class="head">
            <span>  {{'CONDITIONDS.AGE' | translate}}</span>
@@ -32,4 +32,15 @@
             </div>
         </div>
     </div>
+</ng-container>
+
+<ng-container *ngIf="ViewprogCondmood===programConditionViewMoodEnum.conditionBasicInfoViewMood">
+    <label class="title">
+        {{ageModel.title}}
+        <span>  &nbsp;  : </span>
+        <span>  &nbsp; </span>
+     </label>
+     <label> {{ ageModel.value}} </label>
+     <span>  &nbsp; </span>
+     <span *ngIf="ageModel.isRequired" class="requiredFlag">{{ "GENERAL.MANDATORY" | translate }} </span>
 </ng-container>
