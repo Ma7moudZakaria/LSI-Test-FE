@@ -38,6 +38,7 @@ export class ProgramDutyDaysComponent implements OnInit {
 
   @Input() progDaysList: IProgramDutyDays[] | undefined;
   @Output() progDutyDayEvent = new EventEmitter<IProgramDutyDays>();
+  @Output() progDutyDaysCheckBoxEvent = new EventEmitter<IProgramDutyDays>();
   defaultSelectedDay = 0;
   constructor(
     public languageService: LanguageService,
@@ -91,6 +92,7 @@ export class ProgramDutyDaysComponent implements OnInit {
   onDayClick(event: IProgramDutyDays) {
     this.progDutyDayEvent.emit(event);
   }
-
-
+  onDayCheckBoxChecked(event: IProgramDutyDays){
+    this.progDutyDaysCheckBoxEvent.emit(event);
+  }
 }

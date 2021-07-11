@@ -1,4 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IFeelingsDetailsModel } from 'src/app/core/interfaces/feeling-interfaces/ifeelings-details-model';
 
 @Component({
@@ -15,9 +17,11 @@ export class CardFeelingsComponent implements OnInit {
   @Output() swapUpEvent = new EventEmitter<IFeelingsDetailsModel>();
   @Output() swapDownEvent = new EventEmitter<IFeelingsDetailsModel>();
 
+  langEnum = LanguageEnum
+
   @Input() isPub:boolean = false;;
 
-  constructor() { }
+  constructor(public translate: TranslateService ) { }
 
   ngOnInit(): void {
   }

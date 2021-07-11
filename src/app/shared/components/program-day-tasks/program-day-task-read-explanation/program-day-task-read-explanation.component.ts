@@ -7,13 +7,15 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { IProgramDayTaskReadExplanation } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-read-explanation';
 import { TranslateService } from '@ngx-translate/core';
-
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 @Component({
   selector: 'app-program-day-task-read-explanation',
   templateUrl: './program-day-task-read-explanation.component.html',
   styleUrls: ['./program-day-task-read-explanation.component.scss']
 })
 export class ProgramDayTaskReadExplanationComponent implements OnInit {
+  @Input() isView: boolean = false;
 
   @Input() readExplanationDetailsModel: IProgramDayTaskReadExplanation = {};
 
@@ -24,36 +26,60 @@ export class ProgramDayTaskReadExplanationComponent implements OnInit {
 
   constructor(
     public translate: TranslateService,
-    private attachmentService: AttachmentsService
+    private attachmentService: AttachmentsService,
+    private modalService: NgbModal,
+    private alertify: AlertifyService,
+
 
   ) { }
 
   ngOnInit(): void {
-   
+
   }
 
-  ngOnChanges(changes: any){
-    this.fileList = this.readExplanationDetailsModel?.bookAttatchments?this.readExplanationDetailsModel?.bookAttatchments:[];
+
+  ngOnChanges(changes: any) {
+    this.fileList = this.readExplanationDetailsModel?.bookAttatchments ? this.readExplanationDetailsModel?.bookAttatchments : [];
   }
 
   DeleteAttachment(index: number, id: string) {
     this.readExplanationDetailsModel?.bookAttatchments?.splice(index, 1);
   }
 
+  closeResult: string | undefined;
+
+  openVerticallyCentered(content: any) {
+    this.modalService.open(content, { centered: true });
+  }
+
+  listExt = ["jpg", "png", "jpeg", "gif", "bmp", "tif", "tiff", "pdf"]
+
   onFileChange(files: FileList) {
     if (files.length > 0) {
+
+      if (files[0].size >= 3145728) {
+        this.alertify.error(this.translate.instant('GENERAL.FILE_SIZE'));
+        return;
+      }
+      if (!this.attachmentService.checkFileExtention(files[0], this.listExt)) {
+        this.alertify.error(this.translate.instant('GENERAL.EXTENTION_FILE'));
+        return;
+      }
+
       Array.from(files).forEach(element => {
         var fileUploadObj: IFileUpload = {
           containerNameIndex: 1, // need to be changed based on file type
           file: element
-
         }
         this.fileUploadModel?.push(fileUploadObj)
       });
       this.UploadFiles(this.fileUploadModel);
+    } else {
+      return;
     }
-
   }
+
+
 
   UploadFiles(files: any) {
     if (files.length === 0) {
@@ -65,7 +91,7 @@ export class ProgramDayTaskReadExplanationComponent implements OnInit {
           this.fileList?.push(elm as IAttachment);
 
         })
-        this.readExplanationDetailsModel.bookAttatchments=this.fileList;
+        this.readExplanationDetailsModel.bookAttatchments = this.fileList;
         this.fileUploadModel = [];
       }, error => {
         console.log(error);

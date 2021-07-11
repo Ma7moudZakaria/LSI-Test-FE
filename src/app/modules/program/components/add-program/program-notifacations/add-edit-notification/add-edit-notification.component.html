@@ -3,9 +3,10 @@
 <form class="form-group notifyForm mt-3 pl-3 pr-3" 
 [formGroup]="notifyForm" (ngSubmit)="onSubmit()"
 >
-    <h3 class=" head  bold" *ngIf="!notificationDetails"> {{ 'NOTIFICATIONS.NOTIFICATION_NAME' | translate }}</h3>
+    <h3 class=" head  bold" *ngIf="!notificationDetails"> {{ 'NOTIFICATIONS.ADD_NOTIFICATION' | translate }}</h3>
     <h3 class=" head  bold" *ngIf="notificationDetails">{{ 'NOTIFICATIONS.EDIT_NOTIFICATION' | translate }}</h3>
-       
+
+ 
         
     <div class="form-group">
         <div class="row">
@@ -23,7 +24,7 @@
                 <div *ngIf="f.numberNotify.errors.pattern">
                     {{ 'NOTIFICATIONS.NUMBER_HOMEWORK_PATTERN' | translate }}
                   </div>
-                  <div *ngIf="f.numberNotify.errors?.maxlength">
+                  <div *ngIf="f.numberNotify.errors?.max">
                     {{ 'NOTIFICATIONS.NUMBER_HOMEWORK_MAX_LENGTH' | translate }}
                   </div>
             </div> 
@@ -33,7 +34,28 @@
         
     </div>
 
-    <div class="form-group">
+
+    <div  class="form-group">
+        <label class="text-right header_input"> {{ 'NOTIFICATIONS.NOTIFICITION_TYPE' | translate }}</label>
+        <select class="form-control " name="nameEn"  formControlName="notifyType"  >
+            <option [ngValue]="null" disabled selected="selected">{{ 'NOTIFICATIONS.SELECT_NOTIFICATION_TYPE' | translate }}</option>
+            <option [value]="item.id" *ngFor="let item of collectionOfLookup">
+                {{ translate.currentLang == langEnum.en ? item.nameEn : item.nameAr}}
+
+            </option>
+          </select>
+
+          <div *ngIf="f.notifyType.errors && (f.notifyType.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 pl-2 pr-2">
+            <div *ngIf="f.notifyType.errors?.required">
+                {{ 'GENERAL.REQUIRED' | translate }}
+            </div>
+          
+        </div> 
+
+
+    </div>
+    
+     <div class="form-group">
         <div class="row">
             <div class="col-12">
                 <label class="text-right header_input"> {{ 'NOTIFICATIONS.NOTIFICATION_NAME' | translate }}</label>
@@ -46,9 +68,9 @@
                 <div *ngIf="f.notifyName.errors?.required">
                     {{ 'GENERAL.REQUIRED' | translate }}
                 </div>
-                <div *ngIf="f.notifyName.errors.pattern">
+                <!-- <div *ngIf="f.notifyName.errors.pattern">
                     {{ 'NOTIFICATIONS.NOTIFICATION_NAME_PATTERN' | translate }}
-                </div>
+                </div> -->
                 <div *ngIf="f.notifyName.errors?.maxlength">
                     {{ 'NOTIFICATIONS.NOTIFICATION_NAME_MAX_LENGTH' | translate }}
                 </div>
@@ -58,56 +80,30 @@
         </div>
         
     </div>
-
-
     
-    <div  class="form-group">
-      
-        <label class="text-right header_input"> {{ 'NOTIFICATIONS.NOTIFICITION_TYPE' | translate }}</label>
-        <select class="form-control " formControlName="notifyType"  >
-            <!-- <option [ngValue]="null"  disabled selected>{{ 'NOTIFICATIONS.SELECT_NOTIFICATION_TYPE' | translate }}</option> -->
-           <ng-container *ngFor="let item of collectionOfLookup">
-            <option  [value]="item.id">
-                {{ translate.currentLang == langEnum.en ? item.nameEn : item.nameAr}}
-
-            </option>
-           </ng-container>
-            
-          </select>
-
-
-
-          <div *ngIf="f.notifyType.errors && (f.notifyType.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 pl-2 pr-2">
-            <div *ngIf="f.notifyType.errors?.required">
-                {{ 'GENERAL.REQUIRED' | translate }}
-            </div>
-          
-        </div> 
-
-
-    </div>
+   
     <div class="form-group">
-        <label for="comment">{{ 'QUESTION_BANK.QUESTION_AR' | translate }}</label>
+        <label for="comment">{{ 'NOTIFICATIONS.MESSAGE_ARABIC' | translate }}</label>
         <textarea class="form-control" cols="2" rows="3"   formControlName="messageAr"
         placeholder="{{ 'NOTIFICATIONS.WRITE_MESSAGE' | translate }}"
         ></textarea>
        
-      </div>
+    </div>
    
       <div *ngIf="f.messageAr.errors && (f.messageAr.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 pl-2 pr-2">
         <div *ngIf="f.messageAr.errors?.required">
             {{ 'GENERAL.REQUIRED' | translate }}
         </div>
-        <div *ngIf="f.messageAr.errors.pattern">
+        <!-- <div *ngIf="f.messageAr.errors.pattern">
             {{ 'NOTIFICATIONS.ARABIC_FIELD' | translate }}
-         </div>
+         </div> -->
          <div *ngIf="f.messageAr.errors?.maxlength ">
           {{ 'NOTIFICATIONS.QUESTION_AR_MAX_LENGHT' | translate}}
       </div>
     </div> 
 
       <div class="form-group">
-        <label for="comment">{{ 'QUESTION_BANK.QUESTION_EN' | translate }}</label>
+        <label for="comment">{{ 'NOTIFICATIONS.MESSAGE_ENGLISH' | translate }}</label>
         <textarea class="form-control" cols="2" rows="3"   formControlName="messageEn"  placeholder="{{ 'NOTIFICATIONS.WRITE_MESSAGE' | translate }}"></textarea>
        
       </div>
@@ -116,11 +112,11 @@
         <div *ngIf="f.messageEn.errors?.required">
             {{ 'GENERAL.REQUIRED' | translate }}
         </div>
-        <div *ngIf="f.messageEn.errors.pattern">
-            {{ 'NOTIFICATIONS.ARABIC_FIELD' | translate }}
-         </div>
+        <!-- <div *ngIf="f.messageEn.errors.pattern">
+            {{ 'NOTIFICATIONS.ENGLISH_FIELD' | translate }}
+         </div> -->
          <div *ngIf="f.messageEn.errors?.maxlength ">
-          {{ 'NOTIFICATIONS.QUESTION_AR_MAX_LENGHT' | translate}}
+          {{ 'NOTIFICATIONS.QUESTION_EN_MAX_LENGHT' | translate}}
       </div>
     </div> 
     <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2 text-center">
@@ -130,17 +126,13 @@
             <div  class="row direction-rtl buttons-center mt-5">
                 <button   type="submit" class="save-btn" *ngIf="!notificationDetails"> 
                     {{ "GENERAL.SAVE" | translate }}
-                    
                 </button>
                 <button   type="submit" class="save-btn" *ngIf="notificationDetails"> 
-                   
                    {{ "GENERAL.EDIT" | translate }}
                 </button>
                 <button    type="reset" class="cancel-btn" (click)="closeNotify()"> 
-                    {{ "GENERAL.CANCEL" | translate }}
-                    
+                    {{ "GENERAL.BACK" | translate }}
                 </button>
             </div>
         </section>
-       
    </form>

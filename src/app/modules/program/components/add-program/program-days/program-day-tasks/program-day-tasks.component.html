@@ -3,9 +3,9 @@
 
 <div class="list-group list-group_program-list">
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <p class="mb-0 head">المهام</p>
+        <p class="mb-0 head"> {{ 'PROGRAM_DAY_TASKS.TASKS' | translate }}</p>
         <button class="cancel-btn"(click)="newDayTasks()">
-            إضافة بند
+            {{ 'PROGRAM_DAY_TASKS.ADD_ITEM' | translate }}
            </button>
     </div>
    
@@ -24,7 +24,9 @@
                         <mat-expansion-panel-header (click)="setProgrmeDayTask(item)" >
                             
                             <mat-panel-title class="qestionHeader">
-                                    <span class=" span_question">
+                             
+
+                                    <span class=" span_question"><img  src="../../../../assets/images/feelings/arrange2.svg" class="arrange" >  
                                         {{this.translate.currentLang===langEnum.en?item.dayTaskNameEn : item.dayTaskNameAr}}
                                     </span> 
 

@@ -25,14 +25,16 @@ export class ListFeelingsComponent implements OnInit {
 
   @Input() tabType: RoleEnum = RoleEnum.Student;
 
+  tabTypeSelected = RoleEnum;
+
   feelingsNotPublishedList: IFeelingsDetailsModel[] = [];
   feelingsPublishedList: IFeelingsDetailsModel[] = [];
   resultMessage: BaseMessageModel = {};
-  items1:any;
+  items1: any;
   listOrder?: number[];
-  feelingFilter:IFeelingsFilter={take:2147483647,skip:0}
-  feelingsOrder:IFeelingOrderModel = {};
-  swapFeeling:IFeelingSwapModel ={};
+  feelingFilter: IFeelingsFilter = { take: 2147483647, skip: 0 }
+  feelingsOrder: IFeelingOrderModel = {};
+  swapFeeling: IFeelingSwapModel = {};
 
   constructor
     (
@@ -45,7 +47,10 @@ export class ListFeelingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.feelingFilter.usrRe = this.tabType;
+    console.log("   this.feelingFilter.usrRe", this.feelingFilter.usrRe)
+
     this.feelingsOrder.usrTp = this.tabType;
+
     this.getNotPublishedFeelings()
     this.getPublishedFeelings()
   }
@@ -55,7 +60,7 @@ export class ListFeelingsComponent implements OnInit {
       if (res.isSuccess) {
         this.feelingsNotPublishedList = res.data as IFeelingsDetailsModel[];
         this.feelingsNotPublishedList.forEach(element => {
-          element.crdOn = element.crdOn ? new Date(element.crdOn).toDateString(): '';
+          element.crdOn = element.crdOn ? new Date(element.crdOn).toDateString() : '';
           element.isNew = true;
           if (!element?.proPic) {
             element.proPic = '../../../../../assets/images/Profile.svg';
@@ -87,7 +92,7 @@ export class ListFeelingsComponent implements OnInit {
       if (res.isSuccess) {
         this.feelingsPublishedList = res.data as IFeelingsDetailsModel[];
         this.feelingsPublishedList.forEach(element => {
-          element.crdOn = element.crdOn ? new Date(element.crdOn).toDateString(): '';
+          element.crdOn = element.crdOn ? new Date(element.crdOn).toDateString() : '';
           element.isNew = false;
           if (!element?.proPic) {
             element.proPic = '../../../../../assets/images/Profile.svg';
@@ -142,7 +147,7 @@ export class ListFeelingsComponent implements OnInit {
     });
   }
 
-  cancelFeeling(event:IFeelingsDetailsModel) {
+  cancelFeeling(event: IFeelingsDetailsModel) {
     const message = this.translate.currentLang === LanguageEnum.en ? "Are you sure that you want to cancel this feeling" : "هل متأكد من الغاء نشر هذه المشاعر ";
 
     const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Cancel feeling ' : 'الغاء نشر  المشاعر', message);
@@ -160,14 +165,14 @@ export class ListFeelingsComponent implements OnInit {
 
   approveCancelFeeling(event: IFeelingsDetailsModel) {
     this.feelingsServices.approvecCancelFeeling(event.id || '').subscribe(res => {
-      if (res.isSuccess){
+      if (res.isSuccess) {
         this.getNotPublishedFeelings();
         this.getPublishedFeelings();
       }
-      else{
+      else {
 
       }
-    },error => {
+    }, error => {
 
     })
   }
@@ -175,27 +180,27 @@ export class ListFeelingsComponent implements OnInit {
   drop(event: CdkDragDrop<IDragDropAccordionItems[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-      this.listOrder=[];
-      for(let i =0;i<=event.container.data.length-1;i++){
-        this.listOrder?.push(event.previousContainer.data[i].order||(i+1));
+      this.listOrder = [];
+      for (let i = 0; i <= event.container.data.length - 1; i++) {
+        this.listOrder?.push(event.previousContainer.data[i].order || (i + 1));
       }
-      
+
       this.feelingsOrder.orderList = this.listOrder;
 
       this.feelingsServices.updateFeelingsOrder(this.feelingsOrder).subscribe(res => {
-        if (res.isSuccess){
+        if (res.isSuccess) {
           this.getPublishedFeelings();
         }
-        else{
+        else {
 
         }
       },
-      error => {
-        this.resultMessage ={
-          message: error,
-          type: BaseConstantModel.DANGER_TYPE
-        }
-      })
+        error => {
+          this.resultMessage = {
+            message: error,
+            type: BaseConstantModel.DANGER_TYPE
+          }
+        })
     } else {
       transferArrayItem(event.previousContainer.data,
         event.container.data,
@@ -204,35 +209,35 @@ export class ListFeelingsComponent implements OnInit {
     }
   }
 
-  swapUp(event : IFeelingsDetailsModel){
+  swapUp(event: IFeelingsDetailsModel) {
     this.swapFeeling.feelA = event.id;
     let feelAIndex = this.feelingsPublishedList.indexOf(event);
-    if (feelAIndex - 1 >= 0){
+    if (feelAIndex - 1 >= 0) {
       this.swapFeeling.feelB = this.feelingsPublishedList[this.feelingsPublishedList.indexOf(event) - 1].id;
       this.swapFeelingsItems();
     }
   }
 
-  swapDown(event : IFeelingsDetailsModel){
+  swapDown(event: IFeelingsDetailsModel) {
     this.swapFeeling.feelA = event.id;
     let feelBIndex = this.feelingsPublishedList.indexOf(event);
-    if (feelBIndex + 1 < this.feelingsPublishedList.length){
+    if (feelBIndex + 1 < this.feelingsPublishedList.length) {
       this.swapFeeling.feelB = this.feelingsPublishedList[this.feelingsPublishedList.indexOf(event) + 1].id;
       this.swapFeelingsItems();
     }
   }
 
-  swapFeelingsItems(){
-    this.feelingsServices.swapFeelings(this.swapFeeling).subscribe(res=>{
-      if (res.isSuccess){
+  swapFeelingsItems() {
+    this.feelingsServices.swapFeelings(this.swapFeeling).subscribe(res => {
+      if (res.isSuccess) {
         this.getPublishedFeelings();
       }
-      else{
+      else {
 
       }
 
-    },error => {
-      this.resultMessage ={
+    }, error => {
+      this.resultMessage = {
         message: error,
         type: BaseConstantModel.DANGER_TYPE
       }

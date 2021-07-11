@@ -1,6 +1,6 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
-import { Component, OnInit ,EventEmitter, Input, Output} from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -17,6 +17,8 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { QuestionBankQuestionService } from 'src/app/core/services/question-bank-services/question-bank-question.service';
 import { RoleManagementService } from 'src/app/core/services/role-management/role-management.service';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
+
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 @Component({
   selector: 'app-question-bank-questions-view',
@@ -24,30 +26,31 @@ import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/compon
   styleUrls: ['./question-bank-questions-view.component.scss']
 })
 export class QuestionBankQuestionsViewComponent implements OnInit {
-  filterErrorMessage?:string;
+  filterErrorMessage?: string;
   questionBankQuestionList: IQuestionBankQuestionsModel[] = [];
   questionBankQuestionFilter: IQuestionBankQuestionsFilterRequest = {};
-  @Input() selectedCategoryId={id:'',arabCatgName:'',engCatgName:''}; 
+  @Input() selectedCategoryId = { id: '', arabCatgName: '', engCatgName: '' };
   @Output() selectedQuestionId = new EventEmitter<string>();
   @Output() isViewAdd = new EventEmitter<boolean>();
   // @Input() isQuestionSave={isSave:false,catogeryId:''}; 
-  @Input() isQuestionSave?:boolean; 
+  @Input() isQuestionSave?: boolean;
   panelOpenState = false;
   currentlyOpenedItemIndex = -1;
   langEnum = LanguageEnum;
-  isSave=false;
-  resultMessage:BaseMessageModel = {};
-  items1:any;
-  questionBankQuestionUpdateOrderBy:IQuestionBankQuestionUpdateOrderBy={};
+  isSave = false;
+  resultMessage: BaseMessageModel = {};
+  items1: any;
+  questionBankQuestionUpdateOrderBy: IQuestionBankQuestionUpdateOrderBy = {};
   listOrder?: number[];
 
   currentUser: IUser | undefined;
   role = RoleEnum;
 
   constructor(private questionBankQuestionService: QuestionBankQuestionService,
-     public translate: TranslateService,public dialog: MatDialog, 
-     private roleService : RoleManagementService, public roleManagmentService:RoleManagementService) {
-      }
+    private alert: AlertifyService,
+    public translate: TranslateService, public dialog: MatDialog,
+    private roleService: RoleManagementService, public roleManagmentService: RoleManagementService) {
+  }
 
   ngOnInit(): void {
     this.getQuestionBankQuestions("");
@@ -56,37 +59,36 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
   }
 
   ngOnChanges(changes: any) {
-    if(this.isQuestionSave===true){ this.getQuestionBankQuestions(this.selectedCategoryId.id);}
-    if(changes.selectedCategoryId?.currentValue.id!==undefined)
-   {
-    this.getQuestionBankQuestions(changes.selectedCategoryId.currentValue.id);
-    this.selectedCategoryId.id=changes.selectedCategoryId.currentValue.id;
-   }
-   this.getQuestionBankQuestions("");
+    if (this.isQuestionSave === true) { this.getQuestionBankQuestions(this.selectedCategoryId.id); }
+    if (changes.selectedCategoryId?.currentValue.id !== undefined) {
+      this.getQuestionBankQuestions(changes.selectedCategoryId.currentValue.id);
+      this.selectedCategoryId.id = changes.selectedCategoryId.currentValue.id;
+    }
+    this.getQuestionBankQuestions("");
   }
 
-  searchQuestions(text?:string){
-    this.questionBankQuestionList=[];
-    this.getQuestionBankQuestions(this.selectedCategoryId.id,text);
-   
+  searchQuestions(text?: string) {
+    this.questionBankQuestionList = [];
+    this.getQuestionBankQuestions(this.selectedCategoryId.id, text);
+
   }
 
-  getQuestionBankQuestions(CategoryId?:string,text?:string) {
+  getQuestionBankQuestions(CategoryId?: string, text?: string) {
     this.filterErrorMessage = "";
     this.resultMessage = {};
-    this.questionBankQuestionFilter.skip=0;
-    this.questionBankQuestionFilter.take= 2147483647;
-    this.questionBankQuestionFilter.catgyId=CategoryId;
-    this.questionBankQuestionFilter.text=text;
-    if(CategoryId!=""){
+    this.questionBankQuestionFilter.skip = 0;
+    this.questionBankQuestionFilter.take = 2147483647;
+    this.questionBankQuestionFilter.catgyId = CategoryId;
+    this.questionBankQuestionFilter.text = text;
+    if (CategoryId != "") {
       this.questionBankQuestionService.getQuestionBankQuestionsFilter(this.questionBankQuestionFilter).subscribe(res => {
         let response = <BaseResponseModel>res;
         if (response.isSuccess) {
-          let items : IQuestionBankQuestionsModel []= response.data
-          if (this.roleService.isAdmin()){
+          let items: IQuestionBankQuestionsModel[] = response.data
+          if (this.roleService.isAdmin()) {
             this.questionBankQuestionList = items;
           }
-          else{
+          else {
             this.questionBankQuestionList = items.filter(i => i.isActive);
           }
         }
@@ -95,52 +97,52 @@ export class QuestionBankQuestionsViewComponent implements OnInit {
           this.filterErrorMessage = response.message;
         }
       },
-      error => {
-        this.resultMessage ={
-          message: error,
-          type: BaseConstantModel.DANGER_TYPE
+        error => {
+          this.resultMessage = {
+            message: error,
+            type: BaseConstantModel.DANGER_TYPE
+          }
         }
-      }
       )
     }
-else{
-  this.questionBankQuestionList = [];
-}
+    else {
+      this.questionBankQuestionList = [];
+    }
   }
 
-  clearFilter(){
+  clearFilter() {
     this.questionBankQuestionFilter = {};
-    this.questionBankQuestionFilter.skip=0;
-    this.questionBankQuestionFilter.take= 1000;
+    this.questionBankQuestionFilter.skip = 0;
+    this.questionBankQuestionFilter.take = 1000;
     this.getQuestionBankQuestions(this.selectedCategoryId.id);
   }
 
-  delete_Question(id?:string) {
-    this.questionBankQuestionService.deleteQuestionBankQuestion(id||'').subscribe(
+  delete_Question(id?: string) {
+    this.questionBankQuestionService.deleteQuestionBankQuestion(id || '').subscribe(
       res => {
 
         alert("Delete Sucssed")
         this.getQuestionBankQuestions(this.selectedCategoryId.id);
       }, error => {
-        this.resultMessage ={
+        this.resultMessage = {
           message: error,
           type: BaseConstantModel.DANGER_TYPE
         }
       }
     )
-  
+
   }
 
-  loadQuestion(id?:string){
+  loadQuestion(id?: string) {
     this.selectedQuestionId?.emit(id);
   }
 
-  NewQuestion(){
+  NewQuestion() {
     this.selectedQuestionId?.emit('');
   }
 
-   confirmDialog(id?:string){
-    const message =this.translate.currentLang === LanguageEnum.en ?"Are you sure that you want to delete this question":"هل متأكد من حذف هذا السؤال";
+  confirmDialog(id?: string) {
+    const message = this.translate.currentLang === LanguageEnum.en ? "Are you sure that you want to delete this question" : "هل متأكد من حذف هذا السؤال";
 
     const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete Question' : 'حذف سؤال', message);
 
@@ -149,44 +151,53 @@ else{
       data: dialogData
     });
     dialogRef.afterClosed().subscribe(dialogResult => {
-      if(dialogResult==true){
-        this.questionBankQuestionService.deleteQuestionBankQuestion(id||'').subscribe(
-          res => {
-            res.message;
+      if (dialogResult == true) {
+        this.questionBankQuestionService.deleteQuestionBankQuestion(id || '').subscribe(res => {
+          if (res.isSuccess) {
+            this.alert.success(res.message || '');
             this.getQuestionBankQuestions(this.selectedCategoryId.id);
-          }, error => {
-            this.resultMessage ={
-              message: error,
+          }
+          else {
+            this.alert.error(res.message || '');
+            this.resultMessage =
+            {
+              message: res.message,
               type: BaseConstantModel.DANGER_TYPE
             }
           }
-        )
-      }     
+        }, error => {
+          this.resultMessage = {
+            message: error,
+            type: BaseConstantModel.DANGER_TYPE
+          }
+        });
+
+      }
     });
   }
 
-  setOpened(itemIndex:number) {
+  setOpened(itemIndex: number) {
     this.currentlyOpenedItemIndex = itemIndex;
   }
 
-  setClosed(itemIndex:Number) {
-    if(this.currentlyOpenedItemIndex === itemIndex) {
+  setClosed(itemIndex: Number) {
+    if (this.currentlyOpenedItemIndex === itemIndex) {
       this.currentlyOpenedItemIndex = -1;
     }
   }
 
-  onCheckboxChange(questionBankQuestionUpdate: IQuestionBankQuestionUpdateModel){
+  onCheckboxChange(questionBankQuestionUpdate: IQuestionBankQuestionUpdateModel) {
 
     this.questionBankQuestionService.updateQuestionBankQuestion(questionBankQuestionUpdate).subscribe(res => {
       if (res.isSuccess) {
         this.resultMessage = {
-          message:res.message||"",
+          message: res.message || "",
           type: BaseConstantModel.SUCCESS_TYPE
         }
         setTimeout(() => {
           this.resultMessage = {
-            message:"",
-            type:""
+            message: "",
+            type: ""
           }
         }, 1500)
       }
@@ -197,12 +208,12 @@ else{
         }
         setTimeout(() => {
           this.resultMessage = {
-            message:"",
-            type:""
+            message: "",
+            type: ""
           }
         }, 1500)
       }
-      
+
     },
       error => {
         this.resultMessage = {
@@ -211,8 +222,8 @@ else{
         }
         setTimeout(() => {
           this.resultMessage = {
-            message:"",
-            type:""
+            message: "",
+            type: ""
           }
         }, 1500)
       })
@@ -222,28 +233,28 @@ else{
   drop(event: CdkDragDrop<IDragDropAccordionItems[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-      this.listOrder=[];
-      for(let i =0;i<=event.container.data.length-1;i++){
-        this.listOrder?.push(event.previousContainer.data[i].order||(i+1));
+      this.listOrder = [];
+      for (let i = 0; i <= event.container.data.length - 1; i++) {
+        this.listOrder?.push(event.previousContainer.data[i].order || (i + 1));
       }
-      this.questionBankQuestionUpdateOrderBy.categoryId=this.selectedCategoryId.id;
-      this.questionBankQuestionUpdateOrderBy.orderList=this.listOrder;
-    
+      this.questionBankQuestionUpdateOrderBy.categoryId = this.selectedCategoryId.id;
+      this.questionBankQuestionUpdateOrderBy.orderList = this.listOrder;
+
       this.questionBankQuestionService.updateOrderQuestionBankQuestion(this.questionBankQuestionUpdateOrderBy).subscribe(res => {
         if (res.isSuccess) {
-       this.getQuestionBankQuestions(this.selectedCategoryId.id);
+          this.getQuestionBankQuestions(this.selectedCategoryId.id);
         }
         else {
-     
+
         }
-        
+
       },
-      error => {
-        this.resultMessage ={
-          message: error,
-          type: BaseConstantModel.DANGER_TYPE
-        }
-      })
+        error => {
+          this.resultMessage = {
+            message: error,
+            type: BaseConstantModel.DANGER_TYPE
+          }
+        })
     } else {
       transferArrayItem(event.previousContainer.data,
         event.container.data,
@@ -251,5 +262,5 @@ else{
         event.currentIndex);
     }
   }
- 
+
 }

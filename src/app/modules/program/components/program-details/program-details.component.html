@@ -9,7 +9,7 @@
             </app-content-management-system> -->
        <!-- <app-programs-type></app-programs-type> -->
             <!-- <programs-tabs></programs-tabs> -->
-            <app-programs-tabs [programModel]='programModel'></app-programs-tabs>
+            <app-programs-tabs [programModel]='programModel' (refreshProgListEvent)='refreshProgList()'></app-programs-tabs>
         </div>
        
     </div>

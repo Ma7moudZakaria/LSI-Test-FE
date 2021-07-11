@@ -1,0 +1,35 @@
+﻿<ng-container *ngIf="isViewToProgCond">
+    <div class="card-setting viewMode">
+        <div class="head">
+           <span>{{ageModel.title}}</span>
+           <img class="close" src="../../../../../assets/images/feelings/close.svg" (click)="confirmDialog()">
+        </div>
+        <div class="body">
+            <input type="text" class="form-control w-100" [(ngModel)]="ageModel.value" >
+        </div>
+        <div  class="row  buttons-center mt-3">
+            <label class="switch mx-3">
+                <input type="checkbox" [(ngModel)]="ageModel.isRequired" class="mx-1" >
+                <span class="slider round">{{ "GENERAL.MANDATORY" | translate }}</span>
+              </label>
+            <button   type="submit" class="save-btn" (click)="saveProgramConditions()"> 
+                {{ "GENERAL.SAVE" | translate }}
+            </button>
+    </div>
+    </div>
+   
+</ng-container>
+
+<ng-container *ngIf="!isViewToProgCond">
+    <div class="card-setting viewMode">
+        <div class="head">
+           <span>  {{'CONDITIONDS.AGE' | translate}}</span>
+        </div>
+        <div class="body">
+            <div class="form-group w-90"  >.
+                <span>  {{'CONDITIONDS.MORE_THAN' | translate}}</span>
+            <!-- <input type="text" class="form-control" > -->
+            </div>
+        </div>
+    </div>
+</ng-container>

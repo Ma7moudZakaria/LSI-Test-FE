@@ -16,18 +16,20 @@ import { LookupService } from 'src/app/core/services/lookup-services/lookup.serv
 export class ProgramDayTaskTasmeaComponent implements OnInit {
 
   @Input() tasmeaModel: IProgramBasicInfoDetails = {};
+  @Input() isView: boolean = false;
+
   collectionOfLookup = {} as ILookupCollection;
   listOfLookup: string[] = ['SARD_TYPES'];
   resultMessage: BaseMessageModel = {};
-  progRecitationTimes:IRecitationTimes[] = [];
-  constructor( 
-     public translate: TranslateService,
+  progRecitationTimes: IRecitationTimes[] = [];
+  constructor(
+    public translate: TranslateService,
     private lookupService: LookupService) { }
 
   ngOnInit(): void {
     this.getLookupByKey();
-    this.progRecitationTimes = this.tasmeaModel?.prgRecitTms ? 
-    this.tasmeaModel?.prgRecitTms.filter(i=>i.huffno !== ProgramDayTaskRecitationType.limited).map((item: any) => ({ progRecFrom:item.recitFrom, progRecTo:item.recitTo })) : [];
+    this.progRecitationTimes = this.tasmeaModel?.prgRecitTms ?
+      this.tasmeaModel?.prgRecitTms.filter(i => i.huffno !== ProgramDayTaskRecitationType.limited).map((item: any) => ({ progRecFrom: item.recitFrom, progRecTo: item.recitTo })) : [];
 
   }
   getLookupByKey() {

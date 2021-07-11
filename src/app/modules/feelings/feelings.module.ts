@@ -6,13 +6,14 @@ import { FeelingsViewComponent } from './feelings-view/feelings-view.component';
 import { ListFeelingsComponent } from './feelings-view/list-feelings/list-feelings.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
+import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [FeelingsViewComponent, ListFeelingsComponent],
   imports: [
     CommonModule,
     FeelingsRoutingModule,
-    SharedModule
+    SharedModule, TranslateModule
   ]
 })
 export class FeelingsModule { }

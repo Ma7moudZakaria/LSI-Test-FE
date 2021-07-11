@@ -35,6 +35,8 @@ import { MyFilterPipe, ProgramDutyDaysComponent } from './components/add-program
 import { ProgramDayTasksComponent } from './components/add-program/program-days/program-day-tasks/program-day-tasks.component';
 import { ProgramDayTasksDetailsComponent } from './components/add-program/program-days/program-day-tasks-details/program-day-tasks-details.component';
 import { AddProgramDayTasksComponent } from './components/add-program/program-days/add-program-day-tasks/add-program-day-tasks.component';
+import { ProgramConditionListComponent } from './components/add-program/program-conditions/program-condition-list/program-condition-list.component';
+
 
 @NgModule({
   declarations: [AddEditNotificationComponent,
@@ -64,7 +66,8 @@ import { AddProgramDayTasksComponent } from './components/add-program/program-da
     ProgramDayTasksComponent,
     ProgramDayTasksDetailsComponent,
     AddProgramDayTasksComponent,
-    MyFilterPipe
+    MyFilterPipe,
+    ProgramConditionListComponent
   ],
   imports: [
     CommonModule,

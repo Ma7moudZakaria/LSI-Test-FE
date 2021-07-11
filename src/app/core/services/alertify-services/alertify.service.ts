@@ -30,10 +30,19 @@ export class AlertifyService {
 
 
   }
-
   error(message: string) {
+    if (this.translate.currentLang === LanguageEnum.ar) { alertify.set('notifier', 'position', 'bottom-left'); }
+    else {
+      alertify.set('notifier', 'position', 'bottom-right');
+    }
+
     alertify.error(message);
+
+
   }
+  // error(message: string) {
+  //   alertify.error(message);
+  // }
 
   warning(message: string) {
     alertify.warning(message);

@@ -5,7 +5,7 @@
         </span>
     </div>
     <input type="text" class="form-control" [matAutocomplete]="auto" (input)="searchKey()" [(ngModel)]="search"
-        name="search" />
+        name="search" placeholder="{{'GENERAL.SEARCH' | translate}}"/>
     <div class="input-group-append">
         <span (click)="addUser()" class="input-group-text border_radius bg-white">
             <i class="fas fa-plus plus_input"></i>

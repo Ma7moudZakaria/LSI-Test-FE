@@ -7,6 +7,7 @@ import { ICreateProgramDayTasksModel } from 'src/app/core/interfaces/programs-in
 import { IProgramDutyDays } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 import { ProgramDayTasksService } from 'src/app/core/services/program-services/program-day-tasks.service';
@@ -23,8 +24,9 @@ export class AddProgramDayTasksComponent implements OnInit {
   createProgramDayTasksModel = Array<ICreateProgramDayTasksModel>();
   listOfLookups: string[] = ['Tasks'];
 
-  @Input() programDutyDay = {} as IProgramDutyDays;
-
+  @Input() programDutyDay :IProgramDutyDays | undefined;
+  @Input() selectedProgDutyDays:IProgramDutyDays[] = [];
+  
   resMessage: BaseMessageModel = {};
   selectedProgramDayTasksList = Array<ICreateProgramDayTasksModel>();
   
@@ -37,7 +39,8 @@ export class AddProgramDayTasksComponent implements OnInit {
     private programDayTasksService: ProgramDayTasksService,
     public translate: TranslateService,
     private fb: FormBuilder,
-    private lookupService: LookupService
+    private lookupService: LookupService,
+    private aletify:AlertifyService
     ) { }
 
   ngOnInit(): void {
@@ -88,52 +91,78 @@ export class AddProgramDayTasksComponent implements OnInit {
       this.selectedProgramDayTasksList.push(item.id);
     }
     else{
-
+      let it = this.selectedProgramDayTasksList.filter(i => i === item.id)[0];
+      const ind = this.selectedProgramDayTasksList?.indexOf(it);
+      if (ind > -1) {
+        this.selectedProgramDayTasksList?.splice(ind, 1);
+      }
     }
   }
 
-  onSubmit() {
+  async onSubmit() {
     this.resMessage = {}
-    if (true) {
+    if (this.selectedProgDutyDays.length > 0 && this.programDutyDay && !this.selectedProgDutyDays.includes(this.programDutyDay)){
+      this.aletify.error('remove selection');
+      return;
+    }
+
+    if (this.selectedProgDutyDays.length === 0 && this.programDutyDay) {
       this.createProgramDayTasksModel = [];
       if (this.selectedProgramDayTasksList.length) {
         Array.from(this.selectedProgramDayTasksList).forEach((elm: any) => {
           this.createProgramDayTasksModel.push({
-            programDutyDay: this.programDutyDay.id,
+            programDutyDay: this.programDutyDay?.id,
             dayTask: elm
           });
         });
       }
+      await this.addProgDayTaskApiCall();
+    }
+    else if(this.selectedProgDutyDays.length > 0 && !this.programDutyDay || 
+      (this.selectedProgDutyDays.length > 0 && this.programDutyDay && this.selectedProgDutyDays.includes(this.programDutyDay))) {
+        this.selectedProgDutyDays.forEach(async element => {
+          this.createProgramDayTasksModel = [];
+          Array.from(this.selectedProgramDayTasksList).forEach((elm: any) => {
+            this.createProgramDayTasksModel.push({
+              programDutyDay: element.id,
+              dayTask: elm
+            });
+          });
+          await this.addProgDayTaskApiCall();
+        });
+      // this.resMessage = {
+      //   message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
+      //   type: BaseConstantModel.DANGER_TYPE
+      // }
+    }
+    else{
+      this.aletify.error('please select day or check multi days');
+    }
+  }
 
-      this.programDayTasksService.AddProgramDayTasks(this.createProgramDayTasksModel).subscribe(
-        res => {
-          if (res.isSuccess) {
-            this.resMessage = {
-              message: res.message,
-              type: BaseConstantModel.SUCCESS_TYPE
-            }
-            this.closeEvent();
-          }
-          else {
-            this.resMessage = {
-              message: res.message,
-              type: BaseConstantModel.DANGER_TYPE
-            }
-          }
-        }, error => {
+  async addProgDayTaskApiCall(){
+    this.programDayTasksService.AddProgramDayTasks(this.createProgramDayTasksModel).subscribe(
+      res => {
+        if (res.isSuccess) {
           this.resMessage = {
-            message: error,
+            message: res.message,
+            type: BaseConstantModel.SUCCESS_TYPE
+          }
+          this.closeEvent();
+        }
+        else {
+          this.resMessage = {
+            message: res.message,
             type: BaseConstantModel.DANGER_TYPE
           }
         }
-      );
-    }
-    else {
-      this.resMessage = {
-        message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
-        type: BaseConstantModel.DANGER_TYPE
+      }, error => {
+        this.resMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       }
-    }
+    );
   }
 
   closeEvent() {

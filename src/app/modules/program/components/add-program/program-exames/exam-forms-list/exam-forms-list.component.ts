@@ -11,6 +11,7 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { ExamFormService } from 'src/app/core/services/exam-form-services/exam-form.service';
+import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
 import { ProgramDetailsComponent } from '../../../program-details/program-details.component';
 
@@ -22,6 +23,7 @@ import { ProgramDetailsComponent } from '../../../program-details/program-detail
 export class ExamFormsListComponent implements OnInit {
   
   @Output() selectedExamFormId= new EventEmitter<string>();
+  @Output() progDetailsEvent = new EventEmitter();
   
   @Input() progDetails : IProgramDetails | undefined;
 
@@ -43,12 +45,11 @@ export class ExamFormsListComponent implements OnInit {
     private _alertify:AlertifyService) { }
 
   ngOnInit(): void {
-    this.getExamForms();
-
     if (this.progDetails?.progJoiExa && this.progDetails?.progJoiExa.length > 0){
       this.mapProgExams();
       this.toggel = this.progDetails.progBaseInfo?.prgIsConExa;
     }
+    this.getExamForms();
   }
 
   mapProgExams(){
@@ -71,10 +72,14 @@ export class ExamFormsListComponent implements OnInit {
       let response = <BaseResponseModel>res;
         this.examFormsList = response.data;
 
+        if (this.progDetails?.progJoiExa && this.progDetails?.progJoiExa.length > 0){
+          this.examFormsList = this.examFormsList.filter( ( el ) => !this.progDetails?.progJoiExa?.filter( e => e.id == el.id )[0] );
+        }
+
         this.searchExamFormsList= this.examFormsList.map(item => ({
           usrId:item.id || '',
           arUsrName :item.arabExamFormNam || '',
-          enUsrName:item.arabExamFormNam || '',
+          enUsrName:item.engExamFormNam || '',
           createdOn:'',
           usrAvatarUrl:'',
           usrEmail:''
@@ -123,45 +128,23 @@ export class ExamFormsListComponent implements OnInit {
       this.examFormsAddedToProgramList = [];
       this.getExamForms();
     }
+    else if(this.progDetails?.progJoiExa && this.progDetails?.progJoiExa.length > 0){
+      this.mapProgExams();
+      this.getExamForms();
+    }
 
     this.programService.updateProgramExamToggle(this.progDetails?.progBaseInfo?.id || '').subscribe(res => {
       if (res.isSuccess) {
-        this.resultMessage = {
-          message:res.message||"",
-          type: BaseConstantModel.SUCCESS_TYPE
-        }
-        setTimeout(() => {
-          this.resultMessage = {
-            message:"",
-            type:""
-          }
-        }, 1500)
+        this._alertify.success(res.message||"");
+        this.progDetailsEvent.emit();
       }
       else {
-        this.resultMessage = {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
-        setTimeout(() => {
-          this.resultMessage = {
-            message:"",
-            type:""
-          }
-        }, 1500)
+        this._alertify.error(res.message || '');
       }
       
     },
       error => {
-        this.resultMessage = {
-          message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
-          type: BaseConstantModel.DANGER_TYPE
-        }
-        setTimeout(() => {
-          this.resultMessage = {
-            message:"",
-            type:""
-          }
-        }, 1500)
+        this._alertify.error(error || '');
       })
 
   }
@@ -171,26 +154,20 @@ export class ExamFormsListComponent implements OnInit {
     // this.assignExamFormsToProgramModel.programId=this.selectedprogram.programId;
     this.assignExamFormsToProgramModel.programId=this.progDetails?.progBaseInfo?.id;
     this.assignExamFormsToProgramModel.examForms=this.examFormsAddedToProgramList.map(item => ({ examFormId:item.usrId || ''}));
-        this.programService.assignExamFormToProgram(this.assignExamFormsToProgramModel).subscribe(res => {
+    this.programService.assignExamFormToProgram(this.assignExamFormsToProgramModel).subscribe(res => {
           if (res.isSuccess) {
-            
             this._alertify.success(res.message||"");
-        
+            this.progDetailsEvent.emit();
           }
           else {
-            this.resultMessage = {
-              message: res.message,
-              type: BaseConstantModel.DANGER_TYPE
-            }
+            this._alertify.error(res.message || '');
           }
         },
           error => {
-            this.resultMessage = {
-              message: error,
-              type: BaseConstantModel.DANGER_TYPE
-            }
+            this._alertify.error(error || '');
           })
 
   }
+
 
 }

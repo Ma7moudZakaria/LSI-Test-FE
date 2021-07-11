@@ -18,8 +18,10 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/c
 export class ProgramDayTaskTestPhasedComponent implements OnInit {
   examJson: string | undefined;
   voiceUrl: string | undefined;
-  @Input() testPhasedDetailsModel: IExam | undefined ;
+  @Input() testPhasedDetailsModel: IExam | undefined;
   resultMessage: BaseMessageModel = {};
+  @Input() isView: boolean = false;
+
   langEnum = LanguageEnum;
   constructor(
     public dialog: MatDialog,
@@ -30,12 +32,12 @@ export class ProgramDayTaskTestPhasedComponent implements OnInit {
   }
   addQuestion() {
     this.resultMessage = {};
-    if (this.testPhasedDetailsModel){
+    if (this.testPhasedDetailsModel) {
       if (Object.keys(this.testPhasedDetailsModel).length === 0) {
         let id = BaseConstantModel.newGuid();
         this.testPhasedDetailsModel.id = id; //{ id: id, questions: [] }
       }
-  
+
       if (this.examFormService.validateQuestion(this.testPhasedDetailsModel.questions) === true) {
         let qid = BaseConstantModel.newGuid();
         let ques: IQuestion =
@@ -54,11 +56,11 @@ export class ProgramDayTaskTestPhasedComponent implements OnInit {
           type: BaseConstantModel.DANGER_TYPE
         }
       }
-  
+
     }
   }
 
-  
+
 
   /////recording/////
   saveVoiceUrl(event: any) {

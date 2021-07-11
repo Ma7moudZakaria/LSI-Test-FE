@@ -1,28 +1,38 @@
 <div class="list-group list-category">
-  <div class="col-.5  chicx_box">
-    <label class="switch">
-        <input type="checkbox" (change)="onCheckboxChange()" [(ngModel)]='toggel'>
-        <span class="slider round"></span>
-      </label>
-
-</div>
-    <p class="mb-4 p_header mb-2">{{'QUESTION_BANK.DEPARTMENTS' | translate}}</p>
+<div class="d-flex justify-content-between" >
+  
+    <p class="mb-4 p_header mb-2">{{'PROGRAM_EXAM_FORM.PROGRAM_ACCEPTANCE_EXAM' | translate}}</p>
+    <div class="col-.5  chicx_box">
+      <label class="switch">
+          <input type="checkbox" (change)="onCheckboxChange()" [(ngModel)]='toggel'>
+          <span class="slider round"></span>
+        </label>
+  
+  </div>
+  </div>
+  <div class="d-flex justify-content-between" >
+    <p class="mb-4 p_header_sec mb-2">{{'PROGRAM_EXAM_FORM.EXAM_FORMS' | translate}}</p>
+    
+  </div>
   <app-input-search-list (addSearchItem)="addExamItem($event)" *ngIf='toggel'
   [searchList]="searchExamFormsList || []">
 </app-input-search-list>
+
+<div class="d-flex">
+  <label  class="no-data" *ngIf="examFormsAddedToProgramList.length===0 || !toggel">
+    {{'GENERAL.NO_DATA'|translate}} 
+</label>
+</div>
+
   <div class="internal_scroll_list_group ">
     <div *ngIf='toggel'>
       <a class="list-group-item d-flex" *ngFor="let EX of examFormsAddedToProgramList ; let i=index;"
     [class.active]="selectedIndex === i" 
     (click)="loadExams(EX.usrId,EX.arUsrName,EX.enUsrName);selectedIndex=i">
           <p class="ellipsis mb-0 question-categories" >{{translate.currentLang===langEnum.en?EX.enUsrName:EX.arUsrName}}</p>
-          <a (click)="deleteFromExamFormsAddedToProgramList(EX)" > <i class="far fa-trash-alt"></i></a>
+          <a (click)="deleteFromExamFormsAddedToProgramList(EX)" > <i class="fas fa-times"></i></a>
     </a>
     </div>
-    <div class="d-flex">
-      <label  class="no-data" *ngIf="examFormsAddedToProgramList.length===0 || !toggel">
-        {{'QUESTION_BANK.NO_DATA'|translate}} 
-    </label>
+ 
     </div>
-  </div>
   </div>

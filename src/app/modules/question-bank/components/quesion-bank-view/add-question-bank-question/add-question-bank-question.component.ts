@@ -95,10 +95,10 @@ export class AddQuestionBankQuestionComponent implements OnInit {
     // const ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITH_EMOJI = "^[ A-Za-z0-9_@./#&+-~؛)(÷*/'/!/$]*$";
     this.currentForm = this.fb.group(
       {
-        QuestioAr: ['', [Validators.required,Validators.maxLength(50), Validators.pattern(BaseConstantModel.ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
-        QuestionEn: ['', [/*Validators.required,Validators.maxLength(50),*/ Validators.pattern(BaseConstantModel.ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
-        AnswerAr :['', [Validators.required,Validators.maxLength(500), Validators.pattern(BaseConstantModel.ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
-        AnswerEn : ['', [/*Validators.required,Validators.maxLength(500),*/ Validators.pattern(BaseConstantModel.ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
+        QuestioAr: ['', [Validators.required,Validators.maxLength(50)]],
+        QuestionEn: ['', [/*Validators.required,Validators.maxLength(50),*/ ]],
+        AnswerAr :['', [Validators.required,Validators.maxLength(500)]],
+        AnswerEn : ['', [/*Validators.required,Validators.maxLength(500),*/]],
       })
   }
 

@@ -359,7 +359,13 @@ font-family: Almarai-Regular;
 
 // check box 
 
-
+.accept {
+  
+  .mat-radio-label-content
+    {
+      font-size: 12px;
+    }
+}
 .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
   border-color: #8E2520 !important;
 
@@ -445,6 +451,7 @@ select.form-control {
   max-width: 14rem;
   cursor: pointer;
   width: 95%;
+  padding: 0 0.5rem;
 }
 .badges {
   .badge-info {
@@ -605,7 +612,7 @@ app-tel-input >
 }.iti__selected-flag:lang(ar){
   padding: 0 6px 0 22px;
 }
-// notify
+// start  notify alertify
 .alertify-notifier .ajs-message.ajs-success {
   background: #d4e5dc;
     border: 5px solid #00BB3259;
@@ -615,6 +622,14 @@ app-tel-input >
       content: url(/assets/images/check-circle1.svg);
       margin: 0 0.5rem;
     }
+    .alertify-notifier .ajs-message.ajs-error::before
+    {
+      content: url(/src/assets/images/check-circle.svg);
+      margin: 0 0.5rem;
+       padding: 0.5rem;
+    
+    }
+    
 .alertify-notifier.ajs-right {
   right: -10px;
 }
@@ -643,6 +658,14 @@ app-tel-input >
   font-size: 1rem;
   font-weight: bold;
 }
+
+.alertify-notifier .ajs-message.ajs-error {
+  background: #fff;
+    border: 3px solid #8E25205C;
+  padding: 1rem !important;
+  border-radius: 5px;
+}
+// end  notify alertify
 
 // removemilady
 .HijriGregorianDatePicker.removemilady .btn:last-of-type{
@@ -954,4 +977,21 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+// model style in EN and AR
+.modal-header ,.modal-body ,.modal-footer{
+  &:lang(ar){
+      direction: rtl;
+      text-align: right;
+  }
+  &:lang(en){
+      direction: ltr;
+      text-align: left;
+  }
+
+}
+.size_img_model
+{
+  width: 465px;
+  height: 400px;
 }

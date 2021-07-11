@@ -87,11 +87,11 @@ export class AddEditNotificationComponent implements OnInit {
   buildForm() {
     this.notifyForm = this.fb.group(
       {
-        notifyName: ['', [Validators.required, Validators.maxLength(100), Validators.pattern(BaseConstantModel.LETTERS_WITH_ALPHANUMERIC_AND_SPECIAL_CHAR)]],
-        numberNotify: ['', [Validators.required]],
-        notifyType: ['', [Validators.required]],
-        messageAr: ['', [Validators.required, Validators.maxLength(300), Validators.pattern(BaseConstantModel.ARABIC_LETTERS_WITH_ALPHANUMERIC_AND_SPECIAL_CHAR)]],
-        messageEn: ['', [Validators.required, Validators.maxLength(300), Validators.pattern(BaseConstantModel.ENGLISH_LETTERS_WITH_ALPHANUMERIC_AND_SPECIAL_CHAR)]]
+        notifyName: ['', [Validators.required, Validators.maxLength(100)]],
+        numberNotify: ['', [Validators.required, Validators.pattern(BaseConstantModel.numberBiggerThanZero), Validators.max(99)]],
+        notifyType: [null, [Validators.required]],
+        messageAr: ['', [Validators.required, Validators.maxLength(300)]],
+        messageEn: ['', [Validators.required, Validators.maxLength(300)]]
       })
   }
 
@@ -118,7 +118,7 @@ export class AddEditNotificationComponent implements OnInit {
           progId: this.notificationDetails.progId,
           notifyId: this.notificationDetails.id,
           notifyName: this.notifyForm.value.notifyName,
-          no: this.notifyForm.value.numberNotify,
+          noDuties: this.notifyForm.value.numberNotify,
           notifyType: this.notifyForm.value.notifyType,
           msgAr: this.notifyForm.value.messageAr,
           msgEn: this.notifyForm.value.messageEn,

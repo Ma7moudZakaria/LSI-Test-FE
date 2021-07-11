@@ -58,7 +58,14 @@
     "NOT_AUTHORIZED": "انت غير مصرح لك بالدخول ",
     "FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE": " برجاء اكمال البيانات وإضافة اكتر من اجابه لسؤال و مراجعة البيانات المكررة",
     "CHOOSEFILE": "إختر الملفات لرفعها",
-    "MANDATORY": "إلزامى"
+    "MANDATORY": "إلزامى",
+    "TWO_OPTIOPN": "  من فضلك ادخل على الاقل قمتين  للاختيارات",
+    "TEXT_INPUT": "ادخل القيم ",
+    "DUPLICATED_ANSWER": "هذا النص مكرر",
+    "MY_PROGRAM": "برامجى",
+    "FEELING": "المشاعر",
+    "FILE_SIZE": "حجم الملف أكبر من 3 ميجا",
+    "EXTENTION_FILE": "امتداد الفايل غير مسوح بيه "
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
@@ -96,7 +103,7 @@
     "CHOOSEFILE": "إختر الملفات لرفعها",
     "MATERIALAVAILABILITY": "إتاحة المادة العلمية",
     "ACTIVATION": "التنشيط",
-    "ALL": "الكل",
+    "ALL": " الكل ",
     "SELECTEDPROGRAMS": "البرامج المختارة فقط",
     "ACTIVE": "مفعل",
     "INACTIVE": " غير مفعل",
@@ -135,7 +142,110 @@
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "البرامج",
-    "ALL": "الكل"
+    "ALL": "الكل",
+    "ADD_PROGRAM": "اضافه برنامج",
+    "ADVANCED_SEARCH": " بحث متقدم ",
+    "DAY": "يوم",
+    "STUDENT": "طالب",
+    "TEACHER": "معلم",
+    "JOINING_EXAM": "اختبار القبول",
+    "PROGRAM_TYPE": "نوع البرنامج",
+    "PROGRAM_NAME": "أسم البرنامج",
+    "PROGRAM_DATE": "مدة البرنامج",
+    "STUDENT_NUMBER": " عدد الطلاب",
+    "TEACHER_NUMBER": " عدد المعلمين",
+    "THE_EXAM": "الاختبتارات ",
+    "STAGE_EXAM": "إختبار مرحلى"
+  },
+  "VIEW_PROGRAMS_BASIC_INFO": {
+    "PROGRAM_DATE": "مدة البرنامج",
+    "STUDENT_NUMBER": " عدد الطلاب",
+    "TEACHER_NUMBER": " عدد المعلمين",
+    "PARTS_NUMBER": "عدد الاجزاء",
+    "IDEA": "فكرة",
+    "PROGRAM_TYPE": "نوع البرنامج",
+    "PROGRAM_GOALS": "اهداف البرنامج",
+    "PROGRAM_VISION": "رؤية البرنامج",
+    "PROGRAM_METHOD": "طريقة البرنامج",
+    "PROGRAM_ADVAN": "مميزات البرنامج",
+    "PROGRAM_PLEDGTXT": "نص التعهد",
+    "PROGRAM_WEEK_DUTI_DAS": "أيام الواجبات",
+    "CONDTIONS": "الشروط",
+    "COPY_PROGRAM": "نسخ البرنامج",
+    "PROGRAM_NAME": "إسم البرنامج",
+    "SAVE": "حفظ",
+    "DAY": "يوم",
+    "PUBLISH_DATE": "تاريخ النشر",
+    "START_DATE":"تاريخ البدء"
+  },
+  "PROGRAM_TABS": {
+    "BASIC_INFO": "البيانات الاساسية",
+    "STUDENTS": "الطلاب",
+    "JOINING_EXAM": "إختبارات الانضمام",
+    "DAYS": "الأيام",
+    "NOTIFACATION": "تنبيهات"
+  },
+  "PROGRAM_DAY_TASKS": {
+    "TASKS": "المهام",
+    "ADD_ITEM": "إضافة بند",
+    "DAILY_HOMEWORK": "الواجب اليومي",
+    "DAY": "يوم"
+  },
+  "PROGRAM_DAYS": {
+    "DAYS": "الأيام",
+    "DAY": "يوم",
+    "REQUIRED_TASKS": "المهام المطلوبة"
+  },
+  "JOINING_REQUEST": {
+    "MODELS": "النماذج",
+    "DEGREE": "الدرجة"
+  },
+  "PROGRAM_DAY_TASK_ENCOURAGEMENT": {
+    "MESSAGE": "الرسالة"
+  },
+  "PROGRAM_DAY_TASK_HEARING": {
+    "DEGREE": "الدرجة",
+    "QUESTION": "السؤال الذي يظهر للطالب"
+  },
+  "PROGRAM_DAY_TASK_LINKING": {
+    "REQUIRED": "الزامى",
+    "QUESTION": "السؤال الذي يظهر للطالب",
+    "AUTO": "الى",
+    "MANUAL": "يدوى",
+    "DEGREE": "الدرجة"
+  },
+  "PROGRAM_DAY_TASK_MEMORIZE": {
+    "PAGES": "صفحات",
+    "QUESTION": "السؤال الذي يظهر للطالب",
+    "DEGREE": "الدرجة"
+  },
+  "PROGRAM_DAY_TASK_EXPLANATION": {
+    "PAGES": "صفحات",
+    "QUESTION": "السؤال الذي يظهر للطالب",
+    "DEGREE": "الدرجة"
+  },
+  "PROGRAM_DAY_TASK_RECITIATION": {
+    "RECITIATION_PERIOD": "فترة التسميع",
+    "FROM": "من",
+    "TO": "إلى"
+  },
+  "PROGRAM_DAY_TASK_REPETITION": {
+    "REQUIRED": "الزامى",
+    "REPETITION_NUMBER": "عدد مرات التكرار",
+    "MESSAGE": "الرسالة",
+    "DEGREE": "الدرجة"
+  },
+  "PROGRAM_DAY_TASK_REVIEW": {
+    "DEGREE": "الدرجة",
+    "PAGES": "الصفحات",
+    "QUESTION": "السؤال الذي يظهر للطالب",
+    "FROM": "من",
+    "TO": "إلى"
+  },
+  "PROGRAM_DAY_TASK_VIDEO": {
+    "VIDEO_NAME": "إسم الفيديو",
+    "VIDEO_LINK": "رابط لفيديو خارجي",
+    "VIDEO_ANOTHER_LINK": "رابط لفيديو خارجي"
   },
   "RESETPASSWORD_PG": {
     "RESET_PASSWORD": "ادخل كلمة المرور الجديدة"
@@ -341,6 +451,7 @@
     "SELECT_EDU": "اختر التعليم الاكاديمي  ",
     "SELECT_EDU_LEVEL": "اختر المؤهل الدراسي",
     "SELECT_EDUCATION_YEARS": "حدد مدة الدراسه",
+    "EDUCATION_YEARS": " مدة الدراسه",
     "SELECT_languages": " اختر اللغه",
     "SELECT_SPECTALIZATION": "اختر التخصص",
     "JOIN_EDU_LEVEL": "ارفق المؤهل الدراسي ",
@@ -502,8 +613,8 @@
   "NOTIFICATIONS": {
     "AFTER_ASSIGNMENT": "بعد عدم تنفيذ ",
     "ASSIGNMENT": "واجب",
-    "MESSAGE_ARABIC": "الراسله بالعربي",
-    "MESSAGE_ENGLISH": "الراسله بالانجليزي",
+    "MESSAGE_ARABIC": "الرسالة بالعربي",
+    "MESSAGE_ENGLISH": "الرسالة بالانجليزي",
     "NOTIFICATION_NAME": "اسم التنبية",
     "ADD_NOTIFICATION": " إضافة تنبية",
     "EDIT_NOTIFICATION": "تعديل التنبيه",
@@ -513,20 +624,21 @@
     "SELECT_NOTIFICATION_TYPE": "إختر نوع التنبية",
     "WRITE_MESSAGE": "اكتب نص الرسالة",
     "ADD_PROGRAM": "اضافه تنبيه",
-    "NOTIFICATIONS": "التبيهات",
+    "NOTIFICATIONS": "التنبيهات",
     "BASICiNFO": " البيانات الاساسية",
     "PROGRAM_CONDITIONS": "الشروط",
     "PROGRAM_DAYS": "الايام",
-    "PROGRAM_JOINEXAME": "ِاختبارات الانضام",
+    "PROGRAM_JOINEXAME": "اختبارات الانضمام",
     "PROGRAM_PERIODICEXAME": "الاختبارات الدوريه",
     "PROGRAM_NOTIFICATIONS": "اليه التنبيه",
     "NUMBER_HOMEWORK_PATTERN": "يرجى ادخال عدد الواجبات صحيحا",
-    "NUMBER_HOMEWORK_MAX_LENGTH": "يرجى ادخال عدد الواجبات اقل من او يساوى 100  حرف",
+    "NUMBER_HOMEWORK_MAX_LENGTH": "يرجى ادخال عدد الواجبات اقل من  100  حرف",
     "NOTIFICATION_NAME_PATTERN": "يرجى ادخال اسم التنبية صحيحا",
     "NOTIFICATION_NAME_MAX_LENGTH": "يرجى ادخال اسم التنبية اقل من او يساوى 100  حرف",
     "QUESTION_AR_MAX_LENGHT": "يرجى ادخال السؤال عربي أقل من أو يساوى 300 حرفا",
     "QUESTION_EN_MAX_LENGHT": "يرجى ادخال السؤال إنجليزي أقل من أو يساوى 300 حرفا",
-    "ARABIC_FIELD": " هذا الحقل يجب أن يكون باللغة العربية"
+    "ARABIC_FIELD": " هذا الحقل يجب أن يكون باللغة العربية",
+    "ENGLISH_FIELD": " هذا الحقل يجب أن يكون باللغة الإنجليزية"
   },
   "PROGRAM_BASIC_INFO": {
     "PROG_NAME": "اسم البرنامج",
@@ -557,6 +669,7 @@
     "TEXT_PLEDGE_PATTERN": "يرجى ادخال نص التعهد صحيحا",
     "TEXT_PLEDGE_MAX_LENGTH": "يرجى ادخال نص التعهد اقل من او يساوى 300  حرف",
     "DAY_COUNT": " ايام الواجبات",
+    "DAY_COUNT_MAX": "يرجى ادخال ايام الواجبات اقل من او يساوى 7  يوم",
     "WRITE_DAY_COUNT": "اكتب عدد الايام",
     "EXAM_PASS": "اجتياز الاختبار قبل القبول",
     "REQUIRD": "الزامى",
@@ -573,10 +686,53 @@
     "TO": "إلى"
   },
   "PROGRAM_DAY_TASK_DETIALS": {
-    "DEGREE": "الدرجات",
+    "DEGREE": "الدرجه",
     "SHOW_QUESTION_TO_STUDENT": "السؤال الذى يظهر لطالب",
     "THE_LISTENING": "الإستماع",
-    "PAGES": "الصفحات"
+    "PAGES": "الصفحات",
+    "VALIDATION_AUDIO": "mp3 ، بحد أقصى 5 ميجا",
+    "VALIDATION_VIDEO": "mp4فديو ، بحد أقصى 5 ميجا",
+    "VALIDATION_IMG_PDF": "pdf ، png & jpg ، بحد أقصى3 ميجا",
+    "VALIDATION_VALUE": " لا يمكن أن تكون القيمة أقل من 1 وأكثر من 30"
+  },
+  "FEELINGS": {
+    "TEACHERS_FEELINGS": "مشاعر المعلمين ",
+    "STUDENTS_FEELINGS": "مشاعر الطلاب ",
+    "TEACHERS_NEW_FEELINGS": "مشاعر المعلمين الجديدة",
+    "STUDENTS_NEW_FEELINGS": "مشاعر الطلاب الجديدة",
+    "STUDENT_FEELINGS_LIST": "قائمة مشاعر الطلاب",
+    "TEACHER_FEELINGS_LIST": "قائمة مشاعر المعلمين"
+  },
+  "CONDITIONDS": {
+    "CUSTOM_CONDITIONDS": "الشروط خاصة",
+    "ADD_CONDITIONS": "إضافة شرط",
+    "EDIT_CONDITIONS": "تعديل الشرط",
+    "CONDITION_TITLE": "عنوان الشرط",
+    "ANSWERS": "اجابات",
+    "ANSWER_TYPE": "نوع الاجابة",
+    "ADD_ANSWER": "إضافة إجابة",
+    "AGE": " السن لا يقل عن",
+    "PASSING_LAST_PROGRAM": " اجتياز اخر برنامج بالمنصة بتقدير",
+    "PREVIOUS_PROGRA": "اتمام برنامج سابق بالمنصه",
+    "MAXIMUM_SUBSCRIBERS": "الحد الأقصى لعدد المشتركين",
+    "NUMBER_PARTS": "عدد الأجزاء",
+    "Qualification": "المؤهل العلمى",
+    "ADMISSIONS": "القبول",
+    "MORE_THAN": "أكبر من او يساوي",
+    "LESS_THAN": "أقل من او يساوي",
+    "NUMERIC_CLAUSE": "شرط رقمي",
+    "MEMORIZE_ONLY": "حفظ فقط ",
+    "READ_ONLY": " قرائة فقط",
+    "MORE_PROGRAM": "اكتر من برنامج حفظ",
+    "MORE_EXPLANATION_PROGRAM": "اكتر من برنامج قراءة",
+    "MEMORIZE_READ": "حفظ وقراءة معا",
+    "TOGGEL": "نعم/لا",
+    "TEXT": "نصى"
+  },
+  "PROGRAM_EXAM_FORM": {
+    "PROGRAM_ACCEPTANCE_EXAM": " اختبار قبول البرنامج",
+    "EXAM_FORMS": "نماذج الإختبار"
+
 
   }
 }

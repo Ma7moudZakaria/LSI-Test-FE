@@ -24,10 +24,27 @@ label{
 .list-group-item {
     position: relative;
     display: block;
-    padding: .4rem 1.2rem;}
+    padding: .4rem 1.2rem;
+    &.active ,&:hover {    
+        background: #CB9118 0% 0% no-repeat padding-box;       
+        color: #FFFFFF;
+        opacity: 1;
+        text-decoration: none;
+        .count{
+            background-color: #fff;
+        }
+    }
+    &.active .fa-trash-alt ,  &.active .fa-copy
+            ,&:hover .fa-trash-alt , &:hover .fa-copy
+            {
+                color: #FFFFFF;
+            }
+
+}
 
     .list-group_program-list 
     .internal_scroll_list_group:lang(ar)
      {
         height: 434px;
     }
+    

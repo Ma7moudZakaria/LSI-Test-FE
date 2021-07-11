@@ -1,17 +1,74 @@
-<div class="tab_page ">
-    <div class=" pt-3">
-        <div class="row">
-            <div class="col-md-12 ">
-                <p>days works!</p>
+<div class="tab_page  ">
+      <!--part الايام  -->
 
-            </div>
-        </div>
-    </div>
-    <div class="col-md-12 max_h">
-        <div class="row">
+  
+    <div class=" part1 list_exams">
+            <div class="list-group list-group_program-list">
+                  <p class="mb-4"> {{'PROGRAM_DAYS.DAYS' | translate}}</p>
+                <app-search-input></app-search-input>
+ 
+                <div class="internal_scroll_list_group order">
+            
+                    <a class="list-group-item  d-flex" 
+                    *ngFor="let progDaysItem of progs?.progDays ;let i=index" 
+                    [class.active]="selectedIndex === i" 
+                    (click)='getDayTasks(progDaysItem.id);selectedIndex=i' >                           
+                        <span>  {{'PROGRAM_DAYS.DAY' | translate}} - {{progDaysItem.order}} </span>               
+                    </a>
+                </div>
            
-        </div>
+            </div>
     </div>
-   
+      
+      <!--part المهام المطلوبة  -->
+
+
+    <div class=" part1 list_exams">
+        <div class="list-group list-group_program-list">
+           
+              <p class="mb-2">{{'PROGRAM_DAYS.REQUIRED_TASKS' | translate}} </p>
+
+            <div class="internal_scroll_list_group">
+        
+                <a class="list-group-item  d-flex  " 
+                  [class.active]="selectedIndexTasks === i" 
+                  (click)='selectedIndexTasks=i ; getDayTasksDetails(programDayTasksDetailsItem);'
+                 *ngFor="let programDayTasksDetailsItem of programDayTasksDetails ;let i=index" >                           
+                   
+               
+                 <span>  {{ this.translate.currentLang === langEnum.en? programDayTasksDetailsItem.dayTaskNameEn : programDayTasksDetailsItem.dayTaskNameAr }} </span>               
+                
+                <span class="redPoint" *ngIf="detailsTypeEnum.taskHearing===programDayTasksDetailsItem?.huffazTask"></span>
+                </a>
+            </div>
+       
+        </div>
+</div>
+    
+      <!--part حفظ  -->
+      <div class=" part1 list_exams" >
+      <p class=" head">
+          {{this.translate.currentLang===langEnum.en?dayTasksDetails?.dayTaskNameEn:dayTasksDetails?.dayTaskNameAr}}
+      </p>
+      <app-program-day-task-hearing *ngIf="detailsTypeEnum.taskHearing===dayTasksDetails?.huffazTask"
+      [hearingTaskDetailsModel]='hearingTaskDetailsModel' [isView] ='isView'>
+      </app-program-day-task-hearing>
+      <app-program-day-task-read-explanation [isView] ='isView'
+       *ngIf="detailsTypeEnum.TaskReadExplanation===dayTasksDetails?.huffazTask"
+      [readExplanationDetailsModel] ='readExplanationDetailsModel'></app-program-day-task-read-explanation>
+      <app-program-day-task-memorize *ngIf="detailsTypeEnum.TaskMemorize===dayTasksDetails?.huffazTask" [memorizeDetailsModel] ='memorizeDetailsModel' [isView] ='isView'></app-program-day-task-memorize>
+      <app-program-day-task-repetition *ngIf="detailsTypeEnum.TaskRepetition===dayTasksDetails?.huffazTask" [repetitionDetailsModel]="repetitionDetailsModel" [isView] ='isView'></app-program-day-task-repetition>
+      <app-program-day-task-linking *ngIf="detailsTypeEnum.TaskLinking===dayTasksDetails?.huffazTask" [linkingDetailsModel]="linkingDetailsModel" [isView] ='isView'></app-program-day-task-linking>
+      <app-program-day-task-daily-test *ngIf="detailsTypeEnum.TaskDailyTest===dayTasksDetails?.huffazTask" [dailyTestDetailsModel]="dailyTestDetailsModel" [isView] ='isView'></app-program-day-task-daily-test>
+      <app-program-day-task-encouragement-letter *ngIf="detailsTypeEnum.TaskEncouragementLetter===dayTasksDetails?.huffazTask"  [isView] ='isView' [encouragementLetterDetailsModel]="encouragementLetterDetailsModel"></app-program-day-task-encouragement-letter>
+      <app-program-day-task-video *ngIf="detailsTypeEnum.TaskVideo===dayTasksDetails?.huffazTask"
+       [videoDetailsModel]="videoDetailsModel" [isView] ='isView'></app-program-day-task-video>
+      <app-program-day-task-review *ngIf="detailsTypeEnum.TaskReview===dayTasksDetails?.huffazTask" [reviewDetailsModel]="reviewDetailsModel" [isView] ='isView'></app-program-day-task-review>
+      <app-program-day-task-recitation *ngIf="detailsTypeEnum.TaskRecitation===dayTasksDetails?.huffazTask" [recitationDetailsModel]="recitationDetailsModel" [isView] ='isView'></app-program-day-task-recitation>
+      <app-program-day-task-recitation-students *ngIf="detailsTypeEnum.TaskRecitationStudents===dayTasksDetails?.huffazTask" [recitationStudentsModel]="recitationStudentsModel" [isView] ='isView'></app-program-day-task-recitation-students>
+      <app-program-day-task-tasmea *ngIf="detailsTypeEnum.TaskTasmea===dayTasksDetails?.huffazTask" [tasmeaModel]="tasmeaModel" [isView] ='isView'></app-program-day-task-tasmea> 
+       <app-program-day-task-test-phased *ngIf="detailsTypeEnum.TaskTestPhased===dayTasksDetails?.huffazTask" [testPhasedDetailsModel]="testPhasedDetailsModel" [isView] ='isView'></app-program-day-task-test-phased>
+       
+      </div>
     
 </div>

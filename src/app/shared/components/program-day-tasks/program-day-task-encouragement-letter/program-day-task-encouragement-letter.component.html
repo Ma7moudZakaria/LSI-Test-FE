@@ -1,7 +1,8 @@
+<ng-container *ngIf="!isView">
 <div class="form-group add-question-template dynamic-radio-button-with-input-text-model mb-0"  >
     <div class="form-group row question px-2">
         <div class="col-sm-8 mt-3">
-            <label class="label_item_question">  الرسالة </label>
+            <label class="label_item_question">  {{'PROGRAM_DAY_TASK_ENCOURAGEMENT.MESSAGE' | translate}}  </label>
             <div class="input-group input-sm input_search_voice" >
                 <input type="text"
                 *ngIf="!encouragementLetterDetailsModel.voiceUrl"
@@ -26,3 +27,22 @@
       
     </div>
 </div>
+
+</ng-container>
+    
+<ng-container *ngIf="isView">
+         <app-voice-recording *ngIf="!encouragementLetterDetailsModel.text" (getVoiceUrl)="saveVoiceUrl($event)"
+         [viewMode]='true' [voiceUrl]='encouragementLetterDetailsModel?.voiceUrl'>
+        </app-voice-recording>
+        
+             <ng-container  *ngIf="!encouragementLetterDetailsModel.voiceUrl">
+               <div class=" cardRecourd mb-2 "   >
+             <!-- <img src="assets/images/days/bookView.svg"> -->
+             <p class=" mr-2 mb-0" 
+             >{{encouragementLetterDetailsModel.text}}</p>
+            </div>    
+             
+             </ng-container>
+             
+        
+</ng-container>

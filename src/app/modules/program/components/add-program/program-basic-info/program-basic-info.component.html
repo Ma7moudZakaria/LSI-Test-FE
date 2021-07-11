@@ -13,9 +13,9 @@
               <div *ngIf="f.progName.errors?.required">
                 {{ 'GENERAL.REQUIRED' | translate }}
               </div>
-              <div *ngIf="f.progName.errors.pattern">
+              <!-- <div *ngIf="f.progName.errors.pattern">
                 {{ 'PROGRAM_BASIC_INFO.PROG_PATTERN' | translate }}
-              </div>
+              </div> -->
               <div *ngIf="f.progName.errors?.maxlength">
                 {{ 'PROGRAM_BASIC_INFO.PROG_NAME_MAX_LENGTH' | translate }}
               </div>
@@ -29,7 +29,7 @@
                     <select class="form-control "  formControlName="shareWith" >
                         <!-- <option [ngValue]="null"  disabled selected>{{ 'NOTIFICATIONS.SELECT_NOTIFICATION_TYPE' | translate }}</option> -->
                         <ng-container *ngFor="let item of collectionOfLookup.SHARED_TYPES">
-                        <option [value]="item .id" >{{item.nameAr}}</option>
+                        <option [value]="item .id" >{{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}</option>
                         
                         </ng-container>
                       </select>
@@ -53,21 +53,26 @@
                 <mat-checkbox  (change)='addProgTypeToList(item, $event)' [checked]="progTypeChecked(item)"
                   class="example-margin " [ngClass]="{'ml-1 mr-1':i==0 ,'ml-5 mr-5': i==1, 'ml-3 mr-3': i==2}"
                   [disabled]='progBasicInfoDetails !== undefined'>
-                    {{item.nameAr}}  
+                  {{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}
                 </mat-checkbox>
             </ng-container>
        </div>
-        <!-- <div *ngIf="f.progType.errors && (f.progType.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
-          <div *ngIf="f.progType.errors?.required">
-          {{ 'GENERAL.REQUIRED' | translate }}
+          <div *ngIf="isSubmit && programTypesList.length === 0" class="alert alert-danger mt-2 mb-2 "> 
+            <div>
+              {{ 'GENERAL.REQUIRED' | translate }}
+            </div>
           </div>
-          </div> -->
       </div>
 
       <div class="col-md-2">
         <div class="form-group">
                 <label class="header_input">{{ 'PROGRAM_BASIC_INFO.PROG_DURATION' | translate }}</label>
                 <input type="text" class="form-control"  formControlName="durationProg" [attr.disabled]='progBasicInfoDetails ? true : null'>
+        </div>
+        <div *ngIf="f.durationProg.errors && (f.durationProg.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
+          <div *ngIf="f.durationProg.errors?.required">
+            {{ 'GENERAL.REQUIRED' | translate }}
+          </div>
         </div>
       </div>
        <div class="col-md-2">
@@ -107,9 +112,9 @@
           <div *ngIf="f.ideaProg.errors?.required">
            {{ 'GENERAL.REQUIRED' | translate }}
           </div>
-          <div *ngIf="f.ideaProg.errors.pattern">
+          <!-- <div *ngIf="f.ideaProg.errors.pattern">
             {{ 'PROGRAM_BASIC_INFO.PROG_IDEA_PATTERN' | translate }}
-          </div>
+          </div> -->
           <div *ngIf="f.ideaProg.errors?.maxlength">
             {{ 'PROGRAM_BASIC_INFO.PROG_IDEA_MAX_LENGTH' | translate }}
           </div>
@@ -129,9 +134,9 @@
           <div *ngIf="f.goalProg.errors?.required">
            {{ 'GENERAL.REQUIRED' | translate }}
           </div>
-          <div *ngIf="f.goalProg.errors.pattern">
+          <!-- <div *ngIf="f.goalProg.errors.pattern">
             {{ 'PROGRAM_BASIC_INFO.PROG_GOAL_PATTERN' | translate }}
-          </div>
+          </div> -->
           <div *ngIf="f.goalProg.errors?.maxlength">
             {{ 'PROGRAM_BASIC_INFO.PROG_GOAL_MAX_LENGTH' | translate }}
           </div>
@@ -147,9 +152,9 @@
 
         <div *ngIf="f.visionProg.errors && (f.visionProg.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
           
-          <div *ngIf="f.visionProg.errors.pattern">
+          <!-- <div *ngIf="f.visionProg.errors.pattern">
             {{ 'PROGRAM_BASIC_INFO.PROG_VISION_PATTERN' | translate }}
-          </div>
+          </div> -->
           <div *ngIf="f.visionProg.errors?.maxlength">
             {{ 'PROGRAM_BASIC_INFO.PROG_VISION_MAX_LENGTH' | translate }}
           </div>
@@ -168,9 +173,9 @@
           <div *ngIf="f.pathProg.errors?.required">
            {{ 'GENERAL.REQUIRED' | translate }}
           </div>
-          <div *ngIf="f.pathProg.errors.pattern">
+          <!-- <div *ngIf="f.pathProg.errors.pattern">
             {{ 'PROGRAM_BASIC_INFO.PATH_PROG_PATTERN' | translate }}
-          </div>
+          </div> -->
           <div *ngIf="f.pathProg.errors?.maxlength">
             {{ 'PROGRAM_BASIC_INFO.PATH_PROG_MAX_LENGTH' | translate }}
           </div>
@@ -189,9 +194,9 @@
           <div *ngIf="f.advantageProg.errors?.required">
            {{ 'GENERAL.REQUIRED' | translate }}
           </div>
-          <div *ngIf="f.advantageProg.errors.pattern">
+          <!-- <div *ngIf="f.advantageProg.errors.pattern">
             {{ 'PROGRAM_BASIC_INFO.ADVANTAGE_PROG_PATTERN' | translate }}
-          </div>
+          </div> -->
           <div *ngIf="f.advantageProg.errors?.maxlength">
             {{ 'PROGRAM_BASIC_INFO.ADVANTAGE_PROG_MAX_LENGTH' | translate }}
           </div>
@@ -210,9 +215,9 @@
           <div *ngIf="f.textPledge.errors?.required">
            {{ 'GENERAL.REQUIRED' | translate }}
           </div>
-          <div *ngIf="f.textPledge.errors.pattern">
+          <!-- <div *ngIf="f.textPledge.errors.pattern">
             {{ 'PROGRAM_BASIC_INFO.TEXT_PLEDGE_PATTERN' | translate }}
-          </div>
+          </div> -->
           <div *ngIf="f.textPledge.errors?.maxlength">
             {{ 'PROGRAM_BASIC_INFO.TEXT_PLEDGE_MAX_LENGTH' | translate }}
           </div>
@@ -229,19 +234,36 @@
           formControlName="dutiesDayType" (change)='dutyDaysChange($event)'>
             <ng-container *ngFor="let item of collectionOfLookup.DUTY_TYPES">
               <mat-radio-button value="{{item.id}}" class="example-radio-button ml-2 mr-2"  
-              [disabled]='progBasicInfoDetails !== undefined'>{{item.nameAr}}</mat-radio-button>
+              [disabled]='progBasicInfoDetails !== undefined'>{{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}</mat-radio-button>
             </ng-container>
             </mat-radio-group>
-              <input type="text" class="form-control w-50" formControlName="dayCount" placeholder="{{ 'PROGRAM_BASIC_INFO.WRITE_DAY_COUNT' | translate }} " 
+              <input type="number" class="form-control w-50" formControlName="dayCount" placeholder="{{ 'PROGRAM_BASIC_INFO.WRITE_DAY_COUNT' | translate }} " 
               [attr.disabled]='progBasicInfoDetails ? true : null' *ngIf='progDutyDaysFreeDaysSelection'>
+
+              <div *ngIf="progDutyDaysFreeDaysSelection && f.dayCount.errors && (f.dayCount.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
+              
+                <div *ngIf="progDutyDaysFreeDaysSelection && f.dayCount.errors?.required">
+                  {{ 'GENERAL.REQUIRED' | translate }}
+                </div>
+                <div *ngIf="progDutyDaysFreeDaysSelection && f.dayCount.errors?.max">
+                {{ 'PROGRAM_BASIC_INFO.DAY_COUNT_MAX' | translate }}
+                </div>
+              </div>
       
               <div *ngIf='!progDutyDaysFreeDaysSelection'>
                 <ng-container *ngFor="let item of collectionOfLookup.DAYS" >
                   <mat-checkbox   (change)='addProgWeeklyDayToList(item, $event)' [checked]="progWeeklyDaysChecked(item)"
                   class="example-margin ml-1 mr-1" [disabled]='progBasicInfoDetails !== undefined' >
-                  {{item.nameAr}}  
+                  {{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}
                   </mat-checkbox>
                   </ng-container>
+              </div>
+
+              <div *ngIf="!progDutyDaysFreeDaysSelection && isSubmit && progWeeklyDayList.length === 0" class="alert alert-danger mt-2 mb-2 ">
+              
+                <div>
+                  {{ 'GENERAL.REQUIRED' | translate }}
+                </div>
               </div>
 
         <!-- <mat-checkbox    *ngFor="let Item of days" 
@@ -249,11 +271,15 @@
           {{Item}}  
         </mat-checkbox> -->
 
-         <!-- <div *ngIf="f.dutiesDays.errors && (f.dutiesDays.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
-          <div *ngIf="f.dutiesDays.errors?.required">
-           {{ 'GENERAL.REQUIRED' | translate }}
-          </div>
-          </div> -->
+            <!-- <div *ngIf="f.dayCount.errors && (f.dayCount.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
+              
+              <div *ngIf="f.dayCount.errors?.required">
+                {{ 'GENERAL.REQUIRED' | translate }}
+              </div>
+              <div *ngIf="f.dayCount.errors?.max">
+              {{ 'PROGRAM_BASIC_INFO.DAY_COUNT_MAX' | translate }}
+              </div>
+            </div> -->
 
 
           </div>
@@ -279,8 +305,8 @@
             </div>
             <mat-checkbox   *ngFor="let item of collectionOfLookup.RATING;let i=index" [checked]='progProgRatingChecked(item)'
             (change)='addProgRatingToList(item, $event)'
-            class="example-margin " [ngClass]="{'ml-1 mr-1':i==0 ,'ml-5 mr-5': i==1, 'ml-3 mr-3': i==2}" >
-              {{item.nameAr}}  
+            class="example-margin " [ngClass]="{'ml-1 mr-1':i==0 ,'ml-2 mr-2': i==1}" >
+            {{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}
             </mat-checkbox>
        </div>
       </div>
@@ -327,7 +353,7 @@
                (change)='isSardTimesChange($event)' formControlName="recitType">
             <ng-container *ngFor="let item of collectionOfLookup.SARD_TYPES ;let i=index">
                   
-                <mat-radio-button value="{{item.id}}" class="example-radio-button ml-2 mr-2">{{item.nameAr}}</mat-radio-button>
+                <mat-radio-button value="{{item.id}}" class="example-radio-button ml-2 mr-2">{{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}</mat-radio-button>
                   <!-- <mat-radio-button value="2" class="example-radio-button ml-1 mr-1">فترة محددة</mat-radio-button> -->
                 </ng-container>
                 </mat-radio-group>
@@ -408,7 +434,7 @@
       {{ "GENERAL.SAVE" | translate }}
   </button>
 
-  <button    type="reset" class="cancel-btn"> 
+  <button (click)="onCancel()" type="reset" class="cancel-btn"> 
       {{ "GENERAL.CANCEL" | translate }}
   </button>
 </div>

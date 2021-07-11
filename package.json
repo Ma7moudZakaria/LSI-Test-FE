@@ -33,6 +33,7 @@
     "jwt-decode": "^3.1.2",
     "moment": "^2.29.1",
     "moment-hijri": "^2.1.2",
+    "ng2-pdf-viewer": "^7.0.1",
     "ng2-tel-input": "^2.3.0",
     "ngx-bootstrap": "^6.2.0",
     "ngx-hijri-gregorian-datepicker": "^1.0.8",

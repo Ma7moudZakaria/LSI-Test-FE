@@ -1,14 +1,22 @@
-<p>program-condition-setting works!</p>
 
 
 <div class="container-fluid">
     <div class="row">
-       <div class="col-12"></div>
+       <div class="col-12">
+           <app-view-condition-setting 
+           (addEditCoidition)="openAddEditOverLay($event)"
+           >
+        </app-view-condition-setting>
+       </div>
        
     </div>
 
 <div class="overlay" *ngIf="showAddForm">
-    <app-add-condition-setting (closeOverlay)="closeForm()" ></app-add-condition-setting>
+    <app-add-condition-setting 
+     (closeOverlay)="closeForm()"
+     (addCustomCondition)="addCustomCondition()"
+     [modelEdit]="modelEdit"
+     ></app-add-condition-setting>
 </div>
 
 </div>

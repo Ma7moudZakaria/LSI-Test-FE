@@ -1,53 +1,46 @@
 
 
 <div class="form-group conditionForm mt-3 pl-3 pr-3" >
-    <h3 class="head"> إضافة شرط</h3>
     
+    <h3 class=" head  bold" *ngIf="!modelEdit">{{'CONDITIONDS.ADD_CONDITIONS' | translate}} </h3>
+    <h3 class=" head  bold" *ngIf="modelEdit"> {{'CONDITIONDS.EDIT_CONDITIONS' | translate}}</h3>
        
-        
+      
     <div class="form-group">
         <div class="row">
             <div class="col-12">
-                <label class="text-right header_input">عنوان الشرط</label>
+                <label class=" header_input"> {{'CONDITIONDS.CONDITION_TITLE' | translate}} </label>
                <input type="text" class="form-control"  [(ngModel)]="conditionModel.title">
-        
             </div>
-
         </div>
-        
     </div>
 
     <div class="form-group">
         <div class="row">
-            <div class="col-12">
-                <label class="text-right header_input mb-3"> نوع الاجابه</label>
-                <mat-radio-group   class="example-radio-group"  [(ngModel)]="conditionModel.answerType" aria-label="Select an option" >
-                   <!-- <ng-container  *ngFor="let item of collectionOfLookup.PROGRAM_CONDTION"></ng-container> -->
-                    <mat-radio-button value="{{item.id}}" class="example-radio-button ml-3"  
-                    *ngFor="let item of collectionOfLookup.PROG_COND_TYPES" (change)="radioChange($event)">
-                    {{ translate.currentLang == langEnum.en ? item.nameEn : item.nameAr}}
-                    </mat-radio-button>
-                    <!-- <mat-radio-button  value="{{answerTypeEnum.text}}" class="example-radio-button ml-1 mr-1"  >{{text() }} </mat-radio-button>
-                    <mat-radio-button  value="{{answerTypeEnum.toggel}}" class="example-radio-button ml-1 mr-1"  >{{toggel() }} </mat-radio-button> -->
+            <div class="col-12" *ngIf='conditionModel.answerType'>
+                <label class=" header_input mb-3">  {{'CONDITIONDS.ANSWER_TYPE' | translate}}  </label>
+                <mat-radio-group  
+                 class="example-radio-group" 
+                 [(ngModel)]="conditionModel.answerType" [ngModelOptions]="{standalone: true}" >
+                    <mat-radio-button  value="{{answerTypeEnum.Choices}}" class="example-radio-button ml-1 mr-1" >{{Choices()}} </mat-radio-button>
+                    <mat-radio-button  value="{{answerTypeEnum.Text}}" class="example-radio-button ml-1 mr-1"  >{{text() }} </mat-radio-button>
+                    <mat-radio-button  value="{{answerTypeEnum.Toggel}}" class="example-radio-button ml-1 mr-1"  >{{toggel() }} </mat-radio-button>
                 </mat-radio-group>
-        
             </div>
-
-           
 
         </div>
         
     </div>
- 
-<ng-container *ngIf="huff === answerTypeEnum.Choices">
+
+<ng-container *ngIf="answerTypeEnum.Choices == conditionModel.answerType" >
     <div class="form-group" >
         <div class="row">
             <div class="col-12">
-                <label class="text-right header_input mb-3"> الاجابات </label>
+                <label class=" header_input mb-3"> {{'CONDITIONDS.ANSWERS' | translate}}</label>
                 <ng-container *ngFor="let answer of conditionModel.answerList">
                     <div class="d-flex mb-2">
                     <input type="text" class="form-control w-90" [(ngModel)]="answer.text" >
-                    <a>
+                    <a (click)='deleteAnswerDialog(answer)'>
                         <img src="../../../../assets/images/trash-2.svg" class="btn_trash" >   
                     </a>
                     </div>
@@ -55,26 +48,38 @@
             </div>
                 <div class="col-12 mt-3">
                     <button   type="submit" class="cancel-btn m-0" (click)="addAnswer()"> 
-                        اضافه اجابه
+                        {{'CONDITIONDS.ADD_ANSWER' | translate}} 
                     </button>
                 </div>
+
+                <div *ngIf="resMessage" class="alert alert-{{ resMessage.type }} ">
+                    <span class=" py-2  my-4 ">
+                    {{resMessage.message}}
+                  </span>
+                     </div>
+
         </div>
     </div>
 </ng-container>
 
-
-    
+<!-- 
+<div *ngIf="resMessage" class="alert alert-{{ resMessage.type }} my-4 py-2 text-center">
+    <span class="bold"> {{resMessage.message}}</span>
+ </div>
+  -->
    <section class="mt-5">
             <div  class="row direction-rtl buttons-center mt-5">
-                <button   type="submit" class="save-btn" (click)="saveCondition()"> 
+                <button   type="submit" class="save-btn" (click)="saveCondition()" *ngIf="!modelEdit"> 
                     {{ "GENERAL.SAVE" | translate }}
                     
                 </button>
-               
+                <button   type="submit" class="save-btn" (click)="savingEdit()"*ngIf="modelEdit" > 
+                    {{ "GENERAL.EDIT" | translate }}
+                </button>
                 <button  type="reset" class="cancel-btn"    (click)="closeForm()"> 
                     {{ "GENERAL.CANCEL" | translate }} 
                     
                 </button>
             </div>
-        </section>
+    </section>
 </div>

@@ -1,0 +1,77 @@
+<ng-container *ngIf="isViewToProgCond">
+    <div class="card-setting viewMode">
+        <div class="head">
+           <span>{{lastProgramModel.title}}</span>
+           <img class="close" src="../../../../../assets/images/feelings/close.svg" (click)="confirmDialog()">
+        </div>
+        <div class="body">
+            <div class="form-group w-100"  >
+            <div class="input-group">
+                <div class="input-group pr-2rem"> 
+                    <select class="UpdateUser__Options form-control" name="nameEn" [(ngModel)]="lastProgramModel.condSelcted">
+                        <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELECT_PROGRAM' | translate }}</option>
+        
+                            <option *ngFor="let item of ProgramsList"
+                                [value]="item.id">
+                                        {{ translate.currentLang == langEnum.en ? item.nameEn :
+                                            item.nameAr}}
+                                    </option>
+                        </select>
+                </div>
+                <span class="plus-btn position-absolute">                                        
+                    <button class="btn btn-light btn-add" type="button"
+                        (click)="addDegreeItem()">
+                        <img  src="../../../../../../assets/images/add.svg" class=" cursor-pointer Catogry_Icon_Add">
+                    </button>
+                </span>
+             
+            </div>
+            </div>
+           
+            
+        </div>
+         <div class="row">
+                <div class="badges ">
+                <span *ngFor="let p of selectedLastPrograms"
+                    class="badge badge-info p-2">{{translate.currentLang == langEnum.en? p.nameEn :p.nameAr}}
+                    <a (click)="removeItemFromSelectedLastPrograms(p)"><i class="fas fa-times-circle"></i></a>
+                </span>
+            </div>
+            </div>
+                
+
+            <div  class="row  buttons-center ">
+                <label class="switch">
+                    <input type="checkbox" [(ngModel)]="lastProgramModel.isRequired" >
+                    <span class="slider round">{{ "GENERAL.MANDATORY" | translate }}</span>
+                  </label>
+                <button   type="submit" class="save-btn" (click)="saveProgramConditions()"> 
+                    {{ "GENERAL.SAVE" | translate }}
+                </button>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="!isViewToProgCond">
+    <div class="card-setting viewMode">
+        <div class="head">
+           <span>
+            {{'CONDITIONDS.PASSING_LAST_PROGRAM' | translate}}   
+           </span>
+        </div>
+        <div class="body">
+            <div class="form-group w-90"  >
+            <select class="UpdateUser__Options form-control"  name="nameEn">
+                <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELECT_PROGRAM' | translate }}</option>
+
+                <option *ngFor="let item of ProgramsList"
+                [value]="item.id">
+                        {{ translate.currentLang == langEnum.en ? item.nameEn :
+                            item.nameAr}}
+                    </option>
+            </select>
+            </div>
+        </div>
+
+
+    </div>
+</ng-container>

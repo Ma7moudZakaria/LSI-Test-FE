@@ -14,7 +14,7 @@ export class ProgramExamesComponent implements OnInit {
   @ViewChild(ExamFormsListComponent) examFormsListComponent:ExamFormsListComponent | undefined;
   @ViewChild(ProgramAttacheExamTemplatsComponent) examDetailsComponent:ProgramAttacheExamTemplatsComponent | undefined;
 
-  @Output() progDetailsEvent = new EventEmitter<string>();
+  @Output() progDetailsEvent = new EventEmitter();
   @Input() progDetails : IProgramDetails | undefined;
 
   selectedExamFormId={id:'',arabExamName:'',engExamName:''}; 
@@ -29,8 +29,10 @@ export class ProgramExamesComponent implements OnInit {
   }
 
   async assignExamFormToProgram() {
+    this.examFormsListComponent?.assignExamFormToProgram()
+  }
 
-    await this.examFormsListComponent?.assignExamFormToProgram();
+  getProgDetails(){
     this.progDetailsEvent.emit();
   }
 }

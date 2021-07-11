@@ -1,17 +1,26 @@
+import { period } from './program-day-tasks-interfaces/iprogram-day-task-recitation';
 
 export interface IProgramFilterAdvancedRequest {
   name?: string;
-  typeList?: string[];
-  dura?: number;
+  programTypes?: IProgramType[];
+  duration?: number;
   isTest?: boolean;
-  PageNumber?: number;
-  PageSize?: number;
-
-  arabName?:string;
-  engName?:string;
+  stuNum?: number;
+  techNum?: number;
+  skip?: number;
+  take?: number;
+  arabName?: string;
+  engName?: string;
+  isPeriodicExam?: boolean;
+  teachersCount?: number;
+  studentsCount?: number;
+  programTypesFilter?: string;
 }
 
 
+export interface IProgramType {
+  progTypeId?: String;
+}
 
 export interface IProgramFilterByNameRequest {
   name?: string;

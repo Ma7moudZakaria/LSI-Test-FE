@@ -1,5 +1,5 @@
 
-<div class="attache-exam-list">
+<div class="attache-exam-list" *ngIf='!isView'> 
     <div class="row">
       <div class="col-12">
         <section class="internal_scroll_list_group ">
@@ -31,4 +31,11 @@
     
     </div>
     
-    
+    <ng-container *ngIf="isView">
+                  <div class=" cardRecourd mb-2 "  *ngFor = 'let question of dailyTestDetailsModel?.questions'>
+                    <img src="assets/images/days/bookView.svg">
+                    <app-question-template  class="day_detils"
+                      [questionTemplate] = 'question' [viewMode]='true'>
+                    </app-question-template>
+                  </div>    
+  </ng-container>

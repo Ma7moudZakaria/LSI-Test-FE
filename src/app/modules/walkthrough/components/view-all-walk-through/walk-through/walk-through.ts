@@ -220,8 +220,8 @@ export class WalkThroughComponent implements OnInit {
     const ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITH_EMOJI = "^[ A-Za-z0-9_@./#&+-~؛)(÷*/'/!/$]*$";
     this.currentForm = this.fb.group(
       {
-        textAr: ['', [Validators.required, Validators.maxLength(1000), Validators.pattern(BaseConstantModel.TEXT_AREA_ARABIC_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]],
-        textEn: ['', [Validators.required, Validators.maxLength(1000), Validators.pattern(BaseConstantModel.TEXT_AREA_ENGLISH_LETTERS_WITH_SPECIAL_CHAR_WITHOUT_EMOJI)]]
+        textAr: ['', [Validators.required, Validators.maxLength(1000)]],
+        textEn: ['', [Validators.required, Validators.maxLength(1000)]]
       }
     )
   }

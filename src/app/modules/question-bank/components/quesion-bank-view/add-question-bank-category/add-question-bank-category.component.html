@@ -7,9 +7,9 @@
       <div *ngIf="f.nameAr.errors.required">
           {{"QUESTION_BANK.REQUIRED"|translate}}
       </div>
-      <div *ngIf="f.nameAr.errors.pattern">
+      <!-- <div *ngIf="f.nameAr.errors.pattern">
           {{ 'QUESTION_BANK.ARABIC_FIELD' | translate }}
-       </div>
+       </div> -->
        <div *ngIf="f.nameAr.errors?.maxlength ">
         {{ 'QUESTION_BANK.NAME_AR_MAX_LENGHT' | translate}}
     </div>
@@ -23,9 +23,9 @@
       <div *ngIf="f.nameEn.errors.required">
           {{"QUESTION_BANK.REQUIRED"|translate}}
       </div>
-      <div *ngIf="f.nameEn.errors.pattern">
+      <!-- <div *ngIf="f.nameEn.errors.pattern">
           {{ 'QUESTION_BANK.ENGLISH_FIELD' | translate }}
-       </div>
+       </div> -->
        <div *ngIf="f.nameEn.errors?.maxlength ">
         {{ 'QUESTION_BANK.NAME_EN_MAX_LENGHT' | translate}}
     </div>

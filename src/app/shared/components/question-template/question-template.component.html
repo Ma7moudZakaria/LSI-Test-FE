@@ -25,8 +25,6 @@
             [viewMode]='viewMode' [voiceUrl]='questionTemplate?.voiceUrl'></app-voice-recording>
 
         </div> 
-
-
       
     </div>
     <div class="col-sm-2">
@@ -67,7 +65,7 @@
    
       <div *ngFor = 'let answer of questionTemplate.answers'>
         <div class="col-12">
-      <mat-checkbox class="example-margin "
+      <mat-checkbox class="example-margin " (change)='onItemChecked(answer, $event)'
        [(ngModel)]="answer.correct" [ngModelOptions]="{standalone: true}" [disabled]='viewMode'>
         <input type="text" class="form-control input_fullWidth" [(ngModel)]="answer.text"  aria-label="Text input with checkbox" [disabled]='viewMode'>
           <a *ngIf='!viewMode' (click)="stopPropagation($event)" (click)='deleteAnswerDialog(answer)'>

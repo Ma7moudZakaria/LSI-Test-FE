@@ -14,6 +14,8 @@ import { BaseLookupModel } from 'src/app/core/ng-model/base-lookup-model';
 import { Router } from '@angular/router';
 import { IProgramBasicInfoDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { ThrowStmt } from '@angular/compiler';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 @Component({
   selector: 'app-program-basic-info',
   templateUrl: './program-basic-info.component.html',
@@ -38,6 +40,7 @@ export class ProgramBasicInfoComponent implements OnInit {
   progDutyDaysFreeDaysSelection:boolean = true;
   isSardEnabled:boolean = false;
   isSardTimesEnabled:boolean = false;
+  langEnum = LanguageEnum;
 
   programTypesList: IProgramType[] = [];
   programRatingList:IProgRatings[] = [];
@@ -51,7 +54,8 @@ export class ProgramBasicInfoComponent implements OnInit {
     public translate: TranslateService,
     private BasicInfoService: ProgramBasicInfoService, 
     private lookupService: LookupService,
-    private router: Router
+    private router: Router,
+    private alert : AlertifyService
   ) { }
 
   ngOnInit(): void {
@@ -90,24 +94,24 @@ export class ProgramBasicInfoComponent implements OnInit {
   buildForm() {
     this.baseInfoForm = this.fb.group(
       {
-        progName: ['', [Validators.required, Validators.maxLength(100), Validators.pattern(BaseConstantModel.LETTERS_WITH_ALPHANUMERIC_AND_SPECIAL_CHAR)]],
+        progName: ['', [Validators.required, Validators.maxLength(100)]],
         shareWith: ['', [Validators.required]],
         durationProg: ['', [Validators.required]],
         dutyTime: ['', [Validators.required]],
         availableDuty: ['', [Validators.required]],
-        ideaProg: ['', [Validators.required , Validators.maxLength(300), Validators.pattern(BaseConstantModel.LETTERS_WITH_ALPHANUMERIC_AND_SPECIAL_CHAR)]],
-        goalProg: ['', [Validators.required, Validators.maxLength(300), Validators.pattern(BaseConstantModel.LETTERS_WITH_ALPHANUMERIC_AND_SPECIAL_CHAR)]],
-        visionProg: ['', [Validators.maxLength(300), Validators.pattern(BaseConstantModel.LETTERS_WITH_ALPHANUMERIC_AND_SPECIAL_CHAR)]],
-        pathProg: ['', [Validators.required, Validators.maxLength(300), Validators.pattern(BaseConstantModel.LETTERS_WITH_ALPHANUMERIC_AND_SPECIAL_CHAR)]],
-        advantageProg: ['', [Validators.required, Validators.maxLength(300), Validators.pattern(BaseConstantModel.LETTERS_WITH_ALPHANUMERIC_AND_SPECIAL_CHAR)]],
-        textPledge: ['', [Validators.required, Validators.maxLength(300), Validators.pattern(BaseConstantModel.LETTERS_WITH_ALPHANUMERIC_AND_SPECIAL_CHAR)]],
+        ideaProg: ['', [Validators.required , Validators.maxLength(300)]],
+        goalProg: ['', [Validators.required, Validators.maxLength(300)]],
+        visionProg: ['', [Validators.maxLength(300)]],
+        pathProg: ['', [Validators.required, Validators.maxLength(300)]],
+        advantageProg: ['', [Validators.required, Validators.maxLength(300)]],
+        textPledge: ['', [Validators.required, Validators.maxLength(300)]],
         dutiesDayType: ['', [Validators.required]],
-        dayCount:[''],
+        dayCount:['1' , [Validators.required,Validators.max(7)]], 
         examPass: [''],
         rectMand: [''],
         isAlsard: [false],
         recitType:[''],
-        // progType:[['3349E0C2-177D-4587-91D5-1F8F2B9E1406','0BBAB569-71C7-4D8E-B96A-6207C46BF4CB']]
+        //progType:[[] /*, [Validators.required]*/]
 
       })
   }
@@ -155,8 +159,12 @@ export class ProgramBasicInfoComponent implements OnInit {
   onSubmit() {
     this.isSubmit = true;
     this.resultMessage = {}
+
+    if (!this.progDutyDaysFreeDaysSelection && this.progWeeklyDayList.length === 0){
+      return;
+    }
     //form is valid
-    if (this.baseInfoForm.valid) {
+    if (this.baseInfoForm.valid && this.programTypesList.length > 0) {
 
       // 1- fill EDit model 
       if (this.progBasicInfoDetails) {
@@ -231,44 +239,29 @@ export class ProgramBasicInfoComponent implements OnInit {
         this.router.navigate(['/program/edit-program/' + res.data]);
       }
       else {
-        this.resultMessage = {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+        this.alert.error(res.message || '');
       }
     }, error => {
-      this.resultMessage = {
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
-      }
+      this.alert.error(error || '');
     });
-
-
   }
-
 
   editBasicInfoProgrm() {
     this.BasicInfoService.updateBasicIfoProgram(this.baseicInfoProgrmEditModel || {}).subscribe(res => {
 
       if (res.isSuccess) {
-        this.resultMessage = {
-          message: res.message || "",
-          type: BaseConstantModel.SUCCESS_TYPE
-        }
-
+        this.alert.success(res.message || '');
       }
       else {
-        this.resultMessage = {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+        this.alert.error(res.message || '');
       }
     }, error => {
-      this.resultMessage = {
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
-      }
+      this.alert.error(error || '');
     });
+  }
+
+  onCancel(){
+    this.router.navigate(["/program"]);
   }
 
   dutyDaysChange(event:any){
@@ -334,7 +327,6 @@ export class ProgramBasicInfoComponent implements OnInit {
         this.progWeeklyDayList?.splice(ind, 1);
       }
     }
-    console.log(this.progWeeklyDayList);
   }
 
   progWeeklyDaysChecked(item:BaseLookupModel){

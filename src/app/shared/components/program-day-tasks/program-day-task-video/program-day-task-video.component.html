@@ -1,35 +1,93 @@
+
+    <ng-container *ngIf="!isView">
+
 <div class="day-task-video details_day">
     <div class="form-group">
         <div class="row">
             <div class="col-12 mt-3">
-                <label class="text-right header_input">أسم الفديو</label>
+                <label class="text-right header_input"> {{'PROGRAM_DAY_TASK_VIDEO.VIDEO_NAME'| translate}}</label>
     
                <input type="text" class="form-control " [(ngModel)]="videoDetailsModel.videoName" >
             </div>
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group mb-0">
         <label class="custom-file custom-file__text" for="importFile">
             <p class="custom-file__label">{{'GENERAL.CHOOSEFILE' |translate}}</p>
     </label>
         <input type="file" class="custom-file-input" id="importFile" 
-    (change)="onFileChange($any($event.target).files)" >
-            <div class="col-4 cardRecourd"  *ngFor="let item of videoDetailsModel?.videoAttatchments;let i=index" >
-                <!-- <img src="assets/images/days/book.svg"> -->
-                <span>{{item.fileName}}</span>
-                <i class="fas fa-play-circle"></i>
-                <img class="trash" src="assets/images/feelings/trash.svg"  (click)="DeleteAttachment(i,item.id)">
-            </div>
+    (change)="onFileChange($any($event.target).files)" 
+    accept="video/mp4,video/x-m4v,video/*" >
+    <span class="hint_validation">{{'PROGRAM_DAY_TASK_DETIALS.VALIDATION_VIDEO'|translate}}</span>
+        
     </div>
 
+    <div class="row mx-0" >
+        <ng-container *ngFor="let item of videoDetailsModel?.videoAttatchments;let i=index">
+            <div class="col-4 cardRecourd" (click)="openVerticallyCentered(content)">
+                <img src="assets/images/days/book.svg">
+                <p class="ellipsis mb-0 ml-2 mr-2"  matTooltip="{{item.fileName}}">{{item.fileName}}</p>
+                <img class="trash" src="assets/images/feelings/trash.svg"  (click)="DeleteAttachment(i,item.id)">
+            </div>
+
+            <ng-template #content let-modal>
+                <div class="modal-header">
+                  <h4 class="modal-title">{{item.fileName}}</h4>
+                </div>
+                <div class="modal-body">
+                    <video width="450px" height="400px" controls autoplay>
+                        <source [src]="item.url" type="video/mp4">
+                    </video>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+                </div>
+              </ng-template>
+
+
+        </ng-container>
+    </div>
     <div class="form-group">
         <div class="row">
             <div class="col-12">
-                <label class="text-right header_input">رابط الفديو </label>
+                <label class="text-right header_input"> {{'PROGRAM_DAY_TASK_VIDEO.VIDEO_LINK'| translate}}</label>
     
                <input type="text" class="form-control " [(ngModel)]="videoDetailsModel.videoLink" >
             </div>
         </div>
     </div>
     </div>
+</ng-container>
+    <ng-container *ngIf="isView">
+        <!-- <p class="mb-2 name"> الحفظ</p> -->
+    
+             <div class="mt-3  mb-3">
+                 <span class="grad">  {{'PROGRAM_DAY_TASK_VIDEO.VIDEO_NAME'| translate}}
+                     <span>  &nbsp;  : </span>
+                     <span>  &nbsp; </span> 
+                 </span>
+                 <p class="info">{{videoDetailsModel.videoName}}</p>
+    
+             </div>
+    
+             <div class="mt-3  mb-3">
+                <span class="grad">    {{'PROGRAM_DAY_TASK_VIDEO.VIDEO_ANOTHER_LINK'| translate}}
+                    <span>  &nbsp;  : </span>
+                    <span>  &nbsp; </span> 
+                </span>
+                <p class="info">{{videoDetailsModel.videoLink}} </p>
+   
+            </div> 
+            
+                 <ng-container  *ngFor="let item of videoDetailsModel?.videoAttatchments;let i=index">
+                   <div class=" cardRecourd mb-2 ">
+                        <img src="assets/images/days/bookView.svg">CC
+                        <p class=" mr-2 mb-0" 
+                        matTooltip="{{item.fileName}}">{{item.fileName}} </p>
+                      </div>    
+                 </ng-container>
+                 
+             
+                 
+    </ng-container>
