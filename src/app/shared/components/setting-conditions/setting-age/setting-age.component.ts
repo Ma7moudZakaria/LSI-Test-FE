@@ -29,6 +29,7 @@ export class SettingAgeComponent implements OnInit {
   updateProgramConditionDetailsModel: IUpdateProgramConditionDetailsModel = {};
   result: string = '';
   programConditionViewMoodEnum=ProgramConditionViewMoodEnum;
+  
   constructor(
     public languageService: LanguageService,
     public translate: TranslateService,

@@ -155,14 +155,14 @@
                             <app-setting-age [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [ViewprogCondmood]='programConditionViewMoodEnum.conditionBasicInfoViewMood'></app-setting-age>
                           </div>
                  <div class="col-6 mb-3" *ngIf="programConditionsEnum.qualifications===item.conditionNo">
-                    <app-setting-qualifications [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [isViewToProgCond]='true'></app-setting-qualifications>
+                    <app-setting-qualifications [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [ViewprogCondmood]='programConditionViewMoodEnum.conditionBasicInfoViewMood'></app-setting-qualifications>
                  </div>
                  <!--  -->
                  <div class="col-6 mb-3" *ngIf="programConditionsEnum.dgreeaLastProgram===item.conditionNo">
-                        <app-setting-degree-last-program [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [isViewToProgCond]='true'></app-setting-degree-last-program>
+                        <app-setting-degree-last-program [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [ViewprogCondmood]='programConditionViewMoodEnum.conditionBasicInfoViewMood'></app-setting-degree-last-program>
                     </div>
                     <div class="col-6 mb-3" *ngIf="programConditionsEnum.programFinished===item.conditionNo">
-                        <app-setting-last-program [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [isViewToProgCond]='true'></app-setting-last-program>
+                        <app-setting-last-program [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [ViewprogCondmood]='programConditionViewMoodEnum.conditionBasicInfoViewMood'></app-setting-last-program>
                     </div>
             
                     <div class="col-6 mb-3" *ngIf="programConditionsEnum.numberStudentSubscribtion===item.conditionNo">

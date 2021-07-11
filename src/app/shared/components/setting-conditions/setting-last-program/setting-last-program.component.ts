@@ -15,6 +15,7 @@ import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { ProgramConditionsService } from 'src/app/core/services/program-services/program-conditions.service';
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/confirm-modal.component';
+import { ProgramConditionViewMoodEnum } from 'src/app/core/enums/programs/program-condition-view-mood-enum.enum';
 
 @Component({
   selector: 'app-setting-last-program',
@@ -24,7 +25,7 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/c
 export class SettingLastProgramComponent implements OnInit {
   @Output() progIdToLoadProgCond = new EventEmitter<string>();
   @Input() programConditionsModel: IProgramConditionsModel = {};
-  @Input() isViewToProgCond: boolean = false;
+  @Input() ViewprogCondmood: number = ProgramConditionViewMoodEnum.conditionSettingViewMood;
   lastProgramModel: IProgramPredefinedCoditionsMulti = {};
   resultMessage: BaseMessageModel = {};
   updateProgramConditionDetailsModel: IUpdateProgramConditionDetailsModel = {};
@@ -34,6 +35,8 @@ export class SettingLastProgramComponent implements OnInit {
   programFilterByNameFilterRequest = {} as IProgramFilterByNameRequest;
   langEnum = LanguageEnum;
   selectedLastPrograms = Array<IProgramPredefinedvalue>();
+  programConditionViewMoodEnum=ProgramConditionViewMoodEnum;
+
   constructor(
     private ProgramService: ProgramService,
     public translate: TranslateService,

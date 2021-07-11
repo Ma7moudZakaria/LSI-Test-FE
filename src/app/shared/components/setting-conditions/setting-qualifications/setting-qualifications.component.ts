@@ -6,7 +6,6 @@ import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
 import { IProgramConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-conditions-model';
 import { IProgramPredefinedCoditionsMulti, IProgramPredefinedvalue } from 'src/app/core/interfaces/programs-interfaces/iprogram-predefined-coditions-multi';
-import { IprogramPredefinedCustomConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-predefined-custom-conditions-model';
 import { IUpdateProgramConditionDetailsModel } from 'src/app/core/interfaces/programs-interfaces/iupdate-program-condition-details-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
@@ -15,6 +14,7 @@ import { LanguageService } from 'src/app/core/services/language-services/languag
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 import { ProgramConditionsService } from 'src/app/core/services/program-services/program-conditions.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/confirm-modal.component';
+import { ProgramConditionViewMoodEnum } from 'src/app/core/enums/programs/program-condition-view-mood-enum.enum';
 
 
 @Component({
@@ -25,7 +25,7 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/c
 export class SettingQualificationsComponent implements OnInit {
   @Output() progIdToLoadProgCond = new EventEmitter<string>();
   @Input() programConditionsModel: IProgramConditionsModel = {};
-  @Input() isViewToProgCond: boolean = false;
+  @Input() ViewprogCondmood: number = ProgramConditionViewMoodEnum.conditionSettingViewMood;
   qualificationModel: IProgramPredefinedCoditionsMulti = {};
   resultMessage: BaseMessageModel = {};
   updateProgramConditionDetailsModel: IUpdateProgramConditionDetailsModel = {};
@@ -34,6 +34,8 @@ export class SettingQualificationsComponent implements OnInit {
   listOfLookupProfile: string[] = ['EDU_LEVEL'];
   langEnum = LanguageEnum;
   selectedQualification = Array<IProgramPredefinedvalue>();
+  programConditionViewMoodEnum=ProgramConditionViewMoodEnum;
+  
   constructor(
     private lookupService: LookupService,
     public translate: TranslateService,

@@ -17,14 +17,14 @@
                     <app-setting-age [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [ViewprogCondmood]='programConditionViewMoodEnum.conditionProgramViewMood'></app-setting-age>
                   </div>
          <div class="col-3 mb-3" *ngIf="programConditionsEnum.qualifications===item.conditionNo">
-            <app-setting-qualifications [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [isViewToProgCond]='true'></app-setting-qualifications>
+            <app-setting-qualifications [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [ViewprogCondmood]='programConditionViewMoodEnum.conditionProgramViewMood'></app-setting-qualifications>
          </div>
          <!--  -->
          <div class="col-3 mb-3" *ngIf="programConditionsEnum.dgreeaLastProgram===item.conditionNo">
-                <app-setting-degree-last-program [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [isViewToProgCond]='true'></app-setting-degree-last-program>
+                <app-setting-degree-last-program [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [ViewprogCondmood]='programConditionViewMoodEnum.conditionProgramViewMood'></app-setting-degree-last-program>
             </div>
             <div class="col-3 mb-3" *ngIf="programConditionsEnum.programFinished===item.conditionNo">
-                <app-setting-last-program [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [isViewToProgCond]='true'></app-setting-last-program>
+                <app-setting-last-program [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [ViewprogCondmood]='programConditionViewMoodEnum.conditionProgramViewMood'></app-setting-last-program>
             </div>
     
             <div class="col-3 mb-3" *ngIf="programConditionsEnum.numberStudentSubscribtion===item.conditionNo">
