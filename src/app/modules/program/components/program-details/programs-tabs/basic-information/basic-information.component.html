@@ -157,7 +157,6 @@
                  <div class="col-6 mb-3" *ngIf="programConditionsEnum.qualifications===item.conditionNo">
                     <app-setting-qualifications [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [ViewprogCondmood]='programConditionViewMoodEnum.conditionBasicInfoViewMood'></app-setting-qualifications>
                  </div>
-                 <!--  -->
                  <div class="col-6 mb-3" *ngIf="programConditionsEnum.dgreeaLastProgram===item.conditionNo">
                         <app-setting-degree-last-program [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [ViewprogCondmood]='programConditionViewMoodEnum.conditionBasicInfoViewMood'></app-setting-degree-last-program>
                     </div>
@@ -177,15 +176,6 @@
                    
                    </ng-container >
                 </div>
-        
-                <hr>
-                <div class="row">
-                <ng-container  *ngFor="let item of programConditionsCustomList ;let i=index">
-                            <div class="col-3 mb-3">
-                                <app-custom-conditions [customConditionsModel]='item' [isViewToProgCond]='true' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()'></app-custom-conditions>
-                            </div>
-                </ng-container>
-                  </div>
             </div>
         </div>
      </div>

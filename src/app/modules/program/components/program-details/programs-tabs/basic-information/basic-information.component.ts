@@ -8,7 +8,6 @@ import { ProgramConditionViewMoodEnum } from 'src/app/core/enums/programs/progra
 import { programPredefinedConditionsEnum } from 'src/app/core/enums/programs/program-predefined-conditions-enum.enum';
 import { IProgramConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-conditions-model';
 import { ICopyProgram } from 'src/app/core/interfaces/programs-interfaces/iprogram-copy-model';
-import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-model';
 import { IProgramBasicInfoDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { IprogramPredefinedCustomConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-predefined-custom-conditions-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
@@ -16,7 +15,6 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { ProgramConditionsService } from 'src/app/core/services/program-services/program-conditions.service';
-import { ProgramDayTasksService } from 'src/app/core/services/program-services/program-day-tasks.service';
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 
