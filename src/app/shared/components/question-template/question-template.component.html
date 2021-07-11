@@ -33,7 +33,7 @@
       </div>
       <div class="col-sm-2">
         <label class="label_item_question">{{"EXAM_FORM.DGREE"|translate}}</label>
-        <input type="number" min="1" [(ngModel)]="questionTemplate.degree"  class="form-control" placeholder="{{'EXAM_FORM.DGREE'|translate}}" [disabled]='viewMode'>
+        <input type="number" min="1" [(ngModel)]="questionTemplate.degree"  class="form-control" placeholder="{{'EXAM_FORM.DGREE'|translate}}"   (ngModelChange)="degreeChange()" [disabled]='viewMode'>
       </div>
 </div>
 <div class="form-group row">

@@ -15,7 +15,6 @@ answerType?:AnswerTypeEnum;//enum
 answers :IAnswer [];
 correctAnswersByAnswerNumbers?: number [];
 correctAnswersByAnswerNumber?: string;
-
 studentAnswersByAnswerNumbers?: number [];
 studentAnswersByAnswerNumber?: string;
 }

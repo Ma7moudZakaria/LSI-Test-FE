@@ -1,14 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AnswerTypeEnum } from 'src/app/core/enums/exam-builder-enums/answer-type-enum.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IExam } from 'src/app/core/interfaces/exam-builder-interfaces/iexam';
 import { IQuestion } from 'src/app/core/interfaces/exam-builder-interfaces/iquestion';
 import { IAttacheExamTemplateModel } from 'src/app/core/interfaces/exam-form-interfaces/iattache-exam-template-model';
-import { IExamFormsModel } from 'src/app/core/interfaces/exam-form-interfaces/iexam-forms-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
@@ -29,10 +27,10 @@ export class AttacheExamTemplateComponent implements OnInit {
   @Input() selectedExamFormId = { id: '', arabExamName: '', engExamName: '' };
   resultMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
+  totalDegree:number | undefined;
+
   constructor(private examFormService: ExamFormService, 
-    private activeroute: ActivatedRoute,
     public dialog: MatDialog,
-    private router: Router,
     public translate: TranslateService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -79,7 +77,13 @@ else{
   }
 
   saveExam() {
-    if(this.examFormService.validateQuestion(this.exam.questions)===true){
+    if(((this.exam.scorePass ||0 ) > this.exam?.scoreTotal!)||(this.exam.scorePass ===0 )||(this.exam?.scoreTotal ===undefined||0)||(this.exam.scorePass ===undefined||0)){ 
+      this.resultMessage = {
+      message:this.translate.currentLang === LanguageEnum.ar ? this.translate.instant('EXAM_FORM.THE_SUCCESS_RATE_SHOULD_LESS_THAN_TOTAL_DEGREE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE'),// this.translate.currentLang === LanguageEnum.en ? "Please complete the missing information" : "برجاء اكمال البيانات",
+      type: BaseConstantModel.DANGER_TYPE
+    }
+  }
+   else if(this.examFormService.validateQuestion(this.exam.questions)===true){
       this.isView = true;
       this.saveAttacheExamTemplate();
     }
@@ -123,6 +127,8 @@ else{
   }
   saveAttacheExamTemplate() {
     this.attacheExamTemplate.id = this.selectedExamFormId.id;
+    this.attacheExamTemplate.scorePass= this.exam.scorePass;
+    this.attacheExamTemplate.scoreTotal= this.exam.scoreTotal;
     this.attacheExamTemplate.examTemplate = JSON.stringify(this.exam.questions);
     this.resultMessage = {};
        this.examFormService.attachmentsExamTemplate(this.attacheExamTemplate).subscribe(res => {
@@ -168,6 +174,10 @@ else{
         }
       }
     });
+  }
+
+  calculateTotalDegree(){
+    this.exam.scoreTotal = this.exam.questions.reduce((sum, current) => sum + current.degree! , 0) ;
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { AnswerTypeEnum } from 'src/app/core/enums/exam-builder-enums/answer-type-enum.enum';
@@ -18,6 +18,7 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../confirm-modal/conf
   styleUrls: ['./question-template.component.scss']
 })
 export class QuestionTemplateComponent implements OnInit {
+  @Output() degreeValueChange = new EventEmitter<string>();
   @Input() questionTemplate: IQuestion = { answers: [] };
   @Input() viewMode: boolean = false;
   answerTypeEnum = AnswerTypeEnum;
@@ -130,6 +131,8 @@ onItemChecked(item: IAnswer, event:any){
     }
   }
 }
-
+degreeChange(){
+  this.degreeValueChange.emit();
+}
 
 }
