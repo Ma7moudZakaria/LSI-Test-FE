@@ -56,7 +56,8 @@ export class ProgramDayTaskReviewComponent implements OnInit {
   closeResult: string | undefined;
 
   openVerticallyCentered(content: any) {
-    this.modalService.open(content, { centered: true });
+    // this.modalService.open(content, { centered: true });
+    this.modalService.open(content, { size: 'lg' });
   }
 
   listExt = ["jpg", "png", "jpeg", "gif", "bmp", "tif", "tiff", "pdf"]

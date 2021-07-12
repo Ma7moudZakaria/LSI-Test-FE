@@ -44,7 +44,8 @@ export class ProgramDayTaskHearingComponent implements OnInit {
 
   closeResult: string | undefined;
   openVerticallyCentered(content: any) {
-    this.modalService.open(content, { centered: true });
+    // this.modalService.open(content, { centered: true });
+    this.modalService.open(content, { size: 'lg' });
   }
   listExt = ["MP3", "MP4", "FLP", "PEK", "m4a"]
 
