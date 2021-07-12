@@ -364,7 +364,7 @@ export class AddScientificMaterialComponent implements OnInit {
         this.programMessage = {
           message: this.translate.instant('SCIENTIFIC_MATERIAL.Select_Program'),
           type: BaseConstantModel.DANGER_TYPE
-        }      
+        }
       return;
     }
     this.programMessage = {};
@@ -387,5 +387,20 @@ export class AddScientificMaterialComponent implements OnInit {
     // setTimeout(() => {
     //   this.submitSuccess?.emit(true);
     // }, 2000);
+  }
+  onDragOver(event: any) {
+    event.preventDefault();
+  }
+
+// From drag and drop
+  onDropSuccess(event: any) {
+    event.preventDefault();
+
+    this.onFileChange(event.dataTransfer.files);    // notice the "dataTransfer" used instead of "target"
+  }
+
+// From attachment link
+  onChange(event: any) {
+    this.onFileChange(event.target.files);    // "target" is correct here
   }
 }
