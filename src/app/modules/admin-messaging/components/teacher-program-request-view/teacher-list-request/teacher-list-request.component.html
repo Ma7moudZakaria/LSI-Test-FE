@@ -1,1 +1,10 @@
-<p>teacher-list-request works!</p>
+<div class="list-group list-group_program-list">
+    <div class="internal_scroll_list_group">
+        <a class="list-group-item d-flex"  
+        [class.active]="selectedIndex === -1"
+        (click)="teatcherRequestSelected(teacherRequestEnum.joinRequest);selectedIndex=-1"> 
+        <span>  طلبات الانضمام</span>        
+       </a>
+    </div>
+
+</div>

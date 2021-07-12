@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { TeacherRequestEnum } from 'src/app/core/enums/teacher-subscription-enums/teacher-request-enum.enum';
 
 @Component({
   selector: 'app-teacher-list-request',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeacherListRequestComponent implements OnInit {
 
+  @Output() selectedTeatcherRequest =  new EventEmitter<number>();
+  teacherRequestEnum=TeacherRequestEnum;
+  selectedIndex:number | undefined;
+
   constructor() { }
+
 
   ngOnInit(): void {
   }
-
+ 
+teatcherRequestSelected(requestNum:number){
+  this.selectedTeatcherRequest.emit(requestNum);
+}
 }
