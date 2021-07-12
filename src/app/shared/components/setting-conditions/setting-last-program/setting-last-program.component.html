@@ -1,4 +1,4 @@
-<ng-container *ngIf="isViewToProgCond">
+<ng-container *ngIf="ViewprogCondmood===programConditionViewMoodEnum.conditionProgramViewMood">
     <div class="card-setting viewMode">
         <div class="head">
            <span>{{lastProgramModel.title}}</span>
@@ -51,7 +51,8 @@
         </div>
     </div>
 </ng-container>
-<ng-container *ngIf="!isViewToProgCond">
+
+<ng-container *ngIf="ViewprogCondmood===programConditionViewMoodEnum.conditionSettingViewMood">
     <div class="card-setting viewMode">
         <div class="head">
            <span>
@@ -73,5 +74,20 @@
         </div>
 
 
+    </div>
+</ng-container>
+
+<ng-container *ngIf="ViewprogCondmood===programConditionViewMoodEnum.conditionBasicInfoViewMood">
+    <label class="title">
+        {{lastProgramModel.title}}
+        <span>  &nbsp;  : </span>
+        <span>  &nbsp; </span>
+     </label>
+     <div class="badges ">
+        <span *ngFor="let p of selectedLastPrograms"
+            class="badge badge-info p-2">{{translate.currentLang == langEnum.en? p.nameEn :p.nameAr}}
+        </span>
+        <span>  &nbsp; </span>
+        <span *ngIf="lastProgramModel.isRequired" class="requiredFlag">{{ "GENERAL.MANDATORY" | translate }} </span>
     </div>
 </ng-container>

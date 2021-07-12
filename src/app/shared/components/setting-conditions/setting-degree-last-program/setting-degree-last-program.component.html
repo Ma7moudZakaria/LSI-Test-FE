@@ -1,4 +1,4 @@
-<ng-container *ngIf="isViewToProgCond">
+<ng-container *ngIf="ViewprogCondmood===programConditionViewMoodEnum.conditionProgramViewMood">
     <div class="card-setting viewMode">
         <div class="head">
            <span>{{degreeLastProgramModel.title}}</span>
@@ -50,7 +50,7 @@
     </div>
 </ng-container>
 
-<ng-container *ngIf="!isViewToProgCond">
+<ng-container *ngIf="ViewprogCondmood===programConditionViewMoodEnum.conditionSettingViewMood">
     <div class="card-setting viewMode">
         <div class="head">
            <span>  {{'CONDITIONDS.PASSING_LAST_PROGRAM' | translate}}</span>
@@ -85,4 +85,19 @@
         </div>
         </div>
     </div>
+</ng-container>
+
+<ng-container *ngIf="ViewprogCondmood===programConditionViewMoodEnum.conditionBasicInfoViewMood">
+    <label class="title">
+        {{degreeLastProgramModel.title}}
+        <span>  &nbsp;  : </span>
+        <span>  &nbsp; </span>
+     </label>
+        <div class="badges">
+      <span *ngFor="let p of selectedDegreeLastPrograms"
+          class="badge badge-info p-2">{{translate.currentLang == langEnum.en? p.nameEn :p.nameAr}}
+      </span>
+      <span>  &nbsp; </span>
+  <span *ngIf="degreeLastProgramModel.isRequired" class="requiredFlag">{{ "GENERAL.MANDATORY" | translate }} </span>
+  </div>
 </ng-container>

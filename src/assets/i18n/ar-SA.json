@@ -599,7 +599,9 @@
     "DURATION_ANSWER": "مدة الاجابة",
     "RIGHT_ANSWER": "الاجابه الصحيحه",
     "DURATION": "المدة",
-    "ADD_QUESTION": "إضافة سؤال"
+    "ADD_QUESTION": "إضافة سؤال",
+    "THE_SUCCESS_RATE":"نسبة النجاح",
+    "THE_SUCCESS_RATE_SHOULD_LESS_THAN_TOTAL_DEGREE":"يجب أن تكون نسبة النجاح اقل من مجموع الدرجات الكلية ولا تساوى صفر"
   },
   "User_Requests": {
     "REQUESTS": "الطلبات",

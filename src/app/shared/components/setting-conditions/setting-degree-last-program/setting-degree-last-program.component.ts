@@ -13,6 +13,7 @@ import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 import { ProgramConditionsService } from 'src/app/core/services/program-services/program-conditions.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/confirm-modal.component';
+import { ProgramConditionViewMoodEnum } from 'src/app/core/enums/programs/program-condition-view-mood-enum.enum';
 
 @Component({
   selector: 'app-setting-degree-last-program',
@@ -22,7 +23,7 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/c
 export class SettingDegreeLastProgramComponent implements OnInit {
   @Output() progIdToLoadProgCond = new EventEmitter<string>();
   @Input() programConditionsModel: IProgramConditionsModel = {};
-  @Input() isViewToProgCond: boolean = false;
+  @Input() ViewprogCondmood: number = ProgramConditionViewMoodEnum.conditionSettingViewMood;
   degreeLastProgramModel: IProgramPredefinedCoditionsMulti = {};
   resultMessage: BaseMessageModel = {};
   updateProgramConditionDetailsModel: IUpdateProgramConditionDetailsModel = {};
@@ -31,7 +32,7 @@ export class SettingDegreeLastProgramComponent implements OnInit {
   collectionOfLookup = {} as ILookupCollection;
   listOfLookupProfile: string[] = ['DEGREE'];
   selectedDegreeLastPrograms = Array<IProgramPredefinedvalue>();
-
+  programConditionViewMoodEnum=ProgramConditionViewMoodEnum;
 
   constructor(
     private lookupService: LookupService,

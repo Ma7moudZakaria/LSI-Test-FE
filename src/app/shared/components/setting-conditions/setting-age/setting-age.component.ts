@@ -12,6 +12,7 @@ import { LanguageService } from 'src/app/core/services/language-services/languag
 import { ProgramConditionsService } from 'src/app/core/services/program-services/program-conditions.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/confirm-modal.component';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
+import { ProgramConditionViewMoodEnum } from 'src/app/core/enums/programs/program-condition-view-mood-enum.enum';
 
 
 @Component({
@@ -22,11 +23,13 @@ import { AlertifyService } from 'src/app/core/services/alertify-services/alertif
 export class SettingAgeComponent implements OnInit {
   @Output() progIdToLoadProgCond = new EventEmitter<string>();
   @Input() programConditionsModel: IProgramConditionsModel = {};
-  @Input() isViewToProgCond: boolean = false;
+  @Input() ViewprogCondmood: number = ProgramConditionViewMoodEnum.conditionSettingViewMood;
   ageModel: IProgramPredefinedCoditionsSingle = {};// IProgCondPredefinedNumerical = {};
   resultMessage: BaseMessageModel = {};
   updateProgramConditionDetailsModel: IUpdateProgramConditionDetailsModel = {};
   result: string = '';
+  programConditionViewMoodEnum=ProgramConditionViewMoodEnum;
+  
   constructor(
     public languageService: LanguageService,
     public translate: TranslateService,

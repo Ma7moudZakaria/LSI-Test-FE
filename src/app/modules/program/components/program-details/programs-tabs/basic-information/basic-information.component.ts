@@ -4,13 +4,17 @@ import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { ProgramConditionViewMoodEnum } from 'src/app/core/enums/programs/program-condition-view-mood-enum.enum';
+import { programPredefinedConditionsEnum } from 'src/app/core/enums/programs/program-predefined-conditions-enum.enum';
+import { IProgramConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-conditions-model';
 import { ICopyProgram } from 'src/app/core/interfaces/programs-interfaces/iprogram-copy-model';
-import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-model';
 import { IProgramBasicInfoDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
+import { IprogramPredefinedCustomConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-predefined-custom-conditions-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
+import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
-import { ProgramDayTasksService } from 'src/app/core/services/program-services/program-day-tasks.service';
+import { ProgramConditionsService } from 'src/app/core/services/program-services/program-conditions.service';
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 
@@ -32,6 +36,11 @@ export class BasicInformationComponent implements OnInit {
   isShow = false;
   programName: string | undefined;
   prgPubliDate:string | undefined;
+  programConditionsPredefinedList:IProgramConditionsModel[] | undefined;
+  programConditionsCustomList:IprogramPredefinedCustomConditionsModel[] | undefined;
+  errorMessage?: string;
+  programConditionsEnum=programPredefinedConditionsEnum;
+  programConditionViewMoodEnum=ProgramConditionViewMoodEnum;
 
   constructor(
     public translate: TranslateService,
@@ -39,8 +48,8 @@ export class BasicInformationComponent implements OnInit {
     private programService: ProgramService,
     private router: Router,
     private modalService: NgbModal,
-    private programDayTasksService: ProgramDayTasksService,
-    private alert: AlertifyService) { }
+    private alert: AlertifyService,
+    public programConditionsService:ProgramConditionsService) { }
 
   ngOnInit(): void {
     this.basicInfoDetails = this.progBasicInfoDetails;
@@ -51,6 +60,7 @@ export class BasicInformationComponent implements OnInit {
     }
 
     console.log("progBasicInfoDetails ===========>", this.progBasicInfoDetails);
+    this. getProgramConditionsLisByProgId();
   }
 
   copyProgramData(progName?: string) {
@@ -180,5 +190,29 @@ export class BasicInformationComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+  getProgramConditionsLisByProgId() {
+    this.programConditionsService.getProgramConditionsByProgId(this.progBasicInfoDetails?.id|| '').subscribe(res => {
+      var response = <BaseResponseModel>res;
+      if (response.isSuccess) {
+        let programConditionsList = res.data as IProgramConditionsModel[];
+        this.programConditionsPredefinedList= programConditionsList .filter(x=>x.isCustom==false) ;
+        this.programConditionsCustomList=programConditionsList .filter(x=>x.isCustom).map(m=>({
+         id:m.id ,
+         title:m.title ,
+         no:m.no,
+          conditionJson:m.progCondValue !="0"?m.progCondValue:m.conditionContain,
+          isRequired:m.condRequired,
+          conditionModel:  JSON.parse(m.conditionContain || "{}")
+        }));
+      }
+      else {
+        this.errorMessage = response.message;
+      }
+    } ,
+      error => {
+        console.log(error);
+      });
   }
 }

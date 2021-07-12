@@ -13,6 +13,7 @@ import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { ProgramConditionsService } from 'src/app/core/services/program-services/program-conditions.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/confirm-modal.component';
+import { ProgramConditionViewMoodEnum } from 'src/app/core/enums/programs/program-condition-view-mood-enum.enum';
 
 @Component({
   selector: 'app-setting-maxmum-subscribe',
@@ -22,11 +23,12 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/c
 export class SettingMaxmumSubscribeComponent implements OnInit {
   @Output() progIdToLoadProgCond = new EventEmitter<string>();
   @Input() programConditionsModel: IProgramConditionsModel = {};
-  @Input() isViewToProgCond: boolean = false;
+  @Input() ViewprogCondmood: number = ProgramConditionViewMoodEnum.conditionSettingViewMood;
   maxmumSubscribeModel: IProgramPredefinedCoditionsSingle = {};
   resultMessage: BaseMessageModel = {};
   updateProgramConditionDetailsModel: IUpdateProgramConditionDetailsModel = {};
   result: string = '';
+  programConditionViewMoodEnum=ProgramConditionViewMoodEnum;
 
   constructor(
     public languageService: LanguageService,

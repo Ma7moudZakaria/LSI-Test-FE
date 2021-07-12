@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { ProgramConditionViewMoodEnum } from 'src/app/core/enums/programs/program-condition-view-mood-enum.enum';
 import { programPredefinedConditionsEnum } from 'src/app/core/enums/programs/program-predefined-conditions-enum.enum';
 import { ConditionsForm } from 'src/app/core/interfaces/programs-interfaces/iassign-conditions-to-program-model';
 import { IProgramConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-conditions-model';
@@ -21,14 +22,8 @@ export class ProgramConditionsComponent implements OnInit {
   programConditionsPredefinedList:IProgramConditionsModel[]=[];
   programConditionsCustomList:IprogramPredefinedCustomConditionsModel[]=[];
   programConditionsEnum=programPredefinedConditionsEnum;
-  ageModel: IProgramConditionsModel = {};
-  partQuranModel: IProgramConditionsModel = {};
-  maxmumSubscribeModel: IProgramConditionsModel = {};
-  qualificationsModel: IProgramConditionsModel = {};
-  accepModel: IProgramConditionsModel = {};
- degreeLastProgramModel: IProgramConditionsModel = {};
- lastProgramModel: IProgramConditionsModel = {};
  errorMessage?: string;
+ programConditionViewMoodEnum=ProgramConditionViewMoodEnum;
 
   constructor(
     public languageService: LanguageService,

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { ProgramConditionViewMoodEnum } from 'src/app/core/enums/programs/program-condition-view-mood-enum.enum';
 import { IProgramConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-conditions-model';
 import { IProgramPredefinedCoditionsSingle } from 'src/app/core/interfaces/programs-interfaces/iprogram-predefined-coditions-single';
 import { IUpdateProgramConditionDetailsModel } from 'src/app/core/interfaces/programs-interfaces/iupdate-program-condition-details-model';
@@ -21,12 +22,14 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/c
 export class SettingPartQraanComponent implements OnInit {
   @Output() progIdToLoadProgCond = new EventEmitter<string>();
   @Input() programConditionsModel: IProgramConditionsModel = {};
-  @Input() isViewToProgCond: boolean = false;
+  @Input() ViewprogCondmood: number = ProgramConditionViewMoodEnum.conditionSettingViewMood;
   partQuranModel: IProgramPredefinedCoditionsSingle = {};
   resultMessage: BaseMessageModel = {};
   updateProgramConditionDetailsModel: IUpdateProgramConditionDetailsModel = {};
   result: string = '';
   resValidation: Number | undefined;
+  programConditionViewMoodEnum=ProgramConditionViewMoodEnum;
+  
   constructor(
     public languageService: LanguageService,
     public translate: TranslateService,

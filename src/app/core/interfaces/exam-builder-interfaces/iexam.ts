@@ -8,4 +8,6 @@ no?:number;
  examTemplate?: string;
  // examname?:string;
 questions: IQuestion[];
+scorePass?:number;
+scoreTotal?:number;
 }

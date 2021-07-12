@@ -1,4 +1,4 @@
-<ng-container *ngIf="isViewToProgCond">
+<ng-container *ngIf="ViewprogCondmood===programConditionViewMoodEnum.conditionProgramViewMood">
     <div class="card-setting viewMode">
         <div class="head">
            <span>{{maxmumSubscribeModel.title}}</span>
@@ -21,7 +21,7 @@
 </ng-container>
 
 
-<ng-container *ngIf="!isViewToProgCond">
+<ng-container *ngIf="ViewprogCondmood===programConditionViewMoodEnum.conditionSettingViewMood">
     <div class="card-setting viewMode">
         <div class="head">
            <span>{{'CONDITIONDS.MAXIMUM_SUBSCRIBERS' | translate}}   </span>
@@ -36,4 +36,15 @@
         </div>
 
     </div>
+</ng-container>
+
+<ng-container *ngIf="ViewprogCondmood===programConditionViewMoodEnum.conditionBasicInfoViewMood">
+    <label class="title">
+        {{maxmumSubscribeModel.title}}
+        <span>  &nbsp;  : </span>
+        <span>  &nbsp; </span>
+     </label>
+     <label> {{ maxmumSubscribeModel.value}} </label>
+     <span>  &nbsp; </span>
+     <span *ngIf="maxmumSubscribeModel.isRequired" class="requiredFlag">{{ "GENERAL.MANDATORY" | translate }} </span>
 </ng-container>
