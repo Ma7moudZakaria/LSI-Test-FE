@@ -47,20 +47,18 @@
                        </ng-container>
                     </a>
 
+                    <pdf-viewer 
+                [src]="pdfSrc" 
+                [render-text]="true" 
+                [original-size]="false" 
+                [fit-to-page]="true"
+                [show-all]="true"
+                style="display: block; height: 620px;"></pdf-viewer>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
                 </div>
-              </ng-template>
-              
-        <!-- <pdf-viewer 
-        [src]="item.fileName" 
-        [render-text]="true" 
-        [original-size]="false" 
-        [fit-to-page]="true"
-        [show-all]="true"
-        [autoresize]="true"
-        style="display: block; height: 620px;"></pdf-viewer> -->
+              </ng-template>  
 
         </ng-container>
     </div>
