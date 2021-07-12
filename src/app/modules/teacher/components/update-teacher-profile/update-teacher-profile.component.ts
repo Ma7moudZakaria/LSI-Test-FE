@@ -60,6 +60,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
   milady: boolean = false;
   hijriBinding: any;
   hijriBirthDateInputParam: NgbDateStruct = { year: 0, day: 0, month: 0 };
+  hijriInterviewDayInputParam: NgbDateStruct = { year: 0, day: 0, month: 0 };
 
   ProgramsList: IprogramsModel[] = [];;
   ProgramFilter: IProgramFilterAdvancedRequest = {};
@@ -263,6 +264,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           isHasEjazaHafz: [null, Validators.required],
           isHasEjazaTelawa: [null, Validators.required],
           workingPlatForm: [null, Validators.required],
+          hijriInterviewDay: [null, Validators.required],
           bankName: [null],
           bankNumber: [null],
           ejazaAttachments: [],
@@ -307,6 +309,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           isHasEjazaHafz: [null, Validators.required],
           isHasEjazaTelawa: [null, Validators.required],
           workingPlatForm: [null, Validators.required],
+          hijriInterviewDay: [null, Validators.required],
           bankName: [null],
           bankNumber: [null],
           ejazaAttachments: [],
@@ -401,7 +404,10 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.f.bankName.setValue(this.teacherProfileDetails?.bankName)
     this.f.bankNumber.setValue(this.teacherProfileDetails?.bankNumber)
 
-    this.f.interviewDay.setValue(this.teacherProfileDetails?.interviewId)
+    let dateInterviewDay = new Date(this.teacherProfileDetails?.interviewHijri || '');
+    this.hijriInterviewDayInputParam = { year: dateInterviewDay.getFullYear(), month: dateInterviewDay.getMonth() + 1, day: dateInterviewDay.getDay() }
+    this.f.hijriInterviewDay.setValue(dateInterviewDay);
+
     this.f.interviewTime.setValue(this.teacherProfileDetails?.interviewTime)
 
     this.fileList = this.teacherProfileDetails?.ejazaAttachments;
@@ -496,7 +502,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
         bankName: this.profileForm.value.bankName,
         bankNumber: this.profileForm.value.bankNumber,
 
-        interviewId: this.profileForm.value.interviewDay,
+        interviewHijri: this.profileForm.value.hijriInterviewDay,
         interviewTime: this.profileForm.value.interviewTime,
 
         address: this.profileForm.value.address,
@@ -738,6 +744,13 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.hijriBinding = date
 
     this.f.hijriBirthDate.setValue(date);
+  }
+
+  HijriInterviewDay(date: any) {
+    date = date.year + '/' + date.month + '/' + date.day;
+    this.hijriBinding = date
+
+    this.f.hijriInterviewDay.setValue(date);
   }
 
   addDrgree() {

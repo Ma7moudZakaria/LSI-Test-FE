@@ -52,7 +52,7 @@ export interface ITeacherProfile{
     workingPlatForm?:string;
     workingPlatFormAr?:string;
     workingPlatFormEn?:string;
-    interviewId?:string;
+    interviewHijri?:string;
     interviewAr?:string;
     interviewEn?:string;
     interviewTime?:string;

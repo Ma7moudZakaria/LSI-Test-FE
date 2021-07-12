@@ -292,22 +292,25 @@
                                     {{ 'UPDATE_TEACHER_PG.INFO_CONTACT' | translate }}
                                 </p>
                             </div>
-                            <div class="col-lg-2  col-md-6 col-sm-2 col-xs-2 mt-3">
-                                <label class="Register__Label" for="interviewDay"> 
+                            <div class="col-lg-4  col-md-6 col-sm-2 col-xs-2 mt-3">
+                                <label class="Register__Label" for="hijriInterviewDay"> 
                                     {{ 'UPDATE_TEACHER_PG.DAY' | translate }}
                                 </label>
                                
-                                    <select class="UpdateUser__Options" name="nameEn" formControlName="interviewDay">
+                                    <!-- <select class="UpdateUser__Options" name="nameEn" formControlName="interviewDay">
                                         <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELECT_DAY' | translate }}</option>
                                         
                                         <option *ngFor="let interviewDayItem of collectionOfLookup.DAYS"
                                             [value]="interviewDayItem.id">
                                             {{ translate.currentLang == langEnum.en ? interviewDayItem.nameEn : interviewDayItem.nameAr}}
                                         </option>
-                                    </select>
+                                    </select> -->
+                                    <app-milady-hijri-calendar (sendDate)="HijriInterviewDay($event)" (keypress)="$event.preventDefault()" [dateTo]='hijriInterviewDayInputParam'
+                                       [hijri]="hijri" [milady]="!milady">
+                                     </app-milady-hijri-calendar>
                                     
-                                    <div *ngIf="f.interviewDay.errors && (f.interviewDay.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
-                                        <div *ngIf="f.interviewDay.errors.required">
+                                    <div *ngIf="f.hijriInterviewDay.errors && (f.hijriInterviewDay.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+                                        <div *ngIf="f.hijriInterviewDay.errors.required">
                                             {{ 'UPDATE_TEACHER_PG.DAY_REQUIRED' | translate }}
                                         </div>
                                       
