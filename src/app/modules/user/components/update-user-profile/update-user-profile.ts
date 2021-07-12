@@ -327,7 +327,7 @@ export class UpdateUserProfileComponent implements OnInit {
           address: [''],// address: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
           phoneNumber: ['', [Validators.required/*,Validators.pattern(BaseConstantModel.mobilePattern), Validators.minLength(6), Validators.maxLength(16)*/]],
           occupation: [null, Validators.required],
-          countryCode: [null, Validators.required],          
+          countryCode: [null, Validators.required],
           city: [null, Validators.required],
           quraanMemorization:['', [Validators.pattern(BaseConstantModel.numberBiggerThanZero)]],
           userSheikhs: [],
@@ -621,5 +621,20 @@ export class UpdateUserProfileComponent implements OnInit {
     this.hijriBinding = date
 
     this.f.birthdate.setValue(date);
+  }
+  onDragOver(event: any) {
+    event.preventDefault();
+  }
+
+// From drag and drop
+  onDropSuccess(event: any) {
+    event.preventDefault();
+
+    this.onFileChange(event.dataTransfer.files);
+  }
+
+// From attachment link
+  onChange(event: any) {
+    this.onFileChange(event.target.files);
   }
 }

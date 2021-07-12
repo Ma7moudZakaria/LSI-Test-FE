@@ -86,8 +86,8 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
       return;
     }
 
-    
-    
+
+
 
     this.attachmentService.upload(files).subscribe(
       (res: any) => {
@@ -113,7 +113,21 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
     )
   }
 
+  onDragOver(event: any) {
+    event.preventDefault();
+  }
 
+// From drag and drop
+  onDropSuccess(event: any) {
+    event.preventDefault();
+
+    this.onFileChange(event.dataTransfer.files);    // notice the "dataTransfer" used instead of "target"
+  }
+
+// From attachment link
+  onChange(event: any) {
+    this.onFileChange(event.target.files);    // "target" is correct here
+  }
 
 
 

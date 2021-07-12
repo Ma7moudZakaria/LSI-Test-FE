@@ -35,7 +35,7 @@ export class AttachmentsService {
   }
 
   checkFileExtention(file: any, listExt: Array<string>) {
-    let fileExtension = file.name?.split('.').pop();
+    let fileExtension = file.name?.split('.').pop().toLowerCase();
     let res = listExt?.some(i => i === fileExtension)
     return res;
     // console.log("file EXT", fileExtension);

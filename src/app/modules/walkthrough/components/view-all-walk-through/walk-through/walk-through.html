@@ -1,19 +1,20 @@
 <div class="walk-through">
     <form class="form-group walk-through-form  internal_scroll_list_group" [formGroup]="currentForm" (submit)="submit()"
         *ngIf="selectedWalkThroughPageId">
-        <div class="form-group">
+        <div class="form-group" (dragover)="onDragOver($event)" (drop)="onDropSuccess($event)">
             <label class="custom-file custom-file__text" for="importFile">
-                <span *ngIf="fileList.length == 0"> 
+                <span *ngIf="fileList.length == 0">
                     <img calss="upload-icon" src="assets/images/walk-through/Group 18093.svg" alt="">
                     <p> {{"WALKTHROUGH.UPLOAD_PIC" | translate}}</p>
                 </span>
-                <span *ngIf="fileList.length > 0"> 
+                <span *ngIf="fileList.length > 0">
                     <img calss="page-image" src="{{fileList[0].url}}" alt="" style="width: 95%;height: 400px;">
                     <p> {{"WALKTHROUGH.UPLOAD_PIC" | translate}}</p>
                 </span>
             </label>
-            <input type="file" class="custom-file-input" id="importFile"
-                (change)="onFileChange($any($event.target).files)" hidden>
+            <input type="file" class="custom-file-input" multiple id="importFile"
+                   (change)="onFileChange($any($event.target).files)" hidden>
+
             <!-- <div *ngIf="attachmentIds?.length == 0 && (isSubmit)" class="alert alert-danger mt-2 mb-2">
                 <div *ngIf="attachmentIds.length == 0">
                     {{ 'WALKTHROUGH.REQUIRED' | translate }}
