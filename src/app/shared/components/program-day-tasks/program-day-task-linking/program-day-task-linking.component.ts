@@ -26,9 +26,8 @@ export class ProgramDayTaskLinkingComponent implements OnInit {
   programLastFiveWorkToLinkAuto: IProgramLastFiveWorkToLinkAuto = {};
   fileUploadModel: IFileUpload[] = [];
   fileList?: IAttachment[] = [];
-  attachmentIds: string[] = [];
   resMessage: BaseMessageModel = {};
-  attatchmentsAuto?: IAttachment[] = [];
+
 
   constructor(
     private programDayTasksService: ProgramDayTasksService,
