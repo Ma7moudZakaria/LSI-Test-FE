@@ -15,10 +15,10 @@ export class AdminMessagingViewComponent implements OnInit {
   @ViewChild(ScientificProblemsComponent) scientificProblmChild:ScientificProblemsComponent | undefined;
   
   showtap:string='scientificProblem';
-  showAddReplyOverlay = false;
-  showAddScProbToQuestionBankOverlay = false;
-  scProbObjForAddReplyView : IScientificProblemGridItems = {}
-  scProbObjForAddToQuestionBankView : IScientificProblemGridItems = {}
+  // showAddReplyOverlay = false;
+  // showAddScProbToQuestionBankOverlay = false;
+  // scProbObjForAddReplyView : IScientificProblemGridItems = {}
+  // scProbObjForAddToQuestionBankView : IScientificProblemGridItems = {}
 
   constructor(public translate: TranslateService, private languageService : LanguageService) { }
 
@@ -37,23 +37,23 @@ export class AdminMessagingViewComponent implements OnInit {
     });
   }
 
-  showAddReplyToScProblemView(event : IScientificProblemGridItems){
-    this.scProbObjForAddReplyView = event;
-    this.showAddReplyOverlay = !this.showAddReplyOverlay;
+  // showAddReplyToScProblemView(event : IScientificProblemGridItems){
+  //   this.scProbObjForAddReplyView = event;
+  //   this.showAddReplyOverlay = !this.showAddReplyOverlay;
 
-    if (!this.showAddReplyOverlay) {this.scientificProblmChild?.getScientificProblems();}
-  }
+  //   if (!this.showAddReplyOverlay) {this.scientificProblmChild?.getScientificProblems();}
+  // }
 
-  showAddScProbToQuestionBankView(event : IScientificProblemGridItems){
-    this.scProbObjForAddToQuestionBankView = event;
-    this.showAddScProbToQuestionBankOverlay = !this.showAddScProbToQuestionBankOverlay;
+  // showAddScProbToQuestionBankView(event : IScientificProblemGridItems){
+  //   this.scProbObjForAddToQuestionBankView = event;
+  //   this.showAddScProbToQuestionBankOverlay = !this.showAddScProbToQuestionBankOverlay;
 
-    if (!this.showAddScProbToQuestionBankOverlay) {this.scientificProblmChild?.getScientificProblems();}
-  }
+  //   if (!this.showAddScProbToQuestionBankOverlay) {this.scientificProblmChild?.getScientificProblems();}
+  // }
 
-  closeOverlay(){
-    this.showAddReplyOverlay = false;
-    this.showAddScProbToQuestionBankOverlay = false;
-    this.scientificProblmChild?.getScientificProblems();
-  }
+  // closeOverlay(){
+  //   this.showAddReplyOverlay = false;
+  //   this.showAddScProbToQuestionBankOverlay = false;
+  //   this.scientificProblmChild?.getScientificProblems();
+  // }
 }

@@ -10,10 +10,11 @@ import { AdminMessagingViewComponent } from './components/admin-messaging-view.c
 import { ScientificProblemsComponent } from './components/scientific-problems-view/scientific-problems/scientific-problems.component';
 import { AddScientifiProblemReplyComponent } from './components/scientific-problems-view/add-scientifi-problem-reply/add-scientifi-problem-reply.component';
 import { AddScientifiProblemToQuestionBankComponent } from './components/scientific-problems-view/add-scientifi-problem-to-question-bank/add-scientifi-problem-to-question-bank.component';
+import { ScientificProblemsViewComponent } from './components/scientific-problems-view/scientific-problems-view.component';
 
 
 @NgModule({
-  declarations: [AdminMessagingViewComponent, ScientificProblemsComponent, AddScientifiProblemReplyComponent, AddScientifiProblemToQuestionBankComponent],
+  declarations: [AdminMessagingViewComponent, ScientificProblemsComponent, AddScientifiProblemReplyComponent, AddScientifiProblemToQuestionBankComponent, ScientificProblemsViewComponent],
   imports: [
     CommonModule,
     FormsModule,

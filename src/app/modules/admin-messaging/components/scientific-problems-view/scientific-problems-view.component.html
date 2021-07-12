@@ -1,22 +1,6 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <div class="row group_header">
-
-                <div class="item_group" (click)="showtap='scientificProblem'" [ngClass]="{'item_group_active': showtap=='scientificProblem'}" >
-                    {{'ADMIN_MESSAGING.SCIENTIFIC_PROBLEM' | translate}}
-                </div>
-                
-            </div>
-        </div>
-    </div>
-    <div class="row" *ngIf='showtap=="scientificProblem"'>
-        <div class="col-12">
-            <app-scientific-problems-view></app-scientific-problems-view>
-        </div>
-    </div>
-    <!-- <div class="row">
-        <div class="col-12">
             <app-scientific-problems (showAddReplyToScProblem)='showAddReplyToScProblemView($event)'
              (showAddScProblemToQuestionBank)='showAddScProbToQuestionBankView($event)'></app-scientific-problems>
         </div>
@@ -26,7 +10,7 @@
     </div>
     <div class="overlay" *ngIf="showAddScProbToQuestionBankOverlay">
         <app-add-scientifi-problem-to-question-bank (closeAddScProblemToQuestionBankView)='showAddScProbToQuestionBankView($event)' [scProbObjForAddToQuestionBankView]='scProbObjForAddToQuestionBankView'></app-add-scientifi-problem-to-question-bank>
-    </div> -->
+    </div>
 </div>
 
-<!-- <div class="showoverlay" (click)="closeOverlay()" [ngClass]="{'disableBlock': showAddReplyOverlay || showAddScProbToQuestionBankOverlay}"></div> -->
+<div class="showoverlay" (click)="closeOverlay()" [ngClass]="{'disableBlock': showAddReplyOverlay || showAddScProbToQuestionBankOverlay}"></div>
