@@ -80,11 +80,11 @@
         text-decoration: none;
     }
 
-        &:first-child{
-            background-color:$user-color !important;
-            color: #FFFFFF !important;
-            border: 1px solid $user-color;
-        } 
+        // &:first-child{
+        //     background-color:$user-color !important;
+        //     color: #FFFFFF !important;
+        //     border: 1px solid $user-color;
+        // } 
         .fa-trash-alt ,.fa-pencil-alt{
             color:#8E2520;
             margin-right: 0.2rem;
@@ -130,3 +130,40 @@
 
   }
 
+// style for accordion 
+.ques_bank.mat-accordion {
+    .mat-expansion-panel{
+        margin-bottom: 0.8rem;
+        border-radius: 12px;
+        // border: 1px solid #827f7f3d;
+        box-shadow: none;
+    }
+    .mat-expansion-panel-header{
+        padding: 0 0rem;
+        width: 100%;
+   
+      
+          
+        
+     }
+    .mat-expansion-panel-header-title {
+    justify-content: space-between;
+    color: #8E2520;
+    margin-left: 0;
+    font-size: 1rem;
+    font-family: Almarai-Bold;
+    }
+}
+
+.display_hidden{
+    display: none;
+}
+.selectedFirst{
+    background-color:$user-color !important;
+    color: #FFFFFF !important;
+    border: 1px solid $user-color;
+    
+    .fa-pencil-alt.white,.fa-trash-alt.white {
+        color: #FFFFFF !important
+    }
+} 

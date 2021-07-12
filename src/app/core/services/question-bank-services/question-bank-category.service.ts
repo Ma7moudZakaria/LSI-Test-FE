@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { IQuestionBankCategoriesFilter } from '../../interfaces/questionBankCategories-interfaces/iquestion-bank-categories-filter-.request';
 import { IQuestionBankCategoryCreatModel } from '../../interfaces/questionBankCategories-interfaces/iquestion-bank-category-creat-model';
 import { IQuestionBankCategoryUpdateModel } from '../../interfaces/questionBankCategories-interfaces/iquestion-bank-category-update-model';
+import { IQuestionBankCategoryUpdateOrder } from '../../interfaces/questionBankCategories-interfaces/iquestion-bank-category-update-order';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 
 @Injectable({
@@ -13,9 +14,10 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
 export class QuestionBankCategoryService {
   AddQuestionBankCategoryURL=environment.baseUrl+'QuestionBankCategories/add-question-bank-category/';
   UpdateQuestionBankCategoryURL=environment.baseUrl+'QuestionBankCategories/update-question-bank-categories/';
-   GetQuestionBankCategoryDetailsURL=environment.baseUrl+'QuestionBankCategories/get-question-bank-category/';
+  GetQuestionBankCategoryDetailsURL=environment.baseUrl+'QuestionBankCategories/get-question-bank-category/';
   GetQuestionBankCategoryFilterURL=environment.baseUrl+'QuestionBankCategories/get-question-bank-category-filter/';
-  DeleteQuestionBankCategoryURL=environment.baseUrl+'QuestionBankCategories/delete-question-bank-category/';
+  DeleteQuestionBankCategoryURL = environment.baseUrl + 'QuestionBankCategories/delete-question-bank-category/';
+  UpdateOrderQuestionBankCategoryURL = environment.baseUrl + 'QuestionBankCategories/update-order-question-bank-category/';
 
   constructor(private http:HttpClient) { }
   addQuestionBankCategory(model:IQuestionBankCategoryCreatModel):Observable<BaseResponseModel>{
@@ -34,5 +36,7 @@ export class QuestionBankCategoryService {
   deleteQuestionBankCategory(id:string):Observable<BaseResponseModel>{
     return this.http.delete<BaseResponseModel>(this.DeleteQuestionBankCategoryURL+id);
   }
-
+  UpdateOrderQuestionBankCategories(model: IQuestionBankCategoryUpdateOrder): Observable<BaseResponseModel> {
+    return this.http.put<BaseResponseModel>(this.UpdateOrderQuestionBankCategoryURL,model);
+  }
 }
