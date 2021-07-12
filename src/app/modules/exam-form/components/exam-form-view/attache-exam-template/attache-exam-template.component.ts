@@ -77,8 +77,8 @@ else{
   }
 
   saveExam() {
-    if(((this.exam.scorePass ||0 ) > this.exam?.scoreTotal!)||(this.exam.scorePass ===0 )||(this.exam?.scoreTotal ===undefined||0)||(this.exam.scorePass ===undefined||0)){ 
-      this.resultMessage = {
+     if(((this.exam.scorePass ||0 ) > this.exam?.scoreTotal!) || (this.exam.scorePass ===0 ) || (this.exam?.scoreTotal !==0))
+     { this.resultMessage = {
       message:this.translate.currentLang === LanguageEnum.ar ? this.translate.instant('EXAM_FORM.THE_SUCCESS_RATE_SHOULD_LESS_THAN_TOTAL_DEGREE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE'),// this.translate.currentLang === LanguageEnum.en ? "Please complete the missing information" : "برجاء اكمال البيانات",
       type: BaseConstantModel.DANGER_TYPE
     }
