@@ -3,6 +3,14 @@
         <div class="col-12">
             <div class="row group_header">
 
+                <div class="item_group" (click)="showtap='teacher'" [ngClass]="{'item_group_active': showtap=='teacher'}" >
+                    المعلمين
+                </div>
+                
+                <div class="item_group" (click)="showtap='student'" [ngClass]="{'item_group_active': showtap=='student'}" >
+                    الطلاب
+                </div>
+
                 <div class="item_group" (click)="showtap='scientificProblem'" [ngClass]="{'item_group_active': showtap=='scientificProblem'}" >
                     {{'ADMIN_MESSAGING.SCIENTIFIC_PROBLEM' | translate}}
                 </div>
@@ -10,9 +18,12 @@
             </div>
         </div>
     </div>
-    <div class="row" *ngIf='showtap=="scientificProblem"'>
+    <div class="row">
         <div class="col-12">
-            <app-scientific-problems-view></app-scientific-problems-view>
+            
+            <app-teacher-program-request-view *ngIf='showtap=="teacher"'> </app-teacher-program-request-view>
+           <app-student-program-request-view *ngIf='showtap=="student"'> </app-student-program-request-view>
+            <app-scientific-problems-view *ngIf='showtap=="scientificProblem"'></app-scientific-problems-view>
         </div>
     </div>
     <!-- <div class="row">

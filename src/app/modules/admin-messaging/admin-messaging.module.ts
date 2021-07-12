@@ -11,10 +11,12 @@ import { ScientificProblemsComponent } from './components/scientific-problems-vi
 import { AddScientifiProblemReplyComponent } from './components/scientific-problems-view/add-scientifi-problem-reply/add-scientifi-problem-reply.component';
 import { AddScientifiProblemToQuestionBankComponent } from './components/scientific-problems-view/add-scientifi-problem-to-question-bank/add-scientifi-problem-to-question-bank.component';
 import { ScientificProblemsViewComponent } from './components/scientific-problems-view/scientific-problems-view.component';
+import { TeacherProgramRequestViewComponent } from './components/teacher-program-request-view/teacher-program-request-view.component';
+import { StudentProgramRequestViewComponent } from './components/student-program-request-view/student-program-request-view.component';
 
 
 @NgModule({
-  declarations: [AdminMessagingViewComponent, ScientificProblemsComponent, AddScientifiProblemReplyComponent, AddScientifiProblemToQuestionBankComponent, ScientificProblemsViewComponent],
+  declarations: [AdminMessagingViewComponent, ScientificProblemsComponent, AddScientifiProblemReplyComponent, AddScientifiProblemToQuestionBankComponent, ScientificProblemsViewComponent, TeacherProgramRequestViewComponent, StudentProgramRequestViewComponent],
   imports: [
     CommonModule,
     FormsModule,
