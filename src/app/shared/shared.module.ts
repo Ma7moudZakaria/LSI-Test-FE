@@ -64,6 +64,7 @@ import { SettingAcceptComponent } from './components/setting-conditions/setting-
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { StuCardRequestComponent } from './components/stu-card-request/stu-card-request.component';
 import { TeacherCardRequestComponent } from './components/teacher-card-request/teacher-card-request.component';
+import { ProgramSubscriptionGridComponent } from './components/program-subscription-grid/program-subscription-grid.component';
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
     SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,
@@ -94,7 +95,8 @@ import { TeacherCardRequestComponent } from './components/teacher-card-request/t
     SettingQualificationsComponent,
     SettingAcceptComponent,
     StuCardRequestComponent,
-    TeacherCardRequestComponent],
+    TeacherCardRequestComponent,
+    ProgramSubscriptionGridComponent],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,

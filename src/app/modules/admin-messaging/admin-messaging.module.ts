@@ -19,14 +19,30 @@ import { StuJoinRequestComponent } from './components/student-program-request-vi
 import { StuQuitRequestComponent } from './components/student-program-request-view/stu-request-details/stu-quit-request/stu-quit-request.component';
 import { StuTabRequestComponent } from './components/student-program-request-view/stu-request-details/stu-join-request/stu-tab-request/stu-tab-request.component';
 import { AdvancedSearchComponent } from './components/student-program-request-view/stu-request-details/stu-join-request/advanced-search/advanced-search.component';
+import { TeacherListRequestComponent } from './components/teacher-program-request-view/teacher-list-request/teacher-list-request.component';
+import { TeacherRequestDetailsComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-request-details.component';
+import { TeacherJoinRequestComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-join-request/teacher-join-request.component';
+import { TeacherJoinRequestProgramComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-join-request-program/teacher-join-request-program.component';
+import { TeacherQuitRequestComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-quit-request/teacher-quit-request.component';
+import { ChangTimeRequestComponent } from './components/teacher-program-request-view/teacher-request-details/chang-time-request/chang-time-request.component';
+import { TeacherTabRequestComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-join-request-program/teacher-tab-request/teacher-tab-request.component';
+
+
+// @NgModule({
+//   declarations: [AdminMessagingViewComponent, ScientificProblemsComponent, AddScientifiProblemReplyComponent,
+//     AddScientifiProblemToQuestionBankComponent, ScientificProblemsViewComponent,
+//     TeacherProgramRequestViewComponent, StudentProgramRequestViewComponent,
+//     StuListRequestComponent, StuRequestDetailsComponent, StuJoinRequestComponent, StuQuitRequestComponent,
+//     StuTabRequestComponent, AdvancedSearchComponent],
 
 
 @NgModule({
-  declarations: [AdminMessagingViewComponent, ScientificProblemsComponent, AddScientifiProblemReplyComponent,
-    AddScientifiProblemToQuestionBankComponent, ScientificProblemsViewComponent,
-    TeacherProgramRequestViewComponent, StudentProgramRequestViewComponent,
-    StuListRequestComponent, StuRequestDetailsComponent, StuJoinRequestComponent, StuQuitRequestComponent,
-    StuTabRequestComponent, AdvancedSearchComponent],
+  declarations: [AdminMessagingViewComponent, ScientificProblemsComponent, AddScientifiProblemReplyComponent, AddScientifiProblemToQuestionBankComponent,
+    ScientificProblemsViewComponent, TeacherProgramRequestViewComponent, StudentProgramRequestViewComponent, StuListRequestComponent,
+    StuRequestDetailsComponent, StuJoinRequestComponent, StuQuitRequestComponent,
+    StuTabRequestComponent, AdvancedSearchComponent, TeacherListRequestComponent,
+    TeacherRequestDetailsComponent, TeacherJoinRequestComponent, TeacherJoinRequestProgramComponent, TeacherQuitRequestComponent,
+    ChangTimeRequestComponent, TeacherTabRequestComponent],
   imports: [
     CommonModule,
     FormsModule,
