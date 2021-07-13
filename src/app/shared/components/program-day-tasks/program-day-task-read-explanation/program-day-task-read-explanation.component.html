@@ -35,13 +35,21 @@
         
         </div>
         <div class="modal-body">
-            <a  [href]="item.url">
-                <span>{{item.fileName}}</span>
+            <a  [href]="item.url" *ngIf="item.fileName.split('.').pop() !=='pdf' ">
                 <ng-container  *ngIf="item.fileName.split('.').pop() !=='pdf' ">
                 <img [src]="item.url"  class="size_img_model">
-            </ng-container>
+               </ng-container>
             </a>
-            
+            <ng-container *ngIf="item.fileName.split('.').pop() ==='pdf' ">
+            <pdf-viewer 
+            [src]="item.url" 
+            [render-text]="true" 
+            [original-size]="false" 
+            [fit-to-page]="true"
+            [show-all]="true"
+            [zoom-scale]="'page-width'">
+            </pdf-viewer>
+           </ng-container>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>

@@ -8,7 +8,7 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { AttachmentsService } from 'src/app/core/services/attachments-services/attachments.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-declare const Buffer:any;
+declare const Buffer: any;
 
 @Component({
   selector: 'app-program-day-task-memorize',
@@ -16,16 +16,11 @@ declare const Buffer:any;
   styleUrls: ['./program-day-task-memorize.component.scss']
 })
 export class ProgramDayTaskMemorizeComponent implements OnInit {
-  // isView: boolean = false;
   resMessage: BaseMessageModel = {};
   fileUploadModel: IFileUpload[] = [];
   fileList?: IAttachment[] = [];
-  attachmentIds: string[] = [];
   @Input() memorizeDetailsModel: IProgramDayTaskMemorize = {};
   @Input() isView: boolean = false;
-
-  attachmentId : string[] = [];
-  pdfSrc : any;
 
   constructor
     (
@@ -45,7 +40,8 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
   closeResult: string | undefined;
 
   openVerticallyCentered(content: any) {
-    this.modalService.open(content, { centered: true });
+    // this.modalService.open(content, { centered: true });
+    this.modalService.open(content, { size: 'lg' });
   }
 
   DeleteAttachment(index: number, id: string) {
@@ -86,19 +82,12 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
       return;
     }
 
-    
-    
-
     this.attachmentService.upload(files).subscribe(
       (res: any) => {
         Array.from(res.data).forEach((elm: any) => {
           this.fileList?.push(elm as IAttachment);
-
-
-          this.pdfSrc = elm.url;
         })
         this.memorizeDetailsModel.bookAttatchments = this.fileList;
-
         this.fileUploadModel = [];
         this.alertify.success(res.message || '');
       }, error => {
@@ -112,9 +101,5 @@ export class ProgramDayTaskMemorizeComponent implements OnInit {
       }
     )
   }
-
-
-
-
 
 }
