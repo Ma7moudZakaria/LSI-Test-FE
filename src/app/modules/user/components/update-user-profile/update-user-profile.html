@@ -4,7 +4,7 @@
 
             <form [formGroup]="profileForm" (ngSubmit)="onSubmit(profileForm.value)" class="form-group">
 
-                <div class="col-12 profile p-0 mb-50">
+                <div class="col-12 profile p-0 mb-50" (dragover)="onDragOver($event)" (drop)="onDropSuccess($event)">
                     <div class="profile_background"></div>
                     <img class="img_profile" [src]="userProfileDetails?.proPic">
                     <input type="file" style="display: none;" #fileInput
