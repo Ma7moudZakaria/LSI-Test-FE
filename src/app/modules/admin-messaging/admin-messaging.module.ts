@@ -27,10 +27,16 @@ import { TeacherJoinRequestComponent } from './components/teacher-program-reques
 import { TeacherJoinRequestProgramComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-join-request-program/teacher-join-request-program.component';
 import { TeacherQuitRequestComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-quit-request/teacher-quit-request.component';
 import { ChangTimeRequestComponent } from './components/teacher-program-request-view/teacher-request-details/chang-time-request/chang-time-request.component';
+import { TeacherTabRequestComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-join-request-program/teacher-tab-request/teacher-tab-request.component';
 
 
 @NgModule({
-  declarations: [AdminMessagingViewComponent, ScientificProblemsComponent, AddScientifiProblemReplyComponent, AddScientifiProblemToQuestionBankComponent, ScientificProblemsViewComponent, TeacherProgramRequestViewComponent, StudentProgramRequestViewComponent, StuListRequestComponent, StuRequestDetailsComponent, StuJoinRequestComponent, StuJoinRequestProgramComponent, StuQuitRequestComponent, ChangeAvailableRequestStuComponent, StuTabRequestComponent, AdvancedSearchComponent, TeacherListRequestComponent, TeacherRequestDetailsComponent, TeacherJoinRequestComponent, TeacherJoinRequestProgramComponent, TeacherQuitRequestComponent, ChangTimeRequestComponent],
+  declarations: [AdminMessagingViewComponent, ScientificProblemsComponent, AddScientifiProblemReplyComponent, AddScientifiProblemToQuestionBankComponent, 
+    ScientificProblemsViewComponent, TeacherProgramRequestViewComponent, StudentProgramRequestViewComponent, StuListRequestComponent,
+     StuRequestDetailsComponent, StuJoinRequestComponent, StuJoinRequestProgramComponent, StuQuitRequestComponent, 
+     ChangeAvailableRequestStuComponent, StuTabRequestComponent, AdvancedSearchComponent, TeacherListRequestComponent, 
+     TeacherRequestDetailsComponent, TeacherJoinRequestComponent, TeacherJoinRequestProgramComponent, TeacherQuitRequestComponent, 
+     ChangTimeRequestComponent,TeacherTabRequestComponent],
   imports: [
     CommonModule,
     FormsModule,

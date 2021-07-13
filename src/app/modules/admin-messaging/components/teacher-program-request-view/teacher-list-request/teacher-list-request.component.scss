@@ -1,46 +1,68 @@
-
- .list-group_program-list{
+@import 'src/assets/scss/_variables.scss';
+ .teacher-list-request{
     background: #FBFBFB 0% 0% no-repeat padding-box;
     border-radius: 19px;
     opacity: 1;
-    padding: 2rem;
-    height : 96%;
+    padding: 1.7rem;
+    height : 100%;;
     margin-top: 1rem;
-  
+    .teacher-list-request ul {
+        padding-inline-start: 0 !important;
+    }
+    .add_scientfic_problem {
+        &:lang(en){text-align: right }
+        &:lang(ar){text-align: left;}
+
+    }
     .internal_scroll_list_group:lang(ar) {
+        // background-color: antiquewhite;
                 height: 470px;
                 overflow-y: auto;
-                padding-left: 0.5rem;
-               
             }
             .internal_scroll_list_group:lang(en) {
+                // background-color: antiquewhite;
                         height: 470px;
                         overflow-y: auto;
-                        padding-right: 0.5rem;
                     }
-}
 
-.list-group_program-list:lang(en){
+                    .Catogry_Icon_Sort{
+                        padding: 0.5rem;
+                       background-color: #F4F5F7;
+                       margin-right: 0.3rem;
+                       margin-left: 0.3rem;
+                       border-radius: 0.5rem;
+                       width: 1;
+                       height: 29px;
+                       align-self: center;
+                       }
+                       .Catogry_Icon_Add{
+                        align-self: center;  
+                        margin-right: 0.3rem;
+                        margin-left: 0.3rem;
+                       }
+
+}
+ .teacher-list-request:lang(en){
     margin-left: 1rem;
    
   }
-  .list-group_program-list:lang(ar){
+  .teacher-list-request:lang(ar){
    
     margin-right: 0rem;
   }
-
-.list-group_program-list > p{
+.teacher-list-request > p{
     font-family: Almarai-Bold;
     font-size: 20px;
     letter-spacing: 0px;
     color: #3A3A3A;
-    opacity: 1
+    opacity: 1;
 }
-.list-group_program-list > p:lang(ar){
+.teacher-list-request> p:lang(ar){
     text-align: right;}
-.list-group_program-list
+.teacher-list-request
 .list-group-item{
     background: #FFFFFF 0% 0% no-repeat padding-box;
+    // box-shadow: 0px 3px 15px #0000000D;
     border-radius: 12px;
     letter-spacing: 0px;
     color: #828282;
@@ -52,23 +74,96 @@
     justify-content: space-between;
         &.active ,&:hover {    
         background: #CB9118 0% 0% no-repeat padding-box;       
+        // box-shadow: 0px 0px 15px #31313173;
         color: #FFFFFF;
         opacity: 1;
         text-decoration: none;
-        .count{
-            background-color: #fff;
-        }
     }
 
-            
-        .fa-trash-alt ,.fa-copy{
-            color:#8E2520
+        // &:first-child{
+        //     background-color:$user-color !important;
+        //     color: #FFFFFF !important;
+        //     border: 1px solid $user-color;
+        // } 
+        .fa-trash-alt ,.fa-pencil-alt{
+            color:#8E2520;
+            margin-right: 0.2rem;
+            margin-left: 0.2rem;
+        
         }
 
-        &.active .fa-trash-alt ,  &.active .fa-copy
-        ,&:hover .fa-trash-alt , &:hover .fa-copy
+        &.active .fa-trash-alt , &.active  .fa-pencil-alt
+        ,&:hover .fa-trash-alt , &:hover .fa-pencil-alt
         {
             color: #FFFFFF;
         }
        
+}
+.link_Add{
+    color:$icon_input;
+} 
+.p_header{
+    // margin-bottom: 1rem;
+    font-size: large;
+    font-weight: bold;
+}
+
+.no-data{
+    font: normal normal  1.25rem Almarai;
+      color:black; 
+      padding-top: 2rem;
+    
+  }
+  .no-data:lang(en){
+    text-align: left;
+  
+   padding-left: 2rem;
+  }
+  .no-data:lang(ar){
+    text-align: right ;
+  
+    padding-right: 2rem;
+  }
+
+  .question-categories:lang(ar){
+      text-align: right;
+
+  }
+
+// style for accordion 
+.ques_bank.mat-accordion {
+    .mat-expansion-panel{
+        margin-bottom: 0.8rem;
+        border-radius: 12px;
+        // border: 1px solid #827f7f3d;
+        box-shadow: none;
+    }
+    .mat-expansion-panel-header{
+        padding: 0 0rem;
+        width: 100%;
+   
+      
+          
+        
+     }
+    .mat-expansion-panel-header-title {
+    justify-content: space-between;
+    color: #8E2520;
+    margin-left: 0;
+    font-size: 1rem;
+    font-family: Almarai-Bold;
+    }
+}
+
+.display_hidden{
+    display: none;
+}
+.selectedFirst{
+    background-color:$user-color !important;
+    color: #FFFFFF !important;
+    border: 1px solid $user-color;
+    
+    .fa-pencil-alt.white,.fa-trash-alt.white {
+        color: #FFFFFF !important
+    }
 } 

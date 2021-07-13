@@ -6,6 +6,7 @@ import { TeacherRequestEnum } from 'src/app/core/enums/teacher-subscription-enum
   templateUrl: './teacher-request-details.component.html',
   styleUrls: ['./teacher-request-details.component.scss']
 })
+
 export class TeacherRequestDetailsComponent implements OnInit {
 
   @Input()selectedTeatcherRequest :number | undefined;
