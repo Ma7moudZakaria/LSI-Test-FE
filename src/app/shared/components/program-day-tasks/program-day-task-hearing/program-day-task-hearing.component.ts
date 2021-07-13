@@ -47,7 +47,7 @@ export class ProgramDayTaskHearingComponent implements OnInit {
     // this.modalService.open(content, { centered: true });
     this.modalService.open(content, { size: 'lg' });
   }
-  listExt = ["MP3", "MP4", "FLP", "PEK", "m4a"]
+  listExt = ["mp3", "mp4", "flp", "pek", "m4a"]
 
   onFileChange(files: FileList) {
     if (files.length > 0) {
@@ -97,5 +97,19 @@ export class ProgramDayTaskHearingComponent implements OnInit {
       }
     )
   }
+  onDragOver(event: any) {
+    event.preventDefault();
+  }
 
+// From drag and drop
+  onDropSuccess(event: any) {
+    event.preventDefault();
+
+    this.onFileChange(event.dataTransfer.files);
+  }
+
+// From attachment link
+  onChange(event: any) {
+    this.onFileChange(event.target.files);
+  }
 }

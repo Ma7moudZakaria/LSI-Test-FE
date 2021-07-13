@@ -111,5 +111,19 @@ export class ProgramDayTaskReviewComponent implements OnInit {
       }
     )
   }
+  onDragOver(event: any) {
+    event.preventDefault();
+  }
 
+// From drag and drop
+  onDropSuccess(event: any) {
+    event.preventDefault();
+
+    this.onFileChange(event.dataTransfer.files);
+  }
+
+// From attachment link
+  onChange(event: any) {
+    this.onFileChange(event.target.files);
+  }
 }

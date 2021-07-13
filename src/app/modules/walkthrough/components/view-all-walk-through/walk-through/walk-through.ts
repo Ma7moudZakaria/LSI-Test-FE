@@ -79,7 +79,7 @@ export class WalkThroughComponent implements OnInit {
 
   ngOnChanges(changes: any) {
     console.log(changes);
-    
+
     this.loadWalkThrough(changes.selectedWalkThroughPageId.currentValue);
   }
   loadWalkThrough(selectedPageId: any) {
@@ -196,8 +196,8 @@ export class WalkThroughComponent implements OnInit {
   }
 
   mappModel() {
-    // if (this.walkThrough.id) {  
-    //   this.walkThrough.id =  this.f.id.value;  
+    // if (this.walkThrough.id) {
+    //   this.walkThrough.id =  this.f.id.value;
     // }
     this.walkThrough.textAr = this.f.textAr.value;
     this.walkThrough.textEn = this.f.textEn.value;;
@@ -210,7 +210,7 @@ export class WalkThroughComponent implements OnInit {
   }
 
   buildForm() {
-    
+
     const arabicPattern = "^[\u0621-\u064A\u0660-\u0669 0-9]+$";
     const englishPattern ="^[a-zA-Z0-9' '-'\s]{1,40}$";
 
@@ -292,5 +292,20 @@ export class WalkThroughComponent implements OnInit {
     setTimeout(() => {
       this.resMessage = {};
     }, 2000);
+  }
+  onDragOver(event: any) {
+    event.preventDefault();
+  }
+
+// From drag and drop
+  onDropSuccess(event: any) {
+    event.preventDefault();
+
+    this.onFileChange(event.dataTransfer.files);    // notice the "dataTransfer" used instead of "target"
+  }
+
+// From attachment link
+  onChange(event: any) {
+    this.onFileChange(event.target.files);    // "target" is correct here
   }
 }

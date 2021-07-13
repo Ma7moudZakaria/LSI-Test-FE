@@ -61,7 +61,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
   hijriBinding: any;
   hijriBirthDateInputParam: NgbDateStruct = { year: 0, day: 0, month: 0 };
 
-  ProgramsList: IprogramsModel[] = [];;
+  ProgramsList: IprogramsModel[] = [];
   ProgramFilter: IProgramFilterAdvancedRequest = {};
 
   rewayatsMessage: BaseMessageModel = {};
@@ -172,7 +172,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
   }
 
   getPrograms() {
-    this.programFilterByNameFilterRequest = { 
+    this.programFilterByNameFilterRequest = {
       name: ""
     }
 
@@ -808,5 +808,20 @@ export class UpdateTeacherProfileComponent implements OnInit {
         }
       }
     )
+  }
+  onDragOver(event: any) {
+    event.preventDefault();
+  }
+
+// From drag and drop
+  onDropSuccess(event: any) {
+    event.preventDefault();
+
+    this.onFileChange(event.dataTransfer.files);
+  }
+
+// From attachment link
+  onChange(event: any) {
+    this.onFileChange(event.target.files);
   }
 }
