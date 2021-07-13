@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { TeacherRequestEnum } from 'src/app/core/enums/teacher-subscription-enums/teacher-request-enum.enum';
 
 @Component({
   selector: 'app-teacher-request-details',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./teacher-request-details.component.scss']
 })
 export class TeacherRequestDetailsComponent implements OnInit {
+
+  @Input()selectedTeatcherRequest :number | undefined;
+  teacherRequestEnum=TeacherRequestEnum;
 
   constructor() { }
 

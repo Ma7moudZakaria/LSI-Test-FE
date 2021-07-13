@@ -1,1 +1,12 @@
-<p>teacher-request-details works!</p>
+<div  *ngIf="teacherRequestEnum.joinRequest===selectedTeatcherRequest">
+<app-teacher-join-request></app-teacher-join-request>
+</div>
+<div  *ngIf="teacherRequestEnum.joinRequestProgram===selectedTeatcherRequest">
+<app-teacher-join-request-program></app-teacher-join-request-program>
+</div>
+<div  *ngIf="teacherRequestEnum.cancelRequest===selectedTeatcherRequest">
+<app-teacher-quit-request></app-teacher-quit-request>
+</div>
+<div  *ngIf="teacherRequestEnum.changTimeRequest===selectedTeatcherRequest">
+<app-chang-time-request></app-chang-time-request>
+</div>

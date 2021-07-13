@@ -10,7 +10,7 @@ export class TeacherListRequestComponent implements OnInit {
 
   @Output() selectedTeatcherRequest =  new EventEmitter<number>();
   teacherRequestEnum=TeacherRequestEnum;
-  selectedIndex:number | undefined;
+  selectedIndex:number=1;
 
   constructor() { }
 

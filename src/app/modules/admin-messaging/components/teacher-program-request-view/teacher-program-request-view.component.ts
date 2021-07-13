@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeacherProgramRequestViewComponent implements OnInit {
 
+  selectedTeatcherRequest:number=1;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  sendTeatcherRequest(teatcherRequestItem:number){
+   this.selectedTeatcherRequest=teatcherRequestItem;
   }
 
 }

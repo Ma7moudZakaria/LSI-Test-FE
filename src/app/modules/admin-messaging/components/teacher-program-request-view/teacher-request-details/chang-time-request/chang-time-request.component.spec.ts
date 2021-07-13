@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TeacherTabRequestComponent } from './teacher-tab-request.component';
+import { ChangTimeRequestComponent } from './chang-time-request.component';
 
-describe('TeacherTabRequestComponent', () => {
-  let component: TeacherTabRequestComponent;
-  let fixture: ComponentFixture<TeacherTabRequestComponent>;
+describe('ChangTimeRequestComponent', () => {
+  let component: ChangTimeRequestComponent;
+  let fixture: ComponentFixture<ChangTimeRequestComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TeacherTabRequestComponent ]
+      declarations: [ ChangTimeRequestComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TeacherTabRequestComponent);
+    fixture = TestBed.createComponent(ChangTimeRequestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
