@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ITeacherProgramSubscriptionModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iteacher-program-subscription-model';
 
 @Component({
   selector: 'app-teacher-card-request',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeacherCardRequestComponent implements OnInit {
 
+  teacherSubscripModel: ITeacherProgramSubscriptionModel = {}
   constructor() { }
 
   ngOnInit(): void {

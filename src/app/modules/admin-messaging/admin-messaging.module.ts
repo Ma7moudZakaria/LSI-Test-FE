@@ -25,7 +25,11 @@ import { TeacherJoinRequestComponent } from './components/teacher-program-reques
 import { TeacherJoinRequestProgramComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-join-request-program/teacher-join-request-program.component';
 import { TeacherQuitRequestComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-quit-request/teacher-quit-request.component';
 import { ChangTimeRequestComponent } from './components/teacher-program-request-view/teacher-request-details/chang-time-request/chang-time-request.component';
-import { TeacherTabRequestComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-join-request-program/teacher-tab-request/teacher-tab-request.component';
+import { TeacherJionProgramTabRequestComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-join-request-program/teacher-join-program-tab-request/teacher-join-program-tab-request.component';
+import { TeacherJionTabRequestComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-join-request/teacher-join-tab-request/teacher-join-tab-request.component';
+import { StuVacationsRequestComponent } from './components/student-program-request-view/stu-request-details/stu-vacations-request/stu-vacations-request.component';
+import { StuMovingRequestComponent } from './components/student-program-request-view/stu-request-details/stu-moving-request/stu-moving-request.component';
+// import { TeacherTabRequestComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-join-request-program/teacher-tab-request/teacher-tab-request.component';
 
 
 // @NgModule({
@@ -42,7 +46,8 @@ import { TeacherTabRequestComponent } from './components/teacher-program-request
     StuRequestDetailsComponent, StuJoinRequestComponent, StuQuitRequestComponent,
     StuTabRequestComponent, AdvancedSearchComponent, TeacherListRequestComponent,
     TeacherRequestDetailsComponent, TeacherJoinRequestComponent, TeacherJoinRequestProgramComponent, TeacherQuitRequestComponent,
-    ChangTimeRequestComponent, TeacherTabRequestComponent],
+    ChangTimeRequestComponent, TeacherJionProgramTabRequestComponent, StuVacationsRequestComponent, StuMovingRequestComponent
+    , TeacherJionTabRequestComponent],
   imports: [
     CommonModule,
     FormsModule,

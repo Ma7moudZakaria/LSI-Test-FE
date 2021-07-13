@@ -118,7 +118,7 @@ import { ProgramSubscriptionGridComponent } from './components/program-subscript
     ProgramDayTaskTasmeaComponent, CardFeelingsComponent, MatTooltipModule,
     SettingAgeComponent, SettingDegreeLastProgramComponent, SettingLastProgramComponent, SettingQualificationsComponent,
     SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent,
-    SettingAcceptComponent, StuCardRequestComponent
+    SettingAcceptComponent, StuCardRequestComponent, TeacherCardRequestComponent
 
   ]
 })

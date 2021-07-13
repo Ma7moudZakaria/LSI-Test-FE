@@ -8,20 +8,20 @@
       <span> تاريخ الطلب</span>
       <span>&nbsp;</span>
       <span>&nbsp;</span>
-      <span> date</span> 
+      <span> {{teacherSubscripModel.requestDate}}</span> 
     </div>
     
     </div>
   
     <div class="card_body">
       <div class="d-flex justify-content-between mb-3">
-        <!-- *ngIf='!scientificProblem.avatarLink' -->
-      <img  class="img_user" src="../../../../assets/images/student/user-profile.svg">
-      <!-- <img *ngIf='scientificProblem.avatarLink' class="img_user" src="{{scientificProblem.avatarLink}}" > -->
+        <img *ngIf='!teacherSubscripModel.avatarLink' class="img_user" src="../../../../assets/images/student/user-profile.svg">
+        <img *ngIf='teacherSubscripModel.avatarLink' class="img_user" src="{{teacherSubscripModel.avatarLink}}" > 
       <div class="mx-1">
-        <p class="number_request mb-1 ">0000</p>
-        <p class="name_user bold mb-2">studNameEn</p>
-        <p class="program_user bold mb-0 "> PROGRAM_NAME</p>
+        <p class="number_request mb-1 ">{{teacherSubscripModel.programStaNum}}</p>
+        <p class="name_user bold mb-2">{{teacherSubscripModel.usrNameAr}}</p>
+        <p class="program_user bold mb-0 "> {{teacherSubscripModel.progName}}</p>
+        <p class="program_user bold mb-0 "> المقابلة الاحد 18:30 {{teacherSubscripModel.timeDegree}}</p>
       </div>
         <div class="d-flex">
          <!-- <a><img src="../../../../../assets/images/chat.svg"></a>  -->
@@ -30,7 +30,7 @@
         </div>
       </div>
 
-       <div class="card_body_data">
+       <!-- <div class="card_body_data">
 
         <div class="body_header">
           <span>المواعيد الجديدة</span>
@@ -51,7 +51,7 @@
            
         </div>
         
-       </div>
+       </div> -->
 
     </div>
 
