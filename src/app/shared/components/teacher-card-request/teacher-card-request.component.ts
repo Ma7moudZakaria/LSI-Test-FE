@@ -1,3 +1,4 @@
+import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { ITeacherProgramSubscriptionModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iteacher-program-subscription-model';
 
@@ -8,7 +9,7 @@ import { ITeacherProgramSubscriptionModel } from 'src/app/core/interfaces/teache
 })
 export class TeacherCardRequestComponent implements OnInit {
 
-  teacherSubscripModel: ITeacherProgramSubscriptionModel = {}
+ @Input() teacherSubscripModel: ITeacherProgramSubscriptionModel = {}
   constructor() { }
 
   ngOnInit(): void {
