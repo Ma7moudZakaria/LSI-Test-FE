@@ -14,7 +14,7 @@ import { TeacherProgramSubscriptionServicesService } from 'src/app/core/services
 export class TeacherTabRequestComponent implements OnInit {
 
   teacherProgramSubscriptionList:ITeacherProgramSubscriptionFilterModel[] | undefined;
-  teacherProgramSubscriptionFilterRequestModel:ITeacherProgramSubscriptionFilterRequestModel ={skip : 0, take : 12, sortField : '', sortOrder: 1, statusNum : 1};
+  teacherProgramSubscriptionFilterRequestModel:ITeacherProgramSubscriptionFilterRequestModel ={skip : 0, take : 12, sortField : '', sortOrder: 1, page : 1};
   errorMessage?: string;
   totalCount=0;
   adminCard : ScientificProblemUsersEnum = ScientificProblemUsersEnum.Admin;

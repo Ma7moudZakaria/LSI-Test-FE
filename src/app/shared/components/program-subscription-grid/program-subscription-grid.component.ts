@@ -1,9 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { ProgramSubscriptionUsersEnum } from 'src/app/core/enums/program-subscription-users-enum.enum';
 import { IStudentSubscriptionFilterModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-subscription-filter-model';
 import { IStudentSubscriptionFilterRequestModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-subscription-filter-request-model';
 import { ITeacherProgramSubscriptionFilterModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iteacher-program-subscription-filter-model';
 import { ITeacherProgramSubscriptionFilterRequestModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iteacher-program-subscription-filter-request-model';
+import { ExportationService } from 'src/app/core/services/exportation-services/exportation.service';
 
 @Component({
   selector: 'app-program-subscription-grid',
@@ -12,9 +15,15 @@ import { ITeacherProgramSubscriptionFilterRequestModel } from 'src/app/core/inte
 })
 export class ProgramSubscriptionGridComponent implements OnInit {
 
+  @Output() studentFilterEvent = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
+  @Output() teacherFilterEvent = new EventEmitter<ITeacherProgramSubscriptionFilterRequestModel>();
+  @Output() deleteListOfStudent = new EventEmitter<string>();
+  @Output() deleteListOfteacher = new EventEmitter<string>();
+ 
+
   @Input() userMode: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.student;
-  @Input() studentFilterRequestModel: IStudentSubscriptionFilterRequestModel = {skip : 0, take : 12, sortField : '', sortOrder: 1, statusNum : 1};
-  @Input() teacherFilterRequestModel: ITeacherProgramSubscriptionFilterRequestModel = {skip : 0, take : 12, sortField : '', sortOrder: 1, statusNum : 1};
+  @Input() studentFilterRequestModel: IStudentSubscriptionFilterRequestModel = {skip : 0, take : 12, page :1};
+  @Input() teacherFilterRequestModel: ITeacherProgramSubscriptionFilterRequestModel = {skip : 0, take : 12, page :1};
   @Input() numberPerRow: number = 3;
   @Input() teacherItems: ITeacherProgramSubscriptionFilterModel[] = []
   @Input() studentItems: IStudentSubscriptionFilterModel[] = []
@@ -23,12 +32,148 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   orderTypeToggel = 1;
   userOrderTypeToggel = true;
   allSelected: boolean = false;
-  programSubscriptionUsers = ProgramSubscriptionUsersEnum
+  programSubscriptionUsers = ProgramSubscriptionUsersEnum;
    page = 1
 
-  constructor() { }
+  constructor(
+    public translate: TranslateService,
+    private exportationService: ExportationService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  sortTeacherByName(){
+    this.teacherFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn';
+    this.teacherFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
+    this.teacherFilterEvent.emit(this.teacherFilterRequestModel);
+  }
+
+  sortTeacherByNameOrderType() {
+    if ((this.teacherFilterRequestModel.sortField === "userNameAr" || this.teacherFilterRequestModel.sortField === "UserNameEn") && this.teacherFilterRequestModel.sortOrder == 1) { return 'asend' }
+    if ((this.teacherFilterRequestModel.sortField === "userNameAr" || this.teacherFilterRequestModel.sortField === "UserNameEn") && this.teacherFilterRequestModel.sortOrder == -1) { return 'desend' }
+
+    return '';
+  }
+
+  sortTeacherRequestDate() {
+    this.teacherFilterRequestModel.sortField = 'requestdate';
+    this.teacherFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
+    this.teacherFilterEvent.emit(this.teacherFilterRequestModel);
+  }
+
+  sortTeacherRequestDateOrderType() {
+    if (this.teacherFilterRequestModel.sortField === 'requestdate' && this.teacherFilterRequestModel.sortOrder == 1) { return 'asend' }
+    if (this.teacherFilterRequestModel.sortField === 'requestdate'&& this.teacherFilterRequestModel.sortOrder == -1) { return 'desend' }
+
+    return '';
+  }
+
+  enableTeacherSelectOperations(): boolean {
+    return this.teacherItems.filter(t => t.checked).length > 0 || this.allSelected;
+  }
+
+  someTeachertItemsChecked(): boolean {
+    if (this.teacherItems == null) {
+      return false;
+    }
+    return this.teacherItems.filter(t => t.checked).length > 0 && !this.allSelected;
+  }
+
+  setTeacherAllChecked(completed: boolean) {
+    this.allSelected = completed;
+    if (this.teacherItems == null) {
+      return;
+    }
+    this.teacherItems.forEach(t => t.checked = completed);
+  }
+
+  exportTeacherCSV() {
+    let expItems = this.teacherItems.filter(a => a.checked);
+    let headerLabels = this.translate.currentLang == 'en-US' ?
+      ['prog Name', 'User name'] :
+      [' أسم البرنامج ',
+        'أسم المستخدم'];
+
+    let data = ['progName', 'usrNameAr'];
+    this.exportationService.exportCSV(expItems, 'teacher', data, headerLabels);
+  }
+
+  deleteTeacherByIds() {
+    this.deleteListOfteacher.emit();
+  }
+
+  onTeacherPageChange() {
+    this.teacherFilterRequestModel.skip = (this.teacherFilterRequestModel.page - 1) * (this.teacherFilterRequestModel.take || 0);
+    this.teacherFilterEvent.emit(this.teacherFilterRequestModel);
+    this.setTeacherAllChecked(false);
+  }
+
+//=================
+  sortStudentByName(){
+    this.studentFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn';
+    this.studentFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
+    this.studentFilterEvent.emit(this.studentFilterRequestModel);
+  }
+
+  sortStudentByNameOrderType() {
+    if ((this.studentFilterRequestModel.sortField === "userNameAr" || this.studentFilterRequestModel.sortField === "UserNameEn") && this.studentFilterRequestModel.sortOrder == 1) { return 'asend' }
+    if ((this.studentFilterRequestModel.sortField === "userNameAr" || this.studentFilterRequestModel.sortField === "UserNameEn") && this.studentFilterRequestModel.sortOrder == -1) { return 'desend' }
+
+    return '';
+  }
+
+  sortByStudentRequestDate() {
+    this.studentFilterRequestModel.sortField = 'requestdate';
+    this.studentFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
+    this.studentFilterEvent.emit(this.studentFilterRequestModel);
+  }
+
+  sortByStudentRequestDateOrderType() {
+    if (this.studentFilterRequestModel.sortField === 'requestdate' && this.studentFilterRequestModel.sortOrder == 1) { return 'asend' }
+    if (this.studentFilterRequestModel.sortField === 'requestdate'&& this.studentFilterRequestModel.sortOrder == -1) { return 'desend' }
+
+    return '';
+  }
+
+  enableStudentSelectOperations(): boolean {
+    return this.studentItems.filter(t => t.checked).length > 0 || this.allSelected;
+  }
+
+  someStudentItemsChecked(): boolean {
+    if (this.studentItems == null) {
+      return false;
+    }
+    return this.studentItems.filter(t => t.checked).length > 0 && !this.allSelected;
+  }
+
+  setStudentAllChecked(completed: boolean) {
+    this.allSelected = completed;
+    if (this.studentItems == null) {
+      return;
+    }
+    this.studentItems.forEach(t => t.checked = completed);
+  }
+
+  exportStudentCSV() {
+    let expItems = this.studentItems.filter(a => a.checked);
+    let headerLabels = this.translate.currentLang == 'en-US' ?
+      ['prog Name', 'User name'] :
+      [' أسم البرنامج ',
+        'أسم المستخدم'];
+
+    let data = ['progName', 'usrNameAr'];
+    this.exportationService.exportCSV(expItems, 'Student', data, headerLabels);
+  }
+
+  deleteStudentByIds() {
+    this.deleteListOfStudent.emit();
+  }
+
+  onStudentPageChange() {
+    this.studentFilterRequestModel.skip = (this.teacherFilterRequestModel.page  - 1) * (this.teacherFilterRequestModel.take || 0);
+    this.studentFilterEvent.emit(this.studentFilterRequestModel);
+    this.setTeacherAllChecked(false);
   }
 
 }

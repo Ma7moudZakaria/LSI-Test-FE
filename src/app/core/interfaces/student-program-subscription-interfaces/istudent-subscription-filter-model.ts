@@ -5,4 +5,5 @@ export interface IStudentSubscriptionFilterModel {
     usrNameEn?:string;
     progName?:string;
     totalRows?:number;
+    checked?:boolean;
 }
