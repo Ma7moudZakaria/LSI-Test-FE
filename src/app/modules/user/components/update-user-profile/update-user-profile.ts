@@ -64,8 +64,8 @@ export class UpdateUserProfileComponent implements OnInit {
   //   isRequired : true,
   //   // countryIsoCode: '{"initialCountry": "eg"}'
   // }
-
-
+  checkYear : any;
+  minGre:NgbDateStruct= {year:1900,day:0,month:0};
   constructor(
     private fb: FormBuilder,
     private lookupService: LookupService,
@@ -224,7 +224,9 @@ export class UpdateUserProfileComponent implements OnInit {
         middleEn: this.profileForm.value.middleNameEn != null ? this.profileForm.value.middleNameEn : this.userProfileDetails.mnameEn,
         familyAr: this.profileForm.value.familyNameAr != null ? this.profileForm.value.familyNameAr : this.userProfileDetails.fanameAr,
         familyEn: this.profileForm.value.familyNameEn != null ? this.profileForm.value.familyNameEn : this.userProfileDetails.faNameEn,
-        birthdate: this.profileForm.value.birthdate,
+        birthdate: this.checkYear < this.minGre.year ? this.profileForm.value.birthdate : null,
+        dateEnum: this.updateUserModel.birthdate != null ? 1 : 2,
+        birthGregorian: this.checkYear > this.minGre.year ? this.profileForm.value.birthdate : null,
         gender: this.profileForm.value.gender,
         mobile: this.profileForm.value.phoneNumber,
         countryCode: this.profileForm.value.countryCode,
@@ -234,7 +236,7 @@ export class UpdateUserProfileComponent implements OnInit {
         occupation: this.profileForm.value.occupation,
         address: this.profileForm.value.address,
         quraanMemorizeAmount: this.profileForm.value.quraanMemorization,
-        ejazaIds: this.ejazaAttachmentIds,
+        ejazaIds: this.ejazaAttachmentIds
       }
 
       this.coursesMessage = {};
@@ -327,7 +329,7 @@ export class UpdateUserProfileComponent implements OnInit {
           address: [''],// address: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
           phoneNumber: ['', [Validators.required/*,Validators.pattern(BaseConstantModel.mobilePattern), Validators.minLength(6), Validators.maxLength(16)*/]],
           occupation: [null, Validators.required],
-          countryCode: [null, Validators.required],          
+          countryCode: [null, Validators.required],
           city: [null, Validators.required],
           quraanMemorization:['', [Validators.pattern(BaseConstantModel.numberBiggerThanZero)]],
           userSheikhs: [],
@@ -616,10 +618,10 @@ export class UpdateUserProfileComponent implements OnInit {
   }
 
   Hijri(date: any) {
+    this.checkYear = date.year ;
     date = date.year + '/' + date.month + '/' + date.day;
     console.log("Hijri date", date)
     this.hijriBinding = date
-
     this.f.birthdate.setValue(date);
   }
 }

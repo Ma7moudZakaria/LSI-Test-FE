@@ -60,7 +60,7 @@ export class MiladyHijriCalendarComponent implements OnInit {
       this.hijriLabel = 'Hijri';
     }
     else{
-      this.GregLabel = 'ميلادي'; 
+      this.GregLabel = 'ميلادي';
       this.hijriLabel = 'هجري';
     }
   }
@@ -72,14 +72,12 @@ export class MiladyHijriCalendarComponent implements OnInit {
     // // let YearDate = DateNow.toString("yyyy mm dd");
 
     // if(data > DateNow){
-    //   this.sendDate.emit(data)      
+    //   this.sendDate.emit(data)
     // }
-    
+
 
     this.sendDate.emit(data)
   }
-
-
 
 }
 

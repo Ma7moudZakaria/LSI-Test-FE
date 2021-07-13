@@ -24,6 +24,8 @@ export interface IUpdateUserProfile {
     scientificArchives?:IUserScientificArchives[];
     sheikhs?:IUserSheikhs[];
     courses?:IUserTrainingCourses[];
+    birthGregorian?: Date;
+    dateEnum?:number;
 }
 
 
