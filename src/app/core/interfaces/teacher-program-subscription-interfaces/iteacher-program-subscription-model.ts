@@ -8,5 +8,5 @@ export interface ITeacherProgramSubscriptionModel {
     programStaNum?: number;
     timeDegree?: number;
     avatarLink?: string;
-    totalRows?: number;
+    totalRows: number;
 }

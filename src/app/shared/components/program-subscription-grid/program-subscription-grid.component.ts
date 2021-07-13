@@ -21,7 +21,7 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   @Output() deleteListOfteacher = new EventEmitter<string>();
  
 
-  @Input() userMode: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.student;
+  @Input() userMode: ProgramSubscriptionUsersEnum=ProgramSubscriptionUsersEnum.student ;
   @Input() studentFilterRequestModel: IStudentSubscriptionFilterRequestModel = {skip : 0, take : 12, page :1};
   @Input() teacherFilterRequestModel: ITeacherProgramSubscriptionFilterRequestModel = {skip : 0, take : 12, page :1};
   @Input() numberPerRow: number = 3;
@@ -81,6 +81,7 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   }
 
   setTeacherAllChecked(completed: boolean) {
+    console.log(this.userMode) ;
     this.allSelected = completed;
     if (this.teacherItems == null) {
       return;
@@ -141,6 +142,7 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   }
 
   someStudentItemsChecked(): boolean {
+    console.log(this.userMode) ;
     if (this.studentItems == null) {
       return false;
     }
@@ -153,6 +155,7 @@ export class ProgramSubscriptionGridComponent implements OnInit {
       return;
     }
     this.studentItems.forEach(t => t.checked = completed);
+   console.log(this.userMode) ;
   }
 
   exportStudentCSV() {

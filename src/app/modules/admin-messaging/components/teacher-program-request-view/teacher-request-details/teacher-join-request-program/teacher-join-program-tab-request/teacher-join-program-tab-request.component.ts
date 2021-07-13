@@ -35,8 +35,8 @@ export class TeacherJionProgramTabRequestComponent implements OnInit {
     this.teacherProgramSubscriptionServicesService.getTeachersProgramsSubscriptionsFilter(this.teacherProgramSubscriptionFilterRequestModel || {}).subscribe(res => {
       var response = <BaseResponseModel>res;
       if (response.isSuccess) {
-        this.teacherProgramSubscriptionList = res.data as ITeacherProgramSubscriptionFilterRequestModel[];
-        this.totalCount = this.teacherProgramSubscriptionList[0].totalRows || 0;
+        this.teacherProgramSubscriptionList = res.data as ITeacherProgramSubscriptionModel[];
+        this.totalCount = this.teacherProgramSubscriptionList.length>0 ?this.teacherProgramSubscriptionList[0].totalRows : 0;
       }
       else {
         this.errorMessage = response.message;

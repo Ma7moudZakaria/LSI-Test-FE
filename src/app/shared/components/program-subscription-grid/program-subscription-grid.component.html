@@ -1,5 +1,4 @@
-<div class="row scientific-problem-grid" *ngIf='userMode != programSubscriptionUsers.student'>
-  
+<div class="row scientific-problem-grid" *ngIf='userMode === programSubscriptionUsers.student'>
     <div class="col-6 d-flex justify-content-start">
      <ngb-pagination  [collectionSize]="totalCount" [(page)]="studentFilterRequestModel.page" [pageSize]="studentFilterRequestModel.take" [rotate]="true" [boundaryLinks]="true" (pageChange)="onStudentPageChange()"></ngb-pagination>
       <button  [ngClass]="{'default_btn': studentFilterRequestModel.sortField != 'userNameAr' && studentFilterRequestModel.sortField != 'UserNameEn', 'asend_desend_btn' : this.studentFilterRequestModel.sortField != 'requestdate' }"
@@ -46,7 +45,7 @@
        </div>
   </div>
 
-  <div class="row scientific-problem-grid" *ngIf='userMode != programSubscriptionUsers.teacher'>
+  <div class="row scientific-problem-grid" *ngIf='userMode === programSubscriptionUsers.teacher'>
   
     <div class="col-6 d-flex justify-content-start">
      <ngb-pagination  [collectionSize]="totalCount" [(page)]="teacherFilterRequestModel.page" [pageSize]="teacherFilterRequestModel.take" [rotate]="true" [boundaryLinks]="true" (pageChange)="onTeacherPageChange()"></ngb-pagination>
