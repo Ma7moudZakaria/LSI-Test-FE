@@ -1,33 +1,6 @@
-<div class="container-fluid reuest_container" > 
-
-    <div class="row group_header fix_margin w-100">
-        <div class="item_group" (click)="PendingTab()"
-        [ngClass]="{ item_group_active: showTap == 'Pending' }" >
-           طلبات الإنضمام الجديدة
-        </div>
-        <div class="item_group" (click)="AcceptTab()"
-        [ngClass]="{ item_group_active: showTap == 'Accept' }" >
-        طلبات مقبولة
-        </div>
-        <div class="item_group" (click)="RejectedTab()"
-        [ngClass]="{ item_group_active: showTap == 'Rejected' }" >
-        طلبات مرفوضة
-        </div>
-     
-    </div>
+<div>
+    <app-stu-tab-request></app-stu-tab-request>
+</div>
+<div>
     
-    
-    <div class="row fix_margin w-100 " >
-        <div class="col-12 px-2 interTab mb-3">
-            <app-stu-tab-request *ngIf='showTap == "Pending"'  [typeEnum]= 'typeEnum'></app-stu-tab-request>
-            <app-stu-tab-request *ngIf='showTap == "Accept"'   [typeEnum]= 'typeEnum'></app-stu-tab-request>
-            <app-stu-tab-request *ngIf='showTap == "Rejected"' [typeEnum]= 'typeEnum'></app-stu-tab-request>
-
-            <!-- <app-stu-tab-request *ngIf='showTap == "new_request"' ></app-stu-tab-request> -->
-            <!-- <app-list-feelings *ngIf='showTap == "student"' [tabType]='roleEnum'></app-list-feelings> -->
-        </div>
-    
-    </div>
-    
-    
-    </div>
+</div>
