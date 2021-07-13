@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./teacher-join-request.component.scss']
 })
 export class TeacherJoinRequestComponent implements OnInit {
+  showTap: string = 'new_request';
 
   constructor() { }
 

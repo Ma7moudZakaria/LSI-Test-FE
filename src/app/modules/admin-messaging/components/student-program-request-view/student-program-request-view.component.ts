@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./student-program-request-view.component.scss']
 })
 export class StudentProgramRequestViewComponent implements OnInit {
-
+  selectedStuRequest: number = 1;
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  studentRequestSelected(selectedNumber: number) {
+    this.selectedStuRequest = selectedNumber;
+  }
 }

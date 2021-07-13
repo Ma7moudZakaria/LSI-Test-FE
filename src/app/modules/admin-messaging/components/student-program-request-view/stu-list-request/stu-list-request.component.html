@@ -1,1 +1,33 @@
-<p>stu-list-request works!</p>
+
+<div class="list-group list-group_program-list">
+    <p class="mb-4">الطلبات</p>
+     
+    <div class="internal_scroll_list_group">
+        <a class="list-group-item d-flex"  
+        [class.active]="selectedIndex === 1"
+        (click)="studentRequestSelected(studentSubscriptionEmun.joinRequest);selectedIndex=1"> 
+        <span>  طلبات الانضمام</span>        
+       </a>
+       <a class="list-group-item d-flex"  
+       [class.active]="selectedIndex === 2"
+       (click)="studentRequestSelected(studentSubscriptionEmun.vacationRequest);selectedIndex=2"> 
+       <span> طلبات الاجازات  </span>        
+      </a>
+
+       <a class="list-group-item d-flex"  
+       [class.active]="selectedIndex === 3"
+       (click)="studentRequestSelected(studentSubscriptionEmun.quitRequest);selectedIndex=3"> 
+       <span> طلبات الانسحاب</span>        
+      </a>
+
+      <a class="list-group-item d-flex"  
+      [class.active]="selectedIndex === 4"
+      (click)="studentRequestSelected(studentSubscriptionEmun.movingRequest);selectedIndex=4"> 
+      <span> طلبات الانتقال   </span>        
+     </a>
+
+    </div>
+    <!-- <div *ngIf="resMessage.message" class="alert alert-{{ resMessage.type }} my-4 py-2">
+        {{ resMessage.message }}
+    </div> -->
+  </div>

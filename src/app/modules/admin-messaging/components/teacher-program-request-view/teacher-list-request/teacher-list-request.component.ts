@@ -8,17 +8,17 @@ import { TeacherRequestEnum } from 'src/app/core/enums/teacher-subscription-enum
 })
 export class TeacherListRequestComponent implements OnInit {
 
-  @Output() selectedTeatcherRequest =  new EventEmitter<number>();
-  teacherRequestEnum=TeacherRequestEnum;
-  selectedIndex:number=1;
+  @Output() selectedTeatcherRequest = new EventEmitter<number>();
+  teacherRequestEnum = TeacherRequestEnum;
+  selectedIndex: number = 1;
 
   constructor() { }
 
 
   ngOnInit(): void {
   }
- 
-teatcherRequestSelected(requestNum:number){
-  this.selectedTeatcherRequest.emit(requestNum);
-}
+
+  teatcherRequestSelected(requestNum: number) {
+    this.selectedTeatcherRequest.emit(requestNum);
+  }
 }

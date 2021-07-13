@@ -62,6 +62,8 @@ import { CustomConditionsComponent } from './components/setting-conditions/custo
 import { SettingQualificationsComponent } from './components/setting-conditions/setting-qualifications/setting-qualifications.component';
 import { SettingAcceptComponent } from './components/setting-conditions/setting-accept/setting-accept.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { StuCardRequestComponent } from './components/stu-card-request/stu-card-request.component';
+import { TeacherCardRequestComponent } from './components/teacher-card-request/teacher-card-request.component';
 import { ProgramSubscriptionGridComponent } from './components/program-subscription-grid/program-subscription-grid.component';
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
@@ -92,6 +94,8 @@ import { ProgramSubscriptionGridComponent } from './components/program-subscript
     CustomConditionsComponent,
     SettingQualificationsComponent,
     SettingAcceptComponent,
+    StuCardRequestComponent,
+    TeacherCardRequestComponent,
     ProgramSubscriptionGridComponent],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
@@ -113,6 +117,8 @@ import { ProgramSubscriptionGridComponent } from './components/program-subscript
     ProgramDayTaskRecitationStudentsComponent, ProgramDayTaskTestPhasedComponent,
     ProgramDayTaskTasmeaComponent, CardFeelingsComponent, MatTooltipModule,
     SettingAgeComponent, SettingDegreeLastProgramComponent, SettingLastProgramComponent, SettingQualificationsComponent,
+    SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent,
+    SettingAcceptComponent, StuCardRequestComponent, TeacherCardRequestComponent
     SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent, SettingAcceptComponent,ProgramSubscriptionGridComponent
 
   ]

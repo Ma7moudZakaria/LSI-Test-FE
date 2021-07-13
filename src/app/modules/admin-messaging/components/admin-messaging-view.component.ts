@@ -14,7 +14,7 @@ export class AdminMessagingViewComponent implements OnInit {
 
   @ViewChild(ScientificProblemsComponent) scientificProblmChild: ScientificProblemsComponent | undefined;
 
-  showtap: string = 'teacher';
+  showtap: string = 'student';
   // showAddReplyOverlay = false;
   // showAddScProbToQuestionBankOverlay = false;
   // scProbObjForAddReplyView : IScientificProblemGridItems = {}
