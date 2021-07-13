@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { StudentProgramSubscriptionStatusEnum } from 'src/app/core/enums/subscriptionStatusEnum/student-program-subscription-status-enum.enum';
 
 @Component({
   selector: 'app-stu-tab-request',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StuTabRequestComponent implements OnInit {
 
-  constructor() { }
+  @Input() typeEnum: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending;
 
   ngOnInit(): void {
   }
