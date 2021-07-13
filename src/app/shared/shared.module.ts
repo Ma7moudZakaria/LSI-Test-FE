@@ -119,6 +119,7 @@ import { ProgramSubscriptionGridComponent } from './components/program-subscript
     SettingAgeComponent, SettingDegreeLastProgramComponent, SettingLastProgramComponent, SettingQualificationsComponent,
     SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent,
     SettingAcceptComponent, StuCardRequestComponent, TeacherCardRequestComponent
+    ,SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent, SettingAcceptComponent,ProgramSubscriptionGridComponent
 
   ]
 })

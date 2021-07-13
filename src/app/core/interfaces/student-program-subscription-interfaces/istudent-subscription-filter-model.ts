@@ -1,4 +1,4 @@
-export interface IStudentSubscriptionModel {
+export interface IStudentSubscriptionFilterModel {
     id?:string;
     requestDate?:Date;
     usrNameAr?:string;
@@ -6,7 +6,4 @@ export interface IStudentSubscriptionModel {
     progName?:string;
     totalRows?:number;
     checked?:boolean;
-    programStaNum?: number;
-    examDegree?: number;
-    avatarLink?: string;
 }

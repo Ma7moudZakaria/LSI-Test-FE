@@ -5,6 +5,7 @@ import { ITeacherProgramSubscriptionModel } from 'src/app/core/interfaces/teache
 import { ITeacherProgramSubscriptionFilterRequestModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iteacher-program-subscription-filter-request-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { TeacherProgramSubscriptionServicesService } from 'src/app/core/services/teacher-program-subscription-services/teacher-program-subscription-services.service';
+import { ProgramSubscriptionUsersEnum } from 'src/app/core/enums/program-subscription-users-enum.enum';
 
 @Component({
   selector: 'app-teacher-join-program-tab-request',
@@ -13,13 +14,12 @@ import { TeacherProgramSubscriptionServicesService } from 'src/app/core/services
 })
 export class TeacherJionProgramTabRequestComponent implements OnInit {
 
-  teacherProgramSubscriptionList: ITeacherProgramSubscriptionModel[] | undefined;
-  teacherProgramSubscriptionFilterRequestModel: ITeacherProgramSubscriptionFilterRequestModel = { skip: 0, take: 12, sortField: '', sortOrder: 1, statusNum: 1 };
+  teacherProgramSubscriptionList:ITeacherProgramSubscriptionModel[] | undefined;
+  teacherProgramSubscriptionFilterRequestModel:ITeacherProgramSubscriptionFilterRequestModel ={skip : 0, take : 12, sortField : '', sortOrder: 1, page : 1};
   errorMessage?: string;
   totalCount = 0;
-  adminCard: ScientificProblemUsersEnum = ScientificProblemUsersEnum.Admin;
+  teacherCard: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.teacher;
   numberItemsPerRow = 4;
-  scientificProblemFilter: IScientificProblemFilter = { skip: 0, take: 12, sorField: '', ordType: 1, page: 1 };
 
   constructor(private teacherProgramSubscriptionServicesService: TeacherProgramSubscriptionServicesService) { }
 
