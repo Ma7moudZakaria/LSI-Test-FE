@@ -1,1 +1,26 @@
-<p>stu-join-request works!</p>
+<div class="container-fluid reuest_container" > 
+
+    <div class="row group_header fix_margin w-100">
+        <div class="item_group" 
+        [ngClass]="{ item_group_active: showTap == 'new_request' }" >
+           طلبات الإنضمام الجديدة
+        </div>
+        <!-- <div class="item_group" (click)="studentTab()"
+        [ngClass]="{ item_group_active: showTap == 'student' }" >
+        {{'FEELINGS.STUDENTS_FEELINGS' | translate}}
+           
+        </div>  -->
+    </div>
+    
+    
+    <div class="row fix_margin w-100 " >
+        <div class="col-12 px-2 interTab mb-3">
+            <app-stu-tab-request></app-stu-tab-request>
+            <!-- <app-stu-tab-request *ngIf='showTap == "new_request"' ></app-stu-tab-request> -->
+            <!-- <app-list-feelings *ngIf='showTap == "student"' [tabType]='roleEnum'></app-list-feelings> -->
+        </div>
+    
+    </div>
+    
+    
+    </div>

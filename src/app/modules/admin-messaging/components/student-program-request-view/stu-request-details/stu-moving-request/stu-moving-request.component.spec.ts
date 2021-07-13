@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdvancedSearchComponent } from './advanced-search.component';
+import { StuMovingRequestComponent } from './stu-moving-request.component';
 
-describe('AdvancedSearchComponent', () => {
-  let component: AdvancedSearchComponent;
-  let fixture: ComponentFixture<AdvancedSearchComponent>;
+describe('StuMovingRequestComponent', () => {
+  let component: StuMovingRequestComponent;
+  let fixture: ComponentFixture<StuMovingRequestComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdvancedSearchComponent ]
+      declarations: [ StuMovingRequestComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdvancedSearchComponent);
+    fixture = TestBed.createComponent(StuMovingRequestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
