@@ -60,7 +60,7 @@ export class ListFeelingsComponent implements OnInit {
       if (res.isSuccess) {
         this.feelingsNotPublishedList = res.data as IFeelingsDetailsModel[];
         this.feelingsNotPublishedList.forEach(element => {
-          element.crdOn = element.crdOn ? new Date(element.crdOn).toDateString() : '';
+          // element.crdOn = element.crdOn ? new Date(element.crdOn).toDateString() : '';
           element.isNew = true;
           if (!element?.proPic) {
             element.proPic = '../../../../../assets/images/Profile.svg';
@@ -92,7 +92,7 @@ export class ListFeelingsComponent implements OnInit {
       if (res.isSuccess) {
         this.feelingsPublishedList = res.data as IFeelingsDetailsModel[];
         this.feelingsPublishedList.forEach(element => {
-          element.crdOn = element.crdOn ? new Date(element.crdOn).toDateString() : '';
+          // element.crdOn = element.crdOn ? new Date(element.crdOn).toDateString() : '';
           element.isNew = false;
           if (!element?.proPic) {
             element.proPic = '../../../../../assets/images/Profile.svg';
