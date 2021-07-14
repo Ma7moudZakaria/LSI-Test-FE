@@ -98,7 +98,9 @@
         <mat-grid-tile *ngFor='let item of studentItems' >
             <app-stu-card-request [StudentSubscripModel]='item'  
             (rejecteStuRequest)="rejecteStuRequest($event)"
+            (acceptStuRequest)="acceptStuRequest($event)" 
             [typeEnum]='typeEnum'
+            
             ></app-stu-card-request>
         </mat-grid-tile>
     </ng-container>
