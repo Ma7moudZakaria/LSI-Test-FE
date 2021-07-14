@@ -26,4 +26,10 @@ export class StuJoinRequestComponent implements OnInit {
 
 
   }
+  closeOverlay() {
+    this.openStuRejectOverlay = false
+
+    // this.scientificProblmChild?.getScientificProblems();
+  }
+
 }
