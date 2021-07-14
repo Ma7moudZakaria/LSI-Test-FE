@@ -1,5 +1,5 @@
 import { error } from 'selenium-webdriver';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { StudentProgramSubscriptionStatusEnum } from 'src/app/core/enums/subscriptionStatusEnum/student-program-subscription-status-enum.enum';
 import { StudentProgramSubscriptionServicesService } from 'src/app/core/services/student-program-subscription-services/student-program-subscription-services.service';
 import { IStudentSubscriptionFilterModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-subscription-filter-model';
@@ -12,6 +12,7 @@ import { IStudentSubscriptionModel } from 'src/app/core/interfaces/student-progr
   styleUrls: ['./stu-tab-request.component.scss']
 })
 export class StuTabRequestComponent implements OnInit {
+  @Output() itemStuReq = new EventEmitter<IStudentSubscriptionModel>();
 
   showTap: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending
   statusEnum = StudentProgramSubscriptionStatusEnum;
@@ -30,6 +31,8 @@ export class StuTabRequestComponent implements OnInit {
 
       if (res.isSuccess) {
         this.studProgsSubsItems = res.data;
+        console.log("studProgsSubsItem ", this.studProgsSubsItems)
+
       }
       else {
 
@@ -55,5 +58,8 @@ export class StuTabRequestComponent implements OnInit {
     this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Rejected
     this.getStudentProgramSubscriptionsFilter();
   }
+  rejecteStuRequestMethod(event: IStudentSubscriptionModel) {
+    this.itemStuReq.emit(event)
 
+  }
 }
