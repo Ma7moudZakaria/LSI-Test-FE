@@ -6,6 +6,7 @@ import { ITeacherProgramSubscriptionFilterRequestModel } from 'src/app/core/inte
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { TeacherProgramSubscriptionServicesService } from 'src/app/core/services/teacher-program-subscription-services/teacher-program-subscription-services.service';
 import { ProgramSubscriptionUsersEnum } from 'src/app/core/enums/program-subscription-users-enum.enum';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 
 @Component({
   selector: 'app-teacher-join-program-tab-request',
@@ -20,8 +21,10 @@ export class TeacherJionProgramTabRequestComponent implements OnInit {
   totalCount = 0;
   teacherCard: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.teacher;
   numberItemsPerRow = 4;
-
-  constructor(private teacherProgramSubscriptionServicesService: TeacherProgramSubscriptionServicesService) { }
+  ids?:string[]=[];
+  constructor(
+    private teacherProgramSubscriptionServicesService: TeacherProgramSubscriptionServicesService,
+    private alertify: AlertifyService) { }
 
   ngOnInit(): void {
     this.getTeachersProgramsSubscriptions();
@@ -46,5 +49,40 @@ export class TeacherJionProgramTabRequestComponent implements OnInit {
         console.log(error);
       });
   }
+
+  acceptTeacherProgramSubscription(teacherSubscripModel:ITeacherProgramSubscriptionModel){
+    this.ids?.push(teacherSubscripModel.id || '');
+    this.teacherProgramSubscriptionServicesService.teacherProgramSubscriptionsAcceptance( this.ids).subscribe(res => {
+      var response = <BaseResponseModel>res;
+      if (response.isSuccess) {
+        this.alertify.success(res.message || '');
+      }
+      else {
+        this.alertify.error(res.message || '');
+      }
+    },
+      error => {
+        console.log(error);
+      });
+  }
+
+  acceptAllTeachersCheckedProgramSubscription(){
+    
+    this.ids= this.teacherProgramSubscriptionList?.filter(i => i.checked).map(a => a.id || '') 
+        this.teacherProgramSubscriptionServicesService.teacherProgramSubscriptionsAcceptance( this.ids).subscribe(res => {
+          var response = <BaseResponseModel>res;
+          if (response.isSuccess) {
+            this.alertify.success(res.message || '');
+          }
+          else {
+            this.alertify.error(res.message || '');
+          }
+        },
+          error => {
+            console.log(error);
+          });
+    
+  }
+  
 
 }

@@ -19,7 +19,9 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   @Output() teacherFilterEvent = new EventEmitter<ITeacherProgramSubscriptionFilterRequestModel>();
   @Output() deleteListOfStudent = new EventEmitter<string>();
   @Output() deleteListOfteacher = new EventEmitter<string>();
- 
+  @Output() rejectTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
+  @Output()  acceptTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
+  @Output()  acceptAllTeacherProgramSubscriptionCheched = new EventEmitter<ITeacherProgramSubscriptionModel>();
 
   @Input() userMode: ProgramSubscriptionUsersEnum=ProgramSubscriptionUsersEnum.student ;
   @Input() studentFilterRequestModel: IStudentSubscriptionFilterRequestModel = {skip : 0, take : 12, page :1};
@@ -110,6 +112,16 @@ export class ProgramSubscriptionGridComponent implements OnInit {
     this.setTeacherAllChecked(false);
   }
 
+  rejectTeacherProgramSubscriptionEve(teacherSubscripModel:ITeacherProgramSubscriptionModel){
+    this.rejectTeacherProgramSubscription.emit(teacherSubscripModel);
+  }
+  acceptTeacherProgramSubscriptionEvent(teacherSubscripModel:ITeacherProgramSubscriptionModel){
+    this.acceptTeacherProgramSubscription.emit(teacherSubscripModel);
+  }
+
+  acceptAllTeacherProgramSubscriptionChechedEvent(){
+    this.acceptAllTeacherProgramSubscriptionCheched.emit();
+  }
 //=================
   sortStudentByName(){
     this.studentFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn';

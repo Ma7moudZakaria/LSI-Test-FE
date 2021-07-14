@@ -1,4 +1,4 @@
-import { Input } from '@angular/core';
+import { EventEmitter, Input, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { ITeacherProgramSubscriptionModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iteacher-program-subscription-model';
 
@@ -9,10 +9,18 @@ import { ITeacherProgramSubscriptionModel } from 'src/app/core/interfaces/teache
 })
 export class TeacherCardRequestComponent implements OnInit {
 
- @Input() teacherSubscripModel: ITeacherProgramSubscriptionModel = {totalRows:0}
+  @Output() rejectTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
+  @Output() acceptTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
+
+  @Input() teacherSubscripModel: ITeacherProgramSubscriptionModel = {totalRows:0}
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  acceptTeacherProgramSubscriptionEvent(){
+    this.acceptTeacherProgramSubscription.emit(this.teacherSubscripModel);
   }
 
 }

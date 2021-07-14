@@ -84,7 +84,7 @@
                     (change)="setTeacherAllChecked($event.checked)"></mat-checkbox>
 
           <a class=" ml-2 mr-2" [class.disabled]='!enableTeacherSelectOperations()'>
-              <i (click)='deleteTeacherByIds()' class="far fa-trash-alt"></i>
+              <i (click)='acceptAllTeacherProgramSubscriptionChechedEvent()' class="far fa-trash-alt"></i>
           </a>
           <a class=" ml-1 mr-1" [class.disabled]='!enableTeacherSelectOperations()'>
               <img  class="exportIcon" (click)='exportTeacherCSV()' 
@@ -102,7 +102,7 @@
     <ng-container *ngIf="userMode == programSubscriptionUsers.teacher">
         
         <mat-grid-tile *ngFor='let item of teacherItems' >
-         <app-teacher-card-request  [teacherSubscripModel]='item'></app-teacher-card-request>
+         <app-teacher-card-request class="card" (acceptTeacherProgramSubscription)='acceptTeacherProgramSubscriptionEvent($event)' [teacherSubscripModel]='item'></app-teacher-card-request>
         </mat-grid-tile>
 
         <!-- <mat-grid-tile *ngFor='let item of adminItems' >
