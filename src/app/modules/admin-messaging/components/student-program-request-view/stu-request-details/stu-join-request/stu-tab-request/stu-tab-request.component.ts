@@ -12,6 +12,7 @@ import { IStudentSubscriptionModel } from 'src/app/core/interfaces/student-progr
 })
 export class StuTabRequestComponent implements OnInit {
   @Output() itemStuReq = new EventEmitter<IStudentSubscriptionModel>();
+  typeEnum: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending;
 
   showTap: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending
   statusEnum = StudentProgramSubscriptionStatusEnum;

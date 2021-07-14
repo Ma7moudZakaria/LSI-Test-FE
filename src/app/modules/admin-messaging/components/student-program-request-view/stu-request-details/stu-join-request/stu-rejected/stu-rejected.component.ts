@@ -50,39 +50,5 @@ export class StuRejectedComponent implements OnInit {
     }
 
   }
-  // saveReplyToScientificProble() {
-  //   let model: IAddScProbReply = {
-  //     id: this.scProbObjForAddReplyView?.id,
-  //     reply: this.scProbObjForAddReplyView?.repText
-  //   };
-
-  //   if (model.reply) {
-  //     this.scientificProblemService.addScientificProblemReply(model).subscribe(res => {
-  //       if (res.isSuccess) {
-  //         this.alertify.success(res.message || '');
-  //         this.closeAddReplyToScProblem.emit();
-  //       }
-  //       else {
-  //         this.resultMessage = {
-  //           message: res.message,
-  //           type: BaseConstantModel.DANGER_TYPE
-  //         }
-  //       }
-  //     }, error => {
-  //       this.resultMessage = {
-  //         message: error,
-  //         type: BaseConstantModel.DANGER_TYPE
-  //       }
-  //     })
-  //   }
-  //   else {
-  //     this.resultMessage = {
-  //       message: this.tranlste.instant('SCIENTIFIC_PROBLEM.ENTER_REPLAY'),
-  //       type: BaseConstantModel.DANGER_TYPE
-  //     }
-  //   }
-
-  // }
-
 
 }
