@@ -1005,8 +1005,37 @@ input[type=number] {
   }
 
 }
-.size_img_model
+.size_img_model {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+// pdf-viewer
+pdf-viewer {
+  display: block;
+  height:40vh !important;
+
+
+.ng2-pdf-viewer-container{
+  margin: 0 !important;
+  &:lang(en){
+    left: 0;
+  }
+  &:lang(ar){
+    right:  0;
+  }
+  
+}
+.page{
+  width: 767px!important;
+}}
+/*.size_img_model
 {
   width: 465px;
   height: 400px;
-}
+}*/
+.title_data{
+  color: #363636;
+  font-size: 14px;
+  font-family: Almarai-Bold;
+  }
