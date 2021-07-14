@@ -19,6 +19,10 @@ export class TeacherCardRequestComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  rejectTeacherProgramSubscriptionEve(teacherSubscripModel:ITeacherProgramSubscriptionModel){
+    this.rejectTeacherProgramSubscription.emit(teacherSubscripModel);
+  }
+  
   acceptTeacherProgramSubscriptionEvent(){
     this.acceptTeacherProgramSubscription.emit(this.teacherSubscripModel);
   }

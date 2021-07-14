@@ -9,4 +9,5 @@ export interface ITeacherProgramSubscriptionModel {
     timeDegree?: number;
     avatarLink?: string;
     totalRows: number;
+    reasonReject?:string;
 }

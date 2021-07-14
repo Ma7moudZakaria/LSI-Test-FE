@@ -18,8 +18,8 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   @Output() studentFilterEvent = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
   @Output() teacherFilterEvent = new EventEmitter<ITeacherProgramSubscriptionFilterRequestModel>();
   @Output() deleteListOfStudent = new EventEmitter<string>();
-    @Output() deleteListOfteacher = new EventEmitter<string>();
-    @Output() itemStuReq = new EventEmitter<IStudentSubscriptionModel>();
+  @Output() deleteListOfteacher = new EventEmitter<string>();
+  @Output() itemStuReq = new EventEmitter<IStudentSubscriptionModel>();
   @Output() rejectTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
   @Output()  acceptTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
   @Output()  acceptAllTeacherProgramSubscriptionCheched = new EventEmitter<ITeacherProgramSubscriptionModel>();
