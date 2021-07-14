@@ -14,8 +14,8 @@
     </div>
       
       <div *ngIf='teacherProgramSubscriptionList && teacherProgramSubscriptionList.length > 0' class="col-12 internal_scroll">
-        <app-program-subscription-grid  [totalCount]='totalCount' [teacherItems]='teacherProgramSubscriptionList'
-        [numberPerRow]='numberItemsPerRow' [userMode]='teacherCard' [teacherFilterRequestModel] = 'teacherProgramSubscriptionFilterRequestModel'></app-program-subscription-grid>
+        <app-program-subscription-grid  [totalCount]='totalCount' [teacherItems]='teacherProgramSubscriptionList' (acceptTeacherProgramSubscription)='acceptTeacherProgramSubscription($event)'
+         (acceptAllTeacherProgramSubscriptionCheched)='acceptAllTeachersCheckedProgramSubscription()' [numberPerRow]='numberItemsPerRow' [userMode]='teacherCard' [teacherFilterRequestModel] = 'teacherProgramSubscriptionFilterRequestModel'></app-program-subscription-grid>
       </div>
     </div>
   </div>

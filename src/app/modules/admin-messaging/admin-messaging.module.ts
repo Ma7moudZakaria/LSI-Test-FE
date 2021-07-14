@@ -30,6 +30,7 @@ import { TeacherJionTabRequestComponent } from './components/teacher-program-req
 import { StuVacationsRequestComponent } from './components/student-program-request-view/stu-request-details/stu-vacations-request/stu-vacations-request.component';
 import { StuMovingRequestComponent } from './components/student-program-request-view/stu-request-details/stu-moving-request/stu-moving-request.component';
 import { StuRejectedComponent } from './components/student-program-request-view/stu-request-details/stu-join-request/stu-rejected/stu-rejected.component';
+import { TeacheRejectedComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-join-request-program/teache-rejected/teache-rejected.component';
 // import { TeacherTabRequestComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-join-request-program/teacher-tab-request/teacher-tab-request.component';
 
 
@@ -48,7 +49,7 @@ import { StuRejectedComponent } from './components/student-program-request-view/
     StuTabRequestComponent, AdvancedSearchComponent, TeacherListRequestComponent,
     TeacherRequestDetailsComponent, TeacherJoinRequestComponent, TeacherJoinRequestProgramComponent, TeacherQuitRequestComponent,
     ChangTimeRequestComponent, TeacherJionProgramTabRequestComponent, StuVacationsRequestComponent, StuMovingRequestComponent
-    , TeacherJionTabRequestComponent, StuRejectedComponent],
+    , TeacherJionTabRequestComponent, StuRejectedComponent, TeacheRejectedComponent],
   imports: [
     CommonModule,
     FormsModule,
