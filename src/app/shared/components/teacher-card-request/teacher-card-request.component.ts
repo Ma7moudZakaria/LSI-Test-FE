@@ -9,7 +9,7 @@ import { ITeacherProgramSubscriptionModel } from 'src/app/core/interfaces/teache
 })
 export class TeacherCardRequestComponent implements OnInit {
 
- @Input() teacherSubscripModel: ITeacherProgramSubscriptionModel = {}
+ @Input() teacherSubscripModel: ITeacherProgramSubscriptionModel = {totalRows:0}
   constructor() { }
 
   ngOnInit(): void {
