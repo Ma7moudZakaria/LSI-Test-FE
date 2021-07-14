@@ -4,7 +4,7 @@ export interface IProgramFilterAdvancedRequest {
   name?: string;
   programTypes?: IProgramType[];
   duration?: number;
-  isTest?: boolean;
+  isAdmissionTest?: boolean;
   stuNum?: number;
   techNum?: number;
   skip?: number;
