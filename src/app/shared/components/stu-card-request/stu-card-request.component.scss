@@ -1,8 +1,9 @@
 @import '../../../../assets/scss/buttons';
 @import '../../../../assets/scss/variables';
 
-.card-admin-scientific-problem {
+.card-request {
     background: $white;
+    margin:  0 0.2rem;
     box-shadow: 0px 3px 15px $box-shadow;
     border-radius: 12px;
     padding: 0  ;
@@ -53,7 +54,7 @@
       :lang(ar){text-align: right;}
       .name_user{
         color: $user-color;
-        font-size: 18px;
+        font-size: 1rem;
   
       }
       .number_request {
@@ -108,6 +109,13 @@
         
   
       }
+      .exam_link{
+        color: #8E2520;
+        font-size: 0.75rem;
+        font-family: Almarai-Regular;
+        text-decoration: underline;
+        cursor: pointer;
+      }
     } // card body
     .body_footer{
       display: flex;
@@ -125,4 +133,7 @@
      } //footer
    
   
+  }
+  button:disabled{
+    opacity: 0.5;
   }

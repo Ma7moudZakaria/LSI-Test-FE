@@ -18,7 +18,8 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   @Output() studentFilterEvent = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
   @Output() teacherFilterEvent = new EventEmitter<ITeacherProgramSubscriptionFilterRequestModel>();
   @Output() deleteListOfStudent = new EventEmitter<string>();
-  @Output() deleteListOfteacher = new EventEmitter<string>();
+    @Output() deleteListOfteacher = new EventEmitter<string>();
+    @Output() itemStuReq = new EventEmitter<IStudentSubscriptionModel>();
   @Output() rejectTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
   @Output()  acceptTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
   @Output()  acceptAllTeacherProgramSubscriptionCheched = new EventEmitter<ITeacherProgramSubscriptionModel>();
@@ -35,7 +36,7 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   userOrderTypeToggel = true;
   allSelected: boolean = false;
   programSubscriptionUsers = ProgramSubscriptionUsersEnum;
-   page = 1
+  page = 1
 
   constructor(
     public translate: TranslateService,
@@ -45,7 +46,7 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  sortTeacherByName(){
+  sortTeacherByName() {
     this.teacherFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn';
     this.teacherFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
     this.teacherFilterEvent.emit(this.teacherFilterRequestModel);
@@ -66,7 +67,7 @@ export class ProgramSubscriptionGridComponent implements OnInit {
 
   sortTeacherRequestDateOrderType() {
     if (this.teacherFilterRequestModel.sortField === 'requestdate' && this.teacherFilterRequestModel.sortOrder == 1) { return 'asend' }
-    if (this.teacherFilterRequestModel.sortField === 'requestdate'&& this.teacherFilterRequestModel.sortOrder == -1) { return 'desend' }
+    if (this.teacherFilterRequestModel.sortField === 'requestdate' && this.teacherFilterRequestModel.sortOrder == -1) { return 'desend' }
 
     return '';
   }
@@ -83,7 +84,7 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   }
 
   setTeacherAllChecked(completed: boolean) {
-    console.log(this.userMode) ;
+    console.log(this.userMode);
     this.allSelected = completed;
     if (this.teacherItems == null) {
       return;
@@ -144,7 +145,7 @@ export class ProgramSubscriptionGridComponent implements OnInit {
 
   sortByStudentRequestDateOrderType() {
     if (this.studentFilterRequestModel.sortField === 'requestdate' && this.studentFilterRequestModel.sortOrder == 1) { return 'asend' }
-    if (this.studentFilterRequestModel.sortField === 'requestdate'&& this.studentFilterRequestModel.sortOrder == -1) { return 'desend' }
+    if (this.studentFilterRequestModel.sortField === 'requestdate' && this.studentFilterRequestModel.sortOrder == -1) { return 'desend' }
 
     return '';
   }
@@ -154,7 +155,7 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   }
 
   someStudentItemsChecked(): boolean {
-    console.log(this.userMode) ;
+    console.log(this.userMode);
     if (this.studentItems == null) {
       return false;
     }
@@ -167,7 +168,7 @@ export class ProgramSubscriptionGridComponent implements OnInit {
       return;
     }
     this.studentItems.forEach(t => t.checked = completed);
-   console.log(this.userMode) ;
+    console.log(this.userMode);
   }
 
   exportStudentCSV() {
@@ -186,9 +187,13 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   }
 
   onStudentPageChange() {
-    this.studentFilterRequestModel.skip = (this.teacherFilterRequestModel.page  - 1) * (this.teacherFilterRequestModel.take || 0);
+    this.studentFilterRequestModel.skip = (this.teacherFilterRequestModel.page - 1) * (this.teacherFilterRequestModel.take || 0);
     this.studentFilterEvent.emit(this.studentFilterRequestModel);
     this.setTeacherAllChecked(false);
   }
 
+  rejecteStuRequest(event: IStudentSubscriptionModel) {
+    this.itemStuReq.emit(event)
+
+  }
 }

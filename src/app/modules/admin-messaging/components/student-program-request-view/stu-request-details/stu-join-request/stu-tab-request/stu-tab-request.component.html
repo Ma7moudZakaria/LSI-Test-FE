@@ -26,8 +26,8 @@
     
     <div class="row fix_margin w-100 " >
         <div class="col-12 px-2 interTab mb-3">
-            <app-program-subscription-grid *ngIf='showTap == statusEnum.Pending && studProgsSubsItems.length > 0' [studentItems]='studProgsSubsItems'></app-program-subscription-grid>
-            <app-program-subscription-grid *ngIf='showTap == statusEnum.Accept && studProgsSubsItems.length > 0' [studentItems]='studProgsSubsItems'></app-program-subscription-grid>
+            <app-program-subscription-grid *ngIf='showTap == statusEnum.Pending && studProgsSubsItems.length > 0' [studentItems]='studProgsSubsItems' (itemStuReq)="rejecteStuRequestMethod($event)"></app-program-subscription-grid>
+            <app-program-subscription-grid *ngIf='showTap == statusEnum.Accept && studProgsSubsItems.length > 0' [studentItems]='studProgsSubsItems'   ></app-program-subscription-grid>
             <app-program-subscription-grid *ngIf='showTap == statusEnum.Rejected && studProgsSubsItems.length > 0' [studentItems]='studProgsSubsItems'></app-program-subscription-grid>
             <!-- <app-stu-tab-request *ngIf='showTap == statusEnum.Pending'  [typeEnum]= 'showTap'></app-stu-tab-request>
             <app-stu-tab-request *ngIf='showTap == statusEnum.Accept'   [typeEnum]= 'showTap'></app-stu-tab-request>
