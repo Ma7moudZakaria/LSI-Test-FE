@@ -2,7 +2,6 @@ import { error } from 'selenium-webdriver';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { StudentProgramSubscriptionStatusEnum } from 'src/app/core/enums/subscriptionStatusEnum/student-program-subscription-status-enum.enum';
 import { StudentProgramSubscriptionServicesService } from 'src/app/core/services/student-program-subscription-services/student-program-subscription-services.service';
-import { IStudentSubscriptionFilterModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-subscription-filter-model';
 import { IStudentSubscriptionFilterRequestModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-subscription-filter-request-model';
 import { IStudentSubscriptionModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-subscription-model';
 
