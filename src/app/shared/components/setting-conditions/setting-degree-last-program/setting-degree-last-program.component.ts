@@ -63,6 +63,7 @@ export class SettingDegreeLastProgramComponent implements OnInit {
   }
 
   addDegreeItem() {
+    if(this.degreeLastProgramModel.condSelcted !=="null" && this.degreeLastProgramModel.condSelcted !==undefined){
     this.degreeLastProgramModel.value = [];
     const exist = this.selectedDegreeLastPrograms.some(el => el.id === this.degreeLastProgramModel.condSelcted)
     if (!exist) {
@@ -73,6 +74,7 @@ export class SettingDegreeLastProgramComponent implements OnInit {
       }
       this.degreeLastProgramModel.value = this.selectedDegreeLastPrograms;
     }
+  }
   }
   removeItemFromSelectedDegreeLastPrograms(item: any) {
     let index = this.selectedDegreeLastPrograms.indexOf(item);

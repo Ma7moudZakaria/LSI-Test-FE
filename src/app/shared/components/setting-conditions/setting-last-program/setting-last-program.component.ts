@@ -83,13 +83,15 @@ export class SettingLastProgramComponent implements OnInit {
   }
 
   addDegreeItem() {
-    this.lastProgramModel.value = [];
-    const exist = this.selectedLastPrograms.some(el => el.id === this.lastProgramModel.condSelcted)
-    if (!exist) {
-      this.selectedLastPrograms.push(
-        this.ProgramsList.filter(el => el.id == this.lastProgramModel.condSelcted)[0]);
+    if(this.lastProgramModel.condSelcted !=="null" && this.lastProgramModel.condSelcted !==undefined){
+      this.lastProgramModel.value = [];
+      const exist = this.selectedLastPrograms.some(el => el.id === this.lastProgramModel.condSelcted)
+      if (!exist) {
+        this.selectedLastPrograms.push(
+          this.ProgramsList.filter(el => el.id == this.lastProgramModel.condSelcted)[0]);
+      }
+      this.lastProgramModel.value = this.selectedLastPrograms;
     }
-    this.lastProgramModel.value = this.selectedLastPrograms;
   }
   removeItemFromSelectedLastPrograms(item: any) {
     let index = this.selectedLastPrograms.indexOf(item);
