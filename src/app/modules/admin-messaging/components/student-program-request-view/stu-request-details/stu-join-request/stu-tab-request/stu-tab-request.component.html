@@ -24,15 +24,16 @@
             <app-program-subscription-grid *ngIf='showTap == statusEnum.Pending && studProgsSubsItems.length > 0' 
                 [studentItems]='studProgsSubsItems' 
                 (itemStuReq)="rejecteStuRequestMethod($event)"
-                
+                (acceptStuReq)="acceptStuReq($event)"
+                (acceptAllStudentProgramSubscriptionCheched)="acceptAllStudentProgramSubscriptionCheched ()"
                 [typeEnum]='statusEnum.Pending' >
             </app-program-subscription-grid>
 
             <app-program-subscription-grid *ngIf='showTap == statusEnum.Accept && studProgsSubsItems.length > 0' 
                  [typeEnum]='statusEnum.Accept ' 
-                 (acceptStuReq)="acceptStuReq($event)"
                  [studentItems]='studProgsSubsItems'   >
                 </app-program-subscription-grid>
+
             <app-program-subscription-grid *ngIf='showTap == statusEnum.Rejected && studProgsSubsItems.length > 0' 
                   [typeEnum]='statusEnum.Rejected' [studentItems]='studProgsSubsItems'>
                 </app-program-subscription-grid>

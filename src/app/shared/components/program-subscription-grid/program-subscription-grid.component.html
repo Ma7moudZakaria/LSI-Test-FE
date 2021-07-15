@@ -36,7 +36,8 @@
                     (change)="setStudentAllChecked($event.checked)"></mat-checkbox>
 
           <a class=" ml-2 mr-2" [class.disabled]='!enableStudentSelectOperations()'>
-              <i (click)='deleteStudentByIds()' class="far fa-trash-alt"></i>
+              <i (click)='acceptAllStudentProgramSubscriptionChechedEvent()' class="fa fa-check fa-lg "></i>
+              
           </a>
           <a class=" ml-1 mr-1" [class.disabled]='!enableStudentSelectOperations()'>
               <img  class="exportIcon" (click)='exportStudentCSV()' 
@@ -84,7 +85,7 @@
                     (change)="setTeacherAllChecked($event.checked)"></mat-checkbox>
 
           <a class=" ml-2 mr-2" [class.disabled]='!enableTeacherSelectOperations()'>
-              <i (click)='acceptAllTeacherProgramSubscriptionChechedEvent()' class="far fa-trash-alt"></i>
+              <i (click)='acceptAllTeacherProgramSubscriptionChechedEvent()' class="fa fa-check fa-lg "></i>
           </a>
           <a class=" ml-1 mr-1" [class.disabled]='!enableTeacherSelectOperations()'>
               <img  class="exportIcon" (click)='exportTeacherCSV()' 
@@ -98,7 +99,8 @@
         <mat-grid-tile *ngFor='let item of studentItems' >
             <app-stu-card-request [StudentSubscripModel]='item'  
             (rejecteStuRequest)="rejecteStuRequest($event)"
-            (acceptStuRequest)="acceptStuRequest($event)" 
+            (acceptStuRequest)="acceptStuRequest($event)"
+             
             [typeEnum]='typeEnum'
             
             ></app-stu-card-request>

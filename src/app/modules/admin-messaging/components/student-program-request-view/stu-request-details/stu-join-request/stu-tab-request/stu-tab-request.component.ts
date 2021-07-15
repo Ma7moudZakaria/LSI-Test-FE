@@ -70,6 +70,8 @@ export class StuTabRequestComponent implements OnInit {
     this.progSubsService.studentProgramSubscriptionsAcceptance(this.ids || []).subscribe(res => {
       if (res.isSuccess) {
         this.alertify.success(res.message || '');
+        this.getStudentProgramSubscriptionsFilter();
+
       }
       else {
         this.alertify.error(res.message || '');
@@ -79,25 +81,28 @@ export class StuTabRequestComponent implements OnInit {
         console.log(error);
       });
   }
+
+  acceptAllStudentProgramSubscriptionCheched() {
+
+    this.ids = this.studProgsSubsItems?.filter(i => i.checked).map(a => a.id || '')
+    this.progSubsService.studentProgramSubscriptionsAcceptance(this.ids).subscribe(res => {
+      if (res.isSuccess) {
+        this.alertify.success(res.message || '');
+        this.getStudentProgramSubscriptionsFilter();
+      }
+      else {
+        this.alertify.error(res.message || '');
+      }
+    },
+      error => {
+        console.log(error);
+      });
+
+  }
+
 }
 
 
 
 
-
-  // acceptTeacherProgramSubscription(teacherSubscripModel:ITeacherProgramSubscriptionModel){
-  //   this.ids?.push(teacherSubscripModel.id || '');
-  //   this.teacherProgramSubscriptionServicesService.teacherProgramSubscriptionsAcceptance( this.ids).subscribe(res => {
-  //     var response = <BaseResponseModel>res;
-  //     if (response.isSuccess) {
-  //       this.alertify.success(res.message || '');
-  //     }
-  //     else {
-  //       this.alertify.error(res.message || '');
-  //     }
-  //   },
-  //     error => {
-  //       console.log(error);
-  //     });
-  // }
 

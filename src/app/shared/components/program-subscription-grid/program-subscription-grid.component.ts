@@ -21,7 +21,9 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   @Output() deleteListOfStudent = new EventEmitter<string>();
   @Output() deleteListOfteacher = new EventEmitter<string>();
   @Output() itemStuReq = new EventEmitter<IStudentSubscriptionModel>();
+
   @Output() acceptStuReq = new EventEmitter<IStudentSubscriptionModel>();
+  @Output() acceptAllStudentProgramSubscriptionCheched = new EventEmitter<IStudentSubscriptionModel>();
 
   @Output() rejectTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
   @Output() acceptTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
@@ -203,5 +205,8 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   acceptStuRequest(event: IStudentSubscriptionModel) {
     this.acceptStuReq.emit(event)
 
+  }
+  acceptAllStudentProgramSubscriptionChechedEvent() {
+    this.acceptAllStudentProgramSubscriptionCheched.emit()
   }
 }
