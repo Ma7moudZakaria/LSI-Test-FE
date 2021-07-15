@@ -1,7 +1,7 @@
 <div class="card-request">
     <div class="card_header">
-      <section class="example-section">
-        <mat-checkbox class="example-margin" [(ngModel)]="teacherSubscripModel.checked" ></mat-checkbox>
+      <section class="example-section" *ngIf="typeEnum === tabTypeSelected.Pending ">
+        <mat-checkbox  class="example-margin" [(ngModel)]="teacherSubscripModel.checked" ></mat-checkbox>
       </section>
     
     <div>
@@ -29,51 +29,11 @@
           <a> <img  class="call"  src="../../../../assets/images/request/call.svg"></a>
         </div>
       </div>
-
-       <!-- <div class="card_body_data">
-
-        <div class="body_header">
-          <span>المواعيد الجديدة</span>
-        </div>
-       
-        <div class="body_container">
-          <p>
-            المواعيد الجديدة
-           </p>
-        </div>
-        <div class="body_header mt-3">
-        <span >المواعيد الجديدة</span>
-        </div>
-        <div class="body_container">
-          <p >
-            المواعيد الجديدة
-           </p>
-           
-        </div>
-        
-       </div> -->
-
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    <div class="body_footer">
-      <button class="btn cancel-btn" > رفض  </button>
+    <div class="body_footer" *ngIf="typeEnum === tabTypeSelected.Pending ">
+    <button class="btn cancel-btn" (click)='rejectTeacherProgramSubscriptionEvent()' [disabled]="teacherSubscripModel.checked"> رفض  </button>
       <!-- <button class=" btn btn_replay" [attr.disabled]="showAddReplyArea || scientificProblem.repText ? true : null" (click)='showAddReplyAreaTog()'> {{'SCIENTIFIC_PROBLEM.REPLY_ANSWER' | translate}}</button> -->
-      <button  class=" btn save-btn" (click)='acceptTeacherProgramSubscriptionEvent()' > قبول </button>
+      <button  class=" btn save-btn" (click)='acceptTeacherProgramSubscriptionEvent()'> قبول </button>
     </div>
   </div>
