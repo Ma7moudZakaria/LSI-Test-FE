@@ -50,10 +50,11 @@ export class ProgramDayTaskVideoComponent implements OnInit {
 
   closeResult: string | undefined;
   openVerticallyCentered(content: any) {
-    this.modalService.open(content, { centered: true });
+    // this.modalService.open(content, { centered: true });
+    this.modalService.open(content, { size: 'lg' });
   }
 
-  listExt = ["mp4", "x-m4v", "PSV", "SFD", "WEBM"]
+  listExt = ["mp4", "x-m4v", "psv", "sed", "webm"]
 
   onFileChange(files: FileList) {
     if (files.length > 0) {
@@ -103,5 +104,20 @@ export class ProgramDayTaskVideoComponent implements OnInit {
         }
       }
     )
+  }
+  onDragOver(event: any) {
+    event.preventDefault();
+  }
+
+// From drag and drop
+  onDropSuccess(event: any) {
+    event.preventDefault();
+
+    this.onFileChange(event.dataTransfer.files);
+  }
+
+// From attachment link
+  onChange(event: any) {
+    this.onFileChange(event.target.files);
   }
 }

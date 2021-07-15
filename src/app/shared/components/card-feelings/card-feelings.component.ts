@@ -19,7 +19,7 @@ export class CardFeelingsComponent implements OnInit {
 
   langEnum = LanguageEnum
 
-  @Input() isPub:boolean = false;;
+  @Input() isPub:boolean = false;
 
   constructor(public translate: TranslateService ) { }
 

@@ -4,7 +4,7 @@
 
             <form [formGroup]="profileForm" (ngSubmit)="onSubmit(profileForm.value)" class="form-group">
 
-                <div class="col-12 profile p-0 mb-50">
+                <div class="col-12 profile p-0 mb-50" (dragover)="onDragOver($event)" (drop)="onDropSuccess($event)">
                     <div class="profile_background"></div>
                     <img class="img_profile" [src]="userProfileDetails?.proPic">
                     <input type="file" style="display: none;" #fileInput
@@ -23,7 +23,7 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4 pl-0 pr-0">
                         <div class="row pl-0 pr-0 ">
                             <!-- Names Arabic -->
-                            
+
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="translate.currentLang == langEnum.ar">
                                 <label class="Register__Label" for="firstNameAr"> {{ 'UPDATE_USER_PG.NAME_AR' | translate }}
                                 </label>
@@ -52,7 +52,7 @@
                                     name="middleNameAr" class="form-control UserRegister__FormControl"
                                     placeholder="{{ 'UPDATE_TEACHER_PG.FATHER_NAME_AR' | translate }}">
 
-                                    
+
                                     <div *ngIf="f.middleNameAr.errors && (f.middleNameAr.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.middleNameAr.errors?.required">
                                             {{ 'UPDATE_USER_PG.FATHER_NAME_AR_REQUIRED' | translate }}
@@ -63,7 +63,7 @@
                                         <div *ngIf="f.middleNameAr.errors?.minlength">
                                             {{ 'UPDATE_USER_PG.FATHER_NAME_AR_MIN_LENGTH' | translate }}
                                         </div>
-                                    </div> 
+                                    </div>
                             </div>
 
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="translate.currentLang == langEnum.ar">
@@ -82,7 +82,7 @@
                                         <div *ngIf="f.familyNameAr.errors?.minlength">
                                             {{ 'UPDATE_USER_PG.FAMILY_NAME_AR_MIN_LENGTH' | translate }}
                                         </div>
-                                    </div> 
+                                    </div>
                             </div>
 
                             <!-- End Names Arabic -->
@@ -115,7 +115,7 @@
                                 <input id="middleNameEn" pInputText type="text" formControlName="middleNameEn"
                                     name="middleNameEn" class="form-control UserRegister__FormControl"
                                     placeholder="{{ 'UPDATE_TEACHER_PG.FATHER_NAME_EN' | translate }}">
-                                    
+
                                     <div *ngIf="f.middleNameEn.errors && (f.middleNameEn.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.middleNameEn.errors?.required">
                                             {{ 'UPDATE_USER_PG.FATHER_NAME_EN_REQUIRED' | translate }}
@@ -126,9 +126,9 @@
                                         <div *ngIf="f.middleNameEn.errors?.minlength">
                                             {{ 'UPDATE_USER_PG.FATHER_NAME_EN_MIN_LENGTH' | translate }}
                                         </div>
-                                    </div> 
+                                    </div>
                             </div>
-                            
+
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" *ngIf="translate.currentLang == langEnum.en">
                                 <label class="Register__Label" for="familyNameEn"> {{ 'UPDATE_USER_PG.FAMILY_NAME_EN' | translate }} </label>
                                 <input id="familyNameEn" pInputText type="text" formControlName="familyNameEn"
@@ -145,32 +145,32 @@
                                         <div *ngIf="f.familyNameEn.errors?.minlength">
                                             {{ 'UPDATE_USER_PG.FAMILY_NAME_EN_MIN_LENGTH' | translate }}
                                         </div>
-                                    </div> 
+                                    </div>
                             </div>
 
                             <!-- End Names English -->
 
                             <div class="col-lg-5 col-md-2 col-sm-2 col-xs-2 updateTeacher_hijriBirthDate">
-                                
+
                                     <div class="hijriBirthDate_contanier">
                                         <label class="Register__Label" for="birthdate"> {{ 'UPDATE_USER_PG.BIRTHDATE' |
                                             translate }} </label>
                                         <!-- <input id="birthdate" pInputText type="date" formControlName="birthdate"
                                             name="birthdate" class="form-control UserRegister__FormControl"> -->
-        
+
                                             <app-milady-hijri-calendar (sendDate)="Hijri($event)" [dateTo]='hijriBirthDateInputParam'
                                                [hijri]="hijri" [milady]="!milady">
                                              </app-milady-hijri-calendar>
-                                                                           
-    
+
+
                                             <div *ngIf="!hijriBinding && (f.birthdate.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                                 <div *ngIf="!hijriBinding">
                                                     {{ 'UPDATE_USER_PG.BIRTHDATE_REQUIRED' | translate }}
                                                 </div>
-                                            </div> 
+                                            </div>
                                     </div>
-                                
-                                
+
+
                             </div>
                             <!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                 <label class="Register__Label" for="gender"> {{ 'GENERAL.GENDER' | translate }}
@@ -183,9 +183,9 @@
                                                 value="{{item.id}}">
                                             {{ translate.currentLang == langEnum.en ? item.nameEn : item.nameAr}}
                                         </label>
-                                        
-                                  
-                                        
+
+
+
                                     </div>
                                     <div *ngIf="f.gender.errors && (f.gender.touched || isSubmit)"
                                             class="alert alert-danger mt-2 mb-2">
@@ -198,11 +198,11 @@
                             <div class="pl-3 pr-3 gender_contanier col-3">
                                 <label class="Register__Label" for="gender"> {{ 'GENERAL.GENDER' | translate }}
                                 </label>
-                                <div class="row">                                       
+                                <div class="row">
                                     <section class="col-12 mt-3" >
-                                        <mat-radio-group aria-label="Select an option"  class="example-radio-group"  
+                                        <mat-radio-group aria-label="Select an option"  class="example-radio-group"
                                          formControlName="gender">
-                                            <mat-radio-button value="{{item.id}}" class="example-radio-button ml-3"  
+                                            <mat-radio-button value="{{item.id}}" class="example-radio-button ml-3"
                                             *ngFor="let item of collectionOfLookup.GENDER">
                                             {{ translate.currentLang == langEnum.en ? item.nameEn : item.nameAr}}
                                             </mat-radio-button>
@@ -232,7 +232,7 @@
                                 <!-- <input id="phoneNumber" pInputText type="text" formControlName="phoneNumber"
                                     style="width:100%;" name="phoneNumber"
                                     class="form-control UserRegister__FormControl"> -->
-                                    <app-tel-input  (getPhonNumber)="applyPhoneNumber($event)" 
+                                    <app-tel-input  (getPhonNumber)="applyPhoneNumber($event)"
                                     [telInputParam]="telInputParam"></app-tel-input>
 
                                     <div *ngIf="f.phoneNumber.errors && (f.phoneNumber.touched || isSubmit)"
@@ -249,10 +249,10 @@
                                         <div *ngIf="f.phoneNumber.errors?.minlength">
                                             {{ 'UPDATE_USER_PG.PHONE_NUMBER_MIN_LENGTH' | translate }}
                                         </div> -->
-                                    </div> 
+                                    </div>
                             </div>
-                      
-                           
+
+
 
                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                 <label class="Register__Label" for="email"> {{ 'GENERAL.EMAIL' | translate }} ({{ 'UPDATE_USER_PG.OPTIONAL' | translate }})</label>
@@ -281,15 +281,15 @@
                                     </div>
                                 </div>
                             </div>
-      
+
                             <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2">
                                 <label class="Register__Label" for="phoneNumber"> {{ 'UPDATE_USER_PG.COUNTRY' |
                                     translate }} </label>
 
                                 <select class="UpdateUser__Options" name="nameEn" formControlName="countryCode" (change)="getCitiesLookupByCountry()">
                                 <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELECT_Country' | translate }}</option>
-                                  
-                                    <option *ngFor="let countryItem of collectionOfLookup.COUNTRY" 
+
+                                    <option *ngFor="let countryItem of collectionOfLookup.COUNTRY"
                                         [value]="countryItem.id">
                                         {{ translate.currentLang == langEnum.en ? countryItem.nameEn : countryItem.nameAr}}
                                     </option>
@@ -306,10 +306,10 @@
                             <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2 mt-3">
                                 <label class="Register__Label" for="city"> {{ 'UPDATE_USER_PG.CITY' | translate }}
                                 </label>
-                               
+
                                     <select class="UpdateUser__Options" name="nameEn" formControlName="city">
                                         <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELEC_CITY' | translate }}</option>
-                                       
+
                                         <option *ngFor="let cityItem of collectionOfLookup.CITY"
                                             [value]="cityItem.id">
                                             {{ translate.currentLang == langEnum.en ? cityItem.nameEn : cityItem.nameAr}}
@@ -341,7 +341,7 @@
                                         <div *ngIf="f.address.errors?.minlength">
                                             {{ 'UPDATE_USER_PG.ADDRESS_MIN_LENGTH' | translate }}
                                         </div>
-                                    </div> 
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -385,15 +385,15 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
 
                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-32">
                                 <label class="Register__Label" for="quraanMemorization"> {{ 'UPDATE_USER_PG.AMOUNT_QURAN' | translate }} </label>
                                 <select class="UpdateUser__Options" name="nameEn" formControlName="quraanMemorization">
-                                    <option  [value]="0" disabled selected> 
+                                    <option  [value]="0" disabled selected>
                                         {{ 'UPDATE_USER_PG.INPUT_AMOUNT_QURAN' | translate }}
                                     </option>
-                                    
+
                                     <option *ngFor="let amount of quraanParts; let i = index" [value]="i+1">
                                         {{i+1}}
                                     </option>
@@ -407,9 +407,9 @@
                             </div>
                             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                 <label class="Register__Label" for="educationalLevel"> {{ 'UPDATE_USER_PG.MEMORIES_QURAN' | translate }} </label>
-                                
+
                                     <label class="custom-file custom-file__text" for="importFile">
-                                        <div class="row">                                            
+                                        <div class="row">
                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
                                                 <input type="text" class=" form-control UserRegister__FormControl"  placeholder="{{ 'UPDATE_TEACHER_PG.JOIN_MEMORIES_QURAN' | translate }}">
                                             </div>
@@ -417,13 +417,13 @@
                                                 <img class=" upload-icon" src="assets/images/update-user/UploadIcon.svg"/>
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 m-2 UpdateUserIcon">
-                                                
+
                                             </div>
                                         </div>
                                     </label>
                                     <input type="file" class="custom-file-input" id="importFile" multiple
                                      (change)="onEjazaFileChange($any($event.target).files)" hidden>
-                                
+
 
                                 <!-- <input type="file" class="form-control UserRegister__FormControl" multiple
                                     id="importFile" (change)="onEjazaFileChange($any($event.target).files)"
@@ -431,7 +431,7 @@
                                 <div class="row">
                                     <div class="col-lg-8 col-md-8">
                                         <div class="badges mt-3 ">
-                                            <div *ngFor="let item of fileList;let i=index" 
+                                            <div *ngFor="let item of fileList;let i=index"
                                                 class="badge badge-info p-2 " >
                                             <div class="d-flex justify-content-between">
                                                 <p class="ellipsis mb-0" matTooltip="{{item.fileName}}"> {{item.fileName}}</p>
@@ -439,7 +439,7 @@
                                             </div>
                                             </div>
                                         </div>
-                                    </div> 
+                                    </div>
                                     <!-- <ul class="files-conainer">
                                             <li *ngFor="let item of fileList;let i=index">
                                                 <button (click)="DeleteAttachment(i,item.id)">{{ 'UPDATE_USER_PG.DELETE' | translate }}</button>
@@ -469,12 +469,12 @@
                             <div class="form-group col-lg-4 col-md-4">
                                 <label>
                                     {{ 'UPDATE_USER_PG.SHEIKHS_STUDIED' | translate }} ({{ 'UPDATE_USER_PG.OPTIONAL' | translate }})
-                                    
+
 
                                     <!-- <button type="button" tooltipClass="custom-tooltip"
                                         class="btn p-0 d-inline-block btn-link mr-2" placement="left" ngbTooltip="">
                                         <i class="fa  fa-exclamation-circle"></i>
-                                        
+
                                     </button> -->
                                 </label>
 
@@ -490,11 +490,11 @@
                                         </select>
                                         <!-- <span class="select-arrow position-absolute">
                                             <i class="fa fa-angle-down" style="color: inherit;"></i>
-                                            
+
                                         </span> -->
                                     </div>
                                     <span class="plus-btn position-absolute">
-                                        
+
                                         <button class="btn btn-light btn-add" type="button"
                                             (click)="addUserShiekhs()">
 
@@ -514,7 +514,7 @@
 
                                             <img  src="../../../../../../assets/images/add.svg" class=" cursor-pointer Catogry_Icon_Add">
                                             <i class="fa  fa-plus"></i>
-                                        </button> 
+                                        </button>
                                     </span> -->
                                 </div>
                                 <div>
@@ -576,10 +576,10 @@
                             </div>
                             <div class="form-group col-lg-4 col-md-4">
                                 <label>
-                                    
+
                                     {{ 'UPDATE_USER_PG.TRAINING_COURSES' | translate }} ({{ 'UPDATE_USER_PG.OPTIONAL' | translate }})
 
-                                        
+
                                     <!-- <button type="button" tooltipClass="custom-tooltip"
                                         class="btn p-0 d-inline-block btn-link mr-2" placement="left" ngbTooltip="">
                                         <i class="fa  fa-exclamation-circle"></i>
@@ -608,7 +608,7 @@
 
                                             <!-- <i class="fa  fa-plus"></i> -->
                                         </button>
-                                    </span> 
+                                    </span>
                                 </div>
                                 <div>
                                     <div *ngIf="coursesMessage.message" class="alert alert-{{ coursesMessage.type }} my-4 py-2">
@@ -618,7 +618,7 @@
                                 <div class="badges mt-3">
                                     <span *ngFor="let p of selectedTrainingCourseList"
                                         class="badge badge-info p-2">{{translate.currentLang == langEnum.en? p.nameEn :p.nameAr}}
-                                      
+
                                         <a lass="btn btn-primary btn-add"
                                         (click)="removeItemFromSelectedCourses(p)"><i class="fas fa-times-circle"></i></a>
                                     </span>

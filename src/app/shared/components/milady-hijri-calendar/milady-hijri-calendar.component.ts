@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 import { DateFormatterService, DateType } from 'ngx-hijri-gregorian-datepicker';
 import { NgbModal, NgbDateStruct, NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
@@ -11,7 +11,8 @@ import { LanguageService } from 'src/app/core/services/language-services/languag
   styleUrls: ['./milady-hijri-calendar.component.scss'],
 })
 export class MiladyHijriCalendarComponent implements OnInit {
-
+  
+  @ViewChild('hijGeo') hijGeoChildComp: any | undefined; //any instead ElementReg to can access property
   // dateFrom!: NgbDateStruct;
   @Input() dateTo!: NgbDateStruct;
 
@@ -60,26 +61,25 @@ export class MiladyHijriCalendarComponent implements OnInit {
       this.hijriLabel = 'Hijri';
     }
     else{
-      this.GregLabel = 'ميلادي'; 
+      this.GregLabel = 'ميلادي';
       this.hijriLabel = 'هجري';
     }
   }
 
   emitData(data: any) {
     console.log(data)
+    console.log(this.hijGeoChildComp.selectedDateType);
     // let DateNow = Date.now();
 
     // // let YearDate = DateNow.toString("yyyy mm dd");
 
     // if(data > DateNow){
-    //   this.sendDate.emit(data)      
+    //   this.sendDate.emit(data)
     // }
-    
+
 
     this.sendDate.emit(data)
   }
-
-
 
 }
 
