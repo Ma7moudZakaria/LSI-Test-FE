@@ -47,7 +47,7 @@ export class ProgramDayTaskHearingComponent implements OnInit {
     // this.modalService.open(content, { centered: true });
     this.modalService.open(content, { size: 'lg' });
   }
-  listExt = ["mp3", "mp4", "flp", "pek", "m4a"]
+  listExt = ["mp3", "mp4", "flp", "pek", "m4a","opus","webm", "flac","weba","wav" + "ogg" , "oga" , "mid" , "amr" , "aiff" , ".wma" , "au" , "aac"]
 
   onFileChange(files: FileList) {
     if (files.length > 0) {

@@ -108,7 +108,7 @@ export class ProgramsListComponent implements OnInit {
       programTypes : this.programTypesList,
       name: this.programsbyAdvancedFilter.name,
       duration: this.programsbyAdvancedFilter.duration,
-      isTest: this.programsbyAdvancedFilter.isTest,
+      isAdmissionTest: this.programsbyAdvancedFilter.isAdmissionTest,
       stuNum: this.programsbyAdvancedFilter.stuNum,
       techNum: this.programsbyAdvancedFilter.techNum,
       isPeriodicExam : this.programsbyAdvancedFilter.isPeriodicExam,
@@ -184,7 +184,7 @@ export class ProgramsListComponent implements OnInit {
     this.loadProgramsbyAdvancedFilter();
   }
   clearTestFilter() {
-    this.programsbyAdvancedFilter.isTest = undefined;
+    this.programsbyAdvancedFilter.isAdmissionTest = undefined;
     this.loadProgramsbyAdvancedFilter();
   }
   clearTechNum() {
