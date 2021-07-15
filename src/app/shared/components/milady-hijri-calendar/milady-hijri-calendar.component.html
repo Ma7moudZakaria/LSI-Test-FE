@@ -1,6 +1,6 @@
 <!-- for milady -->
 <ng-container *ngIf="hijri && !milady"> 
- <hijri-gregorian-datepicker class="HijriGregorianDatePicker removeHijri" 
+ <hijri-gregorian-datepicker #hijGeo class="HijriGregorianDatePicker removeHijri" 
  [(selectedDate)]="dateTo" 
 [isRequired]="true"
 [maxGreg]="maxGreg"
@@ -16,7 +16,7 @@
 <!-- for hijri -->
 <ng-container *ngIf="!hijri && milady"> 
 
-  <hijri-gregorian-datepicker class="HijriGregorianDatePicker removemilady  " 
+  <hijri-gregorian-datepicker #hijGeo class="HijriGregorianDatePicker removemilady  " 
   [(selectedDate)]="dateTo" 
  [isRequired]="true"
  [maxHijri]="maxHijri" 
@@ -31,7 +31,7 @@
 
 <ng-container *ngIf="!hijri && !milady"> 
 
-  <hijri-gregorian-datepicker class="HijriGregorianDatePicker " 
+  <hijri-gregorian-datepicker #hijGeo class="HijriGregorianDatePicker " 
   [(selectedDate)]="dateTo" 
  [isRequired]="true"
  [maxGreg]="maxGreg"
