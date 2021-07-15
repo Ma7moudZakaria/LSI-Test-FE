@@ -24,8 +24,11 @@ export class JoinRequestsComponent implements OnInit {
   constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
+    // if(this.programDetails?.progBaseInfo?.prgIsConExa !==false)
+    // {
     this.Data = this.programDetails?.progJoiExa == null ?  [] : this.programDetails?.progJoiExa;
-    this.getProgramJoinExam(this.Data[0] || {} );
+   this.getProgramJoinExam(this.Data[0] || {} );
+ // }
   }
 
   selectedIndex = 0;
