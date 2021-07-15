@@ -1,0 +1,54 @@
+import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
+import { IRejectProgramSubscriptionModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/ireject-program-subscription-model';
+import { IStudentSubscriptionModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-subscription-model';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
+import { StudentProgramSubscriptionServicesService } from 'src/app/core/services/student-program-subscription-services/student-program-subscription-services.service';
+
+@Component({
+  selector: 'app-stu-rejected',
+  templateUrl: './stu-rejected.component.html',
+  styleUrls: ['./stu-rejected.component.scss']
+})
+export class StuRejectedComponent implements OnInit {
+  @Output() closeRejectedRequest = new EventEmitter<IStudentSubscriptionModel>();
+
+  @Input() itemStuReq: IStudentSubscriptionModel = {}
+  rejectRequest: IRejectProgramSubscriptionModel = {}
+  // var response = <BaseResponseModel>res;
+
+  constructor(private stuSubRequestService: StudentProgramSubscriptionServicesService
+    ,
+    private alertify: AlertifyService) { }
+
+  ngOnInit(): void {
+  }
+
+
+  closeRejectRequest() {
+    this.closeRejectedRequest.emit();
+
+  }
+  saveRejectRequest() {
+    let model: IRejectProgramSubscriptionModel = {
+      subscriptionId: this.itemStuReq.id,
+      reasonReject: this.itemStuReq.reasonReject
+    }
+    if (model.reasonReject) {
+      this.stuSubRequestService.rejectStudentProgramSubscription(model).subscribe(res => {
+
+        if (res.isSuccess) {
+          this.closeRejectRequest();
+          this.alertify.success(res.message || '');
+
+        }
+        else {
+          this.alertify.error(res.message || '');
+        }
+      }, error => {
+
+      })
+    }
+
+  }
+
+}

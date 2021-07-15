@@ -1,0 +1,21 @@
+<!-- <app-stu-join-request></app-stu-join-request> -->
+<!-- <app-change-available-request-stu></app-change-available-request-stu> -->
+
+
+
+
+<div  *ngIf="studentSubscriptionEmun.joinRequest===selectedStuRequest">
+    <app-stu-join-request></app-stu-join-request>
+    </div>
+    
+    <div  *ngIf="studentSubscriptionEmun.vacationRequest===selectedStuRequest">
+        <app-stu-vacations-request></app-stu-vacations-request>
+    </div>
+    
+    <div  *ngIf="studentSubscriptionEmun.quitRequest===selectedStuRequest">
+        <app-stu-quit-request></app-stu-quit-request>
+    </div>
+    
+    <div  *ngIf="studentSubscriptionEmun.movingRequest===selectedStuRequest">
+        <app-stu-moving-request></app-stu-moving-request>
+    </div>

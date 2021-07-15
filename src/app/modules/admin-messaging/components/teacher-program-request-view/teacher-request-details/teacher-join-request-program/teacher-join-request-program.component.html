@@ -1,0 +1,9 @@
+<div>
+    <app-teacher-join-program-tab-request (rejectTeacherProgramSubscription)="openRejectRequest($event)"></app-teacher-join-program-tab-request>
+
+    <div class="overlay" *ngIf="openStuRejectOverlay">
+        <app-teache-rejected  [itemTeacherReq]='itemTeacherReq' (closeRejectedRequest)="closeRejectedRequest()"></app-teache-rejected>
+</div>
+</div>
+
+<div class="showoverlay" (click)="closeOverlay()" [ngClass]="{'disableBlock': openStuRejectOverlay }"></div>
