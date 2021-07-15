@@ -4,5 +4,9 @@ export interface ITeacherSystemSubscription {
     teacherNameAr?:string;     
     teacherNameEn?:string;   
     requestDate?:string;   
-    usrName?:string; 
+    interviewiHijri?:string;   
+    interviewGregorian?:string;   
+    checked?:boolean;
+    avatarLink?: string;
+    totalRows: number;
 }

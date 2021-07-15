@@ -25,15 +25,15 @@ export class TeacherProfileService {
     return this.http.get<BaseResponseModel>(this.viewTeacherProfileDetailsURL + id)
   }
 
-  GetTeacherSystemSubscriptionAdvancedFilter(model: any): Observable<BaseResponseModel> {
+  getTeacherSystemSubscriptionAdvancedFilter(model: any): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.getTeacherSystemSubscriptionAdvancedFilterUrl, model);
   }
 
-  TeacherSubscriptionsAcceptance(model: any): Observable<BaseResponseModel> {
+  teacherSubscriptionsAcceptance(model: any): Observable<BaseResponseModel> {
     return this.http.put<BaseResponseModel>(this.teacherSubscriptionsAcceptanceUrl, model);
   }
 
-  TeacherSubscriptionsRejection(model: any): Observable<BaseResponseModel> {
+  teacherSubscriptionsRejection(model: any): Observable<BaseResponseModel> {
     return this.http.put<BaseResponseModel>(this.TeacherSubscriptionsRejectionUrl, model);
   }
 }
