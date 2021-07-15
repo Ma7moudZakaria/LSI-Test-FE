@@ -98,6 +98,7 @@ export class SettingLastProgramComponent implements OnInit {
     this.selectedLastPrograms.splice(index, 1);
   }
   saveProgramConditions() {
+    this.resultMessage={};
     this.updateProgramConditionDetailsModel.id = this.lastProgramModel.id;
     this.lastProgramModel.condSelcted = "null";
     this.updateProgramConditionDetailsModel.progCondDetails = JSON.stringify(this.lastProgramModel);

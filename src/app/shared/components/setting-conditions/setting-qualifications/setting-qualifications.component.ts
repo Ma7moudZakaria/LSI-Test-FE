@@ -85,6 +85,7 @@ export class SettingQualificationsComponent implements OnInit {
     this.selectedQualification.splice(index, 1);
   }
   saveProgramConditions() {
+    this.resultMessage={};
     this.updateProgramConditionDetailsModel.id = this.qualificationModel.id;
     this.qualificationModel.condSelcted = 'null';
     this.updateProgramConditionDetailsModel.progCondDetails = JSON.stringify(this.qualificationModel);

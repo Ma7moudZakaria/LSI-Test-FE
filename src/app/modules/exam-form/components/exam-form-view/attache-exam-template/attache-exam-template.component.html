@@ -6,19 +6,22 @@
       {{translate.currentLang===langEnum.en?selectedExamFormId.engExamName:selectedExamFormId.arabExamName}}  
   </p>
   </div>
-  <div class="row pl-3 pr-3 align-items-center mb-3 ">
-  
+  <div class="row pl-3 pr-3 align-items-center mb-3 " *ngIf="!isView">
       <p class="p_header mb-0" >
         {{translate.currentLang===langEnum.en?selectedExamFormId.engExamName:selectedExamFormId.arabExamName}}
         {{"EXAM_FORM.DGREE"|translate}}:{{exam.scoreTotal}}
     </p>
-  
-   
-  
     <div>
         <label class="label_item_question">{{"EXAM_FORM.THE_SUCCESS_RATE"|translate}}</label>
         <input  type="number" min="1" [(ngModel)]="exam.scorePass"  class="form-control">
     </div>
+</div>
+<div class="row pl-3 pr-3 align-items-center mb-3 " *ngIf="isView">
+  <p class="p_header mb-0" >
+    {{translate.currentLang===langEnum.en?selectedExamFormId.engExamName:selectedExamFormId.arabExamName}}
+    {{"EXAM_FORM.DGREE"|translate}}:{{exam.scoreTotal}}
+    {{"EXAM_FORM.THE_SUCCESS_RATE"|translate}}:{{exam.scorePass}}
+</p>
 </div>
   <div class="col-12">
     <section class="internal_scroll_list_group ">

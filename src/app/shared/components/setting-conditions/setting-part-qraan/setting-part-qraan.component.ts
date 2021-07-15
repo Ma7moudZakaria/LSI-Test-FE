@@ -50,6 +50,7 @@ export class SettingPartQraanComponent implements OnInit {
     this.partQuranModel.title = this.programConditionsModel.title;
   }
   saveProgramConditions() {
+    this.resultMessage={};
     this.updateProgramConditionDetailsModel.id = this.partQuranModel.id;
     this.updateProgramConditionDetailsModel.progCondDetails = JSON.stringify(this.partQuranModel);
     this.updateProgramConditionDetailsModel.isRequired = this.partQuranModel.isRequired;
