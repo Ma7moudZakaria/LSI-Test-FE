@@ -79,7 +79,14 @@ else{
   }
 
   saveExam() {
-    if(this.examFormService.validateQuestion(this.exam.questions)===true){
+    if(((this.exam.scorePass ||0 ) > this.exam?.scoreTotal!) || (this.exam.scorePass ===0 ||this.exam.scorePass==null ) || (this.exam?.scoreTotal ===0))
+    { 
+      this.resultMessage = {
+     message:this.translate.currentLang === LanguageEnum.ar ? this.translate.instant('EXAM_FORM.THE_SUCCESS_RATE_SHOULD_LESS_THAN_TOTAL_DEGREE') : this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_AND_DUPLICATION_MESSAGE'),// this.translate.currentLang === LanguageEnum.en ? "Please complete the missing information" : "برجاء اكمال البيانات",
+     type: BaseConstantModel.DANGER_TYPE
+   }
+ }
+   else if(this.examFormService.validateQuestion(this.exam.questions)===true){
       this.isView = true;
       this.saveAttacheExamTemplate();
     }
@@ -123,7 +130,10 @@ else{
   }
   saveAttacheExamTemplate() {
     // this.attacheExamTemplate.id = this.selectedExamFormId.id;
+  
     this.attacheExamTemplate.id = this.exam.id;
+    this.attacheExamTemplate.scorePass= this.exam.scorePass;
+    this.attacheExamTemplate.scoreTotal= this.exam.scoreTotal;
     this.attacheExamTemplate.examTemplate = JSON.stringify(this.exam.questions);
     this.resultMessage = {};
        this.examFormService.attachmentsExamTemplate(this.attacheExamTemplate).subscribe(res => {
@@ -169,6 +179,10 @@ else{
         }
       }
     });
+  }
+
+  calculateTotalDegree(){
+    this.exam.scoreTotal = this.exam.questions.reduce((sum, current) => sum + current.degree! , 0) ;
   }
 
 }

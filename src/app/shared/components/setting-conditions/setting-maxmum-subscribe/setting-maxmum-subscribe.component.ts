@@ -51,6 +51,7 @@ export class SettingMaxmumSubscribeComponent implements OnInit {
     this.maxmumSubscribeModel.title = this.programConditionsModel.title;
   }
   saveProgramConditions() {
+    this.resultMessage={};
     this.updateProgramConditionDetailsModel.id = this.maxmumSubscribeModel.id;
     this.updateProgramConditionDetailsModel.progCondDetails = JSON.stringify(this.maxmumSubscribeModel);
     this.updateProgramConditionDetailsModel.isRequired = this.maxmumSubscribeModel.isRequired;
