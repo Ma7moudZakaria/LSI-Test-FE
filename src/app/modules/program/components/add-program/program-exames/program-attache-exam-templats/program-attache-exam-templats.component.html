@@ -1,9 +1,21 @@
 
 <div class="attache-exam-list">
     <div class="row">
-      <div class="col-12 pr-4 mt-3">
+      <div class="row pl-3 pr-3 align-items-center mb-3 " *ngIf="!isView">
+        <p class="p_header mb-0" >
+          {{translate.currentLang===langEnum.en ? exam?.engExamFormNam : exam?.arabExamFormNam }}
+          {{"EXAM_FORM.DGREE"|translate}}:{{exam.scoreTotal}}
+      </p>
+      <div>
+          <label class="label_item_question">{{"EXAM_FORM.THE_SUCCESS_RATE"|translate}}</label>
+          <input  type="number" min="1" [(ngModel)]="exam.scorePass"  class="form-control">
+      </div>
+  </div>
+      <div class="row pl-3 pr-3 align-items-center mb-3 " *ngIf="isView">
         <p class="p_header mb-0" matTooltip="{{translate.currentLang===langEnum.en ? exam?.engExamFormNam : exam?.arabExamFormNam}}">
           {{translate.currentLang===langEnum.en ? exam?.engExamFormNam : exam?.arabExamFormNam }}
+          {{"EXAM_FORM.DGREE"|translate}}:{{exam.scoreTotal}}
+          {{"EXAM_FORM.THE_SUCCESS_RATE"|translate}}:{{exam.scorePass}}
       </p>
       </div>
       <div class="col-12">
@@ -17,7 +29,7 @@
                     <img src="../../../../assets/images/trash-2.svg" class="btn_trash">
                   </a>
                  </div>
-                <app-question-template [questionTemplate] = 'question'></app-question-template>
+                <app-question-template [questionTemplate] = 'question' (degreeValueChange)='calculateTotalDegree()'></app-question-template>
               </div>
               </div>
              
