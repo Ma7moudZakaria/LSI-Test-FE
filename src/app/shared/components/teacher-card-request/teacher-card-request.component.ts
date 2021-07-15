@@ -1,6 +1,7 @@
 import { EventEmitter, Input, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { ITeacherProgramSubscriptionModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iteacher-program-subscription-model';
+import { TeacheProgramSubscriptionStatusEnum } from 'src/app/core/enums/teacher-subscription-enums/teache-program-subscription-status-enum.enum';
 
 @Component({
   selector: 'app-teacher-card-request',
@@ -13,16 +14,19 @@ export class TeacherCardRequestComponent implements OnInit {
   @Output() acceptTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
 
   @Input() teacherSubscripModel: ITeacherProgramSubscriptionModel = {totalRows:0}
+  @Input() typeEnum: TeacheProgramSubscriptionStatusEnum = TeacheProgramSubscriptionStatusEnum.Pending;
+
+  tabTypeSelected = TeacheProgramSubscriptionStatusEnum;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  rejectTeacherProgramSubscriptionEve(teacherSubscripModel:ITeacherProgramSubscriptionModel){
-    this.rejectTeacherProgramSubscription.emit(teacherSubscripModel);
+  rejectTeacherProgramSubscriptionEvent(){
+    this.rejectTeacherProgramSubscription.emit(this.teacherSubscripModel);
   }
-  
+
   acceptTeacherProgramSubscriptionEvent(){
     this.acceptTeacherProgramSubscription.emit(this.teacherSubscripModel);
   }

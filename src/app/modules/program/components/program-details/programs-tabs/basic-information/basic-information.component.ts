@@ -63,6 +63,10 @@ export class BasicInformationComponent implements OnInit {
     this. getProgramConditionsLisByProgId();
   }
 
+  ngOnChanges(changes: any) {
+    this. getProgramConditionsLisByProgId();
+  }
+
   copyProgramData(progName?: string) {
 
     // if(progName == null || progName == ''){

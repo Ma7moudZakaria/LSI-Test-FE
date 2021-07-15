@@ -4,6 +4,7 @@ import { StudentProgramSubscriptionStatusEnum } from 'src/app/core/enums/subscri
 import { StudentProgramSubscriptionServicesService } from 'src/app/core/services/student-program-subscription-services/student-program-subscription-services.service';
 import { IStudentSubscriptionFilterRequestModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-subscription-filter-request-model';
 import { IStudentSubscriptionModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-subscription-model';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 
 @Component({
   selector: 'app-stu-tab-request',
@@ -19,7 +20,7 @@ export class StuTabRequestComponent implements OnInit {
   filter: IStudentSubscriptionFilterRequestModel = { statusNum: StudentProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
   studProgsSubsItems: IStudentSubscriptionModel[] = [];
 
-  constructor(private progSubsService: StudentProgramSubscriptionServicesService) {
+  constructor(private progSubsService: StudentProgramSubscriptionServicesService, private alertify: AlertifyService) {
 
   }
   ngOnInit(): void {
@@ -62,4 +63,46 @@ export class StuTabRequestComponent implements OnInit {
     this.itemStuReq.emit(event)
 
   }
+
+  ids?: string[] = [];
+  acceptStuReq(stuModel: IStudentSubscriptionModel) {
+    this.ids?.push(stuModel.id || '');
+    this.progSubsService.studentProgramSubscriptionsAcceptance(this.ids || []).subscribe(res => {
+      if (res.isSuccess) {
+        this.alertify.success(res.message || '');
+        this.getStudentProgramSubscriptionsFilter();
+
+      }
+      else {
+        this.alertify.error(res.message || '');
+      }
+    },
+      error => {
+        console.log(error);
+      });
+  }
+
+  acceptAllStudentProgramSubscriptionCheched() {
+
+    this.ids = this.studProgsSubsItems?.filter(i => i.checked).map(a => a.id || '')
+    this.progSubsService.studentProgramSubscriptionsAcceptance(this.ids).subscribe(res => {
+      if (res.isSuccess) {
+        this.alertify.success(res.message || '');
+        this.getStudentProgramSubscriptionsFilter();
+      }
+      else {
+        this.alertify.error(res.message || '');
+      }
+    },
+      error => {
+        console.log(error);
+      });
+
+  }
+
 }
+
+
+
+
+

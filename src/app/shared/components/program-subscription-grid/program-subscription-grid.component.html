@@ -36,7 +36,8 @@
                     (change)="setStudentAllChecked($event.checked)"></mat-checkbox>
 
           <a class=" ml-2 mr-2" [class.disabled]='!enableStudentSelectOperations()'>
-              <i (click)='deleteStudentByIds()' class="far fa-trash-alt"></i>
+              <i (click)='acceptAllStudentProgramSubscriptionChechedEvent()' class="fa fa-check fa-lg "></i>
+              
           </a>
           <a class=" ml-1 mr-1" [class.disabled]='!enableStudentSelectOperations()'>
               <img  class="exportIcon" (click)='exportStudentCSV()' 
@@ -84,7 +85,7 @@
                     (change)="setTeacherAllChecked($event.checked)"></mat-checkbox>
 
           <a class=" ml-2 mr-2" [class.disabled]='!enableTeacherSelectOperations()'>
-              <i (click)='acceptAllTeacherProgramSubscriptionChechedEvent()' class="far fa-trash-alt"></i>
+              <i (click)='acceptAllTeacherProgramSubscriptionChechedEvent()' class="fa fa-check fa-lg "></i>
           </a>
           <a class=" ml-1 mr-1" [class.disabled]='!enableTeacherSelectOperations()'>
               <img  class="exportIcon" (click)='exportTeacherCSV()' 
@@ -98,20 +99,17 @@
         <mat-grid-tile *ngFor='let item of studentItems' >
             <app-stu-card-request [StudentSubscripModel]='item'  
             (rejecteStuRequest)="rejecteStuRequest($event)"
+            (acceptStuRequest)="acceptStuRequest($event)"
+             
             [typeEnum]='typeEnum'
+            
             ></app-stu-card-request>
         </mat-grid-tile>
     </ng-container>
     <ng-container *ngIf="userMode == programSubscriptionUsers.teacher">
-        
         <mat-grid-tile *ngFor='let item of teacherItems' >
-         <app-teacher-card-request class="card" (acceptTeacherProgramSubscription)='acceptTeacherProgramSubscriptionEvent($event)' [teacherSubscripModel]='item'></app-teacher-card-request>
+         <app-teacher-card-request class="card" (acceptTeacherProgramSubscription)='acceptTeacherProgramSubscriptionEvent($event)' 
+         (rejectTeacherProgramSubscription)='rejectTeacherProgramSubscriptionEve($event)'  [teacherSubscripModel]='item' [typeEnum]='typeTeacheEnum'></app-teacher-card-request>
         </mat-grid-tile>
-
-        <!-- <mat-grid-tile *ngFor='let item of adminItems' >
-            <app-card-admin-scientific-problem class="card" (deleteScientificProblem)='deleteScientificProblem($event)' 
-            (addReplyToScProb)='addReplyToScProbGr($event)' (saveScProbToQuestionBank)='saveScProbToQuestionBankGr($event)' 
-            (updateAllItemsChecked)='updateAllItemsChecked()' [scientificProblem]='item'></app-card-admin-scientific-problem>
-        </mat-grid-tile> -->
     </ng-container>
 </mat-grid-list>
