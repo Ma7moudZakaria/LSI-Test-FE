@@ -1,28 +1,49 @@
-.scientific-problem{
-    background: #fff;
-    border: 1px solid #FBFBFB;
+@import 'src/assets/scss/_variables.scss';
+
+.reuest_container{
+    background: #fff 0% 0% no-repeat padding-box;
     border-radius: 19px;
     opacity: 1;
     padding: 1rem;
-    height: 100%;
+    height : 96%;
     margin-top: 1rem;
-    margin-bottom: 0;
-  }
-  .internal_scroll{
-      height: 480px;
-      overflow-y: auto;
-      padding-left: 0.5rem;
-      overflow-x: hidden;
-      padding-top: 0.7rem;
-  }
-  .header_sc{
-    font-size: 20px;
-    color: #3A3A3A;
-  }
-  .text-left{
-  &:lang(en)
-  {text-align: left;}
-  &:lang(ar){
-    text-align: right;
-  }
-  }
+
+.group_header{
+    margin-top: 1.5%;
+    border-bottom:1px solid #CB9118;
+    .item_group{
+        cursor: pointer;
+        background-color: #EBEBEB;
+        font-size: .9rem;
+        color: #828282;
+        text-align: center;
+        margin-left: 4px;
+        padding: 10px 20px;
+        border-radius: 10px 10px 0  0;
+    }
+    .item_group:lang(en){
+        margin-left: 0 !important;
+        margin-right: 4px !important;
+    }
+    .item_group_active{
+        background-color: #CB9118;
+        color: #FFFFFF;
+    }
+  
+}
+    .fix_margin{
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+       
+    }
+    .interTab
+    {
+        background-color: #FBFBFB;
+        height: 60vh;
+        min-height: 30vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        border-radius: 0 0 0.5rem
+    }
+
+}
