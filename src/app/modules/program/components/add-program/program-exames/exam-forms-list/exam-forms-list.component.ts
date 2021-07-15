@@ -85,8 +85,11 @@ export class ExamFormsListComponent implements OnInit {
           usrEmail:''
          
         }))
-        this.loadExams(this.examFormsAddedToProgramList[0]?.usrId,this.examFormsAddedToProgramList[0]?.arUsrName,this.examFormsAddedToProgramList[0]?.enUsrName);
+        if(this.progDetails?.progBaseInfo?.prgIsConExa !==false){
+          this.loadExams(this.examFormsAddedToProgramList[0]?.usrId,this.examFormsAddedToProgramList[0]?.arUsrName,this.examFormsAddedToProgramList[0]?.enUsrName);
           this.selectedIndex=0;
+        }
+       
     },
       error => {
         this.resultMessage = {
