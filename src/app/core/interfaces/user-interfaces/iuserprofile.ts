@@ -9,7 +9,7 @@ export interface IUserProfile {
     mnameEn?:string;
     faNameEn?:string;
     birthGregorian?:string;
-    birthdate?:string;
+    hijriBirthDate?:string;
     gender?:string;
     arbGenderName?:string;
     engGenderName?:string;

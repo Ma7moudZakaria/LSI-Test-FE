@@ -63,9 +63,9 @@ export class ViewUserProfileDetailsComponent implements OnInit {
 
         this.userProfileDetails = res.data as IUserProfile;
 
-        let birthdate = new Date(this.userProfileDetails?.birthdate || '');
+        let birthdate = new Date(this.userProfileDetails?.hijriBirthDate || '');
         if (!isNaN(birthdate.getTime())) {
-          this.userProfileDetails.birthdate = new Date(birthdate.setDate(birthdate.getDate() + 1)).toISOString().slice(0, 10);
+          this.userProfileDetails.hijriBirthDate = new Date(birthdate.setDate(birthdate.getDate() + 1)).toISOString().slice(0, 10);
         }
 
 
