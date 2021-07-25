@@ -18,7 +18,7 @@ export class TeacherListRequestComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  teatcherRequestSelected(requestNum: number) {
+  teatcherRequestSelected(requestNum: TeacherRequestEnum) {
     this.selectedTeatcherRequest.emit(requestNum);
   }
 }
