@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
@@ -32,6 +32,8 @@ import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/ipro
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { HostListener } from '@angular/core';
 import { ITeacherProfileAvailabilityLookup } from 'src/app/core/interfaces/teacher-interfaces/iteacher-availability-lookup';
+import {DateType} from "ngx-hijri-gregorian-datepicker";
+import {BaseSelectedDateModel} from "../../../../core/ng-model/base-selected-date-model";
 
 @Component({
   selector: 'app-update-teacher-profile',
@@ -86,6 +88,10 @@ export class UpdateTeacherProfileComponent implements OnInit {
   event = {
     eampm: "AM"
   }
+  selectedDateType : any;
+  //selectedDateType_Melady = DateType.Gregorian;  // or DateType.Gregorian
+  //selectedDateType_Hijri = DateType.Hijri;
+  updateCalenderType: BaseSelectedDateModel= new BaseSelectedDateModel();
 
   constructor(
     private fb: FormBuilder,
@@ -373,9 +379,29 @@ export class UpdateTeacherProfileComponent implements OnInit {
       this.f.middleEn.setValue(this.teacherProfileDetails?.mnameEn);
       this.f.familyEn.setValue(this.teacherProfileDetails?.faNameEn);
     }
-    let date = new Date(this.teacherProfileDetails?.hijriBirthDate || '');
-    this.hijriBirthDateInputParam = { year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDay() }
-    this.f.hijriBirthDate.setValue(date);
+    if(this.teacherProfileDetails.birthDispMode == 1){
+      //let date = new Date(this.teacherProfileDetails?.hijriBirthDate || '');
+      //this.hijriBirthDateInputParam = { year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDay() }
+      this.updateCalenderType.selectedDateType = DateType.Hijri;
+      let date = new Date(this.teacherProfileDetails?.hijriBirthDate || '');
+      this.hijriBirthDateInputParam = { year: date.getFullYear(), month: date.getMonth() +1, day: date.getDate() }
+      this.f.hijriBirthDate.setValue(this.teacherProfileDetails?.hijriBirthDate);
+
+    }else {
+      //this.updateCalenderType=new BaseSelectedDateModel();
+      // if (this.updateCalenderType){
+        // this.updateCalenderType.selectedDateValue =  this.teacherProfileDetails?.birthGregorian;
+        this.updateCalenderType.selectedDateType = DateType.Gregorian;
+      // }
+      let date = new Date(this.teacherProfileDetails?.birthGregorian || '');
+      this.hijriBirthDateInputParam = { year: date.getFullYear(), month: date.getMonth() +1, day: date.getDate() }
+     // this.SendData(this.updateCalenderType)
+      //this.updateCalenderType.date = this.teacherProfileDetails?.birthGregorian;
+      // let date = new Date(this.teacherProfileDetails?.birthGregorian || '');
+      // this.hijriBirthDateInputParam = { year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDay() }
+      this.f.hijriBirthDate.setValue(this.teacherProfileDetails?.birthGregorian);
+    }
+
 
     this.f.nationality.setValue(this.teacherProfileDetails?.nationality)
     this.f.country.setValue(this.teacherProfileDetails?.country)
@@ -480,7 +506,8 @@ export class UpdateTeacherProfileComponent implements OnInit {
         familyAr: this.profileForm.value.familyAr != null ? this.profileForm.value.familyAr : this.teacherProfileDetails.fanameAr,
         familyEn: this.profileForm.value.familyEn != null ? this.profileForm.value.familyEn : this.teacherProfileDetails.fanameAr,
         nationality: this.profileForm.value.nationality,
-        hijriBirthDate: this.profileForm.value.hijriBirthDate,
+        hijriBirthDate: this.selectedDateType == 1 ? this.profileForm.value.hijriBirthDate : null,
+        birthGregorian: this.selectedDateType == 2 ? this.profileForm.value.hijriBirthDate : null,
         gender: this.profileForm.value.gender,
         mobile: this.profileForm.value.mobile,
         country: this.profileForm.value.country,
@@ -507,6 +534,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
 
         address: this.profileForm.value.address,
         ejazaAttachments: this.ejazaAttachmentIds,
+        birthDispMode : this.selectedDateType
       }
 
       this.rewayatsMessage = {};
@@ -738,12 +766,15 @@ export class UpdateTeacherProfileComponent implements OnInit {
     })
   }
 
-  Hijri(date: any) {
-    date = date.year + '/' + date.month + '/' + date.day;
-    console.log("Hijri date", date)
-    this.hijriBinding = date
+  SendData(data: any) {
+     // console.log("data 777sent", data)
+     data.selectedDateValue = data.selectedDateValue.year + '/' + data.selectedDateValue.month + '/' + data.selectedDateValue.day;
+    // console.log("Hijri date", data.date)
+    this.hijriBinding = data.selectedDateValue
+    this.selectedDateType = data.selectedDateType;
+    // console.log("this.selectedDateType",this.selectedDateType);
+    this.f.hijriBirthDate.setValue(data.selectedDateValue);
 
-    this.f.hijriBirthDate.setValue(date);
   }
 
   HijriInterviewDay(date: any) {
@@ -837,4 +868,6 @@ export class UpdateTeacherProfileComponent implements OnInit {
   onChange(event: any) {
     this.onFileChange(event.target.files);
   }
+
+
 }

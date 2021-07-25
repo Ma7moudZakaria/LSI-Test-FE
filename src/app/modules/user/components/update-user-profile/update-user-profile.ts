@@ -23,6 +23,8 @@ import { AttachmentsService } from 'src/app/core/services/attachments-services/a
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 import { UserService } from 'src/app/core/services/user-services/user.service';
+import {BaseSelectedDateModel} from '../../../../core/ng-model/base-selected-date-model';
+import {DateType} from 'ngx-hijri-gregorian-datepicker';
 
 @Component({
   selector: 'app-update-user-profile',
@@ -64,7 +66,8 @@ export class UpdateUserProfileComponent implements OnInit {
   //   isRequired : true,
   //   // countryIsoCode: '{"initialCountry": "eg"}'
   // }
-
+  private selectedDateType: any;
+  updateCalenderType: BaseSelectedDateModel= new BaseSelectedDateModel();
 
   constructor(
     private fb: FormBuilder,
@@ -224,7 +227,9 @@ export class UpdateUserProfileComponent implements OnInit {
         middleEn: this.profileForm.value.middleNameEn != null ? this.profileForm.value.middleNameEn : this.userProfileDetails.mnameEn,
         familyAr: this.profileForm.value.familyNameAr != null ? this.profileForm.value.familyNameAr : this.userProfileDetails.fanameAr,
         familyEn: this.profileForm.value.familyNameEn != null ? this.profileForm.value.familyNameEn : this.userProfileDetails.faNameEn,
-        birthdate: this.profileForm.value.birthdate,
+        // birthdate: this.profileForm.value.birthdate,
+        birthdate: this.selectedDateType == 1 ? this.profileForm.value.birthdate : null,
+        birthGregorian: this.selectedDateType == 2 ? this.profileForm.value.birthdate : null,
         gender: this.profileForm.value.gender,
         mobile: this.profileForm.value.phoneNumber,
         countryCode: this.profileForm.value.countryCode,
@@ -235,6 +240,7 @@ export class UpdateUserProfileComponent implements OnInit {
         address: this.profileForm.value.address,
         quraanMemorizeAmount: this.profileForm.value.quraanMemorization,
         ejazaIds: this.ejazaAttachmentIds,
+        birthDispMode : this.selectedDateType
       }
 
       this.coursesMessage = {};
@@ -385,11 +391,22 @@ export class UpdateUserProfileComponent implements OnInit {
     //       .slice(0, 10)
     //   );
     // }
-    let date = new Date(this.userProfileDetails?.birthdate || '');
+    // let date = new Date(this.userProfileDetails?.birthdate || '');
+    //
+    // this.hijriBirthDateInputParam = {year : date.getFullYear(), month : date.getMonth() + 1, day:date.getDay()}
+    // this.f.birthdate.setValue(date);
+    if(this.userProfileDetails.birthDispMode == 1){
+      this.updateCalenderType.selectedDateType = DateType.Hijri;
+      let date = new Date(this.userProfileDetails?.birthdate || '');
+      this.hijriBirthDateInputParam = { year: date.getFullYear(), month: date.getMonth() +1, day: date.getDate() }
+      this.f.hijriBirthDate.setValue(this.userProfileDetails?.birthdate);
 
-    this.hijriBirthDateInputParam = {year : date.getFullYear(), month : date.getMonth() + 1, day:date.getDay()}
-    this.f.birthdate.setValue(date);
-
+    }else {
+      this.updateCalenderType.selectedDateType = DateType.Gregorian;
+      let date = new Date(this.userProfileDetails?.birthGregorian || '');
+      this.hijriBirthDateInputParam = { year: date.getFullYear(), month: date.getMonth() +1, day: date.getDate() }
+      this.f.hijriBirthDate.setValue(this.userProfileDetails?.birthGregorian);
+    }
     this.f.nationality.setValue(this.userProfileDetails?.nationality);
     this.f.occupation.setValue(this.userProfileDetails?.occupation);
     this.f.educationallevel.setValue(this.userProfileDetails?.eduLevel);
@@ -615,12 +632,15 @@ export class UpdateUserProfileComponent implements OnInit {
     this.f.phoneNumber.setValue(phoneNumber);
   }
 
-  Hijri(date: any) {
-    date = date.year + '/' + date.month + '/' + date.day;
-    console.log("Hijri date", date)
-    this.hijriBinding = date
-
-    this.f.birthdate.setValue(date);
+  Hijri(data: any) {
+    // date = date.year + '/' + date.month + '/' + date.day;
+    // console.log("Hijri date", date)
+    // this.hijriBinding = date
+    data.selectedDateValue = data.selectedDateValue.year + '/' + data.selectedDateValue.month + '/' + data.selectedDateValue.day;
+    // console.log("Hijri date", data.date)
+    this.hijriBinding = data.selectedDateValue
+    this.selectedDateType = data.selectedDateType;
+    this.f.birthdate.setValue(data.selectedDateValue);
   }
   onDragOver(event: any) {
     event.preventDefault();

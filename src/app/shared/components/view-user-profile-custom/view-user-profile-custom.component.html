@@ -14,7 +14,7 @@
            <!-- <a (click)="navEditProf()"><img src="../../../../../assets/images/edit.svg"></a> -->
            <a (click)="navViewProf()"><img src="../../../../assets/images/student/user-profile.svg">
            <span class="profile_edit">{{'VIEW_USER_PROFILE_PG.VIEW_PROFILE' | translate }}</span></a>
- 
+
         </div>
     </div>
     <div class="row">
@@ -31,32 +31,36 @@
     </div>
     <div class="col-12 mt-2 mb-2">
         <input   type="email" class="form-control UserRegister__FormControl"  disabled
-        placeholder="{{ userDetails?.usrEmail }} ">                            
+        placeholder="{{ userDetails?.usrEmail }} ">
     </div>
     <div class="col-12 mt-2 mb-2 ">
         <input   type="number" class="form-control UserRegister__FormControl"  disabled
-        placeholder="{{ userDetails?.mobile }}">                            
+        placeholder="{{ userDetails?.mobile }}">
     </div>
 
-    <div class="col-12 mt-2 mb-2">
+    <div class="col-12 mt-2 mb-2" *ngIf="userDetails.birthDispMode ==1">
         <input   type="text" class="form-control UserRegister__FormControl"  disabled
-        placeholder="{{ birthdate }} ">                            
+        placeholder="{{ userDetails.hijriBirthDate | date: 'dd/MM/yyyy' }} ">
     </div>
+  <div class="col-12 mt-2 mb-2" *ngIf="userDetails.birthDispMode ==2">
+    <input   type="text" class="form-control UserRegister__FormControl"  disabled
+             placeholder="{{ userDetails?.birthGregorian | date: 'dd/MM/yyyy' }} ">
+  </div>
     <div class="col-12 mt-2 mb-2">
         <input   type="text" class="form-control UserRegister__FormControl"  disabled
-        placeholder="{{ translate.currentLang === lang.en ? userDetails?.engNatName : userDetails?.arbNatName}}">                            
+        placeholder="{{ translate.currentLang === lang.en ? userDetails?.engNatName : userDetails?.arbNatName}}">
     </div>
 
 </div>
 <div class="col-12 mt-5 footer_logout">
     <a (click) = "confirmDialog()" class="p-0">
-      
+
       <span  class="logout"> {{ 'GENERAL.LOGOUT' | translate}}</span>
       <img  class="logout_img" src="../../../../assets/images/log-out.svg">
-   </a>   
-</div> 
+   </a>
+</div>
 
 
   </div>
-  
-  
+
+

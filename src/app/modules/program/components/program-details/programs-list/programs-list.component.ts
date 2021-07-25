@@ -40,6 +40,8 @@ export class ProgramsListComponent implements OnInit {
   collectionOfLookup = {} as ILookupCollection;
   listOfLookup: string[] = ['PROG_TYPES'];
   programTypesList: IProgramType[] = [];
+
+
   constructor(private scientifcMaterialService: ScientificMaterialService,
     private programService: ProgramService,
     public translate: TranslateService,
@@ -167,6 +169,7 @@ export class ProgramsListComponent implements OnInit {
 
   clearNameFilter() {
     this.programsbyAdvancedFilter.name = '';
+    this.loadProgramsbyAdvancedFilter();
   }
   clearProgTypeFilter(item: IProgramType) {
     let it = this.programTypesList.filter(i => i.progTypeId === item.progTypeId)[0];
