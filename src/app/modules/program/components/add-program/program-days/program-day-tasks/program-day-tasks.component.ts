@@ -21,27 +21,28 @@ import { ProgramDayTasksDetailsComponent } from '../program-day-tasks-details/pr
   styleUrls: ['./program-day-tasks.component.scss']
 })
 export class ProgramDayTasksComponent implements OnInit {
- 
+
 
   @Output() openAddDayTasks = new EventEmitter<boolean>();
   @Output() programDutyDayModel = new EventEmitter<IProgramDutyDays>();
 
-  @Input() programDutyDay : IProgramDutyDays | undefined;
-  @Output()programDayTaskId=new EventEmitter<string>();
-  @Output()huffazTaskType=new EventEmitter<number>();
-  @Output()taskDetailsEvent=new EventEmitter<IProgramDayTasksModel>();
+  @Input() programDutyDay: IProgramDutyDays | undefined;
+  @Output() programDayTaskId = new EventEmitter<string>();
+  @Output() huffazTaskType = new EventEmitter<number>();
+  @Output() taskDetailsEvent = new EventEmitter<IProgramDayTasksModel>();
   langEnum = LanguageEnum;
   resMessage: BaseMessageModel = {};
   programDayTasksLists = [] as Array<IProgramDayTasksModel>;
-  items1:any;
-  programDayTasksUpdateOrderByModel:IProgramDayTasksUpdateOrderByModel={};
+  items1: any;
+  programDayTasksUpdateOrderByModel: IProgramDayTasksUpdateOrderByModel = {};
   listOrder?: number[];
+  defaultSelectedDay = 0;
 
   constructor(
     public languageService: LanguageService,
     private programDayTasksService: ProgramDayTasksService,
     public translate: TranslateService,
-    public dialog: MatDialog, 
+    public dialog: MatDialog,
     private lookupService: LookupService) { }
 
   ngOnInit(): void {
@@ -63,7 +64,7 @@ export class ProgramDayTasksComponent implements OnInit {
     this.programDayTasksService.getProgramDayTasks(this.programDutyDay?.id || '').subscribe(res => {
       if (res.isSuccess) {
         this.programDayTasksLists = res.data as Array<IProgramDayTasksModel>;
-         this.setProgrmeDayTask(this.programDayTasksLists[0])
+        this.setProgrmeDayTask(this.programDayTasksLists[0])
         console.log("programDayTasksLists ===========>", this.programDayTasksLists);
       }
       else {
@@ -86,7 +87,7 @@ export class ProgramDayTasksComponent implements OnInit {
 
   }
 
-  setProgrmeDayTask(item : IProgramDayTasksModel){
+  setProgrmeDayTask(item: IProgramDayTasksModel) {
     this.taskDetailsEvent.emit(item);
 
     //this.progDayTaskDetailsChild?.getProgramDayTaskDetails(id ||'',huffazTask);
@@ -114,7 +115,7 @@ export class ProgramDayTasksComponent implements OnInit {
 
   }
 
-  copyTask(id?: string){
+  copyTask(id?: string) {
     this.programDayTasksService.CopyProgramDayTasks(id || '').subscribe(res => {
       if (res.isSuccess) {
         this.programDayTasksLists = res.data as Array<IProgramDayTasksModel>;
@@ -136,8 +137,8 @@ export class ProgramDayTasksComponent implements OnInit {
     });
   }
 
-  confirmDialog(id?:string){
-    const message =this.translate.currentLang === LanguageEnum.en ?"Are you sure that you want to delete this task":"هل متأكد من حذف هذه المهمة";
+  confirmDialog(id?: string) {
+    const message = this.translate.currentLang === LanguageEnum.en ? "Are you sure that you want to delete this task" : "هل متأكد من حذف هذه المهمة";
 
     const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete task' : 'حذف المهمة', message);
 
@@ -146,11 +147,11 @@ export class ProgramDayTasksComponent implements OnInit {
       data: dialogData
     });
     dialogRef.afterClosed().subscribe(dialogResult => {
-      if(dialogResult==true){
+      if (dialogResult == true) {
         this.programDayTasksService.DeleteProgramDayTasks(id || '').subscribe(res => {
           if (res.isSuccess) {
             this.programDayTasksLists = res.data as Array<IProgramDayTasksModel>;
-    
+
             console.log("programDayTasksLists ===========>", this.programDayTasksLists);
           }
           else {
@@ -166,35 +167,35 @@ export class ProgramDayTasksComponent implements OnInit {
             type: BaseConstantModel.DANGER_TYPE
           }
         });
-      }     
+      }
     });
   }
 
   drop(event: CdkDragDrop<IDragDropAccordionItems[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-      this.listOrder=[];
-      for(let i =0;i<=event.container.data.length-1;i++){
-        this.listOrder?.push(event.previousContainer.data[i].order||(i+1));
+      this.listOrder = [];
+      for (let i = 0; i <= event.container.data.length - 1; i++) {
+        this.listOrder?.push(event.previousContainer.data[i].order || (i + 1));
       }
-      this.programDayTasksUpdateOrderByModel.programDutyDay =this.programDutyDay?.id;
-      this.programDayTasksUpdateOrderByModel.orderList =this.listOrder;
-    
+      this.programDayTasksUpdateOrderByModel.programDutyDay = this.programDutyDay?.id;
+      this.programDayTasksUpdateOrderByModel.orderList = this.listOrder;
+
       this.programDayTasksService.UpdateOrderByProgramDayTasks(this.programDayTasksUpdateOrderByModel).subscribe(res => {
         if (res.isSuccess) {
-       this.getProgramDutyDays();
+          this.getProgramDutyDays();
         }
         else {
-     
+
         }
-        
+
       },
-      error => {
-        this.resMessage ={
-          message: error,
-          type: BaseConstantModel.DANGER_TYPE
-        }
-      })
+        error => {
+          this.resMessage = {
+            message: error,
+            type: BaseConstantModel.DANGER_TYPE
+          }
+        })
     } else {
       transferArrayItem(event.previousContainer.data,
         event.container.data,

@@ -49,10 +49,10 @@
       matTooltip="{{translate.currentLang===langEnum.en?questionBankCategoryList[0].engCatgName:questionBankCategoryList[0].arabCatgName}}">
       {{translate.currentLang===langEnum.en?questionBankCategoryList[0].engCatgName:questionBankCategoryList[0].arabCatgName}}
     </p>
-        <div class="d-flex " *ngIf="roleManagmentService.isAdmin()">
+        <!-- <div class="d-flex " *ngIf="roleManagmentService.isAdmin()">
            <a (click)="confirmDialog(questionBankCategoryList[0].id)"> <i   class=" white far fa-trash-alt"></i></a>
            <a (click)="loadCatogry(questionBankCategoryList[0].id) "> <i   class=" white fas fa-pencil-alt"></i></a> 
-          </div>
+          </div> -->
      </a>
     
     <ng-container>
@@ -74,10 +74,10 @@
                 {{translate.currentLang===langEnum.en?QBC.engCatgName:QBC.arabCatgName}}
               
               </p>
-                  <div class="d-flex " *ngIf="roleManagmentService.isAdmin()">
+                  <!-- <div class="d-flex " *ngIf="roleManagmentService.isAdmin()">
                      <a (click)="confirmDialog(QBC.id)"> <i  [ngClass]="{'white': i== 0}" class="far fa-trash-alt"></i></a>
                      <a (click)="loadCatogry(QBC.id) "> <i   [ngClass]="{'white': i== 0}" class="fas fa-pencil-alt"></i></a> 
-                    </div>
+                    </div> -->
             </a>
             </mat-expansion-panel-header>
           </mat-expansion-panel>

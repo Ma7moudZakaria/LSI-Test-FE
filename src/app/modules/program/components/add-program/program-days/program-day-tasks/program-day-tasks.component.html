@@ -21,7 +21,8 @@
                     <mat-expansion-panel cdkDrag  disabled *ngFor="let item of programDayTasksLists ; let i = index;">
                       
                        
-                        <mat-expansion-panel-header (click)="setProgrmeDayTask(item)" >
+                        <mat-expansion-panel-header (click)='setProgrmeDayTask(item); defaultSelectedDay = i'
+                        [class.active]="defaultSelectedDay === i">
                             
                             <mat-panel-title class="qestionHeader">
                              

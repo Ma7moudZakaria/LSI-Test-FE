@@ -629,19 +629,24 @@ app-tel-input >
 }
 // start  notify alertify
 .alertify-notifier .ajs-message.ajs-success {
-  background: #d4e5dc;
+    background: #d4e5dc;
     border: 5px solid #00BB3259;
-    border-radius: 16px;}
+    border-radius: 16px;
+  }
     .alertify-notifier .ajs-message.ajs-success::before
     {
       content: url(/assets/images/check-circle1.svg);
       margin: 0 0.5rem;
     }
+    .ajs-message.ajs-error.ajs-visible{
+      background: #FFFBFB59;
+    }
     .alertify-notifier .ajs-message.ajs-error::before
     {
-      content: url(/src/assets/images/check-circle.svg);
+      content: url(/assets/images/feelings/close.svg);
       margin: 0 0.5rem;
        padding: 0.5rem;
+      
     
     }
     
