@@ -1,12 +1,13 @@
 export interface IStudentSubscriptionFilterRequestModel {
     usrName?:string;
     progName?:string;
-    numberRequest?:Number;
+    numberRequest?:number;
     fromDate?:Date;
     toDate?:Date;
-    skip?:Number;
-    take?:Number;
+    skip:number;
+    take:number;
     sortField?:string;
-    sortOrder?:Number;
-    statusNum?:Number;
+    sortOrder?:number;
+    statusNum?:number;
+    page:number;
 }

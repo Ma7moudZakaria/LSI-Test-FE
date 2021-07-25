@@ -51,6 +51,7 @@ export class SettingAgeComponent implements OnInit {
     this.ageModel.title = this.programConditionsModel.title;
   }
   saveProgramConditions() {
+    this.resultMessage={};
     this.updateProgramConditionDetailsModel.id = this.ageModel.id;
     this.updateProgramConditionDetailsModel.progCondDetails = JSON.stringify(this.ageModel);
     this.updateProgramConditionDetailsModel.isRequired = this.ageModel.isRequired;

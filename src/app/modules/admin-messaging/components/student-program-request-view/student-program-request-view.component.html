@@ -1,0 +1,17 @@
+<div class="container-fluid"> 
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-12 pl-0">
+            <app-stu-list-request 
+            (selectedStuRequest)="studentRequestSelected($event)"
+          ></app-stu-list-request>
+            <!-- <app-programs-list (selectedProgram)='selectedProgramCallBack($event)'></app-programs-list> -->
+        </div>
+        <div class="col-lg-9  col-md-9 col-sm-12 ">
+            <app-stu-request-details [selectedStuRequest]= "selectedStuRequest"></app-stu-request-details>
+
+            <!-- <app-programs-tabs [programModel]='programModel' (refreshProgListEvent)='refreshProgList()'></app-programs-tabs> -->
+        </div>
+       
+    </div>
+
+</div>

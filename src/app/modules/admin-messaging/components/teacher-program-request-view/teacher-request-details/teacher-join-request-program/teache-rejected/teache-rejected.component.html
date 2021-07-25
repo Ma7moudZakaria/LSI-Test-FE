@@ -1,0 +1,36 @@
+<form class="form-group DataForm mt-5 pl-3 pr-3">
+    <h3 class="text-right head  bold">رفض الطلب </h3>
+    <div class="form-group">
+        <label  class="label">
+            
+            سيتم رفض طلب انسحاب المعلم /
+            <span class="data_input"> {{itemTeacherReq.usrNameAr}}</span>
+        </label>
+        <label  class="label">
+            من برنامج  <span class="data_input"> {{itemTeacherReq.progName}}</span> 
+        </label>
+        <label  class="label mt-4">
+            سبب الرفض
+        </label>
+
+        <textarea  class="form-control " cols="1"  rows="5" 
+        [(ngModel)]='itemTeacherReq.reasonReject'  [ngModelOptions]="{standalone: true}" >
+        </textarea>
+       
+        <section class="mt-5">
+            <div  class="row direction-rtl buttons-center mt-5">
+                <button  (click)='saveRejectRequest()' type="submit" class="save-btn"> 
+                    {{ "GENERAL.SAVE" | translate }}
+                </button>
+                <button   (click)='closeRejectRequest()' type="reset" class="cancel-btn"> 
+                    {{ "GENERAL.CANCEL" | translate }}
+                </button>
+            </div>
+        </section>
+        
+
+   </div>
+
+  
+   
+</form>

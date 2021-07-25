@@ -67,22 +67,25 @@ export class SettingQualificationsComponent implements OnInit {
   }
 
   addDegreeItem() {
-    this.qualificationModel.value = [];
-    const exist = this.selectedQualification.some(el => el.id === this.qualificationModel.condSelcted)
-    if (!exist) {
-      if (this.collectionOfLookup?.EDU_LEVEL) {
-        this.selectedQualification.push(
-          this.collectionOfLookup.EDU_LEVEL.filter(el => el.id == this.qualificationModel.condSelcted)[0]);
-
+    if(this.qualificationModel.condSelcted !=="null" && this.qualificationModel.condSelcted !==undefined){
+      this.qualificationModel.value = [];
+      const exist = this.selectedQualification.some(el => el.id === this.qualificationModel.condSelcted)
+      if (!exist) {
+        if (this.collectionOfLookup?.EDU_LEVEL) {
+          this.selectedQualification.push(
+            this.collectionOfLookup.EDU_LEVEL.filter(el => el.id == this.qualificationModel.condSelcted)[0]);
+        }
+        this.qualificationModel.value = this.selectedQualification;
       }
-      this.qualificationModel.value = this.selectedQualification;
     }
   }
+
   removeItemFromSelectedQualification(item: any) {
     let index = this.selectedQualification.indexOf(item);
     this.selectedQualification.splice(index, 1);
   }
   saveProgramConditions() {
+    this.resultMessage={};
     this.updateProgramConditionDetailsModel.id = this.qualificationModel.id;
     this.qualificationModel.condSelcted = 'null';
     this.updateProgramConditionDetailsModel.progCondDetails = JSON.stringify(this.qualificationModel);

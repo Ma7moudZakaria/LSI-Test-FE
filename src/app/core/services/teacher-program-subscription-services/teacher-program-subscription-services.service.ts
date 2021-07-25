@@ -27,7 +27,7 @@ export class TeacherProgramSubscriptionServicesService {
     return this.http.post<BaseResponseModel>(this.getTeachersProgramsSubscriptionsFilterURL , model);
   }
 
-  teacherProgramSubscriptionsAcceptance(model : string[]):Observable<BaseResponseModel>{
+  teacherProgramSubscriptionsAcceptance(model? : string[]):Observable<BaseResponseModel>{
     return this.http.put<BaseResponseModel>(this.teacherProgramSubscriptionsAcceptanceURL , model);
   }
 
