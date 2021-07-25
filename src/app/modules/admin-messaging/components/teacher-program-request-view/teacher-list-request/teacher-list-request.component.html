@@ -1,24 +1,24 @@
 <div class="list-group teacher-list-request">
     <div class="internal_scroll_list_group">
         <a class="list-group-item d-flex"  
-        [class.active]="selectedIndex === 1"
+        [class.active]="selectedIndex === teacherRequestEnum.JoinRequest"
         (click)="teatcherRequestSelected(teacherRequestEnum.JoinRequest);selectedIndex=1"> 
         <span>  طلبات الانضمام</span>        
        </a>
        <a class="list-group-item d-flex"  
-       [class.active]="selectedIndex === 2"
+       [class.active]="selectedIndex === teacherRequestEnum.JoinRequestProgram"
        (click)="teatcherRequestSelected(teacherRequestEnum.JoinRequestProgram);selectedIndex=2"> 
        <span> طلبات الانضمام للبرنامج</span>        
       </a>
 
        <a class="list-group-item d-flex"  
-       [class.active]="selectedIndex === 3"
+       [class.active]="selectedIndex === teacherRequestEnum.CancelRequest"
        (click)="teatcherRequestSelected(teacherRequestEnum.CancelRequest);selectedIndex=3"> 
        <span> طلبات الانسحاب</span>        
       </a>
 
       <a class="list-group-item d-flex"  
-      [class.active]="selectedIndex === 4"
+      [class.active]="selectedIndex === teacherRequestEnum.ChangTimeRequest"
       (click)="teatcherRequestSelected(teacherRequestEnum.ChangTimeRequest);selectedIndex=4"> 
       <span> طلبات تغير المواعيد المتاحة</span>        
      </a>
