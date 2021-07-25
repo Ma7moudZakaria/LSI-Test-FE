@@ -13,17 +13,17 @@
                         <!-- {{'VIEW_USER_PG.CHANGE_PIC' | translate}} -->
                         <img src="assets/images/update-user/UploadImage.svg"/>
                     </a>
-                  
+
                 </div>
 
                 <div class="col-12 textLeft">
                     <a (click)="navEditProf()" ><img  class="ml-2 mr-2" src="../../../../../assets/images/student/edit.svg">
                     <span class="profile_edit">{{'VIEW_USER_PG.EDIT_PROFILE' | translate }}</span></a>
                  </div>
-                
+
              <div class="col-12">
                  <div class=" row info_profile">
-                
+
 <!--  view teacher profile -->
                     <div class="col-9  info_profile ">
                     <div class="row">
@@ -39,10 +39,11 @@
                                       </ng-template>
                                 </ngb-rating>
                                 <!-- <p class="brith_date">starts</p> -->
-                            <p class="brith_date">{{ userProfileDetails?.birthdate }}</p>
+                            <p *ngIf="userProfileDetails.birthDispMode ==1" class="brith_date">{{ userProfileDetails?.birthdate }}</p>
+                            <p *ngIf="userProfileDetails.birthDispMode ==2" class="brith_date">{{ userProfileDetails?.birthGregorian }}</p>
                         </div>
-                        
-                           
+
+
                             <!-- start data -->
                             <div class="col-12 internal_scroll">
                                 <div class="row">
@@ -104,13 +105,13 @@
                                     </div>
 
                                     <div class="col-12"></div>
-                                   
+
                                     <div class="col-4  mb-3">
                                         <span class="label_info"> {{ 'VIEW_USER_PG.EDU_LEVEL' | translate }} </span>
                                         <span>  &nbsp; </span>
                                         <span>  &nbsp; </span>
                                         <span class="data_view">
-                                            {{  translate.currentLang === langEnum.en ? userProfileDetails?.engEduLevelName : userProfileDetails?.arbEduLevelName }} 
+                                            {{  translate.currentLang === langEnum.en ? userProfileDetails?.engEduLevelName : userProfileDetails?.arbEduLevelName }}
                                         </span>
                                     </div>
 
@@ -122,13 +123,13 @@
                                         <span class="data_view">
                                             {{ userProfileDetails?.occupation }}
                                         </span>
-                                    </div> 
+                                    </div>
                                      <div class="col-4  mb-3">
                                         <span class="label_info"> {{ 'VIEW_USER_PG.AMOUNT_QURAN' | translate }}</span>
                                         <span>  &nbsp; </span>
                                         <span>  &nbsp; </span>
                                         <span class="data_view">
-                                            {{ userProfileDetails?.quraanMemorizeAmount }} 
+                                            {{ userProfileDetails?.quraanMemorizeAmount }}
                                         </span>
                                     </div>
 
@@ -146,7 +147,7 @@
                                             </div>
                                             </div>
                                         </div>
-                                        
+
 
                                       <div class="col-3  ">
                                         <span class="label_info"> {{ 'VIEW_USER_PG.SCIENTIFIC_ARCHIVES' | translate }}   </span>
@@ -178,10 +179,10 @@
                                             </div>
                                             </div>
                                         </div>
-                                  
 
-                                   
-                                      
+
+
+
                                     <!-- end data -->
                                 </div>
 
@@ -189,7 +190,7 @@
                            </div>
                      </div>
                   </div>
-          
+
 <!-- end  view teacher profile -->
 
 
@@ -211,15 +212,15 @@
                     <a class="custom_file_input" (click)="fileInput.click()" style="text-decoration: none;" id="upload_link">
                         <img src="assets/images/update-user/UploadImage.svg"/>
                     </a>
-                  
+
                 </div>
 
                 <div class="col-12 textLeft">
                     <a (click)="navEditProf()" ><img  class="ml-2 mr-2" src="../../../../../assets/images/student/edit.svg">
                     <span class="profile_edit">{{'VIEW_USER_PG.EDIT_PROFILE' | translate }}</span></a>
                  </div>
-                
-          
+
+
         </div>
     </div>
 </div> -->

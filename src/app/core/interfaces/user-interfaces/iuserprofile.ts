@@ -1,7 +1,7 @@
 import { BaseLookupModel } from "../../ng-model/base-lookup-model";
 import { IAttachment } from "../attachments-interfaces/iattachment";
 
-export interface IUserProfile {    
+export interface IUserProfile {
     fnameAr?:string;
     mnameAr?:string;
     fanameAr?:string;
@@ -38,4 +38,5 @@ export interface IUserProfile {
     usrScientificArchives?:BaseLookupModel[];
     usrSheikhs?:BaseLookupModel[];
     usrCourses?:BaseLookupModel[];
+    birthDispMode?:number;
 }
