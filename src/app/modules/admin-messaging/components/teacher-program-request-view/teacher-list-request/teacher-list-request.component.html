@@ -3,24 +3,24 @@
         <a class="list-group-item d-flex"  
         [class.active]="selectedIndex === teacherRequestEnum.JoinRequest"
         (click)="teatcherRequestSelected(teacherRequestEnum.JoinRequest);selectedIndex=1"> 
-        <span>  طلبات الانضمام</span>        
+        <span> {{'TEACHER_SUBSCRIBERS.JOIN_REQUESTS' | translate}} </span>        
        </a>
        <a class="list-group-item d-flex"  
        [class.active]="selectedIndex === teacherRequestEnum.JoinRequestProgram"
        (click)="teatcherRequestSelected(teacherRequestEnum.JoinRequestProgram);selectedIndex=2"> 
-       <span> طلبات الانضمام للبرنامج</span>        
+       <span>{{'TEACHER_SUBSCRIBERS.JOIN_REQUESTS_FOR_PROGRAM' | translate}}</span>        
       </a>
 
        <a class="list-group-item d-flex"  
        [class.active]="selectedIndex === teacherRequestEnum.CancelRequest"
        (click)="teatcherRequestSelected(teacherRequestEnum.CancelRequest);selectedIndex=3"> 
-       <span> طلبات الانسحاب</span>        
+       <span> {{'TEACHER_SUBSCRIBERS.CANCEL_REQUESTS' | translate}}</span>        
       </a>
 
       <a class="list-group-item d-flex"  
       [class.active]="selectedIndex === teacherRequestEnum.ChangTimeRequest"
       (click)="teatcherRequestSelected(teacherRequestEnum.ChangTimeRequest);selectedIndex=4"> 
-      <span> طلبات تغير المواعيد المتاحة</span>        
+      <span> {{'TEACHER_SUBSCRIBERS.AVAILABLE_CHANGE_TIME_REQUESTS' | translate}}</span>        
      </a>
 
     </div>

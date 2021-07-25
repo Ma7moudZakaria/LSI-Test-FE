@@ -65,7 +65,9 @@
     "MY_PROGRAM": "My Program",
     "FEELING": "Feeling",
     "FILE_SIZE": "your file size more than 3m",
-    "EXTENTION_FILE": "your extention file not accepted"
+    "EXTENTION_FILE": "your extention file not accepted",
+    "ACCEPT":"Accepted",
+    "REJECT":"Reject"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
@@ -739,5 +741,19 @@
   "PROGRAM_EXAM_FORM": {
     "PROGRAM_ACCEPTANCE_EXAM": "Program acceptance test",
     "EXAM_FORMS": "Exam forms"
+  },
+  "TEACHER_SUBSCRIBERS":{
+    "TEACHERS":"Teachers",
+    "STUDENTS":"Students",
+    "NEW_JOIN_REQUESTS":"New join requests",
+    "ACCEPTANCE_REQUESTS":"Admission requests",
+    "REJECTANCE_REQUESTS":"Rejection requests",
+    "JOIN_REQUESTS":"Join requests",
+    "JOIN_REQUESTS_FOR_PROGRAM":"Requests to join the program",
+    "CANCEL_REQUESTS":"Cancellation requests",
+    "AVAILABLE_CHANGE_TIME_REQUESTS":"Available time change requests",
+    "REJECT_TEACHER":"Reject Teacher",
+    "FROM_PROGRAM":"From program",
+    "REASON_REJECT":"Reason reject"
   }
 }
