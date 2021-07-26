@@ -96,6 +96,9 @@ export class UpdateTeacherProfileComponent implements OnInit {
   maxHijriDate: NgbDateStruct | undefined;
   maxGregDate: NgbDateStruct | undefined;
 
+  minHijriInterviewDate: NgbDateStruct | undefined;
+  minGregInterviewDate: NgbDateStruct | undefined;
+
 
   constructor(
     private fb: FormBuilder,
@@ -391,7 +394,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
       this.updateCalenderType.selectedDateType = DateType.Hijri;
       let date = new Date(this.teacherProfileDetails?.birthdate || '');
       this.hijriBirthDateInputParam = { year: date.getFullYear(), month: date.getMonth() +1, day: date.getDate() }
-      this.f.hijriBirthDate.setValue(this.teacherProfileDetails?.birthdate);
+      this.f.hijriBirthDate.setValue(this.teacherProfileDetails.birthdate);
 
     }else {
       //this.updateCalenderType=new BaseSelectedDateModel();
@@ -405,7 +408,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
       //this.updateCalenderType.date = this.teacherProfileDetails?.birthGregorian;
       // let date = new Date(this.teacherProfileDetails?.birthGregorian || '');
       // this.hijriBirthDateInputParam = { year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDay() }
-      this.f.hijriBirthDate.setValue(this.teacherProfileDetails?.birthGregorian);
+      this.f.hijriBirthDate.setValue(this.teacherProfileDetails.birthGregorian);
     }
 
     if(this.teacherProfileDetails.interviewDisplayMode == 1){
@@ -903,12 +906,20 @@ export class UpdateTeacherProfileComponent implements OnInit {
      let toDayHijriDate = this.dateFormatterService.GetTodayHijri()
      toDayHijriDate.day= toDayHijriDate.day - 1 ;
      this.maxHijriDate = toDayHijriDate;
+
+     let toDayHijriInterviewDate = this.dateFormatterService.GetTodayHijri();
+    //  toDayHijriInterviewDate.day= toDayHijriInterviewDate.day + 1 ;
+     this.minHijriInterviewDate = toDayHijriInterviewDate;
      console.log("maxHijri",this.maxHijriDate);
   }
   setGreg(){
     let toDayGreDate = this.dateFormatterService.GetTodayGregorian()
     toDayGreDate.day= toDayGreDate.day - 1 ;
     this.maxGregDate = toDayGreDate;
+
+    let toDayGreInterviewDate = this.dateFormatterService.GetTodayGregorian();
+    // toDayGreInterviewDate.day= toDayGreInterviewDate.day + 1 ;
+    this.minGregInterviewDate = toDayGreInterviewDate;
     console.log("maxGregDate",this.maxGregDate);
   }
 

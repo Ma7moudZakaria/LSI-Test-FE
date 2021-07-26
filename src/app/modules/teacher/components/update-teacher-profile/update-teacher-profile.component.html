@@ -306,7 +306,7 @@
                                         </option>
                                     </select> -->
                                     <app-milady-hijri-calendar [editcalenderType]="updateCalenderType" (sendDate)="HijriInterviewDay($event)" (keypress)="$event.preventDefault()" [dateTo]='hijriInterviewDayInputParam'
-                                       [hijri]="hijri" [milady]="milady">
+                                       [hijri]="hijri" [milady]="milady" [minHijri]="minHijriInterviewDate" [minGreg]="minGregInterviewDate">
                                      </app-milady-hijri-calendar>
 
                                      <!-- <app-milady-hijri-calendar  [editcalenderType]="updateCalenderType" (sendDate)="SendData($event)" (keypress)="$event.preventDefault()" [dateTo]='hijriBirthDateInputParam'
