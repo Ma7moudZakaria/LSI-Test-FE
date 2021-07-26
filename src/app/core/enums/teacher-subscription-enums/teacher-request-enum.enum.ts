@@ -1,6 +1,6 @@
 export enum TeacherRequestEnum {
-    joinRequest = 1,
-    joinRequestProgram = 2,
-    cancelRequest = 3,
-    changTimeRequest = 4,
+    JoinRequest = 1,
+    JoinRequestProgram = 2,
+    CancelRequest = 3,
+    ChangTimeRequest = 4,
 }

@@ -38,11 +38,11 @@
         placeholder="{{ userDetails?.mobile }}">
     </div>
 
-    <div class="col-12 mt-2 mb-2" *ngIf="userDetails.birthDispMode ==1">
+    <div class="col-12 mt-2 mb-2" *ngIf="userDetails.birthDispMode == 1">
         <input   type="text" class="form-control UserRegister__FormControl"  disabled
-        placeholder="{{ userDetails.hijriBirthDate | date: 'dd/MM/yyyy' }} ">
+        placeholder="{{ userDetails.birthdate | date: 'dd/MM/yyyy' }} ">
     </div>
-  <div class="col-12 mt-2 mb-2" *ngIf="userDetails.birthDispMode ==2">
+  <div class="col-12 mt-2 mb-2" *ngIf="userDetails.birthDispMode == 2">
     <input   type="text" class="form-control UserRegister__FormControl"  disabled
              placeholder="{{ userDetails?.birthGregorian | date: 'dd/MM/yyyy' }} ">
   </div>

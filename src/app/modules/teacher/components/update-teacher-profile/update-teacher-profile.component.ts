@@ -32,7 +32,7 @@ import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/ipro
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { HostListener } from '@angular/core';
 import { ITeacherProfileAvailabilityLookup } from 'src/app/core/interfaces/teacher-interfaces/iteacher-availability-lookup';
-import {DateType} from "ngx-hijri-gregorian-datepicker";
+import {DateFormatterService, DateType} from 'ngx-hijri-gregorian-datepicker';
 import {BaseSelectedDateModel} from "../../../../core/ng-model/base-selected-date-model";
 
 @Component({
@@ -93,6 +93,9 @@ export class UpdateTeacherProfileComponent implements OnInit {
   //selectedDateType_Melady = DateType.Gregorian;  // or DateType.Gregorian
   //selectedDateType_Hijri = DateType.Hijri;
   updateCalenderType: BaseSelectedDateModel= new BaseSelectedDateModel();
+  maxHijriDate: NgbDateStruct | undefined;
+  maxGregDate: NgbDateStruct | undefined;
+
 
   constructor(
     private fb: FormBuilder,
@@ -103,7 +106,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
     private attachmentService: AttachmentsService,
     public translate: TranslateService,
     private ProgramService: ProgramService,
-    public languageService: LanguageService) {
+    public languageService: LanguageService,private dateFormatterService: DateFormatterService) {
   }
 
 
@@ -114,6 +117,8 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.buildForm();
     this.getPrograms();
     this.getLookupByKey();
+    this.setHijri();
+    this.setGreg();
   }
   // @HostListener('window:beforeunload', ['$event'])
   // public onPageUnload($event: BeforeUnloadEvent) {
@@ -384,9 +389,9 @@ export class UpdateTeacherProfileComponent implements OnInit {
       //let date = new Date(this.teacherProfileDetails?.hijriBirthDate || '');
       //this.hijriBirthDateInputParam = { year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDay() }
       this.updateCalenderType.selectedDateType = DateType.Hijri;
-      let date = new Date(this.teacherProfileDetails?.hijriBirthDate || '');
+      let date = new Date(this.teacherProfileDetails?.birthdate || '');
       this.hijriBirthDateInputParam = { year: date.getFullYear(), month: date.getMonth() +1, day: date.getDate() }
-      this.f.hijriBirthDate.setValue(this.teacherProfileDetails?.hijriBirthDate);
+      this.f.hijriBirthDate.setValue(this.teacherProfileDetails?.birthdate);
 
     }else {
       //this.updateCalenderType=new BaseSelectedDateModel();
@@ -894,6 +899,17 @@ export class UpdateTeacherProfileComponent implements OnInit {
   onChange(event: any) {
     this.onFileChange(event.target.files);
   }
-
+  setHijri() {
+     let toDayHijriDate = this.dateFormatterService.GetTodayHijri()
+     toDayHijriDate.day= toDayHijriDate.day - 1 ;
+     this.maxHijriDate = toDayHijriDate;
+     console.log("maxHijri",this.maxHijriDate);
+  }
+  setGreg(){
+    let toDayGreDate = this.dateFormatterService.GetTodayGregorian()
+    toDayGreDate.day= toDayGreDate.day - 1 ;
+    this.maxGregDate = toDayGreDate;
+    console.log("maxGregDate",this.maxGregDate);
+  }
 
 }

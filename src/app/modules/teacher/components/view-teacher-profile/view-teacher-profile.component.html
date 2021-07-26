@@ -45,7 +45,7 @@
                             </ngb-rating>
                             <!-- <ngb-rating [(rate)]="5" [readonly]="readonly"></ngb-rating> -->
                             <!-- <p class="brith_date">starts</p> -->
-                            <p class="brith_date" *ngIf="teacherProfileDetails.birthDispMode ==1"> {{ teacherProfileDetails?.hijriBirthDate | date: 'dd/MM/yyyy'}} </p>
+                            <p class="brith_date" *ngIf="teacherProfileDetails.birthDispMode ==1"> {{ teacherProfileDetails?.birthdate | date: 'dd/MM/yyyy'}} </p>
                             <p class="brith_date" *ngIf="teacherProfileDetails.birthDispMode ==2"> {{ teacherProfileDetails?.birthGregorian | date: 'dd/MM/yyyy'}} </p>
                         </div>
 
