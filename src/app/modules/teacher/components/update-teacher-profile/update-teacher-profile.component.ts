@@ -89,6 +89,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
     eampm: "AM"
   }
   selectedDateType : any;
+  selectedInterviewDateType : any;
   //selectedDateType_Melady = DateType.Gregorian;  // or DateType.Gregorian
   //selectedDateType_Hijri = DateType.Hijri;
   updateCalenderType: BaseSelectedDateModel= new BaseSelectedDateModel();
@@ -402,6 +403,19 @@ export class UpdateTeacherProfileComponent implements OnInit {
       this.f.hijriBirthDate.setValue(this.teacherProfileDetails?.birthGregorian);
     }
 
+    if(this.teacherProfileDetails.interviewDisplayMode == 1){
+      this.updateCalenderType.selectedDateType = DateType.Hijri;
+      let date = new Date(this.teacherProfileDetails?.interviewHijri || '');
+      this.hijriInterviewDayInputParam = { year: date.getFullYear(), month: date.getMonth() +1, day: date.getDate() }
+      this.f.hijriInterviewDay.setValue(this.teacherProfileDetails.interviewHijri);
+
+    }else {
+        this.updateCalenderType.selectedDateType = DateType.Gregorian;
+      let date = new Date(this.teacherProfileDetails?.interviewGregorian || '');
+      this.hijriInterviewDayInputParam = { year: date.getFullYear(), month: date.getMonth() +1, day: date.getDate() }
+      this.f.hijriInterviewDay.setValue(this.teacherProfileDetails.interviewGregorian);
+    }
+
 
     this.f.nationality.setValue(this.teacherProfileDetails?.nationality)
     this.f.country.setValue(this.teacherProfileDetails?.country)
@@ -430,9 +444,9 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.f.bankName.setValue(this.teacherProfileDetails?.bankName)
     this.f.bankNumber.setValue(this.teacherProfileDetails?.bankNumber)
 
-    let dateInterviewDay = new Date(this.teacherProfileDetails?.interviewHijri || '');
-    this.hijriInterviewDayInputParam = { year: dateInterviewDay.getFullYear(), month: dateInterviewDay.getMonth() + 1, day: dateInterviewDay.getDay() }
-    this.f.hijriInterviewDay.setValue(dateInterviewDay);
+    // let dateInterviewDay = new Date(this.teacherProfileDetails?.interviewHijri || '');
+    // this.hijriInterviewDayInputParam = { year: dateInterviewDay.getFullYear(), month: dateInterviewDay.getMonth() + 1, day: dateInterviewDay.getDay() }
+    // this.f.hijriInterviewDay.setValue(dateInterviewDay);
 
     this.f.interviewTime.setValue(this.teacherProfileDetails?.interviewTime)
 
@@ -529,12 +543,17 @@ export class UpdateTeacherProfileComponent implements OnInit {
         bankName: this.profileForm.value.bankName,
         bankNumber: this.profileForm.value.bankNumber,
 
-        interviewHijri: this.profileForm.value.hijriInterviewDay,
+        // interviewHijri: this.profileForm.value.hijriInterviewDay,
+        
+        interviewHijri: this.selectedInterviewDateType == 1 ? this.profileForm.value.hijriInterviewDay : null,
+        interviewGregorian : this.selectedInterviewDateType == 2 ? this.profileForm.value.hijriInterviewDay : null,
+
         interviewTime: this.profileForm.value.interviewTime,
 
         address: this.profileForm.value.address,
         ejazaAttachments: this.ejazaAttachmentIds,
-        birthDispMode : this.selectedDateType
+        birthDispMode : this.selectedDateType,
+        interviewDisplayMode: this.selectedInterviewDateType,
       }
 
       this.rewayatsMessage = {};
@@ -777,11 +796,18 @@ export class UpdateTeacherProfileComponent implements OnInit {
 
   }
 
-  HijriInterviewDay(date: any) {
-    date = date.year + '/' + date.month + '/' + date.day;
-    this.hijriBinding = date
+  HijriInterviewDay(data: any) {
+    // date = date.year + '/' + date.month + '/' + date.day;
+    // this.hijriBinding = date
 
-    this.f.hijriInterviewDay.setValue(date);
+    // this.f.hijriInterviewDay.setValue(date);
+
+    data.selectedDateValue = data.selectedDateValue.year + '/' + data.selectedDateValue.month + '/' + data.selectedDateValue.day;
+    // console.log("Hijri date", data.date)
+    this.hijriBinding = data.selectedDateValue
+    this.selectedInterviewDateType = data.selectedDateType;
+    // console.log("this.selectedDateType",this.selectedDateType);
+    this.f.hijriInterviewDay.setValue(data.selectedDateValue);
   }
 
   addDrgree() {

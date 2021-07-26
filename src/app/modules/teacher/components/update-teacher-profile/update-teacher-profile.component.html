@@ -305,9 +305,13 @@
                                             {{ translate.currentLang == langEnum.en ? interviewDayItem.nameEn : interviewDayItem.nameAr}}
                                         </option>
                                     </select> -->
-                                    <app-milady-hijri-calendar (sendDate)="HijriInterviewDay($event)" (keypress)="$event.preventDefault()" [dateTo]='hijriInterviewDayInputParam'
-                                       [hijri]="hijri" [milady]="!milady">
+                                    <app-milady-hijri-calendar [editcalenderType]="updateCalenderType" (sendDate)="HijriInterviewDay($event)" (keypress)="$event.preventDefault()" [dateTo]='hijriInterviewDayInputParam'
+                                       [hijri]="hijri" [milady]="milady">
                                      </app-milady-hijri-calendar>
+
+                                     <!-- <app-milady-hijri-calendar  [editcalenderType]="updateCalenderType" (sendDate)="SendData($event)" (keypress)="$event.preventDefault()" [dateTo]='hijriBirthDateInputParam'
+                                       [hijri]="hijri" [milady]="milady">
+                                     </app-milady-hijri-calendar> -->
 
                                     <div *ngIf="f.hijriInterviewDay.errors && (f.hijriInterviewDay.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
                                         <div *ngIf="f.hijriInterviewDay.errors.required">

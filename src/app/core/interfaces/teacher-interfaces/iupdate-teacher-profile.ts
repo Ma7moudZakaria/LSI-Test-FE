@@ -26,6 +26,7 @@ export interface IUpdateTeacherProfile {
     agency?:string;
     edulevel?:string;
     interviewHijri?:string;
+    interviewGregorian?:string;
     interviewTime?:string;
     isHasQuranExp?: boolean;
     isHasTeachSunnaExp?: boolean;
@@ -43,4 +44,5 @@ export interface IUpdateTeacherProfile {
     languages?:ITeacherProfileLanguage[];
     birthGregorian?:string;
     birthDispMode?:number;
+    interviewDisplayMode?:number;
 }
