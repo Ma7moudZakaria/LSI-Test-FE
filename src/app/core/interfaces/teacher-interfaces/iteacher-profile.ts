@@ -16,7 +16,7 @@ export interface ITeacherProfile{
     mobile?:string;
     address?:string;
     gregBirthDate?:string;
-    hijriBirthDate?:string;
+    birthdate?:string;
     nationality?:string;
     arbNatName?:string;
     engNatName?:string;

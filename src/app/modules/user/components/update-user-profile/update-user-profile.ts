@@ -117,7 +117,7 @@ export class UpdateUserProfileComponent implements OnInit {
   // }
 
   unsavedDataCheck() : boolean{
-    let  birthDateFromDetails=new Date(this.userProfileDetails?.hijriBirthDate||"");
+    let  birthDateFromDetails=new Date(this.userProfileDetails?.birthdate||"");
     return this.profileForm.value.firstNameAr != this.userProfileDetails?.fnameAr
     || this.profileForm.value.firstNameEn != this.userProfileDetails?.faNameEn
     || this.profileForm.value.middleNameAr != this.userProfileDetails?.mnameAr
@@ -397,9 +397,9 @@ export class UpdateUserProfileComponent implements OnInit {
     // this.f.birthdate.setValue(date);
     if(this.userProfileDetails.birthDispMode == 1){
       this.updateCalenderType.selectedDateType = DateType.Hijri;
-      let date = new Date(this.userProfileDetails?.hijriBirthDate || '');
+      let date = new Date(this.userProfileDetails?.birthdate || '');
       this.hijriBirthDateInputParam = { year: date.getFullYear(), month: date.getMonth() +1, day: date.getDate() }
-      this.f.hijriBirthDate.setValue(this.userProfileDetails?.hijriBirthDate);
+      this.f.hijriBirthDate.setValue(this.userProfileDetails?.birthdate);
 
     }else {
       this.updateCalenderType.selectedDateType = DateType.Gregorian;

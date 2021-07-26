@@ -42,7 +42,7 @@ html, body {  height: 100%;}
     font-family: Almarai-Bold !important;
 
 }
-// login page 
+// login page
 
 .LoginBackground_left_img
 {
@@ -64,17 +64,17 @@ html, body {  height: 100%;}
 
 
 .LoginBackground_Right_img{
-   
+
     //  background-color: $login_background;
     // background: linear-gradient(#8E2520, #4F1512);
     // background: #8E2520;
-    // background-image: url(../../huffaz-app/src/assets/images/opacity_background.png); 
+    // background-image: url(../../huffaz-app/src/assets/images/opacity_background.png);
     background-image: url(../src/assets/images/logo.png), linear-gradient(#8E2520, #4F1512);
 
      background-position-x: center;
      background-position-y: center;
      background-repeat: repeat-y;
-     
+
 }
 .repeater_img{
     position: absolute;
@@ -97,7 +97,7 @@ html, body {  height: 100%;}
 .UserLogin__FormContainer{
     height: 76px;
     background-color:$main_background;
-    
+
 }
 .box {
     background: $white 0% 0% no-repeat padding-box;
@@ -110,7 +110,7 @@ html, body {  height: 100%;}
     // margin-bottom: 0.5rem;
     width: 32.812rem;
     height:auto
-   
+
 }
 
 .content_form
@@ -123,13 +123,13 @@ html, body {  height: 100%;}
 .content_form:lang(ar){
   text-align: right;
 }
-//for input in ar 
+//for input in ar
 .input-group:lang(ar){
   // flex-direction: row-reverse;
   .UserLogin__FormControl:lang(ar)
   {
     border-right-color: transparent;
-    
+
   }
   .input-group-text:lang(ar)
   {
@@ -149,10 +149,10 @@ html, body {  height: 100%;}
   border-bottom-right-radius: 0;
 }
 
-// .UserLogin .input-group.has-validation>.input-group-append:nth-last-child(n+3)>.btn, 
-// .input-group.has-validation>.input-group-append:nth-last-child(n+3)>.input-group-text, 
-// .input-group:not(.has-validation)>.input-group-append:not(:last-child)>.btn, 
-// .input-group:not(.has-validation)>.input-group-append:not(:last-child)>.input-group-text, 
+// .UserLogin .input-group.has-validation>.input-group-append:nth-last-child(n+3)>.btn,
+// .input-group.has-validation>.input-group-append:nth-last-child(n+3)>.input-group-text,
+// .input-group:not(.has-validation)>.input-group-append:not(:last-child)>.btn,
+// .input-group:not(.has-validation)>.input-group-append:not(:last-child)>.input-group-text,
 // .input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle),
 //  .input-group>.input-group-append:last-child>.input-group-text:not(:last-child),
 //   .input-group>.input-group-prepend>.btn,
@@ -164,7 +164,7 @@ html, body {  height: 100%;}
 }
 
 // .UserLogin .input-group:not(.has-validation)>.input-group-append:not(:last-child)>.input-group-text,
-//  .input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle), 
+//  .input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle),
 //  .input-group>.input-group-append:last-child>.input-group-text:not(:last-child),
 //   .input-group>.input-group-prepend>.btn,
 //    .input-group>.input-group-prepend>.input-group-text:lang(ar) {
@@ -192,26 +192,26 @@ textarea.form-control:focus{
 .pr-2rem{
   padding-right: 2rem;
 }
-  // for input in en 
+  // for input in en
 
   .input-group:lang(en){
-   
+
     .input-group-text
     {
         border-right: 1px solid transparent;
         position: relative;
         left: 1px;
-     
+
     }
     .UserLogin__FormControl:lang(en)
   {
     border-left-color: transparent;
-    
+
   }
 }
 
 
-  // end input in en 
+  // end input in en
 
 // for error input && message
 
@@ -327,19 +327,19 @@ font-family: Almarai-Regular;
   width: 1rem;
     height: 0.9rem;
 }
-// footer of login page 
+// footer of login page
 .UserLogin__Register{
-  
+
   background-color: $main_background;
   width: 11rem;
   height: 2.31rem;
- 
+
   border: none;
   border-radius: 1rem;
   color: $fill_button;
   font-size: 12px;
   color: $p_color;
-  
+
 }
 
 .footer_form_p{
@@ -357,10 +357,10 @@ font-family: Almarai-Regular;
   font-size: 0.68rem
 }
 
-// check box 
+// check box
 
 .accept {
-  
+
   .mat-radio-label-content
     {
       font-size: 12px;
@@ -462,7 +462,7 @@ select.form-control {
     margin-left: 10px;
     margin-bottom: 5px;
     border-radius: 5px;
-    
+
     a {
       color: inherit;
 
@@ -506,8 +506,8 @@ select.form-control {
 }
 
 
-  
-  
+
+
   /* Position and style the close button (top right corner) */
   .overlay .closebtn {
     color: #818181;
@@ -529,7 +529,7 @@ select.form-control {
     font-size: 25px;
     // display: block;
     transition: 5s;
-  }  
+  }
   .cursor-pointer{
     cursor: pointer;
   }
@@ -542,14 +542,14 @@ select.form-control {
   ::-webkit-scrollbar-thumb{
     background: $user-color;
 }
-//  replace arrow in extended card to icon arrang 
+//  replace arrow in extended card to icon arrang
 .questionBank
 .mat-expansion-indicator::after {
   border-style: solid;
   border-width: 0 ;
   content: '';
   display: none;
- 
+
 }
 .questionBank
 .mat-content
@@ -583,7 +583,7 @@ align-items: center
         width: 12px;
         height: 20px;
     }
-    
+
 .questionBank.student
 .mat-content::before{
 
@@ -591,11 +591,11 @@ align-items: center
 }
 
 .mat-expansion-panel-header-title, .mat-expansion-panel-header-description{
-  margin-right: 0 !important; 
+  margin-right: 0 !important;
 }
-// input phone custom 
+// input phone custom
 app-tel-input >
-.iti input, .iti input[type=text], .iti input[type=tel] 
+.iti input, .iti input[type=text], .iti input[type=tel]
 {
     display: block;
     height: calc(1.5em + .75rem + 2px);
@@ -646,10 +646,10 @@ app-tel-input >
       content: url(/assets/images/feelings/close.svg);
       margin: 0 0.5rem;
        padding: 0.5rem;
-      
-    
+
+
     }
-    
+
 .alertify-notifier.ajs-right {
   right: -10px;
 }
@@ -659,7 +659,7 @@ app-tel-input >
 .alertify-notifier.ajs-right .ajs-message.ajs-visible {
   right: 270px;
   text-align: left;
-  
+
 }
 .alertify-notifier.ajs-left {
   left: 200px;
@@ -712,7 +712,7 @@ display: none;
   display: none;
   }
   .HijriGregorianDatePicker.removeHijri .btn:last-of-type{
-  
+
     color: #fff;
     background-color: #117a8b;
     border-color: #10707f;
@@ -725,11 +725,12 @@ display: none;
       display: none !important;
       }
     }
+    .HijriGregorianDatePicker  ngb-datepicker.dropdown-menu,
     .HijriGregorianDatePicker  hijri-date-picker   ngb-datepicker.dropdown-menu{
       transform: translate(50px, 38px)!important;
       transition: all linear;
     }
-  // mat-dialog-container 
+  // mat-dialog-container
 .mat-dialog-container {
   direction: initial;
   min-width: 30rem;
@@ -767,14 +768,14 @@ display: none;
     margin-bottom:  1rem ;
   }
 }
-// end mat-dialog-container 
+// end mat-dialog-container
 // for custom radio buttons
 .update_teacher_pg.mat-radio-group {
 
    display: flex;
     // justify-content: space-between;
     width: 100%;
-    
+
 .mat-radio-button:lang(ar){
   padding-left: 2rem;
   padding-right: 0rem;
@@ -812,7 +813,7 @@ display: none;
  custom check box for card-admin-scientific-problem
 /***********************/
 
-.card-admin-scientific-problem 
+.card-admin-scientific-problem
  {
     .mat-checkbox-layout{
       margin-bottom: 0 !important;
@@ -828,7 +829,7 @@ display: none;
  .mat-checkbox-checkmark-path {
   stroke: #a51313 !important;
 }
-.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, 
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
 .mat-checkbox-checked.mat-accent .mat-checkbox-background {
   background-color: white;
 }
@@ -838,7 +839,7 @@ display: none;
   .mat-checkbox-checkmark-path {
     stroke: white;
   }
-  .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, 
+  .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
   .mat-checkbox-checked.mat-accent .mat-checkbox-background {
     background-color:   #a51313 !important;
   }
@@ -889,7 +890,7 @@ accordion
       box-shadow: none !important;
     }
   }
-  
+
 
 
 /******************
@@ -951,7 +952,7 @@ mat-grid-list {
   align-items:start !important;
   }
 }
- 
+
 .lrt-dir{
   direction: ltr;
 }
@@ -964,7 +965,7 @@ mat-grid-list {
   background-color: $main-color-2 !important;
 }
 /******************
-// for star in rate 
+// for star in rate
 /***********************/
 .star {
   font-size: 1.5rem;
@@ -1029,7 +1030,7 @@ pdf-viewer {
   &:lang(ar){
     right:  0;
   }
-  
+
 }
 .page{
   width: 767px!important;

@@ -4,7 +4,7 @@ import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateService} from '@ngx-translate/core';
 import {LanguageEnum} from 'src/app/core/enums/language-enum.enum';
 import {LanguageService} from 'src/app/core/services/language-services/language.service';
-import {BaseSelectedDateModel} from "../../../core/ng-model/base-selected-date-model";
+import {BaseSelectedDateModel} from '../../../core/ng-model/base-selected-date-model';
 
 @Component({
   selector: 'app-milady-hijri-calendar',
@@ -21,8 +21,8 @@ export class MiladyHijriCalendarComponent implements OnInit {
   selectedDateType_Hijri = DateType.Hijri;
   calenderType:any;
   dateFromString: string = '';
-  maxGreg!: NgbDateStruct;
-  maxHijri!: NgbDateStruct;
+  // maxGreg!: NgbDateStruct;
+  // maxHijri!: NgbDateStruct;
   // minHijri!: NgbDateStruct;
 
   isSubmit = false;
@@ -31,7 +31,8 @@ export class MiladyHijriCalendarComponent implements OnInit {
 
   @Input() hijri: boolean = false;
   @Input() milady: boolean = false;
-
+  @Input() maxHijri: any ;
+  @Input() maxGreg: any ;
   @Output() sendDate = new EventEmitter;
 
   dataSend : BaseSelectedDateModel = new BaseSelectedDateModel();
@@ -45,7 +46,7 @@ export class MiladyHijriCalendarComponent implements OnInit {
   ngOnInit(): void {
     // this.minHijri = Date.now() || 2020;
     this.setCurrentLang();
-    this.setHijri();
+    // this.setHijri();
     if (this.editcalenderType){
       this.calenderType = this.editcalenderType.selectedDateType;
       console.log("this.calenderType",this.editcalenderType);
@@ -55,8 +56,9 @@ export class MiladyHijriCalendarComponent implements OnInit {
 
   setHijri() {
     // this.selectedDateType = DateType.Hijri;
+    // toDayHijriDate.day=toDayHijriDate.day - 4 ;
     this.maxHijri = this.dateFormatterService.GetTodayHijri();
-    console.log(this.maxHijri);
+    console.log("this.maxHijri",this.maxHijri);
   }
 
   setCurrentLang() {
