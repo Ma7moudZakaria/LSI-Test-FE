@@ -14,7 +14,7 @@ export class StuCardRequestComponent implements OnInit {
   @Input() typeEnum: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending;
   tabTypeSelected = StudentProgramSubscriptionStatusEnum;
 
-  @Input() StudentSubscripModel: IStudentSubscriptionModel = { totalRows: 0 }
+  @Input() studentSubscripModel: IStudentSubscriptionModel = { totalRows: 0 }
 
   constructor() { }
 
@@ -23,9 +23,9 @@ export class StuCardRequestComponent implements OnInit {
 
 
   rejectedStudentReq() {
-    this.rejecteStuRequest.emit(this.StudentSubscripModel)
+    this.rejecteStuRequest.emit(this.studentSubscripModel)
   }
   acceptStudentReq() {
-    this.acceptStuRequest.emit(this.StudentSubscripModel);
+    this.acceptStuRequest.emit(this.studentSubscripModel);
   }
 }

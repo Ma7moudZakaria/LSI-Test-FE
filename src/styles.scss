@@ -643,11 +643,9 @@ app-tel-input >
     }
     .alertify-notifier .ajs-message.ajs-error::before
     {
-      content: url(/assets/images/feelings/close.svg);
+      content: url(/assets/images/redclose.png);
       margin: 0 0.5rem;
        padding: 0.5rem;
-      
-    
     }
     
 .alertify-notifier.ajs-right {

@@ -66,8 +66,8 @@
     "FEELING": "المشاعر",
     "FILE_SIZE": "حجم الملف أكبر من 3 ميجا",
     "EXTENTION_FILE": "امتداد الفايل غير مسوح بيه ",
-    "ACCEPT":"قبول",
-    "REJECT":"رفض"
+    "ACCEPT": "قبول",
+    "REJECT": "رفض"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
@@ -178,7 +178,7 @@
     "SAVE": "حفظ",
     "DAY": "يوم",
     "PUBLISH_DATE": "تاريخ النشر",
-    "START_DATE":"تاريخ البدء",
+    "START_DATE": "تاريخ البدء",
     "NOProgramFound": "لا يوجد برامج"
   },
   "PROGRAM_TABS": {
@@ -603,8 +603,8 @@
     "RIGHT_ANSWER": "الاجابه الصحيحه",
     "DURATION": "المدة",
     "ADD_QUESTION": "إضافة سؤال",
-    "THE_SUCCESS_RATE":"درجة النجاح",
-    "THE_SUCCESS_RATE_SHOULD_LESS_THAN_TOTAL_DEGREE":"يجب أن تكون درجة النجاح اقل من مجموع الدرجات الكلية ولا تساوى صفر"
+    "THE_SUCCESS_RATE": "درجة النجاح",
+    "THE_SUCCESS_RATE_SHOULD_LESS_THAN_TOTAL_DEGREE": "يجب أن تكون درجة النجاح اقل من مجموع الدرجات الكلية ولا تساوى صفر"
   },
   "User_Requests": {
     "REQUESTS": "الطلبات",
@@ -737,21 +737,40 @@
   "PROGRAM_EXAM_FORM": {
     "PROGRAM_ACCEPTANCE_EXAM": " اختبار قبول البرنامج",
     "EXAM_FORMS": "نماذج الإختبار"
-
-
   },
-  "TEACHER_SUBSCRIBERS":{
-    "TEACHERS":"المعلمين",
-    "STUDENTS":"الطلاب",
-    "NEW_JOIN_REQUESTS":"طلبات الانضمام الجديدة",
-    "ACCEPTANCE_REQUESTS":"طلبات مقبولة",
-    "REJECTANCE_REQUESTS":"طلبات مرفض",
-    "JOIN_REQUESTS":"طلبات الانضمام",
-    "JOIN_REQUESTS_FOR_PROGRAM":"طلبات الانضمام للبرنامج",
-    "CANCEL_REQUESTS":"طلبات الانسحاب",
-    "AVAILABLE_CHANGE_TIME_REQUESTS":"طلبات تغير الوقت المتاحه",
-    "REJECT_TEACHER":"رفض المعلم",
-    "FROM_PROGRAM":"من برنامج",
-    "REASON_REJECT":"سبب الرفض"
+  "TEACHER_SUBSCRIBERS": {
+    "SUBSCRIBERS": "الطلبات",
+    "TEACHERS": "المعلمين",
+    "STUDENTS": "الطلاب",
+    "NEW_JOIN_REQUESTS": "طلبات الانضمام الجديدة",
+    "ACCEPTANCE_REQUESTS": "طلبات مقبولة",
+    "REJECTANCE_REQUESTS": "طلبات مرفض",
+    "JOIN_REQUESTS": "طلبات الانضمام",
+    "JOIN_REQUESTS_FOR_PROGRAM": "طلبات الانضمام للبرنامج",
+    "CANCEL_REQUESTS": "طلبات الانسحاب",
+    "AVAILABLE_CHANGE_TIME_REQUESTS": "طلبات تغير الوقت المتاحه",
+    "REJECT_TEACHER": "رفض المعلم",
+    "FROM_PROGRAM": "من برنامج",
+    "REASON_REJECT": "سبب الرفض"
+  },
+  "STUDENT_SUBSCRIBERS": {
+    "SUBSCRIBERS": "الطلبات",
+    "TEACHERS": "المعلمين",
+    "STUDENTS": "الطلاب",
+    "NEW_JOIN_REQUESTS": "طلبات الانضمام الجديدة",
+    "ACCEPTANCE_REQUESTS": "طلبات مقبولة",
+    "REJECTANCE_REQUESTS": "طلبات مرفض",
+    "JOIN_REQUESTS": "طلبات الانضمام",
+    "JOIN_REQUESTS_VACATION": "طلبات الاجازات",
+    "CANCEL_REQUESTS": "طلبات الانسحاب",
+    "MOVING_REQ": "طلبات الانتقال",
+    "REJECT_TEACHER": "رفض المعلم",
+    "FROM_PROGRAM": "من برنامج",
+    "REASON_REJECT": "سبب الرفض",
+    "TIME": "تاريخ الطلب",
+    "REQUEST_RESULT": " نتيجة اختبار القبول",
+    "TEST_VIEW": "عرض الاختبار",
+    "ACCEPT": "قبول",
+    "REJECT": "رفض"
   }
 }

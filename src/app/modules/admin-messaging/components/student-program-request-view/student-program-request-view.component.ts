@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StudentSubscriptionEmun } from 'src/app/core/enums/programs/stu-subscription-enum/student-subscription-emun.enum';
 
 @Component({
   selector: 'app-student-program-request-view',
@@ -6,12 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./student-program-request-view.component.scss']
 })
 export class StudentProgramRequestViewComponent implements OnInit {
-  selectedStuRequest: number = 1;
+  selectedStuRequest = StudentSubscriptionEmun.joinRequest;
   constructor() { }
 
   ngOnInit(): void {
   }
-  studentRequestSelected(selectedNumber: number) {
+  studentRequestSelected(selectedNumber: StudentSubscriptionEmun) {
     this.selectedStuRequest = selectedNumber;
   }
 }
