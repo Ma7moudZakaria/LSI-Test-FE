@@ -9,7 +9,7 @@ import { TeacherRequestEnum } from 'src/app/core/enums/teacher-subscription-enum
 
 export class TeacherRequestDetailsComponent implements OnInit {
 
-  @Input()selectedTeatcherRequest :number | undefined;
+  @Input()selectedTeatcherRequest :TeacherRequestEnum | undefined;
   teacherRequestEnum=TeacherRequestEnum;
 
   constructor() { }

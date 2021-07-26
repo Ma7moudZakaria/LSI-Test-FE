@@ -4,11 +4,11 @@
             <div class="row group_header">
 
                 <div class="item_group" (click)="showtap='teacher'" [ngClass]="{'item_group_active': showtap=='teacher'}" >
-                    المعلمين
+                    {{'TEACHER_SUBSCRIBERS.TEACHERS' | translate}}
                 </div>
                 
                 <div class="item_group" (click)="showtap='student'" [ngClass]="{'item_group_active': showtap=='student'}" >
-                    الطلاب
+                    {{'TEACHER_SUBSCRIBERS.STUDENTS' | translate}}
                 </div>
 
                 <div class="item_group" (click)="showtap='scientificProblem'" [ngClass]="{'item_group_active': showtap=='scientificProblem'}" >

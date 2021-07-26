@@ -32,8 +32,8 @@
     </div>
 
     <div class="body_footer" *ngIf="typeEnum === tabTypeSelected.Pending ">
-    <button class="btn cancel-btn" (click)='rejectTeacherProgramSubscriptionEvent()' [disabled]="teacherSubscripModel.checked"> رفض  </button>
+    <button class="btn cancel-btn" (click)='rejectTeacherProgramSubscriptionEvent()' [disabled]="teacherSubscripModel.checked">  {{ "GENERAL.REJECT" | translate }}  </button>
       <!-- <button class=" btn btn_replay" [attr.disabled]="showAddReplyArea || scientificProblem.repText ? true : null" (click)='showAddReplyAreaTog()'> {{'SCIENTIFIC_PROBLEM.REPLY_ANSWER' | translate}}</button> -->
-      <button  class=" btn save-btn" (click)='acceptTeacherProgramSubscriptionEvent()'> قبول </button>
+      <button  class=" btn save-btn" (click)='acceptTeacherProgramSubscriptionEvent()'>  {{ "GENERAL.ACCEPT" | translate }} </button>
     </div>
   </div>

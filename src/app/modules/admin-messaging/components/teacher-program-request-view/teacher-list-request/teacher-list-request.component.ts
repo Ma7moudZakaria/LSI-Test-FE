@@ -10,7 +10,7 @@ export class TeacherListRequestComponent implements OnInit {
 
   @Output() selectedTeatcherRequest = new EventEmitter<number>();
   teacherRequestEnum = TeacherRequestEnum;
-  selectedIndex: number = 1;
+  selectedIndex: TeacherRequestEnum = TeacherRequestEnum.JoinRequest;
 
   constructor() { }
 
@@ -18,7 +18,7 @@ export class TeacherListRequestComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  teatcherRequestSelected(requestNum: number) {
+  teatcherRequestSelected(requestNum: TeacherRequestEnum) {
     this.selectedTeatcherRequest.emit(requestNum);
   }
 }
