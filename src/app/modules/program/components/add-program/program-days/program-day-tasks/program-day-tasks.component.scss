@@ -29,7 +29,8 @@
     }
     .mat-expansion-panel-header{
         padding: 0 1rem;
-    }
+     
+    }  
     .mat-expansion-panel-header-title {
     justify-content: space-between;
     color: #8E2520;
@@ -52,5 +53,17 @@
             width: 12px;
             height: 20px;
         }
+        .mat-expansion-panel-header.active{
+            background: #CB9118 0% 0% no-repeat padding-box;
+            color: #FFFFFF;
+            opacity: 1;
+            text-decoration: none;
+            .mat-expansion-panel-header-title {
+                color: #fff;
 
+            }
+        }
 }
+
+
+

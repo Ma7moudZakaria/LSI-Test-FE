@@ -89,8 +89,8 @@ export class UpdateTeacherProfileComponent implements OnInit {
     eampm: "AM"
   }
   selectedDateType : any;
-  selectedDateType_Melady = DateType.Gregorian;  // or DateType.Gregorian
-  selectedDateType_Hijri = DateType.Hijri;
+  //selectedDateType_Melady = DateType.Gregorian;  // or DateType.Gregorian
+  //selectedDateType_Hijri = DateType.Hijri;
   updateCalenderType: BaseSelectedDateModel= new BaseSelectedDateModel();
 
   constructor(

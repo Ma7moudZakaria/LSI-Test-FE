@@ -103,9 +103,9 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   exportTeacherCSV() {
     let expItems = this.teacherItems.filter(a => a.checked);
     let headerLabels = this.translate.currentLang == 'en-US' ?
-      ['prog Name', 'User name'] :
-      [' أسم البرنامج ',
-        'أسم المستخدم'];
+      [' program name', 'User name'] :
+      [' اسم البرنامج ',
+        'اسم المستخدم'];
 
     let data = ['progName', 'usrNameAr'];
     this.exportationService.exportCSV(expItems, 'teacher', data, headerLabels);
@@ -182,7 +182,7 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   exportStudentCSV() {
     let expItems = this.studentItems.filter(a => a.checked);
     let headerLabels = this.translate.currentLang == 'en-US' ?
-      ['prog Name', 'User name'] :
+      [' program name', 'User name'] :
       [' أسم البرنامج ',
         'أسم المستخدم'];
 

@@ -4,7 +4,7 @@
         <div class="info_basic_info">
 
 
-            <div class="d-flex justify-content-between" *ngIf="progBasicInfoDetails?.id != null || progBasicInfoDetails?.id != undefined">
+            <div class="d-flex justify-content-between" >
                 <p class="head">{{ progBasicInfoDetails?.prgName}} </p>
                 <div class="d-flex">
                   <a (click)="open(content)"><i class="far fa-copy" ></i></a>
@@ -14,9 +14,9 @@
                     <img *ngIf='!basicInfoDetails?.prgPubliDate || !basicInfoDetails?.prgIsPubli' src="assets/images/feelings/trash.svg" (click)="confirmDialog()">
 
                 </div>
+
             </div>
-        </div>
-            <div class="row mt-3" *ngIf="progBasicInfoDetails?.id == null || progBasicInfoDetails?.id == undefined">
+            <div class="row mt-3">
                 <div class="col-2">
                 <p class="details">{{'VIEW_PROGRAMS_BASIC_INFO.PROGRAM_DATE' | translate}}   <span class="num mx-1">{{progBasicInfoDetails?.prgDura}}</span>{{'VIEW_PROGRAMS_BASIC_INFO.DAY' | translate}} </p>
                 </div>
@@ -40,7 +40,8 @@
             </div>
              </div>
 
-    <div class="col-md-12 max_h " *ngIf="progBasicInfoDetails?.id != null || progBasicInfoDetails?.id != undefined">
+    </div>
+    <div class="col-md-12 max_h ">
         <div class="row pl-4 pr-4">
             <div class="col-6 mb-3   ">
                 <label class="title">
@@ -162,7 +163,7 @@
                     <div class="col-6 mb-3" *ngIf="programConditionsEnum.programFinished===item.conditionNo">
                         <app-setting-last-program [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [ViewprogCondmood]='programConditionViewMoodEnum.conditionBasicInfoViewMood'></app-setting-last-program>
                     </div>
-
+            
                     <div class="col-6 mb-3" *ngIf="programConditionsEnum.numberStudentSubscribtion===item.conditionNo">
                         <app-setting-maxmum-subscribe [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [ViewprogCondmood]='programConditionViewMoodEnum.conditionBasicInfoViewMood'></app-setting-maxmum-subscribe>
                     </div>
@@ -172,7 +173,7 @@
                     <div class="col-6 mb-3" *ngIf="programConditionsEnum.accept===item.conditionNo">
                         <app-setting-accept [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [ViewprogCondmood]='programConditionViewMoodEnum.conditionBasicInfoViewMood'></app-setting-accept>
                     </div>
-
+                   
                    </ng-container >
                 </div>
             </div>
@@ -205,5 +206,4 @@
             </div>
         </ng-template>
     </div>
-
 </div>

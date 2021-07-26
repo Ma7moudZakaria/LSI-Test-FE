@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TeacherRequestEnum } from 'src/app/core/enums/teacher-subscription-enums/teacher-request-enum.enum';
 
 @Component({
   selector: 'app-teacher-program-request-view',
@@ -7,14 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeacherProgramRequestViewComponent implements OnInit {
 
-  selectedTeatcherRequest:number=1;
+  selectedTeatcherRequest:TeacherRequestEnum=TeacherRequestEnum.JoinRequest;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  sendTeatcherRequest(teatcherRequestItem:number){
+  sendTeatcherRequest(teatcherRequestItem:TeacherRequestEnum){
    this.selectedTeatcherRequest=teatcherRequestItem;
   }
 

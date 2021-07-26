@@ -65,7 +65,9 @@
     "MY_PROGRAM": "برامجى",
     "FEELING": "المشاعر",
     "FILE_SIZE": "حجم الملف أكبر من 3 ميجا",
-    "EXTENTION_FILE": "امتداد الفايل غير مسوح بيه "
+    "EXTENTION_FILE": "امتداد الفايل غير مسوح بيه ",
+    "ACCEPT":"قبول",
+    "REJECT":"رفض"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
@@ -737,5 +739,19 @@
     "EXAM_FORMS": "نماذج الإختبار"
 
 
+  },
+  "TEACHER_SUBSCRIBERS":{
+    "TEACHERS":"المعلمين",
+    "STUDENTS":"الطلاب",
+    "NEW_JOIN_REQUESTS":"طلبات الانضمام الجديدة",
+    "ACCEPTANCE_REQUESTS":"طلبات مقبولة",
+    "REJECTANCE_REQUESTS":"طلبات مرفض",
+    "JOIN_REQUESTS":"طلبات الانضمام",
+    "JOIN_REQUESTS_FOR_PROGRAM":"طلبات الانضمام للبرنامج",
+    "CANCEL_REQUESTS":"طلبات الانسحاب",
+    "AVAILABLE_CHANGE_TIME_REQUESTS":"طلبات تغير الوقت المتاحه",
+    "REJECT_TEACHER":"رفض المعلم",
+    "FROM_PROGRAM":"من برنامج",
+    "REASON_REJECT":"سبب الرفض"
   }
 }
