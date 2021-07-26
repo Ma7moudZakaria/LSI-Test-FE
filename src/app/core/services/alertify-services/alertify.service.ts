@@ -36,7 +36,7 @@ export class AlertifyService {
       alertify.set('notifier', 'position', 'bottom-right');
     }
 
-    alertify.error(message, 0);
+    alertify.error(message);
 
 
   }

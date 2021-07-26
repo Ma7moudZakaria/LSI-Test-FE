@@ -771,6 +771,10 @@
     "REQUEST_RESULT": " نتيجة اختبار القبول",
     "TEST_VIEW": "عرض الاختبار",
     "ACCEPT": "قبول",
-    "REJECT": "رفض"
+    "REJECT": "رفض",
+    "REJECTION_APPLICATION": "رفض الطلب",
+    "TEACHER_REJECTED": "سيتم رفض طلب انسحاب المعلم ",
+    "FROM_PROG": "من برنامج",
+    "REJECTED_REASON": "سبب الرفض"
   }
 }

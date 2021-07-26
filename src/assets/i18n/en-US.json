@@ -775,6 +775,10 @@
     "REQUEST_RESULT": "Request Result",
     "TEST_VIEW": "Test view",
     "ACCEPT": "Accepted",
-    "REJECT": "Reject"
+    "REJECT": "Reject",
+    "REJECTION_APPLICATION": "Rejection  request",
+    "TEACHER_REJECTED": "The teacher's withdrawal request will be rejected",
+    "FROM_PROG": "From Program",
+    "REJECTED_REASON": "Reject Reason"
   }
 }
