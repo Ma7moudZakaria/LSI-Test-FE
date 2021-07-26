@@ -317,17 +317,18 @@
                                     </div>
                             </div>
 
-                            <div class="col-lg-2 col-md-6 col-sm-2 col-xs-2 mt-3">
+                            <div class="col-lg-2 col-md-6 col-sm-2 col-xs-2 mt-3 align-self-center" >
                                 <label class="Register__Label" for="interviewTime">
                                     {{ 'UPDATE_TEACHER_PG.FROM' | translate }}
                                 </label>
 
-                                <div  class="UpdateUser__Options">
-                                    <input matInput type="time" placeholder="HH:MM" id="end_time_hour" formControlName="interviewTime">
-                                    <mat-select name="ampm" class="ampm" [(ngModel)]="event.eampm" [ngModelOptions]="{standalone: true}">
+                                <div  class="UpdateUser__Options form-group mb-0">
+                                    <input matInput type="time"   class="form-control"  placeholder="HH:MM" id="end_time_hour"
+                                     formControlName="interviewTime">
+                                    <!-- <mat-select name="ampm" class="ampm" [(ngModel)]="event.eampm" [ngModelOptions]="{standalone: true}">
                                          <mat-option value="AM">AM</mat-option>
                                          <mat-option value="PM">PM</mat-option>
-                                    </mat-select>
+                                    </mat-select> -->
                                 </div>
 
                                 <div *ngIf="f.interviewTime.errors && (f.interviewTime.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
@@ -920,17 +921,17 @@
                                         </div>
                                 </div>
 
-                                <div class="col-lg-2 col-md-6 col-sm-2 col-xs-2 mt-3">
+                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mt-3">
                                     <label class="Register__Label" for="fromDayTimeinterview">
                                         {{ 'UPDATE_TEACHER_PG.FROM' | translate }}
                                     </label>
 
-                                    <div  class="UpdateUser__Options">
-                                        <input matInput type="time" placeholder="HH:MM" id="end_time_hour" formControlName="fromDayTimeinterview">
-                                        <mat-select name="ampm" class="ampm" [(ngModel)]="event.eampm" [ngModelOptions]="{standalone: true}">
+                                    <div  class="UpdateUser__Options form-group mb-0">
+                                        <input matInput type="time" class="form-control" placeholder="HH:MM" id="end_time_hour" formControlName="fromDayTimeinterview">
+                                        <!-- <mat-select name="ampm" class="ampm" [(ngModel)]="event.eampm" [ngModelOptions]="{standalone: true}">
                                              <mat-option value="AM">AM</mat-option>
                                              <mat-option value="PM">PM</mat-option>
-                                        </mat-select>
+                                        </mat-select> -->
                                     </div>
 
                                     <div *ngIf="f.fromDayTimeinterview.errors && (f.fromDayTimeinterview.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
@@ -940,17 +941,17 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-2 col-md-6 col-sm-2 col-xs-2 mt-3">
+                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mt-3">
                                     <label class="Register__Label" for="toDayTimeinterview">
                                         {{ 'UPDATE_TEACHER_PG.TO' | translate }}
                                     </label>
 
-                                    <div  class="UpdateUser__Options">
-                                        <input matInput type="time" placeholder="HH:MM" id="end_time_hour" formControlName="toDayTimeinterview">
-                                        <mat-select name="ampm" class="ampm" [(ngModel)]="event.eampm" [ngModelOptions]="{standalone: true}">
+                                    <div  class="UpdateUser__Options form-group mb-0">
+                                        <input matInput type="time" class="form-control" placeholder="HH:MM" id="end_time_hour" formControlName="toDayTimeinterview">
+                                        <!-- <mat-select name="ampm" class="ampm" [(ngModel)]="event.eampm" [ngModelOptions]="{standalone: true}">
                                              <mat-option value="AM">AM</mat-option>
                                              <mat-option value="PM">PM</mat-option>
-                                        </mat-select>
+                                        </mat-select> -->
                                     </div>
 
                                     <div *ngIf="f.toDayTimeinterview.errors && (f.toDayTimeinterview.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
@@ -960,7 +961,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-2">
+                                <div class="col-2 align-self-end">
                                     <label class="Register__Label invisible " > {{ 'UPDATE_TEACHER_PG.ADD' | translate }} </label>
 
                                     <button  type="button" class="saveButton btn" (click)="addAvailabilityDays()"> {{ 'UPDATE_TEACHER_PG.ADD' | translate }}</button>
