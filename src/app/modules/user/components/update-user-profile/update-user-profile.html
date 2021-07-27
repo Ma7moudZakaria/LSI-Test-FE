@@ -153,13 +153,13 @@
                             <div class="col-lg-5 col-md-2 col-sm-2 col-xs-2 updateTeacher_hijriBirthDate">
 
                                     <div class="hijriBirthDate_contanier">
-                                        <label class="Register__Label" for="birthdate"> {{ 'UPDATE_USER_PG.BIRTHDATE' |
+                                        <label class="Register__Label" for="hijriBirthDate"> {{ 'UPDATE_USER_PG.BIRTHDATE' |
                                             translate }} </label>
                                         <!-- <input id="birthdate" pInputText type="date" formControlName="birthdate"
                                             name="birthdate" class="form-control UserRegister__FormControl"> -->
 
                                             <app-milady-hijri-calendar (sendDate)="Hijri($event)" [dateTo]='hijriBirthDateInputParam'
-                                               [hijri]="hijri" [milady]="milady">
+                                               [hijri]="hijri" [milady]="milady" [maxHijri]="maxHijriDate" [maxGreg]="maxGregDate">
                                              </app-milady-hijri-calendar>
 
 

@@ -10,8 +10,10 @@
        <!-- <app-programs-type></app-programs-type> -->
             <!-- <programs-tabs></programs-tabs> -->
             <app-programs-tabs *ngIf="programModel" [programModel]='programModel' (refreshProgListEvent)='refreshProgList()'></app-programs-tabs>
-          <div class="row mt-30 width-100" *ngIf="!programModel"></div>
-          <div class="col-12 text-center mt-30">{{ 'VIEW_PROGRAMS_BASIC_INFO.NOProgramFound' | translate }}</div>
+          <div class="row mt-30 width-100" *ngIf="!programModel">
+            <div class="col-12 text-center mt-30">{{ 'VIEW_PROGRAMS_BASIC_INFO.NOProgramFound' | translate }}</div>
+          </div>
+
         </div>
 
     </div>

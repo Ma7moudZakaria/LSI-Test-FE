@@ -152,7 +152,7 @@
                                         {{ 'UPDATE_TEACHER_PG.HIJRIBIRTHDATE' |translate }}
                                     </label>
                                        <app-milady-hijri-calendar  [editcalenderType]="updateCalenderType" (sendDate)="SendData($event)" (keypress)="$event.preventDefault()" [dateTo]='hijriBirthDateInputParam'
-                                       [hijri]="hijri" [milady]="milady">
+                                       [hijri]="hijri" [milady]="milady" [maxHijri]="maxHijriDate" [maxGreg]="maxGregDate" >
                                      </app-milady-hijri-calendar>
 
                                        <div *ngIf="!hijriBinding && (f.hijriBirthDate.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
@@ -306,7 +306,7 @@
                                         </option>
                                     </select> -->
                                     <app-milady-hijri-calendar (sendDate)="HijriInterviewDay($event)" (keypress)="$event.preventDefault()" [dateTo]='hijriInterviewDayInputParam'
-                                       [hijri]="hijri" [milady]="!milady">
+                                       [hijri]="hijri" [milady]="!milady" >
                                      </app-milady-hijri-calendar>
 
                                     <div *ngIf="f.hijriInterviewDay.errors && (f.hijriInterviewDay.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
