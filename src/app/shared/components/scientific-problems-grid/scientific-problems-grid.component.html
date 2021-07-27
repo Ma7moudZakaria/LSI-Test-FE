@@ -1,8 +1,14 @@
 <div class="row scientific-problem-grid" *ngIf='userMode != scientificProblemUsers.Student'>
   
   <div class="col-6 d-flex justify-content-start">
-   <ngb-pagination  [collectionSize]="totalCount" [(page)]="adminFilterRequestModel.page" [pageSize]="adminFilterRequestModel.take" [rotate]="true" [boundaryLinks]="true" (pageChange)="onAdminPageChange()"></ngb-pagination>
-    <button  [ngClass]="{'default_btn': adminFilterRequestModel.sorField != 'studfullnamear' && adminFilterRequestModel.sorField != 'studfullnameen', 'asend_desend_btn' : this.adminFilterRequestModel.sorField != 'createdon' }"
+   <ngb-pagination  [collectionSize]="totalCount"
+    [(page)]="adminFilterRequestModel.page"
+    [pageSize]="adminFilterRequestModel.take" 
+    [rotate]="true" [boundaryLinks]="true"
+    (pageChange)="onAdminPageChange()">
+    </ngb-pagination>
+    <button  [ngClass]="{'default_btn': adminFilterRequestModel.sorField != 'studfullnamear' && adminFilterRequestModel.sorField != 'studfullnameen', 
+    'asend_desend_btn' : this.adminFilterRequestModel.sorField != 'createdon' }"
     (click)='sortByName()'>
     {{'User_Requests.SORT_NAME' | translate}} 
         <span *ngIf='this.adminFilterRequestModel.sorField != "studfullnamear" && this.adminFilterRequestModel.sorField != "studfullnameen"'>

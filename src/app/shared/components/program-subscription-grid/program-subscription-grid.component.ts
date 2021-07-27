@@ -31,15 +31,15 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   @Output() acceptAllTeacherProgramSubscriptionCheched = new EventEmitter<ITeacherProgramSubscriptionModel>();
 
   @Input() userMode: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.student;
-  @Input() studentFilterRequestModel: IStudentSubscriptionFilterRequestModel = { skip: 0, take: 12, page: 1 };
-  @Input() teacherFilterRequestModel: ITeacherProgramSubscriptionFilterRequestModel = { skip: 0, take: 12, page: 1 };
+  @Input() studentFilterRequestModel: IStudentSubscriptionFilterRequestModel = { skip: 0, take: 9, page: 1 };
+  @Input() teacherFilterRequestModel: ITeacherProgramSubscriptionFilterRequestModel = { skip: 0, take: 9, page: 1 };
   @Input() numberPerRow: number = 3;
   @Input() teacherItems: ITeacherProgramSubscriptionModel[] = []
   @Input() studentItems: IStudentSubscriptionModel[] = []
   @Input() totalCount: number = 0;
   @Input() typeEnum: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending;
-  @Input() typeTeacheEnum:TeacheProgramSubscriptionStatusEnum=TeacheProgramSubscriptionStatusEnum.Pending;
-  
+  @Input() typeTeacheEnum: TeacheProgramSubscriptionStatusEnum = TeacheProgramSubscriptionStatusEnum.Pending;
+
   orderTypeToggel = 1;
   userOrderTypeToggel = true;
   allSelected: boolean = false;
@@ -195,7 +195,7 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   }
 
   onStudentPageChange() {
-    this.studentFilterRequestModel.skip = (this.teacherFilterRequestModel.page - 1) * (this.teacherFilterRequestModel.take || 0);
+    this.studentFilterRequestModel.skip = (this.studentFilterRequestModel.page - 1) * (this.studentFilterRequestModel.take);
     this.studentFilterEvent.emit(this.studentFilterRequestModel);
     this.setTeacherAllChecked(false);
   }
