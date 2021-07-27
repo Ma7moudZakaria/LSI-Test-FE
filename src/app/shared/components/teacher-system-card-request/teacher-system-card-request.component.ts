@@ -24,7 +24,7 @@ export class TeacherSystemCardRequestComponent implements OnInit {
   constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
-  }
+  } 
 
   rejectTeacherSystemSubscriptionEve(teacherSubscripModel:ITeacherProgramSubscriptionModel){
     this.rejectTeacherSystemSubscription.emit(teacherSubscripModel);
