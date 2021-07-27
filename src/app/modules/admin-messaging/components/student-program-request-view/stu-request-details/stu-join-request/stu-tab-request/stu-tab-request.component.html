@@ -5,15 +5,17 @@
     <div class="row group_header fix_margin w-100">
         <div class="item_group" (click)="onPendingChange()"
         [ngClass]="{ item_group_active: showTap == statusEnum.Pending }" >
-           طلبات الإنضمام الجديدة
+           {{'STUDENT_SUBSCRIBERS.NEW_JOIN_REQUESTS' | translate}}
         </div>
         <div class="item_group" (click)="onAcceptChange()"
         [ngClass]="{ item_group_active: showTap == statusEnum.Accept }" >
-        طلبات مقبولة
+        {{'STUDENT_SUBSCRIBERS.ACCEPTANCE_REQUESTS' | translate}}
+
         </div>
         <div class="item_group" (click)="onRejectedChange()"
         [ngClass]="{ item_group_active: showTap == statusEnum.Rejected }" >
-        طلبات مرفوضة
+        {{'STUDENT_SUBSCRIBERS.REJECTANCE_REQUESTS' | translate}}
+
         </div>
      
     </div>

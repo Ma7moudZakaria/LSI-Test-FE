@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { StudentSubscriptionEmuns } from 'src/app/core/enums/programs/stu-subscription-enum/student-subscription-emuns.enum';
+import { StudentSubscriptionEmun } from 'src/app/core/enums/programs/stu-subscription-enum/student-subscription-emun.enum';
 
 @Component({
   selector: 'app-stu-list-request',
@@ -7,8 +7,8 @@ import { StudentSubscriptionEmuns } from 'src/app/core/enums/programs/stu-subscr
   styleUrls: ['./stu-list-request.component.scss']
 })
 export class StuListRequestComponent implements OnInit {
-  @Output() selectedStuRequest = new EventEmitter<number>();
-  studentSubscriptionEmun = StudentSubscriptionEmuns;
+  @Output() selectedStuRequest = new EventEmitter<StudentSubscriptionEmun>();
+  studentSubscriptionEmun = StudentSubscriptionEmun;
   selectedIndex: number = 1;
 
 
@@ -17,7 +17,7 @@ export class StuListRequestComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  studentRequestSelected(requestNum: number) {
+  studentRequestSelected(requestNum: StudentSubscriptionEmun) {
     this.selectedStuRequest.emit(requestNum);
   }
 }

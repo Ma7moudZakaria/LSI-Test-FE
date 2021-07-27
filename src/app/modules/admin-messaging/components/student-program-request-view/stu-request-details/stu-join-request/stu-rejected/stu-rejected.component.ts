@@ -1,6 +1,8 @@
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { IRejectProgramSubscriptionModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/ireject-program-subscription-model';
 import { IStudentSubscriptionModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-subscription-model';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { StudentProgramSubscriptionServicesService } from 'src/app/core/services/student-program-subscription-services/student-program-subscription-services.service';
 
@@ -15,6 +17,7 @@ export class StuRejectedComponent implements OnInit {
   @Input() itemStuReq: IStudentSubscriptionModel = {}
   rejectRequest: IRejectProgramSubscriptionModel = {}
   // var response = <BaseResponseModel>res;
+  resultMessage: BaseMessageModel = {};
 
   constructor(private stuSubRequestService: StudentProgramSubscriptionServicesService
     ,
@@ -45,7 +48,10 @@ export class StuRejectedComponent implements OnInit {
           this.alertify.error(res.message || '');
         }
       }, error => {
-
+        this.resultMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       })
     }
 
