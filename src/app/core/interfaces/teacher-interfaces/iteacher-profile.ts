@@ -53,6 +53,7 @@ export interface ITeacherProfile{
     workingPlatFormAr?:string;
     workingPlatFormEn?:string;
     interviewHijri?:string;
+    interviewGregorian?:string;
     interviewAr?:string;
     interviewEn?:string;
     interviewTime?:string;
@@ -68,4 +69,5 @@ export interface ITeacherProfile{
     languages ?: ITeacherProfileLookup[];
     birthGregorian?:string;
     birthDispMode?:number;
+    interviewDisplayMode?:number;
 }

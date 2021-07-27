@@ -33,6 +33,8 @@ export class MiladyHijriCalendarComponent implements OnInit {
   @Input() milady: boolean = false;
   @Input() maxHijri: any ;
   @Input() maxGreg: any ;
+  @Input() minHijri: any ;
+  @Input() minGreg: any ;
   @Output() sendDate = new EventEmitter;
 
   dataSend : BaseSelectedDateModel = new BaseSelectedDateModel();
@@ -58,6 +60,7 @@ export class MiladyHijriCalendarComponent implements OnInit {
     // this.selectedDateType = DateType.Hijri;
     // toDayHijriDate.day=toDayHijriDate.day - 4 ;
     this.maxHijri = this.dateFormatterService.GetTodayHijri();
+    this.minHijri = this.dateFormatterService.GetTodayHijri();
     console.log("this.maxHijri",this.maxHijri);
   }
 
