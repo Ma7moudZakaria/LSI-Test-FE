@@ -22,6 +22,7 @@ export class StuTabRequestComponent implements OnInit {
   statusEnum = StudentProgramSubscriptionStatusEnum;
   filter: IStudentSubscriptionFilterRequestModel = { statusNum: StudentProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
   studProgsSubsItems: IStudentSubscriptionModel[] = [];
+  totalCount = 0;
 
   constructor(private progSubsService: StudentProgramSubscriptionServicesService, private alertify: AlertifyService) {
 
@@ -29,7 +30,6 @@ export class StuTabRequestComponent implements OnInit {
   ngOnInit(): void {
     this.getStudentProgramSubscriptionsFilter();
   }
-
   getStudentProgramSubscriptionsFilter() {
     this.progSubsService.getStudentsSubscriptionsFilter(this.filter).subscribe(res => {
 
@@ -37,6 +37,12 @@ export class StuTabRequestComponent implements OnInit {
         this.studProgsSubsItems = res.data;
         console.log("studProgsSubsItem ", this.studProgsSubsItems)
 
+        this.totalCount = res.count ? res.count : 0;
+        if (this.filter.skip > 0 && (!this.studProgsSubsItems || this.studProgsSubsItems.length === 0)) {
+          this.filter.page -= 1;
+          this.filter.skip = (this.filter.page - 1) * this.filter.take;
+          this.getStudentProgramSubscriptionsFilter();
+        }
       }
       else {
 
@@ -112,6 +118,24 @@ export class StuTabRequestComponent implements OnInit {
 
   }
 
+  stuPendingChangePage(event: IStudentSubscriptionFilterRequestModel) {
+    this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Pending;
+    this.filter = event;
+    this.getStudentProgramSubscriptionsFilter();
+
+  }
+  stuAcceptChangePage(event: IStudentSubscriptionFilterRequestModel) {
+    this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Accept;
+    this.filter = event;
+    this.getStudentProgramSubscriptionsFilter();
+
+  }
+  stuRejectedChangePage(event: IStudentSubscriptionFilterRequestModel) {
+    this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Rejected;
+    this.filter = event;
+    this.getStudentProgramSubscriptionsFilter();
+
+  }
 }
 
 

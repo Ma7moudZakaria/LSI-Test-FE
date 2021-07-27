@@ -28,16 +28,26 @@
                 (itemStuReq)="rejecteStuRequestMethod($event)"
                 (acceptStuReq)="acceptStuReq($event)"
                 (acceptAllStudentProgramSubscriptionCheched)="acceptAllStudentProgramSubscriptionCheched ()"
-                [typeEnum]='statusEnum.Pending' >
+                [typeEnum]='statusEnum.Pending'
+                (studentFilterEvent)="stuPendingChangePage($event)"
+                [totalCount]='totalCount'
+                >
             </app-program-subscription-grid>
 
             <app-program-subscription-grid *ngIf='showTap == statusEnum.Accept && studProgsSubsItems.length > 0' 
                  [typeEnum]='statusEnum.Accept ' 
-                 [studentItems]='studProgsSubsItems'   >
+                 [studentItems]='studProgsSubsItems' 
+                 (studentFilterEvent)="stuAcceptChangePage($event)"
+                 [totalCount]='totalCount'
+                  >
                 </app-program-subscription-grid>
 
             <app-program-subscription-grid *ngIf='showTap == statusEnum.Rejected && studProgsSubsItems.length > 0' 
-                  [typeEnum]='statusEnum.Rejected' [studentItems]='studProgsSubsItems'>
+                  [typeEnum]='statusEnum.Rejected'
+                   [studentItems]='studProgsSubsItems'
+                   (studentFilterEvent)="stuRejectedChangePage($event)"
+                   [totalCount]='totalCount'
+                   >
                 </app-program-subscription-grid>
          
         </div>
