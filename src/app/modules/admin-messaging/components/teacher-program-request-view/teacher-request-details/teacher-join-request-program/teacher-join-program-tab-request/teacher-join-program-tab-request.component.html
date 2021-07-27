@@ -25,27 +25,61 @@
       <div class="col-12 px-2 interTab mb-3">
         
       <div *ngIf='showTap == statusEnum.Pending' >
-        <app-program-subscription-grid *ngIf=' teacherProgramSubscriptionList.length > 0'   [totalCount]='totalCount' [teacherItems]='teacherProgramSubscriptionList' (acceptTeacherProgramSubscription)='acceptTeacherProgramSubscription($event)'
-          (acceptAllTeacherProgramSubscriptionCheched)='acceptAllTeachersCheckedProgramSubscription()' [numberPerRow]='numberItemsPerRow' [userMode]='teacherCard' [typeTeacheEnum]='statusEnum.Pending'
-          (rejectTeacherProgramSubscription)='rejectTeacherProgramSubscriptionEvent($event)' [teacherFilterRequestModel] = 'teacherProgramSubscriptionFilterRequestModel'></app-program-subscription-grid>
+        <app-program-subscription-grid *ngIf=' teacherProgramSubscriptionList.length > 0' 
+          [teacherItems]='teacherProgramSubscriptionList' 
+          (acceptTeacherProgramSubscription)='acceptTeacherProgramSubscription($event)'
+          (acceptAllTeacherProgramSubscriptionCheched)='acceptAllTeachersCheckedProgramSubscription()' 
+          [numberPerRow]='numberItemsPerRow'
+           [userMode]='teacherCard'
+            [typeTeacheEnum]='statusEnum.Pending'
+          (rejectTeacherProgramSubscription)='rejectTeacherProgramSubscriptionEvent($event)' 
+         
+          [totalCount]='totalCount'
+          [teacherFilterRequestModel] = 'teacherProgramSubscriptionFilterRequestModel'
+          (teacherFilterEvent)="teacherPendingChangePage($event)"
+          >
+        </app-program-subscription-grid>
           <div *ngIf='teacherProgramSubscriptionList.length === 0'>
             {{ 'GENERAL.NO_DATA' | translate}}
         </div>
         </div>
 
         <div *ngIf='showTap == statusEnum.Accept' >
-          <app-program-subscription-grid *ngIf=' teacherProgramSubscriptionList.length > 0'   [totalCount]='totalCount' [teacherItems]='teacherProgramSubscriptionList' (acceptTeacherProgramSubscription)='acceptTeacherProgramSubscription($event)'
-            (acceptAllTeacherProgramSubscriptionCheched)='acceptAllTeachersCheckedProgramSubscription()' [numberPerRow]='numberItemsPerRow' [userMode]='teacherCard' [typeTeacheEnum]='statusEnum.Accept'
-            (rejectTeacherProgramSubscription)='rejectTeacherProgramSubscriptionEvent($event)' [teacherFilterRequestModel] = 'teacherProgramSubscriptionFilterRequestModel'></app-program-subscription-grid>
+          <app-program-subscription-grid *ngIf=' teacherProgramSubscriptionList.length > 0'  
+            
+              [teacherItems]='teacherProgramSubscriptionList' 
+              (acceptTeacherProgramSubscription)='acceptTeacherProgramSubscription($event)'
+            (acceptAllTeacherProgramSubscriptionCheched)='acceptAllTeachersCheckedProgramSubscription()' 
+            [numberPerRow]='numberItemsPerRow'
+             [userMode]='teacherCard' 
+             [typeTeacheEnum]='statusEnum.Accept'
+            (rejectTeacherProgramSubscription)='rejectTeacherProgramSubscriptionEvent($event)'
+
+            [totalCount]='totalCount'
+            [teacherFilterRequestModel] = 'teacherProgramSubscriptionFilterRequestModel'
+            (teacherFilterEvent)="teacherAcceptChangePage($event)"
+            >
+            </app-program-subscription-grid>
             <div *ngIf='teacherProgramSubscriptionList.length === 0'>
               {{ 'GENERAL.NO_DATA' | translate}}
           </div>
           </div>
        
           <div *ngIf='showTap == statusEnum.Rejected' >
-            <app-program-subscription-grid *ngIf='teacherProgramSubscriptionList.length > 0'   [totalCount]='totalCount' [teacherItems]='teacherProgramSubscriptionList' (acceptTeacherProgramSubscription)='acceptTeacherProgramSubscription($event)'
-              (acceptAllTeacherProgramSubscriptionCheched)='acceptAllTeachersCheckedProgramSubscription()' [numberPerRow]='numberItemsPerRow' [userMode]='teacherCard' [typeTeacheEnum]='statusEnum.Rejected'
-              (rejectTeacherProgramSubscription)='rejectTeacherProgramSubscriptionEvent($event)' [teacherFilterRequestModel] = 'teacherProgramSubscriptionFilterRequestModel'></app-program-subscription-grid>
+            <app-program-subscription-grid *ngIf='teacherProgramSubscriptionList.length > 0'  
+                [teacherItems]='teacherProgramSubscriptionList' 
+                (acceptTeacherProgramSubscription)='acceptTeacherProgramSubscription($event)'
+              (acceptAllTeacherProgramSubscriptionCheched)='acceptAllTeachersCheckedProgramSubscription()'
+               [numberPerRow]='numberItemsPerRow'
+                [userMode]='teacherCard'
+                 [typeTeacheEnum]='statusEnum.Rejected'
+              (rejectTeacherProgramSubscription)='rejectTeacherProgramSubscriptionEvent($event)'
+              
+              [totalCount]='totalCount'
+               [teacherFilterRequestModel] = 'teacherProgramSubscriptionFilterRequestModel'
+               (teacherFilterEvent)="teacherRejectedChangePage($event)"
+               >
+              </app-program-subscription-grid>
               <div *ngIf='teacherProgramSubscriptionList.length === 0'>
                 {{ 'GENERAL.NO_DATA' | translate}}
             </div>

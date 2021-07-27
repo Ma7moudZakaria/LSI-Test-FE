@@ -32,7 +32,7 @@ export class ProgramSubscriptionGridComponent implements OnInit {
 
   @Input() userMode: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.student;
   @Input() studentFilterRequestModel: IStudentSubscriptionFilterRequestModel = { skip: 0, take: 9, page: 1 };
-  @Input() teacherFilterRequestModel: ITeacherProgramSubscriptionFilterRequestModel = { skip: 0, take: 12, page: 1 };
+  @Input() teacherFilterRequestModel: ITeacherProgramSubscriptionFilterRequestModel = { skip: 0, take: 9, page: 1 };
   @Input() numberPerRow: number = 3;
   @Input() teacherItems: ITeacherProgramSubscriptionModel[] = []
   @Input() studentItems: IStudentSubscriptionModel[] = []

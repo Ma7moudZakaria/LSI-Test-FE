@@ -58,7 +58,14 @@
   <div class="row scientific-problem-grid" *ngIf='userMode === programSubscriptionUsers.teacher'>
   
     <div class="col-8 d-flex justify-content-start">
-     <ngb-pagination  [collectionSize]="totalCount" [(page)]="teacherFilterRequestModel.page" [pageSize]="teacherFilterRequestModel.take" [rotate]="true" [boundaryLinks]="true" (pageChange)="onTeacherPageChange()"></ngb-pagination>
+            <ngb-pagination 
+            [collectionSize]="totalCount"
+            [(page)]="teacherFilterRequestModel.page" 
+            [pageSize]="teacherFilterRequestModel.take"
+            [rotate]="true"
+            [boundaryLinks]="true" 
+            (pageChange)="onTeacherPageChange()">
+            </ngb-pagination>
       <button  [ngClass]="{'default_btn': teacherFilterRequestModel.sortField != 'userNameAr' && teacherFilterRequestModel.sortField != 'UserNameEn', 'asend_desend_btn' : this.teacherFilterRequestModel.sortField != 'requestdate' }"
       (click)='sortTeacherByName()'>
       {{'User_Requests.SORT_NAME' | translate}} 
