@@ -11,7 +11,7 @@ export interface IUpdateTeacherProfile {
     middleEn?: string;
     familyAr?: string;
     familyEn?: string;
-    hijriBirthDate?: string;
+    birthDate?: string;
     gender?: string;
     mobile?: string;
     nationality?: string;
