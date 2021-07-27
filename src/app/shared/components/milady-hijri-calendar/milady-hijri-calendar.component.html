@@ -1,44 +1,49 @@
 <!-- for milady -->
-<ng-container *ngIf="hijri && !milady"> 
- <hijri-gregorian-datepicker class="HijriGregorianDatePicker removeHijri" 
- [(selectedDate)]="dateTo" 
+<ng-container *ngIf="hijri && !milady">
+ <hijri-gregorian-datepicker #hijGeo class="HijriGregorianDatePicker removeHijri"
+ [(selectedDate)]="dateTo"
 [isRequired]="true"
 [maxGreg]="maxGreg"
-[maxHijri]="maxHijri" 
+[maxHijri]="maxHijri"
+[minGreg]="minGreg"
+[minHijri]="minHijri"
 [GregLabel]="GregLabel"
 [hijriLabel]="hijriLabel"
- [selectedDateType]="selectedDateType_Melady" 
+ [selectedDateType]="selectedDateType_Melady"
  (selectedDateChange)="emitData($event)"
   #datePickerTo>
 </hijri-gregorian-datepicker>
 </ng-container>
 
 <!-- for hijri -->
-<ng-container *ngIf="!hijri && milady"> 
+<ng-container *ngIf="!hijri && milady">
 
-  <hijri-gregorian-datepicker class="HijriGregorianDatePicker removemilady  " 
-  [(selectedDate)]="dateTo" 
+  <hijri-gregorian-datepicker #hijGeo class="HijriGregorianDatePicker removemilady  "
+  [(selectedDate)]="dateTo"
  [isRequired]="true"
- [maxHijri]="maxHijri" 
+ [maxHijri]="maxHijri"
+ [minHijri]="minHijri"
  [GregLabel]="GregLabel"
  [hijriLabel]="hijriLabel"
-  [selectedDateType]="selectedDateType_Hijri" 
+  [selectedDateType]="selectedDateType_Hijri"
   (selectedDateChange)="emitData($event)"
    #datePickerTo>
  </hijri-gregorian-datepicker>
 </ng-container>
 <!-- for hijri  and milady -->
 
-<ng-container *ngIf="!hijri && !milady"> 
+<ng-container *ngIf="!hijri && !milady">
 
-  <hijri-gregorian-datepicker class="HijriGregorianDatePicker " 
-  [(selectedDate)]="dateTo" 
+  <hijri-gregorian-datepicker #hijGeo class="HijriGregorianDatePicker "
+  [(selectedDate)]="dateTo"
  [isRequired]="true"
  [maxGreg]="maxGreg"
- [maxHijri]="maxHijri" 
+ [maxHijri]="maxHijri"
+ [minGreg]="minGreg"
+[minHijri]="minHijri"
  [GregLabel]="GregLabel"
  [hijriLabel]="hijriLabel"
-  [selectedDateType]="selectedDateType_Hijri" 
+  [selectedDateType]="calenderType"
   (selectedDateChange)="emitData($event)"
    #datePickerTo>
  </hijri-gregorian-datepicker>

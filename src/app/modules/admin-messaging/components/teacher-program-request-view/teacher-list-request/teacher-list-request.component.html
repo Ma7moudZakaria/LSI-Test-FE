@@ -1,26 +1,29 @@
 <div class="list-group teacher-list-request">
+    <p class="mb-3">
+        {{'TEACHER_SUBSCRIBERS.SUBSCRIBERS' | translate}}
+    </p>
     <div class="internal_scroll_list_group">
         <a class="list-group-item d-flex"  
-        [class.active]="selectedIndex === 1"
-        (click)="teatcherRequestSelected(teacherRequestEnum.joinRequest);selectedIndex=1"> 
-        <span>  طلبات الانضمام</span>        
+        [class.active]="selectedIndex === teacherRequestEnum.JoinRequest"
+        (click)="teatcherRequestSelected(teacherRequestEnum.JoinRequest);selectedIndex=1"> 
+        <span> {{'TEACHER_SUBSCRIBERS.JOIN_REQUESTS' | translate}} </span>        
        </a>
        <a class="list-group-item d-flex"  
-       [class.active]="selectedIndex === 2"
-       (click)="teatcherRequestSelected(teacherRequestEnum.joinRequestProgram);selectedIndex=2"> 
-       <span> طلبات الانضمام للبرنامج</span>        
+       [class.active]="selectedIndex === teacherRequestEnum.JoinRequestProgram"
+       (click)="teatcherRequestSelected(teacherRequestEnum.JoinRequestProgram);selectedIndex=2"> 
+       <span>{{'TEACHER_SUBSCRIBERS.JOIN_REQUESTS_FOR_PROGRAM' | translate}}</span>        
       </a>
 
        <a class="list-group-item d-flex"  
-       [class.active]="selectedIndex === 3"
-       (click)="teatcherRequestSelected(teacherRequestEnum.cancelRequest);selectedIndex=3"> 
-       <span> طلبات الانسحاب</span>        
+       [class.active]="selectedIndex === teacherRequestEnum.CancelRequest"
+       (click)="teatcherRequestSelected(teacherRequestEnum.CancelRequest);selectedIndex=3"> 
+       <span> {{'TEACHER_SUBSCRIBERS.CANCEL_REQUESTS' | translate}}</span>        
       </a>
 
       <a class="list-group-item d-flex"  
-      [class.active]="selectedIndex === 4"
-      (click)="teatcherRequestSelected(teacherRequestEnum.changTimeRequest);selectedIndex=4"> 
-      <span> طلبات تغير المواعيد المتاحة</span>        
+      [class.active]="selectedIndex === teacherRequestEnum.ChangTimeRequest"
+      (click)="teatcherRequestSelected(teacherRequestEnum.ChangTimeRequest);selectedIndex=4"> 
+      <span> {{'TEACHER_SUBSCRIBERS.AVAILABLE_CHANGE_TIME_REQUESTS' | translate}}</span>        
      </a>
 
     </div>

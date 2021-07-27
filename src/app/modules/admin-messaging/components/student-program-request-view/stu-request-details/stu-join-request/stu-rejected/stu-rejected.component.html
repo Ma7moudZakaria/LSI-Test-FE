@@ -1,16 +1,16 @@
 <form class="form-group DataForm mt-5 pl-3 pr-3">
-    <h3 class="text-right head  bold">رفض الطلب </h3>
+    <h3 class=" head  bold">{{ "STUDENT_SUBSCRIBERS.REJECTION_APPLICATION" | translate }} </h3>
     <div class="form-group">
         <label  class="label">
-            
-            سيتم رفض طلب انسحاب المعلم /
+            {{ "STUDENT_SUBSCRIBERS.TEACHER_REJECTED" | translate }}
+             /
             <span class="data_input"> {{itemStuReq.usrNameAr}}</span>
         </label>
         <label  class="label">
-            من برنامج  <span class="data_input"> {{itemStuReq.progName}}</span> 
+              {{ "STUDENT_SUBSCRIBERS.FROM_PROG" | translate }}<span class="data_input"> {{itemStuReq.progName}}</span> 
         </label>
         <label  class="label mt-4">
-            سبب الرفض
+            {{ "STUDENT_SUBSCRIBERS.REJECTED_REASON" | translate }}
         </label>
 
         <textarea  class="form-control " cols="1"  rows="5" 

@@ -51,7 +51,8 @@ export class ProgramDayTaskLinkingComponent implements OnInit {
   }
   closeResult: string | undefined;
   openVerticallyCentered(content: any) {
-    this.modalService.open(content, { centered: true });
+    // this.modalService.open(content, { centered: true });
+    this.modalService.open(content, { size: 'lg' });
   }
 
   listExt = ["jpg", "png", "jpeg", "gif", "bmp", "tif", "tiff", "pdf"]
@@ -136,6 +137,20 @@ export class ProgramDayTaskLinkingComponent implements OnInit {
     this.fileList = [];
     this.linkingDetailsModel.bookAttatchments = [];
   }
+  onDragOver(event: any) {
+    event.preventDefault();
+  }
 
+// From drag and drop
+  onDropSuccess(event: any) {
+    event.preventDefault();
+
+    this.onFileChange(event.dataTransfer.files);
+  }
+
+// From attachment link
+  onChange(event: any) {
+    this.onFileChange(event.target.files);
+  }
 
 }

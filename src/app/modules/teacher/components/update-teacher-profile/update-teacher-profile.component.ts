@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
@@ -32,6 +32,8 @@ import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/ipro
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { HostListener } from '@angular/core';
 import { ITeacherProfileAvailabilityLookup } from 'src/app/core/interfaces/teacher-interfaces/iteacher-availability-lookup';
+import {DateFormatterService, DateType} from 'ngx-hijri-gregorian-datepicker';
+import {BaseSelectedDateModel} from "../../../../core/ng-model/base-selected-date-model";
 
 @Component({
   selector: 'app-update-teacher-profile',
@@ -60,8 +62,9 @@ export class UpdateTeacherProfileComponent implements OnInit {
   milady: boolean = false;
   hijriBinding: any;
   hijriBirthDateInputParam: NgbDateStruct = { year: 0, day: 0, month: 0 };
+  hijriInterviewDayInputParam: NgbDateStruct = { year: 0, day: 0, month: 0 };
 
-  ProgramsList: IprogramsModel[] = [];;
+  ProgramsList: IprogramsModel[] = [];
   ProgramFilter: IProgramFilterAdvancedRequest = {};
 
   rewayatsMessage: BaseMessageModel = {};
@@ -85,6 +88,17 @@ export class UpdateTeacherProfileComponent implements OnInit {
   event = {
     eampm: "AM"
   }
+  selectedDateType : any;
+  selectedInterviewDateType : any;
+  //selectedDateType_Melady = DateType.Gregorian;  // or DateType.Gregorian
+  //selectedDateType_Hijri = DateType.Hijri;
+  updateCalenderType: BaseSelectedDateModel= new BaseSelectedDateModel();
+  maxHijriDate: NgbDateStruct | undefined;
+  maxGregDate: NgbDateStruct | undefined;
+
+  minHijriInterviewDate: NgbDateStruct | undefined;
+  minGregInterviewDate: NgbDateStruct | undefined;
+
 
   constructor(
     private fb: FormBuilder,
@@ -95,7 +109,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
     private attachmentService: AttachmentsService,
     public translate: TranslateService,
     private ProgramService: ProgramService,
-    public languageService: LanguageService) {
+    public languageService: LanguageService,private dateFormatterService: DateFormatterService) {
   }
 
 
@@ -106,6 +120,8 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.buildForm();
     this.getPrograms();
     this.getLookupByKey();
+    this.setHijri();
+    this.setGreg();
   }
   // @HostListener('window:beforeunload', ['$event'])
   // public onPageUnload($event: BeforeUnloadEvent) {
@@ -172,7 +188,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
   }
 
   getPrograms() {
-    this.programFilterByNameFilterRequest = { 
+    this.programFilterByNameFilterRequest = {
       name: ""
     }
 
@@ -263,6 +279,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           isHasEjazaHafz: [null, Validators.required],
           isHasEjazaTelawa: [null, Validators.required],
           workingPlatForm: [null, Validators.required],
+          hijriInterviewDay: [null, Validators.required],
           bankName: [null],
           bankNumber: [null],
           ejazaAttachments: [],
@@ -307,6 +324,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
           isHasEjazaHafz: [null, Validators.required],
           isHasEjazaTelawa: [null, Validators.required],
           workingPlatForm: [null, Validators.required],
+          hijriInterviewDay: [null, Validators.required],
           bankName: [null],
           bankNumber: [null],
           ejazaAttachments: [],
@@ -370,9 +388,42 @@ export class UpdateTeacherProfileComponent implements OnInit {
       this.f.middleEn.setValue(this.teacherProfileDetails?.mnameEn);
       this.f.familyEn.setValue(this.teacherProfileDetails?.faNameEn);
     }
-    let date = new Date(this.teacherProfileDetails?.hijriBirthDate || '');
-    this.hijriBirthDateInputParam = { year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDay() }
-    this.f.hijriBirthDate.setValue(date);
+    if(this.teacherProfileDetails.birthDispMode == 1){
+      //let date = new Date(this.teacherProfileDetails?.hijriBirthDate || '');
+      //this.hijriBirthDateInputParam = { year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDay() }
+      this.updateCalenderType.selectedDateType = DateType.Hijri;
+      let date = new Date(this.teacherProfileDetails?.birthdate || '');
+      this.hijriBirthDateInputParam = { year: date.getFullYear(), month: date.getMonth() +1, day: date.getDate() }
+      this.f.hijriBirthDate.setValue(this.teacherProfileDetails.birthdate);
+
+    }else {
+      //this.updateCalenderType=new BaseSelectedDateModel();
+      // if (this.updateCalenderType){
+        // this.updateCalenderType.selectedDateValue =  this.teacherProfileDetails?.birthGregorian;
+        this.updateCalenderType.selectedDateType = DateType.Gregorian;
+      // }
+      let date = new Date(this.teacherProfileDetails?.birthGregorian || '');
+      this.hijriBirthDateInputParam = { year: date.getFullYear(), month: date.getMonth() +1, day: date.getDate() }
+     // this.SendData(this.updateCalenderType)
+      //this.updateCalenderType.date = this.teacherProfileDetails?.birthGregorian;
+      // let date = new Date(this.teacherProfileDetails?.birthGregorian || '');
+      // this.hijriBirthDateInputParam = { year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDay() }
+      this.f.hijriBirthDate.setValue(this.teacherProfileDetails.birthGregorian);
+    }
+
+    if(this.teacherProfileDetails.interviewDisplayMode == 1){
+      this.updateCalenderType.selectedDateType = DateType.Hijri;
+      let date = new Date(this.teacherProfileDetails?.interviewHijri || '');
+      this.hijriInterviewDayInputParam = { year: date.getFullYear(), month: date.getMonth() +1, day: date.getDate() }
+      this.f.hijriInterviewDay.setValue(this.teacherProfileDetails.interviewHijri);
+
+    }else {
+        this.updateCalenderType.selectedDateType = DateType.Gregorian;
+      let date = new Date(this.teacherProfileDetails?.interviewGregorian || '');
+      this.hijriInterviewDayInputParam = { year: date.getFullYear(), month: date.getMonth() +1, day: date.getDate() }
+      this.f.hijriInterviewDay.setValue(this.teacherProfileDetails.interviewGregorian);
+    }
+
 
     this.f.nationality.setValue(this.teacherProfileDetails?.nationality)
     this.f.country.setValue(this.teacherProfileDetails?.country)
@@ -401,7 +452,10 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.f.bankName.setValue(this.teacherProfileDetails?.bankName)
     this.f.bankNumber.setValue(this.teacherProfileDetails?.bankNumber)
 
-    this.f.interviewDay.setValue(this.teacherProfileDetails?.interviewId)
+    // let dateInterviewDay = new Date(this.teacherProfileDetails?.interviewHijri || '');
+    // this.hijriInterviewDayInputParam = { year: dateInterviewDay.getFullYear(), month: dateInterviewDay.getMonth() + 1, day: dateInterviewDay.getDay() }
+    // this.f.hijriInterviewDay.setValue(dateInterviewDay);
+
     this.f.interviewTime.setValue(this.teacherProfileDetails?.interviewTime)
 
     this.fileList = this.teacherProfileDetails?.ejazaAttachments;
@@ -474,7 +528,8 @@ export class UpdateTeacherProfileComponent implements OnInit {
         familyAr: this.profileForm.value.familyAr != null ? this.profileForm.value.familyAr : this.teacherProfileDetails.fanameAr,
         familyEn: this.profileForm.value.familyEn != null ? this.profileForm.value.familyEn : this.teacherProfileDetails.fanameAr,
         nationality: this.profileForm.value.nationality,
-        hijriBirthDate: this.profileForm.value.hijriBirthDate,
+        birthDate: this.selectedDateType == 1 ? this.profileForm.value.hijriBirthDate : null,
+        birthGregorian: this.selectedDateType == 2 ? this.profileForm.value.hijriBirthDate : null,
         gender: this.profileForm.value.gender,
         mobile: this.profileForm.value.mobile,
         country: this.profileForm.value.country,
@@ -496,11 +551,17 @@ export class UpdateTeacherProfileComponent implements OnInit {
         bankName: this.profileForm.value.bankName,
         bankNumber: this.profileForm.value.bankNumber,
 
-        interviewId: this.profileForm.value.interviewDay,
+        // interviewHijri: this.profileForm.value.hijriInterviewDay,
+        
+        interviewHijri: this.selectedInterviewDateType == 1 ? this.profileForm.value.hijriInterviewDay : null,
+        interviewGregorian : this.selectedInterviewDateType == 2 ? this.profileForm.value.hijriInterviewDay : null,
+
         interviewTime: this.profileForm.value.interviewTime,
 
         address: this.profileForm.value.address,
         ejazaAttachments: this.ejazaAttachmentIds,
+        birthDispMode : this.selectedDateType,
+        interviewDisplayMode: this.selectedInterviewDateType,
       }
 
       this.rewayatsMessage = {};
@@ -732,12 +793,29 @@ export class UpdateTeacherProfileComponent implements OnInit {
     })
   }
 
-  Hijri(date: any) {
-    date = date.year + '/' + date.month + '/' + date.day;
-    console.log("Hijri date", date)
-    this.hijriBinding = date
+  SendData(data: any) {
+     // console.log("data 777sent", data)
+     data.selectedDateValue = data.selectedDateValue.year + '/' + data.selectedDateValue.month + '/' + data.selectedDateValue.day;
+    // console.log("Hijri date", data.date)
+    this.hijriBinding = data.selectedDateValue
+    this.selectedDateType = data.selectedDateType;
+    // console.log("this.selectedDateType",this.selectedDateType);
+    this.f.hijriBirthDate.setValue(data.selectedDateValue);
 
-    this.f.hijriBirthDate.setValue(date);
+  }
+
+  HijriInterviewDay(data: any) {
+    // date = date.year + '/' + date.month + '/' + date.day;
+    // this.hijriBinding = date
+
+    // this.f.hijriInterviewDay.setValue(date);
+
+    data.selectedDateValue = data.selectedDateValue.year + '/' + data.selectedDateValue.month + '/' + data.selectedDateValue.day;
+    // console.log("Hijri date", data.date)
+    this.hijriBinding = data.selectedDateValue
+    this.selectedInterviewDateType = data.selectedDateType;
+    // console.log("this.selectedDateType",this.selectedDateType);
+    this.f.hijriInterviewDay.setValue(data.selectedDateValue);
   }
 
   addDrgree() {
@@ -809,4 +887,40 @@ export class UpdateTeacherProfileComponent implements OnInit {
       }
     )
   }
+  onDragOver(event: any) {
+    event.preventDefault();
+  }
+
+// From drag and drop
+  onDropSuccess(event: any) {
+    event.preventDefault();
+
+    this.onFileChange(event.dataTransfer.files);
+  }
+
+// From attachment link
+  onChange(event: any) {
+    this.onFileChange(event.target.files);
+  }
+  setHijri() {
+     let toDayHijriDate = this.dateFormatterService.GetTodayHijri()
+     toDayHijriDate.day= toDayHijriDate.day - 1 ;
+     this.maxHijriDate = toDayHijriDate;
+
+     let toDayHijriInterviewDate = this.dateFormatterService.GetTodayHijri();
+    //  toDayHijriInterviewDate.day= toDayHijriInterviewDate.day + 1 ;
+     this.minHijriInterviewDate = toDayHijriInterviewDate;
+     console.log("maxHijri",this.maxHijriDate);
+  }
+  setGreg(){
+    let toDayGreDate = this.dateFormatterService.GetTodayGregorian()
+    toDayGreDate.day= toDayGreDate.day - 1 ;
+    this.maxGregDate = toDayGreDate;
+
+    let toDayGreInterviewDate = this.dateFormatterService.GetTodayGregorian();
+    // toDayGreInterviewDate.day= toDayGreInterviewDate.day + 1 ;
+    this.minGregInterviewDate = toDayGreInterviewDate;
+    console.log("maxGregDate",this.maxGregDate);
+  }
+
 }

@@ -97,7 +97,7 @@
   <mat-grid-list cols="{{numberPerRow}}" rowHeight="3:3">
     <ng-container *ngIf="userMode == programSubscriptionUsers.student">
         <mat-grid-tile *ngFor='let item of studentItems' >
-            <app-stu-card-request [StudentSubscripModel]='item'  
+            <app-stu-card-request [studentSubscripModel]='item'  
             (rejecteStuRequest)="rejecteStuRequest($event)"
             (acceptStuRequest)="acceptStuRequest($event)"
              

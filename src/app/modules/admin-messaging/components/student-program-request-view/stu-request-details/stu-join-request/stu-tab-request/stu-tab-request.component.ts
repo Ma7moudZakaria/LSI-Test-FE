@@ -5,6 +5,8 @@ import { StudentProgramSubscriptionServicesService } from 'src/app/core/services
 import { IStudentSubscriptionFilterRequestModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-subscription-filter-request-model';
 import { IStudentSubscriptionModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-subscription-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 
 @Component({
   selector: 'app-stu-tab-request',
@@ -14,6 +16,7 @@ import { AlertifyService } from 'src/app/core/services/alertify-services/alertif
 export class StuTabRequestComponent implements OnInit {
   @Output() itemStuReq = new EventEmitter<IStudentSubscriptionModel>();
   typeEnum: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending;
+  resultMessage: BaseMessageModel = {};
 
   showTap: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending
   statusEnum = StudentProgramSubscriptionStatusEnum;
@@ -39,7 +42,10 @@ export class StuTabRequestComponent implements OnInit {
 
       }
     }, error => {
-
+      this.resultMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
     })
   }
 
@@ -78,7 +84,10 @@ export class StuTabRequestComponent implements OnInit {
       }
     },
       error => {
-        console.log(error);
+        this.resultMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       });
   }
 
@@ -95,7 +104,10 @@ export class StuTabRequestComponent implements OnInit {
       }
     },
       error => {
-        console.log(error);
+        this.resultMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       });
 
   }

@@ -11,7 +11,7 @@ export interface IUpdateTeacherProfile {
     middleEn?: string;
     familyAr?: string;
     familyEn?: string;
-    hijriBirthDate?: string;
+    birthDate?: string;
     gender?: string;
     mobile?: string;
     nationality?: string;
@@ -21,11 +21,12 @@ export interface IUpdateTeacherProfile {
     qualifi?: string;
     specia?: string;
     eduDate?: string;
-    eduNum?: number;    
+    eduNum?: number;
     entity?: string;
     agency?:string;
     edulevel?:string;
-    interviewId?:string;
+    interviewHijri?:string;
+    interviewGregorian?:string;
     interviewTime?:string;
     isHasQuranExp?: boolean;
     isHasTeachSunnaExp?: boolean;
@@ -41,4 +42,7 @@ export interface IUpdateTeacherProfile {
     availabilityDays?:ITeacherProfileAvailability[];
     rewayats?:ITeacherProfileRewayat[];
     languages?:ITeacherProfileLanguage[];
+    birthGregorian?:string;
+    birthDispMode?:number;
+    interviewDisplayMode?:number;
 }

@@ -19,7 +19,7 @@
     <app-program-day-task-tasmea *ngIf="detailsTypeEnum.TaskTasmea===taskDetails?.huffazTask" [tasmeaModel]="tasmeaModel"></app-program-day-task-tasmea> 
      <app-program-day-task-test-phased *ngIf="detailsTypeEnum.TaskTestPhased===taskDetails?.huffazTask" [testPhasedDetailsModel]="testPhasedDetailsModel"></app-program-day-task-test-phased>
      <section *ngIf="detailsTypeEnum.TaskRecitation!=taskDetails?.huffazTask && detailsTypeEnum.TaskRecitationStudents!=taskDetails?.huffazTask && detailsTypeEnum.TaskTasmea!=taskDetails?.huffazTask">
-        <div  class="row direction-rtl buttons-center ">
+        <div  class="row direction-rtl buttons-center justify-content-end">
             <button   type="submit" class="save-btn" (click)="save()" > 
                 {{ "GENERAL.SAVE" | translate }}
             </button>

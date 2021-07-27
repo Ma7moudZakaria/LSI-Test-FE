@@ -3,27 +3,27 @@
 <ng-container *ngIf="!isPub">
   <div  class="card  mb-2" >
     <div class="card_header">
-      <img  *ngIf='!feelingsDetailsModel?.isNew' src="../../../../assets/images/feelings/arrange2.svg" class="arrange" >  
+      <img  *ngIf='!feelingsDetailsModel?.isNew' src="../../../../assets/images/feelings/arrange2.svg" class="arrange" >
       <img  class="proPic" [src]="feelingsDetailsModel?.proPic">
 
       <div class="data dataInfo  " [ngClass]="{'pl-2 pr-2': !feelingsDetailsModel?.isNew}">
-           
+
         <div class="d-flex  justify-content-between">
           <p class="title mb-0">{{translate.currentLang === langEnum.en ? feelingsDetailsModel?.fullNameEn : feelingsDetailsModel?.fullNameAr}}</p>
-          <span class="date">{{feelingsDetailsModel?.crdOn | date:"MM/dd/yy"}}</span>
+          <span >{{feelingsDetailsModel?.crdOn }}</span>
         </div>
         <p class="detlis">
           {{feelingsDetailsModel?.des}}
         </p>
 
       </div>
-     
+
     <div class="actions">
       <div *ngIf='feelingsDetailsModel?.isNew' class="actions_notNew">
         <a (click)= "deleteFeelingCard()"> <img class="delete mb-3" src="../../../../assets/images/feelings/trash.svg"></a>
         <a (click)= "publishFeelingItem()"> <img class="arrow"src="../../../../assets/images/feelings/leftArrow.svg"></a>
       </div>
-        
+
       <div *ngIf='!feelingsDetailsModel?.isNew' class="actions_notNew">
         <a (click)= "cancelFeelingItem()"> <img class="delete" src="../../../../assets/images/feelings/close.svg"></a>
         <a (click)='swapUp()'> <img class="arrow"src="../../../../assets/images/feelings/downArrow.svg"></a>
@@ -46,30 +46,30 @@
         <mat-expansion-panel-header >
               <div  class="card" >
                 <div class="card_header">
-                  
-                  <img src="../../../../assets/images/feelings/arrange.svg" class="arrange" >  
-                  <img src="../../../../assets/images/feelings/ASH_9078.png" >  
 
-                  <img  [src]="FeelingsDetailsModel.proPic">  
-            
+                  <img src="../../../../assets/images/feelings/arrange.svg" class="arrange" >
+                  <img src="../../../../assets/images/feelings/ASH_9078.png" >
+
+                  <img  [src]="FeelingsDetailsModel.proPic">
+
                   <div class="data dataInfo pl-3 pr-3">
                     <p class="title">{{FeelingsDetailsModel.fullNameAr}}</p>
                     <p class="detlis">
                    {{FeelingsDetailsModel.des}}
                     </p>
-            
+
                   </div>
                   <span class="date">{{FeelingsDetailsModel.crdOn}}</span>
                 <div class="actions">
                     <a (click)= "cancelFeelingCard()"> <img class="delete" src="../../../../assets/images/feelings/close.svg"></a>
                     <a > <img class="arrow"src="../../../../assets/images/feelings/downArrow.svg"></a>
                     <a > <img class="arrow"src="../../../../assets/images/feelings/topArrow.svg"></a>
-            
+
                 </div>
                 </div>
               </div>
-               
-           
+
+
         </mat-expansion-panel-header>
       </mat-expansion-panel>
 

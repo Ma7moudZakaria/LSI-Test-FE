@@ -65,10 +65,19 @@ export class ViewUserProfileCustomComponent implements OnInit {
     this.userService.viewUserProfileDetails(id || '').subscribe(res => {
       if (res.isSuccess) {
         this.userDetails = res.data as IViewUser;
-        if (this.userDetails?.birthdate) {
-          let birthdateValue = new Date(this.userDetails.birthdate || '');
-          this.birthdate = new Date(birthdateValue.setDate(birthdateValue.getDate() + 1)).toISOString().slice(0, 10);
-        }
+        // if (this.userDetails?.birthDispMode == 1 ){
+        //   if (this.userDetails?.birthdate) {
+        //     let birthdateValue = new Date(this.userDetails.birthdate || '');
+        //     this.birthdate = new Date(birthdateValue.setDate(birthdateValue.getDate() + 1)).toISOString().slice(0, 10);
+        //   }
+        // }else{
+        //   if (this.userDetails?.birthdate) {
+        //     let birthdateValue = new Date(this.userDetails.birthGregorian || '');
+        //     this.birthdate = new Date(birthdateValue.setDate(birthdateValue.getDate() + 1)).toISOString().slice(0, 10);
+        //   }
+        //
+        // }
+
         if (!this.userDetails?.proPic) {
           this.userDetails.proPic = '../../../../../assets/images/Profile.svg';
         }

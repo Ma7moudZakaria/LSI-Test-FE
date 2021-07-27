@@ -93,11 +93,10 @@
         <span>  &nbsp;  : </span>
         <span>  &nbsp; </span>
      </label>
-        <div class="badges">
+        <label class="badges">
       <span *ngFor="let p of selectedDegreeLastPrograms"
           class="badge badge-info p-2">{{translate.currentLang == langEnum.en? p.nameEn :p.nameAr}}
       </span>
-      <span>  &nbsp; </span>
   <span *ngIf="degreeLastProgramModel.isRequired" class="requiredFlag">{{ "GENERAL.MANDATORY" | translate }} </span>
-  </div>
+  </label>
 </ng-container>

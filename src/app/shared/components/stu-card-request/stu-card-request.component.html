@@ -1,25 +1,29 @@
 <div class="card-request">
     <div class="card_header">
       <section class="example-section">
-        <mat-checkbox class="example-margin"  [(ngModel)]="StudentSubscripModel.checked" ></mat-checkbox>
+        <mat-checkbox class="example-margin"  [(ngModel)]="studentSubscripModel.checked" ></mat-checkbox>
       </section>
     <div>
-        <span> تاريخ الطلب </span>
+        <span> {{'STUDENT_SUBSCRIBERS.TIME' | translate}} </span>        
+
         <span>&nbsp;</span>
         <span>&nbsp;</span>
-        <span>{{StudentSubscripModel.requestDate}}</span> 
+        <span>{{studentSubscripModel.requestDate}}</span> 
     </div>
     </div>
   
     <div class="card_body">
       <div class="d-flex justify-content-between mb-3">
-        <img *ngIf='!StudentSubscripModel.avatarLink' class="img_user" src="../../../../assets/images/student/user-profile.svg">
-        <img *ngIf='StudentSubscripModel.avatarLink' class="img_user" src="{{StudentSubscripModel.avatarLink}}" >
+        <img *ngIf='!studentSubscripModel.avatarLink' class="img_user" src="../../../../assets/images/student/user-profile.svg">
+        <img *ngIf='studentSubscripModel.avatarLink' class="img_user" src="{{studentSubscripModel.avatarLink}}" >
       <div class="mx-1">
-        <p class="number_request mb-1 ">{{StudentSubscripModel.programStaNum}}</p>
-        <p class="name_user bold mb-2">{{StudentSubscripModel.usrNameAr}}</p>
-        <p class="program_user bold mb-2 "> {{StudentSubscripModel.progName}}</p>
-        <p class="program_user bold mb-0 ">  نتيجة اختبار القبول: 100/{{StudentSubscripModel.examDegree}}  <a class="exam_link"> عرض الإختبار</a></p>
+        <p class="number_request mb-1 ">{{studentSubscripModel.programStaNum}}</p>
+        <p class="name_user bold mb-2">{{studentSubscripModel.usrNameAr}}</p>
+        <p class="program_user bold mb-2 "> {{studentSubscripModel.progName}}</p>
+        <p class="program_user bold mb-0 "> 
+        <span> {{'STUDENT_SUBSCRIBERS.REQUEST_RESULT' | translate}} </span>        
+
+          : 100/{{studentSubscripModel.examDegree}}  <a class="exam_link">  {{'STUDENT_SUBSCRIBERS.TEST_VIEW' | translate}}</a></p>
        
       </div>
         <div class="d-flex">
@@ -31,11 +35,8 @@
   <ng-container *ngIf="typeEnum === tabTypeSelected.Pending ">
     <div class="body_footer" >
         <button class="btn cancel-btn" (click)="rejectedStudentReq()" 
-        [attr.disabled]="StudentSubscripModel.checked"
-
-      
-        > رفض  </button>
-        <button  class=" btn save-btn" (click)="acceptStudentReq()"> قبول </button>
+        [attr.disabled]="studentSubscripModel.checked" > {{'STUDENT_SUBSCRIBERS.REJECT' | translate}}  </button>
+        <button  class=" btn save-btn" (click)="acceptStudentReq()"> {{'STUDENT_SUBSCRIBERS.ACCEPT' | translate}}  </button>
       </div>
   </ng-container>
     

@@ -56,6 +56,7 @@ export class SettingAcceptComponent implements OnInit {
     this.accepModel.title = this.programConditionsModel.title;
   }
   saveProgramConditions() {
+    this.resultMessage={};
     this.updateProgramConditionDetailsModel.id = this.accepModel.id;
     this.updateProgramConditionDetailsModel.progCondDetails = JSON.stringify(this.accepModel);
     this.updateProgramConditionDetailsModel.isRequired = this.accepModel.isRequired;

@@ -65,7 +65,9 @@
     "MY_PROGRAM": "My Program",
     "FEELING": "Feeling",
     "FILE_SIZE": "your file size more than 3m",
-    "EXTENTION_FILE": "your extention file not accepted"
+    "EXTENTION_FILE": "your extention file not accepted",
+    "ACCEPT": "Accepted",
+    "REJECT": "Reject"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
@@ -179,7 +181,8 @@
     "SAVE": "Save",
     "DAY": "Day",
     "PUBLISH_DATE": "Publish Date",
-    "START_DATE":"Start Date"
+    "START_DATE": "Start Date",
+    "NOProgramFound": "No Program Found"
   },
   "PROGRAM_TABS": {
     "BASIC_INFO": "Basic Info",
@@ -603,9 +606,8 @@
     "RIGHT_ANSWER": "Right Answer",
     "DURATION": "Duration",
     "ADD_QUESTION": "Add question",
-    "THE_SUCCESS_RATE":"The success rate",
-    "THE_SUCCESS_RATE_SHOULD_LESS_THAN_TOTAL_DEGREE":"The success rate should be less than total degree and not equal zero"
-
+    "THE_SUCCESS_RATE": "The success degree",
+    "THE_SUCCESS_RATE_SHOULD_LESS_THAN_TOTAL_DEGREE": "The success degree should be less than total degree and not equal zero"
   },
   "User_Requests": {
     "REQUESTS": "Requests",
@@ -739,5 +741,44 @@
   "PROGRAM_EXAM_FORM": {
     "PROGRAM_ACCEPTANCE_EXAM": "Program acceptance test",
     "EXAM_FORMS": "Exam forms"
+  },
+  "TEACHER_SUBSCRIBERS": {
+    "SUBSCRIBERS": "Subscibe",
+    "TEACHERS": "Teachers",
+    "STUDENTS": "Students",
+    "NEW_JOIN_REQUESTS": "New join requests",
+    "ACCEPTANCE_REQUESTS": "Admission requests",
+    "REJECTANCE_REQUESTS": "Rejection requests",
+    "JOIN_REQUESTS": "Join requests",
+    "JOIN_REQUESTS_FOR_PROGRAM": "Requests to join the program",
+    "CANCEL_REQUESTS": "Cancellation requests",
+    "AVAILABLE_CHANGE_TIME_REQUESTS": "Available time change requests",
+    "REJECT_TEACHER": "Reject Teacher",
+    "FROM_PROGRAM": "From program",
+    "REASON_REJECT": "Reason reject"
+  },
+  "STUDENT_SUBSCRIBERS": {
+    "SUBSCRIBERS": "Subscibe",
+    "TEACHERS": "Teachers",
+    "STUDENTS": "Students",
+    "NEW_JOIN_REQUESTS": "New join requests",
+    "ACCEPTANCE_REQUESTS": "Admission requests",
+    "REJECTANCE_REQUESTS": "Rejection requests",
+    "JOIN_REQUESTS_VACATION": "Vacation Request",
+    "MOVING_REQ": "Moving Request ",
+    "JOIN_REQUESTS": "Join requests",
+    "CANCEL_REQUESTS": "Cancellation requests",
+    "REJECT_TEACHER": "Reject Teacher",
+    "FROM_PROGRAM": "From program",
+    "REASON_REJECT": "Reason reject",
+    "TIME": "Request Date",
+    "REQUEST_RESULT": "Request Result",
+    "TEST_VIEW": "Test view",
+    "ACCEPT": "Accepted",
+    "REJECT": "Reject",
+    "REJECTION_APPLICATION": "Rejection  request",
+    "TEACHER_REJECTED": "The teacher's withdrawal request will be rejected",
+    "FROM_PROG": "From Program",
+    "REJECTED_REASON": "Reject Reason"
   }
 }

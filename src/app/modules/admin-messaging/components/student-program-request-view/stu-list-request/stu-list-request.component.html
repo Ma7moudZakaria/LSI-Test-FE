@@ -1,29 +1,31 @@
 
 <div class="list-group list-group_program-list">
-    <p class="mb-4">الطلبات</p>
+    <p class="mb-3">
+        {{'STUDENT_SUBSCRIBERS.SUBSCRIBERS' | translate}}
+    </p>
      
     <div class="internal_scroll_list_group">
         <a class="list-group-item d-flex"  
-        [class.active]="selectedIndex === 1"
+        [class.active]="selectedIndex === studentSubscriptionEmun.joinRequest"
         (click)="studentRequestSelected(studentSubscriptionEmun.joinRequest);selectedIndex=1"> 
-        <span>  طلبات الانضمام</span>        
+        <span> {{'STUDENT_SUBSCRIBERS.JOIN_REQUESTS' | translate}} </span>        
        </a>
        <a class="list-group-item d-flex"  
-       [class.active]="selectedIndex === 2"
+       [class.active]="selectedIndex === studentSubscriptionEmun.vacationRequest"
        (click)="studentRequestSelected(studentSubscriptionEmun.vacationRequest);selectedIndex=2"> 
-       <span> طلبات الاجازات  </span>        
+       <span> {{'STUDENT_SUBSCRIBERS.JOIN_REQUESTS_VACATION' | translate}} </span>         
       </a>
 
        <a class="list-group-item d-flex"  
-       [class.active]="selectedIndex === 3"
+       [class.active]="selectedIndex === studentSubscriptionEmun.quitRequest"
        (click)="studentRequestSelected(studentSubscriptionEmun.quitRequest);selectedIndex=3"> 
-       <span> طلبات الانسحاب</span>        
+       <span> {{'STUDENT_SUBSCRIBERS.CANCEL_REQUESTS' | translate}} </span>         
       </a>
 
       <a class="list-group-item d-flex"  
-      [class.active]="selectedIndex === 4"
+      [class.active]="selectedIndex === studentSubscriptionEmun.movingRequest"
       (click)="studentRequestSelected(studentSubscriptionEmun.movingRequest);selectedIndex=4"> 
-      <span> طلبات الانتقال   </span>        
+      <span> {{'STUDENT_SUBSCRIBERS.MOVING_REQ' | translate}} </span>            
      </a>
 
     </div>

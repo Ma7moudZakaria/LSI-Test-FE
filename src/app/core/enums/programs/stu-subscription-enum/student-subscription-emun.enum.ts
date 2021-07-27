@@ -1,4 +1,4 @@
-export enum StudentSubscriptionEmuns {
+export enum StudentSubscriptionEmun {
     joinRequest = 1,
     vacationRequest = 2,
     quitRequest = 3,

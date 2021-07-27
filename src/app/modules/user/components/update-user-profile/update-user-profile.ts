@@ -23,6 +23,8 @@ import { AttachmentsService } from 'src/app/core/services/attachments-services/a
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 import { UserService } from 'src/app/core/services/user-services/user.service';
+import {BaseSelectedDateModel} from '../../../../core/ng-model/base-selected-date-model';
+import {DateFormatterService, DateType} from 'ngx-hijri-gregorian-datepicker';
 
 @Component({
   selector: 'app-update-user-profile',
@@ -58,13 +60,16 @@ export class UpdateUserProfileComponent implements OnInit {
   hijri: boolean = false;
   milady: boolean = false;
 
-  hijriBirthDateInputParam:NgbDateStruct= {year:0,day:0,month:0};
+  hijriBirthDateInputParam: NgbDateStruct = {year: 0, day: 0, month: 0};
   // = {
   //   // phoneNumber:'+201062100486',
   //   isRequired : true,
   //   // countryIsoCode: '{"initialCountry": "eg"}'
   // }
-
+  private selectedDateType: any;
+  updateCalenderType: BaseSelectedDateModel = new BaseSelectedDateModel();
+  maxHijriDate: NgbDateStruct | undefined;
+  maxGregDate: NgbDateStruct | undefined;
 
   constructor(
     private fb: FormBuilder,
@@ -73,7 +78,8 @@ export class UpdateUserProfileComponent implements OnInit {
     private attachmentService: AttachmentsService,
     private userProfileService: UserService,
     public translate: TranslateService,
-    public languageService: LanguageService) {
+    public languageService: LanguageService,
+    private dateFormatterService: DateFormatterService) {
   }
 
   ngOnInit() {
@@ -85,15 +91,16 @@ export class UpdateUserProfileComponent implements OnInit {
       this.collectionOfLookup = res.data as ILookupCollection;
       if (res.isSuccess) {
         this.getUserProfile(this.currentUser?.id)
-      }
-      else {
+      } else {
         this.resMessage =
-        {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+          {
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
+          }
       }
     });
+    this.setHijri();
+    this.setGreg();
   }
 
   // @HostListener('window:beforeunload', ['$event'])
@@ -113,26 +120,26 @@ export class UpdateUserProfileComponent implements OnInit {
   //   this.userService.setCanDeActivate(this.unsavedDataCheck());
   // }
 
-  unsavedDataCheck() : boolean{
-    let  birthDateFromDetails=new Date(this.userProfileDetails?.birthdate||"");
+  unsavedDataCheck(): boolean {
+    let birthDateFromDetails = new Date(this.userProfileDetails?.birthdate || "");
     return this.profileForm.value.firstNameAr != this.userProfileDetails?.fnameAr
-    || this.profileForm.value.firstNameEn != this.userProfileDetails?.faNameEn
-    || this.profileForm.value.middleNameAr != this.userProfileDetails?.mnameAr
-    || this.profileForm.value.middleNameEn != this.userProfileDetails?.mnameEn
-    || this.profileForm.value. familyNameAr!= this.userProfileDetails?.fanameAr
-    || this.profileForm.value. familyNameEn!= this.userProfileDetails?.faNameEn
-    // || this.profileForm.value.birthdate.getTime() != birthDateFromDetails.getTime()
-    // || this.profileForm.value.birthdate != this.userProfileDetails?.birthdate
-    || this.profileForm.value.gender != this.userProfileDetails?.gender
-    || this.profileForm.value.phoneNumber!= this.userProfileDetails?.mobile
-    || this.profileForm.value.countryCode!= this.userProfileDetails?.countryCode
-    || this.profileForm.value.city!= this.userProfileDetails?.city
-    || this.profileForm.value.nationality!= this.userProfileDetails?.nationality
-    || this.profileForm.value.educationallevel!= this.userProfileDetails?.eduLevel
-    || this.profileForm.value.occupation!= this.userProfileDetails?.occupation
-    || this.profileForm.value.address!= this.userProfileDetails?.address
-    || this.profileForm.value.quraanMemorization!= this.userProfileDetails?.quraanMemorizeAmount
-   // || this.profileForm.value.ejazaAttachments!= this.userProfileDetails?.ejazaAttachments
+      || this.profileForm.value.firstNameEn != this.userProfileDetails?.faNameEn
+      || this.profileForm.value.middleNameAr != this.userProfileDetails?.mnameAr
+      || this.profileForm.value.middleNameEn != this.userProfileDetails?.mnameEn
+      || this.profileForm.value.familyNameAr != this.userProfileDetails?.fanameAr
+      || this.profileForm.value.familyNameEn != this.userProfileDetails?.faNameEn
+      // || this.profileForm.value.birthdate.getTime() != birthDateFromDetails.getTime()
+      // || this.profileForm.value.birthdate != this.userProfileDetails?.birthdate
+      || this.profileForm.value.gender != this.userProfileDetails?.gender
+      || this.profileForm.value.phoneNumber != this.userProfileDetails?.mobile
+      || this.profileForm.value.countryCode != this.userProfileDetails?.countryCode
+      || this.profileForm.value.city != this.userProfileDetails?.city
+      || this.profileForm.value.nationality != this.userProfileDetails?.nationality
+      || this.profileForm.value.educationallevel != this.userProfileDetails?.eduLevel
+      || this.profileForm.value.occupation != this.userProfileDetails?.occupation
+      || this.profileForm.value.address != this.userProfileDetails?.address
+      || this.profileForm.value.quraanMemorization != this.userProfileDetails?.quraanMemorizeAmount
+    // || this.profileForm.value.ejazaAttachments!= this.userProfileDetails?.ejazaAttachments
   }
 
   getCountryIsoCode() {
@@ -147,8 +154,8 @@ export class UpdateUserProfileComponent implements OnInit {
     })
   }
 
-  getCitiesLookupByCountry(id?:string){
-     let countryId = this.f['countryCode'].value;
+  getCitiesLookupByCountry(id?: string) {
+    let countryId = this.f['countryCode'].value;
 
     //let countryId = this.profileForm.value.countryCode;
 
@@ -156,14 +163,13 @@ export class UpdateUserProfileComponent implements OnInit {
       // this.collectionOfLookup.CITY = res.data;
       if (res.isSuccess) {
         this.collectionOfLookup.CITY = res.data;
-        this.collectionOfLookup && this.collectionOfLookup.CITY ? this.f.city.setValue(this.collectionOfLookup.CITY[0].id):'';
-      }
-      else {
+        this.collectionOfLookup && this.collectionOfLookup.CITY ? this.f.city.setValue(this.collectionOfLookup.CITY[0].id) : '';
+      } else {
         this.resMessage =
-        {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+          {
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
+          }
       }
     });
   }
@@ -196,13 +202,12 @@ export class UpdateUserProfileComponent implements OnInit {
 
         this.PopulateForm();
         this.getCitiesLookupByCountry(this.userProfileDetails.countryCode);
-      }
-      else {
+      } else {
         this.resMessage =
-        {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+          {
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
+          }
       }
     }, error => {
       this.resMessage = {
@@ -224,17 +229,20 @@ export class UpdateUserProfileComponent implements OnInit {
         middleEn: this.profileForm.value.middleNameEn != null ? this.profileForm.value.middleNameEn : this.userProfileDetails.mnameEn,
         familyAr: this.profileForm.value.familyNameAr != null ? this.profileForm.value.familyNameAr : this.userProfileDetails.fanameAr,
         familyEn: this.profileForm.value.familyNameEn != null ? this.profileForm.value.familyNameEn : this.userProfileDetails.faNameEn,
-        birthdate: this.profileForm.value.birthdate,
+        // birthdate: this.profileForm.value.birthdate,
+        birthdate: this.selectedDateType == 1 ? this.profileForm.value.birthdate : null,
+        birthGregorian: this.selectedDateType == 2 ? this.profileForm.value.birthdate : null,
         gender: this.profileForm.value.gender,
         mobile: this.profileForm.value.phoneNumber,
         countryCode: this.profileForm.value.countryCode,
-        city:this.profileForm.value.city,
+        city: this.profileForm.value.city,
         nationality: this.profileForm.value.nationality,
         eduLevel: this.profileForm.value.educationallevel,
         occupation: this.profileForm.value.occupation,
         address: this.profileForm.value.address,
         quraanMemorizeAmount: this.profileForm.value.quraanMemorization,
         ejazaIds: this.ejazaAttachmentIds,
+        birthDispMode: this.selectedDateType
       }
 
       this.coursesMessage = {};
@@ -283,8 +291,7 @@ export class UpdateUserProfileComponent implements OnInit {
               message: res.message,
               type: BaseConstantModel.SUCCESS_TYPE
             }
-          }
-          else {
+          } else {
             this.isSubmit = false;
             this.resMessage = {
               message: res.message,
@@ -299,8 +306,7 @@ export class UpdateUserProfileComponent implements OnInit {
           }
         }
       );
-    }
-    else {
+    } else {
       this.resMessage = {
         message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
         type: BaseConstantModel.DANGER_TYPE
@@ -327,17 +333,16 @@ export class UpdateUserProfileComponent implements OnInit {
           address: [''],// address: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
           phoneNumber: ['', [Validators.required/*,Validators.pattern(BaseConstantModel.mobilePattern), Validators.minLength(6), Validators.maxLength(16)*/]],
           occupation: [null, Validators.required],
-          countryCode: [null, Validators.required],          
+          countryCode: [null, Validators.required],
           city: [null, Validators.required],
-          quraanMemorization:['', [Validators.pattern(BaseConstantModel.numberBiggerThanZero)]],
+          quraanMemorization: ['', [Validators.pattern(BaseConstantModel.numberBiggerThanZero)]],
           userSheikhs: [],
           userArchives: [],
           userCourses: []
 
         }
       )
-    }
-    else {
+    } else {
       this.profileForm = this.fb.group(
         {
           firstNameEn: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
@@ -353,7 +358,7 @@ export class UpdateUserProfileComponent implements OnInit {
           occupation: [null, Validators.required],
           countryCode: [null, Validators.required],
           city: [null, Validators.required],
-          quraanMemorization:['', [Validators.pattern(BaseConstantModel.numberBiggerThanZero)]],
+          quraanMemorization: ['', [Validators.pattern(BaseConstantModel.numberBiggerThanZero)]],
           userSheikhs: [],
           userArchives: [],
           userCourses: []
@@ -366,7 +371,7 @@ export class UpdateUserProfileComponent implements OnInit {
   PopulateForm() {
     if (this.translate.currentLang === LanguageEnum.ar) {
       this.f.firstNameAr.setValue(this.userProfileDetails?.fnameAr ? this.userProfileDetails?.fnameAr : this.userProfileDetails?.fnameEn);
-      this.f.middleNameAr.setValue(this.userProfileDetails?.mnameAr ? this.userProfileDetails?.mnameAr : this.userProfileDetails?.mnameEn );
+      this.f.middleNameAr.setValue(this.userProfileDetails?.mnameAr ? this.userProfileDetails?.mnameAr : this.userProfileDetails?.mnameEn);
       this.f.familyNameAr.setValue(this.userProfileDetails?.fanameAr ? this.userProfileDetails?.fanameAr : this.userProfileDetails?.faNameEn);
     }
     if (this.translate.currentLang === LanguageEnum.en) {
@@ -385,11 +390,22 @@ export class UpdateUserProfileComponent implements OnInit {
     //       .slice(0, 10)
     //   );
     // }
-    let date = new Date(this.userProfileDetails?.birthdate || '');
+    // let date = new Date(this.userProfileDetails?.birthdate || '');
+    //
+    // this.hijriBirthDateInputParam = {year : date.getFullYear(), month : date.getMonth() + 1, day:date.getDay()}
+    // this.f.birthdate.setValue(date);
+    if (this.userProfileDetails.birthDispMode == 1) {
+      this.updateCalenderType.selectedDateType = DateType.Hijri;
+      let date = new Date(this.userProfileDetails?.birthdate || '');
+      this.hijriBirthDateInputParam = {year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate()}
+      this.f.hijriBirthDate.setValue(this.userProfileDetails?.birthdate);
 
-    this.hijriBirthDateInputParam = {year : date.getFullYear(), month : date.getMonth() + 1, day:date.getDay()}
-    this.f.birthdate.setValue(date);
-
+    } else {
+      this.updateCalenderType.selectedDateType = DateType.Gregorian;
+      let date = new Date(this.userProfileDetails?.birthGregorian || '');
+      this.hijriBirthDateInputParam = {year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate()}
+      this.f.hijriBirthDate.setValue(this.userProfileDetails?.birthGregorian);
+    }
     this.f.nationality.setValue(this.userProfileDetails?.nationality);
     this.f.occupation.setValue(this.userProfileDetails?.occupation);
     this.f.educationallevel.setValue(this.userProfileDetails?.eduLevel);
@@ -447,8 +463,7 @@ export class UpdateUserProfileComponent implements OnInit {
     this.userService.updateUserProfilePic(formData).subscribe(res => {
       if (res.isSuccess) {
         this.userProfileDetails.proPic = res.data as string;
-      }
-      else {
+      } else {
         this.resMessage = {
           message: res.message,
           type: BaseConstantModel.DANGER_TYPE
@@ -498,10 +513,10 @@ export class UpdateUserProfileComponent implements OnInit {
         console.log(error);
         this.fileUploadModel = [];
         this.resMessage =
-        {
-          message: error,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+          {
+            message: error,
+            type: BaseConstantModel.DANGER_TYPE
+          }
       }
     )
   }
@@ -615,11 +630,44 @@ export class UpdateUserProfileComponent implements OnInit {
     this.f.phoneNumber.setValue(phoneNumber);
   }
 
-  Hijri(date: any) {
-    date = date.year + '/' + date.month + '/' + date.day;
-    console.log("Hijri date", date)
-    this.hijriBinding = date
+  Hijri(data: any) {
+    // date = date.year + '/' + date.month + '/' + date.day;
+    // console.log("Hijri date", date)
+    // this.hijriBinding = date
+    data.selectedDateValue = data.selectedDateValue.year + '/' + data.selectedDateValue.month + '/' + data.selectedDateValue.day;
+    // console.log("Hijri date", data.date)
+    this.hijriBinding = data.selectedDateValue
+    this.selectedDateType = data.selectedDateType;
+    this.f.birthdate.setValue(data.selectedDateValue);
+  }
 
-    this.f.birthdate.setValue(date);
+  onDragOver(event: any) {
+    event.preventDefault();
+  }
+
+// From drag and drop
+  onDropSuccess(event: any) {
+    event.preventDefault();
+
+    this.onFileChange(event.dataTransfer.files);
+  }
+
+// From attachment link
+  onChange(event: any) {
+    this.onFileChange(event.target.files);
+  }
+
+  setHijri() {
+    let toDayHijriDate = this.dateFormatterService.GetTodayHijri()
+    toDayHijriDate.day = toDayHijriDate.day - 1;
+    this.maxHijriDate = toDayHijriDate;
+    console.log("maxHijri", this.maxHijriDate);
+  }
+
+  setGreg() {
+    let toDayGreDate = this.dateFormatterService.GetTodayGregorian()
+    toDayGreDate.day = toDayGreDate.day - 1;
+    this.maxGregDate = toDayGreDate;
+    console.log("maxGregDate", this.maxGregDate);
   }
 }

@@ -40,6 +40,8 @@ export class ProgramsListComponent implements OnInit {
   collectionOfLookup = {} as ILookupCollection;
   listOfLookup: string[] = ['PROG_TYPES'];
   programTypesList: IProgramType[] = [];
+
+
   constructor(private scientifcMaterialService: ScientificMaterialService,
     private programService: ProgramService,
     public translate: TranslateService,
@@ -108,7 +110,7 @@ export class ProgramsListComponent implements OnInit {
       programTypes : this.programTypesList,
       name: this.programsbyAdvancedFilter.name,
       duration: this.programsbyAdvancedFilter.duration,
-      isTest: this.programsbyAdvancedFilter.isTest,
+      isAdmissionTest: this.programsbyAdvancedFilter.isAdmissionTest,
       stuNum: this.programsbyAdvancedFilter.stuNum,
       techNum: this.programsbyAdvancedFilter.techNum,
       isPeriodicExam : this.programsbyAdvancedFilter.isPeriodicExam,
@@ -167,6 +169,7 @@ export class ProgramsListComponent implements OnInit {
 
   clearNameFilter() {
     this.programsbyAdvancedFilter.name = '';
+    this.loadProgramsbyAdvancedFilter();
   }
   clearProgTypeFilter(item: IProgramType) {
     let it = this.programTypesList.filter(i => i.progTypeId === item.progTypeId)[0];
@@ -184,7 +187,7 @@ export class ProgramsListComponent implements OnInit {
     this.loadProgramsbyAdvancedFilter();
   }
   clearTestFilter() {
-    this.programsbyAdvancedFilter.isTest = undefined;
+    this.programsbyAdvancedFilter.isAdmissionTest = undefined;
     this.loadProgramsbyAdvancedFilter();
   }
   clearTechNum() {

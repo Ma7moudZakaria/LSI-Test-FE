@@ -7,4 +7,6 @@ export interface IViewUser {
     hijriBirthDate?:string;
     arbNatName?:string;
     engNatName?:string;
+    birthDispMode?:number;
+    birthGregorian?:string;
 }

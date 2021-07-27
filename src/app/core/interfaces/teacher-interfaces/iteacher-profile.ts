@@ -5,7 +5,7 @@ import { ITeacherProfileLookup } from "./iteacher-profile-lookup";
 import { ITeacherProfileProgramDegreeLookup } from "./iteacher-profile-program-lookup";
 
 export interface ITeacherProfile{
-    
+
     fnameAr?:string;
     mnameAr?:string;
     fanameAr?:string;
@@ -16,7 +16,7 @@ export interface ITeacherProfile{
     mobile?:string;
     address?:string;
     gregBirthDate?:string;
-    hijriBirthDate?:string;
+    birthdate?:string;
     nationality?:string;
     arbNatName?:string;
     engNatName?:string;
@@ -38,7 +38,7 @@ export interface ITeacherProfile{
     eduDate?: string;
     eduUnitAr?:string;
     eduUnitEn?:string;
-    eduNum?: number;    
+    eduNum?: number;
     entity?:string;
     isHasQuranExp?:boolean;
     isHasTeachSunnaExp?:boolean;
@@ -52,7 +52,8 @@ export interface ITeacherProfile{
     workingPlatForm?:string;
     workingPlatFormAr?:string;
     workingPlatFormEn?:string;
-    interviewId?:string;
+    interviewHijri?:string;
+    interviewGregorian?:string;
     interviewAr?:string;
     interviewEn?:string;
     interviewTime?:string;
@@ -66,4 +67,7 @@ export interface ITeacherProfile{
     availabilityDays ?: ITeacherProfileAvailabilityLookup[];
     rewayats ?: ITeacherProfileLookup[];
     languages ?: ITeacherProfileLookup[];
+    birthGregorian?:string;
+    birthDispMode?:number;
+    interviewDisplayMode?:number;
 }

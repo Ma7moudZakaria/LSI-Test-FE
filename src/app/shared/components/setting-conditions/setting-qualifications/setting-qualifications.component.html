@@ -31,7 +31,7 @@
            
         </div>  
         <div class="row">
-            <div class="badges ">
+            <div class="badges">
                 <span *ngFor="let p of selectedQualification"
                     class="badge badge-info p-2">{{translate.currentLang == langEnum.en? p.nameEn :p.nameAr}}
                     <a (click)="removeItemFromSelectedQualification(p)"><i class="fas fa-times-circle"></i></a>
@@ -77,13 +77,13 @@
         <span>  &nbsp;  : </span>
         <span>  &nbsp; </span>
      </label>
-     <div class="badges ">
+     <label class="badges">
         <span *ngFor="let p of selectedQualification"
             class="badge badge-info p-2">{{translate.currentLang == langEnum.en? p.nameEn :p.nameAr}}
         </span>
-        <span>  &nbsp; </span>
-        <span *ngIf="qualificationModel.isRequired" class="requiredFlag">{{ "GENERAL.MANDATORY" | translate }} </span>
-    </div>
+        <span>  &nbsp; <span *ngIf="qualificationModel.isRequired" class="requiredFlag">{{ "GENERAL.MANDATORY" | translate }} </span></span>
+       
+    </label>
 </ng-container>
 
 

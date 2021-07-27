@@ -35,12 +35,12 @@ export class BasicInformationComponent implements OnInit {
   closeResult = '';
   isShow = false;
   programName: string | undefined;
-  prgPubliDate:string | undefined;
-  programConditionsPredefinedList:IProgramConditionsModel[] | undefined;
-  programConditionsCustomList:IprogramPredefinedCustomConditionsModel[] | undefined;
+  prgPubliDate: string | undefined;
+  programConditionsPredefinedList: IProgramConditionsModel[] | undefined;
+  programConditionsCustomList: IprogramPredefinedCustomConditionsModel[] | undefined;
   errorMessage?: string;
-  programConditionsEnum=programPredefinedConditionsEnum;
-  programConditionViewMoodEnum=ProgramConditionViewMoodEnum;
+  programConditionsEnum = programPredefinedConditionsEnum;
+  programConditionViewMoodEnum = ProgramConditionViewMoodEnum;
 
   constructor(
     public translate: TranslateService,
@@ -49,7 +49,7 @@ export class BasicInformationComponent implements OnInit {
     private router: Router,
     private modalService: NgbModal,
     private alert: AlertifyService,
-    public programConditionsService:ProgramConditionsService) { }
+    public programConditionsService: ProgramConditionsService) { }
 
   ngOnInit(): void {
     this.basicInfoDetails = this.progBasicInfoDetails;
@@ -60,11 +60,11 @@ export class BasicInformationComponent implements OnInit {
     }
 
     console.log("progBasicInfoDetails ===========>", this.progBasicInfoDetails);
-    this. getProgramConditionsLisByProgId();
+    this.getProgramConditionsLisByProgId();
   }
 
   ngOnChanges(changes: any) {
-    this. getProgramConditionsLisByProgId();
+    this.getProgramConditionsLisByProgId();
   }
 
   copyProgramData(progName?: string) {
@@ -197,24 +197,24 @@ export class BasicInformationComponent implements OnInit {
   }
 
   getProgramConditionsLisByProgId() {
-    this.programConditionsService.getProgramConditionsByProgId(this.progBasicInfoDetails?.id|| '').subscribe(res => {
+    this.programConditionsService.getProgramConditionsByProgId(this.progBasicInfoDetails?.id || '').subscribe(res => {
       var response = <BaseResponseModel>res;
       if (response.isSuccess) {
         let programConditionsList = res.data as IProgramConditionsModel[];
-        this.programConditionsPredefinedList= programConditionsList .filter(x=>x.isCustom==false) ;
-        this.programConditionsCustomList=programConditionsList .filter(x=>x.isCustom).map(m=>({
-         id:m.id ,
-         title:m.title ,
-         no:m.no,
-          conditionJson:m.progCondValue !="0"?m.progCondValue:m.conditionContain,
-          isRequired:m.condRequired,
-          conditionModel:  JSON.parse(m.conditionContain || "{}")
+        this.programConditionsPredefinedList = programConditionsList.filter(x => x.isCustom == false);
+        this.programConditionsCustomList = programConditionsList.filter(x => x.isCustom).map(m => ({
+          id: m.id,
+          title: m.title,
+          no: m.no,
+          conditionJson: m.progCondValue != "0" ? m.progCondValue : m.conditionContain,
+          isRequired: m.condRequired,
+          conditionModel: JSON.parse(m.conditionContain || "{}")
         }));
       }
       else {
         this.errorMessage = response.message;
       }
-    } ,
+    },
       error => {
         console.log(error);
       });

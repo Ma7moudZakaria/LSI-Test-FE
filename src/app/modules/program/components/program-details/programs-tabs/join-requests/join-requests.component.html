@@ -1,4 +1,4 @@
-<div class="tab_page  ">
+<div class="tab_page">
   
     <div class=" part1 list_exams">
 
@@ -6,7 +6,7 @@
             <div class="list-group list-group_program-list">
                
                   <p class="mb-4">{{'JOINING_REQUEST.MODELS' | translate}}</p>
-            <div class="internal_scroll_list_group" >
+            <div class="internal_scroll_list_group" *ngIf='programDetails && programDetails?.progBaseInfo && programDetails?.progBaseInfo?.prgIsConExa'>
                     <!-- <a class="list-group-item d-flex"  > 
                     <span>  {{'PROGRAMS_LIST.ALL' | translate}}</span>        
                    </a> -->
@@ -20,7 +20,7 @@
                 </div> -->
             </div>
     </div>
-    <div class="part2  list_exams">
+    <div class="part2  list_exams" *ngIf='programDetails && programDetails?.progBaseInfo && programDetails?.progBaseInfo?.prgIsConExa'>
         <p class="mb-2 name_prog"> {{ programDetails?.progBaseInfo?.prgName }}</p>
         <p class="mb-3 head"> {{ this.translate.currentLang === langEnum.en? progExamFormsDetails?.engExamFormNam : progExamFormsDetails?.arabExamFormNam }} <small class="name_prog">{{'JOINING_REQUEST.DEGREE' | translate}} {{degree}}</small></p>
 
