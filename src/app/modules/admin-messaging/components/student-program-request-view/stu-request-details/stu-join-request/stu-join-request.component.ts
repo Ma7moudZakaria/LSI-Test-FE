@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { StudentProgramSubscriptionStatusEnum } from 'src/app/core/enums/subscriptionStatusEnum/student-program-subscription-status-enum.enum';
 import { IStudentSubscriptionModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-subscription-model';
 import { StuTabRequestComponent } from './stu-tab-request/stu-tab-request.component';
+import { IStudentSubscriptionFilterRequestModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-subscription-filter-request-model';
+import { StudentProgramSubscriptionStatusEnum } from 'src/app/core/enums/subscriptionStatusEnum/student-program-subscription-status-enum.enum';
 
 @Component({
   selector: 'app-stu-join-request',
@@ -10,6 +11,8 @@ import { StuTabRequestComponent } from './stu-tab-request/stu-tab-request.compon
 })
 export class StuJoinRequestComponent implements OnInit {
   @ViewChild(StuTabRequestComponent) stuRejectReq: StuTabRequestComponent | undefined;
+  filter: IStudentSubscriptionFilterRequestModel = { statusNum: StudentProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
+
 
   showTap: string = 'Pending';
   // roleEnum: RoleEnum = RoleEnum.Teacher;

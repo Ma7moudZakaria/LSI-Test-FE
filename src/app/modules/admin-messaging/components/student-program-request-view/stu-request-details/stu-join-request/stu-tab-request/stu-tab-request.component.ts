@@ -7,6 +7,8 @@ import { IStudentSubscriptionModel } from 'src/app/core/interfaces/student-progr
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 
 @Component({
   selector: 'app-stu-tab-request',
@@ -22,21 +24,33 @@ export class StuTabRequestComponent implements OnInit {
   statusEnum = StudentProgramSubscriptionStatusEnum;
   filter: IStudentSubscriptionFilterRequestModel = { statusNum: StudentProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
   studProgsSubsItems: IStudentSubscriptionModel[] = [];
+  totalCount = 0;
 
-  constructor(private progSubsService: StudentProgramSubscriptionServicesService, private alertify: AlertifyService) {
+  constructor(private progSubsService: StudentProgramSubscriptionServicesService,
+    public translate: TranslateService,
+    private alertify: AlertifyService) {
 
   }
   ngOnInit(): void {
+    this.filter.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn'
+
     this.getStudentProgramSubscriptionsFilter();
   }
-
   getStudentProgramSubscriptionsFilter() {
     this.progSubsService.getStudentsSubscriptionsFilter(this.filter).subscribe(res => {
 
       if (res.isSuccess) {
         this.studProgsSubsItems = res.data;
         console.log("studProgsSubsItem ", this.studProgsSubsItems)
-
+        this.studProgsSubsItems?.forEach(function (item) {
+          // item.scCreatedOn = item.scCreatedOn ? new Date(item.scCreatedOn).toDateString(): '';
+        });
+        this.totalCount = res.count ? res.count : 0;
+        if (this.filter.skip > 0 && (!this.studProgsSubsItems || this.studProgsSubsItems.length === 0)) {
+          this.filter.page -= 1;
+          this.filter.skip = (this.filter.page - 1) * this.filter.take;
+          this.getStudentProgramSubscriptionsFilter();
+        }
       }
       else {
 
@@ -112,6 +126,24 @@ export class StuTabRequestComponent implements OnInit {
 
   }
 
+  stuPendingChangePage(event: IStudentSubscriptionFilterRequestModel) {
+    this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Pending;
+    this.filter = event;
+    this.getStudentProgramSubscriptionsFilter();
+
+  }
+  stuAcceptChangePage(event: IStudentSubscriptionFilterRequestModel) {
+    this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Accept;
+    this.filter = event;
+    this.getStudentProgramSubscriptionsFilter();
+
+  }
+  stuRejectedChangePage(event: IStudentSubscriptionFilterRequestModel) {
+    this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Rejected;
+    this.filter = event;
+    this.getStudentProgramSubscriptionsFilter();
+
+  }
 }
 
 
