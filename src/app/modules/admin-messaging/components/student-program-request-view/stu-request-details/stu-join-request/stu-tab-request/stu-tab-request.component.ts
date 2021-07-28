@@ -65,7 +65,7 @@ export class StuTabRequestComponent implements OnInit {
 
   onPendingChange() {
     this.showTap = StudentProgramSubscriptionStatusEnum.Pending
-    this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Pending
+    this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Pending;
     this.getStudentProgramSubscriptionsFilter();
   }
 
@@ -144,6 +144,13 @@ export class StuTabRequestComponent implements OnInit {
     this.getStudentProgramSubscriptionsFilter();
 
   }
+
+  filterByText(searchKey: string) {
+    this.filter.progName = searchKey;
+    this.getStudentProgramSubscriptionsFilter();
+  }
+
+
 }
 
 
