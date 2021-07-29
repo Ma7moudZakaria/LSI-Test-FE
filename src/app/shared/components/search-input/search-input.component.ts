@@ -10,15 +10,15 @@ import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 export class SearchInputComponent implements OnInit {
   langEnum = LanguageEnum;
   @Output() searchTerm =  new EventEmitter<string>();
-  @Input() textName:string='';
+  @Input() searchKey:string='';
   constructor(public translate : TranslateService) { }
 
   ngOnInit(): void {
     
   }
 
-  updateSearchTerm(programName?:string){
-    this.searchTerm.emit(programName);
+  updateSearchTerm(){
+    this.searchTerm.emit(this.searchKey);
   }
   
 }

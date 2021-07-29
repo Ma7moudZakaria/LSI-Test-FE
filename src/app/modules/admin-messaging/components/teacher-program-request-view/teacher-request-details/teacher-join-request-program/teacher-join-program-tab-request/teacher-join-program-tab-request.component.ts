@@ -28,7 +28,7 @@ export class TeacherJionProgramTabRequestComponent implements OnInit {
   typeEnum: TeacheProgramSubscriptionStatusEnum = TeacheProgramSubscriptionStatusEnum.Pending;
   showTap: TeacheProgramSubscriptionStatusEnum = TeacheProgramSubscriptionStatusEnum.Pending;
   statusEnum = TeacheProgramSubscriptionStatusEnum;
-  teacherName:string='p';
+  //teacherName:string='';
   constructor(
     public translate: TranslateService,
     private teacherProgramSubscriptionServicesService: TeacherProgramSubscriptionServicesService,
@@ -70,23 +70,23 @@ export class TeacherJionProgramTabRequestComponent implements OnInit {
   }
 
   onPendingChange() {
-    this.teacherName='';
-    this.teacherProgramSubscriptionFilterRequestModel.usrName=this.teacherName;
+    //this.teacherName='';
+    this.teacherProgramSubscriptionFilterRequestModel.usrName=''//=this.teacherName;
     this.showTap = TeacheProgramSubscriptionStatusEnum.Pending;
     this.teacherProgramSubscriptionFilterRequestModel.statusNum = TeacheProgramSubscriptionStatusEnum.Pending
     this.getTeachersProgramsSubscriptions();
   }
 
   onAcceptChange() {
-    this.teacherName='pp';
-    this.teacherProgramSubscriptionFilterRequestModel.usrName=this.teacherName;
+    //this.teacherName='';
+    this.teacherProgramSubscriptionFilterRequestModel.usrName=''//=this.teacherName;
     this.showTap = TeacheProgramSubscriptionStatusEnum.Accept;
     this.teacherProgramSubscriptionFilterRequestModel.statusNum = TeacheProgramSubscriptionStatusEnum.Accept
     this.getTeachersProgramsSubscriptions();
   }
   onRejectedChange() {
-    this.teacherName='';
-    this.teacherProgramSubscriptionFilterRequestModel.usrName=this.teacherName;
+    //this.teacherName='';
+    this.teacherProgramSubscriptionFilterRequestModel.usrName=''//=this.teacherName;
     this.showTap = TeacheProgramSubscriptionStatusEnum.Rejected
     this.teacherProgramSubscriptionFilterRequestModel.statusNum = TeacheProgramSubscriptionStatusEnum.Rejected
     this.getTeachersProgramsSubscriptions();
