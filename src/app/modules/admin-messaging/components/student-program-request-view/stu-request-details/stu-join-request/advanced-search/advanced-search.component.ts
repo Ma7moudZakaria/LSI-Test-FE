@@ -19,7 +19,7 @@ export class AdvancedSearchComponent implements OnInit {
   @Output() AdvancedSearch = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
   @Input() statusAdvancedSearch: StudentProgramSubscriptionStatusEnum | undefined
   filter: IStudentSubscriptionFilterRequestModel = { statusNum: StudentProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
-  advancedSearchInputs = {} as IStudentSubscriptionFilterRequestModel
+  @Input() advancedSearchInputs = {} as IStudentSubscriptionFilterRequestModel
   resultMessage: BaseMessageModel = {};
   studProgsSubsItems: IStudentSubscriptionModel[] = [];
 

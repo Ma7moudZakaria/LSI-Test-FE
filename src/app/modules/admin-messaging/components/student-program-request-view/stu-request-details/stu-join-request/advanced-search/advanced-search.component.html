@@ -5,7 +5,7 @@
 
     <div class="form-group">
         <label  class="label" for="matrialTitleAr">أسم صاحب الطلب</label>
-        <input type="text" class="form-control"  [(ngModel)]="advancedSearch.usrName"
+        <input type="text" class="form-control"  [(ngModel)]="advancedSearchInputs.usrName"
         
        [ngModelOptions]="{standalone: true}">
     </div>
@@ -15,7 +15,7 @@
     
             <div class="d-flex">
                 <div class="input-group">
-                    <select class="form-control"  [(ngModel)]="advancedSearch.progName"    [ngModelOptions]="{standalone: true}">
+                    <select class="form-control"  [(ngModel)]="advancedSearchInputs.progName"    [ngModelOptions]="{standalone: true}">
                         <option   value="">{{'SCIENTIFIC_MATERIAL.SELECTOPTION' | translate}}</option>
                         <option *ngFor="let item of ProgramsList" value="{{item.id}}">
                             {{item.progName}}
@@ -30,18 +30,18 @@
 
         <div class="form-group">
               <label  class="label">رقم الطلب</label>
-            <input type="text" class="form-control" [(ngModel)]="advancedSearch.numberRequest"    [ngModelOptions]="{standalone: true}">
+            <input type="text" class="form-control" [(ngModel)]="advancedSearchInputs.numberRequest"    [ngModelOptions]="{standalone: true}">
             </div>
 
             <div class="form-group">
                 <div class="row">
                     <div class="col-6">
                           <label  class="label"> من </label>
-                        <input type="time" class="form-control"  [(ngModel)]="advancedSearch.fromDate"    [ngModelOptions]="{standalone: true}">
+                        <input type="time" class="form-control"  [(ngModel)]="advancedSearchInputs.fromDate"    [ngModelOptions]="{standalone: true}">
                     </div>
                     <div class="col-6">
                           <label  class="label"> الى </label>
-                        <input type="time" class="form-control"  [(ngModel)]="advancedSearch.toDate"    [ngModelOptions]="{standalone: true}">
+                        <input type="time" class="form-control"  [(ngModel)]="advancedSearchInputs.toDate"    [ngModelOptions]="{standalone: true}">
                     </div>
 
                 </div>
