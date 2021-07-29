@@ -17,6 +17,8 @@ import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 })
 export class StuTabRequestComponent implements OnInit {
   @Output() itemStuReq = new EventEmitter<IStudentSubscriptionModel>();
+  @Output() AdvancedSearch = new EventEmitter<string>();
+
   typeEnum: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending;
   resultMessage: BaseMessageModel = {};
 
@@ -66,18 +68,28 @@ export class StuTabRequestComponent implements OnInit {
   onPendingChange() {
     this.showTap = StudentProgramSubscriptionStatusEnum.Pending
     this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Pending;
+    this.filter.progName = '';
+    this.filterByText(this.filter.progName)
     this.getStudentProgramSubscriptionsFilter();
+
+
   }
 
   onAcceptChange() {
     this.showTap = StudentProgramSubscriptionStatusEnum.Accept
     this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Accept
+    this.filter.progName = '';
+    this.filterByText(this.filter.progName)
     this.getStudentProgramSubscriptionsFilter();
+
   }
   onRejectedChange() {
     this.showTap = StudentProgramSubscriptionStatusEnum.Rejected
     this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Rejected
+    this.filter.progName = '';
+    this.filterByText(this.filter.progName)
     this.getStudentProgramSubscriptionsFilter();
+
   }
   rejecteStuRequestMethod(event: IStudentSubscriptionModel) {
     this.itemStuReq.emit(event)
@@ -150,7 +162,11 @@ export class StuTabRequestComponent implements OnInit {
     this.getStudentProgramSubscriptionsFilter();
   }
 
+  openAvancedSearch() {
+    // this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Pending;
 
+    this.AdvancedSearch.emit()
+  }
 }
 
 

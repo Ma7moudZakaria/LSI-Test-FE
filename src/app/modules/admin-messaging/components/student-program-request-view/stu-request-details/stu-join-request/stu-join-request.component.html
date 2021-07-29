@@ -1,13 +1,18 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <app-stu-tab-request (itemStuReq)="openRejectRequest($event)"></app-stu-tab-request>
+            <app-stu-tab-request (itemStuReq)="openRejectRequest($event)" 
+            (AdvancedSearch)="openStuAdvancedSearchPopup()"></app-stu-tab-request>
         </div>
     </div>
     <div class="overlay" *ngIf="openStuRejectOverlay">
             <app-stu-rejected [itemStuReq]='itemStuReq' (closeRejectedRequest)="closeRejectedRequest()"></app-stu-rejected>
     </div>
-    
+    <div class="overlay" *ngIf="openStuAdvancedSearch">
+        <app-advanced-search ></app-advanced-search>
+    </div>
+
+    advancedSearch
 </div>
 
-<div class="showoverlay" (click)="closeOverlay()" [ngClass]="{'disableBlock': openStuRejectOverlay }"></div>
+<!-- <div class="showoverlay" (click)="closeOverlay()" [ngClass]="{'disableBlock': openStuRejectOverlay }"></div> -->
