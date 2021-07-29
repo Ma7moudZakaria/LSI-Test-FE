@@ -1,7 +1,5 @@
 <div class="container-fluid reuest_container" > 
   <div class="col-5 offset-7 text-right d-flex align-items-center">
-    teacher -  {{this.teacherProgramSubscriptionFilterRequestModel.usrName}}
-    
     <app-search-input (searchTerm)=searchByText($event) [searchKey]='this.teacherProgramSubscriptionFilterRequestModel.usrName || ""'></app-search-input>
 <a class="advanced_search">بحث متقدم</a>
 </div>

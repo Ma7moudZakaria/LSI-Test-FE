@@ -70,23 +70,20 @@ export class TeacherJionProgramTabRequestComponent implements OnInit {
   }
 
   onPendingChange() {
-    //this.teacherName='';
-    this.teacherProgramSubscriptionFilterRequestModel.usrName=''//=this.teacherName;
+    this.teacherProgramSubscriptionFilterRequestModel.usrName='';
     this.showTap = TeacheProgramSubscriptionStatusEnum.Pending;
     this.teacherProgramSubscriptionFilterRequestModel.statusNum = TeacheProgramSubscriptionStatusEnum.Pending
     this.getTeachersProgramsSubscriptions();
   }
 
   onAcceptChange() {
-    //this.teacherName='';
-    this.teacherProgramSubscriptionFilterRequestModel.usrName=''//=this.teacherName;
+    this.teacherProgramSubscriptionFilterRequestModel.usrName='';
     this.showTap = TeacheProgramSubscriptionStatusEnum.Accept;
     this.teacherProgramSubscriptionFilterRequestModel.statusNum = TeacheProgramSubscriptionStatusEnum.Accept
     this.getTeachersProgramsSubscriptions();
   }
   onRejectedChange() {
-    //this.teacherName='';
-    this.teacherProgramSubscriptionFilterRequestModel.usrName=''//=this.teacherName;
+    this.teacherProgramSubscriptionFilterRequestModel.usrName='';
     this.showTap = TeacheProgramSubscriptionStatusEnum.Rejected
     this.teacherProgramSubscriptionFilterRequestModel.statusNum = TeacheProgramSubscriptionStatusEnum.Rejected
     this.getTeachersProgramsSubscriptions();
