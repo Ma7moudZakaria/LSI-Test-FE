@@ -43,5 +43,12 @@ export class StuJoinRequestComponent implements OnInit {
     this.openStuAdvancedSearch = !this.openStuAdvancedSearch;
     console.log("openStuAdvancedSearch", this.openStuAdvancedSearch)
   }
+  closeStuAdvancedSearch() {
+    this.openStuAdvancedSearch = false
 
+  }
+  statusAdvancedSearch: any
+  advancedSearchStatus(event: StudentProgramSubscriptionStatusEnum) {
+    this.statusAdvancedSearch = event
+  }
 }

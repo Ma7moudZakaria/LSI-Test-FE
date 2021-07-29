@@ -18,7 +18,7 @@ import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 export class StuTabRequestComponent implements OnInit {
   @Output() itemStuReq = new EventEmitter<IStudentSubscriptionModel>();
   @Output() AdvancedSearch = new EventEmitter<string>();
-
+  @Output() advancedSearchStatus = new EventEmitter<StudentProgramSubscriptionStatusEnum>();
   typeEnum: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending;
   resultMessage: BaseMessageModel = {};
 
@@ -35,7 +35,7 @@ export class StuTabRequestComponent implements OnInit {
   }
   ngOnInit(): void {
     this.filter.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn'
-
+    this.onPendingChange()
     this.getStudentProgramSubscriptionsFilter();
   }
   getStudentProgramSubscriptionsFilter() {
@@ -71,9 +71,11 @@ export class StuTabRequestComponent implements OnInit {
     this.filter.progName = '';
     this.filterByText(this.filter.progName)
     this.getStudentProgramSubscriptionsFilter();
+    this.advancedSearchStatus.emit(StudentProgramSubscriptionStatusEnum.Pending)
 
 
   }
+
 
   onAcceptChange() {
     this.showTap = StudentProgramSubscriptionStatusEnum.Accept
@@ -81,6 +83,7 @@ export class StuTabRequestComponent implements OnInit {
     this.filter.progName = '';
     this.filterByText(this.filter.progName)
     this.getStudentProgramSubscriptionsFilter();
+    this.advancedSearchStatus.emit(StudentProgramSubscriptionStatusEnum.Accept)
 
   }
   onRejectedChange() {
@@ -89,6 +92,7 @@ export class StuTabRequestComponent implements OnInit {
     this.filter.progName = '';
     this.filterByText(this.filter.progName)
     this.getStudentProgramSubscriptionsFilter();
+    this.advancedSearchStatus.emit(StudentProgramSubscriptionStatusEnum.Rejected)
 
   }
   rejecteStuRequestMethod(event: IStudentSubscriptionModel) {
@@ -164,7 +168,6 @@ export class StuTabRequestComponent implements OnInit {
 
   openAvancedSearch() {
     // this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Pending;
-
     this.AdvancedSearch.emit()
   }
 }
