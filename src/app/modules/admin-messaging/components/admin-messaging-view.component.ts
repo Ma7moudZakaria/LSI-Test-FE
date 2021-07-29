@@ -11,16 +11,16 @@ import { ScientificProblemsComponent } from './scientific-problems-view/scientif
   styleUrls: ['./admin-messaging-view.component.scss']
 })
 export class AdminMessagingViewComponent implements OnInit {
-  
-  @ViewChild(ScientificProblemsComponent) scientificProblmChild:ScientificProblemsComponent | undefined;
-  
-  showtap:string='scientificProblem';
+
+  @ViewChild(ScientificProblemsComponent) scientificProblmChild: ScientificProblemsComponent | undefined;
+
+  showtap: string = 'student';
   // showAddReplyOverlay = false;
   // showAddScProbToQuestionBankOverlay = false;
   // scProbObjForAddReplyView : IScientificProblemGridItems = {}
   // scProbObjForAddToQuestionBankView : IScientificProblemGridItems = {}
 
-  constructor(public translate: TranslateService, private languageService : LanguageService) { }
+  constructor(public translate: TranslateService, private languageService: LanguageService) { }
 
   ngOnInit(): void {
     this.setCurrentLang();

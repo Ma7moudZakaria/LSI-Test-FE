@@ -197,7 +197,7 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   onStudentPageChange() {
     this.studentFilterRequestModel.skip = (this.studentFilterRequestModel.page - 1) * (this.studentFilterRequestModel.take);
     this.studentFilterEvent.emit(this.studentFilterRequestModel);
-    this.setTeacherAllChecked(false);
+    this.setStudentAllChecked(false);
   }
 
   rejecteStuRequest(event: IStudentSubscriptionModel) {

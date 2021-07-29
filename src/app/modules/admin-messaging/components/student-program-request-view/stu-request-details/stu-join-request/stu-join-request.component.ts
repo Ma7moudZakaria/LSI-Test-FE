@@ -13,11 +13,12 @@ export class StuJoinRequestComponent implements OnInit {
   @ViewChild(StuTabRequestComponent) stuRejectReq: StuTabRequestComponent | undefined;
   filter: IStudentSubscriptionFilterRequestModel = { statusNum: StudentProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
 
-
   showTap: string = 'Pending';
   // roleEnum: RoleEnum = RoleEnum.Teacher;
   itemStuReq: IStudentSubscriptionModel = {};
   openStuRejectOverlay: boolean = false
+  openStuAdvancedSearch: boolean = false
+
   constructor() { }
 
   ngOnInit(): void {
@@ -38,5 +39,16 @@ export class StuJoinRequestComponent implements OnInit {
     this.stuRejectReq?.getStudentProgramSubscriptionsFilter();
 
   }
+  openStuAdvancedSearchPopup() {
+    this.openStuAdvancedSearch = !this.openStuAdvancedSearch;
+    console.log("openStuAdvancedSearch", this.openStuAdvancedSearch)
+  }
+  closeStuAdvancedSearch() {
+    this.openStuAdvancedSearch = false
 
+  }
+  statusAdvancedSearch: any
+  advancedSearchStatus(event: StudentProgramSubscriptionStatusEnum) {
+    this.statusAdvancedSearch = event
+  }
 }

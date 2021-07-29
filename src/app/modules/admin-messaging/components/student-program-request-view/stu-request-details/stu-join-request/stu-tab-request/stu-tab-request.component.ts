@@ -17,6 +17,8 @@ import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 })
 export class StuTabRequestComponent implements OnInit {
   @Output() itemStuReq = new EventEmitter<IStudentSubscriptionModel>();
+  @Output() AdvancedSearch = new EventEmitter<string>();
+  @Output() advancedSearchStatus = new EventEmitter<StudentProgramSubscriptionStatusEnum>();
   typeEnum: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending;
   resultMessage: BaseMessageModel = {};
 
@@ -33,7 +35,7 @@ export class StuTabRequestComponent implements OnInit {
   }
   ngOnInit(): void {
     this.filter.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn'
-
+    this.onPendingChange()
     this.getStudentProgramSubscriptionsFilter();
   }
   getStudentProgramSubscriptionsFilter() {
@@ -65,19 +67,33 @@ export class StuTabRequestComponent implements OnInit {
 
   onPendingChange() {
     this.showTap = StudentProgramSubscriptionStatusEnum.Pending
-    this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Pending
+    this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Pending;
+    this.filter.progName = '';
+    this.filterByText(this.filter.progName)
     this.getStudentProgramSubscriptionsFilter();
+    this.advancedSearchStatus.emit(StudentProgramSubscriptionStatusEnum.Pending)
+
+
   }
+
 
   onAcceptChange() {
     this.showTap = StudentProgramSubscriptionStatusEnum.Accept
     this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Accept
+    this.filter.progName = '';
+    this.filterByText(this.filter.progName)
     this.getStudentProgramSubscriptionsFilter();
+    this.advancedSearchStatus.emit(StudentProgramSubscriptionStatusEnum.Accept)
+
   }
   onRejectedChange() {
     this.showTap = StudentProgramSubscriptionStatusEnum.Rejected
     this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Rejected
+    this.filter.progName = '';
+    this.filterByText(this.filter.progName)
     this.getStudentProgramSubscriptionsFilter();
+    this.advancedSearchStatus.emit(StudentProgramSubscriptionStatusEnum.Rejected)
+
   }
   rejecteStuRequestMethod(event: IStudentSubscriptionModel) {
     this.itemStuReq.emit(event)
@@ -143,6 +159,16 @@ export class StuTabRequestComponent implements OnInit {
     this.filter = event;
     this.getStudentProgramSubscriptionsFilter();
 
+  }
+
+  filterByText(searchKey: string) {
+    this.filter.progName = searchKey;
+    this.getStudentProgramSubscriptionsFilter();
+  }
+
+  openAvancedSearch() {
+    // this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Pending;
+    this.AdvancedSearch.emit()
   }
 }
 
