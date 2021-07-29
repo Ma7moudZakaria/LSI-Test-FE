@@ -1,4 +1,8 @@
 <div class="container-fluid reuest_container" > 
+  <div class="col-5 offset-7 text-right d-flex align-items-center">
+    <app-search-input (searchTerm)=searchByText($event)></app-search-input>
+<a class="advanced_search">بحث متقدم</a>
+</div>
 
   <div class="row group_header fix_margin w-100">
       <div class="item_group" (click)="onPendingChange()"
