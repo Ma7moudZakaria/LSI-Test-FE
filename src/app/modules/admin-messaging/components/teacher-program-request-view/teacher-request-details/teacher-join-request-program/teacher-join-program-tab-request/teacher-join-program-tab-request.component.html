@@ -1,6 +1,8 @@
 <div class="container-fluid reuest_container" > 
   <div class="col-5 offset-7 text-right d-flex align-items-center">
-    <app-search-input (searchTerm)=searchByText($event)></app-search-input>
+    teacher -  {{teacherName}}
+    
+    <app-search-input (searchTerm)=searchByText($event) [textName]='teacherName'></app-search-input>
 <a class="advanced_search">بحث متقدم</a>
 </div>
 
