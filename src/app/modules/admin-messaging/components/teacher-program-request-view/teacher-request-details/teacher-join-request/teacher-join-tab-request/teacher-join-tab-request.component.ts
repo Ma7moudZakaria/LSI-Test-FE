@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ITeacherSystemSubscriptionFilterRequest } from 'src/app/core/interfaces/teacher-interfaces/iteacher-system-subscription-filter-request';
 import { ITeacherSystemSubscription } from 'src/app/core/interfaces/teacher-interfaces/iteacher-systems-subscription';
@@ -7,6 +7,7 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 import { TeacherProfileService } from 'src/app/core/services/teacher-profile/teacher-profile.service';
+import { TeacherSystemCardRequestComponent } from 'src/app/shared/components/teacher-system-card-request/teacher-system-card-request.component';
 
 @Component({
   selector: 'app-teacher-join-tab-request',
@@ -14,11 +15,11 @@ import { TeacherProfileService } from 'src/app/core/services/teacher-profile/tea
   styleUrls: ['./teacher-join-tab-request.component.scss']
 })
 export class TeacherJionTabRequestComponent implements OnInit {
-
+ 
   resMessage: BaseMessageModel = {};
   listOfIds: string[] | undefined;
   teacherSystemFilter:ITeacherSystemSubscriptionFilterRequest | undefined;
-  teacherSystemSubscription:ITeacherSystemSubscription = {totalRows:0};
+  teacherSystemSubscription:Array<ITeacherSystemSubscription> | undefined;
 
   constructor(private lookupService: LookupService,
     private teacherService: TeacherProfileService,
@@ -27,6 +28,7 @@ export class TeacherJionTabRequestComponent implements OnInit {
 
   ngOnInit(): void {
     this.setCurrentLang();
+    this.getTeacherSystemSubscription();
   }
 
   setCurrentLang() {
@@ -44,7 +46,10 @@ export class TeacherJionTabRequestComponent implements OnInit {
     this.teacherSystemFilter = {};
     this.teacherService.getTeacherSystemSubscriptionAdvancedFilter(this.teacherSystemFilter).subscribe(res => {
       if (res.isSuccess) {
-        this.teacherSystemSubscription = res.data as ITeacherSystemSubscription; 
+        this.teacherSystemSubscription = res.data as Array<ITeacherSystemSubscription>; 
+
+       ;
+
         console.log("Teacher System Subscription :",this.teacherSystemSubscription);   
       }
       else {

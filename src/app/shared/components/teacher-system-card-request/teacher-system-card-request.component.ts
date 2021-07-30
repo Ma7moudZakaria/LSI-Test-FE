@@ -16,7 +16,7 @@ export class TeacherSystemCardRequestComponent implements OnInit {
   @Output() rejectTeacherSystemSubscription = new EventEmitter<IRejectTeacherSystemSubscription>();
   @Output() acceptTeacherSystemSubscriptions = new EventEmitter<string[]>();
 
-  @Input() teacherSystemSubscriptionModel: ITeacherSystemSubscription = {totalRows:0}
+  @Input() teacherSystemSubscriptionModel: Array<ITeacherSystemSubscription> | undefined
 
   teacherSystemSubscriptionIds:string[] | undefined
   langEnum = LanguageEnum;
@@ -24,7 +24,12 @@ export class TeacherSystemCardRequestComponent implements OnInit {
   constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
+    console.log("teacherSystemSubscriptionModel  : " , this.teacherSystemSubscriptionModel)
   } 
+
+  getTeacherSystemSubscription(model:ITeacherSystemSubscription []){
+    this.teacherSystemSubscriptionModel = model;    
+  }
 
   rejectTeacherSystemSubscriptionEve(teacherSubscripModel:ITeacherProgramSubscriptionModel){
     this.rejectTeacherSystemSubscription.emit(teacherSubscripModel);
