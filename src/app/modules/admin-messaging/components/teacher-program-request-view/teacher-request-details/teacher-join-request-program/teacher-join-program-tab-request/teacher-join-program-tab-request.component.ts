@@ -17,6 +17,7 @@ import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 export class TeacherJionProgramTabRequestComponent implements OnInit {
 
   @Output() rejectTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
+  @Output() AdvancedSearch = new EventEmitter<ITeacherProgramSubscriptionFilterRequestModel>();
 
   teacherProgramSubscriptionList: ITeacherProgramSubscriptionModel[] = [];
   teacherProgramSubscriptionFilterRequestModel: ITeacherProgramSubscriptionFilterRequestModel = { statusNum: TeacheProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
@@ -70,22 +71,19 @@ export class TeacherJionProgramTabRequestComponent implements OnInit {
   }
 
   onPendingChange() {
-    this.teacherProgramSubscriptionFilterRequestModel.usrName='';
+    this.teacherProgramSubscriptionFilterRequestModel={ usrName:'',statusNum: TeacheProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
     this.showTap = TeacheProgramSubscriptionStatusEnum.Pending;
-    this.teacherProgramSubscriptionFilterRequestModel.statusNum = TeacheProgramSubscriptionStatusEnum.Pending
     this.getTeachersProgramsSubscriptions();
   }
 
   onAcceptChange() {
-    this.teacherProgramSubscriptionFilterRequestModel.usrName='';
+    this.teacherProgramSubscriptionFilterRequestModel= { usrName:'',statusNum: TeacheProgramSubscriptionStatusEnum.Accept, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
     this.showTap = TeacheProgramSubscriptionStatusEnum.Accept;
-    this.teacherProgramSubscriptionFilterRequestModel.statusNum = TeacheProgramSubscriptionStatusEnum.Accept
     this.getTeachersProgramsSubscriptions();
   }
   onRejectedChange() {
-    this.teacherProgramSubscriptionFilterRequestModel.usrName='';
+    this.teacherProgramSubscriptionFilterRequestModel={ usrName:'',statusNum: TeacheProgramSubscriptionStatusEnum.Rejected, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
     this.showTap = TeacheProgramSubscriptionStatusEnum.Rejected
-    this.teacherProgramSubscriptionFilterRequestModel.statusNum = TeacheProgramSubscriptionStatusEnum.Rejected
     this.getTeachersProgramsSubscriptions();
   }
 
@@ -147,4 +145,15 @@ export class TeacherJionProgramTabRequestComponent implements OnInit {
     this.getTeachersProgramsSubscriptions();
 
   }
+
+  openAvancedSearch() {
+    this.AdvancedSearch.emit(this.teacherProgramSubscriptionFilterRequestModel)
+  }
+
+
+ advancedSearch(model?:ITeacherProgramSubscriptionFilterRequestModel) {
+    this.teacherProgramSubscriptionFilterRequestModel=model || { statusNum: TeacheProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
+    this.getTeachersProgramsSubscriptions();
+  }
+
 }

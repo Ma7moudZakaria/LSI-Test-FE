@@ -31,6 +31,7 @@ import { StuVacationsRequestComponent } from './components/student-program-reque
 import { StuMovingRequestComponent } from './components/student-program-request-view/stu-request-details/stu-moving-request/stu-moving-request.component';
 import { StuRejectedComponent } from './components/student-program-request-view/stu-request-details/stu-join-request/stu-rejected/stu-rejected.component';
 import { TeacheRejectedComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-join-request-program/teache-rejected/teache-rejected.component';
+import { AdvancedSearchTeacherComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-join-request-program/advanced-search/advanced-search.component';
 // import { TeacherTabRequestComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-join-request-program/teacher-tab-request/teacher-tab-request.component';
 
 
@@ -49,7 +50,7 @@ import { TeacheRejectedComponent } from './components/teacher-program-request-vi
     StuTabRequestComponent, AdvancedSearchComponent, TeacherListRequestComponent,
     TeacherRequestDetailsComponent, TeacherJoinRequestComponent, TeacherJoinRequestProgramComponent, TeacherQuitRequestComponent,
     ChangTimeRequestComponent, TeacherJionProgramTabRequestComponent, StuVacationsRequestComponent, StuMovingRequestComponent
-    , TeacherJionTabRequestComponent, StuRejectedComponent, TeacheRejectedComponent],
+    , TeacherJionTabRequestComponent, StuRejectedComponent, TeacheRejectedComponent,AdvancedSearchTeacherComponent],
   imports: [
     CommonModule,
     FormsModule,
