@@ -47,7 +47,7 @@ export class TeacherJoinRequestProgramComponent implements OnInit {
     this.teacherFilterAdvancedSearch=event;
   }
 
-  TeacherAdvancedSearch(event:ITeacherAdvancedSearchModel){
+  teacherAdvancedSearch(event:ITeacherAdvancedSearchModel){
   if( event.isSearch==true) {this.loadTeatcherProg?.advancedSearch(event.teacherFilter ||undefined);}
   this.openTeacherAdvancedSearch = !this.openTeacherAdvancedSearch;
   }
