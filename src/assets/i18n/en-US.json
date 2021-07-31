@@ -67,7 +67,8 @@
     "FILE_SIZE": "your file size more than 3m",
     "EXTENTION_FILE": "your extention file not accepted",
     "ACCEPT": "Accepted",
-    "REJECT": "Reject"
+    "REJECT": "Reject",
+    "DEGREE_MAX_LENGTH": "Degree must be more than 100"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",

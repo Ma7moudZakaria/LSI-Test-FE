@@ -24,6 +24,10 @@
                 {{ "GENERAL.SAVE" | translate }}
             </button>
         </div>
+
+        <div *ngIf="resultMessage.message" class="alert alert-{{ resultMessage.type }} my-4 py-2">
+            {{ resultMessage.message }}
+        </div>
     </section>
     </div>
     <!-- <div *ngIf="!detailsTypeEnum || detailsTypeEnum.length === 0 ">
