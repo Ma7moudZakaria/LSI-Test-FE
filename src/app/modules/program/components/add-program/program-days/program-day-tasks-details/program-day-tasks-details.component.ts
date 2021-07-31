@@ -148,7 +148,7 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
                     this.taskDetails.detailsTask = JSON.stringify(this.testPhasedDetailsModel);
                     break;
                     case this.detailsTypeEnum.TaskDailyTest:
-                      this.isDegreeMax == false;
+                      this.isDegreeMax == false; 
                     this.taskDetails.detailsTask = JSON.stringify(this.dailyTestDetailsModel);
                     break;
       default:
