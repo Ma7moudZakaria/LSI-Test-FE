@@ -44,7 +44,7 @@ export class StuJoinRequestComponent implements OnInit {
 
   closeStuAdvancedSearch() {
     this.openStuAdvancedSearch = false
-
+    this.advancedSearch?.getStudentProgramSubscriptionsFilter();
   }
 
 
@@ -59,11 +59,5 @@ export class StuJoinRequestComponent implements OnInit {
 
   }
 
-  AdvancedSearch(event: IStudentSubscriptionFilterRequestModel) {
-    this.filter = event
-    this.advancedSearch?.getStudentProgramSubscriptionsFilter();
-    this.openStuAdvancedSearch = !this.openStuAdvancedSearch;
 
-
-  }
 }

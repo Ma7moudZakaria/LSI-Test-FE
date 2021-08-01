@@ -36,34 +36,30 @@
                 
                     <div class="col-12 p-0">
                           <label  class="label"> من </label>
+                        {{datafromBinding}}
+                        <app-milady-hijri-calendar  [editcalenderType]="calenderType" (sendDate)="SendDatafrom($event)" 
+                        (keypress)="$event.preventDefault()"
+                        [hijri]="!hijri" [milady]="milady"  [maxGreg]="maxGregDate"  [(ngModel)]="filter.fromDate">
+                      </app-milady-hijri-calendar>
 
-                        <!-- <app-milady-hijri-calendar (sendDate)="Hijri($event)" [dateTo]='hijriBirthDateInputParam'
-                           [milady]="milady" [maxGreg]="maxGregDate">
-                        </app-milady-hijri-calendar> -->
-
-                        <app-milady-hijri-calendar [hijri]="!hijri" [milady]="milady"   [(ngModel)]="filter.fromDate" 
-                           (sendDate)="MiladyFrom($event)">
-                        </app-milady-hijri-calendar>
-
-
-                        <!-- <input type="time" class="form-control"  [(ngModel)]="filter.fromDate"    [ngModelOptions]="{standalone: true}"> -->
                     </div>
                     <div class="col-12 p-0">
                           <label  class="label"> الى </label>
-                          <app-milady-hijri-calendar  [(ngModel)]="filter.toDate"   [hijri]="!hijri" [milady]="milady" 
-                          (sendDate)="MiladyTo($event)">
-                       </app-milady-hijri-calendar>
+                          {{dataToBinding}}
+                          <app-milady-hijri-calendar  [editcalenderType]="calenderType" (sendDate)="SendDataTo($event)" 
+                         (keypress)="$event.preventDefault()"
+                         [hijri]="!hijri" [milady]="milady"  [maxGreg]="maxGregDate"  [(ngModel)]="filter.toDate">
+                      </app-milady-hijri-calendar>
                     </div>
 
-   
-              
                 </div>
 
 
-<!--      
+     
         <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2 text-center">
            <span class="bold"> {{resultMessage.message}}</span>
-        </div> -->
+        </div>
+        
         <section class="mt-5">
             <div  class="row direction-rtl buttons-center mt-5">
                 <button   type="submit" class="save-btn" (click)="sendAdvancedSearch()"> 

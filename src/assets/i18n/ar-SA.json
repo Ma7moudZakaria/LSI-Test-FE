@@ -775,6 +775,7 @@
     "REJECTION_APPLICATION": "رفض الطلب",
     "TEACHER_REJECTED": "سيتم رفض طلب انسحاب المعلم ",
     "FROM_PROG": "من برنامج",
-    "REJECTED_REASON": "سبب الرفض"
+    "REJECTED_REASON": "سبب الرفض",
+    "VALIDATIONDATE": "تاريخ البداية يجب ان يكون اقل من تاريخ النهاية "
   }
 }

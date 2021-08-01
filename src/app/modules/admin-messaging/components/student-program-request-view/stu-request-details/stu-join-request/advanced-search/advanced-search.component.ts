@@ -9,7 +9,9 @@ import { ProgramService } from 'src/app/core/services/program-services/program.s
 import { IProgramFilterAdvancedRequest, IProgramFilterByNameRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-requests';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-date-struct';
-import { DateFormatterService } from 'ngx-hijri-gregorian-datepicker';
+import { DateFormatterService, DateType } from 'ngx-hijri-gregorian-datepicker';
+import { BaseSelectedDateModel } from 'src/app/core/ng-model/base-selected-date-model';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-advanced-search',
@@ -26,42 +28,51 @@ export class AdvancedSearchComponent implements OnInit {
   studProgsSubsItems: IStudentSubscriptionModel[] = [];
 
 
-  milady: boolean = false;
-  maxGregDate: NgbDateStruct | undefined;
-  hijriBirthDateInputParam: NgbDateStruct = { year: 0, day: 0, month: 0 };
-  hijriBinding: any;
-  MiladyPinding: any;
+  calenderType: BaseSelectedDateModel = new BaseSelectedDateModel();
+  selectedDateType: any;
+  // maxHijriDate: NgbDateStruct | undefined;
+  maxGregDate = this.dateFormatterService.GetTodayGregorian()
+  typeDateBinding: any
+  datafromBinding: any
+  dataToBinding: any
 
   hijri: boolean = false;
-  selectedDateType: any;
-
+  milady: boolean = false;
   constructor(private progSubsService: StudentProgramSubscriptionServicesService
     , private programService: ProgramService, private dateFormatterService: DateFormatterService
+    , public translate: TranslateService,
   ) { }
 
   ngOnInit(): void {
     this.getAllProgram()
-    // this.setGreg()
-    // console.log('filter', this.filter)
-  }
-  // setGreg() {
-  //   let toDayGreDate = this.dateFormatterService.GetTodayGregorian()
-  //   toDayGreDate.day = toDayGreDate.day - 1;
-  //   this.maxGregDate = toDayGreDate;
-  //   console.log("maxGregDate", this.maxGregDate);
-  // }
 
-  MiladyFrom(date: any) {
-
-    date = date.year + '/' + date.month + '/' + date.day;
-    this.MiladyPinding = date
-    this.filter.fromDate?.setDate(date);
   }
-  MiladyTo(data: any) {
+
+  SendDatafrom(data: any) {
+    // console.log("data 777sent", data)
+    this.typeDateBinding = data.selectedDateType
     data.selectedDateValue = data.selectedDateValue.year + '/' + data.selectedDateValue.month + '/' + data.selectedDateValue.day;
-    this.MiladyPinding = data.selectedDateValue
-    this.filter.toDate?.setDate(data.selectedDateValue);
+    // console.log("Hijri date", data.date)
+    this.datafromBinding = data.selectedDateValue
+    this.filter.fromDate = this.datafromBinding
+    this.selectedDateType = data.selectedDateType;
+    // console.log("this.selectedDateType",this.selectedDateType);
+    // this.filter.fromDate?.setDate(data.selectedDateValue);
+
   }
+  SendDataTo(data: any) {
+    // console.log("data 777sent", data)
+    this.typeDateBinding = data.selectedDateType
+    data.selectedDateValue = data.selectedDateValue.year + '/' + data.selectedDateValue.month + '/' + data.selectedDateValue.day;
+    // console.log("Hijri date", data.date)
+    this.dataToBinding = data.selectedDateValue
+    this.filter.toDate = this.dataToBinding
+    this.selectedDateType = data.selectedDateType;
+    // console.log("this.selectedDateType",this.selectedDateType);
+    // this.filter.toDate?.setDate(data.selectedDateValue);
+
+  }
+
 
   closeStuAdvancedSearch() {
     this.closeAdvancedSearch.emit()
@@ -69,7 +80,15 @@ export class AdvancedSearchComponent implements OnInit {
 
 
   sendAdvancedSearch() {
-    this.ReqAdvancedSearch.emit(this.filter)
+    if (this.datafromBinding > this.dataToBinding) {
+      this.resultMessage =
+      {
+        message: this.translate.instant('STUDENT_SUBSCRIBERS.VALIDATIONDATE'),
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    }
+    else
+      this.ReqAdvancedSearch.emit(this.filter)
 
   }
   programsbyAdvancedFilter: IProgramFilterAdvancedRequest = { skip: 0, take: 2147483647 };

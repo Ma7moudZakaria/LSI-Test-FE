@@ -1,11 +1,14 @@
 
 
 <div class="container-fluid reuest_container" > 
-    <div class="col-5 offset-7 text-right d-flex align-items-center">
-            <app-search-input (searchTerm)=filterByText($event)></app-search-input>
+    <div class="col-12  justify-content-end text-right d-flex align-items-center">
+            <app-search-input 
+            (searchTerm)=filterByText($event)
+            [searchKey]='this.filter.usrName || ""' >
+            </app-search-input>
 
         <!-- <input  class=" w-60 px-3 form-control UserLogin__FormControl bg-white border-md input-sm" placeholder="بحث"> -->
-        <a class="advanced_search" (click)="openAvancedSearch()">بحث متقدم</a>
+        <a class="advanced_search mb-3" (click)="openAvancedSearch()">بحث متقدم</a>
     </div>
     <div class="row group_header fix_margin w-100">
         <div class="item_group" (click)="onPendingChange()"

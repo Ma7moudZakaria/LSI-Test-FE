@@ -68,12 +68,15 @@ export class StuTabRequestComponent implements OnInit {
       }
     })
   }
+  advancedSearchRequest() {
+    this.advancedSearchObject.emit(this.filter)
+  }
 
   onPendingChange() {
     this.showTap = StudentProgramSubscriptionStatusEnum.Pending
     this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Pending;
     this.clearfilterByText();
-    this.advancedSearchObject.emit(this.filter)
+    this.advancedSearchRequest()
     this.getStudentProgramSubscriptionsFilter();
     this.closeAvancedSearch()
 
@@ -84,7 +87,7 @@ export class StuTabRequestComponent implements OnInit {
     this.showTap = StudentProgramSubscriptionStatusEnum.Accept
     this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Accept
     this.clearfilterByText();
-    this.advancedSearchObject.emit(this.filter)
+    this.advancedSearchRequest()
     this.getStudentProgramSubscriptionsFilter();
     this.closeAvancedSearch()
 
@@ -94,7 +97,7 @@ export class StuTabRequestComponent implements OnInit {
     this.showTap = StudentProgramSubscriptionStatusEnum.Rejected
     this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Rejected
     this.clearfilterByText();
-    this.advancedSearchObject.emit(this.filter)
+    this.advancedSearchRequest()
     this.getStudentProgramSubscriptionsFilter();
     this.closeAvancedSearch()
 
