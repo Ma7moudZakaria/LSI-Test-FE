@@ -37,9 +37,9 @@ export class StuJoinRequestComponent implements OnInit {
   }
 
   closeOverlay() {
-    this.openStuRejectOverlay = !this.openStuRejectOverlay;
-    this.stuRejectReq?.getStudentProgramSubscriptionsFilter();
-
+    this.openStuRejectOverlay = false;
+    this.openStuAdvancedSearch = false;
+    this.advancedSearch?.getStudentProgramSubscriptionsFilter();
   }
 
   closeStuAdvancedSearch() {
@@ -56,7 +56,6 @@ export class StuJoinRequestComponent implements OnInit {
   }
   advancedSearchObject(event: IStudentSubscriptionFilterRequestModel) {
     this.filter = event
-
   }
 
 

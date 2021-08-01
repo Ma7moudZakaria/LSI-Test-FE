@@ -20,7 +20,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AdvancedSearchComponent implements OnInit {
   @Output() closeAdvancedSearch = new EventEmitter();
-  @Output() ReqAdvancedSearch = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
+  // @Output() ReqAdvancedSearch = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
   // @Input() filter: IStudentSubscriptionFilterRequestModel | undefined
   @Input() filter: IStudentSubscriptionFilterRequestModel = { statusNum: StudentProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
   advancedSearchInputs = {} as IStudentSubscriptionFilterRequestModel
@@ -43,6 +43,8 @@ export class AdvancedSearchComponent implements OnInit {
     , public translate: TranslateService,
   ) { }
 
+  programsbyAdvancedFilter: IProgramFilterAdvancedRequest = { skip: 0, take: 2147483647 };
+  ProgramsList: IprogramsModel[] = [];
   ngOnInit(): void {
     this.getAllProgram()
 
@@ -88,14 +90,12 @@ export class AdvancedSearchComponent implements OnInit {
       }
     }
     else
-      this.ReqAdvancedSearch.emit(this.filter)
+      this.closeAdvancedSearch.emit()
 
   }
-  programsbyAdvancedFilter: IProgramFilterAdvancedRequest = { skip: 0, take: 2147483647 };
-  ProgramsList: IprogramsModel[] = [];
+
 
   getAllProgram() {
-
     this.programService.getProgramAdvancedFilter(this.programsbyAdvancedFilter || {}).subscribe(res => {
 
       if (res.isSuccess) {
