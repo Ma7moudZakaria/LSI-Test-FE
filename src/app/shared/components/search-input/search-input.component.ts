@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 
@@ -10,14 +10,15 @@ import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 export class SearchInputComponent implements OnInit {
   langEnum = LanguageEnum;
   @Output() searchTerm =  new EventEmitter<string>();
-
+  @Input() searchKey:string='';
   constructor(public translate : TranslateService) { }
 
   ngOnInit(): void {
+    
   }
 
-  updateSearchTerm(programName?:string){
-    this.searchTerm.emit(programName);
+  updateSearchTerm(){
+    this.searchTerm.emit(this.searchKey);
   }
   
 }

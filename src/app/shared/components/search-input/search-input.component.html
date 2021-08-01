@@ -1,13 +1,14 @@
 <div class="input-group  mb-3" >
             <div class="input-group-prepend ">
                 <span class="input-group-text bg-white pl-2 pr-2 border-md ">
-                    <img  class="UserLogin_icon_input" src="../../../../../../assets/images/search-ired.svg">
+                    <img  class="UserLogin_icon_input" src="../../../../../../assets/images/search-ired.svg" >
                 </span>
             </div>
+            
             <input   
-            (change)="updateSearchTerm($any($event.target).value)"
+            (change)="updateSearchTerm()"
             placeholder="{{'GENERAL.SEARCH' | translate}}" 
-            class=" px-3 form-control UserLogin__FormControl bg-white  border-md input-sm">
+            class=" px-3 form-control UserLogin__FormControl bg-white  border-md input-sm" [(ngModel)]="searchKey">
             
         </div>
         <!-- <div class="input-group  mb-3" *ngIf="translate.currentLang===langEnum.en">            
