@@ -1,11 +1,11 @@
-<form class="form-group DataForm mt-5 pl-3 pr-3">
+<div class="form-group DataForm mt-5 pl-3 pr-3">
     <h3 class=" head  bold">بحث متقدم  </h3>
   
 
 
     <div class="form-group">
         <label  class="label" for="matrialTitleAr">أسم صاحب الطلب</label>
-        <input type="text" class="form-control"  [(ngModel)]="advancedSearch.usrName"
+        <input type="text" class="form-control"  [(ngModel)]="filter.usrName"
         
        [ngModelOptions]="{standalone: true}">
     </div>
@@ -15,7 +15,7 @@
     
             <div class="d-flex">
                 <div class="input-group">
-                    <select class="form-control"  [(ngModel)]="advancedSearch.progName"    [ngModelOptions]="{standalone: true}">
+                    <select class="form-control"  [(ngModel)]="filter.progName"    [ngModelOptions]="{standalone: true}">
                         <option   value="">{{'SCIENTIFIC_MATERIAL.SELECTOPTION' | translate}}</option>
                         <option *ngFor="let item of ProgramsList" value="{{item.id}}">
                             {{item.progName}}
@@ -30,21 +30,33 @@
 
         <div class="form-group">
               <label  class="label">رقم الطلب</label>
-            <input type="text" class="form-control" [(ngModel)]="advancedSearch.numberRequest"    [ngModelOptions]="{standalone: true}">
+            <input type="text" class="form-control" [(ngModel)]="filter.numberRequest"    [ngModelOptions]="{standalone: true}">
             </div>
 
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-6">
+            <div class="form-group subscribtion-date">
+                
+                    <div class="col-12 p-0">
                           <label  class="label"> من </label>
-                        <input type="time" class="form-control"  [(ngModel)]="advancedSearch.fromDate"    [ngModelOptions]="{standalone: true}">
+
+                        <!-- <app-milady-hijri-calendar (sendDate)="Hijri($event)" [dateTo]='hijriBirthDateInputParam'
+                           [milady]="milady" [maxGreg]="maxGregDate">
+                        </app-milady-hijri-calendar> -->
+
+                        <app-milady-hijri-calendar [hijri]="!hijri" [milady]="milady"   [(ngModel)]="filter.fromDate" 
+                           (sendDate)="MiladyFrom($event)">
+                        </app-milady-hijri-calendar>
+
+
+                        <!-- <input type="time" class="form-control"  [(ngModel)]="filter.fromDate"    [ngModelOptions]="{standalone: true}"> -->
                     </div>
-                    <div class="col-6">
+                    <div class="col-12 p-0">
                           <label  class="label"> الى </label>
-                        <input type="time" class="form-control"  [(ngModel)]="advancedSearch.toDate"    [ngModelOptions]="{standalone: true}">
+                          <app-milady-hijri-calendar  [(ngModel)]="filter.toDate"   [hijri]="!hijri" [milady]="milady" 
+                          (sendDate)="MiladyTo($event)">
+                       </app-milady-hijri-calendar>
                     </div>
 
-                </div>
+   
               
                 </div>
 
@@ -68,4 +80,4 @@
 
   
    
-</form>
+</div>

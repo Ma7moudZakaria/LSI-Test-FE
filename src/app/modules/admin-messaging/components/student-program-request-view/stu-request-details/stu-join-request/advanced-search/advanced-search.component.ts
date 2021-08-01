@@ -6,8 +6,10 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { StudentProgramSubscriptionServicesService } from 'src/app/core/services/student-program-subscription-services/student-program-subscription-services.service';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
-import { IProgramFilterByNameRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-requests';
+import { IProgramFilterAdvancedRequest, IProgramFilterByNameRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-requests';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-date-struct';
+import { DateFormatterService } from 'ngx-hijri-gregorian-datepicker';
 
 @Component({
   selector: 'app-advanced-search',
@@ -16,53 +18,66 @@ import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/ipro
 })
 export class AdvancedSearchComponent implements OnInit {
   @Output() closeAdvancedSearch = new EventEmitter();
-  @Output() AdvancedSearch = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
-  @Input() statusAdvancedSearch: StudentProgramSubscriptionStatusEnum | undefined
-  filter: IStudentSubscriptionFilterRequestModel = { statusNum: StudentProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
+  @Output() ReqAdvancedSearch = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
+  // @Input() filter: IStudentSubscriptionFilterRequestModel | undefined
+  @Input() filter: IStudentSubscriptionFilterRequestModel = { statusNum: StudentProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
   advancedSearchInputs = {} as IStudentSubscriptionFilterRequestModel
   resultMessage: BaseMessageModel = {};
   studProgsSubsItems: IStudentSubscriptionModel[] = [];
 
+
+  milady: boolean = false;
+  maxGregDate: NgbDateStruct | undefined;
+  hijriBirthDateInputParam: NgbDateStruct = { year: 0, day: 0, month: 0 };
+  hijriBinding: any;
+  MiladyPinding: any;
+
+  hijri: boolean = false;
+  selectedDateType: any;
+
   constructor(private progSubsService: StudentProgramSubscriptionServicesService
-    , private programService: ProgramService
+    , private programService: ProgramService, private dateFormatterService: DateFormatterService
   ) { }
 
   ngOnInit(): void {
     this.getAllProgram()
-    console.log('statusAdvancedSearch', this.statusAdvancedSearch)
+    // this.setGreg()
+    // console.log('filter', this.filter)
   }
+  // setGreg() {
+  //   let toDayGreDate = this.dateFormatterService.GetTodayGregorian()
+  //   toDayGreDate.day = toDayGreDate.day - 1;
+  //   this.maxGregDate = toDayGreDate;
+  //   console.log("maxGregDate", this.maxGregDate);
+  // }
+
+  MiladyFrom(date: any) {
+
+    date = date.year + '/' + date.month + '/' + date.day;
+    this.MiladyPinding = date
+    this.filter.fromDate?.setDate(date);
+  }
+  MiladyTo(data: any) {
+    data.selectedDateValue = data.selectedDateValue.year + '/' + data.selectedDateValue.month + '/' + data.selectedDateValue.day;
+    this.MiladyPinding = data.selectedDateValue
+    this.filter.toDate?.setDate(data.selectedDateValue);
+  }
+
   closeStuAdvancedSearch() {
     this.closeAdvancedSearch.emit()
   }
 
 
   sendAdvancedSearch() {
+    this.ReqAdvancedSearch.emit(this.filter)
 
-    this.AdvancedSearch.emit(this.advancedSearchInputs)
-
-    // this.progSubsService.getStudentsSubscriptionsFilter(this.advancedSearchInputs).subscribe(res => {
-
-    //   if (res.isSuccess) {
-    //     this.studProgsSubsItems = res.data;
-
-
-    //   }
-    //   else {
-
-    //   }
-    // }, error => {
-    //   this.resultMessage = {
-    //     message: error,
-    //     type: BaseConstantModel.DANGER_TYPE
-    //   }
-    // })
   }
-  model: IProgramFilterByNameRequest | undefined
+  programsbyAdvancedFilter: IProgramFilterAdvancedRequest = { skip: 0, take: 2147483647 };
   ProgramsList: IprogramsModel[] = [];
 
   getAllProgram() {
-    this.model = {}
-    this.programService.getAllPrograms(this.model).subscribe(res => {
+
+    this.programService.getProgramAdvancedFilter(this.programsbyAdvancedFilter || {}).subscribe(res => {
 
       if (res.isSuccess) {
         this.ProgramsList = res.data;

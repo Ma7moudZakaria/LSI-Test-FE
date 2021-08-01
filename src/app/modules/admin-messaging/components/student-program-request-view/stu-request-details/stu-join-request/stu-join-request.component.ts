@@ -11,6 +11,8 @@ import { StudentProgramSubscriptionStatusEnum } from 'src/app/core/enums/subscri
 })
 export class StuJoinRequestComponent implements OnInit {
   @ViewChild(StuTabRequestComponent) stuRejectReq: StuTabRequestComponent | undefined;
+  @ViewChild(StuTabRequestComponent) advancedSearch: StuTabRequestComponent | undefined;
+  advancedSearchObjectpopup: IStudentSubscriptionFilterRequestModel = { statusNum: StudentProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
   filter: IStudentSubscriptionFilterRequestModel = { statusNum: StudentProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
 
   showTap: string = 'Pending';
@@ -39,16 +41,29 @@ export class StuJoinRequestComponent implements OnInit {
     this.stuRejectReq?.getStudentProgramSubscriptionsFilter();
 
   }
-  openStuAdvancedSearchPopup() {
-    this.openStuAdvancedSearch = !this.openStuAdvancedSearch;
-    console.log("openStuAdvancedSearch", this.openStuAdvancedSearch)
-  }
+
   closeStuAdvancedSearch() {
     this.openStuAdvancedSearch = false
 
   }
-  statusAdvancedSearch: any
-  advancedSearchStatus(event: StudentProgramSubscriptionStatusEnum) {
-    this.statusAdvancedSearch = event
+
+
+  openStuAdvancedSearchPopup(event: IStudentSubscriptionFilterRequestModel) {
+    this.openStuAdvancedSearch = true;
+    this.filter = event
+
+
+  }
+  advancedSearchObject(event: IStudentSubscriptionFilterRequestModel) {
+    this.filter = event
+
+  }
+
+  AdvancedSearch(event: IStudentSubscriptionFilterRequestModel) {
+    this.filter = event
+    this.advancedSearch?.getStudentProgramSubscriptionsFilter();
+    this.openStuAdvancedSearch = !this.openStuAdvancedSearch;
+
+
   }
 }

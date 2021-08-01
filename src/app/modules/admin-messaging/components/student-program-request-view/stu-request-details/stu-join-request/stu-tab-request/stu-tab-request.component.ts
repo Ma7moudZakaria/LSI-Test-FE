@@ -17,14 +17,18 @@ import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 })
 export class StuTabRequestComponent implements OnInit {
   @Output() itemStuReq = new EventEmitter<IStudentSubscriptionModel>();
-  @Output() AdvancedSearch = new EventEmitter<string>();
-  @Output() advancedSearchStatus = new EventEmitter<StudentProgramSubscriptionStatusEnum>();
+  @Output() openAdvancedSearch = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
+
+  @Output() closeAdvancedSearch = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
+
+  @Output() advancedSearchObject = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
+  @Input() filter: IStudentSubscriptionFilterRequestModel = { statusNum: StudentProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
+
   typeEnum: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending;
   resultMessage: BaseMessageModel = {};
 
   showTap: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending
   statusEnum = StudentProgramSubscriptionStatusEnum;
-  filter: IStudentSubscriptionFilterRequestModel = { statusNum: StudentProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
   studProgsSubsItems: IStudentSubscriptionModel[] = [];
   totalCount = 0;
 
@@ -44,9 +48,9 @@ export class StuTabRequestComponent implements OnInit {
       if (res.isSuccess) {
         this.studProgsSubsItems = res.data;
         console.log("studProgsSubsItem ", this.studProgsSubsItems)
-        this.studProgsSubsItems?.forEach(function (item) {
-          // item.scCreatedOn = item.scCreatedOn ? new Date(item.scCreatedOn).toDateString(): '';
-        });
+        // this.studProgsSubsItems?.forEach(function (item) {
+        //   item.requestDate = item.requestDate ? new Date(item.requestDate).toDateString(): '';
+        // });
         this.totalCount = res.count ? res.count : 0;
         if (this.filter.skip > 0 && (!this.studProgsSubsItems || this.studProgsSubsItems.length === 0)) {
           this.filter.page -= 1;
@@ -68,11 +72,10 @@ export class StuTabRequestComponent implements OnInit {
   onPendingChange() {
     this.showTap = StudentProgramSubscriptionStatusEnum.Pending
     this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Pending;
-    this.filter.progName = '';
-    this.filterByText(this.filter.progName)
+    this.clearfilterByText();
+    this.advancedSearchObject.emit(this.filter)
     this.getStudentProgramSubscriptionsFilter();
-    this.advancedSearchStatus.emit(StudentProgramSubscriptionStatusEnum.Pending)
-
+    this.closeAvancedSearch()
 
   }
 
@@ -80,19 +83,20 @@ export class StuTabRequestComponent implements OnInit {
   onAcceptChange() {
     this.showTap = StudentProgramSubscriptionStatusEnum.Accept
     this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Accept
-    this.filter.progName = '';
-    this.filterByText(this.filter.progName)
+    this.clearfilterByText();
+    this.advancedSearchObject.emit(this.filter)
     this.getStudentProgramSubscriptionsFilter();
-    this.advancedSearchStatus.emit(StudentProgramSubscriptionStatusEnum.Accept)
+    this.closeAvancedSearch()
+
 
   }
   onRejectedChange() {
     this.showTap = StudentProgramSubscriptionStatusEnum.Rejected
     this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Rejected
-    this.filter.progName = '';
-    this.filterByText(this.filter.progName)
+    this.clearfilterByText();
+    this.advancedSearchObject.emit(this.filter)
     this.getStudentProgramSubscriptionsFilter();
-    this.advancedSearchStatus.emit(StudentProgramSubscriptionStatusEnum.Rejected)
+    this.closeAvancedSearch()
 
   }
   rejecteStuRequestMethod(event: IStudentSubscriptionModel) {
@@ -162,13 +166,18 @@ export class StuTabRequestComponent implements OnInit {
   }
 
   filterByText(searchKey: string) {
-    this.filter.progName = searchKey;
+    this.filter.usrName = searchKey;
     this.getStudentProgramSubscriptionsFilter();
   }
-
+  clearfilterByText() {
+    this.filter.progName = '';
+    this.filterByText(this.filter.progName)
+  }
   openAvancedSearch() {
-    // this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Pending;
-    this.AdvancedSearch.emit()
+    this.openAdvancedSearch.emit(this.filter)
+  }
+  closeAvancedSearch() {
+    this.closeAdvancedSearch.emit(this.filter)
   }
 }
 
