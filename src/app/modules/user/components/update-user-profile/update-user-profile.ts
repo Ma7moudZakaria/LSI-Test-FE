@@ -397,13 +397,13 @@ export class UpdateUserProfileComponent implements OnInit {
     if (this.userProfileDetails.birthDispMode == 1) {
       this.updateCalenderType.selectedDateType = DateType.Hijri;
       let date = new Date(this.userProfileDetails?.birthdate || '');
-      this.hijriBirthDateInputParam = {year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate()}
+      this.hijriBirthDateInputParam = {year: date?.getFullYear(), month: date?.getMonth() + 1, day: date?.getDate()}
       this.f.hijriBirthDate.setValue(this.userProfileDetails?.birthdate);
 
     } else {
       this.updateCalenderType.selectedDateType = DateType.Gregorian;
       let date = new Date(this.userProfileDetails?.birthGregorian || '');
-      this.hijriBirthDateInputParam = {year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate()}
+      this.hijriBirthDateInputParam = {year: date?.getFullYear(), month: date?.getMonth() + 1, day: date?.getDate()}
       this.f.hijriBirthDate.setValue(this.userProfileDetails?.birthGregorian);
     }
     this.f.nationality.setValue(this.userProfileDetails?.nationality);
@@ -658,15 +658,17 @@ export class UpdateUserProfileComponent implements OnInit {
   }
 
   setHijri() {
-    let toDayHijriDate = this.dateFormatterService.GetTodayHijri()
-    toDayHijriDate.day = toDayHijriDate.day - 1;
+    let toDayHijriDate = this.dateFormatterService.GetTodayHijri();
+
+    toDayHijriDate.day = toDayHijriDate.day;
     this.maxHijriDate = toDayHijriDate;
     console.log("maxHijri", this.maxHijriDate);
   }
 
   setGreg() {
     let toDayGreDate = this.dateFormatterService.GetTodayGregorian()
-    toDayGreDate.day = toDayGreDate.day - 1;
+    
+    toDayGreDate.day = toDayGreDate.day;
     this.maxGregDate = toDayGreDate;
     console.log("maxGregDate", this.maxGregDate);
   }

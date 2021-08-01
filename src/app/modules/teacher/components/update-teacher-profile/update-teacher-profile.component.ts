@@ -393,7 +393,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
       //this.hijriBirthDateInputParam = { year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDay() }
       this.updateCalenderType.selectedDateType = DateType.Hijri;
       let date = new Date(this.teacherProfileDetails?.birthdate || '');
-      this.hijriBirthDateInputParam = { year: date.getFullYear(), month: date.getMonth() +1, day: date.getDate() }
+      this.hijriBirthDateInputParam = { year: date?.getFullYear(), month: date?.getMonth() +1, day: date?.getDate() }
       this.f.hijriBirthDate.setValue(this.teacherProfileDetails.birthdate);
 
     }else {
@@ -403,7 +403,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
         this.updateCalenderType.selectedDateType = DateType.Gregorian;
       // }
       let date = new Date(this.teacherProfileDetails?.birthGregorian || '');
-      this.hijriBirthDateInputParam = { year: date.getFullYear(), month: date.getMonth() +1, day: date.getDate() }
+      this.hijriBirthDateInputParam = { year: date?.getFullYear(), month: date?.getMonth() +1, day: date?.getDate() }
      // this.SendData(this.updateCalenderType)
       //this.updateCalenderType.date = this.teacherProfileDetails?.birthGregorian;
       // let date = new Date(this.teacherProfileDetails?.birthGregorian || '');
@@ -904,7 +904,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
   }
   setHijri() {
      let toDayHijriDate = this.dateFormatterService.GetTodayHijri()
-     toDayHijriDate.day= toDayHijriDate.day - 1 ;
+     toDayHijriDate.day= toDayHijriDate.day;
      this.maxHijriDate = toDayHijriDate;
 
      let toDayHijriInterviewDate = this.dateFormatterService.GetTodayHijri();
@@ -914,7 +914,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
   }
   setGreg(){
     let toDayGreDate = this.dateFormatterService.GetTodayGregorian()
-    toDayGreDate.day= toDayGreDate.day - 1 ;
+    toDayGreDate.day= toDayGreDate.day;
     this.maxGregDate = toDayGreDate;
 
     let toDayGreInterviewDate = this.dateFormatterService.GetTodayGregorian();
