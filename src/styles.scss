@@ -686,6 +686,13 @@ app-tel-input >
 // end  notify alertify
 
 // removemilady
+.subscribtion-date .input-group:not(.has-validation)>.custom-file:not(:last-child) .custom-file-label::after,
+.input-group:not(.has-validation)>.custom-select:not(:last-child), 
+.input-group:not(.has-validation)>.form-control:not(:last-child)
+{
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
 .HijriGregorianDatePicker.removemilady .btn:last-of-type{
 display: none;
 }

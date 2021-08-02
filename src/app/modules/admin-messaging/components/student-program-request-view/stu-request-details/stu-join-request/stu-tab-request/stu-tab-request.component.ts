@@ -17,12 +17,18 @@ import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 })
 export class StuTabRequestComponent implements OnInit {
   @Output() itemStuReq = new EventEmitter<IStudentSubscriptionModel>();
+  @Output() openAdvancedSearch = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
+
+  @Output() closeAdvancedSearch = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
+
+  @Output() advancedSearchObject = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
+  @Input() filter: IStudentSubscriptionFilterRequestModel = { statusNum: StudentProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
+
   typeEnum: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending;
   resultMessage: BaseMessageModel = {};
 
   showTap: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending
   statusEnum = StudentProgramSubscriptionStatusEnum;
-  filter: IStudentSubscriptionFilterRequestModel = { statusNum: StudentProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
   studProgsSubsItems: IStudentSubscriptionModel[] = [];
   totalCount = 0;
 
@@ -33,7 +39,7 @@ export class StuTabRequestComponent implements OnInit {
   }
   ngOnInit(): void {
     this.filter.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn'
-
+    this.onPendingChange()
     this.getStudentProgramSubscriptionsFilter();
   }
   getStudentProgramSubscriptionsFilter() {
@@ -42,9 +48,9 @@ export class StuTabRequestComponent implements OnInit {
       if (res.isSuccess) {
         this.studProgsSubsItems = res.data;
         console.log("studProgsSubsItem ", this.studProgsSubsItems)
-        this.studProgsSubsItems?.forEach(function (item) {
-          // item.scCreatedOn = item.scCreatedOn ? new Date(item.scCreatedOn).toDateString(): '';
-        });
+        // this.studProgsSubsItems?.forEach(function (item) {
+        //   item.requestDate = item.requestDate ? new Date(item.requestDate).toDateString(): '';
+        // });
         this.totalCount = res.count ? res.count : 0;
         if (this.filter.skip > 0 && (!this.studProgsSubsItems || this.studProgsSubsItems.length === 0)) {
           this.filter.page -= 1;
@@ -62,22 +68,39 @@ export class StuTabRequestComponent implements OnInit {
       }
     })
   }
+  advancedSearchRequest() {
+    this.advancedSearchObject.emit(this.filter)
+  }
 
   onPendingChange() {
     this.showTap = StudentProgramSubscriptionStatusEnum.Pending
-    this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Pending
+    this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Pending;
+    this.clearfilterByText();
+    this.advancedSearchRequest()
     this.getStudentProgramSubscriptionsFilter();
+    this.closeAvancedSearch()
+
   }
+
 
   onAcceptChange() {
     this.showTap = StudentProgramSubscriptionStatusEnum.Accept
     this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Accept
+    this.clearfilterByText();
+    this.advancedSearchRequest()
     this.getStudentProgramSubscriptionsFilter();
+    this.closeAvancedSearch()
+
+
   }
   onRejectedChange() {
     this.showTap = StudentProgramSubscriptionStatusEnum.Rejected
     this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Rejected
+    this.clearfilterByText();
+    this.advancedSearchRequest()
     this.getStudentProgramSubscriptionsFilter();
+    this.closeAvancedSearch()
+
   }
   rejecteStuRequestMethod(event: IStudentSubscriptionModel) {
     this.itemStuReq.emit(event)
@@ -143,6 +166,21 @@ export class StuTabRequestComponent implements OnInit {
     this.filter = event;
     this.getStudentProgramSubscriptionsFilter();
 
+  }
+
+  filterByText(searchKey: string) {
+    this.filter.usrName = searchKey;
+    this.getStudentProgramSubscriptionsFilter();
+  }
+  clearfilterByText() {
+    this.filter.progName = '';
+    this.filterByText(this.filter.progName)
+  }
+  openAvancedSearch() {
+    this.openAdvancedSearch.emit(this.filter)
+  }
+  closeAvancedSearch() {
+    this.closeAdvancedSearch.emit(this.filter)
   }
 }
 

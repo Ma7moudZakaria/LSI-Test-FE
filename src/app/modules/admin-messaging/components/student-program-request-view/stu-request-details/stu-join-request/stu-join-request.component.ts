@@ -11,13 +11,16 @@ import { StudentProgramSubscriptionStatusEnum } from 'src/app/core/enums/subscri
 })
 export class StuJoinRequestComponent implements OnInit {
   @ViewChild(StuTabRequestComponent) stuRejectReq: StuTabRequestComponent | undefined;
+  @ViewChild(StuTabRequestComponent) advancedSearch: StuTabRequestComponent | undefined;
+  advancedSearchObjectpopup: IStudentSubscriptionFilterRequestModel = { statusNum: StudentProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
   filter: IStudentSubscriptionFilterRequestModel = { statusNum: StudentProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
-
 
   showTap: string = 'Pending';
   // roleEnum: RoleEnum = RoleEnum.Teacher;
   itemStuReq: IStudentSubscriptionModel = {};
   openStuRejectOverlay: boolean = false
+  openStuAdvancedSearch: boolean = false
+
   constructor() { }
 
   ngOnInit(): void {
@@ -34,9 +37,25 @@ export class StuJoinRequestComponent implements OnInit {
   }
 
   closeOverlay() {
-    this.openStuRejectOverlay = !this.openStuRejectOverlay;
-    this.stuRejectReq?.getStudentProgramSubscriptionsFilter();
+    this.openStuRejectOverlay = false;
+    this.openStuAdvancedSearch = false;
+    this.advancedSearch?.getStudentProgramSubscriptionsFilter();
+  }
+
+  closeStuAdvancedSearch() {
+    this.openStuAdvancedSearch = false
+    this.advancedSearch?.getStudentProgramSubscriptionsFilter();
+  }
+
+
+  openStuAdvancedSearchPopup(event: IStudentSubscriptionFilterRequestModel) {
+    this.openStuAdvancedSearch = true;
+    this.filter = event
 
   }
+  advancedSearchObject(event: IStudentSubscriptionFilterRequestModel) {
+    this.filter = event
+  }
+
 
 }

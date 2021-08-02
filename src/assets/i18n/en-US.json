@@ -779,6 +779,7 @@
     "REJECTION_APPLICATION": "Rejection  request",
     "TEACHER_REJECTED": "The teacher's withdrawal request will be rejected",
     "FROM_PROG": "From Program",
-    "REJECTED_REASON": "Reject Reason"
+    "REJECTED_REASON": "Reject Reason",
+    "VALIDATIONDATE": "Datefrom  should less than dateto "
   }
 }
