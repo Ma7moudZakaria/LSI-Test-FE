@@ -39,6 +39,8 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   @Input() totalCount: number = 0;
   @Input() typeEnum: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending;
   @Input() typeTeacheEnum: TeacheProgramSubscriptionStatusEnum = TeacheProgramSubscriptionStatusEnum.Pending;
+  stuTabTypeSelected = StudentProgramSubscriptionStatusEnum;
+  teacherTabTypeSelected = TeacheProgramSubscriptionStatusEnum;
 
   orderTypeToggel = 1;
   userOrderTypeToggel = true;
