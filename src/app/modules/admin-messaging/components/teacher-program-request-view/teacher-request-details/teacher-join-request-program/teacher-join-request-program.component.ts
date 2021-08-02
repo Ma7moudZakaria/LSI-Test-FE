@@ -16,10 +16,10 @@ export class TeacherJoinRequestProgramComponent implements OnInit {
   @Output() rejectTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
 
   showTap: string = 'Pending';
-  itemTeacherReq: ITeacherProgramSubscriptionModel = {totalRows:0};
+  itemTeacherReq: ITeacherProgramSubscriptionModel = { totalRows: 0 };
   openStuRejectOverlay: boolean = false
   openTeacherAdvancedSearch: boolean = false
- teacherFilterAdvancedSearch: ITeacherProgramSubscriptionFilterRequestModel ={skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
+  teacherFilterAdvancedSearch: ITeacherProgramSubscriptionFilterRequestModel = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
 
   constructor() { }
 
@@ -42,14 +42,16 @@ export class TeacherJoinRequestProgramComponent implements OnInit {
 
   }
 
-  openTeacherAdvancedSearchPopup(event:ITeacherProgramSubscriptionFilterRequestModel) {
+  openTeacherAdvancedSearchPopup(event: ITeacherProgramSubscriptionFilterRequestModel) {
     this.openTeacherAdvancedSearch = !this.openTeacherAdvancedSearch;
-    this.teacherFilterAdvancedSearch=event;
+    this.teacherFilterAdvancedSearch = event;
   }
 
-  teacherAdvancedSearch(event:ITeacherAdvancedSearchModel){
-  if( event.isSearch==true) {this.loadTeatcherProg?.advancedSearch(event.teacherFilter ||undefined);}
-  this.openTeacherAdvancedSearch = !this.openTeacherAdvancedSearch;
+  teacherAdvancedSearch(event: ITeacherAdvancedSearchModel) {
+    if (event.isSearch == true) { this.loadTeatcherProg?.advancedSearch(event.teacherFilter || undefined); }
+    this.openTeacherAdvancedSearch = !this.openTeacherAdvancedSearch;
   }
-
+  closeAdvancedSearch() {
+    this.openTeacherAdvancedSearch = false
+  }
 }

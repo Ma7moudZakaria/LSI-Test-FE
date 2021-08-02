@@ -8,7 +8,7 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
 import { IProgramFilterAdvancedRequest, IProgramFilterByNameRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-requests';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-date-struct';
+
 import { DateFormatterService, DateType } from 'ngx-hijri-gregorian-datepicker';
 import { BaseSelectedDateModel } from 'src/app/core/ng-model/base-selected-date-model';
 import { TranslateService } from '@ngx-translate/core';
