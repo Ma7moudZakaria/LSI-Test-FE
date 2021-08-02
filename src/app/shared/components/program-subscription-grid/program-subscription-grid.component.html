@@ -43,8 +43,8 @@
                     [checked]="allSelected"
                     [indeterminate]="someStudentItemsChecked()"
                     (change)="setStudentAllChecked($event.checked)"></mat-checkbox>
-
-          <a class=" ml-2 mr-2" [class.disabled]='!enableStudentSelectOperations()'>
+          <a class=" ml-2 mr-2" [class.disabled]='!enableStudentSelectOperations()'
+          [ngClass]="{'dimmed': typeEnum === stuTabTypeSelected.Accept ||  typeEnum === stuTabTypeSelected.Rejected}">
               <i (click)='acceptAllStudentProgramSubscriptionChechedEvent()' class="fa fa-check fa-lg "></i>
               
           </a>
@@ -100,7 +100,8 @@
                     [indeterminate]="someTeachertItemsChecked()"
                     (change)="setTeacherAllChecked($event.checked)"></mat-checkbox>
 
-          <a class=" ml-2 mr-2" [class.disabled]='!enableTeacherSelectOperations()'>
+          <a class=" ml-2 mr-2" [class.disabled]='!enableTeacherSelectOperations()'
+          [ngClass]="{'dimmed': typeTeacheEnum === teacherTabTypeSelected.Accept ||  typeTeacheEnum === teacherTabTypeSelected.Rejected}">
               <i (click)='acceptAllTeacherProgramSubscriptionChechedEvent()' class="fa fa-check fa-lg "></i>
           </a>
           <a class=" ml-1 mr-1" [class.disabled]='!enableTeacherSelectOperations()'>

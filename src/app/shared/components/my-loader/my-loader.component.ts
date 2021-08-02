@@ -10,13 +10,14 @@ import { LoaderService } from 'src/app/core/services/loader-services/loader.serv
 })
 export class MyLoaderComponent implements OnInit {
 
-  loading: boolean|undefined;
+  loading: boolean | undefined;
 
   constructor(private loaderService: LoaderService) {
 
     this.loaderService.isLoading.subscribe((v) => {
       //console.log(v);
       this.loading = v;
+      //this.loading = true;
     });
 
   }

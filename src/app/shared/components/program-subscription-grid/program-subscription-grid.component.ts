@@ -39,6 +39,8 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   @Input() totalCount: number = 0;
   @Input() typeEnum: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending;
   @Input() typeTeacheEnum: TeacheProgramSubscriptionStatusEnum = TeacheProgramSubscriptionStatusEnum.Pending;
+  stuTabTypeSelected = StudentProgramSubscriptionStatusEnum;
+  teacherTabTypeSelected = TeacheProgramSubscriptionStatusEnum;
 
   orderTypeToggel = 1;
   userOrderTypeToggel = true;
@@ -197,7 +199,7 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   onStudentPageChange() {
     this.studentFilterRequestModel.skip = (this.studentFilterRequestModel.page - 1) * (this.studentFilterRequestModel.take);
     this.studentFilterEvent.emit(this.studentFilterRequestModel);
-    this.setTeacherAllChecked(false);
+    this.setStudentAllChecked(false);
   }
 
   rejecteStuRequest(event: IStudentSubscriptionModel) {

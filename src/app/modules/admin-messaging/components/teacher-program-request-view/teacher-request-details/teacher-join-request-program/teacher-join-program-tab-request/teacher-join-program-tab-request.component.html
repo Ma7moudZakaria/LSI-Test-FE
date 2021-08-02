@@ -1,4 +1,8 @@
 <div class="container-fluid reuest_container" > 
+  <div class="col-12  justify-content-end text-right d-flex align-items-center">
+    <app-search-input (searchTerm)=searchByText($event) [searchKey]='this.teacherProgramSubscriptionFilterRequestModel.usrName || ""'></app-search-input>
+<a class="advanced_search mb-3" (click)="openAvancedSearch()">بحث متقدم</a>
+</div>
 
   <div class="row group_header fix_margin w-100">
       <div class="item_group" (click)="onPendingChange()"
@@ -14,9 +18,6 @@
        {{'TEACHER_SUBSCRIBERS.REJECTANCE_REQUESTS' | translate}}
       </div>
 
-      <!-- <div class="offset-2 col-3" >
-        <app-search-input (searchTerm)=searchByText($event)></app-search-input>
-    </div> -->
    
   </div>
   
