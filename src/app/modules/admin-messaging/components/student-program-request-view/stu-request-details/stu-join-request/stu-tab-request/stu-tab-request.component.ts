@@ -168,14 +168,14 @@ export class StuTabRequestComponent implements OnInit {
     this.getStudentProgramSubscriptionsFilter();
   }
   clearfilterByText() {
-    this.filter.progName = '';
+    this.filter.progId = '';
   }
   openAvancedSearch() {
     this.openAdvancedSearch.emit(this.filter)
   }
   closeAvancedSearch() {
     this.filter.usrName = '';
-    this.filter.progName = '';
+    this.filter.progId = '';
     this.filter.numberRequest = undefined
     this.filter.fromDate = undefined
     this.filter.toDate = undefined

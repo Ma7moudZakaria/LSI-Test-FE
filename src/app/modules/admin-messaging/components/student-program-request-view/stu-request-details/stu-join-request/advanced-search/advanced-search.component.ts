@@ -79,7 +79,7 @@ export class AdvancedSearchComponent implements OnInit {
 
   closeStuAdvancedSearch() {
     this.filter.usrName = '';
-    this.filter.progName = '';
+    this.filter.progId = '';
     this.filter.numberRequest = undefined
     this.filter.fromDate = undefined
     this.filter.toDate = undefined
