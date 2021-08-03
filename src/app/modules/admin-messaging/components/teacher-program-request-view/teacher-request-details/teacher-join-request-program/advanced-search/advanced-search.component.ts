@@ -19,6 +19,7 @@ import { TeacheProgramSubscriptionStatusEnum } from 'src/app/core/enums/teacher-
 export class AdvancedSearchTeacherComponent implements OnInit {
 
   @Output() advancedSearchEvent = new EventEmitter<ITeacherAdvancedSearchModel>();
+  @Output() closeAdvancedSearch = new EventEmitter<ITeacherAdvancedSearchModel>();
   @Input() teacherFilterAdvancedSearch: ITeacherProgramSubscriptionFilterRequestModel = { statusNum: TeacheProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
 
   ProgramsList: IprogramsModel[] = [];
@@ -85,7 +86,13 @@ export class AdvancedSearchTeacherComponent implements OnInit {
   }
 
   closeTeacherAdvancedSearch() {
-    this.advancedSearchEvent.emit({ isSearch: false })
+    this.teacherFilterAdvancedSearch.usrName = '';
+    this.teacherFilterAdvancedSearch.progName = '';
+    this.teacherFilterAdvancedSearch.numberRequest = undefined
+    this.teacherFilterAdvancedSearch.fromDate = undefined
+    this.teacherFilterAdvancedSearch.toDate = undefined
+    this.teacherFilterAdvancedSearch = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
+    this.closeAdvancedSearch.emit({ isSearch: false, teacherFilter: this.teacherFilterAdvancedSearch })
   }
 
 

@@ -4,7 +4,7 @@
             <app-stu-tab-request (itemStuReq)="openRejectRequest($event)" 
             (advancedSearchObject)="advancedSearchObject($event)"
             (openAdvancedSearch)="openStuAdvancedSearchPopup($event)"
-            (closeAdvancedSearch)="closeStuAdvancedSearch()"
+            (closeAdvancedSearch)="closeStuAdvancedSearch($event)"
             ></app-stu-tab-request>
         </div>
     </div>
@@ -14,12 +14,12 @@
 
     <div class="overlay" *ngIf="openStuAdvancedSearch">
         <app-advanced-search 
-        (closeAdvancedSearch)="closeStuAdvancedSearch()"
+        (closeAdvancedSearch)="closeStuAdvancedSearch($event)"
         [filter]="filter"
       
         ></app-advanced-search>
     </div>
     
 </div>
-<div class="showoverlay" (click)="closeOverlay()" [ngClass]="{'disableBlock': openStuAdvancedSearch || openStuRejectOverlay}"></div>
+<!-- <div class="showoverlay" (click)="closeOverlay()" [ngClass]="{'disableBlock': openStuAdvancedSearch || openStuRejectOverlay}"></div> -->
 

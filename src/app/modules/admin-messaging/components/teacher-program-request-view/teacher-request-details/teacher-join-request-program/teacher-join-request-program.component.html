@@ -2,7 +2,7 @@
     <app-teacher-join-program-tab-request 
     (rejectTeacherProgramSubscription)="openRejectRequest($event)" 
     (advancedSearchEvent)="openTeacherAdvancedSearchPopup($event)"
-    (closeAdvancedSearch)="closeAdvancedSearch()"
+    (closeAdvancedSearch)="closeAdvancedSearch($event)"
     ></app-teacher-join-program-tab-request>
 
     <div class="overlay" *ngIf="openStuRejectOverlay">

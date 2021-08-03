@@ -19,7 +19,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./advanced-search.component.scss']
 })
 export class AdvancedSearchComponent implements OnInit {
-  @Output() closeAdvancedSearch = new EventEmitter();
+  @Output() closeAdvancedSearch = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
   // @Output() ReqAdvancedSearch = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
   // @Input() filter: IStudentSubscriptionFilterRequestModel | undefined
   @Input() filter: IStudentSubscriptionFilterRequestModel = { statusNum: StudentProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
@@ -77,7 +77,13 @@ export class AdvancedSearchComponent implements OnInit {
 
 
   closeStuAdvancedSearch() {
-    this.closeAdvancedSearch.emit()
+    this.filter.usrName = '';
+    this.filter.progName = '';
+    this.filter.numberRequest = undefined
+    this.filter.fromDate = undefined
+    this.filter.toDate = undefined
+    this.filter = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
+    this.closeAdvancedSearch.emit(this.filter)
   }
 
 

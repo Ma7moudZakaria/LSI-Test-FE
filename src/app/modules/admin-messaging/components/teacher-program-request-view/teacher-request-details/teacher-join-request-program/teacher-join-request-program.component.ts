@@ -20,6 +20,7 @@ export class TeacherJoinRequestProgramComponent implements OnInit {
   openStuRejectOverlay: boolean = false
   openTeacherAdvancedSearch: boolean = false
   teacherFilterAdvancedSearch: ITeacherProgramSubscriptionFilterRequestModel = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
+  filter: ITeacherAdvancedSearchModel = { isSearch: false, teacherFilter: this.teacherFilterAdvancedSearch }
 
   constructor() { }
 
@@ -51,7 +52,10 @@ export class TeacherJoinRequestProgramComponent implements OnInit {
     if (event.isSearch == true) { this.loadTeatcherProg?.advancedSearch(event.teacherFilter || undefined); }
     this.openTeacherAdvancedSearch = !this.openTeacherAdvancedSearch;
   }
-  closeAdvancedSearch() {
-    this.openTeacherAdvancedSearch = false
+  closeAdvancedSearch(event: ITeacherAdvancedSearchModel) {
+    this.openTeacherAdvancedSearch = false;
+    this.filter = event
+    this.loadTeatcherProg?.getTeachersProgramsSubscriptions();
+
   }
 }
