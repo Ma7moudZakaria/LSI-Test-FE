@@ -1,11 +1,15 @@
 <div>
-    <app-teacher-join-program-tab-request (rejectTeacherProgramSubscription)="openRejectRequest($event)" (advancedSearchEvent)="openTeacherAdvancedSearchPopup($event)"></app-teacher-join-program-tab-request>
+    <app-teacher-join-program-tab-request 
+    (rejectTeacherProgramSubscription)="openRejectRequest($event)" 
+    (advancedSearchEvent)="openTeacherAdvancedSearchPopup($event)"
+    ></app-teacher-join-program-tab-request>
 
     <div class="overlay" *ngIf="openStuRejectOverlay">
         <app-teache-rejected  [itemTeacherReq]='itemTeacherReq' (closeRejectedRequest)="closeRejectedRequest()"></app-teache-rejected>
 </div>
 <div class="overlay" *ngIf="openTeacherAdvancedSearch">
-    <app-advanced-search-teacher (advancedSearchEvent)="teacherAdvancedSearch($event)" [teacherFilterAdvancedSearch]='teacherFilterAdvancedSearch'
+    <app-advanced-search-teacher (advancedSearchEvent)="teacherAdvancedSearch($event)" 
+    [teacherFilterAdvancedSearch]='teacherFilterAdvancedSearch'
     ></app-advanced-search-teacher>
 </div>
 </div>

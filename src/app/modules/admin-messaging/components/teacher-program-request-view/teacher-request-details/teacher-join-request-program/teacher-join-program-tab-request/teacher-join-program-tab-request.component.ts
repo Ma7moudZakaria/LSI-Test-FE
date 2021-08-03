@@ -18,13 +18,13 @@ export class TeacherJionProgramTabRequestComponent implements OnInit {
 
   @Output() rejectTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
   @Output() advancedSearchEvent = new EventEmitter<ITeacherProgramSubscriptionFilterRequestModel>();
-
+  // @Output() closeAdvancedSearch = new EventEmitter();
   teacherProgramSubscriptionList: ITeacherProgramSubscriptionModel[] = [];
   teacherProgramSubscriptionFilterRequestModel: ITeacherProgramSubscriptionFilterRequestModel = { statusNum: TeacheProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
   errorMessage?: string;
   totalCount = 0;
   teacherCard: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.teacher;
-  numberItemsPerRow = 4;
+  numberItemsPerRow = 3;
   ids?: string[] = [];
   typeEnum: TeacheProgramSubscriptionStatusEnum = TeacheProgramSubscriptionStatusEnum.Pending;
   showTap: TeacheProgramSubscriptionStatusEnum = TeacheProgramSubscriptionStatusEnum.Pending;
@@ -71,19 +71,22 @@ export class TeacherJionProgramTabRequestComponent implements OnInit {
   }
 
   onPendingChange() {
-    this.teacherProgramSubscriptionFilterRequestModel={ usrName:'',statusNum: TeacheProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
+    this.teacherProgramSubscriptionFilterRequestModel = { usrName: '', statusNum: TeacheProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
     this.showTap = TeacheProgramSubscriptionStatusEnum.Pending;
+    this.closeAvancedSearch();
     this.getTeachersProgramsSubscriptions();
   }
 
   onAcceptChange() {
-    this.teacherProgramSubscriptionFilterRequestModel= { usrName:'',statusNum: TeacheProgramSubscriptionStatusEnum.Accept, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
+    this.teacherProgramSubscriptionFilterRequestModel = { usrName: '', statusNum: TeacheProgramSubscriptionStatusEnum.Accept, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
     this.showTap = TeacheProgramSubscriptionStatusEnum.Accept;
+    this.closeAvancedSearch();
     this.getTeachersProgramsSubscriptions();
   }
   onRejectedChange() {
-    this.teacherProgramSubscriptionFilterRequestModel={ usrName:'',statusNum: TeacheProgramSubscriptionStatusEnum.Rejected, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
+    this.teacherProgramSubscriptionFilterRequestModel = { usrName: '', statusNum: TeacheProgramSubscriptionStatusEnum.Rejected, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
     this.showTap = TeacheProgramSubscriptionStatusEnum.Rejected
+    this.closeAvancedSearch();
     this.getTeachersProgramsSubscriptions();
   }
 
@@ -104,6 +107,19 @@ export class TeacherJionProgramTabRequestComponent implements OnInit {
       });
   }
 
+  closeAvancedSearch() {
+    this.teacherProgramSubscriptionFilterRequestModel.usrName = '';
+    this.teacherProgramSubscriptionFilterRequestModel.progId = '';
+    this.teacherProgramSubscriptionFilterRequestModel.numberRequest = undefined;
+    this.teacherProgramSubscriptionFilterRequestModel.fromDate = undefined;
+    this.teacherProgramSubscriptionFilterRequestModel.toDate = undefined;
+    this.teacherProgramSubscriptionFilterRequestModel.skip = 0;
+    this.teacherProgramSubscriptionFilterRequestModel.take= 9;
+    this.teacherProgramSubscriptionFilterRequestModel.sortField='';
+    this.teacherProgramSubscriptionFilterRequestModel.sortOrder= 1;
+    this.teacherProgramSubscriptionFilterRequestModel.page = 1;
+    // this.closeAdvancedSearch.emit()
+  }
   acceptAllTeachersCheckedProgramSubscription() {
 
     this.ids = this.teacherProgramSubscriptionList?.filter(i => i.checked).map(a => a.id || '')
@@ -151,8 +167,8 @@ export class TeacherJionProgramTabRequestComponent implements OnInit {
   }
 
 
- advancedSearch(model?:ITeacherProgramSubscriptionFilterRequestModel) {
-    this.teacherProgramSubscriptionFilterRequestModel=model || {skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
+  advancedSearch(model?: ITeacherProgramSubscriptionFilterRequestModel) {
+    this.teacherProgramSubscriptionFilterRequestModel = model || { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
     this.getTeachersProgramsSubscriptions();
   }
 
