@@ -18,7 +18,7 @@ export class TeacherJionProgramTabRequestComponent implements OnInit {
 
   @Output() rejectTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
   @Output() advancedSearchEvent = new EventEmitter<ITeacherProgramSubscriptionFilterRequestModel>();
-  @Output() closeAdvancedSearch = new EventEmitter();
+  // @Output() closeAdvancedSearch = new EventEmitter();
   teacherProgramSubscriptionList: ITeacherProgramSubscriptionModel[] = [];
   teacherProgramSubscriptionFilterRequestModel: ITeacherProgramSubscriptionFilterRequestModel = { statusNum: TeacheProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
   errorMessage?: string;
@@ -73,21 +73,21 @@ export class TeacherJionProgramTabRequestComponent implements OnInit {
   onPendingChange() {
     this.teacherProgramSubscriptionFilterRequestModel = { usrName: '', statusNum: TeacheProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
     this.showTap = TeacheProgramSubscriptionStatusEnum.Pending;
+    this.closeAvancedSearch();
     this.getTeachersProgramsSubscriptions();
-    this.closeAvancedSearch()
   }
 
   onAcceptChange() {
     this.teacherProgramSubscriptionFilterRequestModel = { usrName: '', statusNum: TeacheProgramSubscriptionStatusEnum.Accept, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
     this.showTap = TeacheProgramSubscriptionStatusEnum.Accept;
+    this.closeAvancedSearch();
     this.getTeachersProgramsSubscriptions();
-    this.closeAvancedSearch()
   }
   onRejectedChange() {
     this.teacherProgramSubscriptionFilterRequestModel = { usrName: '', statusNum: TeacheProgramSubscriptionStatusEnum.Rejected, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
     this.showTap = TeacheProgramSubscriptionStatusEnum.Rejected
+    this.closeAvancedSearch();
     this.getTeachersProgramsSubscriptions();
-    this.closeAvancedSearch()
   }
 
   acceptTeacherProgramSubscription(teacherSubscripModel: ITeacherProgramSubscriptionModel) {
@@ -108,7 +108,17 @@ export class TeacherJionProgramTabRequestComponent implements OnInit {
   }
 
   closeAvancedSearch() {
-    this.closeAdvancedSearch.emit()
+    this.teacherProgramSubscriptionFilterRequestModel.usrName = '';
+    this.teacherProgramSubscriptionFilterRequestModel.progId = '';
+    this.teacherProgramSubscriptionFilterRequestModel.numberRequest = undefined;
+    this.teacherProgramSubscriptionFilterRequestModel.fromDate = undefined;
+    this.teacherProgramSubscriptionFilterRequestModel.toDate = undefined;
+    this.teacherProgramSubscriptionFilterRequestModel.skip = 0;
+    this.teacherProgramSubscriptionFilterRequestModel.take= 9;
+    this.teacherProgramSubscriptionFilterRequestModel.sortField='';
+    this.teacherProgramSubscriptionFilterRequestModel.sortOrder= 1;
+    this.teacherProgramSubscriptionFilterRequestModel.page = 1;
+    // this.closeAdvancedSearch.emit()
   }
   acceptAllTeachersCheckedProgramSubscription() {
 

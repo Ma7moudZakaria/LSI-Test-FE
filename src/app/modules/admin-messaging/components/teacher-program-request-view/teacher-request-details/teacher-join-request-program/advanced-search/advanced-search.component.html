@@ -13,7 +13,7 @@
               <label  class="label" for="category">البرنامج</label>
             <div class="d-flex">
                 <div class="input-group">
-                    <select class="form-control"  [(ngModel)]="teacherFilterAdvancedSearch.progName"    [ngModelOptions]="{standalone: true}">
+                    <select class="form-control"  [(ngModel)]="teacherFilterAdvancedSearch.progId"    [ngModelOptions]="{standalone: true}">
                         <option   value="">{{'SCIENTIFIC_MATERIAL.SELECTOPTION' | translate}}</option>
                         <option *ngFor="let item of ProgramsList" value="{{item.id}}">
                             {{item.progName}}

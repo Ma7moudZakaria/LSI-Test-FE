@@ -1,6 +1,6 @@
 export interface ITeacherProgramSubscriptionFilterRequestModel {
     usrName?:string;
-    progName?:string;
+    progId?:string;
     numberRequest?:number;
     fromDate?:Date;
     toDate?:Date;

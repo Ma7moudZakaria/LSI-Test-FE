@@ -19,7 +19,7 @@ import { BaseSelectedDateModel } from 'src/app/core/ng-model/base-selected-date-
 export class AdvancedSearchTeacherComponent implements OnInit {
 
   @Output() advancedSearchEvent = new EventEmitter<ITeacherAdvancedSearchModel>();
-  @Output() closeAdvancedSearch = new EventEmitter<ITeacherAdvancedSearchModel>();
+  // @Output() closeAdvancedSearch = new EventEmitter<ITeacherAdvancedSearchModel>();
   @Input() teacherFilterAdvancedSearch: ITeacherProgramSubscriptionFilterRequestModel = { statusNum: TeacheProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
 
   ProgramsList: IprogramsModel[] = [];
@@ -87,12 +87,18 @@ export class AdvancedSearchTeacherComponent implements OnInit {
 
   closeTeacherAdvancedSearch() {
     this.teacherFilterAdvancedSearch.usrName = '';
-    this.teacherFilterAdvancedSearch.progName = '';
+    this.teacherFilterAdvancedSearch.progId = '';
     this.teacherFilterAdvancedSearch.numberRequest = undefined
     this.teacherFilterAdvancedSearch.fromDate = undefined
     this.teacherFilterAdvancedSearch.toDate = undefined
-    this.teacherFilterAdvancedSearch = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
-    this.closeAdvancedSearch.emit({ isSearch: false, teacherFilter: this.teacherFilterAdvancedSearch })
+    this.teacherFilterAdvancedSearch.skip = 0;
+    this.teacherFilterAdvancedSearch.take= 9;
+    this.teacherFilterAdvancedSearch.sortField='';
+    this.teacherFilterAdvancedSearch.sortOrder= 1;
+    this.teacherFilterAdvancedSearch.page = 1;
+
+    // this.teacherFilterAdvancedSearch = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
+    this.advancedSearchEvent.emit({ isSearch: false, teacherFilter: this.teacherFilterAdvancedSearch })
   }
 
 
