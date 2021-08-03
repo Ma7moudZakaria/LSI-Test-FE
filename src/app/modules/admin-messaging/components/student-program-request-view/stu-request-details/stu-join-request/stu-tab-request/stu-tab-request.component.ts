@@ -19,7 +19,7 @@ export class StuTabRequestComponent implements OnInit {
   @Output() itemStuReq = new EventEmitter<IStudentSubscriptionModel>();
   @Output() openAdvancedSearch = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
 
-  @Output() closeAdvancedSearch = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
+  // @Output() closeAdvancedSearch = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
 
   @Output() advancedSearchObject = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
   @Input() filter: IStudentSubscriptionFilterRequestModel = { statusNum: StudentProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
@@ -39,8 +39,7 @@ export class StuTabRequestComponent implements OnInit {
   }
   ngOnInit(): void {
     this.filter.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn'
-    this.onPendingChange()
-    this.getStudentProgramSubscriptionsFilter();
+    this.onPendingChange();
   }
   getStudentProgramSubscriptionsFilter() {
     this.progSubsService.getStudentsSubscriptionsFilter(this.filter).subscribe(res => {
@@ -68,18 +67,17 @@ export class StuTabRequestComponent implements OnInit {
       }
     })
   }
-  advancedSearchRequest() {
-    this.advancedSearchObject.emit(this.filter)
-  }
+  // advancedSearchRequest() {
+  //   this.advancedSearchObject.emit(this.filter)
+  // }
 
   onPendingChange() {
     this.showTap = StudentProgramSubscriptionStatusEnum.Pending
     this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Pending;
     this.clearfilterByText();
-    this.advancedSearchRequest()
-    this.getStudentProgramSubscriptionsFilter();
+    // this.advancedSearchRequest()
     this.closeAvancedSearch()
-
+    this.getStudentProgramSubscriptionsFilter();
   }
 
 
@@ -87,20 +85,17 @@ export class StuTabRequestComponent implements OnInit {
     this.showTap = StudentProgramSubscriptionStatusEnum.Accept
     this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Accept
     this.clearfilterByText();
-    this.advancedSearchRequest()
-    this.getStudentProgramSubscriptionsFilter();
+    // this.advancedSearchRequest()
     this.closeAvancedSearch()
-
-
+    this.getStudentProgramSubscriptionsFilter();
   }
   onRejectedChange() {
     this.showTap = StudentProgramSubscriptionStatusEnum.Rejected
     this.filter.statusNum = StudentProgramSubscriptionStatusEnum.Rejected
     this.clearfilterByText();
-    this.advancedSearchRequest()
-    this.getStudentProgramSubscriptionsFilter();
+    // this.advancedSearchRequest()
     this.closeAvancedSearch()
-
+    this.getStudentProgramSubscriptionsFilter();
   }
   rejecteStuRequestMethod(event: IStudentSubscriptionModel) {
     this.itemStuReq.emit(event)
@@ -174,7 +169,6 @@ export class StuTabRequestComponent implements OnInit {
   }
   clearfilterByText() {
     this.filter.progName = '';
-    this.filterByText(this.filter.progName)
   }
   openAvancedSearch() {
     this.openAdvancedSearch.emit(this.filter)
@@ -185,9 +179,12 @@ export class StuTabRequestComponent implements OnInit {
     this.filter.numberRequest = undefined
     this.filter.fromDate = undefined
     this.filter.toDate = undefined
-    this.filter = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
-    this.closeAdvancedSearch.emit(this.filter)
-
+    this.filter.skip = 0
+    this.filter.take = 9
+    this.filter.page = 1
+    this.filter.sortField = '';
+    // this.filter = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
+    // this.closeAdvancedSearch.emit(this.filter)
   }
 }
 

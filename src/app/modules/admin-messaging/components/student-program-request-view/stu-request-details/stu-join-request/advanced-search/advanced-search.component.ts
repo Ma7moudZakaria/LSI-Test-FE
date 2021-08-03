@@ -12,6 +12,7 @@ import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/ipro
 import { DateFormatterService, DateType } from 'ngx-hijri-gregorian-datepicker';
 import { BaseSelectedDateModel } from 'src/app/core/ng-model/base-selected-date-model';
 import { TranslateService } from '@ngx-translate/core';
+import { skip } from 'rxjs/operators';
 
 @Component({
   selector: 'app-advanced-search',
@@ -82,7 +83,11 @@ export class AdvancedSearchComponent implements OnInit {
     this.filter.numberRequest = undefined
     this.filter.fromDate = undefined
     this.filter.toDate = undefined
-    this.filter = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
+    this.filter.skip = 0
+    this.filter.take = 9
+    this.filter.page = 1
+    this.filter.sortField = '';
+    //this.filter = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
     this.closeAdvancedSearch.emit(this.filter)
   }
 

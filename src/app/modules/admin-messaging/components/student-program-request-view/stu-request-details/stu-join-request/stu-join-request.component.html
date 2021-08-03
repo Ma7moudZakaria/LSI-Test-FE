@@ -2,9 +2,7 @@
     <div class="row">
         <div class="col-12">
             <app-stu-tab-request (itemStuReq)="openRejectRequest($event)" 
-            (advancedSearchObject)="advancedSearchObject($event)"
             (openAdvancedSearch)="openStuAdvancedSearchPopup($event)"
-            (closeAdvancedSearch)="closeStuAdvancedSearch($event)"
             ></app-stu-tab-request>
         </div>
     </div>
@@ -16,7 +14,6 @@
         <app-advanced-search 
         (closeAdvancedSearch)="closeStuAdvancedSearch($event)"
         [filter]="filter"
-      
         ></app-advanced-search>
     </div>
     
