@@ -180,7 +180,9 @@ export class StuTabRequestComponent implements OnInit {
     this.openAdvancedSearch.emit(this.filter)
   }
   closeAvancedSearch() {
-    this.closeAdvancedSearch.emit(this.filter)
+    this.closeAdvancedSearch.emit()
+    // this.closeAdvancedSearch.emit(this.filter)
+
   }
 }
 
