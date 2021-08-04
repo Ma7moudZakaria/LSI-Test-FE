@@ -1,11 +1,12 @@
 export interface ITeacherSystemSubscriptionFilterRequest {
     name?:string;   
-    programTypesFilter?:string;    
-    duration?:number;     
-    isPeriodicExam?:boolean;   
-    isAdmissionTest?:boolean;   
-    skip?:number;   
-    take?:number;   
-    teachersCount?:number;   
-    studentsCount?:number;   
+    requestNum?:string;    
+    skip:number;   
+    take:number;   
+    from?:number;   
+    to?:number;   
+    sortField?:string;
+    sortOrder?:number;
+    statusNum?:number;
+    page:number;
 }

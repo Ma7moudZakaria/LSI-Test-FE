@@ -8,5 +8,6 @@ export interface ITeacherSystemSubscription {
     interviewGregorian?:string;   
     checked?:boolean;
     avatarLink?: string;
-    totalRows: number;
+    totalRows?: number;
+    reasonReject?:string;
 }

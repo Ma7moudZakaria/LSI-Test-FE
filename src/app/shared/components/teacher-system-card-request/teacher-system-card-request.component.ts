@@ -2,6 +2,7 @@ import { EventEmitter, Input, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { TeacherSystemSubscriptionStatusEnum } from 'src/app/core/enums/subscriptionStatusEnum/student-program-subscription-status-enum';
 import { IRejectTeacherSystemSubscription } from 'src/app/core/interfaces/teacher-interfaces/ireject-teacher-system-subscription';
 import { ITeacherSystemSubscription } from 'src/app/core/interfaces/teacher-interfaces/iteacher-systems-subscription';
 import { ITeacherProgramSubscriptionModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iteacher-program-subscription-model';
@@ -13,10 +14,13 @@ import { ITeacherProgramSubscriptionModel } from 'src/app/core/interfaces/teache
 })
 export class TeacherSystemCardRequestComponent implements OnInit {
 
-  @Output() rejectTeacherSystemSubscription = new EventEmitter<IRejectTeacherSystemSubscription>();
-  @Output() acceptTeacherSystemSubscriptions = new EventEmitter<string[]>();
+  @Output() rejectTeacherSystemSubscription = new EventEmitter<ITeacherSystemSubscription>();
+  @Output() acceptTeacherSystemSubscription = new EventEmitter<ITeacherSystemSubscription>();
 
-  @Input() teacherSystemSubscriptionModel: Array<ITeacherSystemSubscription> | undefined
+  @Input() teacherSystemSubscriptionModel: ITeacherSystemSubscription = { totalRows : 0};
+
+  @Input() typeEnum: TeacherSystemSubscriptionStatusEnum = TeacherSystemSubscriptionStatusEnum.Pending;
+  typeTeacheEnum = TeacherSystemSubscriptionStatusEnum;
 
   teacherSystemSubscriptionIds:string[] | undefined
   langEnum = LanguageEnum;
@@ -27,20 +31,16 @@ export class TeacherSystemCardRequestComponent implements OnInit {
     console.log("teacherSystemSubscriptionModel  : " , this.teacherSystemSubscriptionModel)
   } 
 
-  getTeacherSystemSubscription(model:ITeacherSystemSubscription []){
-    this.teacherSystemSubscriptionModel = model;    
-  }
-
-  rejectTeacherSystemSubscriptionEve(teacherSubscripModel:ITeacherProgramSubscriptionModel){
+  rejectTeacherSystemSubscriptionEvent(teacherSubscripModel:ITeacherSystemSubscription){
     this.rejectTeacherSystemSubscription.emit(teacherSubscripModel);
   }
   
   acceptTeacherSystemSubscriptionEvent(){
-    this.acceptTeacherSystemSubscriptions.emit(this.teacherSystemSubscriptionIds);
+    this.acceptTeacherSystemSubscription.emit(this.teacherSystemSubscriptionModel);
   }
 
-  acceptTeacherSystemSubscription(id?:string){
-    this.teacherSystemSubscriptionIds?.push(id || '');
-    this.acceptTeacherSystemSubscriptionEvent();
-  }
+  // acceptTeacherSystemSubscription(id?:string){
+  //   this.teacherSystemSubscriptionIds?.push(id || '');
+  //   this.acceptTeacherSystemSubscriptionEvent();
+  // }
 }
