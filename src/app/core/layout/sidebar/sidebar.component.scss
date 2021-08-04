@@ -90,8 +90,12 @@
         flex-direction: column;
     }
 }
-
-
+.nav-item.teacherProfile{
+    margin-top: 9.4rem;
+}
+.studentProfile{
+    margin-top: 0.4rem;
+}
 .nav-item :active ,
 .active {
     &:lang(en) {

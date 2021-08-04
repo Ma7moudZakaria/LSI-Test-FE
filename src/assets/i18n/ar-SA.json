@@ -504,12 +504,18 @@
     "MYPROGRAMS": "برامجى",
     "SCIENTIFIC_ARTICLES": "المواد العلمية",
     "VACATION_REQUEST": "المراسلات",
+    "VACATION": "الاجازات",
     "EXAM_RESULTS": "نتائج الامتحانات",
+    "RESULTS": "الطلبات",
+    "PRINT_CERTIFICATION": "طباعه الشهادات",
     "WITHDRAWAL_REQUESTS": "طلبات الانسجاب",
     "SETTINGS": "الإعدادت",
     "CERTIFICATES": "الشهادات",
     "MY_MESSAGES": "المشاعر",
-    "QUESTION_BANK": "بنك الأسئلة"
+    "SARD": "سرد",
+    "REQUEST": "الطلبات",
+    "QUESTION_BANK": "بنك الأسئلة",
+    "WORK_AGENDA": "اجندة العمل"
   },
   "VIEW_USER_PROFILE_PG": {
     "PERSONAL_PROFILE": "الملف الشخصي",
