@@ -22,6 +22,7 @@ export class ProgramDayTaskHearingComponent implements OnInit {
   fileUploadModel: IFileUpload[] = [];
   fileList?: IAttachment[] = [];
   attachmentIds: string[] = [];
+  
   @Input() hearingTaskDetailsModel: IProgramDayTaskHearing = {};
   constructor(
     public translate: TranslateService,
@@ -73,6 +74,15 @@ export class ProgramDayTaskHearingComponent implements OnInit {
       return;
     }
   }
+
+  // checkDegree(){
+  //   if (this.hearingTaskDetailsModel.degree) {
+  //     this.resMessage = {
+  //       message: this.translate.instant('GENERAL.DEGREE_MAX_LENGTH'),
+  //       type: BaseConstantModel.SUCCESS_TYPE
+  //     }        
+  //   }
+  // }
 
 
   UploadFiles(files: any) {

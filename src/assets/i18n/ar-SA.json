@@ -67,7 +67,8 @@
     "FILE_SIZE": "حجم الملف أكبر من 3 ميجا",
     "EXTENTION_FILE": "امتداد الفايل غير مسوح بيه ",
     "ACCEPT": "قبول",
-    "REJECT": "رفض"
+    "REJECT": "رفض",
+    "DEGREE_MAX_LENGTH": "الدرجة يجب ان تكون أقل من أو تساوى 100"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
