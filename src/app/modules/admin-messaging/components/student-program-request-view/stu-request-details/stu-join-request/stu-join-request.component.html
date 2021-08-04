@@ -2,22 +2,21 @@
     <div class="row">
         <div class="col-12">
             <app-stu-tab-request (itemStuReq)="openRejectRequest($event)" 
-            (advancedSearchObject)="advancedSearchObject($event)"
             (openAdvancedSearch)="openStuAdvancedSearchPopup($event)"
-            (closeAdvancedSearch)="closeStuAdvancedSearch()"
             ></app-stu-tab-request>
         </div>
     </div>
     <div class="overlay" *ngIf="openStuRejectOverlay">
             <app-stu-rejected [itemStuReq]='itemStuReq' (closeRejectedRequest)="closeRejectedRequest()"></app-stu-rejected>
     </div>
+
     <div class="overlay" *ngIf="openStuAdvancedSearch">
         <app-advanced-search 
-        (closeAdvancedSearch)="closeStuAdvancedSearch()"
+        (closeAdvancedSearch)="closeStuAdvancedSearch($event)"
         [filter]="filter"
-      
         ></app-advanced-search>
     </div>
+    
 </div>
-<div class="showoverlay" (click)="closeOverlay()" [ngClass]="{'disableBlock': openStuAdvancedSearch || openStuRejectOverlay}"></div>
+<!-- <div class="showoverlay" (click)="closeOverlay()" [ngClass]="{'disableBlock': openStuAdvancedSearch || openStuRejectOverlay}"></div> -->
 

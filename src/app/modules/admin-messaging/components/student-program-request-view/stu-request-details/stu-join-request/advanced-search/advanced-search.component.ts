@@ -8,10 +8,11 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
 import { IProgramFilterAdvancedRequest, IProgramFilterByNameRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-requests';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-date-struct';
+
 import { DateFormatterService, DateType } from 'ngx-hijri-gregorian-datepicker';
 import { BaseSelectedDateModel } from 'src/app/core/ng-model/base-selected-date-model';
 import { TranslateService } from '@ngx-translate/core';
+import { skip } from 'rxjs/operators';
 
 @Component({
   selector: 'app-advanced-search',
@@ -19,7 +20,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./advanced-search.component.scss']
 })
 export class AdvancedSearchComponent implements OnInit {
-  @Output() closeAdvancedSearch = new EventEmitter();
+  @Output() closeAdvancedSearch = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
   // @Output() ReqAdvancedSearch = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
   // @Input() filter: IStudentSubscriptionFilterRequestModel | undefined
   @Input() filter: IStudentSubscriptionFilterRequestModel = { statusNum: StudentProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
@@ -77,7 +78,17 @@ export class AdvancedSearchComponent implements OnInit {
 
 
   closeStuAdvancedSearch() {
-    this.closeAdvancedSearch.emit()
+    this.filter.usrName = '';
+    this.filter.progId = '';
+    this.filter.numberRequest = undefined
+    this.filter.fromDate = undefined
+    this.filter.toDate = undefined
+    this.filter.skip = 0
+    this.filter.take = 9
+    this.filter.page = 1
+    this.filter.sortField = '';
+    //this.filter = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
+    this.closeAdvancedSearch.emit(this.filter)
   }
 
 
