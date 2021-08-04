@@ -121,9 +121,6 @@ export class TeacherSystemSubscriptionGridComponent implements OnInit {
   //   this.acceptTeacherSystemSubscription.emit(teacherSystemSubscrips);
   // }
 
-  acceptAllTeacherSystemSubscriptionsChechedEvent() {
-    this.acceptAllTeacherSystemSubscriptionCheched.emit();
-  }
   //=================
   sortStudentByName() {
     this.teacherSystemSubscriptionFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn';
