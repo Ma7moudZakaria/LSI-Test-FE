@@ -69,7 +69,12 @@ export class TeacherJionTabRequestComponent implements OnInit {
       if (res.isSuccess) {
         this.teacherSystemSubscription = res.data as Array<ITeacherSystemSubscription>; 
 
-       ;
+        this.totalCount = res.count ? res.count : 0;
+        if (this.teacherSystemSubscriptionFilterRequestModel.skip > 0 && (!this.teacherSystemSubscription || this.teacherSystemSubscription.length === 0)) {
+          this.teacherSystemSubscriptionFilterRequestModel.page -= 1;
+          this.teacherSystemSubscriptionFilterRequestModel.skip = (this.teacherSystemSubscriptionFilterRequestModel.page - 1) * this.teacherSystemSubscriptionFilterRequestModel.take;
+          this.getTeacherSystemSubscription();
+        }
 
         console.log("Teacher System Subscription :",this.teacherSystemSubscription);   
       }

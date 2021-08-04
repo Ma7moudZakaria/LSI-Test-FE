@@ -24,11 +24,24 @@ export class TeacherSystemCardRequestComponent implements OnInit {
 
   teacherSystemSubscriptionIds:string[] | undefined
   langEnum = LanguageEnum;
+  requestDate:string | undefined;
 
   constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
     console.log("teacherSystemSubscriptionModel  : " , this.teacherSystemSubscriptionModel)
+
+    if (this.teacherSystemSubscriptionModel?.requestDate) {
+      let requestDateValue = new Date(this.teacherSystemSubscriptionModel.requestDate || '');
+      console.log("requestDateValue  : " , requestDateValue)
+
+
+      this.requestDate = new Date(requestDateValue.setDate(requestDateValue.getDate() + 1)).toISOString().slice(0, 10);
+    }
+
+    if (!this.teacherSystemSubscriptionModel?.avatarLink) {
+      this.teacherSystemSubscriptionModel.avatarLink = '../../../../../assets/images/Profile.svg';
+    }
   } 
 
   rejectTeacherSystemSubscriptionEvent(teacherSubscripModel:ITeacherSystemSubscription){
