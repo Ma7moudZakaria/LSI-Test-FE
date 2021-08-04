@@ -90,8 +90,8 @@ export class AddEditNotificationComponent implements OnInit {
         notifyName: ['', [Validators.required, Validators.maxLength(100)]],
         numberNotify: ['', [Validators.required, Validators.pattern(BaseConstantModel.numberBiggerThanZero), Validators.max(99)]],
         notifyType: [null, [Validators.required]],
-        messageAr: ['', [Validators.required, Validators.maxLength(300)]],
-        messageEn: ['', [Validators.required, Validators.maxLength(300)]]
+        messageAr: ['', [Validators.required, Validators.maxLength(150)]],
+        messageEn: ['', [Validators.required, Validators.maxLength(150)]]
       })
   }
 

@@ -98,7 +98,7 @@
             {{ 'NOTIFICATIONS.ARABIC_FIELD' | translate }}
          </div> -->
          <div *ngIf="f.messageAr.errors?.maxlength ">
-          {{ 'NOTIFICATIONS.QUESTION_AR_MAX_LENGHT' | translate}}
+          {{ 'NOTIFICATIONS.NOTIFICATION_NAME_MAX_LENGTH' | translate}}
       </div>
     </div> 
 
@@ -116,7 +116,7 @@
             {{ 'NOTIFICATIONS.ENGLISH_FIELD' | translate }}
          </div> -->
          <div *ngIf="f.messageEn.errors?.maxlength ">
-          {{ 'NOTIFICATIONS.QUESTION_EN_MAX_LENGHT' | translate}}
+          {{ 'NOTIFICATIONS.NOTIFICATION_NAME_MAX_LENGTH' | translate}}
       </div>
     </div> 
     <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2 text-center">
