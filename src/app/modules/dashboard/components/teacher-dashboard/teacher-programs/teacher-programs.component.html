@@ -4,36 +4,53 @@
        <p class="mb-0 head"> برامجنا</p>
         <img src="../../../../../assets/images/student-program/program-sub/certification.png" >
     </div>
-<div class="col-12 d-flex justify-content-between align-items-center">
-    <app-search-input class="w-90"></app-search-input>
-    <button class="sort_icon mb-3">
-        <img src="../.././../../../assets/images/student-program/program-sub/sorting.svg">
-    </button>
-</div>
-
+    
+    <div class="col-12 d-flex justify-content-between align-items-center">
+        <app-search-input class="w-90"></app-search-input>
+    
+        <div ngbDropdown class="d-inline-block">
+            <button class="sort_icon mb-3" id="dropdownBasic1" ngbDropdownToggle>
+                <img src="../.././../../../assets/images/student-program/program-sub/sorting.svg">
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button ngbDropdownItem class="item_dropdown border_bottom">اسم البرنامج</button>
+              <button ngbDropdownItem class="item_dropdown border_bottom">مدة البرنامج تصاعدي</button>
+              <button ngbDropdownItem class="item_dropdown ">مدة البرنامج تنازلي</button>
+            </div>
+        </div>
+    
+    </div>
+  
     <div class="col-12 internal_scroll_program">
         <ng-container *ngFor="let program of programsForTeacherSubscriptionsLst">
-        <div class="card_program d-flex justify-content-between align-items-center mb-3">
-        <img class="prog-photo" src="../.././../../../assets/images/student-program/program-sub/qor2an.png">
-        <div class="card_info">
-        <p class="prog-name">{{program.progName}}</p>
-        <div class=" d-flex justify-content-around align-items-center  ">
-            <div class="text-center">
-                <span class="az_count">عدد الأجزاء المطلوبة</span>
-                <p class="count"> {{program.parts}} </p>
-            </div>
-            <div class="slash"></div>
-            <div class="text-center">
-                <span  class="time_pro">مدة البرنامج باليوم</span>
-                <p class="count"> {{program.dura}}</p> 
-            </div>
-        </div>
-        <p class="details mt-2">
-            {{program.idea}}
-        </p>
-        </div>
-       
-      </div>
+            <div class="card_program d-flex justify-content-between align-items-center mb-3">
+                <img class="prog-photo" src="../.././../../../assets/images/student-program/program-sub/qor2an.png">
+                <div class="card_info">
+                <p class="prog-name">{{program.progName}}</p>
+                <p class="batch-name">
+                    {{translate.currentLang === langEnum.en ? program.enBatName:program.arBatName}}
+                </p>
+              
+                <div class=" d-flex justify-content-around align-items-center  ">
+                    <div class="text-center">
+                        <span class="az_count">عدد الأجزاء المطلوبة</span>
+                        <p class="count" *ngIf="program.parts"> {{program.parts}} </p>
+                        <p class="count" *ngIf="!program.parts"> 0 </p>
+                    </div>
+                    <div class="slash"></div>
+                    <div class="text-center">
+                        <span  class="time_pro">مدة البرنامج باليوم</span>
+                        <p class="count"  *ngIf="program.dura"> {{program.dura}}</p> 
+                        <p class="count"  *ngIf="!program.dura">0</p> 
+
+                    </div>
+                </div>
+                <p class="details mt-2">
+                                {{program.idea}}
+                </p>
+                </div>
+               
+              </div>
       </ng-container>
 
     </div>
