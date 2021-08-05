@@ -6,37 +6,51 @@
     </div>
 <div class="col-12 d-flex justify-content-between align-items-center">
     <app-search-input class="w-90"></app-search-input>
-    <button class="sort_icon mb-3">
-        <img src="../.././../../../assets/images/student-program/program-sub/sorting.svg">
-    </button>
+
+    <div ngbDropdown class="d-inline-block">
+        <button class="sort_icon mb-3" id="dropdownBasic1" ngbDropdownToggle>
+            <img src="../.././../../../assets/images/student-program/program-sub/sorting.svg">
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem class="item_dropdown border_bottom">اسم البرنامج</button>
+          <button ngbDropdownItem class="item_dropdown border_bottom">مدة البرنامج تصاعدي</button>
+          <button ngbDropdownItem class="item_dropdown ">مدة البرنامج تنازلي</button>
+        </div>
+    </div>
+
 </div>
 
 
-
     <div class="col-12 internal_scroll_program">
-        <ng-container *ngFor="let program of list_programs">
-        <div class="card_program d-flex justify-content-between align-items-center mb-3">
-        <img class="prog-photo" src="../.././../../../assets/images/student-program/program-sub/qor2an.png">
-        <div class="card_info">
-        <p class="prog-name">اسم البرنامج</p>
-        <div class=" d-flex justify-content-around align-items-center  ">
-            <div class="text-center">
-                <span class="az_count">عدد الأجزاء المطلوبة</span>
-                <p class="count">30</p>
-            </div>
-            <div class="slash"></div>
-            <div class="text-center">
-                <span  class="time_pro">مدة البرنامج باليوم</span>
-                <p class="count">10</p> 
-            </div>
-        </div>
-        <p class="details mt-2">
-            ينيّات هذا القرن مع إصدار رقائق "ليتراسيت" (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مث
-            ل "ألدوس بايج مايكر" (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.
-        </p>
-        </div>
-       
-      </div>
+        <ng-container *ngFor="let program of programsForStudentSubscriptionsList">
+            <div class="card_program d-flex justify-content-between align-items-center mb-3">
+                <img class="prog-photo" src="../.././../../../assets/images/student-program/program-sub/qor2an.png">
+                <div class="card_info">
+                <p class="prog-name">{{program.progName}}</p>
+                <p class="batch-name">
+                    {{translate.currentLang === langEnum.en ? program.enBatName:program.arBatName}}
+                </p>
+              
+                <div class=" d-flex justify-content-around align-items-center  ">
+                    <div class="text-center">
+                        <span class="az_count">عدد الأجزاء المطلوبة</span>
+                        <p class="count" *ngIf="program.parts"> {{program.parts}} </p>
+                        <p class="count" *ngIf="!program.parts"> 0 </p>
+                    </div>
+                    <div class="slash"></div>
+                    <div class="text-center">
+                        <span  class="time_pro">مدة البرنامج باليوم</span>
+                        <p class="count"  *ngIf="program.dura"> {{program.dura}}</p> 
+                        <p class="count"  *ngIf="!program.dura">0</p> 
+
+                    </div>
+                </div>
+                <p class="details mt-2">
+                    ينيّات هذا القرن مع إصدار رقائق "ليتراسيت" (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مث
+                </p>
+                </div>
+               
+              </div>
       </ng-container>
 
     </div>
