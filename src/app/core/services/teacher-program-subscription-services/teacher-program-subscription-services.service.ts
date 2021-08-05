@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IProgramsForTeachersSubscriptionsModel } from '../../interfaces/teacher-program-subscription-interfaces/iprograms-for-teachers-subscriptions-model';
+import { IProgramsForTeachersSubscriptionsFilterRequestModel } from '../../interfaces/teacher-program-subscription-interfaces/iprograms-for-teachers-subscriptions-filter-request-model';
 import { IRejectTeacherProgramSubscriptionModel } from '../../interfaces/teacher-program-subscription-interfaces/ireject-teacher-program-subscription-model';
 import { ITeacherMyProgramsRequestModel } from '../../interfaces/teacher-program-subscription-interfaces/iteacher-my-programs-request-model';
 import { ITeacherProgramSubscriptionFilterRequestModel } from '../../interfaces/teacher-program-subscription-interfaces/iteacher-program-subscription-filter-request-model';
@@ -39,7 +39,7 @@ export class TeacherProgramSubscriptionServicesService {
     return this.http.put<BaseResponseModel>(this.submitTeacherSubscriptionURL , model);
   }
 
-  getProgramsForTeacherssSubscriptions(model:IProgramsForTeachersSubscriptionsModel):Observable<BaseResponseModel>{
+  getProgramsForTeacherssSubscriptions(model:IProgramsForTeachersSubscriptionsFilterRequestModel):Observable<BaseResponseModel>{
     return this.http.post<BaseResponseModel>(this.getProgramsForTeacherssSubscriptionsURL , model);
   }
 
