@@ -20,30 +20,37 @@
         </div>
     
     </div>
+  
     <div class="col-12 internal_scroll_program">
         <ng-container *ngFor="let program of programsForTeacherSubscriptionsLst">
-        <div class="card_program d-flex justify-content-between align-items-center mb-3">
-        <img class="prog-photo" src="../.././../../../assets/images/student-program/program-sub/qor2an.png">
-        <div class="card_info">
-        <p class="prog-name">{{program.progName}}</p>
-        <div class=" d-flex justify-content-around align-items-center  ">
-            <div class="text-center">
-                <span class="az_count">عدد الأجزاء المطلوبة</span>
-                <p class="count"> {{program.parts}} </p>
-            </div>
-            <div class="slash"></div>
-            <div class="text-center">
-                <span  class="time_pro">مدة البرنامج باليوم</span>
-                <p class="count"> {{program.dura}}</p> 
-            </div>
-        </div>
-        <p class="details mt-2">
-            ينيّات هذا القرن مع إصدار رقائق "ليتراسيت" (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مث
-            ل "ألدوس بايج مايكر" (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.
-        </p>
-        </div>
-       
-      </div>
+            <div class="card_program d-flex justify-content-between align-items-center mb-3">
+                <img class="prog-photo" src="../.././../../../assets/images/student-program/program-sub/qor2an.png">
+                <div class="card_info">
+                <p class="prog-name">{{program.progName}}</p>
+                <p class="batch-name">
+                    {{translate.currentLang === langEnum.en ? program.enBatName:program.arBatName}}
+                </p>
+              
+                <div class=" d-flex justify-content-around align-items-center  ">
+                    <div class="text-center">
+                        <span class="az_count">عدد الأجزاء المطلوبة</span>
+                        <p class="count" *ngIf="program.parts"> {{program.parts}} </p>
+                        <p class="count" *ngIf="!program.parts"> 0 </p>
+                    </div>
+                    <div class="slash"></div>
+                    <div class="text-center">
+                        <span  class="time_pro">مدة البرنامج باليوم</span>
+                        <p class="count"  *ngIf="program.dura"> {{program.dura}}</p> 
+                        <p class="count"  *ngIf="!program.dura">0</p> 
+
+                    </div>
+                </div>
+                <p class="details mt-2">
+                    ينيّات هذا القرن مع إصدار رقائق "ليتراسيت" (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مث
+                </p>
+                </div>
+               
+              </div>
       </ng-container>
 
     </div>

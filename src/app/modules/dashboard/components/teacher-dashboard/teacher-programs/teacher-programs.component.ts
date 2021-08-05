@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IProgramsForTeacherSubscriptionsModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iprograms-for-teacher-subscriptions-model';
 import { IProgramsForTeachersSubscriptionsFilterRequestModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iprograms-for-teachers-subscriptions-filter-request-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
@@ -12,10 +13,10 @@ import { TeacherProgramSubscriptionServicesService } from 'src/app/core/services
 })
 export class TeacherProgramsComponent implements OnInit {
 
-  programsForTeachersSubscriptionsFilterRequestModel:IProgramsForTeachersSubscriptionsFilterRequestModel | undefined;
-  programsForTeacherSubscriptionsLst:IProgramsForTeacherSubscriptionsModel[] |undefined;
+  programsForTeachersSubscriptionsFilterRequestModel: IProgramsForTeachersSubscriptionsFilterRequestModel | undefined;
+  programsForTeacherSubscriptionsLst: IProgramsForTeacherSubscriptionsModel[] | undefined;
   errorMessage?: string;
-
+  langEnum = LanguageEnum;
   constructor(
     public translate: TranslateService,
     private teacherProgramSubscriptionServicesService: TeacherProgramSubscriptionServicesService,
@@ -39,5 +40,5 @@ export class TeacherProgramsComponent implements OnInit {
         console.log(error);
       });
   }
-  
+
 }
