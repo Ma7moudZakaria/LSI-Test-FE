@@ -15,6 +15,7 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
+import { RoleManagementService } from 'src/app/core/services/role-management/role-management.service';
 
 @Component({
   selector: 'app-login',
@@ -44,6 +45,7 @@ export class LoginComponent implements OnInit {
       private router: Router,
       private authServiceSocial: SocialAuthService,
       private route: ActivatedRoute,
+      public roleService:RoleManagementService
       ) { }
 
   togglePassword() {
@@ -92,7 +94,9 @@ export class LoginComponent implements OnInit {
         (res) => {
           if (res.isSuccess) {
             localStorage.setItem('user', JSON.stringify(res.data as IUser));
-            this.router.navigateByUrl('/dashboard');
+            if(this.roleService.isAdmin()){this.router.navigateByUrl('/dashboard');} 
+            if(this.roleService.isTeacher()){this.router.navigateByUrl('/dashboard/teacher-dashboard');}
+            if(this.roleService.isStudent()){this.router.navigateByUrl('/dashboard');} 
             this.getLookups();
             this.isSubmit = false;
           }
