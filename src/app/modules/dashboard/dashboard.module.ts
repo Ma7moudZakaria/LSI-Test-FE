@@ -9,12 +9,13 @@ import { TeacherRecitationRequestComponent } from './components/teacher-dashboar
 import { TeacherDailyUpcomingTasksComponent } from './components/teacher-dashboard/teacher-daily-upcoming-tasks/teacher-daily-upcoming-tasks.component';
 import { TeacherFeelingsComponent } from './components/teacher-dashboard/teacher-feelings/teacher-feelings.component';
 import { TeacherAvailableAppointmentsComponent } from './components/teacher-dashboard/teacher-available-appointments/teacher-available-appointments.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
   declarations: [DashboardComponent, TeacherDashboardComponent, TeacherProgramsComponent, TeacherRecitationRequestComponent, TeacherDailyUpcomingTasksComponent, TeacherFeelingsComponent, TeacherAvailableAppointmentsComponent],
   imports: [
-    CommonModule,
+    CommonModule,SharedModule,
     DashboardRoutingModule
   ]
 })

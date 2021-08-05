@@ -20,7 +20,7 @@
                             <span class="container__navigation__title">  {{'SIDENAVBAR.DASHBORD' | translate}}  </span>
                     </a>
                     <a *ngIf='!roleService.isAdmin() && (!roleService.isStudent() || roleService.isTeacher())' 
-                    [routerLink]="['/dashboard']"  routerLinkActive="active" class="nav-link">
+                    [routerLink]="['/dashboard/teacher-dashboard']"  routerLinkActive="active" class="nav-link">
                        <img src="../../../../assets/images/sidebar/Dashboard-icon.png">
                           
                            <span class="container__navigation__title">  {{'SIDENAVBAR.DASHBORD' | translate}}  </span>
