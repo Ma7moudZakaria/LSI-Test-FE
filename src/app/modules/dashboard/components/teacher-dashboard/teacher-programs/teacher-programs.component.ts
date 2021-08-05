@@ -17,6 +17,7 @@ export class TeacherProgramsComponent implements OnInit {
   programsForTeacherSubscriptionsLst: IProgramsForTeacherSubscriptionsModel[] | undefined;
   errorMessage?: string;
   langEnum = LanguageEnum;
+  
   constructor(
     public translate: TranslateService,
     private teacherProgramSubscriptionServicesService: TeacherProgramSubscriptionServicesService,
