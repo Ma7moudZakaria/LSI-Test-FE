@@ -55,7 +55,7 @@
                             <span class="container__navigation__title">{{'SIDENAVBAR.MYPROGRAMS' | translate}}</span>
                     </a>
                     <a *ngIf='!roleService.isAdmin() && (roleService.isStudent() || !roleService.isTeacher())' 
-                      [routerLink] = "['/program']">
+                      [routerLink] = "['/student-programs']">
 
                         <img src="../../../../assets/images/sidebar/program-icon.png">
                             <span class="container__navigation__title">{{'SIDENAVBAR.MYPROGRAMS' | translate}}</span>
