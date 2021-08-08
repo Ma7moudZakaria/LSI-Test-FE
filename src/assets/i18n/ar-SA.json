@@ -778,5 +778,11 @@
     "FROM_PROG": "من برنامج",
     "REJECTED_REASON": "سبب الرفض",
     "VALIDATIONDATE": "تاريخ البداية يجب ان يكون اقل من تاريخ النهاية "
+  },
+  "TEACHER_SYSTEM_SUBSCRIPTION": {
+    "REQUEST_DATE": "تاريخ الطلب",
+    "MEETING":"المقابلة",
+    "REJECT":"رفض",
+    "ACCEPT":"قبول"
   }
 }

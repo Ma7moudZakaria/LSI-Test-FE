@@ -782,5 +782,11 @@
     "FROM_PROG": "From Program",
     "REJECTED_REASON": "Reject Reason",
     "VALIDATIONDATE": "Datefrom  should less than dateto "
+  },
+  "TEACHER_SYSTEM_SUBSCRIPTION": {
+    "REQUEST_DATE": "Request Date",
+    "MEETING":"Meeting",
+    "REJECT":"Reject",
+    "ACCEPT":"Accept"
   }
 }

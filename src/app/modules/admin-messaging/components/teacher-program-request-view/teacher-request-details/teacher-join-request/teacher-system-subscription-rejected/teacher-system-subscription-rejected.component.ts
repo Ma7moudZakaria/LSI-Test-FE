@@ -29,11 +29,10 @@ export class TeacherSystemSubscriptionRejectedComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   closeRejectRequest() {
     this.closeRejectedRequest.emit();
-
   }
+
   saveRejectRequest() {
     let model: IRejectTeacherSystemSubscription = {
       usrId: this.itemTeacherSystemSubscriptionReq.id,
@@ -55,8 +54,6 @@ export class TeacherSystemSubscriptionRejectedComponent implements OnInit {
           type: BaseConstantModel.DANGER_TYPE
         }
       })
-    }
-
+    }    
   }
-
 }

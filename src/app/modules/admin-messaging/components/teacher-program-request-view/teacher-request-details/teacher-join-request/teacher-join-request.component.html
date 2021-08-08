@@ -1,22 +1,10 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <app-teacher-join-tab-request
-            (itemTeacherSystemSubscriptionReq)="openRejectRequest($event)" 
-            (advancedSearchObject)="advancedSearchObject($event)"
-
-            (closeAdvancedSearch)="closeStuAdvancedSearch()"></app-teacher-join-tab-request>
+            <app-teacher-join-tab-request (itemTeacherSystemSubscriptionReq)="openRejectRequest($event)"></app-teacher-join-tab-request>
         </div>
     </div>
     <div class="overlay" *ngIf="openStuRejectOverlay">
         <app-teacher-system-subscription-rejected [itemTeacherSystemSubscriptionReq]='itemTeacherSystemSubscriptionReq' (closeRejectedRequest)="closeRejectedRequest()"></app-teacher-system-subscription-rejected>
     </div>
-    <!-- <div class="overlay" *ngIf="openStuAdvancedSearch">
-        <app-advanced-search 
-        (closeAdvancedSearch)="closeStuAdvancedSearch()"
-        [filter]="filter"
-      
-        ></app-advanced-search>
-    </div> -->
 </div>
-<!-- <div class="showoverlay" (click)="closeOverlay()" [ngClass]="{'disableBlock': openStuAdvancedSearch || openStuRejectOverlay}"></div> -->

@@ -3,8 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { TeacherSystemSubscriptionStatusEnum } from 'src/app/core/enums/subscriptionStatusEnum/student-program-subscription-status-enum';
-import { IStudentSubscriptionFilterRequestModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-subscription-filter-request-model';
-import { IRejectTeacherSystemSubscription } from 'src/app/core/interfaces/teacher-interfaces/ireject-teacher-system-subscription';
 import { ITeacherSystemSubscriptionFilterRequest } from 'src/app/core/interfaces/teacher-interfaces/iteacher-system-subscription-filter-request';
 import { ITeacherSystemSubscription } from 'src/app/core/interfaces/teacher-interfaces/iteacher-systems-subscription';
 import { ExportationService } from 'src/app/core/services/exportation-services/exportation.service';
@@ -17,23 +15,19 @@ import { ExportationService } from 'src/app/core/services/exportation-services/e
 export class TeacherSystemSubscriptionGridComponent implements OnInit {
 
   @Output() teacherSystemSubscriptionFilterEvent = new EventEmitter<ITeacherSystemSubscriptionFilterRequest>();
-  @Output() deleteListOfTeacherSystemSubscription = new EventEmitter<string>();
   @Output() itemTeacherSystemSubscriptionReq = new EventEmitter<ITeacherSystemSubscription>();
-  // @Output() acceptTeacherSystemSubscriptionReq = new EventEmitter<ITeacherSystemSubscription>();
-
   @Output() rejectTeacherSystemSubscription = new EventEmitter<ITeacherSystemSubscription>();
   @Output() acceptTeacherSystemSubscription = new EventEmitter<ITeacherSystemSubscription>();
   @Output() acceptAllTeacherSystemSubscriptionCheched = new EventEmitter<ITeacherSystemSubscription>();
-
-  // @Input() userMode: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.student;
+  
   @Input() teacherSystemSubscriptionFilterRequestModel: ITeacherSystemSubscriptionFilterRequest = { skip: 0, take: 9, page: 1 };
   @Input() numberPerRow: number = 3;
   @Input() teacherSystemSubscriptionItems: ITeacherSystemSubscription[] = []
   @Input() totalCount: number = 0;
   @Input() typeEnum: TeacherSystemSubscriptionStatusEnum = TeacherSystemSubscriptionStatusEnum.Pending;
   @Input() typeTeacheEnum: TeacherSystemSubscriptionStatusEnum = TeacherSystemSubscriptionStatusEnum.Pending;
-  teacherTabTypeSelected = TeacherSystemSubscriptionStatusEnum;
 
+  teacherTabTypeSelected = TeacherSystemSubscriptionStatusEnum;
   orderTypeToggel = 1;
   userOrderTypeToggel = true;
   allSelected: boolean = false;
@@ -104,24 +98,12 @@ export class TeacherSystemSubscriptionGridComponent implements OnInit {
     this.exportationService.exportCSV(expItems, 'teacher', data, headerLabels);
   }
 
-  deleteTeacherByIds() {
-    this.deleteListOfTeacherSystemSubscription.emit();
-  }
-
   onTeacherPageChange() {
     this.teacherSystemSubscriptionFilterRequestModel.skip = (this.teacherSystemSubscriptionFilterRequestModel.page - 1) * (this.teacherSystemSubscriptionFilterRequestModel.take || 0);
     this.teacherSystemSubscriptionFilterEvent.emit(this.teacherSystemSubscriptionFilterRequestModel);
     this.setTeacherAllChecked(false);
   }
 
-  // rejectTeacherSystemSubscriptionEve(teacherSystemSubscripModel: ITeacherSystemSubscription) {
-  //   this.rejectTeacherSystemSubscription.emit(teacherSystemSubscripModel);
-  // }
-  // acceptTeacherSystemSubscriptionEvent(teacherSystemSubscrips: string[]) {
-  //   this.acceptTeacherSystemSubscription.emit(teacherSystemSubscrips);
-  // }
-
-  //=================
   sortStudentByName() {
     this.teacherSystemSubscriptionFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn';
     this.teacherSystemSubscriptionFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
@@ -178,24 +160,12 @@ export class TeacherSystemSubscriptionGridComponent implements OnInit {
     this.exportationService.exportCSV(expItems, 'Student', data, headerLabels);
   }
 
-  deleteTeacherSystemSubscriptionByIds() {
-    this.deleteListOfTeacherSystemSubscription.emit();
-  }
-
   onTeacherSystemSubscriptionPageChange() {
     this.teacherSystemSubscriptionFilterRequestModel.skip = (this.teacherSystemSubscriptionFilterRequestModel.page - 1) * (this.teacherSystemSubscriptionFilterRequestModel.take);
     this.teacherSystemSubscriptionFilterEvent.emit(this.teacherSystemSubscriptionFilterRequestModel);
     this.setTeacherSystemSubscriptionAllChecked(false);
   }
 
-  // rejecteTeacherSystemSubscriptionRequest(event: ITeacherSystemSubscription) {
-  //   this.itemTeacherSystemSubscriptionReq.emit(event)
-
-  // }
-  // acceptTeacherSystemSubscriptionRequest(event: ITeacherSystemSubscription) {
-  //   this.acceptTeacherSystemSubscriptionReq.emit(event)
-
-  // }
   acceptAllTeacherSystemSubscriptionChechedEvent() {
     this.acceptAllTeacherSystemSubscriptionCheched.emit()
   }
@@ -203,6 +173,7 @@ export class TeacherSystemSubscriptionGridComponent implements OnInit {
   rejectTeacherSystemSubscriptionEvent(teacherSubscripModel: ITeacherSystemSubscription) {
     this.itemTeacherSystemSubscriptionReq.emit(teacherSubscripModel);
   }
+
   acceptTeacherSystemSubscriptionEvent(teacherSubscripModel: ITeacherSystemSubscription) {
     this.acceptTeacherSystemSubscription.emit(teacherSubscripModel);
   }

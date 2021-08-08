@@ -11,59 +11,29 @@ import { TeacherJionTabRequestComponent } from './teacher-join-tab-request/teach
 })
 export class TeacherJoinRequestComponent implements OnInit {
   showTap: string = 'new_request';
-
-  // @ViewChild(TeacherJionTabRequestComponent) stuRejectReq: TeacherJionTabRequestComponent | undefined;
-  @ViewChild(TeacherJionTabRequestComponent) teacherSystemSubscriptionRejectReq: TeacherJionTabRequestComponent | undefined;
-
-  // @ViewChild(StuTabRequestComponent) advancedSearch: StuTabRequestComponent | undefined;
-  // advancedSearchObjectpopup: IStudentSubscriptionFilterRequestModel = { statusNum: StudentProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
+  @ViewChild(TeacherJionTabRequestComponent) teacherJionTabRequestComponent: TeacherJionTabRequestComponent | undefined;
+  
   filter: ITeacherSystemSubscriptionFilterRequest = { statusNum: TeacherSystemSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
-
-  // showTap: string = 'Pending';
-  // roleEnum: RoleEnum = RoleEnum.Teacher;
-
   itemTeacherSystemSubscriptionReq: ITeacherSystemSubscription = {};
   openStuRejectOverlay: boolean = false;
-  
-  // openStuAdvancedSearch: boolean = false
 
   constructor() { }
 
   ngOnInit(): void {
   }
+
   openRejectRequest(event: ITeacherSystemSubscription) {
     this.itemTeacherSystemSubscriptionReq = event;
     this.openStuRejectOverlay = !this.openStuRejectOverlay;
 
   }
+  
   closeRejectedRequest() {
     this.openStuRejectOverlay = !this.openStuRejectOverlay;
-    this.teacherSystemSubscriptionRejectReq?.getTeacherSystemSubscription();
-
+    this.teacherJionTabRequestComponent?.getTeacherSystemSubscription();
   }
-
-  
 
   closeOverlay() {
     this.openStuRejectOverlay = false;
-    // this.openStuAdvancedSearch = false;
-    // this.advancedSearch?.getStudentProgramSubscriptionsFilter();
   }
-
-  closeStuAdvancedSearch() {
-    // this.openStuAdvancedSearch = false
-    // this.advancedSearch?.getStudentProgramSubscriptionsFilter();
-  }
-
-
-  openStuAdvancedSearchPopup(event: ITeacherSystemSubscriptionFilterRequest) {
-    // this.openStuAdvancedSearch = true;
-    // this.filter = event
-
-  }
-
-  advancedSearchObject(event: ITeacherSystemSubscriptionFilterRequest) {
-    // this.filter = event
-  }
-
 }
