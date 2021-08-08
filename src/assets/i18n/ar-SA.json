@@ -67,7 +67,8 @@
     "FILE_SIZE": "حجم الملف أكبر من 3 ميجا",
     "EXTENTION_FILE": "امتداد الفايل غير مسوح بيه ",
     "ACCEPT": "قبول",
-    "REJECT": "رفض"
+    "REJECT": "رفض",
+    "DEGREE_MAX_LENGTH": "الدرجة يجب ان تكون أقل من أو تساوى 100"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
@@ -639,7 +640,7 @@
     "NUMBER_HOMEWORK_PATTERN": "يرجى ادخال عدد الواجبات صحيحا",
     "NUMBER_HOMEWORK_MAX_LENGTH": "يرجى ادخال عدد الواجبات اقل من  100  حرف",
     "NOTIFICATION_NAME_PATTERN": "يرجى ادخال اسم التنبية صحيحا",
-    "NOTIFICATION_NAME_MAX_LENGTH": "يرجى ادخال اسم التنبية اقل من او يساوى 100  حرف",
+    "NOTIFICATION_NAME_MAX_LENGTH": "يرجى ادخال اسم التنبية اقل من او يساوى 150  حرف",
     "QUESTION_AR_MAX_LENGHT": "يرجى ادخال السؤال عربي أقل من أو يساوى 300 حرفا",
     "QUESTION_EN_MAX_LENGHT": "يرجى ادخال السؤال إنجليزي أقل من أو يساوى 300 حرفا",
     "ARABIC_FIELD": " هذا الحقل يجب أن يكون باللغة العربية",
@@ -777,5 +778,11 @@
     "FROM_PROG": "من برنامج",
     "REJECTED_REASON": "سبب الرفض",
     "VALIDATIONDATE": "تاريخ البداية يجب ان يكون اقل من تاريخ النهاية "
+  },
+  "TEACHER_SYSTEM_SUBSCRIPTION": {
+    "REQUEST_DATE": "تاريخ الطلب",
+    "MEETING":"المقابلة",
+    "REJECT":"رفض",
+    "ACCEPT":"قبول"
   }
 }
