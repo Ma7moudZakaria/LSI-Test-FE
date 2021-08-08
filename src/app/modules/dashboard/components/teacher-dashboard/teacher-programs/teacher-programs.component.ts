@@ -13,11 +13,13 @@ import { TeacherProgramSubscriptionServicesService } from 'src/app/core/services
 })
 export class TeacherProgramsComponent implements OnInit {
 
-  programsForTeachersSubscriptionsFilterRequestModel: IProgramsForTeachersSubscriptionsFilterRequestModel | undefined;
+  // programsForTeachersSubscriptionsFilterRequestModel: IProgramsForTeachersSubscriptionsFilterRequestModel | undefined;
+  filterRequest: IProgramsForTeachersSubscriptionsFilterRequestModel = { skip: 0, take: 9, sortField: '', sortOrder: 1 }
+
   programsForTeacherSubscriptionsLst: IProgramsForTeacherSubscriptionsModel[] | undefined;
   errorMessage?: string;
   langEnum = LanguageEnum;
-  
+
   constructor(
     public translate: TranslateService,
     private teacherProgramSubscriptionServicesService: TeacherProgramSubscriptionServicesService,
@@ -28,7 +30,7 @@ export class TeacherProgramsComponent implements OnInit {
   }
 
   getProgramsForTeacherssSubscriptions() {
-    this.teacherProgramSubscriptionServicesService.getProgramsForTeacherssSubscriptions(this.programsForTeachersSubscriptionsFilterRequestModel || {}).subscribe(res => {
+    this.teacherProgramSubscriptionServicesService.getProgramsForTeacherssSubscriptions(this.filterRequest || {}).subscribe(res => {
       var response = <BaseResponseModel>res;
       if (response.isSuccess) {
         this.programsForTeacherSubscriptionsLst = res.data as IProgramsForTeacherSubscriptionsModel[];
@@ -41,5 +43,30 @@ export class TeacherProgramsComponent implements OnInit {
         console.log(error);
       });
   }
+  filterByText(searchKey: string) {
+    this.filterRequest.progName = searchKey;
+    this.getProgramsForTeacherssSubscriptions();
+  }
 
+  sortByNameOrderType() {
+    this.filterRequest.sortField = 'progName';
+    this.filterRequest.sortOrder = 1;
+    this.getProgramsForTeacherssSubscriptions();
+
+  }
+
+  sortByRequestDateAsend() {
+    this.filterRequest.sortField = 'progcreation';
+    this.filterRequest.sortOrder = 1
+    this.getProgramsForTeacherssSubscriptions();
+
+
+  }
+  sortByRequestDateDesend() {
+    this.filterRequest.sortField = 'progcreation';
+    this.filterRequest.sortOrder = -1
+    this.getProgramsForTeacherssSubscriptions();
+
+
+  }
 }

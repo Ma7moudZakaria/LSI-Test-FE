@@ -13,8 +13,10 @@ import { AlertifyService } from 'src/app/core/services/alertify-services/alertif
   styleUrls: ['./program-subscriptions.component.scss']
 })
 export class ProgramSubscriptionsComponent implements OnInit {
-  programsForStudentSubscriptionsFilterRequestModel: IProgramsForStudentsSubscriptionsFilterRequestModel | undefined;
+  // programsForStudentSubscriptionsFilterRequestModel: IProgramsForStudentsSubscriptionsFilterRequestModel | undefined;
   programsForStudentSubscriptionsList: IProgramsForStudentSubscriptionsModel[] | undefined;
+  filterRequest: IProgramsForStudentsSubscriptionsFilterRequestModel = { skip: 0, take: 9, sortField: '', sortOrder: 1 }
+
   errorMessage?: string;
   langEnum = LanguageEnum;
 
@@ -28,7 +30,7 @@ export class ProgramSubscriptionsComponent implements OnInit {
   }
 
   getProgramsForStudentssSubscriptions() {
-    this.studentProgramSubscriptionServicesService.getProgramsForStudentsSubscriptions(this.programsForStudentSubscriptionsFilterRequestModel || {}).subscribe(res => {
+    this.studentProgramSubscriptionServicesService.getProgramsForStudentsSubscriptions(this.filterRequest || {}).subscribe(res => {
       // var response = <BaseResponseModel>res;
       if (res.isSuccess) {
         this.programsForStudentSubscriptionsList = res.data;
@@ -46,4 +48,30 @@ export class ProgramSubscriptionsComponent implements OnInit {
       });
   }
 
+  filterByText(searchKey: string) {
+    this.filterRequest.progName = searchKey;
+    this.getProgramsForStudentssSubscriptions();
+  }
+
+  sortStudentByNameOrderType() {
+    this.filterRequest.sortField = 'progName';
+    this.filterRequest.sortOrder = 1;
+    this.getProgramsForStudentssSubscriptions();
+
+  }
+
+  sortByStudentRequestDateAsend() {
+    this.filterRequest.sortField = 'progcreation';
+    this.filterRequest.sortOrder = 1
+    this.getProgramsForStudentssSubscriptions();
+
+
+  }
+  sortByStudentRequestDateDesend() {
+    this.filterRequest.sortField = 'progcreation';
+    this.filterRequest.sortOrder = -1
+    this.getProgramsForStudentssSubscriptions();
+
+
+  }
 }
