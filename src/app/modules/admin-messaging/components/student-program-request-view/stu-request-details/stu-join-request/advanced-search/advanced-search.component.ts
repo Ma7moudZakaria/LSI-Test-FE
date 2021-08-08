@@ -13,6 +13,8 @@ import { DateFormatterService, DateType } from 'ngx-hijri-gregorian-datepicker';
 import { BaseSelectedDateModel } from 'src/app/core/ng-model/base-selected-date-model';
 import { TranslateService } from '@ngx-translate/core';
 import { skip } from 'rxjs/operators';
+import {IstudentProgramVacationFilterRequestModel} from '../../../../../../../core/interfaces/student-program-vacation-interfaces/istudent-program-vacation-filter-request-model';
+import {StudentProgramVacationStatusEnum} from '../../../../../../../core/enums/StudentProgramVacationStatus/student-program-vacation-status.enum';
 
 @Component({
   selector: 'app-advanced-search',
@@ -27,6 +29,8 @@ export class AdvancedSearchComponent implements OnInit {
   advancedSearchInputs = {} as IStudentSubscriptionFilterRequestModel
   resultMessage: BaseMessageModel = {};
   studProgsSubsItems: IStudentSubscriptionModel[] = [];
+  @Output() closeVacationAdvancedSearch = new EventEmitter<IstudentProgramVacationFilterRequestModel>();
+  @Input() StudentVacationfilter: IstudentProgramVacationFilterRequestModel = { statusNum: StudentProgramVacationStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
 
 
   calenderType: BaseSelectedDateModel = new BaseSelectedDateModel();

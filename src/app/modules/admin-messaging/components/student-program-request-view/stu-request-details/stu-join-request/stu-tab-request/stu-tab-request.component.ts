@@ -9,6 +9,10 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import {IstudentProgramVacationFilterRequestModel} from '../../../../../../../core/interfaces/student-program-vacation-interfaces/istudent-program-vacation-filter-request-model';
+import {IstudentProgramVacationModel} from '../../../../../../../core/interfaces/student-program-vacation-interfaces/istudent-program-vacation-model';
+import {StudentProgramVacationStatusEnum} from '../../../../../../../core/enums/StudentProgramVacationStatus/student-program-vacation-status.enum';
+import {StudentProgramVacationServicesService} from '../../../../../../../core/services/student-program-vacation-services/student-program-vacation-services.service';
 
 @Component({
   selector: 'app-stu-tab-request',
@@ -18,11 +22,14 @@ import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 export class StuTabRequestComponent implements OnInit {
   @Output() itemStuReq = new EventEmitter<IStudentSubscriptionModel>();
   @Output() openAdvancedSearch = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
+  @Output() openVacationAdvancedSearch = new EventEmitter<IstudentProgramVacationFilterRequestModel>();
+  @Output() itemStudentVacationReq = new EventEmitter<IstudentProgramVacationModel>();
 
   // @Output() closeAdvancedSearch = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
 
   @Output() advancedSearchObject = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
   @Input() filter: IStudentSubscriptionFilterRequestModel = { statusNum: StudentProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
+  @Input() StudentVacationfilter: IstudentProgramVacationFilterRequestModel = { statusNum: StudentProgramVacationStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
 
   typeEnum: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending;
   resultMessage: BaseMessageModel = {};
@@ -31,10 +38,11 @@ export class StuTabRequestComponent implements OnInit {
   statusEnum = StudentProgramSubscriptionStatusEnum;
   studProgsSubsItems: IStudentSubscriptionModel[] = [];
   totalCount = 0;
+  studentVacationItems: IstudentProgramVacationModel[] = [];
 
   constructor(private progSubsService: StudentProgramSubscriptionServicesService,
     public translate: TranslateService,
-    private alertify: AlertifyService) {
+    private alertify: AlertifyService , private studentProgramVacationService: StudentProgramVacationServicesService) {
 
   }
   ngOnInit(): void {
@@ -99,6 +107,10 @@ export class StuTabRequestComponent implements OnInit {
   }
   rejecteStuRequestMethod(event: IStudentSubscriptionModel) {
     this.itemStuReq.emit(event)
+  }
+
+  rejecteStuVacationRequestMethod(event: IstudentProgramVacationModel) {
+    this.itemStudentVacationReq.emit(event)
 
   }
 
@@ -185,6 +197,32 @@ export class StuTabRequestComponent implements OnInit {
     this.filter.sortField = '';
     // this.filter = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
     // this.closeAdvancedSearch.emit(this.filter)
+  }
+  getStudentsProgramsVacationFilterAdminView() {
+    this.studentProgramVacationService.getStudentsProgramsVacationFilterAdminView(this.StudentVacationfilter).subscribe(res => {
+
+      if (res.isSuccess) {
+        this.studentVacationItems = res.data;
+        console.log("studProgsSubsItem ", this.studentVacationItems)
+        // this.studProgsSubsItems?.forEach(function (item) {
+        //   item.requestDate = item.requestDate ? new Date(item.requestDate).toDateString(): '';
+        // });
+        this.totalCount = res.count ? res.count : 0;
+        if (this.StudentVacationfilter.skip > 0 && (!this.studentVacationItems || this.studentVacationItems.length === 0)) {
+          this.StudentVacationfilter.page -= 1;
+          this.StudentVacationfilter.skip = (this.StudentVacationfilter.page - 1) * this.StudentVacationfilter.take;
+          this.getStudentsProgramsVacationFilterAdminView();
+        }
+      }
+      else {
+
+      }
+    }, error => {
+      this.resultMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    })
   }
 }
 

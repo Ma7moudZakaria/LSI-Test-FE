@@ -5,6 +5,7 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { StudentProgramSubscriptionServicesService } from 'src/app/core/services/student-program-subscription-services/student-program-subscription-services.service';
+import {IstudentProgramVacationModel} from '../../../../../../../core/interfaces/student-program-vacation-interfaces/istudent-program-vacation-model';
 
 @Component({
   selector: 'app-stu-rejected',
@@ -18,6 +19,7 @@ export class StuRejectedComponent implements OnInit {
   rejectRequest: IRejectProgramSubscriptionModel = {}
   // var response = <BaseResponseModel>res;
   resultMessage: BaseMessageModel = {};
+  @Input() itemStudentVacationReq: IstudentProgramVacationModel = {}
 
   constructor(private stuSubRequestService: StudentProgramSubscriptionServicesService
     ,
