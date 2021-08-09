@@ -31,7 +31,7 @@
                 <p class="batch-name">
                     {{translate.currentLang === langEnum.en ? program.enBatName:program.arBatName}}
                 </p>
-              
+
                 <div class=" d-flex justify-content-around align-items-center  ">
                     <div class="text-center">
                         <span class="az_count">عدد الأجزاء المطلوبة</span>
@@ -41,8 +41,8 @@
                     <div class="slash"></div>
                     <div class="text-center">
                         <span  class="time_pro">مدة البرنامج باليوم</span>
-                        <p class="count"  *ngIf="program.dura"> {{program.dura}}</p> 
-                        <p class="count"  *ngIf="!program.dura">0</p> 
+                        <p class="count"  *ngIf="program.dura"> {{program.dura}}</p>
+                        <p class="count"  *ngIf="!program.dura">0</p>
 
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                                 {{program.idea}}
                 </p>
                 </div>
-               
+
               </div>
       </ng-container>
 

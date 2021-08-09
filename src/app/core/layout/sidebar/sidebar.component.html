@@ -190,7 +190,7 @@
                 </li>
                 <li class="nav-item" routerLinkActive="active">
                     <a  *ngIf='!roleService.isAdmin() && (roleService.isStudent() || roleService.isTeacher())' 
-                    [routerLink]="['/home']" routerLinkActive="active" class="nav-link">
+                    [routerLink]="['/program-for-subscription']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/program-icon.png">
                         <span class="container__navigation__title">sub-program</span>
                     </a>

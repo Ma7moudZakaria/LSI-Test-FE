@@ -65,7 +65,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { StuCardRequestComponent } from './components/stu-card-request/stu-card-request.component';
 import { TeacherCardRequestComponent } from './components/teacher-card-request/teacher-card-request.component';
 import { ProgramSubscriptionGridComponent } from './components/program-subscription-grid/program-subscription-grid.component';
-import { TeacherStudentProgramForSubscriptionComponent } from './components/teacher-student-program-for-subscription/teacher-student-program-for-subscription.component';
+import { TeacherStudentProgramForSubscriptionComponent } from './components/teacher-student-program-for-subscription-card/teacher-student-program-for-subscription.component';
 import { TeacherStuProgramForSubscriptionGridComponent } from './components/teacher-stu-program-for-subscription-grid/teacher-stu-program-for-subscription-grid.component';
 
 @NgModule({

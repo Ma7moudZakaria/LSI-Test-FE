@@ -5,4 +5,4 @@ export interface IProgramsForTeachersSubscriptionsFilterRequestModel {
     sortOrder?:number;
     skip?:number;
     take?:number;
-}
+    page:number;}
