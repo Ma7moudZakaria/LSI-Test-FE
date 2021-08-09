@@ -11,6 +11,9 @@ export class TeacherProfileService {
 
   updateTeacherUrl = environment.baseUrl + 'Teacher/update-teacher-profile/';
   viewTeacherProfileDetailsURL =  environment.baseUrl + 'Teacher/view-teacher-profile-details/';
+  getTeacherSystemSubscriptionAdvancedFilterUrl = environment.baseUrl + 'Teacher/get-teacher-system-subscription-advanced-filter/';
+  teacherSubscriptionsAcceptanceUrl = environment.baseUrl + 'Teacher/accept-teacher-system-subscription/';
+  TeacherSubscriptionsRejectionUrl = environment.baseUrl + 'Teacher/reject-teacher-system-subscription/';
 
   constructor(private http: HttpClient) { }
 
@@ -20,5 +23,17 @@ export class TeacherProfileService {
 
   viewTeacherProfileDetails(id : string) :Observable<BaseResponseModel>{
     return this.http.get<BaseResponseModel>(this.viewTeacherProfileDetailsURL + id)
+  }
+
+  getTeacherSystemSubscriptionAdvancedFilter(model: any): Observable<BaseResponseModel> {
+    return this.http.post<BaseResponseModel>(this.getTeacherSystemSubscriptionAdvancedFilterUrl, model);
+  }
+
+  teacherSubscriptionsAcceptance(model: any): Observable<BaseResponseModel> {
+    return this.http.put<BaseResponseModel>(this.teacherSubscriptionsAcceptanceUrl, model);
+  }
+
+  teacherSubscriptionsRejection(model: any): Observable<BaseResponseModel> {
+    return this.http.put<BaseResponseModel>(this.TeacherSubscriptionsRejectionUrl, model);
   }
 }
