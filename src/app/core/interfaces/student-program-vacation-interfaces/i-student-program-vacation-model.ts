@@ -1,4 +1,5 @@
 export interface IStudentProgramVacationModel {
+  avatarLink?: string;
   id?: string;
   requestDate?: Date;
   usrNameAr?: string;
@@ -10,6 +11,6 @@ export interface IStudentProgramVacationModel {
   vacReason?: string;
   rejReason?: string;
   arNameBatch?: string;
-  EnNameBatch?: string;
+  enNameBatch?: string;
   checked?:boolean;
 }

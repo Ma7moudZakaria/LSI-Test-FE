@@ -788,5 +788,10 @@
     "MEETING":"Meeting",
     "REJECT":"Reject",
     "ACCEPT":"Accept"
+  },
+  "STUDENT_VACATION": {
+    "NEW_VACATION_REQUESTS": "New Vacation requests",
+    "ACCEPTANCE_REQUESTS": "Admission requests",
+    "REJECTANCE_REQUESTS": "Rejection requests"
   }
 }

@@ -19,7 +19,7 @@ import {StudentProgramVacationServicesService} from '../../../../../../../core/s
 })
 export class StudentVacationRequestTabComponent implements OnInit {
 
-  @Output() rejectTeacherProgramSubscription = new EventEmitter<IStudentProgramVacationModel>();
+   @Output() rejectStudentProgramVacation = new EventEmitter<IStudentProgramVacationModel>();
   @Output() advancedSearchEvent = new EventEmitter<IStudentProgramVacationFilterRequestModel>();
   // @Output() closeAdvancedSearch = new EventEmitter();
   studentProgramVacationRequestsList: IStudentProgramVacationModel[] = [];
@@ -38,20 +38,19 @@ export class StudentVacationRequestTabComponent implements OnInit {
 
   ngOnInit(): void {
     this.studentProgramVacationFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn'
-    this.getTeachersProgramsSubscriptions();
+    this.getStudentProgramVacationRequests();
   }
 
   searchByText(searchKey: string) {
     this.studentProgramVacationFilterRequestModel.usrName = searchKey;
-    this.getTeachersProgramsSubscriptions();
+    this.getStudentProgramVacationRequests();
   }
 
-  getTeachersProgramsSubscriptions() {
+  getStudentProgramVacationRequests() {
     this.programVacationServicesService.getStudentsProgramsVacationFilterAdminView(this.studentProgramVacationFilterRequestModel || {}).subscribe(res => {
         var response = <BaseResponseModel>res;
         if (response.isSuccess) {
           this.studentProgramVacationRequestsList = res.data as ITeacherProgramSubscriptionModel[];
-          // this.totalCount = this.teacherProgramSubscriptionList.length > 0 ? this.teacherProgramSubscriptionList[0].totalRows : 0;
           this.studentProgramVacationRequestsList?.forEach(function (item) {
             // item.requestDate = item.requestDate ? new Date(item.requestDate).toDateString(): '';
           });
@@ -59,7 +58,7 @@ export class StudentVacationRequestTabComponent implements OnInit {
           if (this.studentProgramVacationFilterRequestModel.skip > 0 && (!this.studentProgramVacationRequestsList || this.studentProgramVacationRequestsList.length === 0)) {
             this.studentProgramVacationFilterRequestModel.page -= 1;
             this.studentProgramVacationFilterRequestModel.skip = (this.studentProgramVacationFilterRequestModel.page - 1) * this.studentProgramVacationFilterRequestModel.take;
-            this.getTeachersProgramsSubscriptions();
+            this.getStudentProgramVacationRequests();
           }
         }
         else {
@@ -75,29 +74,29 @@ export class StudentVacationRequestTabComponent implements OnInit {
     this.studentProgramVacationFilterRequestModel = { usrName: '', statusNum: StudentProgramVacationStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
     this.showTap = StudentProgramVacationStatusEnum.Pending;
     this.closeAvancedSearch();
-    this.getTeachersProgramsSubscriptions();
+    this.getStudentProgramVacationRequests();
   }
 
   onAcceptChange() {
     this.studentProgramVacationFilterRequestModel = { usrName: '', statusNum: StudentProgramVacationStatusEnum.Accept, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
     this.showTap = StudentProgramVacationStatusEnum.Accept;
     this.closeAvancedSearch();
-    this.getTeachersProgramsSubscriptions();
+    this.getStudentProgramVacationRequests();
   }
   onRejectedChange() {
     this.studentProgramVacationFilterRequestModel = { usrName: '', statusNum: StudentProgramVacationStatusEnum.Rejected, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
     this.showTap = StudentProgramVacationStatusEnum.Rejected
     this.closeAvancedSearch();
-    this.getTeachersProgramsSubscriptions();
+    this.getStudentProgramVacationRequests();
   }
 
-  acceptTeacherProgramSubscription(teacherSubscripModel: ITeacherProgramSubscriptionModel) {
-    this.ids?.push(teacherSubscripModel.id || '');
+  AcceptStudentProgramVacation(studentProgramVacationModel: IStudentProgramVacationModel) {
+    this.ids?.push(studentProgramVacationModel.id || '');
     this.programVacationServicesService.studentProgramVacationAcceptance(this.ids).subscribe(res => {
         var response = <BaseResponseModel>res;
         if (response.isSuccess) {
           this.alertify.success(res.message || '');
-          this.getTeachersProgramsSubscriptions();
+          this.getStudentProgramVacationRequests();
         }
         else {
           this.alertify.error(res.message || '');
@@ -121,14 +120,14 @@ export class StudentVacationRequestTabComponent implements OnInit {
     this.studentProgramVacationFilterRequestModel.page = 1;
     // this.closeAdvancedSearch.emit()
   }
-  acceptAllTeachersCheckedProgramSubscription() {
+  acceptAllStudentVacationRequestsChecked() {
 
     this.ids = this.studentProgramVacationRequestsList?.filter(i => i.checked).map(a => a.id || '')
     this.programVacationServicesService.studentProgramVacationAcceptance(this.ids).subscribe(res => {
         var response = <BaseResponseModel>res;
         if (response.isSuccess) {
           this.alertify.success(res.message || '');
-          this.getTeachersProgramsSubscriptions();
+          this.getStudentProgramVacationRequests();
         }
         else {
           this.alertify.error(res.message || '');
@@ -140,26 +139,26 @@ export class StudentVacationRequestTabComponent implements OnInit {
 
   }
 
-  rejectTeacherProgramSubscriptionEvent(teacherSubscripModel: ITeacherProgramSubscriptionModel) {
-    this.rejectTeacherProgramSubscription.emit(teacherSubscripModel);
-  }
+  // rejectTeacherProgramSubscriptionEvent(teacherSubscripModel: ITeacherProgramSubscriptionModel) {
+  //   this.rejectTeacherProgramSubscription.emit(teacherSubscripModel);
+  // }
 
-  teacherPendingChangePage(event: IStudentProgramVacationFilterRequestModel) {
-    this.studentProgramVacationFilterRequestModel.statusNum = TeacheProgramSubscriptionStatusEnum.Pending;
+  StudentProgramVacationPendingChangePage(event: IStudentProgramVacationFilterRequestModel) {
+    this.studentProgramVacationFilterRequestModel.statusNum = StudentProgramVacationStatusEnum.Pending;
     this.studentProgramVacationFilterRequestModel = event;
-    this.getTeachersProgramsSubscriptions();
-
-  }
-  teacherAcceptChangePage(event: IStudentProgramVacationFilterRequestModel) {
-    this.studentProgramVacationFilterRequestModel.statusNum = TeacheProgramSubscriptionStatusEnum.Accept;
-    this.studentProgramVacationFilterRequestModel = event;
-    this.getTeachersProgramsSubscriptions();
+    this.getStudentProgramVacationRequests();
 
   }
-  teacherRejectedChangePage(event: IStudentProgramVacationFilterRequestModel) {
-    this.studentProgramVacationFilterRequestModel.statusNum = TeacheProgramSubscriptionStatusEnum.Rejected;
+  StudentProgramVacationAcceptChangePage(event: IStudentProgramVacationFilterRequestModel) {
+    this.studentProgramVacationFilterRequestModel.statusNum = StudentProgramVacationStatusEnum.Accept;
     this.studentProgramVacationFilterRequestModel = event;
-    this.getTeachersProgramsSubscriptions();
+    this.getStudentProgramVacationRequests();
+
+  }
+  StudentProgramVacationRejectedChangePage(event: IStudentProgramVacationFilterRequestModel) {
+    this.studentProgramVacationFilterRequestModel.statusNum = StudentProgramVacationStatusEnum.Rejected;
+    this.studentProgramVacationFilterRequestModel = event;
+    this.getStudentProgramVacationRequests();
 
   }
 
@@ -170,7 +169,7 @@ export class StudentVacationRequestTabComponent implements OnInit {
 
   advancedSearch(model?: IStudentProgramVacationFilterRequestModel) {
     this.studentProgramVacationFilterRequestModel = model || { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
-    this.getTeachersProgramsSubscriptions();
+    this.getStudentProgramVacationRequests();
   }
 
 }
