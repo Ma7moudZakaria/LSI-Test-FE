@@ -8,17 +8,14 @@
   <div class="col-12 d-flex justify-content-between align-items-center">
     <app-search-input class="w-90"></app-search-input>
 
-    <div ngbDropdown class="d-inline-block">
-      <button class="sort_icon mb-3" id="dropdownBasic1" ngbDropdownToggle>
-        <img src="../.././../../../assets/images/student-program/program-sub/sorting.svg">
-      </button>
-
-    </div>
-
   </div>
 
   <div class="col-12 internal_scroll_program">
-
+        <app-teacher-stu-program-for-subscription-grid
+        [teacherItems]='programsForTeacherSubscriptionsLst' 
+        [teacherFilterRequestModel] = 'filterRequest'
+        [totalCount]='totalCount' >
+      </app-teacher-stu-program-for-subscription-grid>
 
   </div>
 </div>

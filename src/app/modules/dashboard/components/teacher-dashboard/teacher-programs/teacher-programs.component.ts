@@ -14,7 +14,7 @@ import { TeacherProgramSubscriptionServicesService } from 'src/app/core/services
 export class TeacherProgramsComponent implements OnInit {
 
   // programsForTeachersSubscriptionsFilterRequestModel: IProgramsForTeachersSubscriptionsFilterRequestModel | undefined;
-  filterRequest: IProgramsForTeachersSubscriptionsFilterRequestModel = { skip: 0, take: 9, sortField: '', sortOrder: 1 }
+  filterRequest: IProgramsForTeachersSubscriptionsFilterRequestModel = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
 
   programsForTeacherSubscriptionsLst: IProgramsForTeacherSubscriptionsModel[] | undefined;
   errorMessage?: string;
@@ -26,6 +26,7 @@ export class TeacherProgramsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
     this.getProgramsForTeacherssSubscriptions();
   }
 
@@ -33,7 +34,7 @@ export class TeacherProgramsComponent implements OnInit {
     this.teacherProgramSubscriptionServicesService.getProgramsForTeacherssSubscriptions(this.filterRequest || {}).subscribe(res => {
       var response = <BaseResponseModel>res;
       if (response.isSuccess) {
-        this.programsForTeacherSubscriptionsLst = res.data as IProgramsForTeacherSubscriptionsModel[];
+        this.programsForTeacherSubscriptionsLst = response.data as IProgramsForTeacherSubscriptionsModel[];
       }
       else {
         this.errorMessage = response.message;

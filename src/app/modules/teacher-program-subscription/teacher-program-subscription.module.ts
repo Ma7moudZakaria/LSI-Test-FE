@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TeacherProgramSubscriptionRoutingModule } from './teacher-program-subscription-routing.module';
 import { TeacherProgramsComponent } from './teacher-programs/teacher-programs.component';
 import { TeacherProgramSubViewComponent } from './teacher-program-sub-view/teacher-program-sub-view.component';
-import {SharedModule} from '../../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -12,7 +12,7 @@ import {SharedModule} from '../../shared/shared.module';
   imports: [
     CommonModule,
     TeacherProgramSubscriptionRoutingModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class TeacherProgramSubscriptionModule { }

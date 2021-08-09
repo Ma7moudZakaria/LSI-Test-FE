@@ -125,7 +125,8 @@ import { TeacherStuProgramForSubscriptionGridComponent } from './components/teac
     ProgramDayTaskTasmeaComponent, CardFeelingsComponent, MatTooltipModule,
     SettingAgeComponent, SettingDegreeLastProgramComponent, SettingLastProgramComponent, SettingQualificationsComponent,
     SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent,
-    SettingAcceptComponent, StuCardRequestComponent, TeacherCardRequestComponent, ProgramSubscriptionGridComponent
+    SettingAcceptComponent, StuCardRequestComponent, TeacherCardRequestComponent, ProgramSubscriptionGridComponent,
+    TeacherStuProgramForSubscriptionGridComponent, TeacherStudentProgramForSubscriptionComponent
 
 
   ]
