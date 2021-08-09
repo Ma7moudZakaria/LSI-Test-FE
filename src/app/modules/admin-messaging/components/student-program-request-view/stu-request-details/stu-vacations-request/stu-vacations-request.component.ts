@@ -1,8 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {IStudentSubscriptionModel} from '../../../../../../core/interfaces/student-program-subscription-interfaces/istudent-subscription-model';
-import {IStudentSubscriptionFilterRequestModel} from '../../../../../../core/interfaces/student-program-subscription-interfaces/istudent-subscription-filter-request-model';
 import {StuTabRequestComponent} from '../stu-join-request/stu-tab-request/stu-tab-request.component';
-import {StudentProgramSubscriptionStatusEnum} from '../../../../../../core/enums/subscriptionStatusEnum/student-program-subscription-status-enum.enum';
 import {StudentProgramVacationStatusEnum} from '../../../../../../core/enums/StudentProgramVacationStatus/student-program-vacation-status.enum';
 import {IstudentProgramVacationFilterRequestModel} from '../../../../../../core/interfaces/student-program-vacation-interfaces/istudent-program-vacation-filter-request-model';
 import {IstudentProgramVacationModel} from '../../../../../../core/interfaces/student-program-vacation-interfaces/istudent-program-vacation-model';
@@ -52,20 +49,20 @@ export class StuVacationsRequestComponent implements OnInit {
 
   closeRejectedRequest() {
     this.openStuRejectOverlay = !this.openStuRejectOverlay;
-    this.stuRejectReq?.getStudentsProgramsVacationFilterAdminView();
+    this.stuRejectReq?.getStudentProgramSubscriptionsFilter();
 
   }
 
   closeOverlay() {
     this.openStuRejectOverlay = false;
     this.openStuAdvancedSearch = false;
-    this.advancedSearch?.getStudentsProgramsVacationFilterAdminView();
+    this.advancedSearch?.getStudentProgramSubscriptionsFilter();
   }
 
   closeStuAdvancedSearch(event: IstudentProgramVacationFilterRequestModel) {
     this.openStuAdvancedSearch = false;
     this.filter = event
-    this.advancedSearch?.getStudentsProgramsVacationFilterAdminView();
+    this.advancedSearch?.getStudentProgramSubscriptionsFilter();
   }
 
 

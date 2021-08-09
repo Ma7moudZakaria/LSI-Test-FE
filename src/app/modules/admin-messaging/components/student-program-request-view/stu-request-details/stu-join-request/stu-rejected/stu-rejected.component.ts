@@ -15,11 +15,10 @@ import {IstudentProgramVacationModel} from '../../../../../../../core/interfaces
 export class StuRejectedComponent implements OnInit {
   @Output() closeRejectedRequest = new EventEmitter<IStudentSubscriptionModel>();
 
-  @Input() itemStuReq: IStudentSubscriptionModel = {}
   rejectRequest: IRejectProgramSubscriptionModel = {}
   // var response = <BaseResponseModel>res;
   resultMessage: BaseMessageModel = {};
-  @Input() itemStudentVacationReq: IstudentProgramVacationModel = {}
+  @Input() itemStuReq: IstudentProgramVacationModel = {}
 
   constructor(private stuSubRequestService: StudentProgramSubscriptionServicesService
     ,
@@ -36,7 +35,7 @@ export class StuRejectedComponent implements OnInit {
   saveRejectRequest() {
     let model: IRejectProgramSubscriptionModel = {
       subscriptionId: this.itemStuReq.id,
-      reasonReject: this.itemStuReq.reasonReject
+      reasonReject: this.itemStuReq.rejReason
     }
     if (model.reasonReject) {
       this.stuSubRequestService.rejectStudentProgramSubscription(model).subscribe(res => {

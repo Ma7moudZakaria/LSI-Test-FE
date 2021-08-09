@@ -1,28 +1,32 @@
-import { error } from 'selenium-webdriver';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { StudentProgramSubscriptionStatusEnum } from 'src/app/core/enums/subscriptionStatusEnum/student-program-subscription-status-enum.enum';
-import { StudentProgramSubscriptionServicesService } from 'src/app/core/services/student-program-subscription-services/student-program-subscription-services.service';
-import { IStudentSubscriptionFilterRequestModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-subscription-filter-request-model';
-import { IStudentSubscriptionModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-subscription-model';
-import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
-import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
-import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
-import { TranslateService } from '@ngx-translate/core';
-import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {IStudentSubscriptionModel} from '../../../../../../../core/interfaces/student-program-subscription-interfaces/istudent-subscription-model';
+import {IStudentSubscriptionFilterRequestModel} from '../../../../../../../core/interfaces/student-program-subscription-interfaces/istudent-subscription-filter-request-model';
+import {IstudentProgramVacationFilterRequestModel} from '../../../../../../../core/interfaces/student-program-vacation-interfaces/istudent-program-vacation-filter-request-model';
+import {IstudentProgramVacationModel} from '../../../../../../../core/interfaces/student-program-vacation-interfaces/istudent-program-vacation-model';
+import {StudentProgramSubscriptionStatusEnum} from '../../../../../../../core/enums/subscriptionStatusEnum/student-program-subscription-status-enum.enum';
+import {StudentProgramVacationStatusEnum} from '../../../../../../../core/enums/StudentProgramVacationStatus/student-program-vacation-status.enum';
+import {BaseMessageModel} from '../../../../../../../core/ng-model/base-message-model';
+import {StudentProgramSubscriptionServicesService} from '../../../../../../../core/services/student-program-subscription-services/student-program-subscription-services.service';
+import {TranslateService} from '@ngx-translate/core';
+import {AlertifyService} from '../../../../../../../core/services/alertify-services/alertify.service';
+import {StudentProgramVacationServicesService} from '../../../../../../../core/services/student-program-vacation-services/student-program-vacation-services.service';
+import {LanguageEnum} from '../../../../../../../core/enums/language-enum.enum';
+import {BaseConstantModel} from '../../../../../../../core/ng-model/base-constant-model';
 
 @Component({
-  selector: 'app-stu-tab-request',
-  templateUrl: './stu-tab-request.component.html',
-  styleUrls: ['./stu-tab-request.component.scss']
+  selector: 'app-student-vacation-request-tab',
+  templateUrl: './student-vacation-request-tab.component.html',
+  styleUrls: ['./student-vacation-request-tab.component.scss']
 })
-export class StuTabRequestComponent implements OnInit {
-  @Output() itemStuReq = new EventEmitter<IStudentSubscriptionModel>();
-  @Output() openAdvancedSearch = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
+export class StudentVacationRequestTabComponent implements OnInit {
+  @Output() openAdvancedSearch = new EventEmitter<IstudentProgramVacationFilterRequestModel>();
+  @Output() itemStuReq = new EventEmitter<IstudentProgramVacationModel>();
 
   // @Output() closeAdvancedSearch = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
 
   @Output() advancedSearchObject = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
   @Input() filter: IStudentSubscriptionFilterRequestModel = { statusNum: StudentProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
+  @Input() StudentVacationfilter: IstudentProgramVacationFilterRequestModel = { statusNum: StudentProgramVacationStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
 
   typeEnum: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending;
   resultMessage: BaseMessageModel = {};
@@ -31,10 +35,11 @@ export class StuTabRequestComponent implements OnInit {
   statusEnum = StudentProgramSubscriptionStatusEnum;
   studProgsSubsItems: IStudentSubscriptionModel[] = [];
   totalCount = 0;
+  studentVacationItems: IstudentProgramVacationModel[] = [];
 
   constructor(private progSubsService: StudentProgramSubscriptionServicesService,
               public translate: TranslateService,
-              private alertify: AlertifyService) {
+              private alertify: AlertifyService , private studentProgramVacationService: StudentProgramVacationServicesService) {
 
   }
   ngOnInit(): void {
@@ -99,8 +104,8 @@ export class StuTabRequestComponent implements OnInit {
   }
   rejecteStuRequestMethod(event: IStudentSubscriptionModel) {
     this.itemStuReq.emit(event)
-
   }
+
 
   ids?: string[] = [];
   acceptStuReq(stuModel: IStudentSubscriptionModel) {
@@ -185,6 +190,32 @@ export class StuTabRequestComponent implements OnInit {
     this.filter.sortField = '';
     // this.filter = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
     // this.closeAdvancedSearch.emit(this.filter)
+  }
+  getStudentsProgramsVacationFilterAdminView() {
+    this.studentProgramVacationService.getStudentsProgramsVacationFilterAdminView(this.StudentVacationfilter).subscribe(res => {
+
+      if (res.isSuccess) {
+        this.studentVacationItems = res.data;
+        console.log("studProgsSubsItem ", this.studentVacationItems)
+        // this.studProgsSubsItems?.forEach(function (item) {
+        //   item.requestDate = item.requestDate ? new Date(item.requestDate).toDateString(): '';
+        // });
+        this.totalCount = res.count ? res.count : 0;
+        if (this.StudentVacationfilter.skip > 0 && (!this.studentVacationItems || this.studentVacationItems.length === 0)) {
+          this.StudentVacationfilter.page -= 1;
+          this.StudentVacationfilter.skip = (this.StudentVacationfilter.page - 1) * this.StudentVacationfilter.take;
+          this.getStudentsProgramsVacationFilterAdminView();
+        }
+      }
+      else {
+
+      }
+    }, error => {
+      this.resultMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    })
   }
 }
 

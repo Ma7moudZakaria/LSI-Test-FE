@@ -7,9 +7,9 @@ import { StudentSubscriptionEmun } from 'src/app/core/enums/programs/stu-subscri
   styleUrls: ['./stu-list-request.component.scss']
 })
 export class StuListRequestComponent implements OnInit {
-  @Output() selectedStuRequest = new EventEmitter<StudentSubscriptionEmun>();
+  @Output() selectedStuRequest = new EventEmitter<number>();
   studentSubscriptionEmun = StudentSubscriptionEmun;
-  selectedIndex: number = 1;
+  selectedIndex: StudentSubscriptionEmun = StudentSubscriptionEmun.joinRequest;
 
 
   constructor() { }
