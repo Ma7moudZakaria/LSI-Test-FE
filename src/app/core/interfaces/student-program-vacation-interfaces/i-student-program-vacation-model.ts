@@ -1,4 +1,4 @@
-export interface IstudentProgramVacationModel {
+export interface IStudentProgramVacationModel {
   id?: string;
   requestDate?: Date;
   usrNameAr?: string;

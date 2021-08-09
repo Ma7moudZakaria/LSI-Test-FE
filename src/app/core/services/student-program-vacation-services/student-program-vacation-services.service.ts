@@ -4,8 +4,8 @@ import {Observable} from 'rxjs';
 import {environment} from 'src/environments/environment';
 import {IStudentCustomConditionAnswerModel} from '../../interfaces/student-program-subscription-interfaces/istudent-custom-condition-answer-model';
 import {BaseResponseModel} from '../../ng-model/base-response-model';
-import {IstudentProgramVacationFilterRequestModel} from '../../interfaces/student-program-vacation-interfaces/istudent-program-vacation-filter-request-model';
-import {IstudentProgramVactionRequestModel} from '../../interfaces/student-program-vacation-interfaces/istudent-program-vaction-request-model';
+import {IStudentProgramVacationFilterRequestModel} from '../../interfaces/student-program-vacation-interfaces/i-student-program-vacation-filter-request-model';
+import {IStudentProgramVacationRequestModel} from '../../interfaces/student-program-vacation-interfaces/i-student-program-vacation-request-model';
 import {IRejectStudentProgramVacationModel} from '../../interfaces/student-program-vacation-interfaces/ireject-student-program-vacation-model';
 
 @Injectable({
@@ -24,11 +24,11 @@ export class StudentProgramVacationServicesService {
   constructor(private http: HttpClient) {
   }
 
-  getStudentsProgramsVacationFilterAdminView(model: IstudentProgramVacationFilterRequestModel): Observable<BaseResponseModel> {
+  getStudentsProgramsVacationFilterAdminView(model: IStudentProgramVacationFilterRequestModel): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.getStudentsProgramsVacationFilterAdminViewURL, model);
   }
 
-  getStudentsProgramsVacationFilterStudentView(model: IstudentProgramVactionRequestModel): Observable<BaseResponseModel> {
+  getStudentsProgramsVacationFilterStudentView(model: IStudentProgramVacationRequestModel): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.getStudentsProgramsVacationFilterStudentViewURL, model);
   }
 
@@ -36,7 +36,7 @@ export class StudentProgramVacationServicesService {
     return this.http.put<BaseResponseModel>(this.rejectStudentProgramVacationURL, model);
   }
 
-  studentProgramVacationAcceptance(model: string[]): Observable<BaseResponseModel> {
+  studentProgramVacationAcceptance(model?: string[]): Observable<BaseResponseModel> {
     return this.http.put<BaseResponseModel>(this.studentProgramVacationAcceptanceURL, model);
   }
 
