@@ -1,4 +1,4 @@
-export interface IstudentProgramVactionRequestModel {
+export interface IStudentProgramVacationRequestModel {
   usrName?: string;
   progId?: string;
   numberRequest?: number;

@@ -11,4 +11,5 @@ export interface IstudentProgramVacationModel {
   rejReason?: string;
   arNameBatch?: string;
   EnNameBatch?: string;
+  checked?:boolean;
 }
