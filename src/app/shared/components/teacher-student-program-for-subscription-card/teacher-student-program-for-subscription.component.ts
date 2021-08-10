@@ -39,4 +39,10 @@ export class TeacherStudentProgramForSubscriptionComponent implements OnInit {
 
 
   }
+  gotoDetailsStudent(event?: string) {
+
+    this.router.navigateByUrl('student-for-subscription/student_pro_sub_deatils/' + event);
+
+
+  }
 }

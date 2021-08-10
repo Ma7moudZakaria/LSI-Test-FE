@@ -34,7 +34,7 @@
 </ng-container>
 
 <ng-container *ngIf="userMode == programSubscriptionUsers.student">
-
+  <a class="card_link" (click)="gotoDetailsStudent(studentsubscriptionmodel.progId)">
 <div class="card_program d-flex justify-content-between align-items-center mb-3">
     <img class="prog-photo" src="../.././../../../assets/images/student-program/program-sub/qor2an.png">
     <div class="card_info">
@@ -66,6 +66,6 @@
     </div>
 
   </div>
-
+  </a>
   </ng-container>
 <!--feef1f87-d327-444c-8e40-1435a89bcacc-->
