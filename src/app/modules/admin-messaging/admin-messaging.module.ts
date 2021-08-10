@@ -34,8 +34,6 @@ import { TeacheRejectedComponent } from './components/teacher-program-request-vi
 import { AdvancedSearchTeacherComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-join-request-program/advanced-search/advanced-search.component';
 import { TeacherSystemSubscriptionRejectedComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-join-request/teacher-system-subscription-rejected/teacher-system-subscription-rejected.component';
 import { TeacherQuitTabRequestComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-quit-request/teacher-quit-tab-request/teacher-quit-tab-request.component';
-// import { TeacherTabRequestComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-join-request-program/teacher-tab-request/teacher-tab-request.component';
-
 
 // @NgModule({
 //   declarations: [AdminMessagingViewComponent, ScientificProblemsComponent, AddScientifiProblemReplyComponent,
@@ -52,7 +50,7 @@ import { TeacherQuitTabRequestComponent } from './components/teacher-program-req
     StuTabRequestComponent, AdvancedSearchComponent, TeacherListRequestComponent,
     TeacherRequestDetailsComponent, TeacherJoinRequestComponent, TeacherJoinRequestProgramComponent, TeacherQuitRequestComponent,
     ChangTimeRequestComponent, TeacherJionProgramTabRequestComponent, StuVacationsRequestComponent, StuMovingRequestComponent
-    , TeacherJionTabRequestComponent, StuRejectedComponent, TeacheRejectedComponent,AdvancedSearchTeacherComponent, TeacherSystemSubscriptionRejectedComponent],
+    , TeacherJionTabRequestComponent, StuRejectedComponent, TeacheRejectedComponent,AdvancedSearchTeacherComponent, TeacherSystemSubscriptionRejectedComponent
     ,TeacherQuitTabRequestComponent],
   imports: [
     CommonModule,
