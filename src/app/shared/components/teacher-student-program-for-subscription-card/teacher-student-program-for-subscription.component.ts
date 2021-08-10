@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { AlertifyService } from '../../../core/services/alertify-services/alertify.service';
 import { StudentProgramSubscriptionServicesService } from '../../../core/services/student-program-subscription-services/student-program-subscription-services.service';
 import { IProgramsForTeacherSubscriptionsModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iprograms-for-teacher-subscriptions-model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-teacher-student-program-for-subscription',
@@ -19,53 +20,16 @@ export class TeacherStudentProgramForSubscriptionComponent implements OnInit {
   langEnum = LanguageEnum;
 
   constructor(
+    private router: Router
   ) { }
 
   ngOnInit(): void {
 
   }
+  gotoDetails(event?: string) {
 
-  // getProgramsForStudentssSubscriptions() {
-  //   this.studentProgramSubscriptionServicesService.getProgramsForStudentsSubscriptions(this.filterRequest || {}).subscribe(res => {
-  //       if (res.isSuccess) {
-  //         this.programsForStudentSubscriptionsList = res.data;
+    this.router.navigateByUrl('teacher-for-subscription/teacher_pro_sub_deatils/' + event);
 
 
-  //       }
-  //       else {
-  //         this.alertify.error(res.message || '');
-
-  //       }
-  //     },
-  //     error => {
-  //       console.log(error);
-  //     });
-  // }
-
-  // filterByText(searchKey: string) {
-  //   this.filterRequest.progName = searchKey;
-  //   this.getProgramsForStudentssSubscriptions();
-  // }
-
-  // sortStudentByNameOrderType() {
-  //   this.filterRequest.sortField = 'progName';
-  //   this.filterRequest.sortOrder = 1;
-  //   this.getProgramsForStudentssSubscriptions();
-
-  // }
-
-  // sortByStudentRequestDateAsend() {
-  //   this.filterRequest.sortField = 'progcreation';
-  //   this.filterRequest.sortOrder = 1
-  //   this.getProgramsForStudentssSubscriptions();
-
-
-  // }
-  // sortByStudentRequestDateDesend() {
-  //   this.filterRequest.sortField = 'progcreation';
-  //   this.filterRequest.sortOrder = -1
-  //   this.getProgramsForStudentssSubscriptions();
-
-
-  // }
+  }
 }
