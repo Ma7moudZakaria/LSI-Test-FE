@@ -5,6 +5,7 @@ export interface IProgramDetails {
     progJoiExa?:IProgramExamFormsDetails[];
     progNotif?:IProgramNotificationsDetails[];
     progDays?:IProgramDutyDays[];
+    progBats?:IProgramBatchesDetails[];
 }
 
 export interface IProgramBasicInfoDetails{
@@ -114,3 +115,13 @@ export interface IProgramNotificationsDetails{
     arNotifName?:string;
     enNotifName?:string;
 }
+
+export interface IProgramBatchesDetails{
+    id?:string;
+    huNo?: number;
+    arBatName?: string;
+    enBatName?: string;
+    batEnSubsDat?:string;
+    batStaSubsDat?:string;
+}
+

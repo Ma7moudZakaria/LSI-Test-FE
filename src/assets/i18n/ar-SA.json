@@ -187,7 +187,8 @@
     "STUDENTS": "الطلاب",
     "JOINING_EXAM": "إختبارات الانضمام",
     "DAYS": "الأيام",
-    "NOTIFACATION": "تنبيهات"
+    "NOTIFACATION": "تنبيهات",
+    "BATCHES":"الدفعات"
   },
   "PROGRAM_DAY_TASKS": {
     "TASKS": "المهام",
@@ -794,5 +795,8 @@
     "TO": "إلى",
     "VACATION_REASON": "سبب الاجازة",
     "REJECT_REASON": "سبب الرفض"
+  },
+  "PROGRAM_BATCHES":{
+    "ADD_PROGRAM_BATCH":"اضافة دفعة"
   }
 }

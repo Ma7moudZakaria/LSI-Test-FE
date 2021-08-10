@@ -40,6 +40,11 @@
         [ngClass]="{ item_group_active: showTap == 'CANDITION' }">
          شروط
         </div> -->
+        <div class="item_group" (click)="showTap = 'BATCHES'"
+        [ngClass]="{ item_group_active: showTap == 'BATCHES' }">
+        {{'PROGRAM_TABS.BATCHES' | translate}}
+
+        </div>
     </div>
     <!-- {{selectedRoleId | json}} -->
 
@@ -55,6 +60,7 @@
            <!-- <app-progress-test  *ngIf="showTap == 'PROGRESSTEST'"></app-progress-test> -->
            <app-students *ngIf="showTap == 'STUDENS'"></app-students>
            <!-- <app-vacation-requests *ngIf="showTap == 'VACATION'"></app-vacation-requests> -->
+           <app-program-batches *ngIf="showTap == 'BATCHES'" [programDetails]='programDetails'></app-program-batches>
 
         </div>
 

@@ -36,7 +36,6 @@
                 
                     <div class="col-12 p-0">
                           <label  class="label"> من </label>
-                        {{datafromBinding}}
                         <app-milady-hijri-calendar  [editcalenderType]="calenderType" (sendDate)="SendDatafrom($event)" 
                         (keypress)="$event.preventDefault()"
                         [hijri]="!hijri" [milady]="milady"  [maxGreg]="maxGregDate"  [(ngModel)]="filter.fromDate">
@@ -45,7 +44,6 @@
                     </div>
                     <div class="col-12 p-0">
                           <label  class="label"> الى </label>
-                          {{dataToBinding}}
                           <app-milady-hijri-calendar  [editcalenderType]="calenderType" (sendDate)="SendDataTo($event)" 
                          (keypress)="$event.preventDefault()"
                          [hijri]="!hijri" [milady]="milady"  [maxGreg]="maxGregDate"  [(ngModel)]="filter.toDate">

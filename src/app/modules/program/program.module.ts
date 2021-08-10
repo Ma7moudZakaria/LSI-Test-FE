@@ -36,6 +36,10 @@ import { ProgramDayTasksComponent } from './components/add-program/program-days/
 import { ProgramDayTasksDetailsComponent } from './components/add-program/program-days/program-day-tasks-details/program-day-tasks-details.component';
 import { AddProgramDayTasksComponent } from './components/add-program/program-days/add-program-day-tasks/add-program-day-tasks.component';
 import { ProgramConditionListComponent } from './components/add-program/program-conditions/program-condition-list/program-condition-list.component';
+import { ProgramBatchesComponent } from './components/program-details/programs-tabs/program-batches/program-batches.component';
+import { ProgBatchesListComponent } from './components/program-details/programs-tabs/program-batches/prog-batches-list/prog-batches-list.component';
+import { ProgBatchesDetailsComponent } from './components/program-details/programs-tabs/program-batches/prog-batches-details/prog-batches-details.component';
+import { AddProgBatchComponent } from './components/program-details/programs-tabs/program-batches/add-prog-batch/add-prog-batch.component';
 
 
 @NgModule({
@@ -67,7 +71,11 @@ import { ProgramConditionListComponent } from './components/add-program/program-
     ProgramDayTasksDetailsComponent,
     AddProgramDayTasksComponent,
     MyFilterPipe,
-    ProgramConditionListComponent
+    ProgramConditionListComponent,
+    ProgramBatchesComponent,
+    ProgBatchesListComponent,
+    ProgBatchesDetailsComponent,
+    AddProgBatchComponent
   ],
   imports: [
     CommonModule,

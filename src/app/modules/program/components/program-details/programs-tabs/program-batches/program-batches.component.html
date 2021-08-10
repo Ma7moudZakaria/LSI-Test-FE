@@ -1,0 +1,17 @@
+<!-- <p>program-batches works!</p> -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4">
+            <app-prog-batches-list [programDetails]='programDetails' (showAddBatchOverlayEvent)='showHideAddBatchOverlayHandler($event)'></app-prog-batches-list>
+        </div>
+        <div class="col-8">
+            <app-prog-batches-details [programDetails]='programDetails'></app-prog-batches-details>
+        </div>
+    </div>
+</div>
+
+<div class='overlay' *ngIf='showHideAddBatchOverlay'>
+    <app-add-prog-batch [programDetails]='programDetails' (hideAddBatchOverlayEvent)='showHideAddBatchOverlayHandler($event)'></app-add-prog-batch>
+</div>
+<!-- <app-prog-batches-list></app-prog-batches-list>
+<app-prog-batches-details></app-prog-batches-details> -->
