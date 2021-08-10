@@ -1,4 +1,4 @@
 export interface IRejectTeacherSystemSubscription {
-    usrId?:string;   
+    reqId?:string;   
     reasonReject?:string;
 }
