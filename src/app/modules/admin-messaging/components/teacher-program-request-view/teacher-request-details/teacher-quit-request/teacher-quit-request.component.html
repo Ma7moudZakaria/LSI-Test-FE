@@ -1,10 +1,18 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <app-teacher-quit-tab-request (itemTeacherDropOutRequest)="openRejectRequest($event)"></app-teacher-quit-tab-request>
+            <app-teacher-quit-tab-request   (advancedSearchEvent)="openTeacherDropOutRequestAdvancedSearchPopup($event)" (itemTeacherDropOutRequest)="openRejectRequest($event)"></app-teacher-quit-tab-request>
         </div>
     </div>
     <div class="overlay" *ngIf="openTeacherDropOutRequestRejectOverlay">
         <app-teacher-drop-out-request-rejected [itemTeacherDropOutRequest]='itemTeacherDropOutRequest' (closeRejectedRequest)="closeRejectedRequest()"></app-teacher-drop-out-request-rejected>
     </div>
+
+    <div class="overlay" *ngIf="openTeacherDropOutRequestAdvancedSearch">
+        <app-teacher-advanced-search
+            (closeAdvancedSearch)="closeTeacherDropOutRequestAdvancedSearch($event)"
+            [filter]="filter"
+        ></app-teacher-advanced-search>
+    </div>
+    
 </div>

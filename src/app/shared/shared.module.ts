@@ -67,6 +67,11 @@ import { TeacherCardRequestComponent } from './components/teacher-card-request/t
 import { ProgramSubscriptionGridComponent } from './components/program-subscription-grid/program-subscription-grid.component';
 import { TeacherSystemCardRequestComponent } from './components/teacher-system-card-request/teacher-system-card-request.component';
 import { TeacherSystemSubscriptionGridComponent } from './components/teacher-system-subscription-grid/teacher-system-subscription-grid.component';
+import { TeacherDropOutRequestAdminCardComponent } from './components/teacher-drop-out-request-admin-card/teacher-drop-out-request-admin-card.component';
+import { TeacherDropOutRequestAdminGridComponent } from './components/teacher-drop-out-request-admin-grid/teacher-drop-out-request-admin-grid.component';
+import { TeacherDropOutRequestTeacherCardComponent } from './components/teacher-drop-out-request-teacher-card/teacher-drop-out-request-teacher-card.component';
+
+
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
     SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,
@@ -100,7 +105,11 @@ import { TeacherSystemSubscriptionGridComponent } from './components/teacher-sys
     TeacherCardRequestComponent,
     ProgramSubscriptionGridComponent,
     TeacherSystemCardRequestComponent,
-    TeacherSystemSubscriptionGridComponent],
+    TeacherSystemSubscriptionGridComponent,
+    TeacherDropOutRequestAdminCardComponent,
+    TeacherDropOutRequestAdminGridComponent,
+    TeacherDropOutRequestTeacherCardComponent
+    ],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,
@@ -124,7 +133,7 @@ import { TeacherSystemSubscriptionGridComponent } from './components/teacher-sys
     SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent,
     SettingAcceptComponent, StuCardRequestComponent, TeacherCardRequestComponent,TeacherSystemCardRequestComponent
     ,SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent, SettingAcceptComponent,ProgramSubscriptionGridComponent
-    ,TeacherSystemSubscriptionGridComponent
+    ,TeacherSystemSubscriptionGridComponent , TeacherDropOutRequestAdminGridComponent
   ]
 })
 export class SharedModule { }

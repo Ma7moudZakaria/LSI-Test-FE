@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdvancedSearchComponent } from './advanced-search.component';
+import { AddDropOutRequestComponent } from './add-drop-out-request.component';
 
-describe('AdvancedSearchComponent', () => {
-  let component: AdvancedSearchComponent;
-  let fixture: ComponentFixture<AdvancedSearchComponent>;
+describe('AddDropOutRequestComponent', () => {
+  let component: AddDropOutRequestComponent;
+  let fixture: ComponentFixture<AddDropOutRequestComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdvancedSearchComponent ]
+      declarations: [ AddDropOutRequestComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdvancedSearchComponent);
+    fixture = TestBed.createComponent(AddDropOutRequestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

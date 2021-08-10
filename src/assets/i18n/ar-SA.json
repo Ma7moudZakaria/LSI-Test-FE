@@ -754,6 +754,12 @@
     "FROM_PROGRAM": "من برنامج",
     "REASON_REJECT": "سبب الرفض"
   },
+
+  "TEACHER_DROP_OUT": {
+    "SUBSCRIBERS": "الطلبات",
+    "JOIN_REQUESTS": "طلبات الانضمام",
+    "CANCEL_REQUESTS": "طلبات الانسحاب"
+  },
   "STUDENT_SUBSCRIBERS": {
     "SUBSCRIBERS": "الطلبات",
     "TEACHERS": "المعلمين",

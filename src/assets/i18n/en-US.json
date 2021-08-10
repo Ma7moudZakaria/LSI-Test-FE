@@ -758,6 +758,11 @@
     "FROM_PROGRAM": "From program",
     "REASON_REJECT": "Reason reject"
   },
+  "TEACHER_DROP_OUT": {
+    "SUBSCRIBERS": "Subscibe",
+    "JOIN_REQUESTS": "Join requests",
+    "CANCEL_REQUESTS": "Cancellation requests"
+  },
   "STUDENT_SUBSCRIBERS": {
     "SUBSCRIBERS": "Subscibe",
     "TEACHERS": "Teachers",

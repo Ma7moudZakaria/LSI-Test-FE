@@ -104,12 +104,6 @@ export class TeacherSystemSubscriptionGridComponent implements OnInit {
     this.setTeacherAllChecked(false);
   }
 
-  sortStudentByName() {
-    this.teacherSystemSubscriptionFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn';
-    this.teacherSystemSubscriptionFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
-    this.teacherSystemSubscriptionFilterEvent.emit(this.teacherSystemSubscriptionFilterRequestModel);
-  }
-
   sortTeacherSystemSubscriptionByNameOrderType() {
     if ((this.teacherSystemSubscriptionFilterRequestModel.sortField === "userNameAr" || this.teacherSystemSubscriptionFilterRequestModel.sortField === "UserNameEn") && this.teacherSystemSubscriptionFilterRequestModel.sortOrder == 1) { return 'asend' }
     if ((this.teacherSystemSubscriptionFilterRequestModel.sortField === "userNameAr" || this.teacherSystemSubscriptionFilterRequestModel.sortField === "UserNameEn") && this.teacherSystemSubscriptionFilterRequestModel.sortOrder == -1) { return 'desend' }

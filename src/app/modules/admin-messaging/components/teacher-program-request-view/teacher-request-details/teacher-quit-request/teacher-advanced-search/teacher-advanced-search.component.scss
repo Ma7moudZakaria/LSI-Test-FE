@@ -1,3 +1,8 @@
+//@import '../stu-rejected/stu-rejected.component.scss';
+.input-group:not(.has-validation)>.custom-file:not(:last-child) .custom-file-label::after, .input-group:not(.has-validation)>.custom-select:not(:last-child), .input-group:not(.has-validation)>.form-control:not(:last-child){
+    border: 5px;
+}
+
 @import '../../../../../../../../assets/scss/buttons';
 .head{
     font-size: 1.25rem;
@@ -48,7 +53,7 @@
     margin: 1rem;
 
   }
-form{
+.DataForm{
 &:lang(ar){
     text-align: right !important;
 }
