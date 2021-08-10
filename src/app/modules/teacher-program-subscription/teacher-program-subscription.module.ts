@@ -5,10 +5,11 @@ import { TeacherProgramSubscriptionRoutingModule } from './teacher-program-subsc
 import { TeacherProgramsComponent } from './teacher-programs/teacher-programs.component';
 import { TeacherProgramSubViewComponent } from './teacher-program-sub-view/teacher-program-sub-view.component';
 import { SharedModule } from '../../shared/shared.module';
+import { TeacherProgramSubDetailsComponent } from './teacher-program-sub-view/teacher-program-sub-details/teacher-program-sub-details.component';
 
 
 @NgModule({
-  declarations: [TeacherProgramsComponent, TeacherProgramSubViewComponent],
+  declarations: [TeacherProgramsComponent, TeacherProgramSubViewComponent, TeacherProgramSubDetailsComponent],
   imports: [
     CommonModule,
     TeacherProgramSubscriptionRoutingModule,
