@@ -9,9 +9,6 @@ import { IStudentSubscriptionModel } from 'src/app/core/interfaces/student-progr
 import { ITeacherProgramSubscriptionFilterRequestModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iteacher-program-subscription-filter-request-model';
 import { ITeacherProgramSubscriptionModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iteacher-program-subscription-model';
 import { ExportationService } from 'src/app/core/services/exportation-services/exportation.service';
-import {StudentProgramVacationStatusEnum} from '../../../core/enums/StudentProgramVacationStatus/student-program-vacation-status.enum';
-import {IStudentProgramVacationModel} from '../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-model';
-import {IStudentProgramVacationFilterRequestModel} from '../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-filter-request-model';
 
 @Component({
   selector: 'app-program-subscription-grid',
@@ -42,11 +39,6 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   @Input() totalCount: number = 0;
   @Input() typeEnum: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending;
   @Input() typeTeacheEnum: TeacheProgramSubscriptionStatusEnum = TeacheProgramSubscriptionStatusEnum.Pending;
-  @Input() vacationtypeEnum: StudentProgramVacationStatusEnum = StudentProgramVacationStatusEnum.Pending;
-  @Input() studentVacationItems: IStudentProgramVacationModel[] = []
-  @Input() studentVacationFilterRequestModel: IStudentProgramVacationFilterRequestModel = { skip: 0, take: 9, page: 1 };
-
-
   stuTabTypeSelected = StudentProgramSubscriptionStatusEnum;
   teacherTabTypeSelected = TeacheProgramSubscriptionStatusEnum;
 

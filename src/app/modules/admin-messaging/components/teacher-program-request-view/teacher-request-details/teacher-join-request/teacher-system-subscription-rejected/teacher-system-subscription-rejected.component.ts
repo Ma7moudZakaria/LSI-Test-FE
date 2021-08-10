@@ -35,7 +35,7 @@ export class TeacherSystemSubscriptionRejectedComponent implements OnInit {
 
   saveRejectRequest() {
     let model: IRejectTeacherSystemSubscription = {
-      usrId: this.itemTeacherSystemSubscriptionReq.id,
+      reqId: this.itemTeacherSystemSubscriptionReq.id,
       reasonReject: this.itemTeacherSystemSubscriptionReq.reasonReject
     }
     if (model.reasonReject) {
