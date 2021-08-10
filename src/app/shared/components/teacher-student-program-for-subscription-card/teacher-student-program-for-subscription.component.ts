@@ -5,6 +5,8 @@ import { AlertifyService } from '../../../core/services/alertify-services/alerti
 import { StudentProgramSubscriptionServicesService } from '../../../core/services/student-program-subscription-services/student-program-subscription-services.service';
 import { IProgramsForTeacherSubscriptionsModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iprograms-for-teacher-subscriptions-model';
 import { Router } from '@angular/router';
+import { IProgramsForStudentSubscriptionsModel } from '../../../core/interfaces/student-program-subscription-interfaces/iprograms-for-student-subscriptions-model';
+import { ProgramSubscriptionUsersEnum } from '../../../core/enums/program-subscription-users-enum.enum';
 
 @Component({
   selector: 'app-teacher-student-program-for-subscription',
@@ -15,6 +17,11 @@ export class TeacherStudentProgramForSubscriptionComponent implements OnInit {
 
 
   @Input() teachersubscriptionmodel: IProgramsForTeacherSubscriptionsModel = { totals: 0 }
+  @Input() studentsubscriptionmodel: IProgramsForStudentSubscriptionsModel = { totals: 0 }
+  @Input() userMode: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.student;
+  programSubscriptionUsers = ProgramSubscriptionUsersEnum;
+
+
   // @Input() studentSubscripModel: IStudentSubscriptionModel = { totalRows: 0 }
   errorMessage?: string;
   langEnum = LanguageEnum;

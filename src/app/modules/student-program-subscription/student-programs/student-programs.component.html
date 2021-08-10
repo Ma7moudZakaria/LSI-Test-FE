@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid student">
   <div class="row stu-program-subscriptions">
     <div class="col-12 d-flex justify-content-between align-items-center mt-3 mb-3">
       <p class="mb-0 head"> برامجنا</p>
@@ -9,15 +9,19 @@
       <app-search-input class="w-90"></app-search-input>
 
     </div>
+  </div>
+    <div class="row fix_margin w-100 " >
 
-    <div class="col-12 internal_scroll_program">
+      <div class="col-12 px-2 interTab mb-3 pt-3">
       <app-teacher-stu-program-for-subscription-grid
         [studentItems]='programsForStudentSubscriptionsLst'
         [studentFilterRequestModel] = 'filterRequest'
         [totalCountForStudent]='totalCount'
-        [userMode]="studentCard"  >
+        [userMode]="studentCard"
+        (studentFilterEvent)='filterRequestTeacher($event)' >
       </app-teacher-stu-program-for-subscription-grid>
 
     </div>
-  </div>
+    </div>
+
 </div>
