@@ -9,8 +9,8 @@ import { ExportationService } from '../../../core/services/exportation-services/
 import { IProgramsForTeachersSubscriptionsFilterRequestModel } from '../../../core/interfaces/teacher-program-subscription-interfaces/iprograms-for-teachers-subscriptions-filter-request-model';
 import { IProgramsForTeacherSubscriptionsModel } from '../../../core/interfaces/teacher-program-subscription-interfaces/iprograms-for-teacher-subscriptions-model';
 import { LanguageEnum } from '../../../core/enums/language-enum.enum';
-import {IProgramsForStudentsSubscriptionsFilterRequestModel} from '../../../core/interfaces/student-program-subscription-interfaces/iprograms-for-students-subscriptions-filter-request-model';
-import {IProgramsForStudentSubscriptionsModel} from '../../../core/interfaces/student-program-subscription-interfaces/iprograms-for-student-subscriptions-model';
+import { IProgramsForStudentsSubscriptionsFilterRequestModel } from '../../../core/interfaces/student-program-subscription-interfaces/iprograms-for-students-subscriptions-filter-request-model';
+import { IProgramsForStudentSubscriptionsModel } from '../../../core/interfaces/student-program-subscription-interfaces/iprograms-for-student-subscriptions-model';
 
 @Component({
   selector: 'app-teacher-stu-program-for-subscription-grid',
@@ -48,7 +48,7 @@ export class TeacherStuProgramForSubscriptionGridComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log("userMode",this.userMode);
+    console.log("userMode", this.userMode);
     this.teacherFilterRequestModel.sortField = 'progName';
     this.studentFilterRequestModel.sortField = 'progName';
 
@@ -56,10 +56,16 @@ export class TeacherStuProgramForSubscriptionGridComponent implements OnInit {
   // tslint:disable-next-line:typedef
   sortTeacherByName() {
     this.teacherFilterRequestModel.sortField = 'progName';
-    this.teacherFilterRequestModel.sortOrder = 1;
+    this.teacherFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
+
     this.teacherFilterEvent.emit(this.teacherFilterRequestModel);
   }
+  sortTeacherByNameOrderType() {
+    if ((this.teacherFilterRequestModel.sortField === 'progName') && this.teacherFilterRequestModel.sortOrder == 1) { return 'asend' }
+    if ((this.teacherFilterRequestModel.sortField === 'progName') && this.teacherFilterRequestModel.sortOrder == -1) { return 'desend' }
 
+    return '';
+  }
 
   sortTeacherRequestDate() {
     this.teacherFilterRequestModel.sortField = 'progcreation';
@@ -67,12 +73,6 @@ export class TeacherStuProgramForSubscriptionGridComponent implements OnInit {
     this.teacherFilterEvent.emit(this.teacherFilterRequestModel);
   }
 
-  sortTeacherByNameOrderType() {
-    if ((this.teacherFilterRequestModel.sortField === 'progcreation') && this.teacherFilterRequestModel.sortOrder == 1) { return 'asend' }
-    if ((this.teacherFilterRequestModel.sortField === 'progcreation') && this.teacherFilterRequestModel.sortOrder == -1) { return 'desend' }
-
-    return '';
-  }
 
   sortTeacherRequestDateOrderType() {
     if (this.teacherFilterRequestModel.sortField === 'progcreation' && this.teacherFilterRequestModel.sortOrder == 1) { return 'asend' }
@@ -81,8 +81,8 @@ export class TeacherStuProgramForSubscriptionGridComponent implements OnInit {
     return '';
   }
   onTeacherPageChange() {
-    //   this.teacherFilterRequestModel.skip = (this.teacherFilterRequestModel.page - 1) * (this.teacherFilterRequestModel.take || 0);
-    //   this.teacherFilterEvent.emit(this.teacherFilterRequestModel);
+    this.teacherFilterRequestModel.skip = (this.teacherFilterRequestModel.page - 1) * (this.teacherFilterRequestModel.take || 0);
+    this.teacherFilterEvent.emit(this.teacherFilterRequestModel);
 
   }
 

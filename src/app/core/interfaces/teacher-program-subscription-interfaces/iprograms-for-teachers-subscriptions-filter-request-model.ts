@@ -3,7 +3,7 @@ export interface IProgramsForTeachersSubscriptionsFilterRequestModel {
     progName?: string;
     sortField?: string;
     sortOrder?: number;
-    skip?: number;
+    skip: number;
     take: number;
     page: number;
 }

@@ -6,7 +6,7 @@ import { IProgramsForTeacherSubscriptionsModel } from 'src/app/core/interfaces/t
 import { IProgramsForTeachersSubscriptionsFilterRequestModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iprograms-for-teachers-subscriptions-filter-request-model';
 import { TeacherProgramSubscriptionServicesService } from 'src/app/core/services/teacher-program-subscription-services/teacher-program-subscription-services.service';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
-import {ProgramSubscriptionUsersEnum} from '../../../core/enums/program-subscription-users-enum.enum';
+import { ProgramSubscriptionUsersEnum } from '../../../core/enums/program-subscription-users-enum.enum';
 
 @Component({
   selector: 'app-teacher-programs',
@@ -39,9 +39,16 @@ export class TeacherProgramsComponent implements OnInit {
     this.teacherProgramSubscriptionServicesService.getProgramsForTeacherssSubscriptions(this.filterRequest || {}).subscribe(res => {
       // var response = <BaseResponseModel>res;
       if (res.isSuccess) {
-        console.log("res", res);
+        // console.log("res", res);
         this.programsForTeacherSubscriptionsLst = res.data as IProgramsForTeacherSubscriptionsModel[];
-        console.log("programsForTeacherSubscriptionsLst ", this.programsForTeacherSubscriptionsLst)
+
+        this.totalCount = res.count ? res.count : 0;
+
+        if (this.filterRequest.skip > 0 && (!this.programsForTeacherSubscriptionsLst || this.programsForTeacherSubscriptionsLst.length === 0)) {
+          this.filterRequest.page -= 1;
+          this.filterRequest.skip = (this.filterRequest.page - 1) * this.filterRequest.take;
+          this.getProgramsForTeacherssSubscriptions();
+        }
 
       }
       else {
@@ -53,4 +60,43 @@ export class TeacherProgramsComponent implements OnInit {
       });
   }
 
+
+  // getScientificProblems() {
+
+  //   this.resultMessage = {};
+
+  //   this.scientificProblemService.getScientificMateriaFilter(this.scientificProblemFilter).subscribe(res => {
+  //     if (res.isSuccess){
+  //       this.scientificProblems = res.data;
+  //       this.scientificProblems?.forEach(function(item) {
+  //         item.scCreatedOn = item.scCreatedOn ? new Date(item.scCreatedOn).toDateString(): '';
+  //       });   
+  //       this.totalCount = res.count ? res.count : 0;
+
+  //       if ( this.scientificProblemFilter.skip > 0  && (!this.scientificProblems || this.scientificProblems.length === 0)){
+  //         this.scientificProblemFilter.page -= 1;
+  //         this.scientificProblemFilter.skip = (this.scientificProblemFilter.page - 1) * this.scientificProblemFilter.take;
+  //         this.getScientificProblems(); 
+  //       }
+  //     }
+  //     else{
+  //       this.resultMessage = {
+  //         message: res.message,
+  //         type: BaseConstantModel.DANGER_TYPE
+  //       }
+  //     }
+  //   },
+  //     error => {
+  //       this.resultMessage = {
+  //         message: error,
+  //         type: BaseConstantModel.DANGER_TYPE
+  //       }
+  //     }
+  //   )
+  // }
+
+  filterRequestTeacher(event: IProgramsForTeachersSubscriptionsFilterRequestModel) {
+    this.filterRequest = event;
+    this.getProgramsForTeacherssSubscriptions();
+  }
 }

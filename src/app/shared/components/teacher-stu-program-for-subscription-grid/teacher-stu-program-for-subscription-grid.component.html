@@ -11,10 +11,11 @@
       [boundaryLinks]="true"
       (pageChange)="onTeacherPageChange()">
     </ngb-pagination>
-    <button  [ngClass]="{'default_btn': teacherFilterRequestModel.sortField != 'userNameAr' && teacherFilterRequestModel.sortField != 'UserNameEn', 'asend_desend_btn' : this.teacherFilterRequestModel.sortField != 'requestdate' }"
+    <button 
+     [ngClass]="{'default_btn': teacherFilterRequestModel.sortField != 'progName' , 'asend_desend_btn' : this.teacherFilterRequestModel.sortField != 'progcreation' }"
              (click)='sortTeacherByName()'>
       {{'User_Requests.SORT_NAME' | translate}}
-      <span *ngIf='this.teacherFilterRequestModel.sortField != "userNameAr" && this.teacherFilterRequestModel.sortField != "UserNameEn"'>
+      <span *ngIf='this.teacherFilterRequestModel.sortField != "progName" '>
                   <img  class="asend_btn" src="../../../../assets/images/sc-problem/Group 18449.svg">
           </span>
      <span *ngIf='sortTeacherByNameOrderType() == "asend"'>
@@ -24,11 +25,11 @@
              <img  class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
          </span>
     </button>
-    <button  [ngClass]="{'asend_desend_btn': teacherFilterRequestModel.sortField != 'userNameAr' && teacherFilterRequestModel.sortField != 'UserNameEn', 'default_btn' : this.teacherFilterRequestModel.sortField != 'requestdate'}"
+    <button  [ngClass]="{'asend_desend_btn': teacherFilterRequestModel.sortField != 'progName', 'default_btn' : this.teacherFilterRequestModel.sortField != 'progcreation'}"
              (click)='sortTeacherRequestDate()'>
       {{'User_Requests.SORT_DATE' | translate}}
 
-      <span *ngIf='this.teacherFilterRequestModel.sortField != "requestdate"'>
+      <span *ngIf='this.teacherFilterRequestModel.sortField != "progcreation"'>
               <img  class="asend_btn" src="../../../../assets/images/sc-problem/Group 18449.svg">
           </span>
      <span *ngIf='sortTeacherRequestDateOrderType() == "asend"'>
