@@ -11,4 +11,6 @@ export interface ITeacherDropOutRequestModel {
     interviewiHijri?:string;
     interviewGregorian?:string;
     avatarLink?:string;
+    checked?:boolean;
+    reasonReject?:string;
 }

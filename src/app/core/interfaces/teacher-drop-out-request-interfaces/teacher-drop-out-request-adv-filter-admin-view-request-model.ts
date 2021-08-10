@@ -4,8 +4,11 @@ export interface ITeacherDropOutRequestAdvFilterAdminViewRequestModel {
     requestNum?:number;
     statusNum?:number;
     requestDate?:string;
-    skip?:string;
-    take?:string;
-    from?:string;
-    to?:string;
+    skip:number;
+    take:number;
+    from?:number;
+    to?:number;
+    sortField?:string;
+    sortOrder?:number;
+    page:number;
 }

@@ -1,15 +1,10 @@
-<div class="container-fluid reuest_container" > 
-
-    <div class="row group_header fix_margin w-100">
-        <div class="item_group" 
-        [ngClass]="{ item_group_active: showTap == 'new_request' }" >
-           طلبات الإنضمام الجديدة
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <app-teacher-quit-tab-request (itemTeacherDropOutRequest)="openRejectRequest($event)"></app-teacher-quit-tab-request>
         </div>
     </div>
-    
-    <div class="row fix_margin w-100 " >
-        <div class="col-12 px-2 interTab mb-3">
-            <app-teacher-join-tab-request></app-teacher-join-tab-request>
-        </div>    
-    </div>   
+    <div class="overlay" *ngIf="openTeacherDropOutRequestRejectOverlay">
+        <app-teacher-drop-out-request-rejected [itemTeacherDropOutRequest]='itemTeacherDropOutRequest' (closeRejectedRequest)="closeRejectedRequest()"></app-teacher-drop-out-request-rejected>
+    </div>
 </div>
