@@ -1,61 +1,17 @@
 
-.stu-program-subscriptions{
-    &:lang(ar){
-        text-align: right;
-    }
-    &:lang(en){
-        text-align: left;
-    }
-
-    background: #fff 0% 0% no-repeat padding-box;
-    // border-radius: 19px;
-    // opacity: 1;
-    // padding: 2rem;
-    // margin-top: 1rem;
-    .head{
-        font-size: 1.25rem;
-        font-family:Almarai-Bold;
-        color: #3A3A3A;
-        font-weight: bold;
-    }
-   
-    .dropdown-toggle::after{
-        display: none;
-    }
-    .sort_icon{
-        border: 1px solid #CB9118;
-        border-radius: 5px;
-        padding: 0.2rem 0.5rem;
-    }
-    .item_dropdown{
-        color: #4A4A4A;
-        font-size: .75rem;
-        font-family:Almarai-Bold;
-        font-weight: bold;
-    }
-    .border_bottom{
-        border-bottom: 1px solid #0000000F;
-
-    }
-    .w-90{
-        width: 90%;
-    }
-
-
-    .internal_scroll_program
-    {
-        // height: 70vh;
-        // overflow-y: scroll;
-           .card{
+           .card_program{
+            &:lang(ar){
+                text-align: right;
+            }
+            &:lang(en){
+                text-align: left;
+            }
+        
             background: #fff;
             padding: 0.5rem;
             border-radius: 12px;
             }
-            .card_program{
-                background: #fff;
-                border-radius: 12px;
-                padding: 0.5rem
-            }
+           
             .prog-photo{
                 width: 175px;
                height: 214px;
@@ -103,7 +59,4 @@
                 height: 22px;
             }
         
-    }
   
-
-}
