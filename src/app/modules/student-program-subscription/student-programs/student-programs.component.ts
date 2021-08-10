@@ -43,8 +43,14 @@ export class StudentProgramsComponent implements OnInit {
         var response = <BaseResponseModel>res;
         if (response.isSuccess) {
           this.programsForStudentSubscriptionsLst = response.data as IProgramsForStudentSubscriptionsModel[];
-          console.log("programsForStudentSubscriptionsLst ", this.programsForStudentSubscriptionsLst)
+          this.totalCount = res.count ? res.count : 0;
 
+          if (this.filterRequest.skip > 0 && (!this.programsForStudentSubscriptionsLst || this.programsForStudentSubscriptionsLst.length === 0)) {
+            this.filterRequest.page -= 1;
+            this.filterRequest.skip = (this.filterRequest.page - 1) * this.filterRequest.take;
+            // @ts-ignore
+            this.programsForStudentSubscriptionsLst();
+          }
         }
         else {
           this.errorMessage = res.message;
@@ -53,6 +59,10 @@ export class StudentProgramsComponent implements OnInit {
       error => {
         console.log(error);
       });
+  }
+  filterRequestTeacher(event: IProgramsForStudentsSubscriptionsFilterRequestModel) {
+    this.filterRequest = event;
+    this.getProgramsForStudentsSubscriptions();
   }
 
 }

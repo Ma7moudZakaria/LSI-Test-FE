@@ -89,23 +89,23 @@ export class TeacherStuProgramForSubscriptionGridComponent implements OnInit {
   //student
   sortStudentByName() {
     this.studentFilterRequestModel.sortField = 'progName';
-    this.studentFilterRequestModel.sortOrder = 1;
-    this.teacherFilterEvent.emit(this.studentFilterRequestModel);
-  }
+    this.studentFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
 
+    this.studentFilterEvent.emit(this.studentFilterRequestModel);
+  }
+  sortStudentByNameOrderType() {
+    if ((this.studentFilterRequestModel.sortField === 'progName') && this.studentFilterRequestModel.sortOrder == 1) { return 'asend' }
+    if ((this.studentFilterRequestModel.sortField === 'progName') && this.studentFilterRequestModel.sortOrder == -1) { return 'desend' }
+
+    return '';
+  }
 
   sortStudentRequestDate() {
     this.studentFilterRequestModel.sortField = 'progcreation';
     this.studentFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
-    this.teacherFilterEvent.emit(this.studentFilterRequestModel);
+    this.studentFilterEvent.emit(this.studentFilterRequestModel);
   }
 
-  sortStudentByNameOrderType() {
-    if ((this.studentFilterRequestModel.sortField === 'progcreation') && this.studentFilterRequestModel.sortOrder == 1) { return 'asend' }
-    if ((this.studentFilterRequestModel.sortField === 'progcreation') && this.studentFilterRequestModel.sortOrder == -1) { return 'desend' }
-
-    return '';
-  }
 
   sortStudentRequestDateOrderType() {
     if (this.studentFilterRequestModel.sortField === 'progcreation' && this.studentFilterRequestModel.sortOrder == 1) { return 'asend' }
@@ -114,8 +114,8 @@ export class TeacherStuProgramForSubscriptionGridComponent implements OnInit {
     return '';
   }
   onStudentPageChange() {
-    //   this.studentFilterRequestModel.skip = (this.studentFilterRequestModel.page - 1) * (this.studentFilterRequestModel.take || 0);
-    //   this.teacherFilterEvent.emit(this.studentFilterRequestModel);
+    this.studentFilterRequestModel.skip = (this.studentFilterRequestModel.page - 1) * (this.studentFilterRequestModel.take || 0);
+    this.studentFilterEvent.emit(this.studentFilterRequestModel);
 
   }
 }
