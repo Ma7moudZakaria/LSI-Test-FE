@@ -61,42 +61,12 @@ export class TeacherProgramsComponent implements OnInit {
   }
 
 
-  // getScientificProblems() {
-
-  //   this.resultMessage = {};
-
-  //   this.scientificProblemService.getScientificMateriaFilter(this.scientificProblemFilter).subscribe(res => {
-  //     if (res.isSuccess){
-  //       this.scientificProblems = res.data;
-  //       this.scientificProblems?.forEach(function(item) {
-  //         item.scCreatedOn = item.scCreatedOn ? new Date(item.scCreatedOn).toDateString(): '';
-  //       });   
-  //       this.totalCount = res.count ? res.count : 0;
-
-  //       if ( this.scientificProblemFilter.skip > 0  && (!this.scientificProblems || this.scientificProblems.length === 0)){
-  //         this.scientificProblemFilter.page -= 1;
-  //         this.scientificProblemFilter.skip = (this.scientificProblemFilter.page - 1) * this.scientificProblemFilter.take;
-  //         this.getScientificProblems(); 
-  //       }
-  //     }
-  //     else{
-  //       this.resultMessage = {
-  //         message: res.message,
-  //         type: BaseConstantModel.DANGER_TYPE
-  //       }
-  //     }
-  //   },
-  //     error => {
-  //       this.resultMessage = {
-  //         message: error,
-  //         type: BaseConstantModel.DANGER_TYPE
-  //       }
-  //     }
-  //   )
-  // }
-
   filterRequestTeacher(event: IProgramsForTeachersSubscriptionsFilterRequestModel) {
     this.filterRequest = event;
+    this.getProgramsForTeacherssSubscriptions();
+  }
+  filterByText(searchKey: string) {
+    this.filterRequest.progName = searchKey;
     this.getProgramsForTeacherssSubscriptions();
   }
 }

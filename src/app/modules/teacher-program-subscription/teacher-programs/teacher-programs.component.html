@@ -6,7 +6,10 @@
     </div>
 
     <div class="col-12 d-flex justify-content-between align-items-center">
-      <app-search-input class="w-90"></app-search-input>
+      <app-search-input
+      (searchTerm)=filterByText($event)
+      [searchKey]='this.filterRequest.progName || ""'
+      class="w-90"></app-search-input>
 
   </div>
 </div>
