@@ -12,7 +12,7 @@
                 <li onclick="" class="nav-item" routerLinkActive="active">
                     <a [routerLink] = "['/dashboard']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/Dashboard-icon.png">
-                           
+
                             <span class="container__navigation__title">  {{'SIDENAVBAR.DASHBORD' | translate}}  </span>
                     </a>
                 </li>
@@ -31,6 +31,13 @@
                         <span class="container__navigation__title">{{'SIDENAVBAR.SCIENTIFIC_ARTICLES' | translate}}</span>
                     </a>
                 </li>
+              <li class="nav-item" routerLinkActive="active" >
+                <a [routerLink] = "['/vacations/student-vacation-request-view']" routerLinkActive="active" class="nav-link">
+                  <img src="../../../../assets/images/sidebar/scientific-articles-icon.png">
+
+                  <span class="container__navigation__title">{{'SIDENAVBAR.VACATION' | translate}}</span>
+                </a>
+              </li>
                 <li class="nav-item" routerLinkActive="active">
                     <a *ngIf='roleService.isAdmin() && (!roleService.isStudent() || !roleService.isTeacher())' [routerLink]="['/admin-messaging/admin-messaging-view']"  routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/message-icon.png">
@@ -53,7 +60,7 @@
                 <li class="disabled_sidenav">
                     <a href="#">
                         <img src="../../../../assets/images/sidebar/teacher-icon.png">
-                       
+
                         <span class="container__navigation__title">{{'SIDENAVBAR.WITHDRAWAL_REQUESTS' | translate}}</span>
                     </a>
                 </li>
@@ -71,15 +78,15 @@
                         <span class="container__navigation__title">{{'SIDENAVBAR.MY_MESSAGES' | translate}}</span>
                     </a>
                 </li>
-                
-                <li class="nav-item" routerLinkActive="active"> 
+
+                <li class="nav-item" routerLinkActive="active">
                     <a [routerLink]="['/question-bank/question-bank-view']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/questions-bank-icon.png">
- 
+
                         <span class="container__navigation__title">{{'SIDENAVBAR.QUESTION_BANK' | translate}}</span>
                     </a>
                 </li>
-                
+
             </ul>
         </div>
         <div style="height: 39px;">

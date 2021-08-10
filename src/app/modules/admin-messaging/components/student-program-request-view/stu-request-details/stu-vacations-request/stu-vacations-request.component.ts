@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {IStudentProgramVacationModel} from '../../../../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-model';
 import {StudentVacationRequestTabComponent} from './student-vacation-request-tab/student-vacation-request-tab.component';
-import {IStudentProgramVacationFilterRequestModel} from 'src/app/core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-filter-request-model';
+import {IStudentProgramVacationFilterRequestModel} from '../../../../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-filter-request-model';
 import {StudentProgramVacationStatusEnum} from '../../../../../../core/enums/StudentProgramVacationStatus/student-program-vacation-status.enum';
+import {IStudentProgramVacationModel} from '../../../../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-model';
 
 @Component({
   selector: 'app-stu-vacations-request',

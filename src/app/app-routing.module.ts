@@ -23,6 +23,7 @@ const routes: Routes = [
   { path: 'feelings', loadChildren: () => import('./modules/feelings/feelings.module').then(m => m.FeelingsModule), canActivate: [AuthGuard] },
 
   { path: 'program', loadChildren: () => import('./modules/program/program.module').then(m => m.ProgramModule), canActivate: [AuthGuard] },
+  { path: 'vacations', loadChildren: () => import('./modules/vacations/vacations.module').then(m => m.VacationsModule), canActivate: [AuthGuard] },
 ];
 
 @NgModule({

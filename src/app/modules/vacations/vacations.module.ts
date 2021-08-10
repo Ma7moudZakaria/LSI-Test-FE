@@ -2,13 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { VacationsRoutingModule } from './vacations-routing.module';
+import { VacationsRequestsViewComponent } from './components/vacations-requests-view/vacations-requests-view.component';
+import { StudentProgramListComponent } from './components/vacations-requests-view/student-program-list/student-program-list.component';
+import { StudentProgramVacationRequestsComponent } from './components/vacations-requests-view/student-program-vacation-requests/student-program-vacation-requests.component';
+import {TranslateModule} from '@ngx-translate/core';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [VacationsRequestsViewComponent, StudentProgramListComponent, StudentProgramVacationRequestsComponent],
   imports: [
     CommonModule,
-    VacationsRoutingModule
+    VacationsRoutingModule,
+    TranslateModule
   ]
 })
 export class VacationsModule { }
