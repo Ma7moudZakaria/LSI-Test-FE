@@ -67,7 +67,8 @@
     "FILE_SIZE": "your file size more than 3m",
     "EXTENTION_FILE": "your extention file not accepted",
     "ACCEPT": "Accepted",
-    "REJECT": "Reject"
+    "REJECT": "Reject",
+    "DEGREE_MAX_LENGTH": "Degree must be more than 100"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
@@ -642,7 +643,7 @@
     "NUMBER_HOMEWORK_PATTERN": "Please Enter a valid Number of homework",
     "NUMBER_HOMEWORK_MAX_LENGTH": "Number of homework sould be less than 100 charcter",
     "NOTIFICATION_NAME_PATTERN": "Please Enter a valid Notification Name",
-    "NOTIFICATION_NAME_MAX_LENGTH": "Notification Name sould be less than or equal 100 charcter",
+    "NOTIFICATION_NAME_MAX_LENGTH": "Notification Name sould be less than or equal 150 charcter",
     "QUESTION_AR_MAX_LENGHT": "Question Arabic Must be less than or equal 300 character",
     "QUESTION_EN_MAX_LENGHT": "Question English Must be less than or equal 300 character",
     "ARABIC_FIELD": "This field must be in Arabic",
@@ -781,5 +782,11 @@
     "FROM_PROG": "From Program",
     "REJECTED_REASON": "Reject Reason",
     "VALIDATIONDATE": "Datefrom  should less than dateto "
+  },
+  "TEACHER_SYSTEM_SUBSCRIPTION": {
+    "REQUEST_DATE": "Request Date",
+    "MEETING":"Meeting",
+    "REJECT":"Reject",
+    "ACCEPT":"Accept"
   }
 }

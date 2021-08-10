@@ -55,26 +55,68 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
   ngOnInit(): void {
     // console.log(this.testPhasedDetailsModel);
     this.getprogramDayTaskDetails();
+    this.resultMessage = {
+    }
   }
   ngOnChanges(changes: any){
     this.getprogramDayTaskDetails();
+    this.resultMessage = {
+    }
   }
 
   save() {
     switch (this.taskDetails?.huffazTask) {
-      case this.detailsTypeEnum.taskHearing:
+      case this.detailsTypeEnum.taskHearing:        
+          if ( ( this.hearingTaskDetailsModel.degree ? this.hearingTaskDetailsModel.degree : 0 ) > 100) {
+          this.resultMessage = {
+            message: this.translate.instant('GENERAL.DEGREE_MAX_LENGTH'),
+            type: BaseConstantModel.DANGER_TYPE
+          }        
+          return;
+        }
         this.taskDetails.detailsTask = JSON.stringify(this.hearingTaskDetailsModel);
         break;
       case this.detailsTypeEnum.TaskReadExplanation:
+        if ((this.readExplanationDetailsModel.degree ? this.readExplanationDetailsModel.degree : 0 )  > 100) {
+          this.resultMessage = {
+            message: this.translate.instant('GENERAL.DEGREE_MAX_LENGTH'),
+            type: BaseConstantModel.DANGER_TYPE
+          }          
+          return;
+        }
         this.taskDetails.detailsTask = JSON.stringify(this.readExplanationDetailsModel);
         break;
         case this.detailsTypeEnum.TaskMemorize:
+          if ((this.memorizeDetailsModel.degree ? this.memorizeDetailsModel.degree : 0 )  > 100) {
+            
+              this.resultMessage = {
+                message: this.translate.instant('GENERAL.DEGREE_MAX_LENGTH'),
+                type: BaseConstantModel.DANGER_TYPE
+              }          
+              return;
+            }
           this.taskDetails.detailsTask = JSON.stringify(this.memorizeDetailsModel);
           break;
           case this.detailsTypeEnum.TaskRepetition:
+            if ( (this.repetitionDetailsModel.degree ? this.repetitionDetailsModel.degree : 0 ) > 100) {
+         
+                this.resultMessage = {
+                  message: this.translate.instant('GENERAL.DEGREE_MAX_LENGTH'),
+                  type: BaseConstantModel.DANGER_TYPE
+                }          
+                return;
+              }
             this.taskDetails.detailsTask = JSON.stringify(this.repetitionDetailsModel);
             break;
            case this.detailsTypeEnum.TaskLinking:
+            if ((this.linkingDetailsModel.degree ? this.linkingDetailsModel.degree : 0 ) > 100) {
+              
+            this.resultMessage = {
+              message: this.translate.instant('GENERAL.DEGREE_MAX_LENGTH'),
+              type: BaseConstantModel.DANGER_TYPE
+            }          
+            return;
+          }
             this.taskDetails.detailsTask = JSON.stringify(this.linkingDetailsModel);
             break;
             case this.detailsTypeEnum.TaskEncouragementLetter:
@@ -84,6 +126,13 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
                 this.taskDetails.detailsTask = JSON.stringify(this.videoDetailsModel);
                 break;
                 case this.detailsTypeEnum.TaskReview:
+                  if ((this.reviewDetailsModel.degree ? this.reviewDetailsModel.degree : 0 ) > 100) {
+                  this.resultMessage = {
+                    message: this.translate.instant('GENERAL.DEGREE_MAX_LENGTH'),
+                    type: BaseConstantModel.DANGER_TYPE
+                  }          
+                  return;
+                }
                 this.taskDetails.detailsTask = JSON.stringify(this.reviewDetailsModel);
                 break;
                 case this.detailsTypeEnum.TaskRecitation:
@@ -102,34 +151,58 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
         this.taskDetails!.detailsTask = JSON.stringify("{}");
         break;
     }
-    this.resultMessage = {};
 
-    this.programDayTaskDetails.programDayTask = this.taskDetails?.id
-    this.programDayTaskDetails.detailsTask = this.taskDetails?.detailsTask
+    // if ( this.hearingTaskDetailsModel != null || 
+    // this.linkingDetailsModel != null ||
+    //   this.memorizeDetailsModel != null || 
+    //   this.readExplanationDetailsModel != null || 
+    //   this.repetitionDetailsModel != null || 
+    //   this.reviewDetailsModel != null) {
 
-    this.programDayTasksService.SaveProgramDayTaskDetails(this.programDayTaskDetails).subscribe(res => {
-   let response = <BaseResponseModel>res;
-   if (response.isSuccess) {
-     this.resultMessage = {
-       message: res.message || "",
-       type: BaseConstantModel.SUCCESS_TYPE
-     }
+    //     if ( ( this.hearingTaskDetailsModel.degree ? this.hearingTaskDetailsModel.degree : 0 ) > 100 || 
+    //   (this.linkingDetailsModel.degree ? this.linkingDetailsModel.degree : 0 ) > 100 ||
+    //   (this.memorizeDetailsModel.degree ? this.memorizeDetailsModel.degree : 0 ) > 100 || 
+    //   (this.readExplanationDetailsModel.degree ? this.readExplanationDetailsModel.degree : 0 ) > 100 || 
+    //   (this.repetitionDetailsModel.degree ? this.repetitionDetailsModel.degree : 0 ) > 100 || 
+    //   (this.reviewDetailsModel.degree ? this.reviewDetailsModel.degree : 0 ) > 100 ) {
+    //   this.resultMessage = {
+    //     message: this.translate.instant('GENERAL.DEGREE_MAX_LENGTH'),
+    //     type: BaseConstantModel.DANGER_TYPE
+    //   }        
+    // }
+        
+    // }
+            this.resultMessage = {};
+
+            this.programDayTaskDetails.programDayTask = this.taskDetails?.id
+            this.programDayTaskDetails.detailsTask = this.taskDetails?.detailsTask
+        
+            this.programDayTasksService.SaveProgramDayTaskDetails(this.programDayTaskDetails).subscribe(res => {
+          let response = <BaseResponseModel>res;
+          if (response.isSuccess) {
+            this.resultMessage = {
+              message: res.message || "",
+              type: BaseConstantModel.SUCCESS_TYPE
+            }
+          
+          }
+          else {
+            this.resultMessage = {
+              message: res.message,
+              type: BaseConstantModel.DANGER_TYPE
+            }
+          }
+        },
+          error => {
+            this.resultMessage = {
+              message: error,
+              type: BaseConstantModel.DANGER_TYPE
+            }
+          }
+        )
+    
+
    
-   }
-   else {
-     this.resultMessage = {
-       message: res.message,
-       type: BaseConstantModel.DANGER_TYPE
-     }
-   }
- },
-   error => {
-     this.resultMessage = {
-       message: error,
-       type: BaseConstantModel.DANGER_TYPE
-     }
-   }
- )
   }
   getprogramDayTaskDetails(){
     switch (this.taskDetails?.huffazTask) {
