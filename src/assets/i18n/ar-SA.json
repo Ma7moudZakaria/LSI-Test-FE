@@ -745,7 +745,7 @@
     "STUDENTS": "الطلاب",
     "NEW_JOIN_REQUESTS": "طلبات الانضمام الجديدة",
     "ACCEPTANCE_REQUESTS": "طلبات مقبولة",
-    "REJECTANCE_REQUESTS": "طلبات مرفض",
+    "REJECTANCE_REQUESTS": "طلبات مرفوضة",
     "JOIN_REQUESTS": "طلبات الانضمام",
     "JOIN_REQUESTS_FOR_PROGRAM": "طلبات الانضمام للبرنامج",
     "CANCEL_REQUESTS": "طلبات الانسحاب",
@@ -784,5 +784,15 @@
     "MEETING":"المقابلة",
     "REJECT":"رفض",
     "ACCEPT":"قبول"
+  },
+  "STUDENT_VACATION": {
+    "NEW_VACATION_REQUESTS": "طلبات الاجازات الجديدة",
+    "ACCEPTANCE_REQUESTS": "طلبات مقبولة",
+    "REJECTANCE_REQUESTS": "طلبات مرفوضة",
+    "VACATION_DATE": "تاريخ الاجازة",
+    "FROM": "من",
+    "TO": "إلى",
+    "VACATION_REASON": "سبب الاجازة",
+    "REJECT_REASON": "سبب الرفض"
   }
 }

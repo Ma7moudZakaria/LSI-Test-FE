@@ -1,1 +1,17 @@
-<p>stu-vacations-request works!</p>
+<div class="row">
+  <div class="col-12">
+  <app-student-vacation-request-tab
+    (advancedSearchEvent)="openStuAdvancedSearchPopup($event)"
+    (itemStuReq)="openRejectRequest($event)"></app-student-vacation-request-tab>
+  </div>
+</div>
+<div class="overlay" *ngIf="openStuRejectOverlay">
+  <app-student-program-vacation-reject [itemStuReq]='itemStuReq' (closeRejectedRequest)="closeRejectedRequest()"></app-student-program-vacation-reject>
+</div>
+
+<div class="overlay" *ngIf="openStuAdvancedSearch">
+  <app-student-program-vacation-advanced-search
+    (closeAdvancedSearch)="closeStuAdvancedSearch($event)"
+    [filter]="filter"
+  ></app-student-program-vacation-advanced-search>
+</div>

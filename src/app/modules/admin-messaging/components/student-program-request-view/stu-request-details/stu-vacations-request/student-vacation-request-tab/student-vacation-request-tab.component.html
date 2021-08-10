@@ -1,0 +1,90 @@
+<div class="container-fluid reuest_container">
+  <div class="col-12  justify-content-end text-right d-flex align-items-center">
+    <app-search-input (searchTerm)=searchByText($event)
+                      [searchKey]='this.studentProgramVacationFilterRequestModel.usrName || ""'></app-search-input>
+    <a class="advanced_search mb-3" (click)="openAdvancedSearch()">بحث متقدم</a>
+  </div>
+
+  <div class="row group_header fix_margin w-100">
+    <div class="item_group" (click)="onPendingChange()"
+         [ngClass]="{ item_group_active: showTap == statusEnum.Pending }">
+      {{'STUDENT_VACATION.NEW_VACATION_REQUESTS' | translate}}
+    </div>
+    <div class="item_group" (click)="onAcceptChange()"
+         [ngClass]="{ item_group_active: showTap == statusEnum.Accept }">
+      {{'STUDENT_VACATION.ACCEPTANCE_REQUESTS' | translate}}
+    </div>
+    <div class="item_group" (click)="onRejectedChange()"
+         [ngClass]="{ item_group_active: showTap == statusEnum.Rejected }">
+      {{'STUDENT_VACATION.REJECTANCE_REQUESTS' | translate}}
+    </div>
+
+
+  </div>
+
+  <div class="row fix_margin w-100 ">
+
+    <div class="col-12 px-2 interTab mb-3 pt-3">
+
+      <div *ngIf='showTap == statusEnum.Pending'>
+        <app-student-program-vacation-grid *ngIf=' studentProgramVacationRequestsList.length > 0'
+                                       [studentVacationItems]='studentProgramVacationRequestsList'
+                                       (itemStuReq)="rejectStuRequestMethod($event)"
+                                       (acceptStudentProgramVacation)='AcceptStudentProgramVacation($event)'
+                                       (acceptAllStudentProgramVacationChecked)='acceptAllStudentVacationRequestsChecked()'
+                                       [numberPerRow]='numberItemsPerRow'
+                                       [vacationTypeEnum]='statusEnum.Pending'
+                                       [totalCount]='totalCount'
+                                       [studentVacationFilterRequestModel]='studentProgramVacationFilterRequestModel'
+                                       (studentVacationFilterEvent)="StudentProgramVacationPendingChangePage($event)"
+        >
+        </app-student-program-vacation-grid>
+        <div *ngIf='studentProgramVacationRequestsList.length === 0'>
+          {{ 'GENERAL.NO_DATA' | translate}}
+        </div>
+      </div>
+
+      <div *ngIf='showTap == statusEnum.Accept'>
+        <app-student-program-vacation-grid *ngIf=' studentProgramVacationRequestsList.length > 0'
+
+                                       [studentVacationItems]='studentProgramVacationRequestsList'
+                                       (acceptStudentProgramVacation)='AcceptStudentProgramVacation($event)'
+                                       (acceptAllStudentProgramVacationChecked)='acceptAllStudentVacationRequestsChecked()'
+                                       [numberPerRow]='numberItemsPerRow'
+                                       [vacationTypeEnum]='statusEnum.Accept'
+                                       [totalCount]='totalCount'
+                                       [studentVacationFilterRequestModel]='studentProgramVacationFilterRequestModel'
+                                       (studentVacationFilterEvent)="StudentProgramVacationAcceptChangePage($event)"
+        >
+        </app-student-program-vacation-grid>
+        <div *ngIf='studentProgramVacationRequestsList.length === 0'>
+          {{ 'GENERAL.NO_DATA' | translate}}
+        </div>
+      </div>
+
+      <div *ngIf='showTap == statusEnum.Rejected'>
+        <app-student-program-vacation-grid *ngIf='studentProgramVacationRequestsList.length > 0'
+                                       [studentVacationItems]='studentProgramVacationRequestsList'
+                                       (acceptStudentProgramVacation)='AcceptStudentProgramVacation($event)'
+                                       (acceptAllStudentProgramVacationChecked)='acceptAllStudentVacationRequestsChecked()'
+                                       [numberPerRow]='numberItemsPerRow'
+                                       [vacationTypeEnum]='statusEnum.Rejected'
+                                       [totalCount]='totalCount'
+                                       [studentVacationFilterRequestModel]='studentProgramVacationFilterRequestModel'
+                                       (studentVacationFilterEvent)="StudentProgramVacationRejectedChangePage($event)"
+        >
+        </app-student-program-vacation-grid>
+        <div *ngIf='studentProgramVacationRequestsList.length === 0'>
+          {{ 'GENERAL.NO_DATA' | translate}}
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
