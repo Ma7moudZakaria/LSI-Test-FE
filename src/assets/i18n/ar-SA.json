@@ -792,6 +792,7 @@
     "VACATION_DATE": "تاريخ الاجازة",
     "FROM": "من",
     "TO": "إلى",
-    "VACATION_REASON": "سبب الاجازة"
+    "VACATION_REASON": "سبب الاجازة",
+    "REJECT_REASON": "سبب الرفض"
   }
 }

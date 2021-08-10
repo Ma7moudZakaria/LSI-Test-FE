@@ -1,8 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IStudentProgramVacationModel} from '../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-model';
-import {StudentProgramSubscriptionStatusEnum} from '../../../core/enums/subscriptionStatusEnum/student-program-subscription-status-enum.enum';
 import {StudentProgramVacationStatusEnum} from '../../../core/enums/StudentProgramVacationStatus/student-program-vacation-status.enum';
-import {IStudentSubscriptionModel} from '../../../core/interfaces/student-program-subscription-interfaces/istudent-subscription-model';
 
 @Component({
   selector: 'app-student-program-vacation-card-admin',
@@ -10,8 +8,8 @@ import {IStudentSubscriptionModel} from '../../../core/interfaces/student-progra
   styleUrls: ['./student-program-vacation-card-admin.component.scss']
 })
 export class StudentProgramVacationCardAdminComponent implements OnInit {
-  @Output() rejecteStuRequest1 = new EventEmitter<IStudentProgramVacationModel>();
-  @Output() acceptStuRequest1 = new EventEmitter<IStudentProgramVacationModel>();
+  @Output() rejectStudentVacationRequest = new EventEmitter<IStudentProgramVacationModel>();
+  @Output() acceptStudentVacationRequest = new EventEmitter<IStudentProgramVacationModel>();
   @Input() typeEnum: StudentProgramVacationStatusEnum = StudentProgramVacationStatusEnum.Pending;
 
   tabTypeSelected = StudentProgramVacationStatusEnum;
@@ -24,10 +22,11 @@ export class StudentProgramVacationCardAdminComponent implements OnInit {
   }
 
   rejectedStudentReq() {
-    this.rejecteStuRequest1.emit(this.studentSubscripModel)
+    this.rejectStudentVacationRequest.emit(this.studentSubscripModel);
+    // console.log("rejected",this.studentSubscripModel )
   }
   acceptStudentReq() {
-    this.acceptStuRequest1.emit(this.studentSubscripModel);
+    this.acceptStudentVacationRequest.emit(this.studentSubscripModel);
   }
 
 }

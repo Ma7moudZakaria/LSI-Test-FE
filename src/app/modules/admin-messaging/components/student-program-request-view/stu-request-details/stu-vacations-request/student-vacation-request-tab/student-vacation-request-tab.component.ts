@@ -1,9 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {ITeacherProgramSubscriptionModel} from '../../../../../../../core/interfaces/teacher-program-subscription-interfaces/iteacher-program-subscription-model';
-import {TeacheProgramSubscriptionStatusEnum} from '../../../../../../../core/enums/teacher-subscription-enums/teache-program-subscription-status-enum.enum';
-import {ProgramSubscriptionUsersEnum} from '../../../../../../../core/enums/program-subscription-users-enum.enum';
 import {TranslateService} from '@ngx-translate/core';
-import {TeacherProgramSubscriptionServicesService} from '../../../../../../../core/services/teacher-program-subscription-services/teacher-program-subscription-services.service';
 import {AlertifyService} from '../../../../../../../core/services/alertify-services/alertify.service';
 import {LanguageEnum} from '../../../../../../../core/enums/language-enum.enum';
 import {BaseResponseModel} from '../../../../../../../core/ng-model/base-response-model';
@@ -19,9 +15,10 @@ import {StudentProgramVacationServicesService} from '../../../../../../../core/s
 })
 export class StudentVacationRequestTabComponent implements OnInit {
 
-   @Output() rejectStudentProgramVacation = new EventEmitter<IStudentProgramVacationModel>();
   @Output() advancedSearchEvent = new EventEmitter<IStudentProgramVacationFilterRequestModel>();
   // @Output() closeAdvancedSearch = new EventEmitter();
+  @Output() itemStuReq = new EventEmitter<IStudentProgramVacationModel>();
+
   studentProgramVacationRequestsList: IStudentProgramVacationModel[] = [];
   studentProgramVacationFilterRequestModel: IStudentProgramVacationFilterRequestModel = { statusNum: StudentProgramVacationStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
   errorMessage?: string;
@@ -50,7 +47,7 @@ export class StudentVacationRequestTabComponent implements OnInit {
     this.programVacationServicesService.getStudentsProgramsVacationFilterAdminView(this.studentProgramVacationFilterRequestModel || {}).subscribe(res => {
         var response = <BaseResponseModel>res;
         if (response.isSuccess) {
-          this.studentProgramVacationRequestsList = res.data as ITeacherProgramSubscriptionModel[];
+          this.studentProgramVacationRequestsList = res.data as IStudentProgramVacationModel[];
           this.studentProgramVacationRequestsList?.forEach(function (item) {
             // item.requestDate = item.requestDate ? new Date(item.requestDate).toDateString(): '';
           });
@@ -89,6 +86,12 @@ export class StudentVacationRequestTabComponent implements OnInit {
     this.closeAvancedSearch();
     this.getStudentProgramVacationRequests();
   }
+
+  rejectStuRequestMethod(event: IStudentProgramVacationModel) {
+    this.itemStuReq.emit(event)
+
+  }
+
 
   AcceptStudentProgramVacation(studentProgramVacationModel: IStudentProgramVacationModel) {
     this.ids?.push(studentProgramVacationModel.id || '');
@@ -139,9 +142,6 @@ export class StudentVacationRequestTabComponent implements OnInit {
 
   }
 
-  // rejectTeacherProgramSubscriptionEvent(teacherSubscripModel: ITeacherProgramSubscriptionModel) {
-  //   this.rejectTeacherProgramSubscription.emit(teacherSubscripModel);
-  // }
 
   StudentProgramVacationPendingChangePage(event: IStudentProgramVacationFilterRequestModel) {
     this.studentProgramVacationFilterRequestModel.statusNum = StudentProgramVacationStatusEnum.Pending;

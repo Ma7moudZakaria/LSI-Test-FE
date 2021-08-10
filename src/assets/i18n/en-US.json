@@ -792,6 +792,11 @@
   "STUDENT_VACATION": {
     "NEW_VACATION_REQUESTS": "New Vacation requests",
     "ACCEPTANCE_REQUESTS": "Admission requests",
-    "REJECTANCE_REQUESTS": "Rejection requests"
+    "REJECTANCE_REQUESTS": "Rejection requests",
+    "VACATION_DATE": "Vacation Date",
+    "FROM": "From",
+    "TO": "To",
+    "VACATION_REASON": "Vacation Reason",
+    "REJECT_REASON": "Rejection Reason"
   }
 }

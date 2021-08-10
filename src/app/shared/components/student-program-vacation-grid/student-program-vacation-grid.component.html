@@ -115,8 +115,8 @@
   <ng-container *ngIf="userMode == StudentProgramVacationUsers.Admin">
     <mat-grid-tile *ngFor='let item of studentVacationItems' >
       <app-student-program-vacation-card-admin [studentSubscripModel]='item'
-                            (rejecteStuRequest1)="rejecteStuRequest($event)"
-                            (acceptStuRequest1)="acceptStuRequest($event)"
+                            (rejectStudentVacationRequest)="rejecteStuRequest($event)"
+                            (acceptStudentVacationRequest)="acceptStuRequest($event)"
                             [typeEnum]='vacationTypeEnum'
       ></app-student-program-vacation-card-admin>
     </mat-grid-tile>

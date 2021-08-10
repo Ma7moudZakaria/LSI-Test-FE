@@ -34,6 +34,8 @@ import { TeacheRejectedComponent } from './components/teacher-program-request-vi
 import { AdvancedSearchTeacherComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-join-request-program/advanced-search/advanced-search.component';
 import { TeacherSystemSubscriptionRejectedComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-join-request/teacher-system-subscription-rejected/teacher-system-subscription-rejected.component';
 import { StudentVacationRequestTabComponent } from './components/student-program-request-view/stu-request-details/stu-vacations-request/student-vacation-request-tab/student-vacation-request-tab.component';
+import { StudentProgramVacationRejectComponent } from './components/student-program-request-view/stu-request-details/stu-vacations-request/student-program-vacation-reject/student-program-vacation-reject.component';
+import { StudentProgramVacationAdvancedSearchComponent } from './components/student-program-request-view/stu-request-details/stu-vacations-request/student-program-vacation-advanced-search/student-program-vacation-advanced-search.component';
 // import { TeacherTabRequestComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-join-request-program/teacher-tab-request/teacher-tab-request.component';
 
 
@@ -52,7 +54,7 @@ import { StudentVacationRequestTabComponent } from './components/student-program
     StuTabRequestComponent, AdvancedSearchComponent, TeacherListRequestComponent,
     TeacherRequestDetailsComponent, TeacherJoinRequestComponent, TeacherJoinRequestProgramComponent, TeacherQuitRequestComponent,
     ChangTimeRequestComponent, TeacherJionProgramTabRequestComponent, StuVacationsRequestComponent, StuMovingRequestComponent
-    , TeacherJionTabRequestComponent, StuRejectedComponent, TeacheRejectedComponent,AdvancedSearchTeacherComponent, TeacherSystemSubscriptionRejectedComponent, StudentVacationRequestTabComponent],
+    , TeacherJionTabRequestComponent, StuRejectedComponent, TeacheRejectedComponent,AdvancedSearchTeacherComponent, TeacherSystemSubscriptionRejectedComponent, StudentVacationRequestTabComponent, StudentProgramVacationRejectComponent, StudentProgramVacationAdvancedSearchComponent],
   imports: [
     CommonModule,
     FormsModule,

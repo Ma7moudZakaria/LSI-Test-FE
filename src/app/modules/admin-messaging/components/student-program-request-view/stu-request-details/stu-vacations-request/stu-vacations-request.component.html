@@ -1,16 +1,17 @@
-<div>
+<div class="row">
+  <div class="col-12">
   <app-student-vacation-request-tab
-    (rejectStudentProgramVacation)="openRejectRequest($event)"
-    (advancedSearchEvent)="openStudentVacationAdvancedSearchPopup($event)"
-  ></app-student-vacation-request-tab>
-
-<!--  <div class="overlay" *ngIf="openStuRejectOverlay">-->
-<!--    <app-teache-rejected  [itemTeacherReq]='itemTeacherReq' (closeRejectedRequest)="closeRejectedRequest()"></app-teache-rejected>-->
-<!--  </div>-->
-<!--  <div class="overlay" *ngIf="openStudentVacationAdvancedSearch">-->
-<!--    <app-advanced-search-teacher (advancedSearchEvent)="teacherAdvancedSearch($event)"-->
-<!--                                 [teacherFilterAdvancedSearch]='teacherFilterAdvancedSearch'-->
-<!--    ></app-advanced-search-teacher>-->
-<!--  </div>-->
+    (advancedSearchEvent)="openStuAdvancedSearchPopup($event)"
+    (itemStuReq)="openRejectRequest($event)"></app-student-vacation-request-tab>
+  </div>
 </div>
-<!--<div class="showoverlay" (click)="closeOverlay()" [ngClass]="{'disableBlock': openStuRejectOverlay }"></div>-->
+<div class="overlay" *ngIf="openStuRejectOverlay">
+  <app-student-program-vacation-reject [itemStuReq]='itemStuReq' (closeRejectedRequest)="closeRejectedRequest()"></app-student-program-vacation-reject>
+</div>
+
+<div class="overlay" *ngIf="openStuAdvancedSearch">
+  <app-student-program-vacation-advanced-search
+    (closeAdvancedSearch)="closeStuAdvancedSearch($event)"
+    [filter]="filter"
+  ></app-student-program-vacation-advanced-search>
+</div>

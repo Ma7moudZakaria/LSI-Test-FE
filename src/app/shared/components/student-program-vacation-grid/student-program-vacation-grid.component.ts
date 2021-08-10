@@ -2,14 +2,10 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IStudentProgramVacationModel} from '../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-model';
 import {StudentProgramVacationStatusEnum} from '../../../core/enums/StudentProgramVacationStatus/student-program-vacation-status.enum';
 import {IStudentProgramVacationFilterRequestModel} from '../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-filter-request-model';
-import {ProgramSubscriptionUsersEnum} from '../../../core/enums/program-subscription-users-enum.enum';
 import {RoleEnum} from '../../../core/enums/role-enum.enum';
-import {IStudentSubscriptionFilterRequestModel} from '../../../core/interfaces/student-program-subscription-interfaces/istudent-subscription-filter-request-model';
 import {LanguageEnum} from '../../../core/enums/language-enum.enum';
-import {IStudentSubscriptionModel} from '../../../core/interfaces/student-program-subscription-interfaces/istudent-subscription-model';
 import {TranslateService} from '@ngx-translate/core';
 import {ExportationService} from '../../../core/services/exportation-services/exportation.service';
-import {StudentProgramSubscriptionStatusEnum} from '../../../core/enums/subscriptionStatusEnum/student-program-subscription-status-enum.enum';
 
 @Component({
   selector: 'app-student-program-vacation-grid',
