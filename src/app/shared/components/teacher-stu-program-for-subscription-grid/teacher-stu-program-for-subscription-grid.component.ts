@@ -36,10 +36,10 @@ export class TeacherStuProgramForSubscriptionGridComponent implements OnInit {
   @Input() studentItems: IProgramsForStudentSubscriptionsModel[] | undefined;
   @Input() totalCountForStudent: number = 0;
   @Input() userMode: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.student;
+  programSubscriptionUsers = ProgramSubscriptionUsersEnum;
 
   orderTypeToggel = 1;
   userOrderTypeToggel = true;
-  programSubscriptionUsers = ProgramSubscriptionUsersEnum;
   page = 1
 
   constructor(

@@ -151,14 +151,15 @@
     <ng-container *ngIf="userMode == programSubscriptionUsers.teacher">
       <mat-grid-tile *ngFor='let item of teacherItems' >
         <app-teacher-student-program-for-subscription class="card"
-                                                      [teachersubscriptionmodel]='item' >
+            [teachersubscriptionmodel]='item' [userMode]="programSubscriptionUsers.teacher" >
         </app-teacher-student-program-for-subscription>
       </mat-grid-tile>
     </ng-container>
     <ng-container *ngIf="userMode == programSubscriptionUsers.student">
       <mat-grid-tile *ngFor='let item of studentItems' >
         <app-teacher-student-program-for-subscription class="card"
-                                                      [studentsubscriptionmodel]='item' >
+                                                      [studentsubscriptionmodel]='item'
+                                                      [userMode]="programSubscriptionUsers.student">
         </app-teacher-student-program-for-subscription>
       </mat-grid-tile>
     </ng-container>
