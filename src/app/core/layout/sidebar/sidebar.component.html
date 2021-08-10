@@ -189,11 +189,19 @@
 
                 </li>
                 <li class="nav-item" routerLinkActive="active">
-                    <a  *ngIf='!roleService.isAdmin() && (roleService.isStudent() || roleService.isTeacher())' 
-                    [routerLink]="['/program-for-subscription']" routerLinkActive="active" class="nav-link">
-                        <img src="../../../../assets/images/sidebar/program-icon.png">
-                        <span class="container__navigation__title">sub-program</span>
-                    </a>
+                    <a  *ngIf='!roleService.isAdmin() && (!roleService.isStudent() || roleService.isTeacher())'
+                             [routerLink]="['/teacher-for-subscription']" routerLinkActive="active" class="nav-link">
+                  <img src="../../../../assets/images/sidebar/program-icon.png">
+                  <span class="container__navigation__title">tea-program</span>
+                </a>
+
+
+                  <a  *ngIf='!roleService.isAdmin() && (roleService.isStudent() || !roleService.isTeacher())'
+                      [routerLink]="['/student-for-subscription']" routerLinkActive="active" class="nav-link">
+                    <img src="../../../../assets/images/sidebar/program-icon.png">
+                    <span class="container__navigation__title">stu-program</span>
+                  </a>
+
                 </li>
                 <!--QUESTION_BANK  -->
                 <li class="nav-item" routerLinkActive="active"> 

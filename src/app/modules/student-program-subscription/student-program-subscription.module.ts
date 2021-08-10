@@ -6,13 +6,15 @@ import { StudentProgramSubViewComponent } from './student-program-sub-view/stude
 import { StudentProgramsComponent } from './student-programs/student-programs.component';
 import { SubscriptionSubmitComponent } from './student-program-sub-view/subscription-submit/subscription-submit.component';
 import { StudentProgramSubDetailsComponent } from './student-program-sub-view/student-program-sub-details/student-program-sub-details.component';
+import {SharedModule} from '../../shared/shared.module';
 
 
 @NgModule({
   declarations: [StudentProgramSubViewComponent, StudentProgramsComponent, SubscriptionSubmitComponent, StudentProgramSubDetailsComponent],
   imports: [
     CommonModule,
-    StudentProgramSubscriptionRoutingModule
+    StudentProgramSubscriptionRoutingModule,
+    SharedModule
   ]
 })
 export class StudentProgramSubscriptionModule { }

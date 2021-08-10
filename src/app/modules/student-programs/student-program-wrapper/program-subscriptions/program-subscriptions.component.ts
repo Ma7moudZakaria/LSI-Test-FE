@@ -15,7 +15,7 @@ import { AlertifyService } from 'src/app/core/services/alertify-services/alertif
 export class ProgramSubscriptionsComponent implements OnInit {
   // programsForStudentSubscriptionsFilterRequestModel: IProgramsForStudentsSubscriptionsFilterRequestModel | undefined;
   programsForStudentSubscriptionsList: IProgramsForStudentSubscriptionsModel[] | undefined;
-  filterRequest: IProgramsForStudentsSubscriptionsFilterRequestModel = { skip: 0, take: 9, sortField: '', sortOrder: 1 }
+  filterRequest: IProgramsForStudentsSubscriptionsFilterRequestModel = { skip: 0, take: 9, sortField: '', sortOrder: 1,page:1 };
 
   errorMessage?: string;
   langEnum = LanguageEnum;
