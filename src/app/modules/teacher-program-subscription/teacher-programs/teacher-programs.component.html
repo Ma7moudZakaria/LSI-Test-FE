@@ -1,12 +1,12 @@
 <div class="container-fluid teacher">
   <div class="row stu-program-subscriptions">
-  <div class="col-12 d-flex justify-content-between align-items-center mt-3 mb-3">
-    <p class="mb-0 head"> برامجنا</p>
-    <img src="../../../../../assets/images/student-program/program-sub/certification.png" >
-  </div>
+    <div class="col-12 d-flex justify-content-between align-items-center mt-3 mb-3">
+      <p class="mb-0 head"> برامجنا</p>
+      <img src="../../../../../assets/images/student-program/program-sub/certification.png" >
+    </div>
 
-  <div class="col-12 d-flex justify-content-between align-items-center">
-    <app-search-input class="w-90"></app-search-input>
+    <div class="col-12 d-flex justify-content-between align-items-center">
+      <app-search-input class="w-90"></app-search-input>
 
   </div>
 </div>
@@ -15,11 +15,14 @@
        
   <div class="col-12 px-2 interTab mb-3 pt-3">
         <app-teacher-stu-program-for-subscription-grid
-        [teacherItems]='programsForTeacherSubscriptionsLst' 
+        [teacherItems]='programsForTeacherSubscriptionsLst'
         [teacherFilterRequestModel] = 'filterRequest'
-        [totalCount]='totalCount' >
+        [totalCount]='totalCount'
+        [userMode]="teacherCard"
+      >
       </app-teacher-stu-program-for-subscription-grid>
 
+    </div>
   </div>
 
 </div>
@@ -33,4 +36,3 @@
 
 
 
-</div>

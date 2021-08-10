@@ -24,7 +24,9 @@ const routes: Routes = [
 
   { path: 'program', loadChildren: () => import('./modules/program/program.module').then(m => m.ProgramModule), canActivate: [AuthGuard] },
   { path: 'student-programs', loadChildren: () => import('./modules/student-programs/student-programs.module').then(m => m.StudentProgramsModule), canActivate: [AuthGuard] },
-  { path: 'program-for-subscription', loadChildren: () => import('./modules/teacher-program-subscription/teacher-program-subscription.module').then(m => m.TeacherProgramSubscriptionModule), canActivate: [AuthGuard] },
+  { path: 'teacher-for-subscription', loadChildren: () => import('./modules/teacher-program-subscription/teacher-program-subscription.module').then(m => m.TeacherProgramSubscriptionModule), canActivate: [AuthGuard] },
+  { path: 'student-for-subscription', loadChildren: () => import('./modules/student-program-subscription/student-program-subscription.module').then(m => m.StudentProgramSubscriptionModule), canActivate: [AuthGuard] },
+
 ];
 
 @NgModule({

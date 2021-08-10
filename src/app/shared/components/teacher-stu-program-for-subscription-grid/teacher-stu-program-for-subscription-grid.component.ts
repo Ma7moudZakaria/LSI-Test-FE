@@ -9,6 +9,8 @@ import { ExportationService } from '../../../core/services/exportation-services/
 import { IProgramsForTeachersSubscriptionsFilterRequestModel } from '../../../core/interfaces/teacher-program-subscription-interfaces/iprograms-for-teachers-subscriptions-filter-request-model';
 import { IProgramsForTeacherSubscriptionsModel } from '../../../core/interfaces/teacher-program-subscription-interfaces/iprograms-for-teacher-subscriptions-model';
 import { LanguageEnum } from '../../../core/enums/language-enum.enum';
+import {IProgramsForStudentsSubscriptionsFilterRequestModel} from '../../../core/interfaces/student-program-subscription-interfaces/iprograms-for-students-subscriptions-filter-request-model';
+import {IProgramsForStudentSubscriptionsModel} from '../../../core/interfaces/student-program-subscription-interfaces/iprograms-for-student-subscriptions-model';
 
 @Component({
   selector: 'app-teacher-stu-program-for-subscription-grid',
@@ -17,13 +19,23 @@ import { LanguageEnum } from '../../../core/enums/language-enum.enum';
 })
 export class TeacherStuProgramForSubscriptionGridComponent implements OnInit {
 
-  @Output() teacherFilterEvent = new EventEmitter<IProgramsForTeachersSubscriptionsFilterRequestModel>();
-  @Input() teacherFilterRequestModel: IProgramsForTeachersSubscriptionsFilterRequestModel =
+
+  //output for teacher
+  @Output() teacherFilterEvent = new EventEmitter<IProgramsForStudentsSubscriptionsFilterRequestModel>();
+  @Input() teacherFilterRequestModel: IProgramsForStudentsSubscriptionsFilterRequestModel =
     { skip: 0, take: 9, page: 1 };
   @Input() numberPerRow: number = 3;
-  @Input() teacherItems: IProgramsForTeacherSubscriptionsModel[] | undefined
+  @Input() teacherItems: IProgramsForTeacherSubscriptionsModel[] | undefined;
   @Input() totalCount: number = 0;
 
+  //output for student
+  @Output() studentFilterEvent = new EventEmitter<IProgramsForStudentsSubscriptionsFilterRequestModel>();
+  @Input() studentFilterRequestModel: IProgramsForStudentsSubscriptionsFilterRequestModel =
+    { skip: 0, take: 9, page: 1 };
+  @Input() numberPerRowForStudent: number = 3;
+  @Input() studentItems: IProgramsForStudentSubscriptionsModel[] | undefined;
+  @Input() totalCountForStudent: number = 0;
+  @Input() userMode: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.student;
 
   orderTypeToggel = 1;
   userOrderTypeToggel = true;
@@ -36,7 +48,9 @@ export class TeacherStuProgramForSubscriptionGridComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log("userMode",this.userMode);
     this.teacherFilterRequestModel.sortField = 'progName';
+    this.studentFilterRequestModel.sortField = 'progName';
 
   }
   // tslint:disable-next-line:typedef
@@ -69,6 +83,39 @@ export class TeacherStuProgramForSubscriptionGridComponent implements OnInit {
   onTeacherPageChange() {
     //   this.teacherFilterRequestModel.skip = (this.teacherFilterRequestModel.page - 1) * (this.teacherFilterRequestModel.take || 0);
     //   this.teacherFilterEvent.emit(this.teacherFilterRequestModel);
+
+  }
+
+  //student
+  sortStudentByName() {
+    this.studentFilterRequestModel.sortField = 'progName';
+    this.studentFilterRequestModel.sortOrder = 1;
+    this.teacherFilterEvent.emit(this.studentFilterRequestModel);
+  }
+
+
+  sortStudentRequestDate() {
+    this.studentFilterRequestModel.sortField = 'progcreation';
+    this.studentFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
+    this.teacherFilterEvent.emit(this.studentFilterRequestModel);
+  }
+
+  sortStudentByNameOrderType() {
+    if ((this.studentFilterRequestModel.sortField === 'progcreation') && this.studentFilterRequestModel.sortOrder == 1) { return 'asend' }
+    if ((this.studentFilterRequestModel.sortField === 'progcreation') && this.studentFilterRequestModel.sortOrder == -1) { return 'desend' }
+
+    return '';
+  }
+
+  sortStudentRequestDateOrderType() {
+    if (this.studentFilterRequestModel.sortField === 'progcreation' && this.studentFilterRequestModel.sortOrder == 1) { return 'asend' }
+    if (this.studentFilterRequestModel.sortField === 'progcreation' && this.studentFilterRequestModel.sortOrder == -1) { return 'desend' }
+
+    return '';
+  }
+  onStudentPageChange() {
+    //   this.studentFilterRequestModel.skip = (this.studentFilterRequestModel.page - 1) * (this.studentFilterRequestModel.take || 0);
+    //   this.teacherFilterEvent.emit(this.studentFilterRequestModel);
 
   }
 }

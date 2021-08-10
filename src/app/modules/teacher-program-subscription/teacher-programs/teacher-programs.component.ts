@@ -6,6 +6,7 @@ import { IProgramsForTeacherSubscriptionsModel } from 'src/app/core/interfaces/t
 import { IProgramsForTeachersSubscriptionsFilterRequestModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iprograms-for-teachers-subscriptions-filter-request-model';
 import { TeacherProgramSubscriptionServicesService } from 'src/app/core/services/teacher-program-subscription-services/teacher-program-subscription-services.service';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
+import {ProgramSubscriptionUsersEnum} from '../../../core/enums/program-subscription-users-enum.enum';
 
 @Component({
   selector: 'app-teacher-programs',
@@ -19,6 +20,7 @@ export class TeacherProgramsComponent implements OnInit {
   totalCount = 0;
   errorMessage?: string;
   langEnum = LanguageEnum;
+  teacherCard: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.teacher;
 
   constructor(
     public translate: TranslateService, private alertify: AlertifyService,
@@ -37,6 +39,7 @@ export class TeacherProgramsComponent implements OnInit {
     this.teacherProgramSubscriptionServicesService.getProgramsForTeacherssSubscriptions(this.filterRequest || {}).subscribe(res => {
       // var response = <BaseResponseModel>res;
       if (res.isSuccess) {
+        console.log("res", res);
         this.programsForTeacherSubscriptionsLst = res.data as IProgramsForTeacherSubscriptionsModel[];
         console.log("programsForTeacherSubscriptionsLst ", this.programsForTeacherSubscriptionsLst)
 
