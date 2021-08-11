@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-teacher-program-sub-view',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeacherProgramSubViewComponent implements OnInit {
 
-  constructor() { }
+  ShowSubscription :boolean = false;
+  showAddReplyOverlay = false;
+
+
+  showSubscrption( event :boolean){
+    this.ShowSubscription = event;
+    this.showAddReplyOverlay = !this.showAddReplyOverlay;
+  }
+  closeOverlay( event :boolean){
+    this.ShowSubscription = event;
+    this.showAddReplyOverlay = !this.showAddReplyOverlay;
+    this.router.navigateByUrl('/dashboard');
+  }
+
+  constructor(private router: Router,) { }
 
   ngOnInit(): void {
+
   }
 
 }
