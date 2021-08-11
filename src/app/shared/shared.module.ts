@@ -118,26 +118,7 @@ import { StudentProgramVacationCardAdminComponent } from './components/student-p
     MatIconModule, FormsModule, MatCheckboxModule, MatRadioModule, MatGridListModule,
     NgbModule, MatAutocompleteModule, NgbRatingModule, MatTooltipModule, PdfViewerModule
   ],
-  // exports: [
-  //   MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule, Ng2TelInputModule,
-  //   MatExpansionModule, MatSelectModule, DragDropModule, CustomeCardComponent, CustomAccordionComponent,
-  //   ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent,
-  //   UsersCounterComponent, KhatmeenStudentsComponent, StudentNumbersComponent, StudentsRatingComponent,
-  //   CardStudentScientificProblemComponent, QuestionTemplateComponent, VoiceRecordingComponent, MatGridListModule,
-  //   ScientificProblemsGridComponent, CardAdminScientificProblemComponent, NotAuthComponent, GroupUsersCardComponent,
-  //   InputSearchListComponent, NgbRatingModule, CardNotifacationsComponent, ProgramDayTaskHearingComponent,
-  //   NgbModule, ProgramDayTaskReadExplanationComponent, ProgramDayTaskRepetitionComponent,
-  //   ProgramDayTaskMemorizeComponent, ProgramDayTaskLinkingComponent, ProgramDayTaskVideoComponent, ProgramDayTaskDailyTestComponent,
-  //   ProgramDayTaskEncouragementLetterComponent, ProgramDayTaskReviewComponent, ProgramDayTaskRecitationComponent,
-  //   ProgramDayTaskRecitationStudentsComponent, ProgramDayTaskTestPhasedComponent,
-  //   ProgramDayTaskTasmeaComponent, CardFeelingsComponent, MatTooltipModule,
-  //   SettingAgeComponent, SettingDegreeLastProgramComponent, SettingLastProgramComponent, SettingQualificationsComponent,
-  //   SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent,
-  //   SettingAcceptComponent, StuCardRequestComponent, TeacherCardRequestComponent, ProgramSubscriptionGridComponent,
-  //   TeacherStuProgramForSubscriptionGridComponent, TeacherStudentProgramForSubscriptionComponent
 
-
-  // ]
   exports: [
     MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule, Ng2TelInputModule,
     MatExpansionModule, MatSelectModule, DragDropModule, CustomeCardComponent, CustomAccordionComponent,
