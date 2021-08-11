@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IProgramSubscriptionDetails } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iprogram-subscription-details';
 import { IProgramsForTeacherSubscriptionsModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iprograms-for-teacher-subscriptions-model';
+import { ITeacherSubmitSubscriptinoModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iteacher-submit-subscriptino-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { TeacherProgramSubscriptionServicesService } from 'src/app/core/services/teacher-program-subscription-services/teacher-program-subscription-services.service';
 
 @Component({
@@ -16,10 +18,12 @@ export class TeacherProgramSubDetailsComponent implements OnInit {
   errorMessage?: string;
   resMessage: BaseMessageModel = {};
   programsForSubscriptionsDetails: IProgramSubscriptionDetails | undefined;
+  submitSubscritionModel: ITeacherSubmitSubscriptinoModel = [];
+
   // test
   constructor(
     private teacherProgramSubscriptionServicesService: TeacherProgramSubscriptionServicesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute, private alertify: AlertifyService
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +36,40 @@ export class TeacherProgramSubDetailsComponent implements OnInit {
         if (res.isSuccess) {
           this.programsForSubscriptionsDetails = res.data as IProgramSubscriptionDetails;
           console.log("programsForSubscriptionsDetails" + this.programsForSubscriptionsDetails)
+        }
+        else {
+          this.resMessage = {
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
+          }
+        }
+      }, error => {
+        this.resMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      })
+  }
+
+  disabledCheck: boolean = true
+  checkConditions(event: any) {
+
+    if (event.checked) {
+      this.disabledCheck = false
+    }
+    else {
+      this.disabledCheck = true
+
+    }
+
+
+  }
+  submetSubscriptionProgramDetails() {
+    this.teacherProgramSubscriptionServicesService.submitTeacherSubscription(this.submitSubscritionModel).subscribe(
+      res => {
+        if (res.isSuccess) {
+          // this.programsForSubscriptionsDetails = res.data as IProgramSubscriptionDetails;
+          this.alertify.success(res.message || '');
         }
         else {
           this.resMessage = {

@@ -102,15 +102,16 @@
   
     <div class="detailsFooter">
       <div>
-        <form class="d-flex align-items-center justify-content-end">
+        <div class="d-flex align-items-center justify-content-end">
   
-          <mat-checkbox  id="subscribe" [checked]="true" class="example-margin ">
+          <mat-checkbox  id="subscribe" (change)='checkConditions($event)'  class="example-margin ">
   
           </mat-checkbox>
           <label for="subscribe" class="detailsFooter__label">موافق علي شروط البرنامج</label>
   
-          <button class=" save-btn">إشتراك</button>
-        </form>
+          <button class="save-btn" [ngClass]="{'disabledCheck':disabledCheck }"
+          (click)="submetSubscriptionProgramDetails()" >إشتراك</button>
+        </div>
   
       </div>
     </div>
