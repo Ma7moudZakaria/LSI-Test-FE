@@ -27,7 +27,7 @@
             <label  class="label"> {{"PROGRAM_BATCHES.FROM_DATE"|translate}} </label>
           <app-milady-hijri-calendar  [editcalenderType]="calenderType" (sendDate)="updateStartDate($event)" 
           (keypress)="$event.preventDefault()"
-          [hijri]="false" [milady]="true">
+          [hijri]="true" [milady]="false">
         </app-milady-hijri-calendar>
 
         <div *ngIf="!f.batchSubscriptionStartDate?.errors && (f.batchSubscriptionStartDate.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
@@ -42,7 +42,7 @@
             <label  class="label"> {{"PROGRAM_BATCHES.TO_DATE"|translate}} </label>
             <app-milady-hijri-calendar  [editcalenderType]="calenderType" (sendDate)="updateEndDate($event)" 
            (keypress)="$event.preventDefault()"
-           [hijri]="false" [milady]="true">
+           [hijri]="true" [milady]="false">
         </app-milady-hijri-calendar>
 
         <div *ngIf="!f.batchSubscriptionEndDate?.errors && (f.batchSubscriptionEndDate.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
