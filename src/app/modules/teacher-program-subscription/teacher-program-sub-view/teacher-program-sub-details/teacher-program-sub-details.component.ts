@@ -1,5 +1,5 @@
 import { Iuser } from './../../../../core/interfaces/user-interfaces/iuser';
-import { Component, OnInit } from '@angular/core';
+import {Component,EventEmitter, OnInit, Output} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IProgramSubscriptionDetails } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iprogram-subscription-details';
 import { IProgramsForTeacherSubscriptionsModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iprograms-for-teacher-subscriptions-model';
@@ -15,12 +15,14 @@ import { TeacherProgramSubscriptionServicesService } from 'src/app/core/services
   styleUrls: ['./teacher-program-sub-details.component.scss']
 })
 export class TeacherProgramSubDetailsComponent implements OnInit {
+
+  @Output() ShowSubscription = new EventEmitter<boolean>();
   programSubscriptionId: string = "";
   errorMessage?: string;
   resMessage: BaseMessageModel = {};
   programsForSubscriptionsDetails: IProgramSubscriptionDetails | undefined;
   submitSubscritionModel = {} as ITeacherSubmitSubscriptinoModel;
-  disabledCheck: boolean = true
+  disabledCheck: boolean = true;
   currentUser: Iuser | undefined;
 
   constructor(
@@ -29,7 +31,7 @@ export class TeacherProgramSubDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.programSubscriptionId = this.route.snapshot.params.id
+    this.programSubscriptionId = this.route.snapshot.params.id;
     this.currentUser = JSON.parse(localStorage.getItem('user') || '{}') as Iuser;
     this.getSubscriptionProgramDetails()
   }
@@ -69,7 +71,6 @@ export class TeacherProgramSubDetailsComponent implements OnInit {
 
   submetSubscriptionProgramDetails() {
 
-    // console.log('this.submitSubscritionModel', this.submitSubscritionModel);
 
     this.submitSubscritionModel.batId = this.programsForSubscriptionsDetails?.batId || '';
     this.submitSubscritionModel.usrId = this.currentUser?.id || '';
@@ -78,8 +79,8 @@ export class TeacherProgramSubDetailsComponent implements OnInit {
     this.teacherProgramSubscriptionServicesService.submitTeacherSubscription(this.submitSubscritionModel).subscribe(
       res => {
         if (res.isSuccess) {
-          // this.alertify.success(res.message || '');
-          // console.log('this.submitSubscritionModel', this.submitSubscritionModel)
+          this.ShowSubscription.emit(true);
+
         }
         else {
           this.resMessage = {
@@ -94,5 +95,7 @@ export class TeacherProgramSubDetailsComponent implements OnInit {
         }
       })
   }
+
+
 }
 
