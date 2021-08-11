@@ -109,6 +109,27 @@ export class TeacherDropOutRequestAdminGridComponent implements OnInit {
     return '';
   }
 
+  sortBatchByName() {
+    this.teacherDropOutRequestFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'batchNameAr' : 'BatchNameAr';
+    this.teacherDropOutRequestFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
+    this.teacherDropOutRequestFilterEvent.emit(this.teacherDropOutRequestFilterRequestModel);
+  }
+
+
+  sortBatchOrderType() {
+    if ((this.teacherDropOutRequestFilterRequestModel.sortField === "batchNameAr" || this.teacherDropOutRequestFilterRequestModel.sortField === "BatchNameEn") && this.teacherDropOutRequestFilterRequestModel.sortOrder == 1) { return 'asend' }
+    if ((this.teacherDropOutRequestFilterRequestModel.sortField === "batchNameAr" || this.teacherDropOutRequestFilterRequestModel.sortField === "BatchNameEn") && this.teacherDropOutRequestFilterRequestModel.sortOrder == -1) { return 'desend' }
+
+    return '';
+  }
+
+  sortBatchByNameOrderType() {
+    if ((this.teacherDropOutRequestFilterRequestModel.sortField === "batchNameAr" || this.teacherDropOutRequestFilterRequestModel.sortField === "BatchNameEn") && this.teacherDropOutRequestFilterRequestModel.sortOrder == 1) { return 'asend' }
+    if ((this.teacherDropOutRequestFilterRequestModel.sortField === "batchNameAr" || this.teacherDropOutRequestFilterRequestModel.sortField === "BatchNameEn") && this.teacherDropOutRequestFilterRequestModel.sortOrder == -1) { return 'desend' }
+
+    return '';
+  }
+
   enableTeacherSelectOperations(): boolean {
     return this.teacherDropOutRequestItems.filter(t => t.checked).length > 0 || this.allSelected;
   }
