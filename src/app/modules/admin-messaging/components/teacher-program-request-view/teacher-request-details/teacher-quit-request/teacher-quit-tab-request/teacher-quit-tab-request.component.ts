@@ -3,8 +3,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { DropOutRoleEnum } from 'src/app/core/enums/drop-out-request-enums/drop-out-status.enum';
 import { TeacherDropOutRequestStatusEnum } from 'src/app/core/enums/drop-out-request-enums/teacher-drop-out-request-status.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
-import { ITeacherDropOutRequestAdminViewModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-admin-view-model';
 import { ITeacherDropOutRequestAdvFilterAdminViewRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-adv-filter-admin-view-request-model';
+import { ITeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
@@ -19,11 +19,11 @@ import { TeacherDropOutRequestService } from 'src/app/core/services/teacher-drop
 })
 export class TeacherQuitTabRequestComponent implements OnInit {
   
-  @Output() rejectTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestAdminViewModel>();
+  @Output() rejectTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
   @Output() advancedSearchEvent = new EventEmitter<ITeacherDropOutRequestAdvFilterAdminViewRequestModel>();
-  @Output() itemTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestAdminViewModel>();
+  @Output() itemTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
   // @Output() closeAdvancedSearch = new EventEmitter();
-  teacherDropOutRequestList: ITeacherDropOutRequestAdminViewModel[] = [];
+  teacherDropOutRequestList: ITeacherDropOutRequestModel[] = [];
   teacherDropOutRequestFilterRequestModel: ITeacherDropOutRequestAdvFilterAdminViewRequestModel = { statusNum: TeacherDropOutRequestStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
   errorMessage?: string;
   totalCount = 0;
@@ -50,18 +50,25 @@ export class TeacherQuitTabRequestComponent implements OnInit {
   }
 
   getTeacherDropOutRequests() {
-    this.teacherDropOutRequestService.teacherDropOutRequestAdvFilterAdminView(this.teacherDropOutRequestFilterRequestModel || {}).subscribe(res => {
+    this.teacherDropOutRequestService.teacherDropOutRequestAdvFilterAdminView(this.teacherDropOutRequestFilterRequestModel).subscribe(res => {
       var response = <BaseResponseModel>res;
       if (response.isSuccess) {
-        this.teacherDropOutRequestList = res.data as ITeacherDropOutRequestAdminViewModel[];
-        this.teacherDropOutRequestList?.forEach(function (item) {
-        });
+        this.teacherDropOutRequestList = res.data as ITeacherDropOutRequestModel[];
         this.totalCount = res.count ? res.count : 0;
         if (this.teacherDropOutRequestFilterRequestModel.skip > 0 && (!this.teacherDropOutRequestList || this.teacherDropOutRequestList.length === 0)) {
           this.teacherDropOutRequestFilterRequestModel.page -= 1;
           this.teacherDropOutRequestFilterRequestModel.skip = (this.teacherDropOutRequestFilterRequestModel.page - 1) * this.teacherDropOutRequestFilterRequestModel.take;
           this.getTeacherDropOutRequests();
         }
+
+        // this.teacherDropOutRequestList?.forEach(function (item) {
+        // });
+        // this.totalCount = res.count ? res.count : 0;
+        // if (this.teacherDropOutRequestFilterRequestModel.skip > 0 && (!this.teacherDropOutRequestList || this.teacherDropOutRequestList.length === 0)) {
+        //   this.teacherDropOutRequestFilterRequestModel.page -= 1;
+        //   this.teacherDropOutRequestFilterRequestModel.skip = (this.teacherDropOutRequestFilterRequestModel.page - 1) * this.teacherDropOutRequestFilterRequestModel.take;
+        //   this.getTeacherDropOutRequests();
+        // }
       }
       else {
         this.errorMessage = response.message;
@@ -107,7 +114,7 @@ export class TeacherQuitTabRequestComponent implements OnInit {
     // this.closeAdvancedSearch.emit()
   }
 
-  rejectTeacherTeacherDropOutRequest(event: ITeacherDropOutRequestAdminViewModel) {
+  rejectTeacherTeacherDropOutRequest(event: ITeacherDropOutRequestModel) {
     this.itemTeacherDropOutRequest.emit(event)
     this.getTeacherDropOutRequests();
   }
@@ -131,16 +138,36 @@ export class TeacherQuitTabRequestComponent implements OnInit {
 
   }
 
+  teacherDropOutRequestPendingChangePage(event: ITeacherDropOutRequestAdvFilterAdminViewRequestModel) {
+    this.teacherDropOutRequestFilterRequestModel.statusNum = TeacherDropOutRequestStatusEnum.Pending;
+    this.teacherDropOutRequestFilterRequestModel = event;
+    console.log("this.teacherDropOutRequestFilterRequestModel ==========================>" , this.teacherDropOutRequestFilterRequestModel)
+    this.getTeacherDropOutRequests();
+  }
+
+  teacherDropOutRequestAcceptChangePage(event: ITeacherDropOutRequestAdvFilterAdminViewRequestModel) {
+    this.teacherDropOutRequestFilterRequestModel.statusNum = TeacherDropOutRequestStatusEnum.Accept;
+    this.teacherDropOutRequestFilterRequestModel = event;
+    console.log("this.teacherDropOutRequestFilterRequestModel ==========================>" , this.teacherDropOutRequestFilterRequestModel)
+    this.getTeacherDropOutRequests();
+  }
+
+  teacherDropOutRequestRejectChangePage(event: ITeacherDropOutRequestAdvFilterAdminViewRequestModel) {
+    this.teacherDropOutRequestFilterRequestModel.statusNum = TeacherDropOutRequestStatusEnum.Rejected;
+    this.teacherDropOutRequestFilterRequestModel = event;
+    console.log("this.teacherDropOutRequestFilterRequestModel ==========================>" , this.teacherDropOutRequestFilterRequestModel)
+    this.getTeacherDropOutRequests();
+  }
   
-  rejectTeacherTeacherDropOutRequestRequestMethod(event: ITeacherDropOutRequestAdminViewModel) {
+  rejectTeacherTeacherDropOutRequestRequestMethod(event: ITeacherDropOutRequestModel) {
     this.itemTeacherDropOutRequest.emit(event);
   }
 
-  rejectTeacherDropOutRequestEvent(teacherSubscripModel: ITeacherDropOutRequestAdminViewModel) {
+  rejectTeacherDropOutRequestEvent(teacherSubscripModel: ITeacherDropOutRequestModel) {
     this.rejectTeacherDropOutRequest.emit(teacherSubscripModel);
   }
 
-  acceptTeacherDropOutRequest(teacherSubscripModel: ITeacherDropOutRequestAdminViewModel) {
+  acceptTeacherDropOutRequest(teacherSubscripModel: ITeacherDropOutRequestModel) {
     this.ids?.push(teacherSubscripModel.id || '');
     this.teacherDropOutRequestService.teacherDropOutRequestsAcceptance(this.ids).subscribe(res => {
       var response = <BaseResponseModel>res;

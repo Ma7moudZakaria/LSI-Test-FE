@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { DropOutRoleEnum } from 'src/app/core/enums/drop-out-request-enums/drop-out-status.enum';
 import { TeacherDropOutRequestStatusEnum } from 'src/app/core/enums/drop-out-request-enums/teacher-drop-out-request-status.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
-import { ITeacherDropOutRequestAdminViewModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-admin-view-model';
+import { ITeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-model';
 
 
 @Component({
@@ -12,10 +13,16 @@ import { ITeacherDropOutRequestAdminViewModel } from 'src/app/core/interfaces/te
 })
 export class TeacherDropOutRequestAdminCardComponent implements OnInit {
 
-  @Output() rejectTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestAdminViewModel>();
-  @Output() acceptTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestAdminViewModel>();
+  @Output() rejectTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
+  @Output() acceptTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
+  @Output() deleteTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
+  // @Output() editTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestAdminViewModel>();
 
-  @Input() teacherDropOutRequestModel: ITeacherDropOutRequestAdminViewModel = { totalRows : 0};
+
+  @Input() userMode : DropOutRoleEnum | undefined ;
+  userRoleMode = DropOutRoleEnum;
+
+  @Input() teacherDropOutRequestModel: ITeacherDropOutRequestModel = { totalRows : 0};
 
   @Input() typeEnum: TeacherDropOutRequestStatusEnum = TeacherDropOutRequestStatusEnum.Pending;
   typeDropOutRequestEnum = TeacherDropOutRequestStatusEnum;
@@ -23,10 +30,13 @@ export class TeacherDropOutRequestAdminCardComponent implements OnInit {
   teacherDropOutRequestIds:string[] | undefined
   langEnum = LanguageEnum;
   requestDate:string | undefined;
+  teacherDropOutRequestStatus = TeacherDropOutRequestStatusEnum;
+
 
   constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
+    console.log("teacherDropOutRequestModel =======>" , this.teacherDropOutRequestModel)
 
     if (this.teacherDropOutRequestModel?.requestDate) {
       let requestDateValue = new Date(this.teacherDropOutRequestModel.requestDate || '');
@@ -39,11 +49,15 @@ export class TeacherDropOutRequestAdminCardComponent implements OnInit {
     }
   } 
 
-  rejectTeacherDropOutRequestEvent(teacherDropOutRequestAdminViewModel:ITeacherDropOutRequestAdminViewModel){
+  rejectTeacherDropOutRequestEvent(teacherDropOutRequestAdminViewModel:ITeacherDropOutRequestModel){
     this.rejectTeacherDropOutRequest.emit(teacherDropOutRequestAdminViewModel);
   }
   
   acceptTeacherDropOutRequestEvent(){
     this.acceptTeacherDropOutRequest.emit(this.teacherDropOutRequestModel);
+  }
+
+  deleteTeacherDropOutRequestEvent(teacherDropOutRequestAdminViewModel:ITeacherDropOutRequestModel){
+    this.deleteTeacherDropOutRequest.emit(teacherDropOutRequestAdminViewModel);
   }
 }

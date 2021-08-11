@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TeacherDropOutRequestStatusEnum } from 'src/app/core/enums/drop-out-request-enums/teacher-drop-out-request-status.enum';
-import { ITeacherDropOutRequestAdminViewModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-admin-view-model';
 import { ITeacherDropOutRequestAdvFilterAdminViewRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-adv-filter-admin-view-request-model';
+import { ITeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-model';
 import { TeacherQuitTabRequestComponent } from './teacher-quit-tab-request/teacher-quit-tab-request.component';
 
 @Component({
@@ -15,7 +15,7 @@ export class TeacherQuitRequestComponent implements OnInit {
   @ViewChild(TeacherQuitTabRequestComponent) teacherQuitTabRequestComponent: TeacherQuitTabRequestComponent | undefined;
   
   filter: ITeacherDropOutRequestAdvFilterAdminViewRequestModel = { statusNum: TeacherDropOutRequestStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
-  itemTeacherDropOutRequest: ITeacherDropOutRequestAdminViewModel = {};
+  itemTeacherDropOutRequest: ITeacherDropOutRequestModel = {};
   openTeacherDropOutRequestRejectOverlay: boolean = false;
   openTeacherDropOutRequestAdvancedSearch: boolean = false;
 
@@ -24,7 +24,7 @@ export class TeacherQuitRequestComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openRejectRequest(event: ITeacherDropOutRequestAdminViewModel) {
+  openRejectRequest(event: ITeacherDropOutRequestModel) {
     this.itemTeacherDropOutRequest = event;
     this.openTeacherDropOutRequestRejectOverlay = !this.openTeacherDropOutRequestRejectOverlay;
 

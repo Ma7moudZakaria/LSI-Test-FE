@@ -6,10 +6,13 @@ import { IProgramFilterAdvancedRequest } from 'src/app/core/interfaces/programs-
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
 import { ICrateTeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/create-teacher-drop-out-request-model';
 import { ITeacherDropOutRequestAdvFilterTeacherViewRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-adv-filter-teacher-view-request-model';
+import { ITeacherMyProgramsListModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iteacher-my-programs-list-model';
+import { ITeacherMyProgramsRequestModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iteacher-my-programs-request-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
 import { TeacherDropOutRequestService } from 'src/app/core/services/teacher-drop-out-request-services/teacher-drop-out-request.service';
+import { TeacherProgramSubscriptionServicesService } from 'src/app/core/services/teacher-program-subscription-services/teacher-program-subscription-services.service';
 
 @Component({
   selector: 'app-add-drop-out-request',
@@ -18,17 +21,16 @@ import { TeacherDropOutRequestService } from 'src/app/core/services/teacher-drop
 })
 export class AddDropOutRequestComponent implements OnInit {
 
-  @Output() closeAdvancedSearch = new EventEmitter<ITeacherDropOutRequestAdvFilterTeacherViewRequestModel>();
+  @Output() closeCreateDropOutOverlay = new EventEmitter<ICrateTeacherDropOutRequestModel>();
   @Input() filter = {} as ICrateTeacherDropOutRequestModel;
-  advancedSearchInputs = {} as ITeacherDropOutRequestAdvFilterTeacherViewRequestModel;
   resultMessage: BaseMessageModel = {};
-  ProgramsList: IprogramsModel[] = [];
-  programsbyAdvancedFilter: IProgramFilterAdvancedRequest = { skip: 0, take: 2147483647 };
+  ProgramsList: ITeacherMyProgramsListModel[] = [];
+  programsbyAdvancedFilter: ITeacherMyProgramsRequestModel = {};
   currentUser: IUser | undefined;
   
   
   constructor(
-    private programService: ProgramService, 
+    private programSubscriptionService: TeacherProgramSubscriptionServicesService, 
     private teacherDropOutRequestService: TeacherDropOutRequestService,
     public translate: TranslateService,
   ) { }
@@ -38,22 +40,26 @@ export class AddDropOutRequestComponent implements OnInit {
     this.getAllProgram();
   }
 
-  closeStuAdvancedSearch() {
-    // this.filter.usrId = this.currentUser?.id;
-    // this.filter.batId = '';
-    // this.filter.requestNum = undefined
-    // this.filter.from = undefined
-    // this.filter.to = undefined
-    // this.filter.skip = 0
-    // this.filter.take = 9
-    // this.filter.page = 1
-    // this.filter.sortField = '';
-    // this.closeAdvancedSearch.emit(this.filter)
+  closeCreateTeacherDropOutRequest() {
+    this.filter.usrId = this.currentUser?.id;
+    this.filter.batId = undefined;
+    this.filter.rejectReason = undefined;
+    this.closeCreateDropOutOverlay.emit(this.filter);
   }
 
   sendDropOutRequest() {
     this.teacherDropOutRequestService.createTeacherDropOutRequest(this.filter || {}).subscribe(res => {
-
+      if (res.isSuccess) {
+       // this.closeCreateDropOutOverlay.emit();
+        this.closeCreateTeacherDropOutRequest();
+      }
+      else{
+        this.resultMessage = {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+      
     }, error => {
       this.resultMessage = {
         message: error,
@@ -65,10 +71,13 @@ export class AddDropOutRequestComponent implements OnInit {
 
 
   getAllProgram() {
-    this.programService.getProgramAdvancedFilter(this.programsbyAdvancedFilter || {}).subscribe(res => {
+    this.programsbyAdvancedFilter = { teacherId : this.currentUser?.id };
+    this.programSubscriptionService.getTeacherPrograms(this.programsbyAdvancedFilter || {}).subscribe(res => {
 
       if (res.isSuccess) {
         this.ProgramsList = res.data;
+
+        console.log("this.ProgramsList =====> ", this.ProgramsList)
       }
       else {
 

@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IRejectTeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/reject-teacher-drop-out-request-model';
-import { ITeacherDropOutRequestAdminViewModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-admin-view-model';
+import { ITeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
@@ -15,9 +15,9 @@ import { TeacherDropOutRequestService } from 'src/app/core/services/teacher-drop
 })
 export class TeacherDropOutRequestRejectedComponent implements OnInit {
 
-  @Output() closeRejectedRequest = new EventEmitter<ITeacherDropOutRequestAdminViewModel>();
+  @Output() closeRejectedRequest = new EventEmitter<ITeacherDropOutRequestModel>();
 
-  @Input() itemTeacherDropOutRequest: ITeacherDropOutRequestAdminViewModel = {};
+  @Input() itemTeacherDropOutRequest: ITeacherDropOutRequestModel = {};
 
   rejectRequest: IRejectTeacherDropOutRequestModel = {};
   resultMessage: BaseMessageModel = {};

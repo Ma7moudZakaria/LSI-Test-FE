@@ -1,15 +1,15 @@
-<!-- <div class="form-group DataForm mt-5 pl-3 pr-3">
-    <h3 class=" head  bold">طلب الانسحاب </h3>
+<div class="form-group DataForm mt-5 pl-3 pr-3">
+    <h3 class=" head  bold"> {{ "GENERAL.DROP_OUT_REQUEST" | translate }}</h3>
 
      
         <div class="form-group">
-              <label  class="label" for="category">البرنامج</label>
+              <label  class="label" for="category">{{ "GENERAL.PROGRAM" | translate }}</label>
     
             <div class="d-flex">
                 <div class="input-group">
-                    <select class="form-control"  [(ngModel)]="filter.progId"    [ngModelOptions]="{standalone: true}">
+                    <select class="form-control"  [(ngModel)]="filter.batId"    [ngModelOptions]="{standalone: true}">
                         <option   value="">{{'SCIENTIFIC_MATERIAL.SELECTOPTION' | translate}}</option>
-                        <option *ngFor="let item of ProgramsList" value="{{item.id}}">
+                        <option *ngFor="let item of ProgramsList" value="{{item.batId}}">
                             {{item.progName}}
                         </option>
                     </select>
@@ -20,9 +20,9 @@
        
 
         <div class="form-group">
-              <label  class="label">رقم الطلب</label>
+              <label  class="label">{{ "GENERAL.REJECT_RESON" | translate }}</label>
               <textarea  class="form-control " cols="1"  rows="5" 
-              [(ngModel)]='itemTeacherDropOutRequest.reasonReject'  [ngModelOptions]="{standalone: true}" >
+              [(ngModel)]='filter.rejectReason'  [ngModelOptions]="{standalone: true}" >
               </textarea>
             </div>
 
@@ -36,9 +36,9 @@
         <section class="mt-5">
             <div  class="row direction-rtl buttons-center mt-5">
                 <button   type="submit" class="save-btn" (click)="sendDropOutRequest()"> 
-                 search
+                    {{ "GENERAL.SEND" | translate }}
                 </button>
-                <button  (click)="closeStuAdvancedSearch()"  type="reset" class="cancel-btn"> 
+                <button  (click)="closeCreateTeacherDropOutRequest()"  type="reset" class="cancel-btn"> 
                     {{ "GENERAL.CANCEL" | translate }}
                 </button>
             </div>
@@ -48,4 +48,4 @@
 
   
    
-</div> -->
+</div>

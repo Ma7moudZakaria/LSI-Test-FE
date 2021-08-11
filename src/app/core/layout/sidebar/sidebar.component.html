@@ -37,7 +37,7 @@
 
                         <span class="container__navigation__title">{{'SIDENAVBAR.VACATION_REQUEST' | translate}}</span>
                     </a>
-                    <a *ngIf='(roleService.isStudent() || roleService.isTeacher()) && !roleService.isAdmin()' [routerLink]="['/user-requests/user-requests-view']"  routerLinkActive="active" class="nav-link">
+                    <a *ngIf='(!roleService.isStudent() || roleService.isTeacher()) && !roleService.isAdmin()' [routerLink]="['/teacher-requests/teacher-requests-view']"  routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/message-icon.png">
 
                         <span class="container__navigation__title">{{'SIDENAVBAR.VACATION_REQUEST' | translate}}</span>

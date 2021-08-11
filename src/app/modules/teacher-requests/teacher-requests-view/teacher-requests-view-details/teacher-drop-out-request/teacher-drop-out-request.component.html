@@ -1,1 +1,15 @@
-<p>teacher-drop-out-request works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <app-drop-out-request-grid  (createDropOutOverlayEvent)="openTeacherDropOutRequestCreatePopup($event)"></app-drop-out-request-grid>
+        </div>
+    </div>
+
+    <div class="overlay" *ngIf="openTeacherDropOutRequestCreateOverlay">
+        <app-add-drop-out-request
+            (closeCreateDropOutOverlay)="closeCreateTeacherDropOutRequestOverlay($event)"
+            [filter]="filter"
+        ></app-add-drop-out-request>
+    </div>
+    
+</div>

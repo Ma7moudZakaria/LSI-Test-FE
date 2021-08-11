@@ -1,5 +1,5 @@
 export interface ICrateTeacherDropOutRequestModel {
     usrId?:string;
-    batId?:number;
-    rejectReason?:number; 
+    batId?:string;
+    rejectReason?:string; 
 }

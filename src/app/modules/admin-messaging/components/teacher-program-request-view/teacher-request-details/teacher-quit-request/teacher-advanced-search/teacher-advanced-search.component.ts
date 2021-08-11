@@ -8,8 +8,8 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseSelectedDateModel } from 'src/app/core/ng-model/base-selected-date-model';
 import { DateFormatterService } from 'ngx-hijri-gregorian-datepicker';
 import { TranslateService } from '@ngx-translate/core';
-import { ITeacherDropOutRequestAdminViewModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-admin-view-model';
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
+import { ITeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-model';
 
 
 @Component({
@@ -23,7 +23,7 @@ export class TeacherAdvancedSearchComponent implements OnInit {
   @Input() filter: ITeacherDropOutRequestAdvFilterAdminViewRequestModel = { statusNum: TeacherDropOutRequestStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
   advancedSearchInputs = {} as ITeacherDropOutRequestAdvFilterAdminViewRequestModel;
   resultMessage: BaseMessageModel = {};
-  studProgsSubsItems: ITeacherDropOutRequestAdminViewModel[] = [];
+  studProgsSubsItems: ITeacherDropOutRequestModel[] = [];
   programsbyAdvancedFilter: IProgramFilterAdvancedRequest = { skip: 0, take: 2147483647 };
   ProgramsList: IprogramsModel[] = [];
   calenderType: BaseSelectedDateModel = new BaseSelectedDateModel();

@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { TeacherRequestsViewComponent } from './teacher-requests-view/teacher-requests-view.component';
 import { TeacherRequestsTeacherViewModule } from './teacher-requests.module';
 
 const routes: Routes = [
   {
     path: '',
     children: [
-      // { path: 'teacher-requests-teacher-view', component: TeacherRequestsTeacherViewModule},
+      { path: 'teacher-requests-view', component: TeacherRequestsViewComponent}
      ],
   },
 ];

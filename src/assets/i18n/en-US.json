@@ -68,7 +68,10 @@
     "EXTENTION_FILE": "your extention file not accepted",
     "ACCEPT": "Accepted",
     "REJECT": "Reject",
-    "DEGREE_MAX_LENGTH": "Degree must be more than 100"
+    "DEGREE_MAX_LENGTH": "Degree must be more than 100",
+    "REJECT_RESON":"Reject Reason",
+    "PROGRAM":"Program",
+    "DROP_OUT_REQUEST":"Reject Reason"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",

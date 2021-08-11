@@ -10,4 +10,6 @@ export interface ITeacherDropOutRequestTeacherViewModel {
     reasonReject?:string;
     totalRows?: number;
     requestDate?:string;   
+    teacherDropOutRequestNameAr?:string;  
+    teacherDropOutRequestNameEn?:string;  
 }

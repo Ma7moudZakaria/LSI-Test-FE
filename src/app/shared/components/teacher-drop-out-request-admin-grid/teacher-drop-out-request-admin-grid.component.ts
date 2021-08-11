@@ -4,9 +4,9 @@ import { DropOutRoleEnum } from 'src/app/core/enums/drop-out-request-enums/drop-
 import { TeacherDropOutRequestStatusEnum } from 'src/app/core/enums/drop-out-request-enums/teacher-drop-out-request-status.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { RoleEnum } from 'src/app/core/enums/role-enum.enum';
-import { ITeacherDropOutRequestAdminViewModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-admin-view-model';
 import { ITeacherDropOutRequestAdvFilterAdminViewRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-adv-filter-admin-view-request-model';
 import { ITeacherDropOutRequestAdvFilterTeacherViewRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-adv-filter-teacher-view-request-model';
+import { ITeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-model';
 import { ITeacherDropOutRequestTeacherViewModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-teacher-view-model';
 import { ExportationService } from 'src/app/core/services/exportation-services/exportation.service';
 
@@ -18,14 +18,16 @@ import { ExportationService } from 'src/app/core/services/exportation-services/e
 export class TeacherDropOutRequestAdminGridComponent implements OnInit {
 
   @Output() teacherDropOutRequestFilterEvent = new EventEmitter<ITeacherDropOutRequestAdvFilterAdminViewRequestModel>();
-  @Output() itemTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestAdminViewModel>();
-  @Output() rejectTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestAdminViewModel>();
-  @Output() acceptTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestAdminViewModel>();
-  @Output() acceptAllTeacherDropOutRequestChecked = new EventEmitter<ITeacherDropOutRequestAdminViewModel>();
+  @Output() itemTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
+  @Output() rejectTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
+  @Output() acceptTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
+  @Output() deleteTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
+
+  @Output() acceptAllTeacherDropOutRequestChecked = new EventEmitter<ITeacherDropOutRequestModel>();
   
   @Input() teacherDropOutRequestFilterRequestModel: ITeacherDropOutRequestAdvFilterAdminViewRequestModel = { skip: 0, take: 9, page: 1 };
   @Input() numberPerRow: number = 3;
-  @Input() teacherDropOutRequestItems: ITeacherDropOutRequestAdminViewModel[] = []
+  @Input() teacherDropOutRequestItems: ITeacherDropOutRequestModel[] = []
 
   @Input() teacherDropOutRequestFilterRequestTeacherViewModel: ITeacherDropOutRequestAdvFilterTeacherViewRequestModel = { skip: 0, take: 9, page: 1 };
   @Input() teacherDropOutRequestTeacherViewItems: ITeacherDropOutRequestTeacherViewModel[] = [];
@@ -34,7 +36,7 @@ export class TeacherDropOutRequestAdminGridComponent implements OnInit {
   @Input() typeEnum: TeacherDropOutRequestStatusEnum = TeacherDropOutRequestStatusEnum.Pending;
   @Input() typeDropOutRequestEnum: TeacherDropOutRequestStatusEnum = TeacherDropOutRequestStatusEnum.Pending;
 
-  @Input() userMode: DropOutRoleEnum = DropOutRoleEnum.Admin;
+  @Input() userMode: DropOutRoleEnum | undefined ;
   userRoleMode = DropOutRoleEnum;
   
 
@@ -52,10 +54,11 @@ export class TeacherDropOutRequestAdminGridComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log("userRoleMode.Teacher userMode =======> " , this.userMode)
   }
 
   sortTeacherByName() {
-    this.teacherDropOutRequestFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn';
+    this.teacherDropOutRequestFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'teacherNameAr' : 'TeacherNameAr';
     this.teacherDropOutRequestFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
     this.teacherDropOutRequestFilterEvent.emit(this.teacherDropOutRequestFilterRequestModel);
   }
@@ -74,6 +77,32 @@ export class TeacherDropOutRequestAdminGridComponent implements OnInit {
   }
 
   sortTeacherRequestDateOrderType() {
+    if (this.teacherDropOutRequestFilterRequestModel.sortField === 'requestdate' && this.teacherDropOutRequestFilterRequestModel.sortOrder == 1) { return 'asend' }
+    if (this.teacherDropOutRequestFilterRequestModel.sortField === 'requestdate' && this.teacherDropOutRequestFilterRequestModel.sortOrder == -1) { return 'desend' }
+
+    return '';
+  }
+
+  onTeacherPageChange() {
+    this.teacherDropOutRequestFilterRequestModel.skip = (this.teacherDropOutRequestFilterRequestModel.page - 1) * (this.teacherDropOutRequestFilterRequestModel.take || 0);
+    this.teacherDropOutRequestFilterEvent.emit(this.teacherDropOutRequestFilterRequestModel);
+    this.setTeacherAllChecked(false);
+  }
+
+ sortTeacherDropOutRequestByNameOrderType() {
+    if ((this.teacherDropOutRequestFilterRequestModel.sortField === "teacherNameAr" || this.teacherDropOutRequestFilterRequestModel.sortField === "TeacherNameEn") && this.teacherDropOutRequestFilterRequestModel.sortOrder == 1) { return 'asend' }
+    if ((this.teacherDropOutRequestFilterRequestModel.sortField === "teacherNameAr" || this.teacherDropOutRequestFilterRequestModel.sortField === "TeacherNameEn") && this.teacherDropOutRequestFilterRequestModel.sortOrder == -1) { return 'desend' }
+
+    return '';
+  }
+
+  sortByTeacherDropOutRequestRequestDate() {
+    this.teacherDropOutRequestFilterRequestModel.sortField = 'requestdate';
+    this.teacherDropOutRequestFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
+    this.teacherDropOutRequestFilterEvent.emit(this.teacherDropOutRequestFilterRequestModel);
+  }
+
+  sortByTeacherDropOutRequestDateOrderType() {
     if (this.teacherDropOutRequestFilterRequestModel.sortField === 'requestdate' && this.teacherDropOutRequestFilterRequestModel.sortOrder == 1) { return 'asend' }
     if (this.teacherDropOutRequestFilterRequestModel.sortField === 'requestdate' && this.teacherDropOutRequestFilterRequestModel.sortOrder == -1) { return 'desend' }
 
@@ -108,32 +137,6 @@ export class TeacherDropOutRequestAdminGridComponent implements OnInit {
 
     let data = ['progName', 'usrNameAr'];
     this.exportationService.exportCSV(expItems, 'teacher', data, headerLabels);
-  }
-
-  onTeacherPageChange() {
-    this.teacherDropOutRequestFilterRequestModel.skip = (this.teacherDropOutRequestFilterRequestModel.page - 1) * (this.teacherDropOutRequestFilterRequestModel.take || 0);
-    this.teacherDropOutRequestFilterEvent.emit(this.teacherDropOutRequestFilterRequestModel);
-    this.setTeacherAllChecked(false);
-  }
-
-  sortTeacherDropOutRequestByNameOrderType() {
-    if ((this.teacherDropOutRequestFilterRequestModel.sortField === "teacherNameAr" || this.teacherDropOutRequestFilterRequestModel.sortField === "TeacherNameEn") && this.teacherDropOutRequestFilterRequestModel.sortOrder == 1) { return 'asend' }
-    if ((this.teacherDropOutRequestFilterRequestModel.sortField === "teacherNameAr" || this.teacherDropOutRequestFilterRequestModel.sortField === "TeacherNameEn") && this.teacherDropOutRequestFilterRequestModel.sortOrder == -1) { return 'desend' }
-
-    return '';
-  }
-
-  sortByTeacherDropOutRequestDate() {
-    this.teacherDropOutRequestFilterRequestModel.sortField = 'requestdate';
-    this.teacherDropOutRequestFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
-    this.teacherDropOutRequestFilterEvent.emit(this.teacherDropOutRequestFilterRequestModel);
-  }
-
-  sortByTeacherDropOutRequestDateOrderType() {
-    if (this.teacherDropOutRequestFilterRequestModel.sortField === 'requestdate' && this.teacherDropOutRequestFilterRequestModel.sortOrder == 1) { return 'asend' }
-    if (this.teacherDropOutRequestFilterRequestModel.sortField === 'requestdate' && this.teacherDropOutRequestFilterRequestModel.sortOrder == -1) { return 'desend' }
-
-    return '';
   }
 
   enableTeacherDropOutRequestSelectOperations(): boolean {
@@ -176,14 +179,17 @@ export class TeacherDropOutRequestAdminGridComponent implements OnInit {
     this.acceptAllTeacherDropOutRequestChecked.emit()
   }
 
-  rejectTeacherDropOutRequestEvent(teacherSubscripModel: ITeacherDropOutRequestAdminViewModel) {
+  rejectTeacherDropOutRequestEvent(teacherSubscripModel: ITeacherDropOutRequestModel) {
     this.itemTeacherDropOutRequest.emit(teacherSubscripModel);
   }
 
-  acceptTeacherDropOutRequestEvent(teacherSubscripModel: ITeacherDropOutRequestAdminViewModel) {
+  acceptTeacherDropOutRequestEvent(teacherSubscripModel: ITeacherDropOutRequestModel) {
     this.acceptTeacherDropOutRequest.emit(teacherSubscripModel);
   }
-
+  
+  selectUserMode(){
+    
+  }
   
 
 
@@ -191,58 +197,6 @@ export class TeacherDropOutRequestAdminGridComponent implements OnInit {
 
     // Start Teacher View
     
-    sortTeacherViewByName() {
-      this.teacherDropOutRequestFilterRequestTeacherViewModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn';
-      this.teacherDropOutRequestFilterRequestTeacherViewModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
-      this.teacherDropOutRequestFilterEvent.emit(this.teacherDropOutRequestFilterRequestTeacherViewModel);
-    }
-  
-    sortTeacherViewByNameOrderType() {
-      if ((this.teacherDropOutRequestFilterRequestTeacherViewModel.sortField === "teacherNameAr" || this.teacherDropOutRequestFilterRequestTeacherViewModel.sortField === "TeacherNameEn") && this.teacherDropOutRequestFilterRequestModel.sortOrder == 1) { return 'asend' }
-      if ((this.teacherDropOutRequestFilterRequestTeacherViewModel.sortField === "teacherNameAr" || this.teacherDropOutRequestFilterRequestTeacherViewModel.sortField === "TeacherNameEn") && this.teacherDropOutRequestFilterRequestModel.sortOrder == -1) { return 'desend' }
-  
-      return '';
-    }
-  
-    sortTeacherViewRequestDate() {
-      this.teacherDropOutRequestFilterRequestTeacherViewModel.sortField = 'requestdate';
-      this.teacherDropOutRequestFilterRequestTeacherViewModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
-      this.teacherDropOutRequestFilterEvent.emit(this.teacherDropOutRequestFilterRequestTeacherViewModel);
-    }
-  
-    sortTeacherViewRequestDateOrderType() {
-      if (this.teacherDropOutRequestFilterRequestTeacherViewModel.sortField === 'requestdate' && this.teacherDropOutRequestFilterRequestTeacherViewModel.sortOrder == 1) { return 'asend' }
-      if (this.teacherDropOutRequestFilterRequestTeacherViewModel.sortField === 'requestdate' && this.teacherDropOutRequestFilterRequestTeacherViewModel.sortOrder == -1) { return 'desend' }
-  
-      return '';
-    }
-
-    onTeacherViewPageChange() {
-      this.teacherDropOutRequestFilterRequestTeacherViewModel.skip = (this.teacherDropOutRequestFilterRequestTeacherViewModel.page - 1) * (this.teacherDropOutRequestFilterRequestTeacherViewModel.take || 0);
-      this.teacherDropOutRequestFilterEvent.emit(this.teacherDropOutRequestFilterRequestTeacherViewModel);
-      this.setTeacherAllChecked(false);
-    }
-  
-    sortTeacherViewDropOutRequestByNameOrderType() {
-      if ((this.teacherDropOutRequestFilterRequestTeacherViewModel.sortField === "teacherNameAr" || this.teacherDropOutRequestFilterRequestTeacherViewModel.sortField === "TeacherNameEn") && this.teacherDropOutRequestFilterRequestTeacherViewModel.sortOrder == 1) { return 'asend' }
-      if ((this.teacherDropOutRequestFilterRequestTeacherViewModel.sortField === "teacherNameAr" || this.teacherDropOutRequestFilterRequestTeacherViewModel.sortField === "TeacherNameEn") && this.teacherDropOutRequestFilterRequestTeacherViewModel.sortOrder == -1) { return 'desend' }
-  
-      return '';
-    }
-  
-    sortByTeacherViewDropOutRequestDate() {
-      this.teacherDropOutRequestFilterRequestTeacherViewModel.sortField = 'requestdate';
-      this.teacherDropOutRequestFilterRequestTeacherViewModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
-      this.teacherDropOutRequestFilterEvent.emit(this.teacherDropOutRequestFilterRequestTeacherViewModel);
-    }
-  
-    sortByTeacherViewDropOutRequestDateOrderType() {
-      if (this.teacherDropOutRequestFilterRequestTeacherViewModel.sortField === 'requestdate' && this.teacherDropOutRequestFilterRequestTeacherViewModel.sortOrder == 1) { return 'asend' }
-      if (this.teacherDropOutRequestFilterRequestTeacherViewModel.sortField === 'requestdate' && this.teacherDropOutRequestFilterRequestTeacherViewModel.sortOrder == -1) { return 'desend' }
-  
-      return '';
-    }
-
     enableTeacherViewSelectOperations(): boolean {
       return this.teacherDropOutRequestTeacherViewItems.filter(t => t.checked).length > 0 || this.allSelected;
     }
@@ -301,6 +255,10 @@ export class TeacherDropOutRequestAdminGridComponent implements OnInit {
   
       let data = ['progName', 'usrNameAr'];
       this.exportationService.exportCSV(expItems, 'Student', data, headerLabels);
+    }
+
+    deleteTeacherDropOutRequestEvent(teacherSubscripModel: ITeacherDropOutRequestModel) {
+      this.deleteTeacherDropOutRequest.emit(teacherSubscripModel);
     }
   
     // End Here

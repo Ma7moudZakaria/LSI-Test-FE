@@ -34,7 +34,9 @@
                 [userMode]='userMode'
                 (acceptAllTeacherDropOutRequestChecked)="acceptAllTeacherDropOutRequestChecked ()"
                 [teacherDropOutRequestFilterRequestModel]='teacherDropOutRequestFilterRequestModel'
-                (rejectTeacherDropOutRequest)='rejectTeacherDropOutRequestEvent($event)'>
+                (rejectTeacherDropOutRequest)='rejectTeacherDropOutRequestEvent($event)'
+                (teacherDropOutRequestFilterEvent)='teacherDropOutRequestPendingChangePage($event)'
+                >
             </app-teacher-drop-out-request-admin-grid>
 
             <app-teacher-drop-out-request-admin-grid *ngIf='showTap == statusEnum.Accept && teacherDropOutRequestList.length > 0' 
@@ -43,8 +45,9 @@
                 (rejectTeacherDropOutRequest)='rejectTeacherDropOutRequestEvent($event)'
                 [totalCount]='totalCount'
                 [userMode]='userMode'
-                [teacherDropOutRequestFilterRequestModel]='teacherDropOutRequestFilterRequestModel'>
-               </app-teacher-drop-out-request-admin-grid>
+                [teacherDropOutRequestFilterRequestModel]='teacherDropOutRequestFilterRequestModel'
+                (teacherDropOutRequestFilterEvent)='teacherDropOutRequestAcceptChangePage($event)'
+                ></app-teacher-drop-out-request-admin-grid>
 
                <app-teacher-drop-out-request-admin-grid *ngIf='showTap == statusEnum.Rejected && teacherDropOutRequestList.length > 0' 
                 [typeEnum]='statusEnum.Rejected'
@@ -52,8 +55,9 @@
                  (rejectTeacherDropOutRequest)='rejectTeacherDropOutRequestEvent($event)'
                  [totalCount]='totalCount'
                  [userMode]='userMode'
-                 [teacherDropOutRequestFilterRequestModel]='teacherDropOutRequestFilterRequestModel'>
-              </app-teacher-drop-out-request-admin-grid>
+                 [teacherDropOutRequestFilterRequestModel]='teacherDropOutRequestFilterRequestModel'
+                 (teacherDropOutRequestFilterEvent)='teacherDropOutRequestRejectChangePage($event)'
+                 ></app-teacher-drop-out-request-admin-grid>
         </div>
     
     </div>

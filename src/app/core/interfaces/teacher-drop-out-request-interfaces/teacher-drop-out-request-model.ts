@@ -1,5 +1,5 @@
 
-export interface ITeacherDropOutRequestAdminViewModel {
+export interface ITeacherDropOutRequestModel {
     id?:string;
     huffazNumber?:number;
     teacherNameAr?:number;
@@ -16,4 +16,7 @@ export interface ITeacherDropOutRequestAdminViewModel {
     reasonReject?:string;
     totalRows?: number;
     requestDate?:string;   
+    teacherDropOutRequestNameAr?:string;  
+    teacherDropOutRequestNameEn?:string;  
+    dropOutRequestStatusHuffaz?: number;
 }

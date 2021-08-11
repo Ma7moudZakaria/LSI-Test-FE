@@ -68,7 +68,10 @@
     "EXTENTION_FILE": "امتداد الفايل غير مسوح بيه ",
     "ACCEPT": "قبول",
     "REJECT": "رفض",
-    "DEGREE_MAX_LENGTH": "الدرجة يجب ان تكون أقل من أو تساوى 100"
+    "DEGREE_MAX_LENGTH": "الدرجة يجب ان تكون أقل من أو تساوى 100",
+    "REJECT_RESON":"سبب الإنسحاب",
+    "PROGRAM":"البرنامج",
+    "DROP_OUT_REQUEST":"طلب الانسحاب"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
