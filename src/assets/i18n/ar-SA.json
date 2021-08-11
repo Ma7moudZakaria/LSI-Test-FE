@@ -783,5 +783,14 @@
     "FROM_PROG": "من برنامج",
     "REJECTED_REASON": "سبب الرفض",
     "VALIDATIONDATE": "تاريخ البداية يجب ان يكون اقل من تاريخ النهاية "
+  },
+  "TEACHER_STUDENT_FOR_DETAILS":{
+    "PROG_IDEA": "فكرة البرنامج",
+    "PROG_GOAL": "أهداف البرنامج",
+    "PROG_VISION": "رؤية البرنامج",
+    "PROG_METHOD" : "طريقة البرنامج",
+    "TERMS_AND_CONDITION": "الشروط والأحكام",
+    "PLEDG_TEXT": "نص التعهد",
+    "PROG_FEATURES": "مميزات البرنامج"
   }
 }

@@ -7,6 +7,7 @@ import { StudentProgramsComponent } from './student-programs/student-programs.co
 import { SubscriptionSubmitComponent } from './student-program-sub-view/subscription-submit/subscription-submit.component';
 import { StudentProgramSubDetailsComponent } from './student-program-sub-view/student-program-sub-details/student-program-sub-details.component';
 import {SharedModule} from '../../shared/shared.module';
+import {TranslateModule} from '@ngx-translate/core';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {SharedModule} from '../../shared/shared.module';
   imports: [
     CommonModule,
     StudentProgramSubscriptionRoutingModule,
-    SharedModule
+    SharedModule,
+    TranslateModule
   ]
 })
 export class StudentProgramSubscriptionModule { }

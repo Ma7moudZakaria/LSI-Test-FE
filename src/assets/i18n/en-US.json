@@ -787,5 +787,14 @@
     "FROM_PROG": "From Program",
     "REJECTED_REASON": "Reject Reason",
     "VALIDATIONDATE": "Datefrom  should less than dateto "
+  },
+  "TEACHER_STUDENT_FOR_DETAILS":{
+    "PROG_IDEA": "Program Idea",
+    "PROG_GOAL": "Program Goals",
+    "PROG_VISION": "Program Vision",
+    "PROG_METHOD" : "Program Method",
+    "TERMS_AND_CONDITION": "Terms And Conditions",
+    "PLEDG_TEXT": "Pledge Text",
+    "PROG_FEATURES": "Program Features"
   }
 }
