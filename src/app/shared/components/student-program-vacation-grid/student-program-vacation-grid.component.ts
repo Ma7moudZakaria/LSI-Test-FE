@@ -7,6 +7,7 @@ import {LanguageEnum} from '../../../core/enums/language-enum.enum';
 import {TranslateService} from '@ngx-translate/core';
 import {ExportationService} from '../../../core/services/exportation-services/exportation.service';
 import {StudentProgramVacationUsersEnum} from '../../../core/enums/StudentProgramVacationStatus/student-program-vacation-users.enum';
+import {IUser} from '../../../core/interfaces/auth-interfaces/iuser-model';
 
 @Component({
   selector: 'app-student-program-vacation-grid',
@@ -22,20 +23,22 @@ export class StudentProgramVacationGridComponent implements OnInit {
   @Output() acceptStudentProgramVacation = new EventEmitter<IStudentProgramVacationModel>();
   @Input() numberPerRow: number = 3;
   @Input() totalCount: number = 0;
-  @Input() userMode: StudentProgramVacationUsersEnum = StudentProgramVacationUsersEnum.Admin;
   @Input() studentProgramVacationFilterRequestModel: IStudentProgramVacationFilterRequestModel = { skip: 0, take: 9, page: 1 };
   @Output() itemStuReq = new EventEmitter<IStudentProgramVacationModel>();
 
-  StudentProgramVacationUsers = StudentProgramVacationUsersEnum;
   orderTypeToggel = 1;
   allSelected: boolean = false;
   stuTabTypeSelected = StudentProgramVacationStatusEnum;
+  currentUser: IUser | undefined;
+  userRole : any;
 
   constructor( public translate: TranslateService,
                private exportationService: ExportationService) { }
 
   ngOnInit(): void {
-    console.log("user mode", this.userMode)
+    this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
+    this.userRole= this.currentUser.usrRoles?.usrRoles?.[0].enRoleName.toString();
+
   }
 
   sortStudentByName() {
@@ -69,7 +72,6 @@ export class StudentProgramVacationGridComponent implements OnInit {
   }
 
   someStudentItemsChecked(): boolean {
-    console.log(this.userMode);
     if (this.studentVacationItems == null) {
       return false;
     }
@@ -82,19 +84,25 @@ export class StudentProgramVacationGridComponent implements OnInit {
       return;
     }
     this.studentVacationItems.forEach(t => t.checked = completed);
-    console.log(this.userMode);
   }
   onStudentPageChange() {
     this.studentProgramVacationFilterRequestModel.skip = (this.studentProgramVacationFilterRequestModel.page - 1) * (this.studentProgramVacationFilterRequestModel.take);
     this.studentVacationFilterEvent.emit(this.studentProgramVacationFilterRequestModel);
     this.setStudentAllChecked(false);
   }
-
-  rejecteStuRequest(event: IStudentProgramVacationModel) {
+  rejectStuRequest(event: IStudentProgramVacationModel) {
     this.itemStuReq.emit(event)
 
   }
   acceptStuRequest(event: IStudentProgramVacationModel) {
+    this.acceptStudentProgramVacation.emit(event)
+
+  }
+  cancelStuRequest(event: IStudentProgramVacationModel) {
+    this.itemStuReq.emit(event)
+
+  }
+  terminateStuRequest(event: IStudentProgramVacationModel) {
     this.acceptStudentProgramVacation.emit(event)
 
   }

@@ -35,10 +35,10 @@
 
   <ng-container >
     <div class="body_footer">
-      <button (click)="rejectedStudentReq()" [disabled]="!studentProgramVacationStudentViewModel.IsCancel" [ngClass]="{ 'negative' : !studentProgramVacationStudentViewModel.IsCancel }"
-              class="btn cancel-btn"> {{'STUDENT_SUBSCRIBERS.REJECT' | translate}}  </button>
-      <button (click)="acceptStudentReq()" [disabled]="!studentProgramVacationStudentViewModel.IsTerminate" [ngClass]="{ 'negative' : !studentProgramVacationStudentViewModel.IsTerminate }"
-              class=" btn save-btn"> {{'STUDENT_SUBSCRIBERS.ACCEPT' | translate}}  </button>
+      <button (click)="cancelStudentReq()" [disabled]="!studentProgramVacationStudentViewModel.IsCancel" [ngClass]="{ 'negative' : !studentProgramVacationStudentViewModel.IsCancel }"
+              class="btn cancel-btn"> {{'STUDENT_VACATION.CANCEL' | translate}}  </button>
+      <button (click)="terminateStudentReq()" [disabled]="!studentProgramVacationStudentViewModel.IsTerminate" [ngClass]="{ 'negative' : !studentProgramVacationStudentViewModel.IsTerminate }"
+              class=" btn save-btn"> {{'STUDENT_VACATION.TERMINATE' | translate}}  </button>
     </div>
   </ng-container>
 </div>

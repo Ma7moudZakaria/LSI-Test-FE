@@ -42,7 +42,7 @@ export class StudentProgramListComponent implements OnInit {
       (res: BaseResponseModel) => {
         this.programs = res.data as IStudentPrograms[];
         console.log("programs" , this.programs);
-        // this.loadProgramMaterial({})
+        // this.loadProgramMaterial()
         this.selectedIndex=-1;
       }, error => {
         this.resMessage = {
@@ -52,7 +52,8 @@ export class StudentProgramListComponent implements OnInit {
       }
     );
   }
-  loadProgramMaterial(program?:IprogramsModel){
+  loadProgramMaterial(program?:IStudentPrograms){
     this.selectedProgram?.emit(program);
+    console.log(" this.selectedProgram?.emit(program);",program)
   }
 }

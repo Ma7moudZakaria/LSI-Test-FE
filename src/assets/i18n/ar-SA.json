@@ -795,7 +795,9 @@
     "FROM": "من",
     "TO": "إلى",
     "VACATION_REASON": "سبب الاجازة",
-    "REJECT_REASON": "سبب الرفض"
+    "REJECT_REASON": "سبب الرفض",
+    "CANCEL": "الغاء الطلب",
+    "TERMINATE": "قطع الاجازة"
   },
   "PROGRAM_BATCHES":{
     "ADD_PROGRAM_BATCH":"اضافة دفعة"

@@ -799,7 +799,9 @@
     "FROM": "From",
     "TO": "To",
     "VACATION_REASON": "Vacation Reason",
-    "REJECT_REASON": "Rejection Reason"
+    "REJECT_REASON": "Rejection Reason",
+    "CANCEL": "Cancel",
+    "TERMINATE": "Cut-Off"
   },
   "PROGRAM_BATCHES":{
     "ADD_PROGRAM_BATCH":"Add Batch"

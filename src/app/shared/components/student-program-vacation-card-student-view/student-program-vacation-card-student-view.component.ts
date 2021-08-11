@@ -9,8 +9,8 @@ import {StudentProgramVacationStatusEnum} from '../../../core/enums/StudentProgr
 })
 export class StudentProgramVacationCardStudentViewComponent implements OnInit {
   @Input() studentProgramVacationStudentViewModel: IStudentProgramVacationStudentViewModel = { totalRows: 0 }
-  @Output() rejectStudentVacationRequest = new EventEmitter<IStudentProgramVacationStudentViewModel>();
-  @Output() acceptStudentVacationRequest = new EventEmitter<IStudentProgramVacationStudentViewModel>();
+  @Output() CancelStudentVacationRequest = new EventEmitter<IStudentProgramVacationStudentViewModel>();
+  @Output() TerminateStudentVacationRequest = new EventEmitter<IStudentProgramVacationStudentViewModel>();
   // @Input() typeEnum: StudentProgramVacationStatusEnum = StudentProgramVacationStatusEnum;
 
   studentProgramVacationStatus = StudentProgramVacationStatusEnum;
@@ -28,11 +28,12 @@ export class StudentProgramVacationCardStudentViewComponent implements OnInit {
       }
     }
   }
-  rejectedStudentReq() {
-    this.rejectStudentVacationRequest.emit(this.studentProgramVacationStudentViewModel);
+
+  cancelStudentReq() {
+    this.CancelStudentVacationRequest.emit(this.studentProgramVacationStudentViewModel);
     // console.log("rejected",this.studentSubscripModel )
   }
-  acceptStudentReq() {
-    this.acceptStudentVacationRequest.emit(this.studentProgramVacationStudentViewModel);
+  terminateStudentReq() {
+    this.TerminateStudentVacationRequest.emit(this.studentProgramVacationStudentViewModel);
   }
 }
