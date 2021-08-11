@@ -1,21 +1,25 @@
-<div class="container-fluid">
+
   <div class="row">
     <div class="col-12">
       <div class="program">
         <div class="program__bg"></div>
         <img src="../../../../assets/images/student-program/qor2an.png" class="program__img">
         <div class="program__title">
-          <h2 class="program__title--text">اسم البرنامج</h2>
+          <h2 class="program__title--text">{{programsForSubscriptionsDetails?.prgName}}</h2>
         </div>
         <div class="program__details">
           <div class="program__details--inner">
-            <h6 class="program__details--inner--text">عدد الأجزاء المطلوبة</h6>
-            <span class="program__details--inner--num">30</span>
+            <h6 class="program__details--inner--text">{{'TEACHER_STUDENT_FOR_DETAILS.PROG_PARTS' | translate}}</h6>
+            <span class="program__details--inner--num">{{programsForSubscriptionsDetails?.parts}}</span>
+            <span class="program__details--inner--num" *ngIf="!programsForSubscriptionsDetails?.parts">
+              0</span>
           </div>
           <div class="program__details--slash"></div>
           <div class="program__details--inner">
-            <h6 class="program__details--inner--text">مدة البرنامج باليوم</h6>
-            <span class="program__details--inner--num">15</span>
+            <h6 class="program__details--inner--text">{{'TEACHER_STUDENT_FOR_DETAILS.PROG_DURA' | translate}}</h6>
+            <span class="program__details--inner--num">{{programsForSubscriptionsDetails?.prgDura}}</span>
+            <span class="program__details--inner--num" *ngIf="!programsForSubscriptionsDetails?.prgDura">
+              0</span>
           </div>
         </div>
       </div>
@@ -29,9 +33,7 @@
           <h2 class="details__card--title">
             {{'TEACHER_STUDENT_FOR_DETAILS.PROG_IDEA' | translate}}
           </h2>
-          <p class="details__card--text">
-            لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة والتنضيد الإلكتروني. انتشر بشكل كبير في ستينيّات هذا القرن مع إصدار رقائق "ليتراسيت" (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل "ألدوس بايج مايكر" (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.
-          </p>
+          <p class="details__card--text">{{programsForSubscriptionsDetails?.prgIda}}</p>
         </div>
       </div>
       <div class="col-md-6 col-12">
@@ -40,8 +42,7 @@
             {{'TEACHER_STUDENT_FOR_DETAILS.PROG_GOAL' | translate}}
           </h2>
           <p class="details__card--text">
-            لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة والتنضيد الإلكتروني. انتشر بشكل كبير في ستينيّات هذا القرن مع إصدار رقائق "ليتراسيت" (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل "ألدوس بايج مايكر" (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.
-          </p>
+            {{programsForSubscriptionsDetails?.prgGoal}}          </p>
         </div>
       </div>
       <div class="col-md-6 col-12">
@@ -50,8 +51,7 @@
             {{'TEACHER_STUDENT_FOR_DETAILS.PROG_VISION' | translate}}
           </h2>
           <p class="details__card--text">
-            لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة والتنضيد الإلكتروني. انتشر بشكل كبير في ستينيّات هذا القرن مع إصدار رقائق "ليتراسيت" (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل "ألدوس بايج مايكر" (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.
-          </p>
+            {{programsForSubscriptionsDetails?.prgAdvan}}          </p>
         </div>
       </div>
       <div class="col-md-6 col-12">
@@ -60,18 +60,7 @@
             {{'TEACHER_STUDENT_FOR_DETAILS.PROG_METHOD' | translate}}
           </h2>
           <p class="details__card--text">
-            لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة والتنضيد الإلكتروني. انتشر بشكل كبير في ستينيّات هذا القرن مع إصدار رقائق "ليتراسيت" (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل "ألدوس بايج مايكر" (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.
-          </p>
-        </div>
-      </div>
-      <div class="col-md-6 col-12">
-        <div class="details__card">
-          <h2 class="details__card--title">
-            {{'TEACHER_STUDENT_FOR_DETAILS.TERMS_AND_CONDITION' | translate}}
-          </h2>
-          <p class="details__card--text">
-            لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة والتنضيد الإلكتروني. انتشر بشكل كبير في ستينيّات هذا القرن مع إصدار رقائق "ليتراسيت" (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل "ألدوس بايج مايكر" (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.
-          </p>
+            {{programsForSubscriptionsDetails?.prgMeth}}          </p>
         </div>
       </div>
       <div class="col-md-6 col-12">
@@ -80,8 +69,7 @@
             {{'TEACHER_STUDENT_FOR_DETAILS.PLEDG_TEXT' | translate}}
           </h2>
           <p class="details__card--text">
-            لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة والتنضيد الإلكتروني. انتشر بشكل كبير في ستينيّات هذا القرن مع إصدار رقائق "ليتراسيت" (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل "ألدوس بايج مايكر" (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.
-          </p>
+            {{programsForSubscriptionsDetails?.prgPledgTxt}}          </p>
         </div>
       </div>
       <div class="col-md-6 col-12">
@@ -90,8 +78,7 @@
             {{'TEACHER_STUDENT_FOR_DETAILS.PROG_FEATURES' | translate}}
           </h2>
           <p class="details__card--text">
-            لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة والتنضيد الإلكتروني. انتشر بشكل كبير في ستينيّات هذا القرن مع إصدار رقائق "ليتراسيت" (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل "ألدوس بايج مايكر" (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.
-          </p>
+            {{programsForSubscriptionsDetails?.prgAdvan}}             </p>
         </div>
       </div>
     </div>
@@ -101,15 +88,15 @@
     <div>
       <form class="d-flex align-items-center justify-content-end">
 
-        <mat-checkbox  id="subscribe" [checked]="true" class="example-margin ">
+        <mat-checkbox  id="subscribe" (change)="changeCheck($event)" [checked]="checkbox" class="example-margin ">
 
         </mat-checkbox>
         <label for="subscribe" class="detailsFooter__label">موافق علي شروط البرنامج</label>
 
-        <button class=" save-btn">إشتراك</button>
+        <button class=" save-btn" [disabled]="!checkbox" id="submit_button" type="submit">إشتراك</button>
       </form>
 
     </div>
   </div>
 
-</div>
+

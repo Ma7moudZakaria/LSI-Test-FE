@@ -791,6 +791,8 @@
     "PROG_METHOD" : "طريقة البرنامج",
     "TERMS_AND_CONDITION": "الشروط والأحكام",
     "PLEDG_TEXT": "نص التعهد",
-    "PROG_FEATURES": "مميزات البرنامج"
+    "PROG_FEATURES": "مميزات البرنامج",
+    "PROG_PARTS": "عدد الأجزاء المطلوبة",
+    "PROG_DURA" : "مدة البرنامج باليوم"
   }
 }

@@ -795,6 +795,8 @@
     "PROG_METHOD" : "Program Method",
     "TERMS_AND_CONDITION": "Terms And Conditions",
     "PLEDG_TEXT": "Pledge Text",
-    "PROG_FEATURES": "Program Features"
+    "PROG_FEATURES": "Program Features",
+    "PROG_PARTS": "Required Parts",
+    "PROG_DURA" : "Program duration per day"
   }
 }
