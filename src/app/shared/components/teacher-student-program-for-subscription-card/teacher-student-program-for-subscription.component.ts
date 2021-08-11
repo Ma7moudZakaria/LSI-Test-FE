@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { LanguageEnum } from '../../../core/enums/language-enum.enum';
 import { TranslateService } from '@ngx-translate/core';
 import { AlertifyService } from '../../../core/services/alertify-services/alertify.service';
@@ -15,6 +15,7 @@ import { ProgramSubscriptionUsersEnum } from '../../../core/enums/program-subscr
 })
 export class TeacherStudentProgramForSubscriptionComponent implements OnInit {
 
+  @Output() teacher_subscription_id = new EventEmitter<string>();
 
   @Input() teachersubscriptionmodel: IProgramsForTeacherSubscriptionsModel = { totals: 0 }
   @Input() studentsubscriptionmodel: IProgramsForStudentSubscriptionsModel = { totals: 0 }
@@ -36,7 +37,7 @@ export class TeacherStudentProgramForSubscriptionComponent implements OnInit {
   gotoDetails(event?: string) {
 
     this.router.navigateByUrl('teacher-for-subscription/teacher_pro_sub_deatils/' + event);
-
+    this.teacher_subscription_id.emit(event)
 
   }
   gotoDetailsStudent(event?: string) {

@@ -20,7 +20,7 @@ export class TeacherProgramSubscriptionServicesService {
   submitTeacherSubscriptionURL = environment.baseUrl + 'TeacherProgramSubscription/submit-teacher-subscription/';
   getProgramsForTeacherssSubscriptionsURL = environment.baseUrl + 'TeacherProgramSubscription/get-programs-for-teachers-subscriptions/';
   getTeacherProgramsURL = environment.baseUrl + 'TeacherProgramSubscription/get-teacher-programs/';
-  getSubscriptionProgramDetailsURL = environment.baseUrl + 'T/api/Programs/get-subscription-program-details/';
+  getSubscriptionProgramDetailsURL = environment.baseUrl + 'Programs/get-subscription-program-details/';
 
   constructor(private http: HttpClient) { }
 
