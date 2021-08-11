@@ -1,0 +1,44 @@
+<div class="card-request">
+  <div class="card_header">
+    <section class="example-section">
+    </section>
+    <div>
+      <span> {{'STUDENT_SUBSCRIBERS.TIME' | translate}} </span>
+
+      <span>&nbsp;</span>
+      <span>&nbsp;</span>
+      <span>{{studentProgramVacationStudentViewModel.requestDate  | date: 'dd/MM/yyyy'}}</span>
+    </div>
+  </div>
+
+  <div class="card_body">
+    <div class="d-flex justify-content-between mb-3">
+      <div class="mx-1">
+<!--        <p class="number_request mb-1 " >{{requestStatus}}</p>-->
+        <p class="name_user bold mb-2">{{studentProgramVacationStudentViewModel.progName}}</p>
+<!--        <p class="program_user bold mb-2 "> {{studentSubscripModel.progName}}</p>-->
+        <p class="program_user bold mb-0 ">
+        <p>
+          <span> {{'STUDENT_VACATION.VACATION_DATE' | translate}} </span><span>{{'STUDENT_VACATION.FROM' | translate}}</span> {{studentProgramVacationStudentViewModel.vacStartDate  | date: 'dd/MM/yyyy'}}  <span>{{'STUDENT_VACATION.TO' | translate}}</span> {{studentProgramVacationStudentViewModel.vacEndDate  | date: 'dd/MM/yyyy'}}
+        </p>
+        <p class="program_user bold mb-0" >
+
+        <p *ngIf="studentProgramVacationStudentViewModel.statusEnum==studentProgramVacationStatus.Rejected"><span> {{'STUDENT_VACATION.REJECT_REASON' | translate}} </span> : {{studentProgramVacationStudentViewModel.rejReason}}</p>
+      </div>
+      <div class="d-flex">
+        <div class="circleStatus" [ngClass]="{ 'accept' : studentProgramVacationStudentViewModel.statusEnum == studentProgramVacationStatus.Accept ,
+        'pending' : studentProgramVacationStudentViewModel.statusEnum == studentProgramVacationStatus.Pending , 'rejected' : studentProgramVacationStudentViewModel.statusEnum == studentProgramVacationStatus.Rejected
+        }"></div> <p class="number_request mb-1 " >{{requestStatus}}</p>
+      </div>
+    </div>
+  </div>
+
+  <ng-container >
+    <div class="body_footer">
+      <button (click)="rejectedStudentReq()" [disabled]="!studentProgramVacationStudentViewModel.IsCancel" [ngClass]="{ 'negative' : !studentProgramVacationStudentViewModel.IsCancel }"
+              class="btn cancel-btn"> {{'STUDENT_SUBSCRIBERS.REJECT' | translate}}  </button>
+      <button (click)="acceptStudentReq()" [disabled]="!studentProgramVacationStudentViewModel.IsTerminate" [ngClass]="{ 'negative' : !studentProgramVacationStudentViewModel.IsTerminate }"
+              class=" btn save-btn"> {{'STUDENT_SUBSCRIBERS.ACCEPT' | translate}}  </button>
+    </div>
+  </ng-container>
+</div>

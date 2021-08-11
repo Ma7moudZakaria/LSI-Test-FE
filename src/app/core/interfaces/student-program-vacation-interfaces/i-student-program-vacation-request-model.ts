@@ -10,5 +10,5 @@ export interface IStudentProgramVacationRequestModel {
   sortOrder?: number;
   statusNum?: number;
   page: number;
-  stdId:string;
+  stdId?:string;
 }

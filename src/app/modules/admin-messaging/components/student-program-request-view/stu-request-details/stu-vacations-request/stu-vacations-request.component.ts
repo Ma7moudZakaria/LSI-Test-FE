@@ -11,16 +11,13 @@ import {IStudentProgramVacationModel} from '../../../../../../core/interfaces/st
 })
 export class StuVacationsRequestComponent implements OnInit {
 
-  @ViewChild(StudentVacationRequestTabComponent) stuRejectReq: StudentVacationRequestTabComponent | undefined;
-  @ViewChild(StudentVacationRequestTabComponent) advancedSearch: StudentVacationRequestTabComponent | undefined;
-  advancedSearchObjectpopup: IStudentProgramVacationFilterRequestModel = { statusNum: StudentProgramVacationStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
+  @ViewChild(StudentVacationRequestTabComponent) studentVacationRequestTab: StudentVacationRequestTabComponent | undefined;
   filter: IStudentProgramVacationFilterRequestModel = { statusNum: StudentProgramVacationStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
 
   showTap: string = 'Pending';
-  // roleEnum: RoleEnum = RoleEnum.Teacher;
   itemStuReq: IStudentProgramVacationModel = {};
-  openStuRejectOverlay: boolean = false
-  openStuAdvancedSearch: boolean = false
+  openStuRejectOverlay: boolean = false;
+  openStuAdvancedSearch: boolean = false;
 
   constructor() { }
 
@@ -33,31 +30,19 @@ export class StuVacationsRequestComponent implements OnInit {
   }
   closeRejectedRequest() {
     this.openStuRejectOverlay = !this.openStuRejectOverlay;
-    this.stuRejectReq?.getStudentProgramVacationRequests();
+    this.studentVacationRequestTab?.getStudentProgramVacationRequests();
 
-  }
-
-  closeOverlay() {
-    this.openStuRejectOverlay = false;
-    this.openStuAdvancedSearch = false;
-    this.advancedSearch?.getStudentProgramVacationRequests();
   }
 
   closeStuAdvancedSearch(event: IStudentProgramVacationFilterRequestModel) {
     this.openStuAdvancedSearch = false;
     this.filter = event
-    this.advancedSearch?.getStudentProgramVacationRequests();
+    this.studentVacationRequestTab?.getStudentProgramVacationRequests();
   }
-
 
   openStuAdvancedSearchPopup(event: IStudentProgramVacationFilterRequestModel) {
     this.openStuAdvancedSearch = true;
     this.filter = event
 
   }
-  advancedSearchObject(event: IStudentProgramVacationFilterRequestModel) {
-    this.filter = event
-  }
-
-
 }

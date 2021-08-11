@@ -10,7 +10,6 @@ import {IprogramsModel} from '../../../../../../../core/interfaces/programs-inte
 import {BaseConstantModel} from '../../../../../../../core/ng-model/base-constant-model';
 import {IStudentProgramVacationFilterRequestModel} from '../../../../../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-filter-request-model';
 import {StudentProgramVacationStatusEnum} from '../../../../../../../core/enums/StudentProgramVacationStatus/student-program-vacation-status.enum';
-import {IStudentProgramVacationModel} from '../../../../../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-model';
 
 @Component({
   selector: 'app-student-program-vacation-advanced-search',
@@ -19,17 +18,10 @@ import {IStudentProgramVacationModel} from '../../../../../../../core/interfaces
 })
 export class StudentProgramVacationAdvancedSearchComponent implements OnInit {
   @Output() closeAdvancedSearch = new EventEmitter<IStudentProgramVacationFilterRequestModel>();
-  // @Output() ReqAdvancedSearch = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
-  // @Input() filter: IStudentSubscriptionFilterRequestModel | undefined
   @Input() filter: IStudentProgramVacationFilterRequestModel = { statusNum: StudentProgramVacationStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
-  advancedSearchInputs = {} as IStudentProgramVacationFilterRequestModel
   resultMessage: BaseMessageModel = {};
-  studProgsSubsItems: IStudentProgramVacationModel[] = [];
-
-
   calenderType: BaseSelectedDateModel = new BaseSelectedDateModel();
   selectedDateType: any;
-  // maxHijriDate: NgbDateStruct | undefined;
   maxGregDate = this.dateFormatterService.GetTodayGregorian()
   typeDateBinding: any
   datafromBinding: any

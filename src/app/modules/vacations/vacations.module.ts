@@ -6,14 +6,16 @@ import { VacationsRequestsViewComponent } from './components/vacations-requests-
 import { StudentProgramListComponent } from './components/vacations-requests-view/student-program-list/student-program-list.component';
 import { StudentProgramVacationRequestsComponent } from './components/vacations-requests-view/student-program-vacation-requests/student-program-vacation-requests.component';
 import {TranslateModule} from '@ngx-translate/core';
+import {SharedModule} from '../../shared/shared.module';
 
 
 @NgModule({
   declarations: [VacationsRequestsViewComponent, StudentProgramListComponent, StudentProgramVacationRequestsComponent],
-  imports: [
-    CommonModule,
-    VacationsRoutingModule,
-    TranslateModule
-  ]
+    imports: [
+        CommonModule,
+        VacationsRoutingModule,
+        TranslateModule,
+        SharedModule
+    ]
 })
 export class VacationsModule { }

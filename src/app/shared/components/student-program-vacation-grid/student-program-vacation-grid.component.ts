@@ -6,6 +6,7 @@ import {RoleEnum} from '../../../core/enums/role-enum.enum';
 import {LanguageEnum} from '../../../core/enums/language-enum.enum';
 import {TranslateService} from '@ngx-translate/core';
 import {ExportationService} from '../../../core/services/exportation-services/exportation.service';
+import {StudentProgramVacationUsersEnum} from '../../../core/enums/StudentProgramVacationStatus/student-program-vacation-users.enum';
 
 @Component({
   selector: 'app-student-program-vacation-grid',
@@ -21,11 +22,11 @@ export class StudentProgramVacationGridComponent implements OnInit {
   @Output() acceptStudentProgramVacation = new EventEmitter<IStudentProgramVacationModel>();
   @Input() numberPerRow: number = 3;
   @Input() totalCount: number = 0;
-  @Input() userMode: RoleEnum = RoleEnum.Admin;
+  @Input() userMode: StudentProgramVacationUsersEnum = StudentProgramVacationUsersEnum.Admin;
   @Input() studentProgramVacationFilterRequestModel: IStudentProgramVacationFilterRequestModel = { skip: 0, take: 9, page: 1 };
   @Output() itemStuReq = new EventEmitter<IStudentProgramVacationModel>();
 
-  StudentProgramVacationUsers = RoleEnum;
+  StudentProgramVacationUsers = StudentProgramVacationUsersEnum;
   orderTypeToggel = 1;
   allSelected: boolean = false;
   stuTabTypeSelected = StudentProgramVacationStatusEnum;
@@ -34,6 +35,7 @@ export class StudentProgramVacationGridComponent implements OnInit {
                private exportationService: ExportationService) { }
 
   ngOnInit(): void {
+    console.log("user mode", this.userMode)
   }
 
   sortStudentByName() {

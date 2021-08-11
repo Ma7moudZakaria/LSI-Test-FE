@@ -69,6 +69,7 @@ import { TeacherSystemCardRequestComponent } from './components/teacher-system-c
 import { TeacherSystemSubscriptionGridComponent } from './components/teacher-system-subscription-grid/teacher-system-subscription-grid.component';
 import { StudentProgramVacationGridComponent } from './components/student-program-vacation-grid/student-program-vacation-grid.component';
 import { StudentProgramVacationCardAdminComponent } from './components/student-program-vacation-card-admin/student-program-vacation-card-admin.component';
+import { StudentProgramVacationCardStudentViewComponent } from './components/student-program-vacation-card-student-view/student-program-vacation-card-student-view.component';
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
     SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,
@@ -104,7 +105,8 @@ import { StudentProgramVacationCardAdminComponent } from './components/student-p
     TeacherSystemCardRequestComponent,
     TeacherSystemSubscriptionGridComponent,
     StudentProgramVacationGridComponent,
-    StudentProgramVacationCardAdminComponent],
+    StudentProgramVacationCardAdminComponent,
+    StudentProgramVacationCardStudentViewComponent],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,
