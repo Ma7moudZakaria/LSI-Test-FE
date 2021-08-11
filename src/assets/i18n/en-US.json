@@ -801,6 +801,15 @@
     "REJECT_REASON": "Rejection Reason"
   },
   "PROGRAM_BATCHES":{
-    "ADD_PROGRAM_BATCH":"Add Batch"
+    "BAT_NAME_EN":"English Batch Name",
+    "BAT_NAME_AR":"Arabic Batch Name",
+    "ADD_PROGRAM_BATCH":"Add Batch",
+    "ADD_BATCH":"Add New",
+    "FROM_DATE":"Subscription Start Date",
+    "TO_DATE":"Subscription End Date",
+    "SEND":"Save",
+    "CANCEL":"Close",
+    "TEACHERS":"Teachers",
+    "STUDENTS":"Students"
   }
 }

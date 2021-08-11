@@ -797,6 +797,15 @@
     "REJECT_REASON": "سبب الرفض"
   },
   "PROGRAM_BATCHES":{
-    "ADD_PROGRAM_BATCH":"اضافة دفعة"
+    "BAT_NAME_EN":"اسم الدفعة انجليزى",
+    "BAT_NAME_AR":"اسم الدفعة عربى ",
+    "ADD_PROGRAM_BATCH":"اضافة دفعة",
+    "ADD_BATCH":"اضافة جديدة",
+    "FROM_DATE":"تاريخ بداية الإشتراك",
+    "TO_DATE":"تاريخ نهاية الإشتراك",
+    "SEND":"خفظ",
+    "CANCEL":"الغاء",
+    "TEACHERS":"المعلمين",
+    "STUDENTS":"الطلاب"
   }
 }

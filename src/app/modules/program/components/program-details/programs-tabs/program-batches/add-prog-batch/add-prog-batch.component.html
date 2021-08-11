@@ -5,7 +5,7 @@
         {{'PROGRAM_BATCHES.ADD_PROGRAM_BATCH' | translate}}   
     </h3>
     <div class="form-group">
-        <label for="comment">Batch Name Ar</label>
+        <label for="comment">{{'PROGRAM_BATCHES.BAT_NAME_AR' | translate}} </label>
         <input class="form-control" formControlName="batchNameAr" 
         [ngClass]="{'red-border-class': f.batchNameAr.errors && ( f.batchNameAr.touched || isSubmit)}"/>
         <div *ngIf="f.batchNameAr.errors && (f.batchNameAr.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
@@ -14,7 +14,7 @@
           </div>
         </div>
 
-        <label for="comment">Batch Name En</label>
+        <label for="comment">{{'PROGRAM_BATCHES.BAT_NAME_EN' | translate}} </label>
         <input class="form-control" formControlName="batchNameEn" 
         [ngClass]="{'red-border-class': f.batchNameEn.errors && ( f.batchNameEn.touched || isSubmit)}"/>
         <div *ngIf="f.batchNameEn.errors && (f.batchNameEn.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
