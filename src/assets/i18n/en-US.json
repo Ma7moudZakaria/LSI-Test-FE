@@ -190,7 +190,8 @@
     "STUDENTS": "Students",
     "JOINING_EXAM": "Joining Exam",
     "DAYS": "Days",
-    "NOTIFACATION": "Notification"
+    "NOTIFACATION": "Notification",
+    "BATCHES":"Batches"
   },
   "PROGRAM_DAYS": {
     "DAYS": "Days",
@@ -799,5 +800,8 @@
     "TO": "To",
     "VACATION_REASON": "Vacation Reason",
     "REJECT_REASON": "Rejection Reason"
+  },
+  "PROGRAM_BATCHES":{
+    "ADD_PROGRAM_BATCH":"Add Batch"
   }
 }

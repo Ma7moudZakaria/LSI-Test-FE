@@ -1,0 +1,12 @@
+<div class="container-fluid">
+    <div class="row">
+        <a (click)="showAddBatchOverlay()">
+            {{ "PROGRAM_BATCHES.ADD_BATCH" | translate }} <i class="fas fa-plus"></i>
+          </a>
+    </div>
+    {{programDetails?.id}}
+    {{programDetails?.progBats?.length}}
+    <div *ngFor = 'let bat of programDetails?.progBats'>
+        {{bat.arBatName}}
+    </div>
+</div>

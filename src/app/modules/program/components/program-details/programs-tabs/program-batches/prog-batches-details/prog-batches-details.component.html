@@ -1,0 +1,13 @@
+
+<div class="row group_header fix_margin w-100">
+    <div class="item_group"
+    [ngClass]="{ item_group_active: showTap == 'teacher' }" >
+       {{'PROGRAM_BATCHES.TEACHERS' | translate}}
+    
+    </div>
+    <div class="item_group"
+    [ngClass]="{ item_group_active: showTap == 'student' }" >
+    {{'PROGRAM_BATCHES.STUDENTS' | translate}}
+       
+    </div> 
+</div>
