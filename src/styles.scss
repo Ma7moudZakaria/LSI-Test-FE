@@ -149,28 +149,13 @@ html, body {  height: 100%;}
   border-bottom-right-radius: 0;
 }
 
-// .UserLogin .input-group.has-validation>.input-group-append:nth-last-child(n+3)>.btn,
-// .input-group.has-validation>.input-group-append:nth-last-child(n+3)>.input-group-text,
-// .input-group:not(.has-validation)>.input-group-append:not(:last-child)>.btn,
-// .input-group:not(.has-validation)>.input-group-append:not(:last-child)>.input-group-text,
-// .input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle),
-//  .input-group>.input-group-append:last-child>.input-group-text:not(:last-child),
-//   .input-group>.input-group-prepend>.btn,
+
    .input-group>.input-group-prepend>.input-group-text:lang(ar) {
   border-top-right-radius: 0.65rem;
   border-bottom-right-radius: 0.65rem;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
-
-// .UserLogin .input-group:not(.has-validation)>.input-group-append:not(:last-child)>.input-group-text,
-//  .input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle),
-//  .input-group>.input-group-append:last-child>.input-group-text:not(:last-child),
-//   .input-group>.input-group-prepend>.btn,
-//    .input-group>.input-group-prepend>.input-group-text:lang(ar) {
-//   border-top-left-radius: 0;
-//   border-bottom-left-radius: 0;
-// }
 
 
 .mat-icon{
@@ -400,15 +385,6 @@ textarea{
 
   }
 }
-// .text-arabic{
-//   text-align: right;
-
-// }
-
-// .text-english{
-//   text-align: left;
-
-// }
 
 select.form-control {
   appearance: none;

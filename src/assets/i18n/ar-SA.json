@@ -188,7 +188,7 @@
     "JOINING_EXAM": "إختبارات الانضمام",
     "DAYS": "الأيام",
     "NOTIFACATION": "تنبيهات",
-    "BATCHES":"الدفعات"
+    "BATCHES": "الدفعات"
   },
   "PROGRAM_DAY_TASKS": {
     "TASKS": "المهام",
@@ -506,12 +506,18 @@
     "MYPROGRAMS": "برامجى",
     "SCIENTIFIC_ARTICLES": "المواد العلمية",
     "VACATION_REQUEST": "المراسلات",
+    "VACATION": "الاجازات",
     "EXAM_RESULTS": "نتائج الامتحانات",
+    "RESULTS": "الطلبات",
+    "PRINT_CERTIFICATION": "طباعه الشهادات",
     "WITHDRAWAL_REQUESTS": "طلبات الانسجاب",
     "SETTINGS": "الإعدادت",
     "CERTIFICATES": "الشهادات",
     "MY_MESSAGES": "المشاعر",
-    "QUESTION_BANK": "بنك الأسئلة"
+    "SARD": "سرد",
+    "REQUEST": "الطلبات",
+    "QUESTION_BANK": "بنك الأسئلة",
+    "WORK_AGENDA": "اجندة العمل"
   },
   "VIEW_USER_PROFILE_PG": {
     "PERSONAL_PROFILE": "الملف الشخصي",
@@ -782,9 +788,9 @@
   },
   "TEACHER_SYSTEM_SUBSCRIPTION": {
     "REQUEST_DATE": "تاريخ الطلب",
-    "MEETING":"المقابلة",
-    "REJECT":"رفض",
-    "ACCEPT":"قبول"
+    "MEETING": "المقابلة",
+    "REJECT": "رفض",
+    "ACCEPT": "قبول"
   },
   "STUDENT_VACATION": {
     "NEW_VACATION_REQUESTS": "طلبات الاجازات الجديدة",
@@ -796,16 +802,27 @@
     "VACATION_REASON": "سبب الاجازة",
     "REJECT_REASON": "سبب الرفض"
   },
-  "PROGRAM_BATCHES":{
-    "BAT_NAME_EN":"اسم الدفعة انجليزى",
-    "BAT_NAME_AR":"اسم الدفعة عربى ",
-    "ADD_PROGRAM_BATCH":"اضافة دفعة",
-    "ADD_BATCH":"اضافة جديدة",
-    "FROM_DATE":"تاريخ بداية الإشتراك",
-    "TO_DATE":"تاريخ نهاية الإشتراك",
-    "SEND":"خفظ",
-    "CANCEL":"الغاء",
-    "TEACHERS":"المعلمين",
-    "STUDENTS":"الطلاب"
+  "PROGRAM_BATCHES": {
+    "BAT_NAME_EN": "اسم الدفعة انجليزى",
+    "BAT_NAME_AR": "اسم الدفعة عربى ",
+    "ADD_PROGRAM_BATCH": "اضافة دفعة",
+    "ADD_BATCH": "اضافة جديدة",
+    "FROM_DATE": "تاريخ بداية الإشتراك",
+    "TO_DATE": "تاريخ نهاية الإشتراك",
+    "SEND": "خفظ",
+    "CANCEL": "الغاء",
+    "TEACHERS": "المعلمين",
+    "STUDENTS": "الطلاب"
+  },
+  "TEACHER_STUDENT_FOR_DETAILS": {
+    "PROG_IDEA": "فكرة البرنامج",
+    "PROG_GOAL": "أهداف البرنامج",
+    "PROG_VISION": "رؤية البرنامج",
+    "PROG_METHOD": "طريقة البرنامج",
+    "TERMS_AND_CONDITION": "الشروط والأحكام",
+    "PLEDG_TEXT": "نص التعهد",
+    "PROG_FEATURES": "مميزات البرنامج",
+    "PROG_PARTS": "عدد الأجزاء المطلوبة",
+    "PROG_DURA": "مدة البرنامج باليوم"
   }
 }

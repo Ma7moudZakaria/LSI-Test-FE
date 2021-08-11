@@ -191,7 +191,7 @@
     "JOINING_EXAM": "Joining Exam",
     "DAYS": "Days",
     "NOTIFACATION": "Notification",
-    "BATCHES":"Batches"
+    "BATCHES": "Batches"
   },
   "PROGRAM_DAYS": {
     "DAYS": "Days",
@@ -505,12 +505,18 @@
     "MYPROGRAMS": "Myprograms",
     "SCIENTIFIC_ARTICLES": "Scientific Materials",
     "VACATION_REQUEST": "My Messages",
+    "VACATION": "Vacation",
     "EXAM_RESULTS": "Exam Results",
+    "RESULTS": "RESULTS",
+    "PRINT_CERTIFICATION": "Print certification",
     "WITHDRAWAL_REQUESTS": "Withdrawal Req.",
     "CERTIFICATES": "Certificates",
     "SETTINGS": "Settings",
     "MY_MESSAGES": "Feeling",
     "QUESTION_BANK": "Question Bank",
+    "SARD": "Sard",
+    "REQUEST": "Request",
+    "WORK_AGENDA": "Work agenda",
     "SHORT_DESCRIPTION_AR_MAX_LENGHT": "Arabic short description must be less than or equal 200 character",
     "SHORT_DESCRIPTION_EN_MAX_LENGHT": "English short description must be less than or equal 200 character",
     "LONG_DESCRIPTION_AR_MAX_LENGHT": "Arabic long description must be less than or equal 1000 character",
@@ -786,9 +792,9 @@
   },
   "TEACHER_SYSTEM_SUBSCRIPTION": {
     "REQUEST_DATE": "Request Date",
-    "MEETING":"Meeting",
-    "REJECT":"Reject",
-    "ACCEPT":"Accept"
+    "MEETING": "Meeting",
+    "REJECT": "Reject",
+    "ACCEPT": "Accept"
   },
   "STUDENT_VACATION": {
     "NEW_VACATION_REQUESTS": "New Vacation requests",
@@ -800,16 +806,27 @@
     "VACATION_REASON": "Vacation Reason",
     "REJECT_REASON": "Rejection Reason"
   },
-  "PROGRAM_BATCHES":{
-    "BAT_NAME_EN":"English Batch Name",
-    "BAT_NAME_AR":"Arabic Batch Name",
-    "ADD_PROGRAM_BATCH":"Add Batch",
-    "ADD_BATCH":"Add New",
-    "FROM_DATE":"Subscription Start Date",
-    "TO_DATE":"Subscription End Date",
-    "SEND":"Save",
-    "CANCEL":"Close",
-    "TEACHERS":"Teachers",
-    "STUDENTS":"Students"
+  "PROGRAM_BATCHES": {
+    "BAT_NAME_EN": "English Batch Name",
+    "BAT_NAME_AR": "Arabic Batch Name",
+    "ADD_PROGRAM_BATCH": "Add Batch",
+    "ADD_BATCH": "Add New",
+    "FROM_DATE": "Subscription Start Date",
+    "TO_DATE": "Subscription End Date",
+    "SEND": "Save",
+    "CANCEL": "Close",
+    "TEACHERS": "Teachers",
+    "STUDENTS": "Students"
+  },
+  "TEACHER_STUDENT_FOR_DETAILS": {
+    "PROG_IDEA": "Program Idea",
+    "PROG_GOAL": "Program Goals",
+    "PROG_VISION": "Program Vision",
+    "PROG_METHOD": "Program Method",
+    "TERMS_AND_CONDITION": "Terms And Conditions",
+    "PLEDG_TEXT": "Pledge Text",
+    "PROG_FEATURES": "Program Features",
+    "PROG_PARTS": "Required Parts",
+    "PROG_DURA": "Program duration per day"
   }
 }

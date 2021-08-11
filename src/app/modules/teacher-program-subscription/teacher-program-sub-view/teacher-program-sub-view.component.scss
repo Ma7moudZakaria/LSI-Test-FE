@@ -1,0 +1,47 @@
+.group_header{
+    border-bottom:1px solid #CB9118;
+    .item_group{
+        cursor: pointer;
+        background-color: #EBEBEB;
+        font-size: .9rem;
+        color: #828282;
+        text-align: center;
+        margin: 0 4px;
+        padding: 10px 20px;
+        border-radius: 10px 10px 0  0;
+    }
+    .item_group_active{
+        background-color: #CB9118;
+        color: #FFFFFF;
+    }
+}
+
+.container-fluid{
+        background: #FBFBFB;
+        border-radius: 19px;
+        opacity: 1;
+        padding: 1rem;
+        margin-top: 1rem;
+        margin-bottom: 0;
+        width: 98%;
+        // height: 86vh; // i will change it 
+        // overflow-y: scroll;
+}
+.disableBlock{
+    display: block !important
+   }
+   // for show overlay in body
+.showoverlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+    display: none;
+
+  }
