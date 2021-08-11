@@ -1,57 +1,61 @@
-.teacher_programsub_details{
-     &:lang(ar){
-        text-align: right;
-    }
-    &:lang(en){
-        text-align: left;
-    }
 
-.profile_background{
-    background: url('../../../../../assets/images/student-program/yellowBac.png')!important;
-    height: 150px;
-    width: 100%;
-    border-radius: 12px;
-}
-.program_name{
-    color: #fff;
-    font-size: 1.75rem;
-    font-family:Almarai-Bold;
 
-}
-.head{
-    color: #3A3A3A;
-    font-size: 1.125rem;
-    font-family:Almarai-Bold;
+@import '../../../student-program-subscription/student-program-sub-view/student-program-sub-details/student-program-sub-details.component.scss'
 
-}
-.details{
-    color: #000000;
-    font-size: 14px;
-    font-family: Almarai-Regular;
-}
+// .teacher_programsub_details{
+//      &:lang(ar){
+//         text-align: right;
+//     }
+//     &:lang(en){
+//         text-align: left;
+//     }
 
-.time_pro,.az_count{
-    font-size: 0.56rem;
-    font-family:Almarai-Bold;
-    color: #3A3A3A;
-}.count
-{
-    font-family:Almarai-Bold;
-    font-size: 15px;
-    color:#8E2520
-}
-.slash{
-    border: .8px solid #707070;
-    height: 22px;
-}
+// .profile_background{
+//     background: url('../../../../../assets/images/student-program/yellowBac.png')!important;
+//     height: 150px;
+//     width: 100%;
+//     border-radius: 12px;
+// }
+// .program_name{
+//     color: #fff;
+//     font-size: 1.75rem;
+//     font-family:Almarai-Bold;
 
-.card_over_img
-{
+// }
+// .head{
+//     color: #3A3A3A;
+//     font-size: 1.125rem;
+//     font-family:Almarai-Bold;
 
-    background: #F4F5F7;
-    top: -1rem;
-    left: -31px;
-    border-radius: 12px;
-}
+// }
+// .details{
+//     color: #000000;
+//     font-size: 14px;
+//     font-family: Almarai-Regular;
+// }
 
-}
+// .time_pro,.az_count{
+//     font-size: 0.56rem;
+//     font-family:Almarai-Bold;
+//     color: #3A3A3A;
+// }.count
+// {
+//     font-family:Almarai-Bold;
+//     font-size: 15px;
+//     color:#8E2520
+// }
+// .slash{
+//     border: .8px solid #707070;
+//     height: 22px;
+// }
+
+// .card_over_img
+// {
+
+//     background: #F4F5F7;
+//     top: -1rem;
+//     left: -31px;
+//     border-radius: 12px;
+// }
+
+// }

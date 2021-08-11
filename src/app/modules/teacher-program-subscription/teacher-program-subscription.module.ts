@@ -7,6 +7,7 @@ import { TeacherProgramSubViewComponent } from './teacher-program-sub-view/teach
 import { SharedModule } from '../../shared/shared.module';
 import { TeacherProgramSubDetailsComponent } from './teacher-program-sub-view/teacher-program-sub-details/teacher-program-sub-details.component';
 import { TeacherSubmitSubscriptionComponent } from './teacher-program-sub-view/teacher-submit-subscription/teacher-submit-subscription.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -14,7 +15,7 @@ import { TeacherSubmitSubscriptionComponent } from './teacher-program-sub-view/t
   imports: [
     CommonModule,
     TeacherProgramSubscriptionRoutingModule,
-    SharedModule,
+    SharedModule, TranslateModule
   ]
 })
 export class TeacherProgramSubscriptionModule { }

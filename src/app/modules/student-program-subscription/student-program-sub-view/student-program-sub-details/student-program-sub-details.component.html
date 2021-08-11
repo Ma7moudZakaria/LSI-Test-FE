@@ -11,15 +11,15 @@
           <div class="program__details--inner">
             <h6 class="program__details--inner--text">{{'TEACHER_STUDENT_FOR_DETAILS.PROG_PARTS' | translate}}</h6>
             <span class="program__details--inner--num">{{programsForSubscriptionsDetails?.parts}}</span>
-            <span class="program__details--inner--num" *ngIf="!programsForSubscriptionsDetails?.parts">
-              0</span>
+            <span class="program__details--inner--num"
+            *ngIf="programsForSubscriptionsDetails?.parts == undefined">0 </span>
           </div>
           <div class="program__details--slash"></div>
           <div class="program__details--inner">
             <h6 class="program__details--inner--text">{{'TEACHER_STUDENT_FOR_DETAILS.PROG_DURA' | translate}}</h6>
             <span class="program__details--inner--num">{{programsForSubscriptionsDetails?.prgDura}}</span>
-            <span class="program__details--inner--num" *ngIf="!programsForSubscriptionsDetails?.prgDura">
-              0</span>
+            <span class="program__details--inner--num"
+            *ngIf="programsForSubscriptionsDetails?.prgDura == undefined">0 </span>
           </div>
         </div>
       </div>
