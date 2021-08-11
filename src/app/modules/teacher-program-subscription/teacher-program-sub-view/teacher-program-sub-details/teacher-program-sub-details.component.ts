@@ -1,3 +1,4 @@
+import { Iuser } from './../../../../core/interfaces/user-interfaces/iuser';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IProgramSubscriptionDetails } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iprogram-subscription-details';
@@ -18,9 +19,10 @@ export class TeacherProgramSubDetailsComponent implements OnInit {
   errorMessage?: string;
   resMessage: BaseMessageModel = {};
   programsForSubscriptionsDetails: IProgramSubscriptionDetails | undefined;
-  submitSubscritionModel: ITeacherSubmitSubscriptinoModel = [];
+  submitSubscritionModel = {} as ITeacherSubmitSubscriptinoModel;
+  disabledCheck: boolean = true
+  currentUser: Iuser | undefined;
 
-  // test
   constructor(
     private teacherProgramSubscriptionServicesService: TeacherProgramSubscriptionServicesService,
     private route: ActivatedRoute, private alertify: AlertifyService
@@ -28,6 +30,7 @@ export class TeacherProgramSubDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.programSubscriptionId = this.route.snapshot.params.id
+    this.currentUser = JSON.parse(localStorage.getItem('user') || '{}') as Iuser;
     this.getSubscriptionProgramDetails()
   }
   getSubscriptionProgramDetails() {
@@ -51,7 +54,6 @@ export class TeacherProgramSubDetailsComponent implements OnInit {
       })
   }
 
-  disabledCheck: boolean = true
   checkConditions(event: any) {
 
     if (event.checked) {
@@ -64,12 +66,20 @@ export class TeacherProgramSubDetailsComponent implements OnInit {
 
 
   }
+
   submetSubscriptionProgramDetails() {
+
+    // console.log('this.submitSubscritionModel', this.submitSubscritionModel);
+
+    this.submitSubscritionModel.batId = this.programsForSubscriptionsDetails?.batId || '';
+    this.submitSubscritionModel.usrId = this.currentUser?.id || '';
+
+
     this.teacherProgramSubscriptionServicesService.submitTeacherSubscription(this.submitSubscritionModel).subscribe(
       res => {
         if (res.isSuccess) {
-          // this.programsForSubscriptionsDetails = res.data as IProgramSubscriptionDetails;
-          this.alertify.success(res.message || '');
+          // this.alertify.success(res.message || '');
+          // console.log('this.submitSubscritionModel', this.submitSubscritionModel)
         }
         else {
           this.resMessage = {
