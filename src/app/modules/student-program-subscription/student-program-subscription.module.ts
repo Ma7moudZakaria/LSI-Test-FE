@@ -8,10 +8,13 @@ import { SubscriptionSubmitComponent } from './student-program-sub-view/subscrip
 import { StudentProgramSubDetailsComponent } from './student-program-sub-view/student-program-sub-details/student-program-sub-details.component';
 import {SharedModule} from '../../shared/shared.module';
 import {TranslateModule} from '@ngx-translate/core';
+import { PredefinedConditionOverlayComponent } from './student-program-sub-view/predefined-condition-overlay/predefined-condition-overlay.component';
+import { JoiningExamOverlayComponent } from './student-program-sub-view/joining-exam-overlay/joining-exam-overlay.component';
+import { CustomConditionOverlayComponent } from './student-program-sub-view/custom-condition-overlay/custom-condition-overlay.component';
 
 
 @NgModule({
-  declarations: [StudentProgramSubViewComponent, StudentProgramsComponent, SubscriptionSubmitComponent, StudentProgramSubDetailsComponent],
+  declarations: [StudentProgramSubViewComponent, StudentProgramsComponent, SubscriptionSubmitComponent, StudentProgramSubDetailsComponent, PredefinedConditionOverlayComponent, JoiningExamOverlayComponent, CustomConditionOverlayComponent],
   imports: [
     CommonModule,
     StudentProgramSubscriptionRoutingModule,
