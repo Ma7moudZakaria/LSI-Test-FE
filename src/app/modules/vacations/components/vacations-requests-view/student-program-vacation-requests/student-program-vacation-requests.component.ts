@@ -8,6 +8,7 @@ import {IUser} from '../../../../../core/interfaces/auth-interfaces/iuser-model'
 import {IStudentProgramVacationStudentViewModel} from '../../../../../core/interfaces/student-program-vacation-interfaces/istudent-program-vacation-student-view-model';
 import {IprogramsModel} from '../../../../../core/interfaces/programs-interfaces/iprograms-model';
 import {IStudentPrograms} from '../../../../../core/interfaces/student-program-vacation-interfaces/istudent-programs';
+import {IStudentProgramVacationModel} from '../../../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-model';
 
 @Component({
   selector: 'app-student-program-vacation-requests',
