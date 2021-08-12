@@ -16,7 +16,11 @@
                                            [studentVacationItems]='studentProgramVacationRequestsList'
                                            [numberPerRow]='numberItemsPerRow'
                                            [totalCount]='totalCount'
-                                           [studentVacationFilterRequestModel]='studentProgramVacationFilterRequestModel'>
+                                           [studentVacationFilterRequestModel]='studentProgramVacationFilterRequestModel'
+                                           (cancelStudentProgramVacation)="CancelStudentProgramVacation($event)"
+                                           (terminateStudentProgramVacation)="TerminateStudentProgramVacation($event)"
+        >
+
         </app-student-program-vacation-grid>
         <div *ngIf='studentProgramVacationRequestsList.length === 0'>
           {{ 'GENERAL.NO_DATA' | translate}}

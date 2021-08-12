@@ -40,11 +40,11 @@ export class StudentProgramVacationServicesService {
     return this.http.put<BaseResponseModel>(this.studentProgramVacationAcceptanceURL, model);
   }
 
-  cancelStudentProgramVacation(id: string): Observable<BaseResponseModel> {
+  cancelStudentProgramVacation(id?: string): Observable<BaseResponseModel> {
     return this.http.put<BaseResponseModel>(this.cancelStudentProgramVacationURL, id);
   }
 
-  terminateStudentProgramVacation(id: string): Observable<BaseResponseModel> {
+  terminateStudentProgramVacation(id?: string): Observable<BaseResponseModel> {
     return this.http.put<BaseResponseModel>(this.terminateStudentProgramVacationURL, id);
   }
 

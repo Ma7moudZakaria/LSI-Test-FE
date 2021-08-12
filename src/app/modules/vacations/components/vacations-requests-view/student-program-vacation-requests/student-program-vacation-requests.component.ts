@@ -6,7 +6,6 @@ import {AlertifyService} from '../../../../../core/services/alertify-services/al
 import {IStudentProgramVacationRequestModel} from '../../../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-request-model';
 import {IUser} from '../../../../../core/interfaces/auth-interfaces/iuser-model';
 import {IStudentProgramVacationStudentViewModel} from '../../../../../core/interfaces/student-program-vacation-interfaces/istudent-program-vacation-student-view-model';
-import {IprogramsModel} from '../../../../../core/interfaces/programs-interfaces/iprograms-model';
 import {IStudentPrograms} from '../../../../../core/interfaces/student-program-vacation-interfaces/istudent-programs';
 import {IStudentProgramVacationModel} from '../../../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-model';
 
@@ -22,7 +21,9 @@ export class StudentProgramVacationRequestsComponent implements OnInit {
   currentUser: IUser | undefined;
   studentProgramVacationFilterRequestModel: IStudentProgramVacationRequestModel = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
   @Input() programModel: IStudentPrograms | undefined;
-  @Output() refreshCardEvent = new EventEmitter<IStudentPrograms>();
+  @Output() itemStuReq = new EventEmitter<IStudentProgramVacationModel>();
+
+  // @Output() refreshCardEvent = new EventEmitter<IStudentPrograms>();
 
   constructor( public translate: TranslateService,
                private programVacationServicesService: StudentProgramVacationServicesService,
@@ -57,8 +58,40 @@ export class StudentProgramVacationRequestsComponent implements OnInit {
     this.studentProgramVacationFilterRequestModel.usrName = searchKey;
     this.getStudentProgramVacationRequestsStudentView();
   }
-  refreshProgList(){
-    this.refreshCardEvent.emit();
+  // refreshProgList(){
+  //   this.refreshCardEvent.emit();
+  // }
+
+  CancelStudentProgramVacation(studentProgramVacationStudentViewModel: IStudentProgramVacationStudentViewModel) {
+    this.programVacationServicesService.cancelStudentProgramVacation(studentProgramVacationStudentViewModel.id).subscribe(res => {
+        var response = <BaseResponseModel>res;
+        if (response.isSuccess) {
+          this.alertify.success(res.message || '');
+          this.getStudentProgramVacationRequestsStudentView();
+          console.log("222222222")
+        }
+        else {
+          this.alertify.error(res.message || '');
+        }
+      },
+      error => {
+        console.log(error);
+      });
   }
 
+  TerminateStudentProgramVacation(studentProgramVacationStudentViewModel: IStudentProgramVacationStudentViewModel) {
+    this.programVacationServicesService.terminateStudentProgramVacation(studentProgramVacationStudentViewModel.id).subscribe(res => {
+        var response = <BaseResponseModel>res;
+        if (response.isSuccess) {
+          this.alertify.success(res.message || '');
+          this.getStudentProgramVacationRequestsStudentView();
+        }
+        else {
+          this.alertify.error(res.message || '');
+        }
+      },
+      error => {
+        console.log(error);
+      });
+  }
 }

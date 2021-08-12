@@ -31,7 +31,6 @@ export class StudentProgramVacationCardStudentViewComponent implements OnInit {
 
   cancelStudentReq() {
     this.CancelStudentVacationRequest.emit(this.studentProgramVacationStudentViewModel);
-    // console.log("rejected",this.studentSubscripModel )
   }
   terminateStudentReq() {
     this.TerminateStudentVacationRequest.emit(this.studentProgramVacationStudentViewModel);

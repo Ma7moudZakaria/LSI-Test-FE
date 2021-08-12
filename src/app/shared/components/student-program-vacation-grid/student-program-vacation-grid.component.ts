@@ -2,12 +2,11 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IStudentProgramVacationModel} from '../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-model';
 import {StudentProgramVacationStatusEnum} from '../../../core/enums/StudentProgramVacationStatus/student-program-vacation-status.enum';
 import {IStudentProgramVacationFilterRequestModel} from '../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-filter-request-model';
-import {RoleEnum} from '../../../core/enums/role-enum.enum';
 import {LanguageEnum} from '../../../core/enums/language-enum.enum';
 import {TranslateService} from '@ngx-translate/core';
 import {ExportationService} from '../../../core/services/exportation-services/exportation.service';
-import {StudentProgramVacationUsersEnum} from '../../../core/enums/StudentProgramVacationStatus/student-program-vacation-users.enum';
 import {IUser} from '../../../core/interfaces/auth-interfaces/iuser-model';
+import {IStudentProgramVacationStudentViewModel} from '../../../core/interfaces/student-program-vacation-interfaces/istudent-program-vacation-student-view-model';
 
 @Component({
   selector: 'app-student-program-vacation-grid',
@@ -24,7 +23,9 @@ export class StudentProgramVacationGridComponent implements OnInit {
   @Input() numberPerRow: number = 3;
   @Input() totalCount: number = 0;
   @Input() studentProgramVacationFilterRequestModel: IStudentProgramVacationFilterRequestModel = { skip: 0, take: 9, page: 1 };
-  @Output() itemStuReq = new EventEmitter<IStudentProgramVacationModel>();
+  @Output() itemStuReq = new EventEmitter<IStudentProgramVacationStudentViewModel>();
+  @Output() terminateStudentProgramVacation = new EventEmitter<IStudentProgramVacationStudentViewModel>();
+  @Output() cancelStudentProgramVacation = new EventEmitter<IStudentProgramVacationStudentViewModel>();
 
   orderTypeToggel = 1;
   allSelected: boolean = false;
@@ -98,12 +99,12 @@ export class StudentProgramVacationGridComponent implements OnInit {
     this.acceptStudentProgramVacation.emit(event)
 
   }
-  cancelStuRequest(event: IStudentProgramVacationModel) {
-    this.itemStuReq.emit(event)
+  cancelStuRequest(event: IStudentProgramVacationStudentViewModel) {
+    this.cancelStudentProgramVacation.emit(event)
 
   }
-  terminateStuRequest(event: IStudentProgramVacationModel) {
-    this.acceptStudentProgramVacation.emit(event)
+  terminateStuRequest(event: IStudentProgramVacationStudentViewModel) {
+    this.terminateStudentProgramVacation.emit(event)
 
   }
   acceptAllStudentProgramSubscriptionChechedEvent() {
