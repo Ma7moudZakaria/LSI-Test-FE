@@ -10,13 +10,20 @@ import { TeacherRequestsViewComponent } from './teacher-requests-view/teacher-re
 import { TeacherRequestsViewListComponent } from './teacher-requests-view/teacher-requests-view-list/teacher-requests-view-list.component';
 import { TeacherRequestsViewDetailsComponent } from './teacher-requests-view/teacher-requests-view-details/teacher-requests-view-details.component';
 import { TeacherJoinRequestComponent } from './teacher-requests-view/teacher-requests-view-details/teacher-join-request/teacher-join-request.component';
-import { TeacherDropOutRequestComponent } from './teacher-requests-view/teacher-requests-view-details/teacher-drop-out-request/teacher-drop-out-request.component';
 import { AddDropOutRequestComponent } from './teacher-requests-view/teacher-requests-view-details/teacher-drop-out-request/add-drop-out-request/add-drop-out-request.component';
 import { DropOutRequestGridComponent } from './teacher-requests-view/teacher-requests-view-details/teacher-drop-out-request/drop-out-request-grid/drop-out-request-grid.component';
+import { TeacherDropOutRequestComponent } from './teacher-requests-view/teacher-requests-view-details/teacher-drop-out-request/teacher-drop-out-request.component';
+
 
 
 @NgModule({
-  declarations: [TeacherRequestsViewComponent, TeacherRequestsViewListComponent, TeacherRequestsViewDetailsComponent, TeacherJoinRequestComponent, TeacherDropOutRequestComponent, AddDropOutRequestComponent, DropOutRequestGridComponent],
+  declarations: [TeacherRequestsViewComponent, 
+    TeacherRequestsViewListComponent, 
+    TeacherRequestsViewDetailsComponent,    
+    TeacherJoinRequestComponent,
+    TeacherDropOutRequestComponent, 
+    AddDropOutRequestComponent, 
+    DropOutRequestGridComponent],
   imports: [
     CommonModule,
     FormsModule,

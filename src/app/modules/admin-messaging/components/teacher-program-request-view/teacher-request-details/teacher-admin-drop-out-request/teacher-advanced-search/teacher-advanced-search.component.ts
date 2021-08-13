@@ -2,14 +2,14 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TeacherDropOutRequestStatusEnum } from 'src/app/core/enums/drop-out-request-enums/teacher-drop-out-request-status.enum';
 import { IProgramFilterAdvancedRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-requests';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
-import { ITeacherDropOutRequestAdvFilterAdminViewRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-adv-filter-admin-view-request-model';
+import { ITeacherDropOutRequestAdvFilterAdminViewRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/iteacher-drop-out-request-adv-filter-admin-view-request-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseSelectedDateModel } from 'src/app/core/ng-model/base-selected-date-model';
 import { DateFormatterService } from 'ngx-hijri-gregorian-datepicker';
 import { TranslateService } from '@ngx-translate/core';
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
-import { ITeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-model';
+import { ITeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/iteacher-drop-out-request-model';
 
 
 @Component({
@@ -21,14 +21,14 @@ export class TeacherAdvancedSearchComponent implements OnInit {
 
   @Output() closeAdvancedSearch = new EventEmitter<ITeacherDropOutRequestAdvFilterAdminViewRequestModel>();
   @Input() filter: ITeacherDropOutRequestAdvFilterAdminViewRequestModel = { statusNum: TeacherDropOutRequestStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
-  advancedSearchInputs = {} as ITeacherDropOutRequestAdvFilterAdminViewRequestModel;
+  
+  
   resultMessage: BaseMessageModel = {};
-  studProgsSubsItems: ITeacherDropOutRequestModel[] = [];
   programsbyAdvancedFilter: IProgramFilterAdvancedRequest = { skip: 0, take: 2147483647 };
-  ProgramsList: IprogramsModel[] = [];
+  programsList: IprogramsModel[] = [];
   calenderType: BaseSelectedDateModel = new BaseSelectedDateModel();
   selectedDateType: any;
-  maxGregDate = this.dateFormatterService.GetTodayGregorian();
+  maxGregDate:any 
   typeDateBinding: any;
   datafromBinding: any;
   dataToBinding: any;
@@ -43,6 +43,7 @@ export class TeacherAdvancedSearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProgram();
+    this.maxGregDate = this.dateFormatterService.GetTodayGregorian();
   }
 
   SendDatafrom(data: any) {
@@ -94,7 +95,7 @@ export class TeacherAdvancedSearchComponent implements OnInit {
     this.programService.getProgramAdvancedFilter(this.programsbyAdvancedFilter || {}).subscribe(res => {
 
       if (res.isSuccess) {
-        this.ProgramsList = res.data;
+        this.programsList = res.data;
       }
       else {
 

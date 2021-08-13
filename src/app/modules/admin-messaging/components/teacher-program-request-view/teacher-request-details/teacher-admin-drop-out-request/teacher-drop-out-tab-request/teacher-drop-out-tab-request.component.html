@@ -28,7 +28,7 @@
             <app-teacher-drop-out-request-admin-grid *ngIf='showTap == statusEnum.Pending && teacherDropOutRequestList.length > 0' 
                 [teacherDropOutRequestItems]='teacherDropOutRequestList' 
                 (acceptTeacherDropOutRequest)="acceptTeacherDropOutRequest($event)"
-                (itemTeacherDropOutRequest)="rejectTeacherTeacherDropOutRequestRequestMethod($event)"
+                (itemTeacherDropOutRequestForReject)="rejectTeacherDropOutRequestMethod($event)"
                 [typeEnum]='statusEnum.Pending'
                 [totalCount]='totalCount'
                 [userMode]='userMode'

@@ -12,7 +12,7 @@
     </div>
     </div>
   
-    <div class="card_body" *ngIf="userRoleMode.Admin === userMode">
+    <div class="card_body">
       <div class="d-flex justify-content-between mb-3">
         <img *ngIf='!teacherDropOutRequestModel.avatarLink' class="img_user" src="../../../../assets/images/student/user-profile.svg">
         <img *ngIf='teacherDropOutRequestModel.avatarLink' class="img_user" src="{{teacherDropOutRequestModel.avatarLink}}" >
@@ -24,30 +24,8 @@
 
       </div>
     </div>
-
-    <div class="card_body" *ngIf="userRoleMode.Teacher === userMode">
-      <div class="d-flex justify-content-between mb-3" >
-        <!-- <img *ngIf='!teacherDropOutRequestModel.avatarLink' class="img_user" src="../../../../assets/images/student/user-profile.svg">
-        <img *ngIf='teacherDropOutRequestModel.avatarLink' class="img_user" src="{{teacherDropOutRequestModel.avatarLink}}" > -->
-      <div class="mx-1">
-        <p class="name_user bold mb-2">{{ teacherDropOutRequestModel?.huffazNumber}}</p>
-        <p class="name_user bold mb-2">{{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.teacherDropOutRequestNameEn : teacherDropOutRequestModel?.teacherDropOutRequestNameAr}}</p>
-        <p class="name_user bold mb-2">{{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.teacherNameEn : teacherDropOutRequestModel?.teacherNameAr}}</p>
-        <p class="program_user bold mb-2 "> {{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.enProgBatName : teacherDropOutRequestModel?.arProgBatName}}</p>
-        <p class="name_user bold mb-2" *ngIf="teacherDropOutRequestModel.reasonReject != null" >رد الادارة</p>
-        <p class="program_user bold mb-2 "*ngIf="teacherDropOutRequestModel.reasonReject != null"> تم رفض الطلب</p>
-        <p class="program_user bold mb-0 ">         
-      </div>
-      
-<span class="status" [ngClass]="{ 'accept' : teacherDropOutRequestModel.dropOutRequestStatusHuffaz == teacherDropOutRequestStatus.Accept ,
-                                  'pending' : teacherDropOutRequestModel.dropOutRequestStatusHuffaz == teacherDropOutRequestStatus.Pending , 
-                                  'rejected' : teacherDropOutRequestModel.dropOutRequestStatusHuffaz == teacherDropOutRequestStatus.Rejected
-}" 
-  ></span>
-      </div>
-    </div>
  
-  <ng-container *ngIf="typeEnum === typeDropOutRequestEnum.Pending && userRoleMode.Admin === userMode">
+  <ng-container *ngIf="typeEnum === typeDropOutRequestEnum.Pending">
     <div class="body_footer" >
         <button class="btn cancel-btn" (click)="acceptTeacherDropOutRequestEvent()"> {{'STUDENT_SUBSCRIBERS.ACCEPT' | translate}}   </button>
         <button  class=" btn save-btn"         
@@ -55,13 +33,5 @@
           [attr.disabled]="teacherDropOutRequestModel.checked" > {{'STUDENT_SUBSCRIBERS.REJECT' | translate}} </button>
       </div>
   </ng-container>
-
-  <!-- <ng-container *ngIf="typeEnum === typeDropOutRequestEnum.Pending && userRoleMode.Teacher === userMode">
-    <div class="body_footer" >
-        <button  class=" btn save-btn"         
-          (click)="rejectTeacherDropOutRequestEvent(teacherDropOutRequestModel)" 
-          [attr.disabled]="teacherDropOutRequestModel.checked" > {{'STUDENT_SUBSCRIBERS.REJECT' | translate}} </button>
-      </div>
-  </ng-container> -->
     
   </div>

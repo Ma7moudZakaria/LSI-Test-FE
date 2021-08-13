@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { DropOutRoleEnum } from 'src/app/core/enums/drop-out-request-enums/drop-out-status.enum';
 import { TeacherDropOutRequestStatusEnum } from 'src/app/core/enums/drop-out-request-enums/teacher-drop-out-request-status.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
-import { ITeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-model';
+import { ITeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/iteacher-drop-out-request-model';
 
 
 @Component({
@@ -15,12 +15,6 @@ export class TeacherDropOutRequestAdminCardComponent implements OnInit {
 
   @Output() rejectTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
   @Output() acceptTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
-  @Output() deleteTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
-  // @Output() editTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestAdminViewModel>();
-
-
-  @Input() userMode : DropOutRoleEnum | undefined ;
-  userRoleMode = DropOutRoleEnum;
 
   @Input() teacherDropOutRequestModel: ITeacherDropOutRequestModel = { totalRows : 0};
 
@@ -55,9 +49,5 @@ export class TeacherDropOutRequestAdminCardComponent implements OnInit {
   
   acceptTeacherDropOutRequestEvent(){
     this.acceptTeacherDropOutRequest.emit(this.teacherDropOutRequestModel);
-  }
-
-  deleteTeacherDropOutRequestEvent(teacherDropOutRequestAdminViewModel:ITeacherDropOutRequestModel){
-    this.deleteTeacherDropOutRequest.emit(teacherDropOutRequestAdminViewModel);
   }
 }

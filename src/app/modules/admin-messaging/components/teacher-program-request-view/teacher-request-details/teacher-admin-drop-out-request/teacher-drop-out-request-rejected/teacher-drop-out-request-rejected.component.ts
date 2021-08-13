@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
-import { IRejectTeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/reject-teacher-drop-out-request-model';
-import { ITeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-model';
+import { IRejectTeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/ireject-teacher-drop-out-request-model';
+import { ITeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/iteacher-drop-out-request-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
@@ -17,7 +17,7 @@ export class TeacherDropOutRequestRejectedComponent implements OnInit {
 
   @Output() closeRejectedRequest = new EventEmitter<ITeacherDropOutRequestModel>();
 
-  @Input() itemTeacherDropOutRequest: ITeacherDropOutRequestModel = {};
+  @Input() itemTeacherDropOutRequestForReject: ITeacherDropOutRequestModel = {};
 
   rejectRequest: IRejectTeacherDropOutRequestModel = {};
   resultMessage: BaseMessageModel = {};
@@ -37,8 +37,8 @@ export class TeacherDropOutRequestRejectedComponent implements OnInit {
 
   saveRejectRequest() {
     let model: IRejectTeacherDropOutRequestModel = {
-      teacherDropOutRequest: this.itemTeacherDropOutRequest.id,
-      reasonReject: this.itemTeacherDropOutRequest.reasonReject
+      teacherDropOutRequest: this.itemTeacherDropOutRequestForReject.id,
+      reasonReject: this.itemTeacherDropOutRequestForReject.reasonReject
     }
     
     if (model.reasonReject) {

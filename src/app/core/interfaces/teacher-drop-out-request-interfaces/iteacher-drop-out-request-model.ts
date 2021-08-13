@@ -16,7 +16,7 @@ export interface ITeacherDropOutRequestModel {
     reasonReject?:string;
     totalRows?: number;
     requestDate?:string;   
-    teacherDropOutRequestNameAr?:string;  
-    teacherDropOutRequestNameEn?:string;  
-    dropOutRequestStatusHuffaz?: number;
+    arTechStatusName?:string;  
+    enTechStatusName?:string;  
+    drpStat?: number;
 }

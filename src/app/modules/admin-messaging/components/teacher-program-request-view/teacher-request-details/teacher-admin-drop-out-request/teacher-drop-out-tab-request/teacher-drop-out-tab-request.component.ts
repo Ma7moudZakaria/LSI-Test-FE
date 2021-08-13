@@ -3,8 +3,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { DropOutRoleEnum } from 'src/app/core/enums/drop-out-request-enums/drop-out-status.enum';
 import { TeacherDropOutRequestStatusEnum } from 'src/app/core/enums/drop-out-request-enums/teacher-drop-out-request-status.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
-import { ITeacherDropOutRequestAdvFilterAdminViewRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-adv-filter-admin-view-request-model';
-import { ITeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-model';
+import { ITeacherDropOutRequestAdvFilterAdminViewRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/iteacher-drop-out-request-adv-filter-admin-view-request-model';
+import { ITeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/iteacher-drop-out-request-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
@@ -13,19 +13,19 @@ import { LanguageService } from 'src/app/core/services/language-services/languag
 import { TeacherDropOutRequestService } from 'src/app/core/services/teacher-drop-out-request-services/teacher-drop-out-request.service';
 
 @Component({
-  selector: 'app-teacher-quit-tab-request',
-  templateUrl: './teacher-quit-tab-request.component.html',
-  styleUrls: ['./teacher-quit-tab-request.component.scss']
+  selector: 'app-teacher-drop-out-tab-request',
+  templateUrl: './teacher-drop-out-tab-request.component.html',
+  styleUrls: ['./teacher-drop-out-tab-request.component.scss']
 })
-export class TeacherQuitTabRequestComponent implements OnInit {
+export class TeacherDropOutTabRequestComponent implements OnInit {
   
   @Output() rejectTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
   @Output() advancedSearchEvent = new EventEmitter<ITeacherDropOutRequestAdvFilterAdminViewRequestModel>();
   @Output() itemTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
-  // @Output() closeAdvancedSearch = new EventEmitter();
+  
   teacherDropOutRequestList: ITeacherDropOutRequestModel[] = [];
   teacherDropOutRequestFilterRequestModel: ITeacherDropOutRequestAdvFilterAdminViewRequestModel = { statusNum: TeacherDropOutRequestStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
-  errorMessage?: string;
+  resultMessage: BaseMessageModel = {};;
   totalCount = 0;
   numberItemsPerRow = 3;
   ids?: string[] = [];
@@ -33,7 +33,7 @@ export class TeacherQuitTabRequestComponent implements OnInit {
   showTap: TeacherDropOutRequestStatusEnum = TeacherDropOutRequestStatusEnum.Pending;
   statusEnum = TeacherDropOutRequestStatusEnum;
   userMode: DropOutRoleEnum = DropOutRoleEnum.Admin;
-  //teacherName:string='';
+  
   constructor(
     public translate: TranslateService,
     private teacherDropOutRequestService: TeacherDropOutRequestService,
@@ -60,22 +60,19 @@ export class TeacherQuitTabRequestComponent implements OnInit {
           this.teacherDropOutRequestFilterRequestModel.skip = (this.teacherDropOutRequestFilterRequestModel.page - 1) * this.teacherDropOutRequestFilterRequestModel.take;
           this.getTeacherDropOutRequests();
         }
-
-        // this.teacherDropOutRequestList?.forEach(function (item) {
-        // });
-        // this.totalCount = res.count ? res.count : 0;
-        // if (this.teacherDropOutRequestFilterRequestModel.skip > 0 && (!this.teacherDropOutRequestList || this.teacherDropOutRequestList.length === 0)) {
-        //   this.teacherDropOutRequestFilterRequestModel.page -= 1;
-        //   this.teacherDropOutRequestFilterRequestModel.skip = (this.teacherDropOutRequestFilterRequestModel.page - 1) * this.teacherDropOutRequestFilterRequestModel.take;
-        //   this.getTeacherDropOutRequests();
-        // }
       }
       else {
-        this.errorMessage = response.message;
+        this.resultMessage  = {
+          message: response.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       }
     },
       error => {
-        console.log(error);
+        this.resultMessage = {
+            message: error,
+            type: BaseConstantModel.DANGER_TYPE
+          }
       });
   }
 
@@ -111,12 +108,6 @@ export class TeacherQuitTabRequestComponent implements OnInit {
     this.teacherDropOutRequestFilterRequestModel.sortField='';
     this.teacherDropOutRequestFilterRequestModel.sortOrder= 1;
     this.teacherDropOutRequestFilterRequestModel.page = 1;
-    // this.closeAdvancedSearch.emit()
-  }
-
-  rejectTeacherTeacherDropOutRequest(event: ITeacherDropOutRequestModel) {
-    this.itemTeacherDropOutRequest.emit(event)
-    this.getTeacherDropOutRequests();
   }
 
   acceptAllTeacherDropOutRequestChecked() {
@@ -133,7 +124,10 @@ export class TeacherQuitTabRequestComponent implements OnInit {
       }
     },
       error => {
-        console.log(error);
+        this.resultMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       });
 
   }
@@ -141,25 +135,22 @@ export class TeacherQuitTabRequestComponent implements OnInit {
   teacherDropOutRequestPendingChangePage(event: ITeacherDropOutRequestAdvFilterAdminViewRequestModel) {
     this.teacherDropOutRequestFilterRequestModel.statusNum = TeacherDropOutRequestStatusEnum.Pending;
     this.teacherDropOutRequestFilterRequestModel = event;
-    console.log("this.teacherDropOutRequestFilterRequestModel ==========================>" , this.teacherDropOutRequestFilterRequestModel)
     this.getTeacherDropOutRequests();
   }
 
   teacherDropOutRequestAcceptChangePage(event: ITeacherDropOutRequestAdvFilterAdminViewRequestModel) {
     this.teacherDropOutRequestFilterRequestModel.statusNum = TeacherDropOutRequestStatusEnum.Accept;
     this.teacherDropOutRequestFilterRequestModel = event;
-    console.log("this.teacherDropOutRequestFilterRequestModel ==========================>" , this.teacherDropOutRequestFilterRequestModel)
     this.getTeacherDropOutRequests();
   }
 
   teacherDropOutRequestRejectChangePage(event: ITeacherDropOutRequestAdvFilterAdminViewRequestModel) {
     this.teacherDropOutRequestFilterRequestModel.statusNum = TeacherDropOutRequestStatusEnum.Rejected;
     this.teacherDropOutRequestFilterRequestModel = event;
-    console.log("this.teacherDropOutRequestFilterRequestModel ==========================>" , this.teacherDropOutRequestFilterRequestModel)
     this.getTeacherDropOutRequests();
   }
   
-  rejectTeacherTeacherDropOutRequestRequestMethod(event: ITeacherDropOutRequestModel) {
+  rejectTeacherDropOutRequestMethod(event: ITeacherDropOutRequestModel) {
     this.itemTeacherDropOutRequest.emit(event);
   }
 
@@ -180,37 +171,14 @@ export class TeacherQuitTabRequestComponent implements OnInit {
       }
     },
       error => {
-        console.log(error);
+        this.resultMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       });
-  }
-
-  teacherPendingChangePage(event: ITeacherDropOutRequestAdvFilterAdminViewRequestModel) {
-    this.teacherDropOutRequestFilterRequestModel.statusNum = TeacherDropOutRequestStatusEnum.Pending;
-    this.teacherDropOutRequestFilterRequestModel = event;
-    this.getTeacherDropOutRequests();
-
-  }
-
-  teacherAcceptChangePage(event: ITeacherDropOutRequestAdvFilterAdminViewRequestModel) {
-    this.teacherDropOutRequestFilterRequestModel.statusNum = TeacherDropOutRequestStatusEnum.Accept;
-    this.teacherDropOutRequestFilterRequestModel = event;
-    this.getTeacherDropOutRequests();
-
-  }
-
-  teacherRejectedChangePage(event: ITeacherDropOutRequestAdvFilterAdminViewRequestModel) {
-    this.teacherDropOutRequestFilterRequestModel.statusNum = TeacherDropOutRequestStatusEnum.Rejected;
-    this.teacherDropOutRequestFilterRequestModel = event;
-    this.getTeacherDropOutRequests();
-
   }
 
   openAvancedSearch() {
     this.advancedSearchEvent.emit(this.teacherDropOutRequestFilterRequestModel)
-  }
-
-  advancedSearch(model?: ITeacherDropOutRequestAdvFilterAdminViewRequestModel) {
-    this.teacherDropOutRequestFilterRequestModel = model || { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
-    this.getTeacherDropOutRequests();
   }
 }

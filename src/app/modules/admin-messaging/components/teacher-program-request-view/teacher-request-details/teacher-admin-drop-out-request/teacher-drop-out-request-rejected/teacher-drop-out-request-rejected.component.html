@@ -2,14 +2,14 @@
     <h3 class=" head  bold">{{ "STUDENT_SUBSCRIBERS.REJECTION_APPLICATION" | translate }} </h3>
     <div class="form-group">
         <label  class="label">
-            {{ "STUDENT_SUBSCRIBERS.TEACHER_REJECTED" | translate }}<span class="data_input"> {{ translate.currentLang == langEnum.en ? itemTeacherDropOutRequest?.teacherNameEn : itemTeacherDropOutRequest?.teacherNameAr}} </span> 
+            {{ "STUDENT_SUBSCRIBERS.TEACHER_REJECTED" | translate }}<span class="data_input"> {{ translate.currentLang == langEnum.en ? itemTeacherDropOutRequestForReject?.teacherNameEn : itemTeacherDropOutRequestForReject?.teacherNameAr}} </span> 
         </label>
         <label  class="label mt-4">
             {{ "STUDENT_SUBSCRIBERS.REJECTED_REASON" | translate }}
         </label>
 
         <textarea  class="form-control " cols="1"  rows="5" 
-        [(ngModel)]='itemTeacherDropOutRequest.reasonReject'  [ngModelOptions]="{standalone: true}" >
+        [(ngModel)]='itemTeacherDropOutRequestForReject.reasonReject'  [ngModelOptions]="{standalone: true}" >
         </textarea>
      
         <section class="mt-5">

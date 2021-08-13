@@ -8,7 +8,7 @@
     <div class="overlay" *ngIf="openTeacherDropOutRequestCreateOverlay">
         <app-add-drop-out-request
             (closeCreateDropOutOverlay)="closeCreateTeacherDropOutRequestOverlay($event)"
-            [filter]="filter"
+            [createDropOut]="createDropOut"
         ></app-add-drop-out-request>
     </div>
     

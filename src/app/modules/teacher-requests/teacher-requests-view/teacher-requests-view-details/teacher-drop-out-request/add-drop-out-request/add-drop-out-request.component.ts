@@ -4,8 +4,8 @@ import { TeacherDropOutRequestStatusEnum } from 'src/app/core/enums/drop-out-req
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { IProgramFilterAdvancedRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-requests';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
-import { ICrateTeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/create-teacher-drop-out-request-model';
-import { ITeacherDropOutRequestAdvFilterTeacherViewRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-adv-filter-teacher-view-request-model';
+import { ICrateTeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/icreate-teacher-drop-out-request-model';
+import { ITeacherDropOutRequestAdvFilterTeacherViewRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/iteacher-drop-out-request-adv-filter-teacher-view-request-model';
 import { ITeacherMyProgramsListModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iteacher-my-programs-list-model';
 import { ITeacherMyProgramsRequestModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iteacher-my-programs-request-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
@@ -22,9 +22,9 @@ import { TeacherProgramSubscriptionServicesService } from 'src/app/core/services
 export class AddDropOutRequestComponent implements OnInit {
 
   @Output() closeCreateDropOutOverlay = new EventEmitter<ICrateTeacherDropOutRequestModel>();
-  @Input() filter = {} as ICrateTeacherDropOutRequestModel;
+  @Input() createDropOut = {} as ICrateTeacherDropOutRequestModel;
   resultMessage: BaseMessageModel = {};
-  ProgramsList: ITeacherMyProgramsListModel[] = [];
+  programsList: ITeacherMyProgramsListModel[] = [];
   programsbyAdvancedFilter: ITeacherMyProgramsRequestModel = {};
   currentUser: IUser | undefined;
   
@@ -37,20 +37,21 @@ export class AddDropOutRequestComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
+    this.createDropOut = {}
     this.getAllProgram();
   }
 
   closeCreateTeacherDropOutRequest() {
-    this.filter.usrId = this.currentUser?.id;
-    this.filter.batId = undefined;
-    this.filter.rejectReason = undefined;
-    this.closeCreateDropOutOverlay.emit(this.filter);
+    this.createDropOut.usrId = this.currentUser?.id;
+    this.createDropOut.batId = undefined;
+    this.createDropOut.rejectReason = undefined;
+    this.closeCreateDropOutOverlay.emit();
   }
 
   sendDropOutRequest() {
-    this.teacherDropOutRequestService.createTeacherDropOutRequest(this.filter || {}).subscribe(res => {
+    this.createDropOut.usrId = this.currentUser?.id;
+    this.teacherDropOutRequestService.createTeacherDropOutRequest(this.createDropOut || {}).subscribe(res => {
       if (res.isSuccess) {
-       // this.closeCreateDropOutOverlay.emit();
         this.closeCreateTeacherDropOutRequest();
       }
       else{
@@ -74,10 +75,10 @@ export class AddDropOutRequestComponent implements OnInit {
     this.programsbyAdvancedFilter = { teacherId : this.currentUser?.id };
     this.programSubscriptionService.getTeacherPrograms(this.programsbyAdvancedFilter || {}).subscribe(res => {
 
+      console.log("res =====> ", res)
       if (res.isSuccess) {
-        this.ProgramsList = res.data;
+        this.programsList = res.data;
 
-        console.log("this.ProgramsList =====> ", this.ProgramsList)
       }
       else {
 

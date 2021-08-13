@@ -11,7 +11,6 @@ export class SidebarComponent implements OnInit {
   constructor(public roleService:RoleManagementService) { }
 
   ngOnInit(): void {
-    console.log("roleService.isTeacher() ========> " , this.roleService.isTeacher())
   }
 
 }

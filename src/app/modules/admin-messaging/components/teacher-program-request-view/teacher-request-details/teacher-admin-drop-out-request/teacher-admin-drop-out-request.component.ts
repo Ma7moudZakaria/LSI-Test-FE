@@ -1,21 +1,20 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TeacherDropOutRequestStatusEnum } from 'src/app/core/enums/drop-out-request-enums/teacher-drop-out-request-status.enum';
-import { ITeacherDropOutRequestAdvFilterAdminViewRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-adv-filter-admin-view-request-model';
-import { ITeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-model';
-import { TeacherQuitTabRequestComponent } from './teacher-quit-tab-request/teacher-quit-tab-request.component';
+import { ITeacherDropOutRequestAdvFilterAdminViewRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/iteacher-drop-out-request-adv-filter-admin-view-request-model';
+import { ITeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/iteacher-drop-out-request-model';
+import { TeacherDropOutTabRequestComponent } from './teacher-drop-out-tab-request/teacher-drop-out-tab-request.component';
 
 @Component({
-  selector: 'app-teacher-quit-request',
-  templateUrl: './teacher-quit-request.component.html',
-  styleUrls: ['./teacher-quit-request.component.scss']
+  selector: 'app-teacher-admin-drop-out-request',
+  templateUrl: './teacher-admin-drop-out-request.component.html',
+  styleUrls: ['./teacher-admin-drop-out-request.component.scss']
 })
-export class TeacherQuitRequestComponent implements OnInit {
+export class TeacherAdminDropOutRequestComponent implements OnInit {
 
-  showTap: string = 'new_request';
-  @ViewChild(TeacherQuitTabRequestComponent) teacherQuitTabRequestComponent: TeacherQuitTabRequestComponent | undefined;
+  @ViewChild(TeacherDropOutTabRequestComponent) teacherDropOutTabRequestComponent: TeacherDropOutTabRequestComponent | undefined;
   
   filter: ITeacherDropOutRequestAdvFilterAdminViewRequestModel = { statusNum: TeacherDropOutRequestStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
-  itemTeacherDropOutRequest: ITeacherDropOutRequestModel = {};
+  itemTeacherDropOutRequestForReject: ITeacherDropOutRequestModel = {};
   openTeacherDropOutRequestRejectOverlay: boolean = false;
   openTeacherDropOutRequestAdvancedSearch: boolean = false;
 
@@ -25,7 +24,7 @@ export class TeacherQuitRequestComponent implements OnInit {
   }
 
   openRejectRequest(event: ITeacherDropOutRequestModel) {
-    this.itemTeacherDropOutRequest = event;
+    this.itemTeacherDropOutRequestForReject = event;
     this.openTeacherDropOutRequestRejectOverlay = !this.openTeacherDropOutRequestRejectOverlay;
 
   }
@@ -33,7 +32,7 @@ export class TeacherQuitRequestComponent implements OnInit {
   closeTeacherDropOutRequestAdvancedSearch(event: ITeacherDropOutRequestAdvFilterAdminViewRequestModel) {
     this.openTeacherDropOutRequestAdvancedSearch = false;
     this.filter = event
-    this.teacherQuitTabRequestComponent?.getTeacherDropOutRequests();
+    this.teacherDropOutTabRequestComponent?.getTeacherDropOutRequests();
   }
 
   openTeacherDropOutRequestAdvancedSearchPopup(event: ITeacherDropOutRequestAdvFilterAdminViewRequestModel) {
@@ -44,7 +43,7 @@ export class TeacherQuitRequestComponent implements OnInit {
   
   closeRejectedRequest() {
     this.openTeacherDropOutRequestRejectOverlay = !this.openTeacherDropOutRequestRejectOverlay;
-    this.teacherQuitTabRequestComponent?.getTeacherDropOutRequests();
+    this.teacherDropOutTabRequestComponent?.getTeacherDropOutRequests();
   }
 
   closeOverlay() {

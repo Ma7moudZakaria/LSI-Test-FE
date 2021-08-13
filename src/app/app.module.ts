@@ -32,7 +32,6 @@ import { CmsHasUnsavedDataGuard } from './core/guards/cms-has-unsaved-data-guard
 import { WalkthroughHasUnsavedDataGuard } from './core/guards/walkthrough-has-unsaved-data-guard';
 import { UpdateTeacherProfileHasUnsavedDataGuard } from './core/guards/update-teacher-profile-has-unsaved-data-guard';
 import { UpdateUserProfileHasUnsavedDataGuard } from './core/guards/update-user-profile-has-unsaved-data-guard';
-import { TeacherQuitTabRequestComponent } from './modules/admin-messaging/components/teacher-program-request-view/teacher-request-details/teacher-quit-request/teacher-quit-tab-request/teacher-quit-tab-request.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);

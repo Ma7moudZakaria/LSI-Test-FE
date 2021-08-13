@@ -91,9 +91,7 @@
          [teacherDropOutRequestModel]='item' 
          (rejectTeacherDropOutRequest)="rejectTeacherDropOutRequestEvent($event)"
          (acceptTeacherDropOutRequest)="acceptTeacherDropOutRequestEvent($event)"
-         (deleteTeacherDropOutRequest)="deleteTeacherDropOutRequestEvent($event)"
          [typeEnum]='typeEnum' 
-         [userMode]="userMode"
          ></app-teacher-drop-out-request-admin-card>
         </mat-grid-tile>
     </ng-container>
@@ -102,13 +100,12 @@
 <mat-grid-list cols="{{numberPerRow}}" rowHeight="3:3"  *ngIf='userRoleMode.Teacher === userMode'>
     <ng-container >
         <mat-grid-tile *ngFor='let item of teacherDropOutRequestTeacherViewItems' >
-         <app-teacher-drop-out-request-admin-card class="card" 
+         <app-teacher-drop-out-request-teacher-card class="card" 
          [teacherDropOutRequestModel]='item' 
          (rejectTeacherDropOutRequest)="rejectTeacherDropOutRequestEvent($event)"
          (acceptTeacherDropOutRequest)="acceptTeacherDropOutRequestEvent($event)"
-         [userMode]="userMode"
          [typeEnum]='typeEnum' 
-         ></app-teacher-drop-out-request-admin-card>
+         ></app-teacher-drop-out-request-teacher-card>
         </mat-grid-tile>
     </ng-container>
 </mat-grid-list>

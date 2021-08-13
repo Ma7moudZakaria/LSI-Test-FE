@@ -2,7 +2,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { TeacherDropOutRequestStatusEnum } from 'src/app/core/enums/drop-out-request-enums/teacher-drop-out-request-status.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
-import { ITeacherDropOutRequestTeacherViewModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-teacher-view-model';
+import { ITeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/iteacher-drop-out-request-model';
+import { ITeacherDropOutRequestTeacherViewModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/iteacher-drop-out-request-teacher-view-model';
 
 @Component({
   selector: 'app-teacher-drop-out-request-teacher-card',
@@ -11,10 +12,10 @@ import { ITeacherDropOutRequestTeacherViewModel } from 'src/app/core/interfaces/
 })
 export class TeacherDropOutRequestTeacherCardComponent implements OnInit {
 
-  @Output() rejectTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestTeacherViewModel>();
-  @Output() acceptTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestTeacherViewModel>();
+  @Output() rejectTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
+  @Output() acceptTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
 
-  @Input() teacherDropOutRequestModel: ITeacherDropOutRequestTeacherViewModel = { totalRows : 0};
+  @Input() teacherDropOutRequestModel: ITeacherDropOutRequestModel = { totalRows : 0};
 
   @Input() typeEnum: TeacherDropOutRequestStatusEnum = TeacherDropOutRequestStatusEnum.Pending;
   typeDropOutRequestEnum = TeacherDropOutRequestStatusEnum;
@@ -22,6 +23,8 @@ export class TeacherDropOutRequestTeacherCardComponent implements OnInit {
   teacherDropOutRequestIds:string[] | undefined
   langEnum = LanguageEnum;
   requestDate:string | undefined;
+  teacherDropOutRequestStatus = TeacherDropOutRequestStatusEnum;
+
 
   constructor(public translate: TranslateService) { }
 
@@ -31,14 +34,17 @@ export class TeacherDropOutRequestTeacherCardComponent implements OnInit {
 
       this.requestDate = new Date(requestDateValue.setDate(requestDateValue.getDate() + 1)).toISOString().slice(0, 10);
     }
+
+    if (!this.teacherDropOutRequestModel?.avatarLink) {
+      this.teacherDropOutRequestModel.avatarLink = '../../../../../assets/images/Profile.svg';
+    }
   } 
 
-  rejectTeacherDropOutRequestEvent(teacherDropOutRequestAdminViewModel:ITeacherDropOutRequestTeacherViewModel){
+  rejectTeacherDropOutRequestEvent(teacherDropOutRequestAdminViewModel:ITeacherDropOutRequestModel){
     this.rejectTeacherDropOutRequest.emit(teacherDropOutRequestAdminViewModel);
   }
   
   acceptTeacherDropOutRequestEvent(){
     this.acceptTeacherDropOutRequest.emit(this.teacherDropOutRequestModel);
   }
-
 }

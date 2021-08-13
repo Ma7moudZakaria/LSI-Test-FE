@@ -4,10 +4,10 @@ import { DropOutRoleEnum } from 'src/app/core/enums/drop-out-request-enums/drop-
 import { TeacherDropOutRequestStatusEnum } from 'src/app/core/enums/drop-out-request-enums/teacher-drop-out-request-status.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { RoleEnum } from 'src/app/core/enums/role-enum.enum';
-import { ITeacherDropOutRequestAdvFilterAdminViewRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-adv-filter-admin-view-request-model';
-import { ITeacherDropOutRequestAdvFilterTeacherViewRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-adv-filter-teacher-view-request-model';
-import { ITeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-model';
-import { ITeacherDropOutRequestTeacherViewModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/teacher-drop-out-request-teacher-view-model';
+import { ITeacherDropOutRequestAdvFilterAdminViewRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/iteacher-drop-out-request-adv-filter-admin-view-request-model';
+import { ITeacherDropOutRequestAdvFilterTeacherViewRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/iteacher-drop-out-request-adv-filter-teacher-view-request-model';
+import { ITeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/iteacher-drop-out-request-model';
+import { ITeacherDropOutRequestTeacherViewModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/iteacher-drop-out-request-teacher-view-model';
 import { ExportationService } from 'src/app/core/services/exportation-services/exportation.service';
 
 @Component({
@@ -18,10 +18,9 @@ import { ExportationService } from 'src/app/core/services/exportation-services/e
 export class TeacherDropOutRequestAdminGridComponent implements OnInit {
 
   @Output() teacherDropOutRequestFilterEvent = new EventEmitter<ITeacherDropOutRequestAdvFilterAdminViewRequestModel>();
-  @Output() itemTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
+  @Output() itemTeacherDropOutRequestForReject = new EventEmitter<ITeacherDropOutRequestModel>();
   @Output() rejectTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
   @Output() acceptTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
-  @Output() deleteTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
 
   @Output() acceptAllTeacherDropOutRequestChecked = new EventEmitter<ITeacherDropOutRequestModel>();
   
@@ -54,7 +53,6 @@ export class TeacherDropOutRequestAdminGridComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log("userRoleMode.Teacher userMode =======> " , this.userMode)
   }
 
   sortTeacherByName() {
@@ -201,7 +199,7 @@ export class TeacherDropOutRequestAdminGridComponent implements OnInit {
   }
 
   rejectTeacherDropOutRequestEvent(teacherSubscripModel: ITeacherDropOutRequestModel) {
-    this.itemTeacherDropOutRequest.emit(teacherSubscripModel);
+    this.itemTeacherDropOutRequestForReject.emit(teacherSubscripModel);
   }
 
   acceptTeacherDropOutRequestEvent(teacherSubscripModel: ITeacherDropOutRequestModel) {
@@ -276,10 +274,6 @@ export class TeacherDropOutRequestAdminGridComponent implements OnInit {
   
       let data = ['progName', 'usrNameAr'];
       this.exportationService.exportCSV(expItems, 'Student', data, headerLabels);
-    }
-
-    deleteTeacherDropOutRequestEvent(teacherSubscripModel: ITeacherDropOutRequestModel) {
-      this.deleteTeacherDropOutRequest.emit(teacherSubscripModel);
     }
   
     // End Here

@@ -132,7 +132,7 @@ import { TeacherDropOutRequestTeacherCardComponent } from './components/teacher-
     SettingAgeComponent, SettingDegreeLastProgramComponent, SettingLastProgramComponent, SettingQualificationsComponent,
     SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent,
     SettingAcceptComponent, StuCardRequestComponent, TeacherCardRequestComponent,TeacherSystemCardRequestComponent
-    ,SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent, SettingAcceptComponent,ProgramSubscriptionGridComponent
+    ,ProgramSubscriptionGridComponent
     ,TeacherSystemSubscriptionGridComponent , TeacherDropOutRequestAdminGridComponent
   ]
 })

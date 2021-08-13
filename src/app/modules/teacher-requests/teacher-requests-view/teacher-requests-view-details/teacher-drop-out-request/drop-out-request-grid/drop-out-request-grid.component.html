@@ -10,7 +10,7 @@
 
                 <app-teacher-drop-out-request-admin-grid *ngIf='teacherDropOutRequestList.length > 0' 
                     [teacherDropOutRequestTeacherViewItems]='teacherDropOutRequestList' 
-                    (itemTeacherDropOutRequest)="rejectTeacherTeacherDropOutRequestRequestMethod($event)"
+                    (itemTeacherDropOutRequestForReject)="rejectTeacherTeacherDropOutRequestRequestMethod($event)"
                     [totalCount]='totalCount'
                     [userMode]='userMode'
                     (teacherDropOutRequestFilterEvent)="teacherDropOutRequestChangePage($event)"
