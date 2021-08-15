@@ -1,5 +1,5 @@
 import { Iuser } from './../../../../core/interfaces/user-interfaces/iuser';
-import {Component,EventEmitter, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IProgramSubscriptionDetails } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iprogram-subscription-details';
 import { IProgramsForTeacherSubscriptionsModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iprograms-for-teacher-subscriptions-model';
@@ -40,7 +40,7 @@ export class TeacherProgramSubDetailsComponent implements OnInit {
       res => {
         if (res.isSuccess) {
           this.programsForSubscriptionsDetails = res.data as IProgramSubscriptionDetails;
-          console.log("programsForSubscriptionsDetails" + this.programsForSubscriptionsDetails)
+          // console.log("programsForSubscriptionsDetails" + this.programsForSubscriptionsDetails)
         }
         else {
           this.resMessage = {

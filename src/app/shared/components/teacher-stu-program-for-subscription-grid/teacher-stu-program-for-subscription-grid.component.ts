@@ -48,7 +48,7 @@ export class TeacherStuProgramForSubscriptionGridComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log("userMode", this.userMode);
+    // console.log("userMode", this.userMode);
     this.teacherFilterRequestModel.sortField = 'progName';
     this.studentFilterRequestModel.sortField = 'progName';
 

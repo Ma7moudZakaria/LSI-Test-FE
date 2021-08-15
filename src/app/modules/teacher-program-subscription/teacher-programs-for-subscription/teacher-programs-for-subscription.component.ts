@@ -7,6 +7,8 @@ import { IProgramsForTeachersSubscriptionsFilterRequestModel } from 'src/app/cor
 import { TeacherProgramSubscriptionServicesService } from 'src/app/core/services/teacher-program-subscription-services/teacher-program-subscription-services.service';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { ProgramSubscriptionUsersEnum } from '../../../core/enums/program-subscription-users-enum.enum';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 
 @Component({
   selector: 'app-teacher-programs-for-subscription',
@@ -18,7 +20,9 @@ export class TeacherProgramsComponent implements OnInit {
 
   filterRequest: IProgramsForTeachersSubscriptionsFilterRequestModel = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
   totalCount = 0;
-  errorMessage?: string;
+  // errorMessage?: string;
+  resultMessage: BaseMessageModel = {};
+
   langEnum = LanguageEnum;
   teacherCard: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.teacher;
 
@@ -37,9 +41,7 @@ export class TeacherProgramsComponent implements OnInit {
 
   getProgramsForTeachersSubscriptions() {
     this.teacherProgramSubscriptionServicesService.getProgramsForTeachersSubscriptions(this.filterRequest || {}).subscribe(res => {
-      // var response = <BaseResponseModel>res;
       if (res.isSuccess) {
-        // console.log("res", res);
         this.programsForTeacherSubscriptionsLst = res.data as IProgramsForTeacherSubscriptionsModel[];
 
         this.totalCount = res.count ? res.count : 0;
@@ -52,11 +54,17 @@ export class TeacherProgramsComponent implements OnInit {
 
       }
       else {
-        this.errorMessage = res.message;
+        this.resultMessage = {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       }
     },
       error => {
-        console.log(error);
+        this.resultMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       });
   }
 
