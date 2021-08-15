@@ -791,6 +791,20 @@ display: none;
   font-family: Almarai-Regular;
 }
 /******************
+ custom  card setting program_category
+/***********************/
+.setting_program_category{
+  .mat-card>.mat-card-actions {
+    background-color: #fbfbfb;
+    padding-bottom: 1rem !important;
+  }
+  .card_actions_icon{
+    width: 1rem ;
+    height: 1rem;
+  }
+}
+
+/******************
  custom check box for card-admin-scientific-problem
 /***********************/
 

@@ -2,6 +2,7 @@ import { ProgramConditionSettingComponent } from './components/program-condition
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SettingDashboardComponent } from './components/setting-dashboard/setting-dashboard.component';
+import { ProgramCategoriesComponent } from './components/program-categories/program-categories.component';
 
 const routes: Routes = [
   {
@@ -9,7 +10,8 @@ const routes: Routes = [
     children: [
 
       { path: 'setting-dashboard', component: SettingDashboardComponent },
-      { path: 'prog-cond-sett', component: ProgramConditionSettingComponent }
+      { path: 'prog-cond-sett', component: ProgramConditionSettingComponent },
+      { path: 'program-categories', component: ProgramCategoriesComponent }
     ],
   }
 ];
