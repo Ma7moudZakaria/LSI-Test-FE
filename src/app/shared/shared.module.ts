@@ -65,6 +65,9 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { StuCardRequestComponent } from './components/stu-card-request/stu-card-request.component';
 import { TeacherCardRequestComponent } from './components/teacher-card-request/teacher-card-request.component';
 import { ProgramSubscriptionGridComponent } from './components/program-subscription-grid/program-subscription-grid.component';
+import { TeacherStudentProgramForSubscriptionComponent } from './components/teacher-student-program-for-subscription-card/teacher-student-program-for-subscription.component';
+import { TeacherStuProgramForSubscriptionGridComponent } from './components/teacher-stu-program-for-subscription-grid/teacher-stu-program-for-subscription-grid.component';
+
 import { TeacherSystemCardRequestComponent } from './components/teacher-system-card-request/teacher-system-card-request.component';
 import { TeacherSystemSubscriptionGridComponent } from './components/teacher-system-subscription-grid/teacher-system-subscription-grid.component';
 import { StudentProgramVacationGridComponent } from './components/student-program-vacation-grid/student-program-vacation-grid.component';
@@ -101,6 +104,10 @@ import { StudentProgramVacationCardAdminComponent } from './components/student-p
     StuCardRequestComponent,
     TeacherCardRequestComponent,
     ProgramSubscriptionGridComponent,
+    TeacherStudentProgramForSubscriptionComponent,
+    TeacherStuProgramForSubscriptionGridComponent
+
+    ,
     TeacherSystemCardRequestComponent,
     TeacherSystemSubscriptionGridComponent,
     StudentProgramVacationGridComponent,
@@ -111,24 +118,25 @@ import { StudentProgramVacationCardAdminComponent } from './components/student-p
     MatIconModule, FormsModule, MatCheckboxModule, MatRadioModule, MatGridListModule,
     NgbModule, MatAutocompleteModule, NgbRatingModule, MatTooltipModule, PdfViewerModule
   ],
-    exports: [
-        MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule, Ng2TelInputModule,
-        MatExpansionModule, MatSelectModule, DragDropModule, CustomeCardComponent, CustomAccordionComponent,
-        ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent,
-        UsersCounterComponent, KhatmeenStudentsComponent, StudentNumbersComponent, StudentsRatingComponent,
-        CardStudentScientificProblemComponent, QuestionTemplateComponent, VoiceRecordingComponent, MatGridListModule,
-        ScientificProblemsGridComponent, CardAdminScientificProblemComponent, NotAuthComponent, GroupUsersCardComponent,
-        InputSearchListComponent, NgbRatingModule, CardNotifacationsComponent, ProgramDayTaskHearingComponent,
-        NgbModule, ProgramDayTaskReadExplanationComponent, ProgramDayTaskRepetitionComponent,
-        ProgramDayTaskMemorizeComponent, ProgramDayTaskLinkingComponent, ProgramDayTaskVideoComponent, ProgramDayTaskDailyTestComponent,
-        ProgramDayTaskEncouragementLetterComponent, ProgramDayTaskReviewComponent, ProgramDayTaskRecitationComponent,
-        ProgramDayTaskRecitationStudentsComponent, ProgramDayTaskTestPhasedComponent,
-        ProgramDayTaskTasmeaComponent, CardFeelingsComponent, MatTooltipModule,
-        SettingAgeComponent, SettingDegreeLastProgramComponent, SettingLastProgramComponent, SettingQualificationsComponent,
-        SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent,
-        SettingAcceptComponent, StuCardRequestComponent, TeacherCardRequestComponent, TeacherSystemCardRequestComponent
-        , SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent, SettingAcceptComponent, ProgramSubscriptionGridComponent
-        , TeacherSystemSubscriptionGridComponent, StudentProgramVacationGridComponent
-    ]
+
+  exports: [
+    MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule, Ng2TelInputModule,
+    MatExpansionModule, MatSelectModule, DragDropModule, CustomeCardComponent, CustomAccordionComponent,
+    ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent,
+    UsersCounterComponent, KhatmeenStudentsComponent, StudentNumbersComponent, StudentsRatingComponent,
+    CardStudentScientificProblemComponent, QuestionTemplateComponent, VoiceRecordingComponent, MatGridListModule,
+    ScientificProblemsGridComponent, CardAdminScientificProblemComponent, NotAuthComponent, GroupUsersCardComponent,
+    InputSearchListComponent, NgbRatingModule, CardNotifacationsComponent, ProgramDayTaskHearingComponent,
+    NgbModule, ProgramDayTaskReadExplanationComponent, ProgramDayTaskRepetitionComponent,
+    ProgramDayTaskMemorizeComponent, ProgramDayTaskLinkingComponent, ProgramDayTaskVideoComponent, ProgramDayTaskDailyTestComponent,
+    ProgramDayTaskEncouragementLetterComponent, ProgramDayTaskReviewComponent, ProgramDayTaskRecitationComponent,
+    ProgramDayTaskRecitationStudentsComponent, ProgramDayTaskTestPhasedComponent,
+    ProgramDayTaskTasmeaComponent, CardFeelingsComponent, MatTooltipModule,
+    SettingAgeComponent, SettingDegreeLastProgramComponent, SettingLastProgramComponent, SettingQualificationsComponent,
+    SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent,
+    SettingAcceptComponent, StuCardRequestComponent, TeacherCardRequestComponent, TeacherSystemCardRequestComponent, TeacherStuProgramForSubscriptionGridComponent
+    , SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent, SettingAcceptComponent, ProgramSubscriptionGridComponent
+    , TeacherSystemSubscriptionGridComponent, StudentProgramVacationGridComponent, TeacherStudentProgramForSubscriptionComponent
+  ]
 })
 export class SharedModule { }
