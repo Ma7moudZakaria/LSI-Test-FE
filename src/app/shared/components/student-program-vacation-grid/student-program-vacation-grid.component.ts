@@ -23,7 +23,7 @@ export class StudentProgramVacationGridComponent implements OnInit {
   @Input() numberPerRow: number = 3;
   @Input() totalCount: number = 0;
   @Input() studentProgramVacationFilterRequestModel: IStudentProgramVacationFilterRequestModel = { skip: 0, take: 9, page: 1 };
-  @Output() itemStuReq = new EventEmitter<IStudentProgramVacationStudentViewModel>();
+  @Output() studentProgramVacationStudentViewModel = new EventEmitter<IStudentProgramVacationStudentViewModel>();
   @Output() terminateStudentProgramVacation = new EventEmitter<IStudentProgramVacationStudentViewModel>();
   @Output() cancelStudentProgramVacation = new EventEmitter<IStudentProgramVacationStudentViewModel>();
 
@@ -92,7 +92,7 @@ export class StudentProgramVacationGridComponent implements OnInit {
     this.setStudentAllChecked(false);
   }
   rejectStuRequest(event: IStudentProgramVacationModel) {
-    this.itemStuReq.emit(event)
+    this.studentProgramVacationStudentViewModel.emit(event)
 
   }
   acceptStuRequest(event: IStudentProgramVacationModel) {

@@ -16,7 +16,7 @@
       <div class="input-group">
         <select class="form-control"  [(ngModel)]="filter.progId"    [ngModelOptions]="{standalone: true}">
           <option   value="">{{'SCIENTIFIC_MATERIAL.SELECTOPTION' | translate}}</option>
-          <option *ngFor="let item of ProgramsList" value="{{item.id}}">
+          <option *ngFor="let item of programsList" value="{{item.id}}">
             {{item.progName}}
             <!-- {{translate.currentLang === langEnum.en ? item.engName: item.arabName}} -->
           </option>

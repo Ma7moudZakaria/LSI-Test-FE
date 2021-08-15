@@ -4,13 +4,13 @@
   <div class="internal_scroll_list_group">
     <a class="list-group-item d-flex"
        [class.active]="selectedIndex === -1"
-       (click)="loadProgramMaterial();selectedIndex=-1">
+       (click)="loadStudentPrograms();selectedIndex=-1">
       <span>  {{'PROGRAMS_LIST.ALL' | translate}}</span>
     </a>
 
     <a class="list-group-item  d-flex" *ngFor="let program  of programs; let i = index"
        [class.active]="selectedIndex === i"
-       (click)="loadProgramMaterial(program);selectedIndex=i">
+       (click)="loadStudentPrograms(program);selectedIndex=i">
 
       <span>{{  program.progName}}</span>
     </a>

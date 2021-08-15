@@ -21,9 +21,7 @@ export class StudentProgramVacationRequestsComponent implements OnInit {
   currentUser: IUser | undefined;
   studentProgramVacationFilterRequestModel: IStudentProgramVacationRequestModel = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
   @Input() programModel: IStudentPrograms | undefined;
-  @Output() itemStuReq = new EventEmitter<IStudentProgramVacationModel>();
 
-  // @Output() refreshCardEvent = new EventEmitter<IStudentPrograms>();
 
   constructor( public translate: TranslateService,
                private programVacationServicesService: StudentProgramVacationServicesService,
@@ -37,8 +35,7 @@ export class StudentProgramVacationRequestsComponent implements OnInit {
   }
   getStudentProgramVacationRequestsStudentView() {
     this.programVacationServicesService.getStudentsProgramsVacationFilterStudentView(this.studentProgramVacationFilterRequestModel || {}).subscribe(res => {
-        var response = <BaseResponseModel>res;
-        if (response.isSuccess) {
+        if (res.isSuccess) {
           this.studentProgramVacationRequestsList = res.data as IStudentProgramVacationStudentViewModel[];
           this.studentProgramVacationRequestsList?.forEach(function (item) {
           });
@@ -58,17 +55,12 @@ export class StudentProgramVacationRequestsComponent implements OnInit {
     this.studentProgramVacationFilterRequestModel.usrName = searchKey;
     this.getStudentProgramVacationRequestsStudentView();
   }
-  // refreshProgList(){
-  //   this.refreshCardEvent.emit();
-  // }
 
   CancelStudentProgramVacation(studentProgramVacationStudentViewModel: IStudentProgramVacationStudentViewModel) {
     this.programVacationServicesService.cancelStudentProgramVacation(studentProgramVacationStudentViewModel.id).subscribe(res => {
-        var response = <BaseResponseModel>res;
-        if (response.isSuccess) {
+        if (res.isSuccess) {
           this.alertify.success(res.message || '');
           this.getStudentProgramVacationRequestsStudentView();
-          console.log("222222222")
         }
         else {
           this.alertify.error(res.message || '');

@@ -41,13 +41,12 @@ export class StudentProgramVacationServicesService {
   }
 
   cancelStudentProgramVacation(id?: string): Observable<BaseResponseModel> {
-    return this.http.put<BaseResponseModel>(this.cancelStudentProgramVacationURL, id);
+    return this.http.put<BaseResponseModel>(this.cancelStudentProgramVacationURL+ id , null);
   }
 
-  terminateStudentProgramVacation(id?: string): Observable<BaseResponseModel> {
-    return this.http.put<BaseResponseModel>(this.terminateStudentProgramVacationURL, id);
+  terminateStudentProgramVacation(id: any): Observable<BaseResponseModel> {
+    return this.http.put<BaseResponseModel>(this.terminateStudentProgramVacationURL+ id , null);
   }
-
 
   addStudentProgramVacation(model: IStudentCustomConditionAnswerModel): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.addStudentProgramVacationURL, model);

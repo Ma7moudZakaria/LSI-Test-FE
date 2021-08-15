@@ -11,7 +11,6 @@ import {IStudentProgramVacationStudentViewModel} from '../../../../core/interfac
 })
 export class VacationsRequestsViewComponent implements OnInit {
   programModel : IStudentPrograms | undefined;
-  @Output() refreshProgListEvent = new EventEmitter<IStudentProgramVacationStudentViewModel>();
   @ViewChild(StudentProgramVacationRequestsComponent) studentProgramVacationRequests:StudentProgramVacationRequestsComponent | undefined;
  @Input() studentProgramVacationFilterRequestModel: IStudentProgramVacationRequestModel = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
   constructor() { }

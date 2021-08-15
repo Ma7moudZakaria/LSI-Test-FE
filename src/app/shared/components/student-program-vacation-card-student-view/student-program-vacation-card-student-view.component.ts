@@ -1,6 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IStudentProgramVacationStudentViewModel} from '../../../core/interfaces/student-program-vacation-interfaces/istudent-program-vacation-student-view-model';
 import {StudentProgramVacationStatusEnum} from '../../../core/enums/StudentProgramVacationStatus/student-program-vacation-status.enum';
+import {TranslateService} from '@ngx-translate/core';
+import {LanguageEnum} from '../../../core/enums/language-enum.enum';
 
 @Component({
   selector: 'app-student-program-vacation-card-student-view',
@@ -11,22 +13,14 @@ export class StudentProgramVacationCardStudentViewComponent implements OnInit {
   @Input() studentProgramVacationStudentViewModel: IStudentProgramVacationStudentViewModel = { totalRows: 0 }
   @Output() CancelStudentVacationRequest = new EventEmitter<IStudentProgramVacationStudentViewModel>();
   @Output() TerminateStudentVacationRequest = new EventEmitter<IStudentProgramVacationStudentViewModel>();
-  // @Input() typeEnum: StudentProgramVacationStatusEnum = StudentProgramVacationStatusEnum;
 
   studentProgramVacationStatus = StudentProgramVacationStatusEnum;
   requestStatus? : string;
+  langEnum = LanguageEnum;
 
-  constructor() { }
+  constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
-    this.studentProgramVacationStudentViewModel.statusEnum
-
-    for (var status in this.studentProgramVacationStatus) {
-      var vstatus = parseInt(status, 10) == this.studentProgramVacationStudentViewModel.statusEnum;
-      if (vstatus) {
-        this.requestStatus =  this.studentProgramVacationStatus[status];
-      }
-    }
   }
 
   cancelStudentReq() {

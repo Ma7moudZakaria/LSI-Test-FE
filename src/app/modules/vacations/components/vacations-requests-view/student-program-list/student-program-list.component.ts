@@ -2,7 +2,6 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {BaseMessageModel} from '../../../../../core/ng-model/base-message-model';
 import {BaseResponseModel} from '../../../../../core/ng-model/base-response-model';
-import {IprogramsModel} from '../../../../../core/interfaces/programs-interfaces/iprograms-model';
 import {BaseConstantModel} from '../../../../../core/ng-model/base-constant-model';
 import {LanguageEnum} from '../../../../../core/enums/language-enum.enum';
 import {StudentProgramSubscriptionServicesService} from '../../../../../core/services/student-program-subscription-services/student-program-subscription-services.service';
@@ -21,10 +20,11 @@ export class StudentProgramListComponent implements OnInit {
   @Output() selectedProgram =  new EventEmitter<IStudentPrograms>();
   langEnum = LanguageEnum;
   resMessage: BaseMessageModel = {};
-  programFilter: IStudentMyProgramsRequestModel = {};
+  programFilter: IStudentMyProgramsRequestModel = { take :2147483647 };
   currentUser: IUser | undefined;
 
-  constructor(private studentProgramSubscriptionService: StudentProgramSubscriptionServicesService,public translate : TranslateService) { }
+  constructor(private studentProgramSubscriptionService: StudentProgramSubscriptionServicesService,
+              public translate : TranslateService) { }
 
   ngOnInit(): void {
     this.loadPrograms();
@@ -52,8 +52,7 @@ export class StudentProgramListComponent implements OnInit {
       }
     );
   }
-  loadProgramMaterial(program?:IStudentPrograms){
+  loadStudentPrograms(program?:IStudentPrograms){
     this.selectedProgram?.emit(program);
-    console.log(" this.selectedProgram?.emit(program);",program)
   }
 }

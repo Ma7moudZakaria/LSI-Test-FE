@@ -28,16 +28,16 @@
       <div class="d-flex">
         <div class="circleStatus" [ngClass]="{ 'accept' : studentProgramVacationStudentViewModel.statusEnum == studentProgramVacationStatus.Accept ,
         'pending' : studentProgramVacationStudentViewModel.statusEnum == studentProgramVacationStatus.Pending , 'rejected' : studentProgramVacationStudentViewModel.statusEnum == studentProgramVacationStatus.Rejected
-        }"></div> <p class="number_request mb-1 " >{{requestStatus}}</p>
+        }"></div> <p class="number_request mb-1 " >{{translate.currentLang === langEnum.ar ?studentProgramVacationStudentViewModel.arNameVacationStatus : studentProgramVacationStudentViewModel.enNameVacationStatus }}</p>
       </div>
     </div>
   </div>
 
   <ng-container >
     <div class="body_footer">
-      <button (click)="cancelStudentReq()" [disabled]="studentProgramVacationStudentViewModel.IsCancel ==false" [ngClass]="{ 'negative' : studentProgramVacationStudentViewModel.IsCancel }"
+      <button (click)="cancelStudentReq()" [disabled]="!studentProgramVacationStudentViewModel.isCancel" [ngClass]="{ 'negative' : !studentProgramVacationStudentViewModel.isCancel }"
               class="btn cancel-btn"> {{'STUDENT_VACATION.CANCEL' | translate}}  </button>
-      <button (click)="terminateStudentReq()" [disabled]="studentProgramVacationStudentViewModel.IsTerminate == false" [ngClass]="{ 'negative' : studentProgramVacationStudentViewModel.IsTerminate }"
+      <button (click)="terminateStudentReq()" [disabled]="!studentProgramVacationStudentViewModel.isTerminate" [ngClass]="{ 'negative' : !studentProgramVacationStudentViewModel.isTerminate }"
               class=" btn save-btn"> {{'STUDENT_VACATION.TERMINATE' | translate}}  </button>
     </div>
   </ng-container>
