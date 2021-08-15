@@ -2,9 +2,11 @@
   <div class="col-12  justify-content-end text-right d-flex align-items-center">
     <app-search-input (searchTerm)=searchByText($event)
                       [searchKey]='this.studentProgramVacationFilterRequestModel.usrName || ""'></app-search-input>
+    <a class="advanced_search mb-3" (click)="openAddStudentVacationNewRequest()">{{'STUDENT_VACATION.NEW_VACATION_REQUEST' | translate}}</a>
   </div>
 
   <div class="row group_header fix_margin w-100">
+
   </div>
 
   <div class="row fix_margin w-100 ">

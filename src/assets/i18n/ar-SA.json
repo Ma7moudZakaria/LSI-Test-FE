@@ -797,7 +797,13 @@
     "VACATION_REASON": "سبب الاجازة",
     "REJECT_REASON": "سبب الرفض",
     "CANCEL": "الغاء الطلب",
-    "TERMINATE": "قطع الاجازة"
+    "TERMINATE": "قطع الاجازة",
+    "NEW_VACATION_REQUEST": "طلب اجازة جديد",
+    "VACATION_REQUEST": "طلب اجازة",
+    "DATE_FROM": "التاريخ من ",
+    "DATE_TO": "التاريخ الى",
+    "SEND": "ارسال",
+    "PROGRAM": "البرنامج"
   },
   "PROGRAM_BATCHES":{
     "ADD_PROGRAM_BATCH":"اضافة دفعة"

@@ -7,10 +7,10 @@ import {IStudentProgramVacationRequestModel} from '../../../../../core/interface
 import {IUser} from '../../../../../core/interfaces/auth-interfaces/iuser-model';
 import {IStudentProgramVacationStudentViewModel} from '../../../../../core/interfaces/student-program-vacation-interfaces/istudent-program-vacation-student-view-model';
 import {IStudentPrograms} from '../../../../../core/interfaces/student-program-vacation-interfaces/istudent-programs';
-import {IStudentProgramVacationModel} from '../../../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-model';
+import {IAddNewStudentVacationRequest} from '../../../../../core/interfaces/student-program-vacation-interfaces/iadd-new-student-vacation-request';
 
 @Component({
-  selector: 'app-student-program-vacation-requests',
+  selector: ' app-student-program-vacation-requests',
   templateUrl: './student-program-vacation-requests.component.html',
   styleUrls: ['./student-program-vacation-requests.component.scss']
 })
@@ -21,6 +21,11 @@ export class StudentProgramVacationRequestsComponent implements OnInit {
   currentUser: IUser | undefined;
   studentProgramVacationFilterRequestModel: IStudentProgramVacationRequestModel = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
   @Input() programModel: IStudentPrograms | undefined;
+
+  @Output() openStudentProgramVacationAddPopup = new EventEmitter<IAddNewStudentVacationRequest>();
+  @Output() closeStudentProgramVacationAddPopup = new EventEmitter<IAddNewStudentVacationRequest>();
+
+  @Input() filter: IAddNewStudentVacationRequest = {}
 
 
   constructor( public translate: TranslateService,
@@ -85,5 +90,9 @@ export class StudentProgramVacationRequestsComponent implements OnInit {
       error => {
         console.log(error);
       });
+  }
+
+  openAddStudentVacationNewRequest() {
+    this.openStudentProgramVacationAddPopup.emit(this.filter)
   }
 }

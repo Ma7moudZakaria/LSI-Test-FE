@@ -5,9 +5,9 @@
 
     <div class="d-flex">
       <div class="input-group">
-        <select class="form-control"  [(ngModel)]="filter.progId"    [ngModelOptions]="{standalone: true}">
+        <select class="form-control"  [(ngModel)]="addStudentVacationRequestModel.batchId"    [ngModelOptions]="{standalone: true}">
           <option   value="">{{'SCIENTIFIC_MATERIAL.SELECTOPTION' | translate}}</option>
-          <option *ngFor="let item of ProgramsList" value="{{item.id}}">
+          <option *ngFor="let item of programs" value="{{item.batId}}" >
             {{item.progName}}
           </option>
         </select>
@@ -22,7 +22,7 @@
       <label  class="label"> {{'STUDENT_VACATION.DATE_FROM' | translate}}  </label>
       <app-milady-hijri-calendar  [editcalenderType]="calenderType" (sendDate)="SendDatafrom($event)"
                                   (keypress)="$event.preventDefault()"
-                                  [hijri]="!hijri" [milady]="milady"  [maxGreg]="maxGregDate"  [(ngModel)]="filter.fromDate">
+                                  [hijri]="!hijri" [milady]="milady"  [maxGreg]="maxGregDate"  [(ngModel)]="addStudentVacationRequestModel.vacationStartDate">
       </app-milady-hijri-calendar>
 
     </div>
@@ -30,7 +30,7 @@
       <label  class="label"> {{'STUDENT_VACATION.DATE_TO' | translate}} </label>
       <app-milady-hijri-calendar  [editcalenderType]="calenderType" (sendDate)="SendDataTo($event)"
                                   (keypress)="$event.preventDefault()"
-                                  [hijri]="!hijri" [milady]="milady"  [maxGreg]="maxGregDate"  [(ngModel)]="filter.toDate">
+                                  [hijri]="!hijri" [milady]="milady"  [maxGreg]="maxGregDate"  [(ngModel)]="addStudentVacationRequestModel.vacationEndDate">
       </app-milady-hijri-calendar>
     </div>
 
@@ -41,7 +41,7 @@
   </label>
 
   <textarea  class="form-control " cols="1"  rows="5"
-             [(ngModel)]='filter.usrName'  [ngModelOptions]="{standalone: true}" >
+             [(ngModel)]='addStudentVacationRequestModel.vacationReason'  [ngModelOptions]="{standalone: true}" >
         </textarea>
 </div>
 

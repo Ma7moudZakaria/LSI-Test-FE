@@ -32,7 +32,7 @@
                     </a>
                 </li>
               <li class="nav-item" routerLinkActive="active" >
-                <a *ngIf='roleService.isStudent()&& (!roleService.isAdmin()  || !roleService.isTeacher())'  [routerLink] = "['/vacations/student-vacation-request-view']" routerLinkActive="active" class="nav-link">
+                <a  [routerLink] = "['/vacations/student-vacation-request-view']" routerLinkActive="active" class="nav-link">
                   <img src="../../../../assets/images/sidebar/scientific-articles-icon.png">
 
                   <span class="container__navigation__title">{{'SIDENAVBAR.VACATION' | translate}}</span>

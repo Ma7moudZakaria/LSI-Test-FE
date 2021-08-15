@@ -1,8 +1,8 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {IStudentPrograms} from '../../../../core/interfaces/student-program-vacation-interfaces/istudent-programs';
 import {StudentProgramVacationRequestsComponent} from './student-program-vacation-requests/student-program-vacation-requests.component';
 import {IStudentProgramVacationRequestModel} from '../../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-request-model';
-import {IStudentProgramVacationStudentViewModel} from '../../../../core/interfaces/student-program-vacation-interfaces/istudent-program-vacation-student-view-model';
+import {IAddNewStudentVacationRequest} from '../../../../core/interfaces/student-program-vacation-interfaces/iadd-new-student-vacation-request';
 
 @Component({
   selector: 'app-vacations-requests-view',
@@ -13,6 +13,10 @@ export class VacationsRequestsViewComponent implements OnInit {
   programModel : IStudentPrograms | undefined;
   @ViewChild(StudentProgramVacationRequestsComponent) studentProgramVacationRequests:StudentProgramVacationRequestsComponent | undefined;
  @Input() studentProgramVacationFilterRequestModel: IStudentProgramVacationRequestModel = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
+  openStudentProgramVacation: boolean = false
+  filter: IAddNewStudentVacationRequest = { }
+  @ViewChild(StudentProgramVacationRequestsComponent) studentVacationRequests: StudentProgramVacationRequestsComponent | undefined;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -30,4 +34,15 @@ export class VacationsRequestsViewComponent implements OnInit {
     }
   }
 
+  closeAddStudentVacationRequest(event: IAddNewStudentVacationRequest) {
+    this.openStudentProgramVacation = false;
+    this.filter = event
+    this.studentVacationRequests?.getStudentProgramVacationRequestsStudentView();
+  }
+
+  openStudentProgramVacationAddPopup(event: IAddNewStudentVacationRequest) {
+    this.openStudentProgramVacation = true;
+    this.filter = event
+
+  }
 }

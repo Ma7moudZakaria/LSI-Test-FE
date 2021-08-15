@@ -801,7 +801,13 @@
     "VACATION_REASON": "Vacation Reason",
     "REJECT_REASON": "Rejection Reason",
     "CANCEL": "Cancel",
-    "TERMINATE": "Cut-Off"
+    "TERMINATE": "Cut-Off",
+    "NEW_VACATION_REQUEST": "New Vacation Request",
+    "VACATION_REQUEST": "Vacation Request",
+    "DATE_FROM": "Date From",
+    "DATE_TO": "Date To",
+    "SEND": "Send",
+    "PROGRAM": "Program"
   },
   "PROGRAM_BATCHES":{
     "ADD_PROGRAM_BATCH":"Add Batch"
