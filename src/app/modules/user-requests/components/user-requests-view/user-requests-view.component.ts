@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { StudentRequestEnum } from 'src/app/core/enums/drop-out-request-enums/student-request-enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { UserRequests } from 'src/app/core/enums/user-requests.enum.enum';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
@@ -15,14 +16,17 @@ export class UserRequestsViewComponent implements OnInit {
   selectedCategoryId = {  userRequestNum : "" , nameAr : "" , nameEn : "" };
   categoryId: string | undefined;
   inputCategoryId: string | undefined;
-  showAddscientificProblemForm = false;
+  // showAddscientificProblemForm = false;
   showScientificProbreqs:boolean = false;
   showJoinReqs:boolean = true;
   showWithdrawalReqs:boolean = false;
 
   scientificProblem: string | undefined;
 
-  @ViewChild(UserScientificProblemComponent) userScientificProbChild:UserScientificProblemComponent | undefined;
+  selectedStudentRequest:StudentRequestEnum=StudentRequestEnum.CancelRequest;
+
+
+  // @ViewChild(UserScientificProblemComponent) userScientificProbChild:UserScientificProblemComponent | undefined;
   
   constructor(public translate: TranslateService,
     private languageService: LanguageService) {
@@ -72,12 +76,16 @@ export class UserRequestsViewComponent implements OnInit {
   }
 
 
-  openScientificProblem(event: boolean) {
-    this.showAddscientificProblemForm = event;
-  }
+  // openScientificProblem(event: boolean) {
+  //   this.showAddscientificProblemForm = event;
+  // }
 
-  closeScientificProblem(event: boolean) {
-    this.showAddscientificProblemForm = event;
-    this.userScientificProbChild?.getScientificProblemByUserId();
-  }
+  // closeScientificProblem(event: boolean) {
+  //   this.showAddscientificProblemForm = event;
+  //   this.userScientificProbChild?.getScientificProblemByUserId();
+  // }
+
+  sendStudentRequest(studentRequestItem:StudentRequestEnum){
+    this.selectedStudentRequest=studentRequestItem;
+   }
 }

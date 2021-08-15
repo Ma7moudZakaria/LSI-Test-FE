@@ -44,7 +44,7 @@ export class AddDropOutRequestComponent implements OnInit {
   closeCreateTeacherDropOutRequest() {
     this.createDropOut.usrId = this.currentUser?.id;
     this.createDropOut.batId = undefined;
-    this.createDropOut.rejectReason = undefined;
+    this.createDropOut.dropOutReason = undefined;
     this.closeCreateDropOutOverlay.emit();
   }
 
@@ -68,8 +68,6 @@ export class AddDropOutRequestComponent implements OnInit {
       }
     })
   }
-
-
 
   getAllProgram() {
     this.programsbyAdvancedFilter = { teacherId : this.currentUser?.id };

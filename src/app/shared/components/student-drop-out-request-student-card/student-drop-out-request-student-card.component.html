@@ -1,0 +1,35 @@
+<div class="card-request">
+    <div class="card_header">
+      <section class="example-section">
+        <mat-checkbox class="example-margin"  [(ngModel)]="studentDropOutRequestFilterRequestStudentModel.checked" ></mat-checkbox>
+      </section>
+    <div>
+        <span> {{'STUDENT_SUBSCRIBERS.TIME' | translate}} </span>        
+  
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+        <span>{{studentDropOutRequestFilterRequestStudentModel.requestDate  | date: 'dd/MM/yyyy'}}</span> 
+    </div>
+    </div>
+  
+    <div class="card_body">
+      <div class="d-flex justify-content-between mb-3" >
+      <div class="mx-1">
+        <p class="name_user bold mb-2">{{ studentDropOutRequestFilterRequestStudentModel?.huffazNumber}}</p>
+        <p class="name_user bold mb-2">{{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestStudentModel?.enStudentStatusName : studentDropOutRequestFilterRequestStudentModel?.arStudentStatusName}}</p>
+        <p class="name_user bold mb-2">{{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestStudentModel?.usrNameEn : studentDropOutRequestFilterRequestStudentModel?.usrNameAr}}</p>
+        <p class="program_user bold mb-2 "> {{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestStudentModel?.enProgBatchName : studentDropOutRequestFilterRequestStudentModel?.arProgBatchName}}</p>
+        <p class="name_user bold mb-2" *ngIf="studentDropOutRequestFilterRequestStudentModel.reasonReject != null" >رد الادارة</p>
+        <p class="program_user bold mb-2 "*ngIf="studentDropOutRequestFilterRequestStudentModel.reasonReject != null"> تم رفض الطلب</p>
+        <p class="program_user bold mb-0 ">         
+      </div>
+      
+  <span class="status" [ngClass]="{ 'accept' : studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Accept ,
+                                  'pending' : studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Pending , 
+                                  'rejected' : studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Rejected
+  }" 
+  ></span>
+      </div>
+    </div>
+  </div>
+  

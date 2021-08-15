@@ -1,0 +1,37 @@
+<div class="card-request">
+    <div class="card_header">
+      <section class="example-section">
+        <mat-checkbox class="example-margin"  [(ngModel)]="studentDropOutRequestFilterRequestAdminModel.checked" ></mat-checkbox>
+      </section>
+    <div>
+        <span> {{'STUDENT_SUBSCRIBERS.TIME' | translate}} </span>        
+
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+        <span>{{studentDropOutRequestFilterRequestAdminModel.requestDate  | date: 'dd/MM/yyyy'}}</span> 
+    </div>
+    </div>
+  
+    <div class="card_body">
+      <div class="d-flex justify-content-between mb-3">
+        <img *ngIf='!studentDropOutRequestFilterRequestAdminModel.avatarLink' class="img_user" src="../../../../assets/images/student/user-profile.svg">
+        <img *ngIf='studentDropOutRequestFilterRequestAdminModel.avatarLink' class="img_user" src="{{studentDropOutRequestFilterRequestAdminModel.avatarLink}}" >
+      <div class="mx-1">
+        <p class="name_user bold mb-2">{{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestAdminModel?.usrNameEn : studentDropOutRequestFilterRequestAdminModel?.usrNameAr}}</p>
+        <p class="program_user bold mb-2 "> {{studentDropOutRequestFilterRequestAdminModel.progName}}</p>        
+        <p class="program_user bold mb-0 ">         
+      </div>
+
+      </div>
+    </div>
+ 
+  <ng-container *ngIf="typeEnum === typeDropOutRequestEnum.Pending">
+    <div class="body_footer" >
+        <button class="btn cancel-btn" (click)="acceptStudentAdminDropOutRequestEvent()"> {{'STUDENT_SUBSCRIBERS.ACCEPT' | translate}}   </button>
+        <button  class=" btn save-btn"         
+          (click)="rejectStudentAdminDropOutRequestEvent(studentDropOutRequestFilterRequestAdminModel)" 
+          [attr.disabled]="studentDropOutRequestFilterRequestAdminModel.checked" > {{'STUDENT_SUBSCRIBERS.REJECT' | translate}} </button>
+      </div>
+  </ng-container>
+    
+  </div>

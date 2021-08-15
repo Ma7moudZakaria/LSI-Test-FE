@@ -6,24 +6,27 @@
                 
             </app-user-requests-categories-view>
         </div>
+        
         <div class="col-lg-9  col-md-9 col-sm-12 pl-0"*ngIf='showScientificProbreqs'> 
-            <app-user-scientific-problem (openScientificProblem)="openScientificProblem($event)" ></app-user-scientific-problem>
+            <app-user-scientific-problem></app-user-scientific-problem>
+            <!-- <app-user-scientific-problem (openScientificProblem)="openScientificProblem($event)" ></app-user-scientific-problem> -->
         </div>
+
         <div class="col-lg-9  col-md-9 col-sm-12 pl-0" *ngIf='showJoinReqs'>
             <app-user-join-requests></app-user-join-requests>
         </div>
 
         <div class="col-lg-9  col-md-9 col-sm-12 pl-0" *ngIf='showWithdrawalReqs'>
-            <app-user-withdrawal-requests></app-user-withdrawal-requests>
+            <app-user-withdrawal-requests  ></app-user-withdrawal-requests>
         </div>
        
     </div>
-
+<!-- 
     <div class="overlay" *ngIf="showAddscientificProblemForm">
         <app-add-scientific-problem 
         (closeScientificProblem)='closeScientificProblem($event)'
         ></app-add-scientific-problem>
-    </div>
+    </div> -->
 
 </div>
 

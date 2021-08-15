@@ -36,7 +36,7 @@ export class DropOutRequestGridComponent implements OnInit {
 
   ngOnInit(): void {
     this.teacherDropOutRequestFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'teacherNameAr' : 'TeacherNameEn';
-        
+    this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     this.getTeacherDropOutRequests();
   }
 
@@ -54,6 +54,7 @@ export class DropOutRequestGridComponent implements OnInit {
   }
 
   getTeacherDropOutRequests() {
+    this.teacherDropOutRequestFilterRequestModel.teacherId = this.currentUser?.id;
     this.teacherDropOutRequestService.teacherDropOutRequestAdvFilterTeacherView(this.teacherDropOutRequestFilterRequestModel).subscribe(res => {
       var response = <BaseResponseModel>res;
       if (response.isSuccess) {

@@ -70,6 +70,9 @@ import { TeacherSystemSubscriptionGridComponent } from './components/teacher-sys
 import { TeacherDropOutRequestAdminCardComponent } from './components/teacher-drop-out-request-admin-card/teacher-drop-out-request-admin-card.component';
 import { TeacherDropOutRequestAdminGridComponent } from './components/teacher-drop-out-request-admin-grid/teacher-drop-out-request-admin-grid.component';
 import { TeacherDropOutRequestTeacherCardComponent } from './components/teacher-drop-out-request-teacher-card/teacher-drop-out-request-teacher-card.component';
+import { StudentDropOutRequestAdminCardComponent } from './components/student-drop-out-request-admin-card/student-drop-out-request-admin-card.component';
+import { StudentDropOutRequestStudentCardComponent } from './components/student-drop-out-request-student-card/student-drop-out-request-student-card.component';
+import { StudentDropOutGridComponent } from './components/student-drop-out-grid/student-drop-out-grid.component';
 
 
 @NgModule({
@@ -108,7 +111,10 @@ import { TeacherDropOutRequestTeacherCardComponent } from './components/teacher-
     TeacherSystemSubscriptionGridComponent,
     TeacherDropOutRequestAdminCardComponent,
     TeacherDropOutRequestAdminGridComponent,
-    TeacherDropOutRequestTeacherCardComponent
+    TeacherDropOutRequestTeacherCardComponent,
+    StudentDropOutRequestAdminCardComponent,
+    StudentDropOutRequestStudentCardComponent,
+    StudentDropOutGridComponent
     ],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
@@ -132,7 +138,7 @@ import { TeacherDropOutRequestTeacherCardComponent } from './components/teacher-
     SettingAgeComponent, SettingDegreeLastProgramComponent, SettingLastProgramComponent, SettingQualificationsComponent,
     SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent,
     SettingAcceptComponent, StuCardRequestComponent, TeacherCardRequestComponent,TeacherSystemCardRequestComponent
-    ,ProgramSubscriptionGridComponent
+    ,ProgramSubscriptionGridComponent, StudentDropOutGridComponent
     ,TeacherSystemSubscriptionGridComponent , TeacherDropOutRequestAdminGridComponent
   ]
 })
