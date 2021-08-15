@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div class="row">
+       <div class="col-12">
+           <!-- <app-view-condition-setting 
+           (addEditCoidition)="openAddEditOverLay($event)"
+           >
+        </app-view-condition-setting> -->
+        <app-view-program-categories (addProgramCategoresEvent)="addProgramCategoresEvent()"></app-view-program-categories>
+       </div>
+       
+    </div>
+
+<div class="overlay" *ngIf="showAddForm">
+    <!-- <app-add-condition-setting 
+     (closeOverlay)="closeForm()"
+     (addCustomCondition)="addCustomCondition()"
+     [modelEdit]="modelEdit"
+     ></app-add-condition-setting> -->
+
+     <app-add-program-categories></app-add-program-categories>
+</div>
+
+</div>
