@@ -49,7 +49,7 @@ export class ProgramBasicInfoComponent implements OnInit {
   progRecitationTimes:IRecitationTimes[] = [];
   recitFrom:string= '';
   recitTo:string = '';
-
+  resMessage: BaseMessageModel = {};
 
   constructor(private fb: FormBuilder, 
     public translate: TranslateService,
@@ -63,12 +63,27 @@ export class ProgramBasicInfoComponent implements OnInit {
   ngOnInit(): void {
     this.getLookupByKey();
     this.buildForm();
+    this.getAllCategories();
   }
 
   getAllCategories(){
     this.ProgramCategoriesService.getProgramCatiegories().subscribe(res => {
-      if (res.isSuccess) {}
-  })};
+      if (res.isSuccess) {
+        this.allPrograms = res.data;
+        console.log(' this.allPrograms', this.allPrograms);
+      } else {
+        this.resMessage =
+          {
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
+          }
+      }
+  },error => {
+      this.resMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    })};
 
   removeItemFromSelectedTeacherRewayats(item: any) {
     // let index = this.selectedRewayatsList.indexOf(item);
