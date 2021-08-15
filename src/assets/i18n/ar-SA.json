@@ -517,7 +517,8 @@
     "SARD": "سرد",
     "REQUEST": "الطلبات",
     "QUESTION_BANK": "بنك الأسئلة",
-    "WORK_AGENDA": "اجندة العمل"
+    "WORK_AGENDA": "اجندة العمل",
+    "PROG_FOR_SUBSCRIPTION":"إشتراك"
   },
   "VIEW_USER_PROFILE_PG": {
     "PERSONAL_PROFILE": "الملف الشخصي",

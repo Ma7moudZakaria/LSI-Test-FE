@@ -95,7 +95,7 @@ export class LoginComponent implements OnInit {
           if (res.isSuccess) {
             localStorage.setItem('user', JSON.stringify(res.data as IUser));
             if (this.roleService.isAdmin()) { this.router.navigateByUrl('/dashboard'); }
-            if (this.roleService.isTeacher() && !this.roleService.isAdmin()) { this.router.navigateByUrl('/dashboard/teacher-dashboard'); }
+            if (this.roleService.isTeacher() && !this.roleService.isAdmin()) { this.router.navigateByUrl('/dashboard'); }
             if (this.roleService.isStudent()) { this.router.navigateByUrl('/dashboard'); }
             this.getLookups();
             this.isSubmit = false;

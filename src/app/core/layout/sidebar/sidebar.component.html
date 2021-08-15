@@ -78,46 +78,45 @@
 
             <ul *ngIf='!roleService.isAdmin() && (!roleService.isStudent() || roleService.isTeacher())'>
                 <li onclick="" class="nav-item" routerLinkActive="active">
-                    <a *ngIf='!roleService.isAdmin() && (!roleService.isStudent() || roleService.isTeacher())' 
-                    [routerLink]="['/dashboard/teacher-dashboard']"  routerLinkActive="active" class="nav-link">
+                    <a [routerLink] = "['/dashboard']"  routerLinkActive="active" class="nav-link">
                        <img src="../../../../assets/images/sidebar/Dashboard-icon.png">
                           
                            <span class="container__navigation__title">  {{'SIDENAVBAR.DASHBORD' | translate}}  </span>
                    </a>
                 </li>
                 <li onclick="" class="nav-item" routerLinkActive="active">
-                    <a *ngIf='!roleService.isAdmin() && (!roleService.isStudent() || roleService.isTeacher())'  
+                    <a  
                     [routerLink]="['/home']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/agenda.svg">
                             <span class="container__navigation__title"> {{'SIDENAVBAR.WORK_AGENDA' | translate}} </span>
                     </a>
                 </li>
                 <li onclick="" class="nav-item" routerLinkActive="active">
-                    <a *ngIf='!roleService.isAdmin() && (!roleService.isStudent() || roleService.isTeacher())' 
+                    <a 
                     [routerLink]="['/home']">
                         <img src="../../../../assets/images/sidebar/program-icon.png">
                             <span class="container__navigation__title">{{'SIDENAVBAR.MYPROGRAMS' | translate}}</span>
                     </a>
                 </li>
                 <li onclick="" class="nav-item" routerLinkActive="active">
-                    <a  *ngIf='!roleService.isAdmin() && (!roleService.isStudent() || roleService.isTeacher())' 
+                    <a 
                     [routerLink]="['/home']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/narration-icon.png">
                         <span class="container__navigation__title">{{'SIDENAVBAR.REQUEST' | translate}}</span>
                     </a>
                 </li>
                 <li onclick="" class="nav-item" routerLinkActive="active">
-                    <a   *ngIf='!roleService.isAdmin() && (!roleService.isStudent() || roleService.isTeacher())'
+                    <a
                      [routerLink]="['/home']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/request.svg">
                         <span class="container__navigation__title">{{'SIDENAVBAR.REQUEST' | translate}}</span>
                     </a>
                 </li>
                 <li class="nav-item" routerLinkActive="active">
-                    <a  *ngIf='!roleService.isAdmin() && (!roleService.isStudent() || roleService.isTeacher())'
+                    <a
                              [routerLink]="['/teacher-for-subscription']" routerLinkActive="active" class="nav-link">
                   <img src="../../../../assets/images/sidebar/program-icon.png">
-                  <span class="container__navigation__title">tea-program</span>
+                  <span class="container__navigation__title">{{'SIDENAVBAR.PROG_FOR_SUBSCRIPTION' | translate}}</span>
                 </a>
                   </li>
                   <li class="nav-item " routerLinkActive="active">
@@ -129,7 +128,7 @@
                 </li>
                 <li class="nav-item teacherProfile" routerLinkActive="active" 
                     *ngIf='!roleService.isAdmin() && (!roleService.isStudent() || roleService.isTeacher())'  > 
-                    <a [routerLink]="['/home']" routerLinkActive="active" class="nav-link">
+                    <a [routerLink]="['/question-bank/question-bank-view']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/questions-bank-icon.png">
  
                         <span class="container__navigation__title">{{'SIDENAVBAR.QUESTION_BANK' | translate}}</span>
@@ -208,7 +207,7 @@
 
                 <li class="nav-item studentProfile" routerLinkActive="active"
                     *ngIf='!roleService.isAdmin() && (roleService.isStudent() || !roleService.isTeacher())'> 
-                    <a [routerLink]="['/home']" routerLinkActive="active" class="nav-link">
+                    <a [routerLink]="['/question-bank/question-bank-view']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/questions-bank-icon.png">
  
                         <span class="container__navigation__title">{{'SIDENAVBAR.QUESTION_BANK' | translate}}</span>
