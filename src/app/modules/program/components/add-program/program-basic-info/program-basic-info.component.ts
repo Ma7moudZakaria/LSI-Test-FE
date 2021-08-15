@@ -7,6 +7,7 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { ProgramBasicInfoService } from 'src/app/core/services/program-services/program-basic-info.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
+import { ProgramCategoriesService } from 'src/app/core/services/program-categories-services/program-categories.service';
 import { IProgramBasicInfoUpdateModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-basic-info-update-model';
 import { ProgramDutiesEnum } from 'src/app/core/enums/programs/program-duties-enum.enum';
 import { ProgramDayTaskRecitationType } from 'src/app/core/enums/program-day-task-recitation-type.enum';
@@ -41,7 +42,7 @@ export class ProgramBasicInfoComponent implements OnInit {
   isSardEnabled:boolean = false;
   isSardTimesEnabled:boolean = false;
   langEnum = LanguageEnum;
-
+  allPrograms = [];
   programTypesList: IProgramType[] = [];
   programRatingList:IProgRatings[] = [];
   progWeeklyDayList:IProgWeeklyDutyDays[] = [];
@@ -55,7 +56,8 @@ export class ProgramBasicInfoComponent implements OnInit {
     private BasicInfoService: ProgramBasicInfoService, 
     private lookupService: LookupService,
     private router: Router,
-    private alert : AlertifyService
+    private alert : AlertifyService,
+    private ProgramCategoriesService :ProgramCategoriesService
   ) { }
 
   ngOnInit(): void {
@@ -63,7 +65,15 @@ export class ProgramBasicInfoComponent implements OnInit {
     this.buildForm();
   }
 
+  getAllCategories(){
+    this.ProgramCategoriesService.getProgramCatiegories().subscribe(res => {
+      if (res.isSuccess) {}
+  })};
 
+  removeItemFromSelectedTeacherRewayats(item: any) {
+    // let index = this.selectedRewayatsList.indexOf(item);
+    // this.selectedRewayatsList.splice(index, 1);
+  }
   getLookupByKey() {
     this.lookupService.getLookupByKey(this.listOfLookup).subscribe(res => {
       if (res.isSuccess) {

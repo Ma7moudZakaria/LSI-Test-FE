@@ -689,6 +689,8 @@
     "ISALSARD": "Is there a recitation ?",
     "YES": "Yes",
     "NO": "No",
+    "SECTION": "Section",
+    "ADD_SECTION": "Add Section",
     "RECITTYPE": "recitation period",
     "FROM_HOUR": "from the hour",
     "TO_HOUR": "To the hour",
