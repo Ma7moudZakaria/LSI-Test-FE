@@ -30,7 +30,7 @@
                         <!-- <option [ngValue]="null"  disabled selected>{{ 'NOTIFICATIONS.SELECT_NOTIFICATION_TYPE' | translate }}</option> -->
                         <ng-container *ngFor="let item of collectionOfLookup.SHARED_TYPES">
                         <option [value]="item .id" >{{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}</option>
-                        
+
                         </ng-container>
                       </select>
 
@@ -66,7 +66,7 @@
 
       <div class="col-md-2">
         <div class="form-group">
-                <label class="header_input">{{ 'PROGRAM_BASIC_INFO.PROG_DURATION' | translate }}</label>
+                <label class="header_input ">{{ 'PROGRAM_BASIC_INFO.PROG_DURATION' | translate }}</label>
                 <input type="text" class="form-control"  formControlName="durationProg" [attr.disabled]='progBasicInfoDetails ? true : null'>
         </div>
         <div *ngIf="f.durationProg.errors && (f.durationProg.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
@@ -101,6 +101,28 @@
         </div>
 
       </div>
+          <!--My container-->
+          <div class="col-6">
+            <div class="form-group">
+              <label class="header_input">{{ 'PROGRAM_BASIC_INFO.SECTION' | translate }}  </label>
+              <div class="d-flex align-items-center justify-content-between">
+              <select class="form-control "  formControlName="shareWith" >
+                <!-- <option [ngValue]="null"  disabled selected>{{ 'NOTIFICATIONS.SELECT_NOTIFICATION_TYPE' | translate }}</option> -->
+                <ng-container *ngFor="let item of collectionOfLookup.SHARED_TYPES">
+                  <option [value]="item .id" >{{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}</option>
+
+                </ng-container>
+              </select>
+              <button class="cancel-btn mr-5">{{'PROGRAM_BASIC_INFO.ADD_SECTION' | translate }}</button>
+                <div class="badges ">
+                  <!--            *ngFor="let p of selectedRewayatsList"-->
+                  <span class="badge badge-info mr-5 p-2">Test Badge
+                    <a (click)="removeItemFromSelectedTeacherRewayats('p')"><i class="fas cursor-pointer fa-times-circle"></i></a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
 
       <div class="col-6">
         <div class="form-group">
@@ -207,7 +229,7 @@
 
       <div class="col-6">
         <div class="form-group">
-          <label  class="header_input"  class="mb-3 header_input">{{ 'PROGRAM_BASIC_INFO.TEXT_PLEDGE' | translate }} </label>
+          <label  class="header_input"  class=" header_input">{{ 'PROGRAM_BASIC_INFO.TEXT_PLEDGE' | translate }} </label>
           <textarea class="form-control" cols="2" rows="2" formControlName="textPledge"></textarea>
         </div>
 
@@ -284,9 +306,7 @@
 
           </div>
       </div>
-<div class="col-12 mt-2 mb-2">
 
-</div>
 
       <div class="col-md-3 example-section">
         <div class="form-group">

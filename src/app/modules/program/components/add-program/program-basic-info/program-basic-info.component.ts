@@ -63,7 +63,10 @@ export class ProgramBasicInfoComponent implements OnInit {
     this.buildForm();
   }
 
-
+  removeItemFromSelectedTeacherRewayats(item: any) {
+    // let index = this.selectedRewayatsList.indexOf(item);
+    // this.selectedRewayatsList.splice(index, 1);
+  }
   getLookupByKey() {
     this.lookupService.getLookupByKey(this.listOfLookup).subscribe(res => {
       if (res.isSuccess) {
