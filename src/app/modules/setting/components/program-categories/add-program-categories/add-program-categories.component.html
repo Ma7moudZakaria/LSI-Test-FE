@@ -1,1 +1,46 @@
-<p>add-program-categories works!</p>
+
+
+<div class="form-group conditionForm mt-3 pl-3 pr-3" >
+    
+    <h3 class=" head  bold" > اضافه قسم </h3>
+    <!-- <h3 class=" head  bold" *ngIf="modelEdit"> تعديل قسم </h3> -->
+       
+      
+    <div class="form-group">
+        <div class="row">
+            <div class="col-12">
+                <label class=" header_input"> اسم القسم بالعربيه  </label>
+               <input type="text" class="form-control"  [(ngModel)]="programCategoryModel.arCatName">
+            </div>
+            <div class="col-12 mt-5">
+                <label class=" header_input"> اسم القسم بالانجلزي  </label>
+               <input type="text" class="form-control"  [(ngModel)]="programCategoryModel.enCatName">
+            </div>
+            <div class="col-12">
+
+                  <div *ngIf="resMessage.message" class="alert alert-{{ resMessage.type }} my-4 py-2">
+                     {{ resMessage.message }}
+                 </div>
+    
+            </div>
+        </div>
+
+    </div>
+
+
+   <section class="mt-5">
+            <div  class="row direction-rtl buttons-center mt-5">
+                <button   type="submit" class="save-btn" (click)="saveProgramCategories()" > 
+                    {{ "GENERAL.SAVE" | translate }}
+                    
+                </button>
+                <!-- <button   type="submit" class="save-btn" (click)="savingEdit()"*ngIf="modelEdit" > 
+                    {{ "GENERAL.EDIT" | translate }}
+                </button> -->
+                <button  type="reset" class="cancel-btn"    (click)="closeForm()"> 
+                    {{ "GENERAL.CANCEL" | translate }} 
+                    
+                </button>
+            </div>
+    </section>
+</div>

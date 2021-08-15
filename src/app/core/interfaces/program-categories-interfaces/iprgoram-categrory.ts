@@ -1,6 +1,6 @@
-export interface IPrgoramCategrory {
-    id: string;
-    no: number;
-    arabCatgName: string;
-    engCatgName: string;
+export interface IProgramCategories {
+    id?: string;
+    no?: number;
+    arCatName?: string;
+    enCatName?: string;
 }

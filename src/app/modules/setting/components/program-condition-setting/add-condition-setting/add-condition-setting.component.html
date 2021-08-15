@@ -3,7 +3,7 @@
 <div class="form-group conditionForm mt-3 pl-3 pr-3" >
     
     <h3 class=" head  bold" *ngIf="!modelEdit">{{'CONDITIONDS.ADD_CONDITIONS' | translate}} </h3>
-    <h3 class=" head  bold" *ngIf="modelEdit"> {{'CONDITIONDS.EDIT_CONDITIONS' | translate}}</h3>
+    <h3 class=" head  bold" *ngIf=""> {{'CONDITIONDS.EDIT_CONDITIONS' | translate}}</h3>
        
       
     <div class="form-group">
@@ -16,7 +16,7 @@
     </div>
 
     <div class="form-group">
-        <div class="row">
+        <div class="row">modelEdit
             <div class="col-12" *ngIf='conditionModel.answerType'>
                 <label class=" header_input mb-3">  {{'CONDITIONDS.ANSWER_TYPE' | translate}}  </label>
                 <mat-radio-group  

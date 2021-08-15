@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { IAddProgramCategory } from 'src/app/core/interfaces/program-categories-interfaces/iadd-program-category';
+import { IEditProgramCategory } from 'src/app/core/interfaces/program-categories-interfaces/iedit-program-category';
+import { IProgramCategories } from 'src/app/core/interfaces/program-categories-interfaces/iprgoram-categrory';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
+import { ProgramCategoriesService } from 'src/app/core/services/program-categories-services/program-categories.service';
 
 @Component({
   selector: 'app-add-program-categories',
@@ -7,9 +14,86 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddProgramCategoriesComponent implements OnInit {
 
-  constructor() { }
+  @Output() addEditProgramCategories = new EventEmitter<IProgramCategories>();
+  @Output() closeOverlay = new EventEmitter<boolean>();
+  @Input() modelEdit: IProgramCategories | undefined;
+
+  programCategoryModel = {} as IProgramCategories;
+  model: IAddProgramCategory | undefined;
+
+  listProgramCategporyList: IAddProgramCategory[] = [];
+
+  resMessage: BaseMessageModel = {};
+
+  constructor(
+    private programCategoriesService: ProgramCategoriesService,
+    private alertify: AlertifyService
+
+  ) { }
 
   ngOnInit(): void {
   }
+
+  saveProgramCategories() {
+
+    this.model =
+    {
+      arabCatgName: this.programCategoryModel.arCatName,
+      engCatgName: this.programCategoryModel.enCatName
+
+    }
+    this.programCategoriesService.addProgramCatiegories(this.model).subscribe(res => {
+      if (res.isSuccess) {
+
+        this.alertify.success(res.message || '');
+        this.closeForm()
+      } else {
+        this.resMessage =
+        {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+    }, error => {
+      this.resMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    })
+  }
+
+  closeForm() {
+    this.closeOverlay.emit(false)
+  }
+
+
+  // editPrgoramCategrory() {
+  //   if (this.addProgramCategoryModel  {
+  //     this.modelEdit =
+  //     {
+  //       id: this.modelEdit?.id,
+  //       arCatName: this.addProgramCategoryModel?.arabCatgName,
+  //       enCatName: this.addProgramCategoryModel?.engCatgName
+  //     }
+
+  //     this.programCategoriesService.updateProgramCatiegories(this.modelEdit).subscribe(res => {
+  //       if (res.isSuccess) {
+  //         // this.allPrgoramCategrorylist = res.data;
+  //         // console.log(' this.allPrograms', this.allPrgoramCategrorylist);
+  //       } else {
+  //         this.resMessage =
+  //         {
+  //           message: res.message,
+  //           type: BaseConstantModel.DANGER_TYPE
+  //         }
+  //       }
+  //     }, error => {
+  //       this.resMessage = {
+  //         message: error,
+  //         type: BaseConstantModel.DANGER_TYPE
+  //       }
+  //     })
+  //   }
+  // }
 
 }
