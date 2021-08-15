@@ -236,9 +236,9 @@ export class ProgramBasicInfoComponent implements OnInit {
           progRecType:this.baseInfoForm.value.recitType,
           proRatTyps:this.programRatingList,
           progRecitTimes:this.progRecitationTimes,
-          progCats : this.selectedProgramTypesList?.map((item:any)=> ({progCatId:item.id}))
+          progCats : this.selectedProgramTypesList?.map((item:any)=> ({progCatId:item.catId || item.id}))
         }
-        // send edit model to api 
+        // send edit model to api
         this.editBasicInfoProgrm()
 
       }

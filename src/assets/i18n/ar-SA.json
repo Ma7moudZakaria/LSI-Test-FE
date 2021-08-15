@@ -67,8 +67,7 @@
     "FILE_SIZE": "حجم الملف أكبر من 3 ميجا",
     "EXTENTION_FILE": "امتداد الفايل غير مسوح بيه ",
     "ACCEPT": "قبول",
-    "REJECT": "رفض",
-    "DEGREE_MAX_LENGTH": "الدرجة يجب ان تكون أقل من أو تساوى 100"
+    "REJECT": "رفض"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
@@ -187,8 +186,7 @@
     "STUDENTS": "الطلاب",
     "JOINING_EXAM": "إختبارات الانضمام",
     "DAYS": "الأيام",
-    "NOTIFACATION": "تنبيهات",
-    "BATCHES":"الدفعات"
+    "NOTIFACATION": "تنبيهات"
   },
   "PROGRAM_DAY_TASKS": {
     "TASKS": "المهام",
@@ -506,12 +504,18 @@
     "MYPROGRAMS": "برامجى",
     "SCIENTIFIC_ARTICLES": "المواد العلمية",
     "VACATION_REQUEST": "المراسلات",
+    "VACATION": "الاجازات",
     "EXAM_RESULTS": "نتائج الامتحانات",
+    "RESULTS": "الطلبات",
+    "PRINT_CERTIFICATION": "طباعه الشهادات",
     "WITHDRAWAL_REQUESTS": "طلبات الانسجاب",
     "SETTINGS": "الإعدادت",
     "CERTIFICATES": "الشهادات",
     "MY_MESSAGES": "المشاعر",
-    "QUESTION_BANK": "بنك الأسئلة"
+    "SARD": "سرد",
+    "REQUEST": "الطلبات",
+    "QUESTION_BANK": "بنك الأسئلة",
+    "WORK_AGENDA": "اجندة العمل"
   },
   "VIEW_USER_PROFILE_PG": {
     "PERSONAL_PROFILE": "الملف الشخصي",
@@ -641,7 +645,7 @@
     "NUMBER_HOMEWORK_PATTERN": "يرجى ادخال عدد الواجبات صحيحا",
     "NUMBER_HOMEWORK_MAX_LENGTH": "يرجى ادخال عدد الواجبات اقل من  100  حرف",
     "NOTIFICATION_NAME_PATTERN": "يرجى ادخال اسم التنبية صحيحا",
-    "NOTIFICATION_NAME_MAX_LENGTH": "يرجى ادخال اسم التنبية اقل من او يساوى 150  حرف",
+    "NOTIFICATION_NAME_MAX_LENGTH": "يرجى ادخال اسم التنبية اقل من او يساوى 100  حرف",
     "QUESTION_AR_MAX_LENGHT": "يرجى ادخال السؤال عربي أقل من أو يساوى 300 حرفا",
     "QUESTION_EN_MAX_LENGHT": "يرجى ادخال السؤال إنجليزي أقل من أو يساوى 300 حرفا",
     "ARABIC_FIELD": " هذا الحقل يجب أن يكون باللغة العربية",
@@ -686,14 +690,14 @@
     "YES": "نعم",
     "NO": "لا",
     "SECTION": "القسم",
-    "ADD_SECTION": "إضافة قسم",
+    "ADD_SECTION": "اضافه قسم",
     "RECITTYPE": "فترة التسميع",
     "FROM_HOUR": "من الساعه",
     "TO_HOUR": "الى الساعه",
     "ADD": "إضافة",
     "FROM": "من",
     "TO": "إلى",
-    "CHOOSE_SECTION": "اختر القسم"
+    "CHOOSE_SECTION": "اختار القسم"
   },
   "PROGRAM_DAY_TASK_DETIALS": {
     "DEGREE": "الدرجه",
@@ -749,7 +753,7 @@
     "STUDENTS": "الطلاب",
     "NEW_JOIN_REQUESTS": "طلبات الانضمام الجديدة",
     "ACCEPTANCE_REQUESTS": "طلبات مقبولة",
-    "REJECTANCE_REQUESTS": "طلبات مرفوضة",
+    "REJECTANCE_REQUESTS": "طلبات مرفض",
     "JOIN_REQUESTS": "طلبات الانضمام",
     "JOIN_REQUESTS_FOR_PROGRAM": "طلبات الانضمام للبرنامج",
     "CANCEL_REQUESTS": "طلبات الانسحاب",
@@ -783,32 +787,16 @@
     "REJECTED_REASON": "سبب الرفض",
     "VALIDATIONDATE": "تاريخ البداية يجب ان يكون اقل من تاريخ النهاية "
   },
-  "TEACHER_SYSTEM_SUBSCRIPTION": {
-    "REQUEST_DATE": "تاريخ الطلب",
-    "MEETING":"المقابلة",
-    "REJECT":"رفض",
-    "ACCEPT":"قبول"
-  },
-  "STUDENT_VACATION": {
-    "NEW_VACATION_REQUESTS": "طلبات الاجازات الجديدة",
-    "ACCEPTANCE_REQUESTS": "طلبات مقبولة",
-    "REJECTANCE_REQUESTS": "طلبات مرفوضة",
-    "VACATION_DATE": "تاريخ الاجازة",
-    "FROM": "من",
-    "TO": "إلى",
-    "VACATION_REASON": "سبب الاجازة",
-    "REJECT_REASON": "سبب الرفض"
-  },
-  "PROGRAM_BATCHES":{
-    "BAT_NAME_EN":"اسم الدفعة انجليزى",
-    "BAT_NAME_AR":"اسم الدفعة عربى ",
-    "ADD_PROGRAM_BATCH":"اضافة دفعة",
-    "ADD_BATCH":"اضافة جديدة",
-    "FROM_DATE":"تاريخ بداية الإشتراك",
-    "TO_DATE":"تاريخ نهاية الإشتراك",
-    "SEND":"خفظ",
-    "CANCEL":"الغاء",
-    "TEACHERS":"المعلمين",
-    "STUDENTS":"الطلاب"
+  "TEACHER_STUDENT_FOR_DETAILS":{
+    "PROG_IDEA": "فكرة البرنامج",
+    "PROG_GOAL": "أهداف البرنامج",
+    "PROG_VISION": "رؤية البرنامج",
+    "PROG_METHOD" : "طريقة البرنامج",
+    "TERMS_AND_CONDITION": "الشروط والأحكام",
+    "PLEDG_TEXT": "نص التعهد",
+    "PROG_FEATURES": "مميزات البرنامج",
+    "PROG_PARTS": "عدد الأجزاء المطلوبة",
+    "NO": "لا يوجد",
+    "PROG_DURA" : "مدة البرنامج باليوم"
   }
 }
