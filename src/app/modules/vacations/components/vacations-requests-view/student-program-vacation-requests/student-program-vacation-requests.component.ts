@@ -23,7 +23,6 @@ export class StudentProgramVacationRequestsComponent implements OnInit {
   @Input() programModel: IStudentPrograms | undefined;
 
   @Output() openStudentProgramVacationAddPopup = new EventEmitter<IAddNewStudentVacationRequest>();
-  @Output() closeStudentProgramVacationAddPopup = new EventEmitter<IAddNewStudentVacationRequest>();
 
   @Input() filter: IAddNewStudentVacationRequest = {}
 
