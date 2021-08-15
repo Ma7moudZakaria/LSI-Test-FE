@@ -326,7 +326,6 @@
 
 
 
-          <!--My container-->
           <div class="col-12 ">
             <div class="row">
               <div class="col-5">
@@ -335,8 +334,8 @@
                   <div class="d-flex align-items-center justify-content-between">
                     <select class="form-control "  formControlName="shareWith" >
                       <!-- <option [ngValue]="null"  disabled selected>{{ 'NOTIFICATIONS.SELECT_NOTIFICATION_TYPE' | translate }}</option> -->
-                      <ng-container *ngFor="let item of collectionOfLookup.SHARED_TYPES">
-                        <option [value]="item .id" >{{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}</option>
+                      <ng-container *ngFor="let item of allPrograms">
+                        <option [value]="item.id" >{{ this.translate.currentLang === langEnum.en? item.engCatgName : item.arabCatgName }}</option>
 
                       </ng-container>
                     </select>
