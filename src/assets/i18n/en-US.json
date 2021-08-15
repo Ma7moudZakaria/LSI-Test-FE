@@ -68,7 +68,10 @@
     "EXTENTION_FILE": "your extention file not accepted",
     "ACCEPT": "Accepted",
     "REJECT": "Reject",
-    "DEGREE_MAX_LENGTH": "Degree must be more than 100"
+    "DEGREE_MAX_LENGTH": "Degree must be more than 100",
+    "REJECT_RESON":"Reject Reason",
+    "PROGRAM":"Program",
+    "DROP_OUT_REQUEST":"Reject Reason"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
@@ -765,6 +768,11 @@
     "REJECT_TEACHER": "Reject Teacher",
     "FROM_PROGRAM": "From program",
     "REASON_REJECT": "Reason reject"
+  },
+  "TEACHER_DROP_OUT": {
+    "SUBSCRIBERS": "Subscibe",
+    "JOIN_REQUESTS": "Join requests",
+    "CANCEL_REQUESTS": "Cancellation requests"
   },
   "STUDENT_SUBSCRIBERS": {
     "SUBSCRIBERS": "Subscibe",

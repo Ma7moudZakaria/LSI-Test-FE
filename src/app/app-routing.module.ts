@@ -19,6 +19,7 @@ const routes: Routes = [
   { path: 'role-management', loadChildren: () => import('./modules/role-management/role-management.module').then(m => m.RoleManagementModule), canActivate: [AuthGuard] },
   { path: 'user-requests', loadChildren: () => import('./modules/user-requests/user-requests.module').then(m => m.UserRequestsModule), canActivate: [AuthGuard] },
   { path: 'admin-messaging', loadChildren: () => import('./modules/admin-messaging/admin-messaging.module').then(m => m.AdminMessagingModule), canActivate: [AuthGuard] },
+  { path: 'teacher-requests', loadChildren: () => import('./modules/teacher-requests/teacher-requests.module').then(m => m.TeacherRequestsTeacherViewModule), canActivate: [AuthGuard] },
 
   { path: 'feelings', loadChildren: () => import('./modules/feelings/feelings.module').then(m => m.FeelingsModule), canActivate: [AuthGuard] },
 

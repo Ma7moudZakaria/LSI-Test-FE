@@ -72,6 +72,14 @@ import { TeacherSystemCardRequestComponent } from './components/teacher-system-c
 import { TeacherSystemSubscriptionGridComponent } from './components/teacher-system-subscription-grid/teacher-system-subscription-grid.component';
 import { StudentProgramVacationGridComponent } from './components/student-program-vacation-grid/student-program-vacation-grid.component';
 import { StudentProgramVacationCardAdminComponent } from './components/student-program-vacation-card-admin/student-program-vacation-card-admin.component';
+import { TeacherDropOutRequestAdminCardComponent } from './components/teacher-drop-out-request-admin-card/teacher-drop-out-request-admin-card.component';
+import { TeacherDropOutRequestAdminGridComponent } from './components/teacher-drop-out-request-admin-grid/teacher-drop-out-request-admin-grid.component';
+import { TeacherDropOutRequestTeacherCardComponent } from './components/teacher-drop-out-request-teacher-card/teacher-drop-out-request-teacher-card.component';
+import { StudentDropOutRequestAdminCardComponent } from './components/student-drop-out-request-admin-card/student-drop-out-request-admin-card.component';
+import { StudentDropOutRequestStudentCardComponent } from './components/student-drop-out-request-student-card/student-drop-out-request-student-card.component';
+import { StudentDropOutGridComponent } from './components/student-drop-out-grid/student-drop-out-grid.component';
+
+
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
     SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,
@@ -109,9 +117,16 @@ import { StudentProgramVacationCardAdminComponent } from './components/student-p
 
     ,
     TeacherSystemCardRequestComponent,
-    TeacherSystemSubscriptionGridComponent,
-    StudentProgramVacationGridComponent,
-    StudentProgramVacationCardAdminComponent],
+        TeacherSystemSubscriptionGridComponent,
+        StudentProgramVacationGridComponent,
+        StudentProgramVacationCardAdminComponent,
+    TeacherDropOutRequestAdminCardComponent,
+    TeacherDropOutRequestAdminGridComponent,
+    TeacherDropOutRequestTeacherCardComponent,
+    StudentDropOutRequestAdminCardComponent,
+    StudentDropOutRequestStudentCardComponent,
+    StudentDropOutGridComponent
+    ],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,
@@ -134,9 +149,11 @@ import { StudentProgramVacationCardAdminComponent } from './components/student-p
     ProgramDayTaskTasmeaComponent, CardFeelingsComponent, MatTooltipModule,
     SettingAgeComponent, SettingDegreeLastProgramComponent, SettingLastProgramComponent, SettingQualificationsComponent,
     SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent,
-    SettingAcceptComponent, StuCardRequestComponent, TeacherCardRequestComponent, TeacherSystemCardRequestComponent, TeacherStuProgramForSubscriptionGridComponent
-    , SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent, SettingAcceptComponent, ProgramSubscriptionGridComponent
-    , TeacherSystemSubscriptionGridComponent, StudentProgramVacationGridComponent, TeacherStudentProgramForSubscriptionComponent
+    SettingAcceptComponent, StuCardRequestComponent, TeacherCardRequestComponent, TeacherSystemCardRequestComponent, TeacherStuProgramForSubscriptionGridComponent,
+     ProgramSubscriptionGridComponent
+      , TeacherSystemSubscriptionGridComponent, StudentProgramVacationGridComponent, TeacherStudentProgramForSubscriptionComponent,
+      StudentDropOutGridComponent,
+      TeacherDropOutRequestAdminGridComponent
   ]
 })
 export class SharedModule { }

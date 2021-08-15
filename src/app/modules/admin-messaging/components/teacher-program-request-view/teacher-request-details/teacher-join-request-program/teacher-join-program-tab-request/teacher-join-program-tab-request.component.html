@@ -28,7 +28,7 @@
       <div *ngIf='showTap == statusEnum.Pending' >
         <app-program-subscription-grid *ngIf=' teacherProgramSubscriptionList.length > 0' 
           [teacherItems]='teacherProgramSubscriptionList' 
-          (acceptTeacherProgramSubscription)='acceptTeacherProgramSubscription($event)'
+          (acceptTeacherProgramSubscription)='acceptTeacherProgramSubscription($event)'          
           (acceptAllTeacherProgramSubscriptionCheched)='acceptAllTeachersCheckedProgramSubscription()' 
           [numberPerRow]='numberItemsPerRow'
            [userMode]='teacherCard'
