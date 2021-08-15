@@ -9,11 +9,11 @@ import {AlertifyService} from '../../../core/services/alertify-services/alertify
 import {ProgramSubscriptionUsersEnum} from '../../../core/enums/program-subscription-users-enum.enum';
 
 @Component({
-  selector: 'app-student-programs',
-  templateUrl: './student-programs.component.html',
-  styleUrls: ['./student-programs.component.scss']
+  selector: 'app-student-programs-for-subscription',
+  templateUrl: './student-programs-for-subscription.component.html',
+  styleUrls: ['./student-programs-for-subscription.component.scss']
 })
-export class StudentProgramsComponent implements OnInit {
+export class StudentProgramsForSubscriptionComponent implements OnInit {
 
   programsForStudentSubscriptionsLst: IProgramsForStudentSubscriptionsModel[] | undefined;
 

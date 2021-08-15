@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { StudentProgramSubscriptionRoutingModule } from './student-program-subscription-routing.module';
 import { StudentProgramSubViewComponent } from './student-program-sub-view/student-program-sub-view.component';
-import { StudentProgramsComponent } from './student-programs/student-programs.component';
+import { StudentProgramsForSubscriptionComponent } from './student-programs-for-subscription/student-programs-for-subscription.component';
 import { SubscriptionSubmitComponent } from './student-program-sub-view/subscription-submit/subscription-submit.component';
 import { StudentProgramSubDetailsComponent } from './student-program-sub-view/student-program-sub-details/student-program-sub-details.component';
 import {SharedModule} from '../../shared/shared.module';
@@ -14,7 +14,7 @@ import { CustomConditionOverlayComponent } from './student-program-sub-view/cust
 
 
 @NgModule({
-  declarations: [StudentProgramSubViewComponent, StudentProgramsComponent, SubscriptionSubmitComponent, StudentProgramSubDetailsComponent, PredefinedConditionOverlayComponent, JoiningExamOverlayComponent, CustomConditionOverlayComponent],
+  declarations: [StudentProgramSubViewComponent, StudentProgramsForSubscriptionComponent, SubscriptionSubmitComponent, StudentProgramSubDetailsComponent, PredefinedConditionOverlayComponent, JoiningExamOverlayComponent, CustomConditionOverlayComponent],
   imports: [
     CommonModule,
     StudentProgramSubscriptionRoutingModule,

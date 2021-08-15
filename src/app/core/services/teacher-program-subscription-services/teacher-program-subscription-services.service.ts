@@ -18,7 +18,7 @@ export class TeacherProgramSubscriptionServicesService {
   teacherProgramSubscriptionsAcceptanceURL = environment.baseUrl + 'TeacherProgramSubscription/accept-teacher-program-subscription/';
   rejectTeachersProgramSubscriptionURL = environment.baseUrl + 'TeacherProgramSubscription/reject-teacher-program-subscription/';
   submitTeacherSubscriptionURL = environment.baseUrl + 'TeacherProgramSubscription/submit-teacher-subscription/';
-  getProgramsForTeacherssSubscriptionsURL = environment.baseUrl + 'TeacherProgramSubscription/get-programs-for-teachers-subscriptions/';
+  getProgramsForTeachersSubscriptionsURL = environment.baseUrl + 'TeacherProgramSubscription/get-programs-for-teachers-subscriptions/';
   getTeacherProgramsURL = environment.baseUrl + 'TeacherProgramSubscription/get-teacher-programs/';
   getSubscriptionProgramDetailsURL = environment.baseUrl + 'Programs/get-subscription-program-details/';
 
@@ -40,8 +40,8 @@ export class TeacherProgramSubscriptionServicesService {
     return this.http.put<BaseResponseModel>(this.submitTeacherSubscriptionURL, model);
   }
 
-  getProgramsForTeacherssSubscriptions(model: IProgramsForTeachersSubscriptionsFilterRequestModel): Observable<BaseResponseModel> {
-    return this.http.post<BaseResponseModel>(this.getProgramsForTeacherssSubscriptionsURL, model);
+  getProgramsForTeachersSubscriptions(model: IProgramsForTeachersSubscriptionsFilterRequestModel): Observable<BaseResponseModel> {
+    return this.http.post<BaseResponseModel>(this.getProgramsForTeachersSubscriptionsURL, model);
   }
 
   getTeacherPrograms(model: ITeacherMyProgramsRequestModel): Observable<BaseResponseModel> {

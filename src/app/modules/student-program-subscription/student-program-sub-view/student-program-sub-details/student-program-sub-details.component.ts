@@ -38,14 +38,13 @@ export class StudentProgramSubDetailsComponent implements OnInit {
     this.TeacherProgramSubscriptionServicesService.getSubscriptionProgramDetails(this.ProgramSubscriptionId).subscribe(
       res => {
 
-        var response = <BaseResponseModel>res;
-        if (response.isSuccess) {
-          this.programsForSubscriptionsDetails = response.data;
+        if (res.isSuccess) {
+          this.programsForSubscriptionsDetails = res.data;
           console.log('this.programsForSubscriptionsDetails', this.programsForSubscriptionsDetails);
         }
         else {
           this.resMessage = {
-            message: response.message,
+            message: res.message,
             type: BaseConstantModel.DANGER_TYPE
           }
         }

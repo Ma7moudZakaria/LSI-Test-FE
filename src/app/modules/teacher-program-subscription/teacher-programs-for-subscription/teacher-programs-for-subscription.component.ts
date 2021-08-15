@@ -9,9 +9,9 @@ import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { ProgramSubscriptionUsersEnum } from '../../../core/enums/program-subscription-users-enum.enum';
 
 @Component({
-  selector: 'app-teacher-programs',
-  templateUrl: './teacher-programs.component.html',
-  styleUrls: ['./teacher-programs.component.scss']
+  selector: 'app-teacher-programs-for-subscription',
+  templateUrl: './teacher-programs-for-subscription.component.html',
+  styleUrls: ['./teacher-programs-for-subscription.component.scss']
 })
 export class TeacherProgramsComponent implements OnInit {
   programsForTeacherSubscriptionsLst: IProgramsForTeacherSubscriptionsModel[] | undefined;
@@ -29,14 +29,14 @@ export class TeacherProgramsComponent implements OnInit {
 
   ngOnInit(): void {
     this.filterRequest.sortField = 'progName';
-    this.getProgramsForTeacherssSubscriptions()
+    this.getProgramsForTeachersSubscriptions()
 
   }
 
 
 
-  getProgramsForTeacherssSubscriptions() {
-    this.teacherProgramSubscriptionServicesService.getProgramsForTeacherssSubscriptions(this.filterRequest || {}).subscribe(res => {
+  getProgramsForTeachersSubscriptions() {
+    this.teacherProgramSubscriptionServicesService.getProgramsForTeachersSubscriptions(this.filterRequest || {}).subscribe(res => {
       // var response = <BaseResponseModel>res;
       if (res.isSuccess) {
         // console.log("res", res);
@@ -47,7 +47,7 @@ export class TeacherProgramsComponent implements OnInit {
         if (this.filterRequest.skip > 0 && (!this.programsForTeacherSubscriptionsLst || this.programsForTeacherSubscriptionsLst.length === 0)) {
           this.filterRequest.page -= 1;
           this.filterRequest.skip = (this.filterRequest.page - 1) * this.filterRequest.take;
-          this.getProgramsForTeacherssSubscriptions();
+          this.getProgramsForTeachersSubscriptions();
         }
 
       }
@@ -63,10 +63,10 @@ export class TeacherProgramsComponent implements OnInit {
 
   filterRequestTeacher(event: IProgramsForTeachersSubscriptionsFilterRequestModel) {
     this.filterRequest = event;
-    this.getProgramsForTeacherssSubscriptions();
+    this.getProgramsForTeachersSubscriptions();
   }
   filterByText(searchKey: string) {
     this.filterRequest.progName = searchKey;
-    this.getProgramsForTeacherssSubscriptions();
+    this.getProgramsForTeachersSubscriptions();
   }
 }

@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { StudentProgramsRoutingModule } from './student-programs-routing.module';
+import { StatisticsComponent } from './student-program-wrapper/statistics/statistics.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { StudentProgramsComponent } from './student-program-wrapper/student-programs/student-programs.component';
 import { HonoraryBoardComponent } from './student-program-wrapper/honorary-board/honorary-board.component';
-import { ProgramSubscriptionsComponent } from './student-program-wrapper/program-subscriptions/program-subscriptions.component';
-import { StatisticsComponent } from './student-program-wrapper/statistics/statistics.component';
 import { StudentProgramWrapperComponent } from './student-program-wrapper/student-program-wrapper.component';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { StudentProgramsRoutingModule } from './student-programs-routing.module';
 
 
 @NgModule({
-  declarations: [StudentProgramsComponent, HonoraryBoardComponent, ProgramSubscriptionsComponent, StatisticsComponent, StudentProgramWrapperComponent],
+  declarations: [StudentProgramsComponent, HonoraryBoardComponent, StatisticsComponent, StudentProgramWrapperComponent],
   imports: [
     CommonModule, SharedModule,
     StudentProgramsRoutingModule
