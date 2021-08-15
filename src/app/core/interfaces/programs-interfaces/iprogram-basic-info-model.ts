@@ -8,6 +8,7 @@ export interface IProgramBasicInfoModel {
     progVision?: string;
     progSharedWith?: string;
     progTypes?:IProgramType[];
+    progCats?:IProgCategory[];
     progDura?:number;
     progAvableDtyTime?:string;
     progAllowedDtyDay?: number;
@@ -38,4 +39,8 @@ export interface IRecitationTimes{
     // id?:string;
     progRecFrom?:string;
     progRecTo?:string;
+}
+
+export interface IProgCategory {
+  progCatId?:string;
 }

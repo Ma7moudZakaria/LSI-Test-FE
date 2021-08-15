@@ -1,3 +1,5 @@
+import {IPrgoramCategrory} from '../program-categories-interfaces/iprgoram-categrory';
+
 export interface IProgramDetails {
     id?:string;
     progBaseInfo?:IProgramBasicInfoDetails
@@ -45,6 +47,7 @@ export interface IProgramBasicInfoDetails{
     prgTps?:IProgramTypesDetails[];
     prgcountTeachers?: number;
     prgcountStudents?: number;
+    progCats?:IPrgoramCategrory[]
 
 }
 

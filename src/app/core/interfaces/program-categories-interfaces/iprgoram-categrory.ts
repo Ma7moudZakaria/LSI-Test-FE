@@ -1,6 +1,8 @@
 export interface IPrgoramCategrory {
     id: string;
-    no: number;
-    arabCatgName: string;
-    engCatgName: string;
+    no?: number;
+  arCatName: string;
+  enCatName: string;
+  catId?:string;
+  progId?:string;
 }

@@ -696,7 +696,8 @@
     "TO_HOUR": "To the hour",
     "ADD": "Add",
     "FROM": "From",
-    "TO": "To"
+    "TO": "To",
+    "CHOOSE_SECTION": "Choose Section"
   },
   "PROGRAM_DAY_TASK_DETIALS": {
     "DEGREE": "Degree",

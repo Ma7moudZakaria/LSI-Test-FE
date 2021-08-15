@@ -692,7 +692,8 @@
     "TO_HOUR": "الى الساعه",
     "ADD": "إضافة",
     "FROM": "من",
-    "TO": "إلى"
+    "TO": "إلى",
+    "CHOOSE_SECTION": "اختر القسم"
   },
   "PROGRAM_DAY_TASK_DETIALS": {
     "DEGREE": "الدرجه",
