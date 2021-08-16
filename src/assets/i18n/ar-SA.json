@@ -762,7 +762,12 @@
     "SUBSCRIBERS": "الطلبات",
     "JOIN_REQUESTS": "طلبات الانضمام",
     "CANCEL_REQUESTS": "طلبات الانسحاب",
-    "NEW_CANCEL_REQUESTS": "طلب انسحاب جديد"
+    "NEW_CANCEL_REQUESTS": "طلب انسحاب جديد",
+    "TIME": "تاريخ الطلب",
+    "ADMIN_ANSWER": "رد الادارة" ,
+    "REJECTED": "تم رفض الطلب",
+    "ACCEPT" : "تم قبول الطلب",
+    "CANCEL" : "الغاء الطلب"
   },
   "STUDENT_SUBSCRIBERS": {
     "SUBSCRIBERS": "الطلبات",
