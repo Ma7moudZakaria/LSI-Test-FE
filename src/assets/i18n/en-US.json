@@ -775,7 +775,13 @@
   "TEACHER_DROP_OUT": {
     "SUBSCRIBERS": "Subscibe",
     "JOIN_REQUESTS": "Join requests",
-    "CANCEL_REQUESTS": "Cancellation requests"
+    "CANCEL_REQUESTS": "Cancellation requests",
+    "NEW_CANCEL_REQUESTS": "New Cancel Request",
+    "TIME": "Time",
+    "ADMIN_ANSWER": "Admin Answer" ,
+    "REJECTED": "Rejected",
+    "ACCEPT" : "Accepted",
+    "CANCEL" : "Cancel"
   },
   "STUDENT_SUBSCRIBERS": {
     "SUBSCRIBERS": "Subscibe",

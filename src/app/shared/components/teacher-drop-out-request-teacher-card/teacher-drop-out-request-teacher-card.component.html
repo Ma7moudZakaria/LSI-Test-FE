@@ -1,34 +1,37 @@
 <div class="card-request">
-  <div class="card_header">
-    <section class="example-section">
-      <mat-checkbox class="example-margin"  [(ngModel)]="teacherDropOutRequestModel.checked" ></mat-checkbox>
-    </section>
-  <div>
-      <span> {{'STUDENT_SUBSCRIBERS.TIME' | translate}} </span>        
+  <div class="card_header ">
 
-      <span>&nbsp;</span>
-      <span>&nbsp;</span>
-      <span>{{teacherDropOutRequestModel.requestDate  | date: 'dd/MM/yyyy'}}</span> 
-  </div>
-  </div>
+      <div class="col-6 d-flex align-items-center justify-content-between p-0 m-0">
+          <span > {{'TEACHER_DROP_OUT.TIME' | translate}} </span>
+          <span>{{teacherDropOutRequestModel.requestDate  | date: 'dd/MM/yyyy'}}</span>
+      </div>
+<!--      <div class="col-4">-->
+<!--        <img src="assets/images/edit-white.svg" class="cursor-pointer program__edit" >-->
+<!--        <img src="assets/images/trash-white.svg" class="cursor-pointer ">-->
+<!--      </div>-->
 
-  <div class="card_body">
-    <div class="d-flex justify-content-between mb-3" >
-    <div class="mx-1">
-      <p class="name_user bold mb-2">{{ teacherDropOutRequestModel?.huffazNumber}}</p>
-      <p class="name_user bold mb-2">{{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.enTechStatusName : teacherDropOutRequestModel?.arTechStatusName}}</p>
-      <p class="name_user bold mb-2">{{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.teacherNameEn : teacherDropOutRequestModel?.teacherNameAr}}</p>
-      <p class="program_user bold mb-2 "> {{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.enProgBatName : teacherDropOutRequestModel?.arProgBatName}}</p>
-      <p class="name_user bold mb-2" *ngIf="teacherDropOutRequestModel.reasonReject != null" >رد الادارة</p>
-      <p class="program_user bold mb-2 "*ngIf="teacherDropOutRequestModel.reasonReject != null"> تم رفض الطلب</p>
-      <p class="program_user bold mb-0 ">         
+  </div>
+  <div class="card_body program">
+    <div class="d-flex align-items-center program__header justify-content-between " >
+
+      <p class="program__num  mb-2">{{ teacherDropOutRequestModel?.huffazNumber}}</p>
+      <div class="d-flex align-items-center justify-content-between " >
+      <p class="program__num mb-2  mr-3 ml-3">{{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.enTechStatusName : teacherDropOutRequestModel?.arTechStatusName}}</p>
+        <span class="status mb-2" [ngClass]="{ 'accept' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Accept ,
+                                  'pending' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Pending ,
+                                  'rejected' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Rejected}">
+        </span>
+      </div>
+    </div>
+      <div class="mx-1">
+<!--      <p class="teacher__name  ">{{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.teacherNameEn : teacherDropOutRequestModel?.teacherNameAr}}</p>-->
+      <p class="program__name "> {{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.enProgBatName : teacherDropOutRequestModel?.arProgBatName}}</p>
+      <p class="program__desc"></p>
+      <p class="program__admin" *ngIf="teacherDropOutRequestModel.reasonReject != null" >{{'TEACHER_DROP_OUT.ADMIN_ANSWER' | translate}}</p>
+      <p class="program__answer "  *ngIf="teacherDropOutRequestModel.reasonReject != null">{{'TEACHER_DROP_OUT.REJECTED' | translate}}</p>
     </div>
     
-<span class="status" [ngClass]="{ 'accept' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Accept ,
-                                'pending' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Pending , 
-                                'rejected' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Rejected
-}" 
-></span>
-    </div>
+
+<button class="program__btn cancel-btn" disabled>{{'TEACHER_DROP_OUT.CANCEL' | translate}}</button>
   </div>
 </div>

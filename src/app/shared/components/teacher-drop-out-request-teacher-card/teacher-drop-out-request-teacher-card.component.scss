@@ -1,4 +1,63 @@
 @import "../stu-card-request/stu-card-request.component.scss";
+@import "../../../../assets/scss/variables";
+.program{
+
+  &__edit{
+    &:lang(ar){
+      padding-left: 10px;
+    }
+    &:lang(en){
+      padding-right: 10px;
+    }
+  }
+  &__btn{
+    text-align: center!important;
+    position: absolute;
+    bottom: 24px;
+    &:lang(ar){
+      left: 22px;
+    }
+    &:lang(en){
+      right: 22px;
+    }
+    &[disabled]{
+      background-color: $labels;
+      color: #fff;
+    }
+  }
+  &__header{
+    margin-top: 7px;
+  }
+  &__num{
+    color: $labels;
+  }
+  &__name{
+    color: $edit;
+    font-weight: 600;
+    font-size: 19px;
+  }
+  &__desc{
+    color: $edit;
+    font-size: 14px;
+    margin: 10px 0;
+  }
+  &__admin{
+     font-size: 14px;
+     font-weight: 400;
+     color: $user-color;
+    margin: 0;
+   }
+  &__answer{
+    font-weight: 400;
+    font-size: 14px;
+    color: $edit;
+  }
+}
+
+
+
+
+
 .status{
     width: 20px;
     height: 20px;
