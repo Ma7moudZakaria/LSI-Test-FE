@@ -71,7 +71,10 @@
     "DEGREE_MAX_LENGTH": "Degree must be more than 100",
     "REJECT_RESON":"Reject Reason",
     "PROGRAM":"Program",
-    "DROP_OUT_REQUEST":"Reject Reason"
+    "DROP_OUT_REQUEST":"Reject Reason",
+    "APPLICANT_NAME":"Applicant name",
+    "REQUEST_NUMBER":"Request Number",
+    "ADVANCED_SEARCH": "Advanced Search"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
