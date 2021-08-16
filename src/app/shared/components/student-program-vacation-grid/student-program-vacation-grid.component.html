@@ -104,7 +104,7 @@
 <mat-grid-list cols="{{numberPerRow}}" rowHeight="3:3">
   <ng-container *ngIf='this.userRole== "Super Admin"'>
     <mat-grid-tile *ngFor='let item of studentVacationItems' >
-      <app-student-program-vacation-card-admin [studentSubscripModel]='item'
+      <app-student-program-vacation-card-admin class="card" [studentSubscripModel]='item'
                             (rejectStudentVacationRequest)="rejectStuRequest($event)"
                             (acceptStudentVacationRequest)="acceptStuRequest($event)"
                             [typeEnum]='vacationTypeEnum'
