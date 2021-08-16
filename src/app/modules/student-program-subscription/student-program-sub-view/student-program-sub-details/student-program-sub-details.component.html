@@ -87,13 +87,13 @@
     <div>
       <div class="d-flex align-items-center justify-content-end">
 
-        <mat-checkbox  id="subscribe" (change)='checkConditions($event)'  class="example-margin ">
+        <mat-checkbox  id="subscribe" (change)='checkConditions($event)'   class="example-margin ">
 
         </mat-checkbox>
         <label for="subscribe" class="detailsFooter__label">موافق علي شروط البرنامج</label>
 
         <button class="save-btn" [ngClass]="{'disabledCheck':disabledCheck }"
-        >إشتراك</button>
+        (click)="verifyProgramPredefinedCondition()" >إشتراك</button>
       </div>
 
     </div>

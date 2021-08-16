@@ -773,7 +773,6 @@
     "FROM_PROGRAM": "من برنامج",
     "REASON_REJECT": "سبب الرفض"
   },
-
   "TEACHER_DROP_OUT": {
     "SUBSCRIBERS": "الطلبات",
     "JOIN_REQUESTS": "طلبات الانضمام",
@@ -851,5 +850,11 @@
     "PROG_PARTS": "عدد الأجزاء المطلوبة",
     "NO": "غير محدد",
     "PROG_DURA": "مدة البرنامج باليوم"
+  },
+  "PROGRAM_CATEGORY": {
+    "ADD_CATEGORY": "اضافه قسم",
+    "EDIT_CATEGORY": "تعديل قسم",
+    "AR_NAME_CATEGORY": " اسم القسم بالعربيه",
+    "EN_NAME_CATEGORY": "اسم القسم بالانجليزيه"
   }
 }

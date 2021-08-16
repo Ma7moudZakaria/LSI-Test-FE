@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-12 container_haeder mb-2">
                <button class="cancel-btn" (click)="AddCategories()" >
-              ADD Categories
+                {{'PROGRAM_CATEGORY.ADD_CATEGORY' | translate}}
                </button>
             </div>
         </div>
@@ -17,12 +17,11 @@
  
                 <mat-card >
                     <mat-card-header>
-                    <!-- {{PrgoramCategrory.enCatName}} -->
                     {{this.translate.currentLang===langEnum.en? PrgoramCategrory.enCatName: PrgoramCategrory.arCatName}}
                 </mat-card-header>
                 <mat-card-actions>
                  <img src="assets/images/notify/edit.svg" class="mx-2  card_actions_icon" (click)="editPrgoramCategrory(PrgoramCategrory)" >
-                  <img  src="/assets/images/notify/trash.svg" class="mx-2 card_actions_icon">
+                  <img  src="/assets/images/notify/trash.svg" class="mx-2 card_actions_icon" (click)="deletePrgoramCategrory(PrgoramCategrory.id)">
                   </mat-card-actions>
                 </mat-card> 
             </div>

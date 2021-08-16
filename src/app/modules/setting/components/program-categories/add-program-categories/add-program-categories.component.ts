@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { IAddProgramCategory } from 'src/app/core/interfaces/program-categories-interfaces/iadd-program-category';
-import { IEditProgramCategory } from 'src/app/core/interfaces/program-categories-interfaces/iedit-program-category';
+import { IAddEditProgramCategory } from 'src/app/core/interfaces/program-categories-interfaces/iadd-edit-program-category';
 import { IPrgoramCategrory } from 'src/app/core/interfaces/program-categories-interfaces/iprgoram-categrory';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
@@ -16,13 +15,11 @@ export class AddProgramCategoriesComponent implements OnInit {
 
   @Output() addEditProgramCategories = new EventEmitter<IPrgoramCategrory>();
   @Output() closeOverlay = new EventEmitter<boolean>();
-  @Input() modelEdit: IPrgoramCategrory | undefined;
+  @Input() editModel: IPrgoramCategrory | undefined;
 
   programCategoryModel = {} as IPrgoramCategrory;
-  model: IAddProgramCategory | undefined;
-
-  listProgramCategporyList: IAddProgramCategory[] = [];
-
+  model: IAddEditProgramCategory | undefined;
+  listProgramCategporyList: IAddEditProgramCategory[] = [];
   resMessage: BaseMessageModel = {};
 
   constructor(
@@ -32,17 +29,65 @@ export class AddProgramCategoriesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // in case edit form 
+    if (this.editModel) {
+      this.populatData();
+      // console.log("editModel", this.editModel)
+
+      // console.log("programCategoryModel", this.programCategoryModel)
+    }
   }
 
   saveProgramCategories() {
-
+    // fill model
     this.model =
     {
       arabCatgName: this.programCategoryModel.arCatName,
       engCatgName: this.programCategoryModel.enCatName
 
     }
+    // 2-send to api in add
     this.programCategoriesService.addProgramCatiegories(this.model).subscribe(res => {
+      if (res.isSuccess) {
+
+        this.alertify.success(res.message || '');
+        this.closeForm()
+      } else {
+        this.resMessage =
+        {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+    }, error => {
+      this.resMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    })
+  }
+  // case edit
+  // 1-populate data in form 
+  populatData() {
+    this.programCategoryModel = {
+      id: this.editModel?.id,
+      arCatName: this.editModel?.arCatName,
+      enCatName: this.editModel?.enCatName,
+    }
+  }
+  // 2-send update input in form 
+
+  savingInEdit() {
+    // 1-fill model
+    this.model =
+    {
+      id: this.programCategoryModel.id,
+      arabCatgName: this.programCategoryModel.arCatName,
+      engCatgName: this.programCategoryModel.enCatName
+
+    }
+    // 2-send to api in edit
+    this.programCategoriesService.updateProgramCatiegories(this.model).subscribe(res => {
       if (res.isSuccess) {
 
         this.alertify.success(res.message || '');
@@ -65,35 +110,5 @@ export class AddProgramCategoriesComponent implements OnInit {
   closeForm() {
     this.closeOverlay.emit(false)
   }
-
-
-  // editPrgoramCategrory() {
-  //   if (this.addProgramCategoryModel  {
-  //     this.modelEdit =
-  //     {
-  //       id: this.modelEdit?.id,
-  //       arCatName: this.addProgramCategoryModel?.arabCatgName,
-  //       enCatName: this.addProgramCategoryModel?.engCatgName
-  //     }
-
-  //     this.programCategoriesService.updateProgramCatiegories(this.modelEdit).subscribe(res => {
-  //       if (res.isSuccess) {
-  //         // this.allPrgoramCategrorylist = res.data;
-  //         // console.log(' this.allPrograms', this.allPrgoramCategrorylist);
-  //       } else {
-  //         this.resMessage =
-  //         {
-  //           message: res.message,
-  //           type: BaseConstantModel.DANGER_TYPE
-  //         }
-  //       }
-  //     }, error => {
-  //       this.resMessage = {
-  //         message: error,
-  //         type: BaseConstantModel.DANGER_TYPE
-  //       }
-  //     })
-  //   }
-  // }
 
 }
