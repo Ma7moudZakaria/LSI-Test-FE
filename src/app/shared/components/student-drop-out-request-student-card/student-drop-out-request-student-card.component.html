@@ -10,7 +10,7 @@
   <div class="card_body program">
     <div class="d-flex align-items-center program__header justify-content-between " >
 
-      <p class="program__num  mb-2">{{ studentDropOutRequestFilterRequestStudentModel?.huffazNumber}}</p>
+      <p class="program__num  mb-2">{{ studentDropOutRequestFilterRequestStudentModel?.no}}</p>
       <div class="d-flex align-items-center justify-content-between " >
         <p class="program__num mb-2  mr-3 ml-3">{{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestStudentModel?.enStudentStatusName : studentDropOutRequestFilterRequestStudentModel?.arStudentStatusName}}</p>
         <span class="status" [ngClass]="{ 'accept' : studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Accept ,
