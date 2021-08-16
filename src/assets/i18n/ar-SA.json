@@ -761,7 +761,8 @@
   "TEACHER_DROP_OUT": {
     "SUBSCRIBERS": "الطلبات",
     "JOIN_REQUESTS": "طلبات الانضمام",
-    "CANCEL_REQUESTS": "طلبات الانسحاب"
+    "CANCEL_REQUESTS": "طلبات الانسحاب",
+    "NEW_CANCEL_REQUESTS": "طلب انسحاب جديد"
   },
   "STUDENT_SUBSCRIBERS": {
     "SUBSCRIBERS": "الطلبات",

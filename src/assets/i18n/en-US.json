@@ -764,7 +764,8 @@
   "TEACHER_DROP_OUT": {
     "SUBSCRIBERS": "Subscibe",
     "JOIN_REQUESTS": "Join requests",
-    "CANCEL_REQUESTS": "Cancellation requests"
+    "CANCEL_REQUESTS": "Cancellation requests",
+    "NEW_CANCEL_REQUESTS": "New Cancel Request"
   },
   "STUDENT_SUBSCRIBERS": {
     "SUBSCRIBERS": "Subscibe",
