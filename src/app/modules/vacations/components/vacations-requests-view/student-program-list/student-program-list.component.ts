@@ -15,7 +15,7 @@ import {IUser} from '../../../../../core/interfaces/auth-interfaces/iuser-model'
   styleUrls: ['./student-program-list.component.scss']
 })
 export class StudentProgramListComponent implements OnInit {
-  selectedIndex=-1;
+  selectedIndex=0;
   programs: any;
   @Output() selectedProgram =  new EventEmitter<IStudentPrograms>();
   langEnum = LanguageEnum;
@@ -39,7 +39,6 @@ export class StudentProgramListComponent implements OnInit {
     this.studentProgramSubscriptionService.getStudentPrograms(this.programFilter).subscribe(
       (res: BaseResponseModel) => {
         this.programs = res.data as IStudentPrograms[];
-        this.selectedIndex=-1;
       }, error => {
         this.resMessage = {
           message: error,

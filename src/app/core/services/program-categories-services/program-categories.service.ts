@@ -15,6 +15,8 @@ export class ProgramCategoriesService {
   getProgramCatiegoriesUrl = environment.baseUrl + 'ProgramCategories/get-program-category/';
   addProgramcategoryURL = environment.baseUrl + 'ProgramCategories/add-program-category';
   updateProgramCatiegoriesURL = environment.baseUrl + 'ProgramCategories/update-program-category';
+  getProgramsCategoryURL = environment.baseUrl + 'ProgramCategories/get-programs-category-by-programid/';
+
   // /api/ProgramCategories/add-program-category
   constructor(private http: HttpClient) { }
 
@@ -30,6 +32,10 @@ export class ProgramCategoriesService {
   }
   updateProgramCatiegories(model: IPrgoramCategrory): Observable<BaseResponseModel> {
     return this.http.put<BaseResponseModel>(this.updateProgramCatiegoriesURL, model);
+  }
+
+  GetProgramsCategoryByProgramId(id?: string): Observable<BaseResponseModel> {
+    return this.http.get<BaseResponseModel>(this.getProgramsCategoryURL+ id);
   }
 }
 

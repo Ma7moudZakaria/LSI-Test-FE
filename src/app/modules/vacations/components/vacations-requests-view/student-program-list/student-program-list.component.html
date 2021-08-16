@@ -2,12 +2,6 @@
   <p class="mb-4">{{'PROGRAMS_LIST.PROGRAMS' | translate}}</p>
 
   <div class="internal_scroll_list_group">
-<!--    <a class="list-group-item d-flex"-->
-<!--       [class.active]="selectedIndex === -1"-->
-<!--       (click)="loadStudentPrograms();selectedIndex=-1">-->
-<!--      <span>  {{'PROGRAMS_LIST.ALL' | translate}}</span>-->
-<!--    </a>-->
-
     <a class="list-group-item  d-flex" *ngFor="let program  of programs; let i = index"
        [class.active]="selectedIndex ===i"
        (click)="loadStudentPrograms(program);selectedIndex=i">
