@@ -23,7 +23,7 @@ export class UserRequestsViewComponent implements OnInit {
 
   scientificProblem: string | undefined;
 
-  selectedStudentRequest:StudentRequestEnum=StudentRequestEnum.CancelRequest;
+  selectedStudentRequest:StudentRequestEnum=StudentRequestEnum.DropOutRequest;
 
 
   // @ViewChild(UserScientificProblemComponent) userScientificProbChild:UserScientificProblemComponent | undefined;

@@ -20,7 +20,7 @@ export class StudentDropOutTabRequestComponent implements OnInit {
 
   @Output() rejectStudentDropOutRequest = new EventEmitter<IStudentDropOutRequestsFilterResponseModel>();
   @Output() advancedSearchEvent = new EventEmitter<IStudentDropOutRequestsFilterAdminViewRequestModel>();
-  @Output() itemStudentDropOutRequest = new EventEmitter<IStudentDropOutRequestsFilterResponseModel>();
+  @Output() itemOfRejectStudentDropOutRequest = new EventEmitter<IStudentDropOutRequestsFilterResponseModel>();
   
   studentDropOutRequestList: IStudentDropOutRequestsFilterResponseModel[] = [];
   studentDropOutRequestFilterRequestModel: IStudentDropOutRequestsFilterAdminViewRequestModel = { statusNum: StudentDropOutRequestStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
@@ -149,7 +149,7 @@ export class StudentDropOutTabRequestComponent implements OnInit {
   }
   
   rejectStudentDropOutRequestMethod(event: IStudentDropOutRequestsFilterResponseModel) {
-    this.itemStudentDropOutRequest.emit(event);
+    this.itemOfRejectStudentDropOutRequest.emit(event);
   }
 
   rejectStudentDropOutRequestEvent(teacherSubscripModel: IStudentDropOutRequestsFilterResponseModel) {
@@ -159,8 +159,7 @@ export class StudentDropOutTabRequestComponent implements OnInit {
   acceptStudentDropOutRequest(teacherSubscripModel: IStudentDropOutRequestsFilterResponseModel) {
     this.ids?.push(teacherSubscripModel.id || '');
     this.studentDropOutRequestService.studentDropOutRequestsAcceptance(this.ids).subscribe(res => {
-      var response = <BaseResponseModel>res;
-      if (response.isSuccess) {
+      if (res.isSuccess) {
         this.alertify.success(res.message || '');
         this.getStudentDropOutRequests();
       }

@@ -20,7 +20,7 @@ import { TeacherDropOutRequestService } from 'src/app/core/services/teacher-drop
 })
 export class DropOutRequestGridComponent implements OnInit {
 
-  @Output() itemTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
+  @Output() itemOfRejectTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
   @Output() createDropOutOverlayEvent = new EventEmitter<ICrateTeacherDropOutRequestModel>();
 
   teacherDropOutRequestList: ITeacherDropOutRequestModel[] = [];
@@ -50,7 +50,7 @@ export class DropOutRequestGridComponent implements OnInit {
   }
 
   rejectTeacherTeacherDropOutRequestRequestMethod(event: ITeacherDropOutRequestModel) {
-    this.itemTeacherDropOutRequest.emit(event);
+    this.itemOfRejectTeacherDropOutRequest.emit(event);
   }
 
   getTeacherDropOutRequests() {
@@ -83,7 +83,6 @@ export class DropOutRequestGridComponent implements OnInit {
 
   teacherDropOutRequestChangePage(event: ITeacherDropOutRequestAdvFilterTeacherViewRequestModel) {
     this.teacherDropOutRequestFilterRequestModel = event;
-    console.log("this.teacherDropOutRequestFilterRequestModel ==========================>" , this.teacherDropOutRequestFilterRequestModel)
     this.getTeacherDropOutRequests();
   }
 }

@@ -1,7 +1,7 @@
 
 export interface ITeacherDropOutRequestModel {
     id?:string;
-    huffazNumber?:number;
+    hNumber?:number;
     teacherNameAr?:number;
     teacherNameEn?:number;
     batchAr?:string;

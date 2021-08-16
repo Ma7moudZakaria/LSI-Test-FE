@@ -51,8 +51,7 @@ export class TeacherDropOutTabRequestComponent implements OnInit {
 
   getTeacherDropOutRequests() {
     this.teacherDropOutRequestService.teacherDropOutRequestAdvFilterAdminView(this.teacherDropOutRequestFilterRequestModel).subscribe(res => {
-      var response = <BaseResponseModel>res;
-      if (response.isSuccess) {
+      if (res.isSuccess) {
         this.teacherDropOutRequestList = res.data as ITeacherDropOutRequestModel[];
         this.totalCount = res.count ? res.count : 0;
         if (this.teacherDropOutRequestFilterRequestModel.skip > 0 && (!this.teacherDropOutRequestList || this.teacherDropOutRequestList.length === 0)) {
@@ -63,7 +62,7 @@ export class TeacherDropOutTabRequestComponent implements OnInit {
       }
       else {
         this.resultMessage  = {
-          message: response.message,
+          message: res.message,
           type: BaseConstantModel.DANGER_TYPE
         }
       }
@@ -79,25 +78,25 @@ export class TeacherDropOutTabRequestComponent implements OnInit {
   onPendingChange() {
     this.teacherDropOutRequestFilterRequestModel = { name: '', statusNum: TeacherDropOutRequestStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
     this.showTap = TeacherDropOutRequestStatusEnum.Pending;
-    this.closeAvancedSearch();
+    this.clearFilter();
     this.getTeacherDropOutRequests();
   }
 
   onAcceptChange() {
     this.teacherDropOutRequestFilterRequestModel = { name: '', statusNum: TeacherDropOutRequestStatusEnum.Accept, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
     this.showTap = TeacherDropOutRequestStatusEnum.Accept;
-    this.closeAvancedSearch();
+    this.clearFilter();
     this.getTeacherDropOutRequests();
   }
 
   onRejectedChange() {
     this.teacherDropOutRequestFilterRequestModel = { name: '', statusNum: TeacherDropOutRequestStatusEnum.Rejected, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
     this.showTap = TeacherDropOutRequestStatusEnum.Rejected
-    this.closeAvancedSearch();
+    this.clearFilter();
     this.getTeacherDropOutRequests();
   }
 
-  closeAvancedSearch() {
+  clearFilter() {
     this.teacherDropOutRequestFilterRequestModel.name = '';
     this.teacherDropOutRequestFilterRequestModel.progId = '';
     this.teacherDropOutRequestFilterRequestModel.requestNum = undefined;

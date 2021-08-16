@@ -1,6 +1,6 @@
 export interface ITeacherDropOutRequestTeacherViewModel {
     id?:string;
-    huffazNumber?:number;
+    hNumber?:number;
     batchAr?:string;
     batchEn?:string;
     progName?:string;
