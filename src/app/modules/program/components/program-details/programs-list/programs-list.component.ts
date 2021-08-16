@@ -19,6 +19,9 @@ import { BaseLookupModel } from 'src/app/core/ng-model/base-lookup-model';
 import { IProgramBasicInfoDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import {parseJson} from "@angular/cli/utilities/json-file";
+import {ProgramCategoriesService} from '../../../../../core/services/program-categories-services/program-categories.service';
+import {IPrgoramCategrory} from '../../../../../core/interfaces/program-categories-interfaces/iprgoram-categrory';
+import {IProgramsCategoryModel} from '../../../../../core/interfaces/program-categories-interfaces/iprograms-category-model';
 
 
 @Component({
@@ -28,7 +31,7 @@ import {parseJson} from "@angular/cli/utilities/json-file";
 })
 export class ProgramsListComponent implements OnInit {
   @Output() selectedProgram = new EventEmitter<IprogramsModel>();
-  programsList: IprogramsModel[] = [];
+  categoriesList: IPrgoramCategrory[] | undefined;
   // progBasicInfoDetails: IProgramBasicInfoDetails | undefined;
   programDetails = {} as IprogramsModel;
   programsbyAdvancedFilter: IProgramFilterAdvancedRequest = { skip: 0, take: 2147483647 };
@@ -40,10 +43,13 @@ export class ProgramsListComponent implements OnInit {
   collectionOfLookup = {} as ILookupCollection;
   listOfLookup: string[] = ['PROG_TYPES'];
   programTypesList: IProgramType[] = [];
+  currentlyOpenedItemIndex = -1;
+  items1: any;
+  programsList: IProgramsCategoryModel[] | undefined;
 
 
   constructor(private scientifcMaterialService: ScientificMaterialService,
-    private programService: ProgramService,
+    private programCategoriesService: ProgramCategoriesService,
     public translate: TranslateService,
     private router: Router,
     private lookupService: LookupService,
@@ -124,11 +130,9 @@ export class ProgramsListComponent implements OnInit {
   }
 
   loadProgramsbyAdvancedFilter() {
-    this.programService.getProgramAdvancedFilter(this.programsbyAdvancedFilter || {}).subscribe(res => {
+    this.programCategoriesService.getProgramCatiegories().subscribe(res => {
       if (res.isSuccess) {
-        this.programsList = res.data as IprogramsModel[];
-        this.getProgramIdToProgramDetails(this.programsList[0] || null);
-        // this.alert.success(res.message || '');
+        this.categoriesList = res.data as IPrgoramCategrory[];
       }
       else {
         this.resMessage = {
@@ -201,5 +205,35 @@ export class ProgramsListComponent implements OnInit {
   clearDura() {
     this.programsbyAdvancedFilter.duration = undefined;
     this.loadProgramsbyAdvancedFilter();
+  }
+
+  setOpened(itemIndex: number) {
+    this.currentlyOpenedItemIndex = itemIndex;
+  }
+  setClosed(itemIndex: Number) {
+    if (this.currentlyOpenedItemIndex === itemIndex) {
+      this.currentlyOpenedItemIndex = -1;
+    }
+  }
+
+  loadProgramsCategory(id: any) {
+    this.programCategoriesService.getProgramsCategoryByProgramId(id).subscribe(res => {
+        if (res.isSuccess) {
+          this.programsList = res.data as IProgramsCategoryModel[];
+        }
+        else {
+          this.resMessage = {
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
+          }
+        }
+      },
+      error => {
+        this.resMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+    );
   }
 }

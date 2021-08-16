@@ -14,6 +14,8 @@ export class ProgramCategoriesService {
   getProgramCatiegoriesUrl = environment.baseUrl + 'ProgramCategories/get-program-category/';
   addProgramcategoryURL = environment.baseUrl + 'ProgramCategories/add-program-category';
   updateProgramCatiegoriesURL = environment.baseUrl + 'ProgramCategories/update-program-category';
+    getProgramsCategoryURL = environment.baseUrl + 'ProgramCategories/get-category-programs/';
+
   daleteProgramCatiegoriesURL = environment.baseUrl + 'ProgramCategories/delete-program-category/';
 
   // /api/ProgramCategories/add-program-category
@@ -38,5 +40,9 @@ export class ProgramCategoriesService {
   }
 
 
+
+  getProgramsCategoryByProgramId(id?: string): Observable<BaseResponseModel> {
+    return this.http.get<BaseResponseModel>(this.getProgramsCategoryURL+ id);
+  }
 }
 

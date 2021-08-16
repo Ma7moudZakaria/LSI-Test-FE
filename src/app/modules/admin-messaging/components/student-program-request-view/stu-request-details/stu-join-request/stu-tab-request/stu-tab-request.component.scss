@@ -1,11 +1,27 @@
 @import 'src/assets/scss/_variables.scss';
 
+//.reuest_container {
+//  height: 71vh;
+//  .interTab {
+//    background-color: #FBFBFB;
+//    height: 53vh;
+//    min-height: 30vh;
+//    overflow-y: auto;
+//    overflow-x: hidden;
+//    border-radius: 0 0 0.5rem;
+//  }
+//}
+//.interTab {
+//  background-color: #FBFBFB;
+//  height: 53vh;}
+
 .reuest_container{
     background: #fff 0% 0% no-repeat padding-box;
     border-radius: 19px;
     opacity: 1;
     padding: 1rem;
-    height : 96%;
+    //height : 96%;
+     height: 71vh;
     // margin-top: 1rem;
 
 .group_header{
@@ -29,17 +45,18 @@
         background-color: #CB9118;
         color: #FFFFFF;
     }
-  
+
 }
     .fix_margin{
         margin-left: 0 !important;
         margin-right: 0 !important;
-       
+
     }
     .interTab
     {
         background-color: #FBFBFB;
-        height: 60vh;
+        //height: 60vh;
+         height: 53vh;
         min-height: 30vh;
         overflow-y: auto;
         overflow-x: hidden;
@@ -65,7 +82,7 @@
         }
         &:lang(ar){
             margin-right: 66.666667%;
-    
+
             }
     }
 }

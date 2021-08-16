@@ -91,14 +91,45 @@
 
     </a>
         <ng-container *ngIf="advancedSearch">
-                <div class="internal_scroll_list_group" >
-                <a class="list-group-item  d-flex" *ngFor="let program  of programsList; let i = index"
-                    [class.active]="selectedIndex === i"
-                    (click)="getProgramIdToProgramDetails(program);selectedIndex=i">
-                    <span>{{ program.progName}}</span>
+          <section class="internal_scroll_list_group">
+            <div class="w-100 row contanier_matrial-card ">
+              <div class="col-lg-12 mb-3">
+                <mat-accordion
+                  cdkDropList
+                  #unassignedList="cdkDropList"
+                  [cdkDropListData]="categoriesList"
+                  [cdkDropListConnectedTo]="[items1]"
+                >
+                  <mat-expansion-panel cdkDrag *ngFor="let category of categoriesList; let i = index;"
+                                       (opened)="setOpened(i)" (closed)="setClosed(i)">
 
-                </a>
-                </div>
+                    <mat-expansion-panel-header (click)="loadProgramsCategory(category.id)">
+
+                      <mat-panel-title class="qestionHeader">
+
+                        <div class="col span_question" (click)="getProgramIdToProgramDetails(category);selectedIndex=i">
+                                    <span>
+                                        {{this.translate.currentLang===langEnum.en? category.enCatName : category.arCatName}}
+                                    </span>
+                        </div>
+
+                        <div class="col-.5  chicx_box">
+
+                        </div>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="internal_scroll_list_group" >
+                                      <a class="list-group-item  d-flex" *ngFor="let program  of programsList; let i = index"
+                                          [class.active]="selectedIndex === i"
+                                          (click)="getProgramIdToProgramDetails(program);selectedIndex=i">
+                                          <span>{{program.progName}}</span>
+                                      </a>
+                    </div>
+                  </mat-expansion-panel>
+                </mat-accordion>
+              </div>
+            </div>
+          </section>
         </ng-container>
 
          <ng-container *ngIf="!advancedSearch">
