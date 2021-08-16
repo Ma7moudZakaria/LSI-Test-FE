@@ -5,10 +5,10 @@
           <span > {{'TEACHER_DROP_OUT.TIME' | translate}} </span>
           <span>{{teacherDropOutRequestModel.requestDate  | date: 'dd/MM/yyyy'}}</span>
       </div>
-      <div class="col-4">
-        <img src="assets/images/edit-white.svg" class="cursor-pointer program__edit" >
-        <img src="assets/images/trash-white.svg" class="cursor-pointer ">
-      </div>
+<!--      <div class="col-4">-->
+<!--        <img src="assets/images/edit-white.svg" class="cursor-pointer program__edit" >-->
+<!--        <img src="assets/images/trash-white.svg" class="cursor-pointer ">-->
+<!--      </div>-->
 
   </div>
   <div class="card_body program">
@@ -26,7 +26,7 @@
       <div class="mx-1">
 <!--      <p class="teacher__name  ">{{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.teacherNameEn : teacherDropOutRequestModel?.teacherNameAr}}</p>-->
       <p class="program__name "> {{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.enProgBatName : teacherDropOutRequestModel?.arProgBatName}}</p>
-      <p class="program__desc">وريم إيبسوم(Loفي صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ ال</p>
+      <p class="program__desc"></p>
       <p class="program__admin" *ngIf="teacherDropOutRequestModel.reasonReject != null" >{{'TEACHER_DROP_OUT.ADMIN_ANSWER' | translate}}</p>
       <p class="program__answer "  *ngIf="teacherDropOutRequestModel.reasonReject != null">{{'TEACHER_DROP_OUT.REJECTED' | translate}}</p>
     </div>
