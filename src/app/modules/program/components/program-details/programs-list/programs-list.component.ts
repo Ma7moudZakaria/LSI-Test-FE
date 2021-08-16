@@ -133,8 +133,8 @@ export class ProgramsListComponent implements OnInit {
     this.programCategoriesService.getProgramCatiegories().subscribe(res => {
       if (res.isSuccess) {
         this.categoriesList = res.data as IPrgoramCategrory[];
-        console.log("this.categoriesList",this.categoriesList)
-        this.getProgramIdToProgramDetails(this.categoriesList[0] || null);
+        // console.log("this.categoriesList",this.categoriesList)
+        // this.getProgramIdToProgramDetails(this.categoriesList[0] || null);
         // this.alert.success(res.message || '');
       }
       else {
@@ -223,6 +223,8 @@ export class ProgramsListComponent implements OnInit {
     this.programCategoriesService.GetProgramsCategoryByProgramId(id).subscribe(res => {
         if (res.isSuccess) {
           this.programsList = res.data as IProgramsCategoryModel[];
+           // this.getProgramIdToProgramDetails(this.programsList[0] || null);
+
           console.log("this.programsList",this.programsList)
 
         }
