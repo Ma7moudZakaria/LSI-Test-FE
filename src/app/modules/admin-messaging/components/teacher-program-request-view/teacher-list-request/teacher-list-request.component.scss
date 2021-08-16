@@ -4,7 +4,7 @@
     border-radius: 19px;
     opacity: 1;
     padding: 1.7rem;
-    height : 100%;;
+    height : 70vh;
     margin-top: 1rem;
     .teacher-list-request ul {
         padding-inline-start: 0 !important;
@@ -16,12 +16,12 @@
     }
     .internal_scroll_list_group:lang(ar) {
         // background-color: antiquewhite;
-                height: 470px;
+                height: 70vh;
                 overflow-y: auto;
             }
             .internal_scroll_list_group:lang(en) {
                 // background-color: antiquewhite;
-                        height: 470px;
+                        height: 70vh;
                         overflow-y: auto;
                     }
 
@@ -36,7 +36,7 @@
                        align-self: center;
                        }
                        .Catogry_Icon_Add{
-                        align-self: center;  
+                        align-self: center;
                         margin-right: 0.3rem;
                         margin-left: 0.3rem;
                        }
@@ -44,10 +44,10 @@
 }
  .teacher-list-request:lang(en){
     margin-left: 1rem;
-   
+
   }
   .teacher-list-request:lang(ar){
-   
+
     margin-right: 0rem;
   }
 .teacher-list-request > p{
@@ -73,8 +73,8 @@
     font-family: Almarai-Bold;
     font-size: 1rem;
     justify-content: space-between;
-        &.active ,&:hover {    
-        background: #CB9118 0% 0% no-repeat padding-box;       
+        &.active ,&:hover {
+        background: #CB9118 0% 0% no-repeat padding-box;
         // box-shadow: 0px 0px 15px #31313173;
         color: #FFFFFF;
         opacity: 1;
@@ -85,12 +85,12 @@
         //     background-color:$user-color !important;
         //     color: #FFFFFF !important;
         //     border: 1px solid $user-color;
-        // } 
+        // }
         .fa-trash-alt ,.fa-pencil-alt{
             color:#8E2520;
             margin-right: 0.2rem;
             margin-left: 0.2rem;
-        
+
         }
 
         &.active .fa-trash-alt , &.active  .fa-pencil-alt
@@ -98,11 +98,11 @@
         {
             color: #FFFFFF;
         }
-       
+
 }
 .link_Add{
     color:$icon_input;
-} 
+}
 .p_header{
     // margin-bottom: 1rem;
     font-size: large;
@@ -111,18 +111,18 @@
 
 .no-data{
     font: normal normal  1.25rem Almarai;
-      color:black; 
+      color:black;
       padding-top: 2rem;
-    
+
   }
   .no-data:lang(en){
     text-align: left;
-  
+
    padding-left: 2rem;
   }
   .no-data:lang(ar){
     text-align: right ;
-  
+
     padding-right: 2rem;
   }
 
@@ -131,7 +131,7 @@
 
   }
 
-// style for accordion 
+// style for accordion
 .ques_bank.mat-accordion {
     .mat-expansion-panel{
         margin-bottom: 0.8rem;
@@ -142,10 +142,10 @@
     .mat-expansion-panel-header{
         padding: 0 0rem;
         width: 100%;
-   
-      
-          
-        
+
+
+
+
      }
     .mat-expansion-panel-header-title {
     justify-content: space-between;
@@ -163,8 +163,8 @@
     background-color:$user-color !important;
     color: #FFFFFF !important;
     border: 1px solid $user-color;
-    
+
     .fa-pencil-alt.white,.fa-trash-alt.white {
         color: #FFFFFF !important
     }
-} 
+}

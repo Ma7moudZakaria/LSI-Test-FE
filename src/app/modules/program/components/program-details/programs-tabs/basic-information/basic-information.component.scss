@@ -1,5 +1,5 @@
 
-.tab_page 
+.tab_page
  {
   background: #fbfbfb;
   width: 100%;
@@ -10,11 +10,11 @@
     &:lang(en){
       text-align: left;
     }
- 
+
 
 
     .max_h {
-      min-height: 55vh;
+      min-height: 50vh;
       max-height: 55vh;
       overflow-y: auto;
     }
@@ -30,7 +30,7 @@
         font-size: 2rem;
         font-family: Almarai-Bold;
       }
-    
+
     img,i{
       width: 1rem;
       height: 1rem;
@@ -46,15 +46,15 @@
     .num{
       color: #8E2520;
       font-family: Almarai-Bold;
-    
+
     }
-    
+
     }
     .title{
       color: #CB9118;
       font-size: 14px;
       font-family: Almarai-Bold;
-      
+
       }
       .title_data{
       color: #363636;
