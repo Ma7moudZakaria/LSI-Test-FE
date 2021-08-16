@@ -1,35 +1,36 @@
 <div class="card-request">
     <div class="card_header">
-      <section class="example-section">
-        <mat-checkbox class="example-margin"  [(ngModel)]="studentDropOutRequestFilterRequestStudentModel.checked" ></mat-checkbox>
-      </section>
-    <div>
-        <span> {{'STUDENT_SUBSCRIBERS.TIME' | translate}} </span>        
-  
-        <span>&nbsp;</span>
-        <span>&nbsp;</span>
-        <span>{{studentDropOutRequestFilterRequestStudentModel.requestDate  | date: 'dd/MM/yyyy'}}</span> 
-    </div>
-    </div>
-  
-    <div class="card_body">
-      <div class="d-flex justify-content-between mb-3" >
-      <div class="mx-1">
-        <p class="name_user bold mb-2">{{ studentDropOutRequestFilterRequestStudentModel?.huffazNumber}}</p>
-        <p class="name_user bold mb-2">{{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestStudentModel?.enStudentStatusName : studentDropOutRequestFilterRequestStudentModel?.arStudentStatusName}}</p>
-        <p class="name_user bold mb-2">{{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestStudentModel?.usrNameEn : studentDropOutRequestFilterRequestStudentModel?.usrNameAr}}</p>
-        <p class="program_user bold mb-2 "> {{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestStudentModel?.enProgBatchName : studentDropOutRequestFilterRequestStudentModel?.arProgBatchName}}</p>
-        <p class="name_user bold mb-2" *ngIf="studentDropOutRequestFilterRequestStudentModel.reasonReject != null" >رد الادارة</p>
-        <p class="program_user bold mb-2 "*ngIf="studentDropOutRequestFilterRequestStudentModel.reasonReject != null"> تم رفض الطلب</p>
-        <p class="program_user bold mb-0 ">         
+      <div class="col-6 d-flex align-items-center justify-content-between p-0 m-0">
+        <span > {{'TEACHER_DROP_OUT.TIME' | translate}} </span>
+        <span>{{studentDropOutRequestFilterRequestStudentModel.requestDate  | date: 'dd/MM/yyyy'}}</span>
       </div>
-      
-  <span class="status" [ngClass]="{ 'accept' : studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Accept ,
-                                  'pending' : studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Pending , 
+
+    </div>
+
+  <div class="card_body program">
+    <div class="d-flex align-items-center program__header justify-content-between " >
+
+      <p class="program__num  mb-2">{{ studentDropOutRequestFilterRequestStudentModel?.huffazNumber}}</p>
+      <div class="d-flex align-items-center justify-content-between " >
+        <p class="program__num mb-2  mr-3 ml-3">{{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestStudentModel?.enStudentStatusName : studentDropOutRequestFilterRequestStudentModel?.arStudentStatusName}}</p>
+        <span class="status" [ngClass]="{ 'accept' : studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Accept ,
+                                  'pending' : studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Pending ,
                                   'rejected' : studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Rejected
-  }" 
-  ></span>
+  }"
+        ></span>
       </div>
     </div>
+    <div class="mx-1">
+      <!--      <p class="teacher__name  ">{{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.teacherNameEn : teacherDropOutRequestModel?.teacherNameAr}}</p>-->
+      <p class="program__name "> {{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestStudentModel?.enProgBatchName : studentDropOutRequestFilterRequestStudentModel?.arProgBatchName}}</p>
+      <p class="program__desc"></p>
+      <p class="program__admin" *ngIf="studentDropOutRequestFilterRequestStudentModel.reasonReject != null" >{{'TEACHER_DROP_OUT.ADMIN_ANSWER' | translate}}</p>
+      <p class="program__answer "  *ngIf="studentDropOutRequestFilterRequestStudentModel.reasonReject != null">{{'TEACHER_DROP_OUT.REJECTED' | translate}}</p>
+    </div>
+
+
+    <button class="program__btn cancel-btn" disabled>{{'TEACHER_DROP_OUT.CANCEL' | translate}}</button>
   </div>
-  
+
+
+  </div>
