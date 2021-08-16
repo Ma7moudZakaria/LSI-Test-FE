@@ -19,6 +19,7 @@ export class StudentProgramVacationRequestsComponent implements OnInit {
   totalCount = 0;
   numberItemsPerRow = 3;
   currentUser: IUser | undefined;
+  // @ts-ignore
   studentProgramVacationFilterRequestModel: IStudentProgramVacationRequestModel = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
   @Input() programModel: IStudentPrograms | undefined;
 

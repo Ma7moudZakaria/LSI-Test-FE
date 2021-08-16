@@ -115,7 +115,7 @@
 <!--  -------Student Card Student View---------->
   <ng-container *ngIf='this.userRole== "Student"'>
     <mat-grid-tile *ngFor='let item of studentVacationItems' >
-      <app-student-program-vacation-card-student-view [studentProgramVacationStudentViewModel]='item'
+      <app-student-program-vacation-card-student-view class="card" [studentProgramVacationStudentViewModel]='item'
                                                (CancelStudentVacationRequest)="cancelStuRequest($event)"
                                                (TerminateStudentVacationRequest)="terminateStuRequest($event)"
       ></app-student-program-vacation-card-student-view>

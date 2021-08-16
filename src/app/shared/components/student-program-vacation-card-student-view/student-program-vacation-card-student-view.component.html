@@ -1,8 +1,6 @@
 <div class="card-request">
   <div class="card_header">
-    <section class="example-section">
-    </section>
-    <div>
+    <div class="col-6 d-flex align-items-center justify-content-between p-0 m-0">
       <span> {{'STUDENT_SUBSCRIBERS.TIME' | translate}} </span>
 
       <span>&nbsp;</span>
@@ -11,25 +9,40 @@
     </div>
   </div>
 
-  <div class="card_body">
-    <div class="d-flex justify-content-between mb-3">
-      <div class="mx-1">
-<!--        <p class="number_request mb-1 " >{{requestStatus}}</p>-->
-        <p class="name_user bold mb-2">{{studentProgramVacationStudentViewModel.progName}}</p>
-<!--        <p class="program_user bold mb-2 "> {{studentSubscripModel.progName}}</p>-->
-        <p class="program_user bold mb-0 ">
-        <p>
-          <span> {{'STUDENT_VACATION.VACATION_DATE' | translate}} </span><span>{{'STUDENT_VACATION.FROM' | translate}}</span> {{studentProgramVacationStudentViewModel.vacStartDate  | date: 'dd/MM/yyyy'}}  <span>{{'STUDENT_VACATION.TO' | translate}}</span> {{studentProgramVacationStudentViewModel.vacEndDate  | date: 'dd/MM/yyyy'}}
-        </p>
-        <p class="program_user bold mb-0" >
-
-        <p *ngIf="studentProgramVacationStudentViewModel.statusEnum==studentProgramVacationStatus.Rejected"><span> {{'STUDENT_VACATION.REJECT_REASON' | translate}} </span> : {{studentProgramVacationStudentViewModel.rejReason}}</p>
-      </div>
-      <div class="d-flex">
-        <div class="circleStatus" [ngClass]="{ 'accept' : studentProgramVacationStudentViewModel.statusEnum == studentProgramVacationStatus.Accept ,
+  <div class="card_body program">
+    <div class="d-flex align-items-center program__header justify-content-between">
+      <p class="program__name mb-2">{{studentProgramVacationStudentViewModel.progName}}</p>
+      <div class="d-flex align-items-center justify-content-between">
+        <p class="program__num mb-2  mr-3 ml-3" >{{translate.currentLang === langEnum.ar ?studentProgramVacationStudentViewModel.arNameVacationStatus : studentProgramVacationStudentViewModel.enNameVacationStatus }}</p>
+        <div class="status mb-2" [ngClass]="{ 'accept' : studentProgramVacationStudentViewModel.statusEnum == studentProgramVacationStatus.Accept ,
         'pending' : studentProgramVacationStudentViewModel.statusEnum == studentProgramVacationStatus.Pending , 'rejected' : studentProgramVacationStudentViewModel.statusEnum == studentProgramVacationStatus.Rejected
-        }"></div> <p class="number_request mb-1 " >{{translate.currentLang === langEnum.ar ?studentProgramVacationStudentViewModel.arNameVacationStatus : studentProgramVacationStudentViewModel.enNameVacationStatus }}</p>
+        }">
+
+        </div>
+
       </div>
+    </div>
+    <div class="mx-1">
+      <p class="program__desc"></p>
+
+      <div class="row align-items-center justify-content-between">
+        <div class="col-6">
+          <span>{{'STUDENT_VACATION.FROM' | translate}}</span>
+          <span class="bold">
+            {{studentProgramVacationStudentViewModel.vacStartDate  | date: 'dd/MM/yyyy'}}
+          </span>
+        </div>
+        <div class="col-6">
+          <span>{{'STUDENT_VACATION.TO' | translate}}</span>
+          <span class="bold">
+            {{studentProgramVacationStudentViewModel.vacEndDate  | date: 'dd/MM/yyyy'}}
+          </span>
+        </div>
+      </div>
+      <p class="program_user bold mb-0" ></p>
+      <p class="program__admin" *ngIf="studentProgramVacationStudentViewModel.statusEnum==studentProgramVacationStatus.Rejected"> {{'STUDENT_VACATION.ADMIN_ANSWER' | translate}}</p>
+      <p class="program__answer "  *ngIf="studentProgramVacationStudentViewModel.statusEnum==studentProgramVacationStatus.Rejected">{{studentProgramVacationStudentViewModel.rejReason}}</p>
+
     </div>
   </div>
 

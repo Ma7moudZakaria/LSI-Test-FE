@@ -827,7 +827,9 @@
     "DATE_FROM": "التاريخ من ",
     "DATE_TO": "التاريخ الى",
     "SEND": "ارسال",
-    "PROGRAM": "البرنامج"
+    "PROGRAM": "البرنامج",
+    "VACATION_REQUESTS" : "طلبات الاجازات",
+    "ADMIN_ANSWER": "رد الادارة"
   },
   "PROGRAM_BATCHES": {
     "BAT_NAME_EN": "اسم الدفعة انجليزى",

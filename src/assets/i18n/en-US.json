@@ -830,7 +830,9 @@
     "DATE_FROM": "Date From",
     "DATE_TO": "Date To",
     "SEND": "Send",
-    "PROGRAM": "Program"
+    "PROGRAM": "Program",
+    "VACATION_REQUESTS": " Vacation requests",
+    "ADMIN_ANSWER": "Admin Answer"
   },
   "PROGRAM_BATCHES": {
     "BAT_NAME_EN": "English Batch Name",
