@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserRequestsViewComponent } from './components/user-requests-view/user-requests-view.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -10,11 +9,17 @@ import { UserRequestsCategoriesViewComponent } from './components/user-requests-
 import { UserRequestsRoutingModule } from './user-requests-routing.module';
 import { UserWithdrawalRequestsComponent } from './components/user-requests-view/user-withdrawal-requests/user-withdrawal-requests.component';
 import { UserJoinRequestsComponent } from './components/user-requests-view/user-join-requests/user-join-requests.component';
-import { AddScientificProblemComponent } from './components/user-requests-view/add-scientific-problem/add-scientific-problem.component';
+import { UserRequestsViewComponent } from './components/user-requests-view/user-requests-view.component';
+import { UserScientificProblemListViewComponent } from './components/user-requests-view/user-scientific-problem/user-scientific-problem-list-view/user-scientific-problem-list-view.component';
+import { AddScientificProblemComponent } from './components/user-requests-view/user-scientific-problem/add-scientific-problem/add-scientific-problem.component';
+import { AddStudentDropOutRequestComponent } from './components/user-requests-view/user-withdrawal-requests/add-student-drop-out-request/add-student-drop-out-request.component';
+import { StudentDropOutRequestComponent } from './components/user-requests-view/user-withdrawal-requests/student-drop-out-request/student-drop-out-request.component';
 
 
 @NgModule({
-  declarations: [UserRequestsViewComponent , UserRequestsCategoriesViewComponent , UserWithdrawalRequestsComponent , UserJoinRequestsComponent, UserScientificProblemComponent, AddScientificProblemComponent],
+  declarations: [UserRequestsViewComponent , UserRequestsCategoriesViewComponent , UserWithdrawalRequestsComponent , UserJoinRequestsComponent, 
+    UserScientificProblemComponent, AddScientificProblemComponent, StudentDropOutRequestComponent,
+     AddStudentDropOutRequestComponent, UserScientificProblemListViewComponent],
   imports: [
     SharedModule,
     FormsModule,

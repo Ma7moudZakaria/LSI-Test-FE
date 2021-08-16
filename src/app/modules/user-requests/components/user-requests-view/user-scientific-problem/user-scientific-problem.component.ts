@@ -1,4 +1,4 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, ViewChild } from '@angular/core';
 import { Output } from '@angular/core';
 import { Component, OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -13,6 +13,7 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { ScientificProblemService } from 'src/app/core/services/scientific-problem-services/scientific-problem.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
+import { UserScientificProblemListViewComponent } from './user-scientific-problem-list-view/user-scientific-problem-list-view.component';
 @Component({
   selector: 'app-user-scientific-problem',
   templateUrl: './user-scientific-problem.component.html',
@@ -20,99 +21,26 @@ import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/compon
 })
 export class UserScientificProblemComponent implements OnInit {
 
-  scientificProblemData = {} as IScientificProblem[];
-  resMessage: BaseMessageModel = {};
-  currentUser: IUser | undefined;
-  totalCount = 0;
-  userScientificProblemFilterModel: IUserScientificProblemFilter = { skip: 0, take: 0,page : 1 };
-  @Output() openScientificProblem = new EventEmitter<boolean>();
+  showAddscientificProblemForm = false;
+
+  @ViewChild(UserScientificProblemListViewComponent) userScientificProbChild:UserScientificProblemListViewComponent | undefined;
 
   constructor(
-     public translate: TranslateService , public dialog: MatDialog,
-     public scientificProblemService: ScientificProblemService,
-     private alertify:AlertifyService,) {
+     public translate: TranslateService,
+     public scientificProblemService: ScientificProblemService,) {
       }
 
   ngOnInit(): void {
-    this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
-
-    this.userScientificProblemFilterModel = {
-      usrId: this.currentUser.id, oType: true, skip: 0, take: 9, page : 1
-    }
-    this.getScientificProblemByUserId();
   }
 
-  getScientificProblemByUserId() {
-    this.scientificProblemService.getScientificProblem(this.userScientificProblemFilterModel).subscribe(res => {
-      if (res.isSuccess) {
-        this.scientificProblemData = res.data as IScientificProblem[];
-        this.scientificProblemData.forEach(function (item) {
-          item.scCreationDate = item.scCreationDate ? new Date(item.scCreationDate).toDateString() : '';
-        });
-        this.totalCount = res.count ? res.count : 0;
-
-        if ( this.userScientificProblemFilterModel.skip > 0  && (!this.scientificProblemData || this.scientificProblemData.length === 0)){
-          this.userScientificProblemFilterModel.page -= 1;
-          this.userScientificProblemFilterModel.skip = (this.userScientificProblemFilterModel.page - 1) * this.userScientificProblemFilterModel.take;
-          this.getScientificProblemByUserId(); 
-        }
-      }
-      else {
-        this.resMessage = {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
-      }
-    }, error => {
-      this.resMessage = {
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
-      }
-    });
+  openScientificProblem(event: boolean) {
+    this.showAddscientificProblemForm = event;
   }
 
-  searchScProb(text?: string) {
-    this.scientificProblemData = [];
-
-    this.userScientificProblemFilterModel.filterText = text;
-    this.getScientificProblemByUserId();
-
+  closeScientificProblem(event: boolean) {
+    this.showAddscientificProblemForm = event;
+    this.userScientificProbChild?.getScientificProblemByUserId();
   }
 
-  filterRequest(event: IUserScientificProblemFilter) {
-    this.userScientificProblemFilterModel = event;
-    this.getScientificProblemByUserId();
-  }
 
-  newScientificProblem() {
-    this.openScientificProblem.emit(true);
-
-  }
-
-  deleteUserScProb(id:string){
-    const message =this.translate.currentLang === LanguageEnum.en ?"Are you sure that you want to delete this scientific problem":"هل متأكد من حذف هذا الإشكال العلمى";
-
-    const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete Question' : 'حذف سؤال', message);
-
-    const dialogRef = this.dialog.open(ConfirmModalComponent, {
-      maxWidth: "400px",
-      data: dialogData
-    });
-    dialogRef.afterClosed().subscribe(dialogResult => {
-      if(dialogResult==true){
-        this.scientificProblemService.DeleteScientificProblem(id||'').subscribe(res => {
-          if (res.isSuccess){
-            this.alertify.success(res.message || '');
-            this.getScientificProblemByUserId();
-          }
-          else{
-            this.alertify.error(res.message || '');
-          }
-          }, error => {
-            this.alertify.error(error || '');
-          }
-        )
-      }     
-    });
-  }
 }

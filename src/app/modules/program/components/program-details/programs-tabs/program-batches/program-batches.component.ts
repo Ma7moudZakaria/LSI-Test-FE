@@ -23,6 +23,7 @@ export class ProgramBatchesComponent implements OnInit {
 
   showHideAddBatchOverlayHandler(event : boolean){
     this.showHideAddBatchOverlay = event;
+    this.progBatchListChild?.updateProgBatchesListAfterAdd();
   }
 
 }

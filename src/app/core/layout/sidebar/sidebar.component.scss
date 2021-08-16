@@ -2,11 +2,10 @@
     position: relative;
     .container__navigation{
         position: relative;
-  
-        height: 100%;
+        height: 100vh;
         background-color: #3A0303;
         overflow: hidden !important;
-
+        z-index: 4;
         .container__navigation__title{
             position: relative;
             display: block;
@@ -16,7 +15,10 @@
             font-size: 0.55rem;
             color: #CB9118;
         }
-       
+       .internal_icons{
+           overflow-y: auto;
+           height: 85vh;
+       }
     }
 
     .container__navigation ul{
@@ -90,8 +92,12 @@
         flex-direction: column;
     }
 }
-
-
+.nav-item.teacherProfile{
+    margin-top: 9.4rem;
+}
+// .studentProfile{
+//     margin-top: 5.4rem;
+// }
 .nav-item :active ,
 .active {
     &:lang(en) {
@@ -211,4 +217,13 @@
 .container__navigation__title
 {
   color:#fff !important; 
+} 
+
+.menu-scroll{
+    height: 84vh; 
+    overflow-y: auto;
 }
+
+// li a img{
+// height:20px ;
+// }

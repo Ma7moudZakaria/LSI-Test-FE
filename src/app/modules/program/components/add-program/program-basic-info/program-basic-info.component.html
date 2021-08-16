@@ -326,7 +326,43 @@
 
 
 
+          <div class="col-12 ">
+            <div class="row">
+              <div class="col-5">
+                <div class="form-group">
+                  <label class="header_input">{{ 'PROGRAM_BASIC_INFO.SECTION' | translate }}  </label>
+                  <div class="d-flex align-items-center justify-content-between">
 
+                   <select class="form-control "  formControlName="addSection" >
+                     <option [ngValue]="null"  disabled selected>{{ 'PROGRAM_BASIC_INFO.CHOOSE_SECTION' | translate }}</option>
+
+                     <ng-container *ngFor="let item of allPrograms">
+                     <option [value]="item.id" >{{ this.translate.currentLang === langEnum.en? item.enCatName : item.arCatName }}</option>
+
+                      </ng-container>
+                    </select>
+                    <button type="button"
+                            (click)="addSection()" class="cancel-btn mr-5">
+                      {{'PROGRAM_BASIC_INFO.ADD_SECTION' | translate }}</button>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+                  <div class="row">
+                        <div class="badges ">
+                          <span *ngFor="let p of selectedProgramTypesList" class="badge badge-info p-2">
+                            {{this.translate.currentLang === langEnum.en? p.enCatName : p.arCatName}}
+                                <a (click)="removeSelectedProgramTypesList(p)"><i class="fas cursor-pointer fa-times-circle"></i></a>
+                              </span>
+                        </div>
+
+
+                    </div>
+            </div>
+          </div>
 
       <div class="col-2">
         <div class="form-group">

@@ -1,0 +1,203 @@
+
+    <div class="row">
+      <div class="col-12">
+        <div class="program">
+          <div class="program__bg"></div>
+          <img src="../../../../assets/images/student-program/qor2an.png" class="program__img">
+          <div class="program__title">
+            <h2 class="program__title--text"> {{programsForSubscriptionsDetails?.prgName}}</h2>
+          </div>
+          <div class="program__details">
+            <div class="program__details--inner">
+              <h6 class="program__details--inner--text">عدد الأجزاء المطلوبة</h6>
+              <span class="program__details--inner--num"
+              *ngIf="programsForSubscriptionsDetails?.parts == undefined">0 </span>
+
+              <span class="program__details--inner--num">{{programsForSubscriptionsDetails?.parts}} </span>
+            </div>
+            <div class="program__details--slash"></div>
+            <div class="program__details--inner">
+              <h6 class="program__details--inner--text">مدة البرنامج باليوم</h6>
+              <span class="program__details--inner--num"
+              *ngIf="programsForSubscriptionsDetails?.prgDura == undefined">0 </span>
+
+              <span class="program__details--inner--num">{{programsForSubscriptionsDetails?.prgDura}} </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="details">
+      <div class="row">
+        <div class="col-md-6 col-12">
+          <div class="details__card">
+            <h2 class="details__card--title">
+              {{'TEACHER_STUDENT_FOR_DETAILS.PROG_IDEA' | translate}}
+            </h2>
+            <p class="details__card--text">
+              {{programsForSubscriptionsDetails?.prgIda}}
+  
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 col-12">
+          <div class="details__card">
+            <h2 class="details__card--title">
+              {{'TEACHER_STUDENT_FOR_DETAILS.PROG_GOAL' | translate}}
+            </h2>
+            <p class="details__card--text">
+              {{programsForSubscriptionsDetails?.prgGoal}}
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 col-12">
+          <div class="details__card">
+            <h2 class="details__card--title">
+              {{'TEACHER_STUDENT_FOR_DETAILS.PROG_VISION' | translate}}
+            </h2>
+            <p class="details__card--text">
+              {{programsForSubscriptionsDetails?.prgVisi}}
+  
+  
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 col-12">
+          <div class="details__card">
+            <h2 class="details__card--title">
+              {{'TEACHER_STUDENT_FOR_DETAILS.PROG_METHOD' | translate}}
+            </h2>
+            <p class="details__card--text">
+              {{programsForSubscriptionsDetails?.prgMeth}}
+  
+            </p>
+          </div>
+        </div>
+       
+        <div class="col-md-6 col-12">
+          <div class="details__card">
+            <h2 class="details__card--title">
+              {{'TEACHER_STUDENT_FOR_DETAILS.PLEDG_TEXT' | translate}}
+            </h2>
+            <p class="details__card--text">
+              {{programsForSubscriptionsDetails?.prgPledgTxt}}
+  
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 col-12">
+          <div class="details__card">
+            <h2 class="details__card--title">
+              {{'TEACHER_STUDENT_FOR_DETAILS.PROG_FEATURES' | translate}}
+            </h2>
+            <p class="details__card--text">
+              {{programsForSubscriptionsDetails?.prgAdvan}}
+  
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="detailsFooter">
+      <div>
+        <div class="d-flex align-items-center justify-content-end">
+  
+          <mat-checkbox  id="subscribe" (change)='checkConditions($event)'  class="example-margin ">
+  
+          </mat-checkbox>
+          <label for="subscribe" class="detailsFooter__label">موافق علي شروط البرنامج</label>
+  
+          <button class="save-btn" [ngClass]="{'disabledCheck':disabledCheck }"
+          (click)="submetSubscriptionProgramDetails()" >إشتراك</button>
+        </div>
+  
+      </div>
+    </div>
+  
+ 
+  
+
+
+
+<!-- 
+<div class="row w-100 teacher_programsub_details">
+    <div class="col-12">
+        <div class="profile_background d-flex align-items-center">
+            <img src="../../../../../assets/images/student-program/qor2an.png">
+            <span  class="program_name px-5"> {{programsForSubscriptionsDetails?.prgName}}</span>
+            
+        </div>
+<div class="col-2 card_over_img">
+
+        <div class=" d-flex justify-content-around align-items-center  ">
+            <div class="text-center">
+                <span class="az_count"> </span>
+                <p class="count"> {{programsForSubscriptionsDetails?.parts}} </p>
+                <p class="count" *ngIf="!program.parts"> 0 </p>
+            </div>
+            <div class="slash"></div>
+            <div class="text-center">
+                <span  class="time_pro"></span>
+                <p class="count"  > {{programsForSubscriptionsDetails?.prgGoal}}</p>
+                <p class="count"  *ngIf="!program.dura">0</p>
+
+            </div>
+        </div>
+</div>
+     
+    </div>
+    <div class="col-12  mt-3">
+
+        <div class="row">
+            <div class="col-6 ">
+                <p class="head">أهداف البرنامج</p>
+                <p class="details">
+                    {{programsForSubscriptionsDetails?.prgGoal}}
+                </p>
+                <hr>
+            </div>
+            <div class="col-6 ">
+                <p class="head">فكرة البرنامج</p>
+                <p class="details">
+                    {{programsForSubscriptionsDetails?.prgIda}}
+                </p>
+                <hr>
+            </div>
+         
+
+            <div class="col-6 ">
+                <p class="head">طريقة البرنامج</p>
+                <p class="details">
+                    {{programsForSubscriptionsDetails?.prgMeth}}
+                </p>
+                <hr>
+            </div>
+
+            <div class="col-6 ">
+                <p class="head">رؤية البرنامج</p>
+                <p class="details">
+                    {{programsForSubscriptionsDetails?.prgVisi}}
+                </p>
+                <hr>
+            </div>
+            <div class="col-6 ">
+                <p class="head">نص التعهد</p>
+                <p class="details">
+                    {{programsForSubscriptionsDetails?.prgPledgTxt}}
+                </p>
+                <hr>
+            </div>
+
+            <div class="col-6 ">
+                <p class="head">نص التعهد</p>
+                <p class="details">
+                    {{programsForSubscriptionsDetails?.prgAdvan}}
+                </p>
+                <hr>
+            </div>
+
+        </div>
+    </div>
+</div> -->

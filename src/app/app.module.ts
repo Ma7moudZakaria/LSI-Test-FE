@@ -44,6 +44,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HeaderComponent,
     SidebarComponent,
     MyLoaderComponent,
+    // TeacherQuitTabRequestComponent,
   ],
   imports: [
     BrowserModule,

@@ -11,10 +11,10 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
 })
 export class ProgramBatchesService {
 
-  addProgBatchUrl = environment.baseUrl + 'ProgramBatches/add-program-batch';
-  updateProgBatchUrl = environment.baseUrl + 'ProgramBatches/update-program-batch';
-  deleteProgBatchUrl = environment.baseUrl + 'ProgramBatches/delete-program-batch';
-  getProgBatchesByProgIdUrl = environment.baseUrl + 'ProgramBatches/get-program-batches-by-prog-id';
+  addProgBatchUrl = environment.baseUrl + 'ProgramBatches/add-program-batch/';
+  updateProgBatchUrl = environment.baseUrl + 'ProgramBatches/update-program-batch/';
+  deleteProgBatchUrl = environment.baseUrl + 'ProgramBatches/delete-program-batch/';
+  getProgBatchesByProgIdUrl = environment.baseUrl + 'ProgramBatches/get-program-batches-by-prog-id/';
 
   constructor(private http: HttpClient) { }
 

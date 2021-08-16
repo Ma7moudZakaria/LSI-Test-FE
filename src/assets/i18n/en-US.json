@@ -68,7 +68,10 @@
     "EXTENTION_FILE": "your extention file not accepted",
     "ACCEPT": "Accepted",
     "REJECT": "Reject",
-    "DEGREE_MAX_LENGTH": "Degree must be more than 100"
+    "DEGREE_MAX_LENGTH": "Degree must be more than 100",
+    "REJECT_RESON":"Reject Reason",
+    "PROGRAM":"Program",
+    "DROP_OUT_REQUEST":"Reject Reason"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
@@ -191,7 +194,7 @@
     "JOINING_EXAM": "Joining Exam",
     "DAYS": "Days",
     "NOTIFACATION": "Notification",
-    "BATCHES":"Batches"
+    "BATCHES": "Batches"
   },
   "PROGRAM_DAYS": {
     "DAYS": "Days",
@@ -506,15 +509,21 @@
     "SCIENTIFIC_ARTICLES": "Scientific Materials",
     "VACATION_REQUEST": "My Messages",
     "EXAM_RESULTS": "Exam Results",
+    "RESULTS": "RESULTS",
+    "PRINT_CERTIFICATION": "Print certification",
     "WITHDRAWAL_REQUESTS": "Withdrawal Req.",
     "CERTIFICATES": "Certificates",
     "SETTINGS": "Settings",
     "MY_MESSAGES": "Feeling",
     "QUESTION_BANK": "Question Bank",
+    "SARD": "Recitation",
+    "REQUEST": "Request",
+    "WORK_AGENDA": "Work agenda",
     "SHORT_DESCRIPTION_AR_MAX_LENGHT": "Arabic short description must be less than or equal 200 character",
     "SHORT_DESCRIPTION_EN_MAX_LENGHT": "English short description must be less than or equal 200 character",
     "LONG_DESCRIPTION_AR_MAX_LENGHT": "Arabic long description must be less than or equal 1000 character",
     "LONG_DESCRIPTION_EN_MAX_LENGHT": "English long description must be less than or equal 1000 character",
+    "PROG_FOR_SUBSCRIPTION": "Subscription",
     "VACATION": "Vacations"
   },
   "VIEW_USER_PROFILE_PG": {
@@ -690,12 +699,15 @@
     "ISALSARD": "Is there a recitation ?",
     "YES": "Yes",
     "NO": "No",
+    "SECTION": "Section",
+    "ADD_SECTION": "Add Section",
     "RECITTYPE": "recitation period",
     "FROM_HOUR": "from the hour",
     "TO_HOUR": "To the hour",
     "ADD": "Add",
     "FROM": "From",
-    "TO": "To"
+    "TO": "To",
+    "CHOOSE_SECTION": "Choose Section"
   },
   "PROGRAM_DAY_TASK_DETIALS": {
     "DEGREE": "Degree",
@@ -760,6 +772,11 @@
     "FROM_PROGRAM": "From program",
     "REASON_REJECT": "Reason reject"
   },
+  "TEACHER_DROP_OUT": {
+    "SUBSCRIBERS": "Subscibe",
+    "JOIN_REQUESTS": "Join requests",
+    "CANCEL_REQUESTS": "Cancellation requests"
+  },
   "STUDENT_SUBSCRIBERS": {
     "SUBSCRIBERS": "Subscibe",
     "TEACHERS": "Teachers",
@@ -787,9 +804,9 @@
   },
   "TEACHER_SYSTEM_SUBSCRIPTION": {
     "REQUEST_DATE": "Request Date",
-    "MEETING":"Meeting",
-    "REJECT":"Reject",
-    "ACCEPT":"Accept"
+    "MEETING": "Meeting",
+    "REJECT": "Reject",
+    "ACCEPT": "Accept"
   },
   "STUDENT_VACATION": {
     "NEW_VACATION_REQUESTS": "New Vacation requests",
@@ -809,7 +826,28 @@
     "SEND": "Send",
     "PROGRAM": "Program"
   },
-  "PROGRAM_BATCHES":{
-    "ADD_PROGRAM_BATCH":"Add Batch"
+  "PROGRAM_BATCHES": {
+    "BAT_NAME_EN": "English Batch Name",
+    "BAT_NAME_AR": "Arabic Batch Name",
+    "ADD_PROGRAM_BATCH": "Add Batch",
+    "ADD_BATCH": "Add New",
+    "FROM_DATE": "Subscription Start Date",
+    "TO_DATE": "Subscription End Date",
+    "SEND": "Save",
+    "CANCEL": "Close",
+    "TEACHERS": "Teachers",
+    "STUDENTS": "Students"
+  },
+  "TEACHER_STUDENT_FOR_DETAILS": {
+    "PROG_IDEA": "Program Idea",
+    "PROG_GOAL": "Program Goals",
+    "PROG_VISION": "Program Vision",
+    "PROG_METHOD": "Program Method",
+    "TERMS_AND_CONDITION": "Terms And Conditions",
+    "PLEDG_TEXT": "Pledge Text",
+    "PROG_FEATURES": "Program Features",
+    "PROG_PARTS": "Required Parts",
+    "NO": "Not Specify",
+    "PROG_DURA": "Program duration per day"
   }
 }

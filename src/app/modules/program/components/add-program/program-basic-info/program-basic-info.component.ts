@@ -16,6 +16,8 @@ import { IProgramBasicInfoDetails } from 'src/app/core/interfaces/programs-inter
 import { ThrowStmt } from '@angular/compiler';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import {IPrgoramCategrory} from '../../../../../core/interfaces/program-categories-interfaces/iprgoram-categrory';
+import {ProgramCategoriesService} from 'src/app/core/services/program-categories-services/program-categories.service'
 @Component({
   selector: 'app-program-basic-info',
   templateUrl: './program-basic-info.component.html',
@@ -41,29 +43,73 @@ export class ProgramBasicInfoComponent implements OnInit {
   isSardEnabled:boolean = false;
   isSardTimesEnabled:boolean = false;
   langEnum = LanguageEnum;
-
+  allPrograms:IPrgoramCategrory[] = [];
   programTypesList: IProgramType[] = [];
+  selectedProgramTypesList: IPrgoramCategrory[] = [];
   programRatingList:IProgRatings[] = [];
   progWeeklyDayList:IProgWeeklyDutyDays[] = [];
   progRecitationTimes:IRecitationTimes[] = [];
   recitFrom:string= '';
   recitTo:string = '';
-
+  resMessage: BaseMessageModel = {};
+  rewayatsMessage: BaseMessageModel = {};
 
   constructor(private fb: FormBuilder, 
     public translate: TranslateService,
     private BasicInfoService: ProgramBasicInfoService, 
     private lookupService: LookupService,
     private router: Router,
-    private alert : AlertifyService
+    private alert : AlertifyService,
+    private ProgramCategoriesService :ProgramCategoriesService
   ) { }
 
   ngOnInit(): void {
     this.getLookupByKey();
     this.buildForm();
+    this.getAllCategories();
   }
 
+  getAllCategories(){
+    this.ProgramCategoriesService.getProgramCatiegories().subscribe(res => {
+      if (res.isSuccess) {
+        this.allPrograms = res.data;
+        console.log(' this.allPrograms', this.allPrograms);
+      } else {
+        this.resMessage =
+          {
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
+          }
+      }
+  },error => {
+      this.resMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    })};
+  addSection(){
+    if (!this.baseInfoForm.value.addSection) {
+      this.rewayatsMessage = {
+        message: this.translate.instant('UPDATE_TEACHER_PG.CHOOSE_TEACHER_REWAYAT'),
+        type: BaseConstantModel.DANGER_TYPE
+      };
+      return;
+    }
 
+
+    const exist = this.selectedProgramTypesList.some(el => el.id === this.baseInfoForm.value.addSection);
+    if (!exist) {
+      if (this.allPrograms) {
+        this.selectedProgramTypesList.push(
+          this.allPrograms.filter(el => el.id == this.baseInfoForm.value.addSection)[0]);
+      }
+    }
+  // this.selectedProgramTypesList.push();
+  }
+  removeSelectedProgramTypesList(item: any) {
+    let index = this.selectedProgramTypesList.indexOf(item);
+    this.selectedProgramTypesList.splice(index, 1);
+  }
   getLookupByKey() {
     this.lookupService.getLookupByKey(this.listOfLookup).subscribe(res => {
       if (res.isSuccess) {
@@ -111,6 +157,7 @@ export class ProgramBasicInfoComponent implements OnInit {
         rectMand: [''],
         isAlsard: [false],
         recitType:[''],
+        addSection: [],
         //progType:[[] /*, [Validators.required]*/]
 
       })
@@ -151,8 +198,12 @@ export class ProgramBasicInfoComponent implements OnInit {
     this.progWeeklyDayList = this.progBasicInfoDetails?.prgWeekDutiDas ? 
     this.progBasicInfoDetails?.prgWeekDutiDas.map((item:any) => ({progWeeklyDay: item.id})) : [] ;
 
-    this.programRatingList = this.progBasicInfoDetails?.prgRats ? 
+    this.programRatingList = this.progBasicInfoDetails?.prgRats ?
     this.progBasicInfoDetails?.prgRats.map((item:any) => ({progRatId: item.id})) : [] ;
+
+    this.selectedProgramTypesList = this.progBasicInfoDetails && this.progBasicInfoDetails.progCats ?
+      this.progBasicInfoDetails?.progCats : [];
+
 
   }
 
@@ -163,6 +214,7 @@ export class ProgramBasicInfoComponent implements OnInit {
     if (!this.progDutyDaysFreeDaysSelection && this.progWeeklyDayList.length === 0){
       return;
     }
+
     //form is valid
     if (this.baseInfoForm.valid && this.programTypesList.length > 0) {
 
@@ -183,9 +235,10 @@ export class ProgramBasicInfoComponent implements OnInit {
           progIsRecTimeMand: this.baseInfoForm.value.rectMand,
           progRecType:this.baseInfoForm.value.recitType,
           proRatTyps:this.programRatingList,
-          progRecitTimes:this.progRecitationTimes
+          progRecitTimes:this.progRecitationTimes,
+          progCats : this.selectedProgramTypesList?.map((item:any)=> ({progCatId:item.catId || item.id}))
         }
-        // send edit model to api 
+        // send edit model to api
         this.editBasicInfoProgrm()
 
       }
@@ -212,7 +265,8 @@ export class ProgramBasicInfoComponent implements OnInit {
         progRecType:this.baseInfoForm.value.recitType,
         proRatTyps:this.programRatingList,
         progDtyDays:this.progWeeklyDayList,
-        progRecitTimes:this.progRecitationTimes
+        progRecitTimes:this.progRecitationTimes,
+        progCats : this.selectedProgramTypesList?.map((item:any)=> ({progCatId:item.id}))
       }
       this.addBasicInfoProgrm()
     }

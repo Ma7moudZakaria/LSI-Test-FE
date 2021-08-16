@@ -1,7 +1,7 @@
 export interface IStudentMyProgramsRequestModel {
-  take?: number;
-  skip?: number;
-  usrId?:string;
-  sortField?:string;
-  sortOrder?:number;
+    usrId?:string;
+    sortField?:string;
+    sortOrder?:number;
+    skip?:number;
+    take?:number;
 }

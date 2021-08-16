@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IPredefinedCondtionSubscriptionModel } from '../../interfaces/student-program-subscription-interfaces/ipredefined-condtion-subscription-model';
+import { IProgramsForStudentsSubscriptionsFilterRequestModel } from '../../interfaces/student-program-subscription-interfaces/iprograms-for-students-subscriptions-filter-request-model';
 import { IRejectProgramSubscriptionModel } from '../../interfaces/student-program-subscription-interfaces/ireject-program-subscription-model';
 import { IStudentCustomConditionAnswerModel } from '../../interfaces/student-program-subscription-interfaces/istudent-custom-condition-answer-model';
 import { IstudentJoiningExamAnswerModel } from '../../interfaces/student-program-subscription-interfaces/istudent-joining-exam-answer-model';
@@ -68,7 +69,7 @@ export class StudentProgramSubscriptionServicesService {
     return this.http.put<BaseResponseModel>(this.studentProgramSubscriptionsCompletedURL ,model);
   }
 
-  getProgramsForStudentsSubscriptions(model:string[] ):Observable<BaseResponseModel>
+  getProgramsForStudentsSubscriptions(model:IProgramsForStudentsSubscriptionsFilterRequestModel):Observable<BaseResponseModel>
   {
     return this.http.post<BaseResponseModel>(this.getProgramsForStudentsSubscriptionsURL ,model);
   }

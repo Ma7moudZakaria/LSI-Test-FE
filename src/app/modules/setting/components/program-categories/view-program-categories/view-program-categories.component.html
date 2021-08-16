@@ -1,0 +1,41 @@
+<div class="tab_page notifacation_page condition_details">
+    <div class=" pt-3 mb-3">
+        <div class="row">
+            <div class="col-md-12 container_haeder mb-2">
+               <button class="cancel-btn" (click)="AddCategories()" >
+              ADD Categories
+               </button>
+            </div>
+        </div>
+    </div>
+    <!-- {{allPrgoramCategrorylist?.length}} -->
+    <ng-container *ngIf="allPrgoramCategrorylist">
+    <div class="col-md-12 max_h mt-3">
+        <div class="row">
+           <ng-container *ngFor="let PrgoramCategrory of allPrgoramCategrorylist">
+            <div class="col-3 mb-3 setting_program_category" >
+ 
+                <mat-card >
+                    <mat-card-header>
+                    <!-- {{PrgoramCategrory.enCatName}} -->
+                    {{this.translate.currentLang===langEnum.en? PrgoramCategrory.enCatName: PrgoramCategrory.arCatName}}
+                </mat-card-header>
+                <mat-card-actions>
+                 <img src="assets/images/notify/edit.svg" class="mx-2  card_actions_icon" (click)="editPrgoramCategrory(PrgoramCategrory)" >
+                  <img  src="/assets/images/notify/trash.svg" class="mx-2 card_actions_icon">
+                  </mat-card-actions>
+                </mat-card> 
+            </div>
+          
+        </ng-container>
+       
+        </div>
+      
+    </div>
+    </ng-container>
+    <!-- <ng-container *ngIf="!allPrgoramCategrorylist">
+        <p>no data</p>
+    </ng-container> -->
+
+</div>
+

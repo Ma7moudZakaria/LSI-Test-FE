@@ -30,7 +30,7 @@ export class AddProgBatchComponent implements OnInit {
   
   constructor(private fb: FormBuilder,
     public translate: TranslateService,
-    private ProgramBatchesService: ProgramBatchesService,
+    private programBatchesService: ProgramBatchesService,
     private alertfyService : AlertifyService) { }
 
   ngOnInit(): void {
@@ -58,7 +58,7 @@ export class AddProgBatchComponent implements OnInit {
       this.mapCreateModel();
 
       this.createProgBatchModel ? 
-      this.ProgramBatchesService.addProgBatch(this.createProgBatchModel).subscribe(res => {
+      this.programBatchesService.addProgBatch(this.createProgBatchModel).subscribe(res => {
         if (res.isSuccess){
           this.alertfyService.success(res.message || '');
           this.close();

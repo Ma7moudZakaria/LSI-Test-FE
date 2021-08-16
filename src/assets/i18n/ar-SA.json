@@ -68,7 +68,10 @@
     "EXTENTION_FILE": "امتداد الفايل غير مسوح بيه ",
     "ACCEPT": "قبول",
     "REJECT": "رفض",
-    "DEGREE_MAX_LENGTH": "الدرجة يجب ان تكون أقل من أو تساوى 100"
+    "DEGREE_MAX_LENGTH": "الدرجة يجب ان تكون أقل من أو تساوى 100",
+    "REJECT_RESON":"سبب الإنسحاب",
+    "PROGRAM":"البرنامج",
+    "DROP_OUT_REQUEST":"طلب الانسحاب"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
@@ -188,7 +191,7 @@
     "JOINING_EXAM": "إختبارات الانضمام",
     "DAYS": "الأيام",
     "NOTIFACATION": "تنبيهات",
-    "BATCHES":"الدفعات"
+    "BATCHES": "الدفعات"
   },
   "PROGRAM_DAY_TASKS": {
     "TASKS": "المهام",
@@ -507,11 +510,17 @@
     "SCIENTIFIC_ARTICLES": "المواد العلمية",
     "VACATION_REQUEST": "المراسلات",
     "EXAM_RESULTS": "نتائج الامتحانات",
+    "RESULTS": "الطلبات",
+    "PRINT_CERTIFICATION": "طباعه الشهادات",
     "WITHDRAWAL_REQUESTS": "طلبات الانسجاب",
     "SETTINGS": "الإعدادت",
     "CERTIFICATES": "الشهادات",
     "MY_MESSAGES": "المشاعر",
+    "SARD": "السرد",
+    "REQUEST": "الطلبات",
     "QUESTION_BANK": "بنك الأسئلة",
+    "WORK_AGENDA": "اجندة العمل",
+    "PROG_FOR_SUBSCRIPTION": "إشتراك",
     "VACATION": "الاجازات"
   },
   "VIEW_USER_PROFILE_PG": {
@@ -686,12 +695,15 @@
     "ISALSARD": "هل يوجد سرد",
     "YES": "نعم",
     "NO": "لا",
+    "SECTION": "القسم",
+    "ADD_SECTION": "إضافة قسم",
     "RECITTYPE": "فترة التسميع",
     "FROM_HOUR": "من الساعه",
     "TO_HOUR": "الى الساعه",
     "ADD": "إضافة",
     "FROM": "من",
-    "TO": "إلى"
+    "TO": "إلى",
+    "CHOOSE_SECTION": "اختار القسم"
   },
   "PROGRAM_DAY_TASK_DETIALS": {
     "DEGREE": "الدرجه",
@@ -756,6 +768,12 @@
     "FROM_PROGRAM": "من برنامج",
     "REASON_REJECT": "سبب الرفض"
   },
+
+  "TEACHER_DROP_OUT": {
+    "SUBSCRIBERS": "الطلبات",
+    "JOIN_REQUESTS": "طلبات الانضمام",
+    "CANCEL_REQUESTS": "طلبات الانسحاب"
+  },
   "STUDENT_SUBSCRIBERS": {
     "SUBSCRIBERS": "الطلبات",
     "TEACHERS": "المعلمين",
@@ -783,9 +801,9 @@
   },
   "TEACHER_SYSTEM_SUBSCRIPTION": {
     "REQUEST_DATE": "تاريخ الطلب",
-    "MEETING":"المقابلة",
-    "REJECT":"رفض",
-    "ACCEPT":"قبول"
+    "MEETING": "المقابلة",
+    "REJECT": "رفض",
+    "ACCEPT": "قبول"
   },
   "STUDENT_VACATION": {
     "NEW_VACATION_REQUESTS": "طلبات الاجازات الجديدة",
@@ -805,7 +823,28 @@
     "SEND": "ارسال",
     "PROGRAM": "البرنامج"
   },
-  "PROGRAM_BATCHES":{
-    "ADD_PROGRAM_BATCH":"اضافة دفعة"
+  "PROGRAM_BATCHES": {
+    "BAT_NAME_EN": "اسم الدفعة انجليزى",
+    "BAT_NAME_AR": "اسم الدفعة عربى ",
+    "ADD_PROGRAM_BATCH": "اضافة دفعة",
+    "ADD_BATCH": "اضافة جديدة",
+    "FROM_DATE": "تاريخ بداية الإشتراك",
+    "TO_DATE": "تاريخ نهاية الإشتراك",
+    "SEND": "خفظ",
+    "CANCEL": "الغاء",
+    "TEACHERS": "المعلمين",
+    "STUDENTS": "الطلاب"
+  },
+  "TEACHER_STUDENT_FOR_DETAILS": {
+    "PROG_IDEA": "فكرة البرنامج",
+    "PROG_GOAL": "أهداف البرنامج",
+    "PROG_VISION": "رؤية البرنامج",
+    "PROG_METHOD": "طريقة البرنامج",
+    "TERMS_AND_CONDITION": "الشروط والأحكام",
+    "PLEDG_TEXT": "نص التعهد",
+    "PROG_FEATURES": "مميزات البرنامج",
+    "PROG_PARTS": "عدد الأجزاء المطلوبة",
+    "NO": "غير محدد",
+    "PROG_DURA": "مدة البرنامج باليوم"
   }
 }
