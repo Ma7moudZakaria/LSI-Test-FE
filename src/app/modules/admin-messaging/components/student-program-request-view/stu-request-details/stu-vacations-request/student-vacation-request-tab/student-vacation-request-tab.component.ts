@@ -16,12 +16,10 @@ import {StudentProgramVacationServicesService} from '../../../../../../../core/s
 export class StudentVacationRequestTabComponent implements OnInit {
 
   @Output() advancedSearchEvent = new EventEmitter<IStudentProgramVacationFilterRequestModel>();
-  // @Output() closeAdvancedSearch = new EventEmitter();
   @Output() itemStuReq = new EventEmitter<IStudentProgramVacationModel>();
 
   studentProgramVacationRequestsList: IStudentProgramVacationModel[] = [];
   studentProgramVacationFilterRequestModel: IStudentProgramVacationFilterRequestModel = { statusNum: StudentProgramVacationStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
-  errorMessage?: string;
   totalCount = 0;
   numberItemsPerRow = 3;
   ids?: string[] = [];
@@ -49,7 +47,6 @@ export class StudentVacationRequestTabComponent implements OnInit {
         if (response.isSuccess) {
           this.studentProgramVacationRequestsList = res.data as IStudentProgramVacationModel[];
           this.studentProgramVacationRequestsList?.forEach(function (item) {
-            // item.requestDate = item.requestDate ? new Date(item.requestDate).toDateString(): '';
           });
           this.totalCount = res.count ? res.count : 0;
           if (this.studentProgramVacationFilterRequestModel.skip > 0 && (!this.studentProgramVacationRequestsList || this.studentProgramVacationRequestsList.length === 0)) {
@@ -57,9 +54,6 @@ export class StudentVacationRequestTabComponent implements OnInit {
             this.studentProgramVacationFilterRequestModel.skip = (this.studentProgramVacationFilterRequestModel.page - 1) * this.studentProgramVacationFilterRequestModel.take;
             this.getStudentProgramVacationRequests();
           }
-        }
-        else {
-          this.errorMessage = response.message;
         }
       },
       error => {

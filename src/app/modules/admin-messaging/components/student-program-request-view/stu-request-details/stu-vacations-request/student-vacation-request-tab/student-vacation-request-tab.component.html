@@ -29,7 +29,7 @@
       <div *ngIf='showTap == statusEnum.Pending'>
         <app-student-program-vacation-grid *ngIf=' studentProgramVacationRequestsList.length > 0'
                                        [studentVacationItems]='studentProgramVacationRequestsList'
-                                       (itemStuReq)="rejectStuRequestMethod($event)"
+                                       (studentProgramVacationStudentViewModel)="rejectStuRequestMethod($event)"
                                        (acceptStudentProgramVacation)='AcceptStudentProgramVacation($event)'
                                        (acceptAllStudentProgramVacationChecked)='acceptAllStudentVacationRequestsChecked()'
                                        [numberPerRow]='numberItemsPerRow'

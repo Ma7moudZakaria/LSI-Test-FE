@@ -521,7 +521,8 @@
     "REQUEST": "الطلبات",
     "QUESTION_BANK": "بنك الأسئلة",
     "WORK_AGENDA": "اجندة العمل",
-    "PROG_FOR_SUBSCRIPTION":"إشتراك"
+    "PROG_FOR_SUBSCRIPTION": "إشتراك",
+    "VACATION": "الاجازات"
   },
   "VIEW_USER_PROFILE_PG": {
     "PERSONAL_PROFILE": "الملف الشخصي",
@@ -813,7 +814,15 @@
     "FROM": "من",
     "TO": "إلى",
     "VACATION_REASON": "سبب الاجازة",
-    "REJECT_REASON": "سبب الرفض"
+    "REJECT_REASON": "سبب الرفض",
+    "CANCEL": "الغاء الطلب",
+    "TERMINATE": "قطع الاجازة",
+    "NEW_VACATION_REQUEST": "طلب اجازة جديد",
+    "VACATION_REQUEST": "طلب اجازة",
+    "DATE_FROM": "التاريخ من ",
+    "DATE_TO": "التاريخ الى",
+    "SEND": "ارسال",
+    "PROGRAM": "البرنامج"
   },
   "PROGRAM_BATCHES": {
     "BAT_NAME_EN": "اسم الدفعة انجليزى",

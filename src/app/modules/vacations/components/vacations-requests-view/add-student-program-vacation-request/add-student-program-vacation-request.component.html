@@ -1,0 +1,68 @@
+<div class="form-group DataForm mt-5 pl-3 pr-3">
+  <h3 class=" head  bold">{{'STUDENT_VACATION.VACATION_REQUEST' | translate}} </h3>
+  <div class="form-group">
+    <label  class="label" for="category">{{'STUDENT_VACATION.PROGRAM' | translate}}</label>
+
+    <div class="d-flex">
+      <div class="input-group">
+        <select class="form-control"  [(ngModel)]="addStudentVacationRequestModel.batchId"    [ngModelOptions]="{standalone: true}">
+          <option   value="">{{'SCIENTIFIC_MATERIAL.SELECTOPTION' | translate}}</option>
+          <option *ngFor="let item of programs" value="{{item.batId}}" >
+            {{item.progName}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group subscribtion-date">
+
+    <div class="col-12 p-0">
+      <label  class="label"> {{'STUDENT_VACATION.DATE_FROM' | translate}}  </label>
+      <app-milady-hijri-calendar  [editcalenderType]="calenderType" (sendDate)="SendDatafrom($event)"
+                                  (keypress)="$event.preventDefault()"
+                                  [hijri]="!hijri" [milady]="milady"  [maxGreg]="maxGregDate"  [(ngModel)]="addStudentVacationRequestModel.vacationStartDate">
+      </app-milady-hijri-calendar>
+
+    </div>
+    <div class="col-12 p-0">
+      <label  class="label"> {{'STUDENT_VACATION.DATE_TO' | translate}} </label>
+      <app-milady-hijri-calendar  [editcalenderType]="calenderType" (sendDate)="SendDataTo($event)"
+                                  (keypress)="$event.preventDefault()"
+                                  [hijri]="!hijri" [milady]="milady"  [maxGreg]="maxGregDate"  [(ngModel)]="addStudentVacationRequestModel.vacationEndDate">
+      </app-milady-hijri-calendar>
+    </div>
+
+  </div>
+<div>
+  <label  class="label mt-4">
+    {{ "STUDENT_VACATION.VACATION_REASON" | translate }}
+  </label>
+
+  <textarea  class="form-control " cols="1"  rows="5"
+             [(ngModel)]='addStudentVacationRequestModel.vacationReason'  [ngModelOptions]="{standalone: true}" >
+        </textarea>
+</div>
+
+
+  <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2 text-center">
+    <span class="bold"> {{resultMessage.message}}</span>
+  </div>
+
+  <section class="mt-5">
+    <div  class="row direction-rtl buttons-center mt-5">
+      <button   type="submit" class="save-btn" (click)="AddStudentVacationRequest()">
+        {{'STUDENT_VACATION.SEND' | translate}}
+      </button>
+      <button  (click)="closeAddStudentVacation()"  type="reset" class="cancel-btn">
+        {{ "GENERAL.CANCEL" | translate }}
+      </button>
+    </div>
+  </section>
+
+
+
+
+
+</div>

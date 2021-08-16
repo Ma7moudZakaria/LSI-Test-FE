@@ -2,11 +2,11 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {environment} from 'src/environments/environment';
-import {IStudentCustomConditionAnswerModel} from '../../interfaces/student-program-subscription-interfaces/istudent-custom-condition-answer-model';
 import {BaseResponseModel} from '../../ng-model/base-response-model';
 import {IStudentProgramVacationFilterRequestModel} from '../../interfaces/student-program-vacation-interfaces/i-student-program-vacation-filter-request-model';
 import {IStudentProgramVacationRequestModel} from '../../interfaces/student-program-vacation-interfaces/i-student-program-vacation-request-model';
 import {IRejectStudentProgramVacationModel} from '../../interfaces/student-program-vacation-interfaces/ireject-student-program-vacation-model';
+import {IAddNewStudentVacationRequest} from '../../interfaces/student-program-vacation-interfaces/iadd-new-student-vacation-request';
 
 @Injectable({
   providedIn: 'root'
@@ -40,16 +40,15 @@ export class StudentProgramVacationServicesService {
     return this.http.put<BaseResponseModel>(this.studentProgramVacationAcceptanceURL, model);
   }
 
-  cancelStudentProgramVacation(id: string): Observable<BaseResponseModel> {
-    return this.http.put<BaseResponseModel>(this.cancelStudentProgramVacationURL, id);
+  cancelStudentProgramVacation(id?: string): Observable<BaseResponseModel> {
+    return this.http.put<BaseResponseModel>(this.cancelStudentProgramVacationURL+ id , null);
   }
 
-  terminateStudentProgramVacation(id: string): Observable<BaseResponseModel> {
-    return this.http.put<BaseResponseModel>(this.terminateStudentProgramVacationURL, id);
+  terminateStudentProgramVacation(id: any): Observable<BaseResponseModel> {
+    return this.http.put<BaseResponseModel>(this.terminateStudentProgramVacationURL+ id , null);
   }
 
-
-  addStudentProgramVacation(model: IStudentCustomConditionAnswerModel): Observable<BaseResponseModel> {
+  addStudentProgramVacation(model: IAddNewStudentVacationRequest): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.addStudentProgramVacationURL, model);
   }
 

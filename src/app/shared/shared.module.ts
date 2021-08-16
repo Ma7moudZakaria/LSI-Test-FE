@@ -80,6 +80,7 @@ import { StudentDropOutRequestStudentCardComponent } from './components/student-
 import { StudentDropOutGridComponent } from './components/student-drop-out-grid/student-drop-out-grid.component';
 
 
+import { StudentProgramVacationCardStudentViewComponent } from './components/student-program-vacation-card-student-view/student-program-vacation-card-student-view.component';
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
     SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,
@@ -125,7 +126,8 @@ import { StudentDropOutGridComponent } from './components/student-drop-out-grid/
     TeacherDropOutRequestTeacherCardComponent,
     StudentDropOutRequestAdminCardComponent,
     StudentDropOutRequestStudentCardComponent,
-    StudentDropOutGridComponent
+        StudentDropOutGridComponent,
+        StudentProgramVacationCardStudentViewComponent
     ],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,

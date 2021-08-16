@@ -352,7 +352,7 @@
                 <li class="disabled_sidenav">
                     <a   *ngIf='roleService.isAdmin() && (!roleService.isStudent() || !roleService.isTeacher())'>
                         <img src="../../../../assets/images/sidebar/teacher-icon.png">
-                       
+
                         <span class="container__navigation__title">{{'SIDENAVBAR.WITHDRAWAL_REQUESTS' | translate}}</span>
                     </a>
                 </li>
@@ -421,7 +421,7 @@
                     *ngIf='!roleService.isAdmin() && (roleService.isStudent() || !roleService.isTeacher())'> 
                     <a [routerLink]="['/home']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/questions-bank-icon.png">
- 
+
                         <span class="container__navigation__title">{{'SIDENAVBAR.QUESTION_BANK' | translate}}</span>
                     </a>
 

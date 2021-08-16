@@ -2,10 +2,11 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IStudentProgramVacationModel} from '../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-model';
 import {StudentProgramVacationStatusEnum} from '../../../core/enums/StudentProgramVacationStatus/student-program-vacation-status.enum';
 import {IStudentProgramVacationFilterRequestModel} from '../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-filter-request-model';
-import {RoleEnum} from '../../../core/enums/role-enum.enum';
 import {LanguageEnum} from '../../../core/enums/language-enum.enum';
 import {TranslateService} from '@ngx-translate/core';
 import {ExportationService} from '../../../core/services/exportation-services/exportation.service';
+import {IUser} from '../../../core/interfaces/auth-interfaces/iuser-model';
+import {IStudentProgramVacationStudentViewModel} from '../../../core/interfaces/student-program-vacation-interfaces/istudent-program-vacation-student-view-model';
 
 @Component({
   selector: 'app-student-program-vacation-grid',
@@ -21,19 +22,24 @@ export class StudentProgramVacationGridComponent implements OnInit {
   @Output() acceptStudentProgramVacation = new EventEmitter<IStudentProgramVacationModel>();
   @Input() numberPerRow: number = 3;
   @Input() totalCount: number = 0;
-  @Input() userMode: RoleEnum = RoleEnum.Admin;
   @Input() studentProgramVacationFilterRequestModel: IStudentProgramVacationFilterRequestModel = { skip: 0, take: 9, page: 1 };
-  @Output() itemStuReq = new EventEmitter<IStudentProgramVacationModel>();
+  @Output() studentProgramVacationStudentViewModel = new EventEmitter<IStudentProgramVacationStudentViewModel>();
+  @Output() terminateStudentProgramVacation = new EventEmitter<IStudentProgramVacationStudentViewModel>();
+  @Output() cancelStudentProgramVacation = new EventEmitter<IStudentProgramVacationStudentViewModel>();
 
-  StudentProgramVacationUsers = RoleEnum;
   orderTypeToggel = 1;
   allSelected: boolean = false;
   stuTabTypeSelected = StudentProgramVacationStatusEnum;
+  currentUser: IUser | undefined;
+  userRole : any;
 
   constructor( public translate: TranslateService,
                private exportationService: ExportationService) { }
 
   ngOnInit(): void {
+    this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
+    this.userRole= this.currentUser.usrRoles?.usrRoles?.[0].enRoleName.toString();
+
   }
 
   sortStudentByName() {
@@ -67,7 +73,6 @@ export class StudentProgramVacationGridComponent implements OnInit {
   }
 
   someStudentItemsChecked(): boolean {
-    console.log(this.userMode);
     if (this.studentVacationItems == null) {
       return false;
     }
@@ -80,20 +85,26 @@ export class StudentProgramVacationGridComponent implements OnInit {
       return;
     }
     this.studentVacationItems.forEach(t => t.checked = completed);
-    console.log(this.userMode);
   }
   onStudentPageChange() {
     this.studentProgramVacationFilterRequestModel.skip = (this.studentProgramVacationFilterRequestModel.page - 1) * (this.studentProgramVacationFilterRequestModel.take);
     this.studentVacationFilterEvent.emit(this.studentProgramVacationFilterRequestModel);
     this.setStudentAllChecked(false);
   }
-
-  rejecteStuRequest(event: IStudentProgramVacationModel) {
-    this.itemStuReq.emit(event)
+  rejectStuRequest(event: IStudentProgramVacationModel) {
+    this.studentProgramVacationStudentViewModel.emit(event)
 
   }
   acceptStuRequest(event: IStudentProgramVacationModel) {
     this.acceptStudentProgramVacation.emit(event)
+
+  }
+  cancelStuRequest(event: IStudentProgramVacationStudentViewModel) {
+    this.cancelStudentProgramVacation.emit(event)
+
+  }
+  terminateStuRequest(event: IStudentProgramVacationStudentViewModel) {
+    this.terminateStudentProgramVacation.emit(event)
 
   }
   acceptAllStudentProgramSubscriptionChechedEvent() {

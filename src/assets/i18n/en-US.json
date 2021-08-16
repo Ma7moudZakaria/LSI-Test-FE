@@ -524,7 +524,8 @@
     "SHORT_DESCRIPTION_EN_MAX_LENGHT": "English short description must be less than or equal 200 character",
     "LONG_DESCRIPTION_AR_MAX_LENGHT": "Arabic long description must be less than or equal 1000 character",
     "LONG_DESCRIPTION_EN_MAX_LENGHT": "English long description must be less than or equal 1000 character",
-    "PROG_FOR_SUBSCRIPTION":"Subscription"
+    "PROG_FOR_SUBSCRIPTION": "Subscription",
+    "VACATION": "Vacations"
   },
   "VIEW_USER_PROFILE_PG": {
     "PERSONAL_PROFILE": "Personal Profile",
@@ -816,7 +817,15 @@
     "FROM": "From",
     "TO": "To",
     "VACATION_REASON": "Vacation Reason",
-    "REJECT_REASON": "Rejection Reason"
+    "REJECT_REASON": "Rejection Reason",
+    "CANCEL": "Cancel",
+    "TERMINATE": "Cut-Off",
+    "NEW_VACATION_REQUEST": "New Vacation Request",
+    "VACATION_REQUEST": "Vacation Request",
+    "DATE_FROM": "Date From",
+    "DATE_TO": "Date To",
+    "SEND": "Send",
+    "PROGRAM": "Program"
   },
   "PROGRAM_BATCHES": {
     "BAT_NAME_EN": "English Batch Name",
