@@ -24,7 +24,6 @@ export class VacationsRequestsViewComponent implements OnInit {
 
   selectedProgramCallBack(event:IStudentPrograms){
     this.programModel = event;
-    console.log("programModel ===========>", this.programModel);
     if ( this.studentProgramVacationRequests
       && this.studentProgramVacationRequests.studentProgramVacationFilterRequestModel
       && this.studentProgramVacationRequests.studentProgramVacationFilterRequestModel.progId ) {

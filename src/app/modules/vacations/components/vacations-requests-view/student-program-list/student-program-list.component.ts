@@ -27,22 +27,18 @@ export class StudentProgramListComponent implements OnInit {
               public translate : TranslateService) { }
 
   ngOnInit(): void {
+    this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
+    this.programFilter.usrId = this.currentUser.id;
     this.loadPrograms();
 
   }
 
   loadPrograms() {
-    this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
-    this.programFilter.usrId = this.currentUser.id;
-    // if (programName != null || programName != "") { this.programFilterByName.name = programName; }
-    // else{this.programFilterByName.name="";}
     this.programFilter.skip = 0;
     this.programFilter.take = 2147483647;
     this.studentProgramSubscriptionService.getStudentPrograms(this.programFilter).subscribe(
       (res: BaseResponseModel) => {
         this.programs = res.data as IStudentPrograms[];
-        console.log("programs" , this.programs);
-        // this.loadProgramMaterial()
         this.selectedIndex=-1;
       }, error => {
         this.resMessage = {
