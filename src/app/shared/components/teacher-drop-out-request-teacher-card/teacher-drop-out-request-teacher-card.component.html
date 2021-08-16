@@ -1,32 +1,40 @@
 <div class="card-request">
-  <div class="card_header">
+  <div class="card_header ">
 
-  <div>
-      <span> {{'STUDENT_SUBSCRIBERS.TIME' | translate}} </span>        
+      <div class="col-8 text-right">
+          <span > {{'STUDENT_SUBSCRIBERS.TIME' | translate}} </span>
 
-      <span>&nbsp;</span>
-      <span>&nbsp;</span>
-      <span>{{teacherDropOutRequestModel.requestDate  | date: 'dd/MM/yyyy'}}</span> 
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>{{teacherDropOutRequestModel.requestDate  | date: 'dd/MM/yyyy'}}</span>
+      </div>
+      <div class="col-4">
+        <img src="assets/images/edit-white.svg" class="cursor-pointer " >
+        <img src="assets/images/trash-white.svg" class="cursor-pointer mr-3">
+      </div>
+
   </div>
-  </div>
+  <div class="card_body prog">
+    <div class="d-flex align-items-center justify-content-between mb-3" >
 
-  <div class="card_body">
-    <div class="d-flex justify-content-between mb-3" >
-    <div class="mx-1">
-      <p class="name_user bold mb-2">{{ teacherDropOutRequestModel?.huffazNumber}}</p>
-      <p class="name_user bold mb-2">{{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.enTechStatusName : teacherDropOutRequestModel?.arTechStatusName}}</p>
-      <p class="name_user bold mb-2">{{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.teacherNameEn : teacherDropOutRequestModel?.teacherNameAr}}</p>
+      <p class="prog__num  mb-2">{{ teacherDropOutRequestModel?.huffazNumber}}</p>
+      <div class="d-flex align-items-center justify-content-between " >
+      <p class="prog__num mb-2  mr-3 ml-3">{{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.enTechStatusName : teacherDropOutRequestModel?.arTechStatusName}}</p>
+        <span class="status mb-2" [ngClass]="{ 'accept' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Accept ,
+                                  'pending' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Pending ,
+                                  'rejected' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Rejected}">
+        </span>
+      </div>
+    </div>
+      <div class="mx-1">
+      <p class="prog__name  mb-2">{{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.teacherNameEn : teacherDropOutRequestModel?.teacherNameAr}}</p>
       <p class="program_user bold mb-2 "> {{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.enProgBatName : teacherDropOutRequestModel?.arProgBatName}}</p>
       <p class="name_user bold mb-2" *ngIf="teacherDropOutRequestModel.reasonReject != null" >رد الادارة</p>
       <p class="program_user bold mb-2 "*ngIf="teacherDropOutRequestModel.reasonReject != null"> تم رفض الطلب</p>
       <p class="program_user bold mb-0 ">         
     </div>
     
-<span class="status" [ngClass]="{ 'accept' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Accept ,
-                                'pending' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Pending , 
-                                'rejected' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Rejected
-}" 
-></span>
-    </div>
+
+
   </div>
 </div>

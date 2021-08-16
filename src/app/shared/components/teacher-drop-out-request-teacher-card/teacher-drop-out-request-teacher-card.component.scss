@@ -1,4 +1,20 @@
 @import "../stu-card-request/stu-card-request.component.scss";
+@import "../../../../assets/scss/variables";
+.prog{
+
+  &__num{
+    color: $labels;
+  }
+  &__name{
+    color: $edit;
+    font-weight: 600;
+    font-size: 19px;
+  }
+}
+
+
+
+
 .status{
     width: 20px;
     height: 20px;
