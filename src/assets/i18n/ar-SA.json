@@ -71,7 +71,12 @@
     "DEGREE_MAX_LENGTH": "الدرجة يجب ان تكون أقل من أو تساوى 100",
     "REJECT_RESON":"سبب الإنسحاب",
     "PROGRAM":"البرنامج",
-    "DROP_OUT_REQUEST":"طلب الانسحاب"
+    "DROP_OUT_REQUEST":"طلب الانسحاب",
+    "APPLICANT_NAME":"أسم صاحب الطلب",
+    "REQUEST_NUMBER":"رقم الطلب",
+    "FROM": "من",
+    "TO": "إلى",
+    "ADVANCED_SEARCH": " بحث متقدم "
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",

@@ -1,16 +1,16 @@
 <div class="form-group DataForm mt-5 pl-3 pr-3">
-    <h3 class=" head  bold">بحث متقدم  </h3>
+    <h3 class=" head  bold"> {{'GENERAL.ADVANCED_SEARCH' | translate}} </h3>
   
 
 
     <div class="form-group">
-        <label  class="label" for="matrialTitleAr">أسم صاحب الطلب</label>
+        <label  class="label" for="matrialTitleAr"> {{'GENERAL.APPLICANTNAME' | translate}}</label>
         <input type="text" class="form-control"  [(ngModel)]="filter.usrName"
        [ngModelOptions]="{standalone: true}">
     </div>
      
         <div class="form-group">
-              <label  class="label" for="category">البرنامج</label>
+              <label  class="label" for="category"> {{'GENERAL.PROGRAM' | translate}}</label>
     
             <div class="d-flex">
                 <div class="input-group">
@@ -28,14 +28,14 @@
        
 
         <div class="form-group">
-              <label  class="label">رقم الطلب</label>
+              <label  class="label">  {{'GENERAL.REQUEST_NUMBER' | translate}}</label>
             <input type="text" class="form-control" [(ngModel)]="filter.numberRequest"    [ngModelOptions]="{standalone: true}">
             </div>
 
             <div class="form-group subscribtion-date">
                 
                     <div class="col-12 p-0">
-                          <label  class="label"> من </label>
+                          <label  class="label">  {{'GENERAL.FROM' | translate}}</label>
                         {{datafromBinding}}
                         <app-milady-hijri-calendar  [editcalenderType]="calenderType" (sendDate)="SendDatafrom($event)" 
                         (keypress)="$event.preventDefault()"
@@ -44,7 +44,7 @@
 
                     </div>
                     <div class="col-12 p-0">
-                          <label  class="label"> الى </label>
+                          <label  class="label">  {{'GENERAL.TO' | translate}}</label>
                           {{dataToBinding}}
                           <app-milady-hijri-calendar  [editcalenderType]="calenderType" (sendDate)="SendDataTo($event)" 
                          (keypress)="$event.preventDefault()"
@@ -63,7 +63,7 @@
         <section class="mt-5">
             <div  class="row direction-rtl buttons-center mt-5">
                 <button   type="submit" class="save-btn" (click)="sendAdvancedSearch()"> 
-                 search
+                  {{'GENERAL.SEARCH' | translate}}
                 </button>
                 <button  (click)="closeStuAdvancedSearch()"  type="reset" class="cancel-btn"> 
                     {{ "GENERAL.CANCEL" | translate }}
