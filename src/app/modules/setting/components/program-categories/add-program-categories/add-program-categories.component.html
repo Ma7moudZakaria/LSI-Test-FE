@@ -30,13 +30,13 @@
 
    <section class="mt-5">
             <div  class="row direction-rtl buttons-center mt-5">
-                <button   type="submit" class="save-btn" (click)="saveProgramCategories()" > 
+                <button   type="submit" class="save-btn" (click)="saveProgramCategories()" *ngIf="!modelEdit" > 
                     {{ "GENERAL.SAVE" | translate }}
                     
                 </button>
-                <!-- <button   type="submit" class="save-btn" (click)="savingEdit()"*ngIf="modelEdit" > 
+                <button   type="submit" class="save-btn" (click)="savingInEdit()" *ngIf="modelEdit" > 
                     {{ "GENERAL.EDIT" | translate }}
-                </button> -->
+                </button>
                 <button  type="reset" class="cancel-btn"    (click)="closeForm()"> 
                     {{ "GENERAL.CANCEL" | translate }} 
                     

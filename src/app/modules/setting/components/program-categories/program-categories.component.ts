@@ -24,11 +24,7 @@ export class ProgramCategoriesComponent implements OnInit {
     this.showAddForm = true;
     this.modelEdit = event
   }
-  // sendProgramCategories() {
 
-  //   this.viewProgramCategories?.getAllCategories()
-  //   this.showAddForm = false
-  // }
   closeForm() {
     this.showAddForm = false
     this.viewProgramCategories?.getAllCategories()

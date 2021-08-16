@@ -1,5 +1,5 @@
 export interface IEditProgramCategory {
-    id: string;
-    arabCatgName: string;
-    engCatgName: string;
+    id?: string;
+    arabCatgName?: string;
+    engCatgName?: string;
 }

@@ -20,9 +20,8 @@ export class AddProgramCategoriesComponent implements OnInit {
 
   programCategoryModel = {} as IPrgoramCategrory;
   model: IAddProgramCategory | undefined;
-
+  editProgramCategoryModel: IEditProgramCategory | undefined;
   listProgramCategporyList: IAddProgramCategory[] = [];
-
   resMessage: BaseMessageModel = {};
 
   constructor(
@@ -32,6 +31,13 @@ export class AddProgramCategoriesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // in case edit form 
+    if (this.modelEdit) {
+      this.populatData();
+      // console.log("modelEdit", this.modelEdit)
+
+      // console.log("programCategoryModel", this.programCategoryModel)
+    }
   }
 
   saveProgramCategories() {
@@ -66,34 +72,41 @@ export class AddProgramCategoriesComponent implements OnInit {
     this.closeOverlay.emit(false)
   }
 
+  populatData() {
+    this.programCategoryModel = {
+      id: this.modelEdit?.id,
+      arCatName: this.modelEdit?.arCatName,
+      enCatName: this.modelEdit?.enCatName,
+    }
+  }
 
-  // editPrgoramCategrory() {
-  //   if (this.addProgramCategoryModel  {
-  //     this.modelEdit =
-  //     {
-  //       id: this.modelEdit?.id,
-  //       arCatName: this.addProgramCategoryModel?.arabCatgName,
-  //       enCatName: this.addProgramCategoryModel?.engCatgName
-  //     }
+  savingInEdit() {
+    this.editProgramCategoryModel =
+    {
+      id: this.programCategoryModel.id,
+      arabCatgName: this.programCategoryModel.arCatName,
+      engCatgName: this.programCategoryModel.enCatName
 
-  //     this.programCategoriesService.updateProgramCatiegories(this.modelEdit).subscribe(res => {
-  //       if (res.isSuccess) {
-  //         // this.allPrgoramCategrorylist = res.data;
-  //         // console.log(' this.allPrograms', this.allPrgoramCategrorylist);
-  //       } else {
-  //         this.resMessage =
-  //         {
-  //           message: res.message,
-  //           type: BaseConstantModel.DANGER_TYPE
-  //         }
-  //       }
-  //     }, error => {
-  //       this.resMessage = {
-  //         message: error,
-  //         type: BaseConstantModel.DANGER_TYPE
-  //       }
-  //     })
-  //   }
-  // }
+    }
+    this.programCategoriesService.updateProgramCatiegories(this.editProgramCategoryModel).subscribe(res => {
+      if (res.isSuccess) {
+
+        this.alertify.success(res.message || '');
+        this.closeForm()
+      } else {
+        this.resMessage =
+        {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+    }, error => {
+      this.resMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    })
+  }
+
 
 }

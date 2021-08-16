@@ -15,6 +15,8 @@ export class ProgramCategoriesService {
   getProgramCatiegoriesUrl = environment.baseUrl + 'ProgramCategories/get-program-category/';
   addProgramcategoryURL = environment.baseUrl + 'ProgramCategories/add-program-category';
   updateProgramCatiegoriesURL = environment.baseUrl + 'ProgramCategories/update-program-category';
+  daleteProgramCatiegoriesURL = environment.baseUrl + 'ProgramCategories/delete-program-category/';
+
   // /api/ProgramCategories/add-program-category
   constructor(private http: HttpClient) { }
 
@@ -28,8 +30,14 @@ export class ProgramCategoriesService {
   addProgramCatiegories(model: IAddProgramCategory): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.addProgramcategoryURL, model);
   }
-  updateProgramCatiegories(model: IPrgoramCategrory): Observable<BaseResponseModel> {
+  updateProgramCatiegories(model: IEditProgramCategory): Observable<BaseResponseModel> {
     return this.http.put<BaseResponseModel>(this.updateProgramCatiegoriesURL, model);
   }
+
+  deleteProgramCatiegories(id: string): Observable<BaseResponseModel> {
+    return this.http.delete<BaseResponseModel>(this.daleteProgramCatiegoriesURL + id);
+  }
+
+
 }
 
