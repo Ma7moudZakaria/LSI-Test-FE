@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { IAddProgramCategory } from 'src/app/core/interfaces/program-categories-interfaces/iadd-program-category';
-import { IEditProgramCategory } from 'src/app/core/interfaces/program-categories-interfaces/iedit-program-category';
+import { IAddEditProgramCategory } from 'src/app/core/interfaces/program-categories-interfaces/iadd-edit-program-category';
 import { IPrgoramCategrory } from 'src/app/core/interfaces/program-categories-interfaces/iprgoram-categrory';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
@@ -16,12 +15,11 @@ export class AddProgramCategoriesComponent implements OnInit {
 
   @Output() addEditProgramCategories = new EventEmitter<IPrgoramCategrory>();
   @Output() closeOverlay = new EventEmitter<boolean>();
-  @Input() modelEdit: IPrgoramCategrory | undefined;
+  @Input() editModel: IPrgoramCategrory | undefined;
 
   programCategoryModel = {} as IPrgoramCategrory;
-  model: IAddProgramCategory | undefined;
-  editProgramCategoryModel: IEditProgramCategory | undefined;
-  listProgramCategporyList: IAddProgramCategory[] = [];
+  model: IAddEditProgramCategory | undefined;
+  listProgramCategporyList: IAddEditProgramCategory[] = [];
   resMessage: BaseMessageModel = {};
 
   constructor(
@@ -32,7 +30,7 @@ export class AddProgramCategoriesComponent implements OnInit {
 
   ngOnInit(): void {
     // in case edit form 
-    if (this.modelEdit) {
+    if (this.editModel) {
       this.populatData();
       // console.log("modelEdit", this.modelEdit)
 
@@ -74,21 +72,21 @@ export class AddProgramCategoriesComponent implements OnInit {
 
   populatData() {
     this.programCategoryModel = {
-      id: this.modelEdit?.id,
-      arCatName: this.modelEdit?.arCatName,
-      enCatName: this.modelEdit?.enCatName,
+      id: this.editModel?.id,
+      arCatName: this.editModel?.arCatName,
+      enCatName: this.editModel?.enCatName,
     }
   }
 
   savingInEdit() {
-    this.editProgramCategoryModel =
+    this.model =
     {
       id: this.programCategoryModel.id,
       arabCatgName: this.programCategoryModel.arCatName,
       engCatgName: this.programCategoryModel.enCatName
 
     }
-    this.programCategoriesService.updateProgramCatiegories(this.editProgramCategoryModel).subscribe(res => {
+    this.programCategoriesService.updateProgramCatiegories(this.model).subscribe(res => {
       if (res.isSuccess) {
 
         this.alertify.success(res.message || '');

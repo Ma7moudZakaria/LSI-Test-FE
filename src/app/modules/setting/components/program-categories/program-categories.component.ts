@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { IAddProgramCategory } from 'src/app/core/interfaces/program-categories-interfaces/iadd-program-category';
+// import { IAddProgramCategory } from 'src/app/core/interfaces/program-categories-interfaces/iadd-edit-program-category';
 import { IPrgoramCategrory } from 'src/app/core/interfaces/program-categories-interfaces/iprgoram-categrory';
 import { ViewProgramCategoriesComponent } from './view-program-categories/view-program-categories.component';
 
@@ -12,7 +12,7 @@ export class ProgramCategoriesComponent implements OnInit {
   showAddForm = false;
   @ViewChild(ViewProgramCategoriesComponent) viewProgramCategories: ViewProgramCategoriesComponent | undefined;
 
-  modelEdit = {} as IPrgoramCategrory;
+  editModel = {} as IPrgoramCategrory;
   // @Output() addEditCoidition = new EventEmitter<IprogramPredefinedCustomConditionsModel>();
   constructor() { }
 
@@ -22,7 +22,7 @@ export class ProgramCategoriesComponent implements OnInit {
   addEditProgramCategories(event: IPrgoramCategrory) {
 
     this.showAddForm = true;
-    this.modelEdit = event
+    this.editModel = event
   }
 
   closeForm() {
