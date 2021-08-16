@@ -14,7 +14,6 @@ import { ScientificProblemsViewComponent } from './components/scientific-problem
 import { TeacherProgramRequestViewComponent } from './components/teacher-program-request-view/teacher-program-request-view.component';
 import { StudentProgramRequestViewComponent } from './components/student-program-request-view/student-program-request-view.component';
 import { StuListRequestComponent } from './components/student-program-request-view/stu-list-request/stu-list-request.component';
-import { StuQuitRequestComponent } from './components/student-program-request-view/stu-request-details/stu-quit-request/stu-quit-request.component';
 import { StuJoinRequestComponent } from './components/student-program-request-view/stu-request-details/stu-join-request/stu-join-request.component';
 import { StuRequestDetailsComponent } from './components/student-program-request-view/stu-request-details/stu-request-details.component';
 import { StuTabRequestComponent } from './components/student-program-request-view/stu-request-details/stu-join-request/stu-tab-request/stu-tab-request.component';
@@ -36,6 +35,10 @@ import { TeacherRequestDetailsComponent } from './components/teacher-program-req
 import { TeacherAdvancedSearchComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-admin-drop-out-request/teacher-advanced-search/teacher-advanced-search.component';
 import { TeacherDropOutTabRequestComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-admin-drop-out-request/teacher-drop-out-tab-request/teacher-drop-out-tab-request.component';
 import { TeacherAdminDropOutRequestComponent } from './components/teacher-program-request-view/teacher-request-details/teacher-admin-drop-out-request/teacher-admin-drop-out-request.component';
+import { StudentDropOutTabRequestComponent } from './components/student-program-request-view/stu-request-details/student-admin-drop-out-request/student-drop-out-tab-request/student-drop-out-tab-request.component';
+import { StudentDropOutRequestRejectedComponent } from './components/student-program-request-view/stu-request-details/student-admin-drop-out-request/student-drop-out-request-rejected/student-drop-out-request-rejected.component';
+import { StudentAdvancedSearchComponent } from './components/student-program-request-view/stu-request-details/student-admin-drop-out-request/student-advanced-search/student-advanced-search.component';
+import { StudentAdminDropOutRequestComponent } from './components/student-program-request-view/stu-request-details/student-admin-drop-out-request/student-admin-drop-out-request.component';
 
 // @NgModule({
 //   declarations: [AdminMessagingViewComponent, ScientificProblemsComponent, AddScientifiProblemReplyComponent,
@@ -48,12 +51,13 @@ import { TeacherAdminDropOutRequestComponent } from './components/teacher-progra
 @NgModule({
   declarations: [AdminMessagingViewComponent, ScientificProblemsComponent, AddScientifiProblemReplyComponent, AddScientifiProblemToQuestionBankComponent,
     ScientificProblemsViewComponent, TeacherProgramRequestViewComponent, StudentProgramRequestViewComponent, StuListRequestComponent,
-    StuRequestDetailsComponent, StuJoinRequestComponent, StuQuitRequestComponent,
-    StuTabRequestComponent, AdvancedSearchComponent,TeacherAdvancedSearchComponent, TeacherListRequestComponent,
+    StuJoinRequestComponent, 
+    StuTabRequestComponent, AdvancedSearchComponent,TeacherAdvancedSearchComponent, TeacherListRequestComponent,StuRequestDetailsComponent,
     TeacherRequestDetailsComponent, TeacherJoinRequestComponent, TeacherJoinRequestProgramComponent,TeacherAdminDropOutRequestComponent ,
     ChangTimeRequestComponent, TeacherJionProgramTabRequestComponent, StuVacationsRequestComponent, StuMovingRequestComponent
     , TeacherJionTabRequestComponent, StuRejectedComponent, TeacheRejectedComponent,AdvancedSearchTeacherComponent, TeacherSystemSubscriptionRejectedComponent
-    ,TeacherDropOutTabRequestComponent, TeacherDropOutRequestRejectedComponent],
+    ,TeacherDropOutTabRequestComponent, TeacherDropOutRequestRejectedComponent, StudentAdminDropOutRequestComponent, StudentDropOutTabRequestComponent,
+     StudentDropOutRequestRejectedComponent, StudentAdvancedSearchComponent],
   imports: [
     CommonModule,
     FormsModule,
