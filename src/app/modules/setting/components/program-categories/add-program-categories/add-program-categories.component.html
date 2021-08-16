@@ -2,18 +2,18 @@
 
 <div class="form-group conditionForm mt-3 pl-3 pr-3" >
     
-    <h3 class=" head  bold" > اضافه قسم </h3>
-    <!-- <h3 class=" head  bold" *ngIf="modelEdit"> تعديل قسم </h3> -->
+    <h3 class=" head  bold" *ngIf="!editModel">{{'PROGRAM_CATEGORY.ADD_CATEGORY' | translate}}  </h3>
+    <h3 class=" head  bold" *ngIf="editModel"> {{'PROGRAM_CATEGORY.EDIT_CATEGORY' | translate}} </h3>
        
       
     <div class="form-group">
         <div class="row">
             <div class="col-12">
-                <label class=" header_input"> اسم القسم بالعربيه  </label>
+                <label class=" header_input"> {{'PROGRAM_CATEGORY.AR_NAME_CATEGORY' | translate}}   </label>
                <input type="text" class="form-control"  [(ngModel)]="programCategoryModel.arCatName">
             </div>
             <div class="col-12 mt-5">
-                <label class=" header_input"> اسم القسم بالانجلزي  </label>
+                <label class=" header_input"> {{'PROGRAM_CATEGORY.EN_NAME_CATEGORY' | translate}}    </label>
                <input type="text" class="form-control"  [(ngModel)]="programCategoryModel.enCatName">
             </div>
             <div class="col-12">
@@ -30,11 +30,11 @@
 
    <section class="mt-5">
             <div  class="row direction-rtl buttons-center mt-5">
-                <button   type="submit" class="save-btn" (click)="saveProgramCategories()" *ngIf="!modelEdit" > 
+                <button   type="submit" class="save-btn" (click)="saveProgramCategories()" *ngIf="!editModel" > 
                     {{ "GENERAL.SAVE" | translate }}
                     
                 </button>
-                <button   type="submit" class="save-btn" (click)="savingInEdit()" *ngIf="modelEdit" > 
+                <button   type="submit" class="save-btn" (click)="savingInEdit()" *ngIf="editModel" > 
                     {{ "GENERAL.EDIT" | translate }}
                 </button>
                 <button  type="reset" class="cancel-btn"    (click)="closeForm()"> 

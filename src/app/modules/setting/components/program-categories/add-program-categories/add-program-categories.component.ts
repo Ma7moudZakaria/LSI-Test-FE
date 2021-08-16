@@ -32,21 +32,62 @@ export class AddProgramCategoriesComponent implements OnInit {
     // in case edit form 
     if (this.editModel) {
       this.populatData();
-      // console.log("modelEdit", this.modelEdit)
+      // console.log("editModel", this.editModel)
 
       // console.log("programCategoryModel", this.programCategoryModel)
     }
   }
 
   saveProgramCategories() {
-
+    // fill model
     this.model =
     {
       arabCatgName: this.programCategoryModel.arCatName,
       engCatgName: this.programCategoryModel.enCatName
 
     }
+    // 2-send to api in add
     this.programCategoriesService.addProgramCatiegories(this.model).subscribe(res => {
+      if (res.isSuccess) {
+
+        this.alertify.success(res.message || '');
+        this.closeForm()
+      } else {
+        this.resMessage =
+        {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
+    }, error => {
+      this.resMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    })
+  }
+  // case edit
+  // 1-populate data in form 
+  populatData() {
+    this.programCategoryModel = {
+      id: this.editModel?.id,
+      arCatName: this.editModel?.arCatName,
+      enCatName: this.editModel?.enCatName,
+    }
+  }
+  // 2-send update input in form 
+
+  savingInEdit() {
+    // 1-fill model
+    this.model =
+    {
+      id: this.programCategoryModel.id,
+      arabCatgName: this.programCategoryModel.arCatName,
+      engCatgName: this.programCategoryModel.enCatName
+
+    }
+    // 2-send to api in edit
+    this.programCategoriesService.updateProgramCatiegories(this.model).subscribe(res => {
       if (res.isSuccess) {
 
         this.alertify.success(res.message || '');
@@ -69,42 +110,5 @@ export class AddProgramCategoriesComponent implements OnInit {
   closeForm() {
     this.closeOverlay.emit(false)
   }
-
-  populatData() {
-    this.programCategoryModel = {
-      id: this.editModel?.id,
-      arCatName: this.editModel?.arCatName,
-      enCatName: this.editModel?.enCatName,
-    }
-  }
-
-  savingInEdit() {
-    this.model =
-    {
-      id: this.programCategoryModel.id,
-      arabCatgName: this.programCategoryModel.arCatName,
-      engCatgName: this.programCategoryModel.enCatName
-
-    }
-    this.programCategoriesService.updateProgramCatiegories(this.model).subscribe(res => {
-      if (res.isSuccess) {
-
-        this.alertify.success(res.message || '');
-        this.closeForm()
-      } else {
-        this.resMessage =
-        {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
-      }
-    }, error => {
-      this.resMessage = {
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
-      }
-    })
-  }
-
 
 }
