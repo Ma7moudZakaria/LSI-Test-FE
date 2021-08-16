@@ -102,12 +102,12 @@
                     <a 
                     [routerLink]="['/home']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/narration-icon.png">
-                        <span class="container__navigation__title">{{'SIDENAVBAR.REQUEST' | translate}}</span>
+                        <span class="container__navigation__title">{{'SIDENAVBAR.SARD' | translate}}</span>
                     </a>
                 </li>
                 <li onclick="" class="nav-item" routerLinkActive="active">
                     <a
-                     [routerLink]="['/home']" routerLinkActive="active" class="nav-link">
+                     [routerLink]="['/teacher-requests/teacher-requests-view']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/request.svg">
                         <span class="container__navigation__title">{{'SIDENAVBAR.REQUEST' | translate}}</span>
                     </a>
@@ -155,7 +155,7 @@
                 </li>
                 <li class="nav-item " routerLinkActive="active">
                     <a *ngIf='!roleService.isAdmin() && (roleService.isStudent() || !roleService.isTeacher())' 
-                    [routerLink]="['/home']" routerLinkActive="active" class="nav-link">
+                    [routerLink]="['/scientific-material/scientific-material-view']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/scientific-articles-icon.png">
 
                         <span class="container__navigation__title">{{'SIDENAVBAR.SCIENTIFIC_ARTICLES' | translate}}</span>
@@ -163,7 +163,7 @@
                 </li>
                 <li class="nav-item " routerLinkActive="active">
                     <a  *ngIf='!roleService.isAdmin() && (roleService.isStudent() || !roleService.isTeacher())' 
-                    [routerLink]="['/home']" routerLinkActive="active" class="nav-link">
+                    [routerLink]="['/vacations/student-vacation-request-view']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/vacation-icon.png">
                         <span class="container__navigation__title">{{'SIDENAVBAR.VACATION' | translate}}</span>
                     </a>
@@ -184,7 +184,7 @@
                 </li>
                 <li class="nav-item " routerLinkActive="active">
                     <a  *ngIf='!roleService.isAdmin() && (roleService.isStudent() || !roleService.isTeacher())'
-                         [routerLink]="['/home']" routerLinkActive="active" class="nav-link">
+                         [routerLink]="['/user-requests/user-requests-view']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/request.svg">
                         <span class="container__navigation__title">{{'SIDENAVBAR.RESULTS' | translate}}</span>
                     </a>
@@ -200,7 +200,7 @@
                   <a  *ngIf='!roleService.isAdmin() && (roleService.isStudent() || !roleService.isTeacher())'
                       [routerLink]="['/student-for-subscription']" routerLinkActive="active" class="nav-link">
                     <img src="../../../../assets/images/sidebar/program-icon.png">
-                    <span class="container__navigation__title">stu-program</span>
+                    <span class="container__navigation__title">{{'SIDENAVBAR.PROG_FOR_SUBSCRIPTION' | translate}}</span>
                   </a>
 
                 </li>

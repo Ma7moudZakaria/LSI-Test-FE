@@ -66,8 +66,6 @@ import { StuCardRequestComponent } from './components/stu-card-request/stu-card-
 import { TeacherCardRequestComponent } from './components/teacher-card-request/teacher-card-request.component';
 import { ProgramSubscriptionGridComponent } from './components/program-subscription-grid/program-subscription-grid.component';
 import { TeacherStudentProgramForSubscriptionComponent } from './components/teacher-student-program-for-subscription-card/teacher-student-program-for-subscription.component';
-import { TeacherStuProgramForSubscriptionGridComponent } from './components/teacher-stu-program-for-subscription-grid/teacher-stu-program-for-subscription-grid.component';
-
 import { TeacherSystemCardRequestComponent } from './components/teacher-system-card-request/teacher-system-card-request.component';
 import { TeacherSystemSubscriptionGridComponent } from './components/teacher-system-subscription-grid/teacher-system-subscription-grid.component';
 import { StudentProgramVacationGridComponent } from './components/student-program-vacation-grid/student-program-vacation-grid.component';
@@ -81,6 +79,7 @@ import { StudentDropOutGridComponent } from './components/student-drop-out-grid/
 
 
 import { StudentProgramVacationCardStudentViewComponent } from './components/student-program-vacation-card-student-view/student-program-vacation-card-student-view.component';
+import { TeacherStuProgramForSubscriptionGridComponent } from './components/teacher-stu-program-for-subscription-grid/teacher-stu-program-for-subscription-grid.component';
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
     SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,

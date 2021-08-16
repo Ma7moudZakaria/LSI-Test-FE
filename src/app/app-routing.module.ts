@@ -20,14 +20,11 @@ const routes: Routes = [
   { path: 'user-requests', loadChildren: () => import('./modules/user-requests/user-requests.module').then(m => m.UserRequestsModule), canActivate: [AuthGuard] },
   { path: 'admin-messaging', loadChildren: () => import('./modules/admin-messaging/admin-messaging.module').then(m => m.AdminMessagingModule), canActivate: [AuthGuard] },
   { path: 'teacher-requests', loadChildren: () => import('./modules/teacher-requests/teacher-requests.module').then(m => m.TeacherRequestsTeacherViewModule), canActivate: [AuthGuard] },
-
   { path: 'feelings', loadChildren: () => import('./modules/feelings/feelings.module').then(m => m.FeelingsModule), canActivate: [AuthGuard] },
-
   { path: 'program', loadChildren: () => import('./modules/program/program.module').then(m => m.ProgramModule), canActivate: [AuthGuard] },
   { path: 'student-programs', loadChildren: () => import('./modules/student-programs/student-programs.module').then(m => m.StudentProgramsModule), canActivate: [AuthGuard] },
   { path: 'teacher-for-subscription', loadChildren: () => import('./modules/teacher-program-subscription/teacher-program-subscription.module').then(m => m.TeacherProgramSubscriptionModule), canActivate: [AuthGuard] },
   { path: 'student-for-subscription', loadChildren: () => import('./modules/student-program-subscription/student-program-subscription.module').then(m => m.StudentProgramSubscriptionModule), canActivate: [AuthGuard] },
-
   { path: 'vacations', loadChildren: () => import('./modules/vacations/vacations.module').then(m => m.VacationsModule), canActivate: [AuthGuard] },
 ];
 
