@@ -11,7 +11,7 @@
   overflow: hidden;
   font-family: Almarai-Regular;
   font-size: 14px;
-  height: 280px;
+
 
 
   .bold{
@@ -55,14 +55,13 @@
     :lang(ar){text-align: right;}
     .name_user{
       color: $user-color;
-      font-size: 1rem;
+      font-size: 1.125rem;
 
     }
     .number_request {
       color: #9C9C9C;
       font-family: Almarai-Bold;
-      font-weight: bold;
-      font-size: 1rem;
+      font-size: .75rem;
     }
     .card_body_data{
       height: 60%;
@@ -74,7 +73,6 @@
     .img_user{
       width: 75px;
       height: 75px;
-      border: 1px solid #C1C7D0;
       border-radius: 5px;
     }
     .program_user{

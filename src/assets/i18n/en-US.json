@@ -778,7 +778,13 @@
   "TEACHER_DROP_OUT": {
     "SUBSCRIBERS": "Subscibe",
     "JOIN_REQUESTS": "Join requests",
-    "CANCEL_REQUESTS": "Cancellation requests"
+    "CANCEL_REQUESTS": "Cancellation requests",
+    "NEW_CANCEL_REQUESTS": "New Cancel Request",
+    "TIME": "Time",
+    "ADMIN_ANSWER": "Admin Answer" ,
+    "REJECTED": "Rejected",
+    "ACCEPT" : "Accepted",
+    "CANCEL" : "Cancel"
   },
   "STUDENT_SUBSCRIBERS": {
     "SUBSCRIBERS": "Subscibe",
@@ -827,7 +833,9 @@
     "DATE_FROM": "Date From",
     "DATE_TO": "Date To",
     "SEND": "Send",
-    "PROGRAM": "Program"
+    "PROGRAM": "Program",
+    "VACATION_REQUESTS": " Vacation requests",
+    "ADMIN_ANSWER": "Admin Answer"
   },
   "PROGRAM_BATCHES": {
     "BAT_NAME_EN": "English Batch Name",
