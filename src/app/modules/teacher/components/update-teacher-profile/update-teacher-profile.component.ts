@@ -663,6 +663,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
     }
     this.rewayatsMessage = {};
 
+    var x = this.profileForm.value.rewayats;
     const exist = this.selectedRewayatsList.some(el => el.id === this.profileForm.value.rewayats)
     if (!exist) {
       if (this.collectionOfLookup.REWAYAT) {

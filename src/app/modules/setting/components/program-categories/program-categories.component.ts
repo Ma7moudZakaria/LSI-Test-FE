@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { IAddProgramCategory } from 'src/app/core/interfaces/program-categories-interfaces/iadd-program-category';
-import { IProgramCategories } from 'src/app/core/interfaces/program-categories-interfaces/iprgoram-categrory';
+import { IPrgoramCategrory } from 'src/app/core/interfaces/program-categories-interfaces/iprgoram-categrory';
 import { ViewProgramCategoriesComponent } from './view-program-categories/view-program-categories.component';
 
 @Component({
@@ -12,14 +12,14 @@ export class ProgramCategoriesComponent implements OnInit {
   showAddForm = false;
   @ViewChild(ViewProgramCategoriesComponent) viewProgramCategories: ViewProgramCategoriesComponent | undefined;
 
-  modelEdit = {} as IProgramCategories;
+  modelEdit = {} as IPrgoramCategrory;
   // @Output() addEditCoidition = new EventEmitter<IprogramPredefinedCustomConditionsModel>();
   constructor() { }
 
   ngOnInit(): void {
 
   }
-  addEditProgramCategories(event: IProgramCategories) {
+  addEditProgramCategories(event: IPrgoramCategrory) {
 
     this.showAddForm = true;
     this.modelEdit = event

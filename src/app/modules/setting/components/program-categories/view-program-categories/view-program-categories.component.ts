@@ -1,4 +1,4 @@
-import { IProgramCategories } from './../../../../../core/interfaces/program-categories-interfaces/iprgoram-categrory';
+import { IPrgoramCategrory } from './../../../../../core/interfaces/program-categories-interfaces/iprgoram-categrory';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
@@ -13,8 +13,8 @@ import { ProgramCategoriesService } from 'src/app/core/services/program-categori
   styleUrls: ['./view-program-categories.component.scss']
 })
 export class ViewProgramCategoriesComponent implements OnInit {
-  @Output() addEditProgramCategories = new EventEmitter<IProgramCategories>()
-  allPrgoramCategrorylist: IProgramCategories[] = [];
+  @Output() addEditProgramCategories = new EventEmitter<IPrgoramCategrory>()
+  allPrgoramCategrorylist: IPrgoramCategrory[] = [];
   resMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
 
@@ -52,7 +52,7 @@ export class ViewProgramCategoriesComponent implements OnInit {
       }
     })
   };
-  editPrgoramCategrory(event: IProgramCategories) {
+  editPrgoramCategrory(event: IPrgoramCategrory) {
     this.addEditProgramCategories.emit(event)
   }
 }

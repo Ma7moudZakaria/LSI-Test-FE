@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { IAddProgramCategory } from 'src/app/core/interfaces/program-categories-interfaces/iadd-program-category';
 import { IEditProgramCategory } from 'src/app/core/interfaces/program-categories-interfaces/iedit-program-category';
-import { IProgramCategories } from 'src/app/core/interfaces/program-categories-interfaces/iprgoram-categrory';
+import { IPrgoramCategrory } from 'src/app/core/interfaces/program-categories-interfaces/iprgoram-categrory';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
@@ -14,11 +14,11 @@ import { ProgramCategoriesService } from 'src/app/core/services/program-categori
 })
 export class AddProgramCategoriesComponent implements OnInit {
 
-  @Output() addEditProgramCategories = new EventEmitter<IProgramCategories>();
+  @Output() addEditProgramCategories = new EventEmitter<IPrgoramCategrory>();
   @Output() closeOverlay = new EventEmitter<boolean>();
-  @Input() modelEdit: IProgramCategories | undefined;
+  @Input() modelEdit: IPrgoramCategrory | undefined;
 
-  programCategoryModel = {} as IProgramCategories;
+  programCategoryModel = {} as IPrgoramCategrory;
   model: IAddProgramCategory | undefined;
 
   listProgramCategporyList: IAddProgramCategory[] = [];

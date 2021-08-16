@@ -702,7 +702,8 @@
     "TO_HOUR": "الى الساعه",
     "ADD": "إضافة",
     "FROM": "من",
-    "TO": "إلى"
+    "TO": "إلى",
+    "CHOOSE_SECTION": "اختار القسم"
   },
   "PROGRAM_DAY_TASK_DETIALS": {
     "DEGREE": "الدرجه",
@@ -835,6 +836,7 @@
     "PLEDG_TEXT": "نص التعهد",
     "PROG_FEATURES": "مميزات البرنامج",
     "PROG_PARTS": "عدد الأجزاء المطلوبة",
+    "NO": "غير محدد",
     "PROG_DURA": "مدة البرنامج باليوم"
   }
 }

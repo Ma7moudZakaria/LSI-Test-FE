@@ -5,7 +5,7 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
 import { environment } from '../../../../environments/environment';
 import { IAddProgramCategory } from '../../interfaces/program-categories-interfaces/iadd-program-category';
 import { IEditProgramCategory } from '../../interfaces/program-categories-interfaces/iedit-program-category';
-import { IProgramCategories } from '../../interfaces/program-categories-interfaces/iprgoram-categrory';
+import { IPrgoramCategrory } from '../../interfaces/program-categories-interfaces/iprgoram-categrory';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +28,7 @@ export class ProgramCategoriesService {
   addProgramCatiegories(model: IAddProgramCategory): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.addProgramcategoryURL, model);
   }
-  updateProgramCatiegories(model: IProgramCategories): Observable<BaseResponseModel> {
+  updateProgramCatiegories(model: IPrgoramCategrory): Observable<BaseResponseModel> {
     return this.http.put<BaseResponseModel>(this.updateProgramCatiegoriesURL, model);
   }
 }
