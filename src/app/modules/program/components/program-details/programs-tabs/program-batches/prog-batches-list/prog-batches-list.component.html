@@ -1,10 +1,53 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
+    
+    <div *ngFor = 'let bat of programDetails?.progBats'>
+        {{bat.arBatName}}
+    </div>
+</div> -->
+
+<div class="list-group list-group_program-list">
     <div class="row">
         <a (click)="showAddBatchOverlay()">
             {{ "PROGRAM_BATCHES.ADD_BATCH" | translate }} <i class="fas fa-plus"></i>
           </a>
     </div>
-    <div *ngFor = 'let bat of programDetails?.progBats'>
-        {{bat.arBatName}}
-    </div>
+   <div class="internal_scroll_list_group" >
+    <mat-accordion  class="taskDays">
+
+            <mat-expansion-panel cdkDrag  disabled *ngFor = 'let bat of programDetails?.progBats let i = index;'>
+                      
+                       
+                <mat-expansion-panel-header>
+                    
+                    <mat-panel-title class="qestionHeader">
+                     
+
+                            <span class=" span_question"> {{bat.arBatName}} 
+                            </span> 
+
+                        <div class="d-flex">
+                          
+                              
+                              <i class="far fa-edit "  (click)="showEditBatchOverlay(bat)" ></i>
+                              <i class="far fa-trash-alt ml-1 mr-1" (click)="confirmDialog(bat.id)" ></i>
+                      </div>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+            </mat-expansion-panel>
+        </mat-accordion>
+            <!-- <span class="list-group-item"  *ngFor = 'let bat of programDetails?.progBats'> 
+                
+                {{bat.arBatName}} 
+                
+                <div class="d-flex">      
+                    <i class="far fa-copy " ></i>
+                    <i class="far fa-trash-alt ml-1 mr-1" ></i>
+                </div>
+            </span> -->
+           
+        </div>
+
+
+        
+
 </div>

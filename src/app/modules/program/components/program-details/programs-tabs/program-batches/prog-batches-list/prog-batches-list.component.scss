@@ -1,0 +1,44 @@
+@import '../../../../add-program/program-days/program-day-tasks/program-day-tasks.component.scss';.taskDays.mat-accordion {
+    .mat-expansion-panel{
+        margin-bottom: 0.8rem;
+        border-radius: 12px;
+        border: 1px solid #827f7f3d;
+        box-shadow: none;
+    }
+    .mat-expansion-panel-header{
+        padding: 0 1rem;
+     
+    }  
+    .mat-expansion-panel-header-title {
+    justify-content: space-between;
+    color: #8E2520;
+    margin-left: 0;
+    font-size: 1rem;
+    font-family: Almarai-Bold;
+    }
+
+    .arrange
+    {
+            border-style: solid;
+            border-width: 0;
+            // content: url('../../../../assets/images/feelings/arrange.svg') !important;
+            display: inline-block;
+            padding: 3px;
+            transform: rotate(0);
+            vertical-align: middle;
+            margin-left: 0.23rem;
+            margin-right: 0.23rem;
+            width: 12px;
+            height: 20px;
+        }
+        .mat-expansion-panel-header.active{
+            background: #CB9118 0% 0% no-repeat padding-box;
+            color: #FFFFFF;
+            opacity: 1;
+            text-decoration: none;
+            .mat-expansion-panel-header-title {
+                color: #fff;
+
+            }
+        }
+}
