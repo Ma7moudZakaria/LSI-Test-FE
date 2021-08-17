@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ICreateProgBatch } from 'src/app/core/interfaces/program-batches-interfaces/icreate-prog-batch';
 import { IProgramBatchesDetails, IProgramDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
+import { ProgBatchesDetailsComponent } from './prog-batches-details/prog-batches-details.component';
 import { ProgBatchesListComponent } from './prog-batches-list/prog-batches-list.component';
 
 @Component({
@@ -11,7 +12,9 @@ import { ProgBatchesListComponent } from './prog-batches-list/prog-batches-list.
 export class ProgramBatchesComponent implements OnInit {
 
   @ViewChild (ProgBatchesListComponent) progBatchListChild : ProgBatchesListComponent | undefined;  
+  @ViewChild(ProgBatchesDetailsComponent) progDeta : ProgBatchesDetailsComponent | undefined;
   @Input() programDetails : IProgramDetails | undefined ;
+  patchId : string | undefined;
   
   programBatchDetails : IProgramBatchesDetails | undefined ;
   isEdit : boolean | undefined ;
@@ -29,7 +32,15 @@ export class ProgramBatchesComponent implements OnInit {
     this.showHideAddBatchOverlay = event;
     this.progBatchListChild?.updateProgBatchesListAfterAdd();
   }
+  sendPatchID(event : string){
+    console.log('event', event);
+    this.patchId= event
+    if (this.progDeta){
+      this.progDeta.patchId = event;
+      this.progDeta.getProgBatchesByProgId();
+    }   
 
+  }
   showHideEditBatchOverlayHandler(event : boolean){
     this.showHideEditBatchOverlay = event;
     this.progBatchListChild?.updateProgBatchesListAfterAdd();

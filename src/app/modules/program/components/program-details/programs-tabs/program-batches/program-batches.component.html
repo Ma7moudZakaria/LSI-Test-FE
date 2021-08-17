@@ -2,20 +2,22 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-4">
-            <app-prog-batches-list [programDetails]='programDetails' 
+            <app-prog-batches-list [programDetails]='programDetails' (patchId) = "sendPatchID($event)"
                                    (programBatchDetails)='programBatchDetailsHandler($event)' 
                                    (showAddBatchOverlayEvent)='showHideAddBatchOverlayHandler($event)'
                                    (showEditBatchOverlayEvent)='showHideEditBatchOverlayHandler($event)'
+                                   
                                    (isEdit)='showEditBatchOverlayHandler($event)'></app-prog-batches-list>
         </div>
         <div class="col-8">
-            <app-prog-batches-details [programDetails]='programDetails'></app-prog-batches-details>
+            <app-prog-batches-details  [patchId]='patchId'  [programDetails]='programDetails'></app-prog-batches-details>
         </div>
     </div>
 </div>
 
 <div class='overlay' *ngIf='showHideAddBatchOverlay || showHideEditBatchOverlay' >
     <app-add-prog-batch 
+    
                             [programDetails]='programDetails' 
                             [programBatchDetails]='programBatchDetails' 
                             (hideAddBatchOverlayEvent)='showHideAddBatchOverlayHandler($event)' 

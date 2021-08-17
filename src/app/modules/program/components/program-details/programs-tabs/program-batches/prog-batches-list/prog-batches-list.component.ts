@@ -22,11 +22,14 @@ export class ProgBatchesListComponent implements OnInit {
   @Output() showEditBatchOverlayEvent = new EventEmitter<boolean>();
   @Output() programBatchDetails = new EventEmitter<IProgramBatchesDetails>();
   @Output() isEdit = new EventEmitter<boolean>();
+  @Output() patchId = new EventEmitter<string>();
 
   
 
   @Input() programDetails : IProgramDetails | undefined ;
   resMessage: BaseMessageModel = {};
+  selectedIndex?: Number;
+  PATCH_ID? :string;
 
   constructor(public translate: TranslateService,
     private programBatchesService: ProgramBatchesService,
@@ -35,8 +38,15 @@ export class ProgBatchesListComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateProgBatchesListAfterAdd();
+    
   }
+  openDetails(id?:string){
+    this.patchId.emit(id);
+  }
+  getFirstPatchID(){
+    this.patchId.emit(this.PATCH_ID);
 
+  }
   showAddBatchOverlay(){
     this.showAddBatchOverlayEvent.emit(true);
     this.isEdit.emit(false);
@@ -53,7 +63,12 @@ export class ProgBatchesListComponent implements OnInit {
     this.programDetails && this.programDetails.progBaseInfo && this.programDetails.progBaseInfo.id ?
     this.programBatchesService.getProgBatchesByProgId(this.programDetails?.progBaseInfo?.id).subscribe(res=>{
       if (res.isSuccess && this.programDetails){
-        this.programDetails.progBats = res.data
+        this.programDetails.progBats = res.data;
+        if (this.programDetails.progBats){
+          this.PATCH_ID= this.programDetails.progBats[0].id;
+          this.getFirstPatchID();
+        }
+       
       }
       else{
         this.alertifyService.error(res.message || '');
@@ -62,6 +77,7 @@ export class ProgBatchesListComponent implements OnInit {
 
     }):'';
   }
+
 
   deleteProgBatch(id?:string){
     this.programBatchesService.deleteProgBatch(id || '').subscribe(res=>{
