@@ -857,5 +857,9 @@
     "PROG_PARTS": "Required Parts",
     "NO": "Not Specify",
     "PROG_DURA": "Program duration per day"
+  },
+  "PROGRAM_BATCH":{
+    "FROM_VALIDATION" : "Subscription start date can not be less than today",
+    "TO_VALIDATION" : "Subscription start date can not be greater than Subscription end date"
   }
 }
