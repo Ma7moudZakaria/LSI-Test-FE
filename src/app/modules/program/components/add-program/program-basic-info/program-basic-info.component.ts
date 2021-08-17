@@ -54,9 +54,9 @@ export class ProgramBasicInfoComponent implements OnInit {
   resMessage: BaseMessageModel = {};
   rewayatsMessage: BaseMessageModel = {};
 
-  constructor(private fb: FormBuilder, 
+  constructor(private fb: FormBuilder,
     public translate: TranslateService,
-    private BasicInfoService: ProgramBasicInfoService, 
+    private BasicInfoService: ProgramBasicInfoService,
     private lookupService: LookupService,
     private router: Router,
     private alert : AlertifyService,
@@ -114,7 +114,7 @@ export class ProgramBasicInfoComponent implements OnInit {
     this.lookupService.getLookupByKey(this.listOfLookup).subscribe(res => {
       if (res.isSuccess) {
         this.collectionOfLookup = res.data as ILookupCollection;
-        
+
         //set default value for duty days lookups
         this.f.dutiesDayType.setValue(this.collectionOfLookup?.DUTY_TYPES ? this.collectionOfLookup?.DUTY_TYPES[0]?.id:'');
 
@@ -152,7 +152,7 @@ export class ProgramBasicInfoComponent implements OnInit {
         advantageProg: ['', [Validators.required, Validators.maxLength(300)]],
         textPledge: ['', [Validators.required, Validators.maxLength(300)]],
         dutiesDayType: ['', [Validators.required]],
-        dayCount:['1' , [Validators.required,Validators.max(7)]], 
+        dayCount:['1' , [Validators.required,Validators.max(7)]],
         examPass: [''],
         rectMand: [''],
         isAlsard: [false],
@@ -189,13 +189,13 @@ export class ProgramBasicInfoComponent implements OnInit {
     this.f.recitType.setValue(this.progBasicInfoDetails?.prgRecitType);
     this.isSardTimesChange({value:this.progBasicInfoDetails?.prgRecitType});
 
-    this.progRecitationTimes = this.progBasicInfoDetails?.prgRecitTms ? 
+    this.progRecitationTimes = this.progBasicInfoDetails?.prgRecitTms ?
     this.progBasicInfoDetails?.prgRecitTms.filter(i=>i.huffno !== ProgramDayTaskRecitationType.limited).map((item: any) => ({ progRecFrom:item.recitFrom, progRecTo:item.recitTo })) : [];
 
     this.programTypesList = this.progBasicInfoDetails?.prgTps ?
     this.progBasicInfoDetails?.prgTps.map((item: any) => ({ progTypeId: item.id })) : [];
 
-    this.progWeeklyDayList = this.progBasicInfoDetails?.prgWeekDutiDas ? 
+    this.progWeeklyDayList = this.progBasicInfoDetails?.prgWeekDutiDas ?
     this.progBasicInfoDetails?.prgWeekDutiDas.map((item:any) => ({progWeeklyDay: item.id})) : [] ;
 
     this.programRatingList = this.progBasicInfoDetails?.prgRats ?
@@ -218,7 +218,7 @@ export class ProgramBasicInfoComponent implements OnInit {
     //form is valid
     if (this.baseInfoForm.valid && this.programTypesList.length > 0) {
 
-      // 1- fill EDit model 
+      // 1- fill EDit model
       if (this.progBasicInfoDetails) {
         this.baseicInfoProgrmEditModel = {
           progId: this.progBasicInfoDetails?.id,
@@ -236,14 +236,15 @@ export class ProgramBasicInfoComponent implements OnInit {
           progRecType:this.baseInfoForm.value.recitType,
           proRatTyps:this.programRatingList,
           progRecitTimes:this.progRecitationTimes,
-          progCats : this.selectedProgramTypesList?.map((item:any)=> ({progCatId:item.catId || item.id}))
+          progCats : this.selectedProgramTypesList?.map((item:any)=> ({progCatId:item.catId || item.id})),
+          prgDura : this.baseInfoForm.value.durationProg
         }
         // send edit model to api
         this.editBasicInfoProgrm()
 
       }
       else{
-      // 1- fill add model 
+      // 1- fill add model
       this.baseicInfoProgrmModel = {
         progName: this.baseInfoForm.value.progName,
         progSharedWith: this.baseInfoForm.value.shareWith,
@@ -271,7 +272,7 @@ export class ProgramBasicInfoComponent implements OnInit {
       this.addBasicInfoProgrm()
     }
 
-      // 2- send add  model to api 
+      // 2- send add  model to api
 
     }
 
@@ -396,7 +397,7 @@ export class ProgramBasicInfoComponent implements OnInit {
       start.setHours(Number(this.recitFrom.split(':')[0]));
       start.setMinutes(Number(this.recitFrom.split(':')[1]));
 
-      
+
       end.setHours(Number(this.recitTo.split(':')[0]));
       end.setMinutes(Number(this.recitTo.split(':')[1]));
 
