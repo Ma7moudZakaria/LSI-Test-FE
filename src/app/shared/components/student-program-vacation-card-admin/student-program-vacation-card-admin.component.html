@@ -15,7 +15,7 @@
 
   <div class="card_body">
     <div class="d-flex justify-content-between mb-3">
-      <div>
+
       <img *ngIf='!studentSubscripModel.avatarLink' class="img_user"
            src="../../../../assets/images/student/user-profile.svg">
       <img *ngIf='studentSubscripModel.avatarLink' class="img_user" src="{{studentSubscripModel.avatarLink}}">
@@ -24,7 +24,7 @@
           <p class="name_user bold mb-2">{{studentSubscripModel.usrNameAr}}</p>
           <p class="program_user bold mb-2 "> {{studentSubscripModel.progName}}</p>
         </div>
-      </div>
+
 
       <div class="d-flex">
         <a><img src="../../../../../assets/images/chat.svg"></a>

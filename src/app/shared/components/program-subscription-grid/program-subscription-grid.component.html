@@ -111,7 +111,7 @@
        </div>
   </div>
 
-  <mat-grid-list cols="{{numberPerRow}}" rowHeight="3:3">
+  <mat-grid-list cols="{{numberPerRow}}" rowHeight="3:2.5">
     <ng-container *ngIf="userMode == programSubscriptionUsers.student">
         <mat-grid-tile *ngFor='let item of studentItems' >
             <app-stu-card-request [studentSubscripModel]='item'  
