@@ -8,7 +8,7 @@ import { ProgramConditionViewMoodEnum } from 'src/app/core/enums/programs/progra
 import { programPredefinedConditionsEnum } from 'src/app/core/enums/programs/program-predefined-conditions-enum.enum';
 import { IProgramConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-conditions-model';
 import { ICopyProgram } from 'src/app/core/interfaces/programs-interfaces/iprogram-copy-model';
-import { IProgramBasicInfoDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
+import {IProgramBasicInfoDetails, IProgramBatchesDetails} from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { IprogramPredefinedCustomConditionsModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-predefined-custom-conditions-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
@@ -28,6 +28,7 @@ export class BasicInformationComponent implements OnInit {
   @Output() refreshProgList = new EventEmitter();
   @Output() refreshProgDetails = new EventEmitter();
   @Input() progBasicInfoDetails: IProgramBasicInfoDetails | undefined;
+  @Input() programBatches: IProgramBatchesDetails[] | undefined;
   langEnum = LanguageEnum;
   basicInfoDetails: IProgramBasicInfoDetails | undefined;
   resMessage: BaseMessageModel = {};

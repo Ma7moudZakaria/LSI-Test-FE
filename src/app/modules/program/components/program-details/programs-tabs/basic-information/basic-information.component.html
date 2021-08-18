@@ -8,9 +8,9 @@
                 <p class="head">{{ progBasicInfoDetails?.prgName}} </p>
                 <div class="d-flex">
                   <a (click)="open(content)"><i class="far fa-copy" ></i></a>
-                    <i *ngIf='!basicInfoDetails?.prgIsPubli' class="fas fa-play" (click)="publishProgram()"></i>
+<!--                    <i *ngIf='!basicInfoDetails?.prgIsPubli' class="fas fa-play" (click)="publishProgram()"></i>-->
                     <i *ngIf='basicInfoDetails?.prgIsPubli' class="fas fa-pause" (click)="confirmPuseDialog()"></i>
-                    <img *ngIf='!basicInfoDetails?.prgPubliDate || !basicInfoDetails?.prgIsPubli' src="assets/images/question/edit-question.svg"  (click)="editBasicInfo()">
+                    <img *ngIf="programBatches?.length == 0"  src="assets/images/question/edit-question.svg"  (click)="editBasicInfo()">
                     <img *ngIf='!basicInfoDetails?.prgPubliDate || !basicInfoDetails?.prgIsPubli' src="assets/images/feelings/trash.svg" (click)="confirmDialog()">
 
                 </div>
@@ -163,7 +163,7 @@
                     <div class="col-6 mb-3" *ngIf="programConditionsEnum.programFinished===item.conditionNo">
                         <app-setting-last-program [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [ViewprogCondmood]='programConditionViewMoodEnum.conditionBasicInfoViewMood'></app-setting-last-program>
                     </div>
-            
+
                     <div class="col-6 mb-3" *ngIf="programConditionsEnum.numberStudentSubscribtion===item.conditionNo">
                         <app-setting-maxmum-subscribe [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [ViewprogCondmood]='programConditionViewMoodEnum.conditionBasicInfoViewMood'></app-setting-maxmum-subscribe>
                     </div>
@@ -173,7 +173,7 @@
                     <div class="col-6 mb-3" *ngIf="programConditionsEnum.accept===item.conditionNo">
                         <app-setting-accept [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [ViewprogCondmood]='programConditionViewMoodEnum.conditionBasicInfoViewMood'></app-setting-accept>
                     </div>
-                   
+
                    </ng-container >
                 </div>
             </div>
