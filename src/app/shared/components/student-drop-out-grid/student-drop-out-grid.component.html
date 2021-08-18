@@ -134,6 +134,7 @@
          [studentDropOutRequestFilterRequestStudentModel]='item' 
          (rejectStudentDropOutStudentRequest)="rejectStudentDropOutRequestEvent($event)"
          (acceptStudentDropOutStudentRequest)="acceptStudentDropOutRequestEvent($event)"
+         (cancelRequestOfStudent)="cancelRequestOfStudentEvent($event)"
          [typeEnum]='typeEnum' 
          ></app-student-drop-out-request-student-card>
         </mat-grid-tile>

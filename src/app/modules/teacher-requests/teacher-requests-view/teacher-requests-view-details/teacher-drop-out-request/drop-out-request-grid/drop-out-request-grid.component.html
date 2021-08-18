@@ -24,7 +24,8 @@
                     [totalCount]='totalCount'
                     [userMode]='userMode'
                     (teacherDropOutRequestFilterEvent)="teacherDropOutRequestChangePage($event)"
-                    [teacherDropOutRequestFilterRequestModel]='teacherDropOutRequestFilterRequestModel'>
+                    [teacherDropOutRequestFilterRequestModel]='teacherDropOutRequestFilterRequestModel'
+                    (cancelRequestOfTeacher)="cancelRequestOfTeacher($event)">
                </app-teacher-drop-out-request-admin-grid>
         </div>
     

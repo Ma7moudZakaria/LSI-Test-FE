@@ -28,8 +28,15 @@
       <p class="program__answer "  *ngIf="studentDropOutRequestFilterRequestStudentModel.reasonReject != null">{{'TEACHER_DROP_OUT.REJECTED' | translate}}</p>
     </div>
 
+    <div  [ngClass]="{
+      'dimmed': studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Accept , 
+      'disable': studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Rejected}">
+       
+        <button class="program__btn cancel-btn"  (click)="cancelRequest()"
+        >{{'TEACHER_DROP_OUT.CANCEL' | translate}}</button>
+    </div>
 
-    <button class="program__btn cancel-btn" disabled>{{'TEACHER_DROP_OUT.CANCEL' | translate}}</button>
+ 
   </div>
 
 

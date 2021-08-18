@@ -14,6 +14,7 @@ export class TeacherDropOutRequestTeacherCardComponent implements OnInit {
 
   @Output() rejectTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
   @Output() acceptTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
+  @Output() cancelRequestOfTeacher = new EventEmitter<ITeacherDropOutRequestModel>();
 
   @Input() teacherDropOutRequestModel: ITeacherDropOutRequestModel = { totalRows : 0};
 
@@ -46,5 +47,9 @@ export class TeacherDropOutRequestTeacherCardComponent implements OnInit {
   
   acceptTeacherDropOutRequestEvent(){
     this.acceptTeacherDropOutRequest.emit(this.teacherDropOutRequestModel);
+  }
+
+  cancelRequestOfTeacherEvent(){
+    this.cancelRequestOfTeacher.emit(this.teacherDropOutRequestModel);
   }
 }
