@@ -7,12 +7,18 @@
             <div class="col-12">
               <h3 class="bold teacher__title">{{"PROGRAM_BATCHES.TEACHERS" | translate}}</h3>
             </div>
-            <div class="col-6" *ngFor="let i of batchModel?.studentBatchs">
+            <ng-container class="" *ngIf="batchModel?.teacherBatchs">
+            <div class="col-6"  *ngFor="let i of batchModel?.teacherBatchs">
                 <a class="list-group-item d-flex">
-<!--                  [class.active]="selectedIndex === -1"-->
-<!--                  (click)="loadProgramMaterial();selectedIndex=-1"-->
-                  <span>  {{i.studentNameAr}}</span>
+                  <span> {{ translate.currentLang === langEnum.en ? i.teacherNameEn : i.teacherNameAr}}</span>
+
                 </a>
+            </div>
+            </ng-container>
+            <div class="no__data" *ngIf="!batchModel?.teacherBatchs || batchModel?.teacherBatchs?.length === 0">
+                  <h3 class="no__data--text">
+                    {{"PROGRAM_BATCHES.NO_TEACHERS" | translate}}
+                  </h3>
             </div>
           </div>
         </div>
@@ -26,12 +32,17 @@
             <div class="col-12">
               <h3 class="bold teacher__title">{{"PROGRAM_BATCHES.STUDENTS" | translate}}</h3>
             </div>
-            <div class="col-6" *ngFor="let i of batchModel?.studentBatchs">
+            <ng-container *ngIf="batchModel?.studentBatchs">
+              <div class="col-6" *ngFor="let i of batchModel?.studentBatchs">
               <a class="list-group-item d-flex">
-                <!--                  [class.active]="selectedIndex === -1"-->
-                <!--                  (click)="loadProgramMaterial();selectedIndex=-1"-->
-                <span>  {{i.studentNameAr}}</span>
+                <span>  {{ translate.currentLang === langEnum.en ? i.studentNameEn : i.studentNameAr}}</span>
               </a>
+            </div>
+            </ng-container>
+            <div class="no__data" *ngIf="!batchModel?.studentBatchs || batchModel?.studentBatchs?.length === 0">
+              <h3 class="no__data--text">
+                {{"PROGRAM_BATCHES.NO_STUDENTS" | translate}}
+              </h3>
             </div>
           </div>
         </div>

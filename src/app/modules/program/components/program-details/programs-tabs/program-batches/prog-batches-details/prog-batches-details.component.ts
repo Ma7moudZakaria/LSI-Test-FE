@@ -3,7 +3,8 @@ import { IProgramDetails } from 'src/app/core/interfaces/programs-interfaces/ipr
 import { ProgramBatchesService } from 'src/app/core/services/program-batches-service/program-batches.service';
 import { IbatchFillterModel } from '../../../../../../../core/interfaces/program-batches-interfaces/ibatch-fillter-model';
 import { IBatchModel } from '../../../../../../../core/interfaces/program-batches-interfaces/ibatch-model';
-
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import {TranslateService} from '@ngx-translate/core';
 @Component({
   selector: 'app-prog-batches-details',
   templateUrl: './prog-batches-details.component.html',
@@ -15,8 +16,8 @@ export class ProgBatchesDetailsComponent implements OnInit {
 
   batchFillter: IbatchFillterModel | undefined;
   batchModel: IBatchModel | undefined;
-
-  constructor(public programBatchesService: ProgramBatchesService) { }
+  langEnum = LanguageEnum;
+  constructor(public programBatchesService: ProgramBatchesService,public translate: TranslateService) { }
 
   ngOnInit(): void {
   }

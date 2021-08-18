@@ -18,8 +18,8 @@
       <div class="internal_scroll_list_group" >
         <div *ngFor = 'let bat of programDetails?.progBats let i = index;'>
           <a class="list-group-item d-flex"
-             [class.active]="selectedIndex === -1"
-             (click)="openDetails(bat.id)" >
+             [class.active]="selectedIndex === i"
+             (click)="openDetails(bat.id);selectedIndex = i" >
 
             <span>  {{bat.arBatName}}</span>
             <div class="d-flex">
