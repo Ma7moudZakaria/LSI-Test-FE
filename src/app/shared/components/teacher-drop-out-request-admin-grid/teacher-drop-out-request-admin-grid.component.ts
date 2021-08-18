@@ -21,6 +21,7 @@ export class TeacherDropOutRequestAdminGridComponent implements OnInit {
   @Output() itemTeacherDropOutRequestForReject = new EventEmitter<ITeacherDropOutRequestModel>();
   @Output() rejectTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
   @Output() acceptTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
+  @Output() userIdInput = new EventEmitter<string>();
 
   @Output() acceptAllTeacherDropOutRequestChecked = new EventEmitter<ITeacherDropOutRequestModel>();
   
@@ -37,7 +38,7 @@ export class TeacherDropOutRequestAdminGridComponent implements OnInit {
 
   @Input() userMode: DropOutRoleEnum | undefined ;
   userRoleMode = DropOutRoleEnum;
-  
+
 
 
   teacherTabTypeSelected = TeacherDropOutRequestStatusEnum;
@@ -54,7 +55,9 @@ export class TeacherDropOutRequestAdminGridComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  userId(event: string){
+    this.userIdInput.emit(event);
+  }
   sortTeacherByName() {
     this.teacherDropOutRequestFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'teacherNameAr' : 'TeacherNameAr';
     this.teacherDropOutRequestFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;

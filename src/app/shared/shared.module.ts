@@ -80,6 +80,7 @@ import { StudentDropOutGridComponent } from './components/student-drop-out-grid/
 
 import { StudentProgramVacationCardStudentViewComponent } from './components/student-program-vacation-card-student-view/student-program-vacation-card-student-view.component';
 import { TeacherStuProgramForSubscriptionGridComponent } from './components/teacher-stu-program-for-subscription-grid/teacher-stu-program-for-subscription-grid.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
     SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,
@@ -126,7 +127,8 @@ import { TeacherStuProgramForSubscriptionGridComponent } from './components/teac
     StudentDropOutRequestAdminCardComponent,
     StudentDropOutRequestStudentCardComponent,
         StudentDropOutGridComponent,
-        StudentProgramVacationCardStudentViewComponent
+        StudentProgramVacationCardStudentViewComponent,
+        UserDetailsComponent
     ],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
@@ -151,10 +153,10 @@ import { TeacherStuProgramForSubscriptionGridComponent } from './components/teac
     SettingAgeComponent, SettingDegreeLastProgramComponent, SettingLastProgramComponent, SettingQualificationsComponent,
     SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent,
     SettingAcceptComponent, StuCardRequestComponent, TeacherCardRequestComponent, TeacherSystemCardRequestComponent, TeacherStuProgramForSubscriptionGridComponent,
-     ProgramSubscriptionGridComponent
-      , TeacherSystemSubscriptionGridComponent, StudentProgramVacationGridComponent, TeacherStudentProgramForSubscriptionComponent,
-      StudentDropOutGridComponent,
-      TeacherDropOutRequestAdminGridComponent
+    ProgramSubscriptionGridComponent
+    , TeacherSystemSubscriptionGridComponent, StudentProgramVacationGridComponent, TeacherStudentProgramForSubscriptionComponent,
+    StudentDropOutGridComponent,
+    TeacherDropOutRequestAdminGridComponent, UserDetailsComponent
   ]
 })
 export class SharedModule { }

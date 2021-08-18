@@ -91,7 +91,8 @@
          [teacherDropOutRequestModel]='item' 
          (rejectTeacherDropOutRequest)="rejectTeacherDropOutRequestEvent($event)"
          (acceptTeacherDropOutRequest)="acceptTeacherDropOutRequestEvent($event)"
-         [typeEnum]='typeEnum' 
+         [typeEnum]='typeEnum'
+          (userIdEvent) = "userId($event)"
          ></app-teacher-drop-out-request-admin-card>
         </mat-grid-tile>
     </ng-container>

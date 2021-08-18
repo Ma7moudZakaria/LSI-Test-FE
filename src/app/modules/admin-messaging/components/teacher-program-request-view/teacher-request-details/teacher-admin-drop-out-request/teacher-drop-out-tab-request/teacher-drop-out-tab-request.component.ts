@@ -25,7 +25,7 @@ export class TeacherDropOutTabRequestComponent implements OnInit {
   
   teacherDropOutRequestList: ITeacherDropOutRequestModel[] = [];
   teacherDropOutRequestFilterRequestModel: ITeacherDropOutRequestAdvFilterAdminViewRequestModel = { statusNum: TeacherDropOutRequestStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
-  resultMessage: BaseMessageModel = {};;
+  resultMessage: BaseMessageModel = {};
   totalCount = 0;
   numberItemsPerRow = 3;
   ids?: string[] = [];
@@ -33,7 +33,9 @@ export class TeacherDropOutTabRequestComponent implements OnInit {
   showTap: TeacherDropOutRequestStatusEnum = TeacherDropOutRequestStatusEnum.Pending;
   statusEnum = TeacherDropOutRequestStatusEnum;
   userMode: DropOutRoleEnum = DropOutRoleEnum.Admin;
-  
+  sendUserID: string | undefined;
+  showUserDetailsView:boolean = false;
+
   constructor(
     public translate: TranslateService,
     private teacherDropOutRequestService: TeacherDropOutRequestService,
@@ -42,6 +44,14 @@ export class TeacherDropOutTabRequestComponent implements OnInit {
   ngOnInit(): void {
     this.teacherDropOutRequestFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn'
     this.getTeacherDropOutRequests();
+  }
+
+  sendUserIDEvent(event: string){
+    this.sendUserID =event;
+    this.showUserDetailsView = true;
+  }
+  hideUserDetailsView(event: boolean){
+    this.showUserDetailsView = event;
   }
 
   searchByText(searchKey: string) {
