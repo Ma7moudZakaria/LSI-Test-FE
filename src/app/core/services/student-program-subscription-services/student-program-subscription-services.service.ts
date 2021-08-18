@@ -21,6 +21,7 @@ export class StudentProgramSubscriptionServicesService {
   getStudentCustomConditionURL = environment.baseUrl + 'StudentProgramSubscription/get-student-custom-condition/';
   submitStudentCustomConditionAnswerURL = environment.baseUrl + 'StudentProgramSubscription/submit-student-custom-condition-answer/';
   getRandomExamURL = environment.baseUrl + 'StudentProgramSubscription/submit-student-custom-condition-answer/';
+  getRandomJoiningExamURL = environment.baseUrl + 'StudentProgramSubscription/get-program-random-exam/';
   submitStudentJoiningExamAnswerURL = environment.baseUrl + 'StudentProgramSubscription/submit-student-joining-exam-answer/';
   studentProgramSubscriptionsCompletedURL = environment.baseUrl + 'StudentProgramSubscription/student-program-subscription-completed/';
   getProgramsForStudentsSubscriptionsURL = environment.baseUrl + 'StudentProgramSubscription/get-programs-for-students-subscriptions/';
@@ -45,12 +46,16 @@ export class StudentProgramSubscriptionServicesService {
     return this.http.get<BaseResponseModel>(this.getStudentCustomConditionURL + id);
   }
 
-  submitStudentCustomConditionAnswer(model: IStudentCustomConditionAnswerModel): Observable<BaseResponseModel> {
+  submitStudentCustomConditionAnswer(model?: IStudentCustomConditionAnswerModel): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.submitStudentCustomConditionAnswerURL, model);
   }
 
   getRandomExam(id: string): Observable<BaseResponseModel> {
     return this.http.put<BaseResponseModel>(this.getRandomExamURL, id);
+  }
+
+  getRandomJoiningExam(id: string): Observable<BaseResponseModel> {
+    return this.http.get<BaseResponseModel>(this.getRandomJoiningExamURL + id);
   }
 
   submitStudentJoiningExamAnswer(model: IstudentJoiningExamAnswerModel): Observable<BaseResponseModel> {

@@ -23,7 +23,7 @@ export class StudentProgramSubDetailsComponent implements OnInit {
   studSubsPredCondRes: IStudentSubscriptionPredefinedConditionResponse | undefined;
   @Output() ShowVerifyProgramPredefinedConditionOverlay = new EventEmitter<IStudentSubscriptionPredefinedConditionResponse>();
   @Output() ShowCustomConditionOverlay = new EventEmitter<IProgramSubscriptionDetails>();
-
+  @Output() requestId = new EventEmitter<string>();
   disabledCheck: boolean = true
   currentUser: Iuser | undefined;
   ProgramSubscriptionId: string = "";
@@ -91,9 +91,14 @@ export class StudentProgramSubDetailsComponent implements OnInit {
       res => {
         if (res.isSuccess) {
 
-          // console.log("res", res.data)
+          console.log("res", res)
           // this.alertify.success(res.message || '');
+          // this.ShowCustomConditionOverlay.emit(res.data as IProgramSubscriptionDetails);
           this.ShowCustomConditionOverlay.emit(this.programsForSubscriptionsDetails);
+          this.requestId.emit(res.data.requestId)
+
+
+
         }
         else {
           this.ShowVerifyProgramPredefinedConditionOverlay.emit(res.data as IStudentSubscriptionPredefinedConditionResponse);

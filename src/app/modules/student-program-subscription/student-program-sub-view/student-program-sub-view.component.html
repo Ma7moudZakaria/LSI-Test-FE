@@ -2,7 +2,7 @@
 <div class="container-fluid">
   <div class="row"> 
     <div class="col-12">
-    <app-student-program-sub-details 
+    <app-student-program-sub-details  (requestId)="sendRequestId($event)"
     (ShowVerifyProgramPredefinedConditionOverlay)="ShowVerifyProgramPredefinedConditionOverlay($event)"
     (ShowCustomConditionOverlay)="ShowCustomConditionOverlay($event)"
     ></app-student-program-sub-details>
@@ -17,8 +17,15 @@
 </div>
 <div class="overlay"  *ngIf="customConditionOverlay">
   <app-custom-condition-overlay 
-  [customCondition]='customCondition'>
-
+  [progDetails]='progDetails'
+  [requestId]='requestId'
+  (openJoiningExamEvent)='openJoiningExamOverlay($event)'
+  >
   </app-custom-condition-overlay>
+</div>
+<div class="overlay"  *ngIf="joiningExamOverlay">
+  <app-joining-exam-overlay [progDetails]='progDetails'>
+
+  </app-joining-exam-overlay>
 </div>
 </div>

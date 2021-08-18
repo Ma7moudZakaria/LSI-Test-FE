@@ -10,9 +10,10 @@ import { IProgramSubscriptionDetails } from 'src/app/core/interfaces/teacher-pro
 export class StudentProgramSubViewComponent implements OnInit {
   predefinedConditionOverlay: boolean = false;
   customConditionOverlay: boolean = false;
-
+  joiningExamOverlay: Boolean = false;
+  requestId: string | undefined;
   predefinedCondition: IStudentSubscriptionPredefinedConditionResponse | undefined
-  customCondition: IProgramSubscriptionDetails | undefined
+  progDetails: IProgramSubscriptionDetails | undefined
   constructor() { }
 
   ngOnInit(): void {
@@ -22,12 +23,20 @@ export class StudentProgramSubViewComponent implements OnInit {
     this.predefinedConditionOverlay = true;
   }
   ShowCustomConditionOverlay(event: IProgramSubscriptionDetails) {
-    this.customCondition = event
+    this.progDetails = event
     this.customConditionOverlay = true;
 
   }
+  sendRequestId(event: string) {
+    this.requestId = event
+  }
   closeOverlay() {
     this.predefinedConditionOverlay = false;
+  }
 
+  openJoiningExamOverlay(event: IProgramSubscriptionDetails) {
+    this.predefinedConditionOverlay = false;
+    this.customConditionOverlay = false;
+    this.joiningExamOverlay = true;
   }
 }
