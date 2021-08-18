@@ -35,14 +35,4 @@ export class TeacherDropOutRequestComponent implements OnInit {
     this.createDropOut = event
 
   }
-  
-  // closeRejectedRequest() {
-  //   this.dropOutRequestGridComponent?.getTeacherDropOutRequests();
-  // }
-
-  closeOverlay() {
-    this.openTeacherDropOutRequestCreateOverlay = false;
-    this.dropOutRequestGridComponent?.getTeacherDropOutRequests();
-  }
-
 }

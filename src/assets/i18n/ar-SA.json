@@ -71,7 +71,12 @@
     "DEGREE_MAX_LENGTH": "الدرجة يجب ان تكون أقل من أو تساوى 100",
     "REJECT_RESON":"سبب الإنسحاب",
     "PROGRAM":"البرنامج",
-    "DROP_OUT_REQUEST":"طلب الانسحاب"
+    "DROP_OUT_REQUEST":"طلب الانسحاب",
+    "APPLICANT_NAME":"أسم صاحب الطلب",
+    "REQUEST_NUMBER":"رقم الطلب",
+    "FROM": "من",
+    "TO": "إلى",
+    "ADVANCED_SEARCH": " بحث متقدم "
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
@@ -768,7 +773,6 @@
     "FROM_PROGRAM": "من برنامج",
     "REASON_REJECT": "سبب الرفض"
   },
-
   "TEACHER_DROP_OUT": {
     "SUBSCRIBERS": "الطلبات",
     "JOIN_REQUESTS": "طلبات الانضمام",
@@ -858,5 +862,11 @@
   "PROGRAM_BATCH":{
     "FROM_VALIDATION" : "لا يجب أن يكون تاريخ بداية الإشتراك أقل من تاريخ اليوم",
     "TO_VALIDATION" : "لا يجب أن يكون تاريخ نهاية الإشتراك أقل من تاريخ بداية الإشتراك"
+  },
+  "PROGRAM_CATEGORY": {
+    "ADD_CATEGORY": "اضافه قسم",
+    "EDIT_CATEGORY": "تعديل قسم",
+    "AR_NAME_CATEGORY": " اسم القسم بالعربيه",
+    "EN_NAME_CATEGORY": "اسم القسم بالانجليزيه"
   }
 }

@@ -13,6 +13,7 @@ import {IStudentMyProgramsRequestModel} from '../../../../../core/interfaces/stu
 import {BaseResponseModel} from '../../../../../core/ng-model/base-response-model';
 import {IStudentPrograms} from '../../../../../core/interfaces/student-program-vacation-interfaces/istudent-programs';
 import {IStudentSubscriptionFilterRequestModel} from '../../../../../core/interfaces/student-program-subscription-interfaces/istudent-subscription-filter-request-model';
+import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-add-student-program-vacation-request',
@@ -23,24 +24,23 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
   resultMessage: BaseMessageModel = {};
   calenderType: BaseSelectedDateModel = new BaseSelectedDateModel();
   selectedDateType: any;
-  maxGregDate = this.dateFormatterService.GetTodayGregorian()
   typeDateBinding: any
   datafromBinding: any
   dataToBinding: any
   hijri: boolean = false;
   milady: boolean = false;
   addStudentVacationRequestModel: IAddNewStudentVacationRequest ={};
-  resMessage: BaseMessageModel = {};
   selectedIndex=-1;
   currentUser: IUser | undefined;
   programFilter: IStudentMyProgramsRequestModel = { take :2147483647 };
   programs: IStudentPrograms[] | undefined;
   @Output() closeAddVacationRequest = new EventEmitter<IAddNewStudentVacationRequest>();
+  maxGregDate: NgbDateStruct | undefined;
 
   constructor(
               private dateFormatterService: DateFormatterService,
               public translate: TranslateService,
-              public studentProgramVacationService: StudentProgramVacationServicesService,
+               public studentProgramVacationService: StudentProgramVacationServicesService,
               private alertfyService: AlertifyService,
               private studentProgramSubscriptionService: StudentProgramSubscriptionServicesService
   ) {
@@ -50,6 +50,7 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     this.addStudentVacationRequestModel.userId = this.currentUser.id;
     this.programFilter.usrId = this.currentUser.id;
+    this.maxGregDate = this.dateFormatterService.GetTodayGregorian()
     this.getAllProgram()
   }
 
@@ -89,7 +90,7 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
           this.alertfyService.success(res.message || '');
         }
         else{
-          this.resMessage = {
+          this.resultMessage = {
             message : res.message,
             type: BaseConstantModel.DANGER_TYPE
           }
@@ -110,7 +111,7 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
         // console.log("programs", this.programs);
         this.selectedIndex = -1;
       }, error => {
-        this.resMessage = {
+        this.resultMessage = {
           message: error,
           type: BaseConstantModel.DANGER_TYPE
         }

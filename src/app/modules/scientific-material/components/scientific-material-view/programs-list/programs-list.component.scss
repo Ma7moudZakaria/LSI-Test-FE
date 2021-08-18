@@ -4,14 +4,14 @@
     border-radius: 19px;
     opacity: 1;
     padding: 2rem;
-    height : 96%;
+    height : 85vh;
     margin-top: 1rem;
-  
+
     .internal_scroll_list_group:lang(ar) {
                 height: 57vh;
                 overflow-y: auto;
                 padding-left: 0.5rem;
-               
+
             }
             .internal_scroll_list_group:lang(en) {
                         height: 57vh;
@@ -22,10 +22,10 @@
 
 .list-group_program-list:lang(en){
     margin-left: 1rem;
-   
+
   }
   .list-group_program-list:lang(ar){
-   
+
     margin-right: 0rem;
   }
 
@@ -50,8 +50,8 @@
     font-family: Almarai-Bold;
     font-size: 1rem;
     justify-content: space-between;
-        &.active ,&:hover {    
-        background: #CB9118 0% 0% no-repeat padding-box;       
+        &.active ,&:hover {
+        background: #CB9118 0% 0% no-repeat padding-box;
         color: #FFFFFF;
         opacity: 1;
         text-decoration: none;
@@ -60,7 +60,7 @@
         }
     }
 
-            
+
         .fa-trash-alt ,.fa-copy{
             color:#8E2520
         }
@@ -70,5 +70,5 @@
         {
             color: #FFFFFF;
         }
-       
-} 
+
+}

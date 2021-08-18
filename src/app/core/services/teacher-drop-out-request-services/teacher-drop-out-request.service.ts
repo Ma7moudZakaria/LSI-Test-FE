@@ -8,31 +8,31 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
   providedIn: 'root'
 })
 export class TeacherDropOutRequestService {
-  TeacherDropOutRequestAdvFilterAdminViewUrl = environment.baseUrl + 'TeacherDropOutRequest/teacher-drop-out-request-adv-filter-admin-view/';
-  TeacherDropOutRequestAdvFilterTeacherViewUrl = environment.baseUrl + 'TeacherDropOutRequest/teacher-drop-out-request-adv-filter-teacher-view/';
-  CreateTeacherDropOutRequestUrl = environment.baseUrl + 'TeacherDropOutRequest/create-teacher-drop-out-request/';
-  TeacherDropOutRequestsAcceptanceUrl = environment.baseUrl + 'TeacherDropOutRequest/accept-teacher-drop-out-request/';
-  TeacherDropOutRequestsRejectionUrl = environment.baseUrl + 'TeacherDropOutRequest/reject-teacher-drop-out-request/';
+  teacherDropOutRequestAdvFilterAdminViewUrl = environment.baseUrl + 'TeacherDropOutRequest/teacher-drop-out-request-adv-filter-admin-view/';
+  teacherDropOutRequestAdvFilterTeacherViewUrl = environment.baseUrl + 'TeacherDropOutRequest/teacher-drop-out-request-adv-filter-teacher-view/';
+  createTeacherDropOutRequestUrl = environment.baseUrl + 'TeacherDropOutRequest/create-teacher-drop-out-request/';
+  teacherDropOutRequestsAcceptanceUrl = environment.baseUrl + 'TeacherDropOutRequest/accept-teacher-drop-out-request/';
+  teacherDropOutRequestsRejectionUrl = environment.baseUrl + 'TeacherDropOutRequest/reject-teacher-drop-out-request/';
 
   constructor(private http: HttpClient) { }
 
   createTeacherDropOutRequest(model: any): Observable<BaseResponseModel> {
-    return this.http.post<BaseResponseModel>(this.CreateTeacherDropOutRequestUrl, model);
+    return this.http.post<BaseResponseModel>(this.createTeacherDropOutRequestUrl, model);
   }
 
   teacherDropOutRequestAdvFilterAdminView(model: any): Observable<BaseResponseModel> {
-    return this.http.post<BaseResponseModel>(this.TeacherDropOutRequestAdvFilterAdminViewUrl, model);
+    return this.http.post<BaseResponseModel>(this.teacherDropOutRequestAdvFilterAdminViewUrl, model);
   }
 
   teacherDropOutRequestAdvFilterTeacherView(model: any): Observable<BaseResponseModel> {
-    return this.http.post<BaseResponseModel>(this.TeacherDropOutRequestAdvFilterTeacherViewUrl, model);
+    return this.http.post<BaseResponseModel>(this.teacherDropOutRequestAdvFilterTeacherViewUrl, model);
   }
 
   teacherDropOutRequestsAcceptance(model: any): Observable<BaseResponseModel> {
-    return this.http.put<BaseResponseModel>(this.TeacherDropOutRequestsAcceptanceUrl, model);
+    return this.http.put<BaseResponseModel>(this.teacherDropOutRequestsAcceptanceUrl, model);
   }
 
   teacherDropOutRequestsRejection(model: any): Observable<BaseResponseModel> {
-    return this.http.put<BaseResponseModel>(this.TeacherDropOutRequestsRejectionUrl, model);
+    return this.http.put<BaseResponseModel>(this.teacherDropOutRequestsRejectionUrl, model);
   }
 }

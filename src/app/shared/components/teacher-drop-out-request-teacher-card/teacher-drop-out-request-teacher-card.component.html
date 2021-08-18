@@ -14,7 +14,7 @@
   <div class="card_body program">
     <div class="d-flex align-items-center program__header justify-content-between " >
 
-      <p class="program__num  mb-2">{{ teacherDropOutRequestModel?.huffazNumber}}</p>
+      <p class="program__num  mb-2">{{ teacherDropOutRequestModel?.no}}</p>
       <div class="d-flex align-items-center justify-content-between " >
       <p class="program__num mb-2  mr-3 ml-3">{{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.enTechStatusName : teacherDropOutRequestModel?.arTechStatusName}}</p>
         <span class="status mb-2" [ngClass]="{ 'accept' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Accept ,

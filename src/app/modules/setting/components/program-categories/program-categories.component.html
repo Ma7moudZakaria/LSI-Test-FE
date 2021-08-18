@@ -15,10 +15,10 @@
     </div>
 
 <div class="overlay" *ngIf="showAddForm">
-  
-
-     <app-add-program-categories  (closeOverlay)="closeForm()" 
-     [modelEdit]="modelEdit" ></app-add-program-categories>
+     <app-add-program-categories 
+      (closeOverlay)="closeForm()" 
+      [editModel]="editModel" >
+    </app-add-program-categories>
 </div>
 
 </div>

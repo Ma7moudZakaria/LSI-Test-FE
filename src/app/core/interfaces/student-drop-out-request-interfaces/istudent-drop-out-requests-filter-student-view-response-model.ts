@@ -14,5 +14,5 @@ export interface IStudentDropOutRequestsFilterStudentViewResponseModel {
     arStudentStatusName?:string;  
     enStudentStatusName?:string;  
     drpStat?: number;
-    huffazNumber?:number;
+    no?:number;
 }

@@ -46,9 +46,4 @@ export class TeacherAdminDropOutRequestComponent implements OnInit {
     this.teacherDropOutTabRequestComponent?.getTeacherDropOutRequests();
   }
 
-  closeOverlay() {
-    this.openTeacherDropOutRequestRejectOverlay = false;
-    this.openTeacherDropOutRequestAdvancedSearch = false;
-  }
-
 }
