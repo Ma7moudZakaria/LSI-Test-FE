@@ -845,7 +845,10 @@
     "SEND": "خفظ",
     "CANCEL": "الغاء",
     "TEACHERS": "المعلمين",
-    "STUDENTS": "الطلاب"
+    "STUDENTS": "الطلاب",
+    "NO_TEACHERS": "لا يوجد مدرسين مشتركين",
+    "NO_STUDENTS": "لا يوجد طلاب مشتركين",
+    "NO_PROGRAMS": "لا يوجد برامج"
   },
   "TEACHER_STUDENT_FOR_DETAILS": {
     "PROG_IDEA": "فكرة البرنامج",

@@ -847,7 +847,11 @@
     "SEND": "Save",
     "CANCEL": "Close",
     "TEACHERS": "Teachers",
-    "STUDENTS": "Students"
+    "STUDENTS": "Students",
+    "NO_TEACHERS": "No Teachers Subscribed",
+    "NO_STUDENTS": "No Students Subscribed",
+    "NO_PROGRAMS": "No Programs"
+
   },
   "TEACHER_STUDENT_FOR_DETAILS": {
     "PROG_IDEA": "Program Idea",

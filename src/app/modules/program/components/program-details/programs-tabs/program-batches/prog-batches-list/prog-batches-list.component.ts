@@ -23,7 +23,7 @@ export class ProgBatchesListComponent implements OnInit {
 
   @Input() programDetails: IProgramDetails | undefined;
   resMessage: BaseMessageModel = {};
-  selectedIndex?: Number;
+  selectedIndex = 0;
   PATCH_ID?: string;
 
   constructor(public translate: TranslateService,
