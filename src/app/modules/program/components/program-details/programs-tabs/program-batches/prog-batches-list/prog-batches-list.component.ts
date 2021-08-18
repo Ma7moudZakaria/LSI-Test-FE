@@ -8,7 +8,7 @@ import { IProgramBatchesDetails, IProgramDetails } from 'src/app/core/interfaces
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
-import {ProgramBatchesService} from 'src/app/core/services/program-batches-service/program-batches.service'
+import { ProgramBatchesService } from 'src/app/core/services/program-batches-service/program-batches.service'
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 
 @Component({
@@ -18,76 +18,77 @@ import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/compon
 })
 export class ProgBatchesListComponent implements OnInit {
 
-  @Output() showAddBatchOverlayEvent = new EventEmitter<boolean>();
-  @Output() showEditBatchOverlayEvent = new EventEmitter<boolean>();
-  @Output() programBatchDetails = new EventEmitter<IProgramBatchesDetails>();
-  @Output() isEdit = new EventEmitter<boolean>();
+  @Output() showAddBatchOverlayEvent = new EventEmitter<IProgramBatchesDetails>();
+  // @Output() showEditBatchOverlayEvent = new EventEmitter<boolean>();
+  // @Output() programBatchDetails = new EventEmitter<IProgramBatchesDetails>();
+  // @Output() isEdit = new EventEmitter<boolean>();
   @Output() patchId = new EventEmitter<string>();
 
-  
 
-  @Input() programDetails : IProgramDetails | undefined ;
+
+  @Input() programDetails: IProgramDetails | undefined;
   resMessage: BaseMessageModel = {};
   selectedIndex?: Number;
-  PATCH_ID? :string;
+  PATCH_ID?: string;
 
   constructor(public translate: TranslateService,
     private programBatchesService: ProgramBatchesService,
     public dialog: MatDialog,
-    private alertifyService : AlertifyService) { }
+    private alertifyService: AlertifyService) { }
 
   ngOnInit(): void {
     this.updateProgBatchesListAfterAdd();
-    
+
   }
-  openDetails(id?:string){
+  openDetails(id?: string) {
     this.patchId.emit(id);
   }
-  getFirstPatchID(){
+  getFirstPatchID() {
     this.patchId.emit(this.PATCH_ID);
 
   }
-  showAddBatchOverlay(){
-    this.showAddBatchOverlayEvent.emit(true);
-    this.isEdit.emit(false);
+  showAddBatchOverlay() {
+    this.showAddBatchOverlayEvent.emit();
+    // this.isEdit.emit(false);
   }
 
-  showEditBatchOverlay(event:IProgramBatchesDetails){
-    this.showEditBatchOverlayEvent.emit(true);
-    this.programBatchDetails.emit(event);
-    this.isEdit.emit(true);
+  showEditBatchOverlay(event: IProgramBatchesDetails) {
+    this.showAddBatchOverlayEvent.emit(event);
+    // this.showEditBatchOverlayEvent.emit(true);
+    // this.programBatchDetails.emit(event);
+    // this.isEdit.emit(true);
     // this.programBatchDetails = event;
   }
 
-  updateProgBatchesListAfterAdd(){
+  updateProgBatchesListAfterAdd() {
     this.programDetails && this.programDetails.progBaseInfo && this.programDetails.progBaseInfo.id ?
-    this.programBatchesService.getProgBatchesByProgId(this.programDetails?.progBaseInfo?.id).subscribe(res=>{
-      if (res.isSuccess && this.programDetails){
-        this.programDetails.progBats = res.data;
-        if (this.programDetails.progBats){
-          this.PATCH_ID= this.programDetails.progBats[0].id;
-          this.getFirstPatchID();
-        }
-       
-      }
-      else{
-        this.alertifyService.error(res.message || '');
-      }
-    },error => {
+      this.programBatchesService.getProgBatchesByProgId(this.programDetails?.progBaseInfo?.id).subscribe(res => {
+        if (res.isSuccess && this.programDetails) {
+          this.programDetails.progBats = res.data;
+          if (this.programDetails.progBats) {
+            this.PATCH_ID = this.programDetails.progBats[0].id;
+            this.getFirstPatchID();
+          }
 
-    }):'';
+        }
+        else {
+          this.alertifyService.error(res.message || '');
+        }
+      }, error => {
+
+      }) : '';
   }
 
 
-  deleteProgBatch(id?:string){
-    this.programBatchesService.deleteProgBatch(id || '').subscribe(res=>{
-      if (res.isSuccess && this.programDetails){
+  deleteProgBatch(id?: string) {
+    this.programBatchesService.deleteProgBatch(id || '').subscribe(res => {
+      if (res.isSuccess && this.programDetails) {
         this.updateProgBatchesListAfterAdd();
       }
-      else{
+      else {
         this.alertifyService.error(res.message || '');
       }
-    },error => {
+    }, error => {
 
     });
   }
@@ -103,7 +104,7 @@ export class ProgBatchesListComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(dialogResult => {
       if (dialogResult == true) {
-        this.programBatchesService.deleteProgBatch(id || '').subscribe(res=>{
+        this.programBatchesService.deleteProgBatch(id || '').subscribe(res => {
           if (res.isSuccess && this.programDetails) {
             this.updateProgBatchesListAfterAdd();
           }

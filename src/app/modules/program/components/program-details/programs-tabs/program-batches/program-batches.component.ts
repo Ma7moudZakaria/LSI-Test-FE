@@ -11,47 +11,53 @@ import { ProgBatchesListComponent } from './prog-batches-list/prog-batches-list.
 })
 export class ProgramBatchesComponent implements OnInit {
 
-  @ViewChild (ProgBatchesListComponent) progBatchListChild : ProgBatchesListComponent | undefined;  
-  @ViewChild(ProgBatchesDetailsComponent) progDeta : ProgBatchesDetailsComponent | undefined;
-  @Input() programDetails : IProgramDetails | undefined ;
-  patchId : string | undefined;
-  
-  programBatchDetails : IProgramBatchesDetails | undefined ;
-  isEdit : boolean | undefined ;
+  @ViewChild(ProgBatchesListComponent) progBatchListChild: ProgBatchesListComponent | undefined;
+  @ViewChild(ProgBatchesDetailsComponent) progDeta: ProgBatchesDetailsComponent | undefined;
+  @Input() programDetails: IProgramDetails | undefined;
+  patchId: string | undefined;
 
-  showHideAddBatchOverlay:boolean = false;
-  showHideEditBatchOverlay:boolean = false;  
- 
+  programBatchDetails: IProgramBatchesDetails | undefined;
+  isEdit: boolean | undefined;
+
+  showHideAddBatchOverlay: boolean = false;
+  showHideEditBatchOverlay: boolean = false;
+
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  showHideAddBatchOverlayHandler(event : boolean){
-    this.showHideAddBatchOverlay = event;
+  showAddBatchOverlayHandler(event: IProgramBatchesDetails) {
+    this.showHideAddBatchOverlay = true;
+    this.programBatchDetails = event;
+    // this.progBatchListChild?.updateProgBatchesListAfterAdd();
+  }
+  hideAddBatchOverlayHandler() {
+    this.showHideAddBatchOverlay = false;
     this.progBatchListChild?.updateProgBatchesListAfterAdd();
   }
-  sendPatchID(event : string){
-    console.log('event', event);
-    this.patchId= event
-    if (this.progDeta){
+
+  sendPatchID(event: string) {
+    // console.log('event', event);
+    this.patchId = event
+    if (this.progDeta) {
       this.progDeta.patchId = event;
       this.progDeta.getProgBatchesByProgId();
-    }   
+    }
 
   }
-  showHideEditBatchOverlayHandler(event : boolean){
-    this.showHideEditBatchOverlay = event;
-    this.progBatchListChild?.updateProgBatchesListAfterAdd();
-  }
+  // showHideEditBatchOverlayHandler(event : boolean){
+  //   this.showHideEditBatchOverlay = event;
+  //   this.progBatchListChild?.updateProgBatchesListAfterAdd();
+  // }
 
-  showEditBatchOverlayHandler(event : boolean){
+  showEditBatchOverlayHandler(event: boolean) {
     this.isEdit = event;
     this.progBatchListChild?.updateProgBatchesListAfterAdd();
   }
 
-  programBatchDetailsHandler(event : IProgramBatchesDetails){    
+  programBatchDetailsHandler(event: IProgramBatchesDetails) {
     this.progBatchListChild?.updateProgBatchesListAfterAdd();
     this.programBatchDetails = event;
   }
