@@ -1,17 +1,21 @@
 <div class="container-fluid teacher">
   <div class="row stu-program-subscriptions">
-    <div class="col-12 d-flex justify-content-between align-items-center mt-3 mb-3">
+    <div class="col-12 d-flex justify-content-between align-items-center mt-3">
       <p class="mb-0 head"> برامجنا</p>
-      <img src="../../../../../assets/images/student-program/program-sub/certification.png" >
+      <app-search-input
+      (searchTerm)=filterByText($event)
+      [searchKey]='this.filterRequest.progName || ""'
+     ></app-search-input>
+      <!-- <img src="../../../../../assets/images/student-program/program-sub/certification.png" > -->
     </div>
 
-    <div class="col-12 d-flex justify-content-between align-items-center">
+    <!-- <div class="col-12 d-flex justify-content-between align-items-center">
       <app-search-input
       (searchTerm)=filterByText($event)
       [searchKey]='this.filterRequest.progName || ""'
       class="w-90"></app-search-input>
 
-  </div>
+  </div> -->
 </div>
 
 <div class="row fix_margin w-100 " >

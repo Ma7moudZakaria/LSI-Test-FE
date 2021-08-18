@@ -3,6 +3,7 @@ import { StudentDropOutRequestStatusEnum } from 'src/app/core/enums/drop-out-req
 import { IStudentDropOutRequestsFilterAdminViewRequestModel } from 'src/app/core/interfaces/student-drop-out-request-interfaces/istudent-drop-out-requests-filter-admin-view-request-model';
 import { IStudentDropOutRequestsFilterResponseModel } from 'src/app/core/interfaces/student-drop-out-request-interfaces/istudent-drop-out-requests-filter-response-model';
 import { StudentDropOutTabRequestComponent } from './student-drop-out-tab-request/student-drop-out-tab-request.component';
+import {ICrateStudentDropOutRequestModel} from '../../../../../../core/interfaces/student-drop-out-request-interfaces/icreate-student-drop-out-request-model';
 
 @Component({
   selector: 'app-student-admin-drop-out-request',
@@ -40,9 +41,9 @@ export class StudentAdminDropOutRequestComponent implements OnInit {
     this.filter = event
 
   }
-  
+
   closeRejectedRequest() {
-    this.openStudentDropOutRequestAdvancedSearch = !this.openStudentDropOutRequestRejectOverlay;
+    this.openStudentDropOutRequestRejectOverlay = false;
     this.studentDropOutTabRequestComponent?.getStudentDropOutRequests();
   }
 

@@ -1,0 +1,15 @@
+@import '../../../../add-program/program-days/program-day-tasks/program-day-tasks.component.scss';
+@import "../../../../../../../../assets/scss/buttons";
+@import "../../../../../../../../assets/scss/variables";
+.list-group-item{
+  padding: .75rem 1.25rem;
+  span ,i{
+    color: $user-color;
+  }
+  &:hover{
+    span ,i{
+      color: #fff;
+    }
+  }
+
+}

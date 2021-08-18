@@ -1,13 +1,42 @@
+<div class="container-fluid ">
+  <div class="row  fix_margin ">
+    <div class="col-12">
+      <div class="teacher list-group_program-list ">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <h3 class="bold teacher__title">{{"PROGRAM_BATCHES.TEACHERS" | translate}}</h3>
+            </div>
+            <div class="col-6" *ngFor="let i of batchModel?.studentBatchs">
+                <a class="list-group-item d-flex">
+<!--                  [class.active]="selectedIndex === -1"-->
+<!--                  (click)="loadProgramMaterial();selectedIndex=-1"-->
+                  <span>  {{i.studentNameAr}}</span>
+                </a>
+            </div>
+          </div>
+        </div>
 
-<div class="row group_header fix_margin w-100">
-    <div class="item_group"
-    [ngClass]="{ item_group_active: showTap == 'teacher' }" >
-       {{'PROGRAM_BATCHES.TEACHERS' | translate}}
-    
+      </div>
     </div>
-    <div class="item_group"
-    [ngClass]="{ item_group_active: showTap == 'student' }" >
-    {{'PROGRAM_BATCHES.STUDENTS' | translate}}
-       
-    </div> 
+    <div class="col-12">
+      <div class="teacher list-group_program-list ">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <h3 class="bold teacher__title">{{"PROGRAM_BATCHES.STUDENTS" | translate}}</h3>
+            </div>
+            <div class="col-6" *ngFor="let i of batchModel?.studentBatchs">
+              <a class="list-group-item d-flex">
+                <!--                  [class.active]="selectedIndex === -1"-->
+                <!--                  (click)="loadProgramMaterial();selectedIndex=-1"-->
+                <span>  {{i.studentNameAr}}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </div>

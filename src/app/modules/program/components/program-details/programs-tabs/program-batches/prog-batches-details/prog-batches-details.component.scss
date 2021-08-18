@@ -1,5 +1,5 @@
-@import 'src/assets/scss/_variables.scss';
-
+@import '../../../../../../../../../src/assets/scss/_variables.scss';
+@import '../../../../add-program/program-days/program-day-tasks/program-day-tasks.component.scss';
 .group_header{
     margin-top: 1.5%;
     border-bottom:1px solid #CB9118;
@@ -34,3 +34,30 @@
         height: 80vh;
         border-radius: 0 0 0.5rem
     }
+
+.list-group-item{
+  padding: .75rem 1.25rem;
+  margin-bottom: 0!important;
+  span ,i{
+    color: $user-color;
+  }
+  &:hover{
+    span ,i{
+      color: #fff;
+    }
+  }
+
+}
+.list-group_program-list{
+  height: 37vh;
+  overflow-y: auto;
+  box-shadow: 0px 3px 15px #0000001A;
+}
+.teacher__title{
+  text-align: right;
+  font-weight: 600;
+  color: $user-color;
+  &:lang(en){
+    text-align: left;
+  }
+}
