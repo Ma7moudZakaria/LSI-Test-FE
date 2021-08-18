@@ -19,12 +19,7 @@ import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/compon
 export class ProgBatchesListComponent implements OnInit {
 
   @Output() showAddBatchOverlayEvent = new EventEmitter<IProgramBatchesDetails>();
-  // @Output() showEditBatchOverlayEvent = new EventEmitter<boolean>();
-  // @Output() programBatchDetails = new EventEmitter<IProgramBatchesDetails>();
-  // @Output() isEdit = new EventEmitter<boolean>();
   @Output() patchId = new EventEmitter<string>();
-
-
 
   @Input() programDetails: IProgramDetails | undefined;
   resMessage: BaseMessageModel = {};
@@ -49,15 +44,10 @@ export class ProgBatchesListComponent implements OnInit {
   }
   showAddBatchOverlay() {
     this.showAddBatchOverlayEvent.emit();
-    // this.isEdit.emit(false);
   }
 
   showEditBatchOverlay(event: IProgramBatchesDetails) {
     this.showAddBatchOverlayEvent.emit(event);
-    // this.showEditBatchOverlayEvent.emit(true);
-    // this.programBatchDetails.emit(event);
-    // this.isEdit.emit(true);
-    // this.programBatchDetails = event;
   }
 
   updateProgBatchesListAfterAdd() {
@@ -69,7 +59,6 @@ export class ProgBatchesListComponent implements OnInit {
             this.PATCH_ID = this.programDetails.progBats[0].id;
             this.getFirstPatchID();
           }
-
         }
         else {
           this.alertifyService.error(res.message || '');
@@ -78,7 +67,6 @@ export class ProgBatchesListComponent implements OnInit {
 
       }) : '';
   }
-
 
   deleteProgBatch(id?: string) {
     this.programBatchesService.deleteProgBatch(id || '').subscribe(res => {

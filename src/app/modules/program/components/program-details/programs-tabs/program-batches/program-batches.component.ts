@@ -31,7 +31,6 @@ export class ProgramBatchesComponent implements OnInit {
   showAddBatchOverlayHandler(event: IProgramBatchesDetails) {
     this.showHideAddBatchOverlay = true;
     this.programBatchDetails = event;
-    // this.progBatchListChild?.updateProgBatchesListAfterAdd();
   }
   hideAddBatchOverlayHandler() {
     this.showHideAddBatchOverlay = false;
@@ -39,7 +38,6 @@ export class ProgramBatchesComponent implements OnInit {
   }
 
   sendPatchID(event: string) {
-    // console.log('event', event);
     this.patchId = event
     if (this.progDeta) {
       this.progDeta.patchId = event;
@@ -47,11 +45,6 @@ export class ProgramBatchesComponent implements OnInit {
     }
 
   }
-  // showHideEditBatchOverlayHandler(event : boolean){
-  //   this.showHideEditBatchOverlay = event;
-  //   this.progBatchListChild?.updateProgBatchesListAfterAdd();
-  // }
-
   showEditBatchOverlayHandler(event: boolean) {
     this.isEdit = event;
     this.progBatchListChild?.updateProgBatchesListAfterAdd();

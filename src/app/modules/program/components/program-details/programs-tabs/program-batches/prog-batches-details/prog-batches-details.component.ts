@@ -30,7 +30,6 @@ export class ProgBatchesDetailsComponent implements OnInit {
     this.programBatchesService.getTeachersAandStudentsByBatchId(this.batchFillter).subscribe(res => {
       if (res.isSuccess) {
         this.batchModel = res.data;
-        console.log('this.batchModel', this.batchModel);
       }
       else {
       }

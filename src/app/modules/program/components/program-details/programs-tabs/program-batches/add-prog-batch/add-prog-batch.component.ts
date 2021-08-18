@@ -5,7 +5,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 import { DateFormatterService } from 'ngx-hijri-gregorian-datepicker';
-import { Console } from 'node:console';
 import { error } from 'protractor';
 import { ICreateProgBatch } from 'src/app/core/interfaces/program-batches-interfaces/icreate-prog-batch';
 import { IUpdateProgBatch } from 'src/app/core/interfaces/program-batches-interfaces/iupdate-prog-batch';
@@ -24,12 +23,9 @@ import { ProgramBatchesService } from 'src/app/core/services/program-batches-ser
 export class AddProgBatchComponent implements OnInit {
 
   @Output() hideAddBatchOverlayEvent = new EventEmitter<boolean>();
-  // @Output() hideEditBatchOverlayEvent = new EventEmitter<boolean>();
 
-  // @Input() isEdit : boolean | undefined ;
   @Input() programDetails: IProgramDetails | undefined;
   @Input() programBatchDetails: IProgramBatchesDetails | undefined;
-
 
   currentForm: FormGroup = new FormGroup({});
   isSubmit = false;
@@ -99,7 +95,6 @@ export class AddProgBatchComponent implements OnInit {
         return;
       }
 
-
       this.createProgBatchModel ?
         this.programBatchesService.addProgBatch(this.createProgBatchModel).subscribe(res => {
           if (res.isSuccess) {
@@ -151,7 +146,6 @@ export class AddProgBatchComponent implements OnInit {
         return;
       }
 
-
       this.updateProgBatchModel ?
         this.programBatchesService.updateProgBatch(this.updateProgBatchModel).subscribe(res => {
           if (res.isSuccess) {
@@ -200,7 +194,6 @@ export class AddProgBatchComponent implements OnInit {
 
   close() {
     this.hideAddBatchOverlayEvent.emit(false);
-    // this.hideEditBatchOverlayEvent.emit(false);
   }
 
   setMilady() {
