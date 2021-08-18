@@ -3,10 +3,15 @@
  class="card_program d-flex justify-content-between align-items-center mb-3">
     <img class="prog-photo" src="../.././../../../assets/images/student-program/program-sub/qor2an.png">
     <div class="card_info">
-      <p class="prog-name">{{teachersubscriptionmodel.prgName}}</p>
-      <p class="batch-name">
-        <!-- {{translate.currentLang === langEnum.en ? teachersubscriptionmodel.enBatName:teachersubscriptionmodel.arBatName}} -->
+      <!-- <p class="prog-name">{{teachersubscriptionmodel.prgName}}
+        
+      </p> -->
+      <p class="prog-name">
+        {{translate.currentLang === langEnum.en ? teachersubscriptionmodel.enProgBatchName:teachersubscriptionmodel.arProgBatchName}}
       </p>
+      <!-- <p class="batch-name">
+        {{translate.currentLang === langEnum.en ? teachersubscriptionmodel.enBatName:teachersubscriptionmodel.arBatName}}
+      </p> -->
 
       <div class=" d-flex justify-content-around align-items-center  ">
         <div class="text-center">
@@ -38,9 +43,10 @@
 <div class="card_program d-flex justify-content-between align-items-center mb-3">
     <img class="prog-photo" src="../.././../../../assets/images/student-program/program-sub/qor2an.png">
     <div class="card_info">
-      <p class="prog-name">{{studentsubscriptionmodel.progName}}</p>
-      <p class="batch-name">
-        <!-- {{translate.currentLang === langEnum.en ? studentsubscriptionmodel.enBatName:studentsubscriptionmodel.arBatName}} -->
+      <!-- <p class="prog-name">{{studentsubscriptionmodel.progName}}</p> -->
+      <!-- <p class="batch-name"> -->
+        <p class="prog-name">
+        {{translate.currentLang === langEnum.en ? studentsubscriptionmodel.enProgBatchName:studentsubscriptionmodel.arProgBatchName}}
       </p>
 
       <div class=" d-flex justify-content-around align-items-center  ">

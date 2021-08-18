@@ -21,14 +21,15 @@ export class TeacherStudentProgramForSubscriptionComponent implements OnInit {
   @Input() studentsubscriptionmodel: IProgramsForStudentSubscriptionsModel = { totals: 0 }
   @Input() userMode: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.student;
   programSubscriptionUsers = ProgramSubscriptionUsersEnum;
+  langEnum = LanguageEnum;
 
 
   // @Input() studentSubscripModel: IStudentSubscriptionModel = { totalRows: 0 }
   errorMessage?: string;
-  langEnum = LanguageEnum;
 
   constructor(
-    private router: Router
+    private router: Router,
+    public translate: TranslateService
   ) { }
 
   ngOnInit(): void {

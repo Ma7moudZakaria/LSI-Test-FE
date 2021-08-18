@@ -4,13 +4,21 @@
     <div class="col-12">
     <app-student-program-sub-details 
     (ShowVerifyProgramPredefinedConditionOverlay)="ShowVerifyProgramPredefinedConditionOverlay($event)"
+    (ShowCustomConditionOverlay)="ShowCustomConditionOverlay($event)"
     ></app-student-program-sub-details>
 
   </div>
 </div>
 <div class="overlay" *ngIf="predefinedConditionOverlay">
-  <app-predefined-condition-overlay [predefinedCondition]='predefinedCondition' (closeOverlay)="closeOverlay()"></app-predefined-condition-overlay>
-  <!-- <app-add-scientifi-problem-reply (closeAddReplyToScProblem)='showAddReplyToScProblemView($event)' [scProbObjForAddReplyView]='scProbObjForAddReplyView'></app-add-scientifi-problem-reply> -->
+  <app-predefined-condition-overlay 
+  [predefinedCondition]='predefinedCondition'
+   (closeOverlay)="closeOverlay()">
+  </app-predefined-condition-overlay>
 </div>
+<div class="overlay"  *ngIf="customConditionOverlay">
+  <app-custom-condition-overlay 
+  [customCondition]='customCondition'>
 
+  </app-custom-condition-overlay>
+</div>
 </div>

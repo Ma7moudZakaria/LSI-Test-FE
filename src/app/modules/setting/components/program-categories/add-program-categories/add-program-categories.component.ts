@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { IAddEditProgramCategory } from 'src/app/core/interfaces/program-categories-interfaces/iadd-edit-program-category';
+import { IAddEditProgramCategory } from 'src/app/core/interfaces/program-categories-interfaces/iadd-program-category';
 import { IPrgoramCategrory } from 'src/app/core/interfaces/program-categories-interfaces/iprgoram-categrory';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';

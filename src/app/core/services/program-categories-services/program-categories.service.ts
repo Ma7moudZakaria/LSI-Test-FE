@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 import { environment } from '../../../../environments/environment';
-import { IAddEditProgramCategory } from '../../interfaces/program-categories-interfaces/iadd-edit-program-category';
+import { IAddEditProgramCategory } from '../../interfaces/program-categories-interfaces/iadd-program-category';
 import { IPrgoramCategrory } from '../../interfaces/program-categories-interfaces/iprgoram-categrory';
 
 @Injectable({
@@ -14,7 +14,7 @@ export class ProgramCategoriesService {
   getProgramCatiegoriesUrl = environment.baseUrl + 'ProgramCategories/get-program-category/';
   addProgramcategoryURL = environment.baseUrl + 'ProgramCategories/add-program-category';
   updateProgramCatiegoriesURL = environment.baseUrl + 'ProgramCategories/update-program-category';
-    getProgramsCategoryURL = environment.baseUrl + 'ProgramCategories/get-category-programs/';
+  getProgramsCategoryURL = environment.baseUrl + 'ProgramCategories/get-category-programs/';
 
   daleteProgramCatiegoriesURL = environment.baseUrl + 'ProgramCategories/delete-program-category/';
 
@@ -42,7 +42,7 @@ export class ProgramCategoriesService {
 
 
   getProgramsCategoryByProgramId(id?: string): Observable<BaseResponseModel> {
-    return this.http.get<BaseResponseModel>(this.getProgramsCategoryURL+ id);
+    return this.http.get<BaseResponseModel>(this.getProgramsCategoryURL + id);
   }
 }
 
