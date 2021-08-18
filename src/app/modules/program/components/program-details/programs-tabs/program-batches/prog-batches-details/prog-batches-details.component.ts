@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IProgramDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { ProgramBatchesService } from 'src/app/core/services/program-batches-service/program-batches.service';
-import {IbatchFillterModel} from '../../../../../../../core/interfaces/program-batches-interfaces/ibatch-fillter-model';
-import {IBatchModel} from '../../../../../../../core/interfaces/program-batches-interfaces/ibatch-model';
+import { IbatchFillterModel } from '../../../../../../../core/interfaces/program-batches-interfaces/ibatch-fillter-model';
+import { IBatchModel } from '../../../../../../../core/interfaces/program-batches-interfaces/ibatch-model';
 
 @Component({
   selector: 'app-prog-batches-details',
@@ -11,38 +11,31 @@ import {IBatchModel} from '../../../../../../../core/interfaces/program-batches-
 })
 export class ProgBatchesDetailsComponent implements OnInit {
 
-  @Input() programDetails : IProgramDetails | undefined ;
-  test = [0,1,2,3,4,5,6,7,8,9];
-  showTap: string = 'teacher';
-  @Input() patchId:string | undefined ;
+  @Input() patchId: string | undefined;
 
-  batchFillter : IbatchFillterModel | undefined;
-  batchModel : IBatchModel | undefined;
+  batchFillter: IbatchFillterModel | undefined;
+  batchModel: IBatchModel | undefined;
 
-  constructor(public programBatchesService:ProgramBatchesService) { }
+  constructor(public programBatchesService: ProgramBatchesService) { }
 
   ngOnInit(): void {
-    
   }
 
-  getProgBatchesByProgId(){
-    console.log("[patchId]='patchId'",this.patchId);
+  getProgBatchesByProgId() {
     this.batchFillter = {
-      id:this.patchId,
-      skip:0,
-      take :9
+      id: this.patchId,
+      skip: 0,
+      take: 9
     }
-    this.programBatchesService.getTeachersAandStudentsByBatchId(this.batchFillter).subscribe(res=>{
-      if (res.isSuccess && this.programDetails){
+    this.programBatchesService.getTeachersAandStudentsByBatchId(this.batchFillter).subscribe(res => {
+      if (res.isSuccess) {
         this.batchModel = res.data;
-        console.log('this.batchModel',this.batchModel);
+        console.log('this.batchModel', this.batchModel);
       }
-      else{
+      else {
       }
-    },error => {
+    }, error => {
 
     });
   }
-
-  
 }
