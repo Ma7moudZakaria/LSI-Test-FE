@@ -1,4 +1,4 @@
-<div class="container-fluid reuest_container" > 
+<div class="container-fluid reuest_container" *ngIf='!showUserDetailsView'>
     <div class="col-12  justify-content-end text-right d-flex align-items-center">
         <app-search-input (searchTerm)=searchByText($event) [searchKey]='this.teacherDropOutRequestFilterRequestModel.name || ""'></app-search-input>
         <a class="advanced_search mb-3" (click)="openAvancedSearch()">بحث متقدم</a>
@@ -36,6 +36,7 @@
                 [teacherDropOutRequestFilterRequestModel]='teacherDropOutRequestFilterRequestModel'
                 (rejectTeacherDropOutRequest)='rejectTeacherDropOutRequestEvent($event)'
                 (teacherDropOutRequestFilterEvent)='teacherDropOutRequestPendingChangePage($event)'
+                (userIdInput)= "sendUserIDEvent($event)"
                 >
             </app-teacher-drop-out-request-admin-grid>
 
@@ -47,6 +48,7 @@
                 [userMode]='userMode'
                 [teacherDropOutRequestFilterRequestModel]='teacherDropOutRequestFilterRequestModel'
                 (teacherDropOutRequestFilterEvent)='teacherDropOutRequestAcceptChangePage($event)'
+                 (userIdInput)= "sendUserIDEvent($event)"
                 ></app-teacher-drop-out-request-admin-grid>
 
                <app-teacher-drop-out-request-admin-grid *ngIf='showTap == statusEnum.Rejected && teacherDropOutRequestList.length > 0' 
@@ -57,6 +59,7 @@
                  [userMode]='userMode'
                  [teacherDropOutRequestFilterRequestModel]='teacherDropOutRequestFilterRequestModel'
                  (teacherDropOutRequestFilterEvent)='teacherDropOutRequestRejectChangePage($event)'
+                 (userIdInput)= "sendUserIDEvent($event)"
                  ></app-teacher-drop-out-request-admin-grid>
         </div>
     
@@ -64,4 +67,6 @@
     
     
     </div>
-    
+
+
+<app-user-details *ngIf="showUserDetailsView"  (hideUserDetails) ="hideUserDetailsView($event)" [resiveUserId]='sendUserID'></app-user-details>

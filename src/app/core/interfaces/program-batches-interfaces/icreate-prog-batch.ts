@@ -3,5 +3,5 @@ export interface ICreateProgBatch {
     arabBatName?:string;
     engBatName?:string;
     startDateBatSub?:string;
-    endDateBatSub?:String;
+    endDateBatSub?:string;
 }

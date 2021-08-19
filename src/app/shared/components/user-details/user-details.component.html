@@ -1,0 +1,280 @@
+<div class="tab_page user">
+  <div class=" pt-3">
+
+    <div class="info_basic_info">
+
+
+      <div class="d-flex justify-content-between" >
+        <div class="d-flex align-items-center justify-content-start">
+        <img src="../../../../assets/images/Profile.svg" class="user__image">
+          <div class="mr-3 ml-3">
+            <h3 class="user__name">سيف الدين ابراهيم</h3>
+            <ngb-rating [(rate)]="starsSelected" [max]="5" [readonly]="true">
+              <ng-template let-fill="fill" let-index="index">
+                <span class="star" [class.filled]="fill === 100">&#9733;</span>
+              </ng-template>
+            </ngb-rating>
+            <h4 class="user__date">4/4/1994</h4>
+            <div class="row mt-3">
+              <div class="col-12">
+                <label class="title">
+                  البرنامج
+                  <span>  &nbsp;  : </span>
+                  <span>  &nbsp; </span>
+                </label>
+                <label>  </label>
+                <label class="title_data">
+                  الصحيحين
+                </label>
+              </div>
+              <div class="col-12">
+                <label class="title">
+                  الأوقات
+                  <span>  &nbsp;  : </span>
+                  <span>  &nbsp; </span>
+                </label>
+                <label>  </label>
+                <label class="title_data">
+                  الخميس من 18:00 الى 21:00 ، الاحد من 09:00 الى 15:00
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div >
+          <h6 class="user__back" (click)="hideUserDetailsView()">الرجوع    <i class="fas fa-arrow-left " ></i></h6>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div class="col-md-12  user__height">
+    <div class="row pl-4 pr-4">
+      <div class="col-6 mb-3   ">
+        <label class="title">
+          البريد الالكتروني
+          <span>  &nbsp;  : </span>
+          <span>  &nbsp; </span>
+        </label>
+        <label>  </label>
+        <label class="title_data">
+          test
+        </label>
+      </div>
+
+      <div class="col-6 mb-3   ">
+        <label class="title">
+          رقم الجوال
+          <span>  &nbsp;  : </span>
+          <span>  &nbsp; </span>
+        </label>
+        <label class="title_data" >
+          test        </label>
+      </div>
+      <div class="col-6 mb-3  col-md-6">
+        <label class="title">
+
+          الجنسية
+          <span>  &nbsp;  : </span>
+          <span>  &nbsp; </span>
+
+        </label>
+
+        <label> test </label>
+      </div>
+      <div class="col-6 mb-3  col-md-6">
+        <label class="title">
+
+          الجنسية
+          <span>  &nbsp;  : </span>
+          <span>  &nbsp; </span>
+        </label>
+        <label> test </label>
+      </div>
+      <div class="col-6 mb-3  col-md-6">
+        <label class="title">
+
+          المدينة
+          <span>  &nbsp;  : </span>
+          <span>  &nbsp; </span>
+        </label>
+        <label> test </label>
+      </div>
+      <div class="col-6 mb-3  col-md-6">
+        <label class="title">
+
+          عنوان الإقامة الدائم
+          <span>  &nbsp;  : </span>
+          <span>  &nbsp; </span>
+
+        </label>
+        <label> test </label>
+      </div>
+
+
+    </div>
+
+    <div class="row pl-4 pr-4">
+      <div class="col-12">
+        <h3 class="head_conditions">التعليم الأكاديمي </h3>
+        <div class="col-md-12 ">
+          <div class="row">
+            <div class="col-4 mt-3">
+              <label class="title">
+
+                المستوي التعليمي
+                <span>  &nbsp;  : </span>
+                <span>  &nbsp; </span>
+
+              </label>
+              <label> test </label>
+            </div>
+            <div class="col-4 mt-3">
+              <label class="title">
+
+                المؤهل الدراسي
+                <span>  &nbsp;  : </span>
+                <span>  &nbsp; </span>
+
+              </label>
+              <label> test </label>
+            </div>
+            <div class="col-4 mt-3">
+              <label class="title">
+                التخصص
+                <span>  &nbsp;  : </span>
+                <span>  &nbsp; </span>
+
+              </label>
+              <label> test </label>
+            </div>
+            <div class="col-8 mt-3">
+              <div class="row">
+                <label class="title col-3">
+                  تعلم القرآن وحفظه
+                  <span>  &nbsp;  : </span>
+                  <span>  &nbsp; </span>
+
+                </label>
+                <div class="col-9">
+                  <div class="row">
+                  <div class="col-6">
+                    <div  class="badges">
+                      <span  class="badge badge-info p-2 ng-star-inserted">
+                        الجهة الحكومية - المدة عامان
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div  class="badges">
+                      <span  class="badge badge-info p-2 ng-star-inserted">
+                        الجهة الحكومية - المدة عامان
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div  class="badges">
+                      <span  class="badge badge-info p-2 ng-star-inserted">
+                        الجهة الحكومية - المدة عامان
+                      </span>
+                    </div>
+                  </div>
+              </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-8 mt-3">
+              <div class="row">
+                <label class="title col-3">
+                  إجازة التلاوة
+                  <span>  &nbsp;  : </span>
+                  <span>  &nbsp; </span>
+
+                </label>
+                <div class="col-9">
+                  <div class="row">
+                  <div class="col-6">
+                    <div  class="badges">
+                      <span  class="badge badge-info p-2 ng-star-inserted">
+                        الجهة الحكومية - المدة عامان
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div  class="badges">
+                      <span  class="badge badge-info p-2 ng-star-inserted">
+                        الجهة الحكومية - المدة عامان
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div  class="badges">
+                      <span  class="badge badge-info p-2 ng-star-inserted">
+                        الجهة الحكومية - المدة عامان
+                      </span>
+                    </div>
+                  </div>
+              </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-8 mt-3">
+              <div class="row">
+                <label class="title col-3">
+                  اللغات
+                  <span>  &nbsp;  : </span>
+                  <span>  &nbsp; </span>
+
+                </label>
+                <div class="col-9">
+                  <div class="row">
+                  <div class="col-6">
+                    <div  class="badges">
+                      <span  class="badge badge-info p-2 ng-star-inserted">
+                        الجهة الحكومية - المدة عامان
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div  class="badges">
+                      <span  class="badge badge-info p-2 ng-star-inserted">
+                        الجهة الحكومية - المدة عامان
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div  class="badges">
+                      <span  class="badge badge-info p-2 ng-star-inserted">
+                        الجهة الحكومية - المدة عامان
+                      </span>
+                    </div>
+                  </div>
+              </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-end" >
+            <div class="row align-items-center">
+              <div class="col-3">
+                <button class="save-btn">رفض</button>
+              </div>
+              <div class="col-3">
+                <button class="cancel-btn">قبول</button>
+              </div>
+              <div class="col-3">
+                <button class="cancel-btn">محادثة</button>
+              </div>
+              <div class="col-3">
+                <button class="cancel-btn">مقابلة</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

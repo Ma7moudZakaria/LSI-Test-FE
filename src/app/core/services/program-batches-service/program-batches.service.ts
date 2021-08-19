@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { ICreateProgBatch } from '../../interfaces/program-batches-interfaces/icreate-prog-batch';
 import { IUpdateProgBatch } from '../../interfaces/program-batches-interfaces/iupdate-prog-batch';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
+import {IbatchFillterModel} from '../../interfaces/program-batches-interfaces/ibatch-fillter-model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class ProgramBatchesService {
   updateProgBatchUrl = environment.baseUrl + 'ProgramBatches/update-program-batch/';
   deleteProgBatchUrl = environment.baseUrl + 'ProgramBatches/delete-program-batch/';
   getProgBatchesByProgIdUrl = environment.baseUrl + 'ProgramBatches/get-program-batches-by-prog-id/';
+  getTeachersAandStudentsByBatchIdUrl = environment.baseUrl + 'ProgramBatches/get-teachers-and-students-by-batch-id/';
 
   constructor(private http: HttpClient) { }
 
@@ -32,5 +34,9 @@ export class ProgramBatchesService {
 
   getProgBatchesByProgId(id: string): Observable<BaseResponseModel> {
     return this.http.get<BaseResponseModel>(this.getProgBatchesByProgIdUrl + id);
+  }
+
+  getTeachersAandStudentsByBatchId(model: IbatchFillterModel): Observable<BaseResponseModel> {
+    return this.http.post<BaseResponseModel>(this.getTeachersAandStudentsByBatchIdUrl, model);
   }
 }

@@ -35,15 +35,15 @@ export class TeacherStudentProgramForSubscriptionComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  gotoDetails(event?: string) {
+  gotoDetails(event?: string, batId?:string) {
 
-    this.router.navigateByUrl('teacher-for-subscription/teacher_pro_sub_deatils/' + event);
+    this.router.navigateByUrl('teacher-for-subscription/teacher_pro_sub_deatils/' + event + '/' + batId);
     this.teacher_subscription_id.emit(event)
 
   }
-  gotoDetailsStudent(event?: string) {
+  gotoDetailsStudent(event?: string, batId?:string) {
 
-    this.router.navigateByUrl('student-for-subscription/student_pro_sub_deatils/' + event);
+    this.router.navigateByUrl('student-for-subscription/student_pro_sub_deatils/' + event + '/' + batId);
 
 
   }

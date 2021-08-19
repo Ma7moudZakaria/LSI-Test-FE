@@ -1,26 +1,21 @@
  
-<div class="scientific-problem">
-<div class="col-lg-12 col-md-12 col-sm-12">
+<div class="request container-fluid">
     <div class="row">
-        <div class="col-3 text-left">
-            <h3  class="bold header_sc"> 
-                {{ 'ADMIN_MESSAGING.SCIENTIFIC_PROBLEM' | translate }}
-            </h3>    
-        </div>     
-        
-        <div class="col-3 add_question mt-2">
-            <a (click)="newScientificProblem()" > 
-                <span class="link_Add btn_fram ">  {{ 'QUESTION_BANK.SCIENTIFIC_PROBLEM' | translate }}
-                <img  src="../../../../../../assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
-            </span>
-            </a>
-        </div>   
+        <div class="col-2  justify-content-between text-right d-flex align-items-center">
+          <h3  class=" request__title">{{ 'ADMIN_MESSAGING.SCIENTIFIC_PROBLEM' | translate }}</h3>
+        </div>
 
-        <div class="offset-2 col-4">
-            <app-search-input (searchTerm)=searchScProb($event)></app-search-input>    
-        </div>   
-    </div>
-</div>
+        <div class="col-4 d-flex align-items-center justify-content-start">
+          <a class=" btn_fram mb-3" (click)="newScientificProblem()"> {{ 'QUESTION_BANK.SCIENTIFIC_PROBLEM' | translate}}  <i class="fas fa-plus mr-2 ml-2"></i></a>
+
+        </div>
+
+        <div class="col-6">
+          <app-search-input (searchTerm)=searchScProb($event)></app-search-input>
+        </div>
+      </div>
+
+
 <div *ngIf='!scientificProblemData || scientificProblemData.length === 0'>
     {{ 'GENERAL.NO_DATA' | translate}}
 </div>

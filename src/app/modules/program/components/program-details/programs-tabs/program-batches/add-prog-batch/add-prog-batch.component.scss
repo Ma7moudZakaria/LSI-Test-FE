@@ -59,3 +59,11 @@ display: block;
             font-size: 0.875rem;
             color:$placeholder_inputs;
         }
+
+        .dimmed{
+            color: gray;
+            cursor: not-allowed;
+            text-decoration: underline;
+            pointer-events: none;
+            opacity: 0.2;
+          }

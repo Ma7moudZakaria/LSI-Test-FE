@@ -15,6 +15,7 @@ export class TeacherDropOutRequestAdminCardComponent implements OnInit {
 
   @Output() rejectTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
   @Output() acceptTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
+  @Output() userIdEvent = new EventEmitter<string>();
 
   @Input() teacherDropOutRequestModel: ITeacherDropOutRequestModel = { totalRows : 0};
 
@@ -30,7 +31,7 @@ export class TeacherDropOutRequestAdminCardComponent implements OnInit {
   constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
-    console.log("teacherDropOutRequestModel =======>" , this.teacherDropOutRequestModel)
+    // console.log("teacherDropOutRequestModel =======>" , this.teacherDropOutRequestModel)
 
     if (this.teacherDropOutRequestModel?.requestDate) {
       let requestDateValue = new Date(this.teacherDropOutRequestModel.requestDate || '');
@@ -41,7 +42,13 @@ export class TeacherDropOutRequestAdminCardComponent implements OnInit {
     if (!this.teacherDropOutRequestModel?.avatarLink) {
       this.teacherDropOutRequestModel.avatarLink = '../../../../../assets/images/Profile.svg';
     }
-  } 
+  }
+
+
+  openDetails(id?: string) {
+    this.userIdEvent.emit(id);
+  }
+
 
   rejectTeacherDropOutRequestEvent(teacherDropOutRequestAdminViewModel:ITeacherDropOutRequestModel){
     this.rejectTeacherDropOutRequest.emit(teacherDropOutRequestAdminViewModel);

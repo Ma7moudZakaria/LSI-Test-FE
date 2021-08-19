@@ -43,8 +43,11 @@ label{
 }
 
     .list-group_program-list 
-    .internal_scroll_list_group:lang(ar)
+    .internal_scroll_list_group
      {
-        height: 434px;
+        height: 57vh;
     }
-    
+    .list-group_program-list{
+        height: 76vh;
+
+    }

@@ -845,7 +845,10 @@
     "SEND": "خفظ",
     "CANCEL": "الغاء",
     "TEACHERS": "المعلمين",
-    "STUDENTS": "الطلاب"
+    "STUDENTS": "الطلاب",
+    "NO_TEACHERS": "لا يوجد مدرسين مشتركين",
+    "NO_STUDENTS": "لا يوجد طلاب مشتركين",
+    "NO_PROGRAMS": "لا يوجد برامج"
   },
   "TEACHER_STUDENT_FOR_DETAILS": {
     "PROG_IDEA": "فكرة البرنامج",
@@ -858,6 +861,10 @@
     "PROG_PARTS": "عدد الأجزاء المطلوبة",
     "NO": "غير محدد",
     "PROG_DURA": "مدة البرنامج باليوم"
+  },
+  "PROGRAM_BATCH":{
+    "FROM_VALIDATION" : "لا يجب أن يكون تاريخ بداية الإشتراك أقل من تاريخ اليوم",
+    "TO_VALIDATION" : "لا يجب أن يكون تاريخ نهاية الإشتراك أقل من تاريخ بداية الإشتراك"
   },
   "PROGRAM_CATEGORY": {
     "ADD_CATEGORY": "اضافه قسم",
