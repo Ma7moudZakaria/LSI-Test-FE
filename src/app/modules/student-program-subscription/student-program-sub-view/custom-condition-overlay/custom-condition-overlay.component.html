@@ -7,15 +7,15 @@
       
     <div class="form-group">
         <div class="row">
-            {{isSelected}} 
+            <!-- {{isSelected}} 
             {{textInswer}} 
-            {{xx}}
+            {{xx}} -->
 
             <!-- <ng-container *ngIf="programCustomConditionsModel.length >0"> -->
             <ng-container *ngFor="let programCustomConditions of  programCustomConditionsModel">
             <div class="col-12  mt-3 mb-3" *ngIf="programCustomConditions.conditionModel?.answerType == answerTypeEnum.Text">
                 <label class=" header_input"> {{programCustomConditions.conditionModel?.title}} </label>
-               {{programCustomConditions?.conditionModel?.studTxtAns}}
+               <!-- {{programCustomConditions?.conditionModel?.studTxtAns}} -->
                <input type="text" class="form-control" 
                *ngIf='programCustomConditions && programCustomConditions.conditionModel'
                [ngModel]="programCustomConditions.conditionModel.studTxtAns" (ngModelChange)="programCustomConditions.conditionModel.studTxtAns=$event"> 
@@ -26,7 +26,7 @@
             <div class="col-12  mt-3 mb-3" *ngIf="programCustomConditions.conditionModel?.answerType == answerTypeEnum.Toggel">
                 <label class=" header_input mb-3"> {{programCustomConditions.conditionModel?.title}}</label>
                 <!-- [(ngModel)]="conditionModel.answerType" [ngModelOptions]="{standalone: true}"  -->
-            {{programCustomConditions?.conditionModel?.studBoolAns}}
+            <!-- {{programCustomConditions?.conditionModel?.studBoolAns}} -->
              <mat-radio-group  aria-label="Select an option"  *ngIf='programCustomConditions && programCustomConditions.conditionModel'
                  class="example-radio-group"  [ngModel]='programCustomConditions?.conditionModel?.studBoolAns' 
                  (ngModelChange)="programCustomConditions.conditionModel.studBoolAns=$event"
