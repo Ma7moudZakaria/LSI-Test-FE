@@ -20,7 +20,7 @@ export class TeacherProgramSubscriptionServicesService {
   submitTeacherSubscriptionURL = environment.baseUrl + 'TeacherProgramSubscription/submit-teacher-subscription/';
   getProgramsForTeachersSubscriptionsURL = environment.baseUrl + 'TeacherProgramSubscription/get-programs-for-teachers-subscriptions/';
   getTeacherProgramsURL = environment.baseUrl + 'TeacherProgramSubscription/get-teacher-programs/';
-  getSubscriptionProgramDetailsURL = environment.baseUrl + 'Programs/get-subscription-program-details/';
+  // getSubscriptionProgramDetailsURL = environment.baseUrl + 'Programs/get-subscription-program-details/';
 
   constructor(private http: HttpClient) { }
 
@@ -48,8 +48,8 @@ export class TeacherProgramSubscriptionServicesService {
     return this.http.post<BaseResponseModel>(this.getTeacherProgramsURL, model);
   }
 
-  getSubscriptionProgramDetails(id: string): Observable<BaseResponseModel> {
-    return this.http.get<BaseResponseModel>(this.getSubscriptionProgramDetailsURL + id)
-  }
+  // getSubscriptionProgramDetails(id: string): Observable<BaseResponseModel> {
+  //   return this.http.get<BaseResponseModel>(this.getSubscriptionProgramDetailsURL + id)
+  // }
 
 }

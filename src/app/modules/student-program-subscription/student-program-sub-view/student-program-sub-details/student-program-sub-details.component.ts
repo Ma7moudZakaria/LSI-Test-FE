@@ -11,6 +11,8 @@ import { Iuser } from 'src/app/core/interfaces/user-interfaces/iuser';
 import { IPredefinedCondtionSubscriptionModel, IStudentSubscriptionPredefinedConditionResponse } from 'src/app/core/interfaces/student-program-subscription-interfaces/ipredefined-condtion-subscription-model';
 import { StudentProgramSubscriptionServicesService } from 'src/app/core/services/student-program-subscription-services/student-program-subscription-services.service';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
+import { ProgramService } from 'src/app/core/services/program-services/program.service';
+import { IProgramSubscriptionDetailsRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-subscription-details-request';
 @Component({
   selector: 'app-student-program-sub-details',
   templateUrl: './student-program-sub-details.component.html',
@@ -23,7 +25,8 @@ export class StudentProgramSubDetailsComponent implements OnInit {
 
   disabledCheck: boolean = true
   currentUser: Iuser | undefined;
-  ProgramSubscriptionId: string = "";
+  programId: string = "";
+  batchId:string = '';
   errorMessage?: string;
   resMessage: BaseMessageModel = {};
   programsForSubscriptionsDetails: IProgramSubscriptionDetails | undefined;
@@ -31,6 +34,7 @@ export class StudentProgramSubDetailsComponent implements OnInit {
   constructor(
     private studentProgramSubscriptionServicesService: StudentProgramSubscriptionServicesService,
     private ProgramSubscriptionServicesService: TeacherProgramSubscriptionServicesService,
+    private progService : ProgramService,
     private route: ActivatedRoute,
     private alertify: AlertifyService
 
@@ -38,13 +42,20 @@ export class StudentProgramSubDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => this.ProgramSubscriptionId = params['id']);
+    this.route.params.subscribe(params => {
+      this.programId = params['id']
+      this.batchId = params['batch']
+  });
     this.currentUser = JSON.parse(localStorage.getItem('user') || '{}') as Iuser;
 
     this.getSubscriptionProgramDetails();
   }
   getSubscriptionProgramDetails() {
-    this.ProgramSubscriptionServicesService.getSubscriptionProgramDetails(this.ProgramSubscriptionId).subscribe(
+    let model : IProgramSubscriptionDetailsRequest  = {
+      batchId:this.batchId,
+      programId:this.programId
+    }
+    this.progService.getSubscriptionProgramDetails(model).subscribe(
       res => {
 
         if (res.isSuccess) {

@@ -8,6 +8,8 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { TeacherProgramSubscriptionServicesService } from 'src/app/core/services/teacher-program-subscription-services/teacher-program-subscription-services.service';
+import { ProgramService } from 'src/app/core/services/program-services/program.service';
+import { IProgramSubscriptionDetailsRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-subscription-details-request';
 
 @Component({
   selector: 'app-teacher-program-sub-details',
@@ -17,7 +19,8 @@ import { TeacherProgramSubscriptionServicesService } from 'src/app/core/services
 export class TeacherProgramSubDetailsComponent implements OnInit {
 
   @Output() ShowSubscription = new EventEmitter<boolean>();
-  programSubscriptionId: string = "";
+  programId: string = "";
+  batchId:string ='';
   errorMessage?: string;
   resMessage: BaseMessageModel = {};
   programsForSubscriptionsDetails: IProgramSubscriptionDetails | undefined;
@@ -27,16 +30,22 @@ export class TeacherProgramSubDetailsComponent implements OnInit {
 
   constructor(
     private teacherProgramSubscriptionServicesService: TeacherProgramSubscriptionServicesService,
-    private route: ActivatedRoute, private alertify: AlertifyService
+    private route: ActivatedRoute, private alertify: AlertifyService,
+    private progService:ProgramService
   ) { }
 
   ngOnInit(): void {
-    this.programSubscriptionId = this.route.snapshot.params.id;
+    this.programId = this.route.snapshot.params.id;
+    this.programId = this.route.snapshot.params.batch;
     this.currentUser = JSON.parse(localStorage.getItem('user') || '{}') as Iuser;
     this.getSubscriptionProgramDetails()
   }
   getSubscriptionProgramDetails() {
-    this.teacherProgramSubscriptionServicesService.getSubscriptionProgramDetails(this.programSubscriptionId).subscribe(
+    let model : IProgramSubscriptionDetailsRequest  = {
+      batchId:this.batchId,
+      programId:this.programId
+    }
+    this.progService.getSubscriptionProgramDetails(model).subscribe(
       res => {
         if (res.isSuccess) {
           this.programsForSubscriptionsDetails = res.data as IProgramSubscriptionDetails;

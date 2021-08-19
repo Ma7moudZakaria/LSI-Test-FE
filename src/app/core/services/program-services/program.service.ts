@@ -6,7 +6,9 @@ import { IAssignExamFormsToProgram } from '../../interfaces/programs-interfaces/
 import { ICopyProgram } from '../../interfaces/programs-interfaces/iprogram-copy-model';
 import { IprogramCreatModel } from '../../interfaces/programs-interfaces/iprogram-creat-model';
 import { IProgramFilterAdvancedRequest, IProgramFilterByNameRequest } from '../../interfaces/programs-interfaces/iprogram-filter-requests';
+import { IProgramSubscriptionDetailsRequest } from '../../interfaces/programs-interfaces/iprogram-subscription-details-request';
 import { IprogramUpdateModel } from '../../interfaces/programs-interfaces/iprogram-update-model';
+import { IProgramSubscriptionDetails } from '../../interfaces/teacher-program-subscription-interfaces/iprogram-subscription-details';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 
 @Injectable({
@@ -30,6 +32,7 @@ export class ProgramService {
 
   programPublishPauseURL = environment.baseUrl + 'Programs/program-publish-pause/';
   CopyProgramURL=environment.baseUrl+'Programs/copy-program/';
+  getSubscriptionProgramDetailsURL = environment.baseUrl + 'Programs/get-subscription-program-details/';
 
   constructor(private http: HttpClient) { }
 
@@ -83,5 +86,9 @@ export class ProgramService {
 
   ProgramPublishPause(id: string): Observable<BaseResponseModel>{
     return this.http.put<BaseResponseModel>(this.programPublishPauseURL+id , null);
+  }
+
+  getSubscriptionProgramDetails(model : IProgramSubscriptionDetailsRequest): Observable<BaseResponseModel> {
+    return this.http.post<BaseResponseModel>(this.getSubscriptionProgramDetailsURL, model)
   }
 }
