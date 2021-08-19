@@ -2,6 +2,8 @@ import { EventEmitter, Input, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { ITeacherProgramSubscriptionModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iteacher-program-subscription-model';
 import { TeacheProgramSubscriptionStatusEnum } from 'src/app/core/enums/teacher-subscription-enums/teache-program-subscription-status-enum.enum';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 
 @Component({
   selector: 'app-teacher-card-request',
@@ -17,8 +19,9 @@ export class TeacherCardRequestComponent implements OnInit {
   @Input() typeEnum: TeacheProgramSubscriptionStatusEnum = TeacheProgramSubscriptionStatusEnum.Pending;
 
   tabTypeSelected = TeacheProgramSubscriptionStatusEnum;
+  langEnum = LanguageEnum;
 
-  constructor() { }
+  constructor(public translate : TranslateService) { }
 
   ngOnInit(): void {
   }

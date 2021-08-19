@@ -11,4 +11,6 @@ export interface IStudentDropOutRequestsFilterAdminViewRequestModel {
     sortOrder?:number;
     statusNum?:number;
     page:number;
+    arProgBatName?:string;
+    enProgBatName?:string;
 }

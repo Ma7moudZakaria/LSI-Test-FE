@@ -28,7 +28,8 @@ export class TeacherStudentProgramForSubscriptionComponent implements OnInit {
   langEnum = LanguageEnum;
 
   constructor(
-    private router: Router
+    private router: Router,
+    public translate : TranslateService
   ) { }
 
   ngOnInit(): void {
