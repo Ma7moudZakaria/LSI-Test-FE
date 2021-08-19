@@ -1,18 +1,18 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import { ITeacherProfile } from 'src/app/core/interfaces/teacher-interfaces/iteacher-profile';
-import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
-import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
-import { TeacherProfileService } from 'src/app/core/services/teacher-profile/teacher-profile.service';
-import {ITeacherDropOutRequestModel} from '../../../core/interfaces/teacher-drop-out-request-interfaces/iteacher-drop-out-request-model';
-import {TranslateService} from '@ngx-translate/core';
+import {BaseMessageModel} from '../../../core/ng-model/base-message-model';
+import {ITeacherProfile} from '../../../core/interfaces/teacher-interfaces/iteacher-profile';
 import {LanguageEnum} from '../../../core/enums/language-enum.enum';
+import {TeacherProfileService} from '../../../core/services/teacher-profile/teacher-profile.service';
+import {TranslateService} from '@ngx-translate/core';
+import {BaseConstantModel} from '../../../core/ng-model/base-constant-model';
 
 @Component({
-  selector: 'app-user-details',
-  templateUrl: './user-details.component.html',
-  styleUrls: ['./user-details.component.scss']
+  selector: 'app-student-details-view',
+  templateUrl: './student-details-view.component.html',
+  styleUrls: ['./student-details-view.component.scss']
 })
-export class UserDetailsComponent implements OnInit {
+export class StudentDetailsViewComponent implements OnInit {
+
   @Output() hideUserDetails = new EventEmitter<boolean>();
 
   @Input() resiveUserId: string | undefined;
@@ -36,7 +36,7 @@ export class UserDetailsComponent implements OnInit {
 
 
   getTeacherProfile() {
-      console.log('this.resiveUserId',this.resiveUserId);
+    console.log('this.resiveUserId',this.resiveUserId);
     this.teacherProfileService.viewTeacherProfileDetails(this.resiveUserId|| '').subscribe(res => {
       if (res.isSuccess) {
         this.teacherProfileDetails = res.data as ITeacherProfile;
@@ -44,10 +44,10 @@ export class UserDetailsComponent implements OnInit {
       }
       else {
         this.resMessage =
-        {
-          message: res.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+          {
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
+          }
       }
     }, error => {
       this.resMessage = {
@@ -58,3 +58,4 @@ export class UserDetailsComponent implements OnInit {
   }
 
 }
+

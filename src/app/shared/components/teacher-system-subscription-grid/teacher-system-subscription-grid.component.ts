@@ -45,6 +45,7 @@ export class TeacherSystemSubscriptionGridComponent implements OnInit {
   }
 
   teacherJoinToGrid(event:string){
+
     this.teacherJoinInput.emit(event);
   }
   sortTeacherByName() {

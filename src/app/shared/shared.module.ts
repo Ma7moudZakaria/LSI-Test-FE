@@ -81,6 +81,7 @@ import { StudentDropOutGridComponent } from './components/student-drop-out-grid/
 import { StudentProgramVacationCardStudentViewComponent } from './components/student-program-vacation-card-student-view/student-program-vacation-card-student-view.component';
 import { TeacherStuProgramForSubscriptionGridComponent } from './components/teacher-stu-program-for-subscription-grid/teacher-stu-program-for-subscription-grid.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { StudentDetailsViewComponent } from './components/student-details-view/student-details-view.component';
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
     SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,
@@ -128,7 +129,8 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
     StudentDropOutRequestStudentCardComponent,
         StudentDropOutGridComponent,
         StudentProgramVacationCardStudentViewComponent,
-        UserDetailsComponent
+        UserDetailsComponent,
+        StudentDetailsViewComponent
     ],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
@@ -156,7 +158,7 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
     ProgramSubscriptionGridComponent
     , TeacherSystemSubscriptionGridComponent, StudentProgramVacationGridComponent, TeacherStudentProgramForSubscriptionComponent,
     StudentDropOutGridComponent,
-    TeacherDropOutRequestAdminGridComponent, UserDetailsComponent
+    TeacherDropOutRequestAdminGridComponent, UserDetailsComponent, StudentDetailsViewComponent
   ]
 })
 export class SharedModule { }

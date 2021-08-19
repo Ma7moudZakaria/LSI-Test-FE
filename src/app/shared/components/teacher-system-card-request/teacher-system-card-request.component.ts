@@ -17,12 +17,12 @@ export class TeacherSystemCardRequestComponent implements OnInit {
   @Output() rejectTeacherSystemSubscription = new EventEmitter<ITeacherSystemSubscription>();
   @Output() acceptTeacherSystemSubscription = new EventEmitter<ITeacherSystemSubscription>();
 
-  @Input() teacherSystemSubscriptionModel: ITeacherSystemSubscription = { totalRows : 0};
+  @Input() teacherSystemSubscriptionModel: ITeacherSystemSubscription = { totalRows : 0} ;
 
   @Input() typeEnum: TeacherSystemSubscriptionStatusEnum = TeacherSystemSubscriptionStatusEnum.Pending;
   typeTeacheEnum = TeacherSystemSubscriptionStatusEnum;
 
-  teacherSystemSubscriptionIds:string[] | undefined
+  teacherSystemSubscriptionIds:string[] | undefined;
   langEnum = LanguageEnum;
   requestDate:string | undefined;
   @Output() teacherJoinInput = new EventEmitter<string>();

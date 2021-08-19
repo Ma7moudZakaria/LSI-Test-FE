@@ -7,7 +7,7 @@
 
 
 
-<div class="container-fluid reuest_container" > 
+<div *ngIf="!showUserDetailsView"  class="container-fluid reuest_container" >
     <div class="col-12  justify-content-end text-right d-flex align-items-center">
             <app-search-input 
             (searchTerm)=filterByText($event)
@@ -47,7 +47,8 @@
                 (teacherSystemSubscriptionFilterEvent)="teacherSystemSubscriptionPendingChangePage($event)"
                 [totalCount]='totalCount'
                 (acceptAllTeacherSystemSubscriptionCheched)="acceptAllTeacherSystemSubscriptionCheched ()"
-                [teacherSystemSubscriptionFilterRequestModel]='teacherSystemSubscriptionFilterRequestModel'>
+                [teacherSystemSubscriptionFilterRequestModel]='teacherSystemSubscriptionFilterRequestModel'
+                                                  (teacherJoinInput)= "sendTeacherJoinIDEvent($event)">
             </app-teacher-system-subscription-grid>
 
             <app-teacher-system-subscription-grid *ngIf='showTap == statusEnum.Accept && teacherSystemSubscription.length > 0' 
@@ -55,7 +56,8 @@
                 [teacherSystemSubscriptionItems]='teacherSystemSubscription' 
                 (teacherSystemSubscriptionFilterEvent)="teacherSystemSubscriptionAcceptChangePage($event)"
                 [totalCount]='totalCount'
-                [teacherSystemSubscriptionFilterRequestModel]='teacherSystemSubscriptionFilterRequestModel'>
+                [teacherSystemSubscriptionFilterRequestModel]='teacherSystemSubscriptionFilterRequestModel'
+                                                  (teacherJoinInput)= "sendTeacherJoinIDEvent($event)">
                </app-teacher-system-subscription-grid>
 
                <app-teacher-system-subscription-grid *ngIf='showTap == statusEnum.Rejected && teacherSystemSubscription.length > 0' 
@@ -63,7 +65,9 @@
                  [teacherSystemSubscriptionItems]='teacherSystemSubscription'
                  (teacherSystemSubscriptionFilterEvent)="teacherSystemSubscriptionRejectedChangePage($event)"
                  [totalCount]='totalCount'
-                 [teacherSystemSubscriptionFilterRequestModel]='teacherSystemSubscriptionFilterRequestModel'>
+                 [teacherSystemSubscriptionFilterRequestModel]='teacherSystemSubscriptionFilterRequestModel'
+                                                     (teacherJoinInput)= "sendTeacherJoinIDEvent($event)"
+               >
               </app-teacher-system-subscription-grid>
             <!-- 
 
@@ -84,4 +88,5 @@
     
     
     </div>
-    
+
+<app-user-details *ngIf="showUserDetailsView"  (hideUserDetails) ="hideUserDetailsView($event)" [resiveUserId]='sendTeacherJoinId'></app-user-details>

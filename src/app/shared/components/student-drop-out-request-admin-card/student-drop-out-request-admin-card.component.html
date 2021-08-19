@@ -14,10 +14,10 @@
   
     <div class="card_body">
       <div class="d-flex justify-content-between mb-3">
-        <img *ngIf='!studentDropOutRequestFilterRequestAdminModel.avatarLink' class="img_user" src="../../../../assets/images/student/user-profile.svg">
-        <img *ngIf='studentDropOutRequestFilterRequestAdminModel.avatarLink' class="img_user" src="{{studentDropOutRequestFilterRequestAdminModel.avatarLink}}" >
+        <img *ngIf='!studentDropOutRequestFilterRequestAdminModel.avatarLink' (click)="studentDetails(studentDropOutRequestFilterRequestAdminModel?.usrId || '')" class="img_user" src="../../../../assets/images/student/user-profile.svg">
+        <img *ngIf='studentDropOutRequestFilterRequestAdminModel.avatarLink' (click)="studentDetails(studentDropOutRequestFilterRequestAdminModel?.usrId || '')" class="img_user" src="{{studentDropOutRequestFilterRequestAdminModel.avatarLink}}" >
       <div class="mx-1">
-        <p class="name_user bold mb-2">{{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestAdminModel?.usrNameEn : studentDropOutRequestFilterRequestAdminModel?.usrNameAr}}</p>
+        <p class="name_user bold mb-2" (click)="studentDetails(studentDropOutRequestFilterRequestAdminModel?.usrId || '')">{{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestAdminModel?.usrNameEn : studentDropOutRequestFilterRequestAdminModel?.usrNameAr}}</p>
         <p class="program_user bold mb-2 "> {{studentDropOutRequestFilterRequestAdminModel.progName}}</p>        
         <p class="program_user bold mb-0 ">         
       </div>

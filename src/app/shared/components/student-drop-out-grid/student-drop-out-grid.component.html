@@ -63,7 +63,8 @@
          [studentDropOutRequestFilterRequestAdminModel]='item' 
          (rejectStudentDropOutAdminRequest)="rejectStudentAdminDropOutRequestEvent($event)"
          (acceptStudentDropOutAdminRequest)="acceptStudentAdminDropOutRequestEvent($event)"
-         [typeEnum]='typeEnum' 
+         [typeEnum]='typeEnum'
+                                                  (studentIdToGrid)="studentIdToRequest($event)"
          ></app-student-drop-out-request-admin-card>
         </mat-grid-tile>
     </ng-container>
