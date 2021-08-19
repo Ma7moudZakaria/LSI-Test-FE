@@ -1,1 +1,11 @@
-<p>joining-exam-overlay works!</p>
+<h1>اختبار القبول</h1>
+<p>{{progDetails?.prgName}}</p>
+  
+    <p>
+        {{translate.currentLang===langEnum.en ? randomExam?.exaNameEn : randomExam?.exaNameAr}}
+    </p> 
+
+    <div *ngFor = 'let question of randomExam?.questions'>
+        <app-question-template [questionTemplate] = 'question' [viewMode] = 'true'></app-question-template>
+      </div>
+  
