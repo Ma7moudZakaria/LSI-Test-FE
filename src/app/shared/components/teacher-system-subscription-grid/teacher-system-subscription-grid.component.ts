@@ -19,7 +19,9 @@ export class TeacherSystemSubscriptionGridComponent implements OnInit {
   @Output() rejectTeacherSystemSubscription = new EventEmitter<ITeacherSystemSubscription>();
   @Output() acceptTeacherSystemSubscription = new EventEmitter<ITeacherSystemSubscription>();
   @Output() acceptAllTeacherSystemSubscriptionCheched = new EventEmitter<ITeacherSystemSubscription>();
-  
+  @Output() teacherJoinInput = new EventEmitter<string>();
+
+
   @Input() teacherSystemSubscriptionFilterRequestModel: ITeacherSystemSubscriptionFilterRequest = { skip: 0, take: 9, page: 1 };
   @Input() numberPerRow: number = 3;
   @Input() teacherSystemSubscriptionItems: ITeacherSystemSubscription[] = []
@@ -42,6 +44,9 @@ export class TeacherSystemSubscriptionGridComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  teacherJoinToGrid(event:string){
+    this.teacherJoinInput.emit(event);
+  }
   sortTeacherByName() {
     this.teacherSystemSubscriptionFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn';
     this.teacherSystemSubscriptionFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;

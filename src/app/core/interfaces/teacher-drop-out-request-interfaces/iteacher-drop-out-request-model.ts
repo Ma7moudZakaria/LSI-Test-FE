@@ -1,6 +1,7 @@
 
 export interface ITeacherDropOutRequestModel {
     id?:string;
+    usrId?:string;
     no?:number;
     teacherNameAr?:number;
     teacherNameEn?:number;

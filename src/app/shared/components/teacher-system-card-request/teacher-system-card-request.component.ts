@@ -25,7 +25,7 @@ export class TeacherSystemCardRequestComponent implements OnInit {
   teacherSystemSubscriptionIds:string[] | undefined
   langEnum = LanguageEnum;
   requestDate:string | undefined;
-
+  @Output() teacherJoinInput = new EventEmitter<string>();
   constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
@@ -39,8 +39,11 @@ export class TeacherSystemCardRequestComponent implements OnInit {
     if (!this.teacherSystemSubscriptionModel?.avatarLink) {
       this.teacherSystemSubscriptionModel.avatarLink = '../../../../../assets/images/Profile.svg';
     }
-  } 
+  }
 
+  openDetails(id:string){
+    this.teacherJoinInput.emit(id)
+  }
   rejectTeacherSystemSubscriptionEvent(teacherSubscripModel:ITeacherSystemSubscription){
     this.rejectTeacherSystemSubscription.emit(teacherSubscripModel);
   }

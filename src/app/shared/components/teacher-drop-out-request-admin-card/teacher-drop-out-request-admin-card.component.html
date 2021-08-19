@@ -14,10 +14,10 @@
   
     <div class="card_body">
       <div class="d-flex justify-content-between mb-3">
-        <img *ngIf='!teacherDropOutRequestModel.avatarLink' (click)="openDetails(teacherDropOutRequestModel?.id)" class="img_user" src="../../../../assets/images/student/user-profile.svg">
-        <img *ngIf='teacherDropOutRequestModel.avatarLink' (click)="openDetails(teacherDropOutRequestModel?.id)"  class="img_user" src="{{teacherDropOutRequestModel.avatarLink}}" >
+        <img *ngIf='!teacherDropOutRequestModel.avatarLink' (click)="openDetails(teacherDropOutRequestModel?.usrId)" class="img_user" src="../../../../assets/images/student/user-profile.svg">
+        <img *ngIf='teacherDropOutRequestModel.avatarLink' (click)="openDetails(teacherDropOutRequestModel?.usrId)"  class="img_user" src="{{teacherDropOutRequestModel.avatarLink}}" >
       <div class="mx-1">
-        <p class="name_user bold mb-2" (click)="openDetails(teacherDropOutRequestModel?.id)">{{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.teacherNameEn : teacherDropOutRequestModel?.teacherNameAr}}</p>
+        <p class="name_user bold mb-2" (click)="openDetails(teacherDropOutRequestModel?.usrId)">{{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.teacherNameEn : teacherDropOutRequestModel?.teacherNameAr}}</p>
         <p class="program_user bold mb-2 "> {{teacherDropOutRequestModel.progName}}</p>        
         <p class="program_user bold mb-0 ">         
       </div>

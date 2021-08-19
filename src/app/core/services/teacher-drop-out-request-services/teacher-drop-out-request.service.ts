@@ -37,7 +37,7 @@ export class TeacherDropOutRequestService {
     return this.http.put<BaseResponseModel>(this.teacherDropOutRequestsRejectionUrl, model);
   }
   teacherDetails(id:string):Observable<BaseResponseModel>{
-    return this.http.get<BaseResponseModel>(this.teacherDetailsUrl+id)
+    return this.http.get<BaseResponseModel>(this.teacherDetailsUrl + id)
   }
 
 

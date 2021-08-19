@@ -330,7 +330,10 @@
     "TRAINING_COURSES": "دورات تدريبية",
     "OPTIONAL": "اختيارى",
     "EDIT_PROFILE": "تعديل الملف الشخصي",
-    "AMOUNT_QURAN_REQUIRED": "مقدار الحفظ من القران مطلوب"
+    "AMOUNT_QURAN_REQUIRED": "مقدار الحفظ من القران مطلوب",
+    "PROGRAMS": "البرامج",
+    "TIMES": "الاوقات",
+    "BACK": "رجوع"
   },
   "VIEW_USER_PG": {
     "EDIT_PROFILE": " تعديل الملف الشخصي",

@@ -55,20 +55,7 @@ export class ViewTeacherProfileComponent implements OnInit {
       if (res.isSuccess) {
         this.teacherProfileDetails = res.data as ITeacherProfile;
 
-        // console.log("Details",this.teacherProfileDetails);
-        // if (this.teacherProfileDetails?.birthDispMode == 1){
-        //   let birthdate = new Date(this.teacherProfileDetails?.hijriBirthDate || '');
-        //   if (!isNaN(birthdate.getTime())) {
-        //     this.teacherProfileDetails.hijriBirthDate = new Date(birthdate.setDate(birthdate.getDate() + 1)).toISOString().slice(0, 10);
-        //   }
-        //   this.teacherProfileDetails.hijriBirthDate;
-        // }
-        // else {
-        //   let birthdate = new Date(this.teacherProfileDetails?.birthGregorian || '');
-        //   if (!isNaN(birthdate.getTime())) {
-        //     this.teacherProfileDetails.birthGregorian = new Date(birthdate.setDate(birthdate.getDate() + 1)).toISOString().slice(0, 10);
-        //   }
-        // }
+
 
 
         console.log("Teacher Profile Details =========>" , this.teacherProfileDetails)

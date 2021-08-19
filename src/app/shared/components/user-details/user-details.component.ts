@@ -4,6 +4,8 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { TeacherProfileService } from 'src/app/core/services/teacher-profile/teacher-profile.service';
 import {ITeacherDropOutRequestModel} from '../../../core/interfaces/teacher-drop-out-request-interfaces/iteacher-drop-out-request-model';
+import {TranslateService} from '@ngx-translate/core';
+import {LanguageEnum} from '../../../core/enums/language-enum.enum';
 
 @Component({
   selector: 'app-user-details',
@@ -12,19 +14,20 @@ import {ITeacherDropOutRequestModel} from '../../../core/interfaces/teacher-drop
 })
 export class UserDetailsComponent implements OnInit {
   @Output() hideUserDetails = new EventEmitter<boolean>();
+
   @Input() resiveUserId: string | undefined;
+
+
   resMessage: BaseMessageModel = {};
   teacherProfileDetails = {} as ITeacherProfile;
-
+  langEnum = LanguageEnum;
   starsSelected=5;
   constructor(
     private teacherProfileService: TeacherProfileService,
-
+    public translate: TranslateService
   ) { }
 
   ngOnInit(): void {
-    // console.log("resiveUserId", this.resiveUserId);
-    // this.getUserDetails();
     this.getTeacherProfile()
   }
   hideUserDetailsView(){
@@ -33,20 +36,11 @@ export class UserDetailsComponent implements OnInit {
 
 
   getTeacherProfile() {
-    console.log("innnnnnnnnnnnnnnnnnnn")
 
     this.teacherProfileService.viewTeacherProfileDetails(this.resiveUserId|| '').subscribe(res => {
       if (res.isSuccess) {
         this.teacherProfileDetails = res.data as ITeacherProfile;
-    console.log("out")
-
-              console.log("teacherProfileDetails", this.teacherProfileDetails)
-
-        // console.log("Teacher Profile Details =========>" , this.teacherProfileDetails)
-
-        // if (!this.teacherProfileDetails?.proPic) {
-        //   this.teacherProfileDetails.proPic = '../../../../../assets/images/Profile.svg';
-        // }
+        console.log("teacherProfileDetails", this.teacherProfileDetails)
       }
       else {
         this.resMessage =
