@@ -17,8 +17,8 @@ export class TeacherStudentProgramForSubscriptionComponent implements OnInit {
 
   @Output() teacher_subscription_id = new EventEmitter<string>();
 
-  @Input() teachersubscriptionmodel: IProgramsForTeacherSubscriptionsModel = { totals: 0 }
-  @Input() studentsubscriptionmodel: IProgramsForStudentSubscriptionsModel = { totals: 0 }
+  @Input() teachersubscriptionmodel: IProgramsForTeacherSubscriptionsModel | undefined;
+  @Input() studentsubscriptionmodel: IProgramsForStudentSubscriptionsModel | undefined
   @Input() userMode: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.student;
   programSubscriptionUsers = ProgramSubscriptionUsersEnum;
   langEnum = LanguageEnum;
