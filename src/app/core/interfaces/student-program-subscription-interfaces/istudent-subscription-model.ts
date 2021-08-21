@@ -10,4 +10,8 @@ export interface IStudentSubscriptionModel {
     examDegree?: number;
     avatarLink?: string;
     reasonReject?: string;
+    arBatName?:string;
+    enBatName?:string;
+    arProgBatName?:string;
+    enProgBatName?:string;
 }

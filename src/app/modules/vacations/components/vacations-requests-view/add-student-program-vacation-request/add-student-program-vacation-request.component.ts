@@ -14,6 +14,7 @@ import {BaseResponseModel} from '../../../../../core/ng-model/base-response-mode
 import {IStudentPrograms} from '../../../../../core/interfaces/student-program-vacation-interfaces/istudent-programs';
 import {IStudentSubscriptionFilterRequestModel} from '../../../../../core/interfaces/student-program-subscription-interfaces/istudent-subscription-filter-request-model';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 
 @Component({
   selector: 'app-add-student-program-vacation-request',
@@ -36,6 +37,8 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
   programs: IStudentPrograms[] | undefined;
   @Output() closeAddVacationRequest = new EventEmitter<IAddNewStudentVacationRequest>();
   maxGregDate: NgbDateStruct | undefined;
+
+  langEnum=LanguageEnum
 
   constructor(
               private dateFormatterService: DateFormatterService,

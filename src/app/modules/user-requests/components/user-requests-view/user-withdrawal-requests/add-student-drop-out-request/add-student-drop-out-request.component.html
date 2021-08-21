@@ -10,7 +10,7 @@
                     <select class="form-control"  [(ngModel)]="createDropOut.batId"    [ngModelOptions]="{standalone: true}">
                         <option   value="">{{'SCIENTIFIC_MATERIAL.SELECTOPTION' | translate}}</option>
                         <option *ngFor="let item of programsList" value="{{item.batId}}">
-                            {{item.progName}}
+                            {{translate.currentLang === langEnum.en ? item.enProgBatchName: item.arProgBatchName }}
                         </option>
                     </select>
                 </div>

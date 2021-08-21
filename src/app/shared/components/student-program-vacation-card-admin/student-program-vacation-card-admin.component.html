@@ -22,7 +22,8 @@
         <div class="mx-1 d-inline-block">
           <p class="number_request mb-1 "> {{studentSubscripModel.avatarLink}}</p>
           <p class="name_user bold mb-2">{{studentSubscripModel.usrNameAr}}</p>
-          <p class="program_user bold mb-2 "> {{studentSubscripModel.progName}}</p>
+          <!-- <p class="program_user bold mb-2 "> {{studentSubscripModel.progName}}</p> -->
+          <p class="program_user bold mb-2 "> {{translate.currentLang === langEnum.en ? studentSubscripModel.enProgBatchName: studentSubscripModel.arProgBatchName}}</p>
         </div>
 
 

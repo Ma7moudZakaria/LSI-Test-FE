@@ -29,7 +29,7 @@ export class TeacherStudentProgramForSubscriptionComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public translate: TranslateService
+    public translate : TranslateService
   ) { }
 
   ngOnInit(): void {

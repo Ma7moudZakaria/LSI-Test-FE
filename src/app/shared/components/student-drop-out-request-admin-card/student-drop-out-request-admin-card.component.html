@@ -18,7 +18,8 @@
         <img *ngIf='studentDropOutRequestFilterRequestAdminModel.avatarLink' class="img_user" src="{{studentDropOutRequestFilterRequestAdminModel.avatarLink}}" >
       <div class="mx-1">
         <p class="name_user bold mb-2">{{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestAdminModel?.usrNameEn : studentDropOutRequestFilterRequestAdminModel?.usrNameAr}}</p>
-        <p class="program_user bold mb-2 "> {{studentDropOutRequestFilterRequestAdminModel.progName}}</p>        
+        <!-- <p class="program_user bold mb-2 "> {{studentDropOutRequestFilterRequestAdminModel.progName}}</p>         -->
+        <p class="program_user bold mb-2 "> {{translate.currentLang === langEnum.en ? studentDropOutRequestFilterRequestAdminModel.enProgBatchName: studentDropOutRequestFilterRequestAdminModel.arProgBatchName}}</p>      
         <p class="program_user bold mb-0 ">         
       </div>
 

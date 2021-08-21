@@ -6,8 +6,8 @@ export interface IStudentDropOutRequestsFilterStudentViewResponseModel {
     progName?:string;
     batNameAr?:string;
     batNameEn?:string;
-    arProgBatchName?:string;
-    enProgBatchName?:string;
+    arProgBatName?:string;
+    enProgBatName?:string;
     totalRows?:number;
     checked?:boolean;
     reasonReject?:string;
