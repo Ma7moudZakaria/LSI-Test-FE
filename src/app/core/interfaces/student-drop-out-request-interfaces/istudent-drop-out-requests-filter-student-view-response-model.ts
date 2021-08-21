@@ -15,4 +15,5 @@ export interface IStudentDropOutRequestsFilterStudentViewResponseModel {
     enStudentStatusName?:string;  
     drpStat?: number;
     no?:number;
+    canCancel?:boolean;
 }

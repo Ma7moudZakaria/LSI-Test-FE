@@ -29,8 +29,7 @@
     </div>
 
     <div  [ngClass]="{
-      'dimmed': studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Accept , 
-      'disable': studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Rejected}">
+      'dimmed': studentDropOutRequestFilterRequestStudentModel?.canCancel === false }">
        
         <button class="program__btn cancel-btn"  (click)="cancelRequest()"
         >{{'TEACHER_DROP_OUT.CANCEL' | translate}}</button>
