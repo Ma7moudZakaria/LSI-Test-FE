@@ -11,6 +11,7 @@ export interface IUser {
     fullNameAr?:string;
     fullNameEn?:string;
     uactive?:boolean;
+    accacc?:boolean;
     uProfileCompleted?:boolean;
 
     uname?: string;
