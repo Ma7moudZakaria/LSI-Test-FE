@@ -69,11 +69,11 @@
     "ACCEPT": "قبول",
     "REJECT": "رفض",
     "DEGREE_MAX_LENGTH": "الدرجة يجب ان تكون أقل من أو تساوى 100",
-    "REJECT_RESON":"سبب الإنسحاب",
-    "PROGRAM":"البرنامج",
-    "DROP_OUT_REQUEST":"طلب الانسحاب",
-    "APPLICANT_NAME":"أسم صاحب الطلب",
-    "REQUEST_NUMBER":"رقم الطلب",
+    "REJECT_RESON": "سبب الإنسحاب",
+    "PROGRAM": "البرنامج",
+    "DROP_OUT_REQUEST": "طلب الانسحاب",
+    "APPLICANT_NAME": "أسم صاحب الطلب",
+    "REQUEST_NUMBER": "رقم الطلب",
     "FROM": "من",
     "TO": "إلى",
     "ADVANCED_SEARCH": " بحث متقدم "
@@ -762,7 +762,7 @@
     "SUBSCRIBERS": "الطلبات",
     "TEACHERS": "المعلمين",
     "STUDENTS": "الطلاب",
-    "NEW_JOIN_REQUESTS": "طلبات الانضمام الجديدة",
+    "NEW_JOIN_REQUESTS": "طلبات جديدة",
     "ACCEPTANCE_REQUESTS": "طلبات مقبولة",
     "REJECTANCE_REQUESTS": "طلبات مرفوضة",
     "JOIN_REQUESTS": "طلبات الانضمام",
@@ -779,21 +779,22 @@
     "CANCEL_REQUESTS": "طلبات الانسحاب",
     "NEW_CANCEL_REQUESTS": "طلب انسحاب جديد",
     "TIME": "تاريخ الطلب",
-    "ADMIN_ANSWER": "رد الادارة" ,
+    "ADMIN_ANSWER": "رد الادارة",
     "REJECTED": "تم رفض الطلب",
-    "ACCEPT" : "تم قبول الطلب",
-    "CANCEL" : "الغاء الطلب"
+    "ACCEPT": "تم قبول الطلب",
+    "CANCEL": "الغاء الطلب"
   },
   "STUDENT_SUBSCRIBERS": {
     "SUBSCRIBERS": "الطلبات",
     "TEACHERS": "المعلمين",
     "STUDENTS": "الطلاب",
-    "NEW_JOIN_REQUESTS": "طلبات الانضمام الجديدة",
+    "NEW_JOIN_REQUESTS": "طلبات جديدة",
     "ACCEPTANCE_REQUESTS": "طلبات مقبولة",
-    "REJECTANCE_REQUESTS": "طلبات مرفض",
+    "REJECTANCE_REQUESTS": "طلبات مرفوضة",
     "JOIN_REQUESTS": "طلبات الانضمام",
     "JOIN_REQUESTS_VACATION": "طلبات الاجازات",
     "CANCEL_REQUESTS": "طلبات الانسحاب",
+    "NEW_REQUESTS": "طلبات جديدة",
     "MOVING_REQ": "طلبات الانتقال",
     "REJECT_TEACHER": "رفض المعلم",
     "FROM_PROGRAM": "من برنامج",
@@ -807,7 +808,9 @@
     "TEACHER_REJECTED": "سيتم رفض طلب انسحاب المعلم ",
     "FROM_PROG": "من برنامج",
     "REJECTED_REASON": "سبب الرفض",
-    "VALIDATIONDATE": "تاريخ البداية يجب ان يكون اقل من تاريخ النهاية "
+    "VALIDATIONDATE": "تاريخ البداية يجب ان يكون اقل من تاريخ النهاية ",
+    "REQUEST_REASON": "سبب الطلب",
+    "NO_DATA": "لا يوجد بيانات"
   },
   "TEACHER_SYSTEM_SUBSCRIPTION": {
     "REQUEST_DATE": "تاريخ الطلب",
@@ -816,7 +819,7 @@
     "ACCEPT": "قبول"
   },
   "STUDENT_VACATION": {
-    "NEW_VACATION_REQUESTS": "طلبات الاجازات الجديدة",
+    "NEW_VACATION_REQUESTS": "طلبات جديدة",
     "ACCEPTANCE_REQUESTS": "طلبات مقبولة",
     "REJECTANCE_REQUESTS": "طلبات مرفوضة",
     "VACATION_DATE": "تاريخ الاجازة",
@@ -832,7 +835,7 @@
     "DATE_TO": "التاريخ الى",
     "SEND": "ارسال",
     "PROGRAM": "البرنامج",
-    "VACATION_REQUESTS" : "طلبات الاجازات",
+    "VACATION_REQUESTS": "طلبات الاجازات",
     "ADMIN_ANSWER": "رد الادارة"
   },
   "PROGRAM_BATCHES": {
@@ -862,9 +865,9 @@
     "NO": "غير محدد",
     "PROG_DURA": "مدة البرنامج باليوم"
   },
-  "PROGRAM_BATCH":{
-    "FROM_VALIDATION" : "لا يجب أن يكون تاريخ بداية الإشتراك أقل من تاريخ اليوم",
-    "TO_VALIDATION" : "لا يجب أن يكون تاريخ نهاية الإشتراك أقل من تاريخ بداية الإشتراك"
+  "PROGRAM_BATCH": {
+    "FROM_VALIDATION": "لا يجب أن يكون تاريخ بداية الإشتراك أقل من تاريخ اليوم",
+    "TO_VALIDATION": "لا يجب أن يكون تاريخ نهاية الإشتراك أقل من تاريخ بداية الإشتراك"
   },
   "PROGRAM_CATEGORY": {
     "ADD_CATEGORY": "اضافه قسم",

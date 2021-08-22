@@ -23,8 +23,8 @@
 .ellipsis{
     width: 200px;
 }
-.program_reason,
-.program_rejected
+.program_reason
+
 {
     max-height: 10vh;
     overflow-y: auto;
@@ -34,5 +34,11 @@
     padding-bottom: 0;
 }.card-request {
     
-    height: 35vh;
+    height: 38vh;
+}.card-request .body_footer {
+   
+    padding: 0 10px;
+    .btn{
+        text-align: center;
+    }
 }

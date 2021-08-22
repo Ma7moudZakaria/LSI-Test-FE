@@ -31,25 +31,23 @@
      
       </div>
       </div>
-      <div >
-        <p class="program_reason  mb-0 pb-2"  > 
+      <div class="program_reason">
+        <p class="  mb-0 pb-2"  > 
         <span>
           سبب الطلب :
         </span>
-        <span class="program_user bold mb-0 "  *ngIf="teacherDropOutRequestModel.reason">لا يوجد</span>
+        <span class="program_user bold mb-0 "  *ngIf="!teacherDropOutRequestModel.reason">لا يوجد</span>
         <span class="program_user bold mb-0 ">{{ teacherDropOutRequestModel.reason }}</span>
         </p>
-      </div>
-
-      <ng-container >
-      <p class="program_rejected  mb-0 pb-2" *ngIf='typeDropOutRequestEnum.Rejected === typeEnum' > 
-        <span class="bold mx-1">سبب الرفض:</span> 
-        <span class="program_user bold mb-0 " *ngIf="!teacherDropOutRequestModel.reasonReject ">لا يوجد</span>
-        <span>
-          {{ teacherDropOutRequestModel.reasonReject }}
-        </span>
-      </p>
-    </ng-container>
+     
+        <p class="  mb-0 pb-2" *ngIf='typeDropOutRequestEnum.Rejected === typeEnum' > 
+          <span class="bold mx-1">سبب الرفض:</span> 
+          <span class="program_user bold mb-0 " *ngIf="!teacherDropOutRequestModel.reasonReject ">لا يوجد</span>
+          <span>
+            {{ teacherDropOutRequestModel.reasonReject }}
+          </span>
+        </p>
+    
     </div>
 
     <!-- <div class="d-flex justify-content-between mb-3">

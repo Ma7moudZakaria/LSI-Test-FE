@@ -14,21 +14,21 @@ export class StudentDropOutRequestAdminCardComponent implements OnInit {
   @Output() rejectStudentDropOutAdminRequest = new EventEmitter<IStudentDropOutRequestsFilterResponseModel>();
   @Output() acceptStudentDropOutAdminRequest = new EventEmitter<IStudentDropOutRequestsFilterResponseModel>();
 
-  @Input() studentDropOutRequestFilterRequestAdminModel: IStudentDropOutRequestsFilterResponseModel = { totalRows : 0};
+  @Input() studentDropOutRequestFilterRequestAdminModel: IStudentDropOutRequestsFilterResponseModel = { totalRows: 0 };
 
   @Input() typeEnum: StudentDropOutRequestStatusEnum = StudentDropOutRequestStatusEnum.Pending;
   typeDropOutRequestEnum = StudentDropOutRequestStatusEnum;
 
-  studentAdminDropOutRequestIds:string[] | undefined
+  studentAdminDropOutRequestIds: string[] | undefined
   langEnum = LanguageEnum;
-  requestDate:string | undefined;
+  requestDate: string | undefined;
   studentDropOutRequestStatusEnum = StudentDropOutRequestStatusEnum;
 
 
   constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
-
+    console.log("studentDropOutRequestFilterRequestAdminModel", this.studentDropOutRequestFilterRequestAdminModel)
     if (this.studentDropOutRequestFilterRequestAdminModel?.requestDate) {
       let requestDateValue = new Date(this.studentDropOutRequestFilterRequestAdminModel.requestDate || '');
 
@@ -38,13 +38,13 @@ export class StudentDropOutRequestAdminCardComponent implements OnInit {
     if (!this.studentDropOutRequestFilterRequestAdminModel?.avatarLink) {
       this.studentDropOutRequestFilterRequestAdminModel.avatarLink = '../../../../../assets/images/Profile.svg';
     }
-  } 
+  }
 
-  rejectStudentAdminDropOutRequestEvent(studentAdminDropOutRequest:IStudentDropOutRequestsFilterResponseModel){
+  rejectStudentAdminDropOutRequestEvent(studentAdminDropOutRequest: IStudentDropOutRequestsFilterResponseModel) {
     this.rejectStudentDropOutAdminRequest.emit(studentAdminDropOutRequest);
   }
-  
-  acceptStudentAdminDropOutRequestEvent(){
+
+  acceptStudentAdminDropOutRequestEvent() {
     this.acceptStudentDropOutAdminRequest.emit(this.studentDropOutRequestFilterRequestAdminModel);
   }
 
