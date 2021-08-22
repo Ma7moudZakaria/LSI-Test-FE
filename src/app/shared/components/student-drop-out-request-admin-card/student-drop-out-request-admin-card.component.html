@@ -13,6 +13,7 @@
     </div>
   
     <div class="card_body">
+      <p class="program__num  mb-2">{{ studentDropOutRequestFilterRequestAdminModel?.no}}</p>
       <div class="d-flex justify-content-between mb-3">
         <img *ngIf='!studentDropOutRequestFilterRequestAdminModel.avatarLink' class="img_user" src="../../../../assets/images/student/user-profile.svg">
         <img *ngIf='studentDropOutRequestFilterRequestAdminModel.avatarLink' class="img_user" src="{{studentDropOutRequestFilterRequestAdminModel.avatarLink}}" >
