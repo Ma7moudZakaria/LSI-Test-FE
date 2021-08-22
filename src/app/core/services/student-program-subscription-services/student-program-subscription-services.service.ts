@@ -21,67 +21,61 @@ export class StudentProgramSubscriptionServicesService {
   getStudentCustomConditionURL = environment.baseUrl + 'StudentProgramSubscription/get-student-custom-condition/';
   submitStudentCustomConditionAnswerURL = environment.baseUrl + 'StudentProgramSubscription/submit-student-custom-condition-answer/';
   getRandomExamURL = environment.baseUrl + 'StudentProgramSubscription/submit-student-custom-condition-answer/';
+  getRandomJoiningExamURL = environment.baseUrl + 'StudentProgramSubscription/get-program-random-exam/';
   submitStudentJoiningExamAnswerURL = environment.baseUrl + 'StudentProgramSubscription/submit-student-joining-exam-answer/';
   studentProgramSubscriptionsCompletedURL = environment.baseUrl + 'StudentProgramSubscription/student-program-subscription-completed/';
-  getProgramsForStudentsSubscriptionsURL= environment.baseUrl + 'StudentProgramSubscription/get-programs-for-students-subscriptions/';
-  verifyProgramPredefinedConditionURL= environment.baseUrl + 'StudentProgramSubscription/verify-program-predefined-condition/';
-  getStudentProgramsURL= environment.baseUrl + 'StudentProgramSubscription/get-student-programs/';
+  getProgramsForStudentsSubscriptionsURL = environment.baseUrl + 'StudentProgramSubscription/get-programs-for-students-subscriptions/';
+  verifyProgramPredefinedConditionURL = environment.baseUrl + 'StudentProgramSubscription/verify-program-predefined-condition/';
+  getStudentProgramsURL = environment.baseUrl + 'StudentProgramSubscription/get-student-programs/';
 
   constructor(private http: HttpClient) { }
 
-  getStudentsSubscriptionsFilter(model : IStudentSubscriptionFilterRequestModel):Observable<BaseResponseModel>
-  {
-    return this.http.post<BaseResponseModel>(this.getStudentsSubscriptionsFilterURL , model);
+  getStudentsSubscriptionsFilter(model: IStudentSubscriptionFilterRequestModel): Observable<BaseResponseModel> {
+    return this.http.post<BaseResponseModel>(this.getStudentsSubscriptionsFilterURL, model);
   }
 
-  studentProgramSubscriptionsAcceptance(model : string[]):Observable<BaseResponseModel>
-  {
-    return this.http.put<BaseResponseModel>(this.studentProgramSubscriptionsAcceptanceURL , model);
+  studentProgramSubscriptionsAcceptance(model: string[]): Observable<BaseResponseModel> {
+    return this.http.put<BaseResponseModel>(this.studentProgramSubscriptionsAcceptanceURL, model);
   }
 
-  rejectStudentProgramSubscription(model : IRejectProgramSubscriptionModel):Observable<BaseResponseModel>
-  {
-    return this.http.put<BaseResponseModel>(this.rejectStudentProgramSubscriptionURL ,model);
+  rejectStudentProgramSubscription(model: IRejectProgramSubscriptionModel): Observable<BaseResponseModel> {
+    return this.http.put<BaseResponseModel>(this.rejectStudentProgramSubscriptionURL, model);
   }
 
-  getStudentCustomCondition(id: string):Observable<BaseResponseModel>
-  {
-    return this.http.put<BaseResponseModel>(this.getStudentCustomConditionURL ,id);
+  getStudentCustomCondition(id: string): Observable<BaseResponseModel> {
+    return this.http.get<BaseResponseModel>(this.getStudentCustomConditionURL + id);
   }
 
-  submitStudentCustomConditionAnswer(model: IStudentCustomConditionAnswerModel):Observable<BaseResponseModel>
-  {
-    return this.http.post<BaseResponseModel>(this.submitStudentCustomConditionAnswerURL ,model);
+  submitStudentCustomConditionAnswer(model?: IStudentCustomConditionAnswerModel): Observable<BaseResponseModel> {
+    return this.http.post<BaseResponseModel>(this.submitStudentCustomConditionAnswerURL, model);
   }
 
-  getRandomExam(id: string):Observable<BaseResponseModel>
-  {
-    return this.http.put<BaseResponseModel>(this.getRandomExamURL ,id);
+  getRandomExam(id: string): Observable<BaseResponseModel> {
+    return this.http.put<BaseResponseModel>(this.getRandomExamURL, id);
   }
 
-  submitStudentJoiningExamAnswer(model:IstudentJoiningExamAnswerModel ):Observable<BaseResponseModel>
-  {
-    return this.http.post<BaseResponseModel>(this.submitStudentJoiningExamAnswerURL ,model);
+  getRandomJoiningExam(id: string): Observable<BaseResponseModel> {
+    return this.http.get<BaseResponseModel>(this.getRandomJoiningExamURL + id);
   }
 
-  studentProgramSubscriptionsCompleted(model:string[] ):Observable<BaseResponseModel>
-  {
-    return this.http.put<BaseResponseModel>(this.studentProgramSubscriptionsCompletedURL ,model);
+  submitStudentJoiningExamAnswer(model: IstudentJoiningExamAnswerModel): Observable<BaseResponseModel> {
+    return this.http.post<BaseResponseModel>(this.submitStudentJoiningExamAnswerURL, model);
   }
 
-  getProgramsForStudentsSubscriptions(model:IProgramsForStudentsSubscriptionsFilterRequestModel):Observable<BaseResponseModel>
-  {
-    return this.http.post<BaseResponseModel>(this.getProgramsForStudentsSubscriptionsURL ,model);
+  studentProgramSubscriptionsCompleted(model: string[]): Observable<BaseResponseModel> {
+    return this.http.put<BaseResponseModel>(this.studentProgramSubscriptionsCompletedURL, model);
   }
 
-  verifyProgramPredefinedCondition(model:IPredefinedCondtionSubscriptionModel ):Observable<BaseResponseModel>
-  {
-    return this.http.post<BaseResponseModel>(this.verifyProgramPredefinedConditionURL ,model);
+  getProgramsForStudentsSubscriptions(model: IProgramsForStudentsSubscriptionsFilterRequestModel): Observable<BaseResponseModel> {
+    return this.http.post<BaseResponseModel>(this.getProgramsForStudentsSubscriptionsURL, model);
   }
 
-  getStudentPrograms(model:IStudentMyProgramsRequestModel ):Observable<BaseResponseModel>
-  {
-    return this.http.post<BaseResponseModel>(this.getStudentProgramsURL ,model);
+  verifyProgramPredefinedCondition(model: IPredefinedCondtionSubscriptionModel): Observable<BaseResponseModel> {
+    return this.http.post<BaseResponseModel>(this.verifyProgramPredefinedConditionURL, model);
+  }
+
+  getStudentPrograms(model: IStudentMyProgramsRequestModel): Observable<BaseResponseModel> {
+    return this.http.post<BaseResponseModel>(this.getStudentProgramsURL, model);
   }
 
 }

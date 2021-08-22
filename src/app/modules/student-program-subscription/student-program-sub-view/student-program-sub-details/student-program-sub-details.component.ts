@@ -11,6 +11,8 @@ import { Iuser } from 'src/app/core/interfaces/user-interfaces/iuser';
 import { IPredefinedCondtionSubscriptionModel, IStudentSubscriptionPredefinedConditionResponse } from 'src/app/core/interfaces/student-program-subscription-interfaces/ipredefined-condtion-subscription-model';
 import { StudentProgramSubscriptionServicesService } from 'src/app/core/services/student-program-subscription-services/student-program-subscription-services.service';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
 import { IProgramSubscriptionDetailsRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-subscription-details-request';
 @Component({
@@ -22,22 +24,23 @@ export class StudentProgramSubDetailsComponent implements OnInit {
   predefinedCondtionSubscriptionModel: IPredefinedCondtionSubscriptionModel | undefined//= {} as IPredefinedCondtionSubscriptionModel
   studSubsPredCondRes: IStudentSubscriptionPredefinedConditionResponse | undefined;
   @Output() ShowVerifyProgramPredefinedConditionOverlay = new EventEmitter<IStudentSubscriptionPredefinedConditionResponse>();
-
+  @Output() ShowCustomConditionOverlay = new EventEmitter<IProgramSubscriptionDetails>();
+  @Output() requestId = new EventEmitter<string>();
   disabledCheck: boolean = true
   currentUser: Iuser | undefined;
   programId: string = "";
-  batchId:string = '';
+  batchId: string = '';
   errorMessage?: string;
   resMessage: BaseMessageModel = {};
   programsForSubscriptionsDetails: IProgramSubscriptionDetails | undefined;
-
+  langEnum = LanguageEnum;
   constructor(
     private studentProgramSubscriptionServicesService: StudentProgramSubscriptionServicesService,
     private ProgramSubscriptionServicesService: TeacherProgramSubscriptionServicesService,
-    private progService : ProgramService,
+    private progService: ProgramService,
     private route: ActivatedRoute,
-    private alertify: AlertifyService
-
+    private alertify: AlertifyService,
+    public translate: TranslateService
 
   ) { }
 
@@ -45,22 +48,22 @@ export class StudentProgramSubDetailsComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.programId = params['id']
       this.batchId = params['batch']
-  });
+    });
     this.currentUser = JSON.parse(localStorage.getItem('user') || '{}') as Iuser;
 
     this.getSubscriptionProgramDetails();
   }
   getSubscriptionProgramDetails() {
-    let model : IProgramSubscriptionDetailsRequest  = {
-      batchId:this.batchId,
-      programId:this.programId
+    let model: IProgramSubscriptionDetailsRequest = {
+      batchId: this.batchId,
+      programId: this.programId
     }
     this.progService.getSubscriptionProgramDetails(model).subscribe(
       res => {
 
         if (res.isSuccess) {
           this.programsForSubscriptionsDetails = res.data;
-          console.log('this.programsForSubscriptionsDetails', this.programsForSubscriptionsDetails);
+          // console.log('this.programsForSubscriptionsDetails', this.programsForSubscriptionsDetails);
         }
         else {
           this.resMessage = {
@@ -99,16 +102,21 @@ export class StudentProgramSubDetailsComponent implements OnInit {
       res => {
         if (res.isSuccess) {
 
-          console.log("res", res.data)
-          this.alertify.success(res.message || '');
+          console.log("res", res)
+          // this.alertify.success(res.message || '');
+          // this.ShowCustomConditionOverlay.emit(res.data as IProgramSubscriptionDetails);
+          this.ShowCustomConditionOverlay.emit(this.programsForSubscriptionsDetails);
+          this.requestId.emit(res.data.requestId)
+
+
+
         }
         else {
           this.ShowVerifyProgramPredefinedConditionOverlay.emit(res.data as IStudentSubscriptionPredefinedConditionResponse);
-          this.resMessage = {
-            message: res.message,
-            type: BaseConstantModel.DANGER_TYPE
-          }
-          // console.log("res", this.resMessage.message)
+          // this.resMessage = {
+          //   message: res.message,
+          //   type: BaseConstantModel.DANGER_TYPE
+          // }
 
         }
       }, error => {

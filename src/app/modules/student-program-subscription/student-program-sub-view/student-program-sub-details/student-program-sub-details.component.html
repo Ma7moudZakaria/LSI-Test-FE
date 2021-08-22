@@ -5,7 +5,11 @@
         <div class="program__bg"></div>
         <img src="../../../../assets/images/student-program/qor2an.png" class="program__img">
         <div class="program__title">
-          <h2 class="program__title--text">{{programsForSubscriptionsDetails?.prgName}}</h2>
+          <h2 class="program__title--text">
+            <!-- {{programsForSubscriptionsDetails?.prgName}} -->
+      
+        {{translate.currentLang === langEnum.en ? programsForSubscriptionsDetails?.enProgBatName:programsForSubscriptionsDetails?.arProgBatName}}
+        </h2>
         </div>
         <div class="program__details">
           <div class="program__details--inner">

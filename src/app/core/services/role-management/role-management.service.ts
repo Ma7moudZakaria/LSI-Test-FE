@@ -95,4 +95,9 @@ export class RoleManagementService {
     return this.localUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.roles.Teacher.toString());
   }
 
+  isAccAcc(){
+    this.localUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
+    return this.localUser.accacc === true;
+  }
+
 }

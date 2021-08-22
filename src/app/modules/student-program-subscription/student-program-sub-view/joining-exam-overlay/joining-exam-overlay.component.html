@@ -1,1 +1,83 @@
-<p>joining-exam-overlay works!</p>
+
+<div class="over_lay_exam">
+<h1>اختبار القبول</h1>
+<p class="bold">{{progDetails?.prgName}}</p>
+  
+    <p class="bold">
+        {{translate.currentLang===langEnum.en ? randomExam?.exaNameEn : randomExam?.exaNameAr}}
+    </p> 
+
+    <div >
+     
+<!-- {{currentQuestion}} -->
+     <div class="row justify-content-center">
+         <div class="col-10 card_quest "> 
+                <p class="quest_num"> Quest number-{{currentQuestion?.questionNo}} </p>
+
+                <p class="quest_text">
+                    {{currentQuestion?.text}} 
+                    
+                 </p>
+
+                 <!-- [(ngModel)]="currentQuestion?.correctAnswersByAnswerNumber"  -->
+                length {{currentQuestion?.answers?.length}}
+        <ng-container *ngIf="currentQuestion?.answerType === answerTypeEnum?.singleSelect">
+          <mat-radio-group  *ngIf="currentQuestion" 
+           [(ngModel)]="currentQuestion.studentAnswersByAnswerNumber"
+          aria-label="Select an option"
+          class="input-group  col-12" >
+         <mat-radio-button  *ngFor="let answer of currentQuestion?.answers;let i=index"
+         value="{{answer.answerNo}}" class=" px-4  col-12" >
+         <input type="text" class="form-control input_fullWidth "
+          [(ngModel)]="answer.text"  aria-label="Text input with checkbox" >
+         
+        </mat-radio-button>
+      </mat-radio-group>
+      
+    
+   </ng-container>
+   
+   
+        <ng-container    *ngIf="currentQuestion?.answerType === answerTypeEnum?.multiSelect">
+          <ng-container class="mt-3" *ngFor = 'let answer of currentQuestion?.answers'>
+            <mat-checkbox class="example-margin " (change)='addStudentAns(answer, $event)'>
+           {{answer.text}}
+          </mat-checkbox>
+      </ng-container> 
+
+</ng-container>
+
+        <div class="mt-5">
+              <!-- <div class="d-flex justify-content-center">
+            <input type="time"   class="form-control" 
+            [(ngModel)]='question.time'> -->
+
+            TIMER {{currentQuestion?.time}}
+          
+            </div>
+        </div>
+
+         </div>
+     </div>
+     <div class="row justify-content-end">
+        <div class="col-10">
+                  <section class="mt-5 button_actions">
+              <p>  هل تم الانتهاء من الاجابة ؟</p>
+
+              <div  class="row direction-rtl buttons-center mt-5">
+                  <button   type="submit" class="cancel-btn" (click)="NextQuestion()"> 
+                    NEXT
+                  </button>
+                  <button   type="reset" class="btn_replay mx-3"> 
+                      {{ "GENERAL.CANCEL" | translate }}
+                  </button>
+              </div>
+          </section>
+            </div>
+     </div>
+     
+ 
+<button (click)='submitExam()'>submit</button>
+        <!-- <app-question-template [questionTemplate] = 'question' [viewMode] = 'true'></app-question-template> -->
+    </div>
+  

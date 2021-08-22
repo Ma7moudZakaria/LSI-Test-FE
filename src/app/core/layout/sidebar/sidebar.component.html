@@ -76,7 +76,7 @@
                 </li>
             </ul>
 
-            <ul *ngIf='!roleService.isAdmin() && (!roleService.isStudent() || roleService.isTeacher())'>
+            <ul *ngIf='!roleService.isAdmin() && (!roleService.isStudent() || roleService.isTeacher()) && roleService.isAccAcc()'>
                 <li onclick="" class="nav-item" routerLinkActive="active">
                     <a [routerLink] = "['/dashboard']"  routerLinkActive="active" class="nav-link">
                        <img src="../../../../assets/images/sidebar/Dashboard-icon.png">

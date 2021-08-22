@@ -7,7 +7,7 @@ export interface IConditionModel {
     answerType?: SettingAnswerTypeEnum;
     answerList?: ISettingAnswer[];
     studAnsValues?: ISettingAnswer[];
-    studTxtAns?:string;
-    studBoolAns?:boolean;
+    studTxtAns?: string;
+    studBoolAns?: boolean;
 }
 
