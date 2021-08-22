@@ -13,7 +13,7 @@
     </div>
   
     <div class="card_body">
-      
+      <span>{{studentDropOutRequestFilterRequestAdminModel?.no}}</span>
       <div class="d-flex align-items-center mb-3">
         <img *ngIf='!studentDropOutRequestFilterRequestAdminModel.avatarLink' class="img_user" src="../../../../assets/images/student/user-profile.svg">
         <img *ngIf='studentDropOutRequestFilterRequestAdminModel.avatarLink' class="img_user" src="{{studentDropOutRequestFilterRequestAdminModel.avatarLink}}" >
@@ -32,25 +32,23 @@
 
       </div>
 
-      <div >
-        <p class="program_reason  mb-0 pb-2"  > 
+      <div class="program_reason ">
+        <p class="mb-0 pb-2"  > 
         <span>
-          سبب الطلب :
+           {{'STUDENT_SUBSCRIBERS.NO_DATA' | translate}}  :
         </span>
-        <span class="program_user bold mb-0 " *ngIf="!studentDropOutRequestFilterRequestAdminModel.reason ">لا يوجد</span>
+        <span class="program_user bold mb-0 " *ngIf="!studentDropOutRequestFilterRequestAdminModel.reason ">{{'STUDENT_SUBSCRIBERS.NO_DATA' | translate}} </span>
         <span class="program_user bold mb-0 ">{{ studentDropOutRequestFilterRequestAdminModel.reason }}</span>
         </p>
-      </div>
-      <ng-container>
-        <p class="program_rejected  mb-0 pb-2" *ngIf='typeDropOutRequestEnum.Rejected === typeEnum' > 
-          <span class="bold mx-1">سبب الرفض:</span> 
-        <span class="program_user bold mb-0 " *ngIf="!studentDropOutRequestFilterRequestAdminModel.reasonReject ">لا يوجد</span>
+        <p class=" mb-0 pb-2" *ngIf='typeDropOutRequestEnum.Rejected === typeEnum' > 
+          <span class="bold mx-1">{{'STUDENT_SUBSCRIBERS.REASON_REJECT' | translate}}  :</span> 
+        <span class="program_user bold mb-0 " *ngIf="!studentDropOutRequestFilterRequestAdminModel.reasonReject ">{{'STUDENT_SUBSCRIBERS.NO_DATA' | translate}} </span>
 
           <span>
             {{ studentDropOutRequestFilterRequestAdminModel.reasonReject }}
           </span>
         </p>
-      </ng-container>
+      
     </div>
  
   <ng-container *ngIf="typeEnum === typeDropOutRequestEnum.Pending">

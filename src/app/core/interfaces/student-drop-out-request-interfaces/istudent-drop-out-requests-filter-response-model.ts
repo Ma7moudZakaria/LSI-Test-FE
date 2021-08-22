@@ -13,4 +13,5 @@ export interface IStudentDropOutRequestsFilterResponseModel {
     reasonReject?:string;
     avatarLink?:string;
     reason?:string;
+    no?:number;
 }
