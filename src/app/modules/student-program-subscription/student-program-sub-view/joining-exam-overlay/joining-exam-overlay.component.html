@@ -40,9 +40,7 @@
    
         <ng-container    *ngIf="currentQuestion?.answerType === answerTypeEnum?.multiSelect">
           <ng-container class="mt-3" *ngFor = 'let answer of currentQuestion?.answers'>
-            <mat-checkbox
-            
-            class="example-margin " >
+            <mat-checkbox class="example-margin " (change)='addStudentAns(answer, $event)'>
            {{answer.text}}
           </mat-checkbox>
       </ng-container> 
@@ -79,7 +77,7 @@
      </div>
      
  
-
+<button (click)='submitExam()'>submit</button>
         <!-- <app-question-template [questionTemplate] = 'question' [viewMode] = 'true'></app-question-template> -->
     </div>
   

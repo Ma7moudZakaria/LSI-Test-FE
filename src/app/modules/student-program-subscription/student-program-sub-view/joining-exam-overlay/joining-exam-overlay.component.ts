@@ -1,9 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AnswerTypeEnum } from 'src/app/core/enums/exam-builder-enums/answer-type-enum.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { IAnswer } from 'src/app/core/interfaces/exam-builder-interfaces/ianswer';
 import { IQuestion } from 'src/app/core/interfaces/exam-builder-interfaces/iquestion';
 import { IRandomExamModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/irandom-exam-model';
+import { IStudentCustomConditionAnswerModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-custom-condition-answer-model';
+import { IstudentJoiningExamAnswerModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-joining-exam-answer-model';
 import { IProgramSubscriptionDetails } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iprogram-subscription-details';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
@@ -25,11 +29,13 @@ export class JoiningExamOverlayComponent implements OnInit {
 
   currentQuestion: IQuestion | undefined
   counter: number = 0
+  @Input() requestId: string | undefined
 
   constructor(
-    private studentCustomConditionService: StudentProgramSubscriptionServicesService,
+    private studentProgSubscriptionService: StudentProgramSubscriptionServicesService,
     public translate: TranslateService,
-    private alertify: AlertifyService
+    private alertify: AlertifyService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -45,7 +51,7 @@ export class JoiningExamOverlayComponent implements OnInit {
 
 
   getRandomExam() {
-    this.studentCustomConditionService.getRandomJoiningExam(this.progDetails?.id || '').subscribe(
+    this.studentProgSubscriptionService.getRandomJoiningExam(this.progDetails?.id || '').subscribe(
       res => {
 
         if (res.isSuccess) {
@@ -72,6 +78,58 @@ export class JoiningExamOverlayComponent implements OnInit {
     this.counter++;
     this.currentQuestion = this.randomExam && this.randomExam.questions ?
       this.randomExam.questions[this.counter] : undefined;
+  }
+
+  addStudentAns(item:IAnswer, event:any){
+    if (event.checked && item && item.answerNo){
+      this.currentQuestion?.studentAnswersByAnswerNumbers?.push(item.answerNo);
+    }
+    else{
+      let it = this.currentQuestion?.studentAnswersByAnswerNumbers?.filter(i => i === item.answerNo)[0];
+      const ind = it ? this.currentQuestion?.studentAnswersByAnswerNumbers?.indexOf(it) : -1;
+      if (ind && ind > -1) {
+        this.currentQuestion?.studentAnswersByAnswerNumbers?.splice(ind, 1);
+      }
+    }
+  }
+
+  submitExam(){
+    let model : IstudentJoiningExamAnswerModel= {
+      exId: this.randomExam?.exId,
+      stProgSubsId: this.requestId,
+      answer: this.randomExam?.questions
+    }
+    this.studentProgSubscriptionService.submitStudentJoiningExamAnswer(model).subscribe(res => {
+      if (res.isSuccess){
+        this.studentSubscriptionCompleted();
+      }
+      else{
+
+      }
+    }, error => {
+        this.resMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      })
+  }
+
+  studentSubscriptionCompleted(){
+    let model :string[] = [];
+    model.push(this.requestId || '');
+    this.studentProgSubscriptionService.studentProgramSubscriptionsCompleted(model).subscribe(res => {
+      if(res.isSuccess){
+        this.router.navigateByUrl('/student-for-subscription');
+      }
+      else{
+
+      }
+    }, error => {
+        this.resMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      })
   }
 
 
