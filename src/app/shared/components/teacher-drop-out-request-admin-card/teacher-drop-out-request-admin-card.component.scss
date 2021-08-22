@@ -6,7 +6,7 @@
     border-radius: 50%;
 }
 .card-request{
-  height: auto;
+  height: 30vh;
 }
 .rejected{
     color: red;
@@ -21,4 +21,13 @@
 .accept{
     color: #39B91A;
     background: #39B91A;
+}
+
+.container-width{
+    flex-basis: 200px;
+}
+.program_rejected
+{
+    height: 10vh;
+    overflow-y: auto;
 }

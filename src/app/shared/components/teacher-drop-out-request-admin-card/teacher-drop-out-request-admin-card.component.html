@@ -13,17 +13,25 @@
     </div>
   
     <div class="card_body">
-      <div class="d-flex justify-content-between mb-3">
+      <div class="d-flex align-items-center mb-3">
         <img *ngIf='!teacherDropOutRequestModel.avatarLink' (click)="openDetails(teacherDropOutRequestModel?.id)" class="img_user" src="../../../../assets/images/student/user-profile.svg">
         <img *ngIf='teacherDropOutRequestModel.avatarLink' (click)="openDetails(teacherDropOutRequestModel?.id)"  class="img_user" src="{{teacherDropOutRequestModel.avatarLink}}" >
-      <div class="mx-1">
-        <p class="name_user bold mb-2" (click)="openDetails(teacherDropOutRequestModel?.id)">{{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.teacherNameEn : teacherDropOutRequestModel?.teacherNameAr}}</p>
+      <div class="mx-1 container-width">
+        <p class="name_user bold mb-2 ellipsis p-0" (click)="openDetails(teacherDropOutRequestModel?.id)" 
+        title=" {{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.teacherNameEn : teacherDropOutRequestModel?.teacherNameAr}}">
+          {{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.teacherNameEn : teacherDropOutRequestModel?.teacherNameAr}}</p>
         <!-- <p class="program_user bold mb-2 "> {{teacherDropOutRequestModel.progName}}</p>       -->
         <p class="program_user bold mb-2 ">{{translate.currentLang === langEnum.en ? teacherDropOutRequestModel.enProgBatName : teacherDropOutRequestModel.arProgBatName }}</p>        
-        <p class="program_user bold mb-0 ">         
       </div>
-
       </div>
+      <ng-container *ngIf="teacherDropOutRequestModel.reasonReject">
+      <p class="program_rejected  mb-0 pb-2"  *ngIf="typeEnum === typeDropOutRequestEnum.Rejected"> 
+        <span class="bold mx-1">سبب الرقض:</span> 
+        <span>
+          {{teacherDropOutRequestModel.reasonReject}}
+        </span>
+      </p>
+    </ng-container>
     </div>
  
   <ng-container *ngIf="typeEnum === typeDropOutRequestEnum.Pending">

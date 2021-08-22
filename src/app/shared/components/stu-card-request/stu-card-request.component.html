@@ -16,9 +16,9 @@
       <div class="d-flex justify-content-between mb-3">
         <img *ngIf='!studentSubscripModel.avatarLink' class="img_user" src="../../../../assets/images/student/user-profile.svg">
         <img *ngIf='studentSubscripModel.avatarLink' class="img_user" src="{{studentSubscripModel.avatarLink}}" >
-      <div class="mx-1">
+      <div class="mx-1 container-width">
         <p class="number_request mb-1 ">{{studentSubscripModel.programStaNum}}</p>
-        <p class="name_user bold mb-2">{{studentSubscripModel.usrNameAr}}</p>
+        <p class="name_user bold mb-2 ellipsis p-0" title="{{studentSubscripModel.usrNameAr}}">{{studentSubscripModel.usrNameAr}}</p>
         <!-- <p class="program_user bold mb-2 "> {{studentSubscripModel.progName}}</p> -->
         <p class="program_user bold mb-2 "> {{translate.currentLang === langEnum.en ? studentSubscripModel.enProgBatName : studentSubscripModel.arProgBatName }}</p>
         <p class="program_user bold mb-0 "> 
@@ -31,6 +31,16 @@
          <a><img src="../../../../../assets/images/chat.svg"></a> 
         </div>
       </div>
+
+      <ng-container *ngIf="studentSubscripModel.reasonReject">
+        <p class="program_rejected  mb-0 pb-2"  *ngIf="typeEnum === tabTypeSelected.Rejected"> 
+          <span class="bold mx-1">سبب الرقض:</span> 
+          <span>
+            {{studentSubscripModel.reasonReject}}
+          </span>
+        </p>
+      </ng-container>
+
     </div>
  
   <ng-container *ngIf="typeEnum === tabTypeSelected.Pending ">
