@@ -29,6 +29,7 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   @Output() rejectTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
   @Output() acceptTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
   @Output() acceptAllTeacherProgramSubscriptionCheched = new EventEmitter<ITeacherProgramSubscriptionModel>();
+  @Output() teacherIdFormGrid = new EventEmitter<string>();
 
   @Input() userMode: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.student;
   @Input() studentFilterRequestModel: IStudentSubscriptionFilterRequestModel = { skip: 0, take: 9, page: 1 };
@@ -55,7 +56,9 @@ export class ProgramSubscriptionGridComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  teacherProgSubOutputEvent(event:string){
+    this.teacherIdFormGrid.emit(event);
+  }
   sortTeacherByName() {
     this.teacherFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn';
     this.teacherFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;

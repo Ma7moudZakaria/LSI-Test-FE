@@ -11,6 +11,8 @@ export class StuCardRequestComponent implements OnInit {
   @Output() rejecteStuRequest = new EventEmitter<IStudentSubscriptionModel>();
   @Output() acceptStuRequest = new EventEmitter<IStudentSubscriptionModel>();
 
+
+
   @Input() typeEnum: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending;
   tabTypeSelected = StudentProgramSubscriptionStatusEnum;
 

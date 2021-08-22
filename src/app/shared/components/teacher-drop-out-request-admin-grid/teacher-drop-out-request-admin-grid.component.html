@@ -84,7 +84,7 @@
        </div>
   </div>
 
-  <mat-grid-list  cols="{{numberPerRow}}" rowHeight="3:2.5"  *ngIf='userRoleMode.Admin === userMode'>
+  <mat-grid-list  cols="{{numberPerRow}}" rowHeight="3:3"  *ngIf='userRoleMode.Admin === userMode'>
     <ng-container >
         <mat-grid-tile *ngFor='let item of teacherDropOutRequestItems' >
          <app-teacher-drop-out-request-admin-card class="card" 

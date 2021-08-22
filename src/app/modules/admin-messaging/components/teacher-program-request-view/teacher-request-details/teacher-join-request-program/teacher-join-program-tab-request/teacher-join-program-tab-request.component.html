@@ -1,4 +1,4 @@
-<div class="container-fluid reuest_container" > 
+<div *ngIf="!showUserDetailsView" class="container-fluid reuest_container" >
   <div class="col-12  justify-content-end text-right d-flex align-items-center">
     <app-search-input (searchTerm)=searchByText($event) [searchKey]='this.teacherProgramSubscriptionFilterRequestModel.usrName || ""'></app-search-input>
 <a class="advanced_search mb-3" (click)="openAvancedSearch()">بحث متقدم</a>
@@ -38,6 +38,7 @@
           [totalCount]='totalCount'
           [teacherFilterRequestModel] = 'teacherProgramSubscriptionFilterRequestModel'
           (teacherFilterEvent)="teacherPendingChangePage($event)"
+                                       (teacherIdFormGrid)= "sendTeacherIDEvent($event)"
           >
         </app-program-subscription-grid>
           <div *ngIf='teacherProgramSubscriptionList.length === 0'>
@@ -59,6 +60,7 @@
             [totalCount]='totalCount'
             [teacherFilterRequestModel] = 'teacherProgramSubscriptionFilterRequestModel'
             (teacherFilterEvent)="teacherAcceptChangePage($event)"
+                                         (teacherIdFormGrid)= "sendTeacherIDEvent($event)"
             >
             </app-program-subscription-grid>
             <div *ngIf='teacherProgramSubscriptionList.length === 0'>
@@ -79,6 +81,7 @@
               [totalCount]='totalCount'
                [teacherFilterRequestModel] = 'teacherProgramSubscriptionFilterRequestModel'
                (teacherFilterEvent)="teacherRejectedChangePage($event)"
+                                           (teacherIdFormGrid)= "sendTeacherIDEvent($event)"
                >
               </app-program-subscription-grid>
               <div *ngIf='teacherProgramSubscriptionList.length === 0'>
@@ -91,7 +94,8 @@
   </div>
 
   </div>
-  
 
+
+<app-user-details *ngIf="showUserDetailsView"  (hideUserDetails) ="hideUserDetailsView($event)" [resiveUserId]='sendUserID'></app-user-details>
 
 

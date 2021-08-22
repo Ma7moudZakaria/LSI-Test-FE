@@ -1,5 +1,6 @@
 export interface ITeacherProgramSubscriptionModel {
     id?:string;
+    usrId?:string;
     requestDate?:Date;
     usrNameAr?:string;
     usrNameEn?:string;
