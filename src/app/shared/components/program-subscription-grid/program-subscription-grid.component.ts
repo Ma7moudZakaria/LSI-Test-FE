@@ -30,6 +30,7 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   @Output() acceptTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
   @Output() acceptAllTeacherProgramSubscriptionCheched = new EventEmitter<ITeacherProgramSubscriptionModel>();
   @Output() teacherIdFormGrid = new EventEmitter<string>();
+  @Output() studentIdFormGrid = new EventEmitter<string>();
 
   @Input() userMode: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.student;
   @Input() studentFilterRequestModel: IStudentSubscriptionFilterRequestModel = { skip: 0, take: 9, page: 1 };
@@ -58,6 +59,9 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   }
   teacherProgSubOutputEvent(event:string){
     this.teacherIdFormGrid.emit(event);
+  }
+  studentProgSubOutputEvent(event:string){
+    this.studentIdFormGrid.emit(event);
   }
   sortTeacherByName() {
     this.teacherFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn';

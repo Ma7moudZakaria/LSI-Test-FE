@@ -10,7 +10,7 @@ import { IStudentSubscriptionModel } from 'src/app/core/interfaces/student-progr
 export class StuCardRequestComponent implements OnInit {
   @Output() rejecteStuRequest = new EventEmitter<IStudentSubscriptionModel>();
   @Output() acceptStuRequest = new EventEmitter<IStudentSubscriptionModel>();
-
+  @Output() studentProgSubOutput = new EventEmitter<string>();
 
 
   @Input() typeEnum: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending;
@@ -22,7 +22,9 @@ export class StuCardRequestComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  studentJoinId(id?:string){
+    this.studentProgSubOutput.emit(id);
+  }
 
   rejectedStudentReq() {
     this.rejecteStuRequest.emit(this.studentSubscripModel)

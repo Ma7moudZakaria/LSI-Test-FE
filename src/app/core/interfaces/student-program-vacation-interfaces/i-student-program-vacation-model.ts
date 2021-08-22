@@ -1,6 +1,7 @@
 export interface IStudentProgramVacationModel {
   avatarLink?: string;
   id?: string;
+  usrId?:string;
   requestDate?: Date;
   usrNameAr?: string;
   usrNameEn?: string;

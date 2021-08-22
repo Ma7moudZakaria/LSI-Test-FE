@@ -20,6 +20,7 @@ export class StudentProgramVacationGridComponent implements OnInit {
   @Output() studentVacationFilterEvent = new EventEmitter<IStudentProgramVacationFilterRequestModel>();
   @Output() acceptAllStudentProgramVacationChecked = new EventEmitter<IStudentProgramVacationModel>();
   @Output() acceptStudentProgramVacation = new EventEmitter<IStudentProgramVacationModel>();
+  @Output() sendStudentVacationId = new EventEmitter<string>();
   @Input() numberPerRow: number = 3;
   @Input() totalCount: number = 0;
   @Input() studentProgramVacationFilterRequestModel: IStudentProgramVacationFilterRequestModel = { skip: 0, take: 9, page: 1 };
@@ -41,7 +42,9 @@ export class StudentProgramVacationGridComponent implements OnInit {
     this.userRole= this.currentUser.usrRoles?.usrRoles?.[0].enRoleName.toString();
 
   }
-
+  getStudentVacationId(event:string){
+    this.sendStudentVacationId.emit(event);
+  }
   sortStudentByName() {
     this.studentProgramVacationFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn';
     this.studentProgramVacationFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;

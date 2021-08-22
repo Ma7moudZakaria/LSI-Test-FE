@@ -1,4 +1,4 @@
-<div class="container-fluid reuest_container">
+<div *ngIf="!showUserDetailsView" class="container-fluid reuest_container">
   <div class="row">
     <div class="col-12  justify-content-end text-right d-flex align-items-center">
       <app-search-input class="mr-3 ml-3" (searchTerm)=searchByText($event)
@@ -40,6 +40,7 @@
                                        [totalCount]='totalCount'
                                        [studentVacationFilterRequestModel]='studentProgramVacationFilterRequestModel'
                                        (studentVacationFilterEvent)="StudentProgramVacationPendingChangePage($event)"
+                                           (sendStudentVacationId)="studentIdDrop($event)"
         >
         </app-student-program-vacation-grid>
         <div *ngIf='studentProgramVacationRequestsList.length === 0'>
@@ -58,6 +59,7 @@
                                        [totalCount]='totalCount'
                                        [studentVacationFilterRequestModel]='studentProgramVacationFilterRequestModel'
                                        (studentVacationFilterEvent)="StudentProgramVacationAcceptChangePage($event)"
+                                           (sendStudentVacationId)="studentIdDrop($event)"
         >
         </app-student-program-vacation-grid>
         <div *ngIf='studentProgramVacationRequestsList.length === 0'>
@@ -75,6 +77,7 @@
                                        [totalCount]='totalCount'
                                        [studentVacationFilterRequestModel]='studentProgramVacationFilterRequestModel'
                                        (studentVacationFilterEvent)="StudentProgramVacationRejectedChangePage($event)"
+                                           (sendStudentVacationId)="studentIdDrop($event)"
         >
         </app-student-program-vacation-grid>
         <div *ngIf='studentProgramVacationRequestsList.length === 0'>
@@ -91,3 +94,4 @@
 
 
 
+<app-student-details-view *ngIf="showUserDetailsView"  (hideUserDetails) ="hideUserDetailsView($event)" [resiveUserId]="StudentDropIdInput"></app-student-details-view>

@@ -1,4 +1,4 @@
-<div class="card-request">
+  <div class="card-request">
   <div class="card_header align-items-center">
     <section class="example-section mt-2">
       <mat-checkbox [(ngModel)]="studentSubscripModel.checked" class="example-margin"></mat-checkbox>
@@ -16,12 +16,13 @@
   <div class="card_body">
     <div class="d-flex justify-content-between mb-3">
 
-      <img *ngIf='!studentSubscripModel.avatarLink' class="img_user"
+      <img *ngIf='!studentSubscripModel.avatarLink' class="img_user cursor-pointer" (click)="showStudentDetails(studentSubscripModel?.usrId)"
            src="../../../../assets/images/student/user-profile.svg">
-      <img *ngIf='studentSubscripModel.avatarLink' class="img_user" src="{{studentSubscripModel.avatarLink}}">
+      <img *ngIf='studentSubscripModel.avatarLink' class="img_user cursor-pointer" (click)="showStudentDetails(studentSubscripModel?.usrId)"
+           src="{{studentSubscripModel.avatarLink}}">
         <div class="mx-1 d-inline-block">
           <p class="number_request mb-1 "> {{studentSubscripModel.avatarLink}}</p>
-          <p class="name_user bold mb-2">{{studentSubscripModel.usrNameAr}}</p>
+          <p class="name_user bold mb-2 cursor-pointer" (click)="showStudentDetails(studentSubscripModel?.usrId)">{{studentSubscripModel.usrNameAr}}</p>
           <p class="program_user bold mb-2 "> {{studentSubscripModel.progName}}</p>
         </div>
 

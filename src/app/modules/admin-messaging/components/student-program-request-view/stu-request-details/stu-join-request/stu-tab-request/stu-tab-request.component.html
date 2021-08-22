@@ -1,6 +1,6 @@
 
 
-<div class="container-fluid reuest_container" > 
+<div *ngIf="!showUserDetailsView" class="container-fluid reuest_container" >
     <div class="col-12  justify-content-end text-right d-flex align-items-center">
             <app-search-input 
             (searchTerm)=filterByText($event)
@@ -41,7 +41,7 @@
                 (studentFilterEvent)="stuPendingChangePage($event)"
                 [totalCount]='totalCount'
                 [studentFilterRequestModel]='filter'
-                
+                                           (studentIdFormGrid)= "sendUserIDEvent($event)"
                 
             >
             </app-program-subscription-grid>
@@ -52,7 +52,7 @@
                  (studentFilterEvent)="stuAcceptChangePage($event)"
                  [totalCount]='totalCount'
                  [studentFilterRequestModel]='filter'
-                
+                                           (studentIdFormGrid)= "sendUserIDEvent($event)"
                  
                   >
                 </app-program-subscription-grid>
@@ -63,7 +63,7 @@
                    (studentFilterEvent)="stuRejectedChangePage($event)"
                    [totalCount]='totalCount'
                    [studentFilterRequestModel]='filter'
-                 
+                   (studentIdFormGrid)= "sendUserIDEvent($event)"
                    >
                 </app-program-subscription-grid>
          
@@ -73,4 +73,5 @@
     
     
     </div>
-    
+
+<app-student-details-view *ngIf="showUserDetailsView"  (hideUserDetails) ="hideUserDetailsView($event)" [resiveUserId]="sendUserID"></app-student-details-view>

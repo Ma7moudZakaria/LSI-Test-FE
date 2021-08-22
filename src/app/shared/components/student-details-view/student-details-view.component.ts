@@ -36,7 +36,6 @@ export class StudentDetailsViewComponent implements OnInit {
 
 
   getTeacherProfile() {
-    console.log('this.resiveUserId',this.resiveUserId);
     this.teacherProfileService.viewTeacherProfileDetails(this.resiveUserId|| '').subscribe(res => {
       if (res.isSuccess) {
         this.teacherProfileDetails = res.data as ITeacherProfile;
