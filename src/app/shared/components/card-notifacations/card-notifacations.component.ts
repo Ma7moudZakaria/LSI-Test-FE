@@ -14,12 +14,11 @@ export class CardNotifacationsComponent implements OnInit {
   @Output() deleteCardNotify = new EventEmitter<string>();
   @Output() editCardNotify = new EventEmitter<IProgramNotificationModel>();
   @Input() notificationsCardDetails: IProgramNotificationDetails = {};
-
+  @Input() viewMode:boolean= false;
   lang = LanguageEnum;
 
 
   ngOnInit(): void {
-
   }
 
   deleteCard() {
