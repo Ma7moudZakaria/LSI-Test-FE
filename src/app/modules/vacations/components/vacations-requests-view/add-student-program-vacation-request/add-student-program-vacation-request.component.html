@@ -1,3 +1,4 @@
+<form class="form-group material-form" (submit)="Submit()">
 <div class="form-group DataForm mt-5 pl-3 pr-3">
   <h3 class=" head  bold">{{'STUDENT_VACATION.VACATION_REQUEST' | translate}} </h3>
   <div class="form-group">
@@ -5,44 +6,70 @@
 
     <div class="d-flex">
       <div class="input-group">
-        <select class="form-control"  [(ngModel)]="addStudentVacationRequestModel.batchId"    [ngModelOptions]="{standalone: true}">
+        <select class="form-control"  [(ngModel)]="addStudentVacationRequestModel.batchId"    [ngModelOptions]="{standalone: true}" name="batchId">
           <option   value="">{{'SCIENTIFIC_MATERIAL.SELECTOPTION' | translate}}</option>
           <option *ngFor="let item of programs" value="{{item.batId}}" >
             {{translate.currentLang === langEnum.en ? item.enProgBatchName: item.arProgBatchName}}
           </option>
         </select>
+
+      </div>
+
+
+    </div>
+    <div *ngIf="f.batchId.errors && (f.batchId.touched || isSubmit)"
+         class="alert alert-danger mt-2 mb-2">
+      <div *ngIf="f.batchId.errors?.required">
+        {{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}
       </div>
     </div>
-
   </div>
 
   <div class="form-group subscribtion-date">
 
     <div class="col-12 p-0">
       <label  class="label"> {{'STUDENT_VACATION.DATE_FROM' | translate}}  </label>
-      <app-milady-hijri-calendar  [editcalenderType]="calenderType" (sendDate)="SendDatafrom($event)"
+      <app-milady-hijri-calendar  [editcalenderType]="calenderType" (sendDate)="SendDatafrom($event)" name="dateFrom"
                                   (keypress)="$event.preventDefault()"
                                   [hijri]="!hijri" [milady]="milady"  [maxGreg]="maxGregDate"  [(ngModel)]="addStudentVacationRequestModel.vacationStartDate">
       </app-milady-hijri-calendar>
-
+      <div *ngIf="f.dateFrom.errors && (f.dateFrom.touched || isSubmit)"
+           class="alert alert-danger mt-2 mb-2">
+        <div *ngIf="f.dateFrom.errors?.required">
+          {{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}
+        </div>
+      </div>
     </div>
     <div class="col-12 p-0">
       <label  class="label"> {{'STUDENT_VACATION.DATE_TO' | translate}} </label>
-      <app-milady-hijri-calendar  [editcalenderType]="calenderType" (sendDate)="SendDataTo($event)"
+      <app-milady-hijri-calendar  [editcalenderType]="calenderType" (sendDate)="SendDataTo($event)" name="dateTo"
                                   (keypress)="$event.preventDefault()"
                                   [hijri]="!hijri" [milady]="milady"  [maxGreg]="maxGregDate"  [(ngModel)]="addStudentVacationRequestModel.vacationEndDate">
       </app-milady-hijri-calendar>
     </div>
-
+    <div *ngIf="f.dateTo.errors && (f.dateTo.touched || isSubmit)"
+         class="alert alert-danger mt-2 mb-2">
+      <div *ngIf="f.dateTo.errors?.required">
+        {{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}
+      </div>
+    </div>
   </div>
 <div>
   <label  class="label mt-4">
     {{ "STUDENT_VACATION.VACATION_REASON" | translate }}
   </label>
 
-  <textarea  class="form-control " cols="1"  rows="5"
-             [(ngModel)]='addStudentVacationRequestModel.vacationReason'  [ngModelOptions]="{standalone: true}" >
+  <textarea  class="form-control " cols="1"  rows="5"  id="InputQuestion" name="vacationReason"
+             [(ngModel)]='addStudentVacationRequestModel.vacationReason'  [ngModelOptions]="{standalone: true}" [ngClass]="{'red-border-class': f.vacationReason.errors && ( f.vacationReason.touched || isSubmit)}">
         </textarea>
+  <div *ngIf="f.vacationReason.errors && (f.vacationReason.touched || isSubmit)" class="alert alert-danger mt-2 mb-2">
+    <div *ngIf="f.vacationReason.errors.required">
+      {{"QUESTION_BANK.REQUIRED"|translate}}
+    </div>
+
+
+  </div>
+
 </div>
 
 
@@ -52,7 +79,7 @@
 
   <section class="mt-5">
     <div  class="row direction-rtl buttons-center mt-5">
-      <button   type="submit" class="save-btn" (click)="AddStudentVacationRequest()">
+      <button   type="submit" class="save-btn"  [disabled]="disableSaveButtons">
         {{'STUDENT_VACATION.SEND' | translate}}
       </button>
       <button  (click)="closeAddStudentVacation()"  type="reset" class="cancel-btn">
@@ -66,3 +93,5 @@
 
 
 </div>
+</form>
+
