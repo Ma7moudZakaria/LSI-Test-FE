@@ -1,6 +1,6 @@
 <div class="card-request">
     <div class="card_header">
-      <section class="example-section mt-2">
+      <section class="example-section mt-2"  *ngIf='typeDropOutRequestEnum.Pending === typeEnum'>
         <mat-checkbox class="example-margin"  [(ngModel)]="studentDropOutRequestFilterRequestAdminModel.checked" ></mat-checkbox>
       </section>
     <div>
@@ -13,17 +13,44 @@
     </div>
   
     <div class="card_body">
+      
       <div class="d-flex align-items-center mb-3">
         <img *ngIf='!studentDropOutRequestFilterRequestAdminModel.avatarLink' class="img_user" src="../../../../assets/images/student/user-profile.svg">
         <img *ngIf='studentDropOutRequestFilterRequestAdminModel.avatarLink' class="img_user" src="{{studentDropOutRequestFilterRequestAdminModel.avatarLink}}" >
       <div class="mx-1">
-        <p class="name_user bold mb-2 ellipsis p-0" title="{{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestAdminModel?.usrNameEn : studentDropOutRequestFilterRequestAdminModel?.usrNameAr}}">{{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestAdminModel?.usrNameEn : studentDropOutRequestFilterRequestAdminModel?.usrNameAr}}</p>
-        <!-- <p class="program_user bold mb-2 "> {{studentDropOutRequestFilterRequestAdminModel.progName}}</p>         -->
-        <p class="program_user bold mb-2 "> {{translate.currentLang === langEnum.en ? studentDropOutRequestFilterRequestAdminModel.enProgBatchName: studentDropOutRequestFilterRequestAdminModel.arProgBatchName}}</p>      
-        <p class="program_user bold mb-0 ">         
+      
+          <p class="name_user bold mb-2 ellipsis p-0" 
+          title=" {{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestAdminModel?.usrNameEn : studentDropOutRequestFilterRequestAdminModel?.usrNameAr}}">
+            {{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestAdminModel?.usrNameEn : studentDropOutRequestFilterRequestAdminModel?.usrNameAr}}</p>
+          <p class="program_user bold mb-2 ellipsis p-0 "
+         title="{{studentDropOutRequestFilterRequestAdminModel.progName}}"
+          > {{studentDropOutRequestFilterRequestAdminModel.progName}}</p>        
+          <p class="program_user bold mb-2 "> {{translate.currentLang === langEnum.en ? studentDropOutRequestFilterRequestAdminModel.batNameEn: studentDropOutRequestFilterRequestAdminModel.batNameEn}}</p>      
+          
+          
       </div>
 
       </div>
+
+      <div >
+        <p class="program_reason  mb-0 pb-2"  > 
+        <span>
+          سبب الطلب :
+        </span>
+        <span class="program_user bold mb-0 " *ngIf="!studentDropOutRequestFilterRequestAdminModel.reason ">لا يوجد</span>
+        <span class="program_user bold mb-0 ">{{ studentDropOutRequestFilterRequestAdminModel.reason }}</span>
+        </p>
+      </div>
+      <ng-container>
+        <p class="program_rejected  mb-0 pb-2" *ngIf='typeDropOutRequestEnum.Rejected === typeEnum' > 
+          <span class="bold mx-1">سبب الرفض:</span> 
+        <span class="program_user bold mb-0 " *ngIf="!studentDropOutRequestFilterRequestAdminModel.reasonReject ">لا يوجد</span>
+
+          <span>
+            {{ studentDropOutRequestFilterRequestAdminModel.reasonReject }}
+          </span>
+        </p>
+      </ng-container>
     </div>
  
   <ng-container *ngIf="typeEnum === typeDropOutRequestEnum.Pending">

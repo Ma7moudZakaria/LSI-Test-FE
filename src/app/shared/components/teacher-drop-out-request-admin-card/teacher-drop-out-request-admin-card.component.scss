@@ -6,7 +6,7 @@
     border-radius: 50%;
 }
 .card-request{
-  height: 30vh;
+  height: 32vh;
 }
 .rejected{
     color: red;
@@ -26,8 +26,13 @@
 .container-width{
     flex-basis: 200px;
 }
+.program_reason,
 .program_rejected
 {
-    height: 10vh;
+    max-height: 10vh;
     overflow-y: auto;
+}
+.card_body{
+
+    padding-bottom: 0;
 }

@@ -23,3 +23,16 @@
 .ellipsis{
     width: 200px;
 }
+.program_reason,
+.program_rejected
+{
+    max-height: 10vh;
+    overflow-y: auto;
+}
+.card_body{
+
+    padding-bottom: 0;
+}.card-request {
+    
+    height: 35vh;
+}

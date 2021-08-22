@@ -67,7 +67,7 @@
           </span>
        </button>
       </div> 
-       <div class="col-4 pl-4 text-right align-self-center"  *ngIf='userRoleMode.Admin === userMode'>
+       <div class="col-4 pl-4 text-right align-self-center"  *ngIf='userRoleMode.Admin === userMode && teacherDropOutRequestStatus.Pending === typeEnum'>
           <mat-checkbox class="example-margin ml-1 mr-1 scProblem"
                     [checked]="allSelected"
                     [indeterminate]="someTeachertItemsChecked()"
