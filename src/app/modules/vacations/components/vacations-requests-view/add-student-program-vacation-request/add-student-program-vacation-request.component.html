@@ -31,7 +31,7 @@
       <label  class="label"> {{'STUDENT_VACATION.DATE_FROM' | translate}}  </label>
       <app-milady-hijri-calendar  [editcalenderType]="calenderType" (sendDate)="SendDatafrom($event)" name="dateFrom"
                                   (keypress)="$event.preventDefault()"
-                                  [hijri]="!hijri" [milady]="milady"  [maxGreg]="maxGregDate"  [(ngModel)]="addStudentVacationRequestModel.vacationStartDate">
+                                  [hijri]="!hijri" [milady]="milady"    [(ngModel)]="addStudentVacationRequestModel.vacationStartDate">
       </app-milady-hijri-calendar>
       <div *ngIf="f.dateFrom.errors && (f.dateFrom.touched || isSubmit)"
            class="alert alert-danger mt-2 mb-2">
@@ -44,7 +44,7 @@
       <label  class="label"> {{'STUDENT_VACATION.DATE_TO' | translate}} </label>
       <app-milady-hijri-calendar  [editcalenderType]="calenderType" (sendDate)="SendDataTo($event)" name="dateTo"
                                   (keypress)="$event.preventDefault()"
-                                  [hijri]="!hijri" [milady]="milady"  [maxGreg]="maxGregDate"  [(ngModel)]="addStudentVacationRequestModel.vacationEndDate">
+                                  [hijri]="!hijri" [milady]="milady"    [(ngModel)]="addStudentVacationRequestModel.vacationEndDate">
       </app-milady-hijri-calendar>
     </div>
     <div *ngIf="f.dateTo.errors && (f.dateTo.touched || isSubmit)"
