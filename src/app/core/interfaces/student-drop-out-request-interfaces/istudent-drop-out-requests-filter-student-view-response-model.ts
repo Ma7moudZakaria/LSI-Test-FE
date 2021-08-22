@@ -16,4 +16,5 @@ export interface IStudentDropOutRequestsFilterStudentViewResponseModel {
     drpStat?: number;
     no?:number;
     canCancel?:boolean;
+    reason?:string;  
 }

@@ -1,6 +1,6 @@
 <div class="card-request">
     <div class="card_header">
-      <section class="example-section mt-2">
+      <section class="example-section mt-2"  *ngIf='typeDropOutRequestEnum.Pending === typeEnum'>
         <mat-checkbox class="example-margin"  [(ngModel)]="studentDropOutRequestFilterRequestAdminModel.checked" ></mat-checkbox>
       </section>
     <div>
@@ -18,9 +18,10 @@
         <img *ngIf='studentDropOutRequestFilterRequestAdminModel.avatarLink' class="img_user" src="{{studentDropOutRequestFilterRequestAdminModel.avatarLink}}" >
       <div class="mx-1">
         <p class="name_user bold mb-2">{{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestAdminModel?.usrNameEn : studentDropOutRequestFilterRequestAdminModel?.usrNameAr}}</p>
-        <!-- <p class="program_user bold mb-2 "> {{studentDropOutRequestFilterRequestAdminModel.progName}}</p>         -->
-        <p class="program_user bold mb-2 "> {{translate.currentLang === langEnum.en ? studentDropOutRequestFilterRequestAdminModel.enProgBatchName: studentDropOutRequestFilterRequestAdminModel.arProgBatchName}}</p>      
-        <p class="program_user bold mb-0 ">         
+        <p class="program_user bold mb-2 "> {{studentDropOutRequestFilterRequestAdminModel.progName}}</p>        
+        <p class="program_user bold mb-2 "> {{translate.currentLang === langEnum.en ? studentDropOutRequestFilterRequestAdminModel.batNameEn: studentDropOutRequestFilterRequestAdminModel.batNameEn}}</p>      
+        <p class="program_user bold mb-0 "> {{studentDropOutRequestFilterRequestAdminModel.reason}} </p>        
+        <p class="program_user bold mb-0 " *ngIf='typeDropOutRequestEnum.Rejected === typeEnum'> {{ studentDropOutRequestFilterRequestAdminModel.reasonReject }}</p> 
       </div>
 
       </div>

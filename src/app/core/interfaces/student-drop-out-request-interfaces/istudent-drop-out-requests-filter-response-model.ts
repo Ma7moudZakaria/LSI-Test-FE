@@ -12,4 +12,5 @@ export interface IStudentDropOutRequestsFilterResponseModel {
     checked?:boolean;
     reasonReject?:string;
     avatarLink?:string;
+    reason?:string;
 }

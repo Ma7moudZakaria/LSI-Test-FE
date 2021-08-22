@@ -23,7 +23,7 @@
     <div class="mx-1">
       <!--      <p class="teacher__name  ">{{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.teacherNameEn : teacherDropOutRequestModel?.teacherNameAr}}</p>-->
       <p class="program__name "> {{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestStudentModel?.enProgBatName : studentDropOutRequestFilterRequestStudentModel?.arProgBatName}}</p>
-      <p class="program__desc"></p>
+      <p class="program__desc"> {{ studentDropOutRequestFilterRequestStudentModel?.reason }} </p>
       <p class="program__admin" *ngIf="studentDropOutRequestFilterRequestStudentModel.reasonReject != null" >{{'TEACHER_DROP_OUT.ADMIN_ANSWER' | translate}}</p>
       <p class="program__answer "  *ngIf="studentDropOutRequestFilterRequestStudentModel.reasonReject != null">{{'TEACHER_DROP_OUT.REJECTED' | translate}}</p>
     </div>
