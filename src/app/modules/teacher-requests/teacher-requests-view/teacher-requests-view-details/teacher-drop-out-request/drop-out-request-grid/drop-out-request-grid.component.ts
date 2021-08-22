@@ -85,4 +85,19 @@ export class DropOutRequestGridComponent implements OnInit {
     this.teacherDropOutRequestFilterRequestModel = event;
     this.getTeacherDropOutRequests();
   }
+
+  cancelRequestOfTeacher(teacherSubscripModel: ITeacherDropOutRequestModel) {
+    this.teacherDropOutRequestService.teacherDropOutCancelRequest(teacherSubscripModel.id || '').subscribe(res => {
+      if (res.isSuccess) {
+      
+        this.getTeacherDropOutRequests();
+      }
+    },
+      error => {
+        this.resMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      });
+  }
 }

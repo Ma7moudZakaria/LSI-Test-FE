@@ -13,6 +13,7 @@ export class TeacherDropOutRequestService {
   createTeacherDropOutRequestUrl = environment.baseUrl + 'TeacherDropOutRequest/create-teacher-drop-out-request/';
   teacherDropOutRequestsAcceptanceUrl = environment.baseUrl + 'TeacherDropOutRequest/accept-teacher-drop-out-request/';
   teacherDropOutRequestsRejectionUrl = environment.baseUrl + 'TeacherDropOutRequest/reject-teacher-drop-out-request/';
+  teacherDropOutCancelRequestUrl = environment.baseUrl + 'TeacherDropOutRequest/teacher-cancel-droup-out-request/';
 
   constructor(private http: HttpClient) { }
 
@@ -34,5 +35,9 @@ export class TeacherDropOutRequestService {
 
   teacherDropOutRequestsRejection(model: any): Observable<BaseResponseModel> {
     return this.http.put<BaseResponseModel>(this.teacherDropOutRequestsRejectionUrl, model);
+  }
+
+  teacherDropOutCancelRequest(id: string): Observable<BaseResponseModel> {
+    return this.http.get<BaseResponseModel>(this.teacherDropOutCancelRequestUrl + id);
   }
 }
