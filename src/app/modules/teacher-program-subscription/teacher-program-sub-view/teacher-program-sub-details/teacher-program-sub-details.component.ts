@@ -36,7 +36,7 @@ export class TeacherProgramSubDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.programId = this.route.snapshot.params.id;
-    this.programId = this.route.snapshot.params.batch;
+    this.batchId = this.route.snapshot.params.batch;
     this.currentUser = JSON.parse(localStorage.getItem('user') || '{}') as Iuser;
     this.getSubscriptionProgramDetails()
   }
