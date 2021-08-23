@@ -33,7 +33,9 @@ export class StudentProgramSubViewComponent implements OnInit {
   closeOverlay() {
     this.predefinedConditionOverlay = false;
   }
-
+  closeExamOverlay() {
+    this.joiningExamOverlay = false;
+  }
   openJoiningExamOverlay(event: IProgramSubscriptionDetails) {
     this.predefinedConditionOverlay = false;
     this.customConditionOverlay = false;
