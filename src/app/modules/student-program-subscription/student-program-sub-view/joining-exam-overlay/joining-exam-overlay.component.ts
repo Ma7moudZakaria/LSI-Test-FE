@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { timeStamp } from 'node:console';
 import { AnswerTypeEnum } from 'src/app/core/enums/exam-builder-enums/answer-type-enum.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IAnswer } from 'src/app/core/interfaces/exam-builder-interfaces/ianswer';
@@ -29,13 +30,14 @@ export class JoiningExamOverlayComponent implements OnInit {
 
   currentQuestion: IQuestion | undefined
   counter: number = 0
+  countlength: number = 0;
   @Input() requestId: string | undefined
 
   constructor(
     private studentProgSubscriptionService: StudentProgramSubscriptionServicesService,
     public translate: TranslateService,
     private alertify: AlertifyService,
-    private router:Router
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -74,17 +76,24 @@ export class JoiningExamOverlayComponent implements OnInit {
         }
       })
   }
+
   NextQuestion() {
-    this.counter++;
-    this.currentQuestion = this.randomExam && this.randomExam.questions ?
-      this.randomExam.questions[this.counter] : undefined;
+    this.countlength = this.randomExam?.questions?.length || 0;
+    if (this.counter == this.countlength - 1) {
+      this.submitExam();
+    }
+    else {
+      this.counter++;
+      this.currentQuestion = this.randomExam && this.randomExam.questions ?
+        this.randomExam.questions[this.counter] : undefined;
+    }
   }
 
-  addStudentAns(item:IAnswer, event:any){
-    if (event.checked && item && item.answerNo){
+  addStudentAns(item: IAnswer, event: any) {
+    if (event.checked && item && item.answerNo) {
       this.currentQuestion?.studentAnswersByAnswerNumbers?.push(item.answerNo);
     }
-    else{
+    else {
       let it = this.currentQuestion?.studentAnswersByAnswerNumbers?.filter(i => i === item.answerNo)[0];
       const ind = it ? this.currentQuestion?.studentAnswersByAnswerNumbers?.indexOf(it) : -1;
       if (ind && ind > -1) {
@@ -93,43 +102,43 @@ export class JoiningExamOverlayComponent implements OnInit {
     }
   }
 
-  submitExam(){
-    let model : IstudentJoiningExamAnswerModel= {
+  submitExam() {
+    let model: IstudentJoiningExamAnswerModel = {
       exId: this.randomExam?.exId,
       stProgSubsId: this.requestId,
       answer: this.randomExam?.questions
     }
     this.studentProgSubscriptionService.submitStudentJoiningExamAnswer(model).subscribe(res => {
-      if (res.isSuccess){
+      if (res.isSuccess) {
         this.studentSubscriptionCompleted();
       }
-      else{
+      else {
 
       }
     }, error => {
-        this.resMessage = {
-          message: error,
-          type: BaseConstantModel.DANGER_TYPE
-        }
-      })
+      this.resMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    })
   }
 
-  studentSubscriptionCompleted(){
-    let model :string[] = [];
+  studentSubscriptionCompleted() {
+    let model: string[] = [];
     model.push(this.requestId || '');
     this.studentProgSubscriptionService.studentProgramSubscriptionsCompleted(model).subscribe(res => {
-      if(res.isSuccess){
+      if (res.isSuccess) {
         this.router.navigateByUrl('/student-for-subscription');
       }
-      else{
+      else {
 
       }
     }, error => {
-        this.resMessage = {
-          message: error,
-          type: BaseConstantModel.DANGER_TYPE
-        }
-      })
+      this.resMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    })
   }
 
 
