@@ -133,7 +133,8 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
   getAllProgram() {
     this.programFilter.skip = 0;
     this.programFilter.take = 2147483647;
-    this.studentProgramSubscriptionService.getStudentPrograms(this.programFilter).subscribe(
+    if(this.currentUser?.id)
+    this.studentProgramSubscriptionService.getStudentAvailablePrograms(this.currentUser?.id).subscribe(
       (res: BaseResponseModel) => {
         this.programs = res.data as IStudentPrograms[];
         this.selectedIndex = -1;

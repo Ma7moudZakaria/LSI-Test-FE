@@ -27,6 +27,7 @@ export class StudentProgramSubscriptionServicesService {
   getProgramsForStudentsSubscriptionsURL = environment.baseUrl + 'StudentProgramSubscription/get-programs-for-students-subscriptions/';
   verifyProgramPredefinedConditionURL = environment.baseUrl + 'StudentProgramSubscription/verify-program-predefined-condition/';
   getStudentProgramsURL = environment.baseUrl + 'StudentProgramSubscription/get-student-programs/';
+  getStudentAvailableProgramsURL = environment.baseUrl + 'StudentProgramSubscription/student-available-programs/';
 
   constructor(private http: HttpClient) { }
 
@@ -76,6 +77,9 @@ export class StudentProgramSubscriptionServicesService {
 
   getStudentPrograms(model: IStudentMyProgramsRequestModel): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.getStudentProgramsURL, model);
+  }
+  getStudentAvailablePrograms(id: string): Observable<BaseResponseModel> {
+    return this.http.get<BaseResponseModel>(this.getStudentAvailableProgramsURL + id);
   }
 
 }
