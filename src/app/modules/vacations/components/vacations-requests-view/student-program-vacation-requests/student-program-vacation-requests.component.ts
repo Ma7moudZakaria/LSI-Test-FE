@@ -32,6 +32,7 @@ export class StudentProgramVacationRequestsComponent implements OnInit {
                private alertify: AlertifyService) { }
 
   ngOnInit(): void {
+    console.log(" this.programModel??????????", this.programModel)
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     this.studentProgramVacationFilterRequestModel.stdId = this.currentUser.id;
     this.studentProgramVacationFilterRequestModel.progId = this.programModel?.id;
