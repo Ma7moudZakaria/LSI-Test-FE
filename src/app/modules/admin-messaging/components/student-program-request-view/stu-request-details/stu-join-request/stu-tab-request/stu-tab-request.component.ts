@@ -42,7 +42,7 @@ export class StuTabRequestComponent implements OnInit {
     this.onPendingChange();
   }
   getStudentProgramSubscriptionsFilter() {
-    this.progSubsService.getStudentsSubscriptionsFilter(this.filter).subscribe(res => {
+    this.progSubsService.getStudentsSubscriptionsFilterAdminView(this.filter).subscribe(res => {
 
       if (res.isSuccess) {
         this.studProgsSubsItems = res.data;
