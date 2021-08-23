@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { ITeacherMyProgramsRequestModel } from '../../interfaces/teacher-program-subscription-interfaces/iteacher-my-programs-request-model';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 
 @Injectable({
@@ -14,6 +15,7 @@ export class TeacherDropOutRequestService {
   teacherDropOutRequestsAcceptanceUrl = environment.baseUrl + 'TeacherDropOutRequest/accept-teacher-drop-out-request/';
   teacherDropOutRequestsRejectionUrl = environment.baseUrl + 'TeacherDropOutRequest/reject-teacher-drop-out-request/';
   teacherDropOutCancelRequestUrl = environment.baseUrl + 'TeacherDropOutRequest/teacher-cancel-droup-out-request/';
+  teacherDropOutAvailableProgramUrl = environment.baseUrl + 'TeacherDropOutRequest/teacher-avaliable-program-to-droup-out/';
 
   constructor(private http: HttpClient) { }
 
@@ -39,5 +41,9 @@ export class TeacherDropOutRequestService {
 
   teacherDropOutCancelRequest(id: string): Observable<BaseResponseModel> {
     return this.http.get<BaseResponseModel>(this.teacherDropOutCancelRequestUrl + id);
+  }
+  
+  teacherDropOutAvailableProgram(model: ITeacherMyProgramsRequestModel){
+    return this.http.get<BaseResponseModel>(this.teacherDropOutAvailableProgramUrl + model.teacherId);
   }
 }

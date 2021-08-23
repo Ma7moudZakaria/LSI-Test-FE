@@ -72,7 +72,7 @@ export class AddDropOutRequestComponent implements OnInit {
 
   getAllProgram() {
     this.programsbyAdvancedFilter = { teacherId : this.currentUser?.id };
-    this.programSubscriptionService.getTeacherPrograms(this.programsbyAdvancedFilter || {}).subscribe(res => {
+    this.teacherDropOutRequestService.teacherDropOutAvailableProgram(this.programsbyAdvancedFilter || {}).subscribe(res => {
 
       console.log("res =====> ", res)
       if (res.isSuccess) {
