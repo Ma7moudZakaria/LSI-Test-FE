@@ -15,7 +15,7 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
   providedIn: 'root'
 })
 export class StudentProgramSubscriptionServicesService {
-  getStudentsSubscriptionsFilterURL = environment.baseUrl + 'StudentProgramSubscription/get-students-subscriptions-filter/';
+  getStudentsSubscriptionsFilterAdminViewURL = environment.baseUrl + 'StudentProgramSubscription/get-students-subscriptions-filter-admin-view/';
   studentProgramSubscriptionsAcceptanceURL = environment.baseUrl + 'StudentProgramSubscription/accept-student-program-subscription/';
   rejectStudentProgramSubscriptionURL = environment.baseUrl + 'StudentProgramSubscription/reject-student-program-subscription/';
   getStudentCustomConditionURL = environment.baseUrl + 'StudentProgramSubscription/get-student-custom-condition/';
@@ -30,8 +30,8 @@ export class StudentProgramSubscriptionServicesService {
 
   constructor(private http: HttpClient) { }
 
-  getStudentsSubscriptionsFilter(model: IStudentSubscriptionFilterRequestModel): Observable<BaseResponseModel> {
-    return this.http.post<BaseResponseModel>(this.getStudentsSubscriptionsFilterURL, model);
+  getStudentsSubscriptionsFilterAdminView(model: IStudentSubscriptionFilterRequestModel): Observable<BaseResponseModel> {
+    return this.http.post<BaseResponseModel>(this.getStudentsSubscriptionsFilterAdminViewURL, model);
   }
 
   studentProgramSubscriptionsAcceptance(model: string[]): Observable<BaseResponseModel> {

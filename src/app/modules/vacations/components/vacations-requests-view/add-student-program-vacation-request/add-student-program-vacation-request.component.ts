@@ -15,6 +15,7 @@ import {IStudentPrograms} from '../../../../../core/interfaces/student-program-v
 import {IStudentSubscriptionFilterRequestModel} from '../../../../../core/interfaces/student-program-subscription-interfaces/istudent-subscription-filter-request-model';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-add-student-program-vacation-request',
@@ -39,13 +40,17 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
   maxGregDate: NgbDateStruct | undefined;
 
   langEnum=LanguageEnum
+  isSubmit = false;
+  currentForm: FormGroup = new FormGroup({});
+  disableSaveButtons = false;
+
 
   constructor(
               private dateFormatterService: DateFormatterService,
               public translate: TranslateService,
                public studentProgramVacationService: StudentProgramVacationServicesService,
               private alertfyService: AlertifyService,
-              private studentProgramSubscriptionService: StudentProgramSubscriptionServicesService
+              private studentProgramSubscriptionService: StudentProgramSubscriptionServicesService,private fb: FormBuilder
   ) {
   }
 
@@ -55,6 +60,14 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
     this.programFilter.usrId = this.currentUser.id;
     this.maxGregDate = this.dateFormatterService.GetTodayGregorian()
     this.getAllProgram()
+    this.currentForm.reset();
+    this.buildForm();
+    this.disableSaveButtons = false;
+    this.resultMessage = {
+      message: '',
+      type: ''
+    }
+
   }
 
 
@@ -71,7 +84,7 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
     this.typeDateBinding = data.selectedDateType
     data.selectedDateValue = data.selectedDateValue.year + '/' + data.selectedDateValue.month + '/' + data.selectedDateValue.day;
     this.dataToBinding = data.selectedDateValue
-    this.addStudentVacationRequestModel.vacationEndDate = this.datafromBinding
+    this.addStudentVacationRequestModel.vacationEndDate = this.dataToBinding
     this.selectedDateType = data.selectedDateType;
   }
 
@@ -85,25 +98,37 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
     this.closeAddVacationRequest.emit(this.addStudentVacationRequestModel)
   }
 
+  Submit() {
+    this.isSubmit = true;
+    this.resultMessage = {};
 
-  AddStudentVacationRequest() {
-    this.addStudentVacationRequestModel ?
-      this.studentProgramVacationService.addStudentProgramVacation(this.addStudentVacationRequestModel).subscribe(res => {
-        if (res.isSuccess){
-          this.alertfyService.success(res.message || '');
-        }
-        else{
+    if (this.addStudentVacationRequestModel.batchId &&  this.addStudentVacationRequestModel.vacationReason) {
+
+      this.studentProgramVacationService.addStudentProgramVacation(this.addStudentVacationRequestModel).subscribe(
+        res => {
+          if (res.isSuccess) {
+            this.isSubmit = false;
+            this.disableSaveButtons = true;
+            this.alertfyService.success(res.message || "");
+            this.closeAddStudentVacation();
+          }
+          else {
+            this.disableSaveButtons = true;
+
+            this.resultMessage = {
+              message: res.message,
+              type: BaseConstantModel.DANGER_TYPE
+            }
+          }
+        },
+        error => {
           this.resultMessage = {
-            message : res.message,
+            message: error,
             type: BaseConstantModel.DANGER_TYPE
           }
-        }
-      },error => {
-
-      }) : '';
-
+        })
+    }
   }
-
 
   getAllProgram() {
     this.programFilter.skip = 0;
@@ -111,7 +136,6 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
     this.studentProgramSubscriptionService.getStudentPrograms(this.programFilter).subscribe(
       (res: BaseResponseModel) => {
         this.programs = res.data as IStudentPrograms[];
-        // console.log("programs", this.programs);
         this.selectedIndex = -1;
       }, error => {
         this.resultMessage = {
@@ -121,7 +145,18 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
       }
     );
   }
-
+  get f() {
+    return this.currentForm.controls;
+  }
+  buildForm() {
+    this.currentForm = this.fb.group(
+      {
+        vacationReason: ['', [Validators.required]],
+        batchId: ['', Validators.required],
+        dateFrom :['', Validators.required],
+        dateTo:['', Validators.required]
+      });
+  }
 }
 
 

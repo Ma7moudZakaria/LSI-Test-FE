@@ -22,11 +22,13 @@
         <p class="name_user bold mb-2 ellipsis p-0" (click)="openDetails(teacherDropOutRequestModel?.id)" 
         title=" {{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.teacherNameEn : teacherDropOutRequestModel?.teacherNameAr}}">
           {{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.teacherNameEn : teacherDropOutRequestModel?.teacherNameAr}}</p>
-          <p class="program_user bold mb-2 ">
-            {{teacherDropOutRequestModel.progName}}
+          <p class="program_user bold mb-2 ellipsis p-0"
+          title=" {{translate.currentLang === langEnum.en ? teacherDropOutRequestModel.enProgBatName : teacherDropOutRequestModel.arProgBatName }}"
+          >
+            {{translate.currentLang === langEnum.en ? teacherDropOutRequestModel.enProgBatName : teacherDropOutRequestModel.arProgBatName }}
             <!-- {{translate.currentLang === langEnum.en ? teacherDropOutRequestModel.enProgBatName : teacherDropOutRequestModel.arProgBatName }} -->
           </p>  
-        <p class="program_user bold mb-2 "> {{translate.currentLang === langEnum.en ? teacherDropOutRequestModel.batchEn : teacherDropOutRequestModel.batchAr }}</p>        
+        <!-- <p class="program_user bold mb-2 "> {{translate.currentLang === langEnum.en ? teacherDropOutRequestModel.batchEn : teacherDropOutRequestModel.batchAr }}</p>         -->
         
      
       </div>

@@ -111,7 +111,7 @@
        </div>
   </div>
 
-  <mat-grid-list cols="{{numberPerRow}}" rowHeight="3:2.5">
+  <mat-grid-list cols="{{numberPerRow}}" rowHeight="3:3">
     <ng-container *ngIf="userMode == programSubscriptionUsers.student">
         <mat-grid-tile *ngFor='let item of studentItems' >
             <app-stu-card-request [studentSubscripModel]='item'  
@@ -119,14 +119,16 @@
             (acceptStuRequest)="acceptStuRequest($event)"
              
             [typeEnum]='typeEnum'
-            
+                                  (studentProgSubOutput) = studentProgSubOutputEvent($event);
             ></app-stu-card-request>
         </mat-grid-tile>
     </ng-container>
     <ng-container *ngIf="userMode == programSubscriptionUsers.teacher">
         <mat-grid-tile *ngFor='let item of teacherItems' >
          <app-teacher-card-request class="card" (acceptTeacherProgramSubscription)='acceptTeacherProgramSubscriptionEvent($event)' 
-         (rejectTeacherProgramSubscription)='rejectTeacherProgramSubscriptionEve($event)'  [teacherSubscripModel]='item' [typeEnum]='typeTeacheEnum'></app-teacher-card-request>
+         (rejectTeacherProgramSubscription)='rejectTeacherProgramSubscriptionEve($event)'
+                                   (teacherProgSubOutput) = teacherProgSubOutputEvent($event);
+                                   [teacherSubscripModel]='item' [typeEnum]='typeTeacheEnum'></app-teacher-card-request>
         </mat-grid-tile>
     </ng-container>
 </mat-grid-list>

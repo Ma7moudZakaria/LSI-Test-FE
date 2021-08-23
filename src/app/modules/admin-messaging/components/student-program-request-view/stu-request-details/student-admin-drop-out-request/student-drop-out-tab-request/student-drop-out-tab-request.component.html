@@ -1,4 +1,4 @@
-<div class="container-fluid reuest_container" > 
+<div *ngIf="!showUserDetailsView" class="container-fluid reuest_container" >
     <div class="col-12  justify-content-end text-right d-flex align-items-center">
         <app-search-input (searchTerm)=searchByText($event) [searchKey]='this.studentDropOutRequestFilterRequestModel.usrName || ""'></app-search-input>
         <a class="advanced_search mb-3" (click)="openAvancedSearch()">بحث متقدم</a>
@@ -36,6 +36,7 @@
                 [studentDropOutRequestFilterRequestAdminModel]='studentDropOutRequestFilterRequestModel'
                 (rejectStudentDropOutAdminRequest)='rejectStudentDropOutRequestEvent($event)'
                 (studentDropOutRequestFilterAdminEvent)='studentDropOutRequestPendingChangePage($event)'
+                                       (studentIdToDetails)="studentIdDrop($event)"
                 >
             </app-student-drop-out-grid>
 
@@ -47,6 +48,7 @@
                 [userMode]='userMode'
                 [studentDropOutRequestFilterRequestAdminModel]='studentDropOutRequestFilterRequestModel'
                 (studentDropOutRequestFilterAdminEvent)='studentDropOutRequestAcceptChangePage($event)'
+                                       (studentIdToDetails)="studentIdDrop($event)"
                 ></app-student-drop-out-grid>
 
                <app-student-drop-out-grid *ngIf='showTap == statusEnum.Rejected && studentDropOutRequestList.length > 0' 
@@ -57,6 +59,7 @@
                  [userMode]='userMode'
                  [studentDropOutRequestFilterRequestAdminModel]='studentDropOutRequestFilterRequestModel'
                  (studentDropOutRequestFilterAdminEvent)='studentDropOutRequestRejectChangePage($event)'
+                                          (studentIdToDetails)="studentIdDrop($event)"
                  ></app-student-drop-out-grid>
         </div>
     
@@ -65,3 +68,4 @@
     
     </div>
     
+<app-student-details-view *ngIf="showUserDetailsView"  (hideUserDetails) ="hideUserDetailsView($event)" [resiveUserId]="StudentDropIdInput"></app-student-details-view>

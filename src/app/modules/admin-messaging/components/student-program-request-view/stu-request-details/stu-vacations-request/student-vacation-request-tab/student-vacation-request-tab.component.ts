@@ -17,7 +17,7 @@ export class StudentVacationRequestTabComponent implements OnInit {
 
   @Output() advancedSearchEvent = new EventEmitter<IStudentProgramVacationFilterRequestModel>();
   @Output() itemStuReq = new EventEmitter<IStudentProgramVacationModel>();
-
+  studentDropIdInput :string | undefined;
   studentProgramVacationRequestsList: IStudentProgramVacationModel[] = [];
   studentProgramVacationFilterRequestModel: IStudentProgramVacationFilterRequestModel = { statusNum: StudentProgramVacationStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
   totalCount = 0;
@@ -26,6 +26,7 @@ export class StudentVacationRequestTabComponent implements OnInit {
   typeEnum: StudentProgramVacationStatusEnum = StudentProgramVacationStatusEnum.Pending;
   showTap: StudentProgramVacationStatusEnum = StudentProgramVacationStatusEnum.Pending;
   statusEnum = StudentProgramVacationStatusEnum;
+  showUserDetailsView:boolean = false;
   constructor(
     public translate: TranslateService,
     private programVacationServicesService: StudentProgramVacationServicesService,
@@ -35,7 +36,13 @@ export class StudentVacationRequestTabComponent implements OnInit {
     this.studentProgramVacationFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn'
     this.getStudentProgramVacationRequests();
   }
-
+  studentIdDrop(event:string){
+    this.showUserDetailsView =true;
+    this.studentDropIdInput= event;
+  }
+  hideUserDetailsView(event: boolean){
+    this.showUserDetailsView = event;
+  }
   searchByText(searchKey: string) {
     this.studentProgramVacationFilterRequestModel.usrName = searchKey;
     this.getStudentProgramVacationRequests();

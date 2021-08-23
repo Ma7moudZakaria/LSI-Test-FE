@@ -12,6 +12,7 @@ import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 export class StudentProgramVacationCardAdminComponent implements OnInit {
   @Output() rejectStudentVacationRequest = new EventEmitter<IStudentProgramVacationModel>();
   @Output() acceptStudentVacationRequest = new EventEmitter<IStudentProgramVacationModel>();
+  @Output() studentVacationId = new EventEmitter<string>();
   @Input() typeEnum: StudentProgramVacationStatusEnum = StudentProgramVacationStatusEnum.Pending;
 
   tabTypeSelected = StudentProgramVacationStatusEnum;
@@ -23,7 +24,9 @@ export class StudentProgramVacationCardAdminComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  showStudentDetails(id?:string){
+    this.studentVacationId.emit(id);
+  }
   rejectedStudentReq() {
     this.rejectStudentVacationRequest.emit(this.studentSubscripModel);
     // console.log("rejected",this.studentSubscripModel )

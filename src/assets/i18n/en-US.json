@@ -327,7 +327,10 @@
     "TRAINING_COURSES": "Training courses",
     "OPTIONAL": "Optional",
     "EDIT_PROFILE": "Edit profile",
-    "AMOUNT_QURAN_REQUIRED": "The memorization amount from Qur'an is Required"
+    "AMOUNT_QURAN_REQUIRED": "The memorization amount from Qur'an is Required",
+    "PROGRAMS": " programs",
+    "TIMES": " Times",
+    "BACK": " Back"
   },
   "VIEW_USER_PG": {
     "EDIT_PROFILE": "Edit profile",

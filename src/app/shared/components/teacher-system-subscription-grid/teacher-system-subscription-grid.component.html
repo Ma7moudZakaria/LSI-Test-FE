@@ -58,11 +58,11 @@
   <mat-grid-list cols="{{numberPerRow}}" rowHeight="3:3">
     <ng-container >
         <mat-grid-tile *ngFor='let item of teacherSystemSubscriptionItems' >
-         <app-teacher-system-card-request class="card" 
-         [teacherSystemSubscriptionModel]='item' 
-         (rejectTeacherSystemSubscription)="rejectTeacherSystemSubscriptionEvent($event)"
-         (acceptTeacherSystemSubscription)="acceptTeacherSystemSubscriptionEvent($event)"
-         [typeEnum]='typeEnum' 
+         <app-teacher-system-card-request class="card"
+                                          [teacherSystemSubscriptionModel]='item'
+                                          (rejectTeacherSystemSubscription)="rejectTeacherSystemSubscriptionEvent($event)"
+                                          (acceptTeacherSystemSubscription)="acceptTeacherSystemSubscriptionEvent($event)"
+                                          [typeEnum]='typeEnum' (teacherJoinInput)="teacherJoinToGrid($event)"
          ></app-teacher-system-card-request>
         </mat-grid-tile>
     </ng-container>

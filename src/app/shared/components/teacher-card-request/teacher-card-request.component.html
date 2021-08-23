@@ -15,13 +15,14 @@
   
     <div class="card_body">
       <div class="d-flex justify-content-between mb-3">
-        <img *ngIf='!teacherSubscripModel.avatarLink' class="img_user" src="../../../../assets/images/student/user-profile.svg">
-        <img *ngIf='teacherSubscripModel.avatarLink' class="img_user" src="{{teacherSubscripModel.avatarLink}}" > 
+        <img *ngIf='!teacherSubscripModel.avatarLink'  (click)="showDetails(teacherSubscripModel?.usrId)" class="img_user cursor-pointer" src="../../../../assets/images/student/user-profile.svg">
+        <img *ngIf='teacherSubscripModel.avatarLink'   (click)="showDetails(teacherSubscripModel?.usrId)"class="img_user cursor-pointer" src="{{teacherSubscripModel.avatarLink}}" > 
       <div class="mx-1 container-width">
-        <p class="number_request mb-1 ">{{teacherSubscripModel.programStaNum}}</p>
-        <p class="name_user bold mb-2 ellipsis p-0" title="{{teacherSubscripModel.usrNameAr}}">{{teacherSubscripModel.usrNameAr}}</p>
+        <p class="number_request mb-3">{{teacherSubscripModel.programStaNum}}</p>
+        <p class="name_user bold mb-2 ellipsis p-0" title="{{teacherSubscripModel.usrNameAr}}" (click)="showDetails(teacherSubscripModel?.usrId)">{{teacherSubscripModel.usrNameAr}}</p>
         <!-- <p class="program_user bold mb-0 "> {{teacherSubscripModel.progName}}</p> -->
-        <p class="program_user bold mb-0  "> {{translate.currentLang === langEnum.en ? teacherSubscripModel.enProgBatName : teacherSubscripModel.arProgBatName }}</p>
+        <p class="program_user bold mb-0 ellipsis p-0" 
+        title=" {{translate.currentLang === langEnum.en ? teacherSubscripModel.enProgBatName : teacherSubscripModel.arProgBatName }}"> {{translate.currentLang === langEnum.en ? teacherSubscripModel.enProgBatName : teacherSubscripModel.arProgBatName }}</p>
         <!-- <p class="program_user bold mb-0 "> المقابلة الاحد 18:30 {{teacherSubscripModel.timeDegree}}</p> -->
       </div>
         <div class="d-flex">

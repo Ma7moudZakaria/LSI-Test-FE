@@ -20,8 +20,10 @@ export class StudentDropOutGridComponent implements OnInit {
   @Output() itemStudentDropOutRequestForAdminReject = new EventEmitter<IStudentDropOutRequestsFilterResponseModel>();
   @Output() rejectStudentDropOutAdminRequest = new EventEmitter<IStudentDropOutRequestsFilterResponseModel>();
   @Output() acceptStudentDropOutAdminRequest = new EventEmitter<IStudentDropOutRequestsFilterResponseModel>();
-  @Output() acceptAllStudentDropOutRequestAdminChecked = new EventEmitter<IStudentDropOutRequestsFilterResponseModel>();  
-  @Input() studentDropOutRequestFilterRequestAdminModel: IStudentDropOutRequestsFilterAdminViewRequestModel = { skip: 0, take: 9, page: 1 };  
+  @Output() acceptAllStudentDropOutRequestAdminChecked = new EventEmitter<IStudentDropOutRequestsFilterResponseModel>();
+  @Output() studentIdToDetails = new EventEmitter<string>();
+
+  @Input() studentDropOutRequestFilterRequestAdminModel: IStudentDropOutRequestsFilterAdminViewRequestModel = { skip: 0, take: 9, page: 1 };
   @Input() studentDropOutRequestAdminItems: IStudentDropOutRequestsFilterResponseModel[] = []
 
 
@@ -59,6 +61,9 @@ export class StudentDropOutGridComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("this.userMode", this.userMode)
+  }
+  studentIdToRequest(event:string){
+    this.studentIdToDetails.emit(event);
   }
 
   sortStudentAdminByName() {

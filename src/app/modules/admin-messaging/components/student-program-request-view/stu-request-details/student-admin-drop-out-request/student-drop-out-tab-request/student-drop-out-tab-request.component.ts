@@ -21,10 +21,10 @@ export class StudentDropOutTabRequestComponent implements OnInit {
   @Output() rejectStudentDropOutRequest = new EventEmitter<IStudentDropOutRequestsFilterResponseModel>();
   @Output() advancedSearchEvent = new EventEmitter<IStudentDropOutRequestsFilterAdminViewRequestModel>();
   @Output() itemOfRejectStudentDropOutRequest = new EventEmitter<IStudentDropOutRequestsFilterResponseModel>();
-  
+   StudentDropIdInput :string | undefined;
   studentDropOutRequestList: IStudentDropOutRequestsFilterResponseModel[] = [];
   studentDropOutRequestFilterRequestModel: IStudentDropOutRequestsFilterAdminViewRequestModel = { statusNum: StudentDropOutRequestStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
-  resultMessage: BaseMessageModel = {};;
+  resultMessage: BaseMessageModel = {};
   totalCount = 0;
   numberItemsPerRow = 3;
   ids?: string[] = [];
@@ -32,7 +32,7 @@ export class StudentDropOutTabRequestComponent implements OnInit {
   showTap: StudentDropOutRequestStatusEnum = StudentDropOutRequestStatusEnum.Pending;
   statusEnum = StudentDropOutRequestStatusEnum;
   userMode: DropOutRoleEnum = DropOutRoleEnum.Admin;
-  
+  showUserDetailsView:boolean = false;
   constructor(
     public translate: TranslateService,
     private studentDropOutRequestService: StudentDropOutRequestService,
@@ -42,7 +42,10 @@ export class StudentDropOutTabRequestComponent implements OnInit {
     this.studentDropOutRequestFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn'
     this.getStudentDropOutRequests();
   }
-
+  studentIdDrop(event:string){
+    this.showUserDetailsView =true;
+    this.StudentDropIdInput= event;
+  }
   searchByText(searchKey: string) {
     this.studentDropOutRequestFilterRequestModel.usrName = searchKey;
     this.getStudentDropOutRequests();
@@ -179,4 +182,7 @@ export class StudentDropOutTabRequestComponent implements OnInit {
     this.advancedSearchEvent.emit(this.studentDropOutRequestFilterRequestModel)
   }
 
+  hideUserDetailsView(event: boolean){
+    this.showUserDetailsView = event;
+  }
 }
