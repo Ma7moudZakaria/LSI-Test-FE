@@ -11,7 +11,7 @@
   overflow: hidden;
   font-family: Almarai-Regular;
   font-size: 14px;
-
+   height: 40vh;
 
 
   .bold{
@@ -132,5 +132,20 @@
     }
   } //footer
 
+.vacation_resason {
+      height: 7vh;
+      overflow-y: auto;
+}
+.ellipsis {
+  width: 130px;
+}
+.program_rejected
+{
+    height: 10vh;
+    overflow-y: auto;
+}
+}
+.h_accepted{
+  height: 35vh;
 
 }

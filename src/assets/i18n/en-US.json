@@ -69,11 +69,11 @@
     "ACCEPT": "Accepted",
     "REJECT": "Reject",
     "DEGREE_MAX_LENGTH": "Degree must be more than 100",
-    "REJECT_RESON":"Reject Reason",
-    "PROGRAM":"Program",
-    "DROP_OUT_REQUEST":"Reject Reason",
-    "APPLICANT_NAME":"Applicant name",
-    "REQUEST_NUMBER":"Request Number",
+    "REJECT_RESON": "Reject Reason",
+    "PROGRAM": "Program",
+    "DROP_OUT_REQUEST": "Reject Reason",
+    "APPLICANT_NAME": "Applicant name",
+    "REQUEST_NUMBER": "Request Number",
     "ADVANCED_SEARCH": "Advanced Search"
   },
   "ACTIVATION_USER_PG": {
@@ -767,7 +767,7 @@
     "SUBSCRIBERS": "Subscibe",
     "TEACHERS": "Teachers",
     "STUDENTS": "Students",
-    "NEW_JOIN_REQUESTS": "New join requests",
+    "NEW_JOIN_REQUESTS": "New requests",
     "ACCEPTANCE_REQUESTS": "Admission requests",
     "REJECTANCE_REQUESTS": "Rejection requests",
     "JOIN_REQUESTS": "Join requests",
@@ -784,22 +784,23 @@
     "CANCEL_REQUESTS": "Cancellation requests",
     "NEW_CANCEL_REQUESTS": "New Cancel Request",
     "TIME": "Time",
-    "ADMIN_ANSWER": "Admin Answer" ,
+    "ADMIN_ANSWER": "Admin Answer",
     "REJECTED": "Rejected",
-    "ACCEPT" : "Accepted",
-    "CANCEL" : "Cancel"
+    "ACCEPT": "Accepted",
+    "CANCEL": "Cancel"
   },
   "STUDENT_SUBSCRIBERS": {
     "SUBSCRIBERS": "Subscibe",
     "TEACHERS": "Teachers",
     "STUDENTS": "Students",
-    "NEW_JOIN_REQUESTS": "New join requests",
+    "NEW_JOIN_REQUESTS": "New requests",
     "ACCEPTANCE_REQUESTS": "Admission requests",
     "REJECTANCE_REQUESTS": "Rejection requests",
     "JOIN_REQUESTS_VACATION": "Vacation Request",
     "MOVING_REQ": "Moving Request ",
     "JOIN_REQUESTS": "Join requests",
     "CANCEL_REQUESTS": "Cancellation requests",
+    "NEW_REQUESTS": "new request",
     "REJECT_TEACHER": "Reject Teacher",
     "FROM_PROGRAM": "From program",
     "REASON_REJECT": "Reason reject",
@@ -812,7 +813,9 @@
     "TEACHER_REJECTED": "The teacher's withdrawal request will be rejected",
     "FROM_PROG": "From Program",
     "REJECTED_REASON": "Reject Reason",
-    "VALIDATIONDATE": "Datefrom  should less than dateto "
+    "VALIDATIONDATE": "Datefrom  should less than dateto ",
+    "REQUEST_REASON": "Request reason",
+    "NO_DATA": "No Data found"
   },
   "TEACHER_SYSTEM_SUBSCRIPTION": {
     "REQUEST_DATE": "Request Date",
@@ -821,7 +824,7 @@
     "ACCEPT": "Accept"
   },
   "STUDENT_VACATION": {
-    "NEW_VACATION_REQUESTS": "New Vacation requests",
+    "NEW_VACATION_REQUESTS": "New requests",
     "ACCEPTANCE_REQUESTS": "Admission requests",
     "REJECTANCE_REQUESTS": "Rejection requests",
     "VACATION_DATE": "Vacation Date",
@@ -854,7 +857,6 @@
     "NO_TEACHERS": "No Teachers Subscribed",
     "NO_STUDENTS": "No Students Subscribed",
     "NO_PROGRAMS": "No Programs"
-
   },
   "TEACHER_STUDENT_FOR_DETAILS": {
     "PROG_IDEA": "Program Idea",
@@ -868,9 +870,9 @@
     "NO": "Not Specify",
     "PROG_DURA": "Program duration per day"
   },
-  "PROGRAM_BATCH":{
-    "FROM_VALIDATION" : "Subscription start date can not be less than today",
-    "TO_VALIDATION" : "Subscription start date can not be greater than Subscription end date"
+  "PROGRAM_BATCH": {
+    "FROM_VALIDATION": "Subscription start date can not be less than today",
+    "TO_VALIDATION": "Subscription start date can not be greater than Subscription end date"
   },
   "PROGRAM_CATEGORY": {
     "ADD_CATEGORY": "Add Category",

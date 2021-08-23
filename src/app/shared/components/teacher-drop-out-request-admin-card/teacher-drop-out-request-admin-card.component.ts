@@ -17,22 +17,21 @@ export class TeacherDropOutRequestAdminCardComponent implements OnInit {
   @Output() acceptTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
   @Output() userIdEvent = new EventEmitter<string>();
 
-  @Input() teacherDropOutRequestModel: ITeacherDropOutRequestModel = { totalRows : 0};
+  @Input() teacherDropOutRequestModel: ITeacherDropOutRequestModel = { totalRows: 0 };
 
   @Input() typeEnum: TeacherDropOutRequestStatusEnum = TeacherDropOutRequestStatusEnum.Pending;
   typeDropOutRequestEnum = TeacherDropOutRequestStatusEnum;
 
-  teacherDropOutRequestIds:string[] | undefined;
+  teacherDropOutRequestIds: string[] | undefined;
   langEnum = LanguageEnum;
-  requestDate:string | undefined;
+  requestDate: string | undefined;
   teacherDropOutRequestStatus = TeacherDropOutRequestStatusEnum;
 
 
   constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
-    // console.log("teacherDropOutRequestModel =======>" , this.teacherDropOutRequestModel)
-
+    console.log("teacherDropOutRequestModel", this.teacherDropOutRequestModel)
     if (this.teacherDropOutRequestModel?.requestDate) {
       let requestDateValue = new Date(this.teacherDropOutRequestModel.requestDate || '');
 
@@ -50,11 +49,11 @@ export class TeacherDropOutRequestAdminCardComponent implements OnInit {
   }
 
 
-  rejectTeacherDropOutRequestEvent(teacherDropOutRequestAdminViewModel:ITeacherDropOutRequestModel){
+  rejectTeacherDropOutRequestEvent(teacherDropOutRequestAdminViewModel: ITeacherDropOutRequestModel) {
     this.rejectTeacherDropOutRequest.emit(teacherDropOutRequestAdminViewModel);
   }
-  
-  acceptTeacherDropOutRequestEvent(){
+
+  acceptTeacherDropOutRequestEvent() {
     this.acceptTeacherDropOutRequest.emit(this.teacherDropOutRequestModel);
   }
 }
