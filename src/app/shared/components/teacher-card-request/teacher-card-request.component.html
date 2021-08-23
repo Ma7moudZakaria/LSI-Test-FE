@@ -15,12 +15,15 @@
   
     <div class="card_body">
       <div class="d-flex justify-content-between mb-3">
-        <img *ngIf='!teacherSubscripModel.avatarLink' (click)="showDetails(teacherSubscripModel?.usrId)" class="img_user cursor-pointer" src="../../../../assets/images/student/user-profile.svg">
-        <img *ngIf='teacherSubscripModel.avatarLink' (click)="showDetails(teacherSubscripModel?.usrId)" class="img_user cursor-pointer" src="{{teacherSubscripModel.avatarLink}}" >
-      <div class="mx-1">
-        <p class="number_request mb-1 ">{{teacherSubscripModel.programStaNum}}</p>
-        <p class="name_user bold mb-2 cursor-pointer" (click)="showDetails(teacherSubscripModel?.usrId)">{{teacherSubscripModel.usrNameAr}}</p>
-        <p class="program_user bold mb-0 "> {{translate.currentLang === langEnum.en ? teacherSubscripModel.enProgBatName : teacherSubscripModel.arProgBatName }}</p>
+        <img *ngIf='!teacherSubscripModel.avatarLink'  (click)="showDetails(teacherSubscripModel?.usrId)" class="img_user cursor-pointer" src="../../../../assets/images/student/user-profile.svg">
+        <img *ngIf='teacherSubscripModel.avatarLink'   (click)="showDetails(teacherSubscripModel?.usrId)"class="img_user cursor-pointer" src="{{teacherSubscripModel.avatarLink}}" > 
+      <div class="mx-1 container-width">
+        <p class="number_request mb-3">{{teacherSubscripModel.programStaNum}}</p>
+        <p class="name_user bold mb-2 ellipsis p-0" title="{{teacherSubscripModel.usrNameAr}}" (click)="showDetails(teacherSubscripModel?.usrId)">{{teacherSubscripModel.usrNameAr}}</p>
+        <!-- <p class="program_user bold mb-0 "> {{teacherSubscripModel.progName}}</p> -->
+        <p class="program_user bold mb-0 ellipsis p-0" 
+        title=" {{translate.currentLang === langEnum.en ? teacherSubscripModel.enProgBatName : teacherSubscripModel.arProgBatName }}"> {{translate.currentLang === langEnum.en ? teacherSubscripModel.enProgBatName : teacherSubscripModel.arProgBatName }}</p>
+        <!-- <p class="program_user bold mb-0 "> المقابلة الاحد 18:30 {{teacherSubscripModel.timeDegree}}</p> -->
       </div>
         <div class="d-flex">
          <!-- <a><img src="../../../../../assets/images/chat.svg"></a>  -->
@@ -28,6 +31,14 @@
           <a> <img  class="call"  src="../../../../assets/images/request/call.svg"></a>
         </div>
       </div>
+      <ng-container *ngIf="teacherSubscripModel.reasonReject">
+        <p class="program_rejected  mb-0 pb-2"  *ngIf="typeEnum === tabTypeSelected.Rejected"> 
+          <span class="bold mx-1">سبب الرقض:</span> 
+          <span>
+            {{teacherSubscripModel.reasonReject}}
+          </span>
+        </p>
+      </ng-container>
     </div>
 
     <div class="body_footer" *ngIf="typeEnum === tabTypeSelected.Pending ">

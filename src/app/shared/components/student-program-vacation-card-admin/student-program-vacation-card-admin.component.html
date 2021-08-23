@@ -1,4 +1,4 @@
-  <div class="card-request">
+<div class="card-request" [ngClass]="{'h_accepted': typeEnum !== tabTypeSelected.Pending}">
   <div class="card_header align-items-center">
     <section class="example-section mt-2">
       <mat-checkbox [(ngModel)]="studentSubscripModel.checked" class="example-margin"></mat-checkbox>
@@ -14,7 +14,7 @@
   </div>
 
   <div class="card_body">
-    <div class="d-flex justify-content-between mb-3">
+    <div class="d-flex justify-content-between mb-1">
 
       <img *ngIf='!studentSubscripModel.avatarLink' class="img_user cursor-pointer" (click)="showStudentDetails(studentSubscripModel?.usrId)"
            src="../../../../assets/images/student/user-profile.svg">
@@ -22,8 +22,11 @@
            src="{{studentSubscripModel.avatarLink}}">
         <div class="mx-1 d-inline-block">
           <p class="number_request mb-1 "> {{studentSubscripModel.avatarLink}}</p>
-          <p class="name_user bold mb-2 cursor-pointer" (click)="showStudentDetails(studentSubscripModel?.usrId)">{{studentSubscripModel.usrNameAr}}</p>
-          <p class="program_user bold mb-2 "> {{translate.currentLang === langEnum.en ? studentSubscripModel.enProgBatchName: studentSubscripModel.arProgBatchName}}</p>
+          <p class="name_user bold mb-2 ellipsis p-0"  (click)="showStudentDetails(studentSubscripModel?.usrId)" title="{{studentSubscripModel.usrNameAr}}">{{studentSubscripModel.usrNameAr}}</p>
+          <!-- <p class="program_user bold mb-2 "> {{studentSubscripModel.progName}}</p> -->
+          <p class="program_user bold mb-2 ellipsis p-0"
+          title="{{translate.currentLang === langEnum.en ? studentSubscripModel.enProgBatchName: studentSubscripModel.arProgBatchName}}"
+          > {{translate.currentLang === langEnum.en ? studentSubscripModel.enProgBatchName: studentSubscripModel.arProgBatchName}}</p>
         </div>
 
 
@@ -46,13 +49,20 @@
         </div>
 
 
-        <div *ngIf="typeEnum === tabTypeSelected.Pending">
-          <span class="number_request"> {{'STUDENT_VACATION.VACATION_REASON' | translate}} </span>
-           <p class="d-block bold">{{studentSubscripModel.vacReason}}</p>
-        </div>
-
-        <p *ngIf="typeEnum === tabTypeSelected.Rejected"><span> {{'STUDENT_VACATION.REJECT_REASON' | translate}} </span> : {{studentSubscripModel.rejReason}}</p>
-
+        <ng-container *ngIf="typeEnum === tabTypeSelected.Pending">
+          <div class="vacation_resason ">
+                    <span class="number_request"> {{'STUDENT_VACATION.VACATION_REASON' | translate}} </span>
+                     <p class="d-block bold">{{studentSubscripModel.vacReason}}</p>
+            </div>
+          </ng-container>
+          
+            <ng-container *ngIf="typeEnum === tabTypeSelected.Rejected">
+              <div class="program_rejected ">
+                    
+            <p *ngIf="typeEnum === tabTypeSelected.Rejected"><span> {{'STUDENT_VACATION.REJECT_REASON' | translate}} </span> : {{studentSubscripModel.rejReason}}</p>
+            
+                </div>
+              </ng-container>
 
 
   </div>

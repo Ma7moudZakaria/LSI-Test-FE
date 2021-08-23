@@ -55,6 +55,7 @@ export class TeacherDropOutRequestAdminGridComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log("typeEnum : " , this.typeEnum)
   }
   userId(event: string){
     this.userIdInput.emit(event);

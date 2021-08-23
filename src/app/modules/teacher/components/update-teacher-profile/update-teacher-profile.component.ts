@@ -904,12 +904,14 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.onFileChange(event.target.files);
   }
   setHijri() {
-     let toDayHijriDate = this.dateFormatterService.GetTodayHijri()
+     let toDayHijriDate = this.dateFormatterService.GetTodayHijri() 
      toDayHijriDate.day= toDayHijriDate.day;
      this.maxHijriDate = toDayHijriDate;
 
      let toDayHijriInterviewDate = this.dateFormatterService.GetTodayHijri();
-    //  toDayHijriInterviewDate.day= toDayHijriInterviewDate.day + 1 ;
+     toDayHijriInterviewDate.day= toDayHijriInterviewDate.day + 1 ;
+     toDayHijriInterviewDate.month= toDayHijriInterviewDate.month + 1 ;
+     toDayHijriInterviewDate.year= toDayHijriInterviewDate.year + 1 ;
      this.minHijriInterviewDate = toDayHijriInterviewDate;
      console.log("maxHijri",this.maxHijriDate);
   }
@@ -919,7 +921,9 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.maxGregDate = toDayGreDate;
 
     let toDayGreInterviewDate = this.dateFormatterService.GetTodayGregorian();
-    // toDayGreInterviewDate.day= toDayGreInterviewDate.day + 1 ;
+    toDayGreInterviewDate.day= toDayGreInterviewDate.day + 1 ;
+    toDayGreInterviewDate.month= toDayGreInterviewDate.month + 1 ;
+    toDayGreInterviewDate.year= toDayGreInterviewDate.year + 1 ;
     this.minGregInterviewDate = toDayGreInterviewDate;
     console.log("maxGregDate",this.maxGregDate);
   }

@@ -21,4 +21,5 @@ export interface ITeacherDropOutRequestModel {
     enTechStatusName?:string;  
     drpStat?: number;
     canCancel?:boolean;
+    reason?:string;
 }
