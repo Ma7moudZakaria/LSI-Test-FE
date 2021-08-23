@@ -15,7 +15,6 @@ import {IStudentPrograms} from '../../../../../core/interfaces/student-program-v
 import {IStudentSubscriptionFilterRequestModel} from '../../../../../core/interfaces/student-program-subscription-interfaces/istudent-subscription-filter-request-model';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-add-student-program-vacation-request',
@@ -41,16 +40,14 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
 
   langEnum=LanguageEnum
   isSubmit = false;
-  currentForm: FormGroup = new FormGroup({});
-  disableSaveButtons = false;
-
+  disabledButton: boolean  = false;
 
   constructor(
-              private dateFormatterService: DateFormatterService,
-              public translate: TranslateService,
-               public studentProgramVacationService: StudentProgramVacationServicesService,
-              private alertfyService: AlertifyService,
-              private fb: FormBuilder
+    private dateFormatterService: DateFormatterService,
+    public translate: TranslateService,
+    public studentProgramVacationService: StudentProgramVacationServicesService,
+    private alertfyService: AlertifyService,
+    private studentProgramSubscriptionService: StudentProgramSubscriptionServicesService
   ) {
   }
 
@@ -58,16 +55,8 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     this.addStudentVacationRequestModel.userId = this.currentUser.id;
     this.programFilter.usrId = this.currentUser.id;
-    //this.maxGregDate = this.dateFormatterService.GetTodayGregorian()
+    this.maxGregDate = this.dateFormatterService.GetTodayGregorian()
     this.getAllProgram()
-    this.currentForm.reset();
-    this.buildForm();
-    this.disableSaveButtons = false;
-    this.resultMessage = {
-      message: '',
-      type: ''
-    }
-
   }
 
 
@@ -83,9 +72,8 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
   SendDataTo(data: any) {
     this.typeDateBinding = data.selectedDateType
     data.selectedDateValue = data.selectedDateValue.year + '/' + data.selectedDateValue.month + '/' + data.selectedDateValue.day;
-    console.log("data.selectedDateValue",data.selectedDateValue)
     this.dataToBinding = data.selectedDateValue
-    this.addStudentVacationRequestModel.vacationEndDate = this.dataToBinding
+    this.addStudentVacationRequestModel.vacationEndDate = this.dataToBinding;
     this.selectedDateType = data.selectedDateType;
   }
 
@@ -99,67 +87,52 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
     this.closeAddVacationRequest.emit(this.addStudentVacationRequestModel)
   }
 
-  Submit() {
-    this.isSubmit = true;
-    this.resultMessage = {};
 
-    if (this.addStudentVacationRequestModel.batchId &&  this.addStudentVacationRequestModel.vacationReason) {
-
-      this.studentProgramVacationService.addStudentProgramVacation(this.addStudentVacationRequestModel).subscribe(
-        res => {
-          if (res.isSuccess) {
-            this.isSubmit = false;
-            this.disableSaveButtons = true;
-            this.alertfyService.success(res.message || "");
-            this.closeAddStudentVacation();
-          }
-          else {
-            this.disableSaveButtons = true;
-
-            this.resultMessage = {
-              message: res.message,
-              type: BaseConstantModel.DANGER_TYPE
-            }
-          }
-        },
-        error => {
+  AddStudentVacationRequest() {
+    if(this.addStudentVacationRequestModel.vacationReason == null)
+    {
+      return;
+    }
+    this.addStudentVacationRequestModel ?
+      this.studentProgramVacationService.addStudentProgramVacation(this.addStudentVacationRequestModel).subscribe(res => {
+        if (res.isSuccess){
+          this.closeAddStudentVacation();
+          this.alertfyService.success(res.message || '');
+        }
+        else{
           this.resultMessage = {
-            message: error,
+            message : res.message,
             type: BaseConstantModel.DANGER_TYPE
           }
-        })
-    }
+        }
+      },error => {
+
+      }) : '';
+
   }
+
 
   getAllProgram() {
     this.programFilter.skip = 0;
     this.programFilter.take = 2147483647;
     if(this.currentUser?.id)
-    this.studentProgramVacationService.getStudentAvailablePrograms(this.currentUser?.id).subscribe(
-      (res: BaseResponseModel) => {
-        this.programs = res.data ;
-        this.selectedIndex = -1;
-      }, error => {
-        this.resultMessage = {
-          message: error,
-          type: BaseConstantModel.DANGER_TYPE
+      this.studentProgramVacationService.getStudentAvailablePrograms(this.currentUser?.id).subscribe(
+        (res: BaseResponseModel) => {
+          this.programs = res.data ;
+          this.selectedIndex = -1;
+        }, error => {
+          this.resultMessage = {
+            message: error,
+            type: BaseConstantModel.DANGER_TYPE
+          }
         }
-      }
-    );
+      );
   }
-  get f() {
-    return this.currentForm.controls;
-  }
-  buildForm() {
-    this.currentForm = this.fb.group(
-      {
-        vacationReason: ['', [Validators.required]],
-        batchId: ['', Validators.required],
-        dateFrom :['', Validators.required],
-        dateTo:['', Validators.required]
-      });
-  }
+
 }
+
+
+
 
 
 
