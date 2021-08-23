@@ -41,7 +41,7 @@ export class StudentDropOutRequestService {
   }
 
   studentDropOutCancelRequest(id: string): Observable<BaseResponseModel> {
-    return this.http.get<BaseResponseModel>(this.studentDropOutCancelRequestUrl + id);
+    return this.http.put<BaseResponseModel>(this.studentDropOutCancelRequestUrl, id);
   }
 
   studentDropOutAvailableProgram(model: IStudentMyProgramsRequestModel){
