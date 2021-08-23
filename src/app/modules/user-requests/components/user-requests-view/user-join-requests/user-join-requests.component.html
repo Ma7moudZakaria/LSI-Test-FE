@@ -1,1 +1,36 @@
-<h1>joining</h1>
+
+<div class="request container-fluid">
+  <div class="row">
+    <div class="col-2  justify-content-between text-right d-flex align-items-center">
+      <h3  class=" request__title">طلبات الانضمام</h3>
+    </div>
+
+    <div class="col-4 d-flex align-items-center justify-content-start">
+      <a class=" btn_fram mb-3" [routerLink]="['/student-for-subscription']"> طلب انضمام جديد<i class="fas fa-plus mr-2 ml-2"></i></a>
+
+    </div>
+
+    <div class="col-6">
+<!--      (searchTerm)=searchScProb($event)-->
+      <app-search-input ></app-search-input>
+    </div>
+  </div>
+
+
+  <div >
+    {{ 'GENERAL.NO_DATA' | translate}}
+  </div>
+  <section class="internal_scroll_list_group">
+    <app-program-subscription-grid [typeEnum]='statusEnum.Rejected'
+                                   [studentItems]='studProgsSubsItems'
+                                   (studentFilterEvent)="stuRejectedChangePage($event)"
+                                   [totalCount]='totalCount'
+                                   [studentFilterProgramsRequestModel]='programsFilter'
+                                   (studentIdFormGrid)= "sendUserIDEvent($event)">
+    </app-program-subscription-grid>
+  </section>
+
+</div>
+
+
+
