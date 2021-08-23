@@ -15,7 +15,6 @@ import { BasicInformationComponent } from './basic-information/basic-information
 export class ProgramsTabsComponent implements OnInit {
 
   @Output() refreshProgListEvent = new EventEmitter();
-
   @ViewChild(BasicInformationComponent) basicInfoCompChild:BasicInformationComponent | undefined;
 
   @Input() programModel: IprogramsModel | undefined;
@@ -39,8 +38,7 @@ export class ProgramsTabsComponent implements OnInit {
       this.progService.getProgramDetails(this.programModel?.id || '').subscribe(res => {
         if (res.isSuccess) {
           this.programDetails = res.data as IProgramDetails;
-
-          if (this.basicInfoCompChild && this.basicInfoCompChild.basicInfoDetails) 
+          if (this.basicInfoCompChild && this.basicInfoCompChild.basicInfoDetails)
           {
             this.basicInfoCompChild.basicInfoDetails = this.programDetails.progBaseInfo;
           }
