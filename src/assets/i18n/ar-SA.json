@@ -819,7 +819,8 @@
     "REQUEST_DATE": "تاريخ الطلب",
     "MEETING": "المقابلة",
     "REJECT": "رفض",
-    "ACCEPT": "قبول"
+    "ACCEPT": "قبول",
+    "REJECT_REASON":"سبب الرفض"
   },
   "STUDENT_VACATION": {
     "NEW_VACATION_REQUESTS": "طلبات جديدة",

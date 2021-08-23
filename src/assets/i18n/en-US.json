@@ -821,7 +821,8 @@
     "REQUEST_DATE": "Request Date",
     "MEETING": "Meeting",
     "REJECT": "Reject",
-    "ACCEPT": "Accept"
+    "ACCEPT": "Accept",
+    "REJECT_REASON":"Reject Reason"
   },
   "STUDENT_VACATION": {
     "NEW_VACATION_REQUESTS": "New requests",
