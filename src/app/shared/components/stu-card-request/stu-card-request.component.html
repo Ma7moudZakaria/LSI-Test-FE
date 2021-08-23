@@ -1,6 +1,6 @@
 <div class="card-request">
     <div class="card_header">
-      <section class="example-section">
+      <section class="example-section mt-2">
         <mat-checkbox class="example-margin"  [(ngModel)]="studentSubscripModel.checked" ></mat-checkbox>
       </section>
     <div>
@@ -14,12 +14,11 @@
   
     <div class="card_body">
       <div class="d-flex justify-content-between mb-3">
-        <img *ngIf='!studentSubscripModel.avatarLink' class="img_user" src="../../../../assets/images/student/user-profile.svg">
-        <img *ngIf='studentSubscripModel.avatarLink' class="img_user" src="{{studentSubscripModel.avatarLink}}" >
+        <img *ngIf='!studentSubscripModel.avatarLink' (click)="studentJoinId(studentSubscripModel?.usrId)" class="img_user cursor-pointer" src="../../../../assets/images/student/user-profile.svg">
+        <img *ngIf='studentSubscripModel.avatarLink' (click)="studentJoinId(studentSubscripModel?.usrId)" class="img_user cursor-pointer" src="{{studentSubscripModel.avatarLink}}" >
       <div class="mx-1">
         <p class="number_request mb-1 ">{{studentSubscripModel.programStaNum}}</p>
-        <p class="name_user bold mb-2">{{studentSubscripModel.usrNameAr}}</p>
-        <!-- <p class="program_user bold mb-2 "> {{studentSubscripModel.progName}}</p> -->
+        <p class="name_user bold mb-2 cursor-pointer" (click)="studentJoinId(studentSubscripModel?.usrId)" >{{studentSubscripModel.usrNameAr}}</p>
         <p class="program_user bold mb-2 "> {{translate.currentLang === langEnum.en ? studentSubscripModel.enProgBatName : studentSubscripModel.arProgBatName }}</p>
         <p class="program_user bold mb-0 "> 
         <span> {{'STUDENT_SUBSCRIBERS.REQUEST_RESULT' | translate}} </span>        

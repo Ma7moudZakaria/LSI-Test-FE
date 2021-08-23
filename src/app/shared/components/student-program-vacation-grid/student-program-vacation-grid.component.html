@@ -108,6 +108,7 @@
                             (rejectStudentVacationRequest)="rejectStuRequest($event)"
                             (acceptStudentVacationRequest)="acceptStuRequest($event)"
                             [typeEnum]='vacationTypeEnum'
+                                               (studentVacationId)="getStudentVacationId($event)"
       ></app-student-program-vacation-card-admin>
     </mat-grid-tile>
   </ng-container>

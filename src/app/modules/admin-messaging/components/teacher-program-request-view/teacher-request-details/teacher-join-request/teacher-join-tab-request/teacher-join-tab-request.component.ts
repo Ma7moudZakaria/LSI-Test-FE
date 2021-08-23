@@ -20,6 +20,8 @@ export class TeacherJionTabRequestComponent implements OnInit {
   @Output() itemTeacherSystemSubscriptionReq = new EventEmitter<ITeacherSystemSubscription>();
   @Input() teacherSystemSubscriptionFilterRequestModel: ITeacherSystemSubscriptionFilterRequest = { statusNum: TeacherSystemSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
 
+
+  sendTeacherJoinId: string | undefined;
   typeEnum: TeacherSystemSubscriptionStatusEnum = TeacherSystemSubscriptionStatusEnum.Pending;
   showTap: TeacherSystemSubscriptionStatusEnum = TeacherSystemSubscriptionStatusEnum.Pending
   statusEnum = TeacherSystemSubscriptionStatusEnum;
@@ -27,6 +29,7 @@ export class TeacherJionTabRequestComponent implements OnInit {
   totalCount = 0;
   resMessage: BaseMessageModel = {};
   listOfIds: string[] | undefined;
+   showUserDetailsView: boolean = false;
 
   constructor(
     private teacherService: TeacherProfileService,
@@ -40,7 +43,13 @@ export class TeacherJionTabRequestComponent implements OnInit {
       this.setCurrentLang();
       this.onPendingChange()
     }
-
+  sendTeacherJoinIDEvent(event:string){
+    this.sendTeacherJoinId =event;
+    this.showUserDetailsView = true;
+  }
+  hideUserDetailsView(event: boolean){
+    this.showUserDetailsView = event;
+  }
     setCurrentLang() {
       this.emitHeaderTitle();
       this.languageService.currentLanguageEvent.subscribe(res => {

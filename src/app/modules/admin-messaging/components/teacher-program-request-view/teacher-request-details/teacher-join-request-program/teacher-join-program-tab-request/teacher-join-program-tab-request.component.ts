@@ -30,6 +30,8 @@ export class TeacherJionProgramTabRequestComponent implements OnInit {
   typeEnum: TeacheProgramSubscriptionStatusEnum = TeacheProgramSubscriptionStatusEnum.Pending;
   showTap: TeacheProgramSubscriptionStatusEnum = TeacheProgramSubscriptionStatusEnum.Pending;
   statusEnum = TeacheProgramSubscriptionStatusEnum;
+  sendUserID: string | undefined;
+  showUserDetailsView:boolean = false;
   //teacherName:string='';
   constructor(
     public translate: TranslateService,
@@ -41,6 +43,13 @@ export class TeacherJionProgramTabRequestComponent implements OnInit {
     this.getTeachersProgramsSubscriptions();
   }
 
+  sendTeacherIDEvent(event: string){
+    this.sendUserID =event;
+    this.showUserDetailsView = true;
+  }
+  hideUserDetailsView(event: boolean){
+    this.showUserDetailsView = event;
+  }
   searchByText(searchKey: string) {
     this.teacherProgramSubscriptionFilterRequestModel.usrName = searchKey;
     this.getTeachersProgramsSubscriptions();

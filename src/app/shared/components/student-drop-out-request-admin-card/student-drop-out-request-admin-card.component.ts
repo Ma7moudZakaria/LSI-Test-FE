@@ -13,7 +13,7 @@ export class StudentDropOutRequestAdminCardComponent implements OnInit {
 
   @Output() rejectStudentDropOutAdminRequest = new EventEmitter<IStudentDropOutRequestsFilterResponseModel>();
   @Output() acceptStudentDropOutAdminRequest = new EventEmitter<IStudentDropOutRequestsFilterResponseModel>();
-
+  @Output() studentIdToGrid= new EventEmitter<string>();
   @Input() studentDropOutRequestFilterRequestAdminModel: IStudentDropOutRequestsFilterResponseModel = { totalRows : 0};
 
   @Input() typeEnum: StudentDropOutRequestStatusEnum = StudentDropOutRequestStatusEnum.Pending;
@@ -38,8 +38,11 @@ export class StudentDropOutRequestAdminCardComponent implements OnInit {
     if (!this.studentDropOutRequestFilterRequestAdminModel?.avatarLink) {
       this.studentDropOutRequestFilterRequestAdminModel.avatarLink = '../../../../../assets/images/Profile.svg';
     }
-  } 
+  }
 
+  studentDetails(id?: string){
+    this.studentIdToGrid.emit(id);
+  }
   rejectStudentAdminDropOutRequestEvent(studentAdminDropOutRequest:IStudentDropOutRequestsFilterResponseModel){
     this.rejectStudentDropOutAdminRequest.emit(studentAdminDropOutRequest);
   }

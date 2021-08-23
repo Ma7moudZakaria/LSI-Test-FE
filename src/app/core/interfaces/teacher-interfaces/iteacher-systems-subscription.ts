@@ -1,5 +1,6 @@
 export interface ITeacherSystemSubscription {
-    id?:string;   
+    id?:string;
+    usrId?:string;
     huffazNumber?:number;    
     teacherNameAr?:string;     
     teacherNameEn?:string;   

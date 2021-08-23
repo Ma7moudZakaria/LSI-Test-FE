@@ -31,15 +31,23 @@ export class StuTabRequestComponent implements OnInit {
   statusEnum = StudentProgramSubscriptionStatusEnum;
   studProgsSubsItems: IStudentSubscriptionModel[] = [];
   totalCount = 0;
-
+  sendUserID: string | undefined;
+  showUserDetailsView:boolean = false;
   constructor(private progSubsService: StudentProgramSubscriptionServicesService,
     public translate: TranslateService,
     private alertify: AlertifyService) {
 
   }
   ngOnInit(): void {
-    this.filter.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn'
+    this.filter.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn';
     this.onPendingChange();
+  }
+  sendUserIDEvent(event: string | undefined){
+    this.sendUserID =event;
+    this.showUserDetailsView = true;
+  }
+  hideUserDetailsView(event: boolean){
+    this.showUserDetailsView = event;
   }
   getStudentProgramSubscriptionsFilter() {
     this.progSubsService.getStudentsSubscriptionsFilterAdminView(this.filter).subscribe(res => {

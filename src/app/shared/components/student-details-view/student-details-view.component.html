@@ -6,8 +6,8 @@
 
       <div class="d-flex justify-content-between" >
         <div class="d-flex align-items-center justify-content-start">
-        <img  *ngIf="!teacherProfileDetails?.proPic" src="../../../../assets/images/Profile.svg" class="user__image">
-        <img *ngIf="teacherProfileDetails?.proPic" src="{{teacherProfileDetails?.proPic}}" class="user__image">
+          <img  *ngIf="!teacherProfileDetails?.proPic" src="../../../../assets/images/Profile.svg" class="user__image">
+          <img *ngIf="teacherProfileDetails?.proPic" src="{{teacherProfileDetails?.proPic}}" class="user__image">
           <div class="mr-3 ml-3">
             <h3 class="user__name">
               {{
@@ -26,7 +26,7 @@
             <h4 class="user__date">{{teacherProfileDetails.birthdate | date: 'dd/MM/yyyy'}}</h4>
             <div class="row mt-3">
               <div class="col-12">
-                <label class="title">
+                <!--<label class="title">
                   {{'UPDATE_USER_PG.PROGRAMS' | translate}}
                   <span>  &nbsp;  : </span>
                   <span>  &nbsp; </span>
@@ -34,10 +34,10 @@
                 <label>  </label>
                 <label class="title_data">
                   الصحيحين
-                </label>
+                </label>-->
               </div>
               <div class="col-12">
-                <label class="title">
+                <!--<label class="title">
                   {{'UPDATE_USER_PG.TIMES' | translate}}
                   <span>  &nbsp;  : </span>
                   <span>  &nbsp; </span>
@@ -45,7 +45,7 @@
                 <label>  </label>
                 <label class="title_data">
                   الخميس من 18:00 الى 21:00 ، الاحد من 09:00 الى 15:00
-                </label>
+                </label>-->
               </div>
             </div>
           </div>
@@ -95,7 +95,7 @@
         </label>
 
         <label class="title_data">
-        {{  translate.currentLang === langEnum.ar ? teacherProfileDetails.countryAr :teacherProfileDetails.country}}
+          {{  translate.currentLang === langEnum.ar ? teacherProfileDetails.countryAr :teacherProfileDetails.country}}
         </label>
       </div>
       <div class="col-6 mb-3  col-md-6">
@@ -130,7 +130,7 @@
 
         </label>
         <label class="title_data">
-        {{teacherProfileDetails.address}}
+          {{teacherProfileDetails.address}}
         </label>
       </div>
 
@@ -190,15 +190,15 @@
                 </label>
                 <div class="col-9">
                   <div class="row">
-                  <div class="col-6" *ngFor="let rewayat of teacherProfileDetails.rewayats">
-                    <div  class="badges">
+                    <div class="col-6" *ngFor="let rewayat of teacherProfileDetails.rewayats">
+                      <div  class="badges">
                       <span  class="badge badge-info p-2 ng-star-inserted">
                         {{  translate.currentLang === langEnum.ar ? rewayat.nameAr :rewayat.nameEn}}
 
                       </span>
+                      </div>
                     </div>
                   </div>
-              </div>
                 </div>
               </div>
             </div>
@@ -212,16 +212,16 @@
                 </label>
                 <div class="col-9">
                   <div class="row">
-                  <div class="col-6" *ngFor="let ejaza of teacherProfileDetails.ejazaAttachments">
-                    <div  class="badges">
+                    <div class="col-6" *ngFor="let ejaza of teacherProfileDetails.ejazaAttachments">
+                      <div  class="badges">
                       <span  class="badge badge-info p-2 ng-star-inserted">
                        {{   ejaza.contentType }}
 
                       </span>
+                      </div>
                     </div>
-                  </div>
 
-              </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -235,16 +235,16 @@
                 </label>
                 <div class="col-9">
                   <div class="row">
-                  <div class="col-6" *ngFor="let lang of teacherProfileDetails.languages">
-                    <div  class="badges">
+                    <div class="col-6" *ngFor="let lang of teacherProfileDetails.languages">
+                      <div  class="badges">
                       <span  class="badge badge-info p-2 ng-star-inserted">
                         {{  translate.currentLang === langEnum.ar ? lang.nameAr :lang.nameEn}}
 
                       </span>
+                      </div>
                     </div>
-                  </div>
 
-              </div>
+                  </div>
                 </div>
               </div>
             </div>

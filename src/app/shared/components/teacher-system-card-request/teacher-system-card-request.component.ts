@@ -17,15 +17,15 @@ export class TeacherSystemCardRequestComponent implements OnInit {
   @Output() rejectTeacherSystemSubscription = new EventEmitter<ITeacherSystemSubscription>();
   @Output() acceptTeacherSystemSubscription = new EventEmitter<ITeacherSystemSubscription>();
 
-  @Input() teacherSystemSubscriptionModel: ITeacherSystemSubscription = { totalRows : 0};
+  @Input() teacherSystemSubscriptionModel: ITeacherSystemSubscription = { totalRows : 0} ;
 
   @Input() typeEnum: TeacherSystemSubscriptionStatusEnum = TeacherSystemSubscriptionStatusEnum.Pending;
   typeTeacheEnum = TeacherSystemSubscriptionStatusEnum;
 
-  teacherSystemSubscriptionIds:string[] | undefined
+  teacherSystemSubscriptionIds:string[] | undefined;
   langEnum = LanguageEnum;
   requestDate:string | undefined;
-
+  @Output() teacherJoinInput = new EventEmitter<string>();
   constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
@@ -39,8 +39,11 @@ export class TeacherSystemCardRequestComponent implements OnInit {
     if (!this.teacherSystemSubscriptionModel?.avatarLink) {
       this.teacherSystemSubscriptionModel.avatarLink = '../../../../../assets/images/Profile.svg';
     }
-  } 
+  }
 
+  openDetails(id:string){
+    this.teacherJoinInput.emit(id)
+  }
   rejectTeacherSystemSubscriptionEvent(teacherSubscripModel:ITeacherSystemSubscription){
     this.rejectTeacherSystemSubscription.emit(teacherSubscripModel);
   }

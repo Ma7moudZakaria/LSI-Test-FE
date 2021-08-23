@@ -1,5 +1,6 @@
 export interface IStudentDropOutRequestsFilterResponseModel {
     id?:string;
+    usrId?:string;
     requestDate?:string;
     usrNameAr?:string;
     usrNameEn?:string;

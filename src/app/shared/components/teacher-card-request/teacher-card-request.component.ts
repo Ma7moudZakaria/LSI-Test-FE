@@ -14,6 +14,7 @@ export class TeacherCardRequestComponent implements OnInit {
 
   @Output() rejectTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
   @Output() acceptTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
+  @Output() teacherProgSubOutput = new EventEmitter<string>();
 
   @Input() teacherSubscripModel: ITeacherProgramSubscriptionModel = {totalRows:0}
   @Input() typeEnum: TeacheProgramSubscriptionStatusEnum = TeacheProgramSubscriptionStatusEnum.Pending;
@@ -25,7 +26,9 @@ export class TeacherCardRequestComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  showDetails(id?:string){
+    this.teacherProgSubOutput.emit(id);
+  }
   rejectTeacherProgramSubscriptionEvent(){
     this.rejectTeacherProgramSubscription.emit(this.teacherSubscripModel);
   }
