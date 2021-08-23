@@ -77,5 +77,4 @@ export class StudentProgramSubscriptionServicesService {
   getStudentPrograms(model: IStudentMyProgramsRequestModel): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.getStudentProgramsURL, model);
   }
-
 }

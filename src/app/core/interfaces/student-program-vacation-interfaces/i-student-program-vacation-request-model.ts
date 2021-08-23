@@ -11,4 +11,5 @@ export interface IStudentProgramVacationRequestModel {
   statusNum?: number;
   page: number;
   stdId?:string;
+  batId?:string;
 }
