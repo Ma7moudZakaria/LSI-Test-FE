@@ -14,10 +14,17 @@
          <div class="col-10 card_quest "> 
                 <p class="quest_num"> Quest number-{{currentQuestion?.questionNo}} </p>
 
-                <p class="quest_text">
-                    {{currentQuestion?.text}} 
-                    
-                 </p>
+                <ng-container *ngIf="currentQuestion?.text">
+                  <p class="quest_text" >
+                      {{currentQuestion?.text}} 
+                      
+                   </p>
+    </ng-container>
+    <ng-container *ngIf="currentQuestion?.voiceUrl">
+                   <app-voice-recording 
+                    [viewMode]='true' [voiceUrl]='currentQuestion?.voiceUrl'>
+                  </app-voice-recording>
+     </ng-container>
 
                  <!-- [(ngModel)]="currentQuestion?.correctAnswersByAnswerNumber"  -->
                 length {{currentQuestion?.answers?.length}}
@@ -76,8 +83,7 @@
             </div>
      </div>
      
- 
+<!--  
 <button (click)='submitExam()'>submit</button>
-        <!-- <app-question-template [questionTemplate] = 'question' [viewMode] = 'true'></app-question-template> -->
     </div>
-  
+   -->
