@@ -40,7 +40,7 @@ export class TeacherDropOutRequestService {
   }
 
   teacherDropOutCancelRequest(id: string): Observable<BaseResponseModel> {
-    return this.http.put<BaseResponseModel>(this.teacherDropOutCancelRequestUrl, id);
+    return this.http.put<BaseResponseModel>(this.teacherDropOutCancelRequestUrl + id, null);
   }
   
   teacherDropOutAvailableProgram(model: ITeacherMyProgramsRequestModel){
