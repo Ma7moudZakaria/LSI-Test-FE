@@ -57,9 +57,7 @@ export class UserJoinRequestsComponent implements OnInit {
   getStudentProgramSubscriptionsFilter() {
 
     this.programsFilter.usrId =this.currentUser?.id;
-    console.log("this.programsFilter ", this.programsFilter);
     this.progSubsService.getstudentProgramsSubscriptions(this.programsFilter).subscribe(res => {
-      console.log("entered ");
       if (res.isSuccess) {
         this.studProgsSubsItems = res.data;
 
@@ -67,9 +65,9 @@ export class UserJoinRequestsComponent implements OnInit {
         //   item.requestDate = item.requestDate ? new Date(item.requestDate).toDateString(): '';
         // });
         this.totalCount = res.count ? res.count : 0;
-        // if (this.filter.skip > 0 && (!this.studProgsSubsItems || this.studProgsSubsItems.length === 0)) {
-        //   this.filter.page -= 1;
-        //   this.filter.skip = (this.filter.page - 1) * this.filter.take;
+        // if (this.programsFilter.skip > 0 && (!this.studProgsSubsItems || this.studProgsSubsItems.length === 0)) {
+        //   this.programsFilter.page -= 1;
+        //   this.programsFilter.skip = (this.programsFilter.page - 1) * this.programsFilter.take;
         //   this.getStudentProgramSubscriptionsFilter();
         // }
       }

@@ -17,10 +17,10 @@
   </div>
 
 
-  <div >
+  <div *ngIf="this.studProgsSubsItems.length === 0 ">
     {{ 'GENERAL.NO_DATA' | translate}}
   </div>
-  <section class="internal_scroll_list_group">
+  <section *ngIf="this.studProgsSubsItems .length > 0" class="internal_scroll_list_group">
     <app-program-subscription-grid [typeEnum]='statusEnum.Rejected'
                                    [studentItems]='studProgsSubsItems'
                                    (studentFilterEvent)="stuRejectedChangePage($event)"

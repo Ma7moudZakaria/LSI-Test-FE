@@ -28,7 +28,8 @@ export class StudentProgramSubscriptionServicesService {
   getProgramsForStudentsSubscriptionsURL = environment.baseUrl + 'StudentProgramSubscription/get-programs-for-students-subscriptions/';
   verifyProgramPredefinedConditionURL = environment.baseUrl + 'StudentProgramSubscription/verify-program-predefined-condition/';
   getStudentProgramsURL = environment.baseUrl + 'StudentProgramSubscription/get-student-programs/';
-    getstudentProgramsSubscriptionsURL = environment.baseUrl + 'StudentProgramSubscription/get-students-programs-subscriptions-serv-filter-student-view/';
+  getStudentsProgramsSubscriptionsServFilterStudentViewURL = environment.baseUrl + 'StudentProgramSubscription/get-students-programs-subscriptions-serv-filter-student-view/';
+  getلإeachersProgramsSubscriptionsServFilterStudentViewURL = environment.baseUrl + 'TeacherProgramSubscription/get-teachers-programs-subscriptions-filter-teacher-view/';
 
   constructor(private http: HttpClient) { }
 
@@ -37,7 +38,11 @@ export class StudentProgramSubscriptionServicesService {
   }
   getstudentProgramsSubscriptions(model : IStudentProgramSubscription):Observable<BaseResponseModel>
   {
-    return this.http.post<BaseResponseModel>(this.getstudentProgramsSubscriptionsURL , model);
+    return this.http.post<BaseResponseModel>(this.getStudentsProgramsSubscriptionsServFilterStudentViewURL , model);
+  }
+  getلإeachersProgramsSubscriptionsServFilterStudentView(model : IStudentProgramSubscription):Observable<BaseResponseModel>
+  {
+    return this.http.post<BaseResponseModel>(this.getلإeachersProgramsSubscriptionsServFilterStudentViewURL , model);
   }
 
   studentProgramSubscriptionsAcceptance(model: string[]): Observable<BaseResponseModel> {
