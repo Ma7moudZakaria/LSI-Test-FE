@@ -11,4 +11,8 @@ export interface ITeacherProgramSubscriptionModel {
     avatarLink?: string;
     totalRows: number;
     reasonReject?:string;
+    arBatName?:string;
+    enBatName?:string;
+    arProgBatName?:string;
+    enProgBatName?:string;
 }

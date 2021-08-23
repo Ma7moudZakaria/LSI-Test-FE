@@ -1,1 +1,67 @@
-<p>custom-condition-overlay works!</p>
+
+
+<div class="form-group conditionForm mt-3 pl-3 pr-3" >
+    
+    <h3 class=" head  bold" >استكمال الطلب  </h3>
+       
+      
+    <div class="form-group">
+        <div class="row">
+            <!-- {{isSelected}} 
+            {{textInswer}} 
+            {{xx}} -->
+
+            <!-- <ng-container *ngIf="programCustomConditionsModel.length >0"> -->
+            <ng-container *ngFor="let programCustomConditions of  programCustomConditionsModel">
+            <div class="col-12  mt-3 mb-3" *ngIf="programCustomConditions.conditionModel?.answerType == answerTypeEnum.Text">
+                <label class=" header_input"> {{programCustomConditions.conditionModel?.title}} </label>
+               <!-- {{programCustomConditions?.conditionModel?.studTxtAns}} -->
+               <input type="text" class="form-control" 
+               *ngIf='programCustomConditions && programCustomConditions.conditionModel'
+               [ngModel]="programCustomConditions.conditionModel.studTxtAns" (ngModelChange)="programCustomConditions.conditionModel.studTxtAns=$event"> 
+             
+            </div>
+
+              <hr> 
+            <div class="col-12  mt-3 mb-3" *ngIf="programCustomConditions.conditionModel?.answerType == answerTypeEnum.Toggel">
+                <label class=" header_input mb-3"> {{programCustomConditions.conditionModel?.title}}</label>
+                <!-- [(ngModel)]="conditionModel.answerType" [ngModelOptions]="{standalone: true}"  -->
+            <!-- {{programCustomConditions?.conditionModel?.studBoolAns}} -->
+             <mat-radio-group  aria-label="Select an option"  *ngIf='programCustomConditions && programCustomConditions.conditionModel'
+                 class="example-radio-group"  [ngModel]='programCustomConditions?.conditionModel?.studBoolAns' 
+                 (ngModelChange)="programCustomConditions.conditionModel.studBoolAns=$event"
+                >
+                    <mat-radio-button  value="true" class="example-radio-button ml-1 mr-1" >yes</mat-radio-button>
+                    <mat-radio-button  value="false" class="example-radio-button ml-1 mr-1"  > no</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            
+
+            <hr>
+          
+
+            <div class="col-12 mt-3 mb-3"  *ngIf='programCustomConditions.conditionModel?.answerType === answerTypeEnum.Choices'>
+                <label class=" header_input"> {{programCustomConditions.conditionModel?.title}} </label>
+                <select class="form-control"[ngModel]="xx" (ngModelChange)="onChange($event, programCustomConditions.conditionModel)">
+                  <option *ngFor='let item of programCustomConditions?.conditionModel?.answerList'
+                  [ngValue]="item"
+                  >{{item.text}} </option>
+                </select>
+    
+              </div>
+        </ng-container>
+    <!-- </ng-container> -->
+            
+        </div>
+
+    </div>
+    <div class="form-group">
+      
+   <section class="mt-5 col-12">
+            <div  class="row direction-rtl buttons-center mt-5">
+                <button   type="submit" class="save-btn btn_block" (click)="submitStudentCustomCondition()" > 
+                   ارسال 
+                </button>
+            </div>
+    </section>
+</div>

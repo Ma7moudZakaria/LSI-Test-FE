@@ -1,29 +1,34 @@
-<ng-container *ngIf="userMode == programSubscriptionUsers.teacher">
-<a class="card_link" (click)="gotoDetails(teachersubscriptionmodel.progId)"
+<ng-container *ngIf="userMode == programSubscriptionUsers?.teacher">
+<a class="card_link" (click)="gotoDetails(teachersubscriptionmodel?.progId,teachersubscriptionmodel?.batId)"
  class="card_program d-flex justify-content-between align-items-center mb-3">
     <img class="prog-photo" src="../.././../../../assets/images/student-program/program-sub/qor2an.png">
     <div class="card_info">
-      <p class="prog-name">{{teachersubscriptionmodel.prgName}}</p>
-      <p class="batch-name">
-        <!-- {{translate.currentLang === langEnum.en ? teachersubscriptionmodel.enBatName:teachersubscriptionmodel.arBatName}} -->
+      <!-- <p class="prog-name">{{teachersubscriptionmodel.prgName}}
+        
+      </p> -->
+      <p class="prog-name">
+        {{translate.currentLang === langEnum.en ? teachersubscriptionmodel?.enProgBatchName:teachersubscriptionmodel?.arProgBatchName}}
       </p>
+      <!-- <p class="batch-name">
+        {{translate.currentLang === langEnum.en ? teachersubscriptionmodel.enBatName:teachersubscriptionmodel.arBatName}}
+      </p> -->
 
       <div class=" d-flex justify-content-around align-items-center  ">
         <div class="text-center">
           <span class="az_count">عدد الأجزاء المطلوبة</span>
-          <p class="count" *ngIf="teachersubscriptionmodel.parts"> {{teachersubscriptionmodel.parts}} </p>
-          <p class="count" *ngIf="!teachersubscriptionmodel.parts"> 0 </p>
+          <p class="count" *ngIf="teachersubscriptionmodel?.parts"> {{teachersubscriptionmodel?.parts}} </p>
+          <p class="count" *ngIf="!teachersubscriptionmodel?.parts"> لا يوجد </p>
         </div>
         <div class="slash"></div>
         <div class="text-center">
           <span  class="time_pro">مدة البرنامج باليوم</span>
-          <p class="count"  *ngIf="teachersubscriptionmodel.prgDura"> {{teachersubscriptionmodel.prgDura}}</p>
-          <p class="count"  *ngIf="!teachersubscriptionmodel.prgDura">0</p>
+          <p class="count"  *ngIf="teachersubscriptionmodel?.dura"> {{teachersubscriptionmodel?.dura}}</p>
+          <p class="count"  *ngIf="!teachersubscriptionmodel?.dura">لا يوجد</p>
 
         </div>
       </div>
       <p class="details mt-2">
-        {{teachersubscriptionmodel.idea}}
+        {{teachersubscriptionmodel?.idea}}
 
         <!-- نيّات هذا القرن مع إصدار رقائق "ليتراسيت" (Letras
         et) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور -->
@@ -33,12 +38,13 @@
   </a>
 </ng-container>
 
-<ng-container *ngIf="userMode == programSubscriptionUsers.student">
-  <a class="card_link" (click)="gotoDetailsStudent(studentsubscriptionmodel.progId)">
+<ng-container *ngIf="userMode == programSubscriptionUsers?.student">
+  <a class="card_link" (click)="gotoDetailsStudent(studentsubscriptionmodel?.progId, studentsubscriptionmodel?.batId)">
 <div class="card_program d-flex justify-content-between align-items-center mb-3">
     <img class="prog-photo" src="../.././../../../assets/images/student-program/program-sub/qor2an.png">
     <div class="card_info">
-      <p class="prog-name">{{studentsubscriptionmodel.progName}}</p>
+      <!-- <p class="prog-name">{{studentsubscriptionmodel.progName}}</p> -->
+      <p class="prog-name">{{translate.currentLang === langEnum.en ? studentsubscriptionmodel?.enProgBatchName: studentsubscriptionmodel?.arProgBatchName}}</p>
       <p class="batch-name">
         <!-- {{translate.currentLang === langEnum.en ? studentsubscriptionmodel.enBatName:studentsubscriptionmodel.arBatName}} -->
       </p>
@@ -46,19 +52,19 @@
       <div class=" d-flex justify-content-around align-items-center  ">
         <div class="text-center">
           <span class="az_count">عدد الأجزاء المطلوبة</span>
-          <p class="count" *ngIf="studentsubscriptionmodel.parts"> {{studentsubscriptionmodel.parts}} </p>
-          <p class="count" *ngIf="!studentsubscriptionmodel.parts"> 0 </p>
+          <p class="count" *ngIf="studentsubscriptionmodel?.parts"> {{studentsubscriptionmodel?.parts}} </p>
+          <p class="count" *ngIf="!studentsubscriptionmodel?.parts"> لا يوجد </p>
         </div>
         <div class="slash"></div>
         <div class="text-center">
           <span  class="time_pro">مدة البرنامج باليوم</span>
-          <p class="count"  *ngIf="studentsubscriptionmodel.dura"> {{studentsubscriptionmodel.dura}}</p>
-          <p class="count"  *ngIf="!studentsubscriptionmodel.dura">0</p>
+          <p class="count"  *ngIf="studentsubscriptionmodel?.dura"> {{studentsubscriptionmodel?.dura}}</p>
+          <p class="count"  *ngIf="!studentsubscriptionmodel?.dura">لا يوجد</p>
 
         </div>
       </div>
       <p class="details mt-2">
-        {{studentsubscriptionmodel.idea}}
+        {{studentsubscriptionmodel?.idea}}
 
         <!-- نيّات هذا القرن مع إصدار رقائق "ليتراسيت" (Letras
         et) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور -->

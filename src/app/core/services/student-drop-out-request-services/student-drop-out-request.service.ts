@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { IStudentMyProgramsRequestModel } from '../../interfaces/student-program-subscription-interfaces/istudent-my-programs-request-model';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 
 @Injectable({
@@ -14,6 +15,8 @@ export class StudentDropOutRequestService {
   createStudentDropOutRequestUrl = environment.baseUrl + 'StudentDropOutRequest/create-student-drop-out-request/';
   studentDropOutRequestsAcceptanceUrl = environment.baseUrl + 'StudentDropOutRequest/accept-student-drop-out-request/';
   studentDropOutRequestsRejectionUrl = environment.baseUrl + 'StudentDropOutRequest/reject-student-drop-out-request/';
+  studentDropOutCancelRequestUrl = environment.baseUrl + 'StudentDropOutRequest/student-cancel-droup-out-request/';
+  studentDropOutAvailableProgramUrl = environment.baseUrl + 'StudentDropOutRequest/student-avaliable-program-to-droup-out/';
 
   constructor(private http: HttpClient) { }
 
@@ -35,5 +38,13 @@ export class StudentDropOutRequestService {
 
   studentDropOutRequestsRejection(model: any): Observable<BaseResponseModel> {
     return this.http.put<BaseResponseModel>(this.studentDropOutRequestsRejectionUrl, model);
+  }
+
+  studentDropOutCancelRequest(id: string): Observable<BaseResponseModel> {
+    return this.http.get<BaseResponseModel>(this.studentDropOutCancelRequestUrl + id);
+  }
+
+  studentDropOutAvailableProgram(model: IStudentMyProgramsRequestModel){
+    return this.http.get<BaseResponseModel>(this.studentDropOutAvailableProgramUrl + model.usrId);
   }
 }

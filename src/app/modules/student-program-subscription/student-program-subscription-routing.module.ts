@@ -7,7 +7,7 @@ const routes: Routes = [
 
   { path: '', component: StudentProgramsForSubscriptionComponent },
 
-  { path: 'student_pro_sub_deatils/:id', component: StudentProgramSubViewComponent },
+  { path: 'student_pro_sub_deatils/:id/:batch', component: StudentProgramSubViewComponent },
 
 ];
 

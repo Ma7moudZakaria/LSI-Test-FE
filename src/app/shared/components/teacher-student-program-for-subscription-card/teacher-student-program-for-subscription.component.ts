@@ -17,32 +17,33 @@ export class TeacherStudentProgramForSubscriptionComponent implements OnInit {
 
   @Output() teacher_subscription_id = new EventEmitter<string>();
 
-  @Input() teachersubscriptionmodel: IProgramsForTeacherSubscriptionsModel = { totals: 0 }
-  @Input() studentsubscriptionmodel: IProgramsForStudentSubscriptionsModel = { totals: 0 }
+  @Input() teachersubscriptionmodel: IProgramsForTeacherSubscriptionsModel | undefined;
+  @Input() studentsubscriptionmodel: IProgramsForStudentSubscriptionsModel | undefined
   @Input() userMode: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.student;
   programSubscriptionUsers = ProgramSubscriptionUsersEnum;
+  langEnum = LanguageEnum;
 
 
   // @Input() studentSubscripModel: IStudentSubscriptionModel = { totalRows: 0 }
   errorMessage?: string;
-  langEnum = LanguageEnum;
 
   constructor(
-    private router: Router
+    private router: Router,
+    public translate : TranslateService
   ) { }
 
   ngOnInit(): void {
 
   }
-  gotoDetails(event?: string) {
+  gotoDetails(event?: string, batId?:string) {
 
-    this.router.navigateByUrl('teacher-for-subscription/teacher_pro_sub_deatils/' + event);
+    this.router.navigateByUrl('teacher-for-subscription/teacher_pro_sub_deatils/' + event + '/' + batId);
     this.teacher_subscription_id.emit(event)
 
   }
-  gotoDetailsStudent(event?: string) {
+  gotoDetailsStudent(event?: string, batId?:string) {
 
-    this.router.navigateByUrl('student-for-subscription/student_pro_sub_deatils/' + event);
+    this.router.navigateByUrl('student-for-subscription/student_pro_sub_deatils/' + event + '/' + batId);
 
 
   }

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { TeacherDropOutRequestStatusEnum } from 'src/app/core/enums/drop-out-request-enums/teacher-drop-out-request-status.enum';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { IProgramFilterAdvancedRequest } from 'src/app/core/interfaces/programs-interfaces/iprogram-filter-requests';
 import { IprogramsModel } from 'src/app/core/interfaces/programs-interfaces/iprograms-model';
@@ -27,7 +28,7 @@ export class AddDropOutRequestComponent implements OnInit {
   programsList: ITeacherMyProgramsListModel[] = [];
   programsbyAdvancedFilter: ITeacherMyProgramsRequestModel = {};
   currentUser: IUser | undefined;
-  
+  langEnum = LanguageEnum;
   
   constructor(
     private programSubscriptionService: TeacherProgramSubscriptionServicesService, 
@@ -71,7 +72,7 @@ export class AddDropOutRequestComponent implements OnInit {
 
   getAllProgram() {
     this.programsbyAdvancedFilter = { teacherId : this.currentUser?.id };
-    this.programSubscriptionService.getTeacherPrograms(this.programsbyAdvancedFilter || {}).subscribe(res => {
+    this.teacherDropOutRequestService.teacherDropOutAvailableProgram(this.programsbyAdvancedFilter || {}).subscribe(res => {
 
       console.log("res =====> ", res)
       if (res.isSuccess) {

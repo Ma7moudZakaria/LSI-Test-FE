@@ -6,7 +6,8 @@ export interface IProgramsForTeacherSubscriptionsModel {
     enBatName?: string;
     arProgBatchName?: string;
     enProgBatchName?: string;
-    prgDura?: number;
+    prgDura?: number;//need to verify model usage
+    dura?:number;//need to verify model usage
     idea?: string;
     parts?: number;
     totals?: number;

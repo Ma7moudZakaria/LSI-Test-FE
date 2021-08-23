@@ -21,6 +21,7 @@ export class TeacherDropOutRequestAdminGridComponent implements OnInit {
   @Output() itemTeacherDropOutRequestForReject = new EventEmitter<ITeacherDropOutRequestModel>();
   @Output() rejectTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
   @Output() acceptTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
+  @Output() cancelRequestOfTeacher = new EventEmitter<ITeacherDropOutRequestModel>();
   @Output() userIdInput = new EventEmitter<string>();
 
   @Output() acceptAllTeacherDropOutRequestChecked = new EventEmitter<ITeacherDropOutRequestModel>();
@@ -54,6 +55,7 @@ export class TeacherDropOutRequestAdminGridComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log("typeEnum : " , this.typeEnum)
   }
   userId(event: string){
     this.userIdInput.emit(event);
@@ -277,6 +279,10 @@ export class TeacherDropOutRequestAdminGridComponent implements OnInit {
   
       let data = ['progName', 'usrNameAr'];
       this.exportationService.exportCSV(expItems, 'Student', data, headerLabels);
+    }
+
+    cancelRequestOfTeacherEvent(teacherModel: ITeacherDropOutRequestModel) {
+      this.cancelRequestOfTeacher.emit(teacherModel);
     }
   
     // End Here

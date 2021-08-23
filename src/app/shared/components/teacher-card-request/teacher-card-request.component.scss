@@ -1,4 +1,13 @@
 @import "../stu-card-request/stu-card-request.component.scss";
 .card-request{
-  height: auto;
+      
+      .ellipsis {
+        width: 145px;
+      }
 }
+
+    .program_rejected
+    {
+        height: 10vh;
+        overflow-y: auto;
+    }

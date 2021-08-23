@@ -1,7 +1,12 @@
 export interface IProgramSubscriptionDetails {
     id: string;
-    batId: string;
     prgName?: string;
+    batId: string;
+    arBatName?: string;
+    enBatName?: string;
+    arProgBatName?: string;
+    enProgBatName?: string;
+
     prgDura?: number;
     parts?: number;
 

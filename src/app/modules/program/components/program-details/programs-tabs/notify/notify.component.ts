@@ -36,6 +36,8 @@ export class NotifyComponent implements OnInit {
 
   @Output() openNotifyfrom = new EventEmitter<IProgramNotificationDetails>();
   @Input() progId?: string = '';
+
+  @Input() viewModeNotify: boolean = false;
   // @Input() progBasicInfoDetails:IProgramBasicInfoDetails | undefined;
 
   ngOnInit(): void {
@@ -62,7 +64,6 @@ export class NotifyComponent implements OnInit {
   getAllNotifications(id: any) {
     this.notificationService.getAllNotifications(this.progId || '').subscribe(res => {
       this.notificationsCardList = res.data as IProgramNotificationDetails[];
-
       this.notificationsCardList.forEach(item => {
         item.notifyTypeLookup = this.collectionOfLookup.PROG_NOTIF_TYPES?.filter(i => i.id === item.notifyType)[0]
       })

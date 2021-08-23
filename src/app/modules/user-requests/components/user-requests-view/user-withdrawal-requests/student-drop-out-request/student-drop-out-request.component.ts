@@ -4,11 +4,13 @@ import { DropOutRoleEnum } from 'src/app/core/enums/drop-out-request-enums/drop-
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { ICrateStudentDropOutRequestModel } from 'src/app/core/interfaces/student-drop-out-request-interfaces/icreate-student-drop-out-request-model';
+import { IStudentDropOutRequestsFilterResponseModel } from 'src/app/core/interfaces/student-drop-out-request-interfaces/istudent-drop-out-requests-filter-response-model';
 import { IStudentDropOutRequestsFilterStudentViewRequestModel } from 'src/app/core/interfaces/student-drop-out-request-interfaces/istudent-drop-out-requests-filter-student-view-request-model';
 import { IStudentDropOutRequestsFilterStudentViewResponseModel } from 'src/app/core/interfaces/student-drop-out-request-interfaces/istudent-drop-out-requests-filter-student-view-response-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { StudentDropOutRequestService } from 'src/app/core/services/student-drop-out-request-services/student-drop-out-request.service';
 import { UserWithdrawalRequestsComponent } from '../user-withdrawal-requests.component';
 
@@ -32,7 +34,7 @@ export class StudentDropOutRequestComponent implements OnInit {
   
   constructor(
     public translate: TranslateService,
-    private tudentDropOutRequestService: StudentDropOutRequestService) { }
+    private studentDropOutRequestService: StudentDropOutRequestService) { }
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
@@ -55,7 +57,7 @@ export class StudentDropOutRequestComponent implements OnInit {
 
   getStudentDropOutRequests() {
     this.studentDropOutRequestFilterRequestModel.usrId = this.currentUser?.id;
-    this.tudentDropOutRequestService.studentDropOutRequestAdvFilterStudentView(this.studentDropOutRequestFilterRequestModel).subscribe(res => {
+    this.studentDropOutRequestService.studentDropOutRequestAdvFilterStudentView(this.studentDropOutRequestFilterRequestModel).subscribe(res => {
       var response = <BaseResponseModel>res;
       if (response.isSuccess) {
         this.studentDropOutRequestList = res.data as IStudentDropOutRequestsFilterStudentViewResponseModel[];
@@ -84,5 +86,20 @@ export class StudentDropOutRequestComponent implements OnInit {
   studentDropOutRequestChangePage(event: IStudentDropOutRequestsFilterStudentViewRequestModel) {
     this.studentDropOutRequestFilterRequestModel = event;
     this.getStudentDropOutRequests();
+  }
+
+  cancelRequestOfStudent(teacherSubscripModel: IStudentDropOutRequestsFilterResponseModel) {
+    this.studentDropOutRequestService.studentDropOutCancelRequest(teacherSubscripModel.id || '').subscribe(res => {
+      if (res.isSuccess) {
+      
+        this.getStudentDropOutRequests();
+      }
+    },
+      error => {
+        this.resMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      });
   }
 }

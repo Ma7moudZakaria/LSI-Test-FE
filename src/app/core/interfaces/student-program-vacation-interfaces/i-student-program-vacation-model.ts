@@ -14,4 +14,6 @@ export interface IStudentProgramVacationModel {
   arNameBatch?: string;
   enNameBatch?: string;
   checked?:boolean;
+  arProgBatchName?:string;
+  enProgBatchName?:string;
 }

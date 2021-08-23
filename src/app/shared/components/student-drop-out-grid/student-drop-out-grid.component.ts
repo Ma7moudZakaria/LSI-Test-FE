@@ -31,6 +31,7 @@ export class StudentDropOutGridComponent implements OnInit {
   @Output() itemStudentDropOutRequestForStudentReject = new EventEmitter<IStudentDropOutRequestsFilterStudentViewResponseModel>();
   @Output() rejectStudentDropOutStudentRequest = new EventEmitter<IStudentDropOutRequestsFilterStudentViewResponseModel>();
   @Output() acceptStudentDropOutStudentRequest = new EventEmitter<IStudentDropOutRequestsFilterStudentViewResponseModel>();
+  @Output() cancelRequestOfStudent = new EventEmitter<IStudentDropOutRequestsFilterResponseModel>();
   @Output() acceptAllStudentDropOutRequestStudentChecked = new EventEmitter<IStudentDropOutRequestsFilterStudentViewResponseModel>();
   @Input() studentDropOutRequestFilterRequestStudentModel: IStudentDropOutRequestsFilterStudentViewRequestModel = { skip: 0, take: 9, page: 1 };
   @Input() studentDropOutRequestStudentItems: IStudentDropOutRequestsFilterStudentViewResponseModel[] = [];
@@ -370,6 +371,10 @@ export class StudentDropOutGridComponent implements OnInit {
 
   acceptStudentDropOutRequestEvent(studentModel: IStudentDropOutRequestsFilterStudentViewResponseModel) {
     this.acceptStudentDropOutStudentRequest.emit(studentModel);
+  }
+
+  cancelRequestOfStudentEvent(studentModel: IStudentDropOutRequestsFilterResponseModel) {
+    this.cancelRequestOfStudent.emit(studentModel);
   }
   
   // End Here

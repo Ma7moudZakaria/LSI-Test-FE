@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { StudentProgramSubscriptionStatusEnum } from 'src/app/core/enums/subscriptionStatusEnum/student-program-subscription-status-enum.enum';
 import { IStudentSubscriptionModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-subscription-model';
 
@@ -15,10 +17,11 @@ export class StuCardRequestComponent implements OnInit {
 
   @Input() typeEnum: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending;
   tabTypeSelected = StudentProgramSubscriptionStatusEnum;
+  langEnum = LanguageEnum;
 
   @Input() studentSubscripModel: IStudentSubscriptionModel = { totalRows: 0 }
 
-  constructor() { }
+  constructor(public translate : TranslateService) { }
 
   ngOnInit(): void {
   }

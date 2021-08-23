@@ -56,10 +56,6 @@ export class ViewTeacherProfileComponent implements OnInit {
         this.teacherProfileDetails = res.data as ITeacherProfile;
 
 
-
-
-        console.log("Teacher Profile Details =========>" , this.teacherProfileDetails)
-
         if (!this.teacherProfileDetails?.proPic) {
           this.teacherProfileDetails.proPic = '../../../../../assets/images/Profile.svg';
         }

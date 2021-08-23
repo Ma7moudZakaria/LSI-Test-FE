@@ -50,7 +50,7 @@ export class StuTabRequestComponent implements OnInit {
     this.showUserDetailsView = event;
   }
   getStudentProgramSubscriptionsFilter() {
-    this.progSubsService.getStudentsSubscriptionsFilter(this.filter).subscribe(res => {
+    this.progSubsService.getStudentsSubscriptionsFilterAdminView(this.filter).subscribe(res => {
 
       if (res.isSuccess) {
         this.studProgsSubsItems = res.data;

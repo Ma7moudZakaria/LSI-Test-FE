@@ -2,7 +2,7 @@
     <div class="card_header">
     <span>{{notificationsCardDetails.notifyName}}</span>
     
-    <span class="icon_actions">
+    <span *ngIf="!viewMode" class="icon_actions">
      <img src="/assets/images/notify/edit.svg" (click)="editCard()"> 
      <img src="/assets/images/notify/trash.svg" (click)="deleteCard()">  
     </span>

@@ -9,6 +9,8 @@ import { AlertifyService } from '../../../core/services/alertify-services/alerti
 import { ProgramSubscriptionUsersEnum } from '../../../core/enums/program-subscription-users-enum.enum';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { Iuser } from 'src/app/core/interfaces/user-interfaces/iuser';
+import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 
 @Component({
   selector: 'app-student-programs-for-subscription',
@@ -24,6 +26,7 @@ export class StudentProgramsForSubscriptionComponent implements OnInit {
   resultMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
   studentCard: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.student;
+  currentUser:Iuser | undefined;
 
   constructor(
     public translate: TranslateService, private alertify: AlertifyService,
@@ -31,8 +34,10 @@ export class StudentProgramsForSubscriptionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     // console.log("student_studentCard")
     this.filterRequest.sortField = 'progName';
+    this.filterRequest.usrId = this.currentUser?.id;
     this.getProgramsForStudentsSubscriptions()
 
   }

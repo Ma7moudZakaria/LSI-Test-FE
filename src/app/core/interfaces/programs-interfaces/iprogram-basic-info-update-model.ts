@@ -17,4 +17,5 @@ export interface IProgramBasicInfoUpdateModel {
     progIsRecTimeMand?:boolean;
     progRecType?: string;
     progRecitTimes?: IRecitationTimes[];
+    prgDura?:number;
 }

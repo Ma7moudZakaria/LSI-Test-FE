@@ -32,7 +32,7 @@
              طلبات الاجازات
         </div> -->
         <div class="item_group" (click)="showTap = 'NOTIFACATION'"
-        [ngClass]="{ item_group_active: showTap == 'NOTIFACATION' }">
+        [ngClass]="{ item_group_active: showTap == 'NOTIFACATION' }" >
         {{'PROGRAM_TABS.NOTIFACATION' | translate}}
 
         </div>
@@ -56,7 +56,7 @@
            <app-days *ngIf="showTap == 'DAYS'" [progs]='programDetails'></app-days>
            <!-- <app-conditions *ngIf="showTap == 'CANDITION'"></app-conditions> -->
            <app-join-requests *ngIf="showTap == 'JOIN'" [programDetails]='programDetails'></app-join-requests>
-           <app-notify *ngIf="showTap == 'NOTIFACATION'" [progId]='programDetails?.id'></app-notify>
+           <app-notify *ngIf="showTap == 'NOTIFACATION'" [progId]='programDetails?.progBaseInfo?.id' ></app-notify>
            <!-- <app-progress-test  *ngIf="showTap == 'PROGRESSTEST'"></app-progress-test> -->
            <app-students *ngIf="showTap == 'STUDENS'"></app-students>
            <!-- <app-vacation-requests *ngIf="showTap == 'VACATION'"></app-vacation-requests> -->

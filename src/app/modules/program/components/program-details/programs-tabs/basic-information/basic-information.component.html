@@ -163,7 +163,7 @@
                     <div class="col-6 mb-3" *ngIf="programConditionsEnum.programFinished===item.conditionNo">
                         <app-setting-last-program [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [ViewprogCondmood]='programConditionViewMoodEnum.conditionBasicInfoViewMood'></app-setting-last-program>
                     </div>
-            
+
                     <div class="col-6 mb-3" *ngIf="programConditionsEnum.numberStudentSubscribtion===item.conditionNo">
                         <app-setting-maxmum-subscribe [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [ViewprogCondmood]='programConditionViewMoodEnum.conditionBasicInfoViewMood'></app-setting-maxmum-subscribe>
                     </div>
@@ -173,7 +173,7 @@
                     <div class="col-6 mb-3" *ngIf="programConditionsEnum.accept===item.conditionNo">
                         <app-setting-accept [programConditionsModel] ='item' (progIdToLoadProgCond)='getProgramConditionsLisByProgId()' [ViewprogCondmood]='programConditionViewMoodEnum.conditionBasicInfoViewMood'></app-setting-accept>
                     </div>
-                   
+
                    </ng-container >
                 </div>
             </div>

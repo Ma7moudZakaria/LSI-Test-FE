@@ -24,7 +24,8 @@
                     [totalCount]='totalCount'
                     [userMode]='userMode'
                     (studentDropOutRequestFilterStudentEvent)="studentDropOutRequestChangePage($event)"
-                    [studentDropOutRequestFilterRequestStudentModel]='studentDropOutRequestFilterRequestModel'>
+                    [studentDropOutRequestFilterRequestStudentModel]='studentDropOutRequestFilterRequestModel'
+                    (cancelRequestOfStudent)="cancelRequestOfStudent($event)">
                </app-student-drop-out-grid>
         </div>
     

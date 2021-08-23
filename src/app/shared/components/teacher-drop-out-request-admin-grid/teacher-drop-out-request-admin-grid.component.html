@@ -67,7 +67,7 @@
           </span>
        </button>
       </div> 
-       <div class="col-4 pl-4 text-right align-self-center"  *ngIf='userRoleMode.Admin === userMode'>
+       <div class="col-4 pl-4 text-right align-self-center"  *ngIf='userRoleMode.Admin === userMode && teacherDropOutRequestStatus.Pending === typeEnum'>
           <mat-checkbox class="example-margin ml-1 mr-1 scProblem"
                     [checked]="allSelected"
                     [indeterminate]="someTeachertItemsChecked()"
@@ -105,6 +105,7 @@
          [teacherDropOutRequestModel]='item' 
          (rejectTeacherDropOutRequest)="rejectTeacherDropOutRequestEvent($event)"
          (acceptTeacherDropOutRequest)="acceptTeacherDropOutRequestEvent($event)"
+         (cancelRequestOfTeacher)="cancelRequestOfTeacherEvent($event)"
          [typeEnum]='typeEnum' 
          ></app-teacher-drop-out-request-teacher-card>
         </mat-grid-tile>

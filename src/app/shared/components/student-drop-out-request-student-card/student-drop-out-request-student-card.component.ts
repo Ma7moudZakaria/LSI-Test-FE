@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { StudentDropOutRequestStatusEnum } from 'src/app/core/enums/drop-out-request-enums/student-drop-out-request-status.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { IStudentDropOutRequestsFilterResponseModel } from 'src/app/core/interfaces/student-drop-out-request-interfaces/istudent-drop-out-requests-filter-response-model';
 import { IStudentDropOutRequestsFilterStudentViewResponseModel } from 'src/app/core/interfaces/student-drop-out-request-interfaces/istudent-drop-out-requests-filter-student-view-response-model';
 
 @Component({
@@ -13,6 +14,7 @@ export class StudentDropOutRequestStudentCardComponent implements OnInit {
 
   @Output() rejectStudentDropOutStudentRequest = new EventEmitter<IStudentDropOutRequestsFilterStudentViewResponseModel>();
   @Output() acceptStudentDropOutStudentRequest = new EventEmitter<IStudentDropOutRequestsFilterStudentViewResponseModel>();
+  @Output() cancelRequestOfStudent = new EventEmitter<IStudentDropOutRequestsFilterResponseModel>();
 
   @Input() studentDropOutRequestFilterRequestStudentModel: IStudentDropOutRequestsFilterStudentViewResponseModel = { totalRows : 0};
   @Input() typeEnum: StudentDropOutRequestStatusEnum = StudentDropOutRequestStatusEnum.Pending;
@@ -40,5 +42,14 @@ export class StudentDropOutRequestStudentCardComponent implements OnInit {
   
   acceptTeacherDropOutRequestEvent(){
     this.acceptStudentDropOutStudentRequest.emit(this.studentDropOutRequestFilterRequestStudentModel);
+  }
+
+  cancelRequest(){
+      // if(this.studentDropOutRequestFilterRequestStudentModel.drpStat != this.StudentDropOutRequestStatus.Accept &&
+      //  this.studentDropOutRequestFilterRequestStudentModel.drpStat != this.StudentDropOutRequestStatus.Rejected)
+      // {
+      //   this.cancelRequestOfStudent.emit(this.studentDropOutRequestFilterRequestStudentModel);
+      // }
+      this.cancelRequestOfStudent.emit(this.studentDropOutRequestFilterRequestStudentModel);
   }
 }

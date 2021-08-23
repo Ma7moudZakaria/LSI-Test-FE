@@ -79,3 +79,22 @@
     color: #39B91A;
     background: #39B91A;
 }
+
+.dimmed{
+  color: gray;
+  cursor: not-allowed;
+  // text-decoration: underline;
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+.disable{
+  color: gray;
+  cursor: not-allowed;
+  // text-decoration: underline;
+  pointer-events: none;
+  opacity: 0.2;
+}
+.ellipsis{
+  width: 100px;
+}

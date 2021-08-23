@@ -17,7 +17,7 @@ export class StudentVacationRequestTabComponent implements OnInit {
 
   @Output() advancedSearchEvent = new EventEmitter<IStudentProgramVacationFilterRequestModel>();
   @Output() itemStuReq = new EventEmitter<IStudentProgramVacationModel>();
-  StudentDropIdInput :string | undefined;
+  studentDropIdInput :string | undefined;
   studentProgramVacationRequestsList: IStudentProgramVacationModel[] = [];
   studentProgramVacationFilterRequestModel: IStudentProgramVacationFilterRequestModel = { statusNum: StudentProgramVacationStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
   totalCount = 0;
@@ -38,7 +38,7 @@ export class StudentVacationRequestTabComponent implements OnInit {
   }
   studentIdDrop(event:string){
     this.showUserDetailsView =true;
-    this.StudentDropIdInput= event;
+    this.studentDropIdInput= event;
   }
   hideUserDetailsView(event: boolean){
     this.showUserDetailsView = event;
