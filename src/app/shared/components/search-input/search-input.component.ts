@@ -19,6 +19,7 @@ export class SearchInputComponent implements OnInit {
 
   updateSearchTerm(){
     this.searchTerm.emit(this.searchKey);
+    this.searchKey='';
   }
   
 }
