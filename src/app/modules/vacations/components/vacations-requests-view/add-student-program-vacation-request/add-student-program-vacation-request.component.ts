@@ -50,7 +50,7 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
               public translate: TranslateService,
                public studentProgramVacationService: StudentProgramVacationServicesService,
               private alertfyService: AlertifyService,
-              private studentProgramSubscriptionService: StudentProgramSubscriptionServicesService,private fb: FormBuilder
+              private fb: FormBuilder
   ) {
   }
 
@@ -58,7 +58,7 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     this.addStudentVacationRequestModel.userId = this.currentUser.id;
     this.programFilter.usrId = this.currentUser.id;
-    this.maxGregDate = this.dateFormatterService.GetTodayGregorian()
+    //this.maxGregDate = this.dateFormatterService.GetTodayGregorian()
     this.getAllProgram()
     this.currentForm.reset();
     this.buildForm();
@@ -83,6 +83,7 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
   SendDataTo(data: any) {
     this.typeDateBinding = data.selectedDateType
     data.selectedDateValue = data.selectedDateValue.year + '/' + data.selectedDateValue.month + '/' + data.selectedDateValue.day;
+    console.log("data.selectedDateValue",data.selectedDateValue)
     this.dataToBinding = data.selectedDateValue
     this.addStudentVacationRequestModel.vacationEndDate = this.dataToBinding
     this.selectedDateType = data.selectedDateType;
@@ -134,9 +135,9 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
     this.programFilter.skip = 0;
     this.programFilter.take = 2147483647;
     if(this.currentUser?.id)
-    this.studentProgramSubscriptionService.getStudentAvailablePrograms(this.currentUser?.id).subscribe(
+    this.studentProgramVacationService.getStudentAvailablePrograms(this.currentUser?.id).subscribe(
       (res: BaseResponseModel) => {
-        this.programs = res.data as IStudentPrograms[];
+        this.programs = res.data ;
         this.selectedIndex = -1;
       }, error => {
         this.resultMessage = {
