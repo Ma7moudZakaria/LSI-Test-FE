@@ -26,9 +26,10 @@
                                            [studentVacationItems]='studentProgramVacationRequestsList'
                                            [numberPerRow]='numberItemsPerRow'
                                            [totalCount]='totalCount'
-                                           [studentVacationFilterRequestModel]='studentProgramVacationFilterRequestModel'
+                                           [studentProgramVacationFilterRequestModel]='studentProgramVacationFilterRequestModel'
                                            (cancelStudentProgramVacation)="CancelStudentProgramVacation($event)"
                                            (terminateStudentProgramVacation)="TerminateStudentProgramVacation($event)"
+                                           (studentVacationFilterEvent) = "StudentVacationChangePage($event)"
         >
 
         </app-student-program-vacation-grid>

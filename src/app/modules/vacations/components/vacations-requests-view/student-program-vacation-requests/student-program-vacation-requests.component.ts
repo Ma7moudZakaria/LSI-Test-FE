@@ -8,6 +8,11 @@ import {IUser} from '../../../../../core/interfaces/auth-interfaces/iuser-model'
 import {IStudentProgramVacationStudentViewModel} from '../../../../../core/interfaces/student-program-vacation-interfaces/istudent-program-vacation-student-view-model';
 import {IStudentPrograms} from '../../../../../core/interfaces/student-program-vacation-interfaces/istudent-programs';
 import {IAddNewStudentVacationRequest} from '../../../../../core/interfaces/student-program-vacation-interfaces/iadd-new-student-vacation-request';
+import {LanguageEnum} from '../../../../../core/enums/language-enum.enum';
+import {ConfirmDialogModel, ConfirmModalComponent} from '../../../../../shared/components/confirm-modal/confirm-modal.component';
+import {BaseConstantModel} from '../../../../../core/ng-model/base-constant-model';
+import {BaseMessageModel} from '../../../../../core/ng-model/base-message-model';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: ' app-student-program-vacation-requests',
@@ -25,11 +30,12 @@ export class StudentProgramVacationRequestsComponent implements OnInit {
   @Output() openStudentProgramVacationAddPopup = new EventEmitter<IAddNewStudentVacationRequest>();
 
   @Input() filter: IAddNewStudentVacationRequest = {}
+  resMessage: BaseMessageModel = {};
 
 
   constructor( public translate: TranslateService,
                private programVacationServicesService: StudentProgramVacationServicesService,
-               private alertify: AlertifyService) { }
+               private alertify: AlertifyService,public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
@@ -61,18 +67,32 @@ export class StudentProgramVacationRequestsComponent implements OnInit {
   }
 
   CancelStudentProgramVacation(studentProgramVacationStudentViewModel: IStudentProgramVacationStudentViewModel) {
-    this.programVacationServicesService.cancelStudentProgramVacation(studentProgramVacationStudentViewModel.id).subscribe(res => {
-        if (res.isSuccess) {
-          this.alertify.success(res.message || '');
-          this.getStudentProgramVacationRequestsStudentView();
-        }
-        else {
-          this.alertify.error(res.message || '');
-        }
-      },
-      error => {
-        console.log(error);
-      });
+    const message = this.translate.currentLang === LanguageEnum.en ? "Are you sure that you want to Cancel this Vacation Request" : "هل متأكد من الغاء طلب الاجازة";
+
+    const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Cancel The Request' : 'الغاء الطلب ', message);
+
+    const dialogRef = this.dialog.open(ConfirmModalComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult == true) {
+        this.programVacationServicesService.cancelStudentProgramVacation(studentProgramVacationStudentViewModel.id).subscribe(res => {
+          if (res.isSuccess) {
+            this.alertify.success(res.message || '');
+            this.getStudentProgramVacationRequestsStudentView();
+          }
+          else {
+            this.alertify.error(res.message || '');
+          }
+        }, error => {
+          this.resMessage = {
+            message: error,
+            type: BaseConstantModel.DANGER_TYPE
+          }
+        });
+      }
+    });
   }
 
   TerminateStudentProgramVacation(studentProgramVacationStudentViewModel: IStudentProgramVacationStudentViewModel) {
@@ -93,5 +113,10 @@ export class StudentProgramVacationRequestsComponent implements OnInit {
 
   openAddStudentVacationNewRequest() {
     this.openStudentProgramVacationAddPopup.emit(this.filter)
+  }
+
+  StudentVacationChangePage(event:IStudentProgramVacationRequestModel){
+    this.studentProgramVacationFilterRequestModel = event;
+    this.getStudentProgramVacationRequestsStudentView();
   }
 }

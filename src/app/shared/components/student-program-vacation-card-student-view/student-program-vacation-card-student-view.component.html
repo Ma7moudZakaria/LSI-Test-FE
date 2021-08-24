@@ -14,7 +14,7 @@
       <!-- <p class="program__name mb-2">{{studentProgramVacationStudentViewModel.progName}}</p> -->
       <p class="program__name mb-2">{{translate.currentLang === langEnum.en ? studentProgramVacationStudentViewModel.enProgBatchName: studentProgramVacationStudentViewModel.arProgBatchName}}</p>
       <div class="d-flex align-items-center justify-content-between">
-        <p class="program__num mb-2  mr-3 ml-3" >{{translate.currentLang === langEnum.ar ?studentProgramVacationStudentViewModel.enProgBatchName : studentProgramVacationStudentViewModel.arProgBatchName }}</p>
+<!--        <p class="program__num mb-2  mr-3 ml-3" >{{translate.currentLang === langEnum.ar ?studentProgramVacationStudentViewModel.enProgBatchName : studentProgramVacationStudentViewModel.arProgBatchName }}</p>-->
         <div class="status mb-2" [ngClass]="{ 'accept' : studentProgramVacationStudentViewModel.statusEnum == studentProgramVacationStatus.Accept ,
         'pending' : studentProgramVacationStudentViewModel.statusEnum == studentProgramVacationStatus.Pending , 'rejected' : studentProgramVacationStudentViewModel.statusEnum == studentProgramVacationStatus.Rejected
         }">
