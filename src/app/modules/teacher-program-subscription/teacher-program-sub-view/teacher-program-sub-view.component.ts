@@ -19,7 +19,7 @@ export class TeacherProgramSubViewComponent implements OnInit {
   closeOverlay( event :boolean){
     this.ShowSubscription = event;
     this.showAddReplyOverlay = !this.showAddReplyOverlay;
-    this.router.navigateByUrl('/dashboard');
+    this.router.navigateByUrl('/teacher-for-subscription');
   }
 
   constructor(private router: Router,) { }

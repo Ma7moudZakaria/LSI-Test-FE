@@ -857,7 +857,8 @@
     "STUDENTS": "Students",
     "NO_TEACHERS": "No Teachers Subscribed",
     "NO_STUDENTS": "No Students Subscribed",
-    "NO_PROGRAMS": "No Programs"
+    "NO_PROGRAMS": "No Programs",
+    "REQUIRED" : "Batch name is required"
   },
   "TEACHER_STUDENT_FOR_DETAILS": {
     "PROG_IDEA": "Program Idea",

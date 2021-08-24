@@ -855,7 +855,8 @@
     "STUDENTS": "الطلاب",
     "NO_TEACHERS": "لا يوجد مدرسين مشتركين",
     "NO_STUDENTS": "لا يوجد طلاب مشتركين",
-    "NO_PROGRAMS": "لا يوجد برامج"
+    "NO_PROGRAMS": "لا يوجد برامج",
+    "REQUIRED" : "اسم الدفعه مطلوب"
   },
   "TEACHER_STUDENT_FOR_DETAILS": {
     "PROG_IDEA": "فكرة البرنامج",
