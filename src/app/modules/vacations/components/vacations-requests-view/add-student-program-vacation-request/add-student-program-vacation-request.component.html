@@ -12,13 +12,13 @@
           </option>
         </select>
       </div>
-      <div *ngIf="batchId.invalid && (batchId.dirty || batchId.touched)"
-           class="alert">
 
-        <div  class="alert alert-danger mt-2 mb-2" *ngIf="batchId.errors?.required">{{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}</div>
-        </div>
     </div>
+    <div *ngIf="batchId.invalid && (batchId.dirty || batchId.touched|| isSubmit)"
+         class="alert">
 
+      <div  class="alert alert-danger mt-2 mb-2" *ngIf="batchId.errors?.required">{{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}</div>
+    </div>
   </div>
 
   <div class="form-group subscribtion-date">
@@ -27,8 +27,13 @@
       <label  class="label"> {{'STUDENT_VACATION.DATE_FROM' | translate}}  </label>
       <app-milady-hijri-calendar  [editcalenderType]="calenderType" (sendDate)="SendDatafrom($event)"
                                   (keypress)="$event.preventDefault()"
-                                  [hijri]="!hijri" [milady]="milady">
+                                  [hijri]="!hijri" [milady]="milady"  id="dateFrom" name="dateFrom" >
       </app-milady-hijri-calendar>
+    </div>
+    <div *ngIf="(addStudentVacationRequestModel.vacationStartDate == undefined && isSubmit)"
+         class="alert">
+
+      <div  class="alert alert-danger mt-2 mb-2" *ngIf="addStudentVacationRequestModel.vacationStartDate == undefined || isSubmit">{{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}</div>
     </div>
     <div class="col-12 p-0">
       <label  class="label"> {{'STUDENT_VACATION.DATE_TO' | translate}} </label>
@@ -37,7 +42,11 @@
                                   [hijri]="!hijri" [milady]="milady">
       </app-milady-hijri-calendar>
     </div>
+    <div *ngIf="(addStudentVacationRequestModel.vacationEndDate == undefined && isSubmit)"
+         class="alert">
 
+      <div  class="alert alert-danger mt-2 mb-2" *ngIf="addStudentVacationRequestModel.vacationEndDate == undefined || isSubmit">{{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}</div>
+    </div>
   </div>
   <div>
     <label  class="label mt-4">
@@ -48,7 +57,7 @@
                [(ngModel)]='addStudentVacationRequestModel.vacationReason'  [ngModelOptions]="{standalone: true}" >
         </textarea>
   </div>
-  <div *ngIf="vacationReason.invalid && (vacationReason.dirty || vacationReason.touched)"
+  <div *ngIf="vacationReason.invalid && (vacationReason.dirty || vacationReason.touched || isSubmit)"
        class="alert">
 
     <div  class="alert alert-danger mt-2 mb-2" *ngIf="vacationReason.errors?.required">{{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}</div>
