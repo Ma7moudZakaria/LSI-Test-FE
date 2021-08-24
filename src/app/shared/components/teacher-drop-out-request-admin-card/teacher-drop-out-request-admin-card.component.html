@@ -36,15 +36,15 @@
       <div class="program_reason">
         <p class="  mb-0 pb-2"  > 
         <span>
-          سبب الطلب :
+          {{'GENERAL_DROP_OUT_REQUEST.REQUEST_REASON' | translate}} :
         </span>
-        <span class="program_user bold mb-0 "  *ngIf="!teacherDropOutRequestModel.reason">لا يوجد</span>
+        <span class="program_user bold mb-0 "  *ngIf="!teacherDropOutRequestModel.reason">{{'GENERAL_DROP_OUT_REQUEST.NO_DATA' | translate}} </span>
         <span class="program_user bold mb-0 ">{{ teacherDropOutRequestModel.reason }}</span>
         </p>
      
         <p class="  mb-0 pb-2" *ngIf='typeDropOutRequestEnum.Rejected === typeEnum' > 
-          <span class="bold mx-1">سبب الرفض:</span> 
-          <span class="program_user bold mb-0 " *ngIf="!teacherDropOutRequestModel.reasonReject ">لا يوجد</span>
+          <span class="bold mx-1"> {{'GENERAL_DROP_OUT_REQUEST.REJECT_REASON' | translate}} : </span> 
+          <span class="program_user bold mb-0 " *ngIf="!teacherDropOutRequestModel.reasonReject ">{{'GENERAL_DROP_OUT_REQUEST.NO_DATA' | translate}} </span>
           <span>
             {{ teacherDropOutRequestModel.reasonReject }}
           </span>
