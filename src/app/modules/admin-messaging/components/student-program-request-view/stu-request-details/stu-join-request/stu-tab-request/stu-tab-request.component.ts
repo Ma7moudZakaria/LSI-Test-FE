@@ -112,6 +112,7 @@ export class StuTabRequestComponent implements OnInit {
 
   ids?: string[] = [];
   acceptStuReq(stuModel: IStudentSubscriptionModel) {
+    this.ids =  [];
     this.ids?.push(stuModel.id || '');
     this.progSubsService.studentProgramSubscriptionsAcceptance(this.ids || []).subscribe(res => {
       if (res.isSuccess) {
@@ -133,6 +134,7 @@ export class StuTabRequestComponent implements OnInit {
 
   acceptAllStudentProgramSubscriptionCheched() {
 
+    this.ids = [];
     this.ids = this.studProgsSubsItems?.filter(i => i.checked).map(a => a.id || '')
     this.progSubsService.studentProgramSubscriptionsAcceptance(this.ids).subscribe(res => {
       if (res.isSuccess) {

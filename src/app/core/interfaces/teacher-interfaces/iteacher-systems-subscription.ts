@@ -11,4 +11,5 @@ export interface ITeacherSystemSubscription {
     avatarLink?: string;
     totalRows?: number;
     reasonReject?:string;
+    subStat?:number;
 }

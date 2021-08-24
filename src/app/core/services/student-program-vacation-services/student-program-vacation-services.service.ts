@@ -19,6 +19,7 @@ export class StudentProgramVacationServicesService {
   cancelStudentProgramVacationURL = environment.baseUrl + 'StudentProgramVacation/cancel-student-program-vacation/';
   terminateStudentProgramVacationURL = environment.baseUrl + 'StudentProgramVacation/terminate-student-program-vacation/';
   addStudentProgramVacationURL = environment.baseUrl + 'StudentProgramVacation/add-student-program-vacation/';
+  getStudentAvailableProgramsURL = environment.baseUrl + 'StudentProgramVacation/student-vacation-available-programs/';
 
 
   constructor(private http: HttpClient) {
@@ -51,5 +52,7 @@ export class StudentProgramVacationServicesService {
   addStudentProgramVacation(model: IAddNewStudentVacationRequest): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.addStudentProgramVacationURL, model);
   }
-
+  getStudentAvailablePrograms(id: string): Observable<BaseResponseModel> {
+    return this.http.get<BaseResponseModel>(this.getStudentAvailableProgramsURL + id);
+  }
 }

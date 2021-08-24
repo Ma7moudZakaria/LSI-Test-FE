@@ -27,7 +27,9 @@ export class VacationsRequestsViewComponent implements OnInit {
     if ( this.studentProgramVacationRequests
       && this.studentProgramVacationRequests.studentProgramVacationFilterRequestModel
       && this.studentProgramVacationRequests.studentProgramVacationFilterRequestModel.progId ) {
-      this.studentProgramVacationRequests.studentProgramVacationFilterRequestModel.progId = this.programModel?.id
+      this.studentProgramVacationRequests.studentProgramVacationFilterRequestModel.progId = this.programModel?.id;
+      this.studentProgramVacationRequests.studentProgramVacationFilterRequestModel.batId = this.programModel?.batId;
+
 
       this.studentProgramVacationRequests?.getStudentProgramVacationRequestsStudentView()
     }
