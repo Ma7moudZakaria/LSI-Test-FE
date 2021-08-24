@@ -14,6 +14,7 @@ export class TeacheRejectedComponent implements OnInit {
   @Output() closeRejectedRequest = new EventEmitter<ITeacherProgramSubscriptionModel>();
   @Input() itemTeacherReq: ITeacherProgramSubscriptionModel= {totalRows:0}
 
+  showError=false;
   constructor(
     private teatchSubRequestService: TeacherProgramSubscriptionServicesService,
     private alertify: AlertifyService) { }
@@ -26,6 +27,9 @@ export class TeacheRejectedComponent implements OnInit {
   }
 
   saveRejectRequest() {
+    if (!this.itemTeacherReq.reasonReject){
+      this. showError=true;
+    }
     let model: IRejectTeacherProgramSubscriptionModel = {
       subscriptionId: this.itemTeacherReq.id,
       reasonReject: this.itemTeacherReq.reasonReject
@@ -39,6 +43,7 @@ export class TeacheRejectedComponent implements OnInit {
         }
         else {
           this.alertify.error(res.message || '');
+
         }
       }, error => {
       })
