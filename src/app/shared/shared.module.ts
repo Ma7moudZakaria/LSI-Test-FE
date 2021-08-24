@@ -80,7 +80,7 @@ import { StudentDropOutGridComponent } from './components/student-drop-out-grid/
 
 import { StudentProgramVacationCardStudentViewComponent } from './components/student-program-vacation-card-student-view/student-program-vacation-card-student-view.component';
 import { TeacherStuProgramForSubscriptionGridComponent } from './components/teacher-stu-program-for-subscription-grid/teacher-stu-program-for-subscription-grid.component';
-import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { TeacherDetailsViewComponent } from './components/teacher-details-view/teacher-details-view.component';
 import { StudentDetailsViewComponent } from './components/student-details-view/student-details-view.component';
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
@@ -129,7 +129,7 @@ import { StudentDetailsViewComponent } from './components/student-details-view/s
     StudentDropOutRequestStudentCardComponent,
         StudentDropOutGridComponent,
         StudentProgramVacationCardStudentViewComponent,
-        UserDetailsComponent,
+        TeacherDetailsViewComponent,
         StudentDetailsViewComponent
     ],
   imports: [
@@ -158,7 +158,7 @@ import { StudentDetailsViewComponent } from './components/student-details-view/s
     ProgramSubscriptionGridComponent
     , TeacherSystemSubscriptionGridComponent, StudentProgramVacationGridComponent, TeacherStudentProgramForSubscriptionComponent,
     StudentDropOutGridComponent,
-    TeacherDropOutRequestAdminGridComponent, UserDetailsComponent, StudentDetailsViewComponent
+    TeacherDropOutRequestAdminGridComponent, TeacherDetailsViewComponent, StudentDetailsViewComponent
   ]
 })
 export class SharedModule { }

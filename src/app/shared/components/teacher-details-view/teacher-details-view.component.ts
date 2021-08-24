@@ -8,11 +8,11 @@ import {TranslateService} from '@ngx-translate/core';
 import {LanguageEnum} from '../../../core/enums/language-enum.enum';
 
 @Component({
-  selector: 'app-user-details',
-  templateUrl: './user-details.component.html',
-  styleUrls: ['./user-details.component.scss']
+  selector: 'app-teacher-details-view',
+  templateUrl: './teacher-details-view.component.html',
+  styleUrls: ['./teacher-details-view.component.scss']
 })
-export class UserDetailsComponent implements OnInit {
+export class TeacherDetailsViewComponent implements OnInit {
   @Output() hideUserDetails = new EventEmitter<boolean>();
 
   @Input() resiveUserId: string | undefined;
