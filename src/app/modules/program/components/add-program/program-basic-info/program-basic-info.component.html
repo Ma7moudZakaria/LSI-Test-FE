@@ -333,7 +333,7 @@
                   <label class="header_input">{{ 'PROGRAM_BASIC_INFO.SECTION' | translate }}  </label>
                   <div class="d-flex align-items-center justify-content-between">
 
-                   <select class="form-control "  formControlName="addSection" >
+                   <select class="form-control " required  formControlName="addSection" >
                      <option [ngValue]="null"  disabled selected>{{ 'PROGRAM_BASIC_INFO.CHOOSE_SECTION' | translate }}</option>
 
                      <ng-container *ngFor="let item of allPrograms">
@@ -346,7 +346,11 @@
                       {{'PROGRAM_BASIC_INFO.ADD_SECTION' | translate }}</button>
 
                   </div>
-
+                  <div *ngIf="f.addSection.errors && (f.addSection.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
+                    <div *ngIf="f.addSection.errors?.required">
+                      {{ 'GENERAL.REQUIRED' | translate }}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
