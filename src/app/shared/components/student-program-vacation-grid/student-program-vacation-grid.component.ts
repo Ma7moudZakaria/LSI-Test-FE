@@ -7,6 +7,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {ExportationService} from '../../../core/services/exportation-services/exportation.service';
 import {IUser} from '../../../core/interfaces/auth-interfaces/iuser-model';
 import {IStudentProgramVacationStudentViewModel} from '../../../core/interfaces/student-program-vacation-interfaces/istudent-program-vacation-student-view-model';
+import {ITeacherStudentViewModel} from '../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 
 @Component({
   selector: 'app-student-program-vacation-grid',
@@ -20,7 +21,7 @@ export class StudentProgramVacationGridComponent implements OnInit {
   @Output() studentVacationFilterEvent = new EventEmitter<IStudentProgramVacationFilterRequestModel>();
   @Output() acceptAllStudentProgramVacationChecked = new EventEmitter<IStudentProgramVacationModel>();
   @Output() acceptStudentProgramVacation = new EventEmitter<IStudentProgramVacationModel>();
-  @Output() sendStudentVacationId = new EventEmitter<string>();
+  @Output() sendStudentVacationId = new EventEmitter<ITeacherStudentViewModel>();
   @Input() numberPerRow: number = 3;
   @Input() totalCount: number = 0;
   @Input() studentProgramVacationFilterRequestModel: IStudentProgramVacationFilterRequestModel = { skip: 0, take: 9, page: 1 };
@@ -42,7 +43,7 @@ export class StudentProgramVacationGridComponent implements OnInit {
     this.userRole= this.currentUser.usrRoles?.usrRoles?.[0].enRoleName.toString();
 
   }
-  getStudentVacationId(event:string){
+  getStudentVacationId(event:ITeacherStudentViewModel){
     this.sendStudentVacationId.emit(event);
   }
   sortStudentByName() {

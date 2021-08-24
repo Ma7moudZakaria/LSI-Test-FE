@@ -4,6 +4,7 @@ import { ITeacherProgramSubscriptionModel } from 'src/app/core/interfaces/teache
 import { TeacheProgramSubscriptionStatusEnum } from 'src/app/core/enums/teacher-subscription-enums/teache-program-subscription-status-enum.enum';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import {ITeacherStudentViewModel} from '../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 
 @Component({
   selector: 'app-teacher-card-request',
@@ -14,7 +15,7 @@ export class TeacherCardRequestComponent implements OnInit {
 
   @Output() rejectTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
   @Output() acceptTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
-  @Output() teacherProgSubOutput = new EventEmitter<string>();
+  @Output() teacherProgSubOutput = new EventEmitter<ITeacherStudentViewModel>();
 
   @Input() teacherSubscripModel: ITeacherProgramSubscriptionModel = {totalRows:0}
   @Input() typeEnum: TeacheProgramSubscriptionStatusEnum = TeacheProgramSubscriptionStatusEnum.Pending;
@@ -26,8 +27,9 @@ export class TeacherCardRequestComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  showDetails(id?:string){
-    this.teacherProgSubOutput.emit(id);
+  showDetails(id?:string,JoinedProgName?:string){
+    let UserModel:ITeacherStudentViewModel ={progName : JoinedProgName,usrId:id};
+    this.teacherProgSubOutput.emit(UserModel)
   }
   rejectTeacherProgramSubscriptionEvent(){
     this.rejectTeacherProgramSubscription.emit(this.teacherSubscripModel);

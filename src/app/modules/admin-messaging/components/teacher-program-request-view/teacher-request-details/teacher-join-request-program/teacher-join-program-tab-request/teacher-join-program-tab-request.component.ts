@@ -9,6 +9,7 @@ import { TeacheProgramSubscriptionStatusEnum } from 'src/app/core/enums/teacher-
 
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { TranslateService } from '@ngx-translate/core';
+import {ITeacherStudentViewModel} from '../../../../../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 
 @Component({
   selector: 'app-teacher-join-program-tab-request',
@@ -30,7 +31,7 @@ export class TeacherJionProgramTabRequestComponent implements OnInit {
   typeEnum: TeacheProgramSubscriptionStatusEnum = TeacheProgramSubscriptionStatusEnum.Pending;
   showTap: TeacheProgramSubscriptionStatusEnum = TeacheProgramSubscriptionStatusEnum.Pending;
   statusEnum = TeacheProgramSubscriptionStatusEnum;
-  sendUserID: string | undefined;
+  sendUserID: ITeacherStudentViewModel | undefined;
   showUserDetailsView:boolean = false;
   //teacherName:string='';
   constructor(
@@ -43,7 +44,7 @@ export class TeacherJionProgramTabRequestComponent implements OnInit {
     this.getTeachersProgramsSubscriptions();
   }
 
-  sendTeacherIDEvent(event: string){
+  sendTeacherIDEvent(event: ITeacherStudentViewModel){
     this.sendUserID =event;
     this.showUserDetailsView = true;
   }

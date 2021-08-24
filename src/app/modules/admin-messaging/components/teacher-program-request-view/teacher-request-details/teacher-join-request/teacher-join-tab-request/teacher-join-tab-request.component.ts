@@ -9,6 +9,7 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { TeacherProfileService } from 'src/app/core/services/teacher-profile/teacher-profile.service';
+import {ITeacherStudentViewModel} from '../../../../../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 
 @Component({
   selector: 'app-teacher-join-tab-request',
@@ -21,7 +22,7 @@ export class TeacherJionTabRequestComponent implements OnInit {
   @Input() teacherSystemSubscriptionFilterRequestModel: ITeacherSystemSubscriptionFilterRequest = { statusNum: TeacherSystemSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
 
 
-  sendTeacherJoinId: string | undefined;
+  sendTeacherJoinId: ITeacherStudentViewModel | undefined;
   typeEnum: TeacherSystemSubscriptionStatusEnum = TeacherSystemSubscriptionStatusEnum.Pending;
   showTap: TeacherSystemSubscriptionStatusEnum = TeacherSystemSubscriptionStatusEnum.Pending
   statusEnum = TeacherSystemSubscriptionStatusEnum;
@@ -43,7 +44,7 @@ export class TeacherJionTabRequestComponent implements OnInit {
       this.setCurrentLang();
       this.onPendingChange()
     }
-  sendTeacherJoinIDEvent(event:string){
+  sendTeacherJoinIDEvent(event:ITeacherStudentViewModel){
     this.sendTeacherJoinId =event;
     this.showUserDetailsView = true;
   }

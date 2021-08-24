@@ -3,6 +3,7 @@ import {IStudentProgramVacationModel} from '../../../core/interfaces/student-pro
 import {StudentProgramVacationStatusEnum} from '../../../core/enums/StudentProgramVacationStatus/student-program-vacation-status.enum';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import {ITeacherStudentViewModel} from '../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 
 @Component({
   selector: 'app-student-program-vacation-card-admin',
@@ -12,7 +13,7 @@ import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 export class StudentProgramVacationCardAdminComponent implements OnInit {
   @Output() rejectStudentVacationRequest = new EventEmitter<IStudentProgramVacationModel>();
   @Output() acceptStudentVacationRequest = new EventEmitter<IStudentProgramVacationModel>();
-  @Output() studentVacationId = new EventEmitter<string>();
+  @Output() studentVacationId = new EventEmitter<ITeacherStudentViewModel>();
   @Input() typeEnum: StudentProgramVacationStatusEnum = StudentProgramVacationStatusEnum.Pending;
 
   tabTypeSelected = StudentProgramVacationStatusEnum;
@@ -24,8 +25,9 @@ export class StudentProgramVacationCardAdminComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  showStudentDetails(id?:string){
-    this.studentVacationId.emit(id);
+  showStudentDetails(id?:string,JoinedProgName?:string){
+    let UserModel:ITeacherStudentViewModel ={progName : JoinedProgName,usrId:id};
+    this.studentVacationId.emit(UserModel);
   }
   rejectedStudentReq() {
     this.rejectStudentVacationRequest.emit(this.studentSubscripModel);

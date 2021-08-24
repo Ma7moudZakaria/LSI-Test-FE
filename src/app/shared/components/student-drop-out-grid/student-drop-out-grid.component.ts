@@ -8,6 +8,7 @@ import { IStudentDropOutRequestsFilterResponseModel } from 'src/app/core/interfa
 import { IStudentDropOutRequestsFilterStudentViewRequestModel } from 'src/app/core/interfaces/student-drop-out-request-interfaces/istudent-drop-out-requests-filter-student-view-request-model';
 import { IStudentDropOutRequestsFilterStudentViewResponseModel } from 'src/app/core/interfaces/student-drop-out-request-interfaces/istudent-drop-out-requests-filter-student-view-response-model';
 import { ExportationService } from 'src/app/core/services/exportation-services/exportation.service';
+import {ITeacherStudentViewModel} from '../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 
 @Component({
   selector: 'app-student-drop-out-grid',
@@ -21,7 +22,7 @@ export class StudentDropOutGridComponent implements OnInit {
   @Output() rejectStudentDropOutAdminRequest = new EventEmitter<IStudentDropOutRequestsFilterResponseModel>();
   @Output() acceptStudentDropOutAdminRequest = new EventEmitter<IStudentDropOutRequestsFilterResponseModel>();
   @Output() acceptAllStudentDropOutRequestAdminChecked = new EventEmitter<IStudentDropOutRequestsFilterResponseModel>();
-  @Output() studentIdToDetails = new EventEmitter<string>();
+  @Output() studentIdToDetails = new EventEmitter<ITeacherStudentViewModel>();
 
   @Input() studentDropOutRequestFilterRequestAdminModel: IStudentDropOutRequestsFilterAdminViewRequestModel = { skip: 0, take: 9, page: 1 };
   @Input() studentDropOutRequestAdminItems: IStudentDropOutRequestsFilterResponseModel[] = []
@@ -62,7 +63,7 @@ export class StudentDropOutGridComponent implements OnInit {
   ngOnInit(): void {
     console.log("this.userMode", this.userMode)
   }
-  studentIdToRequest(event:string){
+  studentIdToRequest(event:ITeacherStudentViewModel){
     this.studentIdToDetails.emit(event);
   }
 

@@ -3,6 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { StudentProgramSubscriptionStatusEnum } from 'src/app/core/enums/subscriptionStatusEnum/student-program-subscription-status-enum.enum';
 import { IStudentSubscriptionModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-subscription-model';
+import {ITeacherStudentViewModel} from '../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 
 @Component({
   selector: 'app-stu-card-request',
@@ -12,7 +13,7 @@ import { IStudentSubscriptionModel } from 'src/app/core/interfaces/student-progr
 export class StuCardRequestComponent implements OnInit {
   @Output() rejecteStuRequest = new EventEmitter<IStudentSubscriptionModel>();
   @Output() acceptStuRequest = new EventEmitter<IStudentSubscriptionModel>();
-  @Output() studentProgSubOutput = new EventEmitter<string>();
+  @Output() studentProgSubOutput = new EventEmitter<ITeacherStudentViewModel>();
 
 
   @Input() typeEnum: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending;
@@ -25,8 +26,9 @@ export class StuCardRequestComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  studentJoinId(id?:string){
-    this.studentProgSubOutput.emit(id);
+  studentJoinId(id?:string,JoinprogName?:string){
+    let UserModel:ITeacherStudentViewModel ={progName : JoinprogName,usrId:id};
+    this.studentProgSubOutput.emit(UserModel);
   }
 
   rejectedStudentReq() {

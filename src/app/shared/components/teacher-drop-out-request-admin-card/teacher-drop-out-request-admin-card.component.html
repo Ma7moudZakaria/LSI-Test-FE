@@ -16,10 +16,10 @@
       <span>{{teacherDropOutRequestModel.no}}</span> 
       <div class="d-flex  mb-2">
       <!-- <span>{{teacherDropOutRequestModel.no}}</span>  -->
-        <img *ngIf='!teacherDropOutRequestModel.avatarLink' (click)="openDetails(teacherDropOutRequestModel?.id)" class="img_user" src="../../../../assets/images/student/user-profile.svg">
-        <img *ngIf='teacherDropOutRequestModel.avatarLink' (click)="openDetails(teacherDropOutRequestModel?.id)"  class="img_user" src="{{teacherDropOutRequestModel.avatarLink}}" >
+        <img *ngIf='!teacherDropOutRequestModel.avatarLink' (click)="openDetails(teacherDropOutRequestModel?.id,teacherDropOutRequestModel?.progName)" class="img_user" src="../../../../assets/images/student/user-profile.svg">
+        <img *ngIf='teacherDropOutRequestModel.avatarLink' (click)="openDetails(teacherDropOutRequestModel?.id,teacherDropOutRequestModel?.progName)"  class="img_user" src="{{teacherDropOutRequestModel.avatarLink}}" >
       <div class="mx-1 container-width">
-        <p class="name_user bold mb-2 ellipsis p-0" (click)="openDetails(teacherDropOutRequestModel?.id)" 
+        <p class="name_user bold mb-2 ellipsis p-0" (click)="openDetails(teacherDropOutRequestModel?.id,teacherDropOutRequestModel?.progName)"
         title=" {{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.teacherNameEn : teacherDropOutRequestModel?.teacherNameAr}}">
           {{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.teacherNameEn : teacherDropOutRequestModel?.teacherNameAr}}</p>
           <p class="program_user bold mb-2 ellipsis p-0"

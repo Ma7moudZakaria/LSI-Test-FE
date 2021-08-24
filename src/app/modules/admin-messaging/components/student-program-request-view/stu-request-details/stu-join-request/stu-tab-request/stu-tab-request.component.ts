@@ -9,6 +9,7 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import {ITeacherStudentViewModel} from '../../../../../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 
 @Component({
   selector: 'app-stu-tab-request',
@@ -31,7 +32,7 @@ export class StuTabRequestComponent implements OnInit {
   statusEnum = StudentProgramSubscriptionStatusEnum;
   studProgsSubsItems: IStudentSubscriptionModel[] = [];
   totalCount = 0;
-  sendUserID: string | undefined;
+  sendUserID: ITeacherStudentViewModel | undefined;
   showUserDetailsView:boolean = false;
   constructor(private progSubsService: StudentProgramSubscriptionServicesService,
     public translate: TranslateService,
@@ -42,7 +43,7 @@ export class StuTabRequestComponent implements OnInit {
     this.filter.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn';
     this.onPendingChange();
   }
-  sendUserIDEvent(event: string | undefined){
+  sendUserIDEvent(event: ITeacherStudentViewModel | undefined){
     this.sendUserID =event;
     this.showUserDetailsView = true;
   }

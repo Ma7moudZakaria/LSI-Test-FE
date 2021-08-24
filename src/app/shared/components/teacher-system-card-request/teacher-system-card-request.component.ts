@@ -6,6 +6,7 @@ import { TeacherSystemSubscriptionStatusEnum } from 'src/app/core/enums/subscrip
 import { IRejectTeacherSystemSubscription } from 'src/app/core/interfaces/teacher-interfaces/ireject-teacher-system-subscription';
 import { ITeacherSystemSubscription } from 'src/app/core/interfaces/teacher-interfaces/iteacher-systems-subscription';
 import { ITeacherProgramSubscriptionModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iteacher-program-subscription-model';
+import {ITeacherStudentViewModel} from '../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 
 @Component({
   selector: 'app-teacher-system-card-request',
@@ -25,7 +26,7 @@ export class TeacherSystemCardRequestComponent implements OnInit {
   teacherSystemSubscriptionIds:string[] | undefined;
   langEnum = LanguageEnum;
   requestDate:string | undefined;
-  @Output() teacherJoinInput = new EventEmitter<string>();
+  @Output() teacherJoinInput = new EventEmitter<ITeacherStudentViewModel>();
   constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
@@ -41,8 +42,9 @@ export class TeacherSystemCardRequestComponent implements OnInit {
     }
   }
 
-  openDetails(id:string){
-    this.teacherJoinInput.emit(id)
+  openDetails(id:string,JoinprogName: string){
+    let UserModel:ITeacherStudentViewModel ={progName : JoinprogName,usrId:id};
+    this.teacherJoinInput.emit(UserModel)
   }
   rejectTeacherSystemSubscriptionEvent(teacherSubscripModel:ITeacherSystemSubscription){
     this.rejectTeacherSystemSubscription.emit(teacherSubscripModel);
