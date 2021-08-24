@@ -123,7 +123,7 @@
                     <a
                          [routerLink]="['/home']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/chat.svg">
-                        <span class="container__navigation__title">chat</span>
+                        <span class="container__navigation__title">{{'SIDENAVBAR.CHAT' | translate}}</span>
                     </a>
                 </li>
                 <li class="nav-item teacherProfile" routerLinkActive="active" 
@@ -193,7 +193,7 @@
                     <a  *ngIf='!roleService.isAdmin() && (roleService.isStudent() || !roleService.isTeacher())'
                          [routerLink]="['/home']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/chat.svg">
-                        <span class="container__navigation__title">chat</span>
+                        <span class="container__navigation__title">{{'SIDENAVBAR.CHAT' | translate}}</span>
                     </a>
                 </li>
                 <li class="nav-item" routerLinkActive="active">
