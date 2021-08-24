@@ -878,5 +878,10 @@
     "EDIT_CATEGORY": "تعديل قسم",
     "AR_NAME_CATEGORY": " اسم القسم بالعربيه",
     "EN_NAME_CATEGORY": "اسم القسم بالانجليزيه"
+  },
+  "GENERAL_DROP_OUT_REQUEST":{
+    "REQUEST_REASON":"سبب الطلب",
+    "NO_DATA":"لا يوجد",
+    "REJECT_REASON":"سبب الرفض"
   }
 }

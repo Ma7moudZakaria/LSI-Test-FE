@@ -880,5 +880,10 @@
     "EDIT_CATEGORY": "Edit Category",
     "AR_NAME_CATEGORY": "Category name in arabic",
     "EN_NAME_CATEGORY": "Category name in english"
+  },
+  "GENERAL_DROP_OUT_REQUEST":{
+    "REQUEST_REASON":"Request Reason",
+    "NO_DATA":"No Data",
+    "REJECT_REASON":"Reject Reason"
   }
 }

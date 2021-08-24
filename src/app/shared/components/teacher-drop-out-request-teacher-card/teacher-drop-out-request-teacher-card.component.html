@@ -19,7 +19,8 @@
       <p class="program__num mb-2  mr-3 ml-3">{{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.enTechStatusName : teacherDropOutRequestModel?.arTechStatusName}}</p>
         <span class="status mb-2" [ngClass]="{ 'accept' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Accept ,
                                   'pending' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Pending ,
-                                  'rejected' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Rejected}">
+                                  'rejected' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Rejected,
+                                  'cancel' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Canceled}">
         </span>
       </div>
     </div>

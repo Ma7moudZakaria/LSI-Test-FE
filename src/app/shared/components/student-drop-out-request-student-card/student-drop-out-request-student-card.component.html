@@ -15,13 +15,15 @@
         <p class="program__num mb-2  mr-3 ml-3">{{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestStudentModel?.enStudentStatusName : studentDropOutRequestFilterRequestStudentModel?.arStudentStatusName}}</p>
         <span class="status" [ngClass]="{ 'accept' : studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Accept ,
                                   'pending' : studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Pending ,
-                                  'rejected' : studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Rejected
+                                  'rejected' : studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Rejected,
+                                  'cancel' : studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Canceled
   }"
         ></span>
       </div>
     </div>
     <div class="mx-1">
       <!--      <p class="teacher__name  ">{{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.teacherNameEn : teacherDropOutRequestModel?.teacherNameAr}}</p>-->
+      
       <p class="program__name ellipsis p-0 " 
       title="{{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestStudentModel?.enProgBatName : studentDropOutRequestFilterRequestStudentModel?.arProgBatName}}"
       > {{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestStudentModel?.enProgBatName : studentDropOutRequestFilterRequestStudentModel?.arProgBatName}}</p>
