@@ -74,7 +74,8 @@
     "DROP_OUT_REQUEST": "Reject Reason",
     "APPLICANT_NAME": "Applicant name",
     "REQUEST_NUMBER": "Request Number",
-    "ADVANCED_SEARCH": "Advanced Search"
+    "ADVANCED_SEARCH": "Advanced Search",
+    "NEW_ORDERS": "New Orders"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
@@ -776,7 +777,8 @@
     "AVAILABLE_CHANGE_TIME_REQUESTS": "Available time change requests",
     "REJECT_TEACHER": "Reject Teacher",
     "FROM_PROGRAM": "From program",
-    "REASON_REJECT": "Reason reject"
+    "REASON_REJECT": "Reason reject",
+    "NEW_REQUEST": "New request"
   },
   "TEACHER_DROP_OUT": {
     "SUBSCRIBERS": "Subscibe",
