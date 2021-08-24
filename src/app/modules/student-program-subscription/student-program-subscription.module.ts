@@ -12,16 +12,20 @@ import { PredefinedConditionOverlayComponent } from './student-program-sub-view/
 import { JoiningExamOverlayComponent } from './student-program-sub-view/joining-exam-overlay/joining-exam-overlay.component';
 import { CustomConditionOverlayComponent } from './student-program-sub-view/custom-condition-overlay/custom-condition-overlay.component';
 import { FormsModule } from '@angular/forms';
+// import { FormatTimePipe } from 'src/app/core/pipe/format-time.pipe';
 
 
 @NgModule({
-  declarations: [StudentProgramSubViewComponent, StudentProgramsForSubscriptionComponent, SubscriptionSubmitComponent, StudentProgramSubDetailsComponent, PredefinedConditionOverlayComponent, JoiningExamOverlayComponent, CustomConditionOverlayComponent],
+  declarations: [StudentProgramSubViewComponent, StudentProgramsForSubscriptionComponent, SubscriptionSubmitComponent, StudentProgramSubDetailsComponent, PredefinedConditionOverlayComponent,
+    JoiningExamOverlayComponent, CustomConditionOverlayComponent
+  ],
   imports: [
     CommonModule,
     StudentProgramSubscriptionRoutingModule,
     SharedModule,
     TranslateModule,
     FormsModule
+
   ]
 })
 export class StudentProgramSubscriptionModule { }
