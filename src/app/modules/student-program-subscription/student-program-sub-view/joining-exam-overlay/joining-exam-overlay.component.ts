@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { timeStamp } from 'node:console';
+import { Subscription, timer } from 'rxjs';
 import { AnswerTypeEnum } from 'src/app/core/enums/exam-builder-enums/answer-type-enum.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IAnswer } from 'src/app/core/interfaces/exam-builder-interfaces/ianswer';
@@ -35,6 +36,11 @@ export class JoiningExamOverlayComponent implements OnInit {
   counter: number = 0
   countlength: number = 0;
 
+  //pipe for timer counter
+  countDown: Subscription | undefined;
+  counterTimer: number = 0
+  tick = 1000;
+
   constructor(
     private studentProgSubscriptionService: StudentProgramSubscriptionServicesService,
     public translate: TranslateService,
@@ -45,9 +51,18 @@ export class JoiningExamOverlayComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getRandomExam();
+    if (this.progDetails?.isContainExam) {
+      this.getRandomExam();
+    }
+    else {
+      this.studentSubscriptionCompleted();
+    }
+    // this.countDown = timer(0, this.tick).subscribe(() => --this.counterTimer);
   }
 
+  ngOnDestroy() {
+    this.countDown = undefined;
+  }
 
   getRandomExam() {
     this.studentProgSubscriptionService.getRandomJoiningExam(this.progDetails?.id || '').subscribe(
@@ -58,8 +73,15 @@ export class JoiningExamOverlayComponent implements OnInit {
           this.randomExam.questions = res.data.templateExam ? JSON.parse(res.data.templateExam) : [];
           this.currentQuestion = this.randomExam && this.randomExam.questions ?
             this.randomExam.questions[this.counter] : undefined;
-          this.currentQuestion?.time ? this.timer(this.currentQuestion?.time || 0) : 0;
 
+          this.counterTimer = this.currentQuestion?.time ? this.currentQuestion?.time * 60 : 0;
+          this.countDown = timer(0, this.tick).subscribe(() => {
+            --this.counterTimer;
+            if (this.counterTimer == 0) {
+              this.NextQuestion();
+            }
+          }
+          );
         }
         else {
           this.resMessage = {
@@ -75,32 +97,7 @@ export class JoiningExamOverlayComponent implements OnInit {
       })
   }
 
-  timer(minute: number) {
 
-    let seconds: number = minute * 60;
-    let textSec: any = "0";
-    let statSec: number = 60;
-
-    const prefix = minute < 10 ? "0" : "";
-
-    const timer = setInterval(() => {
-      seconds--;
-      if (statSec != 0) statSec--;
-      else statSec = 59;
-
-      if (statSec < 10) {
-        textSec = "0" + statSec;
-      } else textSec = statSec;
-
-      this.display = `${prefix}${Math.floor(seconds / 60)}:${textSec}`;
-
-      if (seconds == 0) {
-        console.log("finished");
-        clearInterval(timer);
-        this.NextQuestion();
-      }
-    }, 1000);
-  }
 
   NextQuestion() {
     this.countlength = this.randomExam?.questions?.length || 0;
@@ -111,7 +108,16 @@ export class JoiningExamOverlayComponent implements OnInit {
       this.counter++;
       this.currentQuestion = this.randomExam && this.randomExam.questions ?
         this.randomExam.questions[this.counter] : undefined;
-      this.currentQuestion?.time ? this.timer(this.currentQuestion?.time || 0) : 0;
+
+      this.counterTimer = this.currentQuestion?.time ? this.currentQuestion?.time * 60 : 0;
+      this.countDown = timer(0, this.tick).subscribe(() => {
+        --this.counterTimer;
+        if (this.counterTimer == 0) {
+          this.NextQuestion();
+        }
+      }
+      );
+
     }
   }
 

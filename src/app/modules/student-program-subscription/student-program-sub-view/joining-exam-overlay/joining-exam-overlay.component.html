@@ -1,4 +1,4 @@
-
+<ng-container *ngIf="progDetails?.isContainExam">
 <div class="over_lay_exam">
 
 
@@ -66,14 +66,11 @@
         </div>
         <div class="col-10  mt-4">
            <p class=" timer_contDown">
-             <!-- dispaly timer count down  -->
-            {{display}}
+            {{counterTimer | formatTime}}
            </p>
           </div>
          </div>
      </div>
-
-     
 
      <div class="row justify-content-end mt-5">
         <div class="col-6">
@@ -91,5 +88,13 @@
           </section>
             </div>
      </div>
-   
+ </ng-container>
 
+
+<ng-container *ngIf="!progDetails?.isContainExam">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <p>No Exam Found</p>
+    </div>
+  </div>
+</ng-container>

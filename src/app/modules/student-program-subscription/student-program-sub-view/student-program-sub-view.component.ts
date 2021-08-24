@@ -40,5 +40,6 @@ export class StudentProgramSubViewComponent implements OnInit {
     this.predefinedConditionOverlay = false;
     this.customConditionOverlay = false;
     this.joiningExamOverlay = true;
+    this.progDetails = event
   }
 }
