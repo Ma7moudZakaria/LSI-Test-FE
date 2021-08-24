@@ -15,13 +15,13 @@
     <div class="card_body">
       <div class="d-flex justify-content-between mb-3">
         <img *ngIf='!studentSubscripModel.avatarLink' class="img_user  cursor-pointer"
-        (click)="studentJoinId(studentSubscripModel?.usrId)"  src="../../../../assets/images/student/user-profile.svg">
+        (click)="studentJoinId(studentSubscripModel?.usrId,studentSubscripModel?.progName)"  src="../../../../assets/images/student/user-profile.svg">
         <img *ngIf='studentSubscripModel.avatarLink' 
-        (click)="studentJoinId(studentSubscripModel?.usrId)" class="img_user cursor-pointer"
+        (click)="studentJoinId(studentSubscripModel?.usrId ,studentSubscripModel?.progName)" class="img_user cursor-pointer"
         src="{{studentSubscripModel.avatarLink}}" >
       <div class="mx-1 container-width">
         <p class="number_request mb-3">{{studentSubscripModel.programStaNum}}</p>
-        <p class="name_user bold mb-2 ellipsis p-0"  (click)="studentJoinId(studentSubscripModel?.usrId)" title="{{studentSubscripModel.usrNameAr}}">{{studentSubscripModel.usrNameAr}}</p>
+        <p class="name_user bold mb-2 ellipsis p-0"  (click)="studentJoinId(studentSubscripModel?.usrId, studentSubscripModel?.progName)" title="{{studentSubscripModel.usrNameAr}}">{{studentSubscripModel.usrNameAr}}</p>
         <!-- <p class="program_user bold mb-2 "> {{studentSubscripModel.progName}}</p> -->
         <p class="program_user bold mb-2 ellipsis p-0"
         title=" {{translate.currentLang === langEnum.en ? studentSubscripModel.enProgBatName : studentSubscripModel.arProgBatName }}"

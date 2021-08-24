@@ -9,6 +9,7 @@ import { ITeacherDropOutRequestAdvFilterTeacherViewRequestModel } from 'src/app/
 import { ITeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/iteacher-drop-out-request-model';
 import { ITeacherDropOutRequestTeacherViewModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/iteacher-drop-out-request-teacher-view-model';
 import { ExportationService } from 'src/app/core/services/exportation-services/exportation.service';
+import {ITeacherStudentViewModel} from '../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 
 @Component({
   selector: 'app-teacher-drop-out-request-admin-grid',
@@ -22,7 +23,7 @@ export class TeacherDropOutRequestAdminGridComponent implements OnInit {
   @Output() rejectTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
   @Output() acceptTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
   @Output() cancelRequestOfTeacher = new EventEmitter<ITeacherDropOutRequestModel>();
-  @Output() userIdInput = new EventEmitter<string>();
+  @Output() userIdInput = new EventEmitter<ITeacherStudentViewModel>();
 
   @Output() acceptAllTeacherDropOutRequestChecked = new EventEmitter<ITeacherDropOutRequestModel>();
   
@@ -57,7 +58,7 @@ export class TeacherDropOutRequestAdminGridComponent implements OnInit {
   ngOnInit(): void {
     console.log("typeEnum : " , this.typeEnum)
   }
-  userId(event: string){
+  userId(event: ITeacherStudentViewModel){
     this.userIdInput.emit(event);
   }
   sortTeacherByName() {

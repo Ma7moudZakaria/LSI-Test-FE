@@ -16,14 +16,14 @@
       <span>{{studentDropOutRequestFilterRequestAdminModel?.no}}</span>
       <div class="d-flex align-items-center mb-3">
         <img *ngIf='!studentDropOutRequestFilterRequestAdminModel.avatarLink'
-        (click)="studentDetails(studentDropOutRequestFilterRequestAdminModel?.usrId || '')" 
+        (click)="studentDetails(studentDropOutRequestFilterRequestAdminModel?.usrId,studentDropOutRequestFilterRequestAdminModel?.progName)"
         class="img_user" src="../../../../assets/images/student/user-profile.svg">
         <img *ngIf='studentDropOutRequestFilterRequestAdminModel.avatarLink' class="img_user"
-        (click)="studentDetails(studentDropOutRequestFilterRequestAdminModel?.usrId || '')"
+        (click)="studentDetails(studentDropOutRequestFilterRequestAdminModel?.usrId ,studentDropOutRequestFilterRequestAdminModel?.progName)"
         src="{{studentDropOutRequestFilterRequestAdminModel.avatarLink}}" >
       <div class="mx-1">
       
-          <p class="name_user bold mb-2 ellipsis p-0" (click)="studentDetails(studentDropOutRequestFilterRequestAdminModel?.usrId || '')"
+          <p class="name_user bold mb-2 ellipsis p-0" (click)="studentDetails(studentDropOutRequestFilterRequestAdminModel?.usrId ,studentDropOutRequestFilterRequestAdminModel?.progName)"
           title=" {{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestAdminModel?.usrNameEn : studentDropOutRequestFilterRequestAdminModel?.usrNameAr}}">
             {{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestAdminModel?.usrNameEn : studentDropOutRequestFilterRequestAdminModel?.usrNameAr}}</p>
        

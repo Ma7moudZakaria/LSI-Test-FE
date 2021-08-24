@@ -4,6 +4,7 @@ import { DropOutRoleEnum } from 'src/app/core/enums/drop-out-request-enums/drop-
 import { TeacherDropOutRequestStatusEnum } from 'src/app/core/enums/drop-out-request-enums/teacher-drop-out-request-status.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { ITeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/iteacher-drop-out-request-model';
+import {ITeacherStudentViewModel} from '../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class TeacherDropOutRequestAdminCardComponent implements OnInit {
 
   @Output() rejectTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
   @Output() acceptTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
-  @Output() userIdEvent = new EventEmitter<string>();
+  @Output() userIdEvent = new EventEmitter<ITeacherStudentViewModel>();
 
   @Input() teacherDropOutRequestModel: ITeacherDropOutRequestModel = { totalRows: 0 };
 
@@ -44,8 +45,9 @@ export class TeacherDropOutRequestAdminCardComponent implements OnInit {
   }
 
 
-  openDetails(id?: string) {
-    this.userIdEvent.emit(id);
+  openDetails(id?: string,JoinprogName?:string) {
+    let UserModel:ITeacherStudentViewModel ={progName : JoinprogName,usrId:id};
+    this.userIdEvent.emit(UserModel);
   }
 
 

@@ -7,6 +7,7 @@ import {IStudentProgramVacationModel} from '../../../../../../../core/interfaces
 import {IStudentProgramVacationFilterRequestModel} from '../../../../../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-filter-request-model';
 import {StudentProgramVacationStatusEnum} from '../../../../../../../core/enums/StudentProgramVacationStatus/student-program-vacation-status.enum';
 import {StudentProgramVacationServicesService} from '../../../../../../../core/services/student-program-vacation-services/student-program-vacation-services.service';
+import {ITeacherStudentViewModel} from '../../../../../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 
 @Component({
   selector: 'app-student-vacation-request-tab',
@@ -17,7 +18,7 @@ export class StudentVacationRequestTabComponent implements OnInit {
 
   @Output() advancedSearchEvent = new EventEmitter<IStudentProgramVacationFilterRequestModel>();
   @Output() itemStuReq = new EventEmitter<IStudentProgramVacationModel>();
-  studentDropIdInput :string | undefined;
+  studentDropIdInput :ITeacherStudentViewModel | undefined;
   studentProgramVacationRequestsList: IStudentProgramVacationModel[] = [];
   studentProgramVacationFilterRequestModel: IStudentProgramVacationFilterRequestModel = { statusNum: StudentProgramVacationStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
   totalCount = 0;
@@ -36,7 +37,7 @@ export class StudentVacationRequestTabComponent implements OnInit {
     this.studentProgramVacationFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn'
     this.getStudentProgramVacationRequests();
   }
-  studentIdDrop(event:string){
+  studentIdDrop(event:ITeacherStudentViewModel){
     this.showUserDetailsView =true;
     this.studentDropIdInput= event;
   }

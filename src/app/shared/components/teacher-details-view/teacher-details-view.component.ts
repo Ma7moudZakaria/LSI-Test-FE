@@ -6,16 +6,17 @@ import { TeacherProfileService } from 'src/app/core/services/teacher-profile/tea
 import {ITeacherDropOutRequestModel} from '../../../core/interfaces/teacher-drop-out-request-interfaces/iteacher-drop-out-request-model';
 import {TranslateService} from '@ngx-translate/core';
 import {LanguageEnum} from '../../../core/enums/language-enum.enum';
+import {ITeacherStudentViewModel} from '../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 
 @Component({
-  selector: 'app-user-details',
-  templateUrl: './user-details.component.html',
-  styleUrls: ['./user-details.component.scss']
+  selector: 'app-teacher-details-view',
+  templateUrl: './teacher-details-view.component.html',
+  styleUrls: ['./teacher-details-view.component.scss']
 })
-export class UserDetailsComponent implements OnInit {
+export class TeacherDetailsViewComponent implements OnInit {
   @Output() hideUserDetails = new EventEmitter<boolean>();
 
-  @Input() resiveUserId: string | undefined;
+  @Input() resiveUserId: ITeacherStudentViewModel | undefined;
 
 
   resMessage: BaseMessageModel = {};
@@ -37,7 +38,7 @@ export class UserDetailsComponent implements OnInit {
 
   getTeacherProfile() {
       console.log('this.resiveUserId',this.resiveUserId);
-    this.teacherProfileService.viewTeacherProfileDetails(this.resiveUserId|| '').subscribe(res => {
+    this.teacherProfileService.viewTeacherProfileDetails(this.resiveUserId?.usrId|| '').subscribe(res => {
       if (res.isSuccess) {
         this.teacherProfileDetails = res.data as ITeacherProfile;
         console.log("teacherProfileDetails", this.teacherProfileDetails)

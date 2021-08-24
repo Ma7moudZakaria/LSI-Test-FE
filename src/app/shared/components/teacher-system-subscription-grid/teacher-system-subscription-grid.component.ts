@@ -6,6 +6,7 @@ import { TeacherSystemSubscriptionStatusEnum } from 'src/app/core/enums/subscrip
 import { ITeacherSystemSubscriptionFilterRequest } from 'src/app/core/interfaces/teacher-interfaces/iteacher-system-subscription-filter-request';
 import { ITeacherSystemSubscription } from 'src/app/core/interfaces/teacher-interfaces/iteacher-systems-subscription';
 import { ExportationService } from 'src/app/core/services/exportation-services/exportation.service';
+import {ITeacherStudentViewModel} from '../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 
 @Component({
   selector: 'app-teacher-system-subscription-grid',
@@ -19,7 +20,7 @@ export class TeacherSystemSubscriptionGridComponent implements OnInit {
   @Output() rejectTeacherSystemSubscription = new EventEmitter<ITeacherSystemSubscription>();
   @Output() acceptTeacherSystemSubscription = new EventEmitter<ITeacherSystemSubscription>();
   @Output() acceptAllTeacherSystemSubscriptionCheched = new EventEmitter<ITeacherSystemSubscription>();
-  @Output() teacherJoinInput = new EventEmitter<string>();
+  @Output() teacherJoinInput = new EventEmitter<ITeacherStudentViewModel>();
 
 
   @Input() teacherSystemSubscriptionFilterRequestModel: ITeacherSystemSubscriptionFilterRequest = { skip: 0, take: 9, page: 1 };
@@ -44,7 +45,7 @@ export class TeacherSystemSubscriptionGridComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  teacherJoinToGrid(event:string){
+  teacherJoinToGrid(event:ITeacherStudentViewModel){
 
     this.teacherJoinInput.emit(event);
   }

@@ -10,6 +10,7 @@ import { ITeacherProgramSubscriptionFilterRequestModel } from 'src/app/core/inte
 import { ITeacherProgramSubscriptionModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iteacher-program-subscription-model';
 import { ExportationService } from 'src/app/core/services/exportation-services/exportation.service';
 import {IStudentProgramSubscription} from '../../../core/interfaces/student-program-subscription-interfaces/istudent-program-subscription.model';
+import {ITeacherStudentViewModel} from '../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 
 @Component({
   selector: 'app-program-subscription-grid',
@@ -30,8 +31,8 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   @Output() rejectTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
   @Output() acceptTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
   @Output() acceptAllTeacherProgramSubscriptionCheched = new EventEmitter<ITeacherProgramSubscriptionModel>();
-  @Output() teacherIdFormGrid = new EventEmitter<string>();
-  @Output() studentIdFormGrid = new EventEmitter<string>();
+  @Output() teacherIdFormGrid = new EventEmitter<ITeacherStudentViewModel>();
+  @Output() studentIdFormGrid = new EventEmitter<ITeacherStudentViewModel>();
 
   @Input() userMode: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.student;
   @Input() studentFilterRequestModel: IStudentSubscriptionFilterRequestModel = { skip: 0, take: 9, page: 1 };
@@ -59,10 +60,10 @@ export class ProgramSubscriptionGridComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  teacherProgSubOutputEvent(event:string){
+  teacherProgSubOutputEvent(event:ITeacherStudentViewModel){
     this.teacherIdFormGrid.emit(event);
   }
-  studentProgSubOutputEvent(event:string){
+  studentProgSubOutputEvent(event:ITeacherStudentViewModel){
     this.studentIdFormGrid.emit(event);
   }
   sortTeacherByName() {

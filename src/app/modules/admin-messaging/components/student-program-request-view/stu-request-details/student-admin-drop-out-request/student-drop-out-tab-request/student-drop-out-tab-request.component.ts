@@ -10,6 +10,7 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { StudentDropOutRequestService } from 'src/app/core/services/student-drop-out-request-services/student-drop-out-request.service';
+import {ITeacherStudentViewModel} from '../../../../../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 
 @Component({
   selector: 'app-student-drop-out-tab-request',
@@ -21,7 +22,7 @@ export class StudentDropOutTabRequestComponent implements OnInit {
   @Output() rejectStudentDropOutRequest = new EventEmitter<IStudentDropOutRequestsFilterResponseModel>();
   @Output() advancedSearchEvent = new EventEmitter<IStudentDropOutRequestsFilterAdminViewRequestModel>();
   @Output() itemOfRejectStudentDropOutRequest = new EventEmitter<IStudentDropOutRequestsFilterResponseModel>();
-   StudentDropIdInput :string | undefined;
+   StudentDropIdInput :ITeacherStudentViewModel | undefined;
   studentDropOutRequestList: IStudentDropOutRequestsFilterResponseModel[] = [];
   studentDropOutRequestFilterRequestModel: IStudentDropOutRequestsFilterAdminViewRequestModel = { statusNum: StudentDropOutRequestStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
   resultMessage: BaseMessageModel = {};
@@ -42,7 +43,7 @@ export class StudentDropOutTabRequestComponent implements OnInit {
     this.studentDropOutRequestFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn'
     this.getStudentDropOutRequests();
   }
-  studentIdDrop(event:string){
+  studentIdDrop(event:ITeacherStudentViewModel){
     this.showUserDetailsView =true;
     this.StudentDropIdInput= event;
   }

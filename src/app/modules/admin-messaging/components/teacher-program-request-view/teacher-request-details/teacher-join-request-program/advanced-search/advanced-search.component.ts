@@ -76,6 +76,7 @@ export class AdvancedSearchTeacherComponent implements OnInit {
 
       if (res.isSuccess) {
         this.ProgramsList = res.data;
+        console.log('this.ProgramsList',this.ProgramsList);
       }
     }, error => {
       this.resultMessage = {

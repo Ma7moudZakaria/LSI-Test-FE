@@ -1,6 +1,7 @@
 <div *ngIf="!showUserDetailsView" class="container-fluid reuest_container" >
   <div class="col-12  justify-content-end text-right d-flex align-items-center">
-    <app-search-input (searchTerm)=searchByText($event) [searchKey]='this.teacherProgramSubscriptionFilterRequestModel.usrName || ""'></app-search-input>
+    <app-search-input (searchTerm)=searchByText($event)
+                      [searchKey]='this.teacherProgramSubscriptionFilterRequestModel.usrName || ""'></app-search-input>
 <a class="advanced_search mb-3" (click)="openAvancedSearch()">بحث متقدم</a>
 </div>
 
@@ -96,6 +97,6 @@
   </div>
 
 
-<app-user-details *ngIf="showUserDetailsView"  (hideUserDetails) ="hideUserDetailsView($event)" [resiveUserId]='sendUserID'></app-user-details>
+<app-teacher-details-view *ngIf="showUserDetailsView" (hideUserDetails) ="hideUserDetailsView($event)" [resiveUserId]='sendUserID'></app-teacher-details-view>
 
 

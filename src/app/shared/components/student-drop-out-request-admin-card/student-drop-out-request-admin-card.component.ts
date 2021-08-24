@@ -3,6 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { StudentDropOutRequestStatusEnum } from 'src/app/core/enums/drop-out-request-enums/student-drop-out-request-status.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IStudentDropOutRequestsFilterResponseModel } from 'src/app/core/interfaces/student-drop-out-request-interfaces/istudent-drop-out-requests-filter-response-model';
+import {ITeacherStudentViewModel} from '../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 
 @Component({
   selector: 'app-student-drop-out-request-admin-card',
@@ -13,7 +14,7 @@ export class StudentDropOutRequestAdminCardComponent implements OnInit {
 
   @Output() rejectStudentDropOutAdminRequest = new EventEmitter<IStudentDropOutRequestsFilterResponseModel>();
   @Output() acceptStudentDropOutAdminRequest = new EventEmitter<IStudentDropOutRequestsFilterResponseModel>();
-  @Output() studentIdToGrid = new EventEmitter<string>();
+  @Output() studentIdToGrid = new EventEmitter<ITeacherStudentViewModel>();
   @Input() studentDropOutRequestFilterRequestAdminModel: IStudentDropOutRequestsFilterResponseModel = { totalRows: 0 };
 
   @Input() typeEnum: StudentDropOutRequestStatusEnum = StudentDropOutRequestStatusEnum.Pending;
@@ -40,8 +41,9 @@ export class StudentDropOutRequestAdminCardComponent implements OnInit {
     }
   }
 
-  studentDetails(id?: string) {
-    this.studentIdToGrid.emit(id);
+  studentDetails(id?: string,JoinedProgName?:string) {
+    let UserModel:ITeacherStudentViewModel ={progName : JoinedProgName,usrId:id};
+    this.studentIdToGrid.emit(UserModel);
   }
   rejectStudentAdminDropOutRequestEvent(studentAdminDropOutRequest: IStudentDropOutRequestsFilterResponseModel) {
     this.rejectStudentDropOutAdminRequest.emit(studentAdminDropOutRequest);

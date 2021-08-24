@@ -11,6 +11,7 @@ import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { TeacherDropOutRequestService } from 'src/app/core/services/teacher-drop-out-request-services/teacher-drop-out-request.service';
+import {ITeacherStudentViewModel} from '../../../../../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 
 @Component({
   selector: 'app-teacher-drop-out-tab-request',
@@ -33,7 +34,7 @@ export class TeacherDropOutTabRequestComponent implements OnInit {
   showTap: TeacherDropOutRequestStatusEnum = TeacherDropOutRequestStatusEnum.Pending;
   statusEnum = TeacherDropOutRequestStatusEnum;
   userMode: DropOutRoleEnum = DropOutRoleEnum.Admin;
-  sendUserID: string | undefined;
+  sendUserID: ITeacherStudentViewModel | undefined;
   showUserDetailsView:boolean = false;
 
   constructor(
@@ -46,7 +47,7 @@ export class TeacherDropOutTabRequestComponent implements OnInit {
     this.getTeacherDropOutRequests();
   }
 
-  sendUserIDEvent(event: string){
+  sendUserIDEvent(event: ITeacherStudentViewModel){
     this.sendUserID =event;
     this.showUserDetailsView = true;
   }

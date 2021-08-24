@@ -12,6 +12,7 @@ import {IStudentSubscriptionFilterRequestModel} from '../../../../../core/interf
 import {StudentProgramSubscriptionStatusEnum} from '../../../../../core/enums/subscriptionStatusEnum/student-program-subscription-status-enum.enum';
 import {StudentProgramSubscriptionServicesService} from '../../../../../core/services/student-program-subscription-services/student-program-subscription-services.service';
 import {IStudentProgramSubscription} from '../../../../../core/interfaces/student-program-subscription-interfaces/istudent-program-subscription.model';
+import {ITeacherStudentViewModel} from '../../../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 @Component({
   selector: 'app-teacher-join-request',
   templateUrl: './teacher-join-request.component.html',
@@ -35,7 +36,7 @@ export class TeacherJoinRequestComponent implements OnInit {
   statusEnum = StudentProgramSubscriptionStatusEnum;
   studProgsSubsItems: IStudentSubscriptionModel[] = [];
   totalCount = 0;
-  sendUserID: string | undefined;
+  sendUserID: ITeacherStudentViewModel | undefined;
   showUserDetailsView:boolean = false;
   constructor(private progSubsService: StudentProgramSubscriptionServicesService,
               public translate: TranslateService,
@@ -48,7 +49,7 @@ export class TeacherJoinRequestComponent implements OnInit {
     this.onPendingChange();
 
   }
-  sendUserIDEvent(event: string | undefined){
+  sendUserIDEvent(event: ITeacherStudentViewModel | undefined){
     this.sendUserID =event;
     this.showUserDetailsView = true;
   }

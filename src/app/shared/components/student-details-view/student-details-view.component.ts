@@ -5,6 +5,7 @@ import {LanguageEnum} from '../../../core/enums/language-enum.enum';
 import {TeacherProfileService} from '../../../core/services/teacher-profile/teacher-profile.service';
 import {TranslateService} from '@ngx-translate/core';
 import {BaseConstantModel} from '../../../core/ng-model/base-constant-model';
+import {ITeacherStudentViewModel} from '../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 
 @Component({
   selector: 'app-student-details-view',
@@ -15,7 +16,7 @@ export class StudentDetailsViewComponent implements OnInit {
 
   @Output() hideUserDetails = new EventEmitter<boolean>();
 
-  @Input() resiveUserId: string | undefined;
+  @Input() resiveUserId: ITeacherStudentViewModel | undefined;
 
 
   resMessage: BaseMessageModel = {};
@@ -36,7 +37,7 @@ export class StudentDetailsViewComponent implements OnInit {
 
 
   getTeacherProfile() {
-    this.teacherProfileService.viewTeacherProfileDetails(this.resiveUserId|| '').subscribe(res => {
+    this.teacherProfileService.viewTeacherProfileDetails(this.resiveUserId?.usrId|| '').subscribe(res => {
       if (res.isSuccess) {
         this.teacherProfileDetails = res.data as ITeacherProfile;
         console.log("teacherProfileDetails", this.teacherProfileDetails)
