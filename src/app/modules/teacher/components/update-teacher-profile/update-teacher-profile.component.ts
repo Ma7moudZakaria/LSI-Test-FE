@@ -480,13 +480,16 @@ export class UpdateTeacherProfileComponent implements OnInit {
     }
 
   }
-
+  
   onFileChange(files: any) {
-    let profImagModel: IUserProfilePicture = {
-      usrId: this.currentUser?.id,
-      image: files[0]
-    }
-    this.updateProfilePic(profImagModel);
+      
+      let profImagModel: IUserProfilePicture = {
+        usrId: this.currentUser?.id,
+        image: files[0]
+      }
+      this.updateProfilePic(profImagModel);
+    
+   
   }
 
   updateProfilePic(profImagModel: IUserProfilePicture) {
@@ -850,8 +853,16 @@ export class UpdateTeacherProfileComponent implements OnInit {
     this.ejazaAttachmentIds = this.ejazaAttachmentIds.filter(a => a !== id);
   }
 
+  listExt = ["jpg", "png", "jpeg", "gif", "bmp", "tif", "tiff", "pdf", "docx", "doc"];
   onEjazaFileChange(files: FileList) {
     if (files.length > 0) {
+      if (!this.attachmentService.checkFileExtention(files[0], this.listExt)) {
+        this.resMessage = {
+          message: this.translate.instant('GENERAL.EXTENTION_FILE'),
+          type: BaseConstantModel.DANGER_TYPE
+        }
+        return;
+      }
       Array.from(files).forEach(element => {
         var fileUploadObj: IFileUpload = {
           containerNameIndex: 1, // need to be changed based on file type
