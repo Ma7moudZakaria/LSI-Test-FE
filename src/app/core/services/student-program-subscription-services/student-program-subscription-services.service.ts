@@ -10,6 +10,7 @@ import { IstudentJoiningExamAnswerModel } from '../../interfaces/student-program
 import { IStudentMyProgramsRequestModel } from '../../interfaces/student-program-subscription-interfaces/istudent-my-programs-request-model';
 import { IStudentSubscriptionFilterRequestModel } from '../../interfaces/student-program-subscription-interfaces/istudent-subscription-filter-request-model';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
+import {IStudentProgramSubscription} from '../../interfaces/student-program-subscription-interfaces/istudent-program-subscription.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,11 +28,21 @@ export class StudentProgramSubscriptionServicesService {
   getProgramsForStudentsSubscriptionsURL = environment.baseUrl + 'StudentProgramSubscription/get-programs-for-students-subscriptions/';
   verifyProgramPredefinedConditionURL = environment.baseUrl + 'StudentProgramSubscription/verify-program-predefined-condition/';
   getStudentProgramsURL = environment.baseUrl + 'StudentProgramSubscription/get-student-programs/';
+  getStudentsProgramsSubscriptionsServFilterStudentViewURL = environment.baseUrl + 'StudentProgramSubscription/get-students-programs-subscriptions-serv-filter-student-view/';
+  getلإeachersProgramsSubscriptionsServFilterStudentViewURL = environment.baseUrl + 'TeacherProgramSubscription/get-teachers-programs-subscriptions-filter-teacher-view/';
 
   constructor(private http: HttpClient) { }
 
   getStudentsSubscriptionsFilterAdminView(model: IStudentSubscriptionFilterRequestModel): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.getStudentsSubscriptionsFilterAdminViewURL, model);
+  }
+  getstudentProgramsSubscriptions(model : IStudentProgramSubscription):Observable<BaseResponseModel>
+  {
+    return this.http.post<BaseResponseModel>(this.getStudentsProgramsSubscriptionsServFilterStudentViewURL , model);
+  }
+  getلإeachersProgramsSubscriptionsServFilterStudentView(model : IStudentProgramSubscription):Observable<BaseResponseModel>
+  {
+    return this.http.post<BaseResponseModel>(this.getلإeachersProgramsSubscriptionsServFilterStudentViewURL , model);
   }
 
   studentProgramSubscriptionsAcceptance(model: string[]): Observable<BaseResponseModel> {

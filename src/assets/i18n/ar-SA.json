@@ -76,7 +76,8 @@
     "REQUEST_NUMBER": "رقم الطلب",
     "FROM": "من",
     "TO": "إلى",
-    "ADVANCED_SEARCH": " بحث متقدم "
+    "ADVANCED_SEARCH": " بحث متقدم ",
+    "NEW_ORDERS": "الطلبات الجديده"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
@@ -774,7 +775,8 @@
     "AVAILABLE_CHANGE_TIME_REQUESTS": "طلبات تغير الوقت المتاحه",
     "REJECT_TEACHER": "رفض المعلم",
     "FROM_PROGRAM": "من برنامج",
-    "REASON_REJECT": "سبب الرفض"
+    "REASON_REJECT": "سبب الرفض",
+    "NEW_REQUEST": "طلب انضمام جديد"
   },
   "TEACHER_DROP_OUT": {
     "SUBSCRIBERS": "الطلبات",
