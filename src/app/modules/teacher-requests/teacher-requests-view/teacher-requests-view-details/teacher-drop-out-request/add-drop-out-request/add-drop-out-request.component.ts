@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { TeacherDropOutRequestStatusEnum } from 'src/app/core/enums/drop-out-request-enums/teacher-drop-out-request-status.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
@@ -29,14 +30,18 @@ export class AddDropOutRequestComponent implements OnInit {
   programsbyAdvancedFilter: ITeacherMyProgramsRequestModel = {};
   currentUser: IUser | undefined;
   langEnum = LanguageEnum;
+  dropOutForm: FormGroup = new FormGroup({});
+  isSubmit = false;
   
   constructor(
     private programSubscriptionService: TeacherProgramSubscriptionServicesService, 
+    private fb: FormBuilder,
     private teacherDropOutRequestService: TeacherDropOutRequestService,
     public translate: TranslateService,
   ) { }
 
   ngOnInit(): void {
+    this.buildForm();
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     this.createDropOut = {}
     this.getAllProgram();
@@ -49,25 +54,41 @@ export class AddDropOutRequestComponent implements OnInit {
     this.closeCreateDropOutOverlay.emit();
   }
 
-  sendDropOutRequest() {
-    this.createDropOut.usrId = this.currentUser?.id;
-    this.teacherDropOutRequestService.createTeacherDropOutRequest(this.createDropOut || {}).subscribe(res => {
-      if (res.isSuccess) {
-        this.closeCreateTeacherDropOutRequest();
-      }
-      else{
+  sendDropOutRequest(value: string) {
+    this.isSubmit = true;
+    // if((this.createDropOut.batId === null || this.createDropOut.batId === '' || this.createDropOut.batId === undefined) &&  (this.createDropOut.dropOutReason === null || this.createDropOut.dropOutReason === '' || this.createDropOut.dropOutReason === undefined)){
+    //   this.resultMessage = {
+    //     message:  this.translate.currentLang === LanguageEnum.ar ? 'برجاء اكمال البيانات' : "Please complete the missing information",
+    //     type: BaseConstantModel.DANGER_TYPE
+    //   }
+
+    //   return;
+    // }
+
+    if (this.dropOutForm.valid){
+      this.createDropOut.usrId = this.currentUser?.id;
+      this.teacherDropOutRequestService.createTeacherDropOutRequest(this.createDropOut || {}).subscribe(res => {
+        if (res.isSuccess) {
+          this.closeCreateTeacherDropOutRequest();
+          this.isSubmit = false;
+        }
+        else{
+          this.isSubmit = false;
+          this.resultMessage = {
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
+          }
+        }
+        
+      }, error => {
         this.resultMessage = {
-          message: res.message,
+          message: error,
           type: BaseConstantModel.DANGER_TYPE
         }
-      }
-      
-    }, error => {
-      this.resultMessage = {
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
-      }
-    })
+      })
+    }
+
+    
   }
 
   getAllProgram() {
@@ -88,5 +109,18 @@ export class AddDropOutRequestComponent implements OnInit {
         type: BaseConstantModel.DANGER_TYPE
       }
     })
+  }
+
+  get f() {
+    return this.dropOutForm.controls;
+  }
+
+  buildForm() {
+    this.dropOutForm = this.fb.group(
+      {
+        batch: ['', [Validators.required]],
+        dropOutReason: ['', [Validators.required]]
+      }
+    )
   }
 }

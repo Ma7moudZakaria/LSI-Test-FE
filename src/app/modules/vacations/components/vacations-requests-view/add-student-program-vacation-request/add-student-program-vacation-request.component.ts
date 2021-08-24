@@ -89,6 +89,7 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
 
 
   AddStudentVacationRequest() {
+    this.isSubmit = true;
     if(this.addStudentVacationRequestModel.vacationReason == null)
     {
       return;

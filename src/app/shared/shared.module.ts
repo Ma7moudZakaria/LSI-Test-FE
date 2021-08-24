@@ -82,6 +82,7 @@ import { StudentProgramVacationCardStudentViewComponent } from './components/stu
 import { TeacherStuProgramForSubscriptionGridComponent } from './components/teacher-stu-program-for-subscription-grid/teacher-stu-program-for-subscription-grid.component';
 import { TeacherDetailsViewComponent } from './components/teacher-details-view/teacher-details-view.component';
 import { StudentDetailsViewComponent } from './components/student-details-view/student-details-view.component';
+import { FormatTimePipe } from '../core/pipe/format-time.pipe';
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
     SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,
@@ -119,9 +120,9 @@ import { StudentDetailsViewComponent } from './components/student-details-view/s
 
     ,
     TeacherSystemCardRequestComponent,
-        TeacherSystemSubscriptionGridComponent,
-        StudentProgramVacationGridComponent,
-        StudentProgramVacationCardAdminComponent,
+    TeacherSystemSubscriptionGridComponent,
+    StudentProgramVacationGridComponent,
+    StudentProgramVacationCardAdminComponent,
     TeacherDropOutRequestAdminCardComponent,
     TeacherDropOutRequestAdminGridComponent,
     TeacherDropOutRequestTeacherCardComponent,
@@ -130,7 +131,8 @@ import { StudentDetailsViewComponent } from './components/student-details-view/s
         StudentDropOutGridComponent,
         StudentProgramVacationCardStudentViewComponent,
         TeacherDetailsViewComponent,
-        StudentDetailsViewComponent
+        StudentDetailsViewComponent,
+        FormatTimePipe
     ],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
@@ -158,7 +160,7 @@ import { StudentDetailsViewComponent } from './components/student-details-view/s
     ProgramSubscriptionGridComponent
     , TeacherSystemSubscriptionGridComponent, StudentProgramVacationGridComponent, TeacherStudentProgramForSubscriptionComponent,
     StudentDropOutGridComponent,
-    TeacherDropOutRequestAdminGridComponent, TeacherDetailsViewComponent, StudentDetailsViewComponent
+      TeacherDropOutRequestAdminGridComponent, TeacherDetailsViewComponent, StudentDetailsViewComponent, FormatTimePipe
   ]
 })
 export class SharedModule { }

@@ -1,4 +1,4 @@
-<div class="form-group DataForm mt-5 pl-3 pr-3">
+<div class="form-group DataForm mt-5 pl-3 pr-3" [formGroup]="dropOutForm">
     <h3 class=" head  bold"> {{ "GENERAL.DROP_OUT_REQUEST" | translate }}</h3>
 
      
@@ -7,23 +7,45 @@
     
             <div class="d-flex">
                 <div class="input-group">
-                    <select class="form-control"  [(ngModel)]="createDropOut.batId"    [ngModelOptions]="{standalone: true}">
+                    <!-- [ngModelOptions]="{standalone: true}" -->
+                    <select class="form-control"  [(ngModel)]="createDropOut.batId"      formControlName="batch">
                         <option   value="">{{'SCIENTIFIC_MATERIAL.SELECTOPTION' | translate}}</option>
                         <option *ngFor="let item of programsList" value="{{item.batId}}">
                             {{translate.currentLang === langEnum.en ? item.enProgBatchName: item.arProgBatchName}}
                         </option>
                     </select>
                 </div>
+                <!-- <div *ngIf="createDropOut.batId.touched && (createDropOut.batId === null || createDropOut.batId === '' || createDropOut.batId === undefined)" class="alert alert-danger my-4 py-2 text-center">
+                    <span class="bold"> {{ "GENERAL.REQUIRED" | translate }}</span>
+                 </div> -->
+                 <div *ngIf="f.batch.errors && (f.batch.touched || isSubmit)"
+                                    class="alert alert-danger mt-2 mb-2">
+                                    <div *ngIf="f.batch.errors.required">
+                                        {{ "GENERAL.REQUIRED" | translate }}
+                                    </div>
+                                </div>
             </div>
             
         </div>
        
 
-        <div class="form-group">
+            <div class="form-group">
               <label  class="label">{{ "GENERAL.REJECT_RESON" | translate }}</label>
-              <textarea  class="form-control " cols="1"  rows="5" 
-              [(ngModel)]='createDropOut.dropOutReason'  [ngModelOptions]="{standalone: true}" >
+              <textarea  class="form-control " cols="1"  rows="5" formControlName="dropOutReason"
+              [(ngModel)]='createDropOut.dropOutReason'  >
               </textarea>
+
+              <!-- <div *ngIf="createDropOut.dropOutReason === null || createDropOut.dropOutReason === '' || createDropOut.dropOutReason === undefined" class="alert alert-danger my-4 py-2 text-center">
+                <span class="bold"> {{ "GENERAL.REQUIRED" | translate }}</span>
+             </div> -->
+
+
+                <div *ngIf="f.dropOutReason.errors && (f.dropOutReason.touched || isSubmit)"
+                    class="alert alert-danger mt-2 mb-2">
+                    <div *ngIf="f.dropOutReason.errors.required">
+                        {{ "GENERAL.REQUIRED" | translate }}
+                    </div>
+                </div>
             </div>
 
 
@@ -35,7 +57,7 @@
         
         <section class="mt-5">
             <div  class="row direction-rtl buttons-center mt-5">
-                <button   type="submit" class="save-btn" (click)="sendDropOutRequest()"> 
+                <button   type="submit" class="save-btn" (click)="sendDropOutRequest(dropOutForm.value)"> 
                     {{ "GENERAL.SEND" | translate }}
                 </button>
                 <button  (click)="closeCreateTeacherDropOutRequest()"  type="reset" class="cancel-btn"> 

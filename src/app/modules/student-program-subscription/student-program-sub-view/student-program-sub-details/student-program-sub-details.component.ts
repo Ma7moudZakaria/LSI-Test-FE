@@ -26,6 +26,7 @@ export class StudentProgramSubDetailsComponent implements OnInit {
   @Output() ShowVerifyProgramPredefinedConditionOverlay = new EventEmitter<IStudentSubscriptionPredefinedConditionResponse>();
   @Output() ShowCustomConditionOverlay = new EventEmitter<IProgramSubscriptionDetails>();
   @Output() requestId = new EventEmitter<string>();
+  @Output() openJoiningExamEvent = new EventEmitter<IProgramSubscriptionDetails>()
   disabledCheck: boolean = true
   currentUser: Iuser | undefined;
   programId: string = "";
@@ -101,12 +102,16 @@ export class StudentProgramSubDetailsComponent implements OnInit {
     this.studentProgramSubscriptionServicesService.verifyProgramPredefinedCondition(this.predefinedCondtionSubscriptionModel).subscribe(
       res => {
         if (res.isSuccess) {
-
           console.log("res", res)
-          // this.alertify.success(res.message || '');
-          // this.ShowCustomConditionOverlay.emit(res.data as IProgramSubscriptionDetails);
-          this.ShowCustomConditionOverlay.emit(this.programsForSubscriptionsDetails);
           this.requestId.emit(res.data.requestId)
+          if (this.programsForSubscriptionsDetails?.isContainCustomCondition) {
+            this.ShowCustomConditionOverlay.emit(this.programsForSubscriptionsDetails);
+
+          }
+          else {
+            this.openJoiningExamEvent.emit(this.programsForSubscriptionsDetails);
+
+          }
 
 
 

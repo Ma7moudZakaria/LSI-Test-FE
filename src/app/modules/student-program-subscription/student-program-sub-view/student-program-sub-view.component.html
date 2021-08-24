@@ -5,6 +5,7 @@
     <app-student-program-sub-details  (requestId)="sendRequestId($event)"
     (ShowVerifyProgramPredefinedConditionOverlay)="ShowVerifyProgramPredefinedConditionOverlay($event)"
     (ShowCustomConditionOverlay)="ShowCustomConditionOverlay($event)"
+    (openJoiningExamEvent)='openJoiningExamOverlay($event)'
     ></app-student-program-sub-details>
 
   </div>
@@ -24,8 +25,8 @@
   </app-custom-condition-overlay>
 </div>
 <div class="overlay joiningExamOverlay"  *ngIf="joiningExamOverlay">
-  <app-joining-exam-overlay [progDetails]='progDetails' [requestId]='requestId'>
-
+  <app-joining-exam-overlay [progDetails]='progDetails' [requestId]='requestId' 
+  (closeOverlay)="closeExamOverlay()">
   </app-joining-exam-overlay>
 </div>
 </div>
