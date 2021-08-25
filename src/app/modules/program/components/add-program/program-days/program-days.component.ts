@@ -7,7 +7,7 @@ import { ProgramDayTasksDetailsComponent } from './program-day-tasks-details/pro
 import { ProgramDayTasksComponent } from './program-day-tasks/program-day-tasks.component';
 
 @Component({
-  selector: 'app-program-days', 
+  selector: 'app-program-days',
   templateUrl: './program-days.component.html',
   styleUrls: ['./program-days.component.scss']
 })
@@ -38,14 +38,14 @@ export class ProgramDaysComponent implements OnInit {
     // this.DetailsOfProgram = this.getProgramDetails || this.DetailsOfProgram;
 
   }
-  
+
 
   progDutyDayEventCallBk(event?: IProgramDutyDays) {
     if (this.progDayTaskChild && event){
       this.progDayTaskChild.programDutyDay = event;
       this.progDayTaskChild?.getProgramDutyDays();
-    } 
-    this.programDutyDay = event; 
+    }
+    this.programDutyDay = event;
     //this.selectedProgDutyDays = [];
   }
 
@@ -78,6 +78,7 @@ export class ProgramDaysComponent implements OnInit {
     this.selectedProgDutyDays = [];
     // this.progDutyDayEventCallBk(this.programDutyDay);
     // this.userScientificProbChild?.getScientificProblemByUserId();
+    console.log("nagy")
   }
   openAddDayTasksForm() {
     this.showAddDayTasksForm = true;

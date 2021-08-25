@@ -189,7 +189,8 @@
     "DAY": "يوم",
     "PUBLISH_DATE": "تاريخ النشر",
     "START_DATE": "تاريخ البدء",
-    "NOProgramFound": "لا يوجد برامج"
+    "NOProgramFound": "لا يوجد برامج",
+    "Please_Choose_Program": "برجاء اختيار برنامج"
   },
   "PROGRAM_TABS": {
     "BASIC_INFO": "البيانات الاساسية",

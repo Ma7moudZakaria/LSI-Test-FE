@@ -10,7 +10,7 @@ import { ProgramsListComponent } from './programs-list/programs-list.component';
   styleUrls: ['./program-details.component.scss']
 })
 export class ProgramDetailsComponent implements OnInit {
-  
+
   @ViewChild(ProgramsListComponent) progListChild:ProgramsListComponent | undefined;
   showTap: string = 'USERS';
 
@@ -42,5 +42,6 @@ export class ProgramDetailsComponent implements OnInit {
 
   refreshProgList(){
     this.progListChild?.loadProgramsbyAdvancedFilter();
+    this.programModel = undefined ;
   }
 }
