@@ -117,6 +117,7 @@ export class BasicInformationComponent implements OnInit {
           if (res.isSuccess) {
             this.alert.success(res.message || '');
             this.refreshProgList.emit();
+            this.refreshProgDetails.emit();
           }
           else {
             this.alert.error(res.message || '');

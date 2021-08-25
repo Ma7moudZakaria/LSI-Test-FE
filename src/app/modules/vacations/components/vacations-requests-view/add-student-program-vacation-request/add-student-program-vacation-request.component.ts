@@ -13,7 +13,7 @@ import {IStudentMyProgramsRequestModel} from '../../../../../core/interfaces/stu
 import {BaseResponseModel} from '../../../../../core/ng-model/base-response-model';
 import {IStudentPrograms} from '../../../../../core/interfaces/student-program-vacation-interfaces/istudent-programs';
 import {IStudentSubscriptionFilterRequestModel} from '../../../../../core/interfaces/student-program-subscription-interfaces/istudent-subscription-filter-request-model';
-import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import {NgbDate, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 
 @Component({
@@ -37,17 +37,20 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
   programs: IStudentPrograms[] | undefined;
   @Output() closeAddVacationRequest = new EventEmitter<IAddNewStudentVacationRequest>();
   maxGregDate: NgbDateStruct | undefined;
+  vacationStartDate: NgbDateStruct | undefined;
+  vacationEndDate: NgbDate | undefined;
+
 
   langEnum=LanguageEnum
   isSubmit = false;
   disabledButton: boolean  = false;
 
+
   constructor(
     private dateFormatterService: DateFormatterService,
     public translate: TranslateService,
     public studentProgramVacationService: StudentProgramVacationServicesService,
-    private alertfyService: AlertifyService,
-    private studentProgramSubscriptionService: StudentProgramSubscriptionServicesService
+    private alertfyService: AlertifyService
   ) {
   }
 
@@ -55,7 +58,10 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     this.addStudentVacationRequestModel.userId = this.currentUser.id;
     this.programFilter.usrId = this.currentUser.id;
-    this.maxGregDate = this.dateFormatterService.GetTodayGregorian()
+    this.maxGregDate = this.dateFormatterService.GetTodayGregorian();
+
+    this.vacationStartDate= this.dateFormatterService.GetTodayGregorian(); //Vacation Start Date ToDay
+
     this.getAllProgram()
   }
 
@@ -67,6 +73,10 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
     this.datafromBinding = data.selectedDateValue
     this.addStudentVacationRequestModel.vacationStartDate = this.datafromBinding
     this.selectedDateType = data.selectedDateType;
+
+    //Vacation End Date start from Vacation Start Date To Future Date
+    this.vacationEndDate = this.dateFormatterService.ToGregorianDateStruct(this.datafromBinding,'');
+
   }
 
   SendDataTo(data: any) {
@@ -129,7 +139,6 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
         }
       );
   }
-
 }
 
 

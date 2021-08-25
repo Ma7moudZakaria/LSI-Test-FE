@@ -36,6 +36,8 @@ export class MiladyHijriCalendarComponent implements OnInit {
   @Input() minHijri: any ;
   @Input() minGreg: any ;
   @Output() sendDate = new EventEmitter;
+  @Input() vacationStartDate: any ;
+
 
   dataSend : BaseSelectedDateModel = new BaseSelectedDateModel();
   //  @Input() item: { title: string, state: boolean };
