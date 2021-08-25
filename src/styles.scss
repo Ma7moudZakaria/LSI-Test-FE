@@ -1042,3 +1042,8 @@ pdf-viewer {
   font-size: 14px;
   font-family: Almarai-Bold;
   }
+@media screen and (max-width: 1920px) and (max-height: 720px) {
+  html {
+    transform: scale(.9);
+  }
+}

@@ -779,7 +779,8 @@
     "REJECT_TEACHER": "Reject Teacher",
     "FROM_PROGRAM": "From program",
     "REASON_REJECT": "Reason reject",
-    "NEW_REQUEST": "New request"
+    "NEW_REQUEST": "New request",
+    "REJECT_TEXT" : "request will be rejected"
   },
   "TEACHER_DROP_OUT": {
     "SUBSCRIBERS": "Subscibe",

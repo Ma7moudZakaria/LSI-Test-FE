@@ -3,7 +3,7 @@
     <div class="form-group">
         <label  class="label">
             
-            سيتم رفض طلب المعلم /
+             /{{'TEACHER_SUBSCRIBERS.REJECT_TEXT' | translate}}
             <span class="data_input"> {{itemTeacherReq.usrNameAr}}</span>
         </label>
         <label  class="label">
@@ -19,11 +19,6 @@
         <div *ngIf="resMessage.message" class="alert alert-{{ resMessage.type }} my-4 py-2">
             {{ resMessage.message }}
         </div>
-      <!-- <div *ngIf="showError==true" class="alert alert-danger mt-2 mb-2 ">
-        <div>
-          {{ 'GENERAL.REQUIRED' | translate }}
-        </div>
-      </div> -->
         <section class="mt-5">
             <div  class="row direction-rtl buttons-center mt-5">
                 <button  (click)='saveRejectRequest()' type="submit" class="save-btn"> 
