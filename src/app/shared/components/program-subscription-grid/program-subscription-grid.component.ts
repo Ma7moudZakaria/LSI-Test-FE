@@ -109,17 +109,30 @@ export class ProgramSubscriptionGridComponent implements OnInit {
     this.teacherItems.forEach(t => t.checked = completed);
   }
 
+  // exportTeacherCSV() {
+  //   let expItems = this.teacherItems.filter(a => a.checked);
+  //   let headerLabels = this.translate.currentLang == 'en-US' ?
+  //     [' program name', 'User name'] :
+  //     [' اسم البرنامج ',
+  //       'اسم المعلم'];
+
+  //   let data = ['progName', 'teacherNameAr'];
+  //   this.exportationService.exportCSV(expItems, 'teacher', data, headerLabels);
+  // }
+
   exportTeacherCSV() {
-    let expItems = this.teacherItems.filter(a => a.checked);
+    let expItems = this.studentItems.filter(a => a.checked);
+
     let headerLabels = this.translate.currentLang == 'en-US' ?
-      [' program name', 'User name'] :
-      [' اسم البرنامج ',
-        'اسم المعلم'];
+      [' program name', 'Teacher name', 'request date ', 'request status'] :
+      ['أسم المعلم',
+        'أسم البرنامج'
+        , ' تاريخ الطلب ',
+        'حاله الطلب']
 
-    let data = ['progName', 'teacherNameAr'];
-    this.exportationService.exportCSV(expItems, 'teacher', data, headerLabels);
+    let data = ['progName', 'usrNameAr', 'requestDate', 'programStaNum'];
+    this.exportationService.exportCSV(expItems, 'Hoffaz-Teacher program subscription requests ', data, headerLabels);
   }
-
   deleteTeacherByIds() {
     this.deleteListOfteacher.emit();
   }
