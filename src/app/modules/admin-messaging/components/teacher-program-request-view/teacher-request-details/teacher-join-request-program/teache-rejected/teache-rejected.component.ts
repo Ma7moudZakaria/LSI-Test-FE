@@ -1,6 +1,10 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, MissingTranslationStrategy, OnInit, Output } from '@angular/core';
+import { MatCommonModule } from '@angular/material/core';
+import { TranslateService } from '@ngx-translate/core';
 import { IRejectTeacherProgramSubscriptionModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/ireject-teacher-program-subscription-model';
 import { ITeacherProgramSubscriptionModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iteacher-program-subscription-model';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { TeacherProgramSubscriptionServicesService } from 'src/app/core/services/teacher-program-subscription-services/teacher-program-subscription-services.service';
 
@@ -15,9 +19,11 @@ export class TeacheRejectedComponent implements OnInit {
   @Input() itemTeacherReq: ITeacherProgramSubscriptionModel= {totalRows:0}
 
   showError=false;
+  resMessage: BaseMessageModel = {};
   constructor(
     private teatchSubRequestService: TeacherProgramSubscriptionServicesService,
-    private alertify: AlertifyService) { }
+    private alertify: AlertifyService,
+    public translate : TranslateService) { }
 
   ngOnInit(): void {
   }
@@ -27,9 +33,15 @@ export class TeacheRejectedComponent implements OnInit {
   }
 
   saveRejectRequest() {
-    if (!this.itemTeacherReq.reasonReject){
-      this. showError=true;
-    }
+    // if (!this.itemTeacherReq.reasonReject){
+    //   this.resMessage = {
+    //     message:this.translate.instant('GENERAL.REQUIRED'),
+    //     type:BaseConstantModel.DANGER_TYPE
+    //   }
+    //   //this. showError=true;
+    // }
+
+    this.resMessage={};
     let model: IRejectTeacherProgramSubscriptionModel = {
       subscriptionId: this.itemTeacherReq.id,
       reasonReject: this.itemTeacherReq.reasonReject
@@ -47,6 +59,12 @@ export class TeacheRejectedComponent implements OnInit {
         }
       }, error => {
       })
+    }
+    else{
+      this.resMessage = {
+            message:this.translate.instant('GENERAL.REQUIRED'),
+            type:BaseConstantModel.DANGER_TYPE
+          }
     }
   }
 
