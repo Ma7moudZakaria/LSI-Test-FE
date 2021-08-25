@@ -66,6 +66,18 @@ export class AddDropOutRequestComponent implements OnInit {
     // }
 
     if (this.dropOutForm.valid){
+      this.resultMessage= {};
+      if(this.createDropOut.dropOutReason ){
+        if(this.createDropOut.dropOutReason?.length > 256){
+          this.resultMessage = {
+            message: this.translate.instant('GENERAL_DROP_OUT_REQUEST.REJECT_REASON_LENGHT'),
+            type: BaseConstantModel.DANGER_TYPE
+          }
+
+          return;
+        }
+      }
+
       this.createDropOut.usrId = this.currentUser?.id;
       this.teacherDropOutRequestService.createTeacherDropOutRequest(this.createDropOut || {}).subscribe(res => {
         if (res.isSuccess) {

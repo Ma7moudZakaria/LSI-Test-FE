@@ -36,6 +36,18 @@ export class StudentDropOutRequestRejectedComponent implements OnInit {
   }
 
   saveRejectRequest() {
+    this.resultMessage= {};
+    if(this.itemStudentDropOutRequestForReject.reasonReject ){
+      if(this.itemStudentDropOutRequestForReject.reasonReject?.length > 256){
+        this.resultMessage = {
+          message: this.translate.instant('GENERAL_DROP_OUT_REQUEST.REJECT_REASON_LENGHT'),
+          type: BaseConstantModel.DANGER_TYPE
+        }
+
+        return;
+      }
+    }
+
     let model: IRejectStudentDropOutRequestModel = {
       studentDropOutRequest: this.itemStudentDropOutRequestForReject.id,
       reasonReject: this.itemStudentDropOutRequestForReject.reasonReject

@@ -36,6 +36,18 @@ export class TeacherDropOutRequestRejectedComponent implements OnInit {
   }
 
   saveRejectRequest() {
+    this.resultMessage= {};
+    if(this.itemTeacherDropOutRequestForReject.reasonReject ){
+      if(this.itemTeacherDropOutRequestForReject.reasonReject?.length > 256){
+        this.resultMessage = {
+          message: this.translate.instant('GENERAL_DROP_OUT_REQUEST.REJECT_REASON_LENGHT'),
+          type: BaseConstantModel.DANGER_TYPE
+        }
+
+        return;
+      }
+    }
+
     let model: IRejectTeacherDropOutRequestModel = {
       teacherDropOutRequest: this.itemTeacherDropOutRequestForReject.id,
       reasonReject: this.itemTeacherDropOutRequestForReject.reasonReject
