@@ -20,8 +20,6 @@ import {IStudentProgramSubscription} from '../../../../../core/interfaces/studen
 export class TeacherJoinRequestComponent implements OnInit {
 
 
-  @Output() itemStuReq = new EventEmitter<IStudentSubscriptionModel>();
-  @Output() openAdvancedSearch = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
 
   // @Output() closeAdvancedSearch = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
 
