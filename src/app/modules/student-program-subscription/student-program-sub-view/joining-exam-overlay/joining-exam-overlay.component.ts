@@ -57,7 +57,6 @@ export class JoiningExamOverlayComponent implements OnInit {
     else {
       this.studentSubscriptionCompleted();
     }
-    // this.countDown = timer(0, this.tick).subscribe(() => --this.counterTimer);
   }
 
   ngOnDestroy() {

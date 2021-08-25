@@ -20,8 +20,10 @@
 <!-- {{currentQuestion}} -->
      <div class="row justify-content-center">
          <div class="col-10 card_quest "> 
-                <p class="quest_num"> {{'STUDENT_SUBSCRIPTION.QUEST_NUM' | translate}}-{{currentQuestion?.questionNo}} </p>
-
+                <p class="quest_num">
+                   {{'STUDENT_SUBSCRIPTION.QUEST_NUM' | translate}}{{currentQuestion?.questionNo}}
+                </p>
+               
                 <ng-container *ngIf="currentQuestion?.text">
                   <p class="quest_text" >
                       {{currentQuestion?.text}} 
@@ -54,9 +56,11 @@
    
         <ng-container    *ngIf="currentQuestion?.answerType === answerTypeEnum?.multiSelect">
             <ng-container class="mt-3" *ngFor = 'let answer of currentQuestion?.answers'>
+              <div class="col-12 my-1">
               <mat-checkbox class="example-margin " (change)='addStudentAns(answer, $event)'>
-            {{answer.text}}
+               {{answer.text}}
             </mat-checkbox>
+          </div>
             </ng-container> 
 
         </ng-container>
@@ -92,8 +96,8 @@
 
 <ng-container *ngIf="!progDetails?.isContainExam">
   <div class="row justify-content-center">
-    <div class="col-12">
-      <p>No Exam Found
+    <div class="col-6 text-center">
+      <p>
         {{'STUDENT_SUBSCRIPTION.NO_EXAM' | translate}} 
 
       </p>

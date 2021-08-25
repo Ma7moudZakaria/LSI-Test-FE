@@ -881,9 +881,10 @@
   },
   "STUDENT_SUBSCRIPTION": {
     "ACCEPT_EXAMP": "اختبار القبول",
-    "QUEST_NUM": "رقم السؤال",
+    "QUEST_NUM": "سؤال رقم",
     "LENGTH": "المدة",
     "ANSWER_FINISHED": " هل تم الانتهاء من الاجابة ؟",
-    "NEXT": "التالى"
+    "NEXT": "التالى",
+    "NO_EXAM": "لا يوجد برنامج"
   }
 }

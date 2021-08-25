@@ -883,9 +883,10 @@
   },
   "STUDENT_SUBSCRIPTION": {
     "ACCEPT_EXAMP": "Accept EXAMP",
-    "QUEST_NUM": "Quest number",
+    "QUEST_NUM": "Question Number",
     "LENGTH": "length",
     "NEXT": "Next",
-    "ANSWER_FINISHED": "Is the answer finished"
+    "ANSWER_FINISHED": "Is the answer finished",
+    "NO_EXAM": "No Exam Found"
   }
 }
