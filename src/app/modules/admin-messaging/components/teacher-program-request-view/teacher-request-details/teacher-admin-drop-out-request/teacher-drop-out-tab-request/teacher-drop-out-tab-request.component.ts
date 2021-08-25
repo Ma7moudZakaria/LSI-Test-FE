@@ -42,7 +42,8 @@ export class TeacherDropOutTabRequestComponent implements OnInit {
     private alertify: AlertifyService) { }
 
   ngOnInit(): void {
-    this.teacherDropOutRequestFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn'
+    this.teacherDropOutRequestFilterRequestModel.sortField = 'requestdate';
+    // this.teacherDropOutRequestFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn'
     this.getTeacherDropOutRequests();
   }
 

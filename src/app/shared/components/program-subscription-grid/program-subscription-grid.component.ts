@@ -56,6 +56,7 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.sortTeacherRequestDate();
   }
   teacherProgSubOutputEvent(event: string) {
     this.teacherIdFormGrid.emit(event);
