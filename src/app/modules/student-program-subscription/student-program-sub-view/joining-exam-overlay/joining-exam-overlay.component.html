@@ -1,18 +1,16 @@
 
 <div class="over_lay_exam">
-<h1>اختبار القبول</h1>
+<h1>{{'STUDENT_SUBSCRIPTION.ACCEPT_EXAMP' | translate}} </h1>
 <p class="bold">{{progDetails?.prgName}}</p>
-  
     <p class="bold">
         {{translate.currentLang===langEnum.en ? randomExam?.exaNameEn : randomExam?.exaNameAr}}
     </p> 
-
-    <div >
+<div>
      
 <!-- {{currentQuestion}} -->
      <div class="row justify-content-center">
          <div class="col-10 card_quest "> 
-                <p class="quest_num"> Quest number-{{currentQuestion?.questionNo}} </p>
+                <p class="quest_num"> {{'STUDENT_SUBSCRIPTION.QUEST_NUM' | translate}}-{{currentQuestion?.questionNo}} </p>
 
                 <ng-container *ngIf="currentQuestion?.text">
                   <p class="quest_text" >
@@ -26,8 +24,7 @@
                   </app-voice-recording>
      </ng-container>
 
-                 <!-- [(ngModel)]="currentQuestion?.correctAnswersByAnswerNumber"  -->
-                length {{currentQuestion?.answers?.length}}
+                 {{'STUDENT_SUBSCRIPTION.LENGTH' | translate}}  {{currentQuestion?.answers?.length}}
         <ng-container *ngIf="currentQuestion?.answerType === answerTypeEnum?.singleSelect">
           <mat-radio-group  *ngIf="currentQuestion" 
            [(ngModel)]="currentQuestion.studentAnswersByAnswerNumber"
@@ -55,25 +52,19 @@
 </ng-container>
 
         <div class="mt-5">
-              <!-- <div class="d-flex justify-content-center">
-            <input type="time"   class="form-control" 
-            [(ngModel)]='question.time'> -->
-
-            TIMER {{currentQuestion?.time}}
-          
+             {{currentQuestion?.time}}
             </div>
         </div>
-
          </div>
      </div>
      <div class="row justify-content-end">
         <div class="col-10">
                   <section class="mt-5 button_actions">
-              <p>  هل تم الانتهاء من الاجابة ؟</p>
+              <p>{{'STUDENT_SUBSCRIPTION.ANSWER_FINISHED' | translate}} </p>
 
               <div  class="row direction-rtl buttons-center mt-5">
                   <button   type="submit" class="cancel-btn" (click)="NextQuestion()"> 
-                    NEXT
+                     {{'STUDENT_SUBSCRIPTION.NEXT' | translate}} 
                   </button>
                   <button   type="reset" class="btn_replay mx-3"> 
                       {{ "GENERAL.CANCEL" | translate }}
@@ -83,7 +74,3 @@
             </div>
      </div>
      
-<!--  
-<button (click)='submitExam()'>submit</button>
-    </div>
-   -->

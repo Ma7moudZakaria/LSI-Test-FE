@@ -820,7 +820,7 @@
     "MEETING": "المقابلة",
     "REJECT": "رفض",
     "ACCEPT": "قبول",
-    "REJECT_REASON":"سبب الرفض"
+    "REJECT_REASON": "سبب الرفض"
   },
   "STUDENT_VACATION": {
     "NEW_VACATION_REQUESTS": "طلبات جديدة",
@@ -849,7 +849,7 @@
     "ADD_BATCH": "اضافة جديدة",
     "FROM_DATE": "تاريخ بداية الإشتراك",
     "TO_DATE": "تاريخ نهاية الإشتراك",
-    "SEND": "خفظ",
+    "SEND": "حفظ",
     "CANCEL": "الغاء",
     "TEACHERS": "المعلمين",
     "STUDENTS": "الطلاب",
@@ -878,5 +878,12 @@
     "EDIT_CATEGORY": "تعديل قسم",
     "AR_NAME_CATEGORY": " اسم القسم بالعربيه",
     "EN_NAME_CATEGORY": "اسم القسم بالانجليزيه"
+  },
+  "STUDENT_SUBSCRIPTION": {
+    "ACCEPT_EXAMP": "اختبار القبول",
+    "QUEST_NUM": "رقم السؤال",
+    "LENGTH": "المدة",
+    "ANSWER_FINISHED": " هل تم الانتهاء من الاجابة ؟",
+    "NEXT": "التالى"
   }
 }

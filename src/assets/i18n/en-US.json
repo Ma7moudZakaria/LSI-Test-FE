@@ -822,7 +822,7 @@
     "MEETING": "Meeting",
     "REJECT": "Reject",
     "ACCEPT": "Accept",
-    "REJECT_REASON":"Reject Reason"
+    "REJECT_REASON": "Reject Reason"
   },
   "STUDENT_VACATION": {
     "NEW_VACATION_REQUESTS": "New requests",
@@ -880,5 +880,12 @@
     "EDIT_CATEGORY": "Edit Category",
     "AR_NAME_CATEGORY": "Category name in arabic",
     "EN_NAME_CATEGORY": "Category name in english"
+  },
+  "STUDENT_SUBSCRIPTION": {
+    "ACCEPT_EXAMP": "Accept EXAMP",
+    "QUEST_NUM": "Quest number",
+    "LENGTH": "length",
+    "NEXT": "Next",
+    "ANSWER_FINISHED": "Is the answer finished"
   }
 }
