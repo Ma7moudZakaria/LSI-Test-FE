@@ -31,7 +31,7 @@ export class TeacherJionProgramTabRequestComponent implements OnInit {
   showTap: TeacheProgramSubscriptionStatusEnum = TeacheProgramSubscriptionStatusEnum.Pending;
   statusEnum = TeacheProgramSubscriptionStatusEnum;
   sendUserID: string | undefined;
-  showUserDetailsView:boolean = false;
+  showUserDetailsView: boolean = false;
   //teacherName:string='';
   constructor(
     public translate: TranslateService,
@@ -39,15 +39,16 @@ export class TeacherJionProgramTabRequestComponent implements OnInit {
     private alertify: AlertifyService) { }
 
   ngOnInit(): void {
-    this.teacherProgramSubscriptionFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn'
+    this.teacherProgramSubscriptionFilterRequestModel.sortField = 'requestdate';
+    // this.teacherProgramSubscriptionFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn'
     this.getTeachersProgramsSubscriptions();
   }
 
-  sendTeacherIDEvent(event: string){
-    this.sendUserID =event;
+  sendTeacherIDEvent(event: string) {
+    this.sendUserID = event;
     this.showUserDetailsView = true;
   }
-  hideUserDetailsView(event: boolean){
+  hideUserDetailsView(event: boolean) {
     this.showUserDetailsView = event;
   }
   searchByText(searchKey: string) {
@@ -90,12 +91,14 @@ export class TeacherJionProgramTabRequestComponent implements OnInit {
 
   onAcceptChange() {
     this.teacherProgramSubscriptionFilterRequestModel = { usrName: '', statusNum: TeacheProgramSubscriptionStatusEnum.Accept, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
+    this.teacherProgramSubscriptionFilterRequestModel.sortField = 'requestdate';
     this.showTap = TeacheProgramSubscriptionStatusEnum.Accept;
     this.closeAvancedSearch();
     this.getTeachersProgramsSubscriptions();
   }
   onRejectedChange() {
     this.teacherProgramSubscriptionFilterRequestModel = { usrName: '', statusNum: TeacheProgramSubscriptionStatusEnum.Rejected, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
+    this.teacherProgramSubscriptionFilterRequestModel.sortField = 'requestdate';
     this.showTap = TeacheProgramSubscriptionStatusEnum.Rejected
     this.closeAvancedSearch();
     this.getTeachersProgramsSubscriptions();
@@ -125,9 +128,9 @@ export class TeacherJionProgramTabRequestComponent implements OnInit {
     this.teacherProgramSubscriptionFilterRequestModel.fromDate = undefined;
     this.teacherProgramSubscriptionFilterRequestModel.toDate = undefined;
     this.teacherProgramSubscriptionFilterRequestModel.skip = 0;
-    this.teacherProgramSubscriptionFilterRequestModel.take= 9;
-    this.teacherProgramSubscriptionFilterRequestModel.sortField='';
-    this.teacherProgramSubscriptionFilterRequestModel.sortOrder= 1;
+    this.teacherProgramSubscriptionFilterRequestModel.take = 9;
+    this.teacherProgramSubscriptionFilterRequestModel.sortField = '';
+    this.teacherProgramSubscriptionFilterRequestModel.sortOrder = 1;
     this.teacherProgramSubscriptionFilterRequestModel.page = 1;
     // this.closeAdvancedSearch.emit()
   }

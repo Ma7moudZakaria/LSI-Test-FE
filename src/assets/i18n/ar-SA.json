@@ -774,7 +774,10 @@
     "AVAILABLE_CHANGE_TIME_REQUESTS": "طلبات تغير الوقت المتاحه",
     "REJECT_TEACHER": "رفض المعلم",
     "FROM_PROGRAM": "من برنامج",
-    "REASON_REJECT": "سبب الرفض"
+    "REASON_REJECT": " ادخل سبب الرفض",
+    "WILL_REASON_REJECT": "سيتم رفض طلب انسحاب المعلم ",
+    "REQUEST_DATE": "تاريخ الطلب ",
+    "REJECT_REASON": "سبب الرفض"
   },
   "TEACHER_DROP_OUT": {
     "SUBSCRIBERS": "الطلبات",

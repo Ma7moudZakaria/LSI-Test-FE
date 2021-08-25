@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { IRejectTeacherProgramSubscriptionModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/ireject-teacher-program-subscription-model';
 import { ITeacherProgramSubscriptionModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iteacher-program-subscription-model';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { TeacherProgramSubscriptionServicesService } from 'src/app/core/services/teacher-program-subscription-services/teacher-program-subscription-services.service';
 
@@ -12,11 +15,14 @@ import { TeacherProgramSubscriptionServicesService } from 'src/app/core/services
 export class TeacheRejectedComponent implements OnInit {
 
   @Output() closeRejectedRequest = new EventEmitter<ITeacherProgramSubscriptionModel>();
-  @Input() itemTeacherReq: ITeacherProgramSubscriptionModel= {totalRows:0}
+  @Input() itemTeacherReq: ITeacherProgramSubscriptionModel = { totalRows: 0 }
+  resultMessage: BaseMessageModel = {};
 
   constructor(
     private teatchSubRequestService: TeacherProgramSubscriptionServicesService,
-    private alertify: AlertifyService) { }
+    private alertify: AlertifyService
+    , public tranlste: TranslateService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -43,6 +49,13 @@ export class TeacheRejectedComponent implements OnInit {
       }, error => {
       })
     }
+    else {
+      this.resultMessage = {
+        message: this.tranlste.instant('TEACHER_SUBSCRIBERS.REASON_REJECT'),
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    }
+
   }
 
 

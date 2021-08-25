@@ -32,24 +32,25 @@ export class StuTabRequestComponent implements OnInit {
   studProgsSubsItems: IStudentSubscriptionModel[] = [];
   totalCount = 0;
   sendUserID: string | undefined;
-  showUserDetailsView:boolean = false;
+  showUserDetailsView: boolean = false;
   constructor(private progSubsService: StudentProgramSubscriptionServicesService,
     public translate: TranslateService,
     private alertify: AlertifyService) {
 
   }
   ngOnInit(): void {
-    this.filter.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn';
+
     this.onPendingChange();
   }
-  sendUserIDEvent(event: string | undefined){
-    this.sendUserID =event;
+  sendUserIDEvent(event: string | undefined) {
+    this.sendUserID = event;
     this.showUserDetailsView = true;
   }
-  hideUserDetailsView(event: boolean){
+  hideUserDetailsView(event: boolean) {
     this.showUserDetailsView = event;
   }
   getStudentProgramSubscriptionsFilter() {
+    console.log("filter", this.filter)
     this.progSubsService.getStudentsSubscriptionsFilterAdminView(this.filter).subscribe(res => {
 
       if (res.isSuccess) {
@@ -85,6 +86,8 @@ export class StuTabRequestComponent implements OnInit {
     //this.clearfilterByText();
     // this.advancedSearchRequest()
     this.closeAvancedSearch()
+    this.filter.sortField = 'requestdate';
+
     this.getStudentProgramSubscriptionsFilter();
   }
 
@@ -112,7 +115,7 @@ export class StuTabRequestComponent implements OnInit {
 
   ids?: string[] = [];
   acceptStuReq(stuModel: IStudentSubscriptionModel) {
-    this.ids =  [];
+    this.ids = [];
     this.ids?.push(stuModel.id || '');
     this.progSubsService.studentProgramSubscriptionsAcceptance(this.ids || []).subscribe(res => {
       if (res.isSuccess) {

@@ -5,7 +5,8 @@
     </section>
     
     <div>
-      <span> تاريخ الطلب</span>
+
+      <span>  {{'TEACHER_SUBSCRIBERS.REQUEST_DATE' | translate}}  </span>
       <span>&nbsp;</span>
       <span>&nbsp;</span>
       <span> {{teacherSubscripModel.requestDate}}</span> 
@@ -33,7 +34,7 @@
       </div>
       <ng-container *ngIf="teacherSubscripModel.reasonReject">
         <p class="program_rejected  mb-0 pb-2"  *ngIf="typeEnum === tabTypeSelected.Rejected"> 
-          <span class="bold mx-1">سبب الرقض:</span> 
+          <span class="bold mx-1">{{'TEACHER_SUBSCRIBERS.REJECT_REASON' | translate}}:  </span> 
           <span>
             {{teacherSubscripModel.reasonReject}}
           </span>

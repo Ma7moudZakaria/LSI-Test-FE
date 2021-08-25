@@ -776,7 +776,10 @@
     "AVAILABLE_CHANGE_TIME_REQUESTS": "Available time change requests",
     "REJECT_TEACHER": "Reject Teacher",
     "FROM_PROGRAM": "From program",
-    "REASON_REJECT": "Reason reject"
+    "REASON_REJECT": "Input Reason reject",
+    "WILL_REASON_REJECT": "The teacher's withdrawal request will be rejected ",
+    "REQUEST_DATE": "Request Date",
+    "REJECT_REASON": "Reason reject"
   },
   "TEACHER_DROP_OUT": {
     "SUBSCRIBERS": "Subscibe",

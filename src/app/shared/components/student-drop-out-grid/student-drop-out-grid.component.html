@@ -2,8 +2,9 @@
   
   <div class="row scientific-problem-grid"  *ngIf='userRoleMode.Admin === userMode'>
   
-    <div class="col-8 d-flex justify-content-start" *ngIf='userRoleMode.Admin === userMode'>
+    <div class="col-9 d-flex justify-content-start" *ngIf='userRoleMode.Admin === userMode'>
             <ngb-pagination 
+            [maxSize]="3"
             [collectionSize]="totalCount"
             [(page)]="studentDropOutRequestFilterRequestAdminModel.page" 
             [pageSize]="studentDropOutRequestFilterRequestAdminModel.take"
@@ -39,7 +40,7 @@
           </span>
        </button>
       </div> 
-       <div class="col-4 pl-4 text-right align-self-center"   *ngIf='userRoleMode.Admin === userMode'>
+       <div class="col-3 pl-4 text-right align-self-center"   *ngIf='userRoleMode.Admin === userMode'>
           <mat-checkbox class="example-margin ml-1 mr-1 scProblem"  *ngIf='userRoleMode.Admin === userMode '   
                     [checked]="allSelected"
                     [indeterminate]="someStudentAdmintItemsChecked()"

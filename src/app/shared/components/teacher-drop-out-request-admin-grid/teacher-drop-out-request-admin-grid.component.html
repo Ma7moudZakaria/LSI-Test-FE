@@ -1,8 +1,9 @@
 
   <div class="row scientific-problem-grid"  >
   
-    <div class="col-8 d-flex justify-content-start">
+    <div class="col-9 d-flex justify-content-start">
             <ngb-pagination 
+            [maxSize]="3"
             [collectionSize]="totalCount"
             [(page)]="teacherDropOutRequestFilterRequestModel.page" 
             [pageSize]="teacherDropOutRequestFilterRequestModel.take"
@@ -67,7 +68,7 @@
           </span>
        </button>
       </div> 
-       <div class="col-4 pl-4 text-right align-self-center"  *ngIf='userRoleMode.Admin === userMode && teacherDropOutRequestStatus.Pending === typeEnum'>
+       <div class="col-3 pl-4 text-right align-self-center"  *ngIf='userRoleMode.Admin === userMode && teacherDropOutRequestStatus.Pending === typeEnum'>
           <mat-checkbox class="example-margin ml-1 mr-1 scProblem"
                     [checked]="allSelected"
                     [indeterminate]="someTeachertItemsChecked()"

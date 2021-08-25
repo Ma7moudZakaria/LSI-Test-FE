@@ -57,10 +57,10 @@ export class ProgramSubscriptionGridComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  teacherProgSubOutputEvent(event:string){
+  teacherProgSubOutputEvent(event: string) {
     this.teacherIdFormGrid.emit(event);
   }
-  studentProgSubOutputEvent(event:string){
+  studentProgSubOutputEvent(event: string) {
     this.studentIdFormGrid.emit(event);
   }
   sortTeacherByName() {
@@ -114,9 +114,9 @@ export class ProgramSubscriptionGridComponent implements OnInit {
     let headerLabels = this.translate.currentLang == 'en-US' ?
       [' program name', 'User name'] :
       [' اسم البرنامج ',
-        'اسم المستخدم'];
+        'اسم المعلم'];
 
-    let data = ['progName', 'usrNameAr'];
+    let data = ['progName', 'teacherNameAr'];
     this.exportationService.exportCSV(expItems, 'teacher', data, headerLabels);
   }
 
@@ -188,15 +188,18 @@ export class ProgramSubscriptionGridComponent implements OnInit {
     console.log(this.userMode);
   }
 
+
   exportStudentCSV() {
     let expItems = this.studentItems.filter(a => a.checked);
     let headerLabels = this.translate.currentLang == 'en-US' ?
-      [' program name', 'User name'] :
-      [' أسم البرنامج ',
-        'أسم المستخدم'];
+      [' program name', 'Student name', 'request date ', 'request status'] :
+      ['أسم الطالب',
+        'أسم البرنامج'
+        , ' تاريخ الطلب ',
+        'حاله الطلب']
 
-    let data = ['progName', 'usrNameAr'];
-    this.exportationService.exportCSV(expItems, 'Student', data, headerLabels);
+    let data = ['progName', 'usrNameAr', 'requestDate', 'programStaNum'];
+    this.exportationService.exportCSV(expItems, 'Hoffaz-Student program subscription requests ', data, headerLabels);
   }
 
   deleteStudentByIds() {
