@@ -1,7 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Time } from '@angular/common';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { timeStamp } from 'node:console';
+import { Subscription, timer } from 'rxjs';
 import { AnswerTypeEnum } from 'src/app/core/enums/exam-builder-enums/answer-type-enum.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IAnswer } from 'src/app/core/interfaces/exam-builder-interfaces/ianswer';
@@ -21,36 +23,46 @@ import { StudentProgramSubscriptionServicesService } from 'src/app/core/services
   styleUrls: ['./joining-exam-overlay.component.scss']
 })
 export class JoiningExamOverlayComponent implements OnInit {
-
+  @Output() closeOverlay = new EventEmitter<boolean>();
   @Input() progDetails: IProgramSubscriptionDetails | undefined;
+  @Input() requestId: string | undefined
+
   resMessage: BaseMessageModel = {};
   randomExam: IRandomExamModel | undefined;
   langEnum = LanguageEnum;
   answerTypeEnum = AnswerTypeEnum;
-
+  display: any;
   currentQuestion: IQuestion | undefined
   counter: number = 0
   countlength: number = 0;
-  @Input() requestId: string | undefined
+
+  //pipe for timer counter
+  countDown: Subscription | undefined;
+  counterTimer: number = 0
+  tick = 1000;
 
   constructor(
     private studentProgSubscriptionService: StudentProgramSubscriptionServicesService,
     public translate: TranslateService,
     private alertify: AlertifyService,
     private router: Router
-  ) { }
+  ) {
 
-  ngOnInit(): void {
-    // if (this.currentQuestion
-    //   && this.currentQuestion.studentAnswersByAnswerNumbers
-    //   && this.currentQuestion.studentAnswersByAnswerNumber) {
-    //   this.currentQuestion.studentAnswersByAnswerNumber = '';
-    //   this.currentQuestion.studentAnswersByAnswerNumbers = [];
-    // }
-
-    this.getRandomExam();
   }
 
+  ngOnInit(): void {
+    if (this.progDetails?.isContainExam) {
+      this.getRandomExam();
+    }
+    else {
+      this.studentSubscriptionCompleted();
+    }
+    // this.countDown = timer(0, this.tick).subscribe(() => --this.counterTimer);
+  }
+
+  ngOnDestroy() {
+    this.countDown = undefined;
+  }
 
   getRandomExam() {
     this.studentProgSubscriptionService.getRandomJoiningExam(this.progDetails?.id || '').subscribe(
@@ -59,9 +71,17 @@ export class JoiningExamOverlayComponent implements OnInit {
         if (res.isSuccess) {
           this.randomExam = res.data as IRandomExamModel;
           this.randomExam.questions = res.data.templateExam ? JSON.parse(res.data.templateExam) : [];
-
           this.currentQuestion = this.randomExam && this.randomExam.questions ?
             this.randomExam.questions[this.counter] : undefined;
+
+          this.counterTimer = this.currentQuestion?.time ? this.currentQuestion?.time * 60 : 0;
+          this.countDown = timer(0, this.tick).subscribe(() => {
+            --this.counterTimer;
+            if (this.counterTimer == 0) {
+              this.NextQuestion();
+            }
+          }
+          );
         }
         else {
           this.resMessage = {
@@ -77,6 +97,8 @@ export class JoiningExamOverlayComponent implements OnInit {
       })
   }
 
+
+
   NextQuestion() {
     this.countlength = this.randomExam?.questions?.length || 0;
     if (this.counter == this.countlength - 1) {
@@ -86,6 +108,16 @@ export class JoiningExamOverlayComponent implements OnInit {
       this.counter++;
       this.currentQuestion = this.randomExam && this.randomExam.questions ?
         this.randomExam.questions[this.counter] : undefined;
+
+      this.counterTimer = this.currentQuestion?.time ? this.currentQuestion?.time * 60 : 0;
+      this.countDown = timer(0, this.tick).subscribe(() => {
+        --this.counterTimer;
+        if (this.counterTimer == 0) {
+          this.NextQuestion();
+        }
+      }
+      );
+
     }
   }
 
@@ -110,6 +142,7 @@ export class JoiningExamOverlayComponent implements OnInit {
     }
     this.studentProgSubscriptionService.submitStudentJoiningExamAnswer(model).subscribe(res => {
       if (res.isSuccess) {
+        this.alertify.success(res.message || '');
         this.studentSubscriptionCompleted();
       }
       else {
@@ -141,5 +174,8 @@ export class JoiningExamOverlayComponent implements OnInit {
     })
   }
 
+  closeForm() {
+    this.closeOverlay.emit(false)
+  }
 
 }

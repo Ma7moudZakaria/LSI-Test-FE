@@ -82,6 +82,7 @@ import { StudentProgramVacationCardStudentViewComponent } from './components/stu
 import { TeacherStuProgramForSubscriptionGridComponent } from './components/teacher-stu-program-for-subscription-grid/teacher-stu-program-for-subscription-grid.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { StudentDetailsViewComponent } from './components/student-details-view/student-details-view.component';
+import { FormatTimePipe } from '../core/pipe/format-time.pipe';
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
     SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,
@@ -119,19 +120,20 @@ import { StudentDetailsViewComponent } from './components/student-details-view/s
 
     ,
     TeacherSystemCardRequestComponent,
-        TeacherSystemSubscriptionGridComponent,
-        StudentProgramVacationGridComponent,
-        StudentProgramVacationCardAdminComponent,
+    TeacherSystemSubscriptionGridComponent,
+    StudentProgramVacationGridComponent,
+    StudentProgramVacationCardAdminComponent,
     TeacherDropOutRequestAdminCardComponent,
     TeacherDropOutRequestAdminGridComponent,
     TeacherDropOutRequestTeacherCardComponent,
     StudentDropOutRequestAdminCardComponent,
     StudentDropOutRequestStudentCardComponent,
-        StudentDropOutGridComponent,
-        StudentProgramVacationCardStudentViewComponent,
-        UserDetailsComponent,
-        StudentDetailsViewComponent
-    ],
+    StudentDropOutGridComponent,
+    StudentProgramVacationCardStudentViewComponent,
+    UserDetailsComponent,
+    StudentDetailsViewComponent, FormatTimePipe,
+
+  ],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,
@@ -158,7 +160,7 @@ import { StudentDetailsViewComponent } from './components/student-details-view/s
     ProgramSubscriptionGridComponent
     , TeacherSystemSubscriptionGridComponent, StudentProgramVacationGridComponent, TeacherStudentProgramForSubscriptionComponent,
     StudentDropOutGridComponent,
-    TeacherDropOutRequestAdminGridComponent, UserDetailsComponent, StudentDetailsViewComponent
+    TeacherDropOutRequestAdminGridComponent, UserDetailsComponent, StudentDetailsViewComponent, FormatTimePipe
   ]
 })
 export class SharedModule { }
