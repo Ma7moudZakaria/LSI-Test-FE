@@ -15,4 +15,5 @@ export interface ITeacherProgramSubscriptionModel {
     enBatName?:string;
     arProgBatName?:string;
     enProgBatName?:string;
+    interviewTime?:Date;
 }

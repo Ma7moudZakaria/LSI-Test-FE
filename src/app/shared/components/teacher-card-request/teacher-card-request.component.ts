@@ -22,10 +22,17 @@ export class TeacherCardRequestComponent implements OnInit {
 
   tabTypeSelected = TeacheProgramSubscriptionStatusEnum;
   langEnum = LanguageEnum;
+  requestDate:string | undefined;
 
   constructor(public translate : TranslateService) { }
 
   ngOnInit(): void {
+    console.log("teacherSubscripModel", this.teacherSubscripModel)
+    if (this.teacherSubscripModel?.requestDate) {
+      let requestDateValue = new Date(this.teacherSubscripModel.requestDate || '');
+
+      this.requestDate = new Date(requestDateValue.setDate(requestDateValue.getDate() + 1)).toISOString().slice(0, 10);
+    }
   }
   showDetails(id?:string,JoinedProgName?:string){
     let UserModel:ITeacherStudentViewModel ={progName : JoinedProgName,usrId:id};

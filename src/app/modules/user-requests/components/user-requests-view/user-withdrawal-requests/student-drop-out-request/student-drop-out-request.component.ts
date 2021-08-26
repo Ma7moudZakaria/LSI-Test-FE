@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { DropOutRoleEnum } from 'src/app/core/enums/drop-out-request-enums/drop-out-status.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
@@ -12,6 +13,7 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { StudentDropOutRequestService } from 'src/app/core/services/student-drop-out-request-services/student-drop-out-request.service';
+import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 import { UserWithdrawalRequestsComponent } from '../user-withdrawal-requests.component';
 
 @Component({
@@ -34,6 +36,7 @@ export class StudentDropOutRequestComponent implements OnInit {
   
   constructor(
     public translate: TranslateService,
+    public dialog: MatDialog,
     private studentDropOutRequestService: StudentDropOutRequestService) { }
 
   ngOnInit(): void {
@@ -89,17 +92,31 @@ export class StudentDropOutRequestComponent implements OnInit {
   }
 
   cancelRequestOfStudent(teacherSubscripModel: IStudentDropOutRequestsFilterResponseModel) {
-    this.studentDropOutRequestService.studentDropOutCancelRequest(teacherSubscripModel.id || '').subscribe(res => {
-      if (res.isSuccess) {
-      
-        this.getStudentDropOutRequests();
-      }
-    },
-      error => {
-        this.resMessage = {
-          message: error,
-          type: BaseConstantModel.DANGER_TYPE
-        }
-      });
+
+    const message =this.translate.currentLang === LanguageEnum.en ?"Are you sure that you want to cancel request":"هل متأكد من إلغاء الطلب";
+
+    const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Cancel Request' : 'إلغاء الطلب', message);
+
+    const dialogRef = this.dialog.open(ConfirmModalComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if(dialogResult==true){
+        
+        this.studentDropOutRequestService.studentDropOutCancelRequest(teacherSubscripModel.id || '').subscribe(res => {
+          if (res.isSuccess) {
+          
+            this.getStudentDropOutRequests();
+          }
+        },
+          error => {
+            this.resMessage = {
+              message: error,
+              type: BaseConstantModel.DANGER_TYPE
+            }
+          });
+      }     
+    });
   }
 }
