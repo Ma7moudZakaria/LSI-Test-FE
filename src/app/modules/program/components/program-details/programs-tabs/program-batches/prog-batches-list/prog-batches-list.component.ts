@@ -83,34 +83,50 @@ export class ProgBatchesListComponent implements OnInit {
 
   confirmDialog(id?: string) {
     const message = this.translate.currentLang === LanguageEnum.en ? "Are you sure you want to delete this Batch" : "هل متأكد من حذف هذا القسم";
+    const delMessage = this.translate.currentLang === LanguageEnum.en ? "Can not delete batch as it is in used in subscriptions" : "لا يمكن حذف دفع بها مشتركين";
 
     const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete Batch' : 'حذف القسم', message);
+    const delDialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete Batch' : 'حذف القسم', delMessage);
 
-    const dialogRef = this.dialog.open(ConfirmModalComponent, {
-      maxWidth: "400px",
-      data: dialogData
-    });
-    dialogRef.afterClosed().subscribe(dialogResult => {
-      if (dialogResult == true) {
-        this.programBatchesService.deleteProgBatch(id || '').subscribe(res => {
-          if (res.isSuccess && this.programDetails) {
-            this.updateProgBatchesListAfterAdd();
+    this.programBatchesService.deleteProgBatch(id || '').subscribe(res => {
+
+      if (res.isSuccess && this.programDetails) {
+        const dialogRef = this.dialog.open(ConfirmModalComponent, {
+          maxWidth: "400px",
+          data: dialogData
+        });
+        this.updateProgBatchesListAfterAdd();
+        dialogRef.afterClosed().subscribe(dialogResult => {
+          if (dialogResult == true) {
+
           }
-          else {
-            this.resMessage =
-            {
-              message: res.message,
-              type: BaseConstantModel.DANGER_TYPE
-            }
-          }
-        }, error => {
-          this.resMessage = {
-            message: error,
-            type: BaseConstantModel.DANGER_TYPE
+        });
+      } else if (!res.isSuccess){
+        const dialogRef = this.dialog.open(ConfirmModalComponent, {
+          maxWidth: "400px",
+          data: delDialogData
+        });
+        dialogRef.afterClosed().subscribe(dialogResult => {
+          if (dialogResult == true) {
+
           }
         });
       }
+      else {
+        this.resMessage =
+          {
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
+          }
+      }
+    }, error => {
+      this.resMessage = {
+        message: error,
+        type: BaseConstantModel.DANGER_TYPE
+      }
     });
+
+
   }
 
 }
