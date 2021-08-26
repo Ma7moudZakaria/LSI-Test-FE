@@ -18,7 +18,7 @@
         <img *ngIf='!teacherSubscripModel.avatarLink'  (click)="showDetails(teacherSubscripModel?.usrId , teacherSubscripModel?.progName)" class="img_user cursor-pointer" src="../../../../assets/images/student/user-profile.svg">
         <img *ngIf='teacherSubscripModel.avatarLink'   (click)="showDetails(teacherSubscripModel?.usrId,teacherSubscripModel?.progName)" class="img_user cursor-pointer" src="{{teacherSubscripModel.avatarLink}}" >
       <div class="mx-1 container-width">
-        <p class="number_request mb-3">{{teacherSubscripModel.programStaNum}}</p>
+        <p class="number_request mb-3">{{teacherSubscripModel.no}}</p>
         <p class="name_user bold mb-2 ellipsis p-0" title="{{teacherSubscripModel.usrNameAr}}" (click)="showDetails(teacherSubscripModel?.usrId,teacherSubscripModel?.progName)">{{teacherSubscripModel.usrNameAr}}</p>
         <!-- <p class="program_user bold mb-0 "> {{teacherSubscripModel.progName}}</p> -->
         <p class="program_user bold mb-0 ellipsis p-0" 
