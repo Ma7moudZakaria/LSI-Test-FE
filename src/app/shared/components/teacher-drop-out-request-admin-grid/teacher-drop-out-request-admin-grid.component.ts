@@ -285,6 +285,8 @@ export class TeacherDropOutRequestAdminGridComponent implements OnInit {
     cancelRequestOfTeacherEvent(teacherModel: ITeacherDropOutRequestModel) {
       this.cancelRequestOfTeacher.emit(teacherModel);
     }
-  
+  updateAllItemsChecked() {
+    this.allSelected = this.teacherDropOutRequestItems != null && this.teacherDropOutRequestItems.every(t => t.checked);
+  }
     // End Here
 }

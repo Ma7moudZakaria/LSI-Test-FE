@@ -118,4 +118,7 @@ export class StudentProgramVacationGridComponent implements OnInit {
   exportStudentCSV() {
 
   }
+  updateAllItemsChecked() {
+    this.allSelected = this.studentVacationItems != null && this.studentVacationItems.every(t => t.checked);
+  }
 }

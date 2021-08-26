@@ -178,4 +178,7 @@ export class TeacherSystemSubscriptionGridComponent implements OnInit {
   acceptTeacherSystemSubscriptionEvent(teacherSubscripModel: ITeacherSystemSubscription) {
     this.acceptTeacherSystemSubscription.emit(teacherSubscripModel);
   }
+  updateAllItemsChecked() {
+    this.allSelected = this.teacherSystemSubscriptionItems != null && this.teacherSystemSubscriptionItems.every(t => t.checked);
+  }
 }

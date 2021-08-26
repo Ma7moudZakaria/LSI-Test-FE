@@ -14,7 +14,7 @@ export class StuCardRequestComponent implements OnInit {
   @Output() rejecteStuRequest = new EventEmitter<IStudentSubscriptionModel>();
   @Output() acceptStuRequest = new EventEmitter<IStudentSubscriptionModel>();
   @Output() studentProgSubOutput = new EventEmitter<ITeacherStudentViewModel>();
-
+  @Output() updateAllItemsChecked = new EventEmitter<boolean>();
 
   @Input() typeEnum: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending;
   tabTypeSelected = StudentProgramSubscriptionStatusEnum;
@@ -36,5 +36,8 @@ export class StuCardRequestComponent implements OnInit {
   }
   acceptStudentReq() {
     this.acceptStuRequest.emit(this.studentSubscripModel);
+  }
+  updateAllItemsCheckedCall(){
+    this.updateAllItemsChecked.emit();
   }
 }

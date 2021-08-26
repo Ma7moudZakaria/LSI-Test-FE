@@ -223,4 +223,10 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   acceptAllStudentProgramSubscriptionChechedEvent() {
     this.acceptAllStudentProgramSubscriptionCheched.emit()
   }
+  updateAllItemsCheckedTeacher() {
+    this.allSelected = this.teacherItems != null && this.teacherItems.every(t => t.checked);
+  }
+  updateAllItemsCheckedStudent() {
+    this.allSelected = this.studentItems != null && this.studentItems.every(t => t.checked);
+  }
 }

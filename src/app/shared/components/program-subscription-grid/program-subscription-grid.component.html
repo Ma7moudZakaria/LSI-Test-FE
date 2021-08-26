@@ -120,6 +120,7 @@
              
             [typeEnum]='typeEnum'
                                   (studentProgSubOutput) = studentProgSubOutputEvent($event);
+                                  (updateAllItemsChecked)='updateAllItemsCheckedStudent()'
             ></app-stu-card-request>
         </mat-grid-tile>
     </ng-container>
@@ -128,7 +129,7 @@
          <app-teacher-card-request class="card" (acceptTeacherProgramSubscription)='acceptTeacherProgramSubscriptionEvent($event)' 
          (rejectTeacherProgramSubscription)='rejectTeacherProgramSubscriptionEve($event)'
                                    (teacherProgSubOutput) = teacherProgSubOutputEvent($event);
-                                   [teacherSubscripModel]='item' [typeEnum]='typeTeacheEnum'></app-teacher-card-request>
+                                   [teacherSubscripModel]='item' [typeEnum]='typeTeacheEnum' (updateAllItemsChecked)='updateAllItemsCheckedTeacher()'></app-teacher-card-request>
         </mat-grid-tile>
     </ng-container>
 </mat-grid-list>

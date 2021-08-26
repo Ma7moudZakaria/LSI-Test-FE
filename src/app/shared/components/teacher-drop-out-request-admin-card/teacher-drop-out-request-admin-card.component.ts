@@ -17,6 +17,7 @@ export class TeacherDropOutRequestAdminCardComponent implements OnInit {
   @Output() rejectTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
   @Output() acceptTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
   @Output() userIdEvent = new EventEmitter<ITeacherStudentViewModel>();
+  @Output() updateAllItemsChecked = new EventEmitter<boolean>();
 
   @Input() teacherDropOutRequestModel: ITeacherDropOutRequestModel = { totalRows: 0 };
 
@@ -57,5 +58,8 @@ export class TeacherDropOutRequestAdminCardComponent implements OnInit {
 
   acceptTeacherDropOutRequestEvent() {
     this.acceptTeacherDropOutRequest.emit(this.teacherDropOutRequestModel);
+  }
+  updateAllItemsCheckedCall(){
+    this.updateAllItemsChecked.emit();
   }
 }

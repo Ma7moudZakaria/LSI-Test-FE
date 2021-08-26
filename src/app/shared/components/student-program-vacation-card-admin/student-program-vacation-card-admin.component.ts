@@ -15,7 +15,7 @@ export class StudentProgramVacationCardAdminComponent implements OnInit {
   @Output() acceptStudentVacationRequest = new EventEmitter<IStudentProgramVacationModel>();
   @Output() studentVacationId = new EventEmitter<ITeacherStudentViewModel>();
   @Input() typeEnum: StudentProgramVacationStatusEnum = StudentProgramVacationStatusEnum.Pending;
-
+  @Output() updateAllItemsChecked = new EventEmitter<boolean>();
   tabTypeSelected = StudentProgramVacationStatusEnum;
   langEnum = LanguageEnum;
 
@@ -36,5 +36,7 @@ export class StudentProgramVacationCardAdminComponent implements OnInit {
   acceptStudentReq() {
     this.acceptStudentVacationRequest.emit(this.studentSubscripModel);
   }
-
+  updateAllItemsCheckedCall(){
+    this.updateAllItemsChecked.emit();
+  }
 }
