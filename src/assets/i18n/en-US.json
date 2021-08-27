@@ -190,7 +190,8 @@
     "DAY": "Day",
     "PUBLISH_DATE": "Publish Date",
     "START_DATE": "Start Date",
-    "NOProgramFound": "No Program Found"
+    "NOProgramFound": "No Program Found",
+    "Please_Choose_Program": "Please Choose a Program"
   },
   "PROGRAM_TABS": {
     "BASIC_INFO": "Basic Info",

@@ -51,6 +51,11 @@ export class StudentProgramVacationGridComponent implements OnInit {
     this.studentProgramVacationFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
     this.studentVacationFilterEvent.emit(this.studentProgramVacationFilterRequestModel);
   }
+  sortByProgramName() {
+    this.studentProgramVacationFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'programName' : 'programName';
+    this.studentProgramVacationFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
+    this.studentVacationFilterEvent.emit(this.studentProgramVacationFilterRequestModel);
+  }
 
   sortStudentByNameOrderType() {
     if ((this.studentProgramVacationFilterRequestModel.sortField === "userNameAr" || this.studentProgramVacationFilterRequestModel.sortField === "UserNameEn") && this.studentProgramVacationFilterRequestModel.sortOrder == 1) { return 'asend' }

@@ -68,11 +68,11 @@
     </ngb-pagination>
 
     <button  [ngClass]="{
-          'default_btn': studentProgramVacationFilterRequestModel.sortField != 'userNameAr' && studentProgramVacationFilterRequestModel.sortField != 'UserNameEn',
+          'default_btn': studentProgramVacationFilterRequestModel.sortField != 'programName' ,
            'asend_desend_btn' : this.studentProgramVacationFilterRequestModel.sortField != 'requestdate' }"
-             (click)='sortStudentByName()'>
+             (click)='sortByProgramName()'>
       {{'User_Requests.SORT_NAME' | translate}}
-      <span *ngIf='this.studentProgramVacationFilterRequestModel.sortField != "userNameAr" && this.studentProgramVacationFilterRequestModel.sortField != "UserNameEn"'>
+      <span *ngIf='this.studentProgramVacationFilterRequestModel.sortField != "programName" '>
                   <img  class="asend_btn" src="../../../../assets/images/sc-problem/Group 18449.svg">
           </span>
       <span *ngIf='sortStudentByNameOrderType() == "asend"'>

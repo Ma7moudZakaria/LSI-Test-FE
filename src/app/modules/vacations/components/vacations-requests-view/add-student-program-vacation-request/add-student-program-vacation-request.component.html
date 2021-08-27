@@ -27,7 +27,7 @@
       <label  class="label"> {{'STUDENT_VACATION.DATE_FROM' | translate}}  </label>
       <app-milady-hijri-calendar  [editcalenderType]="calenderType" (sendDate)="SendDatafrom($event)"
                                   (keypress)="$event.preventDefault()"
-                                  [hijri]="!hijri" [milady]="milady"  id="dateFrom" name="dateFrom" >
+                                  [hijri]="!hijri" [milady]="milady"  id="dateFrom" name="dateFrom" [minGreg]="vacationStartDate">
       </app-milady-hijri-calendar>
     </div>
     <div *ngIf="(addStudentVacationRequestModel.vacationStartDate == undefined && isSubmit)"
@@ -39,7 +39,7 @@
       <label  class="label"> {{'STUDENT_VACATION.DATE_TO' | translate}} </label>
       <app-milady-hijri-calendar  [editcalenderType]="calenderType" (sendDate)="SendDataTo($event)"
                                   (keypress)="$event.preventDefault()"
-                                  [hijri]="!hijri" [milady]="milady">
+                                  [hijri]="!hijri" [milady]="milady" [minGreg]="vacationEndDate">
       </app-milady-hijri-calendar>
     </div>
     <div *ngIf="(addStudentVacationRequestModel.vacationEndDate == undefined && isSubmit)"
