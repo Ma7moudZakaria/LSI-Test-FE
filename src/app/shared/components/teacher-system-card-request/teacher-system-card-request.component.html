@@ -1,7 +1,7 @@
 <div class="card-request">
     <div class="card_header">
       <section class="example-section mt-2" *ngIf="typeEnum === typeTeacheEnum.Pending ">
-        <mat-checkbox class="example-margin" [(ngModel)]="teacherSystemSubscriptionModel.checked" ></mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="teacherSystemSubscriptionModel.checked" (ngModelChange)="updateAllItemsCheckedCall()"></mat-checkbox>
       </section>
     
     <div>

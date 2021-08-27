@@ -377,7 +377,9 @@ export class StudentDropOutGridComponent implements OnInit {
   cancelRequestOfStudentEvent(studentModel: IStudentDropOutRequestsFilterResponseModel) {
     this.cancelRequestOfStudent.emit(studentModel);
   }
-  
+  updateAllItemsChecked() {
+    this.allSelected = this.studentDropOutRequestAdminItems != null && this.studentDropOutRequestAdminItems.every(t => t.checked);
+  }
   // End Here
 
 }

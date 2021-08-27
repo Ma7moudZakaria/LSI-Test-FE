@@ -17,6 +17,7 @@ export class TeacherSystemCardRequestComponent implements OnInit {
 
   @Output() rejectTeacherSystemSubscription = new EventEmitter<ITeacherSystemSubscription>();
   @Output() acceptTeacherSystemSubscription = new EventEmitter<ITeacherSystemSubscription>();
+  @Output() updateAllItemsChecked = new EventEmitter<boolean>();
 
   @Input() teacherSystemSubscriptionModel: ITeacherSystemSubscription = { totalRows : 0} ;
 
@@ -52,5 +53,8 @@ export class TeacherSystemCardRequestComponent implements OnInit {
   
   acceptTeacherSystemSubscriptionEvent(){
     this.acceptTeacherSystemSubscription.emit(this.teacherSystemSubscriptionModel);
+  }
+  updateAllItemsCheckedCall(){
+    this.updateAllItemsChecked.emit();
   }
 }

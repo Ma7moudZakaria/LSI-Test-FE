@@ -1,7 +1,7 @@
 <div class="card-request">
     <div class="card_header">
       <section class="example-section mt-2"  *ngIf='typeDropOutRequestEnum.Pending === typeEnum'>
-        <mat-checkbox class="example-margin"  [(ngModel)]="teacherDropOutRequestModel.checked" ></mat-checkbox>
+        <mat-checkbox class="example-margin"  [(ngModel)]="teacherDropOutRequestModel.checked" (ngModelChange)="updateAllItemsCheckedCall()"></mat-checkbox>
       </section>
     <div>
         <span> {{'STUDENT_SUBSCRIBERS.TIME' | translate}} </span>        

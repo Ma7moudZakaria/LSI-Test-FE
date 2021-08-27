@@ -1,7 +1,7 @@
 <div class="card-request" [ngClass]="{'h_accepted': typeEnum !== tabTypeSelected.Pending}">
   <div class="card_header align-items-center">
     <section class="example-section mt-2">
-      <mat-checkbox [(ngModel)]="studentSubscripModel.checked" class="example-margin"></mat-checkbox>
+      <mat-checkbox [(ngModel)]="studentSubscripModel.checked" (ngModelChange)="updateAllItemsCheckedCall()" class="example-margin"></mat-checkbox>
     </section>
 
     <div>

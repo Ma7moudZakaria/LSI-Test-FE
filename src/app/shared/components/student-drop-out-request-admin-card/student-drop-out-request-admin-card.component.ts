@@ -15,8 +15,9 @@ export class StudentDropOutRequestAdminCardComponent implements OnInit {
   @Output() rejectStudentDropOutAdminRequest = new EventEmitter<IStudentDropOutRequestsFilterResponseModel>();
   @Output() acceptStudentDropOutAdminRequest = new EventEmitter<IStudentDropOutRequestsFilterResponseModel>();
   @Output() studentIdToGrid = new EventEmitter<ITeacherStudentViewModel>();
-  @Input() studentDropOutRequestFilterRequestAdminModel: IStudentDropOutRequestsFilterResponseModel = { totalRows: 0 };
+  @Output() updateAllItemsChecked = new EventEmitter<boolean>();
 
+  @Input() studentDropOutRequestFilterRequestAdminModel: IStudentDropOutRequestsFilterResponseModel = { totalRows: 0 };
   @Input() typeEnum: StudentDropOutRequestStatusEnum = StudentDropOutRequestStatusEnum.Pending;
   typeDropOutRequestEnum = StudentDropOutRequestStatusEnum;
 
@@ -52,5 +53,7 @@ export class StudentDropOutRequestAdminCardComponent implements OnInit {
   acceptStudentAdminDropOutRequestEvent() {
     this.acceptStudentDropOutAdminRequest.emit(this.studentDropOutRequestFilterRequestAdminModel);
   }
-
+  updateAllItemsCheckedCall(){
+    this.updateAllItemsChecked.emit(true);
+  }
 }

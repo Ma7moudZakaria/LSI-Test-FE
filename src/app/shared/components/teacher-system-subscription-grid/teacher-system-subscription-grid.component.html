@@ -63,6 +63,7 @@
                                           (rejectTeacherSystemSubscription)="rejectTeacherSystemSubscriptionEvent($event)"
                                           (acceptTeacherSystemSubscription)="acceptTeacherSystemSubscriptionEvent($event)"
                                           [typeEnum]='typeEnum' (teacherJoinInput)="teacherJoinToGrid($event)"
+                                          (updateAllItemsChecked)='updateAllItemsChecked()'
          ></app-teacher-system-card-request>
         </mat-grid-tile>
     </ng-container>

@@ -16,6 +16,7 @@ export class TeacherCardRequestComponent implements OnInit {
   @Output() rejectTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
   @Output() acceptTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
   @Output() teacherProgSubOutput = new EventEmitter<ITeacherStudentViewModel>();
+  @Output() updateAllItemsChecked = new EventEmitter<boolean>();
 
   @Input() teacherSubscripModel: ITeacherProgramSubscriptionModel = {totalRows:0}
   @Input() typeEnum: TeacheProgramSubscriptionStatusEnum = TeacheProgramSubscriptionStatusEnum.Pending;
@@ -45,5 +46,7 @@ export class TeacherCardRequestComponent implements OnInit {
   acceptTeacherProgramSubscriptionEvent(){
     this.acceptTeacherProgramSubscription.emit(this.teacherSubscripModel);
   }
-
+  updateAllItemsCheckedCall(){
+    this.updateAllItemsChecked.emit();
+  }
 }
