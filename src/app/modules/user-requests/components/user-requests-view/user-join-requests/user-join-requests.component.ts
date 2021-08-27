@@ -19,13 +19,6 @@ import {ITeacherStudentViewModel} from '../../../../../core/interfaces/teacher-d
   styleUrls: ['./user-join-requests.component.scss']
 })
 export class UserJoinRequestsComponent implements OnInit {
-
-  @Output() itemStuReq = new EventEmitter<IStudentSubscriptionModel>();
-  @Output() openAdvancedSearch = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
-
-  // @Output() closeAdvancedSearch = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
-
-  @Output() advancedSearchObject = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
   @Input() programsFilter: IStudentProgramSubscription = {  skip: 0, take: 9, sortField: '', sortOrder: 1 };
   currentUser: IUser |undefined;
   typeEnum: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending;
@@ -61,16 +54,7 @@ export class UserJoinRequestsComponent implements OnInit {
     this.progSubsService.getstudentProgramsSubscriptions(this.programsFilter).subscribe(res => {
       if (res.isSuccess) {
         this.studProgsSubsItems = res.data;
-
-        // this.studProgsSubsItems?.forEach(function (item) {
-        //   item.requestDate = item.requestDate ? new Date(item.requestDate).toDateString(): '';
-        // });
         this.totalCount = res.count ? res.count : 0;
-        // if (this.programsFilter.skip > 0 && (!this.studProgsSubsItems || this.studProgsSubsItems.length === 0)) {
-        //   this.programsFilter.page -= 1;
-        //   this.programsFilter.skip = (this.programsFilter.page - 1) * this.programsFilter.take;
-        //   this.getStudentProgramSubscriptionsFilter();
-        // }
       }
       else {
 
@@ -109,8 +93,6 @@ export class UserJoinRequestsComponent implements OnInit {
     this.programsFilter.skip = 0;
     this.programsFilter.take = 9;
     this.programsFilter.sortField = '';
-    // this.filter = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
-    // this.closeAdvancedSearch.emit(this.filter)
   }
 }
 
