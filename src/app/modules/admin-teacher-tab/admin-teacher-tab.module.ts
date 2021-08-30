@@ -9,13 +9,21 @@ import { AdminTeacherProgramComponent } from './admin-teacher-tab/admin-teacher-
 import { AdminTeacherDropOutComponent } from './admin-teacher-tab/admin-teacher-tabs-details/admin-teacher-drop-out/admin-teacher-drop-out.component';
 import { AdminTeacherBasicInfoComponent } from './admin-teacher-tab/admin-teacher-tabs-details/admin-teacher-basic-info/admin-teacher-basic-info.component';
 import { AdminTeacherTabComponent } from './admin-teacher-tab/admin-teacher-tab.component';
+import {TranslateModule} from '@ngx-translate/core';
+import {FormsModule} from '@angular/forms';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {SharedModule} from '../../shared/shared.module';
 
 
 @NgModule({
   declarations: [AdminTeacherListComponent, AdminTeacherTabsDetailsComponent, AdminTeacherJoinRequestComponent, AdminTeacherProgramComponent, AdminTeacherDropOutComponent, AdminTeacherBasicInfoComponent, AdminTeacherTabComponent],
   imports: [
     CommonModule,
-    AdminTeacherTabRoutingModule
+    AdminTeacherTabRoutingModule,
+    TranslateModule,
+    FormsModule,
+    MatCheckboxModule,
+    SharedModule
   ]
 })
 export class AdminTeacherTabModule { }
