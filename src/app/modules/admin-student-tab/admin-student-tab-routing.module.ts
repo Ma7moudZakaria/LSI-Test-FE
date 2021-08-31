@@ -4,11 +4,10 @@ import { AdminStudentComponent } from './components/admin-student/admin-student.
 
 const routes: Routes = [
   {
-    path: '',
-    children: [
-      { path: 'admin-messaging-view', component: AdminStudentComponent },
-    ],
+    path: '', component: AdminStudentComponent
   },
+
+
 
 ];
 
