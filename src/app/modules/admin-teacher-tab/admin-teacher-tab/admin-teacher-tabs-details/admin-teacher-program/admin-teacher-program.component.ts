@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminTeacherProgramComponent implements OnInit {
 
+
+  showAddProgram: boolean =false;
   constructor() { }
 
   ngOnInit(): void {

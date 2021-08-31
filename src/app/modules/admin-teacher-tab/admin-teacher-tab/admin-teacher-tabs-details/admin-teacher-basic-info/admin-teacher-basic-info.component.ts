@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-admin-teacher-basic-info',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminTeacherBasicInfoComponent implements OnInit {
 
+  @Output() adminViewOutput:boolean | undefined;
+  adminView: any;
   constructor() { }
 
   ngOnInit(): void {

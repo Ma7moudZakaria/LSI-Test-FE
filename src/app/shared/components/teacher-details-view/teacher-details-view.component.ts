@@ -23,7 +23,8 @@ export class TeacherDetailsViewComponent implements OnInit {
   teacherProfileDetails = {} as ITeacherProfile;
   langEnum = LanguageEnum;
   starsSelected=5;
-  adminView :boolean = false;
+
+  @Input() adminView :boolean = false;
   constructor(
     private teacherProfileService: TeacherProfileService,
     public translate: TranslateService
