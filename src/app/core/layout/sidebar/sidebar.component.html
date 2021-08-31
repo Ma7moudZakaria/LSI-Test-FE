@@ -39,7 +39,7 @@
                         <span class="container__navigation__title">{{'SIDENAVBAR.VACATION_REQUEST' | translate}}</span>
                     </a>
                 </li>
-                <li onclick="" class="nav-item" routerLinkActive="active">
+                <!-- <li onclick="" class="nav-item" routerLinkActive="active">
                     <a>
                         <img src="../../../../assets/images/sidebar/student-icon.png">
 
@@ -51,6 +51,20 @@
                         <img src="../../../../assets/images/sidebar/teacher-icon.png">
                        
                         <span class="container__navigation__title">{{'SIDENAVBAR.WITHDRAWAL_REQUESTS' | translate}}</span>
+                    </a>
+                </li> -->
+                <li onclick="" class="nav-item" [routerLink]="['/admin-student']" routerLinkActive="active">
+                    <a>
+                        <img src="../../../../assets/images/sidebar/student-icon.png">
+
+                         <span class="container__navigation__title">{{'SIDENAVBAR.STUDENT' | translate}}</span>
+                    </a>
+                </li>
+                <li onclick="" class="nav-item" [routerLink]="['/admin-taecher']" routerLinkActive="active">
+                    <a>
+                        <img src="../../../../assets/images/sidebar/teacher-icon.png">
+                       
+                        <span class="container__navigation__title">{{'SIDENAVBAR.TEACHER' | translate}}</span>
                     </a>
                 </li>
                 <li onclick="" class="nav-item" routerLinkActive="active">

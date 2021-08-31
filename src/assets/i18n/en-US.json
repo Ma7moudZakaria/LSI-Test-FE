@@ -533,7 +533,9 @@
     "LONG_DESCRIPTION_EN_MAX_LENGHT": "English long description must be less than or equal 1000 character",
     "PROG_FOR_SUBSCRIPTION": "Subscription",
     "VACATION": "Vacations",
-    "CHAT":"Chat"
+    "CHAT":"Chat",
+    "STUDENT": "Students",
+    "TEACHER": "Teachers"
   },
   "VIEW_USER_PROFILE_PG": {
     "PERSONAL_PROFILE": "Personal Profile",
@@ -890,5 +892,14 @@
     "REQUEST_REASON":"Request Reason",
     "NO_DATA":"No Data",
     "REJECT_REASON":"Reject Reason"
+  },
+  "TEACHER_TAP": {
+    "TEACHER_NAME": "أسم المعلم",
+    "PROGRAM": "البرنامج",
+    "EMAIL": "البريد اللكتروني",
+    "SUBSCRIPTION_DATE": "تاريخ الاشتراك",
+    "BASIC_INFO": "Basic info",
+    "DROP_OUT": "drop out requests",
+    "JOIN": "Join Requests"
   }
 }

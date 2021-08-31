@@ -532,7 +532,9 @@
     "WORK_AGENDA": "اجندة العمل",
     "PROG_FOR_SUBSCRIPTION": "إشتراك",
     "VACATION": "الاجازات",
-    "CHAT":"محادثة"
+    "CHAT":"محادثة",
+    "STUDENT": "الطلاب",
+    "TEACHER": "المعلمين"
   },
   "VIEW_USER_PROFILE_PG": {
     "PERSONAL_PROFILE": "الملف الشخصي",
@@ -888,5 +890,14 @@
     "REQUEST_REASON":"سبب الطلب",
     "NO_DATA":"لا يوجد",
     "REJECT_REASON":"سبب الرفض"
+  },
+  "TEACHER_TAP": {
+    "TEACHER_NAME": "أسم المعلم",
+    "PROGRAM": "البرنامج",
+    "EMAIL": "البريد اللكتروني",
+    "SUBSCRIPTION_DATE": "تاريخ الاشتراك",
+    "BASIC_INFO": "البيانات الاساسيه",
+    "DROP_OUT": "طلبات الانسحاب",
+    "JOIN": "طلبات الانضمام"
   }
 }

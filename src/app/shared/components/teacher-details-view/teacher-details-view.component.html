@@ -51,7 +51,22 @@
           </div>
         </div>
         <div >
-          <h6 class="user__back" (click)="hideUserDetailsView()">
+          <div *ngIf="adminView" class="admin__view">
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="col-.5  chicx_box">
+                <label class="switch">
+                  <input type="checkbox" (change)="onCheckboxChange()" [(ngModel)]='toggel'>
+                  <span class="slider round"></span>
+                </label>
+
+              </div>
+              <div class="d-flex align-items-center justify-content-between " >
+              <span class="status active"></span>
+              <h6 class="status-text">نشط</h6>
+            </div>
+            </div>
+          </div>
+          <h6 *ngIf="!adminView" class="user__back" (click)="hideUserDetailsView()">
             {{'UPDATE_USER_PG.BACK' | translate}}
             <i class="fas fa-arrow-left " [ngClass]="translate.currentLang === langEnum.en ?'fa-flip-horizontal': ''"></i></h6>
         </div>

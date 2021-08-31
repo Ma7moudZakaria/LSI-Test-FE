@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12 pl-0">
+      <app-admin-teacher-program-list></app-admin-teacher-program-list>
+    </div>
+    <div class="col-lg-8 col-md-8 col-sm-12 ">
+      <app-admin-teacher-program-details></app-admin-teacher-program-details>
+    </div>
+
+  </div>
+
+  <div class="overlay" *ngIf="showAddProgram">
+    <app-admin-teacher-add-program></app-admin-teacher-add-program>
+  </div>
+
+</div>
