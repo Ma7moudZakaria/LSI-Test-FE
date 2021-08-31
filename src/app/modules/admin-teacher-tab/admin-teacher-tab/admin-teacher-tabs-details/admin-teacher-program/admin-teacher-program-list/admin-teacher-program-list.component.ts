@@ -7,6 +7,7 @@ import {ScientificMaterialService} from '../../../../../../core/services/scienti
 import {TranslateService} from '@ngx-translate/core';
 import {BaseResponseModel} from '../../../../../../core/ng-model/base-response-model';
 import {BaseConstantModel} from '../../../../../../core/ng-model/base-constant-model';
+import {IStudentSubscriptionPredefinedConditionResponse} from '../../../../../../core/interfaces/student-program-subscription-interfaces/ipredefined-condtion-subscription-model';
 
 @Component({
   selector: 'app-admin-teacher-program-list',
@@ -16,6 +17,8 @@ import {BaseConstantModel} from '../../../../../../core/ng-model/base-constant-m
 export class AdminTeacherProgramListComponent implements OnInit {
   programs: any;
   @Output() selectedProgram =  new EventEmitter<IprogramsModel>();
+  @Output() showAddProgram = new EventEmitter<boolean>();
+
   langEnum = LanguageEnum;
   resMessage: BaseMessageModel = {};
   programFilterByName: IProgramFilterByNameRequest = {};
@@ -28,7 +31,9 @@ export class AdminTeacherProgramListComponent implements OnInit {
 
   }
 
-
+  showOverlay(){
+    this.showAddProgram.emit(true);
+  }
 
 
 }

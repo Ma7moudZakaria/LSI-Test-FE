@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component,EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {IStudentSubscriptionPredefinedConditionResponse} from '../../../../../../core/interfaces/student-program-subscription-interfaces/ipredefined-condtion-subscription-model';
 
 @Component({
   selector: 'app-admin-teacher-add-program',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminTeacherAddProgramComponent implements OnInit {
 
+  @Input() predefinedCondition: IStudentSubscriptionPredefinedConditionResponse | undefined;
+  @Output() closeOverlay = new EventEmitter<boolean>();
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log("programPredefinedCondtion", this.predefinedCondition)
   }
-
+  closeForm() {
+    this.closeOverlay.emit(false)
+  }
 }

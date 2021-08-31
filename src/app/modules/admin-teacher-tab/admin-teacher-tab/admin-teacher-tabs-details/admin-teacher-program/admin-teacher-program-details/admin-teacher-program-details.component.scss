@@ -1,4 +1,6 @@
 @import "../../../../../../../assets/scss/buttons";
+@import "../../../../../../../assets/scss/variables";
+@import "../../../admin-teacher-list/admin-teacher-list.component";
 .details{
   background: #fff 0% 0% no-repeat padding-box;
   border-radius: 19px;
@@ -7,6 +9,92 @@
   height: 78vh;
   margin-top: 1rem;
   &__image{
+    width: 135px;
+    height: 135px;
+    border-radius: 12px;
+  }
+  &__status{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &--icon{
+      width: 13px;
+      height: 13px;
+      background: #00C213;
+      border-radius: 50%;
+      margin: 0 12px;
+    }
+    &--text{
+      font-size: .78rem;
+      margin: 0;
+      color: #00C213;
+    }
+  }
+  &__name{
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+    text-align: right;
+  }
+  &__payment{
+    font-size: .9rem;
+    color: $labels;
+    margin: 0 15px;
+  }
+  &__time{
+    text-align: center;
+    margin-top: 32px;
+    &--title{
+      font-size: .75rem;
+      color: $labels;
+    }
+    &--num{
+      font-size: .93rem;
+      color: $user-color;
+      font-weight: bold;
+    }
+  }
+  &__title{
+    text-align: right;
+    color: $user-color;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #8080803d;
+    margin-top: 35px;
+    padding-bottom: 8px;
 
+  }
+}
+.internal_scroll_list_group{
+  overflow-y: auto;
+  height: 28vh;
+}
+.user{
+  height: 74px;
+}
+.user__name{
+  font-size: .9rem;
+}
+.teacher-stu-detail{
+  .title{
+    font-size: .6rem;
+    color: $edit;
+    margin: 0;
+  }
+  .num{
+    font-size: .6rem;
+    color: $edit;
+    font-weight: bold;
+    margin: 0;
+  }
+}
+
+.user.active{
+  .teacher-stu-detail{
+    .title{
+      color: #ffffff;
+    }
+    .num{
+      color: #ffffff;
+    }
   }
 }
