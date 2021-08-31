@@ -711,6 +711,17 @@ display: none;
       transform: translate(50px, 38px)!important;
       transition: all linear;
     }
+.admin_user_paciker
+{
+    .HijriGregorianDatePicker ngb-datepicker.dropdown-menu, 
+    .HijriGregorianDatePicker hijri-date-picker ngb-datepicker.dropdown-menu {
+      // transform: translate(50px, 38px) ; 
+      transition: all linear;
+      transform: scale(0.9) !important;
+      }
+}
+  
+
   // mat-dialog-container
 .mat-dialog-container {
   direction: initial;
