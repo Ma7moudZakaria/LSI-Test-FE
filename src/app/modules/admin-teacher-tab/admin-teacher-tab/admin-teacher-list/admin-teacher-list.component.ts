@@ -1,18 +1,8 @@
 /* tslint:disable */
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
-import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
-import { ScientificMaterialService } from 'src/app/core/services/scientific-material-services/scientific-material.service';
-import {  Router } from '@angular/router';
-import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
-
-import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
-import {ProgramCategoriesService} from '../../../../core/services/program-categories-services/program-categories.service';
 import {DateFormatterService} from 'ngx-hijri-gregorian-datepicker';
 import {BaseSelectedDateModel} from '../../../../core/ng-model/base-selected-date-model';
-import {ITeacherProgramSubscriptionFilterRequestModel} from '../../../../core/interfaces/teacher-program-subscription-interfaces/iteacher-program-subscription-filter-request-model';
-import {TeacheProgramSubscriptionStatusEnum} from '../../../../core/enums/teacher-subscription-enums/teache-program-subscription-status-enum.enum';
 
 @Component({
   selector: 'app-admin-teacher-list',
@@ -20,12 +10,8 @@ import {TeacheProgramSubscriptionStatusEnum} from '../../../../core/enums/teache
   styleUrls: ['./admin-teacher-list.component.scss']
 })
 export class AdminTeacherListComponent implements OnInit {
-  @Input() teacherFilterAdvancedSearch: ITeacherProgramSubscriptionFilterRequestModel = { statusNum: TeacheProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
-
-  langEnum = LanguageEnum;
-  resMessage: BaseMessageModel = {};
-  selectedIndex = 0;
   advancedSearch: boolean = true;
+  starsSelected = 4.5;
   maxGregDate = this.dateFormatterService.GetTodayGregorian()
   datafromBinding: any
   dataToBinding: any
@@ -33,32 +19,24 @@ export class AdminTeacherListComponent implements OnInit {
   selectedDateType: any;
   hijri: boolean = false;
   milady: boolean = false;
-  constructor(private scientifcMaterialService: ScientificMaterialService,
-              private programCategoriesService: ProgramCategoriesService,
-              public translate: TranslateService,
-              private router: Router,
-              private lookupService: LookupService,
-              private alert: AlertifyService,
-              private dateFormatterService: DateFormatterService
+  cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  selectedIndex = 0;
+
+  constructor(
+    public translate: TranslateService,
+    private dateFormatterService: DateFormatterService
+
   ) { }
 
   ngOnInit(): void {
-
   }
-
-
-  //  advanced search
 
   ToggelAdvancSearch() {
     this.advancedSearch = !this.advancedSearch
   }
-
-
-
-
-
-  // end advanced search
-
+  loadProgramMaterial() { }
+  submitSearch() { }
+  resetSearch() { }
   SendDatafrom(data: any) {
     //
     // // console.log("data 777sent", data)
@@ -84,5 +62,5 @@ export class AdminTeacherListComponent implements OnInit {
     // // this.filter.toDate?.setDate(data.selectedDateValue);
 
   }
-}
 
+}

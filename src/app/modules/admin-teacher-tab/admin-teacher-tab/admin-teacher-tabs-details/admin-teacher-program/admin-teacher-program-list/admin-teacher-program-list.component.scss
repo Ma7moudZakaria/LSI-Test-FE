@@ -1,10 +1,10 @@
 
 .list-group_program-list{
-  background: #FBFBFB 0% 0% no-repeat padding-box;
+  background: #fff 0% 0% no-repeat padding-box;
   border-radius: 19px;
   opacity: 1;
   padding: 2rem;
-  height : 85vh;
+  height : 78vh;
   margin-top: 1rem;
 
   .internal_scroll_list_group:lang(ar) {
@@ -28,7 +28,9 @@
 
   margin-right: 0rem;
 }
-
+.list-group-item{
+  box-shadow: 0px 3px 15px #0000000D;
+}
 .list-group_program-list > p{
   font-family: Almarai-Bold;
   font-size: 20px;
