@@ -62,9 +62,6 @@ export class ProgramDayTaskDailyTestComponent implements OnInit {
 
     }
   }
-
-
-
   /////recording/////
   saveVoiceUrl(event: any) {
     this.voiceUrl = event;

@@ -7,10 +7,14 @@ import { StudentProgramsComponent } from './student-program-wrapper/student-prog
 import { HonoraryBoardComponent } from './student-program-wrapper/honorary-board/honorary-board.component';
 import { StudentProgramWrapperComponent } from './student-program-wrapper/student-program-wrapper.component';
 import { StudentProgramsRoutingModule } from './student-programs-routing.module';
+import { StudentProgDutiesComponent } from './student-prog-duties/student-prog-duties.component';
+import { StudentProgramDutyDaysComponent } from './student-prog-duties/student-program-duty-days/student-program-duty-days.component';
+import { StudentProgramDutyDaysTaskComponent } from './student-prog-duties/student-program-duty-days-task/student-program-duty-days-task.component';
+import { StudentProgramDutyDaysTaskDetailsComponent } from './student-prog-duties/student-program-duty-days-task-details/student-program-duty-days-task-details.component';
 
 
 @NgModule({
-  declarations: [StudentProgramsComponent, HonoraryBoardComponent, StatisticsComponent, StudentProgramWrapperComponent],
+  declarations: [StudentProgramsComponent, HonoraryBoardComponent, StatisticsComponent, StudentProgramWrapperComponent, StudentProgDutiesComponent, StudentProgramDutyDaysComponent, StudentProgramDutyDaysTaskComponent, StudentProgramDutyDaysTaskDetailsComponent],
   imports: [
     CommonModule, SharedModule,
     StudentProgramsRoutingModule
