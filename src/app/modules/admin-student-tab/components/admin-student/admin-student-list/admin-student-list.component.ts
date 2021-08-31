@@ -19,7 +19,9 @@ export class AdminStudentListComponent implements OnInit {
   selectedDateType: any;
   hijri: boolean = false;
   milady: boolean = false;
-  cards = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  selectedIndex = 0;
+
   constructor(
     public translate: TranslateService,
     private dateFormatterService: DateFormatterService
@@ -32,6 +34,7 @@ export class AdminStudentListComponent implements OnInit {
   ToggelAdvancSearch() {
     this.advancedSearch = !this.advancedSearch
   }
+  loadProgramMaterial() { }
   submitSearch() { }
   resetSearch() { }
   SendDatafrom(data: any) {

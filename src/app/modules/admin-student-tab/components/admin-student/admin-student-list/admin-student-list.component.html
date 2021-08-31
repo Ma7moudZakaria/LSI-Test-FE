@@ -6,9 +6,6 @@
   
     <app-search-input ></app-search-input>
   
-  
-  
-  
     <a class="advanced_search" (click)="ToggelAdvancSearch()">
       {{'PROGRAMS_LIST.ADVANCED_SEARCH' | translate}}
   
@@ -91,9 +88,8 @@
     <!-- IN CARDS  -->
   
     <ng-container *ngIf="!advancedSearch">
-        <div class="user_cards" >
-            <ng-container *ngFor="let card of cards">
-                <div class="user active">
+        <!-- <div class="user_cards" >
+                <div class="user " *ngFor="let card of cards">
                     <img src="../../../../../assets/images/Profile.svg" class="user__image">
                     <h2 class="user__name">سيف الدين ابراهيم</h2>
             
@@ -103,9 +99,26 @@
                     </ng-template>
                     </ngb-rating>
                 </div>
-        </ng-container>
-    </div>
+          </div> -->
+
+          <div class="internal_scroll_list_group">
+            <a class="list-group-item  d-flex user" *ngFor="let program  of cards; let i = index" 
+                [class.active]="selectedIndex === i" 
+                (click)="loadProgramMaterial();selectedIndex=i">
+                   
+                <img src="../../../../../assets/images/Profile.svg" class="user__image">
+                <h2 class="user__name">سيف الدين ابراهيم</h2>
+        
+                <ngb-rating [(rate)]="starsSelected" [max]="5" [readonly]="true">
+                <ng-template let-fill="fill" let-index="index">
+                    <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                </ng-template>
+                </ngb-rating> 
+            </a>
+        </div>
+        
     </ng-container>
   
+
   </div>
   

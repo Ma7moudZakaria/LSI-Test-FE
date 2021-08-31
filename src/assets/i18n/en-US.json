@@ -533,7 +533,7 @@
     "LONG_DESCRIPTION_EN_MAX_LENGHT": "English long description must be less than or equal 1000 character",
     "PROG_FOR_SUBSCRIPTION": "Subscription",
     "VACATION": "Vacations",
-    "CHAT":"Chat",
+    "CHAT": "Chat",
     "STUDENT": "Students",
     "TEACHER": "Teachers"
   },
@@ -828,7 +828,7 @@
     "MEETING": "Meeting",
     "REJECT": "Reject",
     "ACCEPT": "Accept",
-    "REJECT_REASON":"Reject Reason"
+    "REJECT_REASON": "Reject Reason"
   },
   "STUDENT_VACATION": {
     "NEW_VACATION_REQUESTS": "New requests",
@@ -864,7 +864,7 @@
     "NO_TEACHERS": "No Teachers Subscribed",
     "NO_STUDENTS": "No Students Subscribed",
     "NO_PROGRAMS": "No Programs",
-    "REQUIRED" : "Batch name is required"
+    "REQUIRED": "Batch name is required"
   },
   "TEACHER_STUDENT_FOR_DETAILS": {
     "PROG_IDEA": "Program Idea",
@@ -888,18 +888,19 @@
     "AR_NAME_CATEGORY": "Category name in arabic",
     "EN_NAME_CATEGORY": "Category name in english"
   },
-  "GENERAL_DROP_OUT_REQUEST":{
-    "REQUEST_REASON":"Request Reason",
-    "NO_DATA":"No Data",
-    "REJECT_REASON":"Reject Reason"
+  "GENERAL_DROP_OUT_REQUEST": {
+    "REQUEST_REASON": "Request Reason",
+    "NO_DATA": "No Data",
+    "REJECT_REASON": "Reject Reason"
   },
   "TEACHER_TAP": {
-    "TEACHER_NAME": "أسم المعلم",
-    "PROGRAM": "البرنامج",
-    "EMAIL": "البريد اللكتروني",
-    "SUBSCRIPTION_DATE": "تاريخ الاشتراك",
+    "TEACHER_NAME": "Teacher Name",
+    "PROGRAM": "Programs",
+    "EMAIL": "Email",
+    "SUBSCRIPTION_DATE": "Subscription date",
     "BASIC_INFO": "Basic info",
     "DROP_OUT": "drop out requests",
-    "JOIN": "Join Requests"
+    "JOIN": "Join Requests",
+    "VACATION": "Vacation"
   }
 }
