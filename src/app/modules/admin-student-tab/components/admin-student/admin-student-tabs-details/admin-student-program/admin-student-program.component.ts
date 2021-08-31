@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-student-program.component.scss']
 })
 export class AdminStudentProgramComponent implements OnInit {
+  showAddProgram: boolean = false;
 
   constructor() { }
 

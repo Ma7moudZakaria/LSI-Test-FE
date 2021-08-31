@@ -14,9 +14,13 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { SharedModule } from '../../shared/shared.module';
+import { AdminStudentProgramListComponent } from './components/admin-student/admin-student-tabs-details/admin-student-program/admin-student-program-list/admin-student-program-list.component';
+import { AdminStudentProgramTaskComponent } from './components/admin-student/admin-student-tabs-details/admin-student-program/admin-student-program-task/admin-student-program-task.component';
+import { AdminStudentProgramDailyTaskComponent } from './components/admin-student/admin-student-tabs-details/admin-student-program/admin-student-program-daily-task/admin-student-program-daily-task.component';
+import { AdminStudentProgramOverlayAddprogramComponent } from './components/admin-student/admin-student-tabs-details/admin-student-program/admin-student-program-overlay-addprogram/admin-student-program-overlay-addprogram.component';
 
 @NgModule({
-  declarations: [AdminStudentComponent, AdminStudentListComponent, AdminStudentTabsDetailsComponent, AdminStudentProgramComponent, AdminStudentDropOutComponent, AdminStudentBasicInfoComponent, AdminStudentVacationRequestComponent, AdminStudentJoinRequestComponent],
+  declarations: [AdminStudentComponent, AdminStudentListComponent, AdminStudentTabsDetailsComponent, AdminStudentProgramComponent, AdminStudentDropOutComponent, AdminStudentBasicInfoComponent, AdminStudentVacationRequestComponent, AdminStudentJoinRequestComponent, AdminStudentProgramListComponent, AdminStudentProgramTaskComponent, AdminStudentProgramDailyTaskComponent, AdminStudentProgramOverlayAddprogramComponent],
   imports: [
     CommonModule,
     AdminStudentTabRoutingModule,

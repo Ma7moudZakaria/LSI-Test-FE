@@ -1,0 +1,15 @@
+<div class="list-group list-group_program-list">
+    <p class="mb-4">{{'PROGRAMS_LIST.PROGRAMS' | translate}}</p>
+  
+    <app-search-input ></app-search-input>
+    <div class="internal_scroll_list_group">
+      <a class="list-group-item  d-flex" *ngFor="let program  of programs; let i = index"
+         [class.active]="selectedIndex === i">
+        <span>program</span>
+      </a>
+    </div>
+    <!-- <div *ngIf="resMessage.message" class="alert alert-{{ resMessage.type }} my-4 py-2">
+      {{ resMessage.message }}
+    </div> -->
+  </div>
+  

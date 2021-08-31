@@ -88,19 +88,7 @@
     <!-- IN CARDS  -->
   
     <ng-container *ngIf="!advancedSearch">
-        <!-- <div class="user_cards" >
-                <div class="user " *ngFor="let card of cards">
-                    <img src="../../../../../assets/images/Profile.svg" class="user__image">
-                    <h2 class="user__name">سيف الدين ابراهيم</h2>
-            
-                    <ngb-rating [(rate)]="starsSelected" [max]="5" [readonly]="true">
-                    <ng-template let-fill="fill" let-index="index">
-                        <span class="star" [class.filled]="fill === 100">&#9733;</span>
-                    </ng-template>
-                    </ngb-rating>
-                </div>
-          </div> -->
-
+    
           <div class="internal_scroll_list_group">
             <a class="list-group-item  d-flex user" *ngFor="let program  of cards; let i = index" 
                 [class.active]="selectedIndex === i" 

@@ -1,0 +1,66 @@
+@import '../admin-student-program-list/admin-student-program-list.component.scss';
+
+.list-group-item
+{
+    &:lang(ar){
+        text-align: right;
+    }
+    &:lang(en){
+        text-align: left;
+    }
+
+    .selected_data{
+        font-size: 0.85rem;
+        color: #C1C7D0;
+        font-family:Almarai-Regular;
+        
+       }  
+        .selected_day{
+               color: #8E2520;
+               font-size: 1rem;
+               font-family:Almarai-Bold;
+           }
+           .count{
+            background: #fff;
+            color: #8E2520;
+            padding: 0.5rem;
+            border-radius: 50%;
+            height: 30px;
+            width: 30px;
+            font-size: 1rem;
+            top: 50%;
+            text-align: center; 
+           }
+           .edu_leval{
+               font-size: 0.75rem;
+               color: #fff;
+               font-family:Almarai-Regular;
+           }
+           .value_progressbar{
+            font-size:0.85rem;
+            color: #fff;
+            font-family:Almarai-Bold;
+           }
+}
+
+.list-group-item.active{
+    .selected_data{
+        color: #8E2520;
+        
+       }  
+        .selected_day{
+              
+               color: #C1C7D0;
+           }
+           .count{
+            background: #8E2520;
+            color: #fff;
+           
+           }
+           .edu_leval{
+               color: #8E2520;
+           }
+           .value_progressbar{
+            color: #8E2520;
+           }
+}
