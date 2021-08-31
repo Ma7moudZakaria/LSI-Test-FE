@@ -532,7 +532,7 @@
     "WORK_AGENDA": "اجندة العمل",
     "PROG_FOR_SUBSCRIPTION": "إشتراك",
     "VACATION": "الاجازات",
-    "CHAT":"محادثة",
+    "CHAT": "محادثة",
     "STUDENT": "الطلاب",
     "TEACHER": "المعلمين"
   },
@@ -826,7 +826,7 @@
     "MEETING": "المقابلة",
     "REJECT": "رفض",
     "ACCEPT": "قبول",
-    "REJECT_REASON":"سبب الرفض"
+    "REJECT_REASON": "سبب الرفض"
   },
   "STUDENT_VACATION": {
     "NEW_VACATION_REQUESTS": "الطلبات الجديدة",
@@ -862,7 +862,7 @@
     "NO_TEACHERS": "لا يوجد مدرسين مشتركين",
     "NO_STUDENTS": "لا يوجد طلاب مشتركين",
     "NO_PROGRAMS": "لا يوجد برامج",
-    "REQUIRED" : "اسم الدفعه مطلوب"
+    "REQUIRED": "اسم الدفعه مطلوب"
   },
   "TEACHER_STUDENT_FOR_DETAILS": {
     "PROG_IDEA": "فكرة البرنامج",
@@ -886,10 +886,10 @@
     "AR_NAME_CATEGORY": " اسم القسم بالعربيه",
     "EN_NAME_CATEGORY": "اسم القسم بالانجليزيه"
   },
-  "GENERAL_DROP_OUT_REQUEST":{
-    "REQUEST_REASON":"سبب الطلب",
-    "NO_DATA":"لا يوجد",
-    "REJECT_REASON":"سبب الرفض"
+  "GENERAL_DROP_OUT_REQUEST": {
+    "REQUEST_REASON": "سبب الطلب",
+    "NO_DATA": "لا يوجد",
+    "REJECT_REASON": "سبب الرفض"
   },
   "TEACHER_TAP": {
     "TEACHER_NAME": "أسم المعلم",
@@ -898,6 +898,7 @@
     "SUBSCRIPTION_DATE": "تاريخ الاشتراك",
     "BASIC_INFO": "البيانات الاساسيه",
     "DROP_OUT": "طلبات الانسحاب",
-    "JOIN": "طلبات الانضمام"
+    "JOIN": "طلبات الانضمام",
+    "VACATION": "طلبات الاجازه"
   }
 }

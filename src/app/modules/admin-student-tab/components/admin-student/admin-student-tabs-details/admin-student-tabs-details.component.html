@@ -1,1 +1,46 @@
-<p>admin-student-tabs-details works!</p>
+
+<div class="row group_header fix_margin w-100">
+    <div class="item_group" (click)="showTap = 'BASEINFO'"
+         [ngClass]="{ item_group_active: showTap == 'BASEINFO' }" >
+      {{'TEACHER_TAP.BASIC_INFO' | translate}}
+  
+    </div>
+  
+    <div class="item_group" (click)="showTap = 'PROGRAM'"
+         [ngClass]="{ item_group_active: showTap == 'PROGRAM' }">
+      {{'TEACHER_TAP.PROGRAM' | translate}}
+  
+    </div>
+    <div class="item_group" (click)="showTap = 'DROP_OUT'"
+         [ngClass]="{ item_group_active: showTap == 'DROP_OUT' }" >
+      {{'TEACHER_TAP.DROP_OUT' | translate}}
+    </div>
+   
+    <div class="item_group" (click)="showTap = 'JOIN'"
+         [ngClass]="{ item_group_active: showTap == 'JOIN' }">
+      {{'TEACHER_TAP.JOIN' | translate}}
+    </div>
+    <div class="item_group" (click)="showTap = 'VACATION'"
+         [ngClass]="{ item_group_active: showTap == 'VACATION' }">
+      {{'TEACHER_TAP.VACATION' | translate}}
+  
+    </div>
+  </div>
+  <!-- {{selectedRoleId | json}} -->
+  
+  <div class="row fix_margin w-100" >
+    <div class="col-12 px-0 ">
+  
+      <app-admin-student-basic-info *ngIf="showTap == 'BASEINFO'"></app-admin-student-basic-info>
+      <app-admin-student-program *ngIf="showTap == 'PROGRAM'"></app-admin-student-program>
+      <app-admin-student-drop-out *ngIf="showTap == 'DROP_OUT'"></app-admin-student-drop-out>
+      <app-admin-student-join-request *ngIf="showTap == 'JOIN'"></app-admin-student-join-request>
+      <app-admin-student-vacation-request *ngIf="showTap == 'VACATION'"></app-admin-student-vacation-request>
+  
+ 
+  
+  
+    </div>
+  
+  </div>
+  
