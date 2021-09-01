@@ -888,6 +888,8 @@
   "GENERAL_DROP_OUT_REQUEST":{
     "REQUEST_REASON":"سبب الطلب",
     "NO_DATA":"لا يوجد",
-    "REJECT_REASON":"سبب الرفض"
+    "REJECT_REASON":"سبب الرفض",
+    "STUDENT_REJECTED": "سيتم رفض طلب انسحاب الطالب ",
+    "REJECT_REASON_LENGHT":"السبب يجب أن يكون اقل من أو يساوى 256 حرف"
   }
 }

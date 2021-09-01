@@ -46,6 +46,17 @@ export class AddStudentDropOutRequestComponent implements OnInit {
   }
 
   sendDropOutRequest() {
+    this.resultMessage= {};
+    if (this.createDropOut.dropOutReason && this.createDropOut.dropOutReason?.length > 256){
+        this.resultMessage = {
+          message: this.translate.instant('GENERAL_DROP_OUT_REQUEST.REJECT_REASON_LENGHT'),
+          type: BaseConstantModel.DANGER_TYPE
+        }
+
+        return;
+      
+    }
+
     this.createDropOut.usrId = this.currentUser?.id;
     this.studentDropOutRequestService.createStudentDropOutRequest(this.createDropOut || {}).subscribe(res => {
       if (res.isSuccess) {
@@ -71,8 +82,6 @@ export class AddStudentDropOutRequestComponent implements OnInit {
   getAllProgram() {
     this.programsbyAdvancedFilter = { usrId : this.currentUser?.id };
     this.studentDropOutRequestService.studentDropOutAvailableProgram(this.programsbyAdvancedFilter).subscribe(res => {
-
-      console.log("res =====> ", res)
       if (res.isSuccess) {
         this.programsList = res.data;
 

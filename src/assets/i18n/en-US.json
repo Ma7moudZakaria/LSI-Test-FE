@@ -890,6 +890,8 @@
   "GENERAL_DROP_OUT_REQUEST":{
     "REQUEST_REASON":"Request Reason",
     "NO_DATA":"No Data",
-    "REJECT_REASON":"Reject Reason"
+    "REJECT_REASON":"Reject Reason",
+    "STUDENT_REJECTED": "The student's withdrawal request will be rejected",
+    "REJECT_REASON_LENGHT":"Reason Must be less than or equal 256 character"
   }
 }
