@@ -1,4 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { IProgramDutyDays } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
+import { IStudentProgramDutiesRequest } from 'src/app/core/interfaces/student-program-duties-interfaces/istudent-program-duties-request';
+import { IStudentProgramDutiesResponse } from 'src/app/core/interfaces/student-program-duties-interfaces/istudent-program-duties-response';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
+import { LanguageService } from 'src/app/core/services/language-services/language.service';
+import { StudentProgDutiesServiceService } from 'src/app/core/services/student-prog-duties-services/student-prog-duties-service.service';
 
 @Component({
   selector: 'app-student-program-duty-days',
@@ -7,9 +16,57 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentProgramDutyDaysComponent implements OnInit {
 
-  constructor() { }
+  @Output() progDutyDayEvent = new EventEmitter<IProgramDutyDays>();
+  studentId: string = "";
+  batchId:string ='';
+  studentProgramDutiesList?:IStudentProgramDutiesResponse[] | undefined;
+  errorMessage?: string;
+  resMessage: BaseMessageModel = {};
+  defaultSelectedDay:number = 0;
+
+  constructor(
+    public languageService: LanguageService,
+    public translate: TranslateService,
+    private studProgDutServic: StudentProgDutiesServiceService,
+     private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    this.studentId = this.route.snapshot.params.id;
+    this.batchId = this.route.snapshot.params.batch;
+    this.getStudentProgDuties();
+    if (this.studentProgramDutiesList) {
+      this.onDayClick(this.studentProgramDutiesList[0]);
+    }
+  }
+
+  getStudentProgDuties() {
+    let model : IStudentProgramDutiesRequest  = {
+      batId:this.batchId,
+      studId:this.studentId
+    }
+    this.studProgDutServic.getStudentProgDuties(model).subscribe(
+      res => {
+        if (res.isSuccess) {
+          this.studentProgramDutiesList = res.data.programDutyDaysModel as IStudentProgramDutiesResponse[];
+          this.onDayClick(this.studentProgramDutiesList[0]);
+        }
+        else {
+          this.resMessage = {
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
+          }
+        }
+      }, error => {
+        this.resMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      })
+  }
+
+  onDayClick(event: IProgramDutyDays) {
+    this.progDutyDayEvent.emit(event);
   }
 
 }

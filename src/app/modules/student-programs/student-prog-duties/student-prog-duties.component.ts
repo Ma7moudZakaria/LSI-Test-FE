@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IProgramDutyDays } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
+import { StudentProgramDutyDaysTaskComponent } from './student-program-duty-days-task/student-program-duty-days-task.component';
 
 @Component({
   selector: 'app-student-prog-duties',
@@ -8,11 +8,21 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./student-prog-duties.component.scss']
 })
 export class StudentProgDutiesComponent implements OnInit {
-  GetStudentProgDutiesURL = environment.baseUrl + 'StudentDutyWorkFlow/get-student-program-duty-days/';
-
-  constructor(private http: HttpClient) { }
+  @ViewChild(StudentProgramDutyDaysTaskComponent) progDayTaskChild: StudentProgramDutyDaysTaskComponent | undefined;
+  programDutyDay: IProgramDutyDays | undefined
+ 
+  constructor() { }
 
   ngOnInit(): void {
+ 
+  }
+
+  progDutyDayEventCallBk(event?: IProgramDutyDays) {
+    if (this.progDayTaskChild && event){
+      this.progDayTaskChild.programDutyDay = event;
+      this.progDayTaskChild?.getProgramDutyDays();
+    } 
+    this.programDutyDay = event; 
   }
 
 }

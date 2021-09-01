@@ -16,8 +16,7 @@
                 cdkDropList
                 #unassignedList="cdkDropList"
                 [cdkDropListData]="programDayTasksLists"
-                        [cdkDropListConnectedTo]="[items1]"
-                (cdkDropListDropped)="drop($event)">
+                        [cdkDropListConnectedTo]="[items1]">
                     <mat-expansion-panel cdkDrag  disabled *ngFor="let item of programDayTasksLists ; let i = index;">
                       
                        
