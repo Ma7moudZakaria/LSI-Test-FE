@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, Output,EventEmitter} from '@angular/core';
+import {TranslateService} from '@ngx-translate/core';
+import {LanguageEnum} from '../../../core/enums/language-enum.enum';
 
 @Component({
   selector: 'app-admin-drop-out-request-for-teacher-tab-and-student-tab-card',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminDropOutRequestForTeacherTabAndStudentTabCardComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit(): void {
-  }
+
+  langEnum = LanguageEnum;
+  requestDate:string | undefined;
+
+
+  constructor(public translate: TranslateService) { }
+
+  ngOnInit(): void {}
+
+
+
+
+
+
 
 }
