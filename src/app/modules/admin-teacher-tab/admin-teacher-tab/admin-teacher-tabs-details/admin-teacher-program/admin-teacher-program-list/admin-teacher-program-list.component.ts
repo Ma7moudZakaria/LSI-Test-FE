@@ -7,6 +7,7 @@ import {ScientificMaterialService} from '../../../../../../core/services/scienti
 import {TranslateService} from '@ngx-translate/core';
 import {BaseResponseModel} from '../../../../../../core/ng-model/base-response-model';
 import {BaseConstantModel} from '../../../../../../core/ng-model/base-constant-model';
+import {IStudentSubscriptionPredefinedConditionResponse} from '../../../../../../core/interfaces/student-program-subscription-interfaces/ipredefined-condtion-subscription-model';
 
 @Component({
   selector: 'app-admin-teacher-program-list',
@@ -16,38 +17,23 @@ import {BaseConstantModel} from '../../../../../../core/ng-model/base-constant-m
 export class AdminTeacherProgramListComponent implements OnInit {
   programs: any;
   @Output() selectedProgram =  new EventEmitter<IprogramsModel>();
+  @Output() showAddProgram = new EventEmitter<boolean>();
+
   langEnum = LanguageEnum;
   resMessage: BaseMessageModel = {};
   programFilterByName: IProgramFilterByNameRequest = {};
-
+  selectedIndex=0;
+  count= [0,1,2,3,4,5,6,7,8,9];
   constructor(private scientifcMaterialService: ScientificMaterialService,public translate : TranslateService) { }
 
   ngOnInit(): void {
-    this.loadPrograms();
+
 
   }
 
-  loadPrograms(programName?: any) {
-    if (programName != null || programName != "") { this.programFilterByName.name = programName; }
-    else{this.programFilterByName.name="";}
-    this.programFilterByName.skip = 0;
-    this.programFilterByName.take = 2147483647;
-    this.scientifcMaterialService.getProgramsLookup(this.programFilterByName).subscribe(
-      (res: BaseResponseModel) => {
-        this.programs = res.data as IprogramsModel[];
-        console.log("programs" , this.programs);
-        this.loadProgramMaterial({})
-        this.selectedIndex=-1;
-      }, error => {
-        this.resMessage = {
-          message: error,
-          type: BaseConstantModel.DANGER_TYPE
-        }
-      }
-    );
+  showOverlay(){
+    this.showAddProgram.emit(true);
   }
-  selectedIndex=-1;
-  loadProgramMaterial(program?:IprogramsModel){
-    this.selectedProgram?.emit(program);
-  }
+
+
 }

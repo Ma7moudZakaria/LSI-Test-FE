@@ -15,8 +15,6 @@
   cursor: pointer;
 }
 .cancel-btn{
-  background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
-  background:$icon_input ;
   border-radius: 12px;
   opacity: 1;
   width:50%;
@@ -28,90 +26,32 @@
 }
 
 .advancedSearchForm{
-       .label{
-         display: block;
-         color: #C1C7D0;
-         font-size: 14PX;
-         font-family: Almarai-Bold;
-       }
-       &:lang(ar){
-         text-align: right;
-       }
-       &:lang(en){
-         text-align: left;
-       }
-       .btn_replay{
-         margin: 0 0.5rem;
+  .label{
+    display: block;
+    color: #C1C7D0;
+    font-size: 14PX;
+    font-family: Almarai-Bold;
+  }
+  &:lang(ar){
+    text-align: right;
+  }
+  &:lang(en){
+    text-align: left;
+  }
+  .btn_replay{
+    margin: 0 0.5rem;
 
-       }
-     }
-
-// expanded card
-
-
-
-.mat-expansion-panel-header.mat-expanded:focus, .mat-expansion-panel-header.mat-expanded:hover ,
-.mat-expansion-panel-header._mat-animation-noopable ,.mat-expansion-panel .mat-expansion-panel-header{
-  background-color: #C1C7D0;
-
+  }
 }
 
-.mat-accordion .mat-expansion-panel {
-  margin-bottom: 1rem;
-
-}
-.mat-expansion-panel-header{
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  height: 60px;
-  align-items: center;
-}
-
-.mat-expansion-panel-header-description{
-  color: #3A3A3A;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-.mat-expansion-panel:not(.mat-expanded):not([aria-disabled=true]) .mat-expansion-panel-header:hover{
-  background-color: #C1C7D0;
-}
-.mat-expansion-panel-header-title{
-  color: #3A3A3A;
-  font-size: 14px;
-  font-weight: bold;
-}
 .link_Add{
   color:$icon_input;
   margin-bottom: 3rem;
 }
 
-// end
-@media (min-width: 992px){
-  .offset-cu-21 {
-    margin-left: 21%;
-    margin-right: 0;
-
-  }
-
-  .offset-cu-21:lang(ar) {
-    margin-right: 21%;
-    margin-left: 0;
-
-  }
-}
-
-.list-group_program-list{
-
-  height : 85vh;
-}
-.internal_scroll_list_group{
-  height: auto!important;
-}
 
 
-
-.teacher{
+.user{
   height: 60px;
   background: #fff;
   box-shadow: 0px 3px 10px #0000001A;
@@ -138,9 +78,11 @@
     font-size: 12px;
   }
 }
-.teacher.active{
+.user.active
+{
   background: #CB9118;
-  .teacher__name{
+  .user__name{
     color: #fff;
   }
+
 }

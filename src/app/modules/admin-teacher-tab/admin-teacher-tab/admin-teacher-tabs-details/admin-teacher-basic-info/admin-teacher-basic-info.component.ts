@@ -8,7 +8,6 @@ import {Component, OnInit, Output} from '@angular/core';
 export class AdminTeacherBasicInfoComponent implements OnInit {
 
   @Output() adminViewOutput:boolean | undefined;
-  adminView: any;
   constructor() { }
 
   ngOnInit(): void {
