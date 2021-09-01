@@ -778,7 +778,8 @@
     "REJECT_TEACHER": "رفض المعلم",
     "FROM_PROGRAM": "من برنامج",
     "REASON_REJECT": "سبب الرفض",
-    "NEW_REQUEST": "طلب انضمام جديد"
+    "NEW_REQUEST": "طلب انضمام جديد",
+    "REJECT_TEXT" : "سيتم رفض طلب المعلم"
   },
   "TEACHER_DROP_OUT": {
     "SUBSCRIBERS": "الطلبات",

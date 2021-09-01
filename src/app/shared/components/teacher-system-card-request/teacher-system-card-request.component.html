@@ -39,7 +39,8 @@
     </div>
 
     <div class="body_footer" *ngIf="typeEnum === typeTeacheEnum.Pending ">
-      <button class="btn cancel-btn" (click)='rejectTeacherSystemSubscriptionEvent(teacherSystemSubscriptionModel)'>   {{'TEACHER_SYSTEM_SUBSCRIPTION.REJECT' | translate}}   </button>
-     <button  class=" btn save-btn" (click)='acceptTeacherSystemSubscriptionEvent()' >   {{'TEACHER_SYSTEM_SUBSCRIPTION.ACCEPT' | translate}}  </button>
+      <button class="btn cancel-btn" (click)='acceptTeacherSystemSubscriptionEvent()' >
+        {{'TEACHER_SYSTEM_SUBSCRIPTION.ACCEPT' | translate}}  </button>
+     <button  class=" btn save-btn" (click)='rejectTeacherSystemSubscriptionEvent(teacherSystemSubscriptionModel)' >  {{'TEACHER_SYSTEM_SUBSCRIPTION.REJECT' | translate}}    </button>
     </div>
   </div>

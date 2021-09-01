@@ -51,9 +51,10 @@
  
   <ng-container *ngIf="typeEnum === tabTypeSelected.Pending ">
     <div class="body_footer" >
-        <button class="btn cancel-btn" (click)="rejectedStudentReq()" 
-        [attr.disabled]="studentSubscripModel.checked" > {{'STUDENT_SUBSCRIBERS.REJECT' | translate}}  </button>
-        <button  class=" btn save-btn" (click)="acceptStudentReq()"> {{'STUDENT_SUBSCRIBERS.ACCEPT' | translate}}  </button>
+        <button class="btn cancel-btn"  (click)="acceptStudentReq()"
+        [attr.disabled]="studentSubscripModel.checked" >
+         {{'STUDENT_SUBSCRIBERS.ACCEPT' | translate}}  </button>
+        <button  class=" btn save-btn" (click)="rejectedStudentReq()">  {{'STUDENT_SUBSCRIBERS.REJECT' | translate}}  </button>
       </div>
   </ng-container>
     
