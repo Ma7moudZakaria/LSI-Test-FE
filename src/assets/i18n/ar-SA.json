@@ -77,7 +77,8 @@
     "FROM": "من",
     "TO": "إلى",
     "ADVANCED_SEARCH": " بحث متقدم ",
-    "NEW_ORDERS": "الطلبات الجديده"
+    "NEW_ORDERS": "الطلبات الجديده",
+    "ACTIVE": "نشط"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
@@ -167,7 +168,16 @@
     "STUDENT_NUMBER": " عدد الطلاب",
     "TEACHER_NUMBER": " عدد المعلمين",
     "THE_EXAM": "الاختبتارات ",
-    "STAGE_EXAM": "إختبار مرحلى"
+    "STAGE_EXAM": "إختبار مرحلى",
+    "KICK_OFF" : "طرد من البرنامج",
+    "FREE" : "بدون مقابل",
+    "PLANNED_WORK_HOURS" : "ساعات العمل المخططة",
+    "ACTUAL_WORKING_HOURS": "ساعات العمل الفعلية",
+    "number_of_apologies" : "عدد مرات الاعتذار",
+    "NUMBER_OF_STUDENTS" : "عدد الطلاب",
+    "HIS_STUDENTS": "طلابه",
+    "DEGREE": "الدرجة",
+    "DATE" : "التاريخ"
   },
   "VIEW_PROGRAMS_BASIC_INFO": {
     "PROGRAM_DATE": "مدة البرنامج",
