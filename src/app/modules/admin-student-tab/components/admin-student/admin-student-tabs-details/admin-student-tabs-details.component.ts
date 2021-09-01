@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-student-tabs-details.component.scss']
 })
 export class AdminStudentTabsDetailsComponent implements OnInit {
-  showTap: string = 'BASEINFO';
+  showTap: string = 'PROGRAM';
 
   constructor() { }
 

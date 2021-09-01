@@ -13,4 +13,15 @@ export class AdminStudentProgramComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  showAddProgramOverlay($event: boolean) {
+    this.showAddProgram = $event;
+  }
+  closeExamOverlay() {
+    this.showAddProgram = false;
+  }
+
+
+
 }
+

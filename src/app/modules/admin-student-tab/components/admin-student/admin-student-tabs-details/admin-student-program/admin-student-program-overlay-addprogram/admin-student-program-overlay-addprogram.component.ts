@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-admin-student-program-overlay-addprogram',
@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-student-program-overlay-addprogram.component.scss']
 })
 export class AdminStudentProgramOverlayAddprogramComponent implements OnInit {
+  @Output() closeOverlay = new EventEmitter<boolean>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+
+  closeForm() {
+    this.closeOverlay.emit(false)
+  }
 }
