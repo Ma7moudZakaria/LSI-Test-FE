@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Input, ViewChild} from '@angular/core';
+import {ITeacherStudentViewModel} from '../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
+import {ScientificProblemsComponent} from '../../admin-messaging/components/scientific-problems-view/scientific-problems/scientific-problems.component';
+import {AdminTeacherTabsDetailsComponent} from './admin-teacher-tabs-details/admin-teacher-tabs-details.component';
 
 @Component({
   selector: 'app-admin-teacher-tab',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminTeacherTabComponent implements OnInit {
 
+  @ViewChild(AdminTeacherTabsDetailsComponent) adminTechTabDetailsChild:AdminTeacherTabsDetailsComponent | undefined;
+  @Input() teacherIdOutput:ITeacherStudentViewModel | undefined;
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  getId($event :ITeacherStudentViewModel){
+    this.teacherIdOutput = $event;
+    if (this.adminTechTabDetailsChild){
+      this.adminTechTabDetailsChild.teacherIdOutput = this.teacherIdOutput
+      this.adminTechTabDetailsChild.viewSwitching();
+    }
+  }
 }
