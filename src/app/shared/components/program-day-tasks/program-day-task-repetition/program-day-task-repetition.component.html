@@ -94,21 +94,7 @@
 
 <div *ngIf="dutyDaysTaskViewMood===programDutyDaysTaskViewMoodEnum.student">
     <ng-container >
-             <div class="d-flex mb-3">       
-                     <div class="col-6 px-0">
-                         <span class="regular"><mat-checkbox [disabled]="true" class="example-margin mx-2"   [(ngModel)]="repetitionDetailsModel.isMndatory"
-                            class="example-margin ">{{'GENERAL.MANDATORY'| translate}} </mat-checkbox></span>
-                     </div>
-                     <div class="col-6 px-0">
-                         <span class="grad"> {{'PROGRAM_DAY_TASK_REPETITION.DEGREE'| translate}}
-                             <span>  &nbsp;  : </span>
-                             <span>  &nbsp; </span> 
-    
-                             <small class="info">{{repetitionDetailsModel.degree}}</small>
-                         </span>
-                     </div>
-                     
-             </div>
+        
              <div class="mt-3  mb-3">
                  <span class="grad"> {{'PROGRAM_DAY_TASK_REPETITION.REPETITION_NUMBER'| translate}}
                      <span>  &nbsp;  : </span>
