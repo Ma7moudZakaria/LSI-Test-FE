@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ProgramDayTaskEncouragementLetterType } from 'src/app/core/enums/program-day-task-encouragement-letter-type.enum';
+import { ProgramDutyDaysTaskViewMoodEnum } from 'src/app/core/enums/programs/program-duty-days-task-view-mood-enum.enum';
 import { ISaveProgramDayTaskDetailsModel } from 'src/app/core/interfaces/programs-interfaces/isave-program-day-task-Details-model';
 import { IProgramDayTaskEncouragementLetter } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-encouragement-letter';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
@@ -23,7 +24,10 @@ export class ProgramDayTaskEncouragementLetterComponent implements OnInit {
   programDayTaskDetails: ISaveProgramDayTaskDetailsModel = {};
   resultMessage: BaseMessageModel = {};
   @Input() selectedTaskId: string | undefined;
-  @Input() encouragementLetterDetailsModel: IProgramDayTaskEncouragementLetter = {}
+  @Input() encouragementLetterDetailsModel: IProgramDayTaskEncouragementLetter = {};
+  @Input() dutyDaysTaskViewMood: number = ProgramDutyDaysTaskViewMoodEnum.admin;
+  programDutyDaysTaskViewMoodEnum=ProgramDutyDaysTaskViewMoodEnum;
+  
   constructor(
     private activeroute: ActivatedRoute,
     public dialog: MatDialog,

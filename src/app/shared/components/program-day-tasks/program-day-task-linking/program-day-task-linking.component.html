@@ -1,154 +1,189 @@
-<div class="details_day" *ngIf="!isView">
-    <div class="row">
-        <div class="col-12 mt-3">
-    <mat-checkbox  class="example-margin mx-2" [(ngModel)]="linkingDetailsModel.isMndatory"
-        class="example-margin "> {{'PROGRAM_DAY_TASK_LINKING.REQUIRED' | translate}} </mat-checkbox>
-    </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-              <mat-radio-group [(ngModel)]="linkingDetailsModel.linkingType" aria-label="Select an option">
-                <mat-radio-button value="{{TaskLinkingTypeEnum.automatic}}" class="px-2" (click)="getLastFiveHomeWorkAuto()"> {{'PROGRAM_DAY_TASK_LINKING.AUTO' | translate}}</mat-radio-button>
-                <mat-radio-button value="{{TaskLinkingTypeEnum.manual}}" class="px-2" (click)="HomeWorkeManeual()"> {{'PROGRAM_DAY_TASK_LINKING.MANUAL' | translate}}</mat-radio-button>
-            </mat-radio-group>
+<div *ngIf="dutyDaysTaskViewMood===programDutyDaysTaskViewMoodEnum.admin">
+    <div class="details_day" *ngIf="!isView">
+        <div class="row">
+            <div class="col-12 mt-3">
+        <mat-checkbox  class="example-margin mx-2" [(ngModel)]="linkingDetailsModel.isMndatory"
+            class="example-margin "> {{'PROGRAM_DAY_TASK_LINKING.REQUIRED' | translate}} </mat-checkbox>
         </div>
         </div>
-
-    <!-- <div class="row mx-0" *ngIf="this.linkingDetailsModel?.linkingType===this.TaskLinkingTypeEnum.manual">
+        <div class="row">
+            <div class="col-12">
+                  <mat-radio-group [(ngModel)]="linkingDetailsModel.linkingType" aria-label="Select an option">
+                    <mat-radio-button value="{{TaskLinkingTypeEnum.automatic}}" class="px-2" (click)="getLastFiveHomeWorkAuto()"> {{'PROGRAM_DAY_TASK_LINKING.AUTO' | translate}}</mat-radio-button>
+                    <mat-radio-button value="{{TaskLinkingTypeEnum.manual}}" class="px-2" (click)="HomeWorkeManeual()"> {{'PROGRAM_DAY_TASK_LINKING.MANUAL' | translate}}</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            </div>
+    
+        <!-- <div class="row mx-0" *ngIf="this.linkingDetailsModel?.linkingType===this.TaskLinkingTypeEnum.manual">
+            <ng-container *ngFor="let item of linkingDetailsModel?.bookAttatchments;let i=index">
+                <div class="col-4 cardRecourd"   >
+                    <img src="assets/images/days/book.svg">
+                    <p class="ellipsis mb-0 "  matTooltip="{{item.fileName}}">{{item.fileName}}</p>
+                    <img class="trash" src="assets/images/feelings/trash.svg" (click)="DeleteAttachment(i,item.id)">
+                </div>
+           </ng-container>
+    
+        </div> -->
+        <div class="form-group mt-3 mb-0" *ngIf="this.linkingDetailsModel?.linkingType===this.TaskLinkingTypeEnum.manual" (dragover)="onDragOver($event)" (drop)="onDropSuccess($event)">
+            <label class="custom-file custom-file__text" for="importFile">
+                    <p class="custom-file__label">{{'GENERAL.CHOOSEFILE' |translate}}</p>
+            </label>
+            <input type="file" class="custom-file-input" id="importFile"
+            [(ngModel)]="linkingDetailsModel.bookAttatchments"
+            (change)="onFileChange($any($event.target).files)"  accept="application/pdf,image/*" >
+        <span class="hint_validation">{{'PROGRAM_DAY_TASK_DETIALS.VALIDATION_IMG_PDF'|translate}}</span>
+    
+    </div>
+    <div class="row mx-0" *ngIf="this.linkingDetailsModel?.linkingType===this.TaskLinkingTypeEnum.manual">
         <ng-container *ngFor="let item of linkingDetailsModel?.bookAttatchments;let i=index">
-            <div class="col-4 cardRecourd"   >
+            <div class="col-4 cardRecourd" (click)="openVerticallyCentered(content)"  >
                 <img src="assets/images/days/book.svg">
                 <p class="ellipsis mb-0 "  matTooltip="{{item.fileName}}">{{item.fileName}}</p>
                 <img class="trash" src="assets/images/feelings/trash.svg" (click)="DeleteAttachment(i,item.id)">
             </div>
-       </ng-container>
-
-    </div> -->
-    <div class="form-group mt-3 mb-0" *ngIf="this.linkingDetailsModel?.linkingType===this.TaskLinkingTypeEnum.manual" (dragover)="onDragOver($event)" (drop)="onDropSuccess($event)">
-        <label class="custom-file custom-file__text" for="importFile">
-                <p class="custom-file__label">{{'GENERAL.CHOOSEFILE' |translate}}</p>
-        </label>
-        <input type="file" class="custom-file-input" id="importFile"
-        [(ngModel)]="linkingDetailsModel.bookAttatchments"
-        (change)="onFileChange($any($event.target).files)"  accept="application/pdf,image/*" >
-    <span class="hint_validation">{{'PROGRAM_DAY_TASK_DETIALS.VALIDATION_IMG_PDF'|translate}}</span>
-
-</div>
-<div class="row mx-0" *ngIf="this.linkingDetailsModel?.linkingType===this.TaskLinkingTypeEnum.manual">
-    <ng-container *ngFor="let item of linkingDetailsModel?.bookAttatchments;let i=index">
-        <div class="col-4 cardRecourd" (click)="openVerticallyCentered(content)"  >
-            <img src="assets/images/days/book.svg">
-            <p class="ellipsis mb-0 "  matTooltip="{{item.fileName}}">{{item.fileName}}</p>
-            <img class="trash" src="assets/images/feelings/trash.svg" (click)="DeleteAttachment(i,item.id)">
-        </div>
-
-        <ng-template #content let-modal>
-            <div class="modal-header">
-              <h4 class="modal-title">{{item.fileName}}</h4>
-             
-            </div>
-            <div class="modal-body">
-                <a  [href]="item.url" *ngIf="item.fileName.split('.').pop() !=='pdf' ">
-                    <ng-container  *ngIf="item.fileName.split('.').pop() !=='pdf' ">
-                    <img [src]="item.url"  class="size_img_model">
+    
+            <ng-template #content let-modal>
+                <div class="modal-header">
+                  <h4 class="modal-title">{{item.fileName}}</h4>
+                 
+                </div>
+                <div class="modal-body">
+                    <a  [href]="item.url" *ngIf="item.fileName.split('.').pop() !=='pdf' ">
+                        <ng-container  *ngIf="item.fileName.split('.').pop() !=='pdf' ">
+                        <img [src]="item.url"  class="size_img_model">
+                       </ng-container>
+                    </a>
+                    <ng-container *ngIf="item.fileName.split('.').pop() ==='pdf' ">
+                    <pdf-viewer 
+                    [src]="item.url" 
+                    [render-text]="true" 
+                    [original-size]="false" 
+                    [fit-to-page]="true"
+                    [show-all]="true"
+                    [zoom-scale]="'page-width'">
+                    </pdf-viewer>
                    </ng-container>
-                </a>
-                <ng-container *ngIf="item.fileName.split('.').pop() ==='pdf' ">
-                <pdf-viewer 
-                [src]="item.url" 
-                [render-text]="true" 
-                [original-size]="false" 
-                [fit-to-page]="true"
-                [show-all]="true"
-                [zoom-scale]="'page-width'">
-                </pdf-viewer>
-               </ng-container>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
-            </div>
-          </ng-template>
-
-   </ng-container>
-
-</div>
-
-    <div class="row mx-0" *ngIf="this.linkingDetailsModel?.linkingType===this.TaskLinkingTypeEnum.automatic">
-                <div class="col-4 cardRecourd"  *ngFor="let item of linkingDetailsModel?.bookAttatchments;let i=index" >
-                    <img src="assets/images/days/book.svg">
-                    <p class="ellipsis mb-0 "  matTooltip="{{item.fileName}}">{{item.fileName}}</p>
                 </div>
-</div>
-
-    <div class="form-group">
-        <div class="row">
-            <div class="col-6">
-                <label class="text-right header_input">{{'PROGRAM_DAY_TASK_DETIALS.DEGREE'|translate}}</label>
-               <input type="text" class="form-control w-50" [(ngModel)]="linkingDetailsModel.degree" >
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+                </div>
+              </ng-template>
+    
+       </ng-container>
+    
+    </div>
+    
+        <div class="row mx-0" *ngIf="this.linkingDetailsModel?.linkingType===this.TaskLinkingTypeEnum.automatic">
+                    <div class="col-4 cardRecourd"  *ngFor="let item of linkingDetailsModel?.bookAttatchments;let i=index" >
+                        <img src="assets/images/days/book.svg">
+                        <p class="ellipsis mb-0 "  matTooltip="{{item.fileName}}">{{item.fileName}}</p>
+                    </div>
+    </div>
+    
+        <div class="form-group">
+            <div class="row">
+                <div class="col-6">
+                    <label class="text-right header_input">{{'PROGRAM_DAY_TASK_DETIALS.DEGREE'|translate}}</label>
+                   <input type="text" class="form-control w-50" [(ngModel)]="linkingDetailsModel.degree" >
+                </div>
             </div>
         </div>
-    </div>
-
-
-    <div class="form-group">
-        <div class="row">
-            <div class="col-12">
-                <label class="text-right header_input">{{'PROGRAM_DAY_TASK_DETIALS.SHOW_QUESTION_TO_STUDENT'|translate}}</label>
-               <input type="text" class="form-control " [(ngModel)]="linkingDetailsModel.questionToStudent" >
+    
+    
+        <div class="form-group">
+            <div class="row">
+                <div class="col-12">
+                    <label class="text-right header_input">{{'PROGRAM_DAY_TASK_DETIALS.SHOW_QUESTION_TO_STUDENT'|translate}}</label>
+                   <input type="text" class="form-control " [(ngModel)]="linkingDetailsModel.questionToStudent" >
+                </div>
             </div>
         </div>
-    </div>
+    
+        </div>
+    
+        <ng-container *ngIf="isView">
+            <!-- <p class="mb-2 name"> الحفظ</p> -->
+    
+                 <div class="d-flex mb-3">
+    
+                         <div class="col-6 px-0">
+                             <span class="regular"><mat-checkbox [disabled]="true" class="example-margin mx-2"   [(ngModel)]="linkingDetailsModel.isMndatory"
+                                class="example-margin ">{{'GENERAL.MANDATORY'| translate}} </mat-checkbox></span>
+                         </div>
+                         <div class="col-6 px-0">
+                             <span class="grad">{{'PROGRAM_DAY_TASK_LINKING.DEGREE' | translate}}
+                                 <span>  &nbsp;  : </span>
+                                 <span>  &nbsp; </span>
+    
+                                 <small class="info">{{linkingDetailsModel.degree}}</small>
+                             </span>
+                         </div>
+    
+                 </div>
+                 <mat-radio-group [disabled]="true" [(ngModel)]="linkingDetailsModel.linkingType" aria-label="Select an option">
+                    <mat-radio-button value="{{TaskLinkingTypeEnum.automatic}}" class="px-2" (click)="getLastFiveHomeWorkAuto()">{{'PROGRAM_DAY_TASK_LINKING.AUTO' | translate}} </mat-radio-button>
+                    <mat-radio-button value="{{TaskLinkingTypeEnum.manual}}" class="px-2" (click)="HomeWorkeManeual()">{{'PROGRAM_DAY_TASK_LINKING.MANUAL' | translate}} </mat-radio-button>
+                </mat-radio-group>
+                 <!-- <div class="mt-3  mb-3">
+                     <span class="grad">  الصفحات
+                         <span>  &nbsp;  : </span>
+                         <span>  &nbsp; </span>
+                         <small class="info">200 - 205</small>
+                     </span>
+    
+                 </div> -->
+    
+    
+    
+                     <ng-container   *ngFor="let item of linkingDetailsModel?.bookAttatchments;let i=index">
+                       <div class=" cardRecourd mb-2 "   >
+                     <img src="assets/images/days/bookView.svg">
+                     <p class=" mr-2 mb-0"
+                     >{{item.fileName}}</p>
+                    </div>
+    
+                     </ng-container>
+    
+                 <p class="mt-3 grad">
+                    {{'PROGRAM_DAY_TASK_LINKING.QUESTION' | translate}}
+                 </p>
+                 <p class="regular mt-2">{{linkingDetailsModel.questionToStudent}}</p>
+            </ng-container>
+    
+</div>
 
-    </div>
-
-
-
-    <ng-container *ngIf="isView">
-        <!-- <p class="mb-2 name"> الحفظ</p> -->
-
-             <div class="d-flex mb-3">
-
-                     <div class="col-6 px-0">
-                         <span class="regular"><mat-checkbox [disabled]="true" class="example-margin mx-2"   [(ngModel)]="linkingDetailsModel.isMndatory"
-                            class="example-margin ">{{'GENERAL.MANDATORY'| translate}} </mat-checkbox></span>
-                     </div>
-                     <div class="col-6 px-0">
-                         <span class="grad">{{'PROGRAM_DAY_TASK_LINKING.DEGREE' | translate}}
-                             <span>  &nbsp;  : </span>
-                             <span>  &nbsp; </span>
-
-                             <small class="info">{{linkingDetailsModel.degree}}</small>
-                         </span>
-                     </div>
-
-             </div>
-             <mat-radio-group [disabled]="true" [(ngModel)]="linkingDetailsModel.linkingType" aria-label="Select an option">
-                <mat-radio-button value="{{TaskLinkingTypeEnum.automatic}}" class="px-2" (click)="getLastFiveHomeWorkAuto()">{{'PROGRAM_DAY_TASK_LINKING.AUTO' | translate}} </mat-radio-button>
-                <mat-radio-button value="{{TaskLinkingTypeEnum.manual}}" class="px-2" (click)="HomeWorkeManeual()">{{'PROGRAM_DAY_TASK_LINKING.MANUAL' | translate}} </mat-radio-button>
-            </mat-radio-group>
-             <!-- <div class="mt-3  mb-3">
-                 <span class="grad">  الصفحات
-                     <span>  &nbsp;  : </span>
-                     <span>  &nbsp; </span>
-                     <small class="info">200 - 205</small>
-                 </span>
-
-             </div> -->
-
-
-
-                 <ng-container   *ngFor="let item of linkingDetailsModel?.bookAttatchments;let i=index">
-                   <div class=" cardRecourd mb-2 "   >
-                 <img src="assets/images/days/bookView.svg">
-                 <p class=" mr-2 mb-0"
-                 >{{item.fileName}}</p>
+<div *ngIf="dutyDaysTaskViewMood===programDutyDaysTaskViewMoodEnum.student">
+    <div class="details_day">
+    <div class="row mx-0">
+        <ng-container *ngFor="let item of linkingDetailsModel?.bookAttatchments;let i=index">
+            <div class="col-4 cardRecourd" (click)="openVerticallyCentered(content)"  >
+                <img src="assets/images/days/book.svg">
+                <p class="ellipsis mb-0 "  matTooltip="{{item.fileName}}">{{item.fileName}}</p>
+            </div>
+            <ng-template #content let-modal>
+                <div class="modal-header">
+                  <h4 class="modal-title">{{item.fileName}}</h4>
                 </div>
-
-                 </ng-container>
-
-             <p class="mt-3 grad">
-                {{'PROGRAM_DAY_TASK_LINKING.QUESTION' | translate}}
-             </p>
-             <p class="regular mt-2">{{linkingDetailsModel.questionToStudent}}</p>
-        </ng-container>
-
+                <div class="modal-body">
+                    <a  [href]="item.url" *ngIf="item.fileName.split('.').pop() !=='pdf' ">
+                        <ng-container  *ngIf="item.fileName.split('.').pop() !=='pdf' ">
+                        <img [src]="item.url"  class="size_img_model">
+                       </ng-container>
+                    </a>
+                    <ng-container *ngIf="item.fileName.split('.').pop() ==='pdf' ">
+                    <pdf-viewer 
+                    [src]="item.url" 
+                    [render-text]="true" 
+                    [original-size]="false" 
+                    [fit-to-page]="true"
+                    [show-all]="true"
+                    [zoom-scale]="'page-width'">
+                    </pdf-viewer>
+                   </ng-container>
+                </div>
+              </ng-template>
+       </ng-container>
+    </div>
+        </div>
+</div>

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IProgramDutyDays } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
+import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-model';
+import {  IProgramDutyDays } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { StudentProgramDutyDaysTaskComponent } from './student-program-duty-days-task/student-program-duty-days-task.component';
 
 @Component({
@@ -8,9 +9,11 @@ import { StudentProgramDutyDaysTaskComponent } from './student-program-duty-days
   styleUrls: ['./student-prog-duties.component.scss']
 })
 export class StudentProgDutiesComponent implements OnInit {
+
   @ViewChild(StudentProgramDutyDaysTaskComponent) progDayTaskChild: StudentProgramDutyDaysTaskComponent | undefined;
   programDutyDay: IProgramDutyDays | undefined
- 
+  taskDetails?:IProgramDayTasksModel;
+  
   constructor() { }
 
   ngOnInit(): void {
@@ -23,6 +26,11 @@ export class StudentProgDutiesComponent implements OnInit {
       this.progDayTaskChild?.getProgramDutyDays();
     } 
     this.programDutyDay = event; 
+  }
+
+  sendTaskIdToProgDayTaskDetails(item?:IProgramDayTasksModel){
+    this.taskDetails=item;
+  //  this.progamDetails=this.progDetails;
   }
 
 }

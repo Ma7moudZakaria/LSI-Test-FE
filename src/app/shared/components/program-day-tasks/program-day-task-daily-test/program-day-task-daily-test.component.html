@@ -1,5 +1,5 @@
-
-<div class="attache-exam-list" *ngIf='!isView'> 
+<div *ngIf="dutyDaysTaskViewMood===programDutyDaysTaskViewMoodEnum.admin">
+  <div class="attache-exam-list" *ngIf='!isView'> 
     <div class="row">
       <div class="col-12">
         <section class="internal_scroll_list_group ">
@@ -39,3 +39,8 @@
                     </app-question-template>
                   </div>    
   </ng-container>
+
+</div>
+<div *ngIf="dutyDaysTaskViewMood===programDutyDaysTaskViewMoodEnum.student">
+  
+</div>

@@ -75,7 +75,8 @@
     "APPLICANT_NAME": "Applicant name",
     "REQUEST_NUMBER": "Request Number",
     "ADVANCED_SEARCH": "Advanced Search",
-    "NEW_ORDERS": "New Orders"
+    "NEW_ORDERS": "New Orders",
+    "QUESTION":"The question"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",

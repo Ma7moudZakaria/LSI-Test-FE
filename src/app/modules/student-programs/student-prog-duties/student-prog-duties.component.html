@@ -5,7 +5,10 @@
             <app-student-program-duty-days  (progDutyDayEvent)='progDutyDayEventCallBk($event)'></app-student-program-duty-days>
         </div>
         <div class="col-3">
-            <app-student-program-duty-days-task [programDutyDay]='programDutyDay' ></app-student-program-duty-days-task>
+            <app-student-program-duty-days-task [programDutyDay]='programDutyDay' (taskDetailsEvent)="sendTaskIdToProgDayTaskDetails($event)"></app-student-program-duty-days-task>
+        </div>
+        <div class="col-6" *ngIf='taskDetails'> 
+            <app-student-program-duty-days-task-details [taskDetails]='taskDetails'  ></app-student-program-duty-days-task-details >
         </div>
     </div>
 </div>
