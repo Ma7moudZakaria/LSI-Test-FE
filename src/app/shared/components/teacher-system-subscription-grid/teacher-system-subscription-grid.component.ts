@@ -56,8 +56,8 @@ export class TeacherSystemSubscriptionGridComponent implements OnInit {
   }
 
   sortTeacherByNameOrderType() {
-    if ((this.teacherSystemSubscriptionFilterRequestModel.sortField === "teacherNameAr" || this.teacherSystemSubscriptionFilterRequestModel.sortField === "TeacherNameEn") && this.teacherSystemSubscriptionFilterRequestModel.sortOrder == 1) { return 'asend' }
-    if ((this.teacherSystemSubscriptionFilterRequestModel.sortField === "teacherNameAr" || this.teacherSystemSubscriptionFilterRequestModel.sortField === "TeacherNameEn") && this.teacherSystemSubscriptionFilterRequestModel.sortOrder == -1) { return 'desend' }
+    if ((this.teacherSystemSubscriptionFilterRequestModel.sortField === "userNameAr" || this.teacherSystemSubscriptionFilterRequestModel.sortField === "UserNameEn") && this.teacherSystemSubscriptionFilterRequestModel.sortOrder === 1) { return 'asend' }
+    if ((this.teacherSystemSubscriptionFilterRequestModel.sortField === "userNameAr" || this.teacherSystemSubscriptionFilterRequestModel.sortField === "UserNameEn") && this.teacherSystemSubscriptionFilterRequestModel.sortOrder === -1) { return 'desend' }
 
     return '';
   }

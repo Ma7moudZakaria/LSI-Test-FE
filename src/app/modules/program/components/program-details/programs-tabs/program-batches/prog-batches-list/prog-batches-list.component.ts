@@ -29,7 +29,8 @@ export class ProgBatchesListComponent implements OnInit {
   constructor(public translate: TranslateService,
     private programBatchesService: ProgramBatchesService,
     public dialog: MatDialog,
-    private alertifyService: AlertifyService) { }
+    private alertifyService: AlertifyService,
+    private alert : AlertifyService) { }
 
   ngOnInit(): void {
     this.updateProgBatchesListAfterAdd();
@@ -95,13 +96,10 @@ export class ProgBatchesListComponent implements OnInit {
         this.programBatchesService.deleteProgBatch(id || '').subscribe(res => {
           if (res.isSuccess && this.programDetails) {
             this.updateProgBatchesListAfterAdd();
+            this.alert.success(res.message || '');
           }
           else {
-            this.resMessage =
-            {
-              message: res.message,
-              type: BaseConstantModel.DANGER_TYPE
-            }
+            this.alert.error(res.message || '');
           }
         }, error => {
           this.resMessage = {
