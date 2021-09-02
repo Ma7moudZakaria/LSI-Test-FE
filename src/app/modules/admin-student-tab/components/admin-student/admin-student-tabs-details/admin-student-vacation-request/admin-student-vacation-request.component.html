@@ -1,1 +1,14 @@
-<p>admin-student-vacation-request works!</p>
+<ng-container *ngIf=' studentProgramVacationRequestsList.length > 0'>
+<app-admin-vacation-request-for-student-tab-grid
+
+[studentVacationItems]='studentProgramVacationRequestsList'
+[numberPerRow]='numberItemsPerRow'
+[totalCount]='totalCount'
+[studentProgramVacationFilterRequestModel]='studentProgramVacationFilterRequestModel'
+
+(studentVacationFilterEvent) = "StudentVacationChangePage($event)"
+></app-admin-vacation-request-for-student-tab-grid>
+
+<!-- (cancelStudentProgramVacation)="CancelStudentProgramVacation($event)" -->
+<!-- (terminateStudentProgramVacation)="TerminateStudentProgramVacation($event)" -->
+</ng-container>

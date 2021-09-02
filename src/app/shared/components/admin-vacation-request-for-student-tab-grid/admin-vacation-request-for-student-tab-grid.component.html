@@ -1,1 +1,35 @@
-<p>admin-vacation-request-for-student-tab-grid works!</p>
+
+  <!-----------------Student---------------------------->
+  <!-- *ngIf='this.userRole== "Student"' -->
+  <div class="row scientific-problem-grid"  >
+    <div class="col-8 d-flex justify-content-start">
+      <ngb-pagination
+        [collectionSize]="totalCount"
+        [(page)]="studentProgramVacationFilterRequestModel.page"
+        [pageSize]="studentProgramVacationFilterRequestModel.take"
+        [rotate]="true" [boundaryLinks]="true"
+        (pageChange)="onStudentPageChange()">
+      </ngb-pagination>
+  
+   
+    </div>
+  </div>
+  
+  <!--  -------Student Card Admin View---------->
+  
+  <mat-grid-list cols="{{numberPerRow}}" rowHeight="3:3">
+ 
+  
+  <!--  -------Student Card Student View---------->
+    <ng-container *ngIf='this.userRole== "Student"'>
+      <mat-grid-tile *ngFor='let item of studentVacationItems' >
+        <app-admin-vacation-request-for-student-tab-card class="card" 
+        [studentProgramVacationStudentViewModel]='item'
+                                                  
+       
+        ></app-admin-vacation-request-for-student-tab-card>
+      </mat-grid-tile>
+    </ng-container>
+  </mat-grid-list>
+   <!-- (CancelStudentVacationRequest)="cancelStuRequest($event)" -->
+    <!-- (TerminateStudentVacationRequest)="terminateStuRequest($event)" -->
