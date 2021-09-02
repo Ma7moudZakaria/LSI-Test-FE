@@ -27,21 +27,22 @@ export class StudentVacationRequestTabComponent implements OnInit {
   typeEnum: StudentProgramVacationStatusEnum = StudentProgramVacationStatusEnum.Pending;
   showTap: StudentProgramVacationStatusEnum = StudentProgramVacationStatusEnum.Pending;
   statusEnum = StudentProgramVacationStatusEnum;
-  showUserDetailsView:boolean = false;
+  showUserDetailsView: boolean = false;
   constructor(
     public translate: TranslateService,
     private programVacationServicesService: StudentProgramVacationServicesService,
     private alertify: AlertifyService) { }
 
   ngOnInit(): void {
-    this.studentProgramVacationFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn'
+    // this.studentProgramVacationFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn'
+    this.studentProgramVacationFilterRequestModel.sortField === 'requestdate'
     this.getStudentProgramVacationRequests();
   }
   studentIdDrop(event:ITeacherStudentViewModel){
     this.showUserDetailsView =true;
     this.studentDropIdInput= event;
   }
-  hideUserDetailsView(event: boolean){
+  hideUserDetailsView(event: boolean) {
     this.showUserDetailsView = event;
   }
   searchByText(searchKey: string) {
@@ -51,19 +52,19 @@ export class StudentVacationRequestTabComponent implements OnInit {
 
   getStudentProgramVacationRequests() {
     this.programVacationServicesService.getStudentsProgramsVacationFilterAdminView(this.studentProgramVacationFilterRequestModel || {}).subscribe(res => {
-        var response = <BaseResponseModel>res;
-        if (response.isSuccess) {
-          this.studentProgramVacationRequestsList = res.data as IStudentProgramVacationModel[];
-          this.studentProgramVacationRequestsList?.forEach(function (item) {
-          });
-          this.totalCount = res.count ? res.count : 0;
-          if (this.studentProgramVacationFilterRequestModel.skip > 0 && (!this.studentProgramVacationRequestsList || this.studentProgramVacationRequestsList.length === 0)) {
-            this.studentProgramVacationFilterRequestModel.page -= 1;
-            this.studentProgramVacationFilterRequestModel.skip = (this.studentProgramVacationFilterRequestModel.page - 1) * this.studentProgramVacationFilterRequestModel.take;
-            this.getStudentProgramVacationRequests();
-          }
+      var response = <BaseResponseModel>res;
+      if (response.isSuccess) {
+        this.studentProgramVacationRequestsList = res.data as IStudentProgramVacationModel[];
+        this.studentProgramVacationRequestsList?.forEach(function (item) {
+        });
+        this.totalCount = res.count ? res.count : 0;
+        if (this.studentProgramVacationFilterRequestModel.skip > 0 && (!this.studentProgramVacationRequestsList || this.studentProgramVacationRequestsList.length === 0)) {
+          this.studentProgramVacationFilterRequestModel.page -= 1;
+          this.studentProgramVacationFilterRequestModel.skip = (this.studentProgramVacationFilterRequestModel.page - 1) * this.studentProgramVacationFilterRequestModel.take;
+          this.getStudentProgramVacationRequests();
         }
-      },
+      }
+    },
       error => {
         console.log(error);
       });
@@ -98,15 +99,15 @@ export class StudentVacationRequestTabComponent implements OnInit {
   AcceptStudentProgramVacation(studentProgramVacationModel: IStudentProgramVacationModel) {
     this.ids?.push(studentProgramVacationModel.id || '');
     this.programVacationServicesService.studentProgramVacationAcceptance(this.ids).subscribe(res => {
-        var response = <BaseResponseModel>res;
-        if (response.isSuccess) {
-          this.alertify.success(res.message || '');
-          this.getStudentProgramVacationRequests();
-        }
-        else {
-          this.alertify.error(res.message || '');
-        }
-      },
+      var response = <BaseResponseModel>res;
+      if (response.isSuccess) {
+        this.alertify.success(res.message || '');
+        this.getStudentProgramVacationRequests();
+      }
+      else {
+        this.alertify.error(res.message || '');
+      }
+    },
       error => {
         console.log(error);
       });
@@ -119,9 +120,9 @@ export class StudentVacationRequestTabComponent implements OnInit {
     this.studentProgramVacationFilterRequestModel.fromDate = undefined;
     this.studentProgramVacationFilterRequestModel.toDate = undefined;
     this.studentProgramVacationFilterRequestModel.skip = 0;
-    this.studentProgramVacationFilterRequestModel.take= 9;
-    this.studentProgramVacationFilterRequestModel.sortField='';
-    this.studentProgramVacationFilterRequestModel.sortOrder= 1;
+    this.studentProgramVacationFilterRequestModel.take = 9;
+    this.studentProgramVacationFilterRequestModel.sortField = '';
+    this.studentProgramVacationFilterRequestModel.sortOrder = 1;
     this.studentProgramVacationFilterRequestModel.page = 1;
     // this.closeAdvancedSearch.emit()
   }
@@ -129,15 +130,15 @@ export class StudentVacationRequestTabComponent implements OnInit {
 
     this.ids = this.studentProgramVacationRequestsList?.filter(i => i.checked).map(a => a.id || '')
     this.programVacationServicesService.studentProgramVacationAcceptance(this.ids).subscribe(res => {
-        var response = <BaseResponseModel>res;
-        if (response.isSuccess) {
-          this.alertify.success(res.message || '');
-          this.getStudentProgramVacationRequests();
-        }
-        else {
-          this.alertify.error(res.message || '');
-        }
-      },
+      var response = <BaseResponseModel>res;
+      if (response.isSuccess) {
+        this.alertify.success(res.message || '');
+        this.getStudentProgramVacationRequests();
+      }
+      else {
+        this.alertify.error(res.message || '');
+      }
+    },
       error => {
         console.log(error);
       });

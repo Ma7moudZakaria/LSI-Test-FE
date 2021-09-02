@@ -16,7 +16,8 @@ import { TeacherProgramSubscriptionServicesService } from 'src/app/core/services
 export class TeacheRejectedComponent implements OnInit {
 
   @Output() closeRejectedRequest = new EventEmitter<ITeacherProgramSubscriptionModel>();
-  @Input() itemTeacherReq: ITeacherProgramSubscriptionModel= {totalRows:0}
+  @Input() itemTeacherReq: ITeacherProgramSubscriptionModel = { totalRows: 0 }
+  resultMessage: BaseMessageModel = {};
 
   resMessage: BaseMessageModel = {};
   constructor(
@@ -51,12 +52,13 @@ export class TeacheRejectedComponent implements OnInit {
       }, error => {
       })
     }
-    else{
-      this.resMessage = {
-            message:this.translate.instant('GENERAL.REQUIRED'),
-            type:BaseConstantModel.DANGER_TYPE
-          }
+    else {
+      this.resultMessage = {
+        message: this.translate.instant('TEACHER_SUBSCRIBERS.REASON_REJECT'),
+        type: BaseConstantModel.DANGER_TYPE
+      }
     }
+
   }
 
 

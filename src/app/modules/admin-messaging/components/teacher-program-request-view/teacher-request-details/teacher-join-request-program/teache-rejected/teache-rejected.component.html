@@ -2,8 +2,8 @@
     <h3 class="text-right head  bold">{{'TEACHER_SUBSCRIBERS.REJECT_TEACHER' | translate}} </h3>
     <div class="form-group">
         <label  class="label">
-            
-             /{{'TEACHER_SUBSCRIBERS.REJECT_TEXT' | translate}}
+            {{'TEACHER_SUBSCRIBERS.WILL_REASON_REJECT' | translate}}         
+            /
             <span class="data_input"> {{itemTeacherReq.usrNameAr}}</span>
         </label>
         <label  class="label">
@@ -16,9 +16,10 @@
         <textarea  class="form-control " cols="1"  rows="5" 
         [(ngModel)]='itemTeacherReq.reasonReject'  [ngModelOptions]="{standalone: true}" >
         </textarea>
-        <div *ngIf="resMessage.message" class="alert alert-{{ resMessage.type }} my-4 py-2">
-            {{ resMessage.message }}
-        </div>
+        
+        <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2 text-center">
+            <span class="bold"> {{resultMessage.message}}</span>
+         </div>
         <section class="mt-5">
             <div  class="row direction-rtl buttons-center mt-5">
                 <button  (click)='saveRejectRequest()' type="submit" class="save-btn"> 

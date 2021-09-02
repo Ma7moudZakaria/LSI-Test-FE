@@ -777,9 +777,12 @@
     "AVAILABLE_CHANGE_TIME_REQUESTS": "طلبات تغير الوقت المتاحه",
     "REJECT_TEACHER": "رفض المعلم",
     "FROM_PROGRAM": "من برنامج",
-    "REASON_REJECT": "سبب الرفض",
+    "REASON_REJECT": " ادخل سبب الرفض",
+    "WILL_REASON_REJECT": "سيتم رفض طلب انسحاب المعلم ",
+    "REQUEST_DATE": "تاريخ الطلب ",
+    "REJECT_REASON": "سبب الرفض",
     "NEW_REQUEST": "طلب انضمام جديد",
-    "REJECT_TEXT" : "سيتم رفض طلب المعلم"
+    "REJECT_TEXT": "سيتم رفض طلب المعلم"
   },
   "TEACHER_DROP_OUT": {
     "SUBSCRIBERS": "الطلبات",
@@ -825,7 +828,7 @@
     "MEETING": "المقابلة",
     "REJECT": "رفض",
     "ACCEPT": "قبول",
-    "REJECT_REASON":"سبب الرفض"
+    "REJECT_REASON": "سبب الرفض"
   },
   "STUDENT_VACATION": {
     "NEW_VACATION_REQUESTS": "الطلبات الجديدة",
@@ -884,6 +887,14 @@
     "EDIT_CATEGORY": "تعديل قسم",
     "AR_NAME_CATEGORY": " اسم القسم بالعربيه",
     "EN_NAME_CATEGORY": "اسم القسم بالانجليزيه"
+  },
+  "STUDENT_SUBSCRIPTION": {
+    "ACCEPT_EXAMP": "اختبار القبول",
+    "QUEST_NUM": "سؤال رقم",
+    "LENGTH": "المدة",
+    "ANSWER_FINISHED": " هل تم الانتهاء من الاجابة ؟",
+    "NEXT": "التالى",
+    "NO_EXAM": "لا يوجد برنامج"
   },
   "GENERAL_DROP_OUT_REQUEST":{
     "REQUEST_REASON":"سبب الطلب",

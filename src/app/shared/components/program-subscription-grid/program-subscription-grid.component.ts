@@ -58,6 +58,7 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.sortTeacherRequestDate();
   }
   teacherProgSubOutputEvent(event:ITeacherStudentViewModel){
     this.teacherIdFormGrid.emit(event);
@@ -111,17 +112,30 @@ export class ProgramSubscriptionGridComponent implements OnInit {
     this.teacherItems.forEach(t => t.checked = completed);
   }
 
+  // exportTeacherCSV() {
+  //   let expItems = this.teacherItems.filter(a => a.checked);
+  //   let headerLabels = this.translate.currentLang == 'en-US' ?
+  //     [' program name', 'User name'] :
+  //     [' اسم البرنامج ',
+  //       'اسم المعلم'];
+
+  //   let data = ['progName', 'teacherNameAr'];
+  //   this.exportationService.exportCSV(expItems, 'teacher', data, headerLabels);
+  // }
+
   exportTeacherCSV() {
-    let expItems = this.teacherItems.filter(a => a.checked);
+    let expItems = this.studentItems.filter(a => a.checked);
+
     let headerLabels = this.translate.currentLang == 'en-US' ?
-      [' program name', 'User name'] :
-      [' اسم البرنامج ',
-        'اسم المستخدم'];
+      [' program name', 'Teacher name', 'request date ', 'request status'] :
+      ['أسم المعلم',
+        'أسم البرنامج'
+        , ' تاريخ الطلب ',
+        'حاله الطلب']
 
-    let data = ['progName', 'usrNameAr'];
-    this.exportationService.exportCSV(expItems, 'teacher', data, headerLabels);
+    let data = ['progName', 'usrNameAr', 'requestDate', 'programStaNum'];
+    this.exportationService.exportCSV(expItems, 'Hoffaz-Teacher program subscription requests ', data, headerLabels);
   }
-
   deleteTeacherByIds() {
     this.deleteListOfteacher.emit();
   }
@@ -190,15 +204,18 @@ export class ProgramSubscriptionGridComponent implements OnInit {
     console.log(this.userMode);
   }
 
+
   exportStudentCSV() {
     let expItems = this.studentItems.filter(a => a.checked);
     let headerLabels = this.translate.currentLang == 'en-US' ?
-      [' program name', 'User name'] :
-      [' أسم البرنامج ',
-        'أسم المستخدم'];
+      [' program name', 'Student name', 'request date ', 'request status'] :
+      ['أسم الطالب',
+        'أسم البرنامج'
+        , ' تاريخ الطلب ',
+        'حاله الطلب']
 
-    let data = ['progName', 'usrNameAr'];
-    this.exportationService.exportCSV(expItems, 'Student', data, headerLabels);
+    let data = ['progName', 'usrNameAr', 'requestDate', 'programStaNum'];
+    this.exportationService.exportCSV(expItems, 'Hoffaz-Student program subscription requests ', data, headerLabels);
   }
 
   deleteStudentByIds() {

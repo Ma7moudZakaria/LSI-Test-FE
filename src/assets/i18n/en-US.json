@@ -779,9 +779,12 @@
     "AVAILABLE_CHANGE_TIME_REQUESTS": "Available time change requests",
     "REJECT_TEACHER": "Reject Teacher",
     "FROM_PROGRAM": "From program",
-    "REASON_REJECT": "Reason reject",
+    "REASON_REJECT": "Input Reason reject",
+    "WILL_REASON_REJECT": "The teacher's withdrawal request will be rejected ",
+    "REQUEST_DATE": "Request Date",
+    "REJECT_REASON": "Reason reject",
     "NEW_REQUEST": "New request",
-    "REJECT_TEXT" : "request will be rejected"
+    "REJECT_TEXT": "request will be rejected"
   },
   "TEACHER_DROP_OUT": {
     "SUBSCRIBERS": "Subscibe",
@@ -827,7 +830,7 @@
     "MEETING": "Meeting",
     "REJECT": "Reject",
     "ACCEPT": "Accept",
-    "REJECT_REASON":"Reject Reason"
+    "REJECT_REASON": "Reject Reason"
   },
   "STUDENT_VACATION": {
     "NEW_VACATION_REQUESTS": "New requests",
@@ -893,5 +896,13 @@
     "REJECT_REASON":"Reject Reason",
     "STUDENT_REJECTED": "The student's withdrawal request will be rejected",
     "REJECT_REASON_LENGHT":"Reason Must be less than or equal 256 character"
+  },
+  "STUDENT_SUBSCRIPTION": {
+    "ACCEPT_EXAMP": "Accept EXAMP",
+    "QUEST_NUM": "Question Number",
+    "LENGTH": "length",
+    "NEXT": "Next",
+    "ANSWER_FINISHED": "Is the answer finished",
+    "NO_EXAM": "No Exam Found"
   }
 }
