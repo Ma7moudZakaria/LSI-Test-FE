@@ -817,6 +817,8 @@
     "REJECT": "رفض",
     "REJECTION_APPLICATION": "رفض الطلب",
     "TEACHER_REJECTED": "سيتم رفض طلب انسحاب المعلم ",
+    "TEACHER_JOIN_REJECTED": "سيتم رفض طلب إنضمام المعلم ",
+    "STUDENT_JOIN_REJECTED": "سيتم رفض طلب إنضمام المعلم ",
     "FROM_PROG": "من برنامج",
     "REJECTED_REASON": "سبب الرفض",
     "VALIDATIONDATE": "تاريخ البداية يجب ان يكون اقل من تاريخ النهاية ",
@@ -826,6 +828,7 @@
   "TEACHER_SYSTEM_SUBSCRIPTION": {
     "REQUEST_DATE": "تاريخ الطلب",
     "MEETING": "المقابلة",
+    "INTERVIEW_TIME": "وقت المقابلة",
     "REJECT": "رفض",
     "ACCEPT": "قبول",
     "REJECT_REASON": "سبب الرفض"

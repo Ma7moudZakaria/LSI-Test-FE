@@ -819,6 +819,8 @@
     "REJECT": "Reject",
     "REJECTION_APPLICATION": "Rejection  request",
     "TEACHER_REJECTED": "The teacher's withdrawal request will be rejected",
+    "TEACHER_JOIN_REJECTED":  "The teacher's Join request will be rejected",
+    "STUDENT_JOIN_REJECTED":  "The student's Join request will be rejected",
     "FROM_PROG": "From Program",
     "REJECTED_REASON": "Reject Reason",
     "VALIDATIONDATE": "Datefrom  should less than dateto ",
@@ -827,7 +829,8 @@
   },
   "TEACHER_SYSTEM_SUBSCRIPTION": {
     "REQUEST_DATE": "Request Date",
-    "MEETING": "Meeting",
+    "MEETING": "Meeting",    
+    "INTERVIEW_TIME": "Interview Time",
     "REJECT": "Reject",
     "ACCEPT": "Accept",
     "REJECT_REASON": "Reject Reason"

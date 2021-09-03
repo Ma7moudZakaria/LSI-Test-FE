@@ -38,7 +38,7 @@
         <span>
           {{'GENERAL_DROP_OUT_REQUEST.REQUEST_REASON' | translate}} :
         </span>
-        <span class="program_user bold mb-0 "  *ngIf="!teacherDropOutRequestModel.reason">{{'GENERAL_DROP_OUT_REQUEST.NO_DATA' | translate}} </span>
+        <span class="program_user bold mb-0 "  *ngIf="teacherDropOutRequestModel.reason === null">{{'GENERAL_DROP_OUT_REQUEST.NO_DATA' | translate}} </span>
         <span class="program_user bold mb-0 ">{{ teacherDropOutRequestModel.reason }}</span>
         </p>
      
