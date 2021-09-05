@@ -922,7 +922,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
      let toDayHijriInterviewDate = this.dateFormatterService.GetTodayHijri();
      toDayHijriInterviewDate.day= toDayHijriInterviewDate.day + 1 ;
      toDayHijriInterviewDate.month= toDayHijriInterviewDate.month + 1 ;
-     toDayHijriInterviewDate.year= toDayHijriInterviewDate.year + 1 ;
+     toDayHijriInterviewDate.year= toDayHijriInterviewDate.year;
      this.minHijriInterviewDate = toDayHijriInterviewDate;
      console.log("maxHijri",this.maxHijriDate);
   }
