@@ -1,0 +1,58 @@
+@import '../../../../../../../../assets/scss/buttons';
+.head{
+  font-size: 1.25rem;
+  color:#3A3A3A;
+  font-family: Almarai-Bold;
+}
+.label{
+  width: 100%;
+  color: #3A3A3A;
+  font-family: Almarai-Bold;
+  font-size: 0.875rem;
+}
+.data_input{
+  font-family: Almarai-Bold;
+  color: #CB9118;
+  font-size: 0.875rem;
+}
+.data_label{
+  width: 100%;
+  color: #8D8D8D;
+  font-family: Almarai-Bold;
+
+  font-size: 0.875rem;
+}
+
+.alert{
+  margin: 0 !important;
+  padding: 0;
+  font-size: 12px;
+}
+.title_add{
+  font-size: 20px;
+  padding-top: 10%;
+  padding-bottom: 15px;
+}
+.DataForm{
+  height: 70vh;
+}
+.label,.data_label{
+  &:lang(ar){
+    text-align: right;
+  }
+  &:lang(en){
+    text-align: left;
+  }}
+.save-btn, .cancel-btn{
+  height: 2.31rem;
+  margin: 1rem;
+
+}
+.DataForm{
+  &:lang(ar){
+    text-align: right !important;
+  }
+  &:lang(en){
+    text-align: left !important;
+  }
+}

@@ -44,6 +44,9 @@ import { StudentDropOutTabRequestComponent } from './components/student-program-
 import { StudentDropOutRequestRejectedComponent } from './components/student-program-request-view/stu-request-details/student-admin-drop-out-request/student-drop-out-request-rejected/student-drop-out-request-rejected.component';
 import { StudentAdvancedSearchComponent } from './components/student-program-request-view/stu-request-details/student-admin-drop-out-request/student-advanced-search/student-advanced-search.component';
 import { StudentAdminDropOutRequestComponent } from './components/student-program-request-view/stu-request-details/student-admin-drop-out-request/student-admin-drop-out-request.component';
+import { TeacherAppointmentAdvancedSearchComponent } from './components/teacher-program-request-view/teacher-request-details/chang-time-request/teacher-appointment-advanced-search/teacher-appointment-advanced-search.component';
+import { TeacherAppointmentRejectComponent } from './components/teacher-program-request-view/teacher-request-details/chang-time-request/teacher-appointment-reject/teacher-appointment-reject.component';
+import { AppointmentRequestsTabComponent } from './components/teacher-program-request-view/teacher-request-details/chang-time-request/appointment-requests-tab/appointment-requests-tab.component';
 
 // @NgModule({
 //   declarations: [AdminMessagingViewComponent, ScientificProblemsComponent, AddScientifiProblemReplyComponent,
@@ -62,7 +65,7 @@ import { StudentAdminDropOutRequestComponent } from './components/student-progra
     ChangTimeRequestComponent, TeacherJionProgramTabRequestComponent, StuVacationsRequestComponent, StuMovingRequestComponent
         , TeacherJionTabRequestComponent, StuRejectedComponent, TeacheRejectedComponent, AdvancedSearchTeacherComponent, TeacherSystemSubscriptionRejectedComponent, StudentVacationRequestTabComponent, StudentProgramVacationRejectComponent, StudentProgramVacationAdvancedSearchComponent
         , TeacherDropOutTabRequestComponent, TeacherDropOutRequestRejectedComponent, StudentAdminDropOutRequestComponent, StudentDropOutTabRequestComponent,
-        StudentDropOutRequestRejectedComponent, StudentAdvancedSearchComponent],
+        StudentDropOutRequestRejectedComponent, StudentAdvancedSearchComponent, TeacherAppointmentAdvancedSearchComponent, TeacherAppointmentRejectComponent, AppointmentRequestsTabComponent],
   imports: [
     CommonModule,
     FormsModule,

@@ -1,0 +1,75 @@
+<div class="row scientific-problem-grid" *ngIf='this.userRole== "Super Admin"'>
+  <div class="col-9 d-flex justify-content-start">
+    <ngb-pagination
+      [maxSize]="3"
+      [collectionSize]="totalCount"
+      [(page)]="teacherAppointmentFilterRequestModel.page"
+      [pageSize]="teacherAppointmentFilterRequestModel.take"
+      [rotate]="true" [boundaryLinks]="true"
+      (pageChange)="onTeacherAppointmentPageChange()">
+    </ngb-pagination>
+
+    <button [ngClass]="{
+          'default_btn': teacherAppointmentFilterRequestModel.sortField != 'userNameAr' && teacherAppointmentFilterRequestModel.sortField != 'UserNameEn',
+           'asend_desend_btn' : this.teacherAppointmentFilterRequestModel.sortField != 'requestdate' }"
+            (click)='sortTeacherAppointmentByName()'>
+      {{'User_Requests.SORT_NAME' | translate}}
+      <span
+        *ngIf='this.teacherAppointmentFilterRequestModel.sortField != "userNameAr" && this.teacherAppointmentFilterRequestModel.sortField != "UserNameEn"'>
+                  <img class="asend_btn" src="../../../../assets/images/sc-problem/Group 18449.svg">
+          </span>
+      <span *ngIf='sortTeacherAppointmentByNameOrderType() == "asend"'>
+              <img class="asend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+          </span>
+      <span *ngIf='sortTeacherAppointmentByNameOrderType() == "desend"'>
+              <img class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+          </span>
+    </button>
+    <button
+      [ngClass]="{'asend_desend_btn': teacherAppointmentFilterRequestModel.sortField != 'userNameAr' && teacherAppointmentFilterRequestModel.sortField != 'UserNameEn', 'default_btn' : this.teacherAppointmentFilterRequestModel.sortField != 'requestdate'}"
+      (click)='sortByTeacherAppointmentRequestDate()'>
+      {{'User_Requests.SORT_DATE' | translate}}
+
+      <span *ngIf='this.teacherAppointmentFilterRequestModel.sortField != "requestdate"'>
+              <img class="asend_btn" src="../../../../assets/images/sc-problem/Group 18449.svg">
+          </span>
+      <span *ngIf='sortByTeacherAppointmentRequestDateOrderType() == "asend"'>
+              <img class="asend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+          </span>
+      <span *ngIf='sortByTeacherAppointmentRequestDateOrderType() == "desend"'>
+              <img class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+          </span>
+    </button>
+  </div>
+  <div class="col-3 pl-4 text-right align-self-center">
+    <mat-checkbox class="example-margin ml-1 mr-1 scProblem"
+                  [checked]="allSelected"
+                  [indeterminate]="someTeacherAppointmentItemsChecked()"
+                  (change)="setTeacherAppointmentAllChecked($event.checked)"></mat-checkbox>
+    <a class=" ml-2 mr-2" [class.disabled]='!enableTeacherAppointmentSelectOperations()'
+       [ngClass]="{'dimmed': teacherAppointmentRequestsEnum === teacherAppointmentRequestTabTypeSelected.Accept ||  teacherAppointmentRequestsEnum === teacherAppointmentRequestTabTypeSelected.Rejected}">
+      <i (click)='acceptAllTeacherAppointmentCheckedEvent()' class="fa fa-check fa-lg "></i>
+
+    </a>
+    <a class=" ml-1 mr-1" [class.disabled]='!enableTeacherAppointmentSelectOperations()'>
+      <img class="exportIcon" (click)='exportStudentCSV()'
+           src="../../../../assets/images/sc-problem/exporticon.svg">
+    </a>
+  </div>
+</div>
+
+
+<mat-grid-list cols="{{numberPerRow}}" rowHeight="3:3">
+  <ng-container *ngIf='this.userRole== "Super Admin"'>
+    <mat-grid-tile *ngFor='let item of teacherAppointmentRequestsItems'>
+      <app-teacher-appointment-request-card class="card" [teacherAppointmentModel]='item'
+                                            (rejectTeacherAppointmentRequest)="rejectTeacherAppointmentReq($event)"
+                                            (acceptTeacherAppointmentRequest)="acceptTeacherAppointmentReq($event)"
+                                            [typeEnum]='teacherAppointmentRequestsEnum'
+                                            (updateAllItemsChecked)='updateAllItemsChecked()'
+      ></app-teacher-appointment-request-card>
+    </mat-grid-tile>
+  </ng-container>
+
+
+</mat-grid-list>
