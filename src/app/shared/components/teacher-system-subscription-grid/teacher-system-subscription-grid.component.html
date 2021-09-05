@@ -11,10 +11,10 @@
             [boundaryLinks]="true" 
             (pageChange)="onTeacherPageChange()">
             </ngb-pagination>
-      <button  [ngClass]="{'default_btn': teacherSystemSubscriptionFilterRequestModel.sortField != 'userNameAr' && teacherSystemSubscriptionFilterRequestModel.sortField != 'UserNameEn', 'asend_desend_btn' : this.teacherSystemSubscriptionFilterRequestModel.sortField != 'requestdate' }"
+      <button  [ngClass]="{'default_btn': teacherSystemSubscriptionFilterRequestModel.sortField != 'TeacherNameAr' && teacherSystemSubscriptionFilterRequestModel.sortField != 'TeacherNameEn', 'asend_desend_btn' : this.teacherSystemSubscriptionFilterRequestModel.sortField != 'requestdate' }"
       (click)='sortTeacherByName()'>
       {{'User_Requests.SORT_NAME' | translate}} 
-          <span *ngIf='this.teacherSystemSubscriptionFilterRequestModel.sortField != "userNameAr" && this.teacherSystemSubscriptionFilterRequestModel.sortField != "UserNameEn"'>
+          <span *ngIf='this.teacherSystemSubscriptionFilterRequestModel.sortField != "TeacherNameAr" && this.teacherSystemSubscriptionFilterRequestModel.sortField != "TeacherNameEn"'>
                   <img  class="asend_btn" src="../../../../assets/images/sc-problem/Group 18449.svg">
           </span> 
           <span *ngIf='sortTeacherByNameOrderType() == "asend"'>
@@ -24,7 +24,7 @@
               <img  class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
           </span>
       </button>
-      <button  [ngClass]="{'asend_desend_btn': teacherSystemSubscriptionFilterRequestModel.sortField != 'userNameAr' && teacherSystemSubscriptionFilterRequestModel.sortField != 'UserNameEn', 'default_btn' : this.teacherSystemSubscriptionFilterRequestModel.sortField != 'requestdate'}"
+      <button  [ngClass]="{'asend_desend_btn': teacherSystemSubscriptionFilterRequestModel.sortField != 'TeacherNameAr' && teacherSystemSubscriptionFilterRequestModel.sortField != 'TeacherNameEn', 'default_btn' : this.teacherSystemSubscriptionFilterRequestModel.sortField != 'requestdate'}"
       (click)='sortTeacherRequestDate()'> 
        {{'User_Requests.SORT_DATE' | translate}}
        

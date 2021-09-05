@@ -50,14 +50,14 @@ export class TeacherSystemSubscriptionGridComponent implements OnInit {
     this.teacherJoinInput.emit(event);
   }
   sortTeacherByName() {
-    this.teacherSystemSubscriptionFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn';
+    this.teacherSystemSubscriptionFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'TeacherNameAr' : 'TeacherNameEn';
     this.teacherSystemSubscriptionFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
     this.teacherSystemSubscriptionFilterEvent.emit(this.teacherSystemSubscriptionFilterRequestModel);
   }
 
   sortTeacherByNameOrderType() {
-    if ((this.teacherSystemSubscriptionFilterRequestModel.sortField === "userNameAr" || this.teacherSystemSubscriptionFilterRequestModel.sortField === "UserNameEn") && this.teacherSystemSubscriptionFilterRequestModel.sortOrder === 1) { return 'asend' }
-    if ((this.teacherSystemSubscriptionFilterRequestModel.sortField === "userNameAr" || this.teacherSystemSubscriptionFilterRequestModel.sortField === "UserNameEn") && this.teacherSystemSubscriptionFilterRequestModel.sortOrder === -1) { return 'desend' }
+    if ((this.teacherSystemSubscriptionFilterRequestModel.sortField === "TeacherNameAr" || this.teacherSystemSubscriptionFilterRequestModel.sortField === "TeacherNameEn") && this.teacherSystemSubscriptionFilterRequestModel.sortOrder === 1) { return 'asend' }
+    if ((this.teacherSystemSubscriptionFilterRequestModel.sortField === "TeacherNameAr" || this.teacherSystemSubscriptionFilterRequestModel.sortField === "TeacherNameEn") && this.teacherSystemSubscriptionFilterRequestModel.sortOrder === -1) { return 'desend' }
 
     return '';
   }
@@ -112,8 +112,8 @@ export class TeacherSystemSubscriptionGridComponent implements OnInit {
   }
 
   sortTeacherSystemSubscriptionByNameOrderType() {
-    if ((this.teacherSystemSubscriptionFilterRequestModel.sortField === "userNameAr" || this.teacherSystemSubscriptionFilterRequestModel.sortField === "UserNameEn") && this.teacherSystemSubscriptionFilterRequestModel.sortOrder == 1) { return 'asend' }
-    if ((this.teacherSystemSubscriptionFilterRequestModel.sortField === "userNameAr" || this.teacherSystemSubscriptionFilterRequestModel.sortField === "UserNameEn") && this.teacherSystemSubscriptionFilterRequestModel.sortOrder == -1) { return 'desend' }
+    if ((this.teacherSystemSubscriptionFilterRequestModel.sortField === "TeacherNameAr" || this.teacherSystemSubscriptionFilterRequestModel.sortField === "TeacherNameEn") && this.teacherSystemSubscriptionFilterRequestModel.sortOrder == 1) { return 'asend' }
+    if ((this.teacherSystemSubscriptionFilterRequestModel.sortField === "TeacherNameAr" || this.teacherSystemSubscriptionFilterRequestModel.sortField === "TeacherNameEn") && this.teacherSystemSubscriptionFilterRequestModel.sortOrder == -1) { return 'desend' }
 
     return '';
   }
