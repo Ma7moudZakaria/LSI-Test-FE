@@ -39,7 +39,7 @@ export class StudentDetailsViewComponent implements OnInit {
 
 
   getStudentProfile() {
-    console.log("resiveUserId", this.resiveUserId?.usrId)
+    // console.log("resiveUserId", this.resiveUserId?.usrId)
     this.studentProfileService.viewUserProfileDetails(this.resiveUserId?.usrId || '').subscribe(res => {
       if (res.isSuccess) {
         this.studentProfileDetails = res.data as IUserProfile;

@@ -4,7 +4,7 @@
           <app-admin-student-list (userId)="getUserId($event)"></app-admin-student-list>
         </div>
         <div class="col-lg-9  col-md-9 col-sm-12 ">
-          <app-admin-student-tabs-details [studentIdOutput]="studentIdOutput"></app-admin-student-tabs-details>
+          <app-admin-student-tabs-details *ngIf = 'studentIdOutput' [studentIdOutput]="studentIdOutput"></app-admin-student-tabs-details>
         </div>
 
     </div>
