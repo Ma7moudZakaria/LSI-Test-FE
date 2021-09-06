@@ -46,10 +46,10 @@ export class AdminStudentListComponent implements OnInit {
   }
 
   getAllStudentList() {
-    this.adminStudentTabService.getStudenrManagement(this.studentListFilterRequestModel || {}).subscribe(res => {
+    this.adminStudentTabService.getStudentManagement(this.studentListFilterRequestModel || {}).subscribe(res => {
 
       if (res.isSuccess) {
-        // console.log("res",res)
+        console.log("res", res)
         this.studentList = res.data as IAdminStudentTabFilterResponse[];
         let firstId = this.studentList[0].studId;
         console.log("firstId", firstId)
