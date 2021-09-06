@@ -1,12 +1,15 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-model';
 import { IProgramDutyDays } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
+import { IDayTasksProgramDutyDayRequestModel } from 'src/app/core/interfaces/student-program-duties-interfaces/iday-tasks-program-duty-day-request-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { ProgramDayTasksService } from 'src/app/core/services/program-services/program-day-tasks.service';
+import { StudentProgDutiesServiceService } from 'src/app/core/services/student-prog-duties-services/student-prog-duties-service.service';
 
 @Component({
   selector: 'app-student-program-duty-days-task',
@@ -24,8 +27,9 @@ export class StudentProgramDutyDaysTaskComponent implements OnInit {
 
   constructor(
     public languageService: LanguageService,
-    private programDayTasksService: ProgramDayTasksService,
+    private studentProgDutiesServiceService: StudentProgDutiesServiceService,
     public translate: TranslateService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +37,13 @@ export class StudentProgramDutyDaysTaskComponent implements OnInit {
   }
 
   getProgramDutyDays() {
-    this.programDayTasksService.getProgramDayTasks(this.programDutyDay?.id || '').subscribe(res => {
+
+    let model : IDayTasksProgramDutyDayRequestModel  = {
+      stuId:this.route.snapshot.params.id,
+      progDayId:this.programDutyDay?.id 
+    }
+
+    this.studentProgDutiesServiceService.getDayTasksProgramToStudent(model).subscribe(res => {
       if (res.isSuccess) {
         this.programDayTasksLists = res.data as Array<IProgramDayTasksModel>;
         this.setProgrmeDayTask(this.programDayTasksLists[0])

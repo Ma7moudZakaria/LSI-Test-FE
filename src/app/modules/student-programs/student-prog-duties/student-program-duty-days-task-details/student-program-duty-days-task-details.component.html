@@ -20,7 +20,7 @@
      <app-join-exam *ngIf="detailsTypeEnum.TaskTestPhased===taskDetails?.huffazTask" [joinExamModel]="testPhasedDetailsModel" ></app-join-exam>
      <section *ngIf="detailsTypeEnum.TaskRecitation!=taskDetails?.huffazTask && detailsTypeEnum.TaskRecitationStudents!=taskDetails?.huffazTask && detailsTypeEnum.TaskTasmea!=taskDetails?.huffazTask">
         <div  class="row direction-rtl buttons-center justify-content-end">
-            <button   type="submit" class="save-btn" (click)="save()" > 
+            <button *ngIf="detailsTypeEnum.TaskDailyTest!=taskDetails?.huffazTask && detailsTypeEnum.TaskTestPhased != taskDetails?.huffazTask"   type="submit" class="save-btn" (click)="save()" > 
                 {{ "GENERAL.SAVE" | translate }}
             </button>
         </div>
