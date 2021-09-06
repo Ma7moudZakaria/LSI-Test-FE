@@ -892,5 +892,8 @@
     "REQUEST_REASON":"Request Reason",
     "NO_DATA":"No Data",
     "REJECT_REASON":"Reject Reason"
-  }
+  },
+  "JPIN_EXAM":{
+    "ARE_YOU_FINISHED_EXAM":"Are you finished the exam?"
+      }
 }

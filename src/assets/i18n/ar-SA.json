@@ -890,5 +890,8 @@
     "REQUEST_REASON":"سبب الطلب",
     "NO_DATA":"لا يوجد",
     "REJECT_REASON":"سبب الرفض"
+  },
+  "JPIN_EXAM":{
+"ARE_YOU_FINISHED_EXAM":"هل تم الانتهاء من الاجابة ؟"
   }
 }
