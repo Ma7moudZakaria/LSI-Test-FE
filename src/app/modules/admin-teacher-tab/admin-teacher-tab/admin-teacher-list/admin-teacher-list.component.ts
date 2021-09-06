@@ -1,14 +1,14 @@
 /* tslint:disable */
-import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import {DateFormatterService} from 'ngx-hijri-gregorian-datepicker';
-import {BaseSelectedDateModel} from '../../../../core/ng-model/base-selected-date-model';
-import {AdminTeacherTabFilterModel} from '../../../../core/interfaces/teacher-interfaces/admin-teacher-tab-filter-model';
-import {AdminTeacherTabService} from '../../../../core/services/admin-teacher-tab-services/admin-teacher-tab.service';
-import {BaseResponseModel} from '../../../../core/ng-model/base-response-model';
-import {IAdminTeacherTabModel} from '../../../../core/interfaces/teacher-interfaces/iadmin-teacher-tab-model';
-import {LanguageEnum} from '../../../../core/enums/language-enum.enum';
-import {ITeacherStudentViewModel} from '../../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
+import { DateFormatterService } from 'ngx-hijri-gregorian-datepicker';
+import { BaseSelectedDateModel } from '../../../../core/ng-model/base-selected-date-model';
+import { AdminTeacherTabFilterModel } from '../../../../core/interfaces/teacher-interfaces/admin-teacher-tab-filter-model';
+import { AdminTeacherTabService } from '../../../../core/services/admin-teacher-tab-services/admin-teacher-tab.service';
+import { BaseResponseModel } from '../../../../core/ng-model/base-response-model';
+import { IAdminTeacherTabResponseModel } from '../../../../core/interfaces/teacher-interfaces/iadmin-teacher-tab-response-model';
+import { LanguageEnum } from '../../../../core/enums/language-enum.enum';
+import { ITeacherStudentViewModel } from '../../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 
 @Component({
   selector: 'app-admin-teacher-list',
@@ -27,15 +27,17 @@ export class AdminTeacherListComponent implements OnInit {
   selectedDateType: any;
   hijri: boolean = false;
   milady: boolean = false;
-  cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
   selectedIndex = 0;
-  teachersList :IAdminTeacherTabModel[] =[];
+
+  teachersList: IAdminTeacherTabResponseModel[] = [];
   teacherListFilterRequestModel: AdminTeacherTabFilterModel = { techName: '' };
   errorMessage?: string;
+
   constructor(
     public translate: TranslateService,
     private dateFormatterService: DateFormatterService,
-    private adminTeacherTabService :AdminTeacherTabService
+    private adminTeacherTabService: AdminTeacherTabService
 
   ) { }
 
@@ -45,34 +47,34 @@ export class AdminTeacherListComponent implements OnInit {
 
 
 
-  getAllTeachersList(){
-     this.adminTeacherTabService.getTeacherManagement(this.teacherListFilterRequestModel || {}).subscribe(res=>{
-         var response = <BaseResponseModel>res;
-         if (response.isSuccess) {
-           this.teachersList = res.data as IAdminTeacherTabModel[];
-           let firstId=  this.teachersList[0].usrId;
-           let UserModel:ITeacherStudentViewModel ={progName : '',usrId:firstId};
-           this.userId.emit(UserModel);
-           // this.totalCount = this.teacherProgramSubscriptionList.length > 0 ? this.teacherProgramSubscriptionList[0].totalRows : 0;
-           this.teachersList?.forEach(function (item) {
-             // item.requestDate = item.requestDate ? new Date(item.requestDate).toDateString(): '';
-           });
+  getAllTeachersList() {
+    this.adminTeacherTabService.getTeacherManagement(this.teacherListFilterRequestModel || {}).subscribe(res => {
+      var response = <BaseResponseModel>res;
+      console.log("response", response)
+      if (response.isSuccess) {
+        this.teachersList = res.data as IAdminTeacherTabResponseModel[];
+        let firstId = this.teachersList[0].usrId;
+        let UserModel: ITeacherStudentViewModel = { progName: '', usrId: firstId };
+        this.userId.emit(UserModel);
+        // this.teachersList?.forEach(function (item) {
+        //   // item.requestDate = item.requestDate ? new Date(item.requestDate).toDateString(): '';
+        // });
 
-         }
-         else {
-           this.errorMessage = response.message;
-         }
-       },
-       error => {
-         console.log(error);
-       });
-     }
+      }
+      else {
+        this.errorMessage = response.message;
+      }
+    },
+      error => {
+        console.log(error);
+      });
+  }
 
   ToggelAdvancSearch() {
     this.advancedSearch = !this.advancedSearch
   }
-  loadProgramMaterial(id?:string) {
-    let UserModel:ITeacherStudentViewModel ={progName : '',usrId:id};
+  loadProgramMaterial(id?: string) {
+    let UserModel: ITeacherStudentViewModel = { progName: '', usrId: id };
     this.userId.emit(UserModel);
 
   }

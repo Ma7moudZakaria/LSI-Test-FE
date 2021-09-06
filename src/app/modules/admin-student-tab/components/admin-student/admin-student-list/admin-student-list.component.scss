@@ -86,4 +86,14 @@
       }
 
   }
- 
+  .list-group_program-list{
+    &:lang(ar){
+      text-align: right;
+    }
+    &:lang(en){
+      text-align: left;
+    }
+    a{
+      cursor: pointer;
+    }
+  }

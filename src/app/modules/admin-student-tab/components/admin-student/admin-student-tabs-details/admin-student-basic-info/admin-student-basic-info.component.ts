@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { ITeacherStudentViewModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
+import { StudentDetailsViewComponent } from 'src/app/shared/components/student-details-view/student-details-view.component';
 
 @Component({
   selector: 'app-admin-student-basic-info',
@@ -7,10 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminStudentBasicInfoComponent implements OnInit {
 
-  constructor() { }
+  @Output() adminViewOutput: boolean | undefined;
+
+  @ViewChild(StudentDetailsViewComponent) studentDetailsViewChild: StudentDetailsViewComponent | undefined;
+
+  @Input() studentIdOutput: ITeacherStudentViewModel | undefined;
   adminView: boolean = true;
 
+  constructor() { }
   ngOnInit(): void {
+  }
+
+  getBasicDetails() {
+    if (this.studentDetailsViewChild) {
+      this.studentDetailsViewChild.resiveUserId = this.studentIdOutput;
+      this.studentDetailsViewChild.getStudentProfile();
+    }
   }
 
 }

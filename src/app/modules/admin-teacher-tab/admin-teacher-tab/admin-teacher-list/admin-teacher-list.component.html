@@ -97,7 +97,9 @@
 
         <img src="../../../../../assets/images/Profile.svg" class="user__image" *ngIf="!teacher.avr">
         <img [src]="teacher.avr" class="user__image" *ngIf="teacher.avr">
-        <h2 class="user__name">{{ translate.currentLang == langEnum.en ?teacher.techNameEn : teacher.techNameAr}}</h2>
+        <p class="user__name ellipsis px-1"
+        title="{{ translate.currentLang == langEnum.en ?teacher.techNameEn : teacher.techNameAr}}"
+        >{{ translate.currentLang == langEnum.en ?teacher.techNameEn : teacher.techNameAr}}</p>
 
         <ngb-rating [(rate)]="teacher?.rte || starsSelected" [max]="5" [readonly]="true">
           <ng-template let-fill="fill" let-index="index">
