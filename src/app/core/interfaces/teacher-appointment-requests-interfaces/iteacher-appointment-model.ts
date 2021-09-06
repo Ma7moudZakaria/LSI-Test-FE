@@ -13,4 +13,12 @@ export interface ITeacherAppointmentModel {
   checked?:boolean;
   arProgBatchName?:string;
   enProgBatchName?:string;
+  newFromTime?:string;
+  newToTime?:string;
+  oldDayAr?:string;
+  oldDayEn?:string;
+  newDayAr?:string;
+  newDayEn?:string;
+  oldFromTime?:string;
+  oldToTime?:string;
 }

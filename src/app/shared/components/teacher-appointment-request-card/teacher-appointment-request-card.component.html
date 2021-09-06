@@ -37,33 +37,20 @@
       </div>
     </div>
     <div class="">
-      <span class="number_request"> {{'STUDENT_VACATION.VACATION_DATE' | translate}} </span><br>
-      <!--      <div class="d-flex align-items-center justify-content-between">-->
-      <!--        <span>{{'STUDENT_VACATION.FROM' | translate}}</span>-->
-      <!--        <span class="bold">-->
-      <!--              {{studentSubscripModel.vacStartDate  | date: 'dd/MM/yyyy'}}-->
-      <!--            </span>-->
-      <!--        <span>{{'STUDENT_VACATION.TO' | translate}}</span>-->
-      <!--        <span class="bold">-->
-      <!--              {{studentSubscripModel.vacEndDate  | date: 'dd/MM/yyyy'}}-->
-      <!--            </span>-->
-      <!--      </div>-->
+      <span class="number_request"> {{'TEACHER_APPOINTMENT.OLD_TIMES' | translate}} </span><br>
+      <div class="d-flex align-items-center justify-content-between">
+        <span class="bold">{{translate.currentLang === langEnum.en ? teacherAppointmentModel.oldDayEn: teacherAppointmentModel.oldDayAr}} {{'TEACHER_APPOINTMENT.FROM' | translate}}  {{teacherAppointmentModel.oldFromTime}}  {{'TEACHER_APPOINTMENT.TO' | translate}}  {{teacherAppointmentModel.oldToTime}}</span>
+      </div>
+      <span class="number_request"> {{'TEACHER_APPOINTMENT.NEW_TIMES' | translate}} </span><br>
+            <div class="d-flex align-items-center justify-content-between">
+              <span class="bold">{{translate.currentLang === langEnum.en ? teacherAppointmentModel.newDayEn: teacherAppointmentModel.newDayAr}} {{'TEACHER_APPOINTMENT.FROM' | translate}}  {{teacherAppointmentModel.newFromTime}}  {{'TEACHER_APPOINTMENT.TO' | translate}}  {{teacherAppointmentModel.newToTime}}</span>
+            </div>
     </div>
 
-
-    <ng-container *ngIf="typeEnum === tabTypeSelected.Pending">
-      <!--      <div class="vacation_resason ">-->
-      <!--        <span class="number_request"> {{'STUDENT_VACATION.VACATION_REASON' | translate}} </span>-->
-      <!--        <p class="d-block bold">{{studentSubscripModel.vacReason}}</p>-->
-      <!--      </div>-->
-    </ng-container>
-
     <ng-container *ngIf="typeEnum === tabTypeSelected.Rejected">
-      <div class="program_rejected ">
-
-        <p *ngIf="typeEnum === tabTypeSelected.Rejected"><span> {{'STUDENT_VACATION.REJECT_REASON' | translate}} </span>
-          : {{teacherAppointmentModel.rejReason}}</p>
-
+      <div class="program_rejected " *ngIf="typeEnum === tabTypeSelected.Rejected">
+        <span class="number_request"> {{'STUDENT_VACATION.REJECT_REASON' | translate}} </span><br>
+        <span class="bold">{{teacherAppointmentModel.rejReason}}</span>
       </div>
     </ng-container>
 

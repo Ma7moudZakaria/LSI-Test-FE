@@ -902,5 +902,11 @@
     "REJECT_REASON":"سبب الرفض",
     "STUDENT_REJECTED": "سيتم رفض طلب انسحاب الطالب ",
     "REJECT_REASON_LENGHT":"السبب يجب أن يكون اقل من أو يساوى 256 حرف"
-  }
+  },
+  "TEACHER_APPOINTMENT": {
+  "NEW_TIMES": "المواعيد الجديدة",
+    "FROM": "من",
+    "TO": "الى",
+    "OLD_TIMES": "المواعيد القديمة"
+}
 }

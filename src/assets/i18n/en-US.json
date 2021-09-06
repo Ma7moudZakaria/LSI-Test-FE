@@ -904,5 +904,11 @@
     "NEXT": "Next",
     "ANSWER_FINISHED": "Is the answer finished",
     "NO_EXAM": "No Exam Found"
+  },
+  "TEACHER_APPOINTMENT": {
+    "NEW_TIMES": "New Times",
+    "FROM": "FROM",
+    "TO": "To",
+    "OLD_TIMES": "Old Times"
   }
 }
