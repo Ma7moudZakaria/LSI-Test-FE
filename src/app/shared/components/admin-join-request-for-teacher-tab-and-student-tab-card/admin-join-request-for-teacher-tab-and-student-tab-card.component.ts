@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {LanguageEnum} from '../../../core/enums/language-enum.enum';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-admin-join-request-for-teacher-tab-and-student-tab-card',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminJoinRequestForTeacherTabAndStudentTabCardComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit(): void {
-  }
+  langEnum = LanguageEnum;
+  requestDate:string | undefined;
+
+
+  constructor(public translate: TranslateService) { }
+
+  ngOnInit(): void {}
+
+
 
 }

@@ -75,7 +75,8 @@
     "APPLICANT_NAME": "Applicant name",
     "REQUEST_NUMBER": "Request Number",
     "ADVANCED_SEARCH": "Advanced Search",
-    "NEW_ORDERS": "New Orders"
+    "NEW_ORDERS": "New Orders",
+    "ACTIVE": "Active"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
@@ -168,7 +169,15 @@
     "STUDENT_NUMBER": "Number of student",
     "TEACHER_NUMBER": "Number of teacher ",
     "THE_EXAM": "The Exams",
-    "STAGE_EXAM": "Stage Exam"
+    "STAGE_EXAM": "Stage Exam",
+    "KICK_OFF" : "Kick off",
+    "FREE" : "Free",
+    "PLANNED_WORK_HOURS" : "Planned work hours",
+    "ACTUAL_WORKING_HOURS": "Actual working hours",
+    "NUMBER_OF_STUDENTS" : "Number of students",
+    "HIS_STUDENTS" : "His Students",
+    "DEGREE": "Degree",
+    "DATE" : "Date"
   },
   "VIEW_PROGRAMS_BASIC_INFO": {
     "PROGRAM_DATE": "Program Duration",

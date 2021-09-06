@@ -31,7 +31,7 @@
 <div class="row fix_margin w-100" >
   <div class="col-12 px-0 ">
 
-    <app-admin-teacher-basic-info *ngIf="showTap == 'BASEINFO'"></app-admin-teacher-basic-info>
+    <app-admin-teacher-basic-info [teacherIdOutput]="teacherIdOutput" *ngIf="showTap == 'BASEINFO'"></app-admin-teacher-basic-info>
     <app-admin-teacher-program *ngIf="showTap == 'PROGRAM'"></app-admin-teacher-program>
     <app-admin-teacher-drop-out *ngIf="showTap == 'DROP_OUT'"></app-admin-teacher-drop-out>
     <app-admin-teacher-join-request *ngIf="showTap == 'JOIN'"></app-admin-teacher-join-request>

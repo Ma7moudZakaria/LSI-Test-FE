@@ -1,7 +1,7 @@
 <div class="list-group list-group_program-list">
   <div class="d-flex align-items-center mb-4 justify-content-between">
     <p class="m-0">{{'PROGRAMS_LIST.PROGRAMS' | translate}}</p>
-    <button class="cancel-btn" (click)="showOverlay()">إضافة برنامج للمعلم</button>
+    <button class="cancel-btn" (click)="showOverlay()">{{'PROGRAMS_LIST.ADD_PROGRAM' | translate}}</button>
   </div>
 
   <app-search-input ></app-search-input>
@@ -12,7 +12,7 @@
        [class.active]="selectedIndex === i"
        >
 
-      <span>اسم البرنامج</span>
+      <span>{{'PROGRAMS_LIST.PROGRAM_NAME' | translate}}</span>
       <!-- <span>{{ translate.currentLang === langEnum.en ? program.engName : program.arabName}}</span>                 -->
 
     </a>
