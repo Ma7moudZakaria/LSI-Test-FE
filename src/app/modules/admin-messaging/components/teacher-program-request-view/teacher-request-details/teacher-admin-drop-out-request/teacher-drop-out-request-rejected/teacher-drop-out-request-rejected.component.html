@@ -22,5 +22,9 @@
                 </button>
             </div>
         </section>
+
+        <div *ngIf="resultMessage.message" class="alert alert-{{ resultMessage.type }} my-4 py-2">
+            {{ resultMessage.message }}
+        </div>
    </div>
 </form>

@@ -92,8 +92,8 @@
     </a>
         <ng-container *ngIf="advancedSearch">
           <section class="internal_scroll_list_group">
-            <div class="w-100 row contanier_matrial-card ">
-              <div class="col-lg-12 mb-3">
+            <div class="w-100  contanier_matrial-card ">
+              <div class="w-100 mb-3">
                 <mat-accordion
                   cdkDropList
                   #unassignedList="cdkDropList"
@@ -128,10 +128,8 @@
                     </div>
                     </ng-container>
                     <ng-container *ngIf="!programsList || programsList.length ===0">
-                      <div class="internal_scroll_list_group" >
-                                      <a class="list-group-item active d-flex">
-                                          <span>{{"PROGRAM_BATCHES.NO_PROGRAMS" | translate}}</span>
-                                      </a>
+                      <div class="text-center" >
+                          <span>{{"PROGRAM_BATCHES.NO_PROGRAMS" | translate}}</span>
                     </div>
                     </ng-container>
                   </mat-expansion-panel>

@@ -7,6 +7,7 @@ export interface ITeacherSystemSubscription {
     requestDate?:string;   
     interviewiHijri?:string;   
     interviewGregorian?:string;   
+    interviewTime?:string;   
     checked?:boolean;
     avatarLink?: string;
     totalRows?: number;

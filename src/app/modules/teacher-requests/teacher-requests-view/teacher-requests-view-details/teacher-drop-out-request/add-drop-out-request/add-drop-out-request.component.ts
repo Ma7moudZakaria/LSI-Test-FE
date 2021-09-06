@@ -12,6 +12,7 @@ import { ITeacherMyProgramsListModel } from 'src/app/core/interfaces/teacher-pro
 import { ITeacherMyProgramsRequestModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iteacher-my-programs-request-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
 import { TeacherDropOutRequestService } from 'src/app/core/services/teacher-drop-out-request-services/teacher-drop-out-request.service';
 import { TeacherProgramSubscriptionServicesService } from 'src/app/core/services/teacher-program-subscription-services/teacher-program-subscription-services.service';
@@ -36,6 +37,7 @@ export class AddDropOutRequestComponent implements OnInit {
   constructor(
     private programSubscriptionService: TeacherProgramSubscriptionServicesService, 
     private fb: FormBuilder,
+    private alertify: AlertifyService , 
     private teacherDropOutRequestService: TeacherDropOutRequestService,
     public translate: TranslateService,
   ) { }
@@ -66,13 +68,25 @@ export class AddDropOutRequestComponent implements OnInit {
     // }
 
     if (this.dropOutForm.valid){
+      this.resultMessage= {};
+      if (this.createDropOut.dropOutReason && this.createDropOut.dropOutReason?.length > 256){
+          this.resultMessage = {
+            message: this.translate.instant('GENERAL_DROP_OUT_REQUEST.REJECT_REASON_LENGHT'),
+            type: BaseConstantModel.DANGER_TYPE
+          }
+
+          return;
+      }
+
       this.createDropOut.usrId = this.currentUser?.id;
       this.teacherDropOutRequestService.createTeacherDropOutRequest(this.createDropOut || {}).subscribe(res => {
         if (res.isSuccess) {
           this.closeCreateTeacherDropOutRequest();
           this.isSubmit = false;
+          this.alertify.success(res.message || '');
         }
-        else{
+        else {
+          this.alertify.error(res.message || '');        
           this.isSubmit = false;
           this.resultMessage = {
             message: res.message,
@@ -118,8 +132,8 @@ export class AddDropOutRequestComponent implements OnInit {
   buildForm() {
     this.dropOutForm = this.fb.group(
       {
-        batch: ['', [Validators.required]],
-        dropOutReason: ['', [Validators.required]]
+        batch: ['', [Validators.required, Validators.maxLength(256)]],
+        dropOutReason: ['', [Validators.required, Validators.maxLength(256)]]
       }
     )
   }

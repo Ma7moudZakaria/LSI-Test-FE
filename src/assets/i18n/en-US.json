@@ -170,14 +170,14 @@
     "TEACHER_NUMBER": "Number of teacher ",
     "THE_EXAM": "The Exams",
     "STAGE_EXAM": "Stage Exam",
-    "KICK_OFF" : "Kick off",
-    "FREE" : "Free",
-    "PLANNED_WORK_HOURS" : "Planned work hours",
+    "KICK_OFF": "Kick off",
+    "FREE": "Free",
+    "PLANNED_WORK_HOURS": "Planned work hours",
     "ACTUAL_WORKING_HOURS": "Actual working hours",
-    "NUMBER_OF_STUDENTS" : "Number of students",
-    "HIS_STUDENTS" : "His Students",
+    "NUMBER_OF_STUDENTS": "Number of students",
+    "HIS_STUDENTS": "His Students",
     "DEGREE": "Degree",
-    "DATE" : "Date"
+    "DATE": "Date"
   },
   "VIEW_PROGRAMS_BASIC_INFO": {
     "PROGRAM_DATE": "Program Duration",
@@ -524,7 +524,7 @@
     "DASHBORD": "DashBoard",
     "MYPROGRAMS": "Myprograms",
     "SCIENTIFIC_ARTICLES": "Scientific Materials",
-    "VACATION_REQUEST": "My Messages",
+    "VACATION_REQUEST": "Requests",
     "EXAM_RESULTS": "Exam Results",
     "RESULTS": "RESULTS",
     "PRINT_CERTIFICATION": "Print certification",
@@ -790,8 +790,12 @@
     "AVAILABLE_CHANGE_TIME_REQUESTS": "Available time change requests",
     "REJECT_TEACHER": "Reject Teacher",
     "FROM_PROGRAM": "From program",
-    "REASON_REJECT": "Reason reject",
-    "NEW_REQUEST": "New request"
+    "REASON_REJECT": "Input Reason reject",
+    "WILL_REASON_REJECT": "The teacher's withdrawal request will be rejected ",
+    "REQUEST_DATE": "Request Date",
+    "REJECT_REASON": "Reason reject",
+    "NEW_REQUEST": "New request",
+    "REJECT_TEXT": "request will be rejected"
   },
   "TEACHER_DROP_OUT": {
     "SUBSCRIBERS": "Subscibe",
@@ -826,6 +830,8 @@
     "REJECT": "Reject",
     "REJECTION_APPLICATION": "Rejection  request",
     "TEACHER_REJECTED": "The teacher's withdrawal request will be rejected",
+    "TEACHER_JOIN_REJECTED": "The teacher's Join request will be rejected",
+    "STUDENT_JOIN_REJECTED": "The student's Join request will be rejected",
     "FROM_PROG": "From Program",
     "REJECTED_REASON": "Reject Reason",
     "VALIDATIONDATE": "Datefrom  should less than dateto ",
@@ -835,6 +841,7 @@
   "TEACHER_SYSTEM_SUBSCRIPTION": {
     "REQUEST_DATE": "Request Date",
     "MEETING": "Meeting",
+    "INTERVIEW_TIME": "Interview Time",
     "REJECT": "Reject",
     "ACCEPT": "Accept",
     "REJECT_REASON": "Reject Reason"
@@ -897,11 +904,6 @@
     "AR_NAME_CATEGORY": "Category name in arabic",
     "EN_NAME_CATEGORY": "Category name in english"
   },
-  "GENERAL_DROP_OUT_REQUEST": {
-    "REQUEST_REASON": "Request Reason",
-    "NO_DATA": "No Data",
-    "REJECT_REASON": "Reject Reason"
-  },
   "TEACHER_TAP": {
     "TEACHER_NAME": "Teacher Name",
     "PROGRAM": "Programs",
@@ -911,5 +913,20 @@
     "DROP_OUT": "drop out requests",
     "JOIN": "Join Requests",
     "VACATION": "Vacation"
+  },
+  "GENERAL_DROP_OUT_REQUEST": {
+    "REQUEST_REASON": "Request Reason",
+    "NO_DATA": "No Data",
+    "REJECT_REASON": "Reject Reason",
+    "STUDENT_REJECTED": "The student's withdrawal request will be rejected",
+    "REJECT_REASON_LENGHT": "Reason Must be less than or equal 256 character"
+  },
+  "STUDENT_SUBSCRIPTION": {
+    "ACCEPT_EXAMP": "Accept EXAMP",
+    "QUEST_NUM": "Question Number",
+    "LENGTH": "length",
+    "NEXT": "Next",
+    "ANSWER_FINISHED": "Is the answer finished",
+    "NO_EXAM": "No Exam Found"
   }
 }
