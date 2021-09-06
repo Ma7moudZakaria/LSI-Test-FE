@@ -83,6 +83,7 @@ import { TeacherStuProgramForSubscriptionGridComponent } from './components/teac
 import { TeacherDetailsViewComponent } from './components/teacher-details-view/teacher-details-view.component';
 import { StudentDetailsViewComponent } from './components/student-details-view/student-details-view.component';
 import { FormatTimePipe } from '../core/pipe/format-time.pipe';
+import { JoinExamComponent } from './components/program-day-tasks/join-exam/join-exam.component';
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
     SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,
@@ -132,7 +133,8 @@ import { FormatTimePipe } from '../core/pipe/format-time.pipe';
         StudentProgramVacationCardStudentViewComponent,
         TeacherDetailsViewComponent,
         StudentDetailsViewComponent,
-        FormatTimePipe
+        FormatTimePipe,
+        JoinExamComponent
     ],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
@@ -160,7 +162,7 @@ import { FormatTimePipe } from '../core/pipe/format-time.pipe';
     ProgramSubscriptionGridComponent
     , TeacherSystemSubscriptionGridComponent, StudentProgramVacationGridComponent, TeacherStudentProgramForSubscriptionComponent,
     StudentDropOutGridComponent,
-      TeacherDropOutRequestAdminGridComponent, TeacherDetailsViewComponent, StudentDetailsViewComponent, FormatTimePipe
+      TeacherDropOutRequestAdminGridComponent, TeacherDetailsViewComponent, StudentDetailsViewComponent, FormatTimePipe,JoinExamComponent
   ]
 })
 export class SharedModule { }

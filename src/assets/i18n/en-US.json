@@ -76,7 +76,8 @@
     "REQUEST_NUMBER": "Request Number",
     "ADVANCED_SEARCH": "Advanced Search",
     "NEW_ORDERS": "New Orders",
-    "QUESTION":"The question"
+    "QUESTION":"The question",
+    "NEXT":"Next"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",

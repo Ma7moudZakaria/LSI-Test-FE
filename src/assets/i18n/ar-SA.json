@@ -78,7 +78,8 @@
     "TO": "إلى",
     "ADVANCED_SEARCH": " بحث متقدم ",
     "NEW_ORDERS": "الطلبات الجديده",
-    "QUESTION":"السؤال"
+    "QUESTION":"السؤال",
+    "NEXT":"التالى"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
