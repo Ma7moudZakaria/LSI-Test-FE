@@ -12,10 +12,18 @@ export class ProgramDayTaskRepetitionComponent implements OnInit {
   @Input() isView: boolean = false;
   @Input() dutyDaysTaskViewMood: number = ProgramDutyDaysTaskViewMoodEnum.admin;
   programDutyDaysTaskViewMoodEnum=ProgramDutyDaysTaskViewMoodEnum;
+  studentCounter:number=0;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  repeat(){
+this.studentCounter=this.studentCounter +1
+  }
+
+  reseat(){
+    this.studentCounter=0;
+  }
 }
