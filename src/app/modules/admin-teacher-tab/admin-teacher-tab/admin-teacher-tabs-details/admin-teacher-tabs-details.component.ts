@@ -5,6 +5,7 @@ import { BaseMessageModel } from '../../../../core/ng-model/base-message-model';
 import { ProgramService } from '../../../../core/services/program-services/program.service';
 import { ITeacherStudentViewModel } from '../../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 import { AdminTeacherBasicInfoComponent } from './admin-teacher-basic-info/admin-teacher-basic-info.component';
+import { AdminTeacherDropOutComponent } from './admin-teacher-drop-out/admin-teacher-drop-out.component';
 
 @Component({
   selector: 'app-admin-teacher-tabs-details',
@@ -16,6 +17,7 @@ export class AdminTeacherTabsDetailsComponent implements OnInit {
   @Output() refreshProgListEvent = new EventEmitter();
   @ViewChild(AdminTeacherBasicInfoComponent) adminTeacherbasicInfoChild: AdminTeacherBasicInfoComponent | undefined;
   // @ViewChild(BasicInformationComponent) basicInfoCompChild:BasicInformationComponent | undefined;
+  @ViewChild(AdminTeacherDropOutComponent) dropOutChild: AdminTeacherDropOutComponent | undefined;
 
   @Input() programModel: IprogramsModel | undefined;
 
@@ -54,6 +56,12 @@ export class AdminTeacherTabsDetailsComponent implements OnInit {
       case 'PROGRAM':
         break;
       case 'DROP_OUT':
+
+        if (this.dropOutChild) {
+          this.dropOutChild.teacherIdOutput = this.teacherIdOutput
+          this.dropOutChild.getTeacherDropOutRequests();
+        }
+
         break;
       case 'JOIN':
         break;

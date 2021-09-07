@@ -6,6 +6,7 @@
     [teacherDropOutRequestTeacherViewItems]='teacherDropOutRequestList' 
     [totalCount]='totalCount'
     [userMode]='userMode'
+    (teacherDropOutRequestFilterEvent)="teacherDropOutRequestChangePage($event)"
     [teacherDropOutRequestFilterRequestModel]='teacherDropOutRequestFilterRequestModel'
     >
   </app-admin-drop-out-request-for-teacher-tab-and-student-tab-grid>
