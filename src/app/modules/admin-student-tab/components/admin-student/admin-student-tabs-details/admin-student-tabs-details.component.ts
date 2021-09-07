@@ -7,6 +7,7 @@ import { ProgramService } from 'src/app/core/services/program-services/program.s
 import { BasicInformationComponent } from 'src/app/modules/program/components/program-details/programs-tabs/basic-information/basic-information.component';
 import { AdminStudentBasicInfoComponent } from './admin-student-basic-info/admin-student-basic-info.component';
 import { AdminStudentDropOutComponent } from './admin-student-drop-out/admin-student-drop-out.component';
+import { AdminStudentJoinRequestComponent } from './admin-student-join-request/admin-student-join-request.component';
 
 @Component({
   selector: 'app-admin-student-tabs-details',
@@ -19,8 +20,9 @@ export class AdminStudentTabsDetailsComponent implements OnInit {
   @Output() refreshProgListEvent = new EventEmitter();
   @ViewChild(AdminStudentBasicInfoComponent) adminStudentbasicInfoChild: AdminStudentBasicInfoComponent | undefined;
   @ViewChild(BasicInformationComponent) basicInfoCompChild: BasicInformationComponent | undefined;
-
   @ViewChild(AdminStudentDropOutComponent) dropOutChild: AdminStudentDropOutComponent | undefined;
+
+  @ViewChild(AdminStudentJoinRequestComponent) joinRequestChild: AdminStudentJoinRequestComponent | undefined;
 
   @Input() programModel: IprogramsModel | undefined;
 
@@ -68,6 +70,10 @@ export class AdminStudentTabsDetailsComponent implements OnInit {
         }
         break;
       case 'JOIN':
+        if (this.joinRequestChild) {
+          this.joinRequestChild.studentIdOutput = this.studentIdOutput
+          this.joinRequestChild.getStudentProgramSubscriptionsFilter();
+        }
         break;
       case 'VACATION':
         break;

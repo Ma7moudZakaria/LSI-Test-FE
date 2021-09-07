@@ -52,7 +52,7 @@ export class AdminStudentDropOutComponent implements OnInit {
 
   getStudentDropOutRequests() {
     this.studentDropOutRequestFilterRequestModel.usrId = this.studentIdOutput?.usrId
-    console.log('idddd' + this.studentDropOutRequestFilterRequestModel.usrId);
+    // console.log('idddd' + this.studentDropOutRequestFilterRequestModel.usrId);
     this.studentDropOutRequestService.studentDropOutRequestAdvFilterStudentView(this.studentDropOutRequestFilterRequestModel).subscribe(res => {
       var response = <BaseResponseModel>res;
       if (response.isSuccess) {
