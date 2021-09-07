@@ -11,7 +11,7 @@
         <app-admin-student-program-task *ngIf='studentIdOutput' [studentDayIdOutput]="studentDayIdOutput"></app-admin-student-program-task>
       </div>
     <div class="overlay" *ngIf="showAddProgram">
-      <app-admin-student-program-overlay-addprogram (closeOverlay)="closeExamOverlay()"></app-admin-student-program-overlay-addprogram>
+      <app-admin-student-program-overlay-addprogram (closeOverlay)="closeExamOverlay()" *ngIf='studentIdOutput' [studentIdOutput]="studentIdOutput"></app-admin-student-program-overlay-addprogram>
     </div>
     </div>
   </div>

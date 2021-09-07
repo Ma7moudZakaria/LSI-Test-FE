@@ -7,6 +7,7 @@ import { IAdminStudentTabFilterRequest } from './../../interfaces/student-interf
 import { IStudentMyProgramsRequestModel } from '../../interfaces/student-program-subscription-interfaces/istudent-my-programs-request-model';
 import { IStudentProgramBatchDaysRequestModel } from '../../interfaces/student-management-tab-interfaces/istudent-program-batch-days-request-model';
 import { IStudentProgramBatchDayTasksRequestModel } from '../../interfaces/student-management-tab-interfaces/istudent-program-batch-day-tasks-request-model';
+import { IAddStudentToSharedProgramRequestModel } from '../../interfaces/student-management-tab-interfaces/iadd-student-to-shared-program-request-model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,8 @@ export class AdminStudentTabService {
   getStudentProgramsURL = environment.baseUrl + 'StudentProgramSubscription/get-student-programs/';
   getStudentProgramDaysURL = environment.baseUrl + 'StudentManagement/get-student-program-batch-days/';
   getStudentProgramDayTasksURL = environment.baseUrl + 'StudentManagement/get-student-program-batch-tasks/';
+  addStudentToSharedProgramURL = environment.baseUrl + 'StudentManagement/add-student-to-shared-program/';
+
 
 
 
@@ -34,6 +37,9 @@ export class AdminStudentTabService {
   }
   getStudentProgramDayTasks(model: IStudentProgramBatchDayTasksRequestModel): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.getStudentProgramDayTasksURL, model);
+  }
+  addStudentToSharedProgram(model: IAddStudentToSharedProgramRequestModel): Observable<BaseResponseModel> {
+    return this.http.post<BaseResponseModel>(this.addStudentToSharedProgramURL, model);
   }
   // get-student-programs-with-batches-filter => without programs dropedout Done  (URL => 
   //   /api/StudentProgramSubscription/get-student-programs
