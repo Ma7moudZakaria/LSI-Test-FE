@@ -1,0 +1,39 @@
+<div class="days_details">
+    <span class=" head">
+        {{this.translate.currentLang===langEnum.en?taskDetails?.dayTaskNameEn:taskDetails?.dayTaskNameAr}}
+    </span>
+    <app-program-day-task-hearing *ngIf="detailsTypeEnum.taskHearing===taskDetails?.huffazTask"
+     [hearingTaskDetailsModel]='hearingTaskDetailsModel' [dutyDaysTaskViewMood]='programDutyDaysTaskViewMoodEnum.student'>
+    </app-program-day-task-hearing>
+    <app-program-day-task-read-explanation *ngIf="detailsTypeEnum.TaskReadExplanation===taskDetails?.huffazTask"
+    [readExplanationDetailsModel] ='readExplanationDetailsModel' [dutyDaysTaskViewMood]='programDutyDaysTaskViewMoodEnum.student'></app-program-day-task-read-explanation>
+    <app-program-day-task-memorize *ngIf="detailsTypeEnum.TaskMemorize===taskDetails?.huffazTask" [memorizeDetailsModel] ='memorizeDetailsModel'[dutyDaysTaskViewMood]='programDutyDaysTaskViewMoodEnum.student'></app-program-day-task-memorize>
+    <app-program-day-task-repetition *ngIf="detailsTypeEnum.TaskRepetition===taskDetails?.huffazTask" [repetitionDetailsModel]="repetitionDetailsModel"  [dutyDaysTaskViewMood]='programDutyDaysTaskViewMoodEnum.student'></app-program-day-task-repetition>
+    <app-program-day-task-linking *ngIf="detailsTypeEnum.TaskLinking===taskDetails?.huffazTask" [linkingDetailsModel]="linkingDetailsModel" [dutyDaysTaskViewMood]='programDutyDaysTaskViewMoodEnum.student'></app-program-day-task-linking>
+    <app-join-exam *ngIf="detailsTypeEnum.TaskDailyTest===taskDetails?.huffazTask" [joinExamModel]="dailyTestDetailsModel"></app-join-exam>
+    <app-program-day-task-encouragement-letter *ngIf="detailsTypeEnum.TaskEncouragementLetter===taskDetails?.huffazTask" [encouragementLetterDetailsModel]="encouragementLetterDetailsModel" [dutyDaysTaskViewMood]='programDutyDaysTaskViewMoodEnum.student'></app-program-day-task-encouragement-letter>
+    <app-program-day-task-video *ngIf="detailsTypeEnum.TaskVideo===taskDetails?.huffazTask" [videoDetailsModel]="videoDetailsModel" [dutyDaysTaskViewMood]='programDutyDaysTaskViewMoodEnum.student'></app-program-day-task-video>
+    <app-program-day-task-review *ngIf="detailsTypeEnum.TaskReview===taskDetails?.huffazTask" [reviewDetailsModel]="reviewDetailsModel" [dutyDaysTaskViewMood]='programDutyDaysTaskViewMoodEnum.student'></app-program-day-task-review>
+    <app-program-day-task-recitation *ngIf="detailsTypeEnum.TaskRecitation===taskDetails?.huffazTask" [recitationDetailsModel]="recitationDetailsModel" [dutyDaysTaskViewMood]='programDutyDaysTaskViewMoodEnum.student'></app-program-day-task-recitation>
+    <app-program-day-task-recitation-students *ngIf="detailsTypeEnum.TaskRecitationStudents===taskDetails?.huffazTask" [recitationStudentsModel]="recitationStudentsModel" [dutyDaysTaskViewMood]='programDutyDaysTaskViewMoodEnum.student'></app-program-day-task-recitation-students>
+    <app-program-day-task-tasmea *ngIf="detailsTypeEnum.TaskTasmea===taskDetails?.huffazTask" [tasmeaModel]="tasmeaModel" [dutyDaysTaskViewMood]='programDutyDaysTaskViewMoodEnum.student'></app-program-day-task-tasmea> 
+     <app-join-exam *ngIf="detailsTypeEnum.TaskTestPhased===taskDetails?.huffazTask" [joinExamModel]="testPhasedDetailsModel" ></app-join-exam>
+     <section *ngIf="detailsTypeEnum.TaskRecitation!=taskDetails?.huffazTask && detailsTypeEnum.TaskRecitationStudents!=taskDetails?.huffazTask && detailsTypeEnum.TaskTasmea!=taskDetails?.huffazTask">
+        <div  *ngIf="detailsTypeEnum.TaskDailyTest!=taskDetails?.huffazTask && detailsTypeEnum.TaskTestPhased != taskDetails?.huffazTask"   class="row direction-rtl buttons-center justify-content-end">
+            <!-- <button *ngIf="detailsTypeEnum.TaskDailyTest!=taskDetails?.huffazTask && detailsTypeEnum.TaskTestPhased != taskDetails?.huffazTask"   type="submit" class="save-btn" (click)="save()" > 
+                {{ "GENERAL.SAVE" | translate }}
+            </button> -->
+
+            <button [disabled]="taskDetails?.answered==true"  type="submit" class="cancel-btn" (click)="yes()"> 
+                {{ "GENERAL.YES" | translate }}
+              </button>
+              <button   type="reset" [disabled]="isMndatory==true || taskDetails?.answered==true" class="btn_replay mx-3" (click)="no()"> 
+                  {{ "GENERAL.NO" | translate }}
+              </button>
+        </div>
+
+        <div *ngIf="resultMessage.message" class="alert alert-{{ resultMessage.type }} my-4 py-2">
+            {{ resultMessage.message }}
+        </div>
+    </section>
+    </div>

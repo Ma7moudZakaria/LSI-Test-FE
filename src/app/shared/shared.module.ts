@@ -90,6 +90,7 @@ import { AdminDropOutRequestForTeacherTabAndStudentTabCardComponent } from './co
 import { AdminDropOutRequestForTeacherTabAndStudentTabGridComponent } from './components/admin-drop-out-request-for-teacher-tab-and-student-tab-grid/admin-drop-out-request-for-teacher-tab-and-student-tab-grid.component';
 import { AdminVacationRequestForStudentTabGridComponent } from './components/admin-vacation-request-for-student-tab-grid/admin-vacation-request-for-student-tab-grid.component';
 import { AdminVacationRequestForStudentTabCardComponent } from './components/admin-vacation-request-for-student-tab-card/admin-vacation-request-for-student-tab-card.component';
+import { JoinExamComponent } from './components/program-day-tasks/join-exam/join-exam.component';
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
     SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,
@@ -145,7 +146,8 @@ import { AdminVacationRequestForStudentTabCardComponent } from './components/adm
     AdminDropOutRequestForTeacherTabAndStudentTabCardComponent,
     AdminDropOutRequestForTeacherTabAndStudentTabGridComponent,
     AdminVacationRequestForStudentTabGridComponent,
-    AdminVacationRequestForStudentTabCardComponent
+        AdminVacationRequestForStudentTabCardComponent,
+        JoinExamComponent
   ],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
@@ -177,7 +179,8 @@ import { AdminVacationRequestForStudentTabCardComponent } from './components/adm
     FormatTimePipe, AdminJoinRequestForTeacherTabAndStudentTabGridComponent,
     AdminJoinRequestForTeacherTabAndStudentTabCardComponent, AdminDropOutRequestForTeacherTabAndStudentTabCardComponent,
     AdminDropOutRequestForTeacherTabAndStudentTabGridComponent,
-    AdminVacationRequestForStudentTabGridComponent, AdminVacationRequestForStudentTabCardComponent
+      AdminVacationRequestForStudentTabGridComponent, AdminVacationRequestForStudentTabCardComponent,
+      JoinExamComponent
 
 
   ]

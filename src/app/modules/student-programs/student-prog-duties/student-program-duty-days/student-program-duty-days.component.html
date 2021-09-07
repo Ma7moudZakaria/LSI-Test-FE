@@ -1,0 +1,25 @@
+<div class="list-group list-group_program-list">
+    <div class="d-flex justify-content-between">
+        <p class="mb-4 head">  {{ 'PROGRAM_DAY_TASKS.DAILY_HOMEWORK' | translate }}</p>
+    </div>
+  <!-- <div class="input-group  mb-3" >
+    <div class="input-group-prepend ">
+        <span class="input-group-text bg-white pl-2 pr-2 border-md ">
+            <img  class="UserLogin_icon_input" src="../../../../../../assets/images/search-ired.svg">
+        </span>
+    </div>
+    <input  placeholder="{{ 'GENERAL.SEARCH' | translate }}"   type='number' 
+    class=" px-3 form-control UserLogin__FormControl bg-white  border-md input-sm">
+  </div> -->
+  <div class="internal_scroll_list_group programDays" >
+      <ng-container *ngFor='let item of studentProgramDutiesList  ; let i = index' >
+      <a  class="list-group-item  d-flex align-items-center"  (click)='onDayClick(item); defaultSelectedDay = i'
+      [class.active]="defaultSelectedDay === i">
+          <span class="py-1">{{ 'PROGRAM_DAY_TASKS.DAY' | translate }}-{{item.dayNum}}</span>
+      </a>
+    </ng-container>
+
+
+  </div>
+  
+  </div>

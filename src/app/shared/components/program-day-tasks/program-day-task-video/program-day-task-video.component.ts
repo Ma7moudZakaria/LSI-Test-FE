@@ -14,6 +14,7 @@ import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { AttachmentsService } from 'src/app/core/services/attachments-services/attachments.service';
 import { ProgramDayTasksService } from 'src/app/core/services/program-services/program-day-tasks.service';
+import { ProgramDutyDaysTaskViewMoodEnum } from 'src/app/core/enums/programs/program-duty-days-task-view-mood-enum.enum';
 
 @Component({
   selector: 'app-program-day-task-video',
@@ -21,13 +22,16 @@ import { ProgramDayTasksService } from 'src/app/core/services/program-services/p
   styleUrls: ['./program-day-task-video.component.scss']
 })
 export class ProgramDayTaskVideoComponent implements OnInit {
+
+  @Input() videoDetailsModel: IProgramDayTaskVideo = {};
+  @Input() isView: boolean = false;
+  @Input() dutyDaysTaskViewMood: number = ProgramDutyDaysTaskViewMoodEnum.admin;
+  programDutyDaysTaskViewMoodEnum=ProgramDutyDaysTaskViewMoodEnum;
   fileUploadModel: IFileUpload[] = [];
   fileList?: IAttachment[] = [];
   fileToUpload?: File;
   resMessage: BaseMessageModel = {};
   resultMessage: BaseMessageModel = {};
-  @Input() videoDetailsModel: IProgramDayTaskVideo = {};
-  @Input() isView: boolean = false;
 
   constructor(
     public translate: TranslateService,

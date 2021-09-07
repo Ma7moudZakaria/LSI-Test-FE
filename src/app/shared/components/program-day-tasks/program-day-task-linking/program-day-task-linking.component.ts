@@ -13,6 +13,7 @@ import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfac
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { TranslateService } from '@ngx-translate/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ProgramDutyDaysTaskViewMoodEnum } from 'src/app/core/enums/programs/program-duty-days-task-view-mood-enum.enum';
 @Component({
   selector: 'app-program-day-task-linking',
   templateUrl: './program-day-task-linking.component.html',
@@ -21,6 +22,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class ProgramDayTaskLinkingComponent implements OnInit {
   @Input() isView: boolean = false;
   @Input() linkingDetailsModel: IProgramDayTaskLinking = {};
+  @Input() dutyDaysTaskViewMood: number = ProgramDutyDaysTaskViewMoodEnum.admin;
+  programDutyDaysTaskViewMoodEnum=ProgramDutyDaysTaskViewMoodEnum;
   TaskLinkingTypeEnum = ProgramDayTaskLinkingType;
   lastFiveHomeWorkAutolst: IAttachment[] = [];
   programLastFiveWorkToLinkAuto: IProgramLastFiveWorkToLinkAuto = {};

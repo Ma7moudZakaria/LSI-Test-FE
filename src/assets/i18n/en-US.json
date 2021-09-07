@@ -76,7 +76,9 @@
     "REQUEST_NUMBER": "Request Number",
     "ADVANCED_SEARCH": "Advanced Search",
     "NEW_ORDERS": "New Orders",
-    "ACTIVE": "Active"
+    "ACTIVE": "Active",
+    "QUESTION": "The question",
+    "NEXT": "Next"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
@@ -928,5 +930,8 @@
     "NEXT": "Next",
     "ANSWER_FINISHED": "Is the answer finished",
     "NO_EXAM": "No Exam Found"
+  },
+  "JPIN_EXAM": {
+    "ARE_YOU_FINISHED_EXAM": "Are you finished the exam?"
   }
 }

@@ -8,4 +8,13 @@
             order?:number;
             huffazTask?:number;
             dutyDay?:string;
+            answered?:boolean; // use to student
         }
+
+    
+
+
+   
+
+
+   
