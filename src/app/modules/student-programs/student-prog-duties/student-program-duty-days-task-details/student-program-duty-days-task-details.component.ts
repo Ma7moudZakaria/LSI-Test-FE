@@ -52,6 +52,7 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
   programDutyDaysTaskViewMoodEnum=ProgramDutyDaysTaskViewMoodEnum;
   resMessage: BaseMessageModel = {};
   isAnswer:boolean=true;
+  isMndatory?:boolean=false;
   
   constructor(
     public languageService: LanguageService,
@@ -75,29 +76,37 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
     switch (this.taskDetails?.huffazTask) {
       case this.detailsTypeEnum.taskHearing:
        this.hearingTaskDetailsModel= JSON.parse(this.taskDetails?.detailsTask||"{}");
+       this.isMndatory=this.hearingTaskDetailsModel.isMndatory;
         break;
       case this.detailsTypeEnum.TaskReadExplanation:
         this.readExplanationDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
+        this.isMndatory=this.readExplanationDetailsModel.isMndatory;
         break;
         case this.detailsTypeEnum.TaskMemorize:
          this.memorizeDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
+         this.isMndatory=this.memorizeDetailsModel.isMndatory;
           break;
           case this.detailsTypeEnum.TaskRepetition:
            this.repetitionDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
+           this.isMndatory=this.repetitionDetailsModel.isMndatory;
             break;
            case this.detailsTypeEnum.TaskLinking:
             this.linkingDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
             this.linkingDetailsModel.progId=this.progamDetails?.progBaseInfo?.id;
             this.linkingDetailsModel.progDayOrder=this.progamDetails?.progDays?.find(x=>x.id==this.taskDetails?.dutyDay)?.order;
+            this.isMndatory=this.linkingDetailsModel.isMndatory;
             break;
             case this.detailsTypeEnum.TaskEncouragementLetter:
               this.encouragementLetterDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
+              this.isMndatory=false;
               break;
               case this.detailsTypeEnum.TaskVideo:
                this.videoDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
+               this.isMndatory=false;
                 break;
                 case this.detailsTypeEnum.TaskReview:
                this.reviewDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
+               this.isMndatory=false;
                 break;
                 case this.detailsTypeEnum.TaskRecitation:
                   this.recitationDetailsModel=this.progamDetails?.progBaseInfo||{};
@@ -125,12 +134,14 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
   }
 
 yes(){
-  this.isAnswer=true;
-  this.save();
+  // this.isAnswer=true;
+  // this.save();
+  alert("yes")
 }
 no(){
-  this.isAnswer=false;
-  this.save();
+  // this.isAnswer=false;
+  // this.save();
+  alert("no")
 }
   save(){
     this.resultMessage = {}; 

@@ -24,10 +24,10 @@
                 {{ "GENERAL.SAVE" | translate }}
             </button> -->
 
-            <button   type="submit" class="cancel-btn" (click)="yes()"> 
+            <button [disabled]="taskDetails?.answered==true"  type="submit" class="cancel-btn" (click)="yes()"> 
                 {{ "GENERAL.YES" | translate }}
               </button>
-              <button   type="reset" class="btn_replay mx-3" (click)="no()"> 
+              <button   type="reset" [disabled]="isMndatory==true || taskDetails?.answered==true" class="btn_replay mx-3" (click)="no()"> 
                   {{ "GENERAL.NO" | translate }}
               </button>
         </div>
