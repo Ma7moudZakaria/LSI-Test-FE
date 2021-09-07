@@ -51,7 +51,7 @@ export class AdminStudentListComponent implements OnInit {
       if (res.isSuccess) {
         console.log("res", res)
         this.studentList = res.data as IAdminStudentTabFilterResponse[];
-        let firstId = this.studentList[0].studId;
+        let firstId = this.studentList[0].usrId;
         console.log("firstId", firstId)
         let UserModel: ITeacherStudentViewModel = { progName: '', usrId: firstId };
         this.userId.emit(UserModel);

@@ -1,5 +1,4 @@
-<div class="row  scientific-problem-grid"  
- >
+<div class="row  scientific-problem-grid"  >
 <div class="col-8 d-flex justify-content-start"   *ngIf='userRoleMode.Student === userMode'>
   <ngb-pagination 
   [collectionSize]="totalCount"
@@ -106,8 +105,8 @@
       <img  class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
   </span>
 </button> -->
-</div> 
-  </div>
+  </div> 
+</div>
 
 <mat-grid-list cols="{{numberPerRow}}" rowHeight="3:3"  >
   <ng-container *ngIf='userRoleMode.Teacher === userMode' >

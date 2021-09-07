@@ -93,7 +93,7 @@
          
             <a class="list-group-item  d-flex user" *ngFor="let student  of studentList; let i = index"
             [class.active]="selectedIndex === i"
-            (click)="loadProgramMaterial(student?.studId);selectedIndex=i" >
+            (click)="loadProgramMaterial(student?.usrId);selectedIndex=i" >
    
            <img src="../../../../../assets/images/Profile.svg" class="user__image" *ngIf="!student.avr">
            <img [src]="student.avr" class="user__image" *ngIf="student.avr">
