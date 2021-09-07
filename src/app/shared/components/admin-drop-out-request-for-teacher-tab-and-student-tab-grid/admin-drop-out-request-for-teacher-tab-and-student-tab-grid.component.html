@@ -1,0 +1,134 @@
+<div class="row  scientific-problem-grid"  
+ >
+<div class="col-8 d-flex justify-content-start"   *ngIf='userRoleMode.Student === userMode'>
+  <ngb-pagination 
+  [collectionSize]="totalCount"
+  [(page)]="studentDropOutRequestFilterRequestStudentModel.page" 
+  [pageSize]="studentDropOutRequestFilterRequestStudentModel.take"
+  [rotate]="true"
+  [boundaryLinks]="true" 
+  (pageChange)="onStudentPageChange()">
+  </ngb-pagination>
+<button  [ngClass]="{'default_btn': studentDropOutRequestFilterRequestStudentModel.sortField != 'studentNameAr' && studentDropOutRequestFilterRequestStudentModel.sortField != 'StudentNameEn', 'asend_desend_btn' : this.studentDropOutRequestFilterRequestStudentModel.sortField != 'requestdate' }"
+(click)='sortStudentByName()'>
+{{'User_Requests.SORT_NAME' | translate}} 
+<span *ngIf='this.studentDropOutRequestFilterRequestStudentModel.sortField != "studentNameAr" && this.studentDropOutRequestFilterRequestStudentModel.sortField != "StudentNameEn"'>
+        <img  class="asend_btn" src="../../../../assets/images/sc-problem/Group 18449.svg">
+</span> 
+<span *ngIf='sortStudentByNameOrderType() == "asend"'>
+    <img  class="asend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+</span> 
+<span *ngIf='sortStudentByNameOrderType() == "desend"'>
+    <img  class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+</span>
+</button>
+<button  [ngClass]="{'asend_desend_btn': studentDropOutRequestFilterRequestStudentModel.sortField != 'studentNameAr' && studentDropOutRequestFilterRequestStudentModel.sortField != 'StudentNameEn', 'default_btn' : this.studentDropOutRequestFilterRequestStudentModel.sortField != 'requestdate'}"
+(click)='sortStudentRequestDate()'> 
+{{'User_Requests.SORT_DATE' | translate}}
+
+<span *ngIf='this.studentDropOutRequestFilterRequestStudentModel.sortField != "requestdate"'>
+    <img  class="asend_btn" src="../../../../assets/images/sc-problem/Group 18449.svg">
+</span>
+<span *ngIf='sortStudentRequestDateOrderType() == "asend"'>
+    <img  class="asend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+</span> 
+<span *ngIf='sortStudentRequestDateOrderType() == "desend"'>
+    <img  class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+</span>
+</button>
+</div> 
+</div>
+
+<div class="row  scientific-problem-grid"   *ngIf='userRoleMode.Teacher === userMode'>
+  <div class="col-8 d-flex justify-content-start">
+    <ngb-pagination 
+    [collectionSize]="totalCount"
+    [(page)]="teacherDropOutRequestFilterRequestModel.page" 
+    [pageSize]="teacherDropOutRequestFilterRequestModel.take"
+    [rotate]="true"
+    [boundaryLinks]="true" 
+    (pageChange)="onTeacherPageChange()">
+    </ngb-pagination>
+    <!-- (click)='sortTeacherByName()' -->
+<!-- <button  [ngClass]="{'default_btn': teacherDropOutRequestFilterRequestModel.sortField != 'teacherNameAr' && teacherDropOutRequestFilterRequestModel.sortField != 'TeacherNameEn', 'asend_desend_btn' : this.teacherDropOutRequestFilterRequestModel.sortField != 'requestdate' }"
+ *ngIf='userRoleMode.Admin === userMode'>
+{{'User_Requests.SORT_NAME' | translate}} 
+  <span *ngIf='this.teacherDropOutRequestFilterRequestModel.sortField != "teacherNameAr" && this.teacherDropOutRequestFilterRequestModel.sortField != "TeacherNameEn"'>
+          <img  class="asend_btn" src="../../../../assets/images/sc-problem/Group 18449.svg">
+  </span> 
+  <span *ngIf='sortTeacherByNameOrderType() == "asend"'>
+      <img  class="asend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+  </span> 
+  <span *ngIf='sortTeacherByNameOrderType() == "desend"'>
+      <img  class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+  </span>
+</button> -->
+<!-- <button  [ngClass]="{'asend_desend_btn': teacherDropOutRequestFilterRequestModel.sortField != 'teacherNameAr' && teacherDropOutRequestFilterRequestModel.sortField != 'TeacherNameEn', 'default_btn' : this.teacherDropOutRequestFilterRequestModel.sortField != 'requestdate'}"
+(click)='sortTeacherRequestDate()' *ngIf='userRoleMode.Admin === userMode'> 
+{{'User_Requests.SORT_DATE' | translate}}
+
+  <span *ngIf='this.teacherDropOutRequestFilterRequestModel.sortField != "requestdate"'>
+      <img  class="asend_btn" src="../../../../assets/images/sc-problem/Group 18449.svg">
+  </span>
+  <span *ngIf='sortTeacherRequestDateOrderType() == "asend"'>
+      <img  class="asend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+  </span> 
+  <span *ngIf='sortTeacherRequestDateOrderType() == "desend"'>
+      <img  class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+  </span>
+</button> -->
+
+<!-- 
+<button  [ngClass]="{'default_btn': teacherDropOutRequestFilterRequestModel.sortField != 'batchNameAr' && teacherDropOutRequestFilterRequestModel.sortField != 'BatchNameEn', 'asend_desend_btn' : this.teacherDropOutRequestFilterRequestModel.sortField != 'requestdate' }"
+(click)='sortBatchByName()' *ngIf='userRoleMode.Teacher === userMode'>
+{{'User_Requests.SORT_NAME' | translate}} 
+  <span *ngIf='this.teacherDropOutRequestFilterRequestModel.sortField != "teacherNameAr" && this.teacherDropOutRequestFilterRequestModel.sortField != "TeacherNameEn"'>
+          <img  class="asend_btn" src="../../../../assets/images/sc-problem/Group 18449.svg">
+  </span> 
+  <span *ngIf='sortBatchByNameOrderType() == "asend"'>
+      <img  class="asend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+  </span> 
+  <span *ngIf='sortBatchByNameOrderType() == "desend"'>
+      <img  class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+  </span>
+</button>
+<button  [ngClass]="{'asend_desend_btn': teacherDropOutRequestFilterRequestModel.sortField != 'batchNameAr' && teacherDropOutRequestFilterRequestModel.sortField != 'BatchNameEn', 'default_btn' : this.teacherDropOutRequestFilterRequestModel.sortField != 'requestdate'}"
+(click)='sortTeacherRequestDate()' *ngIf='userRoleMode.Teacher === userMode'> 
+{{'User_Requests.SORT_DATE' | translate}}
+
+  <span *ngIf='this.teacherDropOutRequestFilterRequestModel.sortField != "requestdate"'>
+      <img  class="asend_btn" src="../../../../assets/images/sc-problem/Group 18449.svg">
+  </span>
+  <span *ngIf='sortTeacherRequestDateOrderType() == "asend"'>
+      <img  class="asend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+  </span> 
+  <span *ngIf='sortTeacherRequestDateOrderType() == "desend"'>
+      <img  class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+  </span>
+</button> -->
+</div> 
+  </div>
+
+<mat-grid-list cols="{{numberPerRow}}" rowHeight="3:3"  >
+  <ng-container *ngIf='userRoleMode.Teacher === userMode' >
+      <mat-grid-tile *ngFor='let item of studentDropOutRequestStudentItems' >
+       <app-student-drop-out-request-student-card class="card" 
+       [studentDropOutRequestFilterRequestStudentModel]='item'>
+      </app-student-drop-out-request-student-card>
+      </mat-grid-tile>
+  </ng-container>
+ 
+
+</mat-grid-list>
+
+
+
+<mat-grid-list  cols="{{numberPerRow}}" rowHeight="3:3"  *ngIf='userRoleMode.Student === userMode'>
+  <ng-container >
+      <mat-grid-tile *ngFor='let item of teacherDropOutRequestTeacherViewItems' >
+       <app-teacher-drop-out-request-teacher-card class="card" 
+       [teacherDropOutRequestModel]='item'
+       ></app-teacher-drop-out-request-teacher-card>
+      </mat-grid-tile>
+  </ng-container>
+</mat-grid-list>

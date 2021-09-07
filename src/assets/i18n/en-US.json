@@ -75,7 +75,8 @@
     "APPLICANT_NAME": "Applicant name",
     "REQUEST_NUMBER": "Request Number",
     "ADVANCED_SEARCH": "Advanced Search",
-    "NEW_ORDERS": "New Orders"
+    "NEW_ORDERS": "New Orders",
+    "ACTIVE": "Active"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
@@ -168,7 +169,15 @@
     "STUDENT_NUMBER": "Number of student",
     "TEACHER_NUMBER": "Number of teacher ",
     "THE_EXAM": "The Exams",
-    "STAGE_EXAM": "Stage Exam"
+    "STAGE_EXAM": "Stage Exam",
+    "KICK_OFF": "Kick off",
+    "FREE": "Free",
+    "PLANNED_WORK_HOURS": "Planned work hours",
+    "ACTUAL_WORKING_HOURS": "Actual working hours",
+    "NUMBER_OF_STUDENTS": "Number of students",
+    "HIS_STUDENTS": "His Students",
+    "DEGREE": "Degree",
+    "DATE": "Date"
   },
   "VIEW_PROGRAMS_BASIC_INFO": {
     "PROGRAM_DATE": "Program Duration",
@@ -533,7 +542,9 @@
     "LONG_DESCRIPTION_EN_MAX_LENGHT": "English long description must be less than or equal 1000 character",
     "PROG_FOR_SUBSCRIPTION": "Subscription",
     "VACATION": "Vacations",
-    "CHAT":"Chat"
+    "CHAT": "Chat",
+    "STUDENT": "Students",
+    "TEACHER": "Teachers"
   },
   "VIEW_USER_PROFILE_PG": {
     "PERSONAL_PROFILE": "Personal Profile",
@@ -819,8 +830,8 @@
     "REJECT": "Reject",
     "REJECTION_APPLICATION": "Rejection  request",
     "TEACHER_REJECTED": "The teacher's withdrawal request will be rejected",
-    "TEACHER_JOIN_REJECTED":  "The teacher's Join request will be rejected",
-    "STUDENT_JOIN_REJECTED":  "The student's Join request will be rejected",
+    "TEACHER_JOIN_REJECTED": "The teacher's Join request will be rejected",
+    "STUDENT_JOIN_REJECTED": "The student's Join request will be rejected",
     "FROM_PROG": "From Program",
     "REJECTED_REASON": "Reject Reason",
     "VALIDATIONDATE": "Datefrom  should less than dateto ",
@@ -829,7 +840,7 @@
   },
   "TEACHER_SYSTEM_SUBSCRIPTION": {
     "REQUEST_DATE": "Request Date",
-    "MEETING": "Meeting",    
+    "MEETING": "Meeting",
     "INTERVIEW_TIME": "Interview Time",
     "REJECT": "Reject",
     "ACCEPT": "Accept",
@@ -869,7 +880,7 @@
     "NO_TEACHERS": "No Teachers Subscribed",
     "NO_STUDENTS": "No Students Subscribed",
     "NO_PROGRAMS": "No Programs",
-    "REQUIRED" : "Batch name is required"
+    "REQUIRED": "Batch name is required"
   },
   "TEACHER_STUDENT_FOR_DETAILS": {
     "PROG_IDEA": "Program Idea",
@@ -893,12 +904,22 @@
     "AR_NAME_CATEGORY": "Category name in arabic",
     "EN_NAME_CATEGORY": "Category name in english"
   },
-  "GENERAL_DROP_OUT_REQUEST":{
-    "REQUEST_REASON":"Request Reason",
-    "NO_DATA":"No Data",
-    "REJECT_REASON":"Reject Reason",
+  "TEACHER_TAP": {
+    "TEACHER_NAME": "Teacher Name",
+    "PROGRAM": "Programs",
+    "EMAIL": "Email",
+    "SUBSCRIPTION_DATE": "Subscription date",
+    "BASIC_INFO": "Basic info",
+    "DROP_OUT": "drop out requests",
+    "JOIN": "Join Requests",
+    "VACATION": "Vacation"
+  },
+  "GENERAL_DROP_OUT_REQUEST": {
+    "REQUEST_REASON": "Request Reason",
+    "NO_DATA": "No Data",
+    "REJECT_REASON": "Reject Reason",
     "STUDENT_REJECTED": "The student's withdrawal request will be rejected",
-    "REJECT_REASON_LENGHT":"Reason Must be less than or equal 256 character"
+    "REJECT_REASON_LENGHT": "Reason Must be less than or equal 256 character"
   },
   "STUDENT_SUBSCRIPTION": {
     "ACCEPT_EXAMP": "Accept EXAMP",

@@ -77,7 +77,8 @@
     "FROM": "من",
     "TO": "إلى",
     "ADVANCED_SEARCH": " بحث متقدم ",
-    "NEW_ORDERS": "الطلبات الجديده"
+    "NEW_ORDERS": "الطلبات الجديده",
+    "ACTIVE": "نشط"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
@@ -167,7 +168,16 @@
     "STUDENT_NUMBER": " عدد الطلاب",
     "TEACHER_NUMBER": " عدد المعلمين",
     "THE_EXAM": "الاختبتارات ",
-    "STAGE_EXAM": "إختبار مرحلى"
+    "STAGE_EXAM": "إختبار مرحلى",
+    "KICK_OFF": "طرد من البرنامج",
+    "FREE": "بدون مقابل",
+    "PLANNED_WORK_HOURS": "ساعات العمل المخططة",
+    "ACTUAL_WORKING_HOURS": "ساعات العمل الفعلية",
+    "number_of_apologies": "عدد مرات الاعتذار",
+    "NUMBER_OF_STUDENTS": "عدد الطلاب",
+    "HIS_STUDENTS": "طلابه",
+    "DEGREE": "الدرجة",
+    "DATE": "التاريخ"
   },
   "VIEW_PROGRAMS_BASIC_INFO": {
     "PROGRAM_DATE": "مدة البرنامج",
@@ -532,7 +542,9 @@
     "WORK_AGENDA": "اجندة العمل",
     "PROG_FOR_SUBSCRIPTION": "إشتراك",
     "VACATION": "الاجازات",
-    "CHAT":"محادثة"
+    "CHAT": "محادثة",
+    "STUDENT": "الطلاب",
+    "TEACHER": "المعلمين"
   },
   "VIEW_USER_PROFILE_PG": {
     "PERSONAL_PROFILE": "الملف الشخصي",
@@ -867,7 +879,7 @@
     "NO_TEACHERS": "لا يوجد مدرسين مشتركين",
     "NO_STUDENTS": "لا يوجد طلاب مشتركين",
     "NO_PROGRAMS": "لا يوجد برامج",
-    "REQUIRED" : "اسم الدفعه مطلوب"
+    "REQUIRED": "اسم الدفعه مطلوب"
   },
   "TEACHER_STUDENT_FOR_DETAILS": {
     "PROG_IDEA": "فكرة البرنامج",
@@ -891,6 +903,16 @@
     "AR_NAME_CATEGORY": " اسم القسم بالعربيه",
     "EN_NAME_CATEGORY": "اسم القسم بالانجليزيه"
   },
+  "TEACHER_TAP": {
+    "TEACHER_NAME": "أسم المعلم",
+    "PROGRAM": "البرنامج",
+    "EMAIL": "البريد اللكتروني",
+    "SUBSCRIPTION_DATE": "تاريخ الاشتراك",
+    "BASIC_INFO": "البيانات الاساسيه",
+    "DROP_OUT": "طلبات الانسحاب",
+    "JOIN": "طلبات الانضمام",
+    "VACATION": "طلبات الاجازه"
+  },
   "STUDENT_SUBSCRIPTION": {
     "ACCEPT_EXAMP": "اختبار القبول",
     "QUEST_NUM": "سؤال رقم",
@@ -899,11 +921,11 @@
     "NEXT": "التالى",
     "NO_EXAM": "لا يوجد برنامج"
   },
-  "GENERAL_DROP_OUT_REQUEST":{
-    "REQUEST_REASON":"سبب الطلب",
-    "NO_DATA":"لا يوجد",
-    "REJECT_REASON":"سبب الرفض",
+  "GENERAL_DROP_OUT_REQUEST": {
+    "REQUEST_REASON": "سبب الطلب",
+    "NO_DATA": "لا يوجد",
+    "REJECT_REASON": "سبب الرفض",
     "STUDENT_REJECTED": "سيتم رفض طلب انسحاب الطالب ",
-    "REJECT_REASON_LENGHT":"السبب يجب أن يكون اقل من أو يساوى 256 حرف"
+    "REJECT_REASON_LENGHT": "السبب يجب أن يكون اقل من أو يساوى 256 حرف"
   }
 }
