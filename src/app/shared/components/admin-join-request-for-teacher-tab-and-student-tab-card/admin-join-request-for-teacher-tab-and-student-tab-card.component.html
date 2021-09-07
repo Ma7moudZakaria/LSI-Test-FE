@@ -6,7 +6,7 @@
 
       <div class="col-6 d-flex align-items-center justify-content-between p-0 m-0">
           <span > {{'TEACHER_DROP_OUT.TIME' | translate}} </span>
-          <!-- <span>{{studentSubscripModel.requestDate  | date: 'dd/MM/yyyy'}}</span> -->
+          <span>{{studentSubscripModel.requestDate  | date: 'dd/MM/yyyy'}}</span>
       </div>
 
 
@@ -17,7 +17,8 @@
       <p class="program__num  mb-2"></p>
       <div class="d-flex align-items-center justify-content-between " >
       <p class="program__num mb-2  mr-3 ml-3">{{ translate.currentLang == langEnum.en ? studentSubscripModel?.usrNameEn : studentSubscripModel?.usrNameAr}}</p>
-        <span class="status mb-0" [ngClass]="{ 'accept' : studentSubscripModel.programStaNum == tabTypeSelected.Accept ,
+        <span class="status mb-0"
+         [ngClass]="{ 'accept' : studentSubscripModel.programStaNum == tabTypeSelected.Accept ,
                                   'pending' : studentSubscripModel.programStaNum == tabTypeSelected.Pending ,
                                   'rejected' : studentSubscripModel.programStaNum == tabTypeSelected.Rejected
                                   }">

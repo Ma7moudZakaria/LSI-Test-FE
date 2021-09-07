@@ -29,6 +29,7 @@ export class AdminJoinRequestForTeacherTabAndStudentTabCardComponent implements 
   constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
+    console.log("studentSubscripModel", this.studentSubscripModel)
   }
   studentJoinId(id?: string, JoinprogName?: string) {
     let UserModel: ITeacherStudentViewModel = { progName: JoinprogName, usrId: id };

@@ -8,6 +8,7 @@ import { BasicInformationComponent } from 'src/app/modules/program/components/pr
 import { AdminStudentBasicInfoComponent } from './admin-student-basic-info/admin-student-basic-info.component';
 import { AdminStudentDropOutComponent } from './admin-student-drop-out/admin-student-drop-out.component';
 import { AdminStudentJoinRequestComponent } from './admin-student-join-request/admin-student-join-request.component';
+import { AdminStudentVacationRequestComponent } from './admin-student-vacation-request/admin-student-vacation-request.component';
 
 @Component({
   selector: 'app-admin-student-tabs-details',
@@ -21,8 +22,9 @@ export class AdminStudentTabsDetailsComponent implements OnInit {
   @ViewChild(AdminStudentBasicInfoComponent) adminStudentbasicInfoChild: AdminStudentBasicInfoComponent | undefined;
   @ViewChild(BasicInformationComponent) basicInfoCompChild: BasicInformationComponent | undefined;
   @ViewChild(AdminStudentDropOutComponent) dropOutChild: AdminStudentDropOutComponent | undefined;
-
   @ViewChild(AdminStudentJoinRequestComponent) joinRequestChild: AdminStudentJoinRequestComponent | undefined;
+
+  @ViewChild(AdminStudentVacationRequestComponent) vacationtRequestChild: AdminStudentVacationRequestComponent | undefined;
 
   @Input() programModel: IprogramsModel | undefined;
 
@@ -76,6 +78,10 @@ export class AdminStudentTabsDetailsComponent implements OnInit {
         }
         break;
       case 'VACATION':
+        if (this.vacationtRequestChild) {
+          this.vacationtRequestChild.studentIdOutput = this.studentIdOutput
+          this.vacationtRequestChild.getStudentProgramVacationRequestsStudentView();
+        }
         break;
     }
   }
