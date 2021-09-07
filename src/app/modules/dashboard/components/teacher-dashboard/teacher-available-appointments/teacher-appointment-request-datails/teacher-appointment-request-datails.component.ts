@@ -1,25 +1,24 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
-import {LanguageEnum} from '../../../../../core/enums/language-enum.enum';
-import {ITeacherProfile} from '../../../../../core/interfaces/teacher-interfaces/iteacher-profile';
-import {BaseConstantModel} from '../../../../../core/ng-model/base-constant-model';
-import {TeacherProfileService} from '../../../../../core/services/teacher-profile/teacher-profile.service';
-import {IUser} from '../../../../../core/interfaces/auth-interfaces/iuser-model';
-import {BaseMessageModel} from '../../../../../core/ng-model/base-message-model';
+import {IStudentProgramVacationModel} from '../../../../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-model';
+import {LanguageEnum} from '../../../../../../core/enums/language-enum.enum';
+import {ITeacherAvailableTimes} from '../../../../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-available-times';
+import {IUser} from '../../../../../../core/interfaces/auth-interfaces/iuser-model';
+import {BaseMessageModel} from '../../../../../../core/ng-model/base-message-model';
 import {Router} from '@angular/router';
-import {LanguageService} from '../../../../../core/services/language-services/language.service';
-import {TeacherAppointmentService} from '../../../../../core/services/teacher-appointment-services/teacher-appointment.service';
-import {ITeacherAvailableTimes} from '../../../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-available-times';
-import {IStudentProgramVacationModel} from '../../../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-model';
-import {IAddTeacherAppointmentRequest} from '../../../../../core/interfaces/teacher-appointment-requests-interfaces/iadd-teacher-appointment-request';
-import {ITeacherAppointmentModel} from '../../../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-appointment-model';
+import {TranslateService} from '@ngx-translate/core';
+import {TeacherAppointmentService} from '../../../../../../core/services/teacher-appointment-services/teacher-appointment.service';
+import {LanguageService} from '../../../../../../core/services/language-services/language.service';
+import {BaseConstantModel} from '../../../../../../core/ng-model/base-constant-model';
+import {ITeacherAppointmentModel} from '../../../../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-appointment-model';
 
 @Component({
-  selector: 'app-teacher-available-appointments',
-  templateUrl: './teacher-available-appointments.component.html',
-  styleUrls: ['./teacher-available-appointments.component.scss']
+  selector: 'app-teacher-appointment-request-datails',
+  templateUrl: './teacher-appointment-request-datails.component.html',
+  styleUrls: ['./teacher-appointment-request-datails.component.scss']
 })
-export class TeacherAvailableAppointmentsComponent implements OnInit {
+export class TeacherAppointmentRequestDatailsComponent implements OnInit {
+  @Input() itemStuReq: ITeacherAppointmentModel = {}
+  @Output() closeDetailsRequest = new EventEmitter<ITeacherAppointmentModel>();
   lang = LanguageEnum;
   RouteParams = {} as string;
   teacherAvailableTimes = {} as ITeacherAvailableTimes;
@@ -27,8 +26,7 @@ export class TeacherAvailableAppointmentsComponent implements OnInit {
   resMessage: BaseMessageModel = {};
   currentLang: LanguageEnum | undefined;
   birthdate: string | undefined;
-  @Output() itemStuReq = new EventEmitter<ITeacherAppointmentModel>();
-  @Output() AddTeacherRequest = new EventEmitter<ITeacherAppointmentModel>();
+  @Output() rejectStudentVacationRequest = new EventEmitter<ITeacherAppointmentModel>();
   @Output() requestDetails = new EventEmitter<ITeacherAppointmentModel>();
 
   @Input() studentSubscripModel: ITeacherAppointmentModel = { totalRows: 0 }
@@ -82,7 +80,7 @@ export class TeacherAvailableAppointmentsComponent implements OnInit {
   }
 
   rejectedStudentReq() {
-    this.AddTeacherRequest.emit(this.studentSubscripModel);
+    this.rejectStudentVacationRequest.emit(this.studentSubscripModel);
   }
   appointmentRequestDetails() {
     this.requestDetails.emit(this.studentSubscripModel);

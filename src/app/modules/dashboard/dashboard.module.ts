@@ -9,13 +9,18 @@ import { TeacherDailyUpcomingTasksComponent } from './components/teacher-dashboa
 import { TeacherFeelingsComponent } from './components/teacher-dashboard/teacher-feelings/teacher-feelings.component';
 import { TeacherAvailableAppointmentsComponent } from './components/teacher-dashboard/teacher-available-appointments/teacher-available-appointments.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import {TranslateModule} from '@ngx-translate/core';
+import { AddTeacherAppointmentRequestComponent } from './components/teacher-dashboard/teacher-available-appointments/add-teacher-appointment-request/add-teacher-appointment-request.component';
+import {FormsModule} from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import { TeacherAppointmentRequestDatailsComponent } from './components/teacher-dashboard/teacher-available-appointments/teacher-appointment-request-datails/teacher-appointment-request-datails.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent, TeacherDashboardComponent, TeacherRecitationRequestComponent, TeacherDailyUpcomingTasksComponent, TeacherFeelingsComponent, TeacherAvailableAppointmentsComponent],
+  declarations: [DashboardComponent, TeacherDashboardComponent, TeacherRecitationRequestComponent, TeacherDailyUpcomingTasksComponent, TeacherFeelingsComponent, TeacherAvailableAppointmentsComponent, AddTeacherAppointmentRequestComponent, TeacherAppointmentRequestDatailsComponent],
   imports: [
-    CommonModule,SharedModule,
-    DashboardRoutingModule
+    CommonModule, SharedModule,
+    DashboardRoutingModule, TranslateModule, FormsModule, MatInputModule
   ]
 })
 export class DashboardModule { }
