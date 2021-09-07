@@ -18,11 +18,13 @@ export class TeacherDetailsViewComponent implements OnInit {
 
   @Input() resiveUserId: ITeacherStudentViewModel | undefined;
 
-
+  toggel : boolean | undefined;
   resMessage: BaseMessageModel = {};
   teacherProfileDetails = {} as ITeacherProfile;
   langEnum = LanguageEnum;
   starsSelected=5;
+
+  @Input() adminView :boolean = false;
   constructor(
     private teacherProfileService: TeacherProfileService,
     public translate: TranslateService
@@ -30,6 +32,7 @@ export class TeacherDetailsViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTeacherProfile()
+    this.toggel = true;
   }
   hideUserDetailsView(){
     this.hideUserDetails.emit(false)
@@ -57,5 +60,33 @@ export class TeacherDetailsViewComponent implements OnInit {
       }
     });
   }
+  onCheckboxChange(){
 
+    // this.progDetails!.progBaseInfo!.prgIsConExa = !this.progDetails?.progBaseInfo?.prgIsConExa;
+    //
+    // if (!this.progDetails?.progBaseInfo?.prgIsConExa){
+    //   this.loadExams('');
+    //   this.examFormsAddedToProgramList = [];
+    //   this.getExamForms();
+    // }
+    // else if(this.progDetails?.progJoiExa && this.progDetails?.progJoiExa.length > 0){
+    //   this.mapProgExams();
+    //   this.getExamForms();
+    // }
+    //
+    // this.programService.updateProgramExamToggle(this.progDetails?.progBaseInfo?.id || '').subscribe(res => {
+    //     if (res.isSuccess) {
+    //       this._alertify.success(res.message||"");
+    //       this.progDetailsEvent.emit();
+    //     }
+    //     else {
+    //       this._alertify.error(res.message || '');
+    //     }
+    //
+    //   },
+    //   error => {
+    //     this._alertify.error(error || '');
+    //   })
+
+  }
 }

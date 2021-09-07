@@ -27,9 +27,14 @@
       <p class="program__name ellipsis p-0 " 
       title="{{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestStudentModel?.enProgBatName : studentDropOutRequestFilterRequestStudentModel?.arProgBatName}}"
       > {{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestStudentModel?.enProgBatName : studentDropOutRequestFilterRequestStudentModel?.arProgBatName}}</p>
-      <p class="program__desc"> {{ studentDropOutRequestFilterRequestStudentModel?.reason }}  </p>
-      <p class="program__admin" *ngIf="studentDropOutRequestFilterRequestStudentModel.reasonReject != null" >{{'TEACHER_DROP_OUT.ADMIN_ANSWER' | translate}}</p>
-      <p class="program__answer "  *ngIf="studentDropOutRequestFilterRequestStudentModel.reasonReject != null">{{'TEACHER_DROP_OUT.REJECTED' | translate}}</p>
+      <!-- <p class="program__desc"> {{ studentDropOutRequestFilterRequestStudentModel?.reason }}  </p> -->
+      <span>
+        {{'STUDENT_SUBSCRIBERS.REQUEST_REASON' | translate}}  :
+     </span>
+     <span class="program_user bold mb-0 " *ngIf="!studentDropOutRequestFilterRequestStudentModel.reason ">{{'STUDENT_SUBSCRIBERS.NO_DATA' | translate}} </span>
+     <p class="program_user bold mb-0 ">{{ studentDropOutRequestFilterRequestStudentModel?.reason }}</p>
+      <p class="program__admin" *ngIf="studentDropOutRequestFilterRequestStudentModel.reasonReject != null && studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Rejected" >{{'TEACHER_DROP_OUT.ADMIN_ANSWER' | translate}}</p>
+      <p class="program__answer "  *ngIf="studentDropOutRequestFilterRequestStudentModel.reasonReject != null && studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Rejected">{{'TEACHER_DROP_OUT.REJECTED' | translate}}</p>
     </div>
 
     <div  [ngClass]="{

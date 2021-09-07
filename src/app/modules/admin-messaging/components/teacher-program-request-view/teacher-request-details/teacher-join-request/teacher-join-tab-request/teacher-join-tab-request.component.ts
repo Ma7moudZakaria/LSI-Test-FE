@@ -39,7 +39,7 @@ export class TeacherJionTabRequestComponent implements OnInit {
     private alertify: AlertifyService) { }
 
     ngOnInit(): void {
-      this.teacherSystemSubscriptionFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn';    
+      this.teacherSystemSubscriptionFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'TeacherNameAr' : 'TeacherNameEn';    
   
       this.setCurrentLang();
       this.onPendingChange()

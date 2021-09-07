@@ -83,8 +83,14 @@ import { TeacherStuProgramForSubscriptionGridComponent } from './components/teac
 import { TeacherDetailsViewComponent } from './components/teacher-details-view/teacher-details-view.component';
 import { StudentDetailsViewComponent } from './components/student-details-view/student-details-view.component';
 import { FormatTimePipe } from '../core/pipe/format-time.pipe';
-import { TeacherAppointmentRequestsGridComponent } from './components/teacher-appointment-requests-grid/teacher-appointment-requests-grid.component';
-import { TeacherAppointmentRequestCardComponent } from './components/teacher-appointment-request-card/teacher-appointment-request-card.component';
+
+import { AdminJoinRequestForTeacherTabAndStudentTabGridComponent } from './components/admin-join-request-for-teacher-tab-and-student-tab-grid/admin-join-request-for-teacher-tab-and-student-tab-grid.component';
+import { AdminJoinRequestForTeacherTabAndStudentTabCardComponent } from './components/admin-join-request-for-teacher-tab-and-student-tab-card/admin-join-request-for-teacher-tab-and-student-tab-card.component';
+import { AdminDropOutRequestForTeacherTabAndStudentTabCardComponent } from './components/admin-drop-out-request-for-teacher-tab-and-student-tab-card/admin-drop-out-request-for-teacher-tab-and-student-tab-card.component';
+import { AdminDropOutRequestForTeacherTabAndStudentTabGridComponent } from './components/admin-drop-out-request-for-teacher-tab-and-student-tab-grid/admin-drop-out-request-for-teacher-tab-and-student-tab-grid.component';
+import { AdminVacationRequestForStudentTabGridComponent } from './components/admin-vacation-request-for-student-tab-grid/admin-vacation-request-for-student-tab-grid.component';
+import { AdminVacationRequestForStudentTabCardComponent } from './components/admin-vacation-request-for-student-tab-card/admin-vacation-request-for-student-tab-card.component';
+import { JoinExamComponent } from './components/program-day-tasks/join-exam/join-exam.component';
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
     SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,
@@ -130,14 +136,21 @@ import { TeacherAppointmentRequestCardComponent } from './components/teacher-app
     TeacherDropOutRequestTeacherCardComponent,
     StudentDropOutRequestAdminCardComponent,
     StudentDropOutRequestStudentCardComponent,
-        StudentDropOutGridComponent,
-        StudentProgramVacationCardStudentViewComponent,
-        TeacherDetailsViewComponent,
-        StudentDetailsViewComponent,
-        FormatTimePipe,
+    StudentDropOutGridComponent,
+    StudentProgramVacationCardStudentViewComponent,
+    TeacherDetailsViewComponent,
+    StudentDetailsViewComponent,
+    FormatTimePipe,
+    AdminJoinRequestForTeacherTabAndStudentTabGridComponent,
+    AdminJoinRequestForTeacherTabAndStudentTabCardComponent,
+    AdminDropOutRequestForTeacherTabAndStudentTabCardComponent,
+    AdminDropOutRequestForTeacherTabAndStudentTabGridComponent,
+    AdminVacationRequestForStudentTabGridComponent,
+        AdminVacationRequestForStudentTabCardComponent,
+        JoinExamComponent,
         TeacherAppointmentRequestsGridComponent,
         TeacherAppointmentRequestCardComponent
-    ],
+  ],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,
@@ -145,26 +158,33 @@ import { TeacherAppointmentRequestCardComponent } from './components/teacher-app
     NgbModule, MatAutocompleteModule, NgbRatingModule, MatTooltipModule, PdfViewerModule
   ],
 
-    exports: [
-        MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule, Ng2TelInputModule,
-        MatExpansionModule, MatSelectModule, DragDropModule, CustomeCardComponent, CustomAccordionComponent,
-        ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent,
-        UsersCounterComponent, KhatmeenStudentsComponent, StudentNumbersComponent, StudentsRatingComponent,
-        CardStudentScientificProblemComponent, QuestionTemplateComponent, VoiceRecordingComponent, MatGridListModule,
-        ScientificProblemsGridComponent, CardAdminScientificProblemComponent, NotAuthComponent, GroupUsersCardComponent,
-        InputSearchListComponent, NgbRatingModule, CardNotifacationsComponent, ProgramDayTaskHearingComponent,
-        NgbModule, ProgramDayTaskReadExplanationComponent, ProgramDayTaskRepetitionComponent,
-        ProgramDayTaskMemorizeComponent, ProgramDayTaskLinkingComponent, ProgramDayTaskVideoComponent, ProgramDayTaskDailyTestComponent,
-        ProgramDayTaskEncouragementLetterComponent, ProgramDayTaskReviewComponent, ProgramDayTaskRecitationComponent,
-        ProgramDayTaskRecitationStudentsComponent, ProgramDayTaskTestPhasedComponent,
-        ProgramDayTaskTasmeaComponent, CardFeelingsComponent, MatTooltipModule,
-        SettingAgeComponent, SettingDegreeLastProgramComponent, SettingLastProgramComponent, SettingQualificationsComponent,
-        SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent,
-        SettingAcceptComponent, StuCardRequestComponent, TeacherCardRequestComponent, TeacherSystemCardRequestComponent, TeacherStuProgramForSubscriptionGridComponent,
-        ProgramSubscriptionGridComponent
-        , TeacherSystemSubscriptionGridComponent, StudentProgramVacationGridComponent, TeacherStudentProgramForSubscriptionComponent,
-        StudentDropOutGridComponent,
-        TeacherDropOutRequestAdminGridComponent, TeacherDetailsViewComponent, StudentDetailsViewComponent, FormatTimePipe, TeacherAppointmentRequestsGridComponent
-    ]
+  exports: [
+    MatRadioModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatCardModule, Ng2TelInputModule,
+    MatExpansionModule, MatSelectModule, DragDropModule, CustomeCardComponent, CustomAccordionComponent,
+    ViewUserProfileCustomComponent, SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent,
+    UsersCounterComponent, KhatmeenStudentsComponent, StudentNumbersComponent, StudentsRatingComponent,
+    CardStudentScientificProblemComponent, QuestionTemplateComponent, VoiceRecordingComponent, MatGridListModule,
+    ScientificProblemsGridComponent, CardAdminScientificProblemComponent, NotAuthComponent, GroupUsersCardComponent,
+    InputSearchListComponent, NgbRatingModule, CardNotifacationsComponent, ProgramDayTaskHearingComponent,
+    NgbModule, ProgramDayTaskReadExplanationComponent, ProgramDayTaskRepetitionComponent,
+    ProgramDayTaskMemorizeComponent, ProgramDayTaskLinkingComponent, ProgramDayTaskVideoComponent, ProgramDayTaskDailyTestComponent,
+    ProgramDayTaskEncouragementLetterComponent, ProgramDayTaskReviewComponent, ProgramDayTaskRecitationComponent,
+    ProgramDayTaskRecitationStudentsComponent, ProgramDayTaskTestPhasedComponent,
+    ProgramDayTaskTasmeaComponent, CardFeelingsComponent, MatTooltipModule,
+    SettingAgeComponent, SettingDegreeLastProgramComponent, SettingLastProgramComponent, SettingQualificationsComponent,
+    SettingMaxmumSubscribeComponent, SettingPartQraanComponent, CustomConditionsComponent,
+    SettingAcceptComponent, StuCardRequestComponent, TeacherCardRequestComponent, TeacherSystemCardRequestComponent, TeacherStuProgramForSubscriptionGridComponent,
+    ProgramSubscriptionGridComponent
+    , TeacherSystemSubscriptionGridComponent, StudentProgramVacationGridComponent, TeacherStudentProgramForSubscriptionComponent,
+    StudentDropOutGridComponent,
+    TeacherDropOutRequestAdminGridComponent, TeacherDetailsViewComponent, StudentDetailsViewComponent,
+    FormatTimePipe, AdminJoinRequestForTeacherTabAndStudentTabGridComponent,
+    AdminJoinRequestForTeacherTabAndStudentTabCardComponent, AdminDropOutRequestForTeacherTabAndStudentTabCardComponent,
+    AdminDropOutRequestForTeacherTabAndStudentTabGridComponent,
+      AdminVacationRequestForStudentTabGridComponent, AdminVacationRequestForStudentTabCardComponent,
+      JoinExamComponent, TeacherAppointmentRequestsGridComponent
+
+
+  ]
 })
 export class SharedModule { }

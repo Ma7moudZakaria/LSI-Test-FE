@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { AnswerTypeEnum } from 'src/app/core/enums/exam-builder-enums/answer-type-enum.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { ProgramDutyDaysTaskViewMoodEnum } from 'src/app/core/enums/programs/program-duty-days-task-view-mood-enum.enum';
 import { IExam } from 'src/app/core/interfaces/exam-builder-interfaces/iexam';
 import { IQuestion } from 'src/app/core/interfaces/exam-builder-interfaces/iquestion';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
@@ -21,6 +22,8 @@ export class ProgramDayTaskDailyTestComponent implements OnInit {
   voiceUrl: string | undefined;
   @Input() dailyTestDetailsModel: IExam | undefined //{ questions: [] };
   @Input() isView: boolean = false;
+  @Input() dutyDaysTaskViewMood: number = ProgramDutyDaysTaskViewMoodEnum.admin;
+  programDutyDaysTaskViewMoodEnum=ProgramDutyDaysTaskViewMoodEnum;
   resultMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
 
@@ -62,9 +65,6 @@ export class ProgramDayTaskDailyTestComponent implements OnInit {
 
     }
   }
-
-
-
   /////recording/////
   saveVoiceUrl(event: any) {
     this.voiceUrl = event;

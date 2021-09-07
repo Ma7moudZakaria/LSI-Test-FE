@@ -398,13 +398,13 @@ export class UpdateUserProfileComponent implements OnInit {
       this.updateCalenderType.selectedDateType = DateType.Hijri;
       let date = new Date(this.userProfileDetails?.birthdate || '');
       this.hijriBirthDateInputParam = {year: date?.getFullYear(), month: date?.getMonth() + 1, day: date?.getDate()}
-      this.f.hijriBirthDate.setValue(this.userProfileDetails?.birthdate);
+      // this.f.hijriBirthDate.setValue(date.toString());
 
     } else {
       this.updateCalenderType.selectedDateType = DateType.Gregorian;
       let date = new Date(this.userProfileDetails?.birthGregorian || '');
       this.hijriBirthDateInputParam = {year: date?.getFullYear(), month: date?.getMonth() + 1, day: date?.getDate()}
-      this.f.hijriBirthDate.setValue(this.userProfileDetails?.birthGregorian);
+      // this.f.hijriBirthDate.setValue(date.toString());
     }
     this.f.nationality.setValue(this.userProfileDetails?.nationality);
     this.f.occupation.setValue(this.userProfileDetails?.occupation);

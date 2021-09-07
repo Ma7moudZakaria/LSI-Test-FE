@@ -1,0 +1,93 @@
+<div class="details">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-3">
+        <img src="../../../../assets/images/qor2an.png" class="derails__image">
+      </div>
+      <div class="col-9">
+        <div class="d-flex align-items-center justify-content-end">
+          <button class="user_tabs-btn"> <img src="../../../../assets/images/tab-trash.svg">{{'PROGRAMS_LIST.KICK_OFF' | translate}}</button>
+          <div class="details__status">
+            <span class="details__status--icon"></span>
+            <h6 class="details__status--text">{{'GENERAL.ACTIVE' | translate}}</h6>
+          </div>
+        </div>
+          <h2 class="details__name">
+            حفظ الجمع بين الصحيحين - المسار الثاني (وجهان)
+          </h2>
+          <div class="d-flex align-items-center justify-content-start">
+          <ngb-rating [(rate)]="starsSelected" [max]="5" [readonly]="true">
+            <ng-template let-fill="fill" let-index="index">
+              <span class="star" [class.filled]="fill === 100">&#9733;</span>
+            </ng-template>
+          </ngb-rating>
+            <h4 class="details__payment">{{'PROGRAMS_LIST.FREE' | translate}}</h4>
+          </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <div class="details__time">
+          <h4 class="details__time--title">{{'PROGRAMS_LIST.PLANNED_WORK_HOURS' | translate}}</h4>
+          <span class="details__time--num">30</span>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="details__time">
+          <h4 class="details__time--title">{{'PROGRAMS_LIST.ACTUAL_WORKING_HOURS' | translate}}</h4>
+          <span class="details__time--num">20</span>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="details__time">
+          <h4 class="details__time--title">{{'PROGRAMS_LIST.number_of_apologies' | translate}}</h4>
+          <span class="details__time--num">2</span>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="details__time">
+          <h4 class="details__time--title">{{'PROGRAMS_LIST.NUMBER_OF_STUDENTS' | translate}}</h4>
+          <span class="details__time--num">2</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-8">
+        <h2 class="details__title">{{'PROGRAMS_LIST.HIS_STUDENTS' | translate}}</h2>
+      </div>
+      <div class="col-12">
+        <div class="internal_scroll_list_group">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-6" *ngFor="let program  of cards; let i = index">
+                <div class="list-group-item  d-flex user"
+                   [class.active]="selectedIndex === i"
+                   (click)="loadProgramMaterial();selectedIndex=i">
+
+                  <img src="../../../../../assets/images/Profile.svg" class="user__image">
+                  <div class="teacher-stu-detail">
+                    <h2 class="user__name">سيف الدين ابراهيم</h2>
+                    <div class="d-flex align-items-center justify-content-start">
+                      <h6 class="title">{{'PROGRAMS_LIST.DEGREE' | translate}} :</h6>
+                      <h6 class="num">98</h6>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-start">
+                      <h6 class="title">{{'PROGRAMS_LIST.DATE' | translate}} :</h6>
+                      <h6 class="num">20/5/2020</h6>
+                    </div>
+                  </div>
+                  <ngb-rating [(rate)]="starsSelected" [max]="5" [readonly]="true">
+                    <ng-template let-fill="fill" let-index="index">
+                      <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                    </ng-template>
+                  </ngb-rating>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

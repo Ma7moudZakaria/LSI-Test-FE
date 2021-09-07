@@ -9,6 +9,7 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { TranslateService } from '@ngx-translate/core';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
+import { ProgramDutyDaysTaskViewMoodEnum } from 'src/app/core/enums/programs/program-duty-days-task-view-mood-enum.enum';
 
 @Component({
   selector: 'app-program-day-task-hearing',
@@ -17,12 +18,14 @@ import { AlertifyService } from 'src/app/core/services/alertify-services/alertif
 })
 export class ProgramDayTaskHearingComponent implements OnInit {
   @Input() isView: boolean = false;
-
+  @Input() hearingTaskDetailsModel: IProgramDayTaskHearing = {};
+  @Input() dutyDaysTaskViewMood: number = ProgramDutyDaysTaskViewMoodEnum.admin;
+  programDutyDaysTaskViewMoodEnum=ProgramDutyDaysTaskViewMoodEnum;
   resMessage: BaseMessageModel = {};
   fileUploadModel: IFileUpload[] = [];
   fileList?: IAttachment[] = [];
   attachmentIds: string[] = [];
-  @Input() hearingTaskDetailsModel: IProgramDayTaskHearing = {};
+ 
   constructor(
     public translate: TranslateService,
     private attachmentService: AttachmentsService,
