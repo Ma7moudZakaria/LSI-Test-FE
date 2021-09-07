@@ -49,15 +49,10 @@ export class AdminStudentListComponent implements OnInit {
     this.adminStudentTabService.getStudentManagement(this.studentListFilterRequestModel || {}).subscribe(res => {
 
       if (res.isSuccess) {
-        console.log("res", res)
         this.studentList = res.data as IAdminStudentTabFilterResponse[];
-        let firstId = this.studentList[0].usrId;
-        console.log("firstId", firstId)
+        let firstId = this.studentList[0].studId;
         let UserModel: ITeacherStudentViewModel = { progName: '', usrId: firstId };
         this.userId.emit(UserModel);
-        // this.teachersList?.forEach(function (item) {
-        // });
-
       }
       else {
         this.errorMessage = res.message;
@@ -68,18 +63,14 @@ export class AdminStudentListComponent implements OnInit {
       });
   }
 
-
-
-
-
   ToggelAdvancSearch() {
     this.advancedSearch = !this.advancedSearch
   }
   loadProgramMaterial(id?: string) {
     let UserModel: ITeacherStudentViewModel = { progName: '', usrId: id };
     this.userId.emit(UserModel);
-
   }
+
   submitSearch() { }
   resetSearch() { }
   SendDatafrom(data: any) {
