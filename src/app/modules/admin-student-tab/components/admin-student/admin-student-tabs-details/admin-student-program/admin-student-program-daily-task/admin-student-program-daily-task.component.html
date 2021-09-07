@@ -4,21 +4,23 @@
           <img src="../../../../assets/images/sc-problem/exporticon.svg" class="cursor-pointer">
       </div>
   
-    <app-search-input ></app-search-input>
+    <app-search-input (searchTerm)="filterByNameSearchKey($event)"></app-search-input>
     <div class="internal_scroll_list_group">
-      <a class="list-group-item p-2" *ngFor="let program  of programs; let i = index"
-         [class.active]="selectedIndex === i">
+      <a class="list-group-item p-2" *ngFor="let programday  of programDays; let i = index"
+         [class.active]="selectedIndex === i"
+         (click)="loadDayDetails(programday?.dayId);selectedIndex=i">
+
         <div class="justify-content-between d-flex align-items-center">
-         <p class="selected_day mb-0">اليوم - 1</p>
-         <p class="selected_data mb-0">01-01-1442</p>
-         <span class="count">1</span>
+         <p class="selected_day mb-0">{{ translate.currentLang == langEnum.en ?'Day' : 'اليوم'}} - {{programday.daynum}}</p>
+         <p class="selected_data mb-0">{{programday.createdOn}}</p>
+         <span class="count">{{programday.numTasks}}</span>
         </div>
         <div class="justify-content-between d-flex align-items-center admin-stu-daily_task">
-          <p class="mb-0 edu_leval">مستوى التعليمي</p>
-          <p class="value_progressbar">75 %</p>
+          <p class="mb-0 edu_leval">{{ translate.currentLang == langEnum.en ?'Execution level' : 'مستوى التنفيذ'}}</p>
+          <p class="value_progressbar">{{programday.ratio}} %</p>
         </div>
         
-      <p class="mb-0"><ngb-progressbar type="danger" [value]="75" height=".5rem"></ngb-progressbar></p>
+      <p class="mb-0"><ngb-progressbar type="danger" [value]="programday.ratio" height=".5rem"></ngb-progressbar></p>
       </a>
       
     </div>
