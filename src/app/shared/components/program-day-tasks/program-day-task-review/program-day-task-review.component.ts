@@ -14,6 +14,7 @@ import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { AttachmentsService } from 'src/app/core/services/attachments-services/attachments.service';
 import { ProgramDayTasksService } from 'src/app/core/services/program-services/program-day-tasks.service';
+import { ProgramDutyDaysTaskViewMoodEnum } from 'src/app/core/enums/programs/program-duty-days-task-view-mood-enum.enum';
 
 @Component({
   selector: 'app-program-day-task-review',
@@ -21,6 +22,10 @@ import { ProgramDayTasksService } from 'src/app/core/services/program-services/p
   styleUrls: ['./program-day-task-review.component.scss']
 })
 export class ProgramDayTaskReviewComponent implements OnInit {
+  @Input() reviewDetailsModel: IProgramDayTaskReview = {};
+  @Input() isView: boolean = false;
+  @Input() dutyDaysTaskViewMood: number = ProgramDutyDaysTaskViewMoodEnum.admin;
+  programDutyDaysTaskViewMoodEnum=ProgramDutyDaysTaskViewMoodEnum;
   fileUploadModel: IFileUpload[] = [];
   fileList?: IAttachment[] = [];
   attachmentIds: string[] = [];
@@ -28,8 +33,6 @@ export class ProgramDayTaskReviewComponent implements OnInit {
   resMessage: BaseMessageModel = {};
   programDayTaskDetails: ISaveProgramDayTaskDetailsModel = {};
   resultMessage: BaseMessageModel = {};
-  @Input() reviewDetailsModel: IProgramDayTaskReview = {};
-  @Input() isView: boolean = false;
 
   constructor(
     private programDayTasksService: ProgramDayTasksService,

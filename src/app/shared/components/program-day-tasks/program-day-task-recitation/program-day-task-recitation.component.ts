@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ProgramDayTaskRecitationType } from 'src/app/core/enums/program-day-task-recitation-type.enum';
+import { ProgramDutyDaysTaskViewMoodEnum } from 'src/app/core/enums/programs/program-duty-days-task-view-mood-enum.enum';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
 import { IRecitationTimes } from 'src/app/core/interfaces/programs-interfaces/iprogram-basic-info-model';
 import { IProgramBasicInfoDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
@@ -16,7 +17,8 @@ import { LookupService } from 'src/app/core/services/lookup-services/lookup.serv
 export class ProgramDayTaskRecitationComponent implements OnInit {
   @Input() recitationDetailsModel: IProgramBasicInfoDetails = {};
   @Input() isView: boolean = false;
-
+  @Input() dutyDaysTaskViewMood: number = ProgramDutyDaysTaskViewMoodEnum.admin;
+  programDutyDaysTaskViewMoodEnum=ProgramDutyDaysTaskViewMoodEnum;
   collectionOfLookup = {} as ILookupCollection;
   listOfLookup: string[] = ['SARD_TYPES'];
   resultMessage: BaseMessageModel = {};

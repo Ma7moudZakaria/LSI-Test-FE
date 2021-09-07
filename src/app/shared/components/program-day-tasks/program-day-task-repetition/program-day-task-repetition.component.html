@@ -1,3 +1,4 @@
+<div *ngIf="dutyDaysTaskViewMood===programDutyDaysTaskViewMoodEnum.admin">
 <ng-container *ngIf="!isView">
 <div class="details_day">
     <div class="form-group">
@@ -88,3 +89,34 @@
         </p>
 
 </ng-container>
+
+</div>
+
+<div *ngIf="dutyDaysTaskViewMood===programDutyDaysTaskViewMoodEnum.student">
+    <ng-container >
+        
+             <div class="mt-3  mb-3">
+                 <span class="grad"> {{'PROGRAM_DAY_TASK_REPETITION.REPETITION_NUMBER'| translate}}
+                     <span>  &nbsp;  : </span>
+                     <span>  &nbsp; </span> 
+                     <small class="info">{{repetitionDetailsModel.repetitionNo}}</small>
+                 </span>
+    
+             </div>
+    
+                 
+             <p class="mt-3 grad">
+                {{repetitionDetailsModel.msg}}
+             </p>
+             <!-- <p class="mt-3 grad">
+                {{repetitionDetailsModel.questionToStudent}}
+            </p> -->
+            <span >{{repetitionDetailsModel.repetitionNo}}</span>
+            <span>  &nbsp;  : </span>
+            <span >{{studentCounter}}</span>
+            <button (click)="repeat()" [disabled]="studentCounter==repetitionDetailsModel.repetitionNo">repeat</button>
+            <button (click)="reseat()">reseat</button>
+
+    </ng-container>
+
+</div>

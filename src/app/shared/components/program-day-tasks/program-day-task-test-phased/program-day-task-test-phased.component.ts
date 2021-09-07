@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { AnswerTypeEnum } from 'src/app/core/enums/exam-builder-enums/answer-type-enum.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { ProgramDutyDaysTaskViewMoodEnum } from 'src/app/core/enums/programs/program-duty-days-task-view-mood-enum.enum';
 import { IExam } from 'src/app/core/interfaces/exam-builder-interfaces/iexam';
 import { IQuestion } from 'src/app/core/interfaces/exam-builder-interfaces/iquestion';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
@@ -16,13 +17,16 @@ import { ConfirmDialogModel, ConfirmModalComponent } from '../../confirm-modal/c
   styleUrls: ['./program-day-task-test-phased.component.scss']
 })
 export class ProgramDayTaskTestPhasedComponent implements OnInit {
+  
+  @Input() isView: boolean = false;
+  @Input() testPhasedDetailsModel: IExam | undefined;
+  @Input() dutyDaysTaskViewMood: number = ProgramDutyDaysTaskViewMoodEnum.admin;
+  programDutyDaysTaskViewMoodEnum=ProgramDutyDaysTaskViewMoodEnum;
   examJson: string | undefined;
   voiceUrl: string | undefined;
-  @Input() testPhasedDetailsModel: IExam | undefined;
   resultMessage: BaseMessageModel = {};
-  @Input() isView: boolean = false;
-
   langEnum = LanguageEnum;
+
   constructor(
     public dialog: MatDialog,
     private examFormService: ExamFormService,

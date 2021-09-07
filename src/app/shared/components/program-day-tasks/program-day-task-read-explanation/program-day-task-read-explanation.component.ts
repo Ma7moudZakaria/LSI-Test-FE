@@ -9,6 +9,7 @@ import { IProgramDayTaskReadExplanation } from 'src/app/core/interfaces/programs
 import { TranslateService } from '@ngx-translate/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
+import { ProgramDutyDaysTaskViewMoodEnum } from 'src/app/core/enums/programs/program-duty-days-task-view-mood-enum.enum';
 @Component({
   selector: 'app-program-day-task-read-explanation',
   templateUrl: './program-day-task-read-explanation.component.html',
@@ -16,9 +17,9 @@ import { AlertifyService } from 'src/app/core/services/alertify-services/alertif
 })
 export class ProgramDayTaskReadExplanationComponent implements OnInit {
   @Input() isView: boolean = false;
-
   @Input() readExplanationDetailsModel: IProgramDayTaskReadExplanation = {};
-
+  @Input() dutyDaysTaskViewMood: number = ProgramDutyDaysTaskViewMoodEnum.admin;
+  programDutyDaysTaskViewMoodEnum=ProgramDutyDaysTaskViewMoodEnum;
   resMessage: BaseMessageModel = {};
   fileUploadModel: IFileUpload[] = [];
   fileList?: IAttachment[] = [];

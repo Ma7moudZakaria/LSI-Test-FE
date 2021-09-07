@@ -8,6 +8,7 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { AttachmentsService } from 'src/app/core/services/attachments-services/attachments.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ProgramDutyDaysTaskViewMoodEnum } from 'src/app/core/enums/programs/program-duty-days-task-view-mood-enum.enum';
 declare const Buffer: any;
 
 @Component({
@@ -16,11 +17,14 @@ declare const Buffer: any;
   styleUrls: ['./program-day-task-memorize.component.scss']
 })
 export class ProgramDayTaskMemorizeComponent implements OnInit {
+
+  @Input() memorizeDetailsModel: IProgramDayTaskMemorize = {};
+  @Input() isView: boolean = false;
+  @Input() dutyDaysTaskViewMood: number = ProgramDutyDaysTaskViewMoodEnum.admin;
+  programDutyDaysTaskViewMoodEnum=ProgramDutyDaysTaskViewMoodEnum;
   resMessage: BaseMessageModel = {};
   fileUploadModel: IFileUpload[] = [];
   fileList?: IAttachment[] = [];
-  @Input() memorizeDetailsModel: IProgramDayTaskMemorize = {};
-  @Input() isView: boolean = false;
 
   constructor
     (
