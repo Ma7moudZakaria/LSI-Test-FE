@@ -637,7 +637,8 @@
     "SORT_NAME": "Sort by Name"
   },
   "ADMIN_MESSAGING": {
-    "SCIENTIFIC_PROBLEM": "Scientific Problem"
+    "SCIENTIFIC_PROBLEM": "Scientific Problem",
+    "CHAT": "Chats"
   },
   "NOTIFICATIONS": {
     "AFTER_ASSIGNMENT": "After Not performing",

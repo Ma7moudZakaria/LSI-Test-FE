@@ -636,7 +636,8 @@
     "SORT_NAME": "ترتيب بالاسم "
   },
   "ADMIN_MESSAGING": {
-    "SCIENTIFIC_PROBLEM": "إشكال علمى"
+    "SCIENTIFIC_PROBLEM": "إشكال علمى",
+    "CHAT": "الرسائل"
   },
   "NOTIFICATIONS": {
     "AFTER_ASSIGNMENT": "بعد عدم تنفيذ ",

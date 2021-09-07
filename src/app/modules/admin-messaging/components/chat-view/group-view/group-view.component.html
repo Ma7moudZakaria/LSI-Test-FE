@@ -1,0 +1,14 @@
+<p>group-view works!</p>
+
+<div class="list-group teacher-list-request">
+
+    <p class="mb-3"> {{'TEACHER_SUBSCRIBERS.SUBSCRIBERS' | translate}} </p>
+
+    <div class="internal_scroll_list_group">
+        <!-- <a class="list-group-item d-flex" [class.active]="selectedIndex = i">  -->
+        <a class="list-group-item d-flex" *ngFor="let groupOfItem of listOfGroups; let i = index">
+            <span> {{ groupOfItem.group_name }} </span>        
+            <!-- <span> {{ this.listOfMessages[0] }} </span>         -->
+        </a>
+    </div>
+</div>

@@ -44,6 +44,11 @@ import { StudentDropOutTabRequestComponent } from './components/student-program-
 import { StudentDropOutRequestRejectedComponent } from './components/student-program-request-view/stu-request-details/student-admin-drop-out-request/student-drop-out-request-rejected/student-drop-out-request-rejected.component';
 import { StudentAdvancedSearchComponent } from './components/student-program-request-view/stu-request-details/student-admin-drop-out-request/student-advanced-search/student-advanced-search.component';
 import { StudentAdminDropOutRequestComponent } from './components/student-program-request-view/stu-request-details/student-admin-drop-out-request/student-admin-drop-out-request.component';
+import { ChatViewComponent } from './components/chat-view/chat-view.component';
+import { GroupViewComponent } from './components/chat-view/group-view/group-view.component';
+import { ChatDetailsComponent } from './components/chat-view/chat-details/chat-details.component';
+import { GroupDetailsComponent } from './components/chat-view/group-details/group-details.component';
+import { AddGroupComponent } from './components/chat-view/add-group/add-group.component';
 
 // @NgModule({
 //   declarations: [AdminMessagingViewComponent, ScientificProblemsComponent, AddScientifiProblemReplyComponent,
@@ -62,7 +67,7 @@ import { StudentAdminDropOutRequestComponent } from './components/student-progra
     ChangTimeRequestComponent, TeacherJionProgramTabRequestComponent, StuVacationsRequestComponent, StuMovingRequestComponent
         , TeacherJionTabRequestComponent, StuRejectedComponent, TeacheRejectedComponent, AdvancedSearchTeacherComponent, TeacherSystemSubscriptionRejectedComponent, StudentVacationRequestTabComponent, StudentProgramVacationRejectComponent, StudentProgramVacationAdvancedSearchComponent
         , TeacherDropOutTabRequestComponent, TeacherDropOutRequestRejectedComponent, StudentAdminDropOutRequestComponent, StudentDropOutTabRequestComponent,
-        StudentDropOutRequestRejectedComponent, StudentAdvancedSearchComponent],
+        StudentDropOutRequestRejectedComponent, StudentAdvancedSearchComponent, ChatViewComponent, GroupViewComponent, ChatDetailsComponent, GroupDetailsComponent, AddGroupComponent],
   imports: [
     CommonModule,
     FormsModule,
