@@ -16,7 +16,6 @@ import { IProgramDayTaskRepetition } from 'src/app/core/interfaces/programs-inte
 import { IProgramDayTaskReview } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-review';
 import { IProgramDayTaskVideo } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-video';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
-import { ProgramDayTasksService } from 'src/app/core/services/program-services/program-day-tasks.service';
 
 @Component({
   selector: 'app-student-program-duty-days-task-details',
@@ -48,7 +47,6 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
   
   constructor(
     public translate: TranslateService,
-    private programDayTasksService:ProgramDayTasksService,
   ) { }
 
   ngOnInit(): void {
