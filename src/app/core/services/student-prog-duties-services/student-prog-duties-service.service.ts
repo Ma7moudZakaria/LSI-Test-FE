@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IDayTasksProgramDutyDayRequestModel } from '../../interfaces/student-program-duties-interfaces/iday-tasks-program-duty-day-request-model';
 import { IStudentProgramDutiesRequest } from '../../interfaces/student-program-duties-interfaces/istudent-program-duties-request';
+import { ISubmitStudentDutyDayTaskModel } from '../../interfaces/student-program-duties-interfaces/isubmit-student-duty-day-task-model';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 
 @Injectable({
@@ -13,6 +14,8 @@ export class StudentProgDutiesServiceService {
 
   getStudentProgDutiesURL = environment.baseUrl + 'StudentDutyWorkFlow/get-student-program-duty-days/';
   getDayTasksProgramToStudentURL=environment.baseUrl+'StudentDutyWorkFlow/get-day-tasks-by-student-program-day/';
+  submitStudentTaskAnswerURL=environment.baseUrl+'StudentDutyWorkFlow/submit-student-task-answer/';
+
 
   constructor(private http: HttpClient) { }
 
@@ -23,6 +26,10 @@ export class StudentProgDutiesServiceService {
 
   getDayTasksProgramToStudent(model:IDayTasksProgramDutyDayRequestModel):Observable<BaseResponseModel>{
     return this.http.post<BaseResponseModel>(this.getDayTasksProgramToStudentURL,model);
+  }
+
+ submitStudentTaskAnswer(model:ISubmitStudentDutyDayTaskModel):Observable<BaseResponseModel>{
+    return this.http.post<BaseResponseModel>(this.submitStudentTaskAnswerURL,model);
   }
 
 }
