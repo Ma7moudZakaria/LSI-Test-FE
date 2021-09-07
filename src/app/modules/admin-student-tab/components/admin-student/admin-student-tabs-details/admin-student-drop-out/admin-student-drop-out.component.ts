@@ -3,6 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { DropOutRoleEnum } from 'src/app/core/enums/drop-out-request-enums/drop-out-status.enum';
 import { StudentDropOutRequestStatusEnum } from 'src/app/core/enums/drop-out-request-enums/student-drop-out-request-status.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { ProgramSubscriptionUsersEnum } from 'src/app/core/enums/program-subscription-users-enum.enum';
 import { IStudentDropOutRequestsFilterStudentViewRequestModel } from 'src/app/core/interfaces/student-drop-out-request-interfaces/istudent-drop-out-requests-filter-student-view-request-model';
 import { IStudentDropOutRequestsFilterStudentViewResponseModel } from 'src/app/core/interfaces/student-drop-out-request-interfaces/istudent-drop-out-requests-filter-student-view-response-model';
 import { ITeacherStudentViewModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
@@ -32,8 +33,8 @@ export class AdminStudentDropOutComponent implements OnInit {
   ids?: string[] = [];
   typeEnum: StudentDropOutRequestStatusEnum = StudentDropOutRequestStatusEnum.Pending;
   statusEnum = StudentDropOutRequestStatusEnum;
-  userMode: DropOutRoleEnum = DropOutRoleEnum.Student;
-
+  // userMode: DropOutRoleEnum = DropOutRoleEnum.Student;
+  userMode: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.student;
   showTap: StudentDropOutRequestStatusEnum = StudentDropOutRequestStatusEnum.Pending;
   showUserDetailsView: boolean = false;
   constructor(
@@ -42,7 +43,7 @@ export class AdminStudentDropOutComponent implements OnInit {
     private alertify: AlertifyService) { }
 
   ngOnInit(): void {
-    this.studentDropOutRequestFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn'
+    this.studentDropOutRequestFilterRequestModel.sortField = 'requestdate'
     this.getStudentDropOutRequests();
   }
 
@@ -76,6 +77,12 @@ export class AdminStudentDropOutComponent implements OnInit {
           type: BaseConstantModel.DANGER_TYPE
         }
       });
+  }
+
+
+  studentDropOutRequestChangePage(event: IStudentDropOutRequestsFilterStudentViewRequestModel) {
+    this.studentDropOutRequestFilterRequestModel = event;
+    this.getStudentDropOutRequests();
   }
 
 }

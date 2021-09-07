@@ -9,6 +9,7 @@
     [totalCount]='totalCount'
     [userMode]='userMode'
     [studentDropOutRequestFilterRequestStudentModel]='studentDropOutRequestFilterRequestModel'
+    (studentDropOutRequestFilterStudentEvent)="studentDropOutRequestChangePage($event)"
     >
   </app-admin-drop-out-request-for-teacher-tab-and-student-tab-grid>
 </div>

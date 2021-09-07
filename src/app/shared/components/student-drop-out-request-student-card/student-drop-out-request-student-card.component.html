@@ -1,4 +1,4 @@
-<div class="card-request">
+<div class="card-request" *ngIf="!adminView">
     <div class="card_header">
       <div class="col-6 d-flex align-items-center justify-content-between p-0 m-0">
         <span > {{'TEACHER_DROP_OUT.TIME' | translate}} </span>
@@ -48,4 +48,62 @@
   </div>
 
 
+</div>
+
+
+<div class="card-request" *ngIf="adminView">
+ 
+  <div class="card_header">
+    <div class="col-6 d-flex align-items-center justify-content-between p-0 m-0">
+      <span > {{'TEACHER_DROP_OUT.TIME' | translate}} </span>
+      <span>{{studentDropOutRequestFilterRequestStudentModel.requestDate  | date: 'dd/MM/yyyy'}}</span>
+    </div>
+
   </div>
+
+<div class="card_body program">
+  <div class="d-flex align-items-center justify-content-between program__header" >
+
+    <p class="program__num  mb-2"></p>
+    <div class="d-flex align-items-center justify-content-between " >
+      <p class="program__num mb-0 mr-3 ml-3">{{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestStudentModel?.enStudentStatusName : studentDropOutRequestFilterRequestStudentModel?.arStudentStatusName}}</p>
+      <span class="status" [ngClass]="{ 'accept' : studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Accept ,
+                                'pending' : studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Pending ,
+                                'rejected' : studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Rejected,
+                                'cancel' : studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Canceled
+                             }"
+      >
+    </span>
+    </div>
+  </div>
+  <div class="mx-1">
+    
+    <p class="program__name ellipsis p-0 " 
+    title="{{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestStudentModel?.enProgBatName : studentDropOutRequestFilterRequestStudentModel?.arProgBatName}}"
+    > {{ translate.currentLang == langEnum.en ? studentDropOutRequestFilterRequestStudentModel?.enProgBatName : studentDropOutRequestFilterRequestStudentModel?.arProgBatName}}</p>
+    <!-- <p class="program__desc"> {{ studentDropOutRequestFilterRequestStudentModel?.reason }}  </p> -->
+    <span>
+      {{'STUDENT_SUBSCRIBERS.REQUEST_REASON' | translate}}  :
+   </span>
+   <span class="program_user bold mb-0 " *ngIf="!studentDropOutRequestFilterRequestStudentModel.reason ">{{'STUDENT_SUBSCRIBERS.NO_DATA' | translate}} </span>
+   <p class="program_user bold mb-2 ">{{ studentDropOutRequestFilterRequestStudentModel?.reason }}</p>
+
+
+   <span>{{'TEACHER_DROP_OUT.ADMIN_ANSWER' | translate}}
+ </span>
+ <p class="program_user bold mb-0 " *ngIf="!studentDropOutRequestFilterRequestStudentModel.reasonReject ">{{'STUDENT_SUBSCRIBERS.NO_DATA' | translate}} </p>
+ <p class="program_user bold mb-0 ">{{ studentDropOutRequestFilterRequestStudentModel?.reasonReject }}</p>
+
+  </div>
+
+ 
+
+</div>
+
+
+</div>
+
+
+
+
+

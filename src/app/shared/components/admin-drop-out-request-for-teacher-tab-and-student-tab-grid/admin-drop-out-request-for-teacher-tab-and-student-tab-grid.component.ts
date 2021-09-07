@@ -24,10 +24,10 @@ export class AdminDropOutRequestForTeacherTabAndStudentTabGridComponent implemen
   // @Input() userMode: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.teacher;
   // @Input() userMode: DropOutRoleEnum | undefined;
   // programSubscriptionUsers = ProgramSubscriptionUsersEnum;
-  @Input() userMode: DropOutRoleEnum | undefined;
-  userRoleMode = DropOutRoleEnum;
+  @Input() userMode: ProgramSubscriptionUsersEnum | undefined;
+  userRoleMode = ProgramSubscriptionUsersEnum;
 
-
+  teacherCard: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.student;
 
   @Output() studentDropOutRequestFilterStudentEvent = new EventEmitter<IStudentDropOutRequestsFilterStudentViewRequestModel>();
   @Output() itemStudentDropOutRequestForStudentReject = new EventEmitter<IStudentDropOutRequestsFilterStudentViewResponseModel>();
@@ -99,18 +99,18 @@ export class AdminDropOutRequestForTeacherTabAndStudentTabGridComponent implemen
 
   // Start Student View
 
-  sortStudentByName() {
-    this.studentDropOutRequestFilterRequestStudentModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'studentNameAr' : 'StudentNameAr';
-    this.studentDropOutRequestFilterRequestStudentModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
-    this.studentDropOutRequestFilterStudentEvent.emit(this.studentDropOutRequestFilterRequestStudentModel);
-  }
+  // sortStudentByName() {
+  //   this.studentDropOutRequestFilterRequestStudentModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'studentNameAr' : 'StudentNameAr';
+  //   this.studentDropOutRequestFilterRequestStudentModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
+  //   this.studentDropOutRequestFilterStudentEvent.emit(this.studentDropOutRequestFilterRequestStudentModel);
+  // }
 
-  sortStudentByNameOrderType() {
-    if ((this.studentDropOutRequestFilterRequestStudentModel.sortField === "studentNameAr" || this.studentDropOutRequestFilterRequestStudentModel.sortField === "StudentNameEn") && this.studentDropOutRequestFilterRequestStudentModel.sortOrder == 1) { return 'asend' }
-    if ((this.studentDropOutRequestFilterRequestStudentModel.sortField === "studentNameAr" || this.studentDropOutRequestFilterRequestStudentModel.sortField === "StudentNameEn") && this.studentDropOutRequestFilterRequestStudentModel.sortOrder == -1) { return 'desend' }
+  // sortStudentByNameOrderType() {
+  //   if ((this.studentDropOutRequestFilterRequestStudentModel.sortField === "studentNameAr" || this.studentDropOutRequestFilterRequestStudentModel.sortField === "StudentNameEn") && this.studentDropOutRequestFilterRequestStudentModel.sortOrder == 1) { return 'asend' }
+  //   if ((this.studentDropOutRequestFilterRequestStudentModel.sortField === "studentNameAr" || this.studentDropOutRequestFilterRequestStudentModel.sortField === "StudentNameEn") && this.studentDropOutRequestFilterRequestStudentModel.sortOrder == -1) { return 'desend' }
 
-    return '';
-  }
+  //   return '';
+  // }
 
   sortStudentRequestDate() {
     this.studentDropOutRequestFilterRequestStudentModel.sortField = 'requestdate';
@@ -191,7 +191,9 @@ export class AdminDropOutRequestForTeacherTabAndStudentTabGridComponent implemen
   }
 
   exportStudentCSV() {
-    let expItems = this.studentDropOutRequestStudentItems.filter(a => a.checked);
+    let expItems = this.studentDropOutRequestStudentItems
+    // let expItems = this.studentDropOutRequestStudentItems.filter(a => a.checked);
+
     let headerLabels = this.translate.currentLang == 'en-US' ?
       [' program name', 'User name'] :
       [' اسم البرنامج ',
