@@ -59,7 +59,7 @@ export class AdminStudentProgramDailyTaskComponent implements OnInit {
       });
     }
   }
-  loadDayDetails(dayId: string) {
+  loadDayDetails(dayId?: string) {
     
     if(this.studentAndProgramModel)
     {
