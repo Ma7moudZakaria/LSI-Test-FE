@@ -15,14 +15,10 @@ import { ITeacherProgramSubscriptionModel } from 'src/app/core/interfaces/teache
 })
 export class AdminJoinRequestForTeacherTabAndStudentTabCardComponent implements OnInit {
 
-  // @Output() rejecteStuRequest = new EventEmitter<IStudentSubscriptionModel>();
-  // @Output() acceptStuRequest = new EventEmitter<IStudentSubscriptionModel>();
-  // @Output() studentProgSubOutput = new EventEmitter<ITeacherStudentViewModel>();
-  // @Output() updateAllItemsChecked = new EventEmitter<boolean>();
+
   @Input() userMode: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.student;
   @Input() teacherSubscripModel: ITeacherProgramSubscriptionModel = { totalRows: 0 }
   @Input() studentSubscripModel: IStudentSubscriptionModel = { totalRows: 0 }
-  // @Input() typeEnum: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending;
 
   userRoleMode = ProgramSubscriptionUsersEnum
   tabTypeSelected = StudentProgramSubscriptionStatusEnum;
@@ -32,22 +28,7 @@ export class AdminJoinRequestForTeacherTabAndStudentTabCardComponent implements 
   constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
-    console.log("studentSubscripModel", this.studentSubscripModel)
+    // console.log("studentSubscripModel", this.studentSubscripModel)
   }
-  // studentJoinId(id?: string, JoinprogName?: string) {
-  //   let UserModel: ITeacherStudentViewModel = { progName: JoinprogName, usrId: id };
-  //   this.studentProgSubOutput.emit(UserModel);
-  // }
-
-  // rejectedStudentReq() {
-  //   this.rejecteStuRequest.emit(this.studentSubscripModel)
-  // }
-  // acceptStudentReq() {
-  //   this.acceptStuRequest.emit(this.studentSubscripModel);
-  // }
-  // updateAllItemsCheckedCall() {
-  //   this.updateAllItemsChecked.emit();
-  // }
-
 
 }
