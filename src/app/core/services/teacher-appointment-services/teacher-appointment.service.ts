@@ -17,7 +17,7 @@ export class TeacherAppointmentService {
   teacherAvailableTimeRequestAcceptanceURL = environment.baseUrl + 'TeacherAppointmentRequests/accept-teacher-available-time-request/';
   cancelTheChangeTeacherAvailableTimeRequestURL = environment.baseUrl + 'TeacherAppointmentRequests/cancel-teacher-available-time-request/';
   AddChangeTeacherAvailableTimesRequestURL = environment.baseUrl + 'TeacherAppointmentRequests/add-teacher-available-times/';
-
+  GetTeacherAppointmentRequestAppointmentsURL = environment.baseUrl + 'TeacherAppointmentRequests/get-teacher-appointment-request-appointments/'
 
   constructor(private http: HttpClient) {
   }
@@ -45,6 +45,10 @@ export class TeacherAppointmentService {
 
   AddChangeTeacherAvailableTimesRequest(model: IAddTeacherAppointmentRequest): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.AddChangeTeacherAvailableTimesRequestURL, model);
+  }
+
+  GetTeacherAppointmentRequestAppointments(id : string): Observable<BaseResponseModel> {
+    return this.http.get<BaseResponseModel>(this.GetTeacherAppointmentRequestAppointmentsURL + id);
   }
 
 }

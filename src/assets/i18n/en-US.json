@@ -935,6 +935,7 @@
     "NEW_TIMES": "New Times",
     "FROM": "FROM",
     "TO": "To",
-    "OLD_TIMES": "Old Times"
+    "OLD_TIMES": "Old Times",
+    "MODIFY_APPOINTMENT":"Appointment change request"
   }
 }

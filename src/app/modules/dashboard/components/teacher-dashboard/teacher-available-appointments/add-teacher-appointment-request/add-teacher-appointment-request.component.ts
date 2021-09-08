@@ -23,12 +23,12 @@ export class AddTeacherAppointmentRequestComponent implements OnInit {
   resultMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
   collectionOfLookup = {} as ILookupCollection;
-  listOfLookupProfile: string[] = ['GENDER', 'EDU_LEVEL', 'NATIONALITY', 'COUNTRY'
-    , 'DEGREE', 'EDU_DATE', 'DAYS', 'LANG', 'QUALIFI', 'SPECIAL', 'REWAYAT', 'AGENCY', 'WORKING_PLATFORM'];
+  listOfLookupProfile: string[] = ['DAYS'];
   resMessage: BaseMessageModel = {};
   selectedAvailabilityDaysList = Array<ITeacherProfileAvailabilityLookup>();
   availabilityDaysMessage: BaseMessageModel = {};
   availabilityDaysModel: ITeacherProfileAvailabilityLookup = {};
+  datepicker1:any;
 
 
   constructor(private stuSubRequestService: StudentProgramVacationServicesService
@@ -38,6 +38,7 @@ export class AddTeacherAppointmentRequestComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getLookupByKey();
   }
 
   closeRejectRequest() {
@@ -94,10 +95,12 @@ export class AddTeacherAppointmentRequestComponent implements OnInit {
 
     this.availabilityDaysMessage = {};
       this.selectedAvailabilityDaysList.push(this.availabilityDaysModel);
+      this.availabilityDaysModel = {};
   }
 
 
-  removeItemFromSelectedAvailabilityDays(p: any) {
-
+  removeItemFromSelectedAvailabilityDays(item: any) {
+    let index = this.selectedAvailabilityDaysList.indexOf(item);
+    this.selectedAvailabilityDaysList.splice(index, 1);
   }
 }

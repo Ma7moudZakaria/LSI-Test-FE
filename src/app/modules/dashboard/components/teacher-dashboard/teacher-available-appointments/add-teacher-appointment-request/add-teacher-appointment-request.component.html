@@ -1,7 +1,7 @@
 <form class="form-group DataForm mt-5 pl-3 pr-3">
-  <h3 class=" head  bold">{{ "STUDENT_SUBSCRIBERS.REJECTION_APPLICATION" | translate }} </h3>
+  <h3 class=" head  bold">{{ "TEACHER_APPOINTMENT.MODIFY_APPOINTMENT" | translate }} </h3>
   <div class="form-group">
-    <div class="col-8 ">
+    <div class="col-10 ">
       <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-2 col-xs-2 mt-3">
           <label class="Register__Label" for="availabilityDays">
@@ -31,7 +31,8 @@
           </label>
 
           <div  class="UpdateUser__Options form-group mb-0">
-            <input matInput type="time" class="form-control" placeholder="HH:MM" id="end_time_hour">
+            <input matInput type="time" class="form-control" placeholder="HH:MM" id="end_time_hour" [(ngModel)]="availabilityDaysModel.fromTime"
+            [ngModelOptions]="{standalone: true}">
             <!-- <mat-select name="ampm" class="ampm" [(ngModel)]="event.eampm" [ngModelOptions]="{standalone: true}">
                  <mat-option value="AM">AM</mat-option>
                  <mat-option value="PM">PM</mat-option>
@@ -49,9 +50,10 @@
           <label class="Register__Label" for="toDayTimeinterview">
             {{ 'UPDATE_TEACHER_PG.TO' | translate }}
           </label>
-
           <div  class="UpdateUser__Options form-group mb-0">
-            <input matInput type="time" class="form-control" placeholder="HH:MM" id="end_time1_hour">
+            
+            <input matInput type="time" class="form-control" placeholder="HH:MM" id="end_time1_hour" [(ngModel)]="availabilityDaysModel.toTime"
+            [ngModelOptions]="{standalone: true}">
             <!-- <mat-select name="ampm" class="ampm" [(ngModel)]="event.eampm" [ngModelOptions]="{standalone: true}">
                  <mat-option value="AM">AM</mat-option>
                  <mat-option value="PM">PM</mat-option>
