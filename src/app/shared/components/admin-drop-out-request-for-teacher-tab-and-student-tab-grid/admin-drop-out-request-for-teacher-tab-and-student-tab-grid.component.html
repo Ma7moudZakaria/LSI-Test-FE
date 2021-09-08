@@ -8,19 +8,7 @@
   [boundaryLinks]="true" 
   (pageChange)="onStudentPageChange()">
   </ngb-pagination>
-<!-- <button  [ngClass]="{'default_btn': studentDropOutRequestFilterRequestStudentModel.sortField != 'studentNameAr' && studentDropOutRequestFilterRequestStudentModel.sortField != 'StudentNameEn', 'asend_desend_btn' : this.studentDropOutRequestFilterRequestStudentModel.sortField != 'requestdate' }"
-(click)='sortStudentByName()'>
-{{'User_Requests.SORT_NAME' | translate}} 
-<span *ngIf='this.studentDropOutRequestFilterRequestStudentModel.sortField != "studentNameAr" && this.studentDropOutRequestFilterRequestStudentModel.sortField != "StudentNameEn"'>
-        <img  class="asend_btn" src="../../../../assets/images/sc-problem/Group 18449.svg">
-</span> 
-<span *ngIf='sortStudentByNameOrderType() == "asend"'>
-    <img  class="asend_btn" src="../../../../assets/images/sc-problem/desend.svg">
-</span> 
-<span *ngIf='sortStudentByNameOrderType() == "desend"'>
-    <img  class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
-</span>
-</button> -->
+
 <button  [ngClass]="{'asend_desend_btn': studentDropOutRequestFilterRequestStudentModel.sortField != 'studentNameAr' && studentDropOutRequestFilterRequestStudentModel.sortField != 'StudentNameEn', 'default_btn' : this.studentDropOutRequestFilterRequestStudentModel.sortField != 'requestdate'}"
 (click)='sortStudentRequestDate()'> 
 {{'User_Requests.SORT_DATE' | translate}}
@@ -77,7 +65,7 @@
   <div class="col-3 pl-4 text-right align-self-center">
  
     <a class=" ml-1 mr-1" >
-        <img  class="exportIcon" (click)='exportTeacherViewDropOutRequestCSV()' 
+        <img   (click)='exportTeacherViewDropOutRequestCSV()' 
         src="../../../../assets/images/sc-problem/exporticon.svg">
     </a>
   </div>

@@ -61,9 +61,12 @@ export class AdminStudentVacationRequestComponent implements OnInit {
           this.getStudentProgramVacationRequestsStudentView();
         }
       }
+      else {
+        this.alertify.error(res.message || '');
+      }
     },
       error => {
-        console.log(error);
+        this.alertify.error(error || '');
       });
   }
   // searchByText(searchKey: string) {
@@ -100,21 +103,21 @@ export class AdminStudentVacationRequestComponent implements OnInit {
   //   });
   // }
 
-  TerminateStudentProgramVacation(studentProgramVacationStudentViewModel: IStudentProgramVacationStudentViewModel) {
-    this.programVacationServicesService.terminateStudentProgramVacation(studentProgramVacationStudentViewModel.id).subscribe(res => {
-      var response = <BaseResponseModel>res;
-      if (response.isSuccess) {
-        this.alertify.success(res.message || '');
-        this.getStudentProgramVacationRequestsStudentView();
-      }
-      else {
-        this.alertify.error(res.message || '');
-      }
-    },
-      error => {
-        console.log(error);
-      });
-  }
+  // TerminateStudentProgramVacation(studentProgramVacationStudentViewModel: IStudentProgramVacationStudentViewModel) {
+  //   this.programVacationServicesService.terminateStudentProgramVacation(studentProgramVacationStudentViewModel.id).subscribe(res => {
+  //     var response = <BaseResponseModel>res;
+  //     if (response.isSuccess) {
+  //       this.alertify.success(res.message || '');
+  //       this.getStudentProgramVacationRequestsStudentView();
+  //     }
+  //     else {
+  //       this.alertify.error(res.message || '');
+  //     }
+  //   },
+  //     error => {
+  //       this.alertify.error(error || '');
+  //     });
+  // }
 
   // openAddStudentVacationNewRequest() {
   //   this.openStudentProgramVacationAddPopup.emit(this.filter)

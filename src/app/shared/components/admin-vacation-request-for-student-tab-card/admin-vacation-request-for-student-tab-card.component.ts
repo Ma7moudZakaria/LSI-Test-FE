@@ -12,9 +12,6 @@ import { IStudentProgramVacationStudentViewModel } from 'src/app/core/interfaces
 export class AdminVacationRequestForStudentTabCardComponent implements OnInit {
 
   @Input() studentProgramVacationStudentViewModel: IStudentProgramVacationStudentViewModel = { totalRows: 0 }
-  // @Output() CancelStudentVacationRequest = new EventEmitter<IStudentProgramVacationStudentViewModel>();
-  // @Output() TerminateStudentVacationRequest = new EventEmitter<IStudentProgramVacationStudentViewModel>();
-
   studentProgramVacationStatus = StudentProgramVacationStatusEnum;
   requestStatus?: string;
   langEnum = LanguageEnum;
@@ -24,11 +21,6 @@ export class AdminVacationRequestForStudentTabCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // cancelStudentReq() {
-  //   this.CancelStudentVacationRequest.emit(this.studentProgramVacationStudentViewModel);
-  // }
-  // terminateStudentReq() {
-  //   this.TerminateStudentVacationRequest.emit(this.studentProgramVacationStudentViewModel);
-  // }
+
 
 }

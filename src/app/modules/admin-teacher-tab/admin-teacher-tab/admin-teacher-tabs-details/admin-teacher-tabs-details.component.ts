@@ -6,6 +6,7 @@ import { ProgramService } from '../../../../core/services/program-services/progr
 import { ITeacherStudentViewModel } from '../../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 import { AdminTeacherBasicInfoComponent } from './admin-teacher-basic-info/admin-teacher-basic-info.component';
 import { AdminTeacherDropOutComponent } from './admin-teacher-drop-out/admin-teacher-drop-out.component';
+import { AdminTeacherJoinRequestComponent } from './admin-teacher-join-request/admin-teacher-join-request.component';
 
 @Component({
   selector: 'app-admin-teacher-tabs-details',
@@ -14,10 +15,12 @@ import { AdminTeacherDropOutComponent } from './admin-teacher-drop-out/admin-tea
 })
 export class AdminTeacherTabsDetailsComponent implements OnInit {
 
-  @Output() refreshProgListEvent = new EventEmitter();
+  // @Output() refreshProgListEvent = new EventEmitter();
   @ViewChild(AdminTeacherBasicInfoComponent) adminTeacherbasicInfoChild: AdminTeacherBasicInfoComponent | undefined;
   // @ViewChild(BasicInformationComponent) basicInfoCompChild:BasicInformationComponent | undefined;
   @ViewChild(AdminTeacherDropOutComponent) dropOutChild: AdminTeacherDropOutComponent | undefined;
+
+  @ViewChild(AdminTeacherJoinRequestComponent) joinRequestChild: AdminTeacherJoinRequestComponent | undefined;
 
   @Input() programModel: IprogramsModel | undefined;
 
@@ -31,19 +34,16 @@ export class AdminTeacherTabsDetailsComponent implements OnInit {
   constructor(private progService: ProgramService) { }
 
   ngOnInit(): void {
-    // this.getProgramDetails();
-    // console.consolelog('teacherIdTabs',this.teacherIdOutput)
+
   }
 
   ngOnChanges() {
-    // this.getProgramDetails();
+
   }
 
-
-
-  refreshProgList() {
-    this.refreshProgListEvent.emit();
-  }
+  // refreshProgList() {
+  //   this.refreshProgListEvent.emit();
+  // }
 
   viewSwitching() {
     switch (this.showTap) {
@@ -64,6 +64,12 @@ export class AdminTeacherTabsDetailsComponent implements OnInit {
 
         break;
       case 'JOIN':
+
+        if (this.joinRequestChild) {
+          this.joinRequestChild.teacherIdOutput = this.teacherIdOutput
+          this.joinRequestChild.getStudentProgramSubscriptionsFilter();
+        }
+
         break;
     }
   }

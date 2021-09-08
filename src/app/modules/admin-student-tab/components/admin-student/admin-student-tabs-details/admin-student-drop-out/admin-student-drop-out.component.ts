@@ -1,3 +1,4 @@
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { DropOutRoleEnum } from 'src/app/core/enums/drop-out-request-enums/drop-out-status.enum';
@@ -63,19 +64,15 @@ export class AdminStudentDropOutComponent implements OnInit {
           this.studentDropOutRequestFilterRequestModel.skip = (this.studentDropOutRequestFilterRequestModel.page - 1) * this.studentDropOutRequestFilterRequestModel.take;
           this.getStudentDropOutRequests();
         }
+
       }
       else {
-        this.resMessage = {
-          message: response.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+
+        this.alertify.error(res.message || '');
       }
     },
       error => {
-        this.resMessage = {
-          message: error,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+        this.alertify.error(error || '');
       });
   }
 
