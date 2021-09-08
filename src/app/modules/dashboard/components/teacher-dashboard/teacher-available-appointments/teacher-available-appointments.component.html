@@ -1,20 +1,21 @@
 <!--البرامج و الاوقات المتاحة -->
-<div class="col-4 mt-4 mb-3 pl-0 pr-0 ml-3 mr-3  mt-3 mb-4 border_bottom">
-  <label class="UpdateUser__Label"> {{ 'UPDATE_TEACHER_PG.AVAILABLE_PROGRAMS_AND_TIMES' | translate }} </label>
+  <div class="d-flex mb-4 justify-content-between align-items-center">
+  <p class="UpdateUser__Label mb-0 "> {{ 'UPDATE_TEACHER_PG.AVAILABLE_PROGRAMS_AND_TIMES' | translate }} </p>
+   <img src="../../../../../../assets/images/teacher-dashboard/calender.svg" class="calender_img mt-2">
 </div>
-<div class="col-12 times_programs">
-  <div class="row">
-    <div *ngFor="let item of teacherAvailableTimes?.teacherAvailableTimes" class="col-4">
+<div class="col-12 ">
+  <div class="row times_programs">
+    <div *ngFor="let item of teacherAvailableTimes?.teacherAvailableTimes" >
       <div class="badges">
-        <div class="badge badge-info p-2 ">
+        <div class="badge badge-info p-2 col-6">
           <div class="d-flex justify-content-between mt-0">
             <p *ngIf='translate.currentLang === lang.en'
                class="ellipsis mb-0"
                matTooltip='{{item?.dayEn}} From {{item.timeFrom}}  To  {{item.timeTo  }}'>
               {{ item?.dayEn }}
               <span *ngIf="translate.currentLang === lang.en">
-                                                            From {{ item.timeFrom }} To {{ item.timeTo }}
-                                                        </span> <br>
+                    From {{ item.timeFrom }} To {{ item.timeTo }}
+            </span> <br>
 
             </p>
             <p *ngIf='translate.currentLang === lang.ar'
@@ -22,8 +23,8 @@
                matTooltip='{{item?.dayAr}} من {{item.timeFrom }}الي {{item.timeTo }}'>
               {{ item?.dayAr }}
               <span *ngIf="translate.currentLang === lang.ar">
-                                                            من {{ item.timeFrom }} الي {{ item.timeTo }}
-                                                        </span>
+                 من {{ item.timeFrom }} الي {{ item.timeTo }}
+                </span>
             </p>
 
 
@@ -31,10 +32,16 @@
         </div>
       </div>
     </div>
+   
   </div>
-  <button *ngIf="teacherAvailableTimes?.isView"  (click)="appointmentRequestDetails()">View Appointment </button>
-  <button  (click)="rejectedStudentReq()"
-           class=" btn save-btn" *ngIf="!teacherAvailableTimes?.isView">Add Appointment</button>
+ 
+    <div  class="row justify-content-end">
+      <button *ngIf="teacherAvailableTimes?.isView"  (click)="appointmentRequestDetails()" class="cancel-btn px-4" >View Appointment </button>
+      <button *ngIf="!teacherAvailableTimes?.isView"  (click)="rejectedStudentReq()" class="save-btn px-4" >Add Appointment</button>
+
+    </div>
+ 
+
 </div>
 
 <!-- end data -->

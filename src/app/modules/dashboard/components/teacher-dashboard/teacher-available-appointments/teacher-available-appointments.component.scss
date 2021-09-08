@@ -1,6 +1,29 @@
+@import '../../../../../../assets/scss/buttons';
+.UpdateUser__Label
+{
+  font-family: Almarai-Bold;
+  color: #3A3A3A;
+  font-size:1.25rem;
+}
+.save-btn{
+  margin-left: 0;
+}
+.calender_img{
+  width: 40px;
+  height: 40px;
+}
+.times_programs{
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 26vh;
+  .ellipsis
+  {
+    max-width: 15rem;
+    width: 98%;
+    min-width: 14rem;
+  }
 
-@import '../../../../../../app/modules/user/components/update-user-profile/update-user-profile.scss';
-
+}
 .box_container{
   width: 99%;
   height: 88vh;
@@ -87,14 +110,5 @@
       min-width: 10rem;
     }
 
-    .times_programs{
-      .ellipsis
-      {
-        max-width: 15rem;
-        width: 98%;
-        min-width: 14rem;
-      }
-
-    }
   }
 }

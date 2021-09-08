@@ -1,14 +1,28 @@
 <div class="container-fluid border">
     <div class="row">
-        <div class="col-lg-2 col-md-2 col-sm-12 pl-0 border">
-          fghfg
+        <div class=" col-md-4 col-sm-12 pl-0 border">
+          <app-teacher-recitation-request></app-teacher-recitation-request>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-12 pl-0 border">
+        <div class="col-md-4 col-sm-12 pl-0 border">
+          <app-teacher-rate-for-student></app-teacher-rate-for-student>
+        </div>
+
+        <div class="col-md-4 col-sm-12 pl-0 border">
+          <app-teacher-daily-upcoming-tasks></app-teacher-daily-upcoming-tasks>
+        </div>
+
+        
+        <div class="col-md-4 col-sm-12 pl-0 border">
+          <app-teacher-feelings></app-teacher-feelings>
+        </div>
+   
+       
+        <div class=" col-md-4 col-sm-12  border">
           <app-teacher-available-appointments (AddTeacherRequest)="openAddRequest($event)"   (requestDetails)="openRequestDetails($event)"
           ></app-teacher-available-appointments>
         </div>
 
-      <div class="overlay" *ngIf="openAddRequestOverlay">
+      <div class="overlay add_teacher_appointment_request" *ngIf="openAddRequestOverlay">
         <app-add-teacher-appointment-request [itemStuReq]='itemStuReq' (openAddRequestOverlayRequest)="closeAddRequestOverlayRequest()"></app-add-teacher-appointment-request>
       </div>
 
@@ -16,11 +30,6 @@
         <app-teacher-appointment-request-datails [itemStuReq]='itemStuReq' (closeDetailsRequest)="closeRequestDetails()"></app-teacher-appointment-request-datails>
       </div>
 
-      <div class="col-lg-3 col-md-3 col-sm-12 pl-0 border">
-          fghf
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-12 border">
-          fgh
-        </div>
+     
     </div>
 </div>

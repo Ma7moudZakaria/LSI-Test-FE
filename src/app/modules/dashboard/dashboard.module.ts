@@ -14,10 +14,11 @@ import { AddTeacherAppointmentRequestComponent } from './components/teacher-dash
 import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { TeacherAppointmentRequestDatailsComponent } from './components/teacher-dashboard/teacher-available-appointments/teacher-appointment-request-datails/teacher-appointment-request-datails.component';
+import { TeacherRateForStudentComponent } from './components/teacher-dashboard/teacher-rate-for-student/teacher-rate-for-student.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent, TeacherDashboardComponent, TeacherRecitationRequestComponent, TeacherDailyUpcomingTasksComponent, TeacherFeelingsComponent, TeacherAvailableAppointmentsComponent, AddTeacherAppointmentRequestComponent, TeacherAppointmentRequestDatailsComponent],
+  declarations: [DashboardComponent, TeacherDashboardComponent, TeacherRecitationRequestComponent, TeacherDailyUpcomingTasksComponent, TeacherFeelingsComponent, TeacherAvailableAppointmentsComponent, AddTeacherAppointmentRequestComponent, TeacherAppointmentRequestDatailsComponent, TeacherRateForStudentComponent],
   imports: [
     CommonModule, SharedModule,
     DashboardRoutingModule, TranslateModule, FormsModule, MatInputModule
