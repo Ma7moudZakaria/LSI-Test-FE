@@ -13,7 +13,7 @@ export class AdminVacationRequestForStudentTabCardComponent implements OnInit {
 
   @Input() studentProgramVacationStudentViewModel: IStudentProgramVacationStudentViewModel = { totalRows: 0 }
   // @Output() CancelStudentVacationRequest = new EventEmitter<IStudentProgramVacationStudentViewModel>();
-  @Output() TerminateStudentVacationRequest = new EventEmitter<IStudentProgramVacationStudentViewModel>();
+  // @Output() TerminateStudentVacationRequest = new EventEmitter<IStudentProgramVacationStudentViewModel>();
 
   studentProgramVacationStatus = StudentProgramVacationStatusEnum;
   requestStatus?: string;

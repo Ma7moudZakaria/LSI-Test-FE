@@ -86,7 +86,6 @@ import { FormatTimePipe } from '../core/pipe/format-time.pipe';
 
 import { AdminJoinRequestForTeacherTabAndStudentTabGridComponent } from './components/admin-join-request-for-teacher-tab-and-student-tab-grid/admin-join-request-for-teacher-tab-and-student-tab-grid.component';
 import { AdminJoinRequestForTeacherTabAndStudentTabCardComponent } from './components/admin-join-request-for-teacher-tab-and-student-tab-card/admin-join-request-for-teacher-tab-and-student-tab-card.component';
-import { AdminDropOutRequestForTeacherTabAndStudentTabCardComponent } from './components/admin-drop-out-request-for-teacher-tab-and-student-tab-card/admin-drop-out-request-for-teacher-tab-and-student-tab-card.component';
 import { AdminDropOutRequestForTeacherTabAndStudentTabGridComponent } from './components/admin-drop-out-request-for-teacher-tab-and-student-tab-grid/admin-drop-out-request-for-teacher-tab-and-student-tab-grid.component';
 import { AdminVacationRequestForStudentTabGridComponent } from './components/admin-vacation-request-for-student-tab-grid/admin-vacation-request-for-student-tab-grid.component';
 import { AdminVacationRequestForStudentTabCardComponent } from './components/admin-vacation-request-for-student-tab-card/admin-vacation-request-for-student-tab-card.component';
@@ -143,7 +142,6 @@ import { JoinExamComponent } from './components/program-day-tasks/join-exam/join
     FormatTimePipe,
     AdminJoinRequestForTeacherTabAndStudentTabGridComponent,
     AdminJoinRequestForTeacherTabAndStudentTabCardComponent,
-    AdminDropOutRequestForTeacherTabAndStudentTabCardComponent,
     AdminDropOutRequestForTeacherTabAndStudentTabGridComponent,
     AdminVacationRequestForStudentTabGridComponent,
         AdminVacationRequestForStudentTabCardComponent,
@@ -177,7 +175,7 @@ import { JoinExamComponent } from './components/program-day-tasks/join-exam/join
     StudentDropOutGridComponent,
     TeacherDropOutRequestAdminGridComponent, TeacherDetailsViewComponent, StudentDetailsViewComponent,
     FormatTimePipe, AdminJoinRequestForTeacherTabAndStudentTabGridComponent,
-    AdminJoinRequestForTeacherTabAndStudentTabCardComponent, AdminDropOutRequestForTeacherTabAndStudentTabCardComponent,
+    AdminJoinRequestForTeacherTabAndStudentTabCardComponent,
     AdminDropOutRequestForTeacherTabAndStudentTabGridComponent,
       AdminVacationRequestForStudentTabGridComponent, AdminVacationRequestForStudentTabCardComponent,
       JoinExamComponent

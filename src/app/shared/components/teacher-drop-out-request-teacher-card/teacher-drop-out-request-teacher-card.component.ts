@@ -16,14 +16,15 @@ export class TeacherDropOutRequestTeacherCardComponent implements OnInit {
   @Output() acceptTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
   @Output() cancelRequestOfTeacher = new EventEmitter<ITeacherDropOutRequestModel>();
 
-  @Input() teacherDropOutRequestModel: ITeacherDropOutRequestModel = { totalRows : 0};
+  @Input() teacherDropOutRequestModel: ITeacherDropOutRequestModel = { totalRows: 0 };
+  @Input() adminView: boolean = false;
 
   @Input() typeEnum: TeacherDropOutRequestStatusEnum = TeacherDropOutRequestStatusEnum.Pending;
   typeDropOutRequestEnum = TeacherDropOutRequestStatusEnum;
 
-  teacherDropOutRequestIds:string[] | undefined
+  teacherDropOutRequestIds: string[] | undefined
   langEnum = LanguageEnum;
-  requestDate:string | undefined;
+  requestDate: string | undefined;
   teacherDropOutRequestStatus = TeacherDropOutRequestStatusEnum;
 
   x = 1;
@@ -40,18 +41,18 @@ export class TeacherDropOutRequestTeacherCardComponent implements OnInit {
     if (!this.teacherDropOutRequestModel?.avatarLink) {
       this.teacherDropOutRequestModel.avatarLink = '../../../../../assets/images/Profile.svg';
     }
-     this.x += 1 ;
-  } 
+    this.x += 1;
+  }
 
-  rejectTeacherDropOutRequestEvent(teacherDropOutRequestAdminViewModel:ITeacherDropOutRequestModel){
+  rejectTeacherDropOutRequestEvent(teacherDropOutRequestAdminViewModel: ITeacherDropOutRequestModel) {
     this.rejectTeacherDropOutRequest.emit(teacherDropOutRequestAdminViewModel);
   }
-  
-  acceptTeacherDropOutRequestEvent(){
+
+  acceptTeacherDropOutRequestEvent() {
     this.acceptTeacherDropOutRequest.emit(this.teacherDropOutRequestModel);
   }
 
-  cancelRequestOfTeacherEvent(){
+  cancelRequestOfTeacherEvent() {
     this.cancelRequestOfTeacher.emit(this.teacherDropOutRequestModel);
   }
 }

@@ -24,10 +24,10 @@ export class AdminDropOutRequestForTeacherTabAndStudentTabGridComponent implemen
   // @Input() userMode: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.teacher;
   // @Input() userMode: DropOutRoleEnum | undefined;
   // programSubscriptionUsers = ProgramSubscriptionUsersEnum;
-  @Input() userMode: DropOutRoleEnum | undefined;
-  userRoleMode = DropOutRoleEnum;
+  @Input() userMode: ProgramSubscriptionUsersEnum | undefined;
+  userRoleMode = ProgramSubscriptionUsersEnum;
 
-
+  teacherCard: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.student;
 
   @Output() studentDropOutRequestFilterStudentEvent = new EventEmitter<IStudentDropOutRequestsFilterStudentViewRequestModel>();
   @Output() itemStudentDropOutRequestForStudentReject = new EventEmitter<IStudentDropOutRequestsFilterStudentViewResponseModel>();
@@ -56,7 +56,7 @@ export class AdminDropOutRequestForTeacherTabAndStudentTabGridComponent implemen
   // ----------------------------
 
 
-  // @Output() teacherDropOutRequestFilterEvent = new EventEmitter<ITeacherDropOutRequestAdvFilterAdminViewRequestModel>();
+  @Output() teacherDropOutRequestFilterEvent = new EventEmitter<ITeacherDropOutRequestAdvFilterAdminViewRequestModel>();
   // @Output() itemTeacherDropOutRequestForReject = new EventEmitter<ITeacherDropOutRequestModel>();
   // @Output() rejectTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
   // @Output() acceptTeacherDropOutRequest = new EventEmitter<ITeacherDropOutRequestModel>();
@@ -99,18 +99,18 @@ export class AdminDropOutRequestForTeacherTabAndStudentTabGridComponent implemen
 
   // Start Student View
 
-  sortStudentByName() {
-    this.studentDropOutRequestFilterRequestStudentModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'studentNameAr' : 'StudentNameAr';
-    this.studentDropOutRequestFilterRequestStudentModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
-    this.studentDropOutRequestFilterStudentEvent.emit(this.studentDropOutRequestFilterRequestStudentModel);
-  }
+  // sortStudentByName() {
+  //   this.studentDropOutRequestFilterRequestStudentModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'studentNameAr' : 'StudentNameAr';
+  //   this.studentDropOutRequestFilterRequestStudentModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
+  //   this.studentDropOutRequestFilterStudentEvent.emit(this.studentDropOutRequestFilterRequestStudentModel);
+  // }
 
-  sortStudentByNameOrderType() {
-    if ((this.studentDropOutRequestFilterRequestStudentModel.sortField === "studentNameAr" || this.studentDropOutRequestFilterRequestStudentModel.sortField === "StudentNameEn") && this.studentDropOutRequestFilterRequestStudentModel.sortOrder == 1) { return 'asend' }
-    if ((this.studentDropOutRequestFilterRequestStudentModel.sortField === "studentNameAr" || this.studentDropOutRequestFilterRequestStudentModel.sortField === "StudentNameEn") && this.studentDropOutRequestFilterRequestStudentModel.sortOrder == -1) { return 'desend' }
+  // sortStudentByNameOrderType() {
+  //   if ((this.studentDropOutRequestFilterRequestStudentModel.sortField === "studentNameAr" || this.studentDropOutRequestFilterRequestStudentModel.sortField === "StudentNameEn") && this.studentDropOutRequestFilterRequestStudentModel.sortOrder == 1) { return 'asend' }
+  //   if ((this.studentDropOutRequestFilterRequestStudentModel.sortField === "studentNameAr" || this.studentDropOutRequestFilterRequestStudentModel.sortField === "StudentNameEn") && this.studentDropOutRequestFilterRequestStudentModel.sortOrder == -1) { return 'desend' }
 
-    return '';
-  }
+  //   return '';
+  // }
 
   sortStudentRequestDate() {
     this.studentDropOutRequestFilterRequestStudentModel.sortField = 'requestdate';
@@ -191,7 +191,9 @@ export class AdminDropOutRequestForTeacherTabAndStudentTabGridComponent implemen
   }
 
   exportStudentCSV() {
-    let expItems = this.studentDropOutRequestStudentItems.filter(a => a.checked);
+    let expItems = this.studentDropOutRequestStudentItems
+    // let expItems = this.studentDropOutRequestStudentItems.filter(a => a.checked);
+
     let headerLabels = this.translate.currentLang == 'en-US' ?
       [' program name', 'User name'] :
       [' اسم البرنامج ',
@@ -260,57 +262,59 @@ export class AdminDropOutRequestForTeacherTabAndStudentTabGridComponent implemen
 
   // Start Teacher View
 
-  enableTeacherViewSelectOperations(): boolean {
-    return this.teacherDropOutRequestTeacherViewItems.filter(t => t.checked).length > 0 || this.allSelected;
-  }
+  // enableTeacherViewSelectOperations(): boolean {
+  //   return this.teacherDropOutRequestTeacherViewItems.filter(t => t.checked).length > 0 || this.allSelected;
+  // }
 
-  someTeacherViewItemsChecked(): boolean {
-    if (this.teacherDropOutRequestTeacherViewItems == null) {
-      return false;
-    }
-    return this.teacherDropOutRequestTeacherViewItems.filter(t => t.checked).length > 0 && !this.allSelected;
-  }
+  // someTeacherViewItemsChecked(): boolean {
+  //   if (this.teacherDropOutRequestTeacherViewItems == null) {
+  //     return false;
+  //   }
+  //   return this.teacherDropOutRequestTeacherViewItems.filter(t => t.checked).length > 0 && !this.allSelected;
+  // }
 
-  setTeacherViewAllChecked(completed: boolean) {
-    this.allSelected = completed;
-    if (this.teacherDropOutRequestTeacherViewItems == null) {
-      return;
-    }
-    this.teacherDropOutRequestTeacherViewItems.forEach(t => t.checked = completed);
-  }
+  // setTeacherViewAllChecked(completed: boolean) {
+  //   this.allSelected = completed;
+  //   if (this.teacherDropOutRequestTeacherViewItems == null) {
+  //     return;
+  //   }
+  //   this.teacherDropOutRequestTeacherViewItems.forEach(t => t.checked = completed);
+  // }
 
-  exportTeacherViewCSV() {
-    let expItems = this.teacherDropOutRequestTeacherViewItems.filter(a => a.checked);
-    let headerLabels = this.translate.currentLang == 'en-US' ?
-      [' program name', 'User name'] :
-      [' اسم البرنامج ',
-        'اسم المستخدم'];
+  // exportTeacherViewCSV() {
+  //   let expItems = this.teacherDropOutRequestTeacherViewItems.filter(a => a.checked);
+  //   let headerLabels = this.translate.currentLang == 'en-US' ?
+  //     [' program name', 'User name'] :
+  //     [' اسم البرنامج ',
+  //       'اسم المستخدم'];
 
-    let data = ['progName', 'usrNameAr'];
-    this.exportationService.exportCSV(expItems, 'teacher', data, headerLabels);
-  }
+  //   let data = ['progName', 'usrNameAr'];
+  //   this.exportationService.exportCSV(expItems, 'teacher', data, headerLabels);
+  // }
 
-  enableTeacherViewDropOutRequestSelectOperations(): boolean {
-    return this.teacherDropOutRequestTeacherViewItems.filter(t => t.checked).length > 0 || this.allSelected;
-  }
+  // enableTeacherViewDropOutRequestSelectOperations(): boolean {
+  //   return this.teacherDropOutRequestTeacherViewItems.filter(t => t.checked).length > 0 || this.allSelected;
+  // }
 
-  someTeacherViewDropOutRequestItemsChecked(): boolean {
-    if (this.teacherDropOutRequestTeacherViewItems == null) {
-      return false;
-    }
-    return this.teacherDropOutRequestTeacherViewItems.filter(t => t.checked).length > 0 && !this.allSelected;
-  }
+  // someTeacherViewDropOutRequestItemsChecked(): boolean {
+  //   if (this.teacherDropOutRequestTeacherViewItems == null) {
+  //     return false;
+  //   }
+  //   return this.teacherDropOutRequestTeacherViewItems.filter(t => t.checked).length > 0 && !this.allSelected;
+  // }
 
-  setTeacherViewDropOutRequestAllChecked(completed: boolean) {
-    this.allSelected = completed;
-    if (this.teacherDropOutRequestTeacherViewItems == null) {
-      return;
-    }
-    this.teacherDropOutRequestTeacherViewItems.forEach(t => t.checked = completed);
-  }
+  // setTeacherViewDropOutRequestAllChecked(completed: boolean) {
+  //   this.allSelected = completed;
+  //   if (this.teacherDropOutRequestTeacherViewItems == null) {
+  //     return;
+  //   }
+  //   this.teacherDropOutRequestTeacherViewItems.forEach(t => t.checked = completed);
+  // }
 
   exportTeacherViewDropOutRequestCSV() {
-    let expItems = this.teacherDropOutRequestTeacherViewItems.filter(a => a.checked);
+    let expItems = this.teacherDropOutRequestTeacherViewItems
+
+    // let expItems = this.teacherDropOutRequestTeacherViewItems.filter(a => a.checked);
     let headerLabels = this.translate.currentLang == 'en-US' ?
       [' program name', 'User name'] :
       [' أسم البرنامج ',
@@ -318,6 +322,18 @@ export class AdminDropOutRequestForTeacherTabAndStudentTabGridComponent implemen
 
     let data = ['progName', 'usrNameAr'];
     this.exportationService.exportCSV(expItems, 'Student', data, headerLabels);
+  }
+  sortTeacherRequestDate() {
+    this.teacherDropOutRequestFilterRequestModel.sortField = 'requestdate';
+    this.teacherDropOutRequestFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
+    this.teacherDropOutRequestFilterEvent.emit(this.teacherDropOutRequestFilterRequestModel);
+  }
+
+  sortTeacherRequestDateOrderType() {
+    if (this.teacherDropOutRequestFilterRequestModel.sortField === 'requestdate' && this.teacherDropOutRequestFilterRequestModel.sortOrder == 1) { return 'asend' }
+    if (this.teacherDropOutRequestFilterRequestModel.sortField === 'requestdate' && this.teacherDropOutRequestFilterRequestModel.sortOrder == -1) { return 'desend' }
+
+    return '';
   }
 
   //   cancelRequestOfTeacherEvent(teacherModel: ITeacherDropOutRequestModel) {

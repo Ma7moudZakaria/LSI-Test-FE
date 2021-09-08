@@ -1,40 +1,49 @@
-<div class="card-request">
-  <div class="card_header">
-    <div class="col-12 d-flex align-items-center justify-content-between p-0 m-0">
-      <span > {{'TEACHER_DROP_OUT.TIME' | translate}} </span>
-      <span>03-05-1442</span>
-    </div>
 
-  </div>
 
-  <div class="card_body program">
-    <div class="d-flex align-items-center justify-content-between program__header" >
+<ng-container *ngIf='userMode === userRoleMode.student '>
+<div class="card-request" >
+  <div class="card_header ">
 
-      <p class="program__num  mb-2">20</p>
-      <div class="d-flex align-items-center justify-content-between " >
-        <p class="program__num mb-2  mr-3 ml-3">مقبول</p>
-        <span class="status accept"
-        ></span>
-        <!--        [ngClass]="{ 'accept' : studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Accept ,
-                                          'pending' : studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Pending ,
-                                          'rejected' : studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Rejected,
-                                          'cancel' : studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Canceled
-          }"-->
+      <div class="col-6 d-flex align-items-center justify-content-between p-0 m-0">
+          <span > {{'TEACHER_DROP_OUT.TIME' | translate}} </span>
+          <span>{{studentSubscripModel.requestDate  | date: 'dd/MM/yyyy'}}</span>
       </div>
-    </div>
-    <div class="mx-1">
-      <!--      <p class="teacher__name  ">{{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.teacherNameEn : teacherDropOutRequestModel?.teacherNameAr}}</p>-->
-
-      <p class="program__name ellipsis p-0 ">{{'PROGRAMS_LIST.PROGRAM_NAME' | translate}}</p>
-      <p class="program__desc"> وريم إيبسوم(Loفي صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ ال </p>
-      <p class="program__admin" >{{'TEACHER_DROP_OUT.ADMIN_ANSWER' | translate}}</p>
-      <p class="program__answer " >{{'TEACHER_DROP_OUT.REJECTED' | translate}}</p>
-    </div>
-
-
 
 
   </div>
+  <div class="card_body program">
+    <div class="d-flex align-items-center program__header justify-content-between " >
+
+      <p class="program__num  mb-2"></p>
+      <div class="d-flex align-items-center justify-content-between " >
+      <p class="program__num mb-2  mr-3 ml-3">{{ translate.currentLang == langEnum.en ? studentSubscripModel?.usrNameEn : studentSubscripModel?.usrNameAr}}</p>
+        <span class="status mb-0"
+         [ngClass]="{ 'accept' : studentSubscripModel.programStaNum == tabTypeSelected.Accept ,
+                                  'pending' : studentSubscripModel.programStaNum == tabTypeSelected.Pending ,
+                                  'rejected' : studentSubscripModel.programStaNum == tabTypeSelected.Rejected
+                                  }">
+        </span>
+      </div>
 
 
+    </div>
+      <div class="mx-1">
+      <p class="program__name ellipsis  p-0 mb-0"
+      title="{{ translate.currentLang == langEnum.en ? studentSubscripModel?.enProgBatName : studentSubscripModel?.arProgBatName}}"
+      > {{ translate.currentLang == langEnum.en ? studentSubscripModel?.enProgBatName : studentSubscripModel?.arProgBatName}}</p>
+      <span>
+        {{'GENERAL_DROP_OUT_REQUEST.REQUEST_REASON' | translate}} :
+      </span>
+      <!-- <p class="program_user bold mb-0 "  *ngIf="studentSubscripModel.reason">{{'GENERAL_DROP_OUT_REQUEST.NO_DATA' | translate}} </p> -->
+      <!-- <p class="program_user bold mb-2 ">{{ studentSubscripModel.reason }}</p> -->
+      <p class="program__admin"   *ngIf="!studentSubscripModel.reasonReject " >{{'GENERAL_DROP_OUT_REQUEST.NO_DATA' | translate}} </p>
+      <p class="program__answer "  *ngIf="studentSubscripModel.reasonReject ">{{studentSubscripModel.reasonReject}}</p>
+    
+    
+    </div>
+    
+
+
+  </div>
 </div>
+</ng-container>
