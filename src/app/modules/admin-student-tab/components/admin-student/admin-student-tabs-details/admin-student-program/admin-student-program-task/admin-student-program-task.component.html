@@ -6,13 +6,14 @@
   
    
     <div class="internal_scroll_list_group admin-student-task">
-      <div class="list-group-item d-flex mb-4 justify-content-between align-items-center" *ngFor="let programTask  of programs; let i = index"
-         [class.active]="selectedIndex === i">
-              <span> 2stma3</span>
-              <span class="mx-1">  10/10</span>
+      <div class="list-group-item d-flex mb-4 justify-content-between align-items-center" *ngFor="let programTask  of programDayTasks; let i = index"
+         >
+              <span> {{ translate.currentLang == langEnum.en ?programTask.nameEn:programTask.nameAr}}</span>
+              <span class="mx-1">  {{programTask.grade}}/{{programTask.studgrade}}</span>
               <!-- <span> <i class="fas fa-check-square"></i> </span>   -->
               <span> 
-                <i class="fas fa-window-close"></i>
+                <i *ngIf="programTask.isAnswered" class="fas fa-check-circle" style="color: green;"></i>
+                <i *ngIf="!programTask.isAnswered" class="fas fa-window-close" style="color: red;"></i>
               </span>
                
         </div>

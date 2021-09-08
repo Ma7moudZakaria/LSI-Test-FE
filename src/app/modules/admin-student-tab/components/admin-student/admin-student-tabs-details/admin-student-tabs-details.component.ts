@@ -9,6 +9,8 @@ import { AdminStudentBasicInfoComponent } from './admin-student-basic-info/admin
 import { AdminStudentDropOutComponent } from './admin-student-drop-out/admin-student-drop-out.component';
 import { AdminStudentJoinRequestComponent } from './admin-student-join-request/admin-student-join-request.component';
 import { AdminStudentVacationRequestComponent } from './admin-student-vacation-request/admin-student-vacation-request.component';
+import { AdminStudentProgramTaskComponent } from './admin-student-program/admin-student-program-task/admin-student-program-task.component';
+import { AdminStudentProgramComponent } from './admin-student-program/admin-student-program.component';
 
 @Component({
   selector: 'app-admin-student-tabs-details',
@@ -20,6 +22,7 @@ export class AdminStudentTabsDetailsComponent implements OnInit {
 
   @Output() refreshProgListEvent = new EventEmitter();
   @ViewChild(AdminStudentBasicInfoComponent) adminStudentbasicInfoChild: AdminStudentBasicInfoComponent | undefined;
+  @ViewChild(AdminStudentProgramComponent) adminStudentProgramChild: AdminStudentProgramComponent | undefined;
   @ViewChild(BasicInformationComponent) basicInfoCompChild: BasicInformationComponent | undefined;
   @ViewChild(AdminStudentDropOutComponent) dropOutChild: AdminStudentDropOutComponent | undefined;
   @ViewChild(AdminStudentJoinRequestComponent) joinRequestChild: AdminStudentJoinRequestComponent | undefined;
@@ -63,6 +66,10 @@ export class AdminStudentTabsDetailsComponent implements OnInit {
         }
         break;
       case 'PROGRAM':
+        if (this.adminStudentProgramChild) {
+          this.adminStudentProgramChild.studentIdOutput = this.studentIdOutput
+          this.adminStudentProgramChild.adminStudentProgramListChild?.getAllStudentPrograms();
+        }
         break;
       case 'DROP_OUT':
 

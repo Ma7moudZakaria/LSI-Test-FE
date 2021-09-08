@@ -31,11 +31,11 @@
   <div class="row fix_margin w-100" >
     <div class="col-12 px-0 ">
   
-      <app-admin-student-basic-info *ngIf="showTap == 'BASEINFO'" [studentIdOutput]="studentIdOutput"></app-admin-student-basic-info>
-      <app-admin-student-program *ngIf="showTap == 'PROGRAM'"></app-admin-student-program>
+      <app-admin-student-basic-info *ngIf="showTap == 'BASEINFO' && studentIdOutput" [studentIdOutput]="studentIdOutput"></app-admin-student-basic-info>
+      <app-admin-student-program *ngIf="showTap == 'PROGRAM' && studentIdOutput" [studentIdOutput]="studentIdOutput"></app-admin-student-program>
       <app-admin-student-drop-out *ngIf="showTap == 'DROP_OUT' && studentIdOutput" [studentIdOutput]="studentIdOutput"></app-admin-student-drop-out>
-      <app-admin-student-join-request *ngIf="showTap == 'JOIN'"  [studentIdOutput]="studentIdOutput"></app-admin-student-join-request>
-      <app-admin-student-vacation-request *ngIf="showTap == 'VACATION'"  [studentIdOutput]="studentIdOutput"></app-admin-student-vacation-request>
+      <app-admin-student-join-request *ngIf="showTap == 'JOIN' && studentIdOutput"  [studentIdOutput]="studentIdOutput"></app-admin-student-join-request>
+      <app-admin-student-vacation-request *ngIf="showTap == 'VACATION' && studentIdOutput"  [studentIdOutput]="studentIdOutput"></app-admin-student-vacation-request>
   
  
   
