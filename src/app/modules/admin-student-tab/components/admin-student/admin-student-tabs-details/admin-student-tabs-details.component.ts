@@ -6,6 +6,8 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
 import { BasicInformationComponent } from 'src/app/modules/program/components/program-details/programs-tabs/basic-information/basic-information.component';
 import { AdminStudentBasicInfoComponent } from './admin-student-basic-info/admin-student-basic-info.component';
+import { AdminStudentProgramTaskComponent } from './admin-student-program/admin-student-program-task/admin-student-program-task.component';
+import { AdminStudentProgramComponent } from './admin-student-program/admin-student-program.component';
 
 @Component({
   selector: 'app-admin-student-tabs-details',
@@ -17,6 +19,7 @@ export class AdminStudentTabsDetailsComponent implements OnInit {
 
   @Output() refreshProgListEvent = new EventEmitter();
   @ViewChild(AdminStudentBasicInfoComponent) adminStudentbasicInfoChild: AdminStudentBasicInfoComponent | undefined;
+  @ViewChild(AdminStudentProgramComponent) adminStudentProgramChild: AdminStudentProgramComponent | undefined;
   @ViewChild(BasicInformationComponent) basicInfoCompChild: BasicInformationComponent | undefined;
 
   @Input() programModel: IprogramsModel | undefined;
@@ -55,6 +58,10 @@ export class AdminStudentTabsDetailsComponent implements OnInit {
         }
         break;
       case 'PROGRAM':
+        if (this.adminStudentProgramChild) {
+          this.adminStudentProgramChild.studentIdOutput = this.studentIdOutput
+          this.adminStudentProgramChild.adminStudentProgramListChild?.getAllStudentPrograms();
+        }
         break;
       case 'DROP_OUT':
         break;

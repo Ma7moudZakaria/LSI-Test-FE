@@ -8,6 +8,7 @@ import { IprogramCreatModel } from '../../interfaces/programs-interfaces/iprogra
 import { IProgramFilterAdvancedRequest, IProgramFilterByNameRequest } from '../../interfaces/programs-interfaces/iprogram-filter-requests';
 import { IProgramSubscriptionDetailsRequest } from '../../interfaces/programs-interfaces/iprogram-subscription-details-request';
 import { IprogramUpdateModel } from '../../interfaces/programs-interfaces/iprogram-update-model';
+import { ISharedProgramsResponseModel } from '../../interfaces/programs-interfaces/ishared-programs-response-model';
 import { IProgramSubscriptionDetails } from '../../interfaces/teacher-program-subscription-interfaces/iprogram-subscription-details';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 
@@ -34,6 +35,9 @@ export class ProgramService {
   programPublishPauseURL = environment.baseUrl + 'Programs/program-publish-pause/';
   CopyProgramURL=environment.baseUrl+'Programs/copy-program/';
   getSubscriptionProgramDetailsURL = environment.baseUrl + 'Programs/get-subscription-program-details/';
+
+  getSharedProgramsURL = environment.baseUrl + 'Programs/get-all-shared-programs/';
+
 
   constructor(private http: HttpClient) { }
 
@@ -95,5 +99,9 @@ export class ProgramService {
 
   getSubscriptionProgramDetails(model : IProgramSubscriptionDetailsRequest): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.getSubscriptionProgramDetailsURL, model)
+  }
+
+  getSharedPrograms(): Observable<BaseResponseModel> {
+    return this.http.get<BaseResponseModel>(this.getSharedProgramsURL)
   }
 }
