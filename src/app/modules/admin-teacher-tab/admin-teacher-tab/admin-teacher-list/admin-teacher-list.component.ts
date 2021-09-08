@@ -29,7 +29,7 @@ export class AdminTeacherListComponent implements OnInit {
   milady: boolean = false;
 
   selectedIndex = 0;
-
+  teachers: IAdminTeacherTabResponseModel[] = [];
   teachersList: IAdminTeacherTabResponseModel[] = [];
   teacherListFilterRequestModel: AdminTeacherTabFilterModel = { techName: '' };
   errorMessage?: string;
@@ -106,4 +106,9 @@ export class AdminTeacherListComponent implements OnInit {
 
   }
 
+  searchTeacher(text?:string){
+    this.teachers=[];
+    this.teacherListFilterRequestModel.techName = text;
+    this.getAllTeachersList();   
+  }
 }
