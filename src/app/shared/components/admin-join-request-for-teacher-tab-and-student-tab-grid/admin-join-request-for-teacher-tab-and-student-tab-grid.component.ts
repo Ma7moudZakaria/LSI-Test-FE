@@ -66,18 +66,18 @@ export class AdminJoinRequestForTeacherTabAndStudentTabGridComponent implements 
   // studentProgSubOutputEvent(event: ITeacherStudentViewModel) {
   //   this.studentIdFormGrid.emit(event);
   // }
-  sortTeacherByName() {
-    this.teacherFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn';
-    this.teacherFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
-    this.teacherFilterEvent.emit(this.teacherFilterRequestModel);
-  }
+  // sortTeacherByName() {
+  //   this.teacherFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn';
+  //   this.teacherFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
+  //   this.teacherFilterEvent.emit(this.teacherFilterRequestModel);
+  // }
 
-  sortTeacherByNameOrderType() {
-    if ((this.teacherFilterRequestModel.sortField === "userNameAr" || this.teacherFilterRequestModel.sortField === "UserNameEn") && this.teacherFilterRequestModel.sortOrder == 1) { return 'asend' }
-    if ((this.teacherFilterRequestModel.sortField === "userNameAr" || this.teacherFilterRequestModel.sortField === "UserNameEn") && this.teacherFilterRequestModel.sortOrder == -1) { return 'desend' }
+  // sortTeacherByNameOrderType() {
+  //   if ((this.teacherFilterRequestModel.sortField === "userNameAr" || this.teacherFilterRequestModel.sortField === "UserNameEn") && this.teacherFilterRequestModel.sortOrder == 1) { return 'asend' }
+  //   if ((this.teacherFilterRequestModel.sortField === "userNameAr" || this.teacherFilterRequestModel.sortField === "UserNameEn") && this.teacherFilterRequestModel.sortOrder == -1) { return 'desend' }
 
-    return '';
-  }
+  //   return '';
+  // }
 
   sortTeacherRequestDate() {
     this.teacherFilterRequestModel.sortField = 'requestdate';
@@ -92,25 +92,25 @@ export class AdminJoinRequestForTeacherTabAndStudentTabGridComponent implements 
     return '';
   }
 
-  enableTeacherSelectOperations(): boolean {
-    return this.teacherItems.filter(t => t.checked).length > 0 || this.allSelected;
-  }
+  // enableTeacherSelectOperations(): boolean {
+  //   return this.teacherItems.filter(t => t.checked).length > 0 || this.allSelected;
+  // }
 
-  someTeachertItemsChecked(): boolean {
-    if (this.teacherItems == null) {
-      return false;
-    }
-    return this.teacherItems.filter(t => t.checked).length > 0 && !this.allSelected;
-  }
+  // someTeachertItemsChecked(): boolean {
+  //   if (this.teacherItems == null) {
+  //     return false;
+  //   }
+  //   return this.teacherItems.filter(t => t.checked).length > 0 && !this.allSelected;
+  // }
 
-  setTeacherAllChecked(completed: boolean) {
-    console.log(this.userMode);
-    this.allSelected = completed;
-    if (this.teacherItems == null) {
-      return;
-    }
-    this.teacherItems.forEach(t => t.checked = completed);
-  }
+  // setTeacherAllChecked(completed: boolean) {
+  //   console.log(this.userMode);
+  //   this.allSelected = completed;
+  //   if (this.teacherItems == null) {
+  //     return;
+  //   }
+  //   this.teacherItems.forEach(t => t.checked = completed);
+  // }
 
   // exportTeacherCSV() {
   //   let expItems = this.teacherItems.filter(a => a.checked);
@@ -124,17 +124,20 @@ export class AdminJoinRequestForTeacherTabAndStudentTabGridComponent implements 
   // }
 
   exportTeacherCSV() {
-    let expItems = this.studentItems.filter(a => a.checked);
+    // let expItems = this.teacherItems.filter(a => a.checked);
+    let expItems = this.teacherItems;
 
     let headerLabels = this.translate.currentLang == 'en-US' ?
       [' program name', 'Teacher name', 'request date ', 'request status'] :
-      ['أسم المعلم',
-        'أسم البرنامج'
-        , ' تاريخ الطلب ',
-        'حاله الطلب']
+      [
+        'أسم البرنامج',
+        'أسم المعلم',
+        ' تاريخ الطلب ',
+        'حاله الطلب'
+      ]
 
     let data = ['progName', 'usrNameAr', 'requestDate', 'programStaNum'];
-    this.exportationService.exportCSV(expItems, 'Hoffaz-Teacher program subscription requests ', data, headerLabels);
+    this.exportationService.exportCSV(expItems, 'Hoffaz-Teacher join requests ', data, headerLabels);
   }
   // deleteTeacherByIds() {
   //   this.deleteListOfteacher.emit();
@@ -143,7 +146,7 @@ export class AdminJoinRequestForTeacherTabAndStudentTabGridComponent implements 
   onTeacherPageChange() {
     this.teacherFilterRequestModel.skip = (this.teacherFilterRequestModel.page - 1) * (this.teacherFilterRequestModel.take || 0);
     this.teacherFilterEvent.emit(this.teacherFilterRequestModel);
-    this.setTeacherAllChecked(false);
+    // this.setTeacherAllChecked(false);
   }
 
   // rejectTeacherProgramSubscriptionEve(teacherSubscripModel: ITeacherProgramSubscriptionModel) {

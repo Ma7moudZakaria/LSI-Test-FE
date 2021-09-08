@@ -18,18 +18,14 @@ import { AdminStudentVacationRequestComponent } from './admin-student-vacation-r
 export class AdminStudentTabsDetailsComponent implements OnInit {
 
 
-  @Output() refreshProgListEvent = new EventEmitter();
+  // @Output() refreshProgListEvent = new EventEmitter();
   @ViewChild(AdminStudentBasicInfoComponent) adminStudentbasicInfoChild: AdminStudentBasicInfoComponent | undefined;
   @ViewChild(BasicInformationComponent) basicInfoCompChild: BasicInformationComponent | undefined;
   @ViewChild(AdminStudentDropOutComponent) dropOutChild: AdminStudentDropOutComponent | undefined;
   @ViewChild(AdminStudentJoinRequestComponent) joinRequestChild: AdminStudentJoinRequestComponent | undefined;
-
   @ViewChild(AdminStudentVacationRequestComponent) vacationtRequestChild: AdminStudentVacationRequestComponent | undefined;
-
   @Input() programModel: IprogramsModel | undefined;
-
   @Input() studentIdOutput: ITeacherStudentViewModel | undefined;
-  @Output() dropOut = new EventEmitter<ITeacherStudentViewModel>();
 
 
   programDetails: IProgramDetails | undefined;
@@ -39,20 +35,17 @@ export class AdminStudentTabsDetailsComponent implements OnInit {
   constructor(private progService: ProgramService) { }
 
   ngOnInit(): void {
-    // this.getProgramDetails();
-    // console.consolelog('teacherIdTabs',this.teacherIdOutput)
-    console.log("details", this.studentIdOutput?.usrId)
+
+    // console.log("details", this.studentIdOutput?.usrId)
   }
 
   ngOnChanges() {
-    // this.getProgramDetails();
+
   }
 
-
-
-  refreshProgList() {
-    this.refreshProgListEvent.emit();
-  }
+  // refreshProgList() {
+  //   this.refreshProgListEvent.emit();
+  // }
 
   viewSwitching() {
     switch (this.showTap) {

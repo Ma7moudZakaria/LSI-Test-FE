@@ -50,13 +50,11 @@ export class AdminStudentJoinRequestComponent implements OnInit {
         this.totalCount = res.count ? res.count : 0;
       }
       else {
-
+        this.alertify.error(res.message || '');
       }
     }, error => {
-      this.resultMessage = {
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
-      }
+      this.alertify.error(error || '');
+
     })
   }
   studentJoinRequestChangePage(event: IStudentSubscriptionFilterRequestModel) {

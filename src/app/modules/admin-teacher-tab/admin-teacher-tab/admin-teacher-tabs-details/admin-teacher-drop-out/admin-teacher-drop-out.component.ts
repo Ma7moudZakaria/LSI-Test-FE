@@ -72,17 +72,13 @@ export class AdminTeacherDropOutComponent implements OnInit {
         }
       }
       else {
-        this.resMessage = {
-          message: response.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+        this.alertify.error(response.message || '');
+
       }
     },
       error => {
-        this.resMessage = {
-          message: error,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+        this.alertify.error(error || '');
+
       });
   }
 

@@ -51,14 +51,15 @@
             <i (click)='acceptAllStudentProgramSubscriptionChechedEvent()' class="fa fa-check fa-lg "></i>
             
         </a> -->
+        <!-- class="exportIcon" -->
         <a class=" ml-1 mr-1" >
-            <img  class="exportIcon" (click)='exportStudentCSV()' 
+            <img   (click)='exportStudentCSV()' 
             src="../../../../assets/images/sc-problem/exporticon.svg">
         </a>
      </div>
 </div>
 
-<!-- <div class="row scientific-problem-grid" *ngIf='userMode === programSubscriptionUsers.teacher'>
+<div class="row scientific-problem-grid" *ngIf='userMode === programSubscriptionUsers.teacher'>
 
   <div class="col-9 d-flex justify-content-start">
           <ngb-pagination 
@@ -70,7 +71,7 @@
           [boundaryLinks]="true" 
           (pageChange)="onTeacherPageChange()">
           </ngb-pagination>
-    <button  [ngClass]="{'default_btn': teacherFilterRequestModel.sortField != 'userNameAr' && teacherFilterRequestModel.sortField != 'UserNameEn', 'asend_desend_btn' : this.teacherFilterRequestModel.sortField != 'requestdate' }"
+    <!-- <button  [ngClass]="{'default_btn': teacherFilterRequestModel.sortField != 'userNameAr' && teacherFilterRequestModel.sortField != 'UserNameEn', 'asend_desend_btn' : this.teacherFilterRequestModel.sortField != 'requestdate' }"
     (click)='sortTeacherByName()'>
     {{'User_Requests.SORT_NAME' | translate}} 
         <span *ngIf='this.teacherFilterRequestModel.sortField != "userNameAr" && this.teacherFilterRequestModel.sortField != "UserNameEn"'>
@@ -82,7 +83,7 @@
         <span *ngIf='sortTeacherByNameOrderType() == "desend"'>
             <img  class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
         </span>
-    </button>
+    </button> -->
     <button  [ngClass]="{'asend_desend_btn': teacherFilterRequestModel.sortField != 'userNameAr' && teacherFilterRequestModel.sortField != 'UserNameEn', 'default_btn' : this.teacherFilterRequestModel.sortField != 'requestdate'}"
     (click)='sortTeacherRequestDate()'> 
      {{'User_Requests.SORT_DATE' | translate}}
@@ -99,7 +100,7 @@
      </button>
     </div> 
      <div class="col-3 pl-4 text-right align-self-center">
-        <mat-checkbox class="example-margin ml-1 mr-1 scProblem"
+        <!-- <mat-checkbox class="example-margin ml-1 mr-1 scProblem"
                   [checked]="allSelected"
                   [indeterminate]="someTeachertItemsChecked()"
                   (change)="setTeacherAllChecked($event.checked)"></mat-checkbox>
@@ -107,18 +108,19 @@
         <a class=" ml-2 mr-2" [class.disabled]='!enableTeacherSelectOperations()'
         [ngClass]="{'dimmed': typeTeacheEnum === teacherTabTypeSelected.Accept ||  typeTeacheEnum === teacherTabTypeSelected.Rejected}">
             <i (click)='acceptAllTeacherProgramSubscriptionChechedEvent()' class="fa fa-check fa-lg "></i>
-        </a>
-        <a class=" ml-1 mr-1" [class.disabled]='!enableTeacherSelectOperations()'>
-            <img  class="exportIcon" (click)='exportTeacherCSV()' 
+        </a> -->
+        <a class=" ml-1 mr-1" >
+            <img  (click)='exportTeacherCSV()' 
             src="../../../../assets/images/sc-problem/exporticon.svg">
         </a>
      </div>
-</div> -->
+</div>
 
 <mat-grid-list cols="{{numberPerRow}}" rowHeight="3:3">
   <ng-container *ngIf="userMode == programSubscriptionUsers.student">
       <mat-grid-tile *ngFor='let item of studentItems' >
-        <app-admin-join-request-for-teacher-tab-and-student-tab-card class="card"
+        <app-admin-join-request-for-teacher-tab-and-student-tab-card
+         class="card"
         [studentSubscripModel]='item' 
         [userMode]="programSubscriptionUsers.student"
         >
@@ -135,12 +137,22 @@
           ></app-stu-card-request> -->
       </mat-grid-tile>
   </ng-container>
-  <!-- <ng-container *ngIf="userMode == programSubscriptionUsers.teacher">
+  <ng-container *ngIf="userMode == programSubscriptionUsers.teacher">
       <mat-grid-tile *ngFor='let item of teacherItems' >
-       <app-teacher-card-request class="card" (acceptTeacherProgramSubscription)='acceptTeacherProgramSubscriptionEvent($event)' 
+        <app-admin-join-request-for-teacher-tab-and-student-tab-card
+         class="card" 
+         [teacherSubscripModel]='item' 
+         [userMode]="programSubscriptionUsers.teacher"
+         >
+      </app-admin-join-request-for-teacher-tab-and-student-tab-card>
+
+       <!-- <app-teacher-card-request class="card" (acceptTeacherProgramSubscription)='acceptTeacherProgramSubscriptionEvent($event)' 
        (rejectTeacherProgramSubscription)='rejectTeacherProgramSubscriptionEve($event)'
                                  (teacherProgSubOutput) = teacherProgSubOutputEvent($event);
-                                 [teacherSubscripModel]='item' [typeEnum]='typeTeacheEnum' (updateAllItemsChecked)='updateAllItemsCheckedTeacher()'></app-teacher-card-request>
+                                 [teacherSubscripModel]='item' 
+                                 [typeEnum]='typeTeacheEnum' 
+                                 (updateAllItemsChecked)='updateAllItemsCheckedTeacher()'>
+                                </app-teacher-card-request> -->
       </mat-grid-tile>
-  </ng-container> -->
+  </ng-container>
 </mat-grid-list>
