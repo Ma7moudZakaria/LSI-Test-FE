@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { ITeacherStudentViewModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
+import { AdminTeacherProgramDetailsComponent } from './admin-teacher-program-details/admin-teacher-program-details.component';
+import { AdminTeacherProgramListComponent } from './admin-teacher-program-list/admin-teacher-program-list.component';
 
 @Component({
   selector: 'app-admin-teacher-program',
@@ -6,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-teacher-program.component.scss']
 })
 export class AdminTeacherProgramComponent implements OnInit {
+  @ViewChild(AdminTeacherProgramDetailsComponent) adminTeacherProgramDetailsComponent: AdminTeacherProgramDetailsComponent | undefined;
+  @ViewChild(AdminTeacherProgramListComponent) adminTeacherProgramListComponent: AdminTeacherProgramListComponent | undefined;
 
-
+  
+  @Input()  teacherIdOutput:ITeacherStudentViewModel | undefined;
   showAddProgram: boolean =false;
+  
   constructor() { }
 
   ngOnInit(): void {
@@ -18,5 +25,10 @@ export class AdminTeacherProgramComponent implements OnInit {
   }
   closeExamOverlay() {
     this.showAddProgram = false;
+    this.adminTeacherProgramListComponent?.getTeacherPrograms();
+  }
+
+  getBatchIdEvent(event?: string) {
+    this.adminTeacherProgramDetailsComponent?.getTeacherProgramBatchDetails(event);
   }
 }

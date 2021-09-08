@@ -19,6 +19,7 @@ export class ProgramService {
   // AddProgramURL=environment.baseUrl+'QuestionBankQuestions/add-question-bank-question/';
   // UpdateProgramnURL=environment.baseUrl+'QuestionBankQuestions/update-question-bank-question/';
   getProgramURL=environment.baseUrl+'Programs/get-program-details-by-id/';
+  getAllSharedProgramsURL=environment.baseUrl+'Programs/get-all-shared-programs/';
   
   // GetProgramsFilterURL=environment.baseUrl+'QuestionBankQuestions/get-question-bank-questions-filter/';
   deleteProgramURL=environment.baseUrl+'Programs/delete-program/';
@@ -47,6 +48,10 @@ export class ProgramService {
   // getProgramsFilter(filterRequest:IProgramFilterAdvancedRequest):Observable<BaseResponseModel>{
   //   return this.http.post<BaseResponseModel>(this.GetProgramsFilterURL,filterRequest)
   // }
+
+  getAllSharedPrograms():Observable<BaseResponseModel>{
+    return this.http.get<BaseResponseModel>(this.getAllSharedProgramsURL)
+  }
 
   getAllPrograms(model:IProgramFilterByNameRequest):Observable<BaseResponseModel>{
     return this.http.post<BaseResponseModel>(this.GetAllProgramsURL, model)

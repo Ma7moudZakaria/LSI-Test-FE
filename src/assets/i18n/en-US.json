@@ -78,7 +78,8 @@
     "NEW_ORDERS": "New Orders",
     "ACTIVE": "Active",
     "QUESTION": "The question",
-    "NEXT": "Next"
+    "NEXT": "Next",
+    "ADD_TEACHER_PROGRAM":"Add Program To Teacher "
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",

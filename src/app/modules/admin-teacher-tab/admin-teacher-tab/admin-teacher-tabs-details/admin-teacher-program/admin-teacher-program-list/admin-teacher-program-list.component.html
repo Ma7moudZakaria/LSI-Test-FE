@@ -8,13 +8,13 @@
   <div class="internal_scroll_list_group">
 
 
-    <a class="list-group-item  d-flex" *ngFor="let program  of count; let i = index"
+    <a class="list-group-item  d-flex" *ngFor="let program  of teacherMyProgramsList; let i = index" (click)="getBatchId(program?.batId);selectedIndex=i"
        [class.active]="selectedIndex === i"
        >
 
-      <span>{{'PROGRAMS_LIST.PROGRAM_NAME' | translate}}</span>
-      <!-- <span>{{ translate.currentLang === langEnum.en ? program.engName : program.arabName}}</span>                 -->
+      <!-- <span>{{'PROGRAMS_LIST.PROGRAM_NAME' | translate}}</span> -->         
 
+      <p class="user__name ellipsis px-1" title="{{ translate.currentLang === langEnum.en ? program.enProgBatchName : program.arProgBatchName}}" >{{ translate.currentLang === langEnum.en ? program.enProgBatchName : program.arProgBatchName}}</p>
     </a>
 
 

@@ -80,7 +80,8 @@
     "NEW_ORDERS": "الطلبات الجديده",
     "ACTIVE": "نشط",
     "QUESTION": "السؤال",
-    "NEXT": "التالى"
+    "NEXT": "التالى",
+    "ADD_TEACHER_PROGRAM":"إضافة برنامج للمعلم"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
