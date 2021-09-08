@@ -29,6 +29,7 @@ export class AdminTeacherProgramListComponent implements OnInit {
   selectedIndex=0;
   teacherMyProgramsRequest: ITeacherMyProgramsRequest = { skip: 0, take: 9, sortField: '', sortOrder: 1 };
   teacherMyProgramsList:ITeacherMyProgramsList [] = [];
+  teacherBatchs:ITeacherMyProgramsList [] = [];
 
 
   constructor(private teacherProgramTabService: TeacherProgramTabService,public translate : TranslateService) { }
@@ -68,5 +69,11 @@ export class AdminTeacherProgramListComponent implements OnInit {
         type: BaseConstantModel.DANGER_TYPE
       }
     });
+  }
+
+  searchTeacherBatch(text?:string){
+    this.teacherBatchs=[];
+    this.teacherMyProgramsRequest.progName = text;
+    this.getTeacherPrograms();   
   }
 }

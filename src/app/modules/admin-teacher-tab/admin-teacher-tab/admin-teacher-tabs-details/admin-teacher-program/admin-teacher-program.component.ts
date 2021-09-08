@@ -24,8 +24,9 @@ export class AdminTeacherProgramComponent implements OnInit {
     this.showAddProgram = $event;
   }
   closeExamOverlay() {
-    this.showAddProgram = false;
     this.adminTeacherProgramListComponent?.getTeacherPrograms();
+    this.showAddProgram = false;
+
   }
 
   getBatchIdEvent(event?: string) {

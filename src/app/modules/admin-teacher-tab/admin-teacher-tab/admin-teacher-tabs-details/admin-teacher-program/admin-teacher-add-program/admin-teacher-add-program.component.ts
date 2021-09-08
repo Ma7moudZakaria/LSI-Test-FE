@@ -49,7 +49,7 @@ export class AdminTeacherAddProgramComponent implements OnInit {
       };
       this.teacherProgramTabService.AddTeacherToSharedProgram(this.AddTeacherToSharedProgramRequest || {}).subscribe(res => {
         if (res.isSuccess) {
-          this.alertify.success(res.message || '');
+          this.alertify.success(this.translate.instant('GENERAL.ADD_TEACHER_PROGRAM_SUCCESS'));
           this.closeForm();
         }
         else {
@@ -69,7 +69,7 @@ export class AdminTeacherAddProgramComponent implements OnInit {
     }
     else{
       this.resultMessage = {
-        message: this.translate.instant('UPDATE_TEACHER_PG.TITLE'),
+        message: this.translate.instant('GENERAL.BATCH_REQUIRED'),
         type: BaseConstantModel.DANGER_TYPE
       }
     }

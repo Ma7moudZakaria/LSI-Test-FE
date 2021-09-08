@@ -10,6 +10,7 @@ export interface ITeacherMyProgramsList {
 
 export interface ITeacherMyProgramsRequest {
     teacherId?:string;
+    progName?:string;
     sortField:string;
     sortOrder:number;
     skip:number;

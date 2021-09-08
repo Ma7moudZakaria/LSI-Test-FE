@@ -81,7 +81,9 @@
     "ACTIVE": "نشط",
     "QUESTION": "السؤال",
     "NEXT": "التالى",
-    "ADD_TEACHER_PROGRAM":"إضافة برنامج للمعلم"
+    "ADD_TEACHER_PROGRAM":"إضافة برنامج للمعلم",
+    "BATCH_REQUIRED":"برنامج المعلم مطلوب",
+    "ADD_TEACHER_PROGRAM_SUCCESS":"تم الإضافة بنجاح"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",

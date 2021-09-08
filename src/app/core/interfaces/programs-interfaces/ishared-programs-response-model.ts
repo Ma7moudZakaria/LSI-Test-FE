@@ -3,5 +3,4 @@ export interface ISharedProgramsResponseModel {
     ProgramId?:string;
     nameAr?:string;
     nameEn?:string;
-
 }

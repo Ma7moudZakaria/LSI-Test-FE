@@ -79,7 +79,9 @@
     "ACTIVE": "Active",
     "QUESTION": "The question",
     "NEXT": "Next",
-    "ADD_TEACHER_PROGRAM":"Add Program To Teacher "
+    "ADD_TEACHER_PROGRAM":"Add Program To Teacher ",
+    "BATCH_REQUIRED":"Program Is Required",
+    "ADD_TEACHER_PROGRAM_SUCCESS":"Added Successfully"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",

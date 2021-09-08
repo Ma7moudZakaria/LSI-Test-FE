@@ -4,9 +4,10 @@
     <button class="cancel-btn" (click)="showOverlay()">{{'PROGRAMS_LIST.ADD_PROGRAM' | translate}}</button>
   </div>
 
-  <app-search-input ></app-search-input>
+  <app-search-input (searchTerm)=searchTeacherBatch($event)></app-search-input>
   <div class="internal_scroll_list_group">
 
+    
 
     <a class="list-group-item  d-flex" *ngFor="let program  of teacherMyProgramsList; let i = index" (click)="getBatchId(program?.batId);selectedIndex=i"
        [class.active]="selectedIndex === i"
