@@ -8,7 +8,8 @@
             {{ 'UPDATE_TEACHER_PG.DAY_AND_TIME' | translate }}
           </label>
 
-          <select class="UpdateUser__Options" name="nameEn">
+          <select [(ngModel)]="availabilityDaysModel.id"
+          [ngModelOptions]="{standalone: true}" class="UpdateUser__Options" name="nameEn">
             <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELECT_DAY' | translate }}</option>
 
             <option *ngFor="let interviewDayItem of collectionOfLookup.DAYS"

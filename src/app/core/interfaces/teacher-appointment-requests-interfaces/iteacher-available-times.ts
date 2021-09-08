@@ -12,3 +12,12 @@ export interface ITeacherAvailableTimesResponseModel {
   dayEn?: string;
 
 }
+export interface ITeacherAppointmentRequestsAppointmentsDetails {
+  id?: string;
+  no?: string;
+  from?: string;
+  to?: string;
+  dayAr?: string;
+  dayEn?: string;
+
+}

@@ -1,28 +1,28 @@
 <!--البرامج و الاوقات المتاحة -->
 <div class="col-4 mt-4 mb-3 pl-0 pr-0 ml-3 mr-3  mt-3 mb-4 border_bottom">
-  <label class="UpdateUser__Label"> {{ 'UPDATE_TEACHER_PG.AVAILABLE_PROGRAMS_AND_TIMES' | translate }} </label>
+  <label class="UpdateUser__Label"> الطلبات المقدمة لتغيير الاوقات </label>
 </div>
 <div class="col-12 times_programs">
   <div class="row">
-    <div *ngFor="let item of teacherAvailableTimes?.teacherAvailableTimes" class="col-4">
+    <div *ngFor="let item of teacherAvailableTimes" class="col-4">
       <div class="badges">
         <div class="badge badge-info p-2 ">
           <div class="d-flex justify-content-between mt-0">
             <p *ngIf='translate.currentLang === lang.en'
                class="ellipsis mb-0"
-               matTooltip='{{item?.dayEn}} From {{item.timeFrom}}  To  {{item.timeTo  }}'>
+               matTooltip='{{item?.dayEn}} From {{item.from}}  To  {{item.to  }}'>
               {{ item?.dayEn }}
               <span *ngIf="translate.currentLang === lang.en">
-                                                            From {{ item.timeFrom }} To {{ item.timeTo }}
+                                                            From {{ item.from }} To {{ item.to }}
                                                         </span> <br>
 
             </p>
             <p *ngIf='translate.currentLang === lang.ar'
                class="ellipsis mb-0"
-               matTooltip='{{item?.dayAr}} من {{item.timeFrom }}الي {{item.timeTo }}'>
+               matTooltip='{{item?.dayAr}} من {{item.from }}الي {{item.to }}'>
               {{ item?.dayAr }}
               <span *ngIf="translate.currentLang === lang.ar">
-                                                            من {{ item.timeFrom }} الي {{ item.timeTo }}
+                                                            من {{ item.from }} الي {{ item.to }}
                                                         </span>
             </p>
 

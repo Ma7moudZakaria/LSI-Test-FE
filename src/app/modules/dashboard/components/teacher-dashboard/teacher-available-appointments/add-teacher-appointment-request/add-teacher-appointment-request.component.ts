@@ -11,6 +11,9 @@ import {ILookupCollection} from '../../../../../../core/interfaces/lookup/ilooku
 import {LookupService} from '../../../../../../core/services/lookup-services/lookup.service';
 import {ITeacherProfileAvailabilityLookup} from '../../../../../../core/interfaces/teacher-interfaces/iteacher-availability-lookup';
 import {ITeacherAppointmentModel} from '../../../../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-appointment-model';
+import { TeacherAppointmentService } from 'src/app/core/services/teacher-appointment-services/teacher-appointment.service';
+import { IAddChangeTeacherAvailableTimesRequestModel, IAddTeacherAppointmentRequest } from 'src/app/core/interfaces/teacher-appointment-requests-interfaces/iadd-teacher-appointment-request';
+import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 
 @Component({
   selector: 'app-add-teacher-appointment-request',
@@ -29,15 +32,17 @@ export class AddTeacherAppointmentRequestComponent implements OnInit {
   availabilityDaysMessage: BaseMessageModel = {};
   availabilityDaysModel: ITeacherProfileAvailabilityLookup = {};
   datepicker1:any;
+  currentUser: IUser | undefined;
 
 
-  constructor(private stuSubRequestService: StudentProgramVacationServicesService
+  constructor(private teacherAppointmentService: TeacherAppointmentService
               , private alertify: AlertifyService
               ,public translate: TranslateService,
               private lookupService: LookupService,
   ) { }
 
   ngOnInit(): void {
+    this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     this.getLookupByKey();
   }
 
@@ -46,12 +51,20 @@ export class AddTeacherAppointmentRequestComponent implements OnInit {
 
   }
   saveRejectRequest() {
-    let model: IRejectStudentProgramVacationModel = {
-      batchId: this.itemStuReq.id,
-      reasonReject: this.itemStuReq.rejReason
+    let listOfDays:IAddChangeTeacherAvailableTimesRequestModel[] = [];
+    this.selectedAvailabilityDaysList.forEach(x=>
+      listOfDays.push(
+        {timeFrom:x.fromTime,
+          timeTo:x.toTime,
+          usrId:this.currentUser?.id,
+          idAvailableDay:x.id
+        }));
+    
+    let model: IAddTeacherAppointmentRequest = {
+     usrId:this.currentUser?.id,
+     listOfDays:listOfDays
     }
-    if (model.reasonReject) {
-      this.stuSubRequestService.rejectStudentProgramVacation(model).subscribe(res => {
+      this.teacherAppointmentService.AddChangeTeacherAvailableTimesRequest(model).subscribe(res => {
 
         if (res.isSuccess) {
           this.closeRejectRequest();
@@ -66,7 +79,6 @@ export class AddTeacherAppointmentRequestComponent implements OnInit {
           type: BaseConstantModel.DANGER_TYPE
         }
       })
-    }
 
 
   }

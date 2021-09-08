@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IStudentProgramVacationModel} from '../../../../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-model';
 import {LanguageEnum} from '../../../../../../core/enums/language-enum.enum';
-import {ITeacherAvailableTimes} from '../../../../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-available-times';
+import {ITeacherAppointmentRequestsAppointmentsDetails, ITeacherAvailableTimes} from '../../../../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-available-times';
 import {IUser} from '../../../../../../core/interfaces/auth-interfaces/iuser-model';
 import {BaseMessageModel} from '../../../../../../core/ng-model/base-message-model';
 import {Router} from '@angular/router';
@@ -21,7 +21,7 @@ export class TeacherAppointmentRequestDatailsComponent implements OnInit {
   @Output() closeDetailsRequest = new EventEmitter<ITeacherAppointmentModel>();
   lang = LanguageEnum;
   RouteParams = {} as string;
-  teacherAvailableTimes = {} as ITeacherAvailableTimes;
+  teacherAvailableTimes = [] as ITeacherAppointmentRequestsAppointmentsDetails[];
   currentUser: IUser | undefined;
   resMessage: BaseMessageModel = {};
   currentLang: LanguageEnum | undefined;
@@ -55,9 +55,9 @@ export class TeacherAppointmentRequestDatailsComponent implements OnInit {
     this.languageService.headerPageNameEvent.emit(this.translate.instant('UPDATE_TEACHER_PG.TITLE'));
   }
   getTeacherAvailableTimesTeacherView(id: any) {
-    this.teacherProfileService.getTeacherAvailableTimesTeacherView(id || '').subscribe(res => {
+    this.teacherProfileService.GetTeacherAppointmentRequestAppointments(id || '').subscribe(res => {
       if (res.isSuccess) {
-        this.teacherAvailableTimes = res.data as ITeacherAvailableTimes;
+        this.teacherAvailableTimes = res.data as ITeacherAppointmentRequestsAppointmentsDetails[];
 
         //
         // if (!this.teacherProfileDetails?.proPic) {
