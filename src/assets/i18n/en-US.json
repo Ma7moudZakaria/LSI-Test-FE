@@ -895,5 +895,10 @@
   },
   "JPIN_EXAM":{
     "ARE_YOU_FINISHED_EXAM":"Are you finished the exam?"
-      }
+      },
+  "STUDENT_DAY_TASKS":{
+    "DAILY_HOMEWORK": "Daily Homework ",
+    "START":"Start",
+    "ADD_DAY": "Add day"
+  }
 }

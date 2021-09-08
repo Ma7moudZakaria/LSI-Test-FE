@@ -2,6 +2,11 @@
   <div class="attache-exam-list" *ngIf='!isView'> 
     <div class="row">
       <div class="col-12">
+        <div class="d-flex align-items-center  justify-content-end" *ngIf="dailyTestDetailsModel">
+          <label class="label_item_question">{{"EXAM_FORM.THE_SUCCESS_RATE"|translate}}</label>
+          <span>  &nbsp; </span>
+          <input  type="number" min="1" [(ngModel)]="dailyTestDetailsModel.scorePass" class="form-control w-25 ">
+      </div>
         <section class="internal_scroll_list_group ">
               <div class="input-group ">
               <div *ngFor = 'let question of dailyTestDetailsModel?.questions'>
@@ -32,6 +37,9 @@
     </div>
     
     <ng-container *ngIf="isView">
+      <span class="degree_detail" *ngIf="dailyTestDetailsModel">
+        {{"EXAM_FORM.THE_SUCCESS_RATE"|translate}}:{{dailyTestDetailsModel.scorePass}}
+      </span>
                   <div class=" cardRecourd mb-2 "  *ngFor = 'let question of dailyTestDetailsModel?.questions'>
                     <img src="assets/images/days/bookView.svg">
                     <app-question-template  class="day_detils"
@@ -40,7 +48,4 @@
                   </div>    
   </ng-container>
 
-</div>
-<div *ngIf="dutyDaysTaskViewMood===programDutyDaysTaskViewMoodEnum.student">
-  
 </div>

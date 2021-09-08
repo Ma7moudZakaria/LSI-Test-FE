@@ -893,5 +893,10 @@
   },
   "JPIN_EXAM":{
 "ARE_YOU_FINISHED_EXAM":"هل تم الانتهاء من الاجابة ؟"
+  },
+  "STUDENT_DAY_TASKS":{
+    "DAILY_HOMEWORK": "الواجب اليومي",
+    "START":"ابدأ",
+    "ADD_DAY": "إضافة يوم"
   }
 }

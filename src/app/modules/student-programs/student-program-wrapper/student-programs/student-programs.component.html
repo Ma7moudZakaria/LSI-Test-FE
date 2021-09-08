@@ -1,1 +1,21 @@
-<p>student-programs works!</p>
+
+<div class="container-fluid" *ngFor="let program  of programs">
+    <span>{{  program.progName}} -  {{this.translate.currentLang===langEnum.en? program.enBatName : program.arBatName}}</span>
+
+    isProgStarted:{{program.isProgStarted}}
+    isDaysRequested:{{program.isDaysRequested}}
+    <div  class="row" *ngIf="program.isProgStarted==true">
+        RemainingTime:{{program.remainingTime}}
+        </div>
+ <div  class="row" *ngIf="program.isProgStarted==false">
+<button (click)="startProgram(program.isDaysRequested)">{{ 'STUDENT_DAY_TASKS.START' | translate }}</button>
+</div>
+<div class="row">
+    <button [disabled]="program.isProgStarted==false" (click)="goToHomeWore(program?.batId)">{{ 'STUDENT_DAY_TASKS.DAILY_HOMEWORK' | translate }}</button>
+</div>
+</div>
+<div class="overlay" *ngIf="isShowAddStuDutyDaysToProgram">
+    <app-add-stu-duty-days-to-program
+    (closeDayTasks)='closeAddStuDutyDaysToProgramOverlay()'
+    ></app-add-stu-duty-days-to-program>
+</div>

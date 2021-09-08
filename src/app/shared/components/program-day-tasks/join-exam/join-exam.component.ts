@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription, timer } from 'rxjs';
@@ -15,10 +15,11 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
   styleUrls: ['./join-exam.component.scss']
 })
 export class JoinExamComponent implements OnInit {
-  examJson: string | undefined;
-  voiceUrl: string | undefined;
+  @Output() isSubmitExam = new EventEmitter<boolean>();
   @Input() joinExamModel: IExam | undefined 
   @Input() isView: boolean = false;
+  examJson: string | undefined;
+  voiceUrl: string | undefined;
   resultMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
   resMessage: BaseMessageModel = {};
@@ -63,7 +64,7 @@ export class JoinExamComponent implements OnInit {
   NextQuestion() {
     this.countlength = this.joinExamModel?.questions?.length || 0;
     if (this.counter == this.countlength - 1) {
-     // this.submitExam();
+      this.isSubmitExam.emit(true);
     }
     else {
       this.counter++;
