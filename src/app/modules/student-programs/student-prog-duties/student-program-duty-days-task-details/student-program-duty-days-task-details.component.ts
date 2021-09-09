@@ -135,12 +135,10 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
 yes(){
   this.isAnswer=true;
   this.save();
-  //alert("yes")
 }
 no(){
   this.isAnswer=false;
   this.save();
- // alert("no")
 }
   save(){
     this.resultMessage = {}; 
