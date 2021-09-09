@@ -13,12 +13,14 @@ import { AlertifyService } from 'src/app/core/services/alertify-services/alertif
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { ITeacherStudentViewModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 @Component({
   selector: 'app-admin-student-vacation-request',
   templateUrl: './admin-student-vacation-request.component.html',
   styleUrls: ['./admin-student-vacation-request.component.scss']
 })
 export class AdminStudentVacationRequestComponent implements OnInit {
+  @Input() studentIdOutput: ITeacherStudentViewModel | undefined;
 
   studentProgramVacationRequestsList: IStudentProgramVacationStudentViewModel[] = [];
   totalCount = 0;
@@ -38,12 +40,15 @@ export class AdminStudentVacationRequestComponent implements OnInit {
     private alertify: AlertifyService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
-    this.studentProgramVacationFilterRequestModel.stdId = this.currentUser.id;
-    this.studentProgramVacationFilterRequestModel.progId = this.programModel?.id;
+    // this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
+
     this.getStudentProgramVacationRequestsStudentView();
   }
+
   getStudentProgramVacationRequestsStudentView() {
+    this.studentProgramVacationFilterRequestModel.stdId = this.studentIdOutput?.usrId;
+    this.studentProgramVacationFilterRequestModel.progId = this.programModel?.id;
+
     this.programVacationServicesService.getStudentsProgramsVacationFilterStudentView(this.studentProgramVacationFilterRequestModel || {}).subscribe(res => {
       if (res.isSuccess) {
         this.studentProgramVacationRequestsList = res.data as IStudentProgramVacationStudentViewModel[];
@@ -56,9 +61,12 @@ export class AdminStudentVacationRequestComponent implements OnInit {
           this.getStudentProgramVacationRequestsStudentView();
         }
       }
+      else {
+        this.alertify.error(res.message || '');
+      }
     },
       error => {
-        console.log(error);
+        this.alertify.error(error || '');
       });
   }
   // searchByText(searchKey: string) {
@@ -95,21 +103,21 @@ export class AdminStudentVacationRequestComponent implements OnInit {
   //   });
   // }
 
-  TerminateStudentProgramVacation(studentProgramVacationStudentViewModel: IStudentProgramVacationStudentViewModel) {
-    this.programVacationServicesService.terminateStudentProgramVacation(studentProgramVacationStudentViewModel.id).subscribe(res => {
-      var response = <BaseResponseModel>res;
-      if (response.isSuccess) {
-        this.alertify.success(res.message || '');
-        this.getStudentProgramVacationRequestsStudentView();
-      }
-      else {
-        this.alertify.error(res.message || '');
-      }
-    },
-      error => {
-        console.log(error);
-      });
-  }
+  // TerminateStudentProgramVacation(studentProgramVacationStudentViewModel: IStudentProgramVacationStudentViewModel) {
+  //   this.programVacationServicesService.terminateStudentProgramVacation(studentProgramVacationStudentViewModel.id).subscribe(res => {
+  //     var response = <BaseResponseModel>res;
+  //     if (response.isSuccess) {
+  //       this.alertify.success(res.message || '');
+  //       this.getStudentProgramVacationRequestsStudentView();
+  //     }
+  //     else {
+  //       this.alertify.error(res.message || '');
+  //     }
+  //   },
+  //     error => {
+  //       this.alertify.error(error || '');
+  //     });
+  // }
 
   // openAddStudentVacationNewRequest() {
   //   this.openStudentProgramVacationAddPopup.emit(this.filter)

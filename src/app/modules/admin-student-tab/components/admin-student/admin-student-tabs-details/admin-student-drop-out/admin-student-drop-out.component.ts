@@ -1,10 +1,12 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { DropOutRoleEnum } from 'src/app/core/enums/drop-out-request-enums/drop-out-status.enum';
 import { StudentDropOutRequestStatusEnum } from 'src/app/core/enums/drop-out-request-enums/student-drop-out-request-status.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
-import { IStudentDropOutRequestsFilterAdminViewRequestModel } from 'src/app/core/interfaces/student-drop-out-request-interfaces/istudent-drop-out-requests-filter-admin-view-request-model';
-import { IStudentDropOutRequestsFilterResponseModel } from 'src/app/core/interfaces/student-drop-out-request-interfaces/istudent-drop-out-requests-filter-response-model';
+import { ProgramSubscriptionUsersEnum } from 'src/app/core/enums/program-subscription-users-enum.enum';
+import { IStudentDropOutRequestsFilterStudentViewRequestModel } from 'src/app/core/interfaces/student-drop-out-request-interfaces/istudent-drop-out-requests-filter-student-view-request-model';
+import { IStudentDropOutRequestsFilterStudentViewResponseModel } from 'src/app/core/interfaces/student-drop-out-request-interfaces/istudent-drop-out-requests-filter-student-view-response-model';
 import { ITeacherStudentViewModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
@@ -19,18 +21,22 @@ import { StudentDropOutRequestService } from 'src/app/core/services/student-drop
 })
 export class AdminStudentDropOutComponent implements OnInit {
 
+  @Input() studentIdOutput: ITeacherStudentViewModel | undefined;
 
   StudentDropIdInput: ITeacherStudentViewModel | undefined;
-  studentDropOutRequestList: IStudentDropOutRequestsFilterResponseModel[] = [];
-  studentDropOutRequestFilterRequestModel: IStudentDropOutRequestsFilterAdminViewRequestModel = { statusNum: StudentDropOutRequestStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
+
+  studentDropOutRequestList: IStudentDropOutRequestsFilterStudentViewResponseModel[] = [];
+  studentDropOutRequestFilterRequestModel: IStudentDropOutRequestsFilterStudentViewRequestModel = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
+  resMessage: BaseMessageModel = {};
   resultMessage: BaseMessageModel = {};
   totalCount = 0;
   numberItemsPerRow = 3;
   ids?: string[] = [];
   typeEnum: StudentDropOutRequestStatusEnum = StudentDropOutRequestStatusEnum.Pending;
-  showTap: StudentDropOutRequestStatusEnum = StudentDropOutRequestStatusEnum.Pending;
   statusEnum = StudentDropOutRequestStatusEnum;
-  userMode: DropOutRoleEnum = DropOutRoleEnum.Student;
+  // userMode: DropOutRoleEnum = DropOutRoleEnum.Student;
+  userMode: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.student;
+  showTap: StudentDropOutRequestStatusEnum = StudentDropOutRequestStatusEnum.Pending;
   showUserDetailsView: boolean = false;
   constructor(
     public translate: TranslateService,
@@ -38,33 +44,42 @@ export class AdminStudentDropOutComponent implements OnInit {
     private alertify: AlertifyService) { }
 
   ngOnInit(): void {
-    this.studentDropOutRequestFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn'
+    this.studentDropOutRequestFilterRequestModel.sortField = 'requestdate'
     this.getStudentDropOutRequests();
   }
+
+
+
+
   getStudentDropOutRequests() {
-    this.studentDropOutRequestService.studentDropOutRequestAdvFilterAdminView(this.studentDropOutRequestFilterRequestModel).subscribe(res => {
+    this.studentDropOutRequestFilterRequestModel.usrId = this.studentIdOutput?.usrId
+    // console.log('idddd' + this.studentDropOutRequestFilterRequestModel.usrId);
+    this.studentDropOutRequestService.studentDropOutRequestAdvFilterStudentView(this.studentDropOutRequestFilterRequestModel).subscribe(res => {
       var response = <BaseResponseModel>res;
       if (response.isSuccess) {
-        this.studentDropOutRequestList = res.data as IStudentDropOutRequestsFilterResponseModel[];
+        this.studentDropOutRequestList = res.data as IStudentDropOutRequestsFilterStudentViewResponseModel[];
         this.totalCount = res.count ? res.count : 0;
         if (this.studentDropOutRequestFilterRequestModel.skip > 0 && (!this.studentDropOutRequestList || this.studentDropOutRequestList.length === 0)) {
           this.studentDropOutRequestFilterRequestModel.page -= 1;
           this.studentDropOutRequestFilterRequestModel.skip = (this.studentDropOutRequestFilterRequestModel.page - 1) * this.studentDropOutRequestFilterRequestModel.take;
           this.getStudentDropOutRequests();
         }
+
       }
       else {
-        this.resultMessage = {
-          message: response.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+
+        this.alertify.error(res.message || '');
       }
     },
       error => {
-        this.resultMessage = {
-          message: error,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+        this.alertify.error(error || '');
       });
   }
+
+
+  studentDropOutRequestChangePage(event: IStudentDropOutRequestsFilterStudentViewRequestModel) {
+    this.studentDropOutRequestFilterRequestModel = event;
+    this.getStudentDropOutRequests();
+  }
+
 }

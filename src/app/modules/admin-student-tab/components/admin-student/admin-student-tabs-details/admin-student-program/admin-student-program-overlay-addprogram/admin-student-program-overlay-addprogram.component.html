@@ -1,13 +1,27 @@
 
 <ng-container >
-
+  <form [formGroup]="addStudentToSharedForm" (ngSubmit)="addStudentToSharedProject()" class="form-group " >
     <section class="mt-5">
+      <div class="form-group">
+        <label class="header_input">{{ 'PROGRAM_BASIC_INFO.PROG_NAME' | translate }}  </label>
+        <select class="form-control "  formControlName="program" >
+            <ng-container *ngFor="let item of sharedPrograms" >
+            <option [value]="item.batId" >{{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}</option>
+
+            </ng-container>
+          </select>
+
+</div>
       <div  class="row direction-rtl buttons-center mt-5">
-  
-        <button  type="reset" class="save-btn"   (click)="closeForm()">
-          close
+
+        
+        <button   type="submit" class="save-btn" >
+          {{ "GENERAL.SAVE" | translate }}
+      </button>
+        <button  type="reset" class="cancel-btn"   (click)="closeForm()">
+          اغلاق
         </button>
       </div>
     </section>
-  
+  </form>
   </ng-container>

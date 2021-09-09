@@ -11,8 +11,8 @@ import {IStudentSubscriptionModel} from '../../../../../core/interfaces/student-
 import {IStudentSubscriptionFilterRequestModel} from '../../../../../core/interfaces/student-program-subscription-interfaces/istudent-subscription-filter-request-model';
 import {StudentProgramSubscriptionStatusEnum} from '../../../../../core/enums/subscriptionStatusEnum/student-program-subscription-status-enum.enum';
 import {StudentProgramSubscriptionServicesService} from '../../../../../core/services/student-program-subscription-services/student-program-subscription-services.service';
-import {IStudentProgramSubscription} from '../../../../../core/interfaces/student-program-subscription-interfaces/istudent-program-subscription.model';
 import {ITeacherStudentViewModel} from '../../../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
+import { IStudentProgramSubscription } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-program-subscription.model';
 @Component({
   selector: 'app-user-join-requests',
   templateUrl: './user-join-requests.component.html',
