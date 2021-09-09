@@ -69,8 +69,7 @@ export class StudentProgramsComponent implements OnInit {
   closeAddStuDutyDaysToProgramOverlay($event:boolean){
     this.isShowAddStuDutyDaysToProgram=false;
     if($event===true)
-   { //this.saveStartProgram();
-    alert("save")} 
+   { this.saveStartProgram();} 
   }
 
  startProgram(batchId?:string,progId?:string,noofDutyDays?:number,isDaysRequested?:boolean){

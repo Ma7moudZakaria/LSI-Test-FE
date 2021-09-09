@@ -21,7 +21,7 @@ export class AddStuDutyDaysToProgramComponent implements OnInit {
   collectionOfLookup = {} as ILookupCollection;
  // createProgramDayTasksModel = Array<ICreateProgramDayTasksModel>();
   listOfLookups: string[] = ['DAYS'];
-  selectedProgramDayTasksList=Array<IStudentSelectedDutiesDaysRequestModel>();
+  selectedProgramDayTasksList:IStudentSelectedDutiesDaysRequestModel[] = [];
   resultMessage: BaseMessageModel = {};
   daysNumber:number | undefined;
 
@@ -54,10 +54,10 @@ export class AddStuDutyDaysToProgramComponent implements OnInit {
 
   onTaskChange(item : any, event : any){
     if (event.checked){
-      this.selectedProgramDayTasksList.push(item.id);
+      this.selectedProgramDayTasksList.push({wekDayId: item.id});
     }
     else{
-      let it = this.selectedProgramDayTasksList.filter(i => i === item.id)[0];
+      let it = this.selectedProgramDayTasksList.filter(i => i.wekDayId === item.id)[0];
       const ind = this.selectedProgramDayTasksList?.indexOf(it);
       if (ind > -1) {
         this.selectedProgramDayTasksList?.splice(ind, 1);
@@ -67,9 +67,9 @@ export class AddStuDutyDaysToProgramComponent implements OnInit {
 
 
 
-  async onSubmit() {
+  onSubmit() {
     this.resultMessage = {}
-    if( this.selectedProgramDayTasksList.length ===this.daysNumber ){
+    if( this.selectedProgramDayTasksList.length === this.startStudentBatchRequest?.noofDutyDays ){
       if(this.startStudentBatchRequest?.dys)
       {this.startStudentBatchRequest.dys=this.selectedProgramDayTasksList;}
       this.closeDayTasks.emit(true);
@@ -80,6 +80,8 @@ export class AddStuDutyDaysToProgramComponent implements OnInit {
         type: BaseConstantModel.DANGER_TYPE
       }
     }
+    return;
+    // this.closeDayTasks.emit(false);
   }
 
 
