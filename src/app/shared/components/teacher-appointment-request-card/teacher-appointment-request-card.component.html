@@ -6,7 +6,7 @@
                     class="example-margin"></mat-checkbox>
     </section>
 
-    <div>
+    <div >
       <span> {{'STUDENT_SUBSCRIBERS.TIME' | translate}} </span>
 
       <span>&nbsp;</span>
@@ -34,7 +34,7 @@
         <a><img src="../../../../../assets/images/chat.svg"></a>
       </div>
     </div>
-    <div class="">
+    <div class="container_time">
       <span class="number_request"> {{'TEACHER_APPOINTMENT.OLD_TIMES' | translate}} </span><br>
       <div *ngFor="let time of teacherAppointmentModel.teacherAvailableTimes" class="d-flex align-items-center justify-content-between">
         <span class="bold">{{translate.currentLang === langEnum.en ? time.dayNameEn: time.dayNameAr}} {{'TEACHER_APPOINTMENT.FROM' | translate}}  {{time.from}}  {{'TEACHER_APPOINTMENT.TO' | translate}}  {{time.to}}</span>
