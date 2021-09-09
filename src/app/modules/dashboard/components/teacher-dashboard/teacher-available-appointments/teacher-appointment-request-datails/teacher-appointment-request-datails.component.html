@@ -1,10 +1,40 @@
 <!--البرامج و الاوقات المتاحة -->
-<div class="col-4 mt-4 mb-3 pl-0 pr-0 ml-3 mr-3  mt-3 mb-4 border_bottom">
+<form class="DataForm">
+<div class="col-12 mt-5  mb-3">
   <label class="UpdateUser__Label"> الطلبات المقدمة لتغيير الاوقات </label>
 </div>
-<div class="col-12 times_programs">
-  <div class="row">
-    <div *ngFor="let item of teacherAvailableTimes" class="col-4">
+<div class=" times_programs">
+
+      <ng-container *ngFor="let item of teacherAvailableTimes" >
+        <div class="col-12 mb-2 px-0">
+          <div class="cardTime mx-3">
+              <div *ngIf='translate.currentLang === lang.en' class="d-flex justify-content-between mb-0"
+               matTooltip='{{item?.dayEn}} From {{item.from}}  To  {{item.to  }}'>
+               {{ item?.dayEn }}'>
+               <p class="cardTime__day mb-0 bold ">{{ item?.dayEn }}</p>
+                
+                <p class="cardTime__time mb-0" >
+                      From {{ item.from }} To {{ item.to }}
+              </p> 
+    
+              </div>
+              <div *ngIf='translate.currentLang === lang.ar'class="d-flex justify-content-between mb-0"
+               matTooltip='{{item?.dayAr}} من {{item.from  }}الي {{item.to}}'>
+                  <p class="cardTime__day  mb-0">{{ item?.dayAr }}</p>
+                  <p class="cardTime__time  mb-0" >
+                    من {{ item.from }} الي {{ item.to }}
+                </p>
+    
+              </div>
+              
+            </div>
+    
+        </div>
+            
+          
+      </ng-container>
+
+      <!-- <div class="col-12">
       <div class="badges">
         <div class="badge badge-info p-2 ">
           <div class="d-flex justify-content-between mt-0">
@@ -26,12 +56,20 @@
                                                         </span>
             </p>
 
-
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
-</div>
 
+  <section class="mt-5">
+    <div  class="row direction-rtl buttons-center mt-5 mx-5">
+      <button  (click)='cancelRequest()' type="submit" class="save-btn btn-block">
+        {{ "GENERAL.CANCEL" | translate }}
+      </button>
+    
+    </div>
+  </section>
+
+</form>
 <!-- end data -->

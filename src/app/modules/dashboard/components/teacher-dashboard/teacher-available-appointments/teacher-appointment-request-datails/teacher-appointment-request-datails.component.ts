@@ -1,15 +1,15 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {IStudentProgramVacationModel} from '../../../../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-model';
-import {LanguageEnum} from '../../../../../../core/enums/language-enum.enum';
-import {ITeacherAppointmentRequestsAppointmentsDetails, ITeacherAvailableTimes} from '../../../../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-available-times';
-import {IUser} from '../../../../../../core/interfaces/auth-interfaces/iuser-model';
-import {BaseMessageModel} from '../../../../../../core/ng-model/base-message-model';
-import {Router} from '@angular/router';
-import {TranslateService} from '@ngx-translate/core';
-import {TeacherAppointmentService} from '../../../../../../core/services/teacher-appointment-services/teacher-appointment.service';
-import {LanguageService} from '../../../../../../core/services/language-services/language.service';
-import {BaseConstantModel} from '../../../../../../core/ng-model/base-constant-model';
-import {ITeacherAppointmentModel} from '../../../../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-appointment-model';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { IStudentProgramVacationModel } from '../../../../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-model';
+import { LanguageEnum } from '../../../../../../core/enums/language-enum.enum';
+import { ITeacherAppointmentRequestsAppointmentsDetails, ITeacherAvailableTimes } from '../../../../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-available-times';
+import { IUser } from '../../../../../../core/interfaces/auth-interfaces/iuser-model';
+import { BaseMessageModel } from '../../../../../../core/ng-model/base-message-model';
+import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { TeacherAppointmentService } from '../../../../../../core/services/teacher-appointment-services/teacher-appointment.service';
+import { LanguageService } from '../../../../../../core/services/language-services/language.service';
+import { BaseConstantModel } from '../../../../../../core/ng-model/base-constant-model';
+import { ITeacherAppointmentModel } from '../../../../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-appointment-model';
 
 @Component({
   selector: 'app-teacher-appointment-request-datails',
@@ -31,10 +31,10 @@ export class TeacherAppointmentRequestDatailsComponent implements OnInit {
 
   @Input() studentSubscripModel: ITeacherAppointmentModel = { totalRows: 0 }
 
-  constructor(   private router: Router,
-                 public translate: TranslateService ,
-                 private teacherProfileService: TeacherAppointmentService,
-                 public languageService: LanguageService) { }
+  constructor(private router: Router,
+    public translate: TranslateService,
+    private teacherProfileService: TeacherAppointmentService,
+    public languageService: LanguageService) { }
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
@@ -66,10 +66,10 @@ export class TeacherAppointmentRequestDatailsComponent implements OnInit {
       }
       else {
         this.resMessage =
-          {
-            message: res.message,
-            type: BaseConstantModel.DANGER_TYPE
-          }
+        {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        }
       }
     }, error => {
       this.resMessage = {
@@ -85,5 +85,7 @@ export class TeacherAppointmentRequestDatailsComponent implements OnInit {
   appointmentRequestDetails() {
     this.requestDetails.emit(this.studentSubscripModel);
   }
-
+  cancelRequest() {
+    this.closeDetailsRequest.emit();
+  }
 }

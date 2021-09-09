@@ -1,37 +1,36 @@
 <!--البرامج و الاوقات المتاحة -->
   <div class="d-flex mb-4 justify-content-between align-items-center">
-  <p class="UpdateUser__Label mb-0 "> {{ 'UPDATE_TEACHER_PG.AVAILABLE_PROGRAMS_AND_TIMES' | translate }} </p>
+  <p class="UpdateUser__Label mb-0 bold"> {{ 'UPDATE_TEACHER_PG.AVAILABLE_PROGRAMS_AND_TIMES' | translate }} </p>
    <img src="../../../../../../assets/images/teacher-dashboard/calender.svg" class="calender_img mt-2">
 </div>
 <div class="row ">
   <ng-container *ngFor="let item of teacherAvailableTimes?.teacherAvailableTimes" >
-    <div class="col-6">
-      <div class="d-flex justify-content-between mt-0 container_card_time">
-          <p *ngIf='translate.currentLang === lang.en'
-             class=" mb-0"
-             matTooltip='{{item?.dayEn}} From {{item.timeFrom}}  To  {{item.timeTo  }}'>
-            {{ item?.dayEn }}
-            <span *ngIf="translate.currentLang === lang.en">
+    <div class="col-12 mb-2">
+      <div class="cardTime mx-3">
+          <div *ngIf='translate.currentLang === lang.en' class="d-flex justify-content-between mb-0" matTooltip='{{item?.dayEn}} From {{item.timeFrom}}  To  {{item.timeTo  }}'>
+           <p class="cardTime__day mb-0 bold ">{{ item?.dayEn }}</p>
+            
+            <p class="cardTime__time mb-0" >
                   From {{ item.timeFrom}} To {{ item.timeTo }}
-          </span> <br>
+          </p> 
 
-          </p>
-          <p *ngIf='translate.currentLang === lang.ar'
-             class=" mb-0"
-             matTooltip='{{item?.dayAr}} من {{item.timeFrom }}الي {{item.timeTo }}'>
-            {{ item?.dayAr }}
-            <span *ngIf="translate.currentLang === lang.ar">
-               من {{ item.timeFrom }} الي {{ item.timeTo }}
-               
-              </span>
-          </p>
+          </div>
+          <div *ngIf='translate.currentLang === lang.ar'class="d-flex justify-content-between mb-0" matTooltip='{{item?.dayAr}} من {{item.timeFrom }}الي {{item.timeTo }}'>
+              <p class="cardTime__day  mb-0">{{ item?.dayAr }}</p>
+              <p class="cardTime__time  mb-0" >
+                من {{ item.timeFrom }} الي {{ item.timeTo }}
+            </p>
+
+          </div>
+          
         </div>
+
     </div>
         
       
   </ng-container>
-</div>
-<div class="row mt-3">
+</div> 
+<div class="row mt-3 mx-3">
 <div class="col-12 ">
     <div  class="row justify-content-end">
       <button *ngIf="teacherAvailableTimes?.isView"  (click)="appointmentRequestDetails()" class="cancel-btn px-4" >View Appointment </button>
