@@ -56,6 +56,7 @@ export class StudentProgramsComponent implements OnInit {
   }
 
  startProgram(isDaysRequested?:boolean){
+   //IStartStudentBatchRequestModel
    if(isDaysRequested==true)
     {this.isShowAddStuDutyDaysToProgram=true;}
   }
