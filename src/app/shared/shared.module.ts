@@ -83,6 +83,12 @@ import { TeacherStuProgramForSubscriptionGridComponent } from './components/teac
 import { TeacherDetailsViewComponent } from './components/teacher-details-view/teacher-details-view.component';
 import { StudentDetailsViewComponent } from './components/student-details-view/student-details-view.component';
 import { FormatTimePipe } from '../core/pipe/format-time.pipe';
+
+import { AdminJoinRequestForTeacherTabAndStudentTabGridComponent } from './components/admin-join-request-for-teacher-tab-and-student-tab-grid/admin-join-request-for-teacher-tab-and-student-tab-grid.component';
+import { AdminJoinRequestForTeacherTabAndStudentTabCardComponent } from './components/admin-join-request-for-teacher-tab-and-student-tab-card/admin-join-request-for-teacher-tab-and-student-tab-card.component';
+import { AdminDropOutRequestForTeacherTabAndStudentTabGridComponent } from './components/admin-drop-out-request-for-teacher-tab-and-student-tab-grid/admin-drop-out-request-for-teacher-tab-and-student-tab-grid.component';
+import { AdminVacationRequestForStudentTabGridComponent } from './components/admin-vacation-request-for-student-tab-grid/admin-vacation-request-for-student-tab-grid.component';
+import { AdminVacationRequestForStudentTabCardComponent } from './components/admin-vacation-request-for-student-tab-card/admin-vacation-request-for-student-tab-card.component';
 import { JoinExamComponent } from './components/program-day-tasks/join-exam/join-exam.component';
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
@@ -129,13 +135,18 @@ import { JoinExamComponent } from './components/program-day-tasks/join-exam/join
     TeacherDropOutRequestTeacherCardComponent,
     StudentDropOutRequestAdminCardComponent,
     StudentDropOutRequestStudentCardComponent,
-        StudentDropOutGridComponent,
-        StudentProgramVacationCardStudentViewComponent,
-        TeacherDetailsViewComponent,
-        StudentDetailsViewComponent,
-        FormatTimePipe,
+    StudentDropOutGridComponent,
+    StudentProgramVacationCardStudentViewComponent,
+    TeacherDetailsViewComponent,
+    StudentDetailsViewComponent,
+    FormatTimePipe,
+    AdminJoinRequestForTeacherTabAndStudentTabGridComponent,
+    AdminJoinRequestForTeacherTabAndStudentTabCardComponent,
+    AdminDropOutRequestForTeacherTabAndStudentTabGridComponent,
+    AdminVacationRequestForStudentTabGridComponent,
+        AdminVacationRequestForStudentTabCardComponent,
         JoinExamComponent
-    ],
+  ],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,
@@ -162,7 +173,14 @@ import { JoinExamComponent } from './components/program-day-tasks/join-exam/join
     ProgramSubscriptionGridComponent
     , TeacherSystemSubscriptionGridComponent, StudentProgramVacationGridComponent, TeacherStudentProgramForSubscriptionComponent,
     StudentDropOutGridComponent,
-      TeacherDropOutRequestAdminGridComponent, TeacherDetailsViewComponent, StudentDetailsViewComponent, FormatTimePipe,JoinExamComponent
+    TeacherDropOutRequestAdminGridComponent, TeacherDetailsViewComponent, StudentDetailsViewComponent,
+    FormatTimePipe, AdminJoinRequestForTeacherTabAndStudentTabGridComponent,
+    AdminJoinRequestForTeacherTabAndStudentTabCardComponent,
+    AdminDropOutRequestForTeacherTabAndStudentTabGridComponent,
+      AdminVacationRequestForStudentTabGridComponent, AdminVacationRequestForStudentTabCardComponent,
+      JoinExamComponent
+
+
   ]
 })
 export class SharedModule { }

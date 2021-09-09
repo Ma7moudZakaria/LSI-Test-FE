@@ -78,8 +78,12 @@
     "TO": "إلى",
     "ADVANCED_SEARCH": " بحث متقدم ",
     "NEW_ORDERS": "الطلبات الجديده",
-    "QUESTION":"السؤال",
-    "NEXT":"التالى"
+    "ACTIVE": "نشط",
+    "QUESTION": "السؤال",
+    "NEXT": "التالى",
+    "ADD_TEACHER_PROGRAM":"إضافة برنامج للمعلم",
+    "BATCH_REQUIRED":"برنامج المعلم مطلوب",
+    "ADD_TEACHER_PROGRAM_SUCCESS":"تم الإضافة بنجاح"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
@@ -169,7 +173,16 @@
     "STUDENT_NUMBER": " عدد الطلاب",
     "TEACHER_NUMBER": " عدد المعلمين",
     "THE_EXAM": "الاختبتارات ",
-    "STAGE_EXAM": "إختبار مرحلى"
+    "STAGE_EXAM": "إختبار مرحلى",
+    "KICK_OFF": "طرد من البرنامج",
+    "FREE": "بدون مقابل",
+    "PLANNED_WORK_HOURS": "ساعات العمل المخططة",
+    "ACTUAL_WORKING_HOURS": "ساعات العمل الفعلية",
+    "number_of_apologies": "عدد مرات الاعتذار",
+    "NUMBER_OF_STUDENTS": "عدد الطلاب",
+    "HIS_STUDENTS": "طلابه",
+    "DEGREE": "الدرجة",
+    "DATE": "التاريخ"
   },
   "VIEW_PROGRAMS_BASIC_INFO": {
     "PROGRAM_DATE": "مدة البرنامج",
@@ -520,7 +533,7 @@
     "DASHBORD": "لوحة التحكم",
     "MYPROGRAMS": "برامجى",
     "SCIENTIFIC_ARTICLES": "المواد العلمية",
-    "VACATION_REQUEST": "المراسلات",
+    "VACATION_REQUEST": "الطلبات",
     "EXAM_RESULTS": "نتائج الامتحانات",
     "RESULTS": "الطلبات",
     "PRINT_CERTIFICATION": "طباعه الشهادات",
@@ -534,7 +547,9 @@
     "WORK_AGENDA": "اجندة العمل",
     "PROG_FOR_SUBSCRIPTION": "إشتراك",
     "VACATION": "الاجازات",
-    "CHAT":"محادثة"
+    "CHAT": "محادثة",
+    "STUDENT": "الطلاب",
+    "TEACHER": "المعلمين"
   },
   "VIEW_USER_PROFILE_PG": {
     "PERSONAL_PROFILE": "الملف الشخصي",
@@ -779,8 +794,12 @@
     "AVAILABLE_CHANGE_TIME_REQUESTS": "طلبات تغير الوقت المتاحه",
     "REJECT_TEACHER": "رفض المعلم",
     "FROM_PROGRAM": "من برنامج",
-    "REASON_REJECT": "سبب الرفض",
-    "NEW_REQUEST": "طلب انضمام جديد"
+    "REASON_REJECT": " ادخل سبب الرفض",
+    "WILL_REASON_REJECT": "سيتم رفض طلب انسحاب المعلم ",
+    "REQUEST_DATE": "تاريخ الطلب ",
+    "REJECT_REASON": "سبب الرفض",
+    "NEW_REQUEST": "طلب انضمام جديد",
+    "REJECT_TEXT": "سيتم رفض طلب المعلم"
   },
   "TEACHER_DROP_OUT": {
     "SUBSCRIBERS": "الطلبات",
@@ -815,6 +834,8 @@
     "REJECT": "رفض",
     "REJECTION_APPLICATION": "رفض الطلب",
     "TEACHER_REJECTED": "سيتم رفض طلب انسحاب المعلم ",
+    "TEACHER_JOIN_REJECTED": "سيتم رفض طلب إنضمام المعلم ",
+    "STUDENT_JOIN_REJECTED": "سيتم رفض طلب إنضمام المعلم ",
     "FROM_PROG": "من برنامج",
     "REJECTED_REASON": "سبب الرفض",
     "VALIDATIONDATE": "تاريخ البداية يجب ان يكون اقل من تاريخ النهاية ",
@@ -824,9 +845,10 @@
   "TEACHER_SYSTEM_SUBSCRIPTION": {
     "REQUEST_DATE": "تاريخ الطلب",
     "MEETING": "المقابلة",
+    "INTERVIEW_TIME": "وقت المقابلة",
     "REJECT": "رفض",
     "ACCEPT": "قبول",
-    "REJECT_REASON":"سبب الرفض"
+    "REJECT_REASON": "سبب الرفض"
   },
   "STUDENT_VACATION": {
     "NEW_VACATION_REQUESTS": "الطلبات الجديدة",
@@ -862,7 +884,7 @@
     "NO_TEACHERS": "لا يوجد مدرسين مشتركين",
     "NO_STUDENTS": "لا يوجد طلاب مشتركين",
     "NO_PROGRAMS": "لا يوجد برامج",
-    "REQUIRED" : "اسم الدفعه مطلوب"
+    "REQUIRED": "اسم الدفعه مطلوب"
   },
   "TEACHER_STUDENT_FOR_DETAILS": {
     "PROG_IDEA": "فكرة البرنامج",
@@ -886,10 +908,30 @@
     "AR_NAME_CATEGORY": " اسم القسم بالعربيه",
     "EN_NAME_CATEGORY": "اسم القسم بالانجليزيه"
   },
-  "GENERAL_DROP_OUT_REQUEST":{
-    "REQUEST_REASON":"سبب الطلب",
-    "NO_DATA":"لا يوجد",
-    "REJECT_REASON":"سبب الرفض"
+  "TEACHER_TAP": {
+    "TEACHER_NAME": "أسم المعلم",
+    "PROGRAM": "البرنامج",
+    "EMAIL": "البريد اللكتروني",
+    "SUBSCRIPTION_DATE": "تاريخ الاشتراك",
+    "BASIC_INFO": "البيانات الاساسيه",
+    "DROP_OUT": "طلبات الانسحاب",
+    "JOIN": "طلبات الانضمام",
+    "VACATION": "طلبات الاجازه"
+  },
+  "STUDENT_SUBSCRIPTION": {
+    "ACCEPT_EXAMP": "اختبار القبول",
+    "QUEST_NUM": "سؤال رقم",
+    "LENGTH": "المدة",
+    "ANSWER_FINISHED": " هل تم الانتهاء من الاجابة ؟",
+    "NEXT": "التالى",
+    "NO_EXAM": "لا يوجد برنامج"
+  },
+  "GENERAL_DROP_OUT_REQUEST": {
+    "REQUEST_REASON": "سبب الطلب",
+    "NO_DATA": "لا يوجد",
+    "REJECT_REASON": "سبب الرفض",
+    "STUDENT_REJECTED": "سيتم رفض طلب انسحاب الطالب ",
+    "REJECT_REASON_LENGHT": "السبب يجب أن يكون اقل من أو يساوى 256 حرف"
   },
   "JPIN_EXAM":{
 "ARE_YOU_FINISHED_EXAM":"هل تم الانتهاء من الاجابة ؟"

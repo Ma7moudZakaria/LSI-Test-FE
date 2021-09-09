@@ -9,6 +9,7 @@ import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { ProgramSubscriptionUsersEnum } from '../../../core/enums/program-subscription-users-enum.enum';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 
 @Component({
   selector: 'app-teacher-programs-for-subscription',
@@ -25,6 +26,7 @@ export class TeacherProgramsComponent implements OnInit {
 
   langEnum = LanguageEnum;
   teacherCard: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.teacher;
+  currentUser:IUser | undefined
 
   constructor(
     public translate: TranslateService, private alertify: AlertifyService,
@@ -32,7 +34,10 @@ export class TeacherProgramsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     this.filterRequest.sortField = 'progName';
+    this.filterRequest.usrId = this.currentUser?.id;
+
     this.getProgramsForTeachersSubscriptions()
 
   }

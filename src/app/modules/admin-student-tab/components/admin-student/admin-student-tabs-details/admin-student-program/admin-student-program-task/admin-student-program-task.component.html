@@ -1,0 +1,24 @@
+<div class="list-group list-group_program-list">
+  
+        <p class="bold mb-0 head">المهام</p>
+          <!-- <img src="../../../../assets/images/sc-problem/exporticon.svg" class="cursor-pointer"> -->
+  
+  
+   
+    <div class="internal_scroll_list_group admin-student-task">
+      <div class="list-group-item d-flex mb-4 justify-content-between align-items-center" *ngFor="let programTask  of programDayTasks; let i = index"
+         >
+              <span> {{ translate.currentLang == langEnum.en ?programTask.nameEn:programTask.nameAr}}</span>
+              <span class="mx-1">  {{programTask.grade}}/{{programTask.studgrade}}</span>
+              <!-- <span> <i class="fas fa-check-square"></i> </span>   -->
+              <span> 
+                <i *ngIf="programTask.isAnswered" class="fas fa-check-circle" style="color: green;"></i>
+                <i *ngIf="!programTask.isAnswered" class="fas fa-window-close" style="color: red;"></i>
+              </span>
+               
+        </div>
+    </div>
+    <!-- <div *ngIf="resMessage.message" class="alert alert-{{ resMessage.type }} my-4 py-2">
+      {{ resMessage.message }}
+    </div> -->
+  </div>

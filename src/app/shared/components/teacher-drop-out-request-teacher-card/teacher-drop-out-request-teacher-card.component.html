@@ -1,4 +1,4 @@
-<div class="card-request">
+<div class="card-request" *ngIf="!adminView">
   <div class="card_header ">
 
       <div class="col-6 d-flex align-items-center justify-content-between p-0 m-0">
@@ -17,7 +17,7 @@
       <p class="program__num  mb-2">{{ teacherDropOutRequestModel?.no}}</p>
       <div class="d-flex align-items-center justify-content-between " >
       <p class="program__num mb-2  mr-3 ml-3">{{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.enTechStatusName : teacherDropOutRequestModel?.arTechStatusName}}</p>
-        <span class="status mb-2" [ngClass]="{ 'accept' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Accept ,
+        <span class="status mb-0" [ngClass]="{ 'accept' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Accept ,
                                   'pending' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Pending ,
                                   'rejected' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Rejected,
                                   'cancel' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Canceled}">
@@ -26,12 +26,17 @@
     </div>
       <div class="mx-1">
 <!--      <p class="teacher__name  ">{{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.teacherNameEn : teacherDropOutRequestModel?.teacherNameAr}}</p>-->
-      <p class="program__name ellipsis mb-0"
+      <p class="program__name ellipsis  p-0 mb-0"
       title="{{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.enProgBatName : teacherDropOutRequestModel?.arProgBatName}}"
       > {{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.enProgBatName : teacherDropOutRequestModel?.arProgBatName}}</p>
-      <p class="program__desc"> {{ teacherDropOutRequestModel?.reason }} </p>
-      <p class="program__admin" *ngIf="teacherDropOutRequestModel.reasonReject != null" >{{'TEACHER_DROP_OUT.ADMIN_ANSWER' | translate}}</p>
-      <p class="program__answer "  *ngIf="teacherDropOutRequestModel.reasonReject != null">{{'TEACHER_DROP_OUT.REJECTED' | translate}}</p>
+      <!-- <p class="program__desc"> {{ teacherDropOutRequestModel?.reason }} </p> -->
+      <span>
+        {{'GENERAL_DROP_OUT_REQUEST.REQUEST_REASON' | translate}} :
+      </span>
+      <span class="program_user bold mb-0 "  *ngIf="teacherDropOutRequestModel.reason === null">{{'GENERAL_DROP_OUT_REQUEST.NO_DATA' | translate}} </span>
+      <p class="program_user bold mb-0 ">{{ teacherDropOutRequestModel.reason }}</p>
+      <p class="program__admin" *ngIf="teacherDropOutRequestModel.reasonReject != null && teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Rejected" >{{'TEACHER_DROP_OUT.ADMIN_ANSWER' | translate}}</p>
+      <p class="program__answer "  *ngIf="teacherDropOutRequestModel.reasonReject != null && teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Rejected">{{teacherDropOutRequestModel.reasonReject}}</p>
     </div>
     
 
@@ -42,5 +47,57 @@
     <button class="program__btn cancel-btn"  (click)="cancelRequestOfTeacherEvent()"
     >{{'TEACHER_DROP_OUT.CANCEL' | translate}}</button>
 </div>
+  </div>
+</div>
+<div class="card-request" *ngIf="adminView">
+  <div class="card_header ">
+
+      <div class="col-6 d-flex align-items-center justify-content-between p-0 m-0">
+          <span > {{'TEACHER_DROP_OUT.TIME' | translate}} </span>
+          <span>{{teacherDropOutRequestModel.requestDate  | date: 'dd/MM/yyyy'}}</span>
+      </div>
+<!--      <div class="col-4">-->
+<!--        <img src="assets/images/edit-white.svg" class="cursor-pointer program__edit" >-->
+<!--        <img src="assets/images/trash-white.svg" class="cursor-pointer ">-->
+<!--      </div>-->
+
+  </div>
+  <div class="card_body program">
+    <div class="d-flex align-items-center program__header justify-content-between " >
+
+      <p class="program__num  mb-2"></p>
+      <div class="d-flex align-items-center justify-content-between " >
+      <p class="program__num mb-0  mr-3 ml-3">{{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.enTechStatusName : teacherDropOutRequestModel?.arTechStatusName}}</p>
+        <span class="status mb-0" [ngClass]="{ 'accept' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Accept ,
+                                  'pending' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Pending ,
+                                  'rejected' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Rejected,
+                                  'cancel' : teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Canceled}">
+        </span>
+      </div>
+    </div>
+      <div class="mx-1">
+      <p class="program__name ellipsis mb-0 p-0 "
+      title="{{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.enProgBatName : teacherDropOutRequestModel?.arProgBatName}}"
+      > {{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.enProgBatName : teacherDropOutRequestModel?.arProgBatName}}</p>
+      <span>
+        {{'GENERAL_DROP_OUT_REQUEST.REQUEST_REASON' | translate}} :
+      </span>
+      <p class="program_user bold mb-0 "  *ngIf="teacherDropOutRequestModel.reason === null">{{'GENERAL_DROP_OUT_REQUEST.NO_DATA' | translate}} </p>
+      <p class="program_user bold mb-0 ">{{ teacherDropOutRequestModel.reason }}</p>
+      <!-- reason
+      <p class="program__admin" *ngIf="teacherDropOutRequestModel.reasonReject != null && teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Rejected" >{{'TEACHER_DROP_OUT.ADMIN_ANSWER' | translate}}</p>
+      <p class="program__answer "  *ngIf="teacherDropOutRequestModel.reasonReject != null && teacherDropOutRequestModel.drpStat == teacherDropOutRequestStatus.Rejected">{{teacherDropOutRequestModel.reasonReject}}</p>
+     -->
+
+      <span>{{'TEACHER_DROP_OUT.ADMIN_ANSWER' | translate}}
+      </span>
+      <p class="program_user bold mb-0 " *ngIf="!teacherDropOutRequestModel.reasonReject">{{'GENERAL_DROP_OUT_REQUEST.NO_DATA' | translate}} </p>
+      <p class="program_user bold mb-0 ">{{ teacherDropOutRequestModel.reasonReject }}</p>
+     
+    
+    </div>
+    
+
+
   </div>
 </div>

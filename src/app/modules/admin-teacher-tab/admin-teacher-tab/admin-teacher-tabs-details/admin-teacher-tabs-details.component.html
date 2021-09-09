@@ -1,0 +1,40 @@
+
+<div class="row group_header fix_margin w-100">
+  <div class="item_group" (click)="showTap = 'BASEINFO'"
+       [ngClass]="{ item_group_active: showTap == 'BASEINFO' }" >
+    {{'TEACHER_TAP.BASIC_INFO' | translate}}
+
+  </div>
+
+  <div class="item_group" (click)="showTap = 'PROGRAM'"
+       [ngClass]="{ item_group_active: showTap == 'PROGRAM' }">
+    {{'TEACHER_TAP.PROGRAM' | translate}}
+
+  </div>
+  <div class="item_group" (click)="showTap = 'DROP_OUT'"
+       [ngClass]="{ item_group_active: showTap == 'DROP_OUT' }" >
+    {{'TEACHER_TAP.DROP_OUT' | translate}}
+
+  </div>
+
+  <div class="item_group" (click)="showTap = 'JOIN'"
+       [ngClass]="{ item_group_active: showTap == 'JOIN' }">
+    {{'TEACHER_TAP.JOIN' | translate}}
+
+  </div>
+</div>
+<!-- {{selectedRoleId | json}} -->
+
+<div class="row fix_margin w-100" >
+  <div class="col-12 px-0 ">
+
+    <app-admin-teacher-basic-info [teacherIdOutput]="teacherIdOutput" *ngIf="showTap == 'BASEINFO'"></app-admin-teacher-basic-info>
+    <app-admin-teacher-program *ngIf="showTap == 'PROGRAM'" [teacherIdOutput]="teacherIdOutput"></app-admin-teacher-program>
+    <app-admin-teacher-drop-out *ngIf="showTap == 'DROP_OUT'" [teacherIdOutput]="teacherIdOutput"></app-admin-teacher-drop-out>
+    <app-admin-teacher-join-request *ngIf="showTap == 'JOIN'" [teacherIdOutput]="teacherIdOutput"></app-admin-teacher-join-request>
+
+
+
+
+  </div>
+</div>

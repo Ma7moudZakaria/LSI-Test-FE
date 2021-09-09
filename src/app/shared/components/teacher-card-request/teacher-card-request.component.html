@@ -5,7 +5,8 @@
     </section>
     
     <div>
-      <span> تاريخ الطلب</span>
+
+      <span>  {{'TEACHER_SUBSCRIBERS.REQUEST_DATE' | translate}}  </span>
       <span>&nbsp;</span>
       <span>&nbsp;</span>
       <span> {{teacherSubscripModel.requestDate | date: 'dd/MM/yyyy'}}</span> 
@@ -18,7 +19,7 @@
         <img *ngIf='!teacherSubscripModel.avatarLink'  (click)="showDetails(teacherSubscripModel?.usrId , teacherSubscripModel?.progName)" class="img_user cursor-pointer" src="../../../../assets/images/student/user-profile.svg">
         <img *ngIf='teacherSubscripModel.avatarLink'   (click)="showDetails(teacherSubscripModel?.usrId,teacherSubscripModel?.progName)" class="img_user cursor-pointer" src="{{teacherSubscripModel.avatarLink}}" >
       <div class="mx-1 container-width">
-        <p class="number_request mb-3">{{teacherSubscripModel.programStaNum}}</p>
+        <p class="number_request mb-3">{{teacherSubscripModel.no}}</p>
         <p class="name_user bold mb-2 ellipsis p-0" title="{{teacherSubscripModel.usrNameAr}}" (click)="showDetails(teacherSubscripModel?.usrId,teacherSubscripModel?.progName)">{{teacherSubscripModel.usrNameAr}}</p>
         <!-- <p class="program_user bold mb-0 "> {{teacherSubscripModel.progName}}</p> -->
         <p class="program_user bold mb-0 ellipsis p-0" 
@@ -33,7 +34,7 @@
       </div>
       <ng-container *ngIf="teacherSubscripModel.reasonReject">
         <p class="program_rejected  mb-0 pb-2"  *ngIf="typeEnum === tabTypeSelected.Rejected"> 
-          <span class="bold mx-1">سبب الرقض:</span> 
+          <span class="bold mx-1">{{'TEACHER_SUBSCRIBERS.REJECT_REASON' | translate}}:  </span> 
           <span>
             {{teacherSubscripModel.reasonReject}}
           </span>
@@ -42,8 +43,9 @@
     </div>
 
     <div class="body_footer" *ngIf="typeEnum === tabTypeSelected.Pending ">
-    <button class="btn cancel-btn" (click)='rejectTeacherProgramSubscriptionEvent()' [disabled]="teacherSubscripModel.checked">  {{ "GENERAL.REJECT" | translate }}  </button>
+    <button class="btn cancel-btn" (click)='acceptTeacherProgramSubscriptionEvent()' [disabled]="teacherSubscripModel.checked">
+      {{ "GENERAL.ACCEPT" | translate }} </button>
       <!-- <button class=" btn btn_replay" [attr.disabled]="showAddReplyArea || scientificProblem.repText ? true : null" (click)='showAddReplyAreaTog()'> {{'SCIENTIFIC_PROBLEM.REPLY_ANSWER' | translate}}</button> -->
-      <button  class=" btn save-btn" (click)='acceptTeacherProgramSubscriptionEvent()'>  {{ "GENERAL.ACCEPT" | translate }} </button>
+      <button  class=" btn save-btn" (click)='rejectTeacherProgramSubscriptionEvent()' >  {{ "GENERAL.REJECT" | translate }} </button>
     </div>
   </div>

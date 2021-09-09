@@ -6,16 +6,16 @@
 
       <div class="d-flex justify-content-between" >
         <div class="d-flex align-items-center justify-content-start">
-          <img  *ngIf="!teacherProfileDetails?.proPic" src="../../../../assets/images/Profile.svg" class="user__image">
-          <img *ngIf="teacherProfileDetails?.proPic" src="{{teacherProfileDetails?.proPic}}" class="user__image">
+          <img  *ngIf="!studentProfileDetails?.proPic" src="../../../../assets/images/Profile.svg" class="user__image">
+          <img *ngIf="studentProfileDetails?.proPic" src="{{studentProfileDetails?.proPic}}" class="user__image">
           <div class="mr-3 ml-3">
             <h3 class="user__name">
               {{
               translate.currentLang === langEnum.ar ?
 
-                teacherProfileDetails?.fnameAr + " " + teacherProfileDetails?.mnameAr + " " + teacherProfileDetails?.fanameAr
+                studentProfileDetails?.fnameAr + " " + studentProfileDetails?.mnameAr + " " + studentProfileDetails?.fanameAr
 
-                :teacherProfileDetails?.fnameEn + " " + teacherProfileDetails?.mnameEn + " " + teacherProfileDetails?.faNameEn
+                :studentProfileDetails?.fnameEn + " " + studentProfileDetails?.mnameEn + " " + studentProfileDetails?.faNameEn
               }}
             </h3>
             <ngb-rating [(rate)]="starsSelected" [max]="5" [readonly]="true">
@@ -23,7 +23,7 @@
                 <span class="star" [class.filled]="fill === 100">&#9733;</span>
               </ng-template>
             </ngb-rating>
-            <h4 class="user__date">{{teacherProfileDetails.birthdate | date: 'dd/MM/yyyy'}}</h4>
+            <h4 class="user__date">{{studentProfileDetails.birthdate | date: 'dd/MM/yyyy'}}</h4>
             <div class="row mt-3">
               <div class="col-12">
                 <label class="title">
@@ -50,11 +50,32 @@
             </div>
           </div>
         </div>
-        <div >
-          <h6 class="user__back" (click)="hideUserDetailsView()">
+
+        <div>
+          <div *ngIf="adminView" class="admin__view">
+            <!-- <div class="d-flex align-items-center justify-content-between">
+              <div class="col-.5  chicx_box">
+                <label class="switch">
+                  <input type="checkbox" (change)="onCheckboxChange()" [(ngModel)]='toggel'>
+                  <span class="slider round"></span>
+                </label>
+
+              </div>
+              <div class="d-flex align-items-center justify-content-between " >
+              <span class="status active"></span>
+              <h6 class="status-text">نشط</h6>
+            </div>
+            </div> -->
+          </div>
+          <h6 *ngIf="!adminView" class="user__back" (click)="hideUserDetailsView()">
             {{'UPDATE_USER_PG.BACK' | translate}}
             <i class="fas fa-arrow-left " [ngClass]="translate.currentLang === langEnum.en ?'fa-flip-horizontal': ''"></i></h6>
         </div>
+        <!-- <div >
+          <h6 class="user__back" (click)="hideUserDetailsView()">
+            {{'UPDATE_USER_PG.BACK' | translate}}
+            <i class="fas fa-arrow-left " [ngClass]="translate.currentLang === langEnum.en ?'fa-flip-horizontal': ''"></i></h6>
+        </div> -->
 
       </div>
 
@@ -71,7 +92,7 @@
         </label>
         <label>  </label>
         <label class="title_data">
-          {{teacherProfileDetails.usrEmail}}
+          {{studentProfileDetails.usrEmail}}
         </label>
       </div>
 
@@ -82,7 +103,7 @@
           <span>  &nbsp; </span>
         </label>
         <label class="title_data" >
-          {{teacherProfileDetails.mobile}}
+          {{studentProfileDetails.mobile}}
         </label>
       </div>
       <div class="col-6 mb-3  col-md-6">
@@ -95,7 +116,7 @@
         </label>
 
         <label class="title_data">
-          {{  translate.currentLang === langEnum.ar ? teacherProfileDetails.countryAr :teacherProfileDetails.country}}
+          {{  translate.currentLang === langEnum.ar ? studentProfileDetails.arbNatName :studentProfileDetails.engNatName}}
         </label>
       </div>
       <div class="col-6 mb-3  col-md-6">
@@ -106,7 +127,7 @@
           <span>  &nbsp; </span>
         </label>
         <label class="title_data">
-          {{  translate.currentLang === langEnum.ar ? teacherProfileDetails.cityAr :teacherProfileDetails.city}}
+          {{  translate.currentLang === langEnum.ar ? studentProfileDetails.arbCountryName :studentProfileDetails.engCountryName}}
         </label>
       </div>
       <div class="col-6 mb-3  col-md-6">
@@ -117,7 +138,7 @@
           <span>  &nbsp; </span>
         </label>
         <label class="title_data">
-          {{  translate.currentLang === langEnum.ar ? teacherProfileDetails.cityAr :teacherProfileDetails.city}}
+          {{  translate.currentLang === langEnum.ar ? studentProfileDetails.arbCityName :studentProfileDetails.engCityName}}
 
         </label>
       </div>
@@ -130,7 +151,7 @@
 
         </label>
         <label class="title_data">
-          {{teacherProfileDetails.address}}
+          {{studentProfileDetails.address}}
         </label>
       </div>
 
@@ -139,134 +160,86 @@
 
     <div class="row pl-4 pr-4">
       <div class="col-12">
-        <h3 class="head_conditions">{{'UPDATE_USER_PG.EDU' | translate}} </h3>
-        <div class="col-md-12 ">
-          <div class="row">
-            <div class="col-4 mt-3">
-              <label class="title">
+        <h3 class="head_conditions pb-3">{{'UPDATE_USER_PG.EDU' | translate}} </h3>
+        <!--sdfsfdsfsdfsdfsdfwerwerwr-->
+        <div class="col-12"></div>
 
-                {{'UPDATE_USER_PG.EDU_LEVEL' | translate}}
-                <span>  &nbsp;  : </span>
-                <span>  &nbsp; </span>
-
-              </label>
-              <label class="title_data">
-                {{  translate.currentLang === langEnum.ar ? teacherProfileDetails.educationLevelAr :teacherProfileDetails.educationLevelEn}}
-
-              </label>
-            </div>
-            <div class="col-4 mt-3">
-              <label class="title">
-
-                {{'VIEW_USER_PG.EDU_LEVEL' | translate}}
-                <span>  &nbsp;  : </span>
-                <span>  &nbsp; </span>
-
-              </label>
-              <label class="title_data">
-                {{  translate.currentLang === langEnum.ar ? teacherProfileDetails.qualifiAr :teacherProfileDetails.qualifiEn}}
-
-              </label>
-            </div>
-            <div class="col-4 mt-3">
-              <label class="title">
-                {{'VIEW_USER_PG.OCCUPATION' | translate}}
-                <span>  &nbsp;  : </span>
-                <span>  &nbsp; </span>
-
-              </label>
-              <label class="title_data">
-                {{  translate.currentLang === langEnum.ar ? teacherProfileDetails.speciaAr :teacherProfileDetails.speciaEn}}
-
-              </label>
-            </div>
-            <div class="col-8 mt-3">
-              <div class="row">
-                <label class="title col-3">
-                  {{'UPDATE_USER_PG.AMOUNT_QURAN_REQUIRED' | translate}}
-                  <span>  &nbsp;  : </span>
-                  <span>  &nbsp; </span>
-
-                </label>
-                <div class="col-9">
-                  <div class="row">
-                    <div class="col-6" *ngFor="let rewayat of teacherProfileDetails.rewayats">
-                      <div  class="badges">
-                      <span  class="badge badge-info p-2 ng-star-inserted">
-                        {{  translate.currentLang === langEnum.ar ? rewayat.nameAr :rewayat.nameEn}}
-
-                      </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-8 mt-3">
-              <div class="row">
-                <label class="title col-3">
-                  {{'UPDATE_TEACHER_PG.LEAVE_RECITATION_VIEW' | translate}}
-                  <span>  &nbsp;  : </span>
-                  <span>  &nbsp; </span>
-
-                </label>
-                <div class="col-9">
-                  <div class="row">
-                    <div class="col-6" *ngFor="let ejaza of teacherProfileDetails.ejazaAttachments">
-                      <div  class="badges">
-                      <span  class="badge badge-info p-2 ng-star-inserted">
-                       {{   ejaza.contentType }}
-
-                      </span>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-8 mt-3">
-              <div class="row">
-                <label class="title col-3">
-                  {{'UPDATE_TEACHER_PG.LANGUAGES' | translate}}
-                  <span>  &nbsp;  : </span>
-                  <span>  &nbsp; </span>
-
-                </label>
-                <div class="col-9">
-                  <div class="row">
-                    <div class="col-6" *ngFor="let lang of teacherProfileDetails.languages">
-                      <div  class="badges">
-                      <span  class="badge badge-info p-2 ng-star-inserted">
-                        {{  translate.currentLang === langEnum.ar ? lang.nameAr :lang.nameEn}}
-
-                      </span>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="d-flex justify-content-end" >
-            <div class="row align-items-center">
-              <div class="col-3">
-                <button class="save-btn">رفض</button>
-              </div>
-              <div class="col-3">
-                <button class="cancel-btn">قبول</button>
-              </div>
-              <div class="col-3">
-                <button class="cancel-btn">محادثة</button>
-              </div>
-              <div class="col-3">
-                <button class="cancel-btn">مقابلة</button>
-              </div>
-            </div>
-          </div>
+        <div class="col-4  mb-3">
+            <span class="label_info"> {{ 'VIEW_USER_PG.EDU_LEVEL' | translate }} </span>
+            <span>  &nbsp; </span>
+            <span>  &nbsp; </span>
+            <span class="data_view">
+                {{  translate.currentLang === langEnum.en ? studentProfileDetails?.engEduLevelName : studentProfileDetails?.arbEduLevelName }}
+            </span>
         </div>
+
+        <div class="col-4  mb-3">
+            <span class="label_info">  {{ 'VIEW_USER_PG.OCCUPATION' | translate }}
+            </span>
+            <span>  &nbsp; </span>
+            <span>  &nbsp; </span>
+            <span class="data_view">
+                {{ studentProfileDetails?.occupation }}
+            </span>
+        </div>
+         <div class="col-4  mb-3">
+            <span class="label_info"> {{ 'VIEW_USER_PG.AMOUNT_QURAN' | translate }}</span>
+            <span>  &nbsp; </span>
+            <span>  &nbsp; </span>
+            <span class="data_view">
+                {{ studentProfileDetails?.quraanMemorizeAmount }}
+            </span>
+        </div>
+
+        <div class="col-3  ">
+            <span class="label_info"> {{ 'VIEW_USER_PG.MASHAYIKH' | translate }}  </span>
+            <span>  &nbsp; </span>
+            <span>  &nbsp; </span>
+            </div>
+            <div class="col-9">
+                <div class="badges mt-3">
+                   <div class="badge badge-info p-2 " *ngFor="let item of studentProfileDetails?.usrSheikhs">
+                    <div class="d-flex justify-content-between mt-0" >
+                        <p class="ellipsis mb-0" matTooltip="{{translate.currentLang == langEnum.en? item.nameEn : item.nameAr}}"> {{translate.currentLang == langEnum.en? item.nameEn : item.nameAr}} </p>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+
+          <div class="col-3  ">
+            <span class="label_info"> {{ 'VIEW_USER_PG.SCIENTIFIC_ARCHIVES' | translate }}   </span>
+            <span>  &nbsp; </span>
+            <span>  &nbsp; </span>
+            </div>
+            <div class="col-9">
+                <div class="badges mt-3">
+                   <div class="badge badge-info p-2 " *ngFor="let item of studentProfileDetails?.usrScientificArchives">
+                    <div class="d-flex justify-content-between mt-0" >
+                        <p class="ellipsis mb-0" matTooltip="{{translate.currentLang == langEnum.en? item.nameEn : item.nameAr}}"> {{translate.currentLang == langEnum.en? item.nameEn : item.nameAr}} </p>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+          <div class="col-3  ">
+            <span class="label_info"> {{ 'VIEW_USER_PG.TRAINING_COURSES' | translate }} </span>
+            <span>  &nbsp; </span>
+            <span>  &nbsp; </span>
+            </div>
+
+            <div class="col-9">
+                <div class="badges mt-3">
+                   <div class="badge badge-info p-2 " *ngFor="let item of studentProfileDetails?.usrCourses">
+                    <div class="d-flex justify-content-between mt-0" >
+                        <p class="ellipsis mb-0" matTooltip="{{translate.currentLang == langEnum.en? item.nameEn : item.nameAr}}"> {{translate.currentLang == langEnum.en? item.nameEn : item.nameAr}} </p>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+
+
       </div>
     </div>
   </div>

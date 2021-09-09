@@ -45,6 +45,9 @@
                     <div *ngIf="f.dropOutReason.errors.required">
                         {{ "GENERAL.REQUIRED" | translate }}
                     </div>
+                    <div *ngIf="f.dropOutReason.errors?.maxlength">
+                        {{ 'GENERAL_DROP_OUT_REQUEST.REJECT_REASON_LENGHT' | translate }}
+                    </div>
                 </div>
             </div>
 
@@ -65,8 +68,7 @@
                 </button>
             </div>
         </section>
-        
-
+       
 
   
    

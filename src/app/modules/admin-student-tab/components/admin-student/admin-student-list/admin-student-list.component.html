@@ -1,0 +1,126 @@
+<div class="list-group list-group_program-list">
+    <!-- <div class="d-flex mb-4 justify-content-between align-items-center">
+      <p class="bold mb-0">{{'SIDENAVBAR.STUDENT' | translate}}</p>
+        <img src="../../../../assets/images/sc-problem/exporticon.svg" class="cursor-pointer">
+    </div> -->
+  
+    <app-search-input (searchTerm)=searchByText($event)></app-search-input>
+  
+    <!-- <a class="advanced_search" (click)="ToggelAdvancSearch()">
+      {{'PROGRAMS_LIST.ADVANCED_SEARCH' | translate}}
+  
+    </a> -->
+  
+    <!-- IN advancedSearch -->
+    <ng-container *ngIf="advancedSearch">
+      <div class="internal_scroll_list_group">
+        <div  class="form-group advancedSearchForm">
+  
+          <div class="form-group">
+            <label  class="label">
+              {{'TEACHER_TAP.TEACHER_NAME' | translate}}
+  
+  
+            </label>
+            <input type="text" class="form-control w-100" >
+  
+          </div>
+          <div class="form-group">
+            <label  class="label">
+              {{'TEACHER_TAP.PROGRAM' | translate}}
+  
+  
+            </label>
+            <input type="text" class="form-control w-100" >
+  
+          </div>
+          <div class="form-group">
+            <label  class="label">
+              {{'TEACHER_TAP.EMAIL' | translate}}
+  
+            </label>
+            <input type="email" class="form-control w-100" >
+  
+          </div>
+          <div class="form-group">
+            <label  class="label">
+              {{'TEACHER_TAP.SUBSCRIPTION_DATE' | translate}}
+  
+            </label>
+  
+            <div class="form-group ">
+  
+              <div class="col-12 p-0 admin_user_paciker">
+                {{datafromBinding}}
+                <app-milady-hijri-calendar  [editcalenderType]="calenderType" (sendDate)="SendDatafrom($event)"
+                                            (keypress)="$event.preventDefault()"
+                                            [hijri]="hijri" [milady]="!milady"  [maxGreg]="maxGregDate"
+                >
+                </app-milady-hijri-calendar>
+  
+              </div>
+              <div class="col-12 p-0 admin_user_paciker">
+                {{dataToBinding}}
+                <app-milady-hijri-calendar  [editcalenderType]="calenderType" (sendDate)="SendDataTo($event)"
+                                            (keypress)="$event.preventDefault()"
+                                            [hijri]="hijri" [milady]="!milady"  [maxGreg]="maxGregDate" >
+                </app-milady-hijri-calendar>
+              </div>
+  
+            </div>
+  
+          </div>
+  
+  
+          <div class="d-flex">
+            <button class="cancel-btn " (click)="submitSearch()">
+              {{'GENERAL.SEARCH' | translate}}
+            </button>
+            <button class="btn_replay " (click)="resetSearch()" >
+              RE
+            </button>
+          </div>
+  
+  
+        </div>
+      </div>
+    </ng-container>
+    <!-- IN CARDS  -->
+  
+    <ng-container *ngIf="!advancedSearch">
+    
+          <div class="internal_scroll_list_group" *ngIf='studentList && studentList.length > 0'>
+         
+            <a class="list-group-item  d-flex user" *ngFor="let student  of studentList; let i = index"
+            [class.active]="selectedIndex === i"
+            (click)="loadUserDetails(student?.usrId);selectedIndex=i" >
+   
+           <img src="../../../../../assets/images/Profile.svg" class="user__image" *ngIf="!student.avr">
+           <img [src]="student.avr" class="user__image" *ngIf="student.avr">
+           <p class="user__name ellipsis px-1" 
+           title="{{ translate.currentLang == langEnum.en ? student.studNameEn && checkNameSpace(student.studNameEn) ? student.studNameEn : student.studNameAr : 
+            student.studNameAr && checkNameSpace(student.studNameAr)? student.studNameAr : student.studNameEn}}"
+           >
+            {{ translate.currentLang == langEnum.en ? student.studNameEn && checkNameSpace(student.studNameEn) ? student.studNameEn : student.studNameAr : 
+              student.studNameAr && checkNameSpace(student.studNameAr)? student.studNameAr : student.studNameEn }}
+           </p>
+   
+           <ngb-rating [(rate)]="student?.rte || starsSelected" [max]="5" [readonly]="true">
+             <ng-template let-fill="fill" let-index="index">
+               <span class="star" [class.filled]="fill === 100">&#9733;</span>
+             </ng-template>
+           </ngb-rating>
+         </a>
+
+        </div>
+        <div *ngIf='!studentList || studentList.length === 0'>
+          <div *ngIf="resMessage.message" class="alert alert-{{ resMessage.type }} my-4 py-2">
+            {{ resMessage.message }}
+          </div>
+        </div>
+        
+    </ng-container>
+  
+
+  </div>
+  

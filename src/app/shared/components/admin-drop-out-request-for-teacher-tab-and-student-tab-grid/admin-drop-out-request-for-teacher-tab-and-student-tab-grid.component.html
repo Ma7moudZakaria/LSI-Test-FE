@@ -1,0 +1,99 @@
+<div class="row  scientific-problem-grid"  >
+<div class="col-9 d-flex justify-content-start"   *ngIf='userMode === userRoleMode.student'>
+  <ngb-pagination 
+  [collectionSize]="totalCount"
+  [(page)]="studentDropOutRequestFilterRequestStudentModel.page" 
+  [pageSize]="studentDropOutRequestFilterRequestStudentModel.take"
+  [rotate]="true"
+  [boundaryLinks]="true" 
+  (pageChange)="onStudentPageChange()">
+  </ngb-pagination>
+
+<button  [ngClass]="{'asend_desend_btn': studentDropOutRequestFilterRequestStudentModel.sortField != 'studentNameAr' && studentDropOutRequestFilterRequestStudentModel.sortField != 'StudentNameEn', 'default_btn' : this.studentDropOutRequestFilterRequestStudentModel.sortField != 'requestdate'}"
+(click)='sortStudentRequestDate()'> 
+{{'User_Requests.SORT_DATE' | translate}}
+
+<span *ngIf='this.studentDropOutRequestFilterRequestStudentModel.sortField != "requestdate"'>
+    <img  class="asend_btn" src="../../../../assets/images/sc-problem/Group 18449.svg">
+</span>
+<span *ngIf='sortStudentRequestDateOrderType() == "asend"'>
+    <img  class="asend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+</span> 
+<span *ngIf='sortStudentRequestDateOrderType() == "desend"'>
+    <img  class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+</span>
+</button>
+</div> 
+
+<div class="col-3 pl-4 text-right align-self-center"   *ngIf='userMode === userRoleMode.student'>
+ 
+  <a class=" ml-1 mr-1" >
+      <img  class="exportIcon" (click)='exportStudentCSV()' 
+      src="../../../../assets/images/sc-problem/exporticon.svg">
+  </a>
+</div>
+
+</div>
+
+<div class="row  scientific-problem-grid"   *ngIf='userMode === userRoleMode.teacher '>
+  <div class="col-9 d-flex justify-content-start">
+    <ngb-pagination 
+    [collectionSize]="totalCount"
+    [(page)]="teacherDropOutRequestFilterRequestModel.page" 
+    [pageSize]="teacherDropOutRequestFilterRequestModel.take"
+    [rotate]="true"
+    [boundaryLinks]="true" 
+    (pageChange)="onTeacherPageChange()">
+    </ngb-pagination>
+
+   
+<button  [ngClass]="{'asend_desend_btn': teacherDropOutRequestFilterRequestModel.sortField != 'batchNameAr' && teacherDropOutRequestFilterRequestModel.sortField != 'BatchNameEn', 'default_btn' : this.teacherDropOutRequestFilterRequestModel.sortField != 'requestdate'}"
+(click)='sortTeacherRequestDate()'*ngIf='userMode === userRoleMode.teacher '> 
+ {{'User_Requests.SORT_DATE' | translate}}
+ 
+    <span *ngIf='this.teacherDropOutRequestFilterRequestModel.sortField != "requestdate"'>
+        <img  class="asend_btn" src="../../../../assets/images/sc-problem/Group 18449.svg">
+    </span>
+    <span *ngIf='sortTeacherRequestDateOrderType() == "asend"'>
+        <img  class="asend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+    </span> 
+    <span *ngIf='sortTeacherRequestDateOrderType() == "desend"'>
+        <img  class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+    </span>
+ </button>
+  </div> 
+  <div class="col-3 pl-4 text-right align-self-center">
+ 
+    <a class=" ml-1 mr-1" >
+        <img   (click)='exportTeacherViewDropOutRequestCSV()' 
+        src="../../../../assets/images/sc-problem/exporticon.svg">
+    </a>
+  </div>
+  
+</div>
+
+<mat-grid-list cols="{{numberPerRow}}" rowHeight="3:3"   >
+  <ng-container  *ngIf='userMode === userRoleMode.student '>
+      <mat-grid-tile *ngFor='let item of studentDropOutRequestStudentItems' >
+       <app-student-drop-out-request-student-card class="card" 
+       [adminView]='true'
+       [studentDropOutRequestFilterRequestStudentModel]='item'>
+      </app-student-drop-out-request-student-card>
+      </mat-grid-tile>
+  </ng-container>
+ 
+
+</mat-grid-list>
+
+
+
+<mat-grid-list  cols="{{numberPerRow}}" rowHeight="3:3"  *ngIf='userMode === userRoleMode.teacher' >
+  <ng-container >
+      <mat-grid-tile *ngFor='let item of teacherDropOutRequestTeacherViewItems' >
+       <app-teacher-drop-out-request-teacher-card class="card" 
+       [teacherDropOutRequestModel]='item'
+       [adminView]='true'
+       ></app-teacher-drop-out-request-teacher-card>
+      </mat-grid-tile>
+  </ng-container>
+</mat-grid-list>

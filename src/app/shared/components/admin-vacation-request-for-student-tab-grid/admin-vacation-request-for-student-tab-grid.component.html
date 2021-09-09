@@ -1,0 +1,73 @@
+
+  <!--  -------Student Card Admin View---------->
+  
+  <mat-grid-list cols="{{numberPerRow}}" rowHeight="3:3">
+ 
+    <!-----------------Student---------------------------->
+
+<div class="row scientific-problem-grid" >
+  <div class="col-9 d-flex justify-content-start">
+    <ngb-pagination
+      [collectionSize]="totalCount"
+      [(page)]="studentProgramVacationFilterRequestModel.page"
+      [pageSize]="studentProgramVacationFilterRequestModel.take"
+      [rotate]="true" [boundaryLinks]="true"
+      (pageChange)="onStudentPageChange()">
+    </ngb-pagination>
+
+    <!-- <button  [ngClass]="{
+          'default_btn': studentProgramVacationFilterRequestModel.sortField != 'programName' ,
+           'asend_desend_btn' : this.studentProgramVacationFilterRequestModel.sortField != 'requestdate' }"
+             (click)='sortByProgramName()'>
+      {{'User_Requests.SORT_NAME' | translate}}
+      <span *ngIf='this.studentProgramVacationFilterRequestModel.sortField != "programName" '>
+                  <img  class="asend_btn" src="../../../../assets/images/sc-problem/Group 18449.svg">
+          </span>
+      <span *ngIf='sortStudentByNameOrderType() == "asend"'>
+              <img  class="asend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+          </span>
+      <span *ngIf='sortStudentByNameOrderType() == "desend"'>
+              <img  class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+          </span>
+    </button> -->
+    <button  [ngClass]="{'asend_desend_btn': studentProgramVacationFilterRequestModel.sortField != 'userNameAr' && studentProgramVacationFilterRequestModel.sortField != 'UserNameEn', 'default_btn' : this.studentProgramVacationFilterRequestModel.sortField != 'requestdate'}"
+             (click)='sortByStudentRequestDate()'>
+      {{'User_Requests.SORT_DATE' | translate}}
+
+      <span *ngIf='this.studentProgramVacationFilterRequestModel.sortField != "requestdate"'>
+              <img  class="asend_btn" src="../../../../assets/images/sc-problem/Group 18449.svg">
+          </span>
+      <span *ngIf='sortByStudentRequestDateOrderType() == "asend"'>
+              <img  class="asend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+          </span>
+      <span *ngIf='sortByStudentRequestDateOrderType() == "desend"'>
+              <img  class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+          </span>
+    </button>
+  </div>
+
+  <div class="col-3 pl-4 text-right align-self-center">
+   
+    <a class=" ml-1 mr-1">
+      <img   (click)='exportStudentCSV()'
+            src="../../../../assets/images/sc-problem/exporticon.svg">
+    </a>
+  </div>
+</div>
+
+<!--  -------Student Card Admin View---------->
+
+<mat-grid-list cols="{{numberPerRow}}" rowHeight="3:3">
+ 
+
+<!--  -------Student Card Student View---------->
+  <ng-container >
+    <mat-grid-tile *ngFor='let item of studentVacationItems' >
+      <app-admin-vacation-request-for-student-tab-card class="card"
+       [studentProgramVacationStudentViewModel]='item'
+                                            
+      >
+    </app-admin-vacation-request-for-student-tab-card>
+    </mat-grid-tile>
+  </ng-container>
+</mat-grid-list>

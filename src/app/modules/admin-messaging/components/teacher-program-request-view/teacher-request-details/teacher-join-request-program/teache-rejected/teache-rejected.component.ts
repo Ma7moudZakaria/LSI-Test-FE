@@ -16,9 +16,9 @@ import { TeacherProgramSubscriptionServicesService } from 'src/app/core/services
 export class TeacheRejectedComponent implements OnInit {
 
   @Output() closeRejectedRequest = new EventEmitter<ITeacherProgramSubscriptionModel>();
-  @Input() itemTeacherReq: ITeacherProgramSubscriptionModel= {totalRows:0}
+  @Input() itemTeacherReq: ITeacherProgramSubscriptionModel = { totalRows: 0 }
+  resultMessage: BaseMessageModel = {};
 
-  showError=false;
   resMessage: BaseMessageModel = {};
   constructor(
     private teatchSubRequestService: TeacherProgramSubscriptionServicesService,
@@ -33,19 +33,11 @@ export class TeacheRejectedComponent implements OnInit {
   }
 
   saveRejectRequest() {
-    // if (!this.itemTeacherReq.reasonReject){
-    //   this.resMessage = {
-    //     message:this.translate.instant('GENERAL.REQUIRED'),
-    //     type:BaseConstantModel.DANGER_TYPE
-    //   }
-    //   //this. showError=true;
-    // }
-
     this.resMessage={};
     let model: IRejectTeacherProgramSubscriptionModel = {
       subscriptionId: this.itemTeacherReq.id,
       reasonReject: this.itemTeacherReq.reasonReject
-    }
+    };
     if (model.reasonReject) {
       this.teatchSubRequestService.rejectTeachersProgramSubscription(model).subscribe(res => {
 
@@ -60,12 +52,13 @@ export class TeacheRejectedComponent implements OnInit {
       }, error => {
       })
     }
-    else{
-      this.resMessage = {
-            message:this.translate.instant('GENERAL.REQUIRED'),
-            type:BaseConstantModel.DANGER_TYPE
-          }
+    else {
+      this.resultMessage = {
+        message: this.translate.instant('TEACHER_SUBSCRIBERS.REASON_REJECT'),
+        type: BaseConstantModel.DANGER_TYPE
+      }
     }
+
   }
 
 
