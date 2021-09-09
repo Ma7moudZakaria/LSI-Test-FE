@@ -68,8 +68,7 @@
       <div *ngIf='showTap == statusEnum.Rejected'>
         <app-teacher-appointment-requests-grid *ngIf='teacherAppointmentRequestsList.length > 0'
                                                [teacherAppointmentRequestsItems]='teacherAppointmentRequestsList'
-                                               (teacherAppointmentRequest)='acceptTeacherAppointmentRequest($event)'
-                                               (acceptAllTeacherAppointmentRequestsChecked)='acceptAllTeacherAppointmentRequestsChecked()'
+                                               (teacherAppointmentRequest)='rejectTeacherAppointmentRequestMethod($event)'
                                                [numberPerRow]='numberItemsPerRow'
                                                [teacherAppointmentRequestsEnum]='statusEnum.Rejected'
                                                [totalCount]='totalCount'

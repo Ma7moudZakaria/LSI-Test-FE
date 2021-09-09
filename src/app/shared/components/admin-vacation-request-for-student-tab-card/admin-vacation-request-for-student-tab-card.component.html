@@ -11,10 +11,8 @@
   
     <div class="card_body program">
       <div class="d-flex align-items-center program__header justify-content-between">
-        <!-- <p class="program__name mb-2">{{studentProgramVacationStudentViewModel.progName}}</p> -->
-        <p class="program__name mb-2">{{translate.currentLang === langEnum.en ? studentProgramVacationStudentViewModel.enProgBatchName: studentProgramVacationStudentViewModel.arProgBatchName}}</p>
+        <p class="program__name mb-2"></p>
         <div class="d-flex align-items-center justify-content-between">
-  <!--        <p class="program__num mb-2  mr-3 ml-3" >{{translate.currentLang === langEnum.ar ?studentProgramVacationStudentViewModel.enProgBatchName : studentProgramVacationStudentViewModel.arProgBatchName }}</p>-->
           <div class="status mb-2" [ngClass]="{ 'accept' : studentProgramVacationStudentViewModel.statusEnum == studentProgramVacationStatus.Accept ,
           'pending' : studentProgramVacationStudentViewModel.statusEnum == studentProgramVacationStatus.Pending , 'rejected' : studentProgramVacationStudentViewModel.statusEnum == studentProgramVacationStatus.Rejected
           }">
@@ -23,7 +21,9 @@
   
         </div>
       </div>
-      <div class="mx-1">
+      <p class="program__name mb-2 ellipsis">{{translate.currentLang === langEnum.en ? studentProgramVacationStudentViewModel.enProgBatchName: studentProgramVacationStudentViewModel.arProgBatchName}}</p>
+
+      <div class="mx-1 ">
         <p class="program__desc"></p>
   
         <div class="row align-items-center justify-content-between">
@@ -44,6 +44,16 @@
         <p class="program__admin" *ngIf="studentProgramVacationStudentViewModel.statusEnum==studentProgramVacationStatus.Rejected"> {{'STUDENT_VACATION.ADMIN_ANSWER' | translate}}</p>
         <p class="program__answer "  *ngIf="studentProgramVacationStudentViewModel.statusEnum==studentProgramVacationStatus.Rejected">{{studentProgramVacationStudentViewModel.rejReason}}</p>
   
+        
+        <p class="program_user bold mb-0 mt-2" >
+       
+          {{'STUDENT_VACATION.ADMIN_ANSWER' | translate}} :
+        
+        </p>
+        <p class="program__admin" *ngIf="!studentProgramVacationStudentViewModel.rejReason"> {{'GENERAL_DROP_OUT_REQUEST.NO_DATA' | translate}}</p>
+        <p class="program__answer "  *ngIf="studentProgramVacationStudentViewModel.rejReason">{{studentProgramVacationStudentViewModel.rejReason}}</p>
+  
+
       </div>
     </div>
 <!--   

@@ -22,3 +22,23 @@ export interface ITeacherAppointmentModel {
   oldFromTime?:string;
   oldToTime?:string;
 }
+
+    export interface ITeachersAppointmentRequestsModel
+    {
+         reqId?:string;
+         usrId?:string;
+         usrNameAr?:string;
+         usrNameEn?:string;
+         checked?:boolean;
+         reqDate?:string
+         rejReason?:string | undefined
+         availableTimeRequests?: IAvailableTimeRequests | undefined;
+         teacherAvailableTimes?: IAvailableTimeRequests | undefined;
+    }
+    export interface IAvailableTimeRequests
+    {
+         from?:string;
+         to?:string;
+         dayNameAr?:string;
+         dayNameEn?:string;
+    }

@@ -16,13 +16,13 @@ export class StudentDropOutRequestStudentCardComponent implements OnInit {
   @Output() acceptStudentDropOutStudentRequest = new EventEmitter<IStudentDropOutRequestsFilterStudentViewResponseModel>();
   @Output() cancelRequestOfStudent = new EventEmitter<IStudentDropOutRequestsFilterResponseModel>();
 
-  @Input() studentDropOutRequestFilterRequestStudentModel: IStudentDropOutRequestsFilterStudentViewResponseModel = { totalRows : 0};
+  @Input() studentDropOutRequestFilterRequestStudentModel: IStudentDropOutRequestsFilterStudentViewResponseModel = { totalRows: 0 };
   @Input() typeEnum: StudentDropOutRequestStatusEnum = StudentDropOutRequestStatusEnum.Pending;
-
+  @Input() adminView: boolean = false;
   typeDropOutRequestEnum = StudentDropOutRequestStatusEnum;
-  StudentDropOutRequestIds:string[] | undefined
+  StudentDropOutRequestIds: string[] | undefined
   langEnum = LanguageEnum;
-  requestDate:string | undefined;
+  requestDate: string | undefined;
   StudentDropOutRequestStatus = StudentDropOutRequestStatusEnum;
 
 
@@ -34,22 +34,22 @@ export class StudentDropOutRequestStudentCardComponent implements OnInit {
 
       this.requestDate = new Date(requestDateValue.setDate(requestDateValue.getDate() + 1)).toISOString().slice(0, 10);
     }
-  } 
+  }
 
-  rejectTeacherDropOutRequestEvent(studentDropOutRequest:IStudentDropOutRequestsFilterStudentViewResponseModel){
+  rejectTeacherDropOutRequestEvent(studentDropOutRequest: IStudentDropOutRequestsFilterStudentViewResponseModel) {
     this.rejectStudentDropOutStudentRequest.emit(studentDropOutRequest);
   }
-  
-  acceptTeacherDropOutRequestEvent(){
+
+  acceptTeacherDropOutRequestEvent() {
     this.acceptStudentDropOutStudentRequest.emit(this.studentDropOutRequestFilterRequestStudentModel);
   }
 
-  cancelRequest(){
-      // if(this.studentDropOutRequestFilterRequestStudentModel.drpStat != this.StudentDropOutRequestStatus.Accept &&
-      //  this.studentDropOutRequestFilterRequestStudentModel.drpStat != this.StudentDropOutRequestStatus.Rejected)
-      // {
-      //   this.cancelRequestOfStudent.emit(this.studentDropOutRequestFilterRequestStudentModel);
-      // }
-      this.cancelRequestOfStudent.emit(this.studentDropOutRequestFilterRequestStudentModel);
+  cancelRequest() {
+    // if(this.studentDropOutRequestFilterRequestStudentModel.drpStat != this.StudentDropOutRequestStatus.Accept &&
+    //  this.studentDropOutRequestFilterRequestStudentModel.drpStat != this.StudentDropOutRequestStatus.Rejected)
+    // {
+    //   this.cancelRequestOfStudent.emit(this.studentDropOutRequestFilterRequestStudentModel);
+    // }
+    this.cancelRequestOfStudent.emit(this.studentDropOutRequestFilterRequestStudentModel);
   }
 }

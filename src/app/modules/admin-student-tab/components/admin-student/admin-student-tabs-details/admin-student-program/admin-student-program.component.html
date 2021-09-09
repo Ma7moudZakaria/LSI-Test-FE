@@ -1,17 +1,17 @@
 <div class="container-fluid">
     <div class="row">
       <div class="col-lg-4 col-md-4 col-sm-12 pl-0">
-        <app-admin-student-program-list (showAddProgram)="showAddProgramOverlay($event)"></app-admin-student-program-list>
+        <app-admin-student-program-list *ngIf='studentIdOutput' (userbatchModel)="getUserId($event)" (showAddProgram)="showAddProgramOverlay($event)" [studentIdOutput]="studentIdOutput"></app-admin-student-program-list>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-12 pl-0">
-        <app-admin-student-program-daily-task></app-admin-student-program-daily-task>
+        <app-admin-student-program-daily-task *ngIf='studentIdOutput' (userDayTaskModel)="getUserBatchTasks($event)" [studentIdOutput]="studentIdOutput"></app-admin-student-program-daily-task>
       </div>
    
     <div class="col-lg-4 col-md-4 col-sm-12 ">
-        <app-admin-student-program-task></app-admin-student-program-task>
+        <app-admin-student-program-task *ngIf='studentIdOutput' [studentDayIdOutput]="studentDayIdOutput"></app-admin-student-program-task>
       </div>
     <div class="overlay" *ngIf="showAddProgram">
-      <app-admin-student-program-overlay-addprogram (closeOverlay)="closeExamOverlay()"></app-admin-student-program-overlay-addprogram>
+      <app-admin-student-program-overlay-addprogram (closeOverlay)="closeExamOverlay()" *ngIf='studentIdOutput' [studentIdOutput]="studentIdOutput"></app-admin-student-program-overlay-addprogram>
     </div>
     </div>
   </div>

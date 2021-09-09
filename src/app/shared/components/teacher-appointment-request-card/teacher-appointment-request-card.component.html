@@ -38,12 +38,12 @@
     </div>
     <div class="">
       <span class="number_request"> {{'TEACHER_APPOINTMENT.OLD_TIMES' | translate}} </span><br>
-      <div class="d-flex align-items-center justify-content-between">
-        <span class="bold">{{translate.currentLang === langEnum.en ? teacherAppointmentModel.oldDayEn: teacherAppointmentModel.oldDayAr}} {{'TEACHER_APPOINTMENT.FROM' | translate}}  {{teacherAppointmentModel.oldFromTime}}  {{'TEACHER_APPOINTMENT.TO' | translate}}  {{teacherAppointmentModel.oldToTime}}</span>
+      <div *ngFor="let time of teacherAppointmentModel.teacherAvailableTimes" class="d-flex align-items-center justify-content-between">
+        <span class="bold">{{translate.currentLang === langEnum.en ? time.dayNameEn: time.dayNameAr}} {{'TEACHER_APPOINTMENT.FROM' | translate}}  {{time.from}}  {{'TEACHER_APPOINTMENT.TO' | translate}}  {{time.to}}</span>
       </div>
       <span class="number_request"> {{'TEACHER_APPOINTMENT.NEW_TIMES' | translate}} </span><br>
-            <div class="d-flex align-items-center justify-content-between">
-              <span class="bold">{{translate.currentLang === langEnum.en ? teacherAppointmentModel.newDayEn: teacherAppointmentModel.newDayAr}} {{'TEACHER_APPOINTMENT.FROM' | translate}}  {{teacherAppointmentModel.newFromTime}}  {{'TEACHER_APPOINTMENT.TO' | translate}}  {{teacherAppointmentModel.newToTime}}</span>
+            <div *ngFor="let newTime of teacherAppointmentModel.availableTimeRequests" class="d-flex align-items-center justify-content-between">
+              <span class="bold">{{translate.currentLang === langEnum.en ? newTime.dayNameEn: newTime.dayNameAr}} {{'TEACHER_APPOINTMENT.FROM' | translate}}  {{newTime.from}}  {{'TEACHER_APPOINTMENT.TO' | translate}}  {{newTime.to}}</span>
             </div>
     </div>
 
@@ -59,7 +59,7 @@
 
   <ng-container *ngIf="typeEnum === tabTypeSelected.Pending ">
     <div class="body_footer">
-      <button (click)="acceptTeacherAppointmentReq()" [attr.disabled]="teacherAppointmentModel.checked"
+      <button (click)="acceptTeacherAppointmentReq()" 
               class="btn cancel-btn"> {{'STUDENT_SUBSCRIBERS.ACCEPT' | translate}}  </button>
       <button (click)="rejectedTeacherAppointmentReq()"
               class=" btn save-btn">   {{'STUDENT_SUBSCRIBERS.REJECT' | translate}}</button>

@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ITeacherAppointmentFilterRequestModel} from '../../../../../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-appointment-filter-request-model';
-import {ITeacherAppointmentModel} from '../../../../../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-appointment-model';
+import {ITeachersAppointmentRequestsModel} from '../../../../../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-appointment-model';
 import {TranslateService} from '@ngx-translate/core';
 import {AlertifyService} from '../../../../../../../core/services/alertify-services/alertify.service';
 import {BaseResponseModel} from '../../../../../../../core/ng-model/base-response-model';
@@ -14,9 +14,9 @@ import {TeacherAppointmentService} from '../../../../../../../core/services/teac
 })
 export class AppointmentRequestsTabComponent implements OnInit {
   @Output() advancedSearchEvent = new EventEmitter<ITeacherAppointmentFilterRequestModel>();
-  @Output() itemTeacherAppointmentReq = new EventEmitter<ITeacherAppointmentModel>();
+  @Output() itemTeacherAppointmentReq = new EventEmitter<ITeachersAppointmentRequestsModel>();
 
-  teacherAppointmentRequestsList: ITeacherAppointmentModel[] = [];
+  teacherAppointmentRequestsList: ITeachersAppointmentRequestsModel[] = [];
   teacherAppointmentFilterRequestModel: ITeacherAppointmentFilterRequestModel = {
     statusNum: TeacherAppointmentRequestsEnum.Pending,
     skip: 0,
@@ -53,7 +53,7 @@ export class AppointmentRequestsTabComponent implements OnInit {
     this.teacherAppointmentService.getTeachersAppointmentRequestsFilterAdminViewWithAdvancedSearch(this.teacherAppointmentFilterRequestModel || {}).subscribe(res => {
         var response = <BaseResponseModel> res;
         if (response.isSuccess) {
-          this.teacherAppointmentRequestsList = res.data as ITeacherAppointmentModel[];
+          this.teacherAppointmentRequestsList = res.data as ITeachersAppointmentRequestsModel[];
           this.teacherAppointmentRequestsList?.forEach(function(item) {
           });
           this.totalCount = res.count ? res.count : 0;
@@ -114,14 +114,14 @@ export class AppointmentRequestsTabComponent implements OnInit {
     this.getTeacherAppointmentRequests();
   }
 
-  rejectTeacherAppointmentRequestMethod(event: ITeacherAppointmentModel) {
+  rejectTeacherAppointmentRequestMethod(event: ITeachersAppointmentRequestsModel) {
     this.itemTeacherAppointmentReq.emit(event);
 
   }
 
 
-  acceptTeacherAppointmentRequest(studentProgramVacationModel: ITeacherAppointmentModel) {
-    this.ids?.push(studentProgramVacationModel.id || '');
+  acceptTeacherAppointmentRequest(studentProgramVacationModel: ITeachersAppointmentRequestsModel) {
+    this.ids?.push(studentProgramVacationModel.reqId || '');
     this.teacherAppointmentService.teacherAvailableTimeRequestAcceptance(this.ids).subscribe(res => {
         var response = <BaseResponseModel> res;
         if (response.isSuccess) {
@@ -150,7 +150,7 @@ export class AppointmentRequestsTabComponent implements OnInit {
 
   acceptAllTeacherAppointmentRequestsChecked() {
 
-    this.ids = this.teacherAppointmentRequestsList?.filter(i => i.checked).map(a => a.id || '');
+    this.ids = this.teacherAppointmentRequestsList?.filter(i => i.checked).map(a => a.reqId || '');
     this.teacherAppointmentService.teacherAvailableTimeRequestAcceptance(this.ids).subscribe(res => {
         var response = <BaseResponseModel> res;
         if (response.isSuccess) {

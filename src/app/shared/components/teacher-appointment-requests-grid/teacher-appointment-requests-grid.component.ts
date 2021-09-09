@@ -3,7 +3,7 @@ import {IUser} from '../../../core/interfaces/auth-interfaces/iuser-model';
 import {TranslateService} from '@ngx-translate/core';
 import {ExportationService} from '../../../core/services/exportation-services/exportation.service';
 import {LanguageEnum} from '../../../core/enums/language-enum.enum';
-import {ITeacherAppointmentModel} from '../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-appointment-model';
+import {ITeachersAppointmentRequestsModel} from '../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-appointment-model';
 import {TeacherAppointmentRequestsEnum} from '../../../core/enums/teacher-appointment-requests-enums/teacher-appointment-requests-enum.enum';
 import {ITeacherAppointmentFilterRequestModel} from '../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-appointment-filter-request-model';
 
@@ -14,15 +14,15 @@ import {ITeacherAppointmentFilterRequestModel} from '../../../core/interfaces/te
 })
 export class TeacherAppointmentRequestsGridComponent implements OnInit {
   @Input() teacherAppointmentRequestsEnum: TeacherAppointmentRequestsEnum = TeacherAppointmentRequestsEnum.Pending;
-  @Input() teacherAppointmentRequestsItems: ITeacherAppointmentModel[] = [];
+  @Input() teacherAppointmentRequestsItems: ITeachersAppointmentRequestsModel[] = [];
   @Output() teacherAppointmentFilterEvent = new EventEmitter<ITeacherAppointmentFilterRequestModel>();
-  @Output() acceptAllTeacherAppointmentRequestsChecked = new EventEmitter<ITeacherAppointmentModel>();
-  @Output() teacherAppointmentRequest = new EventEmitter<ITeacherAppointmentModel>();
-  @Output() rejectTeacherAppointmentRequest = new EventEmitter<ITeacherAppointmentModel>();
+  @Output() acceptAllTeacherAppointmentRequestsChecked = new EventEmitter<ITeachersAppointmentRequestsModel>();
+  @Output() teacherAppointmentRequest = new EventEmitter<ITeachersAppointmentRequestsModel>();
+  @Output() rejectTeacherAppointmentRequest = new EventEmitter<ITeachersAppointmentRequestsModel>();
   @Input() numberPerRow: number = 3;
   @Input() totalCount: number = 0;
   @Input() teacherAppointmentFilterRequestModel: ITeacherAppointmentFilterRequestModel = {skip: 0, take: 9, page: 1};
-  @Output() cancelTeacherAppointment = new EventEmitter<ITeacherAppointmentModel>();
+  @Output() cancelTeacherAppointment = new EventEmitter<ITeachersAppointmentRequestsModel>();
 
   orderTypeToggel = 1;
   allSelected: boolean = false;
@@ -99,17 +99,17 @@ export class TeacherAppointmentRequestsGridComponent implements OnInit {
     this.setTeacherAppointmentAllChecked(false);
   }
 
-  rejectTeacherAppointmentReq(event: ITeacherAppointmentModel) {
+  rejectTeacherAppointmentReq(event: ITeachersAppointmentRequestsModel) {
     this.rejectTeacherAppointmentRequest.emit(event);
 
   }
 
-  acceptTeacherAppointmentReq(event: ITeacherAppointmentModel) {
+  acceptTeacherAppointmentReq(event: ITeachersAppointmentRequestsModel) {
     this.teacherAppointmentRequest.emit(event);
 
   }
 
-  cancelTeacherAppointmentRequest(event: ITeacherAppointmentModel) {
+  cancelTeacherAppointmentRequest(event: ITeachersAppointmentRequestsModel) {
     this.cancelTeacherAppointment.emit(event);
 
   }

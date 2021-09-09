@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ITeacherAppointmentModel} from '../../../../../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-appointment-model';
+import {ITeacherAppointmentModel, ITeachersAppointmentRequestsModel} from '../../../../../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-appointment-model';
 import {BaseMessageModel} from '../../../../../../../core/ng-model/base-message-model';
 import {AlertifyService} from '../../../../../../../core/services/alertify-services/alertify.service';
 import {TeacherAppointmentService} from '../../../../../../../core/services/teacher-appointment-services/teacher-appointment.service';
@@ -12,8 +12,8 @@ import {IRejectTeacherAppointmentModel} from '../../../../../../../core/interfac
   styleUrls: ['./teacher-appointment-reject.component.scss']
 })
 export class TeacherAppointmentRejectComponent implements OnInit {
-  @Input() itemTeacherAppointmentReq: ITeacherAppointmentModel = {}
-  @Output() closeRejectedRequest = new EventEmitter<ITeacherAppointmentModel>();
+  @Input() itemTeacherAppointmentReq: ITeachersAppointmentRequestsModel = {}
+  @Output() closeRejectedRequest = new EventEmitter<ITeachersAppointmentRequestsModel>();
   resultMessage: BaseMessageModel = {};
 
   constructor(private alertify: AlertifyService , private teacherAppointmentService: TeacherAppointmentService) { }
@@ -26,7 +26,7 @@ export class TeacherAppointmentRejectComponent implements OnInit {
   }
   saveRejectRequest() {
     let model: IRejectTeacherAppointmentModel = {
-      id: this.itemTeacherAppointmentReq.id,
+      id: this.itemTeacherAppointmentReq.reqId,
       reasonReject: this.itemTeacherAppointmentReq.rejReason
     }
     if (model.reasonReject) {

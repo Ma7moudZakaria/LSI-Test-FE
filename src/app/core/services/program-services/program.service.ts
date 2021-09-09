@@ -8,6 +8,7 @@ import { IprogramCreatModel } from '../../interfaces/programs-interfaces/iprogra
 import { IProgramFilterAdvancedRequest, IProgramFilterByNameRequest } from '../../interfaces/programs-interfaces/iprogram-filter-requests';
 import { IProgramSubscriptionDetailsRequest } from '../../interfaces/programs-interfaces/iprogram-subscription-details-request';
 import { IprogramUpdateModel } from '../../interfaces/programs-interfaces/iprogram-update-model';
+import { ISharedProgramsResponseModel } from '../../interfaces/programs-interfaces/ishared-programs-response-model';
 import { IProgramSubscriptionDetails } from '../../interfaces/teacher-program-subscription-interfaces/iprogram-subscription-details';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
 
@@ -19,6 +20,7 @@ export class ProgramService {
   // AddProgramURL=environment.baseUrl+'QuestionBankQuestions/add-question-bank-question/';
   // UpdateProgramnURL=environment.baseUrl+'QuestionBankQuestions/update-question-bank-question/';
   getProgramURL=environment.baseUrl+'Programs/get-program-details-by-id/';
+  getAllSharedProgramsURL=environment.baseUrl+'Programs/get-all-shared-programs/';
   
   // GetProgramsFilterURL=environment.baseUrl+'QuestionBankQuestions/get-question-bank-questions-filter/';
   deleteProgramURL=environment.baseUrl+'Programs/delete-program/';
@@ -34,6 +36,9 @@ export class ProgramService {
   CopyProgramURL=environment.baseUrl+'Programs/copy-program/';
   getSubscriptionProgramDetailsURL = environment.baseUrl + 'Programs/get-subscription-program-details/';
 
+  getSharedProgramsURL = environment.baseUrl + 'Programs/get-all-shared-programs/';
+
+
   constructor(private http: HttpClient) { }
 
   // addProgram(model:IprogramCreatModel):Observable<BaseResponseModel>{
@@ -47,6 +52,10 @@ export class ProgramService {
   // getProgramsFilter(filterRequest:IProgramFilterAdvancedRequest):Observable<BaseResponseModel>{
   //   return this.http.post<BaseResponseModel>(this.GetProgramsFilterURL,filterRequest)
   // }
+
+  getAllSharedPrograms():Observable<BaseResponseModel>{
+    return this.http.get<BaseResponseModel>(this.getAllSharedProgramsURL)
+  }
 
   getAllPrograms(model:IProgramFilterByNameRequest):Observable<BaseResponseModel>{
     return this.http.post<BaseResponseModel>(this.GetAllProgramsURL, model)
@@ -90,5 +99,9 @@ export class ProgramService {
 
   getSubscriptionProgramDetails(model : IProgramSubscriptionDetailsRequest): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.getSubscriptionProgramDetailsURL, model)
+  }
+
+  getSharedPrograms(): Observable<BaseResponseModel> {
+    return this.http.get<BaseResponseModel>(this.getSharedProgramsURL)
   }
 }

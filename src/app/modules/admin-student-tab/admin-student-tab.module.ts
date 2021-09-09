@@ -11,7 +11,7 @@ import { AdminStudentBasicInfoComponent } from './components/admin-student/admin
 import { AdminStudentVacationRequestComponent } from './components/admin-student/admin-student-tabs-details/admin-student-vacation-request/admin-student-vacation-request.component';
 import { AdminStudentJoinRequestComponent } from './components/admin-student/admin-student-tabs-details/admin-student-join-request/admin-student-join-request.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { SharedModule } from '../../shared/shared.module';
 import { AdminStudentProgramListComponent } from './components/admin-student/admin-student-tabs-details/admin-student-program/admin-student-program-list/admin-student-program-list.component';
@@ -27,7 +27,8 @@ import { AdminStudentProgramOverlayAddprogramComponent } from './components/admi
     TranslateModule,
     FormsModule,
     MatCheckboxModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminStudentTabModule { }

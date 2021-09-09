@@ -18,6 +18,7 @@ export class AdminStudentBasicInfoComponent implements OnInit {
 
   constructor() { }
   ngOnInit(): void {
+    this.getBasicDetails()
   }
 
   getBasicDetails() {
