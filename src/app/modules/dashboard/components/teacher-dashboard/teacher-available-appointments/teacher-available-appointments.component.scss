@@ -24,6 +24,16 @@
   }
 
 }
+.container_card_time{
+  background-color: #fff;
+  padding: 0.5rem;
+  border-radius: 5px;
+  &:lang(ar){text-align: right;}
+  &:lang(en){text-align: left;}
+
+  
+}
+
 .box_container{
   width: 99%;
   height: 88vh;
@@ -111,4 +121,8 @@
     }
 
   }
+}
+////
+.m-40{
+  width: 40%;
 }
