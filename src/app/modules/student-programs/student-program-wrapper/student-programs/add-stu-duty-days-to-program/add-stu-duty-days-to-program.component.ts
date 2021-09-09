@@ -71,7 +71,7 @@ export class AddStuDutyDaysToProgramComponent implements OnInit {
 
   }
 
-  closeEvent() {
-    this.closeDayTasks.emit();
+  closeEvent(event:boolean) {
+    this.closeDayTasks.emit(event);
   }
 }

@@ -44,12 +44,15 @@ export class StudentProgramsComponent implements OnInit {
       }
     );
   }
+  
   goToHomeWore(batchId?:string){
     this.router.navigateByUrl('student-programs/Student-duty/' + this.programFilter.usrId + '/' + batchId);
   }
-  closeAddStuDutyDaysToProgramOverlay(){
+
+  closeAddStuDutyDaysToProgramOverlay($event:boolean){
     this.isShowAddStuDutyDaysToProgram=false;
-    this.loadPrograms();
+    if($event===true)
+   {this.loadPrograms();} 
   }
 
  startProgram(isDaysRequested?:boolean){

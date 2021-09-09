@@ -16,6 +16,6 @@
 </div>
 <div class="overlay" *ngIf="isShowAddStuDutyDaysToProgram">
     <app-add-stu-duty-days-to-program
-    (closeDayTasks)='closeAddStuDutyDaysToProgramOverlay()'
+    (closeDayTasks)='closeAddStuDutyDaysToProgramOverlay($event)'
     ></app-add-stu-duty-days-to-program>
 </div>
