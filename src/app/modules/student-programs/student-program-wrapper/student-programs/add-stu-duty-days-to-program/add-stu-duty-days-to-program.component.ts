@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
-import { ICreateProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/icreate-program-day-tasks-model';
+import { IStudentSelectedDutiesDaysRequestModel } from 'src/app/core/interfaces/student-program-duties-interfaces/istart-student-batch-request-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
@@ -22,7 +22,7 @@ export class AddStuDutyDaysToProgramComponent implements OnInit {
  // createProgramDayTasksModel = Array<ICreateProgramDayTasksModel>();
   listOfLookups: string[] = ['DAYS'];
   resMessage: BaseMessageModel = {};
-  selectedProgramDayTasksList = Array<ICreateProgramDayTasksModel>();
+  selectedProgramDayTasksList = Array<IStudentSelectedDutiesDaysRequestModel>();
 
 
   constructor(
