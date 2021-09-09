@@ -1,6 +1,10 @@
 @import '../../../../assets/scss/buttons';
 @import '../../../../assets/scss/variables';
-
+.container_time{
+  height: 14vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
 .card-request {
   background: $white;
   margin:  0 0.2rem;

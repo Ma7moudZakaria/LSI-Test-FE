@@ -42,6 +42,13 @@ html, body {  height: 100%;}
     font-family: Almarai-Bold !important;
 
 }
+//global in card-request in  body_footer 
+.body_footer{
+  bottom: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
 // login page
 
 .LoginBackground_left_img
