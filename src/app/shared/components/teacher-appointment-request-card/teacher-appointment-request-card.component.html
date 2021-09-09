@@ -50,6 +50,7 @@
     <ng-container *ngIf="typeEnum === tabTypeSelected.Rejected">
       <div class="program_rejected " *ngIf="typeEnum === tabTypeSelected.Rejected">
         <span class="number_request"> {{'STUDENT_VACATION.REJECT_REASON' | translate}} </span><br>
+        <span class="bold">{{teacherAppointmentModel.rejReason}}</span>
       </div>
     </ng-container>
 

@@ -31,9 +31,9 @@ export interface ITeacherAppointmentModel {
          usrNameEn?:string;
          checked?:boolean;
          reqDate?:string
-         rejReason:string
-         availableTimeRequests?: IAvailableTimeRequests;
-         teacherAvailableTimes?: IAvailableTimeRequests;
+         rejReason?:string | undefined
+         availableTimeRequests?: IAvailableTimeRequests | undefined;
+         teacherAvailableTimes?: IAvailableTimeRequests | undefined;
     }
     export interface IAvailableTimeRequests
     {
