@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { Subscription, timer } from 'rxjs';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IStudentMyProgramsRequestModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-my-programs-request-model';
 import { IStudentPrograms } from 'src/app/core/interfaces/student-program-vacation-interfaces/istudent-programs';
@@ -21,6 +22,11 @@ export class StudentProgramsComponent implements OnInit {
   langEnum = LanguageEnum;
   isShowAddStuDutyDaysToProgram:boolean=false;
   day?:number;
+  counter: number = 0
+  countlength: number = 0;
+  countDown: Subscription | undefined;
+  counterTimer: number = 5
+  tick = 1000;
   
   constructor(
     private studentProgramSubscriptionService: StudentProgramSubscriptionServicesService,
@@ -39,6 +45,14 @@ export class StudentProgramsComponent implements OnInit {
     this.studentProgramSubscriptionService.getStudentPrograms(this.programFilter).subscribe(
       (res: BaseResponseModel) => {
          this.programs = res.data as IStudentPrograms[] ;
+        // this.counterTimer = this.currentQuestion?.time ? this.currentQuestion?.time * 60 : 0;
+      // this.countDown = timer(0, this.tick).subscribe(() => {
+      //   --this.counterTimer;
+      //   if (this.counterTimer == 0) {
+      //    // this.NextQuestion();
+      //   }
+      // }
+      // );
       }, error => {
         this.alertify.error(error)
       }

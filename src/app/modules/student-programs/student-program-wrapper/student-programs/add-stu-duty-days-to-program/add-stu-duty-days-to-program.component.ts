@@ -52,9 +52,6 @@ export class AddStuDutyDaysToProgramComponent implements OnInit {
   }
 
 
-
-  
-
   onTaskChange(item : any, event : any){
     if (event.checked){
       this.selectedProgramDayTasksList.push(item.id);

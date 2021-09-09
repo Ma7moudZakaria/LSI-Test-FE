@@ -2,11 +2,16 @@
 <div class="container-fluid" *ngFor="let program  of programs">
     <span>{{  program.progName}} -  {{this.translate.currentLang===langEnum.en? program.enBatName : program.arBatName}}</span>
 
-    isProgStarted:{{program.isProgStarted}}
-    isDaysRequested:{{program.isDaysRequested}}
-    <div  class="row" *ngIf="program.isProgStarted==true">
+    <!-- isProgStarted:{{program.isProgStarted}}
+    isDaysRequested:{{program.isDaysRequested}} -->
+    <!-- <div  class="row" *ngIf="program.isProgStarted==true">
         RemainingTime:{{program.remainingTime}}
-        </div>
+        </div> -->
+        <div class="col-10  mt-4" *ngIf="program.isProgStarted==true">
+            <p class=" timer_contDown">
+             {{counterTimer| formatTime}}
+            </p>
+           </div>
  <div  class="row" *ngIf="program.isProgStarted==false">
 <button (click)="startProgram(program.isDaysRequested)">{{ 'STUDENT_DAY_TASKS.START' | translate }}</button>
 </div>
