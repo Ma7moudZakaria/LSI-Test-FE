@@ -5,8 +5,11 @@ import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IAdminStudentTabFilterRequest } from 'src/app/core/interfaces/student-interfaces/iadmin-student-tab-filter-request';
 import { IAdminStudentTabFilterResponse } from 'src/app/core/interfaces/student-interfaces/iadmin-student-tab-filter-response';
 import { ITeacherStudentViewModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
+import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseSelectedDateModel } from 'src/app/core/ng-model/base-selected-date-model';
 import { AdminStudentTabService } from 'src/app/core/services/admin-student-tab-services/admin-student-tab.service';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 
 @Component({
   selector: 'app-admin-student-list',
@@ -26,23 +29,21 @@ export class AdminStudentListComponent implements OnInit {
   selectedDateType: any;
   hijri: boolean = false;
   milady: boolean = false;
-  // cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   selectedIndex = 0;
   studentListFilterRequestModel: IAdminStudentTabFilterRequest = { studName: '' }
   studentList: IAdminStudentTabFilterResponse[] = [];
-  errorMessage?: string;
   langEnum = LanguageEnum;
+  resMessage: BaseMessageModel = {};
 
   constructor(
     public translate: TranslateService,
     private dateFormatterService: DateFormatterService,
-    private adminStudentTabService: AdminStudentTabService
-
+    private adminStudentTabService: AdminStudentTabService,
+    private alertfy : AlertifyService
   ) { }
 
   ngOnInit(): void {
     this.getAllStudentList()
-
   }
 
   getAllStudentList() {
@@ -50,12 +51,22 @@ export class AdminStudentListComponent implements OnInit {
 
       if (res.isSuccess) {
         this.studentList = res.data as IAdminStudentTabFilterResponse[];
-        let firstId = this.studentList[0].usrId;
-        let UserModel: ITeacherStudentViewModel = { progName: '', usrId: firstId };
-        this.userId.emit(UserModel);
+
+        if (this.studentList && this.studentList.length > 0){
+          let firstId = this.studentList[0].usrId;
+          let UserModel: ITeacherStudentViewModel = { progName: '', usrId: firstId };
+          this.userId.emit(UserModel);
+        }
+        else{
+          this.resMessage = {
+            message: this.translate.instant('GENERAL.NO_DATA'),
+            type: BaseConstantModel.SUCCESS_TYPE
+          }
+          this.userId.emit({});
+        }
       }
       else {
-        this.errorMessage = res.message;
+        this.alertfy.error(res.message || '');
       }
     },
       error => {
@@ -66,9 +77,15 @@ export class AdminStudentListComponent implements OnInit {
   ToggelAdvancSearch() {
     this.advancedSearch = !this.advancedSearch
   }
-  loadProgramMaterial(id?: string) {
+
+  loadUserDetails(id?: string) {
     let UserModel: ITeacherStudentViewModel = { progName: '', usrId: id };
     this.userId.emit(UserModel);
+  }
+
+  searchByText(searchKey : string){
+    this.studentListFilterRequestModel.studName = searchKey;
+    this.getAllStudentList();
   }
 
   submitSearch() { }
@@ -97,6 +114,11 @@ export class AdminStudentListComponent implements OnInit {
     // // console.log("this.selectedDateType",this.selectedDateType);
     // // this.filter.toDate?.setDate(data.selectedDateValue);
 
+  }
+
+  checkNameSpace(str:string){
+    let reg = new RegExp(/^ *$/);
+    return str.match(reg) === null;
   }
 
 }

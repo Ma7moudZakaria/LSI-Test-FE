@@ -1,15 +1,15 @@
 <div class="list-group list-group_program-list">
-    <div class="d-flex mb-4 justify-content-between align-items-center">
+    <!-- <div class="d-flex mb-4 justify-content-between align-items-center">
       <p class="bold mb-0">{{'SIDENAVBAR.STUDENT' | translate}}</p>
         <img src="../../../../assets/images/sc-problem/exporticon.svg" class="cursor-pointer">
-    </div>
+    </div> -->
   
-    <app-search-input ></app-search-input>
+    <app-search-input (searchTerm)=searchByText($event)></app-search-input>
   
-    <a class="advanced_search" (click)="ToggelAdvancSearch()">
+    <!-- <a class="advanced_search" (click)="ToggelAdvancSearch()">
       {{'PROGRAMS_LIST.ADVANCED_SEARCH' | translate}}
   
-    </a>
+    </a> -->
   
     <!-- IN advancedSearch -->
     <ng-container *ngIf="advancedSearch">
@@ -89,18 +89,20 @@
   
     <ng-container *ngIf="!advancedSearch">
     
-          <div class="internal_scroll_list_group">
+          <div class="internal_scroll_list_group" *ngIf='studentList && studentList.length > 0'>
          
             <a class="list-group-item  d-flex user" *ngFor="let student  of studentList; let i = index"
             [class.active]="selectedIndex === i"
-            (click)="loadProgramMaterial(student?.usrId);selectedIndex=i" >
+            (click)="loadUserDetails(student?.usrId);selectedIndex=i" >
    
            <img src="../../../../../assets/images/Profile.svg" class="user__image" *ngIf="!student.avr">
            <img [src]="student.avr" class="user__image" *ngIf="student.avr">
            <p class="user__name ellipsis px-1" 
-           title="{{ translate.currentLang == langEnum.en ?student.studNameEn : student.studNameAr}}"
+           title="{{ translate.currentLang == langEnum.en ? student.studNameEn && checkNameSpace(student.studNameEn) ? student.studNameEn : student.studNameAr : 
+            student.studNameAr && checkNameSpace(student.studNameAr)? student.studNameAr : student.studNameEn}}"
            >
-            {{ translate.currentLang == langEnum.en ?student.studNameEn : student.studNameAr}}
+            {{ translate.currentLang == langEnum.en ? student.studNameEn && checkNameSpace(student.studNameEn) ? student.studNameEn : student.studNameAr : 
+              student.studNameAr && checkNameSpace(student.studNameAr)? student.studNameAr : student.studNameEn }}
            </p>
    
            <ngb-rating [(rate)]="student?.rte || starsSelected" [max]="5" [readonly]="true">
@@ -110,6 +112,11 @@
            </ngb-rating>
          </a>
 
+        </div>
+        <div *ngIf='!studentList || studentList.length === 0'>
+          <div *ngIf="resMessage.message" class="alert alert-{{ resMessage.type }} my-4 py-2">
+            {{ resMessage.message }}
+          </div>
         </div>
         
     </ng-container>
