@@ -17,14 +17,15 @@ export class TeacherDetailsViewComponent implements OnInit {
   @Output() hideUserDetails = new EventEmitter<boolean>();
 
   @Input() resiveUserId: ITeacherStudentViewModel | undefined;
+  @Input() adminView :boolean = false;
 
   toggel : boolean | undefined;
   resMessage: BaseMessageModel = {};
   teacherProfileDetails = {} as ITeacherProfile;
   langEnum = LanguageEnum;
   starsSelected=5;
+  lang = LanguageEnum
 
-  @Input() adminView :boolean = false;
   constructor(
     private teacherProfileService: TeacherProfileService,
     public translate: TranslateService

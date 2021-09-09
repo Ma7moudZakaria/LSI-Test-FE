@@ -52,7 +52,7 @@
         </div>
         <div>
           <div *ngIf="adminView" class="admin__view">
-            <div class="d-flex align-items-center justify-content-between">
+            <!-- <div class="d-flex align-items-center justify-content-between">
               <div class="col-.5  chicx_box">
                 <label class="switch">
                   <input type="checkbox" (change)="onCheckboxChange()" [(ngModel)]='toggel'>
@@ -64,7 +64,7 @@
               <span class="status active"></span>
               <h6 class="status-text"> {{'GENERAL.ACTIVE' | translate}}</h6>
             </div>
-            </div>
+            </div> -->
           </div>
           <h6 *ngIf="!adminView" class="user__back" (click)="hideUserDetailsView()">
             {{'UPDATE_USER_PG.BACK' | translate}}
@@ -155,7 +155,96 @@
     <div class="row pl-4 pr-4">
       <div class="col-12">
         <h3 class="head_conditions  pb-3">{{'UPDATE_USER_PG.EDU' | translate}} </h3>
-        <div class="col-md-12 ">
+        <div class="col-12"></div>
+                                    <div class="col-4  mb-3">
+                                        <span class="label_info"> {{ 'UPDATE_TEACHER_PG.EDU' | translate }} </span>
+                                        <span>  &nbsp; </span>
+                                        <span>  &nbsp; </span>
+                                        <span class="data_view">
+                                            {{  translate.currentLang === lang.en ? teacherProfileDetails?.educationLevelEn : teacherProfileDetails?.educationLevelAr }}
+                                        </span>
+                                    </div>
+
+                                    <div class="col-4  mb-3">
+                                            <span class="label_info"> {{ 'UPDATE_TEACHER_PG.EDU_LEVEL' | translate }} </span>
+                                        <span>  &nbsp; </span>
+                                        <span>  &nbsp; </span>
+                                        <span class="data_view">
+                                            {{  translate.currentLang === lang.en ? teacherProfileDetails?.qualifiEn : teacherProfileDetails?.qualifiAr }}                                       </span>
+                                    </div>
+
+                                    <div class="col-4  mb-3">
+                                        <span class="label_info">  {{ 'UPDATE_TEACHER_PG.OCCUPATION' | translate }}
+                                        </span>
+                                        <span>  &nbsp; </span>
+                                        <span>  &nbsp; </span>
+                                        <span class="data_view">
+                                            {{  translate.currentLang === lang.en ? teacherProfileDetails?.speciaEn : teacherProfileDetails?.speciaAr }}
+                                        </span>
+                                    </div>
+
+                                    <div class="col-3  ">
+                                        <span class="label_info"> {{ 'UPDATE_TEACHER_PG.LEARN_THEQURAN' | translate }}  </span>
+                                        <span>  &nbsp; </span>
+                                        <span>  &nbsp; </span>
+                                        </div>
+                                    <div class="col-9  ">
+                                       <div class="row">
+                                        <div class="col-5">
+                                            <div class="badges " >
+                                                <div class="badge badge-info p-2 " >
+                                                <div class="d-flex justify-content-between mt-0">
+                                                    <p class="ellipsis mb-0" matTooltip="{{  translate.currentLang === lang.en ? teacherProfileDetails?.eduUnitEn : teacherProfileDetails?.eduUnitAr }} - {{  translate.currentLang === lang.en ? teacherProfileDetails?.agencyEn : teacherProfileDetails?.agencyAr }}">
+                                                        {{teacherProfileDetails?.eduNum}} - {{  translate.currentLang === lang.en ? teacherProfileDetails?.eduUnitEn : teacherProfileDetails?.eduUnitAr }} - {{  translate.currentLang === lang.en ? teacherProfileDetails?.agencyEn : teacherProfileDetails?.agencyAr }}</p>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                     </div>
+                                      </div>
+
+
+                                      <div class="col-3  ">
+                                        <span class="label_info">   {{ 'UPDATE_TEACHER_PG.LEAVE_RECITATION_VIEW' | translate }}   </span>
+                                        <span>  &nbsp; </span>
+                                        <span>  &nbsp; </span>
+                                        </div>
+                                    <div class="col-9  ">
+                                       <div class="row">
+                                        <div class="col-5" *ngFor="let item of teacherProfileDetails?.rewayats">
+                                            <div class="badges " >
+                                                <div class="badge badge-info p-2 " >
+                                                <div class="d-flex justify-content-between mt-0">
+                                                    <p class="ellipsis mb-0" matTooltip="{{  translate.currentLang === lang.en ? item?.nameEn : item?.nameAr }}">
+                                                        {{  translate.currentLang === lang.en ? item?.nameEn : item?.nameAr }} </p>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                     </div>
+                                      </div>
+
+
+                                      <div class="col-3  ">
+                                        <span class="label_info">   {{ 'UPDATE_TEACHER_PG.LANGUAGES' | translate }}   </span>
+                                        <span>  &nbsp; </span>
+                                        <span>  &nbsp; </span>
+                                        </div>
+                                    <div class="col-9  ">
+                                       <div class="row">
+                                        <div class="col-5" *ngFor="let item of teacherProfileDetails?.languages">
+                                            <div class="badges  " >
+                                                <div class="badge badge-info p-2 " >
+                                                <div class="d-flex justify-content-between mt-0">
+                                                    <p class="ellipsis mb-0" matTooltip="{{  translate.currentLang === lang.en ? item?.nameEn : item?.nameAr }}">
+                                                        {{  translate.currentLang === lang.en ? item?.nameEn : item?.nameAr }}  </p>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                     </div>
+                                      </div>
+        <!-- <div class="col-md-12 ">
           <div class="row">
             <div class="col-4 mt-3">
               <label class="title">
@@ -281,7 +370,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

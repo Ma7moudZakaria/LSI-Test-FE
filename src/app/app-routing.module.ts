@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'student-for-subscription', loadChildren: () => import('./modules/student-program-subscription/student-program-subscription.module').then(m => m.StudentProgramSubscriptionModule), canActivate: [AuthGuard] },
   { path: 'vacations', loadChildren: () => import('./modules/vacations/vacations.module').then(m => m.VacationsModule), canActivate: [AuthGuard] },
   { path: 'admin-student', loadChildren: () => import('./modules/admin-student-tab/admin-student-tab.module').then(m => m.AdminStudentTabModule), canActivate: [AuthGuard] },
-  { path: 'admin-taecher', loadChildren: () => import('./modules/admin-teacher-tab/admin-teacher-tab.module').then(m => m.AdminTeacherTabModule), canActivate: [AuthGuard] },
+  { path: 'admin-teacher', loadChildren: () => import('./modules/admin-teacher-tab/admin-teacher-tab.module').then(m => m.AdminTeacherTabModule), canActivate: [AuthGuard] },
 
 
 

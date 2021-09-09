@@ -7,6 +7,7 @@ import { ITeacherStudentViewModel } from '../../../../core/interfaces/teacher-dr
 import { AdminTeacherBasicInfoComponent } from './admin-teacher-basic-info/admin-teacher-basic-info.component';
 import { AdminTeacherDropOutComponent } from './admin-teacher-drop-out/admin-teacher-drop-out.component';
 import { AdminTeacherJoinRequestComponent } from './admin-teacher-join-request/admin-teacher-join-request.component';
+import { AdminTeacherProgramComponent } from './admin-teacher-program/admin-teacher-program.component';
 
 @Component({
   selector: 'app-admin-teacher-tabs-details',
@@ -15,13 +16,12 @@ import { AdminTeacherJoinRequestComponent } from './admin-teacher-join-request/a
 })
 export class AdminTeacherTabsDetailsComponent implements OnInit {
 
-  // @Output() refreshProgListEvent = new EventEmitter();
+  
   @ViewChild(AdminTeacherBasicInfoComponent) adminTeacherbasicInfoChild: AdminTeacherBasicInfoComponent | undefined;
-  // @ViewChild(BasicInformationComponent) basicInfoCompChild:BasicInformationComponent | undefined;
   @ViewChild(AdminTeacherDropOutComponent) dropOutChild: AdminTeacherDropOutComponent | undefined;
-
   @ViewChild(AdminTeacherJoinRequestComponent) joinRequestChild: AdminTeacherJoinRequestComponent | undefined;
-
+  @ViewChild(AdminTeacherProgramComponent) adminTeacherProgChild: AdminTeacherProgramComponent | undefined;
+  
   @Input() programModel: IprogramsModel | undefined;
 
   @Input() teacherIdOutput: ITeacherStudentViewModel | undefined;
@@ -54,6 +54,11 @@ export class AdminTeacherTabsDetailsComponent implements OnInit {
         }
         break;
       case 'PROGRAM':
+        if (this.adminTeacherProgChild && this.adminTeacherProgChild.adminTeacherProgramListComponent?.teacherInfoDetails){
+          this.adminTeacherProgChild.teacherIdOutput = this.teacherIdOutput
+          this.adminTeacherProgChild.adminTeacherProgramListComponent.teacherInfoDetails = this.teacherIdOutput;
+          this.adminTeacherProgChild.adminTeacherProgramListComponent?.getTeacherPrograms();
+        }
         break;
       case 'DROP_OUT':
 
@@ -61,15 +66,12 @@ export class AdminTeacherTabsDetailsComponent implements OnInit {
           this.dropOutChild.teacherIdOutput = this.teacherIdOutput
           this.dropOutChild.getTeacherDropOutRequests();
         }
-
         break;
       case 'JOIN':
-
         if (this.joinRequestChild) {
           this.joinRequestChild.teacherIdOutput = this.teacherIdOutput
           this.joinRequestChild.getStudentProgramSubscriptionsFilter();
         }
-
         break;
     }
   }

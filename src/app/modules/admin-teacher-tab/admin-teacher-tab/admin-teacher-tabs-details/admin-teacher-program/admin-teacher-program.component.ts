@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ITeacherStudentViewModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 import { AdminTeacherProgramDetailsComponent } from './admin-teacher-program-details/admin-teacher-program-details.component';
@@ -29,7 +30,10 @@ export class AdminTeacherProgramComponent implements OnInit {
 
   }
 
-  getBatchIdEvent(event?: string) {
-    this.adminTeacherProgramDetailsComponent?.getTeacherProgramBatchDetails(event);
+  getBatchIdEvent(event?: ITeacherStudentViewModel) {
+    if (this.adminTeacherProgramDetailsComponent){
+      this.adminTeacherProgramDetailsComponent.teacherInfoDetails = event;
+      this.adminTeacherProgramDetailsComponent.getTeacherProgramBatchDetails();
+    }
   }
 }

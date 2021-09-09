@@ -29,10 +29,10 @@ export class AdminTeacherProgramDetailsComponent implements OnInit {
     console.log("getTeacherProgramBatchDetailsResponse : " , this.getTeacherProgramBatchDetailsResponse)
   }
 
-  getTeacherProgramBatchDetails(batchId? :string){
+  getTeacherProgramBatchDetails(/*batchId? :string*/){
     this.setTeacherProgramBatchDetailsRequest = {
       techId :this.teacherInfoDetails?.usrId,
-      batId : batchId
+      batId : this.teacherInfoDetails?.batchId
     };
     this.teacherProgramTabService.getTeacherProgramDetails(this.setTeacherProgramBatchDetailsRequest).subscribe(res => {
       var response = <BaseResponseModel>res;
@@ -40,6 +40,7 @@ export class AdminTeacherProgramDetailsComponent implements OnInit {
         this.getTeacherProgramBatchDetailsResponse = res.data as IGetTeacherProgramBatchDetailsResponse;        
       }
       else {
+        this.getTeacherProgramBatchDetailsResponse
         this.resMessage = {
           message: response.message,
           type: BaseConstantModel.DANGER_TYPE

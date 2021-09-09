@@ -18,7 +18,7 @@ export class AdminStudentProgramDailyTaskComponent implements OnInit {
   programDays :IStudentProgramBatchDaysResponseModel[] | undefined =[];
   selectedIndex = 0;
   studentProgramListFilterRequestModel: IStudentProgramBatchDaysRequestModel ={batId:"",studId:""} ;
-  studentAndProgramModel :ITeacherStudentViewModel | undefined;
+  // studentAndProgramModel :ITeacherStudentViewModel | undefined;
   langEnum = LanguageEnum;
 
   constructor(private adminStudentTabService: AdminStudentTabService,public translate: TranslateService) { }
@@ -35,20 +35,20 @@ export class AdminStudentProgramDailyTaskComponent implements OnInit {
     }
   }
   getAllStudentProgramDays() {
-    this.studentAndProgramModel = this.studentIdOutput;
-    if(this.studentProgramListFilterRequestModel )
-    {
-      this.studentProgramListFilterRequestModel.studId= this.studentAndProgramModel?.usrId;
-      this.studentProgramListFilterRequestModel.batId = this.studentAndProgramModel?.batchId;
+    // this.studentAndProgramModel = this.studentIdOutput;
+    // if(this.studentProgramListFilterRequestModel )
+    // {
+      this.studentProgramListFilterRequestModel.studId= this.studentIdOutput?.usrId;
+      this.studentProgramListFilterRequestModel.batId = this.studentIdOutput?.batchId;
 
     this.adminStudentTabService.getStudentProgramDays(this.studentProgramListFilterRequestModel || {}).subscribe(res => {
 
       if (res.isSuccess) {
        this.programDays = res.data;
-       if(this.studentAndProgramModel && this.programDays)
+       if(this.studentIdOutput && this.programDays)
        {
-       this.studentAndProgramModel.dayId=this.programDays[0].dayId;
-       this.userDayTaskModel.emit(this.studentAndProgramModel);
+       this.studentIdOutput.dayId=this.programDays[0].dayId;
+       this.userDayTaskModel.emit(this.studentIdOutput);
        }
       }
       else {
@@ -57,15 +57,18 @@ export class AdminStudentProgramDailyTaskComponent implements OnInit {
       error => {
         console.log(error);
       });
-    }
+    // }
   }
   loadDayDetails(dayId?: string) {
-    
-    if(this.studentAndProgramModel)
-    {
-    this.studentAndProgramModel.dayId=dayId;
-    this.userDayTaskModel.emit(this.studentAndProgramModel);
+    if (this.studentIdOutput){
+      this.studentIdOutput.dayId = dayId;
+      this.userDayTaskModel.emit(this.studentIdOutput);
     }
+    // if(this.studentAndProgramModel)
+    // {
+    // this.studentAndProgramModel.dayId=dayId;
+    // this.userDayTaskModel.emit(this.studentAndProgramModel);
+    // }
   }
 
 }

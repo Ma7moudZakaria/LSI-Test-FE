@@ -1,18 +1,18 @@
 <div class="list-group list-group_program-list">
-  <div class="d-flex mb-4 justify-content-between align-items-center">
+  <!-- <div class="d-flex mb-4 justify-content-between align-items-center">
     <p class="bold mb-0">{{'SIDENAVBAR.TEACHER' | translate}}</p>
       <img src="../../../../assets/images/sc-problem/exporticon.svg" class="cursor-pointer">
-  </div>
+  </div> -->
 
   <app-search-input (searchTerm)=searchTeacher($event)></app-search-input>
 
 
 
-
+<!-- 
   <a class="advanced_search" (click)="ToggelAdvancSearch()">
     {{'PROGRAMS_LIST.ADVANCED_SEARCH' | translate}}
 
-  </a>
+  </a> -->
 
   
   <ng-container *ngIf="!advancedSearch">

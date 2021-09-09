@@ -10,6 +10,7 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { ITeacherStudentViewModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 
 @Component({
   selector: 'app-admin-teacher-program-list',
@@ -21,7 +22,7 @@ export class AdminTeacherProgramListComponent implements OnInit {
   @Output() selectedProgram =  new EventEmitter<IprogramsModel>();
   @Output() showAddProgram = new EventEmitter<boolean>();
   @Input() teacherInfoDetails: ITeacherStudentViewModel | undefined;
-  @Output() batchIdEvent = new EventEmitter<string>();
+  @Output() batchIdEvent = new EventEmitter<ITeacherStudentViewModel>();
 
   langEnum = LanguageEnum;
   resMessage: BaseMessageModel = {};
@@ -32,7 +33,8 @@ export class AdminTeacherProgramListComponent implements OnInit {
   teacherBatchs:ITeacherMyProgramsList [] = [];
 
 
-  constructor(private teacherProgramTabService: TeacherProgramTabService,public translate : TranslateService) { }
+  constructor(private teacherProgramTabService: TeacherProgramTabService,public translate : TranslateService,
+    private alertfy:AlertifyService) { }
 
   ngOnInit(): void {
     this.getTeacherPrograms();
@@ -46,21 +48,55 @@ export class AdminTeacherProgramListComponent implements OnInit {
     if(event === null || event === ''){
       event = this.teacherMyProgramsList[0].id;
     }
-    this.batchIdEvent.emit(event);
+
+    if (this.teacherInfoDetails){
+      this.teacherInfoDetails.batchId = event; 
+      this.batchIdEvent.emit(this.teacherInfoDetails);
+    }
   }
 
   getTeacherPrograms(){
+    this.resMessage = {}
     this.teacherMyProgramsRequest.teacherId = this.teacherInfoDetails?.usrId;
     this.teacherProgramTabService.getAllTeacherPrograms(this.teacherMyProgramsRequest).subscribe(res => {
-      var response = <BaseResponseModel>res;
-      if (response.isSuccess) {
-        this.teacherMyProgramsList = res.data as ITeacherMyProgramsList[];        
+      // if (res.isSuccess) {
+      //   this.teacherMyProgramsList = res.data as ITeacherMyProgramsList[];
+
+      //   if (this.teacherMyProgramsList && this.teacherMyProgramsList.length > 0){
+      //     let firstId = this.teacherMyProgramsList[0].id;
+      //     let UserModel: ITeacherStudentViewModel = { progName: '', usrId: firstId };
+      //     this.userId.emit(UserModel);
+      //   }
+      //   else{
+      //     this.resMessage = {
+      //       message: this.translate.instant('GENERAL.NO_DATA'),
+      //       type: BaseConstantModel.SUCCESS_TYPE
+      //     }
+      //     this.userId.emit({});
+      //   }
+      // }
+      // else {
+      //   this.alertfy.error(res.message || '');
+      // }
+
+      // var response = <BaseResponseModel>res;
+      if (res.isSuccess) {
+        this.teacherMyProgramsList = res.data as ITeacherMyProgramsList[]; 
+
+        if (this.teacherMyProgramsList && this.teacherMyProgramsList.length > 0 && this.teacherInfoDetails){
+          this.teacherInfoDetails.batchId = this.teacherMyProgramsList[0].batId;
+          this.batchIdEvent.emit(this.teacherInfoDetails);       
+        }
+        else{
+          this.resMessage = {
+            message: this.translate.instant('GENERAL.NO_DATA'),
+            type: BaseConstantModel.SUCCESS_TYPE
+          }
+          this.batchIdEvent.emit(this.teacherInfoDetails);
+        }
       }
       else {
-        this.resMessage = {
-          message: response.message,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+        this.alertfy.error(res.message || '');
       }
     },
     error => {

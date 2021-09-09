@@ -19,7 +19,7 @@ export class AdminStudentProgramListComponent implements OnInit {
   programs :IStudentMyProgramsListModel[] | undefined;
   selectedIndex = 0;
   studentProgramListFilterRequestModel: IStudentMyProgramsRequestModel ={};
-  studentAndProgramModel :ITeacherStudentViewModel | undefined;
+  // studentAndProgramModel :ITeacherStudentViewModel | undefined;
   langEnum = LanguageEnum;
 
   constructor(private adminStudentTabService: AdminStudentTabService,public translate: TranslateService) { }
@@ -37,16 +37,16 @@ export class AdminStudentProgramListComponent implements OnInit {
     this.getAllStudentPrograms();
   }
   getAllStudentPrograms() {
-    this.studentAndProgramModel = this.studentIdOutput;
-    this.studentProgramListFilterRequestModel.usrId = this.studentAndProgramModel?.usrId;
+    // this.studentAndProgramModel = this.studentIdOutput;
+    this.studentProgramListFilterRequestModel.usrId = this.studentIdOutput?.usrId;
     this.adminStudentTabService.getStudentPrograms(this.studentProgramListFilterRequestModel || {}).subscribe(res => {
 
       if (res.isSuccess) {
        this.programs = res.data;
-       if(this.studentAndProgramModel && this.programs)
+       if(this.studentIdOutput && this.programs)
        {
-       this.studentAndProgramModel.batchId=this.programs[0].batId;
-       this.userbatchModel.emit(this.studentAndProgramModel);
+       this.studentIdOutput.batchId=this.programs[0].batId;
+       this.userbatchModel.emit(this.studentIdOutput);
        }
       }
       else {
@@ -57,10 +57,10 @@ export class AdminStudentProgramListComponent implements OnInit {
       });
   }
   loadProgramDetails(batId?: string) {
-    if(this.studentAndProgramModel)
+    if(this.studentIdOutput)
        {
-       this.studentAndProgramModel.batchId=batId;
-       this.userbatchModel.emit(this.studentAndProgramModel);
+       this.studentIdOutput.batchId=batId;
+       this.userbatchModel.emit(this.studentIdOutput);
        }
 
   }
