@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ITeacherAppointmentFilterRequestModel} from '../../../../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-appointment-filter-request-model';
 import {TeacherAppointmentRequestsEnum} from '../../../../../../core/enums/teacher-appointment-requests-enums/teacher-appointment-requests-enum.enum';
 import {AppointmentRequestsTabComponent} from './appointment-requests-tab/appointment-requests-tab.component';
-import {ITeacherAppointmentModel} from '../../../../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-appointment-model';
+import {ITeachersAppointmentRequestsModel} from '../../../../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-appointment-model';
 
 @Component({
   selector: 'app-chang-time-request',
@@ -21,7 +21,7 @@ export class ChangTimeRequestComponent implements OnInit {
   @ViewChild(AppointmentRequestsTabComponent) teacherAppointmentRequestsTab: AppointmentRequestsTabComponent | undefined;
 
   showTap: string = 'Pending';
-  itemTeacherAppointmentReq: ITeacherAppointmentModel = {};
+  itemTeacherAppointmentReq: ITeachersAppointmentRequestsModel = {};
   openTeacherAppointmentRejectOverlay: boolean = false;
   openTeacherAppointmentAdvancedSearch: boolean = false;
 
@@ -31,7 +31,7 @@ export class ChangTimeRequestComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openRejectRequest(event: ITeacherAppointmentModel) {
+  openRejectRequest(event: ITeachersAppointmentRequestsModel) {
     this.itemTeacherAppointmentReq = event;
     this.openTeacherAppointmentRejectOverlay = !this.openTeacherAppointmentRejectOverlay;
 
