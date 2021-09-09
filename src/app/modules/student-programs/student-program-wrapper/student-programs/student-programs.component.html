@@ -1,23 +1,32 @@
 
-<div class="container-fluid" *ngFor="let program  of programs">
-    <span>{{  program.progName}} -  {{this.translate.currentLang===langEnum.en? program.enBatName : program.arBatName}}</span>
+<div class="container-fluid card_stu_program my-2" *ngFor="let program  of programs">
+        <span class="card_stu_program__name">
+            {{  program.progName}} -  {{this.translate.currentLang===langEnum.en? program.enBatName : program.arBatName}}</span>
+            <div class="col-12 mt-3" *ngIf="program.isProgStarted==true">
+                <p class="card_stu_program__count">مدة الواجب اليومي</p>
+                <p class=" card_stu_program__timer_contDown">
+                {{counterTimer| formatTime}}
+                </p>
+            </div>
+            <div class="col-12 ">
+                <ng-container *ngIf="program.isProgStarted==false">
+                <button  class="card_stu_program__Day_tasks mb-3 mt-2"
+                  (click)="startProgram(program?.batId,program?.id,program?.noofDutyDays,program.isDaysRequested)">
+                  <!-- <img src="../../../../../assets/images/student-program/book.svg" class="card_stu_program__bookIcon"> -->
+                  {{ 'STUDENT_DAY_TASKS.START' | translate }}
+                </button>
+                </ng-container>
+            </div>
+     
+            <div class="col-12">
+                <button   class="card_stu_program__Day_tasks"
+                [disabled]="program.isProgStarted==false" 
+                (click)="goToHomeWore(program?.batId)">
+                <img src="../../../../../assets/images/student-program/book.svg" class="card_stu_program__bookIcon">
 
-    <!-- isProgStarted:{{program.isProgStarted}}
-    isDaysRequested:{{program.isDaysRequested}} -->
-    <!-- <div  class="row" *ngIf="program.isProgStarted==true">
-        RemainingTime:{{program.remainingTime}}
-        </div> -->
-        <div class="col-10  mt-4" *ngIf="program.isProgStarted==true">
-            <p class=" timer_contDown">
-             {{counterTimer| formatTime}}
-            </p>
-           </div>
- <div  class="row" *ngIf="program.isProgStarted==false">
-<button (click)="startProgram(program?.batId,program?.id,program?.noofDutyDays,program.isDaysRequested)">{{ 'STUDENT_DAY_TASKS.START' | translate }}</button>
-</div>
-<div class="row">
-    <button [disabled]="program.isProgStarted==false" (click)="goToHomeWore(program?.batId)">{{ 'STUDENT_DAY_TASKS.DAILY_HOMEWORK' | translate }}</button>
-</div>
+                {{ 'STUDENT_DAY_TASKS.DAILY_HOMEWORK' | translate }}
+            </button>
+            </div>
 </div>
 <div class="overlay" *ngIf="isShowAddStuDutyDaysToProgram">
     <app-add-stu-duty-days-to-program [startStudentBatchRequest]="startStudentBatchRequest"
