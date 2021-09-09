@@ -25,6 +25,7 @@ export interface ITeacherAppointmentModel {
 
     export interface ITeachersAppointmentRequestsModel
     {
+         avatarLink?: string;
          reqId?:string;
          usrId?:string;
          usrNameAr?:string;
@@ -32,8 +33,8 @@ export interface ITeacherAppointmentModel {
          checked?:boolean;
          reqDate?:string
          rejReason?:string | undefined
-         availableTimeRequests?: IAvailableTimeRequests | undefined;
-         teacherAvailableTimes?: IAvailableTimeRequests | undefined;
+         availableTimeRequests?: IAvailableTimeRequests[];
+         teacherAvailableTimes?: IAvailableTimeRequests[];
     }
     export interface IAvailableTimeRequests
     {

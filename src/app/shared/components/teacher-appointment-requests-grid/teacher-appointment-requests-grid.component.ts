@@ -9,7 +9,7 @@ import {ITeacherAppointmentFilterRequestModel} from '../../../core/interfaces/te
 
 @Component({
   selector: 'app-teacher-appointment-requests-grid',
-  templateUrl: './teacher-appointment-requests-grid.component.html',
+  templateUrl: './teacher-appointment-requests-grid.component.html', 
   styleUrls: ['./teacher-appointment-requests-grid.component.scss']
 })
 export class TeacherAppointmentRequestsGridComponent implements OnInit {

@@ -1,3 +1,4 @@
+<ng-container *ngIf="teacherAppointmentModel">
 <div class="card-request" [ngClass]="{'h_accepted': typeEnum !== tabTypeSelected.Pending}">
   <div class="card_header align-items-center">
     <section class="example-section mt-2">
@@ -10,12 +11,12 @@
 
       <span>&nbsp;</span>
       <span>&nbsp;</span>
-      <span>{{teacherAppointmentModel.requestDate  | date: 'dd/MM/yyyy'}}</span>
+      <span>{{teacherAppointmentModel.reqDate  | date: 'dd/MM/yyyy'}}</span>
     </div>
   </div>
 
   <div class="card_body">
-    <div class="d-flex justify-content-between mb-1">
+    <div class="d-flex justify-content-between mb-1"> 
 
       <img *ngIf='!teacherAppointmentModel.avatarLink' class="img_user cursor-pointer"
            src="../../../../assets/images/student/user-profile.svg">
@@ -26,10 +27,7 @@
         <p class="name_user bold mb-2 ellipsis p-0"
            title="{{teacherAppointmentModel.usrNameAr}}">{{teacherAppointmentModel.usrNameAr}}</p>
         <!-- <p class="program_user bold mb-2 "> {{studentSubscripModel.progName}}</p> -->
-        <p class="program_user bold mb-2 ellipsis p-0"
-           title="{{translate.currentLang === langEnum.en ? teacherAppointmentModel.enProgBatchName: teacherAppointmentModel.arProgBatchName}}"
-        > {{translate.currentLang === langEnum.en ? teacherAppointmentModel.enProgBatchName : teacherAppointmentModel.arProgBatchName}}</p>
-      </div>
+        </div>
 
 
       <div class="d-flex">
@@ -55,7 +53,7 @@
     </ng-container>
 
 
-  </div>
+  </div> 
 
   <ng-container *ngIf="typeEnum === tabTypeSelected.Pending ">
     <div class="body_footer">
@@ -66,3 +64,4 @@
     </div>
   </ng-container>
 </div>
+</ng-container>
