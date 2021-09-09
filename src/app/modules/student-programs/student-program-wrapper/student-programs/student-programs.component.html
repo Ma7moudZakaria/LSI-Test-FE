@@ -13,14 +13,14 @@
             </p>
            </div>
  <div  class="row" *ngIf="program.isProgStarted==false">
-<button (click)="startProgram(program.isDaysRequested)">{{ 'STUDENT_DAY_TASKS.START' | translate }}</button>
+<button (click)="startProgram(program?.batId,program?.id,program?.noofDutyDays,program.isDaysRequested)">{{ 'STUDENT_DAY_TASKS.START' | translate }}</button>
 </div>
 <div class="row">
     <button [disabled]="program.isProgStarted==false" (click)="goToHomeWore(program?.batId)">{{ 'STUDENT_DAY_TASKS.DAILY_HOMEWORK' | translate }}</button>
 </div>
 </div>
 <div class="overlay" *ngIf="isShowAddStuDutyDaysToProgram">
-    <app-add-stu-duty-days-to-program
+    <app-add-stu-duty-days-to-program [startStudentBatchRequest]="startStudentBatchRequest"
     (closeDayTasks)='closeAddStuDutyDaysToProgramOverlay($event)'
     ></app-add-stu-duty-days-to-program>
 </div>

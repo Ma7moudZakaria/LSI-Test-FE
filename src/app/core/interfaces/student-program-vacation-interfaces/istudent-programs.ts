@@ -11,4 +11,5 @@ export interface IStudentPrograms {
   isProgStarted?:boolean;
   isDaysRequested?:boolean;
   remainingTime:Time
+  noofDutyDays?:number;
 }

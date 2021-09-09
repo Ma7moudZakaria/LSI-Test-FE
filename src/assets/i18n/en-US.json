@@ -899,6 +899,7 @@
   "STUDENT_DAY_TASKS":{
     "DAILY_HOMEWORK": "Daily Homework ",
     "START":"Start",
-    "ADD_DAY": "Add day"
+    "ADD_DAY": "Add day",
+    "ENTER_DAY":"The days are not less or more than  "
   }
 }
