@@ -19,15 +19,15 @@
     <app-program-day-task-tasmea *ngIf="detailsTypeEnum.TaskTasmea===taskDetails?.huffazTask" [tasmeaModel]="tasmeaModel" [dutyDaysTaskViewMood]='programDutyDaysTaskViewMoodEnum.student'></app-program-day-task-tasmea> 
      <app-join-exam *ngIf="detailsTypeEnum.TaskTestPhased===taskDetails?.huffazTask" [joinExamModel]="testPhasedDetailsModel"  (isSubmitExam)="yes()"></app-join-exam>
      <section *ngIf="detailsTypeEnum.TaskRecitation!=taskDetails?.huffazTask && detailsTypeEnum.TaskRecitationStudents!=taskDetails?.huffazTask && detailsTypeEnum.TaskTasmea!=taskDetails?.huffazTask">
-        <div  *ngIf="detailsTypeEnum.TaskDailyTest!=taskDetails?.huffazTask && detailsTypeEnum.TaskTestPhased != taskDetails?.huffazTask"   class="row direction-rtl buttons-center justify-content-end">
+        <div  *ngIf="detailsTypeEnum.TaskDailyTest!=taskDetails?.huffazTask && detailsTypeEnum.TaskTestPhased != taskDetails?.huffazTask &&taskDetails?.answered==false"   class="row direction-rtl buttons-center justify-content-end">
             <!-- <button *ngIf="detailsTypeEnum.TaskDailyTest!=taskDetails?.huffazTask && detailsTypeEnum.TaskTestPhased != taskDetails?.huffazTask"   type="submit" class="save-btn" (click)="save()" > 
                 {{ "GENERAL.SAVE" | translate }}
             </button> -->
 
-            <button [disabled]="taskDetails?.answered==true"  type="submit" class="cancel-btn" (click)="yes()"> 
-                {{ "GENERAL.YES" | translate }}
+            <button   type="submit" class="cancel-btn" (click)="yes()"> 
+                {{ "GENERAL.YES" | translate }} 
               </button>
-              <button   type="reset" [disabled]="isMndatory==true || taskDetails?.answered==true" class="btn_replay mx-3" (click)="no()"> 
+              <button   type="reset" [disabled]="isMndatory==true" class="btn_replay mx-3" (click)="no()"> 
                   {{ "GENERAL.NO" | translate }}
               </button>
         </div>

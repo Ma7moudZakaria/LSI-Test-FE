@@ -46,7 +46,11 @@ export class StudentProgramDutyDaysTaskComponent implements OnInit {
     this.studentProgDutiesServiceService.getDayTasksProgramToStudent(model).subscribe(res => {
       if (res.isSuccess) {
         this.programDayTasksLists = res.data as Array<IProgramDayTasksModel>;
-        this.setProgrmeDayTask(this.programDayTasksLists[0])
+        let index=this.programDayTasksLists.findIndex(x=>x.answered===false);
+        if(!index)
+       {this.setProgrmeDayTask(this.programDayTasksLists[index]);
+        this.defaultSelectedDay=index;}
+        else{this.setProgrmeDayTask(this.programDayTasksLists[0]);} 
       }
       else {
         this.resMessage =

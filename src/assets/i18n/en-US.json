@@ -941,6 +941,7 @@
     "DAILY_HOMEWORK": "Daily Homework ",
     "START":"Start",
     "ADD_DAY": "Add day",
-    "ENTER_DAY":"The days are not less or more than  "
+    "ENTER_DAY":"The days are not less or more than  ",
+     "HOMEWORK_DURATION": "Homework  Duration at day"
   }
 }

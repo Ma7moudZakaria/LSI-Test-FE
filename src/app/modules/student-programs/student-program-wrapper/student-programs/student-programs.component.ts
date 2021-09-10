@@ -48,14 +48,17 @@ export class StudentProgramsComponent implements OnInit {
     this.studentProgramSubscriptionService.getStudentPrograms(this.programFilter).subscribe(
       (res: BaseResponseModel) => {
          this.programs = res.data as IStudentPrograms[] ;
-        // this.counterTimer = this.currentQuestion?.time ? this.currentQuestion?.time * 60 : 0;
-      // this.countDown = timer(0, this.tick).subscribe(() => {
-      //   --this.counterTimer;
-      //   if (this.counterTimer == 0) {
-      //    // this.NextQuestion();
-      //   }
-      // }
-      // );
+        
+      this.countDown = timer(0, this.tick).subscribe(() => {
+        this.programs?.forEach(element => {
+         if(element.remainingTimeInNumbers) --element.remainingTimeInNumbers;
+    });
+        //--this.counterTimer;
+        if (this.counterTimer == 0) {
+         // this.NextQuestion();
+        }
+      }
+      );
       }, error => {
         this.alertify.error(error)
       }

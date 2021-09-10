@@ -12,4 +12,5 @@ export interface IStudentPrograms {
   isDaysRequested?:boolean;
   remainingTime:Time
   noofDutyDays?:number;
+  remainingTimeInNumbers?:number;
 }
