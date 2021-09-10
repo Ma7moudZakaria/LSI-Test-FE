@@ -30,7 +30,10 @@ export class StudentProgDutiesComponent implements OnInit {
 
   sendTaskIdToProgDayTaskDetails(item?:IProgramDayTasksModel){
     this.taskDetails=item;
-  //  this.progamDetails=this.progDetails;
+  }
+
+  loadTask(){
+    this.progDayTaskChild?.getProgramDutyDays();
   }
 
 }

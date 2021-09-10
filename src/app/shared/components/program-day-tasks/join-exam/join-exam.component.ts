@@ -18,6 +18,7 @@ export class JoinExamComponent implements OnInit {
   @Output() isSubmitExam = new EventEmitter<boolean>();
   @Input() joinExamModel: IExam | undefined 
   @Input() isView: boolean = false;
+  @Input() answered?: boolean = false;
   examJson: string | undefined;
   voiceUrl: string | undefined;
   resultMessage: BaseMessageModel = {};

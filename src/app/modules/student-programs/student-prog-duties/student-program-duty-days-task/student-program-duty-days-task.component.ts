@@ -37,7 +37,7 @@ export class StudentProgramDutyDaysTaskComponent implements OnInit {
   }
 
   getProgramDutyDays() {
-
+    this.programDayTasksLists =[];
     let model : IDayTasksProgramDutyDayRequestModel  = {
       stuId:this.route.snapshot.params.id,
       progDayId:this.programDutyDay?.id 
@@ -47,10 +47,10 @@ export class StudentProgramDutyDaysTaskComponent implements OnInit {
       if (res.isSuccess) {
         this.programDayTasksLists = res.data as Array<IProgramDayTasksModel>;
         let index=this.programDayTasksLists.findIndex(x=>x.answered===false);
-        if(!index)
+        if(index>=0)
        {this.setProgrmeDayTask(this.programDayTasksLists[index]);
         this.defaultSelectedDay=index;}
-        else{this.setProgrmeDayTask(this.programDayTasksLists[0]);} 
+        else{this.setProgrmeDayTask(this.programDayTasksLists[0]);  this.defaultSelectedDay=0;} 
       }
       else {
         this.resMessage =

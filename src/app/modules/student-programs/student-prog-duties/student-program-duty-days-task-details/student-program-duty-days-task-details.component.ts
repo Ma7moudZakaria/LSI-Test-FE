@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
@@ -28,7 +28,7 @@ import { StudentProgDutiesServiceService } from 'src/app/core/services/student-p
   styleUrls: ['./student-program-duty-days-task-details.component.scss']
 })
 export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
-
+  @Output() taskIsSaveEvent = new EventEmitter<boolean>();
   @Input() taskDetails: IProgramDayTasksModel | undefined;
   @Input() progamDetails: IProgramDetails | undefined;
   detailsTypeEnum = ProgramDayTasksDetails;
@@ -135,11 +135,15 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
 yes(){
   this.isAnswer=true;
   this.save();
+  this.taskIsSave();
 }
+
 no(){
   this.isAnswer=false;
   this.save();
+  this.taskIsSave();
 }
+
   save(){
     this.resultMessage = {}; 
     let model : ISubmitStudentDutyDayTaskModel  = {
@@ -178,5 +182,7 @@ no(){
       }
     });
   }
-
+  
+  taskIsSave(){ this.taskIsSaveEvent.emit()}
+  
 }
