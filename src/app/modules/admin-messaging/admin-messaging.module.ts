@@ -49,6 +49,8 @@ import { GroupViewComponent } from './components/chat-view/group-view/group-view
 import { ChatDetailsComponent } from './components/chat-view/chat-details/chat-details.component';
 import { GroupDetailsComponent } from './components/chat-view/group-details/group-details.component';
 import { AddGroupComponent } from './components/chat-view/add-group/add-group.component';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatListModule } from '@angular/material/list';
 
 // @NgModule({
 //   declarations: [AdminMessagingViewComponent, ScientificProblemsComponent, AddScientifiProblemReplyComponent,
@@ -75,7 +77,9 @@ import { AddGroupComponent } from './components/chat-view/add-group/add-group.co
     TranslateModule,
     SharedModule,
     MatIconModule,
-    AdminMessagingRoutingModule
+    AdminMessagingRoutingModule,
+    MatTreeModule,
+    MatListModule
   ]
 })
 export class AdminMessagingModule { }

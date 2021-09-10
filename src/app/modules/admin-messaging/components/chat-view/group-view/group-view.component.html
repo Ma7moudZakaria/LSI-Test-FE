@@ -2,12 +2,18 @@
 
 <div class="list-group teacher-list-request">
 
-    <p class="mb-3"> {{'TEACHER_SUBSCRIBERS.SUBSCRIBERS' | translate}} </p>
+    <p class="mb-3"> الرسائل </p>
 
+    <a (click)="showAdd()">
+        {{ "Role_Management.ADD_GROUP" | translate }} <i class="fas fa-plus"></i>
+      </a>
+      
     <div class="internal_scroll_list_group">
         <!-- <a class="list-group-item d-flex" [class.active]="selectedIndex = i">  -->
         <a class="list-group-item d-flex" *ngFor="let groupOfItem of listOfGroups; let i = index">
-            <span> {{ groupOfItem.group_name }} </span>        
+            <span> {{ groupOfItem.group_name }} </span>       
+            <span> {{ groupOfItem.last_message }} </span>      
+            <span> {{ groupOfItem.last_date | date: 'dd/MM/yyyy HH:mm:ss' }} </span>       
             <!-- <span> {{ this.listOfMessages[0] }} </span>         -->
         </a>
     </div>

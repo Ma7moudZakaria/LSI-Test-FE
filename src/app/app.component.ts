@@ -16,6 +16,8 @@ const config = {
   measurementId: "G-CG7X412XTV"
 };
 
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -28,11 +30,18 @@ export class AppComponent implements OnInit{
   constructor(public translate:TranslateService, 
     private router: Router,
     private langService: LanguageService){
-      firebase.initializeApp(config);
+      // firebase.initializeApp(config);
+    // // Get a reference to the database service
+    // var database = firebase.database();
     }
 
   ngOnInit(): void {
     this.langService.initLang();
+
+    firebase.initializeApp(config);
+  
+    // Get a reference to the database service
+    var database = firebase.database();
   }
 
   showHeader(){

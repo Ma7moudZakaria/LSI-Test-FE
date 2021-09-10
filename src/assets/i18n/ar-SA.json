@@ -906,5 +906,17 @@
     "REJECT_REASON":"سبب الرفض",
     "STUDENT_REJECTED": "سيتم رفض طلب انسحاب الطالب ",
     "REJECT_REASON_LENGHT":"السبب يجب أن يكون اقل من أو يساوى 256 حرف"
+  },
+  "CHAT_GROUP":{
+    "GROUP_NAME_AR":"إسم المجموعة بالعربى",
+    "GROUP_NAME_AR_REQUIRED":"إسم المجموعة بالعربى مطلوب",
+    "GROUP_NAME_AR_MAX_LENGHT":"إسم المجموعة بالعربى يجب أن يكون أقل من 256 حرف",
+    "GROUP_NAME_EN":"إسم المجموعة بالإنجليزى",
+    "GROUP_NAME_EN_REQUIRED":"إسم المجموعة بالإنجليزى مطلوب",
+    "GROUP_NAME_EN_MAX_LENGHT":"إسم المجموعة بالإنجليزى  يجب أن يكون أقل من 256 حرف",
+    "GROUP_IS_EXIST":"المجموعة مسجلة من قبل",
+    "GROUP_NOT_CREATED":"المجموعة لم يتم إضافتها من قبل",
+    "ADD_NEW_GROUP":"إنشاء مجموعة جديدة",
+    "USERS":"اختر أعضاء المجموعة"
   }
 }
