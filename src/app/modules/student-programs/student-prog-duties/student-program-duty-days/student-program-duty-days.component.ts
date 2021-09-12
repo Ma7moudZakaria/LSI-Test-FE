@@ -52,7 +52,8 @@ export class StudentProgramDutyDaysComponent implements OnInit {
           this.isCurrindex=this.studentProgramDutiesList.findIndex(x=>x.isCurr===true);
           if(this.isCurrindex>=0)
          {this.onDayClick(this.studentProgramDutiesList[this.isCurrindex]); this.defaultSelectedDay=this.isCurrindex;} 
-         else{this.onDayClick(this.studentProgramDutiesList[0]); this.defaultSelectedDay=0;}
+         else{this.isCurrindex=this.studentProgramDutiesList.findIndex(x=>x.isNex===true) -1;
+           this.onDayClick(this.studentProgramDutiesList[0]); this.defaultSelectedDay=0;}
         }
         else {
           this.resMessage = {
