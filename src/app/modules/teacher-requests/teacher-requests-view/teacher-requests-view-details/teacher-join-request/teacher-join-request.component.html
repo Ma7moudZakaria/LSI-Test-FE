@@ -21,15 +21,17 @@
     {{ 'GENERAL.NO_DATA' | translate}}
   </div>
   <section *ngIf="this.studProgsSubsItems .length > 0" class="internal_scroll_list_group">
-    <app-program-subscription-grid [typeEnum]='statusEnum.Rejected'
-                                   [studentItems]='studProgsSubsItems'
-                                   (studentFilterEvent)="stuRejectedChangePage($event)"
+    <app-program-subscription-grid [typeTeacheEnum]='statusEnum.Empty'
+                                   [teacherItems]='studProgsSubsItems'
+                                   (teacherFilterEvent)="stuRejectedChangePage($event)"
                                    [totalCount]='totalCount'
-                                   (studentIdFormGrid)= "sendUserIDEvent($event)">
+                                   (teacherIdFormGrid)= "sendUserIDEvent($event)"
+                                  [userMode]='userMode'
+                                   >
     </app-program-subscription-grid>
   </section>
 
 </div>
-
+ <!-- [userMode]='userMode' -->
 
 

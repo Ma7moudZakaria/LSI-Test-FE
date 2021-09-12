@@ -8,4 +8,5 @@ export enum StudentProgramSubscriptionStatusEnum {
     Rejected = 6,
     PredefinedconditoinFailure = 7,
     NoPredefinedconditoin = 8,
+    empty = 9 //status for FE only and needn't in BE at all
 }

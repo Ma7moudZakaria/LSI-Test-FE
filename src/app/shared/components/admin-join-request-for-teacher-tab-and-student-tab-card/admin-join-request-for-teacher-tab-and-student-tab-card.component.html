@@ -18,9 +18,9 @@
       <div class="d-flex align-items-center justify-content-between " >
       <p class="program__num mb-2  mr-3 ml-3">{{ translate.currentLang == langEnum.en ? studentSubscripModel?.usrNameEn : studentSubscripModel?.usrNameAr}}</p>
         <span class="status mb-0"
-         [ngClass]="{ 'accept' : studentSubscripModel.programStaNum == tabTypeSelected.Accept ,
-                                  'pending' : studentSubscripModel.programStaNum == tabTypeSelected.Pending ,
-                                  'rejected' : studentSubscripModel.programStaNum == tabTypeSelected.Rejected
+         [ngClass]="{ 'accept' : studentSubscripModel.statusNum == tabTypeSelected.Accept ,
+                                  'pending' : studentSubscripModel.statusNum == tabTypeSelected.Pending ,
+                                  'rejected' : studentSubscripModel.statusNum == tabTypeSelected.Rejected
                                   }">
         </span>
       </div>
@@ -36,8 +36,8 @@
       </span>
       <!-- <p class="program_user bold mb-0 "  *ngIf="studentSubscripModel.reason">{{'GENERAL_DROP_OUT_REQUEST.NO_DATA' | translate}} </p> -->
       <!-- <p class="program_user bold mb-2 ">{{ studentSubscripModel.reason }}</p> -->
-      <p class="program__admin"   *ngIf="!studentSubscripModel.reasonReject " >{{'GENERAL_DROP_OUT_REQUEST.NO_DATA' | translate}} </p>
-      <p class="program__answer "  *ngIf="studentSubscripModel.reasonReject ">{{studentSubscripModel.reasonReject}}</p>
+      <p class="program__admin"   *ngIf="!studentSubscripModel.rejReas " >{{'GENERAL_DROP_OUT_REQUEST.NO_DATA' | translate}} </p>
+      <p class="program__answer "  *ngIf="studentSubscripModel.rejReas ">{{studentSubscripModel.rejReas}}</p>
     
     
     </div>
@@ -85,8 +85,8 @@
         </span>
         <!-- <p class="program_user bold mb-0 "  *ngIf="teacherSubscripModel.reason">{{'GENERAL_DROP_OUT_REQUEST.NO_DATA' | translate}} </p> -->
         <!-- <p class="program_user bold mb-2 ">{{ teacherSubscripModel.reason }}</p> -->
-        <p class="program__admin"   *ngIf="!teacherSubscripModel.reasonReject " >{{'GENERAL_DROP_OUT_REQUEST.NO_DATA' | translate}} </p>
-        <p class="program__answer "  *ngIf="teacherSubscripModel.reasonReject ">{{teacherSubscripModel.reasonReject}}</p>
+        <p class="program__admin"   *ngIf="!teacherSubscripModel.rejReas " >{{'GENERAL_DROP_OUT_REQUEST.NO_DATA' | translate}} </p>
+        <p class="program__answer "  *ngIf="teacherSubscripModel.rejReas ">{{teacherSubscripModel.rejReas}}</p>
       
       
       </div>

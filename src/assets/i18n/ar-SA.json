@@ -81,9 +81,9 @@
     "ACTIVE": "نشط",
     "QUESTION": "السؤال",
     "NEXT": "التالى",
-    "ADD_TEACHER_PROGRAM":"إضافة برنامج للمعلم",
-    "BATCH_REQUIRED":"برنامج المعلم مطلوب",
-    "ADD_TEACHER_PROGRAM_SUCCESS":"تم الإضافة بنجاح"
+    "ADD_TEACHER_PROGRAM": "إضافة برنامج للمعلم",
+    "BATCH_REQUIRED": "برنامج المعلم مطلوب",
+    "ADD_TEACHER_PROGRAM_SUCCESS": "تم الإضافة بنجاح"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
@@ -788,7 +788,7 @@
     "NEW_JOIN_REQUESTS": "الطلبات الجديدة",
     "ACCEPTANCE_REQUESTS": "الطلبات المقبولة",
     "REJECTANCE_REQUESTS": "الطلبات المرفوضة",
-    "JOIN_REQUESTS": "طلبات الانضمام",
+    "JOIN_REQUESTS": "طلبات الانضمام للمنصة",
     "JOIN_REQUESTS_FOR_PROGRAM": "طلبات الانضمام للبرنامج",
     "CANCEL_REQUESTS": "طلبات الانسحاب",
     "AVAILABLE_CHANGE_TIME_REQUESTS": "طلبات تغير الوقت المتاحه",

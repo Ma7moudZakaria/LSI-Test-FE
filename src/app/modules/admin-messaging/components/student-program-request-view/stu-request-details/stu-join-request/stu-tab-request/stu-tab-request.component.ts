@@ -9,7 +9,11 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
-import {ITeacherStudentViewModel} from '../../../../../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
+import { ITeacherStudentViewModel } from '../../../../../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
+import { TeacheProgramSubscriptionStatusEnum } from 'src/app/core/enums/teacher-subscription-enums/teache-program-subscription-status-enum.enum';
+import { DropOutRoleEnum } from 'src/app/core/enums/drop-out-request-enums/drop-out-status.enum';
+import { RoleEnum } from 'src/app/core/enums/role-enum.enum';
+import { ProgramSubscriptionUsersEnum } from 'src/app/core/enums/program-subscription-users-enum.enum';
 
 @Component({
   selector: 'app-stu-tab-request',
@@ -33,7 +37,7 @@ export class StuTabRequestComponent implements OnInit {
   studProgsSubsItems: IStudentSubscriptionModel[] = [];
   totalCount = 0;
   sendUserID: ITeacherStudentViewModel | undefined;
-  showUserDetailsView:boolean = false;
+  showUserDetailsView: boolean = false;
   constructor(private progSubsService: StudentProgramSubscriptionServicesService,
     public translate: TranslateService,
     private alertify: AlertifyService) {
@@ -43,8 +47,8 @@ export class StuTabRequestComponent implements OnInit {
 
     this.onPendingChange();
   }
-  sendUserIDEvent(event: ITeacherStudentViewModel | undefined){
-    this.sendUserID =event;
+  sendUserIDEvent(event: ITeacherStudentViewModel | undefined) {
+    this.sendUserID = event;
     this.showUserDetailsView = true;
   }
   hideUserDetailsView(event: boolean) {
