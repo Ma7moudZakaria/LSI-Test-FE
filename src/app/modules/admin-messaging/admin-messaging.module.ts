@@ -51,6 +51,9 @@ import { GroupDetailsComponent } from './components/chat-view/group-details/grou
 import { AddGroupComponent } from './components/chat-view/add-group/add-group.component';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatListModule } from '@angular/material/list';
+import { TeacherAppointmentAdvancedSearchComponent } from './components/teacher-program-request-view/teacher-request-details/chang-time-request/teacher-appointment-advanced-search/teacher-appointment-advanced-search.component';
+import { TeacherAppointmentRejectComponent } from './components/teacher-program-request-view/teacher-request-details/chang-time-request/teacher-appointment-reject/teacher-appointment-reject.component';
+import { AppointmentRequestsTabComponent } from './components/teacher-program-request-view/teacher-request-details/chang-time-request/appointment-requests-tab/appointment-requests-tab.component';
 
 // @NgModule({
 //   declarations: [AdminMessagingViewComponent, ScientificProblemsComponent, AddScientifiProblemReplyComponent,
@@ -69,7 +72,8 @@ import { MatListModule } from '@angular/material/list';
     ChangTimeRequestComponent, TeacherJionProgramTabRequestComponent, StuVacationsRequestComponent, StuMovingRequestComponent
         , TeacherJionTabRequestComponent, StuRejectedComponent, TeacheRejectedComponent, AdvancedSearchTeacherComponent, TeacherSystemSubscriptionRejectedComponent, StudentVacationRequestTabComponent, StudentProgramVacationRejectComponent, StudentProgramVacationAdvancedSearchComponent
         , TeacherDropOutTabRequestComponent, TeacherDropOutRequestRejectedComponent, StudentAdminDropOutRequestComponent, StudentDropOutTabRequestComponent,
-        StudentDropOutRequestRejectedComponent, StudentAdvancedSearchComponent, ChatViewComponent, GroupViewComponent, ChatDetailsComponent, GroupDetailsComponent, AddGroupComponent],
+        StudentDropOutRequestRejectedComponent, StudentAdvancedSearchComponent, ChatViewComponent, GroupViewComponent, ChatDetailsComponent, GroupDetailsComponent, AddGroupComponent,
+        TeacherAppointmentAdvancedSearchComponent, TeacherAppointmentRejectComponent, AppointmentRequestsTabComponent],
   imports: [
     CommonModule,
     FormsModule,

@@ -1,0 +1,67 @@
+<ng-container *ngIf="teacherAppointmentModel">
+<div class="card-request" [ngClass]="{'h_accepted': typeEnum !== tabTypeSelected.Pending}">
+  <div class="card_header align-items-center">
+    <section class="example-section mt-2">
+      <mat-checkbox [(ngModel)]="teacherAppointmentModel.checked" (ngModelChange)="updateAllItemsCheckedCall()"
+                    class="example-margin"></mat-checkbox>
+    </section>
+
+    <div >
+      <span> {{'STUDENT_SUBSCRIBERS.TIME' | translate}} </span>
+
+      <span>&nbsp;</span>
+      <span>&nbsp;</span>
+      <span>{{teacherAppointmentModel.reqDate  | date: 'dd/MM/yyyy'}}</span>
+    </div>
+  </div>
+
+  <div class="card_body">
+    <div class="d-flex justify-content-between mb-1"> 
+
+      <img *ngIf='!teacherAppointmentModel.avatarLink' class="img_user cursor-pointer"
+           src="../../../../assets/images/student/user-profile.svg">
+      <img *ngIf='teacherAppointmentModel.avatarLink' class="img_user cursor-pointer"
+           src="{{teacherAppointmentModel.avatarLink}}">
+      <div class="mx-1 d-inline-block">
+        <p class="number_request mb-1 "> {{teacherAppointmentModel.avatarLink}}</p>
+        <p class="name_user bold mb-2 ellipsis p-0"
+           title="{{teacherAppointmentModel.usrNameAr}}">{{teacherAppointmentModel.usrNameAr}}</p>
+        <!-- <p class="program_user bold mb-2 "> {{studentSubscripModel.progName}}</p> -->
+        </div>
+
+
+      <div class="d-flex">
+        <a><img src="../../../../../assets/images/chat.svg"></a>
+      </div>
+    </div>
+    <div class="container_time">
+      <span class="number_request"> {{'TEACHER_APPOINTMENT.OLD_TIMES' | translate}} </span><br>
+      <div *ngFor="let time of teacherAppointmentModel.teacherAvailableTimes" class="d-flex align-items-center justify-content-between">
+        <span class="bold">{{translate.currentLang === langEnum.en ? time.dayNameEn: time.dayNameAr}} {{'TEACHER_APPOINTMENT.FROM' | translate}}  {{time.from}}  {{'TEACHER_APPOINTMENT.TO' | translate}}  {{time.to}}</span>
+      </div>
+      <span class="number_request"> {{'TEACHER_APPOINTMENT.NEW_TIMES' | translate}} </span><br>
+            <div *ngFor="let newTime of teacherAppointmentModel.availableTimeRequests" class="d-flex align-items-center justify-content-between">
+              <span class="bold">{{translate.currentLang === langEnum.en ? newTime.dayNameEn: newTime.dayNameAr}} {{'TEACHER_APPOINTMENT.FROM' | translate}}  {{newTime.from}}  {{'TEACHER_APPOINTMENT.TO' | translate}}  {{newTime.to}}</span>
+            </div>
+    </div>
+
+    <ng-container *ngIf="typeEnum === tabTypeSelected.Rejected">
+      <div class="program_rejected " *ngIf="typeEnum === tabTypeSelected.Rejected">
+        <span class="number_request"> {{'STUDENT_VACATION.REJECT_REASON' | translate}} </span><br>
+        <span class="bold">{{teacherAppointmentModel.rejReason}}</span>
+      </div>
+    </ng-container>
+
+
+  </div> 
+
+  <ng-container *ngIf="typeEnum === tabTypeSelected.Pending ">
+    <div class="body_footer">
+      <button (click)="acceptTeacherAppointmentReq()" 
+              class="btn cancel-btn"> {{'STUDENT_SUBSCRIBERS.ACCEPT' | translate}}  </button>
+      <button (click)="rejectedTeacherAppointmentReq()"
+              class=" btn save-btn">   {{'STUDENT_SUBSCRIBERS.REJECT' | translate}}</button>
+    </div>
+  </ng-container>
+</div>
+</ng-container>

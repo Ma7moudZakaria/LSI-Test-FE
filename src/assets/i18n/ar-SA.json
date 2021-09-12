@@ -423,7 +423,7 @@
     "LEAVE_RECITATION_VIEW": "اجازة تلاوة ",
     "TYPE_READING": "بأي قراءة ؟",
     "LANGUAGES": "اللغات",
-    "AVAILABLE_PROGRAMS_AND_TIMES": "البرامج و الاوقات المتاحة",
+    "AVAILABLE_PROGRAMS_AND_TIMES": "المواعيد المتاحة",
     "WORK_PLATFORM": "العمل في المنصه",
     "VOLUNTEER": "تطوعي",
     "TOGET_REWARD": "مفابل مكافئة",
@@ -948,5 +948,17 @@
   },
   "JPIN_EXAM": {
     "ARE_YOU_FINISHED_EXAM": "هل تم الانتهاء من الاجابة ؟"
+  },
+  "TEACHER_APPOINTMENT": {
+    "NEW_TIMES": "المواعيد الجديدة",
+    "FROM": "من",
+    "TO": "الى",
+    "OLD_TIMES": "المواعيد القديمة",
+    "MODIFY_APPOINTMENT": "طلب تغيير المواعيد",
+    "ADD_APPOINTMENT": "اضافة طلب تغيير المواعيد",
+    "APPOINTMENT_DETAILS": "عرض طلب تغيير المواعيد",
+    "ADVANCED_SEARCH": "بحث متقدم",
+    "REQUEST_OWNER_NAME": " أسم صاحب الطلب"
+
   }
 }

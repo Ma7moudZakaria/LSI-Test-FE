@@ -949,5 +949,16 @@
   },
   "JPIN_EXAM": {
     "ARE_YOU_FINISHED_EXAM": "Are you finished the exam?"
+  },
+  "TEACHER_APPOINTMENT": {
+    "NEW_TIMES": "New Times",
+    "FROM": "FROM",
+    "TO": "To",
+    "OLD_TIMES": "Old Times",
+    "MODIFY_APPOINTMENT": "Appointment change request",
+    "ADD_APPOINTMENT": "Add new Appointment",
+    "APPOINTMENT_DETAILS": "View Appointment",
+    "ADVANCED_SEARCH": "Advanced Search",
+    "REQUEST_OWNER_NAME": "Request Owner Name"
   }
 }

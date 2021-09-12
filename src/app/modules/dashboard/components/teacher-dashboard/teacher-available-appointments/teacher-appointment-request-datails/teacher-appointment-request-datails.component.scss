@@ -1,0 +1,9 @@
+// @import '../add-teacher-appointment-request/add-teacher-appointment-request.component.scss';
+@import '../teacher-available-appointments.component.scss';
+.btn-block{
+    width: 100%;
+}
+.DataForm{
+&:lang(ar){text-align: right;}
+&:lang(en){text-align: left;}
+}

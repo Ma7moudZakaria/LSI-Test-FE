@@ -65,7 +65,6 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { StuCardRequestComponent } from './components/stu-card-request/stu-card-request.component';
 import { TeacherCardRequestComponent } from './components/teacher-card-request/teacher-card-request.component';
 import { ProgramSubscriptionGridComponent } from './components/program-subscription-grid/program-subscription-grid.component';
-import { TeacherStudentProgramForSubscriptionComponent } from './components/teacher-student-program-for-subscription-card/teacher-student-program-for-subscription.component';
 import { TeacherSystemCardRequestComponent } from './components/teacher-system-card-request/teacher-system-card-request.component';
 import { TeacherSystemSubscriptionGridComponent } from './components/teacher-system-subscription-grid/teacher-system-subscription-grid.component';
 import { StudentProgramVacationGridComponent } from './components/student-program-vacation-grid/student-program-vacation-grid.component';
@@ -78,8 +77,6 @@ import { StudentDropOutRequestStudentCardComponent } from './components/student-
 import { StudentDropOutGridComponent } from './components/student-drop-out-grid/student-drop-out-grid.component';
 
 
-import { StudentProgramVacationCardStudentViewComponent } from './components/student-program-vacation-card-student-view/student-program-vacation-card-student-view.component';
-import { TeacherStuProgramForSubscriptionGridComponent } from './components/teacher-stu-program-for-subscription-grid/teacher-stu-program-for-subscription-grid.component';
 import { TeacherDetailsViewComponent } from './components/teacher-details-view/teacher-details-view.component';
 import { StudentDetailsViewComponent } from './components/student-details-view/student-details-view.component';
 import { FormatTimePipe } from '../core/pipe/format-time.pipe';
@@ -90,6 +87,14 @@ import { AdminDropOutRequestForTeacherTabAndStudentTabGridComponent } from './co
 import { AdminVacationRequestForStudentTabGridComponent } from './components/admin-vacation-request-for-student-tab-grid/admin-vacation-request-for-student-tab-grid.component';
 import { AdminVacationRequestForStudentTabCardComponent } from './components/admin-vacation-request-for-student-tab-card/admin-vacation-request-for-student-tab-card.component';
 import { JoinExamComponent } from './components/program-day-tasks/join-exam/join-exam.component';
+import { TeacherAppointmentRequestsGridComponent } from './components/teacher-appointment-requests-grid/teacher-appointment-requests-grid.component';
+import { TeacherAppointmentRequestCardComponent } from './components/teacher-appointment-request-card/teacher-appointment-request-card.component';
+import { TeacherStudentProgramForSubscriptionComponent } from './components/teacher-student-program-for-subscription-card/teacher-student-program-for-subscription.component';
+import { TeacherStuProgramForSubscriptionGridComponent } from './components/teacher-stu-program-for-subscription-grid/teacher-stu-program-for-subscription-grid.component';
+import { StudentProgramVacationCardStudentViewComponent } from './components/student-program-vacation-card-student-view/student-program-vacation-card-student-view.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
     SearchInputComponent, TelInputComponent, MiladyHijriCalendarComponent, UsersCounterComponent, KhatmeenStudentsComponent,
@@ -123,9 +128,7 @@ import { JoinExamComponent } from './components/program-day-tasks/join-exam/join
     TeacherCardRequestComponent,
     ProgramSubscriptionGridComponent,
     TeacherStudentProgramForSubscriptionComponent,
-    TeacherStuProgramForSubscriptionGridComponent
-
-    ,
+    TeacherStuProgramForSubscriptionGridComponent,
     TeacherSystemCardRequestComponent,
     TeacherSystemSubscriptionGridComponent,
     StudentProgramVacationGridComponent,
@@ -145,13 +148,15 @@ import { JoinExamComponent } from './components/program-day-tasks/join-exam/join
     AdminDropOutRequestForTeacherTabAndStudentTabGridComponent,
     AdminVacationRequestForStudentTabGridComponent,
         AdminVacationRequestForStudentTabCardComponent,
-        JoinExamComponent
+        JoinExamComponent,
+        TeacherAppointmentRequestsGridComponent,
+        TeacherAppointmentRequestCardComponent
   ],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,
     MatIconModule, FormsModule, MatCheckboxModule, MatRadioModule, MatGridListModule,
-    NgbModule, MatAutocompleteModule, NgbRatingModule, MatTooltipModule, PdfViewerModule
+    NgbModule, MatAutocompleteModule, NgbRatingModule, MatTooltipModule, PdfViewerModule,MatDatepickerModule, MatNativeDateModule
   ],
 
   exports: [
@@ -178,7 +183,7 @@ import { JoinExamComponent } from './components/program-day-tasks/join-exam/join
     AdminJoinRequestForTeacherTabAndStudentTabCardComponent,
     AdminDropOutRequestForTeacherTabAndStudentTabGridComponent,
       AdminVacationRequestForStudentTabGridComponent, AdminVacationRequestForStudentTabCardComponent,
-      JoinExamComponent
+      JoinExamComponent, TeacherAppointmentRequestsGridComponent,MatDatepickerModule, MatNativeDateModule
 
 
   ]
