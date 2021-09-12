@@ -15,6 +15,9 @@
                     {{'ADMIN_MESSAGING.SCIENTIFIC_PROBLEM' | translate}}
                 </div>
                 
+                <div class="item_group" (click)="showtap='chat'" [ngClass]="{'item_group_active': showtap=='chat'}" >
+                    {{'ADMIN_MESSAGING.CHAT' | translate}}
+                </div>
             </div>
         </div>
     </div>
@@ -22,8 +25,9 @@
         <div class="col-12">
             
             <app-teacher-program-request-view *ngIf='showtap=="teacher"'> </app-teacher-program-request-view>
-           <app-student-program-request-view *ngIf='showtap=="student"'> </app-student-program-request-view>
+            <app-student-program-request-view *ngIf='showtap=="student"'> </app-student-program-request-view>
             <app-scientific-problems-view *ngIf='showtap=="scientificProblem"'></app-scientific-problems-view>
+            <app-chat-view *ngIf='showtap=="chat"'></app-chat-view>
         </div>
     </div>
     <!-- <div class="row">

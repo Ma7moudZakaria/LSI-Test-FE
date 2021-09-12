@@ -79,9 +79,9 @@
     "ACTIVE": "Active",
     "QUESTION": "The question",
     "NEXT": "Next",
-    "ADD_TEACHER_PROGRAM":"Add Program To Teacher ",
-    "BATCH_REQUIRED":"Program Is Required",
-    "ADD_TEACHER_PROGRAM_SUCCESS":"Added Successfully"
+    "ADD_TEACHER_PROGRAM": "Add Program To Teacher ",
+    "BATCH_REQUIRED": "Program Is Required",
+    "ADD_TEACHER_PROGRAM_SUCCESS": "Added Successfully"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
@@ -653,7 +653,8 @@
     "SORT_NAME": "Sort by Name"
   },
   "ADMIN_MESSAGING": {
-    "SCIENTIFIC_PROBLEM": "Scientific Problem"
+    "SCIENTIFIC_PROBLEM": "Scientific Problem",
+    "CHAT": "Chats"
   },
   "NOTIFICATIONS": {
     "AFTER_ASSIGNMENT": "After Not performing",
@@ -933,6 +934,18 @@
     "NEXT": "Next",
     "ANSWER_FINISHED": "Is the answer finished",
     "NO_EXAM": "No Exam Found"
+  },
+  "CHAT_GROUP": {
+    "GROUP_NAME_AR": "Group Name Arabic",
+    "GROUP_NAME_AR_REQUIRED": "Group Name Arabic is Required",
+    "GROUP_NAME_AR_MAX_LENGHT": "Group Name Arabic Must Be Less than 256 character",
+    "GROUP_NAME_EN": "Group Name English",
+    "GROUP_NAME_EN_REQUIRED": "Group Name English is Required",
+    "GROUP_NAME_EN_MAX_LENGHT": "Group Name English Must Be Less than 256 character",
+    "GROUP_IS_EXIST": "Group is already exist",
+    "GROUP_NOT_CREATED": "Group Not Created",
+    "ADD_NEW_GROUP": "Add New Group",
+    "USERS": "Choose Participant"
   },
   "JPIN_EXAM": {
     "ARE_YOU_FINISHED_EXAM": "Are you finished the exam?"

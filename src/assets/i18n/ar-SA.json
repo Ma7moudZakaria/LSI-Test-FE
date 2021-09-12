@@ -81,9 +81,9 @@
     "ACTIVE": "نشط",
     "QUESTION": "السؤال",
     "NEXT": "التالى",
-    "ADD_TEACHER_PROGRAM":"إضافة برنامج للمعلم",
-    "BATCH_REQUIRED":"برنامج المعلم مطلوب",
-    "ADD_TEACHER_PROGRAM_SUCCESS":"تم الإضافة بنجاح"
+    "ADD_TEACHER_PROGRAM": "إضافة برنامج للمعلم",
+    "BATCH_REQUIRED": "برنامج المعلم مطلوب",
+    "ADD_TEACHER_PROGRAM_SUCCESS": "تم الإضافة بنجاح"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "رمز الدخول",
@@ -653,7 +653,8 @@
     "SORT_NAME": "ترتيب بالاسم "
   },
   "ADMIN_MESSAGING": {
-    "SCIENTIFIC_PROBLEM": "إشكال علمى"
+    "SCIENTIFIC_PROBLEM": "إشكال علمى",
+    "CHAT": "الرسائل"
   },
   "NOTIFICATIONS": {
     "AFTER_ASSIGNMENT": "بعد عدم تنفيذ ",
@@ -932,6 +933,18 @@
     "REJECT_REASON": "سبب الرفض",
     "STUDENT_REJECTED": "سيتم رفض طلب انسحاب الطالب ",
     "REJECT_REASON_LENGHT": "السبب يجب أن يكون اقل من أو يساوى 256 حرف"
+  },
+  "CHAT_GROUP": {
+    "GROUP_NAME_AR": "إسم المجموعة بالعربى",
+    "GROUP_NAME_AR_REQUIRED": "إسم المجموعة بالعربى مطلوب",
+    "GROUP_NAME_AR_MAX_LENGHT": "إسم المجموعة بالعربى يجب أن يكون أقل من 256 حرف",
+    "GROUP_NAME_EN": "إسم المجموعة بالإنجليزى",
+    "GROUP_NAME_EN_REQUIRED": "إسم المجموعة بالإنجليزى مطلوب",
+    "GROUP_NAME_EN_MAX_LENGHT": "إسم المجموعة بالإنجليزى  يجب أن يكون أقل من 256 حرف",
+    "GROUP_IS_EXIST": "المجموعة مسجلة من قبل",
+    "GROUP_NOT_CREATED": "المجموعة لم يتم إضافتها من قبل",
+    "ADD_NEW_GROUP": "إنشاء مجموعة جديدة",
+    "USERS": "اختر أعضاء المجموعة"
   },
   "JPIN_EXAM": {
     "ARE_YOU_FINISHED_EXAM": "هل تم الانتهاء من الاجابة ؟"
