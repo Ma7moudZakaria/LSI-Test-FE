@@ -12,6 +12,7 @@ export class ChatViewComponent implements OnInit {
 
   openCreateGroupOverlay: boolean = false;
   createGroupChat = {} as IGroupChat;
+  groupDetails : IGroupChat | undefined;  
 
   constructor() { }
 
@@ -26,7 +27,10 @@ export class ChatViewComponent implements OnInit {
 
   openCreateGroupPopup(event: boolean) {
     this.openCreateGroupOverlay = true;
-    // this.createGroupChat = event
-
   }  
+
+  groupDetailsEvent(event: IGroupChat) {
+    this.groupDetails = event
+    this.groupViewComponent?.getAllGroups();
+  }
 }

@@ -2,7 +2,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-12 pl-0">
-            <app-group-view  (createGroupOverlayEvent)="openCreateGroupPopup($event)"></app-group-view>
+            <app-group-view  (createGroupOverlayEvent)="openCreateGroupPopup($event)" (groupDetailsEvent)="groupDetailsEvent($event)"></app-group-view>
         </div>
 
         <div class="col-lg-3 col-md-3 col-sm-12 pl-0">
@@ -11,6 +11,9 @@
             </div>
         </div>
         
+        <div class="col-lg-3 col-md-3 col-sm-12 pl-0">
+            <app-group-details  [groupDetails]="groupDetails"></app-group-details>
+        </div>
     </div>
 </div>
     

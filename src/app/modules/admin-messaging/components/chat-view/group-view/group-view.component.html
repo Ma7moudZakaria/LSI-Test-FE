@@ -10,7 +10,7 @@
       
     <div class="internal_scroll_list_group">
         <!-- <a class="list-group-item d-flex" [class.active]="selectedIndex = i">  -->
-        <a class="list-group-item d-flex" *ngFor="let groupOfItem of listOfGroups; let i = index">
+        <a class="list-group-item d-flex" *ngFor="let groupOfItem of listOfGroups; let i = index" (click)="showGroupDetails(groupOfItem)">
             <span> {{ groupOfItem.group_name }} </span>       
             <span> {{ groupOfItem.last_message }} </span>      
             <span> {{ groupOfItem.last_date | date: 'dd/MM/yyyy HH:mm:ss' }} </span>      

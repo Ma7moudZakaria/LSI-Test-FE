@@ -41,6 +41,7 @@ export class AddGroupComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
+    this.selectedParticipantsList = [];
     this.callFirebaseToGetParticipants();
     this.buildForm();    
   }
@@ -108,12 +109,13 @@ export class AddGroupComponent implements OnInit {
 
             this.createGroupChat.participants[elm?.id || ''] = {
               id: elm.id , 
-              hoffazId:elm.hoffazId, 
+              hoffazId:"1", 
               gender:elm.gender,
               key:elm.key, 
               role:elm.role,
               name_ar:elm.name_ar,
-              name_en:elm.name_en
+              name_en:elm.name_en,
+              avatar_url:elm.avatar_url == null ? '../../../../../assets/images/Profile.svg' : elm.avatar_url
             }
           }
         });
@@ -130,6 +132,9 @@ export class AddGroupComponent implements OnInit {
 
           // Add Participants To Group
           Array.from(this.selectedParticipantsList).forEach((elm: IParticipantChat) => {
+            if(elm.groups === null || elm.groups === undefined || elm.groups.length === 0){
+              elm.groups = [];
+            }
             elm.groups?.push(this.createGroupChat.key || '');
           });
 
@@ -143,13 +148,15 @@ export class AddGroupComponent implements OnInit {
           });
 
           this.closeCreateGroupOverlayEvent();
-          this.alertify.error("Group Added Successfully");  
+          this.alertify.success("Group Added Successfully");  
         }
       });
     }
   }
 
   addParticipant() {
+   
+
     if (!this.createGroupForm.value.participants) {
       this.participantsMessage = {
         message: this.translate.instant('UPDATE_TEACHER_PG.CHOOSE_TEACHER_REWAYAT'),
