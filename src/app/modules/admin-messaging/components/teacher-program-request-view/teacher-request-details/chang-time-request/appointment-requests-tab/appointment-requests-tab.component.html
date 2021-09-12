@@ -3,7 +3,7 @@
     <div class="col-12  justify-content-end text-right d-flex align-items-center">
       <app-search-input class="mr-3 ml-3" (searchTerm)=searchByText($event)
                         [searchKey]='this.teacherAppointmentFilterRequestModel.usrName || ""'></app-search-input>
-      <a class="advanced_search mb-3" (click)="openAdvancedSearch()">بحث متقدم</a>
+      <a class="advanced_search mb-3" (click)="openAdvancedSearch()"> {{ 'TEACHER_APPOINTMENT.ADVANCED_SEARCH' | translate}}</a>
     </div>
     <div class="col-12">
       <div class="row group_header fix_margin w-100">

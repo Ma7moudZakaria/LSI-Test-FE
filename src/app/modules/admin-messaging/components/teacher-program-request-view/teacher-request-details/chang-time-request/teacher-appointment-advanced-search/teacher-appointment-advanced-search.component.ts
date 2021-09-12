@@ -1,13 +1,10 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {IStudentProgramVacationFilterRequestModel} from '../../../../../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-filter-request-model';
 import {StudentProgramVacationStatusEnum} from '../../../../../../../core/enums/StudentProgramVacationStatus/student-program-vacation-status.enum';
 import {BaseMessageModel} from '../../../../../../../core/ng-model/base-message-model';
 import {BaseSelectedDateModel} from '../../../../../../../core/ng-model/base-selected-date-model';
 import {ProgramService} from '../../../../../../../core/services/program-services/program.service';
 import {DateFormatterService} from 'ngx-hijri-gregorian-datepicker';
 import {TranslateService} from '@ngx-translate/core';
-import {IProgramFilterAdvancedRequest} from '../../../../../../../core/interfaces/programs-interfaces/iprogram-filter-requests';
-import {IprogramsModel} from '../../../../../../../core/interfaces/programs-interfaces/iprograms-model';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import {BaseConstantModel} from '../../../../../../../core/ng-model/base-constant-model';
 import {ITeacherAppointmentFilterRequestModel} from '../../../../../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-appointment-filter-request-model';
@@ -29,15 +26,12 @@ export class TeacherAppointmentAdvancedSearchComponent implements OnInit {
 
   hijri: boolean = false;
   milady: boolean = false;
-  constructor(private programService: ProgramService, private dateFormatterService: DateFormatterService
-    , public translate: TranslateService,
+  constructor(private programService: ProgramService,
+              private dateFormatterService: DateFormatterService,
+              public translate: TranslateService,
   ) { }
-
-  programsbyAdvancedFilter: IProgramFilterAdvancedRequest = { skip: 0, take: 2147483647 };
-  programsList: IprogramsModel[] = [];
   maxGregDate: NgbDateStruct | undefined;
   ngOnInit(): void {
-    this.getAllProgram()
     this.maxGregDate = this.dateFormatterService.GetTodayGregorian()
 
   }
@@ -88,23 +82,6 @@ export class TeacherAppointmentAdvancedSearchComponent implements OnInit {
   }
 
 
-  getAllProgram() {
-    this.programService.getProgramAdvancedFilter(this.programsbyAdvancedFilter || {}).subscribe(res => {
-
-      if (res.isSuccess) {
-        this.programsList = res.data;
-
-      }
-      else {
-
-      }
-    }, error => {
-      this.resultMessage = {
-        message: error,
-        type: BaseConstantModel.DANGER_TYPE
-      }
-    })
-  }
 
 }
 

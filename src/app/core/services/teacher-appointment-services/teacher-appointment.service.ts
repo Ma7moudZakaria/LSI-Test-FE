@@ -38,7 +38,7 @@ export class TeacherAppointmentService {
     return this.http.put<BaseResponseModel>(this.teacherAvailableTimeRequestAcceptanceURL, model);
   }
 
-  cancelTheChangeTeacherAvailableTimeRequest(id?: (string | undefined)[]): Observable<BaseResponseModel> {
+  cancelTheChangeTeacherAvailableTimeRequest(id?: string | undefined): Observable<BaseResponseModel> {
     return this.http.put<BaseResponseModel>(this.cancelTheChangeTeacherAvailableTimeRequestURL+ id , null);
   }
   AddChangeTeacherAvailableTimesRequest(model: IAddTeacherAppointmentRequest): Observable<BaseResponseModel> {

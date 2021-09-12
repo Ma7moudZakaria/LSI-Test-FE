@@ -22,7 +22,7 @@ export class TeacherAppointmentRequestDatailsComponent implements OnInit {
   @Output() closeDetailsRequest = new EventEmitter<ITeacherAppointmentModel>();
   lang = LanguageEnum;
   RouteParams = {} as string;
-  teacherAvailableTimes = [] as ITeacherAppointmentRequestsAppointmentsDetails[];
+  teacherAvailableTimes : ITeacherAppointmentRequestsAppointmentsDetails | undefined;
   currentUser: IUser | undefined;
   resMessage: BaseMessageModel = {};
   currentLang: LanguageEnum | undefined;
@@ -58,7 +58,7 @@ export class TeacherAppointmentRequestDatailsComponent implements OnInit {
   getTeacherAvailableTimesTeacherView() {
     this.teacherAppointmentService.GetTeacherAppointmentRequestAppointments(this.currentUser?.id).subscribe(res => {
       if (res.isSuccess) {
-        this.teacherAvailableTimes = res.data as ITeacherAppointmentRequestsAppointmentsDetails[];
+        this.teacherAvailableTimes = res.data ;
       }
       else {
         this.resMessage =
@@ -80,7 +80,7 @@ export class TeacherAppointmentRequestDatailsComponent implements OnInit {
   }
 
   cancelRequest() {
-      this.teacherAppointmentService.cancelTheChangeTeacherAvailableTimeRequest(this.teacherAvailableTimes.map(value => value.reqId)).subscribe(res => {
+      this.teacherAppointmentService.cancelTheChangeTeacherAvailableTimeRequest(this.teacherAvailableTimes?.reqId).subscribe(res => {
         if (res.isSuccess) {
           this.closeDetailsRequest.emit();
           this.alertify.success(res.message || '');

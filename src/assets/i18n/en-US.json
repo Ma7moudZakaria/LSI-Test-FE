@@ -941,6 +941,8 @@
     "OLD_TIMES": "Old Times",
     "MODIFY_APPOINTMENT":"Appointment change request",
     "ADD_APPOINTMENT": "Add new Appointment",
-    "APPOINTMENT_DETAILS": "View Appointment"
+    "APPOINTMENT_DETAILS": "View Appointment",
+    "ADVANCED_SEARCH": "Advanced Search",
+    "REQUEST_OWNER_NAME": "Request Owner Name"
   }
 }

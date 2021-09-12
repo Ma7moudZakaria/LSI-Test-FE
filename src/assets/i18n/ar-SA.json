@@ -943,6 +943,9 @@
     "OLD_TIMES": "المواعيد القديمة",
     "MODIFY_APPOINTMENT": "طلب تغيير المواعيد",
     "ADD_APPOINTMENT": "اضافة طلب تغيير المواعيد",
-    "APPOINTMENT_DETAILS": "عرض طلب تغيير المواعيد"
+    "APPOINTMENT_DETAILS": "عرض طلب تغيير المواعيد",
+    "ADVANCED_SEARCH": "بحث متقدم",
+    "REQUEST_OWNER_NAME": " أسم صاحب الطلب"
+
   }
 }

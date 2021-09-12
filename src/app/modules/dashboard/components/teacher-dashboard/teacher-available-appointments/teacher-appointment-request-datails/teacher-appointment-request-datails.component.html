@@ -5,7 +5,7 @@
 </div>
 <div class=" times_programs">
 
-      <ng-container *ngFor="let item of teacherAvailableTimes" >
+      <ng-container *ngFor="let item of teacherAvailableTimes?.appointmentRequestDetailsList" >
         <div class="col-12 mb-2 px-0">
           <div class="cardTime mx-3">
               <div *ngIf='translate.currentLang === lang.en' class="d-flex justify-content-between mb-0"

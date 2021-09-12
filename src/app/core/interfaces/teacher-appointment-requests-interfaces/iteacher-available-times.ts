@@ -13,11 +13,15 @@ export interface ITeacherAvailableTimesResponseModel {
 
 }
 export interface ITeacherAppointmentRequestsAppointmentsDetails {
+  appointmentRequestDetailsList?: ITeacherAppointmentRequestDetails [];
+  reqId?: string;
+}
+
+export interface ITeacherAppointmentRequestDetails {
   id?: string;
   no?: string;
   from?: string;
   to?: string;
   dayAr?: string;
   dayEn?: string;
-  reqId?: string;
 }
