@@ -960,5 +960,12 @@
     "APPOINTMENT_DETAILS": "View Appointment",
     "ADVANCED_SEARCH": "Advanced Search",
     "REQUEST_OWNER_NAME": "Request Owner Name"
+  },
+  "STUDENT_DAY_TASKS": {
+    "DAILY_HOMEWORK": "Daily Homework ",
+    "START": "Start",
+    "ADD_DAY": "Add day",
+    "ENTER_DAY": "The days are not less or more than  ",
+    "HOMEWORK_DURATION": "Homework  Duration at day"
   }
 }

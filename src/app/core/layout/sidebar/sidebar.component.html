@@ -106,8 +106,8 @@
                     </a>
                 </li>
                 <li onclick="" class="nav-item" routerLinkActive="active">
-                    <a
-                    [routerLink]="['/home']">
+                    <a *ngIf='!roleService.isAdmin() && (!roleService.isStudent() || roleService.isTeacher())' 
+                    [routerLink] = "['/teacher-programs']">
                         <img src="../../../../assets/images/sidebar/program-icon.png">
                             <span class="container__navigation__title">{{'SIDENAVBAR.MYPROGRAMS' | translate}}</span>
                     </a>
@@ -162,7 +162,6 @@
                 <li class="nav-item " routerLinkActive="active">
                     <a *ngIf='!roleService.isAdmin() && (roleService.isStudent() || !roleService.isTeacher())'
                       [routerLink] = "['/student-programs']">
-
                         <img src="../../../../assets/images/sidebar/program-icon.png">
                             <span class="container__navigation__title">{{'SIDENAVBAR.MYPROGRAMS' | translate}}</span>
                     </a>

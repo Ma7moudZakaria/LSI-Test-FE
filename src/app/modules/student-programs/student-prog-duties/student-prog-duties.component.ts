@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-model';
 import {  IProgramDutyDays } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { StudentProgramDutyDaysTaskComponent } from './student-program-duty-days-task/student-program-duty-days-task.component';
+import { StudentProgramDutyDaysComponent } from './student-program-duty-days/student-program-duty-days.component';
 
 @Component({
   selector: 'app-student-prog-duties',
@@ -11,6 +12,7 @@ import { StudentProgramDutyDaysTaskComponent } from './student-program-duty-days
 export class StudentProgDutiesComponent implements OnInit {
 
   @ViewChild(StudentProgramDutyDaysTaskComponent) progDayTaskChild: StudentProgramDutyDaysTaskComponent | undefined;
+  @ViewChild(StudentProgramDutyDaysComponent) progDayChild: StudentProgramDutyDaysComponent | undefined;
   programDutyDay: IProgramDutyDays | undefined
   taskDetails?:IProgramDayTasksModel;
   
@@ -30,7 +32,12 @@ export class StudentProgDutiesComponent implements OnInit {
 
   sendTaskIdToProgDayTaskDetails(item?:IProgramDayTasksModel){
     this.taskDetails=item;
-  //  this.progamDetails=this.progDetails;
   }
+
+  loadTask(){
+    this.progDayTaskChild?.onTaskChange();
+  }
+
+  loadDay(){this.progDayChild?.onDayChange()}
 
 }

@@ -5,4 +5,5 @@ export interface ISubmitStudentDutyDayTaskModel {
     studId?:string;
     isAnsw?:boolean;
     questionsExam?: IQuestion[];
+    examScore?:number;
 }

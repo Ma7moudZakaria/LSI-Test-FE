@@ -960,5 +960,12 @@
     "ADVANCED_SEARCH": "بحث متقدم",
     "REQUEST_OWNER_NAME": " أسم صاحب الطلب"
 
+  },
+  "STUDENT_DAY_TASKS": {
+    "DAILY_HOMEWORK": "الواجب اليومي",
+    "START": "ابدأ",
+    "ADD_DAY": "إضافة يوم",
+    "ENTER_DAY": " الأيام لا تقل او تزيد عن ",
+    "HOMEWORK_DURATION": "مدة الواجب اليومي"
   }
 }
