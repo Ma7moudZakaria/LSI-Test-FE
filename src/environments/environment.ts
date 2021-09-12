@@ -7,8 +7,8 @@ export const environment = {
   // baseUrl: 'http://40.123.230.198:1010/api/'
   // baseUrl: 'http://localhost:5000/api/'
   // baseUrl: 'http://20.196.10.182:1050/api/'
-  //  baseUrl: 'http://localhost:5000/api/'
-  baseUrl: 'http://20.196.10.182:1050/api/'
+   baseUrl: 'http://localhost:5000/api/'
+  // baseUrl: 'http://20.196.10.182:1050/api/'
 
 };
 

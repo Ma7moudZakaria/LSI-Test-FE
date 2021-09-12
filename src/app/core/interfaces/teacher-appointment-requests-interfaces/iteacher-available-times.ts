@@ -19,5 +19,5 @@ export interface ITeacherAppointmentRequestsAppointmentsDetails {
   to?: string;
   dayAr?: string;
   dayEn?: string;
-
+  reqId?: string;
 }

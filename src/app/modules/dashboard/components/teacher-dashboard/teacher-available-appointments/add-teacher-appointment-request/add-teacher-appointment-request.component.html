@@ -27,7 +27,7 @@
           <div  class="UpdateUser__Options form-group mb-0">
             <input matInput type="time" class="form-control" placeholder="HH:MM" id="end_time_hour" [(ngModel)]="availabilityDaysModel.fromTime"
             [ngModelOptions]="{standalone: true}">
-           
+
           </div>
 
         </div>
@@ -37,10 +37,10 @@
             {{ 'UPDATE_TEACHER_PG.TO' | translate }}
           </label>
           <div  class="UpdateUser__Options form-group mb-0">
-            
+
             <input matInput type="time" class="form-control" placeholder="HH:MM" id="end_time1_hour" [(ngModel)]="availabilityDaysModel.toTime"
             [ngModelOptions]="{standalone: true}">
-          
+
           </div>
 
 
@@ -49,14 +49,14 @@
         <div class="col-2 align-self-end">
           <label class="Register__Label invisible " > {{ 'UPDATE_TEACHER_PG.ADD' | translate }} </label>
 
-          <button  type="button" class="saveButton btn" (click)="addAvailabilityDays()"> 
+          <button  type="button" class="saveButton btn" (click)="addAvailabilityDays()">
             <img  src="../../../../../../assets/images/add.svg" class=" cursor-pointer Catogry_Icon_Add">
           </button>
         </div>
 
       </div>
 
-     
+
 
       <div class="col-12">
         <div class="badges mt-3 ">
@@ -77,7 +77,7 @@
 
     <section class="mt-5">
       <div  class="row direction-rtl buttons-center mt-5">
-        <button  (click)='saveRejectRequest()' type="submit" class="save-btn">
+        <button  (click)='saveTeacherAppointmentRequest()' type="submit" class="save-btn">
           {{ "GENERAL.SAVE" | translate }}
         </button>
         <button   (click)='closeRejectRequest()' type="reset" class="cancel-btn">

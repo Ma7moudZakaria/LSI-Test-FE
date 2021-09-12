@@ -10,10 +10,10 @@
       <div class="cardTime mx-3">
           <div *ngIf='translate.currentLang === lang.en' class="d-flex justify-content-between mb-0" matTooltip='{{item?.dayEn}} From {{item.timeFrom}}  To  {{item.timeTo  }}'>
            <p class="cardTime__day mb-0 bold ">{{ item?.dayEn }}</p>
-            
+
             <p class="cardTime__time mb-0" >
                   From {{ item.timeFrom}} To {{ item.timeTo }}
-          </p> 
+          </p>
 
           </div>
           <div *ngIf='translate.currentLang === lang.ar'class="d-flex justify-content-between mb-0" matTooltip='{{item?.dayAr}} من {{item.timeFrom }}الي {{item.timeTo }}'>
@@ -28,14 +28,21 @@
     </div>
   </ng-container>
 </div>
-</div> 
+</div>
 <div class="row mt-3 mx-3">
 <div class="col-12 ">
     <div  class="row justify-content-end">
-      <button *ngIf="teacherAvailableTimes?.isView"  (click)="appointmentRequestDetails()" class="cancel-btn px-4" >View Appointment </button>
-      <button *ngIf="!teacherAvailableTimes?.isView"  (click)="rejectedStudentReq()" class="save-btn px-4" >Add Appointment</button>
+      <button *ngIf="teacherAvailableTimes?.isView"  (click)="appointmentRequestDetails()" class="cancel-btn px-4" >{{ "TEACHER_APPOINTMENT.APPOINTMENT_DETAILS" | translate }} </button>
+      <button *ngIf="!teacherAvailableTimes?.isView"  (click)="AddTeacherAppointmentRequest()" class="save-btn px-4" >{{ "TEACHER_APPOINTMENT.ADD_APPOINTMENT" | translate }}</button>
     </div>
-</div>  
+</div>
 </div>
 
 <!-- end data -->
+<div class="overlay add_teacher_appointment_request" *ngIf="openAddRequestOverlay">
+  <app-add-teacher-appointment-request [itemStuReq]='itemStuReq1' (openAddRequestOverlayRequest)="closeAddRequestOverlayRequest()"></app-add-teacher-appointment-request>
+</div>
+
+<div class="overlay" *ngIf="openTeacherRequestDetailsOverlay">
+  <app-teacher-appointment-request-datails [itemStuReq]='itemStuReq1' (closeDetailsRequest)="closeRequestDetails()"></app-teacher-appointment-request-datails>
+</div>

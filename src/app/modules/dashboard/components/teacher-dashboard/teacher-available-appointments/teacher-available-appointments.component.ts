@@ -30,8 +30,10 @@ export class TeacherAvailableAppointmentsComponent implements OnInit {
   @Output() itemStuReq = new EventEmitter<ITeacherAppointmentModel>();
   @Output() AddTeacherRequest = new EventEmitter<ITeacherAppointmentModel>();
   @Output() requestDetails = new EventEmitter<ITeacherAppointmentModel>();
-
+  openAddRequestOverlay: boolean = false;
+  openTeacherRequestDetailsOverlay: boolean = false;
   @Input() studentSubscripModel: ITeacherAppointmentModel = { totalRows: 0 }
+  itemStuReq1: ITeacherAppointmentModel = {};
 
   constructor(   private router: Router,
                  public translate: TranslateService ,
@@ -43,7 +45,7 @@ export class TeacherAvailableAppointmentsComponent implements OnInit {
     this.currentLang = this.translate.currentLang === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
     this.RouteParams = this.router.url;
     this.setCurrentLang();
-    this.getTeacherAvailableTimesTeacherView(this.currentUser.id);
+    this.getTeacherAvailableTimesTeacherView();
   }
 
   setCurrentLang() {
@@ -56,15 +58,10 @@ export class TeacherAvailableAppointmentsComponent implements OnInit {
   emitHeaderTitle() {
     this.languageService.headerPageNameEvent.emit(this.translate.instant('UPDATE_TEACHER_PG.TITLE'));
   }
-  getTeacherAvailableTimesTeacherView(id: any) {
-    this.teacherProfileService.getTeacherAvailableTimesTeacherView(id || '').subscribe(res => {
+  getTeacherAvailableTimesTeacherView() {
+    this.teacherProfileService.getTeacherAvailableTimesTeacherView(this.currentUser?.id).subscribe(res => {
       if (res.isSuccess) {
         this.teacherAvailableTimes = res.data as ITeacherAvailableTimes;
-
-        //
-        // if (!this.teacherProfileDetails?.proPic) {
-        //   this.teacherProfileDetails.proPic = '../../../../../assets/images/Profile.svg';
-        // }
       }
       else {
         this.resMessage =
@@ -81,11 +78,21 @@ export class TeacherAvailableAppointmentsComponent implements OnInit {
     });
   }
 
-  rejectedStudentReq() {
-    this.AddTeacherRequest.emit(this.studentSubscripModel);
+  AddTeacherAppointmentRequest() {
+    this.openAddRequestOverlay = !this.openAddRequestOverlay;
+
   }
   appointmentRequestDetails() {
-    this.requestDetails.emit(this.studentSubscripModel);
-  }
+    this.openTeacherRequestDetailsOverlay = !this.openTeacherRequestDetailsOverlay;
 
+  }
+  closeAddRequestOverlayRequest() {
+    this.openAddRequestOverlay = !this.openAddRequestOverlay;
+    this.getTeacherAvailableTimesTeacherView();
+  }
+  closeRequestDetails() {
+    this.openTeacherRequestDetailsOverlay = !this.openTeacherRequestDetailsOverlay;
+    this.getTeacherAvailableTimesTeacherView();
+
+  }
 }

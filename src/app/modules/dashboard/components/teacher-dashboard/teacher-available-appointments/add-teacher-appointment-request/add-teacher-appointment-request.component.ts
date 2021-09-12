@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import { IStudentProgramVacationModel } from '../../../../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-model';
 import { IRejectStudentProgramVacationModel } from '../../../../../../core/interfaces/student-program-vacation-interfaces/ireject-student-program-vacation-model';
 import { BaseConstantModel } from '../../../../../../core/ng-model/base-constant-model';
@@ -14,6 +14,7 @@ import { ITeacherAppointmentModel } from '../../../../../../core/interfaces/teac
 import { TeacherAppointmentService } from 'src/app/core/services/teacher-appointment-services/teacher-appointment.service';
 import { IAddChangeTeacherAvailableTimesRequestModel, IAddTeacherAppointmentRequest } from 'src/app/core/interfaces/teacher-appointment-requests-interfaces/iadd-teacher-appointment-request';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
+import {AppointmentRequestsTabComponent} from '../../../../../admin-messaging/components/teacher-program-request-view/teacher-request-details/chang-time-request/appointment-requests-tab/appointment-requests-tab.component';
 
 @Component({
   selector: 'app-add-teacher-appointment-request',
@@ -33,6 +34,7 @@ export class AddTeacherAppointmentRequestComponent implements OnInit {
   availabilityDaysModel: ITeacherProfileAvailabilityLookup = {};
   datepicker1: any;
   currentUser: IUser | undefined;
+  @ViewChild(AppointmentRequestsTabComponent) appointmentRequestComponent: AppointmentRequestsTabComponent | undefined;
 
 
   constructor(private teacherAppointmentService: TeacherAppointmentService
@@ -48,9 +50,8 @@ export class AddTeacherAppointmentRequestComponent implements OnInit {
 
   closeRejectRequest() {
     this.openAddRequestOverlayRequest.emit();
-
   }
-  saveRejectRequest() {
+  saveTeacherAppointmentRequest() {
     let listOfDays: IAddChangeTeacherAvailableTimesRequestModel[] = [];
     this.selectedAvailabilityDaysList.forEach(x =>
       listOfDays.push(
@@ -88,7 +89,6 @@ export class AddTeacherAppointmentRequestComponent implements OnInit {
     this.lookupService.getLookupByKey(this.listOfLookupProfile).subscribe(res => {
       this.collectionOfLookup = res.data as ILookupCollection;
       if (res.isSuccess) {
-        // this.getTeacherProfile(this.currentUser?.id)
       }
       else {
         this.resMessage =

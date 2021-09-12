@@ -941,6 +941,8 @@
     "FROM": "من",
     "TO": "الى",
     "OLD_TIMES": "المواعيد القديمة",
-    "MODIFY_APPOINTMENT": "طلب تغيير المواعيد"
+    "MODIFY_APPOINTMENT": "طلب تغيير المواعيد",
+    "ADD_APPOINTMENT": "اضافة طلب تغيير المواعيد",
+    "APPOINTMENT_DETAILS": "عرض طلب تغيير المواعيد"
   }
 }

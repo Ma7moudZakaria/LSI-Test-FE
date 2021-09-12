@@ -11,25 +11,18 @@
           <app-teacher-daily-upcoming-tasks></app-teacher-daily-upcoming-tasks>
         </div>
 
-        
+
         <div class="col-md-4 col-sm-12 pl-0 border">
           <app-teacher-feelings></app-teacher-feelings>
         </div>
-   
-       
+
+
         <div class=" col-md-4 col-sm-12  border available_appointments">
-          <app-teacher-available-appointments (AddTeacherRequest)="openAddRequest($event)"   (requestDetails)="openRequestDetails($event)"
+          <app-teacher-available-appointments
           ></app-teacher-available-appointments>
         </div>
 
-      <div class="overlay add_teacher_appointment_request" *ngIf="openAddRequestOverlay">
-        <app-add-teacher-appointment-request [itemStuReq]='itemStuReq' (openAddRequestOverlayRequest)="closeAddRequestOverlayRequest()"></app-add-teacher-appointment-request>
-      </div>
 
-      <div class="overlay" *ngIf="openTeacherRequestDetailsOverlay">
-        <app-teacher-appointment-request-datails [itemStuReq]='itemStuReq' (closeDetailsRequest)="closeRequestDetails()"></app-teacher-appointment-request-datails>
-      </div>
 
-     
     </div>
 </div>

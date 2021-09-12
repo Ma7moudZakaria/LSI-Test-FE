@@ -10,6 +10,7 @@ import { TeacherAppointmentService } from '../../../../../../core/services/teach
 import { LanguageService } from '../../../../../../core/services/language-services/language.service';
 import { BaseConstantModel } from '../../../../../../core/ng-model/base-constant-model';
 import { ITeacherAppointmentModel } from '../../../../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-appointment-model';
+import {AlertifyService} from '../../../../../../core/services/alertify-services/alertify.service';
 
 @Component({
   selector: 'app-teacher-appointment-request-datails',
@@ -33,15 +34,15 @@ export class TeacherAppointmentRequestDatailsComponent implements OnInit {
 
   constructor(private router: Router,
     public translate: TranslateService,
-    private teacherProfileService: TeacherAppointmentService,
-    public languageService: LanguageService) { }
+    private teacherAppointmentService: TeacherAppointmentService,
+    public languageService: LanguageService,private alertify: AlertifyService) { }
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     this.currentLang = this.translate.currentLang === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
     this.RouteParams = this.router.url;
     this.setCurrentLang();
-    this.getTeacherAvailableTimesTeacherView(this.currentUser.id);
+    this.getTeacherAvailableTimesTeacherView();
   }
 
   setCurrentLang() {
@@ -54,15 +55,10 @@ export class TeacherAppointmentRequestDatailsComponent implements OnInit {
   emitHeaderTitle() {
     this.languageService.headerPageNameEvent.emit(this.translate.instant('UPDATE_TEACHER_PG.TITLE'));
   }
-  getTeacherAvailableTimesTeacherView(id: any) {
-    this.teacherProfileService.GetTeacherAppointmentRequestAppointments(id || '').subscribe(res => {
+  getTeacherAvailableTimesTeacherView() {
+    this.teacherAppointmentService.GetTeacherAppointmentRequestAppointments(this.currentUser?.id).subscribe(res => {
       if (res.isSuccess) {
         this.teacherAvailableTimes = res.data as ITeacherAppointmentRequestsAppointmentsDetails[];
-
-        //
-        // if (!this.teacherProfileDetails?.proPic) {
-        //   this.teacherProfileDetails.proPic = '../../../../../assets/images/Profile.svg';
-        // }
       }
       else {
         this.resMessage =
@@ -82,10 +78,22 @@ export class TeacherAppointmentRequestDatailsComponent implements OnInit {
   rejectedStudentReq() {
     this.rejectStudentVacationRequest.emit(this.studentSubscripModel);
   }
-  appointmentRequestDetails() {
-    this.requestDetails.emit(this.studentSubscripModel);
-  }
+
   cancelRequest() {
-    this.closeDetailsRequest.emit();
+      this.teacherAppointmentService.cancelTheChangeTeacherAvailableTimeRequest(this.teacherAvailableTimes.map(value => value.reqId)).subscribe(res => {
+        if (res.isSuccess) {
+          this.closeDetailsRequest.emit();
+          this.alertify.success(res.message || '');
+          this.getTeacherAvailableTimesTeacherView();
+        }
+        else {
+          this.alertify.error(res.message || '');
+        }
+      }, error => {
+        this.resMessage = {
+          message: error,
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      });
+    }
   }
-}

@@ -12,11 +12,11 @@
                matTooltip='{{item?.dayEn}} From {{item.from}}  To  {{item.to  }}'>
                {{ item?.dayEn }}'>
                <p class="cardTime__day mb-0 bold ">{{ item?.dayEn }}</p>
-                
+
                 <p class="cardTime__time mb-0" >
                       From {{ item.from }} To {{ item.to }}
-              </p> 
-    
+              </p>
+
               </div>
               <div *ngIf='translate.currentLang === lang.ar'class="d-flex justify-content-between mb-0"
                matTooltip='{{item?.dayAr}} من {{item.from  }}الي {{item.to}}'>
@@ -24,42 +24,15 @@
                   <p class="cardTime__time  mb-0" >
                     من {{ item.from }} الي {{ item.to }}
                 </p>
-    
+
               </div>
-              
+
             </div>
-    
+
         </div>
-            
-          
+
+
       </ng-container>
-
-      <!-- <div class="col-12">
-      <div class="badges">
-        <div class="badge badge-info p-2 ">
-          <div class="d-flex justify-content-between mt-0">
-            <p *ngIf='translate.currentLang === lang.en'
-               class="ellipsis mb-0"
-               matTooltip='{{item?.dayEn}} From {{item.from}}  To  {{item.to  }}'>
-              {{ item?.dayEn }}
-              <span *ngIf="translate.currentLang === lang.en">
-                                                            From {{ item.from }} To {{ item.to }}
-                                                        </span> <br>
-
-            </p>
-            <p *ngIf='translate.currentLang === lang.ar'
-               class="ellipsis mb-0"
-               matTooltip='{{item?.dayAr}} من {{item.from }}الي {{item.to }}'>
-              {{ item?.dayAr }}
-              <span *ngIf="translate.currentLang === lang.ar">
-                                                            من {{ item.from }} الي {{ item.to }}
-                                                        </span>
-            </p>
-
-          </div>
-        </div>
-      </div>
-    </div> -->
   </div>
 
   <section class="mt-5">
@@ -67,7 +40,7 @@
       <button  (click)='cancelRequest()' type="submit" class="save-btn btn-block">
         {{ "GENERAL.CANCEL" | translate }}
       </button>
-    
+
     </div>
   </section>
 

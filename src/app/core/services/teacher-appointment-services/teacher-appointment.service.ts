@@ -38,16 +38,14 @@ export class TeacherAppointmentService {
     return this.http.put<BaseResponseModel>(this.teacherAvailableTimeRequestAcceptanceURL, model);
   }
 
-  cancelTheChangeTeacherAvailableTimeRequest(id?: string): Observable<BaseResponseModel> {
+  cancelTheChangeTeacherAvailableTimeRequest(id?: (string | undefined)[]): Observable<BaseResponseModel> {
     return this.http.put<BaseResponseModel>(this.cancelTheChangeTeacherAvailableTimeRequestURL+ id , null);
   }
-
-
   AddChangeTeacherAvailableTimesRequest(model: IAddTeacherAppointmentRequest): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.AddChangeTeacherAvailableTimesRequestURL, model);
   }
 
-  GetTeacherAppointmentRequestAppointments(id : string): Observable<BaseResponseModel> {
+  GetTeacherAppointmentRequestAppointments(id? : string): Observable<BaseResponseModel> {
     return this.http.get<BaseResponseModel>(this.GetTeacherAppointmentRequestAppointmentsURL + id);
   }
 
