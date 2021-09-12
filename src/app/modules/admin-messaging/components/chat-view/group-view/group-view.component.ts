@@ -14,6 +14,7 @@ import { AlertifyService } from 'src/app/core/services/alertify-services/alertif
 })
 export class GroupViewComponent implements OnInit {
   @Output() createGroupOverlayEvent = new EventEmitter<boolean>();
+  @Output() groupDetailsEvent = new EventEmitter<IGroupChat>();
   listOfGroups:any[] = [];
   selectedIndex: number = 0;
   lastMe = new Array;
@@ -34,7 +35,7 @@ export class GroupViewComponent implements OnInit {
     });
   }
 
-  getAllParticipantByGroupId(id?: string){ 
+  getAllParticipantByGroupId(id?: string, groupId?: string){ 
     firebase.database().ref('users/').orderByChild('messages').on('value', (resp2: any) => {
 
       var Data = ChatResponseModel.snapshotToArray(resp2) as { [Id: string]: IParticipantChat; } [];
@@ -45,24 +46,12 @@ export class GroupViewComponent implements OnInit {
         Array.from(elm).forEach((elmOfParticipant: any) => {
           if(elmOfParticipant.key === id){
             this.usersList.push(elmOfParticipant);
+          
           }
         });
       });
-
-
-
-      // for(let item in this.participantsList){
-      //   this.ListOfUsers = this.participantsList[item];
-      //   for(let itemTwo in this.ListOfUsers){
-      //     var Id = this.ListOfUsers[itemTwo].key ;
-      //     var x = this.ListOfUsers.filter(Id === id);
-      //     this.usersList.push(x);
-      //   }
-      // }
-
-    //  var x = this.participantsList.filter(x => this.participantsList[x].key === id);
-    //  this.usersList.push(x);
-     console.log("this.participantsList :" , this.usersList);
+      
+     
     });
   }
 
@@ -70,31 +59,43 @@ export class GroupViewComponent implements OnInit {
     var Data;
     var GetGroupData = this.listOfGroups?.filter(x => x.key == id);
 
+    console.log("GetGroupData[0].participants : " , GetGroupData[0].participants);
+
     for(let item in GetGroupData[0].participants){
       var x = item;
-      this.getAllParticipantByGroupId(item);
-
-      // firebase.database().ref('users/').orderByChild(item).on('value', (resp2: any) => {
-      //   Data = ChatResponseModel.snapshotToArray(resp2);
-      // });
-      // this.participantsList.push(Data || {});
+      this.getAllParticipantByGroupId(item,id);
     }
 
-    // this.deleteGroup(this.participantsList , id)
+    this.deleteGroup(this.usersList , id);
   }
 
-  deleteGroup(listOfUsers?:IParticipantChat[], id?:string){ 
-    // for(let item in listOfUsers){
-    //   let index = this.participantsList.indexOf(item);
-    //   this.participantsList.splice(index, 1);
-    // }
+  deleteGroup(listOfUsers:IParticipantChat[], id?:string){ 
+    Array.from(listOfUsers).forEach((elmOfParticipant: IParticipantChat) => {
+      var IsExist = elmOfParticipant?.groups?.some(x => x == id || '')
+      if(IsExist){
+        // firebase.database().ref('users/' + elmOfParticipant.key + '/groups/' + id).remove(error => {
+        //   this.alertify.error(error?.message || '');
+        // });
+
+        let index = elmOfParticipant?.groups?.indexOf(id || '');
+        elmOfParticipant.groups?.splice(index || 0, 1);
+
+        const updateGroupToUsersRoom = firebase.database().ref('users/' + elmOfParticipant.key +'/' + 'groups/');
+        updateGroupToUsersRoom.set(elmOfParticipant.groups);
+      }
+    });
+    
 
     const newGroupRoom = firebase.database().ref('groups/' + id).remove(error => {
-      this.alertify.error(error?.message || '');
+      this.alertify.success("Group Deleted Successfully");
     });
   }
 
   showAdd() {
     this.createGroupOverlayEvent.emit(true)
+  }
+
+  showGroupDetails(event:IGroupChat) {
+    this.groupDetailsEvent.emit(event);
   }
 }
