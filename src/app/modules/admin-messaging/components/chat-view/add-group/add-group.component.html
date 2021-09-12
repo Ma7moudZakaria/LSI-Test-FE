@@ -49,9 +49,12 @@
         <div class="form-group">
             <select class="form-control col-20 col-md-2 col-sm-2 col-xs-2" id="participants" formControlName="participants">
 
-                <option *ngFor="let participant of participantsList"
+                <option *ngFor="let participant of participantsList" 
                     value="{{participant.key}}">
-                    {{ participant.key }}</option>
+                    <p> {{translate.currentLang == langEnum.en ? participant.name_en : participant.name_ar}} </p>
+                    <img *ngIf='participant?.avatar_url === null' class="img_user" src="../../../../../assets/images/Profile.svg" >
+                    <img *ngIf='participant?.avatar_url != null' class="img_user" src="{{participant.avatar_url}}" >
+                </option>
             </select>
             <span class="plus-btn position-absolute">
                 <button class="btn btn-light btn-add" type="button"
@@ -62,7 +65,7 @@
 
             <div class="badges mt-3">
                 <span *ngFor="let participant of selectedParticipantsList"
-                    class="badge badge-info p-2">{{ participant.id }}
+                    class="badge badge-info p-2">{{translate.currentLang == langEnum.en ? participant.name_en : participant.name_ar}}
                     <a (click)="removeItemFromSelectedParticipant(participant)"><i class="fas fa-times-circle"></i></a>
                 </span>
             </div>
