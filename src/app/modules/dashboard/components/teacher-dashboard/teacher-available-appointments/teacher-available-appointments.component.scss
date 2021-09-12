@@ -24,11 +24,15 @@
   }
 
 }
+.cardTime_container{
+  overflow-y: auto;
+  height: 25vh;
+  overflow-x: hidden;
+}
 .cardTime{
   background-color: #fff;
   padding: 0.5rem;
   border-radius: 5px;
-  
   &:lang(ar){text-align: right;}
   &:lang(en){text-align: left;}
     &__day{
