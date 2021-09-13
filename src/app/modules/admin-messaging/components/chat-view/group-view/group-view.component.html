@@ -1,23 +1,45 @@
-<p>group-view works!</p>
+
 
 <div class="list-group teacher-list-request">
 
-    <p class="mb-3"> الرسائل </p>
+    <p class="mb-0 head_groupName"> جهات الاتصال </p>
 
-    <a (click)="showAdd()">
-        {{ "Role_Management.ADD_GROUP" | translate }} <i class="fas fa-plus"></i>
-      </a>
-      
+    <a (click)="showAdd()"  class="teacher-list-request__addGroup mb-2">
+        {{ "Role_Management.ADD_GROUP" | translate }} <i class="fas fa-plus mx-2"></i>
+    </a>
+      <app-search-input (searchTerm)=filterByText($event) ></app-search-input>
+      <!-- <app-search-input (searchTerm)="filterByNameSearchKey($event)"></app-search-input> -->
+
     <div class="internal_scroll_list_group">
-        <!-- <a class="list-group-item d-flex" [class.active]="selectedIndex = i">  -->
-        <a class="list-group-item d-flex" *ngFor="let groupOfItem of listOfGroups; let i = index" (click)="getGroupDetails(groupOfItem)">
-            <span> {{ groupOfItem.group_name }} </span>       
-            <span> {{ groupOfItem.last_message }} </span>      
-            <span> {{ groupOfItem.last_date }} </span>      
-            <span (click)="getParticipantsFormFirebase(groupOfItem.key)">
-                <i class="far fa-trash-alt"></i>
-            </span> 
-            <!-- <span> {{ this.listOfMessages[0] }} </span>         -->
-        </a>
+        <ng-container *ngFor="let groupOfItem of listOfGroups; let i = index" >
+        <div class="list-group-item " 
+         (click)="getGroupDetails(groupOfItem)">
+            <div  class="d-flex justify-content-between" >
+                <p class=" ellipsis p-0  group_name" title=" {{ groupOfItem.group_name }} "> {{ groupOfItem.group_name }}  </p>   
+                <p class="last_date"> {{ groupOfItem.last_date | date: 'dd/MM/yyyy'  }} </p>    
+            </div>
+            <div  class="d-flex justify-content-between" >  
+                <p class=" ellipsis p-0 last_message" title="{{ groupOfItem.last_message }} "> {{ groupOfItem.last_message }}   </p>      
+                
+                <span  class="trash_icon"
+                (click)="getParticipantsFormFirebase(groupOfItem.key)">
+                    <i class="far fa-trash-alt"></i>
+                </span> 
+            </div>
+        </div>
+    </ng-container>
     </div>
 </div>
+
+<!-- 
+<div  class=" d-flex" >
+    <span> {{ groupOfItem.group_name }} </span>   
+    <span> {{ groupOfItem.last_date }} </span>    
+</div>
+<div  class=" d-flex" >  
+    <span> {{ groupOfItem.last_message }} </span>      
+    
+    <span (click)="getParticipantsFormFirebase(groupOfItem.key)">
+        <i class="far fa-trash-alt"></i>
+    </span> 
+</div> -->

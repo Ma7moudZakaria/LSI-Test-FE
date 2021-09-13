@@ -3,9 +3,70 @@
 @import '../../../../../modules/program/components/program-details/programs-tabs/days/days.component.scss';
 
 .details_day{
-    overflow-y: scroll;
-    overflow-x: hidden;
-    height: 58vh;
+    background: #fff 0% 0% no-repeat padding-box;
+    border-radius: 19px;
+    opacity: 1;
+    padding: 1.7rem;
+    padding-bottom: 0.5rem;
+    margin-top: 1rem;
+    .head_groupName{
+        color: #8E2520;
+        font-size: 0.93rem;
+        font-family:Almarai-Bold ;
+         border-bottom: 1px solid #d6d7d8;
+         padding-bottom: 0.5rem;
+
+    }
+    .chat_details{
+        height: 48vh; 
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-left: 0.5rem;
+    }
+    .message_date{
+        color: #C1C7D0;
+        font-family: Almarai-Regular;
+        font-size: 9px;
+        &:lang(ar){text-align: left;}
+        &:lang(en){text-align: right;}
+        
+    }
+    .cardRecour{
+        padding: 0.5rem 1rem;
+        background-color: #e4e4e43b;
+        border-radius: 15px 15px 15px 0;
+        margin: 0.2rem;
+    }
+    .message_message
+    {
+        font-family: Almarai-Regular;
+        color: #3A3A3A;
+        font-size:0.8rem
+
+    }
+
+    .w-90{
+        width: 90%;
+    }
+    .w-10{
+        width: 10%;
+    }
+      .UserLogin__Submit
+    {
+        text-align: center;
+        background-color: #CB9118;
+    }
+    .sendIcon{
+        width: 21px;
+        height: 24px;
+    }
+    .userGroupIcon{
+        width: 64px;
+        height: 64px;
+        background-color:  #CB9118;
+        padding:  0.2REM;
+        border-radius: 7px;
+    }
     .head {
         font-weight: bold;
         font-size: 1rem;
@@ -23,68 +84,4 @@
             font-size: 14px;
         }
    
-   .trash {
-            color: #8E2520;
-          }
-
-    .custom-file__text {
-        color: var(--unnamed-color-363636);
-        text-align: center;
-        font: normal normal bold 20px/31px Almarai;
-        letter-spacing: -0.29px;
-        color: #363636;
-        opacity: 1;
-        padding: 2rem;
-    }
-
-    .custom-file {
-        background: #FFFFFF 0% 0% no-repeat padding-box;
-        border: 3px dashed #DFDFDF;
-        border-radius: 12px;
-        opacity: 1;
-        height: 30%;
-        width: 100%;
-        text-align: center;
-    }
-    .custom-file__label{
-        margin-bottom: 0;
-        color: #dedddd;
-     }
-    .upload-icon{
-        margin-bottom: 10px;  
-        width: 3rem;
-        height: 3rem;      
-        }
-    .page-image{
-        width: 100%;
-        height: 400px;
-    }
-    .cardRecourd{
-       justify-content: space-between;
-        align-items: center;
-        display: flex;
-        padding: 0.5rem 1rem;
-        background-color: #DFDFDF;
-        border-radius: 7px;
-        margin: 0.2rem;
-    }
-    .save-btn, .cancel-btn
-    {
-      height: 2.31rem;
-      margin: 1rem;
-  
-     }
-    //  .custom-file-input{
-    //      height: 0;
-    //      width: 0;
-    //  }
-     .hint_validation{
-         color: #C1C7D0;
-         font-size: 12px;
-         font-family: Almarai-Regular;
-         display: flex;
-         justify-content: flex-end;
-         margin:0.2rem  0.5rem;
-     }
-  
 }
