@@ -5,7 +5,7 @@ import { ITeacherProfileLookup } from "./iteacher-profile-lookup";
 import { ITeacherProfileProgramDegreeLookup } from "./iteacher-profile-program-lookup";
 
 export interface ITeacherProfile{
-
+    profileId?:string;
     fnameAr?:string;
     mnameAr?:string;
     fanameAr?:string;
