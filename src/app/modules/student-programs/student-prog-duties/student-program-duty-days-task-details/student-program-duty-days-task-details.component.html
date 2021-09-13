@@ -1,7 +1,7 @@
 <div class="days_details">
-    <span class=" head">
+    <h2 class=" head mb-3">
         {{this.translate.currentLang===langEnum.en?taskDetails?.dayTaskNameEn:taskDetails?.dayTaskNameAr}}
-    </span>
+    </h2>
     <app-program-day-task-hearing *ngIf="detailsTypeEnum.taskHearing===taskDetails?.huffazTask"
      [hearingTaskDetailsModel]='hearingTaskDetailsModel' [dutyDaysTaskViewMood]='programDutyDaysTaskViewMoodEnum.student'>
     </app-program-day-task-hearing>
