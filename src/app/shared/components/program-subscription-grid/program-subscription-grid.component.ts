@@ -1,3 +1,4 @@
+import { RoleEnum } from 'src/app/core/enums/role-enum.enum';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
@@ -9,7 +10,7 @@ import { IStudentSubscriptionModel } from 'src/app/core/interfaces/student-progr
 import { ITeacherProgramSubscriptionFilterRequestModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iteacher-program-subscription-filter-request-model';
 import { ITeacherProgramSubscriptionModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iteacher-program-subscription-model';
 import { ExportationService } from 'src/app/core/services/exportation-services/exportation.service';
-import {ITeacherStudentViewModel} from '../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
+import { ITeacherStudentViewModel } from '../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 
 @Component({
   selector: 'app-program-subscription-grid',
@@ -32,6 +33,8 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   @Output() acceptAllTeacherProgramSubscriptionCheched = new EventEmitter<ITeacherProgramSubscriptionModel>();
   @Output() teacherIdFormGrid = new EventEmitter<ITeacherStudentViewModel>();
   @Output() studentIdFormGrid = new EventEmitter<ITeacherStudentViewModel>();
+
+
 
   @Input() userMode: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.student;
   @Input() studentFilterRequestModel: IStudentSubscriptionFilterRequestModel = { skip: 0, take: 9, page: 1 };
@@ -59,10 +62,10 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   ngOnInit(): void {
     this.sortTeacherRequestDate();
   }
-  teacherProgSubOutputEvent(event:ITeacherStudentViewModel){
+  teacherProgSubOutputEvent(event: ITeacherStudentViewModel) {
     this.teacherIdFormGrid.emit(event);
   }
-  studentProgSubOutputEvent(event:ITeacherStudentViewModel){
+  studentProgSubOutputEvent(event: ITeacherStudentViewModel) {
     this.studentIdFormGrid.emit(event);
   }
   sortTeacherByName() {

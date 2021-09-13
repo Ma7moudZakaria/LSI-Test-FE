@@ -21,7 +21,7 @@
     {{ 'GENERAL.NO_DATA' | translate}}
   </div>
   <section *ngIf="this.studProgsSubsItems .length > 0" class="internal_scroll_list_group">
-    <app-program-subscription-grid [typeEnum]='statusEnum.Rejected'
+    <app-program-subscription-grid [typeEnum]='statusEnum.empty'
                                    [studentItems]='studProgsSubsItems'
                                    (studentFilterEvent)="stuRejectedChangePage($event)"
                                    [totalCount]='totalCount'
