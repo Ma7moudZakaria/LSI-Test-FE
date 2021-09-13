@@ -1,39 +1,25 @@
-<!-- 
 
-<div class="container-fluid UpdateUser" >
+
+<div class="details_day" >
     <div class="row">
-        <div class="box_container">
-                <div class="col-12">
-                    <div class=" row info_profile">
-                        <div class="col-9  info_profile ">
-                        <div class="row">
-                                <div class="col-5"></div>
-                                <div class="col-6  mt-4  mb-4  text-center align-items-center">
-
-                                    <p class="update_item_profile-name"> {{ translate.currentLang === langEnum.en ? userProfileDetails?.fnameEn : userProfileDetails?.fnameAr }} {{ translate.currentLang === langEnum.en ? userProfileDetails?.mnameEn : userProfileDetails?.mnameAr }} {{ translate.currentLang === langEnum.en ? userProfileDetails?.faNameEn : userProfileDetails?.fanameAr }} </p>
-                                       
-                                </div>
-                                <div class="col-12 internal_scroll">
-                                    <div class="row">
-                                        <div class="col-4  mb-3">
-                                            <span class="label_info">{{ 'GENERAL.EMAIL' | translate }} </span>
-                                            <span>  &nbsp; </span>
-                                            <span>  &nbsp; </span>
-                                            <span class="data_view">
-                                                {{ userProfileDetails?.usrEmail }}
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="col-12 mt-3">
+            <mat-checkbox  class="example-margin mx-2"   [(ngModel)]="allowed"  class="example-margin ">{{'GENERAL.MANDATORY'| translate}} </mat-checkbox>
+        </div>
+        
+        <div class="col-12 mt-3" >
+            <app-search-input (searchTerm)=filterByText($event)></app-search-input>
         </div>
     </div>
+    
+    <div class="row mx-0">
+    
+        <ng-container *ngFor="let participant of listOfUsers; let i = index"  >
+            <div class="col-12 cardRecourd" >
+                <p class="ellipsis mb-0 ">{{ translate.currentLang === langEnum.en ? participant?.name_en : participant?.name_ar }}</p>
+                <img *ngIf='participant?.avatar_url === null' class="img_user" src="../../../../../assets/images/Profile.svg" >
+                <img *ngIf='participant?.avatar_url != null' class="img_user" src="{{participant.avatar_url}}" >
+            </div>
+        </ng-container>
+    </div>
 </div>
-
-
-
-
- -->
+    
