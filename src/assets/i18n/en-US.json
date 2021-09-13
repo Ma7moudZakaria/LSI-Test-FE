@@ -842,7 +842,8 @@
     "REJECTED_REASON": "Reject Reason",
     "VALIDATIONDATE": "Datefrom  should less than dateto ",
     "REQUEST_REASON": "Request reason",
-    "NO_DATA": "No Data found"
+    "NO_DATA": "No Data found",
+    "VIEW_EXAM":"View Exam"
   },
   "TEACHER_SYSTEM_SUBSCRIPTION": {
     "REQUEST_DATE": "Request Date",

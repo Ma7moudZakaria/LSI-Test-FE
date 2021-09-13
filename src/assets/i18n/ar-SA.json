@@ -841,7 +841,8 @@
     "REJECTED_REASON": "سبب الرفض",
     "VALIDATIONDATE": "تاريخ البداية يجب ان يكون اقل من تاريخ النهاية ",
     "REQUEST_REASON": "سبب الطلب",
-    "NO_DATA": "لا يوجد بيانات"
+    "NO_DATA": "لا يوجد بيانات",
+    "VIEW_EXAM":"عرض الإختبار"
   },
   "TEACHER_SYSTEM_SUBSCRIPTION": {
     "REQUEST_DATE": "تاريخ الطلب",

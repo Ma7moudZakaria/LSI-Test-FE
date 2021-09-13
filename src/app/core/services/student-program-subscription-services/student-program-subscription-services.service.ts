@@ -30,7 +30,7 @@ export class StudentProgramSubscriptionServicesService {
   getStudentProgramsURL = environment.baseUrl + 'StudentProgramSubscription/get-student-programs/';
   getStudentsProgramsSubscriptionsServFilterStudentViewURL = environment.baseUrl + 'StudentProgramSubscription/get-students-programs-subscriptions-serv-filter-student-view/';
   getلإeachersProgramsSubscriptionsServFilterStudentViewURL = environment.baseUrl + 'TeacherProgramSubscription/get-teachers-programs-subscriptions-filter-teacher-view/';
-
+  getStudentExamAnswerURL = environment.baseUrl + 'StudentProgramSubscription/get-student-exam-answer/';
   constructor(private http: HttpClient) { }
 
   getStudentsSubscriptionsFilterAdminView(model: IStudentSubscriptionFilterRequestModel): Observable<BaseResponseModel> {
@@ -87,5 +87,9 @@ export class StudentProgramSubscriptionServicesService {
 
   getStudentPrograms(model: IStudentMyProgramsRequestModel): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.getStudentProgramsURL, model);
+  }
+
+  getStudentExamAnswer(id: string): Observable<BaseResponseModel> {
+    return this.http.get<BaseResponseModel>(this.getStudentExamAnswerURL + id);
   }
 }

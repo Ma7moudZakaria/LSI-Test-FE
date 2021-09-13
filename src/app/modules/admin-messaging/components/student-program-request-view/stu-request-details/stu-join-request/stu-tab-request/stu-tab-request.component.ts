@@ -10,6 +10,8 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import {ITeacherStudentViewModel} from '../../../../../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
+import { IStudentExamAnswerResponseModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-exam-answer-response-model';
+import { IStuViewExamAnswProgSub } from 'src/app/core/interfaces/student-program-subscription-interfaces/istu-view-exam-answ-prog-sub';
 
 @Component({
   selector: 'app-stu-tab-request',
@@ -34,6 +36,9 @@ export class StuTabRequestComponent implements OnInit {
   totalCount = 0;
   sendUserID: ITeacherStudentViewModel | undefined;
   showUserDetailsView:boolean = false;
+  showViewExam:boolean = false;
+  studentExamAnswerResponse:IStuViewExamAnswProgSub | undefined;
+
   constructor(private progSubsService: StudentProgramSubscriptionServicesService,
     public translate: TranslateService,
     private alertify: AlertifyService) {
@@ -200,6 +205,31 @@ export class StuTabRequestComponent implements OnInit {
     // this.filter = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
     // this.closeAdvancedSearch.emit(this.filter)
   }
+
+  viewExam(event:IStudentSubscriptionModel){
+    this.showViewExam=true;
+    this.studentExamAnswerResponse={}
+   
+      this.studentExamAnswerResponse.stuProgSub=event;
+    this.getStudentExamAnswer(event.id || "")
+  }
+  getStudentExamAnswer(subsId:string) {
+
+    this.progSubsService.getStudentExamAnswer(subsId).subscribe(res => {
+      if (res.isSuccess) {
+        if(this.studentExamAnswerResponse)
+    {
+        this.studentExamAnswerResponse.studentExamAnswer= res.data ;
+    }
+       
+      }
+      else {
+        this.alertify.error(res.message || '');
+      }
+    },
+      error => {});
+  }
+
 }
 
 
