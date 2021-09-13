@@ -16,9 +16,9 @@
       <div class="d-flex  justify-content-end" *ngIf='typeEnum === tabTypeSelected.empty' >
         <p class="program__num mb-0  mr-3 ml-3">
           {{ translate.currentLang == langEnum.en ? studentSubscripModel?.enStatName : studentSubscripModel?.arStatName}}</p>
-        <span class="status mb-0" [ngClass]="{ 'accept' : studentSubscripModel.statusNum === tabTypeSelected.Accept ,
-                                  'pending' : studentSubscripModel.statusNum === tabTypeSelected.Pending ,
-                                  'rejected' : studentSubscripModel.statusNum === tabTypeSelected.Rejected}
+        <span class="status mb-0" [ngClass]="{ 'accept' : studentSubscripModel.statNum === tabTypeSelected.Accept ,
+                                  'pending' : studentSubscripModel.statNum === tabTypeSelected.Pending ,
+                                  'rejected' : studentSubscripModel.statNum === tabTypeSelected.Rejected}
                                  ">
         </span>
       </div>

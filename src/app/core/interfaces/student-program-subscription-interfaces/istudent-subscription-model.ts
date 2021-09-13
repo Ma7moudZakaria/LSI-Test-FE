@@ -15,7 +15,7 @@ export interface IStudentSubscriptionModel {
     enBatName?: string;
     arProgBatName?: string;
     enProgBatName?: string;
-    statusNum?: number;
+    statNum?: number;
     arStatName?: string;
     enStatName?: string;
     no?: number;
