@@ -4,6 +4,11 @@
     <div class="attache-exam-list">
       <div class="row">
         <div class="col-12">
+          <div class="d-flex align-items-center  justify-content-end" *ngIf="testPhasedDetailsModel">
+            <label class="label_item_question">{{"EXAM_FORM.THE_SUCCESS_RATE"|translate}}</label>
+            <span>  &nbsp; </span>
+            <input  type="number" min="1" [(ngModel)]="testPhasedDetailsModel.scorePass" class="form-control w-25 ">
+        </div>
           <section class="internal_scroll_list_group ">
             <div>
                 <div class="input-group ">
@@ -76,6 +81,9 @@
                  السؤال الذي يظهر للطالب
              </p>
              <p class="regular mt-2">هل قمت بحفظ الصفحات؟</p> -->
+             <span class="degree_detail" *ngIf="testPhasedDetailsModel">
+              {{"EXAM_FORM.THE_SUCCESS_RATE"|translate}}:{{testPhasedDetailsModel.scorePass}}
+            </span>
     
              <div *ngFor = 'let question of testPhasedDetailsModel?.questions'>
                 <app-question-template [questionTemplate] = 'question'  [viewMode]='true'></app-question-template>
@@ -83,6 +91,3 @@
     </ng-container>
 </div>
 
-<div *ngIf="dutyDaysTaskViewMood===programDutyDaysTaskViewMoodEnum.student">
-  
-</div>

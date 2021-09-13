@@ -12,10 +12,11 @@ import { StudentProgramDutyDaysComponent } from './student-prog-duties/student-p
 import { StudentProgramDutyDaysTaskComponent } from './student-prog-duties/student-program-duty-days-task/student-program-duty-days-task.component';
 import { StudentProgramDutyDaysTaskDetailsComponent } from './student-prog-duties/student-program-duty-days-task-details/student-program-duty-days-task-details.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { AddStuDutyDaysToProgramComponent } from './student-program-wrapper/student-programs/add-stu-duty-days-to-program/add-stu-duty-days-to-program.component';
 
 
 @NgModule({
-  declarations: [StudentProgramsComponent, HonoraryBoardComponent, StatisticsComponent, StudentProgramWrapperComponent, StudentProgDutiesComponent, StudentProgramDutyDaysComponent, StudentProgramDutyDaysTaskComponent, StudentProgramDutyDaysTaskDetailsComponent],
+  declarations: [StudentProgramsComponent, HonoraryBoardComponent, StatisticsComponent, StudentProgramWrapperComponent, StudentProgDutiesComponent, StudentProgramDutyDaysComponent, StudentProgramDutyDaysTaskComponent, StudentProgramDutyDaysTaskDetailsComponent, AddStuDutyDaysToProgramComponent],
   imports: [
     CommonModule, SharedModule,
     StudentProgramsRoutingModule,TranslateModule

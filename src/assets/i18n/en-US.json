@@ -79,9 +79,9 @@
     "ACTIVE": "Active",
     "QUESTION": "The question",
     "NEXT": "Next",
-    "ADD_TEACHER_PROGRAM":"Add Program To Teacher ",
-    "BATCH_REQUIRED":"Program Is Required",
-    "ADD_TEACHER_PROGRAM_SUCCESS":"Added Successfully"
+    "ADD_TEACHER_PROGRAM": "Add Program To Teacher ",
+    "BATCH_REQUIRED": "Program Is Required",
+    "ADD_TEACHER_PROGRAM_SUCCESS": "Added Successfully"
   },
   "ACTIVATION_USER_PG": {
     "ACTIVATION_CODE": "Activation Code",
@@ -653,7 +653,8 @@
     "SORT_NAME": "Sort by Name"
   },
   "ADMIN_MESSAGING": {
-    "SCIENTIFIC_PROBLEM": "Scientific Problem"
+    "SCIENTIFIC_PROBLEM": "Scientific Problem",
+    "CHAT": "Chats"
   },
   "NOTIFICATIONS": {
     "AFTER_ASSIGNMENT": "After Not performing",
@@ -789,8 +790,8 @@
     "NEW_JOIN_REQUESTS": "New requests",
     "ACCEPTANCE_REQUESTS": "Admission requests",
     "REJECTANCE_REQUESTS": "Rejection requests",
-    "JOIN_REQUESTS": "Join requests",
-    "JOIN_REQUESTS_FOR_PROGRAM": "Requests to join the program",
+    "JOIN_REQUESTS": "Join requests to Hofaaz",
+    "JOIN_REQUESTS_FOR_PROGRAM": "Join requests to program",
     "CANCEL_REQUESTS": "Cancellation requests",
     "AVAILABLE_CHANGE_TIME_REQUESTS": "Available time change requests",
     "REJECT_TEACHER": "Reject Teacher",
@@ -934,15 +935,37 @@
     "ANSWER_FINISHED": "Is the answer finished",
     "NO_EXAM": "No Exam Found"
   },
+  "CHAT_GROUP": {
+    "GROUP_NAME_AR": "Group Name Arabic",
+    "GROUP_NAME_AR_REQUIRED": "Group Name Arabic is Required",
+    "GROUP_NAME_AR_MAX_LENGHT": "Group Name Arabic Must Be Less than 256 character",
+    "GROUP_NAME_EN": "Group Name English",
+    "GROUP_NAME_EN_REQUIRED": "Group Name English is Required",
+    "GROUP_NAME_EN_MAX_LENGHT": "Group Name English Must Be Less than 256 character",
+    "GROUP_IS_EXIST": "Group is already exist",
+    "GROUP_NOT_CREATED": "Group Not Created",
+    "ADD_NEW_GROUP": "Add New Group",
+    "USERS": "Choose Participant"
+  },
+  "JPIN_EXAM": {
+    "ARE_YOU_FINISHED_EXAM": "Are you finished the exam?"
+  },
   "TEACHER_APPOINTMENT": {
     "NEW_TIMES": "New Times",
     "FROM": "FROM",
     "TO": "To",
     "OLD_TIMES": "Old Times",
-    "MODIFY_APPOINTMENT":"Appointment change request",
+    "MODIFY_APPOINTMENT": "Appointment change request",
     "ADD_APPOINTMENT": "Add new Appointment",
     "APPOINTMENT_DETAILS": "View Appointment",
     "ADVANCED_SEARCH": "Advanced Search",
     "REQUEST_OWNER_NAME": "Request Owner Name"
+  },
+  "STUDENT_DAY_TASKS": {
+    "DAILY_HOMEWORK": "Daily Homework ",
+    "START": "Start",
+    "ADD_DAY": "Add day",
+    "ENTER_DAY": "The days are not less or more than  ",
+    "HOMEWORK_DURATION": "Homework  Duration at day"
   }
 }

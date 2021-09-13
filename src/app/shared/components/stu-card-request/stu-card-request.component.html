@@ -13,36 +13,53 @@
     </div>
   
     <div class="card_body">
+      <div class="d-flex  justify-content-end" *ngIf='typeEnum === tabTypeSelected.empty' >
+        <p class="program__num mb-0  mr-3 ml-3">
+          {{ translate.currentLang == langEnum.en ? studentSubscripModel?.enStatName : studentSubscripModel?.arStatName}}</p>
+        <span class="status mb-0" [ngClass]="{ 'accept' : studentSubscripModel.statNum === tabTypeSelected.Accept ,
+                                  'pending' : studentSubscripModel.statNum === tabTypeSelected.Pending ,
+                                  'rejected' : studentSubscripModel.statNum === tabTypeSelected.Rejected}
+                                 ">
+        </span>
+      </div>
       <div class="d-flex justify-content-between mb-3">
         <img *ngIf='!studentSubscripModel.avatarLink' class="img_user  cursor-pointer"
         (click)="studentJoinId(studentSubscripModel?.usrId,studentSubscripModel?.progName)"  src="../../../../assets/images/student/user-profile.svg">
         <img *ngIf='studentSubscripModel.avatarLink' 
         (click)="studentJoinId(studentSubscripModel?.usrId ,studentSubscripModel?.progName)" class="img_user cursor-pointer"
         src="{{studentSubscripModel.avatarLink}}" >
+
+        
       <div class="mx-1 container-width">
-        <p class="number_request mb-3">{{studentSubscripModel.programStaNum}}</p>
+        <p class="number_request mb-0">{{studentSubscripModel.no}}</p>
         <p class="name_user bold mb-2 ellipsis p-0"  (click)="studentJoinId(studentSubscripModel?.usrId, studentSubscripModel?.progName)" title="{{studentSubscripModel.usrNameAr}}">{{studentSubscripModel.usrNameAr}}</p>
         <!-- <p class="program_user bold mb-2 "> {{studentSubscripModel.progName}}</p> -->
         <p class="program_user bold mb-2 ellipsis p-0"
         title=" {{translate.currentLang === langEnum.en ? studentSubscripModel.enProgBatName : studentSubscripModel.arProgBatName }}"
         > 
           {{translate.currentLang === langEnum.en ? studentSubscripModel.enProgBatName : studentSubscripModel.arProgBatName }}</p>
-        <p class="program_user bold mb-0 "> 
+        <!-- <p class="program_user bold mb-0 "> 
         <span> {{'STUDENT_SUBSCRIBERS.REQUEST_RESULT' | translate}} </span>        
 
-          : 100/{{studentSubscripModel.examDegree}}  <a class="exam_link">  {{'STUDENT_SUBSCRIBERS.TEST_VIEW' | translate}}</a></p>
+          : 100/{{studentSubscripModel.examDegree}}  <a class="exam_link">  {{'STUDENT_SUBSCRIBERS.TEST_VIEW' | translate}}</a></p> -->
        
       </div>
-        <div class="d-flex">
-         <a><img src="../../../../../assets/images/chat.svg"></a> 
-        </div>
+
+      <!-- <div class="d-flex align-items-center program__header justify-content-between " > -->
+
+        <!-- <p class="program__num  mb-2">{{ studentSubscripModel?.no}}</p> -->
+       
+        
+      <!-- </div> -->
+
       </div>
 
-      <ng-container *ngIf="studentSubscripModel.reasonReject">
+      <ng-container *ngIf="studentSubscripModel.rejReas">
         <p class="program_rejected  mb-0 pb-2"  *ngIf="typeEnum === tabTypeSelected.Rejected"> 
           <span class="bold mx-1">سبب الرقض:</span> 
           <span>
-            {{studentSubscripModel.reasonReject}}
+            {{studentSubscripModel.rejReas}}
+
           </span>
         </p>
       </ng-container>

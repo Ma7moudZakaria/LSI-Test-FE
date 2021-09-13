@@ -34,7 +34,7 @@ export class StuRejectedComponent implements OnInit {
   saveRejectRequest() {
     let model: IRejectProgramSubscriptionModel = {
       subscriptionId: this.itemStuReq.id,
-      reasonReject: this.itemStuReq.reasonReject
+      reasonReject: this.itemStuReq.rejReas
     }
     if (model.reasonReject) {
       this.stuSubRequestService.rejectStudentProgramSubscription(model).subscribe(res => {

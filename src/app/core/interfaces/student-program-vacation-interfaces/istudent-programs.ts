@@ -1,3 +1,5 @@
+import { Time } from "@angular/common";
+
 export interface IStudentPrograms {
   id?: string;
   batId?: string;
@@ -6,4 +8,9 @@ export interface IStudentPrograms {
   enBatName?: string;
   arProgBatchName?: string;
   enProgBatchName?: string;
+  isProgStarted?:boolean;
+  isDaysRequested?:boolean;
+  remainingTime:Time
+  noofDutyDays?:number;
+  remainingTimeInNumbers?:number;
 }

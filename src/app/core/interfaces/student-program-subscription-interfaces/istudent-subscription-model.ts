@@ -1,18 +1,23 @@
 export interface IStudentSubscriptionModel {
     id?: string;
-    usrId?:string;
+    usrId?: string;
     requestDate?: Date;
     usrNameAr?: string;
     usrNameEn?: string;
     progName?: string;
     totalRows?: number;
     checked?: boolean;
-    programStaNum?: number;
+    // programStaNum?: number;
     examDegree?: number;
     avatarLink?: string;
-    reasonReject?: string;
-    arBatName?:string;
-    enBatName?:string;
-    arProgBatName?:string;
-    enProgBatName?:string;
+    // reasonReject?: string;
+    arBatName?: string;
+    enBatName?: string;
+    arProgBatName?: string;
+    enProgBatName?: string;
+    statNum?: number;
+    arStatName?: string;
+    enStatName?: string;
+    no?: number;
+    rejReas?: string;
 }

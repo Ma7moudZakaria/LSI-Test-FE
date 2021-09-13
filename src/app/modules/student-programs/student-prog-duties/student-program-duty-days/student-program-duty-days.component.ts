@@ -23,7 +23,7 @@ export class StudentProgramDutyDaysComponent implements OnInit {
   errorMessage?: string;
   resMessage: BaseMessageModel = {};
   defaultSelectedDay:number = 0;
-
+  isCurrindex:number=0;
   constructor(
     public languageService: LanguageService,
     public translate: TranslateService,
@@ -49,7 +49,11 @@ export class StudentProgramDutyDaysComponent implements OnInit {
       res => {
         if (res.isSuccess) {
           this.studentProgramDutiesList = res.data.programDutyDaysModel as IStudentProgramDutiesResponse[];
-          this.onDayClick(this.studentProgramDutiesList[0]);
+          this.isCurrindex=this.studentProgramDutiesList.findIndex(x=>x.isCurr===true);
+          if(this.isCurrindex>=0)
+         {this.onDayClick(this.studentProgramDutiesList[this.isCurrindex]); this.defaultSelectedDay=this.isCurrindex;} 
+         else{this.isCurrindex=this.studentProgramDutiesList.findIndex(x=>x.isNex===true) -1;
+           this.onDayClick(this.studentProgramDutiesList[0]); this.defaultSelectedDay=0;}
         }
         else {
           this.resMessage = {
@@ -63,6 +67,14 @@ export class StudentProgramDutyDaysComponent implements OnInit {
           type: BaseConstantModel.DANGER_TYPE
         }
       })
+  }
+
+  onDayChange(){
+    if (this.studentProgramDutiesList && this.studentProgramDutiesList[this.isCurrindex + 1].isCurr && this.isCurrindex + 1 < this.studentProgramDutiesList.length){
+      this.onDayClick(this.studentProgramDutiesList[this.isCurrindex + 1]); this.defaultSelectedDay=this.isCurrindex + 1;
+      this.isCurrindex=this.isCurrindex+1
+    }
+    else{ if (this.studentProgramDutiesList)this.onDayClick(this.studentProgramDutiesList[0]); this.defaultSelectedDay=0;}
   }
 
   onDayClick(event: IProgramDutyDays) {

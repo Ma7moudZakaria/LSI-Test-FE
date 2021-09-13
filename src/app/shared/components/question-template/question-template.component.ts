@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { AnswerTypeEnum } from 'src/app/core/enums/exam-builder-enums/answer-type-enum.enum';
 import { QuestionTypeEnum } from 'src/app/core/enums/exam-builder-enums/question-type-enum.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { ProgramDutyDaysTaskViewMoodEnum } from 'src/app/core/enums/programs/program-duty-days-task-view-mood-enum.enum';
 import { IAnswer } from 'src/app/core/interfaces/exam-builder-interfaces/ianswer';
 import { IExam } from 'src/app/core/interfaces/exam-builder-interfaces/iexam';
 import { IQuestion } from 'src/app/core/interfaces/exam-builder-interfaces/iquestion';
@@ -21,6 +22,8 @@ export class QuestionTemplateComponent implements OnInit {
   @Output() degreeValueChange = new EventEmitter<string>();
   @Input() questionTemplate: IQuestion = { answers: [] };
   @Input() viewMode: boolean = false;
+  @Input() questionViewMood: number = ProgramDutyDaysTaskViewMoodEnum.admin;
+  questionViewMoodEnum= ProgramDutyDaysTaskViewMoodEnum;
   answerTypeEnum = AnswerTypeEnum;
   currentLang = '';
   MULTISELECT = '';

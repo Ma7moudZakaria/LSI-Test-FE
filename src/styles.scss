@@ -119,7 +119,16 @@ html, body {  height: 100%;}
     height:auto
 
 }
-
+.card-request{
+  position: relative;
+}
+.body_footer{
+  
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 .content_form
 {
   min-height: 23.5rem;

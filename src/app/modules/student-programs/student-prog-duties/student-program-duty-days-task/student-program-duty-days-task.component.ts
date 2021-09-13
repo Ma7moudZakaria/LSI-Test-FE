@@ -19,12 +19,14 @@ import { StudentProgDutiesServiceService } from 'src/app/core/services/student-p
 export class StudentProgramDutyDaysTaskComponent implements OnInit {
 
   @Output() taskDetailsEvent = new EventEmitter<IProgramDayTasksModel>();
+  @Output()  taskIsEndEvent= new EventEmitter<boolean>();
   @Input() programDutyDay: IProgramDutyDays | undefined;
   programDayTasksLists = [] as Array<IProgramDayTasksModel>;
   langEnum = LanguageEnum;
   resMessage: BaseMessageModel = {};
   defaultSelectedDay:number = 0;
-
+  indexIsanswered:number=0;
+ 
   constructor(
     public languageService: LanguageService,
     private studentProgDutiesServiceService: StudentProgDutiesServiceService,
@@ -37,7 +39,6 @@ export class StudentProgramDutyDaysTaskComponent implements OnInit {
   }
 
   getProgramDutyDays() {
-
     let model : IDayTasksProgramDutyDayRequestModel  = {
       stuId:this.route.snapshot.params.id,
       progDayId:this.programDutyDay?.id 
@@ -46,7 +47,10 @@ export class StudentProgramDutyDaysTaskComponent implements OnInit {
     this.studentProgDutiesServiceService.getDayTasksProgramToStudent(model).subscribe(res => {
       if (res.isSuccess) {
         this.programDayTasksLists = res.data as Array<IProgramDayTasksModel>;
-        this.setProgrmeDayTask(this.programDayTasksLists[0])
+        this.indexIsanswered=this.programDayTasksLists.findIndex(x=>x.answered===false);
+        if(this.indexIsanswered>=0)
+       {this.setProgrmeDayTask(this.programDayTasksLists[this.indexIsanswered]); this.defaultSelectedDay=this.indexIsanswered;}
+        else{this.setProgrmeDayTask(this.programDayTasksLists[0]);  this.defaultSelectedDay=0;} 
       }
       else {
         this.resMessage =
@@ -67,4 +71,12 @@ export class StudentProgramDutyDaysTaskComponent implements OnInit {
     this.taskDetailsEvent.emit(item);
   }
 
+  onTaskChange(){
+    if (this.programDayTasksLists && this.indexIsanswered + 1 < this.programDayTasksLists.length){
+      this.setProgrmeDayTask(this.programDayTasksLists[this.indexIsanswered + 1]); this.defaultSelectedDay=this.indexIsanswered + 1;
+      this.indexIsanswered=this.indexIsanswered + 1;
+    }
+    else{this.taskIsEnd()}
+  }
+  taskIsEnd(){ this.taskIsEndEvent.emit()}
 }

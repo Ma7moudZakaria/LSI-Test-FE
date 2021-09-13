@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
@@ -19,7 +19,6 @@ import { IProgramDayTaskVideo } from 'src/app/core/interfaces/programs-interface
 import { ISubmitStudentDutyDayTaskModel } from 'src/app/core/interfaces/student-program-duties-interfaces/isubmit-student-duty-day-task-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
-import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { StudentProgDutiesServiceService } from 'src/app/core/services/student-prog-duties-services/student-prog-duties-service.service';
 
@@ -29,7 +28,7 @@ import { StudentProgDutiesServiceService } from 'src/app/core/services/student-p
   styleUrls: ['./student-program-duty-days-task-details.component.scss']
 })
 export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
-
+  @Output() taskIsSaveEvent = new EventEmitter<boolean>();
   @Input() taskDetails: IProgramDayTasksModel | undefined;
   @Input() progamDetails: IProgramDetails | undefined;
   detailsTypeEnum = ProgramDayTasksDetails;
@@ -134,25 +133,34 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
   }
 
 yes(){
-  // this.isAnswer=true;
-  // this.save();
-  alert("yes")
+  this.isAnswer=true;
+  this.save();
+  this.taskIsSave();
 }
+
 no(){
-  // this.isAnswer=false;
-  // this.save();
-  alert("no")
+  this.isAnswer=false;
+  this.save();
+  this.taskIsSave();
 }
+
   save(){
     this.resultMessage = {}; 
     let model : ISubmitStudentDutyDayTaskModel  = {
       progtaskId:this.taskDetails?.id,
       studId :this.route.snapshot.params.id,
       isAnsw:this.isAnswer,
-      questionsExam:[]
+      questionsExam:[],
+      examScore:0,
     }
-    if(this.detailsTypeEnum.TaskTestPhased===this.taskDetails?.huffazTask ){model.questionsExam=this.testPhasedDetailsModel.questions}
-    if(this.detailsTypeEnum.TaskDailyTest===this.taskDetails?.huffazTask){model.questionsExam=this.dailyTestDetailsModel.questions}
+    if(this.detailsTypeEnum.TaskTestPhased===this.taskDetails?.huffazTask ){
+      model.questionsExam=this.testPhasedDetailsModel.questions;
+      model.examScore =this.testPhasedDetailsModel.scorePass
+    }
+    if(this.detailsTypeEnum.TaskDailyTest===this.taskDetails?.huffazTask)
+    {model.questionsExam=this.dailyTestDetailsModel.questions;
+      model.examScore =this.dailyTestDetailsModel.scorePass
+    }
 
     this.studentProgDutiesServiceService.submitStudentTaskAnswer(model).subscribe(res => {
       if (res.isSuccess) {
@@ -174,5 +182,7 @@ no(){
       }
     });
   }
-
+  
+  taskIsSave(){ this.taskIsSaveEvent.emit()}
+  
 }

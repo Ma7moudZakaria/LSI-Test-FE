@@ -23,7 +23,7 @@ export class TeacheRejectedComponent implements OnInit {
   constructor(
     private teatchSubRequestService: TeacherProgramSubscriptionServicesService,
     private alertify: AlertifyService,
-    public translate : TranslateService) { }
+    public translate: TranslateService) { }
 
   ngOnInit(): void {
   }
@@ -33,10 +33,10 @@ export class TeacheRejectedComponent implements OnInit {
   }
 
   saveRejectRequest() {
-    this.resMessage={};
+    this.resMessage = {};
     let model: IRejectTeacherProgramSubscriptionModel = {
       subscriptionId: this.itemTeacherReq.id,
-      reasonReject: this.itemTeacherReq.reasonReject
+      reasonReject: this.itemTeacherReq.rejReas
     };
     if (model.reasonReject) {
       this.teatchSubRequestService.rejectTeachersProgramSubscription(model).subscribe(res => {

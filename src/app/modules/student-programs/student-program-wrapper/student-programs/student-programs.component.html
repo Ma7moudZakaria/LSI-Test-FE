@@ -1,1 +1,34 @@
-<p>student-programs works!</p>
+<div class="container-fluid card_stu_program my-2" *ngFor="let program  of programs">
+        <span class="card_stu_program__name">
+            {{  program.progName}} -  {{this.translate.currentLang===langEnum.en? program.enBatName : program.arBatName}}</span>
+            <div class="col-12 mt-3" *ngIf="program.isProgStarted==true">
+                <p class="card_stu_program__count">{{ 'STUDENT_DAY_TASKS.HOMEWORK_DURATION' | translate }}</p>
+                <p class=" card_stu_program__timer_contDown" *ngIf="program.remainingTimeInNumbers">
+                {{program.remainingTimeInNumbers| formatTime}}
+                </p>
+            </div>
+            <div class="col-12 ">
+                <ng-container *ngIf="program.isProgStarted==false">
+                <button  class="card_stu_program__Day_tasks mb-3 mt-2"
+                  (click)="startProgram(program?.batId,program?.id,program?.noofDutyDays,program.isDaysRequested)">
+                  <!-- <img src="../../../../../assets/images/student-program/book.svg" class="card_stu_program__bookIcon"> -->
+                  {{ 'STUDENT_DAY_TASKS.START' | translate }}
+                </button>
+                </ng-container>
+            </div>
+     
+            <div class="col-12">
+                <button   class="card_stu_program__Day_tasks"
+                [disabled]="program.isProgStarted==false" 
+                (click)="goToHomeWore(program?.batId)">
+                <img src="../../../../../assets/images/student-program/book.svg" class="card_stu_program__bookIcon">
+
+                {{ 'STUDENT_DAY_TASKS.DAILY_HOMEWORK' | translate }}
+            </button>
+            </div>
+</div>
+<div class="overlay" *ngIf="isShowAddStuDutyDaysToProgram">
+    <app-add-stu-duty-days-to-program [startStudentBatchRequest]="startStudentBatchRequest"
+    (closeDayTasks)='closeAddStuDutyDaysToProgramOverlay($event)'
+    ></app-add-stu-duty-days-to-program>
+</div>

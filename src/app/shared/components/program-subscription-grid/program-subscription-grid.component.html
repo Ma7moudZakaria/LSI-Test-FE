@@ -44,8 +44,8 @@
                     [checked]="allSelected"
                     [indeterminate]="someStudentItemsChecked()"
                     (change)="setStudentAllChecked($event.checked)"></mat-checkbox>
-          <a class=" ml-2 mr-2" [class.disabled]='!enableStudentSelectOperations()'
-          [ngClass]="{'dimmed': typeEnum === stuTabTypeSelected.Accept ||  typeEnum === stuTabTypeSelected.Rejected}">
+          <a class=" ml-2 mr-2" [class.disabled]='!enableStudentSelectOperations() && typeEnum !== stuTabTypeSelected.empty'
+          [ngClass]="{'dimmed': typeEnum === stuTabTypeSelected.Accept ||  typeEnum === stuTabTypeSelected.Rejected || typeEnum === stuTabTypeSelected.empty}">
               <i (click)='acceptAllStudentProgramSubscriptionChechedEvent()' class="fa fa-check fa-lg "></i>
               
           </a>
@@ -102,8 +102,8 @@
                     [indeterminate]="someTeachertItemsChecked()"
                     (change)="setTeacherAllChecked($event.checked)"></mat-checkbox>
 
-          <a class=" ml-2 mr-2" [class.disabled]='!enableTeacherSelectOperations()'
-          [ngClass]="{'dimmed': typeTeacheEnum === teacherTabTypeSelected.Accept ||  typeTeacheEnum === teacherTabTypeSelected.Rejected}">
+          <a class=" ml-2 mr-2" [class.disabled]='!enableTeacherSelectOperations() && typeTeacheEnum === teacherTabTypeSelected.Empty'
+          [ngClass]="{'dimmed': typeTeacheEnum === teacherTabTypeSelected.Accept ||  typeTeacheEnum === teacherTabTypeSelected.Rejected || typeTeacheEnum === teacherTabTypeSelected.Empty}">
               <i (click)='acceptAllTeacherProgramSubscriptionChechedEvent()' class="fa fa-check fa-lg "></i>
           </a>
           <a class=" ml-1 mr-1" [class.disabled]='!enableTeacherSelectOperations()'>
@@ -112,26 +112,27 @@
           </a>
        </div>
   </div>
-
   <mat-grid-list cols="{{numberPerRow}}" rowHeight="3:3">
-    <ng-container *ngIf="userMode == programSubscriptionUsers.student">
+    <ng-container *ngIf="userMode == programSubscriptionUsers.student  ">
         <mat-grid-tile *ngFor='let item of studentItems' >
             <app-stu-card-request [studentSubscripModel]='item'  
             (rejecteStuRequest)="rejecteStuRequest($event)"
             (acceptStuRequest)="acceptStuRequest($event)"
-             
             [typeEnum]='typeEnum'
-                                  (studentProgSubOutput) = studentProgSubOutputEvent($event);
-                                  (updateAllItemsChecked)='updateAllItemsCheckedStudent()'
+            (studentProgSubOutput) = studentProgSubOutputEvent($event);
+            (updateAllItemsChecked)='updateAllItemsCheckedStudent()'
             ></app-stu-card-request>
         </mat-grid-tile>
     </ng-container>
     <ng-container *ngIf="userMode == programSubscriptionUsers.teacher">
         <mat-grid-tile *ngFor='let item of teacherItems' >
-         <app-teacher-card-request class="card" (acceptTeacherProgramSubscription)='acceptTeacherProgramSubscriptionEvent($event)' 
+         <app-teacher-card-request class="card" 
+         (acceptTeacherProgramSubscription)='acceptTeacherProgramSubscriptionEvent($event)' 
          (rejectTeacherProgramSubscription)='rejectTeacherProgramSubscriptionEve($event)'
-                                   (teacherProgSubOutput) = teacherProgSubOutputEvent($event);
-                                   [teacherSubscripModel]='item' [typeEnum]='typeTeacheEnum' (updateAllItemsChecked)='updateAllItemsCheckedTeacher()'></app-teacher-card-request>
+           (teacherProgSubOutput) = teacherProgSubOutputEvent($event);
+            [teacherSubscripModel]='item' [typeEnum]='typeTeacheEnum' 
+            (updateAllItemsChecked)='updateAllItemsCheckedTeacher()'>
+        </app-teacher-card-request>
         </mat-grid-tile>
     </ng-container>
 </mat-grid-list>
