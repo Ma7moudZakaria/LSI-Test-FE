@@ -1,0 +1,55 @@
+@import '../../../../../../assets/scss/buttons';
+.UpdateUser__Label
+{
+  font-family: Almarai-Bold, sans-serif;
+  color: #3A3A3A;
+  font-size:1.25rem;
+}
+.save-btn{
+  margin-left: 0;
+}
+.calender_img{
+  width: 40px;
+  height: 40px;
+}
+.times_programs{
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 26vh;
+  .ellipsis
+  {
+    max-width: 15rem;
+    width: 98%;
+    min-width: 14rem;
+  }
+
+}
+.cardTime_container{
+  overflow-y: auto;
+  height: 25vh;
+  overflow-x: hidden;
+}
+.cardTime{
+  background-color: #fff;
+  padding: 0.5rem;
+  border-radius: 5px;
+  &:lang(ar){text-align: right;}
+  &:lang(en){text-align: left;}
+  &__day{
+    color: #8E2520;
+    font-size: 15px;
+    font-family: Almarai-Bold, sans-serif;
+  }
+  &__time{
+    color: #CB9118;
+    font-size: 15px;
+    font-family: Almarai-Regular, sans-serif;
+  }
+
+}
+
+.ellipsis{
+  max-width: 14rem;
+  width: 98%;
+  min-width: 10rem;
+}

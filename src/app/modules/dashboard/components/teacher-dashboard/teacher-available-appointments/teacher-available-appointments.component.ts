@@ -17,12 +17,10 @@ import {ITeacherAppointmentModel} from '../../../../../core/interfaces/teacher-a
 })
 export class TeacherAvailableAppointmentsComponent implements OnInit {
   lang = LanguageEnum;
-  RouteParams = {} as string;
   teacherAvailableTimes = {} as ITeacherAvailableTimes;
   currentUser: IUser | undefined;
   resMessage: BaseMessageModel = {};
   currentLang: LanguageEnum | undefined;
-  birthdate: string | undefined;
   @Output() itemStuReq = new EventEmitter<ITeacherAppointmentModel>();
   @Output() AddTeacherRequest = new EventEmitter<ITeacherAppointmentModel>();
   @Output() requestDetails = new EventEmitter<ITeacherAppointmentModel>();
@@ -39,7 +37,6 @@ export class TeacherAvailableAppointmentsComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     this.currentLang = this.translate.currentLang === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
-    this.RouteParams = this.router.url;
     this.setCurrentLang();
     this.getTeacherAvailableTimesTeacherView();
   }

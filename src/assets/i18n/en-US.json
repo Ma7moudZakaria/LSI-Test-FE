@@ -918,7 +918,8 @@
     "BASIC_INFO": "Basic info",
     "DROP_OUT": "drop out requests",
     "JOIN": "Join Requests",
-    "VACATION": "Vacation"
+    "VACATION": "Vacation",
+    "AVAILABLE_TIMES": "Available times"
   },
   "GENERAL_DROP_OUT_REQUEST": {
     "REQUEST_REASON": "Request Reason",

@@ -917,7 +917,8 @@
     "BASIC_INFO": "البيانات الاساسيه",
     "DROP_OUT": "طلبات الانسحاب",
     "JOIN": "طلبات الانضمام",
-    "VACATION": "طلبات الاجازه"
+    "VACATION": "طلبات الاجازه",
+    "AVAILABLE_TIMES": "المواعيد المتاحة"
   },
   "STUDENT_SUBSCRIPTION": {
     "ACCEPT_EXAMP": "اختبار القبول",

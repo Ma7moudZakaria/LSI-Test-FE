@@ -16,10 +16,11 @@ import {SharedModule} from '../../shared/shared.module';
 import { AdminTeacherProgramListComponent } from './admin-teacher-tab/admin-teacher-tabs-details/admin-teacher-program/admin-teacher-program-list/admin-teacher-program-list.component';
 import { AdminTeacherProgramDetailsComponent } from './admin-teacher-tab/admin-teacher-tabs-details/admin-teacher-program/admin-teacher-program-details/admin-teacher-program-details.component';
 import { AdminTeacherAddProgramComponent } from './admin-teacher-tab/admin-teacher-tabs-details/admin-teacher-program/admin-teacher-add-program/admin-teacher-add-program.component';
+import { AdminTeacherAvailableTimesComponent } from './admin-teacher-tab/admin-teacher-tabs-details/admin-teacher-available-times/admin-teacher-available-times.component';
 
 
 @NgModule({
-  declarations: [AdminTeacherListComponent, AdminTeacherTabsDetailsComponent, AdminTeacherJoinRequestComponent, AdminTeacherProgramComponent, AdminTeacherDropOutComponent, AdminTeacherBasicInfoComponent, AdminTeacherTabComponent, AdminTeacherProgramListComponent, AdminTeacherProgramDetailsComponent, AdminTeacherAddProgramComponent],
+  declarations: [AdminTeacherListComponent, AdminTeacherTabsDetailsComponent, AdminTeacherJoinRequestComponent, AdminTeacherProgramComponent, AdminTeacherDropOutComponent, AdminTeacherBasicInfoComponent, AdminTeacherTabComponent, AdminTeacherProgramListComponent, AdminTeacherProgramDetailsComponent, AdminTeacherAddProgramComponent, AdminTeacherAvailableTimesComponent],
   imports: [
     CommonModule,
     AdminTeacherTabRoutingModule,

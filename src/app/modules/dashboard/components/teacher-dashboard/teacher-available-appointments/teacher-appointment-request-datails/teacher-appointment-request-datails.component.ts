@@ -70,10 +70,6 @@ export class TeacherAppointmentRequestDatailsComponent implements OnInit {
     });
   }
 
-  rejectedStudentReq() {
-    this.rejectStudentVacationRequest.emit(this.studentSubscripModel);
-  }
-
   cancelRequest() {
       this.teacherAppointmentService.cancelTheChangeTeacherAvailableTimeRequest(this.teacherAvailableTimes?.reqId).subscribe(res => {
         if (res.isSuccess) {

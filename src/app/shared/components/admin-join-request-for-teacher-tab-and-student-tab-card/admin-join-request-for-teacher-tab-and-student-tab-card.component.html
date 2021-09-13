@@ -18,9 +18,9 @@
       <div class="d-flex align-items-center justify-content-between " >
       <p class="program__num mb-2  mr-3 ml-3">{{ translate.currentLang == langEnum.en ? studentSubscripModel?.usrNameEn : studentSubscripModel?.usrNameAr}}</p>
         <span class="status mb-0"
-         [ngClass]="{ 'accept' : studentSubscripModel.statusNum == tabTypeSelected.Accept ,
-                                  'pending' : studentSubscripModel.statusNum == tabTypeSelected.Pending ,
-                                  'rejected' : studentSubscripModel.statusNum == tabTypeSelected.Rejected
+         [ngClass]="{ 'accept' : studentSubscripModel.statNum == tabTypeSelected.Accept ,
+                                  'pending' : studentSubscripModel.statNum == tabTypeSelected.Pending ,
+                                  'rejected' : studentSubscripModel.statNum == tabTypeSelected.Rejected
                                   }">
         </span>
       </div>
@@ -38,10 +38,10 @@
       <!-- <p class="program_user bold mb-2 ">{{ studentSubscripModel.reason }}</p> -->
       <p class="program__admin"   *ngIf="!studentSubscripModel.rejReas " >{{'GENERAL_DROP_OUT_REQUEST.NO_DATA' | translate}} </p>
       <p class="program__answer "  *ngIf="studentSubscripModel.rejReas ">{{studentSubscripModel.rejReas}}</p>
-    
-    
+
+
     </div>
-    
+
 
 
   </div>
@@ -52,17 +52,17 @@
 <ng-container *ngIf='userMode === userRoleMode.teacher '>
   <div class="card-request" >
     <div class="card_header ">
-  
+
         <div class="col-6 d-flex align-items-center justify-content-between p-0 m-0">
             <span > {{'TEACHER_DROP_OUT.TIME' | translate}} </span>
             <span>{{teacherSubscripModel.requestDate  | date: 'dd/MM/yyyy'}}</span>
         </div>
-  
-  
+
+
     </div>
     <div class="card_body program">
       <div class="d-flex align-items-center program__header justify-content-between " >
-  
+
         <p class="program__num  mb-2"></p>
         <div class="d-flex align-items-center justify-content-between " >
         <p class="program__num mb-2  mr-3 ml-3">{{ translate.currentLang == langEnum.en ? studentSubscripModel?.usrNameEn : studentSubscripModel?.usrNameAr}}</p>
@@ -73,8 +73,8 @@
                                     }">
           </span>
         </div>
-  
-  
+
+
       </div>
         <div class="mx-1">
         <p class="program__name ellipsis  p-0 mb-0"
@@ -87,12 +87,12 @@
         <!-- <p class="program_user bold mb-2 ">{{ teacherSubscripModel.reason }}</p> -->
         <p class="program__admin"   *ngIf="!teacherSubscripModel.rejReas " >{{'GENERAL_DROP_OUT_REQUEST.NO_DATA' | translate}} </p>
         <p class="program__answer "  *ngIf="teacherSubscripModel.rejReas ">{{teacherSubscripModel.rejReas}}</p>
-      
-      
+
+
       </div>
-      
-  
-  
+
+
+
     </div>
   </div>
   </ng-container>

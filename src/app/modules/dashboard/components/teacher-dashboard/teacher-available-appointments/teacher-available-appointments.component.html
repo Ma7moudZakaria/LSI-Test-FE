@@ -40,7 +40,7 @@
 
 <!-- end data -->
 <div class="overlay add_teacher_appointment_request" *ngIf="openAddRequestOverlay">
-  <app-add-teacher-appointment-request [itemStuReq]='itemStuReq1' (openAddRequestOverlayRequest)="closeAddRequestOverlayRequest()"></app-add-teacher-appointment-request>
+  <app-add-teacher-appointment-request  (openAddRequestOverlayRequest)="closeAddRequestOverlayRequest()"></app-add-teacher-appointment-request>
 </div>
 
 <div class="overlay" *ngIf="openTeacherRequestDetailsOverlay">
