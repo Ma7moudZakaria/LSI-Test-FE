@@ -8,14 +8,14 @@
            type="text">
   </div>
   <div class="form-group">
-    <label class="label">رقم الطلب</label>
+    <label class="label"> {{ 'TEACHER_APPOINTMENT.REQUEST_NUMBER' | translate}}</label>
     <input [(ngModel)]="filter.numberRequest" [ngModelOptions]="{standalone: true}" class="form-control" type="text">
   </div>
 
   <div class="form-group subscribtion-date">
 
     <div class="col-12 p-0">
-      <label class="label"> من </label>
+      <label class="label"> {{ 'TEACHER_APPOINTMENT.FROM' | translate}} </label>
       {{datafromBinding}}
       <app-milady-hijri-calendar (keypress)="$event.preventDefault()" (sendDate)="SendDatafrom($event)"
                                  [(ngModel)]="filter.fromDate"
@@ -25,7 +25,7 @@
 
     </div>
     <div class="col-12 p-0">
-      <label class="label"> الى </label>
+      <label class="label"> {{ 'TEACHER_APPOINTMENT.TO' | translate}} </label>
       {{dataToBinding}}
       <app-milady-hijri-calendar (keypress)="$event.preventDefault()" (sendDate)="SendDataTo($event)"
                                  [(ngModel)]="filter.toDate"

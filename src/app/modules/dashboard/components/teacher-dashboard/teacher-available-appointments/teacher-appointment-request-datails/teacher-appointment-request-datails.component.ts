@@ -18,17 +18,13 @@ import {AlertifyService} from '../../../../../../core/services/alertify-services
   styleUrls: ['./teacher-appointment-request-datails.component.scss']
 })
 export class TeacherAppointmentRequestDatailsComponent implements OnInit {
-  @Input() itemStuReq: ITeacherAppointmentModel = {}
   @Output() closeDetailsRequest = new EventEmitter<ITeacherAppointmentModel>();
   lang = LanguageEnum;
-  RouteParams = {} as string;
   teacherAvailableTimes : ITeacherAppointmentRequestsAppointmentsDetails | undefined;
   currentUser: IUser | undefined;
   resMessage: BaseMessageModel = {};
   currentLang: LanguageEnum | undefined;
-  birthdate: string | undefined;
   @Output() rejectStudentVacationRequest = new EventEmitter<ITeacherAppointmentModel>();
-  @Output() requestDetails = new EventEmitter<ITeacherAppointmentModel>();
 
   @Input() studentSubscripModel: ITeacherAppointmentModel = { totalRows: 0 }
 
@@ -40,7 +36,6 @@ export class TeacherAppointmentRequestDatailsComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     this.currentLang = this.translate.currentLang === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
-    this.RouteParams = this.router.url;
     this.setCurrentLang();
     this.getTeacherAvailableTimesTeacherView();
   }
@@ -73,10 +68,6 @@ export class TeacherAppointmentRequestDatailsComponent implements OnInit {
         type: BaseConstantModel.DANGER_TYPE
       }
     });
-  }
-
-  rejectedStudentReq() {
-    this.rejectStudentVacationRequest.emit(this.studentSubscripModel);
   }
 
   cancelRequest() {

@@ -22,19 +22,15 @@ import {AppointmentRequestsTabComponent} from '../../../../../admin-messaging/co
   styleUrls: ['./add-teacher-appointment-request.component.scss']
 })
 export class AddTeacherAppointmentRequestComponent implements OnInit {
-  @Input() itemStuReq: ITeacherAppointmentModel = {}
   @Output() openAddRequestOverlayRequest = new EventEmitter<ITeacherAppointmentModel>();
   resultMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
   collectionOfLookup = {} as ILookupCollection;
   listOfLookupProfile: string[] = ['DAYS'];
-  resMessage: BaseMessageModel = {};
   selectedAvailabilityDaysList = Array<ITeacherProfileAvailabilityLookup>();
   availabilityDaysMessage: BaseMessageModel = {};
   availabilityDaysModel: ITeacherProfileAvailabilityLookup = {};
-  datepicker1: any;
   currentUser: IUser | undefined;
-  @ViewChild(AppointmentRequestsTabComponent) appointmentRequestComponent: AppointmentRequestsTabComponent | undefined;
 
 
   constructor(private teacherAppointmentService: TeacherAppointmentService
@@ -48,7 +44,7 @@ export class AddTeacherAppointmentRequestComponent implements OnInit {
     this.getLookupByKey();
   }
 
-  closeRejectRequest() {
+  closeAddRequest() {
     this.openAddRequestOverlayRequest.emit();
   }
   saveTeacherAppointmentRequest() {
@@ -69,7 +65,7 @@ export class AddTeacherAppointmentRequestComponent implements OnInit {
     this.teacherAppointmentService.AddChangeTeacherAvailableTimesRequest(model).subscribe(res => {
 
       if (res.isSuccess) {
-        this.closeRejectRequest();
+        this.closeAddRequest();
         this.alertify.success(res.message || '');
 
       } else {
@@ -91,7 +87,7 @@ export class AddTeacherAppointmentRequestComponent implements OnInit {
       if (res.isSuccess) {
       }
       else {
-        this.resMessage =
+        this.resultMessage =
         {
           message: res.message,
           type: BaseConstantModel.DANGER_TYPE

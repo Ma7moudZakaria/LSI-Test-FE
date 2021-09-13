@@ -8,6 +8,7 @@ import { AdminTeacherBasicInfoComponent } from './admin-teacher-basic-info/admin
 import { AdminTeacherDropOutComponent } from './admin-teacher-drop-out/admin-teacher-drop-out.component';
 import { AdminTeacherJoinRequestComponent } from './admin-teacher-join-request/admin-teacher-join-request.component';
 import { AdminTeacherProgramComponent } from './admin-teacher-program/admin-teacher-program.component';
+import {AdminTeacherAvailableTimesComponent} from './admin-teacher-available-times/admin-teacher-available-times.component';
 
 @Component({
   selector: 'app-admin-teacher-tabs-details',
@@ -16,12 +17,13 @@ import { AdminTeacherProgramComponent } from './admin-teacher-program/admin-teac
 })
 export class AdminTeacherTabsDetailsComponent implements OnInit {
 
-  
+
   @ViewChild(AdminTeacherBasicInfoComponent) adminTeacherbasicInfoChild: AdminTeacherBasicInfoComponent | undefined;
   @ViewChild(AdminTeacherDropOutComponent) dropOutChild: AdminTeacherDropOutComponent | undefined;
   @ViewChild(AdminTeacherJoinRequestComponent) joinRequestChild: AdminTeacherJoinRequestComponent | undefined;
   @ViewChild(AdminTeacherProgramComponent) adminTeacherProgChild: AdminTeacherProgramComponent | undefined;
-  
+  @ViewChild(AdminTeacherAvailableTimesComponent) adminTeacherAvailableTimesComponent: AdminTeacherAvailableTimesComponent | undefined;
+
   @Input() programModel: IprogramsModel | undefined;
 
   @Input() teacherIdOutput: ITeacherStudentViewModel | undefined;
@@ -71,6 +73,12 @@ export class AdminTeacherTabsDetailsComponent implements OnInit {
         if (this.joinRequestChild) {
           this.joinRequestChild.teacherIdOutput = this.teacherIdOutput
           this.joinRequestChild.getStudentProgramSubscriptionsFilter();
+        }
+        break;
+      case 'AVAILABLETIMES':
+        if (this.adminTeacherAvailableTimesComponent) {
+          this.adminTeacherAvailableTimesComponent.teacherIdOutput = this.teacherIdOutput
+          this.adminTeacherAvailableTimesComponent.getTeacherAvailableTimesTeacherView();
         }
         break;
     }

@@ -1,17 +1,13 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {LanguageEnum} from '../../../../../core/enums/language-enum.enum';
-import {ITeacherProfile} from '../../../../../core/interfaces/teacher-interfaces/iteacher-profile';
 import {BaseConstantModel} from '../../../../../core/ng-model/base-constant-model';
-import {TeacherProfileService} from '../../../../../core/services/teacher-profile/teacher-profile.service';
 import {IUser} from '../../../../../core/interfaces/auth-interfaces/iuser-model';
 import {BaseMessageModel} from '../../../../../core/ng-model/base-message-model';
 import {Router} from '@angular/router';
 import {LanguageService} from '../../../../../core/services/language-services/language.service';
 import {TeacherAppointmentService} from '../../../../../core/services/teacher-appointment-services/teacher-appointment.service';
 import {ITeacherAvailableTimes} from '../../../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-available-times';
-import {IStudentProgramVacationModel} from '../../../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-model';
-import {IAddTeacherAppointmentRequest} from '../../../../../core/interfaces/teacher-appointment-requests-interfaces/iadd-teacher-appointment-request';
 import {ITeacherAppointmentModel} from '../../../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-appointment-model';
 
 @Component({
@@ -21,12 +17,10 @@ import {ITeacherAppointmentModel} from '../../../../../core/interfaces/teacher-a
 })
 export class TeacherAvailableAppointmentsComponent implements OnInit {
   lang = LanguageEnum;
-  RouteParams = {} as string;
   teacherAvailableTimes = {} as ITeacherAvailableTimes;
   currentUser: IUser | undefined;
   resMessage: BaseMessageModel = {};
   currentLang: LanguageEnum | undefined;
-  birthdate: string | undefined;
   @Output() itemStuReq = new EventEmitter<ITeacherAppointmentModel>();
   @Output() AddTeacherRequest = new EventEmitter<ITeacherAppointmentModel>();
   @Output() requestDetails = new EventEmitter<ITeacherAppointmentModel>();
@@ -43,7 +37,6 @@ export class TeacherAvailableAppointmentsComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     this.currentLang = this.translate.currentLang === LanguageEnum.ar ? LanguageEnum.en : LanguageEnum.ar;
-    this.RouteParams = this.router.url;
     this.setCurrentLang();
     this.getTeacherAvailableTimesTeacherView();
   }
