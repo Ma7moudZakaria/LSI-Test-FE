@@ -113,12 +113,15 @@ export class ChatDetailsComponent implements OnInit {
     this.groupData = model;
     
     this.listOfChats.push(model?.messages || {});
-    for(let item in this.listOfChats){
-      var Data = this.listOfChats[item] as any[];
-      for(let itemTwo in Data){
-        this.listOfMessagess.push(Data[itemTwo]);
-      }        
-    }
+    this.listOfMessagess = Object.values(model?.messages || []) as IMessageChat[];
+    console.log("MessagesOfDataList : ",this.listOfMessagess);
+
+    // for(let item in this.listOfChats){
+    //   var Data = this.listOfChats[item] as any[];
+    //   for(let itemTwo in Data){
+    //     .push(Data[itemTwo]);
+    //   }        
+    // }
 
     this.listOfMessagess = this.listOfMessagess.sort((a, b) => {
       return <any>new Date(a.date) - <any>new Date(b.date);

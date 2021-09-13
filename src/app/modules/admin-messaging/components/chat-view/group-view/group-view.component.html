@@ -12,22 +12,22 @@
 
     <div class="internal_scroll_list_group">
         <ng-container *ngFor="let groupOfItem of listOfGroups; let i = index" >
-        <div class="list-group-item " 
-         (click)="getGroupDetails(groupOfItem)">
-            <div  class="d-flex justify-content-between" >
-                <p class=" ellipsis p-0  group_name" title=" {{ groupOfItem.group_name }} "> {{ groupOfItem.group_name }}  </p>   
-                <p class="last_date"> {{ groupOfItem.last_date | date: 'dd/MM/yyyy'  }} </p>    
+            <div class="list-group-item " 
+            (click)="getGroupDetails(groupOfItem)">
+                <div  class="d-flex justify-content-between" >
+                    <p class=" ellipsis p-0  group_name" title=" {{ groupOfItem.group_name }} "> {{ groupOfItem.group_name }}  </p>   
+                    <p class="last_date"> {{ groupOfItem.last_date }} </p>    
+                </div>
+                <div  class="d-flex justify-content-between" >  
+                    <p class=" ellipsis p-0 last_message" title="{{ groupOfItem.last_message }} "> {{ groupOfItem.last_message }}   </p>      
+                    
+                    <span  class="trash_icon"
+                    (click)="getParticipantsFormFirebase(groupOfItem.participants , groupOfItem.key)">
+                        <i class="far fa-trash-alt"></i>
+                    </span> 
+                </div>
             </div>
-            <div  class="d-flex justify-content-between" >  
-                <p class=" ellipsis p-0 last_message" title="{{ groupOfItem.last_message }} "> {{ groupOfItem.last_message }}   </p>      
-                
-                <span  class="trash_icon"
-                (click)="getParticipantsFormFirebase(groupOfItem.key)">
-                    <i class="far fa-trash-alt"></i>
-                </span> 
-            </div>
-        </div>
-    </ng-container>
+        </ng-container>
     </div>
 </div>
 

@@ -52,6 +52,9 @@ export class GroupDetailsComponent implements OnInit {
       this.listOfParticipants = [];
       this.listOfUsers = [];
       this.listOfParticipants.push(this.groupModel?.participants || {});
+
+      console.log("this.listOfParticipants" , this.listOfParticipants);
+
       for(let item in this.listOfParticipants){
         var Data = this.listOfParticipants[item] as any[];
         for(let itemTwo in Data){
