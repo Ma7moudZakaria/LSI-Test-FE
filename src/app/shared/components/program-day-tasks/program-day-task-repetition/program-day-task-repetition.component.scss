@@ -1,2 +1,76 @@
 @import '../program-day-task-hearing/program-day-task-hearing.component.scss';
 @import '../../../../modules/program/components/program-details/programs-tabs/days/days.component.scss';
+.container_repeate_counter{
+    background: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    .grad{
+        font-size: 1.4rem;
+        font-family: Almarai-Bold;
+        color: #3A3A3A; 
+    }
+    .info{
+        color: #8E2520;
+        font-size: 1.1rem;
+        font-family: Almarai-Bold;
+
+    }
+ 
+}   .mb-6 {
+       margin-bottom: 6rem; 
+    }
+    .repeate_counter{
+        .mt-10{
+            margin-top: 5rem;
+        }
+        text-align: center;
+      &__text  {
+          margin-bottom: 3rem;
+          color: #3A3A3A;
+          font-size: 1.2rem;
+          font-family: Almarai-Regular;
+      }
+      &__time_counter
+      {
+        color: #3A3A3A;
+        font-size: 3.5rem;
+        font-family: Almarai-Bold;
+        background-color: #EBEBEB;
+        border-radius: 5px;
+        padding: 0.3rem;
+
+      }
+      &__button{
+         display: block; 
+         margin-top: 2rem;
+      }
+      &__repeat__button{
+          width: 114px;
+          height:114px;
+          border-radius: 50%;
+          background-color: #8E2520;
+          border: 1px solid #8E2520;
+          text-align: center;
+          position: relative;
+          margin-bottom: 1rem;
+          cursor: pointer;
+          
+      }
+      &__reset__button{
+        width: 44px;
+        height:44px;
+        border-radius: 50%;
+        background-color: #CB9118;
+         border: 1px solid #CB9118;
+        text-align: center;
+        position: relative;
+        cursor: pointer;
+        &:lang(ar){
+            margin-right: 7rem;
+        }
+        &:lang(en){
+            margin-left: 7rem;
+        }
+   
+      }
+    }

@@ -18,9 +18,9 @@
       <div class="d-flex align-items-center justify-content-between " >
       <p class="program__num mb-2  mr-3 ml-3">{{ translate.currentLang == langEnum.en ? studentSubscripModel?.usrNameEn : studentSubscripModel?.usrNameAr}}</p>
         <span class="status mb-0"
-         [ngClass]="{ 'accept' : studentSubscripModel.statusNum == tabTypeSelected.Accept ,
-                                  'pending' : studentSubscripModel.statusNum == tabTypeSelected.Pending ,
-                                  'rejected' : studentSubscripModel.statusNum == tabTypeSelected.Rejected
+         [ngClass]="{ 'accept' : studentSubscripModel.statNum == tabTypeSelected.Accept ,
+                                  'pending' : studentSubscripModel.statNum == tabTypeSelected.Pending ,
+                                  'rejected' : studentSubscripModel.statNum == tabTypeSelected.Rejected
                                   }">
         </span>
       </div>

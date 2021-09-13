@@ -71,7 +71,7 @@
                  </div>
                  
          </div>
-         <div class="mt-3  mb-3">
+         <div class="mt-3  mb-3 container_repeate_counter">
              <span class="grad"> {{'PROGRAM_DAY_TASK_REPETITION.REPETITION_NUMBER'| translate}}
                  <span>  &nbsp;  : </span>
                  <span>  &nbsp; </span> 
@@ -95,7 +95,7 @@
 <div *ngIf="dutyDaysTaskViewMood===programDutyDaysTaskViewMoodEnum.student">
     <ng-container >
         
-             <div class="mt-3  mb-3">
+             <div class="mt-3  mb-6 container_repeate_counter">
                  <span class="grad"> {{'PROGRAM_DAY_TASK_REPETITION.REPETITION_NUMBER'| translate}}
                      <span>  &nbsp;  : </span>
                      <span>  &nbsp; </span> 
@@ -103,20 +103,33 @@
                  </span>
     
              </div>
-    
-                 
-             <p class="mt-3 grad">
+     <div class="repeate_counter">
+            <p class="repeate_counter__text">عدد مرات التكرار</p>
+             <p class="mt-3 grad mt-10 ">
                 {{repetitionDetailsModel.msg}}
              </p>
-             <!-- <p class="mt-3 grad">
-                {{repetitionDetailsModel.questionToStudent}}
-            </p> -->
-            <span >{{repetitionDetailsModel.repetitionNo}}</span>
+           
+            <span class="repeate_counter__time_counter">{{repetitionDetailsModel.repetitionNo}}</span>
             <span>  &nbsp;  : </span>
-            <span >{{studentCounter}}</span>
-            <button (click)="repeat()" [disabled]="studentCounter==repetitionDetailsModel.repetitionNo">repeat</button>
-            <button (click)="reseat()">reseat</button>
+            <span class="repeate_counter__time_counter">{{studentCounter}}</span>
+            <div class="repeate_counter__button">
+                <div>
+                    <button  class="repeate_counter__repeat__button" (click)="repeat()"
+                     [disabled]="studentCounter==repetitionDetailsModel.repetitionNo">
+                    <img src="../../../../../assets/images/student-program/hand.svg">
+                    </button>
 
+                </div>
+                <div>
+                    <button  class="repeate_counter__reset__button" (click)="reseat()">
+                    <img src="../../../../../assets/images/student-program/reset.svg">
+
+                    </button>
+                </div>
+            
+            </div>
+           
+     </div>
     </ng-container>
 
 </div>
