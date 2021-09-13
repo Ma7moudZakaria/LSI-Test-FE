@@ -86,6 +86,7 @@ export class AddGroupComponent implements OnInit {
         allowed:this.createGroupForm.value.allowed,
         key:GroupId,
         last_date: last_date || '',
+        last_message:"",
         messages: {},
         participants:{}
       };
@@ -96,11 +97,12 @@ export class AddGroupComponent implements OnInit {
         this.createGroupChat.participants[this.currentUser?.id || ''] = {
           id: this.currentUser?.id , 
           hoffazId:"1", 
-          gender:"Male",
-          key:this.currentUser?.id, 
+          // gender:"Male",
+          // key:this.currentUser?.id, 
           role:RoleEnum.SuperAdmin,
           name_ar:this.currentUser?.fullNameAr,
-          name_en:this.currentUser?.fullNameEn
+          name_en:this.currentUser?.fullNameEn,
+          avatar_url:'../../../../../assets/images/Profile.svg'
         }
 
          // Add Participants Of Group
@@ -110,8 +112,8 @@ export class AddGroupComponent implements OnInit {
             this.createGroupChat.participants[elm?.id || ''] = {
               id: elm.id , 
               hoffazId:"1", 
-              gender:elm.gender,
-              key:elm.key, 
+              // gender:elm.gender,
+              // key:elm.key, 
               role:elm.role,
               name_ar:elm.name_ar,
               name_en:elm.name_en,
@@ -120,6 +122,18 @@ export class AddGroupComponent implements OnInit {
           }
         });
       }
+
+      // if (this.createGroupChat.messages) {
+      //   this.createGroupChat.messages[Guid.newGuid()] = {
+      //     date:"",
+      //     sender_id:"",
+      //     sender_name:"",
+      //     message:message,
+      //     message_type:'text'          
+      //   };
+      // }
+
+      
 
       this.refGroups.orderByChild('groups').equalTo(room.groupNameAr || room.groupNameEn).once('value', (snapshot: any) => {
         if (snapshot.exists()) {

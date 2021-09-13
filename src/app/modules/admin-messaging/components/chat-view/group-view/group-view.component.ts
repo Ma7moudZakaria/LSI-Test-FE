@@ -15,7 +15,7 @@ import { AlertifyService } from 'src/app/core/services/alertify-services/alertif
 export class GroupViewComponent implements OnInit {
   @Output() createGroupOverlayEvent = new EventEmitter<boolean>();
   @Output() groupDetailsEvent = new EventEmitter<IGroupChat>();
-  listOfGroups:any[] = [];
+  listOfGroups:IGroupChat[] = [];
   selectedIndex: number = 0;
   lastMe = new Array;
   participantsList:any[] = [];
@@ -35,7 +35,7 @@ export class GroupViewComponent implements OnInit {
     });
   }
 
-  getAllParticipantByGroupId(id?: string, groupId?: string){ 
+  getAllParticipantByGroupId(id?: string){ 
     firebase.database().ref('users/').orderByChild('messages').on('value', (resp2: any) => {
 
       var Data = ChatResponseModel.snapshotToArray(resp2) as { [Id: string]: IParticipantChat; } [];
@@ -63,7 +63,7 @@ export class GroupViewComponent implements OnInit {
 
     for(let item in GetGroupData[0].participants){
       var x = item;
-      this.getAllParticipantByGroupId(item,id);
+      this.getAllParticipantByGroupId(item);
     }
 
     this.deleteGroup(this.usersList , id);
@@ -86,7 +86,7 @@ export class GroupViewComponent implements OnInit {
     });
     
 
-    const newGroupRoom = firebase.database().ref('groups/' + id).remove(error => {
+    firebase.database().ref('groups/' + id).remove(error => {
       this.alertify.success("Group Deleted Successfully");
     });
   }
@@ -95,7 +95,8 @@ export class GroupViewComponent implements OnInit {
     this.createGroupOverlayEvent.emit(true)
   }
 
-  showGroupDetails(event:IGroupChat) {
+  getGroupDetails(event:IGroupChat) {
+    console.log("this.listOfGroups" , this.listOfGroups);
     this.groupDetailsEvent.emit(event);
   }
 }

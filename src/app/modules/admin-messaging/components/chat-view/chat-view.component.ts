@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IGroupChat } from 'src/app/core/interfaces/chat-interfaces/igroup-chat';
+import { ChatDetailsComponent } from './chat-details/chat-details.component';
+import { GroupDetailsComponent } from './group-details/group-details.component';
 import { GroupViewComponent } from './group-view/group-view.component';
 
 @Component({
@@ -9,10 +11,11 @@ import { GroupViewComponent } from './group-view/group-view.component';
 })
 export class ChatViewComponent implements OnInit {
   @ViewChild(GroupViewComponent) groupViewComponent: GroupViewComponent | undefined;
+  @ViewChild(GroupDetailsComponent) groupDetailsComponent: GroupDetailsComponent | undefined;
+  @ViewChild(ChatDetailsComponent) chatDetailsComponent: ChatDetailsComponent | undefined;
 
   openCreateGroupOverlay: boolean = false;
   createGroupChat = {} as IGroupChat;
-  groupDetails : IGroupChat | undefined;  
 
   constructor() { }
 
@@ -30,7 +33,10 @@ export class ChatViewComponent implements OnInit {
   }  
 
   groupDetailsEvent(event: IGroupChat) {
-    this.groupDetails = event
-    this.groupViewComponent?.getAllGroups();
+    this.groupDetailsComponent?.getGroupDetails(event);
+  }
+
+  chatDetailsEvent(event: IGroupChat) {
+    this.chatDetailsComponent?.getGroupMessages(event);
   }
 }
