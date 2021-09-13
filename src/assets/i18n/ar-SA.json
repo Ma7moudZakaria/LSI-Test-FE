@@ -958,7 +958,8 @@
     "ADD_APPOINTMENT": "اضافة طلب تغيير المواعيد",
     "APPOINTMENT_DETAILS": "عرض طلب تغيير المواعيد",
     "ADVANCED_SEARCH": "بحث متقدم",
-    "REQUEST_OWNER_NAME": " أسم صاحب الطلب"
+    "REQUEST_OWNER_NAME": " أسم صاحب الطلب",
+    "REQUEST_NUMBER": "رقم الطلب"
 
   },
   "STUDENT_DAY_TASKS": {
