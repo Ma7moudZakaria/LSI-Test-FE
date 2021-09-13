@@ -5,5 +5,7 @@ export interface IMessageChat {
     message_type?:string;
     sender_id?:string;
     sender_name?:string;
+    sender_name_ar?:string;
+    sender_name_en?:string;
     file_name?:string;
 }

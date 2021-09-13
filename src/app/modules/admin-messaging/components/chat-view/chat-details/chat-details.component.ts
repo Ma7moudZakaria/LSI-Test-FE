@@ -25,7 +25,7 @@ export class ChatDetailsComponent implements OnInit {
   messageChat:string | undefined;
   messageAttachURL:string | undefined;
   groupData:IGroupChat | undefined;
-
+  
   constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
@@ -39,7 +39,9 @@ export class ChatDetailsComponent implements OnInit {
         // key: Guid.newGuid(),
         date:last_date,
         sender_id:this.currentUser?.id,
-        sender_name:this.translate.currentLang === LanguageEnum.ar ? this.currentUser?.fullNameEn : this.currentUser?.fullNameEn,
+        sender_name:this.translate.currentLang === LanguageEnum.ar ? this.currentUser?.fullNameAr : this.currentUser?.fullNameEn,
+        sender_name_ar:this.currentUser?.fullNameAr,
+        sender_name_en:this.currentUser?.fullNameEn,
         message:messageAttachURL,
         message_type:'file'
       };
@@ -50,6 +52,8 @@ export class ChatDetailsComponent implements OnInit {
         date:last_date,
         sender_id:this.currentUser?.id,
         sender_name:this.translate.currentLang === LanguageEnum.ar ? this.currentUser?.fullNameEn : this.currentUser?.fullNameEn,
+        sender_name_ar:this.currentUser?.fullNameAr,
+        sender_name_en:this.currentUser?.fullNameEn,
         message:message,
         message_type:'text'
       };      
@@ -71,11 +75,14 @@ export class ChatDetailsComponent implements OnInit {
 
     if(this.groupData?.messages != null){
       firebase.database().ref('groups/' + this.groupData?.key).update(this.groupData || '' , (e:any) => {});
-      firebase.database().ref('groups/' + this.groupData?.key + '/' + 'messages/').push(this.addMessageToChatGroup , (a:any) => {});   
+      firebase.database().ref('groups/' + this.groupData?.key + '/' + 'messages/').push(this.addMessageToChatGroup , (a:any) => {
+        var Data = a;
+      });   
       this.listOfMessagess.push(this.addMessageToChatGroup);
-      this.listOfMessagess = this.listOfMessagess.sort((a, b) => {
-        return <any>new Date(a.date) - <any>new Date(b.date);
-      });
+      console.log("this.listOfMessagess" , this.listOfMessagess);
+      // this.listOfMessagess = this.listOfMessagess.sort((a, b) => {
+      //   return <any>new Date(a.date) - <any>new Date(b.date);
+      // });
     }
     else{
       var Value = this.addMessageToChatGroup;
@@ -97,10 +104,10 @@ export class ChatDetailsComponent implements OnInit {
 
     
     
-    this.getGroupMessages(this.groupData);
+    //this.getGroupMessages(this.groupData);
   }
 
-  getGroupMessages(model?:IGroupChat){
+  getGroupMessages(model:IGroupChat){
     this.listOfChats = [];
     this.listOfMessagess = [];
     this.groupData = model;

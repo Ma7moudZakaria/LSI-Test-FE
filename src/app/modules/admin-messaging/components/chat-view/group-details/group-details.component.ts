@@ -27,7 +27,6 @@ export class GroupDetailsComponent implements OnInit {
     this.listOfUsers = [];
 
     this.groupModel = model;
-    console.log("GroupDetails : ",model)
     
     this.listOfParticipants.push(model?.participants || {});
     for(let item in this.listOfParticipants){
@@ -38,7 +37,6 @@ export class GroupDetailsComponent implements OnInit {
     }
 
     this.allowed = model?.allowed || true;
-    console.log("this.listOfUsers : ",this.listOfUsers)
   }
 
   getParticipants(model?:IParticipantChat){
@@ -62,7 +60,6 @@ export class GroupDetailsComponent implements OnInit {
       }
   
       this.allowed = this.groupModel?.allowed || true;
-      console.log("this.allowed : ",this.allowed)
     }
   }
 
