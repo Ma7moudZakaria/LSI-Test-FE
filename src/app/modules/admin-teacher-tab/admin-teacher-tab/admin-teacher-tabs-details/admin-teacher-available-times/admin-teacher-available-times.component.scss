@@ -1,4 +1,15 @@
 @import '../../../../../../assets/scss/buttons';
+.tab_page{
+  &:lang(ar) {
+    text-align: right;
+}
+&:lang(en) {
+  text-align: left;
+}
+    background: #fbfbfb;
+    width: 100%;
+    border-radius: 0px 0px 12px 12px;
+}
 .UpdateUser__Label
 {
   font-family: Almarai-Bold, sans-serif;
@@ -26,7 +37,7 @@
 }
 .cardTime_container{
   overflow-y: auto;
-  height: 25vh;
+  height: 73vh;
   overflow-x: hidden;
 }
 .cardTime{
