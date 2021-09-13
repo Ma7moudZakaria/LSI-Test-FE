@@ -20,7 +20,7 @@ export class GroupViewComponent implements OnInit {
   listOfGroups: IGroupChat[] = [];
   selectedIndex: number = 0;
   lastMe = new Array;
-  participantsList: any[] = [];
+  // participantsList: any[] = [];
   usersList: any[] = [];
   Data: { [Id: string]: IMessageChat; } = {};
   ListOfUsers: any;
@@ -42,34 +42,22 @@ export class GroupViewComponent implements OnInit {
 
   getAllParticipantByGroupId(id?: string) {
     firebase.database().ref('users/').orderByChild('messages').on('value', (resp2: any) => {
-
       var Data = ChatResponseModel.snapshotToArray(resp2) as { [Id: string]: IParticipantChat; }[];
-
-      this.participantsList.push(Data || {});
-
-      Array.from(this.participantsList).forEach((elm: any) => {
-        Array.from(elm).forEach((elmOfParticipant: any) => {
-          if (elmOfParticipant.key === id) {
-            this.usersList.push(elmOfParticipant);
-
-          }
-        });
-      });
-
-
+      this.usersList = Object.values(Data || []) as IParticipantChat[];
     });
   }
 
-  getParticipantsFormFirebase(id?: string) {
-    var Data;
-    var GetGroupData = this.listOfGroups?.filter(x => x.key == id);
+  getParticipantsFormFirebase(participants?: any , id?:string) {
+    this.usersList = Object.values(participants || []) as IParticipantChat[];
+    // var Data;
+    // var GetGroupData = this.listOfGroups?.filter(x => x.key == id);
 
-    console.log("GetGroupData[0].participants : ", GetGroupData[0].participants);
+    // console.log("GetGroupData[0].participants : ", GetGroupData[0].participants);
 
-    for (let item in GetGroupData[0].participants) {
-      var x = item;
-      this.getAllParticipantByGroupId(item);
-    }
+    // for (let item in GetGroupData[0].participants) {
+    //   var x = item;
+    //   this.getAllParticipantByGroupId(item);
+    // }
 
     this.deleteGroup(this.usersList, id);
   }
@@ -78,10 +66,6 @@ export class GroupViewComponent implements OnInit {
     Array.from(listOfUsers).forEach((elmOfParticipant: IParticipantChat) => {
       var IsExist = elmOfParticipant?.groups?.some(x => x == id || '')
       if (IsExist) {
-        // firebase.database().ref('users/' + elmOfParticipant.key + '/groups/' + id).remove(error => {
-        //   this.alertify.error(error?.message || '');
-        // });
-
         let index = elmOfParticipant?.groups?.indexOf(id || '');
         elmOfParticipant.groups?.splice(index || 0, 1);
 
@@ -104,10 +88,10 @@ export class GroupViewComponent implements OnInit {
     console.log("this.listOfGroups", this.listOfGroups);
     this.groupDetailsEvent.emit(event);
   }
+
   filterByText(searchKey: string) {
     this.groupFilter.group_name = searchKey;
 
     // this.getParticipants(this.participantFilter);
   }
-
 }
