@@ -11,6 +11,8 @@ import { ITeacherStudentViewModel } from '../../../../../core/interfaces/teacher
 import { IStudentSubscriptionFilterRequestModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-subscription-filter-request-model';
 import { ProgramSubscriptionUsersEnum } from 'src/app/core/enums/program-subscription-users-enum.enum';
 import { ITeacherProgramSubscriptionModel } from 'src/app/core/interfaces/teacher-program-subscription-interfaces/iteacher-program-subscription-model';
+import { TeacherSystemSubscriptionStatusEnum } from 'src/app/core/enums/subscriptionStatusEnum/student-program-subscription-status-enum';
+import { TeacheProgramSubscriptionStatusEnum } from 'src/app/core/enums/teacher-subscription-enums/teache-program-subscription-status-enum.enum';
 
 
 @Component({
@@ -23,6 +25,9 @@ export class AdminTeacherJoinRequestComponent implements OnInit {
   @Input() teacherIdOutput: ITeacherStudentViewModel | undefined;
   @Input() programsFilter: IStudentProgramSubscription = { skip: 0, take: 9, sortField: '', sortOrder: 1 };
   // studProgsSubsItems: IStudentSubscriptionModel[] = [];
+
+  statusEnum = TeacheProgramSubscriptionStatusEnum;
+
   userMode: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.teacher;
   teacherItemsList: ITeacherProgramSubscriptionModel[] = []
 
