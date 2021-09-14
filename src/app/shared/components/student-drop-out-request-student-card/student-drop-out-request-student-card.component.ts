@@ -52,4 +52,5 @@ export class StudentDropOutRequestStudentCardComponent implements OnInit {
     // }
     this.cancelRequestOfStudent.emit(this.studentDropOutRequestFilterRequestStudentModel);
   }
+
 }

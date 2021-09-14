@@ -9,7 +9,7 @@ import { ITeacherDropOutRequestAdvFilterTeacherViewRequestModel } from 'src/app/
 import { ITeacherDropOutRequestModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/iteacher-drop-out-request-model';
 import { ITeacherDropOutRequestTeacherViewModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/iteacher-drop-out-request-teacher-view-model';
 import { ExportationService } from 'src/app/core/services/exportation-services/exportation.service';
-import {ITeacherStudentViewModel} from '../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
+import { ITeacherStudentViewModel } from '../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 
 @Component({
   selector: 'app-teacher-drop-out-request-admin-grid',
@@ -26,7 +26,7 @@ export class TeacherDropOutRequestAdminGridComponent implements OnInit {
   @Output() userIdInput = new EventEmitter<ITeacherStudentViewModel>();
 
   @Output() acceptAllTeacherDropOutRequestChecked = new EventEmitter<ITeacherDropOutRequestModel>();
-  
+
   @Input() teacherDropOutRequestFilterRequestModel: ITeacherDropOutRequestAdvFilterAdminViewRequestModel = { skip: 0, take: 9, page: 1 };
   @Input() numberPerRow: number = 3;
   @Input() teacherDropOutRequestItems: ITeacherDropOutRequestModel[] = []
@@ -38,7 +38,7 @@ export class TeacherDropOutRequestAdminGridComponent implements OnInit {
   @Input() typeEnum: TeacherDropOutRequestStatusEnum = TeacherDropOutRequestStatusEnum.Pending;
   @Input() typeDropOutRequestEnum: TeacherDropOutRequestStatusEnum = TeacherDropOutRequestStatusEnum.Pending;
 
-  @Input() userMode: DropOutRoleEnum | undefined ;
+  @Input() userMode: DropOutRoleEnum | undefined;
   userRoleMode = DropOutRoleEnum;
 
 
@@ -58,7 +58,7 @@ export class TeacherDropOutRequestAdminGridComponent implements OnInit {
   ngOnInit(): void {
     this.sortTeacherRequestDate();
   }
-  userId(event: ITeacherStudentViewModel){
+  userId(event: ITeacherStudentViewModel) {
     this.userIdInput.emit(event);
   }
   sortTeacherByName() {
@@ -93,7 +93,7 @@ export class TeacherDropOutRequestAdminGridComponent implements OnInit {
     this.setTeacherAllChecked(false);
   }
 
- sortTeacherDropOutRequestByNameOrderType() {
+  sortTeacherDropOutRequestByNameOrderType() {
     if ((this.teacherDropOutRequestFilterRequestModel.sortField === "teacherNameAr" || this.teacherDropOutRequestFilterRequestModel.sortField === "TeacherNameEn") && this.teacherDropOutRequestFilterRequestModel.sortOrder == 1) { return 'asend' }
     if ((this.teacherDropOutRequestFilterRequestModel.sortField === "teacherNameAr" || this.teacherDropOutRequestFilterRequestModel.sortField === "TeacherNameEn") && this.teacherDropOutRequestFilterRequestModel.sortOrder == -1) { return 'desend' }
 
@@ -211,82 +211,82 @@ export class TeacherDropOutRequestAdminGridComponent implements OnInit {
   acceptTeacherDropOutRequestEvent(teacherSubscripModel: ITeacherDropOutRequestModel) {
     this.acceptTeacherDropOutRequest.emit(teacherSubscripModel);
   }
-  
-  selectUserMode(){
-    
+
+  selectUserMode() {
+
   }
-  
 
 
 
 
-    // Start Teacher View
-    
-    enableTeacherViewSelectOperations(): boolean {
-      return this.teacherDropOutRequestTeacherViewItems.filter(t => t.checked).length > 0 || this.allSelected;
-    }
-  
-    someTeacherViewItemsChecked(): boolean {
-      if (this.teacherDropOutRequestTeacherViewItems == null) {
-        return false;
-      }
-      return this.teacherDropOutRequestTeacherViewItems.filter(t => t.checked).length > 0 && !this.allSelected;
-    }
-  
-    setTeacherViewAllChecked(completed: boolean) {
-      this.allSelected = completed;
-      if (this.teacherDropOutRequestTeacherViewItems == null) {
-        return;
-      }
-      this.teacherDropOutRequestTeacherViewItems.forEach(t => t.checked = completed);
-    }
-  
-    exportTeacherViewCSV() {
-      let expItems = this.teacherDropOutRequestTeacherViewItems.filter(a => a.checked);
-      let headerLabels = this.translate.currentLang == 'en-US' ?
-        [' program name', 'User name'] :
-        [' اسم البرنامج ',
-          'اسم المستخدم'];
-  
-      let data = ['progName', 'usrNameAr'];
-      this.exportationService.exportCSV(expItems, 'teacher', data, headerLabels);
-    }
-  
-    enableTeacherViewDropOutRequestSelectOperations(): boolean {
-      return this.teacherDropOutRequestTeacherViewItems.filter(t => t.checked).length > 0 || this.allSelected;
-    }
-  
-    someTeacherViewDropOutRequestItemsChecked(): boolean {
-      if (this.teacherDropOutRequestTeacherViewItems == null) {
-        return false;
-      }
-      return this.teacherDropOutRequestTeacherViewItems.filter(t => t.checked).length > 0 && !this.allSelected;
-    }
-  
-    setTeacherViewDropOutRequestAllChecked(completed: boolean) {
-      this.allSelected = completed;
-      if (this.teacherDropOutRequestTeacherViewItems == null) {
-        return;
-      }
-      this.teacherDropOutRequestTeacherViewItems.forEach(t => t.checked = completed);
-    }
-  
-    exportTeacherViewDropOutRequestCSV() {
-      let expItems = this.teacherDropOutRequestTeacherViewItems.filter(a => a.checked);
-      let headerLabels = this.translate.currentLang == 'en-US' ?
-        [' program name', 'User name'] :
-        [' أسم البرنامج ',
-          'أسم المستخدم'];
-  
-      let data = ['progName', 'usrNameAr'];
-      this.exportationService.exportCSV(expItems, 'Student', data, headerLabels);
-    }
 
-    cancelRequestOfTeacherEvent(teacherModel: ITeacherDropOutRequestModel) {
-      this.cancelRequestOfTeacher.emit(teacherModel);
+  // Start Teacher View
+
+  enableTeacherViewSelectOperations(): boolean {
+    return this.teacherDropOutRequestTeacherViewItems.filter(t => t.checked).length > 0 || this.allSelected;
+  }
+
+  someTeacherViewItemsChecked(): boolean {
+    if (this.teacherDropOutRequestTeacherViewItems == null) {
+      return false;
     }
+    return this.teacherDropOutRequestTeacherViewItems.filter(t => t.checked).length > 0 && !this.allSelected;
+  }
+
+  setTeacherViewAllChecked(completed: boolean) {
+    this.allSelected = completed;
+    if (this.teacherDropOutRequestTeacherViewItems == null) {
+      return;
+    }
+    this.teacherDropOutRequestTeacherViewItems.forEach(t => t.checked = completed);
+  }
+
+  exportTeacherViewCSV() {
+    let expItems = this.teacherDropOutRequestTeacherViewItems.filter(a => a.checked);
+    let headerLabels = this.translate.currentLang == 'en-US' ?
+      [' program name', 'User name'] :
+      [' اسم البرنامج ',
+        'اسم المستخدم'];
+
+    let data = ['progName', 'usrNameAr'];
+    this.exportationService.exportCSV(expItems, 'teacher', data, headerLabels);
+  }
+
+  enableTeacherViewDropOutRequestSelectOperations(): boolean {
+    return this.teacherDropOutRequestTeacherViewItems.filter(t => t.checked).length > 0 || this.allSelected;
+  }
+
+  someTeacherViewDropOutRequestItemsChecked(): boolean {
+    if (this.teacherDropOutRequestTeacherViewItems == null) {
+      return false;
+    }
+    return this.teacherDropOutRequestTeacherViewItems.filter(t => t.checked).length > 0 && !this.allSelected;
+  }
+
+  setTeacherViewDropOutRequestAllChecked(completed: boolean) {
+    this.allSelected = completed;
+    if (this.teacherDropOutRequestTeacherViewItems == null) {
+      return;
+    }
+    this.teacherDropOutRequestTeacherViewItems.forEach(t => t.checked = completed);
+  }
+
+  exportTeacherViewDropOutRequestCSV() {
+    let expItems = this.teacherDropOutRequestTeacherViewItems.filter(a => a.checked);
+    let headerLabels = this.translate.currentLang == 'en-US' ?
+      [' program name', 'User name'] :
+      [' أسم البرنامج ',
+        'أسم المستخدم'];
+
+    let data = ['progName', 'usrNameAr'];
+    this.exportationService.exportCSV(expItems, 'Student', data, headerLabels);
+  }
+
+  cancelRequestOfTeacherEvent(teacherModel: ITeacherDropOutRequestModel) {
+    this.cancelRequestOfTeacher.emit(teacherModel);
+  }
   updateAllItemsChecked() {
     this.allSelected = this.teacherDropOutRequestItems != null && this.teacherDropOutRequestItems.every(t => t.checked);
   }
-    // End Here
+  // End Here
 }

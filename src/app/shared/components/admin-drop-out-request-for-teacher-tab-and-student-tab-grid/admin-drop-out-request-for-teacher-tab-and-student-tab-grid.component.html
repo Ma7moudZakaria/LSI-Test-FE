@@ -28,7 +28,7 @@
 <div class="col-3 pl-4 text-right align-self-center"   *ngIf='userMode === userRoleMode.student'>
  
   <a class=" ml-1 mr-1" >
-      <img  class="exportIcon" (click)='exportStudentCSV()' 
+      <img  class="" (click)='exportStudentCSV()' 
       src="../../../../assets/images/sc-problem/exporticon.svg">
   </a>
 </div>
@@ -62,14 +62,14 @@
     </span>
  </button>
   </div> 
-  <div class="col-3 pl-4 text-right align-self-center">
+
+  <div class="col-3 pl-4 text-right align-self-center" *ngIf='userMode === userRoleMode.teacher '  >
  
     <a class=" ml-1 mr-1" >
-        <img   (click)='exportTeacherViewDropOutRequestCSV()' 
+        <img  class="exportIcon" (click)='exportTeacherViewDropOutRequestCSV()' 
         src="../../../../assets/images/sc-problem/exporticon.svg">
     </a>
   </div>
-  
 </div>
 
 <mat-grid-list cols="{{numberPerRow}}" rowHeight="3:3"   >
@@ -90,10 +90,15 @@
 <mat-grid-list  cols="{{numberPerRow}}" rowHeight="3:3"  *ngIf='userMode === userRoleMode.teacher' >
   <ng-container >
       <mat-grid-tile *ngFor='let item of teacherDropOutRequestTeacherViewItems' >
-       <app-teacher-drop-out-request-teacher-card class="card" 
+       <!-- <app-teacher-drop-out-request-teacher-card class="card" 
        [teacherDropOutRequestModel]='item'
        [adminView]='true'
-       ></app-teacher-drop-out-request-teacher-card>
+       ></app-teacher-drop-out-request-teacher-card> -->
+
+       <app-teacher-drop-out-request-admin-card class="card" 
+       [teacherDropOutRequestModel]='item' >
+      </app-teacher-drop-out-request-admin-card>
+
       </mat-grid-tile>
   </ng-container>
 </mat-grid-list>

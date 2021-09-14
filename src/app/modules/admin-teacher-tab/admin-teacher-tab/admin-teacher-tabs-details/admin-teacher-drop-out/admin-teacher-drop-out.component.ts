@@ -1,8 +1,9 @@
+import { TeacherDropOutRequestStatusEnum } from './../../../../../core/enums/drop-out-request-enums/teacher-drop-out-request-status.enum';
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { DropOutRoleEnum } from 'src/app/core/enums/drop-out-request-enums/drop-out-status.enum';
 import { StudentDropOutRequestStatusEnum } from 'src/app/core/enums/drop-out-request-enums/student-drop-out-request-status.enum';
-import { TeacherDropOutRequestStatusEnum } from 'src/app/core/enums/drop-out-request-enums/teacher-drop-out-request-status.enum';
+import { } from 'src/app/core/enums/drop-out-request-enums/teacher-drop-out-request-status.enum';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { ProgramSubscriptionUsersEnum } from 'src/app/core/enums/program-subscription-users-enum.enum';
 import { IStudentDropOutRequestsFilterAdminViewRequestModel } from 'src/app/core/interfaces/student-drop-out-request-interfaces/istudent-drop-out-requests-filter-admin-view-request-model';
@@ -35,11 +36,11 @@ export class AdminTeacherDropOutComponent implements OnInit {
   totalCount = 0;
   numberItemsPerRow = 3;
   ids?: string[] = [];
-  typeEnum: StudentDropOutRequestStatusEnum = StudentDropOutRequestStatusEnum.Pending;
-  showTap: StudentDropOutRequestStatusEnum = StudentDropOutRequestStatusEnum.Pending;
-  statusEnum = StudentDropOutRequestStatusEnum;
-  // userMode: DropOutRoleEnum = DropOutRoleEnum.Teacher;
-  userMode: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.teacher;
+  typeEnum: TeacherDropOutRequestStatusEnum = TeacherDropOutRequestStatusEnum.Empty;
+  // showTap: StudentDropOutRequestStatusEnum = StudentDropOutRequestStatusEnum.Pending;
+  statusEnum = TeacherDropOutRequestStatusEnum;
+  userMode: DropOutRoleEnum = DropOutRoleEnum.Teacher;
+  // userMode: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.teacher;
   showUserDetailsView: boolean = false;
 
 
