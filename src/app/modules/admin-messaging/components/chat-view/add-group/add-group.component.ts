@@ -62,7 +62,7 @@ export class AddGroupComponent implements OnInit {
   }
 
   callFirebaseToGetParticipants(){
-    firebase.database().ref('users/').orderByChild('users').on('value', (resp2: any) => {
+    firebase.database().ref('users/').on('value', (resp2: any) => {
       var Data = ChatResponseModel.snapshotToArray(resp2);
       this.getAllParticipants(Data);
       
@@ -135,7 +135,7 @@ export class AddGroupComponent implements OnInit {
 
       
 
-      this.refGroups.orderByChild('groups').equalTo(room.groupNameAr || room.groupNameEn).once('value', (snapshot: any) => {
+      this.refGroups.equalTo(room.groupNameAr || room.groupNameEn).once('value', (snapshot: any) => {
         if (snapshot.exists()) {
             this.alertify.error("Group Name Is Already Exist");     
             this.resultMessage = {

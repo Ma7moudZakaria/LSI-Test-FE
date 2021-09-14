@@ -8,6 +8,7 @@ import { IParticipantChat } from 'src/app/core/interfaces/chat-interfaces/iparti
 import { ChatResponseModel } from 'src/app/core/ng-model/chat-response-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { ChatService } from 'src/app/core/services/chat-services/chat.service';
 
 @Component({
   selector: 'app-group-view',
@@ -27,37 +28,19 @@ export class GroupViewComponent implements OnInit {
   langEnum = LanguageEnum;
   groupFilter: IGroupChat = {};
 
-  constructor(private alertify: AlertifyService,
+  constructor(private alertify: AlertifyService, public chatService:ChatService,
     private translate: TranslateService) { }
 
   ngOnInit(): void {
-    this.getAllGroups();
+    this.chatService.getAllChatGroups();
   }
 
   getAllGroups() {
-    firebase.database().ref('groups/').orderByChild('messages').on('value', (resp2: any) => {
-      this.listOfGroups = ChatResponseModel.snapshotToArray(resp2);
-    });
-  }
-
-  getAllParticipantByGroupId(id?: string) {
-    firebase.database().ref('users/').orderByChild('messages').on('value', (resp2: any) => {
-      var Data = ChatResponseModel.snapshotToArray(resp2) as { [Id: string]: IParticipantChat; }[];
-      this.usersList = Object.values(Data || []) as IParticipantChat[];
-    });
+    
   }
 
   getParticipantsFormFirebase(participants?: any , id?:string) {
     this.usersList = Object.values(participants || []) as IParticipantChat[];
-    // var Data;
-    // var GetGroupData = this.listOfGroups?.filter(x => x.key == id);
-
-    // console.log("GetGroupData[0].participants : ", GetGroupData[0].participants);
-
-    // for (let item in GetGroupData[0].participants) {
-    //   var x = item;
-    //   this.getAllParticipantByGroupId(item);
-    // }
 
     this.deleteGroup(this.usersList, id);
   }
