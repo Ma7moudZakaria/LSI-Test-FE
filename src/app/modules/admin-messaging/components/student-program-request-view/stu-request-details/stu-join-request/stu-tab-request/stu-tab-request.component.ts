@@ -208,7 +208,7 @@ export class StuTabRequestComponent implements OnInit {
 
   viewExam(event:IStudentSubscriptionModel){
     this.showViewExam=true;
-    this.studentExamAnswerResponse={}
+    this.studentExamAnswerResponse={stuProgSub:{},studentExamAnswer:{}}
    
       this.studentExamAnswerResponse.stuProgSub=event;
     this.getStudentExamAnswer(event.id || "")

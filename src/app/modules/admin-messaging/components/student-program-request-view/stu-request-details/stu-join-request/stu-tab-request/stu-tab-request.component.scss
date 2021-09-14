@@ -1,5 +1,12 @@
 @import 'src/assets/scss/_variables.scss';
+@import '../../../../../../../../assets/scss/buttons';
+@import '../stu-rejected/stu-rejected.component.scss';
 
+.body_footer{
+    position: unset;
+    display: flex;
+    justify-content: flex-end;
+}
 .reuest_container{
     background: #fff 0% 0% no-repeat padding-box;
     border-radius: 19px;

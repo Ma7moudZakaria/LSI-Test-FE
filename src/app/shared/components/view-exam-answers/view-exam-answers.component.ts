@@ -1,7 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IStuViewExamAnswProgSub } from 'src/app/core/interfaces/student-program-subscription-interfaces/istu-view-exam-answ-prog-sub';
 import { IStudentExamAnswerResponseModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-exam-answer-response-model';
 import { IStudentSubscriptionFilterRequestModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-subscription-filter-request-model';
+import { IUserProfile } from 'src/app/core/interfaces/user-interfaces/iuserprofile';
+import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
+import { UserService } from 'src/app/core/services/user-services/user.service';
 
 @Component({
   selector: 'app-view-exam-answers',
@@ -10,9 +16,30 @@ import { IStudentSubscriptionFilterRequestModel } from 'src/app/core/interfaces/
 })
 export class ViewExamAnswersComponent implements OnInit {
   @Input() studentExamAnswer: IStuViewExamAnswProgSub | undefined;
-  constructor() { }
+  starsSelected = 5;
+  studentProfileDetails = {} as IUserProfile;
+  resMessage: BaseMessageModel = {};
+  langEnum = LanguageEnum;
+  constructor( 
+    private studentProfileService: UserService,
+    public translate: TranslateService,
+    private alertify: AlertifyService) { }
 
   ngOnInit(): void {
+    this. getStudentProfile();
   }
-
+  getStudentProfile() {
+    // console.log("resiveUserId", this.resiveUserId?.usrId)
+    this.studentProfileService.viewUserProfileDetails(this.studentExamAnswer?.stuProgSub?.usrId || '').subscribe(res => {
+      if (res.isSuccess) {
+        this.studentProfileDetails = res.data as IUserProfile;
+        console.log("studentProfileDetails", this.studentProfileDetails)
+      }
+      else {
+        this.alertify.error(res.message || "")
+      }
+    }, error => {
+     
+    });
+  }
 }

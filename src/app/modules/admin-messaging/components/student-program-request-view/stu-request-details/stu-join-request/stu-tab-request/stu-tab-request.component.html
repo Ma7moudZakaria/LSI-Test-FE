@@ -79,9 +79,15 @@
 <app-student-details-view *ngIf="showUserDetailsView"  (hideUserDetails) ="hideUserDetailsView($event)" [resiveUserId]="sendUserID"></app-student-details-view>
   <div *ngIf="showViewExam">
     <app-view-exam-answers  [studentExamAnswer]='studentExamAnswerResponse'></app-view-exam-answers>
-    <div class="body_footer"  *ngIf="studentExamAnswerResponse && studentExamAnswerResponse.stuProgSub">
+    
+    <div class="row">
+        <div class="col-12">
+             <div class="body_footer"  *ngIf="studentExamAnswerResponse && studentExamAnswerResponse.stuProgSub">
         <button class="btn cancel-btn"  (click)="acceptStuReq(studentExamAnswerResponse.stuProgSub)" >
          {{'STUDENT_SUBSCRIBERS.ACCEPT' | translate}}  </button>
         <button  class=" btn save-btn" (click)="rejecteStuRequestMethod(studentExamAnswerResponse.stuProgSub)">  {{'STUDENT_SUBSCRIBERS.REJECT' | translate}}  </button>
       </div>
+        </div>
+    </div>
+   
   </div>
