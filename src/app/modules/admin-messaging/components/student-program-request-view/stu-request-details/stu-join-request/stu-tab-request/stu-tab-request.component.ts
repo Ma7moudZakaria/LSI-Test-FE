@@ -220,6 +220,8 @@ export class StuTabRequestComponent implements OnInit {
         if(this.studentExamAnswerResponse)
     {
         this.studentExamAnswerResponse.studentExamAnswer= res.data ;
+        if(this.studentExamAnswerResponse.studentExamAnswer)
+        this.studentExamAnswerResponse.studentExamAnswer.answList = res.data.answ? JSON.parse(res.data.answ)  : [];
     }
        
       }

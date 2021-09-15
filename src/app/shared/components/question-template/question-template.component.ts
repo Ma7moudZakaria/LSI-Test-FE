@@ -34,8 +34,8 @@ export class QuestionTemplateComponent implements OnInit {
 
   ngOnInit(): void {
     this.MULTISELECT=this.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.MULTI_SELECT') : this.translate.instant('GENERAL.MULTI_SELECT')
-    this.questionTemplate.studentAnswersByAnswerNumber = '';
-    this.questionTemplate.studentAnswersByAnswerNumbers = [];
+    this.questionTemplate.studentAnswersByAnswerNumber = this.questionTemplate.studentAnswersByAnswerNumber?this.questionTemplate.studentAnswersByAnswerNumber:'';
+    this.questionTemplate.studentAnswersByAnswerNumbers =this.questionTemplate.studentAnswersByAnswerNumbers?this.questionTemplate.studentAnswersByAnswerNumbers: [];
   }
 
 
@@ -136,6 +136,10 @@ onItemChecked(item: IAnswer, event:any){
 }
 degreeChange(){
   this.degreeValueChange.emit();
+}
+
+verifyUserAnsw(answerNum?:number,studentAnswersByAnswerNumbers?:number []){
+  return studentAnswersByAnswerNumbers?.includes(answerNum || 0);
 }
 
 }
