@@ -11,6 +11,7 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { Iuser } from 'src/app/core/interfaces/user-interfaces/iuser';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
+import { LanguageService } from 'src/app/core/services/language-services/language.service';
 
 @Component({
   selector: 'app-student-programs-for-subscription',
@@ -31,16 +32,24 @@ export class StudentProgramsForSubscriptionComponent implements OnInit {
   constructor(
     public translate: TranslateService, private alertify: AlertifyService,
     private StudentProgramSubscriptionServicesService: StudentProgramSubscriptionServicesService,
-  ) { }
+    private languageService: LanguageService) { }
 
   ngOnInit(): void {
+   
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     // console.log("student_studentCard")
     this.filterRequest.sortField = 'progName';
     this.filterRequest.usrId = this.currentUser?.id;
-    this.getProgramsForStudentsSubscriptions()
+    this.getProgramsForStudentsSubscriptions();
+    this.setCurrentLang();
+    
+
+    
 
   }
+ 
+    
+
 
 
 
@@ -74,6 +83,17 @@ export class StudentProgramsForSubscriptionComponent implements OnInit {
   filterRequestTeacher(event: IProgramsForStudentsSubscriptionsFilterRequestModel) {
     this.filterRequest = event;
     this.getProgramsForStudentsSubscriptions();
+  }
+  
+  setCurrentLang() {
+    this.emitHeaderTitle();
+    this.languageService.currentLanguageEvent.subscribe(res => {
+      this.emitHeaderTitle();
+    });
+  }
+
+  emitHeaderTitle(){
+    this.languageService.headerPageNameEvent.emit(this.translate.instant('SIDENAVBAR.PROG_FOR_SUBSCRIPTION'));
   }
 
 }

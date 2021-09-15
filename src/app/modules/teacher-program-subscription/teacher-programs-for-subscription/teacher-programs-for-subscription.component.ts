@@ -10,6 +10,7 @@ import { ProgramSubscriptionUsersEnum } from '../../../core/enums/program-subscr
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
+import { LanguageService } from 'src/app/core/services/language-services/language.service';
 
 @Component({
   selector: 'app-teacher-programs-for-subscription',
@@ -30,7 +31,7 @@ export class TeacherProgramsComponent implements OnInit {
 
   constructor(
     public translate: TranslateService, private alertify: AlertifyService,
-    private teacherProgramSubscriptionServicesService: TeacherProgramSubscriptionServicesService,
+    private teacherProgramSubscriptionServicesService: TeacherProgramSubscriptionServicesService,private languageService: LanguageService
   ) { }
 
   ngOnInit(): void {
@@ -38,7 +39,11 @@ export class TeacherProgramsComponent implements OnInit {
     this.filterRequest.sortField = 'progName';
     this.filterRequest.usrId = this.currentUser?.id;
 
-    this.getProgramsForTeachersSubscriptions()
+    this.getProgramsForTeachersSubscriptions();
+    this.emitHeaderTitle();
+    this.languageService.currentLanguageEvent.subscribe(res => {
+      this.emitHeaderTitle();
+    });
 
   }
 
@@ -81,5 +86,9 @@ export class TeacherProgramsComponent implements OnInit {
   filterByText(searchKey: string) {
     this.filterRequest.progName = searchKey;
     this.getProgramsForTeachersSubscriptions();
+  }
+
+  emitHeaderTitle(){
+    this.languageService.headerPageNameEvent.emit(this.translate.instant('SIDENAVBAR.PROG_FOR_SUBSCRIPTION'));
   }
 }
