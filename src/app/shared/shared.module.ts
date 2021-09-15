@@ -94,6 +94,8 @@ import { TeacherStuProgramForSubscriptionGridComponent } from './components/teac
 import { StudentProgramVacationCardStudentViewComponent } from './components/student-program-vacation-card-student-view/student-program-vacation-card-student-view.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { GetAllAvailableTeachersGridComponent } from './components/get-all-available-teachers-grid/get-all-available-teachers-grid.component';
+import { GetAllAvailableTeachersCardComponent } from './components/get-all-available-teachers-card/get-all-available-teachers-card.component';
 
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
@@ -147,16 +149,18 @@ import { MatNativeDateModule } from '@angular/material/core';
     AdminJoinRequestForTeacherTabAndStudentTabCardComponent,
     AdminDropOutRequestForTeacherTabAndStudentTabGridComponent,
     AdminVacationRequestForStudentTabGridComponent,
-        AdminVacationRequestForStudentTabCardComponent,
-        JoinExamComponent,
-        TeacherAppointmentRequestsGridComponent,
-        TeacherAppointmentRequestCardComponent
+    AdminVacationRequestForStudentTabCardComponent,
+    JoinExamComponent,
+    TeacherAppointmentRequestsGridComponent,
+    TeacherAppointmentRequestCardComponent,
+    GetAllAvailableTeachersGridComponent,
+    GetAllAvailableTeachersCardComponent
   ],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,
     MatIconModule, FormsModule, MatCheckboxModule, MatRadioModule, MatGridListModule,
-    NgbModule, MatAutocompleteModule, NgbRatingModule, MatTooltipModule, PdfViewerModule,MatDatepickerModule, MatNativeDateModule
+    NgbModule, MatAutocompleteModule, NgbRatingModule, MatTooltipModule, PdfViewerModule, MatDatepickerModule, MatNativeDateModule
   ],
 
   exports: [
@@ -182,8 +186,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     FormatTimePipe, AdminJoinRequestForTeacherTabAndStudentTabGridComponent,
     AdminJoinRequestForTeacherTabAndStudentTabCardComponent,
     AdminDropOutRequestForTeacherTabAndStudentTabGridComponent,
-      AdminVacationRequestForStudentTabGridComponent, AdminVacationRequestForStudentTabCardComponent,
-      JoinExamComponent, TeacherAppointmentRequestsGridComponent,MatDatepickerModule, MatNativeDateModule
+    AdminVacationRequestForStudentTabGridComponent, AdminVacationRequestForStudentTabCardComponent,
+    JoinExamComponent, TeacherAppointmentRequestsGridComponent, MatDatepickerModule, MatNativeDateModule,
+    GetAllAvailableTeachersGridComponent,
+    GetAllAvailableTeachersCardComponent
 
 
   ]
