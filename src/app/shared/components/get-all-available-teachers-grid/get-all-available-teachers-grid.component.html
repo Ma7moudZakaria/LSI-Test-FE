@@ -1,1 +1,31 @@
-<p>get-all-available-teachers-grid works!</p>
+<div class="row scientific-problem-grid" >
+    <div class="col-12 d-flex justify-content-start">
+      <ngb-pagination
+      [maxSize]="3"
+        [collectionSize]="totalCount"
+        [(page)]="filterAvailableTeacher.page"
+        [pageSize]="filterAvailableTeacher.take"
+        [rotate]="true" [boundaryLinks]="true"
+        (pageChange)="onPageChange()">
+      </ngb-pagination>
+  
+     
+    </div>
+    
+    
+  </div>
+
+  
+<mat-grid-list cols="2" rowHeight="180px">
+   
+      <mat-grid-tile *ngFor='let item of availableTeachersList' >
+        <app-get-all-available-teachers-card
+         [availableTeacherResponseModel]='item'
+        >
+         <!-- (studentVacationId)="getStudentVacationId($event)" -->
+        </app-get-all-available-teachers-card>
+      </mat-grid-tile>
+  
+  </mat-grid-list>
+
+  

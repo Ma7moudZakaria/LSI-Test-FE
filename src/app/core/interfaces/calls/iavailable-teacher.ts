@@ -3,5 +3,6 @@ export interface IAvailableTeacher {
     techName?: string;
     skip: number;
     take: number;
+    page: number;
 
 }
