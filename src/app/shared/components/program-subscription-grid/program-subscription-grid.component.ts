@@ -27,14 +27,12 @@ export class ProgramSubscriptionGridComponent implements OnInit {
 
   @Output() acceptStuReq = new EventEmitter<IStudentSubscriptionModel>();
   @Output() acceptAllStudentProgramSubscriptionCheched = new EventEmitter<IStudentSubscriptionModel>();
-
   @Output() rejectTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
   @Output() acceptTeacherProgramSubscription = new EventEmitter<ITeacherProgramSubscriptionModel>();
   @Output() acceptAllTeacherProgramSubscriptionCheched = new EventEmitter<ITeacherProgramSubscriptionModel>();
   @Output() teacherIdFormGrid = new EventEmitter<ITeacherStudentViewModel>();
   @Output() studentIdFormGrid = new EventEmitter<ITeacherStudentViewModel>();
-
-
+  @Output()viewExamEvent =new EventEmitter<IStudentSubscriptionModel>();
 
   @Input() userMode: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.student;
   @Input() studentFilterRequestModel: IStudentSubscriptionFilterRequestModel = { skip: 0, take: 9, page: 1 };
@@ -246,5 +244,8 @@ export class ProgramSubscriptionGridComponent implements OnInit {
   }
   updateAllItemsCheckedStudent() {
     this.allSelected = this.studentItems != null && this.studentItems.every(t => t.checked);
+  }
+  viewExam(event:IStudentSubscriptionModel) {
+    this.viewExamEvent.emit(event);
   }
 }

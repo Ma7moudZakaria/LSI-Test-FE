@@ -644,7 +644,8 @@
     "DURATION": "المدة",
     "ADD_QUESTION": "إضافة سؤال",
     "THE_SUCCESS_RATE": "درجة النجاح",
-    "THE_SUCCESS_RATE_SHOULD_LESS_THAN_TOTAL_DEGREE": "يجب أن تكون درجة النجاح اقل من مجموع الدرجات الكلية ولا تساوى صفر"
+    "THE_SUCCESS_RATE_SHOULD_LESS_THAN_TOTAL_DEGREE": "يجب أن تكون درجة النجاح اقل من مجموع الدرجات الكلية ولا تساوى صفر",
+    "CORRECT_ANSWER_IS":"الإجابة الصحيحة هى رقم"
   },
   "User_Requests": {
     "REQUESTS": "الطلبات",
@@ -841,7 +842,8 @@
     "REJECTED_REASON": "سبب الرفض",
     "VALIDATIONDATE": "تاريخ البداية يجب ان يكون اقل من تاريخ النهاية ",
     "REQUEST_REASON": "سبب الطلب",
-    "NO_DATA": "لا يوجد بيانات"
+    "NO_DATA": "لا يوجد بيانات",
+    "VIEW_EXAM":"عرض الإختبار"
   },
   "TEACHER_SYSTEM_SUBSCRIPTION": {
     "REQUEST_DATE": "تاريخ الطلب",

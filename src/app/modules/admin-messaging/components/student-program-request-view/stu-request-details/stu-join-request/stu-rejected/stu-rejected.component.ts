@@ -12,7 +12,7 @@ import { StudentProgramSubscriptionServicesService } from 'src/app/core/services
   styleUrls: ['./stu-rejected.component.scss']
 })
 export class StuRejectedComponent implements OnInit {
-  @Output() closeRejectedRequest = new EventEmitter<IStudentSubscriptionModel>();
+  @Output() closeRejectedRequest = new EventEmitter<boolean>();
 
   @Input() itemStuReq: IStudentSubscriptionModel = {}
   rejectRequest: IRejectProgramSubscriptionModel = {}
@@ -27,8 +27,12 @@ export class StuRejectedComponent implements OnInit {
   }
 
 
-  closeRejectRequest() {
-    this.closeRejectedRequest.emit();
+  closeRejectRequest(btn:boolean) {
+    this.closeRejectedRequest.emit(btn);
+
+  }
+  cancelRejectRequest() {
+    this.closeRejectRequest(false);
 
   }
   saveRejectRequest() {
@@ -40,7 +44,7 @@ export class StuRejectedComponent implements OnInit {
       this.stuSubRequestService.rejectStudentProgramSubscription(model).subscribe(res => {
 
         if (res.isSuccess) {
-          this.closeRejectRequest();
+          this.closeRejectRequest(true);
           this.alertify.success(res.message || '');
 
         }
