@@ -1,12 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IStudentProgramVacationModel } from '../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-model';
-import { StudentProgramVacationStatusEnum } from '../../../core/enums/StudentProgramVacationStatus/student-program-vacation-status.enum';
-import { IStudentProgramVacationFilterRequestModel } from '../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-filter-request-model';
-import { LanguageEnum } from '../../../core/enums/language-enum.enum';
 import { TranslateService } from '@ngx-translate/core';
 import { ExportationService } from '../../../core/services/exportation-services/exportation.service';
-import { IUser } from '../../../core/interfaces/auth-interfaces/iuser-model';
-import { IStudentProgramVacationStudentViewModel } from '../../../core/interfaces/student-program-vacation-interfaces/istudent-program-vacation-student-view-model';
 import { ITeacherStudentViewModel } from '../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 import { IAvailableTeacher } from 'src/app/core/interfaces/calls/iavailable-teacher';
 import { IAvailableTeacherResonse } from 'src/app/core/interfaces/calls/iavailable-teacher-resonse';
@@ -22,12 +16,12 @@ export class GetAllAvailableTeachersGridComponent implements OnInit {
   @Input() totalCount: number = 0;
   @Input() filterAvailableTeacher: IAvailableTeacher = { skip: 0, take: 9, page: 1 };
   @Output() availableTeachersFilterEvent = new EventEmitter<IAvailableTeacher>();
+  @Output() sendStudentVacationId = new EventEmitter<ITeacherStudentViewModel>();
 
   // @Input() studentVacationFilterRequestModel: IStudentProgramVacationFilterRequestModel = { skip: 0, take: 9, page: 1 };
 
   // @Output() acceptAllStudentProgramVacationChecked = new EventEmitter<IStudentProgramVacationModel>();
   // @Output() acceptStudentProgramVacation = new EventEmitter<IStudentProgramVacationModel>();
-  @Output() sendStudentVacationId = new EventEmitter<ITeacherStudentViewModel>();
 
   // @Input() studentProgramVacationFilterRequestModel: IStudentProgramVacationFilterRequestModel = { skip: 0, take: 9, page: 1 };
   // @Output() studentProgramVacationStudentViewModel = new EventEmitter<IStudentProgramVacationStudentViewModel>();
