@@ -116,6 +116,7 @@ export class StuTabRequestComponent implements OnInit {
   }
   rejecteStuRequestMethod(event: IStudentSubscriptionModel) {
     this.itemStuReq.emit(event)
+   // this.showViewExam=false;
 
   }
 
@@ -123,6 +124,7 @@ export class StuTabRequestComponent implements OnInit {
   acceptStuReq(stuModel: IStudentSubscriptionModel) {
     this.ids = [];
     this.ids?.push(stuModel.id || '');
+    //this.showViewExam=false;
     this.progSubsService.studentProgramSubscriptionsAcceptance(this.ids || []).subscribe(res => {
       if (res.isSuccess) {
         this.alertify.success(res.message || '');

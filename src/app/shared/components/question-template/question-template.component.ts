@@ -29,13 +29,26 @@ export class QuestionTemplateComponent implements OnInit {
   MULTISELECT = '';
   errorMessage?: string;
   resultMessage: BaseMessageModel = {};
+  correctAnswer?:string;
   constructor(public translate: TranslateService,
     public dialog: MatDialog, private examFormService: ExamFormService) { }
 
   ngOnInit(): void {
     this.MULTISELECT=this.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.MULTI_SELECT') : this.translate.instant('GENERAL.MULTI_SELECT')
     this.questionTemplate.studentAnswersByAnswerNumber = this.questionTemplate.studentAnswersByAnswerNumber?this.questionTemplate.studentAnswersByAnswerNumber:'';
-    this.questionTemplate.studentAnswersByAnswerNumbers =this.questionTemplate.studentAnswersByAnswerNumbers?this.questionTemplate.studentAnswersByAnswerNumbers: [];
+    this.questionTemplate.studentAnswersByAnswerNumbers =this.questionTemplate.studentAnswersByAnswerNumbers?this.questionTemplate.studentAnswersByAnswerNumbers: []; 
+  
+    if(this.questionTemplate.answerType === this.answerTypeEnum.multiSelect){
+    for (var i = 0; i < this.questionTemplate.answers.filter(x=>x.correct==true).length; i++) {
+      let num= this.questionTemplate.answers.filter(x=>x.correct==true)[i].answerNo;
+      if(i==0) 
+      this.correctAnswer=' '+num
+     else
+      {this.correctAnswer=this.correctAnswer+","+ num}
+     
+    }
+   }
+   
   }
 
 

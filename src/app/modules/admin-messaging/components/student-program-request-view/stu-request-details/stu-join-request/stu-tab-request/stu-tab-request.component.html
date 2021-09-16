@@ -79,7 +79,7 @@
   <div *ngIf="showViewExam">
     <app-view-exam-answers  [studentExamAnswer]='studentExamAnswerResponse' (hideViewExamEvent) ="hideViewExam()"></app-view-exam-answers>
     
-    <div class="row">
+    <div class="row"  *ngIf="showTap == statusEnum.Pending">
         <div class="col-12">
              <div class="body_footer"  *ngIf="studentExamAnswerResponse && studentExamAnswerResponse.stuProgSub">
         <button class="btn cancel-btn"  (click)="acceptStuReq(studentExamAnswerResponse.stuProgSub)" >
