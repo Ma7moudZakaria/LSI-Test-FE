@@ -94,6 +94,7 @@ import { TeacherStuProgramForSubscriptionGridComponent } from './components/teac
 import { StudentProgramVacationCardStudentViewComponent } from './components/student-program-vacation-card-student-view/student-program-vacation-card-student-view.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ChatInputSearchListComponent } from './components/chat-input-search-list/chat-input-search-list.component';
 
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
@@ -150,7 +151,8 @@ import { MatNativeDateModule } from '@angular/material/core';
         AdminVacationRequestForStudentTabCardComponent,
         JoinExamComponent,
         TeacherAppointmentRequestsGridComponent,
-        TeacherAppointmentRequestCardComponent
+        TeacherAppointmentRequestCardComponent,
+        ChatInputSearchListComponent
   ],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
@@ -166,7 +168,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     UsersCounterComponent, KhatmeenStudentsComponent, StudentNumbersComponent, StudentsRatingComponent,
     CardStudentScientificProblemComponent, QuestionTemplateComponent, VoiceRecordingComponent, MatGridListModule,
     ScientificProblemsGridComponent, CardAdminScientificProblemComponent, NotAuthComponent, GroupUsersCardComponent,
-    InputSearchListComponent, NgbRatingModule, CardNotifacationsComponent, ProgramDayTaskHearingComponent,
+    InputSearchListComponent,ChatInputSearchListComponent, NgbRatingModule, CardNotifacationsComponent, ProgramDayTaskHearingComponent,
     NgbModule, ProgramDayTaskReadExplanationComponent, ProgramDayTaskRepetitionComponent,
     ProgramDayTaskMemorizeComponent, ProgramDayTaskLinkingComponent, ProgramDayTaskVideoComponent, ProgramDayTaskDailyTestComponent,
     ProgramDayTaskEncouragementLetterComponent, ProgramDayTaskReviewComponent, ProgramDayTaskRecitationComponent,

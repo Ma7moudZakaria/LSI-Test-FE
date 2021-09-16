@@ -31,7 +31,6 @@ export class TeacherSystemCardRequestComponent implements OnInit {
   constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
-    console.log("teacherSystemSubscriptionModel : ", this.teacherSystemSubscriptionModel)
     if (this.teacherSystemSubscriptionModel?.requestDate) {
       let requestDateValue = new Date(this.teacherSystemSubscriptionModel.requestDate || '');
 

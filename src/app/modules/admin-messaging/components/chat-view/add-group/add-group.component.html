@@ -73,14 +73,13 @@
         <!-- <div class="form-group" >
             <label for="exampleInputEmail1" class="label">{{"Role_Management.SELECT_GROUP_MEMBERS" | translate
                 }}</label>
-            <app-input-search-list [searchList]="SearchItemList" formControlName="participants" (addSearchItem)="addParticipant()">
-            </app-input-search-list>
+            <app-chat-input-search-list [searchList]="chatService.allParticipantsList" formControlName="participants" (addSearchItem)="addParticipant()">
+            </app-chat-input-search-list>
         </div>
 
 
         <mat-list >
-            <mat-list-item *ngFor="let participant of participantsList">
-                <img *ngIf='participant?.avatar_url === null' class="img_user" src="../../../../../assets/images/Profile.svg" >
+            <mat-list-item *ngFor="let participant of chatService.allParticipantsList">
                 <img *ngIf='participant?.avatar_url != null' class="img_user" src="{{participant.avatar_url}}" >
 
                 <div mat-line>{{translate.currentLang == langEnum.en ? participant.name_en : participant.name_ar}}</div>
@@ -113,12 +112,11 @@
                 <div class="input-group pr-2rem">
                     <select class="form-control"  id="participants" formControlName="participants">
                        
-                        <option *ngFor="let participant of participantsList" 
-                        value="{{participant.key}}">
-                        <p> {{translate.currentLang == langEnum.en ? participant.name_en : participant.name_ar}} </p>
-                        <img *ngIf='participant?.avatar_url === null' class="img_user" src="../../../../../assets/images/Profile.svg" >
-                        <img *ngIf='participant?.avatar_url != null' class="img_user" src="{{participant.avatar_url}}" >
-                       </option>
+                        <option *ngFor="let participant of chatService.allParticipantsList" value="{{participant.key}}">
+                            <p> {{translate.currentLang == langEnum.en ? participant.name_en : participant.name_ar}} </p>
+                            <img *ngIf='participant?.avatar_url === null' class="img_user" src="../../../../../assets/images/Profile.svg" >
+                            <img *ngIf='participant?.avatar_url != null' class="img_user" src="{{participant.avatar_url}}" >
+                        </option>
 
                     </select>
                     <span class="select-arrow position-absolute">
@@ -149,7 +147,7 @@
             </div>
     
          </div>
-    </div>
+    </div> 
     
     
         

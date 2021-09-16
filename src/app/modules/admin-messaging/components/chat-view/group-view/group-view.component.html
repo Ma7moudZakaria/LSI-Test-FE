@@ -11,7 +11,7 @@
       <!-- <app-search-input (searchTerm)="filterByNameSearchKey($event)"></app-search-input> -->
 
     <div class="internal_scroll_list_group">
-        <ng-container *ngFor="let groupOfItem of chatService.allChatGroupsList; let i = index" >
+        <ng-container *ngFor="let groupOfItem of listOfGroups; let i = index" >
             <div class="list-group-item " 
             (click)="getGroupDetails(groupOfItem)">
                 <div  class="d-flex justify-content-between" >
@@ -22,7 +22,7 @@
                     <p class=" ellipsis p-0 last_message" title="{{ groupOfItem.last_message }} "> {{ groupOfItem.last_message }}   </p>      
                     
                     <span  class="trash_icon"
-                    (click)="getParticipantsFormFirebase(groupOfItem.participants , groupOfItem.key)">
+                    (click)="deleteGroup(groupOfItem.participants , groupOfItem.key)">
                         <i class="far fa-trash-alt"></i>
                     </span> 
                 </div>

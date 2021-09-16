@@ -1,5 +1,5 @@
 
-
+{{listOfMessagess.length}}
 <div class="details_day" >
     <div class="head_groupName  d-flex  align-items-center">
             <img class="userGroupIcon" src="../../../../../../assets/images/student-program/user-group.svg">
@@ -7,7 +7,7 @@
     </div>
     <div class="row mx-0  chat_details">    
         <div class="chat_vontainer w-100">
-        <ng-container *ngFor="let message of listOfMessagess; let i = index"  >
+        <ng-container *ngFor="let message of chatService.allMessagesList; let i = index"  >
             <div class="col-12 cardRecour" >
                 <div class=" mb-2 message_message ">
                     {{ message.message }}
@@ -20,7 +20,7 @@
 
     <div class="form-group" *ngIf="listOfMessagess">
         <div class="row">
-            <div class="form-group col-lg-12 mx-auto mb-0 mt-4 d-flex justify-content-between">
+            <div class="form-group col-lg-12 mx-auto mb-0 mt-4 d-flex justify-content-between" [ngClass]="{ 'dimmed' : groupData?.allowed === false }">
                 <input type="text" class="form-control w-90"  [(ngModel)]="messageChat" >
                 <button type="submit" class="btn UserLogin__Submit w-10 mx-2" (click)="addMessageToGroup(messageChat)"> 
                    <img class="sendIcon" src="../../../../../../assets/images/student-program/sendicon.svg">

@@ -9,6 +9,7 @@ import { IGroupChat } from 'src/app/core/interfaces/chat-interfaces/igroup-chat'
 import { IMessageChat } from 'src/app/core/interfaces/chat-interfaces/imessage-chat';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { Guid } from 'src/app/core/ng-model/generate-guid';
+import { ChatService } from 'src/app/core/services/chat-services/chat.service';
 
 @Component({
   selector: 'app-chat-details',
@@ -17,26 +18,26 @@ import { Guid } from 'src/app/core/ng-model/generate-guid';
 })
 export class ChatDetailsComponent implements OnInit {
   langEnum=LanguageEnum;
-  listOfChats:IMessageChat[] = [];
   listOfMessagess:IMessageChat[] = [];
   addMessageToChatGroup:IMessageChat | undefined;
   resultMessage: BaseMessageModel = {};
   currentUser: IUser | undefined;
   messageChat:string | undefined;
   messageAttachURL:string | undefined;
-  groupData:IGroupChat | undefined;
+  groupData = {} as IGroupChat ;
   
-  constructor(public translate: TranslateService) { }
+  constructor(public translate: TranslateService , public chatService:ChatService) { }
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
   }
 
   addMessageToGroup(message?:string , messageAttachURL?:string){
+    this.messageChat = '';
+    
     var last_date = formatDate(new Date(), 'dd-MM-yyyy HH:mm:ss', 'en');
     if(message == null || ''){
       this.addMessageToChatGroup = {
-        // key: Guid.newGuid(),
         date:last_date,
         sender_id:this.currentUser?.id,
         sender_name:this.translate.currentLang === LanguageEnum.ar ? this.currentUser?.fullNameAr : this.currentUser?.fullNameEn,
@@ -48,7 +49,6 @@ export class ChatDetailsComponent implements OnInit {
     }
     else{
       this.addMessageToChatGroup = {
-        // key: Guid.newGuid(),
         date:last_date,
         sender_id:this.currentUser?.id,
         sender_name:this.translate.currentLang === LanguageEnum.ar ? this.currentUser?.fullNameEn : this.currentUser?.fullNameEn,
@@ -59,36 +59,20 @@ export class ChatDetailsComponent implements OnInit {
       };      
     }
 
-    if(this.groupData?.last_message){
+    if(this.groupData?.last_message || this.groupData?.last_message == ""){
+      this.groupData.last_date = last_date;
       this.groupData.last_message = message;
-    }
-    // else{
-    //   // var MessageValue;
-    //   // if(this.groupData?.messages){
-    //   //   this.groupData?.messages[Guid.newGuid()] = this.addMessageToChatGroup ;
-    //   // }
-      
-    // }
-    
-
-    this.messageChat = '';
+    }   
 
     if(this.groupData?.messages != null){
-      firebase.database().ref('groups/' + this.groupData?.key).update(this.groupData || '' , (e:any) => {});
-      firebase.database().ref('groups/' + this.groupData?.key + '/' + 'messages/').push(this.addMessageToChatGroup , (a:any) => {
-        var Data = a;
-      });   
+      this.chatService.pushNewMessageToMessages(this.groupData?.key , this.addMessageToChatGroup);
       this.listOfMessagess.push(this.addMessageToChatGroup);
-      console.log("this.listOfMessagess" , this.listOfMessagess);
-      // this.listOfMessagess = this.listOfMessagess.sort((a, b) => {
-      //   return <any>new Date(a.date) - <any>new Date(b.date);
-      // });
     }
     else{
+      //if chat group messages not created ,,, will create it and push first message on it
       var Value = this.addMessageToChatGroup;
-      var map: { [Id: string]: any; } = { };
+      var map:any = [];
       map[Guid.newGuid()] = Value;
-
       this.groupData = {
         key:this.groupData?.key,
         group_name: this.groupData?.group_name,
@@ -98,36 +82,14 @@ export class ChatDetailsComponent implements OnInit {
         messages: this.groupData?.messages == null ? map : this.groupData?.messages,
         participants:this.groupData?.participants
       }
-      firebase.database().ref('groups/' + this.groupData?.key).set(this.groupData || '' , (e:any) => {});
-      // firebase.database().ref('groups/' + this.groupData?.key + '/' + 'messages/').set(this.addMessageToChatGroup , (a:any) => {}); 
-    }
 
-    
-    
-    //this.getGroupMessages(this.groupData);
+      this.chatService.pushLatestMessageToGroups(this.groupData);
+    }
   }
 
-  getGroupMessages(model:IGroupChat){
-    this.listOfChats = [];
-    this.listOfMessagess = [];
-    this.groupData = model;
-    
-    this.listOfChats.push(model?.messages || {});
-    this.listOfMessagess = Object.values(model?.messages || []) as IMessageChat[];
-    console.log("MessagesOfDataList : ",this.listOfMessagess);
+  getGroupMessages(){
+    this.chatService.getGroupMessages(this.groupData);
 
-    // for(let item in this.listOfChats){
-    //   var Data = this.listOfChats[item] as any[];
-    //   for(let itemTwo in Data){
-    //     .push(Data[itemTwo]);
-    //   }        
-    // }
-
-    this.listOfMessagess = this.listOfMessagess.sort((a, b) => {
-      return <any>new Date(a.date) - <any>new Date(b.date);
-    });
-
-    
-    console.log("list Of Messagess : ",this.listOfMessagess);
+    this.listOfMessagess = this.chatService.allMessagesList || [];
   }
 }

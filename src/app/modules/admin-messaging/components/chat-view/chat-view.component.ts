@@ -25,7 +25,7 @@ export class ChatViewComponent implements OnInit {
   closeCreateGroupOverlay(event: IGroupChat) {
     this.openCreateGroupOverlay = false;
     this.createGroupChat = event
-    this.groupViewComponent?.getAllGroups();
+    this.groupViewComponent?.ngOnInit();
   }
 
   openCreateGroupPopup(event: boolean) {
@@ -33,10 +33,14 @@ export class ChatViewComponent implements OnInit {
   }  
 
   groupDetailsEvent(event: IGroupChat) {
-    this.groupDetailsComponent?.getGroupDetails(event);
-  }
+    if (this.groupDetailsComponent){
+      this.groupDetailsComponent.groupModel = event;
+      this.groupDetailsComponent.listOfParticipants = event.participants || [];
+    }
 
-  chatDetailsEvent(event: IGroupChat) {
-    this.chatDetailsComponent?.getGroupMessages(event);
+    if (this.chatDetailsComponent){
+      this.chatDetailsComponent.groupData = event;
+      this.chatDetailsComponent.getGroupMessages();
+    }
   }
 }
