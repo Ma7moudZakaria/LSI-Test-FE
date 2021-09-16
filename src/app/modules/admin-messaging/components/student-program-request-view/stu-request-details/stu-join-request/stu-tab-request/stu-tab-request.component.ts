@@ -61,7 +61,8 @@ export class StuTabRequestComponent implements OnInit {
 
       if (res.isSuccess) {
         this.studProgsSubsItems = res.data;
-        console.log("studProgsSubsItem ", this.studProgsSubsItems)
+        this.showViewExam = false;
+        //console.log("studProgsSubsItem ", this.studProgsSubsItems)
         // this.studProgsSubsItems?.forEach(function (item) {
         //   item.requestDate = item.requestDate ? new Date(item.requestDate).toDateString(): '';
         // });
@@ -116,19 +117,18 @@ export class StuTabRequestComponent implements OnInit {
   }
   rejecteStuRequestMethod(event: IStudentSubscriptionModel) {
     this.itemStuReq.emit(event)
-   // this.showViewExam=false;
-
   }
 
   ids?: string[] = [];
   acceptStuReq(stuModel: IStudentSubscriptionModel) {
     this.ids = [];
     this.ids?.push(stuModel.id || '');
-    //this.showViewExam=false;
+  
     this.progSubsService.studentProgramSubscriptionsAcceptance(this.ids || []).subscribe(res => {
       if (res.isSuccess) {
         this.alertify.success(res.message || '');
         this.getStudentProgramSubscriptionsFilter();
+        this.showViewExam=false;
 
       }
       else {
@@ -237,6 +237,8 @@ export class StuTabRequestComponent implements OnInit {
   hideViewExam() {
     this.showViewExam = false;
   }
+
+ 
 
 }
 

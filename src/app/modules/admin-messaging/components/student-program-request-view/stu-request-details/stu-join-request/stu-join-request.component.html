@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="overlay" *ngIf="openStuRejectOverlay">
-            <app-stu-rejected [itemStuReq]='itemStuReq' (closeRejectedRequest)="closeRejectedRequest()"></app-stu-rejected>
+            <app-stu-rejected [itemStuReq]='itemStuReq' (closeRejectedRequest)="closeRejectedRequest($event)"></app-stu-rejected>
     </div>
 
     <div class="overlay" *ngIf="openStuAdvancedSearch">
