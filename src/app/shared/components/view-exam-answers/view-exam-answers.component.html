@@ -45,6 +45,11 @@
               </div>
             </div>
           </div>
+          <div>
+            <h6  class="user__back" (click)="hideViewExam()">
+              {{'UPDATE_USER_PG.BACK' | translate}}
+              <i class="fas fa-arrow-left " [ngClass]="translate.currentLang === langEnum.en ?'fa-flip-horizontal': ''"></i></h6>
+          </div>
         </div>
       </div>
     </div>

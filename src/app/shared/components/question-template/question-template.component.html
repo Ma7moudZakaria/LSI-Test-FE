@@ -114,10 +114,10 @@
   <ng-container *ngIf="questionViewMood===questionViewMoodEnum.student">
     <div class="form-group row"  >
       <div *ngIf="questionTemplate.answerType === answerTypeEnum.singleSelect">
-          <mat-radio-group [(ngModel)]="questionTemplate.correctAnswersByAnswerNumber" aria-label="Select an option"
+          <mat-radio-group [(ngModel)]="questionTemplate.studentAnswersByAnswerNumber" aria-label="Select an option"
           class="input-group  col-12" [disabled]='viewMode'>
         <mat-radio-button  *ngFor = 'let answer of questionTemplate.answers' 
-         value="{{questionTemplate.studentAnswersByAnswerNumber}}" class=" px-4  col-12" >
+         value="{{answer.answerNo}}" class=" px-4  col-12" >
          <input type="text" class="form-control input_fullWidth "
           [ngModel]="answer.text"  aria-label="Text input with checkbox" [disabled]='viewMode'>
           <a *ngIf='!viewMode' (click)="stopPropagation($event)" (click)='deleteAnswerDialog(answer)' >

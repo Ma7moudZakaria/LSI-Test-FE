@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { ProgramDutyDaysTaskViewMoodEnum } from 'src/app/core/enums/programs/program-duty-days-task-view-mood-enum.enum';
@@ -16,13 +16,14 @@ import { UserService } from 'src/app/core/services/user-services/user.service';
   styleUrls: ['./view-exam-answers.component.scss']
 })
 export class ViewExamAnswersComponent implements OnInit {
+  @Output() hideViewExamEvent= new EventEmitter<boolean>();
   @Input() studentExamAnswer: IStuViewExamAnswProgSub | undefined;
   starsSelected = 5;
   studentProfileDetails = {} as IUserProfile;
   resMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
   questionViewMoodEnum = ProgramDutyDaysTaskViewMoodEnum.student;
-  
+
   constructor( 
     private studentProfileService: UserService,
     public translate: TranslateService,
@@ -42,6 +43,10 @@ export class ViewExamAnswersComponent implements OnInit {
         this.alertify.error(res.message || "")
       }
     }, error => { });
+  }
+
+  hideViewExam() {
+    this.hideViewExamEvent.emit(false)
   }
 
 }

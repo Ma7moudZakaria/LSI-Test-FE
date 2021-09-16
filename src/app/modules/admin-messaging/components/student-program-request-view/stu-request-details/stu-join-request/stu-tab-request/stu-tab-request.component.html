@@ -75,10 +75,9 @@
     
     
     </div>
-
 <app-student-details-view *ngIf="showUserDetailsView"  (hideUserDetails) ="hideUserDetailsView($event)" [resiveUserId]="sendUserID"></app-student-details-view>
   <div *ngIf="showViewExam">
-    <app-view-exam-answers  [studentExamAnswer]='studentExamAnswerResponse'></app-view-exam-answers>
+    <app-view-exam-answers  [studentExamAnswer]='studentExamAnswerResponse' (hideViewExamEvent) ="hideViewExam()"></app-view-exam-answers>
     
     <div class="row">
         <div class="col-12">

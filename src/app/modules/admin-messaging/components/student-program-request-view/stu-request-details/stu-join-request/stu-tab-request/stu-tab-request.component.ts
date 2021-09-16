@@ -232,6 +232,10 @@ export class StuTabRequestComponent implements OnInit {
       error => {});
   }
 
+  hideViewExam() {
+    this.showViewExam = false;
+  }
+
 }
 
 

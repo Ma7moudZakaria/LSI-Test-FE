@@ -43,7 +43,7 @@
           aria-label="Select an option"
           class="input-group  col-12" >
          <mat-radio-button  *ngFor="let answer of currentQuestion?.answers;let i=index"
-         value="{{answer.text}}" class=" px-4  col-12" >
+         value="{{answer.answerNo}}" class=" px-4  col-12" >
          <input type="text" class="form-control input_fullWidth "
           [(ngModel)]="answer.text"  aria-label="Text input with checkbox" >
          
