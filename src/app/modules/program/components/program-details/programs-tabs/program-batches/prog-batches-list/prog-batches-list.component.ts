@@ -10,6 +10,7 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { ProgramBatchesService } from 'src/app/core/services/program-batches-service/program-batches.service'
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
+import {AlertDialogComponentComponent} from '../../../../../../../shared/components/alert-dialog-component/alert-dialog-component.component';
 
 @Component({
   selector: 'app-prog-batches-list',
@@ -44,7 +45,19 @@ export class ProgBatchesListComponent implements OnInit {
 
   }
   showAddBatchOverlay() {
-    this.showAddBatchOverlayEvent.emit();
+    if(!this.programDetails?.progBaseInfo?.prgPubliDate){
+      const dialogRef = this.dialog.open(AlertDialogComponentComponent,{
+        data:{
+          message: this.translate.currentLang === LanguageEnum.en ? "Please Publish The Program" : "برجاء نشر البرنامج",
+          buttonText: {
+            cancel: 'Done'
+          }
+        },
+      });
+    }
+    else{
+      this.showAddBatchOverlayEvent.emit();
+    }
   }
 
   showEditBatchOverlay(event: IProgramBatchesDetails) {
