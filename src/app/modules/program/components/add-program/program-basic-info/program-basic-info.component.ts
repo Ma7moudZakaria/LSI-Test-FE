@@ -238,7 +238,10 @@ export class ProgramBasicInfoComponent implements OnInit {
           progRecitTimes:this.progRecitationTimes,
           progCats : this.selectedProgramTypesList?.map((item:any)=> ({progCatId:item.catId || item.id})),
           prgDura : this.baseInfoForm.value.durationProg,
-          progDtyDays:this.progWeeklyDayList
+          progDtyDays:this.progWeeklyDayList,
+          progTypes: this.programTypesList,
+          progName: this.baseInfoForm.value.progName,
+          progCountDtyDay: this.baseInfoForm.value.dayCount
         }
         // send edit model to api
         this.editBasicInfoProgrm()

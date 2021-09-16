@@ -7,7 +7,7 @@
         <div class="col-md-3">
                 <div class="form-group">
                         <label class="header_input">{{ 'PROGRAM_BASIC_INFO.PROG_NAME' | translate }}  </label>
-                        <input type="text" class="form-control" formControlName="progName" [attr.disabled]='progBasicInfoDetails ? true : null' >
+                        <input type="text" class="form-control" formControlName="progName" >
                </div>
             <div *ngIf="f.progName.errors && (f.progName.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
               <div *ngIf="f.progName.errors?.required">
@@ -52,7 +52,7 @@
             <ng-container *ngFor="let item of collectionOfLookup.PROG_TYPES ;let i=index">
                 <mat-checkbox  (change)='addProgTypeToList(item, $event)' [checked]="progTypeChecked(item)"
                   class="example-margin " [ngClass]="{'ml-1 mr-1':i==0 ,'ml-5 mr-5': i==1, 'ml-3 mr-3': i==2}"
-                  [disabled]='progBasicInfoDetails !== undefined'>
+                  >
                   {{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}
                 </mat-checkbox>
             </ng-container>
@@ -234,11 +234,11 @@
           formControlName="dutiesDayType" (change)='dutyDaysChange($event)'>
             <ng-container *ngFor="let item of collectionOfLookup.DUTY_TYPES">
               <mat-radio-button value="{{item.id}}" class="example-radio-button ml-2 mr-2"
-              [disabled]='progBasicInfoDetails !== undefined'>{{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}</mat-radio-button>
+              >{{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}</mat-radio-button>
             </ng-container>
             </mat-radio-group>
               <input type="number" class="form-control w-50" formControlName="dayCount" placeholder="{{ 'PROGRAM_BASIC_INFO.WRITE_DAY_COUNT' | translate }} "
-              [attr.disabled]='progBasicInfoDetails ? true : null' *ngIf='progDutyDaysFreeDaysSelection'>
+               *ngIf='progDutyDaysFreeDaysSelection'>
 
               <div *ngIf="progDutyDaysFreeDaysSelection && f.dayCount.errors && (f.dayCount.touched || isSubmit)" class="alert alert-danger mt-2 mb-2 ">
 
