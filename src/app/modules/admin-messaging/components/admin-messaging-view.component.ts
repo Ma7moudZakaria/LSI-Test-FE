@@ -20,21 +20,21 @@ export class AdminMessagingViewComponent implements OnInit {
   // scProbObjForAddReplyView : IScientificProblemGridItems = {}
   // scProbObjForAddToQuestionBankView : IScientificProblemGridItems = {}
 
-  constructor(public translate: TranslateService, private languageService: LanguageService) { }
+  constructor(public translate: TranslateService,
+    private languageService: LanguageService) { }
 
   ngOnInit(): void {
     this.setCurrentLang();
   }
-
-  emitHeaderTitle() {
-    this.languageService.headerPageNameEvent.emit(this.translate.currentLang == LanguageEnum.ar ? 'المراسلات' : 'Messaging');
-  }
-
   setCurrentLang() {
     this.emitHeaderTitle();
     this.languageService.currentLanguageEvent.subscribe(res => {
       this.emitHeaderTitle();
     });
+  }
+
+  emitHeaderTitle() {
+    this.languageService.headerPageNameEvent.emit(this.translate.instant('SIDENAVBAR.REQUEST'));
   }
 
   // showAddReplyToScProblemView(event : IScientificProblemGridItems){

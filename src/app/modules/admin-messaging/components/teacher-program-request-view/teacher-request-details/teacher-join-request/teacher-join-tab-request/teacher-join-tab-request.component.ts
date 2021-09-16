@@ -41,7 +41,7 @@ export class TeacherJionTabRequestComponent implements OnInit {
     ngOnInit(): void {
       this.teacherSystemSubscriptionFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'TeacherNameAr' : 'TeacherNameEn';    
   
-      this.setCurrentLang();
+      // this.setCurrentLang();
       this.onPendingChange()
     }
   sendTeacherJoinIDEvent(event:ITeacherStudentViewModel){
@@ -51,16 +51,16 @@ export class TeacherJionTabRequestComponent implements OnInit {
   hideUserDetailsView(event: boolean) {
     this.showUserDetailsView = event;
   }
-  setCurrentLang() {
-    this.emitHeaderTitle();
-    this.languageService.currentLanguageEvent.subscribe(res => {
-      this.emitHeaderTitle();
-    });
-  }
+  // setCurrentLang() {
+  //   this.emitHeaderTitle();
+  //   this.languageService.currentLanguageEvent.subscribe(res => {
+  //     this.emitHeaderTitle();
+  //   });
+  // }
 
-  emitHeaderTitle() {
-    this.languageService.headerPageNameEvent.emit(this.translate.instant('UPDATE_TEACHER_PG.TITLE'));
-  }
+  // emitHeaderTitle() {
+  //   this.languageService.headerPageNameEvent.emit(this.translate.instant('UPDATE_TEACHER_PG.TITLE'));
+  // }
 
   getTeacherSystemSubscription() {
     this.teacherService.getTeacherSystemSubscriptionAdvancedFilter(this.teacherSystemSubscriptionFilterRequestModel).subscribe(res => {

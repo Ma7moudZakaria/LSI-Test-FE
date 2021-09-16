@@ -43,8 +43,8 @@ export class UserRequestsViewComponent implements OnInit {
     });
   }
 
-  emitHeaderTitle() {
-    this.languageService.headerPageNameEvent.emit(this.translate.currentLang == LanguageEnum.ar ? 'المراسلات' : 'Messaging');
+  emitHeaderTitle(){
+    this.languageService.headerPageNameEvent.emit(this.translate.instant('SIDENAVBAR.REQUEST'));
   }
 
   setSelectedCategory(event: UserRequests) {
