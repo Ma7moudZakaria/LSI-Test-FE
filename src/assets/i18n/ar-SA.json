@@ -945,7 +945,15 @@
     "GROUP_IS_EXIST": "المجموعة مسجلة من قبل",
     "GROUP_NOT_CREATED": "المجموعة لم يتم إضافتها من قبل",
     "ADD_NEW_GROUP": "إنشاء مجموعة جديدة",
-    "USERS": "اختر أعضاء المجموعة"
+    "USERS": "اختر أعضاء المجموعة",
+    "ADD":"إضافة",
+    "EDIT":"تعديل",
+    "GROUP_EXIST":"المجموعة موجودة مسبقا",
+    "GROUP_ADDED_SUCCESSFULLY":"تم إضافة المجموعة بنجاح",
+    "GROUP_UPDATED_SUCCESSFULLY":"تم تعديل المجموعة بنجاح",
+    "GROUP_DETAILS":"تفاصيل المجموعة",
+    "ALLOW_USERS":"السماح لاعضاء المجموعه بالمراسله",
+    "GROUPS":"جهات الاتصال"
   },
   "JPIN_EXAM": {
     "ARE_YOU_FINISHED_EXAM": "هل تم الانتهاء من الاجابة ؟"

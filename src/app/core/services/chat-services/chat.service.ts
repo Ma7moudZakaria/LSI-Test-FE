@@ -70,6 +70,8 @@ export class ChatService {
       var URL = 'users/' + elmOfParticipant.id + '/groups/' + groupId;
       firebase.database().ref('users/').child(elmOfParticipant.id + '/').child('/groups/').child(groupId).remove();
     });
+
+    this.deleteGroup(groupId);
   }
 
   async getGroupMessages(model:IGroupChat) {
@@ -86,12 +88,13 @@ export class ChatService {
     firebase.database().ref('groups/' + model?.key).set(model);
   }
 
-  async pushNewMessageToMessages(Id?:string, model?:IMessageChat) {
-    firebase.database().ref('groups/').child(Id + '/').child("messages").push(model);
+  async pushNewMessageToMessages(groupModel:IGroupChat, model?:IMessageChat) {
+    firebase.database().ref('groups/').child(groupModel?.key + '/last_message').set(groupModel.last_message);
+    firebase.database().ref('groups/').child(groupModel?.key + '/').child("messages").push(model);
   }
 
   async isGroupExist(model:any ) {
-    firebase.database().ref('groups/').equalTo(model.groupNameAr || model.groupNameEn);
+    // firebase.database().ref('groups/').equalTo(model.groupNameAr || model.groupNameEn);
     firebase.database().ref('groups/').isEqual(model.groupNameAr || model.groupNameEn);
     // firebase.database().ref('groups/').on('value', (res: any) => {
     //   res.forEach((element : any) => {
@@ -128,5 +131,16 @@ export class ChatService {
           const updateGroupToUsersRoom = firebase.database().ref('users/' + elm.key +'/' + 'groups');
           updateGroupToUsersRoom.set(elm.groups);
         });
+  }
+
+  async editGroup(selectedParticipantsList:IParticipantChat[] , model:IGroupChat , groupId:any ) {
+    // Edit Participants To Group
+      Array.from(selectedParticipantsList).forEach((elm: IParticipantChat) => {
+        if(elm.groups === null || elm.groups === undefined || elm.groups.length === 0){
+          elm.groups = [];
+        }
+      });
+
+      firebase.database().ref('groups/' + groupId).update(model);
   }
 }

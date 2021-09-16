@@ -1,5 +1,3 @@
-
-{{listOfMessagess.length}}
 <div class="details_day" >
     <div class="head_groupName  d-flex  align-items-center">
             <img class="userGroupIcon" src="../../../../../../assets/images/student-program/user-group.svg">
@@ -8,10 +6,14 @@
     <div class="row mx-0  chat_details">    
         <div class="chat_vontainer w-100">
         <ng-container *ngFor="let message of chatService.allMessagesList; let i = index"  >
-            <div class="col-12 cardRecour" >
-                <div class=" mb-2 message_message ">
-                    {{ message.message }}
-                   
+            <div class="col-12 cardRecour " [ngClass]="{ 'current_user_cardRecour' : currentUser?.id === message.sender_id}">
+                <div class="message_date"> {{ message.sender_name }} </div>
+                <!-- <div class="message_date"> {{ message.sender_name }} {{translate.currentLang == langEnum.en ? participant.name_en : participant.name_ar}}</div> -->
+                <div class=" mb-2 message_message "*ngIf="message.message_type === 'text'" [ngClass]="{ 'current_user_cardRecour' : currentUser?.id === message.sender_id}"> 
+                    {{ message.message }}                   
+                </div>
+                <div class=" mb-2 message_message "*ngIf="message.message_type === 'file'">
+                    <img class="img_user" src="{{ message.file_name }}"> 
                 </div>
                 <div class="message_date"> {{ message.date }} </div>      
             </div>
@@ -21,8 +23,32 @@
     <div class="form-group" *ngIf="listOfMessagess">
         <div class="row">
             <div class="form-group col-lg-12 mx-auto mb-0 mt-4 d-flex justify-content-between" [ngClass]="{ 'dimmed' : groupData?.allowed === false }">
-                <input type="text" class="form-control w-90"  [(ngModel)]="messageChat" >
-                <button type="submit" class="btn UserLogin__Submit w-10 mx-2" (click)="addMessageToGroup(messageChat)"> 
+
+                <!-- <input type="text" class="form-control w-90" [(ngModel)]="messageChat" (keypress)="addMessageToGroup(messageChat,messageType, $event)" >
+                <div class="input-group-append">
+                    <span type="file" (click)="onFileChange($any($event.target).files)" class="input-group-text border_radius bg-white">
+                        <i class="fas fa-plus plus_input"></i>
+                    </span>
+                </div> -->
+
+                <div class="input-group-prepend ">
+                    <input type="file" class="input-group-text bg-white pl-2 pr-2 border-md UserLogin_icon_input"
+                       (change)="onFileChange($any($event.target).files)">
+                    <!-- <span class="input-group-text bg-white pl-2 pr-2 border-md " type="file" (click)="onFileChange($any($event.target).files)">
+                        <img  class="UserLogin_icon_input" src="../../../../../../assets/images/search-ired.svg" >
+                    </span> -->
+                </div>
+
+                <input (keypress)="addMessageToGroup(messageChat,messageType, $event)" class=" px-3 form-control UserLogin__FormControl bg-white  border-md input-sm" [(ngModel)]="messageChat">
+
+                <!-- <input type="file" class="form-control w-90" 
+                       (change)="onFileChange($any($event.target).files)"> -->
+                
+                <!-- <a class="custom_file_input" (click)="fileInput.click()" style="text-decoration: none;" id="upload_link">
+                    <img src="assets/images/update-user/UploadImage.svg"/>
+                </a> -->
+
+                <button type="submit" class="btn UserLogin__Submit w-10 mx-2" (click)="addMessageToGroup(messageChat,messageType, 'Enter')" > 
                    <img class="sendIcon" src="../../../../../../assets/images/student-program/sendicon.svg">
                 </button>
      

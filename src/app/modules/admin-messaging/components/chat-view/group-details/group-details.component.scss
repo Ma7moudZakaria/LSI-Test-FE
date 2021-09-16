@@ -68,4 +68,12 @@
         border: 1px solid #C1C7D0;
         border-radius: 5px;
       }
+
+      .dimmed{
+        color: gray;
+        cursor: not-allowed;
+        text-decoration: underline;
+        pointer-events: none;
+        opacity: 0.2;
+      }
 }

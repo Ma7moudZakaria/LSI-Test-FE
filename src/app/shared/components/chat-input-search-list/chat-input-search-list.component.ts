@@ -60,8 +60,8 @@ export class ChatInputSearchListComponent implements OnInit {
     this.selectedUser = event;
     this.search =
       this.translate.currentLang === this.langEnum.en
-        ? event.enUsrName
-        : event.arUsrName;
+        ? event.name_en
+        : event.name_ar;
   }
 
   private _filter(value: string) {

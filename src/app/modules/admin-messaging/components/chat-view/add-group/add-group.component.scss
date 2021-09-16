@@ -1,4 +1,5 @@
 @import '../../../../../../assets/scss/buttons';
+@import '../../../../../../../src/styles.scss';
 @import '../../../../../modules/program/components/add-program/program-notifacations/add-edit-notification/add-edit-notification.component.scss';
 
 
@@ -26,6 +27,13 @@
 
 }
 
+.dimmed{
+    color: gray;
+    cursor: not-allowed;
+    text-decoration: underline;
+    pointer-events: none;
+    opacity: 0.2;
+  }
 
 
 .label{

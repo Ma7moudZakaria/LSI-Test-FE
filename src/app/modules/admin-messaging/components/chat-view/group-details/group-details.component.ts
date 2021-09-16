@@ -13,7 +13,7 @@ import { ChatService } from 'src/app/core/services/chat-services/chat.service';
 export class GroupDetailsComponent implements OnInit {
   langEnum=LanguageEnum;
   listOfParticipants:IParticipantChat[] = [];
-  allowed:boolean = true;
+  allowed:boolean | undefined;
   groupModel:IGroupChat | undefined;
 
   constructor(public translate: TranslateService, public chatService:ChatService) { }
@@ -21,6 +21,7 @@ export class GroupDetailsComponent implements OnInit {
   ngOnInit(): void {
     // this.listOfParticipants = [];
     // this.listOfParticipants = this.groupModel?.participants;
+    // this.allowed = this.groupModel?.allowed === null ? true : this.groupModel?.allowed;
   }
 
   filterByText(searchKey:string){

@@ -20,6 +20,8 @@ import { MatDialog } from '@angular/material/dialog';
 export class GroupViewComponent implements OnInit {
   @Output() createGroupOverlayEvent = new EventEmitter<boolean>();
   @Output() groupDetailsEvent = new EventEmitter<IGroupChat>();
+  @Output() groupDetailsForEditEvent = new EventEmitter<IGroupChat>();
+
   listOfGroups: IGroupChat[] = [];
   selectedIndex: number = 0;
   langEnum = LanguageEnum;
@@ -45,10 +47,18 @@ export class GroupViewComponent implements OnInit {
     dialogRef.afterClosed().subscribe(dialogResult => {
       if (dialogResult == true) {
         this.chatService.deleteGroupParticipants(listOfUsers || [] , id || '');
-        this.chatService.deleteGroup(id);
+        // this.chatService.deleteGroup(id);
+        this.listOfGroups = this.chatService.allChatGroupsList;
+        // this.getGroupDetails({});
         this.alertify.success( this.translate.currentLang === LanguageEnum.en ? "Group Deleted Successfully" : 'تم حذف المجموعة بنجاح');  
       }
     });
+
+    this.chatService.getAllChatGroups();    
+  }
+
+  editGroup(event: IGroupChat) {
+    this.groupDetailsForEditEvent.emit(event);
   }
 
   showAdd() {

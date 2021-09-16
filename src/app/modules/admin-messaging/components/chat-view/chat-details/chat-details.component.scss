@@ -37,6 +37,9 @@
         background-color: #e4e4e43b;
         border-radius: 15px 15px 15px 0;
         margin: 0.2rem;
+        max-width: 75%;
+        // display:inline-block;
+        // text-align: right;
     }
     .message_message
     {
@@ -44,6 +47,30 @@
         color: #3A3A3A;
         font-size:0.8rem
 
+    }
+    .current_user_cardRecour{
+        padding: 0.5rem 1rem;
+        background-color: #8E2520;
+        border-radius: 15px 15px 15px 0;
+        margin: 0.2rem;
+        max-width: 75%;
+
+        .message_message
+        {
+            font-family: Almarai-Regular;
+            color: white;
+            font-size:0.8rem;
+
+        }
+
+        .message_date{
+            color: white;
+            font-family: Almarai-Regular;
+            font-size: 9px;
+            &:lang(ar){text-align: left;}
+            &:lang(en){text-align: right;}
+            
+        }
     }
 
     .w-90{
@@ -85,4 +112,10 @@
             font-size: 14px;
         }
    
+        .img_user{
+            width: 150px;
+            // height: 150px;
+            border: 1px solid #C1C7D0;
+            border-radius: 5px;
+          }
 }

@@ -21,13 +21,17 @@ import { ChatService } from 'src/app/core/services/chat-services/chat.service';
 })
 export class AddGroupComponent implements OnInit {
   @Output() closeCreateGroupOverlay = new EventEmitter<IGroupChat>();
+  @Output() closeEditGroupOverlay = new EventEmitter<IGroupChat>();
   @Input() createGroupChat = {} as IGroupChat;
+  @Input() editGroupChat : IGroupChat | undefined;  
+
   resultMessage: BaseMessageModel = {};
   langEnum=LanguageEnum;
   createGroupForm: FormGroup = new FormGroup({});
   participantsMessage: BaseMessageModel = {};
   selectedParticipantsList = Array<IParticipantChat>();
   currentUser: IUser | undefined;  
+  isSubmit = false;
 
   constructor(
     private fb: FormBuilder,
@@ -39,9 +43,18 @@ export class AddGroupComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     this.selectedParticipantsList = [];
-    // this.callFirebaseToGetParticipants();
-    this.buildForm();    
+    this.chatService.getAllChatGroups();
     this.chatService.getAllParticipants();
+    this.buildForm();    
+
+    if(this.editGroupChat){
+      if(this.editGroupChat.participants != null){
+        this.selectedParticipantsList = this.editGroupChat.participants;
+      }
+
+      this.PopulateForm();
+    }
+    
   }
 
   get f() {
@@ -60,6 +73,7 @@ export class AddGroupComponent implements OnInit {
   }
 
   createNewGroup(value: any) {
+    this.isSubmit = true;
     var GroupId = Guid.newGuid();
     var last_date = formatDate(new Date(), 'dd-MM-yyyy HH:mm:ss', 'en');
 
@@ -75,58 +89,107 @@ export class AddGroupComponent implements OnInit {
         participants:[]
       };
 
-      this.createGroupChat.participants = [];
-      if (this.selectedParticipantsList.length) {
-        // Add Admin Of Group
-        this.selectedParticipantsList.push({
-          id: this.currentUser?.id , 
-          hoffazId:"1", 
-          role:RoleEnum.SuperAdmin,
-          name_ar:this.currentUser?.fullNameAr,
-          name_en:this.currentUser?.fullNameEn,
-          avatar_url:'../../../../../assets/images/Profile.svg',
-          groups: [GroupId],
-          gender:"Male"
-        });
-
-         // Add Participants Of Group
-        Array.from(this.selectedParticipantsList).forEach((elm: IParticipantChat) => {
-          if (this.createGroupChat.participants) {
-            this.createGroupChat.participants.push({
-              id: elm.id , 
-              hoffazId:"1", 
-              role:elm.role,
-              name_ar:elm.name_ar,
-              name_en:elm.name_en,
-              avatar_url:elm.avatar_url,
-              groups: [],
-              gender:"Male"
-            });
-          }
-        });
+      var IsExist = this.chatService.allChatGroupsList.some(x => x.group_name === this.createGroupChat.group_name);
+      
+      if(!IsExist){
+        this.createGroupChat.participants = [];
+        if (this.selectedParticipantsList.length) {
+          // Add Admin Of Group
+          this.selectedParticipantsList.push({
+            id: this.currentUser?.id , 
+            hoffazId:"1", 
+            role:RoleEnum.SuperAdmin,
+            name_ar:this.currentUser?.fullNameAr,
+            name_en:this.currentUser?.fullNameEn,
+            avatar_url:'../../../../../assets/images/Profile.svg',
+            groups: [GroupId],
+            gender:"Male"
+          });
+  
+           // Add Participants Of Group
+          Array.from(this.selectedParticipantsList).forEach((elm: IParticipantChat) => {
+            if (this.createGroupChat.participants) {
+              this.createGroupChat.participants.push({
+                id: elm.id , 
+                hoffazId:"1", 
+                role:elm.role,
+                name_ar:elm.name_ar,
+                name_en:elm.name_en,
+                avatar_url:elm.avatar_url == null || undefined ? '../../../../../assets/images/Profile.svg' : elm.avatar_url,
+                groups: [],
+                gender:"Male"
+              });
+            }
+          });
+        }
+  
+        this.chatService.addGroup(this.selectedParticipantsList, this.createGroupChat, GroupId);
+        this.closeCreateGroupOverlayEvent();
+        this.isSubmit = false;
+        this.alertify.success(this.translate.instant('CHAT_GROUP.GROUP_ADDED_SUCCESSFULLY'));  
       }
-
-      this.chatService.addGroup(this.selectedParticipantsList, this.createGroupChat, GroupId);
-      this.closeCreateGroupOverlayEvent();
-      this.alertify.success("Group Added Successfully");  
+      else{
+        this.resultMessage ={
+          message:this.translate.instant('CHAT_GROUP.GROUP_EXIST'),
+          type: BaseConstantModel.DANGER_TYPE
+        }
+      }
     }
   }
 
-  addParticipant() {
-    if (!this.createGroupForm.value.participants) {
+  editNewGroup(value: any) {
+    var last_date = formatDate(new Date(), 'dd-MM-yyyy HH:mm:ss', 'en');
+
+    const room = value;
+    this.editGroupChat = {
+      group_name: this.editGroupChat?.group_name,
+      allowed:this.createGroupForm.value.allowed,
+      key:this.editGroupChat?.key,
+      last_date: last_date,
+      last_message:this.editGroupChat?.last_message,
+      messages: this.editGroupChat?.messages,
+      participants:[]
+    };
+
+    this.editGroupChat.participants = [];
+    if (this.selectedParticipantsList.length) {
+       // Edit Participants Of Group
+      Array.from(this.selectedParticipantsList).forEach((elm: IParticipantChat) => {
+        if (this.editGroupChat?.participants) {
+          this.editGroupChat?.participants.push({
+            id: elm.id , 
+            hoffazId:"1", 
+            role:elm.role,
+            name_ar:elm.name_ar,
+            name_en:elm.name_en,
+            avatar_url:elm.avatar_url?.length == 0 ? '../../../../../assets/images/Profile.svg' : elm.avatar_url,
+            groups: [],
+            gender:"Male"
+          });
+        }
+      });
+    }
+
+    this.chatService.editGroup(this.selectedParticipantsList, this.editGroupChat, this.editGroupChat?.key);
+    this.closeEditGroupOverlayEvent();
+    this.alertify.success(this.translate.instant('CHAT_GROUP.GROUP_UPDATED_SUCCESSFULLY'));  
+  }
+
+  addParticipant(event: IParticipantChat) {
+    if (!event) {
       this.participantsMessage = {
         message: this.translate.instant('UPDATE_TEACHER_PG.CHOOSE_TEACHER_REWAYAT'),
         type: BaseConstantModel.DANGER_TYPE
       }
       return;
     }
-    if (this.selectedParticipantsList.some(x => x.key === this.createGroupForm.value.participants)) {
+    if (this.selectedParticipantsList.some(x => x.key === event.key)) {
       return;
     }
 
-    var Data = this.chatService.allParticipantsList.filter(el => el.key == this.createGroupForm.value.participants)[0] as IParticipantChat;
+    var Data = this.chatService.allParticipantsList.filter(el => el.key == event.key)[0] as IParticipantChat;
     this.selectedParticipantsList.push({
-      id: this.createGroupForm.value.participants , 
+      id: event.id , 
       hoffazId:Data.hoffazId, 
       gender:Data.gender,
       name_ar:Data.name_ar,
@@ -145,5 +208,13 @@ export class AddGroupComponent implements OnInit {
 
   closeCreateGroupOverlayEvent() {
     this.closeCreateGroupOverlay.emit();
+  }
+
+  closeEditGroupOverlayEvent() {
+    this.closeEditGroupOverlay.emit();
+  }
+
+  PopulateForm() {
+    this.f.allowed.setValue(this.editGroupChat?.allowed);    
   }
 }

@@ -946,7 +946,15 @@
     "GROUP_IS_EXIST": "Group is already exist",
     "GROUP_NOT_CREATED": "Group Not Created",
     "ADD_NEW_GROUP": "Add New Group",
-    "USERS": "Choose Participant"
+    "USERS": "Choose Participant",
+    "ADD":"Add",
+    "EDIT":"Edit",
+    "GROUP_EXIST":"Group is already exist",
+    "GROUP_ADDED_SUCCESSFULLY":"Group Added Successfully",
+    "GROUP_UPDATED_SUCCESSFULLY":"Group Updated Successfully",
+    "GROUP_DETAILS":"Group Details",
+    "ALLOW_USERS":"Allow group members to message",
+    "GROUPS":"Contacts"
   },
   "JPIN_EXAM": {
     "ARE_YOU_FINISHED_EXAM": "Are you finished the exam?"
