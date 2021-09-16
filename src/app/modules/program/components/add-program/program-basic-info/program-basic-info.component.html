@@ -253,7 +253,7 @@
               <div *ngIf='!progDutyDaysFreeDaysSelection'>
                 <ng-container *ngFor="let item of collectionOfLookup.DAYS" >
                   <mat-checkbox   (change)='addProgWeeklyDayToList(item, $event)' [checked]="progWeeklyDaysChecked(item)"
-                  class="example-margin ml-1 mr-1" [disabled]='progBasicInfoDetails !== undefined' >
+                  class="example-margin ml-1 mr-1"  >
                   {{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}
                   </mat-checkbox>
                   </ng-container>
