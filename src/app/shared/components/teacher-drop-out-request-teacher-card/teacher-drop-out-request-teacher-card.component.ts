@@ -21,11 +21,11 @@ export class TeacherDropOutRequestTeacherCardComponent implements OnInit {
 
   @Input() typeEnum: TeacherDropOutRequestStatusEnum = TeacherDropOutRequestStatusEnum.Pending;
   typeDropOutRequestEnum = TeacherDropOutRequestStatusEnum;
-
+  teacherDropOutRequestStatus = TeacherDropOutRequestStatusEnum;
   teacherDropOutRequestIds: string[] | undefined
   langEnum = LanguageEnum;
   requestDate: string | undefined;
-  teacherDropOutRequestStatus = TeacherDropOutRequestStatusEnum;
+
 
   x = 1;
 

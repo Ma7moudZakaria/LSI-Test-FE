@@ -15,7 +15,6 @@
     <div class="card_body pb-0">
       <span>{{teacherDropOutRequestModel.no}}</span> 
       <div class="d-flex  mb-2">
-      <!-- <span>{{teacherDropOutRequestModel.no}}</span>  -->
         <img *ngIf='!teacherDropOutRequestModel.avatarLink' (click)="openDetails(teacherDropOutRequestModel?.id,teacherDropOutRequestModel?.progName)" class="img_user" src="../../../../assets/images/student/user-profile.svg">
         <img *ngIf='teacherDropOutRequestModel.avatarLink' (click)="openDetails(teacherDropOutRequestModel?.id,teacherDropOutRequestModel?.progName)"  class="img_user" src="{{teacherDropOutRequestModel.avatarLink}}" >
       <div class="mx-1 container-width">
@@ -26,46 +25,29 @@
           title=" {{translate.currentLang === langEnum.en ? teacherDropOutRequestModel.enProgBatName : teacherDropOutRequestModel.arProgBatName }}"
           >
             {{translate.currentLang === langEnum.en ? teacherDropOutRequestModel.enProgBatName : teacherDropOutRequestModel.arProgBatName }}
-            <!-- {{translate.currentLang === langEnum.en ? teacherDropOutRequestModel.enProgBatName : teacherDropOutRequestModel.arProgBatName }} -->
           </p>  
-        <!-- <p class="program_user bold mb-2 "> {{translate.currentLang === langEnum.en ? teacherDropOutRequestModel.batchEn : teacherDropOutRequestModel.batchAr }}</p>         -->
-        
-     
       </div>
       </div>
       <div class="program_reason">
         <p class="  mb-0 pb-2"  > 
-        <span>
+        <span  class="program_user bold mb-0 " >
           {{'GENERAL_DROP_OUT_REQUEST.REQUEST_REASON' | translate}} :
         </span>
-        <span class="program_user bold mb-0 "  *ngIf="teacherDropOutRequestModel.reason === null">{{'GENERAL_DROP_OUT_REQUEST.NO_DATA' | translate}} </span>
-        <span class="program_user bold mb-0 ">{{ teacherDropOutRequestModel.reason }}</span>
+        <span class=" mb-0 "  *ngIf="teacherDropOutRequestModel.reason === null">{{'GENERAL_DROP_OUT_REQUEST.NO_DATA' | translate}} </span>
+        <span class=" mb-0 ">{{ teacherDropOutRequestModel.reason }}</span>
         </p>
      
         <p class="  mb-0 pb-2" *ngIf='typeDropOutRequestEnum.Rejected === typeEnum' > 
-          <span class="bold mx-1"> {{'GENERAL_DROP_OUT_REQUEST.REJECT_REASON' | translate}} : </span> 
-          <span class="program_user bold mb-0 " *ngIf="!teacherDropOutRequestModel.reasonReject ">{{'GENERAL_DROP_OUT_REQUEST.NO_DATA' | translate}} </span>
-          <span>
+          <span class=" program_user bold mx-1"> {{'GENERAL_DROP_OUT_REQUEST.REJECT_REASON' | translate}} : </span> 
+          <span class=" mb-0 " *ngIf="!teacherDropOutRequestModel.reasonReject ">{{'GENERAL_DROP_OUT_REQUEST.NO_DATA' | translate}} </span>
+          <span class=" mb-0 " *ngIf="teacherDropOutRequestModel.reasonReject ">
             {{ teacherDropOutRequestModel.reasonReject }}
           </span>
         </p>
     
     </div>
 
-    <!-- <div class="d-flex justify-content-between mb-3">
-      <span>{{teacherDropOutRequestModel.no}}</span> 
-      <img *ngIf='!teacherDropOutRequestModel.avatarLink' (click)="openDetails(teacherDropOutRequestModel?.id)" class="img_user" src="../../../../assets/images/student/user-profile.svg">
-      <img *ngIf='teacherDropOutRequestModel.avatarLink' (click)="openDetails(teacherDropOutRequestModel?.id)"  class="img_user" src="{{teacherDropOutRequestModel.avatarLink}}" >
-      <div class="mx-1">
-        <p class="name_user bold mb-2" (click)="openDetails(teacherDropOutRequestModel?.id)">
-          {{ translate.currentLang == langEnum.en ? teacherDropOutRequestModel?.teacherNameEn : teacherDropOutRequestModel?.teacherNameAr}}</p>
-        <p class="program_user bold mb-2 "> {{teacherDropOutRequestModel.progName}}</p>      
-        <p class="program_user bold mb-2 "> {{translate.currentLang === langEnum.en ? teacherDropOutRequestModel.batchEn : teacherDropOutRequestModel.batchAr }}</p>        
-        <p class="program_user bold mb-0 "> {{ teacherDropOutRequestModel.reason }}</p> 
-        <p class="program_user bold mb-0 " *ngIf='typeDropOutRequestEnum.Rejected === typeEnum'> {{ teacherDropOutRequestModel.reasonReject }}</p> 
-      </div>
-
-    </div> -->
+  
 
   <ng-container *ngIf="typeEnum === typeDropOutRequestEnum.Pending">
     <div class="body_footer" >

@@ -34,12 +34,8 @@
       <span>
         {{'GENERAL_DROP_OUT_REQUEST.REQUEST_REASON' | translate}} :
       </span>
-      <!-- <p class="program_user bold mb-0 "  *ngIf="studentSubscripModel.reason">{{'GENERAL_DROP_OUT_REQUEST.NO_DATA' | translate}} </p> -->
-      <!-- <p class="program_user bold mb-2 ">{{ studentSubscripModel.reason }}</p> -->
       <p class="program__admin"   *ngIf="!studentSubscripModel.rejReas " >{{'GENERAL_DROP_OUT_REQUEST.NO_DATA' | translate}} </p>
       <p class="program__answer "  *ngIf="studentSubscripModel.rejReas ">{{studentSubscripModel.rejReas}}</p>
-
-
     </div>
 
 

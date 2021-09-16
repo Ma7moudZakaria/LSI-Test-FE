@@ -1,20 +1,24 @@
 export interface IStudentDropOutRequestsFilterStudentViewResponseModel {
-    id?:string;
-    requestDate?:string;
-    usrNameAr?:string;
-    usrNameEn?:string;
-    progName?:string;
-    batNameAr?:string;
-    batNameEn?:string;
-    arProgBatName?:string;
-    enProgBatName?:string;
-    totalRows?:number;
-    checked?:boolean;
-    reasonReject?:string;
-    arStudentStatusName?:string;  
-    enStudentStatusName?:string;  
+    id?: string;
+    requestDate?: string;
+    usrNameAr?: string;
+    usrNameEn?: string;
+    progName?: string;
+    batNameAr?: string;
+    batNameEn?: string;
+    arProgBatName?: string;
+    enProgBatName?: string;
+    totalRows?: number;
+    checked?: boolean;
+    reasonReject?: string;
+    arStudentStatusName?: string;
+    enStudentStatusName?: string;
     drpStat?: number;
-    no?:number;
-    canCancel?:boolean;
-    reason?:string;  
+    no?: number;
+    canCancel?: boolean;
+    reason?: string;
+    arStatName?: string;
+    enStatName?: string;
+    avatarLink?: string;
+
 }
