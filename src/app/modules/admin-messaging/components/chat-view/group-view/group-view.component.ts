@@ -35,13 +35,13 @@ export class GroupViewComponent implements OnInit {
   }
 
   getAllGroups() {
-    firebase.database().ref('groups/').orderByChild('messages').on('value', (resp2: any) => {
+    firebase.database().ref('groups/').on('value', (resp2: any) => {
       this.listOfGroups = ChatResponseModel.snapshotToArray(resp2);
     });
   }
 
   getAllParticipantByGroupId(id?: string) {
-    firebase.database().ref('users/').orderByChild('messages').on('value', (resp2: any) => {
+    firebase.database().ref('users/').on('value', (resp2: any) => {
       var Data = ChatResponseModel.snapshotToArray(resp2) as { [Id: string]: IParticipantChat; }[];
       this.usersList = Object.values(Data || []) as IParticipantChat[];
     });
