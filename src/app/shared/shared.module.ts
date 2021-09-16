@@ -94,6 +94,7 @@ import { TeacherStuProgramForSubscriptionGridComponent } from './components/teac
 import { StudentProgramVacationCardStudentViewComponent } from './components/student-program-vacation-card-student-view/student-program-vacation-card-student-view.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ViewExamAnswersComponent } from './components/view-exam-answers/view-exam-answers.component';
 
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
@@ -150,7 +151,8 @@ import { MatNativeDateModule } from '@angular/material/core';
         AdminVacationRequestForStudentTabCardComponent,
         JoinExamComponent,
         TeacherAppointmentRequestsGridComponent,
-        TeacherAppointmentRequestCardComponent
+        TeacherAppointmentRequestCardComponent,
+        ViewExamAnswersComponent
   ],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
@@ -183,7 +185,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     AdminJoinRequestForTeacherTabAndStudentTabCardComponent,
     AdminDropOutRequestForTeacherTabAndStudentTabGridComponent,
       AdminVacationRequestForStudentTabGridComponent, AdminVacationRequestForStudentTabCardComponent,
-      JoinExamComponent, TeacherAppointmentRequestsGridComponent,MatDatepickerModule, MatNativeDateModule
+      JoinExamComponent, TeacherAppointmentRequestsGridComponent,MatDatepickerModule, MatNativeDateModule,ViewExamAnswersComponent
 
 
   ]

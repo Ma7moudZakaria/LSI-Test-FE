@@ -17,12 +17,13 @@ export class StuCardRequestComponent implements OnInit {
   @Output() acceptStuRequest = new EventEmitter<IStudentSubscriptionModel>();
   @Output() studentProgSubOutput = new EventEmitter<ITeacherStudentViewModel>();
   @Output() updateAllItemsChecked = new EventEmitter<boolean>();
-
+  @Output()viewExamEvent =new EventEmitter<IStudentSubscriptionModel>();
   @Input() typeEnum: StudentProgramSubscriptionStatusEnum = StudentProgramSubscriptionStatusEnum.Pending;
+  @Input() studentSubscripModel: IStudentSubscriptionModel = { totalRows: 0 }
   tabTypeSelected = StudentProgramSubscriptionStatusEnum;
   langEnum = LanguageEnum;
   // studentStatus = TeacherDropOutRequestStatusEnum;
-  @Input() studentSubscripModel: IStudentSubscriptionModel = { totalRows: 0 }
+
 
   constructor(public translate: TranslateService) { }
 
@@ -41,5 +42,9 @@ export class StuCardRequestComponent implements OnInit {
   }
   updateAllItemsCheckedCall() {
     this.updateAllItemsChecked.emit();
+  }
+
+  viewExam() {
+    this.viewExamEvent.emit(this.studentSubscripModel);
   }
 }
