@@ -1,16 +1,12 @@
 import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import * as firebase from 'firebase';
-import { EventEmitter } from 'node:stream';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IAttachment } from 'src/app/core/interfaces/attachments-interfaces/iattachment';
 import { IFileUpload } from 'src/app/core/interfaces/attachments-interfaces/ifile-upload';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { IGroupChat } from 'src/app/core/interfaces/chat-interfaces/igroup-chat';
 import { IMessageChat } from 'src/app/core/interfaces/chat-interfaces/imessage-chat';
-import { IUserProfilePicture } from 'src/app/core/interfaces/user-interfaces/iuser-profile-picture';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { Guid } from 'src/app/core/ng-model/generate-guid';
@@ -18,11 +14,12 @@ import { AttachmentsService } from 'src/app/core/services/attachments-services/a
 import { ChatService } from 'src/app/core/services/chat-services/chat.service';
 
 @Component({
-  selector: 'app-chat-details',
-  templateUrl: './chat-details.component.html',
-  styleUrls: ['./chat-details.component.scss']
+  selector: 'app-user-chat-view-details',
+  templateUrl: './user-chat-view-details.component.html',
+  styleUrls: ['./user-chat-view-details.component.scss']
 })
-export class ChatDetailsComponent implements OnInit {
+export class UserChatViewDetailsComponent implements OnInit {
+
   langEnum=LanguageEnum;
   listOfMessagess:IMessageChat[] = [];
   addMessageToChatGroup:IMessageChat | undefined;
@@ -74,6 +71,7 @@ export class ChatDetailsComponent implements OnInit {
         if(this.groupData?.last_message || this.groupData?.last_message == ""){
           this.groupData.last_date = last_date;
           this.groupData.last_message = this.addMessageToChatGroup.message;
+          this.groupData.key = this.currentUser?.id;
         }   
     
         if(this.groupData?.messages != null){
@@ -102,7 +100,6 @@ export class ChatDetailsComponent implements OnInit {
   }
 
   getGroupMessages(){
-    console.log("this.groupData" , this.groupData)
     this.chatService.getGroupMessages(this.groupData);
 
     this.listOfMessagess = this.chatService.allMessagesList || [];
@@ -141,4 +138,5 @@ export class ChatDetailsComponent implements OnInit {
       }
     )
   }
+
 }

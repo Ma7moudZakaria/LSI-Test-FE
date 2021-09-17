@@ -31,6 +31,7 @@ export class GroupViewComponent implements OnInit {
     private translate: TranslateService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    // this.chatService.allChatGroupsList = [];
     this.chatService.getAllChatGroups();    
     this.listOfGroups = this.chatService.allChatGroupsList;
   }
