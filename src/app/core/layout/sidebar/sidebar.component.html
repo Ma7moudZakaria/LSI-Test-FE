@@ -150,7 +150,7 @@
                 </li>
             </ul>
 
-            <ul *ngIf='!roleService.isAdmin() && (roleService.isStudent() || !roleService.isTeacher())'>
+            <ul *ngIf='!roleService.isAdmin() && (roleService.isStudent() || !roleService.isTeacher()) && roleService.isAccAcc()'>
                 <li class="nav-item " routerLinkActive="active">
                     <a *ngIf='!roleService.isAdmin() && (roleService.isStudent() || !roleService.isTeacher())'
                    [routerLink]="['/dashboard']" routerLinkActive="active" class="nav-link">
