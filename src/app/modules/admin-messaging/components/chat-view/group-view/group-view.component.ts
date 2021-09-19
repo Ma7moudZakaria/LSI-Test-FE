@@ -8,6 +8,9 @@ import { IParticipantChat } from 'src/app/core/interfaces/chat-interfaces/iparti
 import { ChatResponseModel } from 'src/app/core/ng-model/chat-response-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { ChatService } from 'src/app/core/services/chat-services/chat.service';
+import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-group-view',
@@ -17,67 +20,46 @@ import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 export class GroupViewComponent implements OnInit {
   @Output() createGroupOverlayEvent = new EventEmitter<boolean>();
   @Output() groupDetailsEvent = new EventEmitter<IGroupChat>();
+  @Output() groupDetailsForEditEvent = new EventEmitter<IGroupChat>();
+
   listOfGroups: IGroupChat[] = [];
   selectedIndex: number = 0;
-  lastMe = new Array;
-  // participantsList: any[] = [];
-  usersList: any[] = [];
-  Data: { [Id: string]: IMessageChat; } = {};
-  ListOfUsers: any;
   langEnum = LanguageEnum;
   groupFilter: IGroupChat = {};
 
-  constructor(private alertify: AlertifyService,
-    private translate: TranslateService) { }
+  constructor(private alertify: AlertifyService, public chatService:ChatService,
+    private translate: TranslateService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.getAllGroups();
+    // this.chatService.allChatGroupsList = [];
+    this.chatService.getAllChatGroups();    
+    this.listOfGroups = this.chatService.allChatGroupsList;
   }
 
-  getAllGroups() {
-    firebase.database().ref('groups/').orderByChild('messages').on('value', (resp2: any) => {
-      this.listOfGroups = ChatResponseModel.snapshotToArray(resp2);
+  deleteGroup(listOfUsers?: IParticipantChat[], id?: string) {
+    const message = this.translate.currentLang === LanguageEnum.en ? "Are you sure that you want to delete this Group" : "هل متأكد من حذف هذه المجموعة";
+
+    const dialogData = new ConfirmDialogModel(this.translate.currentLang === LanguageEnum.en ? 'Delete Group' : 'حذف المجموعة', message);
+
+    const dialogRef = this.dialog.open(ConfirmModalComponent, {
+      maxWidth: "400px",
+      data: dialogData
     });
-  }
-
-  getAllParticipantByGroupId(id?: string) {
-    firebase.database().ref('users/').orderByChild('messages').on('value', (resp2: any) => {
-      var Data = ChatResponseModel.snapshotToArray(resp2) as { [Id: string]: IParticipantChat; }[];
-      this.usersList = Object.values(Data || []) as IParticipantChat[];
-    });
-  }
-
-  getParticipantsFormFirebase(participants?: any , id?:string) {
-    this.usersList = Object.values(participants || []) as IParticipantChat[];
-    // var Data;
-    // var GetGroupData = this.listOfGroups?.filter(x => x.key == id);
-
-    // console.log("GetGroupData[0].participants : ", GetGroupData[0].participants);
-
-    // for (let item in GetGroupData[0].participants) {
-    //   var x = item;
-    //   this.getAllParticipantByGroupId(item);
-    // }
-
-    this.deleteGroup(this.usersList, id);
-  }
-
-  deleteGroup(listOfUsers: IParticipantChat[], id?: string) {
-    Array.from(listOfUsers).forEach((elmOfParticipant: IParticipantChat) => {
-      var IsExist = elmOfParticipant?.groups?.some(x => x == id || '')
-      if (IsExist) {
-        let index = elmOfParticipant?.groups?.indexOf(id || '');
-        elmOfParticipant.groups?.splice(index || 0, 1);
-
-        const updateGroupToUsersRoom = firebase.database().ref('users/' + elmOfParticipant.key + '/' + 'groups/');
-        updateGroupToUsersRoom.set(elmOfParticipant.groups);
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult == true) {
+        this.chatService.deleteGroupParticipants(listOfUsers || [] , id || '');
+        // this.chatService.deleteGroup(id);
+        this.listOfGroups = this.chatService.allChatGroupsList;
+        // this.getGroupDetails({});
+        this.alertify.success( this.translate.currentLang === LanguageEnum.en ? "Group Deleted Successfully" : 'تم حذف المجموعة بنجاح');  
       }
     });
 
+    this.chatService.getAllChatGroups();    
+  }
 
-    firebase.database().ref('groups/' + id).remove(error => {
-      this.alertify.success("Group Deleted Successfully");
-    });
+  editGroup(event: IGroupChat) {
+    this.groupDetailsForEditEvent.emit(event);
   }
 
   showAdd() {
@@ -85,13 +67,15 @@ export class GroupViewComponent implements OnInit {
   }
 
   getGroupDetails(event: IGroupChat) {
-    console.log("this.listOfGroups", this.listOfGroups);
     this.groupDetailsEvent.emit(event);
   }
 
   filterByText(searchKey: string) {
-    this.groupFilter.group_name = searchKey;
-
-    // this.getParticipants(this.participantFilter);
+    if(searchKey.length > 0){
+      this.listOfGroups = this.listOfGroups.filter(x => x.group_name?.includes(searchKey));
+    }
+    else{
+      this.listOfGroups = this.chatService.allChatGroupsList;
+    }
   }
 }

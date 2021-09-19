@@ -3,6 +3,8 @@ import {IStudentPrograms} from '../../../../core/interfaces/student-program-vaca
 import {StudentProgramVacationRequestsComponent} from './student-program-vacation-requests/student-program-vacation-requests.component';
 import {IStudentProgramVacationRequestModel} from '../../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-request-model';
 import {IAddNewStudentVacationRequest} from '../../../../core/interfaces/student-program-vacation-interfaces/iadd-new-student-vacation-request';
+import { LanguageService } from 'src/app/core/services/language-services/language.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-vacations-requests-view',
@@ -17,9 +19,11 @@ export class VacationsRequestsViewComponent implements OnInit {
   filter: IAddNewStudentVacationRequest = { }
   @ViewChild(StudentProgramVacationRequestsComponent) studentVacationRequests: StudentProgramVacationRequestsComponent | undefined;
 
-  constructor() { }
+  constructor(private languageService: LanguageService ,private translate: TranslateService 
+    ) { }
 
   ngOnInit(): void {
+    this.setCurrentLang();
   }
 
   selectedProgramCallBack(event:IStudentPrograms){
@@ -46,4 +50,16 @@ export class VacationsRequestsViewComponent implements OnInit {
     this.filter = event
 
   }
+
+  setCurrentLang(){
+    this.emitHeaderTitle();
+    this.languageService.currentLanguageEvent.subscribe(res => {
+      this.emitHeaderTitle();
+    });
+  }
+
+  emitHeaderTitle(){
+    this.languageService.headerPageNameEvent.emit(this.translate.instant('SIDENAVBAR.VACATION'));
+  }
+
 }

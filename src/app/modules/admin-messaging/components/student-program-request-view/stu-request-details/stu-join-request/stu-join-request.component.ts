@@ -30,9 +30,10 @@ export class StuJoinRequestComponent implements OnInit {
     this.openStuRejectOverlay = !this.openStuRejectOverlay;
 
   }
-  closeRejectedRequest() {
+  closeRejectedRequest($event:boolean) {
     this.openStuRejectOverlay = !this.openStuRejectOverlay;
-    this.stuRejectReq?.getStudentProgramSubscriptionsFilter();
+    if($event==true)
+   {this.stuRejectReq?.getStudentProgramSubscriptionsFilter();} 
 
   }
 

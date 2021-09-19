@@ -94,6 +94,8 @@ import { TeacherStuProgramForSubscriptionGridComponent } from './components/teac
 import { StudentProgramVacationCardStudentViewComponent } from './components/student-program-vacation-card-student-view/student-program-vacation-card-student-view.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ViewExamAnswersComponent } from './components/view-exam-answers/view-exam-answers.component';
+import { ChatInputSearchListComponent } from './components/chat-input-search-list/chat-input-search-list.component';
 import { AlertDialogComponentComponent } from './components/alert-dialog-component/alert-dialog-component.component';
 
 @NgModule({
@@ -152,6 +154,9 @@ import { AlertDialogComponentComponent } from './components/alert-dialog-compone
         JoinExamComponent,
         TeacherAppointmentRequestsGridComponent,
         TeacherAppointmentRequestCardComponent,
+        ViewExamAnswersComponent,
+        ChatInputSearchListComponent,
+        TeacherAppointmentRequestCardComponent,
         AlertDialogComponentComponent
   ],
   imports: [
@@ -168,7 +173,7 @@ import { AlertDialogComponentComponent } from './components/alert-dialog-compone
     UsersCounterComponent, KhatmeenStudentsComponent, StudentNumbersComponent, StudentsRatingComponent,
     CardStudentScientificProblemComponent, QuestionTemplateComponent, VoiceRecordingComponent, MatGridListModule,
     ScientificProblemsGridComponent, CardAdminScientificProblemComponent, NotAuthComponent, GroupUsersCardComponent,
-    InputSearchListComponent, NgbRatingModule, CardNotifacationsComponent, ProgramDayTaskHearingComponent,
+    InputSearchListComponent,ChatInputSearchListComponent, NgbRatingModule, CardNotifacationsComponent, ProgramDayTaskHearingComponent,
     NgbModule, ProgramDayTaskReadExplanationComponent, ProgramDayTaskRepetitionComponent,
     ProgramDayTaskMemorizeComponent, ProgramDayTaskLinkingComponent, ProgramDayTaskVideoComponent, ProgramDayTaskDailyTestComponent,
     ProgramDayTaskEncouragementLetterComponent, ProgramDayTaskReviewComponent, ProgramDayTaskRecitationComponent,
@@ -185,7 +190,7 @@ import { AlertDialogComponentComponent } from './components/alert-dialog-compone
     AdminJoinRequestForTeacherTabAndStudentTabCardComponent,
     AdminDropOutRequestForTeacherTabAndStudentTabGridComponent,
       AdminVacationRequestForStudentTabGridComponent, AdminVacationRequestForStudentTabCardComponent,
-      JoinExamComponent, TeacherAppointmentRequestsGridComponent,MatDatepickerModule, MatNativeDateModule
+      JoinExamComponent, TeacherAppointmentRequestsGridComponent,MatDatepickerModule, MatNativeDateModule,ViewExamAnswersComponent
 
 
   ]

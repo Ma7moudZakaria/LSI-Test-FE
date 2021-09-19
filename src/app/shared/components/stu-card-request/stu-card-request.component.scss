@@ -56,6 +56,9 @@
       color: #363636;
       :lang(en){text-align: left;}
       :lang(ar){text-align: right;}
+      .cancel-btn:lang(ar){text-align: center;}
+      .cancel-btn:lang(en){text-align: center;}
+
       .name_user{
         color: $user-color;
         font-size: 1rem;

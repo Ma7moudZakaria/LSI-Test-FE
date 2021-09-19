@@ -1,25 +1,30 @@
 
 export interface ITeacherDropOutRequestModel {
-    id?:string;
-    usrId?:string;
-    no?:number;
-    teacherNameAr?:number;
-    teacherNameEn?:number;
-    batchAr?:string;
-    batchEn?:string;
-    progName?:string;
-    arProgBatName?:string;
-    enProgBatName?:string;
-    interviewiHijri?:string;
-    interviewGregorian?:string;
-    avatarLink?:string;
-    checked?:boolean;
-    reasonReject?:string;
+    id?: string;
+    usrId?: string;
+    no?: number;
+    teacherNameAr?: number;
+    teacherNameEn?: number;
+    batchAr?: string;
+    batchEn?: string;
+    progName?: string;
+    arProgBatName?: string;
+    enProgBatName?: string;
+    interviewiHijri?: string;
+    interviewGregorian?: string;
+    avatarLink?: string;
+    checked?: boolean;
+    reasonReject?: string;
     totalRows?: number;
-    requestDate?:string;   
-    arTechStatusName?:string;  
-    enTechStatusName?:string;  
+    requestDate?: string;
+    arTechStatusName?: string;
+    enTechStatusName?: string;
     drpStat?: number;
-    canCancel?:boolean;
-    reason?:string;
+    canCancel?: boolean;
+    reason?: string;
+    arStatName?: string;
+    enStatName?: string;
+    statNum?: number;
+
+
 }

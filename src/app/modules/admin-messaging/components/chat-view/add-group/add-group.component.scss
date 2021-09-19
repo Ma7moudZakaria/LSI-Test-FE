@@ -1,4 +1,5 @@
 @import '../../../../../../assets/scss/buttons';
+@import '../../../../../../../src/styles.scss';
 @import '../../../../../modules/program/components/add-program/program-notifacations/add-edit-notification/add-edit-notification.component.scss';
 
 
@@ -16,7 +17,104 @@
     }
 
 
-
+    .img_user{
+        width: 60px;
+        height: 60px;
+        border: 1px solid #C1C7D0;
+        border-radius: 5px;
+      }
 
 
 }
+
+.dimmed{
+    color: gray;
+    cursor: not-allowed;
+    text-decoration: underline;
+    pointer-events: none;
+    opacity: 0.2;
+  }
+
+
+.label{
+    width: 100%;
+    color: $box-color2;
+    }
+    .alert{
+        margin: 0 !important;
+        padding: 0;
+        font-size: 12px;
+    }
+    .title_add{
+            font-size: 20px;
+            padding-top: 10%;
+            padding-bottom: 15px;
+    }
+    .DataForm{
+        height: 70vh;
+    }
+    .label:lang(ar){
+        text-align: right;
+    }
+    .label:lang(en){
+        text-align: left;
+    }
+    .title_add:lang(ar){
+        text-align: right;
+    }
+    .title_add:lang(en){
+        text-align: left;
+    }
+    .alert:lang(en){
+        text-align: left;
+    }
+    .alert:lang(ar){
+        text-align: right;
+    }
+    .save-btn{
+        background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
+        background: #8E2520 0% 0% no-repeat padding-box;
+        border-radius: 12px;
+        opacity: 1;
+        opacity: 1;
+        width:100%;
+        padding: 0.5rem;
+        height: 2.31rem;
+        border: none;
+        color: #ffffff;
+        display: block;
+        }
+        .cancel-btn{
+            background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
+            background:$icon_input ;
+            border-radius: 12px;
+            opacity: 1;
+            width:100%;
+            padding: 0.5rem;
+            height: 2.31rem;
+            border: none;
+            color: #ffffff;
+            display: block;
+            }
+    
+            .red-border-class{
+                border: 1px solid red;
+            }
+            .mat-list-icon{
+                width: 40px!important;
+                height: 40px !important;
+                border-radius: 10px !important;
+            }
+            .mat-line:lang(ar){
+                text-align: right;
+            }
+            .mat-line:lang(en){
+                text-align: left;
+            }
+            .mat-line:nth-child(n+2) {
+                font-size: 12px !important;
+            }
+            .mat-delete{
+                color: red;
+                cursor: pointer;
+            }

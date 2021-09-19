@@ -5,15 +5,19 @@ export interface IStudentProgramVacationStudentViewModel {
   totalRows?: number;
   vacStartDate?: string;
   vacEndDate?: string;
-  statusReq?:string;
-  statusEnum?:number;
-  isCancel?:boolean;
-  isTerminate?:boolean;
+  statusReq?: string;
+  statusEnum?: number;
+  isCancel?: boolean;
+  isTerminate?: boolean;
   rejReason?: string;
   arNameBatch?: string;
   enNameBatch?: string;
-  arProgBatchName?:string;
-  enProgBatchName?:string;
-  arNameVacationStatus?:string;
-  enNameVacationStatus?:string;
+  arProgBatchName?: string;
+  enProgBatchName?: string;
+  arNameVacationStatus?: string;
+  enNameVacationStatus?: string;
+  avatarLink?: string;
+  no?: number;
+  vacReason?: string
 }
+

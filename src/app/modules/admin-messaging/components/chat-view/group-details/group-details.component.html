@@ -1,10 +1,8 @@
-
-
 <div class="details_day" >
-         <div class="head_groupName  d-flex  align-items-center justify-content-between">
-            <P  class="mx-2" >تفاصيل المجموعة</P>
-            <div>
-            <mat-checkbox  class="example-margin mx-2"   [(ngModel)]="allowed"  class="example-margin ">{{'GENERAL.MANDATORY'| translate}} </mat-checkbox>
+         <div class="head_groupName  d-flex  align-items-center justify-content-between " >
+            <P  class="mx-2">{{'CHAT_GROUP.GROUP_DETAILS'| translate}}</P>
+            <div class="dimmed">
+            <mat-checkbox  class="example-margin mx-2"   [(ngModel)]="allowed"  class="example-margin ">{{'CHAT_GROUP.ALLOW_USERS'| translate}} </mat-checkbox>
 
             </div>
         </div>
@@ -18,11 +16,10 @@
     <!-- <div class="row mx-0 "> -->
     <div class="chat_details w-100">
         <div class="chat_vontainer w-100">
-        <ng-container *ngFor="let participant of listOfUsers; let i = index"  >
+        <ng-container *ngFor="let participant of listOfParticipants; let i = index"  >
             <div class=" cardRecourd mb-2" >
                 <div class="group_name  d-flex pb-0  align-items-center justify-content-between">
-                    <img *ngIf='participant?.avatar_url === null' class="img_user" src="../../../../../assets/images/Profile.svg" >
-                    <img *ngIf='participant?.avatar_url != null' class="img_user" src="{{participant.avatar_url}}" >
+                    <img class="img_user" src="{{participant.avatar_url}}" >
                    <div>
                     <p class="ellipsis mb-0 ">{{ translate.currentLang === langEnum.en ? participant?.name_en : participant?.name_ar }}</p>
                     <!-- <p class="message_date mb-0 px-2"> {{participant.date}}  </p>       -->

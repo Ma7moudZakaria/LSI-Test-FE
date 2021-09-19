@@ -83,6 +83,14 @@
               src="../../../../assets/images/sc-problem/exporticon.svg">
           </a>
        </div>
+
+       <div class="col-3 pl-4 text-right align-self-center"  *ngIf='teacherDropOutRequestStatus.Empty === typeEnum'>
+        <a class=" ml-1 mr-1" >
+            <img  (click)='exportTeacherCSV()' 
+            src="../../../../assets/images/sc-problem/exporticon.svg">
+        </a>
+     </div>
+
   </div>
 
   <mat-grid-list  cols="{{numberPerRow}}" rowHeight="3:3"  *ngIf='userRoleMode.Admin === userMode'>
@@ -94,7 +102,8 @@
          (acceptTeacherDropOutRequest)="acceptTeacherDropOutRequestEvent($event)"
          [typeEnum]='typeEnum'
           (userIdEvent) = "userId($event)"
-                                                  (updateAllItemsChecked)='updateAllItemsChecked()'
+        
+          (updateAllItemsChecked)='updateAllItemsChecked()'
          ></app-teacher-drop-out-request-admin-card>
         </mat-grid-tile>
     </ng-container>

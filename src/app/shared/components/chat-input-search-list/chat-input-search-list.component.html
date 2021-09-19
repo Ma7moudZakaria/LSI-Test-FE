@@ -1,0 +1,23 @@
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text bg-white">
+            <img src="assets/images/search-ired.svg" />
+        </span>
+    </div>
+    <input type="text" class="form-control" [matAutocomplete]="auto" (input)="searchKey()" [(ngModel)]="search"
+        name="search" placeholder="{{'GENERAL.SEARCH' | translate}}"/>
+    <div class="input-group-append">
+        <span (click)="addUser()" class="input-group-text border_radius bg-white">
+            <i class="fas fa-plus plus_input"></i>
+        </span>
+    </div>
+    <!-- {{UsersNotBelongToRole |json}} -->
+    <mat-autocomplete (optionSelected)="getNameResult($event.option.value)" autoActiveFirstOption
+        #auto="matAutocomplete">
+        <mat-option *ngFor="let item of filteredOptions" [value]="item">
+            {{
+            translate.currentLang === langEnum.en ? item.name_en ? item.name_en : item.name_ar : item.name_ar ? item.name_ar : item.name_en
+            }}
+        </mat-option>
+    </mat-autocomplete>
+</div>

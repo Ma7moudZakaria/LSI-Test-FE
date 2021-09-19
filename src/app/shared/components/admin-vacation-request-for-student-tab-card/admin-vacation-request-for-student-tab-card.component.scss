@@ -1,1 +1,7 @@
 @import '../student-program-vacation-card-student-view/student-program-vacation-card-student-view.component.scss';
+.program_reason
+
+{
+    max-height: 10vh;
+    overflow-y: auto;
+}

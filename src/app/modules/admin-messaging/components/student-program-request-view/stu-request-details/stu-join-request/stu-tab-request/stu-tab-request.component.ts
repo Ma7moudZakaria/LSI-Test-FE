@@ -10,6 +10,8 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import {ITeacherStudentViewModel} from '../../../../../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
+import { IStudentExamAnswerResponseModel } from 'src/app/core/interfaces/student-program-subscription-interfaces/istudent-exam-answer-response-model';
+import { IStuViewExamAnswProgSub } from 'src/app/core/interfaces/student-program-subscription-interfaces/istu-view-exam-answ-prog-sub';
 
 @Component({
   selector: 'app-stu-tab-request',
@@ -34,6 +36,9 @@ export class StuTabRequestComponent implements OnInit {
   totalCount = 0;
   sendUserID: ITeacherStudentViewModel | undefined;
   showUserDetailsView:boolean = false;
+  showViewExam:boolean = false;
+  studentExamAnswerResponse:IStuViewExamAnswProgSub | undefined;
+
   constructor(private progSubsService: StudentProgramSubscriptionServicesService,
     public translate: TranslateService,
     private alertify: AlertifyService) {
@@ -56,7 +61,8 @@ export class StuTabRequestComponent implements OnInit {
 
       if (res.isSuccess) {
         this.studProgsSubsItems = res.data;
-        console.log("studProgsSubsItem ", this.studProgsSubsItems)
+        this.showViewExam = false;
+        //console.log("studProgsSubsItem ", this.studProgsSubsItems)
         // this.studProgsSubsItems?.forEach(function (item) {
         //   item.requestDate = item.requestDate ? new Date(item.requestDate).toDateString(): '';
         // });
@@ -111,17 +117,18 @@ export class StuTabRequestComponent implements OnInit {
   }
   rejecteStuRequestMethod(event: IStudentSubscriptionModel) {
     this.itemStuReq.emit(event)
-
   }
 
   ids?: string[] = [];
   acceptStuReq(stuModel: IStudentSubscriptionModel) {
     this.ids = [];
     this.ids?.push(stuModel.id || '');
+  
     this.progSubsService.studentProgramSubscriptionsAcceptance(this.ids || []).subscribe(res => {
       if (res.isSuccess) {
         this.alertify.success(res.message || '');
         this.getStudentProgramSubscriptionsFilter();
+        this.showViewExam=false;
 
       }
       else {
@@ -200,6 +207,39 @@ export class StuTabRequestComponent implements OnInit {
     // this.filter = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
     // this.closeAdvancedSearch.emit(this.filter)
   }
+
+  viewExam(event:IStudentSubscriptionModel){
+    this.showViewExam=true;
+    this.studentExamAnswerResponse={stuProgSub:{},studentExamAnswer:{}}
+   
+      this.studentExamAnswerResponse.stuProgSub=event;
+    this.getStudentExamAnswer(event.id || "")
+  }
+  getStudentExamAnswer(subsId:string) {
+
+    this.progSubsService.getStudentExamAnswer(subsId).subscribe(res => {
+      if (res.isSuccess) {
+        if(this.studentExamAnswerResponse)
+    {
+        this.studentExamAnswerResponse.studentExamAnswer= res.data ;
+        if(this.studentExamAnswerResponse.studentExamAnswer)
+        this.studentExamAnswerResponse.studentExamAnswer.answList = res.data.answ? JSON.parse(res.data.answ)  : [];
+    }
+       
+      }
+      else {
+        this.alertify.error(res.message || '');
+      }
+    },
+      error => {});
+  }
+
+  hideViewExam() {
+    this.showViewExam = false;
+  }
+
+ 
+
 }
 
 

@@ -134,11 +134,13 @@
                 </a>
                   </li>
                   <li class="nav-item " routerLinkActive="active">
-                    <a
-                         [routerLink]="['/home']" routerLinkActive="active" class="nav-link">
+                    <a *ngIf='!roleService.isAdmin() && (!roleService.isStudent() || roleService.isTeacher())' 
+                    [routerLink] = "['/user-chatting']">
                         <img src="../../../../assets/images/sidebar/chat.svg">
                         <span class="container__navigation__title">{{'SIDENAVBAR.CHAT' | translate}}</span>
                     </a>
+
+                   
                 </li>
                 <li class="nav-item teacherProfile" routerLinkActive="active"
                     *ngIf='!roleService.isAdmin() && (!roleService.isStudent() || roleService.isTeacher())'  >
@@ -150,7 +152,7 @@
                 </li>
             </ul>
 
-            <ul *ngIf='!roleService.isAdmin() && (roleService.isStudent() || !roleService.isTeacher())'>
+            <ul *ngIf='!roleService.isAdmin() && (roleService.isStudent() || !roleService.isTeacher()) && roleService.isAccAcc()'>
                 <li class="nav-item " routerLinkActive="active">
                     <a *ngIf='!roleService.isAdmin() && (roleService.isStudent() || !roleService.isTeacher())'
                    [routerLink]="['/dashboard']" routerLinkActive="active" class="nav-link">
@@ -204,7 +206,7 @@
                 </li>
                 <li class="nav-item " routerLinkActive="active">
                     <a  *ngIf='!roleService.isAdmin() && (roleService.isStudent() || !roleService.isTeacher())'
-                         [routerLink]="['/home']" routerLinkActive="active" class="nav-link">
+                         [routerLink]="['/user-chatting']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/chat.svg">
                         <span class="container__navigation__title">{{'SIDENAVBAR.CHAT' | translate}}</span>
                     </a>

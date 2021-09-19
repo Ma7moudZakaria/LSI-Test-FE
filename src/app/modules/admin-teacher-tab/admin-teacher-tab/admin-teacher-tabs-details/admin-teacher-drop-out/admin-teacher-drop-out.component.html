@@ -2,14 +2,32 @@
 <div class="container-fluid tab_page">
   <div class="row fix_margin w-100 " >
     <div class="col-12 px-2 interTab mb-3 pt-3">
-   <app-admin-drop-out-request-for-teacher-tab-and-student-tab-grid 
+   <!-- <app-admin-drop-out-request-for-teacher-tab-and-student-tab-grid 
     [teacherDropOutRequestTeacherViewItems]='teacherDropOutRequestList' 
     [totalCount]='totalCount'
     [userMode]='userMode'
     (teacherDropOutRequestFilterEvent)="teacherDropOutRequestChangePage($event)"
     [teacherDropOutRequestFilterRequestModel]='teacherDropOutRequestFilterRequestModel'
     >
-  </app-admin-drop-out-request-for-teacher-tab-and-student-tab-grid>
+  </app-admin-drop-out-request-for-teacher-tab-and-student-tab-grid> -->
+  <!-- <app-admin-drop-out-request-for-teacher-tab-and-student-tab-grid 
+  [studentDropOutRequestStudentItems]='studentDropOutRequestList' 
+  [totalCount]='totalCount'
+  [userMode]='userMode'
+  (teacherDropOutRequestFilterEvent)="teacherDropOutRequestChangePage($event)"
+  [teacherDropOutRequestFilterRequestModel]='teacherDropOutRequestFilterRequestModel'
+  > -->
+<!-- </app-admin-drop-out-request-for-teacher-tab-and-student-tab-grid> -->
+  <app-teacher-drop-out-request-admin-grid  
+    [teacherDropOutRequestTeacherViewItems]='teacherDropOutRequestList' 
+    [totalCount]='totalCount'
+    [userMode]='userMode'
+    (teacherDropOutRequestFilterEvent)="teacherDropOutRequestChangePage($event)"
+    [teacherDropOutRequestFilterRequestModel]='teacherDropOutRequestFilterRequestModel'
+    [typeEnum]='statusEnum.Empty'
+   >
+</app-teacher-drop-out-request-admin-grid>
+
 </div>
   </div>
 </div>

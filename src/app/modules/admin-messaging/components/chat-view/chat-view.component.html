@@ -2,7 +2,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-4 col-md-3 col-sm-12 pl-0">
-            <app-group-view  (createGroupOverlayEvent)="openCreateGroupPopup($event)" (groupDetailsEvent)="groupDetailsEvent($event)" (groupDetailsEvent)="chatDetailsEvent($event)"></app-group-view>
+            <app-group-view (createGroupOverlayEvent)="openCreateGroupPopup($event)" (groupDetailsForEditEvent)="groupDetailsForEditEvent($event)" (groupDetailsEvent)="groupDetailsEvent($event)" ></app-group-view>
         </div>
         <div class="col-lg-4 col-md-3 col-sm-12 pl-0">
             <app-chat-details></app-chat-details>
@@ -10,14 +10,17 @@
         <div class="col-lg-4 col-md-3 col-sm-12 pl-0">
             <app-group-details></app-group-details>
 
-        </div>
-   
+        </div>  
 
     </div> 
    
-            <div class="overlay" *ngIf="openCreateGroupOverlay">
-                <app-add-group (closeCreateGroupOverlay)="closeCreateGroupOverlay($event)" [createGroupChat]="createGroupChat"></app-add-group>
-            </div>
+    <div class="overlay" *ngIf="openCreateGroupOverlay">
+        <app-add-group (closeCreateGroupOverlay)="closeCreateGroupOverlay($event)" [createGroupChat]="createGroupChat" ></app-add-group>
+    </div>
+
+    <div class="overlay" *ngIf="openEditGroupOverlay">
+        <app-add-group (closeEditGroupOverlay)="closeEditGroupOverlay($event)" [editGroupChat]="editGroupChat"></app-add-group>
+    </div>
      
 </div>
     

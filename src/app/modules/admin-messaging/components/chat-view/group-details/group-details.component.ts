@@ -3,6 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IGroupChat } from 'src/app/core/interfaces/chat-interfaces/igroup-chat';
 import { IParticipantChat } from 'src/app/core/interfaces/chat-interfaces/iparticipant-chat';
+import { ChatService } from 'src/app/core/services/chat-services/chat.service';
 
 @Component({
   selector: 'app-group-details',
@@ -12,68 +13,23 @@ import { IParticipantChat } from 'src/app/core/interfaces/chat-interfaces/iparti
 export class GroupDetailsComponent implements OnInit {
   langEnum=LanguageEnum;
   listOfParticipants:IParticipantChat[] = [];
-  listOfUsers:IParticipantChat[] = [];
-  allowed:boolean = true;
-  participantFilter: IParticipantChat = {};
+  allowed:boolean | undefined;
   groupModel:IGroupChat | undefined;
 
-  constructor(public translate: TranslateService) { }
+  constructor(public translate: TranslateService, public chatService:ChatService) { }
 
   ngOnInit(): void {
-  }
-
-  getGroupDetails(model?:IGroupChat){
-    this.listOfParticipants = [];
-    this.listOfUsers = [];
-
-    this.groupModel = model;
-    
-    this.listOfParticipants.push(model?.participants || {});
-    for(let item in this.listOfParticipants){
-      var Data = this.listOfParticipants[item] as any[];
-      for(let itemTwo in Data){
-        this.listOfUsers.push(Data[itemTwo]);
-      }        
-    }
-
-    this.allowed = model?.allowed || true;
-  }
-
-  getParticipants(model?:IParticipantChat){
-    if( model?.name_ar &&  model?.name_ar?.length > 0 ){
-      this.listOfUsers = this.listOfUsers.filter(x => x.name_ar == model?.name_ar || x.name_en == model?.name_en || x.hoffazId == model?.hoffazId);
-    }
-    
-    if(model?.name_en  && model?.name_en?.length > 0){
-      this.listOfUsers = this.listOfUsers.filter(x => x.name_ar == model?.name_ar || x.name_en == model?.name_en || x.hoffazId == model?.hoffazId);
-    }
-
-    if(model?.name_ar === "" && model?.name_en === "" && model?.name_ar?.length === 0 && model?.name_en?.length === 0){
-      this.listOfParticipants = [];
-      this.listOfUsers = [];
-      this.listOfParticipants.push(this.groupModel?.participants || {});
-
-      console.log("this.listOfParticipants" , this.listOfParticipants);
-
-      for(let item in this.listOfParticipants){
-        var Data = this.listOfParticipants[item] as any[];
-        for(let itemTwo in Data){
-          this.listOfUsers.push(Data[itemTwo]);
-        }        
-      }
-  
-      this.allowed = this.groupModel?.allowed || true;
-    }
+    // this.listOfParticipants = [];
+    // this.listOfParticipants = this.groupModel?.participants;
+    // this.allowed = this.groupModel?.allowed === null ? true : this.groupModel?.allowed;
   }
 
   filterByText(searchKey:string){
-    if(this.translate.currentLang === LanguageEnum.ar){
-      this.participantFilter.name_ar = searchKey;
+    if(searchKey.length > 0){
+      this.listOfParticipants = this.listOfParticipants?.filter(x => x.name_ar?.includes(searchKey) || x.name_en?.includes(searchKey));
     }
     else{
-      this.participantFilter.name_en = searchKey;
+      this.listOfParticipants = this.groupModel?.participants || [];
     }
-    
-    this.getParticipants(this.participantFilter);
   }
 }

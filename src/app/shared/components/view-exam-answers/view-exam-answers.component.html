@@ -1,0 +1,66 @@
+<!-- <div  *ngIf="studentExamAnswer && studentExamAnswer.studentExamAnswer">
+    <p>{{studentExamAnswer.studentExamAnswer.answ}}</p>
+</div> -->
+
+
+<div class="tab_page user">
+<div  *ngIf="studentExamAnswer && studentExamAnswer.stuProgSub">
+    <div class=" pt-3">
+      <div class="info_basic_info">
+        <div class="d-flex justify-content-between" >
+          <div class="d-flex align-items-center justify-content-start">
+            <img  *ngIf="! studentProfileDetails?.proPic" src="../../../../assets/images/Profile.svg" class="user__image">
+            <img *ngIf=" studentProfileDetails?.proPic" src="{{ studentProfileDetails?.proPic}}" class="user__image">
+            <div class="mr-3 ml-3">
+              <h3 class="user__name">
+                {{
+                    translate.currentLang === langEnum.ar ?
+      
+                      studentProfileDetails?.fnameAr + " " + studentProfileDetails?.mnameAr + " " + studentProfileDetails?.fanameAr
+      
+                      :studentProfileDetails?.fnameEn + " " + studentProfileDetails?.mnameEn + " " + studentProfileDetails?.faNameEn
+                    }}
+              </h3>
+              <ngb-rating [(rate)]="starsSelected" [max]="5" [readonly]="true">
+                <ng-template let-fill="fill" let-index="index">
+                  <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                </ng-template>
+              </ngb-rating>
+              <h4 class="user__date">{{studentProfileDetails.birthdate | date: 'dd/MM/yyyy'}}</h4>
+              <div class="row mt-3">
+                <div class="col-12">
+                  <label class="title">
+                    {{'UPDATE_USER_PG.PROGRAMS' | translate}}
+                    <span>  &nbsp;  : </span>
+                    <span>  &nbsp; </span>
+                  </label>
+                  <label>  </label>
+                  <label class="title_data">
+                    {{studentExamAnswer.stuProgSub.progName}}
+                  </label>
+                </div>
+                <div class="col-12">
+               
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h6  class="user__back" (click)="hideViewExam()">
+              {{'UPDATE_USER_PG.BACK' | translate}}
+              <i class="fas fa-arrow-left " [ngClass]="translate.currentLang === langEnum.en ?'fa-flip-horizontal': ''"></i></h6>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="col-md-12  user__height">
+     
+            <div  *ngIf="studentExamAnswer && studentExamAnswer.studentExamAnswer">
+                <div  *ngFor = 'let question of studentExamAnswer.studentExamAnswer?.answList' >
+                    <app-question-template [questionTemplate] = 'question' [viewMode] = 'true' [questionViewMood]='questionViewMoodEnum'></app-question-template>
+                    </div>
+            </div>
+       
+  </div>

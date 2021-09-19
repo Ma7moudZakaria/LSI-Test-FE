@@ -10,21 +10,37 @@
   </div>
 
   <div class="card_body program">
-    <div class="d-flex align-items-center program__header justify-content-between">
-      <!-- <p class="program__name mb-2">{{studentProgramVacationStudentViewModel.progName}}</p> -->
-      <p class="program__name mb-2">{{translate.currentLang === langEnum.en ? studentProgramVacationStudentViewModel.enProgBatchName: studentProgramVacationStudentViewModel.arProgBatchName}}</p>
-      <div class="d-flex align-items-center justify-content-between">
-<!--        <p class="program__num mb-2  mr-3 ml-3" >{{translate.currentLang === langEnum.ar ?studentProgramVacationStudentViewModel.enProgBatchName : studentProgramVacationStudentViewModel.arProgBatchName }}</p>-->
-        <div class="status mb-2" [ngClass]="{ 'accept' : studentProgramVacationStudentViewModel.statusEnum == studentProgramVacationStatus.Accept ,
-        'pending' : studentProgramVacationStudentViewModel.statusEnum == studentProgramVacationStatus.Pending , 'rejected' : studentProgramVacationStudentViewModel.statusEnum == studentProgramVacationStatus.Rejected
-        }">
+    <div class="d-flex align-items-center justify-content-between program__header" >
 
-        </div>
-
+      <p class="program__num  mb-0"></p>
+      <div class="d-flex align-items-center justify-content-between " >
+        <p class="program__num mb-0  mr-3 ml-3">
+          {{ translate.currentLang == langEnum.en ? studentProgramVacationStudentViewModel?.enNameVacationStatus : studentProgramVacationStudentViewModel?.arNameVacationStatus}}</p>
+        <span class="status" [ngClass]="{ 'accept' : studentProgramVacationStudentViewModel.statusEnum == studentProgramVacationStatus.Accept ,
+                                  'pending' : studentProgramVacationStudentViewModel.statusEnum == studentProgramVacationStatus.Pending ,
+                                  'rejected' : studentProgramVacationStudentViewModel.statusEnum == studentProgramVacationStatus.Rejected,
+                                  'cancel' : studentProgramVacationStudentViewModel.statusEnum == studentProgramVacationStatus.Cancelled
+                                     }"
+        ></span>
       </div>
     </div>
+    
+   
     <div class="mx-1">
-      <p class="program__desc"></p>
+      <div class="d-flex justify-content-between mb-3">
+        <div class="d-flex  mb-0">
+          <img *ngIf='!studentProgramVacationStudentViewModel.avatarLink'  class="img_user" src="../../../../assets/images/student/user-profile.svg">
+          <img *ngIf='studentProgramVacationStudentViewModel.avatarLink'   class="img_user" src="{{studentProgramVacationStudentViewModel.avatarLink}}" >
+        <div class="mx-1 container-width">
+          <p class="number_request  mb-0">{{ studentProgramVacationStudentViewModel?.no}}</p>
+          <p class="program__name  bold ellipsis  p-0 mb-0"
+          title="{{ translate.currentLang == langEnum.en ? studentProgramVacationStudentViewModel?.enProgBatchName : studentProgramVacationStudentViewModel?.arProgBatchName}}"
+          > {{ translate.currentLang == langEnum.en ? studentProgramVacationStudentViewModel?.enProgBatchName : studentProgramVacationStudentViewModel?.arProgBatchName}}</p> 
+        </div>
+        </div>
+      </div>
+
+      
 
       <div class="row align-items-center justify-content-between">
         <div class="col-6">
@@ -40,9 +56,35 @@
           </span>
         </div>
       </div>
-      <p class="program_user bold mb-0" ></p>
+
+
+
+      <div class="program_reason">
+        <p class="  mb-0 pb-2"  > 
+          <span class="program_user bold mb-0 ">
+            {{'STUDENT_SUBSCRIBERS.REQUEST_REASON' | translate}}  :
+         </span>
+         <span class=" bold mb-0 " *ngIf="!studentProgramVacationStudentViewModel.vacReason ">{{'STUDENT_SUBSCRIBERS.NO_DATA' | translate}} </span>
+         <span class=" bold mb-0 " *ngIf="studentProgramVacationStudentViewModel.vacReason ">{{ studentProgramVacationStudentViewModel?.vacReason }}</span>
+          
+        </p>
+      
+        <p class="  mb-0 pb-2"  > 
+          <span class=" program_user bold mx-1"> {{'GENERAL_DROP_OUT_REQUEST.REJECT_REASON' | translate}} : </span> 
+       
+
+            <span class=" mb-0" *ngIf="!studentProgramVacationStudentViewModel.rejReason" >{{'STUDENT_SUBSCRIBERS.NO_DATA' | translate}}</span>
+            <span class=" mb-0 "  *ngIf="studentProgramVacationStudentViewModel.rejReason">{{ studentProgramVacationStudentViewModel?.rejReason }}</span>
+
+ 
+        </p>
+      
+      </div>
+
+      
+      <!-- <p class="program_user bold mb-0" ></p>
       <p class="program__admin" *ngIf="studentProgramVacationStudentViewModel.statusEnum==studentProgramVacationStatus.Rejected"> {{'STUDENT_VACATION.ADMIN_ANSWER' | translate}}</p>
-      <p class="program__answer "  *ngIf="studentProgramVacationStudentViewModel.statusEnum==studentProgramVacationStatus.Rejected">{{studentProgramVacationStudentViewModel.rejReason}}</p>
+      <p class="program__answer "  *ngIf="studentProgramVacationStudentViewModel.statusEnum==studentProgramVacationStatus.Rejected">{{studentProgramVacationStudentViewModel.rejReason}}</p> -->
 
     </div>
   </div>
