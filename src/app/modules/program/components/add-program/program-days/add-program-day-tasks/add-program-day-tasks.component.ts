@@ -26,14 +26,14 @@ export class AddProgramDayTasksComponent implements OnInit {
 
   @Input() programDutyDay :IProgramDutyDays | undefined;
   @Input() selectedProgDutyDays:IProgramDutyDays[] = [];
-  
+  @Input() haveMemorize?:boolean=false;
   resMessage: BaseMessageModel = {};
   selectedProgramDayTasksList = Array<ICreateProgramDayTasksModel>();
   
   ccc:boolean = false;  
 
   @Output() closeDayTasks = new EventEmitter<boolean>();
-  
+
   constructor(
     public languageService: LanguageService,
     private programDayTasksService: ProgramDayTasksService,

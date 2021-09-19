@@ -37,7 +37,7 @@ export class ProgramDayTasksComponent implements OnInit {
   programDayTasksUpdateOrderByModel: IProgramDayTasksUpdateOrderByModel = {};
   listOrder?: number[];
   defaultSelectedDay = 0;
-
+haveMemorize?:boolean=false;
   constructor(
     public languageService: LanguageService,
     private programDayTasksService: ProgramDayTasksService,
@@ -83,8 +83,9 @@ export class ProgramDayTasksComponent implements OnInit {
   }
 
   newDayTasks() {
-    this.openAddDayTasks.emit(true);
-
+    if(this.programDayTasksLists.length>0)
+   {this.haveMemorize = this.programDayTasksLists.every(x=>x.huffazTask==3);} 
+    this.openAddDayTasks.emit(this.haveMemorize);
   }
 
   setProgrmeDayTask(item: IProgramDayTasksModel) {
