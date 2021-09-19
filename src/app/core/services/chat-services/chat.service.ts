@@ -13,6 +13,8 @@ export class ChatService {
   allParticipantsList : IParticipantChat[] = [];
   allMessagesList : IMessageChat[] = [];
   allParticipantsOfGroupList : IParticipantChat[] = [];
+  participantGroupsIdList  : string[] = [];
+
   constructor() { }
 
   async getAllChatGroups() {
@@ -20,24 +22,27 @@ export class ChatService {
       var sdfsfsff = res;
       res.forEach((element : any) => {
         let item = element.val();
-        // var DataOfMessages = Object.values(item.messages || []) as IMessageChat[]; 
-        // this.allChatGroupsList = DataOfMessages.sort((a, b) => {
-        //   return <any>new Date(b.date) - <any>new Date(a.date);
-        // });
-        this.allChatGroupsList?.push({
-          key: item.key,
-          allowed: item.allowed,
-          group_name: item.group_name,
-          last_date: item.last_date,
-          last_message: item.last_message,
-          messages: Object.values(item.messages || []),
-          participants: Object.values(item.participants || []),
-        })  
+        
+        let IsExist = this.allChatGroupsList.some(x => x.key == item.key);
+        if(!IsExist){
+          this.allChatGroupsList?.push({
+            key: item.key,
+            allowed: item.allowed,
+            group_name: item.group_name,
+            last_date: item.last_date,
+            last_message: item.last_message,
+            messages: Object.values(item.messages || []),
+            participants: Object.values(item.participants || []),
+          }) ;
+          this.allChatGroupsList = this.allChatGroupsList.sort((a, b) => {
+            return <any>new Date(a.last_date) - <any>new Date(b.last_date);
+          });
+        }
+
+        
       });      
 
-      this.allChatGroupsList = this.allChatGroupsList.sort((a, b) => {
-        return <any>new Date(a.last_date) - <any>new Date(b.last_date);
-      });
+      
     });    
   }
   
@@ -59,6 +64,89 @@ export class ChatService {
         })  
       });
     });
+  }
+
+  async getAllGroupsByParticipantId(participantId:string) {    
+    this.allChatGroupsList = [];
+    firebase.database().ref('users/' + participantId + "/").on('value', (res: any) => {
+      let item = res.val();
+      let listOfGroupsId = Object.values(item.groups || []) 
+      listOfGroupsId.forEach((element : any) => {
+        this.participantGroupsIdList?.push(element);
+        // this.getAllParticipantGroups(element);
+        firebase.database().ref('groups/' + element).on('value', (res: any) => {
+          let item = res.val();
+          let IsExist = this.allChatGroupsList.some(x => x.key == item.key);
+          if(!IsExist){
+            this.allChatGroupsList?.push({
+              key: item.key,
+              allowed: item.allowed,
+              group_name: item.group_name,
+              last_date: item.last_date,
+              last_message: item.last_message,
+              messages: Object.values(item.messages || []),
+              participants: Object.values(item.participants || []),
+            }) ;
+      
+            this.allChatGroupsList = this.allChatGroupsList.sort((a, b) => {
+              return <any>new Date(a.last_date) - <any>new Date(b.last_date);
+            });
+          }
+          
+        }); 
+      });
+
+      // this.getAllParticipantGroups(this.participantGroupsIdList);
+    });
+
+    
+  }
+
+  async getAllParticipantGroups(groupsId:string) {
+    
+    firebase.database().ref('groups/' + groupsId).on('value', (res: any) => {
+      let item = res.val();
+      this.allChatGroupsList?.push({
+        key: item.key,
+        allowed: item.allowed,
+        group_name: item.group_name,
+        last_date: item.last_date,
+        last_message: item.last_message,
+        messages: Object.values(item.messages || []),
+        participants: Object.values(item.participants || []),
+      }) ;
+
+      this.allChatGroupsList = this.allChatGroupsList.sort((a, b) => {
+        return <any>new Date(a.last_date) - <any>new Date(b.last_date);
+      });
+    }); 
+
+    // if(groupsId.length > 0){
+    //   Array.from(groupsId).forEach((id: string) => {
+    //     var IsExist = this.allChatGroupsList.some(x => x.key === id);
+    //     if(!IsExist){
+    //       firebase.database().ref('groups/' + id).on('value', (res: any) => {
+    //         let item = res.val();
+    //         this.allChatGroupsList?.push({
+    //           key: item.key,
+    //           allowed: item.allowed,
+    //           group_name: item.group_name,
+    //           last_date: item.last_date,
+    //           last_message: item.last_message,
+    //           messages: Object.values(item.messages || []),
+    //           participants: Object.values(item.participants || []),
+    //         }) ;
+      
+    //         this.allChatGroupsList = this.allChatGroupsList.sort((a, b) => {
+    //           return <any>new Date(a.last_date) - <any>new Date(b.last_date);
+    //         });
+    //       }); 
+    //     }       
+        
+    //   });
+    // }
+    
+    
   }
 
   async deleteGroup(id?:string) {
