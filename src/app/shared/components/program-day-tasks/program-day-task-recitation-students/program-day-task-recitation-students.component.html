@@ -73,4 +73,29 @@
 
 <div *ngIf="dutyDaysTaskViewMood===programDutyDaysTaskViewMoodEnum.student">
   
+    <div class="row">
+        <div class="col-6">
+          <app-search-input (searchTerm)="filterByNameSearchKey($event)"></app-search-input>
+        </div>
+    </div>
+       <!-- <app-get-all-available-teachers-grid 
+        [availableTeachersList]='availableTeachersList'
+        [totalCount]='totalCount'
+        [numberPerRow]='numberItemsPerRow'
+        [filterAvailableTeacher]='filterAvailableTeacher
+        '
+        (availableTeachersFilterEvent) = "availableTeachersChangePage($event)">
+       </app-get-all-available-teachers-grid> -->
+
+    
+       <app-get-all-available-student-grid
+       [availableStudentResponseList]='availableStudentResponseList'
+       [totalCount]='totalCount'
+       [numberPerRow]='numberItemsPerRow'
+       [filterAvailableStudent]='filterAvailableStudent'
+       (availableStudentChangePage) = "availableStudentChangePage($event)"
+       
+       >
+
+       </app-get-all-available-student-grid>
 </div>

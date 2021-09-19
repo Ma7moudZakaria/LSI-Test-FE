@@ -96,6 +96,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { GetAllAvailableTeachersGridComponent } from './components/get-all-available-teachers-grid/get-all-available-teachers-grid.component';
 import { GetAllAvailableTeachersCardComponent } from './components/get-all-available-teachers-card/get-all-available-teachers-card.component';
+import { GetAllAvailableStudentGridComponent } from './components/get-all-available-student-grid/get-all-available-student-grid.component';
+import { GetAllAvailableStudentCardComponent } from './components/get-all-available-student-card/get-all-available-student-card.component';
 import { ViewExamAnswersComponent } from './components/view-exam-answers/view-exam-answers.component';
 
 @NgModule({
@@ -155,7 +157,9 @@ import { ViewExamAnswersComponent } from './components/view-exam-answers/view-ex
     TeacherAppointmentRequestsGridComponent,
     TeacherAppointmentRequestCardComponent,
     GetAllAvailableTeachersGridComponent,
-        GetAllAvailableTeachersCardComponent,
+    GetAllAvailableTeachersCardComponent,
+    GetAllAvailableStudentGridComponent,
+        GetAllAvailableStudentCardComponent,
         ViewExamAnswersComponent
   ],
   imports: [
@@ -191,7 +195,10 @@ import { ViewExamAnswersComponent } from './components/view-exam-answers/view-ex
     AdminVacationRequestForStudentTabGridComponent, AdminVacationRequestForStudentTabCardComponent,
     JoinExamComponent, TeacherAppointmentRequestsGridComponent, MatDatepickerModule, MatNativeDateModule,
     GetAllAvailableTeachersGridComponent,
-      GetAllAvailableTeachersCardComponent, ViewExamAnswersComponent
+    GetAllAvailableTeachersCardComponent,
+    GetAllAvailableStudentGridComponent,
+      GetAllAvailableStudentCardComponent,
+      ViewExamAnswersComponent
 
 
   ]
