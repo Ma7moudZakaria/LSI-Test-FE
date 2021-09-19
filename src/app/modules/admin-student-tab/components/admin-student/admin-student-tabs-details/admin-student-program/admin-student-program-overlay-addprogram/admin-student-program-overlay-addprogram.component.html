@@ -10,12 +10,12 @@
 
       <div class="form-group">
         <label class="header_input float-right bold">{{ 'PROGRAM_BASIC_INFO.PROG_NAME' | translate }}  </label>
-        <select class="form-control "  formControlName="program" >
+        <select class="form-control prog"  formControlName="program" >
             <ng-container *ngFor="let item of sharedPrograms" >
             <option [value]="item.batId" >{{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}</option>
-
+            
             </ng-container>
-           
+            
           </select>
           <span class="mat-expansion-indicator ng-tns-c164-1 ng-trigger ng-trigger-indicatorRotate ng-star-inserted" style="transform: rotate(0deg);"></span>
 
