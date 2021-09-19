@@ -22,5 +22,5 @@ export interface IProgramBasicInfoUpdateModel {
     progTypes?:IProgramType[];
     progName?: string;
     progCountDtyDay?: number;
-
+    dutyDayTypeId?: string;
 }

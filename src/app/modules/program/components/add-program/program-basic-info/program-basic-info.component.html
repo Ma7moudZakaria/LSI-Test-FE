@@ -233,7 +233,7 @@
           <mat-radio-group aria-label="Select an option"  class="example-radio-group"
           formControlName="dutiesDayType" (change)='dutyDaysChange($event)'>
             <ng-container *ngFor="let item of collectionOfLookup.DUTY_TYPES">
-              <mat-radio-button value="{{item.id}}" class="example-radio-button ml-2 mr-2"
+              <mat-radio-button (click)="getDutyDayType(item.id)" value="{{item.id}}" class="example-radio-button ml-2 mr-2"
               >{{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}</mat-radio-button>
             </ng-container>
             </mat-radio-group>

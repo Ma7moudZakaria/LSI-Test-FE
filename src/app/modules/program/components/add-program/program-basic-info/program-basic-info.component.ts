@@ -53,6 +53,7 @@ export class ProgramBasicInfoComponent implements OnInit {
   recitTo:string = '';
   resMessage: BaseMessageModel = {};
   rewayatsMessage: BaseMessageModel = {};
+  dutyDayTypeId: string | undefined= ' ';
 
   constructor(private fb: FormBuilder,
     public translate: TranslateService,
@@ -117,7 +118,6 @@ export class ProgramBasicInfoComponent implements OnInit {
 
         //set default value for duty days lookups
         this.f.dutiesDayType.setValue(this.collectionOfLookup?.DUTY_TYPES ? this.collectionOfLookup?.DUTY_TYPES[0]?.id:'');
-
         if (this.progBasicInfoDetails) {
           this.PopulateForm();
         }
@@ -181,7 +181,7 @@ export class ProgramBasicInfoComponent implements OnInit {
     this.f.dutiesDayType.setValue(this.progBasicInfoDetails?.prgDutiDayType);
     this.dutyDaysChange({value:this.progBasicInfoDetails?.prgDutiDayType});
     this.f.dayCount.setValue(this.progBasicInfoDetails?.prgNoDutyDays);
-
+    this.dutyDayTypeId =  this.progBasicInfoDetails?.prgDutiDayType;
     this.f.examPass.setValue(this.progBasicInfoDetails?.prgIsPassExaRequ);
     this.f.rectMand.setValue(this.progBasicInfoDetails?.prgIsRecitTimeMand);
     this.f.isAlsard.setValue(this.progBasicInfoDetails?.prgIsSard);
@@ -241,7 +241,8 @@ export class ProgramBasicInfoComponent implements OnInit {
           progDtyDays:this.progWeeklyDayList,
           progTypes: this.programTypesList,
           progName: this.baseInfoForm.value.progName,
-          progCountDtyDay: this.baseInfoForm.value.dayCount
+          progCountDtyDay: this.baseInfoForm.value.dayCount,
+          dutyDayTypeId : this.dutyDayTypeId
         }
         // send edit model to api
         this.editBasicInfoProgrm()
@@ -416,5 +417,9 @@ export class ProgramBasicInfoComponent implements OnInit {
       if (ind > -1) {
         this.progRecitationTimes?.splice(ind, 1);
       }
+  }
+
+  getDutyDayType(id?: string) {
+    this.dutyDayTypeId = id;
   }
 }
