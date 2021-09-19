@@ -15,7 +15,10 @@ export class ChatViewComponent implements OnInit {
   @ViewChild(ChatDetailsComponent) chatDetailsComponent: ChatDetailsComponent | undefined;
 
   openCreateGroupOverlay: boolean = false;
+  openEditGroupOverlay: boolean = false;
+  
   createGroupChat = {} as IGroupChat;
+  editGroupChat = {} as IGroupChat;
 
   constructor() { }
 
@@ -24,19 +27,41 @@ export class ChatViewComponent implements OnInit {
 
   closeCreateGroupOverlay(event: IGroupChat) {
     this.openCreateGroupOverlay = false;
-    this.createGroupChat = event
-    this.groupViewComponent?.getAllGroups();
+    this.createGroupChat = event;
+    this.groupViewComponent?.getGroupDetails(event);
+  }
+
+  closeEditGroupOverlay(event: IGroupChat) {
+    this.openEditGroupOverlay = false;
+    this.editGroupChat = event;
+    this.groupViewComponent?.getGroupDetails(event);
   }
 
   openCreateGroupPopup(event: boolean) {
     this.openCreateGroupOverlay = true;
   }  
 
-  groupDetailsEvent(event: IGroupChat) {
-    this.groupDetailsComponent?.getGroupDetails(event);
+  // openEditGroupPopup(model: IGroupChat) {
+  //   this.openEditGroupOverlay = true;
+  //   this.editGroupChat = model;
+  // }  
+
+  groupDetailsForEditEvent(event: IGroupChat) {
+    console.log("editGroupChat" , this.editGroupChat);
+    this.editGroupChat = event;
+    this.openEditGroupOverlay = true;
   }
 
-  chatDetailsEvent(event: IGroupChat) {
-    this.chatDetailsComponent?.getGroupMessages(event);
+  groupDetailsEvent(event: IGroupChat) {
+    if (this.groupDetailsComponent){
+      this.groupDetailsComponent.groupModel = event;
+      this.groupDetailsComponent.allowed = event.allowed;
+      this.groupDetailsComponent.listOfParticipants = event.participants || [];
+    }
+
+    if (this.chatDetailsComponent){
+      this.chatDetailsComponent.groupData = event;
+      this.chatDetailsComponent.getGroupMessages();
+    }
   }
 }

@@ -95,6 +95,7 @@ import { StudentProgramVacationCardStudentViewComponent } from './components/stu
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ViewExamAnswersComponent } from './components/view-exam-answers/view-exam-answers.component';
+import { ChatInputSearchListComponent } from './components/chat-input-search-list/chat-input-search-list.component';
 
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
@@ -152,7 +153,8 @@ import { ViewExamAnswersComponent } from './components/view-exam-answers/view-ex
         JoinExamComponent,
         TeacherAppointmentRequestsGridComponent,
         TeacherAppointmentRequestCardComponent,
-        ViewExamAnswersComponent
+        ViewExamAnswersComponent,
+        ChatInputSearchListComponent
   ],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
@@ -168,7 +170,7 @@ import { ViewExamAnswersComponent } from './components/view-exam-answers/view-ex
     UsersCounterComponent, KhatmeenStudentsComponent, StudentNumbersComponent, StudentsRatingComponent,
     CardStudentScientificProblemComponent, QuestionTemplateComponent, VoiceRecordingComponent, MatGridListModule,
     ScientificProblemsGridComponent, CardAdminScientificProblemComponent, NotAuthComponent, GroupUsersCardComponent,
-    InputSearchListComponent, NgbRatingModule, CardNotifacationsComponent, ProgramDayTaskHearingComponent,
+    InputSearchListComponent,ChatInputSearchListComponent, NgbRatingModule, CardNotifacationsComponent, ProgramDayTaskHearingComponent,
     NgbModule, ProgramDayTaskReadExplanationComponent, ProgramDayTaskRepetitionComponent,
     ProgramDayTaskMemorizeComponent, ProgramDayTaskLinkingComponent, ProgramDayTaskVideoComponent, ProgramDayTaskDailyTestComponent,
     ProgramDayTaskEncouragementLetterComponent, ProgramDayTaskReviewComponent, ProgramDayTaskRecitationComponent,

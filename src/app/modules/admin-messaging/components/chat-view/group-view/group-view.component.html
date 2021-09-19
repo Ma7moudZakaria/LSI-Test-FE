@@ -2,10 +2,10 @@
 
 <div class="list-group teacher-list-request">
 
-    <p class="mb-0 head_groupName"> جهات الاتصال </p>
+    <p class="mb-0 head_groupName"> {{ "CHAT_GROUP.GROUPS" | translate }} </p>
 
     <a (click)="showAdd()"  class="teacher-list-request__addGroup mb-2">
-        {{ "Role_Management.ADD_GROUP" | translate }} <i class="fas fa-plus mx-2"></i>
+        {{ "CHAT_GROUP.ADD_NEW_GROUP" | translate }}  <i class="fas fa-plus mx-2"></i>
     </a>
       <app-search-input (searchTerm)=filterByText($event) ></app-search-input>
       <!-- <app-search-input (searchTerm)="filterByNameSearchKey($event)"></app-search-input> -->
@@ -21,9 +21,12 @@
                 <div  class="d-flex justify-content-between" >  
                     <p class=" ellipsis p-0 last_message" title="{{ groupOfItem.last_message }} "> {{ groupOfItem.last_message }}   </p>      
                     
-                    <span  class="trash_icon"
-                    (click)="getParticipantsFormFirebase(groupOfItem.participants , groupOfItem.key)">
+                    <span  class="trash_icon" (click)="deleteGroup(groupOfItem.participants , groupOfItem.key)">
                         <i class="far fa-trash-alt"></i>
+                    </span> 
+
+                    <span  class="trash_icon" (click)="editGroup(groupOfItem)">
+                        <i class="fas fa-edit"></i>
                     </span> 
                 </div>
             </div>
