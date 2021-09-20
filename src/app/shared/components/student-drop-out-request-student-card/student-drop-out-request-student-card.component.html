@@ -63,15 +63,10 @@
 
      
      
-   
+    
     </div>
-    <!-- [ngClass]="{
-      'dimmed': studentDropOutRequestFilterRequestStudentModel?.canCancel === false }" -->
-      <!-- {{typeEnum}} -->
-     
-    <ng-container 
-    *ngIf="typeDropOutRequestEnum.Pending &&
-     studentDropOutRequestFilterRequestStudentModel?.canCancel " >
+  
+    <ng-container *ngIf="typeEnum === StudentDropOutRequestStatus.Pending" >
     <div  [ngClass]="{
       'dimmed': studentDropOutRequestFilterRequestStudentModel?.canCancel === false }" >
         <button class="program__btn cancel-btn"  (click)="cancelRequest()">{{'TEACHER_DROP_OUT.CANCEL' | translate}}</button>

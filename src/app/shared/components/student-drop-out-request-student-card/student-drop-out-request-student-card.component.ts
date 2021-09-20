@@ -19,7 +19,7 @@ export class StudentDropOutRequestStudentCardComponent implements OnInit {
   @Input() studentDropOutRequestFilterRequestStudentModel: IStudentDropOutRequestsFilterStudentViewResponseModel = { totalRows: 0 };
   @Input() typeEnum: StudentDropOutRequestStatusEnum = StudentDropOutRequestStatusEnum.Pending;
   @Input() adminView: boolean = false;
-  typeDropOutRequestEnum = StudentDropOutRequestStatusEnum;
+  // typeDropOutRequestEnum = StudentDropOutRequestStatusEnum;
   StudentDropOutRequestIds: string[] | undefined
   langEnum = LanguageEnum;
   requestDate: string | undefined;

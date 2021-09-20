@@ -43,7 +43,7 @@ export class StudentDropOutGridComponent implements OnInit {
 
   @Input() userMode: DropOutRoleEnum | undefined;
   userRoleMode = DropOutRoleEnum;
-
+  statusEnum = StudentDropOutRequestStatusEnum;
 
 
   studentTabTypeSelected = StudentDropOutRequestStatusEnum;
