@@ -41,7 +41,6 @@
       </div>
 
       
-
       <div class="row align-items-center justify-content-between">
         <div class="col-6">
           <span>{{'STUDENT_VACATION.FROM' | translate}}</span>
@@ -88,8 +87,8 @@
 
     </div>
   </div>
-
-  <ng-container >
+<!-- {{typeEnum === statusEnum.Empty}} -->
+  <ng-container *ngIf="typeEnum === statusEnum.Pending" >
     <div class="body_footer">
       <button (click)="cancelStudentReq()" [disabled]="!studentProgramVacationStudentViewModel.isCancel" [ngClass]="{ 'negative' : !studentProgramVacationStudentViewModel.isCancel }"
               class="btn cancel-btn"> {{'STUDENT_VACATION.CANCEL' | translate}}  </button>

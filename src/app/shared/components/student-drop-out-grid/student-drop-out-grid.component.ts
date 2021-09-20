@@ -40,10 +40,10 @@ export class StudentDropOutGridComponent implements OnInit {
   @Input() totalCount: number = 0;
   @Input() typeEnum: StudentDropOutRequestStatusEnum = StudentDropOutRequestStatusEnum.Pending;
   @Input() typeDropOutRequestEnum: StudentDropOutRequestStatusEnum = StudentDropOutRequestStatusEnum.Pending;
-
+  statusEnum = StudentDropOutRequestStatusEnum;
   @Input() userMode: DropOutRoleEnum | undefined;
   userRoleMode = DropOutRoleEnum;
-  statusEnum = StudentDropOutRequestStatusEnum;
+
 
 
   studentTabTypeSelected = StudentDropOutRequestStatusEnum;

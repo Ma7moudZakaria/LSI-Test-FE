@@ -14,6 +14,8 @@ import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { ITeacherStudentViewModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
+import { StudentProgramVacationStatusEnum } from 'src/app/core/enums/StudentProgramVacationStatus/student-program-vacation-status.enum';
+import { DropOutRoleEnum } from 'src/app/core/enums/drop-out-request-enums/drop-out-status.enum';
 @Component({
   selector: 'app-admin-student-vacation-request',
   templateUrl: './admin-student-vacation-request.component.html',
@@ -28,7 +30,9 @@ export class AdminStudentVacationRequestComponent implements OnInit {
   currentUser: IUser | undefined;
   studentProgramVacationFilterRequestModel: IStudentProgramVacationRequestModel = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
   @Input() programModel: IStudentPrograms | undefined;
-
+  typeEnum: StudentProgramVacationStatusEnum = StudentProgramVacationStatusEnum.Empty;
+  statusEnum = StudentProgramVacationStatusEnum;
+  userMode: DropOutRoleEnum = DropOutRoleEnum.Student;
   // @Output() openStudentProgramVacationAddPopup = new EventEmitter<IAddNewStudentVacationRequest>();
 
   @Input() filter: IAddNewStudentVacationRequest = {}
