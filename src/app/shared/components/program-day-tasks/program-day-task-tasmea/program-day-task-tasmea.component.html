@@ -31,6 +31,8 @@
                        </div>
                    </div>
                </div>
+
+    
            </div>
         
            <div class="d-flex">
@@ -40,6 +42,14 @@
             </div>
            </div>
         
+
+           <div class="row mx-0" >
+            <div class="col-4 cardRecourd"  *ngFor="let item of tasmeaDetailsModel?.bookAttatchments;let i=index" >
+                <img src="assets/images/days/book.svg">
+                <p class="ellipsis mb-0 "  matTooltip="{{item.fileName}}">{{item.fileName}}</p>
+            </div>
+</div>
+
            </ng-container>
         
         

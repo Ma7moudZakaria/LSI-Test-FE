@@ -3,16 +3,21 @@ import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ProgramDayTaskRecitationType } from 'src/app/core/enums/program-day-task-recitation-type.enum';
 import { ProgramDutyDaysTaskViewMoodEnum } from 'src/app/core/enums/programs/program-duty-days-task-view-mood-enum.enum';
+import { IAttachment } from 'src/app/core/interfaces/attachments-interfaces/iattachment';
+import { IFileUpload } from 'src/app/core/interfaces/attachments-interfaces/ifile-upload';
 import { IAvailableTeacher } from 'src/app/core/interfaces/calls/iavailable-teacher';
 import { IAvailableTeacherResonse } from 'src/app/core/interfaces/calls/iavailable-teacher-resonse';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
 import { IRecitationTimes } from 'src/app/core/interfaces/programs-interfaces/iprogram-basic-info-model';
+import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-model';
 import { IProgramBasicInfoDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
+import { IProgramDayTaskTasmea } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-tasmea';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { AvailableTeachersService } from 'src/app/core/services/calls/available-teachers.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
+import { ProgramDayTasksService } from 'src/app/core/services/program-services/program-day-tasks.service';
 import { StudentProgramVacationServicesService } from 'src/app/core/services/student-program-vacation-services/student-program-vacation-services.service';
 
 @Component({
@@ -21,7 +26,7 @@ import { StudentProgramVacationServicesService } from 'src/app/core/services/stu
   styleUrls: ['./program-day-task-tasmea.component.scss']
 })
 export class ProgramDayTaskTasmeaComponent implements OnInit {
-
+  @Input() taskDetails: IProgramDayTasksModel | undefined;
   @Input() tasmeaModel: IProgramBasicInfoDetails = {};
   @Input() isView: boolean = false;
   @Input() dutyDaysTaskViewMood: number = ProgramDutyDaysTaskViewMoodEnum.admin;
@@ -35,7 +40,9 @@ export class ProgramDayTaskTasmeaComponent implements OnInit {
   filterAvailableTeacher: IAvailableTeacher = { skip: 0, take: 9, page: 1 };
   availableTeachersList: IAvailableTeacherResonse[] = [];
   totalCount = 0;
-
+  fileUploadModel: IFileUpload[] = [];
+  fileList?: IAttachment[] = [];
+  tasmeaDetailsModel: IProgramDayTaskTasmea = {};
 
   constructor(
     public translate: TranslateService,
@@ -43,6 +50,7 @@ export class ProgramDayTaskTasmeaComponent implements OnInit {
     private alertify: AlertifyService,
     private availableTeacher: AvailableTeachersService,
     private route: ActivatedRoute,
+    private programDayTasksService: ProgramDayTasksService,
     private programVacationServicesService: StudentProgramVacationServicesService
   ) { }
 
@@ -51,7 +59,10 @@ export class ProgramDayTaskTasmeaComponent implements OnInit {
     this.progRecitationTimes = this.tasmeaModel?.prgRecitTms ?
       this.tasmeaModel?.prgRecitTms.filter(i => i.huffno !== ProgramDayTaskRecitationType.limited).map((item: any) => ({ progRecFrom: item.recitFrom, progRecTo: item.recitTo })) : [];
     // this.getStudentProgramVacationRequestsStudentView()
-    this.getAllAvailableTeacher()
+    this.getAllAvailableTeacher();
+    this.getAllMemorize();
+    this.getAllMemorize();
+
   }
   getLookupByKey() {
     this.lookupService.getLookupByKey(this.listOfLookup).subscribe(res => {
@@ -105,5 +116,25 @@ export class ProgramDayTaskTasmeaComponent implements OnInit {
   filterByNameSearchKey(searchKey: string) {
     this.filterAvailableTeacher.techName = searchKey;
     this.getAllAvailableTeacher();
+  }
+
+  getAllMemorize(){
+    this.programDayTasksService.getProgramMemorizeAtDay(this.taskDetails?.dutyDay || '').subscribe(
+      (res: any) => {
+        res.data as IProgramDayTasksModel
+        Array.from(res.data).forEach((elm: any) => {
+          let lstBookAttatchments = JSON.parse(elm.detailsTask).bookAttatchments
+          if (lstBookAttatchments.length > 0) {
+            Array.from(lstBookAttatchments).forEach((item: any) => { this.fileList?.push(item as IAttachment); })
+          }
+          else { this.fileList?.push(elm as IAttachment); }
+        })
+        this.tasmeaDetailsModel.bookAttatchments = this.fileList;
+      }
+      , error => {
+        this.tasmeaDetailsModel.bookAttatchments = [];
+      }
+    );
+
   }
 }
