@@ -8,7 +8,7 @@ import { IStudentDropOutRequestsFilterResponseModel } from 'src/app/core/interfa
 import { IStudentDropOutRequestsFilterStudentViewRequestModel } from 'src/app/core/interfaces/student-drop-out-request-interfaces/istudent-drop-out-requests-filter-student-view-request-model';
 import { IStudentDropOutRequestsFilterStudentViewResponseModel } from 'src/app/core/interfaces/student-drop-out-request-interfaces/istudent-drop-out-requests-filter-student-view-response-model';
 import { ExportationService } from 'src/app/core/services/exportation-services/exportation.service';
-import {ITeacherStudentViewModel} from '../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
+import { ITeacherStudentViewModel } from '../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 
 @Component({
   selector: 'app-student-drop-out-grid',
@@ -26,8 +26,6 @@ export class StudentDropOutGridComponent implements OnInit {
 
   @Input() studentDropOutRequestFilterRequestAdminModel: IStudentDropOutRequestsFilterAdminViewRequestModel = { skip: 0, take: 9, page: 1 };
   @Input() studentDropOutRequestAdminItems: IStudentDropOutRequestsFilterResponseModel[] = []
-
-
   @Output() studentDropOutRequestFilterStudentEvent = new EventEmitter<IStudentDropOutRequestsFilterStudentViewRequestModel>();
   @Output() itemStudentDropOutRequestForStudentReject = new EventEmitter<IStudentDropOutRequestsFilterStudentViewResponseModel>();
   @Output() rejectStudentDropOutStudentRequest = new EventEmitter<IStudentDropOutRequestsFilterStudentViewResponseModel>();
@@ -36,16 +34,16 @@ export class StudentDropOutGridComponent implements OnInit {
   @Output() acceptAllStudentDropOutRequestStudentChecked = new EventEmitter<IStudentDropOutRequestsFilterStudentViewResponseModel>();
   @Input() studentDropOutRequestFilterRequestStudentModel: IStudentDropOutRequestsFilterStudentViewRequestModel = { skip: 0, take: 9, page: 1 };
   @Input() studentDropOutRequestStudentItems: IStudentDropOutRequestsFilterStudentViewResponseModel[] = [];
-  
+
 
   @Input() numberPerRow: number = 3;
   @Input() totalCount: number = 0;
   @Input() typeEnum: StudentDropOutRequestStatusEnum = StudentDropOutRequestStatusEnum.Pending;
   @Input() typeDropOutRequestEnum: StudentDropOutRequestStatusEnum = StudentDropOutRequestStatusEnum.Pending;
 
-  @Input() userMode: DropOutRoleEnum | undefined ;
+  @Input() userMode: DropOutRoleEnum | undefined;
   userRoleMode = DropOutRoleEnum;
-  
+
 
 
   studentTabTypeSelected = StudentDropOutRequestStatusEnum;
@@ -63,7 +61,7 @@ export class StudentDropOutGridComponent implements OnInit {
   ngOnInit(): void {
     console.log("this.userMode", this.userMode)
   }
-  studentIdToRequest(event:ITeacherStudentViewModel){
+  studentIdToRequest(event: ITeacherStudentViewModel) {
     this.studentIdToDetails.emit(event);
   }
 
@@ -100,10 +98,10 @@ export class StudentDropOutGridComponent implements OnInit {
   }
 
   sortStudentAdminDropOutRequestByNameOrderType() {
-      if ((this.studentDropOutRequestFilterRequestAdminModel.sortField === "studentNameAr" || this.studentDropOutRequestFilterRequestAdminModel.sortField === "StudentNameEn") && this.studentDropOutRequestFilterRequestAdminModel.sortOrder == 1) { return 'asend' }
-      if ((this.studentDropOutRequestFilterRequestAdminModel.sortField === "studentNameAr" || this.studentDropOutRequestFilterRequestAdminModel.sortField === "StudentNameEn") && this.studentDropOutRequestFilterRequestAdminModel.sortOrder == -1) { return 'desend' }
+    if ((this.studentDropOutRequestFilterRequestAdminModel.sortField === "studentNameAr" || this.studentDropOutRequestFilterRequestAdminModel.sortField === "StudentNameEn") && this.studentDropOutRequestFilterRequestAdminModel.sortOrder == 1) { return 'asend' }
+    if ((this.studentDropOutRequestFilterRequestAdminModel.sortField === "studentNameAr" || this.studentDropOutRequestFilterRequestAdminModel.sortField === "StudentNameEn") && this.studentDropOutRequestFilterRequestAdminModel.sortOrder == -1) { return 'desend' }
 
-      return '';
+    return '';
   }
 
   sortByStudentAdminDropOutRequestRequestDate() {
@@ -217,13 +215,13 @@ export class StudentDropOutGridComponent implements OnInit {
   acceptStudentAdminDropOutRequestEvent(studentAdminModel: IStudentDropOutRequestsFilterResponseModel) {
     this.acceptStudentDropOutAdminRequest.emit(studentAdminModel);
   }
-  
+
 
 
 
 
   // Start Student View
-    
+
   sortStudentByName() {
     this.studentDropOutRequestFilterRequestStudentModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'studentNameAr' : 'StudentNameAr';
     this.studentDropOutRequestFilterRequestStudentModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;

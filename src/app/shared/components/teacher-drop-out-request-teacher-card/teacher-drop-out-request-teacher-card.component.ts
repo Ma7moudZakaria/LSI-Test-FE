@@ -20,7 +20,7 @@ export class TeacherDropOutRequestTeacherCardComponent implements OnInit {
   @Input() adminView: boolean = false;
 
   @Input() typeEnum: TeacherDropOutRequestStatusEnum = TeacherDropOutRequestStatusEnum.Pending;
-  typeDropOutRequestEnum = TeacherDropOutRequestStatusEnum;
+  // typeDropOutRequestEnum = TeacherDropOutRequestStatusEnum;
   teacherDropOutRequestStatus = TeacherDropOutRequestStatusEnum;
   teacherDropOutRequestIds: string[] | undefined
   langEnum = LanguageEnum;

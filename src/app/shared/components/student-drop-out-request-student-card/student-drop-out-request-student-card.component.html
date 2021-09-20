@@ -40,20 +40,21 @@
 
       <div class="program_reason">
         <p class="  mb-0 pb-2"  > 
-          <span>
+          <span class="program_user bold">
             {{'STUDENT_SUBSCRIBERS.REQUEST_REASON' | translate}}  :
          </span>
-         <span class="program_user bold mb-0 " *ngIf="!studentDropOutRequestFilterRequestStudentModel.reason ">{{'STUDENT_SUBSCRIBERS.NO_DATA' | translate}} </span>
-         <span class="program_user bold mb-0 " *ngIf="studentDropOutRequestFilterRequestStudentModel.reason ">{{ studentDropOutRequestFilterRequestStudentModel?.reason }}</span>
+         <span class=" bold mb-0 " *ngIf="!studentDropOutRequestFilterRequestStudentModel.reason ">{{'STUDENT_SUBSCRIBERS.NO_DATA' | translate}} </span>
+         <span class=" bold mb-0 " *ngIf="studentDropOutRequestFilterRequestStudentModel.reason ">{{ studentDropOutRequestFilterRequestStudentModel?.reason }}</span>
           
         </p>
       
         <p class="  mb-0 pb-2"  > 
           <span class=" program_user bold mx-1"> {{'GENERAL_DROP_OUT_REQUEST.REJECT_REASON' | translate}} : </span> 
        
-
-            <span class="program__admin" *ngIf="!studentDropOutRequestFilterRequestStudentModel.reasonReject" >{{'STUDENT_SUBSCRIBERS.NO_DATA' | translate}}</span>
-            <span class="program__answer "  *ngIf="studentDropOutRequestFilterRequestStudentModel.reasonReject != null && studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Rejected">{{ studentDropOutRequestFilterRequestStudentModel?.reasonReject }}</span>
+          <!-- program__admin -->
+          <!-- program__answer -->
+            <span class=" bold mb-0 " *ngIf="!studentDropOutRequestFilterRequestStudentModel.reasonReject" >{{'STUDENT_SUBSCRIBERS.NO_DATA' | translate}}</span>
+            <span  class=" bold mb-0 " *ngIf="studentDropOutRequestFilterRequestStudentModel.reasonReject != null && studentDropOutRequestFilterRequestStudentModel.drpStat == StudentDropOutRequestStatus.Rejected">{{ studentDropOutRequestFilterRequestStudentModel?.reasonReject }}</span>
 
  
         </p>
@@ -64,15 +65,18 @@
      
    
     </div>
-
+    <!-- [ngClass]="{
+      'dimmed': studentDropOutRequestFilterRequestStudentModel?.canCancel === false }" -->
+      <!-- {{typeEnum}} -->
+     
+    <ng-container 
+    *ngIf="typeDropOutRequestEnum.Pending &&
+     studentDropOutRequestFilterRequestStudentModel?.canCancel " >
     <div  [ngClass]="{
-      'dimmed': studentDropOutRequestFilterRequestStudentModel?.canCancel === false }">
-       
-        <button class="program__btn cancel-btn"  (click)="cancelRequest()"
-        >{{'TEACHER_DROP_OUT.CANCEL' | translate}}</button>
+      'dimmed': studentDropOutRequestFilterRequestStudentModel?.canCancel === false }" >
+        <button class="program__btn cancel-btn"  (click)="cancelRequest()">{{'TEACHER_DROP_OUT.CANCEL' | translate}}</button>
     </div>
-
- 
+    </ng-container>
   </div>
 
 

@@ -1,7 +1,7 @@
 
   
   <div class="row scientific-problem-grid"  *ngIf='userRoleMode.Admin === userMode'>
-  
+
     <div class="col-9 d-flex justify-content-start" *ngIf='userRoleMode.Admin === userMode'>
             <ngb-pagination 
             [maxSize]="3"
@@ -72,8 +72,7 @@
 </mat-grid-list>
 
 <div class="row scientific-problem-grid"  *ngIf='userRoleMode.Student === userMode'>
-  
-    <div class="col-8 d-flex justify-content-start" *ngIf='userRoleMode.Student === userMode'>
+    <div class="col-10 d-flex justify-content-start" *ngIf='userRoleMode.Student === userMode'>
             <ngb-pagination 
             [collectionSize]="totalCount"
             [(page)]="studentDropOutRequestFilterRequestStudentModel.page" 
@@ -110,6 +109,15 @@
           </span>
        </button>
       </div> 
+
+      <div class="col-2 pl-4 text-right align-self-center"   *ngIf='userRoleMode.Student === userMode && studentTabTypeSelected.Empty === typeEnum'>
+      
+        <a class=" ml-1 mr-1" >
+            <img  class="exportIcon" (click)='exportStudentAdminCSV()' 
+            src="../../../../assets/images/sc-problem/exporticon.svg">
+        </a>
+     </div>
+
   </div>
 
 <mat-grid-list cols="{{numberPerRow}}" rowHeight="3:3"  *ngIf='userRoleMode.Student === userMode'>
