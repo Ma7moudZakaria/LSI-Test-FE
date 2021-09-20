@@ -10,7 +10,7 @@
             </div>
             <div class="col-12 ">
                 <ng-container *ngIf="program.isProgStarted==false">
-                <button  class="card_stu_program__Day_tasks mb-3 mt-2"
+                <button  class="card_stu_program__Day_tasks mb-3 mt-2 "
                   (click)="startProgram(program?.batId,program?.id,program?.noofDutyDays,program.isDaysRequested)">
                   <!-- <img src="../../../../../assets/images/student-program/book.svg" class="card_stu_program__bookIcon"> -->
                   {{ 'STUDENT_DAY_TASKS.START' | translate }}
@@ -19,8 +19,8 @@
             </div>
      
             <div class="col-12">
-                <button   class="card_stu_program__Day_tasks"
-                [disabled]="program.isProgStarted==false" 
+                <button   class="card_stu_program__Day_tasks "
+               [ngClass]="{'dimmed': program.isProgStarted==false}"
                 (click)="goToHomeWore(program?.batId)">
                 <img src="../../../../../assets/images/student-program/book.svg" class="card_stu_program__bookIcon">
 
