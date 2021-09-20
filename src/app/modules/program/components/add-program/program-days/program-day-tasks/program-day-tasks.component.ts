@@ -83,8 +83,7 @@ haveMemorize?:boolean=false;
   }
 
   newDayTasks() {
-    if(this.programDayTasksLists.length>0)
-   {this.haveMemorize = this.programDayTasksLists.every(x=>x.huffazTask==3);} 
+  this.haveMemorize = this.programDayTasksLists.some(x=>x.huffazTask==3);
     this.openAddDayTasks.emit(this.haveMemorize);
   }
 

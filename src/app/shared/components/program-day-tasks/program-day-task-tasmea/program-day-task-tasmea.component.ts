@@ -8,8 +8,6 @@ import { IAvailableTeacherResonse } from 'src/app/core/interfaces/calls/iavailab
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
 import { IRecitationTimes } from 'src/app/core/interfaces/programs-interfaces/iprogram-basic-info-model';
 import { IProgramBasicInfoDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
-import { IStudentProgramVacationRequestModel } from 'src/app/core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-request-model';
-import { IStudentProgramVacationStudentViewModel } from 'src/app/core/interfaces/student-program-vacation-interfaces/istudent-program-vacation-student-view-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';

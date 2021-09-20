@@ -97,6 +97,8 @@ export class AddProgramDayTasksComponent implements OnInit {
         this.selectedProgramDayTasksList?.splice(ind, 1);
       }
     }
+
+    this.haveMemorize = this.selectedProgramDayTasksList.some(i => i === '5c2a09dc-7873-450f-af1d-4d153765e5c1');//'5c2a09dc-7873-450f-af1d-4d153765e5c1' is id tasmea task
   }
 
   async onSubmit() {
