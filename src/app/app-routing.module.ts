@@ -30,6 +30,8 @@ const routes: Routes = [
   { path: 'admin-teacher', loadChildren: () => import('./modules/admin-teacher-tab/admin-teacher-tab.module').then(m => m.AdminTeacherTabModule), canActivate: [AuthGuard] },
   { path: 'teacher-programs', loadChildren: () => import('./modules/teacher-programs/teacher-programs.module').then(m => m.TeacherProgramsModule), canActivate: [AuthGuard] },
   { path: 'user-chatting', loadChildren: () => import('./modules/user-chat/user-chat.module').then(m => m.UserChatModule), canActivate: [AuthGuard] },
+  { path: 'recitation', loadChildren: () => import('./modules/teacher-recitation/teacher-recitation.module').then(m => m.TeacherRecitationModule), canActivate: [AuthGuard] },
+
   // { path: 'teacher-programs', loadChildren: () => import('./modules/teacher-programs/teacher-programs.module').then(m => m.TeacherProgramsModule), canActivate: [AuthGuard] },
 
 ];

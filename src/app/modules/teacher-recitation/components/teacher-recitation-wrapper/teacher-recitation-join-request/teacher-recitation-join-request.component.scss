@@ -1,0 +1,23 @@
+@import '../add-new-group-teacher-recitation/add-new-group-teacher-recitation.component.scss';
+.details_day .chat_details {
+    height: 70.7vh;
+    padding: 1rem;
+    
+}
+
+.cancel-btn {
+    background: #CB9118;
+    font-size: 0.85rem;
+}
+.chat_details {
+    height: 59vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0.7rem;
+}
+.cardRecourd{
+    background-color: #fff !important;
+    border-radius: 10px !important;
+    border-radius: 1.2rem!important;
+    border-bottom:none !important
+}
