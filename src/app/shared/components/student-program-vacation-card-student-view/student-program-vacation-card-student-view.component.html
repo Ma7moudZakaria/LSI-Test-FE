@@ -65,17 +65,12 @@
          </span>
          <span class=" bold mb-0 " *ngIf="!studentProgramVacationStudentViewModel.vacReason ">{{'STUDENT_SUBSCRIBERS.NO_DATA' | translate}} </span>
          <span class=" bold mb-0 " *ngIf="studentProgramVacationStudentViewModel.vacReason ">{{ studentProgramVacationStudentViewModel?.vacReason }}</span>
-          
         </p>
       
-        <p class="  mb-0 pb-2"  > 
+        <p class="mb-0 pb-2"  > 
           <span class=" program_user bold mx-1"> {{'GENERAL_DROP_OUT_REQUEST.REJECT_REASON' | translate}} : </span> 
-       
-
-            <span class=" mb-0" *ngIf="!studentProgramVacationStudentViewModel.rejReason" >{{'STUDENT_SUBSCRIBERS.NO_DATA' | translate}}</span>
-            <span class=" mb-0 "  *ngIf="studentProgramVacationStudentViewModel.rejReason">{{ studentProgramVacationStudentViewModel?.rejReason }}</span>
-
- 
+            <span class="bold mb-0" *ngIf="!studentProgramVacationStudentViewModel.rejReason" >{{'STUDENT_SUBSCRIBERS.NO_DATA' | translate}}</span>
+            <span class="bold mb-0 "  *ngIf="studentProgramVacationStudentViewModel.rejReason">{{ studentProgramVacationStudentViewModel?.rejReason }}</span>
         </p>
       
       </div>
