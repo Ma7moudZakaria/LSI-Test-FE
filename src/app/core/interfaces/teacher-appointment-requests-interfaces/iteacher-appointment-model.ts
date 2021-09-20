@@ -31,8 +31,9 @@ export interface ITeacherAppointmentModel {
          usrNameAr?:string;
          usrNameEn?:string;
          checked?:boolean;
-         reqDate?:string
-         rejReason?:string | undefined
+         reqDate?:string;
+         rejReason?:string | undefined;
+         huffazId?:number;
          availableTimeRequests?: IAvailableTimeRequests[];
          teacherAvailableTimes?: IAvailableTimeRequests[];
     }

@@ -6,6 +6,7 @@ import {AlertifyService} from '../../../../../../../core/services/alertify-servi
 import {BaseResponseModel} from '../../../../../../../core/ng-model/base-response-model';
 import {TeacherAppointmentRequestsEnum} from '../../../../../../../core/enums/teacher-appointment-requests-enums/teacher-appointment-requests-enum.enum';
 import {TeacherAppointmentService} from '../../../../../../../core/services/teacher-appointment-services/teacher-appointment.service';
+import {ITeacherStudentViewModel} from '../../../../../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 
 @Component({
   selector: 'app-appointment-requests-tab',
@@ -15,6 +16,7 @@ import {TeacherAppointmentService} from '../../../../../../../core/services/teac
 export class AppointmentRequestsTabComponent implements OnInit {
   @Output() advancedSearchEvent = new EventEmitter<ITeacherAppointmentFilterRequestModel>();
   @Output() itemTeacherAppointmentReq = new EventEmitter<ITeachersAppointmentRequestsModel>();
+  sendUserID: ITeacherStudentViewModel | undefined;
 
   teacherAppointmentRequestsList: ITeachersAppointmentRequestsModel[] = [];
   teacherAppointmentFilterRequestModel: ITeacherAppointmentFilterRequestModel = {
@@ -31,6 +33,7 @@ export class AppointmentRequestsTabComponent implements OnInit {
   typeEnum: TeacherAppointmentRequestsEnum = TeacherAppointmentRequestsEnum.Pending;
   showTap: TeacherAppointmentRequestsEnum = TeacherAppointmentRequestsEnum.Pending;
   statusEnum = TeacherAppointmentRequestsEnum;
+  showUserDetailsView:boolean = false;
 
   constructor(
     public translate: TranslateService,
@@ -198,4 +201,12 @@ export class AppointmentRequestsTabComponent implements OnInit {
     this.getTeacherAppointmentRequests();
   }
 
+  hideUserDetailsView(event: boolean){
+    this.showUserDetailsView = event;
+  }
+
+  sendUserIDEvent(event: ITeacherStudentViewModel){
+    this.sendUserID =event;
+    this.showUserDetailsView = true;
+  }
 }

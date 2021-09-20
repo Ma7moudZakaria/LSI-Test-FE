@@ -1,4 +1,4 @@
-<div class="container-fluid reuest_container">
+<div class="container-fluid reuest_container" *ngIf='!showUserDetailsView'>
   <div class="row">
     <div class="col-12  justify-content-end text-right d-flex align-items-center">
       <app-search-input class="mr-3 ml-3" (searchTerm)=searchByText($event)
@@ -40,6 +40,8 @@
                                                [totalCount]='totalCount'
                                                [teacherAppointmentFilterRequestModel]='teacherAppointmentFilterRequestModel'
                                                (teacherAppointmentFilterEvent)="teacherAppointmentPendingChangePage($event)"
+                                               (userIdInput)= "sendUserIDEvent($event)"
+
         >
         </app-teacher-appointment-requests-grid>
         <div *ngIf='teacherAppointmentRequestsList.length === 0'>
@@ -58,6 +60,8 @@
                                                [totalCount]='totalCount'
                                                [teacherAppointmentFilterRequestModel]='teacherAppointmentFilterRequestModel'
                                                (teacherAppointmentFilterEvent)="teacherAppointmentAcceptChangePage($event)"
+                                               (userIdInput)= "sendUserIDEvent($event)"
+
         >
         </app-teacher-appointment-requests-grid>
         <div *ngIf='teacherAppointmentRequestsList.length === 0'>
@@ -74,6 +78,8 @@
                                                [totalCount]='totalCount'
                                                [teacherAppointmentFilterRequestModel]='teacherAppointmentFilterRequestModel'
                                                (teacherAppointmentFilterEvent)="teacherAppointmentRejectedChangePage($event)"
+                                               (userIdInput)= "sendUserIDEvent($event)"
+
         >
         </app-teacher-appointment-requests-grid>
         <div *ngIf='teacherAppointmentRequestsList.length === 0'>
@@ -86,4 +92,6 @@
   </div>
 
 </div>
+
+<app-teacher-details-view *ngIf="showUserDetailsView" (hideUserDetails) ="hideUserDetailsView($event)" [resiveUserId]='sendUserID'></app-teacher-details-view>
 
