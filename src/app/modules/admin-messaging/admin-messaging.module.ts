@@ -54,6 +54,7 @@ import { MatListModule } from '@angular/material/list';
 import { TeacherAppointmentAdvancedSearchComponent } from './components/teacher-program-request-view/teacher-request-details/chang-time-request/teacher-appointment-advanced-search/teacher-appointment-advanced-search.component';
 import { TeacherAppointmentRejectComponent } from './components/teacher-program-request-view/teacher-request-details/chang-time-request/teacher-appointment-reject/teacher-appointment-reject.component';
 import { AppointmentRequestsTabComponent } from './components/teacher-program-request-view/teacher-request-details/chang-time-request/appointment-requests-tab/appointment-requests-tab.component';
+import { ScientificProblemAdvancedSearchComponent } from './components/scientific-problems-view/scientific-problem-advanced-search/scientific-problem-advanced-search.component';
 
 // @NgModule({
 //   declarations: [AdminMessagingViewComponent, ScientificProblemsComponent, AddScientifiProblemReplyComponent,
@@ -62,18 +63,18 @@ import { AppointmentRequestsTabComponent } from './components/teacher-program-re
 //     StuListRequestComponent, StuRequestDetailsComponent, StuJoinRequestComponent, StuQuitRequestComponent,
 //     StuTabRequestComponent, AdvancedSearchComponent],
 
- 
+
 @NgModule({
   declarations: [AdminMessagingViewComponent, ScientificProblemsComponent, AddScientifiProblemReplyComponent, AddScientifiProblemToQuestionBankComponent,
     ScientificProblemsViewComponent, TeacherProgramRequestViewComponent, StudentProgramRequestViewComponent, StuListRequestComponent,
-    StuJoinRequestComponent, 
+    StuJoinRequestComponent,
     StuTabRequestComponent, AdvancedSearchComponent,TeacherAdvancedSearchComponent, TeacherListRequestComponent,StuRequestDetailsComponent,
     TeacherRequestDetailsComponent, TeacherJoinRequestComponent, TeacherJoinRequestProgramComponent,TeacherAdminDropOutRequestComponent ,
     ChangTimeRequestComponent, TeacherJionProgramTabRequestComponent, StuVacationsRequestComponent, StuMovingRequestComponent
         , TeacherJionTabRequestComponent, StuRejectedComponent, TeacheRejectedComponent, AdvancedSearchTeacherComponent, TeacherSystemSubscriptionRejectedComponent, StudentVacationRequestTabComponent, StudentProgramVacationRejectComponent, StudentProgramVacationAdvancedSearchComponent
         , TeacherDropOutTabRequestComponent, TeacherDropOutRequestRejectedComponent, StudentAdminDropOutRequestComponent, StudentDropOutTabRequestComponent,
         StudentDropOutRequestRejectedComponent, StudentAdvancedSearchComponent, ChatViewComponent, GroupViewComponent, ChatDetailsComponent, GroupDetailsComponent, AddGroupComponent,
-        TeacherAppointmentAdvancedSearchComponent, TeacherAppointmentRejectComponent, AppointmentRequestsTabComponent],
+        TeacherAppointmentAdvancedSearchComponent, TeacherAppointmentRejectComponent, AppointmentRequestsTabComponent, ScientificProblemAdvancedSearchComponent],
   imports: [
     CommonModule,
     FormsModule,
