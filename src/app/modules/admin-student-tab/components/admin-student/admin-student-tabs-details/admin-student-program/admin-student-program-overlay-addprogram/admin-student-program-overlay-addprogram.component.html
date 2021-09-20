@@ -1,39 +1,29 @@
 
-<ng-container >
-  <form [formGroup]="addStudentToSharedForm" (ngSubmit)="addStudentToSharedProject()" class="form-group " >
+  <form [formGroup]="addStudentToSharedForm" (ngSubmit)="addStudentToSharedProject()" class="form-group add-pro-stu " >
     <section class="mt-5">
 
-      <div class="d-flex mb-4 justify-content-right align-items-right">
+      <div class="d-flex mb-4 justify-content-right">
         <h3 class="bold mb-0 head_conditions">اضافه برنامج للطالب </h3>
-          <!-- <img src="../../../../assets/images/sc-problem/exporticon.svg" class="cursor-pointer"> -->
       </div>
 
       <div class="form-group">
-        <label class="header_input float-right bold">{{ 'PROGRAM_BASIC_INFO.PROG_NAME' | translate }}  </label>
-        <select class="form-control prog"  formControlName="program" >
+        <label class="header_input  bold">{{ 'PROGRAM_BASIC_INFO.PROG_NAME' | translate }}  </label>
+        <select class="form-control"  formControlName="program" >
             <ng-container *ngFor="let item of sharedPrograms" >
             <option [value]="item.batId" >{{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}</option>
-            
             </ng-container>
-            
           </select>
-          <span class="mat-expansion-indicator ng-tns-c164-1 ng-trigger ng-trigger-indicatorRotate ng-star-inserted" style="transform: rotate(0deg);"></span>
-
-  
-</div>
+       </div>
       <div  class="row direction-rtl buttons-center ">
-
-       
-        <button   type="submit" class="save-btn btn btn-danger" >
+        <button   type="submit" class="save-btn btn " >
           {{ "GENERAL.SAVE" | translate }}
       </button>
 
-        <button  type="reset" class="cancel-btn btn btn-warning"   (click)="closeForm()">
+        <button  type="reset" class="cancel-btn btn "   (click)="closeForm()">
           إلغاء 
         </button>
      
       </div>
     </section>
   </form>
-  </ng-container>
   
