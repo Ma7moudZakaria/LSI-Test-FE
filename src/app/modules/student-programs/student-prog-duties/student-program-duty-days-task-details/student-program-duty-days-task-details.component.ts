@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { ProgramDayTaskRecitationType } from 'src/app/core/enums/program-day-task-recitation-type.enum';
 import { ProgramDayTasksDetails } from 'src/app/core/enums/programs/program-day-tasks-details.enum';
 import { ProgramDutyDaysTaskViewMoodEnum } from 'src/app/core/enums/programs/program-duty-days-task-view-mood-enum.enum';
 import { IExam } from 'src/app/core/interfaces/exam-builder-interfaces/iexam';
@@ -15,11 +16,13 @@ import { IProgramDayTaskMemorize } from 'src/app/core/interfaces/programs-interf
 import { IProgramDayTaskReadExplanation } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-read-explanation';
 import { IProgramDayTaskRepetition } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-repetition';
 import { IProgramDayTaskReview } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-review';
+import { IProgramDayTaskTasmea } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-tasmea';
 import { IProgramDayTaskVideo } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-video';
 import { ISubmitStudentDutyDayTaskModel } from 'src/app/core/interfaces/student-program-duties-interfaces/isubmit-student-duty-day-task-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
+import { ProgramService } from 'src/app/core/services/program-services/program.service';
 import { StudentProgDutiesServiceService } from 'src/app/core/services/student-prog-duties-services/student-prog-duties-service.service';
 
 @Component({
@@ -30,7 +33,6 @@ import { StudentProgDutiesServiceService } from 'src/app/core/services/student-p
 export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
   @Output() taskIsSaveEvent = new EventEmitter<boolean>();
   @Input() taskDetails: IProgramDayTasksModel | undefined;
-  @Input() progamDetails: IProgramDetails | undefined;
   detailsTypeEnum = ProgramDayTasksDetails;
   hearingTaskDetailsModel: IProgramDayTaskHearing = {};
   readExplanationDetailsModel: IProgramDayTaskReadExplanation = {};
@@ -45,27 +47,31 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
   dailyTestDetailsModel: IExam = { questions: [] };
   recitationStudentsModel :IProgramBasicInfoDetails = {};
   programDayTaskDetails: ISaveProgramDayTaskDetailsModel={};
-  tasmeaModel :IProgramBasicInfoDetails = {};
+  tasmeaModel :IProgramDayTaskTasmea = {};
   resultMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
   programDutyDaysTaskViewMoodEnum=ProgramDutyDaysTaskViewMoodEnum;
   resMessage: BaseMessageModel = {};
   isAnswer:boolean=true;
   isMndatory?:boolean=false;
+  programDetails : IProgramDetails | undefined;
   
   constructor(
     public languageService: LanguageService,
     private studentProgDutiesServiceService: StudentProgDutiesServiceService,
     public translate: TranslateService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private programService: ProgramService
   ) { }
 
   ngOnInit(): void {
+    this.getProgramDetails();
     this.getprogramDayTaskDetails();
     this.resultMessage = {
     }
   }
   ngOnChanges(changes: any){
+    this.getProgramDetails();
     this.getprogramDayTaskDetails();
     this.resultMessage = {
     }
@@ -91,8 +97,8 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
             break;
            case this.detailsTypeEnum.TaskLinking:
             this.linkingDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
-            this.linkingDetailsModel.progId=this.progamDetails?.progBaseInfo?.id;
-            this.linkingDetailsModel.progDayOrder=this.progamDetails?.progDays?.find(x=>x.id==this.taskDetails?.dutyDay)?.order;
+            this.linkingDetailsModel.progId=this.programDetails?.progBaseInfo?.id;
+            this.linkingDetailsModel.progDayOrder=this.programDetails?.progDays?.find(x=>x.id==this.taskDetails?.dutyDay)?.order;
             this.isMndatory=this.linkingDetailsModel.isMndatory;
             break;
             case this.detailsTypeEnum.TaskEncouragementLetter:
@@ -108,10 +114,10 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
                this.isMndatory=false;
                 break;
                 case this.detailsTypeEnum.TaskRecitation:
-                  this.recitationDetailsModel=this.progamDetails?.progBaseInfo||{};
+                  this.recitationDetailsModel=this.programDetails?.progBaseInfo||{};
                   break;
                   case this.detailsTypeEnum.TaskRecitationStudents:
-                    this.recitationStudentsModel=this.progamDetails?.progBaseInfo||{};
+                    this.recitationStudentsModel=this.programDetails?.progBaseInfo||{};
                     break;
                     case this.detailsTypeEnum.TaskTestPhased:
                     this.testPhasedDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
@@ -124,7 +130,11 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
                         this.dailyTestDetailsModel.questions = [];
                       break;
                       case this.detailsTypeEnum.TaskTasmea:
-                    this.tasmeaModel=this.progamDetails?.progBaseInfo||{};
+                    this.tasmeaModel=this.programDetails?.progBaseInfo||{};
+                    this.tasmeaModel.prgRecitType= this.programDetails?.progBaseInfo?.prgRecitType;
+                    this.tasmeaModel.progRecitationTimes=this.programDetails?.progBaseInfo?.prgRecitTms?
+                    this.programDetails?.progBaseInfo?.prgRecitTms.filter(i => i.huffno !== ProgramDayTaskRecitationType.limited).map((item: any) => ({ progRecFrom: item.recitFrom, progRecTo: item.recitTo })) : [];
+                    this.tasmeaModel.dutyDay=this.taskDetails.dutyDay;
                     break;
       default:
         "";
@@ -183,6 +193,27 @@ no(){
     });
   }
   
-  taskIsSave(){ this.taskIsSaveEvent.emit()}
+  taskIsSave(){
+     this.taskIsSaveEvent.emit()
+    }
+    getProgramDetails() {
+     let progId = localStorage.getItem("progId");
+   
+      this.programService.getProgramDetails(progId || '').subscribe(res => {
+        if (res.isSuccess) {
+          this.programDetails = res.data as IProgramDetails;
+          localStorage.removeItem("progId");
+        }
+        else {
+          this.resMessage =
+          {
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
+          }
+        }
+      }, error => {
+        
+      });
+    }
   
 }
