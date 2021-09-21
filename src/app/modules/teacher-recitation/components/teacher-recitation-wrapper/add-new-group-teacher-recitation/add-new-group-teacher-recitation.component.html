@@ -1,44 +1,84 @@
-<div class="details_day" >
-        <div class="head_groupName  d-flex  align-items-center justify-content-between " >
-        <P  class="mx-2">المجموعات</P>
-      </div>
- 
-    <div class="head_btn_add  d-flex  align-items-center justify-content-end " >
-    <button class="cancel-btn">إضافة مجموعة جديدة</button>
-    </div>
-    <div class="row"> 
-    <div class="col-12 mt-3" >
-     
 
-        <app-search-input (searchTerm)=filterByText($event)></app-search-input>
-    </div>
-    </div>
+<div class="col-md-12">
+  <p class="title_add">
+      {{ "Role_Management.CREATENEWGROUP" | translate }}
+  </p>
+  <div class="col-md-10 mx-auto">
+      <form class="DataForm" [formGroup]="DataForm">
+          <div class="form-group">
+              <label for="exampleInputEmail1" class="label">{{
+                  "Role_Management.GROUPNAMEARABIC" | translate
+                  }}</label>
 
-    <!-- <div class="row mx-0 "> -->
-    <div class="chat_details w-100">
-    <div class=" w-100">
-    <ng-container *ngFor="let participant of listOfParticipants; let i = index"  >
-        <div class="cardRecourd  d-flex justify-content-between mb-3" >
-            <div class="group_name  d-flex pb-0  align-items-center justify-content-between">
-                <img class="img_user">
-                <!-- src="{{participant.avatar_url}}"  -->
-                <div>
-                <p class="ellipsis mb-0 ">langEnum</p>
-                <!-- {{ translate.currentLang === langEnum.en ? participant?.name_en : participant?.name_ar }} -->
-                <p class="message_date mb-0 px-2">2020/10/25 </p>      
-                    
-                </div>
+              <input type="text" class="form-control" id="InputNamAr" formControlName="arRoleName"
+                  [ngClass]="{'red-border-class':fc.arRoleName.errors && (fc.arRoleName.touched || isSubmit)}" />
 
-            </div>
-            <div class="d-flex">
-                <a> <img  class="vedio mx-2" src="../../../../assets/images/request/vedio.svg"></a>
-                <a> <img  class="call mx-2"  src="../../../../assets/images/request/call.svg"></a>
+              <div *ngIf="fc.arRoleName.errors && (fc.arRoleName.touched || isSubmit)"
+                  class="alert alert-danger mt-2 mb-2">
+                  <div *ngIf="fc.arRoleName.errors.required">
+                      {{ "QUESTION_BANK.REQUIRED" | translate }}
+                  </div>
               </div>
-            </div>
-    </ng-container>
-    </div>
-    <!-- </div> -->
-    </div>
-</div>
+          </div>
+          <div class="form-group">
+              <label for="exampleInputEmail1" class="label">{{
+                  "Role_Management.GROUPNAMEENGLISH" | translate
+                  }}</label>
 
+              <input type="text" class="form-control" id="InputNamAr" formControlName="enRoleName"
+                  [ngClass]="{'red-border-class':fc.enRoleName.errors && (fc.enRoleName.touched || isSubmit)}" />
+
+              <div *ngIf="fc.enRoleName.errors && (fc.enRoleName.touched || isSubmit)"
+                  class="alert alert-danger mt-2 mb-2">
+                  <div *ngIf="fc.enRoleName.errors.required">
+                      {{ "QUESTION_BANK.REQUIRED" | translate }}
+                  </div>
+              </div>
+          </div>
+
+
+          <div class="form-group" *ngIf="dataEdit.id==''">
+              <label for="exampleInputEmail1" class="label">{{"Role_Management.SELECT_GROUP_MEMBERS" | translate
+                  }}</label>
+              <app-input-search-list [searchList]="SearchItemList" (addSearchItem)="addUser($event)">
+              </app-input-search-list>
+          </div>
+
+
+          <mat-list *ngIf="dataEdit.id==''">
+              <mat-list-item *ngFor="let SelectedUser of listSelectedUser">
+                  <!-- <img mat-list-icon src="assets/images/roleManagement/ASH_90.png" alt=""> -->
+                  <img mat-list-icon *ngIf='!SelectedUser?.usrAvatarUrl' src="assets/images/Profile.svg" alt=""/>
+                  <img mat-list-icon *ngIf='SelectedUser?.usrAvatarUrl' [src]="SelectedUser?.usrAvatarUrl" alt="" />
+                  <div mat-line>{{ translate.currentLang === langEnum.en
+                      ? SelectedUser.enUsrName : SelectedUser.arUsrName}}</div>
+                  <div mat-line> {{SelectedUser.createdOn | date}} </div>
+                 <span class="mat-delete" (click)="delete(SelectedUser)"><i class="fas fa-trash-alt"></i></span>
+                  <mat-divider></mat-divider>
+              </mat-list-item>
+          </mat-list>
+
+      </form>
+      <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2">
+          {{resultMessage.message}}
+      </div>
+      <div class="row">
+          <div class="col-md-6" *ngIf="dataEdit.id!=''">
+              <button (click)="EditData()" class="save-btn">
+                  {{ "Role_Management.EDIT" | translate }}
+              </button>
+          </div>
+          <div class="col-md-6" *ngIf="dataEdit.id==''">
+              <button (click)="saveData()" class="save-btn">
+                  {{ "Role_Management.SAVE" | translate }}
+              </button>
+          </div>
+          <div class="col-md-6">
+              <button type="button" class="cancel-btn" (click)="backList()">
+                  {{ "QUESTION_BANK.CANCEL" | translate }}
+              </button>
+          </div>
+      </div>
+  </div>
+</div>
 
