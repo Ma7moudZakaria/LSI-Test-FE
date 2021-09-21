@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { ProgramDayTaskRecitationType } from 'src/app/core/enums/program-day-task-recitation-type.enum';
 import { ProgramDayTasksDetails } from 'src/app/core/enums/programs/program-day-tasks-details.enum';
 import { IExam } from 'src/app/core/interfaces/exam-builder-interfaces/iexam';
 import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-model';
@@ -13,6 +14,7 @@ import { IProgramDayTaskMemorize } from 'src/app/core/interfaces/programs-interf
 import { IProgramDayTaskReadExplanation } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-read-explanation';
 import { IProgramDayTaskRepetition } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-repetition';
 import { IProgramDayTaskReview } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-review';
+import { IProgramDayTaskTasmea } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-tasmea';
 import { IProgramDayTaskVideo } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-video';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
@@ -49,7 +51,7 @@ export class DaysComponent implements OnInit {
   dailyTestDetailsModel: IExam = { questions: [] };
   recitationStudentsModel: IProgramBasicInfoDetails = {};
   programDayTaskDetails: ISaveProgramDayTaskDetailsModel = {};
-  tasmeaModel: IProgramBasicInfoDetails = {};
+  tasmeaModel:IProgramDayTaskTasmea ={};
   isView: boolean = false;
 
   constructor(private programDayTasksService: ProgramDayTasksService, public translate: TranslateService) { }
@@ -145,8 +147,12 @@ export class DaysComponent implements OnInit {
           this.dailyTestDetailsModel.questions = [];
         break;
       case this.detailsTypeEnum.TaskTasmea:
-        this.tasmeaModel = this.progs?.progBaseInfo || {};
+        //this.tasmeaModel = this.progs?.progBaseInfo || {};
         this.isView = true;
+        this.tasmeaModel.prgRecitType= this.progs?.progBaseInfo?.prgRecitType;
+        this.tasmeaModel.progRecitationTimes=this.progs?.progBaseInfo?.prgRecitTms?
+        this.progs?.progBaseInfo?.prgRecitTms.filter(i => i.huffno !== ProgramDayTaskRecitationType.limited).map((item: any) => ({ progRecFrom: item.recitFrom, progRecTo: item.recitTo })) : [];
+        this.tasmeaModel.dutyDay=this.dayTasksDetails?.dutyDay;
         break;
       default:
         "";

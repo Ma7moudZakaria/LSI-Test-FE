@@ -1,4 +1,5 @@
 import { IAttachment } from "../../attachments-interfaces/iattachment";
+import { IRecitationTimes } from "../iprogram-basic-info-model";
 
 export interface IProgramDayTaskTasmea {
     isMndatory?:boolean;
@@ -7,4 +8,7 @@ export interface IProgramDayTaskTasmea {
     bookAttatchments?:IAttachment[];
     progId?:string;
     progDayOrder?:Number;
+    prgRecitType?:string;
+    progRecitationTimes?: IRecitationTimes[];
+    dutyDay?:string;
 }

@@ -44,7 +44,7 @@
         
 
            <div class="row mx-0" >
-            <div class="col-4 cardRecourd"  *ngFor="let item of tasmeaDetailsModel?.bookAttatchments;let i=index" >
+            <div class="col-4 cardRecourd"  *ngFor="let item of tasmeaModel?.bookAttatchments;let i=index" >
                 <img src="assets/images/days/book.svg">
                 <p class="ellipsis mb-0 "  matTooltip="{{item.fileName}}">{{item.fileName}}</p>
             </div>
@@ -84,8 +84,13 @@
                          <p class="ellipsis mb-0"> from : {{item.progRecFrom}} , to : {{item.progRecTo}}</p>
                      </div>
                     </div>
-        
                  </div>
+                 <div class="row mx-0" >
+                    <div class="col-12 cardRecourd"  *ngFor="let item of tasmeaModel?.bookAttatchments;let i=index" >
+                        <img src="assets/images/days/book.svg">
+                        <p class="ellipsis mb-0 "  matTooltip="{{item.fileName}}">{{item.fileName}}</p>
+                    </div>
+        </div>
                  <div class="d-flex">
                     <label  class="no-data" *ngIf='!tasmeaModel.prgRecitType'>
                         {{"GENERAL.NO_DATA"|translate}} 
@@ -99,6 +104,31 @@
 </div>
 
 <div  class="availableTeachersContainer" *ngIf="dutyDaysTaskViewMood===programDutyDaysTaskViewMoodEnum.student">
+
+    <div class="d-flex mb-3">       
+        <div class="col-6 px-0" *ngIf='tasmeaModel.prgRecitType'>
+            <span class="grad">فتره التسميع
+                <span>  &nbsp;  : </span>
+                <span>  &nbsp; </span> 
+
+                <mat-radio-group aria-label="Select an option"  class="example-radio-group" 
+          [(ngModel)]="tasmeaModel.prgRecitType" disabled>
+      <ng-container *ngFor="let item of collectionOfLookup.SARD_TYPES ;let i=index">
+          <mat-radio-button value="{{item.id}}" class="example-radio-button ml-2 mr-2">{{item.nameAr}}</mat-radio-button>
+          </ng-container>
+          </mat-radio-group>
+                
+            </span>
+        </div>
+</div>
+
+    <div class="row mx-0" >
+        <div class="col-4 cardRecourd"  *ngFor="let item of tasmeaModel?.bookAttatchments;let i=index" >
+            <img src="assets/images/days/book.svg">
+            <p class="ellipsis mb-0 "  matTooltip="{{item.fileName}}">{{item.fileName}}</p>
+        </div>
+    </div>
+
 <div class="row">
     <div class="col-6">
       <app-search-input (searchTerm)="filterByNameSearchKey($event)"></app-search-input>
@@ -112,4 +142,5 @@
     '
     (availableTeachersFilterEvent) = "availableTeachersChangePage($event)">
    </app-get-all-available-teachers-grid>
+ 
 </div>   

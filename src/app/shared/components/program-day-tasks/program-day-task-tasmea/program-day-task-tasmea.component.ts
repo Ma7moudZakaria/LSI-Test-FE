@@ -26,8 +26,7 @@ import { StudentProgramVacationServicesService } from 'src/app/core/services/stu
   styleUrls: ['./program-day-task-tasmea.component.scss']
 })
 export class ProgramDayTaskTasmeaComponent implements OnInit {
-  @Input() taskDetails: IProgramDayTasksModel | undefined;
-  @Input() tasmeaModel: IProgramBasicInfoDetails = {};
+  @Input() tasmeaModel: IProgramDayTaskTasmea = {};//==============
   @Input() isView: boolean = false;
   @Input() dutyDaysTaskViewMood: number = ProgramDutyDaysTaskViewMoodEnum.admin;
   programDutyDaysTaskViewMoodEnum = ProgramDutyDaysTaskViewMoodEnum;
@@ -36,13 +35,11 @@ export class ProgramDayTaskTasmeaComponent implements OnInit {
   resultMessage: BaseMessageModel = {};
   numberItemsPerRow = 2;
   progRecitationTimes: IRecitationTimes[] = [];
-
   filterAvailableTeacher: IAvailableTeacher = { skip: 0, take: 9, page: 1 };
   availableTeachersList: IAvailableTeacherResonse[] = [];
   totalCount = 0;
   fileUploadModel: IFileUpload[] = [];
   fileList?: IAttachment[] = [];
-  tasmeaDetailsModel: IProgramDayTaskTasmea = {};
 
   constructor(
     public translate: TranslateService,
@@ -55,15 +52,20 @@ export class ProgramDayTaskTasmeaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+   console.log("tasmeaModel"+this.tasmeaModel);
+    
     this.getLookupByKey();
-    this.progRecitationTimes = this.tasmeaModel?.prgRecitTms ?
-      this.tasmeaModel?.prgRecitTms.filter(i => i.huffno !== ProgramDayTaskRecitationType.limited).map((item: any) => ({ progRecFrom: item.recitFrom, progRecTo: item.recitTo })) : [];
-    // this.getStudentProgramVacationRequestsStudentView()
+    this.getAllMemorize();
     this.getAllAvailableTeacher();
-    this.getAllMemorize();
-    this.getAllMemorize();
+    
+    //this.getAllMemorize();
 
   }
+
+  // ngOnChanges(changes: any) {
+  //   this.getAllMemorize();
+  // }
+
   getLookupByKey() {
     this.lookupService.getLookupByKey(this.listOfLookup).subscribe(res => {
       if (res.isSuccess) {
@@ -119,7 +121,7 @@ export class ProgramDayTaskTasmeaComponent implements OnInit {
   }
 
   getAllMemorize(){
-    this.programDayTasksService.getProgramMemorizeAtDay(this.taskDetails?.dutyDay || '').subscribe(
+    this.programDayTasksService.getProgramMemorizeAtDay(this.tasmeaModel?.dutyDay || '').subscribe(
       (res: any) => {
         res.data as IProgramDayTasksModel
         Array.from(res.data).forEach((elm: any) => {
@@ -129,10 +131,10 @@ export class ProgramDayTaskTasmeaComponent implements OnInit {
           }
           else { this.fileList?.push(elm as IAttachment); }
         })
-        this.tasmeaDetailsModel.bookAttatchments = this.fileList;
+        this.tasmeaModel.bookAttatchments = this.fileList;
       }
       , error => {
-        this.tasmeaDetailsModel.bookAttatchments = [];
+        this.tasmeaModel.bookAttatchments = [];
       }
     );
 
