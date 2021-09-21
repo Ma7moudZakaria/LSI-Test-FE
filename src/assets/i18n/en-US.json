@@ -157,7 +157,14 @@
     "DEPARTMENT": "Department",
     "ENTER_REPLAY": "Please enter a reply",
     "SELECT_DEPATMENT": "Please select a Department",
-    "PROGRAM_NAME": "General Question"
+    "PROGRAM_NAME": "General Question",
+    "ADVANCED_SEARCH": "Advanced Search",
+    "PROGRAM_NAME_SEARCH": "Program Name",
+    "QUESTION_OWNER_NAME": "Question Owner Name",
+    "QUESTION_NUMBER": "Question Number",
+    "FROM": "From",
+    "TO": "To",
+    "SEARCH": "Search"
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "Programs",

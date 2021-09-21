@@ -156,7 +156,14 @@
     "DEPARTMENT": "القسم ",
     "ENTER_REPLAY": "من فضلك ادخل الرد ",
     "SELECT_DEPATMENT": "من فضلك اختار القسم",
-    "PROGRAM_NAME": "سؤال عام"
+    "PROGRAM_NAME": "سؤال عام",
+    "ADVANCED_SEARCH": "بحث متقدم ",
+    "PROGRAM_NAME_SEARCH": "اسم البرنامج",
+    "QUESTION_OWNER_NAME": "اسم صاحب السؤال",
+    "QUESTION_NUMBER": "رقم السؤال",
+    "FROM": "من",
+    "TO": "الى",
+    "SEARCH": "بحث"
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "البرامج",
