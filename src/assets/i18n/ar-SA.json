@@ -163,7 +163,13 @@
     "QUESTION_NUMBER": "رقم السؤال",
     "FROM": "من",
     "TO": "الى",
-    "SEARCH": "بحث"
+    "SEARCH": "بحث",
+    "ADD_SCIENTIFIC_PROBLEM": "اضافه اشكال علمى",
+    "THE_PROGRAM": "البرنامج",
+    "TASKS":"المهام",
+    "THE_DAY": "اليوم",
+    "THE_QUESTION": "السؤال",
+    "SEND":"ارسال"
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "البرامج",

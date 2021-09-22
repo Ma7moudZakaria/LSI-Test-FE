@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-model';
 import {  IProgramDutyDays } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { StudentProgramDutyDaysTaskComponent } from './student-program-duty-days-task/student-program-duty-days-task.component';
@@ -15,19 +15,21 @@ export class StudentProgDutiesComponent implements OnInit {
   @ViewChild(StudentProgramDutyDaysComponent) progDayChild: StudentProgramDutyDaysComponent | undefined;
   programDutyDay: IProgramDutyDays | undefined
   taskDetails?:IProgramDayTasksModel;
-  
+  openAddScientificProblem: boolean = false
+
+
   constructor() { }
 
   ngOnInit(): void {
- 
+
   }
 
   progDutyDayEventCallBk(event?: IProgramDutyDays) {
     if (this.progDayTaskChild && event){
       this.progDayTaskChild.programDutyDay = event;
       this.progDayTaskChild?.getProgramDutyDays();
-    } 
-    this.programDutyDay = event; 
+    }
+    this.programDutyDay = event;
   }
 
   sendTaskIdToProgDayTaskDetails(item?:IProgramDayTasksModel){
@@ -40,4 +42,12 @@ export class StudentProgDutiesComponent implements OnInit {
 
   loadDay(){this.progDayChild?.onDayChange()}
 
+
+  closeAddScientificProblem() {
+    this.openAddScientificProblem = false;
+  }
+
+  openAddScientificProblemPopup() {
+    this.openAddScientificProblem = true;
+  }
 }

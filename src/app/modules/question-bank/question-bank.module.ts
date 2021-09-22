@@ -16,14 +16,18 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { AddScientificProblemComponent } from './components/quesion-bank-view/add-scientific-problem/add-scientific-problem.component';
 
 @NgModule({
-  declarations: [AddQuestionBankCategoryComponent, QuestionBankCategoriesViewComponent, QuestionBankCategoryDetailsComponent, AddQuestionBankQuestionComponent,
-    QuestionBankQuestionsViewComponent, QuestionBankQuestionDetailsComponent, QuesionBankViewComponent, AddScientificProblemComponent],
-  imports: [
-    SharedModule,
-    FormsModule,
-    ReactiveFormsModule,
-    CommonModule,
-    QuestionBankRoutingModule, TranslateModule, MatTooltipModule
-  ], providers: [MatTooltipModule]
+    declarations: [AddQuestionBankCategoryComponent, QuestionBankCategoriesViewComponent, QuestionBankCategoryDetailsComponent, AddQuestionBankQuestionComponent,
+        QuestionBankQuestionsViewComponent, QuestionBankQuestionDetailsComponent, QuesionBankViewComponent, AddScientificProblemComponent],
+    imports: [
+        SharedModule,
+        FormsModule,
+        ReactiveFormsModule,
+        CommonModule,
+        QuestionBankRoutingModule, TranslateModule, MatTooltipModule
+    ],
+    exports: [
+        AddQuestionBankQuestionComponent
+    ],
+    providers: [MatTooltipModule]
 })
 export class QuestionBankModule { }

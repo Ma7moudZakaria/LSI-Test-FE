@@ -1,0 +1,70 @@
+<div class="form-group DataForm mt-5 pl-3 pr-3">
+  <h3 class=" head  bold">{{'SCIENTIFIC_PROBLEM.ADD_SCIENTIFIC_PROBLEM' | translate}} </h3>
+
+  <div class="form-group">
+    <label  class="label" for="category">{{'SCIENTIFIC_PROBLEM.THE_PROGRAM' | translate}} </label>
+    <div class="d-flex">
+      <div class="input-group">
+        <select class="form-control"  [(ngModel)]="filter.progId"    [ngModelOptions]="{standalone: true}">
+          <option   value="">{{'SCIENTIFIC_MATERIAL.SELECTOPTION' | translate}}</option>
+          <option *ngFor="let item of ProgramsList" value="{{item.id}}">
+            {{item.progName}}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label  class="label" for="category">{{'SCIENTIFIC_PROBLEM.THE_DAY' | translate}} </label>
+    <div class="d-flex">
+      <div class="input-group">
+        <select class="form-control"  [(ngModel)]="filter.progId"    [ngModelOptions]="{standalone: true}">
+          <option   value="">{{'SCIENTIFIC_MATERIAL.SELECTOPTION' | translate}}</option>
+          <option *ngFor="let item of ProgramsList" value="{{item.id}}">
+            {{item.progName}}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label  class="label" for="category">{{'SCIENTIFIC_PROBLEM.TASKS' | translate}} </label>
+    <div class="d-flex">
+      <div class="input-group">
+        <select class="form-control"  [(ngModel)]="filter.progId"    [ngModelOptions]="{standalone: true}">
+          <option   value="">{{'SCIENTIFIC_MATERIAL.SELECTOPTION' | translate}}</option>
+          <option *ngFor="let item of ProgramsList" value="{{item.id}}">
+            {{item.progName}}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label  class="label" for="category">{{'SCIENTIFIC_PROBLEM.THE_QUESTION' | translate}} </label>
+    <div class="d-flex">
+      <div class="input-group">
+            <textarea class="form-control" cols="2" rows="5" id="InputQuestion" ></textarea>
+      </div>
+    </div>
+  </div>
+
+  <section class="mt-5">
+    <div  class="row direction-rtl buttons-center mt-5">
+      <button   type="submit" class="save-btn" (click)="sendAdvancedSearch()">
+        {{'SCIENTIFIC_PROBLEM.SEND' | translate}}
+      </button>
+      <button  (click)="closeStuAdvancedSearch()"  type="reset" class="cancel-btn">
+        {{ "GENERAL.CANCEL" | translate }}
+      </button>
+    </div>
+  </section>
+
+
+
+
+
+</div>

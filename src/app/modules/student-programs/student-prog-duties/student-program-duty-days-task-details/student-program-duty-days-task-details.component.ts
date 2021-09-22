@@ -21,6 +21,8 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { StudentProgDutiesServiceService } from 'src/app/core/services/student-prog-duties-services/student-prog-duties-service.service';
+import {RoleManagementService} from '../../../../core/services/role-management/role-management.service';
+import {IStudentSubscriptionFilterRequestModel} from '../../../../core/interfaces/student-program-subscription-interfaces/istudent-subscription-filter-request-model';
 
 @Component({
   selector: 'app-student-program-duty-days-task-details',
@@ -52,12 +54,13 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
   resMessage: BaseMessageModel = {};
   isAnswer:boolean=true;
   isMndatory?:boolean=false;
-  
+  @Output() openAddScientificProblem = new EventEmitter<boolean>();
+
   constructor(
     public languageService: LanguageService,
     private studentProgDutiesServiceService: StudentProgDutiesServiceService,
     public translate: TranslateService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute , public roleManagmentService: RoleManagementService
   ) { }
 
   ngOnInit(): void {
@@ -145,7 +148,7 @@ no(){
 }
 
   save(){
-    this.resultMessage = {}; 
+    this.resultMessage = {};
     let model : ISubmitStudentDutyDayTaskModel  = {
       progtaskId:this.taskDetails?.id,
       studId :this.route.snapshot.params.id,
@@ -167,7 +170,7 @@ no(){
         this.resultMessage = {
           message: res.message || "",
           type: BaseConstantModel.SUCCESS_TYPE
-        }      
+        }
       }
       else {
         this.resultMessage = {
@@ -182,7 +185,12 @@ no(){
       }
     });
   }
-  
+
   taskIsSave(){ this.taskIsSaveEvent.emit()}
-  
+
+
+
+  newScientificProblem() {
+    this.openAddScientificProblem.emit(true);
+  }
 }

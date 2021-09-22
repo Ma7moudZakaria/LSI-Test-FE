@@ -164,7 +164,13 @@
     "QUESTION_NUMBER": "Question Number",
     "FROM": "From",
     "TO": "To",
-    "SEARCH": "Search"
+    "SEARCH": "Search",
+    "ADD_SCIENTIFIC_PROBLEM": "Add Scientific Program",
+    "THE_PROGRAM": "The Program",
+    "TASKS":"Tasks",
+    "THE_DAY": "The Day",
+    "THE_QUESTION": "The Question",
+    "SEND": "Send"
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "Programs",

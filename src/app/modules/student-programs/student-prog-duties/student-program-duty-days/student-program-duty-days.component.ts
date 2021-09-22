@@ -8,6 +8,7 @@ import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { StudentProgDutiesServiceService } from 'src/app/core/services/student-prog-duties-services/student-prog-duties-service.service';
+import {IStudentSubscriptionFilterRequestModel} from '../../../../core/interfaces/student-program-subscription-interfaces/istudent-subscription-filter-request-model';
 
 @Component({
   selector: 'app-student-program-duty-days',
@@ -24,6 +25,7 @@ export class StudentProgramDutyDaysComponent implements OnInit {
   resMessage: BaseMessageModel = {};
   defaultSelectedDay:number = 0;
   isCurrindex:number=0;
+
   constructor(
     public languageService: LanguageService,
     public translate: TranslateService,
@@ -51,7 +53,7 @@ export class StudentProgramDutyDaysComponent implements OnInit {
           this.studentProgramDutiesList = res.data.programDutyDaysModel as IStudentProgramDutiesResponse[];
           this.isCurrindex=this.studentProgramDutiesList.findIndex(x=>x.isCurr===true);
           if(this.isCurrindex>=0)
-         {this.onDayClick(this.studentProgramDutiesList[this.isCurrindex]); this.defaultSelectedDay=this.isCurrindex;} 
+         {this.onDayClick(this.studentProgramDutiesList[this.isCurrindex]); this.defaultSelectedDay=this.isCurrindex;}
          else{this.isCurrindex=this.studentProgramDutiesList.findIndex(x=>x.isNex===true) -1;
            this.onDayClick(this.studentProgramDutiesList[0]); this.defaultSelectedDay=0;}
         }

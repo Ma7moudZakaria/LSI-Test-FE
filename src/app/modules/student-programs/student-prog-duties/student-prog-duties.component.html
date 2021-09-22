@@ -7,8 +7,16 @@
         <div class="col-3">
             <app-student-program-duty-days-task [programDutyDay]='programDutyDay' (taskDetailsEvent)="sendTaskIdToProgDayTaskDetails($event)" (taskIsEndEvent)="loadDay()"></app-student-program-duty-days-task>
         </div>
-        <div class="col-6" *ngIf='taskDetails'> 
-            <app-student-program-duty-days-task-details [taskDetails]='taskDetails' (taskIsSaveEvent)=" loadTask()"></app-student-program-duty-days-task-details >
+        <div class="col-6" *ngIf='taskDetails'>
+            <app-student-program-duty-days-task-details [taskDetails]='taskDetails' (taskIsSaveEvent)=" loadTask()"
+                                                        (openAddScientificProblem)="openAddScientificProblemPopup()"
+            ></app-student-program-duty-days-task-details >
         </div>
+
+      <div class="overlay" *ngIf="openAddScientificProblem">
+        <app-add-task-scientific-problem
+          (closeAddScientificProblem)="closeAddScientificProblem()"
+        ></app-add-task-scientific-problem>
+      </div>
     </div>
 </div>
