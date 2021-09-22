@@ -96,16 +96,16 @@ export class AddProgramDayTasksComponent implements OnInit {
         this.selectedProgramDayTasksList?.splice(ind, 1);
       }
     }
-
-    this.haveMemorize = this.selectedProgramDayTasksList.some(i => i === '5c2a09dc-7873-450f-af1d-4d153765e5c1');//'5c2a09dc-7873-450f-af1d-4d153765e5c1' is id memorize task
-  if(!this.haveMemorize&& this.selectedProgramDayTasksList.some(i => i === '8ed9715f-d5d4-403d-8edd-714799a33060')){// 8ed9715f-d5d4-403d-8edd-714799a33060 is id tasmea task
-    let it = this.selectedProgramDayTasksList.filter(i => i === '8ed9715f-d5d4-403d-8edd-714799a33060')[0];
-    const ind = this.selectedProgramDayTasksList?.indexOf(it);
-    if (ind > -1) {
-      this.selectedProgramDayTasksList?.splice(ind, 1);
-    }
-    this.checked=false;
-  }
+// if(this.haveMemorize==false){
+//     this.haveMemorize = this.selectedProgramDayTasksList.some(i => i === '5c2a09dc-7873-450f-af1d-4d153765e5c1');//'5c2a09dc-7873-450f-af1d-4d153765e5c1' is id memorize task
+//   if(!this.haveMemorize&& this.selectedProgramDayTasksList.some(i => i === '8ed9715f-d5d4-403d-8edd-714799a33060')){// 8ed9715f-d5d4-403d-8edd-714799a33060 is id tasmea task
+//     let it = this.selectedProgramDayTasksList.filter(i => i === '8ed9715f-d5d4-403d-8edd-714799a33060')[0];
+//     const ind = this.selectedProgramDayTasksList?.indexOf(it);
+//     if (ind > -1) {
+//       this.selectedProgramDayTasksList?.splice(ind, 1);
+//     }
+//     this.checked=false;
+//   }}
   }
 
   async onSubmit() {
