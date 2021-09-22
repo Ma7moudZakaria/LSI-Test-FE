@@ -66,8 +66,7 @@ export class StudentProgramsComponent implements OnInit {
   }
   
   goToHomeWore(batchId?:string,progId?:string){
-    localStorage.setItem('progId', progId || '')
-    this.router.navigateByUrl('student-programs/Student-duty/' + this.programFilter.usrId + '/' + batchId);
+    this.router.navigateByUrl('student-programs/Student-duty/' + this.programFilter.usrId + '/' + batchId+'/' + progId);
   }
 
   closeAddStuDutyDaysToProgramOverlay($event:boolean){

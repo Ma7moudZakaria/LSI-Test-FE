@@ -26,7 +26,8 @@ export class StudentProgramDutyDaysTaskComponent implements OnInit {
   resMessage: BaseMessageModel = {};
   defaultSelectedDay:number = 0;
   indexIsanswered:number=0;
- 
+  isAnsweredIndex:number=0;
+
   constructor(
     public languageService: LanguageService,
     private studentProgDutiesServiceService: StudentProgDutiesServiceService,
@@ -51,6 +52,7 @@ export class StudentProgramDutyDaysTaskComponent implements OnInit {
         if(this.indexIsanswered>=0)
        {this.setProgrmeDayTask(this.programDayTasksLists[this.indexIsanswered]); this.defaultSelectedDay=this.indexIsanswered;}
         else{this.setProgrmeDayTask(this.programDayTasksLists[0]);  this.defaultSelectedDay=0;} 
+        this.isAnsweredIndex=this.programDayTasksLists.findIndex(x=>x.answered===true);
       }
       else {
         this.resMessage =

@@ -56,6 +56,7 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
   isMndatory?:boolean=false;
   programDetails : IProgramDetails | undefined;
   progId?:string;
+ 
   
   constructor(
     public languageService: LanguageService,
@@ -65,21 +66,22 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
     private programService: ProgramService
   ) { }
 
-  ngOnInit(): void {
-    this.getProgramDetails();
-    this.getprogramDayTaskDetails();
+  async ngOnInit() {
+    this.progId= this.route.snapshot.params.progId;
+    //  this.getProgramDetails();
     this.resultMessage = {}
-    if(localStorage.getItem("progId"))
-    {this.progId = localStorage.getItem("progId") || '';}
+    // if(localStorage.getItem("progId"))
+    // {this.progId = localStorage.getItem("progId") || '';}
+    await this.getprogramDayTaskDetails();
   }
-  ngOnChanges(changes: any){
-    this.getProgramDetails();
-    this.getprogramDayTaskDetails();
-    this.resultMessage = {
-    }
+  async ngOnChanges(changes: any){
+    await this.getprogramDayTaskDetails();
+
+    // this.getProgramDetails();
+    this.resultMessage = { }
   }
 
-  getprogramDayTaskDetails(){
+  async getprogramDayTaskDetails(){
     switch (this.taskDetails?.huffazTask) {
       case this.detailsTypeEnum.taskHearing:
        this.hearingTaskDetailsModel= JSON.parse(this.taskDetails?.detailsTask||"{}");
@@ -132,11 +134,12 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
                         this.dailyTestDetailsModel.questions = [];
                       break;
                       case this.detailsTypeEnum.TaskTasmea:
-                    this.tasmeaModel=this.programDetails?.progBaseInfo||{};
+                        this.programDetails = await (await this.programService.getProgramDetails(this.progId || '').toPromise()).data
+                     this.tasmeaModel.dutyDay=this.taskDetails.dutyDay;
                     this.tasmeaModel.prgRecitType= this.programDetails?.progBaseInfo?.prgRecitType;
                     this.tasmeaModel.progRecitationTimes=this.programDetails?.progBaseInfo?.prgRecitTms?
                     this.programDetails?.progBaseInfo?.prgRecitTms.filter(i => i.huffno !== ProgramDayTaskRecitationType.limited).map((item: any) => ({ progRecFrom: item.recitFrom, progRecTo: item.recitTo })) : [];
-                    this.tasmeaModel.dutyDay=this.taskDetails.dutyDay;
+                   
                     break;
       default:
         "";
@@ -197,12 +200,14 @@ no(){
   taskIsSave(){
      this.taskIsSaveEvent.emit()
     }
-    getProgramDetails() {
+
    
+  getProgramDetails() {
+    this.progId= this.route.snapshot.params.progId;
       this.programService.getProgramDetails(this.progId || '').subscribe(res => {
         if (res.isSuccess) {
-          this.programDetails = res.data as IProgramDetails;
-           localStorage.removeItem("progId");
+           this.programDetails = res.data as IProgramDetails;
+           this.getprogramDayTaskDetails();
         }
         else {
           this.resMessage =
