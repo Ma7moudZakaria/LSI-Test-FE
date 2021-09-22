@@ -1,5 +1,7 @@
+
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
+import * as moment from 'moment';
 import { IGroupChat } from '../../interfaces/chat-interfaces/igroup-chat';
 import { IMessageChat } from '../../interfaces/chat-interfaces/imessage-chat';
 import { IParticipantChat } from '../../interfaces/chat-interfaces/iparticipant-chat';
@@ -33,16 +35,37 @@ export class ChatService {
             last_message: item.last_message,
             messages: Object.values(item.messages || []),
             participants: Object.values(item.participants || []),
-          }) ;
-          this.allChatGroupsList = this.allChatGroupsList.sort((a, b) => {
-            return <any>new Date(a.last_date) - <any>new Date(b.last_date);
-          });
+          });         
+        }        
+      });      
+      // this.allChatGroupsList = this.allChatGroupsList.sort((a, b) => {
+      //   return b.last_date.localeCompare(a.last_date);
+      // });
+      this.allChatGroupsList =  this.allChatGroupsList.sort((a, b) => {
+        var dateToFormatLastDateA = a.last_date;
+        moment(dateToFormatLastDateA).format("DD/MM/YYYY"); 
+
+        var dateToFormatLastDateB = b.last_date;
+        moment(dateToFormatLastDateB).format("DD/MM/YYYY"); 
+        
+        var diff = dateToFormatLastDateA.diff(dateToFormatLastDateB);
+        console.log("diff" , diff);
+
+        if(dateToFormatLastDateA > dateToFormatLastDateB){
+          return 1;
+        }
+        
+        if(dateToFormatLastDateB > dateToFormatLastDateA){
+          return -1;
         }
 
-        
-      });      
+        return 0;
 
+
+
+      });
       
+      console.log("this.allChatGroupsList" , this.allChatGroupsList)
     });    
   }
   

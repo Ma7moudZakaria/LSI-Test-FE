@@ -1,5 +1,6 @@
 import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IAttachment } from 'src/app/core/interfaces/attachments-interfaces/iattachment';
@@ -29,14 +30,15 @@ export class UserChatViewDetailsComponent implements OnInit {
   messageType:string = "text";
   messageAttachmentURL:string | undefined;
   fileUploadModel: IFileUpload[] = [];
-  groupData = {} as IGroupChat ;
+  groupData : IGroupChat | undefined ;
   fileList: IAttachment[] = [];
   attachmentIds: string[] = [];
   
-  constructor(public translate: TranslateService , public chatService:ChatService , private attachmentService: AttachmentsService) { }
+  constructor(public translate: TranslateService , public chatService:ChatService , private modalService: NgbModal , private attachmentService: AttachmentsService) { }
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
+    console.log("groupData?.allowed " , this.groupData )
   }
 
   addMessageToGroup(message?:string , messageType?:string, event?: any){
@@ -52,7 +54,8 @@ export class UserChatViewDetailsComponent implements OnInit {
             sender_name_ar:this.currentUser?.fullNameAr,
             sender_name_en:this.currentUser?.fullNameEn,
             message:message,
-            message_type:messageType
+            message_type:messageType,
+            file_name:''
           };
         }
         else{
@@ -63,15 +66,16 @@ export class UserChatViewDetailsComponent implements OnInit {
             sender_name_ar:this.currentUser?.fullNameAr,
             sender_name_en:this.currentUser?.fullNameEn,
             message:message,
-            file_name:this.messageAttachmentURL,
+            file_name:this.messageAttachmentURL == null ? '':this.messageAttachmentURL,
             message_type:messageType
           };      
         }
     
         if(this.groupData?.last_message || this.groupData?.last_message == ""){
           this.groupData.last_date = last_date;
-          this.groupData.last_message = this.addMessageToChatGroup.message;
-          this.groupData.key = this.currentUser?.id;
+          this.groupData.last_message = message;
+          console.log("this.groupData.key" , this.groupData.key);
+          // this.groupData.key = this.currentUser?.id;
         }   
     
         if(this.groupData?.messages != null){
@@ -100,7 +104,7 @@ export class UserChatViewDetailsComponent implements OnInit {
   }
 
   getGroupMessages(){
-    this.chatService.getGroupMessages(this.groupData);
+    this.chatService.getGroupMessages(this.groupData || {});
 
     this.listOfMessagess = this.chatService.allMessagesList || [];
   }
@@ -139,4 +143,7 @@ export class UserChatViewDetailsComponent implements OnInit {
     )
   }
 
+  openVerticallyCentered(content: any) {
+    this.modalService.open(content, { size: 'lg' });
+  }
 }
