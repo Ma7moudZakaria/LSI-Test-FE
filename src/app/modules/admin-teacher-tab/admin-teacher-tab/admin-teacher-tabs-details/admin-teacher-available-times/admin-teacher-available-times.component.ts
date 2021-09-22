@@ -30,14 +30,14 @@ export class AdminTeacherAvailableTimesComponent implements OnInit {
   getTeacherAvailableTimesTeacherView() {
     this.teacherAppointmentService.getTeacherAvailableTimesTeacherView(this.teacherIdOutput?.usrId).subscribe(res => {
       if (res.isSuccess) {
-        this.alertify.success(res.message || '');
+        // this.alertify.success(res.message || '');
         this.teacherAvailableTimes = res.data as ITeacherAvailableTimes;
       }
       else{
-        this.alertify.error(res.message || '');
+        // this.alertify.error(res.message || '');
       }
     }, error => {
-      this.alertify.error(error || '');
+      // this.alertify.error(error || '');
     }
     )};
 }

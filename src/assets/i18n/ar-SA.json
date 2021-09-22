@@ -850,7 +850,8 @@
     "VALIDATIONDATE": "تاريخ البداية يجب ان يكون اقل من تاريخ النهاية ",
     "REQUEST_REASON": "سبب الطلب",
     "NO_DATA": "لا يوجد بيانات",
-    "VIEW_EXAM":"عرض الإختبار"
+    "VIEW_EXAM":"عرض الإختبار",
+    "ExamResult": "نتيجة اختبار القبول"
   },
   "TEACHER_SYSTEM_SUBSCRIPTION": {
     "REQUEST_DATE": "تاريخ الطلب",
