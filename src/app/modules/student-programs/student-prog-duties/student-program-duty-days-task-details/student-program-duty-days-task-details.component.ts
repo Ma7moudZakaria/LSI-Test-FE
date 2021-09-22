@@ -145,13 +145,11 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
 yes(){
   this.isAnswer=true;
   this.save();
-  this.taskIsSave();
 }
 
 no(){
   this.isAnswer=false;
   this.save();
-  this.taskIsSave();
 }
 
   save(){
@@ -177,7 +175,8 @@ no(){
         this.resultMessage = {
           message: res.message || "",
           type: BaseConstantModel.SUCCESS_TYPE
-        }      
+        }  
+        this.taskIsSave();    
       }
       else {
         this.resultMessage = {
