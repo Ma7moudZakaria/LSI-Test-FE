@@ -11,9 +11,10 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatListModule } from '@angular/material/list';
+import { RejectedGroupRequestFormComponent } from './components/teacher-recitation-wrapper/rejected-group-request-form/rejected-group-request-form.component';
 
 @NgModule({
-  declarations: [TeacherRecitationGroupsComponent, TeacherRecitationGroupSelectedComponent, TeacherRecitationJoinRequestComponent, AddNewGroupTeacherRecitationComponent, TeacherRecitationWrapperComponent],
+  declarations: [TeacherRecitationGroupsComponent, TeacherRecitationGroupSelectedComponent, TeacherRecitationJoinRequestComponent, AddNewGroupTeacherRecitationComponent, TeacherRecitationWrapperComponent, RejectedGroupRequestFormComponent],
   imports: [
     CommonModule, SharedModule,
     TeacherRecitationRoutingModule, MatListModule,

@@ -1,25 +1,35 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-4 col-md-3 col-sm-12 pl-0">
-            <app-teacher-recitation-groups (showAddGroup)="showAddGroup($event)">
+        <div class="col-lg-4 col-md-3 col-sm-12 ">
+            <app-teacher-recitation-groups 
+            (showAddGroup)="showAddGroup($event)"
+            (sendGroupId)="reciveGroupId($event)">
                 
             </app-teacher-recitation-groups>
         </div>
        
-        <div class="col-lg-4 col-md-3 col-sm-12 pl-0">
-            <app-teacher-recitation-group-selected>
+        <div class="col-lg-8 col-md-3 col-sm-12 ">
+            <app-teacher-recitation-group-selected (rejectedRequestId)="reciveRejectedRequestId($event)">
 
             </app-teacher-recitation-group-selected>
         </div>
       
-       <div class="col-lg-4 col-md-3 col-sm-12 pl-0">
+       <!-- <div class="col-lg-4 col-md-3 col-sm-12 ">
             <app-teacher-recitation-join-request>
 
             </app-teacher-recitation-join-request>
-        </div>
+        </div> -->
     </div>   
     <div class="overlay" *ngIf="showAddGroupForm">
         <app-add-new-group-teacher-recitation (hideform)="showAddGroup($event)"></app-add-new-group-teacher-recitation>
+        <!-- <app-add-group (hideform)="showAddGroup($event)" [dataEdit]="editRoleData"  >
+
+        </app-add-group> -->
+    </div>
+    <div class="overlay" *ngIf="showRejectForm">
+        <app-rejected-group-request-form (hideform)="openRejectForm($event)"
+        [rejectedRequestId]="rejectedRequestId"
+        ></app-rejected-group-request-form>
         <!-- <app-add-group (hideform)="showAddGroup($event)" [dataEdit]="editRoleData"  >
 
         </app-add-group> -->

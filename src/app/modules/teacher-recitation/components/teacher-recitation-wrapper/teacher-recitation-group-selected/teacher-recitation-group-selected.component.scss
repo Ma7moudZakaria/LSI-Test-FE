@@ -15,3 +15,64 @@
     font-size: 0.85rem;
    
 }
+
+
+
+
+////////////////
+ .chat_details.join_req {
+    height: 70.7vh;
+    padding: .5rem;
+    
+}
+
+.cancel-btn {
+    background: #CB9118;
+    font-size: 0.85rem;
+}
+.chat_details {
+    height: 59vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0.7rem;
+}
+.cardRecourd.groupRequests{
+    background-color: #fff !important;
+    border-radius: 10px !important;
+    border-radius: 1.2rem!important;
+    border-bottom:none !important;
+}
+
+.ellipsis
+{
+    width: 80%;
+}
+
+.save-btn{
+    background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
+    background: #8E2520 0% 0% no-repeat padding-box;
+    border-radius: 12px;
+    opacity: 1;
+    opacity: 1;
+    width:auto;
+    padding: 0.5rem;
+    height: 2.31rem;
+    border: none;
+    color: #ffffff;
+    display: block;
+    }
+    .cancel-btn{
+        background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
+        background:$icon_input ;
+        border-radius: 12px;
+        opacity: 1;
+        width:auto;
+        padding: 0.5rem;
+        height: 2.31rem;
+        border: none;
+        color: #ffffff;
+        display: block;
+        }
+.message_date{
+    font-family: Almarai-Bold;
+}

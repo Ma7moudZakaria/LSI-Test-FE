@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IAddGroupExplanationModel } from '../../interfaces/calls/iadd-group-explanation-model';
 import { IAddStudentInGroupExplanationModel } from '../../interfaces/calls/iadd-student-in-group-explanation-model';
+import { IGroupExplanationsJoinRequest } from '../../interfaces/calls/igroup-explanations-join-request';
 import { IGroupExplanationsStudentViewRequest } from '../../interfaces/calls/igroup-explanations-student-view-request';
 import { IGroupExplanationsTeacherViewRequest } from '../../interfaces/calls/igroup-explanations-teacher-view-request';
 import { IRejectGroupExplanationRequest } from '../../interfaces/calls/ireject-group-explanation-request';
@@ -13,18 +14,18 @@ import { BaseResponseModel } from '../../ng-model/base-response-model';
   providedIn: 'root'
 })
 export class CallsService {
-  getUsersInBatchURL = environment.baseUrl + 'Calls​/get-all-users-to-add-into-group-explanation';
-  addGroupExplanationURL = environment.baseUrl + 'Calls​/add-group-explanation';
-  addStudentURL = environment.baseUrl + 'Calls​/add-group-member-into-group-explanation';
-  StudentRequestURL = environment.baseUrl + 'Calls​/student-request-to-join-group-explanation';
-  acceptGroupRequestURL = environment.baseUrl + 'Calls​/accept-group-explanation-request';
-  rejectedGroupRequestURL = environment.baseUrl + 'Calls​/reject-group-explanation-request';
-  CancelExplanationRequestURL = environment.baseUrl + 'Calls​/student-cancel-explanation-request​/​​';
-  getDetailsGroupExplanationURL = environment.baseUrl + 'Calls​/get-group-explanation-details-by-id​/​​​​​​'
-  getTeacherViewtGroupExplanationURL = environment.baseUrl + 'Calls​/get-all-group-explanations-teacher-view'
-  getStudentViewtGroupExplanationURL = environment.baseUrl + 'Calls​/get-all-group-explanations-student-view'
-  getJoinRequestGroupExplanationURL = environment.baseUrl + 'Calls​/get-all-join-requests-explanations'
-
+  getUsersInBatchURL = environment.baseUrl + 'Calls/get-all-users-to-add-into-group-explanation';
+  addGroupExplanationURL = environment.baseUrl + 'Calls/add-group-explanation';
+  addStudentURL = environment.baseUrl + 'Calls/add-group-member-into-group-explanation';
+  StudentRequestURL = environment.baseUrl + 'Calls/student-request-to-join-group-explanation';
+  acceptGroupRequestURL = environment.baseUrl + 'Calls/accept-group-explanation-request';
+  rejectedGroupRequestURL = environment.baseUrl + 'Calls/reject-group-explanation-request';
+  CancelExplanationRequestURL = environment.baseUrl + 'Calls/student-cancel-explanation-request/​​';
+  getDetailsGroupExplanationURL = environment.baseUrl + 'Calls/get-group-explanation-details-by-id/'
+  getTeacherViewtGroupExplanationURL = environment.baseUrl + 'Calls/get-all-group-explanations-teacher-view'
+  getStudentViewtGroupExplanationURL = environment.baseUrl + 'Calls/get-all-group-explanations-student-view/'
+  // getJoinRequestGroupExplanationURL = environment.baseUrl + 'Calls/get-all-join-requests-explanations/'
+  removeStudentGroupExplanationURL = environment.baseUrl + 'Calls/remove-student-from-group-explanation/'
   constructor(private http: HttpClient) { }
 
   getAllUsersInBatct(model: IUsersInBatctRequest): Observable<BaseResponseModel> {
@@ -49,6 +50,9 @@ export class CallsService {
   getGroupExplanationDetails(Id: string): Observable<BaseResponseModel> {
     return this.http.get<BaseResponseModel>(this.getDetailsGroupExplanationURL + Id);
   }
+  removeStudentGroupExplanation(Id: string): Observable<BaseResponseModel> {
+    return this.http.get<BaseResponseModel>(this.removeStudentGroupExplanationURL + Id);
+  }
 
   getTeacherViewtGroupExplanation(model: IGroupExplanationsTeacherViewRequest): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.getTeacherViewtGroupExplanationURL, model);
@@ -57,6 +61,9 @@ export class CallsService {
   getStudentViewtGroupExplanation(model: IGroupExplanationsStudentViewRequest): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.getStudentViewtGroupExplanationURL, model);
   }
+  // getJoinRequestGroupExplanation(model: IGroupExplanationsJoinRequest): Observable<BaseResponseModel> {
+  //   return this.http.post<BaseResponseModel>(this.getJoinRequestGroupExplanationURL, model);
+  // }
 
 
 }

@@ -6,29 +6,33 @@
 
 
 <!-- <div class="row mx-0 "> -->
-<div class="chat_details w-100 mt-3">
+<!-- <div class="chat_details w-100 mt-3">
 <div class="chat_vontainer w-100">
-<ng-container *ngFor="let participant of listOfParticipants; let i = index"  >
-    <div class=" cardRecourd  d-flex justify-content-between mb-3" >
-        <div class="group_name  d-flex pb-0  align-items-center justify-content-between">
-            <img class="img_user">
-            <!-- src="{{participant.avatar_url}}"  -->
+
+ <ng-container *ngFor="let item of responseList; let i = index"  >
+    <div class=" cardRecourd   mb-3" >
+        <div class=" flex-item-first  group_name  d-flex pb-0  align-items-center justify-content-satrt">
+          <img class="img_user" src="../../../../../../assets/images/ASH_9078.png">
             <div>
-            <p class="ellipsis mb-0 ">langEnum</p>
-            <!-- {{ translate.currentLang === langEnum.en ? participant?.name_en : participant?.name_ar }} -->
-            <p class="message_date bold mb-0 px-2">اسم البرنامج اسم البرنامج</p>      
-                
+            <p class="ellipsis mb-0 ">{{ translate.currentLang === langEnum.en ? item?.studNameEn : item?.studNameAr }}</p>
+            <p class="message_date bold mb-0 px-2">{{ translate.currentLang === langEnum.en ? item?.ProjNameEn : item?.ProjNameAr }}</p>      
+            <p class="message_date bold mb-0 px-2">{{ translate.currentLang === langEnum.en ? item?.groupNameEn : item?.groupNameAr }}</p>      
+            <p class="message_date mb-0 px-2">{{item.reqDate}}</p>     
             </div>
-
         </div>
-        <div class="d-flex justify-content-between  align-items-center">
-            <p class="message_date mb-0 px-2">2020/10/25</p>      
-            <button class="btn_replay ">قبول</button>
 
+        <div class=" flex-item-sc d-flex justify-content-end  align-items-center">
+            <button  class="save-btn my-2 " (click)="acceptGroupRequest(item.studId)">
+                {{ "GENERAL.ACCEPT" | translate }}
+            </button>
+            <button  class="cancel-btn my-2 " >
+                {{ "GENERAL.REJECT" | translate }}
+            </button>
           </div>
         </div>
-</ng-container>
+</ng-container> 
+
 </div>
-<!-- </div> -->
 </div>
+</div> -->
 </div>

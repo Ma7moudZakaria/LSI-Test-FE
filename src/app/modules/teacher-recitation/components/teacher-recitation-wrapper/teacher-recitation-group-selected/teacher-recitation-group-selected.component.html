@@ -1,4 +1,6 @@
-<div class="details_day" >
+<div class="row">
+  <div class="col-6">
+    <div class="details_day" >
     <div class="head_groupName  d-flex  align-items-center justify-content-between " >
     <P  class="mx-2">مجموعة أ</P>
      <button class="cancel-btn  ">إضافة طالب</button>
@@ -8,25 +10,76 @@
 <!-- <div class="row mx-0 "> -->
 <div class="chat_details w-100 mt-3">
 <div class="chat_vontainer w-100">
-<ng-container *ngFor="let participant of listOfParticipants; let i = index"  >
-    <div class=" cardRecourd  d-flex justify-content-between mb-3" >
-        <div class="group_name  d-flex pb-0  align-items-center justify-content-between">
-            <img class="img_user">
-            <!-- src="{{participant.avatar_url}}"  -->
-            <div>
-            <p class="ellipsis mb-0 ">langEnum</p>
-            <!-- {{ translate.currentLang === langEnum.en ? participant?.name_en : participant?.name_ar }} -->
-            <p class="message_date mb-0 px-2">2020/10/25 </p>      
-                
-            </div>
 
-        </div>
-        <div class="d-flex"  >
-            <a> <img  class="delete" src="assets/images/feelings/close.svg"></a>
+  <ng-container *ngFor="let itemOfGroupRequests of detailsGroupExplanation?.groupMembers" >
+      <div class=" cardRecourd  d-flex justify-content-between mb-3" >
+          <div class="group_name  d-flex pb-0  align-items-center justify-content-between">
+            <img class="img_user" src="../../../../../../assets/images/ASH_9078.png">
+
+              <div>
+              <p class="ellipsis mb-0 ">
+                {{ translate.currentLang === langEnum.en ? itemOfGroupRequests?.studNameEn : itemOfGroupRequests?.studNameAr }}
+              </p>
+              <p class="message_date mb-0 px-2">2020/10/25 </p>      
+                  
+              </div>
+
           </div>
-        </div>
-</ng-container>
+          <div class="d-flex"  >
+              <a (click)="removeStudentGroupExplanation(itemOfGroupRequests.studId)"> <img  class="delete" src="assets/images/feelings/close.svg"></a>
+            </div>
+          </div>
+  </ng-container>
+
 </div>
 <!-- </div> -->
 </div>
 </div>
+</div>
+
+
+  <div class="col-6">
+    
+<div class="details_day" >
+  <div class="head_groupName  d-flex  align-items-center justify-content-between " >
+  <P  class="mx-2">طلبات الانضمام</P>
+</div>
+
+
+<!-- <div class="row mx-0 "> -->
+<div class="chat_details join_req w-100 mt-3">
+<div class="chat_vontainer w-100">
+
+
+  <ng-container   *ngFor="let itemOfGroupRequests of detailsGroupExplanation?.groupRequests" >
+    <div class=" cardRecourd  groupRequests mb-3" >
+        <div class=" flex-item-first  group_name  d-flex pb-0  align-items-center justify-content-satrt">
+          <img class="img_user" src="../../../../../../assets/images/ASH_9078.png">
+            <div>
+            
+            <p class="ellipsis mb-0 ">{{ translate.currentLang === langEnum.en ? itemOfGroupRequests?.studNameEn : itemOfGroupRequests?.studNameAr }}</p>
+            <p class="message_date bold mb-0 px-2">{{ translate.currentLang === langEnum.en ? itemOfGroupRequests?.ProjNameEn : itemOfGroupRequests?.ProjNameAr }}</p>      
+            <p class="message_date bold mb-0 px-2">{{ translate.currentLang === langEnum.en ? itemOfGroupRequests?.groupNameEn : itemOfGroupRequests?.groupNameAr }}</p>      
+            <p class="message_date mb-0 px-2">{{itemOfGroupRequests.reqDate}}</p>     
+            </div>
+        </div>
+
+        <div class=" flex-item-sc d-flex justify-content-end  align-items-center">
+            <button  class="save-btn my-2 " (click)="acceptGroupRequest(itemOfGroupRequests.Id)">
+                {{ "GENERAL.ACCEPT" | translate }}
+            </button>
+            <button  class="cancel-btn my-2 " (click)="rejectedGroupRequest(itemOfGroupRequests.Id)" >
+                {{ "GENERAL.REJECT" | translate }}
+            </button>
+          </div>
+        </div>
+  </ng-container> 
+
+</div>
+<!-- </div> -->
+</div>
+</div>
+
+  </div>
+</div>
+

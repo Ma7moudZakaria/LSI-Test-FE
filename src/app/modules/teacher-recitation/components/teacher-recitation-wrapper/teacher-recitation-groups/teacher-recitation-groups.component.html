@@ -1,3 +1,4 @@
+
 <div class="details_day" >
     <div class="head_groupName  d-flex  align-items-center justify-content-between " >
     <P  class="mx-2">المجموعات</P>
@@ -17,15 +18,15 @@
 <!-- <div class="row mx-0 "> -->
 <div class="chat_details w-100">
 <div class=" w-100">
-<ng-container *ngFor="let participant of listOfParticipants; let i = index"  >
+<ng-container *ngFor="let item of responseList; let i = index"  >
     <div class="cardRecourd  d-flex justify-content-between mb-3" >
         <div class="group_name  d-flex pb-0  align-items-center justify-content-between">
-            <img class="img_user">
-            <!-- src="{{participant.avatar_url}}"  -->
+            <img class="img_user" src="../../../../../../assets/images/group.svg">
+            
             <div>
-            <p class="ellipsis mb-0 ">langEnum</p>
-            <!-- {{ translate.currentLang === langEnum.en ? participant?.name_en : participant?.name_ar }} -->
-            <p class="message_date mb-0 px-2">2020/10/25 </p>      
+            <a class="ellipsis mb-0 " (click)="getDetailsGroupExplanation(item.id)">
+            {{ translate.currentLang === langEnum.en ? item?.nameEn : item?.nameAr }}</a>
+            <p class="message_date mb-0 px-2">{{item.date}} </p>      
                 
             </div>
 

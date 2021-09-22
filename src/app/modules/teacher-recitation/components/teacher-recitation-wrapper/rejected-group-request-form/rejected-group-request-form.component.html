@@ -1,0 +1,39 @@
+
+<div class="col-md-12">
+    <p class="title_add">
+       اضف سبب الرفض 
+    </p>
+    <div class="col-md-10 mx-auto">
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="label">
+                    سبب الرفض 
+                    </label>
+  
+                    <textarea  class="form-control " cols="1"  rows="5" 
+                    [(ngModel)]='itemRejectedReq.reason'  [ngModelOptions]="{standalone: true}" >
+                    </textarea>
+  
+                
+            </div>
+          
+  
+        <!-- <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2">
+            {{resultMessage.message}}
+        </div> -->
+        <div class="row">
+          
+            <div class="col-md-6" >
+                <button (click)="saveData()" class="save-btn">
+                    {{ "GENERAL.SAVE" | translate }}
+                </button>
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="cancel-btn" (click)="cancelData()">
+                    {{ "GENERAL.CANCEL" | translate }}
+                </button>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  
