@@ -1,11 +1,11 @@
 @import '../join-requests/join-requests.component.scss';
-p.name {
-    font-family: Almarai-Bold;
+ p.name {
+     font-family: Almarai-Bold;
     font-size: 18px;
-    letter-spacing: 0px;
+     letter-spacing: 0px;
     color: #3A3A3A;
-    opacity: 1;
-}
+     opacity: 1;
+ }
 .internal_scroll_list_group.order{
     height: 415px !important;
 }    
@@ -13,16 +13,16 @@ p.name {
     color: #CB9118;
     font-size: 14px;
     font-family: Almarai-Bold;
-}
-.info{
+ }
+ .info{
+    color: #3A3A3A;
+     font-size: 14px;
+     font-family: Almarai-Bold; 
+ }
+ .regular{
     color: #3A3A3A;
     font-size: 14px;
-    font-family: Almarai-Bold; 
-}
-.regular{
-    color: #3A3A3A;
-    font-size: 14px;
-    font-family: Almarai-Regular;
+     font-family: Almarai-Regular;
 
 }
 
@@ -32,10 +32,10 @@ p.name {
     align-items: center;
     display: flex;
     padding: 0.5rem 1rem;
-    background-color: #ffff;
+     background-color: #ffff;
     border-radius: 7px;
-    border: 1px solid #DFDFDF;
-    box-shadow: 0 2px 3px #dfdfdf;
+     border: 1px solid #DFDFDF;
+     box-shadow: 0 2px 3px #dfdfdf;
  }
 .redPoint{
  top: 269px;
