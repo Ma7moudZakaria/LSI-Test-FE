@@ -55,6 +55,7 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
   isAnswer:boolean=true;
   isMndatory?:boolean=false;
   programDetails : IProgramDetails | undefined;
+  progId?:string;
   
   constructor(
     public languageService: LanguageService,
@@ -67,8 +68,9 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.getProgramDetails();
     this.getprogramDayTaskDetails();
-    this.resultMessage = {
-    }
+    this.resultMessage = {}
+    if(localStorage.getItem("progId"))
+    {this.progId = localStorage.getItem("progId") || '';}
   }
   ngOnChanges(changes: any){
     this.getProgramDetails();
@@ -196,12 +198,11 @@ no(){
      this.taskIsSaveEvent.emit()
     }
     getProgramDetails() {
-     let progId = localStorage.getItem("progId");
    
-      this.programService.getProgramDetails(progId || '').subscribe(res => {
+      this.programService.getProgramDetails(this.progId || '').subscribe(res => {
         if (res.isSuccess) {
           this.programDetails = res.data as IProgramDetails;
-          localStorage.removeItem("progId");
+           localStorage.removeItem("progId");
         }
         else {
           this.resMessage =
