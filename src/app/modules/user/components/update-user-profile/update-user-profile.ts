@@ -682,12 +682,14 @@ export class UpdateUserProfileComponent implements OnInit {
 
   
   logout() {
+
     this.authService.logout();
   }
   result: string = '';
   async confirmDialog(id?: string) {
     const confirm = this.translate.instant('GENERAL.LOGOUT_CONFIRM');
     const  message= this.translate.instant('GENERAL.LOGOUT_MESSAGE');
+    
     const dialogData = new ConfirmDialogModel(confirm, message);
 
     const dialogRef = this.dialog.open(ConfirmModalComponent, {
