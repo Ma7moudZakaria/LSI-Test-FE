@@ -6,7 +6,7 @@
     
     <ng-container *ngFor="let item of programDayTasksLists ; let i = index;" >
         <a  class="list-group-item  d-flex align-items-center"  (click)='setProgrmeDayTask(item); defaultSelectedDay = i'
-        [class.active]="defaultSelectedDay === i">
+        [class.active]="defaultSelectedDay === i" [class.disabled]="i>isAnsweredIndex">
             <span class="py-1">{{this.translate.currentLang===langEnum.en?item.dayTaskNameEn : item.dayTaskNameAr}}</span>
         </a>
       </ng-container>
