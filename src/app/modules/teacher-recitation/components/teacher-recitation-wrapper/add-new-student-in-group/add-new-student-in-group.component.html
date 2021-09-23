@@ -1,0 +1,79 @@
+<div class="col-md-12">
+    <p class="title_add">
+      اضافه طالب 
+    </p>
+    <div class="col-md-10 ">
+           
+  
+  
+  
+   
+              <div class="form-group">
+              
+                  <label for="programs" class="label"> اخترالدفعة</label>
+                  <div class="input-group">
+                      <div class="input-group pr-2rem">
+                          <select class="form-control"  >
+                              <option></option>
+                              <!-- <option *ngFor="let participant of chatService.allParticipantsList" value="{{participant.key}}">
+                                  <p> {{translate.currentLang == langEnum.en ? participant.name_en : participant.name_ar}} </p>
+  
+                              </option> -->
+  
+                          </select>
+                      
+                      </div>
+                      <span class="plus-btn position-absolute">
+                          <!-- (click)="addParticipant()" -->
+                          <button class="btn  btn-light btn-add" type="button"
+                          >
+                              <img  src="assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
+                          </button>
+                      </span>
+                  </div>
+              
+              
+          
+                  <!-- <div class="badges mt-3 ">
+                  
+  
+                      <div *ngFor="let participant of selectedParticipantsList"
+                      class="badge badge-info p-2">
+                      <div class="d-flex justify-content-between badge badge-info ">
+                      <p class="mb-0 ml-2 mr-2">    {{translate.currentLang == langEnum.en ? participant.name_en : participant.name_ar}} </p>
+                      <a (click)="removeItemFromSelectedParticipant(participant)"><i class="fas fa-times-circle"></i></a>
+                  </div>
+                  </div>
+  
+                      </div> -->
+                  </div>
+          
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+        <!-- <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2">
+            {{resultMessage.message}}
+        </div> -->
+        <div class="row">
+           
+            <div class="col-md-6" >
+                <button (click)="saveData()" class="save-btn">
+                    {{ "Role_Management.SAVE" | translate }}
+                </button>
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="cancel-btn" (click)="cancel()">
+                    {{ "QUESTION_BANK.CANCEL" | translate }}
+                </button>
+            </div>
+        </div>
+    </div>
+  </div>

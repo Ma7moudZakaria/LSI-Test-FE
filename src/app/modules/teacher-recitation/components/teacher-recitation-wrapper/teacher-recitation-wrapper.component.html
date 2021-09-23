@@ -9,7 +9,9 @@
         </div>
        
         <div class="col-lg-8 col-md-3 col-sm-12 ">
-            <app-teacher-recitation-group-selected (rejectedRequestId)="reciveRejectedRequestId($event)">
+            <app-teacher-recitation-group-selected 
+            (addStudentRequest)="addStudentRequestMethod($event)"
+            (rejectedRequestId)="reciveRejectedRequestId($event)">
 
             </app-teacher-recitation-group-selected>
         </div>
@@ -25,6 +27,10 @@
     </app-rejected-group-request-form>
        
     </div>
-
+    <div class="overlay" *ngIf="showAddStudent">
+     <app-add-new-student-in-group 
+    
+     (hideform)="openAddStudentForm($event)"></app-add-new-student-in-group>
+    </div>
 </div>
     

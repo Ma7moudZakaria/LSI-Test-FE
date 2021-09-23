@@ -32,8 +32,6 @@ export class TeacherRecitationGroupsComponent implements OnInit {
     this.getTeacherViewtGroupExplanation()
   }
 
-
-
   addNewGroup() {
     this.showAddGroup.emit(true)
   }
@@ -44,7 +42,12 @@ export class TeacherRecitationGroupsComponent implements OnInit {
     this.groupExplanationServices.getTeacherViewtGroupExplanation(this.groupExplanationsTeacherViewRequest).subscribe(res => {
       if (res.isSuccess) {
         this.responseList = res.data;
-        this.sendIdForDetailsGroupExplanation(this.responseList[0].id)
+        if (this.responseList && this.responseList.length > 0) {
+          this.sendIdForDetailsGroupExplanation(this.responseList[0].id)
+        }
+        else {
+          this.sendIdForDetailsGroupExplanation(null)
+        }
 
       }
       else {

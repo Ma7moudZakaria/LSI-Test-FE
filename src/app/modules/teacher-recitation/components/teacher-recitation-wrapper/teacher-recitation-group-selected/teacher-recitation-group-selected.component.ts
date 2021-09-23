@@ -21,6 +21,8 @@ import { IDetailsGroupExplanation } from 'src/app/core/interfaces/calls/idetails
 })
 export class TeacherRecitationGroupSelectedComponent implements OnInit {
   @Output() rejectedRequestId = new EventEmitter<string>();
+  @Output() addStudentRequest = new EventEmitter<boolean>();
+
   listOfParticipants: any[] = [1, 2, 3, 4, 5, 6, 7, 8]
   groupExplanationsJoinRequest: IGroupExplanationsJoinRequest = { skip: 0, take: 2147483647 }
   detailsGroupExplanation: IDetailsGroupExplanation | undefined;
@@ -104,6 +106,11 @@ export class TeacherRecitationGroupSelectedComponent implements OnInit {
   }
 
   getDetailsGroupExplanation(Id: string) {
+    // not data 
+    if (!Id) {
+      this.detailsGroupExplanation = undefined;
+      return;
+    }
 
     this.groupExplanationServices.getGroupExplanationDetails(Id).subscribe(res => {
       if (res.isSuccess) {
@@ -123,6 +130,9 @@ export class TeacherRecitationGroupSelectedComponent implements OnInit {
   }
 
 
+  addNewStudent() {
+    this.addStudentRequest.emit(true)
+  }
 
 
 

@@ -11,7 +11,8 @@ export class TeacherRecitationWrapperComponent implements OnInit {
   @ViewChild(TeacherRecitationGroupSelectedComponent) detailsComponent: TeacherRecitationGroupSelectedComponent | undefined;
   rejectedRequestId: string = '';
   showAddGroupForm: boolean = false;
-  showRejectForm: boolean = false
+  showRejectForm: boolean = false;
+  showAddStudent: boolean = false;
   constructor() { }
   GroupId: string = '';
   ngOnInit(): void {
@@ -37,5 +38,11 @@ export class TeacherRecitationWrapperComponent implements OnInit {
       this.detailsComponent.getDetailsGroupExplanation(this.GroupId);
     }
 
+  }
+  openAddStudentForm(event: boolean) {
+    this.showAddStudent = event
+  }
+  addStudentRequestMethod(event: boolean) {
+    this.showAddStudent = event
   }
 }
