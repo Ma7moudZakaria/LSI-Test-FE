@@ -16,6 +16,7 @@
       <div class="overlay" *ngIf="openAddScientificProblem">
         <app-add-task-scientific-problem
           (closeAddScientificProblem)="closeAddScientificProblem()"
+          [dutyDayFromParent]="programDutyDay"
         ></app-add-task-scientific-problem>
       </div>
     </div>

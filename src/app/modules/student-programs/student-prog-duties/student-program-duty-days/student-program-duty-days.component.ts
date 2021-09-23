@@ -25,7 +25,6 @@ export class StudentProgramDutyDaysComponent implements OnInit {
   resMessage: BaseMessageModel = {};
   defaultSelectedDay:number = 0;
   isCurrindex:number=0;
-
   constructor(
     public languageService: LanguageService,
     public translate: TranslateService,

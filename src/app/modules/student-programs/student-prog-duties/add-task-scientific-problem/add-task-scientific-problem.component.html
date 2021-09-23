@@ -19,12 +19,10 @@
     <label  class="label" for="category">{{'SCIENTIFIC_PROBLEM.THE_DAY' | translate}} </label>
     <div class="d-flex">
       <div class="input-group">
-        <select class="form-control"  [(ngModel)]="filter.progId"    [ngModelOptions]="{standalone: true}">
-          <option   value="">{{'SCIENTIFIC_MATERIAL.SELECTOPTION' | translate}}</option>
-          <option *ngFor="let item of ProgramsList" value="{{item.id}}">
-            {{item.progName}}
-          </option>
-        </select>
+        <div class="col-12 mt-2 mb-2">
+          <input   type="email" class="form-control UserRegister__FormControl"  disabled
+                   placeholder="{{ 'PROGRAM_DAY_TASKS.DAY' | translate }}-{{dutyDayFromParent.dayNum}} ">
+        </div>
       </div>
     </div>
   </div>

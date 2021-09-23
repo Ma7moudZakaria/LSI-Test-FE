@@ -16,12 +16,9 @@ export class StudentProgDutiesComponent implements OnInit {
   programDutyDay: IProgramDutyDays | undefined
   taskDetails?:IProgramDayTasksModel;
   openAddScientificProblem: boolean = false
-
-
   constructor() { }
 
   ngOnInit(): void {
-
   }
 
   progDutyDayEventCallBk(event?: IProgramDutyDays) {

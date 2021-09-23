@@ -36,7 +36,7 @@ export class AddTaskScientificProblemComponent implements OnInit {
   isCurrindex:number=0;
   defaultSelectedDay:number = 0;
   @Output() progDutyDayEvent = new EventEmitter<IProgramDutyDays>();
-
+  @Input() dutyDayFromParent : any;
 
   constructor(private progSubsService: StudentProgramSubscriptionServicesService
     , private programService: ProgramService
@@ -55,6 +55,7 @@ export class AddTaskScientificProblemComponent implements OnInit {
     if (this.studentProgramDutiesList) {
       this.onDayClick(this.studentProgramDutiesList[0]);
     }
+    console.log("klkjqljwkwjq",this.dutyDayFromParent)
   }
 
   getStudentProgDuties() {
