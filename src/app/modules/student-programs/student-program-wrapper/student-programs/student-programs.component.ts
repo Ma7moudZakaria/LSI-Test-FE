@@ -30,7 +30,7 @@ export class StudentProgramsComponent implements OnInit {
   counterTimer: number = 5
   tick = 1000;
   startStudentBatchRequest : IStartStudentBatchRequestModel | undefined;
-  
+
   constructor(
     private studentProgramSubscriptionService: StudentProgramSubscriptionServicesService,
               public translate : TranslateService,private alertify: AlertifyService,
@@ -48,7 +48,6 @@ export class StudentProgramsComponent implements OnInit {
     this.studentProgramSubscriptionService.getStudentPrograms(this.programFilter).subscribe(
       (res: BaseResponseModel) => {
          this.programs = res.data as IStudentPrograms[] ;
-        
       this.countDown = timer(0, this.tick).subscribe(() => {
         this.programs?.forEach(element => {
          if(element.remainingTimeInNumbers) --element.remainingTimeInNumbers;
@@ -64,7 +63,7 @@ export class StudentProgramsComponent implements OnInit {
       }
     );
   }
-  
+
   goToHomeWore(batchId?:string){
     this.router.navigateByUrl('student-programs/Student-duty/' + this.programFilter.usrId + '/' + batchId);
   }
@@ -72,7 +71,7 @@ export class StudentProgramsComponent implements OnInit {
   closeAddStuDutyDaysToProgramOverlay($event:boolean){
     this.isShowAddStuDutyDaysToProgram=false;
     if($event===true)
-   { this.saveStartProgram();} 
+   { this.saveStartProgram();}
   }
 
  startProgram(batchId?:string,progId?:string,noofDutyDays?:number,isDaysRequested?:boolean){
@@ -86,7 +85,7 @@ export class StudentProgramsComponent implements OnInit {
    if(isDaysRequested==true)
     {this.isShowAddStuDutyDaysToProgram=true;}
     else{
-     
+
      this.saveStartProgram();
     }
   }

@@ -1,19 +1,19 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {IStudentSubscriptionFilterRequestModel} from '../../../../core/interfaces/student-program-subscription-interfaces/istudent-subscription-filter-request-model';
-import {StudentProgramSubscriptionStatusEnum} from '../../../../core/enums/subscriptionStatusEnum/student-program-subscription-status-enum.enum';
 import {BaseMessageModel} from '../../../../core/ng-model/base-message-model';
-import {IStudentSubscriptionModel} from '../../../../core/interfaces/student-program-subscription-interfaces/istudent-subscription-model';
 import {StudentProgramSubscriptionServicesService} from '../../../../core/services/student-program-subscription-services/student-program-subscription-services.service';
-import {ProgramService} from '../../../../core/services/program-services/program.service';
 import {TranslateService} from '@ngx-translate/core';
-import {IProgramFilterAdvancedRequest} from '../../../../core/interfaces/programs-interfaces/iprogram-filter-requests';
 import {IprogramsModel} from '../../../../core/interfaces/programs-interfaces/iprograms-model';
-import {BaseConstantModel} from '../../../../core/ng-model/base-constant-model';
-import {IStudentProgramDutiesResponse} from '../../../../core/interfaces/student-program-duties-interfaces/istudent-program-duties-response';
 import {ActivatedRoute} from '@angular/router';
-import {IStudentProgramDutiesRequest} from '../../../../core/interfaces/student-program-duties-interfaces/istudent-program-duties-request';
-import {StudentProgDutiesServiceService} from '../../../../core/services/student-prog-duties-services/student-prog-duties-service.service';
-import {IProgramDutyDays} from '../../../../core/interfaces/programs-interfaces/iprogram-details';
+import {IProgramDayTasksModel} from '../../../../core/interfaces/programs-interfaces/iprogram-day-tasks-model';
+import {LanguageEnum} from '../../../../core/enums/language-enum.enum';
+import {Iuser} from '../../../../core/interfaces/user-interfaces/iuser';
+import {BaseResponseModel} from '../../../../core/ng-model/base-response-model';
+import {IStudentPrograms} from '../../../../core/interfaces/student-program-vacation-interfaces/istudent-programs';
+import {IStudentMyProgramsRequestModel} from '../../../../core/interfaces/student-program-subscription-interfaces/istudent-my-programs-request-model';
+import {ScientificProblemService} from '../../../../core/services/scientific-problem-services/scientific-problem.service';
+import {BaseConstantModel} from '../../../../core/ng-model/base-constant-model';
+import {AlertifyService} from '../../../../core/services/alertify-services/alertify.service';
+import {ICreateScientificProblem} from '../../../../core/interfaces/scientific-problrm/icreate-scientific-problem';
 
 @Component({
   selector: 'app-add-task-scientific-problem',
@@ -21,112 +21,75 @@ import {IProgramDutyDays} from '../../../../core/interfaces/programs-interfaces/
   styleUrls: ['./add-task-scientific-problem.component.scss']
 })
 export class AddTaskScientificProblemComponent implements OnInit {
-  @Output() closeAddScientificProblem = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
-  @Input() filter: IStudentSubscriptionFilterRequestModel = { statusNum: StudentProgramSubscriptionStatusEnum.Pending, skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 }
-  advancedSearchInputs = {} as IStudentSubscriptionFilterRequestModel
+  @Output() closeAddScientificProblem = new EventEmitter<boolean>();
   resultMessage: BaseMessageModel = {};
-  studProgsSubsItems: IStudentSubscriptionModel[] = [];
-
-
-
-
-  studentId: string = "";
-  batchId:string ='';
-  studentProgramDutiesList?:IStudentProgramDutiesResponse[] | undefined;
-  isCurrindex:number=0;
-  defaultSelectedDay:number = 0;
-  @Output() progDutyDayEvent = new EventEmitter<IProgramDutyDays>();
-  @Input() dutyDayFromParent : any;
-
-  constructor(private progSubsService: StudentProgramSubscriptionServicesService
-    , private programService: ProgramService
-    , public translate: TranslateService
-              , private route: ActivatedRoute,private studProgDutServic: StudentProgDutiesServiceService
+  batchId?:string ;
+  @Input() dutyDayFromParent: any ;
+  @Input() dayTaskFromParent?:IProgramDayTasksModel;
+  langEnum = LanguageEnum;
+  programFilter: IStudentMyProgramsRequestModel = { take :2147483647 };
+  ProgramsList: IprogramsModel[] = [];
+  programs: IStudentPrograms[] | undefined;
+  programBatch?: IStudentPrograms;
+  userId?: string;
+  question?: string;
+  constructor(public translate: TranslateService
+              , private route: ActivatedRoute
+              , private studentProgramSubscriptionService: StudentProgramSubscriptionServicesService
+              ,private  scientificProblemService: ScientificProblemService
+              ,private alertify: AlertifyService
   ) {
   }
 
-  programsbyAdvancedFilter: IProgramFilterAdvancedRequest = { skip: 0, take: 2147483647 };
-  ProgramsList: IprogramsModel[] = [];
   ngOnInit(): void {
-    this.getAllProgram()
-    this.studentId = this.route.snapshot.params.id;
     this.batchId = this.route.snapshot.params.batch;
-    this.getStudentProgDuties();
-    if (this.studentProgramDutiesList) {
-      this.onDayClick(this.studentProgramDutiesList[0]);
-    }
-    console.log("klkjqljwkwjq",this.dutyDayFromParent)
+    this.userId = (JSON.parse(localStorage.getItem('user') || '{}') as Iuser).id
+    this.loadPrograms();
   }
-
-  getStudentProgDuties() {
-    let model : IStudentProgramDutiesRequest  = {
-      batId:this.batchId,
-      studId:this.studentId
-    }
-    this.studProgDutServic.getStudentProgDuties(model).subscribe(
-      res => {
-        if (res.isSuccess) {
-          this.studentProgramDutiesList = res.data.programDutyDaysModel as IStudentProgramDutiesResponse[];
-          this.isCurrindex=this.studentProgramDutiesList.findIndex(x=>x.isCurr===true);
-          if(this.isCurrindex>=0)
-          {this.onDayClick(this.studentProgramDutiesList[this.isCurrindex]); this.defaultSelectedDay=this.isCurrindex;}
-          else{this.isCurrindex=this.studentProgramDutiesList.findIndex(x=>x.isNex===true) -1;
-            this.onDayClick(this.studentProgramDutiesList[0]); this.defaultSelectedDay=0;}
-        }
-        else {
-          this.resultMessage = {
-            message: res.message,
-            type: BaseConstantModel.DANGER_TYPE
-          }
-        }
-      }, error => {
-        this.resultMessage = {
-          message: error,
-          type: BaseConstantModel.DANGER_TYPE
-        }
+  loadPrograms() {
+    this.programFilter.skip = 0;
+    this.programFilter.take = 2147483647;
+    this.programFilter.usrId = this.userId;
+    this.studentProgramSubscriptionService.getStudentPrograms(this.programFilter).subscribe(
+      (res: BaseResponseModel) => {
+        this.programs = res.data as IStudentPrograms[];
+        this.programBatch = this.programs.find(data => data.batId === this.batchId);
       })
   }
-  onDayClick(event: IProgramDutyDays) {
-    this.progDutyDayEvent.emit(event);
-  }
-  closeStuAdvancedSearch() {
-    this.filter.usrName = '';
-    this.filter.progId = '';
-    this.filter.numberRequest = undefined
-    this.filter.fromDate = undefined
-    this.filter.toDate = undefined
-    this.filter.skip = 0
-    this.filter.take = 9
-    this.filter.page = 1
-    this.filter.sortField = '';
-    this.closeAddScientificProblem.emit(this.filter)
+
+
+  closeScientificProblemOverLay() {
+    this.closeAddScientificProblem.emit(true)
   }
 
 
-  sendAdvancedSearch() {
-
-      this.closeAddScientificProblem.emit()
-
-  }
-
-
-  getAllProgram() {
-    this.programService.getProgramAdvancedFilter(this.programsbyAdvancedFilter || {}).subscribe(res => {
-
-      if (res.isSuccess) {
-        this.ProgramsList = res.data;
-        console.log(this.ProgramsList)
-
+  addScientificProblem() {
+    let model :ICreateScientificProblem = {
+      batId : this.batchId,
+      usrId : this.userId,
+      task : this.dayTaskFromParent?.dayTask,
+      day : this.dayTaskFromParent?.dutyDay,
+      question : this.question
+    }
+    this.scientificProblemService.createScientificProblem(model).subscribe(res =>{
+      if(res.isSuccess){
+        this.alertify.success(res.message || '');
+        this.closeAddScientificProblem.emit();
       }
       else {
-
+        this.resultMessage = {
+          message: res.message,
+          type: BaseConstantModel.DANGER_TYPE
+        };
       }
     }, error => {
       this.resultMessage = {
         message: error,
         type: BaseConstantModel.DANGER_TYPE
-      }
+      };
+
     })
+
   }
 
 }

@@ -5,12 +5,10 @@
     <label  class="label" for="category">{{'SCIENTIFIC_PROBLEM.THE_PROGRAM' | translate}} </label>
     <div class="d-flex">
       <div class="input-group">
-        <select class="form-control"  [(ngModel)]="filter.progId"    [ngModelOptions]="{standalone: true}">
-          <option   value="">{{'SCIENTIFIC_MATERIAL.SELECTOPTION' | translate}}</option>
-          <option *ngFor="let item of ProgramsList" value="{{item.id}}">
-            {{item.progName}}
-          </option>
-        </select>
+        <div class="col-12 mt-2 mb-2">
+          <input   type="email" class="form-control UserRegister__FormControl"  disabled
+                   placeholder="{{translate.currentLang === langEnum.en ? programBatch?.enProgBatchName:programBatch?.arProgBatchName}}">
+        </div>
       </div>
     </div>
   </div>
@@ -31,12 +29,10 @@
     <label  class="label" for="category">{{'SCIENTIFIC_PROBLEM.TASKS' | translate}} </label>
     <div class="d-flex">
       <div class="input-group">
-        <select class="form-control"  [(ngModel)]="filter.progId"    [ngModelOptions]="{standalone: true}">
-          <option   value="">{{'SCIENTIFIC_MATERIAL.SELECTOPTION' | translate}}</option>
-          <option *ngFor="let item of ProgramsList" value="{{item.id}}">
-            {{item.progName}}
-          </option>
-        </select>
+        <div class="col-12 mt-2 mb-2">
+          <input   type="email" class="form-control UserRegister__FormControl"  disabled
+                   placeholder="{{translate.currentLang === langEnum.en ? dayTaskFromParent?.dayTaskNameEn:dayTaskFromParent?.dayTaskNameAr}}">
+        </div>
       </div>
     </div>
   </div>
@@ -45,17 +41,17 @@
     <label  class="label" for="category">{{'SCIENTIFIC_PROBLEM.THE_QUESTION' | translate}} </label>
     <div class="d-flex">
       <div class="input-group">
-            <textarea class="form-control" cols="2" rows="5" id="InputQuestion" ></textarea>
+            <textarea class="form-control" cols="2" rows="5" id="InputQuestion" [(ngModel)]="question"></textarea>
       </div>
     </div>
   </div>
 
   <section class="mt-5">
     <div  class="row direction-rtl buttons-center mt-5">
-      <button   type="submit" class="save-btn" (click)="sendAdvancedSearch()">
+      <button   type="submit" class="save-btn" (click)="addScientificProblem()">
         {{'SCIENTIFIC_PROBLEM.SEND' | translate}}
       </button>
-      <button  (click)="closeStuAdvancedSearch()"  type="reset" class="cancel-btn">
+      <button  (click)="closeScientificProblemOverLay()"  type="reset" class="cancel-btn">
         {{ "GENERAL.CANCEL" | translate }}
       </button>
     </div>
