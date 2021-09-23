@@ -47,7 +47,7 @@ export class ChatDetailsComponent implements OnInit {
     if (event?.key === "Enter" || event === "Enter") {
       this.messageChat = '';
       if(message && message.length > 0){
-        var last_date = formatDate(new Date(), 'dd-MM-yyyy  HH:mm:ss', 'en');
+        var last_date =  formatDate(new Date(), 'yyyy-MM-dd HH:mm:ss', 'en');
         if(this.messageType === 'text'){
           this.addMessageToChatGroup = {
             date:last_date,
