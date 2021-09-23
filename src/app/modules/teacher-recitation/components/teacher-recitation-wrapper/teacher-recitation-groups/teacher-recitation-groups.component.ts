@@ -33,25 +33,20 @@ export class TeacherRecitationGroupsComponent implements OnInit {
     this.getTeacherViewtGroupExplanation()
   }
 
-  filterByText(searchKey: string) {
-  }
+
 
   addNewGroup() {
     this.showAddGroup.emit(true)
   }
 
   getTeacherViewtGroupExplanation() {
-    this.groupExplanationsTeacherViewRequest = {
-      techId: this.currentUser?.id,
-      name: '',
-      skip: 0,
-      take: 2147483647
-    }
+    this.groupExplanationsTeacherViewRequest.techId = this.currentUser?.id
+
     this.groupExplanationServices.getTeacherViewtGroupExplanation(this.groupExplanationsTeacherViewRequest).subscribe(res => {
       if (res.isSuccess) {
         this.responseList = res.data;
-        this.getDetailsGroupExplanation(this.responseList[0].id)
-        // console.log("responseList", this.responseList)
+        this.sendIdForDetailsGroupExplanation(this.responseList[0].id)
+
       }
       else {
         this.resultMessage = {
@@ -64,24 +59,14 @@ export class TeacherRecitationGroupsComponent implements OnInit {
 
     })
   }
+  filterByText(searchKey: string) {
+    this.groupExplanationsTeacherViewRequest.name = searchKey;
+    this.getTeacherViewtGroupExplanation();
+  }
 
-  getDetailsGroupExplanation(Id: any) {
+  sendIdForDetailsGroupExplanation(Id: any) {
     this.sendGroupId.emit(Id)
-    // this.groupExplanationServices.getGroupExplanationDetails(Id).subscribe(res => {
-    //   if (res.isSuccess) {
-    //     this.responseList = res.data;
-    //     console.log("responseList", this.responseList)
-    //   }
-    //   else {
-    //     this.resultMessage = {
-    //       message: res.message,
-    //       type: BaseConstantModel.DANGER_TYPE
-    //     }
-    //   }
-    // }, error => {
 
-
-    // })
   }
 
 

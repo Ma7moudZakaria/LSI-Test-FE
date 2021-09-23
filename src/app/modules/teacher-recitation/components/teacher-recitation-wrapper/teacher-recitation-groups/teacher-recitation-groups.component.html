@@ -11,7 +11,10 @@
 <div class="col-12 mt-3" >
  
 
-    <app-search-input (searchTerm)=filterByText($event)></app-search-input>
+    <app-search-input 
+    (searchTerm)=filterByText($event)
+    [searchKey]='this.groupExplanationsTeacherViewRequest.name || ""'
+    ></app-search-input>
 </div>
 </div>
 
@@ -24,7 +27,7 @@
             <img class="img_user" src="../../../../../../assets/images/group.svg">
             
             <div>
-            <a class="ellipsis mb-0 " (click)="getDetailsGroupExplanation(item.id)">
+            <a class="ellipsis group_name mb-0 " (click)="sendIdForDetailsGroupExplanation(item.id)">
             {{ translate.currentLang === langEnum.en ? item?.nameEn : item?.nameAr }}</a>
             <p class="message_date mb-0 px-2">{{item.date}} </p>      
                 

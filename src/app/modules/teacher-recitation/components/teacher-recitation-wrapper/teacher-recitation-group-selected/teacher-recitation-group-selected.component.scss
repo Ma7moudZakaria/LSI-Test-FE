@@ -10,25 +10,16 @@
 .details_day .chat_details {
     height: 70.7vh;
 }
-.cancel-btn {
-    background: #CB9118;
-    font-size: 0.85rem;
-   
-}
 
-
-
-
-////////////////
  .chat_details.join_req {
     height: 70.7vh;
     padding: .5rem;
     
 }
-
 .cancel-btn {
     background: #CB9118;
     font-size: 0.85rem;
+    font-family:Almarai-Bold
 }
 .chat_details {
     height: 59vh;
@@ -47,32 +38,11 @@
 {
     width: 80%;
 }
-
-.save-btn{
-    background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
-    background: #8E2520 0% 0% no-repeat padding-box;
-    border-radius: 12px;
-    opacity: 1;
-    opacity: 1;
-    width:auto;
-    padding: 0.5rem;
-    height: 2.31rem;
-    border: none;
-    color: #ffffff;
-    display: block;
-    }
-    .cancel-btn{
-        background: var(--unnamed-color-8e2520) 0% 0% no-repeat padding-box;
-        background:$icon_input ;
-        border-radius: 12px;
-        opacity: 1;
-        width:auto;
-        padding: 0.5rem;
-        height: 2.31rem;
-        border: none;
-        color: #ffffff;
-        display: block;
-        }
+.program_name{
+    color: #3A3A3A;
+    font-family: 'Almarai-Bold';
+    font-size: 13px;
+}
 .message_date{
     font-family: Almarai-Bold;
 }

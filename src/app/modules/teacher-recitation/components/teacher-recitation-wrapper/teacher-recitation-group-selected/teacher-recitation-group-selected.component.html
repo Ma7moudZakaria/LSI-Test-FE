@@ -26,7 +26,7 @@
 
           </div>
           <div class="d-flex"  >
-              <a (click)="removeStudentGroupExplanation(itemOfGroupRequests.studId)"> <img  class="delete" src="assets/images/feelings/close.svg"></a>
+              <a (click)="removeStudentGroupExplanation(itemOfGroupRequests.id)"> <img  class="delete" src="assets/images/feelings/close.svg"></a>
             </div>
           </div>
   </ng-container>
@@ -59,7 +59,7 @@
             
             <p class="ellipsis mb-0 ">{{ translate.currentLang === langEnum.en ? itemOfGroupRequests?.studNameEn : itemOfGroupRequests?.studNameAr }}</p>
             <p class="message_date bold mb-0 px-2">{{ translate.currentLang === langEnum.en ? itemOfGroupRequests?.ProjNameEn : itemOfGroupRequests?.ProjNameAr }}</p>      
-            <p class="message_date bold mb-0 px-2">{{ translate.currentLang === langEnum.en ? itemOfGroupRequests?.groupNameEn : itemOfGroupRequests?.groupNameAr }}</p>      
+            <p class="program_name bold mb-0 px-2">{{ translate.currentLang === langEnum.en ? itemOfGroupRequests?.groupNameEn : itemOfGroupRequests?.groupNameAr }}</p>      
             <p class="message_date mb-0 px-2">{{itemOfGroupRequests.reqDate}}</p>     
             </div>
         </div>
