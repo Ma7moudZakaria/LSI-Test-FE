@@ -170,7 +170,10 @@
     "THE_DAY": "اليوم",
     "THE_QUESTION": "السؤال",
     "SEND":"ارسال",
-    "BAND_NAME": "اسم البند"
+    "BAND_NAME": "اسم البند",
+    "QUESTION_TYPE": "نوع السؤال",
+    "RELATED_TO_PROGRAM": "مرتبط ببرنامج",
+    "GENERAL":"سؤال عام"
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "البرامج",

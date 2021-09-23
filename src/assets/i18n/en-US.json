@@ -171,7 +171,10 @@
     "THE_DAY": "The Day",
     "THE_QUESTION": "The Question",
     "SEND": "Send",
-    "BAND_NAME":"Band Name"
+    "BAND_NAME":"Band Name",
+    "QUESTION_TYPE": "Question Type",
+    "RELATED_TO_PROGRAM": "Related To Program",
+    "GENERAL":"General"
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "Programs",
