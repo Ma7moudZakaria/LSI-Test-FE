@@ -41,8 +41,16 @@
     <label  class="label" for="category">{{'SCIENTIFIC_PROBLEM.THE_QUESTION' | translate}} </label>
     <div class="d-flex">
       <div class="input-group">
-            <textarea class="form-control" cols="2" rows="5" id="InputQuestion" [(ngModel)]="question"></textarea>
+            <textarea class="form-control" cols="2" rows="5"  [(ngModel)]="question"
+                      id="question" name="questionText"  required #questionText="ngModel"
+                      [ngModelOptions]="{standalone: true}"
+            ></textarea>
       </div>
+    </div>
+    <div *ngIf="questionText.invalid && (questionText.dirty || questionText.touched || isSubmit)"
+         class="alert">
+
+      <div  class="alert alert-danger mt-2 mb-2" *ngIf="questionText.errors?.required">{{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}</div>
     </div>
   </div>
 

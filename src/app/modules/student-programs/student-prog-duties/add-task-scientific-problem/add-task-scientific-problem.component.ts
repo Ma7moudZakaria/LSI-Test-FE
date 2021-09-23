@@ -33,6 +33,7 @@ export class AddTaskScientificProblemComponent implements OnInit {
   programBatch?: IStudentPrograms;
   userId?: string;
   question?: string;
+  isSubmit = false;
   constructor(public translate: TranslateService
               , private route: ActivatedRoute
               , private studentProgramSubscriptionService: StudentProgramSubscriptionServicesService
@@ -64,6 +65,7 @@ export class AddTaskScientificProblemComponent implements OnInit {
 
 
   addScientificProblem() {
+    this.isSubmit = true;
     let model :ICreateScientificProblem = {
       batId : this.batchId,
       usrId : this.userId,
@@ -71,6 +73,7 @@ export class AddTaskScientificProblemComponent implements OnInit {
       day : this.dayTaskFromParent?.dutyDay,
       question : this.question
     }
+    if(model.question ==null)return;
     this.scientificProblemService.createScientificProblem(model).subscribe(res =>{
       if(res.isSuccess){
         this.alertify.success(res.message || '');
