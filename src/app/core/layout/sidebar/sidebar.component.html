@@ -219,7 +219,14 @@
                   </a>
 
                 </li>
-
+                <li class="nav-item" routerLinkActive="active">
+                    <a  *ngIf='!roleService.isAdmin() && (roleService.isStudent() || !roleService.isTeacher())'
+                        [routerLink]="['/student-groups']" routerLinkActive="active" class="nav-link">
+                      <img src="/assets/images/group.svg">
+                      <span class="container__navigation__title">Groups</span>
+                    </a>
+  
+                  </li>
                 <li class="nav-item studentProfile" routerLinkActive="active"
                     *ngIf='!roleService.isAdmin() && (roleService.isStudent() || !roleService.isTeacher())'>
                     <a [routerLink]="['/question-bank/question-bank-view']" routerLinkActive="active" class="nav-link">

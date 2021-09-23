@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IAddGroupExplanationModel } from '../../interfaces/calls/iadd-group-explanation-model';
 import { IAddStudentInGroupExplanationModel } from '../../interfaces/calls/iadd-student-in-group-explanation-model';
-import { IGroupExplanationsJoinRequest } from '../../interfaces/calls/igroup-explanations-join-request';
 import { IGroupExplanationsStudentViewRequest } from '../../interfaces/calls/igroup-explanations-student-view-request';
 import { IGroupExplanationsTeacherViewRequest } from '../../interfaces/calls/igroup-explanations-teacher-view-request';
 import { IRejectGroupExplanationRequest } from '../../interfaces/calls/ireject-group-explanation-request';

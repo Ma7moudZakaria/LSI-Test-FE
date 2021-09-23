@@ -29,7 +29,6 @@ export class TeacherRecitationGroupsComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
-
     this.getTeacherViewtGroupExplanation()
   }
 

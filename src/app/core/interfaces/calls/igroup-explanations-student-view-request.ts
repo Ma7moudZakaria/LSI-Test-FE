@@ -1,6 +1,10 @@
 export interface IGroupExplanationsStudentViewRequest {
     techName?: string;
-    skip?: number;
-    take?: number;
+    sortField?: string;
+    sortOrder?: number;
+    skip: number;
+    take: number;
+    page: number;
+
 
 }

@@ -1,0 +1,96 @@
+<!-- <ng-container *ngFor="let item of responseList; let i = index"  >
+    <div class="col-3">
+    <div class="chat_details w-100">
+      <div class=" w-100">
+     
+          <div class="cardRecourd  d-flex justify-content-between mb-3" >
+              <div class="group_name  d-flex pb-0  align-items-center justify-content-between">
+                  <img class="img_user" src="../../../../../../assets/images/group.svg">
+                  
+                  <div>
+                  <a class="ellipsis group_name mb-0 " >
+                    {{ translate.currentLang === langEnum.en ? item?.nameEn : item?.nameAr }}
+                  </a>
+                  <p class="teacher_name mb-0 px-2">
+                     {{ translate.currentLang === langEnum.en ? item?.teachEn : item?.teachAr }}
+                  </p>      
+                      
+                  </div>
+      
+              </div>
+              <div class="d-flex">
+                  <a> <img  class="vedio mx-2" src="../../../../assets/images/request/vedio.svg"></a>
+                  <a> <img  class="call mx-2"  src="../../../../assets/images/request/call.svg"></a>
+                </div>
+          </div>
+        </div>
+      </div>  </div>
+      </ng-container> -->
+
+
+
+
+      <div class="row scientific-problem-grid" >
+
+
+        <div class="col-12 d-flex justify-content-start">
+         <ngb-pagination
+           [collectionSize]="totalCount"
+           [(page)]="groupExplanationsStuViewRequest.page"
+           [pageSize]="groupExplanationsStuViewRequest.take"
+           [rotate]="true"
+           [boundaryLinks]="true"
+           (pageChange)="onStudentPageChange()">
+         </ngb-pagination>
+     
+         <button
+       [ngClass]="{'default_btn': groupExplanationsStuViewRequest.sortField != 'progName' , 
+       'asend_desend_btn' : this.groupExplanationsStuViewRequest.sortField != 'creationdate' }"
+       (click)='sortStudentByName()'>
+       {{'User_Requests.SORT_NAME' | translate}}
+       <span *ngIf='this.groupExplanationsStuViewRequest.sortField != "progName" '>
+                  <img  class="asend_btn" src="../../../../assets/images/sc-problem/Group 18449.svg">
+          </span>
+       <span *ngIf='sortStudentByNameOrderType() == "asend"'>
+             <img  class="asend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+         </span>
+       <span *ngIf='sortStudentByNameOrderType() == "desend"'>
+             <img  class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+         </span>
+     </button>
+     <button  [ngClass]="{'asend_desend_btn': groupExplanationsStuViewRequest.sortField != 'progName', 'default_btn' : this.groupExplanationsStuViewRequest.sortField != 'creationdate'}"
+              (click)='sortStudentRequestDate()'>
+       {{'User_Requests.SORT_DATE' | translate}}
+
+       <span *ngIf='this.groupExplanationsStuViewRequest.sortField != "creationdate"'>
+              <img  class="asend_btn" src="../../../../assets/images/sc-problem/Group 18449.svg">
+          </span>
+       <span *ngIf='sortStudentRequestDateOrderType() == "asend"'>
+             <img  class="asend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+         </span>
+       <span *ngIf='sortStudentRequestDateOrderType() == "desend"'>
+             <img  class="desend_btn" src="../../../../assets/images/sc-problem/desend.svg">
+         </span>
+     </button>
+         
+          
+       </div>
+     
+     
+     </div>
+     
+     
+       <mat-grid-list cols="{{numberPerRow}}" rowHeight="100px">
+           <mat-grid-tile *ngFor="let item of groupResponseList; let i = index">
+             <!-- <app-teacher-student-program-for-subscription class="card"
+                 [teachersubscriptionmodel]='item' [userMode]="programSubscriptionUsers.teacher" >
+             </app-teacher-student-program-for-subscription> -->
+
+
+     <app-student-group-cards  [item]='item'></app-student-group-cards>
+                
+
+
+           </mat-grid-tile>
+       </mat-grid-list>
+

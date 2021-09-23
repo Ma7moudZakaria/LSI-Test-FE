@@ -16,9 +16,9 @@ import { RejectedGroupRequestFormComponent } from './components/teacher-recitati
   declarations: [TeacherRecitationGroupsComponent, TeacherRecitationGroupSelectedComponent,
     AddNewGroupTeacherRecitationComponent, TeacherRecitationWrapperComponent, RejectedGroupRequestFormComponent],
   imports: [
-    CommonModule, SharedModule,
+    CommonModule, SharedModule, TranslateModule,
     TeacherRecitationRoutingModule, MatListModule,
-    TranslateModule, FormsModule, ReactiveFormsModule
+    FormsModule, ReactiveFormsModule
 
   ]
 })

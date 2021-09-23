@@ -1,0 +1,26 @@
+
+    <div class="chat_details  studentGroupCards w-100">
+      <div class=" w-100">
+     
+          <div class="cardRecourd  d-flex justify-content-between mb-3" >
+              <div class="group_name  d-flex pb-0  align-items-center justify-content-between">
+                  <img class="img_user" src="../../../../../../assets/images/group.svg">
+                  
+                  <div>
+                  <a class="ellipsis group_name mb-0 " >
+                    {{ translate.currentLang === langEnum.en ? item?.nameEn : item?.nameAr }}
+                  </a>
+                  <p class="teacher_name mb-0 px-2">
+                     {{ translate.currentLang === langEnum.en ? item?.teachEn : item?.teachAr }}
+                  </p>      
+                      
+                  </div>
+      
+              </div>
+              <div class="d-flex">
+                  <a> <img  class="vedio mx-2" src="../../../../assets/images/request/vedio.svg"></a>
+                  <a> <img  class="call mx-2"  src="../../../../assets/images/request/call.svg"></a>
+                </div>
+          </div>
+        </div>
+      </div>  
