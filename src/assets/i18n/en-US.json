@@ -170,7 +170,8 @@
     "TASKS":"Tasks",
     "THE_DAY": "The Day",
     "THE_QUESTION": "The Question",
-    "SEND": "Send"
+    "SEND": "Send",
+    "BAND_NAME":"Band Name"
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "Programs",

@@ -25,14 +25,26 @@
           <option value="">{{'SCIENTIFIC_MATERIAL.SELECTOPTION' | translate}}</option>
           <option *ngFor="let item of ProgramsList" value="{{item.id}}">
             {{item.progName}}
-            <!-- {{translate.currentLang === langEnum.en ? item.engName: item.arabName}} -->
           </option>
         </select>
       </div>
     </div>
 
   </div>
+  <div class="form-group">
+    <label class="label" for="band">{{'SCIENTIFIC_PROBLEM.BAND_NAME' | translate}}</label>
+    <div class="d-flex">
+      <div class="input-group">
+        <select class="form-control" [(ngModel)]="filter.progTask" [ngModelOptions]="{standalone: true}">
+          <option value="">{{'SCIENTIFIC_MATERIAL.SELECTOPTION' | translate}}</option>
+          <option *ngFor="let item of collectionOfLookup.TASKS" value="{{item.id}}">
+            {{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}
+          </option>
+        </select>
+      </div>
+    </div>
 
+  </div>
 
   <div class="form-group">
     <label class="label">{{'SCIENTIFIC_PROBLEM.QUESTION_NUMBER' | translate}}</label>

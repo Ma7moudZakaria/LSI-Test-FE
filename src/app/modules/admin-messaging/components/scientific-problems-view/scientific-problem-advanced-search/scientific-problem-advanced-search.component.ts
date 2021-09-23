@@ -8,6 +8,9 @@ import {IProgramFilterAdvancedRequest} from '../../../../../core/interfaces/prog
 import {IprogramsModel} from '../../../../../core/interfaces/programs-interfaces/iprograms-model';
 import {BaseConstantModel} from '../../../../../core/ng-model/base-constant-model';
 import {IScientificProblemFilter} from '../../../../../core/interfaces/scientific-problrm/iscientific-problem-filter';
+import {ILookupCollection} from '../../../../../core/interfaces/lookup/ilookup-collection';
+import {LookupService} from '../../../../../core/services/lookup-services/lookup.service';
+import {LanguageEnum} from '../../../../../core/enums/language-enum.enum';
 
 @Component({
   selector: 'app-scientific-problem-advanced-search',
@@ -29,17 +32,34 @@ export class ScientificProblemAdvancedSearchComponent implements OnInit {
 
   hijri: boolean = false;
   milady: boolean = false;
+  collectionOfLookup = {} as ILookupCollection;
+  listOfLookup: string[] = ['TASKS'];
   constructor(private programService: ProgramService,
               private dateFormatterService: DateFormatterService,
-              public translate: TranslateService,) { }
+              public translate: TranslateService,private lookupService: LookupService) { }
 
   programsbyAdvancedFilter: IProgramFilterAdvancedRequest = { skip: 0, take: 2147483647 };
   ProgramsList: IprogramsModel[] = [];
+  langEnum = LanguageEnum;
   ngOnInit(): void {
     this.getAllProgram()
-
+    this.getLookupByKey();
   }
+  getLookupByKey() {
+    this.lookupService.getLookupByKey(this.listOfLookup).subscribe(res => {
+      if (res.isSuccess) {
+        this.collectionOfLookup = res.data as ILookupCollection;
 
+      }
+      else {
+        this.resultMessage =
+          {
+            message: res.message,
+            type: BaseConstantModel.DANGER_TYPE
+          }
+      }
+    });
+  }
   SendDatafrom(data: any) {
     this.typeDateBinding = data.selectedDateType
     data.selectedDateValue = data.selectedDateValue.year + '/' + data.selectedDateValue.month + '/' + data.selectedDateValue.day;
