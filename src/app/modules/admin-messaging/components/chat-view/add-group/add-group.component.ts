@@ -75,13 +75,13 @@ export class AddGroupComponent implements OnInit {
   createNewGroup(value: any) {
     this.isSubmit = true;
     var GroupId = Guid.newGuid();
-    var last_date = formatDate(new Date(), 'dd-MM-yyyy HH:mm:ss', 'en');
+    var last_date = formatDate(new Date(), 'yyyy-MM-dd HH:mm:ss', 'en');
 
     const room = value;
     if (this.createGroupForm.valid){
       this.createGroupChat = {
         group_name: this.translate.currentLang === LanguageEnum.ar ? this.createGroupForm.value.groupNameAr : this.createGroupForm.value.groupNameEn,
-        allowed:this.createGroupForm.value.allowed,
+        allowed:this.createGroupForm.value.allowed == null || undefined ? true : this.createGroupForm.value.allowed,
         key:GroupId,
         last_date: last_date || '',
         last_message:"",

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { AdminMessagingRoutingModule } from './admin-messaging-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -54,6 +54,7 @@ import { MatListModule } from '@angular/material/list';
 import { TeacherAppointmentAdvancedSearchComponent } from './components/teacher-program-request-view/teacher-request-details/chang-time-request/teacher-appointment-advanced-search/teacher-appointment-advanced-search.component';
 import { TeacherAppointmentRejectComponent } from './components/teacher-program-request-view/teacher-request-details/chang-time-request/teacher-appointment-reject/teacher-appointment-reject.component';
 import { AppointmentRequestsTabComponent } from './components/teacher-program-request-view/teacher-request-details/chang-time-request/appointment-requests-tab/appointment-requests-tab.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 // @NgModule({
 //   declarations: [AdminMessagingViewComponent, ScientificProblemsComponent, AddScientifiProblemReplyComponent,
@@ -74,6 +75,8 @@ import { AppointmentRequestsTabComponent } from './components/teacher-program-re
         , TeacherDropOutTabRequestComponent, TeacherDropOutRequestRejectedComponent, StudentAdminDropOutRequestComponent, StudentDropOutTabRequestComponent,
         StudentDropOutRequestRejectedComponent, StudentAdvancedSearchComponent, ChatViewComponent, GroupViewComponent, ChatDetailsComponent, GroupDetailsComponent, AddGroupComponent,
         TeacherAppointmentAdvancedSearchComponent, TeacherAppointmentRejectComponent, AppointmentRequestsTabComponent],
+
+        providers: [DatePipe],
   imports: [
     CommonModule,
     FormsModule,
@@ -82,6 +85,7 @@ import { AppointmentRequestsTabComponent } from './components/teacher-program-re
     SharedModule,
     MatIconModule,
     AdminMessagingRoutingModule,
+    PdfViewerModule,
     MatTreeModule,
     MatListModule
   ]

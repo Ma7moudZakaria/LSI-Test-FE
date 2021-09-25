@@ -1,5 +1,7 @@
+
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
+import * as moment from 'moment';
 import { IGroupChat } from '../../interfaces/chat-interfaces/igroup-chat';
 import { IMessageChat } from '../../interfaces/chat-interfaces/imessage-chat';
 import { IParticipantChat } from '../../interfaces/chat-interfaces/iparticipant-chat';
@@ -14,6 +16,8 @@ export class ChatService {
   allMessagesList : IMessageChat[] = [];
   allParticipantsOfGroupList : IParticipantChat[] = [];
   participantGroupsIdList  : string[] = [];
+  chatGroup : IGroupChat | undefined;
+  participantModel = {} as IParticipantChat;
 
   constructor() { }
 
@@ -33,16 +37,44 @@ export class ChatService {
             last_message: item.last_message,
             messages: Object.values(item.messages || []),
             participants: Object.values(item.participants || []),
-          }) ;
-          this.allChatGroupsList = this.allChatGroupsList.sort((a, b) => {
-            return <any>new Date(a.last_date) - <any>new Date(b.last_date);
-          });
-        }
-
-        
+          });         
+        }        
       });      
+      // this.allChatGroupsList = this.allChatGroupsList.sort((a, b) => {
+      //   return b.last_date.localeCompare(a.last_date);
+      // });
+      this.allChatGroupsList =  this.allChatGroupsList.sort((a, b) => {
+        // var dateToFormatLastDateA = a.last_date;
+        // moment(dateToFormatLastDateA).format("DD/MM/YYYY"); 
 
+        // var dateToFormatLastDateB = b.last_date;
+        // moment(dateToFormatLastDateB).format("DD/MM/YYYY"); 
+        
+        // var diff = dateToFormatLastDateA.diff(dateToFormatLastDateB);
+        // console.log("diff" , diff);
+
+        // if(dateToFormatLastDateA > dateToFormatLastDateB){
+        //   return 1;
+        // }
+        
+        // if(dateToFormatLastDateB > dateToFormatLastDateA){
+        //   return -1;
+        // }
+
+
+        return Date.parse(b.last_date) - Date.parse(a.last_date);
+
+
+
+      });
       
+      console.log("this.allChatGroupsList" , this.allChatGroupsList)
+    });    
+  }
+
+  async getAllGroupBId(groupsId:string) {
+    firebase.database().ref('groups/' + groupsId).on('value', (res: any) => {
+      this.chatGroup = res.val();
     });    
   }
   
@@ -208,6 +240,10 @@ export class ChatService {
           }
         });
 
+        if(model.allowed === null || model.allowed === undefined){
+          model.allowed = true;
+        }
+
         firebase.database().ref('groups/' + groupId).set(model);
 
         // Add Groups To Participant
@@ -216,19 +252,53 @@ export class ChatService {
             elm.groups[groupId] = groupId;    
           }
 
-          const updateGroupToUsersRoom = firebase.database().ref('users/' + elm.key +'/' + 'groups');
+          const updateGroupToUsersRoom = firebase.database().ref('users/' + elm.id +'/' + 'groups');
           updateGroupToUsersRoom.set(elm.groups);
         });
   }
 
   async editGroup(selectedParticipantsList:IParticipantChat[] , model:IGroupChat , groupId:any ) {
+    this.getAllGroupBId(groupId);
+    Array.from(model.participants || []).forEach((elmOfParticipant: IParticipantChat) => {
+      var URL = 'users/' + elmOfParticipant.id + '/groups/' + groupId;
+      firebase.database().ref('users/').child(elmOfParticipant.id + '/').child('/groups/').child(groupId).remove();
+    });
+    
     // Edit Participants To Group
       Array.from(selectedParticipantsList).forEach((elm: IParticipantChat) => {
         if(elm.groups === null || elm.groups === undefined || elm.groups.length === 0){
           elm.groups = [];
         }
-      });
 
-      firebase.database().ref('groups/' + groupId).update(model);
+        this.getAllGroupsByParticipantId(elm.id || '');        
+
+        var isExist = this.allChatGroupsList.some(x => x.key === groupId);
+        var isParticipantExist = this.chatGroup?.participants?.some(x => x.id === elm.id);
+        if(isExist === false && isParticipantExist === false){
+          elm.groups[groupId] = groupId;    
+          this.participantModel = {
+            id:elm.id,
+            gender:elm.gender,
+            hoffazId:elm.hoffazId,
+            role:elm.role,
+            name_ar:elm.name_ar,
+            name_en:elm.name_en,
+            avatar_url:elm.avatar_url == undefined || null || '' ? '../../../../../assets/images/Profile.svg': elm.avatar_url
+          }
+          // model.participants?.push(this.participantModel)
+          firebase.database().ref('groups/').child(groupId+ '/participants').push(this.participantModel);
+          const updateGroupToUsersRoom = firebase.database().ref('users/' + elm.id +'/' + 'groups');
+          updateGroupToUsersRoom.set(elm.groups);
+        }        
+      });
+      // this.getAllGroupBId(groupId);
+      // model.last_message = this.chatGroup?.last_message;
+      // model.last_date = this.chatGroup?.last_date;
+      // model.messages = this.chatGroup?.messages;
+
+      // var x = firebase.database().ref('groups/' + groupId).set(model);
+      
+      
+      this.getAllChatGroups();
   }
 }
