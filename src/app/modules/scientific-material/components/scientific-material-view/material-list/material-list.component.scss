@@ -9,10 +9,9 @@
 .material-list:lang(en){
     margin-right: 1rem;
 }
-.material-list:lang(area){
+.material-list:lang(ar){
     margin-left: 1rem;
 }
-
 .matrial-card {
     background: #ffffff 0% 0% no-repeat padding-box;
     border: 1px solid #c5c5c5;
@@ -21,7 +20,6 @@
     padding: 1rem;
     height: 100px;
 }
-
 .matrial-card p {
     text-align: right;
     font-family: Almarai-Bold;
@@ -44,9 +42,7 @@
     color: #3a3a3a;
     opacity: 1;
 }
-
 // add by nermen
-
 p.title_material-list {
     font-family: Almarai-Bold;
     font-size: 20px;
@@ -71,7 +67,6 @@ p.title_material-list:lang(ar),
     width: 1.25rem;
     height: 1.25rem;
 }
-
 // Background border
 ::ng-deep .mat-checkbox .mat-checkbox-frame {
     border-color: #8e2520;
@@ -91,28 +86,23 @@ p.title_material-list:lang(ar),
     // width: 18px;
     // height: 18px;
 }
-
 ::ng-deep .mat-checkbox:hover {
     ::ng-deep .mat-checkbox-frame {
         border-color: #8e2520 !important; //what ever color you want
     }
 }
-
 @media (min-width: 992px) {
     .col-lg-5 {
         flex: 0 0 47.666667%;
         max-width: 47.666667%;
     }
 }
-
 .internal_scroll_list_group:lang(ar) {
-    // background-color: antiquewhite;
             height: 57vh;
             overflow-y: auto;
             padding-left: 0.5rem;
         }
         .internal_scroll_list_group:lang(en) {
-            // background-color: antiquewhite;
                     height: 57vh;
                     overflow-y: auto;
                     padding-right: 0.5rem;
@@ -121,7 +111,6 @@ p.title_material-list:lang(ar),
     font: normal normal  1.25rem Almarai;
         color:black;
         padding-top: 2rem;
-
     }
     .no-data:lang(en){
     text-align: left;
@@ -130,7 +119,6 @@ p.title_material-list:lang(ar),
     }
     .no-data:lang(ar){
     text-align: right ;
-
     padding-right: 2rem;
     }
     .pull-left{

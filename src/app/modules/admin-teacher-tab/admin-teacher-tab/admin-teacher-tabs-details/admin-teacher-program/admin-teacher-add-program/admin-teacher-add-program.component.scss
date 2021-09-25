@@ -1,4 +1,9 @@
 @import '../../../../../teacher-program-subscription/teacher-program-sub-view/teacher-submit-subscription/teacher-submit-subscription.component.scss';
+.DataForm{
+  &:lang(ar){text-align: right;}
+  &:lang(en){text-align: left;}
+
+}
 .programPredefinedCondtion{
   p{
     color: #000000 ;
