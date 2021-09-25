@@ -378,6 +378,8 @@ font-family: Almarai-Regular;
 .dimmed {
   cursor: not-allowed !important;
   color: #7674A150 !important;
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 :focus:is(input,textarea,select){
