@@ -32,10 +32,10 @@ export class AdminStudentDropOutComponent implements OnInit {
   totalCount = 0;
   numberItemsPerRow = 3;
   ids?: string[] = [];
-  typeEnum: StudentDropOutRequestStatusEnum = StudentDropOutRequestStatusEnum.Pending;
+  typeEnum: StudentDropOutRequestStatusEnum = StudentDropOutRequestStatusEnum.Empty;
   statusEnum = StudentDropOutRequestStatusEnum;
-  // userMode: DropOutRoleEnum = DropOutRoleEnum.Student;
-  userMode: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.student;
+  userMode: DropOutRoleEnum = DropOutRoleEnum.Student;
+  // userMode: ProgramSubscriptionUsersEnum = ProgramSubscriptionUsersEnum.student;
   showTap: StudentDropOutRequestStatusEnum = StudentDropOutRequestStatusEnum.Pending;
   showUserDetailsView: boolean = false;
   constructor(

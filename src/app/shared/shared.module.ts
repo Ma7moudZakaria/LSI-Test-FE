@@ -75,17 +75,9 @@ import { TeacherDropOutRequestTeacherCardComponent } from './components/teacher-
 import { StudentDropOutRequestAdminCardComponent } from './components/student-drop-out-request-admin-card/student-drop-out-request-admin-card.component';
 import { StudentDropOutRequestStudentCardComponent } from './components/student-drop-out-request-student-card/student-drop-out-request-student-card.component';
 import { StudentDropOutGridComponent } from './components/student-drop-out-grid/student-drop-out-grid.component';
-
-
 import { TeacherDetailsViewComponent } from './components/teacher-details-view/teacher-details-view.component';
 import { StudentDetailsViewComponent } from './components/student-details-view/student-details-view.component';
 import { FormatTimePipe } from '../core/pipe/format-time.pipe';
-
-import { AdminJoinRequestForTeacherTabAndStudentTabGridComponent } from './components/admin-join-request-for-teacher-tab-and-student-tab-grid/admin-join-request-for-teacher-tab-and-student-tab-grid.component';
-import { AdminJoinRequestForTeacherTabAndStudentTabCardComponent } from './components/admin-join-request-for-teacher-tab-and-student-tab-card/admin-join-request-for-teacher-tab-and-student-tab-card.component';
-import { AdminDropOutRequestForTeacherTabAndStudentTabGridComponent } from './components/admin-drop-out-request-for-teacher-tab-and-student-tab-grid/admin-drop-out-request-for-teacher-tab-and-student-tab-grid.component';
-import { AdminVacationRequestForStudentTabGridComponent } from './components/admin-vacation-request-for-student-tab-grid/admin-vacation-request-for-student-tab-grid.component';
-import { AdminVacationRequestForStudentTabCardComponent } from './components/admin-vacation-request-for-student-tab-card/admin-vacation-request-for-student-tab-card.component';
 import { JoinExamComponent } from './components/program-day-tasks/join-exam/join-exam.component';
 import { TeacherAppointmentRequestsGridComponent } from './components/teacher-appointment-requests-grid/teacher-appointment-requests-grid.component';
 import { TeacherAppointmentRequestCardComponent } from './components/teacher-appointment-request-card/teacher-appointment-request-card.component';

@@ -1,4 +1,4 @@
-<div class="row scientific-problem-grid" *ngIf='this.userRole== "Super Admin"'>
+<div class="row scientific-problem-grid" *ngIf='userRoleMode.Admin === userMode'>
   <div class="col-9 d-flex justify-content-start">
     <ngb-pagination
     [maxSize]="3"
@@ -58,8 +58,8 @@
 
 <!-----------------Student---------------------------->
 
-<div class="row scientific-problem-grid"  *ngIf='this.userRole== "Student"'>
-  <div class="col-8 d-flex justify-content-start">
+<div class="row scientific-problem-grid"  *ngIf='userRoleMode.Student === userMode'>
+  <div class="col-9 d-flex justify-content-start">
     <ngb-pagination
       [collectionSize]="totalCount"
       [(page)]="studentProgramVacationFilterRequestModel.page"
@@ -98,12 +98,21 @@
           </span>
     </button>
   </div>
+  <div class="col-3 pl-4 text-right align-self-center" 
+   *ngIf='userRoleMode.Student === userMode && stuTabTypeSelected.Empty === typeEnum'>
+   
+    <a class=" ml-1 mr-1" >
+      <img   (click)='exportStudentCSVInStuTab()'
+            src="../../../../assets/images/sc-problem/exporticon.svg">
+    </a>
+  </div>
+
 </div>
 
 <!--  -------Student Card Admin View---------->
 
 <mat-grid-list cols="{{numberPerRow}}" rowHeight="3:3">
-  <ng-container *ngIf='this.userRole== "Super Admin"'>
+  <ng-container *ngIf='userRoleMode.Admin === userMode'>
     <mat-grid-tile *ngFor='let item of studentVacationItems' >
       <app-student-program-vacation-card-admin class="card" [studentSubscripModel]='item'
                             (rejectStudentVacationRequest)="rejectStuRequest($event)"
@@ -116,11 +125,13 @@
   </ng-container>
 
 <!--  -------Student Card Student View---------->
-  <ng-container *ngIf='this.userRole== "Student"'>
+  <ng-container *ngIf='userRoleMode.Student === userMode'>
     <mat-grid-tile *ngFor='let item of studentVacationItems' >
-      <app-student-program-vacation-card-student-view class="card" [studentProgramVacationStudentViewModel]='item'
-                                               (CancelStudentVacationRequest)="cancelStuRequest($event)"
-                                               (TerminateStudentVacationRequest)="terminateStuRequest($event)"
+      <app-student-program-vacation-card-student-view class="card"
+       [studentProgramVacationStudentViewModel]='item'
+      (CancelStudentVacationRequest)="cancelStuRequest($event)"
+      (TerminateStudentVacationRequest)="terminateStuRequest($event)"
+      [typeEnum]='typeEnum' 
       ></app-student-program-vacation-card-student-view>
     </mat-grid-tile>
   </ng-container>
