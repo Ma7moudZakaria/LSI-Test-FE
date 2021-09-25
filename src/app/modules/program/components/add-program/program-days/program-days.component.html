@@ -5,7 +5,7 @@
             (progDutyDayEvent)='progDutyDayEventCallBk($event)' (progDutyDaysCheckBoxEvent)='progDutyDaysCheckBoxCallBK($event)'></app-program-duty-days>
         </div>
         <div class="col-3">
-            <app-program-day-tasks (openAddDayTasks)="openAddDayTasksForm()" [programDutyDay]='programDutyDay' (taskDetailsEvent)="sendTaskIdToProgDayTaskDetails($event)"></app-program-day-tasks>
+            <app-program-day-tasks (openAddDayTasks)="openAddDayTasksForm($event)" [programDutyDay]='programDutyDay' (taskDetailsEvent)="sendTaskIdToProgDayTaskDetails($event)"></app-program-day-tasks>
         </div>
         <div class="col-6" *ngIf='taskDetails'> 
             <app-program-day-tasks-details [taskDetails]='taskDetails' [progamDetails]='progamDetails' ></app-program-day-tasks-details >
@@ -15,7 +15,7 @@
 
 
 <div class="overlay" *ngIf="showAddDayTasksForm">
-    <app-add-program-day-tasks  [programDutyDay]='programDutyDay' [selectedProgDutyDays]='selectedProgDutyDays'
+    <app-add-program-day-tasks  [programDutyDay]='programDutyDay' [selectedProgDutyDays]='selectedProgDutyDays' [haveMemorize]='haveMemorize'
     (closeDayTasks)='closeDayTasks($event)'
     ></app-add-program-day-tasks>
 </div>

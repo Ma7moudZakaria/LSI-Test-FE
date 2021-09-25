@@ -3,12 +3,14 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angu
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { ProgramDayTasksDetails } from 'src/app/core/enums/programs/program-day-tasks-details.enum';
 import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-model';
 import { IProgramDayTasksUpdateOrderByModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-update-order-by-model';
 import { IProgramDutyDays } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { IDragDropAccordionItems } from 'src/app/core/interfaces/shared-interfaces/accordion-interfaces/idrag-drop-accordion-items';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
+import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 import { ProgramDayTasksService } from 'src/app/core/services/program-services/program-day-tasks.service';
@@ -37,13 +39,14 @@ export class ProgramDayTasksComponent implements OnInit {
   programDayTasksUpdateOrderByModel: IProgramDayTasksUpdateOrderByModel = {};
   listOrder?: number[];
   defaultSelectedDay = 0;
-
+haveMemorize?:boolean=false;
+tasksTypeEnum = ProgramDayTasksDetails;
   constructor(
     public languageService: LanguageService,
     private programDayTasksService: ProgramDayTasksService,
     public translate: TranslateService,
     public dialog: MatDialog,
-    private lookupService: LookupService) { }
+    private aletify:AlertifyService) { }
 
   ngOnInit(): void {
     this.getProgramDutyDays();
@@ -83,8 +86,8 @@ export class ProgramDayTasksComponent implements OnInit {
   }
 
   newDayTasks() {
-    this.openAddDayTasks.emit(true);
-
+  this.haveMemorize = this.programDayTasksLists.some(x=>x.huffazTask==this.tasksTypeEnum.TaskMemorize);
+    this.openAddDayTasks.emit(this.haveMemorize);
   }
 
   setProgrmeDayTask(item: IProgramDayTasksModel) {
@@ -146,27 +149,34 @@ export class ProgramDayTasksComponent implements OnInit {
       maxWidth: "400px",
       data: dialogData
     });
+   
     dialogRef.afterClosed().subscribe(dialogResult => {
       if (dialogResult == true) {
-        this.programDayTasksService.DeleteProgramDayTasks(id || '').subscribe(res => {
-          if (res.isSuccess) {
-            this.programDayTasksLists = res.data as Array<IProgramDayTasksModel>;
-
-            console.log("programDayTasksLists ===========>", this.programDayTasksLists);
-          }
-          else {
-            this.resMessage =
-            {
-              message: res.message,
+        let huffazTask=this.programDayTasksLists.find(x=>x.id===id)?.huffazTask;
+        if(huffazTask===this.tasksTypeEnum.TaskMemorize && this.programDayTasksLists.some(x=>x.huffazTask==this.tasksTypeEnum.TaskTasmea)){
+          this.aletify.error(this.translate.currentLang === LanguageEnum.en ? "yoy can not delete memorize taske befor delet tamea task" : "لا يمكن حذف مهمة الحفظ قبل حذف مهمة التسميع")
+        }
+        else{
+          this.programDayTasksService.DeleteProgramDayTasks(id || '').subscribe(res => {
+            if (res.isSuccess) {
+              this.programDayTasksLists = res.data as Array<IProgramDayTasksModel>;
+  
+              console.log("programDayTasksLists ===========>", this.programDayTasksLists);
+            }
+            else {
+              this.resMessage =
+              {
+                message: res.message,
+                type: BaseConstantModel.DANGER_TYPE
+              }
+            }
+          }, error => {
+            this.resMessage = {
+              message: error,
               type: BaseConstantModel.DANGER_TYPE
             }
-          }
-        }, error => {
-          this.resMessage = {
-            message: error,
-            type: BaseConstantModel.DANGER_TYPE
-          }
-        });
+          });
+        }
       }
     });
   }

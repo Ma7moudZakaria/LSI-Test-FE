@@ -20,6 +20,7 @@ export class ProgramDayTasksService {
   GetProgramDayTasksURL=environment.baseUrl+'Programs/get-day-tasks-by-program-day/';
   UpdateOrderByProgramDayTasksURL=environment.baseUrl+'Programs/update-order-program-day-tasks/';
   getProgramLastFiveHomeWorkToLinkAutoURL=environment.baseUrl+'Programs/get-program-last-five-work-to-link-auto/';
+  getProgramMemorizeAtDayURL=environment.baseUrl+'Programs/get-program-momrize-at-day/';
   
   constructor(private http:HttpClient) { }
 
@@ -50,4 +51,9 @@ export class ProgramDayTasksService {
   GetProgramLastFiveHomeWorkToLinkAuto(model:IProgramLastFiveWorkToLinkAuto):Observable<BaseResponseModel>{
     return this.http.post<BaseResponseModel>(this.getProgramLastFiveHomeWorkToLinkAutoURL , model);
   }
+
+  getProgramMemorizeAtDay(dayId:string):Observable<BaseResponseModel>{
+    return this.http.get<BaseResponseModel>(this.getProgramMemorizeAtDayURL+dayId);
+  }
+
 }

@@ -65,8 +65,8 @@ export class StudentProgramsComponent implements OnInit {
     );
   }
   
-  goToHomeWore(batchId?:string){
-    this.router.navigateByUrl('student-programs/Student-duty/' + this.programFilter.usrId + '/' + batchId);
+  goToHomeWore(batchId?:string,progId?:string){
+    this.router.navigateByUrl('student-programs/Student-duty/' + this.programFilter.usrId + '/' + batchId+'/' + progId);
   }
 
   closeAddStuDutyDaysToProgramOverlay($event:boolean){

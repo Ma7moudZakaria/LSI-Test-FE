@@ -94,6 +94,10 @@ import { TeacherStuProgramForSubscriptionGridComponent } from './components/teac
 import { StudentProgramVacationCardStudentViewComponent } from './components/student-program-vacation-card-student-view/student-program-vacation-card-student-view.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { GetAllAvailableTeachersGridComponent } from './components/get-all-available-teachers-grid/get-all-available-teachers-grid.component';
+import { GetAllAvailableTeachersCardComponent } from './components/get-all-available-teachers-card/get-all-available-teachers-card.component';
+import { GetAllAvailableStudentGridComponent } from './components/get-all-available-student-grid/get-all-available-student-grid.component';
+import { GetAllAvailableStudentCardComponent } from './components/get-all-available-student-card/get-all-available-student-card.component';
 import { ViewExamAnswersComponent } from './components/view-exam-answers/view-exam-answers.component';
 import { ChatInputSearchListComponent } from './components/chat-input-search-list/chat-input-search-list.component';
 
@@ -149,10 +153,14 @@ import { ChatInputSearchListComponent } from './components/chat-input-search-lis
     AdminJoinRequestForTeacherTabAndStudentTabCardComponent,
     AdminDropOutRequestForTeacherTabAndStudentTabGridComponent,
     AdminVacationRequestForStudentTabGridComponent,
-        AdminVacationRequestForStudentTabCardComponent,
-        JoinExamComponent,
-        TeacherAppointmentRequestsGridComponent,
-        TeacherAppointmentRequestCardComponent,
+    AdminVacationRequestForStudentTabCardComponent,
+    JoinExamComponent,
+    TeacherAppointmentRequestsGridComponent,
+    TeacherAppointmentRequestCardComponent,
+    GetAllAvailableTeachersGridComponent,
+    GetAllAvailableTeachersCardComponent,
+    GetAllAvailableStudentGridComponent,
+        GetAllAvailableStudentCardComponent,
         ViewExamAnswersComponent,
         ChatInputSearchListComponent
   ],
@@ -160,7 +168,7 @@ import { ChatInputSearchListComponent } from './components/chat-input-search-lis
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,
     MatButtonModule, MatDialogModule, MatCardModule, MatExpansionModule, MatSelectModule, DragDropModule,
     MatIconModule, FormsModule, MatCheckboxModule, MatRadioModule, MatGridListModule,
-    NgbModule, MatAutocompleteModule, NgbRatingModule, MatTooltipModule, PdfViewerModule,MatDatepickerModule, MatNativeDateModule
+    NgbModule, MatAutocompleteModule, NgbRatingModule, MatTooltipModule, PdfViewerModule, MatDatepickerModule, MatNativeDateModule
   ],
 
   exports: [
@@ -186,8 +194,13 @@ import { ChatInputSearchListComponent } from './components/chat-input-search-lis
     FormatTimePipe, AdminJoinRequestForTeacherTabAndStudentTabGridComponent,
     AdminJoinRequestForTeacherTabAndStudentTabCardComponent,
     AdminDropOutRequestForTeacherTabAndStudentTabGridComponent,
-      AdminVacationRequestForStudentTabGridComponent, AdminVacationRequestForStudentTabCardComponent,
-      JoinExamComponent, TeacherAppointmentRequestsGridComponent,MatDatepickerModule, MatNativeDateModule,ViewExamAnswersComponent
+    AdminVacationRequestForStudentTabGridComponent, AdminVacationRequestForStudentTabCardComponent,
+    JoinExamComponent, TeacherAppointmentRequestsGridComponent, MatDatepickerModule, MatNativeDateModule,
+    GetAllAvailableTeachersGridComponent,
+    GetAllAvailableTeachersCardComponent,
+    GetAllAvailableStudentGridComponent,
+      GetAllAvailableStudentCardComponent,
+      ViewExamAnswersComponent
 
 
   ]

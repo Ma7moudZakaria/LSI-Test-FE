@@ -30,7 +30,7 @@ export class ProgramDaysComponent implements OnInit {
 
   progDutyDayModel: IProgramDutyDays | undefined;
   selectedProgDutyDays:IProgramDutyDays[] = [];
-
+  haveMemorize?:boolean=false;
   constructor() { }
 
   ngOnInit(): void {
@@ -79,7 +79,8 @@ export class ProgramDaysComponent implements OnInit {
     // this.progDutyDayEventCallBk(this.programDutyDay);
     // this.userScientificProbChild?.getScientificProblemByUserId();
   }
-  openAddDayTasksForm() {
+  openAddDayTasksForm($event:boolean) {
+    this.haveMemorize=$event;
     this.showAddDayTasksForm = true;
 
   }

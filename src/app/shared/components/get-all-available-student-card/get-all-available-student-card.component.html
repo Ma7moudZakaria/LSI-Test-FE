@@ -1,0 +1,34 @@
+<div class="card-request" >
+    <div class="card_body">
+      <div class="d-flex justify-content-between ">
+  
+        <img *ngIf='!availableStudentResponseModel.avr' class="img_user cursor-pointer" 
+             src="../../../../assets/images/student/user-profile.svg">
+        <img *ngIf='availableStudentResponseModel.avr' class="img_user cursor-pointer" 
+             src="{{availableStudentResponseModel.avr}}">
+          <div class="mx-1 d-inline-block">
+           
+            <p class="program_user bold mb-2 ellipsis p-0"
+            title="{{translate.currentLang === langEnum.en ? availableStudentResponseModel.techNameEn: availableStudentResponseModel.techNameAr}}"
+            > {{translate.currentLang === langEnum.en ? availableStudentResponseModel.techNameEn: availableStudentResponseModel.techNameAr}}</p>
+
+            <ngb-rating [(rate)]="availableStudentResponseModel.rte || starsSelected" [max]="5" [readonly]="true">
+              <ng-template let-fill="fill" let-index="index">
+                <span class="star" [class.filled]="fill === 100">&#9733;</span>
+              </ng-template>
+            </ngb-rating>
+
+          </div>
+      </div>
+      </div>
+         <div class="d-flex card_chattin_footer">
+            <button class="btn cancel-btn"  >
+              <img   src="/assets/images/request/callWhite.svg">
+             </button>
+              <button  class=" btn save-btn" >
+              <img   src="/assets/images/request/vedioWhite.svg">
+             </button>
+        </div>
+    </div>
+  
+  

@@ -11,15 +11,15 @@ import { IProgramDayTaskHearing } from 'src/app/core/interfaces/programs-interfa
 import { IProgramDayTaskLinking } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-linking';
 import { IProgramDayTaskMemorize } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-memorize';
 import { IProgramDayTaskReadExplanation } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-read-explanation';
-import { IProgramDayTaskRecitation } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-recitation';
-import { IProgramDayTaskRecitationStudents } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-recitation-students';
 import { IProgramDayTaskRepetition } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-repetition';
 import { IProgramDayTaskReview } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-review';
+import { IProgramDayTaskTasmea } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-tasmea';
 import { IProgramDayTaskVideo } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-video';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { ProgramDayTasksService } from 'src/app/core/services/program-services/program-day-tasks.service';
+import { ProgramDayTaskRecitationType } from 'src/app/core/enums/program-day-task-recitation-type.enum';
 
 @Component({
   selector: 'app-program-day-tasks-details',
@@ -43,7 +43,7 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
   dailyTestDetailsModel: IExam = { questions: [] };
   recitationStudentsModel :IProgramBasicInfoDetails = {};
   programDayTaskDetails: ISaveProgramDayTaskDetailsModel={};
-  tasmeaModel :IProgramBasicInfoDetails = {};
+  tasmeaModel :IProgramDayTaskTasmea ={};
   resultMessage: BaseMessageModel = {};
   langEnum = LanguageEnum;
 
@@ -147,6 +147,9 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
                     case this.detailsTypeEnum.TaskDailyTest:
                     this.taskDetails.detailsTask = JSON.stringify(this.dailyTestDetailsModel);
                     break;
+                    case this.detailsTypeEnum.TaskTasmea:
+                      this.taskDetails.detailsTask = JSON.stringify(this.tasmeaModel);
+                    break;
       default:
         this.taskDetails!.detailsTask = JSON.stringify("{}");
         break;
@@ -249,7 +252,10 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
                         this.dailyTestDetailsModel.questions = [];
                       break;
                       case this.detailsTypeEnum.TaskTasmea:
-                    this.tasmeaModel=this.progamDetails?.progBaseInfo||{};
+                      this.tasmeaModel.prgRecitType= this.progamDetails?.progBaseInfo?.prgRecitType;
+                      this.tasmeaModel.progRecitationTimes=this.progamDetails?.progBaseInfo?.prgRecitTms?
+                      this.progamDetails?.progBaseInfo?.prgRecitTms.filter(i => i.huffno !== ProgramDayTaskRecitationType.limited).map((item: any) => ({ progRecFrom: item.recitFrom, progRecTo: item.recitTo })) : [];
+                      this.tasmeaModel.dutyDay=this.taskDetails?.dutyDay;
                     break;
       default:
         "";

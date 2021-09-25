@@ -5,7 +5,7 @@ import { StudentProgramWrapperComponent } from './student-program-wrapper/studen
 
 const routes: Routes = [
   { path: '', component: StudentProgramWrapperComponent },
-  { path: 'Student-duty/:id/:batch', component: StudentProgDutiesComponent },
+  { path: 'Student-duty/:id/:batch/:progId', component: StudentProgDutiesComponent },
 ];
 
 @NgModule({
