@@ -37,6 +37,7 @@
     "NO": "No",
     "LOGOUT_CONFIRM": "LogOut",
     "LOGOUT_MESSAGE": "Are you sure you want to logout ?",
+    "CONFIRM_LOGOUT_MESSAGE": "Please log out and then log in again to complete the subscription",
     "ENGLISH_DISPALY_SWITCH": "عربى",
     "INVALID_PHONE_NUMBER": "Invalid phone number",
     "CONFIRM_PASSWORD_TO_CONTAINER": "The password should including at least one number and includes both lower and uppercase letters and special characters",
