@@ -685,7 +685,7 @@ export class UpdateUserProfileComponent implements OnInit {
 
      // add by shereen
      logout() {
-
+            
       this.authService.logout();
      }
     result: string = '';
