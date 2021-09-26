@@ -195,25 +195,4 @@ no(){
   taskIsSave(){
      this.taskIsSaveEvent.emit()
     }
-
-   
-  getProgramDetails() {
-    this.progId= this.route.snapshot.params.progId;
-      this.programService.getProgramDetails(this.progId || '').subscribe(res => {
-        if (res.isSuccess) {
-           this.programDetails = res.data as IProgramDetails;
-           this.getprogramDayTaskDetails();
-        }
-        else {
-          this.resMessage =
-          {
-            message: res.message,
-            type: BaseConstantModel.DANGER_TYPE
-          }
-        }
-      }, error => {
-        
-      });
-    }
-  
 }

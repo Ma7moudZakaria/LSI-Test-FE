@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { ProgramDayTasksDetails } from 'src/app/core/enums/programs/program-day-tasks-details.enum';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
 import { ICreateProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/icreate-program-day-tasks-model';
 import { IProgramDutyDays } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
@@ -33,6 +34,7 @@ export class AddProgramDayTasksComponent implements OnInit {
 
   @Output() closeDayTasks = new EventEmitter<boolean>();
   checked:boolean=false;
+  detailsTypeEnum = ProgramDayTasksDetails;
   constructor(
     public languageService: LanguageService,
     private programDayTasksService: ProgramDayTasksService,
@@ -145,12 +147,6 @@ export class AddProgramDayTasksComponent implements OnInit {
   }
 
   async addProgDayTaskApiCall(){
-    if(!this.haveMemorize&& this.selectedProgramDayTasksList.some(i => i === '8ed9715f-d5d4-403d-8edd-714799a33060')){
-      this.resMessage = {
-        message: "can not delete",
-        type: BaseConstantModel.DANGER_TYPE
-      }
-    }
     this.programDayTasksService.AddProgramDayTasks(this.createProgramDayTasksModel).subscribe(
       res => {
         if (res.isSuccess) {
