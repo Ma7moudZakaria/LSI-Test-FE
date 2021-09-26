@@ -54,18 +54,16 @@
         
         
            <ng-container *ngIf="isView">
-            <!-- <p class="mb-2 name"> الحفظ</p> -->
         
                  <div class="d-flex mb-3">       
         
                        
                     
                          <div class="col-6 px-0" *ngIf='tasmeaModel.prgRecitType'>
-                             <span class="grad">فتره التسميع
+                             <span class="grad">{{"PROGRAM_DAY_TASK_RECITIATION.RECITIATION_PERIOD"|translate}} 
                                  <span>  &nbsp;  : </span>
                                  <span>  &nbsp; </span> 
         
-                                 <!-- <small class="info">طوال اليوم</small> -->
                                  <mat-radio-group aria-label="Select an option"  class="example-radio-group" 
                            [(ngModel)]="tasmeaModel.prgRecitType" disabled>
                        <ng-container *ngFor="let item of collectionOfLookup.SARD_TYPES ;let i=index">
@@ -81,7 +79,7 @@
                     <div *ngFor="let item of tasmeaModel.progRecitationTimes;let i=index" 
                     class="badge badge-info p-2 " >
                      <div class="d-flex justify-content-between">
-                         <p class="ellipsis mb-0"> from : {{item.progRecFrom}} , to : {{item.progRecTo}}</p>
+                         <p class="ellipsis mb-0"> {{"PROGRAM_DAY_TASK_RECITIATION.FROM"|translate}} : {{item.progRecFrom}} , {{"PROGRAM_DAY_TASK_RECITIATION.TO"|translate}} : {{item.progRecTo}}</p>
                      </div>
                     </div>
                  </div>
@@ -107,7 +105,7 @@
 
     <div class="d-flex mb-3">       
         <div class="col-6 px-0" *ngIf='tasmeaModel.prgRecitType'>
-            <span class="grad">فتره التسميع
+            <span class="grad">{{"PROGRAM_DAY_TASK_RECITIATION.RECITIATION_PERIOD"|translate}} 
                 <span>  &nbsp;  : </span>
                 <span>  &nbsp; </span> 
 
@@ -126,7 +124,7 @@
     <div *ngFor="let item of tasmeaModel.progRecitationTimes;let i=index" 
     class="badge badge-info p-2 " >
      <div class="d-flex justify-content-between">
-         <p class="ellipsis mb-0"> from : {{item.progRecFrom}} , to : {{item.progRecTo}}</p>
+         <p class="ellipsis mb-0"> {{"PROGRAM_DAY_TASK_RECITIATION.FROM"|translate}}  : {{item.progRecFrom}} , {{"PROGRAM_DAY_TASK_RECITIATION.TO"|translate}}  : {{item.progRecTo}}</p>
      </div>
     </div>
  </div>

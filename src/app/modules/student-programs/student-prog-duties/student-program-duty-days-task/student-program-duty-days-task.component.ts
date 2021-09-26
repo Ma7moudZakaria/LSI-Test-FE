@@ -49,8 +49,10 @@ export class StudentProgramDutyDaysTaskComponent implements OnInit {
         this.programDayTasksLists = res.data as Array<IProgramDayTasksModel>;
         this.isAnsweredIndex=this.programDayTasksLists.findIndex(x=>x.answered===false);
         if(this.isAnsweredIndex>=0)
-       {this.setProgrmeDayTask(this.programDayTasksLists[this.isAnsweredIndex]); this.defaultSelectedDay=this.isAnsweredIndex;}
-        else{
+       {
+         this.setProgrmeDayTask(this.programDayTasksLists[this.isAnsweredIndex]); this.defaultSelectedDay=this.isAnsweredIndex;
+        }
+       else{
           this.setProgrmeDayTask(this.programDayTasksLists[0]);  this.defaultSelectedDay=0;
           this.isAnsweredIndex=this.programDayTasksLists.length;
         } 
@@ -80,7 +82,9 @@ export class StudentProgramDutyDaysTaskComponent implements OnInit {
       this.isAnsweredIndex=this.isAnsweredIndex + 1;
       this.taskIsEnd();
     }
-    else{this.taskIsEnd()}
+    else{
+      this.taskIsEnd()
+    }
   }
   taskIsEnd(){ this.taskIsEndEvent.emit()}
 }

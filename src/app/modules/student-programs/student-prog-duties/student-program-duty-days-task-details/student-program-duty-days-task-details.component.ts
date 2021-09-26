@@ -68,16 +68,11 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
 
   async ngOnInit() {
     this.progId= this.route.snapshot.params.progId;
-    //  this.getProgramDetails();
     this.resultMessage = {}
-    // if(localStorage.getItem("progId"))
-    // {this.progId = localStorage.getItem("progId") || '';}
     await this.getprogramDayTaskDetails();
   }
   async ngOnChanges(changes: any){
     await this.getprogramDayTaskDetails();
-
-    // this.getProgramDetails();
     this.resultMessage = { }
   }
 
