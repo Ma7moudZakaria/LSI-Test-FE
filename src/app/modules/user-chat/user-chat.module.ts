@@ -7,6 +7,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { UserChatViewRoutingModule } from './user-chat-routing.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 
 
@@ -21,6 +22,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     TranslateModule,
     SharedModule,
+    PdfViewerModule
   ]
 })
 export class UserChatModule { }

@@ -13,8 +13,49 @@
                     {{ message.message }}                   
                 </div>
                 <div class=" mb-2 message_message "*ngIf="message.message_type === 'file'">
-                    <img class="img_user" src="{{ message.file_name }}"> 
+                    <!-- <img class="img_user" src="{{ message.file_name }}">  -->
+                     <!-- Attachment -->
+                    <div class="row mx-0">
+                        <ng-container >
+                            <div class="col-4 cardRecourd mb-2" (click)="openVerticallyCentered(content)"  >
+                                <img src="assets/images/days/book.svg">
+                                <p class="ellipsis mb-0 "  matTooltip="{{message.file_name}}">{{message?.file_name}}</p>
+                        
+                                <!-- <img class="trash" src="assets/images/feelings/trash.svg"  (click)="DeleteAttachment(i,message.id)"> -->
+                            </div>
+                
+                            <ng-template #content let-modal>
+                                <div class="modal-header">
+                                    <h4 class="modal-title">{{message?.message}}</h4>                    
+                                </div>
+                                <div class="modal-body">
+                                    <a  [href]="message.file_name" *ngIf="message.message.split('.').pop() !=='pdf' ">
+                                        <ng-container  *ngIf="message.message.split('.').pop() !=='pdf' ">
+                                            <img [src]="message.file_name"  class="size_img_model">
+                                        </ng-container>
+                                    </a>
+                                    <a [href]="message.file_name" *ngIf="message.file_name.split('.').pop() ==='pdf' ">
+                                        <ng-container *ngIf="message.file_name.split('.').pop() ==='pdf' ">
+                                            <pdf-viewer [src]="message.file_name" [render-text]="true" [original-size]="false" [fit-to-page]="true" [show-all]="true" [zoom-scale]="'page-width'">
+                                            </pdf-viewer>
+                                        </ng-container>                                        
+                                    </a>
+                                    
+                                    
+                                    
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+                                </div>
+                            </ng-template>
+                        </ng-container>            
+                    </div>
+                    <!-- End Attachment-->
                 </div>
+
+
+               
+
                 <div class="message_date"> {{ message.date }} </div>      
             </div>
         </ng-container></div>

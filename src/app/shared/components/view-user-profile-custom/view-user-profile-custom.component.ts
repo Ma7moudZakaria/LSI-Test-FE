@@ -156,7 +156,6 @@ export class ViewUserProfileCustomComponent implements OnInit {
 
     });
   }
-
   navViewProf() {
     this.closeNav();
     let res = this.currentUser?.usrRoles?.usrRoles?.some(x => x.roleNo == this.role.Student.toString());

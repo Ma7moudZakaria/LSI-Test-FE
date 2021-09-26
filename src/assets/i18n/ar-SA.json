@@ -162,6 +162,7 @@
     "PROGRAMS": "البرامج",
     "ALL": "الكل",
     "ADD_PROGRAM": "اضافه برنامج",
+    "ADD_PROGRAM_STU": "اضافة برنامج للطالب",
     "ADVANCED_SEARCH": " بحث متقدم ",
     "DAY": "يوم",
     "STUDENT": "طالب",
@@ -645,7 +646,7 @@
     "ADD_QUESTION": "إضافة سؤال",
     "THE_SUCCESS_RATE": "درجة النجاح",
     "THE_SUCCESS_RATE_SHOULD_LESS_THAN_TOTAL_DEGREE": "يجب أن تكون درجة النجاح اقل من مجموع الدرجات الكلية ولا تساوى صفر",
-    "CORRECT_ANSWER_IS":"الإجابة الصحيحة هى رقم"
+    "CORRECT_ANSWER_IS": "الإجابة الصحيحة هى رقم"
   },
   "User_Requests": {
     "REQUESTS": "الطلبات",
@@ -688,7 +689,7 @@
     "ENGLISH_FIELD": " هذا الحقل يجب أن يكون باللغة الإنجليزية"
   },
   "PROGRAM_BASIC_INFO": {
-    "PROG_NAME": "اسم البرنامج",
+    "PROG_NAME": "البرامج",
     "PROG_PATTERN": "يرجى ادخال اسم البرنامج صحيحا",
     "PROG_NAME_MAX_LENGTH": "يرجى ادخال اسم البرنامج اقل من او يساوى 100  حرف",
     "SHARE_WITH": "المشاركة مع",
@@ -843,7 +844,7 @@
     "VALIDATIONDATE": "تاريخ البداية يجب ان يكون اقل من تاريخ النهاية ",
     "REQUEST_REASON": "سبب الطلب",
     "NO_DATA": "لا يوجد بيانات",
-    "VIEW_EXAM":"عرض الإختبار"
+    "VIEW_EXAM": "عرض الإختبار"
   },
   "TEACHER_SYSTEM_SUBSCRIPTION": {
     "REQUEST_DATE": "تاريخ الطلب",
@@ -948,14 +949,14 @@
     "GROUP_NOT_CREATED": "المجموعة لم يتم إضافتها من قبل",
     "ADD_NEW_GROUP": "إنشاء مجموعة جديدة",
     "USERS": "اختر أعضاء المجموعة",
-    "ADD":"إضافة",
-    "EDIT":"تعديل",
-    "GROUP_EXIST":"المجموعة موجودة مسبقا",
-    "GROUP_ADDED_SUCCESSFULLY":"تم إضافة المجموعة بنجاح",
-    "GROUP_UPDATED_SUCCESSFULLY":"تم تعديل المجموعة بنجاح",
-    "GROUP_DETAILS":"تفاصيل المجموعة",
-    "ALLOW_USERS":"السماح لاعضاء المجموعه بالمراسله",
-    "GROUPS":"جهات الاتصال"
+    "ADD": "إضافة",
+    "EDIT": "تعديل",
+    "GROUP_EXIST": "المجموعة موجودة مسبقا",
+    "GROUP_ADDED_SUCCESSFULLY": "تم إضافة المجموعة بنجاح",
+    "GROUP_UPDATED_SUCCESSFULLY": "تم تعديل المجموعة بنجاح",
+    "GROUP_DETAILS": "تفاصيل المجموعة",
+    "ALLOW_USERS": "السماح لاعضاء المجموعه بالمراسله",
+    "GROUPS": "جهات الاتصال"
   },
   "JPIN_EXAM": {
     "ARE_YOU_FINISHED_EXAM": "هل تم الانتهاء من الاجابة ؟"
@@ -971,7 +972,6 @@
     "ADVANCED_SEARCH": "بحث متقدم",
     "REQUEST_OWNER_NAME": " أسم صاحب الطلب",
     "REQUEST_NUMBER": "رقم الطلب"
-
   },
   "STUDENT_DAY_TASKS": {
     "DAILY_HOMEWORK": "الواجب اليومي",

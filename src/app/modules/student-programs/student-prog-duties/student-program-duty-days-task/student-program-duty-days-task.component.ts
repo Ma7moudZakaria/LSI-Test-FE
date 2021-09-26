@@ -25,8 +25,8 @@ export class StudentProgramDutyDaysTaskComponent implements OnInit {
   langEnum = LanguageEnum;
   resMessage: BaseMessageModel = {};
   defaultSelectedDay:number = 0;
-  indexIsanswered:number=0;
- 
+  isAnsweredIndex:number=0;
+
   constructor(
     public languageService: LanguageService,
     private studentProgDutiesServiceService: StudentProgDutiesServiceService,
@@ -47,10 +47,13 @@ export class StudentProgramDutyDaysTaskComponent implements OnInit {
     this.studentProgDutiesServiceService.getDayTasksProgramToStudent(model).subscribe(res => {
       if (res.isSuccess) {
         this.programDayTasksLists = res.data as Array<IProgramDayTasksModel>;
-        this.indexIsanswered=this.programDayTasksLists.findIndex(x=>x.answered===false);
-        if(this.indexIsanswered>=0)
-       {this.setProgrmeDayTask(this.programDayTasksLists[this.indexIsanswered]); this.defaultSelectedDay=this.indexIsanswered;}
-        else{this.setProgrmeDayTask(this.programDayTasksLists[0]);  this.defaultSelectedDay=0;} 
+        this.isAnsweredIndex=this.programDayTasksLists.findIndex(x=>x.answered===false);
+        if(this.isAnsweredIndex>=0)
+       {this.setProgrmeDayTask(this.programDayTasksLists[this.isAnsweredIndex]); this.defaultSelectedDay=this.isAnsweredIndex;}
+        else{
+          this.setProgrmeDayTask(this.programDayTasksLists[0]);  this.defaultSelectedDay=0;
+          this.isAnsweredIndex=this.programDayTasksLists.length;
+        } 
       }
       else {
         this.resMessage =
@@ -72,9 +75,10 @@ export class StudentProgramDutyDaysTaskComponent implements OnInit {
   }
 
   onTaskChange(){
-    if (this.programDayTasksLists && this.indexIsanswered + 1 < this.programDayTasksLists.length){
-      this.setProgrmeDayTask(this.programDayTasksLists[this.indexIsanswered + 1]); this.defaultSelectedDay=this.indexIsanswered + 1;
-      this.indexIsanswered=this.indexIsanswered + 1;
+    if (this.programDayTasksLists && this.isAnsweredIndex + 1 < this.programDayTasksLists.length){
+      this.setProgrmeDayTask(this.programDayTasksLists[this.isAnsweredIndex + 1]); this.defaultSelectedDay=this.isAnsweredIndex + 1;
+      this.isAnsweredIndex=this.isAnsweredIndex + 1;
+      this.taskIsEnd();
     }
     else{this.taskIsEnd()}
   }

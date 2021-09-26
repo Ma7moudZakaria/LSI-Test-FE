@@ -1,13 +1,14 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {IStudentProgramVacationModel} from '../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-model';
-import {StudentProgramVacationStatusEnum} from '../../../core/enums/StudentProgramVacationStatus/student-program-vacation-status.enum';
-import {IStudentProgramVacationFilterRequestModel} from '../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-filter-request-model';
-import {LanguageEnum} from '../../../core/enums/language-enum.enum';
-import {TranslateService} from '@ngx-translate/core';
-import {ExportationService} from '../../../core/services/exportation-services/exportation.service';
-import {IUser} from '../../../core/interfaces/auth-interfaces/iuser-model';
-import {IStudentProgramVacationStudentViewModel} from '../../../core/interfaces/student-program-vacation-interfaces/istudent-program-vacation-student-view-model';
-import {ITeacherStudentViewModel} from '../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { IStudentProgramVacationModel } from '../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-model';
+import { StudentProgramVacationStatusEnum } from '../../../core/enums/StudentProgramVacationStatus/student-program-vacation-status.enum';
+import { IStudentProgramVacationFilterRequestModel } from '../../../core/interfaces/student-program-vacation-interfaces/i-student-program-vacation-filter-request-model';
+import { LanguageEnum } from '../../../core/enums/language-enum.enum';
+import { TranslateService } from '@ngx-translate/core';
+import { ExportationService } from '../../../core/services/exportation-services/exportation.service';
+import { IUser } from '../../../core/interfaces/auth-interfaces/iuser-model';
+import { IStudentProgramVacationStudentViewModel } from '../../../core/interfaces/student-program-vacation-interfaces/istudent-program-vacation-student-view-model';
+import { ITeacherStudentViewModel } from '../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
+import { DropOutRoleEnum } from 'src/app/core/enums/drop-out-request-enums/drop-out-status.enum';
 
 @Component({
   selector: 'app-student-program-vacation-grid',
@@ -28,22 +29,24 @@ export class StudentProgramVacationGridComponent implements OnInit {
   @Output() studentProgramVacationStudentViewModel = new EventEmitter<IStudentProgramVacationStudentViewModel>();
   @Output() terminateStudentProgramVacation = new EventEmitter<IStudentProgramVacationStudentViewModel>();
   @Output() cancelStudentProgramVacation = new EventEmitter<IStudentProgramVacationStudentViewModel>();
-
+  @Input() typeEnum: StudentProgramVacationStatusEnum = StudentProgramVacationStatusEnum.Pending;
   orderTypeToggel = 1;
   allSelected: boolean = false;
   stuTabTypeSelected = StudentProgramVacationStatusEnum;
   currentUser: IUser | undefined;
-  userRole : any;
+  // userRole: any;
 
-  constructor( public translate: TranslateService,
-               private exportationService: ExportationService) { }
+  @Input() userMode: DropOutRoleEnum | undefined;
+  userRoleMode = DropOutRoleEnum;
+  constructor(public translate: TranslateService,
+    private exportationService: ExportationService) { }
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
-    this.userRole= this.currentUser.usrRoles?.usrRoles?.[0].enRoleName.toString();
+    // this.userRoleMode = this.currentUser.usrRoles?.usrRoles?.[0].enRoleName.toString();
 
   }
-  getStudentVacationId(event:ITeacherStudentViewModel){
+  getStudentVacationId(event: ITeacherStudentViewModel) {
     this.sendStudentVacationId.emit(event);
   }
   sortStudentByName() {
@@ -121,6 +124,9 @@ export class StudentProgramVacationGridComponent implements OnInit {
   }
 
   exportStudentCSV() {
+
+  }
+  exportStudentCSVInStuTab() {
 
   }
   updateAllItemsChecked() {

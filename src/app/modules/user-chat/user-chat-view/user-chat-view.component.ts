@@ -18,6 +18,7 @@ export class UserChatViewComponent implements OnInit {
 
   groupDetailsEvent(event: IGroupChat) {
     if (this.userChatViewDetailsComponent){
+      console.log("this.groupData.key Event" , event)
       this.userChatViewDetailsComponent.groupData = event;
       this.userChatViewDetailsComponent.getGroupMessages();
     }

@@ -1,1 +1,6 @@
 @import '../../../../modules/program/components/program-details/programs-tabs/days/days.component.scss';
+.availableTeachersContainer{
+    height: 72vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}

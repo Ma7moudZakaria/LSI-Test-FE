@@ -25,6 +25,9 @@ import { LookupService } from 'src/app/core/services/lookup-services/lookup.serv
 import { UserService } from 'src/app/core/services/user-services/user.service';
 import {BaseSelectedDateModel} from '../../../../core/ng-model/base-selected-date-model';
 import {DateFormatterService, DateType} from 'ngx-hijri-gregorian-datepicker';
+import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
+import { MatDialog } from '@angular/material/dialog';
+import { AuthService } from 'src/app/core/services/auth-services/auth.service';
 
 @Component({
   selector: 'app-update-user-profile',
@@ -78,7 +81,8 @@ export class UpdateUserProfileComponent implements OnInit {
     private attachmentService: AttachmentsService,
     private userProfileService: UserService,
     public translate: TranslateService,
-    public languageService: LanguageService,
+    public languageService: LanguageService,  private dialog: MatDialog,
+    private authService: AuthService,
     private dateFormatterService: DateFormatterService) {
   }
 
@@ -671,5 +675,32 @@ export class UpdateUserProfileComponent implements OnInit {
     toDayGreDate.day = toDayGreDate.day;
     this.maxGregDate = toDayGreDate;
     console.log("maxGregDate", this.maxGregDate);
+  }
+
+
+  // add by shereen
+
+  
+  logout() {
+
+    this.authService.logout();
+  }
+  result: string = '';
+  async confirmDialog(id?: string) {
+    const confirm = this.translate.instant('GENERAL.LOGOUT_CONFIRM');
+    const  message= this.translate.instant('GENERAL.LOGOUT_MESSAGE');
+    
+    const dialogData = new ConfirmDialogModel(confirm, message);
+
+    const dialogRef = this.dialog.open(ConfirmModalComponent, {
+      maxWidth: "500px",
+      data: dialogData
+    });
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      this.result = dialogResult;
+      if (dialogResult == true) {
+        this.logout();
+      }
+    });
   }
 }

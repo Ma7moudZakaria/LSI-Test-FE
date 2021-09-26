@@ -13,13 +13,12 @@
                 padding-left: 0.5rem;
 
             }
-            .internal_scroll_list_group:lang(en) {
+    .internal_scroll_list_group:lang(en) {
                         height: 57vh;
                         overflow-y: auto;
                         padding-right: 0.5rem;
-                    }
+             }
 }
-
 .list-group_program-list:lang(en){
     margin-left: 1rem;
 
@@ -28,7 +27,6 @@
 
     margin-right: 0rem;
   }
-
 .list-group_program-list > p{
     font-family: Almarai-Bold;
     font-size: 20px;
@@ -38,6 +36,7 @@
 }
 .list-group_program-list > p:lang(ar){
     text-align: right;}
+  
 .list-group_program-list
 .list-group-item{
     background: #FFFFFF 0% 0% no-repeat padding-box;
@@ -59,8 +58,6 @@
             background-color: #fff;
         }
     }
-
-
         .fa-trash-alt ,.fa-copy{
             color:#8E2520
         }

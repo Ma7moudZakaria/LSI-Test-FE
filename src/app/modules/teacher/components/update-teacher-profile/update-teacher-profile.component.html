@@ -220,7 +220,7 @@
                             <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2">
                                 <label class="Register__Label" for="email"> {{ 'GENERAL.EMAIL' | translate }} </label>
                                 <input id="email" type="email" formControlName="email" style="width:100%;" readonly name="email"
-                                    class="form-control UserRegister__FormControl dimmed" />
+                                    class="form-control UserRegister__FormControl" />
                             </div>
 
                             <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2">
@@ -903,12 +903,12 @@
 
                         <div class="col-8 ">
                             <div class="row">
-                                <div class="col-lg-4 col-md-6 col-sm-2 col-xs-2 mt-3" [ngClass]="{'disableDiv': teacherProfileDetails?.profileId}">
+                                <div class="col-lg-4 col-md-6 col-sm-2 col-xs-2 mt-3" >
                                     <label class="Register__Label" for="availabilityDays">
                                         {{ 'UPDATE_TEACHER_PG.DAY_AND_TIME' | translate }}
                                     </label>
 
-                                        <select class="UpdateUser__Options" name="nameEn" formControlName="availabilityDays">
+                                        <select class="UpdateUser__Options" name="nameEn" formControlName="availabilityDays" [ngClass]="{'dimmed': teacherProfileDetails?.profileId} ">
                                         <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELECT_DAY' | translate }}</option>
 
                                             <option *ngFor="let interviewDayItem of collectionOfLookup.DAYS"
@@ -930,8 +930,8 @@
                                         {{ 'UPDATE_TEACHER_PG.FROM' | translate }}
                                     </label>
 
-                                    <div  class="UpdateUser__Options form-group mb-0" [ngClass]="{'disableDiv': teacherProfileDetails?.profileId}">
-                                        <input matInput type="time" class="form-control" placeholder="HH:MM" id="end_time_hour" formControlName="fromDayTimeinterview">
+                                    <div  class="UpdateUser__Options form-group mb-0" >
+                                        <input matInput type="time" class="form-control "  [ngClass]="{'dimmed': teacherProfileDetails?.profileId} " placeholder="HH:MM" id="end_time_hour" formControlName="fromDayTimeinterview">
                                         <!-- <mat-select name="ampm" class="ampm" [(ngModel)]="event.eampm" [ngModelOptions]="{standalone: true}">
                                              <mat-option value="AM">AM</mat-option>
                                              <mat-option value="PM">PM</mat-option>
@@ -950,8 +950,8 @@
                                         {{ 'UPDATE_TEACHER_PG.TO' | translate }}
                                     </label>
 
-                                    <div  class="UpdateUser__Options form-group mb-0"  [ngClass]="{'disableDiv': teacherProfileDetails?.profileId}">
-                                        <input matInput type="time" class="form-control" placeholder="HH:MM" id="end_time_hour" formControlName="toDayTimeinterview">
+                                    <div  class="UpdateUser__Options form-group mb-0"  >
+                                        <input matInput type="time" class="form-control " placeholder="HH:MM" id="end_time_hour" formControlName="toDayTimeinterview" [ngClass]="{'dimmed': teacherProfileDetails?.profileId} ">
                                         <!-- <mat-select name="ampm" class="ampm" [(ngModel)]="event.eampm" [ngModelOptions]="{standalone: true}">
                                              <mat-option value="AM">AM</mat-option>
                                              <mat-option value="PM">PM</mat-option>
@@ -968,7 +968,7 @@
                                 <div class="col-2 align-self-end">
                                     <label class="Register__Label invisible " > {{ 'UPDATE_TEACHER_PG.ADD' | translate }} </label>
 
-                                    <button  type="button" class="saveButton btn" (click)="addAvailabilityDays()"> {{ 'UPDATE_TEACHER_PG.ADD' | translate }}</button>
+                                    <button  type="button" class="saveButton btn "  [ngClass]="{'dimmed-btn': teacherProfileDetails?.profileId} "   (click)="addAvailabilityDays()"> {{ 'UPDATE_TEACHER_PG.ADD' | translate }}</button>
                                 </div>
 
                             </div>
@@ -977,6 +977,10 @@
                                 {{ resMessage.message }}
                             </div> -->
 
+
+
+
+                            
                             <div class="col-12"  [ngClass]="{'disableDiv': teacherProfileDetails?.profileId}">
                                 <div class="badges mt-3 " >
                                     <span *ngFor="let p of selectedAvailabilityDaysList" class="badge badge-info p-2">
@@ -993,7 +997,6 @@
                                 </div>
                             </div>
                         </div>
-
 
                     </div>
 

@@ -1,6 +1,7 @@
 import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 import * as firebase from 'firebase';
 import { EventEmitter } from 'node:stream';
@@ -36,7 +37,7 @@ export class ChatDetailsComponent implements OnInit {
   fileList: IAttachment[] = [];
   attachmentIds: string[] = [];
   
-  constructor(public translate: TranslateService , public chatService:ChatService , private attachmentService: AttachmentsService) { }
+  constructor(public translate: TranslateService , public chatService:ChatService ,private modalService: NgbModal, private attachmentService: AttachmentsService) { }
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
@@ -46,7 +47,7 @@ export class ChatDetailsComponent implements OnInit {
     if (event?.key === "Enter" || event === "Enter") {
       this.messageChat = '';
       if(message && message.length > 0){
-        var last_date = formatDate(new Date(), 'dd-MM-yyyy HH:mm:ss', 'en');
+        var last_date =  formatDate(new Date(), 'yyyy-MM-dd HH:mm:ss', 'en');
         if(this.messageType === 'text'){
           this.addMessageToChatGroup = {
             date:last_date,
@@ -55,7 +56,8 @@ export class ChatDetailsComponent implements OnInit {
             sender_name_ar:this.currentUser?.fullNameAr,
             sender_name_en:this.currentUser?.fullNameEn,
             message:message,
-            message_type:messageType
+            message_type:messageType,
+            file_name:''
           };
         }
         else{
@@ -66,7 +68,7 @@ export class ChatDetailsComponent implements OnInit {
             sender_name_ar:this.currentUser?.fullNameAr,
             sender_name_en:this.currentUser?.fullNameEn,
             message:message,
-            file_name:this.messageAttachmentURL,
+            file_name:this.messageAttachmentURL == null ? '':this.messageAttachmentURL,
             message_type:messageType
           };      
         }
@@ -140,5 +142,9 @@ export class ChatDetailsComponent implements OnInit {
           }
       }
     )
+  }
+
+  openVerticallyCentered(content: any) {
+    this.modalService.open(content, { size: 'lg' });
   }
 }

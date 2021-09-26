@@ -30,7 +30,8 @@
                                            (cancelStudentProgramVacation)="CancelStudentProgramVacation($event)"
                                            (terminateStudentProgramVacation)="TerminateStudentProgramVacation($event)"
                                            (studentVacationFilterEvent) = "StudentVacationChangePage($event)"
-        >
+                                           [userMode]='userMode'
+                                           >
 
         </app-student-program-vacation-grid>
         <div *ngIf='studentProgramVacationRequestsList.length === 0'>

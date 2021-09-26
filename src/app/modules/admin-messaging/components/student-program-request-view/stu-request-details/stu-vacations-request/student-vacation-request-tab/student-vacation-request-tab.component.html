@@ -40,7 +40,7 @@
                                        [totalCount]='totalCount'
                                        [studentVacationFilterRequestModel]='studentProgramVacationFilterRequestModel'
                                        (studentVacationFilterEvent)="StudentProgramVacationPendingChangePage($event)"
-                                           (sendStudentVacationId)="studentIdDrop($event)"
+                                           (sendStudentVacationId)="studentIdDrop($event)" [userMode]='userMode'
         >
         </app-student-program-vacation-grid>
         <div *ngIf='studentProgramVacationRequestsList.length === 0'>
@@ -59,7 +59,7 @@
                                        [totalCount]='totalCount'
                                        [studentVacationFilterRequestModel]='studentProgramVacationFilterRequestModel'
                                        (studentVacationFilterEvent)="StudentProgramVacationAcceptChangePage($event)"
-                                           (sendStudentVacationId)="studentIdDrop($event)"
+                                           (sendStudentVacationId)="studentIdDrop($event)" [userMode]='userMode'
         >
         </app-student-program-vacation-grid>
         <div *ngIf='studentProgramVacationRequestsList.length === 0'>
@@ -77,7 +77,7 @@
                                        [totalCount]='totalCount'
                                        [studentVacationFilterRequestModel]='studentProgramVacationFilterRequestModel'
                                        (studentVacationFilterEvent)="StudentProgramVacationRejectedChangePage($event)"
-                                           (sendStudentVacationId)="studentIdDrop($event)"
+                                           (sendStudentVacationId)="studentIdDrop($event)" [userMode]='userMode'
         >
         </app-student-program-vacation-grid>
         <div *ngIf='studentProgramVacationRequestsList.length === 0'>

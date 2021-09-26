@@ -1,5 +1,5 @@
 import { TranslateService } from '@ngx-translate/core';
-import { KeyValue } from '@angular/common';
+import { DatePipe, KeyValue } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import * as firebase from 'firebase';
 import { IGroupChat } from 'src/app/core/interfaces/chat-interfaces/igroup-chat';
@@ -27,13 +27,12 @@ export class GroupViewComponent implements OnInit {
   langEnum = LanguageEnum;
   groupFilter: IGroupChat = {};
 
-  constructor(private alertify: AlertifyService, public chatService:ChatService,
+  constructor(private alertify: AlertifyService, public chatService:ChatService,public datepipe: DatePipe,
     private translate: TranslateService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     // this.chatService.allChatGroupsList = [];
     this.chatService.getAllChatGroups();    
-    this.listOfGroups = this.chatService.allChatGroupsList;
   }
 
   deleteGroup(listOfUsers?: IParticipantChat[], id?: string) {
@@ -72,10 +71,10 @@ export class GroupViewComponent implements OnInit {
 
   filterByText(searchKey: string) {
     if(searchKey.length > 0){
-      this.listOfGroups = this.listOfGroups.filter(x => x.group_name?.includes(searchKey));
+      this.chatService.allChatGroupsList = this.chatService.allChatGroupsList.filter(x => x.group_name?.includes(searchKey));
     }
     else{
-      this.listOfGroups = this.chatService.allChatGroupsList;
+      this.chatService.allChatGroupsList = this.chatService.allChatGroupsList;
     }
   }
 }
