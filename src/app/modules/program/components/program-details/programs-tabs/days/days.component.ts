@@ -49,7 +49,7 @@ export class DaysComponent implements OnInit {
   videoDetailsModel: IProgramDayTaskVideo = {};
   testPhasedDetailsModel: IExam = { questions: [] };
   dailyTestDetailsModel: IExam = { questions: [] };
-  recitationStudentsModel: IProgramBasicInfoDetails = {};
+  recitationStudentsModel: IProgramDayTaskTasmea = {};
   programDayTaskDetails: ISaveProgramDayTaskDetailsModel = {};
   tasmeaModel:IProgramDayTaskTasmea ={};
   isView: boolean = false;
@@ -57,9 +57,7 @@ export class DaysComponent implements OnInit {
   constructor(private programDayTasksService: ProgramDayTasksService, public translate: TranslateService) { }
 
   ngOnInit(): void {
-    // var DayTasksData = this.progDays == null ? [] : this.progDays;
     var DayTasksData = this.progs?.progDays == null ? [] : this.progs.progDays;
-
     this.getDayTasks(DayTasksData[0].id || '');
     this.selectedIndex = 0;
     this.selectedIndexTasks = 0;
@@ -70,8 +68,7 @@ export class DaysComponent implements OnInit {
     this.programDayTasksService.getProgramDayTasks(progDutyDaysId || '').subscribe(res => {
       if (res.isSuccess) {
         this.programDayTasksDetails = res.data as Array<IProgramDayTasksModel>;
-
-        console.log("programDayTasksDetails ===========>", this.programDayTasksDetails);
+        this.getDayTasksDetails(this.programDayTasksDetails[0])
       }
       else {
         this.resMessage = {
@@ -89,7 +86,6 @@ export class DaysComponent implements OnInit {
 
   getDayTasksDetails(dayTasksDetailsParameter: IProgramDayTasksModel) {
     this.dayTasksDetails = dayTasksDetailsParameter;
-    console.log("dayTasksDetails ===========>", this.dayTasksDetails);
     switch (this.dayTasksDetails?.huffazTask) {
       case this.detailsTypeEnum.taskHearing:
         this.hearingTaskDetailsModel = JSON.parse(this.dayTasksDetails?.detailsTask || "{}");
@@ -131,8 +127,11 @@ export class DaysComponent implements OnInit {
         this.isView = true;
         break;
       case this.detailsTypeEnum.TaskRecitationStudents:
-        this.recitationStudentsModel = this.progs?.progBaseInfo || {};
         this.isView = true;
+        this.recitationStudentsModel.prgRecitType= this.progs?.progBaseInfo?.prgRecitType;
+        this.recitationStudentsModel.progRecitationTimes=this.progs?.progBaseInfo?.prgRecitTms?
+        this.progs?.progBaseInfo?.prgRecitTms.filter(i => i.huffno !== ProgramDayTaskRecitationType.limited).map((item: any) => ({ progRecFrom: item.recitFrom, progRecTo: item.recitTo })) : [];
+        this.recitationStudentsModel.dutyDay=this.dayTasksDetails?.dutyDay;
         break;
       case this.detailsTypeEnum.TaskTestPhased:
         this.testPhasedDetailsModel = JSON.parse(this.dayTasksDetails?.detailsTask || "{}");
@@ -147,7 +146,6 @@ export class DaysComponent implements OnInit {
           this.dailyTestDetailsModel.questions = [];
         break;
       case this.detailsTypeEnum.TaskTasmea:
-        //this.tasmeaModel = this.progs?.progBaseInfo || {};
         this.isView = true;
         this.tasmeaModel.prgRecitType= this.progs?.progBaseInfo?.prgRecitType;
         this.tasmeaModel.progRecitationTimes=this.progs?.progBaseInfo?.prgRecitTms?

@@ -1,13 +1,10 @@
-<!-- [formGroup]="currentForm" (ngSubmit)="onSubmit()" -->
 <form class="form-group currentForm mt-3 pl-3 pr-3">
     <h3 class=" head  bold"> {{ 'PROGRAM_DAY_TASKS.ADD_ITEM' | translate }}</h3>
-       
-        
     <div class="form-group">
         <div class="row">
             <div class="col-12" *ngFor="let item of collectionOfLookup.TASKS ;let i=index">
                 <mat-checkbox  class="example-margin " (change)='onTaskChange(item, $event)'  value="{{item.id}}"
-                class="example-margin " [disabled]="(programDutyDay?.order==1 &&item.huffazId===detailsTypeEnum.TaskLinking)||(haveMemorize==false &&item.huffazId===detailsTypeEnum.TaskTasmea)">
+                class="example-margin " [disabled]="(programDutyDay?.order==1 &&item.huffazId===detailsTypeEnum.TaskLinking)||(haveMemorize==false &&item.huffazId===detailsTypeEnum.TaskTasmea)||(haveMemorize==false &&item.huffazId===detailsTypeEnum.TaskRecitationStudents)">
                   {{this.translate.currentLang===langEnum.en ? item.nameEn : item.nameAr}}
                 </mat-checkbox>
             </div>

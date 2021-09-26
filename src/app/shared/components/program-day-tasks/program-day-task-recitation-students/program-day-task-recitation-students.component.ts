@@ -1,18 +1,20 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { ProgramDayTaskRecitationType } from 'src/app/core/enums/program-day-task-recitation-type.enum';
 import { ProgramDutyDaysTaskViewMoodEnum } from 'src/app/core/enums/programs/program-duty-days-task-view-mood-enum.enum';
 import { IAvailableStudentRequest } from 'src/app/core/interfaces/calls/iavailable-student-request';
 import { IAvailableStudentResponse } from 'src/app/core/interfaces/calls/iavailable-student-response';
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
-import { IRecitationTimes } from 'src/app/core/interfaces/programs-interfaces/iprogram-basic-info-model';
-import { IProgramBasicInfoDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AvailableStudentService } from 'src/app/core/services/calls/available-student.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
+import { IFileUpload } from 'src/app/core/interfaces/attachments-interfaces/ifile-upload';
+import { IAttachment } from 'src/app/core/interfaces/attachments-interfaces/iattachment';
+import { IProgramDayTaskTasmea } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-tasmea';
+import { ProgramDayTasksService } from 'src/app/core/services/program-services/program-day-tasks.service';
+import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-model';
 
 @Component({
   selector: 'app-program-day-task-recitation-students',
@@ -20,32 +22,34 @@ import { AlertifyService } from 'src/app/core/services/alertify-services/alertif
   styleUrls: ['./program-day-task-recitation-students.component.scss']
 })
 export class ProgramDayTaskRecitationStudentsComponent implements OnInit {
-  @Input() recitationStudentsModel: IProgramBasicInfoDetails = {};
+  @Input() recitationStudentsModel: IProgramDayTaskTasmea = {};
   @Input() isView: boolean = false;
   @Input() dutyDaysTaskViewMood: number = ProgramDutyDaysTaskViewMoodEnum.admin;
   programDutyDaysTaskViewMoodEnum = ProgramDutyDaysTaskViewMoodEnum;
   collectionOfLookup = {} as ILookupCollection;
   listOfLookup: string[] = ['SARD_TYPES'];
   resultMessage: BaseMessageModel = {};
-  progRecitationTimes: IRecitationTimes[] = [];
+  filterAvailableStudent: IAvailableStudentRequest = { skip: 0, take: 9, page: 1 };
+  availableStudentResponseList: IAvailableStudentResponse[] = [];
+  totalCount = 0;
+  numberItemsPerRow = 3;
+  fileUploadModel: IFileUpload[] = [];
+  fileList?: IAttachment[] = [];
+
   constructor(
     public translate: TranslateService,
     private route: ActivatedRoute,
     private availableStudent: AvailableStudentService,
     private alertify: AlertifyService,
-    private lookupService: LookupService) { }
-
-  filterAvailableStudent: IAvailableStudentRequest = { skip: 0, take: 9, page: 1 };
-  availableStudentResponseList: IAvailableStudentResponse[] = [];
-  totalCount = 0;
-  numberItemsPerRow = 3;
+    private lookupService: LookupService,
+    private programDayTasksService: ProgramDayTasksService,) { }
 
   ngOnInit(): void {
     this.getLookupByKey();
-    this.progRecitationTimes = this.recitationStudentsModel?.prgRecitTms ?
-      this.recitationStudentsModel?.prgRecitTms.filter(i => i.huffno !== ProgramDayTaskRecitationType.limited).map((item: any) => ({ progRecFrom: item.recitFrom, progRecTo: item.recitTo })) : [];
+    this.getAllMemorize();
     this.getAllAvailableStudent();
   }
+
   getLookupByKey() {
     this.lookupService.getLookupByKey(this.listOfLookup).subscribe(res => {
       if (res.isSuccess) {
@@ -60,10 +64,6 @@ export class ProgramDayTaskRecitationStudentsComponent implements OnInit {
       }
     });
   }
-
-
-
-
 
   getAllAvailableStudent() {
     this.filterAvailableStudent = {
@@ -97,13 +97,26 @@ export class ProgramDayTaskRecitationStudentsComponent implements OnInit {
     this.getAllAvailableStudent();
   }
 
+  getAllMemorize(){
+    this.recitationStudentsModel.bookAttatchments = [];
+    this.programDayTasksService.getProgramMemorizeAtDay(this.recitationStudentsModel?.dutyDay || '').subscribe(
+      (res: any) => {
+        res.data as IProgramDayTasksModel
+        Array.from(res.data).forEach((elm: any) => {
+          let lstBookAttatchments = JSON.parse(elm.detailsTask).bookAttatchments
+          if (lstBookAttatchments.length > 0) {
+            Array.from(lstBookAttatchments).forEach((item: any) => { this.fileList?.push(item as IAttachment); })
+          }
+          else { this.fileList?.push(elm as IAttachment); }
+        })
+        this.recitationStudentsModel.bookAttatchments = this.fileList;
+      }
+      , error => {
+        this.recitationStudentsModel.bookAttatchments = [];
+      }
+    );
 
-
-
-
-
-
-
+  }
 
 
 }

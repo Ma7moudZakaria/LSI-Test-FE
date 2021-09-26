@@ -52,7 +52,7 @@ export class ProgramDayTaskTasmeaComponent implements OnInit {
     this.getAllMemorize();
     this.getAllAvailableTeacher();
   }
-
+ 
 
   getLookupByKey() {
     this.lookupService.getLookupByKey(this.listOfLookup).subscribe(res => {
@@ -102,6 +102,7 @@ export class ProgramDayTaskTasmeaComponent implements OnInit {
   }
 
   getAllMemorize(){
+    this.tasmeaModel.bookAttatchments = [];
     this.programDayTasksService.getProgramMemorizeAtDay(this.tasmeaModel?.dutyDay || '').subscribe(
       (res: any) => {
         res.data as IProgramDayTasksModel

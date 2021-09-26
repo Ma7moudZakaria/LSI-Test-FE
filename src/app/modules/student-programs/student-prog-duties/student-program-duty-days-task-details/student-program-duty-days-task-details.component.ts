@@ -45,7 +45,7 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
   videoDetailsModel: IProgramDayTaskVideo = {};
   testPhasedDetailsModel:IExam = { questions: [] };
   dailyTestDetailsModel: IExam = { questions: [] };
-  recitationStudentsModel :IProgramBasicInfoDetails = {};
+  recitationStudentsModel :IProgramDayTaskTasmea = {};
   programDayTaskDetails: ISaveProgramDayTaskDetailsModel={};
   tasmeaModel :IProgramDayTaskTasmea = {};
   resultMessage: BaseMessageModel = {};
@@ -95,6 +95,7 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
            this.isMndatory=this.repetitionDetailsModel.isMndatory;
             break;
            case this.detailsTypeEnum.TaskLinking:
+            this.programDetails = await (await this.programService.getProgramDetails(this.progId || '').toPromise()).data
             this.linkingDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
             this.linkingDetailsModel.progId=this.programDetails?.progBaseInfo?.id;
             this.linkingDetailsModel.progDayOrder=this.programDetails?.progDays?.find(x=>x.id==this.taskDetails?.dutyDay)?.order;
@@ -116,7 +117,11 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
                   this.recitationDetailsModel=this.programDetails?.progBaseInfo||{};
                   break;
                   case this.detailsTypeEnum.TaskRecitationStudents:
-                    this.recitationStudentsModel=this.programDetails?.progBaseInfo||{};
+                    this.programDetails = await (await this.programService.getProgramDetails(this.progId || '').toPromise()).data;
+                    this.recitationStudentsModel.dutyDay=this.taskDetails.dutyDay;
+                    this.recitationStudentsModel.prgRecitType= this.programDetails?.progBaseInfo?.prgRecitType;
+                    this.recitationStudentsModel.progRecitationTimes=this.programDetails?.progBaseInfo?.prgRecitTms?
+                    this.programDetails?.progBaseInfo?.prgRecitTms.filter(i => i.huffno !== ProgramDayTaskRecitationType.limited).map((item: any) => ({ progRecFrom: item.recitFrom, progRecTo: item.recitTo })) : [];
                     break;
                     case this.detailsTypeEnum.TaskTestPhased:
                     this.testPhasedDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
@@ -134,7 +139,6 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
                     this.tasmeaModel.prgRecitType= this.programDetails?.progBaseInfo?.prgRecitType;
                     this.tasmeaModel.progRecitationTimes=this.programDetails?.progBaseInfo?.prgRecitTms?
                     this.programDetails?.progBaseInfo?.prgRecitTms.filter(i => i.huffno !== ProgramDayTaskRecitationType.limited).map((item: any) => ({ progRecFrom: item.recitFrom, progRecTo: item.recitTo })) : [];
-                   
                     break;
       default:
         "";
