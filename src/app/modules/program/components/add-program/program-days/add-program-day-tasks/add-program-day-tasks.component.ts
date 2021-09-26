@@ -19,22 +19,21 @@ import { ProgramDayTasksService } from 'src/app/core/services/program-services/p
   styleUrls: ['./add-program-day-tasks.component.scss']
 })
 export class AddProgramDayTasksComponent implements OnInit {
-  programDayTasksForm: FormGroup = new FormGroup({})
-  langEnum = LanguageEnum;
-  collectionOfLookup = {} as ILookupCollection;
-  createProgramDayTasksModel = Array<ICreateProgramDayTasksModel>();
-  listOfLookups: string[] = ['Tasks'];
-
+  @Output() closeDayTasks = new EventEmitter<boolean>();
   @Input() programDutyDay :IProgramDutyDays | undefined;
   @Input() selectedProgDutyDays:IProgramDutyDays[] = [];
   @Input() haveMemorize?:boolean=false;
+  langEnum = LanguageEnum;
+  detailsTypeEnum = ProgramDayTasksDetails;
+  programDayTasksForm: FormGroup = new FormGroup({})
+  collectionOfLookup = {} as ILookupCollection;
+  createProgramDayTasksModel = Array<ICreateProgramDayTasksModel>();
+  listOfLookups: string[] = ['Tasks'];
   resMessage: BaseMessageModel = {};
   selectedProgramDayTasksList = Array<ICreateProgramDayTasksModel>();
   ccc:boolean = false;  
-
-  @Output() closeDayTasks = new EventEmitter<boolean>();
   checked:boolean=false;
-  detailsTypeEnum = ProgramDayTasksDetails;
+
   constructor(
     public languageService: LanguageService,
     private programDayTasksService: ProgramDayTasksService,
@@ -47,7 +46,6 @@ export class AddProgramDayTasksComponent implements OnInit {
   ngOnInit(): void {
     this.setCurrentLang();
     this.getLookupByKey();
-    console.log(this.programDutyDay);
   }
 
   setCurrentLang() {
