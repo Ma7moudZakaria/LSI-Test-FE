@@ -3,12 +3,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IAddGroupExplanationModel } from 'src/app/core/interfaces/calls/iadd-group-explanation-model';
+import { IUsersInBatchResponse } from 'src/app/core/interfaces/calls/iusers-in-batch-response';
+import { IUsersInBatctRequest } from 'src/app/core/interfaces/calls/iusers-in-batct-request';
 import { ISharedProgramsResponseModel } from 'src/app/core/interfaces/programs-interfaces/ishared-programs-response-model';
 import { Role, SearchItem } from 'src/app/core/interfaces/role-management-interfaces/role-management';
 import { CreateRoleModel, UsersExceptStudent } from 'src/app/core/interfaces/role-management-interfaces/role-management';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
+import { CallsService } from 'src/app/core/services/calls-services/calls.service';
 import { ProgramService } from 'src/app/core/services/program-services/program.service';
 import { RoleManagementService } from 'src/app/core/services/role-management/role-management.service';
 
@@ -18,19 +21,26 @@ import { RoleManagementService } from 'src/app/core/services/role-management/rol
   styleUrls: ['./add-new-group-teacher-recitation.component.scss']
 })
 export class AddNewGroupTeacherRecitationComponent implements OnInit {
-  addModel: IAddGroupExplanationModel = {}
-  DataForm!: FormGroup;
-  isSubmit: boolean = false;
   @Output() hideform = new EventEmitter<boolean>();
   @Input() dataEdit: Role = { arRoleName: '', id: '', enRoleName: '' };
+
+  addModel: IAddGroupExplanationModel = {}
+  userslist: IUsersInBatchResponse[] = []
+  allBatches: ISharedProgramsResponseModel[] = [];
+
+  DataForm!: FormGroup;
+  isSubmit: boolean = false;
+
   listSelectedUser: any = []
   resultMessage: BaseMessageModel = {};
   usersExceptStudent: UsersExceptStudent[] = [];
   SearchItemList: SearchItem[] = [];
   langEnum = LanguageEnum;
   sharedPrograms: ISharedProgramsResponseModel[] | undefined;
-  allBatches: ISharedProgramsResponseModel[] = [];
+
   constructor(
+    private groupExplanationServices: CallsService,
+
     private formBuilder: FormBuilder,
     public programService: ProgramService,
     private RoleManagement: RoleManagementService,
@@ -71,7 +81,27 @@ export class AddNewGroupTeacherRecitationComponent implements OnInit {
       });
   }
   onChange(event: any) {
-    console.log("event.target.value", event.value);
+    // console.log("event.target.value", event.value);
+    let model: IUsersInBatctRequest = {
+      batId: event.value,
+      studName: '',
+      skip: 0,
+      take: 9
+
+    }
+    this.groupExplanationServices.getAllUsersInBatct(model).subscribe(res => {
+
+      if (res.isSuccess) {
+        this.userslist = res.data;
+        console.log("get users in  Batches", this.userslist)
+
+      }
+      else {
+      }
+    },
+      error => {
+        console.log(error);
+      });
   }
   // get-users-except-students
 

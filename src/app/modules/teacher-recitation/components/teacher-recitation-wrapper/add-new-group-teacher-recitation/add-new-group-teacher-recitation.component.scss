@@ -9,3 +9,21 @@ font-family:Almarai-Bold;
 select.form-control {
      appearance: inherit;
 }
+.avater_container
+{
+     width: 100%;
+     display: flex;
+     justify-content: flex-start;
+     align-items: center;
+     background-color: #e3e5e8;
+     padding: 0.3rem;
+     box-shadow: 0 0 3px #303030;
+     border-radius: 0.5rem;
+     font-size: 1rem;
+     font-family:Almarai-Bold;
+   
+
+}.avater{
+     width: 70px;
+     height: 70px;
+}

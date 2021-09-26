@@ -49,6 +49,12 @@
                             <img  src="assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
                         </button>
                     </span>
+
+
+                    <p *ngFor="let user of userslist" class="avater_container my-2">
+                        <img  src="{{user.avr}}" class="avater">
+                        <span>{{translate.currentLang == langEnum.en ? user.studNameEn : user.studNameAr}}</span>
+                    </p>
                 </div>
             
             
