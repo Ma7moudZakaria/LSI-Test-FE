@@ -289,6 +289,11 @@ export class UpdateUserProfileComponent implements OnInit {
       this.userProfileService.updateUser(this.updateUserModel).subscribe(
         res => {
           if (res.isSuccess) {
+            if(!this.userProfileDetails){
+             
+              this.confirmDialog();
+
+            }
             this.isSubmit = false;
 
             this.resMessage = {
@@ -678,29 +683,27 @@ export class UpdateUserProfileComponent implements OnInit {
   }
 
 
-  // add by shereen
-
-  
-  logout() {
-
-    this.authService.logout();
+     // add by shereen
+     logout() {
+            
+      this.authService.logout();
+     }
+    result: string = '';
+    async confirmDialog(id?: string) {
+       const confirm = this.translate.instant('GENERAL.LOGOUT_CONFIRM');
+       const  message= this.translate.instant('GENERAL.CONFIRM_LOGOUT_MESSAGE');
+       const dialogData = new ConfirmDialogModel(confirm, message);
+        const dialogRef = this.dialog.open(ConfirmModalComponent, {
+         maxWidth: "500px",
+         data: dialogData
+     });
+         dialogRef.afterClosed().subscribe(dialogResult => {
+          this.result = dialogResult;
+        if (dialogResult == true) {
+         this.logout();
+}
+});
   }
-  result: string = '';
-  async confirmDialog(id?: string) {
-    const confirm = this.translate.instant('GENERAL.LOGOUT_CONFIRM');
-    const  message= this.translate.instant('GENERAL.LOGOUT_MESSAGE');
-    
-    const dialogData = new ConfirmDialogModel(confirm, message);
 
-    const dialogRef = this.dialog.open(ConfirmModalComponent, {
-      maxWidth: "500px",
-      data: dialogData
-    });
-    dialogRef.afterClosed().subscribe(dialogResult => {
-      this.result = dialogResult;
-      if (dialogResult == true) {
-        this.logout();
-      }
-    });
-  }
+ 
 }
