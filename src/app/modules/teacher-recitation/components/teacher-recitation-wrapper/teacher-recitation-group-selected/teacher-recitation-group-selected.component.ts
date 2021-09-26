@@ -2,17 +2,12 @@ import { TranslateService } from '@ngx-translate/core';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
-import { IGroupExplanationsTeacherViewRequest } from 'src/app/core/interfaces/calls/igroup-explanations-teacher-view-request';
-import { IGroupExplanationsTeacherViewResponse } from 'src/app/core/interfaces/calls/igroup-explanations-teacher-view-response';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { CallsService } from 'src/app/core/services/calls-services/calls.service';
 import { IGroupExplanationsJoinRequest } from 'src/app/core/interfaces/calls/igroup-explanations-join-request';
 import { IGroupExplanationsJoinResponse } from 'src/app/core/interfaces/calls/igroup-explanations-join-response';
-import { IStudentsModel } from 'src/app/core/interfaces/calls/istudents-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
-import { JoinRequestEnum } from 'src/app/core/enums/join-request-enums/join-request.enum';
-import { IRejectGroupExplanationRequest } from 'src/app/core/interfaces/calls/ireject-group-explanation-request';
 import { IDetailsGroupExplanation } from 'src/app/core/interfaces/calls/idetails-group-explanation';
 @Component({
   selector: 'app-teacher-recitation-group-selected',
@@ -23,12 +18,12 @@ export class TeacherRecitationGroupSelectedComponent implements OnInit {
   @Output() rejectedRequestId = new EventEmitter<string>();
   @Output() addStudentRequest = new EventEmitter<boolean>();
 
-  listOfParticipants: any[] = [1, 2, 3, 4, 5, 6, 7, 8]
+
   groupExplanationsJoinRequest: IGroupExplanationsJoinRequest = { skip: 0, take: 2147483647 }
   detailsGroupExplanation: IDetailsGroupExplanation | undefined;
   responseList: IGroupExplanationsJoinResponse[] = [];
   resultMessage: BaseMessageModel = {};
-  JoinRequestEnum = JoinRequestEnum
+
   currentUser: IUser | undefined;
   langEnum = LanguageEnum;
 

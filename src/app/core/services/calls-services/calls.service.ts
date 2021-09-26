@@ -6,6 +6,7 @@ import { IAddGroupExplanationModel } from '../../interfaces/calls/iadd-group-exp
 import { IAddStudentInGroupExplanationModel } from '../../interfaces/calls/iadd-student-in-group-explanation-model';
 import { IGroupExplanationsStudentViewRequest } from '../../interfaces/calls/igroup-explanations-student-view-request';
 import { IGroupExplanationsTeacherViewRequest } from '../../interfaces/calls/igroup-explanations-teacher-view-request';
+import { IJoinStudentToGroupRequest } from '../../interfaces/calls/ijoin-student-to-group-request';
 import { IRejectGroupExplanationRequest } from '../../interfaces/calls/ireject-group-explanation-request';
 import { IUsersInBatctRequest } from '../../interfaces/calls/iusers-in-batct-request';
 import { BaseResponseModel } from '../../ng-model/base-response-model';
@@ -25,6 +26,7 @@ export class CallsService {
   getStudentViewtGroupExplanationURL = environment.baseUrl + 'Calls/get-all-group-explanations-student-view/'
   // getJoinRequestGroupExplanationURL = environment.baseUrl + 'Calls/get-all-join-requests-explanations/'
   removeStudentGroupExplanationURL = environment.baseUrl + 'Calls/remove-student-from-group-explanation/'
+  joinStudentToGroupURL = environment.baseUrl + 'Calls/student-request-to-join-group-explanation'
   constructor(private http: HttpClient) { }
 
   getAllUsersInBatct(model: IUsersInBatctRequest): Observable<BaseResponseModel> {
@@ -59,6 +61,10 @@ export class CallsService {
 
   getStudentViewtGroupExplanation(model: IGroupExplanationsStudentViewRequest): Observable<BaseResponseModel> {
     return this.http.post<BaseResponseModel>(this.getStudentViewtGroupExplanationURL, model);
+  }
+
+  joinStudentToGroup(model: IJoinStudentToGroupRequest): Observable<BaseResponseModel> {
+    return this.http.post<BaseResponseModel>(this.joinStudentToGroupURL, model);
   }
   // getJoinRequestGroupExplanation(model: IGroupExplanationsJoinRequest): Observable<BaseResponseModel> {
   //   return this.http.post<BaseResponseModel>(this.getJoinRequestGroupExplanationURL, model);
