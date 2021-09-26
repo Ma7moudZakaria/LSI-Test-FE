@@ -49,17 +49,12 @@ export class AddProgramDayTasksComponent implements OnInit {
   }
 
   setCurrentLang() {
-    this.emitHeaderTitle();
     this.languageService.currentLanguageEvent.subscribe(res => {
-      this.emitHeaderTitle();
       this.buildForm();
     });
   }
 
-  emitHeaderTitle() {
-    // this.languageService.headerPageNameEvent.emit(this.translate.instant('UPDATE_TEACHER_PG.TITLE'));
-  }
-
+ 
   getLookupByKey() {
     this.lookupService.getLookupByKey(this.listOfLookups).subscribe(res => {
       this.collectionOfLookup = res.data as ILookupCollection;
@@ -96,16 +91,6 @@ export class AddProgramDayTasksComponent implements OnInit {
         this.selectedProgramDayTasksList?.splice(ind, 1);
       }
     }
-// if(this.haveMemorize==false){
-//     this.haveMemorize = this.selectedProgramDayTasksList.some(i => i === '5c2a09dc-7873-450f-af1d-4d153765e5c1');//'5c2a09dc-7873-450f-af1d-4d153765e5c1' is id memorize task
-//   if(!this.haveMemorize&& this.selectedProgramDayTasksList.some(i => i === '8ed9715f-d5d4-403d-8edd-714799a33060')){// 8ed9715f-d5d4-403d-8edd-714799a33060 is id tasmea task
-//     let it = this.selectedProgramDayTasksList.filter(i => i === '8ed9715f-d5d4-403d-8edd-714799a33060')[0];
-//     const ind = this.selectedProgramDayTasksList?.indexOf(it);
-//     if (ind > -1) {
-//       this.selectedProgramDayTasksList?.splice(ind, 1);
-//     }
-//     this.checked=false;
-//   }}
   }
 
   async onSubmit() {
@@ -134,10 +119,6 @@ export class AddProgramDayTasksComponent implements OnInit {
           });
           await this.addProgDayTaskApiCall();
         });
-      // this.resMessage = {
-      //   message: this.translate.instant('GENERAL.FORM_INPUT_COMPLETION_MESSAGE'),
-      //   type: BaseConstantModel.DANGER_TYPE
-      // }
     }
     else{
       this.aletify.error('please select day or check multi days');
