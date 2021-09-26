@@ -50,7 +50,7 @@ export interface RolesTreeModel {
     nodeParentId: string
 }
 
-export interface UsersExceptStudent{
+export interface UsersExceptStudent {
     avatarUrl: string
     id: string
     createdOn: string
@@ -62,7 +62,7 @@ export interface UsersExceptStudent{
     usrFullNameEn: string
     usrMiddleNameAr: string
     usrMiddleNameEn: string
-    userName:string
+    userName: string
 }
 
 

@@ -4,36 +4,24 @@
       {{ "Role_Management.CREATENEWGROUP" | translate }}
   </p>
   <div class="col-md-10 ">
-      <form class="DataForm" [formGroup]="DataForm">
+      <div  class="DataForm" >
           <div class="form-group">
               <label for="exampleInputEmail1" class="label">{{
                   "Role_Management.GROUPNAMEARABIC" | translate
                   }}</label>
 
-              <input type="text" class="form-control" id="InputNamAr" formControlName="arRoleName"
-                  [ngClass]="{'red-border-class':fc.arRoleName.errors && (fc.arRoleName.touched || isSubmit)}" />
+              <input type="text" class="form-control"   [(ngModel)]="addModel.groupNameAr" />
 
-              <div *ngIf="fc.arRoleName.errors && (fc.arRoleName.touched || isSubmit)"
-                  class="alert alert-danger mt-2 mb-2">
-                  <div *ngIf="fc.arRoleName.errors.required">
-                      {{ "QUESTION_BANK.REQUIRED" | translate }}
-                  </div>
-              </div>
+             
           </div>
           <div class="form-group">
               <label for="exampleInputEmail1" class="label">{{
                   "Role_Management.GROUPNAMEENGLISH" | translate
                   }}</label>
 
-              <input type="text" class="form-control" id="InputNamAr" formControlName="enRoleName"
-                  [ngClass]="{'red-border-class':fc.enRoleName.errors && (fc.enRoleName.touched || isSubmit)}" />
+              <input type="text" class="form-control" [(ngModel)]="addModel.groupNameEn" />
 
-              <div *ngIf="fc.enRoleName.errors && (fc.enRoleName.touched || isSubmit)"
-                  class="alert alert-danger mt-2 mb-2">
-                  <div *ngIf="fc.enRoleName.errors.required">
-                      {{ "QUESTION_BANK.REQUIRED" | translate }}
-                  </div>
-              </div>
+             
           </div>
 
 
@@ -44,14 +32,14 @@
                 <label for="programs" class="label"> اخترالدفعة</label>
                 <div class="input-group">
                     <div class="input-group pr-2rem">
-                        <select class="form-control"  >
-                            <option></option>
-                            <!-- <option *ngFor="let participant of chatService.allParticipantsList" value="{{participant.key}}">
-                                <p> {{translate.currentLang == langEnum.en ? participant.name_en : participant.name_ar}} </p>
-
-                            </option> -->
-
-                        </select>
+                        <!-- (change)="onChange($event.target)" -->
+                            <select class="form-control"  [(ngModel)]="addModel.batId" (change)="onChange($event.target)">
+                                <ng-container *ngFor="let item of allBatches"    >
+                                <option [value]="item.batId">
+                                    {{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}
+                                </option>
+                                </ng-container>
+                              </select>
                     
                     </div>
                     <span class="plus-btn position-absolute">
@@ -91,7 +79,7 @@
 
 
 
-          <div class="form-group" *ngIf="dataEdit.id==''">
+          <!-- <div class="form-group" >
               <label for="exampleInputEmail1" class="label">{{"Role_Management.SELECT_GROUP_MEMBERS" | translate
                   }}</label>
               <app-input-search-list [searchList]="SearchItemList" (addSearchItem)="addUser($event)">
@@ -99,9 +87,8 @@
           </div>
 
 
-          <mat-list *ngIf="dataEdit.id==''">
+          <mat-list >
               <mat-list-item *ngFor="let SelectedUser of listSelectedUser">
-                  <!-- <img mat-list-icon src="assets/images/roleManagement/ASH_90.png" alt=""> -->
                   <img mat-list-icon *ngIf='!SelectedUser?.usrAvatarUrl' src="assets/images/Profile.svg" alt=""/>
                   <img mat-list-icon *ngIf='SelectedUser?.usrAvatarUrl' [src]="SelectedUser?.usrAvatarUrl" alt="" />
                   <div mat-line>{{ translate.currentLang === langEnum.en
@@ -110,9 +97,9 @@
                  <span class="mat-delete" (click)="delete(SelectedUser)"><i class="fas fa-trash-alt"></i></span>
                   <mat-divider></mat-divider>
               </mat-list-item>
-          </mat-list>
+          </mat-list> -->
 
-      </form>
+      </div>
       <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2">
           {{resultMessage.message}}
       </div>

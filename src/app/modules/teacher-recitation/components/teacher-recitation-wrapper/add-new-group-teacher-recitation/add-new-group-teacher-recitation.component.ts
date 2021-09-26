@@ -2,11 +2,14 @@ import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
+import { IAddGroupExplanationModel } from 'src/app/core/interfaces/calls/iadd-group-explanation-model';
+import { ISharedProgramsResponseModel } from 'src/app/core/interfaces/programs-interfaces/ishared-programs-response-model';
 import { Role, SearchItem } from 'src/app/core/interfaces/role-management-interfaces/role-management';
 import { CreateRoleModel, UsersExceptStudent } from 'src/app/core/interfaces/role-management-interfaces/role-management';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AlertifyService } from 'src/app/core/services/alertify-services/alertify.service';
+import { ProgramService } from 'src/app/core/services/program-services/program.service';
 import { RoleManagementService } from 'src/app/core/services/role-management/role-management.service';
 
 @Component({
@@ -15,6 +18,7 @@ import { RoleManagementService } from 'src/app/core/services/role-management/rol
   styleUrls: ['./add-new-group-teacher-recitation.component.scss']
 })
 export class AddNewGroupTeacherRecitationComponent implements OnInit {
+  addModel: IAddGroupExplanationModel = {}
   DataForm!: FormGroup;
   isSubmit: boolean = false;
   @Output() hideform = new EventEmitter<boolean>();
@@ -24,9 +28,11 @@ export class AddNewGroupTeacherRecitationComponent implements OnInit {
   usersExceptStudent: UsersExceptStudent[] = [];
   SearchItemList: SearchItem[] = [];
   langEnum = LanguageEnum;
-
+  sharedPrograms: ISharedProgramsResponseModel[] | undefined;
+  allBatches: ISharedProgramsResponseModel[] = [];
   constructor(
     private formBuilder: FormBuilder,
+    public programService: ProgramService,
     private RoleManagement: RoleManagementService,
     private _alertify: AlertifyService,
     public translate: TranslateService
@@ -44,9 +50,29 @@ export class AddNewGroupTeacherRecitationComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildForm();
-    this.getUsers()
+    this.getUsers();
+    this.getAllBatches()
   }
+  // get-all-batch
 
+  getAllBatches() {
+    this.programService.getSharedPrograms().subscribe(res => {
+
+      if (res.isSuccess) {
+        this.allBatches = res.data;
+        // console.log("getAllBatches", this.allBatches)
+
+      }
+      else {
+      }
+    },
+      error => {
+        console.log(error);
+      });
+  }
+  onChange(event: any) {
+    console.log("event.target.value", event.value);
+  }
   // get-users-except-students
 
   getUsers() {
