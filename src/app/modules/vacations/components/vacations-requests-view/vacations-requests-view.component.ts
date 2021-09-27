@@ -19,7 +19,7 @@ export class VacationsRequestsViewComponent implements OnInit {
   filter: IAddNewStudentVacationRequest = { }
   @ViewChild(StudentProgramVacationRequestsComponent) studentVacationRequests: StudentProgramVacationRequestsComponent | undefined;
 
-  constructor(private languageService: LanguageService ,private translate: TranslateService 
+  constructor(private languageService: LanguageService ,private translate: TranslateService
     ) { }
 
   ngOnInit(): void {

@@ -3,6 +3,7 @@ import {LanguageEnum} from '../../../core/enums/language-enum.enum';
 import {TranslateService} from '@ngx-translate/core';
 import {TeacherAppointmentRequestsEnum} from '../../../core/enums/teacher-appointment-requests-enums/teacher-appointment-requests-enum.enum';
 import {ITeachersAppointmentRequestsModel} from '../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-appointment-model';
+import {ITeacherStudentViewModel} from '../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 
 @Component({
   selector: 'app-teacher-appointment-request-card',
@@ -18,6 +19,7 @@ export class TeacherAppointmentRequestCardComponent implements OnInit {
   langEnum = LanguageEnum;
 
   @Input() teacherAppointmentModel: ITeachersAppointmentRequestsModel | undefined ;
+  @Output() userIdEvent = new EventEmitter<ITeacherStudentViewModel>();
 
   constructor(public translate: TranslateService) {
   }
@@ -35,5 +37,9 @@ export class TeacherAppointmentRequestCardComponent implements OnInit {
 
   updateAllItemsCheckedCall() {
     this.updateAllItemsChecked.emit();
+  }
+  openDetails(id?: string) {
+    let UserModel:ITeacherStudentViewModel ={usrId:id};
+    this.userIdEvent.emit(UserModel);
   }
 }

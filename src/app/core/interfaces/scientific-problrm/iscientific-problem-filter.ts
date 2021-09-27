@@ -3,9 +3,9 @@ export interface IScientificProblemFilter {
     progId?: string;
     progDay?:string;
     progTask?:string;
-    scNo?:string;   
-    fromDate?:string;
-    toDate?:string;
+    scNo?:number;
+    scFrom?:string;
+    scTo?:string;
     sorField?:string;
     ordType?:number;
     skip: number;

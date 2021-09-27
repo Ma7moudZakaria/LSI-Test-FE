@@ -92,6 +92,7 @@ import { GetAllAvailableStudentGridComponent } from './components/get-all-availa
 import { GetAllAvailableStudentCardComponent } from './components/get-all-available-student-card/get-all-available-student-card.component';
 import { ViewExamAnswersComponent } from './components/view-exam-answers/view-exam-answers.component';
 import { ChatInputSearchListComponent } from './components/chat-input-search-list/chat-input-search-list.component';
+import { AlertDialogComponentComponent } from './components/alert-dialog-component/alert-dialog-component.component';
 
 @NgModule({
   declarations: [ConfirmModalComponent, CustomeCardComponent, CustomAccordionComponent, ViewUserProfileCustomComponent,
@@ -154,7 +155,9 @@ import { ChatInputSearchListComponent } from './components/chat-input-search-lis
     GetAllAvailableStudentGridComponent,
         GetAllAvailableStudentCardComponent,
         ViewExamAnswersComponent,
-        ChatInputSearchListComponent
+        ChatInputSearchListComponent,
+        TeacherAppointmentRequestCardComponent,
+        AlertDialogComponentComponent
   ],
   imports: [
     CommonModule, RouterModule, TranslateModule, Ng2TelInputModule, NgxHijriGregorianDatepickerModule,

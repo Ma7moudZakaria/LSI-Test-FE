@@ -158,7 +158,24 @@
     "DEPARTMENT": "Department",
     "ENTER_REPLAY": "Please enter a reply",
     "SELECT_DEPATMENT": "Please select a Department",
-    "PROGRAM_NAME": "General Question"
+    "PROGRAM_NAME": "General Question",
+    "ADVANCED_SEARCH": "Advanced Search",
+    "PROGRAM_NAME_SEARCH": "Program Name",
+    "QUESTION_OWNER_NAME": "Question Owner Name",
+    "QUESTION_NUMBER": "Question Number",
+    "FROM": "From",
+    "TO": "To",
+    "SEARCH": "Search",
+    "ADD_SCIENTIFIC_PROBLEM": "Add Scientific Program",
+    "THE_PROGRAM": "The Program",
+    "TASKS":"Tasks",
+    "THE_DAY": "The Day",
+    "THE_QUESTION": "The Question",
+    "SEND": "Send",
+    "BAND_NAME":"Band Name",
+    "QUESTION_TYPE": "Question Type",
+    "RELATED_TO_PROGRAM": "Related To Program",
+    "GENERAL":"General"
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "Programs",
@@ -846,7 +863,8 @@
     "VALIDATIONDATE": "Datefrom  should less than dateto ",
     "REQUEST_REASON": "Request reason",
     "NO_DATA": "No Data found",
-    "VIEW_EXAM": "View Exam"
+    "VIEW_EXAM":"View Exam",
+    "ExamResult": "Exam Result"
   },
   "TEACHER_SYSTEM_SUBSCRIPTION": {
     "REQUEST_DATE": "Request Date",

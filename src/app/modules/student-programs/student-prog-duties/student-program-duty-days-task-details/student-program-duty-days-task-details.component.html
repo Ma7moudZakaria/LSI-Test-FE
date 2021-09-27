@@ -1,4 +1,12 @@
 <div class="days_details">
+  <div class="col-3 p-0 align-items-center mb-3">
+    <a (click)="newScientificProblem()" *ngIf='roleManagmentService.isStudent()' class="mb-2 add_scientfic_problem">
+    <span class="link_Add ">
+      {{ 'QUESTION_BANK.ADD_SCIENTIFIC_PROBLEM' | translate }}
+      <img src="../../../../../../assets/images/add.svg" class=" cursor-pointer Catogry_Icon_Add">
+    </span>
+    </a>
+
     <h2 class=" head mb-3">
         {{this.translate.currentLang===langEnum.en?taskDetails?.dayTaskNameEn:taskDetails?.dayTaskNameAr}}
     </h2>

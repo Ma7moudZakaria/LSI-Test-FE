@@ -2,7 +2,9 @@
     <div class="row">
         <div class="col-12">
             <app-scientific-problems (showAddReplyToScProblem)='showAddReplyToScProblemView($event)'
-             (showAddScProblemToQuestionBank)='showAddScProbToQuestionBankView($event)'></app-scientific-problems>
+             (showAddScProblemToQuestionBank)='showAddScProbToQuestionBankView($event)'
+                                     (openAdvancedSearchOverLay)="openAdvancedSearchPopup($event)"
+            ></app-scientific-problems>
         </div>
     </div>
     <div class="overlay" *ngIf="showAddReplyOverlay">
@@ -14,3 +16,10 @@
 </div>
 
 <div class="showoverlay" (click)="closeOverlay()" [ngClass]="{'disableBlock': showAddReplyOverlay || showAddScProbToQuestionBankOverlay}"></div>
+
+<div class="overlay" *ngIf="openAdvancedSearch">
+  <app-scientific-problem-advanced-search
+    (closeAdvancedSearch)="closeAdvancedSearch($event)"
+    [filter]="filter"
+  ></app-scientific-problem-advanced-search>
+</div>

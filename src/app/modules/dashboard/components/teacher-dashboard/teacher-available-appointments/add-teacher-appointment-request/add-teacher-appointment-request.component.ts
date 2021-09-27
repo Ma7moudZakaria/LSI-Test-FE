@@ -15,6 +15,10 @@ import { TeacherAppointmentService } from 'src/app/core/services/teacher-appoint
 import { IAddChangeTeacherAvailableTimesRequestModel, IAddTeacherAppointmentRequest } from 'src/app/core/interfaces/teacher-appointment-requests-interfaces/iadd-teacher-appointment-request';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import {AppointmentRequestsTabComponent} from '../../../../../admin-messaging/components/teacher-program-request-view/teacher-request-details/chang-time-request/appointment-requests-tab/appointment-requests-tab.component';
+import {
+  ITeacherAvailableTimes,
+  ITeacherAvailableTimesResponseModel
+} from '../../../../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-available-times';
 
 @Component({
   selector: 'app-add-teacher-appointment-request',
@@ -27,10 +31,11 @@ export class AddTeacherAppointmentRequestComponent implements OnInit {
   langEnum = LanguageEnum;
   collectionOfLookup = {} as ILookupCollection;
   listOfLookupProfile: string[] = ['DAYS'];
-  selectedAvailabilityDaysList = Array<ITeacherProfileAvailabilityLookup>();
+  selectedAvailabilityDaysList: ITeacherAvailableTimesResponseModel[] | undefined ;
   availabilityDaysMessage: BaseMessageModel = {};
-  availabilityDaysModel: ITeacherProfileAvailabilityLookup = {};
+  availabilityDaysModel: ITeacherAvailableTimesResponseModel = {};
   currentUser: IUser | undefined;
+  teacherAvailableTimes: ITeacherAvailableTimes | undefined;
 
 
   constructor(private teacherAppointmentService: TeacherAppointmentService
@@ -42,6 +47,7 @@ export class AddTeacherAppointmentRequestComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     this.getLookupByKey();
+    this.getTeacherAvailableTimes();
   }
 
   closeAddRequest() {
@@ -49,13 +55,13 @@ export class AddTeacherAppointmentRequestComponent implements OnInit {
   }
   saveTeacherAppointmentRequest() {
     let listOfDays: IAddChangeTeacherAvailableTimesRequestModel[] = [];
-    this.selectedAvailabilityDaysList.forEach(x =>
+    this.selectedAvailabilityDaysList?.forEach(x =>
       listOfDays.push(
         {
-          timeFrom: x.fromTime,
-          timeTo: x.toTime,
+          timeFrom: x.timeFrom,
+          timeTo: x.timeTo,
           usrId: this.currentUser?.id,
-          idAvailableDay: x.id
+          idAvailableDay: x.idAvailableDay
         }));
 
     let model: IAddTeacherAppointmentRequest = {
@@ -103,16 +109,29 @@ export class AddTeacherAppointmentRequestComponent implements OnInit {
     }
 
     this.availabilityDaysMessage = {};
-    this.availabilityDaysModel.nameAr = this.collectionOfLookup.DAYS?.find(a => a.id == this.availabilityDaysModel.id)?.nameAr;
-    this.availabilityDaysModel.nameEn = this.collectionOfLookup.DAYS?.find(a => a.id == this.availabilityDaysModel.id)?.nameEn
+    this.availabilityDaysModel.dayAr = this.collectionOfLookup.DAYS?.find(a => a.id == this.availabilityDaysModel.idAvailableDay)?.nameAr;
+    this.availabilityDaysModel.dayEn = this.collectionOfLookup.DAYS?.find(a => a.id == this.availabilityDaysModel.idAvailableDay)?.nameEn
 
-    this.selectedAvailabilityDaysList.push(this.availabilityDaysModel);
+    this.selectedAvailabilityDaysList?.push(this.availabilityDaysModel);
     this.availabilityDaysModel = {};
   }
 
 
   removeItemFromSelectedAvailabilityDays(item: any) {
-    let index = this.selectedAvailabilityDaysList.indexOf(item);
-    this.selectedAvailabilityDaysList.splice(index, 1);
+    if (this.selectedAvailabilityDaysList){
+      let index = this.selectedAvailabilityDaysList.indexOf(item);
+      this.selectedAvailabilityDaysList.splice(index, 1);
+    }
+
+  }
+
+  getTeacherAvailableTimes(){
+    this.teacherAppointmentService.getTeacherAvailableTimesTeacherView(this.currentUser?.id).subscribe(value => {
+      if (value.isSuccess){
+        this.teacherAvailableTimes = value.data as ITeacherAvailableTimes;
+        if (this.teacherAvailableTimes.teacherAvailableTimes)
+            this.selectedAvailabilityDaysList = this.teacherAvailableTimes.teacherAvailableTimes;
+      }
+    })
   }
 }

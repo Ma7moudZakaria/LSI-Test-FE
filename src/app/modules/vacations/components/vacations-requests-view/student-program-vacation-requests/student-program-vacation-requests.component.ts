@@ -25,7 +25,7 @@ export class StudentProgramVacationRequestsComponent implements OnInit {
   totalCount = 0;
   numberItemsPerRow = 3;
   currentUser: IUser | undefined;
-  studentProgramVacationFilterRequestModel: IStudentProgramVacationRequestModel = { skip: 0, take: 9, sortField: '', sortOrder: 1, page: 1 };
+  studentProgramVacationFilterRequestModel: IStudentProgramVacationRequestModel = { skip: 0, take: 9, sortField: 'requestdate', sortOrder: 1, page: 1 };
   @Input() programModel: IStudentPrograms | undefined;
   userMode: DropOutRoleEnum = DropOutRoleEnum.Student;
   @Output() openStudentProgramVacationAddPopup = new EventEmitter<IAddNewStudentVacationRequest>();

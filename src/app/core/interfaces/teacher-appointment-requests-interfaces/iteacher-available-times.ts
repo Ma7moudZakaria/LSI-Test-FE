@@ -5,6 +5,7 @@ export interface ITeacherAvailableTimes {
 }
 
 export interface ITeacherAvailableTimesResponseModel {
+  idAvailableDay?: string;
   id?: string;
   timeFrom?: string;
   timeTo?: string;

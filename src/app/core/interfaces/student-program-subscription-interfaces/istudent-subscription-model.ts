@@ -20,4 +20,6 @@ export interface IStudentSubscriptionModel {
     enStatName?: string;
     no?: number;
     rejReas?: string;
+    stdGrade?:number;
+    totalScore?:number;
 }

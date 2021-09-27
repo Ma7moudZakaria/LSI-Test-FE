@@ -1,5 +1,5 @@
 import { stringify } from '@angular/compiler/src/util';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
@@ -18,6 +18,8 @@ import { LanguageService } from 'src/app/core/services/language-services/languag
 import { QuestionBankQuestionService } from 'src/app/core/services/question-bank-services/question-bank-question.service';
 import { ScientificProblemService } from 'src/app/core/services/scientific-problem-services/scientific-problem.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
+import {IStudentSubscriptionFilterRequestModel} from '../../../../../core/interfaces/student-program-subscription-interfaces/istudent-subscription-filter-request-model';
+import {StudentProgramSubscriptionStatusEnum} from '../../../../../core/enums/subscriptionStatusEnum/student-program-subscription-status-enum.enum';
 
 @Component({
   selector: 'app-scientific-problems',
@@ -31,10 +33,13 @@ export class ScientificProblemsComponent implements OnInit {
 
   scientificProblemFilter: IScientificProblemFilter = {skip : 0, take : 12, sorField : '', ordType: 1, page : 1};
   resultMessage:BaseMessageModel = {};
-  scientificProblems: IScientificProblemGridItems[] | undefined; 
+  scientificProblems: IScientificProblemGridItems[] | undefined;
   adminCard : ScientificProblemUsersEnum = ScientificProblemUsersEnum.Admin;
   numberItemsPerRow = 4;
   totalCount = 0;
+  @Output() openAdvancedSearchOverLay = new EventEmitter<IScientificProblemFilter>();
+
+  //@Output() openAdvancedSearch = new EventEmitter<IStudentSubscriptionFilterRequestModel>();
 
   constructor(public translate: TranslateService,public dialog: MatDialog,
     private scientificProblemService:ScientificProblemService,
@@ -48,7 +53,7 @@ export class ScientificProblemsComponent implements OnInit {
   }
 
   getScientificProblems() {
-    
+
     this.resultMessage = {};
 
     this.scientificProblemService.getScientificMateriaFilter(this.scientificProblemFilter).subscribe(res => {
@@ -56,13 +61,13 @@ export class ScientificProblemsComponent implements OnInit {
         this.scientificProblems = res.data;
         this.scientificProblems?.forEach(function(item) {
           item.scCreatedOn = item.scCreatedOn ? new Date(item.scCreatedOn).toDateString(): '';
-        });   
+        });
         this.totalCount = res.count ? res.count : 0;
 
         if ( this.scientificProblemFilter.skip > 0  && (!this.scientificProblems || this.scientificProblems.length === 0)){
           this.scientificProblemFilter.page -= 1;
           this.scientificProblemFilter.skip = (this.scientificProblemFilter.page - 1) * this.scientificProblemFilter.take;
-          this.getScientificProblems(); 
+          this.getScientificProblems();
         }
       }
       else{
@@ -114,7 +119,7 @@ export class ScientificProblemsComponent implements OnInit {
             this.alertify.error(error || '');
           }
         )
-      }     
+      }
     });
   }
 
@@ -150,7 +155,11 @@ export class ScientificProblemsComponent implements OnInit {
           this.alertify.error(error || '');
           }
         )
-      }     
+      }
     });
+  }
+
+  openAdvancedSearch() {
+    this.openAdvancedSearchOverLay.emit(this.scientificProblemFilter);
   }
 }

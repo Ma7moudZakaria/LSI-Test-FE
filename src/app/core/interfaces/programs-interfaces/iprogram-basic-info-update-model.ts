@@ -1,4 +1,4 @@
-import {IProgCategory, IProgRatings, IRecitationTimes} from './iprogram-basic-info-model';
+import {IProgCategory, IProgramType, IProgRatings, IProgWeeklyDutyDays, IRecitationTimes} from './iprogram-basic-info-model';
 
 export interface IProgramBasicInfoUpdateModel {
     progId?:string;
@@ -18,4 +18,9 @@ export interface IProgramBasicInfoUpdateModel {
     progRecType?: string;
     progRecitTimes?: IRecitationTimes[];
     prgDura?:number;
+    progDtyDays?:IProgWeeklyDutyDays[];
+    progTypes?:IProgramType[];
+    progName?: string;
+    progCountDtyDay?: number;
+    dutyDayTypeId?: string;
 }

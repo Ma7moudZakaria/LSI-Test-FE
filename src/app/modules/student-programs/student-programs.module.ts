@@ -13,13 +13,16 @@ import { StudentProgramDutyDaysTaskComponent } from './student-prog-duties/stude
 import { StudentProgramDutyDaysTaskDetailsComponent } from './student-prog-duties/student-program-duty-days-task-details/student-program-duty-days-task-details.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { AddStuDutyDaysToProgramComponent } from './student-program-wrapper/student-programs/add-stu-duty-days-to-program/add-stu-duty-days-to-program.component';
+import {QuestionBankModule} from '../question-bank/question-bank.module';
+import { AddTaskScientificProblemComponent } from './student-prog-duties/add-task-scientific-problem/add-task-scientific-problem.component';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
-  declarations: [StudentProgramsComponent, HonoraryBoardComponent, StatisticsComponent, StudentProgramWrapperComponent, StudentProgDutiesComponent, StudentProgramDutyDaysComponent, StudentProgramDutyDaysTaskComponent, StudentProgramDutyDaysTaskDetailsComponent, AddStuDutyDaysToProgramComponent],
+  declarations: [StudentProgramsComponent, HonoraryBoardComponent, StatisticsComponent, StudentProgramWrapperComponent, StudentProgDutiesComponent, StudentProgramDutyDaysComponent, StudentProgramDutyDaysTaskComponent, StudentProgramDutyDaysTaskDetailsComponent, AddStuDutyDaysToProgramComponent, AddTaskScientificProblemComponent],
   imports: [
     CommonModule, SharedModule,
-    StudentProgramsRoutingModule,TranslateModule
+    StudentProgramsRoutingModule, TranslateModule, QuestionBankModule, FormsModule
   ]
 })
 export class StudentProgramsModule { }
