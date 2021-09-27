@@ -25,8 +25,9 @@ export class AddNewGroupTeacherRecitationComponent implements OnInit {
   @Input() dataEdit: Role = { arRoleName: '', id: '', enRoleName: '' };
 
   addModel: IAddGroupExplanationModel = {}
-  userslist: IUsersInBatchResponse[] = []
   allBatches: ISharedProgramsResponseModel[] = [];
+  sharedPrograms: ISharedProgramsResponseModel[] | undefined;
+  listStudents: IUsersInBatchResponse[] = []
 
   DataForm!: FormGroup;
   isSubmit: boolean = false;
@@ -36,33 +37,31 @@ export class AddNewGroupTeacherRecitationComponent implements OnInit {
   usersExceptStudent: UsersExceptStudent[] = [];
   SearchItemList: SearchItem[] = [];
   langEnum = LanguageEnum;
-  sharedPrograms: ISharedProgramsResponseModel[] | undefined;
+
 
   constructor(
     private groupExplanationServices: CallsService,
-
     private formBuilder: FormBuilder,
     public programService: ProgramService,
     private RoleManagement: RoleManagementService,
     private _alertify: AlertifyService,
     public translate: TranslateService
   ) { }
-  ngAfterViewInit(): void {
-    if (this.dataEdit.id != '') {
-      this.DataForm.patchValue(this.dataEdit)
-    }
-  }
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.dataEdit && this.dataEdit.id != '') {
-      this.DataForm.patchValue(this.dataEdit)
-    }
-  }
+
 
   ngOnInit(): void {
     this.buildForm();
     this.getUsers();
     this.getAllBatches()
   }
+
+
+  backList() {
+    this.hideform?.emit(false);
+  }
+
+
+
   // get-all-batch
 
   getAllBatches() {
@@ -82,18 +81,29 @@ export class AddNewGroupTeacherRecitationComponent implements OnInit {
   }
   onChange(event: any) {
     // console.log("event.target.value", event.value);
-    let model: IUsersInBatctRequest = {
+    let model: IUsersInBatctRequest =
+    {
       batId: event.value,
       studName: '',
       skip: 0,
-      take: 9
-
+      take: 2147483647
     }
-    this.groupExplanationServices.getAllUsersInBatct(model).subscribe(res => {
 
+    this.groupExplanationServices.getAllUsersInBatct(model).subscribe(res => {
       if (res.isSuccess) {
-        this.userslist = res.data;
-        console.log("get users in  Batches", this.userslist)
+        let userslist = res.data as IUsersInBatchResponse[];
+        // console.log("get users in  Batches", userslist)
+        userslist.forEach((element: any) => {
+          if (this.listStudents.length > 0) {
+            if (!this.listStudents.some(x => x.usrId == element.usrId))
+              this.listStudents?.push(element)
+          }
+          else {
+            this.listStudents?.push(element);
+          }
+        });
+
+        // console.log("get users in  Batches", this.listStudents)
 
       }
       else {
@@ -102,6 +112,13 @@ export class AddNewGroupTeacherRecitationComponent implements OnInit {
       error => {
         console.log(error);
       });
+  }
+  removeStuFromList(event: IUsersInBatchResponse) {
+    let it = this.listStudents.filter(i => i.usrId === event.usrId)[0];
+    const ind = this.listStudents?.indexOf(it);
+    if (ind > -1) {
+      this.listStudents?.splice(ind, 1);
+    }
   }
   // get-users-except-students
 
@@ -205,7 +222,15 @@ export class AddNewGroupTeacherRecitationComponent implements OnInit {
 
   }
 
-  backList() {
-    this.hideform?.emit(false);
+  ngAfterViewInit(): void {
+    if (this.dataEdit.id != '') {
+      this.DataForm.patchValue(this.dataEdit)
+    }
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.dataEdit && this.dataEdit.id != '') {
+      this.DataForm.patchValue(this.dataEdit)
+    }
+  }
+
 }

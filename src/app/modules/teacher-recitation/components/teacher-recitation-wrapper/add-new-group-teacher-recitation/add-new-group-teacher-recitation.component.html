@@ -3,16 +3,13 @@
   <p class="title_add">
       {{ "Role_Management.CREATENEWGROUP" | translate }}
   </p>
-  <div class="col-md-10 ">
+  <div class="col-md-12 ">
       <div  class="DataForm" >
           <div class="form-group">
-              <label for="exampleInputEmail1" class="label">{{
-                  "Role_Management.GROUPNAMEARABIC" | translate
-                  }}</label>
-
+              <label for="exampleInputEmail1" class="label">
+                  {{ "Role_Management.GROUPNAMEARABIC" | translate }}
+              </label>
               <input type="text" class="form-control"   [(ngModel)]="addModel.groupNameAr" />
-
-             
           </div>
           <div class="form-group">
               <label for="exampleInputEmail1" class="label">{{
@@ -20,43 +17,37 @@
                   }}</label>
 
               <input type="text" class="form-control" [(ngModel)]="addModel.groupNameEn" />
-
-             
           </div>
 
-
-
- 
             <div class="form-group">
-            
                 <label for="programs" class="label"> اخترالدفعة</label>
                 <div class="input-group">
                     <div class="input-group pr-2rem">
-                        <!-- (change)="onChange($event.target)" -->
-                            <select class="form-control"  [(ngModel)]="addModel.batId" (change)="onChange($event.target)">
-                                <ng-container *ngFor="let item of allBatches"    >
+                     
+                            <select class="form-control"  [(ngModel)]="addModel.batId"
+                             (change)="onChange($event.target)">
+                                <ng-container *ngFor="let item of allBatches">
                                 <option [value]="item.batId">
                                     {{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}
                                 </option>
                                 </ng-container>
                               </select>
-                    
                     </div>
                     <span class="plus-btn position-absolute">
                         <!-- (click)="addParticipant()" -->
-                        <button class="btn  btn-light btn-add" type="button"
-                        >
+                        <button class="btn  btn-light btn-add" type="button" >
                             <img  src="assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
                         </button>
                     </span>
 
-
-                    <p *ngFor="let user of userslist" class="avater_container my-2">
-                        <img  src="{{user.avr}}" class="avater">
-                        <span>{{translate.currentLang == langEnum.en ? user.studNameEn : user.studNameAr}}</span>
-                    </p>
+                <div class="listStudent my-2" *ngIf="listStudents.length > 0">
+                        <p *ngFor="let student of listStudents" class="avater_container p-2 my-2">
+                            <img  src="{{student.avr}}" class="avater">
+                            <span>{{translate.currentLang == langEnum.en ? student.studNameEn : student.studNameAr}}</span>
+                         <img src="assets/images/feelings/close.svg" (click)="removeStuFromList(student)">
+                        </p>
+                    </div>
                 </div>
-            
             
         
                 <!-- <div class="badges mt-3 ">
@@ -76,16 +67,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-          <!-- <div class="form-group" >
+          <div class="form-group" >
               <label for="exampleInputEmail1" class="label">{{"Role_Management.SELECT_GROUP_MEMBERS" | translate
                   }}</label>
               <app-input-search-list [searchList]="SearchItemList" (addSearchItem)="addUser($event)">
@@ -103,7 +85,7 @@
                  <span class="mat-delete" (click)="delete(SelectedUser)"><i class="fas fa-trash-alt"></i></span>
                   <mat-divider></mat-divider>
               </mat-list-item>
-          </mat-list> -->
+          </mat-list>
 
       </div>
       <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2">
