@@ -31,7 +31,8 @@ import { StudentProgDutiesServiceService } from 'src/app/core/services/student-p
   styleUrls: ['./student-program-duty-days-task-details.component.scss']
 })
 export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
-  @Output() taskIsSaveEvent = new EventEmitter<boolean>();
+  @Output() taskIsSaveEvent = new EventEmitter<IProgramDayTaskTasmea>();
+  @Output() teacherCallPhonEvent = new EventEmitter<IProgramDayTaskTasmea>();
   @Input() taskDetails: IProgramDayTasksModel | undefined;
   detailsTypeEnum = ProgramDayTasksDetails;
   hearingTaskDetailsModel: IProgramDayTaskHearing = {};
@@ -198,5 +199,9 @@ no(){
   
   taskIsSave(){
      this.taskIsSaveEvent.emit()
+    }
+
+    teacherCallPhon(){
+      this.teacherCallPhonEvent.emit(this.tasmeaModel)
     }
 }

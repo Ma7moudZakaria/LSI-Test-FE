@@ -11,35 +11,18 @@ import { IAvailableTeacherResonse } from 'src/app/core/interfaces/calls/iavailab
   styleUrls: ['./get-all-available-teachers-grid.component.scss']
 })
 export class GetAllAvailableTeachersGridComponent implements OnInit {
+  @Output() availableTeachersFilterEvent = new EventEmitter<IAvailableTeacher>();
+  @Output() sendStudentVacationId = new EventEmitter<ITeacherStudentViewModel>();
+  @Output() teacherCallPhonEvent = new EventEmitter<boolean>();
   @Input() availableTeachersList: IAvailableTeacherResonse[] = []
   @Input() numberPerRow: number = 2;
   @Input() totalCount: number = 0;
   @Input() filterAvailableTeacher: IAvailableTeacher = { skip: 0, take: 9, page: 1 };
-  @Output() availableTeachersFilterEvent = new EventEmitter<IAvailableTeacher>();
-  @Output() sendStudentVacationId = new EventEmitter<ITeacherStudentViewModel>();
-
-  // @Input() studentVacationFilterRequestModel: IStudentProgramVacationFilterRequestModel = { skip: 0, take: 9, page: 1 };
-
-  // @Output() acceptAllStudentProgramVacationChecked = new EventEmitter<IStudentProgramVacationModel>();
-  // @Output() acceptStudentProgramVacation = new EventEmitter<IStudentProgramVacationModel>();
-
-  // @Input() studentProgramVacationFilterRequestModel: IStudentProgramVacationFilterRequestModel = { skip: 0, take: 9, page: 1 };
-  // @Output() studentProgramVacationStudentViewModel = new EventEmitter<IStudentProgramVacationStudentViewModel>();
-  // @Output() terminateStudentProgramVacation = new EventEmitter<IStudentProgramVacationStudentViewModel>();
-  // @Output() cancelStudentProgramVacation = new EventEmitter<IStudentProgramVacationStudentViewModel>();
-
-  // orderTypeToggel = 1;
-  // allSelected: boolean = false;
-  // stuTabTypeSelected = StudentProgramVacationStatusEnum;
-  // currentUser: IUser | undefined;
-  // userRole: any;
 
   constructor(public translate: TranslateService,
     private exportationService: ExportationService) { }
 
   ngOnInit(): void {
-    // this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
-    // this.userRole = this.currentUser.usrRoles?.usrRoles?.[0].enRoleName.toString();
 
   }
 
@@ -49,85 +32,8 @@ export class GetAllAvailableTeachersGridComponent implements OnInit {
 
   }
 
-  // getStudentVacationId(event: ITeacherStudentViewModel) {
-  //   this.sendStudentVacationId.emit(event);
-  // }
-
-  // sortStudentByName() {
-  //   this.studentProgramVacationFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'userNameAr' : 'UserNameEn';
-  //   this.studentProgramVacationFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
-  //   this.availableTeachersFilterEvent.emit(this.studentProgramVacationFilterRequestModel);
-  // }
-  // sortByProgramName() {
-  //   this.studentProgramVacationFilterRequestModel.sortField = this.translate.currentLang === LanguageEnum.ar ? 'programName' : 'programName';
-  //   this.studentProgramVacationFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
-  //   this.availableTeachersFilterEvent.emit(this.studentProgramVacationFilterRequestModel);
-  // }
-
-  // sortStudentByNameOrderType() {
-  //   if ((this.studentProgramVacationFilterRequestModel.sortField === "userNameAr" || this.studentProgramVacationFilterRequestModel.sortField === "UserNameEn") && this.studentProgramVacationFilterRequestModel.sortOrder == 1) { return 'asend' }
-  //   if ((this.studentProgramVacationFilterRequestModel.sortField === "userNameAr" || this.studentProgramVacationFilterRequestModel.sortField === "UserNameEn") && this.studentProgramVacationFilterRequestModel.sortOrder == -1) { return 'desend' }
-
-  //   return '';
-  // }
-
-  // sortByStudentRequestDate() {
-  //   this.studentProgramVacationFilterRequestModel.sortField = 'requestdate';
-  //   this.studentProgramVacationFilterRequestModel.sortOrder = this.orderTypeToggel = this.orderTypeToggel === 1 ? -1 : 1;
-  //   this.availableTeachersFilterEvent.emit(this.studentProgramVacationFilterRequestModel);
-  // }
-
-  // sortByStudentRequestDateOrderType() {
-  //   if (this.studentProgramVacationFilterRequestModel.sortField === 'requestdate' && this.studentProgramVacationFilterRequestModel.sortOrder == 1) { return 'asend' }
-  //   if (this.studentProgramVacationFilterRequestModel.sortField === 'requestdate' && this.studentProgramVacationFilterRequestModel.sortOrder == -1) { return 'desend' }
-
-  //   return '';
-  // }
-
-  // enableStudentSelectOperations(): boolean {
-  //   return this.availableTeachers.filter(t => t.checked).length > 0 || this.allSelected;
-  // }
-
-  // someStudentItemsChecked(): boolean {
-  //   if (this.availableTeachers == null) {
-  //     return false;
-  //   }
-  //   return this.availableTeachers.filter(t => t.checked).length > 0 && !this.allSelected;
-  // }
-
-  // setStudentAllChecked(completed: boolean) {
-  //   this.allSelected = completed;
-  //   if (this.availableTeachers == null) {
-  //     return;
-  //   }
-  //   this.availableTeachers.forEach(t => t.checked = completed);
-  // }
-
-  // rejectStuRequest(event: IStudentProgramVacationModel) {
-  //   this.studentProgramVacationStudentViewModel.emit(event)
-
-  // }
-  // acceptStuRequest(event: IStudentProgramVacationModel) {
-  //   this.acceptStudentProgramVacation.emit(event)
-
-  // }
-  // cancelStuRequest(event: IStudentProgramVacationStudentViewModel) {
-  //   this.cancelStudentProgramVacation.emit(event)
-
-  // }
-  // terminateStuRequest(event: IStudentProgramVacationStudentViewModel) {
-  //   this.terminateStudentProgramVacation.emit(event)
-
-  // }
-  // acceptAllStudentProgramSubscriptionChechedEvent() {
-  //   this.acceptAllStudentProgramVacationChecked.emit()
-  // }
-
-  // exportStudentCSV() {
-
-  // }
-  // updateAllItemsChecked() {
-  //   this.allSelected = this.availableTeachers != null && this.availableTeachers.every(t => t.checked);
-  // }
+  teacherCallPhon(){
+    this.teacherCallPhonEvent.emit()
+  }
 
 }

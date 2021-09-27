@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ProgramDutyDaysTaskViewMoodEnum } from 'src/app/core/enums/programs/program-duty-days-task-view-mood-enum.enum';
@@ -23,6 +23,7 @@ import { ProgramDayTasksService } from 'src/app/core/services/program-services/p
   styleUrls: ['./program-day-task-tasmea.component.scss']
 })
 export class ProgramDayTaskTasmeaComponent implements OnInit {
+  @Output() teacherCallPhonEvent = new EventEmitter<boolean>();
   @Input() tasmeaModel: IProgramDayTaskTasmea = {};
   @Input() isView: boolean = false;
   @Input() dutyDaysTaskViewMood: number = ProgramDutyDaysTaskViewMoodEnum.admin;
@@ -121,4 +122,9 @@ export class ProgramDayTaskTasmeaComponent implements OnInit {
     );
 
   }
+
+  teacherCallPhon(){
+    this.teacherCallPhonEvent.emit()
+  }
+  
 }

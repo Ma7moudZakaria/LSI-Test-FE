@@ -129,9 +129,9 @@
     [availableTeachersList]='availableTeachersList'
     [totalCount]='totalCount'
     [numberPerRow]='numberItemsPerRow'
-    [filterAvailableTeacher]='filterAvailableTeacher
-    '
-    (availableTeachersFilterEvent) = "availableTeachersChangePage($event)">
+    [filterAvailableTeacher]='filterAvailableTeacher'
+    (availableTeachersFilterEvent) = "availableTeachersChangePage($event)"
+    (teacherCallPhonEvent)="teacherCallPhon()">
    </app-get-all-available-teachers-grid>
  
 </div>   

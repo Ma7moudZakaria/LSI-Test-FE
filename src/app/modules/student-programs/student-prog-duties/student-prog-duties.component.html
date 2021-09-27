@@ -1,6 +1,6 @@
 
 <div class="container-fluid">
-    <div class="row">
+    <div class="row"  *ngIf="!isShowCall">
         <div class="col-3">
             <app-student-program-duty-days  (progDutyDayEvent)='progDutyDayEventCallBk($event)'></app-student-program-duty-days>
         </div>
@@ -8,7 +8,10 @@
             <app-student-program-duty-days-task [programDutyDay]='programDutyDay' (taskDetailsEvent)="sendTaskIdToProgDayTaskDetails($event)" (taskIsEndEvent)="loadDay()"></app-student-program-duty-days-task>
         </div>
         <div class="col-6" *ngIf='taskDetails'> 
-            <app-student-program-duty-days-task-details [taskDetails]='taskDetails' (taskIsSaveEvent)=" loadTask()"></app-student-program-duty-days-task-details >
+            <app-student-program-duty-days-task-details [taskDetails]='taskDetails' (taskIsSaveEvent)=" loadTask()" (teacherCallPhonEvent)="teacherCallPhon($event)"></app-student-program-duty-days-task-details >
         </div>
+    </div>
+    <div class="row"  *ngIf="isShowCall">
+       <app-student-recitation-call [tasmeaModel]='tasmeaModel'></app-student-recitation-call>
     </div>
 </div>
