@@ -305,7 +305,7 @@
                                             {{ translate.currentLang == langEnum.en ? interviewDayItem.nameEn : interviewDayItem.nameAr}}
                                         </option>
                                     </select> -->
-                                    <app-milady-hijri-calendar [editcalenderType]="updateCalenderType" (sendDate)="HijriInterviewDay($event)" (keypress)="$event.preventDefault()" [dateTo]='hijriInterviewDayInputParam'
+                                    <app-milady-hijri-calendar [ngClass]="{'dimmed': teacherProfileDetails?.profileId}" [editcalenderType]="updateCalenderType" (sendDate)="HijriInterviewDay($event)" (keypress)="$event.preventDefault()" [dateTo]='hijriInterviewDayInputParam'
                                        [hijri]="hijri" [milady]="milady" [minHijri]="minHijriInterviewDate" [minGreg]="minGregInterviewDate">
                                      </app-milady-hijri-calendar>
 
@@ -327,7 +327,7 @@
                                 </label>
 
                                 <div  class="UpdateUser__Options form-group mb-0" [ngClass]="{'disableDiv': teacherProfileDetails?.profileId}">
-                                    <input matInput type="time"   class="form-control"  placeholder="HH:MM" id="end_time_hour"
+                                    <input [ngClass]="{'dimmed': teacherProfileDetails?.profileId} " matInput type="time"   class="form-control"  placeholder="HH:MM" id="end_time_hour"
                                      formControlName="interviewTime">
                                     <!-- <mat-select name="ampm" class="ampm" [(ngModel)]="event.eampm" [ngModelOptions]="{standalone: true}">
                                          <mat-option value="AM">AM</mat-option>
