@@ -1,6 +1,5 @@
 
 @import '../../../../../../assets/scss/buttons';
-@import '../../../../../../styles.scss';
 @import '../../../../../modules/program/components/program-details/programs-tabs/days/days.component.scss';
 
 .details_day{
@@ -32,15 +31,17 @@
         &:lang(en){text-align: right;}
         
     }
+
     .cardRecour{
         padding: 0.5rem 1rem;
         background-color: #e4e4e43b;
         border-radius: 15px 15px 15px 0;
         margin: 0.2rem;
+        margin-top: 0.5rem;
         max-width: 75%;
-        // display:inline-block;
-        // text-align: right;
+        
     }
+   
     .message_message
     {
         font-family: Almarai-Regular;

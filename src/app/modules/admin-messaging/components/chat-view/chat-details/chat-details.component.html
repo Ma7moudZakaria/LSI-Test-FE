@@ -6,7 +6,8 @@
     <div class="row mx-0  chat_details">    
         <div class="chat_vontainer w-100">
         <ng-container *ngFor="let message of chatService.allMessagesList; let i = index"  >
-            <div class="col-12 cardRecour " [ngClass]="{ 'current_user_cardRecour' : currentUser?.id === message.sender_id}">
+            <div class="col-12 cardRecour " [ngClass]="{ 'current_user_cardRecour' : currentUser?.id === message.sender_id,
+            'mr-auto ' : currentUser?.id === message.sender_id}">
                 <div class="message_date"> {{ message.sender_name }} </div>
                 <!-- <div class="message_date"> {{ message.sender_name }} {{translate.currentLang == langEnum.en ? participant.name_en : participant.name_ar}}</div> -->
                 <div class=" mb-2 message_message "*ngIf="message.message_type === 'text'" [ngClass]="{ 'current_user_cardRecour' : currentUser?.id === message.sender_id}"> 
