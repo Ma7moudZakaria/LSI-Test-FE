@@ -44,7 +44,7 @@ export class UpdateUserProfileComponent implements OnInit {
   isSubmit = false;
   listOfLookupProfile: string[] = ['GENDER', 'EDU_LEVEL', 'NATIONALITY', 'COUNTRY'
     , 'SCIENTIFIC_ARCHIVES', 'TRAINING_COURSES', 'SYSTEM_SHEIKHS'];
-  userProfileDetails = {} as IUserProfile;
+  userProfileDetails:IUserProfile | undefined;
   updateUserModel: IUpdateUserProfile = {};
   collectionOfLookup = {} as ILookupCollection;
   fileUploadModel: IFileUpload[] = [];
@@ -227,12 +227,12 @@ export class UpdateUserProfileComponent implements OnInit {
     if (this.profileForm.valid) {
       this.updateUserModel = {
         usrId: this.currentUser?.id,
-        firstAr: this.profileForm.value.firstNameAr != null ? this.profileForm.value.firstNameAr : this.userProfileDetails.fnameAr,
-        firstEn: this.profileForm.value.firstNameEn != null ? this.profileForm.value.firstNameEn : this.userProfileDetails.fnameEn,
-        middleAr: this.profileForm.value.middleNameAr != null ? this.profileForm.value.middleNameAr : this.userProfileDetails.mnameAr,
-        middleEn: this.profileForm.value.middleNameEn != null ? this.profileForm.value.middleNameEn : this.userProfileDetails.mnameEn,
-        familyAr: this.profileForm.value.familyNameAr != null ? this.profileForm.value.familyNameAr : this.userProfileDetails.fanameAr,
-        familyEn: this.profileForm.value.familyNameEn != null ? this.profileForm.value.familyNameEn : this.userProfileDetails.faNameEn,
+        firstAr: this.profileForm.value.firstNameAr != null ? this.profileForm.value.firstNameAr : this.userProfileDetails?.fnameAr,
+        firstEn: this.profileForm.value.firstNameEn != null ? this.profileForm.value.firstNameEn : this.userProfileDetails?.fnameEn,
+        middleAr: this.profileForm.value.middleNameAr != null ? this.profileForm.value.middleNameAr : this.userProfileDetails?.mnameAr,
+        middleEn: this.profileForm.value.middleNameEn != null ? this.profileForm.value.middleNameEn : this.userProfileDetails?.mnameEn,
+        familyAr: this.profileForm.value.familyNameAr != null ? this.profileForm.value.familyNameAr : this.userProfileDetails?.fanameAr,
+        familyEn: this.profileForm.value.familyNameEn != null ? this.profileForm.value.familyNameEn : this.userProfileDetails?.faNameEn,
         // birthdate: this.profileForm.value.birthdate,
         birthdate: this.selectedDateType == 1 ? this.profileForm.value.birthdate : null,
         birthGregorian: this.selectedDateType == 2 ? this.profileForm.value.birthdate : null,
@@ -289,7 +289,7 @@ export class UpdateUserProfileComponent implements OnInit {
       this.userProfileService.updateUser(this.updateUserModel).subscribe(
         res => {
           if (res.isSuccess) {
-            if(!this.userProfileDetails){
+            if(!this.userProfileDetails?.id){
              
               this.confirmDialog();
 
@@ -403,7 +403,7 @@ export class UpdateUserProfileComponent implements OnInit {
     //
     // this.hijriBirthDateInputParam = {year : date.getFullYear(), month : date.getMonth() + 1, day:date.getDay()}
     // this.f.birthdate.setValue(date);
-    if (this.userProfileDetails.birthDispMode == 1) {
+    if (this.userProfileDetails?.birthDispMode == 1) {
       this.updateCalenderType.selectedDateType = DateType.Hijri;
       let date = new Date(this.userProfileDetails?.birthdate || '');
       this.hijriBirthDateInputParam = {year: date?.getFullYear(), month: date?.getMonth() + 1, day: date?.getDate()}
@@ -423,7 +423,7 @@ export class UpdateUserProfileComponent implements OnInit {
     this.f.countryCode.setValue(this.userProfileDetails?.countryCode);
     this.f.city.setValue(this.userProfileDetails?.city);
     this.f.quraanMemorization.setValue(this.userProfileDetails?.quraanMemorizeAmount);
-    this.fileList = this.userProfileDetails?.ejazaAttachments;
+    this.fileList = this.userProfileDetails?.ejazaAttachments || [];
     this.userProfileDetails?.ejazaAttachments.forEach(element => {
       this.ejazaAttachmentIds.push(element.id);
     });
@@ -470,7 +470,8 @@ export class UpdateUserProfileComponent implements OnInit {
     formData.append('UserProfilePictureModel.ProfileImage', profImagModel.image);
 
     this.userService.updateUserProfilePic(formData).subscribe(res => {
-      if (res.isSuccess) {
+      if (res.isSuccess && this.userProfileDetails) {
+
         this.userProfileDetails.proPic = res.data as string;
       } else {
         this.resMessage = {

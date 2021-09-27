@@ -2,6 +2,7 @@ import { BaseLookupModel } from "../../ng-model/base-lookup-model";
 import { IAttachment } from "../attachments-interfaces/iattachment";
 
 export interface IUserProfile {
+    id?:string;
     fnameAr?:string;
     mnameAr?:string;
     fanameAr?:string;
