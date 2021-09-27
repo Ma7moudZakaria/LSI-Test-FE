@@ -205,7 +205,7 @@ export class StudentDropOutGridComponent implements OnInit {
   }
 
   acceptAllStudentAdminDropOutRequestCheckedEvent() {
-    this.acceptAllStudentDropOutRequestStudentChecked.emit()
+    this.acceptAllStudentDropOutRequestAdminChecked.emit()
   }
 
   rejectStudentAdminDropOutRequestEvent(studentAdminModel: IStudentDropOutRequestsFilterResponseModel) {

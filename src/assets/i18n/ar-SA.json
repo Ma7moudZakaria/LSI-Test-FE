@@ -955,7 +955,8 @@
     "NO_DATA": "لا يوجد",
     "REJECT_REASON": "سبب الرفض",
     "STUDENT_REJECTED": "سيتم رفض طلب انسحاب الطالب ",
-    "REJECT_REASON_LENGHT": "السبب يجب أن يكون اقل من أو يساوى 256 حرف"
+    "REJECT_REASON_LENGHT": "السبب يجب أن يكون اقل من أو يساوى 256 حرف",
+    "REMOVE_FROM_DROP_OUT":"علي المنصه"
   },
   "CHAT_GROUP": {
     "GROUP_NAME_AR": "إسم المجموعة بالعربى",

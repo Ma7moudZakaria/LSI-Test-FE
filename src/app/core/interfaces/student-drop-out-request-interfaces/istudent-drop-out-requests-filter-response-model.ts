@@ -12,6 +12,7 @@ export interface IStudentDropOutRequestsFilterResponseModel {
     totalRows?: number;
     checked?: boolean;
     reasonReject?: string;
+    // rejReas?:string;
     avatarLink?: string;
     reason?: string;
     no?: number;

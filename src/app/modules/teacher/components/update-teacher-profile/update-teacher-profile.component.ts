@@ -718,7 +718,7 @@ export class UpdateTeacherProfileComponent implements OnInit {
     const existAvailabilityDays = this.selectedAvailabilityDaysList.some(el => el.id === this.profileForm.value.availabilityDays)
     const existFromTime = this.profileForm.value.fromDayTimeinterview;
     const existtoTime = this.profileForm.value.toDayTimeinterview;
-
+    
     if (!existAvailabilityDays && existFromTime != null && existtoTime != null && existtoTime > existFromTime) {
       if (this.collectionOfLookup.DAYS) {
         this.availabilityDaysModel = {
@@ -916,27 +916,25 @@ export class UpdateTeacherProfileComponent implements OnInit {
   }
   setHijri() {
      let toDayHijriDate = this.dateFormatterService.GetTodayHijri() 
-     toDayHijriDate.day= toDayHijriDate.day;
+    //  toDayHijriDate.day= toDayHijriDate.day;
      this.maxHijriDate = toDayHijriDate;
 
      let toDayHijriInterviewDate = this.dateFormatterService.GetTodayHijri();
-     toDayHijriInterviewDate.day= toDayHijriInterviewDate.day + 1 ;
-     toDayHijriInterviewDate.month= toDayHijriInterviewDate.month + 1 ;
-     toDayHijriInterviewDate.year= toDayHijriInterviewDate.year;
+    //  toDayHijriInterviewDate.day= toDayHijriInterviewDate.day + 1 ;
+    //  toDayHijriInterviewDate.month= toDayHijriInterviewDate.month + 1 ;
+    //  toDayHijriInterviewDate.year= toDayHijriInterviewDate.year;
      this.minHijriInterviewDate = toDayHijriInterviewDate;
-     console.log("maxHijri",this.maxHijriDate);
   }
   setGreg(){
     let toDayGreDate = this.dateFormatterService.GetTodayGregorian()
-    toDayGreDate.day= toDayGreDate.day;
+    // toDayGreDate.day= toDayGreDate.day;
     this.maxGregDate = toDayGreDate;
 
     let toDayGreInterviewDate = this.dateFormatterService.GetTodayGregorian();
-    toDayGreInterviewDate.day= toDayGreInterviewDate.day + 1 ;
-    toDayGreInterviewDate.month= toDayGreInterviewDate.month + 1 ;
-    toDayGreInterviewDate.year= toDayGreInterviewDate.year + 1 ;
+    // toDayGreInterviewDate.day= toDayGreInterviewDate.day + 1 ;
+    // toDayGreInterviewDate.month= toDayGreInterviewDate.month + 1 ;
+    // toDayGreInterviewDate.year= toDayGreInterviewDate.year  ;
     this.minGregInterviewDate = toDayGreInterviewDate;
-    console.log("maxGregDate",this.maxGregDate);
   }
 
 }

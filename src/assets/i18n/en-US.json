@@ -948,7 +948,8 @@
     "NO_DATA": "No Data",
     "REJECT_REASON": "Reject Reason",
     "STUDENT_REJECTED": "The student's withdrawal request will be rejected",
-    "REJECT_REASON_LENGHT": "Reason Must be less than or equal 256 character"
+    "REJECT_REASON_LENGHT": "Reason Must be less than or equal 256 character",
+    "REMOVE_FROM_DROP_OUT":"On the platform"
   },
   "STUDENT_SUBSCRIPTION": {
     "ACCEPT_EXAMP": "Accept EXAMP",

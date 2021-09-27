@@ -32,6 +32,7 @@ export class TeacherDropOutRequestTeacherCardComponent implements OnInit {
   constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
+    console.log("teacherDropOutRequestModel" , this.teacherDropOutRequestModel)
     if (this.teacherDropOutRequestModel?.requestDate) {
       let requestDateValue = new Date(this.teacherDropOutRequestModel.requestDate || '');
 
