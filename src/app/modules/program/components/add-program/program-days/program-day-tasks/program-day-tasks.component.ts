@@ -6,7 +6,7 @@ import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { ProgramDayTasksDetails } from 'src/app/core/enums/programs/program-day-tasks-details.enum';
 import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-model';
 import { IProgramDayTasksUpdateOrderByModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-update-order-by-model';
-import { IProgramDutyDays } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
+import {IProgramDetails, IProgramDutyDays} from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { IDragDropAccordionItems } from 'src/app/core/interfaces/shared-interfaces/accordion-interfaces/idrag-drop-accordion-items';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
@@ -16,6 +16,8 @@ import { LookupService } from 'src/app/core/services/lookup-services/lookup.serv
 import { ProgramDayTasksService } from 'src/app/core/services/program-services/program-day-tasks.service';
 import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 import { ProgramDayTasksDetailsComponent } from '../program-day-tasks-details/program-day-tasks-details.component';
+import {ProgramDutyDaysComponent} from '../program-duty-days/program-duty-days.component';
+import {ProgramService} from '../../../../../../core/services/program-services/program.service';
 
 @Component({
   selector: 'app-program-day-tasks',
@@ -41,12 +43,14 @@ export class ProgramDayTasksComponent implements OnInit {
   defaultSelectedDay = 0;
 haveMemorize?:boolean=false;
 tasksTypeEnum = ProgramDayTasksDetails;
+  @Input() programDetails: IProgramDetails | undefined;
+
   constructor(
     public languageService: LanguageService,
     private programDayTasksService: ProgramDayTasksService,
     public translate: TranslateService,
     public dialog: MatDialog,
-    private aletify:AlertifyService) { }
+    private aletify:AlertifyService, public programService : ProgramService) { }
 
   ngOnInit(): void {
     this.getProgramDutyDays();
@@ -149,7 +153,7 @@ tasksTypeEnum = ProgramDayTasksDetails;
       maxWidth: "400px",
       data: dialogData
     });
-   
+
     dialogRef.afterClosed().subscribe(dialogResult => {
       if (dialogResult == true) {
         let huffazTask=this.programDayTasksLists.find(x=>x.id===id)?.huffazTask;
@@ -160,7 +164,12 @@ tasksTypeEnum = ProgramDayTasksDetails;
           this.programDayTasksService.DeleteProgramDayTasks(id || '').subscribe(res => {
             if (res.isSuccess) {
               this.programDayTasksLists = res.data as Array<IProgramDayTasksModel>;
-  
+
+              console.log("this.programDetails?.id ===========>", this.programDetails);
+              if(this.programDetails?.progBaseInfo?.id)
+              this.programService.getProgramDaysByProgramId(this.programDetails?.progBaseInfo?.id).subscribe(res =>{
+
+              });
               console.log("programDayTasksLists ===========>", this.programDayTasksLists);
             }
             else {

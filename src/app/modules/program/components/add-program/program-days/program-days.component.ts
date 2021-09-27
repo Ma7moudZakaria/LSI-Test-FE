@@ -5,9 +5,11 @@ import { IProgramDetails, IProgramDutyDays } from 'src/app/core/interfaces/progr
 import { AddProgramDayTasksComponent } from './add-program-day-tasks/add-program-day-tasks.component';
 import { ProgramDayTasksDetailsComponent } from './program-day-tasks-details/program-day-tasks-details.component';
 import { ProgramDayTasksComponent } from './program-day-tasks/program-day-tasks.component';
+import {ProgramDutyDaysComponent} from './program-duty-days/program-duty-days.component';
+import {ProgramService} from '../../../../../core/services/program-services/program.service';
 
 @Component({
-  selector: 'app-program-days', 
+  selector: 'app-program-days',
   templateUrl: './program-days.component.html',
   styleUrls: ['./program-days.component.scss']
 })
@@ -31,21 +33,30 @@ export class ProgramDaysComponent implements OnInit {
   progDutyDayModel: IProgramDutyDays | undefined;
   selectedProgDutyDays:IProgramDutyDays[] = [];
   haveMemorize?:boolean=false;
-  constructor() { }
+  programDaysList: Array<IProgramDayTasksModel> | undefined;
+  constructor(public  programService: ProgramService) { }
 
   ngOnInit(): void {
     console.log(this.progDetails);
     // this.DetailsOfProgram = this.getProgramDetails || this.DetailsOfProgram;
-
+    this.getProgramDays()
   }
-  
+
+getProgramDays(){
+    if(this.progDetails?.progBaseInfo?.id)
+  this.programService.getProgramDaysByProgramId(this.progDetails?.progBaseInfo?.id).subscribe(res =>{
+    if (res.isSuccess) {
+      this.programDaysList = res.data as Array<IProgramDayTasksModel>;
+    }
+  });
+}
 
   progDutyDayEventCallBk(event?: IProgramDutyDays) {
     if (this.progDayTaskChild && event){
       this.progDayTaskChild.programDutyDay = event;
       this.progDayTaskChild?.getProgramDutyDays();
-    } 
-    this.programDutyDay = event; 
+    }
+    this.programDutyDay = event;
     //this.selectedProgDutyDays = [];
   }
 

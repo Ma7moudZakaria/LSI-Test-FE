@@ -21,7 +21,7 @@ export class ProgramService {
   // UpdateProgramnURL=environment.baseUrl+'QuestionBankQuestions/update-question-bank-question/';
   getProgramURL=environment.baseUrl+'Programs/get-program-details-by-id/';
   getAllSharedProgramsURL=environment.baseUrl+'Programs/get-all-shared-programs/';
-  
+
   // GetProgramsFilterURL=environment.baseUrl+'QuestionBankQuestions/get-question-bank-questions-filter/';
   deleteProgramURL=environment.baseUrl+'Programs/delete-program/';
   // GetAllProgramsURL=environment.baseUrl+'Programs/get-programs-lookup/';
@@ -37,6 +37,7 @@ export class ProgramService {
   getSubscriptionProgramDetailsURL = environment.baseUrl + 'Programs/get-subscription-program-details/';
 
   getSharedProgramsURL = environment.baseUrl + 'Programs/get-all-shared-programs/';
+  getProgramDaysByProgramIdURL= environment.baseUrl + 'Programs/get-program-days-by-program-id/';
 
 
   constructor(private http: HttpClient) { }
@@ -48,7 +49,7 @@ export class ProgramService {
   // UpdateProgram(model: IprogramUpdateModel): Observable<BaseResponseModel>{
   //   return this.http.put<BaseResponseModel>(this.UpdateProgramnURL,model);
   // }
- 
+
   // getProgramsFilter(filterRequest:IProgramFilterAdvancedRequest):Observable<BaseResponseModel>{
   //   return this.http.post<BaseResponseModel>(this.GetProgramsFilterURL,filterRequest)
   // }
@@ -67,7 +68,7 @@ export class ProgramService {
 
   // getProgramDutyDays(id:string):Observable<BaseResponseModel>{
   //   return this.http.get<BaseResponseModel>(this.DeleteProgramURL+id);
-  // }  
+  // }
 
   copyProgram(model:ICopyProgram):Observable<BaseResponseModel>{
     return this.http.post<BaseResponseModel>(this.CopyProgramURL,model);
@@ -103,5 +104,9 @@ export class ProgramService {
 
   getSharedPrograms(): Observable<BaseResponseModel> {
     return this.http.get<BaseResponseModel>(this.getSharedProgramsURL)
+  }
+
+  getProgramDaysByProgramId(id: string): Observable<BaseResponseModel>{
+    return this.http.get<BaseResponseModel>(this.getProgramDaysByProgramIdURL+id);
   }
 }
