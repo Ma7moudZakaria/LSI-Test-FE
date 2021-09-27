@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {BaseMessageModel} from '../../../../../core/ng-model/base-message-model';
 import {BaseResponseModel} from '../../../../../core/ng-model/base-response-model';
@@ -8,6 +8,7 @@ import {StudentProgramSubscriptionServicesService} from '../../../../../core/ser
 import {IStudentMyProgramsRequestModel} from '../../../../../core/interfaces/student-program-subscription-interfaces/istudent-my-programs-request-model';
 import {IStudentPrograms} from '../../../../../core/interfaces/student-program-vacation-interfaces/istudent-programs';
 import {IUser} from '../../../../../core/interfaces/auth-interfaces/iuser-model';
+import {IProgramDutyDays} from '../../../../../core/interfaces/programs-interfaces/iprogram-details';
 
 @Component({
   selector: 'app-student-program-list',

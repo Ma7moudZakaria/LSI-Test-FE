@@ -5,20 +5,24 @@
 
     <div class="d-flex">
       <div class="input-group">
-        <select class="form-control"  [(ngModel)]="addStudentVacationRequestModel.batchId"    [ngModelOptions]="{standalone: true}"  id="batchId" name="batchId"  required #batchId="ngModel">
-          <option   value="">{{'SCIENTIFIC_MATERIAL.SELECTOPTION' | translate}}</option>
-          <option *ngFor="let item of programs" value="{{item.batId}}" >
-            {{translate.currentLang === langEnum.en ? item.enProgBatchName: item.arProgBatchName}}
-          </option>
-        </select>
+<!--        <select class="form-control"  [(ngModel)]="addStudentVacationRequestModel.batchId"    [ngModelOptions]="{standalone: true}"  id="batchId" name="batchId"  required #batchId="ngModel">-->
+<!--          <option   value="">{{'SCIENTIFIC_MATERIAL.SELECTOPTION' | translate}}</option>-->
+<!--          <option *ngFor="let item of programs" value="{{item.batId}}" >-->
+<!--            {{translate.currentLang === langEnum.en ? item.enProgBatchName: item.arProgBatchName}}-->
+<!--          </option>-->
+<!--        </select>-->
+        <div class="col-12 mt-2 mb-2">
+          <input   type="email" class="form-control UserRegister__FormControl"  disabled
+                   placeholder="{{translate.currentLang === langEnum.en ? selectedProgramBatchFromParent?.enProgBatchName:selectedProgramBatchFromParent?.arProgBatchName}}">
+        </div>
       </div>
 
     </div>
-    <div *ngIf="batchId.invalid && (batchId.dirty || batchId.touched|| isSubmit)"
-         class="alert">
+<!--    <div *ngIf="batchId.invalid && (batchId.dirty || batchId.touched|| isSubmit)"-->
+<!--         class="alert">-->
 
-      <div  class="alert alert-danger mt-2 mb-2" *ngIf="batchId.errors?.required">{{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}</div>
-    </div>
+<!--      <div  class="alert alert-danger mt-2 mb-2" *ngIf="batchId.errors?.required">{{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}</div>-->
+<!--    </div>-->
   </div>
 
   <div class="form-group subscribtion-date">

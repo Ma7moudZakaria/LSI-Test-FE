@@ -9,7 +9,7 @@
     <div class="offset-2 col-3" >
         <app-search-input (searchTerm)=filterByText($event)></app-search-input>
 
-      <a class="advanced_search mb-3" (click)="openAdvancedSearch()">بحث متقدم</a>
+      <a class="advanced_search mb-3" (click)="openAdvancedSearch()">{{'SCIENTIFIC_PROBLEM.ADVANCED_SEARCH' | translate}}</a>
 
     </div>
 

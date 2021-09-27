@@ -5,6 +5,7 @@ import {IStudentProgramVacationRequestModel} from '../../../../core/interfaces/s
 import {IAddNewStudentVacationRequest} from '../../../../core/interfaces/student-program-vacation-interfaces/iadd-new-student-vacation-request';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { TranslateService } from '@ngx-translate/core';
+import {IProgramDutyDays} from '../../../../core/interfaces/programs-interfaces/iprogram-details';
 
 @Component({
   selector: 'app-vacations-requests-view',
