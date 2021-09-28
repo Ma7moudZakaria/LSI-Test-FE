@@ -45,12 +45,12 @@ export class AddProgramComponent implements OnInit {
     this.programService.getProgramDetails(this.programId || '').subscribe(res => {
       if (res.isSuccess) {
         this.programDetails = res.data as IProgramDetails;
-
+        // console.log("programId =====>" ,  this.programDetails);
         if (this.programDetails?.progBaseInfo?.prgPubliDate && this.programDetails?.progBaseInfo?.prgIsPubli){
           this.router.navigate(["/program"]);
         }
 
-        if (this.progDaysCompChild && this.progDaysCompChild.progDetails) 
+        if (this.progDaysCompChild && this.progDaysCompChild.progDetails)
         {
           this.progDaysCompChild.progDetails = this.programDetails;
 
@@ -62,7 +62,7 @@ export class AddProgramComponent implements OnInit {
             this.progDaysCompChild.progDutyDayEventCallBk(this.progDaysCompChild.programDutyDay);
           }
         }
-        
+
         if (this.progExamesCompChild && this.progExamesCompChild.progDetails){
           this.progExamesCompChild.progDetails = this.programDetails;
           if (this.progExamesCompChild?.examFormsListComponent && this.progExamesCompChild?.examFormsListComponent.progDetails)

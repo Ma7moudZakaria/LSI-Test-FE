@@ -20,6 +20,7 @@ export class ProgramDaysComponent implements OnInit {
   @ViewChild(ProgramDayTasksComponent) progDayTaskChild: ProgramDayTasksComponent | undefined;
   @ViewChild(ProgramDayTasksDetailsComponent) progDayTaskDetailsChild: ProgramDayTasksDetailsComponent | undefined;
   // @ViewChild(AddProgramDayTasksComponent) addProgDayTaskCompChild:AddProgramDayTasksComponent | undefined;
+  @ViewChild(ProgramDutyDaysComponent) progDayChild: ProgramDutyDaysComponent | undefined;
 
   @Input() progDetails: IProgramDetails = {};
 
@@ -33,23 +34,13 @@ export class ProgramDaysComponent implements OnInit {
   progDutyDayModel: IProgramDutyDays | undefined;
   selectedProgDutyDays:IProgramDutyDays[] = [];
   haveMemorize?:boolean=false;
-  programDaysList: Array<IProgramDayTasksModel> | undefined;
   constructor(public  programService: ProgramService) { }
 
   ngOnInit(): void {
-    console.log(this.progDetails);
+    console.log("this.progDetails",this.progDetails);
     // this.DetailsOfProgram = this.getProgramDetails || this.DetailsOfProgram;
-    this.getProgramDays()
   }
 
-getProgramDays(){
-    if(this.progDetails?.progBaseInfo?.id)
-  this.programService.getProgramDaysByProgramId(this.progDetails?.progBaseInfo?.id).subscribe(res =>{
-    if (res.isSuccess) {
-      this.programDaysList = res.data as Array<IProgramDayTasksModel>;
-    }
-  });
-}
 
   progDutyDayEventCallBk(event?: IProgramDutyDays) {
     if (this.progDayTaskChild && event){
@@ -85,8 +76,11 @@ getProgramDays(){
   closeDayTasks(event: boolean) {
     this.showAddDayTasksForm = event;
     this.showAddDayTasksForm = false;
-    this.refreshProgDetails.emit();
-    this.selectedProgDutyDays = [];
+
+    this.progDayChild?.getProgramDays();
+    //this.refreshProgDetails.emit();
+    this.selectedProgDutyDays = []
+
     // this.progDutyDayEventCallBk(this.programDutyDay);
     // this.userScientificProbChild?.getScientificProblemByUserId();
   }

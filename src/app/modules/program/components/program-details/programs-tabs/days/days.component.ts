@@ -59,6 +59,7 @@ export class DaysComponent implements OnInit {
   ngOnInit(): void {
     // var DayTasksData = this.progDays == null ? [] : this.progDays;
     var DayTasksData = this.progs?.progDays == null ? [] : this.progs.progDays;
+    console.log("DayTasksData",DayTasksData)
 
     this.getDayTasks(DayTasksData[0].id || '');
     this.selectedIndex = 0;

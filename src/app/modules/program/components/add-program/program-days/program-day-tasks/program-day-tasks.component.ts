@@ -18,6 +18,7 @@ import { ConfirmDialogModel, ConfirmModalComponent } from 'src/app/shared/compon
 import { ProgramDayTasksDetailsComponent } from '../program-day-tasks-details/program-day-tasks-details.component';
 import {ProgramDutyDaysComponent} from '../program-duty-days/program-duty-days.component';
 import {ProgramService} from '../../../../../../core/services/program-services/program.service';
+import {ProgramDaysComponent} from '../program-days.component';
 
 @Component({
   selector: 'app-program-day-tasks',
@@ -44,13 +45,16 @@ export class ProgramDayTasksComponent implements OnInit {
 haveMemorize?:boolean=false;
 tasksTypeEnum = ProgramDayTasksDetails;
   @Input() programDetails: IProgramDetails | undefined;
+  @ViewChild(ProgramDutyDaysComponent) progDaysCompChild: ProgramDutyDaysComponent | undefined;
+
 
   constructor(
     public languageService: LanguageService,
     private programDayTasksService: ProgramDayTasksService,
     public translate: TranslateService,
     public dialog: MatDialog,
-    private aletify:AlertifyService, public programService : ProgramService) { }
+    private aletify:AlertifyService,
+    public programService : ProgramService) { }
 
   ngOnInit(): void {
     this.getProgramDutyDays();
@@ -166,11 +170,8 @@ tasksTypeEnum = ProgramDayTasksDetails;
               this.programDayTasksLists = res.data as Array<IProgramDayTasksModel>;
 
               console.log("this.programDetails?.id ===========>", this.programDetails);
-              if(this.programDetails?.progBaseInfo?.id)
-              this.programService.getProgramDaysByProgramId(this.programDetails?.progBaseInfo?.id).subscribe(res =>{
-
-              });
-              console.log("programDayTasksLists ===========>", this.programDayTasksLists);
+                this.progDaysCompChild?.getProgramDays();
+              console.log("this.progDaysCompChild?.getProgramDays()", this.programDayTasksLists);
             }
             else {
               this.resMessage =

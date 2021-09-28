@@ -29,7 +29,7 @@ export class AddProgramDayTasksComponent implements OnInit {
   @Input() haveMemorize?:boolean=false;
   resMessage: BaseMessageModel = {};
   selectedProgramDayTasksList = Array<ICreateProgramDayTasksModel>();
-  ccc:boolean = false;  
+  ccc:boolean = false;
 
   @Output() closeDayTasks = new EventEmitter<boolean>();
   checked:boolean=false;
@@ -122,7 +122,7 @@ export class AddProgramDayTasksComponent implements OnInit {
       }
       await this.addProgDayTaskApiCall();
     }
-    else if(this.selectedProgDutyDays.length > 0 && !this.programDutyDay || 
+    else if(this.selectedProgDutyDays.length > 0 && !this.programDutyDay ||
       (this.selectedProgDutyDays.length > 0 && this.programDutyDay && this.selectedProgDutyDays.includes(this.programDutyDay))) {
         this.selectedProgDutyDays.forEach(async element => {
           this.createProgramDayTasksModel = [];

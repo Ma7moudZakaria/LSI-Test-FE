@@ -9,6 +9,8 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { LanguageService } from 'src/app/core/services/language-services/language.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 import { ProgramDayTasksService } from 'src/app/core/services/program-services/program-day-tasks.service';
+import {IProgramDayTasksModel} from '../../../../../../core/interfaces/programs-interfaces/iprogram-day-tasks-model';
+import {ProgramService} from '../../../../../../core/services/program-services/program.service';
 
 @Pipe({
   name: 'myfilter',
@@ -40,22 +42,34 @@ export class ProgramDutyDaysComponent implements OnInit {
   @Output() progDutyDayEvent = new EventEmitter<IProgramDutyDays>();
   @Output() progDutyDaysCheckBoxEvent = new EventEmitter<IProgramDutyDays>();
   defaultSelectedDay = 0;
+  @Input() programDetails: IProgramDetails | undefined;
+
   constructor(
     public languageService: LanguageService,
     private programDayTasksService: ProgramDayTasksService,
     public translate: TranslateService,
     private fb: FormBuilder,
-    private lookupService: LookupService
+    private lookupService: LookupService,
+    public  programService: ProgramService
   ) { }
 
   ngOnInit(): void {
     this.setCurrentLang();
-
+    //this.getProgramDays()
     if (this.progDaysList) {
       this.onDayClick(this.progDaysList[0]);
     }
   }
 
+  getProgramDays(){
+    if(this.programDetails?.progBaseInfo?.id)
+      this.programService.getProgramDaysByProgramId(this.programDetails?.progBaseInfo?.id).subscribe(res =>{
+        if (res.isSuccess) {
+          this.progDaysList = res.data ;
+          console.log("this.progDaysList",this.progDaysList)
+        }
+      });
+  }
   setCurrentLang() {
     this.emitHeaderTitle();
     this.languageService.currentLanguageEvent.subscribe(res => {
