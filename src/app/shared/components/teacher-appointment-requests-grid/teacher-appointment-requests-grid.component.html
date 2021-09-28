@@ -67,9 +67,12 @@
                                             (acceptTeacherAppointmentRequest)="acceptTeacherAppointmentReq($event)"
                                             [typeEnum]='teacherAppointmentRequestsEnum'
                                             (updateAllItemsChecked)='updateAllItemsChecked()'
+                                            (userIdEvent) = "userId($event)"
+
       ></app-teacher-appointment-request-card>
-    </mat-grid-tile> 
+    </mat-grid-tile>
   </ng-container>
 
 
 </mat-grid-list>
+

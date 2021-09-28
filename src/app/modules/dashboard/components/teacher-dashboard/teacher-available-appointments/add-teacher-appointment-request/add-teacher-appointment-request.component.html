@@ -7,7 +7,7 @@
             {{ 'UPDATE_TEACHER_PG.DAY_AND_TIME' | translate }}
           </label>
 
-          <select [(ngModel)]="availabilityDaysModel.id"
+          <select [(ngModel)]="availabilityDaysModel.idAvailableDay"
           [ngModelOptions]="{standalone: true}" class="UpdateUser__Options" name="nameEn">
             <option [ngValue]="null"  disabled selected>{{ 'UPDATE_TEACHER_PG.SELECT_DAY' | translate }}</option>
 
@@ -25,7 +25,7 @@
           </label>
 
           <div  class="UpdateUser__Options form-group mb-0">
-            <input matInput type="time" class="form-control" placeholder="HH:MM" id="end_time_hour" [(ngModel)]="availabilityDaysModel.fromTime"
+            <input matInput type="time" class="form-control" placeholder="HH:MM" id="end_time_hour" [(ngModel)]="availabilityDaysModel.timeFrom"
             [ngModelOptions]="{standalone: true}">
 
           </div>
@@ -38,8 +38,7 @@
           </label>
           <div  class="UpdateUser__Options form-group mb-0">
 
-            <input matInput type="time" class="form-control" placeholder="HH:MM" id="end_time1_hour" 
-            [(ngModel)]="availabilityDaysModel.toTime"
+            <input matInput type="time" class="form-control" placeholder="HH:MM" id="end_time1_hour" [(ngModel)]="availabilityDaysModel.timeTo"
             [ngModelOptions]="{standalone: true}">
 
           </div>
@@ -63,13 +62,13 @@
         <div class="badges mt-3 ">
                                     <span *ngFor="let availabilityDay of selectedAvailabilityDaysList" class=" col-5 badge badge-info p-2">
                                       <span>
-                                        {{  translate.currentLang === langEnum.en ? availabilityDay?.nameEn : availabilityDay?.nameAr }} <span>&nbsp; </span>
+                                        {{  translate.currentLang === langEnum.en ? availabilityDay?.dayEn : availabilityDay?.dayAr }} <span>&nbsp; </span>
                                       </span>
                                         <span *ngIf="translate.currentLang === langEnum.en">
-                                            From {{ availabilityDay.fromTime }} To {{ availabilityDay.toTime }}
+                                            From {{ availabilityDay.timeFrom }} To {{ availabilityDay.timeTo }}
                                         </span>
                                         <span *ngIf="translate.currentLang === langEnum.ar">
-                                            من {{ availabilityDay.fromTime }} الي {{ availabilityDay.toTime }}
+                                            من {{ availabilityDay.timeFrom }} الي {{ availabilityDay.timeTo }}
                                         </span>
                                         <a (click)="removeItemFromSelectedAvailabilityDays(availabilityDay)"><i class="fas fa-times-circle"></i></a>
                                     </span>

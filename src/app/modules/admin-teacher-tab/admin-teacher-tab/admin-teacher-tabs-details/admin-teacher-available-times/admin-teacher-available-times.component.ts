@@ -6,6 +6,7 @@ import {LanguageService} from '../../../../../core/services/language-services/la
 import {ITeacherAvailableTimes} from '../../../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-available-times';
 import {BaseMessageModel} from '../../../../../core/ng-model/base-message-model';
 import {LanguageEnum} from '../../../../../core/enums/language-enum.enum';
+import {AlertifyService} from '../../../../../core/services/alertify-services/alertify.service';
 
 @Component({
   selector: 'app-admin-teacher-available-times',
@@ -14,13 +15,13 @@ import {LanguageEnum} from '../../../../../core/enums/language-enum.enum';
 })
 export class AdminTeacherAvailableTimesComponent implements OnInit {
   @Input()  teacherIdOutput:ITeacherStudentViewModel | undefined;
-  resMessage: BaseMessageModel = {};
   teacherAvailableTimes: ITeacherAvailableTimes | undefined;
   lang = LanguageEnum;
 
   constructor( public translate: TranslateService ,
                private teacherAppointmentService: TeacherAppointmentService,
-               public languageService: LanguageService) { }
+               public languageService: LanguageService,
+               private alertify:AlertifyService) { }
 
   ngOnInit(): void {
     this.getTeacherAvailableTimesTeacherView();
@@ -29,10 +30,14 @@ export class AdminTeacherAvailableTimesComponent implements OnInit {
   getTeacherAvailableTimesTeacherView() {
     this.teacherAppointmentService.getTeacherAvailableTimesTeacherView(this.teacherIdOutput?.usrId).subscribe(res => {
       if (res.isSuccess) {
+        // this.alertify.success(res.message || '');
         this.teacherAvailableTimes = res.data as ITeacherAvailableTimes;
       }
-
-    });
-  }
-
+      else{
+        // this.alertify.error(res.message || '');
+      }
+    }, error => {
+      // this.alertify.error(error || '');
+    }
+    )};
 }

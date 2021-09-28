@@ -37,6 +37,7 @@
     "NO": "لا",
     "LOGOUT_CONFIRM": "تسحيل الخروج",
     "LOGOUT_MESSAGE": "هل انت متاكد من تسجيل الخروج؟",
+    "CONFIRM_LOGOUT_MESSAGE":"برجاء تسجيل الخروج ثم الدخول مره اخري لاكمال الاشتراك في المنصه",
     "ARABIC_DISPALY_SWITCH": "English",
     "INVALID_PHONE_NUMBER": "رقم الجوال غير صحيح",
     "CONFIRM_PASSWORD_TO_CONTAINER": "الرقم السرى يجب أن يحتوى على الأقل على رقم واحد و حرف واحد كبير و حرف صغير وحرف خاص ",
@@ -156,7 +157,24 @@
     "DEPARTMENT": "القسم ",
     "ENTER_REPLAY": "من فضلك ادخل الرد ",
     "SELECT_DEPATMENT": "من فضلك اختار القسم",
-    "PROGRAM_NAME": "سؤال عام"
+    "PROGRAM_NAME": "سؤال عام",
+    "ADVANCED_SEARCH": "بحث متقدم ",
+    "PROGRAM_NAME_SEARCH": "اسم البرنامج",
+    "QUESTION_OWNER_NAME": "اسم صاحب السؤال",
+    "QUESTION_NUMBER": "رقم السؤال",
+    "FROM": "من",
+    "TO": "الى",
+    "SEARCH": "بحث",
+    "ADD_SCIENTIFIC_PROBLEM": "اضافه اشكال علمى",
+    "THE_PROGRAM": "البرنامج",
+    "TASKS":"المهام",
+    "THE_DAY": "اليوم",
+    "THE_QUESTION": "السؤال",
+    "SEND":"ارسال",
+    "BAND_NAME": "اسم البند",
+    "QUESTION_TYPE": "نوع السؤال",
+    "RELATED_TO_PROGRAM": "مرتبط ببرنامج",
+    "GENERAL":"سؤال عام"
   },
   "PROGRAMS_LIST": {
     "PROGRAMS": "البرامج",
@@ -844,7 +862,8 @@
     "VALIDATIONDATE": "تاريخ البداية يجب ان يكون اقل من تاريخ النهاية ",
     "REQUEST_REASON": "سبب الطلب",
     "NO_DATA": "لا يوجد بيانات",
-    "VIEW_EXAM": "عرض الإختبار"
+    "VIEW_EXAM":"عرض الإختبار",
+    "ExamResult": "نتيجة اختبار القبول"
   },
   "TEACHER_SYSTEM_SUBSCRIPTION": {
     "REQUEST_DATE": "تاريخ الطلب",

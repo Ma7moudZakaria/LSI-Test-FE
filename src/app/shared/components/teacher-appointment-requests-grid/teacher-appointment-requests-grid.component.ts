@@ -6,10 +6,11 @@ import {LanguageEnum} from '../../../core/enums/language-enum.enum';
 import {ITeachersAppointmentRequestsModel} from '../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-appointment-model';
 import {TeacherAppointmentRequestsEnum} from '../../../core/enums/teacher-appointment-requests-enums/teacher-appointment-requests-enum.enum';
 import {ITeacherAppointmentFilterRequestModel} from '../../../core/interfaces/teacher-appointment-requests-interfaces/iteacher-appointment-filter-request-model';
+import {ITeacherStudentViewModel} from '../../../core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 
 @Component({
   selector: 'app-teacher-appointment-requests-grid',
-  templateUrl: './teacher-appointment-requests-grid.component.html', 
+  templateUrl: './teacher-appointment-requests-grid.component.html',
   styleUrls: ['./teacher-appointment-requests-grid.component.scss']
 })
 export class TeacherAppointmentRequestsGridComponent implements OnInit {
@@ -23,12 +24,14 @@ export class TeacherAppointmentRequestsGridComponent implements OnInit {
   @Input() totalCount: number = 0;
   @Input() teacherAppointmentFilterRequestModel: ITeacherAppointmentFilterRequestModel = {skip: 0, take: 9, page: 1};
   @Output() cancelTeacherAppointment = new EventEmitter<ITeachersAppointmentRequestsModel>();
+  @Output() userIdInput = new EventEmitter<ITeacherStudentViewModel>();
 
   orderTypeToggel = 1;
   allSelected: boolean = false;
   teacherAppointmentRequestTabTypeSelected = TeacherAppointmentRequestsEnum;
   currentUser: IUser | undefined;
   userRole: any;
+
 
   constructor(public translate: TranslateService,
               private exportationService: ExportationService) {
@@ -124,5 +127,9 @@ export class TeacherAppointmentRequestsGridComponent implements OnInit {
 
   updateAllItemsChecked() {
     this.allSelected = this.teacherAppointmentRequestsItems != null && this.teacherAppointmentRequestsItems.every(t => t.checked);
+  }
+
+  userId(event: ITeacherStudentViewModel) {
+    this.userIdInput.emit(event);
   }
 }

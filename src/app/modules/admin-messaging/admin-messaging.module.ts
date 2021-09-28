@@ -55,6 +55,7 @@ import { TeacherAppointmentAdvancedSearchComponent } from './components/teacher-
 import { TeacherAppointmentRejectComponent } from './components/teacher-program-request-view/teacher-request-details/chang-time-request/teacher-appointment-reject/teacher-appointment-reject.component';
 import { AppointmentRequestsTabComponent } from './components/teacher-program-request-view/teacher-request-details/chang-time-request/appointment-requests-tab/appointment-requests-tab.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { ScientificProblemAdvancedSearchComponent } from './components/scientific-problems-view/scientific-problem-advanced-search/scientific-problem-advanced-search.component';
 
 // @NgModule({
 //   declarations: [AdminMessagingViewComponent, ScientificProblemsComponent, AddScientifiProblemReplyComponent,
@@ -63,18 +64,18 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 //     StuListRequestComponent, StuRequestDetailsComponent, StuJoinRequestComponent, StuQuitRequestComponent,
 //     StuTabRequestComponent, AdvancedSearchComponent],
 
- 
+
 @NgModule({
   declarations: [AdminMessagingViewComponent, ScientificProblemsComponent, AddScientifiProblemReplyComponent, AddScientifiProblemToQuestionBankComponent,
     ScientificProblemsViewComponent, TeacherProgramRequestViewComponent, StudentProgramRequestViewComponent, StuListRequestComponent,
-    StuJoinRequestComponent, 
+    StuJoinRequestComponent,
     StuTabRequestComponent, AdvancedSearchComponent,TeacherAdvancedSearchComponent, TeacherListRequestComponent,StuRequestDetailsComponent,
     TeacherRequestDetailsComponent, TeacherJoinRequestComponent, TeacherJoinRequestProgramComponent,TeacherAdminDropOutRequestComponent ,
     ChangTimeRequestComponent, TeacherJionProgramTabRequestComponent, StuVacationsRequestComponent, StuMovingRequestComponent
         , TeacherJionTabRequestComponent, StuRejectedComponent, TeacheRejectedComponent, AdvancedSearchTeacherComponent, TeacherSystemSubscriptionRejectedComponent, StudentVacationRequestTabComponent, StudentProgramVacationRejectComponent, StudentProgramVacationAdvancedSearchComponent
         , TeacherDropOutTabRequestComponent, TeacherDropOutRequestRejectedComponent, StudentAdminDropOutRequestComponent, StudentDropOutTabRequestComponent,
         StudentDropOutRequestRejectedComponent, StudentAdvancedSearchComponent, ChatViewComponent, GroupViewComponent, ChatDetailsComponent, GroupDetailsComponent, AddGroupComponent,
-        TeacherAppointmentAdvancedSearchComponent, TeacherAppointmentRejectComponent, AppointmentRequestsTabComponent],
+        TeacherAppointmentAdvancedSearchComponent, TeacherAppointmentRejectComponent, AppointmentRequestsTabComponent, ScientificProblemAdvancedSearchComponent],
 
         providers: [DatePipe],
   imports: [

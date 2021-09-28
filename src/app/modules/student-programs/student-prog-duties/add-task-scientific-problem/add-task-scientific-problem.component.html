@@ -1,0 +1,72 @@
+<div class="form-group DataForm mt-5 pl-3 pr-3">
+  <h3 class=" head  bold">{{'SCIENTIFIC_PROBLEM.ADD_SCIENTIFIC_PROBLEM' | translate}} </h3>
+
+  <div class="form-group">
+    <label  class="label" for="category">{{'SCIENTIFIC_PROBLEM.THE_PROGRAM' | translate}} </label>
+    <div class="d-flex">
+      <div class="input-group">
+        <div class="col-12 mt-2 mb-2">
+          <input   type="email" class="form-control UserRegister__FormControl"  disabled
+                   placeholder="{{translate.currentLang === langEnum.en ? programBatch?.enProgBatchName:programBatch?.arProgBatchName}}">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label  class="label" for="category">{{'SCIENTIFIC_PROBLEM.THE_DAY' | translate}} </label>
+    <div class="d-flex">
+      <div class="input-group">
+        <div class="col-12 mt-2 mb-2">
+          <input   type="email" class="form-control UserRegister__FormControl"  disabled
+                   placeholder="{{ 'PROGRAM_DAY_TASKS.DAY' | translate }}-{{dutyDayFromParent.dayNum}} ">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label  class="label" for="category">{{'SCIENTIFIC_PROBLEM.TASKS' | translate}} </label>
+    <div class="d-flex">
+      <div class="input-group">
+        <div class="col-12 mt-2 mb-2">
+          <input   type="email" class="form-control UserRegister__FormControl"  disabled
+                   placeholder="{{translate.currentLang === langEnum.en ? dayTaskFromParent?.dayTaskNameEn:dayTaskFromParent?.dayTaskNameAr}}">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label  class="label" for="category">{{'SCIENTIFIC_PROBLEM.THE_QUESTION' | translate}} </label>
+    <div class="d-flex">
+      <div class="input-group">
+            <textarea class="form-control" cols="2" rows="5"  [(ngModel)]="question"
+                      id="question" name="questionText"  required #questionText="ngModel"
+                      [ngModelOptions]="{standalone: true}"
+            ></textarea>
+      </div>
+    </div>
+    <div *ngIf="questionText.invalid && (questionText.dirty || questionText.touched || isSubmit)"
+         class="alert">
+
+      <div  class="alert alert-danger mt-2 mb-2" *ngIf="questionText.errors?.required">{{ 'SCIENTIFIC_MATERIAL.REQUIRED' | translate }}</div>
+    </div>
+  </div>
+
+  <section class="mt-5">
+    <div  class="row direction-rtl buttons-center mt-5">
+      <button   type="submit" class="save-btn" (click)="addScientificProblem()">
+        {{'SCIENTIFIC_PROBLEM.SEND' | translate}}
+      </button>
+      <button  (click)="closeScientificProblemOverLay()"  type="reset" class="cancel-btn">
+        {{ "GENERAL.CANCEL" | translate }}
+      </button>
+    </div>
+  </section>
+
+
+
+
+
+</div>

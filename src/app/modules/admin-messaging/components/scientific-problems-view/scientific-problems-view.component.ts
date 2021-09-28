@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { IScientificProblemGridItems } from 'src/app/core/interfaces/scientific-problrm/iscientific-problem-grid-items';
-import { ScientificProblemsComponent } from './scientific-problems/scientific-problems.component';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {IScientificProblemGridItems} from 'src/app/core/interfaces/scientific-problrm/iscientific-problem-grid-items';
+import {ScientificProblemsComponent} from './scientific-problems/scientific-problems.component';
+import {IScientificProblemFilter} from '../../../../core/interfaces/scientific-problrm/iscientific-problem-filter';
 
 @Component({
   selector: 'app-scientific-problems-view',
@@ -9,12 +10,14 @@ import { ScientificProblemsComponent } from './scientific-problems/scientific-pr
 })
 export class ScientificProblemsViewComponent implements OnInit {
   @ViewChild(ScientificProblemsComponent) scientificProblmChild:ScientificProblemsComponent | undefined;
-  
+
   showAddReplyOverlay = false;
   showAddScProbToQuestionBankOverlay = false;
   scProbObjForAddReplyView : IScientificProblemGridItems = {}
   scProbObjForAddToQuestionBankView : IScientificProblemGridItems = {}
-  
+  openAdvancedSearch: boolean = false
+  filter: IScientificProblemFilter = {skip : 0, take : 12, sorField : '', ordType: 1, page : 1};
+
   constructor() { }
 
   ngOnInit(): void {
@@ -38,5 +41,18 @@ export class ScientificProblemsViewComponent implements OnInit {
     this.showAddReplyOverlay = false;
     this.showAddScProbToQuestionBankOverlay = false;
     this.scientificProblmChild?.getScientificProblems();
+  }
+
+  closeAdvancedSearch(event: IScientificProblemFilter) {
+    this.openAdvancedSearch = false;
+    this.filter = event
+    this.scientificProblmChild?.getScientificProblems();
+  }
+
+
+  openAdvancedSearchPopup(event: IScientificProblemFilter) {
+    this.openAdvancedSearch = true;
+    this.filter = event
+
   }
 }

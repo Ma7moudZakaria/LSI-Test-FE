@@ -54,7 +54,7 @@ export class ProgramDayTaskReadExplanationComponent implements OnInit {
     this.modalService.open(content, { size: 'lg' });
   }
 
-  listExt = ["jpg", "png", "jpeg", "gif", "bmp", "tif", "tiff", "pdf"]
+  listExt = ["jpg", "png", "jpeg", "gif", "bmp", "tif", "tiff"]
 
   onFileChange(files: FileList) {
     if (files.length > 0) {
