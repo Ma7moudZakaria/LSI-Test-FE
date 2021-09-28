@@ -1,5 +1,7 @@
 @import "../stu-card-request/stu-card-request.component.scss";
 @import "../../../../assets/scss/variables";
+@import '../../../../assets/scss/status';
+
 .program{
 
   &__edit{
@@ -56,27 +58,4 @@
 
 .negative {
   background-color: gray;
-}
-
-
-.status{
-  width: 20px;
-  height: 20px;
-
-  border-radius: 50%;
-}
-
-.rejected{
-  color: red;
-  background: red;
-}
-
-.pending{
-  color: #EFDD39;
-  background: #EFDD39;
-}
-
-.accept{
-  color: #39B91A;
-  background: #39B91A;
 }
