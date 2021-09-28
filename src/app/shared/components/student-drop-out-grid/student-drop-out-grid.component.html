@@ -48,7 +48,7 @@
 
           <a class=" ml-2 mr-2" [class.disabled]='!enableStudentAdminSelectOperations()' *ngIf='studentTabTypeSelected.Pending === typeEnum'
           [ngClass]="{'dimmed': typeDropOutRequestEnum === studentTabTypeSelected.Accept ||  typeDropOutRequestEnum === studentTabTypeSelected.Rejected}">
-              <i (click)='updateAllItemsChecked()' class="fa fa-check fa-lg "></i>
+              <i (click)='acceptAllStudentAdminDropOutRequestCheckedEvent()' class="fa fa-check fa-lg "></i>
           </a>
           <a class=" ml-1 mr-1" [class.disabled]='!enableStudentAdminSelectOperations()'>
               <img  class="exportIcon" (click)='exportStudentAdminCSV()' 
