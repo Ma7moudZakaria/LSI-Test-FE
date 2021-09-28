@@ -46,6 +46,7 @@ haveMemorize?:boolean=false;
 tasksTypeEnum = ProgramDayTasksDetails;
   @Input() programDetails: IProgramDetails | undefined;
   @ViewChild(ProgramDutyDaysComponent) progDaysCompChild: ProgramDutyDaysComponent | undefined;
+  @Output() refreshProgramDays = new EventEmitter<boolean>();
 
 
   constructor(
@@ -168,10 +169,7 @@ tasksTypeEnum = ProgramDayTasksDetails;
           this.programDayTasksService.DeleteProgramDayTasks(id || '').subscribe(res => {
             if (res.isSuccess) {
               this.programDayTasksLists = res.data as Array<IProgramDayTasksModel>;
-
-              console.log("this.programDetails?.id ===========>", this.programDetails);
-                this.progDaysCompChild?.getProgramDays();
-              console.log("this.progDaysCompChild?.getProgramDays()", this.programDayTasksLists);
+              this.refreshProgramDays.emit(true);
             }
             else {
               this.resMessage =

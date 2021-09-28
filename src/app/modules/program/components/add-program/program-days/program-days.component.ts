@@ -84,6 +84,9 @@ export class ProgramDaysComponent implements OnInit {
     // this.progDutyDayEventCallBk(this.programDutyDay);
     // this.userScientificProbChild?.getScientificProblemByUserId();
   }
+  refreshProgramDays(event: boolean) {
+    this.progDayChild?.getProgramDays();
+  }
   openAddDayTasksForm($event:boolean) {
     this.haveMemorize=$event;
     this.showAddDayTasksForm = true;
