@@ -35,8 +35,10 @@ export class StudentProgDutiesComponent implements OnInit {
     this.taskDetails=item;
   }
 
-  loadTask(){
-    this.progDayTaskChild?.onTaskChange();
+  loadTask($event:boolean){
+    if($event==true)
+   { this.progDayTaskChild?.onTaskChange();}
+   else{this.progDayTaskChild?.getProgramDutyDays() }
   }
 
   loadDay(){

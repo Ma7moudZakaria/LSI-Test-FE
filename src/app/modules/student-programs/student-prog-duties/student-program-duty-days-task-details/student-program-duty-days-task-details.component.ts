@@ -31,7 +31,7 @@ import { StudentProgDutiesServiceService } from 'src/app/core/services/student-p
   styleUrls: ['./student-program-duty-days-task-details.component.scss']
 })
 export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
-  @Output() taskIsSaveEvent = new EventEmitter<IProgramDayTaskTasmea>();
+  @Output() taskIsSaveEvent = new EventEmitter<boolean>();
   @Output() teacherCallPhonEvent = new EventEmitter<IProgramDayTaskTasmea>();
   @Input() taskDetails: IProgramDayTasksModel | undefined;
   detailsTypeEnum = ProgramDayTasksDetails;
