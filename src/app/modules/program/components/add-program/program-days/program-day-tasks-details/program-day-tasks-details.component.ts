@@ -20,6 +20,7 @@ import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { BaseResponseModel } from 'src/app/core/ng-model/base-response-model';
 import { ProgramDayTasksService } from 'src/app/core/services/program-services/program-day-tasks.service';
 import { ProgramDayTaskRecitationType } from 'src/app/core/enums/program-day-task-recitation-type.enum';
+import {IProgramDayTaskExplanation} from '../../../../../../core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-explanation';
 
 @Component({
   selector: 'app-program-day-tasks-details',
@@ -39,6 +40,7 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
   repetitionDetailsModel: IProgramDayTaskRepetition = {};
   reviewDetailsModel: IProgramDayTaskReview = {};
   videoDetailsModel: IProgramDayTaskVideo = {};
+  explanationDetailsModel: IProgramDayTaskExplanation = {};
   testPhasedDetailsModel:IExam = { questions: [] };
   dailyTestDetailsModel: IExam = { questions: [] };
   recitationStudentsModel :IProgramBasicInfoDetails = {};
@@ -66,12 +68,12 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
 
   save() {
     switch (this.taskDetails?.huffazTask) {
-      case this.detailsTypeEnum.taskHearing:        
+      case this.detailsTypeEnum.taskHearing:
           if ( ( this.hearingTaskDetailsModel.degree ? this.hearingTaskDetailsModel.degree : 0 ) > 100) {
           this.resultMessage = {
             message: this.translate.instant('GENERAL.DEGREE_MAX_LENGTH'),
             type: BaseConstantModel.DANGER_TYPE
-          }        
+          }
           return;
         }
         this.taskDetails.detailsTask = JSON.stringify(this.hearingTaskDetailsModel);
@@ -81,40 +83,40 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
           this.resultMessage = {
             message: this.translate.instant('GENERAL.DEGREE_MAX_LENGTH'),
             type: BaseConstantModel.DANGER_TYPE
-          }          
+          }
           return;
         }
         this.taskDetails.detailsTask = JSON.stringify(this.readExplanationDetailsModel);
         break;
         case this.detailsTypeEnum.TaskMemorize:
           if ((this.memorizeDetailsModel.degree ? this.memorizeDetailsModel.degree : 0 )  > 100) {
-            
+
               this.resultMessage = {
                 message: this.translate.instant('GENERAL.DEGREE_MAX_LENGTH'),
                 type: BaseConstantModel.DANGER_TYPE
-              }          
+              }
               return;
             }
           this.taskDetails.detailsTask = JSON.stringify(this.memorizeDetailsModel);
           break;
           case this.detailsTypeEnum.TaskRepetition:
             if ( (this.repetitionDetailsModel.degree ? this.repetitionDetailsModel.degree : 0 ) > 100) {
-         
+
                 this.resultMessage = {
                   message: this.translate.instant('GENERAL.DEGREE_MAX_LENGTH'),
                   type: BaseConstantModel.DANGER_TYPE
-                }          
+                }
                 return;
               }
             this.taskDetails.detailsTask = JSON.stringify(this.repetitionDetailsModel);
             break;
            case this.detailsTypeEnum.TaskLinking:
             if ((this.linkingDetailsModel.degree ? this.linkingDetailsModel.degree : 0 ) > 100) {
-              
+
             this.resultMessage = {
               message: this.translate.instant('GENERAL.DEGREE_MAX_LENGTH'),
               type: BaseConstantModel.DANGER_TYPE
-            }          
+            }
             return;
           }
             this.taskDetails.detailsTask = JSON.stringify(this.linkingDetailsModel);
@@ -125,12 +127,15 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
               case this.detailsTypeEnum.TaskVideo:
                 this.taskDetails.detailsTask = JSON.stringify(this.videoDetailsModel);
                 break;
+              case this.detailsTypeEnum.TaskExplaination:
+                this.taskDetails.detailsTask = JSON.stringify(this.explanationDetailsModel);
+                break;
                 case this.detailsTypeEnum.TaskReview:
                   if ((this.reviewDetailsModel.degree ? this.reviewDetailsModel.degree : 0 ) > 100) {
                   this.resultMessage = {
                     message: this.translate.instant('GENERAL.DEGREE_MAX_LENGTH'),
                     type: BaseConstantModel.DANGER_TYPE
-                  }          
+                  }
                   return;
                 }
                 this.taskDetails.detailsTask = JSON.stringify(this.reviewDetailsModel);
@@ -155,31 +160,31 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
         break;
     }
 
-    // if ( this.hearingTaskDetailsModel != null || 
+    // if ( this.hearingTaskDetailsModel != null ||
     // this.linkingDetailsModel != null ||
-    //   this.memorizeDetailsModel != null || 
-    //   this.readExplanationDetailsModel != null || 
-    //   this.repetitionDetailsModel != null || 
+    //   this.memorizeDetailsModel != null ||
+    //   this.readExplanationDetailsModel != null ||
+    //   this.repetitionDetailsModel != null ||
     //   this.reviewDetailsModel != null) {
 
-    //     if ( ( this.hearingTaskDetailsModel.degree ? this.hearingTaskDetailsModel.degree : 0 ) > 100 || 
+    //     if ( ( this.hearingTaskDetailsModel.degree ? this.hearingTaskDetailsModel.degree : 0 ) > 100 ||
     //   (this.linkingDetailsModel.degree ? this.linkingDetailsModel.degree : 0 ) > 100 ||
-    //   (this.memorizeDetailsModel.degree ? this.memorizeDetailsModel.degree : 0 ) > 100 || 
-    //   (this.readExplanationDetailsModel.degree ? this.readExplanationDetailsModel.degree : 0 ) > 100 || 
-    //   (this.repetitionDetailsModel.degree ? this.repetitionDetailsModel.degree : 0 ) > 100 || 
+    //   (this.memorizeDetailsModel.degree ? this.memorizeDetailsModel.degree : 0 ) > 100 ||
+    //   (this.readExplanationDetailsModel.degree ? this.readExplanationDetailsModel.degree : 0 ) > 100 ||
+    //   (this.repetitionDetailsModel.degree ? this.repetitionDetailsModel.degree : 0 ) > 100 ||
     //   (this.reviewDetailsModel.degree ? this.reviewDetailsModel.degree : 0 ) > 100 ) {
     //   this.resultMessage = {
     //     message: this.translate.instant('GENERAL.DEGREE_MAX_LENGTH'),
     //     type: BaseConstantModel.DANGER_TYPE
-    //   }        
+    //   }
     // }
-        
+
     // }
             this.resultMessage = {};
 
             this.programDayTaskDetails.programDayTask = this.taskDetails?.id
             this.programDayTaskDetails.detailsTask = this.taskDetails?.detailsTask
-        
+
             this.programDayTasksService.SaveProgramDayTaskDetails(this.programDayTaskDetails).subscribe(res => {
           let response = <BaseResponseModel>res;
           if (response.isSuccess) {
@@ -187,7 +192,7 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
               message: res.message || "",
               type: BaseConstantModel.SUCCESS_TYPE
             }
-          
+
           }
           else {
             this.resultMessage = {
@@ -203,9 +208,9 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
             }
           }
         )
-    
 
-   
+
+
   }
   getprogramDayTaskDetails(){
     switch (this.taskDetails?.huffazTask) {

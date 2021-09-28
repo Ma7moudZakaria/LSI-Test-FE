@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {BaseMessageModel} from '../../../../../core/ng-model/base-message-model';
 import {BaseSelectedDateModel} from '../../../../../core/ng-model/base-selected-date-model';
 import {StudentProgramSubscriptionServicesService} from '../../../../../core/services/student-program-subscription-services/student-program-subscription-services.service';
@@ -44,6 +44,7 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
   langEnum=LanguageEnum
   isSubmit = false;
   disabledButton: boolean  = false;
+  @Input() selectedProgramBatchFromParent: IStudentPrograms | undefined ;
 
 
   constructor(
@@ -57,6 +58,7 @@ export class AddStudentProgramVacationRequestComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
     this.addStudentVacationRequestModel.userId = this.currentUser.id;
+    this.addStudentVacationRequestModel.batchId = this.selectedProgramBatchFromParent?.batId;
     this.programFilter.usrId = this.currentUser.id;
     this.maxGregDate = this.dateFormatterService.GetTodayGregorian();
 

@@ -12,4 +12,5 @@ export enum ProgramDayTasksDetails {
     TaskRecitationStudents = 8,
     TaskTasmea = 14,
     TaskTestPhased = 15,
+    TaskExplaination = 2
 }

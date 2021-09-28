@@ -761,7 +761,7 @@
     "PAGES": "الصفحات",
     "VALIDATION_AUDIO": "mp3 ، بحد أقصى 5 ميجا",
     "VALIDATION_VIDEO": "mp4فديو ، بحد أقصى 5 ميجا",
-    "VALIDATION_IMG_PDF": "pdf ، png & jpg ، بحد أقصى3 ميجا",
+    "VALIDATION_IMG_PDF": " png , jpg ، بحد أقصى3 ميجا",
     "VALIDATION_VALUE": " لا يمكن أن تكون القيمة أقل من 1 وأكثر من 30"
   },
   "FEELINGS": {

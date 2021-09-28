@@ -5,9 +5,11 @@ import { IProgramDetails, IProgramDutyDays } from 'src/app/core/interfaces/progr
 import { AddProgramDayTasksComponent } from './add-program-day-tasks/add-program-day-tasks.component';
 import { ProgramDayTasksDetailsComponent } from './program-day-tasks-details/program-day-tasks-details.component';
 import { ProgramDayTasksComponent } from './program-day-tasks/program-day-tasks.component';
+import {ProgramDutyDaysComponent} from './program-duty-days/program-duty-days.component';
+import {ProgramService} from '../../../../../core/services/program-services/program.service';
 
 @Component({
-  selector: 'app-program-days', 
+  selector: 'app-program-days',
   templateUrl: './program-days.component.html',
   styleUrls: ['./program-days.component.scss']
 })
@@ -18,6 +20,7 @@ export class ProgramDaysComponent implements OnInit {
   @ViewChild(ProgramDayTasksComponent) progDayTaskChild: ProgramDayTasksComponent | undefined;
   @ViewChild(ProgramDayTasksDetailsComponent) progDayTaskDetailsChild: ProgramDayTasksDetailsComponent | undefined;
   // @ViewChild(AddProgramDayTasksComponent) addProgDayTaskCompChild:AddProgramDayTasksComponent | undefined;
+  @ViewChild(ProgramDutyDaysComponent) progDayChild: ProgramDutyDaysComponent | undefined;
 
   @Input() progDetails: IProgramDetails = {};
 
@@ -31,21 +34,20 @@ export class ProgramDaysComponent implements OnInit {
   progDutyDayModel: IProgramDutyDays | undefined;
   selectedProgDutyDays:IProgramDutyDays[] = [];
   haveMemorize?:boolean=false;
-  constructor() { }
+  constructor(public  programService: ProgramService) { }
 
   ngOnInit(): void {
-    console.log(this.progDetails);
+    console.log("this.progDetails",this.progDetails);
     // this.DetailsOfProgram = this.getProgramDetails || this.DetailsOfProgram;
-
   }
-  
+
 
   progDutyDayEventCallBk(event?: IProgramDutyDays) {
     if (this.progDayTaskChild && event){
       this.progDayTaskChild.programDutyDay = event;
       this.progDayTaskChild?.getProgramDutyDays();
-    } 
-    this.programDutyDay = event; 
+    }
+    this.programDutyDay = event;
     //this.selectedProgDutyDays = [];
   }
 
@@ -74,10 +76,16 @@ export class ProgramDaysComponent implements OnInit {
   closeDayTasks(event: boolean) {
     this.showAddDayTasksForm = event;
     this.showAddDayTasksForm = false;
-    this.refreshProgDetails.emit();
-    this.selectedProgDutyDays = [];
+
+    this.progDayChild?.getProgramDays();
+    //this.refreshProgDetails.emit();
+    this.selectedProgDutyDays = []
+
     // this.progDutyDayEventCallBk(this.programDutyDay);
     // this.userScientificProbChild?.getScientificProblemByUserId();
+  }
+  refreshProgramDays(event: boolean) {
+    this.progDayChild?.getProgramDays();
   }
   openAddDayTasksForm($event:boolean) {
     this.haveMemorize=$event;

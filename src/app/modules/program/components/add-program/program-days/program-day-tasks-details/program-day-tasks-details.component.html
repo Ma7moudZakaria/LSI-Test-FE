@@ -13,14 +13,15 @@
     <app-program-day-task-daily-test *ngIf="detailsTypeEnum.TaskDailyTest===taskDetails?.huffazTask" [dailyTestDetailsModel]="dailyTestDetailsModel"></app-program-day-task-daily-test>
     <app-program-day-task-encouragement-letter *ngIf="detailsTypeEnum.TaskEncouragementLetter===taskDetails?.huffazTask" [encouragementLetterDetailsModel]="encouragementLetterDetailsModel"></app-program-day-task-encouragement-letter>
     <app-program-day-task-video *ngIf="detailsTypeEnum.TaskVideo===taskDetails?.huffazTask" [videoDetailsModel]="videoDetailsModel"></app-program-day-task-video>
-    <app-program-day-task-review *ngIf="detailsTypeEnum.TaskReview===taskDetails?.huffazTask" [reviewDetailsModel]="reviewDetailsModel"></app-program-day-task-review>
+  <app-program-day-task-explanation *ngIf="detailsTypeEnum.TaskExplaination===taskDetails?.huffazTask" [explanationDetailsModel]="explanationDetailsModel"></app-program-day-task-explanation>
+  <app-program-day-task-review *ngIf="detailsTypeEnum.TaskReview===taskDetails?.huffazTask" [reviewDetailsModel]="reviewDetailsModel"></app-program-day-task-review>
     <app-program-day-task-recitation *ngIf="detailsTypeEnum.TaskRecitation===taskDetails?.huffazTask" [recitationDetailsModel]="recitationDetailsModel"></app-program-day-task-recitation>
     <app-program-day-task-recitation-students *ngIf="detailsTypeEnum.TaskRecitationStudents===taskDetails?.huffazTask" [recitationStudentsModel]="recitationStudentsModel"></app-program-day-task-recitation-students>
-    <app-program-day-task-tasmea *ngIf="detailsTypeEnum.TaskTasmea===taskDetails?.huffazTask" [tasmeaModel]="tasmeaModel"></app-program-day-task-tasmea> 
+    <app-program-day-task-tasmea *ngIf="detailsTypeEnum.TaskTasmea===taskDetails?.huffazTask" [tasmeaModel]="tasmeaModel"></app-program-day-task-tasmea>
      <app-program-day-task-test-phased *ngIf="detailsTypeEnum.TaskTestPhased===taskDetails?.huffazTask" [testPhasedDetailsModel]="testPhasedDetailsModel"></app-program-day-task-test-phased>
      <section *ngIf="detailsTypeEnum.TaskRecitation!=taskDetails?.huffazTask && detailsTypeEnum.TaskRecitationStudents!=taskDetails?.huffazTask && detailsTypeEnum.TaskTasmea!=taskDetails?.huffazTask">
         <div  class="row direction-rtl buttons-center justify-content-end">
-            <button   type="submit" class="save-btn" (click)="save()" > 
+            <button   type="submit" class="save-btn" (click)="save()" >
                 {{ "GENERAL.SAVE" | translate }}
             </button>
         </div>
