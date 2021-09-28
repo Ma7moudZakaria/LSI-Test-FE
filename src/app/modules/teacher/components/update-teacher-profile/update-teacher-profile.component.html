@@ -292,7 +292,21 @@
                                     {{ 'UPDATE_TEACHER_PG.INFO_CONTACT' | translate }}
                                 </p>
                             </div>
-                            <div class="col-lg-4  col-md-6 col-sm-2 col-xs-2 mt-3" [ngClass]="{'disableDiv': teacherProfileDetails?.profileId}">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <div class="col-lg-4  col-md-6 col-sm-2 col-xs-2 mt-3" [ngClass]="{'dimmed': teacherProfileDetails?.profileId}">
                                 <label class="Register__Label" for="hijriInterviewDay">
                                     {{ 'UPDATE_TEACHER_PG.DAY' | translate }}
                                 </label>
@@ -326,8 +340,8 @@
                                     {{ 'UPDATE_TEACHER_PG.FROM' | translate }}
                                 </label>
 
-                                <div  class="UpdateUser__Options form-group mb-0" [ngClass]="{'disableDiv': teacherProfileDetails?.profileId}">
-                                    <input [ngClass]="{'dimmed': teacherProfileDetails?.profileId} " matInput type="time"   class="form-control"  placeholder="HH:MM" id="end_time_hour"
+                                <div  class="UpdateUser__Options form-group mb-0" [ngClass]="{'dimmed': teacherProfileDetails?.profileId}">
+                                    <input [ngClass]="{'dimmed': teacherProfileDetails?.profileId}" matInput type="time"   class="form-control"  placeholder="HH:MM" id="end_time_hour"
                                      formControlName="interviewTime">
                                     <!-- <mat-select name="ampm" class="ampm" [(ngModel)]="event.eampm" [ngModelOptions]="{standalone: true}">
                                          <mat-option value="AM">AM</mat-option>
@@ -930,8 +944,8 @@
                                         {{ 'UPDATE_TEACHER_PG.FROM' | translate }}
                                     </label>
 
-                                    <div  class="UpdateUser__Options form-group mb-0" >
-                                        <input matInput type="time" class="form-control "  [ngClass]="{'dimmed': teacherProfileDetails?.profileId} " placeholder="HH:MM" id="end_time_hour" formControlName="fromDayTimeinterview">
+                                    <div  class="UpdateUser__Options form-group mb-0" [ngClass]="{'dimmed': teacherProfileDetails?.profileId} " >
+                                        <input matInput type="time" class="form-control "  [ngClass]="{'dimmed': teacherProfileDetails?.profileId}" placeholder="HH:MM" id="end_time_hour" formControlName="fromDayTimeinterview">
                                         <!-- <mat-select name="ampm" class="ampm" [(ngModel)]="event.eampm" [ngModelOptions]="{standalone: true}">
                                              <mat-option value="AM">AM</mat-option>
                                              <mat-option value="PM">PM</mat-option>
@@ -950,7 +964,7 @@
                                         {{ 'UPDATE_TEACHER_PG.TO' | translate }}
                                     </label>
 
-                                    <div  class="UpdateUser__Options form-group mb-0"  >
+                                    <div  class="UpdateUser__Options form-group mb-0" [ngClass]="{'dimmed': teacherProfileDetails?.profileId} " >
                                         <input matInput type="time" class="form-control " placeholder="HH:MM" id="end_time_hour" formControlName="toDayTimeinterview" [ngClass]="{'dimmed': teacherProfileDetails?.profileId} ">
                                         <!-- <mat-select name="ampm" class="ampm" [(ngModel)]="event.eampm" [ngModelOptions]="{standalone: true}">
                                              <mat-option value="AM">AM</mat-option>
