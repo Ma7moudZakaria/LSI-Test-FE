@@ -21,7 +21,7 @@
             <div class="col-12">
                 <button   class="card_stu_program__Day_tasks "
                [ngClass]="{'dimmed': program.isProgStarted==false}"
-                (click)="goToHomeWore(program?.batId)">
+                (click)="goToHomeWore(program?.batId, program?.id)">
                 <img src="../../../../../assets/images/student-program/book.svg" class="card_stu_program__bookIcon">
 
                 {{ 'STUDENT_DAY_TASKS.DAILY_HOMEWORK' | translate }}
