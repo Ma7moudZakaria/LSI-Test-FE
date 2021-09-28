@@ -101,7 +101,8 @@
            title="{{ translate.currentLang == langEnum.en ? student.studNameEn && checkNameSpace(student.studNameEn) ? student.studNameEn : student.studNameAr : 
             student.studNameAr && checkNameSpace(student.studNameAr)? student.studNameAr : student.studNameEn}}"
            >
-            {{ translate.currentLang == langEnum.en ? student.studNameEn && checkNameSpace(student.studNameEn) ? student.studNameEn : student.studNameAr : 
+            {{ translate.currentLang == langEnum.en ?
+               student.studNameEn && checkNameSpace(student.studNameEn) ? student.studNameEn : student.studNameAr : 
               student.studNameAr && checkNameSpace(student.studNameAr)? student.studNameAr : student.studNameEn }}
            </p>
    

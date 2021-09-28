@@ -22,7 +22,7 @@
             <div class="form-group">
                 <label for="programs" class="label"> اخترالدفعة</label>
                 <div class="input-group">
-                    <div class="input-group pr-2rem">
+                    <div class="input-group">
                      
                             <select class="form-control"  [(ngModel)]="addModel.batId"
                              (change)="onChange($event.target)">
@@ -33,21 +33,20 @@
                                 </ng-container>
                               </select>
                     </div>
-                    <span class="plus-btn position-absolute">
-                        <!-- (click)="addParticipant()" -->
-                        <button class="btn  btn-light btn-add" type="button" >
+                    <!-- <span class="plus-btn position-absolute">
+                        <button class="btn  btn-light btn-add" type="button"  (click)="addParticipant()" >
                             <img  src="assets/images/add.svg"   class=" cursor-pointer Catogry_Icon_Add" >
                         </button>
-                    </span>
+                    </span> -->
 
-                <div class="listStudent my-2" *ngIf="listStudents.length > 0">
+                <!-- <div class="listStudent my-2" *ngIf="listStudents.length > 0">
                         <p *ngFor="let student of listStudents" class="avater_container p-2 my-2">
                             <img  src="{{student.avr}}" class="avater">
                             <span>{{translate.currentLang == langEnum.en ? student.studNameEn : student.studNameAr}}</span>
                          <img src="assets/images/feelings/close.svg" (click)="removeStuFromList(student)">
                         </p>
                     </div>
-                </div>
+                </div> -->
             
         
                 <!-- <div class="badges mt-3 ">
@@ -75,12 +74,16 @@
           </div>
 
 
-          <mat-list >
-              <mat-list-item *ngFor="let SelectedUser of listSelectedUser">
+          <mat-list>
+              <mat-list-item *ngFor="let SelectedUser of listSelectedStudent">
                   <img mat-list-icon *ngIf='!SelectedUser?.usrAvatarUrl' src="assets/images/Profile.svg" alt=""/>
                   <img mat-list-icon *ngIf='SelectedUser?.usrAvatarUrl' [src]="SelectedUser?.usrAvatarUrl" alt="" />
-                  <div mat-line>{{ translate.currentLang === langEnum.en
-                      ? SelectedUser.enUsrName : SelectedUser.arUsrName}}</div>
+                  <div mat-line>
+                      {{ translate.currentLang == langEnum.en ?
+                        SelectedUser.enUsrName && checkNameSpace(SelectedUser.enUsrName) ? SelectedUser.enUsrName : SelectedUser.arUsrName : 
+                        SelectedUser.arUsrName && checkNameSpace(SelectedUser.arUsrName)? SelectedUser.arUsrName : SelectedUser.enUsrName }}
+                    
+                    </div>
                   <div mat-line> {{SelectedUser.createdOn | date}} </div>
                  <span class="mat-delete" (click)="delete(SelectedUser)"><i class="fas fa-trash-alt"></i></span>
                   <mat-divider></mat-divider>
@@ -92,13 +95,9 @@
           {{resultMessage.message}}
       </div>
       <div class="row">
-          <div class="col-md-6" *ngIf="dataEdit.id!=''">
-              <button (click)="EditData()" class="save-btn">
-                  {{ "Role_Management.EDIT" | translate }}
-              </button>
-          </div>
-          <div class="col-md-6" *ngIf="dataEdit.id==''">
-              <button (click)="saveData()" class="save-btn">
+        
+          <div class="col-md-6" >
+              <button (click)="addGroupExplanation()" class="save-btn">
                   {{ "Role_Management.SAVE" | translate }}
               </button>
           </div>
