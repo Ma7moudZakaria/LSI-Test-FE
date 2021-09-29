@@ -16,7 +16,7 @@ import { IDetailsGroupExplanation } from 'src/app/core/interfaces/calls/idetails
 })
 export class TeacherRecitationGroupSelectedComponent implements OnInit {
   @Output() rejectedRequestId = new EventEmitter<string>();
-  @Output() addStudentRequest = new EventEmitter<boolean>();
+  @Output() addStudentRequest = new EventEmitter<IDetailsGroupExplanation>();
 
 
   groupExplanationsJoinRequest: IGroupExplanationsJoinRequest = { skip: 0, take: 2147483647 }
@@ -126,7 +126,7 @@ export class TeacherRecitationGroupSelectedComponent implements OnInit {
 
 
   addNewStudent() {
-    this.addStudentRequest.emit(true)
+    this.addStudentRequest.emit(this.detailsGroupExplanation)
   }
 
 

@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { IDetailsGroupExplanation } from 'src/app/core/interfaces/calls/idetails-group-explanation';
 import { TeacherRecitationGroupSelectedComponent } from './teacher-recitation-group-selected/teacher-recitation-group-selected.component';
 import { TeacherRecitationGroupsComponent } from './teacher-recitation-groups/teacher-recitation-groups.component';
 
@@ -11,6 +12,8 @@ export class TeacherRecitationWrapperComponent implements OnInit {
 
   @ViewChild(TeacherRecitationGroupsComponent) lestTeacherComponent: TeacherRecitationGroupsComponent | undefined;
   @ViewChild(TeacherRecitationGroupSelectedComponent) detailsComponent: TeacherRecitationGroupSelectedComponent | undefined;
+  sendBatchDetails: IDetailsGroupExplanation | undefined;
+
   rejectedRequestId: string = '';
   showAddGroupForm: boolean = false;
   showRejectForm: boolean = false;
@@ -52,9 +55,14 @@ export class TeacherRecitationWrapperComponent implements OnInit {
   openAddStudentForm(event: boolean) {
 
     this.showAddStudent = event;
-
+    if (this.detailsComponent) {
+      this.detailsComponent.getDetailsGroupExplanation(this.GroupId);
+    }
   }
-  addStudentRequestMethod(event: boolean) {
-    this.showAddStudent = event
+
+
+  addStudentRequestMethod(event: IDetailsGroupExplanation) {
+    this.showAddStudent = true;
+    this.sendBatchDetails = event
   }
 }

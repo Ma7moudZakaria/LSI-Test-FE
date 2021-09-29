@@ -2,7 +2,7 @@ import { IGroupExplanationsJoinResponse } from "./igroup-explanations-join-respo
 import { IGroupMembers } from "./igroup-members";
 
 export interface IDetailsGroupExplanation {
-
+    batId?: string;
     groupId?: string;
     groupNameAr?: string;
     groupNameEn?: string;

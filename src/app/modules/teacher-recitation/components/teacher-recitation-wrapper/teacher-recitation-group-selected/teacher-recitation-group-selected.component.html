@@ -5,7 +5,9 @@
     <P  class="mx-2">
       {{ translate.currentLang === langEnum.en ? detailsGroupExplanation?.groupNameEn : detailsGroupExplanation?.groupNameAr }}
     </P>
-     <button class="cancel-btn" (click)="addNewStudent()">إضافة طالب</button>
+    <!-- [ngClass]="{'dimmed': !detailsGroupExplanation?.batId}" -->
+     <button class="cancel-btn" 
+      (click)="addNewStudent()">إضافة طالب</button>
   </div>
 
 

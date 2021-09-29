@@ -27,8 +27,10 @@
     </app-rejected-group-request-form>
        
     </div>
+    <!-- [sendBatchDetails]=[sendBatchDetails] -->
+   
     <div class="overlay" *ngIf="showAddStudent">
-     <app-add-new-student-in-group 
+     <app-add-new-student-in-group [sendBatchDetails]='sendBatchDetails'
      (hideform)="openAddStudentForm($event)"></app-add-new-student-in-group>
     </div>
 </div>

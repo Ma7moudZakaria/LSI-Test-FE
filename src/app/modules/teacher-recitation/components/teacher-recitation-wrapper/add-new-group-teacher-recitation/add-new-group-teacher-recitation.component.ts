@@ -42,11 +42,11 @@ export class AddNewGroupTeacherRecitationComponent implements OnInit {
   resultMessage: BaseMessageModel = {};
   SearchItemList: SearchItem[] = [];
   langEnum = LanguageEnum;
+  listSelectedStudent: SearchItem[] = []
 
   currentUser: IUser | undefined;
   //
   studentList: IAdminStudentTabFilterResponse[] = [];
-  listSelectedStudent: SearchItem[] = []
 
   studentListFilterRequestModel: IAdminStudentTabFilterRequest = { studName: '' }
 
