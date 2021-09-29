@@ -1,18 +1,16 @@
+import { skip, take } from 'rxjs/operators';
 import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IUser } from 'src/app/core/interfaces/auth-interfaces/iuser-model';
 import { IAddGroupExplanationModel } from 'src/app/core/interfaces/calls/iadd-group-explanation-model';
-import { IAddStudentInGroupExplanationModel } from 'src/app/core/interfaces/calls/iadd-student-in-group-explanation-model';
 import { IUsersInBatchResponse } from 'src/app/core/interfaces/calls/iusers-in-batch-response';
 import { IUsersInBatctRequest } from 'src/app/core/interfaces/calls/iusers-in-batct-request';
 import { ISharedProgramsResponseModel } from 'src/app/core/interfaces/programs-interfaces/ishared-programs-response-model';
 import { Role, SearchItem } from 'src/app/core/interfaces/role-management-interfaces/role-management';
-import { CreateRoleModel, UsersExceptStudent } from 'src/app/core/interfaces/role-management-interfaces/role-management';
 import { IAdminStudentTabFilterRequest } from 'src/app/core/interfaces/student-interfaces/iadmin-student-tab-filter-request';
 import { IAdminStudentTabFilterResponse } from 'src/app/core/interfaces/student-interfaces/iadmin-student-tab-filter-response';
-import { ITeacherStudentViewModel } from 'src/app/core/interfaces/teacher-drop-out-request-interfaces/Iteacher-student-model';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
 import { AdminStudentTabService } from 'src/app/core/services/admin-student-tab-services/admin-student-tab.service';
@@ -39,10 +37,10 @@ export class AddNewGroupTeacherRecitationComponent implements OnInit {
 
   DataForm!: FormGroup;
   isSubmit: boolean = false;
-
+  disabledSreach: boolean = false
+  disabledBatch: boolean = false
   listSelectedUser: any = []
   resultMessage: BaseMessageModel = {};
-  usersExceptStudent: UsersExceptStudent[] = [];
   SearchItemList: SearchItem[] = [];
   langEnum = LanguageEnum;
 
@@ -66,21 +64,14 @@ export class AddNewGroupTeacherRecitationComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
-    this.getAllStudentList()
-    // this.buildForm();
-    // this.getUsers();
+    this.getStudentList();
+    // this.getAllStudentList()
     this.getAllBatches()
   }
 
-
-  backList() {
-    this.hideform?.emit(false);
-  }
   // get-all-batch
-
   getAllBatches() {
     this.programService.getSharedPrograms().subscribe(res => {
-
       if (res.isSuccess) {
         this.allBatches = res.data;
         // console.log("getAllBatches", this.allBatches)
@@ -93,31 +84,95 @@ export class AddNewGroupTeacherRecitationComponent implements OnInit {
         console.log(error);
       });
   }
-  onChange(event: any) {
+
+  onChangeBatch(event: any) {
+    this.disabledSreach = true
+    this.getStudentList();
     // console.log("event.target.value", event.value);
+    // let model: IUsersInBatctRequest =
+    // {
+    //   batId: event.value,
+    //   studName: '',
+    //   skip: 0,
+    //   take: 2147483647
+    // }
+
+    // this.groupExplanationServices.getAllUsersInBatct(model).subscribe(res => {
+    //   if (res.isSuccess) {
+    //     let userslist = res.data as IUsersInBatchResponse[];
+    //     // console.log("get users in  Batches", userslist)
+    //     userslist.forEach((element: any) => {
+    //       if (this.listStudents.length > 0) {
+    //         if (!this.listStudents.some(x => x.usrId == element.usrId))
+    //           this.listStudents?.push(element)
+    //       }
+    //       else {
+    //         this.listStudents?.push(element);
+    //       }
+    //     });
+
+    //     // console.log("get users in  Batches", this.listStudents)
+
+    //   }
+    //   else {
+    //   }
+    // },
+    //   error => {
+    //     console.log(error);
+    //   });
+  }
+
+  getStudentList() {
     let model: IUsersInBatctRequest =
     {
-      batId: event.value,
+      batId: this.addModel.batId,
       studName: '',
       skip: 0,
       take: 2147483647
     }
-
     this.groupExplanationServices.getAllUsersInBatct(model).subscribe(res => {
       if (res.isSuccess) {
         let userslist = res.data as IUsersInBatchResponse[];
-        // console.log("get users in  Batches", userslist)
-        userslist.forEach((element: any) => {
-          if (this.listStudents.length > 0) {
-            if (!this.listStudents.some(x => x.usrId == element.usrId))
-              this.listStudents?.push(element)
-          }
-          else {
-            this.listStudents?.push(element);
-          }
-        });
 
-        console.log("get users in  Batches", this.listStudents)
+        if (this.addModel.batId) {
+          this.listSelectedStudent = userslist.map(item => {
+            let temp: SearchItem = {
+              enUsrName: item?.studNameEn || '',//element.usrFullNameEn,
+              arUsrName: item.studNameAr || '',
+              usrAvatarUrl: item.avr || '',
+              usrEmail: '',
+              usrId: item.usrId || '',
+              createdOn: ''
+            };
+            return temp;
+          })
+        }
+        else {
+          this.listSelectedStudent = [];
+          this.SearchItemList = userslist.map(item => {
+            let temp: SearchItem = {
+              enUsrName: item?.studNameEn || '',//element.usrFullNameEn,
+              arUsrName: item.studNameAr || '',
+              usrAvatarUrl: item.avr || '',
+              usrEmail: '',
+              usrId: item.usrId || '',
+              createdOn: ''
+            };
+            return temp;
+          })
+        }
+        // console.log("get users in  Batches", userslist)
+        // userslist.forEach((element: any) => {
+        //   if (this.listStudents.length > 0) {
+        //     if (!this.listStudents.some(x => x.usrId == element.usrId))
+        //       this.listStudents?.push(element)
+        //   }
+        //   else {
+        //     this.listStudents?.push(element);
+        //   }
+        // });
+
+        // console.log("get users in  Batches", this.listStudents)
 
       }
       else {
@@ -128,101 +183,89 @@ export class AddNewGroupTeacherRecitationComponent implements OnInit {
       });
   }
   removeStuFromList(event: IUsersInBatchResponse) {
+    // console.log("removeStuFromList", event)
     let it = this.listStudents.filter(i => i.usrId === event.usrId)[0];
-    const ind = this.listStudents?.indexOf(it);
+    const ind = this.listStudents?.indexOf(event);
     if (ind > -1) {
       this.listStudents?.splice(ind, 1);
     }
   }
-  addGroupExplanation() {
-
-    let model: IAddGroupExplanationModel =
-    {
-      techId: this.currentUser?.id,
-      groupNameAr: this.addModel.groupNameAr,
-      groupNameEn: this.addModel.groupNameEn,
-      batId: this.addModel.batId,
-      groupMembers: []
-    }
-    this.listStudents.forEach(e => { model.groupMembers?.push({ studId: e.usrId || '' }) });
-
-    this.groupExplanationServices.addGroupExplanation(model).subscribe((res) => {
-      if (res.isSuccess) {
-
-        this.backList();
-        this._alertify.success(res.message || "");
-
-      }
-      else {
-        this._alertify.error(res.message || "");
-      }
-    }, error => {
-
-    });
-  }
-
 
   getAllStudentList() {
-    this.adminStudentTabService.getStudentManagement(this.studentListFilterRequestModel || {}).subscribe(res => {
+    let model: IUsersInBatctRequest =
+    {
+      batId: '',
+      studName: '',
+      skip: 0,
+      take: 2147483647
+    }
 
-      if (res.isSuccess) {
-        this.studentList = res.data as IAdminStudentTabFilterResponse[];
-        console.log("studentList", this.studentList)
-        this.studentList.forEach(element => {
-          this.SearchItemList.push(
-            {
-              enUsrName: element?.studNameEn || '',//element.usrFullNameEn,
-              arUsrName: element.studNameAr || '',
-              usrAvatarUrl: element.avr || '',
-              usrEmail: '',
-              usrId: element.usrId || '',
-              createdOn: ''
-            }
-          )
-        });
+    // this.groupExplanationServices.getAllUsersInBatct(model).subscribe(res => {
+    //   if (res.isSuccess) {
+    //     this.studentList = res.data as IUsersInBatchResponse[];
+    //     console.log("studentList", this.studentList)
+    //     this.studentList.forEach((element: IUsersInBatchResponse) => {
+    //       this.SearchItemList.push(
+    //         {
+    //           enUsrName: element?.studNameEn || '',//element.usrFullNameEn,
+    //           arUsrName: element.studNameAr || '',
+    //           usrAvatarUrl: element.avr || '',
+    //           usrEmail: '',
+    //           usrId: element.usrId || '',
+    //           createdOn: ''
+    //         }
+    //       )
+    //     });
+    //   }
+    //   else {
+    //   }
+    // },
+    //   error => {
+    //     console.log(error);
+    //   });
 
-      }
-      else {
-        this._alertify.error(res.message || '');
-      }
-    },
-      error => {
-        console.log(error);
-      });
+    // this.adminStudentTabService.getStudentManagement(this.studentListFilterRequestModel || {}).subscribe(res => {
+
+    //   if (res.isSuccess) {
+    //     this.studentList = res.data as IAdminStudentTabFilterResponse[];
+    //     console.log("studentList", this.studentList)
+    //     this.studentList.forEach(element => {
+    //       this.SearchItemList.push(
+    //         {
+    //           enUsrName: element?.studNameEn || '',//element.usrFullNameEn,
+    //           arUsrName: element.studNameAr || '',
+    //           usrAvatarUrl: element.avr || '',
+    //           usrEmail: '',
+    //           usrId: element.usrId || '',
+    //           createdOn: ''
+    //         }
+    //       )
+    //     });
+
+    //   }
+    //   else {
+    //     this._alertify.error(res.message || '');
+    //   }
+    // },
+    //   error => {
+    //     console.log(error);
+    //   });
   }
   checkNameSpace(str: string) {
     let reg = new RegExp(/^ *$/);
     return str.match(reg) === null;
   }
-  // get-users-except-students
 
-  // getUsers() {
-  //   this.RoleManagement.getUsersExceptStudents().subscribe(res => {
-  //     this.usersExceptStudent = res.data;
-  //     // example for map to can run shared
-  //     this.usersExceptStudent.forEach(element => {
-  //       this.SearchItemList.push(
-  //         {
-  //           enUsrName: element.userName,//element.usrFullNameEn,
-  //           arUsrName: element.userName,
-  //           usrAvatarUrl: element.avatarUrl,
-  //           usrEmail: '',
-  //           usrId: element.id,
-  //           createdOn: element.createdOn
-  //         }
-  //       )
-  //     });
-  //   }
-  //   )
-  // }
 
-  addUser(event: SearchItem) {
+  addStudentSearch(event: SearchItem) {
     // this.listSelectedUser.push(event);
+    this.disabledBatch = true;
+
     this.listSelectedStudent.push(event);
 
   }
 
-  delete(event: SearchItem) {
+  deleteStudentSearch(event: SearchItem) {
     // let ind = this.listSelectedUser.indexOf(event);
     // this.listSelectedUser.splice(ind, 1)
     // this.SearchItemList.push(event)
@@ -231,87 +274,47 @@ export class AddNewGroupTeacherRecitationComponent implements OnInit {
     this.SearchItemList.push(event)
 
   }
+  sumbitGroupExplanation() {
 
+    let model: IAddGroupExplanationModel =
+    {
+      techId: this.currentUser?.id,
+      groupNameAr: this.addModel.groupNameAr,
+      groupNameEn: this.addModel.groupNameEn,
+      batId: this.addModel.batId,
+      groupMembers: this.listSelectedStudent.map(item => ({ studId: item.usrId })),
+    }
+    // if (this.listStudents) {
+    //   this.listStudents.forEach(e => { model.groupMembers?.push({ studId: e.usrId || '' }) });
+    // }
+    // if (!this.listSelectedStudent) {
+    //   this.SearchItemList.forEach(e => { model.groupMembers?.push({ studId: e.usrId || '' }) });
+    // }
+    if (model.groupNameAr && model.groupNameEn && model.groupMembers) {
+      this.groupExplanationServices.addGroupExplanation(model).subscribe((res) => {
+        if (res.isSuccess) {
 
-  // buildForm() {
-  //   this.DataForm = this.formBuilder.group({
-  //     arRoleName: ['', Validators.required],
-  //     enRoleName: ['', Validators.required],
-  //   });
-  // }
+          this.backList();
+          this._alertify.success(res.message || "");
 
-  // get fc() {
-  //   return this.DataForm.controls;
-  // }
+        }
+        else {
+          this._alertify.error(res.message || "");
+        }
+      }, error => {
 
-  // saveData() {
-  //   this.isSubmit = true;
-  //   if (this.DataForm.invalid) {
-  //     return;
-  //   }
+      });
+    }
+    else {
+      this.resultMessage = {
+        message: this.translate.currentLang === LanguageEnum.ar ? this.translate.instant('GENERAL.FILDES_REQUIRED') : this.translate.instant('GENERAL.FILDES_REQUIRED'),// this.translate.currentLang === LanguageEnum.en ? "Please complete the missing information" : "برجاء اكمال البيانات",
+        type: BaseConstantModel.DANGER_TYPE
+      }
+    }
+  }
 
-  //   let createModel: CreateRoleModel = this.DataForm.value;
-
-  //   //statment need to updated based on models as it's recorded as type any
-  //   createModel.usrs = this.listSelectedUser.map((i: any) => ({ usrId: i.usrId }));
-
-  //   this.RoleManagement.createRole(this.DataForm.value).subscribe((res) => {
-  //     if (res.isSuccess) {
-
-  //       this._alertify.success(res.message || "");
-  //       this.backList();
-  //     }
-  //     else {
-  //       this.resultMessage = {
-  //         message: res.message,
-  //         type: BaseConstantModel.DANGER_TYPE
-  //       }
-  //     }
-  //   }, error => {
-  //     this.resultMessage = {
-  //       message: error,
-  //       type: BaseConstantModel.DANGER_TYPE
-  //     }
-  //   });
-  // }
-
-  // EditData() {
-  //   this.isSubmit = true;
-  //   if (this.DataForm.invalid) {
-  //     return;
-  //   }
-  //   if (this.dataEdit.id != '') {
-  //     this.RoleManagement.editRole({ roleId: this.dataEdit.id, ...this.DataForm.value }).subscribe((res) => {
-  //       if (res.isSuccess) {
-
-  //         this._alertify.success(res.message || "");
-  //         this.backList();
-  //       }
-  //       else {
-  //         this.resultMessage = {
-  //           message: res.message,
-  //           type: BaseConstantModel.DANGER_TYPE
-  //         }
-  //       }
-  //     }, error => {
-  //       this.resultMessage = {
-  //         message: error,
-  //         type: BaseConstantModel.DANGER_TYPE
-  //       }
-  //     });
-  //   }
-
-  // }
-
-  // ngAfterViewInit(): void {
-  //   if (this.dataEdit.id != '') {
-  //     this.DataForm.patchValue(this.dataEdit)
-  //   }
-  // }
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   if (changes.dataEdit && this.dataEdit.id != '') {
-  //     this.DataForm.patchValue(this.dataEdit)
-  //   }
-  // }
+  backList() {
+    this.hideform?.emit(false);
+  }
 
 }

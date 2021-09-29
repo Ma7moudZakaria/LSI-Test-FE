@@ -7,7 +7,9 @@ font-family:Almarai-Bold;
 
 }
 select.form-control {
-     appearance: inherit;
+     appearance: auto;
+     -moz-appearance: auto;
+     -webkit-appearance: auto;
 }
 .listStudent{
      
