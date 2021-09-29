@@ -13,7 +13,7 @@ import { IAvailableTeacher } from 'src/app/core/interfaces/calls/iavailable-teac
   styleUrls: ['./get-all-available-teachers-card.component.scss']
 })
 export class GetAllAvailableTeachersCardComponent implements OnInit {
-
+  @Output() teacherCallPhonEvent = new EventEmitter<boolean>();
   @Output() studentVacationId = new EventEmitter<ITeacherStudentViewModel>();
   langEnum = LanguageEnum;
   starsSelected = 0;
@@ -23,10 +23,9 @@ export class GetAllAvailableTeachersCardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  // showStudentDetails(id?: string, JoinedProgName?: string) {
-  //   let UserModel: ITeacherStudentViewModel = { progName: JoinedProgName, usrId: id };
-  //   this.studentVacationId.emit(UserModel);
-  // }
-
+  
+  teacherCallPhon(){
+    this.teacherCallPhonEvent.emit()
+  }
 
 }

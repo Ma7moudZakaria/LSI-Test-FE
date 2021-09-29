@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { ProgramDayTaskRecitationType } from 'src/app/core/enums/program-day-task-recitation-type.enum';
 import { ProgramDutyDaysTaskViewMoodEnum } from 'src/app/core/enums/programs/program-duty-days-task-view-mood-enum.enum';
 import { IAttachment } from 'src/app/core/interfaces/attachments-interfaces/iattachment';
 import { IFileUpload } from 'src/app/core/interfaces/attachments-interfaces/ifile-upload';
@@ -10,7 +9,6 @@ import { IAvailableTeacherResonse } from 'src/app/core/interfaces/calls/iavailab
 import { ILookupCollection } from 'src/app/core/interfaces/lookup/ilookup-collection';
 import { IRecitationTimes } from 'src/app/core/interfaces/programs-interfaces/iprogram-basic-info-model';
 import { IProgramDayTasksModel } from 'src/app/core/interfaces/programs-interfaces/iprogram-day-tasks-model';
-import { IProgramBasicInfoDetails } from 'src/app/core/interfaces/programs-interfaces/iprogram-details';
 import { IProgramDayTaskTasmea } from 'src/app/core/interfaces/programs-interfaces/program-day-tasks-interfaces/iprogram-day-task-tasmea';
 import { BaseConstantModel } from 'src/app/core/ng-model/base-constant-model';
 import { BaseMessageModel } from 'src/app/core/ng-model/base-message-model';
@@ -18,7 +16,6 @@ import { AlertifyService } from 'src/app/core/services/alertify-services/alertif
 import { AvailableTeachersService } from 'src/app/core/services/calls/available-teachers.service';
 import { LookupService } from 'src/app/core/services/lookup-services/lookup.service';
 import { ProgramDayTasksService } from 'src/app/core/services/program-services/program-day-tasks.service';
-import { StudentProgramVacationServicesService } from 'src/app/core/services/student-program-vacation-services/student-program-vacation-services.service';
 
 @Component({
   selector: 'app-program-day-task-tasmea',
@@ -26,7 +23,8 @@ import { StudentProgramVacationServicesService } from 'src/app/core/services/stu
   styleUrls: ['./program-day-task-tasmea.component.scss']
 })
 export class ProgramDayTaskTasmeaComponent implements OnInit {
-  @Input() tasmeaModel: IProgramDayTaskTasmea = {};//==============
+  @Output() teacherCallPhonEvent = new EventEmitter<boolean>();
+  @Input() tasmeaModel: IProgramDayTaskTasmea = {};
   @Input() isView: boolean = false;
   @Input() dutyDaysTaskViewMood: number = ProgramDutyDaysTaskViewMoodEnum.admin;
   programDutyDaysTaskViewMoodEnum = ProgramDutyDaysTaskViewMoodEnum;
@@ -48,23 +46,14 @@ export class ProgramDayTaskTasmeaComponent implements OnInit {
     private availableTeacher: AvailableTeachersService,
     private route: ActivatedRoute,
     private programDayTasksService: ProgramDayTasksService,
-    private programVacationServicesService: StudentProgramVacationServicesService
   ) { }
 
   ngOnInit(): void {
-   console.log("tasmeaModel"+this.tasmeaModel);
-    
     this.getLookupByKey();
     this.getAllMemorize();
     this.getAllAvailableTeacher();
-    
-    //this.getAllMemorize();
-
   }
-
-  // ngOnChanges(changes: any) {
-  //   this.getAllMemorize();
-  // }
+ 
 
   getLookupByKey() {
     this.lookupService.getLookupByKey(this.listOfLookup).subscribe(res => {
@@ -80,13 +69,6 @@ export class ProgramDayTaskTasmeaComponent implements OnInit {
       }
     });
   }
-
-  // availableTeachersListTest: IAvailableTeacherResonse[] = [
-  //   { "techId": "3ef77604-4d16-48bb-b143-e07189c132d8", "usrId": "2e249860-f4ab-422e-9303-a9f3f8b8e7e2", "avr": 'null', "techNameAr": "نرمين  زكريا السيد", "techNameEn": "  ", "rte": 0 },
-  //   { "techId": "3ef77604-4d16-48bb-b143-e07189c132d8", "usrId": "2e249860-f4ab-422e-9303-a9f3f8b8e7e2", "avr": 'null', "techNameAr": "نرمين  زكريا السيد", "techNameEn": "  ", "rte": 0 },
-  //   { "techId": "3ef77604-4d16-48bb-b143-e07189c132d8", "usrId": "2e249860-f4ab-422e-9303-a9f3f8b8e7e2", "avr": 'null', "techNameAr": "نرمين  زكريا السيد", "techNameEn": "  ", "rte": 0 }
-
-  // ]
 
   getAllAvailableTeacher() {
     this.filterAvailableTeacher = {
@@ -121,6 +103,7 @@ export class ProgramDayTaskTasmeaComponent implements OnInit {
   }
 
   getAllMemorize(){
+    this.tasmeaModel.bookAttatchments = [];
     this.programDayTasksService.getProgramMemorizeAtDay(this.tasmeaModel?.dutyDay || '').subscribe(
       (res: any) => {
         res.data as IProgramDayTasksModel
@@ -139,4 +122,9 @@ export class ProgramDayTaskTasmeaComponent implements OnInit {
     );
 
   }
+
+  teacherCallPhon(){
+    this.teacherCallPhonEvent.emit()
+  }
+  
 }

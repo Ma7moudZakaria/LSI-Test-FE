@@ -21,8 +21,7 @@
       <mat-grid-tile *ngFor='let item of availableTeachersList' >
         <app-get-all-available-teachers-card
          [availableTeacherResponseModel]='item'
-        >
-         <!-- (studentVacationId)="getStudentVacationId($event)" -->
+         (teacherCallPhonEvent)="teacherCallPhon()">
         </app-get-all-available-teachers-card>
       </mat-grid-tile>
   

@@ -33,7 +33,8 @@ import {IStudentSubscriptionFilterRequestModel} from '../../../../core/interface
   styleUrls: ['./student-program-duty-days-task-details.component.scss']
 })
 export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
-  @Output() taskIsSaveEvent = new EventEmitter<boolean>();
+  @Output() taskIsSaveEvent = new EventEmitter<IProgramDayTaskTasmea>();
+  @Output() teacherCallPhonEvent = new EventEmitter<IProgramDayTaskTasmea>();
   @Input() taskDetails: IProgramDayTasksModel | undefined;
   detailsTypeEnum = ProgramDayTasksDetails;
   hearingTaskDetailsModel: IProgramDayTaskHearing = {};
@@ -47,7 +48,7 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
   videoDetailsModel: IProgramDayTaskVideo = {};
   testPhasedDetailsModel:IExam = { questions: [] };
   dailyTestDetailsModel: IExam = { questions: [] };
-  recitationStudentsModel :IProgramBasicInfoDetails = {};
+  recitationStudentsModel :IProgramDayTaskTasmea = {};
   programDayTaskDetails: ISaveProgramDayTaskDetailsModel={};
   tasmeaModel :IProgramDayTaskTasmea = {};
   resultMessage: BaseMessageModel = {};
@@ -73,16 +74,11 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
 
   async ngOnInit() {
     this.progId= this.route.snapshot.params.progId;
-    //  this.getProgramDetails();
     this.resultMessage = {}
-    // if(localStorage.getItem("progId"))
-    // {this.progId = localStorage.getItem("progId") || '';}
     await this.getprogramDayTaskDetails();
   }
   async ngOnChanges(changes: any){
     await this.getprogramDayTaskDetails();
-
-    // this.getProgramDetails();
     this.resultMessage = { }
   }
 
@@ -105,6 +101,7 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
            this.isMndatory=this.repetitionDetailsModel.isMndatory;
             break;
            case this.detailsTypeEnum.TaskLinking:
+            this.programDetails = await (await this.programService.getProgramDetails(this.progId || '').toPromise()).data
             this.linkingDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
             this.linkingDetailsModel.progId=this.programDetails?.progBaseInfo?.id;
             this.linkingDetailsModel.progDayOrder=this.programDetails?.progDays?.find(x=>x.id==this.taskDetails?.dutyDay)?.order;
@@ -126,7 +123,11 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
                   this.recitationDetailsModel=this.programDetails?.progBaseInfo||{};
                   break;
                   case this.detailsTypeEnum.TaskRecitationStudents:
-                    this.recitationStudentsModel=this.programDetails?.progBaseInfo||{};
+                    this.programDetails = await (await this.programService.getProgramDetails(this.progId || '').toPromise()).data;
+                    this.recitationStudentsModel.dutyDay=this.taskDetails.dutyDay;
+                    this.recitationStudentsModel.prgRecitType= this.programDetails?.progBaseInfo?.prgRecitType;
+                    this.recitationStudentsModel.progRecitationTimes=this.programDetails?.progBaseInfo?.prgRecitTms?
+                    this.programDetails?.progBaseInfo?.prgRecitTms.filter(i => i.huffno !== ProgramDayTaskRecitationType.limited).map((item: any) => ({ progRecFrom: item.recitFrom, progRecTo: item.recitTo })) : [];
                     break;
                     case this.detailsTypeEnum.TaskTestPhased:
                     this.testPhasedDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
@@ -144,7 +145,6 @@ export class StudentProgramDutyDaysTaskDetailsComponent implements OnInit {
                     this.tasmeaModel.prgRecitType= this.programDetails?.progBaseInfo?.prgRecitType;
                     this.tasmeaModel.progRecitationTimes=this.programDetails?.progBaseInfo?.prgRecitTms?
                     this.programDetails?.progBaseInfo?.prgRecitTms.filter(i => i.huffno !== ProgramDayTaskRecitationType.limited).map((item: any) => ({ progRecFrom: item.recitFrom, progRecTo: item.recitTo })) : [];
-                   
                     break;
       default:
         "";
@@ -206,28 +206,10 @@ no(){
      this.taskIsSaveEvent.emit()
     }
 
-   
-  getProgramDetails() {
-    this.progId= this.route.snapshot.params.progId;
-      this.programService.getProgramDetails(this.progId || '').subscribe(res => {
-        if (res.isSuccess) {
-           this.programDetails = res.data as IProgramDetails;
-           this.getprogramDayTaskDetails();
-        }
-        else {
-          this.resMessage =
-          {
-            message: res.message,
-            type: BaseConstantModel.DANGER_TYPE
-          }
-        }
-      }, error => {
-        
-      });
-  }
-
+    teacherCallPhon(){
+      this.teacherCallPhonEvent.emit(this.tasmeaModel)
+    }
     newScientificProblem() {
         this.openAddScientificProblem.emit(true);
     }
-  
 }

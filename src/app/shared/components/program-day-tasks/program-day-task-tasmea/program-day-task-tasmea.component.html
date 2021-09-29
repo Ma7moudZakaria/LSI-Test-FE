@@ -1,8 +1,7 @@
 <div *ngIf="dutyDaysTaskViewMood===programDutyDaysTaskViewMoodEnum.admin">
+
     <ng-container *ngIf="!isView">
         <div class="day-recitation">
-           
-            
             <div class="form-group">
                <div class="row">
                    <div class="col-12" *ngIf='tasmeaModel.prgRecitType'>
@@ -30,42 +29,28 @@
                            </div>
                        </div>
                    </div>
-               </div>
-
-    
+               </div>    
            </div>
-        
            <div class="d-flex">
             <label  class="no-data" *ngIf='!tasmeaModel.prgRecitType'>
                 {{"GENERAL.NO_DATA"|translate}} 
             </label>
             </div>
            </div>
-        
-
            <div class="row mx-0" >
             <div class="col-4 cardRecourd"  *ngFor="let item of tasmeaModel?.bookAttatchments;let i=index" >
                 <img src="assets/images/days/book.svg">
                 <p class="ellipsis mb-0 "  matTooltip="{{item.fileName}}">{{item.fileName}}</p>
             </div>
-</div>
+       </div>
+    </ng-container>
 
-           </ng-container>
-        
-        
-           <ng-container *ngIf="isView">
-            <!-- <p class="mb-2 name"> الحفظ</p> -->
-        
+    <ng-container *ngIf="isView">
                  <div class="d-flex mb-3">       
-        
-                       
-                    
                          <div class="col-6 px-0" *ngIf='tasmeaModel.prgRecitType'>
-                             <span class="grad">فتره التسميع
+                             <span class="grad">{{"PROGRAM_DAY_TASK_RECITIATION.RECITIATION_PERIOD"|translate}} 
                                  <span>  &nbsp;  : </span>
                                  <span>  &nbsp; </span> 
-        
-                                 <!-- <small class="info">طوال اليوم</small> -->
                                  <mat-radio-group aria-label="Select an option"  class="example-radio-group" 
                            [(ngModel)]="tasmeaModel.prgRecitType" disabled>
                        <ng-container *ngFor="let item of collectionOfLookup.SARD_TYPES ;let i=index">
@@ -75,13 +60,12 @@
                                  
                              </span>
                          </div>
-                         
                  </div>
                  <div class="mt-3  mb-3">
                     <div *ngFor="let item of tasmeaModel.progRecitationTimes;let i=index" 
                     class="badge badge-info p-2 " >
                      <div class="d-flex justify-content-between">
-                         <p class="ellipsis mb-0"> from : {{item.progRecFrom}} , to : {{item.progRecTo}}</p>
+                         <p class="ellipsis mb-0"> {{"PROGRAM_DAY_TASK_RECITIATION.FROM"|translate}} : {{item.progRecFrom}} , {{"PROGRAM_DAY_TASK_RECITIATION.TO"|translate}} : {{item.progRecTo}}</p>
                      </div>
                     </div>
                  </div>
@@ -97,9 +81,7 @@
                     </label>
                     </div>
                                    
-                
-        </ng-container>
-        
+   </ng-container>
 
 </div>
 
@@ -107,7 +89,7 @@
 
     <div class="d-flex mb-3">       
         <div class="col-6 px-0" *ngIf='tasmeaModel.prgRecitType'>
-            <span class="grad">فتره التسميع
+            <span class="grad">{{"PROGRAM_DAY_TASK_RECITIATION.RECITIATION_PERIOD"|translate}} 
                 <span>  &nbsp;  : </span>
                 <span>  &nbsp; </span> 
 
@@ -126,7 +108,7 @@
     <div *ngFor="let item of tasmeaModel.progRecitationTimes;let i=index" 
     class="badge badge-info p-2 " >
      <div class="d-flex justify-content-between">
-         <p class="ellipsis mb-0"> from : {{item.progRecFrom}} , to : {{item.progRecTo}}</p>
+         <p class="ellipsis mb-0"> {{"PROGRAM_DAY_TASK_RECITIATION.FROM"|translate}}  : {{item.progRecFrom}} , {{"PROGRAM_DAY_TASK_RECITIATION.TO"|translate}}  : {{item.progRecTo}}</p>
      </div>
     </div>
  </div>
@@ -147,9 +129,9 @@
     [availableTeachersList]='availableTeachersList'
     [totalCount]='totalCount'
     [numberPerRow]='numberItemsPerRow'
-    [filterAvailableTeacher]='filterAvailableTeacher
-    '
-    (availableTeachersFilterEvent) = "availableTeachersChangePage($event)">
+    [filterAvailableTeacher]='filterAvailableTeacher'
+    (availableTeachersFilterEvent) = "availableTeachersChangePage($event)"
+    (teacherCallPhonEvent)="teacherCallPhon()">
    </app-get-all-available-teachers-grid>
  
 </div>   

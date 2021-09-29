@@ -43,7 +43,7 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
   explanationDetailsModel: IProgramDayTaskExplanation = {};
   testPhasedDetailsModel:IExam = { questions: [] };
   dailyTestDetailsModel: IExam = { questions: [] };
-  recitationStudentsModel :IProgramBasicInfoDetails = {};
+  recitationStudentsModel :IProgramDayTaskTasmea = {};
   programDayTaskDetails: ISaveProgramDayTaskDetailsModel={};
   tasmeaModel :IProgramDayTaskTasmea ={};
   resultMessage: BaseMessageModel = {};
@@ -55,15 +55,12 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // console.log(this.testPhasedDetailsModel);
     this.getprogramDayTaskDetails();
-    this.resultMessage = {
-    }
+    this.resultMessage = {}
   }
   ngOnChanges(changes: any){
     this.getprogramDayTaskDetails();
-    this.resultMessage = {
-    }
+    this.resultMessage = { }
   }
 
   save() {
@@ -159,27 +156,6 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
         this.taskDetails!.detailsTask = JSON.stringify("{}");
         break;
     }
-
-    // if ( this.hearingTaskDetailsModel != null ||
-    // this.linkingDetailsModel != null ||
-    //   this.memorizeDetailsModel != null ||
-    //   this.readExplanationDetailsModel != null ||
-    //   this.repetitionDetailsModel != null ||
-    //   this.reviewDetailsModel != null) {
-
-    //     if ( ( this.hearingTaskDetailsModel.degree ? this.hearingTaskDetailsModel.degree : 0 ) > 100 ||
-    //   (this.linkingDetailsModel.degree ? this.linkingDetailsModel.degree : 0 ) > 100 ||
-    //   (this.memorizeDetailsModel.degree ? this.memorizeDetailsModel.degree : 0 ) > 100 ||
-    //   (this.readExplanationDetailsModel.degree ? this.readExplanationDetailsModel.degree : 0 ) > 100 ||
-    //   (this.repetitionDetailsModel.degree ? this.repetitionDetailsModel.degree : 0 ) > 100 ||
-    //   (this.reviewDetailsModel.degree ? this.reviewDetailsModel.degree : 0 ) > 100 ) {
-    //   this.resultMessage = {
-    //     message: this.translate.instant('GENERAL.DEGREE_MAX_LENGTH'),
-    //     type: BaseConstantModel.DANGER_TYPE
-    //   }
-    // }
-
-    // }
             this.resultMessage = {};
 
             this.programDayTaskDetails.programDayTask = this.taskDetails?.id
@@ -244,7 +220,10 @@ export class ProgramDayTasksDetailsComponent implements OnInit {
                   this.recitationDetailsModel=this.progamDetails?.progBaseInfo||{};
                   break;
                   case this.detailsTypeEnum.TaskRecitationStudents:
-                    this.recitationStudentsModel=this.progamDetails?.progBaseInfo||{};
+                    this.recitationStudentsModel.prgRecitType= this.progamDetails?.progBaseInfo?.prgRecitType;
+                    this.recitationStudentsModel.progRecitationTimes=this.progamDetails?.progBaseInfo?.prgRecitTms?
+                    this.progamDetails?.progBaseInfo?.prgRecitTms.filter(i => i.huffno !== ProgramDayTaskRecitationType.limited).map((item: any) => ({ progRecFrom: item.recitFrom, progRecTo: item.recitTo })) : [];
+                    this.recitationStudentsModel.dutyDay=this.taskDetails?.dutyDay;
                     break;
                     case this.detailsTypeEnum.TaskTestPhased:
                     this.testPhasedDetailsModel=JSON.parse(this.taskDetails?.detailsTask||"{}");
