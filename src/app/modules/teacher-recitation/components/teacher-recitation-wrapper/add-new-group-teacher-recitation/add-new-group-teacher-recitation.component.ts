@@ -88,38 +88,7 @@ export class AddNewGroupTeacherRecitationComponent implements OnInit {
   onChangeBatch(event: any) {
     this.disabledSreach = true
     this.getStudentList();
-    // console.log("event.target.value", event.value);
-    // let model: IUsersInBatctRequest =
-    // {
-    //   batId: event.value,
-    //   studName: '',
-    //   skip: 0,
-    //   take: 2147483647
-    // }
 
-    // this.groupExplanationServices.getAllUsersInBatct(model).subscribe(res => {
-    //   if (res.isSuccess) {
-    //     let userslist = res.data as IUsersInBatchResponse[];
-    //     // console.log("get users in  Batches", userslist)
-    //     userslist.forEach((element: any) => {
-    //       if (this.listStudents.length > 0) {
-    //         if (!this.listStudents.some(x => x.usrId == element.usrId))
-    //           this.listStudents?.push(element)
-    //       }
-    //       else {
-    //         this.listStudents?.push(element);
-    //       }
-    //     });
-
-    //     // console.log("get users in  Batches", this.listStudents)
-
-    //   }
-    //   else {
-    //   }
-    // },
-    //   error => {
-    //     console.log(error);
-    //   });
   }
 
   getStudentList() {
@@ -161,18 +130,7 @@ export class AddNewGroupTeacherRecitationComponent implements OnInit {
             return temp;
           })
         }
-        // console.log("get users in  Batches", userslist)
-        // userslist.forEach((element: any) => {
-        //   if (this.listStudents.length > 0) {
-        //     if (!this.listStudents.some(x => x.usrId == element.usrId))
-        //       this.listStudents?.push(element)
-        //   }
-        //   else {
-        //     this.listStudents?.push(element);
-        //   }
-        // });
 
-        // console.log("get users in  Batches", this.listStudents)
 
       }
       else {
@@ -191,66 +149,7 @@ export class AddNewGroupTeacherRecitationComponent implements OnInit {
     }
   }
 
-  getAllStudentList() {
-    let model: IUsersInBatctRequest =
-    {
-      batId: '',
-      studName: '',
-      skip: 0,
-      take: 2147483647
-    }
 
-    // this.groupExplanationServices.getAllUsersInBatct(model).subscribe(res => {
-    //   if (res.isSuccess) {
-    //     this.studentList = res.data as IUsersInBatchResponse[];
-    //     console.log("studentList", this.studentList)
-    //     this.studentList.forEach((element: IUsersInBatchResponse) => {
-    //       this.SearchItemList.push(
-    //         {
-    //           enUsrName: element?.studNameEn || '',//element.usrFullNameEn,
-    //           arUsrName: element.studNameAr || '',
-    //           usrAvatarUrl: element.avr || '',
-    //           usrEmail: '',
-    //           usrId: element.usrId || '',
-    //           createdOn: ''
-    //         }
-    //       )
-    //     });
-    //   }
-    //   else {
-    //   }
-    // },
-    //   error => {
-    //     console.log(error);
-    //   });
-
-    // this.adminStudentTabService.getStudentManagement(this.studentListFilterRequestModel || {}).subscribe(res => {
-
-    //   if (res.isSuccess) {
-    //     this.studentList = res.data as IAdminStudentTabFilterResponse[];
-    //     console.log("studentList", this.studentList)
-    //     this.studentList.forEach(element => {
-    //       this.SearchItemList.push(
-    //         {
-    //           enUsrName: element?.studNameEn || '',//element.usrFullNameEn,
-    //           arUsrName: element.studNameAr || '',
-    //           usrAvatarUrl: element.avr || '',
-    //           usrEmail: '',
-    //           usrId: element.usrId || '',
-    //           createdOn: ''
-    //         }
-    //       )
-    //     });
-
-    //   }
-    //   else {
-    //     this._alertify.error(res.message || '');
-    //   }
-    // },
-    //   error => {
-    //     console.log(error);
-    //   });
-  }
   checkNameSpace(str: string) {
     let reg = new RegExp(/^ *$/);
     return str.match(reg) === null;
@@ -258,9 +157,7 @@ export class AddNewGroupTeacherRecitationComponent implements OnInit {
 
 
   addStudentSearch(event: SearchItem) {
-    // this.listSelectedUser.push(event);
     this.disabledBatch = true;
-
     this.listSelectedStudent.push(event);
 
   }
