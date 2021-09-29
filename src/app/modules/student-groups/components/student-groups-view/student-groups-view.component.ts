@@ -59,5 +59,7 @@ export class StudentGroupsViewComponent implements OnInit {
     this.getStudentViewtGroupExplanation();
   }
 
-
+  reLoadPage() {
+    this.getStudentViewtGroupExplanation();
+  }
 }

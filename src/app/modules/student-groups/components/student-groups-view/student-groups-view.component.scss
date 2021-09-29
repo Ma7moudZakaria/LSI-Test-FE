@@ -11,8 +11,8 @@
   }
   .fix_margin
    {
-    min-height: 72vh;
-    overflow-y: auto;
+    height: 72vh;
+    overflow-y: scroll;
     margin-left: 0 !important;
     margin-right: 0 !important;
    }

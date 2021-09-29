@@ -18,17 +18,10 @@
         [totalCount]='totalCount'
         [numberPerRow]='numberPerRow'
         (studentFilterEvent)='filterRequestStudent($event)'
+        (reLoadPage)="reLoadPage()"
         >
         </app-student-group-grid>
 </div>
-       
-        <!-- <app-teacher-stu-program-for-subscription-grid
-        [studentItems]='programsForStudentSubscriptionsLst'
-        [studentFilterRequestModel] = 'filterRequest'
-        [totalCountForStudent]='totalCount'
-        [userMode]="studentCard"
-        (studentFilterEvent)='filterRequestTeacher($event)' >
-      </app-teacher-stu-program-for-subscription-grid> -->
     
     </div>
   </div>

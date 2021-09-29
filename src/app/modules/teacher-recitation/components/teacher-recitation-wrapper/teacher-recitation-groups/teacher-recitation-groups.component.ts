@@ -22,6 +22,8 @@ export class TeacherRecitationGroupsComponent implements OnInit {
   resultMessage: BaseMessageModel = {};
   currentUser: IUser | undefined;
   langEnum = LanguageEnum;
+  selectedIndex = 0;
+
   constructor(
     private groupExplanationServices: CallsService,
     public translate: TranslateService,

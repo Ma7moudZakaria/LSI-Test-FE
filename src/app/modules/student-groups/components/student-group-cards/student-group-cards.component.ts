@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageEnum } from 'src/app/core/enums/language-enum.enum';
 import { IGroupExplanationsStudentViewResponse } from 'src/app/core/interfaces/calls/igroup-explanations-student-view-response';
@@ -14,6 +14,8 @@ import { CallsService } from 'src/app/core/services/calls-services/calls.service
 })
 export class StudentGroupCardsComponent implements OnInit {
   @Input() item: IGroupExplanationsStudentViewResponse | undefined;
+  @Output() reLoadPage = new EventEmitter<any>();
+
   currentUser: Iuser | undefined;
 
   langEnum = LanguageEnum;
@@ -37,6 +39,7 @@ export class StudentGroupCardsComponent implements OnInit {
     }
     this.groupExplanationServices.joinStudentToGroup(model).subscribe(res => {
       if (res.isSuccess) {
+        this.reLoadPage.emit()
         this.alertify.success(res.message || '');
 
       }

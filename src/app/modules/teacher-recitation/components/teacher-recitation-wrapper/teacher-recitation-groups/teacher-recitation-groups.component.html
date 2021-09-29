@@ -22,8 +22,8 @@
 <div class="chat_details w-100">
 <div class=" w-100">
 <ng-container *ngFor="let item of responseList; let i = index"  >
-    <div class="cardRecourd  d-flex justify-content-between mb-3" >
-        <a  (click)="sendIdForDetailsGroupExplanation(item.id)"
+    <div class="cardRecourd  d-flex justify-content-between mb-2"  [class.active]="selectedIndex === i" >
+        <a  (click)="sendIdForDetailsGroupExplanation(item.id);selectedIndex=i"
         class="group_name  d-flex pb-0  align-items-center justify-content-between">
             <img class="img_user" src="../../../../../../assets/images/group.svg">
             

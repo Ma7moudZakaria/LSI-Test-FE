@@ -187,7 +187,7 @@ export class AddNewGroupTeacherRecitationComponent implements OnInit {
     // if (!this.listSelectedStudent) {
     //   this.SearchItemList.forEach(e => { model.groupMembers?.push({ studId: e.usrId || '' }) });
     // }
-    if (model.groupNameAr && model.groupNameEn && model.groupMembers) {
+    if (model.groupNameAr && model.groupNameEn && model.groupMembers && model.groupMembers.length > 0) {
       this.groupExplanationServices.addGroupExplanation(model).subscribe((res) => {
         if (res.isSuccess) {
 

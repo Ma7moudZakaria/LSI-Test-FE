@@ -6,7 +6,7 @@
       {{ translate.currentLang === langEnum.en ? detailsGroupExplanation?.groupNameEn : detailsGroupExplanation?.groupNameAr }}
     </P>
     <!-- [ngClass]="{'dimmed': !detailsGroupExplanation?.batId}" -->
-     <button class="cancel-btn" 
+     <button class="cancel-btn"  [ngClass]="{'dimmed': !detailsGroupExplanation?.batId}"
       (click)="addNewStudent()">إضافة طالب</button>
   </div>
 
