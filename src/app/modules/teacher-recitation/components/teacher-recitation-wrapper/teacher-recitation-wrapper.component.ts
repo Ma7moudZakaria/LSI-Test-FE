@@ -10,21 +10,25 @@ import { TeacherRecitationGroupsComponent } from './teacher-recitation-groups/te
 export class TeacherRecitationWrapperComponent implements OnInit {
 
   @ViewChild(TeacherRecitationGroupsComponent) lestTeacherComponent: TeacherRecitationGroupsComponent | undefined;
-
   @ViewChild(TeacherRecitationGroupSelectedComponent) detailsComponent: TeacherRecitationGroupSelectedComponent | undefined;
   rejectedRequestId: string = '';
   showAddGroupForm: boolean = false;
   showRejectForm: boolean = false;
   showAddStudent: boolean = false;
-  constructor() { }
   GroupId: string = '';
+
+  constructor() { }
+
   ngOnInit(): void {
   }
   showAddGroup(event: boolean) {
     this.showAddGroupForm = event;
-    if (this.lestTeacherComponent) {
-      this.lestTeacherComponent.getTeacherViewtGroupExplanation();
+    if (this.showAddGroupForm === false) {
+      if (this.lestTeacherComponent) {
+        this.lestTeacherComponent.getTeacherViewtGroupExplanation();
+      }
     }
+
   }
 
   reciveGroupId(event: string) {

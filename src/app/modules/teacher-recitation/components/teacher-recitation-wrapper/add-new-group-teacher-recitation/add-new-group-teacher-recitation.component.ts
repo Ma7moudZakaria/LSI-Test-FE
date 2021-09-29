@@ -28,7 +28,6 @@ import { TeacherRecitationGroupsComponent } from '../teacher-recitation-groups/t
 export class AddNewGroupTeacherRecitationComponent implements OnInit {
   @Output() hideform = new EventEmitter<boolean>();
   @Input() dataEdit: Role = { arRoleName: '', id: '', enRoleName: '' };
-  @ViewChild(TeacherRecitationGroupsComponent) lestTeacherComponent: TeacherRecitationGroupsComponent | undefined;
 
   addModel: IAddGroupExplanationModel = {}
   allBatches: ISharedProgramsResponseModel[] = [];
@@ -37,8 +36,8 @@ export class AddNewGroupTeacherRecitationComponent implements OnInit {
 
   DataForm!: FormGroup;
   isSubmit: boolean = false;
-  disabledSreach: boolean = false
-  disabledBatch: boolean = false
+  disabledSreach: boolean = true
+  disabledBatch: boolean = true
   listSelectedUser: any = []
   resultMessage: BaseMessageModel = {};
   SearchItemList: SearchItem[] = [];
@@ -64,9 +63,10 @@ export class AddNewGroupTeacherRecitationComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem("user") as string) as IUser;
-    this.getStudentList();
     // this.getAllStudentList()
-    this.getAllBatches()
+    // this.getAllBatches()
+    // this.getStudentList();
+
   }
 
   // get-all-batch
@@ -86,7 +86,7 @@ export class AddNewGroupTeacherRecitationComponent implements OnInit {
   }
 
   onChangeBatch(event: any) {
-    this.disabledSreach = true
+    // this.disabledSreach = true
     this.getStudentList();
 
   }
@@ -157,7 +157,7 @@ export class AddNewGroupTeacherRecitationComponent implements OnInit {
 
 
   addStudentSearch(event: SearchItem) {
-    this.disabledBatch = true;
+    // this.disabledBatch = true;
     this.listSelectedStudent.push(event);
 
   }
@@ -209,7 +209,21 @@ export class AddNewGroupTeacherRecitationComponent implements OnInit {
       }
     }
   }
+  selectionWay(event: any) {
+    if (event.value == 1) {
+      this.disabledBatch = false
+      this.disabledSreach = true
+      this.getAllBatches()
 
+    }
+    else {
+      this.disabledBatch = true
+      this.disabledSreach = false
+      this.getStudentList();
+
+    }
+    // console.log("toggel", event.value)
+  }
   backList() {
     this.hideform?.emit(false);
   }

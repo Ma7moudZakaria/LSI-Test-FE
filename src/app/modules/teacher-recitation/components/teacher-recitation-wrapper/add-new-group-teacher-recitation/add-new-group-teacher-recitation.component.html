@@ -1,5 +1,5 @@
 
-<div class="col-md-12">
+<div class="col-md-12 addGroupExplanation ">
   <p class="title_add">
       {{ "Role_Management.CREATENEWGROUP" | translate }}
   </p>
@@ -18,6 +18,21 @@
 
               <input type="text" class="form-control" [(ngModel)]="addModel.groupNameEn" />
           </div>
+
+          <div class="form-group">
+            <div>
+              <label class="label">اختر </label>
+            </div>
+          
+             <mat-radio-group aria-label="Select an option"  class="example-radio-group"
+                 (change)='selectionWay($event)' >
+                <mat-radio-button value="1" class="example-radio-button ml-1 mr-1">اختار دفعه </mat-radio-button>
+              
+
+                <mat-radio-button value="2" class="example-radio-button ml-1 mr-1"> اختار طالب </mat-radio-button>
+              </mat-radio-group>
+
+            </div>
 
             <div class="form-group">
                 <label for="programs" class="label"> اخترالدفعة</label>

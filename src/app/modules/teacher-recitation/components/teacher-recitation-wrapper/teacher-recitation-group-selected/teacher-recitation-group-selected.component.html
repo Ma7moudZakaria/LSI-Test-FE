@@ -16,13 +16,13 @@
   <ng-container *ngFor="let itemOfGroupRequests of detailsGroupExplanation?.groupMembers" >
       <div class=" cardRecourd  d-flex justify-content-between mb-3" >
           <div class="group_name  d-flex pb-0  align-items-center justify-content-between">
-            <img class="img_user" src="../../../../../../assets/images/ASH_9078.png">
-
+            <img class="img_user" *ngIf='!itemOfGroupRequests?.stuAvatarUrl' src="assets/images/Profile.svg" alt=""/>
+             <img class="img_user" *ngIf='itemOfGroupRequests?.stuAvatarUrl' [src]="itemOfGroupRequests?.stuAvatarUrl" alt="">
               <div>
               <p class="ellipsis mb-0 ">
                 {{ translate.currentLang === langEnum.en ? itemOfGroupRequests?.studNameEn : itemOfGroupRequests?.studNameAr }}
               </p>
-              <p class="message_date mb-0 px-2">2020/10/25 </p>      
+              <!-- <p class="message_date mb-0 px-2">2020/10/25 </p>       -->
                   
               </div>
 
