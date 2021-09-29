@@ -80,11 +80,11 @@ export class StudentProgramDutyDaysTaskComponent implements OnInit {
     if (this.programDayTasksLists && this.isAnsweredIndex + 1 < this.programDayTasksLists.length){
       this.setProgrmeDayTask(this.programDayTasksLists[this.isAnsweredIndex + 1]); this.defaultSelectedDay=this.isAnsweredIndex + 1;
       this.isAnsweredIndex=this.isAnsweredIndex + 1;
-      this.taskIsEnd();
+      this.taskIsEnd(false);
     }
     else{
-      this.taskIsEnd()
+      this.taskIsEnd(true)
     }
   }
-  taskIsEnd(){ this.taskIsEndEvent.emit()}
+  taskIsEnd($event:boolean){ this.taskIsEndEvent.emit($event)}
 }
