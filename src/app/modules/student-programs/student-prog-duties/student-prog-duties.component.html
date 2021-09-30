@@ -8,7 +8,7 @@
             <app-student-program-duty-days-task [programDutyDay]='programDutyDay' (taskDetailsEvent)="sendTaskIdToProgDayTaskDetails($event)" (taskIsEndEvent)="loadDay()"></app-student-program-duty-days-task>
         </div>
         <div class="col-6" *ngIf='taskDetails'>
-            <app-student-program-duty-days-task-details [taskDetails]='taskDetails' (taskIsSaveEvent)=" loadTask()" (teacherCallPhonEvent)="teacherCallPhon($event)"
+            <app-student-program-duty-days-task-details [taskDetails]='taskDetails' (taskIsSaveEvent)=" loadTask($event)" (teacherCallPhonEvent)="teacherCallPhon($event)"
                                                         (openAddScientificProblem)="openAddScientificProblemPopup()"
             ></app-student-program-duty-days-task-details >
         </div>
