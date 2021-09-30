@@ -1,0 +1,124 @@
+
+<div class="col-md-12 addGroupExplanation ">
+  <p class="title_add">
+      {{ "Role_Management.CREATENEWGROUP" | translate }}
+  </p>
+  <div class="col-md-12 ">
+      <div  class="DataForm" >
+          <div class="form-group">
+              <label for="exampleInputEmail1" class="label">
+                  {{ "Role_Management.GROUPNAMEARABIC" | translate }}
+              </label>
+              <input type="text" class="form-control"   [(ngModel)]="addModel.groupNameAr" />
+          </div>
+          <div class="form-group">
+              <label for="exampleInputEmail1" class="label">{{
+                  "Role_Management.GROUPNAMEENGLISH" | translate
+                  }}</label>
+
+              <input type="text" class="form-control" [(ngModel)]="addModel.groupNameEn" />
+          </div>
+
+          <div class="form-group">
+            <div>
+              <label class="label">اختر </label>
+            </div>
+          
+             <mat-radio-group aria-label="Select an option"  class="example-radio-group"
+                 (change)='selectionWay($event)' >
+                <mat-radio-button value="1" class="example-radio-button ml-1 mr-1">اختار دفعه </mat-radio-button>
+              
+
+                <mat-radio-button value="2" class="example-radio-button ml-1 mr-1"> اختار طالب </mat-radio-button>
+              </mat-radio-group>
+
+            </div>
+
+            <div class="form-group">
+                <label for="programs" class="label"> اخترالدفعة</label>
+                <div class="input-group">
+                    <div class="input-group" [ngClass]="{'dimmed': disabledBatch}">
+                            <select class="form-control"  [(ngModel)]="addModel.batId"
+                             (change)="onChangeBatch($event.target)">
+                                <ng-container *ngFor="let item of allBatches">
+                                <option [value]="item.batId">
+                                    {{ this.translate.currentLang === langEnum.en? item.nameEn : item.nameAr }}
+                                </option>
+                                </ng-container>
+                            </select>
+                    </div>
+
+                <!-- <div class="listStudent my-2" *ngIf="listStudents.length > 0">
+                        <p *ngFor="let student of listStudents" class="avater_container p-2 my-2">
+                            <img  src="{{student.avr}}" class="avater">
+                            <span>{{translate.currentLang == langEnum.en ? student.studNameEn : student.studNameAr}}</span>
+                         <img src="assets/images/feelings/close.svg" (click)="removeStuFromList(student)">
+                        </p>
+                    </div> -->
+                </div>
+                            
+                </div>
+
+          <div class="form-group mt-3" >
+              <label for="exampleInputEmail1" class="label">
+                  {{"Role_Management.SELECT_GROUP_MEMBERS" | translate }}</label>
+                  <div [ngClass]="{'dimmed': disabledSreach}">
+                  <app-input-search-list [searchList]="SearchItemList" (addSearchItem)="addStudentSearch($event)">
+                  </app-input-search-list>
+                  </div>
+          </div>
+<!-- list in search list in selected batches  -->
+     <ng-container *ngIf="listSelectedStudent.length > 0">
+          <mat-list>
+              <mat-list-item *ngFor="let SelectedUser of listSelectedStudent">
+                  <img mat-list-icon *ngIf='!SelectedUser?.usrAvatarUrl' src="assets/images/Profile.svg" alt=""/>
+                  <img mat-list-icon *ngIf='SelectedUser?.usrAvatarUrl' [src]="SelectedUser?.usrAvatarUrl" alt="" />
+                  <div mat-line>
+                      {{ translate.currentLang == langEnum.en ?
+                        SelectedUser.enUsrName && checkNameSpace(SelectedUser.enUsrName) ? SelectedUser.enUsrName : SelectedUser.arUsrName : 
+                        SelectedUser.arUsrName && checkNameSpace(SelectedUser.arUsrName)? SelectedUser.arUsrName : SelectedUser.enUsrName }}
+                    
+                    </div>
+                  <div mat-line> {{SelectedUser.createdOn | date}} </div>
+                 <span class="mat-delete" (click)="deleteStudentSearch(SelectedUser)"><i class="fas fa-trash-alt"></i></span>
+                  <mat-divider></mat-divider>
+              </mat-list-item>
+          </mat-list>
+    </ng-container>
+
+<!-- list in dropdown list in selected batches  -->
+          <!-- <ng-container *ngIf="listStudents.length > 0">
+            <mat-list>
+                <mat-list-item *ngFor="let student of listStudents">
+                    <img mat-list-icon *ngIf='!student?.avr' src="assets/images/Profile.svg" alt=""/>
+                    <img mat-list-icon *ngIf='student?.avr' [src]="student?.avr" alt="" />
+                    <div mat-line>{{translate.currentLang == langEnum.en ? student.studNameEn : student.studNameAr}}
+                      </div>
+                   <span class="mat-delete" (click)="removeStuFromList(student)"><i class="fas fa-trash-alt"></i></span>
+                    <mat-divider></mat-divider>
+                </mat-list-item>
+            </mat-list>
+         </ng-container> -->
+
+
+      
+      <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }}  ">
+          {{resultMessage.message}}
+      </div>
+      <div class="row mt-5">
+      
+          <div class="col-md-6" >
+              <button (click)="sumbitGroupExplanation()" class="save-btn">
+                  {{ "Role_Management.SAVE" | translate }}
+              </button>
+          </div>
+          <div class="col-md-6">
+              <button type="button" class="cancel-btn" (click)="backList()">
+                  {{ "QUESTION_BANK.CANCEL" | translate }}
+              </button>
+          </div>
+      </div>
+  </div>
+</div>
+
+</div>

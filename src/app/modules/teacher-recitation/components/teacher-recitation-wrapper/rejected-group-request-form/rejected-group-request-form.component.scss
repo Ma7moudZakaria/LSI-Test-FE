@@ -1,0 +1,37 @@
+@import 'src/assets/scss/_buttons.scss';
+.rejectedForm{
+        &:lang(ar){text-align: right;}
+        &:lang(en){text-align: left ;}
+
+      .title_add{
+            font-size:1.25rem;
+            padding-top: 10%;
+            padding-bottom: 15px;
+            font-family:Almarai-Bold
+        } 
+        .label{
+        width: 100%;
+        color: $box-color2;
+        font-family:Almarai-Bold;
+        font-size: 0.75rem;
+
+        }
+        .alert{
+        margin: 0 !important;
+        padding: 0;
+        font-size: 0.75rem;
+        }
+        
+    .save-btn,.cancel-btn{
+        width:100%;
+        padding: 0.5rem;
+        height: 2.31rem;
+        font-family:Almarai-Bold
+    
+        }
+        
+     
+}
+
+    
+  

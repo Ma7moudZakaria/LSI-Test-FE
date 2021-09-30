@@ -1,0 +1,62 @@
+<div class="col-md-12">
+    <p class="label">
+      اضافه طالب الى مجموعه {{ translate.currentLang == langEnum.en ?sendBatchDetails?.groupNameEn :
+        sendBatchDetails?.groupNameAr }}
+    </p>
+           <!-- {{sendBatchDetails?.batId}}
+           {{sendBatchDetails?.groupNameAr}} -->
+  
+        <div class="form-group mt-3" >
+            <label for="exampleInputEmail1" class="label">
+                {{"Role_Management.SELECT_GROUP_MEMBERS" | translate }}</label>
+                <div >
+                <app-input-search-list [searchList]="SearchItemList" (addSearchItem)="addStudentSearch($event)">
+                </app-input-search-list>
+                </div>
+        </div>
+<!-- list in search list in selected batches  -->
+   <ng-container *ngIf="listSelectedStudent.length > 0">
+        <mat-list>
+            <mat-list-item *ngFor="let SelectedUser of listSelectedStudent">
+                <img mat-list-icon *ngIf='!SelectedUser?.usrAvatarUrl' src="assets/images/Profile.svg" alt=""/>
+                <img mat-list-icon *ngIf='SelectedUser?.usrAvatarUrl' [src]="SelectedUser?.usrAvatarUrl" alt="" />
+                <div mat-line>
+                    {{ translate.currentLang == langEnum.en ?
+                      SelectedUser.enUsrName && checkNameSpace(SelectedUser.enUsrName) ? SelectedUser.enUsrName : SelectedUser.arUsrName : 
+                      SelectedUser.arUsrName && checkNameSpace(SelectedUser.arUsrName)? SelectedUser.arUsrName : SelectedUser.enUsrName }}
+                  
+                  </div>
+                <div mat-line> {{SelectedUser.createdOn | date}} </div>
+               <span class="mat-delete" (click)="deleteStudentSearch(SelectedUser)"><i class="fas fa-trash-alt"></i></span>
+                <mat-divider></mat-divider>
+            </mat-list-item>
+        </mat-list>
+  </ng-container>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+        <div *ngIf="resultMessage" class="alert alert-{{ resultMessage.type }} my-4 py-2">
+            {{resultMessage.message}}
+        </div>
+        <div class="row mt-5">
+           
+            <div class="col-md-6" >
+                <button (click)="sumbitAddStudent()" class="save-btn">
+                    {{ "Role_Management.SAVE" | translate }}
+                </button>
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="cancel-btn" (click)="backList()">
+                    {{ "QUESTION_BANK.CANCEL" | translate }}
+                </button>
+            </div>
+        </div>
+ 
+  </div>

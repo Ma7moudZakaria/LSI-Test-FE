@@ -114,7 +114,7 @@
                 </li>
                 <li onclick="" class="nav-item" routerLinkActive="active">
                     <a
-                    [routerLink]="['/home']" routerLinkActive="active" class="nav-link">
+                    [routerLink]="['/recitation']" routerLinkActive="active" class="nav-link">
                         <img src="../../../../assets/images/sidebar/narration-icon.png">
                         <span class="container__navigation__title">{{'SIDENAVBAR.SARD' | translate}}</span>
                     </a>
@@ -219,7 +219,14 @@
                   </a>
 
                 </li>
-
+                <li class="nav-item" routerLinkActive="active">
+                    <a  *ngIf='!roleService.isAdmin() && (roleService.isStudent() || !roleService.isTeacher())'
+                        [routerLink]="['/student-groups']" routerLinkActive="active" class="nav-link">
+                      <img src="/assets/images/group.svg">
+                      <span class="container__navigation__title">المجموعات</span>
+                    </a>
+  
+                  </li>
                 <li class="nav-item studentProfile" routerLinkActive="active"
                     *ngIf='!roleService.isAdmin() && (roleService.isStudent() || !roleService.isTeacher())'>
                     <a [routerLink]="['/question-bank/question-bank-view']" routerLinkActive="active" class="nav-link">

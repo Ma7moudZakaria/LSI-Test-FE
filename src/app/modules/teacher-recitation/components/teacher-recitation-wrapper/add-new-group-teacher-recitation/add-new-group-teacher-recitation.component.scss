@@ -1,0 +1,48 @@
+@import'../../../../role-management/role-management-view/add-group/add-group.component.scss';
+
+.addGroupExplanation{
+     &:lang(ar){text-align: right;}
+     &:lang(en){text-align: left;}
+
+     .title_add,
+     .label{
+     font-family:Almarai-Bold;
+
+     }
+     select.form-control {
+          appearance: auto;
+          -moz-appearance: auto;
+          -webkit-appearance: auto;
+     }
+     .listStudent{
+          
+          height: 20vh;
+          overflow-y: auto;
+          width: 100%;
+          padding: .5rem;
+          background: #ffffff85;
+     }
+     .avater_container
+     {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background-color: #e3e5e826;
+          box-shadow: 0 0 3px #30303045;
+          border-radius: 0.5rem;
+          font-size: 1rem;
+          font-family:Almarai-Bold;
+     
+
+     }.avater{
+          width: 11vh;
+          height: 8vh;
+          margin: 0.2rem;
+     }
+     .mat-list {
+          height: 18vh;
+         overflow-y: scroll;
+         overflow-x: hidden;
+     }
+}

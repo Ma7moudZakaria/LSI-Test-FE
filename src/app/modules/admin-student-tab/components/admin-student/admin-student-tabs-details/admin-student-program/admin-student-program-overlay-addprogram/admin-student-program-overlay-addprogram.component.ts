@@ -17,13 +17,14 @@ export class AdminStudentProgramOverlayAddprogramComponent implements OnInit {
   @Output() closeOverlay = new EventEmitter<boolean>();
   @Input() studentIdOutput: ITeacherStudentViewModel | undefined;
 
-  sharedPrograms :ISharedProgramsResponseModel[] | undefined;
-  addStudentToSharedProgramRequestModel: IAddStudentToSharedProgramRequestModel ={};
-  studentAndProgramModel :ITeacherStudentViewModel | undefined;
+  sharedPrograms: ISharedProgramsResponseModel[] | undefined;
+  addStudentToSharedProgramRequestModel: IAddStudentToSharedProgramRequestModel = {};
+  studentAndProgramModel: ITeacherStudentViewModel | undefined;
   langEnum = LanguageEnum;
   addStudentToSharedForm: FormGroup = new FormGroup({});
 
-  constructor(private fb: FormBuilder,private adminStudentTabService: AdminStudentTabService,public translate: TranslateService,public programService :ProgramService) { }
+  constructor(private fb: FormBuilder, private adminStudentTabService: AdminStudentTabService, public translate: TranslateService,
+    public programService: ProgramService) { }
 
   ngOnInit(): void {
     this.buildForm();
@@ -40,12 +41,11 @@ export class AdminStudentProgramOverlayAddprogramComponent implements OnInit {
 
       })
   }
-  getAllSharedPrograms()
-  {
+  getAllSharedPrograms() {
     this.programService.getSharedPrograms().subscribe(res => {
 
       if (res.isSuccess) {
-      this.sharedPrograms = res.data;
+        this.sharedPrograms = res.data;
       }
       else {
       }
@@ -54,29 +54,27 @@ export class AdminStudentProgramOverlayAddprogramComponent implements OnInit {
         console.log(error);
       });
   }
-  
+
   closeForm() {
     this.closeOverlay.emit(false)
   }
-  addStudentToSharedProject()
-  {
+  addStudentToSharedProject() {
     this.studentAndProgramModel = this.studentIdOutput;
     this.addStudentToSharedProgramRequestModel.studId = this.studentAndProgramModel?.usrId;
     this.addStudentToSharedProgramRequestModel.batId = this.addStudentToSharedForm.value.program;
 
-    if(this.addStudentToSharedForm.valid)
-    {
-    this.adminStudentTabService.addStudentToSharedProgram(this.addStudentToSharedProgramRequestModel || {}).subscribe(res => {
+    if (this.addStudentToSharedForm.valid) {
+      this.adminStudentTabService.addStudentToSharedProgram(this.addStudentToSharedProgramRequestModel || {}).subscribe(res => {
 
-      if (res.isSuccess) {
-      this.closeForm();
-      }
-      else {
-      }
-    },
-      error => {
-        console.log(error);
-      });
+        if (res.isSuccess) {
+          this.closeForm();
+        }
+        else {
+        }
+      },
+        error => {
+          console.log(error);
+        });
     }
   }
 }

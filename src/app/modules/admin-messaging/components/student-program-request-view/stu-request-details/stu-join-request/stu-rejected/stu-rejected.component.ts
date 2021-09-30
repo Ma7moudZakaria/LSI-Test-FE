@@ -15,7 +15,7 @@ export class StuRejectedComponent implements OnInit {
   @Output() closeRejectedRequest = new EventEmitter<boolean>();
 
   @Input() itemStuReq: IStudentSubscriptionModel = {}
-  rejectRequest: IRejectProgramSubscriptionModel = {}
+  // rejectRequest: IRejectProgramSubscriptionModel = {}
   // var response = <BaseResponseModel>res;
   resultMessage: BaseMessageModel = {};
 
@@ -27,7 +27,7 @@ export class StuRejectedComponent implements OnInit {
   }
 
 
-  closeRejectRequest(btn:boolean) {
+  closeRejectRequest(btn: boolean) {
     this.closeRejectedRequest.emit(btn);
 
   }
