@@ -5,7 +5,7 @@
             <div class="col-sm-8 mt-3">
                 <label class="label_item_question">  {{'PROGRAM_DAY_TASK_ENCOURAGEMENT.MESSAGE' | translate}}  </label>
                 <div class="input-group input-sm input_search_voice" >
-                    <input type="text"
+                    <!-- <input type="text"
                     *ngIf="!encouragementLetterDetailsModel.voiceUrl"
                       (input)="onQuestionTextChange()" 
                       [disabled]='viewMode'
@@ -13,7 +13,7 @@
                        class="form-control  border-md " 
                        [ngClass]="{' border-transparent': !encouragementLetterDetailsModel.text,
                       'input_with-voice': !encouragementLetterDetailsModel.text}"
-                       placeholder="{{'EXAM_FORM.ADD_QUESTION'|translate}}" >
+                       placeholder="{{'EXAM_FORM.ADD_QUESTION'|translate}}" > -->
                        
                      <app-voice-recording *ngIf="!encouragementLetterDetailsModel.text" (getVoiceUrl)="saveVoiceUrl($event)"
                      [viewMode]='viewMode' [voiceUrl]='encouragementLetterDetailsModel?.voiceUrl'>
