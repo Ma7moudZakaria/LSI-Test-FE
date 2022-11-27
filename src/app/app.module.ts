@@ -28,10 +28,6 @@ import { Ng2TelInputModule } from 'ng2-tel-input';
 import { AlertifyService } from './core/services/alertify-services/alertify.service';
 // import { HasUnsavedDataGuard } from './core/guards/HasUnsavedDataGuard';
 import { NgbModule, NgbRating, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
-import { CmsHasUnsavedDataGuard } from './core/guards/cms-has-unsaved-data-guard';
-import { WalkthroughHasUnsavedDataGuard } from './core/guards/walkthrough-has-unsaved-data-guard';
-import { UpdateTeacherProfileHasUnsavedDataGuard } from './core/guards/update-teacher-profile-has-unsaved-data-guard';
-import { UpdateUserProfileHasUnsavedDataGuard } from './core/guards/update-user-profile-has-unsaved-data-guard';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -44,7 +40,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     HeaderComponent,
     SidebarComponent,
     MyLoaderComponent,
-    // TeacherQuitTabRequestComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,10 +67,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgbRatingModule,
   ],
   providers: [
-    CmsHasUnsavedDataGuard,
-    WalkthroughHasUnsavedDataGuard,
-    UpdateTeacherProfileHasUnsavedDataGuard,
-    UpdateUserProfileHasUnsavedDataGuard,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     LoaderService,

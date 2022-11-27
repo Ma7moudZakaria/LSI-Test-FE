@@ -7,10 +7,10 @@ import { LanguageService } from './core/services/language-services/language.serv
 
 const config = {
   apiKey: "AIzaSyBz6L0qamX2o9J8APMJ2QlKF5jDhECicI4",
-  authDomain: "hoffaz.firebaseapp.com",
-  databaseURL: "https://hoffaz-default-rtdb.firebaseio.com",
-  projectId: "hoffaz",
-  storageBucket: "hoffaz.appspot.com",
+  authDomain: "LSI.firebaseapp.com",
+  databaseURL: "https://LSI-default-rtdb.firebaseio.com",
+  projectId: "LSI",
+  storageBucket: "LSI.appspot.com",
   messagingSenderId: "870269866675",
   appId: "1:870269866675:web:8eaf3bca7841a83b52d6c6",
   measurementId: "G-CG7X412XTV"
@@ -26,7 +26,7 @@ const config = {
 })
 
 export class AppComponent implements OnInit{
-  title = 'huffaz-app';
+  title = 'LSI-app';
   constructor(public translate:TranslateService, 
     private router: Router,
     private langService: LanguageService){
